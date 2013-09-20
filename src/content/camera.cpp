@@ -11,7 +11,7 @@ nebula::content::camera::camera()
 {
 
 }
-void	nebula::content::camera::render(boost::shared_ptr<nebula::platform::renderer::base> rnd)
+void	nebula::content::camera::render(const boost::shared_ptr<nebula::platform::renderer::base>& rnd)
 {
 	boost::numeric::ublas::vector<FLOAT> e(3);
 	boost::numeric::ublas::vector<FLOAT> c(3);

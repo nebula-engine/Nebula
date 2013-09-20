@@ -1,3 +1,5 @@
+#include <boost/bind.hpp>
+
 #include <nebula/content/actor/admin/rigid_actor.hpp>
 
 #include <nebula/platform/renderer/base.hpp>
@@ -10,9 +12,9 @@ void	nebula::content::shape::admin::box::init(const boost::shared_ptr<nebula::co
 {
 	// call base
 	nebula::content::shape::admin::base::init(parent);
-		
+	
 	// create renderer
-	renderer_.create(boost::bind(&nebula::content::shape::renderer::box::init,_1,shared_from_this()));
+	renderer_.create<nebula::content::shape::renderer::box>(boost::bind(&nebula::content::shape::renderer::box::init,_1,shared_from_this()));
 	
 	// create physics
 	physics_.create(boost::bind(&nebula::content::shape::physics::box::init,_1,shared_from_this()))

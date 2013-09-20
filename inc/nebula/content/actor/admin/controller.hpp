@@ -3,7 +3,7 @@
 
 
 
-#include <nebula/content/actor/admin/base.h>
+#include <nebula/content/actor/admin/base.hpp>
 
 namespace nebula
 {
@@ -52,6 +52,9 @@ namespace nebula
 				
 					/// create shapes
 					virtual	void								create_shape();
+	
+					/// lookat
+					virtual void								lookat(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				};
 			}
 		}
