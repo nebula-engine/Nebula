@@ -1,0 +1,2 @@
+obj/Utilities/Link.o: ../../Utilities/Link.cpp \
+ ../../../Include/Utilities/Link.h ../../../Include/Utilities/Ptr.h
