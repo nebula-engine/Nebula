@@ -1,60 +1,60 @@
-#ifndef __NEBULA_CONTENT_ACTOR_ADMIN_BASE_HPP__
-#define __NEBULA_CONTENT_ACTOR_ADMIN_BASE_HPP__
+#ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
+#define __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
 
+#include <boost/shared_ptr.hpp>
 
-
+#include <nebula/utilities/types/content/actor/types.hpp>
 
 namespace nebula
 {
-namespace content
-{
-	namespace actor
+	namespace content
 	{
-		namespace admin
+		namespace actor
 		{
-			/// rigid dynamic
-			class base:
-				public nebula::content::actor::admin::rigid_body
+			namespace physics
 			{
-			public:
-				///@name ctor and dtor
-				///@{
-				// Ctor
-				rigid_body();
-				/// Copy Ctor
-				rigid_body(const rigid_body&);
-				/// Dtor
-				~rigid_body();
-				///@}
+				/// base
+				class base
+				{
+					public:
+						///@name ctor and dtor
+						///@{
+						// Ctor
+						base();
+						/// Copy Ctor
+						base(const base&);
+						/// Dtor
+						~base();
+						///@}
 
-				///@name operator
-				///@{
-				/// assignment
-				rigid_body&								operator=(const rigid_body&);
-				///@}
+						///@name operator
+						///@{
+						/// assignment
+						base&									operator=(const base&);
+						///@}
 
-				
 
-				/// init
-				virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
-				/// shutdown
-				virtual	void								shutdown();
-				/// update
-				virtual	void								update();
-				/// step
-				virtual	void								step();
-				/// render
-				virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
-				
-				
-				
-				
-				/// create shapes
-				virtual	void								create_shape();
-			};
-		};
-	};
-};
+
+						/// init
+						virtual	void								init(const boost::shared_ptr<nebula::content::actor::admin::base>&);
+						/// shutdown
+						virtual	void								shutdown();
+						/// update
+						virtual	void								update();
+						/// step
+						virtual	void								step();
+
+
+
+
+						/// create shapes
+						virtual	void								create_shape();
+				};
+			}
+		}
+	}
+}
+
 
 #endif
 

@@ -1,9 +1,9 @@
-#ifndef __NEBULA_CONTENT_ACTOR_ADMIN_ACTOR_HPP__
-#define __NEBULA_CONTENT_ACTOR_ADMIN_ACTOR_HPP__
+#ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
+#define __NEBULA_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
 
 
 
-#include <nebula/content/actor/admin/base.h>
+#include <nebula/content/actor/physics/base.hpp>
 
 namespace nebula
 {
@@ -11,11 +11,11 @@ namespace nebula
 	{
 		namespace actor
 		{
-			namespace admin
+			namespace physics
 			{
-				/// rigid dynamic
+				/// actor
 				class actor:
-					public nebula::content::actor::admin::base
+					public nebula::content::actor::physics::base
 				{
 				public:
 					///@name ctor and dtor
@@ -37,15 +37,13 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init(const boost::shared_ptr<nebula::content::actor::admin::actor>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
 					virtual	void								update();
 					/// step
 					virtual	void								step();
-					/// render
-					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				
 				
 				

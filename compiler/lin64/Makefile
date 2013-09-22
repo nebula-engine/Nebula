@@ -1,12 +1,16 @@
-root      := /home/charles/cpp_projects/
+here      := $(shell pwd)
+rootname  := cpp_projects/
+root      := $(shell expr $(here) : '\(.*$(rootname)\)')
+
+
 
 hpaths    := 
 hpaths    += $(root)external/PhysX-3.2.4_LINUX_SDK_Core/Include
 hpaths    += $(root)external/glew/include
-hpaths    += $(root)transfer/jess/inc
+hpaths    += $(root)jess/inc
 
 lpaths    := 
-lpaths    += $(root)transfer/jess/lib/lin64/
+lpaths    += $(root)jess/lib/lin64/
 lpaths    += $(root)external/glew/lib
 lpaths    += $(root)external/PhysX-3.2.4_LINUX_SDK_Core/Lib/linux64
 
@@ -39,4 +43,4 @@ libraries += GL
 libraries += GLU
 libraries += GLEW
 
--include $(root)transfer/make/makefile.Lib.mk
+-include $(root)make/Makefile.Lib.mk
