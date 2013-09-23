@@ -4,7 +4,7 @@
 #include <boost/weak_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 
-#include <nebula/shared_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 
 #include <nebula/utilities/types/platform/types.hpp>
 #include <nebula/utilities/types/content/actor/types.hpp>
@@ -37,9 +37,9 @@ namespace nebula
 					boost::weak_ptr<nebula::content::actor::admin::rigid_actor>	parent_;
 		
 					/// renderer
-					nebula::shared_ptr<nebula::content::shape::renderer::base>	renderer_;
+					jess::shared_ptr<nebula::content::shape::renderer::base>	renderer_;
 					/// physics
-					nebula::shared_ptr<nebula::content::shape::physics::base>	physics_;
+					jess::shared_ptr<nebula::content::shape::physics::base>	physics_;
 				};
 			}
 		}

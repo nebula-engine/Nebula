@@ -12,6 +12,7 @@ namespace nebula
 				class base
 				{
 				public:
+					void							render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				};
 			}
 		}

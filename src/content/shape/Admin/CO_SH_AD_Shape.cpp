@@ -1,4 +1,4 @@
-#include <jess/print/print.hpp>
+#include <jess/ostream.hpp>
 
 #include <nebula/content/shape/admin/base.hpp>
 

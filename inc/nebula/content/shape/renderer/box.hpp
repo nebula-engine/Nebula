@@ -17,6 +17,7 @@ namespace nebula
 				{
 				public:
 					void								init(const boost::shared_ptr<nebula::content::shape::admin::box>&);
+					void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				};
 			}
 		}

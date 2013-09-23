@@ -18,6 +18,11 @@ namespace nebula
 					void								init(const boost::shared_ptr<nebula::content::actor::admin::rigid_actor>&);
 					void								shutdown();
 					void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					
+					FLOAT								x_;
+					FLOAT								y_;
+					FLOAT								z_;
+					
 				};
 			}
 		}
