@@ -1,12 +1,10 @@
-#include <content/Actor/Admin/CO_AC_AD_RigidBody.h>
-#include <content/Actor/Physics/PhysX/CO_AC_PH_PX_Material.h>
-#include <content/Actor/Physics/PhysX/CO_AC_PH_PX_RigidBody.h>
+#include <nebula/content/actor/admin/rigid_body.hpp>
+#include <nebula/content/actor/physics/physx/material.hpp>
+#include <nebula/content/actor/physics/physx/rigid_body.hpp>
 
-#include <content/Shape/Admin/CO_SH_AD_Box.h>
+#include <nebula/content/shape/admin/box.hpp>
 
-#include <Platform/Renderer/PL_RE_Renderer.h>
-
-
+#include <nebula/platform/renderer/base.hpp>
 
 
 
@@ -14,25 +12,33 @@
 
 
 
+#include <nebula/content/shape/physics/physx/box.hpp>
+
+namespace ncs = nebula::content::shape;
+namespace nca = nebula::content::actor;
 
 
-#include <content/Shape/Physics/PhysX/CO_SH_PH_PX_Box.h>
+	ncs::physics::physx::box::Box()
+{
 
-		CO_SH_PH_PX_Box::Box() {
 }
-		CO_SH_PH_PX_Box::~Box() {
+	ncs::physics::physx::box::~Box()
+{
+
 }
-	
-void	CO_SH_PH_PX_Box::VInit( Void* data ) {
+void	ncs::physics::physx::box::VInit( Void* data )
+{
 	VCreatePxShape();
 }
-void	CO_SH_PH_PX_Box::VShutDown() {
+void	ncs::physics::physx::box::VShutDown()
+{
 	
 }
-void	CO_SH_PH_PX_Box::VCreatePxShape() {
-	PRINTSIG;
+void	ncs::physics::physx::box::VCreatePxShape()
+{
+	jess::clog.funcsig();
 	
-	CO_AC_PH_PX_RigidActor* acPhPxRigidActor = dynamic_cast<CO_AC_PH_PX_RigidActor*>(m_shAdShape->Get_CO_AC_AD_RigidActor()->Ptr<CO_AC_PH_RigidActor>::Get_Or_Error() );
+	nca::physics::physx::rigid_actor* acPhPxRigidActor = dynamic_cast<CO_AC_PH_PX_RigidActor*>(m_shAdShape->Get_CO_AC_AD_RigidActor()->Ptr<CO_AC_PH_RigidActor>::Get_Or_Error() );
 
 	physx::PxRigidActor* pxRigidActor = (physx::PxRigidActor*)acPhPxRigidActor->GetPxActor();//(physx::PxRigidActor*)m_rigidActor->GetPxActor();
 	

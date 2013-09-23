@@ -3,7 +3,7 @@
 
 
 
-#include <nebula/content/actor/admin/rigid_actor.h>
+#include <nebula/content/actor/admin/rigid_actor.hpp>
 
 namespace nebula
 {

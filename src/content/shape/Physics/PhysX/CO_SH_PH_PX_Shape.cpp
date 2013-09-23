@@ -15,7 +15,7 @@ void	ncs::physics::physx::base::init(const boost::shared_ptr<ncs::admin::base>&)
 {
 	
 }
-void	ncs::physics::physx::base::shutDown()
+void	ncs::physics::physx::base::shutdown()
 {
 	
 }
