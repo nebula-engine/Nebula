@@ -1,9 +1,9 @@
-#ifndef __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_ACTOR_HPP__
-#define __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_ACTOR_HPP__
+#ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_RIGID_ACTOR_HPP__
+#define __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_RIGID_ACTOR_HPP__
 
 
 
-#include <nebula/content/actor/admin/actor.h>
+#include <nebula/content/actor/physics/physx/actor.hpp>
 
 namespace nebula
 {
@@ -11,11 +11,13 @@ namespace nebula
 	{
 		namespace actor
 		{
-			namespace admin
+			namespace physics
+			{
+			namespace physx
 			{
 				/// rigid dynamic
 				class rigid_actor:
-					public nebula::content::actor::admin::actor
+					public nebula::content::actor::physics::physx::actor
 				{
 				public:
 					///@name ctor and dtor
@@ -53,6 +55,7 @@ namespace nebula
 					/// create shapes
 					virtual	void								create_shape();
 				};
+			}
 			}
 		}
 	}
