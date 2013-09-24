@@ -1,9 +1,10 @@
-#ifndef __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_ACTOR_HPP__
-#define __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_ACTOR_HPP__
+#ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_ACTOR_HPP__
+#define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_ACTOR_HPP__
 
 
 
-#include <nebula/content/actor/admin/actor.h>
+#include <nebula/content/actor/physics/actor.hpp>
+
 
 namespace nebula
 {
@@ -11,11 +12,11 @@ namespace nebula
 	{
 		namespace actor
 		{
-			namespace admin
+			namespace physics
 			{
 				/// rigid dynamic
 				class rigid_actor:
-					public nebula::content::actor::admin::actor
+					public nebula::content::actor::physics::actor
 				{
 				public:
 					///@name ctor and dtor

@@ -2,7 +2,7 @@
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_RIGID_BODY_HPP__
 
 
-
+#include <nebula/content/actor/physics/rigid_body.hpp>
 #include <nebula/content/actor/physics/physx/rigid_actor.hpp>
 
 namespace nebula
@@ -17,7 +17,8 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class rigid_body:
-					public nebula::content::actor::admin::rigid_actor
+					public nebula::content::actor::physics::physx::rigid_actor,
+					public nebula::content::actor::physics::rigid_body
 				{
 				public:
 					///@name ctor and dtor

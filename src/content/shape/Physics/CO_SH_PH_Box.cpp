@@ -1,28 +1,25 @@
-#include <utilities/Types/Utilities.h>
+#include <nebula/platform/renderer/base.hpp>
+#include <nebula/content/shape/physics/box.hpp>
 
-#include <Platform/Renderer/PL_RE_Renderer.h>
+namespace ncs  = nebula::content::shape;
+namespace ncsp = nebula::content::shape::physics;
 
+ncsp::box::box()
+{
 
-
-
-
-#include <content/Shape/Physics/CO_SH_PH_Box.h>
-
-		CO_SH_PH_Box::Box() {
 }
-		CO_SH_PH_Box::~Box() {
+ncsp::box::~box()
+{
+
 }
-	
-void	CO_SH_PH_Box::VInit( Void* data ) {
-	
-}
-void	CO_SH_PH_Box::VShutDown() {
+void	ncsp::box::init(const boost::shared_ptr<ncs::admin::box>&)
+{
 	
 }
-
-
-
-
+void	ncsp::box::shutdown()
+{
+	
+}
 
 
 

@@ -20,6 +20,8 @@ namespace nebula
 				class rigid_static_plane;
 				class controller;
 				class vehicle;
+		
+				class material;
 			}
 			namespace physics
 			{
@@ -34,6 +36,9 @@ namespace nebula
 				class controller;
 				class vehicle;
 				
+
+				class material;
+				
 				namespace physx
 				{
 					class base;
@@ -46,6 +51,8 @@ namespace nebula
 					class rigid_static_plane;
 					class controller;
 					class vehicle;
+		
+					class material;
 				}
 			}
 			namespace renderer
@@ -60,6 +67,8 @@ namespace nebula
 				class rigid_static_plane;
 				class controller;
 				class vehicle;
+
+				class material;
 			}
 		}
 	}

@@ -1,15 +1,18 @@
-#include <content/Shape/Physics/CO_SH_PH_Shape.h>
+#include <nebula/content/shape/physics/base.hpp>
 
+namespace ncs = nebula::content::shape;
+namespace ncsp = ncs::physics;
 
-		CO_SH_PH_Shape::Shape() {
+ncsp::base::base() {
 }
-		CO_SH_PH_Shape::~Shape() {
+ncsp::base::~base() {
 }
 	
-void	CO_SH_PH_Shape::VInit(Void* v) {
+void	ncsp::base::init(const boost::shared_ptr<ncs::admin::base>&)
+{
 	
 }
-void	CO_SH_PH_Shape::VShutDown() {
+void	ncsp::base::shutdown() {
 	
 }
 

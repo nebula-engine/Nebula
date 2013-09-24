@@ -13,7 +13,9 @@ namespace nebula
 				class material
 				{
 				public:
-		
+					material();
+					
+					virtual void						shutdown();
 				};
 			}
 		}

@@ -24,7 +24,11 @@ namespace nebula
 						void							shutdown();
 						void							create_shape();
 						
+						/// parent
 						boost::weak_ptr<ncs::admin::box>			parent_;
+
+						/// PxShape
+						::physx::PxShape*					px_shape_;
 					};
 				}
 			}

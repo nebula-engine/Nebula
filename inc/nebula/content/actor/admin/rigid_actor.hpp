@@ -1,7 +1,10 @@
 #ifndef __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_ACTOR_HPP__
 #define __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_ACTOR_HPP__
 
+#include <jess/map.hpp>
 #include <jess/shared_ptr.hpp>
+
+#include <nebula/utilities/types/content/actor/types.hpp>
 
 #include <nebula/content/actor/admin/actor.hpp>
 
@@ -54,10 +57,6 @@ namespace nebula
 					virtual	void								create_shape();
 
 
-					/// physics
-					jess::shared_ptr<nebula::content::actor::physics::rigid_actor>		physics_;
-
-					
 				};
 			}
 		}

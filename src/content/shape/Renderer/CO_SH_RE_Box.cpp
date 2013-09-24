@@ -1,65 +1,67 @@
-#include <content/Actor/Admin/CO_AC_AD_RigidActor.h>
+#include <boost/numeric/ublas/vector.hpp>
+#include <boost/numeric/ublas/matrix.hpp>
 
-#include <content/Shape/Admin/CO_SH_AD_Box.h>
+#include <jess/free.hpp>
 
-
-#include <Platform/Renderer/PL_RE_Renderer.h>
-
-
-
+#include <nebula/content/actor/admin/rigid_actor.hpp>
+#include <nebula/content/shape/admin/box.hpp>
 
 
+#include <nebula/platform/renderer/base.hpp>
 
 
+#include <nebula/content/shape/renderer/box.hpp>
+
+namespace bnu = boost::numeric::ublas;
+
+namespace nca = nebula::content::actor;
+namespace ncs = nebula::content::shape;
+namespace ncsr = ncs::renderer;
 
 
-#include <content/Shape/Renderer/CO_SH_RE_Box.h>
+ncsr::box::box()
+{
 
-		CO_SH_RE_Box::Box() {
 }
-		CO_SH_RE_Box::~Box() {
+ncsr::box::~box()
+{
+
 }
-void	CO_SH_RE_Box::VInit(Void* v) {
-	AR_Init* i = DynCast<Void,AR_Init>(v);
+void	ncsr::box::init(const boost::shared_ptr<ncs::admin::box>& parent)
+{
+	parent_ = parent;
+}
+void	ncsr::box::shutdown()
+{
 	
-	m_co_sh_ad_box = DynCast<CO_SH_AD_Shape,CO_SH_AD_Box>(i->co_sh_ad_shape);
-
-
 }
-void	CO_SH_RE_Box::VShutDown() {
+void	ncsr::box::render(const boost::shared_ptr<nebula::platform::renderer::base>& rnd)
+{
+	jess::assertion( bool(rnd) ); // throw Except("renderer is null");
 	
-}
-void	CO_SH_RE_Box::VRender( Void* v ) {
-	PL_RE_Renderer* renderer = DynCast<Void,AR_Render>( v )->renderer;
+	boost::shared_ptr<ncs::admin::box> parent = parent_.lock();
 	
-	if ( !renderer ) throw Except("renderer is null");
+	jess::assertion( bool(parent) ); // throw Except("m_co_sh_ad_box is null");
 
-	if ( !m_co_sh_ad_box ) throw Except("m_co_sh_ad_box is null");
-	if ( !m_co_sh_ad_box->Get_CO_AC_AD_RigidActor() ) throw Except("m_co_sh_ad_box->Get_CO_AC_AD_RigidActor() is null");
+
+	boost::shared_ptr<nca::admin::rigid_actor> grandparent = parent->parent_.lock();
+	
+	jess::assertion( bool(grandparent) ); // throw Except("m_co_sh_ad_box->Get_CO_AC_AD_RigidActor() is null");
 	
 	// store transform
-	Math::Transformf transform;
-
-	// get transform from actor
-	m_co_sh_ad_box->Get_CO_AC_AD_RigidActor()->GetTransform( transform );
-
-	// construct matrix from transform
-
-	Math::Mat44f matrix( transform );
+	bnu::matrix<FLOAT> pose = grandparent->get_pose();
+	
 
 	renderer->VPushMatrix();
 
-	renderer->VMultMatrix( matrix );
-
-	renderer->VScale( 
-		m_co_sh_ad_box->Get_x(),
-		m_co_sh_ad_box->Get_y(),
-		m_co_sh_ad_box->Get_z() );
-
+	renderer->VMultMatrix( pose );
+	
+	renderer->VScale( parent_->get_scale() );
+	
 	renderer->VDrawCube();
-
+	
 	renderer->VPopMatrix();
-
+	
 }
 
 

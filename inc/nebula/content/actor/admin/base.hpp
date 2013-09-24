@@ -3,6 +3,9 @@
 
 #include <boost/shared_ptr.hpp>
 
+#include <jess/shared_ptr.hpp>
+#include <jess/map.hpp>
+
 #include <nebula/utilities/types/platform/types.hpp>
 #include <nebula/utilities/types/content/actor/types.hpp>
 #include <nebula/utilities/types/content/scene/types.hpp>
@@ -54,6 +57,14 @@ namespace nebula
 					
 					/// create shapes
 					virtual	void								create_shape();
+
+
+					/// physics
+					jess::shared_ptr<nebula::content::actor::physics::rigid_actor>		physics_;
+
+					/// materials
+					jess::map<nebula::content::actor::admin::material>			materials_;
+
 				};
 			}
 		}

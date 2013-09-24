@@ -50,7 +50,7 @@ namespace nebula
 					
 					
 					/// px actor
-					::physx::PxActor*							px_actor_;
+					boost::shared_ptr< ::physx::PxActor>					px_actor_;
 				};
 			}
 			}
