@@ -1,6 +1,11 @@
 #ifndef __NEBULA_CONTENT_SHAPE_RENDERER_BASE_HPP__
 #define __NEBULA_CONTENT_SHAPE_RENDERER_BASE_HPP__
 
+#include <boost/weak_ptr.hpp>
+
+#include <nebula/utilities/types/platform/types.hpp>
+#include <nebula/utilities/types/content/shape/types.hpp>
+
 namespace nebula
 {
 	namespace content
@@ -12,7 +17,19 @@ namespace nebula
 				class base
 				{
 				public:
-					void							render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					base();
+					virtual ~base();
+					
+					virtual void								init(const boost::shared_ptr<nebula::content::shape::admin::base>&);
+
+					virtual void								shutdown();
+					
+
+
+					virtual void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					
+					/// parent
+					boost::weak_ptr<nebula::content::shape::admin::base>			parent_;
 				};
 			}
 		}
@@ -20,4 +37,12 @@ namespace nebula
 }
 
 #endif
+
+
+
+
+
+
+
+
 

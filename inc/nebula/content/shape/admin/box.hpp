@@ -13,11 +13,15 @@ namespace nebula
 		{
 			namespace admin
 			{
-				class box: public nebula::content::shape::admin::base, public boost::enable_shared_from_this<box>
+				class box:
+					public nebula::content::shape::admin::base,
+					public boost::enable_shared_from_this<box>
 				{
 					void								init(const boost::shared_ptr<nebula::content::actor::admin::rigid_actor>&);
 					void								shutdown();
 					void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+				
+
 					
 					FLOAT								x_;
 					FLOAT								y_;

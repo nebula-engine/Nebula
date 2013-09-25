@@ -17,9 +17,15 @@ namespace nebula
 				*/
 				class base
 				{
+				public:
 					/// ctor
 					base();
 					~base();
+					
+					/// shutdown
+					virtual void									shutdown();
+					/// update
+					virtual void									update();
 				};
 			}
 		}

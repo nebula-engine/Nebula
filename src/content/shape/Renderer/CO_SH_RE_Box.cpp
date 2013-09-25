@@ -19,6 +19,10 @@ namespace ncs = nebula::content::shape;
 namespace ncsr = ncs::renderer;
 
 
+#ifndef TEST_1
+#error "header error!"
+#endif
+
 ncsr::box::box()
 {
 
@@ -37,9 +41,10 @@ void	ncsr::box::shutdown()
 }
 void	ncsr::box::render(const boost::shared_ptr<nebula::platform::renderer::base>& rnd)
 {
+	boost::shared_ptr<ncs::admin::box> parent = boost::dynamic_pointer_cast<ncs::admin::box>( parent_.lock() );
+	
 	jess::assertion( bool(rnd) ); // throw Except("renderer is null");
 	
-	boost::shared_ptr<ncs::admin::box> parent = parent_.lock();
 	
 	jess::assertion( bool(parent) ); // throw Except("m_co_sh_ad_box is null");
 
@@ -51,17 +56,12 @@ void	ncsr::box::render(const boost::shared_ptr<nebula::platform::renderer::base>
 	// store transform
 	bnu::matrix<FLOAT> pose = grandparent->get_pose();
 	
-
-	renderer->VPushMatrix();
-
-	renderer->VMultMatrix( pose );
 	
-	renderer->VScale( parent_->get_scale() );
-	
-	renderer->VDrawCube();
-	
-	renderer->VPopMatrix();
-	
+	rnd->push_matrix();
+	rnd->mult_matrix( pose );
+	rnd->scale( parent->get_scale() );
+	rnd->draw_cube();
+	rnd->pop_matrix();
 }
 
 

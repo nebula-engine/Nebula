@@ -3,14 +3,17 @@
 
 #include <memory>
 
-#include <utilities/Types/Utilities.h>
+#include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 
-#include <content/Content.h>
+#include <nebula/utilities/types/content/types.hpp>
 
-using namespace std;
-
-namespace Content {
-	namespace Physics {
+namespace nebula
+{
+namespace content
+{
+	namespace physics
+	{
 		/// physics for app
 		/*
 		* -custom functionality
@@ -35,14 +38,15 @@ namespace Content {
 		* 
 		* 
 		*/
-		class Physics {
+		class base
+		{
 		public:
 			///@name Constructors and Destructors
 			///@{
 			/// Constructor
-										Physics() {};
+			base();
 			/// Destructor
-										~Physics() {};
+			~base();
 			///@}
 
 			
@@ -50,35 +54,38 @@ namespace Content {
 			///@name standard functions
 			///@{
 			/// initialize
-			virtual	void				VInit( Void* data );
+			virtual	void				init(const boost::shared_ptr<nebula::content::base>&);
 			/// shutdown
-			virtual	void				VShutDown();
+			virtual	void				shutdown();
 			///@}
 
 
 
 			
 
-
+/*
 			///@name Register objects
 			///@{
 			/// %CO_SC_AD_Scene
-			virtual void				RegisterScene( CO_SC_AD_Scene* scene );
+			virtual void				RegisterScene(nebula::content CO_SC_AD_Scene* scene );
 			/// %Controller
 			virtual	void				RegisterController( CO_AC_AD_Controller*& controller, CO_SC_AD_Scene* scene );
 			/// %RigidDynamic
 			virtual	void				RegisterRigidDynamic( CO_AC_AD_RigidDynamic* rigidDynamic );
 			///@}
 
-
+*/
 
 		protected:
-			/// centent
-					::Content::Content*	m_parent;
+			/// parent
+			boost::weak_ptr<nebula::content::base>					parent_;
+			
+			
+			
 		};
-	};
-};
-
+	}
+}
+}
 
 #endif
 

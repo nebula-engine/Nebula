@@ -1,34 +1,42 @@
+#include <nebula/content/scene/physics/base.hpp>
 
-#include <content/Scene/Physics/CO_SC_PH_Scene.h>
+namespace nc_sc = nebula::content::scene;
+namespace nc_sc_p = nc_sc::physics;
 
 
-
-
-					CO_SC_PH_Scene::Scene() {
+nc_sc_p::base::base()
+{
+	
 }
-					CO_SC_PH_Scene::Scene( const CO_SC_PH_Scene& physicsScene ) {
-	printf("Copy Constructor------");
+nc_sc_p::base::base(const nc_sc_p::base& cpy)
+{
+	//printf("Copy Constructor------");
 }
-					CO_SC_PH_Scene::~Scene() {
-
+nc_sc_p::base::~base()
+{
+	
 }
-CO_SC_PH_Scene&		CO_SC_PH_Scene::operator=( const CO_SC_PH_Scene& physicsScene ) {
+nc_sc_p::base&		CO_SC_PH_Scene::operator=( const CO_SC_PH_Scene& physicsScene )
+{
 	return *this;
 }
-void				CO_SC_PH_Scene::VInit( Void* data ) {
+void				nc_sc_p::base::VInit( Void* data ) {
 
 }
-void				CO_SC_PH_Scene::VUpdate() {
+void				nc_sc_p::base::VUpdate() {
 
 }
-void				CO_SC_PH_Scene::VStep( Void* data ) {
-
+void				nc_sc_p::base::VStep( Void* data )
+{
+	
 }
-void				CO_SC_PH_Scene::VRender( Void* data ) {
-
+void				nc_sc_p::base::VRender( Void* data )
+{
+	
 }
-void				CO_SC_PH_Scene::AddActor( CO_AC_AD_ActorBase* actor ) {
-
+void				nc_sc_p::base::AddActor( CO_AC_AD_ActorBase* actor )
+{
+	
 }
 
 

@@ -24,7 +24,6 @@ namespace nebula
 					void								shutdown();
 					void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 					
-					boost::weak_ptr<nebula::content::shape::admin::box>		parent_;
 				};
 			}
 		}

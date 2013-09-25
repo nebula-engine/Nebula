@@ -1,18 +1,24 @@
-#include <content/Shape/Renderer/CO_SH_RE_Shape.h>
+#include <nebula/content/shape/renderer/base.hpp>
 
+namespace ncs = nebula::content::shape;
+namespace ncsr = ncs::renderer;
 
-		CO_SH_RE_Shape::Shape() {
+ncsr::base::base()
+{
 }
-		CO_SH_RE_Shape::~Shape() {
+ncsr::base::~base()
+{
 }
+void	ncsr::base::init(const boost::shared_ptr<ncs::admin::base>&)
+{
 	
-void	CO_SH_RE_Shape::VInit(Void* v) {
+}
+void	ncsr::base::shutdown()
+{
 	
 }
-void	CO_SH_RE_Shape::VShutDown() {
-	
-}
-void	CO_SH_RE_Shape::VRender(Void* v) {
+void	ncsr::base::render(const boost::shared_ptr<nebula::platform::renderer::base>&)
+{
 	
 }
 

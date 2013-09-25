@@ -20,7 +20,18 @@ namespace nebula
 				/// cube
 				void							draw_cube();
 				///}
-				
+			
+/// push_matrix
+void		push_matrix();
+/// pop_matrix
+void		pop_matrix();
+/// swap
+void		swap();
+/// mult_matrix
+void		mult_matrix(const bnu::matrix<FLOAT>&);
+/// scale
+void		scale(const bnu::vector<FLOAT>&);
+	
 				/// lookat
 				void							lookat(bnu::vector<FLOAT>,bnu::vector<FLOAT>,bnu::vector<FLOAT>);
 				

@@ -1,3 +1,4 @@
+#include <boost/bind.hpp>
 
 #include <nebula/content/physics/base.hpp>
 #include <nebula/content/universe/admin/base.hpp>
@@ -7,8 +8,8 @@
 
 #include <nebula/content/base.hpp>
 
-namespace nebula;
-
+namespace ncp = nebula::content::physics;
+namespace ncu = nebula::content::universe;
 
 nebula::content::base::base()
 {
@@ -18,26 +19,26 @@ nebula::content::base::~base()
 {
 	
 }
-void	nebula::content::base:register_universe(const boost::shared_ptr<nebula::content::universe::admin::base>& uni)
+void	nebula::content::base::register_universe(const boost::shared_ptr<ncu::admin::base>& uni)
 {
 	
 }
-void	nebula::content::base::init(const boost::shared_ptr<nebula::framework:app>& parent)
+void	nebula::content::base::init(const boost::shared_ptr<nebula::framework::app>& parent)
 {
 	parent_ = parent;
 
-	physics_.create(boost::bind(nebula::content::physics::base::init,_1,boost::shared_from_this()));
-
+	physics_.create<ncp::base>(boost::bind(&ncp::base::init,_1,shared_from_this()));
+	
 }
 void	nebula::content::base::update()
 {
-	m_universe.For( &CO_UN_AD_Universe::VUpdate );
+	universes_.foreach(boost::bind(&ncu::admin::base::update,_1));
 }
-
 void	nebula::content::base::shutdown()
 {
-	m_universe.For( &CO_UN_AD_Universe::VShutDown );
-	m_universe.Clear();
+	universes_.foreach(boost::bind(&ncu::admin::base::shutdown,_1));
+
+	universes_.clear();
 }
 
 

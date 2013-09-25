@@ -2,6 +2,7 @@
 #define __NEBULA_CONTENT_ACTOR_ADMIN_BASE_HPP__
 
 #include <boost/shared_ptr.hpp>
+#include <boost/numeric/ublas/matrix.hpp>
 
 #include <jess/shared_ptr.hpp>
 #include <jess/map.hpp>
@@ -57,16 +58,22 @@ namespace nebula
 					
 					/// create shapes
 					virtual	void								create_shape();
-
-
+					
+					/// get pose
+					boost::numeric::ublas::matrix<FLOAT>					get_pose();
+					
+					
 					/// physics
 					jess::shared_ptr<nebula::content::actor::physics::rigid_actor>		physics_;
-
+					
 					/// materials
 					jess::map<nebula::content::actor::admin::material>			materials_;
-
+					
 					/// flag
 					int									flag_;
+					
+					/// pose
+					boost::numeric::ublas::matrix<FLOAT>					pose_;
 				};
 			}
 		}
