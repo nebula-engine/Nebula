@@ -1,7 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_ADMIN_CONTROLLER_HPP__
 #define __NEBULA_CONTENT_ACTOR_ADMIN_CONTROLLER_HPP__
 
-
+#include <boost/numeric/ublas/vector.hpp>
 
 #include <nebula/content/actor/admin/base.hpp>
 
@@ -18,6 +18,19 @@ namespace nebula
 					public nebula::content::actor::admin::base
 				{
 				public:
+					/// flag
+					struct flag
+					{
+						/// enum
+						enum e
+						{
+							eNORTH,
+							eSOUTH,
+							eEAST,
+							eWEST
+						};
+					};
+					
 					///@name ctor and dtor
 					///@{
 					// Ctor
@@ -55,6 +68,12 @@ namespace nebula
 	
 					/// lookat
 					virtual void								lookat(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					
+					/// get move
+					boost::numeric::ublas::vector<FLOAT>					get_move();
+					
+					/// move
+					boost::numeric::ublas::vector<FLOAT>					move_;
 				};
 			}
 		}

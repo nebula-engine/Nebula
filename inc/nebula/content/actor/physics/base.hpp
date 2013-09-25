@@ -1,6 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
 
+#include <boost/weak_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 
 #include <nebula/utilities/types/content/actor/types.hpp>
@@ -49,12 +50,16 @@ namespace nebula
 
 						/// create shapes
 						virtual	void								create_shape();
+
+
+						/// parent
+						boost::weak_ptr<nebula::content::actor::admin::base>			parent_;
 				};
 			}
 		}
 	}
 }
-
+	
 
 #endif
 

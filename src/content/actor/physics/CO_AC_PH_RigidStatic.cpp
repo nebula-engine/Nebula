@@ -1,21 +1,27 @@
-#include <content/Actor/Physics/CO_AC_PH_RigidStatic.h>
+#include <nebula/content/actor/physics/rigid_static.hpp>
 
+namespace nca = nebula::content::actor;
 
-
-		Content::Actor::Physics::RigidStatic::RigidStatic() {
+nca::physics::rigid_static::rigid_static()
+{
 }
-		Content::Actor::Physics::RigidStatic::~RigidStatic() {
+nca::physics::rigid_static::~rigid_static()
+{
 }
-void	Content::Actor::Physics::RigidStatic::VInit( Void* data ) {
+void	nca::physics::rigid_static::init(const boost::shared_ptr<nca::admin::base>& parent)
+{
 	
 }
-void	Content::Actor::Physics::RigidStatic::VShutDown() {
+void	nca::physics::rigid_static::shutdown()
+{
 	
 }
-void	Content::Actor::Physics::RigidStatic::VUpdate() {
+void	nca::physics::rigid_static::update()
+{
 	
 }
-void	Content::Actor::Physics::RigidStatic::VStep( Void* data ) {
+void	nca::physics::rigid_static::step(FLOAT dt)
+{
 	
 }
 

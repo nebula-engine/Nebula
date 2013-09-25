@@ -37,7 +37,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::actor::admin::actor>&);
+					virtual	void								init(const boost::shared_ptr<nebula::content::actor::admin::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

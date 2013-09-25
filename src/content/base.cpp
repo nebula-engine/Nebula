@@ -5,7 +5,10 @@
 
 
 
-#include <content/Content.h>
+#include <nebula/content/base.hpp>
+
+namespace nebula;
+
 
 nebula::content::base::base()
 {
@@ -23,9 +26,8 @@ void	nebula::content::base::init(const boost::shared_ptr<nebula::framework:app>&
 {
 	parent_ = parent;
 
-	physics_.create(
+	physics_.create(boost::bind(nebula::content::physics::base::init,_1,boost::shared_from_this()));
 
-	m_physics->VInit( data );
 }
 void	nebula::content::base::update()
 {

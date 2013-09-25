@@ -1,20 +1,29 @@
-#include <content/Actor/Physics/CO_AC_PH_RigidBody.h>
+#include <nebula/content/actor/physics/rigid_body.hpp>
 
+namespace nca = nebula::content::actor;
 
-		Content::Actor::Physics::RigidBody::RigidBody() {
+nca::physics::rigid_body::rigid_body()
+{
+
 }
-		Content::Actor::Physics::RigidBody::~RigidBody() {
+nca::physics::rigid_body::~rigid_body()
+{
+
 }
-void	Content::Actor::Physics::RigidBody::VInit( Void* data ) {
+void	nca::physics::rigid_body::init(const boost::shared_ptr<nca::admin::base>& parent)
+{
+	nca::physics::rigid_actor::init(parent);
+}
+void	nca::physics::rigid_body::shutdown()
+{
 	
 }
-void	Content::Actor::Physics::RigidBody::VShutDown() {
+void	nca::physics::rigid_body::update()
+{
 	
 }
-void	Content::Actor::Physics::RigidBody::VUpdate() {
-	
-}
-void	Content::Actor::Physics::RigidBody::VStep( Void* data ) {
+void	nca::physics::rigid_body::step(FLOAT dt)
+{
 	
 }
 

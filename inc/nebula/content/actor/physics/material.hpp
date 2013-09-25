@@ -14,7 +14,7 @@ namespace nebula
 				{
 				public:
 					material();
-					
+					virtual void						init(const boost::shared_ptr<nebula::content::actor::admin::material>&);
 					virtual void						shutdown();
 				};
 			}

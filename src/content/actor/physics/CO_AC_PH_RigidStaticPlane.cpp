@@ -1,20 +1,25 @@
-#include <content/Actor/Physics/CO_AC_PH_RigidStaticPlane.h>
+#include <nebula/content/actor/physics/rigid_static_plane.hpp>
 
 
+namespace nca = nebula::content::actor;
 
-
-		Content::Actor::Physics::RigidStaticPlane::~RigidStaticPlane() {
+nca::physics::rigid_static_plane::~rigid_static_plane()
+{
 }
-void	Content::Actor::Physics::RigidStaticPlane::VInit( Void* data ) {
-	CO_AC_PH_RigidStatic::VInit(data);
+void	nca::physics::rigid_static_plane::init(const boost::shared_ptr<nca::admin::base>& parent)
+{
+	nca::physics::rigid_static::init(parent);
 }
-void	Content::Actor::Physics::RigidStaticPlane::VShutDown() {
+void	nca::physics::rigid_static_plane::shutdown()
+{
 	
 }
-void	Content::Actor::Physics::RigidStaticPlane::VUpdate() {
+void	nca::physics::rigid_static_plane::update()
+{
 	
 }
-void	Content::Actor::Physics::RigidStaticPlane::VStep( Void* data ) {
+void	nca::physics::rigid_static_plane::step(FLOAT dt)
+{
 	
 }
 

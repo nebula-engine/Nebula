@@ -1,9 +1,9 @@
-#ifndef __NEBULA_CONTENT_ACTOR_ADMIN_rigid_static_plane_HPP__
-#define __NEBULA_CONTENT_ACTOR_ADMIN_rigid_static_plane_HPP__
+#ifndef __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_STATIC_PLANE_HPP__
+#define __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_STATIC_PLANE_HPP__
 
 
 
-#include <nebula/content/actor/admin/rigid_static_plane.h>
+#include <nebula/content/actor/admin/rigid_static.hpp>
 
 
 
@@ -15,7 +15,7 @@ namespace nebula
 		{
 			namespace admin
 			{
-				/// rigid dynamic
+				/// rigid_static_plane
 				class rigid_static_plane:
 					public nebula::content::actor::admin::rigid_static
 				{

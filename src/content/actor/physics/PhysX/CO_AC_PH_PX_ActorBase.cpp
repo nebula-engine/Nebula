@@ -1,22 +1,15 @@
-#include <utilities/Types/Utilities.h>
+#include <nebula/content/actor/physics/physx/base.hpp>
 
-#include <content/Actor/Physics/CO_AC_PH_ActorBase.h>
+namespace nca = nebula::content::actor;
 
-
-
-
-
-
-
-#include <content/Actor/Physics/PhysX/CO_AC_PH_PX_ActorBase.h>
-
-
-		Content::Actor::Physics::PhysX::ActorBase::ActorBase() {
+nca::physics::physx::base::base()
+{
 }
-		Content::Actor::Physics::PhysX::ActorBase::~ActorBase() {
+nca::physics::physx::base::~base()
+{
 }
-
-void	Content::Actor::Physics::PhysX::ActorBase::VStep( Void* data ) {
+void	nca::physics::physx::base::step(FLOAT dt)
+{
 	
 }
 

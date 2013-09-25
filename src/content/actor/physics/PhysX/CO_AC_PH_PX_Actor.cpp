@@ -1,24 +1,18 @@
+#include <nebula/content/actor/physics/physX/actor.hpp>
 
 
-
-
-
-#include <content/Actor/Physics/PhysX/CO_AC_PH_PX_Actor.h>
-
-
-		Content::Actor::Physics::PhysX::Actor::Actor() {
+nca::physics::physx::actor::actor() {
 }
-		Content::Actor::Physics::PhysX::Actor::~Actor() {
+nca::physics::physx::actor::~actor() {
 }
-
-void	Content::Actor::Physics::PhysX::Actor::VStep( Void* data ) {
+void	nca::physics::physx::actor::step(FLOAT dt) {
 	
 }
-void	Content::Actor::Physics::PhysX::Actor::SetActor( physx::PxActor* actor ) {
-	m_pxActor = actor;
+void	nca::physics::physx::actor::set_px_actor( ::physx::PxActor* actor )
+{
+	px_actor_ = actor;
 	
-	m_pxActor->userData = this;
-	
+	px_actor_->userData = this;
 }
 
 

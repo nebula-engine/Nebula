@@ -1,8 +1,10 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_BASE_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_BASE_HPP__
 
+#include <boost/shared_ptr.hpp>
 
-
+#include <nebula/utilities/types/platform/types.hpp>
+#include <nebula/utilities/types/content/actor/types.hpp>
 
 namespace nebula
 {
@@ -37,13 +39,13 @@ namespace nebula
 
 
 							/// init
-							virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+							virtual	void								init(const boost::shared_ptr<nebula::content::actor::admin::base>&);
 							/// shutdown
 							virtual	void								shutdown();
 							/// update
 							virtual	void								update();
 							/// step
-							virtual	void								step();
+							virtual	void								step(FLOAT);
 							/// render
 							virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 

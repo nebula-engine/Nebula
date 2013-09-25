@@ -1,11 +1,7 @@
-#ifndef __NEBULA_CONTENT_ACTOR_ADMIN_rigid_static_plane_HPP__
-#define __NEBULA_CONTENT_ACTOR_ADMIN_rigid_static_plane_HPP__
+#ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_STATIC_PLANE_HPP__
+#define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_STATIC_PLANE_HPP__
 
-
-
-#include <nebula/content/actor/admin/rigid_static_plane.h>
-
-
+#include <nebula/content/actor/physics/rigid_static.hpp>
 
 namespace nebula
 {
@@ -13,11 +9,11 @@ namespace nebula
 	{
 		namespace actor
 		{
-			namespace admin
+			namespace physics
 			{
 				/// rigid dynamic
 				class rigid_static_plane:
-					public nebula::content::actor::admin::rigid_static
+					public nebula::content::actor::physics::rigid_static
 				{
 				public:
 					///@name ctor and dtor
@@ -39,13 +35,13 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init(const boost::shared_ptr<nebula::content::actor::admin::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step();
+					virtual	void								step(FLOAT);
 					/// render
 					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				

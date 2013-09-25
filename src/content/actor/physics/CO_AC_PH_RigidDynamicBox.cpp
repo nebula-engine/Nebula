@@ -1,23 +1,27 @@
-#include <content/Actor/Physics/CO_AC_PH_RigidDynamicBox.h>
+#include <nebula/content/actor/physics/rigid_dynamic_box.hpp>
 
+namespace nca = nebula::content::actor;
 
-
-		CO_AC_PH_RigidDynamicBox::RigidDynamicBox() {
+nca::physics::rigid_dynamic_box::rigid_dynamic_box()
+{
 }
-		CO_AC_PH_RigidDynamicBox::~RigidDynamicBox() {
+nca::physics::rigid_dynamic_box::~rigid_dynamic_box()
+{
 }
-
-void	CO_AC_PH_RigidDynamicBox::VInit( Void* v ) {
-	PRINTSIG;
-	CO_AC_PH_RigidDynamic::VInit( v );
+void	nca::physics::rigid_dynamic_box::init(const boost::shared_ptr<nca::admin::base>& parent)
+{
+	nca::physics::rigid_dynamic::init(parent);
 }
-void	CO_AC_PH_RigidDynamicBox::VShutDown() {
+void	nca::physics::rigid_dynamic_box::shutdown()
+{
 	
 }
-void	CO_AC_PH_RigidDynamicBox::VUpdate() {
+void	nca::physics::rigid_dynamic_box::update()
+{
 	
 }
-void	CO_AC_PH_RigidDynamicBox::VStep( Void* data ) {
+void	nca::physics::rigid_dynamic_box::step(FLOAT)
+{
 	
 }
 

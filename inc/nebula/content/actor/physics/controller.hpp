@@ -43,10 +43,10 @@ namespace nebula
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step();
+					virtual	void								step(FLOAT);
 				
-				
-				
+					virtual void								update_move();
+					
 				
 				};
 			}

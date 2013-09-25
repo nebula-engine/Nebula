@@ -7,15 +7,15 @@
 
 namespace nebula
 {
-	namespace Content
+	namespace content
 	{
-		namespace Actor
+		namespace actor
 		{
-			namespace Admin
+			namespace admin
 			{
 				/// rigid static
 				class rigid_static:
-					public rigid_actor
+					public nebula::content::actor::admin::rigid_actor
 				{
 				public:
 					/// ctor
@@ -30,7 +30,7 @@ namespace nebula
 					/// Update
 					virtual	void						update();
 					/// Render
-					virtual	void						render(const boost::shared_ptr<>&);
+					virtual	void						render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 					/// Step
 					virtual	void						step();
 					

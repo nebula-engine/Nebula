@@ -1,9 +1,8 @@
-#ifndef __NEBULA_CONTENT_ACTOR_ADMIN_CONTROLLER_HPP__
-#define __NEBULA_CONTENT_ACTOR_ADMIN_CONTROLLER_HPP__
+#ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_CONTROLLER_HPP__
+#define __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_CONTROLLER_HPP__
 
-
-
-#include <nebula/content/actor/admin/base.h>
+#include <nebula/content/actor/physics/controller.hpp>
+#include <nebula/content/actor/physics/physx/base.hpp>
 
 namespace nebula
 {
@@ -11,11 +10,14 @@ namespace nebula
 	{
 		namespace actor
 		{
-			namespace admin
+			namespace physics
+			{
+			namespace physx
 			{
 				/// controller
 				class controller:
-					public nebula::content::actor::admin::base
+					public nebula::content::actor::physics::controller,
+					public nebula::content::actor::physics::physx::base
 				{
 				public:
 					///@name ctor and dtor
@@ -43,7 +45,7 @@ namespace nebula
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step();
+					virtual	void								step(FLOAT);
 					/// render
 					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				
@@ -56,6 +58,7 @@ namespace nebula
 			}
 		}
 	}
+}
 }
 
 #endif

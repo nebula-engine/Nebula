@@ -1,20 +1,27 @@
-#include <content/Actor/Physics/CO_AC_PH_RigidDynamic.h>
+#include <nebula/content/actor/physics/rigid_dynamic.hpp>
 
+namespace nca = nebula::content::actor;
 
-		Content::Actor::Physics::RigidDynamic::RigidDynamic() {
+nca::physics::rigid_dynamic::rigid_dynamic()
+{
 }
-		Content::Actor::Physics::RigidDynamic::~RigidDynamic() {
+nca::physics::rigid_dynamic::~rigid_dynamic()
+{
 }
-void	Content::Actor::Physics::RigidDynamic::VInit( Void* v ) {
+void	nca::physics::rigid_dynamic::init(const boost::shared_ptr<nca::admin::base>&)
+{
 	
 }
-void	Content::Actor::Physics::RigidDynamic::VShutDown() {
+void	nca::physics::rigid_dynamic::shutdown()
+{
 	
 }
-void	Content::Actor::Physics::RigidDynamic::VUpdate() {
+void	nca::physics::rigid_dynamic::update()
+{
 	
 }
-void	Content::Actor::Physics::RigidDynamic::VStep( Void* data ) {
+void	nca::physics::rigid_dynamic::step(FLOAT)
+{
 
 }
 

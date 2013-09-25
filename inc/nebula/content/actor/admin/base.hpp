@@ -65,6 +65,8 @@ namespace nebula
 					/// materials
 					jess::map<nebula::content::actor::admin::material>			materials_;
 
+					/// flag
+					int									flag_;
 				};
 			}
 		}
