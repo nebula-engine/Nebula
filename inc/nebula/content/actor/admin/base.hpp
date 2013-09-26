@@ -61,7 +61,9 @@ namespace nebula
 					
 					/// get pose
 					boost::numeric::ublas::matrix<FLOAT>					get_pose();
-					
+					/// set pose
+					void									set_pose(boost::numeric::ublas::matrix<FLOAT>);
+
 					
 					/// physics
 					jess::shared_ptr<nebula::content::actor::physics::rigid_actor>		physics_;

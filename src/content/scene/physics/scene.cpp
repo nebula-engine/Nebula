@@ -2,7 +2,7 @@
 
 namespace nc_sc = nebula::content::scene;
 namespace nc_sc_p = nc_sc::physics;
-
+namespace nc_sc_a = nc_sc::admin;
 
 nc_sc_p::base::base()
 {
@@ -16,25 +16,22 @@ nc_sc_p::base::~base()
 {
 	
 }
-nc_sc_p::base&		CO_SC_PH_Scene::operator=( const CO_SC_PH_Scene& physicsScene )
+nc_sc_p::base&			nc_sc_p::base::operator=(const nc_sc_p::base& cpy)
 {
 	return *this;
 }
-void				nc_sc_p::base::VInit( Void* data ) {
+void				nc_sc_p::base::init(const boost::shared_ptr<nc_sc_a::base>&)
+{
 
 }
-void				nc_sc_p::base::VUpdate() {
+void				nc_sc_p::base::update() {
 
 }
-void				nc_sc_p::base::VStep( Void* data )
+void				nc_sc_p::base::step(FLOAT dt)
 {
 	
 }
-void				nc_sc_p::base::VRender( Void* data )
-{
-	
-}
-void				nc_sc_p::base::AddActor( CO_AC_AD_ActorBase* actor )
+void				nc_sc_p::base::render(const boost::shared_ptr<nebula::platform::renderer::base>&)
 {
 	
 }

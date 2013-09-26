@@ -1,6 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_ACTOR_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_ACTOR_HPP__
 
+#include <nebula/content/actor/physics/actor.hpp>
 #include <nebula/content/actor/physics/physx/base.hpp>
 
 namespace nebula
@@ -15,7 +16,8 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class actor:
-					public nebula::content::actor::admin::base
+					public nebula::content::actor::physics::actor,
+					public nebula::content::actor::physics::physx::base
 				{
 				public:
 					///@name ctor and dtor
