@@ -17,8 +17,8 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class rigid_actor:
-					public nebula::content::actor::physics::physx::actor,
-					public nebula::content::actor::physics::rigid_actor
+					virtual public nebula::content::actor::physics::physx::actor,
+					virtual public nebula::content::actor::physics::rigid_actor
 				{
 				public:
 					///@name ctor and dtor
@@ -40,7 +40,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init(const boost::shared_ptr<nebula::content::actor::admin::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

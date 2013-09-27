@@ -6,6 +6,8 @@
 
 #include <nebula/utilities/types/content/actor/types.hpp>
 
+#include <nebula/ns.hpp>
+
 namespace nebula
 {
 	namespace content

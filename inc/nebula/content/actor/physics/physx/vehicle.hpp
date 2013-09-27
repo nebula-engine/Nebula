@@ -1,9 +1,9 @@
 #ifndef __NEBULA_CONTENT_ACTOR_ADMIN_VEHICLE_HPP__
 #define __NEBULA_CONTENT_ACTOR_ADMIN_VEHICLE_HPP__
 
+#include <boost/shared_ptr.hpp>
 
-
-#include <nebula/content/actor/admin/base.h>
+#include <nebula/content/actor/admin/base.hpp>
 
 namespace nebula
 {

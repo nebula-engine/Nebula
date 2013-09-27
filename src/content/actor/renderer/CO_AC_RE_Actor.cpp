@@ -1,24 +1,30 @@
-#include <content/Actor/Renderer/CO_AC_RE_Actor.h>
+#include <nebula/content/actor/renderer/actor.hpp>
 
-		CO_AC_RE_Actor::Actor() {
-}
-		CO_AC_RE_Actor::~Actor() {
-}
-
-
-
-void	CO_AC_RE_Actor::VInit( Void* data ){
+ncar::actor::Actor()
+{
 	
 }
-void	CO_AC_RE_Actor::VShutDown(){
+ncar::actor::~Actor()
+{
 	
 }
-void	CO_AC_RE_Actor::VUpdate(){
+void	ncar::actor::init(const boost::shared_ptr<ncaa::base>& parent)
+{
+	ncar::base::init( parent );
+}
+void	ncar::actor::shutdown(){
+
 	
 }
-void	CO_AC_RE_Actor::VRender( Void* data ) {
+void	ncar::actor::update()
+{
 	
 }
-void	CO_AC_RE_Actor::VStep( Void* data ){
+void	ncar::actor::render(const boost::shared_ptr<npr::base>& rnd)
+{
+	
+}
+void	ncar::actor::step(FLOAT dt)
+{
 	
 }

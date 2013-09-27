@@ -1,14 +1,17 @@
-#include <content/Actor/Physics/PhysX/CO_AC_PH_PX_RigidStatic.h>
+#include <jess/free.hpp>
 
+#include <nebula/content/actor/physics/physx/rigid_static.hpp>
 
+#include <nebula/ns.hpp>
 
-void	CO_AC_PH_PX_RigidStatic::VInit( Void* data ) {
-	PRINTSIG;
-	CO_AC_PH_PX_RigidActor::VInit( data );
+void	ncapp::rigid_static::init(const boost::shared_ptr<ncaa::base>& parent)
+{
 	
-	if (!m_pxActor) 
+	ncapp::rigid_actor::init(parent);
 	
-	m_pxRigidStatic = (physx::PxRigidStatic*)m_pxActor;
+	jess::assertion( px_actor_ ); 
+	
+	//_pxRigidStatic = (physx::PxRigidStatic*)m_pxActor;
 	
 	//VCreateShape();
 }

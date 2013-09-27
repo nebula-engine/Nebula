@@ -1,8 +1,12 @@
 #ifndef __NEBULA_CONTENT_ACTOR_RENDERER_BASE_HPP__
 #define __NEBULA_CONTENT_ACTOR_RENDERER_BASE_HPP__
 
+#include <boost/shared_ptr.hpp>
 
+#include <nebula/utilities/types/platform/types.hpp>
+#include <nebula/utilities/types/content/actor/types.hpp>
 
+#include <nebula/ns.hpp>
 
 namespace nebula
 {
@@ -12,31 +16,30 @@ namespace content
 	{
 		namespace renderer
 		{
-			/// rigid dynamic
-			class base:
-				public nebula::content::actor::admin::rigid_body
+			/// base
+			class base
 			{
 			public:
 				///@name ctor and dtor
 				///@{
 				// Ctor
-				rigid_body();
+				base();
 				/// Copy Ctor
-				rigid_body(const rigid_body&);
+				base(const base&);
 				/// Dtor
-				~rigid_body();
+				~base();
 				///@}
 
 				///@name operator
 				///@{
 				/// assignment
-				rigid_body&								operator=(const rigid_body&);
+				base&									operator=(const base&);
 				///@}
 
 				
 
 				/// init
-				virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+				virtual	void								init(const boost::shared_ptr<ncaa::base>&);
 				/// shutdown
 				virtual	void								shutdown();
 				/// update
@@ -44,7 +47,7 @@ namespace content
 				/// step
 				virtual	void								step();
 				/// render
-				virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+				virtual	void								render(const boost::shared_ptr<npr::base>&);
 				
 				
 				

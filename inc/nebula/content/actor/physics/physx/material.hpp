@@ -1,6 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_MATERIAL_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_MATERIAL_HPP__
 
+#include <PxPhysicsAPI.h>
 
 #include <nebula/content/actor/physics/material.hpp>
 
@@ -18,6 +19,7 @@ namespace nebula
 						public nebula::content::actor::physics::material
 					{
 					public:
+						material();
 						boost::shared_ptr< ::physx::PxMaterial>				px_material_;
 					};
 				}

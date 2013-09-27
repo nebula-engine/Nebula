@@ -54,6 +54,10 @@ namespace nebula
 				
 					/// create shapes
 					virtual	void								create_shape();
+
+
+					/// PxController
+					::physx::PxController*							px_controller_;
 				};
 			}
 		}

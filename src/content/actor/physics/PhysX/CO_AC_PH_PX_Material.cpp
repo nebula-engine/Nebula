@@ -1,18 +1,10 @@
+#include <nebula/content/actor/physics/physx/material.hpp>
 
-#include <utilities/Types/Utilities.h>
-
-#include <framework/FR_Mappable.h>
-
+#include <nebula/ns.hpp>
 
 
-
-
-
-
-#include <content/Actor/Physics/PhysX/CO_AC_PH_PX_Material.h>
-
-
-	CO_AC_PH_PX_Material::Material() {
+ncapp::material::material()
+{
 
 }
 

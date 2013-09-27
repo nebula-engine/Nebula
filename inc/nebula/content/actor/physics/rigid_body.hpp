@@ -1,9 +1,11 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_BODY_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_BODY_HPP__
 
-
+#include <boost/numeric/ublas/vector.hpp>
 
 #include <nebula/content/actor/physics/rigid_actor.hpp>
+
+namespace bnu = boost::numeric::ublas;
 
 namespace nebula
 {
@@ -48,7 +50,8 @@ namespace nebula
 					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				
 				
-				
+					FLOAT									density_;
+					bnu::vector<FLOAT>							velocity_;
 				
 					
 				};

@@ -17,7 +17,7 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class rigid_actor:
-					public nebula::content::actor::physics::actor
+					virtual public nebula::content::actor::physics::actor
 				{
 				public:
 					///@name ctor and dtor

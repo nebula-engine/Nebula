@@ -1,6 +1,9 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_MATERIAL_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_MATERIAL_HPP__
 
+#include <boost/shared_ptr.hpp>
+
+#include <nebula/utilities/types/content/actor/types.hpp>
 
 namespace nebula
 {

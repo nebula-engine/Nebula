@@ -5,14 +5,14 @@ root      := $(shell expr $(here) : '\(.*$(rootname)\)')
 
 
 hpaths    := 
-hpaths    += $(root)external/PhysX-3.2.4_LINUX_SDK_Core/Include
+hpaths    += $(root)external/PhysX/Include
 hpaths    += $(root)external/glew/include
 hpaths    += $(root)jess/inc
 
 lpaths    := 
 lpaths    += $(root)jess/lib/lin64/
 lpaths    += $(root)external/glew/lib
-lpaths    += $(root)external/PhysX-3.2.4_LINUX_SDK_Core/Lib/linux64
+lpaths    += $(root)external/PhysX/Lib/linux64
 
 defines   := 
 defines   += FLOAT=float

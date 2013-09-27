@@ -3,6 +3,12 @@
 
 namespace nebula
 {
+	namespace platform
+	{
+		namespace renderer
+		{}
+	}
+
 	namespace content
 	{
 		namespace physics
@@ -41,13 +47,17 @@ namespace nebula
 	}
 }
 
+namespace npr		= nebula::platform::renderer;
 
 namespace ncp		= nebula::content::physics;
 namespace ncpp		= nebula::content::physics::physx;
+
 namespace nca		= nebula::content::actor;
-namespace ncaa		= nca::admin;
+namespace ncaa		= nebula::content::actor::admin;
 namespace ncap		= nca::physics;
 namespace ncapp		= ncap::physx;
+namespace ncar		= nebula::content::actor::renderer;
+
 namespace nc_sc		= nebula::content::scene;
 namespace nc_sc_a	= nc_sc::admin;
 namespace nc_sc_p	= nc_sc::physics;

@@ -1,14 +1,18 @@
-#include <framework/FR_App.h>
-#include <content/Actor/Physics/PhysX/CO_AC_PH_PX_Material.h>
+#include <nebula/framework/app.hpp>
+#include <nebula/content/actor/physics/physx/material.hpp>
 
 
 
 
 
-#include <content/Actor/Physics/PhysX/CO_AC_PH_PX_RigidActor.h>
+#include <nebula/content/actor/physics/physx/rigid_actor.hpp>
 
+#include <nebula/ns.hpp>
 
-void	CO_AC_PH_PX_RigidActor::VInit( Void* data ) {
+void	ncapp::rigid_actor::init(const boost::shared_ptr<ncaa::base>& parent)
+{
+	parent_ = parent;
+
 	//physx::PxPhysics* physics = m_app->GetContent()->GetPhysics()->GetPxPhysics();
 
 	//physx::PxMaterial* material = 0;

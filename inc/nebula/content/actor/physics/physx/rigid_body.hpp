@@ -5,6 +5,8 @@
 #include <nebula/content/actor/physics/rigid_body.hpp>
 #include <nebula/content/actor/physics/physx/rigid_actor.hpp>
 
+#include <nebula/ns.hpp>
+
 namespace nebula
 {
 	namespace content
@@ -15,10 +17,10 @@ namespace nebula
 			{
 			namespace physx
 			{
-				/// rigid dynamic
+				/// rigid body
 				class rigid_body:
-					public nebula::content::actor::physics::physx::rigid_actor,
-					public nebula::content::actor::physics::rigid_body
+					virtual public ncapp::rigid_actor,
+					virtual public ncap::rigid_body
 				{
 				public:
 					///@name ctor and dtor
@@ -40,7 +42,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init(const boost::shared_ptr<ncaa::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -51,7 +53,8 @@ namespace nebula
 					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				
 							
-					
+					/// create shape
+					virtual void								create_shape();
 				};
 			}
 			}

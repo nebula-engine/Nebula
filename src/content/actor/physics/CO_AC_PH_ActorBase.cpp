@@ -1,13 +1,12 @@
 #include <nebula/content/actor/physics/base.hpp>
 
-namespace nca = nebula::content::actor;
 
 
 
-nca::physics::base::ActorBase()
+nca::physics::base::base()
 {
 }
-nca::physics::base::~ActorBase()
+nca::physics::base::~base()
 {
 }
 void	nca::physics::base::init(const boost::shared_ptr<nebula::content::actor::admin::base>& parent)
