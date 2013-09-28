@@ -7,6 +7,10 @@
 #include <jess/shared_ptr.hpp>
 
 #include <nebula/utilities/types/framework/types.hpp>
+#include <nebula/utilities/types/content/types.hpp>
+#include <nebula/utilities/types/content/universe/types.hpp>
+
+#include <nebula/ns.hpp>
 
 namespace nebula
 {
@@ -21,15 +25,15 @@ virtual ~base();
 virtual void							init(const boost::shared_ptr<nebula::framework::app>&);
 virtual void							shutdown();
 virtual void							update();
-
-virtual void							register_universe(const boost::shared_ptr<nebula::content::universe::admin::base>&);
+virtual void							register_universe(const boost::shared_ptr<ncua::base>&);
 
 
 
 /// physics
-jess::shared_ptr<nebula::content::physics::base>		physics_;
+jess::shared_ptr<ncp::base>					physics_;
 /// universes
-jess::map<nebula::content::universe::admin::base>		universes_;
+jess::map<ncua::base>						universes_;
+
 
 
 /// parent

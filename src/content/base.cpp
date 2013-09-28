@@ -8,8 +8,7 @@
 
 #include <nebula/content/base.hpp>
 
-namespace ncp = nebula::content::physics;
-namespace ncu = nebula::content::universe;
+#include <nebula/ns.hpp>
 
 nebula::content::base::base()
 {
@@ -19,7 +18,7 @@ nebula::content::base::~base()
 {
 	
 }
-void	nebula::content::base::register_universe(const boost::shared_ptr<ncu::admin::base>& uni)
+void	nebula::content::base::register_universe(const boost::shared_ptr<ncua::base>& uni)
 {
 	
 }
@@ -32,11 +31,11 @@ void	nebula::content::base::init(const boost::shared_ptr<nebula::framework::app>
 }
 void	nebula::content::base::update()
 {
-	universes_.foreach(boost::bind(&ncu::admin::base::update,_1));
+	universes_.foreach(boost::bind(&ncua::base::update,_1));
 }
 void	nebula::content::base::shutdown()
 {
-	universes_.foreach(boost::bind(&ncu::admin::base::shutdown,_1));
+	universes_.foreach(boost::bind(&ncua::base::shutdown,_1));
 
 	universes_.clear();
 }

@@ -7,6 +7,16 @@ namespace nebula
 	namespace content
 	{
 		class base;
+		
+		namespace physics
+		{
+			class base;
+
+			namespace physx
+			{
+				class base;
+			}
+		}
 	}
 }
 

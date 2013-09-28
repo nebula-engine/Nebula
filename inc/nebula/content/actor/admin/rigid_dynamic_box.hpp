@@ -1,9 +1,12 @@
 #ifndef __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_DYNAMIC_BOX_HPP__
 #define __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_DYNAMIC_BOX_HPP__
 
+#include <nebula/utilities/types/platform/types.hpp>
+#include <nebula/utilities/types/content/scene/types.hpp>
 
+#include <nebula/content/actor/admin/rigid_dynamic.hpp>
 
-#include <nebula/content/actor/admin/rigid_dynamic.h>
+#include <nebula/ns.hpp>
 
 namespace nebula
 {
@@ -15,7 +18,7 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class rigid_dynamic_box:
-					public nebula::content::actor::admin::rigid_dynamic
+					public ncaa::rigid_dynamic
 				{
 				public:
 					///@name ctor and dtor
@@ -37,7 +40,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init(const boost::shared_ptr<nc_sc_a::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

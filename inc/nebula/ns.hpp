@@ -30,6 +30,8 @@ namespace nebula
 				namespace physx
 				{}
 			}
+			namespace renderer
+			{}
 		}
 		namespace actor
 		{
@@ -69,7 +71,7 @@ namespace nc_sc		= nebula::content::scene;
 namespace nc_sc_a	= nc_sc::admin;
 namespace nc_sc_p	= nc_sc::physics;
 namespace nc_sc_pp	= nc_sc_p::physx;
-
+namespace nc_sc_r	= nebula::content::scene::renderer;
 
 
 #endif

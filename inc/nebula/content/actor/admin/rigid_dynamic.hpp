@@ -5,6 +5,8 @@
 
 #include <nebula/content/actor/admin/rigid_body.hpp>
 
+#include <nebula/ns.hpp>
+
 namespace nebula
 {
 namespace content
@@ -15,7 +17,7 @@ namespace content
 		{
 			/// rigid dynamic
 			class rigid_dynamic:
-				public nebula::content::actor::admin::rigid_body
+				public ncaa::rigid_body
 			{
 			public:
 				///@name ctor and dtor
@@ -53,9 +55,11 @@ namespace content
 				/// create shapes
 				virtual	void								create_shape();
 			};
-		};
-	};
-};
+		}
+	}
+}
+}
+
 
 #endif
 

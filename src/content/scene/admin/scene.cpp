@@ -1,14 +1,19 @@
-#include <nebula/framework/app.h>
+#include <boost/bind.hpp>
 
-#include <nebula/content/Content.h>
-#include <nebula/content/Physics/CO_PH_Physics.h>
-#include <nebula/content/Scene/Physics/CO_SC_PH_Scene.h>
-#include <nebula/content/Scene/Physics/PhysX/CO_SC_PH_PX_Scene.h>
+#include <nebula/framework/app.hpp>
 
-#include <nebula/content/View/Admin/Human/CO_VI_AD_HU_View.h>
+#include <nebula/content/base.hpp>
+#include <nebula/content/physics/base.hpp>
 
-#include <nebula/content/Actor/Admin/CO_AC_AD_RigidDynamicBox.h>
-#include <nebula/content/Actor/Admin/CO_AC_AD_Controller.h>
+#include <nebula/content/universe/admin/base.hpp>
+
+#include <nebula/content/scene/physics/base.hpp>
+#include <nebula/content/scene/physics/physx/base.hpp>
+
+#include <nebula/content/view/admin/human/base.hpp>
+
+#include <nebula/content/actor/admin/rigid_dynamic_box.hpp>
+#include <nebula/content/actor/admin/controller.hpp>
 
 
 
@@ -19,29 +24,32 @@
 nc_sc_a::base::base()
 {
 
-	m_accumulator = 0;
-	m_stepSize = 1.0f / 60.0f;
-	time(&m_last);
+	accumulator_ = 0;
+	step_size_ = 1.0f / 60.0f;
+	time( &last_ );
 
 	
 }
 nc_sc_a::base::~base()
 {
 }
-void	nc_sc_a::base::init(const boost::shared_ptr<ncua::base>& parent)
+boost::shared_ptr<nebula::content::base>	nc_sc_a::base::get_content()
+{
+	return parent_.lock()->parent_.lock();
+}
+void						nc_sc_a::base::init( const boost::shared_ptr<ncua::base>& parent )
 {
 	parent_ = parent;
 
+	// physics
 #ifdef __PHYSX
-	m_physicsScene = new CO_SC_PH_PX_Scene();
+	physics_.create<nc_sc_pp::base>( &nc_sc_pp::base::init, _1, shared_from_this() );
 #else
-	m_co_sc_ph_scene = new CO_SC_PH_Scene();
+	physics_.create<nc_sc_p::base>( boost::bind( &nc_sc_p::base::init, _1, shared_from_this() ) );
 #endif
-
-	m_co_sc_ph_scene->VInit( data );
-
-
-	m_app->GetContent()->GetPhysics()->RegisterScene( this );
+	
+	
+	get_content()->RegisterScene( this );
 }
 void	nc_sc_a::base::shutdown()
 {
@@ -70,40 +78,43 @@ void	nc_sc_a::base::CreateViewHuman( CO_VI_AD_HU_View*& viewHuman )
 void	nc_sc_a::base::update()
 {
 	// time
-	time_t now;
-	time(&now);
+	std::time_t now;
+	time( &now );
 	// for debugging, will simply add stepSize to accumulator on every update
 	//m_accumulator += difftime( now, m_last );
-	m_accumulator += m_stepSize;
-	m_last = now;
+	accumulator_ += step_size_;
+	last_ = now_;
 	
 	
-	dt = m_stepSize;
+	dt = step_size_;
 
 	// Step
-	while ( m_accumulator > m_stepSize )
+	while ( accumulator_ > step_size_ )
 	{
-		m_accumulator -= m_stepSize;
+		accumulator_ -= step_size_;
 
-		Step( &s );
+		step( dt );
 	}
 
-	m_actorBase.For( &CO_AC_AD_ActorBase::VUpdate, NULL );
+	m_actorBase.For( &CO_AC_AD_ActorBase::update, NULL );
 	
-	m_view.For( &CO_VI_AD_View::VUpdate );
+	m_view.For( &CO_VI_AD_View::update );
 
 }
-void	nc_sc_a::base::Step( Void* v ) {
+void	nc_sc_a::base::step(FLOAT dt)i
+{
 	//PRINTSIG;
 	
 	m_actorBase.For( &CO_AC_AD_ActorBase::VStep, v );
 }
-void	nc_sc_a::base::Render( Void* v ) {
+void	nc_sc_a::base::Render( Void* v )
+{
 	//PRINTSIG;
 
 	m_actorBase.For( &CO_AC_AD_ActorBase::VRender, v );
 }
-void	nc_sc_a::base::CreateRigidDynamicBox( CO_AC_AD_RigidDynamicBox*& co_ac_ad_rigidDynamicBox ) {
+void	nc_sc_a::base::CreateRigidDynamicBox( CO_AC_AD_RigidDynamicBox*& co_ac_ad_rigidDynamicBox )
+{
 	PRINTSIG;
 	
 	m_actorBase.Create( co_ac_ad_rigidDynamicBox );
@@ -113,32 +124,27 @@ void	nc_sc_a::base::CreateRigidDynamicBox( CO_AC_AD_RigidDynamicBox*& co_ac_ad_r
 	RegisterRigidDynamic( co_ac_ad_rigidDynamicBox );
 	
 }
-void	nc_sc_a::base::RegisterRigidDynamic( CO_AC_AD_RigidDynamic* co_ac_ad_rigidDynamic ) {
-	PRINTSIG;
-	if ( !m_co_sc_ph_scene ) throw Except("m_co_sc_ph_scene is null");
-
-	// get the CO_PH_Physics object
-	CO_PH_Physics* co_ph_physics = m_app->GetContent()->GetPhysics();
-	if (!co_ph_physics) throw Except("co_ph_physics is null");
-
-
-	// register 
-	co_ph_physics->RegisterRigidDynamic( co_ac_ad_rigidDynamic );
+void	nc_sc_a::base::RegisterRigidDynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& act )
+{
+	jess::assertion( m_co_sc_ph_scene );
 	
-
+	// content physics
+	boost::shared_ptr<ncp::base> cont_phys = get_content()->physics_.pointer_;
+	
+	// register
+	cont_phys->RegisterRigidDynamic( co_ac_ad_rigidDynamic );
+	
+	
 	
 	// initialize the actor
-	AR_Init i;
-	i.app =		m_app;
-	i.scene =	this;
-
-	co_ac_ad_rigidDynamic->VInit(&i);
-
-
+	co_ac_ad_rigidDynamic->init( shared_from_this() );
+	
+	
 	// Add the actor to the CO_SC_PH_Scene object
 	m_co_sc_ph_scene->AddActor( co_ac_ad_rigidDynamic );
 }
-void	nc_sc_a::base::CreateController( CO_AC_AD_Controller*& controller ) {
+void	nc_sc_a::base::CreateController( CO_AC_AD_Controller*& controller )
+{
 	// create controller object
 	m_actorBase.Create(controller);
 	
