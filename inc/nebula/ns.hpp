@@ -16,6 +16,11 @@ namespace nebula
 			namespace physx
 			{}
 		}
+		namespace universe
+		{
+			namespace admin
+			{}
+		}
 		namespace scene
 		{
 			namespace admin
@@ -51,6 +56,8 @@ namespace npr		= nebula::platform::renderer;
 
 namespace ncp		= nebula::content::physics;
 namespace ncpp		= nebula::content::physics::physx;
+
+namespace ncua		= nebula::content::universe::admin;
 
 namespace nca		= nebula::content::actor;
 namespace ncaa		= nebula::content::actor::admin;

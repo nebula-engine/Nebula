@@ -1,6 +1,10 @@
 #ifndef __NEBULA_CONTENT_SCENE_ADMIN_BASE_HPP__
 #define __NEBULA_CONTENT_SCENE_ADMIN_BASE_HPP__
 
+#include <boost/shared_ptr.hpp>
+
+#include <nebula/ns.hpp>
+
 
 namespace nebula
 {
@@ -22,6 +26,8 @@ namespace nebula
 					base();
 					~base();
 					
+					/// init
+					virtual void									init(const boost::shared_ptr<ncua::base>& parent);
 					/// shutdown
 					virtual void									shutdown();
 					/// update

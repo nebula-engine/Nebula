@@ -1,50 +1,36 @@
-#include <utilities/Types/Utilities.h>
-#include <framework/FR_App.h>
-#include <framework/FR_Mappable.h>
+#include <nebula/framework/app.h>
 
-#include <content/Content.h>
-#include <content/Physics/CO_PH_Physics.h>
-#include <content/Scene/Physics/CO_SC_PH_Scene.h>
-#include <content/Scene/Physics/PhysX/CO_SC_PH_PX_Scene.h>
+#include <nebula/content/Content.h>
+#include <nebula/content/Physics/CO_PH_Physics.h>
+#include <nebula/content/Scene/Physics/CO_SC_PH_Scene.h>
+#include <nebula/content/Scene/Physics/PhysX/CO_SC_PH_PX_Scene.h>
 
-#include <content/View/Admin/Human/CO_VI_AD_HU_View.h>
+#include <nebula/content/View/Admin/Human/CO_VI_AD_HU_View.h>
 
-#include <content/Actor/Admin/CO_AC_AD_RigidDynamicBox.h>
-#include <content/Actor/Admin/CO_AC_AD_Controller.h>
+#include <nebula/content/Actor/Admin/CO_AC_AD_RigidDynamicBox.h>
+#include <nebula/content/Actor/Admin/CO_AC_AD_Controller.h>
 
 
 
 
 
+#include <nebula/content/scene/admin/base.hpp>
 
+nc_sc_a::base::base()
+{
 
-
-
-
-
-
-
-
-#include <content/Scene/Admin/CO_SC_AD_Scene.h>
-
-		CO_SC_AD_Scene::Scene() {
-	PRINTSIG;
-
-	m_app = 0;
-	m_co_sc_ph_scene = 0;
 	m_accumulator = 0;
 	m_stepSize = 1.0f / 60.0f;
 	time(&m_last);
 
 	
 }
-		CO_SC_AD_Scene::~Scene() {
+nc_sc_a::base::~base()
+{
 }
-void	CO_SC_AD_Scene::VInit( Void* data ) {
-	PRINTSIG;
-
-	m_app = DynCast<Void,AR_Init>( data )->app;
-	
+void	nc_sc_a::base::init(const boost::shared_ptr<ncua::base>& parent)
+{
+	parent_ = parent;
 
 #ifdef __PHYSX
 	m_physicsScene = new CO_SC_PH_PX_Scene();
@@ -57,7 +43,8 @@ void	CO_SC_AD_Scene::VInit( Void* data ) {
 
 	m_app->GetContent()->GetPhysics()->RegisterScene( this );
 }
-void	CO_SC_AD_Scene::VShutDown() {
+void	nc_sc_a::base::shutdown()
+{
 	PRINTSIG;
 	m_actorBase.For( &CO_AC_AD_ActorBase::VShutdown, NULL );
 	m_actorBase.Clear();
@@ -65,7 +52,8 @@ void	CO_SC_AD_Scene::VShutDown() {
 	m_view.For( &CO_VI_AD_View::VShutDown );
 	m_view.Clear();
 }
-void	CO_SC_AD_Scene::CreateViewHuman( CO_VI_AD_HU_View*& viewHuman ) {
+void	nc_sc_a::base::CreateViewHuman( CO_VI_AD_HU_View*& viewHuman )
+{
 	PRINTSIG;
 
 	m_view.Create(viewHuman);
@@ -79,7 +67,8 @@ void	CO_SC_AD_Scene::CreateViewHuman( CO_VI_AD_HU_View*& viewHuman ) {
 	
 	
 }
-void	CO_SC_AD_Scene::VUpdate() {
+void	nc_sc_a::base::update()
+{
 	// time
 	time_t now;
 	time(&now);
@@ -88,11 +77,12 @@ void	CO_SC_AD_Scene::VUpdate() {
 	m_accumulator += m_stepSize;
 	m_last = now;
 	
-	AR_Step s;
-	s.dt = m_stepSize;
+	
+	dt = m_stepSize;
 
 	// Step
-	while ( m_accumulator > m_stepSize ) {
+	while ( m_accumulator > m_stepSize )
+	{
 		m_accumulator -= m_stepSize;
 
 		Step( &s );
@@ -103,17 +93,17 @@ void	CO_SC_AD_Scene::VUpdate() {
 	m_view.For( &CO_VI_AD_View::VUpdate );
 
 }
-void	CO_SC_AD_Scene::Step( Void* v ) {
+void	nc_sc_a::base::Step( Void* v ) {
 	//PRINTSIG;
 	
 	m_actorBase.For( &CO_AC_AD_ActorBase::VStep, v );
 }
-void	CO_SC_AD_Scene::Render( Void* v ) {
+void	nc_sc_a::base::Render( Void* v ) {
 	//PRINTSIG;
 
 	m_actorBase.For( &CO_AC_AD_ActorBase::VRender, v );
 }
-void	CO_SC_AD_Scene::CreateRigidDynamicBox( CO_AC_AD_RigidDynamicBox*& co_ac_ad_rigidDynamicBox ) {
+void	nc_sc_a::base::CreateRigidDynamicBox( CO_AC_AD_RigidDynamicBox*& co_ac_ad_rigidDynamicBox ) {
 	PRINTSIG;
 	
 	m_actorBase.Create( co_ac_ad_rigidDynamicBox );
@@ -123,7 +113,7 @@ void	CO_SC_AD_Scene::CreateRigidDynamicBox( CO_AC_AD_RigidDynamicBox*& co_ac_ad_
 	RegisterRigidDynamic( co_ac_ad_rigidDynamicBox );
 	
 }
-void	CO_SC_AD_Scene::RegisterRigidDynamic( CO_AC_AD_RigidDynamic* co_ac_ad_rigidDynamic ) {
+void	nc_sc_a::base::RegisterRigidDynamic( CO_AC_AD_RigidDynamic* co_ac_ad_rigidDynamic ) {
 	PRINTSIG;
 	if ( !m_co_sc_ph_scene ) throw Except("m_co_sc_ph_scene is null");
 
@@ -148,7 +138,7 @@ void	CO_SC_AD_Scene::RegisterRigidDynamic( CO_AC_AD_RigidDynamic* co_ac_ad_rigid
 	// Add the actor to the CO_SC_PH_Scene object
 	m_co_sc_ph_scene->AddActor( co_ac_ad_rigidDynamic );
 }
-void	CO_SC_AD_Scene::CreateController( CO_AC_AD_Controller*& controller ) {
+void	nc_sc_a::base::CreateController( CO_AC_AD_Controller*& controller ) {
 	// create controller object
 	m_actorBase.Create(controller);
 	

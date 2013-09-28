@@ -11,6 +11,7 @@
 #include <nebula/utilities/types/content/actor/types.hpp>
 #include <nebula/utilities/types/content/scene/types.hpp>
 
+#include <nebula/ns.hpp>
 
 namespace nebula
 {
@@ -66,7 +67,10 @@ namespace nebula
 
 					
 					/// physics
-					jess::shared_ptr<nebula::content::actor::physics::rigid_actor>		physics_;
+					jess::shared_ptr<ncap::base>						physics_;
+					/// renderer
+					jess::shared_ptr<ncar::base>						renderer_;
+					
 					
 					/// materials
 					jess::map<nebula::content::actor::admin::material>			materials_;

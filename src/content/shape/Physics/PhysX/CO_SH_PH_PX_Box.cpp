@@ -19,9 +19,7 @@
 
 #include <nebula/content/shape/physics/physx/box.hpp>
 
-namespace ncs = nebula::content::shape;
-namespace nca = nebula::content::actor;
-namespace ncapp = nca::physics::physx;
+#include <nebula/ns.hpp>
 
 	ncs::physics::physx::box::box()
 {
@@ -46,13 +44,14 @@ void	ncs::physics::physx::box::create_shape()
 	// admin rigid_actor
 	boost::shared_ptr<nca::admin::rigid_actor> ad_act = parent_.lock()->parent_.lock();
 
-	boost::shared_ptr<nca::physics::rigid_actor> ph_act = ad_act->physics_.pointer_;
+	// physics rigid_actor
+	boost::shared_ptr<ncap::rigid_actor> ph_act = boost::dynamic_pointer_cast<ncap::rigid_actor>( ad_act->physics_.pointer_ );
 	
 	// physx rigid_actor
 	boost::shared_ptr<ncapp::rigid_actor> ph_px_act = boost::dynamic_pointer_cast<nca::physics::physx::rigid_actor>( ph_act );
 	
 	// PxRigidActor
-	boost::shared_ptr< ::physx::PxRigidActor> px_rigid_actor = boost::dynamic_pointer_cast< ::physx::PxRigidActor>( ph_px_act->px_actor_ );
+	::physx::PxRigidActor* px_rigid_actor = (::physx::PxRigidActor*)( ph_px_act->px_actor_ );
 	
 	// physx material
 	boost::shared_ptr<ncapp::material> mat = boost::dynamic_pointer_cast<ncapp::material>( ad_act->materials_.at(0)->physics_.pointer_ );
