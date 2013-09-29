@@ -13,6 +13,8 @@
 #include <nebula/utilities/types/content/actor/types.hpp>
 #include <nebula/utilities/types/content/shape/types.hpp>
 
+#include <nebula/ns.hpp>
+
 namespace nebula
 {
 	namespace content
@@ -21,7 +23,8 @@ namespace nebula
 		{
 			namespace admin
 			{
-				class base
+				class base:
+					public boost::enable_shared_from_this<ncsa::base>
 				{
 				public:
 					base();

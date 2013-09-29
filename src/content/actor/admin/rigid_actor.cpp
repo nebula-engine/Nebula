@@ -1,61 +1,54 @@
-#include <framework/FR_App.h>
+#include <boost/bind.hpp>
 
-#include <content/Content.h>
-#include <content/Physics/CO_PH_Physics.h>
+#include <nebula/framework/app.hpp>
 
-#include <content/Actor/Physics/CO_AC_PH_RigidActor.h>
+#include <nebula/content/base.hpp>
+#include <nebula/content/physics/base.hpp>
 
-#include <content/Actor/Physics/PhysX/CO_AC_PH_PX_RigidActor.h>
+#include <nebula/content/actor/physics/rigid_actor.hpp>
 
-#include <content/Shape/Admin/CO_SH_AD_Shape.h>
-#include <content/Shape/Admin/CO_SH_AD_Box.h>
+#include <nebula/content/actor/physics/physx/rigid_actor.hpp>
 
-
-
-
+#include <nebula/content/shape/admin/base.hpp>
+#include <nebula/content/shape/admin/box.hpp>
 
 
+#include <nebula/content/actor/admin/rigid_actor.hpp>
 
 
-
-#include <content/Actor/Admin/CO_AC_AD_RigidActor.h>
-
-
-		CO_AC_AD_RigidActor::RigidActor() {
+ncaa::rigid_actor::rigid_actor()
+{
 }
-		CO_AC_AD_RigidActor::~RigidActor() {
+ncaa::rigid_actor::~rigid_actor()
+{
 }
-void	CO_AC_AD_RigidActor::VInit(Void* v) {
-	PRINTSIG;
-	CO_AC_AD_Actor::VInit( v );
+void	ncaa::rigid_actor::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+{
+	ncaa::actor::init( parent );
 
-	VCreateShape();
+	create_shape();
 }
-void	CO_AC_AD_RigidActor::VRender(Void* v) {
-	//PRINTSIG;
-	MapPtr<CO_SH_AD_Shape>::For( &CO_SH_AD_Shape::VRender, v );
+void	ncaa::rigid_actor::render( const boost::shared_ptr<npr::base>& rnd )
+{
+	shapes_.foreach( boost::bind( &ncsa::base::render, _1, rnd ) );
 }
-void	CO_AC_AD_RigidActor::VCreateShape() {
-	PRINTSIG;
+void	ncaa::rigid_actor::create_shape()
+{
 	
 }
-void	CO_AC_AD_RigidActor::CreateBox( CO_SH_AD_Box*& box ) {
-	MapPtr<CO_SH_AD_Shape>::Create(box);
-
-	AR_Init i;
-	i.co_ac_ad_rigidActor = this;
-
-	box->VInit( &i );
+void	ncaa::rigid_actor::create_box( const boost::shared_ptr<ncsa::box>& bx )
+{
+	//shapes_.push<ncsa::box>( bx, boost::bind( &ncsa::box::init, _1, shared_from_this() ) );
 }
-void	CO_AC_AD_RigidActor::VShutdown(Void* v) {
-	PRINTSIG;
+void	ncaa::rigid_actor::shutdown()
+{
 	
 }
-void	CO_AC_AD_RigidActor::VUpdate(Void* v) {
-	CO_AC_AD_Actor::VUpdate(v);
+void	ncaa::rigid_actor::update()
+{
+	ncaa::actor::update();
 }
-void	CO_AC_AD_RigidActor::VStep(Void* v) {
-	PRINTSIG;
+void	ncaa::rigid_actor::step() {
 	
 }
 

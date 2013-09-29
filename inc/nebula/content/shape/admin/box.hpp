@@ -5,6 +5,8 @@
 
 #include <nebula/content/shape/admin/base.hpp>
 
+#include <nebula/ns.hpp>
+
 namespace nebula
 {
 	namespace content
@@ -14,12 +16,12 @@ namespace nebula
 			namespace admin
 			{
 				class box:
-					public nebula::content::shape::admin::base,
-					public boost::enable_shared_from_this<box>
+					public nebula::content::shape::admin::base
 				{
-					void								init(const boost::shared_ptr<nebula::content::actor::admin::rigid_actor>&);
+				public:
+					void								init( const boost::shared_ptr<ncaa::rigid_actor>& );
 					void								shutdown();
-					void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					void								render( const boost::shared_ptr<nebula::platform::renderer::base>&);
 				
 
 					

@@ -3,7 +3,7 @@
 
 
 
-#include <nebula/content/actor/admin/rigid_static_plane.h>
+#include <nebula/content/actor/admin/rigid_static_plane.hpp>
 
 
 
@@ -39,7 +39,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init(const boost::shared_ptr<ncaa::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

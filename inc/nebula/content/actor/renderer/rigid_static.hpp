@@ -2,12 +2,12 @@
 #define __NEBULA_CONTENT_ACTOR_RENDERER_RIGID_STATIC_HPP__
 
 
-#include <nebula/content/actor/admin/rigid_actor.hpp>
+#include <nebula/content/actor/renderer/rigid_actor.hpp>
 
 
 namespace nebula
 {
-	namespace Content
+	namespace content
 	{
 		namespace actor
 		{
@@ -15,7 +15,7 @@ namespace nebula
 			{
 				/// rigid static
 				class rigid_static:
-					public rigid_actor
+					public ncar::rigid_actor
 				{
 				public:
 					/// ctor
@@ -24,13 +24,13 @@ namespace nebula
 					~rigid_static();
 
 					/// Initialize
-					virtual	void						init();
+					virtual	void						init( const boost::shared_ptr<ncaa::base>& parent );
 					/// ShutDown
-					virtual	void						shutDown();
+					virtual	void						shutdown();
 					/// Update
 					virtual	void						update();
 					/// Render
-					virtual	void						render(const boost::shared_ptr<>&);
+					virtual	void						render(const boost::shared_ptr<npr::base>&);
 					/// Step
 					virtual	void						step();
 					

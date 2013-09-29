@@ -1,37 +1,35 @@
+#include <nebula/platform/renderer/base.hpp>
 
-#include <Platform/Renderer/PL_RE_Renderer.h>
-#include <utilities/Types/Utilities.h>
+#include <nebula/content/actor/admin/controller.hpp>
 
-#include <content/Actor/Admin/CO_AC_AD_Controller.h>
+#include <nebula/content/actor/renderer/controller.hpp>
 
-
-
-
-#include <content/Actor/Renderer/CO_AC_RE_Controller.h>
-
-		CO_AC_RE_Controller::Controller() {
+ncar::controller::controller()
+{
 }
-		CO_AC_RE_Controller::~Controller() {
+ncar::controller::~controller()
+{
 }
-
-
-void	CO_AC_RE_Controller::VInit( Void* data ){
-	CO_AC_RE_ActorBase::VInit(data);
+void	ncar::controller::init( const boost::shared_ptr<ncaa::base>& parent )
+{
+	ncar::base::init(parent);
 }
-void	CO_AC_RE_Controller::VShutDown(){
+void	ncar::controller::shutdown()
+{
 	
 }
-void	CO_AC_RE_Controller::VUpdate(){
+void	ncar::controller::update()
+{
 	
 }
-void	CO_AC_RE_Controller::VRender(Void* v) {
-	AR_Render* r = DynCast<Void,AR_Render>(v);
+void	ncar::controller::render( const boost::shared_ptr<npr::base>& rnd )
+{
+	boost::shared_ptr<ncaa::controller> parent = boost::dynamic_pointer_cast<ncaa::controller>( parent_.lock() );
 
-	CO_AC_AD_Controller* controller = L__CO_AC_AD_Controller::Get_Or_Error<CO_AC_AD_Controller>();
-
-	r->renderer->VLookAt( controller->m_pos, controller->m_pos + controller->m_look, controller->m_up );
+	rnd->look_at( parent->pos_, parent->pos_ + parent->look_, parent->up_ );
 }
-void	CO_AC_RE_Controller::VStep( Void* data ){
+void	ncar::controller::step( FLOAT dt )
+{
 	
 }
 

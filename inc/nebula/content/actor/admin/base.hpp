@@ -1,6 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_ADMIN_BASE_HPP__
 #define __NEBULA_CONTENT_ACTOR_ADMIN_BASE_HPP__
 
+#include <boost/enable_shared_from_this.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 
@@ -22,7 +23,8 @@ namespace nebula
 			namespace admin
 			{
 				/// rigid dynamic
-				class base
+				class base:
+					public boost::enable_shared_from_this<ncaa::base>
 				{
 				public:
 					///@name ctor and dtor

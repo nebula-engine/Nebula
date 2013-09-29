@@ -51,6 +51,12 @@ namespace nebula
 
 			}
 		}
+		namespace shape
+		{
+			namespace admin {}
+			namespace physics {}
+			namespace renderer {}
+		}
 	}
 }
 
@@ -73,5 +79,6 @@ namespace nc_sc_p	= nc_sc::physics;
 namespace nc_sc_pp	= nc_sc_p::physx;
 namespace nc_sc_r	= nebula::content::scene::renderer;
 
+namespace ncsa		= nebula::content::shape::admin;
 
 #endif

@@ -5,8 +5,11 @@
 #include <jess/shared_ptr.hpp>
 
 #include <nebula/utilities/types/content/actor/types.hpp>
+#include <nebula/utilities/types/content/shape/types.hpp>
 
 #include <nebula/content/actor/admin/actor.hpp>
+
+#include <nebula/ns.hpp>
 
 namespace nebula
 {
@@ -55,8 +58,10 @@ namespace nebula
 				
 					/// create shapes
 					virtual	void								create_shape();
+					virtual void								create_box( const boost::shared_ptr<ncsa::box>& );					
 
-
+					/// shapes
+					jess::map<ncsa::base>							shapes_;
 				};
 			}
 		}

@@ -3,7 +3,7 @@
 
 
 
-#include <nebula/content/actor/admin/actor.h>
+#include <nebula/content/actor/renderer/actor.hpp>
 
 namespace nebula
 {
@@ -15,7 +15,7 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class rigid_actor:
-					public nebula::content::actor::admin::actor
+					public ncar::actor
 				{
 				public:
 					///@name ctor and dtor
@@ -37,13 +37,13 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init(const boost::shared_ptr<ncaa::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step();
+					virtual	void								step(FLOAT);
 					/// render
 					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				

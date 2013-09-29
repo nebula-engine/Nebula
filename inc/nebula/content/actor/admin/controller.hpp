@@ -74,6 +74,13 @@ namespace nebula
 					
 					/// move
 					boost::numeric::ublas::vector<FLOAT>					move_;
+					/// pos
+					boost::numeric::ublas::vector<FLOAT>					pos_;
+					/// look
+					boost::numeric::ublas::vector<FLOAT>					look_;
+					/// up
+					boost::numeric::ublas::vector<FLOAT>					up_;
+
 				};
 			}
 		}

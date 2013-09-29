@@ -1,26 +1,27 @@
-#include <content/Actor/Renderer/CO_AC_RE_RigidDynamic.h>
+#include <nebula/content/actor/renderer/rigid_dynamic.hpp>
 
 
-		CO_AC_RE_RigidDynamic::RigidDynamic() {
+		ncar::rigid_dynamic::rigid_dynamic() {
 }
-		CO_AC_RE_RigidDynamic::~RigidDynamic() {
+		ncar::rigid_dynamic::~rigid_dynamic() {
 }
 
 
 
-void	CO_AC_RE_RigidDynamic::VInit( Void* data ){
-	CO_AC_RE_RigidBody::VInit( data );
+void	ncar::rigid_dynamic::init( const boost::shared_ptr<ncaa::base>& parent ){
+	ncar::rigid_body::init( parent );
 }
-void	CO_AC_RE_RigidDynamic::VShutDown(){
+void	ncar::rigid_dynamic::shutdown()
+{
 	
 }
-void	CO_AC_RE_RigidDynamic::VUpdate(){
+void	ncar::rigid_dynamic::update(){
 	
 }
-void	CO_AC_RE_RigidDynamic::VRender( Void* data ) {
+void	ncar::rigid_dynamic::render( const boost::shared_ptr<npr::base>& rnd ) {
 	
 }
-void	CO_AC_RE_RigidDynamic::VStep( Void* data ){
+void	ncar::rigid_dynamic::step( FLOAT dt ){
 	
 }
 

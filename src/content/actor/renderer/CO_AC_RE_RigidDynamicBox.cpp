@@ -1,36 +1,35 @@
 
 
-#include <content/Shape/Admin/CO_SH_AD_Box.h>
+#include <nebula/content/shape/admin/box.hpp>
 
 
 
 
 
-#include <content/Actor/Renderer/CO_AC_RE_RigidDynamicBox.h>
+#include <nebula/content/actor/renderer/rigid_dynamic_box.hpp>
 
-		CO_AC_RE_RigidDynamicBox::RigidDynamicBox() {
+ncar::rigid_dynamic_box::rigid_dynamic_box() {
+	/*
 	m_hx = 1;
 	m_hy = 1;
 	m_hz = 1;
+	*/
 }
-		CO_AC_RE_RigidDynamicBox::~RigidDynamicBox() {
+ncar::rigid_dynamic_box::~rigid_dynamic_box() {
 }
-
-
-
-void	CO_AC_RE_RigidDynamicBox::VInit( Void* data ){
+void	ncar::rigid_dynamic_box::init( const boost::shared_ptr<ncaa::base>& parent ){
 	
 }
-void	CO_AC_RE_RigidDynamicBox::VShutDown(){
+void	ncar::rigid_dynamic_box::shutdown(){
 	
 }
-void	CO_AC_RE_RigidDynamicBox::VUpdate(){
+void	ncar::rigid_dynamic_box::update(){
 	
 }
-void	CO_AC_RE_RigidDynamicBox::VRender( Void* data ) {
+void	ncar::rigid_dynamic_box::render( const boost::shared_ptr<npr::base>& rnd ) {
 	
 }
-void	CO_AC_RE_RigidDynamicBox::VStep( Void* v ){
+void	ncar::rigid_dynamic_box::step(){
 	
 }
 

@@ -15,7 +15,7 @@ namespace nebula
 		{
 			namespace renderer
 			{
-				/// rigid dynamic
+				/// actor
 				class actor:
 					virtual public ncar::base
 				{
@@ -45,7 +45,7 @@ namespace nebula
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step();
+					virtual	void								step(FLOAT dt);
 					/// render
 					virtual	void								render(const boost::shared_ptr<npr::base>&);
 				

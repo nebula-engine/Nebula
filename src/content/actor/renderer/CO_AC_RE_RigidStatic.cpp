@@ -1,27 +1,28 @@
-#include <content/Actor/Renderer/CO_AC_RE_RigidStatic.h>
+#include <nebula/content/actor/renderer/rigid_static.hpp>
 
 
 
-		CO_AC_RE_RigidStatic::RigidStatic() {
+ncar::rigid_static::rigid_static()
+{
+
 }
-		CO_AC_RE_RigidStatic::~RigidStatic() {
+ncar::rigid_static::~rigid_static()
+{
+
 }
-
-
-
-void	CO_AC_RE_RigidStatic::VInit( Void* data ){
-	PRINTSIG;
-	RigidActor::VInit( data );
+void	ncar::rigid_static::init( const boost::shared_ptr<ncaa::base>& parent )
+{
+	ncar::rigid_actor::init( parent );
 }
-void	CO_AC_RE_RigidStatic::VShutDown(){
+void	ncar::rigid_static::shutdown(){
 	
 }
-void	CO_AC_RE_RigidStatic::VUpdate(){
+void	ncar::rigid_static::update(){
 	
 }
-void	CO_AC_RE_RigidStatic::VRender( Void* data ) {
+void	ncar::rigid_static::render( const boost::shared_ptr<npr::base>& rnd ) {
 	
 }
-void	CO_AC_RE_RigidStatic::VStep( Void* data ){
+void	ncar::rigid_static::step( ){
 	
 }

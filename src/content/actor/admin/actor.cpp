@@ -1,8 +1,9 @@
-#include <content/Actor/Admin/CO_AC_AD_Actor.h>
+#include <nebula/content/actor/admin/actor.hpp>
 
-		CO_AC_AD_Actor::Actor() {
+
+CO_AC_AD_Actor::Actor() {
 }
-		CO_AC_AD_Actor::~Actor() {
+CO_AC_AD_Actor::~Actor() {
 }
 void	CO_AC_AD_Actor::VInit(Void* v) {
 	PRINTSIG;

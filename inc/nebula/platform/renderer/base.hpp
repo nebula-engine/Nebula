@@ -31,6 +31,10 @@ void		swap();
 void		mult_matrix(const bnu::matrix<FLOAT>&);
 /// scale
 void		scale(const bnu::vector<FLOAT>&);
+/// look at
+void		look_at( const bnu::vector<FLOAT>&, const bnu::vector<FLOAT>&, const bnu::vector<FLOAT>& ); 
+
+
 	
 				/// lookat
 				void							lookat(bnu::vector<FLOAT>,bnu::vector<FLOAT>,bnu::vector<FLOAT>);

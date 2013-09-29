@@ -3,7 +3,7 @@
 
 
 
-#include <nebula/content/actor/admin/base.h>
+#include <nebula/content/actor/renderer/base.hpp>
 
 namespace nebula
 {
@@ -15,7 +15,7 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class vehicle:
-					public nebula::content::actor::admin::base
+					public ncar::base
 				{
 				public:
 					///@name ctor and dtor
@@ -37,7 +37,7 @@ namespace nebula
 					
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init(const boost::shared_ptr<ncaa::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

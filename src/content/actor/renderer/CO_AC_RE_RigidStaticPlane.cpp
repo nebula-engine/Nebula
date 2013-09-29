@@ -1,25 +1,29 @@
-#include <content/Actor/Renderer/CO_AC_RE_RigidStaticPlane.h>
+#include <nebula/content/actor/renderer/rigid_static_plane.hpp>
 
 
-		CO_AC_RE_RigidStaticPlane::RigidStaticPlane() {
+		ncar::rigid_static_plane::rigid_static_plane()
+{
 }
-		CO_AC_RE_RigidStaticPlane::~RigidStaticPlane() {
+		ncar::rigid_static_plane::~rigid_static_plane()
+{
 }
-
-
-
-void	CO_AC_RE_RigidStaticPlane::VInit( Void* data ){
+void	ncar::rigid_static_plane::init( const boost::shared_ptr<ncaa::base>& parent )
+{
 	
 }
-void	CO_AC_RE_RigidStaticPlane::VShutDown(){
+void	ncar::rigid_static_plane::shutdown()
+{
 	
 }
-void	CO_AC_RE_RigidStaticPlane::VUpdate(){
+void	ncar::rigid_static_plane::update()
+{
 	
 }
-void	CO_AC_RE_RigidStaticPlane::VRender( Void* data ) {
+void	ncar::rigid_static_plane::render( const boost::shared_ptr<npr::base>& base )
+{
 	
 }
-void	CO_AC_RE_RigidStaticPlane::VStep( Void* data ){
+void	ncar::rigid_static_plane::step( )
+{
 	
 }

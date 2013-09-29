@@ -1,27 +1,29 @@
-#include <content/Actor/Renderer/CO_AC_RE_Vehicle.h>
+#include <nebula/content/actor/renderer/vehicle.hpp>
 
-		CO_AC_RE_Vehicle::Vehicle() {
+		ncar::vehicle::vehicle() {
 }
-		CO_AC_RE_Vehicle::~Vehicle(){
+		ncar::vehicle::~vehicle(){
 }
     
 
 
-void	CO_AC_RE_Vehicle::VInit( Void* data ){
-	PRINTSIG;
+void	ncar::vehicle::init( const boost::shared_ptr<ncaa::base>& parent ){
 
-	CO_AC_RE_ActorBase::VInit(data);
+	ncar::base::init(parent);
 }
-void	CO_AC_RE_Vehicle::VShutDown(){
+void	ncar::vehicle::shutdown()
+{
 	
 }
-void	CO_AC_RE_Vehicle::VUpdate(){
+void	ncar::vehicle::update(){
 	
 }
-void	CO_AC_RE_Vehicle::VRender( Void* data ) {
+void	ncar::vehicle::render( const boost::shared_ptr<npr::base>& rnd )
+{
 	
 }
-void	CO_AC_RE_Vehicle::VStep( Void* data ){
+void	ncar::vehicle::step( )
+{
 	
 }
 

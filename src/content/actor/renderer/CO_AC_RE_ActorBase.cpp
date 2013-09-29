@@ -1,27 +1,33 @@
-#include <content/Actor/Renderer/CO_AC_RE_ActorBase.h>
+#include <nebula/content/actor/renderer/base.hpp>
 
 
 
-		CO_AC_RE_ActorBase::ActorBase() {
+ncar::base::base()
+{
 	
 }
-		CO_AC_RE_ActorBase::~ActorBase() {
-}
+ncar::base::~base()
+{
 
-
-void	CO_AC_RE_ActorBase::VInit( Void* data ){
-	m_app = DynCast<Void,AR_Init>( data )->app;
 }
-void	CO_AC_RE_ActorBase::VShutDown(){
+void	ncar::base::init(const boost::shared_ptr<ncaa::base>& parent)
+{
+	parent_ = parent;
+}
+void	ncar::base::shutdown()
+{
 	
 }
-void	CO_AC_RE_ActorBase::VUpdate(){
+void	ncar::base::update()
+{
 	
 }
-void	CO_AC_RE_ActorBase::VRender( Void* data ) {
+void	ncar::base::render(const boost::shared_ptr<npr::base>& rnd )
+{
 	
 }
-void	CO_AC_RE_ActorBase::VStep( Void* data ){
+void	ncar::base::step(FLOAT dt)
+{
 	
 }
 

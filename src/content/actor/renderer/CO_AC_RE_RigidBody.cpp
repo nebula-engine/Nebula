@@ -1,25 +1,25 @@
-#include <content/Actor/Renderer/CO_AC_RE_RigidBody.h>
+#include <nebula/content/actor/renderer/rigid_body.hpp>
 
 
 
-		CO_AC_RE_RigidBody::RigidBody() {
+ncar::rigid_body::rigid_body() {
 }
-		CO_AC_RE_RigidBody::~RigidBody() {
+ncar::rigid_body::~rigid_body() {
 }
 
 
 
-void	CO_AC_RE_RigidBody::VInit( Void* data ){
-	PRINTSIG;
-	CO_AC_RE_RigidActor::VInit( data );
+void	ncar::rigid_body::init( const boost::shared_ptr<ncaa::base>& parent )
+{
+	ncar::rigid_actor::init( parent );
 }
-void	CO_AC_RE_RigidBody::VShutDown(){
+void	ncar::rigid_body::shutdown(){
 }
-void	CO_AC_RE_RigidBody::VUpdate(){
+void	ncar::rigid_body::update(){
 }
-void	CO_AC_RE_RigidBody::VRender( Void* data ) {
+void	ncar::rigid_body::render( const boost::shared_ptr<npr::base>& rnd ) {
 }
-void	CO_AC_RE_RigidBody::VStep( Void* data ){
+void	ncar::rigid_body::step( FLOAT dt ){
 }
 
 

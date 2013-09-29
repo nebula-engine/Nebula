@@ -3,7 +3,7 @@
 
 
 
-#include <nebula/content/actor/admin/rigid_body.h>
+#include <nebula/content/actor/renderer/rigid_body.hpp>
 
 namespace nebula
 {
@@ -15,7 +15,7 @@ namespace content
 		{
 			/// rigid dynamic
 			class rigid_dynamic:
-				public nebula::content::actor::admin::rigid_body
+				public ncar::rigid_body
 			{
 			public:
 				///@name ctor and dtor
@@ -37,13 +37,13 @@ namespace content
 				
 
 				/// init
-				virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+				virtual	void								init(const boost::shared_ptr<ncaa::base>&);
 				/// shutdown
 				virtual	void								shutdown();
 				/// update
 				virtual	void								update();
 				/// step
-				virtual	void								step();
+				virtual	void								step(FLOAT);
 				/// render
 				virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				
@@ -56,7 +56,7 @@ namespace content
 		};
 	};
 };
-
+}
 #endif
 
 

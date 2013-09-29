@@ -3,7 +3,7 @@
 
 
 
-#include <nebula/content/actor/admin/base.h>
+#include <nebula/content/actor/renderer/base.hpp>
 
 namespace nebula
 {
@@ -15,7 +15,7 @@ namespace nebula
 			{
 				/// controller
 				class controller:
-					public nebula::content::actor::admin::base
+					public ncar::base
 				{
 				public:
 					///@name ctor and dtor
@@ -37,13 +37,13 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init(const boost::shared_ptr<ncaa::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step();
+					virtual	void								step(FLOAT);
 					/// render
 					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				
