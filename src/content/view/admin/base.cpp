@@ -16,7 +16,7 @@
 }
 		CO_VI_AD_View::~View() {
 }
-void	CO_VI_AD_View::VInit( Void* data ) {
+void	CO_VI_AD_View::init( const boost::shared_ptr<>&  ) {
 	PRINTSIG;
 
 	m_app =		DynCast<Void,AR_Init>( data )->app;

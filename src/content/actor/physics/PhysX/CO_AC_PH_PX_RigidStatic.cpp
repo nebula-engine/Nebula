@@ -11,7 +11,7 @@ void	ncapp::rigid_static::init(const boost::shared_ptr<ncaa::base>& parent)
 	
 	jess::assertion( px_actor_ ); 
 	
-	//_pxRigidStatic = (physx::PxRigidStatic*)m_pxactor;
+	//_pxrigid_static = (physx::Pxrigid_static*)m_pxactor;
 	
 	//VCreateShape();
 }

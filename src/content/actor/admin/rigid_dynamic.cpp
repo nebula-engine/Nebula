@@ -1,29 +1,29 @@
-#include <nebula/content/actor/admin/ncaa::RigidDynamic.h>
+#include <nebula/content/actor/admin/rigid_dynamic.hpp>
 
 
-		ncaa::RigidDynamic::RigidDynamic() {
+		ncaa::rigid_dynamic::rigid_dynamic() {
 }
-		ncaa::RigidDynamic::~RigidDynamic() {
+		ncaa::rigid_dynamic::~rigid_dynamic() {
 }
 
 
 
-void	ncaa::RigidDynamic::VInit( Void* data ) {
+void	ncaa::rigid_dynamic::init( const boost::shared_ptr<>&  ) {
 	PRINTSIG;
 	ncaa::rigid_body::VInit( data );
 }
-void	ncaa::RigidDynamic::VShutdown(Void* v) {
+void	ncaa::rigid_dynamic::VShutdown(Void* v) {
 	PRINTSIG;
 	
 }
-void	ncaa::RigidDynamic::VUpdate(Void* v) {
+void	ncaa::rigid_dynamic::VUpdate(Void* v) {
 	ncaa::rigid_body::VUpdate(v);
 }
-void	ncaa::RigidDynamic::VRender( Void* data ) {
+void	ncaa::rigid_dynamic::VRender( Void* data ) {
 	PRINTSIG;
 	
 }
-void	ncaa::RigidDynamic::VStep( Void* data ) {
+void	ncaa::rigid_dynamic::VStep( Void* data ) {
 	PRINTSIG;
 	
 }
@@ -31,7 +31,7 @@ void	ncaa::RigidDynamic::VStep( Void* data ) {
 
 
 
-void	ncaa::RigidDynamic::VCreateShape() {
+void	ncaa::rigid_dynamic::VCreateShape() {
 	PRINTSIG;
 	
 }

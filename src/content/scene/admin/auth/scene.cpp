@@ -4,7 +4,7 @@
 #include <content/Physics/CO_PH_Physics.h>
 #include <content/Physics/PhysicsScene.h>
 #include <content/SceneAuth.h>
-#include <nebula/content/actor/admin/ncaa::RigidDynamicBox.h>
+#include <nebula/content/actor/admin/ncaa::rigid_dynamicBox.h>
 #include <nebula/content/actor/admin/Controller.h>
 
 
@@ -13,7 +13,7 @@
 }
 		Content::SceneAuth::~SceneAuth() {
 }
-void	Content::SceneAuth::VInit( Void* data ) {
+void	Content::SceneAuth::init( const boost::shared_ptr<>&  ) {
 	PRINTSIG;
 	CO_SC_AD_Scene::VInit( data );
 }

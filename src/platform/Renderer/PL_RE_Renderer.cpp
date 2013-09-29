@@ -8,7 +8,7 @@
 	Platform::Renderer::Renderer::~Renderer() {
 	
 }
-void	Platform::Renderer::Renderer::VInit( Void* data ) {
+void	Platform::Renderer::Renderer::init( const boost::shared_ptr<>&  ) {
 	
 }
 

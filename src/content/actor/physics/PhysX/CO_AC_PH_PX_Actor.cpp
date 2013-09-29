@@ -11,7 +11,7 @@ void	nca::physics::physx::actor::step(FLOAT dt)
 {
 	
 }
-void	nca::physics::physx::actor::set_px_actor( ::physx::Pxactor* actor )
+void	nca::physics::physx::actor::set_px_actor( ::physx::PxActor* actor )
 {
 	px_actor_ = actor;
 	

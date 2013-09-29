@@ -4,8 +4,8 @@
 
 #include <content/Scene/Physics/PhysX/CO_SC_PH_PX_Scene.h>
 
-#include <nebula/content/actor/admin/ncaa::RigidDynamic.h>
-#include <content/actor/Physics/PhysX/CO_AC_PH_PX_RigidDynamic.h>
+#include <nebula/content/actor/admin/ncaa::rigid_dynamic.h>
+#include <content/actor/Physics/PhysX/CO_AC_PH_PX_rigid_dynamic.h>
 
 #include <nebula/content/actor/admin/ncaa::Controller.h>
 #include <content/actor/Physics/PhysX/CO_AC_PH_PX_Controller.h>
@@ -16,7 +16,7 @@ physx::PxFilterFlags DefaultFilterShader( physx::PxFilterObjectAttributes attrib
 	return physx::PxFilterFlag::eDEFAULT;
 }
 
-void	CO_PH_PX_Physics::VInit( Void* data ) {
+void	CO_PH_PX_Physics::init( const boost::shared_ptr<>&  ) {
 	PRINTSIG;
 	
 
@@ -106,24 +106,24 @@ void	CO_PH_PX_Physics::RegisterScene( CO_SC_AD_Scene* scene ) {
 	}
 	
 }
-void	CO_PH_PX_Physics::RegisterRigidDynamic( ncaa::RigidDynamic* rigidDynamic )
+void	CO_PH_PX_Physics::Registerrigid_dynamic( ncaa::rigid_dynamic* rigidDynamic )
 {
 	
-	CO_AC_PH_PX_RigidDynamic* acPhPxRigidDynamic = dynamic_cast<CO_AC_PH_PX_RigidDynamic*>(rigidDynamic->Ptr<CO_AC_PH_RigidDynamic>::Get_Or_Error());
+	CO_AC_PH_PX_rigid_dynamic* acPhPxrigid_dynamic = dynamic_cast<CO_AC_PH_PX_rigid_dynamic*>(rigidDynamic->Ptr<CO_AC_PH_rigid_dynamic>::Get_Or_Error());
 
 	// Get transform
 	Math::Transformf transform; //physx::PxTransform transform;
-	rigidDynamic->GetTransform( transform ); //acPhPxRigidDynamic->GetTransform( transform );
+	rigidDynamic->GetTransform( transform ); //acPhPxrigid_dynamic->GetTransform( transform );
 	
 	physx::PxTransform pxtransform;
 
 	pxtransform = TransformToPxTransform( transform );
 
-	// Create PxRigidDynamic
-	physx::PxRigidDynamic* actor = m_physics->createRigidDynamic( pxtransform );
+	// Create Pxrigid_dynamic
+	physx::Pxrigid_dynamic* actor = m_physics->createrigid_dynamic( pxtransform );
 	
-	// Pass PxRigidDynamic to RigidDynamic
-	acPhPxRigidDynamic->Setactor( actor );
+	// Pass Pxrigid_dynamic to rigid_dynamic
+	acPhPxrigid_dynamic->Setactor( actor );
 };
 void	CO_PH_PX_Physics::RegisterController( ncaa::Controller*& controller, CO_SC_AD_Scene* scene ) {
 	// Get actor's physics object

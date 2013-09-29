@@ -3,7 +3,7 @@
 
 
 
-void	Content::Physics::Physics::VInit( Void* data ) {
+void	Content::Physics::Physics::init( const boost::shared_ptr<>&  ) {
 	PRINTSIG;
 }
 void	Content::Physics::Physics::VShutDown() {
@@ -18,7 +18,7 @@ void	Content::Physics::Physics::RegisterController( ncaa::Controller*& controlle
 	PRINTSIG;
 	
 }
-void	Content::Physics::Physics::RegisterRigidDynamic( ncaa::RigidDynamic* rigidDynamic ) {
+void	Content::Physics::Physics::Registerrigid_dynamic( ncaa::rigid_dynamic* rigidDynamic ) {
 	PRINTSIG;
 	
 }

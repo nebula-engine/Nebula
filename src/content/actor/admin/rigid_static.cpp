@@ -1,39 +1,39 @@
 #include <utilities/Types/Utilities.h>
 
-#include <nebula/content/actor/admin/ncaa::RigidStatic.h>
+#include <nebula/content/actor/admin/ncaa::rigid_static.h>
 
 
-		ncaa::RigidStatic::RigidStatic() {
+		ncaa::rigid_static::rigid_static() {
 }
-		ncaa::RigidStatic::~RigidStatic() {
+		ncaa::rigid_static::~rigid_static() {
 }
 
 
 
-void	ncaa::RigidStatic::VInit(Void* v) {
+void	ncaa::rigid_static::VInit(Void* v) {
 	PRINTSIG;
 	ncaa::rigid_actor::VInit(v);
 }
-void	ncaa::RigidStatic::VShutDown() {
+void	ncaa::rigid_static::VShutDown() {
 	PRINTSIG;
 	
 }
-void	ncaa::RigidStatic::VUpdate() {
+void	ncaa::rigid_static::VUpdate() {
 	PRINTSIG;
 	
 }
-void	ncaa::RigidStatic::VRender( Void* data ) {
+void	ncaa::rigid_static::VRender( Void* data ) {
 	PRINTSIG;
 	
 }
-void	ncaa::RigidStatic::VStep( Void* data ) {
+void	ncaa::rigid_static::VStep( Void* data ) {
 	PRINTSIG;
 	
 }
 
 
 
-void	ncaa::RigidStatic::VCreateShape() {
+void	ncaa::rigid_static::VCreateShape() {
 	
 }
 

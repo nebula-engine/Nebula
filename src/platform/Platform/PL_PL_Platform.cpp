@@ -26,7 +26,7 @@
 		PL_PL_Platform::~Platform() {
 	
 }
-void	PL_PL_Platform::VInit( Void* data ) {
+void	PL_PL_Platform::init( const boost::shared_ptr<>&  ) {
 	PRINTSIG;
 	
 	m_app = DynCast<Void,AR_Init>( data )->app;

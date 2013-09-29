@@ -4,7 +4,7 @@
 }
 		PL_WI_Window::~Window() {
 }
-void	PL_WI_Window::VInit( Void* data ) {
+void	PL_WI_Window::init( const boost::shared_ptr<>&  ) {
 	PRINTSIG;
 
 //	 =			DynCast<Void,AR_Init>( data )->app;

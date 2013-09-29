@@ -22,7 +22,7 @@ void GetGLError( GLenum error ) {
 	}
 }
 
-void	PL_RE_GL_Renderer::VInit( Void* data ) {
+void	PL_RE_GL_Renderer::init( const boost::shared_ptr<>&  ) {
 	PRINTSIG;
 
 	printf( "OpenGL version %s\n", glGetString(GL_VERSION) );

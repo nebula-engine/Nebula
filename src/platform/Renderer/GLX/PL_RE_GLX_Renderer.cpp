@@ -2,7 +2,7 @@
 
 #include <Platform/Renderer/GLX/PL_RE_GLX_Renderer.h>
 
-void	PL_RE_GLX_Renderer::VInit( Void* data ) {
+void	PL_RE_GLX_Renderer::init( const boost::shared_ptr<>&  ) {
 	PRINTSIG;
 	
 	att = new GLint[5];

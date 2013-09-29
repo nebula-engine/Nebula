@@ -2,9 +2,9 @@
 
 #include <content/Shape/Admin/CO_SH_AD_Box.h>
 
-#include <content/actor/Physics/CO_AC_PH_RigidDynamicBox.h>
-#include <content/actor/Physics/PhysX/CO_AC_PH_PX_RigidDynamicBox.h>
-#include <content/actor/Renderer/CO_AC_RE_RigidDynamicBox.h>
+#include <content/actor/Physics/CO_AC_PH_rigid_dynamicBox.h>
+#include <content/actor/Physics/PhysX/CO_AC_PH_PX_rigid_dynamicBox.h>
+#include <content/actor/Renderer/CO_AC_RE_rigid_dynamicBox.h>
 
 
 
@@ -13,63 +13,63 @@
 
 
 
-#include <nebula/content/actor/admin/ncaa::RigidDynamicBox.h>
+#include <nebula/content/actor/admin/ncaa::rigid_dynamicBox.h>
 
-		ncaa::RigidDynamicBox::RigidDynamicBox() {
+		ncaa::rigid_dynamicBox::rigid_dynamicBox() {
 	PRINTSIG;
 	
 	m_hx = 1;
 	m_hy = 1;
 	m_hz = 1;
 }
-		ncaa::RigidDynamicBox::~RigidDynamicBox() {
+		ncaa::rigid_dynamicBox::~rigid_dynamicBox() {
 	PRINTSIG;
 }
-void	ncaa::RigidDynamicBox::VInit( Void* v )
+void	ncaa::rigid_dynamicBox::VInit( Void* v )
 {
 	PRINTSIG;
-	ncaa::RigidDynamic::VInit( v );
+	ncaa::rigid_dynamic::VInit( v );
 
 	// Physics
 #ifdef __PHYSX
-	CO_AC_PH_PX_RigidDynamicBox* acPhPxRigidDynamicBox = 0;
+	CO_AC_PH_PX_rigid_dynamicBox* acPhPxrigid_dynamicBox = 0;
 
-	acPhPxRigidDynamicBox = new CO_AC_PH_PX_RigidDynamicBox( m_app );
+	acPhPxrigid_dynamicBox = new CO_AC_PH_PX_rigid_dynamicBox( m_app );
 
-	acPhPxRigidDynamicBox->CO_AC_PH_PX_RigidDynamic::VInit( v );
+	acPhPxrigid_dynamicBox->CO_AC_PH_PX_rigid_dynamic::VInit( v );
 
-	m_acPhRigidDynamicBox = acPhPxRigidDynamicBox;
+	m_acPhrigid_dynamicBox = acPhPxrigid_dynamicBox;
 #else
-	Ptr<CO_AC_PH_RigidDynamicBox>::Set_Or_Error(new CO_AC_PH_RigidDynamicBox());
+	Ptr<CO_AC_PH_rigid_dynamicBox>::Set_Or_Error(new CO_AC_PH_rigid_dynamicBox());
 #endif
 	
-	Ptr<CO_AC_PH_RigidDynamicBox>::Get()->CO_AC_PH_RigidDynamicBox::VInit( v );
+	Ptr<CO_AC_PH_rigid_dynamicBox>::Get()->CO_AC_PH_rigid_dynamicBox::VInit( v );
 	
-	Ptr<CO_AC_PH_base>::Set( Ptr<CO_AC_PH_RigidDynamicBox>::Get() );
+	Ptr<CO_AC_PH_base>::Set( Ptr<CO_AC_PH_rigid_dynamicBox>::Get() );
 	
 	
 
 	// Renderer
 	
 
-	L__CO_AC_RE_RigidDynamicBox::Set_Or_Error(new CO_AC_RE_RigidDynamicBox());
+	L__CO_AC_RE_rigid_dynamicBox::Set_Or_Error(new CO_AC_RE_rigid_dynamicBox());
 	
-	L__CO_AC_RE_RigidDynamicBox::Get<CO_AC_RE_RigidDynamicBox>()->VInit( v );
+	L__CO_AC_RE_rigid_dynamicBox::Get<CO_AC_RE_rigid_dynamicBox>()->VInit( v );
 
 	
 }
-void	ncaa::RigidDynamicBox::VShutdown(Void* v) {
+void	ncaa::rigid_dynamicBox::VShutdown(Void* v) {
 	
 }
-void	ncaa::RigidDynamicBox::VUpdate(Void* v) {
-	ncaa::RigidDynamic::VUpdate(v);
+void	ncaa::rigid_dynamicBox::VUpdate(Void* v) {
+	ncaa::rigid_dynamic::VUpdate(v);
 }
-void	ncaa::RigidDynamicBox::VRender( Void* v ) {
+void	ncaa::rigid_dynamicBox::VRender( Void* v ) {
 	//PRINTSIG;
 
 	ncaa::rigid_actor::VRender( v );
 }
-void	ncaa::RigidDynamicBox::VStep( Void* v ) {
+void	ncaa::rigid_dynamicBox::VStep( Void* v ) {
 	//PRINTSIG;
 	/*
 	AR_Step* s = DynCast<Void,AR_Step>( v );
@@ -87,7 +87,7 @@ void	ncaa::RigidDynamicBox::VStep( Void* v ) {
 	}
 	*/
 }
-void	ncaa::RigidDynamicBox::VCreateShape() {
+void	ncaa::rigid_dynamicBox::VCreateShape() {
 	PRINTSIG;
 
 	CreateBox( m_box );

@@ -113,7 +113,7 @@ void	nc_sc_a::base::Render( Void* v )
 
 	m_actorBase.For( &ncaa::base::VRender, v );
 }
-void	nc_sc_a::base::CreateRigidDynamicBox( ncaa::RigidDynamicBox*& co_ac_ad_rigidDynamicBox )
+void	nc_sc_a::base::Createrigid_dynamicBox( ncaa::rigid_dynamicBox*& co_ac_ad_rigidDynamicBox )
 {
 	PRINTSIG;
 	
@@ -121,10 +121,10 @@ void	nc_sc_a::base::CreateRigidDynamicBox( ncaa::RigidDynamicBox*& co_ac_ad_rigi
 
 	if ( !co_ac_ad_rigidDynamicBox ) throw Except("co_ac_ad_rigidDynamicBox is null");
 
-	RegisterRigidDynamic( co_ac_ad_rigidDynamicBox );
+	Registerrigid_dynamic( co_ac_ad_rigidDynamicBox );
 	
 }
-void	nc_sc_a::base::RegisterRigidDynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& act )
+void	nc_sc_a::base::Registerrigid_dynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& act )
 {
 	jess::assertion( m_co_sc_ph_scene );
 	
@@ -132,7 +132,7 @@ void	nc_sc_a::base::RegisterRigidDynamic( const boost::shared_ptr<ncaa::rigid_dy
 	boost::shared_ptr<ncp::base> cont_phys = get_content()->physics_.pointer_;
 	
 	// register
-	cont_phys->RegisterRigidDynamic( co_ac_ad_rigidDynamic );
+	cont_phys->Registerrigid_dynamic( co_ac_ad_rigidDynamic );
 	
 	
 	

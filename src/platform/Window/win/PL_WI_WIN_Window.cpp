@@ -16,7 +16,7 @@
 }
 					Platform::WindowWin::~WindowWin() {
 }
-void				Platform::WindowWin::VInit( Void* data ) {
+void				Platform::WindowWin::init( const boost::shared_ptr<>&  ) {
 	PRINTSIG;
 
 	char szTitle[] = "RCS Client";

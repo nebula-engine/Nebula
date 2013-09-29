@@ -9,7 +9,7 @@
 }
 
 
-void	ncaa::rigid_body::VInit( Void* data ) {
+void	ncaa::rigid_body::init( const boost::shared_ptr<>&  ) {
 	PRINTSIG;
 	ncaa::rigid_actor::VInit( data );
 
