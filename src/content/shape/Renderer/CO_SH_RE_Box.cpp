@@ -51,7 +51,7 @@ void	ncsr::box::render(const boost::shared_ptr<nebula::platform::renderer::base>
 
 	boost::shared_ptr<nca::admin::rigid_actor> grandparent = parent->parent_.lock();
 	
-	jess::assertion( bool(grandparent) ); // throw Except("m_co_sh_ad_box->Get_CO_AC_AD_RigidActor() is null");
+	jess::assertion( bool(grandparent) ); // throw Except("m_co_sh_ad_box->Get_ncaa::rigid_actor() is null");
 	
 	// store transform
 	bnu::matrix<FLOAT> pose = grandparent->get_pose();

@@ -1,23 +1,23 @@
 #include <nebula/content/actor/admin/actor.hpp>
 
 
-CO_AC_AD_Actor::Actor() {
+ncaa::actor::actor() {
 }
-CO_AC_AD_Actor::~Actor() {
+ncaa::actor::~actor() {
 }
-void	CO_AC_AD_Actor::VInit(Void* v) {
+void	ncaa::actor::VInit(Void* v) {
 	PRINTSIG;
-	CO_AC_AD_ActorBase::VInit(v);
+	ncaa::base::VInit(v);
 }
-void	CO_AC_AD_Actor::VShutdown(Void* v) {
+void	ncaa::actor::VShutdown(Void* v) {
 	
 }
-void	CO_AC_AD_Actor::VUpdate(Void* v) {
-	CO_AC_AD_ActorBase::VUpdate(v);
+void	ncaa::actor::VUpdate(Void* v) {
+	ncaa::base::VUpdate(v);
 }
-void	CO_AC_AD_Actor::VRender(Void* v) {
+void	ncaa::actor::VRender(Void* v) {
 }
-void	CO_AC_AD_Actor::VStep(Void* v) {
+void	ncaa::actor::VStep(Void* v) {
 }
 
 

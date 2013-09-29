@@ -2,30 +2,30 @@
 
 #include <Platform/Renderer/PL_RE_Renderer.h>
 #include <Platform/Input/PI_IN_Input.h>
-#include <content/Actor/Physics/CO_AC_PH_Controller.h>
+#include <content/actor/Physics/CO_AC_PH_Controller.h>
 
 #include <framework/Communication/Message/FR_COM_MSG_Message.h>
 #include <framework/Communication/Message/FR_COM_MSG_Data.h>
 
 
 
-#include <content/Actor/Physics/CO_AC_PH_Controller.h>
-#include <content/Actor/Renderer/CO_AC_RE_Controller.h>
+#include <content/actor/Physics/CO_AC_PH_Controller.h>
+#include <content/actor/Renderer/CO_AC_RE_Controller.h>
 
 
 
 
-#include <content/Actor/Admin/CO_AC_AD_Controller.h>
+#include <nebula/content/actor/admin/ncaa::Controller.h>
 
 
 
 
-		CO_AC_AD_Controller::Controller() {
+		ncaa::Controller::Controller() {
 }
-		CO_AC_AD_Controller::~Controller(){
+		ncaa::Controller::~Controller(){
 }
-void	CO_AC_AD_Controller::VInit( Void* v ) {
-	CO_AC_AD_ActorBase::VInit(v);
+void	ncaa::Controller::VInit( Void* v ) {
+	ncaa::base::VInit(v);
 
 
 
@@ -57,21 +57,21 @@ void	CO_AC_AD_Controller::VInit( Void* v ) {
 
 	Ptr<CO_AC_RE_Controller>::Get_Or_Error()->VInit(v);
 }
-void	CO_AC_AD_Controller::VShutdown(Void* v) {
+void	ncaa::Controller::VShutdown(Void* v) {
 	PRINTSIG;
 	
 }
-void	CO_AC_AD_Controller::VUpdate(Void* v) {
-	CO_AC_AD_ActorBase::VUpdate(v);
+void	ncaa::Controller::VUpdate(Void* v) {
+	ncaa::base::VUpdate(v);
 }
-void	CO_AC_AD_Controller::VStep(Void* v) {
-	CO_AC_AD_ActorBase::VStep(v);
+void	ncaa::Controller::VStep(Void* v) {
+	ncaa::base::VStep(v);
 
 	Ptr<CO_AC_PH_Controller>::Get_Or_Error()->VStep(v);
 }
-void	CO_AC_AD_Controller::VRender(Void* v) {
+void	ncaa::Controller::VRender(Void* v) {
 }
-void	CO_AC_AD_Controller::Process( FR_COM_MSG_Message* msg ) {
+void	ncaa::Controller::Process( FR_COM_MSG_Message* msg ) {
 	//PRINTSIG;
 	UINT key;
 	UINT flag;
@@ -115,13 +115,13 @@ void	CO_AC_AD_Controller::Process( FR_COM_MSG_Message* msg ) {
 		break;
 	}
 }
-void	CO_AC_AD_Controller::MouseMove( int x, int y ) {
+void	ncaa::Controller::MouseMove( int x, int y ) {
 	//PRINTSIG;
 	
 	m_a_yaw   -= x * 0.001;
 	m_a_pitch -= y * 0.001;
 }
-void	CO_AC_AD_Controller::VLookAt(Void* v) {
+void	ncaa::Controller::VLookAt(Void* v) {
 	Math::Vec4f rot(0,0,0,1);
 
 	Math::Vec4f yaw(	Math::Vec3f(0,1,0), m_a_yaw );
@@ -140,7 +140,7 @@ void	CO_AC_AD_Controller::VLookAt(Void* v) {
 
 	r->renderer->VLookAt( m_pos, m_pos + m_look, m_up );
 }
-void	CO_AC_AD_Controller::ProcessEvent(UINT evnt)
+void	ncaa::Controller::ProcessEvent(UINT evnt)
 {
 	switch ( evnt )
 	{

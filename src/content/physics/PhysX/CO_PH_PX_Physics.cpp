@@ -4,11 +4,11 @@
 
 #include <content/Scene/Physics/PhysX/CO_SC_PH_PX_Scene.h>
 
-#include <content/Actor/Admin/CO_AC_AD_RigidDynamic.h>
-#include <content/Actor/Physics/PhysX/CO_AC_PH_PX_RigidDynamic.h>
+#include <nebula/content/actor/admin/ncaa::RigidDynamic.h>
+#include <content/actor/Physics/PhysX/CO_AC_PH_PX_RigidDynamic.h>
 
-#include <content/Actor/Admin/CO_AC_AD_Controller.h>
-#include <content/Actor/Physics/PhysX/CO_AC_PH_PX_Controller.h>
+#include <nebula/content/actor/admin/ncaa::Controller.h>
+#include <content/actor/Physics/PhysX/CO_AC_PH_PX_Controller.h>
 
 #include <content/Scene/Admin/CO_SC_AD_Scene.h>
 
@@ -106,7 +106,7 @@ void	CO_PH_PX_Physics::RegisterScene( CO_SC_AD_Scene* scene ) {
 	}
 	
 }
-void	CO_PH_PX_Physics::RegisterRigidDynamic( CO_AC_AD_RigidDynamic* rigidDynamic )
+void	CO_PH_PX_Physics::RegisterRigidDynamic( ncaa::RigidDynamic* rigidDynamic )
 {
 	
 	CO_AC_PH_PX_RigidDynamic* acPhPxRigidDynamic = dynamic_cast<CO_AC_PH_PX_RigidDynamic*>(rigidDynamic->Ptr<CO_AC_PH_RigidDynamic>::Get_Or_Error());
@@ -123,9 +123,9 @@ void	CO_PH_PX_Physics::RegisterRigidDynamic( CO_AC_AD_RigidDynamic* rigidDynamic
 	physx::PxRigidDynamic* actor = m_physics->createRigidDynamic( pxtransform );
 	
 	// Pass PxRigidDynamic to RigidDynamic
-	acPhPxRigidDynamic->SetActor( actor );
+	acPhPxRigidDynamic->Setactor( actor );
 };
-void	CO_PH_PX_Physics::RegisterController( CO_AC_AD_Controller*& controller, CO_SC_AD_Scene* scene ) {
+void	CO_PH_PX_Physics::RegisterController( ncaa::Controller*& controller, CO_SC_AD_Scene* scene ) {
 	// Get actor's physics object
 	CO_AC_PH_PX_Controller* acPhPxController = dynamic_cast<CO_AC_PH_PX_Controller*>( controller->Ptr<CO_AC_PH_Controller>::Get_Or_Error() );
 	

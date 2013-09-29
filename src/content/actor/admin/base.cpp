@@ -1,37 +1,37 @@
 
 
 
-#include <content/Actor/Admin/CO_AC_AD_ActorBase.h>
+#include <nebula/content/actor/admin/base.hpp>
 
-		CO_AC_AD_ActorBase::ActorBase() {
+		ncaa::base::base() {
 	
 }
-		CO_AC_AD_ActorBase::~ActorBase() {
+		ncaa::base::~base() {
 }
-void	CO_AC_AD_ActorBase::VInit(Void* v) {
+void	ncaa::base::VInit(Void* v) {
 	PRINTSIG;
 
 	Ptr<CO_SC_AD_Scene>::Set_Or_Error( DynCast<Void,AR_Init>(v)->scene );
 }
-void	CO_AC_AD_ActorBase::VShutdown(Void* v) {
+void	ncaa::base::VShutdown(Void* v) {
 	PRINTSIG;
 }
-void	CO_AC_AD_ActorBase::VUpdate(Void* v) {
+void	ncaa::base::VUpdate(Void* v) {
 	FR_COM_IComm::Update();
 }
-void	CO_AC_AD_ActorBase::VRender( Void* data ) {
+void	ncaa::base::VRender( Void* data ) {
 	PRINTSIG;
 }
-void	CO_AC_AD_ActorBase::VStep(Void* v)
+void	ncaa::base::VStep(Void* v)
 {
 	
 }
 
 
-void	CO_AC_AD_ActorBase::GetTransform( Math::Transformf& trans ) {
+void	ncaa::base::GetTransform( Math::Transformf& trans ) {
 	trans = m_transform;
 }
-void	CO_AC_AD_ActorBase::SetTransform( Math::Transformf& trans ) {
+void	ncaa::base::SetTransform( Math::Transformf& trans ) {
 	m_transform = trans;
 }
 

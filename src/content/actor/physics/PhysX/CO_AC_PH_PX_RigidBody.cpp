@@ -21,13 +21,13 @@ void	ncapp::rigid_body::init(const boost::shared_ptr<ncaa::base>& parent)
 	
 	jess::assertion( px_actor_ );
 	
-	::physx::PxRigidBody* px_rigid_body = (::physx::PxRigidBody*)px_actor_;
+	::physx::Pxrigid_body* px_rigid_body = (::physx::Pxrigid_body*)px_actor_;
 	
 	//VCreateShape();
 	
 	
 	
-	::physx::PxRigidBodyExt::updateMassAndInertia( *px_rigid_body, density_ );
+	::physx::Pxrigid_bodyExt::updateMassAndInertia( *px_rigid_body, density_ );
 	
 	px_rigid_body->setLinearVelocity( ncpp::boost_to_physx(velocity_) );
 	

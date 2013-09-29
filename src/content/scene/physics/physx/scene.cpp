@@ -12,8 +12,8 @@ namespace bnu = boost::numeric::ublas;
 
 void	nc_sc_pp::base::step(FLOAT dt)
 {
-	//::physx::PxU32 nbPxActor = px_scene_->getNbActors( physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC );
-	//printf("there are %i PxRigidActor objects in the scene\n",nbPxActor);
+	//::physx::PxU32 nbPxactor = px_scene_->getNbactors( physx::PxactorTypeSelectionFlag::eRIGID_DYNAMIC );
+	//printf("there are %i Pxrigid_actor objects in the scene\n",nbPxactor);
 	
 	// PxScene
 	px_scene_->simulate( dt );
@@ -39,9 +39,9 @@ void	nc_sc_pp::base::add_actor(const boost::shared_ptr<ncaa::actor>& act)
 {
 	boost::shared_ptr<ncapp::actor> pp_act = boost::dynamic_pointer_cast<ncapp::actor>( act->physics_.pointer_ );
 	
-	::physx::PxActor* px_actor = pp_act->px_actor_;
+	::physx::Pxactor* px_actor = pp_act->px_actor_;
 	
-	px_scene_->addActor(*px_actor);
+	px_scene_->addactor(*px_actor);
 }
 void	nc_sc_pp::base::customize_scene_desc(::physx::PxSceneDesc& sceneDesc)
 {

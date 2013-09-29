@@ -54,7 +54,7 @@ void						nc_sc_a::base::init( const boost::shared_ptr<ncua::base>& parent )
 void	nc_sc_a::base::shutdown()
 {
 	PRINTSIG;
-	m_actorBase.For( &CO_AC_AD_ActorBase::VShutdown, NULL );
+	m_actorBase.For( &ncaa::base::VShutdown, NULL );
 	m_actorBase.Clear();
 
 	m_view.For( &CO_VI_AD_View::VShutDown );
@@ -96,7 +96,7 @@ void	nc_sc_a::base::update()
 		step( dt );
 	}
 
-	m_actorBase.For( &CO_AC_AD_ActorBase::update, NULL );
+	m_actorBase.For( &ncaa::base::update, NULL );
 	
 	m_view.For( &CO_VI_AD_View::update );
 
@@ -105,15 +105,15 @@ void	nc_sc_a::base::step(FLOAT dt)i
 {
 	//PRINTSIG;
 	
-	m_actorBase.For( &CO_AC_AD_ActorBase::VStep, v );
+	m_actorBase.For( &ncaa::base::VStep, v );
 }
 void	nc_sc_a::base::Render( Void* v )
 {
 	//PRINTSIG;
 
-	m_actorBase.For( &CO_AC_AD_ActorBase::VRender, v );
+	m_actorBase.For( &ncaa::base::VRender, v );
 }
-void	nc_sc_a::base::CreateRigidDynamicBox( CO_AC_AD_RigidDynamicBox*& co_ac_ad_rigidDynamicBox )
+void	nc_sc_a::base::CreateRigidDynamicBox( ncaa::RigidDynamicBox*& co_ac_ad_rigidDynamicBox )
 {
 	PRINTSIG;
 	
@@ -141,9 +141,9 @@ void	nc_sc_a::base::RegisterRigidDynamic( const boost::shared_ptr<ncaa::rigid_dy
 	
 	
 	// Add the actor to the CO_SC_PH_Scene object
-	m_co_sc_ph_scene->AddActor( co_ac_ad_rigidDynamic );
+	m_co_sc_ph_scene->Addactor( co_ac_ad_rigidDynamic );
 }
-void	nc_sc_a::base::CreateController( CO_AC_AD_Controller*& controller )
+void	nc_sc_a::base::CreateController( ncaa::Controller*& controller )
 {
 	// create controller object
 	m_actorBase.Create(controller);

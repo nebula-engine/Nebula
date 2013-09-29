@@ -75,27 +75,27 @@ void NbScene::render()
         return;
     }
     
-    //NbActor* actor;
+    //Nbactor* actor;
     
-    PxActor** userBuffer = NULL;
+    Pxactor** userBuffer = NULL;
     PxU32 bufferSize = 0;
-    PxU32 nbActors = 0;
+    PxU32 nbactors = 0;
     
-    if ( bufferSize = pxScene->getNbActors( NbActorTypes::eRENDER ) )
+    if ( bufferSize = pxScene->getNbactors( NbactorTypes::eRENDER ) )
     {
-        userBuffer = new PxActor*[bufferSize];
+        userBuffer = new Pxactor*[bufferSize];
         
-        nbActors = pxScene->getActors( NbActorTypes::eRENDER, userBuffer, bufferSize, 0 );
+        nbactors = pxScene->getactors( NbactorTypes::eRENDER, userBuffer, bufferSize, 0 );
         
-        for ( int i = 0; i < nbActors; i++ )
+        for ( int i = 0; i < nbactors; i++ )
         {
             switch( userBuffer[i]->getType() )
             {
                 case eRIGID_STATIC:
-                    render( reinterpret_cast<PxRigidActor>(userBuffer[i]) );
+                    render( reinterpret_cast<Pxrigid_actor>(userBuffer[i]) );
                     break;
                 case eRIGID_DYNAMIC:
-                    render( reinterpret_cast<PxRigidActor>(userBuffer[i]) );
+                    render( reinterpret_cast<Pxrigid_actor>(userBuffer[i]) );
                     break;
                 case ePARTICLE_SYSTEM:
                     render( reinterpret_cast<PxParticleSystem>(userBuffer[i]) );
@@ -116,17 +116,17 @@ void NbScene::render()
     }
 }
 
-void NbScene::render( PxRigidActor* pxRigidActor )
+void NbScene::render( Pxrigid_actor* pxrigid_actor )
 {
     PxShape** userBuffer = NULL;
     PxU32 bufferSize = 0;
     PxU32 nbShapes = 0;
     
-    if ( bufferSize = pxRigidActor->getNbShapes() )
+    if ( bufferSize = pxrigid_actor->getNbShapes() )
     {
         userBuffer = new PxShape*[bufferSize];
         
-        nbShapes = pxRigidActor->getShapes( userBuffer, bufferSize, 0 );
+        nbShapes = pxrigid_actor->getShapes( userBuffer, bufferSize, 0 );
         
         for ( int i = 0; i < nbShapes; i++ )
         {

@@ -1,39 +1,38 @@
-#include <utilities/Types/Utilities.h>
 
-#include <content/Actor/Admin/CO_AC_AD_RigidBody.h>
-
+#include <nebula/content/actor/admin/rigid_body.h>
 
 
-		CO_AC_AD_RigidBody::RigidBody() {
+
+		ncaa::rigid_body::rigid_body() {
 }
-		CO_AC_AD_RigidBody::~RigidBody() {
+		ncaa::rigid_body::~rigid_body() {
 }
 
 
-void	CO_AC_AD_RigidBody::VInit( Void* data ) {
+void	ncaa::rigid_body::VInit( Void* data ) {
 	PRINTSIG;
-	CO_AC_AD_RigidActor::VInit( data );
+	ncaa::rigid_actor::VInit( data );
 
 	
 }
-void	CO_AC_AD_RigidBody::VShutdown(Void* v) {
+void	ncaa::rigid_body::VShutdown(Void* v) {
 	PRINTSIG;
 	
 }
-void	CO_AC_AD_RigidBody::VUpdate(Void* v) {
-	CO_AC_AD_RigidActor::VUpdate(v);
+void	ncaa::rigid_body::VUpdate(Void* v) {
+	ncaa::rigid_actor::VUpdate(v);
 }
-void	CO_AC_AD_RigidBody::VRender( Void* data ) {
+void	ncaa::rigid_body::VRender( Void* data ) {
 	PRINTSIG;
 	
 }
-void	CO_AC_AD_RigidBody::VStep( Void* data ) {
+void	ncaa::rigid_body::VStep( Void* data ) {
 	PRINTSIG;
 	
 }
 
 
-void	CO_AC_AD_RigidBody::VCreateShape() {
+void	ncaa::rigid_body::VCreateShape() {
 }
 
 

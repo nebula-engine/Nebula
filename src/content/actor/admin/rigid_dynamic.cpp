@@ -1,29 +1,29 @@
-#include <content/Actor/Admin/CO_AC_AD_RigidDynamic.h>
+#include <nebula/content/actor/admin/ncaa::RigidDynamic.h>
 
 
-		CO_AC_AD_RigidDynamic::RigidDynamic() {
+		ncaa::RigidDynamic::RigidDynamic() {
 }
-		CO_AC_AD_RigidDynamic::~RigidDynamic() {
+		ncaa::RigidDynamic::~RigidDynamic() {
 }
 
 
 
-void	CO_AC_AD_RigidDynamic::VInit( Void* data ) {
+void	ncaa::RigidDynamic::VInit( Void* data ) {
 	PRINTSIG;
-	CO_AC_AD_RigidBody::VInit( data );
+	ncaa::rigid_body::VInit( data );
 }
-void	CO_AC_AD_RigidDynamic::VShutdown(Void* v) {
-	PRINTSIG;
-	
-}
-void	CO_AC_AD_RigidDynamic::VUpdate(Void* v) {
-	CO_AC_AD_RigidBody::VUpdate(v);
-}
-void	CO_AC_AD_RigidDynamic::VRender( Void* data ) {
+void	ncaa::RigidDynamic::VShutdown(Void* v) {
 	PRINTSIG;
 	
 }
-void	CO_AC_AD_RigidDynamic::VStep( Void* data ) {
+void	ncaa::RigidDynamic::VUpdate(Void* v) {
+	ncaa::rigid_body::VUpdate(v);
+}
+void	ncaa::RigidDynamic::VRender( Void* data ) {
+	PRINTSIG;
+	
+}
+void	ncaa::RigidDynamic::VStep( Void* data ) {
 	PRINTSIG;
 	
 }
@@ -31,7 +31,7 @@ void	CO_AC_AD_RigidDynamic::VStep( Void* data ) {
 
 
 
-void	CO_AC_AD_RigidDynamic::VCreateShape() {
+void	ncaa::RigidDynamic::VCreateShape() {
 	PRINTSIG;
 	
 }

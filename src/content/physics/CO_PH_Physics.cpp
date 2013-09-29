@@ -14,11 +14,11 @@ void	Content::Physics::Physics::RegisterScene( CO_SC_AD_Scene* scene ) {
 	PRINTSIG;
 	
 }
-void	Content::Physics::Physics::RegisterController( CO_AC_AD_Controller*& controller, CO_SC_AD_Scene* scene ) {
+void	Content::Physics::Physics::RegisterController( ncaa::Controller*& controller, CO_SC_AD_Scene* scene ) {
 	PRINTSIG;
 	
 }
-void	Content::Physics::Physics::RegisterRigidDynamic( CO_AC_AD_RigidDynamic* rigidDynamic ) {
+void	Content::Physics::Physics::RegisterRigidDynamic( ncaa::RigidDynamic* rigidDynamic ) {
 	PRINTSIG;
 	
 }

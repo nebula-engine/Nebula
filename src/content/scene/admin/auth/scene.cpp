@@ -4,8 +4,8 @@
 #include <content/Physics/CO_PH_Physics.h>
 #include <content/Physics/PhysicsScene.h>
 #include <content/SceneAuth.h>
-#include <content/Actor/Admin/CO_AC_AD_RigidDynamicBox.h>
-#include <content/Actor/Admin/Controller.h>
+#include <nebula/content/actor/admin/ncaa::RigidDynamicBox.h>
+#include <nebula/content/actor/admin/Controller.h>
 
 
 		Content::SceneAuth::SceneAuth(): CO_SC_AD_Scene( app ) {

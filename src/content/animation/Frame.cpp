@@ -1,6 +1,6 @@
 #include <platform/Renderer/PL_RE_Renderer.h>
 
-#include <content/actor/Admin/CO_AC_AD_ActorBase.h>
+#include <content/actor/Admin/ncaa::base.h>
 
 
 
@@ -19,7 +19,7 @@ void	nebula::content::animation::frame::Step(FLOAT dt)
 void	nebula::content::animation::frame::AddChild(nebula::content::animation::frame* f) {
 	m_children.push_back(f);
 }
-void	nebula::content::animation::frame::AddActor(nebula::content::actor::admin::base* a) {
+void	nebula::content::animation::frame::Addactor(nebula::content::actor::admin::base* a) {
 	m_actors.push_back(a);
 }
 

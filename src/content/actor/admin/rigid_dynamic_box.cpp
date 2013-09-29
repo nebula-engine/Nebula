@@ -2,9 +2,9 @@
 
 #include <content/Shape/Admin/CO_SH_AD_Box.h>
 
-#include <content/Actor/Physics/CO_AC_PH_RigidDynamicBox.h>
-#include <content/Actor/Physics/PhysX/CO_AC_PH_PX_RigidDynamicBox.h>
-#include <content/Actor/Renderer/CO_AC_RE_RigidDynamicBox.h>
+#include <content/actor/Physics/CO_AC_PH_RigidDynamicBox.h>
+#include <content/actor/Physics/PhysX/CO_AC_PH_PX_RigidDynamicBox.h>
+#include <content/actor/Renderer/CO_AC_RE_RigidDynamicBox.h>
 
 
 
@@ -13,22 +13,22 @@
 
 
 
-#include <content/Actor/Admin/CO_AC_AD_RigidDynamicBox.h>
+#include <nebula/content/actor/admin/ncaa::RigidDynamicBox.h>
 
-		CO_AC_AD_RigidDynamicBox::RigidDynamicBox() {
+		ncaa::RigidDynamicBox::RigidDynamicBox() {
 	PRINTSIG;
 	
 	m_hx = 1;
 	m_hy = 1;
 	m_hz = 1;
 }
-		CO_AC_AD_RigidDynamicBox::~RigidDynamicBox() {
+		ncaa::RigidDynamicBox::~RigidDynamicBox() {
 	PRINTSIG;
 }
-void	CO_AC_AD_RigidDynamicBox::VInit( Void* v )
+void	ncaa::RigidDynamicBox::VInit( Void* v )
 {
 	PRINTSIG;
-	CO_AC_AD_RigidDynamic::VInit( v );
+	ncaa::RigidDynamic::VInit( v );
 
 	// Physics
 #ifdef __PHYSX
@@ -45,7 +45,7 @@ void	CO_AC_AD_RigidDynamicBox::VInit( Void* v )
 	
 	Ptr<CO_AC_PH_RigidDynamicBox>::Get()->CO_AC_PH_RigidDynamicBox::VInit( v );
 	
-	Ptr<CO_AC_PH_ActorBase>::Set( Ptr<CO_AC_PH_RigidDynamicBox>::Get() );
+	Ptr<CO_AC_PH_base>::Set( Ptr<CO_AC_PH_RigidDynamicBox>::Get() );
 	
 	
 
@@ -58,18 +58,18 @@ void	CO_AC_AD_RigidDynamicBox::VInit( Void* v )
 
 	
 }
-void	CO_AC_AD_RigidDynamicBox::VShutdown(Void* v) {
+void	ncaa::RigidDynamicBox::VShutdown(Void* v) {
 	
 }
-void	CO_AC_AD_RigidDynamicBox::VUpdate(Void* v) {
-	CO_AC_AD_RigidDynamic::VUpdate(v);
+void	ncaa::RigidDynamicBox::VUpdate(Void* v) {
+	ncaa::RigidDynamic::VUpdate(v);
 }
-void	CO_AC_AD_RigidDynamicBox::VRender( Void* v ) {
+void	ncaa::RigidDynamicBox::VRender( Void* v ) {
 	//PRINTSIG;
 
-	CO_AC_AD_RigidActor::VRender( v );
+	ncaa::rigid_actor::VRender( v );
 }
-void	CO_AC_AD_RigidDynamicBox::VStep( Void* v ) {
+void	ncaa::RigidDynamicBox::VStep( Void* v ) {
 	//PRINTSIG;
 	/*
 	AR_Step* s = DynCast<Void,AR_Step>( v );
@@ -87,7 +87,7 @@ void	CO_AC_AD_RigidDynamicBox::VStep( Void* v ) {
 	}
 	*/
 }
-void	CO_AC_AD_RigidDynamicBox::VCreateShape() {
+void	ncaa::RigidDynamicBox::VCreateShape() {
 	PRINTSIG;
 
 	CreateBox( m_box );

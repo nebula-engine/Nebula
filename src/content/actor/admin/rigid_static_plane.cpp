@@ -1,31 +1,31 @@
-#include <content/Actor/Admin/CO_AC_AD_RigidStaticPlane.h>
+#include <nebula/content/actor/admin/ncaa::RigidStaticPlane.h>
 
 
-		CO_AC_AD_RigidStaticPlane::RigidStaticPlane() {
+		ncaa::RigidStaticPlane::RigidStaticPlane() {
 }
-		CO_AC_AD_RigidStaticPlane::~RigidStaticPlane() {
+		ncaa::RigidStaticPlane::~RigidStaticPlane() {
 }
 
 
 
 
-void	CO_AC_AD_RigidStaticPlane::VInit( Void* data ) {
+void	ncaa::RigidStaticPlane::VInit( Void* data ) {
 	PRINTSIG;
-	CO_AC_AD_RigidStatic::VInit( data );
+	ncaa::RigidStatic::VInit( data );
 }
-void	CO_AC_AD_RigidStaticPlane::VShutDown() {
-	PRINTSIG;
-	
-}
-void	CO_AC_AD_RigidStaticPlane::VUpdate() {
+void	ncaa::RigidStaticPlane::VShutDown() {
 	PRINTSIG;
 	
 }
-void	CO_AC_AD_RigidStaticPlane::VRender( Void* data ) {
+void	ncaa::RigidStaticPlane::VUpdate() {
 	PRINTSIG;
 	
 }
-void	CO_AC_AD_RigidStaticPlane::VStep( Void* data ) {
+void	ncaa::RigidStaticPlane::VRender( Void* data ) {
+	PRINTSIG;
+	
+}
+void	ncaa::RigidStaticPlane::VStep( Void* data ) {
 	PRINTSIG;
 	
 }
@@ -35,7 +35,7 @@ void	CO_AC_AD_RigidStaticPlane::VStep( Void* data ) {
 
 
 
-void	CO_AC_AD_RigidStaticPlane::VCreateShape() {
+void	ncaa::RigidStaticPlane::VCreateShape() {
 	
 }
 

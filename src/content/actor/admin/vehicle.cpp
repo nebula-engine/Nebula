@@ -1,28 +1,28 @@
-#include <content/Actor/Admin/CO_AC_AD_Vehicle.h>
+#include <nebula/content/actor/admin/ncaa::Vehicle.h>
 
-	CO_AC_AD_Vehicle::Vehicle() {
+	ncaa::Vehicle::Vehicle() {
 }
-    CO_AC_AD_Vehicle::~Vehicle(){
+    ncaa::Vehicle::~Vehicle(){
 }
     
 
-void	CO_AC_AD_Vehicle::VInit( Void* v ) {
+void	ncaa::Vehicle::VInit( Void* v ) {
 	PRINTSIG;
-	CO_AC_AD_ActorBase::VInit( v );
+	ncaa::base::VInit( v );
 }
-void	CO_AC_AD_Vehicle::VShutDown() {
-	PRINTSIG;
-	
-}
-void	CO_AC_AD_Vehicle::VUpdate() {
+void	ncaa::Vehicle::VShutDown() {
 	PRINTSIG;
 	
 }
-void	CO_AC_AD_Vehicle::VRender( Void* data ) {
+void	ncaa::Vehicle::VUpdate() {
 	PRINTSIG;
 	
 }
-void	CO_AC_AD_Vehicle::VStep( Void* data ) {
+void	ncaa::Vehicle::VRender( Void* data ) {
+	PRINTSIG;
+	
+}
+void	ncaa::Vehicle::VStep( Void* data ) {
 	PRINTSIG;
 	
 }
