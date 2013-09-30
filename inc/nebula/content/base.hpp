@@ -9,6 +9,7 @@
 #include <nebula/utilities/types/framework/types.hpp>
 #include <nebula/utilities/types/content/types.hpp>
 #include <nebula/utilities/types/content/universe/types.hpp>
+#include <nebula/utilities/types/content/scene/types.hpp>
 
 #include <nebula/ns.hpp>
 
@@ -26,7 +27,7 @@ virtual void							init(const boost::shared_ptr<nebula::framework::app>&);
 virtual void							shutdown();
 virtual void							update();
 virtual void							register_universe(const boost::shared_ptr<ncua::base>&);
-
+virtual void							register_scene( const boost::shared_ptr<nc_sc_a::base>& );
 
 
 /// physics

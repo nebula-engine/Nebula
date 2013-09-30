@@ -49,124 +49,93 @@ void						nc_sc_a::base::init( const boost::shared_ptr<ncua::base>& parent )
 #endif
 	
 	
-	get_content()->RegisterScene( this );
+	get_content()->register_scene( shared_from_this() );
 }
-void	nc_sc_a::base::shutdown()
+void						nc_sc_a::base::shutdown()
 {
-	PRINTSIG;
-	m_actorBase.For( &ncaa::base::VShutdown, NULL );
-	m_actorBase.Clear();
-
-	m_view.For( &CO_VI_AD_View::VShutDown );
-	m_view.Clear();
+	actors_.foreach( boost::bind( &ncaa::base::shutdown, _1 ) );
+	actors_.clear();
+	
+	views_.foreach( boost::bind( &ncva::base::shutdown, _1 ) );
+	views_.clear();
 }
-void	nc_sc_a::base::CreateViewHuman( CO_VI_AD_HU_View*& viewHuman )
+void						nc_sc_a::base::create_view_human( const boost::shared_ptr<ncvah::base>& v )
 {
-	PRINTSIG;
-
-	m_view.Create(viewHuman);
-
-	AR_Init i;
-	i.app =		m_app;
-	i.scene =	this;
-
-	viewHuman->VInit( &i );
-	
-	
-	
+	views_.push<ncvah::base>( v, boost::bind( &ncvah::base::init, _1, shared_from_this() ) );
 }
-void	nc_sc_a::base::update()
+void						nc_sc_a::base::update()
 {
 	// time
-	std::time_t now;
-	time( &now );
+	std::time_t now_;
+	time( &now_ );
 	// for debugging, will simply add stepSize to accumulator on every update
 	//m_accumulator += difftime( now, m_last );
 	accumulator_ += step_size_;
 	last_ = now_;
 	
 	
-	dt = step_size_;
-
 	// Step
 	while ( accumulator_ > step_size_ )
 	{
 		accumulator_ -= step_size_;
-
-		step( dt );
+		
+		step( step_size_ );
 	}
-
-	m_actorBase.For( &ncaa::base::update, NULL );
 	
-	m_view.For( &CO_VI_AD_View::update );
-
+	actors_.foreach( boost::bind( &ncaa::base::update, _1 ) );
+	
+	views_.foreach( boost::bind( &ncva::base::update, _1 ) );
 }
-void	nc_sc_a::base::step(FLOAT dt)i
+void						nc_sc_a::base::step( FLOAT dt )
 {
 	//PRINTSIG;
 	
-	m_actorBase.For( &ncaa::base::VStep, v );
+	actors_.foreach( boost::bind( &ncaa::base::step, _1, dt ) );
 }
-void	nc_sc_a::base::Render( Void* v )
+void						nc_sc_a::base::render( const boost::shared_ptr<npr::base>& rnd )
 {
 	//PRINTSIG;
-
-	m_actorBase.For( &ncaa::base::VRender, v );
-}
-void	nc_sc_a::base::Createrigid_dynamicBox( ncaa::rigid_dynamicBox*& co_ac_ad_rigidDynamicBox )
-{
-	PRINTSIG;
 	
-	m_actorBase.Create( co_ac_ad_rigidDynamicBox );
-
-	if ( !co_ac_ad_rigidDynamicBox ) throw Except("co_ac_ad_rigidDynamicBox is null");
-
-	Registerrigid_dynamic( co_ac_ad_rigidDynamicBox );
+	actors_.foreach( boost::bind( &ncaa::base::render, _1, rnd ) );
+}
+void						nc_sc_a::base::create_rigid_dynamic_box( const boost::shared_ptr<ncaa::rigid_dynamic_box>& act )
+{
+	//PRINTSIG;
+	
+	actors_.push<ncaa::rigid_dynamic_box>( act, boost::bind( &ncaa::rigid_dynamic_box::init, _1, shared_from_this() ) );
+	
+	//if ( !co_ac_ad_rigidDynamicBox ) throw Except("co_ac_ad_rigidDynamicBox is null");
+	
+	register_rigid_dynamic( act );
 	
 }
-void	nc_sc_a::base::Registerrigid_dynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& act )
+void						nc_sc_a::base::register_rigid_dynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& act )
 {
-	jess::assertion( m_co_sc_ph_scene );
+	//jess::assertion( m_co_sc_ph_scene );
 	
 	// content physics
 	boost::shared_ptr<ncp::base> cont_phys = get_content()->physics_.pointer_;
 	
 	// register
-	cont_phys->Registerrigid_dynamic( co_ac_ad_rigidDynamic );
+	cont_phys->register_rigid_dynamic( act );
 	
 	
 	
 	// initialize the actor
-	co_ac_ad_rigidDynamic->init( shared_from_this() );
+	//co_ac_ad_rigidDynamic->init( shared_from_this() );
 	
 	
 	// Add the actor to the CO_SC_PH_Scene object
-	m_co_sc_ph_scene->Addactor( co_ac_ad_rigidDynamic );
+	physics_.pointer_->add_actor( act );
 }
-void	nc_sc_a::base::CreateController( ncaa::Controller*& controller )
+void						nc_sc_a::base::CreateController( ncaa::Controller*& act )
 {
 	// create controller object
-	m_actorBase.Create(controller);
+	actors_.create( act, boost::bind( &ncaa::controller::init, _1, shared_from_this() ) );
 	
 	// register controller with global physics object
-	m_app->GetContent()->GetPhysics()->RegisterController( controller, this );
-
-	// init
-	AR_Init i;
-	i.app = m_app;
-
-	controller->VInit(&i);
+	get_content()->get_physics()->register_controller( controller, this );
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

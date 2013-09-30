@@ -39,9 +39,9 @@ void	nc_sc_pp::base::add_actor(const boost::shared_ptr<ncaa::actor>& act)
 {
 	boost::shared_ptr<ncapp::actor> pp_act = boost::dynamic_pointer_cast<ncapp::actor>( act->physics_.pointer_ );
 	
-	::physx::Pxactor* px_actor = pp_act->px_actor_;
+	::physx::PxActor* px_actor = pp_act->px_actor_;
 	
-	px_scene_->addactor(*px_actor);
+	px_scene_->addActor(*px_actor);
 }
 void	nc_sc_pp::base::customize_scene_desc(::physx::PxSceneDesc& sceneDesc)
 {

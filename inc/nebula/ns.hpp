@@ -33,6 +33,13 @@ namespace nebula
 			namespace renderer
 			{}
 		}
+		namespace view
+		{
+			namespace admin
+			{
+				namespace human {}
+			}
+		}
 		namespace actor
 		{
 			namespace admin
@@ -65,20 +72,35 @@ namespace npr		= nebula::platform::renderer;
 namespace ncp		= nebula::content::physics;
 namespace ncpp		= nebula::content::physics::physx;
 
+// universe
 namespace ncua		= nebula::content::universe::admin;
 
+// actor
 namespace nca		= nebula::content::actor;
 namespace ncaa		= nebula::content::actor::admin;
 namespace ncap		= nca::physics;
 namespace ncapp		= ncap::physx;
 namespace ncar		= nebula::content::actor::renderer;
 
+// scene
 namespace nc_sc		= nebula::content::scene;
 namespace nc_sc_a	= nc_sc::admin;
 namespace nc_sc_p	= nc_sc::physics;
 namespace nc_sc_pp	= nc_sc_p::physx;
 namespace nc_sc_r	= nebula::content::scene::renderer;
 
+// view
+namespace ncva		= nebula::content::view::admin;
+namespace ncvah		= nebula::content::view::admin::human;
+
+
+// shape
 namespace ncsa		= nebula::content::shape::admin;
+namespace ncsp		= nebula::content::shape::physics;
+namespace ncsr		= nebula::content::shape::renderer;
+
+
 
 #endif
+
+

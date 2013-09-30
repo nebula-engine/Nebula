@@ -7,6 +7,9 @@
 #include <boost/weak_ptr.hpp>
 
 #include <nebula/utilities/types/content/types.hpp>
+#include <nebula/utilities/types/content/actor/types.hpp>
+
+#include <nebula/ns.hpp>
 
 namespace nebula
 {
@@ -54,31 +57,32 @@ namespace content
 			///@name standard functions
 			///@{
 			/// initialize
-			virtual	void				init(const boost::shared_ptr<nebula::content::base>&);
+			virtual	void						init(const boost::shared_ptr<nebula::content::base>&);
 			/// shutdown
-			virtual	void				shutdown();
+			virtual	void						shutdown();
 			///@}
 
 
 
 			
 
-/*
+
 			///@name Register objects
 			///@{
 			/// %CO_SC_AD_Scene
-			virtual void				RegisterScene(nebula::content CO_SC_AD_Scene* scene );
+			//virtual void				RegisterScene(nebula::content CO_SC_AD_Scene* scene );
 			/// %Controller
-			virtual	void				RegisterController( CO_AC_AD_Controller*& controller, CO_SC_AD_Scene* scene );
-			/// %RigidDynamic
-			virtual	void				RegisterRigidDynamic( CO_AC_AD_RigidDynamic* rigidDynamic );
+			//virtual	void				RegisterController( CO_AC_AD_Controller*& controller, CO_SC_AD_Scene* scene );
+			/// rigid dynamic
+			virtual	void						register_rigid_dynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& );
 			///@}
-
-*/
+			
+			
+			virtual void						add_actor( const boost::shared_ptr<ncaa::base>& );
 
 		protected:
 			/// parent
-			boost::weak_ptr<nebula::content::base>					parent_;
+			boost::weak_ptr<nebula::content::base>			parent_;
 			
 			
 			

@@ -51,7 +51,7 @@ void	ncs::physics::physx::box::create_shape()
 	boost::shared_ptr<ncapp::rigid_actor> ph_px_act = boost::dynamic_pointer_cast<nca::physics::physx::rigid_actor>( ph_act );
 	
 	// Pxrigid_actor
-	::physx::Pxrigid_actor* px_rigid_actor = (::physx::Pxrigid_actor*)( ph_px_act->px_actor_ );
+	::physx::PxRigidActor* px_rigid_actor = (::physx::PxRigidActor*)( ph_px_act->px_actor_ );
 	
 	// physx material
 	boost::shared_ptr<ncapp::material> mat = boost::dynamic_pointer_cast<ncapp::material>( ad_act->materials_.at(0)->physics_.pointer_ );
