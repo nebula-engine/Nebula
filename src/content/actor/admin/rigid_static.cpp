@@ -1,33 +1,33 @@
-#include <utilities/Types/Utilities.h>
-
-#include <nebula/content/actor/admin/ncaa::rigid_static.h>
+#include <nebula/content/actor/admin/rigid_static.hpp>
 
 
-		ncaa::rigid_static::rigid_static() {
+ncaa::rigid_static::rigid_static()
+{
 }
-		ncaa::rigid_static::~rigid_static() {
+ncaa::rigid_static::~rigid_static()
+{
 }
-
-
-
-void	ncaa::rigid_static::VInit(Void* v) {
-	PRINTSIG;
-	ncaa::rigid_actor::VInit(v);
+void	ncaa::rigid_static::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+{
+	//PRINTSIG;
+	ncaa::rigid_actor::init(parent);
 }
-void	ncaa::rigid_static::VShutDown() {
-	PRINTSIG;
+void	ncaa::rigid_static::shutdown()
+{
+	//PRINTSIG;
 	
 }
-void	ncaa::rigid_static::VUpdate() {
-	PRINTSIG;
+void	ncaa::rigid_static::update()
+{
+	//PRINTSIG;
 	
 }
-void	ncaa::rigid_static::VRender( Void* data ) {
-	PRINTSIG;
+void	ncaa::rigid_static::render( const boost::shared_ptr<npr::base>& rnd ) {
+	//PRINTSIG;
 	
 }
-void	ncaa::rigid_static::VStep( Void* data ) {
-	PRINTSIG;
+void	ncaa::rigid_static::step( FLOAT dt ) {
+	//PRINTSIG;
 	
 }
 

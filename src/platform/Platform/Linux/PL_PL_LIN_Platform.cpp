@@ -17,9 +17,9 @@
 		PL_PL_LIN_Platform::~Platform() {
 	
 }
-void	PL_PL_LIN_Platform::VInit( Void* v ) {
+void	PL_PL_LIN_Platform::init(  v ) {
 	PRINTSIG;
-	PL_PL_Platform::VInit( v );
+	PL_PL_Platform::init( v );
 	/*
 	char* pPath;
 	pPath = getenv("DISPLAY");
@@ -49,10 +49,10 @@ void	PL_PL_LIN_Platform::VInit( Void* v ) {
 	
 	
 }
-void	PL_PL_LIN_Platform::VShutDown() {
+void	PL_PL_LIN_Platform::shutdown() {
 	PRINTSIG;
 	
-	Platform::Platform::VShutDown();
+	Platform::Platform::shutdown();
 	
 	XCloseDisplay( m_xdisplay );
 	
@@ -97,12 +97,12 @@ void	PL_PL_LIN_Platform::VCreateWindow( PL_WI_Window*& window ) {
 	i.app =			m_app;
 	i.platform =	this;
 
-	windowLinux->VInit( &i );
+	windowLinux->init( &i );
 	
 }
-void	PL_PL_LIN_Platform::VUpdate() {
+void	PL_PL_LIN_Platform::update() {
 	//PRINTSIG;
-	PL_PL_Platform::VUpdate();
+	PL_PL_Platform::update();
 }
 
 

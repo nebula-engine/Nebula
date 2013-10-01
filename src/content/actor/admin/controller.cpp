@@ -1,162 +1,145 @@
-#include <utilities/Types/Utilities.h>
+#include <nebula/define.hpp>
 
-#include <Platform/Renderer/PL_RE_Renderer.h>
-#include <Platform/Input/PI_IN_Input.h>
-#include <content/actor/Physics/CO_AC_PH_Controller.h>
+#include <nebula/utilities/free.hpp>
 
-#include <framework/Communication/Message/FR_COM_MSG_Message.h>
-#include <framework/Communication/Message/FR_COM_MSG_Data.h>
+#include <nebula/platform/renderer/base.hpp>
 
+#include <nebula/platform/key.hpp>
 
+#include <nebula/platform/window/base.hpp>
 
-#include <content/actor/Physics/CO_AC_PH_Controller.h>
-#include <content/actor/Renderer/CO_AC_RE_Controller.h>
+#include <nebula/content/actor/physics/controller.hpp>
 
-
-
-
-#include <nebula/content/actor/admin/ncaa::Controller.h>
+//#include <framework/Communication/Message/FR_COM_MSG_Message.h>
+//#include <framework/Communication/Message/FR_COM_MSG_Data.h>
 
 
 
+#include <nebula/content/actor/physics/controller.hpp>
+#include <nebula/content/actor/renderer/controller.hpp>
 
-		ncaa::Controller::Controller() {
+
+
+
+#include <nebula/content/actor/admin/controller.hpp>
+
+
+
+
+ncaa::controller::controller()
+{
 }
-		ncaa::Controller::~Controller(){
+ncaa::controller::~controller()
+{
 }
-void	ncaa::Controller::VInit( Void* v ) {
-	ncaa::base::VInit(v);
+void	ncaa::controller::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+{
+	ncaa::base::init(parent);
 
 
+	flag_ = 0;
 
-	AR_Init* i = DynCast<Void,AR_Init>(v);
-
-	i->co_ac_ad_controller = this;
-
-
-
-	m_flag = 0;
-
-	m_a_yaw = 0;
-	m_a_pitch = 0;
-
-	m_pos = Math::Vec3f(0,0,5);
-
-
-	m_key_flag[Platform::Input::Key::w] = Flag::eFORWARD;
-	m_key_flag[Platform::Input::Key::s] = Flag::eBACKWARD;
-	m_key_flag[Platform::Input::Key::a] = Flag::eLEFT;
-	m_key_flag[Platform::Input::Key::d] = Flag::eRIGHT;
+	yaw_ = 0;
+	pitch_ = 0;
+	
+	pos_ = bnu::zero_vector<FLOAT>(3);
+	
+	
+	key_flag_[nebula::platform::key::w] = flag::eNORTH;
+	key_flag_[nebula::platform::key::s] = flag::eSOUTH;
+	key_flag_[nebula::platform::key::a] = flag::eWEST;
+	key_flag_[nebula::platform::key::d] = flag::eEAST;
 
 	// physics
-	Ptr<CO_AC_PH_Controller>::Set_Or_Error( new CO_AC_PH_Controller() );
-
-	Ptr<CO_AC_PH_Controller>::Get_Or_Error()->VInit(v);
+	//physics_.create<ncap::controller>( boost::bind( &ncap::controller::init, _1, shared_from_this() ) );
+	
 	// renderer
-	Ptr<CO_AC_RE_Controller>::Set_Or_Error( new CO_AC_RE_Controller() );
-
-	Ptr<CO_AC_RE_Controller>::Get_Or_Error()->VInit(v);
+	//renderer_.create<ncap::controller>( boost::bind( &ncap::controller::init, _1, shared_from_this() ) );
 }
-void	ncaa::Controller::VShutdown(Void* v) {
-	PRINTSIG;
-	
-}
-void	ncaa::Controller::VUpdate(Void* v) {
-	ncaa::base::VUpdate(v);
-}
-void	ncaa::Controller::VStep(Void* v) {
-	ncaa::base::VStep(v);
-
-	Ptr<CO_AC_PH_Controller>::Get_Or_Error()->VStep(v);
-}
-void	ncaa::Controller::VRender(Void* v) {
-}
-void	ncaa::Controller::Process( FR_COM_MSG_Message* msg ) {
-	//PRINTSIG;
-	UINT key;
-	UINT flag;
-	UINT evnt;
-
-	switch ( msg->type ) {
-	case FR_COM_MSG::Type::eKEY_UP:
-		key = msg->data.keyEventData.key;
-
-		// set flag
-		flag = m_key_flag[key];
-		m_flag &= ~( flag );
-
-		// trigger event
-		evnt = m_key_up_event[key];
-		if ( evnt != Event::eINVALID ) 
-
-		break;
-	case FR_COM_MSG::Type::eKEY_DOWN:
-		key = msg->data.keyEventData.key;
-		
-		// unset flag
-		flag = m_key_flag[key];
-		m_flag |= flag;
-
-
-
-		// reset pointer position
-		if ( msg->data.keyEventData.key == Platform::Input::Key::r ) {
-			
-		}
-		
-		break;
-	case FR_COM_MSG::Type::eMOUSE_MOVE:
-
-		MouseMove( msg->data.mouse_move.x, msg->data.mouse_move.y );
-
-		break;
-	default:
-		throw Except("Unhandled message");
-		break;
-	}
-}
-void	ncaa::Controller::MouseMove( int x, int y ) {
+void	ncaa::controller::shutdown()
+{
 	//PRINTSIG;
 	
-	m_a_yaw   -= x * 0.001;
-	m_a_pitch -= y * 0.001;
 }
-void	ncaa::Controller::VLookAt(Void* v) {
-	Math::Vec4f rot(0,0,0,1);
-
-	Math::Vec4f yaw(	Math::Vec3f(0,1,0), m_a_yaw );
-	Math::Vec4f pitch(	Math::Vec3f(1,0,0), m_a_pitch );
-
-	rot *= pitch;
-	rot *= yaw;
-
-	m_up = Math::Vec3f(0,1,0);
-	m_look = Math::Vec3f(0,0,-1);
-
-	m_up *= rot;
-	m_look *= rot;
-
-	AR_Render* r = DynCast<Void,AR_Render>(v);
-
-	r->renderer->VLookAt( m_pos, m_pos + m_look, m_up );
+void	ncaa::controller::update()
+{
+	ncaa::base::update();
 }
-void	ncaa::Controller::ProcessEvent(UINT evnt)
+void	ncaa::controller::step( FLOAT dt )
+{
+	ncaa::base::step( dt );
+}
+void	ncaa::controller::render( const boost::shared_ptr<npr::base>& rnd )
+{
+}
+void	ncaa::controller::look_at( const boost::shared_ptr<npr::base>& rnd )
+{
+	pose_ = bnu::identity_matrix<FLOAT>( 4 );
+	
+	pose_ = prod( pose_, nebula::utilities::matrix_pitch( pitch_ ) );
+	
+	pose_ = prod( pose_, nebula::utilities::matrix_yaw( yaw_ ) );
+	
+	nebula::utilities::matrix_set_pos( pose_ , pos_ ); 
+	
+	rnd->mult_matrix( pose_ );
+	
+	//bnu::  math::quaternion rot(0,0,0,1);
+	
+	//boost::math::quaternion	yaw( 0, 1, 0, yaw_ );
+	//boost::math::quaternion pitch( 1, 0, 0, pitch_ );
+	
+	//rot *= pitch;
+	//rot *= yaw;
+	
+	//up_ = Math::Vec3f(0,1,0);
+	//look_ = Math::Vec3f(0,0,-1);
+	
+	//up_ *= rot;
+	//look_ *= rot;
+
+	//AR_Render* r = DynCast<Void,AR_Render>(v);
+
+	//r->renderer->VLookAt( m_pos, m_pos + m_look, m_up );
+}
+void	ncaa::controller::process_event(int evnt)
 {
 	switch ( evnt )
 	{
-	case Event::eRESET_VIEW_ANGLE:
+	case event::eRESET_VIEW_ANGLES:
 		printf("reset viewing angles\n");
-		m_a_yaw = 0;
-		m_a_pitch = 0;
+		yaw_ = 0;
+		pitch_ = 0;
 		break;
 	}
 }
+void	ncaa::controller::handle_key_up(int k, int window_no)
+{
+	// unset flag
+	UINT f = key_flag_[k];
+	flag_ &= ~( f );
+	
+	// trigger event
+	int evnt = key_up_event_[k];
+	process_event(evnt);
 
-
-
-
-
-
+}
+void	ncaa::controller::handle_key_down(int k, int window_no)
+{
+	// set flag
+	UINT f = key_flag_[k];
+	flag_ |= f;
+	
+	// trigger event
+	int evnt = key_down_event_[k];
+	process_event(evnt);
+}
+void	ncaa::controller::handle_pointer_motion( int x, int y )
+{
+	//PRINTSIG;
+	yaw_ -= x * 0.001;
+	pitch_ -= y * 0.001;
+}
 
 
 

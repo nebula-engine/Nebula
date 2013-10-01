@@ -33,7 +33,7 @@ void	PL_PL_Platform::init( const boost::shared_ptr<>&  ) {
 
 	m_keyDown[::Platform::Input::Key::Space] = Event::eDELETE_WINDOW;
 }
-void	PL_PL_Platform::VShutDown() {
+void	PL_PL_Platform::shutdown() {
 	PRINTSIG;
 	
 	m_window.Clear();
@@ -44,7 +44,7 @@ void	PL_PL_Platform::VDeleteWindow( int windowNo ) {
 	PL_WI_Window* window = m_window.Find( windowNo );
 
 	if ( window ) {
-		window->VShutDown();
+		window->shutdown();
 		m_window.Erase( windowNo );
 	}
 
@@ -53,11 +53,11 @@ void	PL_PL_Platform::VDeleteWindow( int windowNo ) {
 void	PL_PL_Platform::VCreateWindow( PL_WI_Window*& window ) {
 	PRINTSIG;
 }
-void	PL_PL_Platform::VUpdate() {
+void	PL_PL_Platform::update() {
 	//PRINTSIG;
 	FR_COM_IComm::Update();
 
-	m_window.For( &PL_WI_Window::VUpdate );
+	m_window.For( &PL_WI_Window::update );
 }
 void	PL_PL_Platform::Process( FR_COM_MSG_Message* msg ) {
 	PRINTSIG;

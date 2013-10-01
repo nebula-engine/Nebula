@@ -36,7 +36,7 @@ void	nebula::content::universe::admin::base::regCreateScene(boost::shared_ptr<ne
 	AR_Init i;
 	i.app = m_app;
 	
-	scene->VInit( &i );
+	scene->init( &i );
 }
 */
 

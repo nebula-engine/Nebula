@@ -24,15 +24,15 @@ namespace nebula
 					~rigid_static();
 
 					/// Initialize
-					virtual	void						init();
+					virtual	void						init(const boost::shared_ptr<nc_sc_a::base>&);
 					/// ShutDown
-					virtual	void						shutDown();
+					virtual	void						shutdown();
 					/// Update
 					virtual	void						update();
 					/// Render
 					virtual	void						render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 					/// Step
-					virtual	void						step();
+					virtual	void						step(FLOAT);
 					
 
 

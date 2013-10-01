@@ -8,31 +8,36 @@
 }
 		ncaa::base::~base() {
 }
-void	ncaa::base::VInit(Void* v) {
-	PRINTSIG;
-
-	Ptr<CO_SC_AD_Scene>::Set_Or_Error( DynCast<Void,AR_Init>(v)->scene );
+void	ncaa::base::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+{
+	//PRINTSIG;
+	parent_ = parent;
 }
-void	ncaa::base::VShutdown(Void* v) {
-	PRINTSIG;
+void	ncaa::base::shutdown()
+{
+	//PRINTSIG;
 }
-void	ncaa::base::VUpdate(Void* v) {
-	FR_COM_IComm::Update();
+void	ncaa::base::update()
+{
+	//FR_COM_IComm::Update();
 }
-void	ncaa::base::VRender( Void* data ) {
-	PRINTSIG;
+void	ncaa::base::render( const boost::shared_ptr<npr::base>& rnd )
+{
+	//PRINTSIG;
 }
-void	ncaa::base::VStep(Void* v)
+void	ncaa::base::step( FLOAT dt )
 {
 	
 }
 
 
-void	ncaa::base::GetTransform( Math::Transformf& trans ) {
-	trans = m_transform;
+bnu::matrix<FLOAT>	ncaa::base::get_pose()
+{
+	return pose_;
 }
-void	ncaa::base::SetTransform( Math::Transformf& trans ) {
-	m_transform = trans;
+void	ncaa::base::set_pose( bnu::matrix<FLOAT> pose )
+{
+	pose_ = pose;
 }
 
 

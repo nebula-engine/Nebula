@@ -61,6 +61,7 @@ namespace nebula
 					
 					virtual void									create_view_human( const boost::shared_ptr<ncvah::base>& );
 					
+					virtual void									create_controller( const boost::shared_ptr<ncaa::controller>& );
 									
 					/// parent
 					boost::weak_ptr<ncua::base>							parent_;

@@ -19,49 +19,49 @@ namespace nebula
 				/// base
 				class base
 				{
-					public:
-						///@name ctor and dtor
-						///@{
-						// Ctor
-						base();
-						/// Copy Ctor
-						base(const base&);
-						/// Dtor
-						~base();
-						///@}
+				public:
+					///@name ctor and dtor
+					///@{
+					// Ctor
+					base();
+					/// Copy Ctor
+					base(const base&);
+					/// Dtor
+					~base();
+					///@}
 
-						///@name operator
-						///@{
-						/// assignment
-						base&									operator=(const base&);
-						///@}
-
-
-
-						/// init
-						virtual	void								init(const boost::shared_ptr<nebula::content::actor::admin::base>&);
-						/// shutdown
-						virtual	void								shutdown();
-						/// update
-						virtual	void								update();
-						/// step
-						virtual	void								step();
+					///@name operator
+					///@{
+					/// assignment
+					base&									operator=(const base&);
+					///@}
 
 
 
+					/// init
+					virtual	void								init(const boost::shared_ptr<nebula::content::actor::admin::base>&);
+					/// shutdown
+					virtual	void								shutdown();
+					/// update
+					virtual	void								update();
+					/// step
+					virtual	void								step();
 
-						/// create shapes
-						virtual	void								create_shape();
 
 
-						/// parent
-						boost::weak_ptr<nebula::content::actor::admin::base>			parent_;
+
+					/// create shapes
+					virtual	void								create_shape();
+
+
+					/// parent
+					boost::weak_ptr<nebula::content::actor::admin::base>			parent_;
 				};
 			}
 		}
 	}
 }
-	
+
 
 #endif
 

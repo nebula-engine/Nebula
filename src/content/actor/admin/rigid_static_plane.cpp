@@ -1,32 +1,33 @@
-#include <nebula/content/actor/admin/ncaa::rigid_staticPlane.h>
+#include <nebula/content/actor/admin/rigid_static_plane.hpp>
 
 
-		ncaa::rigid_staticPlane::rigid_staticPlane() {
+		ncaa::rigid_static_plane::rigid_static_plane() {
 }
-		ncaa::rigid_staticPlane::~rigid_staticPlane() {
+		ncaa::rigid_static_plane::~rigid_static_plane() {
 }
 
 
 
 
-void	ncaa::rigid_staticPlane::init( const boost::shared_ptr<>&  ) {
-	PRINTSIG;
-	ncaa::rigid_static::VInit( data );
+void	ncaa::rigid_static_plane::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+{
+	//PRINTSIG;
+	ncaa::rigid_static::init( parent );
 }
-void	ncaa::rigid_staticPlane::VShutDown() {
-	PRINTSIG;
+void	ncaa::rigid_static_plane::shutdown() {
+	//PRINTSIG;
 	
 }
-void	ncaa::rigid_staticPlane::VUpdate() {
-	PRINTSIG;
+void	ncaa::rigid_static_plane::update() {
+	//PRINTSIG;
 	
 }
-void	ncaa::rigid_staticPlane::VRender( Void* data ) {
-	PRINTSIG;
+void	ncaa::rigid_static_plane::render( const boost::shared_ptr<npr::base>& rnd ) {
+	//PRINTSIG;
 	
 }
-void	ncaa::rigid_staticPlane::VStep( Void* data ) {
-	PRINTSIG;
+void	ncaa::rigid_static_plane::step( FLOAT dt ) {
+	//PRINTSIG;
 	
 }
 
@@ -35,7 +36,8 @@ void	ncaa::rigid_staticPlane::VStep( Void* data ) {
 
 
 
-void	ncaa::rigid_staticPlane::VCreateShape() {
+void	ncaa::rigid_static_plane::create_shapes()
+{
 	
 }
 

@@ -40,17 +40,17 @@ namespace nebula
 					void								shutdown();
 					
 
-					/*
+					
 					///@name Register Objects
 					///@{
 					/// %CO_SC_AD_Scene
-					void								RegisterScene(const boost::shared_ptr<nc_sc_a::base>&);
+					virtual void							register_scene(const boost::shared_ptr<nc_sc_a::base>&);
 					/// %RigidDynamic
-					void								RegisterRigidDynamic( ::CO_AC_AD_RigidDynamic* rigidDynamic );
+					virtual void							register_rigid_dynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& );
 					/// %Controller
-					void								RegisterController( ::CO_AC_AD_Controller*& controller, CO_SC_AD_Scene* scene );
+					virtual void							register_controller( const boost::shared_ptr<ncaa::controller>& );
 					///@}
-					*/
+					
 					
 					
 					///@name fetch objects

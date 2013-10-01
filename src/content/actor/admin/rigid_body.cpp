@@ -1,5 +1,4 @@
-
-#include <nebula/content/actor/admin/rigid_body.h>
+#include <nebula/content/actor/admin/rigid_body.hpp>
 
 
 
@@ -9,30 +8,30 @@
 }
 
 
-void	ncaa::rigid_body::init( const boost::shared_ptr<>&  ) {
-	PRINTSIG;
-	ncaa::rigid_actor::VInit( data );
+void	ncaa::rigid_body::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+{
+	//PRINTSIG;
+	ncaa::rigid_actor::init( parent );
 
 	
 }
-void	ncaa::rigid_body::VShutdown(Void* v) {
-	PRINTSIG;
+void	ncaa::rigid_body::shutdown() {
+	//PRINTSIG;
 	
 }
-void	ncaa::rigid_body::VUpdate(Void* v) {
-	ncaa::rigid_actor::VUpdate(v);
+void	ncaa::rigid_body::update() {
+	ncaa::rigid_actor::update();
 }
-void	ncaa::rigid_body::VRender( Void* data ) {
-	PRINTSIG;
+void	ncaa::rigid_body::render(const boost::shared_ptr<npr::base>&) {
+	//PRINTSIG;
 	
 }
-void	ncaa::rigid_body::VStep( Void* data ) {
-	PRINTSIG;
+void	ncaa::rigid_body::step(FLOAT) {
+	//PRINTSIG;
 	
 }
-
-
-void	ncaa::rigid_body::VCreateShape() {
+void	ncaa::rigid_body::create_shapes()
+{
 }
 
 

@@ -3,7 +3,7 @@
 
 
 
-#include <nebula/content/actor/admin/base.h>
+#include <nebula/content/actor/admin/base.hpp>
 
 namespace nebula
 {
@@ -43,7 +43,7 @@ namespace nebula
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step();
+					virtual	void								step(FLOAT);
 					/// render
 					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				

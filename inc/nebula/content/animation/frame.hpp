@@ -3,22 +3,7 @@
 
 #include <vector>
 
-
-
-namespace nebula
-{
-	namespace content
-	{
-		namespace actor
-		{
-			namespace admin
-			{
-				class base;
-			}
-		}
-	}
-}
-
+#include <nebula/ns.hpp>
 
 namespace nebula
 {
@@ -32,7 +17,7 @@ namespace nebula
 			
 			
 				/// Step
-				virtual	void						Step( FLOAT );
+				virtual	void						step( FLOAT );
 				/// Add Child
 				void							AddChild( frame* );
 				/// Add Actor
@@ -61,7 +46,7 @@ namespace nebula
 				/// ctor
 									translation(boost::numeric::ublas::vector<FLOAT>&);
 				/// step
-				void					Step(FLOAT);
+				void					step(FLOAT);
 				/// rate
 				boost::numeric::ublas::vector<FLOAT>	m_rate;
 			};

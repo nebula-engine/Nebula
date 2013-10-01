@@ -1,25 +1,30 @@
-#include <content/Physics/CO_PH_Physics.h>
-#include <content/Scene/Admin/CO_SC_AD_Scene.h>
+#include <nebula/content/physics/base.hpp>
+#include <nebula/content/scene/admin/base.hpp>
 
 
 
-void	Content::Physics::Physics::init( const boost::shared_ptr<>&  ) {
-	PRINTSIG;
+void	ncp::base::init( const boost::shared_ptr<nebula::content::base>& parent )
+{
+	//PRINTSIG;
 }
-void	Content::Physics::Physics::VShutDown() {
-	PRINTSIG;
+void	ncp::base::shutdown()
+{
+	//PRINTSIG;
 	
 }
-void	Content::Physics::Physics::RegisterScene( CO_SC_AD_Scene* scene ) {
-	PRINTSIG;
+void	ncp::base::register_scene( const boost::shared_ptr<nc_sc_a::base>& scn )
+{
+	//PRINTSIG;
 	
 }
-void	Content::Physics::Physics::RegisterController( ncaa::Controller*& controller, CO_SC_AD_Scene* scene ) {
-	PRINTSIG;
+void	ncp::base::register_controller( const boost::shared_ptr<ncaa::controller>& act )
+{
+	//PRINTSIG;
 	
 }
-void	Content::Physics::Physics::Registerrigid_dynamic( ncaa::rigid_dynamic* rigidDynamic ) {
-	PRINTSIG;
+void	ncp::base::register_rigid_dynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& act )
+{
+	//PRINTSIG;
 	
 }
 

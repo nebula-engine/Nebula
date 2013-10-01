@@ -7,6 +7,8 @@
 
 #include <nebula/utilities/types/content/actor/types.hpp>
 
+#include <nebula/content/scene/physics/base.hpp>
+
 #include <nebula/ns.hpp>
 
 namespace nebula
@@ -19,7 +21,8 @@ namespace nebula
 			{
 				namespace physx
 				{
-					class base
+					class base:
+						public nc_sc_p::base
 					{
 					public:
 						base();
@@ -35,9 +38,16 @@ namespace nebula
 						void									add_actor(const boost::shared_ptr<ncaa::actor>& act);
 						
 						
-						::physx::PxScene*							px_scene_;
+						::physx::PxScene*							get_px_scene();
 
+						::physx::PxScene*							px_scene_;
+							
+
+
+						::physx::PxSimulationFilterShader					px_default_filter_shader_;
+						
 					};
+
 				}
 			}
 		}

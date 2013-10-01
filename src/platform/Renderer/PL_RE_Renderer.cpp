@@ -13,7 +13,7 @@ void	Platform::Renderer::Renderer::init( const boost::shared_ptr<>&  ) {
 }
 
 
-void	Platform::Renderer::Renderer::VUpdate() {
+void	Platform::Renderer::Renderer::update() {
 	
 }
 void	Platform::Renderer::Renderer::VBeginRender() {

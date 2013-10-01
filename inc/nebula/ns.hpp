@@ -1,37 +1,35 @@
 #ifndef __NEBULA_NS_HPP__
 #define __NEBULA_NS_HPP__
 
+#include <boost/numeric/ublas/matrix.hpp>
+
 namespace nebula
 {
 	namespace platform
 	{
-		namespace renderer
-		{}
+		namespace platform {}
+		namespace window {}
+		namespace renderer {}
 	}
 
 	namespace content
 	{
 		namespace physics
 		{
-			namespace physx
-			{}
+			namespace physx	{}
 		}
 		namespace universe
 		{
-			namespace admin
-			{}
+			namespace admin	{}
 		}
 		namespace scene
 		{
-			namespace admin
-			{}
+			namespace admin	{}
 			namespace physics
 			{
-				namespace physx
-				{}
+				namespace physx	{}
 			}
-			namespace renderer
-			{}
+			namespace renderer {}
 		}
 		namespace view
 		{
@@ -42,21 +40,12 @@ namespace nebula
 		}
 		namespace actor
 		{
-			namespace admin
-			{
-			}
+			namespace admin {}
 			namespace physics
 			{
-				namespace physx
-				{
-
-
-				}
+				namespace physx	{}
 			}
-			namespace renderer
-			{
-
-			}
+			namespace renderer {}
 		}
 		namespace shape
 		{
@@ -67,8 +56,15 @@ namespace nebula
 	}
 }
 
-namespace npr		= nebula::platform::renderer;
 
+namespace bnu		= boost::numeric::ublas;
+
+// platform
+namespace npp		= nebula::platform::platform;
+namespace npr		= nebula::platform::renderer;
+namespace npw		= nebula::platform::window;
+
+// content
 namespace ncp		= nebula::content::physics;
 namespace ncpp		= nebula::content::physics::physx;
 

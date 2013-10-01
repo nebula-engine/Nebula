@@ -1,0 +1,11 @@
+digraph G
+{
+	nebula [label="nebula"];
+	
+	content [label="content"];
+	
+	platform [label="platform"];
+	
+	content -> nebula;
+	platform -> nebula;
+}

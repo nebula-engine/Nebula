@@ -44,13 +44,13 @@ void	FR_App::ContinueLoopSequ() {
 	if ( !m_network )  throw Except("m_network is null");
 
 	m_content->Update();
-	m_platform->VUpdate();
+	m_platform->update();
 	m_network->Update(NULL);
 	
 }
 void	FR_App::ContinueLoopMulti() {
 }
-void	FR_App::VInit( Void* v ) {
+void	FR_App::init(  v ) {
 	PRINTSIG;
 	
 	m_content = new CO_Content();
@@ -63,16 +63,16 @@ void	FR_App::VInit( Void* v ) {
 	#endif
 	
 
-	m_content->VInit(v);
-	m_network->VInit(v);
-	m_platform->VInit(v);
+	m_content->init(v);
+	m_network->init(v);
+	m_platform->init(v);
 	
 	
 }
-void	FR_App::VShutDown() {
+void	FR_App::shutdown() {
 	m_content->ShutDown();
 	m_network->Shutdown(NULL);
-	m_platform->VShutDown();
+	m_platform->shutdown();
 	delete m_content;
 	delete m_network;
 	delete m_platform;

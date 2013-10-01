@@ -16,7 +16,8 @@
 	
 	
 }
-void	PL_WI_LIN_Window::VInit( Void* v ) {
+void	PL_WI_LIN_Window::init(  v )
+{
 	PRINTSIG;
 	
 	// create Input object
@@ -29,7 +30,7 @@ void	PL_WI_LIN_Window::VInit( Void* v ) {
 	AR_Init* i = DynCast<Void,AR_Init>( v );
 	i->window = this;
 
-	m_pl_in_lin_input->VInit( i );
+	m_pl_in_lin_input->init( i );
 
 
 
@@ -98,7 +99,7 @@ void	PL_WI_LIN_Window::VInit( Void* v ) {
 	rendererGLX->m_xwindow = m_xwindow;
 	
 	// initialize Renderer
-	rendererGLX->VInit( v );
+	rendererGLX->init( v );
 	
 
 
@@ -132,8 +133,9 @@ void	PL_WI_LIN_Window::VInit( Void* v ) {
 
 
 }
-void	PL_WI_LIN_Window::Register_keys() {
-	PL_IN_Input::VInit( v );
+void	PL_WI_LIN_Window::Register_keys()
+{
+	PL_IN_Input::init( v );
 
 	m_keys[XK_space]		= Key::Space;
 	m_keys[XK_BackSpace]	= Key::Backspace;
@@ -171,18 +173,20 @@ void	PL_WI_LIN_Window::Register_keys() {
 	
 	
 }
-void	PL_WI_LIN_Window::VShutDown() {
-	PRINTSIG;
+void	PL_WI_LIN_Window::shutdown()
+{
+	//PRINTSIG;
 	
 	XFreeGC( m_xdisplay, m_gc );
 	XDestroyWindow( m_xdisplay, m_xwindow );
 }
-void	PL_WI_LIN_Window::VUpdate() {
+void	PL_WI_LIN_Window::update()
+{
 	if ( !m_pl_in_lin_input ) throw Except("m_pl_in_lin_input is null");
 	
 	XEvent xevent;
 
-	int x,y,key;
+	int x,y,k;
 	
 	XMotionEvent motion;
 	
@@ -200,9 +204,9 @@ void	PL_WI_LIN_Window::VUpdate() {
 			keysym = XLookupKeysym( &xevent.xkey, 0 );
 
 			// convert to universal key
-			key = LookupKey(keysym);
+			k = LookupKey(keysym);
 			
-			sig_key_down_(key, m_no);
+			sig_key_down_(k, m_no);
 
 			m_pl_in_lin_input->VKeyUp(  );
 
@@ -211,10 +215,12 @@ void	PL_WI_LIN_Window::VUpdate() {
 			xkey = xevent.xkey;
 			
 			keysym = XLookupKeysym( &xkey, 0 );
-
-			key = m_pl_in_lin_input->LookupKey(keysym);
 			
-			m_pl_in_lin_input->VKeyDown( key, m_no );
+			k = m_pl_in_lin_input->LookupKey(keysym);
+			
+			sig_key_up( k, m_no );
+			
+			m_pl_in_lin_input->VKeyDown( k, m_no );
 			
 			break;
 		case MotionNotify:
@@ -230,8 +236,9 @@ void	PL_WI_LIN_Window::VUpdate() {
 					//printf("%i %i\n",x,y);
 
 					CenterPointer();
-
-					m_pl_in_lin_input->VMouseMove(x,y);
+					
+					sig_pointer_motion(x,y);
+					//m_pl_in_lin_input->VMouseMove(x,y);
 				}
 			}
 			break;

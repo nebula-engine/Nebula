@@ -1,75 +1,61 @@
+#include <boost/bind.hpp>
 
+#include <nebula/content/shape/admin/box.hpp>
 
-#include <content/Shape/Admin/CO_SH_AD_Box.h>
-
-#include <content/actor/Physics/CO_AC_PH_rigid_dynamicBox.h>
-#include <content/actor/Physics/PhysX/CO_AC_PH_PX_rigid_dynamicBox.h>
-#include <content/actor/Renderer/CO_AC_RE_rigid_dynamicBox.h>
-
-
-
+#include <nebula/content/actor/physics/rigid_dynamic_box.hpp>
+#include <nebula/content/actor/physics/physx/rigid_dynamic_box.hpp>
+#include <nebula/content/actor/renderer/rigid_dynamic_box.hpp>
 
 
 
 
 
-#include <nebula/content/actor/admin/ncaa::rigid_dynamicBox.h>
 
-		ncaa::rigid_dynamicBox::rigid_dynamicBox() {
-	PRINTSIG;
-	
-	m_hx = 1;
-	m_hy = 1;
-	m_hz = 1;
-}
-		ncaa::rigid_dynamicBox::~rigid_dynamicBox() {
-	PRINTSIG;
-}
-void	ncaa::rigid_dynamicBox::VInit( Void* v )
+
+
+#include <nebula/content/actor/admin/rigid_dynamic_box.hpp>
+
+ncaa::rigid_dynamic_box::rigid_dynamic_box()
 {
-	PRINTSIG;
-	ncaa::rigid_dynamic::VInit( v );
+	//PRINTSIG;
+	
+	x_ = 1;
+	y_ = 1;
+	z_ = 1;
+}
+ncaa::rigid_dynamic_box::~rigid_dynamic_box()
+{
+	//PRINTSIG;
+}
+void	ncaa::rigid_dynamic_box::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+{
+	//PRINTSIG;
+	ncaa::rigid_dynamic::init( parent );
 
-	// Physics
+	// physics
 #ifdef __PHYSX
-	CO_AC_PH_PX_rigid_dynamicBox* acPhPxrigid_dynamicBox = 0;
-
-	acPhPxrigid_dynamicBox = new CO_AC_PH_PX_rigid_dynamicBox( m_app );
-
-	acPhPxrigid_dynamicBox->CO_AC_PH_PX_rigid_dynamic::VInit( v );
-
-	m_acPhrigid_dynamicBox = acPhPxrigid_dynamicBox;
+	physics_.create<ncapp::rigid_dynamic_box>( boost::bind( &ncapp::rigid_dynamic_box::init, _1, shared_from_this() ) );
 #else
-	Ptr<CO_AC_PH_rigid_dynamicBox>::Set_Or_Error(new CO_AC_PH_rigid_dynamicBox());
+	physics_.create<ncap::rigid_dynamic_box>( boost::bind( &ncap::rigid_dynamic_box::init, _1, shared_from_this() ) );
 #endif
 	
-	Ptr<CO_AC_PH_rigid_dynamicBox>::Get()->CO_AC_PH_rigid_dynamicBox::VInit( v );
-	
-	Ptr<CO_AC_PH_base>::Set( Ptr<CO_AC_PH_rigid_dynamicBox>::Get() );
-	
-	
-
-	// Renderer
-	
-
-	L__CO_AC_RE_rigid_dynamicBox::Set_Or_Error(new CO_AC_RE_rigid_dynamicBox());
-	
-	L__CO_AC_RE_rigid_dynamicBox::Get<CO_AC_RE_rigid_dynamicBox>()->VInit( v );
-
+	// renderer
+	renderer_.create<ncar::rigid_dynamic_box>( boost::bind( &ncar::rigid_dynamic_box::init, _1, shared_from_this() ) );
+}
+void	ncaa::rigid_dynamic_box::shutdown( )
+{
 	
 }
-void	ncaa::rigid_dynamicBox::VShutdown(Void* v) {
-	
+void	ncaa::rigid_dynamic_box::update( ) {
+	ncaa::rigid_dynamic::update();
 }
-void	ncaa::rigid_dynamicBox::VUpdate(Void* v) {
-	ncaa::rigid_dynamic::VUpdate(v);
-}
-void	ncaa::rigid_dynamicBox::VRender( Void* v ) {
+void	ncaa::rigid_dynamic_box::render( const boost::shared_ptr<npr::base>& rnd )
+{
 	//PRINTSIG;
 
-	ncaa::rigid_actor::VRender( v );
+	ncaa::rigid_actor::render( rnd );
 }
-void	ncaa::rigid_dynamicBox::VStep( Void* v ) {
+void	ncaa::rigid_dynamic_box::step(  ) {
 	//PRINTSIG;
 	/*
 	AR_Step* s = DynCast<Void,AR_Step>( v );
@@ -87,10 +73,10 @@ void	ncaa::rigid_dynamicBox::VStep( Void* v ) {
 	}
 	*/
 }
-void	ncaa::rigid_dynamicBox::VCreateShape() {
-	PRINTSIG;
+void	ncaa::rigid_dynamic_box::create_shapes() {
+	//PRINTSIG;
 
-	CreateBox( m_box );
+	create_box( box_ );
 
 }
 

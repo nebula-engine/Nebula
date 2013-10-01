@@ -1,30 +1,22 @@
-#include <framework/FR_Mappable.h>
+#include <nebula/content/view/admin/base.hpp>
 
 
-
-
-
-
-
-
-#include <content/View/Admin/CO_VI_AD_View.h>
-
-
-		CO_VI_AD_View::View() {
-	
+ncva::base::base()
+{
 	
 }
-		CO_VI_AD_View::~View() {
-}
-void	CO_VI_AD_View::init( const boost::shared_ptr<>&  ) {
-	PRINTSIG;
+ncva::base::~base()
+{
 
-	m_app =		DynCast<Void,AR_Init>( data )->app;
-	m_scene =	DynCast<Void,AR_Init>( data )->scene;
 }
-void	CO_VI_AD_View::VShutDown() {
-	PRINTSIG;
+void	ncva::base::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+{
+	//PRINTSIG;
+	parent_ = parent;
 }
-void	CO_VI_AD_View::VUpdate() {
+void	ncva::base::shutdown() {
+	//PRINTSIG;
+}
+void	ncva::base::update() {
 }
 

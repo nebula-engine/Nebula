@@ -1,65 +1,61 @@
+#include <jess/free.hpp>
 
 #include <nebula/platform/platform/base.hpp>
 #include <nebula/platform/window/base.hpp>
 #include <nebula/platform/renderer/base.hpp>
 
-#include <content/Scene/Admin/CO_SC_AD_Scene.h>
+#include <nebula/framework/app.hpp>
+#include <nebula/content/base.hpp>
+#include <nebula/content/universe/admin/base.hpp>
+#include <nebula/content/scene/admin/base.hpp>
 
-#include <content/CO_Camera.h>
+#include <nebula/content/camera.hpp>
 
-#include <content/View/Admin/Human/CO_VI_AD_HU_View.h>
+#include <nebula/content/view/admin/human/base.hpp>
 
-nebula::content::view::human::base::base()
+ncvah::base::base()
 {
 	
 }
-nebula::content::view::human::base::~base()
+ncvah::base::~base()
 {
 	
 }
-void	nebula::content::view::human::base::init()
+void	ncvah::base::init( const boost::shared_ptr<nc_sc_a::base>& parent )
 {
-	nebula::content::view::
-	CO_VI_AD_View::VInit( data );
-
-	m_app->GetPlatform()->VCreateWindow( m_window );
+	ncva::base::init( parent );
 	
-	m_camera = new Camera();
+	parent->parent_.lock()->parent_.lock()->parent_.lock()->get_platform()->create_window( window_ );
+	
+	camera_.create<nebula::content::camera>();
 }
-void	nebula::content::view::human::base::update()
+void	ncvah::base::update()
 {
 	render();
 }
-void	nebula::content::view::human::base::render()
+void	ncvah::base::render()
 {
+	jess::assertion( window_ );
 	
+	boost::shared_ptr<npr::base> rnd = window_->renderer_;
 	
-	if ( !m_window ) throw Except("m_window is null");
+	//if (!renderer) throw Except("renderer is null");
+	//if (!m_camera) throw Except("m_camera is null");
+	//if (!m_scene)  throw Except("m_scene is null");
 
-	PL_RE_Renderer* renderer = m_window->GetRender();
+
+
+
+
+	rnd->begin_render();
+
+	camera_.pointer_->render( rnd );
 	
-	if (!renderer) throw Except("renderer is null");
-	if (!m_camera) throw Except("m_camera is null");
-	if (!m_scene)  throw Except("m_scene is null");
-
-
-
-	AR_Render r;
-	r.renderer = renderer;
-
-
-
-
-
-	renderer->VBeginRender();
-
-	m_camera->Render( &r );
-
-	renderer->VLight();
-
-	m_scene->Render( &r );
-
-	renderer->VEndRender();
+	rnd->light();
+	
+	parent_.lock()->render( rnd );
+	
+	rnd->end_render();
 	
 }
 

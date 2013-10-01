@@ -35,10 +35,10 @@ void	PL_RE_GLX_Renderer::init( const boost::shared_ptr<>&  ) {
 	
 	if ( glXGetCurrentContext() == NULL ) throw Except("context not created");
 
-	PL_RE_GL_Renderer::VInit( data );
+	PL_RE_GL_Renderer::init( data );
 
 }
-void	PL_RE_GLX_Renderer::VShutDown() {
+void	PL_RE_GLX_Renderer::shutdown() {
 	PRINTSIG;
 	
 	glXMakeCurrent( m_xdisplay, None, NULL );
@@ -47,7 +47,7 @@ void	PL_RE_GLX_Renderer::VShutDown() {
 void	PL_RE_GLX_Renderer::Viewport( int a, int b, int c, int d ) {
 	glViewport( a, b, c, d );
 }
-void	PL_RE_GLX_Renderer::VUpdate() {
+void	PL_RE_GLX_Renderer::update() {
 	
 }
 void	PL_RE_GLX_Renderer::VBeginRender() {

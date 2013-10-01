@@ -128,13 +128,13 @@ void						nc_sc_a::base::register_rigid_dynamic( const boost::shared_ptr<ncaa::r
 	// Add the actor to the CO_SC_PH_Scene object
 	physics_.pointer_->add_actor( act );
 }
-void						nc_sc_a::base::CreateController( ncaa::Controller*& act )
+void						nc_sc_a::base::create_controller( const boost::shared_ptr<ncaa::controller>& act )
 {
 	// create controller object
-	actors_.create( act, boost::bind( &ncaa::controller::init, _1, shared_from_this() ) );
+	actors_.push<ncaa::controller>( act, boost::bind( &ncaa::controller::init, _1, shared_from_this() ) );
 	
 	// register controller with global physics object
-	get_content()->get_physics()->register_controller( controller, this );
+	get_content()->physics_.pointer_->register_controller( act );
 }
 
 

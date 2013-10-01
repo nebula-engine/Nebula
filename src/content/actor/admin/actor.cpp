@@ -5,19 +5,19 @@ ncaa::actor::actor() {
 }
 ncaa::actor::~actor() {
 }
-void	ncaa::actor::VInit(Void* v) {
-	PRINTSIG;
-	ncaa::base::VInit(v);
+void	ncaa::actor::init( const boost::shared_ptr<nc_sc_a::base>& parent ) {
+	//PRINTSIG;
+	ncaa::base::init(parent);
 }
-void	ncaa::actor::VShutdown(Void* v) {
+void	ncaa::actor::shutdown( ) {
 	
 }
-void	ncaa::actor::VUpdate(Void* v) {
-	ncaa::base::VUpdate(v);
+void	ncaa::actor::update( ) {
+	ncaa::base::update();
 }
-void	ncaa::actor::VRender(Void* v) {
+void	ncaa::actor::render( const boost::shared_ptr<npr::base>& rnd ) {
 }
-void	ncaa::actor::VStep(Void* v) {
+void	ncaa::actor::step( ) {
 }
 
 

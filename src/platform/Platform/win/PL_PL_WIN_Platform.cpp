@@ -14,7 +14,7 @@
 		PL_PL_WIN_Platform::~PlatformWin() {
 	
 }
-void	PL_PL_WIN_Platform::VInit(Void* v) {
+void	PL_PL_WIN_Platform::init( v) {
 	PRINTSIG;
 	
 	int nCmdShow = SW_SHOWNORMAL;
@@ -23,11 +23,11 @@ void	PL_PL_WIN_Platform::VInit(Void* v) {
 
 	
 }
-void	PL_PL_WIN_Platform::VShutdown(Void* v)
+void	PL_PL_WIN_Platform::VShutdown( v)
 {
 	PRINTSIG;
 }
-void	PL_PL_WIN_Platform::VUpdate(Void* v)
+void	PL_PL_WIN_Platform::update( v)
 {
 	
 }
@@ -40,7 +40,7 @@ void	PL_PL_WIN_Platform::VCreateWindow( PL_WI_Window*& window )
 
 	window = pl_wi_win_window;
 
-	windowWin->VInit( data );
+	windowWin->init( data );
 
 }
 

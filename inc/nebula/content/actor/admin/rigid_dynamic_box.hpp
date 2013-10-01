@@ -54,7 +54,17 @@ namespace nebula
 				
 				
 					/// create shapes
-					virtual	void								create_shape();
+					virtual	void								create_shapes();
+
+
+
+
+					boost::shared_ptr<ncsa::box>						box_;
+
+
+					FLOAT x_;
+					FLOAT y_;
+					FLOAT z_;
 				};
 			}
 		}

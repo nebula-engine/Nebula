@@ -30,6 +30,24 @@ namespace nebula
 							eWEST
 						};
 					};
+					/// event
+					struct event
+					{
+						/// enum
+						enum
+						{
+							eRESET_VIEW_ANGLES
+};
+};
+					/// handler key down
+					void							handle_key_down(int,int);
+					
+					/// handler key up
+					void							handle_key_up(int,int);
+					
+					/// handler pointer motion
+					void							handle_pointer_motion(int,int);
+					
 					
 					///@name ctor and dtor
 					///@{
@@ -46,9 +64,9 @@ namespace nebula
 					/// assignment
 					controller&								operator=(const controller&);
 					///@}
-
-				
-
+					
+					
+					
 					/// init
 					virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
 					/// shutdown
@@ -56,18 +74,28 @@ namespace nebula
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step();
+					virtual	void								step(FLOAT);
 					/// render
 					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
-				
-				
-				
-				
+					
+					
+					
+
+					virtual void								process_event(int);
+					
+
+
+
+
+
+
+
+					
 					/// create shapes
-					virtual	void								create_shape();
-	
+					virtual	void								create_shapes();
+					
 					/// lookat
-					virtual void								lookat(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					virtual void								look_at(const boost::shared_ptr<nebula::platform::renderer::base>&);
 					
 					/// get move
 					boost::numeric::ublas::vector<FLOAT>					get_move();
@@ -80,12 +108,26 @@ namespace nebula
 					boost::numeric::ublas::vector<FLOAT>					look_;
 					/// up
 					boost::numeric::ublas::vector<FLOAT>					up_;
+					
+					
+					
+					FLOAT yaw_;
+					FLOAT pitch_;
+			
+					std::map<int,int>							key_flag_;
+					std::map<int,int>							key_up_event_;
+					std::map<int,int>							key_down_event_;
 
+
+
+	
 				};
 			}
 		}
 	}
 }
+
+
 
 #endif
 

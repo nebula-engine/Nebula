@@ -10,11 +10,11 @@ void	PL_WI_Window::init( const boost::shared_ptr<>&  ) {
 //	 =			DynCast<Void,AR_Init>( data )->app;
 	// =	DynCast<Void,AR_Init>( data )->platform;
 }
-void	PL_WI_Window::VShutDown() {
+void	PL_WI_Window::shutdown() {
 	PRINTSIG;
 
 }
-void	PL_WI_Window::VUpdate() {
+void	PL_WI_Window::update() {
 	PRINTSIG;
 
 }

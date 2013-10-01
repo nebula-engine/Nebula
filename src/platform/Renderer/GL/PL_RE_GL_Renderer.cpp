@@ -237,7 +237,7 @@ void	PL_RE_GL_Renderer::VEndRender() {
 	glFlush();
 	VSwap();
 }
-void	PL_RE_GL_Renderer::VUpdate() {
+void	PL_RE_GL_Renderer::update() {
 	
 }
 void	PL_RE_GL_Renderer::VSwap() {

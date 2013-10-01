@@ -7,6 +7,7 @@ namespace nebula
 	namespace content
 	{
 		class base;
+		class camera;
 		
 		namespace physics
 		{

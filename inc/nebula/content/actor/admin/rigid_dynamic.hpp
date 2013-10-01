@@ -45,7 +45,7 @@ namespace content
 				/// update
 				virtual	void								update();
 				/// step
-				virtual	void								step();
+				virtual	void								step( FLOAT );
 				/// render
 				virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
 				
@@ -53,7 +53,7 @@ namespace content
 				
 				
 				/// create shapes
-				virtual	void								create_shape();
+				virtual	void								create_shapes();
 			};
 		}
 	}

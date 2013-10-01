@@ -63,15 +63,22 @@ namespace nebula
 					virtual	void								create_shape();
 					
 					/// get pose
-					boost::numeric::ublas::matrix<FLOAT>					get_pose();
+					bnu::matrix<FLOAT>							get_pose();
 					/// set pose
 					void									set_pose(boost::numeric::ublas::matrix<FLOAT>);
 
+
+
+
+					/// parent
+					boost::weak_ptr<nc_sc_a::base>						parent_;
 					
 					/// physics
 					jess::shared_ptr<ncap::base>						physics_;
 					/// renderer
 					jess::shared_ptr<ncar::base>						renderer_;
+					
+
 					
 					
 					/// materials
@@ -81,7 +88,7 @@ namespace nebula
 					int									flag_;
 					
 					/// pose
-					boost::numeric::ublas::matrix<FLOAT>					pose_;
+					bnu::matrix<FLOAT>							pose_;
 				};
 			}
 		}

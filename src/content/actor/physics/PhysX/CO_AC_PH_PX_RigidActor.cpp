@@ -20,7 +20,7 @@ void	ncapp::rigid_actor::init(const boost::shared_ptr<ncaa::base>& parent)
 
 
 	/*
-	CO_AC_PH_PX_Material* material = (CO_AC_PH_PX_Material*)m_material.Find(0);
+	ncapp::Material* material = (ncapp::Material*)m_material.Find(0);
 	
 	if(!material) throw("no material");
 	material->m_pxMaterial

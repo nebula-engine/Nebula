@@ -1,9 +1,9 @@
-#ifndef __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_DYNAMIC_BOX_HPP__
-#define __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_DYNAMIC_BOX_HPP__
+#ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_RIGID_DYNAMIC_BOX_HPP__
+#define __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_RIGID_DYNAMIC_BOX_HPP__
 
 
 
-#include <nebula/content/actor/admin/rigid_dynamic.h>
+#include <nebula/content/actor/physics/physx/rigid_dynamic.hpp>
 
 namespace nebula
 {
@@ -11,11 +11,13 @@ namespace nebula
 	{
 		namespace actor
 		{
-			namespace admin
+			namespace physics
+			{
+			namespace physx
 			{
 				/// rigid dynamic
 				class rigid_dynamic_box:
-					public nebula::content::actor::admin::rigid_dynamic
+					public ncapp::rigid_dynamic
 				{
 				public:
 					///@name ctor and dtor
@@ -37,7 +39,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init(const boost::shared_ptr<ncaa::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -54,6 +56,7 @@ namespace nebula
 					virtual	void								create_shape();
 				};
 			}
+		}
 		}
 	}
 }

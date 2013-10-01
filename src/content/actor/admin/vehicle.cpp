@@ -1,29 +1,29 @@
-#include <nebula/content/actor/admin/ncaa::Vehicle.h>
+#include <nebula/content/actor/admin/vehicle.hpp>
 
-	ncaa::Vehicle::Vehicle() {
+	ncaa::vehicle::vehicle() {
 }
-    ncaa::Vehicle::~Vehicle(){
+    ncaa::vehicle::~vehicle(){
 }
     
 
-void	ncaa::Vehicle::VInit( Void* v ) {
-	PRINTSIG;
-	ncaa::base::VInit( v );
+void	ncaa::vehicle::init( const boost::shared_ptr<nc_sc_a::base>& parent ) {
+	//PRINTSIG;
+	ncaa::base::init( parent );
 }
-void	ncaa::Vehicle::VShutDown() {
-	PRINTSIG;
+void	ncaa::vehicle::shutdown() {
+	//PRINTSIG;
 	
 }
-void	ncaa::Vehicle::VUpdate() {
-	PRINTSIG;
+void	ncaa::vehicle::update() {
+	//PRINTSIG;
 	
 }
-void	ncaa::Vehicle::VRender( Void* data ) {
-	PRINTSIG;
+void	ncaa::vehicle::render( const boost::shared_ptr<npr::base>& rnd ) {
+	//PRINTSIG;
 	
 }
-void	ncaa::Vehicle::VStep( Void* data ) {
-	PRINTSIG;
+void	ncaa::vehicle::step( FLOAT dt ) {
+	//PRINTSIG;
 	
 }
 
