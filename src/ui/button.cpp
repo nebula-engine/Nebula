@@ -1,6 +1,14 @@
+#include <nebula/platform/renderer/base.hpp>
 
+#include <nebula/ui/object/button.hpp>
 
-void UI::Button::Render(Platform::Renderer::Base* renderer)
+void nebula::ui::object::button::render( const boost::shared_ptr<npr::base>& rnd )
 {
-    renderer->draw_window_quad(x_,y_,w_,h_);
+    rnd->draw_window_quad( x_, y_, w_, h_ );
 }
+
+
+
+
+
+

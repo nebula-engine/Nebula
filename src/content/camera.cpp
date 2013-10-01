@@ -1,6 +1,5 @@
 #include <boost/numeric/ublas/vector.hpp>
 
-
 #include <nebula/content/actor/admin/controller.hpp>
 
 #include <nebula/platform/renderer/base.hpp>
@@ -11,7 +10,7 @@ nebula::content::camera::camera()
 {
 
 }
-void	nebula::content::camera::render(const boost::shared_ptr<nebula::platform::renderer::base>& rnd)
+void	nebula::content::camera::render(const boost::shared_ptr<nebula::platform::renderer::base>& rnd )
 {
 	boost::numeric::ublas::vector<FLOAT> e(3);
 	boost::numeric::ublas::vector<FLOAT> c(3);
@@ -32,7 +31,7 @@ void	nebula::content::camera::render(const boost::shared_ptr<nebula::platform::r
 	
 	if ( controller_ )
 	{
-		controller_->lookat(rnd);
+		controller_->look_at( rnd );
 	}
 	else
 	{

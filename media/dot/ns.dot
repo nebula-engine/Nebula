@@ -1,11 +1,64 @@
 digraph G
 {
+	subgraph cluster__content
+	{
+		//node [style=filled];
+		style = filled;
+		color = lightblue;
+		
+		content [label="content"];
+
+		content -> nebula;
+
+		
+		universe [label = "universe"];
+		
+
+
+		scene [label = "scene"];
+		
+		
+		
+		view [label = "view"];
+		
+		actor [label = "actor"];
+		actor_admin [label = "admin"];
+		actor_physics [label = "physics"];
+		actor_physics_physx [label = "physx"];
+		actor_renderer [label = "renderer"];
+		
+		universe -> content;
+		scene -> content;
+		view -> content;
+		actor -> content;
+		actor_admin -> actor;
+		actor_physics -> actor;
+		actor_physics_physx -> actor_physics;
+		actor_renderer -> actor;
+		
+	}
+	subgraph cluster__platform
+	{
+		platform [label="platform"];
+		platform -> nebula;
+		
+		style = filled;
+		color = aquamarine;
+	}
+	subgraph cluster__ui
+	{
+		ui [label = "ui"];
+		ui -> nebula;
+
+		style = filled;
+		color = plum;
+	}
 	nebula [label="nebula"];
 	
-	content [label="content"];
 	
-	platform [label="platform"];
 	
-	content -> nebula;
-	platform -> nebula;
+			
+
+	
+		
 }

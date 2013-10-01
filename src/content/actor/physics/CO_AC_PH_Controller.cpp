@@ -18,7 +18,7 @@ nca::physics::controller::~controller()
 }
 void	nca::physics::controller::init(const boost::shared_ptr<nca::admin::controller>& parent)
 {
-	jess::assertion(parent);
+	jess::assertion( bool( parent ) );
 	parent_ = parent;
 }
 void	nca::physics::controller::shutdown()

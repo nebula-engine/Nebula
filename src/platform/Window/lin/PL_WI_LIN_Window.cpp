@@ -1,41 +1,22 @@
-#include <Platform/Input/Linux/PI_IN_LIN_Input.h>
+#include <jess/free.hpp>
 
-#include <Platform/Renderer/GLX/PL_RE_GLX_Renderer.h>
+//#include <jess/ostream.hpp>
 
+#include <nebula/platform/renderer/glx/base.hpp>
 
+#include <nebula/platform/window/lin/base.hpp>
 
-
-
-
-#include <Platform/Window/Linux/PL_WI_LIN_Window.h>
-
-		PL_WI_LIN_Window::Window() {
-}
-		PL_WI_LIN_Window::~Window() {
-	PRINTSIG;
-	
-	
-}
-void	PL_WI_LIN_Window::init(  v )
+npwl::base::base()
 {
-	PRINTSIG;
+}
+npwl::base::~base()
+{
+	//PRINTSIG;
+}
+void	npwl::base::init( const boost::shared_ptr<npp::base>& )
+{
+	//PRINTSIG;
 	
-	// create Input object
-	m_pl_in_lin_input = new PL_IN_LIN_Input();
-	if ( m_pl_in_lin_input == NULL ) throw Except("WTF!");
-
-	m_input = m_pl_in_lin_input;
-
-	// initialize Input object
-	AR_Init* i = DynCast<Void,AR_Init>( v );
-	i->window = this;
-
-	m_pl_in_lin_input->init( i );
-
-
-
-
-
 	// Graphics Context
 	m_values.cap_style  = CapButt;
 	m_values.join_style = JoinBevel;
@@ -47,12 +28,13 @@ void	PL_WI_LIN_Window::init(  v )
 	m_cap_style = CapButt;
 	m_join_style = JoinBevel;
 	
-	if ( !m_xdisplay ) throw Except("xdisplay is null");
-
+	jess::assertion( m_xdisplay );
+	
 	// Create a new graphics context
 	m_gc = XCreateGC( m_xdisplay, m_xwindow, m_valuemask, &m_values);
-	if (m_gc < 0) {
-		fprintf(stderr, "XCreateGC: \n");
+	if ( m_gc < 0 )
+	{
+		//jess::cerr << "XCreateGC error" << std::endl;
 	}
 	
 	// Colors
@@ -133,9 +115,8 @@ void	PL_WI_LIN_Window::init(  v )
 
 
 }
-void	PL_WI_LIN_Window::Register_keys()
+void	npwl::base::Register_keys()
 {
-	PL_IN_Input::init( v );
 
 	m_keys[XK_space]		= Key::Space;
 	m_keys[XK_BackSpace]	= Key::Backspace;
@@ -173,14 +154,14 @@ void	PL_WI_LIN_Window::Register_keys()
 	
 	
 }
-void	PL_WI_LIN_Window::shutdown()
+void	npwl::base::shutdown()
 {
 	//PRINTSIG;
 	
 	XFreeGC( m_xdisplay, m_gc );
 	XDestroyWindow( m_xdisplay, m_xwindow );
 }
-void	PL_WI_LIN_Window::update()
+void	npwl::base::update()
 {
 	if ( !m_pl_in_lin_input ) throw Except("m_pl_in_lin_input is null");
 	
@@ -249,9 +230,9 @@ void	PL_WI_LIN_Window::update()
 		}
 	}
 }
-void	PL_WI_LIN_Window::Process( FR_COM_MSG_Message* message ) {
+void	npwl::base::Process( FR_COM_MSG_Message* message ) {
 }
-void	PL_WI_LIN_Window::ExposeWindow(XEvent xevent)
+void	npwl::base::ExposeWindow(XEvent xevent)
 {
 	XWindowAttributes gwa;
 	int status = 0;
@@ -302,7 +283,7 @@ void	PL_WI_LIN_Window::ExposeWindow(XEvent xevent)
 		*/
 	}
 }
-void	PL_WI_LIN_Window::FocusChange(XEvent xevent)
+void	npwl::base::FocusChange(XEvent xevent)
 {
 	switch ( xevent.type )
 	{
@@ -315,7 +296,7 @@ void	PL_WI_LIN_Window::FocusChange(XEvent xevent)
 		break;
 	}
 }
-void	PL_WI_LIN_Window::CenterPointer()
+void	npwl::base::CenterPointer()
 {
 	// center curser
 	::Window src_w = None;

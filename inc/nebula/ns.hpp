@@ -8,8 +8,18 @@ namespace nebula
 	namespace platform
 	{
 		namespace platform {}
-		namespace window {}
-		namespace renderer {}
+		namespace window
+		{
+			namespace lin {}
+			namespace win {}
+		}
+		namespace renderer
+		{
+			namespace gl
+			{
+				namespace glx {}
+			}
+		}
 	}
 
 	namespace content
@@ -54,6 +64,11 @@ namespace nebula
 			namespace renderer {}
 		}
 	}
+
+namespace ui
+{
+namespace object {}
+}
 }
 
 
@@ -63,6 +78,8 @@ namespace bnu		= boost::numeric::ublas;
 namespace npp		= nebula::platform::platform;
 namespace npr		= nebula::platform::renderer;
 namespace npw		= nebula::platform::window;
+namespace npwl		= nebula::platform::window::lin;
+
 
 // content
 namespace ncp		= nebula::content::physics;
@@ -95,7 +112,9 @@ namespace ncsa		= nebula::content::shape::admin;
 namespace ncsp		= nebula::content::shape::physics;
 namespace ncsr		= nebula::content::shape::renderer;
 
-
+// ui
+namespace nu		= nebula::ui;
+namespace nuo		= nebula::ui::object;
 
 #endif
 

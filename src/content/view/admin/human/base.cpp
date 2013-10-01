@@ -35,7 +35,7 @@ void	ncvah::base::update()
 }
 void	ncvah::base::render()
 {
-	jess::assertion( window_ );
+	jess::assertion( bool( window_ ) );
 	
 	boost::shared_ptr<npr::base> rnd = window_->renderer_;
 	

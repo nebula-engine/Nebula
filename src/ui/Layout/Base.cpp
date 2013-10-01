@@ -1,6 +1,8 @@
 #include <tinyxml/tinyxml.h>
 
-void Load_XML(string file_name)
+#include <string>
+
+void Load_XML( std::string file_name )
 {
        
 }

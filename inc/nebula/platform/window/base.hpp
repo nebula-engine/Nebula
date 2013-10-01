@@ -10,7 +10,6 @@
 //#include <framework/FR_Mappable.h>
 //#include <framework/Communication/FR_COM_IComm.h>
 
-using namespace std;
 
 namespace nebula
 {
@@ -54,7 +53,7 @@ namespace nebula
 				/// pointer motion
 				boost::signals2::signal<void (int,int)>		sig_pointer_motion_;
 				///}
-				protected:
+			//protected:
 				/// focus
 				bool					has_focus_;
 				/// x

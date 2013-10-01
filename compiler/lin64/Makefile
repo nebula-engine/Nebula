@@ -7,6 +7,7 @@ root      := $(shell expr $(here) : '\(.*$(rootname)\)')
 hpaths    := 
 hpaths    += $(root)external/PhysX/Include
 hpaths    += $(root)external/glew/include
+hpaths    += $(root)external
 hpaths    += $(root)jess/inc
 
 lpaths    := 
