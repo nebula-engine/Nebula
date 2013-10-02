@@ -3,6 +3,7 @@
 
 #include <memory>
 
+#include <boost/weak_ptr.hpp>
 #include <boost/signals2/signal.hpp>
 #include <boost/enable_shared_from_this.hpp>
 
@@ -46,8 +47,8 @@ namespace nebula
 
 				virtual int				lookup_key( int );
 				
-
-
+				boost::weak_ptr<npp::base>		parent_;
+				
 				int							no_;
 				bool							m_hasFocus;
 

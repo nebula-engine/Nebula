@@ -19,6 +19,7 @@ namespace nebula
 			virtual void									update();
 			virtual void									push_back( boost::shared_ptr<na::message> );
 			boost::shared_ptr<na::message>							pop_front();
+			virtual void									process_message( boost::shared_ptr<na::message> ) = 0;
 			
 			std::deque< boost::shared_ptr<na::message> >					messages_;
 		};

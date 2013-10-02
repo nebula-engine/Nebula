@@ -13,20 +13,16 @@ int main( int argc, char** argv )
 {
 	//PRINTSIG;
 	
-	Sample* app = new Sample();
+	boost::shared_ptr<Sample> a( new Sample() );
 	
 	//app->GetOpt( argc, argv, "h" );
 	
-	AR_Init i;
-	i.app = app;
-
-	app->VInit( &i );
 	
-	app->MainLoopSequ();
+	a->init();
 	
-	app->VShutDown();
+	a->MainLoopSequ();
 	
-	delete app;
+	a->shutdown();
 	
 	return 1;
 }

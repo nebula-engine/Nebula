@@ -8,12 +8,10 @@
 
 
 
-
-
-
-
-
 #include <nebula/content/actor/admin/rigid_dynamic_box.hpp>
+
+template class jess::shared_ptr<ncap::base>;
+template void jess::shared_ptr<ncap::base>::create<ncap::rigid_dynamic_box>( boost::function<void(boost::shared_ptr<ncap::rigid_dynamic_box>)> );
 
 ncaa::rigid_dynamic_box::rigid_dynamic_box()
 {
@@ -46,7 +44,8 @@ void	ncaa::rigid_dynamic_box::shutdown( )
 {
 	
 }
-void	ncaa::rigid_dynamic_box::update( ) {
+void	ncaa::rigid_dynamic_box::update( )
+{
 	ncaa::rigid_dynamic::update();
 }
 void	ncaa::rigid_dynamic_box::render( const boost::shared_ptr<npr::base>& rnd )
@@ -55,7 +54,8 @@ void	ncaa::rigid_dynamic_box::render( const boost::shared_ptr<npr::base>& rnd )
 
 	ncaa::rigid_actor::render( rnd );
 }
-void	ncaa::rigid_dynamic_box::step(  ) {
+void	ncaa::rigid_dynamic_box::step(  )
+{
 	//PRINTSIG;
 	/*
 	AR_Step* s = DynCast<Void,AR_Step>( v );
@@ -73,7 +73,8 @@ void	ncaa::rigid_dynamic_box::step(  ) {
 	}
 	*/
 }
-void	ncaa::rigid_dynamic_box::create_shapes() {
+void	ncaa::rigid_dynamic_box::create_shapes()
+{
 	//PRINTSIG;
 
 	create_box( box_ );

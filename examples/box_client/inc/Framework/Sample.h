@@ -15,7 +15,7 @@ public:
 	
 	
 	
-	boost::shared_ptr<ncua::base				m_universeAuth;
+	boost::shared_ptr<ncua::base>				m_universeAuth;
 	boost::shared_ptr<nc_sc_a::base>			m_scene;
 	boost::shared_ptr<ncvah::base>				m_viewHuman;
 	boost::shared_ptr<ncaa::rigid_dynamic_box>		m_rigidDynamicBox;

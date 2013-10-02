@@ -9,40 +9,44 @@
 #include <nebula/utilities/types/content/types.hpp>
 #include <nebula/utilities/types/content/scene/types.hpp>
 
+#include <nebula/ns.hpp>
+
 namespace nebula
 {
-namespace content
-{
-namespace universe
-{
-namespace admin
-{
-class base
-{
-public:
-/// ctor
-base();
-/// dtor
-virtual ~base();
-/// init
-virtual void						init(const boost::shared_ptr<nebula::content::base>&);
-/// shutdown
-virtual void						shutdown();
-/// update
-virtual void						update();
+	namespace content
+	{
+		namespace universe
+		{
+			namespace admin
+			{
+				class base
+				{
+				public:
+					/// ctor
+					base();
+					/// dtor
+					virtual ~base();
+					/// init
+					virtual void						init(const boost::shared_ptr<nebula::content::base>&);
+					/// shutdown
+					virtual void						shutdown();
+					/// update
+					virtual void						update();
+
+					/// scene
+					virtual void						create_scene( boost::shared_ptr<nc_sc_a::base> );
+
+					/// parent
+					boost::weak_ptr<nebula::content::base>			parent_;
+
+					/// scenes
+					jess::map<nc_sc_a::base>				scenes_;
 
 
-/// parent
-boost::weak_ptr<nebula::content::base>			parent_;
-
-/// scenes
-jess::map<nebula::content::scene::admin::base>		scenes_;
-
-
-};
-}
-}
-}
+				};
+			}
+		}
+	}
 }
 
 

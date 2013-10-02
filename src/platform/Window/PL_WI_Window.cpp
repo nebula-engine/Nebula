@@ -1,28 +1,34 @@
-/*
-#include <Platform/Window/PL_WI_Window.h>
 
-		PL_WI_Window::Window() {
+#include <nebula/platform/window/base.hpp>
+
+npw::base::base()
+{
 }
-		PL_WI_Window::~Window() {
+npw::base::~base()
+{
 }
-void	PL_WI_Window::init( const boost::shared_ptr<>&  ) {
-	PRINTSIG;
+void	npw::base::init( const boost::shared_ptr<npp::base>& parent )
+{
+	parent_ = parent;
+	//PRINTSIG;
 
 //	 =			DynCast<Void,AR_Init>( data )->app;
 	// =	DynCast<Void,AR_Init>( data )->platform;
 }
-void	PL_WI_Window::shutdown() {
-	PRINTSIG;
+void	npw::base::shutdown()
+{
+	//PRINTSIG;
 
 }
-void	PL_WI_Window::update() {
-	PRINTSIG;
+void	npw::base::update()
+{
+	//PRINTSIG;
 
 }
 
 
 
-*/
+
 
 
 

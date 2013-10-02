@@ -27,7 +27,9 @@ namespace nebula
 						virtual void					shutdown();
 						virtual void					update();
 						virtual void					render();
-
+						
+						virtual void					create_camera();
+						
 						boost::shared_ptr<npw::base>			window_;
 						
 						jess::shared_ptr<nebula::content::camera>	camera_;

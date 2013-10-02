@@ -26,8 +26,12 @@ virtual ~base();
 virtual void							init(const boost::shared_ptr<nebula::framework::app>&);
 virtual void							shutdown();
 virtual void							update();
-virtual void							register_universe(const boost::shared_ptr<ncua::base>&);
-virtual void							register_scene( const boost::shared_ptr<nc_sc_a::base>& );
+
+virtual void							create_universe( boost::shared_ptr<ncua::base> );
+
+virtual void							register_universe( boost::shared_ptr<ncua::base> );
+virtual void							register_scene( boost::shared_ptr<nc_sc_a::base> );
+
 
 
 /// physics

@@ -13,11 +13,11 @@ hpaths    += $(root)external/PhysX/Include
 lpaths    :=
 lpaths    += $(root)jess/lib/lin64
 lpaths    += $(root)nebula/lib/lin64
-lpaths    += $(root)transfer/jess/lib/lin64
 lpaths    += $(root)external/glew/lib
 lpaths    += $(root)external/PhysX/Lib/linux64
 
 defines   := 
+defines   += FLOAT=float
 defines   += __DEBUG__
 defines   += __LIN__
 defines   += __OPENGL__
@@ -25,6 +25,7 @@ defines   += __OPENGL__
 libraries :=
 libraries += jess
 libraries += nebula
+libraries += boost_system
 libraries += pthread
 libraries += rt
 libraries += PhysX3

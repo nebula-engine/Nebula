@@ -20,7 +20,7 @@ void	nebula::content::universe::admin::base::init(const boost::shared_ptr<nebula
 }
 void	nebula::content::universe::admin::base::shutdown()
 {
-	scenes_.foreach(boost::bind(&nebula::content::scene::admin::base::shutdown,_1));
+	scenes_.foreach( boost::bind(&nebula::content::scene::admin::base::shutdown,_1) );
 }
 void	nebula::content::universe::admin::base::update()
 {

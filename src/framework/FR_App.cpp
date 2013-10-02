@@ -11,7 +11,7 @@
 #elif defined(__WIN__)
 	#include <nebula/platform/platform/win/base.hpp>
 #else
-#error "__WIN__ or __LIN__ must be defined"
+	#error "__WIN__ or __LIN__ must be defined"
 #endif
 
 
@@ -20,6 +20,16 @@
 
 
 #include <nebula/framework/app.hpp>
+
+
+template class jess::shared_ptr<nc::base>;
+template void jess::shared_ptr<nc::base>::create( boost::function<void(boost::shared_ptr<nc::base>)> );
+
+
+
+//template class jess::shared_ptr<nc::base>;
+//template void jess::shared_ptr<nc::base>::create( boost::function<void(boost::shared_ptr<nc::base>)> );
+
 
 nf::app::app()
 {

@@ -18,7 +18,7 @@ nebula::content::base::~base()
 {
 	
 }
-void	nebula::content::base::register_universe(const boost::shared_ptr<ncua::base>& uni)
+void	nebula::content::base::register_universe( boost::shared_ptr<ncua::base> uni )
 {
 	
 }
