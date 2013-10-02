@@ -9,8 +9,9 @@
 
 using namespace std;
 
-int main( int argc, char** argv ) {
-	PRINTSIG;
+int main( int argc, char** argv )
+{
+	//PRINTSIG;
 	
 	Sample* app = new Sample();
 	

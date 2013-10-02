@@ -40,8 +40,31 @@ digraph G
 	subgraph cluster__platform
 	{
 		platform [label="platform"];
-		platform -> nebula;
+		platform_platform [label="platform"];
+		platform_platform_lin [label="lin"];
+		platform_platform_win [label="win"];
+		platform_window [label="window"];
+		platform_window_lin [label="lin"];
+		platform_window_win [label="win"];
+		platform_renderer [label="renderer"];
+		platform_renderer_gl [label="gl"];
+		platform_renderer_gl_glx [label="glx"];
+
 		
+		platform -> nebula;
+		platform_platform -> platform;
+		platform_platform_lin -> platform_platform;
+		platform_platform_win -> platform_platform;
+		platform_window -> platform_platform;
+		platform_window_lin -> platform_window;
+		platform_window_win -> platform_window;
+		platform_renderer -> platform_platform;
+		platform_renderer_gl -> platform_renderer;
+		platform_renderer_gl_glx -> platform_renderer_gl;
+
+
+
+
 		style = filled;
 		color = aquamarine;
 	}

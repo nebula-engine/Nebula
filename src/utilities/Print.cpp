@@ -1,10 +1,10 @@
-#include <utilities/Types/Utilities.h>
-
+/*
 #include <stdio.h>
 
 #include <PxPhysicsAPI.h>
 
-void	PrintVec3f( Math::Vec3f& matrix ) {
+void	PrintVec3f( Math::Vec3f& matrix )
+{
 }
 void	PrintVec4f( Math::Vec4f& matrix ) {
 }
@@ -14,7 +14,7 @@ void	PrintMat44f( Math::Mat44f& matrix ) {
 }
 
 
-/*
+
 void	PrintPxMat44( physx::PxMat44& matrix ) {
 	printf("%16f %16f %16f %16f\n",matrix.column0.x,matrix.column1.x,matrix.column2.x,matrix.column3.x);
 	printf("%16f %16f %16f %16f\n",matrix.column0.y,matrix.column1.y,matrix.column2.y,matrix.column3.y);

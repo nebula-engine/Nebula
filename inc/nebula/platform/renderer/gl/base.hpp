@@ -5,6 +5,7 @@
 //#include <GL/glu.h>
 #include <GL/glew.h>
 
+#include <boost/shared_ptr.hpp>
 #include <boost/numeric/ublas/vector.hpp>
 
 #include <nebula/define.hpp>

@@ -1,3 +1,4 @@
+/*
 #include <Platform/Window/PL_WI_Window.h>
 
 		PL_WI_Window::Window() {
@@ -21,7 +22,7 @@ void	PL_WI_Window::update() {
 
 
 
-
+*/
 
 
 

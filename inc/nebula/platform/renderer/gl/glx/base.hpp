@@ -1,6 +1,14 @@
 #ifndef __NEBULA_PLATFORM_RENDERER_GL_GLX_BASE_HPP__
 #define __NEBULA_PLATFORM_RENDERER_GL_GLX_BASE_HPP__
 
+#include <GL/glew.h>
+#include <GL/glx.h>
+
+#include <X11/Xlibint.h>
+#include <X11/Xlib.h>
+#undef max
+#undef min
+
 #include <boost/numeric/ublas/vector.hpp>
 
 #include <nebula/define.hpp>
@@ -27,35 +35,45 @@ namespace nebula
 						/// cube
 						void							draw_cube();
 						///}
-						virtual void		init( 
-						virtual void		shutdown( 
-						virtual void		viewport( 
+						virtual void						init( boost::shared_ptr<npw::base> );
+						virtual void						shutdown();
+						virtual void						update();
+						virtual void						viewport( int, int, int, int );
 						/// push_matrix
-						virtual void		push_matrix();
+						virtual void						push_matrix();
 						/// pop_matrix
-						virtual void		pop_matrix();
+						virtual void						pop_matrix();
 						/// swap
-						virtual void		swap();
+						virtual void						swap();
 						/// mult_matrix
-						virtual void		mult_matrix(const bnu::matrix<FLOAT>&);
+						virtual void						mult_matrix( bnu::matrix<FLOAT> );
 						/// scale
-						virtual void		scale(const bnu::vector<FLOAT>&);
+						virtual void						scale( bnu::vector<FLOAT> );
 						/// look at
-						virtual void		look_at( const bnu::vector<FLOAT>&, const bnu::vector<FLOAT>&, const bnu::vector<FLOAT>& ); 
+						virtual void						look_at( bnu::vector<FLOAT>, bnu::vector<FLOAT>, bnu::vector<FLOAT> ); 
 						/// light
-						virtual void		light();
+						virtual void						light();
 						/// begin render
-						virtual void		begin_render();
+						virtual void						begin_render();
 						/// end render
-						virtual void		end_render();
+						virtual void						end_render();
 						/// draw window quad
-						virtual void		draw_window_quad(UINT,UINT,UINT,UINT);
+						virtual void						draw_window_quad( int, int, int, int );
 
 
-						/// lookat
-						void							lookat(bnu::vector<FLOAT>,bnu::vector<FLOAT>,bnu::vector<FLOAT>);
 
 
+						GLint*							att;
+						XVisualInfo*						m_vi;
+						Colormap						m_cmap;
+						XSetWindowAttributes					m_swa;
+						GLXContext						m_glc;
+
+
+
+						::Window						m_xwindow;
+						::Window						m_root_xwindow;
+						::Display*						m_xdisplay;
 					};
 				}
 			}

@@ -4,6 +4,7 @@
 #include <memory>
 
 #include <boost/signals2/signal.hpp>
+#include <boost/enable_shared_from_this.hpp>
 
 #include <nebula/utilities/types/platform/types.hpp>
 
@@ -19,7 +20,8 @@ namespace nebula
 		namespace window
 		{
 			/// base
-			class base
+			class base:
+				public boost::enable_shared_from_this<npw::base>
 			{
 			public:
 				///@name Constructor and Destructor
@@ -41,6 +43,13 @@ namespace nebula
 				/// update
 				virtual void				update();
 				///@}
+
+				virtual int				lookup_key( int );
+				
+
+
+				int							no_;
+				bool							m_hasFocus;
 
 
 

@@ -1,8 +1,7 @@
-#include <utilities/File.h>
+/*
 
-#include <charlib/charlib.h>
-
-void	Copy( string fromStr, FILE* to ) {
+void	copy( string fromStr, FILE* to )
+{
 	FILE * from;
 	size_t	lSize;
 	char* buffer = 0;
@@ -30,7 +29,7 @@ void	Copy( string fromStr, FILE* to ) {
 	
 
 
-	/* the whole file is now loaded in the memory buffer. */
+	// the whole file is now loaded in the memory buffer.
 
 	// close input file
 	fclose (from);
@@ -45,3 +44,4 @@ void	Copy( string fromStr, FILE* to ) {
 	// terminate
 	delete[] buffer;
 }
+*/

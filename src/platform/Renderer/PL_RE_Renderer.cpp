@@ -1,60 +1,85 @@
-#include <Platform/Renderer/PL_RE_Renderer.h>
+#include <nebula/platform/renderer/base.hpp>
 
 
 
-	Platform::Renderer::Renderer::Renderer() {
+npr::base::base()
+{
 	
 }
-	Platform::Renderer::Renderer::~Renderer() {
+npr::base::~base()
+{
 	
 }
-void	Platform::Renderer::Renderer::init( const boost::shared_ptr<>&  ) {
+void	npr::base::init( boost::shared_ptr<npw::base> parent )
+{
+	parent_ = parent;
+}
+void	npr::base::update()
+{
+	
+}
+void	npr::base::begin_render()
+{
+	
+}
+void	npr::base::end_render()
+{
+	
+}
+void	npr::base::swap()
+{
+	
+}
+void	npr::base::resize(int,int)
+{
+	
+}
+void	npr::base::look_at( bnu::vector<float> eye, bnu::vector<float> center, bnu::vector<float> up )
+{
+	
+}
+void	npr::base::draw_quad()
+{
+	
+}
+void	npr::base::draw_cube()
+{
+	
+}
+void	npr::base::draw_sphere()
+{
+	
+}
+void	npr::base::push_matrix()
+{
+	
+}
+void	npr::base::mult_matrix( bnu::matrix<float> mat )
+{
+	
+}
+void	npr::base::scale( bnu::vector<float> v )
+{
+	
+}
+void	npr::base::pop_matrix()
+{
+	
+}
+void	npr::base::light()
+{
 	
 }
 
 
-void	Platform::Renderer::Renderer::update() {
-	
-}
-void	Platform::Renderer::Renderer::VBeginRender() {
-	
-}
-void	Platform::Renderer::Renderer::VEndRender() {
-	
-}
-void	Platform::Renderer::Renderer::VSwap() {
-	
-}
-void	Platform::Renderer::Renderer::VResize(int,int) {
-	
-}
-void	Platform::Renderer::Renderer::VLookAt( Math::Vec3f eye, Math::Vec3f center, Math::Vec3f up ) {
-	
-}
-void	Platform::Renderer::Renderer::VDrawQuad() {
-	
-}
-void	Platform::Renderer::Renderer::VDrawCube() {
-	
-}
-void	Platform::Renderer::Renderer::VDrawSphere() {
-	
-}
-void	Platform::Renderer::Renderer::VPushMatrix() {
-	
-}
-void	Platform::Renderer::Renderer::VMultMatrix( Math::Mat44f& matrix ) {
-	
-}
-void	Platform::Renderer::Renderer::VScale( float x, float y, float z ) {
-	
-}
-void	Platform::Renderer::Renderer::VPopMatrix() {
-	
-}
-void	Platform::Renderer::Renderer::VLight() {
-	
-}
+
+
+
+
+
+
+
+
 
 
 

@@ -1,21 +1,26 @@
-root        = /home/charles/cpp_projects/
+here      := $(shell pwd)
+rootname  := cpp_projects/
+root      := $(shell expr $(here) : '\(.*$(rootname)\)')
 
 
-hpaths    := 
+
+hpaths    :=
+hpaths    += $(root)jess/inc
+hpaths    += $(root)nebula/inc
 hpaths    += $(root)external/glew/include
-hpaths    += $(root)external/PhysX-3.2.4_LINUX_SDK_Core/Include
+hpaths    += $(root)external/PhysX/Include
 
 lpaths    :=
+lpaths    += $(root)jess/lib/lin64
 lpaths    += $(root)nebula/lib/lin64
 lpaths    += $(root)transfer/jess/lib/lin64
 lpaths    += $(root)external/glew/lib
-lpaths    += $(root)external/PhysX-3.2.4_LINUX_SDK_Core/Lib/linux64
+lpaths    += $(root)external/PhysX/Lib/linux64
 
 defines   := 
-defines   += __DEBUG
-defines   += __LINUX
-defines   += __OPENGL
-defines   += _DEBUG
+defines   += __DEBUG__
+defines   += __LIN__
+defines   += __OPENGL__
 
 libraries :=
 libraries += jess
@@ -43,4 +48,4 @@ libraries += GLEW
 
 
 
--include $(root)transfer/make/makefile.Bin.mk
+-include $(root)make/Makefile.Bin.mk

@@ -1,25 +1,26 @@
 #ifndef _SAMPLE_H
 #define _SAMPLE_H
 
-#include <NebulaAPI.h>
+//#include <NebulaAPI.h>
 
-namespace Content {
-	class RigidStaticPlane;
-};
+#include <nebula/api.hpp>
 
-class Sample: public Framework::App {
+
+class Sample:
+	public nf::app
+{
 public:
-			Sample();
-	void	VInit( Void* data );
+	Sample();
+	void							init();
 	
 	
 	
-	CO_UN_AD_Universe*			m_universeAuth;
-	CO_SC_AD_Scene*				m_scene;
-	CO_VI_AD_HU_View*			m_viewHuman;
-	CO_AC_AD_RigidDynamicBox*	m_rigidDynamicBox;
-	CO_AC_AD_RigidStaticPlane*	m_rigidStaticPlane;
-	CO_AC_AD_Controller*		m_controller;
+	boost::shared_ptr<ncua::base				m_universeAuth;
+	boost::shared_ptr<nc_sc_a::base>			m_scene;
+	boost::shared_ptr<ncvah::base>				m_viewHuman;
+	boost::shared_ptr<ncaa::rigid_dynamic_box>		m_rigidDynamicBox;
+	boost::shared_ptr<ncaa::rigid_static_plane>		m_rigidStaticPlane;
+	boost::shared_ptr<ncaa::controller>			m_controller;
 	
 };
 

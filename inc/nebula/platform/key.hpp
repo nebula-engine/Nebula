@@ -38,8 +38,12 @@ namespace nebula
 				z,
 				space,
 				backspace,
-				enter,
-				esc
+				linefeed,
+				esc,
+				up,
+				down,
+				left,
+				right
 			};
 		};
 	}

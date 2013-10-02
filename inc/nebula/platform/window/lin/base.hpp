@@ -1,6 +1,7 @@
 #ifndef __NEBULA_PLATFORM_WINDOW_LIN_BASE_HPP__
 #define __NEBULA_PLATFORM_WINDOW_LIN_BASE_HPP__
 
+#include <X11/Xutil.h>
 #include <X11/Xlib.h>
 #include <X11/Xlibint.h>
 #undef max
@@ -8,6 +9,7 @@
 
 #include <nebula/define.hpp>
 
+#include <nebula/utilities/types/asio/types.hpp>
 #include <nebula/utilities/types/platform/types.hpp>
 
 #include <nebula/platform/window/base.hpp>
@@ -28,7 +30,18 @@ namespace nebula
 				public:
 					base();
 					virtual ~base();
-					virtual void			init( const boost::shared_ptr<npp::base>& );
+					virtual void			init( boost::shared_ptr<npp::base> );
+					virtual void			shutdown();
+					virtual void			update();
+					virtual void			register_keys();
+					virtual void			center_pointer();
+					virtual void			expose_window( XEvent );
+					virtual int			lookup_key( int );
+					virtual void			focus_change( XEvent );
+					virtual void			process_message( boost::shared_ptr<na::message> );
+	
+					/// keys
+					std::map<int,int>		keys_;
 
 					::XGCValues			m_values;
 					unsigned long			m_valuemask;

@@ -1,8 +1,13 @@
+#include <jess/except.hpp>
+
 #include <nebula/platform/renderer/gl/glx/base.hpp>
 
-void	nprgg::base::init( const boost::shared_ptr<npw::base>&  )
+void	nprgg::base::init( boost::shared_ptr<npw::base> parent )
 {
 	//PRINTSIG;
+	nprg::base::init( parent );
+
+
 	
 	att = new GLint[5];
 	att[0] = GLX_RGBA;
@@ -15,9 +20,9 @@ void	nprgg::base::init( const boost::shared_ptr<npw::base>&  )
 
 	m_vi = glXChooseVisual( m_xdisplay, 0, att );
 	
-	if(m_vi == NULL)
+	if( m_vi == 0 )
 	{
-		throw Except("glXChooseVisual: no appropriate visual found\n");
+		throw jess::except("glXChooseVisual: no appropriate visual found\n");
 		
 	} 
 	else
@@ -34,14 +39,14 @@ void	nprgg::base::init( const boost::shared_ptr<npw::base>&  )
 	
 	glXMakeCurrent( m_xdisplay, m_xwindow, m_glc );
 	
-	if ( glXGetCurrentContext() == NULL ) throw Except("context not created");
+	if ( glXGetCurrentContext() == NULL ) throw jess::except("context not created");
 
-	nprg::base::init( data );
+	
 
 }
 void	nprgg::base::shutdown()
 {
-	PRINTSIG;
+	//PRINTSIG;
 	
 	glXMakeCurrent( m_xdisplay, None, NULL );
 	glXDestroyContext( m_xdisplay, m_glc );

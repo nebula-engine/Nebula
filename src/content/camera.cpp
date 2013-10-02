@@ -35,7 +35,7 @@ void	nebula::content::camera::render(const boost::shared_ptr<nebula::platform::r
 	}
 	else
 	{
-		rnd->lookat(e, c, u);
+		rnd->look_at(e, c, u);
 	}
 
 	

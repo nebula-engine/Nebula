@@ -2,7 +2,11 @@
 
 //#include <jess/ostream.hpp>
 
-#include <nebula/platform/renderer/glx/base.hpp>
+#include <nebula/asio/message.hpp>
+
+#include <nebula/platform/key.hpp>
+
+#include <nebula/platform/renderer/gl/glx/base.hpp>
 
 #include <nebula/platform/window/lin/base.hpp>
 
@@ -13,9 +17,10 @@ npwl::base::~base()
 {
 	//PRINTSIG;
 }
-void	npwl::base::init( const boost::shared_ptr<npp::base>& )
+void	npwl::base::init( boost::shared_ptr<npp::base> parent )
 {
 	//PRINTSIG;
+	npw::base::init( parent );
 	
 	// Graphics Context
 	m_values.cap_style  = CapButt;
@@ -65,28 +70,29 @@ void	npwl::base::init( const boost::shared_ptr<npp::base>& )
 
 
 	
-	CenterPointer();
+	center_pointer();
 
 
 
 
 
 
-	// Create Renderer
-	PL_RE_GLX_Renderer* rendererGLX = new PL_RE_GLX_Renderer();
-	m_renderer = rendererGLX;
-	
-	rendererGLX->m_xdisplay = m_xdisplay;
-	rendererGLX->m_root_xwindow = m_root_xwindow;
-	rendererGLX->m_xwindow = m_xwindow;
+	// create renderer
+	boost::shared_ptr<nprgg::base> rnd_glx( new nprgg::base() );
+
+	renderer_ = rnd_glx;
+
+	rnd_glx->m_xdisplay = m_xdisplay;
+	rnd_glx->m_root_xwindow = m_root_xwindow;
+	rnd_glx->m_xwindow = m_xwindow;
 	
 	// initialize Renderer
-	rendererGLX->init( v );
+	rnd_glx->init( shared_from_this() );
 	
 
 
 	// to prevent multiple key events while holding a key
-	XAutoRepeatOff(m_xdisplay);
+	XAutoRepeatOff( m_xdisplay );
 
 
 
@@ -115,44 +121,44 @@ void	npwl::base::init( const boost::shared_ptr<npp::base>& )
 
 
 }
-void	npwl::base::Register_keys()
+void	npwl::base::register_keys()
 {
 
-	m_keys[XK_space]		= Key::Space;
-	m_keys[XK_BackSpace]	= Key::Backspace;
-	m_keys[XK_Linefeed]		= Key::Linefeed;
-	m_keys[XK_Left]			= Key::Left;
-	m_keys[XK_Right]		= Key::Right;
-	m_keys[XK_Down]			= Key::Down;
-	m_keys['a']				= Key::a;
-	m_keys['b']				= Key::b;
-	m_keys['c']				= Key::c;
-	m_keys['d']				= Key::d;
-	m_keys['e']				= Key::e;
-	m_keys['f']				= Key::f;
-	m_keys['g']				= Key::g;
-	m_keys['h']				= Key::h;
-	m_keys['i']				= Key::i;
-	m_keys['j']				= Key::j;
-	m_keys['k']				= Key::k;
-	m_keys['l']				= Key::l;
-	m_keys['m']				= Key::m;
-	m_keys['n']				= Key::n;
-	m_keys['o']				= Key::o;
-	m_keys['p']				= Key::p;
-	m_keys['q']				= Key::q;
-	m_keys['r']				= Key::r;
-	m_keys['s']				= Key::s;
-	m_keys['t']				= Key::t;
-	m_keys['u']				= Key::u;
-	m_keys['v']				= Key::v;
-	m_keys['w']				= Key::w;
-	m_keys['x']				= Key::x;
-	m_keys['y']				= Key::y;
-	m_keys['z']				= Key::z;
+	keys_[XK_space]			= np::key::space;
+	keys_[XK_BackSpace]		= np::key::backspace;
+	keys_[XK_Linefeed]		= np::key::linefeed;
+	keys_[XK_Left]			= np::key::left;
+	keys_[XK_Right]			= np::key::right;
+	keys_[XK_Down]			= np::key::down;
+	keys_[XK_Up]			= np::key::up;
+	keys_['a']			= np::key::a;
+	keys_['b']			= np::key::b;
+	keys_['c']			= np::key::c;
+	keys_['d']			= np::key::d;
+	keys_['e']			= np::key::e;
+	keys_['f']			= np::key::f;
+	keys_['g']			= np::key::g;
+	keys_['h']			= np::key::h;
+	keys_['i']			= np::key::i;
+	keys_['j']			= np::key::j;
+	keys_['k']			= np::key::k;
+	keys_['l']			= np::key::l;
+	keys_['m']			= np::key::m;
+	keys_['n']			= np::key::n;
+	keys_['o']			= np::key::o;
+	keys_['p']			= np::key::p;
+	keys_['q']			= np::key::q;
+	keys_['r']			= np::key::r;
+	keys_['s']			= np::key::s;
+	keys_['t']			= np::key::t;
+	keys_['u']			= np::key::u;
+	keys_['v']			= np::key::v;
+	keys_['w']			= np::key::w;
+	keys_['x']			= np::key::x;
+	keys_['y']			= np::key::y;
+	keys_['z']			= np::key::z;
 	
-	
-	
+
 }
 void	npwl::base::shutdown()
 {
@@ -163,33 +169,32 @@ void	npwl::base::shutdown()
 }
 void	npwl::base::update()
 {
-	if ( !m_pl_in_lin_input ) throw Except("m_pl_in_lin_input is null");
 	
 	XEvent xevent;
-
 	int x,y,k;
 	
 	XMotionEvent motion;
 	
 	KeySym keysym;
+	
+	XKeyEvent xkey;
 
 	while( XCheckWindowEvent( m_xdisplay, m_xwindow, m_event_mask, &xevent ) )
 	{
 		switch ( xevent.type )
 		{
 		case Expose:
-			ExposeWindow(xevent);
+			expose_window(xevent);
 			break;
 		case KeyRelease:
 			// get Xlib key
 			keysym = XLookupKeysym( &xevent.xkey, 0 );
 
 			// convert to universal key
-			k = LookupKey(keysym);
+			k = lookup_key( keysym );
 			
-			sig_key_down_(k, m_no);
+			sig_key_up_( k, no_ );
 
-			m_pl_in_lin_input->VKeyUp(  );
 
 			break;
 		case KeyPress:
@@ -197,11 +202,9 @@ void	npwl::base::update()
 			
 			keysym = XLookupKeysym( &xkey, 0 );
 			
-			k = m_pl_in_lin_input->LookupKey(keysym);
+			k = lookup_key( keysym );
 			
-			sig_key_up( k, m_no );
-			
-			m_pl_in_lin_input->VKeyDown( k, m_no );
+			sig_key_down_( k, no_ );
 			
 			break;
 		case MotionNotify:
@@ -216,23 +219,25 @@ void	npwl::base::update()
 				{
 					//printf("%i %i\n",x,y);
 
-					CenterPointer();
+					center_pointer();
 					
-					sig_pointer_motion(x,y);
+					sig_pointer_motion_(x,y);
 					//m_pl_in_lin_input->VMouseMove(x,y);
 				}
 			}
 			break;
 		case FocusIn:
 		case FocusOut:
-			FocusChange( xevent );
+			focus_change( xevent );
 			break;
 		}
 	}
 }
-void	npwl::base::Process( FR_COM_MSG_Message* message ) {
+void	npwl::base::process_message( boost::shared_ptr<na::message> msg )
+{
+	
 }
-void	npwl::base::ExposeWindow(XEvent xevent)
+void	npwl::base::expose_window( XEvent xevent )
 {
 	XWindowAttributes gwa;
 	int status = 0;
@@ -275,7 +280,7 @@ void	npwl::base::ExposeWindow(XEvent xevent)
 		glLoadIdentity(); //reset modelview matrix
 
 		printf("expose\n");
-		CenterPointer();
+		center_pointer();
 
 		/*
 		renderGLX->DrawQuad();
@@ -283,7 +288,7 @@ void	npwl::base::ExposeWindow(XEvent xevent)
 		*/
 	}
 }
-void	npwl::base::FocusChange(XEvent xevent)
+void	npwl::base::focus_change(XEvent xevent)
 {
 	switch ( xevent.type )
 	{
@@ -296,12 +301,12 @@ void	npwl::base::FocusChange(XEvent xevent)
 		break;
 	}
 }
-void	npwl::base::CenterPointer()
+void	npwl::base::center_pointer()
 {
 	// center curser
 	::Window src_w = None;
 	::Window dest_w = m_xwindow;
-
+	
 	int dest_x = m_center_x;
 	int dest_y = m_center_y;
 
@@ -309,7 +314,7 @@ void	npwl::base::CenterPointer()
 	int src_y = 0;
 	unsigned int src_width = 0;
 	unsigned int src_height = 0;
-
+	
 	XWarpPointer(
 		m_xdisplay,
 		src_w,
@@ -321,6 +326,12 @@ void	npwl::base::CenterPointer()
 		dest_x,
 		dest_y);
 }
+int	npwl::base::lookup_key( int xkey )
+{
+	return keys_[xkey];
+}
+
+
 
 
 
