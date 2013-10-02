@@ -3,6 +3,7 @@
 
 #include <boost/numeric/ublas/vector.hpp>
 
+#include <nebula/define.hpp>
 #include <PxPhysicsAPI.h>
 
 namespace bnu = boost::numeric::ublas;

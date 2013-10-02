@@ -10,6 +10,7 @@
 //#include <framework/FR_Mappable.h>
 //#include <framework/Communication/FR_COM_IComm.h>
 
+#include <nebula/ns.hpp>
 
 namespace nebula
 {

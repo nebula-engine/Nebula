@@ -4,5 +4,11 @@
 
 #define UINT unsigned int
 
+#if defined(__DEBUG__)
+	#define _DEBUG 1
+#else
+	#define NDEBUG 1
+#endif
+
 
 #endif

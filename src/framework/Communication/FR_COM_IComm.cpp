@@ -1,4 +1,4 @@
-#include <framework/Communication/FR_COM_IComm.h>
+/*#include <framework/Communication/FR_COM_IComm.h>
 #include <framework/Communication/Message/FR_COM_MSG_Message.h>
 
 
@@ -31,4 +31,4 @@ void	FR_COM_IComm::Post( FR_COM_MSG_Message* message ) {
 
 
 
-
+*/

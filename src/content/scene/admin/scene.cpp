@@ -59,7 +59,7 @@ void						nc_sc_a::base::shutdown()
 	views_.foreach( boost::bind( &ncva::base::shutdown, _1 ) );
 	views_.clear();
 }
-void						nc_sc_a::base::create_view_human( const boost::shared_ptr<ncvah::base>& v )
+void						nc_sc_a::base::create_view_human( boost::shared_ptr<ncvah::base>& v )
 {
 	views_.push<ncvah::base>( v, boost::bind( &ncvah::base::init, _1, shared_from_this() ) );
 }
@@ -98,7 +98,7 @@ void						nc_sc_a::base::render( const boost::shared_ptr<npr::base>& rnd )
 	
 	actors_.foreach( boost::bind( &ncaa::base::render, _1, rnd ) );
 }
-void						nc_sc_a::base::create_rigid_dynamic_box( const boost::shared_ptr<ncaa::rigid_dynamic_box>& act )
+void						nc_sc_a::base::create_rigid_dynamic_box( boost::shared_ptr<ncaa::rigid_dynamic_box>& act )
 {
 	//PRINTSIG;
 	
@@ -109,7 +109,7 @@ void						nc_sc_a::base::create_rigid_dynamic_box( const boost::shared_ptr<ncaa:
 	register_rigid_dynamic( act );
 	
 }
-void						nc_sc_a::base::register_rigid_dynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& act )
+void						nc_sc_a::base::register_rigid_dynamic( boost::shared_ptr<ncaa::rigid_dynamic> act )
 {
 	//jess::assertion( m_co_sc_ph_scene );
 	
@@ -128,7 +128,7 @@ void						nc_sc_a::base::register_rigid_dynamic( const boost::shared_ptr<ncaa::r
 	// Add the actor to the CO_SC_PH_Scene object
 	physics_.pointer_->add_actor( act );
 }
-void						nc_sc_a::base::create_controller( const boost::shared_ptr<ncaa::controller>& act )
+void						nc_sc_a::base::create_controller( boost::shared_ptr<ncaa::controller>& act )
 {
 	// create controller object
 	actors_.push<ncaa::controller>( act, boost::bind( &ncaa::controller::init, _1, shared_from_this() ) );

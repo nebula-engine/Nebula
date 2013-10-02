@@ -3,6 +3,8 @@
 
 #include <boost/shared_ptr.hpp>
 
+#include <nebula/define.hpp>
+
 #include <PxPhysicsAPI.h>
 
 #include <nebula/utilities/types/content/actor/types.hpp>

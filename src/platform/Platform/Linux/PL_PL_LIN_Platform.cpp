@@ -1,25 +1,24 @@
-#include <utilities/Types/Utilities.h>
+//#include <jess/except.hpp>
+#include <jess/free.hpp>
 
+#include <boost/bind.hpp>
 
-#include <Platform/Window/Linux/PL_WI_LIN_Window.h>
+#include <nebula/platform/window/lin/base.hpp>
 
+#include <nebula/platform/platform/lin/base.hpp>
 
-
-
-
-
-
-#include <Platform/Platform/Linux/PL_PL_LIN_Platform.h>
-
-		PL_PL_LIN_Platform::Platform() {
+nppl::base::base()
+{
 	
 }
-		PL_PL_LIN_Platform::~Platform() {
+nppl::base::~base()
+{
 	
 }
-void	PL_PL_LIN_Platform::init(  v ) {
-	PRINTSIG;
-	PL_PL_Platform::init( v );
+void	nppl::base::init( const boost::shared_ptr<nf::app>& parent )
+{
+	//PRINTSIG;
+	npp::base::init( parent );
 	/*
 	char* pPath;
 	pPath = getenv("DISPLAY");
@@ -33,7 +32,7 @@ void	PL_PL_LIN_Platform::init(  v ) {
 	m_xdisplay = XOpenDisplay( NULL );
 	
 	if ( !m_xdisplay ) {
-		throw Except( "Cannot connect to default X server\n" );
+		//throw jess::except( "Cannot connect to default X server\n" );
 		
 	}
 	
@@ -49,28 +48,29 @@ void	PL_PL_LIN_Platform::init(  v ) {
 	
 	
 }
-void	PL_PL_LIN_Platform::shutdown() {
-	PRINTSIG;
+void	nppl::base::shutdown() {
+	//PRINTSIG;
 	
-	Platform::Platform::shutdown();
+	npp::base::shutdown();
 	
 	XCloseDisplay( m_xdisplay );
 	
 }
-void	PL_PL_LIN_Platform::VCreateWindow( PL_WI_Window*& window ) {
-	PRINTSIG;
+void	nppl::base::create_window( boost::shared_ptr<npw::base>& wnd )
+{
+	//PRINTSIG;
 	
-	PL_WI_LIN_Window* windowLinux = 0;
-	m_window.Create(windowLinux);
-	window = windowLinux;
-
-	if ( windowLinux == NULL ) throw Except("WTF!");
+	boost::shared_ptr<npwl::base> wnd_lin;
 	
-	if ( !m_xdisplay ) throw Except("xdisplay is null");
-
+	windows_.push<npwl::base>( wnd_lin, boost::bind( &npwl::base::init, _1, shared_from_this() ) );
+	
+	wnd = wnd_lin;
+	
+	jess::assertion( m_xdisplay );// throw Except("xdisplay is null");
+	
 	// Xlib stuff
 	// Create XWindow with some defualt parameters
-
+	
 	int w = DisplayWidth( m_xdisplay, m_screen_num);
 	int h = DisplayHeight( m_xdisplay, m_screen_num);
 	
@@ -87,22 +87,15 @@ void	PL_PL_LIN_Platform::VCreateWindow( PL_WI_Window*& window ) {
 		m_white_pixel);
 	
 	// Pass values to Window
-	windowLinux->m_xdisplay     = m_xdisplay;
-	windowLinux->m_root_xwindow = m_root_xwindow;
-	windowLinux->m_xwindow      = xwindow;
-	windowLinux->m_screen_num   = m_screen_num;
-	
-	// initialize Window
-	AR_Init i;
-	i.app =			m_app;
-	i.platform =	this;
-
-	windowLinux->init( &i );
-	
+	wnd_lin->m_xdisplay     = m_xdisplay;
+	wnd_lin->m_root_xwindow = m_root_xwindow;
+	wnd_lin->m_xwindow      = xwindow;
+	wnd_lin->m_screen_num   = m_screen_num;
 }
-void	PL_PL_LIN_Platform::update() {
+void	nppl::base::update()
+{
 	//PRINTSIG;
-	PL_PL_Platform::update();
+	npp::base::update();
 }
 
 

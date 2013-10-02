@@ -3,54 +3,60 @@
 
 #include <X11/Xlib.h>
 #include <X11/Xlibint.h>
+#undef max
+#undef min
 
 #include <nebula/define.hpp>
 
 #include <nebula/utilities/types/platform/types.hpp>
 
+#include <nebula/platform/window/base.hpp>
+
 #include <nebula/ns.hpp>
 
 namespace nebula
 {
-namespace platform
-{
-namespace window
-{
-namespace lin
-{
-class base
-{
-//public:
-base();
-virtual ~base();
-virtual void			init( const boost::shared_ptr<npp::base>& );
+	namespace platform
+	{
+		namespace window
+		{
+			namespace lin
+			{
+				class base:
+					public npw::base
+				{
+				public:
+					base();
+					virtual ~base();
+					virtual void			init( const boost::shared_ptr<npp::base>& );
 
-::XGCValues			m_values;
-unsigned long			m_valuemask;
+					::XGCValues			m_values;
+					unsigned long			m_valuemask;
 
 
-int				m_line_width;
-int				m_line_style;
-int				m_cap_style;
-int				m_join_style;
+					int				m_line_width;
+					int				m_line_style;
+					int				m_cap_style;
+					int				m_join_style;
 
-UINT				m_win_width;
-UINT				m_win_height;
+					UINT				m_win_width;
+					UINT				m_win_height;
 
-UINT				m_center_x;
-UINT				m_center_y;
+					UINT				m_center_x;
+					UINT				m_center_y;
 
-int				m_screen_num;
-long				m_event_mask;
+					int				m_screen_num;
+					long				m_event_mask;
 
-::Display*			m_xdisplay;
-::Window			m_xwindow;
-::GC				m_gc;
+					::Display*			m_xdisplay;
+					::Window			m_xwindow;
+					::Window			m_root_xwindow;
+					::GC				m_gc;
 
-};
-}
-}
-}
+				};
+			}
+		}
+	}
 }
 
 #endif

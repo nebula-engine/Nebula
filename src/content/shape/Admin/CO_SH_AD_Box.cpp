@@ -1,6 +1,6 @@
 #include <boost/bind.hpp>
 
-#include <jess/except.hpp>
+//#include <jess/except.hpp>
 
 #include <nebula/content/actor/admin/rigid_actor.hpp>
 
@@ -36,7 +36,7 @@ void	ncsa::box::render(const boost::shared_ptr<npr::base>& rnd)
 {
 	if ( !renderer_ )
 	{
-		throw jess::except("renderer is null");
+		//throw jess::except("renderer is null");
 	}
 	renderer_.pointer_->render(rnd);
 }

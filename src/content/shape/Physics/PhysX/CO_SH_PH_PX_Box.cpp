@@ -1,3 +1,4 @@
+#include <nebula/define.hpp>
 #include <PxPhysicsAPI.h>
 
 #include <jess/free.hpp>

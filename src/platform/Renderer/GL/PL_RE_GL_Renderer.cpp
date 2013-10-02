@@ -1,29 +1,32 @@
-#include <utilities/Types/Utilities.h>
-
-#include <Platform/Renderer/GL/PL_RE_GL_Renderer.h>
+#include <jess/except.hpp>
 
 
+#include <nebula/platform/renderer/gl/base.hpp>
 
 
-void GetGLError() {
+void GetGLError()
+{
 	GLenum error;
 	error = glGetError();
-	if ( error != GL_NO_ERROR ) {
+	if ( error != GL_NO_ERROR )
+	{
 		//GLubyte* byte = gluErrorString(	error );
 		printf("%s\n", gluErrorString( error ) );
-		throw Except( "opengl error 10" );
+		throw jess::except( "opengl error 10" );
 	}
 }
-void GetGLError( GLenum error ) {
-	if ( error != GL_NO_ERROR ) {
+void GetGLError( GLenum error )
+{
+	if ( error != GL_NO_ERROR )
+	{
 		//GLubyte* byte = gluErrorString(	error );
 		printf("%s\n", gluErrorString( error ) );
-		throw Except( "opengl error 10" );
+		throw jess::except( "opengl error 10" );
 	}
 }
-
-void	PL_RE_GL_Renderer::init( const boost::shared_ptr<>&  ) {
-	PRINTSIG;
+void	nprg::base::init( const boost::shared_ptr<npw::base>&  )
+{
+	//PRINTSIG;
 
 	printf( "OpenGL version %s\n", glGetString(GL_VERSION) );
 	printf( "GLSL   version %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION) );
@@ -33,41 +36,42 @@ void	PL_RE_GL_Renderer::init( const boost::shared_ptr<>&  ) {
 	GLenum err = glewInit();
 	GetGLError(err);
 
-	if ( !GLEW_VERSION_2_1 ) throw Except("GLEW version problem");
+	if ( !GLEW_VERSION_2_1 ) throw jess::except("GLEW version problem");
 
 
 
 	GLint numExtensions;
-    GLint i;
+	GLint i;
 
-    glGetIntegerv(GL_NUM_EXTENSIONS, &numExtensions);
+	glGetIntegerv(GL_NUM_EXTENSIONS, &numExtensions);
 
-    for (i = 0; i < numExtensions; i++)
-    {
-        const GLubyte * e = glGetStringi(GL_EXTENSIONS, i);
-        printf("%s\n",e);
-    }
+	for (i = 0; i < numExtensions; i++)
+	{
+		const GLubyte * e = glGetStringi(GL_EXTENSIONS, i);
+		printf("%s\n",e);
+	}
 
 
 
 	glEnable(GL_DEPTH_TEST);
-	
+
 	glEnable(GL_NORMALIZE);
 
 	glEnable (GL_LIGHTING);
 	glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, 1);
 
-    glEnable (GL_LIGHT0);
-    glShadeModel (GL_SMOOTH); //set the shader to smooth shader
-	
+	glEnable (GL_LIGHT0);
+	glShadeModel (GL_SMOOTH); //set the shader to smooth shader
+
 	//unsigned int program = 0;
 
 	//CompileShaders( program );
 
 }
-void	PL_RE_GL_Renderer::VDrawCube() {
+void	nprg::base::draw_cube()
+{
 	//PRINTSIG;
-	
+
 	GLfloat cyan[] = {0.0f, 0.8f, 0.8f, 1.0f};
 	GLfloat white[] = {1.0f, 1.0f, 1.0f, 1.0f};
 	GLfloat shininess[] = { 128.0f };
@@ -118,29 +122,31 @@ void	PL_RE_GL_Renderer::VDrawCube() {
 	glEnd();
 
 }
-void	PL_RE_GL_Renderer::VDrawSphere() {
+void	nprg::base::draw_sphere()
+{
 	//PRINTSIG;
-	
+	/*
 	GLfloat cyan[] = {0.0f, 0.8f, 0.8f, 1.0f};
 	GLfloat white[] = {1.0f, 1.0f, 1.0f, 1.0f};
 	GLfloat shininess[] = { 2048.0f };
-
+	
 	glMaterialfv( GL_FRONT, GL_DIFFUSE, cyan);
 	glMaterialfv( GL_FRONT, GL_SPECULAR, white);
 	glMaterialfv( GL_FRONT, GL_SHININESS, shininess );
 
 	glBegin(GL_TRIANGLES);
-
-	Math::Vec3f* v[6];
+	
+	bnu::vector<FLOAT> v[6];
 	v[0] = new Math::Vec3f(1,0,0);
 	v[1] = new Math::Vec3f(0,1,0);
 	v[2] = new Math::Vec3f(0,0,1);
 	v[3] = new Math::Vec3f(-1,0,0);
 	v[4] = new Math::Vec3f(0,-1,0);
 	v[5] = new Math::Vec3f(0,0,-1);
-
-
-	int ind[][3] = {
+	
+	
+	int ind[][3] =
+	{
 		{0,1,2},
 		{1,3,2},
 		{0,2,4},
@@ -160,126 +166,139 @@ void	PL_RE_GL_Renderer::VDrawSphere() {
 
 		t.Render();
 	}
-	
+
 	glEnd();
-
+	*/
 }
-void platform::renderer::renderer::gl::base::unproject(float winX, float winY, float winZ, float* objX, float* objY, float* objZ)
+void	nprg::base::unproject(int winX, int winY, int winZ, double* objX, double* objY, double* objZ)
 {
-    float modelview[16];
-    float projection[16];
-    float viewport[4];
-
-    glGetFloatv(GL_MODELVIEW_MATRIX, modelview);
-    glGetFloatv(GL_PROJECTION_MATRIX, projection);
-    glGetFloatv(GL_VIEWPORT, viewport);
-    
-    GLint gluUnProject(winX, winY, winZ, modelview, projection, viewport, objX, objY, objZ);
-}
-void platform::renderer::renderer::gl::2d::draw_window_quad(int win_x, int win_y, int w, int h)
-{
-    float obj_x1, obj_y1, obj_z1, obj_x2, obj_y2, obj_z2;
-    
-    
-    platform::renderer::renderer::gl::base::unproject(win_x,   win_y,   0, &obj_x1, &obj_y1, &obj_z1);
-    platform::renderer::renderer::gl::base::unproject(win_x+w, win_y+h, 0, &obj_x2, &obj_y2, &obj_z2);
-    
-    glPushMatrix();
-    glBegin(GL_QUADS);
-    glVertex2d(obj_x1, obj_y1);
-    glVertex2d(obj_x2, obj_y1);
-    glVertex2d(obj_x2, obj_y2);
-    glVertex2d(obj_x1, obj_y2);
-    glEnd();
-    glPopMatrix();
-}
-void platform::renderer::renderer::gl::2d::draw_quad()
-{
-    glPushMatrix();
-    glBegin(GL_QUADS);
-    glVertex2d(-0.5f, -0.5);
-    glVertex2d( 0.5f, -0.5);
-    glVertex2d( 0.5f,  0.5);
-    glVertex2d(-0.5f,  0.5);
-    glEnd();
-    glPopMatrix();
-}
-void	PL_RE_GL_Renderer::DrawQuad() {
+	GLdouble modelview[16];
+	GLdouble projection[16];
+	GLint viewport[4];
 	
+	glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
+	glGetDoublev(GL_PROJECTION_MATRIX, projection);
+	glGetIntegerv(GL_VIEWPORT, viewport);
+	
+	/*GLint*/ gluUnProject(winX, winY, winZ, modelview, projection, viewport, objX, objY, objZ);
+}
+void	nprg::base::draw_window_quad(int win_x, int win_y, int w, int h)
+{
+	double obj_x1, obj_y1, obj_z1, obj_x2, obj_y2, obj_z2;
+	
+	
+	nprg::base::unproject(win_x,   win_y,   0, &obj_x1, &obj_y1, &obj_z1);
+	nprg::base::unproject(win_x+w, win_y+h, 0, &obj_x2, &obj_y2, &obj_z2);
+
+	glPushMatrix();
+	glBegin(GL_QUADS);
+	glVertex2d(obj_x1, obj_y1);
+	glVertex2d(obj_x2, obj_y1);
+	glVertex2d(obj_x2, obj_y2);
+	glVertex2d(obj_x1, obj_y2);
+	glEnd();
+	glPopMatrix();
+}
+void	nprg::base::draw_2d_quad()
+{
+	glPushMatrix();
+	glBegin(GL_QUADS);
+	glVertex2d(-0.5f, -0.5);
+	glVertex2d( 0.5f, -0.5);
+	glVertex2d( 0.5f,  0.5);
+	glVertex2d(-0.5f,  0.5);
+	glEnd();
+	glPopMatrix();
+}
+void	nprg::base::draw_quad()
+{
+
 	glBegin(GL_QUADS);
 	glColor3f(1., 0., 0.); glVertex3f(-.75, -.75, 0.);
 	glColor3f(0., 1., 0.); glVertex3f( .75, -.75, 0.);
 	glColor3f(0., 0., 1.); glVertex3f( .75,  .75, 0.);
 	glColor3f(1., 1., 0.); glVertex3f(-.75,  .75, 0.);
 	glEnd();
-	
+
 }
-void	PL_RE_GL_Renderer::VBeginRender() {
-	
+void	nprg::base::begin_render()
+{
+
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glMatrixMode( GL_MODELVIEW );
-    
+
 	glLoadIdentity();
 
 }
-void	PL_RE_GL_Renderer::VLight() {
+void	nprg::base::light()
+{
 	GLfloat ambient[] = { 0.2, 0.2, 0.2, 1.0 };
 	GLfloat diffuse[] = { 1.0, 1.0, 1.0 };
 	GLfloat pos[] =     { 0.0, 2.0, 2.0, 1.0 };
-	
+
 	glLightfv( GL_LIGHT0, GL_POSITION, pos );
 	glLightfv( GL_LIGHT0, GL_DIFFUSE, diffuse );
 	glLightfv( GL_LIGHT0, GL_AMBIENT, ambient );
 }
-void	PL_RE_GL_Renderer::VEndRender() {
+void	nprg::base::end_render()
+{
 	glFlush();
-	VSwap();
+	swap();
 }
-void	PL_RE_GL_Renderer::update() {
-	
+void	nprg::base::update()
+{
+
 }
-void	PL_RE_GL_Renderer::VSwap() {
-	
+void	nprg::base::swap()
+{
+
 }
-void	PL_RE_GL_Renderer::VLookAt( Math::Vec3f eye, Math::Vec3f center, Math::Vec3f up ) {
-	gluLookAt( eye.x,  eye.y, eye.z, center.x, center.y, center.z, up.x, up.y, up.z );
+void	nprg::base::look_at( bnu::vector<float> eye, bnu::vector<float> center, bnu::vector<float> up )
+{
+	gluLookAt( eye(0),  eye(1), eye(2), center(0), center(1), center(2), up(0), up(1), up(2) );
 }
-void	PL_RE_GL_Renderer::VResize( int width, int height ) {
+void	nprg::base::resize( int width, int height )
+{
 	// Reset the viewport to new dimensions
-    glViewport(0, 0, width, height);
-    glMatrixMode(GL_PROJECTION);
+	glViewport(0, 0, width, height);
+	glMatrixMode(GL_PROJECTION);
 
-    //reset projection matrix
-    glLoadIdentity(); 
+	//reset projection matrix
+	glLoadIdentity(); 
 
-    // Time to calculate aspect ratio of our window
-    gluPerspective(54.0, (GLdouble)width/(GLdouble)height, 1.0, 1000.0);
+	// Time to calculate aspect ratio of our window
+	gluPerspective(54.0, (GLdouble)width/(GLdouble)height, 1.0, 1000.0);
 
-    //set modelview matrix
-    glMatrixMode(GL_MODELVIEW); 
+	//set modelview matrix
+	glMatrixMode(GL_MODELVIEW); 
 
-    //reset modelview matrix
-    glLoadIdentity();
+	//reset modelview matrix
+	glLoadIdentity();
 
 }
-void	PL_RE_GL_Renderer::VPushMatrix() {
+void	nprg::base::push_matrix()
+{
 	glPushMatrix();
 }
-void	PL_RE_GL_Renderer::VMultMatrix( Math::Mat44f& matrix ) {
+void	nprg::base::mult_matrix( bnu::matrix<FLOAT> mat )
+{
 	//PRINTSIG;
 	//PrintPxMat44(matrix);
-	
-	glMultMatrixf( matrix.v );
+
+	glMultMatrixf( &mat.data()[0] );
 }
-void	PL_RE_GL_Renderer::VScale( float x, float y, float z ) {
-	glScalef( x, y, z );
+void	nprg::base::scale( bnu::vector<float> v )
+{
+	glScalef( v(0), v(0), v(2) );
 }
-void	PL_RE_GL_Renderer::VPopMatrix() {
+void	nprg::base::pop_matrix()
+{
 	glPopMatrix();
 }
-void	PL_RE_GL_Renderer::CompileShaders( unsigned int& program ) {
+void	nprg::base::compile_shaders( unsigned int& program )
+{
 	unsigned int tcs;
 	unsigned int tes;
 
@@ -288,16 +307,16 @@ void	PL_RE_GL_Renderer::CompileShaders( unsigned int& program ) {
 	char ** const tes_source = new char*;
 
 	printf("loading tcs source... ");
-	LoadShaderSource( "../../../Nebula/Media/OpenGL/Shaders/Tesselation_Control/tc1.c", tcs_source );
+	load_shader_source( "../../../Nebula/Media/OpenGL/Shaders/Tesselation_Control/tc1.c", tcs_source );
 	printf("tcs source loaded\n");
-	
-	
+
+
 	printf("loading tes source... ");
-	LoadShaderSource( "../../../Nebula/Media/OpenGL/Shaders/Tesselation_Evaluation/te1.c", tes_source );
+	load_shader_source( "../../../Nebula/Media/OpenGL/Shaders/Tesselation_Evaluation/te1.c", tes_source );
 	printf("tes source loaded\n");
 	//printf("shaders loaded\n");
 
-	
+
 	// compile tcs
 	printf("compiling tcs... \n");
 	tcs = glCreateShader( GL_TESS_CONTROL_SHADER ); GetGLError();
@@ -325,13 +344,14 @@ void	PL_RE_GL_Renderer::CompileShaders( unsigned int& program ) {
 
 	printf("shaders loaded\n");
 }
-void	PL_RE_GL_Renderer::LoadShaderSource( const char* filename, char ** const shader ) {
+void	nprg::base::load_shader_source( const char* filename, char ** const shader )
+{
 	FILE *		file = 0;
 	long		size = 0;
 
 	file = fopen( filename, "r" );
-	if (!file) throw Except("File error");
-
+	if (!file) throw jess::except("File error");
+	
 	// obtain file size:
 	fseek (file , 0 , SEEK_END);
 	size = ftell (file);
@@ -364,7 +384,8 @@ void	PL_RE_GL_Renderer::LoadShaderSource( const char* filename, char ** const sh
 	// terminate
 	//delete[] buffer;
 }
-void	PL_RE_GL_Renderer::VLoadIdentity() {
+void	nprg::base::load_identity()
+{
 	glLoadIdentity();
 }
 

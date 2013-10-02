@@ -1,17 +1,17 @@
 #include <stdio.h>
 
+#include <boost/bind.hpp>
 
-#include <utilities/Types/Utilities.h>
-#include <content/Content.h>
-#include <Network/Network.h>
-#include <Platform/Platform/PL_PL_Platform.h>
+#include <nebula/content/base.hpp>
+#include <nebula/asio/network/base.hpp>
+//#include <nebula/platform/platform/base.h>
 
-#if defined(__LINUX)
-#include <Platform/Platform/Linux/PL_PL_LIN_Platform.h>
-#elif defined(__WINDOWS)
-#include <Platform/Platform/Win/PL_PL_WIN_Platform.h>
+#if defined(__LIN__)
+	#include <nebula/platform/platform/lin/base.hpp>
+#elif defined(__WIN__)
+	#include <nebula/platform/platform/win/base.hpp>
 #else
-#error "__WINDOWS or __LINUX must be defined"
+#error "__WIN__ or __LIN__ must be defined"
 #endif
 
 
@@ -19,64 +19,66 @@
 
 
 
-#include <framework/FR_App.h>
+#include <nebula/framework/app.hpp>
 
-		FR_App::App() {
-	PRINTSIG;
-
-	m_content = 0;
-	m_network = 0;
-	m_platform = 0;
+nf::app::app()
+{
+	//PRINTSIG;
+	
+	//m_content = 0;
+	//m_network = 0;
+	//m_platform = 0;
 }
-		FR_App::~App() {
+nf::app::~app()
+{
 	//m_platform->ShutDown();
 }
-void	FR_App::MainLoopSequ() {
-    while(1) {
+void	nf::app::MainLoopSequ()
+{
+	while(1)
+	{
 		ContinueLoopSequ();
 	}
 }
-void	FR_App::MainLoopMulti() {
-}
-void	FR_App::ContinueLoopSequ() {
-	if ( !m_content )  throw Except("m_content is null");
-	if ( !m_platform ) throw Except("m_platform is null");
-	if ( !m_network )  throw Except("m_network is null");
+void	nf::app::MainLoopMulti()
+{
 
-	m_content->Update();
-	m_platform->update();
-	m_network->Update(NULL);
+}
+void	nf::app::ContinueLoopSequ()
+{
+	//if ( !m_content )  throw Except("m_content is null");
+	//if ( !m_platform ) throw Except("m_platform is null");
+	//if ( !m_network )  throw Except("m_network is null");
+	
+	content_.pointer_->update();
+	platform_.pointer_->update();
+	//m_network->Update(NULL);
 	
 }
-void	FR_App::ContinueLoopMulti() {
+void	nf::app::ContinueLoopMulti()
+{
+
 }
-void	FR_App::init(  v ) {
-	PRINTSIG;
+void	nf::app::init()
+{
+	//PRINTSIG;
 	
-	m_content = new CO_Content();
-	m_network = new Network();
+	content_.create<nc::base>( boost::bind( &nc::base::init, _1, shared_from_this() ) );
+	//network_ = new Network();
 	
-    #ifdef __LINUX
-		m_platform = new PL_PL_LIN_Platform();
-	#elif defined(__WINDOWS)
-		m_platform = new PL_PL_WIN_Platform();
+	#ifdef __LIN__
+		platform_.create<nppl::base>( boost::bind( &nppl::base::init, _1, shared_from_this() ) );
+	#elif defined(__WIN__)
+		//m_platform = new PL_PL_WIN_Platform();
 	#endif
 	
-
-	m_content->init(v);
-	m_network->init(v);
-	m_platform->init(v);
-	
 	
 }
-void	FR_App::shutdown() {
-	m_content->ShutDown();
-	m_network->Shutdown(NULL);
-	m_platform->shutdown();
-	delete m_content;
-	delete m_network;
-	delete m_platform;
-	
+void	nf::app::shutdown()
+{
+	content_.pointer_->shutdown();
+	//network->Shutdown(NULL);
+	platform_.pointer_->shutdown();
 }
 
 

@@ -42,8 +42,8 @@ virtual void		begin_render();
 /// end render
 virtual void		end_render();
 /// draw window quad
-virtual void		draw_window_quad(UINT,UINT,UINT,UINT);
-
+virtual void		draw_window_quad( int, int, int, int );
+virtual void		unproject( int, int, int, double*, double*, double* );
 	
 				/// lookat
 				void							lookat(bnu::vector<FLOAT>,bnu::vector<FLOAT>,bnu::vector<FLOAT>);

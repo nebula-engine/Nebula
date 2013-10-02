@@ -56,12 +56,12 @@ namespace nebula
 					boost::shared_ptr<nebula::content::base>					get_content();
 									
 
-					virtual void									create_rigid_dynamic_box( const boost::shared_ptr<ncaa::rigid_dynamic_box>& );
-					virtual void									register_rigid_dynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& );
+					virtual void									create_rigid_dynamic_box( boost::shared_ptr<ncaa::rigid_dynamic_box>& );
+					virtual void									register_rigid_dynamic( boost::shared_ptr<ncaa::rigid_dynamic> );
 					
-					virtual void									create_view_human( const boost::shared_ptr<ncvah::base>& );
+					virtual void									create_view_human( boost::shared_ptr<ncvah::base>& );
 					
-					virtual void									create_controller( const boost::shared_ptr<ncaa::controller>& );
+					virtual void									create_controller( boost::shared_ptr<ncaa::controller>& );
 									
 					/// parent
 					boost::weak_ptr<ncua::base>							parent_;

@@ -1,5 +1,4 @@
-#include <utilities/Casting.h>
-
+/*
 #include <Network/Network.h>
 
 		Network::Network() {
@@ -18,7 +17,7 @@ void	Network::Shutdown( v) {
 void	Network::Update( v) {
 	
 }
-
+*/
 
 
 

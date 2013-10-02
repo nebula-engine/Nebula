@@ -5,9 +5,20 @@
 
 namespace nebula
 {
+	namespace asio
+	{
+		namespace network {}
+	}
+	
+	namespace framework {}
+
 	namespace platform
 	{
-		namespace platform {}
+		namespace platform
+		{
+			namespace lin {}
+			namespace win {}
+		}
 		namespace window
 		{
 			namespace lin {}
@@ -74,14 +85,25 @@ namespace object {}
 
 namespace bnu		= boost::numeric::ublas;
 
+// asio
+namespace na		= nebula::asio;
+
+// framework
+namespace nf		= nebula::framework;
+
 // platform
+namespace np		= nebula::platform;
 namespace npp		= nebula::platform::platform;
+namespace nppl		= nebula::platform::platform::lin;
 namespace npr		= nebula::platform::renderer;
+namespace nprg		= nebula::platform::renderer::gl;
+namespace nprgg		= nebula::platform::renderer::gl::glx;
 namespace npw		= nebula::platform::window;
 namespace npwl		= nebula::platform::window::lin;
 
 
 // content
+namespace nc		= nebula::content;
 namespace ncp		= nebula::content::physics;
 namespace ncpp		= nebula::content::physics::physx;
 

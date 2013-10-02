@@ -3,6 +3,8 @@
 
 #include <memory>
 
+#include <nebula/define.hpp>
+
 #include <PxPhysicsAPI.h>
 
 #include <nebula/content/physics/base.hpp>

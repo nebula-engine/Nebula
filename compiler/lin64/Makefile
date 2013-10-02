@@ -17,10 +17,9 @@ lpaths    += $(root)external/PhysX/Lib/linux64
 
 defines   := 
 defines   += FLOAT=float
-defines   += __DEBUG
-defines   += __LINUX
-defines   += __OPENGL
-defines   += _DEBUG
+defines   += __DEBUG__
+defines   += __LIN__
+defines   += __OPENGL__
 
 libraries := 
 libraries += jess

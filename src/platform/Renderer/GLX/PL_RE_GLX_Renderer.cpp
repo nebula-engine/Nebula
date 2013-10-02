@@ -1,9 +1,8 @@
-#include <stdio.h>
+#include <nebula/platform/renderer/gl/glx/base.hpp>
 
-#include <Platform/Renderer/GLX/PL_RE_GLX_Renderer.h>
-
-void	PL_RE_GLX_Renderer::init( const boost::shared_ptr<>&  ) {
-	PRINTSIG;
+void	nprgg::base::init( const boost::shared_ptr<npw::base>&  )
+{
+	//PRINTSIG;
 	
 	att = new GLint[5];
 	att[0] = GLX_RGBA;
@@ -16,11 +15,13 @@ void	PL_RE_GLX_Renderer::init( const boost::shared_ptr<>&  ) {
 
 	m_vi = glXChooseVisual( m_xdisplay, 0, att );
 	
-	if(m_vi == NULL) {
+	if(m_vi == NULL)
+	{
 		throw Except("glXChooseVisual: no appropriate visual found\n");
 		
 	} 
-	else {
+	else
+	{
 		printf("glXChooseVisual: visual %p selected\n", (void *)m_vi->visualid); // %p creates hexadecimal output like in glxinfo
 	}
 	
@@ -35,33 +36,40 @@ void	PL_RE_GLX_Renderer::init( const boost::shared_ptr<>&  ) {
 	
 	if ( glXGetCurrentContext() == NULL ) throw Except("context not created");
 
-	PL_RE_GL_Renderer::init( data );
+	nprg::base::init( data );
 
 }
-void	PL_RE_GLX_Renderer::shutdown() {
+void	nprgg::base::shutdown()
+{
 	PRINTSIG;
 	
 	glXMakeCurrent( m_xdisplay, None, NULL );
 	glXDestroyContext( m_xdisplay, m_glc );
 }
-void	PL_RE_GLX_Renderer::Viewport( int a, int b, int c, int d ) {
+void	nprgg::base::viewport( int a, int b, int c, int d )
+{
 	glViewport( a, b, c, d );
 }
-void	PL_RE_GLX_Renderer::update() {
+void	nprgg::base::update()
+{
 	
 }
-void	PL_RE_GLX_Renderer::VBeginRender() {
-	PL_RE_GL_Renderer::VBeginRender();
+void	nprgg::base::begin_render()
+{
+	nprg::base::begin_render();
 }
-void	PL_RE_GLX_Renderer::VEndRender() {
-	PL_RE_GL_Renderer::VEndRender();
+void	nprgg::base::end_render()
+{
+	nprg::base::end_render();
 }
-void	PL_RE_GLX_Renderer::VSwap() {
+void	nprgg::base::swap()
+{
 	glXSwapBuffers( m_xdisplay, m_xwindow );
 }
-void	PL_RE_GLX_Renderer::VLookAt( Math::Vec3f eye, Math::Vec3f center, Math::Vec3f up ) {
+void	nprgg::base::look_at( bnu::vector<float> eye, bnu::vector<float> center, bnu::vector<float> up )
+{
 	//GLdouble eyeX, GLdouble eyeY,GLdouble eyeZ,GLdouble centerX,GLdouble centerY,GLdouble centerZ,GLdouble upX,GLdouble upY,GLdouble upZ);
-	PL_RE_GL_Renderer::VLookAt( eye, center, up );
+	nprg::base::look_at( eye, center, up );
 }
 
 

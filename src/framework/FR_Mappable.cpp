@@ -1,4 +1,4 @@
-#ifndef _FRAMEWORK_MAPPABLE_H
+/*#ifndef _FRAMEWORK_MAPPABLE_H
 #define _FRAMEWORK_MAPPABLE_H
 
 #include <utilities/Types/Utilities.h>
@@ -35,4 +35,4 @@ namespace Framework {
 
 
 
-
+*/

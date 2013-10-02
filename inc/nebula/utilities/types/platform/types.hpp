@@ -6,6 +6,8 @@ namespace nebula
 {
 	namespace platform
 	{
+		class key;
+		
 		namespace platform
 		{
 			class base;

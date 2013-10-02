@@ -1,6 +1,8 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_MATERIAL_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_MATERIAL_HPP__
 
+#include <nebula/define.hpp>
+
 #include <PxPhysicsAPI.h>
 
 #include <nebula/content/actor/physics/material.hpp>

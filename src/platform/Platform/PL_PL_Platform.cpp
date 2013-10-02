@@ -1,99 +1,94 @@
-
-#include <utilities/Types/Utilities.h>
-
-#include <core/Core.h>
+#include <nebula/asio/message.hpp>
 
 
-#include <Platform/Window/PL_WI_Window.h>
-#include <Platform/Input/PI_IN_Input.h>
+#include <nebula/platform/key.hpp>
+#include <nebula/platform/window/base.hpp>
+#include <nebula/platform/platform/base.hpp>
 
-#include <framework/Communication/Message/FR_COM_MSG_Message.h>
+npp::base::base()
+{
 
-
-
-
-
-
-
-
-
-
-
-#include <Platform/Platform/PL_PL_Platform.h>
-
-		PL_PL_Platform::Platform() {
 }
-		PL_PL_Platform::~Platform() {
+npp::base::~base()
+{
 	
 }
-void	PL_PL_Platform::init( const boost::shared_ptr<>&  ) {
-	PRINTSIG;
+void	npp::base::init( const boost::shared_ptr<nf::app>& parent )
+{
+	//PRINTSIG;
+	parent_ = parent;
 	
-	m_app = DynCast<Void,AR_Init>( data )->app;
-
-	m_keyDown[::Platform::Input::Key::Space] = Event::eDELETE_WINDOW;
+	key_down_event_[np::key::space] = event::eDELETE_WINDOW;
 }
-void	PL_PL_Platform::shutdown() {
-	PRINTSIG;
+void	npp::base::shutdown() {
+	//PRINTSIG;
 	
-	m_window.Clear();
+	windows_.clear();
 }
-void	PL_PL_Platform::VDeleteWindow( int windowNo ) {
-	PRINTSIG;
+void	npp::base::delete_window( int window_no )
+{
+	//PRINTSIG;
 	
-	PL_WI_Window* window = m_window.Find( windowNo );
-
-	if ( window ) {
-		window->shutdown();
-		m_window.Erase( windowNo );
+	boost::shared_ptr<npw::base> wnd = windows_.at( window_no );
+	
+	if ( wnd )
+	{
+		wnd->shutdown();
+		windows_.erase( window_no );
 	}
 
 	
 }
-void	PL_PL_Platform::VCreateWindow( PL_WI_Window*& window ) {
-	PRINTSIG;
-}
-void	PL_PL_Platform::update() {
+void	npp::base::create_window( boost::shared_ptr<npw::base>& wnd )
+{
 	//PRINTSIG;
-	FR_COM_IComm::Update();
-
-	m_window.For( &PL_WI_Window::update );
 }
-void	PL_PL_Platform::Process( FR_COM_MSG_Message* msg ) {
-	PRINTSIG;
+void	npp::base::update()
+{
+	//PRINTSIG;
+	//FR_COM_IComm::Update();
+	mailbox::update();
+
+	windows_.foreach( boost::bind( &npw::base::update, _1 ) );
+}
+void	npp::base::process_message( boost::shared_ptr<na::message> msg )
+{
+	//PRINTSIG;
 	
-	printf("platform process\n");
+	//printf("platform process\n");
 
-	UINT key;
-	UINT eventType;
-
-
-	switch ( msg->type ) {
-	case FR_COM_MSG_Type::eKEY_DOWN:
+	//int k;
+	//int evnt;
+	
+	
+	switch ( msg->type_ )
+	{
+	/*
+	case ns::message::type::eKEY_DOWN:
 
 		key = msg->data.keyEventData.key;
 		
 		eventType = m_keyDown[key];
 
 		ProcessEvent( eventType, msg );
-
+	*/
 	}
 
 }
-void	PL_PL_Platform::ProcessEvent( UINT eventType, FR_COM_MSG_Message* msg ) {
-	int window;
-
-	switch ( eventType ) {
-	case Event::eDELETE_WINDOW:
-
-
-		window = msg->data.keyEventData.window;
-
-		VDeleteWindow(window);
+void	npp::base::process_event( int evnt )
+{
+	//int window_no;
+	
+	switch ( evnt )
+	{
+	case event::eDELETE_WINDOW:
+		//window = msg->data.keyEventData.window;
+		
+		//VDeleteWindow(window);
 
 		break;
 	default:
-		throw Except("unhandled event");
+		//throw Except("unhandled event");
 		break;
 	}
 }
