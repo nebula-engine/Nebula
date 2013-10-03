@@ -34,7 +34,10 @@ void	ncp::base::register_rigid_dynamic( const boost::shared_ptr<ncaa::rigid_dyna
 	//PRINTSIG;
 	
 }
+void	ncp::base::add_actor( boost::shared_ptr<ncaa::base> act )
+{
 
+}
 
 
 

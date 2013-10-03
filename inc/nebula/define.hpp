@@ -11,4 +11,17 @@
 #endif
 
 
+
+
+#ifdef __LIN__
+	#define NEB_FUNCSIG __PRETTY_FUNCTION__
+#elif defined __WIN__
+	#define NEB_FUNCSIG __FUNCSIG__
+#else
+	#error "must define __WIN__ or __LIN__"
+#endif
+
+
+
+
 #endif

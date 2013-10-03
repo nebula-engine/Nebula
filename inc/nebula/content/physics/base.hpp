@@ -79,7 +79,7 @@ namespace content
 			///@}
 			
 			
-			virtual void						add_actor( const boost::shared_ptr<ncaa::base>& );
+			virtual void						add_actor( boost::shared_ptr<ncaa::base> );
 
 		protected:
 			/// parent

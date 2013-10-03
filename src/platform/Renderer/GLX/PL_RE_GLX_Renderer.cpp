@@ -76,8 +76,34 @@ void	nprgg::base::look_at( bnu::vector<float> eye, bnu::vector<float> center, bn
 	//GLdouble eyeX, GLdouble eyeY,GLdouble eyeZ,GLdouble centerX,GLdouble centerY,GLdouble centerZ,GLdouble upX,GLdouble upY,GLdouble upZ);
 	nprg::base::look_at( eye, center, up );
 }
-
-
+void	nprgg::base::draw_cube()
+{
+	nprg::base::draw_cube();
+}
+void	nprgg::base::push_matrix()
+{
+	nprg::base::push_matrix();
+}
+void	nprgg::base::pop_matrix()
+{
+	nprg::base::pop_matrix();
+}
+void	nprgg::base::mult_matrix( bnu::matrix<float> mat )
+{
+	nprg::base::mult_matrix( mat );
+}
+void	nprgg::base::scale( bnu::vector<float> v )
+{
+	nprg::base::scale( v );
+}
+void	nprgg::base::draw_window_quad( int x, int y, int w, int h )
+{
+	nprg::base::draw_window_quad( x, y, w, h );
+}
+void	nprgg::base::light()
+{
+	nprg::base::light();
+}
 
 
 //	double eyeX, double eyeY,double eyeZ,double centerX,double centerY,double centerZ,double upX,double upY,double upZ

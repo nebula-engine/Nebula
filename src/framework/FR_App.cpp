@@ -2,6 +2,9 @@
 
 #include <boost/bind.hpp>
 
+#include <jess/ostream.hpp>
+
+#include <nebula/define.hpp>
 #include <nebula/content/base.hpp>
 #include <nebula/asio/network/base.hpp>
 //#include <nebula/platform/platform/base.h>
@@ -33,7 +36,7 @@ template void jess::shared_ptr<nc::base>::create( boost::function<void(boost::sh
 
 nf::app::app()
 {
-	//PRINTSIG;
+	jess::clog << NEB_FUNCSIG;
 	
 	//m_content = 0;
 	//m_network = 0;
@@ -41,7 +44,7 @@ nf::app::app()
 }
 nf::app::~app()
 {
-	//m_platform->ShutDown();
+	jess::clog.funcsig();//m_platform->ShutDown();
 }
 void	nf::app::MainLoopSequ()
 {
@@ -71,7 +74,7 @@ void	nf::app::ContinueLoopMulti()
 }
 void	nf::app::init()
 {
-	//PRINTSIG;
+	jess::clog.funcsig();//PRINTSIG;
 	
 	content_.create<nc::base>( boost::bind( &nc::base::init, _1, shared_from_this() ) );
 	//network_ = new Network();
@@ -86,6 +89,8 @@ void	nf::app::init()
 }
 void	nf::app::shutdown()
 {
+	jess::clog.funcsig();
+
 	content_.pointer_->shutdown();
 	//network->Shutdown(NULL);
 	platform_.pointer_->shutdown();
