@@ -32,7 +32,7 @@ namespace nebula
 					// Ctor
 					base();
 					/// Copy Ctor
-					base(const rigid_body&);
+					base(const base&);
 					/// Dtor
 					~base();
 					///@}
@@ -60,7 +60,7 @@ namespace nebula
 					
 					
 					/// create shapes
-					virtual	void								create_shape();
+					virtual	void								create_shapes();
 					
 					/// get pose
 					bnu::matrix<FLOAT>							get_pose();

@@ -3,6 +3,7 @@
 
 #include <boost/weak_ptr.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/enable_shared_from_this.hpp>
 
 #include <jess/map.hpp>
 
@@ -19,7 +20,8 @@ namespace nebula
 		{
 			namespace admin
 			{
-				class base
+				class base:
+					public boost::enable_shared_from_this<ncua::base>
 				{
 				public:
 					/// ctor
@@ -34,7 +36,7 @@ namespace nebula
 					virtual void						update();
 
 					/// scene
-					virtual void						create_scene( boost::shared_ptr<nc_sc_a::base> );
+					virtual void						create_scene( boost::shared_ptr<nc_sc_a::base>& );
 
 					/// parent
 					boost::weak_ptr<nebula::content::base>			parent_;

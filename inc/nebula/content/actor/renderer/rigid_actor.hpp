@@ -51,7 +51,7 @@ namespace nebula
 				
 				
 					/// create shapes
-					virtual	void								create_shape();
+					virtual	void								create_shapes();
 				};
 			}
 		}

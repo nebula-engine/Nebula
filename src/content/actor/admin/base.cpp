@@ -3,10 +3,21 @@
 
 #include <nebula/content/actor/admin/base.hpp>
 
-		ncaa::base::base() {
+ncaa::base::base()
+{
 	
 }
-		ncaa::base::~base() {
+ncaa::base::~base()
+{
+
+}
+ncaa::base::base( const ncaa::base& act )
+{
+	
+}
+ncaa::base&	ncaa::base::operator=( const ncaa::base& act )
+{
+	return *this;
 }
 void	ncaa::base::init( const boost::shared_ptr<nc_sc_a::base>& parent )
 {
@@ -29,8 +40,10 @@ void	ncaa::base::step( FLOAT dt )
 {
 	
 }
+void	ncaa::base::create_shapes()
+{
 
-
+}
 bnu::matrix<FLOAT>	ncaa::base::get_pose()
 {
 	return pose_;

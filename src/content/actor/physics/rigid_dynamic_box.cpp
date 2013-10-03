@@ -1,12 +1,18 @@
 #include <nebula/content/actor/physics/rigid_dynamic_box.hpp>
 
-namespace nca = nebula::content::actor;
-
 nca::physics::rigid_dynamic_box::rigid_dynamic_box()
 {
 }
 nca::physics::rigid_dynamic_box::~rigid_dynamic_box()
 {
+}
+nca::physics::rigid_dynamic_box::rigid_dynamic_box( const ncap::rigid_dynamic_box& act )
+{
+	
+}
+nca::physics::rigid_dynamic_box&	ncap::rigid_dynamic_box::operator=( const ncap::rigid_dynamic_box& act )
+{
+	return *this;
 }
 void	nca::physics::rigid_dynamic_box::init(const boost::shared_ptr<nca::admin::base>& parent)
 {
@@ -24,7 +30,14 @@ void	nca::physics::rigid_dynamic_box::step(FLOAT)
 {
 	
 }
+void	ncap::rigid_dynamic_box::render( boost::shared_ptr<npr::base> )
+{
+	
+}
+void	ncap::rigid_dynamic_box::create_shapes()
+{
 
+}
 
 
 

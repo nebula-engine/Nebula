@@ -58,7 +58,16 @@ void	ncvah::base::render()
 	rnd->end_render();
 	
 }
+void	ncvah::base::shutdown()
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
+}
+void	ncvah::base::create_camera()
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
 
+	camera_.create<nc::camera>();
+}
 
 
 /*

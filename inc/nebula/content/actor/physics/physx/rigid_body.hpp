@@ -50,11 +50,11 @@ namespace nebula
 					/// step
 					virtual	void								step();
 					/// render
-					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render( boost::shared_ptr<nebula::platform::renderer::base> );
 				
 							
 					/// create shape
-					virtual void								create_shape();
+					virtual void								create_shapes();
 				};
 			}
 			}

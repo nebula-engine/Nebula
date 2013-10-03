@@ -72,6 +72,10 @@ void	ncaa::controller::step( FLOAT dt )
 void	ncaa::controller::render( const boost::shared_ptr<npr::base>& rnd )
 {
 }
+void	ncaa::controller::create_shapes()
+{
+
+}
 void	ncaa::controller::look_at( const boost::shared_ptr<npr::base>& rnd )
 {
 	pose_ = bnu::identity_matrix<FLOAT>( 4 );

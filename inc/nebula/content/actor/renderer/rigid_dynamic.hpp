@@ -51,7 +51,7 @@ namespace content
 				
 				
 				/// create shapes
-				virtual	void								create_shape();
+				virtual	void								create_shapes();
 			};
 		};
 	};

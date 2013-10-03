@@ -60,7 +60,9 @@ void	nf::app::MainLoopMulti()
 }
 void	nf::app::ContinueLoopSequ()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	//if ( !m_content )  throw Except("m_content is null");
+	//if ( !m_platform ) throw Except("m_platform is null");
+	//if ( !m_network )  throw Except("m_network is null");
 	
 	content_.pointer_->update();
 	platform_.pointer_->update();
@@ -76,12 +78,14 @@ void	nf::app::init()
 	jess::clog << NEB_FUNCSIG << std::endl;//.funcsig();//PRINTSIG;
 	
 	content_.create<nc::base>( boost::bind( &nc::base::init, _1, shared_from_this() ) );
+	//network_ = new Network();
 	
 	#ifdef __LIN__
 		platform_.create<nppl::base>( boost::bind( &nppl::base::init, _1, shared_from_this() ) );
 	#elif defined(__WIN__)
-		platform_.create<nppw::base>( boost::bind( &nppw::base::init, _1, shared_from_this() ) );
+		//m_platform = new PL_PL_WIN_Platform();
 	#endif
+	
 	
 }
 void	nf::app::shutdown()
@@ -92,8 +96,12 @@ void	nf::app::shutdown()
 	//network->Shutdown(NULL);
 	platform_.pointer_->shutdown();
 }
-
-
+boost::shared_ptr<npp::base>	nf::app::get_platform()
+{
+	jess::assertion( bool( platform_.pointer_ ) );
+	
+	return platform_.pointer_;
+}
 
 
 

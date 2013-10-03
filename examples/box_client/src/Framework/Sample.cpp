@@ -1,3 +1,6 @@
+#include <jess/free.hpp>
+#include <jess/ostream.hpp>
+
 #include <Framework/Sample.h>
 
 Sample::Sample()
@@ -10,7 +13,10 @@ void	Sample::init()
 	
 	content_.pointer_->create_universe( m_universeAuth );
 	
+	jess::assertion( bool( m_universeAuth ) );
 	
+	try
+	{
 	
 	m_universeAuth->create_scene( m_scene );
 	
@@ -29,7 +35,11 @@ void	Sample::init()
 	
 	m_viewHuman->camera_.pointer_->controller_ = m_controller;
 
-
+	}
+	catch ( std::exception& e )
+	{
+		jess::cout << "caught: " << e.what() << std::endl;
+	}
 }
 
 

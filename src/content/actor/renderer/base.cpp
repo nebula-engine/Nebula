@@ -1,7 +1,6 @@
 #include <nebula/content/actor/renderer/base.hpp>
 
 
-
 ncar::base::base()
 {
 	
@@ -9,6 +8,14 @@ ncar::base::base()
 ncar::base::~base()
 {
 
+}
+ncar::base::base( const ncar::base& act )
+{
+	
+}
+ncar::base&	ncar::base::operator=( const ncar::base& act )
+{
+	return *this;
 }
 void	ncar::base::init(const boost::shared_ptr<ncaa::base>& parent)
 {
@@ -30,7 +37,10 @@ void	ncar::base::step(FLOAT dt)
 {
 	
 }
-
+void	ncar::base::create_shapes()
+{
+	
+}
 
 
 

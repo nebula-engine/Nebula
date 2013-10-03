@@ -4,6 +4,7 @@
 #include <boost/weak_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 
+#include <nebula/utilities/types/platform/types.hpp>
 #include <nebula/utilities/types/content/actor/types.hpp>
 
 #include <nebula/ns.hpp>
@@ -36,8 +37,8 @@ namespace nebula
 					base&									operator=(const base&);
 					///@}
 
-
-
+					
+					
 					/// init
 					virtual	void								init(const boost::shared_ptr<nebula::content::actor::admin::base>&);
 					/// shutdown
@@ -46,14 +47,14 @@ namespace nebula
 					virtual	void								update();
 					/// step
 					virtual	void								step();
-
-
-
-
+					
+					virtual void								render( boost::shared_ptr<npr::base> rnd );
+					
+					
 					/// create shapes
-					virtual	void								create_shape();
-
-
+					virtual	void								create_shapes();
+					
+					
 					/// parent
 					boost::weak_ptr<nebula::content::actor::admin::base>			parent_;
 				};

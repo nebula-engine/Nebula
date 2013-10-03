@@ -45,13 +45,13 @@ namespace nebula
 					/// step
 					virtual	void								step(FLOAT);
 					/// render
-					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render( boost::shared_ptr<npr::base> );
 				
 				
 				
 				
 					/// create shapes
-					virtual	void								create_shape();
+					virtual	void								create_shapes();
 				};
 			}
 		}

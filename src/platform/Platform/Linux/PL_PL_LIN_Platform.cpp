@@ -9,15 +9,16 @@
 
 nppl::base::base()
 {
-	
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 nppl::base::~base()
 {
-	
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	nppl::base::init( const boost::shared_ptr<nf::app>& parent )
 {
-	//PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
 	npp::base::init( parent );
 	/*
 	char* pPath;
@@ -48,8 +49,9 @@ void	nppl::base::init( const boost::shared_ptr<nf::app>& parent )
 	
 	
 }
-void	nppl::base::shutdown() {
-	//PRINTSIG;
+void	nppl::base::shutdown()
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	npp::base::shutdown();
 	
@@ -58,7 +60,7 @@ void	nppl::base::shutdown() {
 }
 void	nppl::base::create_window( boost::shared_ptr<npw::base>& wnd )
 {
-	//PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	boost::shared_ptr<npwl::base> wnd_lin;
 	
@@ -94,7 +96,8 @@ void	nppl::base::create_window( boost::shared_ptr<npw::base>& wnd )
 }
 void	nppl::base::update()
 {
-	//PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	npp::base::update();
 }
 

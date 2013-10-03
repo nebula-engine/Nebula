@@ -29,9 +29,9 @@ namespace nebula
 					virtual void					update();
 					virtual void					step(FLOAT);
 					virtual void					render(const boost::shared_ptr<nebula::platform::renderer::base>&);
-
-
-					virtual void					add_actor( const boost::shared_ptr<ncaa::actor>& );
+					
+					
+					virtual void					register_actor( boost::shared_ptr<ncaa::actor> );
 				};
 			}
 		}

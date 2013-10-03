@@ -39,5 +39,8 @@ void	ncar::rigid_actor::step( FLOAT dt )
 {
 
 }
+void	ncar::rigid_actor::create_shapes()
+{
 
+}
 
