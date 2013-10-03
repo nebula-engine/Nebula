@@ -52,8 +52,8 @@ namespace nebula
 				int							no_;
 				bool							m_hasFocus;
 
-
-
+				
+				std::map<int,int>					keys_;
 
 				/// @name boost signals
 				///{

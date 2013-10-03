@@ -2,7 +2,14 @@
 #include <nebula/content/scene/admin/base.hpp>
 
 
+ncp::base::base()
+{
 
+}
+ncp::base::~base()
+{
+
+}
 void	ncp::base::init( const boost::shared_ptr<nebula::content::base>& parent )
 {
 	//PRINTSIG;

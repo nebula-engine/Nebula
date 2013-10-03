@@ -25,7 +25,10 @@ void	npw::base::update()
 	//PRINTSIG;
 
 }
-
+int	npw::base::lookup_key( int k )
+{
+	return keys_[k];
+}
 
 
 

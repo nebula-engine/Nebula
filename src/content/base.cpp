@@ -39,6 +39,15 @@ void	nebula::content::base::shutdown()
 
 	universes_.clear();
 }
+void	nc::base::create_universe( boost::shared_ptr<ncua::base> )
+{
+	
+}
+void	nc::base::register_scene( boost::shared_ptr<nc_sc_a::base> )
+{
+	
+}
+
 
 
 

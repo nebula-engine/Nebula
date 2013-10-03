@@ -10,6 +10,7 @@ namespace nebula
 		public:
 			enum
 			{
+				invalid = 0,
 				a,
 				b,
 				c,
