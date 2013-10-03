@@ -11,15 +11,14 @@ void	Sample::init()
 {
 	nf::app::init();
 	
-	content_.pointer_->create_universe( m_universeAuth );
+	content_->create_universe( m_universeAuth );
 	
 	jess::assertion( bool( m_universeAuth ) );
 	
-	try
-	{
-	
 	m_universeAuth->create_scene( m_scene );
 	
+	jess::assertion( bool( m_scene ) );
+
 	m_scene->create_view_human( m_viewHuman );
 	
 	m_scene->create_rigid_dynamic_box( m_rigidDynamicBox );
@@ -33,13 +32,9 @@ void	Sample::init()
 	
 	m_viewHuman->create_camera();
 	
-	m_viewHuman->camera_.pointer_->controller_ = m_controller;
-
-	}
-	catch ( std::exception& e )
-	{
-		jess::cout << "caught: " << e.what() << std::endl;
-	}
+	m_viewHuman->camera_->controller_ = m_controller;
+	
+	
 }
 
 

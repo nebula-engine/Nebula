@@ -1,5 +1,6 @@
 //#include <jess/except.hpp>
 #include <jess/free.hpp>
+#include <jess/except.hpp>
 
 #include <boost/bind.hpp>
 
@@ -32,9 +33,9 @@ void	nppl::base::init( const boost::shared_ptr<nf::app>& parent )
 	
 	m_xdisplay = XOpenDisplay( NULL );
 	
-	if ( !m_xdisplay ) {
-		//throw jess::except( "Cannot connect to default X server\n" );
-		
+	if ( !m_xdisplay )
+	{
+		throw jess::except( "cannot connect to default X server" );
 	}
 	
 	
@@ -64,9 +65,15 @@ void	nppl::base::create_window( boost::shared_ptr<npw::base>& wnd )
 	
 	boost::shared_ptr<npwl::base> wnd_lin;
 	
-	windows_.push<npwl::base>( wnd_lin, boost::bind( &npwl::base::init, _1, shared_from_this() ) );
+	// don't init here, need to send data first
+	/**
+	* \todo create init override for window that allows all necessary data to be sent OR have the window grab the data from it's parent
+	**/
+	windows_.push<npwl::base>( wnd_lin );
 	
 	wnd = wnd_lin;
+	
+	std::cout << wnd.get();
 	
 	jess::assertion( m_xdisplay );// throw Except("xdisplay is null");
 	
@@ -89,10 +96,14 @@ void	nppl::base::create_window( boost::shared_ptr<npw::base>& wnd )
 		m_white_pixel);
 	
 	// Pass values to Window
+	/** \todo remove this **/
 	wnd_lin->m_xdisplay     = m_xdisplay;
 	wnd_lin->m_root_xwindow = m_root_xwindow;
 	wnd_lin->m_xwindow      = xwindow;
 	wnd_lin->m_screen_num   = m_screen_num;
+
+	// init window
+	wnd_lin->init( shared_from_this() );
 }
 void	nppl::base::update()
 {

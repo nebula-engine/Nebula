@@ -50,9 +50,9 @@ boost::shared_ptr<nebula::content::base>	nc_sc_a::base::get_content()
 void						nc_sc_a::base::init( const boost::shared_ptr<ncua::base>& parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-
+	
 	parent_ = parent;
-
+	
 	// physics
 #ifdef __PHYSX
 	physics_.create<nc_sc_pp::base>( &nc_sc_pp::base::init, _1, shared_from_this() );
@@ -123,19 +123,17 @@ void						nc_sc_a::base::create_rigid_dynamic_box( boost::shared_ptr<ncaa::rigid
 	
 	actors_.push<ncaa::rigid_dynamic_box>( act, boost::bind( &ncaa::rigid_dynamic_box::init, _1, shared_from_this() ) );
 	
-	//if ( !co_ac_ad_rigidDynamicBox ) throw Except("co_ac_ad_rigidDynamicBox is null");
-	
+	jess::assertion( bool( act ) );	
+
 	register_rigid_dynamic( act );
-	
 }
 void						nc_sc_a::base::register_rigid_dynamic( boost::shared_ptr<ncaa::rigid_dynamic> act )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	// content physics
-	boost::shared_ptr<ncp::base> cont_phys = get_content()->physics_.pointer_;
-	jess::assertion( bool( cont_phys ) );
-	
+	boost::shared_ptr<ncp::base> cont_phys = get_content()->physics_.get();
+		
 	// register
 	cont_phys->register_rigid_dynamic( act );
 	
@@ -156,7 +154,7 @@ void						nc_sc_a::base::create_controller( boost::shared_ptr<ncaa::controller>&
 	actors_.push<ncaa::controller>( act, boost::bind( &ncaa::controller::init, _1, shared_from_this() ) );
 	
 	// register controller with global physics object
-	get_content()->physics_.pointer_->register_controller( act );
+	get_content()->physics_->register_controller( act );
 }
 
 

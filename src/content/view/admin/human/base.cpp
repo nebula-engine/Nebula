@@ -49,7 +49,7 @@ void	ncvah::base::render()
 
 	rnd->begin_render();
 
-	camera_.pointer_->render( rnd );
+	camera_->render( rnd );
 	
 	rnd->light();
 	

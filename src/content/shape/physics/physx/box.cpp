@@ -40,13 +40,13 @@ void	ncs::physics::physx::box::shutdown()
 }
 void	ncs::physics::physx::box::create_shape()
 {
-	jess::clog.funcsig();
+	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	// admin rigid_actor
 	boost::shared_ptr<nca::admin::rigid_actor> ad_act = parent_.lock()->parent_.lock();
 
 	// physics rigid_actor
-	boost::shared_ptr<ncap::rigid_actor> ph_act = boost::dynamic_pointer_cast<ncap::rigid_actor>( ad_act->physics_.pointer_ );
+	boost::shared_ptr<ncap::rigid_actor> ph_act = boost::dynamic_pointer_cast<ncap::rigid_actor>( ad_act->physics_.get() );
 	
 	// physx rigid_actor
 	boost::shared_ptr<ncapp::rigid_actor> ph_px_act = boost::dynamic_pointer_cast<nca::physics::physx::rigid_actor>( ph_act );
@@ -55,7 +55,7 @@ void	ncs::physics::physx::box::create_shape()
 	::physx::PxRigidActor* px_rigid_actor = (::physx::PxRigidActor*)( ph_px_act->px_actor_ );
 	
 	// physx material
-	boost::shared_ptr<ncapp::material> mat = boost::dynamic_pointer_cast<ncapp::material>( ad_act->materials_.at(0)->physics_.pointer_ );
+	boost::shared_ptr<ncapp::material> mat = boost::dynamic_pointer_cast<ncapp::material>( ad_act->materials_.at(0)->physics_.get() );
 	jess::assertion( bool(mat) ); //throw jess::except("no material");
 	
 	// PxMaterial

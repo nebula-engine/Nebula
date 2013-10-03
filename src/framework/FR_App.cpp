@@ -62,8 +62,9 @@ void	nf::app::ContinueLoopSequ()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	content_.pointer_->update();
-	platform_.pointer_->update();
+	content_->update();
+
+	platform_->update();
 	//m_network->Update(NULL);
 	
 }
@@ -88,9 +89,9 @@ void	nf::app::shutdown()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;//jess::clog.funcsig();
 
-	content_.pointer_->shutdown();
+	content_->shutdown();
 	//network->Shutdown(NULL);
-	platform_.pointer_->shutdown();
+	platform_->shutdown();
 }
 
 

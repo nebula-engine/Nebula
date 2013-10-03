@@ -64,8 +64,8 @@ void	nf::app::ContinueLoopSequ()
 	//if ( !m_platform ) throw Except("m_platform is null");
 	//if ( !m_network )  throw Except("m_network is null");
 	
-	content_.pointer_->update();
-	platform_.pointer_->update();
+	content_->update();
+	platform_->update();
 	//m_network->Update(NULL);
 	
 }
@@ -92,15 +92,13 @@ void	nf::app::shutdown()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;//jess::clog.funcsig();
 
-	content_.pointer_->shutdown();
+	content_->shutdown();
 	//network->Shutdown(NULL);
-	platform_.pointer_->shutdown();
+	platform_->shutdown();
 }
 boost::shared_ptr<npp::base>	nf::app::get_platform()
 {
-	jess::assertion( bool( platform_.pointer_ ) );
-	
-	return platform_.pointer_;
+	return platform_.get();
 }
 
 

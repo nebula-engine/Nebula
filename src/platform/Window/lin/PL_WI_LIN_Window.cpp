@@ -1,3 +1,4 @@
+#include <jess/except.hpp>
 #include <jess/free.hpp>
 
 //#include <jess/ostream.hpp>
@@ -19,9 +20,12 @@ npwl::base::~base()
 }
 void	npwl::base::init( boost::shared_ptr<npp::base> parent )
 {
-	//PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
 	npw::base::init( parent );
 	
+	std::cout << this << std::endl;
+
 	// Graphics Context
 	m_values.cap_style  = CapButt;
 	m_values.join_style = JoinBevel;
@@ -33,7 +37,10 @@ void	npwl::base::init( boost::shared_ptr<npp::base> parent )
 	m_cap_style = CapButt;
 	m_join_style = JoinBevel;
 	
-	jess::assertion( m_xdisplay );
+	if ( !m_xdisplay )
+	{
+		throw jess::except( "m_xdisplay is null" );
+	}
 	
 	// Create a new graphics context
 	m_gc = XCreateGC( m_xdisplay, m_xwindow, m_valuemask, &m_values);
@@ -65,17 +72,8 @@ void	npwl::base::init( boost::shared_ptr<npp::base> parent )
 	m_center_x = m_win_width/2;
 	m_center_y = m_win_height/2;
 
-
-
-
-
-	
+	// center pointer
 	center_pointer();
-
-
-
-
-
 
 	// create renderer
 	boost::shared_ptr<nprgg::base> rnd_glx( new nprgg::base() );
@@ -88,14 +86,9 @@ void	npwl::base::init( boost::shared_ptr<npp::base> parent )
 	
 	// initialize Renderer
 	rnd_glx->init( shared_from_this() );
-	
-
 
 	// to prevent multiple key events while holding a key
 	XAutoRepeatOff( m_xdisplay );
-
-
-
 
 	// Display keycodes
 	int min_keycodes_return;

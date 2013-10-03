@@ -38,7 +38,7 @@ void	ncsa::box::render(const boost::shared_ptr<npr::base>& rnd)
 	{
 		//throw jess::except("renderer is null");
 	}
-	renderer_.pointer_->render(rnd);
+	renderer_->render(rnd);
 }
 
 

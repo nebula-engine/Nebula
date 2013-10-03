@@ -66,9 +66,9 @@ void	ncpp::base::register_scene( const boost::shared_ptr<nc_sc_a::base>& scn )
 {
 	//PRINTSIG;
 	//CO_SC_PH_PX_Scene* physicsScenePhysX = (CO_SC_PH_PX_Scene*)scene->GetPhysicsScene();
-	boost::shared_ptr<nc_sc_pp::base> scene_physics = boost::dynamic_pointer_cast<nc_sc_pp::base>( scn->physics_.pointer_ );
+	boost::shared_ptr<nc_sc_pp::base> scene_physics = boost::dynamic_pointer_cast<nc_sc_pp::base>( scn->physics_.get() );
 	//if ( !physicsScenePhysX ) throw Except("dynamic_cast returned null");
-
+	
 	::physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
 	
 	scene_desc.gravity = ::physx::PxVec3(0.0f, -9.81f, 0.0f);
@@ -115,7 +115,7 @@ void	ncpp::base::register_scene( const boost::shared_ptr<nc_sc_a::base>& scn )
 }
 void	ncpp::base::register_rigid_dynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& act )
 {
-	boost::shared_ptr<ncapp::rigid_dynamic> act_physics = boost::dynamic_pointer_cast<ncapp::rigid_dynamic>( act->physics_.pointer_ );
+	boost::shared_ptr<ncapp::rigid_dynamic> act_physics = boost::dynamic_pointer_cast<ncapp::rigid_dynamic>( act->physics_.get() );
 	
 	// get transform
 	::physx::PxTransform px_trans = ncpp::boost_to_physx( act->get_pose() );
@@ -129,10 +129,10 @@ void	ncpp::base::register_rigid_dynamic( const boost::shared_ptr<ncaa::rigid_dyn
 void	ncpp::base::register_controller( const boost::shared_ptr<ncaa::controller>& act )
 {
 	// Get actor's physics object
-	boost::shared_ptr<ncapp::controller> act_phy = boost::dynamic_pointer_cast<ncapp::controller>( act->physics_.pointer_ );
+	boost::shared_ptr<ncapp::controller> act_phy = boost::dynamic_pointer_cast<ncapp::controller>( act->physics_.get() );
 	
 	//CO_SC_PH_PX_Scene* physicsScenePhysX = (CO_SC_PH_PX_Scene*)scene->GetPhysicsScene();
-	boost::shared_ptr<nc_sc_pp::base> scn_phy = boost::dynamic_pointer_cast<nc_sc_pp::base>( act->parent_.lock()->physics_.pointer_ );
+	boost::shared_ptr<nc_sc_pp::base> scn_phy = boost::dynamic_pointer_cast<nc_sc_pp::base>( act->parent_.lock()->physics_.get() );
 	//if ( !physicsScenePhysX ) throw Except("dynamic_cast returned null");
 	
 	

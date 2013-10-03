@@ -38,7 +38,7 @@ void	nebula::content::universe::admin::base::update()
 }
 void	nebula::content::universe::admin::base::create_scene( boost::shared_ptr<nc_sc_a::base>& scn )
 {
-	jess::clog.funcsig();
+	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	scenes_.push<nc_sc_a::base>( scn, boost::bind( &nc_sc_a::base::init, _1, shared_from_this() ) );
 }

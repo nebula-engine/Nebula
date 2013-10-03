@@ -37,7 +37,7 @@ void	nc_sc_pp::base::step(FLOAT dt)
 }
 void	nc_sc_pp::base::add_actor(const boost::shared_ptr<ncaa::actor>& act)
 {
-	boost::shared_ptr<ncapp::actor> pp_act = boost::dynamic_pointer_cast<ncapp::actor>( act->physics_.pointer_ );
+	boost::shared_ptr<ncapp::actor> pp_act = boost::dynamic_pointer_cast<ncapp::actor>( act->physics_.get() );
 	
 	::physx::PxActor* px_actor = pp_act->px_actor_;
 	
