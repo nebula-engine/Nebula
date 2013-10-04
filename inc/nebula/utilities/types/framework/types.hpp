@@ -3,10 +3,11 @@
 
 namespace nebula
 {
-namespace framework
-{
-class app;
-}
+	namespace framework
+	{
+		class app;
+		class renderable;
+	}
 }
 
 #endif

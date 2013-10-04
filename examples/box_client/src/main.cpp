@@ -5,15 +5,14 @@
 
 
 
-#include <Framework/Sample.h>
+#include <box_client/framework/app.hpp>
 
-using namespace std;
 
 int main( int argc, char** argv )
 {
 	//PRINTSIG;
 	
-	boost::shared_ptr<Sample> a( new Sample() );
+	boost::shared_ptr<box_client::framework::app> a( new box_client::framework::app() );
 	
 	//app->GetOpt( argc, argv, "h" );
 	

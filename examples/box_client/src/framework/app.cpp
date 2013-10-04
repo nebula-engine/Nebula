@@ -1,13 +1,13 @@
 #include <jess/free.hpp>
 #include <jess/ostream.hpp>
 
-#include <Framework/Sample.h>
+#include <box_client/framework/app.hpp>
 
-Sample::Sample()
+bc0x002::app::app()
 {
 	
 }
-void	Sample::init()
+void	bc0x002::app::init()
 {
 	nf::app::init();
 	

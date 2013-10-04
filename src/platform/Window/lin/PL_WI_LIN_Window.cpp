@@ -89,7 +89,7 @@ void	npwl::base::init( boost::shared_ptr<npp::base> parent )
 	rnd_glx->init( shared_from_this() );
 
 	// to prevent multiple key events while holding a key
-	XAutoRepeatOff( m_xdisplay );
+	//XAutoRepeatOff( m_xdisplay );
 
 	// Display keycodes
 	int min_keycodes_return;

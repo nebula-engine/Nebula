@@ -6,6 +6,7 @@
 
 #include <jess/shared_ptr.hpp>
 
+#include <nebula/utilities/types/framework/types.hpp>
 #include <nebula/utilities/types/platform/types.hpp>
 #include <nebula/utilities/types/content/types.hpp>
 
@@ -36,12 +37,12 @@ namespace nebula
 
 			jess::shared_ptr<nc::base>				content_;
 			jess::shared_ptr<npp::base>				platform_;
-			
+			boost::shared_ptr<nf::renderable>			renderable_;
 			
 			boost::shared_ptr<nebula::content::base>		get_content();
 			boost::shared_ptr<npp::base>				get_platform();
-
-
+			
+			
 		};
 	}
 }

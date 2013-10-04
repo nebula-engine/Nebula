@@ -1,5 +1,19 @@
 digraph G
 {
+	rackdir="BT";
+	
+	nebula [label="nebula\n0x001"];
+
+	subgraph cluster__framework
+	{
+		style = filled;
+		color = lightcoral;
+		
+		framework [label="framework\n0x002"]
+	}
+	
+	framework->nebula;
+
 	subgraph cluster__content
 	{
 		//node [style=filled];
@@ -7,25 +21,21 @@ digraph G
 		color = lightblue;
 		
 		content [label="content"];
-
-		content -> nebula;
-
-		
 		universe [label = "universe"];
-		
-
-
 		scene [label = "scene"];
-		
-		
-		
 		view [label = "view"];
 		
-		actor [label = "actor"];
-		actor_admin [label = "admin"];
-		actor_physics [label = "physics"];
-		actor_physics_physx [label = "physx"];
-		actor_renderer [label = "renderer"];
+		subgraph cluster__actor
+		{
+			style = filled;
+			color = deepskyblue3;
+			
+			actor [label = "actor"];
+			actor_admin [label = "admin"];
+			actor_physics [label = "physics"];
+			actor_physics_physx [label = "physx"];
+			actor_renderer [label = "renderer"];
+		}
 		
 		universe -> content;
 		scene -> content;
@@ -35,8 +45,10 @@ digraph G
 		actor_physics -> actor;
 		actor_physics_physx -> actor_physics;
 		actor_renderer -> actor;
-		
 	}
+	
+	content -> nebula;
+
 	subgraph cluster__platform
 	{
 		platform [label="platform"];
@@ -50,8 +62,6 @@ digraph G
 		platform_renderer_gl [label="gl"];
 		platform_renderer_gl_glx [label="glx"];
 
-		
-		platform -> nebula;
 		platform_platform -> platform;
 		platform_platform_lin -> platform_platform;
 		platform_platform_win -> platform_platform;
@@ -62,23 +72,21 @@ digraph G
 		platform_renderer_gl -> platform_renderer;
 		platform_renderer_gl_glx -> platform_renderer_gl;
 
-
-
-
 		style = filled;
 		color = aquamarine;
 	}
+	
+	platform->nebula;
+	
 	subgraph cluster__ui
 	{
 		ui [label = "ui"];
-		ui -> nebula;
 
 		style = filled;
 		color = plum;
 	}
-	nebula [label="nebula"];
-	
-	
+		
+	ui -> nebula;
 	
 			
 

@@ -19,10 +19,7 @@
 #endif
 
 
-
-
-
-
+#include <nebula/framework/renderable.hpp>
 #include <nebula/framework/app.hpp>
 
 
@@ -66,8 +63,11 @@ void	nf::app::ContinueLoopSequ()
 	
 	content_->update();
 	platform_->update();
-	//m_network->Update(NULL);
 	
+	if ( bool( renderable_ ) )
+	{
+		renderable_->render();
+	}
 }
 void	nf::app::ContinueLoopMulti()
 {
