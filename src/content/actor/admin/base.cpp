@@ -21,12 +21,12 @@ ncaa::base&	ncaa::base::operator=( const ncaa::base& act )
 }
 void	ncaa::base::init( const boost::shared_ptr<nc_sc_a::base>& parent )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	parent_ = parent;
 }
 void	ncaa::base::shutdown()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	ncaa::base::update()
 {
@@ -34,7 +34,7 @@ void	ncaa::base::update()
 }
 void	ncaa::base::render( const boost::shared_ptr<npr::base>& rnd )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	ncaa::base::step( FLOAT dt )
 {

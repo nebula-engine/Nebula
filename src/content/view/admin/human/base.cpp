@@ -15,14 +15,17 @@
 
 ncvah::base::base()
 {
-	
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 }
 ncvah::base::~base()
 {
-	
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	ncvah::base::init( const boost::shared_ptr<nc_sc_a::base>& parent )
-{
+{	
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	ncva::base::init( parent );
 	
 	parent->parent_.lock()->parent_.lock()->parent_.lock()->get_platform()->create_window( window_ );
@@ -31,10 +34,14 @@ void	ncvah::base::init( const boost::shared_ptr<nc_sc_a::base>& parent )
 }
 void	ncvah::base::update()
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	render();
 }
 void	ncvah::base::render()
-{
+{	
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	jess::assertion( bool( window_ ) );
 	
 	boost::shared_ptr<npr::base> rnd = window_->renderer_;

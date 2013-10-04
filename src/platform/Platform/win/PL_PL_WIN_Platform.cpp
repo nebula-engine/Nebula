@@ -15,7 +15,7 @@
 	
 }
 void	PL_PL_WIN_Platform::init( v) {
-	PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	int nCmdShow = SW_SHOWNORMAL;
 
@@ -25,7 +25,7 @@ void	PL_PL_WIN_Platform::init( v) {
 }
 void	PL_PL_WIN_Platform::VShutdown( v)
 {
-	PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	PL_PL_WIN_Platform::update( v)
 {
@@ -33,7 +33,7 @@ void	PL_PL_WIN_Platform::update( v)
 }
 void	PL_PL_WIN_Platform::VCreateWindow( PL_WI_Window*& window )
 {
-	PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	PL_WI_WIN_Window* pl_wi_win_window = NULL;
 	m_window.Create(pl_wi_win_window);

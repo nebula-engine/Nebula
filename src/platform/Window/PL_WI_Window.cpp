@@ -10,19 +10,19 @@ npw::base::~base()
 void	npw::base::init( const boost::shared_ptr<npp::base>& parent )
 {
 	parent_ = parent;
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 
 //	 =			DynCast<Void,AR_Init>( data )->app;
 	// =	DynCast<Void,AR_Init>( data )->platform;
 }
 void	npw::base::shutdown()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 
 }
 void	npw::base::update()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 
 }
 int	npw::base::lookup_key( int k )

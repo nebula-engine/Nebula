@@ -9,12 +9,12 @@
 }
 void	ncaa::rigid_dynamic::init( const boost::shared_ptr<nc_sc_a::base>& parent )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncaa::rigid_body::init( parent );
 }
 void	ncaa::rigid_dynamic::shutdown()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	ncaa::rigid_dynamic::update()
 {
@@ -22,17 +22,17 @@ void	ncaa::rigid_dynamic::update()
 }
 void	ncaa::rigid_dynamic::render( const boost::shared_ptr<npr::base>& rnd )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::rigid_dynamic::step( FLOAT dt )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::rigid_dynamic::create_shapes()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 

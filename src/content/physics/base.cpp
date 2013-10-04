@@ -12,26 +12,26 @@ ncp::base::~base()
 }
 void	ncp::base::init( const boost::shared_ptr<nebula::content::base>& parent )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	ncp::base::shutdown()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncp::base::register_scene( const boost::shared_ptr<nc_sc_a::base>& scn )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncp::base::register_controller( const boost::shared_ptr<ncaa::controller>& act )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncp::base::register_rigid_dynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& act )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncp::base::add_actor( boost::shared_ptr<ncaa::base> act )

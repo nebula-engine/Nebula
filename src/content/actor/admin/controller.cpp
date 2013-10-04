@@ -1,3 +1,5 @@
+#include <boost/numeric/ublas/io.hpp>
+
 #include <nebula/define.hpp>
 
 #include <nebula/utilities/free.hpp>
@@ -58,7 +60,7 @@ void	ncaa::controller::init( const boost::shared_ptr<nc_sc_a::base>& parent )
 }
 void	ncaa::controller::shutdown()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::controller::update()
@@ -78,7 +80,11 @@ void	ncaa::controller::create_shapes()
 }
 void	ncaa::controller::look_at( const boost::shared_ptr<npr::base>& rnd )
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	pose_ = bnu::identity_matrix<FLOAT>( 4 );
+	
+	std::cout << pose_ << std::endl;
 	
 	pose_ = prod( pose_, nebula::utilities::matrix_pitch( pitch_ ) );
 	
@@ -86,6 +92,8 @@ void	ncaa::controller::look_at( const boost::shared_ptr<npr::base>& rnd )
 	
 	nebula::utilities::matrix_set_pos( pose_ , pos_ ); 
 	
+	std::cout << pose_ << std::endl;
+
 	rnd->mult_matrix( pose_ );
 	
 	//bnu::  math::quaternion rot(0,0,0,1);
@@ -105,6 +113,8 @@ void	ncaa::controller::look_at( const boost::shared_ptr<npr::base>& rnd )
 	//AR_Render* r = DynCast<Void,AR_Render>(v);
 
 	//r->renderer->VLookAt( m_pos, m_pos + m_look, m_up );
+	
+	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
 void	ncaa::controller::process_event(int evnt)
 {
@@ -140,7 +150,7 @@ void	ncaa::controller::handle_key_down(int k, int window_no)
 }
 void	ncaa::controller::handle_pointer_motion( int x, int y )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	yaw_ -= x * 0.001;
 	pitch_ -= y * 0.001;
 }

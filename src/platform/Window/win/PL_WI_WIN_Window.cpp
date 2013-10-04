@@ -17,7 +17,7 @@
 					Platform::WindowWin::~WindowWin() {
 }
 void				Platform::WindowWin::init( const boost::shared_ptr<>&  ) {
-	PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
 
 	char szTitle[] = "RCS Client";
     char szWindowClass[] = "Windows App";

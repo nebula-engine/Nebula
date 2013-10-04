@@ -11,23 +11,23 @@
 
 void	ncaa::rigid_static_plane::init( const boost::shared_ptr<nc_sc_a::base>& parent )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncaa::rigid_static::init( parent );
 }
 void	ncaa::rigid_static_plane::shutdown() {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::rigid_static_plane::update() {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::rigid_static_plane::render( const boost::shared_ptr<npr::base>& rnd ) {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::rigid_static_plane::step( FLOAT dt ) {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 

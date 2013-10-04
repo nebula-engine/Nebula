@@ -15,19 +15,19 @@ npp::base::~base()
 }
 void	npp::base::init( const boost::shared_ptr<nf::app>& parent )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	parent_ = parent;
 	
 	key_down_event_[np::key::space] = event::eDELETE_WINDOW;
 }
 void	npp::base::shutdown() {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 	windows_.clear();
 }
 void	npp::base::delete_window( int window_no )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 	boost::shared_ptr<npw::base> wnd = windows_.at( window_no );
 	
@@ -41,11 +41,11 @@ void	npp::base::delete_window( int window_no )
 }
 void	npp::base::create_window( boost::shared_ptr<npw::base>& wnd )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	npp::base::update()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	//FR_COM_IComm::Update();
 	mailbox::update();
 
@@ -53,7 +53,7 @@ void	npp::base::update()
 }
 void	npp::base::process_message( boost::shared_ptr<na::message> msg )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 	//printf("platform process\n");
 

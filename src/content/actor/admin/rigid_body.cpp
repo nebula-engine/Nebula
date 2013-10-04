@@ -10,24 +10,24 @@
 
 void	ncaa::rigid_body::init( const boost::shared_ptr<nc_sc_a::base>& parent )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncaa::rigid_actor::init( parent );
 
 	
 }
 void	ncaa::rigid_body::shutdown() {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::rigid_body::update() {
 	ncaa::rigid_actor::update();
 }
 void	ncaa::rigid_body::render(const boost::shared_ptr<npr::base>&) {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::rigid_body::step(FLOAT) {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::rigid_body::create_shapes()

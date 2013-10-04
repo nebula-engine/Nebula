@@ -9,25 +9,25 @@ ncaa::rigid_static::~rigid_static()
 }
 void	ncaa::rigid_static::init( const boost::shared_ptr<nc_sc_a::base>& parent )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncaa::rigid_actor::init(parent);
 }
 void	ncaa::rigid_static::shutdown()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::rigid_static::update()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::rigid_static::render( const boost::shared_ptr<npr::base>& rnd ) {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::rigid_static::step( FLOAT dt ) {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 

@@ -13,10 +13,11 @@
 
 npwl::base::base()
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 npwl::base::~base()
 {
-	//PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	npwl::base::init( boost::shared_ptr<npp::base> parent )
 {
@@ -46,7 +47,7 @@ void	npwl::base::init( boost::shared_ptr<npp::base> parent )
 	m_gc = XCreateGC( m_xdisplay, m_xwindow, m_valuemask, &m_values);
 	if ( m_gc < 0 )
 	{
-		//jess::cerr << "XCreateGC error" << std::endl;
+		throw jess::except( "XCreateGC error" );
 	}
 	
 	// Colors
@@ -101,8 +102,10 @@ void	npwl::base::init( boost::shared_ptr<npp::base> parent )
 	KeySym* keysym = XGetKeyboardMapping( m_xdisplay, min_keycodes_return, keycode_count, &keysyms_per_keycode_return );
 
 	int c = 0;
-	for ( int a = 0; a < keycode_count; a++ ) {
-		for ( int b = 0; b < keysyms_per_keycode_return; b++ ) {
+	for ( int a = 0; a < keycode_count; a++ )
+	{
+		for ( int b = 0; b < keysyms_per_keycode_return; b++ )
+		{
 			//printf("%i ",keysym[c]);
 			c++;
 		}
@@ -112,7 +115,7 @@ void	npwl::base::init( boost::shared_ptr<npp::base> parent )
 
 	XFree(keysym);
 
-
+	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
 void	npwl::base::register_keys()
 {
@@ -155,7 +158,7 @@ void	npwl::base::register_keys()
 }
 void	npwl::base::shutdown()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 	XFreeGC( m_xdisplay, m_gc );
 	XDestroyWindow( m_xdisplay, m_xwindow );

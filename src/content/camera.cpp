@@ -12,6 +12,8 @@ nebula::content::camera::camera()
 }
 void	nebula::content::camera::render(const boost::shared_ptr<nebula::platform::renderer::base>& rnd )
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	boost::numeric::ublas::vector<FLOAT> e(3);
 	boost::numeric::ublas::vector<FLOAT> c(3);
 	boost::numeric::ublas::vector<FLOAT> u(3);
@@ -28,6 +30,7 @@ void	nebula::content::camera::render(const boost::shared_ptr<nebula::platform::r
 	u(1) = 1;
 	u(2) = 0;
 	
+	//jess::clog << "hello" << std::endl;
 	
 	if ( controller_ )
 	{
@@ -38,7 +41,7 @@ void	nebula::content::camera::render(const boost::shared_ptr<nebula::platform::r
 		rnd->look_at(e, c, u);
 	}
 
-	
+	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
 
 

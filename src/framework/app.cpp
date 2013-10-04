@@ -75,7 +75,7 @@ void	nf::app::ContinueLoopMulti()
 }
 void	nf::app::init()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;//.funcsig();//PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;//.funcsig();//jess::clog << NEB_FUNCSIG << std::endl;
 	
 	content_.create<nc::base>( boost::bind( &nc::base::init, _1, shared_from_this() ) );
 	//network_ = new Network();

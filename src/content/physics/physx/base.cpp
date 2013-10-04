@@ -29,7 +29,7 @@
 
 void	ncpp::base::init( const boost::shared_ptr<nebula::content::base>& parent )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncp::base::init( parent );
 
 	// Foundation
@@ -64,7 +64,7 @@ void	ncpp::base::shutdown()
 }
 void	ncpp::base::register_scene( const boost::shared_ptr<nc_sc_a::base>& scn )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	//CO_SC_PH_PX_Scene* physicsScenePhysX = (CO_SC_PH_PX_Scene*)scene->GetPhysicsScene();
 	boost::shared_ptr<nc_sc_pp::base> scene_physics = boost::dynamic_pointer_cast<nc_sc_pp::base>( scn->physics_.get() );
 	//if ( !physicsScenePhysX ) throw Except("dynamic_cast returned null");

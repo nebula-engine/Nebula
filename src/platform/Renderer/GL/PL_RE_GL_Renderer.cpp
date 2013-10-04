@@ -1,3 +1,5 @@
+#include <jess/ostream.hpp>
+#include <jess/free.hpp>
 #include <jess/except.hpp>
 
 
@@ -26,19 +28,21 @@ void GetGLError( GLenum error )
 }
 void	nprg::base::init( const boost::shared_ptr<npw::base>&  )
 {
-	//PRINTSIG;
-
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
+	
+	
 	printf( "OpenGL version %s\n", glGetString(GL_VERSION) );
 	printf( "GLSL   version %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION) );
 	printf( "GLEW   version %s\n", glewGetString(GLEW_VERSION) );
-
+	
 	glewExperimental = GL_TRUE;
 	GLenum err = glewInit();
 	GetGLError(err);
 
 	if ( !GLEW_VERSION_2_1 ) throw jess::except("GLEW version problem");
 
-
+	
 
 	GLint numExtensions;
 	GLint i;
@@ -66,11 +70,12 @@ void	nprg::base::init( const boost::shared_ptr<npw::base>&  )
 	//unsigned int program = 0;
 
 	//CompileShaders( program );
-
+	
+	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
 void	nprg::base::draw_cube()
 {
-	//PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
 
 	GLfloat cyan[] = {0.0f, 0.8f, 0.8f, 1.0f};
 	GLfloat white[] = {1.0f, 1.0f, 1.0f, 1.0f};
@@ -124,7 +129,7 @@ void	nprg::base::draw_cube()
 }
 void	nprg::base::draw_sphere()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	/*
 	GLfloat cyan[] = {0.0f, 0.8f, 0.8f, 1.0f};
 	GLfloat white[] = {1.0f, 1.0f, 1.0f, 1.0f};
@@ -284,10 +289,12 @@ void	nprg::base::push_matrix()
 }
 void	nprg::base::mult_matrix( bnu::matrix<FLOAT> mat )
 {
-	//PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
 	//PrintPxMat44(matrix);
 
 	glMultMatrixf( &mat.data()[0] );
+
+	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
 void	nprg::base::scale( bnu::vector<float> v )
 {

@@ -15,7 +15,7 @@ template void jess::shared_ptr<ncap::base>::create<ncap::rigid_dynamic_box>( boo
 
 ncaa::rigid_dynamic_box::rigid_dynamic_box()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 	x_ = 1;
 	y_ = 1;
@@ -23,11 +23,11 @@ ncaa::rigid_dynamic_box::rigid_dynamic_box()
 }
 ncaa::rigid_dynamic_box::~rigid_dynamic_box()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	ncaa::rigid_dynamic_box::init( const boost::shared_ptr<nc_sc_a::base>& parent )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncaa::rigid_dynamic::init( parent );
 
 	// physics
@@ -50,13 +50,13 @@ void	ncaa::rigid_dynamic_box::update( )
 }
 void	ncaa::rigid_dynamic_box::render( const boost::shared_ptr<npr::base>& rnd )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 
 	ncaa::rigid_actor::render( rnd );
 }
 void	ncaa::rigid_dynamic_box::step(  )
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	/*
 	AR_Step* s = DynCast<Void,AR_Step>( v );
 	
@@ -75,7 +75,7 @@ void	ncaa::rigid_dynamic_box::step(  )
 }
 void	ncaa::rigid_dynamic_box::create_shapes()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 
 	create_box( box_ );
 

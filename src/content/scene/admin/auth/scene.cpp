@@ -7,12 +7,12 @@
 
 
 Content::SceneAuth::SceneAuth(): CO_SC_AD_Scene( app ) {
-	PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 Content::SceneAuth::~SceneAuth() {
 }
 void	Content::SceneAuth::init( const boost::shared_ptr<>&  ) {
-	PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
 	CO_SC_AD_Scene::init( data );
 }
 void	Content::SceneAuth::update() {

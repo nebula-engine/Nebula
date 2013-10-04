@@ -7,23 +7,23 @@
     
 
 void	ncaa::vehicle::init( const boost::shared_ptr<nc_sc_a::base>& parent ) {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncaa::base::init( parent );
 }
 void	ncaa::vehicle::shutdown() {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::vehicle::update() {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::vehicle::render( const boost::shared_ptr<npr::base>& rnd ) {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 void	ncaa::vehicle::step( FLOAT dt ) {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
 

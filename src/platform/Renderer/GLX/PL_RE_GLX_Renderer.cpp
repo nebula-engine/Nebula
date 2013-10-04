@@ -1,13 +1,15 @@
 #include <jess/except.hpp>
+#include <jess/ostream.hpp>
+#include <jess/free.hpp>
 
 #include <nebula/platform/renderer/gl/glx/base.hpp>
 
 void	nprgg::base::init( boost::shared_ptr<npw::base> parent )
 {
-	//PRINTSIG;
-	nprg::base::init( parent );
+	jess::clog << NEB_FUNCSIG << std::endl;
+	std::cout << this << std::endl;
 
-
+	
 	
 	att = new GLint[5];
 	att[0] = GLX_RGBA;
@@ -15,9 +17,12 @@ void	nprgg::base::init( boost::shared_ptr<npw::base> parent )
 	att[2] = 24;
 	att[3] = GLX_DOUBLEBUFFER;
 	att[4] = None;
-
-
-
+	
+	if ( !m_xdisplay )
+	{
+		throw jess::except( "m_xdisplay is null" );
+	}
+	
 	m_vi = glXChooseVisual( m_xdisplay, 0, att );
 	
 	if( m_vi == 0 )
@@ -27,7 +32,7 @@ void	nprgg::base::init( boost::shared_ptr<npw::base> parent )
 	} 
 	else
 	{
-		printf("glXChooseVisual: visual %p selected\n", (void *)m_vi->visualid); // %p creates hexadecimal output like in glxinfo
+		printf( "glXChooseVisual: visual %p selected\n", (void *)m_vi->visualid ); // %p creates hexadecimal output like in glxinfo
 	}
 	
 	m_cmap = XCreateColormap( m_xdisplay, m_root_xwindow, m_vi->visual, AllocNone );
@@ -39,14 +44,19 @@ void	nprgg::base::init( boost::shared_ptr<npw::base> parent )
 	
 	glXMakeCurrent( m_xdisplay, m_xwindow, m_glc );
 	
-	if ( glXGetCurrentContext() == NULL ) throw jess::except("context not created");
-
+	if ( glXGetCurrentContext() == NULL )
+	{
+		throw jess::except("context not created");
+	}
 	
-
+	// must be here so that base class has valid GLContext available
+	nprg::base::init( parent );
+	
+	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
 void	nprgg::base::shutdown()
 {
-	//PRINTSIG;
+	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 	glXMakeCurrent( m_xdisplay, None, NULL );
 	glXDestroyContext( m_xdisplay, m_glc );
