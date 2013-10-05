@@ -1,26 +1,17 @@
 #include <boost/numeric/ublas/io.hpp>
 
+
+
 #include <nebula/define.hpp>
 
 #include <nebula/utilities/free.hpp>
 
 #include <nebula/platform/renderer/base.hpp>
-
 #include <nebula/platform/key.hpp>
-
 #include <nebula/platform/window/base.hpp>
 
 #include <nebula/content/actor/physics/controller.hpp>
-
-//#include <framework/Communication/Message/FR_COM_MSG_Message.h>
-//#include <framework/Communication/Message/FR_COM_MSG_Data.h>
-
-
-
-#include <nebula/content/actor/physics/controller.hpp>
 #include <nebula/content/actor/renderer/controller.hpp>
-
-
 
 
 #include <nebula/content/actor/admin/controller.hpp>
@@ -34,7 +25,7 @@ ncaa::controller::controller()
 ncaa::controller::~controller()
 {
 }
-void	ncaa::controller::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+void	ncaa::controller::init( boost::shared_ptr<nc_sc_a::base>& parent )
 {
 	ncaa::base::init(parent);
 
@@ -53,15 +44,14 @@ void	ncaa::controller::init( const boost::shared_ptr<nc_sc_a::base>& parent )
 	key_flag_[nebula::platform::key::d] = flag::eEAST;
 
 	// physics
-	//physics_.create<ncap::controller>( boost::bind( &ncap::controller::init, _1, shared_from_this() ) );
+	physics_.create<ncap::controller>( boost::bind( &ncap::controller::init, _1, shared_from_this() ) );
 	
 	// renderer
-	//renderer_.create<ncap::controller>( boost::bind( &ncap::controller::init, _1, shared_from_this() ) );
+	renderer_.create<ncar::controller>( boost::bind( &ncar::controller::init, _1, shared_from_this() ) );	
 }
 void	ncaa::controller::shutdown()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
-	
 }
 void	ncaa::controller::update()
 {
@@ -106,17 +96,8 @@ void	ncaa::controller::look_at( const boost::shared_ptr<npr::base>& rnd )
 	
 	//up_ = Math::Vec3f(0,1,0);
 	//look_ = Math::Vec3f(0,0,-1);
-	
-	//up_ *= rot;
-	//look_ *= rot;
-
-	//AR_Render* r = DynCast<Void,AR_Render>(v);
-
-	//r->renderer->VLookAt( m_pos, m_pos + m_look, m_up );
-	
-	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
-void	ncaa::controller::process_event(int evnt)
+void	ncaa::controller::process_event( int evnt )
 {
 	switch ( evnt )
 	{
@@ -129,6 +110,9 @@ void	ncaa::controller::process_event(int evnt)
 }
 void	ncaa::controller::handle_key_up(int k, int window_no)
 {
+
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	// unset flag
 	UINT f = key_flag_[k];
 	flag_ &= ~( f );
@@ -140,6 +124,9 @@ void	ncaa::controller::handle_key_up(int k, int window_no)
 }
 void	ncaa::controller::handle_key_down(int k, int window_no)
 {
+
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
 	// set flag
 	UINT f = key_flag_[k];
 	flag_ |= f;
@@ -150,7 +137,8 @@ void	ncaa::controller::handle_key_down(int k, int window_no)
 }
 void	ncaa::controller::handle_pointer_motion( int x, int y )
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
 	yaw_ -= x * 0.001;
 	pitch_ -= y * 0.001;
 }

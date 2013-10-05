@@ -1,8 +1,4 @@
-#include <memory>
-
-
-//#include <NebulaAPI.h>
-
+#include <nebula/define.hpp>
 
 
 #include <box_client/framework/app.hpp>
@@ -10,7 +6,7 @@
 
 int main( int argc, char** argv )
 {
-	//PRINTSIG;
+	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	boost::shared_ptr<box_client::framework::app> a( new box_client::framework::app() );
 	

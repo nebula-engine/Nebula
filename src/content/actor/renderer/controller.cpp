@@ -10,9 +10,13 @@ ncar::controller::controller()
 ncar::controller::~controller()
 {
 }
-void	ncar::controller::init( const boost::shared_ptr<ncaa::base>& parent )
+void	ncar::controller::init( boost::shared_ptr<ncaa::base>& parent )
 {
-	ncar::base::init(parent);
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
+	ncar::base::init( parent );
+
+	
 }
 void	ncar::controller::shutdown()
 {
@@ -32,7 +36,10 @@ void	ncar::controller::step( FLOAT dt )
 {
 	
 }
+void	ncar::controller::create_shapes()
+{
 
+}
 
 
 

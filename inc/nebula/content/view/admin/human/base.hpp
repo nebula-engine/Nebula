@@ -3,6 +3,7 @@
 
 #include <jess/shared_ptr.hpp>
 
+#include <nebula/utilities/types/platform/types.hpp>
 #include <nebula/utilities/types/content/types.hpp>
 
 #include <nebula/content/view/admin/base.hpp>
@@ -23,7 +24,7 @@ namespace nebula
 					public:
 						base();
 						virtual ~base();
-						virtual void					init( const boost::shared_ptr<nc_sc_a::base>& );
+						virtual void					init( boost::shared_ptr<nc_sc_a::base>& );
 						virtual void					shutdown();
 						virtual void					update();
 						virtual void					render();

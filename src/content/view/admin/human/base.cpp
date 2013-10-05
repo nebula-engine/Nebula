@@ -22,7 +22,7 @@ ncvah::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	ncvah::base::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+void	ncvah::base::init( boost::shared_ptr<nc_sc_a::base>& parent )
 {	
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -36,7 +36,8 @@ void	ncvah::base::update()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	render();
+	// the initial render call should come form app
+	//render();
 }
 void	ncvah::base::render()
 {	
@@ -49,9 +50,6 @@ void	ncvah::base::render()
 	//if (!renderer) throw Except("renderer is null");
 	//if (!m_camera) throw Except("m_camera is null");
 	//if (!m_scene)  throw Except("m_scene is null");
-
-
-
 
 
 	rnd->begin_render();

@@ -2,39 +2,33 @@
 #include <jess/ostream.hpp>
 
 #include <box_client/framework/app.hpp>
+#include <box_client/content/universe/admin/base.hpp>
+#include <box_client/content/scene/admin/base.hpp>
+#include <box_client/content/view/admin/base.hpp>
 
-bc0x002::app::app()
+//template void nc::base::create_universe( boost::shared_ptr<box_client::content::universe::admin::base>& );
+
+
+bc0x100::app::app()
 {
 	
 }
-void	bc0x002::app::init()
+void	bc0x100::app::init()
 {
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
 	nf::app::init();
 	
-	content_->create_universe( m_universeAuth );
+	content_->create_universe( universe_ );
 	
-	jess::assertion( bool( m_universeAuth ) );
+	//jess::assertion( bool( universe_ ) );
 	
-	m_universeAuth->create_scene( m_scene );
+	universe_->create_scene( scene_ );
 	
-	jess::assertion( bool( m_scene ) );
-
-	m_scene->create_view_human( m_viewHuman );
+	//jess::assertion( bool( scene_ ) );
 	
-	m_scene->create_rigid_dynamic_box( m_rigidDynamicBox );
-
-	m_scene->create_controller( m_controller );
-	
-	//FR_COM_MSG_Dest dest;
-	//dest.icomm = m_controller;
-	
-	//m_platform->windows_.at(0)->GetInput()->SetMouseMoveReceiver( dest );
-	
-	m_viewHuman->create_camera();
-	
-	m_viewHuman->camera_->controller_ = m_controller;
-	
-	
+	renderable_ = scene_->get_view();
 }
 
 

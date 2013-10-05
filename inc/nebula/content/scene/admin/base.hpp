@@ -3,6 +3,7 @@
 
 #include <ctime>
 
+#include <boost/bind.hpp>
 #include <boost/weak_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
@@ -10,14 +11,13 @@
 #include <jess/map.hpp>
 #include <jess/shared_ptr.hpp>
 
+#include <nebula/define.hpp>
 #include <nebula/utilities/types/platform/types.hpp>
-
 #include <nebula/utilities/types/content/types.hpp>
 #include <nebula/utilities/types/content/scene/types.hpp>
 #include <nebula/utilities/types/content/universe/types.hpp>
 #include <nebula/utilities/types/content/view/types.hpp>
 #include <nebula/utilities/types/content/actor/types.hpp>
-
 #include <nebula/ns.hpp>
 
 namespace nebula
@@ -41,45 +41,57 @@ namespace nebula
 					base();
 					/// dtor
 					~base();
-					
 					/// init
-					virtual void									init( const boost::shared_ptr<ncua::base>& parent );
+					virtual void									init( boost::shared_ptr<ncua::base>& );
 					/// shutdown
 					virtual void									shutdown();
 					/// update
 					virtual void									update();
 					/// step
 					virtual void									step( FLOAT dt );
-					
+					/// render
 					virtual void									render( const boost::shared_ptr<npr::base>& );
 					/// get content
 					boost::shared_ptr<nebula::content::base>					get_content();
-									
-
+					/// request window
+					virtual void									request_window( jess::shared_ptr<npw::base>& );				
+					/// create
 					virtual void									create_rigid_dynamic_box( boost::shared_ptr<ncaa::rigid_dynamic_box>& );
+					/// get rid of this
 					virtual void									register_rigid_dynamic( boost::shared_ptr<ncaa::rigid_dynamic> );
-					
-					virtual void									create_view_human( boost::shared_ptr<ncvah::base>& );
-					
-					virtual void									create_controller( boost::shared_ptr<ncaa::controller>& );
-									
+					/// create
+					template <class T> void								create_view( boost::shared_ptr<T>& t )
+					{
+						/// log
+						jess::clog << NEB_FUNCSIG << std::endl;
+						
+						//void(*func)(boost::shared_ptr<nc_sc_a::base>&) = &T::init;
+						
+						views_.push<T>( t, boost::bind( &T::init, _1, shared_from_this() ) );
+					}
+					/// create
+					virtual void									create_controller( boost::shared_ptr<ncaa::controller>& );			
 					/// parent
 					boost::weak_ptr<ncua::base>							parent_;
-
 					/// time of last update
 					std::time_t									last_;
+					/// now
 					std::time_t									now_;
 					/// step size
 					FLOAT										step_size_;
+					/// accumulated time (replace with accumulator object)
 					FLOAT										accumulator_;
-
-					
+					///@name children
+					///@{
+					/// physics
 					jess::shared_ptr<nc_sc_p::base>							physics_;
+					/// renderer
 					jess::shared_ptr<nc_sc_r::base>							renderer_;
-					
+					/// views
 					jess::map<ncva::base>								views_;
+					/// actors
 					jess::map<ncaa::base>								actors_;
-					
+					///@}
 				};
 			}
 		}

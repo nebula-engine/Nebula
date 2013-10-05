@@ -15,9 +15,9 @@ ncap::rigid_actor&	ncap::rigid_actor::operator=( const ncap::rigid_actor& act )
 {
 	return *this;
 }
-void	ncap::rigid_actor::init(const boost::shared_ptr<nca::admin::base>& parent)
+void	ncap::rigid_actor::init( boost::shared_ptr<nca::admin::base>& parent )
 {
-	ncap::actor::init(parent);
+	ncap::actor::init( parent );
 }
 void	ncap::rigid_actor::shutdown()
 {

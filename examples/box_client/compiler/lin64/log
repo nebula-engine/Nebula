@@ -1,0 +1,30 @@
+assertion
+stack trace:
+  ../../bin/lin64/box_client : jess::except::except(std::string const&, int, bool)+0xb6
+  ../../bin/lin64/box_client : jess::assertion(bool)+0x66
+  ../../bin/lin64/box_client : nebula::content::view::admin::base::render()+0x43
+  ../../bin/lin64/box_client : nebula::framework::app::ContinueLoopSequ()+0xcb
+  ../../bin/lin64/box_client : nebula::framework::app::MainLoopSequ()+0x18
+  ../../bin/lin64/box_client : main()+0x65
+  /lib/x86_64-linux-gnu/libc.so.6 : __libc_start_main()+0xed
+  ../../bin/lin64/box_client() [0x505219]
+assertion
+stack trace:
+  ../../bin/lin64/box_client : jess::except::except(std::string const&, int, bool)+0xb6
+  ../../bin/lin64/box_client : jess::assertion(bool)+0x66
+  ../../bin/lin64/box_client : nebula::content::view::admin::base::render()+0x43
+  ../../bin/lin64/box_client : nebula::framework::app::ContinueLoopSequ()+0xcb
+  ../../bin/lin64/box_client : nebula::framework::app::MainLoopSequ()+0x18
+  ../../bin/lin64/box_client : main()+0x65
+  /lib/x86_64-linux-gnu/libc.so.6 : __libc_start_main()+0xed
+  ../../bin/lin64/box_client() [0x505219]
+assertion
+stack trace:
+  ../../bin/lin64/box_client : jess::except::except(std::string const&, int, bool)+0xb6
+  ../../bin/lin64/box_client : jess::assertion(bool)+0x66
+  ../../bin/lin64/box_client : nebula::content::view::admin::base::render()+0x43
+  ../../bin/lin64/box_client : nebula::framework::app::ContinueLoopSequ()+0xcb
+  ../../bin/lin64/box_client : nebula::framework::app::MainLoopSequ()+0x18
+  ../../bin/lin64/box_client : main()+0x65
+  /lib/x86_64-linux-gnu/libc.so.6 : __libc_start_main()+0xed
+  ../../bin/lin64/box_client() [0x505219]

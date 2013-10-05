@@ -5,38 +5,29 @@
 #include <nebula/define.hpp>
 
 #include <nebula/framework/app.hpp>
-
 #include <nebula/content/base.hpp>
 #include <nebula/content/physics/base.hpp>
-
 #include <nebula/content/universe/admin/base.hpp>
-
 #include <nebula/content/scene/physics/base.hpp>
 #include <nebula/content/scene/physics/physx/base.hpp>
-
 #include <nebula/content/view/admin/human/base.hpp>
-
 #include <nebula/content/actor/admin/rigid_dynamic_box.hpp>
 #include <nebula/content/actor/admin/controller.hpp>
-
-
-
-
 
 #include <nebula/content/scene/admin/base.hpp>
 
 nc_sc_a::base::base()
 {
+	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	accumulator_ = 0;
 	step_size_ = 1.0f / 60.0f;
-	time( &last_ );
-
-	
+	time( &last_ );	
 }
 nc_sc_a::base::~base()
 {
+	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
 boost::shared_ptr<nebula::content::base>	nc_sc_a::base::get_content()
@@ -47,39 +38,45 @@ boost::shared_ptr<nebula::content::base>	nc_sc_a::base::get_content()
 	
 	return cont;
 }
-void						nc_sc_a::base::init( const boost::shared_ptr<ncua::base>& parent )
+void						nc_sc_a::base::init( boost::shared_ptr<ncua::base>& parent )
 {
+	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	parent_ = parent;
-	
+
+
+	jess::cout << NEB_FUNCSIG << " test 1" << std::endl;
+
 	// physics
 #ifdef __PHYSX
 	physics_.create<nc_sc_pp::base>( &nc_sc_pp::base::init, _1, shared_from_this() );
 #else
 	physics_.create<nc_sc_p::base>( boost::bind( &nc_sc_p::base::init, _1, shared_from_this() ) );
 #endif
+	jess::cout << NEB_FUNCSIG << " test 2" << std::endl;
 	
-	
+
 	get_content()->register_scene( shared_from_this() );
 }
 void						nc_sc_a::base::shutdown()
 {
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	actors_.foreach( boost::bind( &ncaa::base::shutdown, _1 ) );
-		jess::clog << NEB_FUNCSIG << std::endl;
 	actors_.clear();
 	
 	views_.foreach( boost::bind( &ncva::base::shutdown, _1 ) );
 	views_.clear();
 }
-void						nc_sc_a::base::create_view_human( boost::shared_ptr<ncvah::base>& v )
+/*void						nc_sc_a::base::create_view( boost::shared_ptr<ncva::base>& v )
 {
-
-		jess::clog << NEB_FUNCSIG << std::endl;
-
-
-	views_.push<ncvah::base>( v, boost::bind( &ncvah::base::init, _1, shared_from_this() ) );
-}
+	/// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
+	views_.push<ncva::base>( v, boost::bind( &ncva::base::init, _1, shared_from_this() ) );
+}*/
 void						nc_sc_a::base::update()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -156,7 +153,10 @@ void						nc_sc_a::base::create_controller( boost::shared_ptr<ncaa::controller>&
 	// register controller with global physics object
 	get_content()->physics_->register_controller( act );
 }
-
+void	nc_sc_a::base::request_window( jess::shared_ptr<npw::base>& wnd )
+{
+	parent_.lock()->request_window( wnd );
+}
 
 
 

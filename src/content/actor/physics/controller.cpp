@@ -1,8 +1,10 @@
+#include <boost/numeric/ublas/io.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/vector.hpp>
 #include <boost/numeric/ublas/matrix_proxy.hpp>
 
 #include <jess/free.hpp>
+#include <jess/ostream.hpp>
 
 #include <nebula/content/actor/admin/controller.hpp>
 #include <nebula/content/actor/physics/controller.hpp>
@@ -16,10 +18,9 @@ nca::physics::controller::controller()
 nca::physics::controller::~controller()
 {
 }
-void	nca::physics::controller::init(const boost::shared_ptr<nca::admin::controller>& parent)
+void	nca::physics::controller::init( boost::shared_ptr<ncaa::base>& parent )
 {
-	jess::assertion( bool( parent ) );
-	parent_ = parent;
+	ncap::base::init( parent );
 }
 void	nca::physics::controller::shutdown()
 {

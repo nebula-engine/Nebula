@@ -3,9 +3,9 @@
 
 #include <boost/weak_ptr.hpp>
 
-
+#include <nebula/utilities/types/types.hpp>
 #include <nebula/utilities/types/content/scene/types.hpp>
-
+#include <nebula/framework/renderable.hpp>
 #include <nebula/ns.hpp>
 
 namespace nebula
@@ -16,18 +16,35 @@ namespace nebula
 		{
 			namespace admin
 			{
-				class base
+				/// base
+				class base:
+					public nf::renderable
 				{
 				public:
+					/// ctor
 					base();
+					/// dtor
 					virtual ~base();
-					virtual void					init( const boost::shared_ptr<nc_sc_a::base>& );
+					/// init
+					virtual void					init( boost::shared_ptr<nc_sc_a::base>& );
+					/// shutdown
 					virtual void					shutdown();
+					/// update
 					virtual void					update();
-
-
-
+					/// render
+					virtual void					render();
+					/// create camera
+					virtual void					create_camera();
+					/// parent
 					boost::weak_ptr<nc_sc_a::base>			parent_;
+					///@name references
+					///{
+					/// window
+					jess::shared_ptr<npw::base>			window_;
+					/// camera
+					boost::shared_ptr<n0x30000::camera>		camera_;
+					///}
+
 				};
 			}
 		}

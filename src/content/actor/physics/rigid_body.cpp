@@ -17,9 +17,9 @@ nca::physics::rigid_body&	ncap::rigid_body::operator=( const ncap::rigid_body& a
 {
 	return *this;
 }
-void	nca::physics::rigid_body::init(const boost::shared_ptr<nca::admin::base>& parent)
+void	nca::physics::rigid_body::init( boost::shared_ptr<nca::admin::base>& parent )
 {
-	nca::physics::rigid_actor::init(parent);
+	nca::physics::rigid_actor::init( parent );
 }
 void	nca::physics::rigid_body::shutdown()
 {

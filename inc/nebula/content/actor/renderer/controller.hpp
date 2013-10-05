@@ -37,7 +37,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<ncaa::base>&);
+					virtual	void								init( boost::shared_ptr<ncaa::base>& );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -51,7 +51,7 @@ namespace nebula
 				
 				
 					/// create shapes
-					virtual	void								create_shape();
+					virtual	void								create_shapes();
 				};
 			}
 		}

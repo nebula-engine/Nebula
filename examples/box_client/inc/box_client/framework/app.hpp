@@ -5,6 +5,10 @@
 
 #include <nebula/api.hpp>
 
+#include <nebula/framework/app.hpp>
+
+#include <box_client/util/types/content/types.hpp>
+
 #include <box_client/ns.hpp>
 
 namespace box_client
@@ -20,9 +24,9 @@ namespace box_client
 
 
 
-			boost::shared_ptr<ncua::base>				m_universeAuth;
-			boost::shared_ptr<nc_sc_a::base>			m_scene;
-			boost::shared_ptr<ncvah::base>				m_viewHuman;
+			boost::shared_ptr<bc0x300::universe::admin::base>	universe_;
+			boost::shared_ptr<bc0x300::scene::admin::base>		scene_;
+			boost::shared_ptr<ncvah::base>				view_human_;
 			boost::shared_ptr<ncaa::rigid_dynamic_box>		m_rigidDynamicBox;
 			boost::shared_ptr<ncaa::rigid_static_plane>		m_rigidStaticPlane;
 			boost::shared_ptr<ncaa::controller>			m_controller;

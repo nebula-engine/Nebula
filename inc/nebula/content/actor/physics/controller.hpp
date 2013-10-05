@@ -15,7 +15,7 @@ namespace nebula
 			{
 				/// controller
 				class controller:
-					public nebula::content::actor::physics::base
+					public ncap::base
 				{
 				public:
 					///@name ctor and dtor
@@ -37,7 +37,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::actor::admin::controller>&);
+					virtual	void								init( boost::shared_ptr<ncaa::base>& );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

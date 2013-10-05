@@ -4,10 +4,10 @@
 
 #include <nebula/ns.hpp>
 
-void	ncapp::rigid_static::init(const boost::shared_ptr<ncaa::base>& parent)
+void	ncapp::rigid_static::init( boost::shared_ptr<ncaa::base>& parent )
 {
 	
-	ncapp::rigid_actor::init(parent);
+	ncapp::rigid_actor::init( parent );
 	
 	jess::assertion( px_actor_ ); 
 	

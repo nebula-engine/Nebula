@@ -10,7 +10,7 @@
 
 
 
-void	ncapp::rigid_body::init(const boost::shared_ptr<ncaa::base>& parent)
+void	ncapp::rigid_body::init( boost::shared_ptr<ncaa::base>& parent )
 {
 	ncapp::rigid_actor::init(parent);
 	

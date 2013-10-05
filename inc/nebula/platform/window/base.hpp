@@ -36,15 +36,15 @@ namespace nebula
 				
 				
 				///@name Initialization and ShutDown
-				///@{
+				///{
 				/// initialize
 				virtual	void				init( const boost::shared_ptr<nebula::platform::platform::base>& );
 				/// shutdown
 				virtual	void				shutdown();
 				/// update
 				virtual void				update();
-				///@}
-
+				///}
+				
 				virtual int				lookup_key( int );
 				
 				boost::weak_ptr<npp::base>		parent_;
@@ -55,15 +55,15 @@ namespace nebula
 				
 				std::map<int,int>					keys_;
 
-				/// @name boost signals
-				///{
+				///@name boost signals
+				///@{
 				/// key down
 				boost::signals2::signal<void (int,int)>		sig_key_down_;
 				/// key up
 				boost::signals2::signal<void (int,int)>		sig_key_up_;
 				/// pointer motion
 				boost::signals2::signal<void (int,int)>		sig_pointer_motion_;
-				///}
+				///@}
 			//protected:
 				/// focus
 				bool					has_focus_;

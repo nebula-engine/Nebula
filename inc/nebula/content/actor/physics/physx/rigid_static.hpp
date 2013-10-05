@@ -28,7 +28,7 @@ namespace nebula
 					~rigid_static();
 
 					/// Initialize
-					virtual	void						init(const boost::shared_ptr<ncaa::base>&);
+					virtual	void						init( boost::shared_ptr<ncaa::base>& );
 					/// ShutDown
 					virtual	void						shutdown();
 					/// Update

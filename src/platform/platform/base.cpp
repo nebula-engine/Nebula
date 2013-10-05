@@ -1,6 +1,6 @@
 #include <nebula/asio/message.hpp>
 
-
+#include <nebula/define.hpp>
 #include <nebula/platform/key.hpp>
 #include <nebula/platform/window/base.hpp>
 #include <nebula/platform/platform/base.hpp>
@@ -50,6 +50,13 @@ void	npp::base::update()
 	mailbox::update();
 
 	windows_.foreach( boost::bind( &npw::base::update, _1 ) );
+}
+void	npp::base::request_window( jess::shared_ptr<npw::base>& wnd )
+{
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+
+	create_window( wnd.pointer_ );
 }
 void	npp::base::process_message( boost::shared_ptr<na::message> msg )
 {
