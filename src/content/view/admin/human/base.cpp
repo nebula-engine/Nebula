@@ -22,13 +22,13 @@ ncvah::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	ncvah::base::init( jess::shared_ptr<nc_sc_a::base>& parent )
+void	ncvah::base::init( jess::shared_ptr<nc_sc_a::base> parent )
 {	
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	ncva::base::init( parent );
-	
-	parent->parent_.lock()->parent_.lock()->parent_.lock()->get_platform()->create_window( window_ );
+
+	window_ = parent->request_window();//parent->parent_.lock()->parent_.lock()->parent_.lock()->get_platform()->create_window( window_ );
 	
 	// create camera
 	camera_.reset( new nebula::content::camera );

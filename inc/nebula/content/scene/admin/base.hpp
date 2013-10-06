@@ -36,7 +36,7 @@ namespace nebula
 					/// dtor
 					~base();
 					/// init
-					virtual void									init( jess::shared_ptr<ncua::base>& );
+					virtual void									init( jess::shared_ptr<ncua::base> );
 					/// shutdown
 					virtual void									shutdown();
 					/// update
@@ -44,27 +44,33 @@ namespace nebula
 					/// step
 					virtual void									step( FLOAT dt );
 					/// render
-					virtual void									render( jess::shared_ptr<npr::base>& );
+					virtual void									render( jess::shared_ptr<npr::base> );
 					/// get content
 					jess::shared_ptr<nc::base>							get_content();
 					/// request window
-					virtual void									request_window( jess::shared_ptr<npw::base>& );				
+					virtual jess::shared_ptr<npw::base>						request_window();
 					/// create
-					virtual void									create_rigid_dynamic_box( jess::shared_ptr<ncaa::rigid_dynamic_box>& );
+					virtual jess::shared_ptr<ncaa::rigid_dynamic_box>				create_rigid_dynamic_box();
 					/// get rid of this
 					virtual void									register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic> );
 					/// create
-					template <class T> void								create_view( jess::shared_ptr<T>& t )
+					template <class T> jess::shared_ptr<T>						create_view()
 					{
 						/// log
 						jess::clog << NEB_FUNCSIG << std::endl;
 						
+						jess::shared_ptr<T> t( new T );
+						
 						//void(*func)(jess::shared_ptr<nc_sc_a::base>&) = &T::init;
 						
-						views_.push<T>( t, std::bind( &T::init, std::placeholders::_1, shared_from_this() ) );
+						views_.push<T>( t );//, std::bind( &T::init, std::placeholders::_1, shared_from_this() ) );
+						
+						t->init( shared_from_this() );
+						
+						return t;
 					}
 					/// create
-					virtual void									create_controller( jess::shared_ptr<ncaa::controller>& );			
+					virtual jess::shared_ptr<ncaa::controller>					create_controller();
 					/// parent
 					std::weak_ptr<ncua::base>							parent_;
 					/// time of last update

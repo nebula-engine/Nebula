@@ -97,15 +97,15 @@ void	nf::app::shutdown()
 	//network->Shutdown(NULL);
 	platform_->shutdown();
 }
-void	nf::app::request_window( jess::shared_ptr<npw::base>& wnd )
+jess::shared_ptr<npw::base>	nf::app::request_window()
 {
 	// request
-	platform_->request_window( wnd );
+	return ( platform_->request_window() );
 }
 jess::shared_ptr<npp::base>	nf::app::get_platform()
 {
 	// get
-	return platform_.get();
+	return platform_;
 }
 
 

@@ -20,7 +20,7 @@ namespace box_client
 				{
 				public:
 					/// init
-					virtual void						init( jess::shared_ptr<ncua::base>& );
+					virtual void						init( jess::shared_ptr<ncua::base> );
 					/// box get view
 					jess::shared_ptr<bc33100::base>				get_view()
 					{

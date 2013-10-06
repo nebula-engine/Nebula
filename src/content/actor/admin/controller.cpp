@@ -27,6 +27,11 @@ ncaa::controller::~controller()
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
+ncaa::controller::controller( ncaa::controller const & act )
+{
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+}
 void	ncaa::controller::init( jess::shared_ptr<nc_sc_a::base> parent )
 {
 	// log
@@ -72,14 +77,14 @@ void	ncaa::controller::step( FLOAT dt )
 {
 	ncaa::base::step( dt );
 }
-void	ncaa::controller::render( jess::shared_ptr<npr::base>& rnd )
+void	ncaa::controller::render( jess::shared_ptr<npr::base> rnd )
 {
 }
 void	ncaa::controller::create_shapes()
 {
 
 }
-void	ncaa::controller::look_at( jess::shared_ptr<npr::base>& rnd )
+void	ncaa::controller::look_at( jess::shared_ptr<npr::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 

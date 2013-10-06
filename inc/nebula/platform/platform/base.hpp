@@ -37,15 +37,15 @@ namespace nebula
 				/// dtor
 				virtual ~base();
 				/// init
-				virtual void								init( const jess::shared_ptr<nf::app>& );
+				virtual void								init( jess::shared_ptr<nf::app> );
 				/// shutdown
 				virtual void								shutdown();
 				/// update
 				virtual void								update();
 				/// request window
-				virtual void								request_window( jess::shared_ptr<npw::base>& );
+				virtual jess::shared_ptr<npw::base>					request_window();
 				/// create window
-				virtual void								create_window( jess::shared_ptr<npw::base>& );
+				virtual jess::shared_ptr<npw::base>					create_window();
 				/// delete window
 				virtual void								delete_window( int );
 				/// process event
@@ -53,7 +53,7 @@ namespace nebula
 				/// process message
 				virtual void								process_message( jess::shared_ptr<na::message> );
 				/// parent
-				std::weak_ptr<nf::app>						parent_;
+				std::weak_ptr<nf::app>							parent_;
 				/// window
 				jess::map<npw::base>							windows_;
 				/// key down event map

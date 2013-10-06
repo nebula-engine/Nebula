@@ -23,7 +23,7 @@ void	nebula::content::base::register_universe( jess::shared_ptr<ncua::base> uni 
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	nebula::content::base::init(const jess::shared_ptr<nebula::framework::app>& parent)
+void	nebula::content::base::init( jess::shared_ptr<nebula::framework::app> parent)
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -49,10 +49,10 @@ void	nebula::content::base::shutdown()
 	
 	universes_.clear();
 }
-void	nc::base::request_window( jess::shared_ptr<npw::base>& wnd )
+jess::shared_ptr<npw::base>	nc::base::request_window()
 {
 	// request
-	parent_.lock()->request_window( wnd );
+	return ( parent_.lock()->request_window() );
 }
 void	nc::base::register_scene( jess::shared_ptr<nc_sc_a::base> )
 {

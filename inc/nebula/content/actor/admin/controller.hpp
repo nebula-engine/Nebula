@@ -76,26 +76,16 @@ namespace nebula
 					/// step
 					virtual	void								step( FLOAT );
 					/// render
-					virtual	void								render( jess::shared_ptr<npr::base>& );
-
-
+					virtual	void								render( jess::shared_ptr<npr::base> );
 
 
 					virtual void								process_event(int);
-
-
-
-
-
-
-
-
 
 					/// create shapes
 					virtual	void								create_shapes();
 
 					/// lookat
-					virtual void								look_at( jess::shared_ptr<npr::base>& );
+					virtual void								look_at( jess::shared_ptr<npr::base> );
 
 					/// get move
 					boost::numeric::ublas::vector<FLOAT>					get_move();

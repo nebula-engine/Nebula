@@ -21,37 +21,43 @@ namespace nebula
 		class base:
 			public jess::enable_shared_from_this<nc::base>
 		{
-		public:
-			/// ctor
-			base();
-			/// dtor
-			virtual ~base();
-			/// init
-			virtual void							init(const jess::shared_ptr<nebula::framework::app>&);
-			/// shutdown
-			virtual void							shutdown();
-			/// update
-			virtual void							update();
-			/// create universe
-			template <class T> void						create_universe( jess::shared_ptr<T>& uni )
-			{
-				// log
-				jess::clog << NEB_FUNCSIG << std::endl;
-				
-				universes_.push<T>( uni, std::bind( &T::init, std::placeholders::_1, shared_from_this() ) );
-			}
-			/// request window
-			virtual void							request_window( jess::shared_ptr<npw::base>& );
-			/// register universe
-			virtual void							register_universe( jess::shared_ptr<ncua::base> );
-			/// register scene
-			virtual void							register_scene( jess::shared_ptr<nc_sc_a::base> );
-			/// physics
-			jess::shared_ptr<ncp::base>					physics_;
-			/// universes
-			jess::map<ncua::base>						universes_;
-			/// parent
-			std::weak_ptr<nebula::framework::app>				parent_;
+			public:
+				/// ctor
+				base();
+				/// dtor
+				virtual ~base();
+				/// init
+				virtual void							init( jess::shared_ptr<nebula::framework::app> );
+				/// shutdown
+				virtual void							shutdown();
+				/// update
+				virtual void							update();
+				/// create universe
+				template <class T> jess::shared_ptr<T>				create_universe()
+				{
+					// log
+					jess::clog << NEB_FUNCSIG << std::endl;
+
+					jess::shared_ptr<T> t( new T );				
+
+					universes_.push<T>( t );//uni, std::bind( &T::init, std::placeholders::_1, shared_from_this() ) );
+
+					t->init( shared_from_this() );
+
+					return t;
+				}
+				/// request window
+				virtual jess::shared_ptr<npw::base>				request_window();
+				/// register universe
+				virtual void							register_universe( jess::shared_ptr<ncua::base> );
+				/// register scene
+				virtual void							register_scene( jess::shared_ptr<nc_sc_a::base> );
+				/// physics
+				jess::shared_ptr<ncp::base>					physics_;
+				/// universes
+				jess::map<ncua::base>						universes_;
+				/// parent
+				std::weak_ptr<nebula::framework::app>				parent_;
 		};
 	}
 }

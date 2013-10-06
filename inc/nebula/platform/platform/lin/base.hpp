@@ -33,13 +33,13 @@ namespace nebula
 					/// dtor
 					virtual ~base();
 					/// init
-					virtual void						init( const jess::shared_ptr<nf::app>& );
+					virtual void						init( jess::shared_ptr<nf::app> );
 					/// shutdown
 					virtual void						shutdown();
 					/// update
 					virtual void						update();
 					/// create window
-					virtual void						create_window( jess::shared_ptr<npw::base>& );
+					virtual jess::shared_ptr<npw::base>			create_window();
 					/// display
 					::Display*						m_xdisplay;// = XOpenDisplay( NULL );
 					/// screen num

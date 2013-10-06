@@ -23,32 +23,38 @@ namespace nebula
 				class base:
 					public jess::enable_shared_from_this<ncua::base>
 				{
-				public:
-					/// ctor
-					base();
-					/// dtor
-					virtual ~base();
-					/// init
-					virtual void						init(const jess::shared_ptr<nebula::content::base>&);
-					/// shutdown
-					virtual void						shutdown();
-					/// update
-					virtual void						update();
-					/// request window
-					virtual void						request_window( jess::shared_ptr<npw::base>& wnd );
-					/// create scene
-					template <class T> void					create_scene( jess::shared_ptr<T>& scn )
-					{
-						jess::clog << NEB_FUNCSIG << std::endl;
-						
-						scenes_.push<T>( scn, std::bind( &T::init, std::placeholders::_1, shared_from_this() ) );
-					}
-					
-					/// parent
-					std::weak_ptr<nebula::content::base>			parent_;
-					
-					/// scenes
-					jess::map<nc_sc_a::base>				scenes_;
+					public:
+						/// ctor
+						base();
+						/// dtor
+						virtual ~base();
+						/// init
+						virtual void						init( jess::shared_ptr<nebula::content::base> );
+						/// shutdown
+						virtual void						shutdown();
+						/// update
+						virtual void						update();
+						/// request window
+						virtual jess::shared_ptr<npw::base>			request_window();
+						/// create scene
+						template <class T> jess::shared_ptr<T>			create_scene()
+						{
+							jess::clog << NEB_FUNCSIG << std::endl;
+
+							jess::shared_ptr<T> t( new T );
+
+							scenes_.push<T>( t );//, std::bind( &T::init, std::placeholders::_1, shared_from_this() ) );
+
+							t->init( shared_from_this() );
+
+							return t;
+						}
+
+						/// parent
+						std::weak_ptr<nebula::content::base>			parent_;
+
+						/// scenes
+						jess::map<nc_sc_a::base>				scenes_;
 				};
 			}
 		}

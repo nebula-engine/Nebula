@@ -1,6 +1,7 @@
 #include <jess/free.hpp>
 #include <jess/ostream.hpp>
 
+#include <box_client/ns.hpp>
 #include <box_client/framework/app.hpp>
 #include <box_client/content/universe/admin/base.hpp>
 #include <box_client/content/scene/admin/base.hpp>
@@ -22,11 +23,11 @@ void	bc0x100::app::init()
 	
 	nf::app::init();
 	
-	content_->create_universe( universe_ );
+	universe_ = content_->create_universe<bc31100::base>();
 	
 	//jess::assertion( bool( universe_ ) );
 	
-	universe_->create_scene( scene_ );
+	scene_ = universe_->create_scene<bc32100::base>();
 	
 	//jess::assertion( bool( scene_ ) );
 	

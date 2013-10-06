@@ -7,33 +7,39 @@
 #include <box_client/content/scene/admin/base.hpp>
 #include <box_client/content/view/admin/base.hpp>
 
-void	bc33100::base::init_bc( jess::shared_ptr<bc32100::base>& parent )
+void	bc33100::base::init( jess::shared_ptr<nc_sc_a::base> parent )
 {
 	//log
 	jess::clog << NEB_FUNCSIG << std::endl;
+
+	// get derived parent
+	jess::shared_ptr<bc32100::base> bc_parent = std::dynamic_pointer_cast<bc32100::base>( parent );	
 	
 	// init parent
-	jess::shared_ptr<nc_sc_a::base> neb_parent = std::static_pointer_cast<nc_sc_a::base>( parent );	
-	ncva::base::init( neb_parent );
+	ncva::base::init( parent );
 	
 	// request window
-	parent->request_window( window_ );
+	window_ = parent->request_window();
 	
 	// camera
 	create_camera();
 	
 	// connect controller to camera
-	camera_->controller_ = parent->ctrlr_;
-	
-	// set signal handlers
-	window_->sig_pointer_motion_.connect( std::bind( &ncaa::controller::handle_pointer_motion, parent->ctrlr_, std::placeholders::_1, std::placeholders::_2 ) );
-}
-void	bc33100::base::init( jess::shared_ptr<nc_sc_a::base>& parent )
-{
-	//log
-	jess::clog << NEB_FUNCSIG << std::endl;
+	camera_->controller_ = bc_parent->ctrlr_;
 
-	
+	jess::cout << window_.get() << std::endl;
+
+	// set signal handlers
+	window_->sig_pointer_motion_.connect
+		(
+		 std::bind
+		 (
+		  &ncaa::controller::handle_pointer_motion,
+		  bc_parent->ctrlr_,
+		  std::placeholders::_1,
+		  std::placeholders::_2
+		 )
+		);
 }
 
 

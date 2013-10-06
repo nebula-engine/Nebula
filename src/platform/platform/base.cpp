@@ -11,37 +11,42 @@ npp::base::base()
 }
 npp::base::~base()
 {
-	
+
 }
-void	npp::base::init( const jess::shared_ptr<nf::app>& parent )
+void	npp::base::init( jess::shared_ptr<nf::app> parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	parent_ = parent;
-	
+
 	key_down_event_[np::key::space] = event::eDELETE_WINDOW;
 }
 void	npp::base::shutdown() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
-	
+
 	windows_.clear();
 }
 void	npp::base::delete_window( int window_no )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
-	
+
 	jess::shared_ptr<npw::base> wnd = windows_.at( window_no );
-	
+
 	if ( wnd )
 	{
 		wnd->shutdown();
 		windows_.erase( window_no );
 	}
 
-	
+
 }
-void	npp::base::create_window( jess::shared_ptr<npw::base>& wnd )
+jess::shared_ptr<npw::base>	npp::base::create_window()
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+
+	/// \todo make this pure virtual
+
+	return jess::shared_ptr<npw::base>();
 }
 void	npp::base::update()
 {
@@ -51,52 +56,58 @@ void	npp::base::update()
 
 	windows_.foreach( std::bind( &npw::base::update, std::placeholders::_1 ) );
 }
-void	npp::base::request_window( jess::shared_ptr<npw::base>& wnd )
+jess::shared_ptr<npw::base>	npp::base::request_window()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	create_window( wnd );
+	/**
+	 *  \todo
+	 *  The idea of request_window was that the platform could deal out existing windows.
+	 *  However, trading of windows should take place between the objects which own the
+	 *  windows (i.e. view, ui, etc.) (possibly coordinated by the user-defined app or something, not the platform).
+	 **/
+	return create_window();
 }
 void	npp::base::process_message( jess::shared_ptr<na::message> msg )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
-	
+
 	//printf("platform process\n");
 
 	//int k;
 	//int evnt;
-	
-	
+
+
 	switch ( msg->type_ )
 	{
-	/*
-	case ns::message::type::eKEY_DOWN:
+		/*
+		   case ns::message::type::eKEY_DOWN:
 
-		key = msg->data.keyEventData.key;
-		
-		eventType = m_keyDown[key];
+		   key = msg->data.keyEventData.key;
 
-		ProcessEvent( eventType, msg );
-	*/
+		   eventType = m_keyDown[key];
+
+		   ProcessEvent( eventType, msg );
+		   */
 	}
 
 }
 void	npp::base::process_event( int evnt )
 {
 	//int window_no;
-	
+
 	switch ( evnt )
 	{
-	case event::eDELETE_WINDOW:
-		//window = msg->data.keyEventData.window;
-		
-		//VDeleteWindow(window);
+		case event::eDELETE_WINDOW:
+			//window = msg->data.keyEventData.window;
 
-		break;
-	default:
-		//throw Except("unhandled event");
-		break;
+			//VDeleteWindow(window);
+
+			break;
+		default:
+			//throw Except("unhandled event");
+			break;
 	}
 }
 

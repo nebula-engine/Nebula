@@ -12,7 +12,7 @@ nppl::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	nppl::base::init( const jess::shared_ptr<nf::app>& parent )
+void	nppl::base::init( jess::shared_ptr<nf::app> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -55,11 +55,12 @@ void	nppl::base::shutdown()
 	XCloseDisplay( m_xdisplay );
 	
 }
-void	nppl::base::create_window( jess::shared_ptr<npw::base>& wnd )
+jess::shared_ptr<npw::base>	nppl::base::create_window()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	jess::shared_ptr<npwl::base> wnd_lin;
+	jess::shared_ptr<npwl::base> wnd_lin( new npwl::base );
+	jess::shared_ptr<npw::base> wnd = wnd_lin;
 	
 	// don't init here, need to send data first
 	/**
@@ -67,8 +68,7 @@ void	nppl::base::create_window( jess::shared_ptr<npw::base>& wnd )
 	**/
 	windows_.push<npwl::base>( wnd_lin );
 	
-	wnd = wnd_lin;
-	
+		
 	std::cout << wnd.get();
 	
 	jess::assertion( m_xdisplay );// throw Except("xdisplay is null");
@@ -100,6 +100,8 @@ void	nppl::base::create_window( jess::shared_ptr<npw::base>& wnd )
 
 	// init window
 	wnd_lin->init( shared_from_this() );
+
+	return wnd;
 }
 void	nppl::base::update()
 {

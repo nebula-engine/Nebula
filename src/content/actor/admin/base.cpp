@@ -37,7 +37,7 @@ void	ncaa::base::update()
 {
 	//FR_COM_IComm::Update();
 }
-void	ncaa::base::render( jess::shared_ptr<npr::base>& rnd )
+void	ncaa::base::render( jess::shared_ptr<npr::base> rnd )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 }

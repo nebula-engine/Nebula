@@ -5,18 +5,18 @@
 
 #include <box_client/content/scene/admin/base.hpp>
 
-void	box_client::content::scene::admin::base::init( jess::shared_ptr<ncua::base>& parent )
+void	box_client::content::scene::admin::base::init( jess::shared_ptr<ncua::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	nc_sc_a::base::init( parent );
 	
-	create_rigid_dynamic_box( rigid_dyn_box_ );
+	rigid_dyn_box_ = create_rigid_dynamic_box();
 	
-	create_controller( ctrlr_ );
+	ctrlr_ = create_controller();
 	
-	create_view( view_ );
+	view_ = create_view<bc33100::base>();
 }
 
 

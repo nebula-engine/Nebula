@@ -24,16 +24,16 @@ namespace nebula
 					public:
 						base();
 						virtual ~base();
-						virtual void					init( jess::shared_ptr<nc_sc_a::base>& );
+						virtual void					init( jess::shared_ptr<nc_sc_a::base> );
 						virtual void					shutdown();
 						virtual void					update();
 						virtual void					render();
 						
 						virtual void					create_camera();
 						
-						jess::shared_ptr<npw::base>			window_;
+						//jess::shared_ptr<npw::base>			window_;
 						
-						jess::shared_ptr<nebula::content::camera>	camera_;
+						//jess::shared_ptr<nebula::content::camera>	camera_;
 					};
 				}
 			}

@@ -51,15 +51,16 @@ namespace nebula
 					/// step
 					virtual	void								step();
 					/// render
-					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base>& );
+					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 				
 				
 				
 				
 					/// create shapes
 					virtual	void								create_shape();
-					virtual void								create_box( jess::shared_ptr<ncsa::box>& );					
-
+					/// create box
+					virtual jess::shared_ptr<ncsa::box>					create_box();
+					
 					/// shapes
 					jess::map<ncsa::base>							shapes_;
 				};

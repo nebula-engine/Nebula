@@ -52,7 +52,7 @@ namespace nebula
 					/// step
 					virtual	void								step( FLOAT );
 					/// render
-					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base>& );
+					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 					
 					
 					

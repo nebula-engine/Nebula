@@ -80,8 +80,8 @@ void	ncaa::rigid_dynamic_box::step(  )
 void	ncaa::rigid_dynamic_box::create_shapes()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
-
-	create_box( box_ );
+	
+	box_ = create_box();
 
 }
 

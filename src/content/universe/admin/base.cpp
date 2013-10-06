@@ -17,7 +17,7 @@ nebula::content::universe::admin::base::~base()
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	nebula::content::universe::admin::base::init(const jess::shared_ptr<nebula::content::base>& parent)
+void	nebula::content::universe::admin::base::init( jess::shared_ptr<nebula::content::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -38,9 +38,9 @@ void	nebula::content::universe::admin::base::update()
 	
 	scenes_.foreach( std::bind( &nebula::content::scene::admin::base::update, std::placeholders::_1 ) );
 }
-void	ncua::base::request_window( jess::shared_ptr<npw::base>& wnd )
+jess::shared_ptr<npw::base>	ncua::base::request_window()
 {
-	parent_.lock()->request_window( wnd );
+	return ( parent_.lock()->request_window() );
 }
 /*void	nebula::content::universe::admin::base::create_scene( jess::shared_ptr<nc_sc_a::base>& scn )
 {

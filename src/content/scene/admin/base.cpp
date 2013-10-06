@@ -37,7 +37,7 @@ jess::shared_ptr<nebula::content::base>	nc_sc_a::base::get_content()
 	
 	return cont;
 }
-void						nc_sc_a::base::init( jess::shared_ptr<ncua::base>& parent )
+void						nc_sc_a::base::init( jess::shared_ptr<ncua::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -111,24 +111,33 @@ void						nc_sc_a::base::step( FLOAT dt )
 	
 	actors_.foreach( std::bind( &ncaa::base::step, std::placeholders::_1, dt ) );
 }
-void						nc_sc_a::base::render( jess::shared_ptr<npr::base>& rnd )
+void						nc_sc_a::base::render( jess::shared_ptr<npr::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	actors_.foreach( std::bind( &ncaa::base::render, std::placeholders::_1, rnd ) );
 }
-void						nc_sc_a::base::create_rigid_dynamic_box( jess::shared_ptr<ncaa::rigid_dynamic_box>& act )
+jess::shared_ptr<ncaa::rigid_dynamic_box>	nc_sc_a::base::create_rigid_dynamic_box()
 {
+	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	actors_.push<ncaa::rigid_dynamic_box>( act, std::bind( &ncaa::rigid_dynamic_box::init, std::placeholders::_1, shared_from_this() ) );
+	// create
+	jess::shared_ptr<ncaa::rigid_dynamic_box> act( new ncaa::rigid_dynamic_box );
 	
-	jess::assertion( bool( act ) );	
+	actors_.push<ncaa::rigid_dynamic_box>( act );
 
+	act->init( shared_from_this() );
+	
+	//jess::assertion( bool( act ) );	
+	
 	register_rigid_dynamic( act );
+	
+	return act;
 }
 void						nc_sc_a::base::register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic> act )
 {
+	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	// content physics
@@ -146,11 +155,13 @@ void						nc_sc_a::base::register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dy
 	// Add the actor to the CO_SC_PH_Scene object
 	physics_->register_actor( act );
 }
-void						nc_sc_a::base::create_controller( jess::shared_ptr<ncaa::controller>& act )
+jess::shared_ptr<ncaa::controller>		nc_sc_a::base::create_controller()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
+	jess::shared_ptr<ncaa::controller> act( new ncaa::controller );
+	
 	//actors_.push<ncaa::controller>( act, std::bind( &ncaa::controller::init, std::placeholders::_1, shared_from_this() ) );
 	
 	actors_.push<ncaa::controller>( act );
@@ -171,12 +182,17 @@ void						nc_sc_a::base::create_controller( jess::shared_ptr<ncaa::controller>& 
 	jess::shared_ptr<nc::base> cont = get_content();
 	
 	jess::shared_ptr<ncp::base> cont_phys = cont->physics_;
+
+	//ncp::base test = *cont_phys;
+	//ncaa::controller text_act = *act;
 	
 	cont_phys->register_controller( act );
+	
+	return act;
 }
-void	nc_sc_a::base::request_window( jess::shared_ptr<npw::base>& wnd )
+jess::shared_ptr<npw::base>	nc_sc_a::base::request_window()
 {
-	parent_.lock()->request_window( wnd );
+	return ( parent_.lock()->request_window() );
 }
 
 
