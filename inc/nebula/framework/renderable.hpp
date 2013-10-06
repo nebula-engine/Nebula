@@ -1,7 +1,7 @@
 #ifndef __NEBULA_FRAMEWORK_RENDERABLE_HPP__
 #define __NEBULA_FRAMEWORK_RENDERABLE_HPP__
 
-#include <boost/shared_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 
 #include <nebula/utilities/types/platform/types.hpp>
 #include <nebula/ns.hpp>
@@ -23,7 +23,7 @@ namespace nebula
 			///@name sideways
 			///{
 			/// renderer
-			boost::shared_ptr<npr::base>			renderer_;
+			jess::shared_ptr<npr::base>			renderer_;
 			///}
 		};
 	}

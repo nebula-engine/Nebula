@@ -40,7 +40,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<nc_sc_a::base>&);
+					virtual	void								init(const jess::shared_ptr<nc_sc_a::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -48,7 +48,7 @@ namespace nebula
 					/// step
 					virtual	void								step();
 					/// render
-					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
 				
 				
 				
@@ -59,7 +59,7 @@ namespace nebula
 
 
 
-					boost::shared_ptr<ncsa::box>						box_;
+					jess::shared_ptr<ncsa::box>						box_;
 
 
 					FLOAT x_;

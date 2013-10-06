@@ -1,7 +1,7 @@
 #ifndef __NEBULA_FRAMEWORK_APP_HPP__
 #define __NEBULA_FRAMEWORK_APP_HPP__
 
-#include <boost/shared_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 
 #include <jess/shared_ptr.hpp>
@@ -40,9 +40,9 @@ namespace nebula
 			/// request_window
 			virtual void						request_window( jess::shared_ptr<npw::base>& );
 			/// get content
-			boost::shared_ptr<nebula::content::base>		get_content();
+			jess::shared_ptr<nebula::content::base>		get_content();
 			/// get platform
-			boost::shared_ptr<npp::base>				get_platform();
+			jess::shared_ptr<npp::base>				get_platform();
 			///@name children
 			///@{
 			/// contnt

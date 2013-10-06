@@ -5,7 +5,7 @@
 
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/weak_ptr.hpp>
-#include <boost/shared_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 #include <boost/numeric/ublas/vector.hpp>
 
 #include <jess/shared_ptr.hpp>
@@ -25,18 +25,18 @@ namespace nebula
 			namespace admin
 			{
 				class base:
-					public boost::enable_shared_from_this<ncsa::base>
+					public std::enable_shared_from_this<ncsa::base>
 				{
 				public:
 					base();
 					virtual ~base();
 					
 					/// init
-					virtual void							init(const boost::shared_ptr<nebula::content::actor::admin::rigid_actor>&);
+					virtual void							init(const jess::shared_ptr<nebula::content::actor::admin::rigid_actor>&);
 					/// shutdown
 					virtual void							shutdown();
 					/// render
-					virtual void							render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					virtual void							render(const jess::shared_ptr<nebula::platform::renderer::base>&);
 					
 					
 					/// get scale
@@ -44,7 +44,7 @@ namespace nebula
 
 					
 					/// parent
-					boost::weak_ptr<nebula::content::actor::admin::rigid_actor>	parent_;
+					std::weak_ptr<nebula::content::actor::admin::rigid_actor>	parent_;
 		
 					/// renderer
 					jess::shared_ptr<nebula::content::shape::renderer::base>	renderer_;

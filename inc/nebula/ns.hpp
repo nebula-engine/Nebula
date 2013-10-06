@@ -219,6 +219,7 @@ namespace ncvah		= nebula::content::view::admin::human;
 
 
 // shape
+namespace ncs		= nebula::content::shape;
 namespace ncsa		= nebula::content::shape::admin;
 namespace ncsp		= nebula::content::shape::physics;
 namespace ncsr		= nebula::content::shape::renderer;

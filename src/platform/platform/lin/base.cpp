@@ -1,11 +1,7 @@
-//#include <jess/except.hpp>
 #include <jess/free.hpp>
 #include <jess/except.hpp>
 
-#include <boost/bind.hpp>
-
 #include <nebula/platform/window/lin/base.hpp>
-
 #include <nebula/platform/platform/lin/base.hpp>
 
 nppl::base::base()
@@ -16,7 +12,7 @@ nppl::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	nppl::base::init( const boost::shared_ptr<nf::app>& parent )
+void	nppl::base::init( const jess::shared_ptr<nf::app>& parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -59,11 +55,11 @@ void	nppl::base::shutdown()
 	XCloseDisplay( m_xdisplay );
 	
 }
-void	nppl::base::create_window( boost::shared_ptr<npw::base>& wnd )
+void	nppl::base::create_window( jess::shared_ptr<npw::base>& wnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	boost::shared_ptr<npwl::base> wnd_lin;
+	jess::shared_ptr<npwl::base> wnd_lin;
 	
 	// don't init here, need to send data first
 	/**

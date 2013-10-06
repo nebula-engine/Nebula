@@ -20,16 +20,16 @@ namespace nebula
 					base();
 					virtual ~base();
 					
-					virtual void								init(const boost::shared_ptr<nebula::content::shape::admin::base>&);
+					virtual void								init( jess::shared_ptr<nebula::content::shape::admin::base>& );
 
 					virtual void								shutdown();
 					
 
 
-					virtual void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					virtual void								render( jess::shared_ptr<nebula::platform::renderer::base>& );
 					
 					/// parent
-					boost::weak_ptr<nebula::content::shape::admin::base>			parent_;
+					std::weak_ptr<nebula::content::shape::admin::base>			parent_;
 				};
 			}
 		}

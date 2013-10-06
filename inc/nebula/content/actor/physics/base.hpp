@@ -2,7 +2,7 @@
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
 
 #include <boost/weak_ptr.hpp>
-#include <boost/shared_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 
 #include <nebula/utilities/types/platform/types.hpp>
 #include <nebula/utilities/types/content/actor/types.hpp>
@@ -40,7 +40,7 @@ namespace nebula
 					
 					
 					/// init
-					virtual	void								init( boost::shared_ptr<ncaa::base>&);
+					virtual	void								init( jess::shared_ptr<ncaa::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -48,7 +48,7 @@ namespace nebula
 					/// step
 					virtual	void								step();
 					
-					virtual void								render( boost::shared_ptr<npr::base> rnd );
+					virtual void								render( jess::shared_ptr<npr::base> rnd );
 					
 					
 					/// create shapes
@@ -56,7 +56,7 @@ namespace nebula
 					
 					
 					/// parent
-					boost::weak_ptr<nebula::content::actor::admin::base>			parent_;
+					std::weak_ptr<nebula::content::actor::admin::base>			parent_;
 				};
 			}
 		}

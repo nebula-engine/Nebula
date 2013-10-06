@@ -1,4 +1,4 @@
-#include <boost/shared_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 
 #include <nebula/utilities/types/content/actor/types.hpp>
 #include <nebula/content/actor/physics/material.hpp>
@@ -10,7 +10,7 @@ nca::physics::material::material()
 {
 
 }
-void	nca::physics::material::init(const boost::shared_ptr<nca::admin::material>&)
+void	nca::physics::material::init(const jess::shared_ptr<nca::admin::material>&)
 {
 
 }

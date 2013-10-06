@@ -3,13 +3,8 @@
 
 #include <ctime>
 
-#include <boost/bind.hpp>
-#include <boost/weak_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/enable_shared_from_this.hpp>
-
-#include <jess/map.hpp>
 #include <jess/shared_ptr.hpp>
+#include <jess/map.hpp>
 
 #include <nebula/define.hpp>
 #include <nebula/utilities/types/platform/types.hpp>
@@ -31,10 +26,9 @@ namespace nebula
 				/// base
 				/*
 				* \todo Create trigger object (might need to go in physics). Need to see if PhysX already has an object/functionality for this.
-				* 
 				*/
 				class base:
-					public boost::enable_shared_from_this<nc_sc_a::base>
+					public jess::enable_shared_from_this<nc_sc_a::base>
 				{
 				public:
 					/// ctor
@@ -42,7 +36,7 @@ namespace nebula
 					/// dtor
 					~base();
 					/// init
-					virtual void									init( boost::shared_ptr<ncua::base>& );
+					virtual void									init( jess::shared_ptr<ncua::base>& );
 					/// shutdown
 					virtual void									shutdown();
 					/// update
@@ -50,29 +44,29 @@ namespace nebula
 					/// step
 					virtual void									step( FLOAT dt );
 					/// render
-					virtual void									render( const boost::shared_ptr<npr::base>& );
+					virtual void									render( const jess::shared_ptr<npr::base>& );
 					/// get content
-					boost::shared_ptr<nebula::content::base>					get_content();
+					jess::shared_ptr<nc::base>							get_content();
 					/// request window
 					virtual void									request_window( jess::shared_ptr<npw::base>& );				
 					/// create
-					virtual void									create_rigid_dynamic_box( boost::shared_ptr<ncaa::rigid_dynamic_box>& );
+					virtual void									create_rigid_dynamic_box( jess::shared_ptr<ncaa::rigid_dynamic_box>& );
 					/// get rid of this
-					virtual void									register_rigid_dynamic( boost::shared_ptr<ncaa::rigid_dynamic> );
+					virtual void									register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic> );
 					/// create
-					template <class T> void								create_view( boost::shared_ptr<T>& t )
+					template <class T> void								create_view( jess::shared_ptr<T>& t )
 					{
 						/// log
 						jess::clog << NEB_FUNCSIG << std::endl;
 						
-						//void(*func)(boost::shared_ptr<nc_sc_a::base>&) = &T::init;
+						//void(*func)(jess::shared_ptr<nc_sc_a::base>&) = &T::init;
 						
-						views_.push<T>( t, boost::bind( &T::init, _1, shared_from_this() ) );
+						views_.push<T>( t, std::bind( &T::init, std::placeholders::_1, shared_from_this() ) );
 					}
 					/// create
-					virtual void									create_controller( boost::shared_ptr<ncaa::controller>& );			
+					virtual void									create_controller( jess::shared_ptr<ncaa::controller>& );			
 					/// parent
-					boost::weak_ptr<ncua::base>							parent_;
+					std::weak_ptr<ncua::base>							parent_;
 					/// time of last update
 					std::time_t									last_;
 					/// now

@@ -21,8 +21,10 @@ namespace nebula
 						public nebula::content::actor::physics::material
 					{
 					public:
+						/// ctor
 						material();
-						boost::shared_ptr< ::physx::PxMaterial>				px_material_;
+						/// px material
+						::physx::PxMaterial*		px_material_;
 					};
 				}
 			}

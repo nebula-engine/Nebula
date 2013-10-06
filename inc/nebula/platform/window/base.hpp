@@ -38,7 +38,7 @@ namespace nebula
 				///@name Initialization and ShutDown
 				///{
 				/// initialize
-				virtual	void				init( const boost::shared_ptr<nebula::platform::platform::base>& );
+				virtual	void				init( const jess::shared_ptr<nebula::platform::platform::base>& );
 				/// shutdown
 				virtual	void				shutdown();
 				/// update
@@ -47,7 +47,7 @@ namespace nebula
 				
 				virtual int				lookup_key( int );
 				
-				boost::weak_ptr<npp::base>		parent_;
+				std::weak_ptr<npp::base>		parent_;
 				
 				int							no_;
 				bool							m_hasFocus;
@@ -73,7 +73,7 @@ namespace nebula
 				int					center_y_;
 			
 
-				boost::shared_ptr<npr::base>			renderer_;
+				jess::shared_ptr<npr::base>			renderer_;
 			};
 		}
 	}

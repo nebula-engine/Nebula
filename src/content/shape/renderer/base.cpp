@@ -9,7 +9,7 @@ ncsr::base::base()
 ncsr::base::~base()
 {
 }
-void	ncsr::base::init(const boost::shared_ptr<ncs::admin::base>&)
+void	ncsr::base::init(const jess::shared_ptr<ncs::admin::base>&)
 {
 	
 }
@@ -17,7 +17,7 @@ void	ncsr::base::shutdown()
 {
 	
 }
-void	ncsr::base::render(const boost::shared_ptr<nebula::platform::renderer::base>&)
+void	ncsr::base::render(const jess::shared_ptr<nebula::platform::renderer::base>&)
 {
 	
 }

@@ -26,7 +26,7 @@ namespace nebula
 					/// dtor
 					virtual ~base();
 					/// init
-					virtual void					init( boost::shared_ptr<nc_sc_a::base>& );
+					virtual void					init( jess::shared_ptr<nc_sc_a::base>& );
 					/// shutdown
 					virtual void					shutdown();
 					/// update
@@ -36,13 +36,13 @@ namespace nebula
 					/// create camera
 					virtual void					create_camera();
 					/// parent
-					boost::weak_ptr<nc_sc_a::base>			parent_;
+					std::weak_ptr<nc_sc_a::base>			parent_;
 					///@name references
 					///{
 					/// window
 					jess::shared_ptr<npw::base>			window_;
 					/// camera
-					boost::shared_ptr<n0x30000::camera>		camera_;
+					jess::shared_ptr<n0x30000::camera>		camera_;
 					///}
 
 				};

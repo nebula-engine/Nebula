@@ -14,7 +14,7 @@ nca::physics::rigid_dynamic_box&	ncap::rigid_dynamic_box::operator=( const ncap:
 {
 	return *this;
 }
-void	nca::physics::rigid_dynamic_box::init(const boost::shared_ptr<nca::admin::base>& parent)
+void	nca::physics::rigid_dynamic_box::init(const jess::shared_ptr<nca::admin::base>& parent)
 {
 	nca::physics::rigid_dynamic::init(parent);
 }
@@ -30,7 +30,7 @@ void	nca::physics::rigid_dynamic_box::step(FLOAT)
 {
 	
 }
-void	ncap::rigid_dynamic_box::render( boost::shared_ptr<npr::base> )
+void	ncap::rigid_dynamic_box::render( jess::shared_ptr<npr::base> )
 {
 	
 }

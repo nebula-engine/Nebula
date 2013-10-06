@@ -5,7 +5,7 @@
 //#include <GL/glu.h>
 #include <GL/glew.h>
 
-#include <boost/shared_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 #include <boost/numeric/ublas/vector.hpp>
 
 #include <nebula/define.hpp>
@@ -34,7 +34,7 @@ namespace nebula
 					void							draw_cube();
 					///}
 
-					virtual void		init( const boost::shared_ptr<npw::base>& );	
+					virtual void		init( const jess::shared_ptr<npw::base>& );	
 					virtual void		update();
 					/// push_matrix
 					virtual void		push_matrix();

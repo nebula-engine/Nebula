@@ -1,27 +1,30 @@
-#include <boost/bind.hpp>
-
-//#include <jess/except.hpp>
-
-#include <nebula/content/actor/admin/rigid_actor.hpp>
-
 #include <nebula/platform/renderer/base.hpp>
 
+#include <nebula/content/actor/admin/rigid_actor.hpp>
 #include <nebula/content/shape/renderer/box.hpp>
 #include <nebula/content/shape/physics/box.hpp>
 #include <nebula/content/shape/admin/box.hpp>
 
-#include <nebula/ns.hpp>
-
-void	ncsa::box::init(const boost::shared_ptr<nebula::content::actor::admin::rigid_actor>& parent)
+void	ncsa::box::init( jess::shared_ptr<ncaa::rigid_actor>& parent)
 {
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	// call base
 	ncsa::base::init( parent );
+		
+	// create physics
+	#if defined(__PHYSX__)
+		physics_.reset( new ncspp::box );
+	#else
+		physics_.reset( new ncsp::box );
+	#endif
+	
+	physics_->init( shared_from_this() );
 	
 	// create renderer
-	//renderer_.create<ncsr::box>( boost::bind( &ncsr::box::init, _1, shared_from_this() ) );
-	
-	// create physics
-	//physics_.create<ncsp::box>( boost::bind( &ncsp::box::init, _1, shared_from_this() ) );
+	renderer_.reset( new ncsr::base );
+	renderer_->init( shared_from_this() );
 	
 	// default dimensions
 	x_ = 1;
@@ -30,15 +33,16 @@ void	ncsa::box::init(const boost::shared_ptr<nebula::content::actor::admin::rigi
 }
 void	ncsa::box::shutdown()
 {
-	
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 }
-void	ncsa::box::render(const boost::shared_ptr<npr::base>& rnd)
+void	ncsa::box::render( jess::shared_ptr<npr::base>& rnd )
 {
-	if ( !renderer_ )
-	{
-		//throw jess::except("renderer is null");
-	}
-	renderer_->render(rnd);
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+
+	renderer_->render( rnd );
 }
 
 

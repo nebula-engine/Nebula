@@ -10,7 +10,7 @@ ncar::controller::controller()
 ncar::controller::~controller()
 {
 }
-void	ncar::controller::init( boost::shared_ptr<ncaa::base>& parent )
+void	ncar::controller::init( jess::shared_ptr<ncaa::base>& parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -26,9 +26,9 @@ void	ncar::controller::update()
 {
 	
 }
-void	ncar::controller::render( const boost::shared_ptr<npr::base>& rnd )
+void	ncar::controller::render( const jess::shared_ptr<npr::base>& rnd )
 {
-	boost::shared_ptr<ncaa::controller> parent = boost::dynamic_pointer_cast<ncaa::controller>( parent_.lock() );
+	jess::shared_ptr<ncaa::controller> parent = boost::dynamic_pointer_cast<ncaa::controller>( parent_.lock() );
 
 	rnd->look_at( parent->pos_, parent->pos_ + parent->look_, parent->up_ );
 }

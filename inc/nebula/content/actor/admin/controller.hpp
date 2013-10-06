@@ -68,7 +68,7 @@ namespace nebula
 					
 					
 					/// init
-					virtual	void								init( boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -76,7 +76,7 @@ namespace nebula
 					/// step
 					virtual	void								step(FLOAT);
 					/// render
-					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
 					
 					
 					
@@ -95,7 +95,7 @@ namespace nebula
 					virtual	void								create_shapes();
 					
 					/// lookat
-					virtual void								look_at(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					virtual void								look_at(const jess::shared_ptr<nebula::platform::renderer::base>&);
 					
 					/// get move
 					boost::numeric::ublas::vector<FLOAT>					get_move();

@@ -1,7 +1,7 @@
 #ifndef __NEBULA_PLATFORM_PLATFORM_BASE_HPP__
 #define __NEBULA_PLATFORM_PLATFORM_BASE_HPP__
 
-#include <boost/shared_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 
 #include <jess/shared_ptr.hpp>
@@ -38,7 +38,7 @@ namespace nebula
 				/// dtor
 				virtual ~base();
 				/// init
-				virtual void								init( const boost::shared_ptr<nf::app>& );
+				virtual void								init( const jess::shared_ptr<nf::app>& );
 				/// shutdown
 				virtual void								shutdown();
 				/// update
@@ -46,15 +46,15 @@ namespace nebula
 				/// request window
 				virtual void								request_window( jess::shared_ptr<npw::base>& );
 				/// create window
-				virtual void								create_window( boost::shared_ptr<npw::base>& );
+				virtual void								create_window( jess::shared_ptr<npw::base>& );
 				/// delete window
 				virtual void								delete_window( int );
 				/// process event
 				virtual void								process_event( int );
 				/// process message
-				virtual void								process_message( boost::shared_ptr<na::message> );
+				virtual void								process_message( jess::shared_ptr<na::message> );
 				/// parent
-				boost::weak_ptr<nf::app>						parent_;
+				std::weak_ptr<nf::app>						parent_;
 				/// window
 				jess::map<npw::base>							windows_;
 				/// key down event map

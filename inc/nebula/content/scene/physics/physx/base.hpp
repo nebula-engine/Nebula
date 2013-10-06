@@ -1,7 +1,7 @@
 #ifndef __NEBULA_CONTENT_SCENE_PHYSICS_PHYSX_BASE_HPP__
 #define __NEBULA_CONTENT_SCENE_PHYSICS_PHYSX_BASE_HPP__
 
-#include <boost/shared_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 
 #include <nebula/define.hpp>
 
@@ -31,13 +31,13 @@ namespace nebula
 						virtual ~base();
 						base(const base&);
 						base&									operator=(const base&);
-						void									init(const boost::shared_ptr<nc_sc_a::base>&);
+						void									init(const jess::shared_ptr<nc_sc_a::base>&);
 						void									shutdown();
 						void									step(FLOAT);
 
 
 						void									customize_scene_desc(::physx::PxSceneDesc&);
-						void									add_actor(const boost::shared_ptr<ncaa::actor>& act);
+						void									add_actor(const jess::shared_ptr<ncaa::actor>& act);
 						
 						
 						::physx::PxScene*							get_px_scene();

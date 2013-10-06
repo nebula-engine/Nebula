@@ -2,7 +2,7 @@
 #define __NEBULA_CONTENT_ACTOR_ADMIN_BASE_HPP__
 
 #include <boost/enable_shared_from_this.hpp>
-#include <boost/shared_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 
 #include <jess/shared_ptr.hpp>
@@ -46,7 +46,7 @@ namespace nebula
 					
 	
 					/// init
-					virtual	void								init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init(const jess::shared_ptr<nebula::content::scene::admin::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -54,7 +54,7 @@ namespace nebula
 					/// step
 					virtual	void								step( FLOAT dt );
 					/// render
-					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
 					
 					
 					
@@ -71,7 +71,7 @@ namespace nebula
 
 
 					/// parent
-					boost::weak_ptr<nc_sc_a::base>						parent_;
+					std::weak_ptr<nc_sc_a::base>						parent_;
 					
 					/// physics
 					jess::shared_ptr<ncap::base>						physics_;

@@ -8,7 +8,7 @@ nca::physics::rigid_static::rigid_static()
 nca::physics::rigid_static::~rigid_static()
 {
 }
-void	nca::physics::rigid_static::init(const boost::shared_ptr<nca::admin::base>& parent)
+void	nca::physics::rigid_static::init(const jess::shared_ptr<nca::admin::base>& parent)
 {
 	
 }

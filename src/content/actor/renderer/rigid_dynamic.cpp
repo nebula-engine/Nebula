@@ -22,7 +22,7 @@ ncar::rigid_dynamic&	ncar::rigid_dynamic::operator=( const ncar::rigid_dynamic& 
 
 
 
-void	ncar::rigid_dynamic::init( const boost::shared_ptr<ncaa::base>& parent )
+void	ncar::rigid_dynamic::init( const jess::shared_ptr<ncaa::base>& parent )
 {
 	ncar::rigid_body::init( parent );
 }
@@ -33,7 +33,7 @@ void	ncar::rigid_dynamic::shutdown()
 void	ncar::rigid_dynamic::update(){
 	
 }
-void	ncar::rigid_dynamic::render( const boost::shared_ptr<npr::base>& rnd ) {
+void	ncar::rigid_dynamic::render( const jess::shared_ptr<npr::base>& rnd ) {
 	
 }
 void	ncar::rigid_dynamic::step( FLOAT dt ){

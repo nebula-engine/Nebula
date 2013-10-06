@@ -45,7 +45,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const boost::shared_ptr<ncaa::base>&);
+					virtual	void								init(const jess::shared_ptr<ncaa::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -53,7 +53,7 @@ namespace nebula
 					/// step
 					virtual	void								step(FLOAT);
 					/// render
-					virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
 					
 					/// set px_actor_
 					void									set_px_actor(::physx::PxActor*);

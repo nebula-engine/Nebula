@@ -7,7 +7,7 @@ npw::base::base()
 npw::base::~base()
 {
 }
-void	npw::base::init( const boost::shared_ptr<npp::base>& parent )
+void	npw::base::init( const jess::shared_ptr<npp::base>& parent )
 {
 	parent_ = parent;
 	//jess::clog << NEB_FUNCSIG << std::endl;

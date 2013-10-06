@@ -19,7 +19,7 @@ npwl::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	npwl::base::init( boost::shared_ptr<npp::base> parent )
+void	npwl::base::init( jess::shared_ptr<npp::base> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -77,7 +77,7 @@ void	npwl::base::init( boost::shared_ptr<npp::base> parent )
 	center_pointer();
 
 	// create renderer
-	boost::shared_ptr<nprgg::base> rnd_glx( new nprgg::base() );
+	jess::shared_ptr<nprgg::base> rnd_glx( new nprgg::base() );
 
 	renderer_ = rnd_glx;
 
@@ -229,7 +229,7 @@ void	npwl::base::update()
 		}
 	}
 }
-void	npwl::base::process_message( boost::shared_ptr<na::message> msg )
+void	npwl::base::process_message( jess::shared_ptr<na::message> msg )
 {
 	
 }

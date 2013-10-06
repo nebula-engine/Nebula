@@ -1,7 +1,7 @@
 #ifndef _NEBULA_CONTENT_SCENE_PHYSICS_BASE_HPP__
 #define _NEBULA_CONTENT_SCENE_PHYSICS_BASE_HPP__
 
-#include <boost/shared_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 
 #include <nebula/utilities/types/platform/types.hpp>
 #include <nebula/utilities/types/content/scene/types.hpp>
@@ -24,14 +24,14 @@ namespace nebula
 					virtual ~base();
 					base(const base&);
 					base&						operator=(const base&);
-					virtual void					init(const boost::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual void					init(const jess::shared_ptr<nebula::content::scene::admin::base>&);
 					virtual void					shutdown();
 					virtual void					update();
 					virtual void					step(FLOAT);
-					virtual void					render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+					virtual void					render(const jess::shared_ptr<nebula::platform::renderer::base>&);
 					
 					
-					virtual void					register_actor( boost::shared_ptr<ncaa::actor> );
+					virtual void					register_actor( jess::shared_ptr<ncaa::actor> );
 				};
 			}
 		}

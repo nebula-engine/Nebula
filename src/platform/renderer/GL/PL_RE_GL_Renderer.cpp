@@ -26,7 +26,7 @@ void GetGLError( GLenum error )
 		throw jess::except( "opengl error 10" );
 	}
 }
-void	nprg::base::init( const boost::shared_ptr<npw::base>&  )
+void	nprg::base::init( const jess::shared_ptr<npw::base>&  )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	

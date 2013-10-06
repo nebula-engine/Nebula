@@ -13,7 +13,7 @@ npp::base::~base()
 {
 	
 }
-void	npp::base::init( const boost::shared_ptr<nf::app>& parent )
+void	npp::base::init( const jess::shared_ptr<nf::app>& parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	parent_ = parent;
@@ -29,7 +29,7 @@ void	npp::base::delete_window( int window_no )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
-	boost::shared_ptr<npw::base> wnd = windows_.at( window_no );
+	jess::shared_ptr<npw::base> wnd = windows_.at( window_no );
 	
 	if ( wnd )
 	{
@@ -39,7 +39,7 @@ void	npp::base::delete_window( int window_no )
 
 	
 }
-void	npp::base::create_window( boost::shared_ptr<npw::base>& wnd )
+void	npp::base::create_window( jess::shared_ptr<npw::base>& wnd )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 }
@@ -58,7 +58,7 @@ void	npp::base::request_window( jess::shared_ptr<npw::base>& wnd )
 
 	create_window( wnd.pointer_ );
 }
-void	npp::base::process_message( boost::shared_ptr<na::message> msg )
+void	npp::base::process_message( jess::shared_ptr<na::message> msg )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	

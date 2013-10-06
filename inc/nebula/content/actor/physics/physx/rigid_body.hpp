@@ -42,7 +42,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init( boost::shared_ptr<ncaa::base>& );
+					virtual	void								init( jess::shared_ptr<ncaa::base>& );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -50,7 +50,7 @@ namespace nebula
 					/// step
 					virtual	void								step();
 					/// render
-					virtual	void								render( boost::shared_ptr<nebula::platform::renderer::base> );
+					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 				
 							
 					/// create shape

@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include <boost/shared_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
 #include <nebula/utilities/types/content/types.hpp>
@@ -58,7 +58,7 @@ namespace content
 			///@name standard functions
 			///@{
 			/// initialize
-			virtual	void						init(const boost::shared_ptr<nebula::content::base>&);
+			virtual	void						init(const jess::shared_ptr<nebula::content::base>&);
 			/// shutdown
 			virtual	void						shutdown();
 			///@}
@@ -71,19 +71,19 @@ namespace content
 			///@name Register objects
 			///@{
 			/// %CO_SC_AD_Scene
-			virtual void						register_scene( const boost::shared_ptr<nc_sc_a::base>& );
+			virtual void						register_scene( const jess::shared_ptr<nc_sc_a::base>& );
 			/// %Controller
-			virtual	void						register_controller( const boost::shared_ptr<ncaa::controller>& );
+			virtual	void						register_controller( const jess::shared_ptr<ncaa::controller>& );
 			/// rigid dynamic
-			virtual	void						register_rigid_dynamic( const boost::shared_ptr<ncaa::rigid_dynamic>& );
+			virtual	void						register_rigid_dynamic( const jess::shared_ptr<ncaa::rigid_dynamic>& );
 			///@}
 			
 			
-			virtual void						add_actor( boost::shared_ptr<ncaa::base> );
+			virtual void						add_actor( jess::shared_ptr<ncaa::base> );
 
 		protected:
 			/// parent
-			boost::weak_ptr<nebula::content::base>			parent_;
+			std::weak_ptr<nebula::content::base>			parent_;
 			
 			
 			

@@ -15,31 +15,32 @@ namespace box_client
 			{
 				/// base
 				class base:
-					public boost::enable_shared_from_this<bc32100::base>,
 					public nc_sc_a::base
 				{
 				public:
 					/// init
-					virtual void						init( boost::shared_ptr<ncua::base>& );
+					virtual void						init( jess::shared_ptr<ncua::base>& );
 					/// box get view
-					jess::shared_ptr<bc33100::base>				get_view() { return view_; }
-					
+					jess::shared_ptr<bc33100::base>				get_view()
+					{
+						return view_;
+					}
 					///@name references
-					///{
+					///@{
 					/// view
 					jess::shared_ptr<bc33100::base>				view_;
 					/// rigid dynamic box
-					boost::shared_ptr<ncaa::rigid_dynamic_box>		rigid_dyn_box_;
+					jess::shared_ptr<ncaa::rigid_dynamic_box>		rigid_dyn_box_;
 					/// controller
-					boost::shared_ptr<ncaa::controller>			ctrlr_;
-					///}
+					jess::shared_ptr<ncaa::controller>			ctrlr_;
+					///@}
 					
 					
 					
-
 				};
 			}
 		}
 	}
 }
+
 #endif

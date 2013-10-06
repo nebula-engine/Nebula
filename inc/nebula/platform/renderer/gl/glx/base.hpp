@@ -35,7 +35,7 @@ namespace nebula
 						/// cube
 						void							draw_cube();
 						///}
-						virtual void						init( boost::shared_ptr<npw::base> );
+						virtual void						init( jess::shared_ptr<npw::base> );
 						virtual void						shutdown();
 						virtual void						update();
 						virtual void						viewport( int, int, int, int );

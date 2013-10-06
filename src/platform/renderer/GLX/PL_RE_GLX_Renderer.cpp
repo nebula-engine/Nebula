@@ -4,7 +4,7 @@
 
 #include <nebula/platform/renderer/gl/glx/base.hpp>
 
-void	nprgg::base::init( boost::shared_ptr<npw::base> parent )
+void	nprgg::base::init( jess::shared_ptr<npw::base> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	std::cout << this << std::endl;

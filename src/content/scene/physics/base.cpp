@@ -17,7 +17,7 @@ nc_sc_p::base&			nc_sc_p::base::operator=(const nc_sc_p::base& cpy)
 {
 	return *this;
 }
-void				nc_sc_p::base::init(const boost::shared_ptr<nc_sc_a::base>&)
+void				nc_sc_p::base::init(const jess::shared_ptr<nc_sc_a::base>&)
 {
 
 }
@@ -33,11 +33,11 @@ void				nc_sc_p::base::step(FLOAT dt)
 {
 	
 }
-void				nc_sc_p::base::render(const boost::shared_ptr<nebula::platform::renderer::base>&)
+void				nc_sc_p::base::render(const jess::shared_ptr<nebula::platform::renderer::base>&)
 {
 	
 }
-void				nc_sc_p::base::register_actor( boost::shared_ptr<ncaa::actor> )
+void				nc_sc_p::base::register_actor( jess::shared_ptr<ncaa::actor> )
 {
 
 }

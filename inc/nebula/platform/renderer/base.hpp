@@ -1,7 +1,8 @@
 #ifndef __NEBULA_PLATFORM_RENDERER_BASE_HPP__
 #define __NEBULA_PLATFORM_RENDERER_BASE_HPP__
 
-#include <boost/weak_ptr.hpp>
+#include <jess/shared_ptr.hpp>
+
 #include <boost/numeric/ublas/vector.hpp>
 
 #include <nebula/utilities/types/platform/types.hpp>
@@ -22,7 +23,7 @@ namespace nebula
 				base();
 				virtual ~base();
 
-				virtual void						init( boost::shared_ptr<npw::base> );
+				virtual void						init( jess::shared_ptr<npw::base> );
 				virtual void						update();
 				virtual void						shutdown();
 				
@@ -63,7 +64,7 @@ namespace nebula
 				
 
 
-				boost::weak_ptr<npw::base>				parent_;
+				std::weak_ptr<npw::base>				parent_;
 			};
 		}
 	}

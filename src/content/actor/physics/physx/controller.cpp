@@ -10,7 +10,7 @@
 
 void	ncapp::controller::step(FLOAT dt)
 {
-	boost::shared_ptr<nca::admin::controller> parent = boost::dynamic_pointer_cast<nca::admin::controller>( parent_.lock() );
+	jess::shared_ptr<nca::admin::controller> parent = boost::dynamic_pointer_cast<nca::admin::controller>( parent_.lock() );
 	
 	::physx::PxVec3 disp = ncpp::boost_to_physx( parent->get_move() );
 	::physx::PxF32 minDist = 0.1;

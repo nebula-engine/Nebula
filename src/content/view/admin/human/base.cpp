@@ -22,7 +22,7 @@ ncvah::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	ncvah::base::init( boost::shared_ptr<nc_sc_a::base>& parent )
+void	ncvah::base::init( jess::shared_ptr<nc_sc_a::base>& parent )
 {	
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -45,7 +45,7 @@ void	ncvah::base::render()
 
 	jess::assertion( bool( window_ ) );
 	
-	boost::shared_ptr<npr::base> rnd = window_->renderer_;
+	jess::shared_ptr<npr::base> rnd = window_->renderer_;
 	
 	//if (!renderer) throw Except("renderer is null");
 	//if (!m_camera) throw Except("m_camera is null");

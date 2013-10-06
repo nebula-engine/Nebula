@@ -16,7 +16,7 @@
 }
 					Platform::WindowWin::~WindowWin() {
 }
-void				Platform::WindowWin::init( const boost::shared_ptr<>&  ) {
+void				Platform::WindowWin::init( const jess::shared_ptr<>&  ) {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	char szTitle[] = "RCS Client";

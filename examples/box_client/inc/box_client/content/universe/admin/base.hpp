@@ -15,7 +15,7 @@ namespace box_client
 					public ncua::base
 				{
 				public:
-					virtual void							init( boost::shared_ptr<nc::base>& );
+					virtual void							init( jess::shared_ptr<nc::base>& );
 				};
 			}
 		}

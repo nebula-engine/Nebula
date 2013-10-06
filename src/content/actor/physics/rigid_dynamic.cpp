@@ -16,7 +16,7 @@ ncap::rigid_dynamic&	ncap::rigid_dynamic::operator=( const ncap::rigid_dynamic& 
 {
 	return *this;
 }
-void	nca::physics::rigid_dynamic::init(const boost::shared_ptr<nca::admin::base>&)
+void	nca::physics::rigid_dynamic::init(const jess::shared_ptr<nca::admin::base>&)
 {
 	
 }
@@ -32,7 +32,7 @@ void	nca::physics::rigid_dynamic::step(FLOAT)
 {
 
 }
-void	ncap::rigid_dynamic::render( const boost::shared_ptr<npr::base>& rnd )
+void	ncap::rigid_dynamic::render( const jess::shared_ptr<npr::base>& rnd )
 {
 
 }

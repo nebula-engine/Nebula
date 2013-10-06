@@ -1,9 +1,11 @@
-#include <boost/bind.hpp>
-
 #include <nebula/content/shape/admin/box.hpp>
 
-#include <nebula/content/actor/physics/rigid_dynamic_box.hpp>
-#include <nebula/content/actor/physics/physx/rigid_dynamic_box.hpp>
+#if defined(__PHYSX__)
+	#include <nebula/content/actor/physics/physx/rigid_dynamic_box.hpp>
+#else
+	#include <nebula/content/actor/physics/rigid_dynamic_box.hpp>
+#endif
+
 #include <nebula/content/actor/renderer/rigid_dynamic_box.hpp>
 
 
@@ -11,7 +13,7 @@
 #include <nebula/content/actor/admin/rigid_dynamic_box.hpp>
 
 template class jess::shared_ptr<ncap::base>;
-template void jess::shared_ptr<ncap::base>::create<ncap::rigid_dynamic_box>( boost::function<void(boost::shared_ptr<ncap::rigid_dynamic_box>)> );
+template void jess::shared_ptr<ncap::base>::create<ncap::rigid_dynamic_box>( boost::function<void(jess::shared_ptr<ncap::rigid_dynamic_box>)> );
 
 ncaa::rigid_dynamic_box::rigid_dynamic_box()
 {
@@ -25,7 +27,7 @@ ncaa::rigid_dynamic_box::~rigid_dynamic_box()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	ncaa::rigid_dynamic_box::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+void	ncaa::rigid_dynamic_box::init( const jess::shared_ptr<nc_sc_a::base>& parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncaa::rigid_dynamic::init( parent );
@@ -48,7 +50,7 @@ void	ncaa::rigid_dynamic_box::update( )
 {
 	ncaa::rigid_dynamic::update();
 }
-void	ncaa::rigid_dynamic_box::render( const boost::shared_ptr<npr::base>& rnd )
+void	ncaa::rigid_dynamic_box::render( const jess::shared_ptr<npr::base>& rnd )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 

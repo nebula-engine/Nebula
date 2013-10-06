@@ -11,7 +11,7 @@ Content::SceneAuth::SceneAuth(): CO_SC_AD_Scene( app ) {
 }
 Content::SceneAuth::~SceneAuth() {
 }
-void	Content::SceneAuth::init( const boost::shared_ptr<>&  ) {
+void	Content::SceneAuth::init( const jess::shared_ptr<>&  ) {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	CO_SC_AD_Scene::init( data );
 }

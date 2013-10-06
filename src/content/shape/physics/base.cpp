@@ -8,7 +8,7 @@ ncsp::base::base() {
 ncsp::base::~base() {
 }
 	
-void	ncsp::base::init(const boost::shared_ptr<ncs::admin::base>&)
+void	ncsp::base::init(const jess::shared_ptr<ncs::admin::base>&)
 {
 	
 }

@@ -10,7 +10,7 @@ npr::base::~base()
 {
 	
 }
-void	npr::base::init( boost::shared_ptr<npw::base> parent )
+void	npr::base::init( jess::shared_ptr<npw::base> parent )
 {
 	parent_ = parent;
 }

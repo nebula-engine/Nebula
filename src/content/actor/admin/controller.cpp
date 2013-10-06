@@ -25,7 +25,7 @@ ncaa::controller::controller()
 ncaa::controller::~controller()
 {
 }
-void	ncaa::controller::init( boost::shared_ptr<nc_sc_a::base>& parent )
+void	ncaa::controller::init( jess::shared_ptr<nc_sc_a::base>& parent )
 {
 	ncaa::base::init(parent);
 
@@ -61,14 +61,14 @@ void	ncaa::controller::step( FLOAT dt )
 {
 	ncaa::base::step( dt );
 }
-void	ncaa::controller::render( const boost::shared_ptr<npr::base>& rnd )
+void	ncaa::controller::render( const jess::shared_ptr<npr::base>& rnd )
 {
 }
 void	ncaa::controller::create_shapes()
 {
 
 }
-void	ncaa::controller::look_at( const boost::shared_ptr<npr::base>& rnd )
+void	ncaa::controller::look_at( const jess::shared_ptr<npr::base>& rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 

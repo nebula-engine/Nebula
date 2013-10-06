@@ -1,7 +1,7 @@
 #ifndef __NEBULA_CONTENT_SHAPE_ADMIN_BOX_HPP__
 #define __NEBULA_CONTENT_SHAPE_ADMIN_BOX_HPP__
 
-#include <boost/enable_shared_from_this.hpp>
+//#include <enable_shared_from_this>
 
 #include <nebula/content/shape/admin/base.hpp>
 
@@ -15,18 +15,22 @@ namespace nebula
 		{
 			namespace admin
 			{
+				/// box
 				class box:
 					public nebula::content::shape::admin::base
 				{
 				public:
-					void								init( const boost::shared_ptr<ncaa::rigid_actor>& );
+					/// init
+					void								init( jess::shared_ptr<ncaa::rigid_actor>& );
+					/// shutdown
 					void								shutdown();
-					void								render( const boost::shared_ptr<nebula::platform::renderer::base>&);
-				
-
-					
+					/// render
+					void								render( jess::shared_ptr<nebula::platform::renderer::base>& );
+					/// x
 					FLOAT								x_;
+					/// y
 					FLOAT								y_;
+					/// z
 					FLOAT								z_;
 					
 				};

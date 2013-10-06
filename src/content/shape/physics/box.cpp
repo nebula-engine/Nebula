@@ -12,7 +12,7 @@ ncsp::box::~box()
 {
 
 }
-void	ncsp::box::init(const boost::shared_ptr<ncs::admin::box>&)
+void	ncsp::box::init(const jess::shared_ptr<ncs::admin::box>&)
 {
 	
 }

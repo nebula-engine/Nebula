@@ -9,7 +9,7 @@
 
 
 
-void	ncaa::rigid_static_plane::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+void	ncaa::rigid_static_plane::init( const jess::shared_ptr<nc_sc_a::base>& parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncaa::rigid_static::init( parent );
@@ -22,7 +22,7 @@ void	ncaa::rigid_static_plane::update() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
-void	ncaa::rigid_static_plane::render( const boost::shared_ptr<npr::base>& rnd ) {
+void	ncaa::rigid_static_plane::render( const jess::shared_ptr<npr::base>& rnd ) {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }

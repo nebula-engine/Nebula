@@ -3,6 +3,8 @@
 
 #include <nebula/utilities/types/content/shape/types.hpp>
 
+#include <nebula/content/shape/physics/base.hpp>
+
 namespace nebula
 {
 	namespace content
@@ -11,12 +13,13 @@ namespace nebula
 		{
 			namespace physics
 			{
-				class box
+				class box:
+					public ncsp::base
 				{
 				public:
 					box();
 					~box();
-					void						init(const boost::shared_ptr<nebula::content::shape::admin::box>&);
+					void						init(const jess::shared_ptr<nebula::content::shape::admin::box>&);
 					void						shutdown();
 				};
 			}

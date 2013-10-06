@@ -8,13 +8,13 @@ void						na::mailbox::update()
 		messages_.pop_front();
 	}
 }
-void						na::mailbox::push_back( boost::shared_ptr<na::message> msg )
+void						na::mailbox::push_back( jess::shared_ptr<na::message> msg )
 {
 	messages_.push_back( msg );
 }
-boost::shared_ptr<na::message>			na::mailbox::pop_front()
+jess::shared_ptr<na::message>			na::mailbox::pop_front()
 {
-	boost::shared_ptr<na::message> msg;
+	jess::shared_ptr<na::message> msg;
 	
 	if ( messages_.empty() )
 	{

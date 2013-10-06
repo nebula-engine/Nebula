@@ -4,7 +4,7 @@
 
 #include <nebula/ns.hpp>
 
-void	ncapp::rigid_static::init( boost::shared_ptr<ncaa::base>& parent )
+void	ncapp::rigid_static::init( jess::shared_ptr<ncaa::base>& parent )
 {
 	
 	ncapp::rigid_actor::init( parent );

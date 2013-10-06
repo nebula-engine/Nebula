@@ -19,7 +19,7 @@ ncaa::base&	ncaa::base::operator=( const ncaa::base& act )
 {
 	return *this;
 }
-void	ncaa::base::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+void	ncaa::base::init( const jess::shared_ptr<nc_sc_a::base>& parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	parent_ = parent;
@@ -32,7 +32,7 @@ void	ncaa::base::update()
 {
 	//FR_COM_IComm::Update();
 }
-void	ncaa::base::render( const boost::shared_ptr<npr::base>& rnd )
+void	ncaa::base::render( const jess::shared_ptr<npr::base>& rnd )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 }

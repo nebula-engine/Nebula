@@ -7,7 +7,7 @@
     
 
 
-void	ncar::vehicle::init( const boost::shared_ptr<ncaa::base>& parent ){
+void	ncar::vehicle::init( const jess::shared_ptr<ncaa::base>& parent ){
 
 	ncar::base::init(parent);
 }
@@ -18,7 +18,7 @@ void	ncar::vehicle::shutdown()
 void	ncar::vehicle::update(){
 	
 }
-void	ncar::vehicle::render( const boost::shared_ptr<npr::base>& rnd )
+void	ncar::vehicle::render( const jess::shared_ptr<npr::base>& rnd )
 {
 	
 }

@@ -37,7 +37,7 @@ namespace content
 				
 
 				/// init
-				virtual	void								init(const boost::shared_ptr<nebula::content::actor::admin::base>&);
+				virtual	void								init(const jess::shared_ptr<nebula::content::actor::admin::base>&);
 				/// shutdown
 				virtual	void								shutdown();
 				/// update
@@ -45,7 +45,7 @@ namespace content
 				/// step
 				virtual	void								step(FLOAT);
 				/// render
-				virtual	void								render(const boost::shared_ptr<nebula::platform::renderer::base>&);
+				virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
 				
 				
 				

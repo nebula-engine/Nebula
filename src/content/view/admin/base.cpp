@@ -16,7 +16,7 @@ ncva::base::~base()
 {
 
 }
-void	ncva::base::init( boost::shared_ptr<nc_sc_a::base>& parent )
+void	ncva::base::init( jess::shared_ptr<nc_sc_a::base>& parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -37,7 +37,7 @@ void	ncva::base::render()
 
 	jess::assertion( bool( window_ ) );
 	
-	boost::shared_ptr<npr::base> rnd = window_->renderer_;
+	jess::shared_ptr<npr::base> rnd = window_->renderer_;
 	
 	rnd->begin_render();
 

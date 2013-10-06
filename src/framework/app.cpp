@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-#include <boost/bind.hpp>
 
 #include <jess/free.hpp>
 #include <jess/ostream.hpp>
@@ -24,12 +23,12 @@
 
 
 template class jess::shared_ptr<nc::base>;
-template void jess::shared_ptr<nc::base>::create( boost::function<void(boost::shared_ptr<nc::base>)> );
+template void jess::shared_ptr<nc::base>::create( boost::function<void(jess::shared_ptr<nc::base>)> );
 
 
 
 //template class jess::shared_ptr<nc::base>;
-//template void jess::shared_ptr<nc::base>::create( boost::function<void(boost::shared_ptr<nc::base>)> );
+//template void jess::shared_ptr<nc::base>::create( boost::function<void(jess::shared_ptr<nc::base>)> );
 
 
 nf::app::app()
@@ -100,7 +99,7 @@ void	nf::app::request_window( jess::shared_ptr<npw::base>& wnd )
 	// request
 	platform_->request_window( wnd );
 }
-boost::shared_ptr<npp::base>	nf::app::get_platform()
+jess::shared_ptr<npp::base>	nf::app::get_platform()
 {
 	// get
 	return platform_.get();

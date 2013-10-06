@@ -24,13 +24,13 @@ namespace nebula
 					~rigid_static();
 
 					/// Initialize
-					virtual	void						init( const boost::shared_ptr<ncaa::base>& parent );
+					virtual	void						init( const jess::shared_ptr<ncaa::base>& parent );
 					/// ShutDown
 					virtual	void						shutdown();
 					/// Update
 					virtual	void						update();
 					/// Render
-					virtual	void						render(const boost::shared_ptr<npr::base>&);
+					virtual	void						render(const jess::shared_ptr<npr::base>&);
 					/// Step
 					virtual	void						step();
 					

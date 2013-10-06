@@ -7,7 +7,7 @@
 		ncaa::rigid_dynamic::~rigid_dynamic()
 {
 }
-void	ncaa::rigid_dynamic::init( const boost::shared_ptr<nc_sc_a::base>& parent )
+void	ncaa::rigid_dynamic::init( const jess::shared_ptr<nc_sc_a::base>& parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncaa::rigid_body::init( parent );
@@ -20,7 +20,7 @@ void	ncaa::rigid_dynamic::update()
 {
 	ncaa::rigid_body::update();
 }
-void	ncaa::rigid_dynamic::render( const boost::shared_ptr<npr::base>& rnd )
+void	ncaa::rigid_dynamic::render( const jess::shared_ptr<npr::base>& rnd )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	

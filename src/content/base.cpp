@@ -1,5 +1,3 @@
-#include <boost/bind.hpp>
-
 #include <jess/free.hpp>
 #include <jess/ostream.hpp>
 
@@ -20,12 +18,12 @@ nebula::content::base::~base()
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	nebula::content::base::register_universe( boost::shared_ptr<ncua::base> uni )
+void	nebula::content::base::register_universe( jess::shared_ptr<ncua::base> uni )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	nebula::content::base::init(const boost::shared_ptr<nebula::framework::app>& parent)
+void	nebula::content::base::init(const jess::shared_ptr<nebula::framework::app>& parent)
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -55,7 +53,7 @@ void	nc::base::request_window( jess::shared_ptr<npw::base>& wnd )
 	// request
 	parent_.lock()->request_window( wnd );
 }
-void	nc::base::register_scene( boost::shared_ptr<nc_sc_a::base> )
+void	nc::base::register_scene( jess::shared_ptr<nc_sc_a::base> )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;

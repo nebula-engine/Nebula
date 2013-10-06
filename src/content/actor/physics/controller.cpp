@@ -18,7 +18,7 @@ nca::physics::controller::controller()
 nca::physics::controller::~controller()
 {
 }
-void	nca::physics::controller::init( boost::shared_ptr<ncaa::base>& parent )
+void	nca::physics::controller::init( jess::shared_ptr<ncaa::base>& parent )
 {
 	ncap::base::init( parent );
 }
@@ -47,7 +47,7 @@ void	nca::physics::controller::step(FLOAT dt)
 }
 void	nca::physics::controller::update_move()
 {
-	boost::shared_ptr<nca::admin::controller> parent = boost::dynamic_pointer_cast<nca::admin::controller>(parent_.lock());
+	jess::shared_ptr<nca::admin::controller> parent = boost::dynamic_pointer_cast<nca::admin::controller>(parent_.lock());
 	
 	
 	/** \todo

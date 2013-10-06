@@ -17,7 +17,7 @@ nca::physics::rigid_body&	ncap::rigid_body::operator=( const ncap::rigid_body& a
 {
 	return *this;
 }
-void	nca::physics::rigid_body::init( boost::shared_ptr<nca::admin::base>& parent )
+void	nca::physics::rigid_body::init( jess::shared_ptr<nca::admin::base>& parent )
 {
 	nca::physics::rigid_actor::init( parent );
 }
@@ -33,7 +33,7 @@ void	nca::physics::rigid_body::step(FLOAT dt)
 {
 	
 }
-void	ncap::rigid_body::render( const boost::shared_ptr<npr::base>& rnd )
+void	ncap::rigid_body::render( const jess::shared_ptr<npr::base>& rnd )
 {
 
 }

@@ -1,9 +1,6 @@
 #ifndef __NEBULA_CONTENT_BASE_HPP__
 #define __NEBULA_CONTENT_BASE_HPP__
 
-#include <boost/bind.hpp>
-#include <boost/enable_shared_from_this.hpp>
-
 #include <jess/map.hpp>
 #include <jess/shared_ptr.hpp>
 
@@ -30,13 +27,13 @@ namespace nebula
 			/// dtor
 			virtual ~base();
 			/// init
-			virtual void							init(const boost::shared_ptr<nebula::framework::app>&);
+			virtual void							init(const jess::shared_ptr<nebula::framework::app>&);
 			/// shutdown
 			virtual void							shutdown();
 			/// update
 			virtual void							update();
 			/// create universe
-			template <class T> void						create_universe( boost::shared_ptr<T>& uni )
+			template <class T> void						create_universe( jess::shared_ptr<T>& uni )
 			{
 				// log
 				jess::clog << NEB_FUNCSIG << std::endl;
@@ -46,15 +43,15 @@ namespace nebula
 			/// request window
 			virtual void							request_window( jess::shared_ptr<npw::base>& );
 			/// register universe
-			virtual void							register_universe( boost::shared_ptr<ncua::base> );
+			virtual void							register_universe( jess::shared_ptr<ncua::base> );
 			/// register scene
-			virtual void							register_scene( boost::shared_ptr<nc_sc_a::base> );
+			virtual void							register_scene( jess::shared_ptr<nc_sc_a::base> );
 			/// physics
 			jess::shared_ptr<ncp::base>					physics_;
 			/// universes
 			jess::map<ncua::base>						universes_;
 			/// parent
-			boost::weak_ptr<nebula::framework::app>				parent_;
+			std::weak_ptr<nebula::framework::app>				parent_;
 		};
 	}
 }

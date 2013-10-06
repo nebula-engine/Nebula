@@ -1,5 +1,3 @@
-#include <boost/bind.hpp>
-
 #include <jess/free.hpp>
 
 #include <nebula/define.hpp>
@@ -30,15 +28,15 @@ nc_sc_a::base::~base()
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-boost::shared_ptr<nebula::content::base>	nc_sc_a::base::get_content()
+jess::shared_ptr<nebula::content::base>	nc_sc_a::base::get_content()
 {
-	boost::shared_ptr<nc::base> cont = parent_.lock()->parent_.lock();
+	jess::shared_ptr<nc::base> cont = parent_.lock()->parent_.lock();
 	
 	jess::assertion( bool( cont ) );
 	
 	return cont;
 }
-void						nc_sc_a::base::init( boost::shared_ptr<ncua::base>& parent )
+void						nc_sc_a::base::init( jess::shared_ptr<ncua::base>& parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -70,7 +68,7 @@ void						nc_sc_a::base::shutdown()
 	views_.foreach( boost::bind( &ncva::base::shutdown, _1 ) );
 	views_.clear();
 }
-/*void						nc_sc_a::base::create_view( boost::shared_ptr<ncva::base>& v )
+/*void						nc_sc_a::base::create_view( jess::shared_ptr<ncva::base>& v )
 {
 	/// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -108,13 +106,13 @@ void						nc_sc_a::base::step( FLOAT dt )
 	
 	actors_.foreach( boost::bind( &ncaa::base::step, _1, dt ) );
 }
-void						nc_sc_a::base::render( const boost::shared_ptr<npr::base>& rnd )
+void						nc_sc_a::base::render( const jess::shared_ptr<npr::base>& rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	actors_.foreach( boost::bind( &ncaa::base::render, _1, rnd ) );
 }
-void						nc_sc_a::base::create_rigid_dynamic_box( boost::shared_ptr<ncaa::rigid_dynamic_box>& act )
+void						nc_sc_a::base::create_rigid_dynamic_box( jess::shared_ptr<ncaa::rigid_dynamic_box>& act )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -124,12 +122,12 @@ void						nc_sc_a::base::create_rigid_dynamic_box( boost::shared_ptr<ncaa::rigid
 
 	register_rigid_dynamic( act );
 }
-void						nc_sc_a::base::register_rigid_dynamic( boost::shared_ptr<ncaa::rigid_dynamic> act )
+void						nc_sc_a::base::register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic> act )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	// content physics
-	boost::shared_ptr<ncp::base> cont_phys = get_content()->physics_.get();
+	jess::shared_ptr<ncp::base> cont_phys = get_content()->physics_.get();
 		
 	// register
 	cont_phys->register_rigid_dynamic( act );
@@ -143,7 +141,7 @@ void						nc_sc_a::base::register_rigid_dynamic( boost::shared_ptr<ncaa::rigid_d
 	// Add the actor to the CO_SC_PH_Scene object
 	physics_->register_actor( act );
 }
-void						nc_sc_a::base::create_controller( boost::shared_ptr<ncaa::controller>& act )
+void						nc_sc_a::base::create_controller( jess::shared_ptr<ncaa::controller>& act )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	

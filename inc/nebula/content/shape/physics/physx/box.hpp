@@ -20,12 +20,12 @@ namespace nebula
 					public:
 						box();
 						~box();
-						void							init(const boost::shared_ptr<ncs::admin::box>&);
+						void							init(const jess::shared_ptr<ncs::admin::box>&);
 						void							shutdown();
 						void							create_shape();
 						
 						/// parent
-						boost::weak_ptr<ncs::admin::box>			parent_;
+						std::weak_ptr<ncs::admin::box>				parent_;
 
 						/// PxShape
 						::physx::PxShape*					px_shape_;
