@@ -1,8 +1,6 @@
 #ifndef __NEBULA_CONTENT_SHAPE_RENDERER_BOX_HPP__
 #define __NEBULA_CONTENT_SHAPE_RENDERER_BOX_HPP__
 
-#include <boost/weak_ptr.hpp>
-
 #include <nebula/utilities/types/content/shape/types.hpp>
 
 #include <nebula/content/shape/renderer/base.hpp>
@@ -20,7 +18,7 @@ namespace nebula
 				public:
 					box();
 					~box();
-					void								init( jess::shared_ptr<nebula::content::shape::admin::box>& );
+					void								init( jess::shared_ptr<nebula::content::shape::admin::box> );
 					void								shutdown();
 					void								render( jess::shared_ptr<nebula::platform::renderer::base>& );
 					

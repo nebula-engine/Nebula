@@ -1,7 +1,6 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
 
-#include <boost/weak_ptr.hpp>
 #include <jess/shared_ptr.hpp>
 
 #include <nebula/utilities/types/platform/types.hpp>
@@ -40,7 +39,7 @@ namespace nebula
 					
 					
 					/// init
-					virtual	void								init( jess::shared_ptr<ncaa::base>&);
+					virtual	void								init( jess::shared_ptr<ncaa::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

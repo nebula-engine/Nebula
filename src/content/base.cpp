@@ -30,21 +30,22 @@ void	nebula::content::base::init(const jess::shared_ptr<nebula::framework::app>&
 	
 	parent_ = parent;
 	
-	physics_.create<ncp::base>( boost::bind(&ncp::base::init,_1,shared_from_this() ) );
+	physics_.reset( new ncp::base );
+	physics_->init( shared_from_this() );
 }
 void	nebula::content::base::update()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	universes_.foreach(boost::bind(&ncua::base::update,_1));
+	universes_.foreach(std::bind(&ncua::base::update,std::placeholders::_1));
 }
 void	nebula::content::base::shutdown()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	universes_.foreach( boost::bind( &ncua::base::shutdown, _1 ) );
+	universes_.foreach( std::bind( &ncua::base::shutdown, std::placeholders::_1 ) );
 	
 	universes_.clear();
 }

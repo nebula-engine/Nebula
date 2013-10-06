@@ -17,7 +17,7 @@ namespace nebula
 				public nuo::base
 			{
 			public:
-				virtual void		render( const jess::shared_ptr<npr::base>& );
+				virtual void		render( jess::shared_ptr<npr::base>& );
 			};
 		}
 	}

@@ -37,7 +37,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const jess::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -45,7 +45,7 @@ namespace nebula
 					/// step
 					virtual	void								step(FLOAT);
 					/// render
-					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base>&);
 				
 				
 					virtual void								create_shapes();

@@ -47,7 +47,7 @@ void	nca::physics::controller::step(FLOAT dt)
 }
 void	nca::physics::controller::update_move()
 {
-	jess::shared_ptr<nca::admin::controller> parent = boost::dynamic_pointer_cast<nca::admin::controller>(parent_.lock());
+	jess::shared_ptr<nca::admin::controller> parent = std::dynamic_pointer_cast<nca::admin::controller>(parent_.lock());
 	
 	
 	/** \todo

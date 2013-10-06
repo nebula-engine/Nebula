@@ -30,7 +30,8 @@ void	ncvah::base::init( jess::shared_ptr<nc_sc_a::base>& parent )
 	
 	parent->parent_.lock()->parent_.lock()->parent_.lock()->get_platform()->create_window( window_ );
 	
-	camera_.create<nebula::content::camera>();
+	// create camera
+	camera_.reset( new nebula::content::camera );
 }
 void	ncvah::base::update()
 {
@@ -71,7 +72,7 @@ void	ncvah::base::create_camera()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	camera_.create<nc::camera>();
+	camera_.reset( new nc::camera );
 }
 
 

@@ -29,14 +29,14 @@ void	nebula::content::universe::admin::base::shutdown()
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	scenes_.foreach( boost::bind(&nebula::content::scene::admin::base::shutdown,_1) );
+	scenes_.foreach( std::bind( &nebula::content::scene::admin::base::shutdown, std::placeholders::_1 ) );
 }
 void	nebula::content::universe::admin::base::update()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	scenes_.foreach(boost::bind(&nebula::content::scene::admin::base::update,_1));
+	scenes_.foreach( std::bind( &nebula::content::scene::admin::base::update, std::placeholders::_1 ) );
 }
 void	ncua::base::request_window( jess::shared_ptr<npw::base>& wnd )
 {

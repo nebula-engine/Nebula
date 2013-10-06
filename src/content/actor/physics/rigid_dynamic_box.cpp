@@ -14,7 +14,7 @@ nca::physics::rigid_dynamic_box&	ncap::rigid_dynamic_box::operator=( const ncap:
 {
 	return *this;
 }
-void	nca::physics::rigid_dynamic_box::init(const jess::shared_ptr<nca::admin::base>& parent)
+void	nca::physics::rigid_dynamic_box::init( jess::shared_ptr<nca::admin::base> parent)
 {
 	nca::physics::rigid_dynamic::init(parent);
 }

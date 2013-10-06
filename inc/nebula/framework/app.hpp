@@ -2,9 +2,6 @@
 #define __NEBULA_FRAMEWORK_APP_HPP__
 
 #include <jess/shared_ptr.hpp>
-#include <boost/enable_shared_from_this.hpp>
-
-#include <jess/shared_ptr.hpp>
 
 #include <nebula/utilities/types/framework/types.hpp>
 #include <nebula/utilities/types/platform/types.hpp>
@@ -18,7 +15,7 @@ namespace nebula
 	{
 		/// app
 		class app:
-			public boost::enable_shared_from_this<nf::app>
+			public jess::enable_shared_from_this<nf::app>
 		{
 		public:
 			/// ctor

@@ -1,7 +1,5 @@
 #include <boost/numeric/ublas/io.hpp>
 
-
-
 #include <nebula/define.hpp>
 
 #include <nebula/utilities/free.hpp>
@@ -21,15 +19,22 @@
 
 ncaa::controller::controller()
 {
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 ncaa::controller::~controller()
 {
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	ncaa::controller::init( jess::shared_ptr<nc_sc_a::base>& parent )
+void	ncaa::controller::init( jess::shared_ptr<nc_sc_a::base> parent )
 {
-	ncaa::base::init(parent);
-
-
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
+	// init parent
+	ncaa::base::init( parent );
+	
 	flag_ = 0;
 
 	yaw_ = 0;
@@ -42,16 +47,22 @@ void	ncaa::controller::init( jess::shared_ptr<nc_sc_a::base>& parent )
 	key_flag_[nebula::platform::key::s] = flag::eSOUTH;
 	key_flag_[nebula::platform::key::a] = flag::eWEST;
 	key_flag_[nebula::platform::key::d] = flag::eEAST;
+	
+	jess::shared_ptr<ncaa::base> this_ptr( shared_from_this() );
+	
+	jess::cout << "not reached" << std::endl;
 
 	// physics
-	physics_.create<ncap::controller>( boost::bind( &ncap::controller::init, _1, shared_from_this() ) );
+	physics_.reset( new ncap::controller );
+	physics_->init( this_ptr );
 	
 	// renderer
-	renderer_.create<ncar::controller>( boost::bind( &ncar::controller::init, _1, shared_from_this() ) );	
+	renderer_.reset( new ncar::controller );
+	renderer_->init( this_ptr );	
 }
 void	ncaa::controller::shutdown()
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	ncaa::controller::update()
 {
@@ -61,14 +72,14 @@ void	ncaa::controller::step( FLOAT dt )
 {
 	ncaa::base::step( dt );
 }
-void	ncaa::controller::render( const jess::shared_ptr<npr::base>& rnd )
+void	ncaa::controller::render( jess::shared_ptr<npr::base>& rnd )
 {
 }
 void	ncaa::controller::create_shapes()
 {
 
 }
-void	ncaa::controller::look_at( const jess::shared_ptr<npr::base>& rnd )
+void	ncaa::controller::look_at( jess::shared_ptr<npr::base>& rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 

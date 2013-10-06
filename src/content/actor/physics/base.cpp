@@ -16,7 +16,7 @@ nca::physics::base&	ncap::base::operator=( const ncap::base& act )
 {
 	return *this;
 }
-void	nca::physics::base::init( jess::shared_ptr<nebula::content::actor::admin::base>& parent )
+void	nca::physics::base::init( jess::shared_ptr<nebula::content::actor::admin::base> parent )
 {
 	parent_ = parent;
 }

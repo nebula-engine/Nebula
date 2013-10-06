@@ -44,7 +44,7 @@ namespace nebula
 					/// step
 					virtual void									step( FLOAT dt );
 					/// render
-					virtual void									render( const jess::shared_ptr<npr::base>& );
+					virtual void									render( jess::shared_ptr<npr::base>& );
 					/// get content
 					jess::shared_ptr<nc::base>							get_content();
 					/// request window

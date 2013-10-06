@@ -15,23 +15,30 @@ ncaa::rigid_actor::rigid_actor()
 ncaa::rigid_actor::~rigid_actor()
 {
 }
-void	ncaa::rigid_actor::init( const jess::shared_ptr<nc_sc_a::base>& parent )
+void	ncaa::rigid_actor::init( jess::shared_ptr<nc_sc_a::base> parent )
 {
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
 	ncaa::actor::init( parent );
 
+	jess::shared_ptr<ncaa::base> this_ptr( shared_from_this() );
+	
 	create_shape();
 }
-void	ncaa::rigid_actor::render( const jess::shared_ptr<npr::base>& rnd )
+void	ncaa::rigid_actor::render( jess::shared_ptr<npr::base>& rnd )
 {
-	shapes_.foreach( boost::bind( &ncsa::base::render, _1, rnd ) );
+	shapes_.foreach( std::bind( &ncsa::base::render, std::placeholders::_1, rnd ) );
 }
 void	ncaa::rigid_actor::create_shape()
 {
 	
 }
-void	ncaa::rigid_actor::create_box( const jess::shared_ptr<ncsa::box>& bx )
+void	ncaa::rigid_actor::create_box( jess::shared_ptr<ncsa::box>& bx )
 {
-	//shapes_.push<ncsa::box>( bx, boost::bind( &ncsa::box::init, _1, shared_from_this() ) );
+	jess::shared_ptr<ncaa::rigid_actor> this_ = std::dynamic_pointer_cast<ncaa::rigid_actor>( shared_from_this() );
+
+	shapes_.push<ncsa::box>( bx, std::bind( &ncsa::box::init, std::placeholders::_1, this_ ) );
 }
 void	ncaa::rigid_actor::shutdown()
 {

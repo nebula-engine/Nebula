@@ -1,8 +1,6 @@
 #ifndef __NEBULA_CONTENT_VIEW_ADMIN_BASE_HPP__
 #define __NEBULA_CONTENT_VIEW_ADMIN_BASE_HPP__
 
-#include <boost/weak_ptr.hpp>
-
 #include <nebula/utilities/types/types.hpp>
 #include <nebula/utilities/types/content/scene/types.hpp>
 #include <nebula/framework/renderable.hpp>

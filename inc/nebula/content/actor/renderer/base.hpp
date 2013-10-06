@@ -1,7 +1,6 @@
 #ifndef __NEBULA_CONTENT_ACTOR_RENDERER_BASE_HPP__
 #define __NEBULA_CONTENT_ACTOR_RENDERER_BASE_HPP__
 
-#include <boost/weak_ptr.hpp>
 #include <jess/shared_ptr.hpp>
 
 #include <nebula/utilities/types/platform/types.hpp>

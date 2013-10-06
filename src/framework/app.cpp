@@ -22,8 +22,8 @@
 #include <nebula/framework/app.hpp>
 
 
-template class jess::shared_ptr<nc::base>;
-template void jess::shared_ptr<nc::base>::create( boost::function<void(jess::shared_ptr<nc::base>)> );
+//template class jess::shared_ptr<nc::base>;
+//template void jess::shared_ptr<nc::base>::create( boost::function<void(jess::shared_ptr<nc::base>)> );
 
 
 
@@ -77,13 +77,16 @@ void	nf::app::init()
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;//.funcsig();//jess::clog << NEB_FUNCSIG << std::endl;
 	
-	content_.create<nc::base>( boost::bind( &nc::base::init, _1, shared_from_this() ) );
+	content_.reset( new nc::base );
+	content_->init( shared_from_this() );
 	
 	#ifdef __LIN__
-		platform_.create<nppl::base>( boost::bind( &nppl::base::init, _1, shared_from_this() ) );
+		platform_.reset( new nppl::base );
 	#elif defined(__WIN__)
-		m_platform = new PL_PL_WIN_Platform();
+		platform_.reset( new nppw::base );
 	#endif
+	
+	platform_->init( shared_from_this() );
 }
 void	nf::app::shutdown()
 {

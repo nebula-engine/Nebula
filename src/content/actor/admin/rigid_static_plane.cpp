@@ -9,7 +9,7 @@
 
 
 
-void	ncaa::rigid_static_plane::init( const jess::shared_ptr<nc_sc_a::base>& parent )
+void	ncaa::rigid_static_plane::init( jess::shared_ptr<nc_sc_a::base>& parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncaa::rigid_static::init( parent );

@@ -1,8 +1,6 @@
 #ifndef __NEBULA_CONTENT_ACTOR_ADMIN_BASE_HPP__
 #define __NEBULA_CONTENT_ACTOR_ADMIN_BASE_HPP__
 
-#include <boost/enable_shared_from_this.hpp>
-#include <jess/shared_ptr.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 
 #include <jess/shared_ptr.hpp>
@@ -22,9 +20,9 @@ namespace nebula
 		{
 			namespace admin
 			{
-				/// rigid dynamic
+				/// base
 				class base:
-					public boost::enable_shared_from_this<ncaa::base>
+					public jess::enable_shared_from_this<ncaa::base>
 				{
 				public:
 					///@name ctor and dtor
@@ -34,7 +32,7 @@ namespace nebula
 					/// Copy Ctor
 					base(const base&);
 					/// Dtor
-					~base();
+					virtual ~base();
 					///@}
 	
 					///@name operator
@@ -46,15 +44,15 @@ namespace nebula
 					
 	
 					/// init
-					virtual	void								init(const jess::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step( FLOAT dt );
+					virtual	void								step( FLOAT );
 					/// render
-					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base>& );
 					
 					
 					

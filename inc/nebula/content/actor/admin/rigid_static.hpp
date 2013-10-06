@@ -24,7 +24,7 @@ namespace nebula
 					~rigid_static();
 
 					/// Initialize
-					virtual	void						init(const jess::shared_ptr<nc_sc_a::base>&);
+					virtual	void						init( jess::shared_ptr<nc_sc_a::base>&);
 					/// ShutDown
 					virtual	void						shutdown();
 					/// Update

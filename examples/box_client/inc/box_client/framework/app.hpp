@@ -24,12 +24,12 @@ namespace box_client
 
 
 
-			boost::shared_ptr<bc0x300::universe::admin::base>	universe_;
-			boost::shared_ptr<bc0x300::scene::admin::base>		scene_;
-			boost::shared_ptr<ncvah::base>				view_human_;
-			boost::shared_ptr<ncaa::rigid_dynamic_box>		m_rigidDynamicBox;
-			boost::shared_ptr<ncaa::rigid_static_plane>		m_rigidStaticPlane;
-			boost::shared_ptr<ncaa::controller>			m_controller;
+			jess::shared_ptr<bc0x300::universe::admin::base>	universe_;
+			jess::shared_ptr<bc0x300::scene::admin::base>		scene_;
+			jess::shared_ptr<ncvah::base>				view_human_;
+			jess::shared_ptr<ncaa::rigid_dynamic_box>		m_rigidDynamicBox;
+			jess::shared_ptr<ncaa::rigid_static_plane>		m_rigidStaticPlane;
+			jess::shared_ptr<ncaa::controller>			m_controller;
 
 		};
 	}

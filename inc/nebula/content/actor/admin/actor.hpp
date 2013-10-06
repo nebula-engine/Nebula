@@ -15,7 +15,7 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class actor:
-					public nebula::content::actor::admin::base
+					public ncaa::base
 				{
 				public:
 					///@name ctor and dtor
@@ -25,7 +25,7 @@ namespace nebula
 					/// Copy Ctor
 					actor(const actor&);
 					/// Dtor
-					~actor();
+					virtual ~actor();
 					///@}
 
 					///@name operator
@@ -37,15 +37,15 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const jess::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step();
+					virtual	void								step( FLOAT );
 					/// render
-					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base>& );
 				
 				
 				

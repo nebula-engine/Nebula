@@ -21,7 +21,7 @@ namespace nebula
 			namespace admin
 			{
 				class base:
-					public boost::enable_shared_from_this<ncua::base>
+					public jess::enable_shared_from_this<ncua::base>
 				{
 				public:
 					/// ctor
@@ -40,9 +40,8 @@ namespace nebula
 					template <class T> void					create_scene( jess::shared_ptr<T>& scn )
 					{
 						jess::clog << NEB_FUNCSIG << std::endl;
-	
-						scenes_.push<T>( scn, boost::bind( &T::init, _1, shared_from_this() ) );
-
+						
+						scenes_.push<T>( scn, std::bind( &T::init, std::placeholders::_1, shared_from_this() ) );
 					}
 					
 					/// parent

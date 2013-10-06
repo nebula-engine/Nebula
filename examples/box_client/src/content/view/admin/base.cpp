@@ -7,13 +7,13 @@
 #include <box_client/content/scene/admin/base.hpp>
 #include <box_client/content/view/admin/base.hpp>
 
-void	bc33100::base::init_bc( boost::shared_ptr<bc32100::base>& parent )
+void	bc33100::base::init_bc( jess::shared_ptr<bc32100::base>& parent )
 {
 	//log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	// init parent
-	boost::shared_ptr<nc_sc_a::base> neb_parent = boost::static_pointer_cast<nc_sc_a::base>( parent );	
+	jess::shared_ptr<nc_sc_a::base> neb_parent = std::static_pointer_cast<nc_sc_a::base>( parent );	
 	ncva::base::init( neb_parent );
 	
 	// request window
@@ -26,9 +26,9 @@ void	bc33100::base::init_bc( boost::shared_ptr<bc32100::base>& parent )
 	camera_->controller_ = parent->ctrlr_;
 	
 	// set signal handlers
-	window_->sig_pointer_motion_.connect( boost::bind( &ncaa::controller::handle_pointer_motion, parent->ctrlr_, _1, _2 ) );
+	window_->sig_pointer_motion_.connect( std::bind( &ncaa::controller::handle_pointer_motion, parent->ctrlr_, std::placeholders::_1, std::placeholders::_2 ) );
 }
-void	bc33100::base::init( boost::shared_ptr<nc_sc_a::base>& parent )
+void	bc33100::base::init( jess::shared_ptr<nc_sc_a::base>& parent )
 {
 	//log
 	jess::clog << NEB_FUNCSIG << std::endl;

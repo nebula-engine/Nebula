@@ -2,7 +2,6 @@
 #define __NEBULA_PLATFORM_PLATFORM_BASE_HPP__
 
 #include <jess/shared_ptr.hpp>
-#include <boost/enable_shared_from_this.hpp>
 
 #include <jess/shared_ptr.hpp>
 #include <jess/map.hpp>
@@ -20,7 +19,7 @@ namespace nebula
 		{
 			/// base
 			class base:
-				public boost::enable_shared_from_this<npp::base>,
+				public jess::enable_shared_from_this<npp::base>,
 				public na::mailbox
 			{
 			public:

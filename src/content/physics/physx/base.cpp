@@ -62,11 +62,13 @@ void	ncpp::base::shutdown()
 	px_physics_->release();
 	px_foundation_->release();
 }
-void	ncpp::base::register_scene( const jess::shared_ptr<nc_sc_a::base>& scn )
+void	ncpp::base::register_scene( jess::shared_ptr<nc_sc_a::base>& scn )
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
 	//CO_SC_PH_PX_Scene* physicsScenePhysX = (CO_SC_PH_PX_Scene*)scene->GetPhysicsScene();
-	jess::shared_ptr<nc_sc_pp::base> scene_physics = boost::dynamic_pointer_cast<nc_sc_pp::base>( scn->physics_.get() );
+	jess::shared_ptr<nc_sc_pp::base> scene_physics = std::dynamic_pointer_cast<nc_sc_pp::base>( scn->physics_ );
 	//if ( !physicsScenePhysX ) throw Except("dynamic_cast returned null");
 	
 	::physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
@@ -113,9 +115,9 @@ void	ncpp::base::register_scene( const jess::shared_ptr<nc_sc_a::base>& scn )
 	jess::assertion( scene_physics->px_scene_ );
 	
 }
-void	ncpp::base::register_rigid_dynamic( const jess::shared_ptr<ncaa::rigid_dynamic>& act )
+void	ncpp::base::register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic>& act )
 {
-	jess::shared_ptr<ncapp::rigid_dynamic> act_physics = boost::dynamic_pointer_cast<ncapp::rigid_dynamic>( act->physics_.get() );
+	jess::shared_ptr<ncapp::rigid_dynamic> act_physics = std::dynamic_pointer_cast<ncapp::rigid_dynamic>( act->physics_ );
 	
 	// get transform
 	::physx::PxTransform px_trans = ncpp::boost_to_physx( act->get_pose() );
@@ -126,13 +128,13 @@ void	ncpp::base::register_rigid_dynamic( const jess::shared_ptr<ncaa::rigid_dyna
 	// pass PxRigidDynamic to rigid_dynamic
 	act_physics->set_px_actor( px_act );
 }
-void	ncpp::base::register_controller( const jess::shared_ptr<ncaa::controller>& act )
+void	ncpp::base::register_controller( jess::shared_ptr<ncaa::controller>& act )
 {
 	// Get actor's physics object
-	jess::shared_ptr<ncapp::controller> act_phy = boost::dynamic_pointer_cast<ncapp::controller>( act->physics_.get() );
+	jess::shared_ptr<ncapp::controller> act_phy = std::dynamic_pointer_cast<ncapp::controller>( act->physics_ );
 	
 	//CO_SC_PH_PX_Scene* physicsScenePhysX = (CO_SC_PH_PX_Scene*)scene->GetPhysicsScene();
-	jess::shared_ptr<nc_sc_pp::base> scn_phy = boost::dynamic_pointer_cast<nc_sc_pp::base>( act->parent_.lock()->physics_.get() );
+	jess::shared_ptr<nc_sc_pp::base> scn_phy = std::dynamic_pointer_cast<nc_sc_pp::base>( act->parent_.lock()->physics_ );
 	//if ( !physicsScenePhysX ) throw Except("dynamic_cast returned null");
 	
 	

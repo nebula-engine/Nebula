@@ -18,9 +18,9 @@ namespace box_client
 				{
 				public:
 					/// init
-					virtual void				init_bc( boost::shared_ptr<box_client::content::scene::admin::base>& );
+					virtual void				init_bc( jess::shared_ptr<box_client::content::scene::admin::base>& );
 					/// init
-					virtual void				init( boost::shared_ptr<nc_sc_a::base>& );
+					virtual void				init( jess::shared_ptr<nc_sc_a::base>& );
 				};
 			}
 		}

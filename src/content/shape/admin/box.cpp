@@ -5,7 +5,7 @@
 #include <nebula/content/shape/physics/box.hpp>
 #include <nebula/content/shape/admin/box.hpp>
 
-void	ncsa::box::init( jess::shared_ptr<ncaa::rigid_actor>& parent)
+void	ncsa::box::init( jess::shared_ptr<ncaa::rigid_actor> parent)
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;

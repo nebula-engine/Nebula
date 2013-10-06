@@ -3,14 +3,11 @@
 
 #include <memory>
 
-#include <boost/weak_ptr.hpp>
 #include <boost/signals2/signal.hpp>
-#include <boost/enable_shared_from_this.hpp>
+
+#include <jess/shared_ptr.hpp>
 
 #include <nebula/utilities/types/platform/types.hpp>
-
-//#include <framework/FR_Mappable.h>
-//#include <framework/Communication/FR_COM_IComm.h>
 
 #include <nebula/ns.hpp>
 
@@ -22,7 +19,7 @@ namespace nebula
 		{
 			/// base
 			class base:
-				public boost::enable_shared_from_this<npw::base>
+				public jess::enable_shared_from_this<npw::base>
 			{
 			public:
 				///@name Constructor and Destructor

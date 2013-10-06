@@ -1,5 +1,4 @@
-
-
+#include <nebula/define.hpp>
 
 #include <nebula/content/actor/admin/base.hpp>
 
@@ -19,20 +18,23 @@ ncaa::base&	ncaa::base::operator=( const ncaa::base& act )
 {
 	return *this;
 }
-void	ncaa::base::init( const jess::shared_ptr<nc_sc_a::base>& parent )
+void	ncaa::base::init( jess::shared_ptr<nc_sc_a::base> parent )
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
 	parent_ = parent;
 }
 void	ncaa::base::shutdown()
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	ncaa::base::update()
 {
 	//FR_COM_IComm::Update();
 }
-void	ncaa::base::render( const jess::shared_ptr<npr::base>& rnd )
+void	ncaa::base::render( jess::shared_ptr<npr::base>& rnd )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 }

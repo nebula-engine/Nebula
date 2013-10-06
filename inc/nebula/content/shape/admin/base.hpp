@@ -1,11 +1,6 @@
 #ifndef __NEBULA_CONTENT_SHAPE_ADMIN_BASE_HPP__
 #define __NEBULA_CONTENT_SHAPE_ADMIN_BASE_HPP__
 
-#define TEST_1
-
-#include <boost/enable_shared_from_this.hpp>
-#include <boost/weak_ptr.hpp>
-#include <jess/shared_ptr.hpp>
 #include <boost/numeric/ublas/vector.hpp>
 
 #include <jess/shared_ptr.hpp>
@@ -25,18 +20,18 @@ namespace nebula
 			namespace admin
 			{
 				class base:
-					public std::enable_shared_from_this<ncsa::base>
+					public jess::enable_shared_from_this<ncsa::base>
 				{
 				public:
 					base();
 					virtual ~base();
 					
 					/// init
-					virtual void							init(const jess::shared_ptr<nebula::content::actor::admin::rigid_actor>&);
+					virtual void							init( jess::shared_ptr<nebula::content::actor::admin::rigid_actor>& );
 					/// shutdown
 					virtual void							shutdown();
 					/// render
-					virtual void							render(const jess::shared_ptr<nebula::platform::renderer::base>&);
+					virtual void							render( jess::shared_ptr<nebula::platform::renderer::base>& );
 					
 					
 					/// get scale

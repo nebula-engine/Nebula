@@ -21,7 +21,7 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class rigid_actor:
-					public nebula::content::actor::admin::actor
+					public ncaa::actor
 				{
 				public:
 					///@name ctor and dtor
@@ -43,7 +43,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const jess::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -51,14 +51,14 @@ namespace nebula
 					/// step
 					virtual	void								step();
 					/// render
-					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base>& );
 				
 				
 				
 				
 					/// create shapes
 					virtual	void								create_shape();
-					virtual void								create_box( const jess::shared_ptr<ncsa::box>& );					
+					virtual void								create_box( jess::shared_ptr<ncsa::box>& );					
 
 					/// shapes
 					jess::map<ncsa::base>							shapes_;

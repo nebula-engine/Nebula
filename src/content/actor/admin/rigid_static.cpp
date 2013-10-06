@@ -7,7 +7,7 @@ ncaa::rigid_static::rigid_static()
 ncaa::rigid_static::~rigid_static()
 {
 }
-void	ncaa::rigid_static::init( const jess::shared_ptr<nc_sc_a::base>& parent )
+void	ncaa::rigid_static::init( jess::shared_ptr<nc_sc_a::base>& parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncaa::rigid_actor::init(parent);

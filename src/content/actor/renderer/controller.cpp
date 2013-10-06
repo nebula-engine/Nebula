@@ -26,9 +26,9 @@ void	ncar::controller::update()
 {
 	
 }
-void	ncar::controller::render( const jess::shared_ptr<npr::base>& rnd )
+void	ncar::controller::render( jess::shared_ptr<npr::base>& rnd )
 {
-	jess::shared_ptr<ncaa::controller> parent = boost::dynamic_pointer_cast<ncaa::controller>( parent_.lock() );
+	jess::shared_ptr<ncaa::controller> parent = std::dynamic_pointer_cast<ncaa::controller>( parent_.lock() );
 
 	rnd->look_at( parent->pos_, parent->pos_ + parent->look_, parent->up_ );
 }

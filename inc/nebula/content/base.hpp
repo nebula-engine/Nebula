@@ -19,7 +19,7 @@ namespace nebula
 	namespace content
 	{
 		class base:
-			public boost::enable_shared_from_this<nc::base>
+			public jess::enable_shared_from_this<nc::base>
 		{
 		public:
 			/// ctor
@@ -38,7 +38,7 @@ namespace nebula
 				// log
 				jess::clog << NEB_FUNCSIG << std::endl;
 				
-				universes_.push<T>( uni, boost::bind( &T::init, _1, shared_from_this() ) );
+				universes_.push<T>( uni, std::bind( &T::init, std::placeholders::_1, shared_from_this() ) );
 			}
 			/// request window
 			virtual void							request_window( jess::shared_ptr<npw::base>& );

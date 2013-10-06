@@ -1,10 +1,11 @@
 #ifndef __NEBULA_CONTENT_SHAPE_RENDERER_BASE_HPP__
 #define __NEBULA_CONTENT_SHAPE_RENDERER_BASE_HPP__
 
-#include <boost/weak_ptr.hpp>
+#include <jess/shared_ptr.hpp>
 
 #include <nebula/utilities/types/platform/types.hpp>
 #include <nebula/utilities/types/content/shape/types.hpp>
+#include <nebula/ns.hpp>
 
 namespace nebula
 {
@@ -20,7 +21,7 @@ namespace nebula
 					base();
 					virtual ~base();
 					
-					virtual void								init( jess::shared_ptr<nebula::content::shape::admin::base>& );
+					virtual void								init( jess::shared_ptr<nebula::content::shape::admin::base> );
 
 					virtual void								shutdown();
 					

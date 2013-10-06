@@ -12,7 +12,7 @@ nebula::content::shape::admin::base::base()
 nebula::content::shape::admin::base::~base()
 {
 }
-void	nebula::content::shape::admin::base::init(const jess::shared_ptr<nebula::content::actor::admin::rigid_actor>& parent)
+void	nebula::content::shape::admin::base::init( jess::shared_ptr<nebula::content::actor::admin::rigid_actor>& parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -23,7 +23,7 @@ void	nebula::content::shape::admin::base::shutdown()
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	nebula::content::shape::admin::base::render(const jess::shared_ptr<nebula::platform::renderer::base>&)
+void	nebula::content::shape::admin::base::render( jess::shared_ptr<nebula::platform::renderer::base>& rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 

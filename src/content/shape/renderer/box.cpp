@@ -19,7 +19,7 @@ ncsr::box::~box()
 {
 
 }
-void	ncsr::box::init( jess::shared_ptr<ncs::admin::box>& parent)
+void	ncsr::box::init( jess::shared_ptr<ncs::admin::box> parent )
 {
 	parent_ = parent;
 }

@@ -49,14 +49,14 @@ void	npp::base::update()
 	//FR_COM_IComm::Update();
 	mailbox::update();
 
-	windows_.foreach( boost::bind( &npw::base::update, _1 ) );
+	windows_.foreach( std::bind( &npw::base::update, std::placeholders::_1 ) );
 }
 void	npp::base::request_window( jess::shared_ptr<npw::base>& wnd )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	create_window( wnd.pointer_ );
+	create_window( wnd );
 }
 void	npp::base::process_message( jess::shared_ptr<na::message> msg )
 {

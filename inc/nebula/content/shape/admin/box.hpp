@@ -21,7 +21,7 @@ namespace nebula
 				{
 				public:
 					/// init
-					void								init( jess::shared_ptr<ncaa::rigid_actor>& );
+					void								init( jess::shared_ptr<ncaa::rigid_actor> );
 					/// shutdown
 					void								shutdown();
 					/// render

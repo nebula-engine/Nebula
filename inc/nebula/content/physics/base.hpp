@@ -4,7 +4,6 @@
 #include <memory>
 
 #include <jess/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
 
 #include <nebula/utilities/types/content/types.hpp>
 #include <nebula/utilities/types/content/scene/types.hpp>

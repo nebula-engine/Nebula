@@ -37,7 +37,7 @@ namespace nebula
 					
 
 					/// init
-					virtual	void								init(const jess::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base>&);
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

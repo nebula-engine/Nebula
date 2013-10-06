@@ -15,7 +15,7 @@ namespace nebula
 			{
 				/// controller
 				class controller:
-					public nebula::content::actor::admin::base
+					public ncaa::base
 				{
 				public:
 					/// flag
@@ -37,18 +37,18 @@ namespace nebula
 						enum
 						{
 							eRESET_VIEW_ANGLES
-};
-};
+						};
+					};
 					/// handler key down
 					void							handle_key_down(int,int);
-					
+
 					/// handler key up
 					void							handle_key_up(int,int);
-					
+
 					/// handler pointer motion
 					void							handle_pointer_motion(int,int);
-					
-					
+
+
 					///@name ctor and dtor
 					///@{
 					// Ctor
@@ -56,7 +56,7 @@ namespace nebula
 					/// Copy Ctor
 					controller(const controller&);
 					/// Dtor
-					~controller();
+					virtual ~controller();
 					///@}
 
 					///@name operator
@@ -64,25 +64,24 @@ namespace nebula
 					/// assignment
 					controller&								operator=(const controller&);
 					///@}
-					
-					
-					
+
+
+
 					/// init
-					virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step(FLOAT);
+					virtual	void								step( FLOAT );
 					/// render
-					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
-					
-					
-					
+					virtual	void								render( jess::shared_ptr<npr::base>& );
+
+
+
 
 					virtual void								process_event(int);
-					
 
 
 
@@ -90,16 +89,17 @@ namespace nebula
 
 
 
-					
+
+
 					/// create shapes
 					virtual	void								create_shapes();
-					
+
 					/// lookat
-					virtual void								look_at(const jess::shared_ptr<nebula::platform::renderer::base>&);
-					
+					virtual void								look_at( jess::shared_ptr<npr::base>& );
+
 					/// get move
 					boost::numeric::ublas::vector<FLOAT>					get_move();
-					
+
 					/// move
 					boost::numeric::ublas::vector<FLOAT>					move_;
 					/// pos
@@ -108,19 +108,19 @@ namespace nebula
 					boost::numeric::ublas::vector<FLOAT>					look_;
 					/// up
 					boost::numeric::ublas::vector<FLOAT>					up_;
-					
-					
-					
+
+
+
 					FLOAT yaw_;
 					FLOAT pitch_;
-			
+
 					std::map<int,int>							key_flag_;
 					std::map<int,int>							key_up_event_;
 					std::map<int,int>							key_down_event_;
 
 
 
-	
+
 				};
 			}
 		}
