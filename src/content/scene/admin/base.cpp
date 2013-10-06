@@ -8,6 +8,7 @@
 #include <nebula/content/universe/admin/base.hpp>
 #include <nebula/content/scene/physics/base.hpp>
 #include <nebula/content/scene/physics/physx/base.hpp>
+#include <nebula/content/scene/renderer/base.hpp>
 #include <nebula/content/view/admin/human/base.hpp>
 #include <nebula/content/actor/admin/rigid_dynamic_box.hpp>
 #include <nebula/content/actor/admin/controller.hpp>
@@ -152,31 +153,26 @@ void						nc_sc_a::base::create_controller( jess::shared_ptr<ncaa::controller>& 
 
 	//actors_.push<ncaa::controller>( act, std::bind( &ncaa::controller::init, std::placeholders::_1, shared_from_this() ) );
 	
-	//actors_.push<ncaa::controller>( act );
+	actors_.push<ncaa::controller>( act );
 	
-	act.reset( new ncaa::controller );
+	//act.reset( new ncaa::controller );
 	
-	jess::cout << "act.use_count()=" << act.use_count() << std::endl;
+	//jess::cout << "act.use_count()=" << act.use_count() << std::endl;
 	
-	
-	jess::shared_ptr<ncaa::actor> test_act( new ncaa::actor );
-	test_act->init( shared_from_this() );
+	//jess::shared_ptr<ncaa::actor> test_act( new ncaa::actor );
+	//test_act->init( shared_from_this() );
 
-	jess::shared_ptr<ncaa::controller> test_act2( new ncaa::controller );
-	test_act2->init( shared_from_this() );
+	//jess::shared_ptr<ncaa::controller> test_act2( new ncaa::controller );
+	//test_act2->init( shared_from_this() );
 
-
-
-
-
-	//act->init( shared_from_this() );
-
-
-
-
+	act->init( shared_from_this() );
 	
 	// register controller with global physics object
-	get_content()->physics_->register_controller( act );
+	jess::shared_ptr<nc::base> cont = get_content();
+	
+	jess::shared_ptr<ncp::base> cont_phys = cont->physics_;
+	
+	cont_phys->register_controller( act );
 }
 void	nc_sc_a::base::request_window( jess::shared_ptr<npw::base>& wnd )
 {

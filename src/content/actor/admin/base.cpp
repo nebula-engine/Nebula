@@ -1,5 +1,8 @@
 #include <nebula/define.hpp>
 
+#include <nebula/content/actor/physics/base.hpp>
+#include <nebula/content/actor/renderer/base.hpp>
+
 #include <nebula/content/actor/admin/base.hpp>
 
 ncaa::base::base()

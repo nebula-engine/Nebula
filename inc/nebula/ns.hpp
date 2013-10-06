@@ -50,7 +50,10 @@ namespace nebula
 			{
 				namespace physx	{}
 			}
-			namespace renderer {}
+			namespace renderer
+			{
+				class base;
+			}
 		}
 		namespace view
 		{
@@ -85,10 +88,10 @@ namespace nebula
 
 
 
-namespace n0x00000 = nebula;
-namespace n0x10000 = nebula::framework;
-namespace n0x20000 = nebula::platform;
-namespace n0x30000 = nebula::content;
+namespace n00000 = nebula;
+namespace n10000 = nebula::framework;
+namespace n20000 = nebula::platform;
+namespace n30000 = nebula::content;
 
 
 /*namespace n0x007 = nebula

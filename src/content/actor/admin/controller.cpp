@@ -50,8 +50,8 @@ void	ncaa::controller::init( jess::shared_ptr<nc_sc_a::base> parent )
 	
 	jess::shared_ptr<ncaa::base> this_ptr( shared_from_this() );
 	
-	jess::cout << "not reached" << std::endl;
-
+	//jess::cout << "not reached" << std::endl;
+	
 	// physics
 	physics_.reset( new ncap::controller );
 	physics_->init( this_ptr );

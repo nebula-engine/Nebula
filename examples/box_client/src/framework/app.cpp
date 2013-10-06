@@ -5,6 +5,8 @@
 #include <box_client/content/universe/admin/base.hpp>
 #include <box_client/content/scene/admin/base.hpp>
 #include <box_client/content/view/admin/base.hpp>
+#include <nebula/content/actor/admin/controller.hpp>
+#include <nebula/content/actor/admin/rigid_static_plane.hpp>
 
 //template void nc::base::create_universe( boost::shared_ptr<box_client::content::universe::admin::base>& );
 

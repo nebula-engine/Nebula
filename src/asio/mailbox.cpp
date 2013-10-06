@@ -1,3 +1,5 @@
+#include <nebula/asio/message.hpp>
+
 #include <nebula/asio/mailbox.hpp>
 
 void						na::mailbox::update()

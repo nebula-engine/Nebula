@@ -34,8 +34,6 @@ void	ncva::base::render()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
-
-	jess::assertion( bool( window_ ) );
 	
 	jess::shared_ptr<npr::base> rnd = window_->renderer_;
 	

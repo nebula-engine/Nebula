@@ -40,7 +40,7 @@ namespace nebula
 					/// window
 					jess::shared_ptr<npw::base>			window_;
 					/// camera
-					jess::shared_ptr<n0x30000::camera>		camera_;
+					jess::shared_ptr<n30000::camera>		camera_;
 					///}
 
 				};

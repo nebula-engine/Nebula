@@ -5,6 +5,7 @@
 
 #include <nebula/content/scene/admin/base.hpp>
 
+
 namespace box_client
 {
 	namespace content

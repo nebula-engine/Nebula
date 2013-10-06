@@ -1,3 +1,4 @@
+#include <nebula/platform/renderer/base.hpp>
 
 #include <nebula/platform/window/base.hpp>
 
