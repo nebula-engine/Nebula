@@ -7,25 +7,36 @@
 
 ncaa::base::base()
 {
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
 	
+	
+	pose_ = bnu::identity_matrix<float>( 4, 4 );
 }
 ncaa::base::~base()
 {
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
 ncaa::base::base( const ncaa::base& act )
 {
-	
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 }
 ncaa::base&	ncaa::base::operator=( const ncaa::base& act )
 {
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	return *this;
 }
 void	ncaa::base::init( jess::shared_ptr<nc_sc_a::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
-	
+
 	parent_ = parent;
 }
 void	ncaa::base::shutdown()
@@ -43,7 +54,7 @@ void	ncaa::base::render( jess::shared_ptr<npr::base> rnd )
 }
 void	ncaa::base::step( FLOAT dt )
 {
-	
+
 }
 void	ncaa::base::create_shapes()
 {

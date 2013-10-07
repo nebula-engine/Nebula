@@ -14,16 +14,16 @@ void	bc33100::base::init( jess::shared_ptr<nc_sc_a::base> parent )
 
 	// get derived parent
 	jess::shared_ptr<bc32100::base> bc_parent = std::dynamic_pointer_cast<bc32100::base>( parent );	
-	
+
 	// init parent
 	ncva::base::init( parent );
-	
+
 	// request window
 	window_ = parent->request_window();
-	
+
 	// camera
 	create_camera();
-	
+
 	// connect controller to camera
 	camera_->controller_ = bc_parent->ctrlr_;
 
@@ -40,6 +40,28 @@ void	bc33100::base::init( jess::shared_ptr<nc_sc_a::base> parent )
 		  std::placeholders::_2
 		 )
 		);
+
+	window_->sig_key_down_.connect
+		(
+		 std::bind
+		 (
+		  &ncaa::controller::handle_key_down,
+		  bc_parent->ctrlr_,
+		  std::placeholders::_1,
+		  std::placeholders::_2
+		 )
+		);
+	window_->sig_key_up_.connect
+		(
+		 std::bind
+		 (
+		  &ncaa::controller::handle_key_up,
+		  bc_parent->ctrlr_,
+		  std::placeholders::_1,
+		  std::placeholders::_2
+		 )
+		);
+
 }
 
 

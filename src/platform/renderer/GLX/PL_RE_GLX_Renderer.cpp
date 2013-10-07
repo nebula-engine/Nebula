@@ -6,10 +6,10 @@
 
 void	nprgg::base::init( jess::shared_ptr<npw::base> parent )
 {
+	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
-	std::cout << this << std::endl;
 
-	
+	//std::cout << this << std::endl;
 	
 	att = new GLint[5];
 	att[0] = GLX_RGBA;
@@ -56,7 +56,8 @@ void	nprgg::base::init( jess::shared_ptr<npw::base> parent )
 }
 void	nprgg::base::shutdown()
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	glXMakeCurrent( m_xdisplay, None, NULL );
 	glXDestroyContext( m_xdisplay, m_glc );
@@ -88,6 +89,9 @@ void	nprgg::base::look_at( bnu::vector<float> eye, bnu::vector<float> center, bn
 }
 void	nprgg::base::draw_cube()
 {
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	nprg::base::draw_cube();
 }
 void	nprgg::base::push_matrix()

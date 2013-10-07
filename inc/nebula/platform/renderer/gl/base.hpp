@@ -27,48 +27,56 @@ namespace nebula
 				class base:
 					public npr::base
 				{
-				public:
-					///@name draw
-					///{
-					/// cube
-					void							draw_cube();
-					///}
-
-					virtual void		init( const jess::shared_ptr<npw::base>& );	
-					virtual void		update();
-					/// push_matrix
-					virtual void		push_matrix();
-					/// pop_matrix
-					virtual void		pop_matrix();
-					/// swap
-					virtual void		swap();
-					/// mult_matrix
-					virtual void		mult_matrix( bnu::matrix<FLOAT> );
-					/// scale
-					virtual void		scale( bnu::vector<FLOAT> );
-					/// look at
-					virtual void		look_at( bnu::vector<FLOAT>, bnu::vector<FLOAT>, bnu::vector<FLOAT> ); 
-					/// light
-					virtual void		light();
-					/// begin render
-					virtual void		begin_render();
-					/// end render
-					virtual void		end_render();
-					/// draw window quad
-					virtual void		draw_window_quad(int,int,int,int);
-					virtual void		unproject( int, int, int, double*, double*, double* );
-					virtual void		draw_sphere();
-					virtual void			draw_2d_quad();
-					virtual void			draw_quad();
-					virtual void		resize( int, int );
-					/// lookat
-					void							lookat(bnu::vector<FLOAT>,bnu::vector<FLOAT>,bnu::vector<FLOAT>);
-
-virtual void		compile_shaders( unsigned int& );
-virtual void		load_shader_source( const char *, char ** const );
-virtual void		load_identity();
+					public:
+						///@name draw
+						///{
+						/// cube
+						virtual void						draw_cube();
+						///}
+						virtual void						init( jess::shared_ptr<npw::base> );	
+						/// update						
+						virtual void						update();
+						/// push_matrix
+						virtual void						push_matrix();
+						/// pop_matrix
+						virtual void						pop_matrix();
+						/// swap
+						virtual void						swap();
+						/// mult_matrix
+						virtual void						mult_matrix( bnu::matrix<FLOAT> );
+						/// scale
+						virtual void						scale( bnu::vector<FLOAT> );
+						/// look at
+						virtual void						look_at( bnu::vector<FLOAT>, bnu::vector<FLOAT>, bnu::vector<FLOAT> ); 
+						/// light
+						virtual void						light();
+						/// begin render
+						virtual void						begin_render();
+						/// end render
+						virtual void						end_render();
+						/// draw window quad
+						virtual void						draw_window_quad( int, int, int, int );
+						/// unproject
+						virtual void						unproject( int, int, int, double*, double*, double* );
+						/// sphere
+						virtual void						draw_sphere();
+						/// 2d quad
+						virtual void						draw_2d_quad();
+						/// quad	
+						virtual void						draw_quad();
+						/// resize
+						virtual void						resize( int, int );
+						/// lookat
+						void							lookat( bnu::vector<FLOAT>, bnu::vector<FLOAT>, bnu::vector<FLOAT> );
+						/// compile shaders
+						virtual void						compile_shaders( unsigned int& );
+						/// load shader source form file
+						virtual void						load_shader_source( const char *, char ** const );
+						/// load identity
+						virtual void						load_identity();
 				};
-			}		}
+			}	
+		}
 	}
 }
 

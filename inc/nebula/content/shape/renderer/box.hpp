@@ -13,15 +13,22 @@ namespace nebula
 		{
 			namespace renderer
 			{
-				class box: public nebula::content::shape::renderer::base
+				/// box
+				class box:
+					public ncsr::base
 				{
-				public:
-					box();
-					~box();
-					void								init( jess::shared_ptr<nebula::content::shape::admin::box> );
-					void								shutdown();
-					void								render( jess::shared_ptr<nebula::platform::renderer::base> );
-					
+					public:
+						/// ctor
+						box();
+						/// dtor
+						~box();
+						/// init
+						void								init( jess::shared_ptr<nebula::content::shape::admin::box> );
+						/// shutdown
+						void								shutdown();
+						/// render
+						void								render( jess::shared_ptr<nebula::platform::renderer::base> );
+
 				};
 			}
 		}

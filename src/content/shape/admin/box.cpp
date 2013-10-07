@@ -24,7 +24,7 @@ void	ncsa::box::init( jess::shared_ptr<ncaa::rigid_actor> parent)
 	physics_->init( shared_from_this() );
 	
 	// create renderer
-	renderer_.reset( new ncsr::base );
+	renderer_.reset( new ncsr::box );
 	renderer_->init( shared_from_this() );
 	
 	// default dimensions
