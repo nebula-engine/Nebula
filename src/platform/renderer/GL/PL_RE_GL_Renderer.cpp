@@ -26,12 +26,14 @@ void GetGLError( GLenum error )
 		throw jess::except( "opengl error 10" );
 	}
 }
-void	nprg::base::init( const jess::shared_ptr<npw::base>&  )
+void	nprg::base::init( jess::shared_ptr<npw::base> parent )
 {
+	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	
-	
+	// init parent
+	npr::base::init( parent );
+
 	printf( "OpenGL version %s\n", glGetString(GL_VERSION) );
 	printf( "GLSL   version %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION) );
 	printf( "GLEW   version %s\n", glewGetString(GLEW_VERSION) );
@@ -75,6 +77,7 @@ void	nprg::base::init( const jess::shared_ptr<npw::base>&  )
 }
 void	nprg::base::draw_cube()
 {
+	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	GLfloat cyan[] = {0.0f, 0.8f, 0.8f, 1.0f};

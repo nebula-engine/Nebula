@@ -53,6 +53,8 @@ void	ncaa::controller::init( jess::shared_ptr<nc_sc_a::base> parent )
 	key_flag_[nebula::platform::key::a] = flag::eWEST;
 	key_flag_[nebula::platform::key::d] = flag::eEAST;
 	
+	key_down_event_[nebula::platform::key::r] = event::eRESET_VIEW_ANGLES;
+
 	jess::shared_ptr<ncaa::base> this_ptr( shared_from_this() );
 	
 	//jess::cout << "not reached" << std::endl;

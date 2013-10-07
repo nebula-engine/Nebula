@@ -19,35 +19,31 @@ namespace nebula
 		{
 			namespace admin
 			{
+				/// base	
 				class base:
 					public jess::enable_shared_from_this<ncsa::base>
 				{
-				public:
-					base();
-					virtual ~base();
-					
-					/// init
-					virtual void							init( jess::shared_ptr<nebula::content::actor::admin::rigid_actor> );
-					/// shutdown
-					virtual void							shutdown();
-					/// render
-					virtual void							render( jess::shared_ptr<nebula::platform::renderer::base> );
-					
-					
-					/// get scale
-					boost::numeric::ublas::vector<FLOAT>				get_scale();
-
-					
-					/// parent
-					std::weak_ptr<nebula::content::actor::admin::rigid_actor>	parent_;
-		
-					/// renderer
-					jess::shared_ptr<nebula::content::shape::renderer::base>	renderer_;
-					/// physics
-					jess::shared_ptr<nebula::content::shape::physics::base>		physics_;
-
-					/// scale
-					boost::numeric::ublas::vector<FLOAT>				scale_;
+					public:
+						/// ctor	
+						base();
+						/// dtor					
+						virtual ~base();
+						/// init
+						virtual void							init( jess::shared_ptr<nebula::content::actor::admin::rigid_actor> );
+						/// shutdown
+						virtual void							shutdown();
+						/// render
+						virtual void							render( jess::shared_ptr<nebula::platform::renderer::base> );
+						/// get scale
+						boost::numeric::ublas::vector<FLOAT>				get_scale();
+						/// parent
+						std::weak_ptr<nebula::content::actor::admin::rigid_actor>	parent_;
+						/// renderer
+						jess::shared_ptr<nebula::content::shape::renderer::base>	renderer_;
+						/// physics
+						jess::shared_ptr<nebula::content::shape::physics::base>		physics_;
+						/// scale
+						boost::numeric::ublas::vector<FLOAT>				scale_;
 				};
 			}
 		}
