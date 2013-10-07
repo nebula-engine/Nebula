@@ -24,7 +24,7 @@ void	ncaa::rigid_actor::init( jess::shared_ptr<nc_sc_a::base> parent )
 
 	jess::shared_ptr<ncaa::base> this_ptr( shared_from_this() );
 	
-	create_shape();
+	create_shapes();
 }
 void	ncaa::rigid_actor::render( jess::shared_ptr<npr::base> rnd )
 {
@@ -33,9 +33,10 @@ void	ncaa::rigid_actor::render( jess::shared_ptr<npr::base> rnd )
 	
 	shapes_.foreach( std::bind( &ncsa::base::render, std::placeholders::_1, rnd ) );
 }
-void	ncaa::rigid_actor::create_shape()
+void	ncaa::rigid_actor::create_shapes()
 {
-	
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 jess::shared_ptr<ncsa::box>	ncaa::rigid_actor::create_box()
 {

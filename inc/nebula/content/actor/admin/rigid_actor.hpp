@@ -57,7 +57,7 @@ namespace nebula
 				
 				
 					/// create shapes
-					virtual	void								create_shape();
+					virtual	void								create_shapes();
 					/// create box
 					virtual jess::shared_ptr<ncsa::box>					create_box();
 					
