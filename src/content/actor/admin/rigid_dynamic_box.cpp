@@ -1,3 +1,4 @@
+#include <nebula/define.hpp>
 #include <nebula/content/shape/admin/box.hpp>
 
 #if defined(__PHYSX__)
@@ -52,11 +53,12 @@ void	ncaa::rigid_dynamic_box::update( )
 {
 	ncaa::rigid_dynamic::update();
 }
-void	ncaa::rigid_dynamic_box::render( jess::shared_ptr<npr::base>& rnd )
+void	ncaa::rigid_dynamic_box::render( jess::shared_ptr<npr::base> rnd )
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
 
-	ncaa::rigid_actor::render( rnd );
+	ncaa::rigid_dynamic::render( rnd );
 }
 void	ncaa::rigid_dynamic_box::step(  )
 {

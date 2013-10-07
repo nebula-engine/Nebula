@@ -27,16 +27,20 @@ void	ncsr::box::shutdown()
 {
 	
 }
-void	ncsr::box::render( jess::shared_ptr<nebula::platform::renderer::base>& rnd )
+void	ncsr::box::render( jess::shared_ptr<nebula::platform::renderer::base> rnd )
 {
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
+
 	jess::shared_ptr<ncs::admin::box> parent = std::dynamic_pointer_cast<ncs::admin::box>( parent_.lock() );
 	
-	jess::assertion( bool(rnd) ); // throw Except("renderer is null");
+	//jess::assertion( bool(rnd) ); // throw Except("renderer is null");
 	
 	
-	jess::assertion( bool(parent) ); // throw Except("m_co_sh_ad_box is null");
+	//jess::assertion( bool(parent) ); // throw Except("m_co_sh_ad_box is null");
 
-
+	/// \todo fix access to grandparent and pose
 	jess::shared_ptr<nca::admin::rigid_actor> grandparent = parent->parent_.lock();
 	
 	//jess::assertion( bool(grandparent) ); // throw Except("m_co_sh_ad_box->Get_ncaa::rigid_actor() is null");

@@ -3,6 +3,7 @@
 #include <nebula/content/actor/admin/rigid_actor.hpp>
 #include <nebula/content/shape/renderer/box.hpp>
 #include <nebula/content/shape/physics/box.hpp>
+
 #include <nebula/content/shape/admin/box.hpp>
 
 void	ncsa::box::init( jess::shared_ptr<ncaa::rigid_actor> parent)
@@ -37,22 +38,13 @@ void	ncsa::box::shutdown()
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	ncsa::box::render( jess::shared_ptr<npr::base>& rnd )
+void	ncsa::box::render( jess::shared_ptr<npr::base> rnd )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	renderer_->render( rnd );
+	ncsa::base::render( rnd );
 }
-
-
-
-
-
-
-
-
-
 
 
 

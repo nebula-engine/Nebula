@@ -39,7 +39,7 @@ namespace content
 				
 
 				/// init
-				virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base>&);
+				virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base> );
 				/// shutdown
 				virtual	void								shutdown();
 				/// update
@@ -47,7 +47,7 @@ namespace content
 				/// step
 				virtual	void								step( FLOAT );
 				/// render
-				virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base>&);
+				virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 				
 				
 				

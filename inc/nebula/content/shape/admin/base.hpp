@@ -27,11 +27,11 @@ namespace nebula
 					virtual ~base();
 					
 					/// init
-					virtual void							init( jess::shared_ptr<nebula::content::actor::admin::rigid_actor>& );
+					virtual void							init( jess::shared_ptr<nebula::content::actor::admin::rigid_actor> );
 					/// shutdown
 					virtual void							shutdown();
 					/// render
-					virtual void							render( jess::shared_ptr<nebula::platform::renderer::base>& );
+					virtual void							render( jess::shared_ptr<nebula::platform::renderer::base> );
 					
 					
 					/// get scale

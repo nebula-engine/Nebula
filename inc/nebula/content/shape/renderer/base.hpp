@@ -27,7 +27,7 @@ namespace nebula
 					
 
 
-					virtual void								render( jess::shared_ptr<nebula::platform::renderer::base>& );
+					virtual void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 					
 					/// parent
 					std::weak_ptr<nebula::content::shape::admin::base>			parent_;

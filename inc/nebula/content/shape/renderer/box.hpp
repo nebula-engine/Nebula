@@ -20,7 +20,7 @@ namespace nebula
 					~box();
 					void								init( jess::shared_ptr<nebula::content::shape::admin::box> );
 					void								shutdown();
-					void								render( jess::shared_ptr<nebula::platform::renderer::base>& );
+					void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 					
 				};
 			}

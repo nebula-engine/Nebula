@@ -28,6 +28,9 @@ void	ncaa::rigid_actor::init( jess::shared_ptr<nc_sc_a::base> parent )
 }
 void	ncaa::rigid_actor::render( jess::shared_ptr<npr::base> rnd )
 {
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
 	shapes_.foreach( std::bind( &ncsa::base::render, std::placeholders::_1, rnd ) );
 }
 void	ncaa::rigid_actor::create_shape()
