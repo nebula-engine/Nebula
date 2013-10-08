@@ -32,7 +32,8 @@ void	ncaa::rigid_dynamic::render( jess::shared_ptr<npr::base> rnd )
 void	ncaa::rigid_dynamic::step( FLOAT dt )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-	
+
+	ncaa::rigid_body::step( dt );
 }
 void	ncaa::rigid_dynamic::create_shapes()
 {

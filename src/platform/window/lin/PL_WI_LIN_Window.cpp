@@ -24,8 +24,8 @@ void	npwl::base::init( jess::shared_ptr<npp::base> parent )
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	npw::base::init( parent );
-	
-	std::cout << this << std::endl;
+
+	register_keys();
 
 	// Graphics Context
 	m_values.cap_style  = CapButt;
@@ -199,7 +199,9 @@ void	npwl::base::update()
 			keysym = XLookupKeysym( &xkey, 0 );
 			
 			k = lookup_key( keysym );
-			
+		
+			jess::clog << "key=" << k << std::endl;
+	
 			sig_key_down_( k, no_ );
 			
 			break;
@@ -211,10 +213,12 @@ void	npwl::base::update()
 				x = motion.x - m_center_x;
 				y = motion.y - m_center_y;
 
+				jess::clog << "center=(" << m_center_x << "," << m_center_y << ")" << std::endl;
+				
 				if ( ( x != 0 ) || ( y != 0 ) )
 				{
 					//printf("%i %i\n",x,y);
-
+				
 					center_pointer();
 					
 					sig_pointer_motion_(x,y);
@@ -241,10 +245,11 @@ void	npwl::base::expose_window( XEvent xevent )
 	int width = 0;
 	int height = 0;
 	
-	if ( m_hasFocus )
+	//if ( m_hasFocus )
 	{
 		status = XGetWindowAttributes( m_xdisplay, m_xwindow, &gwa );
-		switch ( status ) {
+		switch ( status )
+		{
 		case BadWindow:
 			printf("XGetWindowAttributes: BadWindow\n");
 			break;
@@ -260,9 +265,9 @@ void	npwl::base::expose_window( XEvent xevent )
 
 		m_center_x = width/2;
 		m_center_y = height/2;
-
+		
 		glViewport(0, 0, width, height);
-
+		
 		/*      Set current Matrix to projection*/
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity(); //reset projection matrix

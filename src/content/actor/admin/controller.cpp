@@ -14,9 +14,6 @@
 
 #include <nebula/content/actor/admin/controller.hpp>
 
-
-
-
 ncaa::controller::controller()
 {
 	// log
@@ -39,6 +36,7 @@ void	ncaa::controller::init( jess::shared_ptr<nc_sc_a::base> parent )
 	
 	// init parent
 	ncaa::base::init( parent );
+
 	
 	flag_ = 0;
 
@@ -46,7 +44,7 @@ void	ncaa::controller::init( jess::shared_ptr<nc_sc_a::base> parent )
 	pitch_ = 0;
 	
 	pos_ = bnu::zero_vector<FLOAT>(3);
-	
+	pos_(2) = 2.0;
 	
 	key_flag_[nebula::platform::key::w] = flag::eNORTH;
 	key_flag_[nebula::platform::key::s] = flag::eSOUTH;
@@ -90,19 +88,29 @@ void	ncaa::controller::look_at( jess::shared_ptr<npr::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	pose_ = bnu::identity_matrix<FLOAT>( 4 );
+	bnu::matrix<float> rot = bnu::identity_matrix<FLOAT,bnu::column_major>( 3 );
 	
-	std::cout << pose_ << std::endl;
-	
-	pose_ = prod( pose_, nebula::utilities::matrix_pitch( pitch_ ) );
-	
-	pose_ = prod( pose_, nebula::utilities::matrix_yaw( yaw_ ) );
-	
-	nebula::utilities::matrix_set_pos( pose_ , pos_ ); 
-	
-	std::cout << pose_ << std::endl;
+	//jess::clog << pitch_ << " " << yaw_ << std::endl;
+	//std::cout << "rot=" << rot << std::endl;
 
-	rnd->mult_matrix( pose_ );
+
+
+
+
+	rot = prod( rot, nebula::utilities::matrix_yaw( yaw_ ) );
+	
+	//std::cout << "rot=" << rot << std::endl;
+
+
+	
+	rot = prod( rot, nebula::utilities::matrix_pitch( pitch_ ) );
+
+	//std::cout << "rot=" << rot << std::endl;
+
+		
+	
+
+	//rnd->mult_matrix( pose_ );
 	
 	//bnu::  math::quaternion rot(0,0,0,1);
 	
@@ -112,8 +120,21 @@ void	ncaa::controller::look_at( jess::shared_ptr<npr::base> rnd )
 	//rot *= pitch;
 	//rot *= yaw;
 	
-	//up_ = Math::Vec3f(0,1,0);
-	//look_ = Math::Vec3f(0,0,-1);
+	up_ = bnu::unit_vector<float>(3,1); //Math::Vec3f(0,1,0);
+	look_ = bnu::unit_vector<float>(3,2); //Math::Vec3f(0,0,-1);
+	look_ *= -1.0;
+	
+	//jess::clog << up_ << std::endl;
+	//jess::clog << look_ << std::endl;
+	
+	up_ = prod( rot, up_ );
+	look_ = prod( rot, look_ );
+
+	//jess::clog << up_ << std::endl;
+	//jess::clog << look_ << std::endl;
+	//jess::clog << pos_ + look_ << std::endl;
+	
+	rnd->look_at( pos_, pos_ + look_, up_ );
 }
 void	ncaa::controller::process_event( int evnt )
 {

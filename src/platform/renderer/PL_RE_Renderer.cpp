@@ -93,7 +93,7 @@ void	npr::base::push_matrix()
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::mult_matrix( bnu::matrix<float> mat )
+void	npr::base::mult_matrix( bnu::matrix<float, bnu::column_major> mat )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;

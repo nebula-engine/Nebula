@@ -28,7 +28,7 @@ void	nca::physics::base::update()
 {
 	
 }
-void	nca::physics::base::step()
+void	nca::physics::base::step( float dt )
 {
 	
 }

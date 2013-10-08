@@ -265,32 +265,22 @@ void	nprg::base::swap()
 }
 void	nprg::base::look_at( bnu::vector<float> eye, bnu::vector<float> center, bnu::vector<float> up )
 {
-	gluLookAt( eye(0),  eye(1), eye(2), center(0), center(1), center(2), up(0), up(1), up(2) );
+	gluLookAt( eye(0), eye(1), eye(2), center(0), center(1), center(2), up(0), up(1), up(2) );
 }
 void	nprg::base::resize( int width, int height )
 {
-	// Reset the viewport to new dimensions
 	glViewport(0, 0, width, height);
 	glMatrixMode(GL_PROJECTION);
-
-	//reset projection matrix
 	glLoadIdentity(); 
-
-	// Time to calculate aspect ratio of our window
 	gluPerspective(54.0, (GLdouble)width/(GLdouble)height, 1.0, 1000.0);
-
-	//set modelview matrix
 	glMatrixMode(GL_MODELVIEW); 
-
-	//reset modelview matrix
 	glLoadIdentity();
-
 }
 void	nprg::base::push_matrix()
 {
 	glPushMatrix();
 }
-void	nprg::base::mult_matrix( bnu::matrix<FLOAT> mat )
+void	nprg::base::mult_matrix( bnu::matrix<float,bnu::column_major> mat )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	//PrintPxMat44(matrix);
@@ -301,7 +291,7 @@ void	nprg::base::mult_matrix( bnu::matrix<FLOAT> mat )
 }
 void	nprg::base::scale( bnu::vector<float> v )
 {
-	glScalef( v(0), v(0), v(2) );
+	glScalef( v(0), v(1), v(2) );
 }
 void	nprg::base::pop_matrix()
 {

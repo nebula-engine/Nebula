@@ -50,15 +50,18 @@ void	ncaa::base::update()
 }
 void	ncaa::base::render( jess::shared_ptr<npr::base> rnd )
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	ncaa::base::step( FLOAT dt )
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
 
+	physics_->step( dt );
+	renderer_->step( dt );
 }
 void	ncaa::base::create_shapes()
 {
-
+	
 }
 bnu::matrix<FLOAT>	ncaa::base::get_pose()
 {

@@ -24,10 +24,10 @@ namespace nebula
 						/// enum
 						enum e
 						{
-							eNORTH,
-							eSOUTH,
-							eEAST,
-							eWEST
+							eNORTH = 1 << 0,
+							eSOUTH = 1 << 1,
+							eEAST  = 1 << 2,
+							eWEST  = 1 << 3
 						};
 					};
 					/// event
@@ -36,6 +36,7 @@ namespace nebula
 						/// enum
 						enum
 						{
+							eINVALID = 0,
 							eRESET_VIEW_ANGLES
 						};
 					};

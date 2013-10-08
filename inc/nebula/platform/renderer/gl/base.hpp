@@ -43,7 +43,7 @@ namespace nebula
 						/// swap
 						virtual void						swap();
 						/// mult_matrix
-						virtual void						mult_matrix( bnu::matrix<FLOAT> );
+						virtual void						mult_matrix( bnu::matrix<float, bnu::column_major> );
 						/// scale
 						virtual void						scale( bnu::vector<FLOAT> );
 						/// look at

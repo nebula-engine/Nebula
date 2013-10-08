@@ -63,8 +63,11 @@ void	ncaa::rigid_actor::update()
 {
 	ncaa::actor::update();
 }
-void	ncaa::rigid_actor::step() {
-	
+void	ncaa::rigid_actor::step( float dt )
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
+
+	ncaa::actor::step( dt );
 }
 
 

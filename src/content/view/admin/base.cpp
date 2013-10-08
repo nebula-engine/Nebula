@@ -40,10 +40,16 @@ void	ncva::base::render()
 	rnd->begin_render();
 
 	camera_->render( rnd );
+
+	//rnd->push_matrix();
 	
 	rnd->light();
 	
 	parent_.lock()->render( rnd );
+
+	//camera_->render( rnd );
+	
+	//rnd->pop_matrix();
 	
 	rnd->end_render();
 

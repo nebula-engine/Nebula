@@ -31,7 +31,9 @@ void	ncaa::actor::render( jess::shared_ptr<npr::base>& rnd )
 }
 void	ncaa::actor::step( FLOAT dt )
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
 	
+	ncaa::base::step( dt );
 }
 
 

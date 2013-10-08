@@ -30,9 +30,11 @@ void	ncaa::rigid_body::render( jess::shared_ptr<npr::base> rnd )
 	
 	ncaa::rigid_actor::render( rnd );
 }
-void	ncaa::rigid_body::step(FLOAT) {
-	//jess::clog << NEB_FUNCSIG << std::endl;
-	
+void	ncaa::rigid_body::step( float dt )
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
+
+	ncaa::rigid_actor::step( dt );	
 }
 void	ncaa::rigid_body::create_shapes()
 {

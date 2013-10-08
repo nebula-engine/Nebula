@@ -45,7 +45,7 @@ namespace nebula
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step();
+					virtual	void								step( float );
 					
 					virtual void								render( jess::shared_ptr<npr::base> rnd );
 					
