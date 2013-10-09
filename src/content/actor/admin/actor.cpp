@@ -25,7 +25,7 @@ void	ncaa::actor::update( )
 {
 	ncaa::base::update();
 }
-void	ncaa::actor::render( jess::shared_ptr<npr::base>& rnd )
+void	ncaa::actor::render( jess::shared_ptr<npr::base> rnd )
 {
 	
 }

@@ -13,82 +13,77 @@
 
 namespace nebula
 {
-namespace content
-{
-	namespace physics
+	namespace content
 	{
-		/// physics for app
-		/*
-		* -custom functionality
-		*     -drag-lift
-		*
-		* -before buffer swap
-		*     -onTrigger
-		*     -onContact
-		*     -onConstraintBreak
-		* -after buffer swap
-		*     -onSleep
-		*     -onWake
-		* -callbacks that occur for all objects
-		*     -onConstraintBreak
-		*     -onSleep
-		*     -onWake
-		* -callbacks that only occur if filter shader callback flag is set
-		*     -onTrigger
-		*     -onContact
-		* 
-		* 
-		* 
-		* 
-		*/
-		class base
+		namespace physics
 		{
-		public:
-			///@name Constructors and Destructors
-			///@{
-			/// Constructor
-			base();
-			/// Destructor
-			~base();
-			///@}
+			/// physics for app
+			/*
+			 * -custom functionality
+			 *     -drag-lift
+			 *
+			 * -before buffer swap
+			 *     -onTrigger
+			 *     -onContact
+			 *     -onConstraintBreak
+			 * -after buffer swap
+			 *     -onSleep
+			 *     -onWake
+			 * -callbacks that occur for all objects
+			 *     -onConstraintBreak
+			 *     -onSleep
+			 *     -onWake
+			 * -callbacks that only occur if filter shader callback flag is set
+			 *     -onTrigger
+			 *     -onContact
+			 * 
+			 * 
+			 * 
+			 * 
+			 */
+			class base
+			{
+				public:
+					///@name Constructors and Destructors
+					///@{
+					/// Constructor
+					base();
+					/// Destructor
+					~base();
+					///@}
 
-			
-
-			///@name standard functions
-			///@{
-			/// initialize
-			virtual	void						init(const jess::shared_ptr<nebula::content::base>&);
-			/// shutdown
-			virtual	void						shutdown();
-			///@}
 
 
+					///@name standard functions
+					///@{
+					/// initialize
+					virtual	void						init( jess::shared_ptr<nebula::content::base> );
+					/// shutdown
+					virtual	void						shutdown();
+					///@}
 
-			
+					///@name Register objects
+					///@{
+					/// scene
+					virtual void						register_scene( jess::shared_ptr<nc_sc_a::base> );
+					/// controller
+					virtual	void						register_controller( jess::shared_ptr<ncaa::controller> );
+					/// rigid dynamic
+					virtual	void						register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic> );
+					///@}
 
 
-			///@name Register objects
-			///@{
-			/// %CO_SC_AD_Scene
-			virtual void						register_scene( const jess::shared_ptr<nc_sc_a::base>& );
-			/// %Controller
-			virtual	void						register_controller( const jess::shared_ptr<ncaa::controller>& );
-			/// rigid dynamic
-			virtual	void						register_rigid_dynamic( const jess::shared_ptr<ncaa::rigid_dynamic>& );
-			///@}
-			
-			
-			virtual void						add_actor( jess::shared_ptr<ncaa::base> );
+					virtual void						add_actor( jess::shared_ptr<ncaa::base> );
 
-		protected:
-			/// parent
-			std::weak_ptr<nebula::content::base>			parent_;
-			
-			
-			
-		};
+				//protected:
+					/// parent
+					std::weak_ptr<nebula::content::base>			parent_;
+
+
+
+			};
+		}
 	}
-}
 }
 
 #endif

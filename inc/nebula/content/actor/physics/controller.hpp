@@ -15,7 +15,7 @@ namespace nebula
 			{
 				/// controller
 				class controller:
-					public ncap::base
+					virtual public ncap::base
 				{
 				public:
 					///@name ctor and dtor
@@ -37,7 +37,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init( jess::shared_ptr<ncaa::base>& );
+					virtual	void								init( jess::shared_ptr<ncaa::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

@@ -35,7 +35,7 @@ void	nc_sc_pp::base::step(FLOAT dt)
 		//printf("transform.p.y=%16f\n",activeTransforms[i].actor2World.p.y);
 	}
 }
-void	nc_sc_pp::base::add_actor( jess::shared_ptr<ncaa::actor>& act )
+void	nc_sc_pp::base::add_actor( jess::shared_ptr<ncaa::actor> act )
 {
 	jess::shared_ptr<ncapp::actor> pp_act = std::dynamic_pointer_cast<ncapp::actor>( act->physics_ );
 	

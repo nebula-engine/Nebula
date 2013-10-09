@@ -17,7 +17,7 @@ namespace nebula
 			/// ctor
 			camera();
 			/// render
-			void									render( jess::shared_ptr<nebula::platform::renderer::base>& );
+			void									render( jess::shared_ptr<nebula::platform::renderer::base> );
 
 			/// controller
 			jess::shared_ptr<nebula::content::actor::admin::controller>		controller_;

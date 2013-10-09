@@ -27,7 +27,7 @@
 	return ::physx::PxFilterFlag::eDEFAULT;
 }
 
-void	ncpp::base::init( const jess::shared_ptr<nebula::content::base>& parent )
+void	ncpp::base::init( jess::shared_ptr<nebula::content::base> parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncp::base::init( parent );
@@ -62,7 +62,7 @@ void	ncpp::base::shutdown()
 	px_physics_->release();
 	px_foundation_->release();
 }
-void	ncpp::base::register_scene( jess::shared_ptr<nc_sc_a::base>& scn )
+void	ncpp::base::register_scene( jess::shared_ptr<nc_sc_a::base> scn )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -115,7 +115,7 @@ void	ncpp::base::register_scene( jess::shared_ptr<nc_sc_a::base>& scn )
 	jess::assertion( scene_physics->px_scene_ );
 	
 }
-void	ncpp::base::register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic>& act )
+void	ncpp::base::register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic> act )
 {
 	jess::shared_ptr<ncapp::rigid_dynamic> act_physics = std::dynamic_pointer_cast<ncapp::rigid_dynamic>( act->physics_ );
 	
@@ -128,7 +128,7 @@ void	ncpp::base::register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic>& 
 	// pass PxRigidDynamic to rigid_dynamic
 	act_physics->set_px_actor( px_act );
 }
-void	ncpp::base::register_controller( jess::shared_ptr<ncaa::controller>& act )
+void	ncpp::base::register_controller( jess::shared_ptr<ncaa::controller> act )
 {
 	// Get actor's physics object
 	jess::shared_ptr<ncapp::controller> act_phy = std::dynamic_pointer_cast<ncapp::controller>( act->physics_ );

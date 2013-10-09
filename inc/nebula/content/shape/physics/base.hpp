@@ -18,7 +18,7 @@ class base
 public:
 	base();
 	~base();
-	void							init(const jess::shared_ptr<nebula::content::shape::admin::base>&);
+	void							init( jess::shared_ptr<nebula::content::shape::admin::base> );
 	void							shutdown();
 };
 }

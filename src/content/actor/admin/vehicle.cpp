@@ -6,7 +6,8 @@
 }
     
 
-void	ncaa::vehicle::init( jess::shared_ptr<nc_sc_a::base>& parent ) {
+void	ncaa::vehicle::init( jess::shared_ptr<nc_sc_a::base> parent )
+{
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	ncaa::base::init( parent );
 }
@@ -18,7 +19,8 @@ void	ncaa::vehicle::update() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
-void	ncaa::vehicle::render( const jess::shared_ptr<npr::base>& rnd ) {
+void	ncaa::vehicle::render( jess::shared_ptr<npr::base> rnd )
+{
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }

@@ -25,7 +25,7 @@
 {
 
 }
-void	ncs::physics::physx::box::init(const jess::shared_ptr<ncs::admin::box>&)
+void	ncs::physics::physx::box::init( jess::shared_ptr<ncs::admin::box> )
 {
 	create_shape();
 }

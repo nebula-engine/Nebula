@@ -87,6 +87,8 @@ namespace nebula
 					
 					/// pose
 					bnu::matrix<FLOAT>							pose_;
+					/// velocity
+					bnu::vector<float>							velocity_;
 				};
 			}
 		}

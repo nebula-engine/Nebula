@@ -44,7 +44,9 @@ void	ncaa::controller::init( jess::shared_ptr<nc_sc_a::base> parent )
 	pitch_ = 0;
 	
 	pos_ = bnu::zero_vector<FLOAT>(3);
+	pos_(1) = 10.0;
 	pos_(2) = 2.0;
+	
 	
 	key_flag_[nebula::platform::key::w] = flag::eNORTH;
 	key_flag_[nebula::platform::key::s] = flag::eSOUTH;

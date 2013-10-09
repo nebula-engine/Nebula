@@ -5,10 +5,10 @@ namespace ncsp = ncs::physics;
 
 ncsp::base::base() {
 }
-ncsp::base::~base() {
-}
-	
-void	ncsp::base::init(const jess::shared_ptr<ncs::admin::base>&)
+ncsp::base::~base()
+{
+}	
+void	ncsp::base::init( jess::shared_ptr<ncs::admin::base> )
 {
 	
 }

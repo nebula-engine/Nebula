@@ -8,7 +8,7 @@ nca::physics::actor::actor()
 nca::physics::actor::~actor()
 {
 }
-void	nca::physics::actor::init( jess::shared_ptr<nca::admin::base>& parent )
+void	nca::physics::actor::init( jess::shared_ptr<nca::admin::base> parent )
 {
 	nca::physics::base::init( parent );
 }

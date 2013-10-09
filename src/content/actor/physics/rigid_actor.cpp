@@ -15,7 +15,7 @@ ncap::rigid_actor&	ncap::rigid_actor::operator=( const ncap::rigid_actor& act )
 {
 	return *this;
 }
-void	ncap::rigid_actor::init( jess::shared_ptr<nca::admin::base>& parent )
+void	ncap::rigid_actor::init( jess::shared_ptr<nca::admin::base> parent )
 {
 	ncap::actor::init( parent );
 }
@@ -31,7 +31,7 @@ void	ncap::rigid_actor::step(FLOAT dt)
 {
 	
 }
-void	ncap::rigid_actor::render( const jess::shared_ptr<npr::base>& rnd )
+void	ncap::rigid_actor::render( jess::shared_ptr<npr::base> rnd )
 {
 
 }

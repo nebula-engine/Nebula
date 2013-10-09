@@ -37,15 +37,15 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const jess::shared_ptr<ncaa::base>&);
+					virtual	void								init( jess::shared_ptr<ncaa::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step(FLOAT);
+					virtual	void								step( float );
 					/// render
-					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 				
 				
 				

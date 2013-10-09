@@ -76,6 +76,10 @@ void	nf::app::init()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;//.funcsig();//jess::clog << NEB_FUNCSIG << std::endl;
+
+	// make sure content_ and platform_ are null before reseting them
+	jess::assertion( !( content_ || platform_ ) );
+	
 	
 	content_.reset( new nc::base );
 	content_->init( shared_from_this() );

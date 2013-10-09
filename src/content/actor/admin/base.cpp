@@ -12,6 +12,7 @@ ncaa::base::base()
 	
 	
 	pose_ = bnu::identity_matrix<float>( 4, 4 );
+	velocity_ = bnu::zero_vector<float>( 3 );
 }
 ncaa::base::~base()
 {

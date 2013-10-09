@@ -31,13 +31,14 @@ namespace nebula
 						virtual ~base();
 						base(const base&);
 						base&									operator=(const base&);
-						void									init( jess::shared_ptr<nc_sc_a::base>& );
+						/// init
+						void									init( jess::shared_ptr<nc_sc_a::base> );
 						void									shutdown();
 						void									step(FLOAT);
-
-
+						
+						
 						void									customize_scene_desc( ::physx::PxSceneDesc& );
-						void									add_actor( jess::shared_ptr<ncaa::actor>& act );
+						void									add_actor( jess::shared_ptr<ncaa::actor> act );
 						
 						
 						::physx::PxScene*							get_px_scene();

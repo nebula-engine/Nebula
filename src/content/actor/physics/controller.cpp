@@ -12,25 +12,30 @@
 #include <nebula/content/actor/admin/controller.hpp>
 #include <nebula/content/actor/physics/controller.hpp>
 
-namespace bnu = boost::numeric::ublas;
-namespace nca = nebula::content::actor;
-
 nca::physics::controller::controller()
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 }
 nca::physics::controller::~controller()
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 }
-void	nca::physics::controller::init( jess::shared_ptr<ncaa::base>& parent )
+void	nca::physics::controller::init( jess::shared_ptr<ncaa::base> parent )
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
 	ncap::base::init( parent );
 }
 void	nca::physics::controller::shutdown()
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
 void	nca::physics::controller::update()
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
 void	nca::physics::controller::step(FLOAT dt)
@@ -46,6 +51,30 @@ void	nca::physics::controller::step(FLOAT dt)
 	jess::clog << "move_=" << parent->move_ << std::endl;
 	
 	parent->pos_ += parent->move_ * dt;
+
+	jess::assertion( parent->velocity_.size() == 3 );
+
+	// gravity for a flat world
+	float y_eye = 1.0;
+	float v = parent->velocity_(1);
+	float y = parent->pos_(1) - y_eye;
+	
+	if( y > 0 )
+	{
+		v -= 9.81 * dt;
+		
+		y += v * dt;
+	
+		if( y <= 0 )
+		{
+			y = 0;
+			v = 0;
+		}
+	}
+	
+	parent->velocity_(1) = v;
+	parent->pos_(1) = y + y_eye;
+
 }
 void	nca::physics::controller::update_move()
 {
@@ -54,6 +83,7 @@ void	nca::physics::controller::update_move()
 
 	jess::shared_ptr<ncaa::controller> parent = std::dynamic_pointer_cast<nca::admin::controller>(parent_.lock());
 
+	
 
 	/** \todo
 	 * add gravity

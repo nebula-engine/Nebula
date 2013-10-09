@@ -37,7 +37,7 @@ namespace nebula
 					/// Destructor
 					~base() {};
 					/// initialize
-					void								init(const jess::shared_ptr<nebula::content::base>&);
+					void								init( jess::shared_ptr<nebula::content::base> );
 					/// shutdown
 					void								shutdown();
 					
@@ -46,11 +46,11 @@ namespace nebula
 					///@name Register Objects
 					///@{
 					/// %CO_SC_AD_Scene
-					virtual void							register_scene( jess::shared_ptr<nc_sc_a::base>&);
+					virtual void							register_scene( jess::shared_ptr<nc_sc_a::base> );
 					/// %RigidDynamic
-					virtual void							register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic>& );
+					virtual void							register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic> );
 					/// %Controller
-					virtual void							register_controller( jess::shared_ptr<ncaa::controller>& );
+					virtual void							register_controller( jess::shared_ptr<ncaa::controller> );
 					///@}
 					
 					

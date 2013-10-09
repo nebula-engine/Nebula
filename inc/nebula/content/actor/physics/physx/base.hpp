@@ -6,6 +6,8 @@
 #include <nebula/utilities/types/platform/types.hpp>
 #include <nebula/utilities/types/content/actor/types.hpp>
 
+#include <nebula/content/actor/physics/base.hpp>
+
 namespace nebula
 {
 	namespace content
@@ -17,7 +19,8 @@ namespace nebula
 				namespace physx
 				{
 					/// rigid dynamic
-					class base
+					class base:
+						virtual public ncap::base
 					{
 						public:
 							///@name ctor and dtor
@@ -39,7 +42,7 @@ namespace nebula
 
 
 							/// init
-							virtual	void								init(const jess::shared_ptr<nebula::content::actor::admin::base>&);
+							virtual	void								init( jess::shared_ptr<nebula::content::actor::admin::base> );
 							/// shutdown
 							virtual	void								shutdown();
 							/// update
@@ -47,7 +50,7 @@ namespace nebula
 							/// step
 							virtual	void								step(FLOAT);
 							/// render
-							virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
+							virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 
 
 

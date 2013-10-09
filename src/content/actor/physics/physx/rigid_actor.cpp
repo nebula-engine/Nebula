@@ -9,7 +9,7 @@
 
 #include <nebula/ns.hpp>
 
-void	ncapp::rigid_actor::init( jess::shared_ptr<ncaa::base>& parent )
+void	ncapp::rigid_actor::init( jess::shared_ptr<ncaa::base> parent )
 {
 	parent_ = parent;
 

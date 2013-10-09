@@ -4,6 +4,7 @@
 
 #include <nebula/utilities/types/content/scene/types.hpp>
 #include <nebula/utilities/types/platform/types.hpp>
+
 #include <nebula/content/actor/physics/actor.hpp>
 
 
@@ -39,7 +40,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init( jess::shared_ptr<nebula::content::actor::admin::base>& );
+					virtual	void								init( jess::shared_ptr<nebula::content::actor::admin::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -47,7 +48,7 @@ namespace nebula
 					/// step
 					virtual	void								step(FLOAT);
 					/// render
-					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>& );
+					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 				
 				
 				

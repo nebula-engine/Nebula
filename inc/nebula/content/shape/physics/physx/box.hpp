@@ -20,7 +20,7 @@ namespace nebula
 					public:
 						box();
 						~box();
-						void							init(const jess::shared_ptr<ncs::admin::box>&);
+						void							init( jess::shared_ptr<ncs::admin::box> );
 						void							shutdown();
 						void							create_shape();
 						

@@ -24,11 +24,11 @@ namespace nebula
 					virtual ~base();
 					base(const base&);
 					base&						operator=(const base&);
-					virtual void					init(const jess::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual void					init( jess::shared_ptr<nebula::content::scene::admin::base> );
 					virtual void					shutdown();
 					virtual void					update();
 					virtual void					step(FLOAT);
-					virtual void					render(const jess::shared_ptr<nebula::platform::renderer::base>&);
+					virtual void					render( jess::shared_ptr<nebula::platform::renderer::base> );
 					
 					
 					virtual void					register_actor( jess::shared_ptr<ncaa::actor> );

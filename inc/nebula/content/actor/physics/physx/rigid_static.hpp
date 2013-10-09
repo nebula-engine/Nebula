@@ -14,39 +14,39 @@ namespace nebula
 		{
 			namespace physics
 			{
-			namespace physx
-			{
-				/// rigid static
-				class rigid_static:
-					virtual public ncap::rigid_static,
-					virtual public ncapp::rigid_actor
+				namespace physx
 				{
-				public:
-					/// ctor
-					rigid_static();
-					/// dtor
-					~rigid_static();
+					/// rigid static
+					class rigid_static:
+						virtual public ncap::rigid_static,
+						virtual public ncapp::rigid_actor
+					{
+						public:
+							/// ctor
+							rigid_static();
+							/// dtor
+							~rigid_static();
 
-					/// Initialize
-					virtual	void						init( jess::shared_ptr<ncaa::base>& );
-					/// ShutDown
-					virtual	void						shutdown();
-					/// Update
-					virtual	void						update();
-					/// Render
-					virtual	void						render(const jess::shared_ptr<nebula::platform::renderer::base>&);
-					/// Step
-					virtual	void						step(FLOAT dt);
-					
+							/// Initialize
+							virtual	void						init( jess::shared_ptr<ncaa::base> );
+							/// ShutDown
+							virtual	void						shutdown();
+							/// Update
+							virtual	void						update();
+							/// Render
+							virtual	void						render( jess::shared_ptr<nebula::platform::renderer::base> );
+							/// Step
+							virtual	void						step( FLOAT dt );
 
 
 
-					/// Create Shapes
-					virtual	void						create_shape();
+
+							/// Create Shapes
+							virtual	void						create_shape();
 
 
-				};
-			}
+					};
+				}
 			}
 		}
 	}

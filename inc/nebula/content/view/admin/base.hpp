@@ -24,7 +24,7 @@ namespace nebula
 					/// dtor
 					virtual ~base();
 					/// init
-					virtual void					init( jess::shared_ptr<nc_sc_a::base>& );
+					virtual void					init( jess::shared_ptr<nc_sc_a::base> );
 					/// shutdown
 					virtual void					shutdown();
 					/// update

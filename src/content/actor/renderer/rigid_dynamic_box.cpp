@@ -22,7 +22,7 @@ ncar::rigid_dynamic_box&	ncar::rigid_dynamic_box::operator=( const ncar::rigid_d
 {
 	return *this;
 }
-void				ncar::rigid_dynamic_box::init( const jess::shared_ptr<ncaa::base>& parent )
+void				ncar::rigid_dynamic_box::init( jess::shared_ptr<ncaa::base> parent )
 {
 	
 }
@@ -34,7 +34,7 @@ void				ncar::rigid_dynamic_box::update()
 {
 	
 }
-void				ncar::rigid_dynamic_box::render( const jess::shared_ptr<npr::base>& rnd )
+void				ncar::rigid_dynamic_box::render( jess::shared_ptr<npr::base> rnd )
 {
 	
 }

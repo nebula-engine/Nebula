@@ -35,22 +35,22 @@ namespace nebula
 				///@name Initialization and ShutDown
 				///{
 				/// initialize
-				virtual	void				init( const jess::shared_ptr<nebula::platform::platform::base>& );
+				virtual	void					init( jess::shared_ptr<nebula::platform::platform::base> );
 				/// shutdown
-				virtual	void				shutdown();
+				virtual	void					shutdown();
 				/// update
-				virtual void				update();
+				virtual void					update();
 				///}
 				
-				virtual int				lookup_key( int );
+				virtual int					lookup_key( int );
 				
-				std::weak_ptr<npp::base>		parent_;
+				std::weak_ptr<npp::base>			parent_;
 				
-				int							no_;
-				bool							m_hasFocus;
+				int						no_;
+				bool						m_hasFocus;
 
 				
-				std::map<int,int>					keys_;
+				std::map<int,int>				keys_;
 
 				///@name boost signals
 				///@{
@@ -63,11 +63,11 @@ namespace nebula
 				///@}
 			//protected:
 				/// focus
-				bool					has_focus_;
+				bool						has_focus_;
 				/// x
-				int					center_x_;
+				int						center_x_;
 				/// y
-				int					center_y_;
+				int						center_y_;
 			
 
 				jess::shared_ptr<npr::base>			renderer_;

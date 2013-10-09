@@ -1,11 +1,8 @@
-#ifndef __NEBULA_CONTENT_ACTOR_ADMIN_rigid_static_plane_HPP__
-#define __NEBULA_CONTENT_ACTOR_ADMIN_rigid_static_plane_HPP__
+#ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_RIGID_STATIC_PLANE_HPP__
+#define __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_RIGID_STATIC_PLANE_HPP__
 
-
-
-#include <nebula/content/actor/admin/rigid_static_plane.h>
-
-
+#include <nebula/content/actor/physics/rigid_static_plane.hpp>
+#include <nebula/content/actor/physics/physx/rigid_static.hpp>
 
 namespace nebula
 {
@@ -13,54 +10,57 @@ namespace nebula
 	{
 		namespace actor
 		{
-			namespace admin
+			namespace physics
 			{
-				/// rigid dynamic
-				class rigid_static_plane:
-					public nebula::content::actor::admin::rigid_static
+				namespace physx
 				{
-				public:
-					///@name ctor and dtor
-					///@{
-					// Ctor
-					rigid_static_plane();
-					/// Copy Ctor
-					rigid_static_plane(const rigid_static_plane&);
-					/// Dtor
-					~rigid_static_plane();
-					///@}
+					/// rigid dynamic
+					class rigid_static_plane:
+						virtual public ncap::rigid_static_plane,
+						virtual public ncapp::rigid_static
+					{
+						public:
+							///@name ctor and dtor
+							///@{
+							// Ctor
+							rigid_static_plane();
+							/// Copy Ctor
+							rigid_static_plane(const rigid_static_plane&);
+							/// Dtor
+							~rigid_static_plane();
+							///@}
 
-					///@name operator
-					///@{
-					/// assignment
-					rigid_static_plane&							operator=(const rigid_static_plane&);
-					///@}
+							///@name operator
+							///@{
+							/// assignment
+							rigid_static_plane&							operator=(const rigid_static_plane&);
+							///@}
 
-				
 
-					/// init
-					virtual	void								init(const jess::shared_ptr<nebula::content::scene::admin::base>&);
-					/// shutdown
-					virtual	void								shutdown();
-					/// update
-					virtual	void								update();
-					/// step
-					virtual	void								step();
-					/// render
-					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
-				
-				
-				
-				
-					/// create shapes
-					virtual	void								create_shape();
 
-				};
+							/// init
+							virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base> );
+							/// shutdown
+							virtual	void								shutdown();
+							/// update
+							virtual	void								update();
+							/// step
+							virtual	void								step();
+							/// render
+							virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
+
+
+
+
+							/// create shapes
+							virtual	void								create_shape();
+
+					};
+				}
 			}
 		}
 	}
 }
-
 
 #endif
 

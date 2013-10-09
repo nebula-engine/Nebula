@@ -7,56 +7,57 @@
 
 namespace nebula
 {
-namespace content
-{
-	namespace actor
+	namespace content
 	{
-		namespace renderer
+		namespace actor
 		{
-			/// rigid dynamic
-			class rigid_dynamic:
-				public ncar::rigid_body
+			namespace renderer
 			{
-			public:
-				///@name ctor and dtor
-				///@{
-				// Ctor
-				rigid_dynamic();
-				/// Copy Ctor
-				rigid_dynamic(const rigid_dynamic&);
-				/// Dtor
-				~rigid_dynamic();
-				///@}
+				/// rigid dynamic
+				class rigid_dynamic:
+					public ncar::rigid_body
+				{
+					public:
+						///@name ctor and dtor
+						///@{
+						// Ctor
+						rigid_dynamic();
+						/// Copy Ctor
+						rigid_dynamic(const rigid_dynamic&);
+						/// Dtor
+						~rigid_dynamic();
+						///@}
 
-				///@name operator
-				///@{
-				/// assignment
-				rigid_dynamic&								operator=(const rigid_dynamic&);
-				///@}
+						///@name operator
+						///@{
+						/// assignment
+						rigid_dynamic&								operator=(const rigid_dynamic&);
+						///@}
 
-				
 
-				/// init
-				virtual	void								init(const jess::shared_ptr<ncaa::base>&);
-				/// shutdown
-				virtual	void								shutdown();
-				/// update
-				virtual	void								update();
-				/// step
-				virtual	void								step(FLOAT);
-				/// render
-				virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
-				
-				
-				
-				
-				/// create shapes
-				virtual	void								create_shapes();
-			};
-		};
-	};
-};
+
+						/// init
+						virtual	void								init( jess::shared_ptr<ncaa::base> );
+						/// shutdown
+						virtual	void								shutdown();
+						/// update
+						virtual	void								update();
+						/// step
+						virtual	void								step(FLOAT);
+						/// render
+						virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
+
+
+
+
+						/// create shapes
+						virtual	void								create_shapes();
+				};
+			}
+		}
+	}
 }
+
 #endif
 
 

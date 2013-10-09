@@ -1,11 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_RENDERER_rigid_static_plane_HPP__
 #define __NEBULA_CONTENT_ACTOR_RENDERER_rigid_static_plane_HPP__
 
-
-
-#include <nebula/content/actor/admin/rigid_static_plane.hpp>
-
-
+#include <nebula/content/actor/renderer/rigid_static.hpp>
 
 namespace nebula
 {
@@ -17,7 +13,7 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class rigid_static_plane:
-					public nebula::content::actor::admin::rigid_static
+					public ncar::rigid_static
 				{
 				public:
 					///@name ctor and dtor
@@ -39,7 +35,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init(const jess::shared_ptr<ncaa::base>&);
+					virtual	void								init( jess::shared_ptr<ncaa::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -47,7 +43,7 @@ namespace nebula
 					/// step
 					virtual	void								step();
 					/// render
-					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 				
 				
 				

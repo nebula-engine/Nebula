@@ -11,7 +11,7 @@ namespace ncs = nebula::content::shape;
 {
 
 }
-void	ncs::physics::physx::base::init(const jess::shared_ptr<ncs::admin::base>&)
+void	ncs::physics::physx::base::init( jess::shared_ptr<ncs::admin::base> )
 {
 	
 }

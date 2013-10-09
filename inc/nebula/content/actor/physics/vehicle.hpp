@@ -3,7 +3,7 @@
 
 
 
-#include <nebula/content/actor/admin/base.h>
+#include <nebula/content/actor/physics/base.hpp>
 
 namespace nebula
 {
@@ -11,11 +11,11 @@ namespace nebula
 	{
 		namespace actor
 		{
-			namespace admin
+			namespace physics
 			{
 				/// rigid dynamic
 				class vehicle:
-					public nebula::content::actor::admin::base
+					public ncap::base
 				{
 				public:
 					///@name ctor and dtor
@@ -37,7 +37,7 @@ namespace nebula
 					
 
 					/// init
-					virtual	void								init(const jess::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init( jess::shared_ptr<ncaa::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -45,7 +45,7 @@ namespace nebula
 					/// step
 					virtual	void								step();
 					/// render
-					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 				
 				
 				

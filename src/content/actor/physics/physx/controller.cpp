@@ -4,11 +4,12 @@
 
 #include <nebula/content/physics/physx/free.hpp>
 #include <nebula/content/actor/admin/controller.hpp>
+
 #include <nebula/content/actor/physics/physx/controller.hpp>
 
 #include <nebula/ns.hpp>
 
-void	ncapp::controller::step(FLOAT dt)
+void	ncapp::controller::step( FLOAT dt )
 {
 	jess::shared_ptr<nca::admin::controller> parent = std::dynamic_pointer_cast<nca::admin::controller>( parent_.lock() );
 	

@@ -28,7 +28,7 @@ ncar::base&	ncar::base::operator=( const ncar::base& act )
 
 	return *this;
 }
-void	ncar::base::init(const jess::shared_ptr<ncaa::base>& parent)
+void	ncar::base::init( jess::shared_ptr<ncaa::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -47,7 +47,7 @@ void	ncar::base::update()
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	ncar::base::render(const jess::shared_ptr<npr::base>& rnd )
+void	ncar::base::render( jess::shared_ptr<npr::base> rnd )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;

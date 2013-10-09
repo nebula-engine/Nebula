@@ -16,7 +16,7 @@ ncva::base::~base()
 {
 
 }
-void	ncva::base::init( jess::shared_ptr<nc_sc_a::base>& parent )
+void	ncva::base::init( jess::shared_ptr<nc_sc_a::base> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	

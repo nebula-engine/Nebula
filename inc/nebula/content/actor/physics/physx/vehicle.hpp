@@ -1,9 +1,10 @@
-#ifndef __NEBULA_CONTENT_ACTOR_ADMIN_VEHICLE_HPP__
-#define __NEBULA_CONTENT_ACTOR_ADMIN_VEHICLE_HPP__
+#ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_VEHICLE_HPP__
+#define __NEBULA_CONTENT_ACTOR_PHYSICS_PHYSX_VEHICLE_HPP__
 
 #include <jess/shared_ptr.hpp>
 
-#include <nebula/content/actor/admin/base.hpp>
+#include <nebula/content/actor/physics/vehicle.hpp>
+#include <nebula/content/actor/physics/physx/base.hpp>
 
 namespace nebula
 {
@@ -11,11 +12,14 @@ namespace nebula
 	{
 		namespace actor
 		{
-			namespace admin
+			namespace physics
 			{
+namespace physx
+{
 				/// rigid dynamic
 				class vehicle:
-					public nebula::content::actor::admin::base
+					virtual public ncap::vehicle,
+					virtual public ncapp::base
 				{
 				public:
 					///@name ctor and dtor
@@ -37,7 +41,7 @@ namespace nebula
 					
 
 					/// init
-					virtual	void								init(const jess::shared_ptr<nebula::content::scene::admin::base>&);
+					virtual	void								init( jess::shared_ptr<ncaa::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -45,7 +49,7 @@ namespace nebula
 					/// step
 					virtual	void								step();
 					/// render
-					virtual	void								render(const jess::shared_ptr<nebula::platform::renderer::base>&);
+					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 				
 				
 				
@@ -54,7 +58,7 @@ namespace nebula
 		}
 	}
 }
-
+}
 
 #endif
 
