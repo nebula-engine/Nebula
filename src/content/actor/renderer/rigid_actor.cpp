@@ -29,7 +29,7 @@ void	ncar::rigid_actor::render( jess::shared_ptr<npr::base> rnd )
 {
 	jess::shared_ptr<ncaa::rigid_actor> parent = std::dynamic_pointer_cast<ncaa::rigid_actor>( parent_.lock() );
 
-	jess::assertion( parent );
+	jess::assertion( bool( parent ) );
 
 	parent->shapes_.foreach( std::bind( &ncsa::base::render, std::placeholders::_1, rnd ) );
 }

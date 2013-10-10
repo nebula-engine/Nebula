@@ -180,7 +180,7 @@ jess::shared_ptr<ncaa::controller>		nc_sc_a::base::create_controller()
 	jess::shared_ptr<nc::base> cont = get_content();
 
 	jess::shared_ptr<ncp::base> cont_phys = cont->physics_;
-	jess::assertion( cont_phys );
+	jess::assertion( bool( cont_phys ) );
 	jess::assertion( !cont_phys->parent_.expired() );
 	
 	//ncp::base test = *cont_phys;

@@ -79,10 +79,10 @@ void	nprgg::base::shutdown()
 void	nprgg::base::draw_text( int x, int y, std::string str )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-	jess::clog << x << " " << y << " " << str << std::endl;
+	jess::clog << x << " " << y << " " << str << " " << font_base_ << std::endl;
 	
 	GLfloat white[3] = { 1.0, 1.0, 1.0 };
-	GLfloat colr[3] = { 0.3, 0.25, 0.25 };
+	GLfloat colr[3] = { 0.7, 0.25, 0.0 };
 	
 	//glDisable(GL_LIGHTING);
 	
@@ -101,12 +101,15 @@ void	nprgg::base::draw_text( int x, int y, std::string str )
 	glColor3fv(white);
 	
 	glRasterPos2i( x, y );
+	//glVertex2i( x, y );
 
-	glListBase( font_base_ );
+	glPushAttrib( GL_LIST_BIT );
 
-	glCallLists( strlen( str.c_str() ), GL_UNSIGNED_BYTE, (unsigned char *)(str.c_str()));
+	glListBase( font_base_ ); GetGLError();
 
+	glCallLists( strlen( str.c_str() ), GL_UNSIGNED_BYTE, (unsigned char *)(str.c_str())); GetGLError();
 
+	glPopAttrib();
 
 
 	//glEnable(GL_LIGHTING);
@@ -169,9 +172,6 @@ void	nprgg::base::light()
 {
 	nprg::base::light();
 }
-
-
-//	double eyeX, double eyeY,double eyeZ,double centerX,double centerY,double centerZ,double upX,double upY,double upZ
 void	nprgg::base::init_raster_font()
 {
 	::Display* dpy = m_xdisplay;
@@ -183,8 +183,21 @@ void	nprgg::base::init_raster_font()
 	unsigned int first, last;
 
 	// list fonts
+
+
+
+
+
+
+
+
+
+
+
+
+
 	int fonts_count = 0;
-	char** fonts = XListFonts( dpy, "*", 300, &fonts_count );
+	char** fonts = XListFonts( dpy, "*bitstream*", 500, &fonts_count );
 
 	for( int i = 0; i < fonts_count; i++ )
 	{
@@ -196,37 +209,59 @@ void	nprgg::base::init_raster_font()
 
 		if( fontInfo == 0 )
 		{
-			jess::clog << "failed";
-
-				//exit (0);
+			jess::clog << "failed" << std::endl;
 		}
 		else
 		{
-			jess::clog << "success!";
-				break;
-
+			jess::clog << "success!" << std::endl;
 		}
+	}
+	XFreeFontNames( fonts );
+	
+	// select font
+	fonts = XListFonts( dpy, "*courier*", 300, &fonts_count );
 
+	for( int i = 0; i < fonts_count; i++ )
+	{
+		jess::clog << fonts[i] << "... ";
+
+
+		fontInfo = XLoadQueryFont( dpy, fonts[i] );
+		//fontInfo = XLoadQueryFont(dpy, "-adobe-times-medium-r-normal--17-120-100-100-p-88-iso8859-1");
+
+		if( fontInfo == 0 )
+		{
+			jess::clog << "failed" << std::endl;
+		}
+		else
+		{
+			jess::clog << "success!" << std::endl;
+			break;
+		}
 	}
 	XFreeFontNames( fonts );
 
+
+
+
+
+	
 	if( fontInfo == 0 )
 	{
 		jess::clog << "no font found" << std::endl;
 		exit(0);
 	}
-
-
-
-
-
+	
+	
 	id = fontInfo->fid;
 
 	first = fontInfo->min_char_or_byte2;
 
 	last = fontInfo->max_char_or_byte2;
 
-	font_base_ = glGenLists(last+1);
+	font_base_ = glGenLists(last+1); GetGLError();
+
+	jess::clog << "Font " << id << " " << first << " " << last << " " << font_base_ << std::endl;
 
 	if ( font_base_  == 0 )
 	{

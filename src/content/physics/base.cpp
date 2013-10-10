@@ -14,7 +14,7 @@ void	ncp::base::init( jess::shared_ptr<nebula::content::base> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	jess::assertion( parent );
+	jess::assertion( bool( parent ) );
 
 	parent_ = parent;
 }

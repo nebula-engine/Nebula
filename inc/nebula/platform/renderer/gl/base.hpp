@@ -15,6 +15,8 @@
 
 #include <nebula/ns.hpp>
 
+void	GetGLError();
+
 namespace nebula
 {
 	namespace platform

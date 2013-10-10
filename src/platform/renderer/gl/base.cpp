@@ -14,7 +14,7 @@ void GetGLError()
 	{
 		//GLubyte* byte = gluErrorString(	error );
 		printf("%s\n", gluErrorString( error ) );
-		throw jess::except( "opengl error 10" );
+		throw jess::except( "opengl error");// 10" );
 	}
 }
 void GetGLError( GLenum error )
@@ -59,7 +59,10 @@ void	nprg::base::init( jess::shared_ptr<npw::base> parent )
 
 
 
-	glEnable( GL_DEPTH_TEST | GL_NORMALIZE | GL_LIGHTING );
+	glEnable( GL_DEPTH_TEST );
+	glEnable( GL_NORMALIZE );
+	glEnable( GL_LIGHTING );
+	
 
 	glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, 1);
 
@@ -86,7 +89,6 @@ void	nprg::base::draw_cube()
 	glMaterialfv( GL_FRONT, GL_SHININESS, shininess );
 
 	glBegin(GL_QUADS);
-
 
 	glNormal3f(  0.0,  0.0,  1.0 );
 	glVertex3f( -0.5, -0.5,  0.5 );
@@ -229,14 +231,17 @@ void	nprg::base::draw_quad()
 void	nprg::base::begin_render()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+	glClear( GL_COLOR_BUFFER_BIT );
+	glClear( GL_DEPTH_BUFFER_BIT );
 
 	
 	
 }
 void	nprg::base::begin_3d()
 {
-	glEnable( GL_CULL_FACE | GL_LIGHTING );
+	//glEnable( GL_CULL_FACE );
+	glEnable( GL_LIGHTING );
+	glEnable( GL_DEPTH_TEST );
 
 	glMatrixMode( GL_MODELVIEW );
 	glPushMatrix();
