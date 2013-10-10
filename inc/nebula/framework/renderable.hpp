@@ -12,18 +12,25 @@ namespace nebula
 		/// renderable
 		class renderable
 		{
-		public:
-			/// ctor
-			renderable();
-			/// dtor
-			~renderable();
-			/// render
-			virtual void					render() = 0;
-			///@name sideways
-			///{
-			/// renderer
-			jess::shared_ptr<npr::base>			renderer_;
-			///}
+			public:
+				/// ctor
+				renderable();
+				/// dtor
+				~renderable();
+				/// render
+				virtual void					render() = 0;
+				///@name references
+				///{
+				/// renderer
+				jess::shared_ptr<npr::base>			renderer_;
+				///}
+			private:
+				/// count
+				int	count_;
+				/// interval
+				float	interval_;
+				/// fps
+				float	fps_;
 		};
 	}
 }

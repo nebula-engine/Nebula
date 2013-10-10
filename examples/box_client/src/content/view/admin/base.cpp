@@ -29,7 +29,7 @@ void	bc33100::base::init( jess::shared_ptr<nc_sc_a::base> parent )
 	layout_->init();
 	
 	// camera
-	create_camera();
+	camera_.reset( new n30000::camera );
 	camera_->controller_ = bc_parent->ctrlr_;
 
 	// set signal handlers

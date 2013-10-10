@@ -41,15 +41,6 @@ void	ncva::base::render()
 
 	
 	rnd->begin_render();
-
-
-
-
-
-
-
-
-
 	rnd->begin_3d();
 	
 	camera_->render( rnd );
@@ -60,10 +51,6 @@ void	ncva::base::render()
 	parent_.lock()->render( rnd );
 
 	rnd->end_3d();
-
-
-
-
 	rnd->begin_2d();
 
 	if( layout_ )
@@ -73,12 +60,6 @@ void	ncva::base::render()
 
 	
 	rnd->end_2d();
-
-
-
-
-
-
 	rnd->end_render();
 
 }

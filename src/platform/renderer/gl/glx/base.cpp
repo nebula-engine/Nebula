@@ -79,29 +79,12 @@ void	nprgg::base::shutdown()
 void	nprgg::base::draw_text( int x, int y, std::string str )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-	jess::clog << x << " " << y << " " << str << " " << font_base_ << std::endl;
+	//jess::clog << x << " " << y << " " << str << " " << font_base_ << std::endl;
 	
 	GLfloat white[3] = { 1.0, 1.0, 1.0 };
-	GLfloat colr[3] = { 0.7, 0.25, 0.0 };
-	
-	//glDisable(GL_LIGHTING);
-	
-	glColor3fv(colr);
-	
-	glBegin( GL_QUADS );
-	glVertex2i( x,     y+100 );
-	glVertex2i( x+100, y+100 );
-	glVertex2i( x+100, y+200 );
-	glVertex2i( x,     y+200 );
-	glEnd();
-	
-	
-	
-	
 	glColor3fv(white);
 	
 	glRasterPos2i( x, y );
-	//glVertex2i( x, y );
 
 	glPushAttrib( GL_LIST_BIT );
 
@@ -110,11 +93,6 @@ void	nprgg::base::draw_text( int x, int y, std::string str )
 	glCallLists( strlen( str.c_str() ), GL_UNSIGNED_BYTE, (unsigned char *)(str.c_str())); GetGLError();
 
 	glPopAttrib();
-
-
-	//glEnable(GL_LIGHTING);
-
-
 }
 void	nprgg::base::viewport( int a, int b, int c, int d )
 {
@@ -183,21 +161,8 @@ void	nprgg::base::init_raster_font()
 	unsigned int first, last;
 
 	// list fonts
-
-
-
-
-
-
-
-
-
-
-
-
-
 	int fonts_count = 0;
-	char** fonts = XListFonts( dpy, "*bitstream*", 500, &fonts_count );
+	char** fonts = XListFonts( dpy, "*normal--20-*", 500, &fonts_count );
 
 	for( int i = 0; i < fonts_count; i++ )
 	{
@@ -219,7 +184,7 @@ void	nprgg::base::init_raster_font()
 	XFreeFontNames( fonts );
 	
 	// select font
-	fonts = XListFonts( dpy, "*courier*", 300, &fonts_count );
+	fonts = XListFonts( dpy, "*normal--20-*", 300, &fonts_count );
 
 	for( int i = 0; i < fonts_count; i++ )
 	{
@@ -240,11 +205,6 @@ void	nprgg::base::init_raster_font()
 		}
 	}
 	XFreeFontNames( fonts );
-
-
-
-
-
 	
 	if( fontInfo == 0 )
 	{
