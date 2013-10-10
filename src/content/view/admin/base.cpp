@@ -6,6 +6,8 @@
 #include <nebula/platform/renderer/base.hpp>
 #include <nebula/content/camera.hpp>
 #include <nebula/content/scene/admin/base.hpp>
+#include <nebula/ui/layout/base.hpp>
+
 #include <nebula/content/view/admin/base.hpp>
 
 ncva::base::base()
@@ -32,25 +34,51 @@ void	ncva::base::update()
 }
 void	ncva::base::render()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	jess::shared_ptr<npr::base> rnd = window_->renderer_;
+
+
 	
 	rnd->begin_render();
 
+
+
+
+
+
+
+
+
+	rnd->begin_3d();
+	
 	camera_->render( rnd );
 
-	//rnd->push_matrix();
-	
 	rnd->light();
 	
+	// scene
 	parent_.lock()->render( rnd );
 
-	//camera_->render( rnd );
+	rnd->end_3d();
+
+
+
+
+	rnd->begin_2d();
+
+	if( layout_ )
+	{
+		layout_->render( rnd );
+	}
+
 	
-	//rnd->pop_matrix();
-	
+	rnd->end_2d();
+
+
+
+
+
+
 	rnd->end_render();
 
 }

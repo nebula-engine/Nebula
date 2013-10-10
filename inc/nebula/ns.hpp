@@ -3,52 +3,117 @@
 
 #include <boost/numeric/ublas/matrix.hpp>
 
+/// %nebula
 namespace nebula
 {
+	/// asio
+	/**
+	 * asynchronous in/out using boost::asio
+	 */
 	namespace asio
 	{
-		namespace network {}
+		class message;
+		class mailbox;
+		class destination;
+
+		/// network
+		namespace network
+		{
+			class base;
+		}
 	}
 
-	namespace framework {}
+	/// framework
+	/**
+	 * Contains the application class.
+	 */
+	namespace framework
+	{
+		class app;
+		class renderable;
+	}
 
 	namespace platform
 	{
+		class key;
+
 		namespace platform
 		{
-			namespace lin {}
-			namespace win {}
+			class base;
+
+			namespace lin
+			{
+				class base;
+			}
+			namespace win
+			{
+				class base;
+			}
 		}
 		namespace window
 		{
-			namespace lin {}
-			namespace win {}
+			class base;
+
+			namespace lin
+			{
+				class base;
+			}
+			namespace win
+			{
+				class base;
+			}
 		}
 		namespace renderer
 		{
+			class base;
+
 			namespace gl
 			{
-				namespace glx {}
+				class base;	
+
+				namespace glx
+				{
+					class base;
+				}
 			}
 		}
 	}
 
 	namespace content
 	{
+		class base;
+		class camera;
+
 		namespace physics
 		{
-			namespace physx	{}
+			class base;
+
+			namespace physx
+			{
+				class base;
+			}
 		}
 		namespace universe
 		{
-			namespace admin	{}
+			namespace admin
+			{
+				class base;
+			}
 		}
 		namespace scene
 		{
-			namespace admin	{}
+			namespace admin
+			{
+				class base;
+			}
 			namespace physics
 			{
-				namespace physx	{}
+				class base;	
+
+				namespace physx
+				{
+					class base;
+				}
 			}
 			namespace renderer
 			{
@@ -59,29 +124,117 @@ namespace nebula
 		{
 			namespace admin
 			{
-				namespace human {}
+				class base;
+
+				namespace human
+				{
+					class base;
+				}
 			}
 		}
 		namespace actor
 		{
-			namespace admin {}
+			namespace admin
+			{
+				class base;
+				class actor;
+				class rigid_actor;
+				class rigid_body;
+				class rigid_dynamic;
+				class rigid_dynamic_box;
+				class rigid_static;
+				class rigid_static_plane;
+				class controller;
+				class vehicle;
+
+				class material;
+			}
 			namespace physics
 			{
-				namespace physx	{}
+				class base;
+				class actor;
+				class rigid_actor;
+				class rigid_body;
+				class rigid_dynamic;
+				class rigid_dynamic_box;
+				class rigid_static;
+				class rigid_static_plane;
+				class controller;
+				class vehicle;
+
+
+				class material;
+
+				namespace physx
+				{
+					class base;
+					class actor;
+					class rigid_actor;
+					class rigid_body;
+					class rigid_dynamic;
+					class rigid_dynamic_box;
+					class rigid_static;
+					class rigid_static_plane;
+					class controller;
+					class vehicle;
+
+					class material;
+				}
 			}
-			namespace renderer {}
+			namespace renderer
+			{
+				class base;
+				class actor;
+				class rigid_actor;
+				class rigid_body;
+				class rigid_dynamic;
+				class rigid_dynamic_box;
+				class rigid_static;
+				class rigid_static_plane;
+				class controller;
+				class vehicle;
+
+				class material;
+			}
 		}
 		namespace shape
 		{
-			namespace admin {}
-			namespace physics {}
-			namespace renderer {}
+			namespace admin
+			{
+				class base;
+				class box;
+			}
+			namespace physics
+			{
+				class base;
+				class box;
+
+				namespace physx
+				{
+					class base;
+					class box;
+				}
+			}
+			namespace renderer
+			{
+				class base;
+				class box;
+			}
 		}
 	}
 
 	namespace ui
 	{
-		namespace object {}
+		namespace layout
+		{
+			class base;
+		}
+		namespace object
+		{
+			class base;
+			class button;
+			class textview;
+		}
 	}
 }
 
@@ -91,88 +244,12 @@ namespace nebula
 namespace n00000 = nebula;
 namespace n10000 = nebula::framework;
 namespace n20000 = nebula::platform;
+namespace n23000 = nebula::platform::renderer;
 namespace n30000 = nebula::content;
-
-
-/*namespace n0x007 = nebula
-namespace n0x008 = nebula
-namespace n0x009 = nebula
-namespace n0x010 = nebula
-namespace n0x011 = nebula
-namespace n0x012 = nebula
-namespace n0x013 = nebula
-namespace n0x014 = nebula
-namespace n0x015 = nebula
-namespace n0x016 = nebula
-namespace n0x017 = nebula
-namespace n0x018 = nebula
-namespace n0x019 = nebula
-namespace n0x020 = nebula
-namespace n0x021 = nebula
-namespace n0x022 = nebula
-namespace n0x023 = nebula
-namespace n0x023 = nebula
-namespace n0x024 = nebula
-namespace n0x025 = nebula
-namespace n0x026 = nebula
-namespace n0x027 = nebula
-namespace n0x028 = nebula
-namespace n0x029 = nebula
-namespace n0x030 = nebula
-namespace n0x031 = nebula
-namespace n0x032 = nebula
-namespace n0x033 = nebula
-namespace n0x034 = nebula
-namespace n0x035 = nebula
-namespace n0x036 = nebula
-namespace n0x037 = nebula
-namespace n0x038 = nebula
-namespace n0x039 = nebula
-namespace n0x040 = nebula
-namespace n0x041 = nebula
-namespace n0x042 = nebula
-namespace n0x043 = nebula
-namespace n0x044 = nebula
-namespace n0x045 = nebula
-namespace n0x046 = nebula
-namespace n0x047 = nebula
-namespace n0x048 = nebula
-namespace n0x049 = nebula
-
-
-
-namespace n0x100 = nebula
-namespace n0x101 = nebula
-namespace n0x102 = nebula
-namespace n0x103 = nebula
-namespace n0x104 = nebula
-namespace n0x105 = nebula
-namespace n0x106 = nebula
-namespace n0x107 = nebula
-namespace n0x108 = nebula
-namespace n0x109 = nebula
-namespace n0x110 = nebula
-namespace n0x111 = nebula
-namespace n0x112 = nebula
-namespace n0x113 = nebula
-namespace n0x114 = nebula
-namespace n0x115 = nebula
-namespace n0x116 = nebula
-namespace n0x117 = nebula
-namespace n0x118 = nebula
-namespace n0x119 = nebula
-namespace n0x120 = nebula
-namespace n0x121 = nebula
-namespace n0x122 = nebula
-namespace n0x123 = nebula
-namespace n0x123 = nebula
-namespace n0x124 = nebula
-namespace n0x125 = nebula
-namespace n0x126 = nebula
-namespace n0x127 = nebula
-*/
-
-
+namespace n40000 = nebula::asio;
+namespace n50000 = nebula::ui;
+namespace n51000 = nebula::ui::layout;
+namespace n52000 = nebula::ui::object;
 
 
 namespace bnu		= boost::numeric::ublas;
@@ -229,7 +306,9 @@ namespace ncsr		= nebula::content::shape::renderer;
 
 // ui
 namespace nu		= nebula::ui;
+namespace nul		= nebula::ui::layout;
 namespace nuo		= nebula::ui::object;
+
 
 #endif
 

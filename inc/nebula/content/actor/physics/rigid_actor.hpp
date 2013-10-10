@@ -1,12 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_ACTOR_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_ACTOR_HPP__
 
-
-#include <nebula/utilities/types/content/scene/types.hpp>
-#include <nebula/utilities/types/platform/types.hpp>
-
 #include <nebula/content/actor/physics/actor.hpp>
-
 
 namespace nebula
 {

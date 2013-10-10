@@ -70,8 +70,8 @@ void	npwl::base::init( jess::shared_ptr<npp::base> parent )
 	XMapWindow( m_xdisplay, m_xwindow );
 	
 	// set center
-	m_center_x = m_win_width/2;
-	m_center_y = m_win_height/2;
+	m_center_x = width_/2;
+	m_center_y = height_/2;
 
 	// center pointer
 	center_pointer();
@@ -242,9 +242,6 @@ void	npwl::base::expose_window( XEvent xevent )
 	XWindowAttributes gwa;
 	int status = 0;
 	
-	int width = 0;
-	int height = 0;
-	
 	//if ( m_hasFocus )
 	{
 		status = XGetWindowAttributes( m_xdisplay, m_xwindow, &gwa );
@@ -260,33 +257,30 @@ void	npwl::base::expose_window( XEvent xevent )
 		
 		//renderGLX->Viewport( 0, 0, gwa.width, gwa.height );
 		
-		width = gwa.width;
-		height = gwa.height;
-
-		m_center_x = width/2;
-		m_center_y = height/2;
+		width_ = gwa.width;
+		height_ = gwa.height;
 		
+		m_center_x = width_/2;
+		m_center_y = height_/2;
+	
+		renderer_->resize( width_, height_ );
+
+		/*	
 		glViewport(0, 0, width, height);
 		
-		/*      Set current Matrix to projection*/
+		//      Set current Matrix to projection
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity(); //reset projection matrix
 
-		/*      Time to calculate aspect ratio of
-				our window.
-		*/
+		//      Time to calculate aspect ratio of our window.
 		gluPerspective(54.0f, (GLfloat)width/(GLfloat)height, 1.0f, 1000.0f);
 
 		glMatrixMode(GL_MODELVIEW); //set modelview matrix
 		glLoadIdentity(); //reset modelview matrix
+*/
+		
 
-		printf("expose\n");
-		center_pointer();
-
-		/*
-		renderGLX->DrawQuad();
-		renderGLX->VSwap();
-		*/
+		center_pointer();		
 	}
 }
 void	npwl::base::focus_change(XEvent xevent)

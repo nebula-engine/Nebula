@@ -5,7 +5,10 @@
 #include <nebula/content/actor/admin/controller.hpp>
 
 #include <box_client/content/scene/admin/base.hpp>
+#include <box_client/ui/layout/base.hpp>
+
 #include <box_client/content/view/admin/base.hpp>
+
 
 void	bc33100::base::init( jess::shared_ptr<nc_sc_a::base> parent )
 {
@@ -21,13 +24,13 @@ void	bc33100::base::init( jess::shared_ptr<nc_sc_a::base> parent )
 	// request window
 	window_ = parent->request_window();
 
+	// ui
+	layout_.reset( new bc51000::base );
+	layout_->init();
+	
 	// camera
 	create_camera();
-
-	// connect controller to camera
 	camera_->controller_ = bc_parent->ctrlr_;
-
-	jess::cout << window_.get() << std::endl;
 
 	// set signal handlers
 	window_->sig_pointer_motion_.connect

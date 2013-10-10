@@ -4,7 +4,6 @@
 #include <jess/shared_ptr.hpp>
 
 #include <nebula/ns.hpp>
-#include <nebula/utilities/types/content/actor/types.hpp>
 
 namespace nebula
 {

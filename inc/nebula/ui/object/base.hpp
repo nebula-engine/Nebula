@@ -16,7 +16,7 @@ namespace nebula
 			class base
 			{
 			public:
-				virtual void		render( const jess::shared_ptr<npr::base>& );
+				virtual void		render( jess::shared_ptr<npr::base> ) = 0;
 				
 				UINT			x_;
 				UINT			y_;

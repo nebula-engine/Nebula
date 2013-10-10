@@ -9,9 +9,6 @@
 
 #include <nebula/define.hpp>
 
-#include <nebula/utilities/types/asio/types.hpp>
-#include <nebula/utilities/types/platform/types.hpp>
-
 #include <nebula/platform/window/base.hpp>
 
 #include <nebula/ns.hpp>
@@ -52,8 +49,6 @@ namespace nebula
 					int				m_cap_style;
 					int				m_join_style;
 
-					UINT				m_win_width;
-					UINT				m_win_height;
 
 					UINT				m_center_x;
 					UINT				m_center_y;

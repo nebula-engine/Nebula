@@ -5,8 +5,6 @@
 
 #include <jess/shared_ptr.hpp>
 
-#include <nebula/utilities/types/asio/types.hpp>
-
 #include <nebula/ns.hpp>
 
 namespace nebula

@@ -6,8 +6,6 @@
 #include <jess/shared_ptr.hpp>
 #include <jess/map.hpp>
 
-#include <nebula/utilities/types/framework/types.hpp>
-#include <nebula/utilities/types/platform/types.hpp>
 #include <nebula/asio/mailbox.hpp>
 #include <nebula/ns.hpp>
 

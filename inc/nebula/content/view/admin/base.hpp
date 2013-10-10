@@ -1,8 +1,6 @@
 #ifndef __NEBULA_CONTENT_VIEW_ADMIN_BASE_HPP__
 #define __NEBULA_CONTENT_VIEW_ADMIN_BASE_HPP__
 
-#include <nebula/utilities/types/types.hpp>
-#include <nebula/utilities/types/content/scene/types.hpp>
 #include <nebula/framework/renderable.hpp>
 #include <nebula/ns.hpp>
 
@@ -41,6 +39,8 @@ namespace nebula
 					jess::shared_ptr<npw::base>			window_;
 					/// camera
 					jess::shared_ptr<n30000::camera>		camera_;
+					/// ui
+					jess::shared_ptr<nu::layout::base>		layout_;
 					///}
 
 				};

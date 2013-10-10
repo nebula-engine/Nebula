@@ -4,9 +4,6 @@
 #include <jess/map.hpp>
 #include <jess/shared_ptr.hpp>
 
-#include <nebula/utilities/types/content/actor/types.hpp>
-#include <nebula/utilities/types/content/shape/types.hpp>
-
 #include <nebula/content/actor/admin/actor.hpp>
 
 #include <nebula/ns.hpp>

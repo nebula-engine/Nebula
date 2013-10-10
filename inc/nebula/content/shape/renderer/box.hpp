@@ -1,8 +1,6 @@
 #ifndef __NEBULA_CONTENT_SHAPE_RENDERER_BOX_HPP__
 #define __NEBULA_CONTENT_SHAPE_RENDERER_BOX_HPP__
 
-#include <nebula/utilities/types/content/shape/types.hpp>
-
 #include <nebula/content/shape/renderer/base.hpp>
 
 namespace nebula

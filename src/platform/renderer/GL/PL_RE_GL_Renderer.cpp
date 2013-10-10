@@ -2,9 +2,9 @@
 #include <jess/free.hpp>
 #include <jess/except.hpp>
 
+#include <nebula/platform/window/base.hpp>
 
 #include <nebula/platform/renderer/gl/base.hpp>
-
 
 void GetGLError()
 {
@@ -59,11 +59,8 @@ void	nprg::base::init( jess::shared_ptr<npw::base> parent )
 
 
 
-	glEnable(GL_DEPTH_TEST);
+	glEnable( GL_DEPTH_TEST | GL_NORMALIZE | GL_LIGHTING );
 
-	glEnable(GL_NORMALIZE);
-
-	glEnable (GL_LIGHTING);
 	glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, 1);
 
 	glEnable (GL_LIGHT0);
@@ -231,14 +228,56 @@ void	nprg::base::draw_quad()
 }
 void	nprg::base::begin_render()
 {
-
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
+	
+	
+}
+void	nprg::base::begin_3d()
+{
+	glEnable( GL_CULL_FACE | GL_LIGHTING );
 
 	glMatrixMode( GL_MODELVIEW );
-
+	glPushMatrix();
 	glLoadIdentity();
 
+}
+void	nprg::base::end_3d()
+{
+	glPopMatrix();
+}
+void	nprg::base::begin_2d()
+{
+	jess::shared_ptr<npw::base> wnd = parent_.lock();
+
+	glDisable( GL_CULL_FACE );
+	glDisable( GL_LIGHTING );
+	glDisable( GL_DEPTH_TEST );
+	
+	glClear( GL_DEPTH_BUFFER_BIT );
+
+	glMatrixMode( GL_PROJECTION );
+	glPushMatrix();
+	glLoadIdentity();
+	glOrtho( 0, wnd->width_, 0, wnd->height_, -1, 10 );
+
+	glMatrixMode( GL_MODELVIEW );
+	glPushMatrix();
+	glLoadIdentity();
+}
+void	nprg::base::end_2d()
+{
+	glPopMatrix();
+	
+	glMatrixMode( GL_PROJECTION );
+	glPopMatrix();
+
+}
+void	nprg::base::end_render()
+{
+	glFlush();
+	swap();
 }
 void	nprg::base::light()
 {
@@ -250,10 +289,9 @@ void	nprg::base::light()
 	glLightfv( GL_LIGHT0, GL_DIFFUSE, diffuse );
 	glLightfv( GL_LIGHT0, GL_AMBIENT, ambient );
 }
-void	nprg::base::end_render()
+void	nprg::base::disable_lighting()
 {
-	glFlush();
-	swap();
+	glDisable(GL_LIGHTING);
 }
 void	nprg::base::update()
 {

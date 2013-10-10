@@ -6,12 +6,6 @@
 
 #include <nebula/define.hpp>
 
-#include <nebula/utilities/types/framework/types.hpp>
-#include <nebula/utilities/types/platform/types.hpp>
-#include <nebula/utilities/types/content/types.hpp>
-#include <nebula/utilities/types/content/universe/types.hpp>
-#include <nebula/utilities/types/content/scene/types.hpp>
-
 #include <nebula/ns.hpp>
 
 namespace nebula

@@ -29,6 +29,13 @@ namespace box_client
 			}
 		}
 	}
+	namespace ui
+	{
+		namespace layout
+		{
+			class base;
+		}
+	}
 }
 
 namespace bc0x000 = box_client;
@@ -38,7 +45,7 @@ namespace bc0x300 = box_client::content;
 namespace bc31100 = box_client::content::universe::admin;
 namespace bc32100 = box_client::content::scene::admin;
 namespace bc33100 = box_client::content::view::admin;
-
+namespace bc51000 = box_client::ui::layout;
 
 
 #endif

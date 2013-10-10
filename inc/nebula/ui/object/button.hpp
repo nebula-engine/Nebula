@@ -1,8 +1,6 @@
 #ifndef __NEBULA_UI_OBJECT_BUTTON_HPP__
 #define __NEBULA_UI_OBJECT_BUTTON_HPP__
 
-#include <nebula/utilities/types/platform/types.hpp>
-
 #include <nebula/ui/object/base.hpp>
 
 #include <nebula/ns.hpp>

@@ -7,8 +7,6 @@
 
 #include <jess/shared_ptr.hpp>
 
-#include <nebula/utilities/types/platform/types.hpp>
-
 #include <nebula/ns.hpp>
 
 namespace nebula
@@ -62,6 +60,8 @@ namespace nebula
 				boost::signals2::signal<void (int,int)>		sig_pointer_motion_;
 				///@}
 			//protected:
+				unsigned int					width_;
+				unsigned int					height_;
 				/// focus
 				bool						has_focus_;
 				/// x

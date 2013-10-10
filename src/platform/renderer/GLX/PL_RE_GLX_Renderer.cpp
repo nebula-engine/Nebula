@@ -4,63 +4,114 @@
 
 #include <nebula/platform/renderer/gl/glx/base.hpp>
 
+int xerrorhandler( Display* dpy, XErrorEvent* error )
+{
+	char errorstring[128];
+	XGetErrorText( dpy, error->error_code, errorstring, 128 );
+	
+	std::cerr << "fatal: X error--" << errorstring << std::endl;
+	exit(-1);
+}
+
 void	nprgg::base::init( jess::shared_ptr<npw::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	//std::cout << this << std::endl;
-	
+	/// \todo move this to window
+	XSetErrorHandler( xerrorhandler );
+
 	att = new GLint[5];
 	att[0] = GLX_RGBA;
 	att[1] = GLX_DEPTH_SIZE;
 	att[2] = 24;
 	att[3] = GLX_DOUBLEBUFFER;
 	att[4] = None;
-	
+
 	if ( !m_xdisplay )
 	{
 		throw jess::except( "m_xdisplay is null" );
 	}
-	
+
 	m_vi = glXChooseVisual( m_xdisplay, 0, att );
-	
+
 	if( m_vi == 0 )
 	{
 		throw jess::except("glXChooseVisual: no appropriate visual found\n");
-		
+
 	} 
 	else
 	{
 		printf( "glXChooseVisual: visual %p selected\n", (void *)m_vi->visualid ); // %p creates hexadecimal output like in glxinfo
 	}
-	
+
 	m_cmap = XCreateColormap( m_xdisplay, m_root_xwindow, m_vi->visual, AllocNone );
-	
+
 	m_swa.colormap = m_cmap;
 	m_swa.event_mask = ExposureMask | KeyPressMask;
-	
+
 	m_glc = glXCreateContext( m_xdisplay, m_vi, NULL, GL_TRUE );
-	
+
 	glXMakeCurrent( m_xdisplay, m_xwindow, m_glc );
-	
+
 	if ( glXGetCurrentContext() == NULL )
 	{
 		throw jess::except("context not created");
 	}
-	
+
+	// font
+	init_raster_font();
+
 	// must be here so that base class has valid GLContext available
 	nprg::base::init( parent );
-	
+
 	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
 void	nprgg::base::shutdown()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
-	
+
 	glXMakeCurrent( m_xdisplay, None, NULL );
 	glXDestroyContext( m_xdisplay, m_glc );
+}
+void	nprgg::base::draw_text( int x, int y, std::string str )
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
+	jess::clog << x << " " << y << " " << str << std::endl;
+	
+	GLfloat white[3] = { 1.0, 1.0, 1.0 };
+	GLfloat colr[3] = { 0.3, 0.25, 0.25 };
+	
+	//glDisable(GL_LIGHTING);
+	
+	glColor3fv(colr);
+	
+	glBegin( GL_QUADS );
+	glVertex2i( x,     y+100 );
+	glVertex2i( x+100, y+100 );
+	glVertex2i( x+100, y+200 );
+	glVertex2i( x,     y+200 );
+	glEnd();
+	
+	
+	
+	
+	glColor3fv(white);
+	
+	glRasterPos2i( x, y );
+
+	glListBase( font_base_ );
+
+	glCallLists( strlen( str.c_str() ), GL_UNSIGNED_BYTE, (unsigned char *)(str.c_str()));
+
+
+
+
+	//glEnable(GL_LIGHTING);
+
+
 }
 void	nprgg::base::viewport( int a, int b, int c, int d )
 {
@@ -68,7 +119,7 @@ void	nprgg::base::viewport( int a, int b, int c, int d )
 }
 void	nprgg::base::update()
 {
-	
+
 }
 void	nprgg::base::begin_render()
 {
@@ -121,7 +172,72 @@ void	nprgg::base::light()
 
 
 //	double eyeX, double eyeY,double eyeZ,double centerX,double centerY,double centerZ,double upX,double upY,double upZ
+void	nprgg::base::init_raster_font()
+{
+	::Display* dpy = m_xdisplay;
 
+	XFontStruct *fontInfo;
+
+	Font id;
+
+	unsigned int first, last;
+
+	// list fonts
+	int fonts_count = 0;
+	char** fonts = XListFonts( dpy, "*", 300, &fonts_count );
+
+	for( int i = 0; i < fonts_count; i++ )
+	{
+		jess::clog << fonts[i] << "... ";
+
+
+		fontInfo = XLoadQueryFont( dpy, fonts[i] );
+		//fontInfo = XLoadQueryFont(dpy, "-adobe-times-medium-r-normal--17-120-100-100-p-88-iso8859-1");
+
+		if( fontInfo == 0 )
+		{
+			jess::clog << "failed";
+
+				//exit (0);
+		}
+		else
+		{
+			jess::clog << "success!";
+				break;
+
+		}
+
+	}
+	XFreeFontNames( fonts );
+
+	if( fontInfo == 0 )
+	{
+		jess::clog << "no font found" << std::endl;
+		exit(0);
+	}
+
+
+
+
+
+	id = fontInfo->fid;
+
+	first = fontInfo->min_char_or_byte2;
+
+	last = fontInfo->max_char_or_byte2;
+
+	font_base_ = glGenLists(last+1);
+
+	if ( font_base_  == 0 )
+	{
+		printf ("out of display lists\n");
+
+		exit (0);
+	}
+
+	glXUseXFont( id, first, last-first+1, font_base_ + first );
+	
+}
 
 
 

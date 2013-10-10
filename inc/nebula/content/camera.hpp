@@ -3,9 +3,6 @@
 
 #include <jess/shared_ptr.hpp>
 
-#include <nebula/utilities/types/platform/types.hpp>
-#include <nebula/utilities/types/content/actor/types.hpp>
-
 namespace nebula
 {
 	namespace content

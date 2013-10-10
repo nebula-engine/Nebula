@@ -7,8 +7,6 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <nebula/utilities/types/content/actor/types.hpp>
-
 #include <nebula/content/scene/physics/base.hpp>
 
 #include <nebula/ns.hpp>

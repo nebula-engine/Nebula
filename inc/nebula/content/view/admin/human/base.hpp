@@ -3,9 +3,6 @@
 
 #include <jess/shared_ptr.hpp>
 
-#include <nebula/utilities/types/platform/types.hpp>
-#include <nebula/utilities/types/content/types.hpp>
-
 #include <nebula/content/view/admin/base.hpp>
 
 namespace nebula
@@ -21,19 +18,21 @@ namespace nebula
 					class base:
 						public ncva::base
 					{
-					public:
-						base();
-						virtual ~base();
-						virtual void					init( jess::shared_ptr<nc_sc_a::base> );
-						virtual void					shutdown();
-						virtual void					update();
-						virtual void					render();
-						
-						virtual void					create_camera();
-						
-						//jess::shared_ptr<npw::base>			window_;
-						
-						//jess::shared_ptr<nebula::content::camera>	camera_;
+						public:
+							/// ctor
+							base();
+							/// dtor
+							virtual ~base();
+							/// init
+							virtual void					init( jess::shared_ptr<nc_sc_a::base> );
+
+							virtual void					shutdown();
+
+							virtual void					update();
+
+							virtual void					render();
+
+							virtual void					create_camera();
 					};
 				}
 			}

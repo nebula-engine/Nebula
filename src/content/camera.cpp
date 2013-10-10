@@ -10,7 +10,7 @@ nebula::content::camera::camera()
 {
 
 }
-void	nebula::content::camera::render( jess::shared_ptr<nebula::platform::renderer::base>& rnd )
+void	nebula::content::camera::render( jess::shared_ptr<nebula::platform::renderer::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 

@@ -19,10 +19,6 @@ void	ncs::physics::physx::base::shutdown()
 {
 	
 }
-void	ncs::physics::physx::base::create_shape()
-{
-	
-}
 
 
 

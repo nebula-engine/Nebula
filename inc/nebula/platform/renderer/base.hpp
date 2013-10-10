@@ -5,8 +5,6 @@
 
 #include <boost/numeric/ublas/vector.hpp>
 
-#include <nebula/utilities/types/platform/types.hpp>
-
 #include <nebula/define.hpp>
 #include <nebula/ns.hpp>
 
@@ -38,6 +36,8 @@ namespace nebula
 					virtual void							draw_sphere();
 					/// quad
 					virtual void							draw_quad();
+					/// text
+					virtual void							draw_text( int, int, std::string ) = 0;
 					///@}
 					/// resize
 					virtual void							resize( int, int );
@@ -55,8 +55,14 @@ namespace nebula
 					virtual void							look_at( bnu::vector<float>, bnu::vector<float>, bnu::vector<float> ); 
 					/// light
 					virtual void							light();
+					virtual void							disable_lighting() = 0;
 					/// begin render
 					virtual void							begin_render();
+					virtual void		begin_3d() = 0;
+					virtual void		end_3d() = 0;
+					virtual void		begin_2d() = 0;
+					virtual void		end_2d() = 0;
+
 					/// end render
 					virtual void							end_render();
 					/// draw window quad

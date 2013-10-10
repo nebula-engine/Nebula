@@ -1,9 +1,6 @@
 #ifndef __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_DYNAMIC_BOX_HPP__
 #define __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_DYNAMIC_BOX_HPP__
 
-#include <nebula/utilities/types/platform/types.hpp>
-#include <nebula/utilities/types/content/scene/types.hpp>
-
 #include <nebula/content/actor/admin/rigid_dynamic.hpp>
 
 #include <nebula/ns.hpp>

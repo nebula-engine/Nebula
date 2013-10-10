@@ -37,12 +37,15 @@ namespace nebula
 							///}
 							/// init			
 							virtual void						init( jess::shared_ptr<npw::base> );
+							virtual void						init_raster_font();
 							/// shutdown			
 							virtual void						shutdown();
 							/// update
 							virtual void						update();
 							/// viewport
 							virtual void						viewport( int, int, int, int );
+							/// text
+							virtual void						draw_text( int, int, std::string );
 							/// push_matrix
 							virtual void						push_matrix();
 							/// pop_matrix
@@ -79,6 +82,8 @@ namespace nebula
 							::Window						m_root_xwindow;
 							/// display
 							::Display*						m_xdisplay;
+							/// font base
+							GLuint							font_base_;
 					};
 				}
 			}

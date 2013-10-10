@@ -3,7 +3,7 @@
 
 #include <jess/shared_ptr.hpp>
 
-#include <nebula/utilities/types/content/shape/types.hpp>
+#include <nebula/ns.hpp>
 
 namespace nebula
 {
@@ -15,14 +15,18 @@ namespace nebula
 			{
 				namespace physx
 				{
+					/// base
 					class base
 					{
-					public:
-						base();
-						~base();
-						void						init( jess::shared_ptr<nebula::content::shape::admin::base> );
-						void						shutdown();
-						void						create_shape();
+						public:
+							/// ctor
+							base();
+							/// dtor
+							~base();
+							/// init
+							void						init( jess::shared_ptr<nebula::content::shape::admin::base> );
+							/// shutdown
+							void						shutdown();
 					};
 				}
 			}

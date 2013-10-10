@@ -160,7 +160,9 @@ digraph G
 		node [color=white];
 		
 		ui [label = "ui\n50000"];
-
+		ui_layout [label="layout\n51000"];
+		ui_object [label="layout\n52000"];
+		
 		style = filled;
 		color = plum;
 	}
