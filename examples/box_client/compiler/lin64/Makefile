@@ -7,12 +7,14 @@ root      := $(shell expr $(here) : '\(.*$(rootname)\)')
 hpaths    :=
 hpaths    += $(root)jess/inc
 hpaths    += $(root)nebula/inc
+hpaths    += $(root)external/boost_1_54_0
 hpaths    += $(root)external/glew/include
 hpaths    += $(root)external/PhysX/Include
 
 lpaths    :=
 lpaths    += $(root)jess/lib/lin64
 lpaths    += $(root)nebula/lib/lin64
+lpaths    += $(root)external/boost_1_54_0/stage/lib
 lpaths    += $(root)external/glew/lib
 lpaths    += $(root)external/PhysX/Lib/linux64
 
@@ -26,6 +28,8 @@ libraries :=
 libraries += jess
 libraries += nebula
 libraries += boost_system
+libraries += boost_thread
+libraries += boost_chrono
 libraries += pthread
 libraries += rt
 libraries += PhysX3

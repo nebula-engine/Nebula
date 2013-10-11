@@ -23,6 +23,8 @@ void	ncva::base::init( jess::shared_ptr<nc_sc_a::base> parent )
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	parent_ = parent;
+
+	n10000::renderable::init();
 }
 void	ncva::base::shutdown()
 {
@@ -36,9 +38,11 @@ void	ncva::base::render()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
+	n10000::renderable::render();
+	
 	jess::shared_ptr<npr::base> rnd = window_->renderer_;
-
-
+	
+	
 	
 	rnd->begin_render();
 	rnd->begin_3d();
@@ -57,7 +61,12 @@ void	ncva::base::render()
 	{
 		layout_->render( rnd );
 	}
-
+	
+	
+	char str[16];
+	sprintf( str, "%8.2f", fps_ );
+	rnd->draw_text( 100, 200, str );
+	
 	
 	rnd->end_2d();
 	rnd->end_render();
