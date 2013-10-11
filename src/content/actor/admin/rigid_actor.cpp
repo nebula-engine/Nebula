@@ -55,6 +55,22 @@ jess::shared_ptr<ncsa::box>	ncaa::rigid_actor::create_box()
 	
 	return bx;
 }
+jess::shared_ptr<ncsa::box>	ncaa::rigid_actor::create_plane()
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
+
+	// cast shared_from_this
+	jess::shared_ptr<ncaa::rigid_actor> this_ptr = std::dynamic_pointer_cast<ncaa::rigid_actor>( shared_from_this() );
+	
+	// create
+	jess::shared_ptr<ncsa::plane> plane( new ncsa::plane );
+	
+	shapes_.push<ncsa::plane>( plane );//, std::bind( &ncsa::box::init, std::placeholders::_1, this_ ) );
+	
+	plane->init( this_ptr );
+	
+	return plane;
+}
 void	ncaa::rigid_actor::shutdown()
 {
 	

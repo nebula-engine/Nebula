@@ -60,7 +60,7 @@ void	ncaa::rigid_dynamic_box::render( jess::shared_ptr<npr::base> rnd )
 
 	ncaa::rigid_dynamic::render( rnd );
 }
-void	ncaa::rigid_dynamic_box::step(  )
+void	ncaa::rigid_dynamic_box::step( float dt )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	/*

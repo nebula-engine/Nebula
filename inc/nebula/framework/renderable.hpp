@@ -1,6 +1,7 @@
 #ifndef __NEBULA_FRAMEWORK_RENDERABLE_HPP__
 #define __NEBULA_FRAMEWORK_RENDERABLE_HPP__
 
+#include <boost/chrono.hpp>
 #include <boost/asio/high_resolution_timer.hpp>
 
 #include <jess/shared_ptr.hpp>
@@ -39,7 +40,7 @@ namespace nebula
 				/// fps
 				float	fps_;
 				/// fps timer
-				jess::shared_ptr<boost::asio::high_resolution_timer>		timer_fps_;
+				jess::shared_ptr< boost::asio::basic_waitable_timer<boost::chrono::steady_clock> >	timer_fps_;
 		};
 	}
 }

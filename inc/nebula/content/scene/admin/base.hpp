@@ -45,6 +45,8 @@ namespace nebula
 					virtual jess::shared_ptr<npw::base>						request_window();
 					/// create
 					virtual jess::shared_ptr<ncaa::rigid_dynamic_box>				create_rigid_dynamic_box();
+					/// create
+					virtual jess::shared_ptr<ncaa::rigid_static_plane>				create_rigid_static_plane();
 					/// get rid of this
 					virtual void									register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic> );
 					/// create

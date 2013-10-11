@@ -25,7 +25,7 @@ n10000::renderable::~renderable()
 }
 void	n10000::renderable::init()
 {
-	timer_fps_.reset( new boost::asio::high_resolution_timer( n10000::g_io_ ) );
+	timer_fps_.reset( new boost::asio::basic_waitable_timer<boost::chrono::steady_clock>( n10000::g_io_ ) );
 
 	//timer_fps_->expires_from_now( boost::chrono::duration<int, boost::chrono::seconds>( interval_ ) );
 	timer_fps_->expires_from_now( boost::chrono::seconds( interval_ ) );
