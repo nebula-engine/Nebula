@@ -1,14 +1,14 @@
 SocketClass::SocketClass(
     Entity* entityParam,
-    int (*errorFuncSendParam)( SocketClass*, int ),
-    int (*packetFuncSendParam)( SocketClass* ),
-    int (*errorFuncRecvParam)( SocketClass*, int ),
-    int (*packetFuncRecvParam)( SocketClass* ));
+    int (*errorFun30000SendParam)( SocketClass*, int ),
+    int (*packetFun30000SendParam)( SocketClass* ),
+    int (*errorFun30000RecvParam)( SocketClass*, int ),
+    int (*packetFun30000RecvParam)( SocketClass* ));
 {
     entity = entityParam;
     s = INVALID_SOCKET;
     
-    bufferSend = new SocketBuffer( this, errorFuncSendParam, packetFuncSendParam );
-    bufferRecv = new SocketBuffer( this, errorFuncRecvParam, packetFuncRecvParam );
+    bufferSend = new SocketBuffer( this, errorFun30000SendParam, packetFun30000SendParam );
+    bufferRecv = new SocketBuffer( this, errorFun30000RecvParam, packetFun30000RecvParam );
 }
 

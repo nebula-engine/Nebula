@@ -1,10 +1,10 @@
-#include <nebula/utilities/free.hpp>
+/*#include <nebula/utilities/free.hpp>
 
 
-bnu::matrix<FLOAT,bnu::column_major>		nebula::utilities::matrix_yaw( FLOAT yaw )
+bnu::matrix<float,bnu::column_major>		nebula::utilities::matrix_yaw( float yaw )
 {
 	// y-axis rotation
-	bnu::matrix<float> m = bnu::identity_matrix<FLOAT,bnu::column_major>(3,3);
+	bnu::matrix<float> m = bnu::identity_matrix<float,bnu::column_major>(3,3);
 	
 	float c = cos( yaw );
 	float s = sin( yaw );
@@ -14,10 +14,10 @@ bnu::matrix<FLOAT,bnu::column_major>		nebula::utilities::matrix_yaw( FLOAT yaw )
 	
 	return m;
 }
-bnu::matrix<FLOAT,bnu::column_major>		nebula::utilities::matrix_pitch( FLOAT pitch )
+bnu::matrix<float,bnu::column_major>		nebula::utilities::matrix_pitch( float pitch )
 {
 	// x-axis rotation
-	bnu::matrix<float> m = bnu::identity_matrix<FLOAT,bnu::column_major>(3,3);
+	bnu::matrix<float> m = bnu::identity_matrix<float,bnu::column_major>(3,3);
 
 	float c = cos( pitch );
 	float s = sin( pitch );
@@ -27,11 +27,11 @@ bnu::matrix<FLOAT,bnu::column_major>		nebula::utilities::matrix_pitch( FLOAT pit
 	
 	return m;
 }
-bnu::matrix<FLOAT,bnu::column_major>		nebula::utilities::matrix_roll( FLOAT roll )
+bnu::matrix<float,bnu::column_major>		nebula::utilities::matrix_roll( float roll )
 {
 	// z-axis rotation
 
-	bnu::matrix<float> m = bnu::identity_matrix<FLOAT,bnu::column_major>(3,3);
+	bnu::matrix<float> m = bnu::identity_matrix<float,bnu::column_major>(3,3);
 	
 	float c = cos( roll );
 	float s = sin( roll );
@@ -42,10 +42,10 @@ bnu::matrix<FLOAT,bnu::column_major>		nebula::utilities::matrix_roll( FLOAT roll
 	return m;
 
 }
-void					nebula::utilities::matrix_set_pos( bnu::matrix<FLOAT>&, bnu::vector<FLOAT> )
+void					nebula::utilities::matrix_set_pos( bnu::matrix<float>&, bnu::vector<float> )
 {
 	
 }
 
 
-
+*/

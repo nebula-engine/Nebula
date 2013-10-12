@@ -12,13 +12,14 @@ namespace nebula
 			namespace physics
 			{
 				class box:
-					public ncsp::base
+					public n35200::base
 				{
 				public:
 					box();
 					~box();
-					void						init( jess::shared_ptr<ncsa::base> );
+					void						init( jess::shared_ptr<n35100::base> );
 					void						shutdown();
+					void						create_shape();
 				};
 			}
 		}

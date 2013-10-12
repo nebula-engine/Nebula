@@ -24,7 +24,7 @@ namespace nebula
 					~rigid_static();
 
 					/// Initialize
-					virtual	void						init( jess::shared_ptr<nc_sc_a::base> );
+					virtual	void						init( jess::shared_ptr<n32100::base> );
 					/// ShutDown
 					virtual	void						shutdown();
 					/// Update
@@ -32,7 +32,7 @@ namespace nebula
 					/// Render
 					virtual	void						render( jess::shared_ptr<nebula::platform::renderer::base> );
 					/// Step
-					virtual	void						step(FLOAT);
+					virtual	void						step(float);
 					
 
 

@@ -16,10 +16,10 @@ namespace physics
 {
 namespace physx
 {
-bnu::vector<FLOAT>					physx_to_boost(::physx::PxVec3);
-bnu::matrix<FLOAT>					physx_to_boost(::physx::PxTransform);
-::physx::PxVec3						boost_to_physx(bnu::vector<FLOAT>);
-::physx::PxTransform					boost_to_physx(bnu::matrix<FLOAT>);
+bnu::vector<float>					physx_to_boost(::physx::PxVec3);
+bnu::matrix<float>					physx_to_boost(::physx::PxTransform);
+::physx::PxVec3						boost_to_physx(bnu::vector<float>);
+::physx::PxTransform					boost_to_physx(bnu::matrix<float>);
 }
 }
 }

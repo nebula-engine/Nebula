@@ -14,39 +14,35 @@
 
 #include <nebula/content/actor/admin/controller.hpp>
 
-ncaa::controller::controller()
+n34100::controller::controller()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-ncaa::controller::~controller()
+n34100::controller::~controller()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-ncaa::controller::controller( ncaa::controller const & act )
+n34100::controller::controller( n34100::controller const & act )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	ncaa::controller::init( jess::shared_ptr<nc_sc_a::base> parent )
+void	n34100::controller::init( jess::shared_ptr<n32100::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	// init parent
-	ncaa::base::init( parent );
-
+	n34100::base::init( parent );
 	
 	flag_ = 0;
-
+	
 	yaw_ = 0;
 	pitch_ = 0;
 	
-	pos_ = bnu::zero_vector<FLOAT>(3);
-	pos_(1) = 10.0;
-	pos_(2) = 2.0;
-	
+	pos_ = physx::PxVec3(0,10,2);
 	
 	key_flag_[nebula::platform::key::w] = flag::eNORTH;
 	key_flag_[nebula::platform::key::s] = flag::eSOUTH;
@@ -55,63 +51,52 @@ void	ncaa::controller::init( jess::shared_ptr<nc_sc_a::base> parent )
 	
 	key_down_event_[nebula::platform::key::r] = event::eRESET_VIEW_ANGLES;
 
-	jess::shared_ptr<ncaa::base> this_ptr( shared_from_this() );
+	jess::shared_ptr<n34100::base> this_ptr( shared_from_this() );
 	
 	//jess::cout << "not reached" << std::endl;
 	
 	// physics
-	physics_.reset( new ncap::controller );
+	physics_.reset( new n34200::controller );
 	physics_->init( this_ptr );
 	
 	// renderer
-	renderer_.reset( new ncar::controller );
+	renderer_.reset( new n34300::controller );
 	renderer_->init( this_ptr );	
 }
-void	ncaa::controller::shutdown()
+void	n34100::controller::shutdown()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	ncaa::controller::update()
+void	n34100::controller::update()
 {
-	ncaa::base::update();
+	n34100::base::update();
 }
-void	ncaa::controller::step( FLOAT dt )
+void	n34100::controller::step( float dt )
 {
-	ncaa::base::step( dt );
+	n34100::base::step( dt );
 }
-void	ncaa::controller::render( jess::shared_ptr<npr::base> rnd )
+void	n34100::controller::render( jess::shared_ptr<n23000::base> rnd )
 {
 }
-void	ncaa::controller::create_shapes()
+void	n34100::controller::create_shapes()
 {
 
 }
-void	ncaa::controller::look_at( jess::shared_ptr<npr::base> rnd )
+void	n34100::controller::look_at( jess::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	bnu::matrix<float> rot = bnu::identity_matrix<FLOAT,bnu::column_major>( 3 );
+	physx::PxQuat rot( yaw_, physx::PxVec3(0,1,0) );
 	
 	//jess::clog << pitch_ << " " << yaw_ << std::endl;
 	//std::cout << "rot=" << rot << std::endl;
-
-
-
-
-
-	rot = prod( rot, nebula::utilities::matrix_yaw( yaw_ ) );
 	
 	//std::cout << "rot=" << rot << std::endl;
 
-
-	
-	rot = prod( rot, nebula::utilities::matrix_pitch( pitch_ ) );
+	rot *= physx::PxQuat( pitch_ , physx::PxVec3(1,0,0) );
 
 	//std::cout << "rot=" << rot << std::endl;
-
-		
 	
-
 	//rnd->mult_matrix( pose_ );
 	
 	//bnu::  math::quaternion rot(0,0,0,1);
@@ -122,23 +107,22 @@ void	ncaa::controller::look_at( jess::shared_ptr<npr::base> rnd )
 	//rot *= pitch;
 	//rot *= yaw;
 	
-	up_ = bnu::unit_vector<float>(3,1); //Math::Vec3f(0,1,0);
-	look_ = bnu::unit_vector<float>(3,2); //Math::Vec3f(0,0,-1);
-	look_ *= -1.0;
+	up_ = physx::PxVec3(0,1,0);
+	look_ = physx::PxVec3(0,0,-1);
 	
 	//jess::clog << up_ << std::endl;
 	//jess::clog << look_ << std::endl;
 	
-	up_ = prod( rot, up_ );
-	look_ = prod( rot, look_ );
-
+	up_ = rot.rotate( up_ );
+	look_ = rot.rotate( look_ );
+	
 	//jess::clog << up_ << std::endl;
 	//jess::clog << look_ << std::endl;
 	//jess::clog << pos_ + look_ << std::endl;
 	
 	rnd->look_at( pos_, pos_ + look_, up_ );
 }
-void	ncaa::controller::process_event( int evnt )
+void	n34100::controller::process_event( int evnt )
 {
 	switch ( evnt )
 	{
@@ -149,7 +133,7 @@ void	ncaa::controller::process_event( int evnt )
 		break;
 	}
 }
-void	ncaa::controller::handle_key_up(int k, int window_no)
+void	n34100::controller::handle_key_up(int k, int window_no)
 {
 
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -163,7 +147,7 @@ void	ncaa::controller::handle_key_up(int k, int window_no)
 	process_event(evnt);
 
 }
-void	ncaa::controller::handle_key_down(int k, int window_no)
+void	n34100::controller::handle_key_down(int k, int window_no)
 {
 
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -176,7 +160,7 @@ void	ncaa::controller::handle_key_down(int k, int window_no)
 	int evnt = key_down_event_[k];
 	process_event(evnt);
 }
-void	ncaa::controller::handle_pointer_motion( int x, int y )
+void	n34100::controller::handle_pointer_motion( int x, int y )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	

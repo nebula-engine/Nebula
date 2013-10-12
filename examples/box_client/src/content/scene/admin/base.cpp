@@ -5,12 +5,12 @@
 
 #include <box_client/content/scene/admin/base.hpp>
 
-void	box_client::content::scene::admin::base::init( jess::shared_ptr<ncua::base> parent )
+void	box_client::content::scene::admin::base::init( jess::shared_ptr<n31100::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	nc_sc_a::base::init( parent );
+	n32100::base::init( parent );
 	
 	rigid_dyn_box_ = create_rigid_dynamic_box();
 	

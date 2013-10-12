@@ -12,10 +12,10 @@ namespace box_client
 			namespace admin
 			{
 				class base:
-					public ncua::base
+					public n31100::base
 				{
 				public:
-					virtual void							init( jess::shared_ptr<nc::base> );
+					virtual void							init( jess::shared_ptr<n30000::base> );
 				};
 			}
 		}

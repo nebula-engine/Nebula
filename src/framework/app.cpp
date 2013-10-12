@@ -22,16 +22,16 @@
 #include <nebula/framework/app.hpp>
 
 
-//template class jess::shared_ptr<nc::base>;
-//template void jess::shared_ptr<nc::base>::create( boost::function<void(jess::shared_ptr<nc::base>)> );
+//template class jess::shared_ptr<n30000::base>;
+//template void jess::shared_ptr<n30000::base>::create( boost::fun30000tion<void(jess::shared_ptr<n30000::base>)> );
 
 
 
-//template class jess::shared_ptr<nc::base>;
-//template void jess::shared_ptr<nc::base>::create( boost::function<void(jess::shared_ptr<nc::base>)> );
+//template class jess::shared_ptr<n30000::base>;
+//template void jess::shared_ptr<n30000::base>::create( boost::fun30000tion<void(jess::shared_ptr<n30000::base>)> );
 
 
-nf::app::app()
+n10000::app::app()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -39,22 +39,22 @@ nf::app::app()
 	//m_network = 0;
 	//m_platform = 0;
 }
-nf::app::~app()
+n10000::app::~app()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;//jess::clog.funcsig();//m_platform->ShutDown();
+	jess::clog << NEB_FUNCSIG << std::endl;//jess::clog.fun30000sig();//m_platform->ShutDown();
 }
-void	nf::app::MainLoopSequ()
+void	n10000::app::MainLoopSequ()
 {
 	while(1)
 	{
 		ContinueLoopSequ();
 	}
 }
-void	nf::app::MainLoopMulti()
+void	n10000::app::MainLoopMulti()
 {
 
 }
-void	nf::app::ContinueLoopSequ()
+void	n10000::app::ContinueLoopSequ()
 {
 	//if ( !m_content )  throw Except("m_content is null");
 	//if ( !m_platform ) throw Except("m_platform is null");
@@ -68,45 +68,45 @@ void	nf::app::ContinueLoopSequ()
 		renderable_->render();
 	}
 }
-void	nf::app::ContinueLoopMulti()
+void	n10000::app::ContinueLoopMulti()
 {
 
 }
-void	nf::app::init()
+void	n10000::app::init()
 {
 	// log
-	jess::clog << NEB_FUNCSIG << std::endl;//.funcsig();//jess::clog << NEB_FUNCSIG << std::endl;
+	jess::clog << NEB_FUNCSIG << std::endl;//.fun30000sig();//jess::clog << NEB_FUNCSIG << std::endl;
 
 	// make sure content_ and platform_ are null before reseting them
 	jess::assertion( !( content_ || platform_ ) );
 	
 	
-	content_.reset( new nc::base );
+	content_.reset( new n30000::base );
 	content_->init( shared_from_this() );
 	
 	#ifdef __LIN__
-		platform_.reset( new nppl::base );
+		platform_.reset( new n21100::base );
 	#elif defined(__WIN__)
-		platform_.reset( new nppw::base );
+		platform_.reset( new n21200::base );
 	#endif
 	
 	platform_->init( shared_from_this() );
 }
-void	nf::app::shutdown()
+void	n10000::app::shutdown()
 {
 	// log
-	jess::clog << NEB_FUNCSIG << std::endl;//jess::clog.funcsig();
+	jess::clog << NEB_FUNCSIG << std::endl;//jess::clog.fun30000sig();
 
 	content_->shutdown();
 	//network->Shutdown(NULL);
 	platform_->shutdown();
 }
-jess::shared_ptr<npw::base>	nf::app::request_window()
+jess::shared_ptr<n22000::base>	n10000::app::request_window()
 {
 	// request
 	return ( platform_->request_window() );
 }
-jess::shared_ptr<npp::base>	nf::app::get_platform()
+jess::shared_ptr<n21000::base>	n10000::app::get_platform()
 {
 	// get
 	return platform_;

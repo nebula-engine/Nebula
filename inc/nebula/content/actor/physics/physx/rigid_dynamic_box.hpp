@@ -17,7 +17,7 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class rigid_dynamic_box:
-					public ncapp::rigid_dynamic
+					public n34200p::rigid_dynamic
 				{
 				public:
 					///@name ctor and dtor
@@ -39,7 +39,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init( jess::shared_ptr<ncaa::base> );
+					virtual	void								init( jess::shared_ptr<n34100::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

@@ -1,24 +1,24 @@
 #include <nebula/content/actor/physics/rigid_static_plane.hpp>
 
 
-namespace nca = nebula::content::actor;
+namespace n30000a = nebula::content::actor;
 
-nca::physics::rigid_static_plane::~rigid_static_plane()
+n34200::rigid_static_plane::~rigid_static_plane()
 {
 }
-void	nca::physics::rigid_static_plane::init( jess::shared_ptr<nca::admin::base> parent )
+void	n34200::rigid_static_plane::init( jess::shared_ptr<n34100::base> parent )
 {
-	nca::physics::rigid_static::init(parent);
+	n34200::rigid_static::init(parent);
 }
-void	nca::physics::rigid_static_plane::shutdown()
-{
-	
-}
-void	nca::physics::rigid_static_plane::update()
+void	n34200::rigid_static_plane::shutdown()
 {
 	
 }
-void	nca::physics::rigid_static_plane::step(FLOAT dt)
+void	n34200::rigid_static_plane::update()
+{
+	
+}
+void	n34200::rigid_static_plane::step(float dt)
 {
 	
 }

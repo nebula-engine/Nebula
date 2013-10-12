@@ -43,7 +43,7 @@ namespace content
 				/// update
 				virtual	void								update();
 				/// step
-				virtual	void								step(FLOAT);
+				virtual	void								step(float);
 				/// render
 				virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 				

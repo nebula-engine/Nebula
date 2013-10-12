@@ -1,42 +1,42 @@
 #include <nebula/content/actor/physics/rigid_dynamic.hpp>
 
-namespace nca = nebula::content::actor;
+namespace n30000a = nebula::content::actor;
 
-nca::physics::rigid_dynamic::rigid_dynamic()
+n34200::rigid_dynamic::rigid_dynamic()
 {
 }
-nca::physics::rigid_dynamic::~rigid_dynamic()
+n34200::rigid_dynamic::~rigid_dynamic()
 {
 }
-ncap::rigid_dynamic::rigid_dynamic( const ncap::rigid_dynamic& act )
+n34200::rigid_dynamic::rigid_dynamic( const n34200::rigid_dynamic& act )
 {
 
 }
-ncap::rigid_dynamic&	ncap::rigid_dynamic::operator=( const ncap::rigid_dynamic& act )
+n34200::rigid_dynamic&	n34200::rigid_dynamic::operator=( const n34200::rigid_dynamic& act )
 {
 	return *this;
 }
-void	nca::physics::rigid_dynamic::init( jess::shared_ptr<nca::admin::base> parent )
+void	n34200::rigid_dynamic::init( jess::shared_ptr<n34100::base> parent )
 {
-	ncap::rigid_body::init( parent );
+	n34200::rigid_body::init( parent );
 }
-void	nca::physics::rigid_dynamic::shutdown()
-{
-	
-}
-void	nca::physics::rigid_dynamic::update()
+void	n34200::rigid_dynamic::shutdown()
 {
 	
 }
-void	nca::physics::rigid_dynamic::step(FLOAT)
+void	n34200::rigid_dynamic::update()
+{
+	
+}
+void	n34200::rigid_dynamic::step(float)
 {
 
 }
-void	ncap::rigid_dynamic::render( jess::shared_ptr<npr::base> rnd )
+void	n34200::rigid_dynamic::render( jess::shared_ptr<n23000::base> rnd )
 {
 
 }
-void	ncap::rigid_dynamic::create_shape()
+void	n34200::rigid_dynamic::create_shape()
 {
 
 }

@@ -4,13 +4,13 @@
 
 #include <nebula/content/actor/physics/material.hpp>
 
-nca::physics::material::material()
+n34200::material::material()
 {
 
 }
-void	nca::physics::material::init( jess::shared_ptr<ncaa::material> parent )
+void	n34200::material::init()
 {
-	parent_ = parent;
+	
 }
 
 

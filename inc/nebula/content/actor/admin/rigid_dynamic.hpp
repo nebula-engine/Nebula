@@ -17,7 +17,7 @@ namespace content
 		{
 			/// rigid dynamic
 			class rigid_dynamic:
-				public ncaa::rigid_body
+				public n34100::rigid_body
 			{
 			public:
 				///@name ctor and dtor
@@ -45,7 +45,7 @@ namespace content
 				/// update
 				virtual	void								update();
 				/// step
-				virtual	void								step( FLOAT );
+				virtual	void								step( float );
 				/// render
 				virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 				

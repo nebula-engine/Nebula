@@ -7,15 +7,16 @@
 #include <nebula/content/physics/base.hpp>
 #include <nebula/content/universe/admin/base.hpp>
 #include <nebula/content/scene/physics/base.hpp>
-#include <nebula/content/scene/physics/physx/base.hpp>
 #include <nebula/content/scene/renderer/base.hpp>
 #include <nebula/content/view/admin/human/base.hpp>
 #include <nebula/content/actor/admin/rigid_dynamic_box.hpp>
+#include <nebula/content/actor/physics/rigid_dynamic_box.hpp>
 #include <nebula/content/actor/admin/controller.hpp>
+#include <nebula/content/actor/physics/controller.hpp>
 
 #include <nebula/content/scene/admin/base.hpp>
 
-nc_sc_a::base::base()
+n32100::base::base()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -24,25 +25,25 @@ nc_sc_a::base::base()
 	step_size_ = 1.0f / 60.0f;
 	time( &last_ );	
 }
-nc_sc_a::base::~base()
+n32100::base::~base()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-jess::shared_ptr<nebula::content::base>	nc_sc_a::base::get_content()
+jess::shared_ptr<nebula::content::base>	n32100::base::get_content()
 {
 	jess::assertion( !parent_.expired() );	
-	jess::shared_ptr<ncua::base> uni = parent_.lock();
+	jess::shared_ptr<n31100::base> uni = parent_.lock();
 	
 	jess::assertion( !uni->parent_.expired() );
-	jess::shared_ptr<nc::base> cont = uni->parent_.lock();
+	jess::shared_ptr<n30000::base> cont = uni->parent_.lock();
 	
 	
 	jess::assertion( bool( cont ) );
 
 	return cont;
 }
-void						nc_sc_a::base::init( jess::shared_ptr<ncua::base> parent )
+void						n32100::base::init( jess::shared_ptr<n31100::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -50,35 +51,26 @@ void						nc_sc_a::base::init( jess::shared_ptr<ncua::base> parent )
 	parent_ = parent;
 
 
-	jess::cout << NEB_FUNCSIG << " test 1" << std::endl;
 
 	// physics
-#ifdef __PHYSX
-	physics_.reset( new nc_sc_pp::base );
-#else
-	physics_.reset( new nc_sc_p::base );
-#endif
+	physics_.reset( new n32200::base );
 	physics_->init( shared_from_this() );
+	
 
-
-
-	jess::cout << NEB_FUNCSIG << " test 2" << std::endl;
-
-
-	get_content()->register_scene( shared_from_this() );
+	//get_content()->register_scene( shared_from_this() );
 }
-void						nc_sc_a::base::shutdown()
+void						n32100::base::shutdown()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	actors_.foreach( std::bind( &ncaa::base::shutdown, std::placeholders::_1 ) );
+	actors_.foreach( std::bind( &n34100::base::shutdown, std::placeholders::_1 ) );
 	actors_.clear();
 
-	views_.foreach( std::bind( &ncva::base::shutdown, std::placeholders::_1 ) );
+	views_.foreach( std::bind( &n33100::base::shutdown, std::placeholders::_1 ) );
 	views_.clear();
 }
-void						nc_sc_a::base::update()
+void						n32100::base::update()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -99,47 +91,57 @@ void						nc_sc_a::base::update()
 		step( step_size_ );
 	}
 
-	actors_.foreach( std::bind( &ncaa::base::update, std::placeholders::_1 ) );
+	actors_.foreach( std::bind( &n34100::base::update, std::placeholders::_1 ) );
 
-	views_.foreach( std::bind( &ncva::base::update, std::placeholders::_1 ) );
+	views_.foreach( std::bind( &n33100::base::update, std::placeholders::_1 ) );
 }
-void						nc_sc_a::base::step( FLOAT dt )
+void						n32100::base::step( float dt )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	actors_.foreach( std::bind( &ncaa::base::step, std::placeholders::_1, dt ) );
+	actors_.foreach( std::bind( &n34100::base::step, std::placeholders::_1, dt ) );
 }
-void						nc_sc_a::base::render( jess::shared_ptr<npr::base> rnd )
+void						n32100::base::render( jess::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	actors_.foreach( std::bind( &ncaa::base::render, std::placeholders::_1, rnd ) );
+	actors_.foreach( std::bind( &n34100::base::render, std::placeholders::_1, rnd ) );
 }
-jess::shared_ptr<ncaa::rigid_dynamic_box>	nc_sc_a::base::create_rigid_dynamic_box()
+jess::shared_ptr<n34100::rigid_dynamic_box>	n32100::base::create_rigid_dynamic_box()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// create
-	jess::shared_ptr<ncaa::rigid_dynamic_box> act( new ncaa::rigid_dynamic_box );
+	jess::shared_ptr<n34100::rigid_dynamic_box> act = parent_.lock()->create_rigid_dynamic_box();
 
-	actors_.push<ncaa::rigid_dynamic_box>( act );
+	/*( new n34100::rigid_dynamic_box() );
+	
+	act->physics_ = std::static_pointer_cast<n34200::base>( physics_->create_rigid_dynamic_box() );
+	
+	act->init( shared_from_this() );*/
+	
 
-	act->init( shared_from_this() );
 
+
+
+	// store
+	actors_.push<n34100::rigid_dynamic_box>( act );
+	
+
+	
+	
 	//jess::assertion( bool( act ) );	
-
-	register_rigid_dynamic( act );
-
+	
+	//register_rigid_dynamic( act );
+	
 	return act;
 }
-void						nc_sc_a::base::register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dynamic> act )
+/*void						n32100::base::register_rigid_dynamic( jess::shared_ptr<n34100::rigid_dynamic> act )
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// content physics
-	jess::shared_ptr<ncp::base> cont_phys = get_content()->physics_.get();
+	jess::shared_ptr<n36000::base> cont_phys = get_content()->physics_.get();
 
 	// register
 	cont_phys->register_rigid_dynamic( act );
@@ -152,47 +154,40 @@ void						nc_sc_a::base::register_rigid_dynamic( jess::shared_ptr<ncaa::rigid_dy
 
 	// Add the actor to the CO_SC_PH_Scene object
 	physics_->register_actor( act );
-}
-jess::shared_ptr<ncaa::controller>		nc_sc_a::base::create_controller()
+}*/
+jess::shared_ptr<n34100::controller>		n32100::base::create_controller()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	jess::shared_ptr<ncaa::controller> act( new ncaa::controller );
+	jess::shared_ptr<n34100::controller> act = parent_.lock()->create_controller( shared_from_this() );
 
-	//actors_.push<ncaa::controller>( act, std::bind( &ncaa::controller::init, std::placeholders::_1, shared_from_this() ) );
-
-	actors_.push<ncaa::controller>( act );
-
-	//act.reset( new ncaa::controller );
-
-	//jess::cout << "act.use_count()=" << act.use_count() << std::endl;
-
-	//jess::shared_ptr<ncaa::actor> test_act( new ncaa::actor );
-	//test_act->init( shared_from_this() );
-
-	//jess::shared_ptr<ncaa::controller> test_act2( new ncaa::controller );
-	//test_act2->init( shared_from_this() );
-
-	act->init( shared_from_this() );
-
-	// register controller with global physics object
-	jess::shared_ptr<nc::base> cont = get_content();
-
-	jess::shared_ptr<ncp::base> cont_phys = cont->physics_;
-	jess::assertion( bool( cont_phys ) );
-	jess::assertion( !cont_phys->parent_.expired() );
+	// create
+	/*jess::shared_ptr<n34100::controller> act( new n34100::controller );
 	
-	//ncp::base test = *cont_phys;
-	//ncaa::controller text_act = *act;
+	act->physics_ = std::static_pointer_cast<n34200::base>( physics_->create_controller() );
+	
+	act->init( shared_from_this() );*/
 
-	cont_phys->register_controller( act );
-
+	// store
+	actors_.push<n34100::controller>( act );
+	
 	return act;
 }
-jess::shared_ptr<npw::base>	nc_sc_a::base::request_window()
+/*jess::shared_ptr<n34200::rigid_dynamic_box>	n32100::base::create_physics_rigid_dynamic_box()
+{
+	
+}
+jess::shared_ptr<n34200::controller>		n32100::base::create_physics_controller()
+{
+	
+}*/
+jess::shared_ptr<n22000::base>	n32100::base::request_window()
 {
 	return ( parent_.lock()->request_window() );
+}
+jess::shared_ptr<n34200::material>	n32100::base::request_physics_material()
+{
+	return ( parent_.lock()->request_physics_material() );
 }
 
 

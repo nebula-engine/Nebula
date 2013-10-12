@@ -9,7 +9,7 @@
 #include <nebula/content/animation/frame.hpp>
 
 
-void	nebula::content::animation::frame::step(FLOAT dt)
+void	nebula::content::animation::frame::step(float dt)
 {
 	auto it = m_children.begin();
 	for ( ; it != m_children.end(); it++ )
@@ -27,11 +27,12 @@ void	nebula::content::animation::frame::AddActor(nebula::content::actor::admin::
 }
 
 
-nebula::content::animation::translation::translation(boost::numeric::ublas::vector<FLOAT>& v)
+nebula::content::animation::translation::translation( physx::PxVec3 rate ):
+	rate_(rate)
 {
-	m_rate = v;
+	
 }
-void	nebula::content::animation::translation::step(FLOAT dt)
+void	nebula::content::animation::translation::step(float dt)
 {
 	//m_pose.p += m_rate * dt;
 

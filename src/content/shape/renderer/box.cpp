@@ -7,53 +7,43 @@
 #include <nebula/content/shape/admin/box.hpp>
 
 #include <nebula/platform/renderer/base.hpp>
+#include <nebula/platform/renderer/scoped_matrix.hpp>
 
 #include <nebula/content/shape/renderer/box.hpp>
 #include <nebula/ns.hpp>
 
-ncsr::box::box()
+n35300::box::box()
 {
 
 }
-ncsr::box::~box()
+n35300::box::~box()
 {
 
 }
-void	ncsr::box::init( jess::shared_ptr<ncs::admin::box> parent )
+void	n35300::box::init( jess::shared_ptr<n35100::box> parent )
 {
 	parent_ = parent;
 }
-void	ncsr::box::shutdown()
+void	n35300::box::shutdown()
 {
-	
+
 }
-void	ncsr::box::render( jess::shared_ptr<nebula::platform::renderer::base> rnd )
+void	n35300::box::render( jess::shared_ptr<nebula::platform::renderer::base> rnd )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
-	
 
-	jess::shared_ptr<ncs::admin::box> parent = std::dynamic_pointer_cast<ncs::admin::box>( parent_.lock() );
+	jess::shared_ptr<n35100::box> parent = std::dynamic_pointer_cast<n35100::box>( parent_.lock() );
 	
-	//jess::assertion( bool(rnd) ); // throw Except("renderer is null");
+	jess::assertion( bool( rnd ) );	
 	
-	
-	//jess::assertion( bool(parent) ); // throw Except("m_co_sh_ad_box is null");
+	{
+		n23000::scoped_matrix scoped_matrix( rnd );
 
-	/// \todo fix access to grandparent and pose
-	jess::shared_ptr<nca::admin::rigid_actor> grandparent = parent->parent_.lock();
-	
-	//jess::assertion( bool(grandparent) ); // throw Except("m_co_sh_ad_box->Get_ncaa::rigid_actor() is null");
-	
-	// store transform
-	bnu::matrix<FLOAT> pose = grandparent->get_pose();
-	
-	
-	rnd->push_matrix();
-	rnd->mult_matrix( pose );
-	rnd->scale( parent->get_scale() );
-	rnd->draw_cube();
-	rnd->pop_matrix();
+		rnd->mult_matrix( parent->get_pose() );
+		rnd->scale( parent->get_scale() );
+		rnd->draw_cube();
+	}
 }
 
 

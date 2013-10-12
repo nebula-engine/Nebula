@@ -15,7 +15,7 @@ namespace nebula
 			{
 				/// rigid static
 				class rigid_static:
-					virtual public ncap::rigid_actor
+					virtual public n34200::rigid_actor
 				{
 				public:
 					/// ctor
@@ -32,7 +32,7 @@ namespace nebula
 					/// Render
 					virtual	void						render( jess::shared_ptr<nebula::platform::renderer::base> );
 					/// Step
-					virtual	void						step( FLOAT );
+					virtual	void						step( float );
 					
 					
 					

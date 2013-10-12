@@ -28,10 +28,10 @@ namespace nebula
 					/// assignment
 					base&						operator=( const base& scene ) { return *this; }
 					
-					///@name standard functions
+					///@name standard fun30000tions
 					///@{
 					/// Initialize
-					virtual	void					init( jess::shared_ptr<nc_sc_a::base> );
+					virtual	void					init( jess::shared_ptr<n32100::base> );
 					/// ShutDown
 					virtual	void					shutdown();
 					/// Update
@@ -39,11 +39,11 @@ namespace nebula
 					/// step
 					void						step( float dt );
 					/// render
-					void						render( jess::shared_ptr<npr::base> );
+					void						render( jess::shared_ptr<n23000::base> );
 					///@}
 
 					/*
-					///@name create functions
+					///@name create fun30000tions
 					///@{
 					/// RigidDynamicBox
 					void						CreateRigidDynamicBox( CoCO_AC_AD_RigidDynamicBox*& rigidDynamicBox );
@@ -53,7 +53,7 @@ namespace nebula
 
 
 
-					///@name register functions
+					///@name register fun30000tions
 					///@{
 					/// RigidDynamic
 					void							RegisterRigidDynamic( ::CO_AC_AD_RigidDynamic* rigidDynamic );
@@ -91,7 +91,7 @@ namespace nebula
 
 
 
-					///@name individual view functions
+					///@name individual view fun30000tions
 					///@{
 					/// update view
 					//void					ViewUpdate( View* view );
@@ -101,7 +101,7 @@ namespace nebula
 
 					/**
 					 * Create a ViewHuman object
-					 @param [out] viewHuman reference to pointer to new object
+					 @param [out] viewHuman referen30000e to pointer to new object
 					 */
 					//void					CreateViewHuman( ::Content::ViewHuman*& viewHuman );
 					/*
@@ -130,7 +130,7 @@ namespace nebula
 
 					///@name time
 					///@{
-					/// time since last step
+					/// time sin30000e last step
 					float	m_accumulator;
 					/// step size
 					float	m_stepSize;
@@ -146,20 +146,20 @@ namespace nebula
 }
 
 /*
-/// functionoid to step ActorBase
-class Funct_ActorBase_Step: public Funct<CO_AC_AD_ActorBase,CO_SC_AD_Scene> {
+/// fun30000tionoid to step ActorBase
+class Fun30000t_ActorBase_Step: public Fun30000t<CO_AC_AD_ActorBase,CO_SC_AD_Scene> {
 public:
 /// Constructor
-Funct_ActorBase_Step( CO_SC_AD_Scene* scene ): Funct<CO_AC_AD_ActorBase,CO_SC_AD_Scene>(scene) {}
+Fun30000t_ActorBase_Step( CO_SC_AD_Scene* scene ): Fun30000t<CO_AC_AD_ActorBase,CO_SC_AD_Scene>(scene) {}
 /// doit
 void	doit( CO_AC_AD_ActorBase* actorBase );
 };
 
-/// functionoid to render ActorBase
-class Funct_ActorBase_Render: public Funct<CO_AC_AD_ActorBase,CO_SC_AD_Scene> {
+/// fun30000tionoid to render ActorBase
+class Fun30000t_ActorBase_Render: public Fun30000t<CO_AC_AD_ActorBase,CO_SC_AD_Scene> {
 public:
 /// Constructor
-Funct_ActorBase_Render( CO_SC_AD_Scene* scene, Platform::Renderer::Renderer* render ): Funct<CO_AC_AD_ActorBase,CO_SC_AD_Scene>(scene), m_render(render) {}
+Fun30000t_ActorBase_Render( CO_SC_AD_Scene* scene, Platform::Renderer::Renderer* render ): Fun30000t<CO_AC_AD_ActorBase,CO_SC_AD_Scene>(scene), m_render(render) {}
 /// doit
 void	doit( CO_AC_AD_ActorBase* actorBase );
 
@@ -167,11 +167,11 @@ void	doit( CO_AC_AD_ActorBase* actorBase );
 Platform::Renderer::Renderer*	m_render;
 };
 
-/// functionoid to update View
-class Funct_View_Update: public Funct<Content::View,CO_SC_AD_Scene> {
+/// fun30000tionoid to update View
+class Fun30000t_View_Update: public Fun30000t<Content::View,CO_SC_AD_Scene> {
 public:
 /// Constructor
-Funct_View_Update( CO_SC_AD_Scene* scene ): Funct<Content::View,CO_SC_AD_Scene>(scene) {}
+Fun30000t_View_Update( CO_SC_AD_Scene* scene ): Fun30000t<Content::View,CO_SC_AD_Scene>(scene) {}
 /// doit
 void	doit( Content::View* actorBase );
 };

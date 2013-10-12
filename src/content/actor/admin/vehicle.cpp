@@ -1,30 +1,30 @@
 #include <nebula/content/actor/admin/vehicle.hpp>
 
-	ncaa::vehicle::vehicle() {
+	n34100::vehicle::vehicle() {
 }
-    ncaa::vehicle::~vehicle(){
+    n34100::vehicle::~vehicle(){
 }
     
 
-void	ncaa::vehicle::init( jess::shared_ptr<nc_sc_a::base> parent )
+void	n34100::vehicle::init( jess::shared_ptr<n32100::base> parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
-	ncaa::base::init( parent );
+	n34100::base::init( parent );
 }
-void	ncaa::vehicle::shutdown() {
+void	n34100::vehicle::shutdown() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
-void	ncaa::vehicle::update() {
+void	n34100::vehicle::update() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
-void	ncaa::vehicle::render( jess::shared_ptr<npr::base> rnd )
+void	n34100::vehicle::render( jess::shared_ptr<n23000::base> rnd )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
-void	ncaa::vehicle::step( FLOAT dt ) {
+void	n34100::vehicle::step( float dt ) {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }

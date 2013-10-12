@@ -17,7 +17,7 @@ namespace nebula
 		{
 			/// base
 			class base:
-				public jess::enable_shared_from_this<npw::base>
+				public jess::enable_shared_from_this<n22000::base>
 			{
 			public:
 				///@name Constructor and Destructor
@@ -42,7 +42,7 @@ namespace nebula
 				
 				virtual int					lookup_key( int );
 				
-				std::weak_ptr<npp::base>			parent_;
+				std::weak_ptr<n21000::base>			parent_;
 				
 				int						no_;
 				bool						m_hasFocus;
@@ -70,7 +70,7 @@ namespace nebula
 				int						center_y_;
 			
 
-				jess::shared_ptr<npr::base>			renderer_;
+				jess::shared_ptr<n23000::base>			renderer_;
 			};
 		}
 	}

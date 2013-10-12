@@ -11,19 +11,19 @@
 
 #include <nebula/platform/window/lin/base.hpp>
 
-npwl::base::base()
+n22100::base::base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-npwl::base::~base()
+n22100::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	npwl::base::init( jess::shared_ptr<npp::base> parent )
+void	n22100::base::init( jess::shared_ptr<n21000::base> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	npw::base::init( parent );
+	n22000::base::init( parent );
 
 	register_keys();
 
@@ -77,7 +77,7 @@ void	npwl::base::init( jess::shared_ptr<npp::base> parent )
 	center_pointer();
 
 	// create renderer
-	jess::shared_ptr<nprgg::base> rnd_glx( new nprgg::base() );
+	jess::shared_ptr<n23110::base> rnd_glx( new n23110::base() );
 
 	renderer_ = rnd_glx;
 
@@ -117,53 +117,53 @@ void	npwl::base::init( jess::shared_ptr<npp::base> parent )
 
 	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
-void	npwl::base::register_keys()
+void	n22100::base::register_keys()
 {
 
-	keys_[XK_space]			= np::key::space;
-	keys_[XK_BackSpace]		= np::key::backspace;
-	keys_[XK_Linefeed]		= np::key::linefeed;
-	keys_[XK_Left]			= np::key::left;
-	keys_[XK_Right]			= np::key::right;
-	keys_[XK_Down]			= np::key::down;
-	keys_[XK_Up]			= np::key::up;
-	keys_['a']			= np::key::a;
-	keys_['b']			= np::key::b;
-	keys_['c']			= np::key::c;
-	keys_['d']			= np::key::d;
-	keys_['e']			= np::key::e;
-	keys_['f']			= np::key::f;
-	keys_['g']			= np::key::g;
-	keys_['h']			= np::key::h;
-	keys_['i']			= np::key::i;
-	keys_['j']			= np::key::j;
-	keys_['k']			= np::key::k;
-	keys_['l']			= np::key::l;
-	keys_['m']			= np::key::m;
-	keys_['n']			= np::key::n;
-	keys_['o']			= np::key::o;
-	keys_['p']			= np::key::p;
-	keys_['q']			= np::key::q;
-	keys_['r']			= np::key::r;
-	keys_['s']			= np::key::s;
-	keys_['t']			= np::key::t;
-	keys_['u']			= np::key::u;
-	keys_['v']			= np::key::v;
-	keys_['w']			= np::key::w;
-	keys_['x']			= np::key::x;
-	keys_['y']			= np::key::y;
-	keys_['z']			= np::key::z;
+	keys_[XK_space]			= n20000::key::space;
+	keys_[XK_BackSpace]		= n20000::key::backspace;
+	keys_[XK_Linefeed]		= n20000::key::linefeed;
+	keys_[XK_Left]			= n20000::key::left;
+	keys_[XK_Right]			= n20000::key::right;
+	keys_[XK_Down]			= n20000::key::down;
+	keys_[XK_Up]			= n20000::key::up;
+	keys_['a']			= n20000::key::a;
+	keys_['b']			= n20000::key::b;
+	keys_['c']			= n20000::key::c;
+	keys_['d']			= n20000::key::d;
+	keys_['e']			= n20000::key::e;
+	keys_['f']			= n20000::key::f;
+	keys_['g']			= n20000::key::g;
+	keys_['h']			= n20000::key::h;
+	keys_['i']			= n20000::key::i;
+	keys_['j']			= n20000::key::j;
+	keys_['k']			= n20000::key::k;
+	keys_['l']			= n20000::key::l;
+	keys_['m']			= n20000::key::m;
+	keys_['n']			= n20000::key::n;
+	keys_['o']			= n20000::key::o;
+	keys_['p']			= n20000::key::p;
+	keys_['q']			= n20000::key::q;
+	keys_['r']			= n20000::key::r;
+	keys_['s']			= n20000::key::s;
+	keys_['t']			= n20000::key::t;
+	keys_['u']			= n20000::key::u;
+	keys_['v']			= n20000::key::v;
+	keys_['w']			= n20000::key::w;
+	keys_['x']			= n20000::key::x;
+	keys_['y']			= n20000::key::y;
+	keys_['z']			= n20000::key::z;
 	
 
 }
-void	npwl::base::shutdown()
+void	n22100::base::shutdown()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 	XFreeGC( m_xdisplay, m_gc );
 	XDestroyWindow( m_xdisplay, m_xwindow );
 }
-void	npwl::base::update()
+void	n22100::base::update()
 {
 	
 	XEvent xevent;
@@ -233,11 +233,11 @@ void	npwl::base::update()
 		}
 	}
 }
-void	npwl::base::process_message( jess::shared_ptr<na::message> msg )
+void	n22100::base::process_message( jess::shared_ptr<n40000::message> msg )
 {
 	
 }
-void	npwl::base::expose_window( XEvent xevent )
+void	n22100::base::expose_window( XEvent xevent )
 {
 	XWindowAttributes gwa;
 	int status = 0;
@@ -283,7 +283,7 @@ void	npwl::base::expose_window( XEvent xevent )
 		center_pointer();		
 	}
 }
-void	npwl::base::focus_change(XEvent xevent)
+void	n22100::base::focus_change(XEvent xevent)
 {
 	switch ( xevent.type )
 	{
@@ -296,7 +296,7 @@ void	npwl::base::focus_change(XEvent xevent)
 		break;
 	}
 }
-void	npwl::base::center_pointer()
+void	n22100::base::center_pointer()
 {
 	// center curser
 	::Window src_w = None;
@@ -321,7 +321,7 @@ void	npwl::base::center_pointer()
 		dest_x,
 		dest_y);
 }
-int	npwl::base::lookup_key( int xkey )
+int	n22100::base::lookup_key( int xkey )
 {
 	return keys_[xkey];
 }

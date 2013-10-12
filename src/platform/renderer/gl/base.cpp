@@ -26,13 +26,13 @@ void GetGLError( GLenum error )
 		throw jess::except( "opengl error 10" );
 	}
 }
-void	nprg::base::init( jess::shared_ptr<npw::base> parent )
+void	n23100::base::init( jess::shared_ptr<n22000::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	// init parent
-	npr::base::init( parent );
+	n23000::base::init( parent );
 
 	printf( "OpenGL version %s\n", glGetString(GL_VERSION) );
 	printf( "GLSL   version %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION) );
@@ -75,7 +75,7 @@ void	nprg::base::init( jess::shared_ptr<npw::base> parent )
 	
 	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
-void	nprg::base::draw_cube()
+void	n23100::base::draw_cube()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -129,7 +129,7 @@ void	nprg::base::draw_cube()
 	glEnd();
 
 }
-void	nprg::base::draw_sphere()
+void	n23100::base::draw_sphere()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	/*
@@ -143,7 +143,7 @@ void	nprg::base::draw_sphere()
 
 	glBegin(GL_TRIANGLES);
 	
-	bnu::vector<FLOAT> v[6];
+	physx::PxVec3 v[6];
 	v[0] = new Math::Vec3f(1,0,0);
 	v[1] = new Math::Vec3f(0,1,0);
 	v[2] = new Math::Vec3f(0,0,1);
@@ -177,7 +177,7 @@ void	nprg::base::draw_sphere()
 	glEnd();
 	*/
 }
-void	nprg::base::unproject(int winX, int winY, int winZ, double* objX, double* objY, double* objZ)
+void	n23100::base::un23000oject(int winX, int winY, int winZ, double* objX, double* objY, double* objZ)
 {
 	GLdouble modelview[16];
 	GLdouble projection[16];
@@ -189,13 +189,13 @@ void	nprg::base::unproject(int winX, int winY, int winZ, double* objX, double* o
 	
 	/*GLint*/ gluUnProject(winX, winY, winZ, modelview, projection, viewport, objX, objY, objZ);
 }
-void	nprg::base::draw_window_quad(int win_x, int win_y, int w, int h)
+void	n23100::base::draw_window_quad(int win_x, int win_y, int w, int h)
 {
 	double obj_x1, obj_y1, obj_z1, obj_x2, obj_y2, obj_z2;
 	
 	
-	nprg::base::unproject(win_x,   win_y,   0, &obj_x1, &obj_y1, &obj_z1);
-	nprg::base::unproject(win_x+w, win_y+h, 0, &obj_x2, &obj_y2, &obj_z2);
+	n23100::base::un23000oject(win_x,   win_y,   0, &obj_x1, &obj_y1, &obj_z1);
+	n23100::base::un23000oject(win_x+w, win_y+h, 0, &obj_x2, &obj_y2, &obj_z2);
 
 	glPushMatrix();
 	glBegin(GL_QUADS);
@@ -206,7 +206,7 @@ void	nprg::base::draw_window_quad(int win_x, int win_y, int w, int h)
 	glEnd();
 	glPopMatrix();
 }
-void	nprg::base::draw_2d_quad()
+void	n23100::base::draw_2d_quad()
 {
 	glPushMatrix();
 	glBegin(GL_QUADS);
@@ -217,7 +217,7 @@ void	nprg::base::draw_2d_quad()
 	glEnd();
 	glPopMatrix();
 }
-void	nprg::base::draw_quad()
+void	n23100::base::draw_quad()
 {
 
 	glBegin(GL_QUADS);
@@ -228,7 +228,7 @@ void	nprg::base::draw_quad()
 	glEnd();
 
 }
-void	nprg::base::begin_render()
+void	n23100::base::begin_render()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear( GL_COLOR_BUFFER_BIT );
@@ -237,7 +237,7 @@ void	nprg::base::begin_render()
 	
 	
 }
-void	nprg::base::begin_3d()
+void	n23100::base::begin_3d()
 {
 	//glEnable( GL_CULL_FACE );
 	glEnable( GL_LIGHTING );
@@ -248,13 +248,13 @@ void	nprg::base::begin_3d()
 	glLoadIdentity();
 
 }
-void	nprg::base::end_3d()
+void	n23100::base::end_3d()
 {
 	glPopMatrix();
 }
-void	nprg::base::begin_2d()
+void	n23100::base::begin_2d()
 {
-	jess::shared_ptr<npw::base> wnd = parent_.lock();
+	jess::shared_ptr<n22000::base> wnd = parent_.lock();
 
 	glDisable( GL_CULL_FACE );
 	glDisable( GL_LIGHTING );
@@ -271,7 +271,7 @@ void	nprg::base::begin_2d()
 	glPushMatrix();
 	glLoadIdentity();
 }
-void	nprg::base::end_2d()
+void	n23100::base::end_2d()
 {
 	glPopMatrix();
 	
@@ -279,12 +279,12 @@ void	nprg::base::end_2d()
 	glPopMatrix();
 
 }
-void	nprg::base::end_render()
+void	n23100::base::end_render()
 {
 	glFlush();
 	swap();
 }
-void	nprg::base::light()
+void	n23100::base::light()
 {
 	GLfloat ambient[] = { 0.2, 0.2, 0.2, 1.0 };
 	GLfloat diffuse[] = { 1.0, 1.0, 1.0 };
@@ -294,23 +294,23 @@ void	nprg::base::light()
 	glLightfv( GL_LIGHT0, GL_DIFFUSE, diffuse );
 	glLightfv( GL_LIGHT0, GL_AMBIENT, ambient );
 }
-void	nprg::base::disable_lighting()
+void	n23100::base::disable_lighting()
 {
 	glDisable(GL_LIGHTING);
 }
-void	nprg::base::update()
+void	n23100::base::update()
 {
 
 }
-void	nprg::base::swap()
+void	n23100::base::swap()
 {
 
 }
-void	nprg::base::look_at( bnu::vector<float> eye, bnu::vector<float> center, bnu::vector<float> up )
+void	n23100::base::look_at( physx::PxVec3 eye, physx::PxVec3 center, physx::PxVec3 up )
 {
-	gluLookAt( eye(0), eye(1), eye(2), center(0), center(1), center(2), up(0), up(1), up(2) );
+	gluLookAt( eye.x, eye.y, eye.z, center.x, center.y, center.z, up.x, up.y, up.z );
 }
-void	nprg::base::resize( int width, int height )
+void	n23100::base::resize( int width, int height )
 {
 	glViewport(0, 0, width, height);
 	glMatrixMode(GL_PROJECTION);
@@ -319,28 +319,27 @@ void	nprg::base::resize( int width, int height )
 	glMatrixMode(GL_MODELVIEW); 
 	glLoadIdentity();
 }
-void	nprg::base::push_matrix()
+void	n23100::base::push_matrix()
 {
 	glPushMatrix();
 }
-void	nprg::base::mult_matrix( bnu::matrix<float,bnu::column_major> mat )
+void	n23100::base::mult_matrix( physx::PxMat44 mat )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-	//PrintPxMat44(matrix);
-
-	glMultMatrixf( &mat.data()[0] );
-
+	
+	glMultMatrixf( mat.front() );
+	
 	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
-void	nprg::base::scale( bnu::vector<float> v )
+void	n23100::base::scale( physx::PxVec3 v )
 {
-	glScalef( v(0), v(1), v(2) );
+	glScalef( v.x, v.y, v.z );
 }
-void	nprg::base::pop_matrix()
+void	n23100::base::pop_matrix()
 {
 	glPopMatrix();
 }
-void	nprg::base::compile_shaders( unsigned int& program )
+void	n23100::base::compile_shaders( unsigned int& program )
 {
 	unsigned int tcs;
 	unsigned int tes;
@@ -387,7 +386,7 @@ void	nprg::base::compile_shaders( unsigned int& program )
 
 	printf("shaders loaded\n");
 }
-void	nprg::base::load_shader_source( const char* filename, char ** const shader )
+void	n23100::base::load_shader_source( const char* filename, char ** const shader )
 {
 	FILE *		file = 0;
 	long		size = 0;
@@ -427,7 +426,7 @@ void	nprg::base::load_shader_source( const char* filename, char ** const shader 
 	// terminate
 	//delete[] buffer;
 }
-void	nprg::base::load_identity()
+void	n23100::base::load_identity()
 {
 	glLoadIdentity();
 }

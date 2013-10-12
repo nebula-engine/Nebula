@@ -13,7 +13,7 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class rigid_static_plane:
-					public ncar::rigid_static
+					public n34300::rigid_static
 				{
 				public:
 					///@name ctor and dtor
@@ -35,7 +35,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init( jess::shared_ptr<ncaa::base> );
+					virtual	void								init( jess::shared_ptr<n34100::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

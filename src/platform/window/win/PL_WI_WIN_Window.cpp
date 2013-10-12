@@ -33,13 +33,13 @@ void				Platform::WindowWin::init( const jess::shared_ptr<>&  ) {
 	wcex.lpfnWndProc	= WndProc;
 	wcex.cbClsExtra		= 0;
 	wcex.cbWndExtra		= 0;
-	wcex.hInstance		= m_hInst;
+	wcex.hInstan30000e		= m_hInst;
 	wcex.hIcon			= LoadIcon(m_hInst, MAKEINTRESOURCE(IDI_WIN32PROJECT1));
 	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground	= NULL;
 	wcex.lpszMenuName	= NULL;
 	wcex.lpszClassName	= szWindowClass;
-	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+	wcex.hIconSm		= LoadIcon(wcex.hInstan30000e, MAKEINTRESOURCE(IDI_SMALL));
 
 	RegisterClassEx(&wcex);
     
@@ -133,7 +133,7 @@ LRESULT				Platform::WindowWin::MsgProc(HWND hWnd, UINT message, WPARAM wParam, 
 	int width, height;
 	//short xPos, yPos;
 
-	//int (*WndProcFunc)( UINT, WPARAM, LPARAM ) = NULL;
+	//int (*WndProcFun30000)( UINT, WPARAM, LPARAM ) = NULL;
 
 
 	// handle message
@@ -160,7 +160,7 @@ LRESULT				Platform::WindowWin::MsgProc(HWND hWnd, UINT message, WPARAM wParam, 
 	case WM_MOUSEMOVE:
         if ( m_hasFocus )
 		{
-			//WndProcFunc( message, wParam, lParam );
+			//WndProcFun30000( message, wParam, lParam );
 		}
         break;
     case WM_LBUTTONDOWN:
@@ -169,7 +169,7 @@ LRESULT				Platform::WindowWin::MsgProc(HWND hWnd, UINT message, WPARAM wParam, 
     case WM_RBUTTONUP:
     case WM_KEYDOWN:
     case WM_KEYUP:
-		//WndProcFunc( message, wParam, lParam );
+		//WndProcFun30000( message, wParam, lParam );
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
@@ -194,7 +194,7 @@ int					Platform::WindowWin::setupPixelFormat(HDC hDC)
         0,                                      //no accumulation buffer
         0, 0, 0, 0,                             //ignore accumulation bits
         16,                                     //16 bit z-buffer size
-        0,                                      //no stencil buffer
+        0,                                      //no sten30000il buffer
         0,                                      //no aux buffer
         PFD_MAIN_PLANE,                         //main drawing plane
         0,                                      //reserved

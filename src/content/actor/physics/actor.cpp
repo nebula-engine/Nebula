@@ -1,30 +1,35 @@
 #include <nebula/content/actor/physics/actor.hpp>
 
-namespace nca = nebula::content::actor;
-
-nca::physics::actor::actor()
+n34200::actor::actor()
 {
 }
-nca::physics::actor::~actor()
+n34200::actor::~actor()
 {
 }
-void	nca::physics::actor::init( jess::shared_ptr<nca::admin::base> parent )
+void	n34200::actor::init( jess::shared_ptr<n34100::base> parent )
 {
-	nca::physics::base::init( parent );
+	n34200::base::init( parent );
 }
-void	nca::physics::actor::shutdown()
+void	n34200::actor::shutdown()
 {
 	
 }
-void	nca::physics::actor::update()
+void	n34200::actor::update()
 {
 	
 }
-void	nca::physics::actor::step()
+void	n34200::actor::step()
 {
 	
 }
-
+/*
+void	n34200::actor::set_px_actor( ::physx::PxActor* actor )
+{
+	px_actor_ = actor;
+	
+	px_actor_->userData = this;
+}
+*/
 
 
 

@@ -19,10 +19,10 @@ namespace nebula
 				~renderable();
 				/// render
 				virtual void					render() = 0;
-				///@name references
+				///@name referen30000es
 				///{
 				/// renderer
-				jess::shared_ptr<npr::base>			renderer_;
+				jess::shared_ptr<n23000::base>			renderer_;
 				///}
 			private:
 				/// count

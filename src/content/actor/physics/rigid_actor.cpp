@@ -1,48 +1,97 @@
+#include <nebula/content/actor/admin/rigid_actor.hpp>
+#include <nebula/content/actor/physics/material.hpp>
+#include <nebula/content/shape/physics/box.hpp>
+
 #include <nebula/content/actor/physics/rigid_actor.hpp>
 
-namespace nca = nebula::content::actor;
-
-ncap::rigid_actor::rigid_actor()
+n34200::rigid_actor::rigid_actor()
 {
 }
-ncap::rigid_actor::~rigid_actor()
+n34200::rigid_actor::~rigid_actor()
 {
 }
-ncap::rigid_actor::rigid_actor( const ncap::rigid_actor& act )
+n34200::rigid_actor::rigid_actor( const n34200::rigid_actor& act )
 {
 }
-ncap::rigid_actor&	ncap::rigid_actor::operator=( const ncap::rigid_actor& act )
+n34200::rigid_actor&	n34200::rigid_actor::operator=( const n34200::rigid_actor& act )
 {
 	return *this;
 }
-void	ncap::rigid_actor::init( jess::shared_ptr<nca::admin::base> parent )
+void	n34200::rigid_actor::init( jess::shared_ptr<n34100::base> parent )
 {
-	ncap::actor::init( parent );
+	n34200::actor::init( parent );
+
+/*	
+	
+	physx::PxPhysics* physics = m_app->GetContent()->GetPhysics()->GetPxPhysics();
+	physx::PxMaterial* material = 0;
+	
+	
+	
+	
+	n34200::material* material = (n34200p::Material*)m_material.Find(0);
+	
+	if(!material) throw("no material");
+	material->m_pxMaterial
+	
+	
+	
+	
+	material = m_pxPhysics->createMaterial(0.5f, 0.5f, 0.1f);    //static friction, dynamic friction, restitution
+	if(!material) throw("no material");
+
+
+*/
+
+	materials_.push( parent->create_physics_material() );
+
 }
-void	ncap::rigid_actor::shutdown()
+void	n34200::rigid_actor::shutdown()
 {
 	
 }
-void	ncap::rigid_actor::update()
+void	n34200::rigid_actor::update()
 {
 	
 }
-void	ncap::rigid_actor::step(FLOAT dt)
+void	n34200::rigid_actor::step(float dt)
 {
 	
 }
-void	ncap::rigid_actor::render( jess::shared_ptr<npr::base> rnd )
+void	n34200::rigid_actor::render( jess::shared_ptr<n23000::base> rnd )
 {
 
 }
-void	ncap::rigid_actor::create_shapes()
+void	n34200::rigid_actor::create_shapes()
 {
 
 }
+jess::shared_ptr<n35200::box>		n34200::rigid_actor::create_box()
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
+	jess::shared_ptr<n35200::box> box( new n35200::box() );
+	
+	// PxRigidActor
+	physx::PxRigidActor* px_rigid_actor = (physx::PxRigidActor*)px_actor_;
+	
+	// physics material
+	jess::shared_ptr<n34200::material> mat = materials_.at(0);
+	jess::assertion( bool( mat ) );
+	
+	// PxMaterial
+	::physx::PxMaterial* px_mat = mat->px_material_;
+	jess::assertion( bool( px_mat ) );
+		
+	// PxBoxGeometry
+	::physx::PxBoxGeometry px_geometry(1,1,1);
+	
+	// PxShape
+	box->px_shape_ = px_rigid_actor->createShape( px_geometry, *px_mat );
+	jess::assertion( bool( box->px_shape_ ) );
 
-
-
-
+	return box;
+}
 
 
 

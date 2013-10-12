@@ -9,7 +9,7 @@
 #include <nebula/content/actor/admin/controller.hpp>
 #include <nebula/content/actor/admin/rigid_static_plane.hpp>
 
-//template void nc::base::create_universe( boost::shared_ptr<box_client::content::universe::admin::base>& );
+//template void n30000::base::create_universe( boost::shared_ptr<box_client::content::universe::admin::base>& );
 
 
 bc0x100::app::app()
@@ -21,8 +21,10 @@ void	bc0x100::app::init()
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	nf::app::init();
+	n10000::app::init();
+
 	
+	//universe_ = content_->create_universe<n31100::base>( "box_client_universe.xml" );//<bc31100::base>();
 	universe_ = content_->create_universe<bc31100::base>();
 	
 	//jess::assertion( bool( universe_ ) );

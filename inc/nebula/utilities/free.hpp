@@ -7,10 +7,10 @@ namespace nebula
 {
 	namespace utilities
 	{
-		bnu::matrix<FLOAT,bnu::column_major>	matrix_yaw( FLOAT yaw );
-		bnu::matrix<FLOAT,bnu::column_major>	matrix_pitch( FLOAT pitch );
-		bnu::matrix<FLOAT,bnu::column_major>	matrix_roll( FLOAT roll );
-		void					matrix_set_pos( bnu::matrix<FLOAT>&, bnu::vector<FLOAT> );
+		//bnu::matrix<float,bnu::column_major>	matrix_yaw( float yaw );
+		//bnu::matrix<float,bnu::column_major>	matrix_pitch( float pitch );
+		//bnu::matrix<float,bnu::column_major>	matrix_roll( float roll );
+		//void					matrix_set_pos( bnu::matrix<float>&, bnu::vector<float> );
 	}
 }
 

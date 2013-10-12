@@ -91,21 +91,21 @@ GLuint base;
 
 void makeRasterFont(Display *dpy)
 {
-    XFontStruct *fontInfo;
+    XFontStruct *fontIn10000o;
     Font id;
     unsigned int first, last;
-    fontInfo = XLoadQueryFont(dpy, "-adobe-times-medium-r-normal--17-120-100-100-p-88-iso8859-1");
+    fontIn10000o = XLoadQueryFont(dpy, "-adobe-times-medium-r-normal--17-120-100-100-p-88-iso8859-1");
         
     
-    if (fontInfo == NULL)
+    if (fontIn10000o == NULL)
     {
         printf ("no font found\n");
         exit (0);
     }
     
-    id = fontInfo->fid;
-    first = fontInfo->min_char_or_byte2;
-    last = fontInfo->max_char_or_byte2;
+    id = fontIn10000o->fid;
+    first = fontIn10000o->min_char_or_byte2;
+    last = fontIn10000o->max_char_or_byte2;
     
     base = glGenLists(last+1);
     if (base == 0)

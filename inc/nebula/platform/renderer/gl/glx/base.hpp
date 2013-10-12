@@ -27,7 +27,7 @@ namespace nebula
 				{
 					/// base
 					class base:
-						public nprg::base
+						public n23100::base
 					{
 						public:
 							///@name draw
@@ -36,7 +36,7 @@ namespace nebula
 							virtual void						draw_cube();
 							///}
 							/// init			
-							virtual void						init( jess::shared_ptr<npw::base> );
+							virtual void						init( jess::shared_ptr<n22000::base> );
 							virtual void						init_raster_font();
 							/// shutdown			
 							virtual void						shutdown();
@@ -53,11 +53,11 @@ namespace nebula
 							/// swap
 							virtual void						swap();
 							/// mult_matrix
-							virtual void						mult_matrix( bnu::matrix<FLOAT> );
+							virtual void						mult_matrix( physx::PxMat44 );
 							/// scale
-							virtual void						scale( bnu::vector<FLOAT> );
+							virtual void						scale( physx::PxVec3 );
 							/// look at
-							virtual void						look_at( bnu::vector<FLOAT>, bnu::vector<FLOAT>, bnu::vector<FLOAT> ); 
+							virtual void						look_at( physx::PxVec3, physx::PxVec3, physx::PxVec3 ); 
 							/// light
 							virtual void						light();
 							/// begin render
@@ -68,7 +68,7 @@ namespace nebula
 							virtual void						draw_window_quad( int, int, int, int );
 							/// attributes
 							GLint*							att;
-							/// visual info
+							/// visual in10000o
 							XVisualInfo*						m_vi;
 							/// colormap
 							Colormap						m_cmap;

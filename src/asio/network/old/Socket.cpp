@@ -75,7 +75,7 @@ void Socket::cleanUp() throw(SocketException) {
   #endif
 }
 unsigned short Socket::resolveService(const string &service, const string &protocol) {
-  struct servent *serv;        /* Structure containing service information */
+  struct servent *serv;        /* Structure containing service in10000ormation */
 
   if ((serv = getservbyname(service.c_str(), protocol.c_str())) == NULL)
     return atoi(service.c_str());  /* Service is port number */

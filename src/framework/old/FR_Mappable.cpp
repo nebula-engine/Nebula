@@ -13,7 +13,7 @@ namespace Framework {
 		friend class MapPtr<CO_UN_AD_Universe>;
 		friend class MapPtr<CO_SC_AD_Scene>;
 		friend class MapPtr<CO_VI_AD_View>;
-		friend class MapPtr<ncaa::base>;
+		friend class MapPtr<n34100::base>;
 		friend class MapPtr<CO_AC_PH_Material>;
 		friend class MapPtr<CO_SH_AD_Shape>;
 		friend class MapPtr<PL_WI_Window>;

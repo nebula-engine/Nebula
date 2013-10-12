@@ -1,7 +1,8 @@
 #ifndef __NEBULA_CONTENT_SHAPE_ADMIN_BASE_HPP__
 #define __NEBULA_CONTENT_SHAPE_ADMIN_BASE_HPP__
 
-#include <boost/numeric/ublas/vector.hpp>
+#include <nebula/define.hpp>
+#include <PxPhysicsAPI.h>
 
 #include <jess/shared_ptr.hpp>
 
@@ -17,7 +18,7 @@ namespace nebula
 			{
 				/// base	
 				class base:
-					public jess::enable_shared_from_this<ncsa::base>
+					public jess::enable_shared_from_this<n35100::base>
 				{
 					public:
 						/// ctor	
@@ -31,7 +32,7 @@ namespace nebula
 						/// render
 						virtual void							render( jess::shared_ptr<nebula::platform::renderer::base> );
 						/// get scale
-						boost::numeric::ublas::vector<FLOAT>				get_scale();
+						physx::PxVec3							get_scale();
 						/// parent
 						std::weak_ptr<nebula::content::actor::admin::rigid_actor>	parent_;
 						/// renderer
@@ -39,7 +40,7 @@ namespace nebula
 						/// physics
 						jess::shared_ptr<nebula::content::shape::physics::base>		physics_;
 						/// scale
-						boost::numeric::ublas::vector<FLOAT>				scale_;
+						physx::PxVec3							scale_;
 				};
 			}
 		}

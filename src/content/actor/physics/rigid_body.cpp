@@ -1,44 +1,54 @@
 #include <nebula/content/actor/physics/rigid_body.hpp>
 
 
-nca::physics::rigid_body::rigid_body()
+n34200::rigid_body::rigid_body()
 {
 
 }
-nca::physics::rigid_body::~rigid_body()
+n34200::rigid_body::~rigid_body()
 {
 
 }
-nca::physics::rigid_body::rigid_body( const ncap::rigid_body& act )
+n34200::rigid_body::rigid_body( const n34200::rigid_body& act )
 {
 
 }
-nca::physics::rigid_body&	ncap::rigid_body::operator=( const ncap::rigid_body& act )
+n34200::rigid_body&	n34200::rigid_body::operator=( const n34200::rigid_body& act )
 {
 	return *this;
 }
-void	nca::physics::rigid_body::init( jess::shared_ptr<nca::admin::base> parent )
+void	n34200::rigid_body::init( jess::shared_ptr<n34100::base> parent )
 {
-	nca::physics::rigid_actor::init( parent );
+	n34200::rigid_actor::init( parent );
+
+	velocity_ = physx::PxVec3( 0, 0, 0 );
+	
+	density_ = 1000;
+	
+	jess::assertion( px_actor_ );
+	
+	::physx::PxRigidBody* px_rigid_body = (::physx::PxRigidBody*)px_actor_;
+	
+	::physx::PxRigidBodyExt::updateMassAndInertia( *px_rigid_body, density_ );
+	
+	px_rigid_body->setLinearVelocity( velocity_ );
 }
-void	nca::physics::rigid_body::shutdown()
+void	n34200::rigid_body::shutdown()
 {
 	
 }
-void	nca::physics::rigid_body::update()
+void	n34200::rigid_body::update()
 {
 	
 }
-void	nca::physics::rigid_body::step( FLOAT dt )
+void	n34200::rigid_body::step( float dt )
 {
 	
 }
-void	ncap::rigid_body::render( const jess::shared_ptr<npr::base> rnd )
+void	n34200::rigid_body::render( const jess::shared_ptr<n23000::base> rnd )
 {
 
 }
-
-
 
 
 

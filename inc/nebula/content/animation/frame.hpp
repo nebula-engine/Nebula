@@ -17,7 +17,7 @@ namespace nebula
 			
 			
 				/// Step
-				virtual	void						step( FLOAT );
+				virtual	void						step( float );
 				/// Add Child
 				void							AddChild( frame* );
 				/// Add Actor
@@ -25,8 +25,8 @@ namespace nebula
 
 
 				///
-				void							(*m_func)(boost::numeric::ublas::vector<FLOAT>&);
-
+				void							(*m_func)( physx::PxVec3 );
+				
 				/// Parent
 				nebula::content::animation::frame*			m_parent;
 
@@ -37,18 +37,18 @@ namespace nebula
 				std::vector<nebula::content::actor::admin::base*>	m_actors;
 
 				/// pose
-				boost::numeric::ublas::matrix<FLOAT>			m_pose;
+				physx::PxMat44						pose_;
 
 			};
 
 			class translation: public frame
 			{
 				/// ctor
-									translation(boost::numeric::ublas::vector<FLOAT>&);
+				translation( physx::PxVec3 );
 				/// step
-				void					step(FLOAT);
+				void					step( float );
 				/// rate
-				boost::numeric::ublas::vector<FLOAT>	m_rate;
+				physx::PxVec3				rate_;
 			};
 		}
 	}

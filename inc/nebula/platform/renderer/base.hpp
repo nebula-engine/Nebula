@@ -1,11 +1,12 @@
 #ifndef __NEBULA_PLATFORM_RENDERER_BASE_HPP__
 #define __NEBULA_PLATFORM_RENDERER_BASE_HPP__
 
+#include <nebula/define.hpp>
+//#include <PxPhysicsAPI.h>
+#include <foundation/PxMat44.h>
+
 #include <jess/shared_ptr.hpp>
 
-#include <boost/numeric/ublas/vector.hpp>
-
-#include <nebula/define.hpp>
 #include <nebula/ns.hpp>
 
 namespace nebula
@@ -23,7 +24,7 @@ namespace nebula
 					/// dtor
 					virtual ~base();
 					/// init
-					virtual void							init( jess::shared_ptr<npw::base> );
+					virtual void							init( jess::shared_ptr<n22000::base> );
 					/// update
 					virtual void							update();
 					/// shutdown
@@ -48,11 +49,11 @@ namespace nebula
 					/// swap
 					virtual void							swap();
 					/// mult matrix
-					virtual void							mult_matrix( bnu::matrix<float, bnu::column_major> );
+					virtual void							mult_matrix( physx::PxMat44 );
 					/// scale
-					virtual void							scale( bnu::vector<FLOAT> );
+					virtual void							scale( physx::PxVec3 );
 					/// look at
-					virtual void							look_at( bnu::vector<float>, bnu::vector<float>, bnu::vector<float> ); 
+					virtual void							look_at( physx::PxVec3, physx::PxVec3, physx::PxVec3 ); 
 					/// light
 					virtual void							light();
 					virtual void							disable_lighting() = 0;
@@ -70,7 +71,7 @@ namespace nebula
 					/// unproject
 					virtual void							unproject( int, int, int, double*, double*, double* );
 					/// parent
-					std::weak_ptr<npw::base>					parent_;
+					std::weak_ptr<n22000::base>					parent_;
 			};
 		}
 	}

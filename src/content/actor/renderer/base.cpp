@@ -3,63 +3,63 @@
 #include <nebula/content/actor/renderer/base.hpp>
 
 
-ncar::base::base()
+n34300::base::base()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-ncar::base::~base()
+n34300::base::~base()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-ncar::base::base( const ncar::base& act )
+n34300::base::base( const n34300::base& act )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-ncar::base&	ncar::base::operator=( const ncar::base& act )
+n34300::base&	n34300::base::operator=( const n34300::base& act )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	return *this;
 }
-void	ncar::base::init( jess::shared_ptr<ncaa::base> parent )
+void	n34300::base::init( jess::shared_ptr<n34100::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	parent_ = parent;
 }
-void	ncar::base::shutdown()
+void	n34300::base::shutdown()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	ncar::base::update()
+void	n34300::base::update()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	ncar::base::render( jess::shared_ptr<npr::base> rnd )
+void	n34300::base::render( jess::shared_ptr<n23000::base> rnd )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	ncar::base::step(FLOAT dt)
+void	n34300::base::step(float dt)
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	ncar::base::create_shapes()
+void	n34300::base::create_shapes()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;

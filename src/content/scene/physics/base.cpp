@@ -1,48 +1,97 @@
+#include <nebula/content/scene/admin/base.hpp>
+#include <nebula/content/actor/admin/base.hpp>
+
 #include <nebula/content/scene/physics/base.hpp>
 
+n32200::base::base()
+{
 
-nc_sc_p::base::base()
-{
-	
 }
-nc_sc_p::base::base(const nc_sc_p::base& cpy)
+n32200::base::base(const n32200::base& cpy)
 {
-	//printf("Copy Constructor------");
+
 }
-nc_sc_p::base::~base()
+n32200::base::~base()
 {
-	
+
 }
-nc_sc_p::base&			nc_sc_p::base::operator=(const nc_sc_p::base& cpy)
+n32200::base&			n32200::base::operator=(const n32200::base& cpy)
 {
 	return *this;
 }
-void				nc_sc_p::base::init( jess::shared_ptr<nc_sc_a::base> )
+void				n32200::base::init( jess::shared_ptr<n32100::base> )
 {
 
 }
-void				nc_sc_p::base::shutdown()
+void				n32200::base::shutdown()
 {
 
 }
-void				nc_sc_p::base::update()
+void						n32200::base::update()
 {
 
 }
-void				nc_sc_p::base::step(FLOAT dt)
+void						n32200::base::step( float dt )
 {
+	physx::PxU32 nbPxactor = px_scene_->getNbActors( physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC );
+	jess::clog << "there are " << nbPxactor << " Pxrigid_actor objects in the scene" << std::endl;
+
+	// PxScene
+	px_scene_->simulate( dt );
+	px_scene_->fetchResults(true);
+
+	// retrieve array of actors that moved
+	physx::PxU32			nb_active_transforms;
+	physx::PxActiveTransform*	active_transforms = px_scene_->getActiveTransforms(nb_active_transforms);
+
+	// update each render object with the new transform
+	for ( physx::PxU32 i = 0; i < nb_active_transforms; ++i )
+	{
+		n34100::base* act = static_cast<n34100::base*>( active_transforms[i].userData );
+
+		physx::PxMat44 pose( active_transforms[i].actor2World );
+
+		act->set_pose( pose );
+
+		//printf("transform.p.y=%16f\n",activeTransforms[i].actor2World.p.y);
+	}
+}
+void						n32200::base::render( jess::shared_ptr<nebula::platform::renderer::base> )
+{
+
+}
+/*jess::shared_ptr<n34200::rigid_dynamic_box>	n32200::base::create_rigid_dynamic_box()
+{
+	return ( parent_.lock()->create_physics_rigid_dynamic_box() );
+
+	//jess::shared_ptr<n34200::rigid_dynamic_box> act( new n34200::rigid_dynamic_box() );
 	
+	//return act;
 }
-void				nc_sc_p::base::render( jess::shared_ptr<nebula::platform::renderer::base> )
+jess::shared_ptr<n34200::controller>		n32200::base::create_controller()
 {
+	return ( parent_.lock()->create_physics_controller() );
+
+	//jess::shared_ptr<n34200::controller> act( new n34200::controller() );
 	
-}
-void				nc_sc_p::base::register_actor( jess::shared_ptr<ncaa::actor> )
+	//return act;
+}*/
+/*void				n32200::base::register_actor( jess::shared_ptr<n34100::actor> )
+  {
+
+  }*/
+/*void	n32200::base::add_actor( jess::shared_ptr<n34100::actor> act )
+  {
+  jess::shared_ptr<n34200p::actor> pp_act = std::dynamic_pointer_cast<n34200p::actor>( act->physics_ );
+  
+  ::physx::PxActor* px_actor = pp_act->px_actor_;
+  
+  px_scene_->addActor(*px_actor);
+  }*/
+void	n32200::base::customize_scene_desc(::physx::PxSceneDesc& sceneDesc)
 {
-
+	sceneDesc.flags |= ::physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 }
-
-
 
 
 

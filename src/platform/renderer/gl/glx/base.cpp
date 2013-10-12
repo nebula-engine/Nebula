@@ -13,7 +13,7 @@ int xerrorhandler( Display* dpy, XErrorEvent* error )
 	exit(-1);
 }
 
-void	nprgg::base::init( jess::shared_ptr<npw::base> parent )
+void	n23110::base::init( jess::shared_ptr<n22000::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -43,7 +43,7 @@ void	nprgg::base::init( jess::shared_ptr<npw::base> parent )
 	} 
 	else
 	{
-		printf( "glXChooseVisual: visual %p selected\n", (void *)m_vi->visualid ); // %p creates hexadecimal output like in glxinfo
+		printf( "glXChooseVisual: visual %p selected\n", (void *)m_vi->visualid ); // %p creates hexadecimal output like in glxin10000o
 	}
 
 	m_cmap = XCreateColormap( m_xdisplay, m_root_xwindow, m_vi->visual, AllocNone );
@@ -64,11 +64,11 @@ void	nprgg::base::init( jess::shared_ptr<npw::base> parent )
 	init_raster_font();
 
 	// must be here so that base class has valid GLContext available
-	nprg::base::init( parent );
+	n23100::base::init( parent );
 
 	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
-void	nprgg::base::shutdown()
+void	n23110::base::shutdown()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -76,7 +76,7 @@ void	nprgg::base::shutdown()
 	glXMakeCurrent( m_xdisplay, None, NULL );
 	glXDestroyContext( m_xdisplay, m_glc );
 }
-void	nprgg::base::draw_text( int x, int y, std::string str )
+void	n23110::base::draw_text( int x, int y, std::string str )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	//jess::clog << x << " " << y << " " << str << " " << font_base_ << std::endl;
@@ -94,67 +94,66 @@ void	nprgg::base::draw_text( int x, int y, std::string str )
 
 	glPopAttrib();
 }
-void	nprgg::base::viewport( int a, int b, int c, int d )
+void	n23110::base::viewport( int a, int b, int c, int d )
 {
 	glViewport( a, b, c, d );
 }
-void	nprgg::base::update()
+void	n23110::base::update()
 {
 
 }
-void	nprgg::base::begin_render()
+void	n23110::base::begin_render()
 {
-	nprg::base::begin_render();
+	n23100::base::begin_render();
 }
-void	nprgg::base::end_render()
+void	n23110::base::end_render()
 {
-	nprg::base::end_render();
+	n23100::base::end_render();
 }
-void	nprgg::base::swap()
+void	n23110::base::swap()
 {
 	glXSwapBuffers( m_xdisplay, m_xwindow );
 }
-void	nprgg::base::look_at( bnu::vector<float> eye, bnu::vector<float> center, bnu::vector<float> up )
+void	n23110::base::look_at( physx::PxVec3 eye, physx::PxVec3 center, physx::PxVec3 up )
 {
-	//GLdouble eyeX, GLdouble eyeY,GLdouble eyeZ,GLdouble centerX,GLdouble centerY,GLdouble centerZ,GLdouble upX,GLdouble upY,GLdouble upZ);
-	nprg::base::look_at( eye, center, up );
+	n23100::base::look_at( eye, center, up );
 }
-void	nprgg::base::draw_cube()
+void	n23110::base::draw_cube()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	nprg::base::draw_cube();
+	n23100::base::draw_cube();
 }
-void	nprgg::base::push_matrix()
+void	n23110::base::push_matrix()
 {
-	nprg::base::push_matrix();
+	n23100::base::push_matrix();
 }
-void	nprgg::base::pop_matrix()
+void	n23110::base::pop_matrix()
 {
-	nprg::base::pop_matrix();
+	n23100::base::pop_matrix();
 }
-void	nprgg::base::mult_matrix( bnu::matrix<float> mat )
+void	n23110::base::mult_matrix( physx::PxMat44 mat )
 {
-	nprg::base::mult_matrix( mat );
+	n23100::base::mult_matrix( mat );
 }
-void	nprgg::base::scale( bnu::vector<float> v )
+void	n23110::base::scale( physx::PxVec3 v )
 {
-	nprg::base::scale( v );
+	n23100::base::scale( v );
 }
-void	nprgg::base::draw_window_quad( int x, int y, int w, int h )
+void	n23110::base::draw_window_quad( int x, int y, int w, int h )
 {
-	nprg::base::draw_window_quad( x, y, w, h );
+	n23100::base::draw_window_quad( x, y, w, h );
 }
-void	nprgg::base::light()
+void	n23110::base::light()
 {
-	nprg::base::light();
+	n23100::base::light();
 }
-void	nprgg::base::init_raster_font()
+void	n23110::base::init_raster_font()
 {
 	::Display* dpy = m_xdisplay;
 
-	XFontStruct *fontInfo;
+	XFontStruct *fontIn10000o;
 
 	Font id;
 
@@ -169,10 +168,10 @@ void	nprgg::base::init_raster_font()
 		jess::clog << fonts[i] << "... ";
 
 
-		fontInfo = XLoadQueryFont( dpy, fonts[i] );
-		//fontInfo = XLoadQueryFont(dpy, "-adobe-times-medium-r-normal--17-120-100-100-p-88-iso8859-1");
+		fontIn10000o = XLoadQueryFont( dpy, fonts[i] );
+		//fontIn10000o = XLoadQueryFont(dpy, "-adobe-times-medium-r-normal--17-120-100-100-p-88-iso8859-1");
 
-		if( fontInfo == 0 )
+		if( fontIn10000o == 0 )
 		{
 			jess::clog << "failed" << std::endl;
 		}
@@ -191,10 +190,10 @@ void	nprgg::base::init_raster_font()
 		jess::clog << fonts[i] << "... ";
 
 
-		fontInfo = XLoadQueryFont( dpy, fonts[i] );
-		//fontInfo = XLoadQueryFont(dpy, "-adobe-times-medium-r-normal--17-120-100-100-p-88-iso8859-1");
+		fontIn10000o = XLoadQueryFont( dpy, fonts[i] );
+		//fontIn10000o = XLoadQueryFont(dpy, "-adobe-times-medium-r-normal--17-120-100-100-p-88-iso8859-1");
 
-		if( fontInfo == 0 )
+		if( fontIn10000o == 0 )
 		{
 			jess::clog << "failed" << std::endl;
 		}
@@ -206,18 +205,18 @@ void	nprgg::base::init_raster_font()
 	}
 	XFreeFontNames( fonts );
 	
-	if( fontInfo == 0 )
+	if( fontIn10000o == 0 )
 	{
 		jess::clog << "no font found" << std::endl;
 		exit(0);
 	}
 	
 	
-	id = fontInfo->fid;
+	id = fontIn10000o->fid;
 
-	first = fontInfo->min_char_or_byte2;
+	first = fontIn10000o->min_char_or_byte2;
 
-	last = fontInfo->max_char_or_byte2;
+	last = fontIn10000o->max_char_or_byte2;
 
 	font_base_ = glGenLists(last+1); GetGLError();
 

@@ -2,33 +2,33 @@
 #include <nebula/content/actor/admin/rigid_static.hpp>
 
 
-ncaa::rigid_static::rigid_static()
+n34100::rigid_static::rigid_static()
 {
 }
-ncaa::rigid_static::~rigid_static()
+n34100::rigid_static::~rigid_static()
 {
 }
-void	ncaa::rigid_static::init( jess::shared_ptr<nc_sc_a::base> parent )
-{
-	jess::clog << NEB_FUNCSIG << std::endl;
-	ncaa::rigid_actor::init(parent);
-}
-void	ncaa::rigid_static::shutdown()
+void	n34100::rigid_static::init( jess::shared_ptr<n32100::base> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-	
+	n34100::rigid_actor::init(parent);
 }
-void	ncaa::rigid_static::update()
+void	n34100::rigid_static::shutdown()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
-void	ncaa::rigid_static::render( jess::shared_ptr<npr::base> rnd )
+void	n34100::rigid_static::update()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
-void	ncaa::rigid_static::step( FLOAT dt )
+void	n34100::rigid_static::render( jess::shared_ptr<n23000::base> rnd )
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
+}
+void	n34100::rigid_static::step( float dt )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -36,7 +36,7 @@ void	ncaa::rigid_static::step( FLOAT dt )
 
 
 
-void	ncaa::rigid_static::VCreateShape() {
+void	n34100::rigid_static::VCreateShape() {
 	
 }
 

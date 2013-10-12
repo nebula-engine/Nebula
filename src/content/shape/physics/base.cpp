@@ -1,18 +1,18 @@
 #include <nebula/content/shape/physics/base.hpp>
 
-namespace ncs = nebula::content::shape;
-namespace ncsp = ncs::physics;
+namespace n30000s = nebula::content::shape;
+namespace n30000sp = n30000s::physics;
 
-ncsp::base::base() {
+n30000sp::base::base() {
 }
-ncsp::base::~base()
+n30000sp::base::~base()
 {
 }	
-void	ncsp::base::init( jess::shared_ptr<ncs::admin::base> )
+void	n30000sp::base::init( jess::shared_ptr<n30000s::admin::base> )
 {
 	
 }
-void	ncsp::base::shutdown() {
+void	n30000sp::base::shutdown() {
 	
 }
 

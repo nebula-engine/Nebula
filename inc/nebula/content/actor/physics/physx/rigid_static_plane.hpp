@@ -16,8 +16,8 @@ namespace nebula
 				{
 					/// rigid dynamic
 					class rigid_static_plane:
-						virtual public ncap::rigid_static_plane,
-						virtual public ncapp::rigid_static
+						virtual public n34200::rigid_static_plane,
+						virtual public n34200p::rigid_static
 					{
 						public:
 							///@name ctor and dtor

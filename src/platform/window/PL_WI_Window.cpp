@@ -2,13 +2,13 @@
 
 #include <nebula/platform/window/base.hpp>
 
-npw::base::base()
+n22000::base::base()
 {
 }
-npw::base::~base()
+n22000::base::~base()
 {
 }
-void	npw::base::init( jess::shared_ptr<npp::base> parent )
+void	n22000::base::init( jess::shared_ptr<n21000::base> parent )
 {
 	parent_ = parent;
 	//jess::clog << NEB_FUNCSIG << std::endl;
@@ -16,17 +16,17 @@ void	npw::base::init( jess::shared_ptr<npp::base> parent )
 //	 =			DynCast<Void,AR_Init>( data )->app;
 	// =	DynCast<Void,AR_Init>( data )->platform;
 }
-void	npw::base::shutdown()
+void	n22000::base::shutdown()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npw::base::update()
+void	n22000::base::update()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-int	npw::base::lookup_key( int k )
+int	n22000::base::lookup_key( int k )
 {
 	return keys_[k];
 }

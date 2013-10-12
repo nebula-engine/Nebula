@@ -18,8 +18,8 @@ namespace nebula
 				{
 					/// rigid static
 					class rigid_static:
-						virtual public ncap::rigid_static,
-						virtual public ncapp::rigid_actor
+						virtual public n34200::rigid_static,
+						virtual public n34200p::rigid_actor
 					{
 						public:
 							/// ctor
@@ -28,7 +28,7 @@ namespace nebula
 							~rigid_static();
 
 							/// Initialize
-							virtual	void						init( jess::shared_ptr<ncaa::base> );
+							virtual	void						init( jess::shared_ptr<n34100::base> );
 							/// ShutDown
 							virtual	void						shutdown();
 							/// Update
@@ -36,7 +36,7 @@ namespace nebula
 							/// Render
 							virtual	void						render( jess::shared_ptr<nebula::platform::renderer::base> );
 							/// Step
-							virtual	void						step( FLOAT dt );
+							virtual	void						step( float dt );
 
 
 

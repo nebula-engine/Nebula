@@ -13,7 +13,7 @@ namespace nebula
 			{
 				/// box
 				class box:
-					public ncsr::base
+					public n35300::base
 				{
 					public:
 						/// ctor

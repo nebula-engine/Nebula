@@ -17,7 +17,7 @@ namespace nebula
 				{
 					/// rigid dynamic
 					class base:
-						virtual public ncap::base
+						virtual public n34200::base
 					{
 						public:
 							///@name ctor and dtor
@@ -45,7 +45,7 @@ namespace nebula
 							/// update
 							virtual	void								update();
 							/// step
-							virtual	void								step(FLOAT);
+							virtual	void								step(float);
 							/// render
 							virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 

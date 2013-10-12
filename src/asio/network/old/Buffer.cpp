@@ -1,15 +1,15 @@
 SocketClass::SocketBuffer::SocketBuffer(
     SocketClass* socketClassParam,
-    int (*errorFuncParam)( SocketClass*, int ),
-    int (*packetFuncParam)( SocketClass* ))
+    int (*errorFun30000Param)( SocketClass*, int ),
+    int (*packetFun30000Param)( SocketClass* ))
 {
     socketClass = socketClassParam;
     
     socketData = NULL;
     buffer = NULL;
     
-    errorFunc = errorFuncParam;
-    packetFunc = packetFuncParam;
+    errorFun30000 = errorFun30000Param;
+    packetFun30000 = packetFun30000Param;
     
     position = 0;
     remaining = 0;
@@ -17,7 +17,7 @@ SocketClass::SocketBuffer::SocketBuffer(
 }
 void SocketClass::SocketBuffer::send( SocketClass* recipient )
 {
-    if ( errorFunc == NULL )
+    if ( errorFun30000 == NULL )
     {
 		swprintf_s( msgbox_tchar, _T("SocketClass::SocketBuffer::send error=NULL" ));
         MessageBox( NULL, msgbox_tchar, NULL, 0 );
@@ -37,7 +37,7 @@ void SocketClass::SocketBuffer::send( SocketClass* recipient )
         error = WSAGetLastError();
         if ( error != WSAEWOULDBLOCK )
         {
-            (*errorFunc)( recipient, error );
+            (*errorFun30000)( recipient, error );
             swprintf_s( msgbox_tchar, _T("SocketClass::SocketBuffer::send %i"), error );
             MessageBox( NULL, msgbox_tchar, NULL, 0 );
         }

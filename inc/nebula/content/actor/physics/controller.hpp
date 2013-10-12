@@ -1,7 +1,8 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_CONTROLLER_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_CONTROLLER_HPP__
 
-
+#include <nebula/define.hpp>
+#include <PxPhysicsAPI.h>
 
 #include <nebula/content/actor/physics/base.hpp>
 
@@ -15,7 +16,7 @@ namespace nebula
 			{
 				/// controller
 				class controller:
-					virtual public ncap::base
+					virtual public n34200::base
 				{
 				public:
 					///@name ctor and dtor
@@ -37,17 +38,21 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init( jess::shared_ptr<ncaa::base> );
+					virtual	void								init( jess::shared_ptr<n34100::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step(FLOAT);
+					virtual	void								step(float);
 				
 					virtual void								update_move();
 					
-				
+					physx::PxController*							get_px_controller();
+					void									set_px_controller( ::physx::PxController* );
+
+					/// PxController
+					physx::PxController*							px_controller_;
 				};
 			}
 		}

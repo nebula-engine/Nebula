@@ -11,7 +11,7 @@ namespace nebula
 	{
 		/// app
 		class app:
-			public jess::enable_shared_from_this<nf::app>
+			public jess::enable_shared_from_this<n10000::app>
 		{
 		public:
 			/// ctor
@@ -31,19 +31,19 @@ namespace nebula
 			/// continue multi
 			void							ContinueLoopMulti();
 			/// request_window
-			virtual jess::shared_ptr<npw::base>			request_window();
+			virtual jess::shared_ptr<n22000::base>			request_window();
 			/// get content
 			jess::shared_ptr<nebula::content::base>			get_content();
 			/// get platform
-			jess::shared_ptr<npp::base>				get_platform();
+			jess::shared_ptr<n21000::base>				get_platform();
 			///@name children
 			///@{
 			/// contnt
-			jess::shared_ptr<nc::base>				content_;
+			jess::shared_ptr<n30000::base>				content_;
 			/// platform
-			jess::shared_ptr<npp::base>				platform_;
+			jess::shared_ptr<n21000::base>				platform_;
 			/// renderable
-			jess::shared_ptr<nf::renderable>			renderable_;
+			jess::shared_ptr<n10000::renderable>			renderable_;
 			///@}
 		};
 	}

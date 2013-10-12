@@ -1,7 +1,8 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
 
-
+#include <nebula/define.hpp>
+#include <PxPhysicsAPI.h>
 
 #include <nebula/content/actor/physics/base.hpp>
 
@@ -47,7 +48,8 @@ namespace nebula
 				
 				
 				
-					
+					/// px actor
+					physx::PxActor*								px_actor_;
 				};
 			}
 		}

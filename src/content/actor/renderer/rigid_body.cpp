@@ -2,31 +2,31 @@
 
 
 
-ncar::rigid_body::rigid_body()
+n34300::rigid_body::rigid_body()
 {
 
 }
-ncar::rigid_body::~rigid_body()
+n34300::rigid_body::~rigid_body()
 {
 
 }
-void	ncar::rigid_body::init( jess::shared_ptr<ncaa::base> parent )
+void	n34300::rigid_body::init( jess::shared_ptr<n34100::base> parent )
 {
-	ncar::rigid_actor::init( parent );
+	n34300::rigid_actor::init( parent );
 }
-void	ncar::rigid_body::shutdown()
-{
-
-}
-void	ncar::rigid_body::update()
+void	n34300::rigid_body::shutdown()
 {
 
 }
-void	ncar::rigid_body::render( jess::shared_ptr<npr::base> rnd )
+void	n34300::rigid_body::update()
 {
 
 }
-void	ncar::rigid_body::step( FLOAT dt )
+void	n34300::rigid_body::render( jess::shared_ptr<n23000::base> rnd )
+{
+
+}
+void	n34300::rigid_body::step( float dt )
 {
 
 }

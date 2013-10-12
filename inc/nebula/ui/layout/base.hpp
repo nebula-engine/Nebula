@@ -20,7 +20,7 @@ namespace nebula
 					/// load xml
 					void				load_xml( std::string );
 					/// render
-					void				render( jess::shared_ptr<npr::base> );
+					void				render( jess::shared_ptr<n23000::base> );
 
 					/// objects
 					jess::map<ui::object::base>	objects_;

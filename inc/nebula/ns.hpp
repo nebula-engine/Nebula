@@ -1,30 +1,10 @@
 #ifndef __NEBULA_NS_HPP__
 #define __NEBULA_NS_HPP__
 
-#include <boost/numeric/ublas/matrix.hpp>
-
 /// %nebula
 namespace nebula
 {
-	/// asio
-	/**
-	 * asynchronous in/out using boost::asio
-	 */
-	namespace asio
-	{
-		class message;
-		class mailbox;
-		class destination;
-
-		/// network
-		namespace network
-		{
-			class base;
-		}
-	}
-
-	/// framework
-	/**
+	/** \breif %framework
 	 * Contains the application class.
 	 */
 	namespace framework
@@ -33,14 +13,23 @@ namespace nebula
 		class renderable;
 	}
 
+	/** \breif %platform
+	 *
+	 */
 	namespace platform
 	{
 		class key;
 
+		/** \breif %platform
+		 *
+		 */
 		namespace platform
 		{
 			class base;
 
+			/** \breif %linux
+			 *
+			 */
 			namespace lin
 			{
 				class base;
@@ -66,7 +55,11 @@ namespace nebula
 		namespace renderer
 		{
 			class base;
-
+			class scoped_matrix;
+			class scoped_render;
+			class scoped_2d_environment;
+			class scoped_3d_environment;
+			
 			namespace gl
 			{
 				class base;	
@@ -87,11 +80,6 @@ namespace nebula
 		namespace physics
 		{
 			class base;
-
-			namespace physx
-			{
-				class base;
-			}
 		}
 		namespace universe
 		{
@@ -110,10 +98,6 @@ namespace nebula
 			{
 				class base;	
 
-				namespace physx
-				{
-					class base;
-				}
 			}
 			namespace renderer
 			{
@@ -125,11 +109,6 @@ namespace nebula
 			namespace admin
 			{
 				class base;
-
-				namespace human
-				{
-					class base;
-				}
 			}
 		}
 		namespace actor
@@ -165,21 +144,6 @@ namespace nebula
 
 				class material;
 
-				namespace physx
-				{
-					class base;
-					class actor;
-					class rigid_actor;
-					class rigid_body;
-					class rigid_dynamic;
-					class rigid_dynamic_box;
-					class rigid_static;
-					class rigid_static_plane;
-					class controller;
-					class vehicle;
-
-					class material;
-				}
 			}
 			namespace renderer
 			{
@@ -209,11 +173,6 @@ namespace nebula
 				class base;
 				class box;
 
-				namespace physx
-				{
-					class base;
-					class box;
-				}
 			}
 			namespace renderer
 			{
@@ -223,6 +182,27 @@ namespace nebula
 		}
 	}
 
+	/** \breif %asio
+	 * Asyn30000hronous in/out using boost::asio
+	 */
+	namespace asio
+	{
+		class message;
+		class mailbox;
+		class destination;
+
+		/** \breif %network
+		 *
+		 */
+		namespace network
+		{
+			class base;
+		}
+	}
+
+	/** \breif %user %interface
+	 *
+	 */
 	namespace ui
 	{
 		namespace layout
@@ -238,78 +218,45 @@ namespace nebula
 	}
 }
 
-
-
-
 namespace n00000 = nebula;
+
 namespace n10000 = nebula::framework;
+
 namespace n20000 = nebula::platform;
+namespace n21000 = nebula::platform::platform;
+namespace n21100 = nebula::platform::platform::lin;
+namespace n21200 = nebula::platform::platform::win;
+namespace n22000 = nebula::platform::window;
+namespace n22100 = nebula::platform::window::lin;
+namespace n22200 = nebula::platform::window::win;
 namespace n23000 = nebula::platform::renderer;
+namespace n23100 = nebula::platform::renderer::gl;
+namespace n23110 = nebula::platform::renderer::gl::glx;
+
 namespace n30000 = nebula::content;
+namespace n31000 = nebula::content::universe;
+namespace n31100 = nebula::content::universe::admin;
+namespace n32000 = nebula::content::scene;
+namespace n32100 = nebula::content::scene::admin;
+namespace n32200 = nebula::content::scene::physics;
+namespace n32300 = nebula::content::scene::renderer;
+namespace n33000 = nebula::content::view;
+namespace n33100 = nebula::content::view::admin;
+
+namespace n34000 = nebula::content::actor;
+namespace n34100 = nebula::content::actor::admin;
+namespace n34200 = nebula::content::actor::physics;
+namespace n34300 = nebula::content::actor::renderer;
+namespace n35100 = nebula::content::shape::admin;
+namespace n35200 = nebula::content::shape::physics;
+namespace n35300 = nebula::content::shape::renderer;
+namespace n36000 = nebula::content::physics;
+
 namespace n40000 = nebula::asio;
+
 namespace n50000 = nebula::ui;
 namespace n51000 = nebula::ui::layout;
 namespace n52000 = nebula::ui::object;
 
-
-namespace bnu		= boost::numeric::ublas;
-
-// asio
-namespace na		= nebula::asio;
-
-// framework
-namespace nf		= nebula::framework;
-
-// platform
-namespace np		= nebula::platform;
-namespace npp		= nebula::platform::platform;
-namespace nppl		= nebula::platform::platform::lin;
-namespace npr		= nebula::platform::renderer;
-namespace nprg		= nebula::platform::renderer::gl;
-namespace nprgg		= nebula::platform::renderer::gl::glx;
-namespace npw		= nebula::platform::window;
-namespace npwl		= nebula::platform::window::lin;
-
-
-// content
-namespace nc		= nebula::content;
-namespace ncp		= nebula::content::physics;
-namespace ncpp		= nebula::content::physics::physx;
-
-// universe
-namespace ncua		= nebula::content::universe::admin;
-
-// actor
-namespace nca		= nebula::content::actor;
-namespace ncaa		= nebula::content::actor::admin;
-namespace ncap		= nca::physics;
-namespace ncapp		= ncap::physx;
-namespace ncar		= nebula::content::actor::renderer;
-
-// scene
-namespace nc_sc		= nebula::content::scene;
-namespace nc_sc_a	= nc_sc::admin;
-namespace nc_sc_p	= nc_sc::physics;
-namespace nc_sc_pp	= nc_sc_p::physx;
-namespace nc_sc_r	= nebula::content::scene::renderer;
-
-// view
-namespace ncva		= nebula::content::view::admin;
-namespace ncvah		= nebula::content::view::admin::human;
-
-
-// shape
-namespace ncs		= nebula::content::shape;
-namespace ncsa		= nebula::content::shape::admin;
-namespace ncsp		= nebula::content::shape::physics;
-namespace ncsr		= nebula::content::shape::renderer;
-
-// ui
-namespace nu		= nebula::ui;
-namespace nul		= nebula::ui::layout;
-namespace nuo		= nebula::ui::object;
-
-
 #endif
-
 

@@ -2,19 +2,19 @@
 
 
 
-npr::base::base()
+n23000::base::base()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-npr::base::~base()
+n23000::base::~base()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::init( jess::shared_ptr<npw::base> parent )
+void	n23000::base::init( jess::shared_ptr<n22000::base> parent )
 {
 		// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -22,102 +22,102 @@ void	npr::base::init( jess::shared_ptr<npw::base> parent )
 
 parent_ = parent;
 }
-void	npr::base::shutdown()
+void	n23000::base::shutdown()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::update()
+void	n23000::base::update()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::begin_render()
+void	n23000::base::begin_render()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::end_render()
+void	n23000::base::end_render()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::swap()
+void	n23000::base::swap()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::resize(int,int)
+void	n23000::base::resize(int,int)
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::look_at( bnu::vector<float> eye, bnu::vector<float> center, bnu::vector<float> up )
+void	n23000::base::look_at( physx::PxVec3 eye, physx::PxVec3 center, physx::PxVec3 up )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::draw_quad()
+void	n23000::base::draw_quad()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::draw_window_quad( int x, int y, int w, int h )
+void	n23000::base::draw_window_quad( int x, int y, int w, int h )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::draw_cube()
+void	n23000::base::draw_cube()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	npr::base::draw_sphere()
-{
-	// log
-	jess::clog << NEB_FUNCSIG << std::endl;
-
-}
-void	npr::base::push_matrix()
+void	n23000::base::draw_sphere()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::mult_matrix( bnu::matrix<float, bnu::column_major> mat )
+void	n23000::base::push_matrix()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::scale( bnu::vector<float> v )
+void	n23000::base::mult_matrix( physx::PxMat44 mat )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::pop_matrix()
+void	n23000::base::scale( physx::PxVec3 v )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::light()
+void	n23000::base::pop_matrix()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	npr::base::unproject( int, int, int, double*, double*, double* )
+void	n23000::base::light()
+{
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;
+
+}
+void	n23000::base::unproject( int, int, int, double*, double*, double* )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;

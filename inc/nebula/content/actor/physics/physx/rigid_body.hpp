@@ -19,8 +19,8 @@ namespace nebula
 			{
 				/// rigid body
 				class rigid_body:
-					virtual public ncapp::rigid_actor,
-					virtual public ncap::rigid_body
+					virtual public n34200p::rigid_actor,
+					virtual public n34200::rigid_body
 				{
 				public:
 					///@name ctor and dtor
@@ -42,7 +42,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init( jess::shared_ptr<ncaa::base> );
+					virtual	void								init( jess::shared_ptr<n34100::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

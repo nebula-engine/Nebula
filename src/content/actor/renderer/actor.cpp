@@ -1,30 +1,30 @@
 #include <nebula/content/actor/renderer/actor.hpp>
 
-ncar::actor::actor()
+n34300::actor::actor()
 {
 	
 }
-ncar::actor::~actor()
+n34300::actor::~actor()
 {
 	
 }
-void	ncar::actor::init( jess::shared_ptr<ncaa::base> parent )
+void	n34300::actor::init( jess::shared_ptr<n34100::base> parent )
 {
-	ncar::base::init( parent );
+	n34300::base::init( parent );
 }
-void	ncar::actor::shutdown()
-{
-	
-}
-void	ncar::actor::update()
+void	n34300::actor::shutdown()
 {
 	
 }
-void	ncar::actor::render( jess::shared_ptr<npr::base> rnd )
+void	n34300::actor::update()
 {
 	
 }
-void	ncar::actor::step( FLOAT dt )
+void	n34300::actor::render( jess::shared_ptr<n23000::base> rnd )
+{
+	
+}
+void	n34300::actor::step( float dt )
 {
 	
 }

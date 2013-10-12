@@ -22,12 +22,12 @@ namespace nebula
 			namespace lin
 			{
 				class base:
-					public npw::base
+					public n22000::base
 				{
 				public:
 					base();
 					virtual ~base();
-					virtual void			init( jess::shared_ptr<npp::base> );
+					virtual void			init( jess::shared_ptr<n21000::base> );
 					virtual void			shutdown();
 					virtual void			update();
 					virtual void			register_keys();
@@ -35,7 +35,7 @@ namespace nebula
 					virtual void			expose_window( XEvent );
 					virtual int			lookup_key( int );
 					virtual void			focus_change( XEvent );
-					virtual void			process_message( jess::shared_ptr<na::message> );
+					virtual void			process_message( jess::shared_ptr<n40000::message> );
 	
 					/// keys
 					std::map<int,int>		keys_;

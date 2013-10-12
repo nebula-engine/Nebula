@@ -2,7 +2,7 @@
 #include <content/Physics/CO_PH_Physics.h>
 #include <content/Physics/PhysicsScene.h>
 #include <nebula/content/scene/Auth.h>
-#include <nebula/content/actor/admin/ncaa::rigid_dynamicBox.h>
+#include <nebula/content/actor/admin/n34100::rigid_dynamicBox.h>
 #include <nebula/content/actor/admin/Controller.h>
 
 

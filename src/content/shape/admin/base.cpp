@@ -11,12 +11,6 @@ nebula::content::shape::admin::base::base()
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	scale_ = bnu::vector<float>( 3 );
-
-	scale_(0) = 1;
-	scale_(1) = 1;
-	scale_(2) = 1;
-
 }
 nebula::content::shape::admin::base::~base()
 {
@@ -44,7 +38,7 @@ void	nebula::content::shape::admin::base::render( jess::shared_ptr<nebula::platf
 
 	renderer_->render( rnd );
 }
-bnu::vector<float>	ncsa::base::get_scale()
+physx::PxVec3	n35100::base::get_scale()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;

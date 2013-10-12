@@ -3,37 +3,37 @@
 #include <nebula/content/actor/admin/actor.hpp>
 
 
-ncaa::actor::actor() {
+n34100::actor::actor() {
 }
-ncaa::actor::~actor() {
+n34100::actor::~actor() {
 }
-void	ncaa::actor::init( jess::shared_ptr<nc_sc_a::base> parent )
+void	n34100::actor::init( jess::shared_ptr<n32100::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	// init parent
-	ncaa::base::init( parent );
+	n34100::base::init( parent );
 
-	jess::shared_ptr<ncaa::base> this_ptr( shared_from_this() );
+	jess::shared_ptr<n34100::base> this_ptr( shared_from_this() );
 }
-void	ncaa::actor::shutdown( )
+void	n34100::actor::shutdown( )
 {
 	
 }
-void	ncaa::actor::update( )
+void	n34100::actor::update( )
 {
-	ncaa::base::update();
+	n34100::base::update();
 }
-void	ncaa::actor::render( jess::shared_ptr<npr::base> rnd )
+void	n34100::actor::render( jess::shared_ptr<n23000::base> rnd )
 {
 	
 }
-void	ncaa::actor::step( FLOAT dt )
+void	n34100::actor::step( float dt )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	ncaa::base::step( dt );
+	n34100::base::step( dt );
 }
 
 

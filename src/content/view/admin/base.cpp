@@ -10,33 +10,33 @@
 
 #include <nebula/content/view/admin/base.hpp>
 
-ncva::base::base()
+n33100::base::base()
 {
 	
 }
-ncva::base::~base()
+n33100::base::~base()
 {
 
 }
-void	ncva::base::init( jess::shared_ptr<nc_sc_a::base> parent )
+void	n33100::base::init( jess::shared_ptr<n32100::base> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	parent_ = parent;
 }
-void	ncva::base::shutdown()
+void	n33100::base::shutdown()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	ncva::base::update()
+void	n33100::base::update()
 {
 
 }
-void	ncva::base::render()
+void	n33100::base::render()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	jess::shared_ptr<npr::base> rnd = window_->renderer_;
+	jess::shared_ptr<n23000::base> rnd = window_->renderer_;
 
 
 	
@@ -63,12 +63,12 @@ void	ncva::base::render()
 	rnd->end_render();
 
 }
-void	ncva::base::create_camera()
+void	n33100::base::create_camera()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	camera_.reset( new nc::camera );
+	camera_.reset( new n30000::camera );
 }
 
 

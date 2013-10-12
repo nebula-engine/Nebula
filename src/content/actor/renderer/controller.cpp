@@ -4,39 +4,39 @@
 
 #include <nebula/content/actor/renderer/controller.hpp>
 
-ncar::controller::controller()
+n34300::controller::controller()
 {
 }
-ncar::controller::~controller()
+n34300::controller::~controller()
 {
 }
-void	ncar::controller::init( jess::shared_ptr<ncaa::base> parent )
+void	n34300::controller::init( jess::shared_ptr<n34100::base> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	ncar::base::init( parent );
+	n34300::base::init( parent );
 
 	
 }
-void	ncar::controller::shutdown()
+void	n34300::controller::shutdown()
 {
 	
 }
-void	ncar::controller::update()
+void	n34300::controller::update()
 {
 	
 }
-void	ncar::controller::render( jess::shared_ptr<npr::base> rnd )
+void	n34300::controller::render( jess::shared_ptr<n23000::base> rnd )
 {
-	jess::shared_ptr<ncaa::controller> parent = std::dynamic_pointer_cast<ncaa::controller>( parent_.lock() );
+	jess::shared_ptr<n34100::controller> parent = std::dynamic_pointer_cast<n34100::controller>( parent_.lock() );
 
 	rnd->look_at( parent->pos_, parent->pos_ + parent->look_, parent->up_ );
 }
-void	ncar::controller::step( FLOAT dt )
+void	n34300::controller::step( float dt )
 {
 	
 }
-void	ncar::controller::create_shapes()
+void	n34300::controller::create_shapes()
 {
 
 }

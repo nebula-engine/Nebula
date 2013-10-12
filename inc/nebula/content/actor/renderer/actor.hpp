@@ -17,7 +17,7 @@ namespace nebula
 			{
 				/// actor
 				class actor:
-					virtual public ncar::base
+					virtual public n34300::base
 				{
 				public:
 					///@name ctor and dtor
@@ -39,15 +39,15 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init( jess::shared_ptr<ncaa::base> );
+					virtual	void								init( jess::shared_ptr<n34100::base> );
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step( FLOAT );
+					virtual	void								step( float );
 					/// render
-					virtual	void								render( jess::shared_ptr<npr::base> );
+					virtual	void								render( jess::shared_ptr<n23000::base> );
 				
 				
 				

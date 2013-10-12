@@ -14,7 +14,7 @@ namespace nebula
 			{
 				/// base
 				class base:
-					public nf::renderable
+					public n10000::renderable
 				{
 				public:
 					/// ctor
@@ -22,7 +22,7 @@ namespace nebula
 					/// dtor
 					virtual ~base();
 					/// init
-					virtual void					init( jess::shared_ptr<nc_sc_a::base> );
+					virtual void					init( jess::shared_ptr<n32100::base> );
 					/// shutdown
 					virtual void					shutdown();
 					/// update
@@ -32,15 +32,15 @@ namespace nebula
 					/// create camera
 					virtual void					create_camera();
 					/// parent
-					std::weak_ptr<nc_sc_a::base>			parent_;
-					///@name references
+					std::weak_ptr<n32100::base>			parent_;
+					///@name referen30000es
 					///{
 					/// window
-					jess::shared_ptr<npw::base>			window_;
+					jess::shared_ptr<n22000::base>			window_;
 					/// camera
 					jess::shared_ptr<n30000::camera>		camera_;
 					/// ui
-					jess::shared_ptr<nu::layout::base>		layout_;
+					jess::shared_ptr<n51000::base>			layout_;
 					///}
 
 				};

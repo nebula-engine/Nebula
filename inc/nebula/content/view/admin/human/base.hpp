@@ -16,7 +16,7 @@ namespace nebula
 				namespace human
 				{
 					class base:
-						public ncva::base
+						public n33100::base
 					{
 						public:
 							/// ctor
@@ -24,7 +24,7 @@ namespace nebula
 							/// dtor
 							virtual ~base();
 							/// init
-							virtual void					init( jess::shared_ptr<nc_sc_a::base> );
+							virtual void					init( jess::shared_ptr<n32100::base> );
 
 							virtual void					shutdown();
 

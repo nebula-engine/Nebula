@@ -25,7 +25,7 @@ namespace nebula
 			{
 				/// base
 				class base:
-					public npp::base
+					public n21000::base
 				{
 				public:
 					/// ctor
@@ -33,13 +33,13 @@ namespace nebula
 					/// dtor
 					virtual ~base();
 					/// init
-					virtual void						init( jess::shared_ptr<nf::app> );
+					virtual void						init( jess::shared_ptr<n10000::app> );
 					/// shutdown
 					virtual void						shutdown();
 					/// update
 					virtual void						update();
 					/// create window
-					virtual jess::shared_ptr<npw::base>			create_window();
+					virtual jess::shared_ptr<n22000::base>			create_window();
 					/// display
 					::Display*						m_xdisplay;// = XOpenDisplay( NULL );
 					/// screen num

@@ -12,7 +12,7 @@ namespace box_client
 		namespace layout
 		{
 			class base:
-				public nu::layout::base
+				public n51000::base
 			{
 				virtual void		init();
 			};

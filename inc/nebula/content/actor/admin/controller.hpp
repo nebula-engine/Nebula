@@ -1,8 +1,6 @@
 #ifndef __NEBULA_CONTENT_ACTOR_ADMIN_CONTROLLER_HPP__
 #define __NEBULA_CONTENT_ACTOR_ADMIN_CONTROLLER_HPP__
 
-#include <boost/numeric/ublas/vector.hpp>
-
 #include <nebula/content/actor/admin/base.hpp>
 
 namespace nebula
@@ -15,7 +13,7 @@ namespace nebula
 			{
 				/// controller
 				class controller:
-					public ncaa::base
+					public n34100::base
 				{
 				public:
 					/// flag
@@ -75,9 +73,9 @@ namespace nebula
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step( FLOAT );
+					virtual	void								step( float );
 					/// render
-					virtual	void								render( jess::shared_ptr<npr::base> );
+					virtual	void								render( jess::shared_ptr<n23000::base> );
 
 
 					virtual void								process_event(int);
@@ -86,24 +84,27 @@ namespace nebula
 					virtual	void								create_shapes();
 
 					/// lookat
-					virtual void								look_at( jess::shared_ptr<npr::base> );
+					virtual void								look_at( jess::shared_ptr<n23000::base> );
 
 					/// get move
-					boost::numeric::ublas::vector<FLOAT>					get_move();
+					physx::PxVec3								get_move();
 
+
+
+				public:
 					/// move
-					boost::numeric::ublas::vector<FLOAT>					move_;
+					physx::PxVec3								move_;
 					/// pos
-					boost::numeric::ublas::vector<FLOAT>					pos_;
+					physx::PxVec3								pos_;
 					/// look
-					boost::numeric::ublas::vector<FLOAT>					look_;
+					physx::PxVec3								look_;
 					/// up
-					boost::numeric::ublas::vector<FLOAT>					up_;
+					physx::PxVec3								up_;
 
 
 
-					FLOAT yaw_;
-					FLOAT pitch_;
+					float									yaw_;
+					float									pitch_;
 
 					std::map<int,int>							key_flag_;
 					std::map<int,int>							key_up_event_;

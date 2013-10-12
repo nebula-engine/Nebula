@@ -4,19 +4,19 @@
 #include <nebula/platform/window/lin/base.hpp>
 #include <nebula/platform/platform/lin/base.hpp>
 
-nppl::base::base()
+n21100::base::base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-nppl::base::~base()
+n21100::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	nppl::base::init( jess::shared_ptr<nf::app> parent )
+void	n21100::base::init( jess::shared_ptr<n10000::app> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	npp::base::init( parent );
+	n21000::base::init( parent );
 	/*
 	char* pPath;
 	pPath = getenv("DISPLAY");
@@ -46,27 +46,27 @@ void	nppl::base::init( jess::shared_ptr<nf::app> parent )
 	
 	
 }
-void	nppl::base::shutdown()
+void	n21100::base::shutdown()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	npp::base::shutdown();
+	n21000::base::shutdown();
 	
 	XCloseDisplay( m_xdisplay );
 	
 }
-jess::shared_ptr<npw::base>	nppl::base::create_window()
+jess::shared_ptr<n22000::base>	n21100::base::create_window()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	jess::shared_ptr<npwl::base> wnd_lin( new npwl::base );
-	jess::shared_ptr<npw::base> wnd = wnd_lin;
+	jess::shared_ptr<n22100::base> wnd_lin( new n22100::base );
+	jess::shared_ptr<n22000::base> wnd = wnd_lin;
 	
 	// don't init here, need to send data first
 	/**
 	* \todo create init override for window that allows all necessary data to be sent OR have the window grab the data from it's parent
 	**/
-	windows_.push<npwl::base>( wnd_lin );
+	windows_.push<n22100::base>( wnd_lin );
 	
 		
 	std::cout << wnd.get();
@@ -103,11 +103,11 @@ jess::shared_ptr<npw::base>	nppl::base::create_window()
 
 	return wnd;
 }
-void	nppl::base::update()
+void	n21100::base::update()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	npp::base::update();
+	n21000::base::update();
 }
 
 

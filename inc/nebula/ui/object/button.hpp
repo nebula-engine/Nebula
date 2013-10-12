@@ -12,10 +12,10 @@ namespace nebula
 		namespace object
 		{
 			class button:
-				public nuo::base
+				public n52000::base
 			{
 			public:
-				virtual void		render( jess::shared_ptr<npr::base>& );
+				virtual void		render( jess::shared_ptr<n23000::base>& );
 			};
 		}
 	}

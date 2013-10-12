@@ -41,13 +41,14 @@ namespace nebula
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step(FLOAT);
+					virtual	void								step(float);
 					/// render
 					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 				
 				
-				
-				
+					/// %box
+					jess::shared_ptr<n35200::box>						create_box();
+
 					/// create shapes
 					virtual	void								create_shapes();
 				};

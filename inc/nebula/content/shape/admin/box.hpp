@@ -19,20 +19,22 @@ namespace nebula
 				class box:
 					public nebula::content::shape::admin::base
 				{
-				public:
-					/// init
-					void								init( jess::shared_ptr<ncaa::rigid_actor> );
-					/// shutdown
-					void								shutdown();
-					/// render
-					void								render( jess::shared_ptr<nebula::platform::renderer::base> );
-					/// x
-					FLOAT								x_;
-					/// y
-					FLOAT								y_;
-					/// z
-					FLOAT								z_;
-					
+					public:
+						/// init
+						void								init( jess::shared_ptr<n34100::rigid_actor> );
+						/// shutdown
+						void								shutdown();
+						/// render
+						void								render( jess::shared_ptr<nebula::platform::renderer::base> );
+						/// get pose
+						physx::PxMat44							get_pose()
+						{
+							return pose_;
+						}
+						/** \brief pose
+						 * pose relative to parent coordinates
+						 */
+						physx::PxMat44							pose_;
 				};
 			}
 		}

@@ -6,44 +6,35 @@
 
 #include <nebula/content/shape/admin/box.hpp>
 
-void	ncsa::box::init( jess::shared_ptr<ncaa::rigid_actor> parent)
+void	n35100::box::init( jess::shared_ptr<n34100::rigid_actor> parent)
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// call base
-	ncsa::base::init( parent );
+	n35100::base::init( parent );
 		
 	// create physics
-	#if defined(__PHYSX__)
-		physics_.reset( new ncspp::box );
-	#else
-		physics_.reset( new ncsp::box );
-	#endif
-	
+	physics_.reset( new n35200::box );
 	physics_->init( shared_from_this() );
 	
 	// create renderer
-	renderer_.reset( new ncsr::box );
+	renderer_.reset( new n35300::box );
 	renderer_->init( shared_from_this() );
 	
-	// default dimensions
-	x_ = 1;
-	y_ = 1;
-	z_ = 1;
 }
-void	ncsa::box::shutdown()
+void	n35100::box::shutdown()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	ncsa::box::render( jess::shared_ptr<npr::base> rnd )
+void	n35100::box::render( jess::shared_ptr<n23000::base> rnd )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	ncsa::base::render( rnd );
+	n35100::base::render( rnd );
 }
 
 

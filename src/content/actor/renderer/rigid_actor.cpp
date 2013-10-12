@@ -7,37 +7,37 @@
 
 #include <nebula/content/actor/renderer/rigid_actor.hpp>
 
-ncar::rigid_actor::rigid_actor()
+n34300::rigid_actor::rigid_actor()
 {
 
 }
-ncar::rigid_actor::~rigid_actor()
+n34300::rigid_actor::~rigid_actor()
 {
 
 }
-void	ncar::rigid_actor::init( jess::shared_ptr<ncaa::base> parent )
+void	n34300::rigid_actor::init( jess::shared_ptr<n34100::base> parent )
 {
-	ncar::actor::init( parent );
+	n34300::actor::init( parent );
 }
-void	ncar::rigid_actor::shutdown()
-{
-}
-void	ncar::rigid_actor::update()
+void	n34300::rigid_actor::shutdown()
 {
 }
-void	ncar::rigid_actor::render( jess::shared_ptr<npr::base> rnd )
+void	n34300::rigid_actor::update()
 {
-	jess::shared_ptr<ncaa::rigid_actor> parent = std::dynamic_pointer_cast<ncaa::rigid_actor>( parent_.lock() );
+}
+void	n34300::rigid_actor::render( jess::shared_ptr<n23000::base> rnd )
+{
+	jess::shared_ptr<n34100::rigid_actor> parent = std::dynamic_pointer_cast<n34100::rigid_actor>( parent_.lock() );
 
 	jess::assertion( bool( parent ) );
 
-	parent->shapes_.foreach( std::bind( &ncsa::base::render, std::placeholders::_1, rnd ) );
+	parent->shapes_.foreach( std::bind( &n35100::base::render, std::placeholders::_1, rnd ) );
 }
-void	ncar::rigid_actor::step( FLOAT dt )
+void	n34300::rigid_actor::step( float dt )
 {
 
 }
-void	ncar::rigid_actor::create_shapes()
+void	n34300::rigid_actor::create_shapes()
 {
 
 }

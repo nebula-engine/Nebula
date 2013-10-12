@@ -1,46 +1,46 @@
 #include <nebula/content/actor/renderer/rigid_dynamic.hpp>
 
 /** \todo 
-* Where approporiate, make member functions of base classes (especially in actor namespace) pure virtual.
-* Also, remove derived class member functions where not used
+* Where approporiate, make member fun30000tions of base classes (especially in actor namespace) pure virtual.
+* Also, remove derived class member fun30000tions where not used
 **/
 
-ncar::rigid_dynamic::rigid_dynamic()
+n34300::rigid_dynamic::rigid_dynamic()
 {
 
 }
-ncar::rigid_dynamic::~rigid_dynamic()
+n34300::rigid_dynamic::~rigid_dynamic()
 {
 
 }
-ncar::rigid_dynamic::rigid_dynamic( const ncar::rigid_dynamic& act )
+n34300::rigid_dynamic::rigid_dynamic( const n34300::rigid_dynamic& act )
 {
 
 }
-ncar::rigid_dynamic&	ncar::rigid_dynamic::operator=( const ncar::rigid_dynamic& act )
+n34300::rigid_dynamic&	n34300::rigid_dynamic::operator=( const n34300::rigid_dynamic& act )
 {
 	return *this;
 }
-void	ncar::rigid_dynamic::init( jess::shared_ptr<ncaa::base> parent )
+void	n34300::rigid_dynamic::init( jess::shared_ptr<n34100::base> parent )
 {
-	ncar::rigid_body::init( parent );
+	n34300::rigid_body::init( parent );
 }
-void	ncar::rigid_dynamic::shutdown()
-{
-	
-}
-void	ncar::rigid_dynamic::update()
+void	n34300::rigid_dynamic::shutdown()
 {
 	
 }
-void	ncar::rigid_dynamic::render( jess::shared_ptr<npr::base> rnd )
+void	n34300::rigid_dynamic::update()
 {
 	
 }
-void	ncar::rigid_dynamic::step( FLOAT dt ){
+void	n34300::rigid_dynamic::render( jess::shared_ptr<n23000::base> rnd )
+{
 	
 }
-void	ncar::rigid_dynamic::create_shapes()
+void	n34300::rigid_dynamic::step( float dt ){
+	
+}
+void	n34300::rigid_dynamic::create_shapes()
 {
 
 }

@@ -15,7 +15,7 @@ namespace nebula
 			{
 				/// rigid static
 				class rigid_static:
-					public ncar::rigid_actor
+					public n34300::rigid_actor
 				{
 				public:
 					/// ctor
@@ -24,13 +24,13 @@ namespace nebula
 					~rigid_static();
 
 					/// Initialize
-					virtual	void						init( jess::shared_ptr<ncaa::base> );
+					virtual	void						init( jess::shared_ptr<n34100::base> );
 					/// ShutDown
 					virtual	void						shutdown();
 					/// Update
 					virtual	void						update();
 					/// Render
-					virtual	void						render( jess::shared_ptr<npr::base> );
+					virtual	void						render( jess::shared_ptr<n23000::base> );
 					/// Step
 					virtual	void						step( float );
 					

@@ -3,40 +3,40 @@
 
 
 
-ncaa::rigid_body::rigid_body()
+n34100::rigid_body::rigid_body()
 {
 
 }
-ncaa::rigid_body::~rigid_body()
+n34100::rigid_body::~rigid_body()
 {
 
 }
-void	ncaa::rigid_body::init( jess::shared_ptr<nc_sc_a::base> parent )
+void	n34100::rigid_body::init( jess::shared_ptr<n32100::base> parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
-	ncaa::rigid_actor::init( parent );
+	n34100::rigid_actor::init( parent );
 }
-void	ncaa::rigid_body::shutdown() {
+void	n34100::rigid_body::shutdown() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
-void	ncaa::rigid_body::update() {
-	ncaa::rigid_actor::update();
+void	n34100::rigid_body::update() {
+	n34100::rigid_actor::update();
 }
-void	ncaa::rigid_body::render( jess::shared_ptr<npr::base> rnd )
+void	n34100::rigid_body::render( jess::shared_ptr<n23000::base> rnd )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	ncaa::rigid_actor::render( rnd );
+	n34100::rigid_actor::render( rnd );
 }
-void	ncaa::rigid_body::step( float dt )
+void	n34100::rigid_body::step( float dt )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	ncaa::rigid_actor::step( dt );	
+	n34100::rigid_actor::step( dt );	
 }
-void	ncaa::rigid_body::create_shapes()
+void	n34100::rigid_body::create_shapes()
 {
 }
 

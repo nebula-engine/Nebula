@@ -15,11 +15,11 @@ namespace nebula
 		{
 		public:
 			virtual void									update();
-			virtual void									push_back( jess::shared_ptr<na::message> );
-			jess::shared_ptr<na::message>							pop_front();
-			virtual void									process_message( jess::shared_ptr<na::message> ) = 0;
+			virtual void									push_back( jess::shared_ptr<n40000::message> );
+			jess::shared_ptr<n40000::message>						pop_front();
+			virtual void									process_message( jess::shared_ptr<n40000::message> ) = 0;
 			
-			std::deque< jess::shared_ptr<na::message> >					messages_;
+			std::deque< jess::shared_ptr<n40000::message> >					messages_;
 		};
 	}
 }

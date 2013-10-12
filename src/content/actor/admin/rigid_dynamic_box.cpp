@@ -13,10 +13,10 @@
 
 #include <nebula/content/actor/admin/rigid_dynamic_box.hpp>
 
-//template class jess::shared_ptr<ncap::base>;
-//template void jess::shared_ptr<ncap::base>::create<ncap::rigid_dynamic_box>( std::function<void(jess::shared_ptr<ncap::rigid_dynamic_box>)> );
+//template class jess::shared_ptr<n34200::base>;
+//template void jess::shared_ptr<n34200::base>::create<n34200::rigid_dynamic_box>( std::fun30000tion<void(jess::shared_ptr<n34200::rigid_dynamic_box>)> );
 
-ncaa::rigid_dynamic_box::rigid_dynamic_box()
+n34100::rigid_dynamic_box::rigid_dynamic_box()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -24,43 +24,43 @@ ncaa::rigid_dynamic_box::rigid_dynamic_box()
 	y_ = 1;
 	z_ = 1;
 }
-ncaa::rigid_dynamic_box::~rigid_dynamic_box()
+n34100::rigid_dynamic_box::~rigid_dynamic_box()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	ncaa::rigid_dynamic_box::init( jess::shared_ptr<nc_sc_a::base> parent )
+void	n34100::rigid_dynamic_box::init( jess::shared_ptr<n32100::base> parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
-	ncaa::rigid_dynamic::init( parent );
+	n34100::rigid_dynamic::init( parent );
 
 	// physics
 #ifdef __PHYSX
-	physics_.reset( new ncapp::rigid_dynamic_box );
+	physics_.reset( new n34200p::rigid_dynamic_box );
 #else
-	physics_.reset( new ncap::rigid_dynamic_box );
+	physics_.reset( new n34200::rigid_dynamic_box );
 #endif
 	physics_->init( shared_from_this() );
 	
 	// renderer
-	renderer_.reset( new ncar::rigid_dynamic_box );
+	renderer_.reset( new n34300::rigid_dynamic_box );
 	renderer_->init( shared_from_this() );
 }
-void	ncaa::rigid_dynamic_box::shutdown( )
+void	n34100::rigid_dynamic_box::shutdown( )
 {
 	
 }
-void	ncaa::rigid_dynamic_box::update( )
+void	n34100::rigid_dynamic_box::update( )
 {
-	ncaa::rigid_dynamic::update();
+	n34100::rigid_dynamic::update();
 }
-void	ncaa::rigid_dynamic_box::render( jess::shared_ptr<npr::base> rnd )
+void	n34100::rigid_dynamic_box::render( jess::shared_ptr<n23000::base> rnd )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	ncaa::rigid_dynamic::render( rnd );
+	n34100::rigid_dynamic::render( rnd );
 }
-void	ncaa::rigid_dynamic_box::step(  )
+void	n34100::rigid_dynamic_box::step(  )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	/*
@@ -79,7 +79,7 @@ void	ncaa::rigid_dynamic_box::step(  )
 	}
 	*/
 }
-void	ncaa::rigid_dynamic_box::create_shapes()
+void	n34100::rigid_dynamic_box::create_shapes()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;

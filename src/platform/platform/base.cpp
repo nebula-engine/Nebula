@@ -5,31 +5,31 @@
 #include <nebula/platform/window/base.hpp>
 #include <nebula/platform/platform/base.hpp>
 
-npp::base::base()
+n21000::base::base()
 {
 
 }
-npp::base::~base()
+n21000::base::~base()
 {
 
 }
-void	npp::base::init( jess::shared_ptr<nf::app> parent )
+void	n21000::base::init( jess::shared_ptr<n10000::app> parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	parent_ = parent;
 
-	key_down_event_[np::key::space] = event::eDELETE_WINDOW;
+	key_down_event_[n20000::key::space] = event::eDELETE_WINDOW;
 }
-void	npp::base::shutdown() {
+void	n21000::base::shutdown() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 
 	windows_.clear();
 }
-void	npp::base::delete_window( int window_no )
+void	n21000::base::delete_window( int window_no )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 
-	jess::shared_ptr<npw::base> wnd = windows_.at( window_no );
+	jess::shared_ptr<n22000::base> wnd = windows_.at( window_no );
 
 	if ( wnd )
 	{
@@ -39,24 +39,24 @@ void	npp::base::delete_window( int window_no )
 
 
 }
-jess::shared_ptr<npw::base>	npp::base::create_window()
+jess::shared_ptr<n22000::base>	n21000::base::create_window()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	/// \todo make this pure virtual
 
-	return jess::shared_ptr<npw::base>();
+	return jess::shared_ptr<n22000::base>();
 }
-void	npp::base::update()
+void	n21000::base::update()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	//FR_COM_IComm::Update();
 	mailbox::update();
 
-	windows_.foreach( std::bind( &npw::base::update, std::placeholders::_1 ) );
+	windows_.foreach( std::bind( &n22000::base::update, std::placeholders::_1 ) );
 }
-jess::shared_ptr<npw::base>	npp::base::request_window()
+jess::shared_ptr<n22000::base>	n21000::base::request_window()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -69,7 +69,7 @@ jess::shared_ptr<npw::base>	npp::base::request_window()
 	 **/
 	return create_window();
 }
-void	npp::base::process_message( jess::shared_ptr<na::message> msg )
+void	n21000::base::process_message( jess::shared_ptr<n40000::message> msg )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -93,7 +93,7 @@ void	npp::base::process_message( jess::shared_ptr<na::message> msg )
 	}
 
 }
-void	npp::base::process_event( int evnt )
+void	n21000::base::process_event( int evnt )
 {
 	//int window_no;
 

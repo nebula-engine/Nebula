@@ -16,7 +16,6 @@ lpaths    += $(root)external/glew/lib
 lpaths    += $(root)external/PhysX/Lib/linux64
 
 defines   := 
-defines   += FLOAT=float
 defines   += __DEBUG__
 defines   += __LIN__
 defines   += __OPENGL__

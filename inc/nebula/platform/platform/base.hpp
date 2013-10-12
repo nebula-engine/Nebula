@@ -17,8 +17,8 @@ namespace nebula
 		{
 			/// base
 			class base:
-				public jess::enable_shared_from_this<npp::base>,
-				public na::mailbox
+				public jess::enable_shared_from_this<n21000::base>,
+				public n40000::mailbox
 			{
 			public:
 				/// event
@@ -35,25 +35,25 @@ namespace nebula
 				/// dtor
 				virtual ~base();
 				/// init
-				virtual void								init( jess::shared_ptr<nf::app> );
+				virtual void								init( jess::shared_ptr<n10000::app> );
 				/// shutdown
 				virtual void								shutdown();
 				/// update
 				virtual void								update();
 				/// request window
-				virtual jess::shared_ptr<npw::base>					request_window();
+				virtual jess::shared_ptr<n22000::base>					request_window();
 				/// create window
-				virtual jess::shared_ptr<npw::base>					create_window();
+				virtual jess::shared_ptr<n22000::base>					create_window();
 				/// delete window
 				virtual void								delete_window( int );
 				/// process event
 				virtual void								process_event( int );
 				/// process message
-				virtual void								process_message( jess::shared_ptr<na::message> );
+				virtual void								process_message( jess::shared_ptr<n40000::message> );
 				/// parent
-				std::weak_ptr<nf::app>							parent_;
+				std::weak_ptr<n10000::app>						parent_;
 				/// window
-				jess::map<npw::base>							windows_;
+				jess::map<n22000::base>							windows_;
 				/// key down event map
 				std::map<int,int>							key_down_event_;
 			};

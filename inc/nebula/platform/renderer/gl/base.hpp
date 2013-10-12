@@ -7,8 +7,6 @@
 
 #include <jess/shared_ptr.hpp>
 
-#include <boost/numeric/ublas/vector.hpp>
-
 #include <nebula/define.hpp>
 
 #include <nebula/platform/renderer/base.hpp>
@@ -27,7 +25,7 @@ namespace nebula
 			{
 				/// base
 				class base:
-					public npr::base
+					public n23000::base
 				{
 					public:
 						///@name draw
@@ -35,7 +33,7 @@ namespace nebula
 						/// cube
 						virtual void						draw_cube();
 						///}
-						virtual void						init( jess::shared_ptr<npw::base> );	
+						virtual void						init( jess::shared_ptr<n22000::base> );	
 						/// update						
 						virtual void						update();
 						/// push_matrix
@@ -45,11 +43,11 @@ namespace nebula
 						/// swap
 						virtual void						swap();
 						/// mult_matrix
-						virtual void						mult_matrix( bnu::matrix<float, bnu::column_major> );
+						virtual void						mult_matrix( physx::PxMat44 );
 						/// scale
-						virtual void						scale( bnu::vector<FLOAT> );
+						virtual void						scale( physx::PxVec3 );
 						/// look at
-						virtual void						look_at( bnu::vector<FLOAT>, bnu::vector<FLOAT>, bnu::vector<FLOAT> ); 
+						virtual void						look_at( physx::PxVec3, physx::PxVec3, physx::PxVec3 ); 
 						/// light
 						virtual void						light();
 						void							disable_lighting();
@@ -63,8 +61,8 @@ namespace nebula
 						virtual void						end_render();
 						/// draw window quad
 						virtual void						draw_window_quad( int, int, int, int );
-						/// unproject
-						virtual void						unproject( int, int, int, double*, double*, double* );
+						/// un23000oject
+						virtual void						un23000oject( int, int, int, double*, double*, double* );
 						/// sphere
 						virtual void						draw_sphere();
 						/// 2d quad
@@ -75,7 +73,7 @@ namespace nebula
 						/// resize
 						virtual void						resize( int, int );
 						/// lookat
-						void							lookat( bnu::vector<FLOAT>, bnu::vector<FLOAT>, bnu::vector<FLOAT> );
+						void							lookat( physx::PxVec3, physx::PxVec3, physx::PxVec3 );
 						/// compile shaders
 						virtual void						compile_shaders( unsigned int& );
 						/// load shader source form file

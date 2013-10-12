@@ -18,7 +18,7 @@ namespace nebula
 			{
 				/// rigid dynamic
 				class rigid_actor:
-					public ncaa::actor
+					public n34100::actor
 				{
 				public:
 					///@name ctor and dtor
@@ -56,10 +56,10 @@ namespace nebula
 					/// create shapes
 					virtual	void								create_shapes();
 					/// create box
-					virtual jess::shared_ptr<ncsa::box>					create_box();
+					virtual jess::shared_ptr<n35100::box>					create_box();
 					
 					/// shapes
-					jess::map<ncsa::base>							shapes_;
+					jess::map<n35100::base>							shapes_;
 				};
 			}
 		}

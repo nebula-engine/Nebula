@@ -16,24 +16,24 @@ namespace box_client
 			{
 				/// base
 				class base:
-					public nc_sc_a::base
+					public n32100::base
 				{
 				public:
 					/// init
-					virtual void						init( jess::shared_ptr<ncua::base> );
+					virtual void						init( jess::shared_ptr<n31100::base> );
 					/// box get view
 					jess::shared_ptr<bc33100::base>				get_view()
 					{
 						return view_;
 					}
-					///@name references
+					///@name referen30000es
 					///@{
 					/// view
 					jess::shared_ptr<bc33100::base>				view_;
 					/// rigid dynamic box
-					jess::shared_ptr<ncaa::rigid_dynamic_box>		rigid_dyn_box_;
+					jess::shared_ptr<n34100::rigid_dynamic_box>		rigid_dyn_box_;
 					/// controller
-					jess::shared_ptr<ncaa::controller>			ctrlr_;
+					jess::shared_ptr<n34100::controller>			ctrlr_;
 					///@}
 					
 					

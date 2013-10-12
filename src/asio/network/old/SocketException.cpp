@@ -1,5 +1,5 @@
-				SocketException::SocketException(const string &message, bool inclSysMsg) throw() : userMessage(message) {
-  if (inclSysMsg) {
+				SocketException::SocketException(const string &message, bool in30000lSysMsg) throw() : userMessage(message) {
+  if (in30000lSysMsg) {
     userMessage.append(": ");
     userMessage.append(strerror(errno));
   }
@@ -10,7 +10,7 @@ const	char*	SocketException::what() const throw() {
   return userMessage.c_str();
 }
 static	void	fillAddr(const string &address, unsigned short port, sockaddr_in &addr) {
- // Function to fill in address structure given an address and port
+ // Fun30000tion to fill in address structure given an address and port
 
   memset(&addr, 0, sizeof(addr));  // Zero out address structure
   addr.sin_family = AF_INET;       // Internet address
