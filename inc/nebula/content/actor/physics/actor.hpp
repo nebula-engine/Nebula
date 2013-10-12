@@ -18,38 +18,32 @@ namespace nebula
 				class actor:
 					public nebula::content::actor::physics::base
 				{
-				public:
-					///@name ctor and dtor
-					///@{
-					// Ctor
-					actor();
-					/// Copy Ctor
-					actor(const actor&);
-					/// Dtor
-					~actor();
-					///@}
+					protected:
+						/// copy ctor
+						actor( actor const & _actor_ ): base( _actor_ )
+						{
 
-					///@name operator
-					///@{
-					/// assignment
-					actor&									operator=(const actor&);
-					///@}
-
-				
-
-					/// init
-					virtual	void								init( jess::shared_ptr<nebula::content::actor::admin::base> );
-					/// shutdown
-					virtual	void								shutdown();
-					/// update
-					virtual	void								update();
-					/// step
-					virtual	void								step();
-				
-				
-				
-					/// px actor
-					physx::PxActor*								px_actor_;
+						}
+						/// assignment
+						actor&									operator=(const actor&)
+						{
+							return *this;
+						}
+					public:
+						/// ctor
+						actor( jess::shared_ptr<n34100::base> );
+						/// dtor
+						~actor();
+						/// init
+						virtual	void								init();
+						/// shutdown
+						virtual	void								shutdown();
+						/// update
+						virtual	void								update();
+						/// step
+						virtual	void								step();
+						/// px actor
+						physx::PxActor*								px_actor_;
 				};
 			}
 		}

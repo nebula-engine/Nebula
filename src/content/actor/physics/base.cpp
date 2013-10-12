@@ -17,8 +17,6 @@ n34200::base::~base()
 void	n34200::base::init()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-
-	parent_ = parent;
 }
 void	n34200::base::shutdown()
 {

@@ -2,6 +2,7 @@
 
 
 n34200::rigid_body::rigid_body( jess::shared_ptr<n34100::base> parent ):
+	actor( parent ),
 	rigid_actor( parent )
 {
 

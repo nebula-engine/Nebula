@@ -1,14 +1,17 @@
 #include <nebula/content/actor/physics/actor.hpp>
 
-n34200::actor::actor()
+n34200::actor::actor( jess::shared_ptr<n34100::base> parent ):
+base( parent )
 {
+
 }
 n34200::actor::~actor()
 {
+
 }
-void	n34200::actor::init( jess::shared_ptr<n34100::base> parent )
+void	n34200::actor::init()
 {
-	n34200::base::init( parent );
+	n34200::base::init();
 }
 void	n34200::actor::shutdown()
 {

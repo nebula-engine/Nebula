@@ -16,17 +16,10 @@ namespace nebula
 					virtual public nebula::content::actor::physics::actor
 				{
 					protected:
-						/// ctor
-						rigid_actor()
-						{
-						}
 						/// copy ctor
-						rigid_actor(const rigid_actor&)
+						rigid_actor( rigid_actor const & original ): actor( original )
 						{
-						}
-						/// dtor
-						~rigid_actor()
-						{
+							
 						}
 						/// assignment
 						rigid_actor&								operator=( rigid_actor const & )
@@ -36,6 +29,8 @@ namespace nebula
 					public:
 						/// ctor
 						rigid_actor( jess::shared_ptr<n34100::base> );
+						/// dtor
+						~rigid_actor();
 						/// init
 						virtual	void								init();
 						/// shutdown

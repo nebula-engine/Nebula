@@ -16,13 +16,8 @@ namespace nebula
 					public n34200::rigid_actor
 				{
 					protected:
-						/// ctor
-						rigid_static()
-						{
-
-						}
-						/// ctor
-						rigid_static( rigid_static const & )
+						/// copy ctor
+						rigid_static( rigid_static const & _actor_ ): actor( _actor_ ), rigid_actor( _actor_ )
 						{
 
 						}

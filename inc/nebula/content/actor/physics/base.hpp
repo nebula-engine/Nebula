@@ -19,9 +19,15 @@ namespace nebula
 				{
 					protected:
 						/// copy ctor
-						base( base const & );
+						base( base const & )
+{
+
+}
 						/// assignment
-						base&									operator=( base const & );
+						base&									operator=( base const & )
+{
+return *this;
+}
 					public:
 						/// ctor
 						base( jess::shared_ptr<n34100::base> );

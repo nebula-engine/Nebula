@@ -1,6 +1,7 @@
 #include <nebula/content/actor/physics/rigid_dynamic_box.hpp>
 
 n34200::rigid_dynamic_box::rigid_dynamic_box( jess::shared_ptr<n34100::base> parent ):
+	actor( parent ),
 	rigid_dynamic( parent )
 {
 }

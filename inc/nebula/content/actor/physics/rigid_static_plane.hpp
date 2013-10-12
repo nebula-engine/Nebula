@@ -16,13 +16,8 @@ namespace nebula
 					public n34200::rigid_static
 				{
 					protected:
-						// ctor
-						rigid_static_plane()
-						{
-
-						}
 						/// copy ctor
-						rigid_static_plane( rigid_static_plane const & )
+						rigid_static_plane( rigid_static_plane const & _actor_ ): actor( _actor_ ), rigid_static( _actor_ )
 						{
 
 						}
@@ -31,14 +26,14 @@ namespace nebula
 						{
 
 						}
-						/// assignment
-						rigid_static_plane&							operator=( rigid_static_plane const & )
-						{
-return *this;
-						}
 					public:
 						/// ctor
 						rigid_static_plane( jess::shared_ptr<n34100::base> );
+						/// assignment
+						rigid_static_plane&							operator=( rigid_static_plane const & )
+						{
+							return *this;
+						}
 						/// init
 						virtual	void								init();
 						/// shutdown
