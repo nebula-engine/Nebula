@@ -60,7 +60,7 @@ void	n34100::rigid_dynamic_box::render( jess::shared_ptr<n23000::base> rnd )
 
 	n34100::rigid_dynamic::render( rnd );
 }
-void	n34100::rigid_dynamic_box::step(  )
+void	ncaa::rigid_dynamic_box::step( float dt )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	/*

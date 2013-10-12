@@ -101,6 +101,7 @@ namespace nebula
 						/// actors
 						jess::map<n34100::base>								actors_;
 						///@}
+
 				};
 			}
 		}

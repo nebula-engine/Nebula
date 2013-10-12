@@ -12,7 +12,14 @@
 void	n34100::rigid_static_plane::init( jess::shared_ptr<n32100::base> parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
-	n34100::rigid_static::init( parent );
+	ncaa::rigid_static::init( parent );
+
+	physics_.reset( new ncap::rigid_static_plane() );
+	physics_->init( shared_from_this() );
+
+	renderer_.reset( new ncar::rigid_static_plane );
+	renderer_->init( shared_from_this() );
+	
 }
 void	n34100::rigid_static_plane::shutdown() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
@@ -40,6 +47,17 @@ void	n34100::rigid_static_plane::step( float dt )
 
 void	n34100::rigid_static_plane::create_shapes()
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
 	
+	plane_ = create_plane();
 }
+
+
+
+
+
+
+
+
+
 

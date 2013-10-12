@@ -23,6 +23,8 @@ void	n33100::base::init( jess::shared_ptr<n32100::base> parent )
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	parent_ = parent;
+
+	n10000::renderable::init();
 }
 void	n33100::base::shutdown()
 {
@@ -39,6 +41,9 @@ void	n33100::base::render()
 	jess::shared_ptr<n23000::base> rnd = window_->renderer_;
 
 
+	n10000::renderable::render();
+	
+	
 	
 	rnd->begin_render();
 	rnd->begin_3d();
@@ -57,7 +62,12 @@ void	n33100::base::render()
 	{
 		layout_->render( rnd );
 	}
-
+	
+	
+	char str[16];
+	sprintf( str, "%8.2f", fps_ );
+	rnd->draw_text( 100, 200, str );
+	
 	
 	rnd->end_2d();
 	rnd->end_render();

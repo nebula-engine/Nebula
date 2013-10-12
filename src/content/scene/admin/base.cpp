@@ -155,7 +155,20 @@ jess::shared_ptr<n34100::rigid_dynamic_box>	n32100::base::create_rigid_dynamic_b
 	// Add the actor to the CO_SC_PH_Scene object
 	physics_->register_actor( act );
 }*/
-jess::shared_ptr<n34100::controller>		n32100::base::create_controller()
+}
+void						nc_sc_a::base::create_rigid_static_plane()
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
+	
+	jess::shared_ptr<ncaa::rigid_static_plane> act( new ncaa::rigid_static_plane() );
+	
+	actors_.push<ncaa::rigid_static_plane>( act );
+	
+	act->init( shared_from_this() );
+	
+	return act;
+}
+jess::shared_ptr<ncaa::controller>		nc_sc_a::base::create_controller()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 

@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include <boost/thread.hpp>
+#include <boost/asio/io_service.hpp>
 
 #include <jess/free.hpp>
 #include <jess/ostream.hpp>
@@ -7,62 +9,92 @@
 #include <nebula/define.hpp>
 #include <nebula/content/base.hpp>
 #include <nebula/asio/network/base.hpp>
-//#include <nebula/platform/platform/base.h>
 
 #if defined(__LIN__)
-	#include <nebula/platform/platform/lin/base.hpp>
+#include <nebula/platform/platform/lin/base.hpp>
 #elif defined(__WIN__)
-	#include <nebula/platform/platform/win/base.hpp>
+#include <nebula/platform/platform/win/base.hpp>
 #else
-	#error "__WIN__ or __LIN__ must be defined"
+#error "__WIN__ or __LIN__ must be defined"
 #endif
 
-
 #include <nebula/framework/renderable.hpp>
+
 #include <nebula/framework/app.hpp>
 
+namespace nebula
+{
+namespace framework
+{
+boost::asio::io_service		g_io_;
+}
+}
 
-//template class jess::shared_ptr<n30000::base>;
-//template void jess::shared_ptr<n30000::base>::create( boost::fun30000tion<void(jess::shared_ptr<n30000::base>)> );
 
-
-
-//template class jess::shared_ptr<n30000::base>;
-//template void jess::shared_ptr<n30000::base>::create( boost::fun30000tion<void(jess::shared_ptr<n30000::base>)> );
-
+void	io_service_run()
+{
+	n10000::g_io_.run();
+}
 
 n10000::app::app()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-	
-	//m_content = 0;
-	//m_network = 0;
-	//m_platform = 0;
 }
 n10000::app::~app()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;//jess::clog.fun30000sig();//m_platform->ShutDown();
+	jess::clog << NEB_FUNCSIG << std::endl;
+}
+void	nf::app::init()
+{
+	// log
+	jess::clog << NEB_FUNCSIG << std::endl;//.funcsig();//jess::clog << NEB_FUNCSIG << std::endl;
+
+	// make sure content_ and platform_ are null before reseting them
+	jess::assertion( !( content_ || platform_ ) );
+
+
+	content_.reset( new nc::base );
+	content_->init( shared_from_this() );
+
+#ifdef __LIN__
+	platform_.reset( new nppl::base );
+#elif defined(__WIN__)
+	platform_.reset( new nppw::base );
+#endif
+
+	platform_->init( shared_from_this() );
 }
 void	n10000::app::MainLoopSequ()
 {
-	while(1)
+	boost::thread* t = 0;
+
 	{
-		ContinueLoopSequ();
+		boost::asio::io_service::work work( g_io_ );
+
+		t = new boost::thread( io_service_run );
+		
+		while (1)
+		{
+			ContinueLoopSequ();
+		}
 	}
+	
+	// wait until asynchronous operations finish
+	t->join();
 }
 void	n10000::app::MainLoopMulti()
 {
-
+	
 }
 void	n10000::app::ContinueLoopSequ()
 {
 	//if ( !m_content )  throw Except("m_content is null");
 	//if ( !m_platform ) throw Except("m_platform is null");
 	//if ( !m_network )  throw Except("m_network is null");
-	
+
 	content_->update();
 	platform_->update();
-	
+
 	if ( bool( renderable_ ) )
 	{
 		renderable_->render();
@@ -72,27 +104,7 @@ void	n10000::app::ContinueLoopMulti()
 {
 
 }
-void	n10000::app::init()
-{
-	// log
-	jess::clog << NEB_FUNCSIG << std::endl;//.fun30000sig();//jess::clog << NEB_FUNCSIG << std::endl;
-
-	// make sure content_ and platform_ are null before reseting them
-	jess::assertion( !( content_ || platform_ ) );
-	
-	
-	content_.reset( new n30000::base );
-	content_->init( shared_from_this() );
-	
-	#ifdef __LIN__
-		platform_.reset( new n21100::base );
-	#elif defined(__WIN__)
-		platform_.reset( new n21200::base );
-	#endif
-	
-	platform_->init( shared_from_this() );
-}
-void	n10000::app::shutdown()
+void	nf::app::shutdown()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;//jess::clog.fun30000sig();

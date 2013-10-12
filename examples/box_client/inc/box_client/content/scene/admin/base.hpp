@@ -32,6 +32,8 @@ namespace box_client
 					jess::shared_ptr<bc33100::base>				view_;
 					/// rigid dynamic box
 					jess::shared_ptr<n34100::rigid_dynamic_box>		rigid_dyn_box_;
+					/// rigid static plane
+					jess::shared_ptr<n34100::rigid_static_plane>		rigid_sta_pln_;
 					/// controller
 					jess::shared_ptr<n34100::controller>			ctrlr_;
 					///@}

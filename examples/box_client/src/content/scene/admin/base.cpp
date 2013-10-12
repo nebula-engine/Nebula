@@ -14,6 +14,8 @@ void	box_client::content::scene::admin::base::init( jess::shared_ptr<n31100::bas
 	
 	rigid_dyn_box_ = create_rigid_dynamic_box();
 	
+	rigid_sta_pln_ = create_rigid_static_plane();
+	
 	ctrlr_ = create_controller();
 	
 	view_ = create_view<bc33100::base>();
