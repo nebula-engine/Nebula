@@ -19,6 +19,8 @@ namespace box_client
 					public n32100::base
 				{
 				public:
+					/// ctor
+					base( jess::shared_ptr<n31100::base> );
 					/// init
 					virtual void						init( jess::shared_ptr<n31100::base> );
 					/// box get view

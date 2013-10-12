@@ -1,32 +1,21 @@
 #include <nebula/content/actor/physics/rigid_dynamic.hpp>
 
-namespace n30000a = nebula::content::actor;
-
-n34200::rigid_dynamic::rigid_dynamic()
-{
-}
-n34200::rigid_dynamic::~rigid_dynamic()
-{
-}
-n34200::rigid_dynamic::rigid_dynamic( const n34200::rigid_dynamic& act )
+n34200::rigid_dynamic::rigid_dynamic( jess::shared_ptr<n34100::base> parent ):
+	rigid_body( parent )
 {
 
 }
-n34200::rigid_dynamic&	n34200::rigid_dynamic::operator=( const n34200::rigid_dynamic& act )
+void	n34200::rigid_dynamic::init()
 {
-	return *this;
-}
-void	n34200::rigid_dynamic::init( jess::shared_ptr<n34100::base> parent )
-{
-	n34200::rigid_body::init( parent );
+	n34200::rigid_body::init();
 }
 void	n34200::rigid_dynamic::shutdown()
 {
-	
+
 }
 void	n34200::rigid_dynamic::update()
 {
-	
+
 }
 void	n34200::rigid_dynamic::step(float)
 {

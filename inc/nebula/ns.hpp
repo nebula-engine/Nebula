@@ -59,7 +59,7 @@ namespace nebula
 			class scoped_render;
 			class scoped_2d_environment;
 			class scoped_3d_environment;
-			
+
 			namespace gl
 			{
 				class base;	
@@ -167,17 +167,20 @@ namespace nebula
 			{
 				class base;
 				class box;
+				class plane;
 			}
 			namespace physics
 			{
 				class base;
 				class box;
+				class plane;
 
 			}
 			namespace renderer
 			{
 				class base;
 				class box;
+				class plane;
 			}
 		}
 	}

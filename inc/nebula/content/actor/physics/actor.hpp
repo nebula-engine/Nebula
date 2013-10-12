@@ -16,7 +16,7 @@ namespace nebula
 			{
 				/// actor
 				class actor:
-					virtual public nebula::content::actor::physics::base
+					public nebula::content::actor::physics::base
 				{
 				public:
 					///@name ctor and dtor

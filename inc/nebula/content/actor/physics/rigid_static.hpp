@@ -1,9 +1,7 @@
-#ifndef __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_STATIC_HPP__
-#define __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_STATIC_HPP__
-
+#ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_STATIC_HPP__
+#define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_STATIC_HPP__
 
 #include <nebula/content/actor/physics/rigid_actor.hpp>
-
 
 namespace nebula
 {
@@ -15,32 +13,47 @@ namespace nebula
 			{
 				/// rigid static
 				class rigid_static:
-					virtual public n34200::rigid_actor
+					public n34200::rigid_actor
 				{
-				public:
-					/// ctor
-					rigid_static();
-					/// dtor
-					~rigid_static();
+					protected:
+						/// ctor
+						rigid_static()
+						{
 
-					/// Initialize
-					virtual	void						init( jess::shared_ptr<nebula::content::actor::admin::base> );
-					/// ShutDown
-					virtual	void						shutdown();
-					/// Update
-					virtual	void						update();
-					/// Render
-					virtual	void						render( jess::shared_ptr<nebula::platform::renderer::base> );
-					/// Step
-					virtual	void						step( float );
-					
-					
-					
-					
-					/// Create Shapes
-					virtual	void						create_shape();
-					
-					
+						}
+						/// ctor
+						rigid_static( rigid_static const & )
+						{
+
+						}
+						/// assignment
+						rigid_static&	operator=( rigid_static const & )
+						{
+							return *this;
+						}
+					public:
+						/// ctor
+						rigid_static( jess::shared_ptr<nebula::content::actor::admin::base> );
+						/// dtor
+						virtual ~rigid_static();
+						/// Initialize
+						virtual void						init();
+						/// ShutDown
+						virtual	void						shutdown();
+						/// Update
+						virtual	void						update();
+						/// Render
+						virtual	void						render( jess::shared_ptr<nebula::platform::renderer::base> );
+						/// Step
+						virtual	void						step( float );
+
+
+
+
+						/// Create Shapes
+						virtual	void						create_shape();
+
+
 				};
 			}
 		}

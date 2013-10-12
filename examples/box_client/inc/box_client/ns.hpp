@@ -38,10 +38,10 @@ namespace box_client
 	}
 }
 
-namespace bc0x000 = box_client;
-namespace bc0x100 = box_client::framework;
-namespace bc0x200 = box_client::platform;
-namespace bc0x300 = box_client::content;
+namespace bc00000 = box_client;
+namespace bc10000 = box_client::framework;
+namespace bc20000 = box_client::platform;
+namespace bc30000 = box_client::content;
 namespace bc31100 = box_client::content::universe::admin;
 namespace bc32100 = box_client::content::scene::admin;
 namespace bc33100 = box_client::content::view::admin;

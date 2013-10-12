@@ -15,42 +15,44 @@ namespace nebula
 				class rigid_actor:
 					virtual public nebula::content::actor::physics::actor
 				{
-				public:
-					///@name ctor and dtor
-					///@{
-					// Ctor
-					rigid_actor();
-					/// Copy Ctor
-					rigid_actor(const rigid_actor&);
-					/// Dtor
-					~rigid_actor();
-					///@}
+					protected:
+						/// ctor
+						rigid_actor()
+						{
+						}
+						/// copy ctor
+						rigid_actor(const rigid_actor&)
+						{
+						}
+						/// dtor
+						~rigid_actor()
+						{
+						}
+						/// assignment
+						rigid_actor&								operator=( rigid_actor const & )
+						{
+							return *this;
+						}
+					public:
+						/// ctor
+						rigid_actor( jess::shared_ptr<n34100::base> );
+						/// init
+						virtual	void								init();
+						/// shutdown
+						virtual	void								shutdown();
+						/// update
+						virtual	void								update();
+						/// step
+						virtual	void								step(float);
+						/// render
+						virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 
-					///@name operator
-					///@{
-					/// assignment
-					rigid_actor&								operator=(const rigid_actor&);
-					///@}
 
-				
+						/// %box
+						jess::shared_ptr<n35200::box>						create_box();
 
-					/// init
-					virtual	void								init( jess::shared_ptr<nebula::content::actor::admin::base> );
-					/// shutdown
-					virtual	void								shutdown();
-					/// update
-					virtual	void								update();
-					/// step
-					virtual	void								step(float);
-					/// render
-					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
-				
-				
-					/// %box
-					jess::shared_ptr<n35200::box>						create_box();
-
-					/// create shapes
-					virtual	void								create_shapes();
+						/// create shapes
+						virtual	void								create_shapes();
 				};
 			}
 		}

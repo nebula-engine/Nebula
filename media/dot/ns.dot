@@ -8,87 +8,12 @@ digraph G
 	{
 		node [style=filled]; 
 		node [color=white];
-
+		
 		style = filled;
 		color = lightcoral;
 		
 		framework [label="framework\n10000"]
 	}
-	
-	framework->nebula;
-
-	subgraph cluster__content
-	{
-		node [style=filled]; 
-		node [color=white];
-		
-		style = filled;
-		color = lightblue;
-		
-		content [label="content\n30000"];
-		
-		subgraph cluster__universe
-		{
-			style = filled;
-			color = deepskyblue3;
-
-			universe [label = "universe\n31000"];
-		}
-		subgraph cluster__scene
-		{
-			style = filled;
-			color = deepskyblue3;
-
-			scene [label = "scene\n32000"];
-		}
-		subgraph cluster__view
-		{
-			style = filled;
-			color = deepskyblue3;
-			
-			view [label = "view\n33000"];
-		}
-		subgraph cluster__actor
-		{
-			style = filled;
-			color = deepskyblue3;
-			
-			actor [label = "actor\n34000"];
-			actor_admin [label = "admin\n34100"];
-			actor_physics [label = "physics\n34200"];
-			actor_physics_physx [label = "physx\n34210"];
-			actor_renderer [label = "renderer\n34300"];
-		}
-		subgraph cluster__shape
-		{
-			style = filled;
-			color = deepskyblue3;
-			
-			shpe [label = "shape\n35000"];
-			shpe_admin [label = "admin\n35100"];
-			shpe_physics [label = "physics\n35200"];
-			shpe_physics_physx [label = "physx\n35210"];
-			shpe_renderer [label = "renderer\n35300"];
-		}
-		
-		universe -> content;
-		scene -> content;
-		view -> content;
-		actor -> content;
-		actor_admin -> actor;
-		actor_physics -> actor;
-		actor_physics_physx -> actor_physics;
-		actor_renderer->actor;
-		
-		shpe->content;
-		shpe_admin->shpe;
-		shpe_physics->shpe;
-		shpe_physics_physx->shpe_physics;
-		shpe_renderer->shpe;
-	}
-	
-	content -> nebula;
-
 	subgraph cluster__platform
 	{
 		node [style=filled]; 
@@ -140,7 +65,85 @@ digraph G
 		style = filled;
 		color = aquamarine;
 	}
+
+	framework->nebula;
+
+	subgraph cluster__content
+	{
+		node [style=filled]; 
+		node [color=white];
+		
+		style = filled;
+		color = lightblue;
+		
+		content [label="content\n30000"];
+		
+		
+		subgraph cluster__universe
+		{
+			style = filled;
+			color = deepskyblue3;
+
+			universe [label = "universe\n31000"];
+		}
+		subgraph cluster__scene
+		{
+			style = filled;
+			color = deepskyblue3;
+
+			scene [label = "scene\n32000"];
+			scene_admin [label = "admin\n32100"];
+			scene_physics [label = "physics\n32200"];
+		}
+		subgraph cluster__view
+		{
+			style = filled;
+			color = deepskyblue3;
+			
+			view [label = "view\n33000"];
+			view_admin [label = "admin\n33100"];
+		}
+		subgraph cluster__actor
+		{
+			style = filled;
+			color = deepskyblue3;
+			
+			actor [label = "actor\n34000"];
+			actor_admin [label = "admin\n34100"];
+			actor_physics [label = "physics\n34200"];
+			actor_renderer [label = "renderer\n34300"];
+		}
+		subgraph cluster__shape
+		{
+			style = filled;
+			color = deepskyblue3;
+			
+			shpe [label = "shape\n35000"];
+			shpe_admin [label = "admin\n35100"];
+			shpe_physics [label = "physics\n35200"];
+			shpe_renderer [label = "renderer\n35300"];
+		}
+		
+		content_physics [label="physics\n36000"];
+		
+		content_physics->content;
+		universe -> content;
+		scene -> content;
+		view -> content;
+		actor -> content;
+		actor_admin -> actor;
+		actor_physics -> actor;
+		actor_renderer->actor;
+		
+		shpe->content;
+		shpe_admin->shpe;
+		shpe_physics->shpe;
+		shpe_renderer->shpe;
+	}
 	
+	content -> nebula;
+
+		
 	platform->nebula;
 	
 	subgraph cluster__asio
@@ -161,7 +164,7 @@ digraph G
 		
 		ui [label = "ui\n50000"];
 		ui_layout [label="layout\n51000"];
-		ui_object [label="layout\n52000"];
+		ui_object [label="object\n52000"];
 		
 		style = filled;
 		color = plum;
@@ -180,6 +183,8 @@ digraph G
 
 	asio->nebula;
 	ui -> nebula;
+	ui_layout->ui;
+	ui_object->ui;
 	util->nebula;
 	
 			

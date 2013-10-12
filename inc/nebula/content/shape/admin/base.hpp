@@ -31,6 +31,8 @@ namespace nebula
 						virtual void							shutdown();
 						/// render
 						virtual void							render( jess::shared_ptr<nebula::platform::renderer::base> );
+						/// get pose
+						physx::PxMat44							get_pose();
 						/// get scale
 						physx::PxVec3							get_scale();
 						/// parent
@@ -39,6 +41,8 @@ namespace nebula
 						jess::shared_ptr<nebula::content::shape::renderer::base>	renderer_;
 						/// physics
 						jess::shared_ptr<nebula::content::shape::physics::base>		physics_;
+						/// pose
+						physx::PxMat44							pose_;
 						/// scale
 						physx::PxVec3							scale_;
 				};

@@ -1,24 +1,22 @@
 #include <jess/free.hpp>
 #include <jess/ostream.hpp>
 
-#include <box_client/ns.hpp>
-#include <box_client/framework/app.hpp>
-#include <box_client/content/universe/admin/base.hpp>
-#include <box_client/content/scene/admin/base.hpp>
-#include <box_client/content/view/admin/base.hpp>
 #include <nebula/content/actor/admin/controller.hpp>
 #include <nebula/content/actor/admin/rigid_static_plane.hpp>
 
-//template void n30000::base::create_universe( boost::shared_ptr<box_client::content::universe::admin::base>& );
+#include <box_client/ns.hpp>
+#include <box_client/content/universe/admin/base.hpp>
+#include <box_client/content/scene/admin/base.hpp>
+#include <box_client/content/view/admin/base.hpp>
 
+#include <box_client/framework/app.hpp>
 
-bc0x100::app::app()
+bc10000::app::app()
 {
 	
 }
-void	bc0x100::app::init()
+void	bc10000::app::init()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	n10000::app::init();
@@ -35,9 +33,5 @@ void	bc0x100::app::init()
 	
 	renderable_ = scene_->get_view();
 }
-
-
-
-
 
 

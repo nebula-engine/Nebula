@@ -17,47 +17,32 @@ namespace nebula
 				/// base
 				class base
 				{
-				public:
-					///@name ctor and dtor
-					///@{
-					// Ctor
-					base();
-					/// Copy Ctor
-					base(const base&);
-					/// Dtor
-					~base();
-					///@}
-
-					///@name operator
-					///@{
-					/// assignment
-					base&									operator=(const base&);
-					///@}
-
-					
-					
-					/// init
-					virtual	void								init( jess::shared_ptr<n34100::base> );
-					/// shutdown
-					virtual	void								shutdown();
-					/// update
-					virtual	void								update();
-					/// step
-					virtual	void								step( float );
-					
-					virtual void								render( jess::shared_ptr<n23000::base> rnd );
-					
-					//virtual jess::shared_ptr<n34200::material>				create_physics_material();
-
-					/// create shapes
-					virtual	void								create_shapes();
-					
-					
-					/// parent
-					std::weak_ptr<nebula::content::actor::admin::base>			parent_;
-					
-					/// materials
-					jess::map<n34200::material>						materials_;
+					protected:
+						/// copy ctor
+						base( base const & );
+						/// assignment
+						base&									operator=( base const & );
+					public:
+						/// ctor
+						base( jess::shared_ptr<n34100::base> );
+						/// dtor
+						~base();
+						/// init
+						virtual	void								init();
+						/// shutdown
+						virtual	void								shutdown();
+						/// update
+						virtual	void								update();
+						/// step
+						virtual	void								step( float );
+						/// render
+						virtual void								render( jess::shared_ptr<n23000::base> rnd );
+						/// create shapes
+						virtual	void								create_shapes();
+						/// parent
+						std::weak_ptr<n34100::base>						parent_;
+						/// materials
+						jess::map<n34200::material>						materials_;
 				};
 			}
 		}

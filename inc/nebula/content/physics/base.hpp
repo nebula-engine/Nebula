@@ -43,42 +43,37 @@ namespace nebula
 			 * -callbacks that only occur if filter shader callback flag is set
 			 *     -onTrigger
 			 *     -onContact
-			 * 
-			 * 
-			 * 
-			 * 
 			 */
 			class base
 			{
 				public:
-					///@name Constructors and Destructors
-					///@{
-					/// Constructor
-					base();
-					/// Destructor
-					~base();
-					///@}
-
-
-
-					///@name standard fun30000tions
-					///@{
-					/// initialize
-					virtual	void							init( jess::shared_ptr<nebula::content::base> );
+					/// ctor
+					base( jess::shared_ptr<nebula::content::base> );
+					/// dtor
+					virtual ~base();
+					/// init
+					virtual	void							init();
 					/// shutdown
 					virtual	void							shutdown();
-					///@}
-
 					///@name create
 					///@{
 					/// scene
 					jess::shared_ptr<n32200::base>					create_scene();
-					/// controller
-					jess::shared_ptr<n34200::controller>				create_controller( jess::shared_ptr<n32100::base> );
-					/// rigid dynamic box
-					jess::shared_ptr<n34200::rigid_dynamic_box>			create_rigid_dynamic_box();
 					/// rigid dynamic
-					jess::shared_ptr<n34200::rigid_dynamic>				create_rigid_dynamic();
+					jess::shared_ptr<n34200::rigid_dynamic>				create_rigid_dynamic(
+							jess::shared_ptr<n32100::base>,
+							jess::shared_ptr<n34100::base>
+							);
+					/// rigid dynamic box
+					jess::shared_ptr<n34200::rigid_dynamic_box>			create_rigid_dynamic_box(
+							jess::shared_ptr<n32100::base>,
+							jess::shared_ptr<n34100::base>
+							);
+					/// controller
+					jess::shared_ptr<n34200::controller>				create_controller(
+							jess::shared_ptr<n32100::base>,
+							jess::shared_ptr<n34100::base>
+							);
 					/// physics material
 					jess::shared_ptr<n34200::material>				request_physics_material();
 					///@}
@@ -86,21 +81,23 @@ namespace nebula
 					///@name fetch
 					///@{
 					/// physx physics
-					physx::PxPhysics*						get_px_physics() const { return px_physics_; }
+					physx::PxPhysics*						get_px_physics() const
+					{
+						return px_physics_;
+					}
 					/// physx controller manager
-					physx::PxControllerManager*					get_px_controller_manager() const { return px_character_controller_manager_; }
+					physx::PxControllerManager*					get_px_controller_manager() const
+					{
+						return px_character_controller_manager_;
+					}
 					///@}
-
-					virtual void							add_actor( jess::shared_ptr<n34100::base> );
-
-					//protected:
+				protected:
 					/// parent
 					std::weak_ptr<nebula::content::base>				parent_;
-
-					///@name PhysX Objects
+					///@name physx
 					///@{
 					/**
-					*/
+					 */
 					/// physx default error callback
 					DefaultErrorCallback 						px_default_error_callback_;
 					/// physx default allocator
@@ -118,7 +115,6 @@ namespace nebula
 					/// physx controller manager
 					physx::PxControllerManager*					px_character_controller_manager_;
 					///@}
-
 			};
 		}
 	}

@@ -18,41 +18,29 @@ namespace nebula
 				class controller:
 					virtual public n34200::base
 				{
-				public:
-					///@name ctor and dtor
-					///@{
-					// Ctor
-					controller();
-					/// Copy Ctor
-					controller(const controller&);
-					/// Dtor
-					~controller();
-					///@}
-
-					///@name operator
-					///@{
-					/// assignment
-					controller&								operator=(const controller&);
-					///@}
-
-				
-
-					/// init
-					virtual	void								init( jess::shared_ptr<n34100::base> );
-					/// shutdown
-					virtual	void								shutdown();
-					/// update
-					virtual	void								update();
-					/// step
-					virtual	void								step(float);
-				
-					virtual void								update_move();
-					
-					physx::PxController*							get_px_controller();
-					void									set_px_controller( ::physx::PxController* );
-
-					/// PxController
-					physx::PxController*							px_controller_;
+					protected:
+						/// copy ctor
+						controller(const controller&);
+						/// assignment
+						controller&						operator=(const controller&);
+					public:
+						/// ctor
+						controller( jess::shared_ptr<n34100::base> );
+						/// dtor
+						~controller();
+						/// init
+						virtual	void						init();
+						/// shutdown
+						virtual	void						shutdown();
+						/// update
+						virtual	void						update();
+						/// step
+						virtual	void						step(float);
+						/// update move
+						virtual void						update_move();
+					public:
+						/// px controller
+						physx::PxController*					px_controller_;
 				};
 			}
 		}

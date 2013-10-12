@@ -24,8 +24,8 @@ namespace box_client
 
 
 
-			jess::shared_ptr<bc0x300::universe::admin::base>	universe_;
-			jess::shared_ptr<bc0x300::scene::admin::base>		scene_;
+			jess::shared_ptr<bc31100::base>				universe_;
+			jess::shared_ptr<bc32100::base>				scene_;
 
 		};
 	}

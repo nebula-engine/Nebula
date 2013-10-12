@@ -5,7 +5,8 @@
 
 /// \todo completely separate "platform" from the rest of "nebula"
 
-n34200::base::base()
+n34200::base::base( jess::shared_ptr<n34100::base> parent ):
+	parent_( parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
@@ -13,16 +14,7 @@ n34200::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-n34200::base::base( const n34200::base& act )
-{
-	jess::clog << NEB_FUNCSIG << std::endl;
-}
-n34200::base&	n34200::base::operator=( const n34200::base& act )
-{
-	jess::clog << NEB_FUNCSIG << std::endl;
-	return *this;
-}
-void	n34200::base::init( jess::shared_ptr<n34100::base> parent )
+void	n34200::base::init()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -48,11 +40,5 @@ void	n34200::base::create_shapes()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-/*jess::shared_ptr<n34200::material>	create_physics_material()
-{
-	
-}*/
-
-
 
 

@@ -17,41 +17,28 @@ namespace nebula
 				class rigid_dynamic_box:
 					public nebula::content::actor::physics::rigid_dynamic
 				{
-				public:
-					///@name ctor and dtor
-					///@{
-					// Ctor
-					rigid_dynamic_box();
-					/// Copy Ctor
-					rigid_dynamic_box(const rigid_dynamic_box&);
-					/// Dtor
-					~rigid_dynamic_box();
-					///@}
-
-					///@name operator
-					///@{
-					/// assignment
-					rigid_dynamic_box&							operator=(const rigid_dynamic_box&);
-					///@}
-
-				
-
-					/// init
-					virtual	void								init( jess::shared_ptr<nebula::content::actor::admin::base> );
-					/// shutdown
-					virtual	void								shutdown();
-					/// update
-					virtual	void								update();
-					/// step
-					virtual	void								step(float);
-					/// render
-					virtual	void								render( jess::shared_ptr<n23000::base> );
-				
-				
-				
-				
-					/// create shapes
-					virtual	void								create_shapes();
+					protected:
+						/// copy ctor
+						rigid_dynamic_box(const rigid_dynamic_box&);
+						/// assignment
+						rigid_dynamic_box&							operator=(const rigid_dynamic_box&);
+					public:
+						/// ctor
+						rigid_dynamic_box( jess::shared_ptr<n34100::base> );
+						/// dtor
+						~rigid_dynamic_box();
+						/// init
+						virtual	void								init();
+						/// shutdown
+						virtual	void								shutdown();
+						/// update
+						virtual	void								update();
+						/// step
+						virtual	void								step(float);
+						/// render
+						virtual	void								render( jess::shared_ptr<n23000::base> );
+						/// create shapes
+						virtual	void								create_shapes();
 				};
 			}
 		}

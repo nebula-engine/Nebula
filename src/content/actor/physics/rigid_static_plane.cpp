@@ -1,14 +1,16 @@
 #include <nebula/content/actor/physics/rigid_static_plane.hpp>
 
+n34200::rigid_static_plane::rigid_static_plane( jess::shared_ptr<n34100::base> parent )
+{
 
-namespace n30000a = nebula::content::actor;
-
+}
 n34200::rigid_static_plane::~rigid_static_plane()
 {
+
 }
-void	n34200::rigid_static_plane::init( jess::shared_ptr<n34100::base> parent )
+void	n34200::rigid_static_plane::init()
 {
-	n34200::rigid_static::init(parent);
+	n34200::rigid_static::init();
 }
 void	n34200::rigid_static_plane::shutdown()
 {

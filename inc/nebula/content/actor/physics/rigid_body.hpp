@@ -15,41 +15,30 @@ namespace nebula
 				class rigid_body:
 					public nebula::content::actor::physics::rigid_actor
 				{
-				public:
-					///@name ctor and dtor
-					///@{
-					// Ctor
-					rigid_body();
-					/// Copy Ctor
-					rigid_body(const rigid_body&);
-					/// Dtor
-					~rigid_body();
-					///@}
-
-					///@name operator
-					///@{
-					/// assignment
-					rigid_body&								operator=(const rigid_body&);
-					///@}
-
-				
-
-					/// init
-					virtual	void								init( jess::shared_ptr<nebula::content::actor::admin::base> );
-					/// shutdown
-					virtual	void								shutdown();
-					/// update
-					virtual	void								update();
-					/// step
-					virtual	void								step(float);
-					/// render
-					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
-					
-					
-					float									density_;
-					physx::PxVec3								velocity_;
-				
-					
+					protected:
+						/// copy ctor
+						rigid_body(const rigid_body&);
+						/// assignment
+						rigid_body&								operator=(const rigid_body&);
+					public:
+						// ctor
+						rigid_body( jess::shared_ptr<n34100::base> );
+						/// dtor
+						~rigid_body();
+						/// init
+						virtual	void								init();
+						/// shutdown
+						virtual	void								shutdown();
+						/// update
+						virtual	void								update();
+						/// step
+						virtual	void								step(float);
+						/// render
+						virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
+						/// density
+						float									density_;
+						/// velocity
+						physx::PxVec3								velocity_;
 				};
 			}
 		}

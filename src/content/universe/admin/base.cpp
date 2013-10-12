@@ -47,9 +47,13 @@ jess::shared_ptr<n34200::material>	n31100::base::request_physics_material()
 {
 	return ( parent_.lock()->request_physics_material() );
 }
-jess::shared_ptr<n34100::rigid_dynamic_box>	n31100::base::create_rigid_dynamic_box()
+jess::shared_ptr<n34100::rigid_dynamic_box>	n31100::base::create_rigid_dynamic_box( jess::shared_ptr<n32100::base> scene )
 {
-	return ( parent_.lock()->create_rigid_dynamic_box() );
+	return ( parent_.lock()->create_rigid_dynamic_box( scene ) );
+}
+jess::shared_ptr<n34100::rigid_static_plane>	n31100::base::create_rigid_static_plane( jess::shared_ptr<n32100::base> scene )
+{
+	return ( parent_.lock()->create_rigid_static_plane( scene ) );
 }
 jess::shared_ptr<n34100::controller>		n31100::base::create_controller( jess::shared_ptr<n32100::base> scene )
 {

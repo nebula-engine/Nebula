@@ -19,42 +19,27 @@ namespace nebula
 				class rigid_static_plane:
 					public nebula::content::actor::admin::rigid_static
 				{
-				public:
-					///@name ctor and dtor
-					///@{
-					// Ctor
-					rigid_static_plane();
-					/// Copy Ctor
+					/// copy ctor
 					rigid_static_plane(const rigid_static_plane&);
-					/// Dtor
-					~rigid_static_plane();
-					///@}
-
-					///@name operator
-					///@{
 					/// assignment
 					rigid_static_plane&							operator=(const rigid_static_plane&);
-					///@}
-
-				
-
+				public:
+					/// ctor
+					rigid_static_plane( jess::shared_ptr<n32100::base> );
+					/// dtor
+					~rigid_static_plane();
 					/// init
-					virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base> );
+					virtual	void								init();
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
 					virtual	void								update();
 					/// step
-					virtual	void								step(float);
+					virtual	void								step( float );
 					/// render
 					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
-				
-				
-				
-				
 					/// create shapes
 					virtual	void								create_shapes();
-
 				};
 			}
 		}
