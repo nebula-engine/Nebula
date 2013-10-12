@@ -1,63 +1,45 @@
+#include <nebula/content/actor/renderer/rigid_static_plane.hpp>
+#include <nebula/content/shape/admin/plane.hpp>
+
 #include <nebula/content/actor/admin/rigid_static_plane.hpp>
 
-
-		n34100::rigid_static_plane::rigid_static_plane() {
-}
-		n34100::rigid_static_plane::~rigid_static_plane() {
-}
-
-
-
-
-void	n34100::rigid_static_plane::init( jess::shared_ptr<n32100::base> parent )
+n34100::rigid_static_plane::rigid_static_plane( jess::shared_ptr<n32100::base> parent ):
+rigid_static( parent )
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
-	ncaa::rigid_static::init( parent );
+}
+n34100::rigid_static_plane::~rigid_static_plane()
+{
+}
+void	n34100::rigid_static_plane::init()
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
 
-	physics_.reset( new ncap::rigid_static_plane() );
-	physics_->init( shared_from_this() );
-
-	renderer_.reset( new ncar::rigid_static_plane );
+	n34100::rigid_static::init();
+	
+	renderer_.reset( new n34300::rigid_static_plane );
 	renderer_->init( shared_from_this() );
-	
 }
-void	n34100::rigid_static_plane::shutdown() {
-	//jess::clog << NEB_FUNCSIG << std::endl;
-	
+void	n34100::rigid_static_plane::shutdown()
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	n34100::rigid_static_plane::update() {
-	//jess::clog << NEB_FUNCSIG << std::endl;
-	
+void	n34100::rigid_static_plane::update()
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	n34100::rigid_static_plane::render( jess::shared_ptr<n23000::base> rnd )
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
-	
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	n34100::rigid_static_plane::step( float dt )
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
-	
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
-
-
-
-
-
-
 void	n34100::rigid_static_plane::create_shapes()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-	
+
 	plane_ = create_plane();
 }
-
-
-
-
-
-
-
-
 
 

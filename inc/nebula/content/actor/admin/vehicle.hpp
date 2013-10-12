@@ -1,8 +1,6 @@
 #ifndef __NEBULA_CONTENT_ACTOR_ADMIN_VEHICLE_HPP__
 #define __NEBULA_CONTENT_ACTOR_ADMIN_VEHICLE_HPP__
 
-
-
 #include <nebula/content/actor/admin/base.hpp>
 
 namespace nebula
@@ -17,27 +15,17 @@ namespace nebula
 				class vehicle:
 					public nebula::content::actor::admin::base
 				{
-				public:
-					///@name ctor and dtor
-					///@{
-					// Ctor
-					vehicle();
-					/// Copy Ctor
-					vehicle(const vehicle&);
-					/// Dtor
-					~vehicle();
-					///@}
-
-					///@name operator
-					///@{
+					/// copy ctor
+					vehicle( vehicle const & );
 					/// assignment
 					vehicle&								operator=(const vehicle&);
-					///@}
-					
-					
-
+				public:
+					/// ctor
+					vehicle( jess::shared_ptr<n32100::base> );
+					/// ctor
+					~vehicle();
 					/// init
-					virtual	void								init( jess::shared_ptr<nebula::content::scene::admin::base> );
+					virtual	void								init();
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -46,9 +34,6 @@ namespace nebula
 					virtual	void								step(float);
 					/// render
 					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
-				
-				
-				
 				};
 			}
 		}

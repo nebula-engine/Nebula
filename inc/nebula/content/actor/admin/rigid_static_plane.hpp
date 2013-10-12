@@ -1,11 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_STATIC_PLANE_HPP__
 #define __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_STATIC_PLANE_HPP__
 
-
-
 #include <nebula/content/actor/admin/rigid_static.hpp>
-
-
 
 namespace nebula
 {
@@ -23,7 +19,7 @@ namespace nebula
 					rigid_static_plane(const rigid_static_plane&);
 					/// assignment
 					rigid_static_plane&							operator=(const rigid_static_plane&);
-				public:
+					public:
 					/// ctor
 					rigid_static_plane( jess::shared_ptr<n32100::base> );
 					/// dtor
@@ -40,6 +36,9 @@ namespace nebula
 					virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
 					/// create shapes
 					virtual	void								create_shapes();
+					public:
+					/// plane
+					jess::shared_ptr<n35100::plane>						plane_;
 				};
 			}
 		}

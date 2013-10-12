@@ -2,16 +2,18 @@
 #include <nebula/content/actor/admin/rigid_static.hpp>
 
 
-n34100::rigid_static::rigid_static()
+n34100::rigid_static::rigid_static( jess::shared_ptr<n32100::base> parent ):
+rigid_actor( parent )
 {
 }
 n34100::rigid_static::~rigid_static()
 {
 }
-void	n34100::rigid_static::init( jess::shared_ptr<n32100::base> parent )
+void	n34100::rigid_static::init()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-	n34100::rigid_actor::init(parent);
+	
+	n34100::rigid_actor::init();
 }
 void	n34100::rigid_static::shutdown()
 {

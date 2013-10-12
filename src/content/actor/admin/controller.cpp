@@ -14,28 +14,21 @@
 
 #include <nebula/content/actor/admin/controller.hpp>
 
-n34100::controller::controller()
+n34100::controller::controller( jess::shared_ptr<n32100::base> parent ):
+base( parent )
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
 n34100::controller::~controller()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-n34100::controller::controller( n34100::controller const & act )
+void	n34100::controller::init()
 {
-	// log
-	jess::clog << NEB_FUNCSIG << std::endl;
-}
-void	n34100::controller::init( jess::shared_ptr<n32100::base> parent )
-{
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	// init parent
-	n34100::base::init( parent );
+	// parent
+	n34100::base::init();
 	
 	flag_ = 0;
 	
@@ -51,17 +44,9 @@ void	n34100::controller::init( jess::shared_ptr<n32100::base> parent )
 	
 	key_down_event_[nebula::platform::key::r] = event::eRESET_VIEW_ANGLES;
 
-	jess::shared_ptr<n34100::base> this_ptr( shared_from_this() );
-	
-	//jess::cout << "not reached" << std::endl;
-	
-	// physics
-	physics_.reset( new n34200::controller );
-	physics_->init( this_ptr );
-	
 	// renderer
 	renderer_.reset( new n34300::controller );
-	renderer_->init( this_ptr );	
+	renderer_->init( shared_from_this() );	
 }
 void	n34100::controller::shutdown()
 {

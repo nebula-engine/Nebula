@@ -6,49 +6,25 @@
 
 #include <nebula/content/actor/admin/base.hpp>
 
-n34100::base::base()
+n34100::base::base( jess::shared_ptr<n32100::base> parent )
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
-	
-	
-	//pose_ = bnu::identity_matrix<float>( 4, 4 );
-	//velocity_ = bnu::zero_vector<float>( 3 );
 }
 n34100::base::~base()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
-
 }
-n34100::base::base( const n34100::base& act )
+void	n34100::base::init()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
-
-}
-n34100::base&	n34100::base::operator=( const n34100::base& act )
-{
-	// log
-	jess::clog << NEB_FUNCSIG << std::endl;
-
-	return *this;
-}
-void	n34100::base::init( jess::shared_ptr<n32100::base> parent )
-{
-	// log
-	jess::clog << NEB_FUNCSIG << std::endl;
-
-	parent_ = parent;
 }
 void	n34100::base::shutdown()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	n34100::base::update()
 {
-	//FR_COM_IComm::Update();
+	//mailbox update
 }
 void	n34100::base::render( jess::shared_ptr<n23000::base> rnd )
 {

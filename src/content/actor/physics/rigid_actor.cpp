@@ -4,46 +4,18 @@
 
 #include <nebula/content/actor/physics/rigid_actor.hpp>
 
-n34200::rigid_actor::rigid_actor()
+n34200::rigid_actor::rigid_actor( jess::shared_ptr<n34100::base> parent ):
+actor( parent )
 {
 }
 n34200::rigid_actor::~rigid_actor()
 {
 }
-n34200::rigid_actor::rigid_actor( const n34200::rigid_actor& act )
+void	n34200::rigid_actor::init()
 {
-}
-n34200::rigid_actor&	n34200::rigid_actor::operator=( const n34200::rigid_actor& act )
-{
-	return *this;
-}
-void	n34200::rigid_actor::init( jess::shared_ptr<n34100::base> parent )
-{
-	n34200::actor::init( parent );
+	n34200::actor::init();
 
-/*	
-	
-	physx::PxPhysics* physics = m_app->GetContent()->GetPhysics()->GetPxPhysics();
-	physx::PxMaterial* material = 0;
-	
-	
-	
-	
-	n34200::material* material = (n34200p::Material*)m_material.Find(0);
-	
-	if(!material) throw("no material");
-	material->m_pxMaterial
-	
-	
-	
-	
-	material = m_pxPhysics->createMaterial(0.5f, 0.5f, 0.1f);    //static friction, dynamic friction, restitution
-	if(!material) throw("no material");
-
-
-*/
-
-	materials_.push( parent->create_physics_material() );
+	materials_.push( parent_.lock()->create_physics_material() );
 
 }
 void	n34200::rigid_actor::shutdown()

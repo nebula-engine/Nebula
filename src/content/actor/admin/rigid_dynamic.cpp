@@ -2,17 +2,18 @@
 #include <nebula/content/actor/admin/rigid_dynamic.hpp>
 
 
-n34100::rigid_dynamic::rigid_dynamic()
+n34100::rigid_dynamic::rigid_dynamic( jess::shared_ptr<n32100::base> parent ):
+rigid_body( parent )
 {
 }
 n34100::rigid_dynamic::~rigid_dynamic()
 {
 }
-void	n34100::rigid_dynamic::init( jess::shared_ptr<n32100::base> parent )
+void	n34100::rigid_dynamic::init()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	n34100::rigid_body::init( parent );
+	n34100::rigid_body::init();
 }
 void	n34100::rigid_dynamic::shutdown()
 {

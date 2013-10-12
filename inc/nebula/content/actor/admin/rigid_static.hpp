@@ -17,14 +17,14 @@ namespace nebula
 				class rigid_static:
 					public nebula::content::actor::admin::rigid_actor
 				{
+				protected:
 				public:
 					/// ctor
-					rigid_static();
+					rigid_static( jess::shared_ptr<n32100::base> );
 					/// dtor
 					~rigid_static();
-
 					/// Initialize
-					virtual	void						init( jess::shared_ptr<n32100::base> );
+					virtual	void						init();
 					/// ShutDown
 					virtual	void						shutdown();
 					/// Update

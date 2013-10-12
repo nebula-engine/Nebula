@@ -24,10 +24,10 @@
 
 namespace nebula
 {
-namespace framework
-{
-boost::asio::io_service		g_io_;
-}
+	namespace framework
+	{
+		boost::asio::io_service		g_io_;
+	}
 }
 
 
@@ -44,22 +44,20 @@ n10000::app::~app()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	nf::app::init()
+void	n10000::app::init()
 {
-	// log
-	jess::clog << NEB_FUNCSIG << std::endl;//.funcsig();//jess::clog << NEB_FUNCSIG << std::endl;
+	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// make sure content_ and platform_ are null before reseting them
 	jess::assertion( !( content_ || platform_ ) );
 
-
-	content_.reset( new nc::base );
-	content_->init( shared_from_this() );
+	content_.reset( new n30000::base( shared_from_this() ) );
+	content_->init();
 
 #ifdef __LIN__
-	platform_.reset( new nppl::base );
+	platform_.reset( new n21100::base );
 #elif defined(__WIN__)
-	platform_.reset( new nppw::base );
+	platform_.reset( new n21200::base );
 #endif
 
 	platform_->init( shared_from_this() );
@@ -72,26 +70,22 @@ void	n10000::app::MainLoopSequ()
 		boost::asio::io_service::work work( g_io_ );
 
 		t = new boost::thread( io_service_run );
-		
+
 		while (1)
 		{
 			ContinueLoopSequ();
 		}
 	}
-	
+
 	// wait until asynchronous operations finish
 	t->join();
 }
 void	n10000::app::MainLoopMulti()
 {
-	
+
 }
 void	n10000::app::ContinueLoopSequ()
 {
-	//if ( !m_content )  throw Except("m_content is null");
-	//if ( !m_platform ) throw Except("m_platform is null");
-	//if ( !m_network )  throw Except("m_network is null");
-
 	content_->update();
 	platform_->update();
 
@@ -104,23 +98,19 @@ void	n10000::app::ContinueLoopMulti()
 {
 
 }
-void	nf::app::shutdown()
+void	n10000::app::shutdown()
 {
-	// log
-	jess::clog << NEB_FUNCSIG << std::endl;//jess::clog.fun30000sig();
+	jess::clog << NEB_FUNCSIG << std::endl;
 
 	content_->shutdown();
-	//network->Shutdown(NULL);
 	platform_->shutdown();
 }
 jess::shared_ptr<n22000::base>	n10000::app::request_window()
 {
-	// request
 	return ( platform_->request_window() );
 }
 jess::shared_ptr<n21000::base>	n10000::app::get_platform()
 {
-	// get
 	return platform_;
 }
 

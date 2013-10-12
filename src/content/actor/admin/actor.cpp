@@ -3,19 +3,21 @@
 #include <nebula/content/actor/admin/actor.hpp>
 
 
-n34100::actor::actor() {
-}
-n34100::actor::~actor() {
-}
-void	n34100::actor::init( jess::shared_ptr<n32100::base> parent )
+n34100::actor::actor( jess::shared_ptr<n32100::base> parent ):
+base( parent )
 {
-	// log
+
+}
+n34100::actor::~actor()
+{
+
+}
+void	n34100::actor::init()
+{
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	// init parent
-	n34100::base::init( parent );
-
-	jess::shared_ptr<n34100::base> this_ptr( shared_from_this() );
+	// parent
+	n34100::base::init();
 }
 void	n34100::actor::shutdown( )
 {

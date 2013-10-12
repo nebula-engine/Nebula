@@ -1,6 +1,8 @@
 #include <nebula/content/actor/physics/rigid_static_plane.hpp>
 
-n34200::rigid_static_plane::rigid_static_plane( jess::shared_ptr<n34100::base> parent )
+n34200::rigid_static_plane::rigid_static_plane( jess::shared_ptr<n34100::base> parent ):
+actor( parent ),
+rigid_static( parent )
 {
 
 }

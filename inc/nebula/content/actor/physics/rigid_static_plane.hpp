@@ -21,31 +21,28 @@ namespace nebula
 						{
 
 						}
-						/// dtor
-						~rigid_static_plane()
-						{
-
-						}
-					public:
-						/// ctor
-						rigid_static_plane( jess::shared_ptr<n34100::base> );
 						/// assignment
 						rigid_static_plane&							operator=( rigid_static_plane const & )
 						{
 							return *this;
 						}
+					public:
+						/// ctor
+						rigid_static_plane( jess::shared_ptr<n34100::base> );
+						/// dtor
+						~rigid_static_plane();
 						/// init
-						virtual	void								init();
+						virtual	void							init();
 						/// shutdown
-						virtual	void								shutdown();
+						virtual	void							shutdown();
 						/// update
-						virtual	void								update();
+						virtual	void							update();
 						/// step
-						virtual	void								step( float );
+						virtual	void							step( float );
 						/// render
-						virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
+						virtual	void							render( jess::shared_ptr<nebula::platform::renderer::base> );
 						/// create shapes
-						virtual	void								create_shape();
+						virtual	void							create_shape();
 				};
 			}
 		}
