@@ -32,7 +32,8 @@ n36000::base::~base()
 void	n36000::base::init()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-
+	
+	// Physx
 	// Foundation
 	px_foundation_ = PxCreateFoundation( PX_PHYSICS_VERSION, px_default_allocator_callback_, px_default_error_callback_ );
 	jess::assertion( px_foundation_ );
@@ -57,7 +58,10 @@ void	n36000::base::init()
 	// character controller manager
 	px_character_controller_manager_ = ::PxCreateControllerManager( *px_foundation_ );
 	jess::assertion( px_character_controller_manager_ );
-
+	
+	
+	// default material
+	default_material_ = create_physics_material();
 }
 void	n36000::base::shutdown()
 {
@@ -162,19 +166,27 @@ jess::shared_ptr<n34200::controller>		n36000::base::create_controller(
 	
 
 	// create
-	jess::shared_ptr<n34200::controller> act ( new n34200::controller( actor ) );
-
-	// description
+	jess::shared_ptr<n34200::controller> physics ( new n34200::controller( actor ) );
+	
+	physics->material_ = request_physics_material();
+	NEB_ASSERT( physics->material_->px_material_ );
+	
+	// description 
 	physx::PxExtendedVec3 position(0,0,0);
 	
 	physx::PxCapsuleControllerDesc desc;
 	desc.position = position;
-	desc.height = 1;
+	desc.height = 1.0;
 	desc.radius = 0.5;
+	desc.scaleCoeff = 1.0;
+	desc.volumeGrowth = 2.0;
+	desc.density = 1000.0;
+	desc.slopeLimit = 0.707;
+	desc.stepOffset = 1.0;
+	desc.contactOffset = 1.0;
+	desc.material = physics->material_->px_material_;
 	desc.climbingMode = physx::PxCapsuleClimbingMode::eEASY;
 	
-	desc.setToDefault();
-
 	// assert
 	jess::assertion( px_character_controller_manager_ );
 	jess::assertion( px_physics_ );
@@ -183,16 +195,26 @@ jess::shared_ptr<n34200::controller>		n36000::base::create_controller(
 
 	physx::PxController* px_cont = px_character_controller_manager_->createController( *px_physics_, scene->physics_->px_scene_, desc );
 
-	act->px_controller_ = px_cont;
+	physics->px_controller_ = px_cont;
 
 	jess::assertion( px_cont );
 
-	return act;
+	return physics;
 }
 jess::shared_ptr<n34200::material>		n36000::base::request_physics_material()
 {
+	NEB_ASSERT( bool( default_material_ ) );
 	return default_material_;
 }
+jess::shared_ptr<n34200::material>		n36000::base::create_physics_material()
+{
+	jess::shared_ptr<n34200::material> material( new n34200::material );
+	
+	material->px_material_ = px_physics_->createMaterial(1,1,1);
+	
+	return material;
+}
+
 
 void 	DefaultErrorCallback::reportError( ::physx::PxErrorCode::Enum code, const char *message, const char *file, int line)
 {

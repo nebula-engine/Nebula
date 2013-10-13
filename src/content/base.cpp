@@ -68,6 +68,9 @@ jess::shared_ptr<n34100::rigid_dynamic_box>	n30000::base::create_rigid_dynamic_b
 	// physics
 	actor->physics_ = std::static_pointer_cast<n34200::base>( physics_->create_rigid_dynamic_box( scene, actor ) );
 
+	// init
+	actor->init();
+
 	return actor;
 }
 jess::shared_ptr<n34100::rigid_static_plane>	n30000::base::create_rigid_static_plane(
@@ -82,6 +85,9 @@ jess::shared_ptr<n34100::rigid_static_plane>	n30000::base::create_rigid_static_p
 	// physics
 	actor->physics_ = std::static_pointer_cast<n34200::base>( physics_->create_rigid_dynamic_box( scene, actor ) );
 
+	// init
+	actor->init();
+
 	return actor;
 }
 jess::shared_ptr<n34100::controller>		n30000::base::create_controller(
@@ -89,15 +95,19 @@ jess::shared_ptr<n34100::controller>		n30000::base::create_controller(
 		)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-
+	
 	// create
 	jess::shared_ptr<n34100::controller> actor( new n34100::controller( scene ) );
-
+	
 	// physics
 	actor->physics_ = std::static_pointer_cast<n34200::base>( physics_->create_controller( scene, actor ) );
-
+	
+	// init
+	actor->init();
+	
 	return actor;
 }
+
 
 
 

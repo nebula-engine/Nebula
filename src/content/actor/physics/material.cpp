@@ -12,9 +12,10 @@ void	n34200::material::init()
 {
 	
 }
-
-
-
+void	n34200::material::shutdown()
+{
+	
+}
 
 
 

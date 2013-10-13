@@ -5,6 +5,7 @@
 
 #include <nebula/utilities/free.hpp>
 #include <nebula/content/actor/admin/controller.hpp>
+#include <nebula/content/actor/physics/material.hpp>
 
 #include <nebula/content/actor/physics/controller.hpp>
 

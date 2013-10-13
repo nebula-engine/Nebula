@@ -76,6 +76,8 @@ namespace nebula
 							);
 					/// physics material
 					jess::shared_ptr<n34200::material>				request_physics_material();
+					/// physics material
+					jess::shared_ptr<n34200::material>				create_physics_material();
 					///@}
 
 					///@name fetch

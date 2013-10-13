@@ -55,7 +55,8 @@ void	n10000::app::init()
 }
 void	n10000::app::MainLoopSequ()
 {
-	for(int i = 0; i < 10; i++)
+//	for(int i = 0; i < 10; i++)
+	while(1)
 	{
 		ContinueLoopSequ();
 	}

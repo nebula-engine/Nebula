@@ -41,6 +41,8 @@ namespace nebula
 					public:
 						/// px controller
 						physx::PxController*					px_controller_;
+						/// material
+						jess::shared_ptr<n34200::material>			material_;
 				};
 			}
 		}

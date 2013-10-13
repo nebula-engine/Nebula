@@ -40,34 +40,401 @@ nebula::content::actor::admin::controller::controller(jess::shared_ptr<nebula::c
 jess::shared_ptr<nebula::content::actor::physics::controller> nebula::content::physics::base::create_controller(jess::shared_ptr<nebula::content::scene::admin::base>, jess::shared_ptr<nebula::content::actor::admin::base>)
 nebula::content::actor::physics::base::base(jess::shared_ptr<nebula::content::actor::admin::base>)
 nebula::content::actor::physics::controller::controller(jess::shared_ptr<nebula::content::actor::admin::base>)
-nebula::content::actor::physics::controller::~controller()
-nebula::content::actor::physics::base::~base()
-virtual nebula::content::actor::admin::controller::~controller()
-virtual nebula::content::actor::admin::base::~base()
+jess::shared_ptr<T> nebula::content::scene::admin::base::create_view() [with T = box_client::content::view::admin::base]
+nebula::framework::renderable::renderable()
+virtual void box_client::content::view::admin::base::init(jess::shared_ptr<nebula::content::scene::admin::base>)
+virtual void nebula::content::view::admin::base::init(jess::shared_ptr<nebula::content::scene::admin::base>)
+virtual jess::shared_ptr<nebula::platform::window::base> nebula::content::universe::admin::base::request_window()
+virtual jess::shared_ptr<nebula::platform::window::base> nebula::platform::platform::base::request_window()
+virtual jess::shared_ptr<nebula::platform::window::base> nebula::platform::platform::lin::base::create_window()
+nebula::platform::window::lin::base::base()
+virtual void nebula::platform::window::lin::base::init(jess::shared_ptr<nebula::platform::platform::base>)
+nebula::platform::renderer::base::base()
+virtual void nebula::platform::renderer::gl::glx::base::init(jess::shared_ptr<nebula::platform::window::base>)
+-misc-fixed-medium-r-normal--20-140-100-100-c-100-iso8859-1... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-2... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-3... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-4... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-5... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-7... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-8... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-9... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-10... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-11... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-13... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-14... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-15... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-16... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso10646-1... success!
+-misc-fixed-medium-r-normal--20-200-75-75-c-100-koi8-r... success!
+-misc-fixed-medium-r-normal--20-140-100-100-c-100-iso8859-1... success!
+Font 71303190 0 255 1
+virtual void nebula::platform::renderer::gl::base::init(jess::shared_ptr<nebula::platform::window::base>)
+virtual void nebula::platform::renderer::base::init(jess::shared_ptr<nebula::platform::window::base>)
+0x18f5350glXChooseVisual: visual 0x27 selected
+OpenGL version 4.3.0 NVIDIA 319.32
+GLSL   version 4.30 NVIDIA via Cg compiler
+GLEW   version 1.10.0
+GL_AMD_multi_draw_indirect
+GL_AMD_seamless_cubemap_per_texture
+GL_ARB_arrays_of_arrays
+GL_ARB_base_instance
+GL_ARB_blend_func_extended
+GL_ARB_clear_buffer_object
+GL_ARB_color_buffer_float
+GL_ARB_compatibility
+GL_ARB_compressed_texture_pixel_storage
+GL_ARB_conservative_depth
+GL_ARB_compute_shader
+GL_ARB_copy_buffer
+GL_ARB_copy_image
+GL_ARB_debug_output
+GL_ARB_depth_buffer_float
+GL_ARB_depth_clamp
+GL_ARB_depth_texture
+GL_ARB_draw_buffers
+GL_ARB_draw_buffers_blend
+GL_ARB_draw_indirect
+GL_ARB_draw_elements_base_vertex
+GL_ARB_draw_instanced
+GL_ARB_ES2_compatibility
+GL_ARB_ES3_compatibility
+GL_ARB_explicit_attrib_location
+GL_ARB_explicit_uniform_location
+GL_ARB_fragment_coord_conventions
+GL_ARB_fragment_layer_viewport
+GL_ARB_fragment_program
+GL_ARB_fragment_program_shadow
+GL_ARB_fragment_shader
+GL_ARB_framebuffer_no_attachments
+GL_ARB_framebuffer_object
+GL_ARB_framebuffer_sRGB
+GL_ARB_geometry_shader4
+GL_ARB_get_program_binary
+GL_ARB_gpu_shader5
+GL_ARB_gpu_shader_fp64
+GL_ARB_half_float_pixel
+GL_ARB_half_float_vertex
+GL_ARB_imaging
+GL_ARB_instanced_arrays
+GL_ARB_internalformat_query
+GL_ARB_internalformat_query2
+GL_ARB_invalidate_subdata
+GL_ARB_map_buffer_alignment
+GL_ARB_map_buffer_range
+GL_ARB_multi_draw_indirect
+GL_ARB_multisample
+GL_ARB_multitexture
+GL_ARB_occlusion_query
+GL_ARB_occlusion_query2
+GL_ARB_pixel_buffer_object
+GL_ARB_point_parameters
+GL_ARB_point_sprite
+GL_ARB_program_interface_query
+GL_ARB_provoking_vertex
+GL_ARB_robust_buffer_access_behavior
+GL_ARB_robustness
+GL_ARB_sample_shading
+GL_ARB_sampler_objects
+GL_ARB_seamless_cube_map
+GL_ARB_separate_shader_objects
+GL_ARB_shader_atomic_counters
+GL_ARB_shader_bit_encoding
+GL_ARB_shader_image_load_store
+GL_ARB_shader_image_size
+GL_ARB_shader_objects
+GL_ARB_shader_precision
+GL_ARB_shader_storage_buffer_object
+GL_ARB_shader_subroutine
+GL_ARB_shader_texture_lod
+GL_ARB_shading_language_100
+GL_ARB_shading_language_420pack
+GL_ARB_shading_language_include
+GL_ARB_shading_language_packing
+GL_ARB_shadow
+GL_ARB_stencil_texturing
+GL_ARB_sync
+GL_ARB_tessellation_shader
+GL_ARB_texture_border_clamp
+GL_ARB_texture_buffer_object
+GL_ARB_texture_buffer_object_rgb32
+GL_ARB_texture_buffer_range
+GL_ARB_texture_compression
+GL_ARB_texture_compression_bptc
+GL_ARB_texture_compression_rgtc
+GL_ARB_texture_cube_map
+GL_ARB_texture_cube_map_array
+GL_ARB_texture_env_add
+GL_ARB_texture_env_combine
+GL_ARB_texture_env_crossbar
+GL_ARB_texture_env_dot3
+GL_ARB_texture_float
+GL_ARB_texture_gather
+GL_ARB_texture_mirrored_repeat
+GL_ARB_texture_multisample
+GL_ARB_texture_non_power_of_two
+GL_ARB_texture_query_levels
+GL_ARB_texture_query_lod
+GL_ARB_texture_rectangle
+GL_ARB_texture_rg
+GL_ARB_texture_rgb10_a2ui
+GL_ARB_texture_storage
+GL_ARB_texture_storage_multisample
+GL_ARB_texture_swizzle
+GL_ARB_texture_view
+GL_ARB_timer_query
+GL_ARB_transform_feedback2
+GL_ARB_transform_feedback3
+GL_ARB_transform_feedback_instanced
+GL_ARB_transpose_matrix
+GL_ARB_uniform_buffer_object
+GL_ARB_vertex_array_bgra
+GL_ARB_vertex_array_object
+GL_ARB_vertex_attrib_64bit
+GL_ARB_vertex_attrib_binding
+GL_ARB_vertex_buffer_object
+GL_ARB_vertex_program
+GL_ARB_vertex_shader
+GL_ARB_vertex_type_2_10_10_10_rev
+GL_ARB_viewport_array
+GL_ARB_window_pos
+GL_ATI_draw_buffers
+GL_ATI_texture_float
+GL_ATI_texture_mirror_once
+GL_S3_s3tc
+GL_EXT_texture_env_add
+GL_EXT_abgr
+GL_EXT_bgra
+GL_EXT_bindable_uniform
+GL_EXT_blend_color
+GL_EXT_blend_equation_separate
+GL_EXT_blend_func_separate
+GL_EXT_blend_minmax
+GL_EXT_blend_subtract
+GL_EXT_compiled_vertex_array
+GL_EXT_Cg_shader
+GL_EXT_depth_bounds_test
+GL_EXT_direct_state_access
+GL_EXT_draw_buffers2
+GL_EXT_draw_instanced
+GL_EXT_draw_range_elements
+GL_EXT_fog_coord
+GL_EXT_framebuffer_blit
+GL_EXT_framebuffer_multisample
+GL_EXTX_framebuffer_mixed_formats
+GL_EXT_framebuffer_multisample_blit_scaled
+GL_EXT_framebuffer_object
+GL_EXT_framebuffer_sRGB
+GL_EXT_geometry_shader4
+GL_EXT_gpu_program_parameters
+GL_EXT_gpu_shader4
+GL_EXT_multi_draw_arrays
+GL_EXT_packed_depth_stencil
+GL_EXT_virtual void nebula::platform::renderer::gl::base::init(jess::shared_ptr<nebula::platform::window::base>) exit
+virtual void nebula::platform::renderer::gl::glx::base::init(jess::shared_ptr<nebula::platform::window::base>) exit
+virtual void nebula::platform::window::lin::base::init(jess::shared_ptr<nebula::platform::platform::base>) exit
+virtual void box_client::ui::layout::base::init()
+virtual void nebula::content::base::update()
+virtual void nebula::content::universe::admin::base::update()
+virtual void nebula::content::scene::admin::base::update()
+virtual void nebula::content::actor::admin::rigid_static_plane::update()
+virtual void nebula::platform::platform::lin::base::update()
+virtual void nebula::content::view::admin::base::render()
+void nebula::content::camera::render(jess::shared_ptr<nebula::platform::renderer::base>)
+virtual void nebula::content::actor::admin::controller::look_at(jess::shared_ptr<nebula::platform::renderer::base>)
+void nebula::content::camera::render(jess::shared_ptr<nebula::platform::renderer::base>) exit
+virtual void nebula::content::scene::admin::base::render(jess::shared_ptr<nebula::platform::renderer::base>)
+virtual void nebula::content::actor::admin::rigid_dynamic_box::render(jess::shared_ptr<nebula::platform::renderer::base>)
+virtual void nebula::content::actor::admin::rigid_dynamic::render(jess::shared_ptr<nebula::platform::renderer::base>)
+virtual void nebula::content::actor::admin::rigid_body::render(jess::shared_ptr<nebula::platform::renderer::base>)
+virtual void nebula::content::actor::admin::rigid_actor::render(jess::shared_ptr<nebula::platform::renderer::base>)
+virtual void nebula::platform::renderer::gl::base::mult_matrix(physx::PxMat44)
+virtual void nebula::platform::renderer::gl::base::mult_matrix(physx::PxMat44) exit
+virtual void nebula::content::actor::admin::rigid_static_plane::render(jess::shared_ptr<nebula::platform::renderer::base>)
+void nebula::ui::layout::base::render(jess::shared_ptr<nebula::platform::renderer::base>)
+objects_.size()=1
+virtual void nebula::ui::object::textview::render(jess::shared_ptr<nebula::platform::renderer::base>)
+virtual void nebula::platform::renderer::gl::glx::base::draw_text(int, int, std::string)
+virtual void nebula::platform::renderer::gl::glx::base::draw_text(int, int, std::string)
+virtual void nebula::content::base::update()
+virtual void nebula::content::universe::admin::base::update()
+virtual void nebula::content::scene::admin::base::update()
+virtual void nebula::content::scene::admin::base::step(float)
+virtual void nebula::content::actor::admin::rigid_dynamic_box::step(float)
+virtual void nebula::content::actor::admin::rigid_static_plane::step(float)
+virtual void nebula::content::actor::admin::base::step(float)
+virtual void nebula::content::actor::physics::controller::step(float)
+virtual void nebula::content::actor::physics::controller::update_move()
+packed_float
+GL_EXT_packed_pixels
+GL_EXT_pixel_buffer_object
+GL_EXT_point_parameters
+GL_EXT_provoking_vertex
+GL_EXT_rescale_normal
+GL_EXT_secondary_color
+GL_EXT_separate_shader_objects
+GL_EXT_separate_specular_color
+GL_EXT_shader_image_load_store
+GL_EXT_shadow_funcs
+GL_EXT_stencil_two_side
+GL_EXT_stencil_wrap
+GL_EXT_texture3D
+GL_EXT_texture_array
+GL_EXT_texture_buffer_object
+GL_EXT_texture_compression_dxt1
+GL_EXT_texture_compression_latc
+GL_EXT_texture_compression_rgtc
+GL_EXT_texture_compression_s3tc
+GL_EXT_texture_cube_map
+GL_EXT_texture_edge_clamp
+GL_EXT_texture_env_combine
+GL_EXT_texture_env_dot3
+GL_EXT_texture_filter_anisotropic
+GL_EXT_texture_integer
+GL_EXT_texture_lod
+GL_EXT_texture_lod_bias
+GL_EXT_texture_mirror_clamp
+GL_EXT_texture_object
+GL_EXT_texture_shared_exponent
+GL_EXT_texture_sRGB
+GL_EXT_texture_sRGB_decode
+GL_EXT_texture_storage
+GL_EXT_texture_swizzle
+GL_EXT_timer_query
+GL_EXT_transform_feedback2
+GL_EXT_vertex_array
+GL_EXT_vertex_array_bgra
+GL_EXT_vertex_attrib_64bit
+GL_EXT_x11_sync_object
+GL_EXT_import_sync_object
+GL_IBM_rasterpos_clip
+GL_IBM_texture_mirrored_repeat
+GL_KHR_debug
+GL_KTX_buffer_region
+GL_NV_bindless_texture
+GL_NV_blend_square
+GL_NV_compute_program5
+GL_NV_conditional_render
+GL_NV_copy_depth_to_color
+GL_NV_copy_image
+GL_NV_depth_buffer_float
+GL_NV_depth_clamp
+GL_NV_draw_texture
+GL_NV_ES1_1_compatibility
+GL_NV_explicit_multisample
+GL_NV_fence
+GL_NV_float_buffer
+GL_NV_fog_distance
+GL_NV_fragment_program
+GL_NV_fragment_program_option
+GL_NV_fragment_program2
+GL_NV_framebuffer_multisample_coverage
+GL_NV_geometry_shader4
+GL_NV_gpu_program4
+GL_NV_gpu_program4_1
+GL_NV_gpu_program5
+GL_NV_gpu_program5_mem_extended
+GL_NV_gpu_program_fp64
+GL_NV_gpu_shader5
+GL_NV_half_float
+GL_NV_light_max_exponent
+GL_NV_multisample_coverage
+GL_NV_multisample_filter_hint
+GL_NV_occlusion_query
+GL_NV_packed_depth_stencil
+GL_NV_parameter_buffer_object
+GL_NV_parameter_buffer_object2
+GL_NV_path_rendering
+GL_NV_pixel_data_range
+GL_NV_point_sprite
+GL_NV_primitive_restart
+GL_NV_register_combiners
+GL_NV_register_combiners2
+GL_NV_shader_atomic_counters
+GL_NV_shader_atomic_float
+GL_NV_shader_buffer_load
+GL_NV_shader_storage_buffer_object
+GL_NV_texgen_reflection
+GL_NV_texture_barrier
+GL_NV_texture_compression_vtc
+GL_NV_texture_env_combine4
+GL_NV_texture_expand_normal
+GL_NV_texture_multisample
+GL_NV_texture_rectangle
+GL_NV_texture_shader
+GL_NV_texture_shader2
+GL_NV_texture_shader3
+GL_NV_transform_feedback
+GL_NV_transform_feedback2
+GL_NV_vdpau_interop
+GL_NV_vertex_array_range
+GL_NV_vertex_array_range2
+GL_NV_vertex_attrib_integer_64bit
+GL_NV_vertex_buffer_unified_memory
+GL_NV_vertex_program
+GL_NV_vertex_program1_1
+GL_NV_vertex_program2
+GL_NV_vertex_program2_option
+GL_NV_vertex_program3
+GL_NVX_conditional_render
+GL_NVX_gpu_memory_info
+GL_NVX_nvenc_interop
+GL_SGIS_generate_mipmap
+GL_SGIS_texture_lod
+GL_SGIX_depth_texture
+GL_SGIX_shadow
+GL_SUN_slice_accum
+m.size()=8
+null pointer
+stack trace:
+  ../../bin/lin64/box_client : jess::except::except(std::string const&, int, bool)+0xb6(182)
+  ../../bin/lin64/box_client : jess::shared_ptr<nebula::content::actor::renderer::base>::operator->()+0x6c(108)
+  ../../bin/lin64/box_client : nebula::content::actor::admin::base::step(float)+0x61(97)
+  ../../bin/lin64/box_client : nebula::content::actor::admin::controller::step(float)+0x22(34)
+  ../../bin/lin64/box_client : std::_Mem_fn<void (nebula::content::actor::admin::base::*)(float)>::operator()(nebula::content::actor::admin::base*, float) const+0x71(113)
+  ../../bin/lin64/box_client : void std::_Bind<std::_Mem_fn<void (nebula::content::actor::admin::base::*)(float)> (std::_Placeholder<1>, float)>::__call<void, nebula::content::actor::admin::base*&&, 0, 1>(std::tuple<nebula::content::actor::admin::base*&&>&&, std::_Index_tuple<0, 1>)+0x7c(124)
+  ../../bin/lin64/box_client : void std::_Bind<std::_Mem_fn<void (nebula::content::actor::admin::base::*)(float)> (std::_Placeholder<1>, float)>::operator()<nebula::content::actor::admin::base*, void>(nebula::content::actor::admin::base*&&)+0x45(69)
+  ../../bin/lin64/box_client : std::_Function_handler<void (nebula::content::actor::admin::base*), std::_Bind<std::_Mem_fn<void (nebula::content::actor::admin::base::*)(float)> (std::_Placeholder<1>, float)> >::_M_invoke(std::_Any_data const&, nebula::content::actor::admin::base*)+0x37(55)
+  ../../bin/lin64/box_client : std::function<void (nebula::content::actor::admin::base*)>::operator()(nebula::content::actor::admin::base*) const+0x49(73)
+  ../../bin/lin64/box_client : jess::map<nebula::content::actor::admin::base>::foreach(std::function<void (nebula::content::actor::admin::base*)>)+0x66(102)
+  ../../bin/lin64/box_client : nebula::content::scene::admin::base::step(float)+0xbe(190)
+  ../../bin/lin64/box_client : nebula::content::scene::admin::base::update()+0xd6(214)
+  ../../bin/lin64/box_client : std::_Mem_fn<void (nebula::content::scene::admin::base::*)()>::operator()(nebula::content::scene::admin::base*) const+0x58(88)
+  ../../bin/lin64/box_client : void std::_Bind<std::_Mem_fn<void (nebula::content::scene::admin::base::*)()> (std::_Placeholder<1>)>::__call<void, nebula::content::scene::admin::base*&&, 0>(std::tuple<nebula::content::scene::admin::base*&&>&&, std::_Index_tuple<0>)+0x48(72)
+  ../../bin/lin64/box_client : void std::_Bind<std::_Mem_fn<void (nebula::content::scene::admin::base::*)()> (std::_Placeholder<1>)>::operator()<nebula::content::scene::admin::base*, void>(nebula::content::scene::admin::base*&&)+0x45(69)
+  ../../bin/lin64/box_client : std::_Function_handler<void (nebula::content::scene::admin::base*), std::_Bind<std::_Mem_fn<void (nebula::content::scene::admin::base::*)()> (std::_Placeholder<1>)> >::_M_invoke(std::_Any_data const&, nebula::content::scene::admin::base*)+0x37(55)
+  ../../bin/lin64/box_client : std::function<void (nebula::content::scene::admin::base*)>::operator()(nebula::content::scene::admin::base*) const+0x49(73)
+  ../../bin/lin64/box_client : jess::map<nebula::content::scene::admin::base>::foreach(std::function<void (nebula::content::scene::admin::base*)>)+0x66(102)
+  ../../bin/lin64/box_client : nebula::content::universe::admin::base::update()+0xac(172)
+  ../../bin/lin64/box_client : std::_Mem_fn<void (nebula::content::universe::admin::base::*)()>::operator()(nebula::content::universe::admin::base*) const+0x58(88)
+  ../../bin/lin64/box_client : void std::_Bind<std::_Mem_fn<void (nebula::content::universe::admin::base::*)()> (std::_Placeholder<1>)>::__call<void, nebula::content::universe::admin::base*&&, 0>(std::tuple<nebula::content::universe::admin::base*&&>&&, std::_Index_tuple<0>)+0x48(72)
+  ../../bin/lin64/box_client : void std::_Bind<std::_Mem_fn<void (nebula::content::universe::admin::base::*)()> (std::_Placeholder<1>)>::operator()<nebula::content::universe::admin::base*, void>(nebula::content::universe::admin::base*&&)+0x45(69)
+  ../../bin/lin64/box_client : std::_Function_handler<void (nebula::content::universe::admin::base*), std::_Bind<std::_Mem_fn<void (nebula::content::universe::admin::base::*)()> (std::_Placeholder<1>)> >::_M_invoke(std::_Any_data const&, nebula::content::universe::admin::base*)+0x37(55)
+  ../../bin/lin64/box_client : std::function<void (nebula::content::universe::admin::base*)>::operator()(nebula::content::universe::admin::base*) const+0x49(73)
+  ../../bin/lin64/box_client : jess::map<nebula::content::universe::admin::base>::foreach(std::function<void (nebula::content::universe::admin::base*)>)+0x66(102)
+  ../../bin/lin64/box_client : nebula::content::base::update()+0xac(172)
+  ../../bin/lin64/box_client : nebula::framework::app::ContinueLoopSequ()+0x2b(43)
+  ../../bin/lin64/box_client : nebula::framework::app::MainLoopSequ()+0x21(33)
+  ../../bin/lin64/box_client : main()+0x81
+  /lib/x86_64-linux-gnu/libc.so.6 : __libc_start_main()+0xed
+  ../../bin/lin64/box_client() [0x59fdb9]
+caught: null pointer
+virtual nebula::framework::app::~app()
+virtual nebula::platform::platform::lin::base::~base()
+virtual nebula::content::base::~base()
+virtual nebula::content::universe::admin::base::~base()
 nebula::content::scene::admin::base::~base()
 virtual nebula::content::actor::admin::base::~base()
 nebula::content::actor::physics::base::~base()
 virtual nebula::content::actor::admin::rigid_dynamic_box::~rigid_dynamic_box()
 virtual nebula::content::actor::admin::base::~base()
 nebula::content::actor::physics::base::~base()
-assertion
-stack trace:
-  ../../bin/lin64/box_client : jess::except::except(std::string const&, int, bool)+0xb6(182)
-  ../../bin/lin64/box_client : jess::assertion(bool)+0x66(102)
-  ../../bin/lin64/box_client : nebula::content::physics::base::create_controller(jess::shared_ptr<nebula::content::scene::admin::base>, jess::shared_ptr<nebula::content::actor::admin::base>)+0x128(296)
-  ../../bin/lin64/box_client : nebula::content::base::create_controller(jess::shared_ptr<nebula::content::scene::admin::base>)+0xd3(211)
-  ../../bin/lin64/box_client : nebula::content::universe::admin::base::create_controller(jess::shared_ptr<nebula::content::scene::admin::base>)+0x87(135)
-  ../../bin/lin64/box_client : nebula::content::scene::admin::base::create_controller()+0x87(135)
-  ../../bin/lin64/box_client : box_client::content::scene::admin::base::init()+0xdb(219)
-  ../../bin/lin64/box_client : jess::shared_ptr<box_client::content::scene::admin::base> nebula::content::base::create_scene<box_client::content::scene::admin::base>(jess::shared_ptr<nebula::content::universe::admin::base>)+0xe1(225)
-  ../../bin/lin64/box_client : jess::shared_ptr<box_client::content::scene::admin::base> nebula::content::universe::admin::base::create_scene<box_client::content::scene::admin::base>()+0x7d(125)
-  ../../bin/lin64/box_client : box_client::framework::app::init()+0x9c(156)
-  ../../bin/lin64/box_client : main()+0x6d
-  /lib/x86_64-linux-gnu/libc.so.6 : __libc_start_main()+0xed
-  ../../bin/lin64/box_client() [0x59f489]
-caught: assertion
-virtual nebula::framework::app::~app()
-virtual nebula::platform::platform::lin::base::~base()
-virtual nebula::content::base::~base()
-virtual nebula::content::universe::admin::base::~base()
-virtual nebula::content::physics::base::~base()
+virtual nebula::content::actor::admin::controller::~controller()
+virtual nebula::content::actor::admin::base::~base()
+nebula::content::actor::physics::controller::~controller()
+nebula::content::actor::physics::base::~base()
+virtual nebula::platform::window::lin::base::~base()
+virtual nebula::platform::renderer::base::~base()
+nebula::framework::renderable::~renderable()
+terminate called without an active exception
