@@ -3,6 +3,8 @@
 
 #include <nebula/content/universe/admin/base.hpp>
 
+#include <box_client/ns.hpp>
+
 namespace box_client
 {
 	namespace content
@@ -14,8 +16,11 @@ namespace box_client
 				class base:
 					public n31100::base
 				{
-				public:
-					virtual void							init( jess::shared_ptr<n30000::base> );
+					public:	
+						/// ctor
+						base( jess::shared_ptr<n30000::base> );
+						/// init
+						virtual void							init();
 				};
 			}
 		}

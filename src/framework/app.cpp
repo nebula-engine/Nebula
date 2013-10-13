@@ -55,14 +55,14 @@ void	n10000::app::init()
 }
 void	n10000::app::MainLoopSequ()
 {
-	while (1)
+	for(int i = 0; i < 10; i++)
 	{
 		ContinueLoopSequ();
 	}
 }
 void	n10000::app::MainLoopMulti()
 {
-	
+
 }
 void	n10000::app::ContinueLoopSequ()
 {
@@ -72,6 +72,10 @@ void	n10000::app::ContinueLoopSequ()
 	if ( bool( renderable_ ) )
 	{
 		renderable_->render();
+	}
+	else
+	{
+		jess::clog << "no renderable" << std::endl;
 	}
 }
 void	n10000::app::ContinueLoopMulti()

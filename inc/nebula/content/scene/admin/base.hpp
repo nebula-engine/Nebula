@@ -26,11 +26,11 @@ namespace nebula
 				{
 					public:
 						/// ctor
-						base();
+						base( jess::shared_ptr<n31100::base> );
 						/// dtor
 						~base();
 						/// init
-						virtual void									init( jess::shared_ptr<n31100::base> );
+						virtual void									init();
 						/// shutdown
 						virtual void									shutdown();
 						/// update
@@ -62,7 +62,6 @@ namespace nebula
 						/// create
 						template <class T> jess::shared_ptr<T>						create_view()
 						{
-							/// log
 							jess::clog << NEB_FUNCSIG << std::endl;
 
 							jess::shared_ptr<T> t( new T );

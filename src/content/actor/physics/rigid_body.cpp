@@ -7,6 +7,10 @@ n34200::rigid_body::rigid_body( jess::shared_ptr<n34100::base> parent ):
 {
 
 }
+n34200::rigid_body::~rigid_body()
+{
+
+}
 void	n34200::rigid_body::init()
 {
 	n34200::rigid_actor::init();

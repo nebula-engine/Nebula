@@ -60,6 +60,8 @@ jess::shared_ptr<n34100::rigid_dynamic_box>	n30000::base::create_rigid_dynamic_b
 		jess::shared_ptr<n32100::base> scene
 		)
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	// create
 	jess::shared_ptr<n34100::rigid_dynamic_box> actor( new n34100::rigid_dynamic_box( scene ) );
 
@@ -72,6 +74,8 @@ jess::shared_ptr<n34100::rigid_static_plane>	n30000::base::create_rigid_static_p
 		jess::shared_ptr<n32100::base> scene
 		)
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	// create
 	jess::shared_ptr<n34100::rigid_static_plane> actor( new n34100::rigid_static_plane( scene ) );
 
@@ -84,6 +88,8 @@ jess::shared_ptr<n34100::controller>		n30000::base::create_controller(
 		jess::shared_ptr<n32100::base> scene
 		)
 {
+	jess::clog << NEB_FUNCSIG << std::endl;
+
 	// create
 	jess::shared_ptr<n34100::controller> actor( new n34100::controller( scene ) );
 

@@ -22,6 +22,7 @@
 #endif
 
 
+#define NEB_ASSERT(x) jess::assertion(x,#x);
 
 
 #endif

@@ -21,9 +21,9 @@
 
 #include <nebula/content/scene/admin/base.hpp>
 
-n32100::base::base()
+n32100::base::base( jess::shared_ptr<n31100::base> parent ):
+	parent_( parent )
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	accumulator_ = 0;
@@ -32,37 +32,24 @@ n32100::base::base()
 }
 n32100::base::~base()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
 jess::shared_ptr<nebula::content::base>	n32100::base::get_content()
 {
 	jess::assertion( !parent_.expired() );	
 	jess::shared_ptr<n31100::base> uni = parent_.lock();
-	
+
 	jess::assertion( !uni->parent_.expired() );
 	jess::shared_ptr<n30000::base> cont = uni->parent_.lock();
-	
-	
+
+
 	jess::assertion( bool( cont ) );
 
 	return cont;
 }
-void						n32100::base::init( jess::shared_ptr<n31100::base> parent )
+void						n32100::base::init()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
-	
-	parent_ = parent;
-	
-	
-	
-	// physics
-	//physics_.reset( new n32200::base );
-	//physics_->init( shared_from_this() );
-	
-
-	//get_content()->register_scene( shared_from_this() );
 }
 void						n32100::base::shutdown()
 {
@@ -121,19 +108,19 @@ jess::shared_ptr<n34100::rigid_dynamic_box>	n32100::base::create_rigid_dynamic_b
 
 	// store
 	actors_.push<n34100::rigid_dynamic_box>( act );
-	
+
 	return act;
 }
 jess::shared_ptr<n34100::rigid_static_plane>	n32100::base::create_rigid_static_plane()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-	
+
 	// create
 	jess::shared_ptr<n34100::rigid_static_plane> act = parent_.lock()->create_rigid_static_plane( shared_from_this() );
-	
+
 	// store
 	actors_.push<n34100::rigid_static_plane>( act );
-	
+
 	return act;
 }
 jess::shared_ptr<n34100::controller>		n32100::base::create_controller()
@@ -145,7 +132,7 @@ jess::shared_ptr<n34100::controller>		n32100::base::create_controller()
 
 	// store
 	actors_.push<n34100::controller>( act );
-	
+
 	return act;
 }
 jess::shared_ptr<n22000::base>			n32100::base::request_window()

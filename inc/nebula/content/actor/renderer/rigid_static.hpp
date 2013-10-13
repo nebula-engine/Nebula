@@ -33,14 +33,6 @@ namespace nebula
 					virtual	void						render( jess::shared_ptr<n23000::base> );
 					/// Step
 					virtual	void						step( float );
-					
-
-
-
-					/// Create Shapes
-					virtual	void						VCreateShape();
-
-
 				};
 			}
 		}

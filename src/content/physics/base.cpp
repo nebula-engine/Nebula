@@ -1,8 +1,10 @@
+#include <nebula/define.hpp>
 #include <nebula/content/scene/admin/base.hpp>
 #include <nebula/content/scene/physics/base.hpp>
 #include <nebula/content/actor/admin/rigid_dynamic.hpp>
 #include <nebula/content/actor/physics/rigid_dynamic_box.hpp>
 #include <nebula/content/actor/physics/controller.hpp>
+#include <nebula/content/actor/physics/material.hpp>
 
 #include <nebula/content/physics/base.hpp>
 
@@ -52,8 +54,9 @@ void	n36000::base::init()
 	// Extensions
 	jess::assertion( ::PxInitExtensions( *px_physics_ ) );
 
-	// Character controller manager
+	// character controller manager
 	px_character_controller_manager_ = ::PxCreateControllerManager( *px_foundation_ );
+	jess::assertion( px_character_controller_manager_ );
 
 }
 void	n36000::base::shutdown()
@@ -156,17 +159,39 @@ jess::shared_ptr<n34200::controller>		n36000::base::create_controller(
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
+	
+
 	// create
 	jess::shared_ptr<n34200::controller> act ( new n34200::controller( actor ) );
 
-	// create
+	// description
+	physx::PxExtendedVec3 position(0,0,0);
+	
 	physx::PxCapsuleControllerDesc desc;
+	desc.position = position;
+	desc.height = 1;
+	desc.radius = 0.5;
+	desc.climbingMode = physx::PxCapsuleClimbingMode::eEASY;
+	
+	desc.setToDefault();
+
+	// assert
+	jess::assertion( px_character_controller_manager_ );
+	jess::assertion( px_physics_ );
+	jess::assertion( scene->physics_->px_scene_ );
+	NEB_ASSERT( desc.isValid() );
 
 	physx::PxController* px_cont = px_character_controller_manager_->createController( *px_physics_, scene->physics_->px_scene_, desc );
 
 	act->px_controller_ = px_cont;
 
+	jess::assertion( px_cont );
+
 	return act;
+}
+jess::shared_ptr<n34200::material>		n36000::base::request_physics_material()
+{
+	return default_material_;
 }
 
 void 	DefaultErrorCallback::reportError( ::physx::PxErrorCode::Enum code, const char *message, const char *file, int line)

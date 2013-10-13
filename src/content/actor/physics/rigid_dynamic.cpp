@@ -6,6 +6,10 @@ n34200::rigid_dynamic::rigid_dynamic( jess::shared_ptr<n34100::base> parent ):
 {
 
 }
+n34200::rigid_dynamic::~rigid_dynamic()
+{
+
+}
 void	n34200::rigid_dynamic::init()
 {
 	n34200::rigid_body::init();

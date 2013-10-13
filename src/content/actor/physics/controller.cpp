@@ -37,6 +37,8 @@ void	n34200::controller::step( float dt )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
+	jess::assertion( px_controller_ );
+	
 	update_move();
 
 	jess::shared_ptr<n34100::controller> parent = std::dynamic_pointer_cast<n34100::controller>( parent_.lock() );
@@ -106,6 +108,8 @@ void	n34200::controller::update_move()
 			n34100::controller::flag::eSOUTH |
 			n34100::controller::flag::eEAST |
 			n34100::controller::flag::eWEST );
+
+	std::cout << "m.size()="<<m.size() << std::endl;
 
 	// find vector for move flag
 	auto it = m.find( f );

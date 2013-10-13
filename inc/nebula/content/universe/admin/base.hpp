@@ -22,11 +22,11 @@ namespace nebula
 				{
 					public:
 						/// ctor
-						base();
+						base( jess::shared_ptr<n30000::base> );
 						/// dtor
 						virtual ~base();
 						/// init
-						virtual void						init( jess::shared_ptr<nebula::content::base> );
+						virtual void						init();
 						/// shutdown
 						virtual void						shutdown();
 						/// update

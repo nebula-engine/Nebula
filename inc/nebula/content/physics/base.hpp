@@ -94,6 +94,8 @@ namespace nebula
 				protected:
 					/// parent
 					std::weak_ptr<nebula::content::base>				parent_;
+					/// default material
+					jess::shared_ptr<n34200::material>				default_material_;
 					///@name physx
 					///@{
 					/**

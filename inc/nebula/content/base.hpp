@@ -36,15 +36,14 @@ namespace nebula
 				/// universe
 				template <class T> jess::shared_ptr<T>				create_universe()
 				{
-					// log
 					jess::clog << NEB_FUNCSIG << std::endl;
-
-					jess::shared_ptr<T> t( new T() );				
-
-					universes_.push<T>( t );//uni, std::bind( &T::init, std::placeholders::_1, shared_from_this() ) );
-
-					t->init( shared_from_this() );
-
+					
+					jess::shared_ptr<T> t( new T( shared_from_this() ) );				
+					
+					universes_.push<T>( t );
+					
+					t->init();
+					
 					return t;
 				}
 				/// scene
@@ -55,6 +54,8 @@ namespace nebula
 					jess::shared_ptr<T> t( new T( universe ) );
 
 					t->physics_ = physics_->create_scene();
+
+					t->init();
 
 					return t;
 				}
