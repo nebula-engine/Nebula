@@ -9,8 +9,6 @@
 #undef max
 #undef min
 
-#include <boost/numeric/ublas/vector.hpp>
-
 #include <nebula/define.hpp>
 
 #include <nebula/platform/renderer/gl/base.hpp>

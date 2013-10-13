@@ -1,9 +1,6 @@
 #ifndef __NEBULA_FRAMEWORK_APP_HPP__
 #define __NEBULA_FRAMEWORK_APP_HPP__
 
-#include <boost/asio.hpp>
-#include <boost/asio/deadline_timer.hpp>
-
 #include <jess/shared_ptr.hpp>
 
 #include <nebula/ns.hpp>
@@ -12,14 +9,6 @@ namespace nebula
 {
 	namespace framework
 	{
-		/// boost asio ioservice
-		/**
-		 * The ioservice is global so that any object can access it directly.
-		 * \todo move definition to new file
-		 */
-		extern boost::asio::io_service						g_io_;
-
-
 		/// %app
 		class app:
 			public jess::enable_shared_from_this<n10000::app>

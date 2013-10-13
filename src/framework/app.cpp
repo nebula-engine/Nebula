@@ -27,11 +27,6 @@ namespace nebula
 }
 
 
-void	io_service_run()
-{
-	n10000::g_io_.run();
-}
-
 n10000::app::app()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;

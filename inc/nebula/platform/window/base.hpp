@@ -1,6 +1,7 @@
 #ifndef _PLATFORM_WINDOW_WINDOW_H
 #define _PLATFORM_WINDOW_WINDOW_H
 
+#include <map>
 #include <memory>
 
 #include <jess/signal.hpp>
@@ -49,7 +50,7 @@ namespace nebula
 				
 				std::map<int,int>				keys_;
 
-				///@name boost signals
+				///@name signals
 				///@{
 				/// key down
 				jess::signal<void, int,int>			sig_key_down_;
