@@ -186,7 +186,7 @@ namespace nebula
 	}
 
 	/** \breif %asio
-	 * Asyn30000hronous in/out using boost::asio
+	 * asynchronous in/out
 	 */
 	namespace asio
 	{

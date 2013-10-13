@@ -26,11 +26,9 @@ defines   += __OPENGL__
 libraries :=
 libraries += jess
 libraries += nebula
-libraries += boost_system
-libraries += boost_thread
-#libraries += boost_chrono
-libraries += pthread
 libraries += rt
+
+libraries += pthread
 libraries += PhysX3
 libraries += SimulationController
 libraries += LowLevel

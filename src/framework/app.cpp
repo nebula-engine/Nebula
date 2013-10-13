@@ -1,8 +1,5 @@
 #include <stdio.h>
 
-#include <boost/thread.hpp>
-#include <boost/asio/io_service.hpp>
-
 #include <jess/free.hpp>
 #include <jess/ostream.hpp>
 
@@ -26,7 +23,6 @@ namespace nebula
 {
 	namespace framework
 	{
-		boost::asio::io_service		g_io_;
 	}
 }
 
@@ -64,25 +60,14 @@ void	n10000::app::init()
 }
 void	n10000::app::MainLoopSequ()
 {
-	boost::thread* t = 0;
-
+	while (1)
 	{
-		boost::asio::io_service::work work( g_io_ );
-
-		t = new boost::thread( io_service_run );
-
-		while (1)
-		{
-			ContinueLoopSequ();
-		}
+		ContinueLoopSequ();
 	}
-
-	// wait until asynchronous operations finish
-	t->join();
 }
 void	n10000::app::MainLoopMulti()
 {
-
+	
 }
 void	n10000::app::ContinueLoopSequ()
 {

@@ -3,8 +3,7 @@
 
 #include <memory>
 
-#include <boost/signals2/signal.hpp>
-
+#include <jess/signal.hpp>
 #include <jess/shared_ptr.hpp>
 
 #include <nebula/ns.hpp>
@@ -53,11 +52,11 @@ namespace nebula
 				///@name boost signals
 				///@{
 				/// key down
-				boost::signals2::signal<void (int,int)>		sig_key_down_;
+				jess::signal<void, int,int>			sig_key_down_;
 				/// key up
-				boost::signals2::signal<void (int,int)>		sig_key_up_;
+				jess::signal<void, int,int>			sig_key_up_;
 				/// pointer motion
-				boost::signals2::signal<void (int,int)>		sig_pointer_motion_;
+				jess::signal<void, int,int>			sig_pointer_motion_;
 				///@}
 			//protected:
 				unsigned int					width_;
