@@ -38,6 +38,8 @@ namespace nebula
 				int	interval_;
 				/// fps
 				float	fps_;
+				/// clock
+				int	clock_;
 				/// fps timer
 				std::thread					timer_fps_;
 		};

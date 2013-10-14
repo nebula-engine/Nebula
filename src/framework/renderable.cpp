@@ -13,6 +13,7 @@ n10000::renderable::renderable():
 	count_(0),
 	interval_(1),
 	fps_(0),
+	clock_(0),
 	timer_fps_( &n10000::renderable::update_fps, this )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -32,6 +33,8 @@ void	n10000::renderable::update_fps()
 
 		fps_ = (float)count_;
 		count_ = 0;
+		
+		clock_++;
 	}
 }
 void	n10000::renderable::render()

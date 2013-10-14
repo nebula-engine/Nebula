@@ -63,10 +63,14 @@ void	n33100::base::render()
 		layout_->render( rnd );
 	}
 	
-	
+	// text
 	char str[16];
-	sprintf( str, "%8.2f", fps_ );
+	sprintf( str, "fps   %3i", fps_ );
 	rnd->draw_text( 100, 200, str );
+	
+	sprintf( str, "clock %3i", clock_ );
+	rnd->draw_text( 100, 250, str );
+
 	
 	
 	rnd->end_2d();
