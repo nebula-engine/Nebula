@@ -11,6 +11,7 @@
 
 n10000::renderable::renderable():
 	count_(0),
+	total_count_(0),
 	interval_(1),
 	fps_(0),
 	clock_(0),
@@ -31,7 +32,7 @@ void	n10000::renderable::update_fps()
 	{
 		std::this_thread::sleep_for( std::chrono::seconds(1) );
 
-		fps_ = (float)count_;
+		fps_ = count_;
 		count_ = 0;
 		
 		clock_++;
@@ -40,4 +41,5 @@ void	n10000::renderable::update_fps()
 void	n10000::renderable::render()
 {
 	count_++;
+	total_count_++;
 }

@@ -27,7 +27,6 @@ void	n35300::box::shutdown()
 }
 void	n35300::box::render( jess::shared_ptr<nebula::platform::renderer::base> rnd )
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	jess::shared_ptr<n35100::box> parent = std::dynamic_pointer_cast<n35100::box>( parent_.lock() );

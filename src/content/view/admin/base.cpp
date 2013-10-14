@@ -10,7 +10,7 @@
 
 #include <nebula/content/view/admin/base.hpp>
 
-n33100::base::base()
+n33100::base::base() // invalid write stems from here
 {
 	
 }
@@ -65,11 +65,15 @@ void	n33100::base::render()
 	
 	// text
 	char str[16];
-	sprintf( str, "fps   %3i", fps_ );
+
+	sprintf( str, "fps    %3i", fps_ );
 	rnd->draw_text( 100, 200, str );
 	
-	sprintf( str, "clock %3i", clock_ );
+	sprintf( str, "frames %3i", total_count_ );
 	rnd->draw_text( 100, 250, str );
+	
+	sprintf( str, "clock  %3i", clock_ );
+	rnd->draw_text( 100, 300, str );
 
 	
 	

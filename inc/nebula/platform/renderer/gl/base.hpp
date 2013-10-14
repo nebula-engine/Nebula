@@ -53,16 +53,16 @@ namespace nebula
 						void							disable_lighting();
 						/// begin render
 						virtual void						begin_render();
-						virtual void		begin_3d();
-						virtual void		end_3d();
-						virtual void		begin_2d();
-						virtual void		end_2d();
+						virtual void						begin_3d();
+						virtual void						end_3d();
+						virtual void						begin_2d();
+						virtual void						end_2d();
 						/// end render
 						virtual void						end_render();
 						/// draw window quad
 						virtual void						draw_window_quad( int, int, int, int );
 						/// un23000oject
-						virtual void						un23000oject( int, int, int, double*, double*, double* );
+						virtual void						unproject( int, int, int, double*, double*, double* );
 						/// sphere
 						virtual void						draw_sphere();
 						/// 2d quad

@@ -32,7 +32,7 @@ void	n34100::controller::init()
 	yaw_ = 0;
 	pitch_ = 0;
 
-	pos_ = physx::PxVec3(0,10,2);
+	pos_ = physx::PxVec3(0,0,2);
 
 	key_flag_[nebula::platform::key::w] = flag::eNORTH;
 	key_flag_[nebula::platform::key::s] = flag::eSOUTH;
@@ -70,32 +70,13 @@ void	n34100::controller::look_at( jess::shared_ptr<n23000::base> rnd )
 
 	physx::PxQuat rot( yaw_, physx::PxVec3(0,1,0) );
 
-	//jess::clog << pitch_ << " " << yaw_ << std::endl;
-	//std::cout << "rot=" << rot << std::endl;
-
-	//std::cout << "rot=" << rot << std::endl;
-
 	rot *= physx::PxQuat( pitch_ , physx::PxVec3(1,0,0) );
-
-	//std::cout << "rot=" << rot << std::endl;
-
-	//rnd->mult_matrix( pose_ );
-
-	//rot *= pitch;
-	//rot *= yaw;
 
 	up_ = physx::PxVec3(0,1,0);
 	look_ = physx::PxVec3(0,0,-1);
 
-	//jess::clog << up_ << std::endl;
-	//jess::clog << look_ << std::endl;
-
 	up_ = rot.rotate( up_ );
 	look_ = rot.rotate( look_ );
-
-	//jess::clog << up_ << std::endl;
-	//jess::clog << look_ << std::endl;
-	//jess::clog << pos_ + look_ << std::endl;
 
 	rnd->look_at( pos_, pos_ + look_, up_ );
 }

@@ -47,7 +47,6 @@ void	n34100::rigid_actor::create_shapes()
 }
 jess::shared_ptr<n35100::box>	n34100::rigid_actor::create_box()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// cast shared_from_this
@@ -56,7 +55,7 @@ jess::shared_ptr<n35100::box>	n34100::rigid_actor::create_box()
 	// create
 	jess::shared_ptr<n35100::box> bx( new n35100::box );
 	
-	shapes_.push<n35100::box>( bx );//, std::bind( &n35100::box::init, std::placeholders::_1, this_ ) );
+	shapes_.push<n35100::box>( bx );
 	
 	bx->init( this_ptr );
 	

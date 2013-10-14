@@ -34,10 +34,13 @@ namespace nebula
 			protected:
 				/// count
 				int	count_;
+				/// total count
+				int	total_count_;
+
 				/// interval
 				int	interval_;
 				/// fps
-				float	fps_;
+				int	fps_;
 				/// clock
 				int	clock_;
 				/// fps timer

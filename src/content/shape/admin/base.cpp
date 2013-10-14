@@ -6,41 +6,32 @@
 
 #include <nebula/content/shape/admin/base.hpp>
 
-nebula::content::shape::admin::base::base()
+nebula::content::shape::admin::base::base(): pose_( physx::PxTransform() )
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
-
 }
 nebula::content::shape::admin::base::~base()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
-
 }
 void	nebula::content::shape::admin::base::init( jess::shared_ptr<nebula::content::actor::admin::rigid_actor> parent )
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	parent_ = parent;
-
 }
 void	nebula::content::shape::admin::base::shutdown()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
 void	nebula::content::shape::admin::base::render( jess::shared_ptr<nebula::platform::renderer::base> rnd )
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	renderer_->render( rnd );
 }
 physx::PxVec3	n35100::base::get_scale()
 {
-	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	return scale_;
