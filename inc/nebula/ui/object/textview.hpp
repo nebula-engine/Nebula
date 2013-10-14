@@ -17,10 +17,17 @@ namespace nebula
 			class textview:
 				public n52000::base
 			{
-			public:
-				virtual void		render( jess::shared_ptr<n23000::base> rnd );
+				public:
+					/** \brief render
+					*/			
+					virtual void				render( jess::shared_ptr<n23000::base> rnd );
+					/** \brief key down
+					*/
+					virtual bool				key_down( int );
+					/** \brief key up
+					*/
+					virtual bool				key_up( int );
 
-				std::string		label_;
 			};
 		}
 	}

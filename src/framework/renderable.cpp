@@ -1,3 +1,5 @@
+#include <chrono>
+
 #include <jess/ostream.hpp>
 #include <jess/free.hpp>
 
@@ -28,18 +30,24 @@ void	n10000::renderable::init()
 }
 void	n10000::renderable::update_fps()
 {
+	std::chrono::steady_clock::time_point next = std::chrono::steady_clock::now();
+	
 	while(1)
 	{
-		std::this_thread::sleep_for( std::chrono::seconds(1) );
-
+		std::this_thread::sleep_until( next );
+		next += std::chrono::seconds(1);
+		
+		std::lock_guard lg ( mutex_ );
+		
 		fps_ = count_;
 		count_ = 0;
-		
 		clock_++;
 	}
 }
 void	n10000::renderable::render()
 {
+	std::lock_guard lg ( mutex_ );
+	
 	count_++;
 	total_count_++;
 }

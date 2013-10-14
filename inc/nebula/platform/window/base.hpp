@@ -4,7 +4,7 @@
 #include <map>
 #include <memory>
 
-#include <jess/signal.hpp>
+#include <jess/signal/signal.hpp>
 #include <jess/shared_ptr.hpp>
 
 #include <nebula/ns.hpp>
@@ -53,11 +53,11 @@ namespace nebula
 				///@name signals
 				///@{
 				/// key down
-				jess::signal<void, int,int>			sig_key_down_;
+				jess::signal::signal<int,int>			sig_key_down_;
 				/// key up
-				jess::signal<void, int,int>			sig_key_up_;
+				jess::signal::signal<int,int>			sig_key_up_;
 				/// pointer motion
-				jess::signal<void, int,int>			sig_pointer_motion_;
+				jess::signal::signal<int,int>			sig_pointer_motion_;
 				///@}
 			//protected:
 				unsigned int					width_;

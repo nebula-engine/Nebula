@@ -36,7 +36,6 @@ namespace nebula
 				int	count_;
 				/// total count
 				int	total_count_;
-
 				/// interval
 				int	interval_;
 				/// fps
@@ -45,6 +44,9 @@ namespace nebula
 				int	clock_;
 				/// fps timer
 				std::thread					timer_fps_;
+				/** \brief mutex
+				*/
+				std::mutex mutex_;
 		};
 	}
 }
