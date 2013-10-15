@@ -6,42 +6,44 @@
 #define IDI_SMALL 108
 #define IDC_WIN32PROJECT1 109
 
-#include <Platform/Platform/Win/PL_PL_WIN_Platform.h>
+#include <nebula/platform/platform/win/base.hpp>
 
-		PL_PL_WIN_Platform::Platform() {
-	
+n21200::base()
+{
+
 }
-		PL_PL_WIN_Platform::~PlatformWin() {
-	
+n21200::~base()
+{
+
 }
-void	PL_PL_WIN_Platform::init( v) {
+void	n21200::base::init()
+{
 	jess::clog << NEB_FUNCSIG << std::endl;
-	
+
 	int nCmdShow = SW_SHOWNORMAL;
 
 	HINSTANCE hInst = GetModuleHandleA(NULL);
 
-	
 }
-void	PL_PL_WIN_Platform::VShutdown( v)
+void						n21200::base::shutdown()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	PL_PL_WIN_Platform::update( v)
+void						n21200::base::update()
 {
-	
+
 }
-void	PL_PL_WIN_Platform::VCreateWindow( PL_WI_Window*& window )
+v jess::shared_ptr<n22000::base> window		n21200::base::create_window()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-	
+/*
 	PL_WI_WIN_Window* pl_wi_win_window = NULL;
 	m_window.Create(pl_wi_win_window);
 
 	window = pl_wi_win_window;
 
 	windowWin->init( data );
-
+*/
 }
 
 

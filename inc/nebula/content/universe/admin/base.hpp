@@ -54,7 +54,7 @@ namespace nebula
 						jess::shared_ptr<n34200::material>			request_physics_material();
 					public:
 						/// parent
-						std::weak_ptr<nebula::content::base>			parent_;
+						std::weak_ptr<n30000::base>			parent_;
 						/// scenes
 						jess::map<n32100::base>					scenes_;
 				};

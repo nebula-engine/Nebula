@@ -30,7 +30,7 @@ namespace nebula
 					/// Update
 					virtual	void						update();
 					/// Render
-					virtual	void						render( jess::shared_ptr<nebula::platform::renderer::base> );
+					virtual	void						render( jess::shared_ptr<n23000::base> );
 					/// Step
 					virtual	void						step(float);
 					

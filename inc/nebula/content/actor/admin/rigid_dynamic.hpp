@@ -38,7 +38,7 @@ namespace nebula
 						/// step
 						virtual	void								step( float );
 						/// render
-						virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
+						virtual	void								render( jess::shared_ptr<n23000::base> );
 						/// create shapes
 						virtual	void								create_shapes();
 				};

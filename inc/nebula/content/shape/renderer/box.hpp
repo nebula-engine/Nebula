@@ -21,11 +21,11 @@ namespace nebula
 						/// dtor
 						~box();
 						/// init
-						void								init( jess::shared_ptr<nebula::content::shape::admin::box> );
+						void								init( jess::shared_ptr<n35100::box> );
 						/// shutdown
 						void								shutdown();
 						/// render
-						void								render( jess::shared_ptr<nebula::platform::renderer::base> );
+						void								render( jess::shared_ptr<n23000::base> );
 
 				};
 			}

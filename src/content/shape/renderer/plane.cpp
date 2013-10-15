@@ -23,7 +23,7 @@ void	n35300::plane::shutdown()
 {
 
 }
-void	n35300::plane::render( jess::shared_ptr<nebula::platform::renderer::base> rnd )
+void	n35300::plane::render( jess::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 

@@ -14,7 +14,7 @@ namespace nebula
 				{
 				public:
 					/// physics
-					jess::shared_ptr<nebula::content::actor::physics::material>		physics_;
+					jess::shared_ptr<n34200::material>		physics_;
 				};
 			}
 		}

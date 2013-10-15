@@ -33,7 +33,7 @@ namespace nebula
 				///@name Initialization and ShutDown
 				///{
 				/// initialize
-				virtual	void					init( jess::shared_ptr<nebula::platform::platform::base> );
+				virtual	void					init( jess::shared_ptr<n21000::base> );
 				/// shutdown
 				virtual	void					shutdown();
 				/// update

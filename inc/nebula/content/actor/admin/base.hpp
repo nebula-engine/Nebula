@@ -40,7 +40,7 @@ namespace nebula
 						/// step
 						virtual	void								step( float );
 						/// render
-						virtual	void								render( jess::shared_ptr<nebula::platform::renderer::base> );
+						virtual	void								render( jess::shared_ptr<n23000::base> );
 						/// physics material
 						virtual jess::shared_ptr<n34200::material>				create_physics_material();
 						/// create shapes
@@ -56,7 +56,7 @@ namespace nebula
 						/// renderer
 						jess::shared_ptr<n34300::base>						renderer_;
 						/// materials
-						jess::map<nebula::content::actor::admin::material>			materials_;
+						jess::map<n34100::material>			materials_;
 						/// flag
 						int									flag_;
 						/// pose

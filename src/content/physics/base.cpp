@@ -216,7 +216,7 @@ jess::shared_ptr<n34200::material>		n36000::base::create_physics_material()
 }
 
 
-void 	DefaultErrorCallback::reportError( ::physx::PxErrorCode::Enum code, const char *message, const char *file, int line)
+void 	DefaultErrorCallback::reportError( physx::PxErrorCode::Enum code, char const * message, char const * file, int line)
 {
 	printf("%s:%i: %s\n",file,line,message);
 }

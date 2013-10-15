@@ -11,15 +11,14 @@ namespace nebula
 	{
 		namespace object
 		{
-			/// %textview
-			/**
+			/** \brief %textview
 			 * Display and optionally edit text
 			 */
 			class textview:
 				public n52000::base
 			{
 				public:
-					/** \bried ctor
+					/** \brief ctor
 					 */
 					textview();
 					/** \brief clear label
@@ -37,14 +36,14 @@ namespace nebula
 					/** \brief key up
 					 */
 					virtual bool				on_key_up( int );
-					/** linefeed
+					/** \brief linefeed
 					 */
 					virtual bool				on_linefeed();
 					///@}
-					/** linefeed
+					/** \brief linefeed
 					 */
 					std::function<bool()>			on_linefeed_;
-					/** label pos
+					/** \brief label pos
 					 */
 					size_t					label_pos_;
 			};

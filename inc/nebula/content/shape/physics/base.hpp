@@ -21,7 +21,7 @@ namespace nebula
 					public:
 						base();
 						~base();
-						void							init( jess::shared_ptr<nebula::content::shape::admin::base> );
+						void							init( jess::shared_ptr<n35100::base> );
 						void							shutdown();
 						std::weak_ptr<n35100::base>				parent_;
 						physx::PxShape*						px_shape_;

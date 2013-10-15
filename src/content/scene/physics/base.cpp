@@ -56,7 +56,7 @@ void						n32200::base::step( float dt )
 		//printf("transform.p.y=%16f\n",activeTransforms[i].actor2World.p.y);
 	}
 }
-void						n32200::base::render( jess::shared_ptr<nebula::platform::renderer::base> )
+void						n32200::base::render( jess::shared_ptr<n23000::base> )
 {
 
 }

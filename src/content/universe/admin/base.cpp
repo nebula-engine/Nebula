@@ -8,7 +8,7 @@
 
 #include <nebula/content/universe/admin/base.hpp>
 
-n31100::base::base( jess::shared_ptr<nebula::content::base> parent ):
+n31100::base::base( jess::shared_ptr<n30000::base> parent ):
 	parent_( parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;

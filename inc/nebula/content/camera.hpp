@@ -14,10 +14,10 @@ namespace nebula
 			/// ctor
 			camera();
 			/// render
-			void									render( jess::shared_ptr<nebula::platform::renderer::base> );
+			void									render( jess::shared_ptr<n23000::base> );
 
 			/// controller
-			jess::shared_ptr<nebula::content::actor::admin::controller>		controller_;
+			jess::shared_ptr<n34100::controller>		controller_;
 		};
 	}
 }

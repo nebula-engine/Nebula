@@ -22,13 +22,13 @@ namespace nebula
 						/// dtor
 						virtual ~base();
 						/// init
-						virtual void								init( jess::shared_ptr<nebula::content::shape::admin::base> );
+						virtual void								init( jess::shared_ptr<n35100::base> );
 						/// shutdown
 						virtual void								shutdown();
 						/// render
-						virtual void								render( jess::shared_ptr<nebula::platform::renderer::base> );
+						virtual void								render( jess::shared_ptr<n23000::base> );
 						/// parent
-						std::weak_ptr<nebula::content::shape::admin::base>			parent_;
+						std::weak_ptr<n35100::base>			parent_;
 				};
 			}
 		}

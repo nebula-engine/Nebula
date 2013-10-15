@@ -16,7 +16,7 @@ void	n35300::base::shutdown()
 {
 	
 }
-void	n35300::base::render( jess::shared_ptr<nebula::platform::renderer::base> rnd )
+void	n35300::base::render( jess::shared_ptr<n23000::base> rnd )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;

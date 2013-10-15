@@ -31,10 +31,10 @@ namespace nebula
 				nebula::content::animation::frame*			m_parent;
 
 				/// Children
-				std::vector<nebula::content::animation::frame*>		m_children;
+				std::vector<n30000::animation::frame*>		m_children;
 
 				/// Actors
-				std::vector<nebula::content::actor::admin::base*>	m_actors;
+				std::vector<n34100::base*>	m_actors;
 
 				/// pose
 				physx::PxMat44						pose_;

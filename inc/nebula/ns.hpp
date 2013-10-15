@@ -4,8 +4,9 @@
 /// %nebula
 namespace nebula
 {
-	/** \breif %framework
-	 * Contains the application class.
+	/** \brief %framework
+	 *
+	 * contains the application class
 	 */
 	namespace framework
 	{
@@ -13,21 +14,22 @@ namespace nebula
 		class renderable;
 	}
 
-	/** \breif %platform
+	/** \brief %platform
 	 *
+	 * platform, window, and renderer
 	 */
 	namespace platform
 	{
 		class key;
 
-		/** \breif %platform
+		/** \brief %platform
 		 *
 		 */
 		namespace platform
 		{
 			class base;
 
-			/** \breif %linux
+			/** \brief %linux
 			 *
 			 */
 			namespace lin
@@ -39,10 +41,15 @@ namespace nebula
 				class base;
 			}
 		}
+		/** \brief %window
+		*/
 		namespace window
 		{
 			class base;
 
+			/**
+			 *
+			 */
 			namespace lin
 			{
 				class base;
@@ -52,6 +59,8 @@ namespace nebula
 				class base;
 			}
 		}
+		/** \brief %renderer
+		*/
 		namespace renderer
 		{
 			class base;
@@ -60,10 +69,14 @@ namespace nebula
 			class scoped_2d_environment;
 			class scoped_3d_environment;
 
+			/** \brief %opengl
+			*/
 			namespace gl
 			{
 				class base;	
 
+				/** \brief glx
+				*/
 				namespace glx
 				{
 					class base;
@@ -71,16 +84,23 @@ namespace nebula
 			}
 		}
 	}
-
+	/** \brief %content
+	*/
 	namespace content
 	{
 		class base;
 		class camera;
 
+		/** \brief %physics
+		 *
+		 */
 		namespace physics
 		{
 			class base;
 		}
+		/** \brief %universe
+		 *
+		 */
 		namespace universe
 		{
 			namespace admin
@@ -88,6 +108,8 @@ namespace nebula
 				class base;
 			}
 		}
+		/** \brief %scene
+		*/
 		namespace scene
 		{
 			namespace admin
@@ -104,6 +126,8 @@ namespace nebula
 				class base;
 			}
 		}
+		/** \brief %view
+		*/
 		namespace view
 		{
 			namespace admin
@@ -111,6 +135,9 @@ namespace nebula
 				class base;
 			}
 		}
+		/** \brief %actor
+		 *
+		 */
 		namespace actor
 		{
 			namespace admin
@@ -161,14 +188,23 @@ namespace nebula
 				class material;
 			}
 		}
+		/** \brief %shape
+		 *
+		 */
 		namespace shape
 		{
+			/** \brief %admin
+			 *
+			 */		
 			namespace admin
 			{
 				class base;
 				class box;
 				class plane;
 			}
+			/** \brief %physics
+			 *
+			 */
 			namespace physics
 			{
 				class base;
@@ -176,6 +212,9 @@ namespace nebula
 				class plane;
 
 			}
+			/** \brief %renderer
+			 *
+			 */
 			namespace renderer
 			{
 				class base;
@@ -185,8 +224,9 @@ namespace nebula
 		}
 	}
 
-	/** \breif %asio
-	 * asynchronous in/out
+	/** \brief %asio
+	 *
+	 * asynchronous io
 	 */
 	namespace asio
 	{
@@ -194,8 +234,8 @@ namespace nebula
 		class mailbox;
 		class destination;
 
-		/** \breif %network
-		 *
+		/** 
+		 * %network
 		 */
 		namespace network
 		{
@@ -203,7 +243,9 @@ namespace nebula
 		}
 	}
 
-	/** \breif %user %interface
+	/** \brief %ui
+	 *
+	 * %user %interface
 	 *
 	 */
 	namespace ui

@@ -28,7 +28,7 @@ namespace nebula
 
 						base&							operator=(const base&);
 
-						virtual void						init( jess::shared_ptr<nebula::content::scene::admin::base> );
+						virtual void						init( jess::shared_ptr<n32100::base> );
 
 						virtual void						shutdown();
 
@@ -36,7 +36,7 @@ namespace nebula
 
 						virtual void						step(float);
 
-						virtual void						render( jess::shared_ptr<nebula::platform::renderer::base> );
+						virtual void						render( jess::shared_ptr<n23000::base> );
 
 						//virtual jess::shared_ptr<n34200::rigid_dynamic_box>	create_rigid_dynamic_box();
 						/// controller

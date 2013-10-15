@@ -18,7 +18,7 @@ namespace nebula
 		{
 			public:
 				/// ctor
-				base( jess::shared_ptr<nebula::framework::app> );
+				base( jess::shared_ptr<n10000::app> );
 				/// dtor
 				virtual ~base();
 				/// init
@@ -83,7 +83,7 @@ namespace nebula
 				/// universes
 				jess::map<n31100::base>						universes_;
 				/// parent
-				std::weak_ptr<nebula::framework::app>				parent_;
+				std::weak_ptr<n10000::app>				parent_;
 		};
 	}
 }

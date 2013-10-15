@@ -17,7 +17,7 @@
 
 #include <nebula/content/base.hpp>
 
-nebula::content::base::base( jess::shared_ptr<nebula::framework::app> parent ):
+nebula::content::base::base( jess::shared_ptr<n10000::app> parent ):
 	parent_(parent)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;

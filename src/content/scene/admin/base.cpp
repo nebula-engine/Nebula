@@ -34,7 +34,7 @@ n32100::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-jess::shared_ptr<nebula::content::base>	n32100::base::get_content()
+jess::shared_ptr<n30000::base>	n32100::base::get_content()
 {
 	jess::assertion( !parent_.expired() );	
 	jess::shared_ptr<n31100::base> uni = parent_.lock();

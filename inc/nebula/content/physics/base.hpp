@@ -48,7 +48,7 @@ namespace nebula
 			{
 				public:
 					/// ctor
-					base( jess::shared_ptr<nebula::content::base> );
+					base( jess::shared_ptr<n30000::base> );
 					/// dtor
 					virtual ~base();
 					/// init
@@ -95,7 +95,7 @@ namespace nebula
 					///@}
 				protected:
 					/// parent
-					std::weak_ptr<nebula::content::base>				parent_;
+					std::weak_ptr<n30000::base>				parent_;
 					/// default material
 					jess::shared_ptr<n34200::material>				default_material_;
 					///@name physx

@@ -33,7 +33,7 @@ namespace nebula
 			/// request_window
 			virtual jess::shared_ptr<n22000::base>			request_window();
 			/// get content
-			jess::shared_ptr<nebula::content::base>			get_content();
+			jess::shared_ptr<n30000::base>			get_content();
 			/// get platform
 			jess::shared_ptr<n21000::base>				get_platform();
 			///@name children

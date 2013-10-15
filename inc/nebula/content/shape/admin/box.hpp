@@ -25,7 +25,7 @@ namespace nebula
 						/// shutdown
 						void								shutdown();
 						/// render
-						void								render( jess::shared_ptr<nebula::platform::renderer::base> );
+						void								render( jess::shared_ptr<n23000::base> );
 						/// get pose
 						physx::PxMat44							get_pose()
 						{
