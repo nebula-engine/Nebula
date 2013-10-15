@@ -48,12 +48,16 @@ namespace nebula
 						controller( jess::shared_ptr<n32100::base> );
 						/// dtor
 						virtual ~controller();
+						///@{
+						/** on
+						 */
 						/// handler key down
-						void									handle_key_down(int,int);
+						bool									handle_key_down(int,int);
 						/// handler key up
-						void									handle_key_up(int,int);
+						bool									handle_key_up(int,int);
 						/// handler pointer motion
-						void									handle_pointer_motion(int,int);
+						bool									handle_pointer_motion(int,int);
+						///@}
 						/// init
 						virtual	void								init();
 						/// shutdown

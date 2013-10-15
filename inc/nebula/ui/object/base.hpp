@@ -15,12 +15,18 @@ namespace nebula
 		namespace object
 		{
 			/** \brief base
-			*/
+			 */
 			class base
 			{
 				public:
+					/** ctor
+					 */
+					base();
 					/// render
 					virtual void						render( jess::shared_ptr<n23000::base> ) = 0;
+					/** set label
+					 */
+					void							set_label( char const * cstr );
 					/// x
 					unsigned int						x_;
 					/// y
@@ -30,7 +36,7 @@ namespace nebula
 					/// h
 					unsigned int						h_;
 					/** \brief active
-					*/
+					 */
 					bool							active_;
 					///@name signal
 					///@{
@@ -40,19 +46,22 @@ namespace nebula
 					/// key up
 					std::shared_ptr< jess::signal::connection<int> >	connection_key_up_;
 					/// key_down
-					virtual bool						key_down( int ) = 0;
+					virtual bool						on_key_down( int ) = 0;
 					/// key_up
-					virtual bool						key_up( int ) = 0;
+					virtual bool						on_key_up( int ) = 0;
 					/** \brief key down mask
-					*/
+					 */
 					int							key_down_mask_;
 					/** \brief key up mask
-					*/
+					 */
 					int							key_up_mask_;
 					///@}
+					/** label length
+					 */
+					size_t							label_length_;
 					/** \brief label
-					*/
-					std::string						label_;
+					 */
+					char *							label_;
 			};
 		}
 	}

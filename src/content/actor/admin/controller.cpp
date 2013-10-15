@@ -91,7 +91,7 @@ void	n34100::controller::process_event( int evnt )
 			break;
 	}
 }
-void	n34100::controller::handle_key_up(int k, int window_no)
+bool	n34100::controller::handle_key_up(int k, int window_no)
 {
 
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -104,8 +104,9 @@ void	n34100::controller::handle_key_up(int k, int window_no)
 	int evnt = key_up_event_[k];
 	process_event(evnt);
 
+	return true;
 }
-void	n34100::controller::handle_key_down(int k, int window_no)
+bool	n34100::controller::handle_key_down(int k, int window_no)
 {
 
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -117,13 +118,17 @@ void	n34100::controller::handle_key_down(int k, int window_no)
 	// trigger event
 	int evnt = key_down_event_[k];
 	process_event(evnt);
+
+	return true;
 }
-void	n34100::controller::handle_pointer_motion( int x, int y )
+bool	n34100::controller::handle_pointer_motion( int x, int y )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	yaw_ -= x * 0.001;
 	pitch_ -= y * 0.001;
+
+	return true;
 }
 
 

@@ -6,16 +6,19 @@ namespace nebula
 	namespace asio
 	{
 		/** \brief %message
-		*/
+		 */
 		class message
 		{
 			public:
+				/** \brief %type
+				 */
+				int			type_;
 				/** \brief %size
-				*/
-				int		size_;
+				 */
+				int			size_;
 				/** \brief %buffer
-				*/
-				char		buffer[512];
+				 */
+				char			buffer[512];
 
 		};
 	}
