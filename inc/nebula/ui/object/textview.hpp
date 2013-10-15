@@ -2,6 +2,7 @@
 #define __NEBULA_UI_OBJECT_TEXTVIEW_HPP__
 
 #include <nebula/ns.hpp>
+
 #include <nebula/ui/object/base.hpp>
 
 namespace nebula

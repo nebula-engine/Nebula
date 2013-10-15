@@ -5,7 +5,6 @@ root      := $(shell expr $(here) : '\(.*$(rootname)\)')
 
 
 hpaths    := 
-hpaths    += $(root)external/boost_1_54_0
 hpaths    += $(root)external/PhysX/Include
 hpaths    += $(root)external/glew/include
 hpaths    += $(root)external

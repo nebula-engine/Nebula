@@ -2,6 +2,7 @@
 #define __NEBULA_UI_OBJECT_BASE_HPP__
 
 #include <jess/shared_ptr.hpp>
+#include <jess/signal/connection.hpp>
 
 #include <nebula/define.hpp>
 
@@ -49,6 +50,9 @@ namespace nebula
 					*/
 					int							key_up_mask_;
 					///@}
+					/** \brief label
+					*/
+					std::string						label_;
 			};
 		}
 	}

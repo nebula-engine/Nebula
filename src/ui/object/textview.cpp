@@ -2,6 +2,7 @@
 
 #include <jess/ostream.hpp>
 
+#include <nebula/platform/key.hpp>
 #include <nebula/platform/renderer/base.hpp>
 
 #include <nebula/ui/object/textview.hpp>
@@ -14,7 +15,7 @@ void	n52000::textview::render( jess::shared_ptr<n23000::base> rnd )
 }
 bool	n52000::textview::key_down( int k )
 {
-	if ( k == n20000::key::eBACKSPACE )
+	if ( k == n20000::key::backspace )
 	{
 		label_.pop_back();
 		return true;

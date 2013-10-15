@@ -30,14 +30,14 @@ void	n10000::renderable::init()
 }
 void	n10000::renderable::update_fps()
 {
-	std::chrono::steady_clock::time_point next = std::chrono::steady_clock::now();
+	std::chrono::time_point<std::chrono::high_resolution_clock> next = std::chrono::high_resolution_clock::now();
 	
 	while(1)
 	{
-		std::this_thread::sleep_until( next );
+		//std::this_thread::sleep_until( next );
 		next += std::chrono::seconds(1);
 		
-		std::lock_guard lg ( mutex_ );
+		std::lock_guard<std::mutex> lg( mutex_ );
 		
 		fps_ = count_;
 		count_ = 0;
@@ -46,7 +46,7 @@ void	n10000::renderable::update_fps()
 }
 void	n10000::renderable::render()
 {
-	std::lock_guard lg ( mutex_ );
+	std::lock_guard<std::mutex> lg( mutex_ );
 	
 	count_++;
 	total_count_++;
