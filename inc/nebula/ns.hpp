@@ -42,7 +42,7 @@ namespace nebula
 			}
 		}
 		/** \brief %window
-		*/
+		 */
 		namespace window
 		{
 			class base;
@@ -60,7 +60,7 @@ namespace nebula
 			}
 		}
 		/** \brief %renderer
-		*/
+		 */
 		namespace renderer
 		{
 			class base;
@@ -70,13 +70,13 @@ namespace nebula
 			class scoped_3d_environment;
 
 			/** \brief %opengl
-			*/
+			 */
 			namespace gl
 			{
 				class base;	
 
 				/** \brief glx
-				*/
+				 */
 				namespace glx
 				{
 					class base;
@@ -85,7 +85,7 @@ namespace nebula
 		}
 	}
 	/** \brief %content
-	*/
+	 */
 	namespace content
 	{
 		class base;
@@ -109,7 +109,7 @@ namespace nebula
 			}
 		}
 		/** \brief %scene
-		*/
+		 */
 		namespace scene
 		{
 			namespace admin
@@ -127,7 +127,7 @@ namespace nebula
 			}
 		}
 		/** \brief %view
-		*/
+		 */
 		namespace view
 		{
 			namespace admin
@@ -150,10 +150,24 @@ namespace nebula
 				class rigid_dynamic_box;
 				class rigid_static;
 				class rigid_static_plane;
-				class controller;
 				class vehicle;
 
 				class material;
+
+				/** \brief %controller
+				 */
+				namespace controller
+				{
+					class base;
+				}
+			}
+			namespace control
+			{
+				namespace controller
+				{
+					class base;
+					class default;
+				}
 			}
 			namespace physics
 			{

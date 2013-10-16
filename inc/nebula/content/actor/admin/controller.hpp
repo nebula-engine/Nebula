@@ -1,6 +1,8 @@
 #ifndef __NEBULA_CONTENT_ACTOR_ADMIN_CONTROLLER_HPP__
 #define __NEBULA_CONTENT_ACTOR_ADMIN_CONTROLLER_HPP__
 
+#include <nebula/ns.hpp>
+
 #include <nebula/content/actor/admin/base.hpp>
 
 namespace nebula

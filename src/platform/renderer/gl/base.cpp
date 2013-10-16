@@ -338,6 +338,8 @@ void	n23100::base::look_at( physx::PxVec3 eye, physx::PxVec3 center, physx::PxVe
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
+	sos << eye.x << " " << eye.y << " " << eye.z << " " <<center.x << " " << center.y << " " << center.z << " " << up.x << " " << up.y << " " << up.z << std::endl;
+
 	gluLookAt( eye.x, eye.y, eye.z, center.x, center.y, center.z, up.x, up.y, up.z );
 }
 void	n23100::base::resize( int width, int height )
@@ -359,15 +361,19 @@ void	n23100::base::push_matrix()
 }
 void	n23100::base::mult_matrix( physx::PxMat44 mat )
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
+
+	sos << mat << std::endl;
 
 	glMultMatrixf( mat.front() );
 
 }
 void	n23100::base::scale( physx::PxVec3 v )
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
-
+	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
+	
+	sos << v.x << " " << v.y << " " << v.z << std::endl;
+	
 	glScalef( v.x, v.y, v.z );
 }
 void	n23100::base::pop_matrix()
