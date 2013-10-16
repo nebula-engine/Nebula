@@ -15,14 +15,45 @@ namespace nebula
 					*/
 					class control
 					{
-						friend class n34100::controller;
+						/** \brief flag
+*/
+						struct flag
+						{
+							/** \brief enum
+*/
+							enum e
+							{
+								eNORTH = 1 << 0,
+								eSOUTH = 1 << 1,
+								eEAST  = 1 << 2,
+								eWEST  = 1 << 3
+							};
+						};
+						/** \brief event
+*/
+						struct event
+						{
+							/** \brief enum
+*/
+							enum
+							{
+								eINVALID = 0,
+								eRESET_VIEW_ANGLES
+							};
+						};
 						protected:
 						/** \brief copy ctor
 						*/
-						control( control const & );
+						control( control const & )
+{
+
+	}
 						/** \brief assignment
 						*/
-						control&			operator=( control const & );
+						control&			operator=( control const & )
+{
+return *this;
+}
 						/** \brief ctor
 						*/
 						control( jess::shared_ptr<n34100::controller> );
@@ -30,9 +61,18 @@ namespace nebula
 						/** \brief dtor
 						*/
 						~control();
+						/** \brief init
+						*/
+						virtual void			init() = 0;
+						/** \brief is valid
+						*/
+						virtual bool			is_valid() = 0;
 						/** \brief move
 						*/
-						virtual physx::PxVec3		move();
+						virtual physx::PxVec3		move() = 0;
+						/** process event
+						*/
+						virtual void			process_event( int ) = 0;
 						/** @name on
 						*/
 						///@{
@@ -46,6 +86,18 @@ namespace nebula
 						*/
 						virtual bool			on_pointer_motion( int ) = 0;
 						///@}
+						/** key flag
+						*/
+						std::map<int,unsigned int>	key_flag_;
+						/** key up
+						*/
+						std::map<int,int>		key_up_event_;
+						/** key down
+						*/
+						std::map<int,int>		key_down_event_;
+						/** \brief parent
+						 */
+						jess::shared_ptr<n34100::controller>		parent;
 					};
 				}
 			}
