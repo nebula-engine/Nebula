@@ -49,7 +49,7 @@ namespace nebula
 						/// rigid static plane
 						virtual jess::shared_ptr<n34100::rigid_static_plane>	create_rigid_static_plane( jess::shared_ptr<n32100::base> );
 						/// controller
-						virtual jess::shared_ptr<n34100::controller>		create_controller( jess::shared_ptr<n32100::base> );
+						virtual jess::shared_ptr<n34100::controller::base>	create_controller( jess::shared_ptr<n32100::base> );
 						/// physics material
 						jess::shared_ptr<n34200::material>			request_physics_material();
 					public:

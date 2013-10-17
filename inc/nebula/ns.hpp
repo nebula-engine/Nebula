@@ -166,7 +166,7 @@ namespace nebula
 				namespace controller
 				{
 					class base;
-					class default;
+					class default_control;
 				}
 			}
 			namespace physics

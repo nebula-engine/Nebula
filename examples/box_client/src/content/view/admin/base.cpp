@@ -32,38 +32,8 @@ void	bc33100::base::init( jess::shared_ptr<n32100::base> parent )
 	camera_.reset( new n30000::camera );
 	camera_->controller_ = bc_parent->ctrlr_;
 
-	// set signal handlers
-	window_->sig_pointer_motion_.connect
-		(
-		 std::bind
-		 (
-		  &n34100::controller::handle_pointer_motion,
-		  bc_parent->ctrlr_,
-		  std::placeholders::_1,
-		  std::placeholders::_2
-		 )
-		);
-
-	window_->sig_key_down_.connect
-		(
-		 std::bind
-		 (
-		  &n34100::controller::handle_key_down,
-		  bc_parent->ctrlr_,
-		  std::placeholders::_1,
-		  std::placeholders::_2
-		 )
-		);
-	window_->sig_key_up_.connect
-		(
-		 std::bind
-		 (
-		  &n34100::controller::handle_key_up,
-		  bc_parent->ctrlr_,
-		  std::placeholders::_1,
-		  std::placeholders::_2
-		 )
-		);
+	// route inputs to controller
+	//bc_parent->ctrlr_->control_->connect_to_window( window_ );
 
 }
 

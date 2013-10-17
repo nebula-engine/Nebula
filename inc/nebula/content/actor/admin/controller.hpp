@@ -13,23 +13,31 @@ namespace nebula
 		{
 			namespace admin
 			{
-				/// controller
-				class controller:
-					public n34100::base
+				/** controller
+				 */
+				namespace controller
 				{
-					friend class n34100::controller::control;
-					public:
-						
-					protected:
+					class base:
+						public n34100::base
+					{
+						friend class n30000::base;
+						friend class n32100::base;
+						friend class n34000::control::controller::base;
+						friend class n34000::control::controller::default_control;
+						friend class n34200::controller;
+						friend class n34300::controller;
+						public:
+
+						protected:
 						/// copy ctor
-						controller(const controller&);
+						base(const base&);
 						/// assignment
-						controller&								operator=(const controller&);
+						base&								operator=(const base&);
 						/// ctor
-						controller( jess::shared_ptr<n32100::base> );
-					public:
+						base( jess::shared_ptr<n32100::base> );
+						public:
 						/// dtor
-						virtual ~controller();
+						virtual ~base();
 						/// init
 						virtual	void								init();
 						/// shutdown
@@ -40,12 +48,12 @@ namespace nebula
 						virtual	void								step( float );
 						/// render
 						virtual	void								render( jess::shared_ptr<n23000::base> );
-						
+
 						/// create shapes
 						virtual	void								create_shapes();
 						/// lookat
 						virtual void								look_at( jess::shared_ptr<n23000::base> );
-					protected:
+						protected:
 						/// pos
 						physx::PxVec3								pos_;
 						/// look
@@ -57,15 +65,15 @@ namespace nebula
 						/// pitch
 						float									pitch_;
 						/** \brief control
-						*/
-						jess::shared_ptr<n34100::controller::control>				control_;
-						
-				};
+						 */
+						jess::shared_ptr<n34000::control::controller::base>			control_;
+
+					};
+				}
 			}
 		}
 	}
 }
-
 
 
 #endif

@@ -48,7 +48,7 @@ namespace nebula
 						/// plane
 						virtual jess::shared_ptr<n34100::rigid_static_plane>				create_rigid_static_plane();
 						/// create
-						virtual jess::shared_ptr<n34100::controller>					create_controller();
+						virtual jess::shared_ptr<n34100::controller::base>				create_controller();
 						/// create
 						//virtual jess::shared_ptr<n34200::rigid_dynamic_box>				create_physics_rigid_dynamic_box();
 						/// create

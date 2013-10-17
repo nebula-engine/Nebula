@@ -29,6 +29,13 @@ void	bc32100::base::init()
 
 	ctrlr_ = create_controller();
 
-	view_ = create_view<bc33100::base>(); jess::assertion( bool( view_ ) );
+	view_ = create_view<bc33100::base>();
+	NEB_ASSERT( bool( view_ ) );
+
+	// connect controller to view
+	/// \todo write function for this
+	connect_control_to_view( ctrlr_, view_ );
+	//ctrlr_->control_->connect_to_window( view_->window_ );
+
 }
 

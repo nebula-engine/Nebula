@@ -1,45 +1,46 @@
 #ifndef __NEBULA_CONTENT_ACTOR_ADMIN_CONTROLLER_CONTROL_HPP__
 #define __NEBULA_CONTENT_ACTOR_ADMIN_CONTROLLER_CONTROL_HPP__
 
+#include <nebula/ns.hpp>
+
+#include <nebula/content/actor/control/controller/base.hpp>
+
 namespace nebula
 {
 	namespace content
 	{
 		namespace actor
 		{
-			namespace admin
+			namespace control
 			{
 				namespace controller
 				{
 					/** \brief %control %default
 					 */
-					class control_default:
-						public n34100::controller::control
+					class default_control:
+						public n34000::control::controller::base
 					{
-						friend class n34100::controller;
+						friend class n34100::controller::base;
 						protected:
 						/** \brief copy ctor
 						 */
-						control( control const & )
-						{
-
-						}
+						default_control( default_control const & ) = default;
 						/** \brief assignment
 						 */
-						control&					operator=( control const & )
-						{
-							return *this;
-						}
+						default_control&				operator=( default_control const & );
 						/** \brief ctor
 						 */
-						control( jess::shared_ptr<n34100::controller> );
+						default_control( jess::shared_ptr<n34100::controller::base> );
 						public:
 						/** \brief dtor
 						 */
-						virtual ~control();
+						virtual ~default_control();
 						/** \brief init
 						 */
 						virtual void					init();
+						/** \brief connect to window
+						 */
+						virtual void					connect_to_window( jess::shared_ptr<n22000::base> window );
 						/** \brief is valid
 						 */
 						virtual bool					is_valid();

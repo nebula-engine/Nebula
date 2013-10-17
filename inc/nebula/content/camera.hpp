@@ -17,7 +17,7 @@ namespace nebula
 			void									render( jess::shared_ptr<n23000::base> );
 
 			/// controller
-			jess::shared_ptr<n34100::controller>		controller_;
+			jess::shared_ptr<n34100::controller::base>		controller_;
 		};
 	}
 }

@@ -1,6 +1,8 @@
-#include <jess/ostream.hpp>
+#include <jess/scoped_ostream.hpp>
 #include <jess/free.hpp>
 #include <jess/except.hpp>
+
+#include <nebula/free.hpp>
 
 #include <nebula/platform/window/base.hpp>
 
@@ -336,7 +338,7 @@ void	n23100::base::swap()
 }
 void	n23100::base::look_at( physx::PxVec3 eye, physx::PxVec3 center, physx::PxVec3 up )
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
 	sos << eye.x << " " << eye.y << " " << eye.z << " " <<center.x << " " << center.y << " " << center.z << " " << up.x << " " << up.y << " " << up.z << std::endl;
 
@@ -361,7 +363,7 @@ void	n23100::base::push_matrix()
 }
 void	n23100::base::mult_matrix( physx::PxMat44 mat )
 {
-	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
+	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
 	sos << mat << std::endl;
 
@@ -370,7 +372,7 @@ void	n23100::base::mult_matrix( physx::PxMat44 mat )
 }
 void	n23100::base::scale( physx::PxVec3 v )
 {
-	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
+	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 	
 	sos << v.x << " " << v.y << " " << v.z << std::endl;
 	

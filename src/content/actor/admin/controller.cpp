@@ -8,19 +8,21 @@
 
 #include <nebula/content/actor/physics/controller.hpp>
 #include <nebula/content/actor/renderer/controller.hpp>
+#include <nebula/content/actor/control/controller/base.hpp>
+
 
 #include <nebula/content/actor/admin/controller.hpp>
 
-n34100::controller::controller( jess::shared_ptr<n32100::base> parent ):
-	base( parent )
+n34100::controller::base::base( jess::shared_ptr<n32100::base> parent ):
+	n34100::base( parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-n34100::controller::~controller()
+n34100::controller::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	n34100::controller::init()
+void	n34100::controller::base::init()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -34,37 +36,39 @@ void	n34100::controller::init()
 
 	pos_ = physx::PxVec3(0,0,2);
 
+/*
 	key_flag_[nebula::platform::key::w] = flag::eNORTH;
 	key_flag_[nebula::platform::key::s] = flag::eSOUTH;
 	key_flag_[nebula::platform::key::a] = flag::eWEST;
 	key_flag_[nebula::platform::key::d] = flag::eEAST;
 
 	key_down_event_[nebula::platform::key::r] = event::eRESET_VIEW_ANGLES;
+*/
 
 	// renderer
 	renderer_.reset( new n34300::controller );
 	renderer_->init( shared_from_this() );	
 }
-void	n34100::controller::shutdown()
+void	n34100::controller::base::shutdown()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	n34100::controller::update()
+void	n34100::controller::base::update()
 {
 	n34100::base::update();
 }
-void	n34100::controller::step( float dt )
+void	n34100::controller::base::step( float dt )
 {
 	n34100::base::step( dt );
 }
-void	n34100::controller::render( jess::shared_ptr<n23000::base> rnd )
+void	n34100::controller::base::render( jess::shared_ptr<n23000::base> rnd )
 {
 }
-void	n34100::controller::create_shapes()
+void	n34100::controller::base::create_shapes()
 {
 
 }
-void	n34100::controller::look_at( jess::shared_ptr<n23000::base> rnd )
+void	n34100::controller::base::look_at( jess::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -80,7 +84,8 @@ void	n34100::controller::look_at( jess::shared_ptr<n23000::base> rnd )
 
 	rnd->look_at( pos_, pos_ + look_, up_ );
 }
-void	n34100::controller::process_event( int evnt )
+/*
+void	n34100::controller::base::process_event( int evnt )
 {
 	switch ( evnt )
 	{
@@ -91,6 +96,6 @@ void	n34100::controller::process_event( int evnt )
 			break;
 	}
 }
-
+*/
 
 

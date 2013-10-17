@@ -123,16 +123,16 @@ jess::shared_ptr<n34100::rigid_static_plane>	n32100::base::create_rigid_static_p
 
 	return act;
 }
-jess::shared_ptr<n34100::controller>		n32100::base::create_controller()
+jess::shared_ptr<n34100::controller::base>	n32100::base::create_controller()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// create
-	jess::shared_ptr<n34100::controller> act = parent_.lock()->create_controller( shared_from_this() );
+	jess::shared_ptr<n34100::controller::base> act = parent_.lock()->create_controller( shared_from_this() );
 
 	// store
-	actors_.push<n34100::controller>( act );
-
+	actors_.push<n34100::controller::base>( act );
+	
 	return act;
 }
 jess::shared_ptr<n22000::base>			n32100::base::request_window()

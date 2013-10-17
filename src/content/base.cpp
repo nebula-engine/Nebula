@@ -90,14 +90,14 @@ jess::shared_ptr<n34100::rigid_static_plane>	n30000::base::create_rigid_static_p
 
 	return actor;
 }
-jess::shared_ptr<n34100::controller>		n30000::base::create_controller(
+jess::shared_ptr<n34100::controller::base>	n30000::base::create_controller(
 		jess::shared_ptr<n32100::base> scene
 		)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	// create
-	jess::shared_ptr<n34100::controller> actor( new n34100::controller( scene ) );
+	jess::shared_ptr<n34100::controller::base> actor( new n34100::controller::base( scene ) );
 	
 	// physics
 	actor->physics_ = std::static_pointer_cast<n34200::base>( physics_->create_controller( scene, actor ) );

@@ -34,7 +34,7 @@ namespace box_client
 						/// rigid static plane
 						jess::shared_ptr<n34100::rigid_static_plane>		rigid_sta_pln_;
 						/// controller
-						jess::shared_ptr<n34100::controller>			ctrlr_;
+						jess::shared_ptr<n34100::controller::base>		ctrlr_;
 						///@}
 
 

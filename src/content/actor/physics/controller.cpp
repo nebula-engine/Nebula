@@ -6,6 +6,7 @@
 #include <nebula/utilities/free.hpp>
 #include <nebula/content/actor/admin/controller.hpp>
 #include <nebula/content/actor/physics/material.hpp>
+#include <nebula/content/actor/control/controller/base.hpp>
 
 #include <nebula/content/actor/physics/controller.hpp>
 
@@ -40,22 +41,26 @@ void	n34200::controller::step( float dt )
 
 	jess::assertion( px_controller_ );
 	
-	update_move();
+	//update_move();
 
-	jess::shared_ptr<n34100::controller> parent = std::dynamic_pointer_cast<n34100::controller>( parent_.lock() );
+	jess::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>( parent_.lock() );
 
 	// rotate
-	physx::PxQuat yaw( parent->yaw_, physx::PxVec3(0,1,0) );
+	//physx::PxQuat yaw( parent->yaw_, physx::PxVec3(0,1,0) );
 
-	parent->move_ = yaw.rotate( parent->move_ );
-
+	//parent->move_ = yaw.rotate( parent->move_ );
+	
+	physx::PxVec3 move = parent->control_->move();
+	
 	// gravity for a flat world
 	// accelerate
 	/// \todo somehow calculate velocity somewhere by reading position form physx and approximating
 	parent->velocity_.y -= 9.81 * dt;
-
+	
+	move += parent->velocity_;
+	
 	// move
-	physx::PxVec3 disp = parent->move_ * dt;
+	physx::PxVec3 disp = move * dt;
 	physx::PxF32 minDist = 0.1;
 	physx::PxF32 elapsedTime = dt;
 	physx::PxControllerFilters filters = 0;
@@ -66,15 +71,15 @@ void	n34200::controller::step( float dt )
 }
 void	n34200::controller::update_move()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+/*	jess::clog << NEB_FUNCSIG << std::endl;
 
-	jess::shared_ptr<n34100::controller> parent = std::dynamic_pointer_cast<n34100::controller>(parent_.lock());
-
+	jess::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>(parent_.lock());
+*/
 	/** \todo
 	 * add gravity
 	 * make \a head and \a m a static member variable or at least a member variables
 	 */
-
+/*
 	// the following scheme provides equal magnitude for each direction and uniformly spaced directions (i.e. diagonal is at exactly 45 degrees)
 	float s = 1;
 	float d = 0.707;
@@ -94,21 +99,21 @@ void	n34200::controller::update_move()
 
 
 	std::map<int,int> m;
-	m[n34100::controller::flag::eNORTH						] = 0;
-	m[n34100::controller::flag::eNORTH	|	n34100::controller::flag::eEAST	] = 1;
-	m[						n34100::controller::flag::eEAST	] = 2;
-	m[n34100::controller::flag::eSOUTH	|	n34100::controller::flag::eEAST	] = 3;
-	m[n34100::controller::flag::eSOUTH						] = 4;
-	m[n34100::controller::flag::eSOUTH	|	n34100::controller::flag::eWEST	] = 5;
-	m[						n34100::controller::flag::eWEST	] = 6;
-	m[n34100::controller::flag::eNORTH	|	n34100::controller::flag::eWEST	] = 7;
+	m[n34000::control::controller::base::flag::eNORTH								] = 0;
+	m[n34000::control::controller::base::flag::eNORTH	|	n34000::control::controller::base::flag::eEAST	] = 1;
+	m[								n34000::control::controller::base::flag::eEAST	] = 2;
+	m[n34000::control::controller::base::flag::eSOUTH	|	n34000::control::controller::base::flag::eEAST	] = 3;
+	m[n34000::control::controller::base::flag::eSOUTH								] = 4;
+	m[n34000::control::controller::base::flag::eSOUTH	|	n34000::control::controller::base::flag::eWEST	] = 5;
+	m[								n34000::control::controller::base::flag::eWEST	] = 6;
+	m[n34000::control::controller::base::flag::eNORTH	|	n34000::control::controller::base::flag::eWEST	] = 7;
 
 	// ignore all other flags
 	int f = parent->flag_ & (
-			n34100::controller::flag::eNORTH |
-			n34100::controller::flag::eSOUTH |
-			n34100::controller::flag::eEAST |
-			n34100::controller::flag::eWEST );
+			n34000::control::controller::base::flag::eNORTH |
+			n34000::control::controller::base::flag::eSOUTH |
+			n34000::control::controller::base::flag::eEAST |
+			n34000::control::controller::base::flag::eWEST );
 
 	std::cout << "m.size()="<<m.size() << std::endl;
 
@@ -127,6 +132,7 @@ void	n34200::controller::update_move()
 
 		//jess::cout << "move_=" << parent->move_ << std::endl;
 	}
+*/
 }
 
 

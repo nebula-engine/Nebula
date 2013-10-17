@@ -53,7 +53,7 @@ jess::shared_ptr<n34100::rigid_static_plane>	n31100::base::create_rigid_static_p
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->create_rigid_static_plane( scene ) );
 }
-jess::shared_ptr<n34100::controller>		n31100::base::create_controller( jess::shared_ptr<n32100::base> scene )
+jess::shared_ptr<n34100::controller::base>	n31100::base::create_controller( jess::shared_ptr<n32100::base> scene )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->create_controller( scene ) );

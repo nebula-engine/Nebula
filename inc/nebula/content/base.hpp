@@ -70,7 +70,7 @@ namespace nebula
 						//jess::shared_ptr<n34100::base>
 						);
 				/// controller
-				virtual jess::shared_ptr<n34100::controller>			create_controller(
+				virtual jess::shared_ptr<n34100::controller::base>		create_controller(
 						jess::shared_ptr<n32100::base>
 						//jess::shared_ptr<n34100::base>
 						);
