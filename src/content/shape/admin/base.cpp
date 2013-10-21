@@ -6,7 +6,10 @@
 
 #include <nebula/content/shape/admin/base.hpp>
 
-nebula::content::shape::admin::base::base(): pose_( physx::PxTransform() )
+nebula::content::shape::admin::base::base( jess::shared_ptr<n34100::rigid_actor> parent ):
+	parent_( parent ),
+	pose_( physx::PxTransform() ),
+	scale_( physx::PxVec3(1,1,1) )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
@@ -14,11 +17,9 @@ nebula::content::shape::admin::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	nebula::content::shape::admin::base::init( jess::shared_ptr<n34100::rigid_actor> parent )
+void	nebula::content::shape::admin::base::init()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-
-	parent_ = parent;
 }
 void	nebula::content::shape::admin::base::shutdown()
 {

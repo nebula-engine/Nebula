@@ -7,7 +7,6 @@
 #include <nebula/platform/renderer/scoped_matrix.hpp>
 
 #include <nebula/content/shape/renderer/box.hpp>
-#include <nebula/ns.hpp>
 
 n35300::box::box()
 {

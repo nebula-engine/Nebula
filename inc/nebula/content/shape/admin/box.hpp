@@ -19,7 +19,14 @@ namespace nebula
 				class box:
 					public nebula::content::shape::admin::base
 				{
+					protected:
+						/// copy ctor
+						box( box const & ) = default;
+						/// assignment
+						box&								operator=( box const & ) = default;
 					public:
+						/// ctor
+						box( jess::shared_ptr<n34100::rigid_actor> );
 						/// init
 						void								init( jess::shared_ptr<n34100::rigid_actor> );
 						/// shutdown

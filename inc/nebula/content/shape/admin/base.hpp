@@ -36,11 +36,11 @@ namespace nebula
 						/// get scale
 						physx::PxVec3							get_scale();
 						/// parent
-						std::weak_ptr<n34100::rigid_actor>	parent_;
+						std::weak_ptr<n34100::rigid_actor>				parent_;
 						/// renderer
-						jess::shared_ptr<n35300::base>	renderer_;
+						jess::shared_ptr<n35300::base>					renderer_;
 						/// physics
-						jess::shared_ptr<n35200::base>		physics_;
+						jess::shared_ptr<n35200::base>					physics_;
 						/// pose
 						physx::PxMat44							pose_;
 						/// scale

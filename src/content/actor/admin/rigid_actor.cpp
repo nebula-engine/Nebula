@@ -34,7 +34,7 @@ void	n34100::rigid_actor::render( jess::shared_ptr<n23000::base> rnd )
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	{
-		n23000::scoped_matrix scoepd_matrix( rnd );
+		n23000::scoped_matrix scoped_matrix( rnd );
 		
 		rnd->mult_matrix( pose_ );
 		
@@ -53,12 +53,16 @@ jess::shared_ptr<n35100::box>	n34100::rigid_actor::create_box()
 	jess::shared_ptr<n34100::rigid_actor> this_ptr = std::dynamic_pointer_cast<n34100::rigid_actor>( shared_from_this() );
 	
 	// create
-	jess::shared_ptr<n35100::box> bx( new n35100::box );
+	jess::shared_ptr<n35100::box> bx( new n35100::box( this_ptr ) );
 	
-	shapes_.push<n35100::box>( bx );
+	bx->physics_ = parent_.lock()->create_box_physics();
 	
 	bx->init( this_ptr );
 	
+	// store
+	shapes_.push<n35100::box>( bx );
+	
+		
 	return bx;
 }
 jess::shared_ptr<n35100::plane>		n34100::rigid_actor::create_plane()
@@ -69,12 +73,15 @@ jess::shared_ptr<n35100::plane>		n34100::rigid_actor::create_plane()
 	jess::shared_ptr<n34100::rigid_actor> this_ptr = std::dynamic_pointer_cast<n34100::rigid_actor>( shared_from_this() );
 	
 	// create
-	jess::shared_ptr<n35100::plane> plane( new n35100::plane );
+	jess::shared_ptr<n35100::plane> plane( new n35100::plane( this_ptr ) );
 	
+	plane->physics_ = parent_.lock()->create_plane_physics();
+	
+	plane->init();
+	
+	// store
 	shapes_.push<n35100::plane>( plane );
-	
-	plane->init( this_ptr );
-	
+
 	return plane;
 }
 void	n34100::rigid_actor::shutdown()
