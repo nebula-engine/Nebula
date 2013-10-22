@@ -7,7 +7,8 @@
 
 #include <nebula/content/shape/renderer/plane.hpp>
 
-n35300::plane::plane()
+n35300::plane::plane( jess::shared_ptr<n35100::base> parent ):
+	n35300::base( parent )
 {
 	
 }
@@ -15,9 +16,9 @@ n35300::plane::~plane()
 {
 	
 }
-void	n35300::plane::init( jess::shared_ptr<n35100::base> parent )
+void	n35300::plane::init()
 {
-	parent_ = parent;
+	n35300::base::init();
 }
 void	n35300::plane::shutdown()
 {

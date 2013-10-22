@@ -6,20 +6,27 @@
 
 #include <nebula/content/shape/admin/plane.hpp>
 
-void	n35100::plane::init( jess::shared_ptr<n34100::rigid_actor> parent )
+n35100::plane::plane( jess::shared_ptr<n34100::rigid_actor> parent ):
+	n35100::base( parent )
+{
+	
+}
+void	n35100::plane::init()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// init parent
-	n35100::base::init( parent );
+	n35100::base::init();
+
+	NEB_ASSERT( bool( physics_ ) )
 		
 	// create physics
-	physics_.reset( new n35200::box );
-	physics_->init( shared_from_this() );
+	//physics_.reset( new n35200::box );
+	//physics_->init( shared_from_this() );
 	
 	// create renderer
-	renderer_.reset( new n35300::box );
-	renderer_->init( shared_from_this() );
+	renderer_.reset( new n35300::box( shared_from_this() ) );
+	renderer_->init();
 }
 void	n35100::plane::shutdown()
 {

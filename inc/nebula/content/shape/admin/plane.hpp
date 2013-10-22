@@ -15,8 +15,10 @@ namespace nebula
 					public n35100::base
 				{
 					public:
+						/// ctor
+						plane( jess::shared_ptr<n34100::rigid_actor> );
 						/// init
-						virtual void					init( jess::shared_ptr<n34100::rigid_actor> );
+						virtual void					init();
 						/// shutdown
 						virtual void					shutdown();
 						/// render

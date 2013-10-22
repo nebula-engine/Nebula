@@ -4,6 +4,7 @@
 
 #include <nebula/content/base.hpp>
 #include <nebula/content/physics/base.hpp>
+#include <nebula/content/scene/admin/base.hpp>
 #include <nebula/content/actor/physics/rigid_actor.hpp>
 #include <nebula/content/shape/admin/base.hpp>
 #include <nebula/content/shape/admin/box.hpp>
@@ -52,12 +53,17 @@ jess::shared_ptr<n35100::box>	n34100::rigid_actor::create_box()
 	// cast shared_from_this
 	jess::shared_ptr<n34100::rigid_actor> this_ptr = std::dynamic_pointer_cast<n34100::rigid_actor>( shared_from_this() );
 	
+	
+	jess::shared_ptr<n35100::box> bx = parent_.lock()->create_box();
+	
+	/*
 	// create
 	jess::shared_ptr<n35100::box> bx( new n35100::box( this_ptr ) );
 	
 	bx->physics_ = parent_.lock()->create_box_physics();
 	
 	bx->init( this_ptr );
+	*/
 	
 	// store
 	shapes_.push<n35100::box>( bx );
@@ -71,14 +77,19 @@ jess::shared_ptr<n35100::plane>		n34100::rigid_actor::create_plane()
 
 	// cast shared_from_this
 	jess::shared_ptr<n34100::rigid_actor> this_ptr = std::dynamic_pointer_cast<n34100::rigid_actor>( shared_from_this() );
+
+	jess::shared_ptr<n35100::plane> plane = parent_.lock()->create_plane();
 	
+	/*
 	// create
 	jess::shared_ptr<n35100::plane> plane( new n35100::plane( this_ptr ) );
 	
 	plane->physics_ = parent_.lock()->create_plane_physics();
 	
 	plane->init();
-	
+	*/
+
+
 	// store
 	shapes_.push<n35100::plane>( plane );
 

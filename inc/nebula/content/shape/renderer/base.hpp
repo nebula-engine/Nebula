@@ -18,11 +18,11 @@ namespace nebula
 				{
 					public:
 						/// ctor
-						base();
+						base( jess::shared_ptr<n35100::base> );
 						/// dtor
 						virtual ~base();
 						/// init
-						virtual void								init( jess::shared_ptr<n35100::base> );
+						virtual void								init();
 						/// shutdown
 						virtual void								shutdown();
 						/// render

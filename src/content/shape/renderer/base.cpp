@@ -2,15 +2,15 @@
 
 #include <nebula/content/shape/renderer/base.hpp>
 
-n35300::base::base()
+n35300::base::base( jess::shared_ptr<n35100::base> parent ):
+	parent_( parent )
 {
 }
 n35300::base::~base()
 {
 }
-void	n35300::base::init( jess::shared_ptr<n35100::base> parent )
+void	n35300::base::init()
 {
-	parent_ = parent;
 }
 void	n35300::base::shutdown()
 {

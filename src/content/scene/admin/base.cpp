@@ -143,6 +143,15 @@ jess::shared_ptr<n34200::material>		n32100::base::request_physics_material()
 {
 	return ( parent_.lock()->request_physics_material() );
 }
+jess::shared_ptr<n35100::box>			n32100::base::create_box()
+{
+	return parent_.lock()->create_box();
+}
+jess::shared_ptr<n35100::plane>			n32100::base::create_plane()
+{
+	return parent_.lock()->create_plane();
+}
+
 
 
 

@@ -28,7 +28,7 @@ namespace nebula
 						/// ctor
 						box( jess::shared_ptr<n34100::rigid_actor> );
 						/// init
-						void								init( jess::shared_ptr<n34100::rigid_actor> );
+						void								init();
 						/// shutdown
 						void								shutdown();
 						/// render

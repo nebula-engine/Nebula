@@ -44,17 +44,27 @@ namespace nebula
 
 							return t;
 						}
-						/// rigid dynamic box
+						/** rigid dynamic box
+						 */
 						virtual jess::shared_ptr<n34100::rigid_dynamic_box>	create_rigid_dynamic_box( jess::shared_ptr<n32100::base> );
-						/// rigid static plane
+						/** rigid static plane
+						 */
 						virtual jess::shared_ptr<n34100::rigid_static_plane>	create_rigid_static_plane( jess::shared_ptr<n32100::base> );
-						/// controller
+						/** controller
+						 */
 						virtual jess::shared_ptr<n34100::controller::base>	create_controller( jess::shared_ptr<n32100::base> );
-						/// physics material
+						/** physics material
+						 */
 						jess::shared_ptr<n34200::material>			request_physics_material();
+						/** plane
+						 */
+						virtual jess::shared_ptr<n35100::plane>			create_plane( jess::shared_ptr<n34100::rigid_actor> );
+						/** box
+						 */
+						virtual jess::shared_ptr<n35100::box>			create_box( jess::shared_ptr<n34100::rigid_actor> );
 					public:
 						/// parent
-						std::weak_ptr<n30000::base>			parent_;
+						std::weak_ptr<n30000::base>				parent_;
 						/// scenes
 						jess::map<n32100::base>					scenes_;
 				};

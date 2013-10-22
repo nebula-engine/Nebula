@@ -37,13 +37,13 @@ namespace nebula
 				template <class T> jess::shared_ptr<T>				create_universe()
 				{
 					jess::clog << NEB_FUNCSIG << std::endl;
-					
+
 					jess::shared_ptr<T> t( new T( shared_from_this() ) );				
-					
+
 					universes_.push<T>( t );
-					
+
 					t->init();
-					
+
 					return t;
 				}
 				/// scene
@@ -74,8 +74,15 @@ namespace nebula
 						jess::shared_ptr<n32100::base>
 						//jess::shared_ptr<n34100::base>
 						);
+				/** box
+				 */
+				virtual jess::shared_ptr<n35100::box>				create_box( jess::shared_ptr<n34100::rigid_actor> );
+				/** plane
+				 */
+				virtual jess::shared_ptr<n35100::plane>				create_plane( jess::shared_ptr<n34100::rigid_actor> );
 				///@}
-				/// physics material
+				/** physics material
+				 */
 				jess::shared_ptr<n34200::material>				request_physics_material();
 			protected:
 				/// physics
@@ -83,7 +90,7 @@ namespace nebula
 				/// universes
 				jess::map<n31100::base>						universes_;
 				/// parent
-				std::weak_ptr<n10000::app>				parent_;
+				std::weak_ptr<n10000::app>					parent_;
 		};
 	}
 }

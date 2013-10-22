@@ -43,12 +43,18 @@ namespace nebula
 						jess::shared_ptr<n30000::base>							get_content();
 						/// request window
 						virtual jess::shared_ptr<n22000::base>						request_window();
-						/// box
+						/// rigid dynamic box
 						virtual jess::shared_ptr<n34100::rigid_dynamic_box>				create_rigid_dynamic_box();
 						/// plane
 						virtual jess::shared_ptr<n34100::rigid_static_plane>				create_rigid_static_plane();
 						/// create
 						virtual jess::shared_ptr<n34100::controller::base>				create_controller();
+						/** box
+						 */
+						virtual jess::shared_ptr<n35100::box>						create_box();
+						/** plane
+						 */
+						virtual jess::shared_ptr<n35100::plane>						create_plane();
 						/// create
 						//virtual jess::shared_ptr<n34200::rigid_dynamic_box>				create_physics_rigid_dynamic_box();
 						/// create

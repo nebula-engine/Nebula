@@ -58,4 +58,23 @@ jess::shared_ptr<n34100::controller::base>	n31100::base::create_controller( jess
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->create_controller( scene ) );
 }
+jess::shared_ptr<n35100::box>			n31100::base::create_box( jess::shared_ptr<n34100::rigid_actor> actor )
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
+	return ( parent_.lock()->create_box( actor ) );
+}
+jess::shared_ptr<n35100::plane>			n31100::base::create_plane( jess::shared_ptr<n34100::rigid_actor> actor )
+{
+	jess::clog << NEB_FUNCSIG << std::endl;
+	return ( parent_.lock()->create_plane( actor ) );
+}
+
+
+
+
+
+
+
+
+
 

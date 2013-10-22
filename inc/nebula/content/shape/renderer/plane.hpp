@@ -17,11 +17,11 @@ namespace nebula
 				{
 					public:
 						/// ctor
-						plane();
+						plane( jess::shared_ptr<n35100::base> );
 						/// dtor
 						virtual ~plane();
 						/// init
-						virtual void			init( jess::shared_ptr<n35100::base> );
+						virtual void			init();
 						/// shutdown
 						virtual void			shutdown();
 						/// render

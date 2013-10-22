@@ -17,11 +17,11 @@ namespace nebula
 				{
 					public:
 						/// ctor
-						box();
+						box( jess::shared_ptr<n35100::base> );
 						/// dtor
 						~box();
 						/// init
-						void								init( jess::shared_ptr<n35100::box> );
+						void								init();
 						/// shutdown
 						void								shutdown();
 						/// render

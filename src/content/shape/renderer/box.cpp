@@ -8,7 +8,8 @@
 
 #include <nebula/content/shape/renderer/box.hpp>
 
-n35300::box::box()
+n35300::box::box( jess::shared_ptr<n35100::base> parent ):
+	n35300::base( parent )
 {
 
 }
@@ -16,9 +17,8 @@ n35300::box::~box()
 {
 
 }
-void	n35300::box::init( jess::shared_ptr<n35100::box> parent )
+void	n35300::box::init()
 {
-	parent_ = parent;
 }
 void	n35300::box::shutdown()
 {
