@@ -19,15 +19,12 @@ namespace nebula
 				{
 					protected:
 						/// copy ctor
-						base( base const & )
-{
-
-}
+						base( base const & ) = default;
 						/// assignment
 						base&									operator=( base const & )
-{
-return *this;
-}
+						{
+							return *this;
+						}
 					public:
 						/// ctor
 						base( jess::shared_ptr<n34100::base> );
@@ -48,7 +45,7 @@ return *this;
 						/// parent
 						std::weak_ptr<n34100::base>						parent_;
 						/// materials
-						jess::map<n34200::material>						materials_;
+						jess::shared_ptr<n34200::material>					material_;
 				};
 			}
 		}

@@ -1,6 +1,8 @@
 #include <nebula/define.hpp>
 #include <nebula/ns.hpp>
 
+#include <nebula/content/actor/physics/material.hpp>
+
 #include <nebula/content/actor/physics/base.hpp>
 
 /// \todo completely separate "platform" from the rest of "nebula"

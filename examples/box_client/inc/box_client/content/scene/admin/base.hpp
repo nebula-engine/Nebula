@@ -1,9 +1,11 @@
 #ifndef __BOX_CLIENT_CONTENT_SCENE_ADMIN_BASE_HPP__
 #define __BOX_CLIENT_CONTENT_SCENE_ADMIN_BASE_HPP__
 
-#include <box_client/ns.hpp>
+#include <jess/shared_ptr.hpp>
 
 #include <nebula/content/scene/admin/base.hpp>
+
+#include <box_client/ns.hpp>
 
 namespace box_client
 {
@@ -18,22 +20,29 @@ namespace box_client
 					public n32100::base
 				{
 					public:
-						/// ctor
+						/** ctor
+						 */
 						base( jess::shared_ptr<n31100::base> );
-						/// dtor
+						/** dtor
+						 */
 						virtual ~base();
-						/// init
+						/** init
+						 */
 						virtual void						init();
-						///@name references
+												///@name references
 						///@{
 						/***/
-						/// view
+						/** \brief view
+						 */
 						jess::shared_ptr<bc33100::base>				view_;
-						/// rigid dynamic box
+						/** rigid dynamic box
+						 */
 						jess::shared_ptr<n34100::rigid_dynamic_box>		rigid_dyn_box_;
-						/// rigid static plane
+						/** rigid static plane
+						 */
 						jess::shared_ptr<n34100::rigid_static_plane>		rigid_sta_pln_;
-						/// controller
+						/** controller
+						 */
 						jess::shared_ptr<n34100::controller::base>		ctrlr_;
 						///@}
 

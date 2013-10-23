@@ -15,9 +15,9 @@ namespace nebula
 					public n35200::base
 				{
 				public:
-					box();
+					box( jess::shared_ptr<n35100::base> );
 					~box();
-					void						init( jess::shared_ptr<n35100::base> );
+					void						init();
 					void						shutdown();
 					void						create_shape();
 				};

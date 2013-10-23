@@ -19,10 +19,14 @@ namespace nebula
 				class base
 				{
 					public:
-						base();
-						~base();
-						void							init( jess::shared_ptr<n35100::base> );
-						void							shutdown();
+						/** \brief ctor
+						 */
+						base( jess::shared_ptr<n35100::base> );
+						/** \brief dtor
+						 */
+						virtual ~base();
+						virtual void						init();
+						virtual void						shutdown();
 						std::weak_ptr<n35100::base>				parent_;
 						physx::PxShape*						px_shape_;
 				};

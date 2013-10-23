@@ -1,3 +1,5 @@
+#include <jess/scoped_ostream.hpp>
+
 #include <nebula/define.hpp>
 #include <nebula/content/scene/admin/base.hpp>
 #include <nebula/content/scene/physics/base.hpp>
@@ -5,6 +7,11 @@
 #include <nebula/content/actor/physics/rigid_dynamic_box.hpp>
 #include <nebula/content/actor/physics/controller.hpp>
 #include <nebula/content/actor/physics/material.hpp>
+
+#include <nebula/content/shape/admin/box.hpp>
+#include <nebula/content/shape/physics/box.hpp>
+#include <nebula/content/shape/admin/plane.hpp>
+#include <nebula/content/shape/physics/plane.hpp>
 
 #include <nebula/content/physics/base.hpp>
 
@@ -200,6 +207,91 @@ jess::shared_ptr<n34200::controller>		n36000::base::create_controller(
 	jess::assertion( px_cont );
 
 	return physics;
+}
+jess::shared_ptr<n35200::box>			n36000::base::create_box( jess::shared_ptr<n35100::box> box )
+{
+	jess::scoped_ostream sos( &jess::cout, NEB_FUNCSIG );
+	
+	// create
+	jess::shared_ptr<n35200::box> box_physics( new n35200::box( box ) );
+	
+	
+	/*
+	// admin rigid_actor
+	jess::shared_ptr<n34100::rigid_actor> ad_act = parent_.lock()->parent_.lock();
+
+	// physics rigid_actor
+	jess::shared_ptr<n34200::rigid_actor> ph_act = std::dynamic_pointer_cast<n34200::rigid_actor>( ad_act->physics_ );
+	
+	// physx rigid_actor
+	jess::shared_ptr<n34200p::rigid_actor> ph_px_act = std::dynamic_pointer_cast<n34200::physx::rigid_actor>( ph_act );
+	*/
+	// Pxrigid_actor
+		
+	/*
+	// physx material
+	jess::shared_ptr<n34200p::material> mat = std::dynamic_pointer_cast<n34200p::material>( ad_act->materials_.at(0)->physics_ );
+	//jess::assertion( bool(mat) ); //throw jess::except("no material");
+	*/
+
+	jess::shared_ptr<n34200::rigid_actor> actor_physics= std::dynamic_pointer_cast<n34200::rigid_actor>( box->parent_.lock()->physics_ );
+	physx::PxRigidActor* px_rigid_actor = (::physx::PxRigidActor*)( actor_physics->px_actor_ );
+
+	// PxMaterial
+	physx::PxMaterial* px_mat = actor_physics->material_->px_material_;
+	NEB_ASSERT( bool( px_mat ) );
+	
+	// geometry
+	physx::PxBoxGeometry px_geometry( 1, 1, 1 );
+	
+	// PxShape
+	box_physics->px_shape_ = px_rigid_actor->createShape( px_geometry, *px_mat );
+	
+	
+	
+	return box_physics;
+}
+jess::shared_ptr<n35200::plane>			n36000::base::create_plane( jess::shared_ptr<n35100::plane> plane )
+{
+	jess::scoped_ostream sos( &jess::cout, NEB_FUNCSIG );
+	
+	// create
+	jess::shared_ptr<n35200::plane> plane_physics( new n35200::plane( plane ) );
+	
+	
+	/*
+	// admin rigid_actor
+	jess::shared_ptr<n34100::rigid_actor> ad_act = parent_.lock()->parent_.lock();
+
+	// physics rigid_actor
+	jess::shared_ptr<n34200::rigid_actor> ph_act = std::dynamic_pointer_cast<n34200::rigid_actor>( ad_act->physics_ );
+	
+	// physx rigid_actor
+	jess::shared_ptr<n34200p::rigid_actor> ph_px_act = std::dynamic_pointer_cast<n34200::physx::rigid_actor>( ph_act );
+	*/
+	// Pxrigid_actor
+		
+	/*
+	// physx material
+	jess::shared_ptr<n34200p::material> mat = std::dynamic_pointer_cast<n34200p::material>( ad_act->materials_.at(0)->physics_ );
+	//jess::assertion( bool(mat) ); //throw jess::except("no material");
+	*/
+	/*
+	jess::shared_ptr<n34200::rigid_actor> actor_physics= std::dynamic_pointer_cast<n34200::rigid_actor>( actor->physics_ );
+	physx::PxRigidActor* px_rigid_actor = (::physx::PxRigidActor*)( actor_physics->px_actor_ );
+
+	// PxMaterial
+	physx::PxMaterial* px_mat = actor_physics->material_->px_material_;
+	NEB_ASSERT( bool( px_mat ) );
+	
+	// geometry
+	physx::PxPlaneGeometry px_plane( 1, 1, 1 );
+	
+	// PxShape
+	plane->px_shape_ = px_rigid_actor->createShape( px_plane, *px_mat );
+	*/
+	
+	return plane_physics;
 }
 jess::shared_ptr<n34200::material>		n36000::base::request_physics_material()
 {

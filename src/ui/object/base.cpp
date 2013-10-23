@@ -4,16 +4,14 @@
 #include <nebula/ui/object/base.hpp>
 
 n52000::base::base():
-	label_length_(16),
-	label_( new char [ label_length_ + 1 ] )
+	label_(0)
 {
-
+	label_ = new char[16];
+	
+	memset( (void *)label_, '\0', 16 );
 }
 void	n52000::base::set_label( char const * cstr )
 {
-	if ( label_ )
-	{
-		std::memcpy( label_, cstr, std::min( ::strlen( cstr ), label_length_ ) );
-	}
+	memcpy( (void *)label_, (const void *)cstr, std::min( strlen( cstr ), strlen( label_ ) ) );
 }
 

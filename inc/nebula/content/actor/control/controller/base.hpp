@@ -67,6 +67,9 @@ namespace nebula
 							/** \brief init
 							 */
 							virtual void					init() = 0;
+							/** \breif connect
+							 */
+							virtual void					connect_to_window( jess::shared_ptr<n22000::base> );
 							/** \brief is valid
 							 */
 							virtual bool					is_valid() = 0;
@@ -89,6 +92,9 @@ namespace nebula
 							 */
 							virtual bool					on_pointer_motion( int ) = 0;
 							///@}
+							/** \brief window
+							 */
+							jess::shared_ptr<n22000::base>			window_;
 							/** \brief flag
 							 */
 							unsigned int					flag_;

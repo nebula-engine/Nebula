@@ -13,14 +13,11 @@ n52000::textview::textview():
 }
 void	n52000::textview::clear_label()
 {
-	if ( label_ )
-	{
-		delete[] label_;
-	}
+	delete[] label_;
 	
-	label_ = new char[ label_length_ + 1 ];
+	label_ = new char[16];
 	
-	memset( label_, '\0', label_length_ + 1 );
+	memset( (void *)label_, '\0', 16 );
 	
 	label_pos_ = 0;
 }
@@ -36,7 +33,8 @@ bool	n52000::textview::on_key_down( int k )
 	{
 		if ( label_pos_ > 0 )
 		{
-			label_[--label_pos_] = '\0';
+			--label_pos_;
+			memset( (void *)( label_ + label_pos_ ), '\0', 1 );
 		}
 		return true;
 	}
@@ -44,7 +42,8 @@ bool	n52000::textview::on_key_down( int k )
 	{
 		if ( label_pos_ < label_length_ )
 		{
-			label_[label_pos_++] = k;
+			++label_pos_;
+			memset( (void *)( label_ + label_pos_ ), k, 1 );
 		}
 		return true;
 	}

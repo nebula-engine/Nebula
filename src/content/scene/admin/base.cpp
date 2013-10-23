@@ -19,6 +19,8 @@
 #include <nebula/content/actor/admin/controller.hpp>
 #include <nebula/content/actor/physics/controller.hpp>
 
+#include <nebula/content/actor/control/controller/base.hpp>
+
 #include <nebula/content/scene/admin/base.hpp>
 
 n32100::base::base( jess::shared_ptr<n31100::base> parent ):
@@ -87,6 +89,11 @@ void						n32100::base::update()
 
 	views_.foreach( std::bind( &n33100::base::update, std::placeholders::_1 ) );
 }
+void						n32100::base::connect_controller_to_view( jess::shared_ptr<n34100::controller::base> controller, jess::shared_ptr<n33100::base> view )
+{
+	controller->control_->connect_to_window( view->window_ );
+}
+
 void						n32100::base::step( float dt )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -143,19 +150,14 @@ jess::shared_ptr<n34200::material>		n32100::base::request_physics_material()
 {
 	return ( parent_.lock()->request_physics_material() );
 }
-jess::shared_ptr<n35100::box>			n32100::base::create_box()
+jess::shared_ptr<n35100::box>			n32100::base::create_box( jess::shared_ptr<n34100::rigid_actor> actor )
 {
-	return parent_.lock()->create_box();
+	return parent_.lock()->create_box( actor );
 }
-jess::shared_ptr<n35100::plane>			n32100::base::create_plane()
+jess::shared_ptr<n35100::plane>			n32100::base::create_plane( jess::shared_ptr<n34100::rigid_actor> actor )
 {
-	return parent_.lock()->create_plane();
+	return parent_.lock()->create_plane( actor );
 }
-
-
-
-
-
 
 
 

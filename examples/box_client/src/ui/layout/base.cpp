@@ -13,10 +13,9 @@ void	bc51000::base::init()
 	jess::shared_ptr<n52000::textview> tv1( new n52000::textview() );
 	tv1->x_ = 100;
 	tv1->y_ = 100;
-	tv1->label_ = "hello";
+	tv1->set_label( "hello" );
 	
 	objects_.push( tv1 );
-	
 	
 }
 

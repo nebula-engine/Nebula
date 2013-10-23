@@ -33,9 +33,8 @@ void	bc32100::base::init()
 	NEB_ASSERT( bool( view_ ) );
 
 	// connect controller to view
-	/// \todo write function for this
-	connect_control_to_view( ctrlr_, view_ );
-	//ctrlr_->control_->connect_to_window( view_->window_ );
+	connect_controller_to_view( ctrlr_, view_ );
 
 }
+
 

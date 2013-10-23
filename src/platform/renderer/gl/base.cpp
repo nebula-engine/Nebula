@@ -340,7 +340,8 @@ void	n23100::base::look_at( physx::PxVec3 eye, physx::PxVec3 center, physx::PxVe
 {
 	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
-	sos << eye.x << " " << eye.y << " " << eye.z << " " <<center.x << " " << center.y << " " << center.z << " " << up.x << " " << up.y << " " << up.z << std::endl;
+	sos << eye.x << " " << eye.y << " " << eye.z << " " << center.x << " " << center.y << " " << center.z << " " << up.x << " " << up.y << " " << up.z;
+	sos << std::endl;
 
 	gluLookAt( eye.x, eye.y, eye.z, center.x, center.y, center.z, up.x, up.y, up.z );
 }

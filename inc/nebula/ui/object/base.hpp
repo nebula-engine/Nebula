@@ -61,7 +61,7 @@ namespace nebula
 					size_t							label_length_;
 					/** \brief label
 					 */
-					char *							label_;
+					char const *						label_;
 			};
 		}
 	}

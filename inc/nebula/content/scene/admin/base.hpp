@@ -17,44 +17,59 @@ namespace nebula
 		{
 			namespace admin
 			{
-				/// base
-				/*
+				/** \brief base
+				 *
 				 * \todo Create trigger object (might need to go in physics). Need to see if PhysX already has an object/fun30000tionality for this.
 				 */
 				class base:
 					public jess::enable_shared_from_this<n32100::base>
 				{
 					public:
-						/// ctor
+						/** ctor
+						 */
 						base( jess::shared_ptr<n31100::base> );
-						/// dtor
+						/** dtor
+						 */
 						~base();
-						/// init
+						/** init
+						 */
 						virtual void									init();
-						/// shutdown
+						/** shutdown
+						 */
 						virtual void									shutdown();
-						/// update
+						/** update
+						 */
 						virtual void									update();
-						/// step
+						/** step
+						 */
 						virtual void									step( float dt );
-						/// render
+						/** render
+						 */
 						virtual void									render( jess::shared_ptr<n23000::base> );
-						/// get content
+						/** get content
+						 */
 						jess::shared_ptr<n30000::base>							get_content();
-						/// request window
+						/** \brief controller to view
+						 */
+						void						connect_controller_to_view( jess::shared_ptr<n34100::controller::base>, jess::shared_ptr<n33100::base> );
+						/** request window
+						 */
 						virtual jess::shared_ptr<n22000::base>						request_window();
-						/// rigid dynamic box
+						/** rigid dynamic box
+						 */
 						virtual jess::shared_ptr<n34100::rigid_dynamic_box>				create_rigid_dynamic_box();
-						/// plane
+						/** plane
+						 */
 						virtual jess::shared_ptr<n34100::rigid_static_plane>				create_rigid_static_plane();
-						/// create
+						/** create
+						 */
 						virtual jess::shared_ptr<n34100::controller::base>				create_controller();
 						/** box
 						 */
-						virtual jess::shared_ptr<n35100::box>						create_box();
+						virtual jess::shared_ptr<n35100::box>						create_box( jess::shared_ptr<n34100::rigid_actor> );
 						/** plane
 						 */
-						virtual jess::shared_ptr<n35100::plane>						create_plane();
+						virtual jess::shared_ptr<n35100::plane>						create_plane( jess::shared_ptr<n34100::rigid_actor> );
 						/// create
 						//virtual jess::shared_ptr<n34200::rigid_dynamic_box>				create_physics_rigid_dynamic_box();
 						/// create

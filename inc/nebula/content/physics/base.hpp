@@ -74,6 +74,13 @@ namespace nebula
 							jess::shared_ptr<n32100::base>,
 							jess::shared_ptr<n34100::base>
 							);
+					/** box
+					 */
+					jess::shared_ptr<n35200::box>					create_box( jess::shared_ptr<n35100::box> );
+					/** box
+					 */
+					jess::shared_ptr<n35200::plane>					create_plane( jess::shared_ptr<n35100::plane> );
+
 					/// physics material
 					jess::shared_ptr<n34200::material>				request_physics_material();
 					/// physics material

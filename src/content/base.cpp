@@ -16,6 +16,10 @@
 #include <nebula/content/actor/physics/controller.hpp>
 
 #include <nebula/content/shape/admin/box.hpp>
+#include <nebula/content/shape/physics/box.hpp>
+#include <nebula/content/shape/admin/plane.hpp>
+#include <nebula/content/shape/physics/plane.hpp>
+
 
 #include <nebula/content/base.hpp>
 
@@ -114,18 +118,22 @@ jess::shared_ptr<n35100::box>			n30000::base::create_box( jess::shared_ptr<n3410
 	// create
 	jess::shared_ptr<n35100::box> box( new n35100::box( actor ) );
 	
-	box->physics_ = physics_->create_box_physics();
+	box->physics_ = physics_->create_box( box );
 	
 	box->init();
+	
+	return box;
 }
 jess::shared_ptr<n35100::plane>			n30000::base::create_plane( jess::shared_ptr<n34100::rigid_actor> actor )
 {
 	// create
 	jess::shared_ptr<n35100::plane> plane( new n35100::plane( actor ) );
 	
-	plane->physics_ = physics_->create_plane_physics();
+	plane->physics_ = physics_->create_plane( plane );
 	
 	plane->init();
+	
+	return plane;
 }
 
 
