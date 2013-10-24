@@ -6,9 +6,12 @@
 
 #include <nebula/content/actor/admin/base.hpp>
 
-n34100::base::base( jess::shared_ptr<n32100::base> parent )
+n34100::base::base( jess::shared_ptr<n32100::base> parent ):
+	parent_(parent)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
+
+	NEB_ASSERT( !parent_.expired() )
 }
 n34100::base::~base()
 {
@@ -39,7 +42,7 @@ void	n34100::base::step( float dt )
 }
 void	n34100::base::create_shapes()
 {
-	
+
 }
 physx::PxMat44	n34100::base::get_pose()
 {

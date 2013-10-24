@@ -9,6 +9,8 @@
 
 #include <PxPhysicsAPI.h>
 
+#include <nebula/ns.hpp>
+
 namespace nebula
 {
 	namespace content
@@ -69,7 +71,7 @@ namespace nebula
 							virtual void					init() = 0;
 							/** \breif connect
 							 */
-							virtual void					connect_to_window( jess::shared_ptr<n22000::base> );
+							virtual void					connect_to_window( jess::shared_ptr<n22000::base> ) = 0;
 							/** \brief is valid
 							 */
 							virtual bool					is_valid() = 0;
@@ -90,7 +92,7 @@ namespace nebula
 							virtual bool					on_key_up( int ) = 0;
 							/** \brief pointer motion
 							 */
-							virtual bool					on_pointer_motion( int ) = 0;
+							virtual bool					on_pointer_motion( int, int ) = 0;
 							///@}
 							/** \brief window
 							 */

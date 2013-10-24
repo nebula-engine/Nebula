@@ -189,7 +189,7 @@ void	n22100::base::update()
 			// convert to universal key
 			k = lookup_key( keysym );
 			
-			sig_key_up_( k, no_ );
+			sig_key_up_( k );
 
 
 			break;
@@ -202,7 +202,7 @@ void	n22100::base::update()
 		
 			jess::clog << "key=" << k << std::endl;
 	
-			sig_key_down_( k, no_ );
+			sig_key_down_( k );
 			
 			break;
 		case MotionNotify:

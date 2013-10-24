@@ -86,7 +86,7 @@ namespace nebula
 					/// physics material
 					jess::shared_ptr<n34200::material>				create_physics_material();
 					///@}
-
+					void								init_rigid_actor( jess::shared_ptr<n34200::rigid_actor> actor );
 					///@name fetch
 					///@{
 					/// physx physics

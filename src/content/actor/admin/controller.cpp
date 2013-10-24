@@ -8,7 +8,7 @@
 
 #include <nebula/content/actor/physics/controller.hpp>
 #include <nebula/content/actor/renderer/controller.hpp>
-#include <nebula/content/actor/control/controller/base.hpp>
+#include <nebula/content/actor/control/controller/def.hpp>
 
 
 #include <nebula/content/actor/admin/controller.hpp>
@@ -44,6 +44,10 @@ void	n34100::controller::base::init()
 
 	key_down_event_[nebula::platform::key::r] = event::eRESET_VIEW_ANGLES;
 */
+	jess::shared_ptr<n34100::controller::base> this_ptr = std::dynamic_pointer_cast<n34100::controller::base>( shared_from_this() );
+	
+	// control
+	control_.reset( new n34400::controller::def( this_ptr ) );
 
 	// renderer
 	renderer_.reset( new n34300::controller );

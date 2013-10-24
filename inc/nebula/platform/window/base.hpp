@@ -53,9 +53,9 @@ namespace nebula
 				///@name signals
 				///@{
 				/// key down
-				jess::signal::signal<int,int>			sig_key_down_;
+				jess::signal::signal<int>			sig_key_down_;
 				/// key up
-				jess::signal::signal<int,int>			sig_key_up_;
+				jess::signal::signal<int>			sig_key_up_;
 				/// pointer motion
 				jess::signal::signal<int,int>			sig_pointer_motion_;
 				///@}

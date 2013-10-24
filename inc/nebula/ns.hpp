@@ -166,7 +166,7 @@ namespace nebula
 				namespace controller
 				{
 					class base;
-					class default_control;
+					class def;
 				}
 			}
 			namespace physics
@@ -306,6 +306,9 @@ namespace n34000 = nebula::content::actor;
 namespace n34100 = nebula::content::actor::admin;
 namespace n34200 = nebula::content::actor::physics;
 namespace n34300 = nebula::content::actor::renderer;
+namespace n34400 = nebula::content::actor::control;
+
+
 namespace n35100 = nebula::content::shape::admin;
 namespace n35200 = nebula::content::shape::physics;
 namespace n35300 = nebula::content::shape::renderer;

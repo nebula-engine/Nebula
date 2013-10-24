@@ -17,30 +17,34 @@ namespace nebula
 				{
 					/** \brief %control %default
 					 */
-					class default_control:
+					class def:
 						public n34000::control::controller::base
 					{
 						friend class n34100::controller::base;
 						protected:
 						/** \brief copy ctor
 						 */
-						default_control( default_control const & ) = default;
+						def( def const & ) = default;
 						/** \brief assignment
 						 */
-						default_control&				operator=( default_control const & );
+						def&				operator=( def const & );
 						/** \brief ctor
 						 */
-						default_control( jess::shared_ptr<n34100::controller::base> );
+						def( jess::shared_ptr<n34100::controller::base> );
 						public:
 						/** \brief dtor
 						 */
-						virtual ~default_control();
+						virtual ~def();
 						/** \brief init
 						 */
 						virtual void					init();
-						/** \brief connect to window
+						/** \brief event
 						 */
-						virtual void					connect_to_window( jess::shared_ptr<n22000::base> window );
+						virtual void					process_event( int );
+						/** \brief connect
+						 */
+						virtual void					connect_to_window( jess::shared_ptr<n22000::base> );
+
 						/** \brief is valid
 						 */
 						virtual bool					is_valid();
@@ -52,14 +56,17 @@ namespace nebula
 						///@{
 						/** \brief key down
 						 */
-						virtual bool					on_key_down( int, int );
+						virtual bool					on_key_down( int );
 						/** \brief key up
 						 */
-						virtual bool					on_key_up( int, int );
+						virtual bool					on_key_up( int );
 						/** \brief pointer motion
 						 */
-						virtual bool					on_pointer_motion( int , int );
+						virtual bool					on_pointer_motion( int, int );
 						///@}
+						std::shared_ptr< jess::signal::connection<int> >	connection_key_down_;
+						std::shared_ptr< jess::signal::connection<int> >	connection_key_up_;
+						std::shared_ptr< jess::signal::connection<int,int> >	connection_pointer_motion_;
 					};
 				}
 			}

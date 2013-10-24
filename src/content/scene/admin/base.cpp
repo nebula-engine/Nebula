@@ -91,6 +91,10 @@ void						n32100::base::update()
 }
 void						n32100::base::connect_controller_to_view( jess::shared_ptr<n34100::controller::base> controller, jess::shared_ptr<n33100::base> view )
 {
+	NEB_ASSERT( bool( controller ) )
+	NEB_ASSERT( bool( controller->control_ ) )
+	NEB_ASSERT( bool( view ) )
+	NEB_ASSERT( bool( view->window_ ) )
 	controller->control_->connect_to_window( view->window_ );
 }
 

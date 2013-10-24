@@ -3,18 +3,18 @@
 #include <nebula/platform/window/base.hpp>
 #include <nebula/content/actor/admin/controller.hpp>
 
-#include <nebula/content/actor/control/controller/default_control.hpp>
+#include <nebula/content/actor/control/controller/def.hpp>
 
-n34000::control::controller::default_control::default_control( jess::shared_ptr<n34100::controller::base> parent ):
+n34000::control::controller::def::def( jess::shared_ptr<n34100::controller::base> parent ):
 	n34000::control::controller::base( parent )
 {
 
 }
-n34000::control::controller::default_control::~default_control()
+n34400::controller::def::~def()
 {
 
 }
-void				n34000::control::controller::default_control::init()
+void				n34000::control::controller::def::init()
 {
 	float s = 1;
 	float d = 0.707;
@@ -30,7 +30,7 @@ void				n34000::control::controller::default_control::init()
 	head_[5] = physx::PxVec3( -d, 0,  d );
 	head_[6] = physx::PxVec3( -s, 0,  0 );
 	head_[7] = physx::PxVec3( -d, 0, -d );
-	
+
 	head_flag_[n34000::control::controller::base::flag::eNORTH								] = 0;
 	head_flag_[n34000::control::controller::base::flag::eNORTH	|	n34000::control::controller::base::flag::eEAST	] = 1;
 	head_flag_[								n34000::control::controller::base::flag::eEAST	] = 2;
@@ -41,67 +41,74 @@ void				n34000::control::controller::default_control::init()
 	head_flag_[n34000::control::controller::base::flag::eNORTH	|	n34000::control::controller::base::flag::eWEST	] = 7;
 
 }
-void				n34000::control::controller::default_control::connect_to_window( jess::shared_ptr<n22000::base> window )
+void				n34400::controller::def::process_event( int evnt )
 {
-
+	switch ( evnt )
+	{
+		default:
+			break;
+	}
+}
+void				n34400::controller::def::connect_to_window( jess::shared_ptr<n22000::base> window )
+{
+	jess::scoped_ostream sos( &jess::cout, NEB_FUNCSIG );
+	
 	// set signal handlers
-	window->sig_pointer_motion_.connect
+	connection_pointer_motion_ = window->sig_pointer_motion_.connect
 		(
 		 std::bind
 		 (
-		  &n34000::control::controller::default_control::on_pointer_motion,
+		  &n34000::control::controller::def::on_pointer_motion,
 		  this,
 		  std::placeholders::_1,
 		  std::placeholders::_2
 		 )
 		);
 
-	window->sig_key_down_.connect
+	connection_key_down_ = window->sig_key_down_.connect
 		(
 		 std::bind
 		 (
-		  &n34000::control::controller::default_control::on_key_down,
+		  &n34000::control::controller::def::on_key_down,
 		  this,
-		  std::placeholders::_1,
-		  std::placeholders::_2
+		  std::placeholders::_1
 		 )
 		);
 
-	window->sig_key_up_.connect
+	connection_key_up_ = window->sig_key_up_.connect
 		(
 		 std::bind
 		 (
-		  &n34000::control::controller::default_control::on_key_up,
+		  &n34000::control::controller::def::on_key_up,
 		  this,
-		  std::placeholders::_1,
-		  std::placeholders::_2
+		  std::placeholders::_1
 		 )
 		);
 }
-bool			n34000::control::controller::default_control::is_valid()
+bool			n34000::control::controller::def::is_valid()
 {
 	return true;
 }
-physx::PxVec3		n34000::control::controller::default_control::move()
+physx::PxVec3		n34000::control::controller::def::move()
 {
 	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
 	jess::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>(parent_.lock());
-	
+
 	/** \todo
 	 * add gravity
 	 * make \a head and \a m a static member variable or at least a member variables
 	 */
-	
+
 	physx::PxVec3 mov(0,0,0);
-	
+
 	// ignore all other flags
 	int f = parent->flag_ & (
 			n34000::control::controller::base::flag::eNORTH |
 			n34000::control::controller::base::flag::eSOUTH |
 			n34000::control::controller::base::flag::eEAST |
 			n34000::control::controller::base::flag::eWEST );
-	
+
 	// find vector for move flag
 	auto it = head_flag_.find( f );
 
@@ -109,12 +116,12 @@ physx::PxVec3		n34000::control::controller::default_control::move()
 	{
 		mov = head_[it->second];
 	}
-	
+
 	jess::clog << "mov=" << mov.x << mov.y << mov.z << std::endl;
-	
+
 	return mov;
 }
-bool			n34000::control::controller::default_control::on_key_down( int k, int w )
+bool			n34000::control::controller::def::on_key_down( int k )
 {
 	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
 
@@ -129,21 +136,21 @@ bool			n34000::control::controller::default_control::on_key_down( int k, int w )
 	return true;
 
 }
-bool			n34000::control::controller::default_control::on_key_up( int k, int w )
+bool			n34000::control::controller::def::on_key_up( int k )
 {
 
 	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
-	
+
 	// unset flag
 	flag_ &= ~( key_flag_[k] );
-	
+
 	// trigger event
 	process_event( key_up_event_[k] );
 
 	return true;
 
 }
-bool			n34000::control::controller::default_control::on_pointer_motion( int x, int y )
+bool			n34000::control::controller::def::on_pointer_motion( int x, int y )
 {
 	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
 

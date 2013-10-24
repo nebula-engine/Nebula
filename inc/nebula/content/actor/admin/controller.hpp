@@ -23,7 +23,7 @@ namespace nebula
 						friend class n30000::base;
 						friend class n32100::base;
 						friend class n34000::control::controller::base;
-						friend class n34000::control::controller::default_control;
+						friend class n34000::control::controller::def;
 						friend class n34200::controller;
 						friend class n34300::controller;
 						public:

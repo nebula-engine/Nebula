@@ -15,7 +15,7 @@
 n34100::rigid_actor::rigid_actor( jess::shared_ptr<n32100::base> parent ):
 actor( parent )
 {
-
+	jess::clog << NEB_FUNCSIG << std::endl;
 }
 n34100::rigid_actor::~rigid_actor()
 {
@@ -49,6 +49,8 @@ void	n34100::rigid_actor::create_shapes()
 jess::shared_ptr<n35100::box>	n34100::rigid_actor::create_box()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
+	
+	NEB_ASSERT( !parent_.expired() )
 	
 	// cast shared from this
 	jess::shared_ptr<n34100::rigid_actor> this_ptr = std::dynamic_pointer_cast<n34100::rigid_actor>( shared_from_this() );
