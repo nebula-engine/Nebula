@@ -38,10 +38,6 @@ namespace nebula
 						{
 							return pose_;
 						}
-						/** \brief pose
-						 * pose relative to parent coordinates
-						 */
-						physx::PxMat44							pose_;
 				};
 			}
 		}
