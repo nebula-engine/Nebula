@@ -56,7 +56,7 @@ namespace nebula
 						/// renderer
 						jess::shared_ptr<n34300::base>						renderer_;
 						/// materials
-						jess::map<n34100::material>			materials_;
+						jess::map<n34100::material>						materials_;
 						/// flag
 						int									flag_;
 						/// pose

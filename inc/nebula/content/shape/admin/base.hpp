@@ -20,6 +20,10 @@ namespace nebula
 				class base:
 					public jess::enable_shared_from_this<n35100::base>
 				{
+					protected:
+						/** \brief copy ctor
+						 */
+						base( base const & ) = default;
 					public:
 						/// ctor	
 						base( jess::shared_ptr<n34100::rigid_actor> );

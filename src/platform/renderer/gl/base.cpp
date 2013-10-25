@@ -133,7 +133,7 @@ void	n23100::base::draw_cube()
 }
 void	n23100::base::draw_sphere()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 	/*
 	   GLfloat cyan[] = {0.0f, 0.8f, 0.8f, 1.0f};
 	   GLfloat white[] = {1.0f, 1.0f, 1.0f, 1.0f};
@@ -181,7 +181,7 @@ void	n23100::base::draw_sphere()
 }
 void	n23100::base::unproject(int winX, int winY, int winZ, double* objX, double* objY, double* objZ)
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
 	GLdouble modelview[16];
 	GLdouble projection[16];
@@ -195,7 +195,7 @@ void	n23100::base::unproject(int winX, int winY, int winZ, double* objX, double*
 }
 void	n23100::base::draw_window_quad(int win_x, int win_y, int w, int h)
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
 	double obj_x1, obj_y1, obj_z1, obj_x2, obj_y2, obj_z2;
 
@@ -214,7 +214,7 @@ void	n23100::base::draw_window_quad(int win_x, int win_y, int w, int h)
 }
 void	n23100::base::draw_2d_quad()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
 	glPushMatrix();
 	glBegin(GL_QUADS);
@@ -227,7 +227,7 @@ void	n23100::base::draw_2d_quad()
 }
 void	n23100::base::draw_quad()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
 
 	glBegin(GL_QUADS);
@@ -240,7 +240,7 @@ void	n23100::base::draw_quad()
 }
 void	n23100::base::begin_render()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear( GL_COLOR_BUFFER_BIT );
@@ -251,7 +251,7 @@ void	n23100::base::begin_render()
 }
 void	n23100::base::begin_3d()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
 	//glEnable( GL_CULL_FACE );
 	glEnable( GL_LIGHTING );
@@ -264,7 +264,7 @@ void	n23100::base::begin_3d()
 }
 void	n23100::base::end_3d()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
 	glPopMatrix();
 }

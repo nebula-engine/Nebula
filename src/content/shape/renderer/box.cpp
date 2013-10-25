@@ -35,7 +35,7 @@ void	n35300::box::render( jess::shared_ptr<n23000::base> rnd )
 	{
 		n23000::scoped_matrix scoped_matrix( rnd );
 
-		rnd->mult_matrix( parent->get_pose() );
+		rnd->mult_matrix( parent->pose_ );
 		rnd->scale( parent->get_scale() );
 		rnd->draw_cube();
 	}

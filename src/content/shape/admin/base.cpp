@@ -8,10 +8,11 @@
 
 nebula::content::shape::admin::base::base( jess::shared_ptr<n34100::rigid_actor> parent ):
 	parent_( parent ),
-	pose_( physx::PxTransform() ),
+	pose_( physx::PxTransform( physx::PxVec3(0,0,0), physx::PxQuat( 0, physx::PxVec3(0,1,0) ) ) ),
 	scale_( physx::PxVec3(1,1,1) )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
+	//jess::clog << pose_;
 }
 nebula::content::shape::admin::base::~base()
 {

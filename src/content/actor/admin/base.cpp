@@ -7,10 +7,13 @@
 #include <nebula/content/actor/admin/base.hpp>
 
 n34100::base::base( jess::shared_ptr<n32100::base> parent ):
-	parent_(parent)
+	parent_( parent ),
+	pose_( physx::PxTransform(physx::PxVec3(0,0,0),physx::PxQuat( 0, physx::PxVec3(0,1,0) ) ) )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-
+	
+	//jess::clog << pose_;
+	
 	NEB_ASSERT( !parent_.expired() )
 }
 n34100::base::~base()
