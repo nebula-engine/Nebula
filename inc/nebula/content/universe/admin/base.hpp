@@ -20,53 +20,69 @@ namespace nebula
 				class base:
 					public jess::enable_shared_from_this<n31100::base>
 				{
+					protected:
+						/** \brief copy ctor
+						*/
+						base( base const & ) = default;
+						/** \brief assignment
+						*/
+						base&							operator=( base const & ) = default;
 					public:
-						/// ctor
+						/** \brief ctor
+						*/
 						base( jess::shared_ptr<n30000::base> );
-						/// dtor
+						/** \brief dtor
+						*/
 						virtual ~base();
-						/// init
+						/** \brief init
+						*/
 						virtual void						init();
-						/// shutdown
+						/** \brief shutdown
+						*/
 						virtual void						shutdown();
-						/// update
+						/** \brief update
+						*/
 						virtual void						update();
-						/// request window
+						/** \brief request window
+						*/
 						virtual jess::shared_ptr<n22000::base>			request_window();
-						/// create scene
+						/** \brief create scene
+						*/
 						template <class T> jess::shared_ptr<T>			create_scene()
 						{
 							jess::clog << NEB_FUNCSIG << std::endl;
 
-							jess::shared_ptr<T> t = parent_.lock()->create_scene<T>( shared_from_this() );//<-- no matching function!!!
+							jess::shared_ptr<T> t = parent_.lock()->create_scene<T>( shared_from_this() );
 
 							scenes_.push<T>( t );
 
 							return t;
 						}
 						/** rigid dynamic box
-						 */
-						virtual jess::shared_ptr<n34100::rigid_dynamic_box>	create_rigid_dynamic_box( jess::shared_ptr<n32100::base> );
+						*/
+						virtual n34100::rigid_dynamic_box::shared_t	create_rigid_dynamic_box( n32100::base::shared_t );
 						/** rigid static plane
-						 */
-						virtual jess::shared_ptr<n34100::rigid_static_plane>	create_rigid_static_plane( jess::shared_ptr<n32100::base> );
+						*/
+						virtual n34100::rigid_static_plane::shared_t	create_rigid_static_plane( n32100::base::shared_t );
 						/** controller
-						 */
-						virtual jess::shared_ptr<n34100::controller::base>	create_controller( jess::shared_ptr<n32100::base> );
+						*/
+						virtual n34100::controller::base::shared_t	create_controller( n32100::base::shared_t );
 						/** physics material
-						 */
-						jess::shared_ptr<n34200::material>			request_physics_material();
+						*/
+						n34200::material::shared_t			request_material_physics();
 						/** plane
-						 */
-						virtual jess::shared_ptr<n35100::plane>			create_plane( jess::shared_ptr<n34100::rigid_actor> );
+						*/
+						virtual n35100::plane::shared_t			create_plane( jess::shared_ptr<n34100::rigid_actor> );
 						/** box
-						 */
-						virtual jess::shared_ptr<n35100::box>			create_box( jess::shared_ptr<n34100::rigid_actor> );
+						*/
+						virtual n35100::box::shared_t			create_box( jess::shared_ptr<n34100::rigid_actor> );
 					public:
-						/// parent
-						std::weak_ptr<n30000::base>				parent_;
-						/// scenes
-						jess::map<n32100::base>					scenes_;
+						/** \brief parent
+						*/
+						n30000::base::weak_t				parent_;
+						/** \brief scenes
+						*/
+						jess::map<n32100::base>				scenes_;
 				};
 			}
 		}

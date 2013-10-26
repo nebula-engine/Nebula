@@ -38,10 +38,11 @@ void	n34100::base::render( jess::shared_ptr<n23000::base> rnd )
 }
 void	n34100::base::step( float dt )
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
-
+	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
+	
 	physics_->step( dt );
 	renderer_->step( dt );
+	control_->step( dt );
 }
 void	n34100::base::create_shapes()
 {

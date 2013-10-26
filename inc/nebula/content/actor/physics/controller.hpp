@@ -14,35 +14,44 @@ namespace nebula
 		{
 			namespace physics
 			{
-				/// controller
+				/** \brief controller
+				*/
 				class controller:
 					virtual public n34200::base
 				{
 					protected:
-						/// copy ctor
-						controller(const controller&);
-						/// assignment
-						controller&						operator=(const controller&);
+						/** \brief copy ctor
+						*/
+						controller( controller const & );
+						/** \breef assignment
+						*/
+						controller&						operator=( controller const & );
+						/** \brief ctor
+						*/
+						controller( n34100::base::shared_t );
 					public:
-						/// ctor
-						controller( jess::shared_ptr<n34100::base> );
-						/// dtor
+						/** \brief dtor
+						*/
 						~controller();
-						/// init
+						/** \brief init
+						*/
 						virtual	void						init();
-						/// shutdown
+						/** \brief shutdown
+						*/
 						virtual	void						shutdown();
-						/// update
+						/**\brief/ update
+						*/
 						virtual	void						update();
-						/// step
-						virtual	void						step(float);
-						/// update move
-						virtual void						update_move();
-					public:
-						/// px controller
+						/** \brief step
+						*/
+						virtual	void						step( float );
+					protected:
+						/** \brief px controller
+						*/
 						physx::PxController*					px_controller_;
-						/// material
-						jess::shared_ptr<n34200::material>			material_;
+						/** \brief material
+						*/
+						n34200::material::shared_t				material_;
 				};
 			}
 		}

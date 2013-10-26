@@ -11,34 +11,47 @@ namespace nebula
 		{
 			namespace admin
 			{
-				/// rigid_static_plane
+				/** \brief rigid static plane
+				*/
 				class rigid_static_plane:
 					public nebula::content::actor::admin::rigid_static
 				{
-					/// copy ctor
-					rigid_static_plane(const rigid_static_plane&);
-					/// assignment
-					rigid_static_plane&							operator=(const rigid_static_plane&);
+					protected:
+						/** \brief copy ctor
+						*/
+						rigid_static_plane( rigid_static_plane const & ) = default;
+						/** \brief assignment
+						*/
+						rigid_static_plane&				operator=( rigid_static_plane const & ) = default;
+						/** \brief ctor
+						*/
+						rigid_static_plane( n32100::base::shared_t ) = default;
 					public:
-					/// ctor
-					rigid_static_plane( jess::shared_ptr<n32100::base> );
-					/// dtor
-					~rigid_static_plane();
-					/// init
-					virtual	void								init();
-					/// shutdown
-					virtual	void								shutdown();
-					/// update
-					virtual	void								update();
-					/// step
-					virtual	void								step( float );
-					/// render
-					virtual	void								render( jess::shared_ptr<n23000::base> );
-					/// create shapes
-					virtual	void								create_shapes();
-					public:
-					/// plane
-					jess::shared_ptr<n35100::plane>						plane_;
+						/** \brief dtor
+						*/
+						~rigid_static_plane();
+						/** \brief init
+						*/
+						virtual	void					init();
+						/** \brief shutdown
+						*/
+						virtual	void					shutdown();
+						/** \brief update
+						*/
+						virtual	void					update();
+						/** \brief step
+						*/
+						virtual	void					step( float );
+						/** \brief render
+						*/
+						virtual	void					render( n23000::base::shared_t );
+						/** \brief create shapes
+						*/
+						virtual	void					create_shapes();
+					protected:
+						/** \brief plane
+						*/
+						n35100::plane::shared_t				plane_;
 				};
 			}
 		}

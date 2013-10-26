@@ -25,7 +25,9 @@ n34100::controller::base::~base()
 void	n34100::controller::base::init()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-
+	
+	NEB_ASSERT( bool( physics_ ) );
+	
 	// parent
 	n34100::base::init();
 
@@ -36,22 +38,14 @@ void	n34100::controller::base::init()
 
 	pos_ = physx::PxVec3(0,0,2);
 
-/*
-	key_flag_[nebula::platform::key::w] = flag::eNORTH;
-	key_flag_[nebula::platform::key::s] = flag::eSOUTH;
-	key_flag_[nebula::platform::key::a] = flag::eWEST;
-	key_flag_[nebula::platform::key::d] = flag::eEAST;
-
-	key_down_event_[nebula::platform::key::r] = event::eRESET_VIEW_ANGLES;
-*/
 	jess::shared_ptr<n34100::controller::base> this_ptr = std::dynamic_pointer_cast<n34100::controller::base>( shared_from_this() );
 	
 	// control
 	control_.reset( new n34400::controller::def( this_ptr ) );
 
 	// renderer
-	renderer_.reset( new n34300::controller );
-	renderer_->init( shared_from_this() );	
+	renderer_.reset( new n34300::controller( shared_from_this() ) );
+	renderer_->init();	
 }
 void	n34100::controller::base::shutdown()
 {

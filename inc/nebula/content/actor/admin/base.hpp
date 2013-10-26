@@ -17,52 +17,68 @@ namespace nebula
 		{
 			namespace admin
 			{
-				/// base
+				/** \brief base
+				*/
 				class base:
 					public jess::enable_shared_from_this<n34100::base>
 				{
 					protected:
-						/// copy ctor
-						base(const base&);
-						/// assignment
-						base&									operator=(const base&);
+						/** \brief copy ctor
+						*/
+						base( base const & ) = default;
+						/** \brief assignment
+						*/
+						base&							operator=( base const & ) = default;
 					public:
-						/// ctor
+						/** \brief ctor
+						*/
 						base( jess::shared_ptr<n32100::base> );
-						/// dtor
+						/** \brief dtor
+						*/
 						virtual ~base();
-						/// init
-						virtual	void								init();
-						/// shutdown
-						virtual	void								shutdown();
-						/// update
-						virtual	void								update();
-						/// step
-						virtual	void								step( float );
-						/// render
-						virtual	void								render( jess::shared_ptr<n23000::base> );
-						/// physics material
-						virtual jess::shared_ptr<n34200::material>				create_physics_material();
-						/// create shapes
-						virtual	void								create_shapes();
-						/// get pose
-						physx::PxMat44								get_pose();
-						/// set pose
-						void									set_pose( physx::PxMat44 );
-						/// parent
-						std::weak_ptr<n32100::base>						parent_;
-						/// physics
-						jess::shared_ptr<n34200::base>						physics_;
-						/// renderer
-						jess::shared_ptr<n34300::base>						renderer_;
-						/// materials
-						jess::map<n34100::material>						materials_;
-						/// flag
-						int									flag_;
-						/// pose
-						physx::PxMat44								pose_;
-						/// velocity
-						physx::PxVec3								velocity_;
+						/** \brief init
+						*/
+						virtual	void						init();
+						/** \brief shutdown
+						*/
+						virtual	void						shutdown();
+						/** \brief update
+						*/
+						virtual	void						update();
+						/** \brief step
+						*/
+						virtual	void						step( float );
+						/** \brief render
+						*/
+						virtual	void						render( jess::shared_ptr<n23000::base> );
+						/** \brief material physics
+						*/
+						virtual jess::shared_ptr<n34200::material>		create_physics_material();
+						/** \brief create shapes
+						*/
+						virtual	void						create_shapes();
+					protected:
+						/** \brief parent
+						*/
+						n32100::base::weak_t					parent_;
+						/** \brief physics
+						*/
+						n34200::base::shared_t					physics_;
+						/** \brief renderer
+						*/
+						n34300::base::shared_t					renderer_;
+						/** \brief control
+						*/
+						n34400::base::shared_t					control_;
+						/** \brief materials
+						*/
+						jess::map<n34100::material>				materials_;
+						/** \brief flag
+						*/
+						unsigned int						flag_;
+						/** \brief pose
+						*/
+						physx::PxMat44						pose_;
 				};
 			}
 		}

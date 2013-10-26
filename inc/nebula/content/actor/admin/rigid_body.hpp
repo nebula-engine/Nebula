@@ -13,39 +13,43 @@ namespace nebula
 		{
 			namespace admin
 			{
-				/// rigid dynamic
+				/** \brief rigid dynamic
+				*/
 				class rigid_body:
 					public nebula::content::actor::admin::rigid_actor
 				{
 					protected:
-						/// copy ctor
-						rigid_body( rigid_body const & __actor__ ):
-							rigid_actor( __actor__ )
-					{
-
-					}
-						/// assignment
-						rigid_body&								operator=(const rigid_body&)
-						{
-							return *this;
-						}
+						/** \brief copy ctor
+						*/
+						rigid_body( rigid_body const & ) = default;
+						/** \brief assignment
+						*/
+						rigid_body&						operator=( rigid_body const & ) = default;
+						/** \brief ctor
+						*/
+						rigid_body( n32100::base::shared_t );
 					public:
-						// ctor
-						rigid_body( jess::shared_ptr<n32100::base> );
-						/// dtor
+						/** \brief dtor
+						*/
 						~rigid_body();
-						/// init
-						virtual	void								init();
-						/// shutdown
-						virtual	void								shutdown();
-						/// update
-						virtual	void								update();
-						/// step
-						virtual	void								step(float);
-						/// render
-						virtual	void								render( jess::shared_ptr<n23000::base> );
-						/// create shape
-						virtual void								create_shapes();
+						/** \brief init
+						*/
+						virtual	void						init();
+						/** \brief shutdown
+						*/
+						virtual	void						shutdown();
+						/** \brief update
+						*/
+						virtual	void						update();
+						/** \brief step
+						*/
+						virtual	void						step( float );
+						/** \brief render
+						*/
+						virtual	void						render( n23000::base::shared_t );
+						/** \briefcreate shape
+						*/
+						virtual void						create_shapes();
 				};
 			}
 		}

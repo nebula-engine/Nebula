@@ -3,11 +3,8 @@
 
 #include <nebula/content/scene/physics/base.hpp>
 
-n32200::base::base()
-{
-
-}
-n32200::base::base(const n32200::base& cpy)
+n32200::base::base( jess::shared_ptr<n32100::base> parent ):
+	parent_( parent )
 {
 
 }
@@ -15,11 +12,7 @@ n32200::base::~base()
 {
 
 }
-n32200::base&			n32200::base::operator=(const n32200::base& cpy)
-{
-	return *this;
-}
-void				n32200::base::init( jess::shared_ptr<n32100::base> )
+void				n32200::base::init()
 {
 
 }
@@ -27,11 +20,11 @@ void				n32200::base::shutdown()
 {
 
 }
-void						n32200::base::update()
+void				n32200::base::update()
 {
 
 }
-void						n32200::base::step( float dt )
+void				n32200::base::step( float dt )
 {
 	physx::PxU32 nbPxactor = px_scene_->getNbActors( physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC );
 	jess::clog << "there are " << nbPxactor << " Pxrigid_actor objects in the scene" << std::endl;

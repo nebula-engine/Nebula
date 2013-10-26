@@ -19,111 +19,112 @@ namespace nebula
 			{
 				/** \brief base
 				 *
-				 * \todo Create trigger object (might need to go in physics). Need to see if PhysX already has an object/fun30000tionality for this.
+				 * \todo Create trigger object (might need to go in physics).
+				 * Need to see if PhysX already has an object functionality for this.
 				 */
 				class base:
 					public jess::enable_shared_from_this<n32100::base>
 				{
 					public:
 						/** ctor
-						 */
-						base( jess::shared_ptr<n31100::base> );
+						*/
+						base( n31100::base::shared_t );
 						/** dtor
-						 */
+						*/
 						~base();
 						/** init
-						 */
-						virtual void									init();
+						*/
+						virtual void							init();
 						/** shutdown
-						 */
-						virtual void									shutdown();
+						*/
+						virtual void							shutdown();
 						/** update
-						 */
-						virtual void									update();
+						*/
+						virtual void							update();
 						/** step
-						 */
-						virtual void									step( float dt );
+						*/
+						virtual void							step( float dt );
 						/** render
-						 */
-						virtual void									render( jess::shared_ptr<n23000::base> );
+						*/
+						virtual void							render( n23000::base::shared_t );
 						/** get content
-						 */
-						jess::shared_ptr<n30000::base>							get_content();
+						*/
+						jess::shared_ptr<n30000::base>					get_content();
 						/** \brief controller to view
-						 */
-						void						connect_controller_to_view( jess::shared_ptr<n34100::controller::base>, jess::shared_ptr<n33100::base> );
+						*/
+						void								connect_controller_to_view(
+								n34100::controller::base::shared_t,
+								n33100::base::shared_t );
 						/** request window
-						 */
-						virtual jess::shared_ptr<n22000::base>						request_window();
+						*/
+						virtual n22000::base::shared_t					request_window();
 						/** rigid dynamic box
-						 */
-						virtual jess::shared_ptr<n34100::rigid_dynamic_box>				create_rigid_dynamic_box();
+						*/
+						virtual n34100::rigid_dynamic_box::shared_t			create_rigid_dynamic_box();
 						/** plane
-						 */
-						virtual jess::shared_ptr<n34100::rigid_static_plane>				create_rigid_static_plane();
+						*/
+						virtual n34100::rigid_static_plane::shared_t			create_rigid_static_plane();
 						/** create
-						 */
-						virtual jess::shared_ptr<n34100::controller::base>				create_controller();
+						*/
+						virtual n34100::controller::base::shared_t			create_controller();
 						/** box
-						 */
-						virtual jess::shared_ptr<n35100::box>						create_box( jess::shared_ptr<n34100::rigid_actor> );
+						*/
+						virtual n35100::box::shared_t					create_box(
+								n34100::rigid_actor::shared_t );
 						/** plane
-						 */
-						virtual jess::shared_ptr<n35100::plane>						create_plane( jess::shared_ptr<n34100::rigid_actor> );
-						/// create
-						//virtual jess::shared_ptr<n34200::rigid_dynamic_box>				create_physics_rigid_dynamic_box();
-						/// create
-						//virtual jess::shared_ptr<n34200::controller>					create_physics_controller();
-
-
-
-
-						/// get rid of this
-						//virtual void									register_rigid_dynamic( jess::shared_ptr<n34100::rigid_dynamic> );
-						/// create
-						template <class T> jess::shared_ptr<T>						create_view()
+						*/
+						virtual n35100::plane::shared_t					create_plane(
+								n34100::rigid_actor::shared_t );
+						/** \brief create
+						*/
+						template <class T> jess::shared_ptr<T>				create_view()
 						{
 							jess::clog << NEB_FUNCSIG << std::endl;
 
 							jess::shared_ptr<T> t( new T );
 
-							//void(*fun30000)(jess::shared_ptr<n32100::base>&) = &T::init;
-
-							views_.push<T>( t );//, std::bind( &T::init, std::placeholders::_1, shared_from_this() ) );
+							views_.push<T>( t );
 
 							t->init( shared_from_this() );
 
 							return t;
 						}
-						/// physics material
-						jess::shared_ptr<n34200::material>						request_physics_material();
-
-
-
-
+						/** \brief physics material
+						*/
+						n34200::material::shared_t					request_material_physics();
 					public:
-						/// parent
-						std::weak_ptr<n31100::base>							parent_;
-						/// time of last update
-						std::time_t									last_;
-						/// now
-						std::time_t									now_;
-						/// step size
-						float										step_size_;
-						/// accumulated time (replace with accumulator object)
-						float										accumulator_;
+						/** \brief parent
+						*/
+						std::weak_ptr<n31100::base>					parent_;
+						/** \brief time of last update
+						*/
+						std::time_t							last_;
+						/** \brief now
+						*/
+						std::time_t							now_;
+						/** \brief step size
+						*/
+						float								step_size_;
+						/** \brief accumulated time (replace with accumulator object)
+						*/
+						float								accumulator_;
 						///@name children
 						///@{
-						/// physics
-						jess::shared_ptr<n32200::base>							physics_;
-						/// renderer
-						jess::shared_ptr<n32300::base>							renderer_;
-						/// views
-						jess::map<n33100::base>								views_;
-						/// actors
-						jess::map<n34100::base>								actors_;
+						/**
+						*/
+						/** \brief physics
+						*/
+						jess::shared_ptr<n32200::base>					physics_;
+						/** \brief renderer
+						*/
+						jess::shared_ptr<n32300::base>					renderer_;
+						/** \brief views
+						*/
+						jess::map<n33100::base>						views_;
+						/** \brief actors
+						*/
+						jess::map<n34100::base>						actors_;
 						///@}
-
 				};
 			}
 		}

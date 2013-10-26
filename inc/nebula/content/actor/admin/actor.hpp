@@ -11,30 +11,40 @@ namespace nebula
 		{
 			namespace admin
 			{
-				/// rigid dynamic
+				/** \brief rigid dynamic
+				*/
 				class actor:
 					public n34100::base
 				{
 					protected:
-						/// Copy Ctor
-						actor(const actor&);
-						/// assignment
-						actor&									operator=(const actor&);
+						/** \breif copy ctor
+						*/
+						actor( actor const & ) = default;
+						/** \brief assignment
+						*/
+						actor&							operator=( actor const & ) = default;
+						/** \brief ctor
+						*/
+						actor( n32100::base::shared_t );
 					public:
-						// Ctor
-						actor( jess::shared_ptr<n32100::base> );
-						/// Dtor
+						/** \brief dtor
+						*/
 						virtual ~actor();
-						/// init
-						virtual	void								init();
-						/// shutdown
-						virtual	void								shutdown();
-						/// update
-						virtual	void								update();
-						/// step
-						virtual	void								step( float );
-						/// render
-						virtual	void								render( jess::shared_ptr<n23000::base> );
+						/** \brief init
+						*/
+						virtual	void						init();
+						/** \brief shutdown
+						*/
+						virtual	void						shutdown();
+						/** \brief update
+						*/
+						virtual	void						update();
+						/** \brief step
+						*/
+						virtual	void						step( float );
+						/** \brief render
+						*/
+						virtual	void						render( n23000::base::shared_t );
 				};
 			}
 		}

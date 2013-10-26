@@ -14,59 +14,73 @@ namespace nebula
 			namespace admin
 			{
 				/** controller
-				 */
+				*/
 				namespace controller
 				{
 					class base:
 						public n34100::base
 					{
-						friend class n30000::base;
-						friend class n32100::base;
-						friend class n34000::control::controller::base;
-						friend class n34000::control::controller::def;
-						friend class n34200::controller;
-						friend class n34300::controller;
 						public:
-
+							friend class n30000::base;
+							friend class n32100::base;
+							friend class n34200::controller;
+							friend class n34300::controller;
+							friend class n34400::controller::base;
+							friend class n34400::controller::def;
 						protected:
-						/// copy ctor
-						base(const base&);
-						/// assignment
-						base&								operator=(const base&);
-						/// ctor
-						base( jess::shared_ptr<n32100::base> );
+							/** \brief copy ctor
+							*/
+							base( base const & ) = default;
+							/** \brief assignment
+							*/
+							base&							operator=( base const & ) = default;
+							/** \brief ctor
+							*/
+							base( jess::shared_ptr<n32100::base> );
 						public:
-						/// dtor
-						virtual ~base();
-						/// init
-						virtual	void								init();
-						/// shutdown
-						virtual	void								shutdown();
-						/// update
-						virtual	void								update();
-						/// step
-						virtual	void								step( float );
-						/// render
-						virtual	void								render( jess::shared_ptr<n23000::base> );
-
-						/// create shapes
-						virtual	void								create_shapes();
-						/// lookat
-						virtual void								look_at( jess::shared_ptr<n23000::base> );
+							/** \brief dtor
+							*/
+							virtual ~base();
+							/** \brief init
+							*/
+							virtual	void						init();
+							/** \brief shutdown
+							*/
+							virtual	void						shutdown();
+							/** \brief update
+							*/
+							virtual	void						update();
+							/** \brief step
+							*/
+							virtual	void						step( float );
+							/** \brief render
+							*/
+							virtual	void						render( n23000::base::shared_t );
+							/** \brief create shapes
+							*/
+							virtual	void						create_shapes();
+							/** \brief lookat
+							*/
+							virtual void						look_at( n23000::base::shared_t );
 						protected:
-						/// pos
-						physx::PxVec3								pos_;
-						/// look
-						physx::PxVec3								look_;
-						/// up
-						physx::PxVec3								up_;
-						/// yaw
-						float									yaw_;
-						/// pitch
-						float									pitch_;
-						/** \brief control
-						 */
-						jess::shared_ptr<n34000::control::controller::base>			control_;
+							/** \brief pos
+							*/
+							physx::PxVec3						pos_;
+							/** \brief look
+							*/
+							physx::PxVec3						look_;
+							/** \brief up
+							*/
+							physx::PxVec3						up_;
+							/** \brief yaw
+							*/
+							float							yaw_;
+							/** \brief pitch
+							*/
+							float							pitch_;
+							/** \brief control
+							*/
+							n34400::controller::base::shared_t			control_;
 
 					};
 				}

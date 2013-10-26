@@ -13,36 +13,49 @@ namespace nebula
 		{
 			namespace admin
 			{
-				/// rigid dynamic
+				/** \brief rigid dynamic
+				*/
 				class rigid_dynamic_box:
 					public n34100::rigid_dynamic
 				{
 					protected:
-						/// copy ctor
+						/** \brief copy ctor
+						*/
 						rigid_dynamic_box(const rigid_dynamic_box&);
-						/// assignment
-						rigid_dynamic_box&							operator=(const rigid_dynamic_box&);
-					public:
-						/// ctor
+						/** \brief assignment
+						*/
+						rigid_dynamic_box&					operator=(const rigid_dynamic_box&);
+						/** \brief actor
+						*/
 						rigid_dynamic_box( jess::shared_ptr<n32100::base> );
-						/// dtor
+					public:
+						/** \brief dtor
+						*/
 						~rigid_dynamic_box();
-						/// init
-						virtual	void								init();
-						/// shutdown
-						virtual	void								shutdown();
-						/// update
-						virtual	void								update();
-						/// step
-						virtual	void								step( float );
-						/// render
-						virtual	void								render( jess::shared_ptr<n23000::base> );
-						/// create shapes
-						virtual	void								create_shapes();
-						/// shape
-						jess::shared_ptr<n35100::box>						box_;
-						/// size
-						physx::PxVec3								size_;
+						/** \brief init
+						*/
+						virtual	void						init();
+						/** \brief shutdown
+						*/
+						virtual	void						shutdown();
+						/** \brief update
+						*/
+						virtual	void						update();
+						/** \brief step
+						*/
+						virtual	void						step( float );
+						/** \brief render
+						*/
+						virtual	void						render( jess::shared_ptr<n23000::base> );
+						/** \brief create shapes
+						*/
+						virtual	void						create_shapes();
+						/** \brief shape
+						*/
+						jess::shared_ptr<n35100::box>				box_;
+						/** \brief size
+						*/
+						physx::PxVec3						size_;
 				};
 			}
 		}

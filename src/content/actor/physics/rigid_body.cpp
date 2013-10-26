@@ -15,7 +15,7 @@ void	n34200::rigid_body::init()
 {
 	n34200::rigid_actor::init();
 	
-	/// density and velocity
+	// density and velocity
 	velocity_ = physx::PxVec3(0,0,0);
 
 	density_ = 1000;
@@ -38,7 +38,7 @@ void	n34200::rigid_body::update()
 }
 void	n34200::rigid_body::step( float dt )
 {
-
+	jess::scoped_ostream( &jess::cout, NEB_FUNCSIG );
 }
 void	n34200::rigid_body::render( const jess::shared_ptr<n23000::base> rnd )
 {

@@ -18,41 +18,44 @@ namespace nebula
 			{
 				class base
 				{
+					protected:
+						/** \brief copy ctor
+						*/
+						base( basen const & ) = default;
+						/** \brief assignment
+						*/
+						base&							operator=( base const & ) = default;
 					public:
-
-						base();
-
+						/** \brief dtor
+						*/
 						virtual ~base();
-
-						base(const base&);
-
-						base&							operator=(const base&);
-
+						/** \brief init
+						*/
 						virtual void						init( jess::shared_ptr<n32100::base> );
-
+						/** \brief shutdown
+						*/
 						virtual void						shutdown();
-
+						/** \brief update
+						*/
 						virtual void						update();
-
-						virtual void						step(float);
-
+						/** \brief step
+						*/
+						virtual void						step( float );
+						/** \brief render
+						*/
 						virtual void						render( jess::shared_ptr<n23000::base> );
-
-						//virtual jess::shared_ptr<n34200::rigid_dynamic_box>	create_rigid_dynamic_box();
-						/// controller
-						//virtual jess::shared_ptr<n34200::controller>		create_controller();
-
-						//virtual void						register_actor( jess::shared_ptr<n34100::actor> );
-
+						/** \brief customize scene description
+						*/
 						virtual void						customize_scene_desc( physx::PxSceneDesc& );
 					public:
-
+						/** \brief parent
+						*/
 						std::weak_ptr<n32100::base>				parent_;
-						
-						physx::PxScene*						get_px_scene();
-
+						/** \brief PxScene
+						*/
 						physx::PxScene*						px_scene_;
-
+						/** \brief simulation filter shader
+						*/
 						physx::PxSimulationFilterShader				px_default_filter_shader_;
 				};
 			}

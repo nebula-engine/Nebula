@@ -11,34 +11,46 @@ namespace nebula
 		{
 			namespace physics
 			{
-				/// rigid dynamic
+				/** \brief rigid dynamic
+				*/
 				class rigid_body:
 					public nebula::content::actor::physics::rigid_actor
 				{
 					protected:
-						/// copy ctor
-						rigid_body(const rigid_body&);
-						/// assignment
-						rigid_body&								operator=(const rigid_body&);
+						/** \brief copy ctor
+						*/
+						rigid_body( rigid_body const & ) = default;
+						/** \brief assignment
+						*/
+						rigid_body&						operator=( rigid_body const & ) = default;
+						/** \brief ctor
+						*/
+						rigid_body( n34100::base::shared_t );
 					public:
-						// ctor
-						rigid_body( jess::shared_ptr<n34100::base> );
-						/// dtor
+						/** \brief dtor
+						*/
 						~rigid_body();
-						/// init
-						virtual	void								init();
-						/// shutdown
-						virtual	void								shutdown();
-						/// update
-						virtual	void								update();
-						/// step
-						virtual	void								step(float);
-						/// render
-						virtual	void								render( jess::shared_ptr<n23000::base> );
-						/// density
-						float									density_;
-						/// velocity
-						physx::PxVec3								velocity_;
+						/** \brief init
+						*/
+						virtual	void						init();
+						/** \brief shutdown
+						*/
+						virtual	void						shutdown();
+						/** \brief update
+						*/
+						virtual	void						update();
+						/** \brief step
+						*/
+						virtual	void						step( float );
+						/** \brief render
+						*/
+						virtual	void						render( n23000::base::shared_t );
+						/** \brief density
+						*/
+						float							density_;
+						/** \brief velocity
+						*/
+						physx::PxVec3						velocity_;
 				};
 			}
 		}

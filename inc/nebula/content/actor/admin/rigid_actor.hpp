@@ -21,33 +21,46 @@ namespace nebula
 					public n34100::actor
 				{
 					protected:
-						/// Copy Ctor
-						rigid_actor(const rigid_actor&);
-						/// assignment
-						rigid_actor&								operator=(const rigid_actor&);
-					public:
-						// Ctor
+						/** \brief copy ctor
+						*/
+						rigid_actor( rigid_actor const & ) = default;
+						/** \brief assignment
+						*/
+						rigid_actor&						operator=( rigid_actor const & ) = default;
+						/** \brief ctor
+						*/
 						rigid_actor( jess::shared_ptr<n32100::base> );
-						/// Dtor
+					public:
+						/** \brief dtor
+						*/
 						~rigid_actor();
-						/// init
-						virtual	void								init();
-						/// shutdown
-						virtual	void								shutdown();
-						/// update
-						virtual	void								update();
-						/// step
-						virtual	void								step( float );
-						/// render
-						virtual	void								render( jess::shared_ptr<n23000::base> );
-						/// create shapes
-						virtual	void								create_shapes();
-						/// create box
-						virtual jess::shared_ptr<n35100::box>					create_box();
-						/// create plane
-						virtual jess::shared_ptr<n35100::plane>					create_plane();
-						/// shapes
-						jess::map<n35100::base>							shapes_;
+						/** \brief init
+						*/
+						virtual	void						init();
+						/** \brief shutdown
+						*/
+						virtual	void						shutdown();
+						/** \brief update
+						*/
+						virtual	void						update();
+						/** \brief step
+						*/
+						virtual	void						step( float );
+						/** \brief render
+						*/
+						virtual	void						render( n23000::base::shared_t );
+						/** \brief create shapes
+						*/
+						virtual	void						create_shapes();
+						/** \brief create box
+						*/
+						virtual jess::shared_ptr<n35100::box>			create_box();
+						/** \brief create plane
+						*/
+						virtual jess::shared_ptr<n35100::plane>			create_plane();
+						/** \brief shapes
+						*/
+						jess::map<n35100::base>					shapes_;
 				};
 			}
 		}

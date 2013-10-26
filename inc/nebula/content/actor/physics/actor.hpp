@@ -14,36 +14,41 @@ namespace nebula
 		{
 			namespace physics
 			{
-				/// actor
+				/** \brief actor
+				*/
 				class actor:
 					public nebula::content::actor::physics::base
 				{
 					protected:
-						/// copy ctor
-						actor( actor const & _actor_ ): base( _actor_ )
-						{
-
-						}
-						/// assignment
-						actor&									operator=(const actor&)
-						{
-							return *this;
-						}
-					public:
-						/// ctor
+						/** \brief copy ctor
+						*/
+						actor( actor const & ) = default;
+						/** \brief assignment
+						*/
+						actor&							operator=( actor const & ) = default;
+						/** \brief ctor
+						*/
 						actor( jess::shared_ptr<n34100::base> );
-						/// dtor
+					public:
+						/** \brief dtor
+						*/
 						~actor();
-						/// init
-						virtual	void								init();
-						/// shutdown
-						virtual	void								shutdown();
-						/// update
-						virtual	void								update();
-						/// step
-						virtual	void								step();
-						/// px actor
-						physx::PxActor*								px_actor_;
+						/** \brief init
+						*/
+						virtual	void						init();
+						/** \brief shutdown
+						*/
+						virtual	void						shutdown();
+						/** \brief update
+						*/
+						virtual	void						update();
+						/** \brief step
+						*/
+						virtual	void						step();
+					public:
+						/** \brief px actor
+						*/
+						physx::PxActor*						px_actor_;
 				};
 			}
 		}

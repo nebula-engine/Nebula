@@ -1,8 +1,6 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_DYNAMIC_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_DYNAMIC_HPP__
 
-
-
 #include <nebula/content/actor/physics/rigid_body.hpp>
 
 namespace nebula
@@ -13,31 +11,42 @@ namespace nebula
 		{
 			namespace physics
 			{
-				/// rigid dynamic
+				/** \brief rigid dynamic
+				*/
 				class rigid_dynamic:
 					public nebula::content::actor::physics::rigid_body
 				{
 					protected:
-						/// copy ctor
+						/** \brief copy ctor
+						*/
 						rigid_dynamic(const rigid_dynamic&);
-						/// assignment
+						/** \brief assignment
+						*/
 						rigid_dynamic&								operator=(const rigid_dynamic&);
-					public:
-						// ctor
+						/** \brief ctor
+						*/
 						rigid_dynamic( jess::shared_ptr<n34100::base> );
-						/// dtor
+					public:
+						/** \brief dtor
+						*/
 						~rigid_dynamic();
-						/// init
+						/** \brief init
+						*/
 						virtual	void								init();
-						/// shutdown
+						/** \brief shutdown
+						*/
 						virtual	void								shutdown();
-						/// update
+						/** \brief update
+						*/
 						virtual	void								update();
-						/// step
+						/** \brief step
+						*/
 						virtual	void								step(float);
-						/// render
+						/** \brief render
+						*/
 						virtual	void								render( jess::shared_ptr<n23000::base> );
-						/// create shapes
+						/** \brief create shapes
+						*/
 						virtual	void								create_shape();
 				};
 			}

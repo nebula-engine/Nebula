@@ -16,24 +16,38 @@ namespace nebula
 		class base:
 			public jess::enable_shared_from_this<n30000::base>
 		{
+			protected:
+				/** \brief copy ctor
+				*/
+				base( base const & ) = default;
+				/** \brief assignment
+				*/
+				base&								operator=( base const & ) = default;
 			public:
-				/// ctor
+				/** \brief ctor
+				*/
 				base( jess::shared_ptr<n10000::app> );
-				/// dtor
+				/** \brief dtor
+				*/
 				virtual ~base();
-				/// init
+				/** \brief init
+				*/
 				virtual void							init();
-				/// shutdown
+				/** \brief shutdown
+				*/
 				virtual void							shutdown();
-				/// update
+				/** \brief update
+				*/
 				virtual void							update();
-				/// request window
+				/** \brief request window
+				*/
 				virtual jess::shared_ptr<n22000::base>				request_window();
 				///@name create
 				///@{
 				/**
-				 */
-				/// universe
+				*/
+				/** \brief universe
+				*/
 				template <class T> jess::shared_ptr<T>				create_universe()
 				{
 					jess::clog << NEB_FUNCSIG << std::endl;
@@ -46,7 +60,8 @@ namespace nebula
 
 					return t;
 				}
-				/// scene
+				/** \brief scene
+				*/
 				template <class T> jess::shared_ptr<T>				create_scene( jess::shared_ptr<n31100::base> universe )
 				{
 					jess::clog << NEB_FUNCSIG << std::endl;
@@ -59,37 +74,43 @@ namespace nebula
 
 					return t;
 				}
-				/// rigid dynamic box
+				/** \brief rigid dynamic box
+				*/
 				virtual jess::shared_ptr<n34100::rigid_dynamic_box>		create_rigid_dynamic_box(
 						jess::shared_ptr<n32100::base>
 						//jess::shared_ptr<n34100::base>
 						);
-				/// rigid static plane
+				/** \brief rigid static plane
+				*/
 				virtual jess::shared_ptr<n34100::rigid_static_plane>		create_rigid_static_plane(
 						jess::shared_ptr<n32100::base>
 						//jess::shared_ptr<n34100::base>
 						);
-				/// controller
+				/** \brief controller
+				*/
 				virtual jess::shared_ptr<n34100::controller::base>		create_controller(
 						jess::shared_ptr<n32100::base>
 						//jess::shared_ptr<n34100::base>
 						);
 				/** box
-				 */
+				*/
 				virtual jess::shared_ptr<n35100::box>				create_box( jess::shared_ptr<n34100::rigid_actor> );
 				/** plane
-				 */
+				*/
 				virtual jess::shared_ptr<n35100::plane>				create_plane( jess::shared_ptr<n34100::rigid_actor> );
 				///@}
 				/** physics material
-				 */
+				*/
 				jess::shared_ptr<n34200::material>				request_physics_material();
 			protected:
-				/// physics
+				/** \brief physics
+				*/
 				jess::shared_ptr<n36000::base>					physics_;
-				/// universes
+				/** \brief universes
+				*/
 				jess::map<n31100::base>						universes_;
-				/// parent
+				/** \brief parent
+				*/
 				std::weak_ptr<n10000::app>					parent_;
 		};
 	}

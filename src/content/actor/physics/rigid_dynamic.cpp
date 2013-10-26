@@ -24,7 +24,7 @@ void	n34200::rigid_dynamic::update()
 }
 void	n34200::rigid_dynamic::step(float)
 {
-
+	
 }
 void	n34200::rigid_dynamic::render( jess::shared_ptr<n23000::base> rnd )
 {
