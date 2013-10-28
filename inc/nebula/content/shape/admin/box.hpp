@@ -26,7 +26,7 @@ namespace nebula
 						box&								operator=( box const & ) = default;
 					public:
 						/// ctor
-						box( jess::shared_ptr<n34100::rigid_actor> );
+						box( std::shared_ptr<n34100::rigid_actor> );
 						/// init
 						void								init();
 						/// shutdown

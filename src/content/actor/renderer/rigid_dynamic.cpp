@@ -5,7 +5,9 @@
 * Also, remove derived class member fun30000tions where not used
 **/
 
-n34300::rigid_dynamic::rigid_dynamic()
+n34300::rigid_dynamic::rigid_dynamic( std::shared_ptr<n34100::base> parent ):
+n34300::base( parent ),
+n34300::rigid_body( parent )
 {
 
 }
@@ -13,17 +15,9 @@ n34300::rigid_dynamic::~rigid_dynamic()
 {
 
 }
-n34300::rigid_dynamic::rigid_dynamic( const n34300::rigid_dynamic& act )
+void	n34300::rigid_dynamic::init()
 {
-
-}
-n34300::rigid_dynamic&	n34300::rigid_dynamic::operator=( const n34300::rigid_dynamic& act )
-{
-	return *this;
-}
-void	n34300::rigid_dynamic::init( jess::shared_ptr<n34100::base> parent )
-{
-	n34300::rigid_body::init( parent );
+	n34300::rigid_body::init();
 }
 void	n34300::rigid_dynamic::shutdown()
 {

@@ -27,7 +27,7 @@ namespace nebula
 						rigid_dynamic&						operator=(const rigid_dynamic&);
 						/** \brief ctor
 						*/
-						rigid_dynamic( n32100::base::shared_t );
+						rigid_dynamic( std::shared_ptr<n32100::base> );
 					public:
 						/** \brief dtor
 						*/

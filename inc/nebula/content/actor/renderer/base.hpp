@@ -20,7 +20,7 @@ namespace nebula
 					///@name ctor and dtor
 					///@{
 					// Ctor
-					base();
+					base( std::shared_ptr<n34100::base> );
 					/// Copy Ctor
 					base(const base&);
 					/// Dtor
@@ -36,7 +36,7 @@ namespace nebula
 
 
 					/// init
-					virtual	void								init( jess::shared_ptr<n34100::base> );
+					virtual	void								init();
 					/// shutdown
 					virtual	void								shutdown();
 					/// update
@@ -44,7 +44,7 @@ namespace nebula
 					/// step
 					virtual	void								step( float );
 					/// render
-					virtual	void								render( jess::shared_ptr<n23000::base> );
+					virtual	void								render( std::shared_ptr<n23000::base> );
 
 
 

@@ -5,7 +5,7 @@
 
 #include <nebula/content/actor/admin/rigid_dynamic_box.hpp>
 
-n34100::rigid_dynamic_box::rigid_dynamic_box( jess::shared_ptr<n32100::base> parent ):
+n34100::rigid_dynamic_box::rigid_dynamic_box( std::shared_ptr<n32100::base> parent ):
 rigid_dynamic( parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -23,8 +23,8 @@ void	n34100::rigid_dynamic_box::init()
 	n34100::rigid_dynamic::init();
 
 	// renderer
-	renderer_.reset( new n34300::rigid_dynamic_box );
-	renderer_->init( shared_from_this() );
+	renderer_.reset( new n34300::rigid_dynamic_box( shared_from_this() ) );
+	renderer_->init();
 }
 void	n34100::rigid_dynamic_box::shutdown( )
 {

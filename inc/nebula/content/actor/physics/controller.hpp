@@ -19,6 +19,8 @@ namespace nebula
 				class controller:
 					virtual public n34200::base
 				{
+public:
+friend class n36000::base;
 					protected:
 						/** \brief copy ctor
 						*/

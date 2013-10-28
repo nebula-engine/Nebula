@@ -3,7 +3,7 @@
 
 #include <nebula/content/scene/physics/base.hpp>
 
-n32200::base::base( jess::shared_ptr<n32100::base> parent ):
+n32200::base::base( std::shared_ptr<n32100::base> parent ):
 	parent_( parent )
 {
 
@@ -44,7 +44,7 @@ void				n32200::base::step( float dt )
 
 		physx::PxMat44 pose( active_transforms[i].actor2World );
 
-		act->set_pose( pose );
+		act->pose_ = pose;
 
 		//printf("transform.p.y=%16f\n",activeTransforms[i].actor2World.p.y);
 	}

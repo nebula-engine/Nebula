@@ -2,7 +2,9 @@
 
 
 
-n34300::rigid_static::rigid_static()
+n34300::rigid_static::rigid_static( std::shared_ptr<n34100::base> parent ):
+n34300::base( parent ),
+n34300::rigid_actor( parent )
 {
 
 }
@@ -10,9 +12,9 @@ n34300::rigid_static::~rigid_static()
 {
 
 }
-void	n34300::rigid_static::init( jess::shared_ptr<n34100::base> parent )
+void	n34300::rigid_static::init()
 {
-	n34300::rigid_actor::init( parent );
+	n34300::rigid_actor::init();
 }
 void	n34300::rigid_static::shutdown(){
 	

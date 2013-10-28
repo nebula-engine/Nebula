@@ -6,7 +6,7 @@
 
 #include <nebula/content/shape/admin/box.hpp>
 
-n35100::box::box( jess::shared_ptr<n34100::rigid_actor> parent ):
+n35100::box::box( std::shared_ptr<n34100::rigid_actor> parent ):
 	n35100::base( parent )
 {
 	

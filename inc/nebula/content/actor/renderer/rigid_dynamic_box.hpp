@@ -18,26 +18,19 @@ namespace nebula
 					public n34300::rigid_dynamic
 				{
 				public:
-					///@name ctor and dtor
-					///@{
-					// Ctor
-					rigid_dynamic_box();
+					/// ctor
+					rigid_dynamic_box( std::shared_ptr<n34100::base> );
 					/// Copy Ctor
 					rigid_dynamic_box(const rigid_dynamic_box&);
 					/// Dtor
 					~rigid_dynamic_box();
-					///@}
-
-					///@name operator
-					///@{
 					/// assignment
 					rigid_dynamic_box&							operator=(const rigid_dynamic_box&);
-					///@}
 
 				
 
 					/// init
-					virtual	void								init( jess::shared_ptr<n34100::base> );
+					virtual	void								init();
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

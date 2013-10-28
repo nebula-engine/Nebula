@@ -23,7 +23,7 @@ namespace nebula
 					///@name ctor and dtor
 					///@{
 					// Ctor
-					actor();
+					actor( std::shared_ptr<n34100::base> );
 					/// Copy Ctor
 					actor(const actor&);
 					/// Dtor
@@ -39,7 +39,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init( jess::shared_ptr<n34100::base> );
+					virtual	void								init();
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

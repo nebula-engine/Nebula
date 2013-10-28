@@ -75,37 +75,37 @@ namespace nebula
 					*/
 					/** \brief scene
 					*/
-					jess::shared_ptr<n32200::base>				create_scene();
+					std::shared_ptr<n32200::base>				create_scene( std::shared_ptr<n32100::base> );
 					/** \brief rigid dynamic
 					*/
-					jess::shared_ptr<n34200::rigid_dynamic>			create_rigid_dynamic(
-							jess::shared_ptr<n32100::base>,
-							jess::shared_ptr<n34100::base>
+					std::shared_ptr<n34200::rigid_dynamic>			create_rigid_dynamic(
+							std::shared_ptr<n32100::base>,
+							std::shared_ptr<n34100::base>
 							);
 					/** \brief rigid dynamic box
 					*/
-					jess::shared_ptr<n34200::rigid_dynamic_box>		create_rigid_dynamic_box(
-							jess::shared_ptr<n32100::base>,
-							jess::shared_ptr<n34100::base>
+					std::shared_ptr<n34200::rigid_dynamic_box>		create_rigid_dynamic_box(
+							std::shared_ptr<n32100::base>,
+							std::shared_ptr<n34100::base>
 							);
 					/** \brief controller
 					*/
-					jess::shared_ptr<n34200::controller>			create_controller(
-							jess::shared_ptr<n32100::base>,
-							jess::shared_ptr<n34100::base>
+					std::shared_ptr<n34200::controller>			create_controller(
+							std::shared_ptr<n32100::base>,
+							std::shared_ptr<n34100::base>
 							);
 					/** box
 					*/
-					jess::shared_ptr<n35200::box>				create_box( jess::shared_ptr<n35100::box> );
+					std::shared_ptr<n35200::box>				create_box( std::shared_ptr<n35100::box> );
 					/** box
 					*/
-					jess::shared_ptr<n35200::plane>				create_plane( jess::shared_ptr<n35100::plane> );
+					std::shared_ptr<n35200::plane>				create_plane( std::shared_ptr<n35100::plane> );
 					/** \brief physics material
 					*/
-					jess::shared_ptr<n34200::material>			request_physics_material();
+					std::shared_ptr<n34200::material>			request_physics_material();
 					/** \brief physics material
 					*/
-					jess::shared_ptr<n34200::material>			create_physics_material();
+					std::shared_ptr<n34200::material>			create_physics_material();
 					///@}
 					/** \brief initialize rigid actor
 					*/

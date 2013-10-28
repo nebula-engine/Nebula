@@ -16,6 +16,8 @@ namespace nebula
 				class rigid_dynamic_box:
 					public nebula::content::actor::physics::rigid_dynamic
 				{
+public:
+friend class n36000::base;
 					protected:
 						/** \brief copy ctor
 						*/

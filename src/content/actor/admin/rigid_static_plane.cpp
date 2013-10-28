@@ -16,8 +16,8 @@ void	n34100::rigid_static_plane::init()
 
 	n34100::rigid_static::init();
 	
-	renderer_.reset( new n34300::rigid_static_plane );
-	renderer_->init( shared_from_this() );
+	renderer_.reset( new n34300::rigid_static_plane( shared_from_this() ) );
+	renderer_->init();
 }
 void	n34100::rigid_static_plane::shutdown()
 {

@@ -18,26 +18,16 @@ namespace nebula
 					public n34300::rigid_body
 				{
 					public:
-						///@name ctor and dtor
-						///@{
 						// Ctor
-						rigid_dynamic();
+						rigid_dynamic( std::shared_ptr<n34100::base> );
 						/// Copy Ctor
 						rigid_dynamic(const rigid_dynamic&);
 						/// Dtor
 						~rigid_dynamic();
-						///@}
-
-						///@name operator
-						///@{
 						/// assignment
 						rigid_dynamic&								operator=(const rigid_dynamic&);
-						///@}
-
-
-
 						/// init
-						virtual	void								init( jess::shared_ptr<n34100::base> );
+						virtual	void								init();
 						/// shutdown
 						virtual	void								shutdown();
 						/// update
@@ -46,10 +36,6 @@ namespace nebula
 						virtual	void								step(float);
 						/// render
 						virtual	void								render( jess::shared_ptr<n23000::base> );
-
-
-
-
 						/// create shapes
 						virtual	void								create_shapes();
 				};

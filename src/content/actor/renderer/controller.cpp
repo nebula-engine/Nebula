@@ -4,17 +4,18 @@
 
 #include <nebula/content/actor/renderer/controller.hpp>
 
-n34300::controller::controller()
+n34300::controller::controller( std::shared_ptr<n34100::base> parent ):
+n34300::base( parent )
 {
 }
 n34300::controller::~controller()
 {
 }
-void	n34300::controller::init( jess::shared_ptr<n34100::base> parent )
+void	n34300::controller::init()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	n34300::base::init( parent );
+	n34300::base::init();
 
 	
 }
@@ -26,7 +27,7 @@ void	n34300::controller::update()
 {
 	
 }
-void	n34300::controller::render( jess::shared_ptr<n23000::base> rnd )
+void	n34300::controller::render( std::shared_ptr<n23000::base> rnd )
 {
 	jess::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>( parent_.lock() );
 

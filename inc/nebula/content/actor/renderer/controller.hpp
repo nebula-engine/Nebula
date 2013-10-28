@@ -17,6 +17,8 @@ namespace nebula
 				class controller:
 					public n34300::base
 				{
+public:
+friend class n34100::controller::base;
 					protected:
 						/** \brief copy ctor
 						*/
@@ -33,7 +35,7 @@ namespace nebula
 						~controller();
 						/** \brief init
 						*/
-						virtual	void								init( std::shared_ptr<n34100::base> );
+						virtual	void								init();
 						/** \brief shutdown
 						*/
 						virtual	void								shutdown();

@@ -19,12 +19,12 @@ namespace nebula
 				{
 				public:
 					/// ctor
-					rigid_static();
+					rigid_static( std::shared_ptr<n34100::base> );
 					/// dtor
 					~rigid_static();
 
 					/// Initialize
-					virtual	void						init( jess::shared_ptr<n34100::base> );
+					virtual	void						init();
 					/// ShutDown
 					virtual	void						shutdown();
 					/// Update

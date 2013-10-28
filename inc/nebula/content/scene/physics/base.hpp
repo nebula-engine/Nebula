@@ -18,44 +18,49 @@ namespace nebula
 			{
 				class base
 				{
+					public:
+						friend class n36000::base;
 					protected:
 						/** \brief copy ctor
-						*/
-						base( basen const & ) = default;
+						 */
+						base( base const & ) = default;
 						/** \brief assignment
-						*/
+						 */
 						base&							operator=( base const & ) = default;
+						/** \brief ctor
+						 */
+						base( std::shared_ptr<n32100::base> );
 					public:
 						/** \brief dtor
-						*/
+						 */
 						virtual ~base();
 						/** \brief init
-						*/
-						virtual void						init( jess::shared_ptr<n32100::base> );
+						 */
+						virtual void						init();
 						/** \brief shutdown
-						*/
+						 */
 						virtual void						shutdown();
 						/** \brief update
-						*/
+						 */
 						virtual void						update();
 						/** \brief step
-						*/
+						 */
 						virtual void						step( float );
 						/** \brief render
-						*/
+						 */
 						virtual void						render( jess::shared_ptr<n23000::base> );
 						/** \brief customize scene description
-						*/
+						 */
 						virtual void						customize_scene_desc( physx::PxSceneDesc& );
 					public:
 						/** \brief parent
-						*/
+						 */
 						std::weak_ptr<n32100::base>				parent_;
 						/** \brief PxScene
-						*/
+						 */
 						physx::PxScene*						px_scene_;
 						/** \brief simulation filter shader
-						*/
+						 */
 						physx::PxSimulationFilterShader				px_default_filter_shader_;
 				};
 			}

@@ -21,7 +21,7 @@ namespace nebula
 					///@name ctor and dtor
 					///@{
 					// Ctor
-					rigid_actor();
+					rigid_actor( std::shared_ptr<n34100::base> );
 					/// Copy Ctor
 					rigid_actor(const rigid_actor&);
 					/// Dtor
@@ -37,7 +37,7 @@ namespace nebula
 				
 
 					/// init
-					virtual	void								init( jess::shared_ptr<n34100::base> );
+					virtual	void								init();
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

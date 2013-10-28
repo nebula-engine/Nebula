@@ -23,7 +23,7 @@
 
 #include <nebula/content/base.hpp>
 
-nebula::content::base::base( jess::shared_ptr<n10000::app> parent ):
+nebula::content::base::base( std::shared_ptr<n10000::app> parent ):
 	parent_(parent)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -53,23 +53,23 @@ void	nebula::content::base::shutdown()
 
 	universes_.clear();
 }
-jess::shared_ptr<n22000::base>	n30000::base::request_window()
+std::shared_ptr<n22000::base>	n30000::base::request_window()
 {
 	return ( parent_.lock()->request_window() );
 }
 
-jess::shared_ptr<n34200::material>	n30000::base::request_physics_material()
+std::shared_ptr<n34200::material>	n30000::base::request_physics_material()
 {
 	return ( physics_->request_physics_material() );
 }
-jess::shared_ptr<n34100::rigid_dynamic_box>	n30000::base::create_rigid_dynamic_box(
-		jess::shared_ptr<n32100::base> scene
+std::shared_ptr<n34100::rigid_dynamic_box>	n30000::base::create_rigid_dynamic_box(
+		std::shared_ptr<n32100::base> scene
 		)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// create
-	jess::shared_ptr<n34100::rigid_dynamic_box> actor( new n34100::rigid_dynamic_box( scene ) );
+	std::shared_ptr<n34100::rigid_dynamic_box> actor( new n34100::rigid_dynamic_box( scene ) );
 
 	// physics
 	actor->physics_ = std::static_pointer_cast<n34200::base>( physics_->create_rigid_dynamic_box( scene, actor ) );
@@ -79,14 +79,14 @@ jess::shared_ptr<n34100::rigid_dynamic_box>	n30000::base::create_rigid_dynamic_b
 
 	return actor;
 }
-jess::shared_ptr<n34100::rigid_static_plane>	n30000::base::create_rigid_static_plane(
-		jess::shared_ptr<n32100::base> scene
+std::shared_ptr<n34100::rigid_static_plane>	n30000::base::create_rigid_static_plane(
+		std::shared_ptr<n32100::base> scene
 		)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// create
-	jess::shared_ptr<n34100::rigid_static_plane> actor( new n34100::rigid_static_plane( scene ) );
+	std::shared_ptr<n34100::rigid_static_plane> actor( new n34100::rigid_static_plane( scene ) );
 
 	// physics
 	actor->physics_ = std::static_pointer_cast<n34200::base>( physics_->create_rigid_dynamic_box( scene, actor ) );
@@ -96,14 +96,14 @@ jess::shared_ptr<n34100::rigid_static_plane>	n30000::base::create_rigid_static_p
 
 	return actor;
 }
-jess::shared_ptr<n34100::controller::base>	n30000::base::create_controller(
-		jess::shared_ptr<n32100::base> scene
+std::shared_ptr<n34100::controller::base>	n30000::base::create_controller(
+		std::shared_ptr<n32100::base> scene
 		)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	// create
-	jess::shared_ptr<n34100::controller::base> actor( new n34100::controller::base( scene ) );
+	std::shared_ptr<n34100::controller::base> actor( new n34100::controller::base( scene ) );
 	
 	// physics
 	actor->physics_ = std::static_pointer_cast<n34200::base>( physics_->create_controller( scene, actor ) );
@@ -113,10 +113,10 @@ jess::shared_ptr<n34100::controller::base>	n30000::base::create_controller(
 	
 	return actor;
 }
-jess::shared_ptr<n35100::box>			n30000::base::create_box( jess::shared_ptr<n34100::rigid_actor> actor )
+std::shared_ptr<n35100::box>			n30000::base::create_box( std::shared_ptr<n34100::rigid_actor> actor )
 {
 	// create
-	jess::shared_ptr<n35100::box> box( new n35100::box( actor ) );
+	std::shared_ptr<n35100::box> box( new n35100::box( actor ) );
 	
 	box->physics_ = physics_->create_box( box );
 	
@@ -124,10 +124,10 @@ jess::shared_ptr<n35100::box>			n30000::base::create_box( jess::shared_ptr<n3410
 	
 	return box;
 }
-jess::shared_ptr<n35100::plane>			n30000::base::create_plane( jess::shared_ptr<n34100::rigid_actor> actor )
+std::shared_ptr<n35100::plane>			n30000::base::create_plane( std::shared_ptr<n34100::rigid_actor> actor )
 {
 	// create
-	jess::shared_ptr<n35100::plane> plane( new n35100::plane( actor ) );
+	std::shared_ptr<n35100::plane> plane( new n35100::plane( actor ) );
 	
 	plane->physics_ = physics_->create_plane( plane );
 	

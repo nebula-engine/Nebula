@@ -47,7 +47,7 @@ namespace nebula
 						virtual	void						step( float );
 						/** \brief create shapes
 						*/
-						virtual	void						create_shape();
+						virtual	void						create_shapes();
 
 
 				};

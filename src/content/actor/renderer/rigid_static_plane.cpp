@@ -1,7 +1,9 @@
 #include <nebula/content/actor/renderer/rigid_static_plane.hpp>
 
 
-n34300::rigid_static_plane::rigid_static_plane()
+n34300::rigid_static_plane::rigid_static_plane( std::shared_ptr<n34100::base> parent ):
+n34300::base( parent ),
+n34300::rigid_static( parent )
 {
 
 }
@@ -9,9 +11,9 @@ n34300::rigid_static_plane::~rigid_static_plane()
 {
 
 }
-void	n34300::rigid_static_plane::init( jess::shared_ptr<n34100::base> parent )
+void	n34300::rigid_static_plane::init()
 {
-	
+	n34300::rigid_static::init();
 }
 void	n34300::rigid_static_plane::shutdown()
 {

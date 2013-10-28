@@ -60,14 +60,14 @@ void	n34100::controller::base::step( float dt )
 {
 	n34100::base::step( dt );
 }
-void	n34100::controller::base::render( jess::shared_ptr<n23000::base> rnd )
+void	n34100::controller::base::render( std::shared_ptr<n23000::base> rnd )
 {
 }
 void	n34100::controller::base::create_shapes()
 {
 
 }
-void	n34100::controller::base::look_at( jess::shared_ptr<n23000::base> rnd )
+void	n34100::controller::base::look_at( std::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 

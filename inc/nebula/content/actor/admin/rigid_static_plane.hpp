@@ -16,6 +16,8 @@ namespace nebula
 				class rigid_static_plane:
 					public nebula::content::actor::admin::rigid_static
 				{
+public:
+friend class n30000::base;
 					protected:
 						/** \brief copy ctor
 						*/

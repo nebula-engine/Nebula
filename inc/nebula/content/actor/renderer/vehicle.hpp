@@ -18,26 +18,16 @@ namespace nebula
 					public n34300::base
 				{
 				public:
-					///@name ctor and dtor
-					///@{
 					// Ctor
-					vehicle();
+					vehicle( std::shared_ptr<n34100::base> );
 					/// Copy Ctor
 					vehicle(const vehicle&);
 					/// Dtor
 					~vehicle();
-					///@}
-
-					///@name operator
-					///@{
 					/// assignment
 					vehicle&								operator=(const vehicle&);
-					///@}
-					
-					
-
 					/// init
-					virtual	void								init( jess::shared_ptr<n34100::base>);
+					virtual	void								init();
 					/// shutdown
 					virtual	void								shutdown();
 					/// update

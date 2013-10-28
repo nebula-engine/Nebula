@@ -64,7 +64,7 @@ namespace nebula
 							base&						operator=( base const & ) = default;
 							/** \brief ctor
 							*/
-							base( jess::shared_ptr<n34100::controller::base> );
+							base( jess::shared_ptr<n34100::base> );
 						public:
 							/** \brief dtor
 							*/

@@ -38,32 +38,32 @@ jess::shared_ptr<n22000::base>			n31100::base::request_window()
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->request_window() );
 }
-jess::shared_ptr<n34200::material>		n31100::base::request_physics_material()
+std::shared_ptr<n34200::material>		n31100::base::request_material_physics()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->request_physics_material() );
 }
-jess::shared_ptr<n34100::rigid_dynamic_box>	n31100::base::create_rigid_dynamic_box( jess::shared_ptr<n32100::base> scene )
+std::shared_ptr<n34100::rigid_dynamic_box>	n31100::base::create_rigid_dynamic_box( std::shared_ptr<n32100::base> scene )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->create_rigid_dynamic_box( scene ) );
 }
-jess::shared_ptr<n34100::rigid_static_plane>	n31100::base::create_rigid_static_plane( jess::shared_ptr<n32100::base> scene )
+std::shared_ptr<n34100::rigid_static_plane>	n31100::base::create_rigid_static_plane( std::shared_ptr<n32100::base> scene )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->create_rigid_static_plane( scene ) );
 }
-jess::shared_ptr<n34100::controller::base>	n31100::base::create_controller( jess::shared_ptr<n32100::base> scene )
+std::shared_ptr<n34100::controller::base>	n31100::base::create_controller( std::shared_ptr<n32100::base> scene )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->create_controller( scene ) );
 }
-jess::shared_ptr<n35100::box>			n31100::base::create_box( jess::shared_ptr<n34100::rigid_actor> actor )
+std::shared_ptr<n35100::box>			n31100::base::create_box( std::shared_ptr<n34100::rigid_actor> actor )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->create_box( actor ) );
 }
-jess::shared_ptr<n35100::plane>			n31100::base::create_plane( jess::shared_ptr<n34100::rigid_actor> actor )
+std::shared_ptr<n35100::plane>			n31100::base::create_plane( std::shared_ptr<n34100::rigid_actor> actor )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->create_plane( actor ) );

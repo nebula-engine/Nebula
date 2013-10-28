@@ -3,7 +3,7 @@
 
 
 
-n34100::rigid_body::rigid_body( jess::shared_ptr<n32100::base> parent ):
+n34100::rigid_body::rigid_body( std::shared_ptr<n32100::base> parent ):
 rigid_actor( parent )
 {
 
@@ -26,7 +26,7 @@ void	n34100::rigid_body::update()
 {
 	n34100::rigid_actor::update();
 }
-void	n34100::rigid_body::render( jess::shared_ptr<n23000::base> rnd )
+void	n34100::rigid_body::render( std::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	

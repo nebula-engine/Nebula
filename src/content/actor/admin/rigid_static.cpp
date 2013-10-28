@@ -25,7 +25,7 @@ void	n34100::rigid_static::update()
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
-void	n34100::rigid_static::render( jess::shared_ptr<n23000::base> rnd )
+void	n34100::rigid_static::render( std::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -35,14 +35,9 @@ void	n34100::rigid_static::step( float dt )
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 }
+void	n34100::rigid_static::create_shapes()
+{
 
-
-
-void	n34100::rigid_static::VCreateShape() {
-	
 }
-
-
-
 
 

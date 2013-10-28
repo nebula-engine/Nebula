@@ -77,17 +77,17 @@ void	n36000::base::shutdown()
 	px_physics_->release();
 	px_foundation_->release();
 }
-jess::shared_ptr<n32200::base>		n36000::base::create_scene()
+std::shared_ptr<n32200::base>		n36000::base::create_scene( std::shared_ptr<n32100::base> scene )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	jess::shared_ptr<n32200::base> scene( new n32200::base() );
+	jess::shared_ptr<n32200::base> scene_physics( new n32200::base( scene ) );
 
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
 
 	scene_desc.gravity = physx::PxVec3(0,-9.81,0);
 
-	scene->customize_scene_desc( scene_desc );
+	scene_physics->customize_scene_desc( scene_desc );
 
 	int m_nbThreads = 1;
 
@@ -103,9 +103,9 @@ jess::shared_ptr<n32200::base>		n36000::base::create_scene()
 	// filter shader
 	if( !scene_desc.filterShader )
 	{
-		if ( scene->px_default_filter_shader_ )
+		if ( scene_physics->px_default_filter_shader_ )
 		{
-			scene_desc.filterShader = scene->px_default_filter_shader_;
+			scene_desc.filterShader = scene_physics->px_default_filter_shader_;
 		}
 		else
 		{
@@ -121,23 +121,23 @@ jess::shared_ptr<n32200::base>		n36000::base::create_scene()
 	}
 #endif
 
-	jess::assertion( scene_desc.isValid() );
+	NEB_ASSERT( scene_desc.isValid() );
+	
+	scene_physics->px_scene_ = px_physics_->createScene( scene_desc );
+	
+	NEB_ASSERT( scene_physics->px_scene_ );
 
-	scene->px_scene_ = px_physics_->createScene( scene_desc );
-
-	jess::assertion( scene->px_scene_ );
-
-	return scene;
+	return scene_physics;
 }
-jess::shared_ptr<n34200::rigid_dynamic>		n36000::base::create_rigid_dynamic(
-		jess::shared_ptr<n32100::base> scene,
-		jess::shared_ptr<n34100::base> actor
+std::shared_ptr<n34200::rigid_dynamic>		n36000::base::create_rigid_dynamic(
+		std::shared_ptr<n32100::base> scene,
+		std::shared_ptr<n34100::base> actor
 		)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// create
-	jess::shared_ptr<n34200::rigid_dynamic> act( new n34200::rigid_dynamic( actor ) );
+	std::shared_ptr<n34200::rigid_dynamic> act( new n34200::rigid_dynamic( actor ) );
 
 	// create
 	physx::PxRigidDynamic* px_actor = px_physics_->createRigidDynamic( physx::PxTransform() );
@@ -146,15 +146,15 @@ jess::shared_ptr<n34200::rigid_dynamic>		n36000::base::create_rigid_dynamic(
 
 	return act;
 }
-jess::shared_ptr<n34200::rigid_dynamic_box>	n36000::base::create_rigid_dynamic_box(
-		jess::shared_ptr<n32100::base> scene,
-		jess::shared_ptr<n34100::base> actor
+std::shared_ptr<n34200::rigid_dynamic_box>	n36000::base::create_rigid_dynamic_box(
+		std::shared_ptr<n32100::base> scene,
+		std::shared_ptr<n34100::base> actor
 		)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	// create
-	jess::shared_ptr<n34200::rigid_dynamic_box> physics( new n34200::rigid_dynamic_box( actor ) );
+	std::shared_ptr<n34200::rigid_dynamic_box> physics( new n34200::rigid_dynamic_box( actor ) );
 	
 	// create
 	physx::PxRigidDynamic* px_actor = px_physics_->createRigidDynamic( physx::PxTransform() );
@@ -166,13 +166,13 @@ jess::shared_ptr<n34200::rigid_dynamic_box>	n36000::base::create_rigid_dynamic_b
 
 	return physics;
 }
-void						n36000::base::init_rigid_actor( jess::shared_ptr<n34200::rigid_actor> actor )
+void						n36000::base::init_rigid_actor( std::shared_ptr<n34200::rigid_actor> actor )
 {
 	actor->material_ = default_material_;
 }
-jess::shared_ptr<n34200::controller>		n36000::base::create_controller(
-		jess::shared_ptr<n32100::base> scene,
-		jess::shared_ptr<n34100::base> actor
+std::shared_ptr<n34200::controller>		n36000::base::create_controller(
+		std::shared_ptr<n32100::base> scene,
+		std::shared_ptr<n34100::base> actor
 		)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -180,7 +180,7 @@ jess::shared_ptr<n34200::controller>		n36000::base::create_controller(
 	
 
 	// create
-	jess::shared_ptr<n34200::controller> physics ( new n34200::controller( actor ) );
+	std::shared_ptr<n34200::controller> physics ( new n34200::controller( actor ) );
 	
 	physics->material_ = request_physics_material();
 	NEB_ASSERT( physics->material_->px_material_ );
@@ -215,35 +215,37 @@ jess::shared_ptr<n34200::controller>		n36000::base::create_controller(
 
 	return physics;
 }
-jess::shared_ptr<n35200::box>			n36000::base::create_box( jess::shared_ptr<n35100::box> box )
+std::shared_ptr<n35200::box>			n36000::base::create_box( std::shared_ptr<n35100::box> box )
 {
 	jess::scoped_ostream sos( &jess::cout, NEB_FUNCSIG );
 	
+	std::shared_ptr<n35100::base> base = std::static_pointer_cast<n35100::base>( box );
+	
 	// create
-	jess::shared_ptr<n35200::box> box_physics( new n35200::box( box ) );
+	std::shared_ptr<n35200::box> box_physics( new n35200::box( base ) );
 	
 	
 	/*
 	// admin rigid_actor
-	jess::shared_ptr<n34100::rigid_actor> ad_act = parent_.lock()->parent_.lock();
+	std::shared_ptr<n34100::rigid_actor> ad_act = parent_.lock()->parent_.lock();
 
 	// physics rigid_actor
-	jess::shared_ptr<n34200::rigid_actor> ph_act = std::dynamic_pointer_cast<n34200::rigid_actor>( ad_act->physics_ );
+	std::shared_ptr<n34200::rigid_actor> ph_act = std::dynamic_pointer_cast<n34200::rigid_actor>( ad_act->physics_ );
 	
 	// physx rigid_actor
-	jess::shared_ptr<n34200p::rigid_actor> ph_px_act = std::dynamic_pointer_cast<n34200::physx::rigid_actor>( ph_act );
+	std::shared_ptr<n34200p::rigid_actor> ph_px_act = std::dynamic_pointer_cast<n34200::physx::rigid_actor>( ph_act );
 	*/
 	// Pxrigid_actor
 		
 	/*
 	// physx material
-	jess::shared_ptr<n34200p::material> mat = std::dynamic_pointer_cast<n34200p::material>( ad_act->materials_.at(0)->physics_ );
+	std::shared_ptr<n34200p::material> mat = std::dynamic_pointer_cast<n34200p::material>( ad_act->materials_.at(0)->physics_ );
 	//jess::assertion( bool(mat) ); //throw jess::except("no material");
 	*/
 	NEB_ASSERT( bool( box ) )
 	NEB_ASSERT( !box->parent_.expired() )
 	
-	jess::shared_ptr<n34200::rigid_actor> actor_physics = std::dynamic_pointer_cast<n34200::rigid_actor>( box->parent_.lock()->physics_ );
+	std::shared_ptr<n34200::rigid_actor> actor_physics = std::dynamic_pointer_cast<n34200::rigid_actor>( box->parent_.lock()->physics_ );
 	NEB_ASSERT( bool( actor_physics ) );
 	NEB_ASSERT( bool( actor_physics->material_ ) );
 
@@ -264,33 +266,35 @@ jess::shared_ptr<n35200::box>			n36000::base::create_box( jess::shared_ptr<n3510
 	
 	return box_physics;
 }
-jess::shared_ptr<n35200::plane>			n36000::base::create_plane( jess::shared_ptr<n35100::plane> plane )
+std::shared_ptr<n35200::plane>			n36000::base::create_plane( std::shared_ptr<n35100::plane> plane )
 {
 	jess::scoped_ostream sos( &jess::cout, NEB_FUNCSIG );
-	
+
+	std::shared_ptr<n35100::base> base = std::static_pointer_cast<n35100::base>( plane );
+
 	// create
-	jess::shared_ptr<n35200::plane> plane_physics( new n35200::plane( plane ) );
+	std::shared_ptr<n35200::plane> plane_physics( new n35200::plane( base ) );
 	
 	
 	/*
 	// admin rigid_actor
-	jess::shared_ptr<n34100::rigid_actor> ad_act = parent_.lock()->parent_.lock();
+	std::shared_ptr<n34100::rigid_actor> ad_act = parent_.lock()->parent_.lock();
 
 	// physics rigid_actor
-	jess::shared_ptr<n34200::rigid_actor> ph_act = std::dynamic_pointer_cast<n34200::rigid_actor>( ad_act->physics_ );
+	std::shared_ptr<n34200::rigid_actor> ph_act = std::dynamic_pointer_cast<n34200::rigid_actor>( ad_act->physics_ );
 	
 	// physx rigid_actor
-	jess::shared_ptr<n34200p::rigid_actor> ph_px_act = std::dynamic_pointer_cast<n34200::physx::rigid_actor>( ph_act );
+	std::shared_ptr<n34200p::rigid_actor> ph_px_act = std::dynamic_pointer_cast<n34200::physx::rigid_actor>( ph_act );
 	*/
 	// Pxrigid_actor
 		
 	/*
 	// physx material
-	jess::shared_ptr<n34200p::material> mat = std::dynamic_pointer_cast<n34200p::material>( ad_act->materials_.at(0)->physics_ );
+	std::shared_ptr<n34200p::material> mat = std::dynamic_pointer_cast<n34200p::material>( ad_act->materials_.at(0)->physics_ );
 	//jess::assertion( bool(mat) ); //throw jess::except("no material");
 	*/
 	/*
-	jess::shared_ptr<n34200::rigid_actor> actor_physics= std::dynamic_pointer_cast<n34200::rigid_actor>( actor->physics_ );
+	std::shared_ptr<n34200::rigid_actor> actor_physics= std::dynamic_pointer_cast<n34200::rigid_actor>( actor->physics_ );
 	physx::PxRigidActor* px_rigid_actor = (::physx::PxRigidActor*)( actor_physics->px_actor_ );
 
 	// PxMaterial
@@ -306,14 +310,14 @@ jess::shared_ptr<n35200::plane>			n36000::base::create_plane( jess::shared_ptr<n
 	
 	return plane_physics;
 }
-jess::shared_ptr<n34200::material>		n36000::base::request_physics_material()
+std::shared_ptr<n34200::material>		n36000::base::request_physics_material()
 {
 	NEB_ASSERT( bool( default_material_ ) );
 	return default_material_;
 }
-jess::shared_ptr<n34200::material>		n36000::base::create_physics_material()
+std::shared_ptr<n34200::material>		n36000::base::create_physics_material()
 {
-	jess::shared_ptr<n34200::material> material( new n34200::material );
+	std::shared_ptr<n34200::material> material( new n34200::material );
 	
 	material->px_material_ = px_physics_->createMaterial(1,1,1);
 	

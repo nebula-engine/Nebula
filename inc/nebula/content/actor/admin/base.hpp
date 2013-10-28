@@ -25,7 +25,8 @@ namespace nebula
 					public std::enable_shared_from_this<n34100::base>
 				{
 					public:
-						typedef std::shared_ptr<base>				shared_t;
+friend class n36000::base;
+						friend class n32200::base;
 					protected:
 						/** \brief copy ctor
 						*/

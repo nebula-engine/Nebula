@@ -16,6 +16,8 @@ namespace nebula
 				class rigid_dynamic:
 					public nebula::content::actor::physics::rigid_body
 				{
+public:
+friend class n36000::base;
 					protected:
 						/** \brief copy ctor
 						*/
@@ -25,7 +27,7 @@ namespace nebula
 						rigid_dynamic&								operator=(const rigid_dynamic&);
 						/** \brief ctor
 						*/
-						rigid_dynamic( jess::shared_ptr<n34100::base> );
+						rigid_dynamic( std::shared_ptr<n34100::base> );
 					public:
 						/** \brief dtor
 						*/

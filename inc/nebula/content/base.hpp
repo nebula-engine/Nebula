@@ -3,6 +3,7 @@
 
 #include <jess/map.hpp>
 #include <jess/shared_ptr.hpp>
+#include <jess/scoped_ostream.hpp>
 
 #include <nebula/define.hpp>
 #include <nebula/content/physics/base.hpp>
@@ -26,7 +27,7 @@ namespace nebula
 			public:
 				/** \brief ctor
 				*/
-				base( jess::shared_ptr<n10000::app> );
+				base( std::shared_ptr<n10000::app> );
 				/** \brief dtor
 				*/
 				virtual ~base();
@@ -41,18 +42,18 @@ namespace nebula
 				virtual void							update();
 				/** \brief request window
 				*/
-				virtual jess::shared_ptr<n22000::base>				request_window();
+				virtual std::shared_ptr<n22000::base>				request_window();
 				///@name create
 				///@{
 				/**
 				*/
 				/** \brief universe
 				*/
-				template <class T> jess::shared_ptr<T>				create_universe()
+				template <class T> std::shared_ptr<T>				create_universe()
 				{
 					jess::clog << NEB_FUNCSIG << std::endl;
 
-					jess::shared_ptr<T> t( new T( shared_from_this() ) );				
+					std::shared_ptr<T> t( new T( shared_from_this() ) );				
 
 					universes_.push<T>( t );
 
@@ -62,50 +63,50 @@ namespace nebula
 				}
 				/** \brief scene
 				*/
-				template <class T> jess::shared_ptr<T>				create_scene( jess::shared_ptr<n31100::base> universe )
+				template <class T> std::shared_ptr<T>				create_scene( std::shared_ptr<n31100::base> universe )
 				{
-					jess::clog << NEB_FUNCSIG << std::endl;
+					jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
+					
+					std::shared_ptr<T> scene( new T( universe ) );
+					
+					scene->physics_ = physics_->create_scene( scene );
+					
+					scene->init();
 
-					jess::shared_ptr<T> t( new T( universe ) );
-
-					t->physics_ = physics_->create_scene();
-
-					t->init();
-
-					return t;
+					return scene;
 				}
 				/** \brief rigid dynamic box
 				*/
-				virtual jess::shared_ptr<n34100::rigid_dynamic_box>		create_rigid_dynamic_box(
-						jess::shared_ptr<n32100::base>
-						//jess::shared_ptr<n34100::base>
+				virtual std::shared_ptr<n34100::rigid_dynamic_box>		create_rigid_dynamic_box(
+						std::shared_ptr<n32100::base>
+						//std::shared_ptr<n34100::base>
 						);
 				/** \brief rigid static plane
 				*/
-				virtual jess::shared_ptr<n34100::rigid_static_plane>		create_rigid_static_plane(
-						jess::shared_ptr<n32100::base>
-						//jess::shared_ptr<n34100::base>
+				virtual std::shared_ptr<n34100::rigid_static_plane>		create_rigid_static_plane(
+						std::shared_ptr<n32100::base>
+						//std::shared_ptr<n34100::base>
 						);
 				/** \brief controller
 				*/
-				virtual jess::shared_ptr<n34100::controller::base>		create_controller(
-						jess::shared_ptr<n32100::base>
-						//jess::shared_ptr<n34100::base>
+				virtual std::shared_ptr<n34100::controller::base>		create_controller(
+						std::shared_ptr<n32100::base>
+						//std::shared_ptr<n34100::base>
 						);
 				/** box
 				*/
-				virtual jess::shared_ptr<n35100::box>				create_box( jess::shared_ptr<n34100::rigid_actor> );
+				virtual std::shared_ptr<n35100::box>				create_box( std::shared_ptr<n34100::rigid_actor> );
 				/** plane
 				*/
-				virtual jess::shared_ptr<n35100::plane>				create_plane( jess::shared_ptr<n34100::rigid_actor> );
+				virtual std::shared_ptr<n35100::plane>				create_plane( std::shared_ptr<n34100::rigid_actor> );
 				///@}
 				/** physics material
 				*/
-				jess::shared_ptr<n34200::material>				request_physics_material();
+				std::shared_ptr<n34200::material>				request_physics_material();
 			protected:
 				/** \brief physics
 				*/
-				jess::shared_ptr<n36000::base>					physics_;
+				std::shared_ptr<n36000::base>					physics_;
 				/** \brief universes
 				*/
 				jess::map<n31100::base>						universes_;

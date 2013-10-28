@@ -75,17 +75,17 @@ namespace nebula
 						std::shared_ptr<n34200::material>			request_material_physics();
 						/** plane
 						*/
-						virtual std::shared_ptr<n35100::plane>			create_plane( jess::shared_ptr<n34100::rigid_actor> );
+						virtual std::shared_ptr<n35100::plane>			create_plane( std::shared_ptr<n34100::rigid_actor> );
 						/** box
 						*/
-						virtual std::shared_ptr<n35100::box>			create_box( jess::shared_ptr<n34100::rigid_actor> );
+						virtual std::shared_ptr<n35100::box>			create_box( std::shared_ptr<n34100::rigid_actor> );
 					public:
 						/** \brief parent
 						*/
 						std::weak_ptr<n30000::base>				parent_;
 						/** \brief scenes
 						*/
-						jess::map<n32100::base>				scenes_;
+						jess::map<n32100::base>					scenes_;
 				};
 			}
 		}

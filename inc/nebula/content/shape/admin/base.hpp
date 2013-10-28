@@ -26,7 +26,7 @@ namespace nebula
 						base( base const & ) = default;
 					public:
 						/// ctor	
-						base( jess::shared_ptr<n34100::rigid_actor> );
+						base( std::shared_ptr<n34100::rigid_actor> );
 						/// dtor					
 						virtual ~base();
 						/// init
@@ -34,7 +34,7 @@ namespace nebula
 						/// shutdown
 						virtual void							shutdown();
 						/// render
-						virtual void							render( jess::shared_ptr<n23000::base> );
+						virtual void							render( std::shared_ptr<n23000::base> );
 						/// get pose
 						physx::PxMat44							get_pose();
 						/// get scale
@@ -42,9 +42,9 @@ namespace nebula
 						/// parent
 						std::weak_ptr<n34100::rigid_actor>				parent_;
 						/// renderer
-						jess::shared_ptr<n35300::base>					renderer_;
+						std::shared_ptr<n35300::base>					renderer_;
 						/// physics
-						jess::shared_ptr<n35200::base>					physics_;
+						std::shared_ptr<n35200::base>					physics_;
 						/// pose
 						physx::PxMat44							pose_;
 						/// scale

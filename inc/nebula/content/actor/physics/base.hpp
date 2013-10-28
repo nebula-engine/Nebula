@@ -20,6 +20,8 @@ namespace nebula
 				*/
 				class base
 				{
+public:
+friend class n36000::base;
 					protected:
 						/** \brief copy ctor
 						*/
@@ -58,8 +60,8 @@ namespace nebula
 						std::weak_ptr<n34100::base>				parent_;
 						/** \brief materials
 						*/
-						jess::shared_ptr<n34200::material>			material_;
-				};
+						std::shared_ptr<n34200::material>			material_;
+		};
 			}
 		}
 	}

@@ -23,7 +23,7 @@
 
 #include <nebula/content/scene/admin/base.hpp>
 
-n32100::base::base( jess::shared_ptr<n31100::base> parent ):
+n32100::base::base( std::shared_ptr<n31100::base> parent ):
 	parent_( parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -89,7 +89,7 @@ void						n32100::base::update()
 
 	views_.foreach( std::bind( &n33100::base::update, std::placeholders::_1 ) );
 }
-void						n32100::base::connect_controller_to_view( jess::shared_ptr<n34100::controller::base> controller, jess::shared_ptr<n33100::base> view )
+void						n32100::base::connect_controller_to_view( std::shared_ptr<n34100::controller::base> controller, std::shared_ptr<n33100::base> view )
 {
 	NEB_ASSERT( bool( controller ) )
 	NEB_ASSERT( bool( controller->control_ ) )
@@ -104,13 +104,13 @@ void						n32100::base::step( float dt )
 
 	actors_.foreach( std::bind( &n34100::base::step, std::placeholders::_1, dt ) );
 }
-void						n32100::base::render( jess::shared_ptr<n23000::base> rnd )
+void						n32100::base::render( std::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	actors_.foreach( std::bind( &n34100::base::render, std::placeholders::_1, rnd ) );
 }
-jess::shared_ptr<n34100::rigid_dynamic_box>	n32100::base::create_rigid_dynamic_box()
+std::shared_ptr<n34100::rigid_dynamic_box>	n32100::base::create_rigid_dynamic_box()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -122,7 +122,7 @@ jess::shared_ptr<n34100::rigid_dynamic_box>	n32100::base::create_rigid_dynamic_b
 
 	return act;
 }
-jess::shared_ptr<n34100::rigid_static_plane>	n32100::base::create_rigid_static_plane()
+std::shared_ptr<n34100::rigid_static_plane>	n32100::base::create_rigid_static_plane()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -134,7 +134,7 @@ jess::shared_ptr<n34100::rigid_static_plane>	n32100::base::create_rigid_static_p
 
 	return act;
 }
-jess::shared_ptr<n34100::controller::base>	n32100::base::create_controller()
+std::shared_ptr<n34100::controller::base>	n32100::base::create_controller()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -146,19 +146,19 @@ jess::shared_ptr<n34100::controller::base>	n32100::base::create_controller()
 	
 	return act;
 }
-jess::shared_ptr<n22000::base>			n32100::base::request_window()
+std::shared_ptr<n22000::base>			n32100::base::request_window()
 {
 	return ( parent_.lock()->request_window() );
 }
-jess::shared_ptr<n34200::material>		n32100::base::request_physics_material()
+std::shared_ptr<n34200::material>		n32100::base::request_material_physics()
 {
-	return ( parent_.lock()->request_physics_material() );
+	return ( parent_.lock()->request_material_physics() );
 }
-jess::shared_ptr<n35100::box>			n32100::base::create_box( jess::shared_ptr<n34100::rigid_actor> actor )
+std::shared_ptr<n35100::box>			n32100::base::create_box( std::shared_ptr<n34100::rigid_actor> actor )
 {
 	return parent_.lock()->create_box( actor );
 }
-jess::shared_ptr<n35100::plane>			n32100::base::create_plane( jess::shared_ptr<n34100::rigid_actor> actor )
+std::shared_ptr<n35100::plane>			n32100::base::create_plane( std::shared_ptr<n34100::rigid_actor> actor )
 {
 	return parent_.lock()->create_plane( actor );
 }

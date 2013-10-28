@@ -54,7 +54,7 @@ namespace nebula
 						base&						operator=( base const & ) = default;
 						/** \brief ctor
 						*/
-						base( std::shared_ptr<n34100::controller::base> );
+						base( std::shared_ptr<n34100::base> );
 					public:
 						/** \brief dtor
 						*/
@@ -107,7 +107,7 @@ namespace nebula
 						std::map<int,int>				key_down_event_;
 						/** \brief parent
 						*/
-						std::weak_ptr<n34100::controller::base>		parent_;
+						std::weak_ptr<n34100::base>			parent_;
 						/** \brief head
 						*/
 						std::map<int,physx::PxVec3>			head_;

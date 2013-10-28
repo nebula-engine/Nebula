@@ -7,7 +7,9 @@
 
 #include <nebula/content/actor/renderer/rigid_actor.hpp>
 
-n34300::rigid_actor::rigid_actor()
+n34300::rigid_actor::rigid_actor( std::shared_ptr<n34100::base> parent ):
+n34300::base( parent ),
+n34300::actor( parent )
 {
 
 }
@@ -15,9 +17,9 @@ n34300::rigid_actor::~rigid_actor()
 {
 
 }
-void	n34300::rigid_actor::init( jess::shared_ptr<n34100::base> parent )
+void	n34300::rigid_actor::init()
 {
-	n34300::actor::init( parent );
+	n34300::actor::init();
 }
 void	n34300::rigid_actor::shutdown()
 {

@@ -19,7 +19,7 @@ namespace nebula
 						///@name ctor and dtor
 						///@{
 						// Ctor
-						rigid_static_plane();
+						rigid_static_plane( std::shared_ptr<n34100::base> );
 						/// Copy Ctor
 						rigid_static_plane(const rigid_static_plane&);
 						/// Dtor
@@ -35,7 +35,7 @@ namespace nebula
 
 
 						/// init
-						virtual	void								init( jess::shared_ptr<n34100::base> );
+						virtual	void								init();
 						/// shutdown
 						virtual	void								shutdown();
 						/// update

@@ -161,6 +161,9 @@ bool			n34000::control::controller::def::on_pointer_motion( int x, int y )
 
 	return true;
 }
+void			n34000::control::controller::def::step( float dt )
+{
 
+}
 
 
