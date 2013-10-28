@@ -24,7 +24,7 @@ void	n34200::rigid_dynamic_box::step(float)
 {
 
 }
-void	n34200::rigid_dynamic_box::render( jess::shared_ptr<n23000::base> )
+void	n34200::rigid_dynamic_box::render( std::shared_ptr<n23000::base> )
 {
 
 }

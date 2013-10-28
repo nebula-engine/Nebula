@@ -1,7 +1,9 @@
+#include <jess/scoped_ostream.hpp>
+
 #include <nebula/content/actor/physics/rigid_body.hpp>
 
 
-n34200::rigid_body::rigid_body( jess::shared_ptr<n34100::base> parent ):
+n34200::rigid_body::rigid_body( std::shared_ptr<n34100::base> parent ):
 	actor( parent ),
 	rigid_actor( parent )
 {
@@ -40,7 +42,7 @@ void	n34200::rigid_body::step( float dt )
 {
 	jess::scoped_ostream( &jess::cout, NEB_FUNCSIG );
 }
-void	n34200::rigid_body::render( const jess::shared_ptr<n23000::base> rnd )
+void	n34200::rigid_body::render( std::shared_ptr<n23000::base> rnd )
 {
 
 }

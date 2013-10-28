@@ -16,6 +16,8 @@ namespace nebula
 				class rigid_actor:
 					virtual public nebula::content::actor::physics::actor
 				{
+					public:
+						typedef std::shared_ptr<rigid_actor>			shared_t;
 					protected:
 						/** \brief copy ctor
 						*/

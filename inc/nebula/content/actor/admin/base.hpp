@@ -7,6 +7,8 @@
 #include <jess/shared_ptr.hpp>
 #include <jess/map.hpp>
 
+#include <nebula/content/scene/admin/base.hpp>
+
 #include <nebula/ns.hpp>
 
 namespace nebula
@@ -20,8 +22,10 @@ namespace nebula
 				/** \brief base
 				*/
 				class base:
-					public jess::enable_shared_from_this<n34100::base>
+					public std::enable_shared_from_this<n34100::base>
 				{
+					public:
+						typedef std::shared_ptr<base>				shared_t;
 					protected:
 						/** \brief copy ctor
 						*/
@@ -60,16 +64,16 @@ namespace nebula
 					protected:
 						/** \brief parent
 						*/
-						n32100::base::weak_t					parent_;
+						std::weak_ptr<n32100::base>					parent_;
 						/** \brief physics
 						*/
-						n34200::base::shared_t					physics_;
+						std::shared_ptr<n34200::base>					physics_;
 						/** \brief renderer
 						*/
-						n34300::base::shared_t					renderer_;
+						std::shared_ptr<n34300::base>					renderer_;
 						/** \brief control
 						*/
-						n34400::base::shared_t					control_;
+						std::shared_ptr<n34400::base>					control_;
 						/** \brief materials
 						*/
 						jess::map<n34100::material>				materials_;

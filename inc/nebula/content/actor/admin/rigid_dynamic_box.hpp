@@ -18,6 +18,8 @@ namespace nebula
 				class rigid_dynamic_box:
 					public n34100::rigid_dynamic
 				{
+					public:
+						typedef std::shared_ptr<rigid_dynamic_box>			shared_t;
 					protected:
 						/** \brief copy ctor
 						*/

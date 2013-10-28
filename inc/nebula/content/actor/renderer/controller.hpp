@@ -17,41 +17,38 @@ namespace nebula
 				class controller:
 					public n34300::base
 				{
-				public:
-					///@name ctor and dtor
-					///@{
-					// Ctor
-					controller();
-					/// Copy Ctor
-					controller(const controller&);
-					/// Dtor
-					~controller();
-					///@}
-
-					///@name operator
-					///@{
-					/// assignment
-					controller&								operator=(const controller&);
-					///@}
-
-				
-
-					/// init
-					virtual	void								init( jess::shared_ptr<n34100::base> );
-					/// shutdown
-					virtual	void								shutdown();
-					/// update
-					virtual	void								update();
-					/// step
-					virtual	void								step( float );
-					/// render
-					virtual	void								render( jess::shared_ptr<n23000::base> );
-				
-				
-				
-				
-					/// create shapes
-					virtual	void								create_shapes();
+					protected:
+						/** \brief copy ctor
+						*/
+						controller(const controller&);
+						/** \brief assignment
+						*/
+						controller&								operator=( controller const & ) = default;
+						/** \brief ctor
+						*/
+						controller( std::shared_ptr<n34100::base> );
+					public:
+						/** \brief dtor
+						*/
+						~controller();
+						/** \brief init
+						*/
+						virtual	void								init( std::shared_ptr<n34100::base> );
+						/** \brief shutdown
+						*/
+						virtual	void								shutdown();
+						/** \brief update
+						*/
+						virtual	void								update();
+						/** \brief step
+						*/
+						virtual	void								step( float );
+						/** \brief render
+						*/
+						virtual	void								render( std::shared_ptr<n23000::base> );
+						/** \brief create shapes
+						*/
+						virtual	void								create_shapes();
 				};
 			}
 		}

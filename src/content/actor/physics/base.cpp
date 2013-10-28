@@ -32,7 +32,7 @@ void	n34200::base::step( float dt )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	n34200::base::render( jess::shared_ptr<n23000::base> rnd )
+void	n34200::base::render( std::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }

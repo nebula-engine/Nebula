@@ -3,7 +3,7 @@
 #include <nebula/content/actor/admin/actor.hpp>
 
 
-n34100::actor::actor( jess::shared_ptr<n32100::base> parent ):
+n34100::actor::actor( std::shared_ptr<n32100::base> parent ):
 base( parent )
 {
 
@@ -27,7 +27,7 @@ void	n34100::actor::update( )
 {
 	n34100::base::update();
 }
-void	n34100::actor::render( jess::shared_ptr<n23000::base> rnd )
+void	n34100::actor::render( std::shared_ptr<n23000::base> rnd )
 {
 	
 }

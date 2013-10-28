@@ -1,8 +1,11 @@
+#include <jess/scoped_ostream.hpp>
+
 #include <nebula/define.hpp>
 
 #include <nebula/content/scene/admin/base.hpp>
 #include <nebula/content/actor/physics/base.hpp>
 #include <nebula/content/actor/renderer/base.hpp>
+#include <nebula/content/actor/control/base.hpp>
 
 #include <nebula/content/actor/admin/base.hpp>
 
@@ -48,17 +51,17 @@ void	n34100::base::create_shapes()
 {
 
 }
-physx::PxMat44	n34100::base::get_pose()
+/*physx::PxMat44	n34100::base::get_pose()
 {
 	return pose_;
 }
 void	n34100::base::set_pose( physx::PxMat44 pose )
 {
 	pose_ = pose;
-}
+}*/
 jess::shared_ptr<n34200::material>	n34100::base::create_physics_material()
 {
-	return parent_.lock()->request_physics_material();
+	return parent_.lock()->request_material_physics();
 }
 
 

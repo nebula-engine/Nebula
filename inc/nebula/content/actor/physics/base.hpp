@@ -4,6 +4,8 @@
 #include <jess/shared_ptr.hpp>
 #include <jess/map.hpp>
 
+#include <nebula/platform/renderer/base.hpp>
+
 #include <nebula/ns.hpp>
 
 namespace nebula

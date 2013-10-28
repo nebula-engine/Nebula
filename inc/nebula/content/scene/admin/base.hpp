@@ -6,6 +6,8 @@
 #include <jess/shared_ptr.hpp>
 #include <jess/map.hpp>
 
+#include <nebula/content/universe/admin/base.hpp>
+
 #include <nebula/define.hpp>
 #include <nebula/ns.hpp>
 
@@ -25,6 +27,8 @@ namespace nebula
 				class base:
 					public jess::enable_shared_from_this<n32100::base>
 				{
+					public:
+						typedef std::shared_ptr<base>				shared_t;
 					public:
 						/** ctor
 						*/
@@ -53,28 +57,28 @@ namespace nebula
 						/** \brief controller to view
 						*/
 						void								connect_controller_to_view(
-								n34100::controller::base::shared_t,
-								n33100::base::shared_t );
+								std::shared_ptr<n34100::controller::base>,
+								std::shared_ptr<n33100::base> );
 						/** request window
 						*/
-						virtual n22000::base::shared_t					request_window();
+						virtual std::shared_ptr<n22000::base>					request_window();
 						/** rigid dynamic box
 						*/
-						virtual n34100::rigid_dynamic_box::shared_t			create_rigid_dynamic_box();
+						virtual std::shared_ptr<n34100::rigid_dynamic_box>			create_rigid_dynamic_box();
 						/** plane
 						*/
-						virtual n34100::rigid_static_plane::shared_t			create_rigid_static_plane();
+						virtual std::shared_ptr<n34100::rigid_static_plane>			create_rigid_static_plane();
 						/** create
 						*/
-						virtual n34100::controller::base::shared_t			create_controller();
+						virtual std::shared_ptr<n34100::controller::base>			create_controller();
 						/** box
 						*/
-						virtual n35100::box::shared_t					create_box(
-								n34100::rigid_actor::shared_t );
+						virtual std::shared_ptr<n35100::box>					create_box(
+								std::shared_ptr<n34100::rigid_actor> );
 						/** plane
 						*/
-						virtual n35100::plane::shared_t					create_plane(
-								n34100::rigid_actor::shared_t );
+						virtual std::shared_ptr<n35100::plane>					create_plane(
+								std::shared_ptr<n34100::rigid_actor> );
 						/** \brief create
 						*/
 						template <class T> jess::shared_ptr<T>				create_view()
@@ -91,7 +95,7 @@ namespace nebula
 						}
 						/** \brief physics material
 						*/
-						n34200::material::shared_t					request_material_physics();
+						std::shared_ptr<n34200::material>					request_material_physics();
 					public:
 						/** \brief parent
 						*/

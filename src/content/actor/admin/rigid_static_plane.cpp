@@ -3,8 +3,8 @@
 
 #include <nebula/content/actor/admin/rigid_static_plane.hpp>
 
-n34100::rigid_static_plane::rigid_static_plane( jess::shared_ptr<n32100::base> parent ):
-rigid_static( parent )
+n34100::rigid_static_plane::rigid_static_plane( std::shared_ptr<n32100::base> parent ):
+	rigid_static( parent )
 {
 }
 n34100::rigid_static_plane::~rigid_static_plane()
@@ -27,7 +27,7 @@ void	n34100::rigid_static_plane::update()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	n34100::rigid_static_plane::render( jess::shared_ptr<n23000::base> rnd )
+void	n34100::rigid_static_plane::render( std::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }

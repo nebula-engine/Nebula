@@ -2,7 +2,7 @@
 #include <nebula/content/actor/admin/rigid_static.hpp>
 
 
-n34100::rigid_static::rigid_static( jess::shared_ptr<n32100::base> parent ):
+n34100::rigid_static::rigid_static( std::shared_ptr<n32100::base> parent ):
 rigid_actor( parent )
 {
 }

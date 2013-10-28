@@ -25,7 +25,7 @@ namespace nebula
 						rigid_static_plane&				operator=( rigid_static_plane const & ) = default;
 						/** \brief ctor
 						*/
-						rigid_static_plane( n32100::base::shared_t ) = default;
+						rigid_static_plane( std::shared_ptr<n32100::base> );
 					public:
 						/** \brief dtor
 						*/
@@ -51,7 +51,7 @@ namespace nebula
 					protected:
 						/** \brief plane
 						*/
-						n35100::plane::shared_t				plane_;
+						std::shared_ptr<n35100::plane>			plane_;
 				};
 			}
 		}

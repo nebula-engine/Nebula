@@ -1,5 +1,5 @@
-#ifndef __NEBULA_CONTENT_ACTOR_CONTROL_CONTROLLER_BASE_HPP__
-#define __NEBULA_CONTENT_ACTOR_CONTROL_CONTROLLER_BASE_HPP__
+#ifndef __NEBULA_CONTENT_ACTOR_CONTROL_BASE_HPP__
+#define __NEBULA_CONTENT_ACTOR_CONTROL_BASE_HPP__
 
 #include <map>
 
@@ -54,7 +54,7 @@ namespace nebula
 						base&						operator=( base const & ) = default;
 						/** \brief ctor
 						*/
-						base( n34100::controller::base::shared_t );
+						base( std::shared_ptr<n34100::controller::base> );
 					public:
 						/** \brief dtor
 						*/
@@ -71,6 +71,9 @@ namespace nebula
 						/** \brief move
 						*/
 						virtual physx::PxVec3				move() = 0;
+						/** \brief step
+						*/
+						virtual void					step( float ) = 0;
 						/** process event
 						*/
 						virtual void					process_event( int ) = 0;

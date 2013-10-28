@@ -1,6 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_BODY_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_BODY_HPP__
 
+#include <nebula/content/actor/admin/base.hpp>
 #include <nebula/content/actor/physics/rigid_actor.hpp>
 
 namespace nebula
@@ -25,7 +26,7 @@ namespace nebula
 						rigid_body&						operator=( rigid_body const & ) = default;
 						/** \brief ctor
 						*/
-						rigid_body( n34100::base::shared_t );
+						rigid_body( std::shared_ptr<n34100::base> );
 					public:
 						/** \brief dtor
 						*/

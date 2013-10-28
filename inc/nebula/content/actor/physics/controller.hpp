@@ -28,7 +28,7 @@ namespace nebula
 						controller&						operator=( controller const & );
 						/** \brief ctor
 						*/
-						controller( n34100::base::shared_t );
+						controller( std::shared_ptr<n34100::base> );
 					public:
 						/** \brief dtor
 						*/
@@ -51,7 +51,7 @@ namespace nebula
 						physx::PxController*					px_controller_;
 						/** \brief material
 						*/
-						n34200::material::shared_t				material_;
+						std::shared_ptr<n34200::material>			material_;
 				};
 			}
 		}

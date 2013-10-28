@@ -8,6 +8,8 @@
 
 #include <jess/shared_ptr.hpp>
 
+#include <nebula/content/actor/physics/rigid_actor.hpp>
+
 #include <nebula/ns.hpp>
 
 /** \brief default error callback for physx

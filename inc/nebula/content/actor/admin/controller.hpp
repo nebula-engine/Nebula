@@ -78,9 +78,12 @@ namespace nebula
 							/** \brief pitch
 							*/
 							float							pitch_;
+							/** \brief velocity
+							*/
+							physx::PxVec3						velocity_;
 							/** \brief control
 							*/
-							n34400::controller::base::shared_t			control_;
+							std::shared_ptr<n34400::controller::base>		control_;
 
 					};
 				}

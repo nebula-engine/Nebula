@@ -30,7 +30,7 @@ void	n34200::rigid_actor::step(float dt)
 {
 	
 }
-void	n34200::rigid_actor::render( jess::shared_ptr<n23000::base> rnd )
+void	n34200::rigid_actor::render( std::shared_ptr<n23000::base> rnd )
 {
 
 }

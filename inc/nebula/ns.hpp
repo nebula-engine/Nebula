@@ -163,6 +163,8 @@ namespace nebula
 			}
 			namespace control
 			{
+				class base;
+				
 				namespace controller
 				{
 					class base;

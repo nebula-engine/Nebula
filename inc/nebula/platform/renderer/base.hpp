@@ -19,6 +19,8 @@ namespace nebula
 			class base
 			{
 				public:
+					typedef std::shared_ptr<base>		shared_t;
+				public:
 					/// ctor
 					base();
 					/// dtor
@@ -31,6 +33,8 @@ namespace nebula
 					virtual void							shutdown();
 					///@name draw
 					///@{
+					/**
+					*/
 					/// cube
 					virtual void							draw_cube();
 					/// sphere
@@ -59,10 +63,14 @@ namespace nebula
 					virtual void							disable_lighting() = 0;
 					/// begin render
 					virtual void							begin_render();
-					virtual void		begin_3d() = 0;
-					virtual void		end_3d() = 0;
-					virtual void		begin_2d() = 0;
-					virtual void		end_2d() = 0;
+					/** \brief begin 3d
+					*/
+					virtual void							begin_3d() = 0;
+					/** \brief end 3d
+					*/
+					virtual void							end_3d() = 0;
+					virtual void							begin_2d() = 0;
+					virtual void							end_2d() = 0;
 
 					/// end render
 					virtual void							end_render();

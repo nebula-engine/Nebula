@@ -42,7 +42,8 @@ void	n34100::controller::base::init()
 	
 	// control
 	control_.reset( new n34400::controller::def( this_ptr ) );
-
+	control_->init();
+	
 	// renderer
 	renderer_.reset( new n34300::controller( shared_from_this() ) );
 	renderer_->init();	

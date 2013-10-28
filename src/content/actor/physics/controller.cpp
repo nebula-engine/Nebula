@@ -1,7 +1,7 @@
 #include <nebula/define.hpp>
 
 #include <jess/free.hpp>
-#include <jess/ostream.hpp>
+#include <jess/scoped_ostream.hpp>
 
 #include <nebula/utilities/free.hpp>
 #include <nebula/content/actor/admin/controller.hpp>
@@ -10,7 +10,7 @@
 
 #include <nebula/content/actor/physics/controller.hpp>
 
-n34200::controller::controller( jess::shared_ptr<n34100::base> parent ):
+n34200::controller::controller( std::shared_ptr<n34100::base> parent ):
 	base( parent )
 {
 	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );

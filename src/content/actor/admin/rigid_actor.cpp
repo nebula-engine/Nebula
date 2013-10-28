@@ -30,7 +30,7 @@ void	n34100::rigid_actor::init()
 
 	create_shapes();
 }
-void	n34100::rigid_actor::render( jess::shared_ptr<n23000::base> rnd )
+void	n34100::rigid_actor::render( std::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
