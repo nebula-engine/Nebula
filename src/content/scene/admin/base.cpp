@@ -91,18 +91,24 @@ void						n32100::base::update()
 }
 void						n32100::base::connect_controller_to_view( std::shared_ptr<n34100::controller::base> controller, std::shared_ptr<n33100::base> view )
 {
-	NEB_ASSERT( bool( controller ) )
-	NEB_ASSERT( bool( controller->control_ ) )
-	NEB_ASSERT( bool( view ) )
-	NEB_ASSERT( bool( view->window_ ) )
+	NEB_ASSERT( bool( controller ) );
+	NEB_ASSERT( bool( controller->control_ ) );
+	NEB_ASSERT( bool( view ) );
+	NEB_ASSERT( bool( view->window_ ) );
+
 	controller->control_->connect_to_window( view->window_ );
 }
 
 void						n32100::base::step( float dt )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-
+	
+	NEB_ASSERT( physics_ );
+	
 	actors_.foreach( std::bind( &n34100::base::step, std::placeholders::_1, dt ) );
+	
+	// physics
+	physics_->step(dt);
 }
 void						n32100::base::render( std::shared_ptr<n23000::base> rnd )
 {

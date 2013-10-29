@@ -15,20 +15,16 @@ namespace nebula
 				class rigid_static_plane:
 					public n34200::rigid_static
 				{
+					public:
+						friend class n36000::base;
 					protected:
 						/// copy ctor
-						rigid_static_plane( rigid_static_plane const & _actor_ ): actor( _actor_ ), rigid_static( _actor_ )
-						{
-
-						}
+						rigid_static_plane( rigid_static_plane const & ) = default;
 						/// assignment
-						rigid_static_plane&							operator=( rigid_static_plane const & )
-						{
-							return *this;
-						}
-					public:
+						rigid_static_plane&						operator=( rigid_static_plane const & ) = default;
 						/// ctor
-						rigid_static_plane( jess::shared_ptr<n34100::base> );
+						rigid_static_plane( std::shared_ptr<n34100::base> );
+					public:
 						/// dtor
 						~rigid_static_plane();
 						/// init
@@ -40,9 +36,7 @@ namespace nebula
 						/// step
 						virtual	void							step( float );
 						/// render
-						virtual	void							render( jess::shared_ptr<n23000::base> );
-						/// create shapes
-						virtual	void							create_shape();
+						virtual	void							render( std::shared_ptr<n23000::base> );
 				};
 			}
 		}

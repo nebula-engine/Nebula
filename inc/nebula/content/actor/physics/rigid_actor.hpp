@@ -14,7 +14,7 @@ namespace nebula
 				/** \brief rigid dynamic
 				*/
 				class rigid_actor:
-					virtual public nebula::content::actor::physics::actor
+					virtual public n34200::actor
 				{
 					public:
 						typedef std::shared_ptr<rigid_actor>			shared_t;

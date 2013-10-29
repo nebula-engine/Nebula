@@ -8,10 +8,11 @@
 n34000::control::controller::def::def( jess::shared_ptr<n34100::controller::base> parent ):
 	n34000::control::controller::base( parent )
 {
-
+	jess::scoped_ostream sos( &jess::cout, NEB_FUNCSIG );
 }
 n34400::controller::def::~def()
 {
+	jess::scoped_ostream sos( &jess::cout, NEB_FUNCSIG );
 
 }
 void				n34000::control::controller::def::init()
@@ -93,8 +94,12 @@ physx::PxVec3		n34000::control::controller::def::move()
 {
 	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
-	jess::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>(parent_.lock());
-
+	NEB_ASSERT( !parent_.expired() );
+	
+	jess::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>( parent_.lock() );
+	
+	NEB_ASSERT( parent );
+	
 	/** \todo
 	 * add gravity
 	 * make \a head and \a m a static member variable or at least a member variables

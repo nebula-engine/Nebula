@@ -39,10 +39,13 @@ void	n34200::controller::step( float dt )
 	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
 
 	NEB_ASSERT( px_controller_ );
+	NEB_ASSERT( !parent_.expired() );
 	
 	//update_move();
 	
 	jess::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>( parent_.lock() );
+
+	NEB_ASSERT( parent->control_ );
 
 	// rotate
 	//physx::PxQuat yaw( parent->yaw_, physx::PxVec3(0,1,0) );

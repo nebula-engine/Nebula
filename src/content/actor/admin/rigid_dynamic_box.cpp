@@ -25,6 +25,7 @@ void	n34100::rigid_dynamic_box::init()
 	// renderer
 	renderer_.reset( new n34300::rigid_dynamic_box( shared_from_this() ) );
 	renderer_->init();
+	
 }
 void	n34100::rigid_dynamic_box::shutdown( )
 {

@@ -18,7 +18,7 @@ void	n35100::box::init()
 	// call base
 	n35100::base::init();
 	
-	NEB_ASSERT( bool( physics_ ) )
+	assert( physics_ );
 	
 	// create physics
 	//physics_.reset( new n35200::box );

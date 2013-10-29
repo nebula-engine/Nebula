@@ -17,7 +17,7 @@ namespace nebula
 				/** \brief actor
 				*/
 				class actor:
-					public nebula::content::actor::physics::base
+					public n34200::base
 				{
 					protected:
 						/** \brief copy ctor

@@ -18,7 +18,7 @@ void	n35100::plane::init()
 	// init parent
 	n35100::base::init();
 
-	NEB_ASSERT( bool( physics_ ) )
+	NEB_ASSERT( physics_ );
 		
 	// create physics
 	//physics_.reset( new n35200::box );

@@ -26,6 +26,8 @@ void				n32200::base::update()
 }
 void				n32200::base::step( float dt )
 {
+	jess::scoped_ostream( &jess::cout, NEB_FUNCSIG );
+	
 	physx::PxU32 nbPxactor = px_scene_->getNbActors( physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC );
 	jess::clog << "there are " << nbPxactor << " Pxrigid_actor objects in the scene" << std::endl;
 
@@ -41,15 +43,18 @@ void				n32200::base::step( float dt )
 	for ( physx::PxU32 i = 0; i < nb_active_transforms; ++i )
 	{
 		n34100::base* act = static_cast<n34100::base*>( active_transforms[i].userData );
-
-		physx::PxMat44 pose( active_transforms[i].actor2World );
-
-		act->pose_ = pose;
-
+		
+		//NEB_ASSERT( act );
+		if ( act )
+		{
+			physx::PxMat44 pose( active_transforms[i].actor2World );
+			
+			act->pose_ = pose;
+		}
 		//printf("transform.p.y=%16f\n",activeTransforms[i].actor2World.p.y);
 	}
 }
-void						n32200::base::render( jess::shared_ptr<n23000::base> )
+void				n32200::base::render( jess::shared_ptr<n23000::base> )
 {
 
 }

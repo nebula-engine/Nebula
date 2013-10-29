@@ -17,7 +17,7 @@ n34100::base::base( jess::shared_ptr<n32100::base> parent ):
 	
 	//jess::clog << pose_;
 	
-	NEB_ASSERT( !parent_.expired() )
+	NEB_ASSERT( !parent_.expired() );
 }
 n34100::base::~base()
 {
@@ -42,10 +42,19 @@ void	n34100::base::render( jess::shared_ptr<n23000::base> rnd )
 void	n34100::base::step( float dt )
 {
 	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
+
+	NEB_ASSERT( physics_ );
+	NEB_ASSERT( renderer_ );
+	//NEB_ASSERT( control_ );
+	
 	
 	physics_->step( dt );
 	renderer_->step( dt );
-	control_->step( dt );
+	
+	if ( bool( control_ ) )
+	{
+		control_->step( dt );
+	}
 }
 void	n34100::base::create_shapes()
 {

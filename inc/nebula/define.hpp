@@ -1,6 +1,7 @@
 #ifndef __NEBULA_DEFINE_HPP__
 #define __NEBULA_DEFINE_HPP__
 
+#include <assert.h>
 
 #define UINT unsigned int
 
@@ -22,7 +23,7 @@
 #endif
 
 
-#define NEB_ASSERT(x) jess::assertion(x,#x);
+#define NEB_ASSERT(x) assert(x)
 
 
 #endif

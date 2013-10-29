@@ -50,7 +50,7 @@ jess::shared_ptr<n35100::box>	n34100::rigid_actor::create_box()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	NEB_ASSERT( !parent_.expired() )
+	NEB_ASSERT( !parent_.expired() );
 	
 	// cast shared from this
 	jess::shared_ptr<n34100::rigid_actor> this_ptr = std::dynamic_pointer_cast<n34100::rigid_actor>( shared_from_this() );

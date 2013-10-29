@@ -17,18 +17,13 @@ namespace nebula
 				{
 					protected:
 						/// copy ctor
-						rigid_static( rigid_static const & _actor_ ): actor( _actor_ ), rigid_actor( _actor_ )
-						{
-
-						}
+						rigid_static( rigid_static const & ) = default;
 						/// assignment
-						rigid_static&	operator=( rigid_static const & )
-						{
-							return *this;
-						}
-					public:
+						rigid_static&						operator=( rigid_static const & ) = default;
 						/// ctor
-						rigid_static( jess::shared_ptr<n34100::base> );
+						rigid_static( std::shared_ptr<n34100::base> );
+
+					public:
 						/// dtor
 						virtual ~rigid_static();
 						/// Initialize
@@ -38,17 +33,9 @@ namespace nebula
 						/// Update
 						virtual	void						update();
 						/// Render
-						virtual	void						render( jess::shared_ptr<n23000::base> );
+						virtual	void						render( std::shared_ptr<n23000::base> );
 						/// Step
 						virtual	void						step( float );
-
-
-
-
-						/// Create Shapes
-						virtual	void						create_shape();
-
-
 				};
 			}
 		}
