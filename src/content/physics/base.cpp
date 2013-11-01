@@ -186,8 +186,10 @@ std::shared_ptr<n34200::rigid_static_plane>	n36000::base::create_rigid_static_pl
 	// create
 	std::shared_ptr<n34200::rigid_static_plane> physics( new n34200::rigid_static_plane( actor ) );
 
+	physx::PxTransform pose( physx::PxVec3(0,-2,0), physx::PxQuat( 0, physx::PxVec3(0,0,0) ) );
+	
 	// create
-	physx::PxRigidStatic* px_actor = px_physics_->createRigidStatic( physx::PxTransform() );
+	physx::PxRigidStatic* px_actor = px_physics_->createRigidStatic( pose );
 
 	px_actor->userData = actor.get();
 
@@ -216,7 +218,7 @@ std::shared_ptr<n34200::controller>		n36000::base::create_controller(
 	NEB_ASSERT( physics->material_->px_material_ );
 
 	// description 
-	physx::PxExtendedVec3 position(0,0,0);
+	physx::PxExtendedVec3 position( 0, 0, -5.0 );
 
 	physx::PxCapsuleControllerDesc desc;
 	desc.position = position;
@@ -341,9 +343,11 @@ std::shared_ptr<n35200::plane>			n36000::base::create_plane(
 
 	// geometry
 	physx::PxPlaneGeometry px_geometry;
+
+	physx::PxTransform pose( physx::PxVec3(0,0,0), physx::PxQuat( -1.0f * physx::PxPi / 2.0f, physx::PxVec3(0,0,1) ) );
 	
 	// PxShape
-	plane_physics->px_shape_ = px_rigid_actor->createShape( px_geometry, *px_mat );
+	plane_physics->px_shape_ = px_rigid_actor->createShape( px_geometry, *px_mat, pose );
 
 
 	return plane_physics;

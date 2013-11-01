@@ -52,6 +52,8 @@ namespace nebula
 						/** \brief customize scene description
 						 */
 						virtual void						customize_scene_desc( physx::PxSceneDesc& );
+						virtual void						add( std::shared_ptr<n34100::rigid_dynamic_box> );
+						virtual void						add( std::shared_ptr<n34100::rigid_static_plane> );
 					public:
 						/** \brief parent
 						 */

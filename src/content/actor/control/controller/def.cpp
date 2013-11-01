@@ -1,5 +1,6 @@
 #include <jess/scoped_ostream.hpp>
 
+#include <nebula/platform/key.hpp>
 #include <nebula/platform/window/base.hpp>
 #include <nebula/content/actor/admin/controller.hpp>
 
@@ -22,6 +23,11 @@ void				n34000::control::controller::def::init()
 
 	s *= 1.5;
 	d *= 1.5;
+
+	key_flag_[ n20000::key::w ] = n34000::control::controller::base::flag::eNORTH;
+	key_flag_[ n20000::key::s ] = n34000::control::controller::base::flag::eSOUTH;
+	key_flag_[ n20000::key::d ] = n34000::control::controller::base::flag::eEAST;
+	key_flag_[ n20000::key::a ] = n34000::control::controller::base::flag::eWEST;
 
 	head_[0] = physx::PxVec3(  0, 0, -s );
 	head_[1] = physx::PxVec3(  d, 0, -d );
@@ -108,7 +114,7 @@ physx::PxVec3		n34000::control::controller::def::move()
 	physx::PxVec3 mov(0,0,0);
 
 	// ignore all other flags
-	int f = parent->flag_ & (
+	int f = flag_ & (
 			n34000::control::controller::base::flag::eNORTH |
 			n34000::control::controller::base::flag::eSOUTH |
 			n34000::control::controller::base::flag::eEAST |
@@ -121,9 +127,9 @@ physx::PxVec3		n34000::control::controller::def::move()
 	{
 		mov = head_[it->second];
 	}
-
-	jess::clog << "mov=" << mov.x << mov.y << mov.z << std::endl;
-
+	
+	jess::clog << "mov=" << mov.x << " " << mov.y << " " << mov.z << std::endl;
+	
 	return mov;
 }
 bool			n34000::control::controller::def::on_key_down( int k )
