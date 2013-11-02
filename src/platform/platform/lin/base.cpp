@@ -12,7 +12,7 @@ n21100::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	n21100::base::init( jess::shared_ptr<n10000::app> parent )
+void	n21100::base::init( std::shared_ptr<n10000::app> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -55,12 +55,12 @@ void	n21100::base::shutdown()
 	XCloseDisplay( m_xdisplay );
 	
 }
-jess::shared_ptr<n22000::base>	n21100::base::create_window()
+std::shared_ptr<n22000::base>	n21100::base::create_window()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	jess::shared_ptr<n22100::base> wnd_lin( new n22100::base );
-	jess::shared_ptr<n22000::base> wnd = wnd_lin;
+	std::shared_ptr<n22100::base> wnd_lin( new n22100::base );
+	std::shared_ptr<n22000::base> wnd = wnd_lin;
 	
 	// don't init here, need to send data first
 	/**

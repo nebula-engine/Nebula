@@ -8,7 +8,7 @@
 
 #include <nebula/content/universe/admin/base.hpp>
 
-n31100::base::base( jess::shared_ptr<n30000::base> parent ):
+n31100::base::base( std::shared_ptr<n30000::base> parent ):
 	parent_( parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -33,7 +33,7 @@ void						n31100::base::update()
 
 	scenes_.foreach( std::bind( &nebula::content::scene::admin::base::update, std::placeholders::_1 ) );
 }
-jess::shared_ptr<n22000::base>			n31100::base::request_window()
+std::shared_ptr<n22000::base>			n31100::base::request_window()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->request_window() );

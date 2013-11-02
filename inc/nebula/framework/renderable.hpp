@@ -2,8 +2,8 @@
 #define __NEBULA_FRAMEWORK_RENDERABLE_HPP__
 
 #include <thread>
+#include <memory>
 
-#include <jess/shared_ptr.hpp>
 
 #include <nebula/ns.hpp>
 
@@ -29,7 +29,7 @@ namespace nebula
 				///@name references
 				///{
 				/// renderer
-				jess::shared_ptr<n23000::base>			renderer_;
+				std::shared_ptr<n23000::base>			renderer_;
 				///}
 			protected:
 				/// count

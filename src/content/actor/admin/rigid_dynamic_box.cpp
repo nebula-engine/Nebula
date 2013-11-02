@@ -35,7 +35,7 @@ void	n34100::rigid_dynamic_box::update( )
 {
 	n34100::rigid_dynamic::update();
 }
-void	n34100::rigid_dynamic_box::render( jess::shared_ptr<n23000::base> rnd )
+void	n34100::rigid_dynamic_box::render( std::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 

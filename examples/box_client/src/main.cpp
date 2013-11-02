@@ -8,7 +8,7 @@ int main( int argc, char** argv )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	jess::shared_ptr<box_client::framework::app> a( new box_client::framework::app() );
+	std::shared_ptr<box_client::framework::app> a( new box_client::framework::app() );
 	
 	//app->GetOpt( argc, argv, "h" );
 	

@@ -33,7 +33,7 @@ physx::PxFilterFlags	DefaultFilterShader(
 	return physx::PxFilterFlag::eDEFAULT;
 }
 
-n36000::base::base( jess::shared_ptr<n30000::base> parent ):
+n36000::base::base( std::shared_ptr<n30000::base> parent ):
 	parent_(parent)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -49,28 +49,28 @@ void						n36000::base::init()
 	// Physx
 	// Foundation
 	px_foundation_ = PxCreateFoundation( PX_PHYSICS_VERSION, px_default_allocator_callback_, px_default_error_callback_ );
-	jess::assertion( px_foundation_ );
+	NEB_ASSERT( px_foundation_ );
 
 	bool recordMemoryAllocations = true;
 
 	// Profile Zone Manager
 	px_profile_zone_manager_ = &::physx::PxProfileZoneManager::createProfileZoneManager( px_foundation_ );
-	jess::assertion( px_profile_zone_manager_ );
+	NEB_ASSERT( px_profile_zone_manager_ );
 
 	// Physics
 	px_physics_ = PxCreatePhysics( PX_PHYSICS_VERSION, *px_foundation_, ::physx::PxTolerancesScale(), recordMemoryAllocations, px_profile_zone_manager_ );
-	jess::assertion( px_physics_ );
+	NEB_ASSERT( px_physics_ );
 
 	// cooking
 	px_cooking_ = PxCreateCooking( PX_PHYSICS_VERSION, *px_foundation_, ::physx::PxCookingParams() );
-	jess::assertion( px_cooking_ );
+	NEB_ASSERT( px_cooking_ );
 
 	// Extensions
-	jess::assertion( ::PxInitExtensions( *px_physics_ ) );
-
+	NEB_ASSERT( ::PxInitExtensions( *px_physics_ ) );
+	
 	// character controller manager
 	px_character_controller_manager_ = ::PxCreateControllerManager( *px_foundation_ );
-	jess::assertion( px_character_controller_manager_ );
+	NEB_ASSERT( px_character_controller_manager_ );
 
 
 	// default material
@@ -87,7 +87,7 @@ std::shared_ptr<n32200::base>			n36000::base::create_scene( std::shared_ptr<n321
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	jess::shared_ptr<n32200::base> scene_physics( new n32200::base( scene ) );
+	std::shared_ptr<n32200::base> scene_physics( new n32200::base( scene ) );
 
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
 
@@ -101,7 +101,7 @@ std::shared_ptr<n32200::base>			n36000::base::create_scene( std::shared_ptr<n321
 	if( !scene_desc.cpuDispatcher )
 	{
 		::physx::PxDefaultCpuDispatcher* cpuDispatcher = ::physx::PxDefaultCpuDispatcherCreate( m_nbThreads );
-		jess::assertion( cpuDispatcher );
+		NEB_ASSERT( cpuDispatcher );
 
 		scene_desc.cpuDispatcher = cpuDispatcher;
 	}
@@ -164,15 +164,17 @@ std::shared_ptr<n34200::rigid_dynamic_box>	n36000::base::create_rigid_dynamic_bo
 	// create
 	std::shared_ptr<n34200::rigid_dynamic_box> physics( new n34200::rigid_dynamic_box( actor ) );
 
-	// create
-	physx::PxRigidDynamic* px_actor = px_physics_->createRigidDynamic( physx::PxTransform() );
-
+	// physics
+	physx::PxRigidDynamic* px_actor = px_physics_->createRigidDynamic( physx::PxTransform( actor->pose_ ) );
+	
 	px_actor->userData = actor.get();
-
+	
 	physics->px_actor_ = px_actor;
-
+	
 	// init
 	init_rigid_actor( physics );
+	
+	physics->init();
 
 	return physics;
 }
@@ -186,7 +188,7 @@ std::shared_ptr<n34200::rigid_static_plane>	n36000::base::create_rigid_static_pl
 	// create
 	std::shared_ptr<n34200::rigid_static_plane> physics( new n34200::rigid_static_plane( actor ) );
 
-	physx::PxTransform pose( physx::PxVec3(0,-2,0), physx::PxQuat( 0, physx::PxVec3(0,0,0) ) );
+	physx::PxTransform pose( physx::PxVec3(0,-2,0), physx::PxQuat( 0, physx::PxVec3(1,0,0) ) );
 	
 	// create
 	physx::PxRigidStatic* px_actor = px_physics_->createRigidStatic( pose );

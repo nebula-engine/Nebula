@@ -27,7 +27,7 @@ void	n34300::rigid_dynamic::update()
 {
 	
 }
-void	n34300::rigid_dynamic::render( jess::shared_ptr<n23000::base> rnd )
+void	n34300::rigid_dynamic::render( std::shared_ptr<n23000::base> rnd )
 {
 	
 }

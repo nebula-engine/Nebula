@@ -27,7 +27,7 @@ namespace nebula
 						rigid_actor&						operator=( rigid_actor const & ) = default;
 						/** \brief ctor
 						*/
-						rigid_actor( jess::shared_ptr<n34100::base> );
+						rigid_actor( std::shared_ptr<n34100::base> );
 					public:
 						/** \brief dtor
 						*/
@@ -41,12 +41,13 @@ namespace nebula
 						/** \brief update
 						*/
 						virtual	void						update();
+						virtual void						refresh() = 0;
 						/** \brief step
 						*/
 						virtual	void						step( float );
 						/** \brief render
 						*/
-						virtual	void						render( n23000::base::shared_t );
+						virtual	void						render( std::shared_ptr<n23000::base> );
 						/** \brief create shapes
 						*/
 						virtual	void						create_shapes();

@@ -1,11 +1,12 @@
 #ifndef __NEBULA_PLATFORM_RENDERER_BASE_HPP__
 #define __NEBULA_PLATFORM_RENDERER_BASE_HPP__
 
+#include <memory>
+
 #include <nebula/define.hpp>
 //#include <PxPhysicsAPI.h>
 #include <foundation/PxMat44.h>
 
-#include <jess/shared_ptr.hpp>
 
 #include <nebula/ns.hpp>
 
@@ -26,7 +27,7 @@ namespace nebula
 					/// dtor
 					virtual ~base();
 					/// init
-					virtual void							init( jess::shared_ptr<n22000::base> );
+					virtual void							init( std::shared_ptr<n22000::base> );
 					/// update
 					virtual void							update();
 					/// shutdown

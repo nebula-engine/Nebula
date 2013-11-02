@@ -17,7 +17,7 @@ namespace nebula
 				{
 					public:
 						/// ctor
-						box( jess::shared_ptr<n35100::base> );
+						box( std::shared_ptr<n35100::base> );
 						/// dtor
 						~box();
 						/// init
@@ -25,7 +25,7 @@ namespace nebula
 						/// shutdown
 						void								shutdown();
 						/// render
-						void								render( jess::shared_ptr<n23000::base> );
+						void								render( std::shared_ptr<n23000::base> );
 
 				};
 			}

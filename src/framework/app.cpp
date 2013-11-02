@@ -90,11 +90,11 @@ void	n10000::app::shutdown()
 	content_->shutdown();
 	platform_->shutdown();
 }
-jess::shared_ptr<n22000::base>	n10000::app::request_window()
+std::shared_ptr<n22000::base>	n10000::app::request_window()
 {
 	return ( platform_->request_window() );
 }
-jess::shared_ptr<n21000::base>	n10000::app::get_platform()
+std::shared_ptr<n21000::base>	n10000::app::get_platform()
 {
 	return platform_;
 }

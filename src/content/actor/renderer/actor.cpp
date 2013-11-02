@@ -21,7 +21,7 @@ void	n34300::actor::update()
 {
 	
 }
-void	n34300::actor::render( jess::shared_ptr<n23000::base> rnd )
+void	n34300::actor::render( std::shared_ptr<n23000::base> rnd )
 {
 	
 }

@@ -15,15 +15,21 @@ n34200::rigid_body::~rigid_body()
 }
 void	n34200::rigid_body::init()
 {
+	jess::scoped_ostream( &jess::cout, NEB_FUNCSIG );
+
 	n34200::rigid_actor::init();
 	
 	// density and velocity
 	velocity_ = physx::PxVec3(0,0,0);
 
 	density_ = 1000;
-
-	jess::assertion( px_actor_ );
-
+}
+void	n34200::rigid_body::refresh()
+{
+	jess::scoped_ostream( &jess::cout, NEB_FUNCSIG );
+	
+	NEB_ASSERT( px_actor_ );
+	
 	physx::PxRigidBody* px_rigid_body = (::physx::PxRigidBody*)px_actor_;
 
 	physx::PxRigidBodyExt::updateMassAndInertia( *px_rigid_body, density_ );

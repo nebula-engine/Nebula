@@ -1,7 +1,6 @@
 #ifndef __NEBULA_CONTENT_CAMERA_HPP__
 #define __NEBULA_CONTENT_CAMERA_HPP__
 
-#include <jess/shared_ptr.hpp>
 
 namespace nebula
 {
@@ -14,10 +13,10 @@ namespace nebula
 			/// ctor
 			camera();
 			/// render
-			void									render( jess::shared_ptr<n23000::base> );
+			void									render( std::shared_ptr<n23000::base> );
 
 			/// controller
-			jess::shared_ptr<n34100::controller::base>		controller_;
+			std::shared_ptr<n34100::controller::base>		controller_;
 		};
 	}
 }

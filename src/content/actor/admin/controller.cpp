@@ -13,7 +13,7 @@
 
 #include <nebula/content/actor/admin/controller.hpp>
 
-n34100::controller::base::base( jess::shared_ptr<n32100::base> parent ):
+n34100::controller::base::base( std::shared_ptr<n32100::base> parent ):
 	n34100::base( parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -38,7 +38,7 @@ void	n34100::controller::base::init()
 
 	pos_ = physx::PxVec3(0,0,2);
 
-	jess::shared_ptr<n34100::controller::base> this_ptr = std::dynamic_pointer_cast<n34100::controller::base>( shared_from_this() );
+	std::shared_ptr<n34100::controller::base> this_ptr = std::dynamic_pointer_cast<n34100::controller::base>( shared_from_this() );
 
 	// control
 	control_.reset( new n34400::controller::def( this_ptr ) );

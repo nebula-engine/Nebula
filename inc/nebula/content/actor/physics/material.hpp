@@ -4,7 +4,6 @@
 #include <nebula/define.hpp>
 #include <PxPhysicsAPI.h>
 
-#include <jess/shared_ptr.hpp>
 
 #include <nebula/ns.hpp>
 
@@ -18,12 +17,16 @@ namespace nebula
 			{
 				class material
 				{
-				public:
-					material();
-					virtual void						init();
-					virtual void						shutdown();
+					public:
+						/** \brief ctor
+						 */
+						material();
+						/** \brief init
+						 */
+						virtual void						init();
+						virtual void						shutdown();
 
-					physx::PxMaterial*					px_material_;
+						physx::PxMaterial*					px_material_;
 				};
 			}
 		}

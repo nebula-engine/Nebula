@@ -12,43 +12,43 @@ namespace nebula
 			namespace physics
 			{
 				/** \brief rigid dynamic
-				*/
+				 */
 				class rigid_dynamic:
 					public nebula::content::actor::physics::rigid_body
 				{
-public:
-friend class n36000::base;
+					public:
+						friend class n36000::base;
 					protected:
 						/** \brief copy ctor
-						*/
+						 */
 						rigid_dynamic(const rigid_dynamic&);
 						/** \brief assignment
-						*/
+						 */
 						rigid_dynamic&								operator=(const rigid_dynamic&);
 						/** \brief ctor
-						*/
+						 */
 						rigid_dynamic( std::shared_ptr<n34100::base> );
 					public:
 						/** \brief dtor
-						*/
+						 */
 						~rigid_dynamic();
 						/** \brief init
-						*/
+						 */
 						virtual	void								init();
 						/** \brief shutdown
-						*/
+						 */
 						virtual	void								shutdown();
 						/** \brief update
-						*/
+						 */
 						virtual	void								update();
 						/** \brief step
-						*/
+						 */
 						virtual	void								step(float);
 						/** \brief render
-						*/
-						virtual	void								render( jess::shared_ptr<n23000::base> );
+						 */
+						virtual	void								render( std::shared_ptr<n23000::base> );
 						/** \brief create shapes
-						*/
+						 */
 						virtual	void								create_shape();
 				};
 			}

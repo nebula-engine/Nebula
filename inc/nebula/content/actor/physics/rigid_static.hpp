@@ -32,6 +32,7 @@ namespace nebula
 						virtual	void						shutdown();
 						/// Update
 						virtual	void						update();
+						virtual void						refresh(){}
 						/// Render
 						virtual	void						render( std::shared_ptr<n23000::base> );
 						/// Step

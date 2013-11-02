@@ -17,7 +17,7 @@ namespace nebula
 				{
 					public:
 						/// ctor
-						plane( jess::shared_ptr<n35100::base> );
+						plane( std::shared_ptr<n35100::base> );
 						/// dtor
 						virtual ~plane();
 						/// init
@@ -25,7 +25,7 @@ namespace nebula
 						/// shutdown
 						virtual void			shutdown();
 						/// render
-						virtual void			render( jess::shared_ptr<n23000::base> );
+						virtual void			render( std::shared_ptr<n23000::base> );
 				};
 			}
 		}

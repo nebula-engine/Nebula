@@ -6,7 +6,6 @@
 
 #include <memory>
 
-#include <jess/shared_ptr.hpp>
 
 #include <nebula/content/actor/physics/rigid_actor.hpp>
 
@@ -60,7 +59,7 @@ namespace nebula
 					base&							operator=( base const & ) = default;
 				public:
 					/// ctor
-					base( jess::shared_ptr<n30000::base> );
+					base( std::shared_ptr<n30000::base> );
 					/// dtor
 					virtual ~base();
 					/** \brief init
@@ -122,7 +121,7 @@ namespace nebula
 					std::weak_ptr<n30000::base>				parent_;
 					/** \brief default material
 					 */
-					jess::shared_ptr<n34200::material>			default_material_;
+					std::shared_ptr<n34200::material>			default_material_;
 					///@name physx
 					///@{
 					/**

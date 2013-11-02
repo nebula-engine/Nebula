@@ -8,7 +8,7 @@ n22000::base::base()
 n22000::base::~base()
 {
 }
-void	n22000::base::init( jess::shared_ptr<n21000::base> parent )
+void	n22000::base::init( std::shared_ptr<n21000::base> parent )
 {
 	parent_ = parent;
 	//jess::clog << NEB_FUNCSIG << std::endl;

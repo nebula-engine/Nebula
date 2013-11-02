@@ -1,7 +1,6 @@
 #ifndef __NEBULA_CONTENT_VIEW_ADMIN_HUMAN_BASE_HPP__
 #define __NEBULA_CONTENT_VIEW_ADMIN_HUMAN_BASE_HPP__
 
-#include <jess/shared_ptr.hpp>
 
 #include <nebula/content/view/admin/base.hpp>
 
@@ -24,7 +23,7 @@ namespace nebula
 							/// dtor
 							virtual ~base();
 							/// init
-							virtual void					init( jess::shared_ptr<n32100::base> );
+							virtual void					init( std::shared_ptr<n32100::base> );
 
 							virtual void					shutdown();
 

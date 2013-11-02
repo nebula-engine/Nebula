@@ -1,4 +1,4 @@
-
+#include <jess/ostream.hpp>
 
 #include <tinyxml/tinyxml.h>
 
@@ -17,7 +17,7 @@ void	n51000::base::load_xml( std::string file_name )
 {
 
 }
-void	n51000::base::render( jess::shared_ptr<n23000::base> rnd )
+void	n51000::base::render( std::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	jess::clog << "objects_.size()=" << objects_.map_.size() << std::endl;

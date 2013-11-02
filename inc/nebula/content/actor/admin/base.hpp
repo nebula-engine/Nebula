@@ -4,7 +4,7 @@
 #include <nebula/define.hpp>
 #include <PxPhysicsAPI.h>
 
-#include <jess/shared_ptr.hpp>
+#include <memory>
 #include <jess/map.hpp>
 
 #include <nebula/content/scene/admin/base.hpp>
@@ -37,7 +37,7 @@ namespace nebula
 					public:
 						/** \brief ctor
 						 */
-						base( jess::shared_ptr<n32100::base> );
+						base( std::shared_ptr<n32100::base> );
 						/** \brief dtor
 						 */
 						virtual ~base();
@@ -55,26 +55,26 @@ namespace nebula
 						virtual	void						step( float );
 						/** \brief render
 						 */
-						virtual	void						render( jess::shared_ptr<n23000::base> );
+						virtual	void						render( std::shared_ptr<n23000::base> );
 						/** \brief material physics
 						 */
-						virtual jess::shared_ptr<n34200::material>		create_physics_material();
+						virtual std::shared_ptr<n34200::material>		create_physics_material();
 						/** \brief create shapes
 						 */
 						virtual	void						create_shapes();
 					protected:
 						/** \brief parent
 						 */
-						std::weak_ptr<n32100::base>					parent_;
+						std::weak_ptr<n32100::base>				parent_;
 						/** \brief physics
 						 */
-						std::shared_ptr<n34200::base>					physics_;
+						std::shared_ptr<n34200::base>				physics_;
 						/** \brief renderer
 						 */
-						std::shared_ptr<n34300::base>					renderer_;
+						std::shared_ptr<n34300::base>				renderer_;
 						/** \brief control
 						 */
-						std::shared_ptr<n34400::base>					control_;
+						std::shared_ptr<n34400::base>				control_;
 						/** \brief materials
 						 */
 						jess::map<n34100::material>				materials_;

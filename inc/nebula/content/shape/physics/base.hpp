@@ -1,10 +1,11 @@
 #ifndef __NEBULA_CONTENT_SHAPE_PHYSICS_BASE_HPP__
 #define __NEBULA_CONTENT_SHAPE_PHYSICS_BASE_HPP__
 
+#include <memory>
+
 #include <nebula/define.hpp>
 #include <PxPhysicsAPI.h>
 
-#include <jess/shared_ptr.hpp>
 
 #include <nebula/ns.hpp>
 
@@ -21,7 +22,7 @@ namespace nebula
 					public:
 						/** \brief ctor
 						 */
-						base( jess::shared_ptr<n35100::base> );
+						base( std::shared_ptr<n35100::base> );
 						/** \brief dtor
 						 */
 						virtual ~base();

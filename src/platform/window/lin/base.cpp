@@ -19,7 +19,7 @@ n22100::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	n22100::base::init( jess::shared_ptr<n21000::base> parent )
+void	n22100::base::init( std::shared_ptr<n21000::base> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -77,7 +77,7 @@ void	n22100::base::init( jess::shared_ptr<n21000::base> parent )
 	center_pointer();
 
 	// create renderer
-	jess::shared_ptr<n23110::base> rnd_glx( new n23110::base() );
+	std::shared_ptr<n23110::base> rnd_glx( new n23110::base() );
 
 	renderer_ = rnd_glx;
 
@@ -233,7 +233,7 @@ void	n22100::base::update()
 		}
 	}
 }
-void	n22100::base::process_message( jess::shared_ptr<n40000::message> msg )
+void	n22100::base::process_message( std::shared_ptr<n40000::message> msg )
 {
 	
 }

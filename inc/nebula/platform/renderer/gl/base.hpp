@@ -5,7 +5,6 @@
 //#include <GL/glu.h>
 #include <GL/glew.h>
 
-#include <jess/shared_ptr.hpp>
 
 #include <nebula/define.hpp>
 
@@ -33,7 +32,7 @@ namespace nebula
 						/// cube
 						virtual void						draw_cube();
 						///}
-						virtual void						init( jess::shared_ptr<n22000::base> );	
+						virtual void						init( std::shared_ptr<n22000::base> );	
 						/// update						
 						virtual void						update();
 						/// push_matrix

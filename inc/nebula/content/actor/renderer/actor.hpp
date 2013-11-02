@@ -20,24 +20,14 @@ namespace nebula
 					virtual public n34300::base
 				{
 				public:
-					///@name ctor and dtor
-					///@{
 					// Ctor
 					actor( std::shared_ptr<n34100::base> );
 					/// Copy Ctor
 					actor(const actor&);
 					/// Dtor
 					~actor();
-					///@}
-
-					///@name operator
-					///@{
 					/// assignment
 					actor&									operator=(const actor&);
-					///@}
-
-				
-
 					/// init
 					virtual	void								init();
 					/// shutdown
@@ -47,11 +37,7 @@ namespace nebula
 					/// step
 					virtual	void								step( float );
 					/// render
-					virtual	void								render( jess::shared_ptr<n23000::base> );
-				
-				
-				
-					
+					virtual	void								render( std::shared_ptr<n23000::base> );
 				};
 			}
 		}

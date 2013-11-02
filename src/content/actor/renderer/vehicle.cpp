@@ -20,7 +20,7 @@ void	n34300::vehicle::shutdown()
 void	n34300::vehicle::update(){
 
 }
-void	n34300::vehicle::render( jess::shared_ptr<n23000::base> rnd )
+void	n34300::vehicle::render( std::shared_ptr<n23000::base> rnd )
 {
 
 }

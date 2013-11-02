@@ -14,7 +14,8 @@ namespace nebula
 			{
 				public:
 					/// ctor
-					scoped_matrix( jess::shared_ptr<n23000::base> renderer ): renderer_(renderer)
+					scoped_matrix( std::shared_ptr<n23000::base> renderer ):
+						renderer_(renderer)
 				{
 					renderer_->push_matrix();
 				}
@@ -27,7 +28,7 @@ namespace nebula
 					/// ctor
 					scoped_matrix();
 					/// renderer
-					jess::shared_ptr<n23000::base>	renderer_;
+					std::shared_ptr<n23000::base>	renderer_;
 			};
 		}
 	}

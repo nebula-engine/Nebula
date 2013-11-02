@@ -18,7 +18,7 @@ namespace nebula
 					public:
 						/** \brief ctor
 						 */
-						plane( jess::shared_ptr<n35100::base> );
+						plane( std::shared_ptr<n35100::base> );
 						/** \brief dtor
 						 */
 						virtual ~plane();

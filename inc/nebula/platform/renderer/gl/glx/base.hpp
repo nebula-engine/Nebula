@@ -34,7 +34,7 @@ namespace nebula
 							virtual void						draw_cube();
 							///}
 							/// init			
-							virtual void						init( jess::shared_ptr<n22000::base> );
+							virtual void						init( std::shared_ptr<n22000::base> );
 							virtual void						init_raster_font();
 							/// shutdown			
 							virtual void						shutdown();

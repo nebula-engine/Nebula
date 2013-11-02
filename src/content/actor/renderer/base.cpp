@@ -1,3 +1,5 @@
+#include <jess/ostream.hpp>
+
 #include <nebula/define.hpp>
 
 #include <nebula/content/actor/renderer/base.hpp>

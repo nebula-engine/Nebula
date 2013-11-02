@@ -1,7 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_RENDERER_BASE_HPP__
 #define __NEBULA_CONTENT_ACTOR_RENDERER_BASE_HPP__
 
-#include <jess/shared_ptr.hpp>
+#include <memory>
 
 #include <nebula/ns.hpp>
 

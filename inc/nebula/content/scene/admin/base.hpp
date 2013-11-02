@@ -3,7 +3,6 @@
 
 #include <ctime>
 
-#include <jess/shared_ptr.hpp>
 #include <jess/map.hpp>
 
 #include <nebula/content/universe/admin/base.hpp>
@@ -25,14 +24,12 @@ namespace nebula
 				 * Need to see if PhysX already has an object functionality for this.
 				 */
 				class base:
-					public jess::enable_shared_from_this<n32100::base>
+					public std::enable_shared_from_this<n32100::base>
 				{
-					public:
-						typedef std::shared_ptr<base>				shared_t;
 					public:
 						/** ctor
 						*/
-						base( n31100::base::shared_t );
+						base( std::shared_ptr<n31100::base> );
 						/** dtor
 						*/
 						~base();
@@ -50,10 +47,10 @@ namespace nebula
 						virtual void							step( float dt );
 						/** render
 						*/
-						virtual void							render( n23000::base::shared_t );
+						virtual void							render( std::shared_ptr<n23000::base> );
 						/** get content
 						*/
-						jess::shared_ptr<n30000::base>					get_content();
+						std::shared_ptr<n30000::base>					get_content();
 						/** \brief controller to view
 						*/
 						void								connect_controller_to_view(
@@ -81,11 +78,11 @@ namespace nebula
 								std::shared_ptr<n34100::rigid_actor> );
 						/** \brief create
 						*/
-						template <class T> jess::shared_ptr<T>				create_view()
+						template <class T> std::shared_ptr<T>				create_view()
 						{
 							jess::clog << NEB_FUNCSIG << std::endl;
 
-							jess::shared_ptr<T> t( new T );
+							std::shared_ptr<T> t( new T );
 
 							views_.push<T>( t );
 
@@ -118,10 +115,10 @@ namespace nebula
 						*/
 						/** \brief physics
 						*/
-						jess::shared_ptr<n32200::base>					physics_;
+						std::shared_ptr<n32200::base>					physics_;
 						/** \brief renderer
 						*/
-						jess::shared_ptr<n32300::base>					renderer_;
+						std::shared_ptr<n32300::base>					renderer_;
 						/** \brief views
 						*/
 						jess::map<n33100::base>						views_;

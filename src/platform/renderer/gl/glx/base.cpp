@@ -13,7 +13,7 @@ int xerrorhandler( Display* dpy, XErrorEvent* error )
 	exit(-1);
 }
 
-void	n23110::base::init( jess::shared_ptr<n22000::base> parent )
+void	n23110::base::init( std::shared_ptr<n22000::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;

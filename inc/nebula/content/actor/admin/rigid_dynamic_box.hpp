@@ -48,13 +48,13 @@ namespace nebula
 						virtual	void						step( float );
 						/** \brief render
 						 */
-						virtual	void						render( jess::shared_ptr<n23000::base> );
+						virtual	void						render( std::shared_ptr<n23000::base> );
 						/** \brief create shapes
 						 */
 						virtual	void						create_shapes();
 						/** \brief shape
 						 */
-						jess::shared_ptr<n35100::box>				box_;
+						std::shared_ptr<n35100::box>				box_;
 						/** \brief size
 						 */
 						physx::PxVec3						size_;

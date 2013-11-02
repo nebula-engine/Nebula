@@ -2,7 +2,6 @@
 #define __NEBULA_CONTENT_ACTOR_ADMIN_RIGID_ACTOR_HPP__
 
 #include <jess/map.hpp>
-#include <jess/shared_ptr.hpp>
 
 #include <nebula/content/actor/admin/actor.hpp>
 
@@ -29,7 +28,7 @@ namespace nebula
 						rigid_actor&						operator=( rigid_actor const & ) = default;
 						/** \brief ctor
 						*/
-						rigid_actor( jess::shared_ptr<n32100::base> );
+						rigid_actor( std::shared_ptr<n32100::base> );
 					public:
 						/** \brief dtor
 						*/
@@ -48,16 +47,16 @@ namespace nebula
 						virtual	void						step( float );
 						/** \brief render
 						*/
-						virtual	void						render( n23000::base::shared_t );
+						virtual	void						render( std::shared_ptr<n23000::base> );
 						/** \brief create shapes
 						*/
 						virtual	void						create_shapes();
 						/** \brief create box
 						*/
-						virtual jess::shared_ptr<n35100::box>			create_box();
+						virtual std::shared_ptr<n35100::box>			create_box();
 						/** \brief create plane
 						*/
-						virtual jess::shared_ptr<n35100::plane>			create_plane();
+						virtual std::shared_ptr<n35100::plane>			create_plane();
 						/** \brief shapes
 						*/
 						jess::map<n35100::base>					shapes_;

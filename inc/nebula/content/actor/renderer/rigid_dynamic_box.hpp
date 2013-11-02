@@ -38,7 +38,7 @@ namespace nebula
 					/// step
 					virtual	void								step();
 					/// render
-					virtual	void								render( jess::shared_ptr<n23000::base> );
+					virtual	void								render( std::shared_ptr<n23000::base> );
 				
 				
 				

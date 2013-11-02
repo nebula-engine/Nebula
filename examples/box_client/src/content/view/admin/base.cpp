@@ -10,13 +10,13 @@
 #include <box_client/content/view/admin/base.hpp>
 
 
-void	bc33100::base::init( jess::shared_ptr<n32100::base> parent )
+void	bc33100::base::init( std::shared_ptr<n32100::base> parent )
 {
 	//log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// get derived parent
-	jess::shared_ptr<bc32100::base> bc_parent = std::dynamic_pointer_cast<bc32100::base>( parent );	
+	std::shared_ptr<bc32100::base> bc_parent = std::dynamic_pointer_cast<bc32100::base>( parent );	
 
 	// init parent
 	n33100::base::init( parent );

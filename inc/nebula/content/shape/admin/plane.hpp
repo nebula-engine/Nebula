@@ -16,13 +16,13 @@ namespace nebula
 				{
 					public:
 						/// ctor
-						plane( jess::shared_ptr<n34100::rigid_actor> );
+						plane( std::shared_ptr<n34100::rigid_actor> );
 						/// init
 						virtual void					init();
 						/// shutdown
 						virtual void					shutdown();
 						/// render
-						virtual void					render( jess::shared_ptr<n23000::base> );
+						virtual void					render( std::shared_ptr<n23000::base> );
 
 				};
 			}

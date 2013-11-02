@@ -35,7 +35,7 @@ void	n35100::box::shutdown()
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	n35100::box::render( jess::shared_ptr<n23000::base> rnd )
+void	n35100::box::render( std::shared_ptr<n23000::base> rnd )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;

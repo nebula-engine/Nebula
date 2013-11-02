@@ -25,7 +25,7 @@ namespace nebula
 						rigid_static&						operator=( rigid_static const & );
 						/** \brief ctor
 						*/
-						rigid_static( n32100::base::shared_t );
+						rigid_static( std::shared_ptr<n32100::base>);
 					protected:
 						/** \brief dtor
 						*/
@@ -41,7 +41,7 @@ namespace nebula
 						virtual	void						update();
 						/** \brief render
 						*/
-						virtual	void						render( n23000::base::shared_t );
+						virtual	void						render( std::shared_ptr<n23000::base> );
 						/** \brief step
 						*/
 						virtual	void						step( float );

@@ -36,16 +36,16 @@ n32100::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-jess::shared_ptr<n30000::base>	n32100::base::get_content()
+std::shared_ptr<n30000::base>	n32100::base::get_content()
 {
-	jess::assertion( !parent_.expired() );	
-	jess::shared_ptr<n31100::base> uni = parent_.lock();
+	NEB_ASSERT( !parent_.expired() );	
+	std::shared_ptr<n31100::base> uni = parent_.lock();
 
-	jess::assertion( !uni->parent_.expired() );
-	jess::shared_ptr<n30000::base> cont = uni->parent_.lock();
-
-
-	jess::assertion( bool( cont ) );
+	NEB_ASSERT( !uni->parent_.expired() );
+	std::shared_ptr<n30000::base> cont = uni->parent_.lock();
+	
+	
+	NEB_ASSERT( cont );
 
 	return cont;
 }
@@ -119,10 +119,10 @@ void						n32100::base::render( std::shared_ptr<n23000::base> rnd )
 std::shared_ptr<n34100::rigid_dynamic_box>	n32100::base::create_rigid_dynamic_box()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
-
+	
 	// create
-	jess::shared_ptr<n34100::rigid_dynamic_box> act = parent_.lock()->create_rigid_dynamic_box( shared_from_this() );
-
+	std::shared_ptr<n34100::rigid_dynamic_box> act = parent_.lock()->create_rigid_dynamic_box( shared_from_this() );
+	
 	// add
 	physics_->add( act );
 	
@@ -136,7 +136,7 @@ std::shared_ptr<n34100::rigid_static_plane>	n32100::base::create_rigid_static_pl
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// create
-	jess::shared_ptr<n34100::rigid_static_plane> act = parent_.lock()->create_rigid_static_plane( shared_from_this() );
+	std::shared_ptr<n34100::rigid_static_plane> act = parent_.lock()->create_rigid_static_plane( shared_from_this() );
 
 	// add
 	physics_->add( act );
@@ -151,7 +151,7 @@ std::shared_ptr<n34100::controller::base>	n32100::base::create_controller()
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// create
-	jess::shared_ptr<n34100::controller::base> act = parent_.lock()->create_controller( shared_from_this() );
+	std::shared_ptr<n34100::controller::base> act = parent_.lock()->create_controller( shared_from_this() );
 
 	// store
 	actors_.push<n34100::controller::base>( act );

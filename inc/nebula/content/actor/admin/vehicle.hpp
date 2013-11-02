@@ -21,7 +21,7 @@ namespace nebula
 					vehicle&								operator=(const vehicle&);
 				public:
 					/// ctor
-					vehicle( jess::shared_ptr<n32100::base> );
+					vehicle( std::shared_ptr<n32100::base> );
 					/// ctor
 					~vehicle();
 					/// init
@@ -33,7 +33,7 @@ namespace nebula
 					/// step
 					virtual	void								step(float);
 					/// render
-					virtual	void								render( jess::shared_ptr<n23000::base> );
+					virtual	void								render( std::shared_ptr<n23000::base> );
 				};
 			}
 		}
