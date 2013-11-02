@@ -12,7 +12,7 @@
 
 #include <nebula/content/actor/admin/rigid_actor.hpp>
 
-n34100::rigid_actor::rigid_actor( jess::shared_ptr<n32100::base> parent ):
+n34100::rigid_actor::rigid_actor( std::shared_ptr<n32100::base> parent ):
 actor( parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -29,6 +29,9 @@ void	n34100::rigid_actor::init()
 	n34100::actor::init();
 
 	create_shapes();
+	
+	NEB_ASSERT( physics_ );
+	physics_->refresh();
 }
 void	n34100::rigid_actor::render( std::shared_ptr<n23000::base> rnd )
 {
@@ -46,17 +49,17 @@ void	n34100::rigid_actor::create_shapes()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-jess::shared_ptr<n35100::box>	n34100::rigid_actor::create_box()
+std::shared_ptr<n35100::box>	n34100::rigid_actor::create_box()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
 	NEB_ASSERT( !parent_.expired() );
 	
 	// cast shared from this
-	jess::shared_ptr<n34100::rigid_actor> this_ptr = std::dynamic_pointer_cast<n34100::rigid_actor>( shared_from_this() );
+	std::shared_ptr<n34100::rigid_actor> this_ptr = std::dynamic_pointer_cast<n34100::rigid_actor>( shared_from_this() );
 	
 	// create
-	jess::shared_ptr<n35100::box> box = parent_.lock()->create_box( this_ptr );
+	std::shared_ptr<n35100::box> box = parent_.lock()->create_box( this_ptr );
 	
 	// store
 	shapes_.push<n35100::box>( box );
@@ -64,15 +67,15 @@ jess::shared_ptr<n35100::box>	n34100::rigid_actor::create_box()
 	
 	return box;
 }
-jess::shared_ptr<n35100::plane>		n34100::rigid_actor::create_plane()
+std::shared_ptr<n35100::plane>		n34100::rigid_actor::create_plane()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	// cast shared from this
-	jess::shared_ptr<n34100::rigid_actor> this_ptr = std::dynamic_pointer_cast<n34100::rigid_actor>( shared_from_this() );
+	std::shared_ptr<n34100::rigid_actor> this_ptr = std::dynamic_pointer_cast<n34100::rigid_actor>( shared_from_this() );
 	
 	// create
-	jess::shared_ptr<n35100::plane> plane = parent_.lock()->create_plane( this_ptr );
+	std::shared_ptr<n35100::plane> plane = parent_.lock()->create_plane( this_ptr );
 
 	// store
 	shapes_.push<n35100::plane>( plane );

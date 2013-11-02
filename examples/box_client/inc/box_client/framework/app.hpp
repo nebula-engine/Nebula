@@ -18,15 +18,19 @@ namespace box_client
 		class app:
 			public n10000::app
 		{
-		public:
-			app();
-			void							init();
-
-
-
-			jess::shared_ptr<bc31100::base>				universe_;
-			jess::shared_ptr<bc32100::base>				scene_;
-
+			public:
+				/** \brief ctor
+				 */
+				app();
+				/** \brief ctor
+				 */
+				void							init();
+				/** \brief ctor
+				 */
+				std::shared_ptr<bc31100::base>				universe_;
+				/** \brief ctor
+				 */
+				std::shared_ptr<bc32100::base>				scene_;
 		};
 	}
 }

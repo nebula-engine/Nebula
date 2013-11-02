@@ -32,12 +32,7 @@ namespace nebula
 						/// shutdown
 						void								shutdown();
 						/// render
-						void								render( jess::shared_ptr<n23000::base> );
-						/// get pose
-						physx::PxMat44							get_pose()
-						{
-							return pose_;
-						}
+						void								render( std::shared_ptr<n23000::base> );
 				};
 			}
 		}

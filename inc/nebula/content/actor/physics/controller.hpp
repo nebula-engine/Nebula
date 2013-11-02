@@ -45,6 +45,7 @@ namespace nebula
 						/**\brief/ update
 						 */
 						virtual	void						update();
+						virtual void						refresh(){}
 						/** \brief step
 						 */
 						virtual	void						step( float );

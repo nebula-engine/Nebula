@@ -1,7 +1,7 @@
 #ifndef __NEBULA_CONTENT_SHAPE_RENDERER_BASE_HPP__
 #define __NEBULA_CONTENT_SHAPE_RENDERER_BASE_HPP__
 
-#include <jess/shared_ptr.hpp>
+#include <memory>
 
 #include <nebula/ns.hpp>
 
@@ -18,7 +18,7 @@ namespace nebula
 				{
 					public:
 						/// ctor
-						base( jess::shared_ptr<n35100::base> );
+						base( std::shared_ptr<n35100::base> );
 						/// dtor
 						virtual ~base();
 						/// init
@@ -26,7 +26,7 @@ namespace nebula
 						/// shutdown
 						virtual void					shutdown();
 						/// render
-						virtual void					render( jess::shared_ptr<n23000::base> );
+						virtual void					render( std::shared_ptr<n23000::base> );
 						/// parent
 						std::weak_ptr<n35100::base>			parent_;
 				};

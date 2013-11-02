@@ -8,7 +8,7 @@
 
 #include <box_client/content/scene/admin/base.hpp>
 
-bc32100::base::base( jess::shared_ptr<n31100::base> parent ):
+bc32100::base::base( std::shared_ptr<n31100::base> parent ):
 	n32100::base( parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;	

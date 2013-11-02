@@ -1,10 +1,11 @@
 #ifndef __NEBULA_CONTENT_SHAPE_ADMIN_BASE_HPP__
 #define __NEBULA_CONTENT_SHAPE_ADMIN_BASE_HPP__
 
+#include <memory>
+
 #include <nebula/define.hpp>
 #include <PxPhysicsAPI.h>
 
-#include <jess/shared_ptr.hpp>
 
 #include <nebula/ns.hpp>
 
@@ -18,7 +19,7 @@ namespace nebula
 			{
 				/// base	
 				class base:
-					public jess::enable_shared_from_this<n35100::base>
+					public std::enable_shared_from_this<n35100::base>
 				{
 					protected:
 						/** \brief copy ctor

@@ -1,7 +1,8 @@
 #ifndef __NEBULA_UI_OBJECT_BASE_HPP__
 #define __NEBULA_UI_OBJECT_BASE_HPP__
 
-#include <jess/shared_ptr.hpp>
+#include <memory>
+
 #include <jess/signal/connection.hpp>
 
 #include <nebula/define.hpp>
@@ -23,7 +24,7 @@ namespace nebula
 					 */
 					base();
 					/// render
-					virtual void						render( jess::shared_ptr<n23000::base> ) = 0;
+					virtual void						render( std::shared_ptr<n23000::base> ) = 0;
 					/** set label
 					 */
 					void							set_label( char const * cstr );
@@ -38,9 +39,6 @@ namespace nebula
 					/** \brief active
 					 */
 					bool							active_;
-					///@name signal
-					///@{
-					/***/
 					/// key down
 					std::shared_ptr< jess::signal::connection<int> >	connection_key_down_;
 					/// key up
@@ -55,7 +53,6 @@ namespace nebula
 					/** \brief key up mask
 					 */
 					int							key_up_mask_;
-					///@}
 					/** label length
 					 */
 					size_t							label_length_;

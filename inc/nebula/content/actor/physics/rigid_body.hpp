@@ -40,12 +40,13 @@ namespace nebula
 						/** \brief update
 						*/
 						virtual	void						update();
+						virtual void						refresh();
 						/** \brief step
 						*/
 						virtual	void						step( float );
 						/** \brief render
 						*/
-						virtual	void						render( n23000::base::shared_t );
+						virtual	void						render( std::shared_ptr<n23000::base> );
 						/** \brief density
 						*/
 						float							density_;

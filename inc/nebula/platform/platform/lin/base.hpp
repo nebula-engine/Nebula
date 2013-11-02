@@ -1,7 +1,6 @@
 #ifndef __NEBULA_PLATFORM_PLATFORM_LIN_BASE_HPP__
 #define __NEBULA_PLATFORM_PLATFORM_LIN_BASE_HPP__
 
-#include <jess/shared_ptr.hpp>
 
 #include <X11/Xlibint.h>
 #include <X11/Xlib.h>
@@ -33,13 +32,13 @@ namespace nebula
 					/// dtor
 					virtual ~base();
 					/// init
-					virtual void						init( jess::shared_ptr<n10000::app> );
+					virtual void						init( std::shared_ptr<n10000::app> );
 					/// shutdown
 					virtual void						shutdown();
 					/// update
 					virtual void						update();
 					/// create window
-					virtual jess::shared_ptr<n22000::base>			create_window();
+					virtual std::shared_ptr<n22000::base>			create_window();
 					/// display
 					::Display*						m_xdisplay;// = XOpenDisplay( NULL );
 					/// screen num

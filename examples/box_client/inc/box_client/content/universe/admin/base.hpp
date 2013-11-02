@@ -18,7 +18,7 @@ namespace box_client
 				{
 					public:	
 						/// ctor
-						base( jess::shared_ptr<n30000::base> );
+						base( std::shared_ptr<n30000::base> );
 						/// init
 						virtual void							init();
 				};

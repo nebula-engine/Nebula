@@ -4,8 +4,8 @@
 
 #include <nebula/content/actor/physics/rigid_actor.hpp>
 
-n34200::rigid_actor::rigid_actor( jess::shared_ptr<n34100::base> parent ):
-actor( parent )
+n34200::rigid_actor::rigid_actor( std::shared_ptr<n34100::base> parent ):
+	actor( parent )
 {
 }
 n34200::rigid_actor::~rigid_actor()

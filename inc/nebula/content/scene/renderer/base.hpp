@@ -31,7 +31,7 @@ namespace nebula
 					///@name standard fun30000tions
 					///@{
 					/// Initialize
-					virtual	void					init( jess::shared_ptr<n32100::base> );
+					virtual	void					init( std::shared_ptr<n32100::base> );
 					/// ShutDown
 					virtual	void					shutdown();
 					/// Update
@@ -39,7 +39,7 @@ namespace nebula
 					/// step
 					void						step( float dt );
 					/// render
-					void						render( jess::shared_ptr<n23000::base> );
+					void						render( std::shared_ptr<n23000::base> );
 					///@}
 
 					/*

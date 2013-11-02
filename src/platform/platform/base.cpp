@@ -1,3 +1,5 @@
+#include <jess/ostream.hpp>
+
 #include <nebula/asio/message.hpp>
 
 #include <nebula/define.hpp>
@@ -13,7 +15,7 @@ n21000::base::~base()
 {
 
 }
-void	n21000::base::init( jess::shared_ptr<n10000::app> parent )
+void	n21000::base::init( std::shared_ptr<n10000::app> parent )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	parent_ = parent;
@@ -29,7 +31,7 @@ void	n21000::base::delete_window( int window_no )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 
-	jess::shared_ptr<n22000::base> wnd = windows_.at( window_no );
+	std::shared_ptr<n22000::base> wnd = windows_.at( window_no );
 
 	if ( wnd )
 	{
@@ -39,14 +41,14 @@ void	n21000::base::delete_window( int window_no )
 
 
 }
-jess::shared_ptr<n22000::base>	n21000::base::create_window()
+std::shared_ptr<n22000::base>	n21000::base::create_window()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	/// \todo make this pure virtual
 
-	return jess::shared_ptr<n22000::base>();
+	return std::shared_ptr<n22000::base>();
 }
 void	n21000::base::update()
 {
@@ -56,7 +58,7 @@ void	n21000::base::update()
 
 	windows_.foreach( std::bind( &n22000::base::update, std::placeholders::_1 ) );
 }
-jess::shared_ptr<n22000::base>	n21000::base::request_window()
+std::shared_ptr<n22000::base>	n21000::base::request_window()
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -69,7 +71,7 @@ jess::shared_ptr<n22000::base>	n21000::base::request_window()
 	 **/
 	return create_window();
 }
-void	n21000::base::process_message( jess::shared_ptr<n40000::message> msg )
+void	n21000::base::process_message( std::shared_ptr<n40000::message> msg )
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 

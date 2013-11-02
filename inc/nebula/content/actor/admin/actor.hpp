@@ -25,7 +25,7 @@ namespace nebula
 						actor&							operator=( actor const & ) = default;
 						/** \brief ctor
 						*/
-						actor( n32100::base::shared_t );
+						actor( std::shared_ptr<n32100::base> );
 					public:
 						/** \brief dtor
 						*/
@@ -44,7 +44,7 @@ namespace nebula
 						virtual	void						step( float );
 						/** \brief render
 						*/
-						virtual	void						render( n23000::base::shared_t );
+						virtual	void						render( std::shared_ptr<n23000::base> );
 				};
 			}
 		}

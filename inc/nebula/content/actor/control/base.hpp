@@ -5,8 +5,6 @@
 
 #include <nebula/define.hpp>
 
-#include <jess/shared_ptr.hpp>
-
 #include <PxPhysicsAPI.h>
 
 #include <nebula/ns.hpp>
@@ -64,7 +62,7 @@ namespace nebula
 						virtual void					init() = 0;
 						/** \breif connect
 						*/
-						virtual void					connect_to_window( jess::shared_ptr<n22000::base> ) = 0;
+						virtual void					connect_to_window( std::shared_ptr<n22000::base> ) = 0;
 						/** \brief is valid
 						*/
 						virtual bool					is_valid() = 0;
@@ -92,7 +90,7 @@ namespace nebula
 						///@}
 						/** \brief window
 						*/
-						jess::shared_ptr<n22000::base>			window_;
+						std::shared_ptr<n22000::base>			window_;
 						/** \brief flag
 						*/
 						unsigned int					flag_;

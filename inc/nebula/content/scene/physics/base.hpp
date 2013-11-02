@@ -4,7 +4,6 @@
 #include <nebula/define.hpp>
 #include <PxPhysicsAPI.h>
 
-#include <jess/shared_ptr.hpp>
 
 #include <nebula/ns.hpp>
 
@@ -48,7 +47,7 @@ namespace nebula
 						virtual void						step( float );
 						/** \brief render
 						 */
-						virtual void						render( jess::shared_ptr<n23000::base> );
+						virtual void						render( std::shared_ptr<n23000::base> );
 						/** \brief customize scene description
 						 */
 						virtual void						customize_scene_desc( physx::PxSceneDesc& );

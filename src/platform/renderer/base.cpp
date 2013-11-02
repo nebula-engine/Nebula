@@ -1,3 +1,5 @@
+#include <jess/ostream.hpp>
+
 #include <nebula/platform/renderer/base.hpp>
 
 
@@ -14,13 +16,12 @@ n23000::base::~base()
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 }
-void	n23000::base::init( jess::shared_ptr<n22000::base> parent )
+void	n23000::base::init( std::shared_ptr<n22000::base> parent )
 {
-		// log
+	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-
-parent_ = parent;
+	parent_ = parent;
 }
 void	n23000::base::shutdown()
 {

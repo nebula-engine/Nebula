@@ -28,7 +28,7 @@ void GetGLError( GLenum error )
 		throw jess::except( "opengl error 10" );
 	}
 }
-void	n23100::base::init( jess::shared_ptr<n22000::base> parent )
+void	n23100::base::init( std::shared_ptr<n22000::base> parent )
 {
 	// log
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -229,12 +229,18 @@ void	n23100::base::draw_quad()
 {
 	jess::scoped_ostream sos( &jess::clog, NEB_FUNCSIG );
 
-
+	GLfloat cyan[] = {0.0f, 0.8f, 0.8f, 1.0f};
+	
 	glBegin(GL_QUADS);
-	glColor3f(1., 0., 0.); glVertex3f(-.75, -.75, 0.);
-	glColor3f(0., 1., 0.); glVertex3f( .75, -.75, 0.);
-	glColor3f(0., 0., 1.); glVertex3f( .75,  .75, 0.);
-	glColor3f(1., 1., 0.); glVertex3f(-.75,  .75, 0.);
+	
+	glColor3fv( cyan );
+	
+	glNormal3f( 1.,   0.,   0. );
+	glVertex3f( 0., -10.,   0.);
+	glVertex3f( 0., -10., -10.);
+	glVertex3f( 0.,   0., -10.);
+	glVertex3f( 0.,   0.,   0.);
+
 	glEnd();
 
 }
@@ -272,7 +278,7 @@ void	n23100::base::begin_2d()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	jess::shared_ptr<n22000::base> wnd = parent_.lock();
+	std::shared_ptr<n22000::base> wnd = parent_.lock();
 
 	glDisable( GL_CULL_FACE );
 	glDisable( GL_LIGHTING );

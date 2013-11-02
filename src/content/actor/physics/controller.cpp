@@ -43,7 +43,7 @@ void	n34200::controller::step( float dt )
 	
 	//update_move();
 	
-	jess::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>( parent_.lock() );
+	std::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>( parent_.lock() );
 
 	NEB_ASSERT( parent->control_ );
 

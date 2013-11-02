@@ -24,7 +24,7 @@ void	n34300::rigid_body::update()
 {
 
 }
-void	n34300::rigid_body::render( jess::shared_ptr<n23000::base> rnd )
+void	n34300::rigid_body::render( std::shared_ptr<n23000::base> rnd )
 {
 
 }

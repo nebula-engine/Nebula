@@ -1,7 +1,6 @@
 #ifndef __NEBULA_CONTENT_UNIVERSE_ADMIN_BASE_HPP__
 #define __NEBULA_CONTENT_UNIVERSE_ADMIN_BASE_HPP__
 
-#include <jess/shared_ptr.hpp>
 #include <jess/ostream.hpp>
 #include <jess/map.hpp>
 
@@ -19,10 +18,8 @@ namespace nebula
 			namespace admin
 			{
 				class base:
-					public jess::enable_shared_from_this<n31100::base>
+					public std::enable_shared_from_this<n31100::base>
 				{
-					public:
-						typedef std::shared_ptr<base>				shared_t;
 					protected:
 						/** \brief copy ctor
 						*/
@@ -33,7 +30,7 @@ namespace nebula
 					public:
 						/** \brief ctor
 						*/
-						base( jess::shared_ptr<n30000::base> );
+						base( std::shared_ptr<n30000::base> );
 						/** \brief dtor
 						*/
 						virtual ~base();
@@ -48,14 +45,14 @@ namespace nebula
 						virtual void						update();
 						/** \brief request window
 						*/
-						virtual jess::shared_ptr<n22000::base>			request_window();
+						virtual std::shared_ptr<n22000::base>			request_window();
 						/** \brief create scene
 						*/
-						template <class T> jess::shared_ptr<T>			create_scene()
+						template <class T> std::shared_ptr<T>			create_scene()
 						{
 							jess::clog << NEB_FUNCSIG << std::endl;
 
-							jess::shared_ptr<T> t = parent_.lock()->create_scene<T>( shared_from_this() );
+							std::shared_ptr<T> t = parent_.lock()->create_scene<T>( shared_from_this() );
 
 							scenes_.push<T>( t );
 

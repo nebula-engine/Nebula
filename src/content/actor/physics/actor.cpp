@@ -1,6 +1,6 @@
 #include <nebula/content/actor/physics/actor.hpp>
 
-n34200::actor::actor( jess::shared_ptr<n34100::base> parent ):
+n34200::actor::actor( std::shared_ptr<n34100::base> parent ):
 base( parent )
 {
 

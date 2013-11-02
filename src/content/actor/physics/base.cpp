@@ -1,3 +1,5 @@
+#include <jess/ostream.hpp>
+
 #include <nebula/define.hpp>
 #include <nebula/ns.hpp>
 
@@ -7,7 +9,7 @@
 
 /// \todo completely separate "platform" from the rest of "nebula"
 
-n34200::base::base( jess::shared_ptr<n34100::base> parent ):
+n34200::base::base( std::shared_ptr<n34100::base> parent ):
 	parent_( parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;

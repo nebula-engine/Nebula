@@ -22,7 +22,7 @@ namespace nebula
 					/// dtor
 					virtual ~base();
 					/// init
-					virtual void					init( jess::shared_ptr<n32100::base> );
+					virtual void					init( std::shared_ptr<n32100::base> );
 					/// shutdown
 					virtual void					shutdown();
 					/// update
@@ -36,11 +36,11 @@ namespace nebula
 					///@name referen30000es
 					///{
 					/// window
-					jess::shared_ptr<n22000::base>			window_;
+					std::shared_ptr<n22000::base>			window_;
 					/// camera
-					jess::shared_ptr<n30000::camera>		camera_;
+					std::shared_ptr<n30000::camera>			camera_;
 					/// ui
-					jess::shared_ptr<n51000::base>			layout_;
+					std::shared_ptr<n51000::base>			layout_;
 					///}
 
 				};

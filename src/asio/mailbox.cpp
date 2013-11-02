@@ -10,13 +10,13 @@ void						n40000::mailbox::update()
 		messages_.pop_front();
 	}
 }
-void						n40000::mailbox::push_back( jess::shared_ptr<n40000::message> msg )
+void						n40000::mailbox::push_back( std::shared_ptr<n40000::message> msg )
 {
 	messages_.push_back( msg );
 }
-jess::shared_ptr<n40000::message>		n40000::mailbox::pop_front()
+std::shared_ptr<n40000::message>		n40000::mailbox::pop_front()
 {
-	jess::shared_ptr<n40000::message> msg;
+	std::shared_ptr<n40000::message> msg;
 	
 	if ( messages_.empty() )
 	{

@@ -27,7 +27,7 @@ namespace nebula
 						rigid_body&						operator=( rigid_body const & ) = default;
 						/** \brief ctor
 						*/
-						rigid_body( n32100::base::shared_t );
+						rigid_body( std::shared_ptr<n32100::base> );
 					public:
 						/** \brief dtor
 						*/
@@ -46,7 +46,7 @@ namespace nebula
 						virtual	void						step( float );
 						/** \brief render
 						*/
-						virtual	void						render( n23000::base::shared_t );
+						virtual	void						render( std::shared_ptr<n23000::base> );
 						/** \briefcreate shape
 						*/
 						virtual void						create_shapes();

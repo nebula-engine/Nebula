@@ -1,9 +1,11 @@
+#include <jess/ostream.hpp>
+
 #include <nebula/platform/renderer/base.hpp>
 
 #include <nebula/content/shape/physics/box.hpp>
 
-n35200::box::box( jess::shared_ptr<n35100::base> parent ):
-n35200::base( parent )
+n35200::box::box( std::shared_ptr<n35100::base> parent ):
+	n35200::base( parent )
 {
 
 }
@@ -19,7 +21,7 @@ void	n35200::box::init()
 }
 void	n35200::box::shutdown()
 {
-	
+
 }
 void	n35200::box::create_shape()
 {

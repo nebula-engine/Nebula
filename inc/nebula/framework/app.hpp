@@ -1,7 +1,7 @@
 #ifndef __NEBULA_FRAMEWORK_APP_HPP__
 #define __NEBULA_FRAMEWORK_APP_HPP__
 
-#include <jess/shared_ptr.hpp>
+#include <memory>
 
 #include <nebula/ns.hpp>
 
@@ -11,7 +11,7 @@ namespace nebula
 	{
 		/// %app
 		class app:
-			public jess::enable_shared_from_this<n10000::app>
+			public std::enable_shared_from_this<n10000::app>
 		{
 		public:
 			/// ctor
@@ -31,19 +31,19 @@ namespace nebula
 			/// continue multi
 			void							ContinueLoopMulti();
 			/// request_window
-			virtual jess::shared_ptr<n22000::base>			request_window();
+			virtual std::shared_ptr<n22000::base>			request_window();
 			/// get content
-			jess::shared_ptr<n30000::base>			get_content();
+			std::shared_ptr<n30000::base>			get_content();
 			/// get platform
-			jess::shared_ptr<n21000::base>				get_platform();
+			std::shared_ptr<n21000::base>				get_platform();
 			///@name children
 			///@{
 			/// contnt
-			jess::shared_ptr<n30000::base>				content_;
+			std::shared_ptr<n30000::base>				content_;
 			/// platform
-			jess::shared_ptr<n21000::base>				platform_;
+			std::shared_ptr<n21000::base>				platform_;
 			/// renderable
-			jess::shared_ptr<n10000::renderable>			renderable_;
+			std::shared_ptr<n10000::renderable>			renderable_;
 			///@}
 
 		};

@@ -18,7 +18,7 @@ n33100::base::~base()
 {
 
 }
-void	n33100::base::init( jess::shared_ptr<n32100::base> parent )
+void	n33100::base::init( std::shared_ptr<n32100::base> parent )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -38,7 +38,7 @@ void	n33100::base::render()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	jess::shared_ptr<n23000::base> rnd = window_->renderer_;
+	std::shared_ptr<n23000::base> rnd = window_->renderer_;
 
 
 	n10000::renderable::render();

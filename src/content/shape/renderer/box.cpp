@@ -8,7 +8,7 @@
 
 #include <nebula/content/shape/renderer/box.hpp>
 
-n35300::box::box( jess::shared_ptr<n35100::base> parent ):
+n35300::box::box( std::shared_ptr<n35100::base> parent ):
 	n35300::base( parent )
 {
 
@@ -24,11 +24,11 @@ void	n35300::box::shutdown()
 {
 
 }
-void	n35300::box::render( jess::shared_ptr<n23000::base> rnd )
+void	n35300::box::render( std::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	jess::shared_ptr<n35100::box> parent = std::dynamic_pointer_cast<n35100::box>( parent_.lock() );
+	std::shared_ptr<n35100::box> parent = std::dynamic_pointer_cast<n35100::box>( parent_.lock() );
 	
 	jess::assertion( bool( rnd ) );	
 	

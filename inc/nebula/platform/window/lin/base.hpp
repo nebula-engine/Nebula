@@ -27,7 +27,7 @@ namespace nebula
 				public:
 					base();
 					virtual ~base();
-					virtual void			init( jess::shared_ptr<n21000::base> );
+					virtual void			init( std::shared_ptr<n21000::base> );
 					virtual void			shutdown();
 					virtual void			update();
 					virtual void			register_keys();
@@ -35,7 +35,7 @@ namespace nebula
 					virtual void			expose_window( XEvent );
 					virtual int			lookup_key( int );
 					virtual void			focus_change( XEvent );
-					virtual void			process_message( jess::shared_ptr<n40000::message> );
+					virtual void			process_message( std::shared_ptr<n40000::message> );
 	
 					/// keys
 					std::map<int,int>		keys_;

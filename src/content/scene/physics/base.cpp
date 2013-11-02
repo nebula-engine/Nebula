@@ -33,7 +33,6 @@ void				n32200::base::step( float dt )
 	jess::scoped_ostream( &jess::cout, NEB_FUNCSIG );
 	
 	physx::PxU32 nbPxactor = px_scene_->getNbActors( physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC );
-	jess::clog << "there are " << nbPxactor << " Pxrigid_actor objects in the scene" << std::endl;
 
 	// PxScene
 	px_scene_->simulate( dt );
@@ -43,9 +42,15 @@ void				n32200::base::step( float dt )
 	physx::PxU32			nb_active_transforms;
 	physx::PxActiveTransform*	active_transforms = px_scene_->getActiveTransforms(nb_active_transforms);
 
+	printf( "count PxRigidActor %i count active transform %i\n", nbPxactor, nb_active_transforms );
+
 	// update each render object with the new transform
 	for ( physx::PxU32 i = 0; i < nb_active_transforms; ++i )
 	{
+		physx::PxActor *px_actor = active_transforms[i].actor;
+		
+		printf( "actor type = %i\n", px_actor->getType() );
+		
 		n34100::base* act = static_cast<n34100::base*>( active_transforms[i].userData );
 		
 		//NEB_ASSERT( act );
@@ -58,7 +63,7 @@ void				n32200::base::step( float dt )
 		//printf("transform.p.y=%16f\n",activeTransforms[i].actor2World.p.y);
 	}
 }
-void				n32200::base::render( jess::shared_ptr<n23000::base> )
+void				n32200::base::render( std::shared_ptr<n23000::base> )
 {
 
 }

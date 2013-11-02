@@ -21,7 +21,7 @@ void	n52000::textview::clear_label()
 	
 	label_pos_ = 0;
 }
-void	n52000::textview::render( jess::shared_ptr<n23000::base> rnd )
+void	n52000::textview::render( std::shared_ptr<n23000::base> rnd )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 

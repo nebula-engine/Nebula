@@ -31,7 +31,7 @@ namespace nebula
 							def&						operator=( def const & ) = default;
 							/** \brief ctor
 							 */
-							def( jess::shared_ptr<n34100::controller::base> );
+							def( std::shared_ptr<n34100::controller::base> );
 						public:
 							/** \brief dtor
 							 */
@@ -44,8 +44,7 @@ namespace nebula
 							virtual void					process_event( int );
 							/** \brief connect
 							 */
-							virtual void					connect_to_window( jess::shared_ptr<n22000::base> );
-
+							virtual void					connect_to_window( std::shared_ptr<n22000::base> );
 							/** \brief is valid
 							 */
 							virtual bool					is_valid();

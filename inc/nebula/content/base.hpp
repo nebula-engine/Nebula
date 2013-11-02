@@ -2,7 +2,6 @@
 #define __NEBULA_CONTENT_BASE_HPP__
 
 #include <jess/map.hpp>
-#include <jess/shared_ptr.hpp>
 #include <jess/scoped_ostream.hpp>
 
 #include <nebula/define.hpp>
@@ -15,7 +14,7 @@ namespace nebula
 	namespace content
 	{
 		class base:
-			public jess::enable_shared_from_this<n30000::base>
+			public std::enable_shared_from_this<n30000::base>
 		{
 			protected:
 				/** \brief copy ctor

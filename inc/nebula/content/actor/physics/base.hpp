@@ -1,10 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
 
-#include <jess/shared_ptr.hpp>
 #include <jess/map.hpp>
-
-#include <nebula/platform/renderer/base.hpp>
 
 #include <nebula/ns.hpp>
 
@@ -31,7 +28,7 @@ namespace nebula
 						base&							operator=( base const & ) = default;
 						/** \brief ctor
 						 */
-						base( jess::shared_ptr<n34100::base> );
+						base( std::shared_ptr<n34100::base> );
 					public:
 						/** \brief dtor
 						 */
@@ -45,12 +42,13 @@ namespace nebula
 						/** \brief update
 						 */
 						virtual	void						update();
+						virtual void						refresh() = 0;
 						/** \brief step
 						 */
 						virtual	void						step( float );
 						/** \brief render
 						 */
-						virtual void						render( n23000::base::shared_t );
+						virtual void						render( std::shared_ptr<n23000::base> );
 						/** \brief create shapes
 						 */
 						virtual	void						create_shapes();

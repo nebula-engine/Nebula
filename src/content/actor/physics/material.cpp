@@ -1,4 +1,3 @@
-#include <jess/shared_ptr.hpp>
 
 #include <nebula/ns.hpp>
 

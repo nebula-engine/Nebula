@@ -36,7 +36,7 @@ namespace nebula
 							base&							operator=( base const & ) = default;
 							/** \brief ctor
 							*/
-							base( jess::shared_ptr<n32100::base> );
+							base( std::shared_ptr<n32100::base> );
 						public:
 							/** \brief dtor
 							*/
@@ -55,13 +55,13 @@ namespace nebula
 							virtual	void						step( float );
 							/** \brief render
 							*/
-							virtual	void						render( n23000::base::shared_t );
+							virtual	void						render( std::shared_ptr<n23000::base> );
 							/** \brief create shapes
 							*/
 							virtual	void						create_shapes();
 							/** \brief lookat
 							*/
-							virtual void						look_at( n23000::base::shared_t );
+							virtual void						look_at( std::shared_ptr<n23000::base> );
 						protected:
 							/** \brief pos
 							*/

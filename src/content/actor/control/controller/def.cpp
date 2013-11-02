@@ -6,7 +6,7 @@
 
 #include <nebula/content/actor/control/controller/def.hpp>
 
-n34000::control::controller::def::def( jess::shared_ptr<n34100::controller::base> parent ):
+n34000::control::controller::def::def( std::shared_ptr<n34100::controller::base> parent ):
 	n34000::control::controller::base( parent )
 {
 	jess::scoped_ostream sos( &jess::cout, NEB_FUNCSIG );
@@ -56,7 +56,7 @@ void				n34400::controller::def::process_event( int evnt )
 			break;
 	}
 }
-void				n34400::controller::def::connect_to_window( jess::shared_ptr<n22000::base> window )
+void				n34400::controller::def::connect_to_window( std::shared_ptr<n22000::base> window )
 {
 	jess::scoped_ostream sos( &jess::cout, NEB_FUNCSIG );
 	
@@ -102,7 +102,7 @@ physx::PxVec3		n34000::control::controller::def::move()
 
 	NEB_ASSERT( !parent_.expired() );
 	
-	jess::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>( parent_.lock() );
+	std::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>( parent_.lock() );
 	
 	NEB_ASSERT( parent );
 	
@@ -165,7 +165,7 @@ bool			n34000::control::controller::def::on_pointer_motion( int x, int y )
 {
 	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
 
-	jess::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>(parent_.lock());
+	std::shared_ptr<n34100::controller::base> parent = std::dynamic_pointer_cast<n34100::controller::base>(parent_.lock());
 
 	parent->yaw_ -= x * 0.001;
 	parent->pitch_ -= y * 0.001;

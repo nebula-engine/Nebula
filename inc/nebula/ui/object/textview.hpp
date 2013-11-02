@@ -26,7 +26,7 @@ namespace nebula
 					void					clear_label();
 					/** \brief render
 					 */			
-					virtual void				render( jess::shared_ptr<n23000::base> rnd );
+					virtual void				render( std::shared_ptr<n23000::base> rnd );
 					///@{
 					/** on
 					 */
