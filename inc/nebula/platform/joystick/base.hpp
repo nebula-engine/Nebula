@@ -24,8 +24,8 @@ namespace nebula
 				*/
 				unsigned char	number;
 			};
-/** \brief xbox
- */
+			/** \brief xbox
+			*/
 			struct status_xbox
 			{
 				/** \brief button
@@ -38,8 +38,8 @@ namespace nebula
 				*/
 				int		y;
 			};
-/** \brief base
- */
+			/** \brief base
+			*/
 			class base
 			{
 				protected:
