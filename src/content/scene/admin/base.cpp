@@ -123,6 +123,9 @@ std::shared_ptr<n34100::rigid_dynamic_box>	n32100::base::create_rigid_dynamic_bo
 	// create
 	jess::shared_ptr<n34100::rigid_dynamic_box> act = parent_.lock()->create_rigid_dynamic_box( shared_from_this() );
 
+	// add
+	physics_->add( act );
+	
 	// store
 	actors_.push<n34100::rigid_dynamic_box>( act );
 
@@ -134,6 +137,9 @@ std::shared_ptr<n34100::rigid_static_plane>	n32100::base::create_rigid_static_pl
 
 	// create
 	jess::shared_ptr<n34100::rigid_static_plane> act = parent_.lock()->create_rigid_static_plane( shared_from_this() );
+
+	// add
+	physics_->add( act );
 
 	// store
 	actors_.push<n34100::rigid_static_plane>( act );

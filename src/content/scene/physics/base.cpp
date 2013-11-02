@@ -1,5 +1,9 @@
 #include <nebula/content/scene/admin/base.hpp>
+
 #include <nebula/content/actor/admin/base.hpp>
+#include <nebula/content/actor/admin/rigid_dynamic_box.hpp>
+#include <nebula/content/actor/admin/rigid_static_plane.hpp>
+
 
 #include <nebula/content/scene/physics/base.hpp>
 
@@ -58,14 +62,28 @@ void				n32200::base::render( jess::shared_ptr<n23000::base> )
 {
 
 }
-/*jess::shared_ptr<n34200::rigid_dynamic_box>	n32200::base::create_rigid_dynamic_box()
+void				n32200::base::add( std::shared_ptr<n34100::rigid_dynamic_box> actor )
 {
-	return ( parent_.lock()->create_physics_rigid_dynamic_box() );
+	std::shared_ptr<n34200::actor> physics = std::static_pointer_cast<n34200::actor>( actor->physics_ );
 
+	px_scene_->addActor( *physics->px_actor_ );
+	
 	//jess::shared_ptr<n34200::rigid_dynamic_box> act( new n34200::rigid_dynamic_box() );
 	
 	//return act;
 }
+void				n32200::base::add( std::shared_ptr<n34100::rigid_static_plane> actor )
+{
+	std::shared_ptr<n34200::actor> physics = std::static_pointer_cast<n34200::actor>( actor->physics_ );
+
+	px_scene_->addActor( *physics->px_actor_ );
+	
+	//jess::shared_ptr<n34200::rigid_dynamic_box> act( new n34200::rigid_dynamic_box() );
+	
+	//return act;
+}
+
+/*
 jess::shared_ptr<n34200::controller>		n32200::base::create_controller()
 {
 	return ( parent_.lock()->create_physics_controller() );
