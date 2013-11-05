@@ -34,7 +34,7 @@ void	n10000::renderable::update_fps()
 	
 	while(1)
 	{
-		std::this_thread::sleep_until( next );
+		//std::this_thread::sleep_until( next );
 		next += std::chrono::seconds(1);
 		
 		std::lock_guard<std::mutex> lg( mutex_ );

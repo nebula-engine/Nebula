@@ -16,7 +16,7 @@ void	bc51000::base::init()
 	tv1->y_ = 100;
 	tv1->set_label( "hello" );
 	
-	objects_.push( tv1 );
+	objects_.push<n52000::textview>( tv1 );
 	
 }
 

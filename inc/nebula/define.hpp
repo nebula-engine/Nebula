@@ -1,10 +1,12 @@
 #ifndef __NEBULA_DEFINE_HPP__
 #define __NEBULA_DEFINE_HPP__
 
+#include <stdio.h>
+
 #include <assert.h>
 
-#define UINT unsigned int
 
+// for physx
 #if defined(__DEBUG__)
 	#define _DEBUG 1
 #else
@@ -23,7 +25,9 @@
 #endif
 
 
-#define NEB_ASSERT(x) assert(x)
+#define NEB_ASSERT(x)	assert(x)
+#define NEB_LOG(x)	printf( x )
+#define NEB_LOG_FUNC	printf( "%s\n", NEB_FUNCSIG )
 
 
 #endif

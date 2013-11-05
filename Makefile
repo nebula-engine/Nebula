@@ -10,20 +10,20 @@ hpaths    += $(root)external/glew/include
 hpaths    += $(root)external
 hpaths    += $(root)jess/inc
 
-lpaths    := 
-lpaths    += $(root)jess/lib/lin64/
-lpaths    += $(root)external/glew/lib
-lpaths    += $(root)external/PhysX/Lib/linux64
+#lpaths    := 
+#lpaths    += $(root)jess/lib/lin64/
+#lpaths    += $(root)external/glew/lib
+#lpaths    += $(root)external/PhysX/Lib/linux64
 
 defines   := 
 defines   += __DEBUG__
 defines   += __LIN__
 defines   += __OPENGL__
 
-libraries := 
-libraries += jess
-libraries += pthread
-libraries += rt
+#libraries := 
+#libraries += jess
+#libraries += pthread
+#libraries += rt
 libraries += PhysX3
 libraries += SimulationController
 libraries += LowLevel

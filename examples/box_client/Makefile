@@ -5,6 +5,7 @@ root      := $(shell expr $(here) : '\(.*$(rootname)\)')
 
 
 hpaths    :=
+hpaths    += $(root)kernel/inc
 hpaths    += $(root)jess/inc
 hpaths    += $(root)nebula/inc
 hpaths    += $(root)external/boost_1_54_0
