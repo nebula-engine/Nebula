@@ -23,10 +23,9 @@
 
 #include <nebula/content/scene/admin/base.hpp>
 
-n32100::base::base( std::shared_ptr<n31100::base> parent ):
-	parent_( parent )
+n32100::base::base()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	NEB_LOG_FUNC;
 
 	accumulator_ = 0;
 	step_size_ = 1.0f / 60.0f;

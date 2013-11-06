@@ -24,12 +24,12 @@ namespace nebula
 				 * Need to see if PhysX already has an object functionality for this.
 				 */
 				class base:
-					public std::enable_shared_from_this<n32100::base>
+					public ker::module::module
 				{
 					public:
 						/** ctor
 						*/
-						base( std::shared_ptr<n31100::base> );
+						base();
 						/** dtor
 						*/
 						~base();
@@ -78,18 +78,12 @@ namespace nebula
 								std::shared_ptr<n34100::rigid_actor> );
 						/** \brief create
 						*/
-						template <class T> std::shared_ptr<T>				create_view()
+						/*template <class T> std::shared_ptr<T>					create_view()
 						{
-							jess::clog << NEB_FUNCSIG << std::endl;
-
-							std::shared_ptr<T> t( new T );
-
-							views_.push<T>( t );
-
-							t->init( shared_from_this() );
-
-							return t;
-						}
+							NEB_LOG_FUNC;
+							
+							return parent_.lock()->create_view<T>();
+						}*/
 						/** \brief physics material
 						*/
 						std::shared_ptr<n34200::material>					request_material_physics();

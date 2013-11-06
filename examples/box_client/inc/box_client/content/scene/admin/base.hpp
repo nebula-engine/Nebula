@@ -20,7 +20,7 @@ namespace box_client
 					public:
 						/** ctor
 						 */
-						base( std::shared_ptr<n31100::base> );
+						base();
 						/** dtor
 						 */
 						virtual ~base();

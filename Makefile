@@ -1,10 +1,11 @@
 here      := $(shell pwd)
-rootname  := cpp_projects/
+rootname  := C++/
 root      := $(shell expr $(here) : '\(.*$(rootname)\)')
 
 
 
 hpaths    := 
+hpaths    += $(root)kernel/inc
 hpaths    += $(root)external/PhysX/Include
 hpaths    += $(root)external/glew/include
 hpaths    += $(root)external

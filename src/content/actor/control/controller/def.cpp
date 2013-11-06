@@ -135,11 +135,10 @@ physx::PxVec3		n34000::control::controller::def::move()
 bool			n34000::control::controller::def::on_key_down( int k )
 {
 	jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
-
+	
 	// set flag
-	UINT f = key_flag_[k];
-	flag_ |= f;
-
+	flag_ |= key_flag_[k];
+	
 	// trigger event
 	int evnt = key_down_event_[k];
 	process_event(evnt);

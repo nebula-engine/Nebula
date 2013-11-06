@@ -2,8 +2,8 @@
 #define __NEBULA_FRAMEWORK_RENDERABLE_HPP__
 
 #include <thread>
-#include <memory>
 
+#include <ker/module/module.hpp>
 
 #include <nebula/ns.hpp>
 
@@ -13,7 +13,7 @@ namespace nebula
 	{
 		/// renderable
 		class renderable:
-			public std::enable_shared_from_this<n10000::renderable>
+			public ker::module::module
 		{
 			public:
 				/// ctor

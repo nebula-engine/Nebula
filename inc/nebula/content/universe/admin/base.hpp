@@ -4,6 +4,8 @@
 #include <jess/ostream.hpp>
 #include <jess/map.hpp>
 
+#include <ker/module/module.hpp>
+
 #include <nebula/content/base.hpp>
 
 #include <nebula/define.hpp>
@@ -18,7 +20,7 @@ namespace nebula
 			namespace admin
 			{
 				class base:
-					public std::enable_shared_from_this<n31100::base>
+					public ker::module::module
 				{
 					protected:
 						/** \brief copy ctor
@@ -30,7 +32,7 @@ namespace nebula
 					public:
 						/** \brief ctor
 						*/
-						base( std::shared_ptr<n30000::base> );
+						base();
 						/** \brief dtor
 						*/
 						virtual ~base();

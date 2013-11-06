@@ -37,26 +37,31 @@ int main( int argc, char** argv )
 
 	std::shared_ptr<ker::kernel> k( new ker::kernel() );
 	k->factory_ = factory;
-	
+	k->desc_.reset( new ker::module::desc );
+	k->desc_->mode_ = ker::module::mode::KERNEL;
 	
 	/* the following descriptions can be loaded from files */
 
+	
+	
+	
 	std::shared_ptr<ker::module::desc> desc_content( new ker::module::desc() );
 	
 	desc_content->type_		= ker::module::type( nebula::kernel::module::type::CONTENT );
-	
+	desc_content->mode_		= ker::module::mode::CREATE;
+	desc_content->desc_parent_	= k->desc_;
 	
 	
 	std::shared_ptr<ker::module::desc> desc_uni( new ker::module::desc() );
 	
-	desc_uni->type_			= ker::module::type( box_client::kernel::module::type::UNIVERSE );
+	desc_uni->type_			= ker::module::type( box_client::kernel::module::type::BC31100_BASE );
 	desc_uni->mode_			= ker::module::mode::CREATE;
 	desc_uni->desc_parent_		= desc_content;
 	
 	
 	std::shared_ptr<ker::module::desc> desc_scene( new ker::module::desc() );
 	
-	desc_scene->type_		= ker::module::type( box_client::kernel::module::type::SCENE );
+	desc_scene->type_		= ker::module::type( box_client::kernel::module::type::BC32100_BASE );
 	desc_scene->mode_		= ker::module::mode::CREATE;
 	desc_scene->desc_parent_	= desc_uni;
 	
@@ -64,7 +69,7 @@ int main( int argc, char** argv )
 	
 	std::shared_ptr<ker::module::desc> desc_view( new ker::module::desc() );
 	
-	desc_view->type_		= ker::module::type( box_client::kernel::module::type::VIEW );
+	desc_view->type_		= ker::module::type( box_client::kernel::module::type::BC33100_BASE );
 	desc_view->mode_		= ker::module::mode::CREATE;
 	desc_view->desc_parent_		= desc_scene;
 	

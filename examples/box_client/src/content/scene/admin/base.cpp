@@ -8,10 +8,10 @@
 
 #include <box_client/content/scene/admin/base.hpp>
 
-bc32100::base::base( std::shared_ptr<n31100::base> parent ):
-	n32100::base( parent )
+bc32100::base::base():
+	n32100::base()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;	
+	NEB_LOG_FUNC;	
 }
 bc32100::base::~base()
 {
@@ -28,9 +28,15 @@ void	bc32100::base::init()
 	rigid_sta_pln_ = create_rigid_static_plane();
 
 	ctrlr_ = create_controller();
+	
+	
+	// done in main now...
+	//view_ = create_view<bc33100::base>();
 
-	view_ = create_view<bc33100::base>();
-	NEB_ASSERT( bool( view_ ) );
+
+
+
+	NEB_ASSERT( view_ );
 
 	// connect controller to view
 	connect_controller_to_view( ctrlr_, view_ );

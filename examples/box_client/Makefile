@@ -1,5 +1,5 @@
 here      := $(shell pwd)
-rootname  := cpp_projects/
+rootname  := C++/
 root      := $(shell expr $(here) : '\(.*$(rootname)\)')
 
 
