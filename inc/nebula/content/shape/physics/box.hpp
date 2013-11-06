@@ -17,9 +17,6 @@ namespace nebula
 				public:
 					box( std::shared_ptr<n35100::base> );
 					~box();
-					void						init();
-					void						shutdown();
-					void						create_shape();
 				};
 			}
 		}

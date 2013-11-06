@@ -6,10 +6,9 @@
 
 #include <ker/module/module.hpp>
 
-#include <nebula/content/base.hpp>
-
 #include <nebula/define.hpp>
 #include <nebula/ns.hpp>
+#include <nebula/content/base.hpp>
 
 namespace nebula
 {
@@ -62,13 +61,13 @@ namespace nebula
 						}
 						/** rigid dynamic box
 						*/
-						virtual std::shared_ptr<n34100::rigid_dynamic_box>	create_rigid_dynamic_box( std::shared_ptr<n32100::base> );
+						virtual std::shared_ptr<n34100::rigid_dynamic_box>	create_rigid_dynamic_box( std::shared_ptr<ker::module::module> );
 						/** rigid static plane
 						*/
-						virtual std::shared_ptr<n34100::rigid_static_plane>	create_rigid_static_plane( std::shared_ptr<n32100::base> );
+						virtual std::shared_ptr<n34100::rigid_static_plane>	create_rigid_static_plane( std::shared_ptr<ker::module::module> );
 						/** controller
 						*/
-						virtual std::shared_ptr<n34100::controller::base>	create_controller( std::shared_ptr<n32100::base> );
+						virtual std::shared_ptr<n34100::controller::base>	create_controller( std::shared_ptr<ker::module::module> );
 						/** physics material
 						*/
 						std::shared_ptr<n34200::material>			request_material_physics();

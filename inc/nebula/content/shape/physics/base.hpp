@@ -26,9 +26,8 @@ namespace nebula
 						/** \brief dtor
 						 */
 						virtual ~base();
-						virtual void						init();
-						virtual void						shutdown();
-						std::weak_ptr<n35100::base>				parent_;
+						/** \brief physx shape
+						 */
 						physx::PxShape*						px_shape_;
 				};
 			}

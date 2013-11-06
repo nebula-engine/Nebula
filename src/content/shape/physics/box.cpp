@@ -13,21 +13,4 @@ n35200::box::~box()
 {
 
 }
-void	n35200::box::init()
-{
-	n35200::base::init();
-
-	create_shape();
-}
-void	n35200::box::shutdown()
-{
-
-}
-void	n35200::box::create_shape()
-{
-	jess::clog << NEB_FUNCSIG << std::endl;
-}
-
-
-
 

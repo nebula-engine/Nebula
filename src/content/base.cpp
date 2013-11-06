@@ -23,8 +23,7 @@
 
 #include <nebula/content/base.hpp>
 
-nebula::content::base::base( std::shared_ptr<n10000::app> parent ):
-	parent_(parent)
+nebula::content::base::base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
@@ -34,10 +33,11 @@ nebula::content::base::~base()
 }
 void	nebula::content::base::init()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
-
-	physics_.reset( new n36000::base( shared_from_this() ) );
-	physics_->init();
+	NEB_LOG_FUNCSIG;
+	
+	/// \todo implement with ker
+	//physics_.reset( new n36000::base( shared_from_this() ) );
+	//physics_->init();
 }
 void	nebula::content::base::update()
 {
@@ -63,24 +63,24 @@ std::shared_ptr<n34200::material>	n30000::base::request_physics_material()
 	return ( physics_->request_physics_material() );
 }
 std::shared_ptr<n34100::rigid_dynamic_box>	n30000::base::create_rigid_dynamic_box(
-		std::shared_ptr<n32100::base> scene
+		std::shared_ptr<ker::module::module> scene
 		)
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
-
+	NEB_LOG_FUNC;
+	
 	// create
-	std::shared_ptr<n34100::rigid_dynamic_box> actor( new n34100::rigid_dynamic_box( scene ) );
-
+	//std::shared_ptr<n34100::rigid_dynamic_box> actor( new n34100::rigid_dynamic_box( scene ) );
+	
 	// physics
 	actor->physics_ = std::static_pointer_cast<n34200::base>( physics_->create_rigid_dynamic_box( scene, actor ) );
-
+	
 	// init
 	actor->init();
-
+	
 	return actor;
 }
 std::shared_ptr<n34100::rigid_static_plane>	n30000::base::create_rigid_static_plane(
-		std::shared_ptr<n32100::base> scene
+		std::shared_ptr<ker::module::module> scene
 		)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -97,7 +97,7 @@ std::shared_ptr<n34100::rigid_static_plane>	n30000::base::create_rigid_static_pl
 	return actor;
 }
 std::shared_ptr<n34100::controller::base>	n30000::base::create_controller(
-		std::shared_ptr<n32100::base> scene
+		std::shared_ptr<ker::module::module> scene
 		)
 {
 	jess::clog << NEB_FUNCSIG << std::endl;

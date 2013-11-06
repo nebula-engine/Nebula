@@ -7,16 +7,6 @@ n35200::base::base( std::shared_ptr<n35100::base> )
 n35200::base::~base()
 {
 }	
-void	n35200::base::init()
-{
-	
-}
-void	n35200::base::shutdown()
-{
-	
-}
-
-
 
 
 

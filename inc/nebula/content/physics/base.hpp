@@ -4,8 +4,7 @@
 #include <nebula/define.hpp>
 #include <PxPhysicsAPI.h>
 
-#include <memory>
-
+#include <ker/module/module.hpp>
 
 #include <nebula/content/actor/physics/rigid_actor.hpp>
 
@@ -48,7 +47,8 @@ namespace nebula
 			 *     -onTrigger
 			 *     -onContact
 			 */
-			class base
+			class base:
+				public ker::module::module
 			{
 				protected:
 					/** \brief copy ctor

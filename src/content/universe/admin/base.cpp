@@ -8,52 +8,51 @@
 
 #include <nebula/content/universe/admin/base.hpp>
 
-n31100::base::base( std::shared_ptr<n30000::base> parent ):
-	parent_( parent )
+n31100::base::base()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	NEB_LOG_FUNC;
 }
 n31100::base::~base()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	NEB_LOG_FUNC;
 }
 void						n31100::base::init()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	NEB_LOG_FUNC;
 }
 void						n31100::base::shutdown()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	NEB_LOG_FUNC;
 
 	scenes_.foreach( std::bind( &nebula::content::scene::admin::base::shutdown, std::placeholders::_1 ) );
 }
 void						n31100::base::update()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	NEB_LOG_FUNC;
 
 	scenes_.foreach( std::bind( &nebula::content::scene::admin::base::update, std::placeholders::_1 ) );
 }
 std::shared_ptr<n22000::base>			n31100::base::request_window()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	NEB_LOG_FUNC;
 	return ( parent_.lock()->request_window() );
 }
 std::shared_ptr<n34200::material>		n31100::base::request_material_physics()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	NEB_LOG_FUNC;
 	return ( parent_.lock()->request_physics_material() );
 }
-std::shared_ptr<n34100::rigid_dynamic_box>	n31100::base::create_rigid_dynamic_box( std::shared_ptr<n32100::base> scene )
+std::shared_ptr<n34100::rigid_dynamic_box>	n31100::base::create_rigid_dynamic_box( std::shared_ptr<ker::module::module> scene )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->create_rigid_dynamic_box( scene ) );
 }
-std::shared_ptr<n34100::rigid_static_plane>	n31100::base::create_rigid_static_plane( std::shared_ptr<n32100::base> scene )
+std::shared_ptr<n34100::rigid_static_plane>	n31100::base::create_rigid_static_plane( std::shared_ptr<ker::module::module> scene )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->create_rigid_static_plane( scene ) );
 }
-std::shared_ptr<n34100::controller::base>	n31100::base::create_controller( std::shared_ptr<n32100::base> scene )
+std::shared_ptr<n34100::controller::base>	n31100::base::create_controller( std::shared_ptr<ker::module::module> scene )
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	return ( parent_.lock()->create_controller( scene ) );
