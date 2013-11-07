@@ -26,7 +26,7 @@
 
 
 #define NEB_ASSERT(x)	assert(x)
-#define NEB_LOG(x)	printf( x )
+#define NEB_LOG(...)	printf( __VA_ARGS__ )
 #define NEB_LOG_FUNC	printf( "%s\n", NEB_FUNCSIG )
 
 

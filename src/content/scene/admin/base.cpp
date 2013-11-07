@@ -116,7 +116,7 @@ void						n32100::base::render( std::shared_ptr<n23000::base> rnd )
 
 	actors_.foreach( std::bind( &n34100::base::render, std::placeholders::_1, rnd ) );
 }
-std::shared_ptr<n34100::rigid_dynamic_box>	n32100::base::create_rigid_dynamic_box()
+/*std::shared_ptr<n34100::rigid_dynamic_box>	n32100::base::create_rigid_dynamic_box()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -130,8 +130,8 @@ std::shared_ptr<n34100::rigid_dynamic_box>	n32100::base::create_rigid_dynamic_bo
 	actors_.push<n34100::rigid_dynamic_box>( act );
 
 	return act;
-}
-std::shared_ptr<n34100::rigid_static_plane>	n32100::base::create_rigid_static_plane()
+}*/
+/*std::shared_ptr<n34100::rigid_static_plane>	n32100::base::create_rigid_static_plane()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -145,8 +145,8 @@ std::shared_ptr<n34100::rigid_static_plane>	n32100::base::create_rigid_static_pl
 	actors_.push<n34100::rigid_static_plane>( act );
 
 	return act;
-}
-std::shared_ptr<n34100::controller::base>	n32100::base::create_controller()
+}*/
+/*std::shared_ptr<n34100::controller::base>	n32100::base::create_controller()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -157,23 +157,23 @@ std::shared_ptr<n34100::controller::base>	n32100::base::create_controller()
 	actors_.push<n34100::controller::base>( act );
 	
 	return act;
-}
-std::shared_ptr<n22000::base>			n32100::base::request_window()
+}*/
+/*std::shared_ptr<n22000::base>			n32100::base::request_window()
 {
 	return ( parent_.lock()->request_window() );
-}
-std::shared_ptr<n34200::material>		n32100::base::request_material_physics()
+}*/
+/*std::shared_ptr<n34200::material>		n32100::base::request_material_physics()
 {
 	return ( parent_.lock()->request_material_physics() );
-}
-std::shared_ptr<n35100::box>			n32100::base::create_box( std::shared_ptr<n34100::rigid_actor> actor )
+}*/
+/*std::shared_ptr<n35100::box>			n32100::base::create_box( std::shared_ptr<n34100::rigid_actor> actor )
 {
 	return parent_.lock()->create_box( actor );
-}
-std::shared_ptr<n35100::plane>			n32100::base::create_plane( std::shared_ptr<n34100::rigid_actor> actor )
+}*/
+/*std::shared_ptr<n35100::plane>			n32100::base::create_plane( std::shared_ptr<n34100::rigid_actor> actor )
 {
 	return parent_.lock()->create_plane( actor );
-}
+}*/
 
 
 

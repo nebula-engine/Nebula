@@ -30,11 +30,14 @@ namespace box_client
 				{}
 				/** \brief create
 				*/
-				virtual std::shared_ptr<ker::module::module>		create(ker::module::type type )
+				virtual std::shared_ptr<ker::module::module>		create( std::shared_ptr<ker::module::desc> desc )
 				{
+					NEB_LOG_FUNC;
+					NEB_ASSERT( desc );
+
 					std::shared_ptr<ker::module::module> mod;
 
-					switch ( type )
+					switch ( desc->type_ )
 					{
 						case box_client::kernel::module::type::BC31100_BASE:
 							mod.reset( new bc31100::base );
@@ -46,7 +49,7 @@ namespace box_client
 							mod.reset( new bc33100::base );
 							break;
 						default:
-							mod = nebula::kernel::factory::create( type );
+							mod = nebula::kernel::factory::create( desc );
 							break;
 					}
 

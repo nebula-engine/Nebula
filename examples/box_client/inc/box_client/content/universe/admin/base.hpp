@@ -16,7 +16,7 @@ namespace box_client
 			namespace admin
 			{
 				class base:
-							public n31100::base
+					public n31100::base
 				{
 					public:	
 						/// ctor

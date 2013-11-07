@@ -31,14 +31,14 @@ nebula::content::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	nebula::content::base::init()
+/*void	nebula::content::base::init()
 {
 	NEB_LOG_FUNCSIG;
 	
 	/// \todo implement with ker
 	//physics_.reset( new n36000::base( shared_from_this() ) );
 	//physics_->init();
-}
+}*/
 void	nebula::content::base::update()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
@@ -53,16 +53,15 @@ void	nebula::content::base::shutdown()
 
 	universes_.clear();
 }
-std::shared_ptr<n22000::base>	n30000::base::request_window()
+/*std::shared_ptr<n22000::base>	n30000::base::request_window()
 {
 	return ( parent_.lock()->request_window() );
-}
-
-std::shared_ptr<n34200::material>	n30000::base::request_physics_material()
+}*/
+/*std::shared_ptr<n34200::material>	n30000::base::request_physics_material()
 {
 	return ( physics_->request_physics_material() );
-}
-std::shared_ptr<n34100::rigid_dynamic_box>	n30000::base::create_rigid_dynamic_box(
+}*/
+/*std::shared_ptr<n34100::rigid_dynamic_box>	n30000::base::create_rigid_dynamic_box(
 		std::shared_ptr<ker::module::module> scene
 		)
 {
@@ -78,8 +77,8 @@ std::shared_ptr<n34100::rigid_dynamic_box>	n30000::base::create_rigid_dynamic_bo
 	actor->init();
 	
 	return actor;
-}
-std::shared_ptr<n34100::rigid_static_plane>	n30000::base::create_rigid_static_plane(
+}*/
+/*std::shared_ptr<n34100::rigid_static_plane>	n30000::base::create_rigid_static_plane(
 		std::shared_ptr<ker::module::module> scene
 		)
 {
@@ -95,8 +94,8 @@ std::shared_ptr<n34100::rigid_static_plane>	n30000::base::create_rigid_static_pl
 	actor->init();
 
 	return actor;
-}
-std::shared_ptr<n34100::controller::base>	n30000::base::create_controller(
+}*/
+/*std::shared_ptr<n34100::controller::base>	n30000::base::create_controller(
 		std::shared_ptr<ker::module::module> scene
 		)
 {
@@ -112,8 +111,8 @@ std::shared_ptr<n34100::controller::base>	n30000::base::create_controller(
 	actor->init();
 	
 	return actor;
-}
-std::shared_ptr<n35100::box>			n30000::base::create_box( std::shared_ptr<n34100::rigid_actor> actor )
+}*/
+/**std::shared_ptr<n35100::box>			n30000::base::create_box( std::shared_ptr<n34100::rigid_actor> actor )
 {
 	// create
 	std::shared_ptr<n35100::box> box( new n35100::box( actor ) );
@@ -123,8 +122,8 @@ std::shared_ptr<n35100::box>			n30000::base::create_box( std::shared_ptr<n34100:
 	box->init();
 	
 	return box;
-}
-std::shared_ptr<n35100::plane>			n30000::base::create_plane( std::shared_ptr<n34100::rigid_actor> actor )
+}*/
+/*std::shared_ptr<n35100::plane>			n30000::base::create_plane( std::shared_ptr<n34100::rigid_actor> actor )
 {
 	// create
 	std::shared_ptr<n35100::plane> plane( new n35100::plane( actor ) );
@@ -134,7 +133,7 @@ std::shared_ptr<n35100::plane>			n30000::base::create_plane( std::shared_ptr<n34
 	plane->init();
 	
 	return plane;
-}
+}*/
 
 
 

@@ -58,24 +58,24 @@ namespace nebula
 								std::shared_ptr<n33100::base> );
 						/** request window
 						*/
-						virtual std::shared_ptr<n22000::base>					request_window();
+						//virtual std::shared_ptr<n22000::base>					request_window();
 						/** rigid dynamic box
 						*/
-						virtual std::shared_ptr<n34100::rigid_dynamic_box>			create_rigid_dynamic_box();
+						//virtual std::shared_ptr<n34100::rigid_dynamic_box>			create_rigid_dynamic_box();
 						/** plane
 						*/
-						virtual std::shared_ptr<n34100::rigid_static_plane>			create_rigid_static_plane();
+						//virtual std::shared_ptr<n34100::rigid_static_plane>			create_rigid_static_plane();
 						/** create
 						*/
-						virtual std::shared_ptr<n34100::controller::base>			create_controller();
+						//virtual std::shared_ptr<n34100::controller::base>			create_controller();
 						/** box
 						*/
-						virtual std::shared_ptr<n35100::box>					create_box(
-								std::shared_ptr<n34100::rigid_actor> );
+						//virtual std::shared_ptr<n35100::box>					create_box(
+						//		std::shared_ptr<n34100::rigid_actor> );
 						/** plane
 						*/
-						virtual std::shared_ptr<n35100::plane>					create_plane(
-								std::shared_ptr<n34100::rigid_actor> );
+						//virtual std::shared_ptr<n35100::plane>					create_plane(
+						//		std::shared_ptr<n34100::rigid_actor> );
 						/** \brief create
 						*/
 						/*template <class T> std::shared_ptr<T>					create_view()
@@ -86,7 +86,7 @@ namespace nebula
 						}*/
 						/** \brief physics material
 						*/
-						std::shared_ptr<n34200::material>					request_material_physics();
+						//std::shared_ptr<n34200::material>					request_material_physics();
 					public:
 						/** \brief parent
 						*/

@@ -55,7 +55,8 @@ void	n21100::base::shutdown()
 	XCloseDisplay( m_xdisplay );
 	
 }
-std::shared_ptr<n22000::base>	n21100::base::create_window()
+/// \todo implement with ker
+/*std::shared_ptr<n22000::base>	n21100::base::create_window()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -63,9 +64,9 @@ std::shared_ptr<n22000::base>	n21100::base::create_window()
 	std::shared_ptr<n22000::base> wnd = wnd_lin;
 	
 	// don't init here, need to send data first
-	/**
+	
 	* \todo create init override for window that allows all necessary data to be sent OR have the window grab the data from it's parent
-	**/
+	**//*
 	windows_.push<n22100::base>( wnd_lin );
 	
 		
@@ -92,7 +93,7 @@ std::shared_ptr<n22000::base>	n21100::base::create_window()
 		m_white_pixel);
 	
 	// Pass values to Window
-	/** \todo remove this **/
+	/// \todo remove this
 	wnd_lin->m_xdisplay     = m_xdisplay;
 	wnd_lin->m_root_xwindow = m_root_xwindow;
 	wnd_lin->m_xwindow      = xwindow;
@@ -102,7 +103,7 @@ std::shared_ptr<n22000::base>	n21100::base::create_window()
 	wnd_lin->init( shared_from_this() );
 
 	return wnd;
-}
+}*/
 void	n21100::base::update()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;

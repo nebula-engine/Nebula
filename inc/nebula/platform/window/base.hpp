@@ -4,6 +4,8 @@
 #include <map>
 #include <memory>
 
+#include <ker/module/module.hpp>
+
 #include <jess/signal/signal.hpp>
 
 #include <nebula/ns.hpp>
@@ -16,7 +18,7 @@ namespace nebula
 		{
 			/// base
 			class base:
-				public std::enable_shared_from_this<n22000::base>
+				public ker::module::module
 			{
 				public:
 					///@name Constructor and Destructor
@@ -32,7 +34,7 @@ namespace nebula
 					///@name Initialization and ShutDown
 					///{
 					/// initialize
-					virtual	void					init( std::shared_ptr<n21000::base> );
+					//virtual	void					init( std::shared_ptr<n21000::base> );
 					/// shutdown
 					virtual	void					shutdown();
 					/// update
@@ -42,7 +44,6 @@ namespace nebula
 					virtual int					lookup_key( int );
 					/** \brief parent
 					 */
-					std::weak_ptr<n21000::base>			parent_;
 					int						no_;
 					bool						m_hasFocus;
 					/** \brief keys

@@ -27,7 +27,7 @@ namespace nebula
 				public:
 					base();
 					virtual ~base();
-					virtual void			init( std::shared_ptr<n21000::base> );
+					virtual void			init_xlib_context();
 					virtual void			shutdown();
 					virtual void			update();
 					virtual void			register_keys();
@@ -40,7 +40,7 @@ namespace nebula
 					/// keys
 					std::map<int,int>		keys_;
 
-					::XGCValues			m_values;
+					XGCValues			m_values;
 					unsigned long			m_valuemask;
 
 
@@ -50,8 +50,8 @@ namespace nebula
 					int				m_join_style;
 
 
-					UINT				m_center_x;
-					UINT				m_center_y;
+					uint32_t			m_center_x;
+					uint32_t			m_center_y;
 
 					int				m_screen_num;
 					long				m_event_mask;

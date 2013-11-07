@@ -21,29 +21,32 @@ namespace nebula
 				/// dtor
 				~renderable();
 				/// init
-				virtual void					init();
+				virtual void				init();
 				/// update fps
-				void						update_fps();	
+				void					update_fps();	
 				/// render
-				virtual void					render();
+				virtual void				render();
 				///@name references
 				///{
 				/// renderer
-				std::shared_ptr<n23000::base>			renderer_;
+				std::shared_ptr<n23000::base>		renderer_;
 				///}
 			protected:
 				/// count
-				int	count_;
+				int					count_;
 				/// total count
-				int	total_count_;
+				int					total_count_;
 				/// interval
-				int	interval_;
+				int					interval_;
 				/// fps
-				int	fps_;
+				int					fps_;
 				/// clock
-				int	clock_;
+				int					clock_;
 				/// fps timer
-				std::thread					timer_fps_;
+				std::thread				timer_fps_;
+				/** \brief terminate
+				*/
+				bool					terminate_;
 				/** \brief mutex
 				*/
 				std::mutex mutex_;

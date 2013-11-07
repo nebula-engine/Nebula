@@ -68,10 +68,10 @@ void	n34100::base::set_pose( physx::PxMat44 pose )
 {
 	pose_ = pose;
 }*/
-std::shared_ptr<n34200::material>	n34100::base::create_physics_material()
+/*std::shared_ptr<n34200::material>	n34100::base::create_physics_material()
 {
 	return parent_.lock()->request_material_physics();
-}
+}*/
 
 
 

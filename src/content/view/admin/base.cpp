@@ -10,13 +10,13 @@
 
 #include <nebula/content/view/admin/base.hpp>
 
-n33100::base::base() // invalid write stems from here
+n33100::base::base()
 {
 
 }
 n33100::base::~base()
 {
-
+	NEB_LOG_FUNC;
 }
 void	n33100::base::init( std::shared_ptr<n32100::base> parent )
 {

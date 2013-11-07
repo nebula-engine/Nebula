@@ -62,7 +62,7 @@ namespace nebula
 							/** \brief lookat
 							*/
 							virtual void						look_at( std::shared_ptr<n23000::base> );
-						protected:
+						public:
 							/** \brief pos
 							*/
 							physx::PxVec3						pos_;

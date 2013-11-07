@@ -20,7 +20,7 @@ namespace box_client
 					/// init
 					//virtual void				init_bc( jess::shared_ptr<box_client::content::scene::admin::base> );
 					/// init
-					virtual void				init( std::shared_ptr<n32100::base> );
+					virtual void				init();
 				};
 			}
 		}

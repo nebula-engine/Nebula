@@ -67,7 +67,8 @@ void	n34100::rigid_dynamic_box::create_shapes()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 	
-	box_ = create_box();
+	/// \todo request module box
+	//box_ = create_box();
 
 }
 

@@ -46,10 +46,10 @@ namespace nebula
 						virtual void						update();
 						/** \brief request window
 						*/
-						virtual std::shared_ptr<n22000::base>			request_window();
+						//virtual std::shared_ptr<n22000::base>			request_window();
 						/** \brief create scene
 						*/
-						template <class T> std::shared_ptr<T>			create_scene()
+						/*std::shared_ptr<ker::module::module>			create_scene()
 						{
 							jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -58,25 +58,25 @@ namespace nebula
 							scenes_.push<T>( t );
 
 							return t;
-						}
+						}*/
 						/** rigid dynamic box
 						*/
-						virtual std::shared_ptr<n34100::rigid_dynamic_box>	create_rigid_dynamic_box( std::shared_ptr<ker::module::module> );
+						//virtual std::shared_ptr<ker::module::module>		create_rigid_dynamic_box( std::shared_ptr<ker::module::module> );
 						/** rigid static plane
 						*/
-						virtual std::shared_ptr<n34100::rigid_static_plane>	create_rigid_static_plane( std::shared_ptr<ker::module::module> );
+						//virtual std::shared_ptr<ker::module::module>		create_rigid_static_plane( std::shared_ptr<ker::module::module> );
 						/** controller
 						*/
-						virtual std::shared_ptr<n34100::controller::base>	create_controller( std::shared_ptr<ker::module::module> );
+						//virtual std::shared_ptr<ker::module::module>		create_controller( std::shared_ptr<ker::module::module> );
 						/** physics material
 						*/
-						std::shared_ptr<n34200::material>			request_material_physics();
+						//std::shared_ptr<n34200::material>			request_material_physics();
 						/** plane
 						*/
-						virtual std::shared_ptr<n35100::plane>			create_plane( std::shared_ptr<n34100::rigid_actor> );
+						//virtual std::shared_ptr<n35100::plane>			create_plane( std::shared_ptr<n34100::rigid_actor> );
 						/** box
 						*/
-						virtual std::shared_ptr<n35100::box>			create_box( std::shared_ptr<n34100::rigid_actor> );
+						//virtual std::shared_ptr<n35100::box>			create_box( std::shared_ptr<n34100::rigid_actor> );
 					public:
 						/** \brief parent
 						*/

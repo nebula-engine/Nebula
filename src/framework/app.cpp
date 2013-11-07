@@ -35,7 +35,7 @@ n10000::app::~app()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	n10000::app::init()
+/*void	n10000::app::init()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -52,7 +52,7 @@ void	n10000::app::init()
 #endif
 
 	platform_->init( shared_from_this() );
-}
+}*/
 void	n10000::app::MainLoopSequ()
 {
 //	for(int i = 0; i < 10; i++)

@@ -39,7 +39,8 @@ void	n34100::rigid_static_plane::create_shapes()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 
-	plane_ = create_plane();
+	/// \todo request module plane
+	//plane_ = create_plane();
 }
 
 

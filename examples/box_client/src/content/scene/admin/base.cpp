@@ -23,11 +23,16 @@ void	bc32100::base::init()
 
 	n32100::base::init();
 
-	rigid_dyn_box_ = create_rigid_dynamic_box();
 
-	rigid_sta_pln_ = create_rigid_static_plane();
+	//rigid_dyn_box_ = create_rigid_dynamic_box();
 
-	ctrlr_ = create_controller();
+
+
+	//rigid_sta_pln_ = create_rigid_static_plane();
+
+
+
+	//ctrlr_ = create_controller();
 	
 	
 	// done in main now...
@@ -36,10 +41,8 @@ void	bc32100::base::init()
 
 
 
-	NEB_ASSERT( view_ );
-
 	// connect controller to view
-	connect_controller_to_view( ctrlr_, view_ );
+	//connect_controller_to_view( ctrlr_, view_ );
 
 }
 

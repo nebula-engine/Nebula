@@ -53,10 +53,10 @@ namespace nebula
 						virtual	void						create_shapes();
 						/** \brief create box
 						*/
-						virtual std::shared_ptr<n35100::box>			create_box();
+						//virtual std::shared_ptr<n35100::box>			create_box();
 						/** \brief create plane
 						*/
-						virtual std::shared_ptr<n35100::plane>			create_plane();
+						//virtual std::shared_ptr<n35100::plane>			create_plane();
 						/** \brief shapes
 						*/
 						jess::map<n35100::base>					shapes_;

@@ -3,6 +3,8 @@
 
 #include <memory>
 
+#include <ker/module/module.hpp>
+
 #include <nebula/ns.hpp>
 
 namespace nebula
@@ -11,7 +13,7 @@ namespace nebula
 	{
 		/// %app
 		class app:
-			public std::enable_shared_from_this<n10000::app>
+			public ker::module::module
 		{
 		public:
 			/// ctor
@@ -19,7 +21,7 @@ namespace nebula
 			/// dtor
 			virtual ~app();
 			/// init
-			virtual void						init();
+			//virtual void						init();
 			/// shutdown
 			virtual void						shutdown();
 			/// main loop sequ

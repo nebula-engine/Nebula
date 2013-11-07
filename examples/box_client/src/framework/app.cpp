@@ -17,15 +17,18 @@ bc10000::app::app()
 }
 void	bc10000::app::init()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	NEB_LOG_FUNC;
 	
-	n10000::app::init();
+	//n10000::app::init();
 	
-	universe_ = content_->create_universe<bc31100::base>();
+	//universe_ = content_->create_universe<bc31100::base>();
 	
-	scene_ = universe_->create_scene<bc32100::base>();
+	//scene_ = universe_->create_scene<bc32100::base>();
+
 	
-	renderable_ = scene_->view_; jess::assertion( bool( renderable_ ) );
+	
+	//renderable_ = scene_->view_;
+	
 }
 
 

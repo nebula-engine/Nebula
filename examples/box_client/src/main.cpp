@@ -41,15 +41,21 @@ int main( int argc, char** argv )
 	k->desc_->mode_ = ker::module::mode::KERNEL;
 	
 	/* the following descriptions can be loaded from files */
-
 	
+	
+	
+	std::shared_ptr<ker::module::desc> desc_app( new ker::module::desc() );
+	
+	desc_app->type_			= ker::module::type( nebula::kernel::module::type::N10000_APP );
+	desc_app->mode_			= ker::module::mode::CREATE;
+	desc_app->desc_parent_		= k->desc_;	
 	
 	
 	std::shared_ptr<ker::module::desc> desc_content( new ker::module::desc() );
 	
-	desc_content->type_		= ker::module::type( nebula::kernel::module::type::CONTENT );
+	desc_content->type_		= ker::module::type( nebula::kernel::module::type::N30000_BASE );
 	desc_content->mode_		= ker::module::mode::CREATE;
-	desc_content->desc_parent_	= k->desc_;
+	desc_content->desc_parent_	= desc_app;
 	
 	
 	std::shared_ptr<ker::module::desc> desc_uni( new ker::module::desc() );
@@ -72,13 +78,15 @@ int main( int argc, char** argv )
 	desc_view->type_		= ker::module::type( box_client::kernel::module::type::BC33100_BASE );
 	desc_view->mode_		= ker::module::mode::CREATE;
 	desc_view->desc_parent_		= desc_scene;
-	
-	
-	
-	
+		
 	
 	std::shared_ptr<ker::module::module> m = k->request_module( desc_view );
 	
+
+
+
+
+
 	return 0;
 }
 

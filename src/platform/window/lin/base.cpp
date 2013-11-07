@@ -19,11 +19,11 @@ n22100::base::~base()
 {
 	jess::clog << NEB_FUNCSIG << std::endl;
 }
-void	n22100::base::init( std::shared_ptr<n21000::base> parent )
+void	n22100::base::init_xlib_context()
 {
-	jess::clog << NEB_FUNCSIG << std::endl;
+	NEB_LOG_FUNC;
 	
-	n22000::base::init( parent );
+	//n22000::base::init( parent );
 
 	register_keys();
 
@@ -76,6 +76,8 @@ void	n22100::base::init( std::shared_ptr<n21000::base> parent )
 	// center pointer
 	center_pointer();
 
+	/// \todo implement with ker
+	/*
 	// create renderer
 	std::shared_ptr<n23110::base> rnd_glx( new n23110::base() );
 
@@ -87,7 +89,8 @@ void	n22100::base::init( std::shared_ptr<n21000::base> parent )
 	
 	// initialize Renderer
 	rnd_glx->init( shared_from_this() );
-
+	*/
+	
 	// to prevent multiple key events while holding a key
 	//XAutoRepeatOff( m_xdisplay );
 
@@ -114,8 +117,6 @@ void	n22100::base::init( std::shared_ptr<n21000::base> parent )
 	}
 
 	XFree(keysym);
-
-	jess::clog << NEB_FUNCSIG << " exit" << std::endl;
 }
 void	n22100::base::register_keys()
 {
