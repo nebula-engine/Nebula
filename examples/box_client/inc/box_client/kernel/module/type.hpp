@@ -13,9 +13,10 @@ namespace box_client
 			*/
 			enum type: uint16_t
 			{
-				BC31100_BASE	= 0x8000,
-				BC32100_BASE	= 0X8001,
-				BC33100_BASE	= 0X8002,
+				BC10000_APP	= 0x8000,
+				BC31100_BASE	= 0x8001,
+				BC32100_BASE	= 0X8002,
+				BC33100_BASE	= 0X8003,
 			};
 		}
 	}

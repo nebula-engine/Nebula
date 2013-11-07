@@ -38,7 +38,7 @@ namespace nebula
 					/// update
 					virtual void						update();
 					/// create window
-					virtual std::shared_ptr<n22000::base>			create_window();
+					//virtual std::shared_ptr<n22000::base>			create_window();
 					/// display
 					::Display*						m_xdisplay;// = XOpenDisplay( NULL );
 					/// screen num

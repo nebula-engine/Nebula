@@ -21,9 +21,10 @@ namespace nebula
 			/// dtor
 			virtual ~app();
 			/// init
-			//virtual void						init();
+			void							init();
 			/// shutdown
 			virtual void						shutdown();
+			void							main_loop();
 			/// main loop sequ
 			void							MainLoopSequ();
 			/// main loop multi
@@ -33,11 +34,11 @@ namespace nebula
 			/// continue multi
 			void							ContinueLoopMulti();
 			/// request_window
-			virtual std::shared_ptr<n22000::base>			request_window();
+			//virtual std::shared_ptr<n22000::base>			request_window();
 			/// get content
-			std::shared_ptr<n30000::base>			get_content();
+			//std::shared_ptr<n30000::base>				get_content();
 			/// get platform
-			std::shared_ptr<n21000::base>				get_platform();
+			//std::shared_ptr<n21000::base>				get_platform();
 			///@name children
 			///@{
 			/// contnt

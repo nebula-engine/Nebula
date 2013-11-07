@@ -46,16 +46,20 @@ int main( int argc, char** argv )
 	
 	std::shared_ptr<ker::module::desc> desc_app( new ker::module::desc() );
 	
-	desc_app->type_			= ker::module::type( nebula::kernel::module::type::N10000_APP );
+	desc_app->type_			= ker::module::type( box_client::kernel::module::type::BC10000_APP );
 	desc_app->mode_			= ker::module::mode::CREATE;
 	desc_app->desc_parent_		= k->desc_;	
 	
+	std::shared_ptr<bc10000::app> app = std::dynamic_pointer_cast<bc10000::app>( k->request_module( desc_app ) );
+	
+	
+	// new desc chain...
 	
 	std::shared_ptr<ker::module::desc> desc_content( new ker::module::desc() );
 	
 	desc_content->type_		= ker::module::type( nebula::kernel::module::type::N30000_BASE );
 	desc_content->mode_		= ker::module::mode::CREATE;
-	desc_content->desc_parent_	= desc_app;
+	desc_content->parent_		= app;
 	
 	
 	std::shared_ptr<ker::module::desc> desc_uni( new ker::module::desc() );
@@ -84,9 +88,12 @@ int main( int argc, char** argv )
 	
 
 
-
-
-
+	// loop
+	app->main_loop();
+	
+	
+	
+	
 	return 0;
 }
 

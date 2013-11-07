@@ -6,6 +6,8 @@
 #include <box_client/ns.hpp>
 #include <box_client/kernel/module/type.hpp>
 
+#include <box_client/framework/app.hpp>
+
 #include <box_client/content/universe/admin/base.hpp>
 #include <box_client/content/scene/admin/base.hpp>
 #include <box_client/content/view/admin/base.hpp>
@@ -39,6 +41,9 @@ namespace box_client
 
 					switch ( desc->type_ )
 					{
+						case box_client::kernel::module::type::BC10000_APP:
+							mod.reset( new bc10000::app );
+							break;
 						case box_client::kernel::module::type::BC31100_BASE:
 							mod.reset( new bc31100::base );
 							break;

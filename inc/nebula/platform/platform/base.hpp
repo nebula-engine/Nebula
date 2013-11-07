@@ -14,7 +14,7 @@ namespace nebula
 		{
 			/// base
 			class base:
-				public std::enable_shared_from_this<n21000::base>,
+				public ker::module::module,
 				public n40000::mailbox
 			{
 			public:
