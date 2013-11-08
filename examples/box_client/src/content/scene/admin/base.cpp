@@ -38,6 +38,13 @@ void	bc32100::base::init()
 	// done in main now...
 	//view_ = create_view<bc33100::base>();
 
+	std::shared_ptr<ker::module::desc> desc_view( new ker::module::desc() );
+	
+	desc_view->type_		= ker::module::type( box_client::kernel::module::type::BC33100_BASE );
+	desc_view->mode_		= ker::module::mode::CREATE;
+	desc_view->desc_parent_		= shared_from_this();
+	
+	view_ = std::dynamic_pointer_cast<bc33100::base>( k->request_module( desc_view ) );
 
 
 

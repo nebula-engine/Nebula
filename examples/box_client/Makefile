@@ -15,6 +15,8 @@ hpaths    += $(root)external/PhysX/Include
 lpaths    :=
 lpaths    += $(root)jess/lib/lin64
 lpaths    += $(root)nebula/lib/lin64
+lpaths    += $(root)kernel/lib/lin64
+
 lpaths    += $(root)external/glew/lib
 lpaths    += $(root)external/PhysX/Lib/linux64
 
@@ -27,6 +29,8 @@ defines   += __OPENGL__
 libraries :=
 libraries += jess
 libraries += nebula
+libraries += kernel
+
 libraries += rt
 
 libraries += pthread

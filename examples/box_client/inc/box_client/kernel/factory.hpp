@@ -39,7 +39,9 @@ namespace box_client
 
 					std::shared_ptr<ker::module::module> mod;
 
-					switch ( desc->type_ )
+					box_client::kernel::module::type type = (box_client::kernel::module::type)desc->type_;
+
+					switch ( type )
 					{
 						case box_client::kernel::module::type::BC10000_APP:
 							mod.reset( new bc10000::app );

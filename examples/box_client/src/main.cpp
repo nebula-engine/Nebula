@@ -55,14 +55,19 @@ int main( int argc, char** argv )
 	
 	// new desc chain...
 	
-	std::shared_ptr<ker::module::desc> desc_content( new ker::module::desc() );
+	// content created by nebula app
+/*	std::shared_ptr<ker::module::desc> desc_content( new ker::module::desc() );
 	
 	desc_content->type_		= ker::module::type( nebula::kernel::module::type::N30000_BASE );
 	desc_content->mode_		= ker::module::mode::CREATE;
-	desc_content->parent_		= app;
+	desc_content->parent_		= app;*/
 	
-	
-	std::shared_ptr<ker::module::desc> desc_uni( new ker::module::desc() );
+
+
+
+
+	// all this created by box app	
+/*	std::shared_ptr<ker::module::desc> desc_uni( new ker::module::desc() );
 	
 	desc_uni->type_			= ker::module::type( box_client::kernel::module::type::BC31100_BASE );
 	desc_uni->mode_			= ker::module::mode::CREATE;
@@ -84,7 +89,7 @@ int main( int argc, char** argv )
 	desc_view->desc_parent_		= desc_scene;
 		
 	
-	std::shared_ptr<ker::module::module> m = k->request_module( desc_view );
+	std::shared_ptr<ker::module::module> m = k->request_module( desc_view );*/
 	
 
 

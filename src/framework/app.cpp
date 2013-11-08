@@ -28,11 +28,11 @@ n10000::app::app()
 {
 	NEB_LOG_FUNC;
 
-	ker::module::init_task task1( std::bind( &n10000::app::init, this ) );
-
-	init_map_[1] = task1;
-
-	init_flag_ |= 1;
+	std::shared_ptr<ker::module::task> task1( new ker::module::task( std::bind( &n10000::app::init, this ) ) );
+	
+	// add a task
+	tasks_init_.task_map_[1] = task1;
+	tasks_init_.task_flag_ |= 1;
 }
 n10000::app::~app()
 {

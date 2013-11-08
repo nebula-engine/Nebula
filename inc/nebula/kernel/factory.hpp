@@ -42,7 +42,9 @@ namespace nebula
 
 					std::shared_ptr<ker::module::module> mod;
 
-					switch ( desc->type_ )
+					nebula::kernel::module::type type = (nebula::kernel::module::type)desc->type_;
+
+					switch ( type )
 					{
 						case nebula::kernel::module::type::N10000_APP:
 							mod.reset( new n10000::app );
