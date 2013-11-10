@@ -2,12 +2,13 @@ here      := $(shell pwd)
 rootname  := C++/
 root      := $(shell expr $(here) : '\(.*$(rootname)\)')
 
-
+mode := lib
+os   := lin64
 
 hpaths    := 
 hpaths    += $(root)kernel/inc
 hpaths    += $(root)external/PhysX/Include
-hpaths    += $(root)external/glew/include
+hpaths    += $(root)GRU/inc
 hpaths    += $(root)external
 hpaths    += $(root)jess/inc
 
@@ -17,9 +18,7 @@ hpaths    += $(root)jess/inc
 #lpaths    += $(root)external/PhysX/Lib/linux64
 
 defines   := 
-defines   += __DEBUG__
-defines   += __LIN__
-defines   += __OPENGL__
+defines   += _DEBUG
 
 #libraries := 
 #libraries += jess
@@ -43,4 +42,4 @@ libraries += GL
 libraries += GLU
 libraries += GLEW
 
--include $(root)make/Makefile.Lib.mk
+-include $(root)make/Makefile.Cpp.mk
