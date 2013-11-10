@@ -7,7 +7,7 @@
 #include <nebula/platform/window/base.hpp>
 #include <nebula/platform/platform/base.hpp>
 
-n21000::base::base()
+GRU::platform::platform()
 {
 
 }
