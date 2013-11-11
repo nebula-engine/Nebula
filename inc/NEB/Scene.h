@@ -11,17 +11,18 @@ namespace NEB
 {
 	class Scene
 	{
-			public:
-				NEB::Actor::Rigid_Dynamic_Box*		Create_Rigid_Dynamic_Box();
-				void					Display();
-				
-				std::vector<NEB::Actor::Base*>		actors_;
-				
-				
-				physx::PxScene*				px_scene_;
+		public:
+			Scene();
+			NEB::Actor::Rigid_Dynamic_Box*		Create_Rigid_Dynamic_Box();
+			void					Display();
 
-				physx::PxSimulationFilterShader		px_default_filter_shader_;
-		};
+			std::vector<NEB::Actor::Base*>		actors_;
+
+
+			physx::PxScene*				px_scene_;
+
+			physx::PxSimulationFilterShader		px_default_filter_shader_;
+	};
 }
 
 #endif

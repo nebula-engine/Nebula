@@ -8,6 +8,7 @@ namespace NEB
 	class View
 	{
 		public:
+			View();
 			void	SetWindow( GRU::Window* );
 			void	Display();
 			

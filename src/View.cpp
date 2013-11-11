@@ -6,7 +6,11 @@
 #include <NEB/Scene.h>
 #include <NEB/View.h>
 
+NEB::View::View():
+	scene_( NULL )
+{
 
+}
 void	NEB::View::SetWindow( GRU::Window* window )
 {
 	assert( window );

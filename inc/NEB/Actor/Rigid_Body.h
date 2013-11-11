@@ -10,6 +10,8 @@ namespace NEB
 		class Rigid_Body:
 			public NEB::Actor::Rigid_Actor
 		{
+virtual void Display() = 0;
+
 			float							density_;
 			physx::PxVec3						velocity_;
 		};
