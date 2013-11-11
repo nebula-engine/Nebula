@@ -10,6 +10,7 @@ namespace NEB
 		class Rigid_Dynamic_Box:
 			public NEB::Actor::Rigid_Dynamic
 		{
+			void	Display();
 		};
 	}
 }

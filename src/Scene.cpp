@@ -1,6 +1,7 @@
 
 #include <NEB/Physics.h>
 #include <NEB/Scene.h>
+#include <NEB/Actor/Base.h>
 
 NEB::Actor::Rigid_Dynamic_Box*	NEB::Scene::Create_Rigid_Dynamic_Box()
 {
@@ -27,14 +28,22 @@ NEB::Actor::Rigid_Dynamic_Box*	NEB::Scene::Create_Rigid_Dynamic_Box()
 	// userData
 	px_rigid_dynamic->userData = box;
 	
-	
+
 
 	return box;
 }
-
-	
-	
-	
+void				NEB::Scene::Display()
+{
+	NEB::Actor::Base* actor = NULL;
+	for( auto it = actors_.begin(); it != actors_.end(); ++it )
+	{
+		actor = *it;
+		if( actor )
+		{
+			actor->Display();
+		}
+	}
+}	
 
 
 

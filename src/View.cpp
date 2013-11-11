@@ -11,13 +11,16 @@ void	NEB::View::SetWindow( GRU::Window* window )
 {
 	assert( window );
 	
-	window->CallBackDisplay_ = std::bind( NEB::View::Display, this );
+	window->CallBackDisplay_ = std::bind( &NEB::View::Display, this );
 }
 void	NEB::View::Display()
 {
-	if( scene )
+	if( scene_ )
 	{
-		scene->Display();
+		scene_->Display();
 	}
 }
+
+
+
 
