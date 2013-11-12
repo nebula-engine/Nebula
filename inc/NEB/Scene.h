@@ -15,14 +15,17 @@ namespace NEB
 			Scene();
 			NEB::Actor::Rigid_Dynamic_Box*		Create_Rigid_Dynamic_Box();
 			void					Display();
-
+			void					Step(float);
 			std::vector<NEB::Actor::Base*>		actors_;
-
-
+			
+			
 			physx::PxScene*				px_scene_;
-
+			
 			physx::PxSimulationFilterShader		px_default_filter_shader_;
 	};
 }
 
 #endif
+
+
+

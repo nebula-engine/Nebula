@@ -3,6 +3,8 @@
 
 #include <GRU/Window.h>
 
+
+
 namespace NEB
 {
 	class View
@@ -11,8 +13,15 @@ namespace NEB
 			View();
 			void	SetWindow( GRU::Window* );
 			void	Display();
+			void	Look();
 			
+			void	FirstOrderDeltaPitch(float);
+			void	FirstOrderDeltaYaw(float);		
+
 			NEB::Scene*	scene_;
+
+			float pitch_;
+			float yaw_;
 	};
 }
 

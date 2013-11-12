@@ -15,7 +15,8 @@ void	NEB::Actor::Rigid_Dynamic_Box::Display()
 	
 	glMultMatrixf( mat.front() );
 	
-	glutSolidCube(1.0f);
+	glColor4f(1,0,0,1);
+	glutSolidCube(1.0);
 	
 	glPopMatrix();
 	

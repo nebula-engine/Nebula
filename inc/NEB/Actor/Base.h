@@ -9,11 +9,11 @@ namespace NEB
 	{
 		class Base
 		{
-public:
-			Base();
-			virtual void Display() = 0;
+			public:
+				Base();
+				virtual void Display() = 0;
 
-			physx::PxTransform pose_;
+				physx::PxTransform pose_;
 		};
 	}
 }

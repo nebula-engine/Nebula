@@ -13,9 +13,9 @@ namespace NEB
 			public NEB::Actor::Base
 		{
 			public:
-virtual void Display() = 0;
+				virtual void Display() = 0;
 
-				physx::PxActor*						px_actor_;
+				physx::PxActor*		px_actor_;
 
 		};
 	}

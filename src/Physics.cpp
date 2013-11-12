@@ -65,14 +65,14 @@ void	NEB::Physics::Init()
 
 
 }
-void						NEB::Physics::Shutdown()
+void NEB::Physics::Shutdown()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 
 	px_physics_->release();
 	px_foundation_->release();
 }
-NEB::Scene*			NEB::Physics::Create_Scene()
+NEB::Scene* NEB::Physics::Create_Scene()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 
@@ -80,7 +80,8 @@ NEB::Scene*			NEB::Physics::Create_Scene()
 
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
 
-	scene_desc.gravity = physx::PxVec3(0,0,0);
+	scene_desc.gravity = physx::PxVec3(0.0f, 0.0f, 0.0f);
+	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 
 	int m_nbThreads = 1;
 
@@ -115,8 +116,8 @@ NEB::Scene*			NEB::Physics::Create_Scene()
 #endif
 	assert( scene_desc.isValid() );
 
-	scene->px_scene_ = px_physics_->createScene( scene_desc );
-	assert( scene->px_scene_ );
+	scene->px_scene_ = px_physics_->createScene(scene_desc);
+	assert(scene->px_scene_);
 
 	return scene;
 }

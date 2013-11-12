@@ -42,4 +42,4 @@ libraries += GL
 libraries += GLU
 libraries += GLEW
 
--include $(root)make/Makefile.Cpp.mk
+-include $(root)../make/Makefile.Cpp.mk

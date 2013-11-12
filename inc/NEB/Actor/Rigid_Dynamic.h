@@ -10,7 +10,8 @@ namespace NEB
 		class Rigid_Dynamic:
 			public NEB::Actor::Rigid_Body
 		{
-virtual void Display() = 0;
+			public:
+				virtual void Display() = 0;
 		};
 	}
 }
