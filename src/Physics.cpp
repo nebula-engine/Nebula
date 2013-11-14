@@ -4,6 +4,8 @@
 
 #include <NEB/Actor/Rigid_Dynamic_Box.h>
 #include <NEB/Physics.h>
+#include <NEB/Scene.h>
+
 
 namespace NEB
 {
@@ -19,6 +21,21 @@ physx::PxFilterFlags	DefaultFilterShader(
 		const void* constantBlock,
 		physx::PxU32 constantBlockSize )
 {
+	// let triggers through
+        if(physx::PxFilterObjectIsTrigger(attributes0) || physx::PxFilterObjectIsTrigger(attributes1))
+        {
+                pairFlags = physx::PxPairFlag::eTRIGGER_DEFAULT;
+                return physx::PxFilterFlag::eDEFAULT;
+        }
+	
+        // generate contacts for all that were not filtered above
+        pairFlags = physx::PxPairFlag::eCONTACT_DEFAULT;
+
+        // trigger the contact callback for pairs (A,B) where
+        // the filtermask of A contains the ID of B and vice versa.
+        if((filterData0.word0 & filterData1.word1) && (filterData1.word0 & filterData0.word1))
+                pairFlags |= physx::PxPairFlag::eNOTIFY_TOUCH_FOUND;
+	
 	return physx::PxFilterFlag::eDEFAULT;
 }
 
@@ -80,7 +97,7 @@ NEB::Scene* NEB::Physics::Create_Scene()
 
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
 
-	scene_desc.gravity = physx::PxVec3(0.0f, 0.0f, 0.0f);
+	scene_desc.gravity = physx::PxVec3(0.0f, -1.0f, 0.0f);
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 
 	int m_nbThreads = 1;
@@ -97,9 +114,9 @@ NEB::Scene* NEB::Physics::Create_Scene()
 	// filter shader
 	if( !scene_desc.filterShader )
 	{
-		if ( scene->px_default_filter_shader_ )
+		if ( scene->px_filter_shader_ )
 		{
-			scene_desc.filterShader = scene->px_default_filter_shader_;
+			scene_desc.filterShader = scene->px_filter_shader_;
 		}
 		else
 		{
