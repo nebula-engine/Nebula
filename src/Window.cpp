@@ -20,9 +20,17 @@ GRU::Window::Window( GRU::Master * glutMaster,
 
 	glutMaster->CallGlutCreateWindow( (char *)title, this );
 
+	// Settings
 	glEnable(GL_DEPTH_TEST);
+        glEnable( GL_NORMALIZE );
+        glEnable( GL_LIGHTING );
 	
-	// setup viewport
+        glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, 1);
+	
+        glEnable (GL_LIGHT0);
+        glShadeModel (GL_SMOOTH); 
+
+	// Setup viewport
 	glViewport(0, 0, width, height);
 
 	glMatrixMode(GL_PROJECTION);
@@ -36,6 +44,9 @@ GRU::Window::Window( GRU::Master * glutMaster,
 	
 	//glRotatef(60, 1, 1, 1);
 	//glColor4f(1.0, 0.0, 0.0, 1.0);
+	
+	
+	
 }
 GRU::Window::~Window()
 {
