@@ -1,6 +1,8 @@
 
 #include <assert.h>
 
+#include <JSL/Master.h>
+
 #include <GRU/Window.h>
 
 #include <NEB/Scene.h>
@@ -31,18 +33,53 @@ NEB::Camera::Camera():
         head_[4] = physx::PxVec3(  0, 0,  s );
         head_[5] = physx::PxVec3( -d, 0,  d );
         head_[6] = physx::PxVec3( -s, 0,  0 );
-        head_[7] = physx::PxVec3( -d, 0, -d );
+	head_[7] = physx::PxVec3( -d, 0, -d );
 
-        head_flag_[NEB::Camera::flag::NORTH					] = 0;
-        head_flag_[NEB::Camera::flag::NORTH	|	NEB::Camera::flag::EAST	] = 1;
-        head_flag_[					NEB::Camera::flag::EAST	] = 2;
-        head_flag_[NEB::Camera::flag::SOUTH	|	NEB::Camera::flag::EAST	] = 3;
-        head_flag_[NEB::Camera::flag::SOUTH					] = 4;
-        head_flag_[NEB::Camera::flag::SOUTH	|	NEB::Camera::flag::WEST	] = 5;
-        head_flag_[					NEB::Camera::flag::WEST	] = 6;
-        head_flag_[NEB::Camera::flag::NORTH	|	NEB::Camera::flag::WEST	] = 7;
+	head_flag_[NEB::Camera::flag::NORTH					] = 0;
+	head_flag_[NEB::Camera::flag::NORTH	|	NEB::Camera::flag::EAST	] = 1;
+	head_flag_[					NEB::Camera::flag::EAST	] = 2;
+	head_flag_[NEB::Camera::flag::SOUTH	|	NEB::Camera::flag::EAST	] = 3;
+	head_flag_[NEB::Camera::flag::SOUTH					] = 4;
+	head_flag_[NEB::Camera::flag::SOUTH	|	NEB::Camera::flag::WEST	] = 5;
+	head_flag_[					NEB::Camera::flag::WEST	] = 6;
+	head_flag_[NEB::Camera::flag::NORTH	|	NEB::Camera::flag::WEST	] = 7;
 
 }
+void	NEB::Camera::Connect()
+{
+	ev_mouse = JSL::master.find_event_device({0x0,0x0});
+	ev_keyboard = JSL::master.find_event_device({0x0,0x0});
+	ev_gamepad = JSL::master.find_event_device({0x0,0x0});
+
+	if(ev_gamepad)
+	{
+		ev_gamepad->map_sig_abs_[ABS_RX].connect(std::bind( &NEB::Camera::FirstOrderDeltaYawRel, this, std::placeholders::_1 ) );
+		ev_gamepad->map_sig_abs_[ABS_RY].connect(std::bind( &NEB::Camera::FirstOrderDeltaPitchRel, this, std::placeholders::_1 ) );
+		
+		ev_gamepad->map_sig_abs_[ABS_X].connect(std::bind( &NEB::Camera::HandleAbsNorth, this, std::placeholders::_1 ) );
+		ev_gamepad->map_sig_abs_[ABS_Y].connect(std::bind( &NEB::Camera::HandleAbsEast, this, std::placeholders::_1 ) );
+	}
+	else if(ev_mouse && ev_keyboard)
+	{
+		ev_mouse->map_sig_rel_[REL_X].connect(	std::bind( &NEB::Camera::FirstOrderDeltaYawRel, this, std::placeholders::_1 ) );
+		ev_mouse->map_sig_rel_[REL_Y].connect(	std::bind( &NEB::Camera::FirstOrderDeltaPitchRel, this, std::placeholders::_1 ) );
+		
+		ev_keyboard->map_sig_key_[KEY_W].connect(std::bind( &NEB::Camera::HandleKeyNorth, this, std::placeholders::_1 ) );
+		ev_keyboard->map_sig_key_[KEY_S].connect(std::bind( &NEB::Camera::HandleKeySouth, this, std::placeholders::_1 ) );
+		ev_keyboard->map_sig_key_[KEY_D].connect(std::bind( &NEB::Camera::HandleKeyEast, this, std::placeholders::_1 ) );
+		ev_keyboard->map_sig_key_[KEY_A].connect(std::bind( &NEB::Camera::HandleKeyWest, this, std::placeholders::_1 ) );
+		
+	}
+	else
+	{
+		fprintf(stderr, "Camera: no input devices");
+	}
+
+
+}
+
+
+
 void	NEB::Camera::SetWindow( GRU::Window* window )
 {
 	assert( window );
@@ -56,28 +93,28 @@ void	NEB::Camera::Display()
 
 	Look();
 
-	
+
 	if( view_ )
 	{
 		view_->Display();
 	}
-	
+
 }
 void NEB::Camera::Step(float dt)
 {
-	printf("%s\n", __FUNCTION__);
-	
+	//printf("%s\n", __FUNCTION__);
+
 	physx::PxVec3 mov = Move();
-	
+
 	physx::PxQuat rot( yaw_, physx::PxVec3(0,1,0) );
-	
+
 	mov = rot.rotate(mov);
-	
+
 	eye_ += mov * dt;
 }
 physx::PxVec3 NEB::Camera::Move()
 {
-	printf("%s\n", __FUNCTION__);
+	//printf("%s\n", __FUNCTION__);
 
 	physx::PxVec3 mov(0,0,0);
 
@@ -100,7 +137,7 @@ physx::PxVec3 NEB::Camera::Move()
 }
 void NEB::Camera::Look()
 {
-	printf("%s\n", __FUNCTION__);
+	//printf("%s\n", __FUNCTION__);
 
 	physx::PxVec3 up(  0,1,0);
 	physx::PxVec3 look(0,0,-1);
@@ -126,7 +163,7 @@ void NEB::Camera::Look()
 }
 int NEB::Camera::FirstOrderDeltaPitchRel(int d)
 {
-	printf("%s\n", __FUNCTION__);
+	//printf("%s\n", __FUNCTION__);
 
 	pitch_ -= (float)d * 0.001;
 
@@ -134,27 +171,75 @@ int NEB::Camera::FirstOrderDeltaPitchRel(int d)
 }
 int NEB::Camera::FirstOrderDeltaYawRel(int d)
 {
-	printf("%s\n", __FUNCTION__);
+	//printf("%s\n", __FUNCTION__);
 
 	yaw_ -= (float)d * 0.001;
 
 	return 1;
 }
-int NEB::Camera::HandleKey(__u16 code, __s32 value)
+int NEB::Camera::HandleAbsNorth(float value)
 {
-	if( value == 0 )
-	{
-		flag_ &= ~( key_flag_[code] );
-	}
-	else if( value == 1 )
-	{
-		flag_ |= key_flag_[code];
-	}
+	north_ = value;
 	
 	return 1;
 }
+int NEB::Camera::HandleAbsEast(float value)
+{
+	east_ = value;
 
+	return 1;
+}
+int NEB::Camera::HandleKeyNorth(__s32 value)
+{
+	if( value == 0 )
+	{
+		flag_ &= ~( NEB::Camera::flag::NORTH );
+	}
+	else if( value == 1 )
+	{
+		flag_ |= NEB::Camera::flag::NORTH;
+	}
 
+	return 1;
+}
+int NEB::Camera::HandleKeySouth(__s32 value)
+{
+	if( value == 0 )
+	{
+		flag_ &= ~( NEB::Camera::flag::SOUTH );
+	}
+	else if( value == 1 )
+	{
+		flag_ |= NEB::Camera::flag::SOUTH;
+	}
 
+	return 1;
+}
+int NEB::Camera::HandleKeyEast(__s32 value)
+{
+	if( value == 0 )
+	{
+		flag_ &= ~( NEB::Camera::flag::EAST );
+	}
+	else if( value == 1 )
+	{
+		flag_ |= NEB::Camera::flag::EAST;
+	}
+
+	return 1;
+}
+int NEB::Camera::HandleKeyWest(__s32 value)
+{
+	if( value == 0 )
+	{
+		flag_ &= ~( NEB::Camera::flag::WEST );
+	}
+	else if( value == 1 )
+	{
+		flag_ |= NEB::Camera::flag::WEST;
+	}
+
+	return 1;
+}
 
 

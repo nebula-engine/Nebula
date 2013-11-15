@@ -109,14 +109,14 @@ void NEB::Scene::Step(float dt)
 	physx::PxU32 nb_active_transforms;
 	physx::PxActiveTransform* active_transforms = px_scene_->getActiveTransforms(nb_active_transforms);
 
-	printf( "count PxRigidActor:%i count active transform:%i\n", nbPxactor, nb_active_transforms );
+	//printf( "count PxRigidActor:%i count active transform:%i\n", nbPxactor, nb_active_transforms );
 
 	// update each render object with the new transform
 	for ( physx::PxU32 i = 0; i < nb_active_transforms; ++i )
 	{
 		physx::PxActor* px_actor = active_transforms[i].actor;
 
-		printf( "actor type = %i\n", px_actor->getType() );
+		//printf( "actor type = %i\n", px_actor->getType() );
 
 		NEB::Actor::Base* actor = static_cast<NEB::Actor::Base*>( active_transforms[i].userData );
 

@@ -2,8 +2,11 @@
 #define __NEB_CAMERA_H__
 
 #include <linux/input.h>
+
+#include <memory>
 #include <map>
 
+#include <JSL/Event.h>
 #include <GRU/Window.h>
 
 
@@ -22,16 +25,24 @@ namespace NEB
 			};
 
 			Camera();
-			void	SetWindow( GRU::Window* );
-			void	Display();
-			void	Look();
+			void		Connect();
+			void		SetWindow( GRU::Window* );
+			void		Display();
+			void		Look();
 			physx::PxVec3	Move();
-			void	Step(float);
+			void		Step(float);
 
 
 			int	FirstOrderDeltaPitchRel(int);
 			int	FirstOrderDeltaYawRel(int);		
-			int	HandleKey(__u16,__s32);
+
+			int	HandleAbsNorth(float);
+			int	HandleAbsEast(float);
+
+			int	HandleKeyNorth(__s32);
+			int	HandleKeySouth(__s32);
+			int	HandleKeyEast(__s32);
+			int	HandleKeyWest(__s32);
 
 
 			NEB::View* view_;
@@ -40,11 +51,22 @@ namespace NEB
 
 			float pitch_;
 			float yaw_;
+
+			float north_;
+			float east_;
+
 			physx::PxVec3 eye_;
 			
 			std::map<__s32,__u32>		key_flag_;
 			std::map<__s32,physx::PxVec3>	head_;
 			std::map<__u32,__s32>		head_flag_;
+
+			
+
+			std::shared_ptr<JSL::Event>	ev_mouse;
+			std::shared_ptr<JSL::Event>	ev_keyboard;
+			std::shared_ptr<JSL::Event>	ev_gamepad;
+
 	};
 }
 
