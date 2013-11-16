@@ -26,6 +26,7 @@ namespace NEB
 
 			Camera();
 			void		Connect();
+			void		delete_scene();
 			void		SetWindow( GRU::Window* );
 			void		Display();
 			void		Look();
@@ -36,6 +37,9 @@ namespace NEB
 			int	FirstOrderDeltaPitchRel(int);
 			int	FirstOrderDeltaYawRel(int);		
 
+			int	FirstOrderDeltaPitchAbs(float);
+			int	FirstOrderDeltaYawAbs(float);		
+
 			int	HandleAbsNorth(float);
 			int	HandleAbsEast(float);
 
@@ -44,6 +48,7 @@ namespace NEB
 			int	HandleKeyEast(__s32);
 			int	HandleKeyWest(__s32);
 
+			__s32	handle_delete_scene(__s32);
 
 			NEB::View* view_;
 
@@ -51,6 +56,9 @@ namespace NEB
 
 			float pitch_;
 			float yaw_;
+			float v_pitch_;
+			float v_yaw_;
+			
 
 			float north_;
 			float east_;

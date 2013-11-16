@@ -1,9 +1,9 @@
 #ifndef __NEB_VIEW_H__
 #define __NEB_VIEW_H__
 
+#include <memory>
+
 #include <GRU/Window.h>
-
-
 
 namespace NEB
 {
@@ -11,17 +11,12 @@ namespace NEB
 	{
 		public:
 			View();
-			void	SetWindow( GRU::Window* );
-			void	Display();
-			void	Look();
+			void				delete_scene();
+			void				Display();
 			
-			void	FirstOrderDeltaPitch(float);
-			void	FirstOrderDeltaYaw(float);		
+			
+			std::shared_ptr<NEB::Scene>	scene_;
 
-			NEB::Scene*	scene_;
-
-			float pitch_;
-			float yaw_;
 	};
 }
 

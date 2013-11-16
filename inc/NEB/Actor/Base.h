@@ -1,6 +1,8 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
 
+#include <tinyxml/tinyxml.h>
+
 #include <PxPhysicsAPI.h>
 
 namespace NEB

@@ -1,6 +1,8 @@
 #ifndef __NEB_PHYSICS_H__
 #define __NEB_PHYSICS_H__
 
+#include <memory>
+
 #include <PxPhysicsAPI.h>
 
 #include <NEB/Scene.h>
@@ -20,7 +22,7 @@ namespace NEB
 		public:
 			void						Init();
 			void						Shutdown();
-			NEB::Scene*					Create_Scene();
+			std::shared_ptr<NEB::Scene>			Create_Scene(TiXmlElement*);
 			NEB::Actor::Rigid_Dynamic_Box*			Create_Rigid_Dynamic_Box();
 
 			DefaultErrorCallback 				px_default_error_callback_;

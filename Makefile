@@ -8,6 +8,7 @@ os   := lin64
 hpaths    := 
 hpaths    += $(root)SIG/inc
 hpaths    += $(root)external/PhysX/Include
+hpaths    += $(root)external
 hpaths    += $(root)GRU/inc
 hpaths    += $(root)external
 hpaths    += $(root)JSL/inc

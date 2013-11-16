@@ -15,18 +15,27 @@ namespace NEB
 	{
 		public:
 			Scene();
-			NEB::Actor::Rigid_Dynamic_Box*		Create_Rigid_Dynamic_Box();
-			NEB::Actor::Rigid_Static_Plane*		Create_Rigid_Static_Plane();
-			NEB::Actor::Light*			Create_Light();
+			void		Create_Actors(TiXmlElement*);
+			void		Create_Actor(TiXmlElement*);
+
+
+			NEB::Actor::Rigid_Dynamic_Box*		Create_Rigid_Dynamic_Box(TiXmlElement*);
+			NEB::Actor::Rigid_Static_Plane*		Create_Rigid_Static_Plane(TiXmlElement*);
+			NEB::Actor::Light*			Create_Light(TiXmlElement*);
 	
 			void					Display();
 			void					Step(float);
-			std::vector<NEB::Actor::Base*>		actors_;
 
+
+			physx::PxSimulationFilterShader		px_filter_shader_;
+
+			std::vector<NEB::Actor::Base*>		actors_;
+			std::vector<NEB::Actor::Light*>		lights_;
 
 			physx::PxScene*				px_scene_;
 
-			physx::PxSimulationFilterShader		px_filter_shader_;
+
+
 	};
 }
 

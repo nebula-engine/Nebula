@@ -19,8 +19,14 @@ void	NEB::View::Display()
 	{
 		scene_->Display();
 	}
+	
+	if( layout_ )
+	{
+		layout_->Display();
+	}
 }
-
-
-
+void	NEB::View::delete_scene()
+{
+	scene_.reset();
+}
 

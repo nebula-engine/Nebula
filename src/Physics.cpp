@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <memory>
 
 #include <PxPhysicsAPI.h>
 
@@ -82,21 +83,21 @@ void	NEB::Physics::Init()
 
 
 }
-void NEB::Physics::Shutdown()
+void				NEB::Physics::Shutdown()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 
 	px_physics_->release();
 	px_foundation_->release();
 }
-NEB::Scene* NEB::Physics::Create_Scene()
+std::shared_ptr<NEB::Scene>	NEB::Physics::Create_Scene(TiXmlElement* el_scene)
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
-
-	NEB::Scene* scene = new NEB::Scene;
-
+	
+	std::shared_ptr<NEB::Scene> scene(new NEB::Scene);
+	
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
-
+	
 	scene_desc.gravity = physx::PxVec3(0.0f, -1.0f, 0.0f);
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 
@@ -135,7 +136,10 @@ NEB::Scene* NEB::Physics::Create_Scene()
 
 	scene->px_scene_ = px_physics_->createScene(scene_desc);
 	assert(scene->px_scene_);
-
+	
+	// actors
+	scene->Create_Actors(el_scene);
+	
 	return scene;
 }
 /*std::shared_ptr<n34200::rigid_dynamic>		NEB::Physics::create_rigid_dynamic(
