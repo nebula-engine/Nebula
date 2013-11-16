@@ -39,33 +39,31 @@ void	n33100::base::render()
 	jess::clog << NEB_FUNCSIG << std::endl;
 
 	std::shared_ptr<n23000::base> rnd = window_->renderer_;
-
-
+	
+	
 	n10000::renderable::render();
-
-
-
+	
 	rnd->begin_render();
 	rnd->begin_3d();
-
+	
 	camera_->render( rnd );
-
+	
 	rnd->light();
-
+	
 	// scene
 	parent_.lock()->render( rnd );
 
 	rnd->end_3d();
 	rnd->begin_2d();
-
+	
 	if( layout_ )
 	{
 		layout_->render( rnd );
 	}
-
+	
 	// text
 	char str[16];
-
+	
 	{
 		std::lock_guard<std::mutex> lg( mutex_ );
 
