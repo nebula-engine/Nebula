@@ -22,6 +22,16 @@ NEB::Actor::Light* NEB::Scene::Create_Light()
 }
 NEB::Actor::Rigid_Dynamic_Box*	NEB::Scene::Create_Rigid_Dynamic_Box()
 {
+ TiXmlElement* root = document.FirstChildElement( "Case" );
+        if ( root )
+        {
+                TiXmlElement* element = root->FirstChildElement( "Parameter" );
+
+                while ( element )
+                {
+
+
+
 
 	// create
 	NEB::Actor::Rigid_Dynamic_Box* actor = new NEB::Actor::Rigid_Dynamic_Box;
