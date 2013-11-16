@@ -22,13 +22,17 @@ GRU::Window::Window( GRU::Master * glutMaster,
 
 	// Settings
 	glEnable(GL_DEPTH_TEST);
-        glEnable( GL_NORMALIZE );
-        glEnable( GL_LIGHTING );
+        glEnable(GL_NORMALIZE);
+        glEnable(GL_LIGHTING);
+
+	glDisable(GL_COLOR_MATERIAL);
 	
+	//glDisable(GL_COLOR_MATERIAL);
         glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, 1);
 	
         glEnable (GL_LIGHT0);
-        glShadeModel (GL_SMOOTH); 
+
+	glShadeModel(GL_SMOOTH); 
 
 	// Setup viewport
 	glViewport(0, 0, width, height);
@@ -54,8 +58,11 @@ GRU::Window::~Window()
 }
 void GRU::Window::CallBackDisplayFunc(void)
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_DEPTH_BUFFER_BIT);
+	
 	//glColor4f(1.0, 0.0, 0.0, 1.0);
 	//glutWireSphere(50, 10, 10);
 	
