@@ -6,11 +6,11 @@ mode := lib
 os   := lin64
 
 hpaths    := 
-hpaths    += $(root)kernel/inc
+hpaths    += $(root)SIG/inc
 hpaths    += $(root)external/PhysX/Include
 hpaths    += $(root)GRU/inc
 hpaths    += $(root)external
-hpaths    += $(root)jess/inc
+hpaths    += $(root)JSL/inc
 
 #lpaths    := 
 #lpaths    += $(root)jess/lib/lin64/
