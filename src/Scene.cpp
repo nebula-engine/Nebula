@@ -5,6 +5,7 @@
 #include <NEB/Actor/Base.h>
 #include <NEB/Actor/Rigid_Dynamic_Box.h>
 #include <NEB/Actor/Rigid_Static_Plane.h>
+#include <NEB/Actor/Controller.h>
 #include <NEB/Actor/Light.h>
 
 float xml_parse_float(TiXmlElement* element)
@@ -100,6 +101,10 @@ void	NEB::Scene::Create_Actor(TiXmlElement* el_actor)
 	{
 		Create_Light(el_actor);
 	}
+	else if( strcmp(buf, "controller") == 0)
+	{
+		Create_Controller(el_actor);
+	}
 
 }
 NEB::Actor::Rigid_Dynamic_Box*	NEB::Scene::Create_Rigid_Dynamic_Box(TiXmlElement* el_actor)
@@ -171,14 +176,18 @@ NEB::Actor::Rigid_Static_Plane*	NEB::Scene::Create_Rigid_Static_Plane(TiXmlEleme
 
 	// PxMaterial
 	physx::PxMaterial* px_mat = NEB::physics.px_physics_->createMaterial(1,1,1);
+
+	// construct global pose for rendering
+	//physx::PxQuat q(n.x, n.y, n.z, 0.0f);
+	physx::PxQuat q(3.14f, physx::PxVec3(1,0,0));
 	
-	physx::PxQuat q(n.x, n.y, n.z, 0.0f);
 	
 	physx::PxTransform pose(n * -1.0f * d, q);
 	
 	actor->pose_ = pose;
 	
 	printf("%f,%f,%f\n", pose.p.x, pose.p.y, pose.p.z);
+	
 	
 	// PxActor
 	physx::PxRigidStatic* px_rigid_static = PxCreatePlane(*(NEB::physics.px_physics_), physx::PxPlane(n, d), *px_mat);
@@ -203,7 +212,41 @@ NEB::Actor::Rigid_Static_Plane*	NEB::Scene::Create_Rigid_Static_Plane(TiXmlEleme
 
 	return actor;
 }
+std::shared_ptr<NEB::Actor::Controller>	NEB::Scene::Create_Controller(TiXmlElement* el_actor)
+{
+	printf("%s\n",__FUNCTION__);
+	
+	//jess::scoped_ostream( &jess::clog, NEB_FUNCSIG );
+	physx::PxVec3 p = xml_parse_vec3(el_actor->FirstChildElement("p"));
+	
+	// create
+	std::shared_ptr<NEB::Actor::Controller> actor(new NEB::Actor::Controller);
+	
+	physx::PxMaterial* px_mat = NEB::physics.px_physics_->createMaterial(1,1,1);
+	
+	// description 
+	physx::PxExtendedVec3 position(p.x, p.y, p.z);
+	
+	physx::PxCapsuleControllerDesc desc;
 
+	desc.position = position;
+	desc.height = 1.0;
+	desc.radius = 0.5;
+	desc.scaleCoeff = 1.0;
+	desc.volumeGrowth = 2.0;
+	desc.density = 1000.0;
+	desc.slopeLimit = 0.707;
+	desc.stepOffset = 1.0;
+	desc.contactOffset = 1.0;
+	desc.material = px_mat;
+	desc.climbingMode = physx::PxCapsuleClimbingMode::eEASY;
+	desc.userData = actor.get();
+
+
+	actor->px_controller_ = NEB::physics.px_character_controller_manager_->createController( *NEB::physics.px_physics_, px_scene_, desc );
+	
+	return actor;
+}
 void NEB::Scene::Step(float dt)
 {
 	//physx::PxU32 nbPxactor = px_scene_->getNbActors(physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC);
@@ -263,6 +306,8 @@ void				NEB::Scene::Display()
 			actor->Display();
 		}
 	}
+
+	printf("Display %i actors\n", (int)actors_.size());
 }	
 
 

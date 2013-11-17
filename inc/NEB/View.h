@@ -3,6 +3,8 @@
 
 #include <memory>
 
+#include <GUL/layout.h>
+
 #include <GRU/Window.h>
 
 namespace NEB
@@ -16,6 +18,7 @@ namespace NEB
 			
 			
 			std::shared_ptr<NEB::Scene>	scene_;
+			std::shared_ptr<GUL::layout>	layout_;
 
 	};
 }

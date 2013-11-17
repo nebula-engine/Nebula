@@ -10,7 +10,9 @@ hpaths    += $(root)SIG/inc
 hpaths    += $(root)external/PhysX/Include
 hpaths    += $(root)external
 hpaths    += $(root)GRU/inc
-hpaths    += $(root)external
+hpaths    += $(root)GUL/inc
+
+hpaths    += $(root)external/Maths/inc
 hpaths    += $(root)JSL/inc
 
 #lpaths    := 

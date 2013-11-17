@@ -97,7 +97,7 @@ void	NEB::Camera::Display()
 {
 	Step(1.0f/60.0f);
 
-	Look();
+	//Look();
 
 
 	if( view_ )
