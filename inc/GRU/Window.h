@@ -3,7 +3,13 @@
 
 #include <functional>
 
+
+#include <Maths/MATRIX4X4.h>
+#include <Maths/VECTOR4D.h>
+#include <Maths/VECTOR3D.h>
+
 #include <GRU/Master.h>
+
 
 namespace GRU
 {
@@ -42,6 +48,10 @@ namespace GRU
 
 			std::function<void()>	CallBackDisplay_;
 			std::function<void()>	CallBackIdle_;
+
+
+
+
 	};
 }
 

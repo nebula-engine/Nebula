@@ -9,7 +9,7 @@ hpaths    :=
 hpaths    += $(root)kernel/inc
 hpaths    += $(root)external/PhysX/Include
 hpaths    += $(root)external/glew/include
-hpaths    += $(root)external
+hpaths    += $(root)external/Maths/inc
 hpaths    += $(root)jess/inc
 hpaths    += /afs/unc/proj/walk/include
 
