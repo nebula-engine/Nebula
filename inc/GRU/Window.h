@@ -23,34 +23,44 @@ namespace GRU
 			Window( GRU::Master* , int setWidth, int setHeight, int, int, const char * );
 			~Window();
 
-			int          height, width;
-			int          initPositionX, initPositionY;
+			int			height;
+			int			width;
+			int			initPositionX;
+			int			initPositionY;
 
 
-			virtual void StartSpinning();
+			virtual void		StartSpinning();
 
-			virtual void CallBackDisplayFunc();
-			virtual void CallBackIdleFunc(void);
-			virtual void CallBackKeyboardFunc(unsigned char key, int x, int y);
-			virtual void CallBackMotionFunc(int x, int y);
-			virtual void CallBackMouseFunc(int button, int state, int x, int y);
-			virtual void CallBackPassiveMotionFunc(int x, int y);
-			virtual void CallBackReshapeFunc(int w, int h);   
-			virtual void CallBackSpecialFunc(int key, int x, int y);   
-			virtual void CallBackVisibilityFunc(int visible);
+			virtual void		CallBackDisplayFunc();
+			virtual void		CallBackIdleFunc(void);
+			virtual void		CallBackKeyboardFunc(unsigned char key, int x, int y);
+			virtual void		CallBackMotionFunc(int x, int y);
+			virtual void		CallBackMouseFunc(int button, int state, int x, int y);
+			virtual void		CallBackPassiveMotionFunc(int x, int y);
+			virtual void		CallBackReshapeFunc(int w, int h);   
+			virtual void		CallBackSpecialFunc(int key, int x, int y);   
+			virtual void		CallBackVisibilityFunc(int visible);
 
 
-			void	Reshape();
+			void			Reshape();
 
-			void    SetWindowID(int newWindowID);
-			int     GetWindowID(void);
+			void			SetWindowID(int newWindowID);
+			int			GetWindowID(void);
 
 
 			std::function<void()>	CallBackDisplay_;
 			std::function<void()>	CallBackIdle_;
 
 
+			MATRIX4X4		lightProjectionMatrix;
+			MATRIX4X4		lightViewMatrix;
+			MATRIX4X4		cameraProjectionMatrix;
+			MATRIX4X4		cameraViewMatrix;
 
+
+
+			void	update_camera_matrix(VECTOR3D eye,VECTOR3D center, VECTOR3D up);
+			void	update_light_matrix();
 
 	};
 }

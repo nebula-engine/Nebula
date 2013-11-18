@@ -7,6 +7,7 @@
 
 #include <GRU/Window.h>
 
+
 VECTOR4D white(1.0f,1.0f,1.0f,1.0f);
 VECTOR4D black(0.0f,0.0f,0.0f,1.0f);
 
@@ -29,8 +30,6 @@ GLuint shadowMapTexture;
 
 
 //Matrices
-MATRIX4X4 lightProjectionMatrix, lightViewMatrix;
-MATRIX4X4 cameraProjectionMatrix, cameraViewMatrix;
 
 bool shadow = true;
 bool ortho = true;
@@ -103,49 +102,68 @@ GRU::Window::Window( GRU::Master * glutMaster,
 		glEnable(GL_COLOR_MATERIAL);
 	}
 
-
-
 	//White specular material color, shininess 16
 	glMaterialfv(GL_FRONT, GL_SPECULAR, white);
 	glMaterialf(GL_FRONT, GL_SHININESS, 16.0f);
 
 	//Calculate & save matrices
-
-
+	update_camera_matrix(cameraPosition, VECTOR3D(0.0f,0.0f,0.0f), VECTOR3D(0.0f,1.0f,0.0f));
+	update_light_matrix();
+}
+void	GRU::Window::update_camera_matrix(VECTOR3D eye,VECTOR3D center, VECTOR3D up)
+{
 	glPushMatrix();
-
+	
 	glLoadIdentity();
+
 	gluPerspective(45.0f, (float)width/height, 1.0f, 100.0f);
+
 	glGetFloatv(GL_MODELVIEW_MATRIX, cameraProjectionMatrix);
-
-
+	
 	glLoadIdentity();
-	gluLookAt(cameraPosition.x, cameraPosition.y, cameraPosition.z,
-			0.0f, 0.0f, 0.0f,
-			0.0f, 1.0f, 0.0f);
+	
+/*	VECTOR3D look = center - cameraPosition;
+	
+	VECTOR3D x(1.0f, 0.0f, 0.0f);
+	VECTOR3D y(0.0f, 1.0f, 0.0f);
+	
+	VECTOR3D up;
+	
+	if(look.DotProduct(y) == 0.0f)
+	{
+		up = x;
+	}
+	else
+	{
+		up = y;
+	}*/
+	
+	gluLookAt(
+			eye.x, eye.y, eye.z,
+			center.x, center.x, center.z,
+			up.x, up.y, up.z);
+
 	glGetFloatv(GL_MODELVIEW_MATRIX, cameraViewMatrix);
 
 	glPopMatrix();
-
+}
+void	GRU::Window::update_light_matrix()
+{
 	glPushMatrix();
 
 	glLoadIdentity();
 	gluPerspective(45.0f, 1.0f, 2.0f, 50.0f);
 	glGetFloatv(GL_MODELVIEW_MATRIX, lightProjectionMatrix);
 
-
 	glLoadIdentity();
-	gluLookAt(      lightPosition.x, lightPosition.y, lightPosition.z,
+	gluLookAt(
+			lightPosition.x, lightPosition.y, lightPosition.z,
 			0.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f);
+
 	glGetFloatv(GL_MODELVIEW_MATRIX, lightViewMatrix);
 
-
 	glPopMatrix();
-
-
-
-
 }
 GRU::Window::~Window()
 {
@@ -389,7 +407,7 @@ void GRU::Window::StartSpinning()
 void GRU::Window::CallBackKeyboardFunc(unsigned char key, int x, int y)
 {
 	printf("%s\n",__FUNCTION__);
-	
+
 	switch(key)
 	{
 		case 's':
