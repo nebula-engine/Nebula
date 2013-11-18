@@ -292,15 +292,6 @@ void GRU::Window::CallBackDisplayFunc(void)
 
 
 
-	//Update frames per second counter
-	//fpsCounter.Update();
-
-	//Print fps
-	static char fpsString[32];
-	//sprintf(fpsString, "%.2f", fpsCounter.GetFps());
-	sprintf(fpsString, "hello");
-
-
 	if(ortho)
 	{
 		//Set matrices for ortho
@@ -312,12 +303,18 @@ void GRU::Window::CallBackDisplayFunc(void)
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
 		glLoadIdentity();
-
+		
+		
+		if ( CallBackDisplayOrtho_ )
+		{
+			CallBackDisplayOrtho_();
+		}
+		
 		//Print text
-		glRasterPos2f(-1.0f, 0.9f);
-		for(unsigned int i=0; i<strlen(fpsString); ++i)
-			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, fpsString[i]);
-
+		//glRasterPos2f(-1.0f, 0.9f);
+		//for(unsigned int i=0; i<strlen(fpsString); ++i)
+		//	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, fpsString[i]);
+		
 		//reset matrices
 		glMatrixMode(GL_PROJECTION);
 		glPopMatrix();
@@ -333,8 +330,6 @@ void GRU::Window::CallBackDisplayFunc(void)
 }
 void GRU::Window::Reshape()
 {
-
-
 	//Update the camera's projection matrix
 	glPushMatrix();
 	glLoadIdentity();
@@ -342,26 +337,6 @@ void GRU::Window::Reshape()
 	glGetFloatv(GL_MODELVIEW_MATRIX, cameraProjectionMatrix);
 	glPopMatrix();
 
-
-
-
-
-
-
-
-	/*	glViewport(0, 0, width, height);
-
-		glMatrixMode(GL_PROJECTION);
-
-		glLoadIdentity();
-
-	//glOrtho(-80.0, 80.0, -80.0, 80.0, -500.0, 500.0);
-
-	gluPerspective(54.0, (GLdouble)width/(GLdouble)height, 1.0, 1000.0);
-
-	glMatrixMode(GL_MODELVIEW);
-
-	glLoadIdentity();*/
 }
 void GRU::Window::CallBackReshapeFunc(int w, int h)
 {
