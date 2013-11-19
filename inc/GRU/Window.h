@@ -49,6 +49,8 @@ namespace GRU
 
 
 			std::function<void()>	CallBackDisplay_;
+			std::function<void()>	CallBackDisplayOrtho_;
+
 			std::function<void()>	CallBackIdle_;
 
 
