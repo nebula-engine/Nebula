@@ -26,21 +26,23 @@ void NEB::Actor::Rigid_Static_Plane::Display()
 			glPushMatrix();
 			{
 
-				glScalef(10.0f, 0.1f, 10.0f);
+/*				glScalef(10.0f, 0.1f, 10.0f);
 	
 				glutSolidCube(1.0f);
-/*
-				glScalef(10.0f, 1.0f, 10.0f);
+
+*/
+
+				glScalef(100.0f, 1.0f, 100.0f);
 
 				glBegin(GL_QUADS);
 
 				glNormal3f( 0.0f, 1.0f,  0.0f);
 
-				glVertex3f(-0.5f, 0.0f,  0.5f);
-				glVertex3f(-0.5f, 0.0f, -0.5f);
-				glVertex3f( 0.5f, 0.0f, -0.5f);
 				glVertex3f( 0.5f, 0.0f,  0.5f);
-*/
+				glVertex3f( 0.5f, 0.0f, -0.5f);
+				glVertex3f(-0.5f, 0.0f, -0.5f);
+				glVertex3f(-0.5f, 0.0f,  0.5f);
+
 				glEnd();
 			}
 			glPopMatrix();
@@ -56,8 +58,8 @@ void NEB::Actor::Rigid_Static_Plane::Display()
 
 	glPushMatrix();
 
-	glMultMatrixf( mat.front() );
-	//glTranslatef(pose_.p.x, pose_.p.y, pose_.p.z);
+	//glMultMatrixf( mat.front() );
+	glTranslatef(-1.0 * pose_.p.x, -1.0 * pose_.p.y, -1.0 * pose_.p.z);
 	glCallList(list_);
 
 	glPopMatrix();
