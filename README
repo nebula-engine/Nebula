@@ -12,9 +12,13 @@ TODO
 
 # Stenciling
 
-#Fog
+# Fog
 
 # Curved Reflections
+
+# Classes for Rendering Objects
+
+Classes to contain data arrays for positions, normals, texture coordinates. Classes to hold textures. Classes for uniforms and attributes. Find on internet code to parse PLY files.
 
 ## Geometry Based Methods
 
