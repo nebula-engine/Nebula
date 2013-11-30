@@ -1,13 +1,13 @@
 
-#include <GRU/Master.h>
-#include <GRU/Window.h>
+#include <glutpp/master.h>
+#include <glutpp/window.h>
 
-GRU::Window * viewPorts[MAX_NUMBER_OF_WINDOWS]; 
+glutpp::window * viewPorts[MAX_NUMBER_OF_WINDOWS]; 
 
-int GRU::Master::currentIdleWindow   = 0;
-int GRU::Master::idleFunctionEnabled = 0;
+int glutpp::master::currentIdleWindow   = 0;
+int glutpp::master::idleFunctionEnabled = 0;
 
-GRU::Master::Master()
+glutpp::master::master()
 {
 	// Create dummy variables 
 	
@@ -19,16 +19,16 @@ GRU::Master::Master()
 	
 	glutInit( &dummy_argc, (char**)dummy_argv );
 }
-GRU::Master::~Master()
+glutpp::master::~master()
 {
 
 }
-void GRU::Master::CallBackDisplayFunc(void)
+void glutpp::master::CallBackDisplayFunc(void)
 {
 	int windowID = glutGetWindow();
 	viewPorts[windowID]->CallBackDisplayFunc();
 }
-void GRU::Master::CallBackIdleFunc(void)
+void glutpp::master::CallBackIdleFunc(void)
 {
 	if(idleFunctionEnabled && currentIdleWindow)
 	{
@@ -36,42 +36,42 @@ void GRU::Master::CallBackIdleFunc(void)
 		viewPorts[currentIdleWindow]->CallBackIdleFunc();
 	}
 }
-void GRU::Master::CallBackKeyboardFunc(unsigned char key, int x, int y)
+void glutpp::master::CallBackKeyboardFunc(unsigned char key, int x, int y)
 {
 	int windowID = glutGetWindow();
 	viewPorts[windowID]->CallBackKeyboardFunc(key, x, y);
 }
-void GRU::Master::CallBackMotionFunc(int x, int y)
+void glutpp::master::CallBackMotionFunc(int x, int y)
 {
 	int windowID = glutGetWindow();
 	viewPorts[windowID]->CallBackMotionFunc(x, y);
 }
-void GRU::Master::CallBackMouseFunc(int button, int state, int x, int y)
+void glutpp::master::CallBackMouseFunc(int button, int state, int x, int y)
 {
 	int windowID = glutGetWindow();
 	viewPorts[windowID]->CallBackMouseFunc(button, state, x, y);
 }
-void GRU::Master::CallBackPassiveMotionFunc(int x, int y)
+void glutpp::master::CallBackPassiveMotionFunc(int x, int y)
 {
 	int windowID = glutGetWindow();
 	viewPorts[windowID]->CallBackPassiveMotionFunc(x, y);
 }
-void GRU::Master::CallBackReshapeFunc(int w, int h)
+void glutpp::master::CallBackReshapeFunc(int w, int h)
 {
 	int windowID = glutGetWindow();
 	viewPorts[windowID]->CallBackReshapeFunc(w, h);
 }
-void GRU::Master::CallBackSpecialFunc(int key, int x, int y)
+void glutpp::master::CallBackSpecialFunc(int key, int x, int y)
 {
 	int windowID = glutGetWindow();
 	viewPorts[windowID]->CallBackSpecialFunc(key, x, y);
 }   
-void GRU::Master::CallBackVisibilityFunc(int visible)
+void glutpp::master::CallBackVisibilityFunc(int visible)
 {
 	int windowID = glutGetWindow();
 	viewPorts[windowID]->CallBackVisibilityFunc(visible);
 }
-void GRU::Master::CallGlutCreateWindow(char * setTitle, GRU::Window * glutWindow)
+void glutpp::master::CallGlutCreateWindow(char * setTitle, glutpp::window * glutWindow)
 {
 
 	// Open new window, record its windowID , 
@@ -81,7 +81,7 @@ void GRU::Master::CallGlutCreateWindow(char * setTitle, GRU::Window * glutWindow
 	glutWindow->SetWindowID(windowID);
 
 	// Store the address of new window in global array 
-	// so GRU::Master can send events to propoer callback functions.
+	// so glutpp::master can send events to propoer callback functions.
 
 	viewPorts[windowID] = glutWindow;
 
@@ -98,39 +98,39 @@ void GRU::Master::CallGlutCreateWindow(char * setTitle, GRU::Window * glutWindow
 	glutReshapeFunc(CallBackReshapeFunc); 
 	glutVisibilityFunc(CallBackVisibilityFunc);
 }
-void GRU::Master::CallGlutMainLoop(void)
+void glutpp::master::CallGlutMainLoop(void)
 {
 	glutMainLoop();
 }
 
-void GRU::Master::DisableIdleFunction(void)
+void glutpp::master::DisableIdleFunction(void)
 {
 	idleFunctionEnabled = 0;
 }
-void GRU::Master::EnableIdleFunction(void)
+void glutpp::master::EnableIdleFunction(void)
 {
 	idleFunctionEnabled = 1;
 }
-int GRU::Master::IdleFunctionEnabled(void)
+int glutpp::master::IdleFunctionEnabled(void)
 {
 	// Is idle function enabled?
 
 	return(idleFunctionEnabled);
 }
-int GRU::Master::IdleSetToCurrentWindow(void)
+int glutpp::master::IdleSetToCurrentWindow(void)
 {
 	// Is current idle window same as current window?
 
 	return( currentIdleWindow == glutGetWindow() );
 }
-void GRU::Master::SetIdleToCurrentWindow(void)
+void glutpp::master::SetIdleToCurrentWindow(void)
 {
 	currentIdleWindow = glutGetWindow();
 }
 
-namespace GRU
+namespace glutpp
 {
-	Master master;
+	master __master;
 }
 
 

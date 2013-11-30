@@ -1,16 +1,16 @@
-#ifndef __GRU_MASTER_H__
-#define __GRU_MASTER_H__
+#ifndef __GLUTPP_MASTER_H__
+#define __GLUTPP_MASTER_H__
 
 #include <GL/glut.h>
 
 
 #define MAX_NUMBER_OF_WINDOWS 256 
 
-namespace GRU
+namespace glutpp
 {
-	class Window;
+	class window;
 
-	class Master
+	class master
 	{
 		private:
 
@@ -29,10 +29,10 @@ namespace GRU
 
 		public:
 			
-			Master();
-			~Master();
+			master();
+			~master();
 
-			void  CallGlutCreateWindow(char * setTitle, GRU::Window * glutWindow);
+			void  CallGlutCreateWindow(char * setTitle, glutpp::window * glutWindow);
 			void  CallGlutMainLoop(void);
 
 			void  DisableIdleFunction(void);
@@ -43,7 +43,7 @@ namespace GRU
 			void  SetIdleToCurrentWindow(void);
 	};
 	
-	extern "C" Master master;
+	extern "C" master __master;
 }
 
 

@@ -1,46 +1,19 @@
 #include <string.h>
-
 #include <stdio.h>
 #include <GLee.h>
-
 #include <GL/glut.h>
 
-#include <GRU/Window.h>
+#include <math/color.h>
 
-
-VECTOR4D white(1.0f,1.0f,1.0f,1.0f);
-VECTOR4D black(0.0f,0.0f,0.0f,1.0f);
-
-enum cm
-{
-        COLOR_MATERIAL,
-        MATERIAL
-};
-int color_mode = MATERIAL;
-
-//Camera & light positions
-VECTOR3D cameraPosition(-10.0f, 10.0f, 10.0f);
-VECTOR3D lightPosition(  10.0f, 10.0f,-10.0f);
+#include <glutpp/window.h>
 
 //Size of shadow map
 const int shadowMapSize = 512;//512;
 
-//Textures
-GLuint shadowMapTexture;
-
-
-//Matrices
-
-bool shadow = true;
-bool ortho = true;
-
-
-GRU::Window::Window( GRU::Master * glutMaster,
-		int setWidth, int setHeight,
+glutpp::window::window(int setWidth, int setHeight,
 		int setInitPositionX, int setInitPositionY,
 		const char * title )
 {
-
 	width  = setWidth;               
 	height = setHeight;
 
@@ -51,11 +24,10 @@ GRU::Window::Window( GRU::Master * glutMaster,
 	glutInitWindowSize(width, height);
 	glutInitWindowPosition(initPositionX, initPositionY);
 
-	glutMaster->CallGlutCreateWindow( (char *)title, this );
+	glutpp::__master.CallGlutCreateWindow( (char *)title, this );
 
-
-
-
+	glViewport(0,0,width,height);
+	// implement ortho projection in math::mat44
 
 	//Check for necessary extensions
 	if(!GLEE_ARB_depth_texture || !GLEE_ARB_shadow)
@@ -107,10 +79,10 @@ GRU::Window::Window( GRU::Master * glutMaster,
 	glMaterialf(GL_FRONT, GL_SHININESS, 16.0f);
 
 	//Calculate & save matrices
-	update_camera_matrix(cameraPosition, VECTOR3D(0.0f,0.0f,0.0f), VECTOR3D(0.0f,1.0f,0.0f));
+	update_camera_matrix(cameraPosition, math::vec3(0.0f,0.0f,0.0f), math::vec3(0.0f,1.0f,0.0f));
 	update_light_matrix();
 }
-void	GRU::Window::update_camera_matrix(VECTOR3D eye,VECTOR3D center, VECTOR3D up)
+void	glutpp::window::update_camera_matrix(math::vec3 eye, math::vec3 center, math::vec3 up)
 {
 	glPushMatrix();
 	
@@ -118,16 +90,16 @@ void	GRU::Window::update_camera_matrix(VECTOR3D eye,VECTOR3D center, VECTOR3D up
 
 	gluPerspective(45.0f, (float)width/height, 1.0f, 100.0f);
 
-	glGetFloatv(GL_MODELVIEW_MATRIX, cameraProjectionMatrix);
+	glGetFloatv(GL_MODELVIEW_MATRIX, cam.proj);
 	
 	glLoadIdentity();
 	
-/*	VECTOR3D look = center - cameraPosition;
+/*	math::vec3 look = center - cameraPosition;
 	
-	VECTOR3D x(1.0f, 0.0f, 0.0f);
-	VECTOR3D y(0.0f, 1.0f, 0.0f);
+	math::vec3 x(1.0f, 0.0f, 0.0f);
+	math::vec3 y(0.0f, 1.0f, 0.0f);
 	
-	VECTOR3D up;
+	math::vec3 up;
 	
 	if(look.DotProduct(y) == 0.0f)
 	{
@@ -143,17 +115,17 @@ void	GRU::Window::update_camera_matrix(VECTOR3D eye,VECTOR3D center, VECTOR3D up
 			center.x, center.x, center.z,
 			up.x, up.y, up.z);
 
-	glGetFloatv(GL_MODELVIEW_MATRIX, cameraViewMatrix);
+	glGetFloatv(GL_MODELVIEW_MATRIX, cam.view);
 
 	glPopMatrix();
 }
-void	GRU::Window::update_light_matrix()
+void	glutpp::window::update_light_matrix()
 {
 	glPushMatrix();
 
 	glLoadIdentity();
 	gluPerspective(45.0f, 1.0f, 2.0f, 50.0f);
-	glGetFloatv(GL_MODELVIEW_MATRIX, lightProjectionMatrix);
+	glGetFloatv(GL_MODELVIEW_MATRIX, lit.cam.proj);
 
 	glLoadIdentity();
 	gluLookAt(
@@ -161,15 +133,15 @@ void	GRU::Window::update_light_matrix()
 			0.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f);
 
-	glGetFloatv(GL_MODELVIEW_MATRIX, lightViewMatrix);
+	glGetFloatv(GL_MODELVIEW_MATRIX, lit.cam.view);
 
 	glPopMatrix();
 }
-GRU::Window::~Window()
+glutpp::window::~window()
 {
 	glutDestroyWindow(windowID);
 }
-void GRU::Window::CallBackDisplayFunc(void)
+void glutpp::window::CallBackDisplayFunc(void)
 {
 
 
@@ -182,10 +154,10 @@ void GRU::Window::CallBackDisplayFunc(void)
 		glClear(GL_DEPTH_BUFFER_BIT);
 
 		glMatrixMode(GL_PROJECTION);
-		glLoadMatrixf(lightProjectionMatrix);
+		glLoadMatrixf(lit.cam.proj);
 
 		glMatrixMode(GL_MODELVIEW);
-		glLoadMatrixf(lightViewMatrix);
+		glLoadMatrixf(lit.cam.view);
 
 		//Use viewport the same size as the shadow map
 		glViewport(0, 0, shadowMapSize, shadowMapSize);
@@ -199,7 +171,7 @@ void GRU::Window::CallBackDisplayFunc(void)
 
 		//Draw the scene
 		//DrawScene(angle);
-		CallBackDisplay_();
+		Display();
 
 		//Read the depth buffer into the shadow map texture
 		glBindTexture(GL_TEXTURE_2D, shadowMapTexture);
@@ -219,15 +191,15 @@ void GRU::Window::CallBackDisplayFunc(void)
 
 
 	glMatrixMode(GL_PROJECTION);
-	glLoadMatrixf(cameraProjectionMatrix);
+	glLoadMatrixf(cam.proj);
 
 	glMatrixMode(GL_MODELVIEW);
-	glLoadMatrixf(cameraViewMatrix);
+	glLoadMatrixf(cam.view);
 
 	glViewport(0, 0, width, height);
 
 	//Use dim light to represent shadowed areas
-	glLightfv(GL_LIGHT1, GL_POSITION, VECTOR4D(lightPosition));
+	glLightfv(GL_LIGHT1, GL_POSITION, math::vec4(lightPosition));
 	glLightfv(GL_LIGHT1, GL_AMBIENT, white*0.2f);
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, white*0.2f);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, black);
@@ -235,7 +207,7 @@ void GRU::Window::CallBackDisplayFunc(void)
 	glEnable(GL_LIGHTING);
 
 	//DrawScene(angle);
-	CallBackDisplay_();
+	Display();
 
 
 
@@ -251,12 +223,12 @@ void GRU::Window::CallBackDisplayFunc(void)
 		//Calculate texture matrix for projection
 		//This matrix takes us from eye space to the light's clip space
 		//It is postmultiplied by the inverse of the current view matrix when specifying texgen
-		static MATRIX4X4 biasMatrix(0.5f, 0.0f, 0.0f, 0.0f,
+		static math::mat44 biasMatrix(0.5f, 0.0f, 0.0f, 0.0f,
 				0.0f, 0.5f, 0.0f, 0.0f,
 				0.0f, 0.0f, 0.5f, 0.0f,
 				0.5f, 0.5f, 0.5f, 1.0f);	//bias from [-1, 1] to [0, 1]
 
-		MATRIX4X4 textureMatrix=biasMatrix*lightProjectionMatrix*lightViewMatrix;
+		math::mat44 textureMatrix = biasMatrix * lit.cam.proj * lit.cam.view;
 
 		//Set up texture coordinate generation.
 		glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
@@ -294,7 +266,7 @@ void GRU::Window::CallBackDisplayFunc(void)
 	}
 
 	//DrawScene(angle);
-	CallBackDisplay_();
+	Display();
 
 	//Disable textures and texgen
 	glDisable(GL_TEXTURE_2D);
@@ -323,10 +295,7 @@ void GRU::Window::CallBackDisplayFunc(void)
 		glLoadIdentity();
 		
 		
-		if ( CallBackDisplayOrtho_ )
-		{
-			CallBackDisplayOrtho_();
-		}
+		DisplayOrtho();
 		
 		//Print text
 		//glRasterPos2f(-1.0f, 0.9f);
@@ -346,17 +315,20 @@ void GRU::Window::CallBackDisplayFunc(void)
 	glutPostRedisplay();
 
 }
-void GRU::Window::Reshape()
+void glutpp::window::Reshape()
 {
+	glViewport(0,0,width,height);
+	
 	//Update the camera's projection matrix
 	glPushMatrix();
 	glLoadIdentity();
 	gluPerspective(45.0f, (float)width / (float)height, 1.0f, 100.0f);
-	glGetFloatv(GL_MODELVIEW_MATRIX, cameraProjectionMatrix);
+	glGetFloatv(GL_MODELVIEW_MATRIX, cam.proj);
 	glPopMatrix();
 
+	CallBackDisplayFunc();
 }
-void GRU::Window::CallBackReshapeFunc(int w, int h)
+void glutpp::window::CallBackReshapeFunc(int w, int h)
 {
 	width = w;
 	height= h;
@@ -365,21 +337,18 @@ void GRU::Window::CallBackReshapeFunc(int w, int h)
 
 	CallBackDisplayFunc();
 }
-void GRU::Window::CallBackIdleFunc(void)
+void glutpp::window::CallBackIdleFunc(void)
 {
-	if( CallBackIdle_ )
-	{
-		CallBackIdle_();
-	}
+	Idle();
 
 	CallBackDisplayFunc();
 }
-void GRU::Window::StartSpinning()
+void glutpp::window::StartSpinning()
 {
-	GRU::master.SetIdleToCurrentWindow();
-	GRU::master.EnableIdleFunction();
+	glutpp::__master.SetIdleToCurrentWindow();
+	glutpp::__master.EnableIdleFunction();
 }
-void GRU::Window::CallBackKeyboardFunc(unsigned char key, int x, int y)
+void glutpp::window::CallBackKeyboardFunc(unsigned char key, int x, int y)
 {
 	printf("%s\n",__FUNCTION__);
 
@@ -397,35 +366,41 @@ void GRU::Window::CallBackKeyboardFunc(unsigned char key, int x, int y)
 
 	//key; x; y;                //dummy function
 }
-void GRU::Window::CallBackMotionFunc(int x, int y)
+void glutpp::window::CallBackMotionFunc(int x, int y)
 {
 	//x; y;                     //dummy function
 }
-void GRU::Window::CallBackMouseFunc(int button, int state, int x, int y)
+void glutpp::window::CallBackMouseFunc(int button, int state, int x, int y)
 {
 	//button; state; x; y;      //dummy function
 }
-void GRU::Window::CallBackPassiveMotionFunc(int x, int y)
+void glutpp::window::CallBackPassiveMotionFunc(int x, int y)
 {
 	//x; y;                     //dummy function
 }
-void GRU::Window::CallBackSpecialFunc(int key, int x, int y)
+void glutpp::window::CallBackSpecialFunc(int key, int x, int y)
 {
 	//key; x; y;
 }   
-void GRU::Window::CallBackVisibilityFunc(int visible)
+void glutpp::window::CallBackVisibilityFunc(int visible)
 {
 	//visible;                  //dummy function
 }
-void GRU::Window::SetWindowID(int newWindowID)
+void glutpp::window::SetWindowID(int newWindowID)
 {
 	windowID = newWindowID;
 }
-int GRU::Window::GetWindowID(void)
+int glutpp::window::GetWindowID(void)
 {
 	return( windowID );
 }
 
+void glutpp::window::Display()
+{}   
+void glutpp::window::DisplayOrtho()
+{}   
+void glutpp::window::Idle()
+{}   
 
 
 

@@ -4,24 +4,26 @@
 #include <functional>
 
 
-#include <Maths/MATRIX4X4.h>
-#include <Maths/VECTOR4D.h>
-#include <Maths/VECTOR3D.h>
+#include <math/mat44.h>
+#include <math/vec4.h>
+#include <math/vec3.h>
 
-#include <GRU/Master.h>
+#include <glutpp/camera.h>
+#include <glutpp/light.h>
+#include <glutpp/master.h>
 
 
-namespace GRU
+namespace glutpp
 {
-	class Window
+	class window
 	{
 		protected:
 
 			int          windowID;
 
 		public:
-			Window( GRU::Master* , int setWidth, int setHeight, int, int, const char * );
-			~Window();
+			window(int, int, int, int, const char * );
+			~window();
 
 			int			height;
 			int			width;
@@ -29,10 +31,11 @@ namespace GRU
 			int			initPositionY;
 
 
-			virtual void		StartSpinning();
+			void			StartSpinning();
+			void			CallBackDisplayFunc();
+			void			CallBackIdleFunc(void);
 
-			virtual void		CallBackDisplayFunc();
-			virtual void		CallBackIdleFunc(void);
+
 			virtual void		CallBackKeyboardFunc(unsigned char key, int x, int y);
 			virtual void		CallBackMotionFunc(int x, int y);
 			virtual void		CallBackMouseFunc(int button, int state, int x, int y);
@@ -46,22 +49,22 @@ namespace GRU
 
 			void			SetWindowID(int newWindowID);
 			int			GetWindowID(void);
+			
+			
+			virtual void		Display();
+			virtual void		DisplayOrtho();
+			virtual void		Idle();
 
 
-			std::function<void()>	CallBackDisplay_;
-			std::function<void()>	CallBackDisplayOrtho_;
+			//math::mat44		lightProjectionMatrix;
+			//math::mat44		lightViewMatrix;
+			//math::mat44		cameraProjectionMatrix;
+			//math::mat44		cameraViewMatrix;
+			
+			camera			cam;
+			light			lit;
 
-			std::function<void()>	CallBackIdle_;
-
-
-			MATRIX4X4		lightProjectionMatrix;
-			MATRIX4X4		lightViewMatrix;
-			MATRIX4X4		cameraProjectionMatrix;
-			MATRIX4X4		cameraViewMatrix;
-
-
-
-			void	update_camera_matrix(VECTOR3D eye,VECTOR3D center, VECTOR3D up);
+			void	update_camera_matrix(math::vec3 eye,math::vec3 center, math::vec3 up);
 			void	update_light_matrix();
 
 	};
