@@ -8,10 +8,10 @@
 #include <math/vec4.h>
 #include <math/vec3.h>
 
+#include <glutpp/texture.h>
 #include <glutpp/camera.h>
 #include <glutpp/light.h>
 #include <glutpp/master.h>
-
 
 namespace glutpp
 {
@@ -61,8 +61,11 @@ namespace glutpp
 			//math::mat44		cameraProjectionMatrix;
 			//math::mat44		cameraViewMatrix;
 			
-			camera			cam;
-			light			lit;
+			camera			camera_;
+			light			light_;
+
+			texture			texture_shadow_map_;
+			
 
 			void	update_camera_matrix(math::vec3 eye,math::vec3 center, math::vec3 up);
 			void	update_light_matrix();

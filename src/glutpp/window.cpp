@@ -5,6 +5,7 @@
 
 #include <math/color.h>
 
+#include <glutpp/free.h>
 #include <glutpp/window.h>
 
 //Size of shadow map
@@ -57,59 +58,50 @@ glutpp::window::window(int setWidth, int setHeight,
 	glEnable(GL_NORMALIZE);
 
 	//Create the shadow map texture
-	glGenTextures(1, &shadowMapTexture);
-	glBindTexture(GL_TEXTURE_2D, shadowMapTexture);
-	glTexImage2D(   GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, shadowMapSize, shadowMapSize, 0,
-			GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, NULL);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+	texture_shadow_map_.init(512,512);
 
-
-	if(color_mode==cm::COLOR_MATERIAL)
-	{
-		//Use the color as the ambient and diffuse material
-		glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-		glEnable(GL_COLOR_MATERIAL);
-	}
+	//Use the color as the ambient and diffuse material
+	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+	glEnable(GL_COLOR_MATERIAL);
 
 	//White specular material color, shininess 16
-	glMaterialfv(GL_FRONT, GL_SPECULAR, white);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, math::white);
 	glMaterialf(GL_FRONT, GL_SHININESS, 16.0f);
 
 	//Calculate & save matrices
-	update_camera_matrix(cameraPosition, math::vec3(0.0f,0.0f,0.0f), math::vec3(0.0f,1.0f,0.0f));
+	//camera_.pos = 
+	//matrix(cam.pos, math::vec3(0.0f,0.0f,0.0f), math::vec3(0.0f,1.0f,0.0f));
+	
 	update_light_matrix();
 }
 void	glutpp::window::update_camera_matrix(math::vec3 eye, math::vec3 center, math::vec3 up)
 {
 	glPushMatrix();
-	
+
 	glLoadIdentity();
 
 	gluPerspective(45.0f, (float)width/height, 1.0f, 100.0f);
 
 	glGetFloatv(GL_MODELVIEW_MATRIX, cam.proj);
-	
+
 	glLoadIdentity();
-	
-/*	math::vec3 look = center - cameraPosition;
-	
-	math::vec3 x(1.0f, 0.0f, 0.0f);
-	math::vec3 y(0.0f, 1.0f, 0.0f);
-	
-	math::vec3 up;
-	
-	if(look.DotProduct(y) == 0.0f)
-	{
+
+	/*	math::vec3 look = center - cameraPosition;
+
+		math::vec3 x(1.0f, 0.0f, 0.0f);
+		math::vec3 y(0.0f, 1.0f, 0.0f);
+
+		math::vec3 up;
+
+		if(look.DotProduct(y) == 0.0f)
+		{
 		up = x;
-	}
-	else
-	{
+		}
+		else
+		{
 		up = y;
-	}*/
-	
+		}*/
+
 	gluLookAt(
 			eye.x, eye.y, eye.z,
 			center.x, center.x, center.z,
@@ -143,10 +135,7 @@ glutpp::window::~window()
 }
 void glutpp::window::CallBackDisplayFunc(void)
 {
-
-
-
-	if(shadow)
+	if(shadow_)
 	{
 
 		//First pass - from light's point of view
@@ -175,7 +164,10 @@ void glutpp::window::CallBackDisplayFunc(void)
 
 		//Read the depth buffer into the shadow map texture
 		glBindTexture(GL_TEXTURE_2D, shadowMapTexture);
-		glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 0, 0, shadowMapSize, shadowMapSize);
+		glCopyTexSubImage2D(
+				GL_TEXTURE_2D,
+				0, 0, 0, 0, 0,
+				shadowMapSize, shadowMapSize);
 
 		//restore states
 		glCullFace(GL_BACK);
@@ -293,15 +285,15 @@ void glutpp::window::CallBackDisplayFunc(void)
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
 		glLoadIdentity();
-		
-		
+
+
 		DisplayOrtho();
-		
+
 		//Print text
 		//glRasterPos2f(-1.0f, 0.9f);
 		//for(unsigned int i=0; i<strlen(fpsString); ++i)
 		//	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, fpsString[i]);
-		
+
 		//reset matrices
 		glMatrixMode(GL_PROJECTION);
 		glPopMatrix();
@@ -318,7 +310,7 @@ void glutpp::window::CallBackDisplayFunc(void)
 void glutpp::window::Reshape()
 {
 	glViewport(0,0,width,height);
-	
+
 	//Update the camera's projection matrix
 	glPushMatrix();
 	glLoadIdentity();
