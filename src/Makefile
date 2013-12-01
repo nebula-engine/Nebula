@@ -78,7 +78,8 @@ ARFLAGS = cru
 libglutpp_a_AR = $(AR) $(ARFLAGS)
 libglutpp_a_LIBADD =
 am_libglutpp_a_OBJECTS = master.$(OBJEXT) window.$(OBJEXT) \
-	object.$(OBJEXT) shader.$(OBJEXT) program.$(OBJEXT)
+	object.$(OBJEXT) shader.$(OBJEXT) program.$(OBJEXT) \
+	camera.$(OBJEXT) light.$(OBJEXT) plane.$(OBJEXT)
 libglutpp_a_OBJECTS = $(am_libglutpp_a_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -126,7 +127,7 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LDFLAGS = 
 LIBOBJS = 
-LIBS = 
+LIBS = -lglutpp
 LTLIBOBJS = 
 MAKEINFO = ${SHELL} /home/charles/Programming/C++/glutpp/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
@@ -193,9 +194,21 @@ libglutpp_a_SOURCES = \
 		glutpp/window.h glutpp/window.cpp \
 		glutpp/object.h glutpp/object.cpp \
 		glutpp/shader.h glutpp/shader.cpp \
-		glutpp/program.h glutpp/program.cpp
+		glutpp/program.h glutpp/program.cpp \
+		glutpp/camera.h glutpp/camera.cpp \
+		glutpp/light.h glutpp/light.cpp \
+		glutpp/plane.h glutpp/plane.cpp
 
-nobase_include_HEADERS = glutpp/master.h glutpp/window.h glutpp/object.h
+nobase_include_HEADERS = \
+		glutpp/master.h \
+		glutpp/window.h \
+		glutpp/object.h \
+		glutpp/shader.h \
+		glutpp/program.h \
+		glutpp/camera.h \
+		glutpp/light.h \
+		glutpp/plane.h
+
 all: all-am
 
 .SUFFIXES:
@@ -271,8 +284,11 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/camera.Po
+include ./$(DEPDIR)/light.Po
 include ./$(DEPDIR)/master.Po
 include ./$(DEPDIR)/object.Po
+include ./$(DEPDIR)/plane.Po
 include ./$(DEPDIR)/program.Po
 include ./$(DEPDIR)/shader.Po
 include ./$(DEPDIR)/window.Po
@@ -360,6 +376,48 @@ program.obj: glutpp/program.cpp
 #	source='glutpp/program.cpp' object='program.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o program.obj `if test -f 'glutpp/program.cpp'; then $(CYGPATH_W) 'glutpp/program.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/program.cpp'; fi`
+
+camera.o: glutpp/camera.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT camera.o -MD -MP -MF $(DEPDIR)/camera.Tpo -c -o camera.o `test -f 'glutpp/camera.cpp' || echo '$(srcdir)/'`glutpp/camera.cpp
+	$(am__mv) $(DEPDIR)/camera.Tpo $(DEPDIR)/camera.Po
+#	source='glutpp/camera.cpp' object='camera.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o camera.o `test -f 'glutpp/camera.cpp' || echo '$(srcdir)/'`glutpp/camera.cpp
+
+camera.obj: glutpp/camera.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT camera.obj -MD -MP -MF $(DEPDIR)/camera.Tpo -c -o camera.obj `if test -f 'glutpp/camera.cpp'; then $(CYGPATH_W) 'glutpp/camera.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/camera.cpp'; fi`
+	$(am__mv) $(DEPDIR)/camera.Tpo $(DEPDIR)/camera.Po
+#	source='glutpp/camera.cpp' object='camera.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o camera.obj `if test -f 'glutpp/camera.cpp'; then $(CYGPATH_W) 'glutpp/camera.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/camera.cpp'; fi`
+
+light.o: glutpp/light.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT light.o -MD -MP -MF $(DEPDIR)/light.Tpo -c -o light.o `test -f 'glutpp/light.cpp' || echo '$(srcdir)/'`glutpp/light.cpp
+	$(am__mv) $(DEPDIR)/light.Tpo $(DEPDIR)/light.Po
+#	source='glutpp/light.cpp' object='light.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o light.o `test -f 'glutpp/light.cpp' || echo '$(srcdir)/'`glutpp/light.cpp
+
+light.obj: glutpp/light.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT light.obj -MD -MP -MF $(DEPDIR)/light.Tpo -c -o light.obj `if test -f 'glutpp/light.cpp'; then $(CYGPATH_W) 'glutpp/light.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/light.cpp'; fi`
+	$(am__mv) $(DEPDIR)/light.Tpo $(DEPDIR)/light.Po
+#	source='glutpp/light.cpp' object='light.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o light.obj `if test -f 'glutpp/light.cpp'; then $(CYGPATH_W) 'glutpp/light.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/light.cpp'; fi`
+
+plane.o: glutpp/plane.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT plane.o -MD -MP -MF $(DEPDIR)/plane.Tpo -c -o plane.o `test -f 'glutpp/plane.cpp' || echo '$(srcdir)/'`glutpp/plane.cpp
+	$(am__mv) $(DEPDIR)/plane.Tpo $(DEPDIR)/plane.Po
+#	source='glutpp/plane.cpp' object='plane.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o plane.o `test -f 'glutpp/plane.cpp' || echo '$(srcdir)/'`glutpp/plane.cpp
+
+plane.obj: glutpp/plane.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT plane.obj -MD -MP -MF $(DEPDIR)/plane.Tpo -c -o plane.obj `if test -f 'glutpp/plane.cpp'; then $(CYGPATH_W) 'glutpp/plane.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/plane.cpp'; fi`
+	$(am__mv) $(DEPDIR)/plane.Tpo $(DEPDIR)/plane.Po
+#	source='glutpp/plane.cpp' object='plane.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o plane.obj `if test -f 'glutpp/plane.cpp'; then $(CYGPATH_W) 'glutpp/plane.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/plane.cpp'; fi`
 install-nobase_includeHEADERS: $(nobase_include_HEADERS)
 	@$(NORMAL_INSTALL)
 	test -z "$(includedir)" || $(MKDIR_P) "$(DESTDIR)$(includedir)"

@@ -22,6 +22,12 @@ namespace glutpp
 			int          windowID;
 
 		public:
+			enum
+			{
+				SHADOWS = 1 << 0,
+				ORTHO = 1 << 1
+			};
+
 			window(int, int, int, int, const char * );
 			~window();
 
@@ -49,8 +55,8 @@ namespace glutpp
 
 			void			SetWindowID(int newWindowID);
 			int			GetWindowID(void);
-			
-			
+
+
 			virtual void		Display();
 			virtual void		DisplayOrtho();
 			virtual void		Idle();
@@ -60,16 +66,13 @@ namespace glutpp
 			//math::mat44		lightViewMatrix;
 			//math::mat44		cameraProjectionMatrix;
 			//math::mat44		cameraViewMatrix;
-			
+
 			camera			camera_;
 			light			light_;
 
 			texture			texture_shadow_map_;
-			
 
-			void	update_camera_matrix(math::vec3 eye,math::vec3 center, math::vec3 up);
-			void	update_light_matrix();
-
+			unsigned int		flags_;
 	};
 }
 

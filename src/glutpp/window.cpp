@@ -72,62 +72,8 @@ glutpp::window::window(int setWidth, int setHeight,
 	//camera_.pos = 
 	//matrix(cam.pos, math::vec3(0.0f,0.0f,0.0f), math::vec3(0.0f,1.0f,0.0f));
 	
-	update_light_matrix();
-}
-void	glutpp::window::update_camera_matrix(math::vec3 eye, math::vec3 center, math::vec3 up)
-{
-	glPushMatrix();
-
-	glLoadIdentity();
-
-	gluPerspective(45.0f, (float)width/height, 1.0f, 100.0f);
-
-	glGetFloatv(GL_MODELVIEW_MATRIX, cam.proj);
-
-	glLoadIdentity();
-
-	/*	math::vec3 look = center - cameraPosition;
-
-		math::vec3 x(1.0f, 0.0f, 0.0f);
-		math::vec3 y(0.0f, 1.0f, 0.0f);
-
-		math::vec3 up;
-
-		if(look.DotProduct(y) == 0.0f)
-		{
-		up = x;
-		}
-		else
-		{
-		up = y;
-		}*/
-
-	gluLookAt(
-			eye.x, eye.y, eye.z,
-			center.x, center.x, center.z,
-			up.x, up.y, up.z);
-
-	glGetFloatv(GL_MODELVIEW_MATRIX, cam.view);
-
-	glPopMatrix();
-}
-void	glutpp::window::update_light_matrix()
-{
-	glPushMatrix();
-
-	glLoadIdentity();
-	gluPerspective(45.0f, 1.0f, 2.0f, 50.0f);
-	glGetFloatv(GL_MODELVIEW_MATRIX, lit.cam.proj);
-
-	glLoadIdentity();
-	gluLookAt(
-			lightPosition.x, lightPosition.y, lightPosition.z,
-			0.0f, 0.0f, 0.0f,
-			0.0f, 1.0f, 0.0f);
-
-	glGetFloatv(GL_MODELVIEW_MATRIX, lit.cam.view);
-
-	glPopMatrix();
+	light_.camera_.eye_ = math::vec3(0,0,-10);
+	light_.camera_.update_matrix();
 }
 glutpp::window::~window()
 {
@@ -135,19 +81,18 @@ glutpp::window::~window()
 }
 void glutpp::window::CallBackDisplayFunc(void)
 {
-	if(shadow_)
+	if( flags_ & SHADOWS )
 	{
-
 		//First pass - from light's point of view
 		glClear(GL_COLOR_BUFFER_BIT);
 		glClear(GL_DEPTH_BUFFER_BIT);
-
+		
 		glMatrixMode(GL_PROJECTION);
-		glLoadMatrixf(lit.cam.proj);
-
+		glLoadMatrixf(light_.camera_.proj_);
+		
 		glMatrixMode(GL_MODELVIEW);
-		glLoadMatrixf(lit.cam.view);
-
+		glLoadMatrixf(light_.camera_.view_);
+		
 		//Use viewport the same size as the shadow map
 		glViewport(0, 0, shadowMapSize, shadowMapSize);
 
@@ -163,7 +108,7 @@ void glutpp::window::CallBackDisplayFunc(void)
 		Display();
 
 		//Read the depth buffer into the shadow map texture
-		glBindTexture(GL_TEXTURE_2D, shadowMapTexture);
+		texture_shadow_map_.bind();
 		glCopyTexSubImage2D(
 				GL_TEXTURE_2D,
 				0, 0, 0, 0, 0,
@@ -180,21 +125,20 @@ void glutpp::window::CallBackDisplayFunc(void)
 	//2nd pass - Draw from camera's point of view
 	glClear(GL_DEPTH_BUFFER_BIT);
 	glClear(GL_COLOR_BUFFER_BIT);//me
-
-
+	
 	glMatrixMode(GL_PROJECTION);
-	glLoadMatrixf(cam.proj);
-
+	glLoadMatrixf(camera_.proj_);
+	
 	glMatrixMode(GL_MODELVIEW);
-	glLoadMatrixf(cam.view);
-
+	glLoadMatrixf(camera_.view_);
+	
 	glViewport(0, 0, width, height);
 
 	//Use dim light to represent shadowed areas
-	glLightfv(GL_LIGHT1, GL_POSITION, math::vec4(lightPosition));
-	glLightfv(GL_LIGHT1, GL_AMBIENT, white*0.2f);
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, white*0.2f);
-	glLightfv(GL_LIGHT1, GL_SPECULAR, black);
+	glLightfv(GL_LIGHT1, GL_POSITION, math::vec4(light_.camera_.eye_));
+	glLightfv(GL_LIGHT1, GL_AMBIENT, math::white*0.2f);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, math::white*0.2f);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, math::black);
 	glEnable(GL_LIGHT1);
 	glEnable(GL_LIGHTING);
 
@@ -206,11 +150,11 @@ void glutpp::window::CallBackDisplayFunc(void)
 
 	//3rd pass
 	//Draw with bright light
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, white);
-	glLightfv(GL_LIGHT1, GL_SPECULAR, white);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, math::white);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, math::white);
 
 
-	if(shadow)
+	if( flags_ & SHADOWS )
 	{
 		//Calculate texture matrix for projection
 		//This matrix takes us from eye space to the light's clip space
@@ -220,7 +164,7 @@ void glutpp::window::CallBackDisplayFunc(void)
 				0.0f, 0.0f, 0.5f, 0.0f,
 				0.5f, 0.5f, 0.5f, 1.0f);	//bias from [-1, 1] to [0, 1]
 
-		math::mat44 textureMatrix = biasMatrix * lit.cam.proj * lit.cam.view;
+		math::mat44 textureMatrix = biasMatrix * light_.camera_.proj_ * light_.camera_.view_;
 
 		//Set up texture coordinate generation.
 		glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
@@ -240,12 +184,12 @@ void glutpp::window::CallBackDisplayFunc(void)
 		glEnable(GL_TEXTURE_GEN_Q);
 
 		//Bind & enable shadow map texture
-		glBindTexture(GL_TEXTURE_2D, shadowMapTexture);
+		texture_shadow_map_.bind();
 		glEnable(GL_TEXTURE_2D);
-
+		
 		//Enable shadow comparison
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE_ARB, GL_COMPARE_R_TO_TEXTURE);
-
+		
 		//Shadow comparison should be true (ie not in shadow) if r<=texture
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_FUNC_ARB, GL_LEQUAL);
 
@@ -272,9 +216,7 @@ void glutpp::window::CallBackDisplayFunc(void)
 	glDisable(GL_LIGHTING);
 	glDisable(GL_ALPHA_TEST);
 
-
-
-	if(ortho)
+	if( flags_ & ORTHO)
 	{
 		//Set matrices for ortho
 		glMatrixMode(GL_PROJECTION);
@@ -301,7 +243,6 @@ void glutpp::window::CallBackDisplayFunc(void)
 		glPopMatrix();
 	}
 
-
 	glFinish();
 	glutSwapBuffers();
 	glutPostRedisplay();
@@ -310,14 +251,9 @@ void glutpp::window::CallBackDisplayFunc(void)
 void glutpp::window::Reshape()
 {
 	glViewport(0,0,width,height);
-
-	//Update the camera's projection matrix
-	glPushMatrix();
-	glLoadIdentity();
-	gluPerspective(45.0f, (float)width / (float)height, 1.0f, 100.0f);
-	glGetFloatv(GL_MODELVIEW_MATRIX, cam.proj);
-	glPopMatrix();
-
+	
+	camera_.proj_.SetPerspective(45.0f, (float)width / (float)height, 1.0f, 100.0f);
+	
 	CallBackDisplayFunc();
 }
 void glutpp::window::CallBackReshapeFunc(int w, int h)
@@ -347,10 +283,10 @@ void glutpp::window::CallBackKeyboardFunc(unsigned char key, int x, int y)
 	switch(key)
 	{
 		case 's':
-			shadow = !shadow;
+			flags_ &= !SHADOWS;
 			break;
 		case 'o':
-			ortho = !ortho;
+			flags_ &= !ORTHO;
 			break;
 
 	}

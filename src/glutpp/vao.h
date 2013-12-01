@@ -9,6 +9,8 @@ namespace glutpp
 			void	init();
 			void	bind();
 			void	unbind();
+
+			GLuint	o_;
 	};
 }
 
