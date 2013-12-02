@@ -10,6 +10,10 @@
 
 #include <glutpp/free.h>
 #include <glutpp/window.h>
+#include <glutpp/object.h>
+#include <glutpp/light.h>
+
+
 
 void	check_error()
 {
@@ -23,20 +27,21 @@ glutpp::window::window(int setWidth, int setHeight,
 		int setInitPositionX, int setInitPositionY,
 		const char * title ):
 	flags_(0),
-	light_(GL_LIGHT0),
 	width(setWidth),
 	height(setHeight),
 	initPositionX(setInitPositionX),
 	initPositionY(setInitPositionY)
 {
-	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
+	glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE);
 	glutInitWindowSize(width, height);
 	glutInitWindowPosition(initPositionX, initPositionY);
 	
-	glEnable(GL_LIGHTING);
-	glEnable(light_.o_);
 
 	glutpp::__master.CallGlutCreateWindow( (char *)title, this );
+
+	glEnable(GL_LIGHTING);
+	
+	lights_enable();
 
 	//Check for necessary extensions
 	if(!GL_ARB_depth_texture || !GL_ARB_shadow)
@@ -50,19 +55,17 @@ glutpp::window::window(int setWidth, int setHeight,
 	//glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
 	//Depth states
-	/*
-	   glClearDepth(1.0f);
-	   glDepthFunc(GL_LEQUAL);
-	   */
 
+	glClearDepth(1.0f);
+	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_DEPTH_TEST);
-
+	glEnable(GL_CULL_FACE);
 
 	//We use glScale when drawing the scene
 	glEnable(GL_NORMALIZE);
 
 	//Create the shadow map texture
-	//texture_shadow_map_.init(512,512);
+
 
 	//Use the color as the ambient and diffuse material
 	//glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
@@ -72,91 +75,79 @@ glutpp::window::~window()
 {
 	glutDestroyWindow(windowID);
 }
+void	glutpp::window::lights_enable()
+{
+	for(auto it = objects_.begin(); it != objects_.end(); ++it )
+	{
+		object* o = *it;
+		if( o->type_ == glutpp::object::LIGHT )
+		{
+			light* l = (light*)o;
+			glEnable(l->o_);
+		}
+	};
+}
+void	glutpp::window::lights_updateGL()
+{
+	for(auto it = objects_.begin(); it != objects_.end(); ++it )
+	{
+		object* o = *it;
+		if( o->type_ == glutpp::object::LIGHT )
+		{
+			light* l = (light*)o;
+			l->updateGL();
+		}
+	};
+}
+void	glutpp::window::lights_dim()
+{
+	for(auto it = objects_.begin(); it != objects_.end(); ++it )
+	{
+		object* o = *it;
+		if( o->type_ == glutpp::object::LIGHT )
+		{
+			light* l = (light*)o;
+			l->dim();
+		}
+	};
+}
 void	glutpp::window::RenderLightPOV()
 {
-	//First pass - from light's point of view
-	glClear(GL_COLOR_BUFFER_BIT);
-	glClear(GL_DEPTH_BUFFER_BIT);
-
-	glMatrixMode(GL_PROJECTION);
-	glLoadMatrixf(light_.camera_.proj());
-
-	glMatrixMode(GL_MODELVIEW);
-	glLoadMatrixf(light_.camera_.view());
-
-	//Use viewport the same size as the shadow map
-	glViewport(0, 0, texture_shadow_map_.w_, texture_shadow_map_.h_);
-
-	//Draw back faces into the shadow map
-	glCullFace(GL_FRONT);
-
-	//Disable color writes, and use flat shading for speed
-	glShadeModel(GL_FLAT);
-	glColorMask(0, 0, 0, 0);
-
-	//Draw the scene
-	//DrawScene(angle);
-	Display();
-
-	//Read the depth buffer into the shadow map texture
-	texture_shadow_map_.bind();
-	glCopyTexSubImage2D(
-			GL_TEXTURE_2D,
-			0, 0, 0, 0, 0,
-			texture_shadow_map_.w_, texture_shadow_map_.h_);
-
-	//restore states
-	glCullFace(GL_BACK);
-	glShadeModel(GL_SMOOTH);
-	glColorMask(1, 1, 1, 1);
-
+	for(auto it = objects_.begin(); it != objects_.end(); ++it )
+	{
+		object* o = *it;
+		if( o->type_ == glutpp::object::LIGHT )
+		{
+			light* l = (light*)o;
+			l->RenderLightPOV();
+		}
+	};
 
 }
 void	glutpp::window::RenderShadow()
 {
-	//Calculate texture matrix for projection
-	//This matrix takes us from eye space to the light's clip space
-	//It is postmultiplied by the inverse of the current view matrix when specifying texgen
-	static math::mat44 biasMatrix(0.5f, 0.0f, 0.0f, 0.0f,
-			0.0f, 0.5f, 0.0f, 0.0f,
-			0.0f, 0.0f, 0.5f, 0.0f,
-			0.5f, 0.5f, 0.5f, 1.0f);	//bias from [-1, 1] to [0, 1]
+	for(auto it = objects_.begin(); it != objects_.end(); ++it )
+	{
+		object* o = *it;
+		if( o->type_ == glutpp::object::LIGHT )
+		{
+			light* l = (light*)o;
+			l->RenderShadow();
+		}
+	};
 
-	math::mat44 textureMatrix = biasMatrix * light_.camera_.proj() * light_.camera_.view();
-
-	//Set up texture coordinate generation.
-	glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
-	glTexGenfv(GL_S, GL_EYE_PLANE, textureMatrix.GetRow(0));
-	glEnable(GL_TEXTURE_GEN_S);
-
-	glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
-	glTexGenfv(GL_T, GL_EYE_PLANE, textureMatrix.GetRow(1));
-	glEnable(GL_TEXTURE_GEN_T);
-
-	glTexGeni(GL_R, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
-	glTexGenfv(GL_R, GL_EYE_PLANE, textureMatrix.GetRow(2));
-	glEnable(GL_TEXTURE_GEN_R);
-
-	glTexGeni(GL_Q, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
-	glTexGenfv(GL_Q, GL_EYE_PLANE, textureMatrix.GetRow(3));
-	glEnable(GL_TEXTURE_GEN_Q);
-
-	//Bind & enable shadow map texture
-	texture_shadow_map_.bind();
-	glEnable(GL_TEXTURE_2D);
-
-	//Enable shadow comparison
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE_ARB, GL_COMPARE_R_TO_TEXTURE);
-
-	//Shadow comparison should be true (ie not in shadow) if r<=texture
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_FUNC_ARB, GL_LEQUAL);
-
-	//Shadow comparison should generate an INTENSITY result
-	glTexParameteri(GL_TEXTURE_2D, GL_DEPTH_TEXTURE_MODE_ARB, GL_INTENSITY);
-
-	//Set alpha test to discard false comparisons
-	glAlphaFunc(GL_GEQUAL, 0.99f);
-	glEnable(GL_ALPHA_TEST);
+}
+void	glutpp::window::PostRenderShadow()
+{
+	for(auto it = objects_.begin(); it != objects_.end(); ++it )
+	{
+		object* o = *it;
+		if( o->type_ == glutpp::object::LIGHT )
+		{
+			light* l = (light*)o;
+			l->RenderShadowPost();
+		}
+	};
 
 }
 void	glutpp::window::RenderOrtho()
@@ -191,73 +182,10 @@ void	glutpp::window::RenderOrtho()
 }
 void	glutpp::window::RenderReflection()
 {
-
-	if(flags_ & PLANAR_REFLECTIONS_STENCIL)
+	for( auto it = objects_.begin(); it != objects_.end(); ++it )
 	{
-		/* We can eliminate the visual "artifact" of seeing the "flipped"
-		   dinosaur underneath the floor by using stencil.  The idea is
-		   draw the floor without color or depth update but so that 
-		   a stencil value of one is where the floor will be.  Later when
-		   rendering the dinosaur reflection, we will only update pixels
-		   with a stencil value of 1 to make sure the reflection only
-		   lives on the floor, not below the floor. */
-
-		/* Don't update color or depth. */
-		glDisable(GL_DEPTH_TEST);
-		glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-
-		/* Draw 1 into the stencil buffer. */
-		glEnable(GL_STENCIL_TEST);
-		glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
-		glStencilFunc(GL_ALWAYS, 1, 0xffffffff);
-
-		/* Now render floor; floor pixels just get their stencil set to 1. */
-		floor_.draw();
-
-		/* Re-enable update of color and depth. */
-		glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-		glEnable(GL_DEPTH_TEST);
-
-		/* Now, only render where stencil is set to 1. */
-		glStencilFunc(GL_EQUAL, 1, 0xffffffff);  /* draw if ==1 */
-		glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+		(*it)->render_reflection();
 	}
-
-	glPushMatrix();
-
-
-	/* The critical reflection step: Reflect dinosaur through the floor
-	   (the Y=0 plane) to make a relection. */
-	math::mat44 reflect;
-	reflect.SetReflection(floor_.plane_);
-	glLoadMatrixf(reflect);
-	//glScalef(1.0, -1.0, 1.0);
-
-	/* Reflect the light position. */
-	glLightfv(GL_LIGHT0, GL_POSITION, light_.camera_.eye_);
-
-	/* To avoid our normals getting reversed and hence botched lighting
-	   on the reflection, turn on normalize.  */
-	glEnable(GL_NORMALIZE);
-	glCullFace(GL_FRONT);
-
-	/* Draw the reflected dinosaur. */
-	Display();
-
-	/* Disable noramlize again and re-enable back face culling. */
-	glDisable(GL_NORMALIZE);
-	glCullFace(GL_BACK);
-
-	glPopMatrix();
-
-	/* Switch back to the unreflected light position. */
-	glLightfv(GL_LIGHT0, GL_POSITION, light_.camera_.eye_);
-
-	if(flags_ & PLANAR_REFLECTIONS_STENCIL)
-	{
-		glDisable(GL_STENCIL_TEST);
-	}
-
 }
 void	glutpp::window::PrepRenderCamera(glutpp::camera c)
 {
@@ -271,53 +199,40 @@ void	glutpp::window::PrepRenderCamera(glutpp::camera c)
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadMatrixf(proj);
+	//glLoadIdentity();
+	//gluPerspective(65.0f, (float)width/(float)height, 2.0f, 50.0f);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadMatrixf(view);	
+	//glLoadIdentity();
+	//gluLookAt(0,5,5,0,0,0,0,1,0);
 }
 void	glutpp::window::DisplayDim()
 {
-	glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHTING);
 
-	//Use dim light to represent shadowed areas
-	light_.ambient_ = math::white*0.2f;
-	light_.diffuse_ = math::white*0.2f;
-	light_.specular_ = math::black;
-	light_.updateGL();
+	lights_dim();
 
 	Display();
-}
-void	glutpp::window::PostRenderShadow()
-{
-	//Disable textures and texgen
-	glDisable(GL_TEXTURE_2D);
-
-	glDisable(GL_TEXTURE_GEN_S);
-	glDisable(GL_TEXTURE_GEN_T);
-	glDisable(GL_TEXTURE_GEN_R);
-	glDisable(GL_TEXTURE_GEN_Q);
-
 }
 void	glutpp::window::display_bright()
 {
 	//3rd pass: Draw with bright light
-	light_.diffuse_ = math::white;
-	light_.specular_ = math::white;
-	light_.updateGL();
+	lights_updateGL();
 
-	//if( flags_ & PLANAR_REFLECTIONS ) RenderReflection();
+	if( flags_ & PLANAR_REFLECTION ) RenderReflection();
 
-	//if( ( flags_ & SHADOWS ) && ( flags_ & SHADOWS_TEXTURE ) ) RenderShadow();
+	if( ( flags_ & SHADOW ) && ( flags_ & SHADOW_TEXTURE ) ) RenderShadow();
 
 	Display();
 
 	check_error();
 
-	//if( ( flags_ & SHADOWS ) && ( flags_ & SHADOWS_TEXTURE ) ) PostRenderShadow();
+	if( ( flags_ & SHADOW ) && ( flags_ & SHADOW_TEXTURE ) ) PostRenderShadow();
 }
-void glutpp::window::CallBackDisplayFunc(void)
+void glutpp::window::CallBackDisplayFunc()
 {
-	//if( ( flags_ & SHADOWS ) && ( flags_ & SHADOWS_TEXTURE ) ) RenderLightPOV();
+	if( ( flags_ & SHADOW ) && ( flags_ & SHADOW_TEXTURE ) ) RenderLightPOV();
 
 	//2nd pass - Draw from camera's point of view
 	glEnable(GL_LIGHTING);
@@ -326,11 +241,11 @@ void glutpp::window::CallBackDisplayFunc(void)
 
 	PrepRenderCamera(camera_);
 
-	//if( ( flags_ & SHADOWS ) && ( flags_ & SHADOWS_TEXTURE ) ) DisplayDim();
+	if( ( flags_ & SHADOW ) && ( flags_ & SHADOW_TEXTURE ) ) DisplayDim();
 
 	display_bright();
 
-	//if( flags_ & ORTHO) RenderOrtho();
+	if( flags_ & ORTHO) RenderOrtho();
 
 	glFinish();
 	glutSwapBuffers();
@@ -369,7 +284,7 @@ void glutpp::window::CallBackKeyboardFunc(unsigned char key, int x, int y)
 	switch(key)
 	{
 		case 's':
-			flags_ &= !SHADOWS;
+			flags_ &= !SHADOW;
 			break;
 		case 'o':
 			flags_ &= !ORTHO;
@@ -408,7 +323,19 @@ int glutpp::window::GetWindowID(void)
 }
 
 void glutpp::window::Display()
-{}   
+{
+	for( auto it = objects_.begin(); it != objects_.end(); ++it )
+	{
+		(*it)->draw();
+	}
+}
+void	glutpp::window::display_all_but(object* o)
+{
+	for( auto it = objects_.begin(); it != objects_.end(); ++it )
+	{
+		if( (*it) != o ) (*it)->draw();
+	}
+}     
 void glutpp::window::DisplayOrtho()
 {}   
 void glutpp::window::Idle()

@@ -14,9 +14,35 @@ namespace glutpp
 
 	};
 
+	class window;
 	class object
 	{
 		public:
+			enum
+			{
+				VAO = 1 << 0
+			};
+			enum
+			{
+				NONE = 0,
+				LIGHT,
+				PLANE
+			};
+			
+			object(window*);
+			GLuint		png_texture_load(const char *, int* , int*);
+			int		save(char const *);
+			int		load(char const *);
+			void		init_buffer(GLint);
+			virtual void	draw();
+			virtual void	render_reflection();
+
+
+
+			int		type_;
+			unsigned int	flgs_;
+
+
 			GLint location_position_;
 			GLint location_normal_;
 			GLint location_texcoor_;
@@ -39,14 +65,9 @@ namespace glutpp
 
 			GLushort*	vertex_indices_;
 
+			window*		window_;
 
 
-
-			GLuint	png_texture_load(const char *, int* , int*);
-			int	save(char const *);
-			int	load(char const *);
-			void	init_buffer(GLint);
-			void	draw();
 	};
 }
 

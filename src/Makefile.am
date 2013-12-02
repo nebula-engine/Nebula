@@ -9,8 +9,9 @@ libglutpp_a_SOURCES = \
 		glutpp/program.h glutpp/program.cpp \
 		glutpp/camera.h glutpp/camera.cpp \
 		glutpp/light.h glutpp/light.cpp \
-		glutpp/plane.h glutpp/plane.cpp
-	
+		glutpp/plane.h glutpp/plane.cpp \
+		glutpp/sphere.h glutpp/sphere.cpp
+
 nobase_include_HEADERS = \
 		glutpp/master.h \
 		glutpp/window.h \
@@ -20,7 +21,8 @@ nobase_include_HEADERS = \
 		glutpp/program.h \
 		glutpp/camera.h \
 		glutpp/light.h \
-		glutpp/plane.h
+		glutpp/plane.h \
+		glutpp/sphere.h
 
 CXXFLAGS = -std=c++0x
 LIBS = -lglutpp

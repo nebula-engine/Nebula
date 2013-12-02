@@ -2,7 +2,7 @@
 #define __GRU_WINDOW_H__
 
 #include <functional>
-
+#include <vector>
 
 #include <math/mat44.h>
 #include <math/vec4.h>
@@ -16,6 +16,7 @@
 
 namespace glutpp
 {
+	class object;
 	class window
 	{
 		protected:
@@ -25,11 +26,11 @@ namespace glutpp
 		public:
 			enum
 			{
-				SHADOWS				= 1 << 0,
-				SHADOWS_TEXTURE			= 1 << 1,
+				SHADOW				= 1 << 0,
+				SHADOW_TEXTURE			= 1 << 1,
 				ORTHO				= 1 << 2,
-				PLANAR_REFLECTIONS		= 1 << 3,
-				PLANAR_REFLECTIONS_STENCIL	= 1 << 4,
+				PLANAR_REFLECTION		= 1 << 3,
+				PLANAR_REFLECTION_STENCIL	= 1 << 4,
 			};
 
 			window(int, int, int, int, const char * );
@@ -63,13 +64,19 @@ namespace glutpp
 			void			PostRenderShadow();
 			void			display_bright();
 
+			void			lights_enable();
+			void			lights_updateGL();
+			void			lights_dim();
+			
 			void			Reshape();
 
 			void			SetWindowID(int newWindowID);
 			int			GetWindowID(void);
+			
+			
+			void			Display();
+			void			display_all_but(object*);
 
-
-			virtual void		Display();
 			virtual void		DisplayOrtho();
 			virtual void		Idle();
 
@@ -80,10 +87,10 @@ namespace glutpp
 			//math::mat44		cameraViewMatrix;
 
 			camera			camera_;
-			light			light_;
-			plane			floor_;
-
-			texture			texture_shadow_map_;
+			//light			light_;
+			//plane			floor_;
+			std::vector<object*>	objects_;
+			
 
 			unsigned int		flags_;
 	};

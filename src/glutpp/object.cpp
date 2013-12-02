@@ -9,6 +9,11 @@
 
 #include <glutpp/object.h>
 
+glutpp::object::object(window* window):
+	window_(window)
+{
+	type_ = NONE;
+}
 GLuint glutpp::object::png_texture_load(const char * file_name, int * width, int * height)
 {
 	png_byte header[8];
@@ -471,10 +476,8 @@ void glutpp::object::draw()
 	glDisableVertexAttribArray(location_texcoor_);
 
 	printf("draw\n");
-
-
 }
-
+void	glutpp::object::render_reflection(){}
 
 
 
