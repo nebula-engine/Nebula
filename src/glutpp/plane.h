@@ -9,13 +9,10 @@ namespace glutpp
 class plane
 {
         public:
-                plane():
-                        pose_(),
-                        plane_(math::vec3(0,1,0),0)
-        {}
-
+                plane();
                 void draw();
-
+		
+		
                 int useTexture;
 
 

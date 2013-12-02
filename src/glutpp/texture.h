@@ -15,9 +15,11 @@ namespace glutpp
 			texture();
 			~texture();
 			void			init(int,int);
-			void			load_png(char const *);
+			int			load_png(char const *);
 			void			bind();
-			
+
+			GLint			w_;
+			GLint			h_;
 			GLuint			o_;
 	};
 }

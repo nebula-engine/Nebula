@@ -12,6 +12,7 @@
 #include <glutpp/camera.h>
 #include <glutpp/light.h>
 #include <glutpp/master.h>
+#include <glutpp/plane.h>
 
 namespace glutpp
 {
@@ -24,8 +25,11 @@ namespace glutpp
 		public:
 			enum
 			{
-				SHADOWS = 1 << 0,
-				ORTHO = 1 << 1
+				SHADOWS				= 1 << 0,
+				SHADOWS_TEXTURE			= 1 << 1,
+				ORTHO				= 1 << 2,
+				PLANAR_REFLECTIONS		= 1 << 3,
+				PLANAR_REFLECTIONS_STENCIL	= 1 << 4,
 			};
 
 			window(int, int, int, int, const char * );
@@ -50,6 +54,14 @@ namespace glutpp
 			virtual void		CallBackSpecialFunc(int key, int x, int y);   
 			virtual void		CallBackVisibilityFunc(int visible);
 
+			void			PrepRenderCamera(glutpp::camera);
+			void			RenderLightPOV();
+			void			RenderShadow();
+			void			RenderOrtho();
+			void			RenderReflection();
+			void			DisplayDim();
+			void			PostRenderShadow();
+			void			display_bright();
 
 			void			Reshape();
 
@@ -69,6 +81,7 @@ namespace glutpp
 
 			camera			camera_;
 			light			light_;
+			plane			floor_;
 
 			texture			texture_shadow_map_;
 

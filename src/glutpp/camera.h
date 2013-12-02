@@ -10,14 +10,20 @@ namespace glutpp
 	class camera
 	{
 		public:
+			camera();
+			math::mat44	proj();
+			math::mat44	view();
+
+			float		fovy_;
+			float		zn_;
+			float		zf_;
+			int		w_;
+			int		h_;
+
 			math::vec4	eye_;
 			math::vec3	center_;
 			math::vec3	up_;
 
-			math::mat44	proj_;
-			math::mat44	view_;
-			
-			void		update_matrix();
 	};
 }
 

@@ -5,6 +5,7 @@ libglutpp_a_SOURCES = \
 		glutpp/window.h glutpp/window.cpp \
 		glutpp/object.h glutpp/object.cpp \
 		glutpp/shader.h glutpp/shader.cpp \
+		glutpp/texture.h glutpp/texture.cpp \
 		glutpp/program.h glutpp/program.cpp \
 		glutpp/camera.h glutpp/camera.cpp \
 		glutpp/light.h glutpp/light.cpp \
@@ -15,6 +16,7 @@ nobase_include_HEADERS = \
 		glutpp/window.h \
 		glutpp/object.h \
 		glutpp/shader.h \
+		glutpp/texture.h \
 		glutpp/program.h \
 		glutpp/camera.h \
 		glutpp/light.h \

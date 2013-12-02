@@ -2,7 +2,12 @@
 
 #include <glutpp/plane.h>
 
-void glutpp::plane::draw()
+glutpp::plane::plane():
+	plane_( math::vec3(0,1,0), 0 )
+{
+	
+}
+void	glutpp::plane::draw()
 {
         glDisable(GL_LIGHTING);
 

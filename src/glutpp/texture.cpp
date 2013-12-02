@@ -1,26 +1,33 @@
 #include <string.h>
 #include <stdio.h>
-#include <GLee.h>
+//#include <GLee.h>
 #include <GL/glut.h>
 
 #include <math/color.h>
 
 #include <glutpp/texture.h>
 
+#include <png.h>
+
 glutpp::texture::texture()
+{
+}
+glutpp::texture::~texture()
 {
 }
 void	glutpp::texture::init(int w,int h)
 {
+	w_ = w; h_ = h;
+
 	glGenTextures(1, &o_);
 	
-	glBindTexture(GL_TEXTURE_2D, o_);
+	bind();
 	
 	glTexImage2D(
 			GL_TEXTURE_2D,
 			0,
 			GL_DEPTH_COMPONENT,
-			shadowMapSize, shadowMapSize,
+			w_, h_,
 			0,
 			GL_DEPTH_COMPONENT,
 			GL_UNSIGNED_BYTE,
@@ -31,14 +38,18 @@ void	glutpp::texture::init(int w,int h)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 }
-void	glutpp::load_png(char const * filename)
+void	glutpp::texture::bind()
+{
+	glBindTexture(GL_TEXTURE_2D, o_);
+}
+int	glutpp::texture::load_png(char const * filename)
 {
 	png_byte header[8];
 
-	FILE *fp = fopen(file_name, "rb");
+	FILE *fp = fopen(filename, "rb");
 	if (fp == 0)
 	{
-		perror(file_name);
+		perror(filename);
 		return 0;
 	}
 
@@ -47,7 +58,7 @@ void	glutpp::load_png(char const * filename)
 
 	if (png_sig_cmp(header, 0, 8))
 	{
-		fprintf(stderr, "error: %s is not a PNG.\n", file_name);
+		fprintf(stderr, "error: %s is not a PNG.\n", filename);
 		fclose(fp);
 		return 0;
 	}
@@ -105,9 +116,9 @@ void	glutpp::load_png(char const * filename)
 	png_get_IHDR(png_ptr, info_ptr, &temp_width, &temp_height, &bit_depth, &color_type,
 			NULL, NULL, NULL);
 
-	if (width){ *width = temp_width; }
-	if (height){ *height = temp_height; }
-
+	w_ = temp_width;
+	h_ = temp_height;
+	
 	// Update the png info struct.
 	png_read_update_info(png_ptr, info_ptr);
 
