@@ -262,18 +262,17 @@ int	glutpp::object::save(const char * filename)
 	printf("normals:   %i elements, %i vectors\n",fh_.len_normals_,fh_.len_normals_/3);
 	printf("normals:   %i elements, %i vectors\n",fh_.len_normals_,fh_.len_normals_/3);
 	printf("indices:   %i elements\n",fh_.len_indices_);
-
-
+	
+	fh_.len_vertices_ = sizeof(vertices_)/sizeof(glutpp::vertex);
+	fh_.len_indices_ = sizeof(indices_)/sizeof(GLushort);
+	
 	// read header
 	fwrite(&fh_, sizeof(file_header), 1, fp);
-
-
-
-
-
+	
+	
 	// read positions
-	fwrite(vertex_positions_, sizeof(GLfloat), fh_.len_positions_, fp);
-
+	fwrite(vertices_, sizeof(glutpp::vertex), fh_.len_vertices_, fp);
+	
 	// read normals
 	fwrite(vertex_normals_, sizeof(GLfloat), fh_.len_normals_, fp);
 	// read normals
@@ -330,29 +329,6 @@ void glutpp::object::init_buffer(GLint program)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 */
 	// buffers
-	char const * attribute_name = "position";
-	location_position_ = glGetAttribLocation(program, attribute_name);
-	if(location_position_==-1)
-	{
-		fprintf(stderr, "Could not bind attribute '%s'\n", attribute_name);
-		exit(0);
-	}
-
-	attribute_name = "normal";
-	location_normal_ = 1;glGetAttribLocation(program, attribute_name);
-	if(location_normal_==-1)
-	{
-		fprintf(stderr, "Could not bind attribute '%s'\n", attribute_name);
-		exit(0);
-	}
-
-	attribute_name = "texcoor";
-	location_texcoor_ = glGetAttribLocation(program, attribute_name);
-	if(location_texcoor_==-1)
-	{
-		fprintf(stderr, "Could not bind attribute '%s'\n", attribute_name);
-		exit(0);
-	}
 
 
 	// position
@@ -409,6 +385,28 @@ void glutpp::object::init_buffer(GLint program)
 
 	checkerror("glBufferData");
 
+
+	
+	
+	glGenBuffers(1, &buff);
+
+	int baseOffset = 0;
+	glBindVertexBuffer(0, buff, baseOffset, sizeof(glutpp::vertex));
+
+	glVertexAttribFormat(uniform_position_.o_, 3, GL_FLOAT, GL_FALSE, offsetof(position, glutpp::vertex));
+	glVertexAttribBinding(loc_position_, 0);
+	glVertexAttribFormat(loc_normal_, 3, GL_FLOAT, GL_FALSE, offsetof(normal, glutpp::vertex));
+	glVertexAttribBinding(1, 0);
+	glVertexAttribFormat(loc_texcoor_, 4, GL_FLOAT, GL_FALSE, offsetof(texcoor, glutpp::vertex));
+	glVertexAttribBinding(2, 0);
+	
+	glBufferData(
+			GL_ARRAY_BUFFER,
+			size,
+			vertices,
+			GL_STATIC_DRAW);
+
+
 	//glBindBuffer(GL_ARRAY_BUFFER,0);
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
@@ -429,6 +427,13 @@ void glutpp::object::draw()
 	glEnableVertexAttribArray(location_texcoor_);
 
 	printf("draw\n");
+
+
+
+
+
+
+
 
 
 	// position

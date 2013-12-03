@@ -13,6 +13,8 @@ namespace glutpp
 			camera();
 			math::mat44	proj();
 			math::mat44	view();
+			void		load();
+			
 
 			float		fovy_;
 			float		zn_;

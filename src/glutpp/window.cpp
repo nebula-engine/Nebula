@@ -26,22 +26,22 @@ void	check_error()
 glutpp::window::window(int setWidth, int setHeight,
 		int setInitPositionX, int setInitPositionY,
 		const char * title ):
-	flags_(0),
 	width(setWidth),
 	height(setHeight),
 	initPositionX(setInitPositionX),
 	initPositionY(setInitPositionY)
 {
-	glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE);
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
+	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
 	glutInitWindowSize(width, height);
 	glutInitWindowPosition(initPositionX, initPositionY);
-	
 
 	glutpp::__master.CallGlutCreateWindow( (char *)title, this );
 
 	glEnable(GL_LIGHTING);
-	
-	lights_enable();
+
+	//lights_enable();
 
 	//Check for necessary extensions
 	if(!GL_ARB_depth_texture || !GL_ARB_shadow)
@@ -52,16 +52,15 @@ glutpp::window::window(int setWidth, int setHeight,
 
 	//Shading states
 	glShadeModel(GL_SMOOTH);
-	//glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
 	//Depth states
 
 	glClearDepth(1.0f);
 	glDepthFunc(GL_LEQUAL);
+
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
-
-	//We use glScale when drawing the scene
 	glEnable(GL_NORMALIZE);
 
 	//Create the shadow map texture
@@ -77,76 +76,52 @@ glutpp::window::~window()
 }
 void	glutpp::window::lights_enable()
 {
-	for(auto it = objects_.begin(); it != objects_.end(); ++it )
+	for(auto it = lights_.begin(); it != lights_.end(); ++it )
 	{
-		object* o = *it;
-		if( o->type_ == glutpp::object::LIGHT )
-		{
-			light* l = (light*)o;
-			glEnable(l->o_);
-		}
+		light* l = (light*)(*it);
+		glEnable(l->o_);
 	};
 }
 void	glutpp::window::lights_updateGL()
 {
-	for(auto it = objects_.begin(); it != objects_.end(); ++it )
+	for(auto it = lights_.begin(); it != lights_.end(); ++it )
 	{
-		object* o = *it;
-		if( o->type_ == glutpp::object::LIGHT )
-		{
-			light* l = (light*)o;
-			l->updateGL();
-		}
+		light* l = (light*)(*it);
+		l->updateGL();
 	};
 }
 void	glutpp::window::lights_dim()
 {
-	for(auto it = objects_.begin(); it != objects_.end(); ++it )
+	for(auto it = lights_.begin(); it != lights_.end(); ++it )
 	{
-		object* o = *it;
-		if( o->type_ == glutpp::object::LIGHT )
-		{
-			light* l = (light*)o;
-			l->dim();
-		}
+		light* l = (light*)(*it);
+		l->dim();
 	};
 }
 void	glutpp::window::RenderLightPOV()
 {
-	for(auto it = objects_.begin(); it != objects_.end(); ++it )
+	for(auto it = lights_.begin(); it != lights_.end(); ++it )
 	{
-		object* o = *it;
-		if( o->type_ == glutpp::object::LIGHT )
-		{
-			light* l = (light*)o;
-			l->RenderLightPOV();
-		}
+		light* l = (light*)(*it);
+		l->RenderLightPOV();
 	};
 
 }
 void	glutpp::window::RenderShadow()
 {
-	for(auto it = objects_.begin(); it != objects_.end(); ++it )
+	for(auto it = lights_.begin(); it != lights_.end(); ++it )
 	{
-		object* o = *it;
-		if( o->type_ == glutpp::object::LIGHT )
-		{
-			light* l = (light*)o;
-			l->RenderShadow();
-		}
+		light* l = (light*)(*it);
+		l->RenderShadow();
 	};
 
 }
 void	glutpp::window::PostRenderShadow()
 {
-	for(auto it = objects_.begin(); it != objects_.end(); ++it )
+	for(auto it = lights_.begin(); it != lights_.end(); ++it )
 	{
-		object* o = *it;
-		if( o->type_ == glutpp::object::LIGHT )
-		{
-			light* l = (light*)o;
-			l->RenderShadowPost();
-		}
+		light* l = (light*)(*it);
+		l->RenderShadowPost();
 	};
 
 }
@@ -220,32 +195,34 @@ void	glutpp::window::display_bright()
 	//3rd pass: Draw with bright light
 	lights_updateGL();
 
-	if( flags_ & PLANAR_REFLECTION ) RenderReflection();
+	if( isset( PLANAR_REFLECTION ) ) RenderReflection();
 
-	if( ( flags_ & SHADOW ) && ( flags_ & SHADOW_TEXTURE ) ) RenderShadow();
+	if( isset( SHADOW | SHADOW_TEXTURE ) ) RenderShadow();
 
 	Display();
 
 	check_error();
 
-	if( ( flags_ & SHADOW ) && ( flags_ & SHADOW_TEXTURE ) ) PostRenderShadow();
+	if( isset( SHADOW | SHADOW_TEXTURE ) ) PostRenderShadow();
 }
 void glutpp::window::CallBackDisplayFunc()
 {
-	if( ( flags_ & SHADOW ) && ( flags_ & SHADOW_TEXTURE ) ) RenderLightPOV();
+	if( isset( SHADOW | SHADOW_TEXTURE ) ) RenderLightPOV();
 
 	//2nd pass - Draw from camera's point of view
-	glEnable(GL_LIGHTING);
 	glClear(GL_DEPTH_BUFFER_BIT);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	PrepRenderCamera(camera_);
+	//PrepRenderCamera(camera_);
+	camera_.load();
+	
+	glEnable(GL_LIGHTING);
 
-	if( ( flags_ & SHADOW ) && ( flags_ & SHADOW_TEXTURE ) ) DisplayDim();
+	if( isset( SHADOW | SHADOW_TEXTURE ) ) DisplayDim();
 
 	display_bright();
 
-	if( flags_ & ORTHO) RenderOrtho();
+	if( isset(ORTHO) ) RenderOrtho();
 
 	glFinish();
 	glutSwapBuffers();
@@ -284,12 +261,16 @@ void glutpp::window::CallBackKeyboardFunc(unsigned char key, int x, int y)
 	switch(key)
 	{
 		case 's':
-			flags_ &= !SHADOW;
+			toggle( SHADOW );
 			break;
 		case 'o':
-			flags_ &= !ORTHO;
+			toggle( ORTHO );
 			break;
-
+		case 'r':
+			toggle( PLANAR_REFLECTION | PLANAR_REFLECTION_STENCIL );
+			break;
+		case 27:
+			exit(0);
 	}
 	//key; x; y;                //dummy function
 }

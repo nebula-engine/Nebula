@@ -8,6 +8,8 @@
 #include <math/vec4.h>
 #include <math/vec3.h>
 
+#include <gal/flag.h>
+
 #include <glutpp/texture.h>
 #include <glutpp/camera.h>
 #include <glutpp/light.h>
@@ -17,7 +19,8 @@
 namespace glutpp
 {
 	class object;
-	class window
+	class window:
+		public gal::flag
 	{
 		protected:
 
@@ -35,11 +38,6 @@ namespace glutpp
 
 			window(int, int, int, int, const char * );
 			~window();
-
-			int			height;
-			int			width;
-			int			initPositionX;
-			int			initPositionY;
 
 
 			void			StartSpinning();
@@ -63,36 +61,26 @@ namespace glutpp
 			void			DisplayDim();
 			void			PostRenderShadow();
 			void			display_bright();
-
 			void			lights_enable();
 			void			lights_updateGL();
 			void			lights_dim();
-			
 			void			Reshape();
-
 			void			SetWindowID(int newWindowID);
 			int			GetWindowID(void);
-			
-			
 			void			Display();
 			void			display_all_but(object*);
 
 			virtual void		DisplayOrtho();
 			virtual void		Idle();
 
-
-			//math::mat44		lightProjectionMatrix;
-			//math::mat44		lightViewMatrix;
-			//math::mat44		cameraProjectionMatrix;
-			//math::mat44		cameraViewMatrix;
+			int			height;
+			int			width;
+			int			initPositionX;
+			int			initPositionY;
 
 			camera			camera_;
-			//light			light_;
-			//plane			floor_;
+			std::vector<light*>	lights_;
 			std::vector<object*>	objects_;
-			
-
-			unsigned int		flags_;
 	};
 }
 

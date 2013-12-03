@@ -15,35 +15,35 @@ glutpp::plane::plane(window* window):
 }
 void	glutpp::plane::draw()
 {
-	printf("%s\n",__FUNCTION__);
+	printf("%s\n",__PRETTY_FUNCTION__);
 
 	//glDisable(GL_LIGHTING);
 
 	//if (useTexture) glEnable(GL_TEXTURE_2D);
-	
-	if(1)
+
+	if(0)
 	{
-	glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
-	
+
 	math::mat44 m;
 	m.SetCoordinateTransform(parallel_, plane_.n);
 	m.Invert();
-	
+
 	if(1)
 	{	
 		glPushMatrix();
 		{
 			//glMultMatrixf(pose_);
 
-			glMaterialfv(GL_FRONT,GL_DIFFUSE,math::vec4(1.0,1.0,0.0,0.5));
-			glMaterialfv(GL_FRONT,GL_AMBIENT,math::vec4(0.5,0.5,0.0,0.5));
+			glMaterialfv(GL_FRONT,GL_DIFFUSE,math::vec4(1.0,1.0,0.0,1.0));
+			glMaterialfv(GL_FRONT,GL_AMBIENT,math::vec4(0.5,0.5,0.5,1.0));
 			glMaterialfv(GL_FRONT,GL_SPECULAR,math::black);
-			
+
 			glMultMatrixf(m);
 
-			glScalef(10.0f,1.0f,10.0f);
+			glScalef(3.0f,1.0f,3.0f);
 
 			glBegin(GL_QUADS);
 			{
@@ -72,7 +72,7 @@ void	glutpp::plane::draw()
 }
 void	glutpp::plane::render_reflection()
 {
-	printf("%s\n",__FUNCTION__);
+	printf("%s\n",__PRETTY_FUNCTION__);
 
 	if( flags_ & PLANAR_REFLECTION_STENCIL )
 	{
@@ -121,10 +121,10 @@ void	glutpp::plane::render_reflection()
 		glCullFace(GL_FRONT);
 
 		window_->lights_updateGL();
-		
+
 		window_->display_all_but(this);
 		//window_->Display();
-		
+
 		/* Disable noramlize again and re-enable back face culling. */
 		glDisable(GL_NORMALIZE);
 		glCullFace(GL_BACK);

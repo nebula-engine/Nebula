@@ -1,11 +1,13 @@
 #include <stdio.h>
+#include <GL/gl.h>
+
 #include <glutpp/camera.h>
 
 glutpp::camera::camera():
 	eye_(0.0f, 0.0f, 5.0f, 0.0f),
 	center_(0.0f,0.0f,0.0f),
 	up_(0.0f,1.0f,0.0f),
-	fovy_(65.0f),
+	fovy_(45.0f),
 	zn_(2.0f),
 	zf_(100.0f),
 	w_(100),
@@ -31,4 +33,18 @@ math::mat44	glutpp::camera::proj()
 
 	return ret;
 }
+void		glutpp::camera::load()
+{
+	glViewport(0, 0, w_, h_);
+	
+	//proj.print();
+	//view.print();
 
+	glMatrixMode(GL_PROJECTION);
+	glLoadMatrixf(proj());
+	//glLoadIdentity();
+	//gluPerspective(65.0f, (float)width/(float)height, 2.0f, 50.0f);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadMatrixf(view());	
+}

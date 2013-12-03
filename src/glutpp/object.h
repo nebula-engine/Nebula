@@ -6,14 +6,18 @@ namespace glutpp
 
 	struct file_header
 	{
-		GLint len_positions_;
-		GLint len_normals_;
-		GLint len_texcoor_;
-
+		GLint len_vertices_;
 		GLint len_indices_;
-
 	};
-
+	
+	struct vertex
+	{
+		math::vec4	position;
+		math::vec3	normal;
+		math::vec2	texcoor;
+		math::vec4	color;
+	};
+	
 	class window;
 	class object
 	{
@@ -43,28 +47,22 @@ namespace glutpp
 			unsigned int	flgs_;
 
 
-			GLint location_position_;
-			GLint location_normal_;
-			GLint location_texcoor_;
+			//GLint location_position_;
+			//GLint location_normal_;
+			//GLint location_texcoor_;
 
-			GLint location_image_;
+			//GLint location_image_;
 
 			GLuint texture_image_;
 
-			GLuint buffer_position_;
-			GLuint buffer_normal_;
-			GLuint buffer_texcoor_;
-
-			GLuint buffer_indices_;
+			GLuint		vbo_;
+			GLuint		buffer_indices_;
 
 			file_header	fh_;
-
-			GLfloat*	vertex_positions_;
-			GLfloat*	vertex_normals_;
-			GLfloat*	vertex_texcoor_;
-
-			GLushort*	vertex_indices_;
-
+			
+			glutpp::vertex*	vertices_;
+			GLushort*	indices_;
+			
 			window*		window_;
 
 

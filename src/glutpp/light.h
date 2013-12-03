@@ -11,14 +11,14 @@
 
 namespace glutpp
 {
-	class light: public glutpp::object
+	class light
 	{
 		public:
 			enum
 			{
 				DIRECTIONAL = 1 << 0
 			};
-
+			
 			light(window*,GLenum);	
 			void		updateGL();
 			void		draw();
@@ -37,6 +37,7 @@ namespace glutpp
 			
 			texture		texture_shadow_map_;
 
+			window*		window_;
 			unsigned int	flags_;
 			GLenum		o_;
 	};
