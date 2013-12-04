@@ -10,7 +10,7 @@ namespace glutpp
 	class shader
 	{
 		public:
-			GLuint	load(const char * filename, GLenum shader_type);
+			void	load(const char * filename, GLenum shader_type);
 
 			GLuint	o_;
 	};

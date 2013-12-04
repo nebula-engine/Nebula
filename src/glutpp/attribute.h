@@ -6,10 +6,12 @@ namespace glutpp
 	class attribute
 	{
 		public:
-			attribute();
-
+			attribute(char const *);
+			void		enable();
+			void		disable();
+			
 			char const *	name_;
-			GLuint		location_;
+			GLuint		o_;
 	};
 }
 

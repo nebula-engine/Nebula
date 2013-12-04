@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdio.h>
-//#include <GLee.h>
+
+#include <GL/glew.h>
 #include <GL/glut.h>
 
 #include <math/color.h>

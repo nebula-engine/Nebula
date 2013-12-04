@@ -1,13 +1,16 @@
 #ifndef __GLUTPP_LIGHT_H__
 #define __GLUTPP_LIGHT_H__
 
-#include <GL/gl.h>
-
-#include <math/color.h>
+#include <GL/glew.h>
 
 #include <glutpp/object.h>
 #include <glutpp/camera.h>
 #include <glutpp/texture.h>
+
+
+
+#include <math/color.h>
+
 
 namespace glutpp
 {
@@ -19,7 +22,8 @@ namespace glutpp
 				DIRECTIONAL = 1 << 0
 			};
 			
-			light(window*,GLenum);	
+			light();
+			void		init(window*,GLenum);
 			void		updateGL();
 			void		draw();
 			void		dim();

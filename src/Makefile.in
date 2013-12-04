@@ -78,9 +78,9 @@ ARFLAGS = cru
 libglutpp_a_AR = $(AR) $(ARFLAGS)
 libglutpp_a_LIBADD =
 am_libglutpp_a_OBJECTS = master.$(OBJEXT) window.$(OBJEXT) \
-	object.$(OBJEXT) shader.$(OBJEXT) texture.$(OBJEXT) \
-	program.$(OBJEXT) camera.$(OBJEXT) light.$(OBJEXT) \
-	plane.$(OBJEXT) sphere.$(OBJEXT)
+	object.$(OBJEXT) shader.$(OBJEXT) uniform.$(OBJEXT) \
+	attribute.$(OBJEXT) texture.$(OBJEXT) program.$(OBJEXT) \
+	camera.$(OBJEXT) light.$(OBJEXT)
 libglutpp_a_OBJECTS = $(am_libglutpp_a_OBJECTS)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -113,6 +113,9 @@ CFLAGS = @CFLAGS@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
 CXXDEPMODE = @CXXDEPMODE@
+
+#glutpp/plane.h
+#glutpp/sphere.h
 CXXFLAGS = -std=c++0x
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
@@ -195,13 +198,16 @@ libglutpp_a_SOURCES = \
 		glutpp/window.h glutpp/window.cpp \
 		glutpp/object.h glutpp/object.cpp \
 		glutpp/shader.h glutpp/shader.cpp \
+		glutpp/uniform.h glutpp/uniform.cpp \
+		glutpp/attribute.h glutpp/attribute.cpp \
 		glutpp/texture.h glutpp/texture.cpp \
 		glutpp/program.h glutpp/program.cpp \
 		glutpp/camera.h glutpp/camera.cpp \
-		glutpp/light.h glutpp/light.cpp \
-		glutpp/plane.h glutpp/plane.cpp \
-		glutpp/sphere.h glutpp/sphere.cpp
+		glutpp/light.h glutpp/light.cpp
 
+
+#glutpp/plane.h glutpp/plane.cpp
+#glutpp/sphere.h glutpp/sphere.cpp
 nobase_include_HEADERS = \
 		glutpp/master.h \
 		glutpp/window.h \
@@ -209,10 +215,17 @@ nobase_include_HEADERS = \
 		glutpp/shader.h \
 		glutpp/texture.h \
 		glutpp/program.h \
+		glutpp/uniform.h \
+		glutpp/attribute.h \
 		glutpp/camera.h \
 		glutpp/light.h \
-		glutpp/plane.h \
-		glutpp/sphere.h
+		glutpp/shaders/prog1/vs.glsl \
+		glutpp/shaders/prog1/fs.glsl \
+		glutpp/shaders/exp_map/vs.glsl \
+		glutpp/shaders/exp_map/fs.glsl \
+		glutpp/shaders/prog3/vs.glsl \
+		glutpp/shaders/prog3/fs.glsl \
+		glutpp/objects/cube.obj
 
 all: all-am
 
@@ -289,15 +302,15 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/attribute.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/camera.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/light.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/master.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/object.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/plane.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/program.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shader.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sphere.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/texture.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/uniform.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/window.Po@am__quote@
 
 .cpp.o:
@@ -370,6 +383,34 @@ shader.obj: glutpp/shader.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o shader.obj `if test -f 'glutpp/shader.cpp'; then $(CYGPATH_W) 'glutpp/shader.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/shader.cpp'; fi`
 
+uniform.o: glutpp/uniform.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT uniform.o -MD -MP -MF $(DEPDIR)/uniform.Tpo -c -o uniform.o `test -f 'glutpp/uniform.cpp' || echo '$(srcdir)/'`glutpp/uniform.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/uniform.Tpo $(DEPDIR)/uniform.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='glutpp/uniform.cpp' object='uniform.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o uniform.o `test -f 'glutpp/uniform.cpp' || echo '$(srcdir)/'`glutpp/uniform.cpp
+
+uniform.obj: glutpp/uniform.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT uniform.obj -MD -MP -MF $(DEPDIR)/uniform.Tpo -c -o uniform.obj `if test -f 'glutpp/uniform.cpp'; then $(CYGPATH_W) 'glutpp/uniform.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/uniform.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/uniform.Tpo $(DEPDIR)/uniform.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='glutpp/uniform.cpp' object='uniform.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o uniform.obj `if test -f 'glutpp/uniform.cpp'; then $(CYGPATH_W) 'glutpp/uniform.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/uniform.cpp'; fi`
+
+attribute.o: glutpp/attribute.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT attribute.o -MD -MP -MF $(DEPDIR)/attribute.Tpo -c -o attribute.o `test -f 'glutpp/attribute.cpp' || echo '$(srcdir)/'`glutpp/attribute.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/attribute.Tpo $(DEPDIR)/attribute.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='glutpp/attribute.cpp' object='attribute.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o attribute.o `test -f 'glutpp/attribute.cpp' || echo '$(srcdir)/'`glutpp/attribute.cpp
+
+attribute.obj: glutpp/attribute.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT attribute.obj -MD -MP -MF $(DEPDIR)/attribute.Tpo -c -o attribute.obj `if test -f 'glutpp/attribute.cpp'; then $(CYGPATH_W) 'glutpp/attribute.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/attribute.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/attribute.Tpo $(DEPDIR)/attribute.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='glutpp/attribute.cpp' object='attribute.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o attribute.obj `if test -f 'glutpp/attribute.cpp'; then $(CYGPATH_W) 'glutpp/attribute.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/attribute.cpp'; fi`
+
 texture.o: glutpp/texture.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT texture.o -MD -MP -MF $(DEPDIR)/texture.Tpo -c -o texture.o `test -f 'glutpp/texture.cpp' || echo '$(srcdir)/'`glutpp/texture.cpp
 @am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/texture.Tpo $(DEPDIR)/texture.Po
@@ -425,34 +466,6 @@ light.obj: glutpp/light.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='glutpp/light.cpp' object='light.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o light.obj `if test -f 'glutpp/light.cpp'; then $(CYGPATH_W) 'glutpp/light.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/light.cpp'; fi`
-
-plane.o: glutpp/plane.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT plane.o -MD -MP -MF $(DEPDIR)/plane.Tpo -c -o plane.o `test -f 'glutpp/plane.cpp' || echo '$(srcdir)/'`glutpp/plane.cpp
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/plane.Tpo $(DEPDIR)/plane.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='glutpp/plane.cpp' object='plane.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o plane.o `test -f 'glutpp/plane.cpp' || echo '$(srcdir)/'`glutpp/plane.cpp
-
-plane.obj: glutpp/plane.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT plane.obj -MD -MP -MF $(DEPDIR)/plane.Tpo -c -o plane.obj `if test -f 'glutpp/plane.cpp'; then $(CYGPATH_W) 'glutpp/plane.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/plane.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/plane.Tpo $(DEPDIR)/plane.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='glutpp/plane.cpp' object='plane.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o plane.obj `if test -f 'glutpp/plane.cpp'; then $(CYGPATH_W) 'glutpp/plane.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/plane.cpp'; fi`
-
-sphere.o: glutpp/sphere.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sphere.o -MD -MP -MF $(DEPDIR)/sphere.Tpo -c -o sphere.o `test -f 'glutpp/sphere.cpp' || echo '$(srcdir)/'`glutpp/sphere.cpp
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/sphere.Tpo $(DEPDIR)/sphere.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='glutpp/sphere.cpp' object='sphere.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sphere.o `test -f 'glutpp/sphere.cpp' || echo '$(srcdir)/'`glutpp/sphere.cpp
-
-sphere.obj: glutpp/sphere.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sphere.obj -MD -MP -MF $(DEPDIR)/sphere.Tpo -c -o sphere.obj `if test -f 'glutpp/sphere.cpp'; then $(CYGPATH_W) 'glutpp/sphere.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/sphere.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/sphere.Tpo $(DEPDIR)/sphere.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='glutpp/sphere.cpp' object='sphere.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sphere.obj `if test -f 'glutpp/sphere.cpp'; then $(CYGPATH_W) 'glutpp/sphere.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/sphere.cpp'; fi`
 install-nobase_includeHEADERS: $(nobase_include_HEADERS)
 	@$(NORMAL_INSTALL)
 	test -z "$(includedir)" || $(MKDIR_P) "$(DESTDIR)$(includedir)"

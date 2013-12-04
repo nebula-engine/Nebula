@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <GL/gl.h>
+#include <GL/glew.h>
 
 #include <glutpp/window.h>
 #include <glutpp/plane.h>
 
 glutpp::plane::plane(window* window):
 	parallel_(1,0,0),
-	plane_( math::vec3(0,1,0), 0 ),
-	object(window)
+	plane_( math::vec3(0,1,0), 0 )
 {
 	flags_ |= PLANAR_REFLECTION_STENCIL;
 }
@@ -120,7 +119,7 @@ void	glutpp::plane::render_reflection()
 		glEnable(GL_NORMALIZE);
 		glCullFace(GL_FRONT);
 
-		window_->lights_updateGL();
+		window_->lights_for_each(&glutpp::light::updateGL);
 
 		window_->display_all_but(this);
 		//window_->Display();
@@ -132,7 +131,7 @@ void	glutpp::plane::render_reflection()
 	glPopMatrix();
 
 	/* Switch back to the unreflected light position. */
-	window_->lights_updateGL();
+	window_->lights_for_each(&glutpp::light::updateGL);
 	//glLightfv(GL_LIGHT0, GL_POSITION, light_.camera_.eye_);
 
 	if( flags_ & PLANAR_REFLECTION_STENCIL )

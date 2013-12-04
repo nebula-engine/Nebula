@@ -1,6 +1,7 @@
 #ifndef __GLUTPP_MASTER_H__
 #define __GLUTPP_MASTER_H__
 
+#include <GL/glew.h>
 #include <GL/glut.h>
 
 

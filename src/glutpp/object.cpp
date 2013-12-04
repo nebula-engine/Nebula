@@ -8,14 +8,24 @@
 #include <png.h>
 
 #include <glutpp/object.h>
+#include <glutpp/window.h>
 
-glutpp::object::object(window* window):
-	window_(window)
+glutpp::object::object():
+	attrib_position_("position"),
+	attrib_normal_("normal"),
+	attrib_texcoor_("texcoor"),
+	type_(NONE)
+{}
+void	glutpp::object::init(window* window)
 {
-	type_ = NONE;
+	printf("%s\n",__PRETTY_FUNCTION__);
+
+	window_ = window;
 }
 GLuint glutpp::object::png_texture_load(const char * file_name, int * width, int * height)
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	png_byte header[8];
 
 	FILE *fp = fopen(file_name, "rb");
@@ -170,19 +180,6 @@ void print_vectori(GLushort* v, unsigned int m, unsigned int n)
 	}
 
 }
-void checkerror(char const * msg)
-{
-	GLenum err = glGetError();
-	if(err != GL_NO_ERROR)
-	{
-		unsigned char const * str = gluErrorString(err);
-		printf("%s: %s\n",msg,str);
-		exit(0);
-	}
-
-
-}
-
 void readbuffer(GLuint buffer)
 {
 	GLfloat data[24*4];
@@ -193,9 +190,10 @@ void readbuffer(GLuint buffer)
 	glGetBufferSubData(GL_ARRAY_BUFFER, 0, 1*4*sizeof(GLfloat), data);
 	checkerror("glGetBufferSubData");
 }
-
 int	glutpp::object::load(const char * filename)
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	FILE * fp;
 
 	printf("load file '%s'\n",filename);
@@ -211,43 +209,27 @@ int	glutpp::object::load(const char * filename)
 	// read header
 	fread(&fh_, sizeof(file_header), 1, fp);
 
-	printf("positions: %i elements, %i vectors\n",fh_.len_positions_,fh_.len_positions_/4);
-	printf("normals:   %i elements, %i vectors\n",fh_.len_normals_,fh_.len_normals_/3);
-	printf("texcoor:   %i elements, %i vectors\n",fh_.len_texcoor_,fh_.len_texcoor_/2);
-
-	printf("indices:   %i elements\n",fh_.len_indices_);
+	printf("vertices: %i elements\n",fh_.len_vertices_);
+	printf("indices:  %i elements\n",fh_.len_indices_);
 
 	// allocate
-	vertex_positions_ = new GLfloat[fh_.len_positions_];
-	vertex_normals_ = new GLfloat[fh_.len_normals_];
-	vertex_texcoor_ = new GLfloat[fh_.len_texcoor_];
-
-	vertex_indices_ = new GLushort[fh_.len_indices_];
+	vertices_ = new glutpp::vertex[fh_.len_vertices_];
+	indices_ = new GLushort[fh_.len_indices_];
 
 
-	// read positions
-	fread(vertex_positions_, sizeof(GLfloat), fh_.len_positions_, fp);
-
-	// read normals
-	fread(vertex_normals_, sizeof(GLfloat), fh_.len_normals_, fp);
-	// read normals
-	fread(vertex_texcoor_, sizeof(GLfloat), fh_.len_texcoor_, fp);
-
-	// read indices
-	fread(vertex_indices_, sizeof(GLushort), fh_.len_indices_, fp);
+	fread(vertices_, sizeof(glutpp::vertex), fh_.len_vertices_, fp);
+	fread(indices_,  sizeof(GLushort),       fh_.len_indices_,  fp);
 
 	fclose(fp);
 
-
-	print_vector(vertex_positions_, fh_.len_positions_/4, 4);
-	print_vector(vertex_normals_, fh_.len_normals_/3, 3);
-	print_vector(vertex_texcoor_, fh_.len_texcoor_/2, 2);
-	print_vectori(vertex_indices_, fh_.len_indices_/3, 3);
+	init_buffer(window_->program_->o_);
 
 	return 0;
 }
 int	glutpp::object::save(const char * filename)
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	FILE * fp;
 
 	fp = fopen(filename, "wb");
@@ -258,205 +240,117 @@ int	glutpp::object::save(const char * filename)
 		return 0;
 	}
 
-	printf("positions: %i elements, %i vectors\n",fh_.len_positions_,fh_.len_positions_/4);
-	printf("normals:   %i elements, %i vectors\n",fh_.len_normals_,fh_.len_normals_/3);
-	printf("normals:   %i elements, %i vectors\n",fh_.len_normals_,fh_.len_normals_/3);
+	//fh_.len_vertices_ = sizeof(vertices_)/sizeof(glutpp::vertex);
+	//fh_.len_indices_ = sizeof(indices_)/sizeof(GLushort);
+
+	printf("sizeof(vertex): %i\n",(int)sizeof(glutpp::vertex));
 	printf("indices:   %i elements\n",fh_.len_indices_);
-	
-	fh_.len_vertices_ = sizeof(vertices_)/sizeof(glutpp::vertex);
-	fh_.len_indices_ = sizeof(indices_)/sizeof(GLushort);
-	
+	printf("vertices:  %i elements\n",fh_.len_vertices_);
+
 	// read header
 	fwrite(&fh_, sizeof(file_header), 1, fp);
-	
-	
-	// read positions
 	fwrite(vertices_, sizeof(glutpp::vertex), fh_.len_vertices_, fp);
-	
-	// read normals
-	fwrite(vertex_normals_, sizeof(GLfloat), fh_.len_normals_, fp);
-	// read normals
-	fwrite(vertex_texcoor_, sizeof(GLfloat), fh_.len_texcoor_, fp);
-
-	// read indices
-	fwrite(vertex_indices_, sizeof(GLushort), fh_.len_indices_, fp);
+	fwrite(indices_, sizeof(GLushort), fh_.len_indices_, fp);
 
 	fclose(fp);
 
 	return 0;
 }
-
 void glutpp::object::init_buffer(GLint program)
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	checkerror("unknown");
 
-	// attribute
-	location_image_ = glGetUniformLocation(program, "image");checkerror("glGetUniformLocation");
+	// attributes
 	
-	int w,h;
-	texture_image_ = png_texture_load("bigtux.png",&w,&h);
-
-
 	
-	// texture
-/*
-	glActiveTexture(GL_TEXTURE0);
-	glGenTextures(1, &texture_image_);checkerror("glGenTextures");
-	glBindTexture(GL_TEXTURE_2D, texture_image_);checkerror("glBindTexture");
 
-
-	// Black/white checkerboard
-	float pixels[] = {
-		1.0f, 0.0f, 0.0f,
-		1.0f, 1.0f, 1.0f,
-		1.0f, 1.0f, 1.0f,
-		1.0f, 0.0f, 0.0f
-	};
-
-	glTexImage2D(
-			GL_TEXTURE_2D,
-			0,
-			GL_RGB,
-			2, 2,
-			0,
-			GL_RGB,
-			GL_FLOAT,
-			pixels);checkerror("glTexImage2D");
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);checkerror("glTexParameteri");
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // Linear Filtering
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-*/
-	// buffers
-
-
-	// position
-	GLsizeiptr size = fh_.len_positions_ * sizeof(GLfloat);// sizeof(vertex_positions_);
-
-	glGenBuffers(1, &buffer_position_);
-	glBindBuffer(GL_ARRAY_BUFFER, buffer_position_);
-	glBufferData(
-			GL_ARRAY_BUFFER,
-			size,
-			vertex_positions_,
-			GL_DYNAMIC_DRAW);
-
-	printf("size: %i\n",(int)size);
-
-
-	checkerror("glBufferData");
-
-	// normal
-	size = fh_.len_normals_ * sizeof(GLfloat);
-
-	glGenBuffers(1, &buffer_normal_);
-	glBindBuffer(GL_ARRAY_BUFFER, buffer_normal_);
-	glBufferData(
-			GL_ARRAY_BUFFER,
-			size,
-			vertex_normals_,
-			GL_STATIC_DRAW);
-
-
-	// texcoor
-	size = fh_.len_texcoor_ * sizeof(GLfloat);
-
-	glGenBuffers(1, &buffer_texcoor_);
-	glBindBuffer(GL_ARRAY_BUFFER, buffer_texcoor_);
-	glBufferData(
-			GL_ARRAY_BUFFER,
-			size,
-			vertex_texcoor_,
-			GL_STATIC_DRAW);
-
-
-
-	// index
-	size = fh_.len_indices_ * sizeof(GLushort);
-
+	// image
+	uniform_image_.init(window_->program_->o_, "image");
+	texture_image_.load_png("bigtux.png");
+	
+	// indices
+	int size = fh_.len_indices_ * sizeof(GLushort);
+	
 	glGenBuffers(1, &buffer_indices_);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer_indices_);
 	glBufferData(
 			GL_ELEMENT_ARRAY_BUFFER,
 			size,
-			vertex_indices_,
+			indices_,
 			GL_STATIC_DRAW);
 
 	checkerror("glBufferData");
 
+	// vertices
 
-	
-	
-	glGenBuffers(1, &buff);
+	glGenBuffers(1, &vbo_);
 
 	int baseOffset = 0;
-	glBindVertexBuffer(0, buff, baseOffset, sizeof(glutpp::vertex));
+	glBindBuffer(GL_ARRAY_BUFFER, vbo_);
+	//glBindVertexBuffer(0, vbo_, baseOffset, sizeof(glutpp::vertex));
 
-	glVertexAttribFormat(uniform_position_.o_, 3, GL_FLOAT, GL_FALSE, offsetof(position, glutpp::vertex));
-	glVertexAttribBinding(loc_position_, 0);
-	glVertexAttribFormat(loc_normal_, 3, GL_FLOAT, GL_FALSE, offsetof(normal, glutpp::vertex));
-	glVertexAttribBinding(1, 0);
-	glVertexAttribFormat(loc_texcoor_, 4, GL_FLOAT, GL_FALSE, offsetof(texcoor, glutpp::vertex));
-	glVertexAttribBinding(2, 0);
+	glVertexAttribPointer(
+			attrib_position_.o_,
+			4,
+			GL_FLOAT,
+			GL_FALSE,
+			sizeof(glutpp::vertex),
+			offsetof(glutpp::vertex, position));
+	checkerror("glVertexAttribPointer");
 	
+	glVertexAttribPointer(
+			1/*attrib_normal_.o_*/,
+			4,
+			GL_FLOAT,
+			GL_FALSE,
+			sizeof(glutpp::vertex),
+			(void*)offsetof(glutpp::vertex, normal));
+	checkerror("glVertexAttribPointer normal");
+	
+	glVertexAttribPointer(
+			2/*attrib_texcoor_.o_*/,
+			4,
+			GL_FLOAT,
+			GL_FALSE,
+			sizeof(glutpp::vertex),
+			(void*)offsetof(glutpp::vertex, texcoor));
+	checkerror("glVertexAttribPointer texcoor");
+
 	glBufferData(
 			GL_ARRAY_BUFFER,
 			size,
-			vertices,
+			vertices_,
 			GL_STATIC_DRAW);
 
+	checkerror("glBufferData");
 
 	//glBindBuffer(GL_ARRAY_BUFFER,0);
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
-
-	printf("buffer positions: %i\n",buffer_position_);
-	printf("buffer normals:   %i\n",buffer_normal_);
-	printf("buffer texcoor:   %i\n",buffer_texcoor_);
-	printf("buffer indices:   %i\n",buffer_indices_);
-	printf("texture image:    %i\n",texture_image_);
-
 }
 void glutpp::object::draw()
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
+	checkerror("unknown");
+	
+	attrib_position_.enable();
+	attrib_normal_.enable();
+	attrib_texcoor_.enable();
+
 	printf("draw\n");
 
-	glEnableVertexAttribArray(location_position_);
-	glEnableVertexAttribArray(location_normal_);
-	glEnableVertexAttribArray(location_texcoor_);
-
-	printf("draw\n");
-
-
-
-
-
-
-
-
-
-	// position
-	glBindBuffer(GL_ARRAY_BUFFER, buffer_position_);checkerror("glBindBuffer");
-	glVertexAttribPointer(location_position_, 4, GL_FLOAT, GL_FALSE, 0, 0);
-
-	//checkerror();
-
-	// normal
-	glBindBuffer(GL_ARRAY_BUFFER, buffer_normal_);
-	glVertexAttribPointer(location_normal_, 3, GL_FLOAT, GL_FALSE, 0, 0);
-
-	// texcoor
-	glBindBuffer(GL_ARRAY_BUFFER, buffer_texcoor_);
-	glVertexAttribPointer(location_texcoor_, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
+	// vertices
+	glBindBuffer(GL_ARRAY_BUFFER, vbo_); checkerror("glBindBuffer");
 
 	// texture
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, texture_image_);
-	glUniform1i(location_image_, 0);
+	texture_image_.bind();
+	glUniform1i(texture_image_.o_, 0);
 
-	// element
+	// indices
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer_indices_);
 
 	//checkerror();
@@ -476,9 +370,9 @@ void glutpp::object::draw()
 
 	printf("draw\n");
 
-	glDisableVertexAttribArray(location_position_);
-	glDisableVertexAttribArray(location_normal_);
-	glDisableVertexAttribArray(location_texcoor_);
+	attrib_position_.disable();
+	attrib_normal_.disable();
+	attrib_texcoor_.disable();
 
 	printf("draw\n");
 }

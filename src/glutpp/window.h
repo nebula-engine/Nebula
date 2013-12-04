@@ -4,17 +4,24 @@
 #include <functional>
 #include <vector>
 
+#include <glutpp/texture.h>
+#include <glutpp/camera.h>
+#include <glutpp/light.h>
+#include <glutpp/master.h>
+#include <glutpp/plane.h>
+#include <glutpp/program.h>
+#include <glutpp/shader.h>
+
+
+
 #include <math/mat44.h>
 #include <math/vec4.h>
 #include <math/vec3.h>
 
 #include <gal/flag.h>
 
-#include <glutpp/texture.h>
-#include <glutpp/camera.h>
-#include <glutpp/light.h>
-#include <glutpp/master.h>
-#include <glutpp/plane.h>
+
+#define LIGHTS_MAX 20
 
 namespace glutpp
 {
@@ -38,8 +45,7 @@ namespace glutpp
 
 			window(int, int, int, int, const char * );
 			~window();
-
-
+			
 			void			StartSpinning();
 			void			CallBackDisplayFunc();
 			void			CallBackIdleFunc(void);
@@ -54,16 +60,14 @@ namespace glutpp
 			virtual void		CallBackVisibilityFunc(int visible);
 
 			void			PrepRenderCamera(glutpp::camera);
-			void			RenderLightPOV();
-			void			RenderShadow();
+			//void			RenderLightPOV();
+			//void			RenderShadow();
 			void			RenderOrtho();
 			void			RenderReflection();
 			void			DisplayDim();
-			void			PostRenderShadow();
+			//void			PostRenderShadow();
 			void			display_bright();
-			void			lights_enable();
-			void			lights_updateGL();
-			void			lights_dim();
+			void			lights_for_each(std::function<void(glutpp::light*)>);
 			void			Reshape();
 			void			SetWindowID(int newWindowID);
 			int			GetWindowID(void);
@@ -79,10 +83,19 @@ namespace glutpp
 			int			initPositionY;
 
 			camera			camera_;
+			
 			std::vector<light*>	lights_;
+			std::vector<texture*>	shadow_maps_;
+
+			shader*			shaders_;
+			program*		program_;
+		
+
 			std::vector<object*>	objects_;
 	};
 }
+
+void	checkerror(char const *);
 
 #endif
 

@@ -12,8 +12,8 @@
 #include <glutpp/window.h>
 #include <glutpp/object.h>
 #include <glutpp/light.h>
-
-
+#include <glutpp/shader.h>
+#include <glutpp/program.h>
 
 void	check_error()
 {
@@ -39,6 +39,26 @@ glutpp::window::window(int setWidth, int setHeight,
 
 	glutpp::__master.CallGlutCreateWindow( (char *)title, this );
 
+	GLenum err = glewInit();
+	if (err != GLEW_OK)
+	{
+		fprintf(stderr, "GLEW Error: %s\n", glewGetErrorString(err));
+		exit(1);
+	}
+	
+	if (!GLEW_VERSION_2_1)
+	{
+		printf("wrong glew version\n");
+		exit(1);
+	}
+
+	//CheckExt();
+
+	printf("%s\n",glGetString(GL_SHADING_LANGUAGE_VERSION));
+
+
+
+
 	glEnable(GL_LIGHTING);
 
 	//lights_enable();
@@ -63,67 +83,39 @@ glutpp::window::window(int setWidth, int setHeight,
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_NORMALIZE);
 
-	//Create the shadow map texture
 
+	// shaders
+	shaders_ = new shader[2];
+	program_ = new program;
+	
+	shaders_[0].load("/home/charles/usr/include/glutpp/shaders/prog1/vs.glsl", GL_VERTEX_SHADER);
+	shaders_[1].load("/home/charles/usr/include/glutpp/shaders/prog1/fs.glsl", GL_FRAGMENT_SHADER);
+	
+	program_->init();
+	program_->add_shader(shaders_+0);
+	program_->add_shader(shaders_+1);
+	program_->compile();
+	program_->use();
+	
+	//Create the shadow map texture
+	
 
 	//Use the color as the ambient and diffuse material
 	//glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 	//glEnable(GL_COLOR_MATERIAL);
+	
+	checkerror("dadas");
 }
 glutpp::window::~window()
 {
 	glutDestroyWindow(windowID);
 }
-void	glutpp::window::lights_enable()
+void	glutpp::window::lights_for_each(std::function<void(glutpp::light*)> func)
 {
-	for(auto it = lights_.begin(); it != lights_.end(); ++it )
+	for(int i = 0; i < lights_.size(); ++i)
 	{
-		light* l = (light*)(*it);
-		glEnable(l->o_);
-	};
-}
-void	glutpp::window::lights_updateGL()
-{
-	for(auto it = lights_.begin(); it != lights_.end(); ++it )
-	{
-		light* l = (light*)(*it);
-		l->updateGL();
-	};
-}
-void	glutpp::window::lights_dim()
-{
-	for(auto it = lights_.begin(); it != lights_.end(); ++it )
-	{
-		light* l = (light*)(*it);
-		l->dim();
-	};
-}
-void	glutpp::window::RenderLightPOV()
-{
-	for(auto it = lights_.begin(); it != lights_.end(); ++it )
-	{
-		light* l = (light*)(*it);
-		l->RenderLightPOV();
-	};
-
-}
-void	glutpp::window::RenderShadow()
-{
-	for(auto it = lights_.begin(); it != lights_.end(); ++it )
-	{
-		light* l = (light*)(*it);
-		l->RenderShadow();
-	};
-
-}
-void	glutpp::window::PostRenderShadow()
-{
-	for(auto it = lights_.begin(); it != lights_.end(); ++it )
-	{
-		light* l = (light*)(*it);
-		l->RenderShadowPost();
-	};
-
+		func(lights_.at(i));
+	}
 }
 void	glutpp::window::RenderOrtho()
 {
@@ -186,28 +178,28 @@ void	glutpp::window::DisplayDim()
 {
 	//glEnable(GL_LIGHTING);
 
-	lights_dim();
+	lights_for_each(&glutpp::light::dim);
 
 	Display();
 }
 void	glutpp::window::display_bright()
 {
 	//3rd pass: Draw with bright light
-	lights_updateGL();
+	lights_for_each(&glutpp::light::updateGL);
 
 	if( isset( PLANAR_REFLECTION ) ) RenderReflection();
 
-	if( isset( SHADOW | SHADOW_TEXTURE ) ) RenderShadow();
+	if( isset( SHADOW | SHADOW_TEXTURE ) ) lights_for_each(&glutpp::light::RenderShadow);
 
 	Display();
 
 	check_error();
 
-	if( isset( SHADOW | SHADOW_TEXTURE ) ) PostRenderShadow();
+	if( isset( SHADOW | SHADOW_TEXTURE ) ) lights_for_each(&glutpp::light::RenderShadowPost);
 }
 void glutpp::window::CallBackDisplayFunc()
 {
-	if( isset( SHADOW | SHADOW_TEXTURE ) ) RenderLightPOV();
+	if( isset( SHADOW | SHADOW_TEXTURE ) ) lights_for_each(&glutpp::light::RenderLightPOV);
 
 	//2nd pass - Draw from camera's point of view
 	glClear(GL_DEPTH_BUFFER_BIT);
@@ -215,7 +207,7 @@ void glutpp::window::CallBackDisplayFunc()
 
 	//PrepRenderCamera(camera_);
 	camera_.load();
-	
+
 	glEnable(GL_LIGHTING);
 
 	if( isset( SHADOW | SHADOW_TEXTURE ) ) DisplayDim();
@@ -323,6 +315,18 @@ void glutpp::window::Idle()
 {}   
 
 
+void checkerror(char const * msg)
+{
+	GLenum err = glGetError();
+	if(err != GL_NO_ERROR)
+	{
+		unsigned char const * str = gluErrorString(err);
+		printf("%s: %s\n",msg,str);
+		exit(0);
+	}
+
+
+}
 
 
 

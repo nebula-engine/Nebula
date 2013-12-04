@@ -1,17 +1,38 @@
+#include <stdio.h>
 
+#include <glutpp/window.h>
+#include <glutpp/attribute.h>
 
 glutpp::attribute::attribute(char const * name):
 	name_(name)
 {
-	GLuint program;
-	glGetIntegerv(GL_CURRENT_PROGRAM,&program)
+	printf("attribute %s\n",name_);
+
+	GLint program;
+	glGetIntegerv(GL_CURRENT_PROGRAM,&program);
+
+	printf("program %i\n",program);
 	
-	location_ = glGetAttribLocation(program, name_);
-	if(location_position_ == -1)
+	o_ = glGetAttribLocation(program, name_);
+	
+	checkerror("glGetAttribLocation");
+	
+	if(o_ == -1)
 	{
-		fprintf(stderr, "Could not find attribute '%s'\n", name_);
-		exit(0);
+		printf("could not find attribute '%s'\n", name_);
+		//exit(0);
 	}
 }
-
+void	glutpp::attribute::enable()
+{
+	glEnableVertexAttribArray(o_);
+	
+	checkerror("glEnableVertexAttribArray");
+}
+void	glutpp::attribute::disable()
+{
+	glDisableVertexAttribArray(o_);
+	
+	checkerror("glDisableVertexAttribArray");
+}
 

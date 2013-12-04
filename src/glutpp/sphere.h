@@ -11,7 +11,7 @@ namespace glutpp
 	class sphere: public object
 	{
 		public:
-			sphere(window*);
+			sphere();
 			void	draw();
 
 	};

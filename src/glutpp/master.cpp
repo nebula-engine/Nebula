@@ -1,3 +1,4 @@
+#include <stdio.h>
 
 #include <glutpp/master.h>
 #include <glutpp/window.h>
@@ -10,14 +11,17 @@ int glutpp::master::idleFunctionEnabled = 0;
 glutpp::master::master()
 {
 	// Create dummy variables 
-	
+
 	const char * dummy_argv[1];
 	dummy_argv[0] = "run";
 	int dummy_argc = 1;
-	
+
 	// Initialize GLUT
-	
+
 	glutInit( &dummy_argc, (char**)dummy_argv );
+
+
+
 }
 glutpp::master::~master()
 {

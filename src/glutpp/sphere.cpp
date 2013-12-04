@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <GL/gl.h>
+#include <GL/glew.h>
 
 #include <glutpp/window.h>
 #include <glutpp/sphere.h>
 
-glutpp::sphere::sphere(window* window):
-	object(window)
+glutpp::sphere::sphere()
 {
 
 }

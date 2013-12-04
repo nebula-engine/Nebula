@@ -1,6 +1,14 @@
 #ifndef __OBJECT_H__
 #define __OBJECT_H__
 
+#include <math/vec4.h>
+#include <math/vec3.h>
+#include <math/vec2.h>
+
+#include <glutpp/texture.h>
+#include <glutpp/uniform.h>
+#include <glutpp/attribute.h>
+
 namespace glutpp
 {
 
@@ -12,10 +20,9 @@ namespace glutpp
 	
 	struct vertex
 	{
-		math::vec4	position;
+		math::vec3	position;
 		math::vec3	normal;
 		math::vec2	texcoor;
-		math::vec4	color;
 	};
 	
 	class window;
@@ -29,11 +36,10 @@ namespace glutpp
 			enum
 			{
 				NONE = 0,
-				LIGHT,
-				PLANE
 			};
 			
-			object(window*);
+			object();
+			void		init(window*);
 			GLuint		png_texture_load(const char *, int* , int*);
 			int		save(char const *);
 			int		load(char const *);
@@ -47,21 +53,24 @@ namespace glutpp
 			unsigned int	flgs_;
 
 
-			//GLint location_position_;
-			//GLint location_normal_;
-			//GLint location_texcoor_;
-
+			attribute		attrib_position_;
+			attribute		attrib_normal_;
+			attribute		attrib_texcoor_;
 			//GLint location_image_;
-
-			GLuint texture_image_;
-
-			GLuint		vbo_;
-			GLuint		buffer_indices_;
-
-			file_header	fh_;
 			
-			glutpp::vertex*	vertices_;
-			GLushort*	indices_;
+			texture			texture_image_;
+			
+			uniform			uniform_image_;
+			
+			GLuint			vbo_;
+			GLuint			buffer_indices_;
+			
+			
+			
+			// draw data
+			file_header		fh_;
+			glutpp::vertex*		vertices_;
+			GLushort*		indices_;
 			
 			window*		window_;
 

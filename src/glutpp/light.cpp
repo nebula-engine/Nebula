@@ -2,50 +2,62 @@
 #include <glutpp/light.h>
 #include <glutpp/window.h>
 
-glutpp::light::light(window* window, GLenum o):
-	window_(window),
-	o_(o),
+
+glutpp::light::light():
 	ambient_(math::white * 0.2f),
 	diffuse_(math::white),
-	specular_(math::white)
+	specular_(math::white),
+	o_(0)
 {
-	printf("%s\n",__FUNCTION__);
-	printf("GL_LIGHT %i\n",o_ - GL_LIGHT0);
-
-	glEnable(GL_LIGHTING);
-	glEnable(o_);
+	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	updateGL();
-
-	int size = 512;
-
 	camera_.fovy_ = 45.0f;
-	camera_.w_ = size;
-	camera_.h_ = size;
+	camera_.w_ = 512;
+	camera_.h_ = 512;
 	camera_.zn_ = 1.0f;
 	camera_.zf_ = 100.f;
-	
-	texture_shadow_map_.init(size,size);
 }
+void	glutpp::light::init(window* window, GLenum o)
+{
+	printf("%s\n",__PRETTY_FUNCTION__);
+
+	o_ = o;
+
+	printf("GL_LIGHT%i\n",o_ - GL_LIGHT0);
+
+	window_ = window;
+	
+	glEnable(GL_LIGHTING); checkerror("glEnable lighting");
+	glEnable(o_); checkerror("glEnable light");
+	
+	updateGL();
+	
+	texture_shadow_map_.init(camera_.w_,camera_.h_);
+	
+	
+}
+
 void	glutpp::light::updateGL()
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
 	//printf("diffuse\n");
 	//diffuse_.print();
+	printf("GL_LIGHT%i\n",o_ - GL_LIGHT0);
 	
-	glLightfv(o_, GL_POSITION, camera_.eye_);
-	glLightfv(o_, GL_AMBIENT, ambient_);
-	glLightfv(o_, GL_DIFFUSE, diffuse_);
-	glLightfv(o_, GL_SPECULAR, specular_);	
+	glLightfv(o_, GL_POSITION, camera_.eye_);	checkerror("glLightfv pos");
+	glLightfv(o_, GL_AMBIENT, ambient_);		checkerror("glLightfv amb");
+	glLightfv(o_, GL_DIFFUSE, diffuse_);		checkerror("glLightfv dif");
+	glLightfv(o_, GL_SPECULAR, specular_);		checkerror("glLightfv spe");
 }
 void	glutpp::light::dim()
 {
 	//printf("diffuse\n");
 	//diffuse_.print();
-	
+
 	glLightfv(o_, GL_POSITION, camera_.eye_);
 	glLightfv(o_, GL_AMBIENT, ambient_);
 	glLightfv(o_, GL_DIFFUSE, diffuse_ * 0.2f);
-	glLightfv(o_, GL_SPECULAR, math::black);
+	glLightfv(o_, GL_SPECULAR, math::black);checkerror(__PRETTY_FUNCTION__);
 }
 void	glutpp::light::draw()
 {
@@ -65,9 +77,9 @@ void	glutpp::light::RenderShadow()
 			0.0f, 0.5f, 0.0f, 0.0f,
 			0.0f, 0.0f, 0.5f, 0.0f,
 			0.5f, 0.5f, 0.5f, 1.0f);
-	
+
 	math::mat44 textureMatrix = biasMatrix * camera_.proj() * camera_.view();
-	
+
 	//Set up texture coordinate generation.
 	glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
 	glTexGenfv(GL_S, GL_EYE_PLANE, textureMatrix.GetRow(0));
@@ -101,65 +113,65 @@ void	glutpp::light::RenderShadow()
 	//Set alpha test to discard false comparisons
 	glAlphaFunc(GL_GEQUAL, 0.99f);
 	glEnable(GL_ALPHA_TEST);
-
+	checkerror(__PRETTY_FUNCTION__);
 }
 void	glutpp::light::RenderLightPOV()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-	
+
 	//First pass - from light's point of view
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClear(GL_DEPTH_BUFFER_BIT);
 
 	glDisable(GL_LIGHTING);
-	
+
 	glMatrixMode(GL_PROJECTION);
 	glLoadMatrixf(camera_.proj());
-	
+
 	glMatrixMode(GL_MODELVIEW);
 	glLoadMatrixf(camera_.view());
 
 	glViewport(0, 0, texture_shadow_map_.w_, texture_shadow_map_.h_);
 
-	
+
 	//window_->lights_updateGL();
 
 	// Use viewport the same size as the shadow map
-	
+
 	// Draw back faces into the shadow map
 	glCullFace(GL_FRONT);
-	
+
 	// Disable color writes, and use flat shading for speed
 	glShadeModel(GL_FLAT);
 	glColorMask(0, 0, 0, 0);
-	
+
 	//Draw the scene
 	window_->Display();
-	
+
 	//Read the depth buffer into the shadow map texture
 	texture_shadow_map_.bind();
 	glCopyTexSubImage2D(
 			GL_TEXTURE_2D,
 			0, 0, 0, 0, 0,
 			texture_shadow_map_.w_, texture_shadow_map_.h_);
-	
+
 	//restore states
 	glCullFace(GL_BACK);
 	glShadeModel(GL_SMOOTH);
-	glColorMask(1, 1, 1, 1);
+	glColorMask(1, 1, 1, 1);checkerror(__PRETTY_FUNCTION__);
 }
 void	glutpp::light::RenderShadowPost()
 {
 	//Disable textures and texgen
 	glDisable(GL_TEXTURE_2D);
-	
+
 	glDisable(GL_TEXTURE_GEN_S);
 	glDisable(GL_TEXTURE_GEN_T);
 	glDisable(GL_TEXTURE_GEN_R);
 	glDisable(GL_TEXTURE_GEN_Q);
 
 	glDisable(GL_ALPHA_TEST);
-
+	checkerror(__PRETTY_FUNCTION__);
 }
 
 
