@@ -22,7 +22,13 @@ nobase_include_HEADERS = \
 		glutpp/camera.h \
 		glutpp/light.h \
 		glutpp/plane.h \
-		glutpp/sphere.h
+		glutpp/sphere.h \
+		glutpp/shaders/prog1/vs.glsl \
+		glutpp/shaders/prog1/fs.glsl \
+		glutpp/shaders/prog2/vs.glsl \
+		glutpp/shaders/prog2/fs.glsl \
+		glutpp/shaders/prog3/vs.glsl \
+		glutpp/shaders/prog3/fs.glsl
 
 CXXFLAGS = -std=c++0x
 LIBS = -lglutpp
