@@ -41,6 +41,6 @@ nobase_include_HEADERS = \
 #glutpp/plane.h
 #glutpp/sphere.h
 
-CXXFLAGS = -std=c++0x
+CXXFLAGS = -std=c++0x -DGLUTPP_PREFIX=\"$(pkgprefix)\"
 LIBS = -lglutpp
 

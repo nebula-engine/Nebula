@@ -51,10 +51,6 @@ void	glutpp::light::updateGL()
 
 	if(0)//!isset(SHADERS))
 	{
-		glLightfv(GL_LIGHT0 + o_, GL_POSITION, camera_.eye_);	checkerror("glLightfv pos");
-		glLightfv(GL_LIGHT0 + o_, GL_AMBIENT, ambient_);	checkerror("glLightfv amb");
-		glLightfv(GL_LIGHT0 + o_, GL_DIFFUSE, diffuse_);	checkerror("glLightfv dif");
-		glLightfv(GL_LIGHT0 + o_, GL_SPECULAR, specular_);	checkerror("glLightfv spe");
 	}
 }
 void	glutpp::light::dim()
@@ -73,22 +69,41 @@ void	glutpp::light::draw()
 }
 void	glutpp::light::load()
 {
-	uniform_position_.load_4fv(			camera_.eye_);
-	uniform_ambient_.load_4fv(			ambient_);
-	uniform_diffuse_.load_4fv(			diffuse_);
-	uniform_specular_.load_4fv(			specular_);
-	uniform_spot_direction_.load_3fv(		spot_direction_);
-	uniform_spot_cutoff_.load_1f(			spot_cutoff_);
-	uniform_spot_exponent_.load_1f(			spot_exponent_);
-	uniform_spot_light_cos_cutoff_.load_1f(		spot_light_cos_cutoff_);
-	uniform_atten_const_.load_1f(			atten_const_);
-	uniform_atten_linear_.load_1f(			atten_linear_);
-	uniform_atten_quad_.load_1f(			atten_quad_);
+	if(window_->all(LIGHTING))
+	{
+		if(window_->all(SHADER))
+		{
+			uniform_position_.load_4fv(			camera_.eye_);
+			uniform_ambient_.load_4fv(			ambient_);
+			uniform_diffuse_.load_4fv(			diffuse_);
+			uniform_specular_.load_4fv(			specular_);
+			uniform_spot_direction_.load_3fv(		spot_direction_);
+			uniform_spot_cutoff_.load_1f(			spot_cutoff_);
+			uniform_spot_exponent_.load_1f(			spot_exponent_);
+			uniform_spot_light_cos_cutoff_.load_1f(		spot_light_cos_cutoff_);
+			uniform_atten_const_.load_1f(			atten_const_);
+			uniform_atten_linear_.load_1f(			atten_linear_);
+			uniform_atten_quad_.load_1f(			atten_quad_);
+		}
+		else
+		{
+			glLightfv(GL_LIGHT0 + o_, GL_POSITION, camera_.eye_);		checkerror("glLightfv pos");
+			glLightfv(GL_LIGHT0 + o_, GL_AMBIENT, ambient_);		checkerror("glLightfv amb");
+			glLightfv(GL_LIGHT0 + o_, GL_DIFFUSE, diffuse_);		checkerror("glLightfv dif");
+			glLightfv(GL_LIGHT0 + o_, GL_SPECULAR, specular_);		checkerror("glLightfv spe");
+			glLightfv(GL_LIGHT0 + o_, GL_SPOT_DIRECTION, spot_direction_);	checkerror("glLightfv spe");
+			glLightf( GL_LIGHT0 + o_, GL_SPOT_EXPONENT, spot_exponent_);	checkerror("glLightfv spe");
+			glLightf( GL_LIGHT0 + o_, GL_SPOT_CUTOFF, spot_cutoff_);	checkerror("glLightfv spe");
+			glLightf( GL_LIGHT0 + o_, GL_CONSTANT_ATTENUATION, const_);	checkerror("glLightfv spe");
+			glLightf( GL_LIGHT0 + o_, GL_LINEAR_ATTENUATION, atten_linear_);	checkerror("glLightfv spe");
+			glLightf( GL_LIGHT0 + o_, GL_QUADRATIC_ATTENUATION, atten_quad_);	checkerror("glLightfv spe");
+		}
+	}
 }
-void	glutpp::light::RenderShadow()
+void	glutpp::light::draw_shadow_no_shader()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-
+	
 	//Calculate texture matrix for projection
 	//This matrix takes us from eye space to the light's clip space
 	//It is postmultiplied by the inverse of the current view matrix when specifying texgen
@@ -146,7 +161,9 @@ void	glutpp::light::RenderLightPOV()
 	glClear(GL_DEPTH_BUFFER_BIT);
 
 	glDisable(GL_LIGHTING);
-
+	
+	camera_.load();
+	/*
 	glMatrixMode(GL_PROJECTION);
 	glLoadMatrixf(camera_.proj());
 
@@ -154,8 +171,8 @@ void	glutpp::light::RenderLightPOV()
 	glLoadMatrixf(camera_.view());
 
 	glViewport(0, 0, texture_shadow_map_.w_, texture_shadow_map_.h_);
-
-
+	*/
+	
 	//window_->lights_updateGL();
 
 	// Use viewport the same size as the shadow map
@@ -168,19 +185,21 @@ void	glutpp::light::RenderLightPOV()
 	glColorMask(0, 0, 0, 0);
 
 	//Draw the scene
-	window_->Display();
-
+	window_->display();
+	
 	//Read the depth buffer into the shadow map texture
 	texture_shadow_map_.bind();
 	glCopyTexSubImage2D(
 			GL_TEXTURE_2D,
 			0, 0, 0, 0, 0,
 			texture_shadow_map_.w_, texture_shadow_map_.h_);
-
+	
 	//restore states
 	glCullFace(GL_BACK);
 	glShadeModel(GL_SMOOTH);
-	glColorMask(1, 1, 1, 1);checkerror(__PRETTY_FUNCTION__);
+	glColorMask(1, 1, 1, 1);
+	
+	checkerror("unknown");
 }
 void	glutpp::light::RenderShadowPost()
 {

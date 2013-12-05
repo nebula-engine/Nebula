@@ -15,6 +15,15 @@
 #include <glutpp/shader.h>
 #include <glutpp/program.h>
 
+void	fatal_error(char const * c,...)
+{
+	char fmt[128];
+	strcat(fmt, "error: ");
+	strcat(fmt, c);
+	strcat(fmt, "\n");
+	printf(fmt,...);
+	exit(0);
+}
 void	check_error()
 {
 	GLenum errCode = glGetError();
@@ -41,25 +50,14 @@ glutpp::window::window(int setWidth, int setHeight,
 	glutpp::__master.CallGlutCreateWindow( (char *)title, this );
 
 	GLenum err = glewInit();
-	if (err != GLEW_OK)
-	{
-		fprintf(stderr, "GLEW Error: %s\n", glewGetErrorString(err));
-		exit(1);
-	}
+	if (err != GLEW_OK) fatal_error("GLEW: %s", glewGetErrorString(err));
 	
-	if (!GLEW_VERSION_2_1)
-	{
-		printf("wrong glew version\n");
-		exit(1);
-	}
-
+	if (!GLEW_VERSION_2_1) fatal_error("wrong glew version");
+	
 	//CheckExt();
 
 	printf("%s\n",glGetString(GL_SHADING_LANGUAGE_VERSION));
-
-
-
-
+	
 	glEnable(GL_LIGHTING);
 
 	//lights_enable();
@@ -83,31 +81,65 @@ glutpp::window::window(int setWidth, int setHeight,
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_NORMALIZE);
-
-
+	
 	// shaders
-	shaders_ = new shader[2];
-	program_ = new program;
-	
-	shaders_[0].load("/home/charles/usr/include/glutpp/shaders/prog0/vs.glsl", GL_VERTEX_SHADER);
-	shaders_[1].load("/home/charles/usr/include/glutpp/shaders/prog0/fs.glsl", GL_FRAGMENT_SHADER);
-	
-	program_->init();
-	program_->add_shader(shaders_+0);
-	program_->add_shader(shaders_+1);
-	program_->compile();
-	program_->use();
-	
-	uniform_light_count_ = new uniform(this,"light_count");
-	uniform_model_ = new uniform(this,"model");
-	uniform_view_ = new uniform(this,"view");
-	uniform_proj_ = new uniform(this,"proj");
+	shaders();
 
-	checkerror("dadas");
+	checkerror("unknown");
 }
 glutpp::window::~window()
 {
 	glutDestroyWindow(windowID);
+}
+void	glutpp::window::shaders()
+{
+	std::map<unsigned int,int> shader_map;
+	
+	unsigned int mask = RAY_TRACE | LIGHTING | SHADOW | SHADOW_MAP | REFLECT | REFLECT_PLANAR | REFLECT_CURVED | TEX_IMAGE | TEX_NORMAL_MAP;
+	
+	// populate map based on platform capability
+	shader_map[ LIGHTING ] = 0;
+	
+	if(all(SHADER))
+	{	
+		unsigned int f = flag_ & mask;
+		
+		auto it = shader_map.find(f);
+		
+		if(it == shader_map.end()) fatal_error("shader configuration %i not implemented",f);
+
+		int s = it->second;
+
+		program_ = new program;
+		program_->init();
+		
+		shader_count_ = 0;
+		switch(s)
+		{
+			case 0:
+				shaders_ = new shader[2];
+				
+				shaders_[0].load(GLUTPP_SHADER_PREFIX"/prog_0/vs.glsl", GL_VERTEX_SHADER);
+				shaders_[1].load(GLUTPP_SHADER_PREFIX"/prog_0/fs.glsl", GL_FRAGMENT_SHADER);
+				
+				shader_count_ = 2;
+				break;
+			default:
+				fatal_error("shader configuration %i not implemented",f);
+				break;
+		}
+		
+		program_->add_shaders(shaders_,shader_count);
+		program_->compile();
+		program_->use();
+	}
+}
+void	glutpp::window::uniforms()
+{
+	uniform_light_count_	= new uniform(this,"light_count");
+	uniform_model_		= new uniform(this,"model");
+	uniform_view_		= new uniform(this,"view");
+	uniform_proj_		= new uniform(this,"proj");
 }
 void	glutpp::window::lights_for_each(std::function<void(glutpp::light*)> func)
 {
@@ -116,7 +148,14 @@ void	glutpp::window::lights_for_each(std::function<void(glutpp::light*)> func)
 		func(lights_.at(i));
 	}
 }
-void	glutpp::window::RenderOrtho()
+void	glutpp::window::objects_for_each(std::function<void(glutpp::object*)> func)
+{
+	for(int i = 0; i < objects_.size(); ++i)
+	{
+		func(objects_.at(i));
+	}
+}
+void	glutpp::window::display_ortho()
 {
 	//Restore other states
 	glDisable(GL_LIGHTING);
@@ -165,16 +204,16 @@ void	glutpp::window::display_bright()
 {
 	//3rd pass: Draw with bright light
 	lights_for_each(&glutpp::light::updateGL);
-
-	if( isset( PLANAR_REFLECTION ) ) RenderReflection();
-
-	if( isset( SHADOW | SHADOW_TEXTURE ) ) lights_for_each(&glutpp::light::RenderShadow);
-
-	Display();
-
+	
+	if(all(REFLECT | REFLECT_PLANAR)) RenderReflection();
+	
+	if(all(SHADOW | SHADOW_MAP)) lights_for_each(&glutpp::light::RenderShadow);
+	
+	display();
+	
 	check_error();
-
-	if( isset( SHADOW | SHADOW_TEXTURE ) ) lights_for_each(&glutpp::light::RenderShadowPost);
+	
+	if(all(SHADOW | SHADOW_MAP)) lights_for_each(&glutpp::light::RenderShadowPost);
 }
 void glutpp::window::CallBackDisplayFunc()
 {
@@ -182,29 +221,21 @@ void glutpp::window::CallBackDisplayFunc()
 	uniform_light_count_->load_1i(lights_.size());
 	lights_for_each(&glutpp::light::load);
 	
-	if( isset( SHADOW | SHADOW_TEXTURE ) ) lights_for_each(&glutpp::light::RenderLightPOV);
-
-	//2nd pass - Draw from camera's point of view
-	glClear(GL_DEPTH_BUFFER_BIT);
-	glClear(GL_COLOR_BUFFER_BIT);
-
-	//PrepRenderCamera(camera_);
+	if(all(SHADOW | SHADOW_MAP)) lights_for_each(&glutpp::light::RenderLightPOV);
+	
+	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+	
 	camera_.load();
-
-	glEnable(GL_LIGHTING);
-
-	if( isset( SHADOW | SHADOW_TEXTURE ) ) DisplayDim();
-
+	
+	if(all(SHADOW | SHADOW_MAP) && !all(SHADER)) display_dim();
+	
 	display_bright();
-
-	if( isset(ORTHO) ) RenderOrtho();
-
+	
+	if(all(ORTHO)) display_ortho();
+	
 	glFinish();
 	glutSwapBuffers();
 	glutPostRedisplay();
-}
-void glutpp::window::Reshape()
-{
 }
 void glutpp::window::CallBackReshapeFunc(int w, int h)
 {

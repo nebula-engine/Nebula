@@ -36,16 +36,21 @@ namespace glutpp
 		public:
 			enum
 			{
-				SHADOW				= 1 << 0,
-				SHADOW_TEXTURE			= 1 << 1,
-				ORTHO				= 1 << 2,
-				PLANAR_REFLECTION		= 1 << 3,
-				PLANAR_REFLECTION_STENCIL	= 1 << 4,
+				RAY_TRACE			= 1 << 0,
+				LIGHTING			= 1 << 1,
+				SHADOW				= 1 << 2,
+				SHADOW_MAP			= 1 << 3,
+				REFLECT				= 1 << 4,
+				REFLECT_PLANAR			= 1 << 5,
+				REFLECT_CURVED			= 1 << 6,
+				TEX_IMAGE			= 1 << 7,
+				TEX_NORMAL_MAP			= 1 << 8,
+				ORTHO				= 1 << 9
 			};
-
+			
 			window(int, int, int, int, const char * );
 			~window();
-			
+
 			void			StartSpinning();
 			void			CallBackDisplayFunc();
 			void			CallBackIdleFunc(void);
@@ -59,21 +64,17 @@ namespace glutpp
 			virtual void		CallBackSpecialFunc(int key, int x, int y);   
 			virtual void		CallBackVisibilityFunc(int visible);
 
-			//void			PrepRenderCamera(glutpp::camera);
-			//void			RenderLightPOV();
-			//void			RenderShadow();
-			void			RenderOrtho();
-			void			RenderReflection();
-			void			DisplayDim();
-			//void			PostRenderShadow();
+			void			display_ortho();
+			void			display_dim();
 			void			display_bright();
+			
+			void			RenderReflection();
 			void			lights_for_each(std::function<void(glutpp::light*)>);
-			void			Reshape();
 			void			SetWindowID(int newWindowID);
 			int			GetWindowID(void);
 			void			Display();
 			void			display_all_but(object*);
-
+			
 			virtual void		DisplayOrtho();
 			virtual void		Idle();
 
@@ -83,7 +84,7 @@ namespace glutpp
 			int			initPositionY;
 
 			camera			camera_;
-			
+
 			std::vector<light*>	lights_;
 			std::vector<texture*>	shadow_maps_;
 
@@ -94,7 +95,7 @@ namespace glutpp
 
 			shader*			shaders_;
 			program*		program_;
-		
+
 
 			std::vector<object*>	objects_;
 	};

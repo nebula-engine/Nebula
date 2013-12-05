@@ -91,13 +91,10 @@ int	glutpp::object::load(const char * filename)
 	fclose(fp);
 
 	// print
-	for(int i = 0; i < fh_.len_vertices_; ++i)
-	{
-		vertices_[i].print();
-	}
-
-	init_buffer(window_->program_->o_);
-
+	for(int i = 0; i < fh_.len_vertices_; ++i) vertices_[i].print();
+	
+	init_buffer();
+	
 	return 0;
 }
 int	glutpp::object::save(const char * filename)
@@ -138,10 +135,12 @@ int	glutpp::object::save(const char * filename)
 
 	return 0;
 }
-void glutpp::object::init_buffer(GLint program)
+void glutpp::object::init_buffer()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-
+	
+	GLint program = window_->program_->o_;
+	
 	checkerror("unknown");
 
 	// attributes
@@ -210,25 +209,45 @@ void glutpp::object::init_buffer(GLint program)
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 }
-void glutpp::object::draw()
+void	glutpp::object::model_load()
+{
+	if(window_->all(SHADER))
+	{
+		window_->uniform_model_->load_matrix4fv(model_);
+	}
+	else
+	{
+		glMatrixMode(GL_MODELVIEW);
+		glPushMatrix();
+		glMultMatrix(model_);
+	}
+}
+void	glutpp::object::model_unload()
+{
+	if(window_->all(SHADER))
+	{
+	}
+	else
+	{
+		glMatrixMode(GL_MODELVIEW);
+		glPopMatrix();
+	}
+}
+void	glutpp::object::draw()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	checkerror("unknown");
-
+	
 	attrib_position_.enable();
 	attrib_normal_.enable();
 	attrib_texcoor_.enable();
 
 	printf("draw\n");
 
-	// model matrix
-	window_->uniform_model_->load_matrix4fv(model_);
-
 	// material
 	material_front_.load();
-
-
+	
 	// texture
 	glActiveTexture(GL_TEXTURE0);checkerror("glActiveTexture");
 	texture_image_.bind();
@@ -239,9 +258,13 @@ void glutpp::object::draw()
 	glBindBuffer(GL_ARRAY_BUFFER, vbo_); checkerror("glBindBuffer");
 	// indices
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer_indices_); checkerror("glBindBuffer");
-
+	
 	// draw
+	model_load();
+	
 	glDrawElements(GL_TRIANGLES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);checkerror("glDrawElements");
+	
+	model_unload();
 
 	printf("draw\n");
 

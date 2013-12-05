@@ -17,10 +17,21 @@ glutpp::material::material(window* window, math::color ambient, math::color diff
 }
 void	glutpp::material::load()
 {
-	uniform_ambient_.load_4fv(ambient_);
-	uniform_diffuse_.load_4fv(diffuse_);
-	uniform_specular_.load_4fv(specular_);
-	uniform_emission_.load_4fv(emission_);
-	uniform_shininess_.load_1f(shininess_);
+	if(window_->all(SHADER))
+	{
+		uniform_ambient_.load_4fv(ambient_);
+		uniform_diffuse_.load_4fv(diffuse_);
+		uniform_specular_.load_4fv(specular_);
+		uniform_emission_.load_4fv(emission_);
+		uniform_shininess_.load_1f(shininess_);
+	}
+	else
+	{
+		glMaterialfv(GL_FRONT,GL_AMBIENT,ambient_);
+		glMaterialfv(GL_FRONT,GL_DIFFUSE,diffuse_);
+		glMaterialfv(GL_FRONT,GL_SPECULAR,specular_);
+		glMaterialfv(GL_FRONT,GL_EMISSION,emission_);
+		glMaterialf(GL_FRONT,GL_SHININESS,shininess_);
+	}
 }
 
