@@ -29,7 +29,8 @@ glutpp::window::window(int setWidth, int setHeight,
 	width(setWidth),
 	height(setHeight),
 	initPositionX(setInitPositionX),
-	initPositionY(setInitPositionY)
+	initPositionY(setInitPositionY),
+	camera_(this)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -88,8 +89,8 @@ glutpp::window::window(int setWidth, int setHeight,
 	shaders_ = new shader[2];
 	program_ = new program;
 	
-	shaders_[0].load("/home/charles/usr/include/glutpp/shaders/prog1/vs.glsl", GL_VERTEX_SHADER);
-	shaders_[1].load("/home/charles/usr/include/glutpp/shaders/prog1/fs.glsl", GL_FRAGMENT_SHADER);
+	shaders_[0].load("/home/charles/usr/include/glutpp/shaders/prog0/vs.glsl", GL_VERTEX_SHADER);
+	shaders_[1].load("/home/charles/usr/include/glutpp/shaders/prog0/fs.glsl", GL_FRAGMENT_SHADER);
 	
 	program_->init();
 	program_->add_shader(shaders_+0);
@@ -97,13 +98,11 @@ glutpp::window::window(int setWidth, int setHeight,
 	program_->compile();
 	program_->use();
 	
-	//Create the shadow map texture
-	
+	uniform_light_count_ = new uniform(this,"light_count");
+	uniform_model_ = new uniform(this,"model");
+	uniform_view_ = new uniform(this,"view");
+	uniform_proj_ = new uniform(this,"proj");
 
-	//Use the color as the ambient and diffuse material
-	//glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-	//glEnable(GL_COLOR_MATERIAL);
-	
 	checkerror("dadas");
 }
 glutpp::window::~window()
@@ -154,26 +153,6 @@ void	glutpp::window::RenderReflection()
 		(*it)->render_reflection();
 	}
 }
-void	glutpp::window::PrepRenderCamera(glutpp::camera c)
-{
-	glViewport(0, 0, width, height);
-
-	math::mat44 proj = c.proj();
-	math::mat44 view = c.view();
-
-	//proj.print();
-	//view.print();
-
-	glMatrixMode(GL_PROJECTION);
-	glLoadMatrixf(proj);
-	//glLoadIdentity();
-	//gluPerspective(65.0f, (float)width/(float)height, 2.0f, 50.0f);
-
-	glMatrixMode(GL_MODELVIEW);
-	glLoadMatrixf(view);	
-	//glLoadIdentity();
-	//gluLookAt(0,5,5,0,0,0,0,1,0);
-}
 void	glutpp::window::DisplayDim()
 {
 	//glEnable(GL_LIGHTING);
@@ -199,6 +178,10 @@ void	glutpp::window::display_bright()
 }
 void glutpp::window::CallBackDisplayFunc()
 {
+	// uniforms
+	uniform_light_count_->load_1i(lights_.size());
+	lights_for_each(&glutpp::light::load);
+	
 	if( isset( SHADOW | SHADOW_TEXTURE ) ) lights_for_each(&glutpp::light::RenderLightPOV);
 
 	//2nd pass - Draw from camera's point of view

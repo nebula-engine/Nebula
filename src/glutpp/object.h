@@ -8,6 +8,8 @@
 #include <glutpp/texture.h>
 #include <glutpp/uniform.h>
 #include <glutpp/attribute.h>
+#include <glutpp/material.h>
+
 
 namespace glutpp
 {
@@ -20,7 +22,9 @@ namespace glutpp
 	
 	struct vertex
 	{
-		math::vec3	position;
+		void		print();
+		
+		math::vec4	position;
 		math::vec3	normal;
 		math::vec2	texcoor;
 	};
@@ -38,8 +42,7 @@ namespace glutpp
 				NONE = 0,
 			};
 			
-			object();
-			void		init(window*);
+			object(window*);
 			GLuint		png_texture_load(const char *, int* , int*);
 			int		save(char const *);
 			int		load(char const *);
@@ -59,22 +62,21 @@ namespace glutpp
 			//GLint location_image_;
 			
 			texture			texture_image_;
-			
 			uniform			uniform_image_;
 			
 			GLuint			vbo_;
 			GLuint			buffer_indices_;
 			
-			
-			
+			math::mat44		model_;
+	
 			// draw data
 			file_header		fh_;
 			glutpp::vertex*		vertices_;
 			GLushort*		indices_;
+
+			material		material_front_;
 			
-			window*		window_;
-
-
+			window*			window_;
 	};
 }
 

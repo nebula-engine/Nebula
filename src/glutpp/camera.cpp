@@ -1,9 +1,12 @@
 #include <stdio.h>
-#include <GL/gl.h>
 
+#include <GL/glew.h>
+
+#include <glutpp/window.h>
 #include <glutpp/camera.h>
 
-glutpp::camera::camera():
+glutpp::camera::camera(window* window):
+	window_(window),
 	eye_(0.0f, 0.0f, 5.0f, 0.0f),
 	center_(0.0f,0.0f,0.0f),
 	up_(0.0f,1.0f,0.0f),
@@ -37,14 +40,18 @@ void		glutpp::camera::load()
 {
 	glViewport(0, 0, w_, h_);
 	
+	window_->uniform_proj_->load_matrix4fv(proj());
+	window_->uniform_view_->load_matrix4fv(view());
+	
+	
 	//proj.print();
 	//view.print();
 
-	glMatrixMode(GL_PROJECTION);
-	glLoadMatrixf(proj());
+	//glMatrixMode(GL_PROJECTION);
+	//glLoadMatrixf(proj());
 	//glLoadIdentity();
 	//gluPerspective(65.0f, (float)width/(float)height, 2.0f, 50.0f);
 
-	glMatrixMode(GL_MODELVIEW);
-	glLoadMatrixf(view());	
+	//glMatrixMode(GL_MODELVIEW);
+	//glLoadMatrixf(view());	
 }

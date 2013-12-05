@@ -10,152 +10,21 @@
 #include <glutpp/object.h>
 #include <glutpp/window.h>
 
-glutpp::object::object():
-	attrib_position_("position"),
-	attrib_normal_("normal"),
-	attrib_texcoor_("texcoor"),
+glutpp::object::object(window* window):
+	window_(window),
+	texture_image_(window),
+	uniform_image_(window,"image"),
+	attrib_position_(0,"position"),
+	attrib_normal_(1,"normal"),
+	attrib_texcoor_(2,"texcoor"),
+	material_front_(
+			window,
+			math::blue,
+			math::red,
+			math::white,
+			math::black,128.0),
 	type_(NONE)
 {}
-void	glutpp::object::init(window* window)
-{
-	printf("%s\n",__PRETTY_FUNCTION__);
-
-	window_ = window;
-}
-GLuint glutpp::object::png_texture_load(const char * file_name, int * width, int * height)
-{
-	printf("%s\n",__PRETTY_FUNCTION__);
-
-	png_byte header[8];
-
-	FILE *fp = fopen(file_name, "rb");
-	if (fp == 0)
-	{
-		perror(file_name);
-		return 0;
-	}
-
-	// read the header
-	fread(header, 1, 8, fp);
-
-	if (png_sig_cmp(header, 0, 8))
-	{
-		fprintf(stderr, "error: %s is not a PNG.\n", file_name);
-		fclose(fp);
-		return 0;
-	}
-
-	png_structp png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
-	if (!png_ptr)
-	{
-		fprintf(stderr, "error: png_create_read_struct returned 0.\n");
-		fclose(fp);
-		return 0;
-	}
-
-	// create png info struct
-	png_infop info_ptr = png_create_info_struct(png_ptr);
-	if (!info_ptr)
-	{
-		fprintf(stderr, "error: png_create_info_struct returned 0.\n");
-		png_destroy_read_struct(&png_ptr, (png_infopp)NULL, (png_infopp)NULL);
-		fclose(fp);
-		return 0;
-	}
-
-	// create png info struct
-	png_infop end_info = png_create_info_struct(png_ptr);
-	if (!end_info)
-	{
-		fprintf(stderr, "error: png_create_info_struct returned 0.\n");
-		png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp) NULL);
-		fclose(fp);
-		return 0;
-	}
-
-	// the code in this if statement gets called if libpng encounters an error
-	if (setjmp(png_jmpbuf(png_ptr))) {
-		fprintf(stderr, "error from libpng\n");
-		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
-		fclose(fp);
-		return 0;
-	}
-
-	// init png reading
-	png_init_io(png_ptr, fp);
-
-	// let libpng know you already read the first 8 bytes
-	png_set_sig_bytes(png_ptr, 8);
-
-	// read all the info up to the image data
-	png_read_info(png_ptr, info_ptr);
-
-	// variables to pass to get info
-	int bit_depth, color_type;
-	png_uint_32 temp_width, temp_height;
-
-	// get info about png
-	png_get_IHDR(png_ptr, info_ptr, &temp_width, &temp_height, &bit_depth, &color_type,
-			NULL, NULL, NULL);
-
-	if (width){ *width = temp_width; }
-	if (height){ *height = temp_height; }
-
-	// Update the png info struct.
-	png_read_update_info(png_ptr, info_ptr);
-
-	// Row size in bytes.
-	int rowbytes = png_get_rowbytes(png_ptr, info_ptr);
-
-	// glTexImage2d requires rows to be 4-byte aligned
-	rowbytes += 3 - ((rowbytes-1) % 4);
-
-	// Allocate the image_data as a big block, to be given to opengl
-	png_byte * image_data;
-	image_data = (png_byte*)malloc(rowbytes * temp_height * sizeof(png_byte)+15);
-	if (image_data == NULL)
-	{
-		fprintf(stderr, "error: could not allocate memory for PNG image data\n");
-		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
-		fclose(fp);
-		return 0;
-	}
-
-	// row_pointers is for pointing to image_data for reading the png with libpng
-	png_bytep * row_pointers = (png_bytep*)malloc(temp_height * sizeof(png_bytep));
-	if (row_pointers == NULL)
-	{
-		fprintf(stderr, "error: could not allocate memory for PNG row pointers\n");
-		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
-		free(image_data);
-		fclose(fp);
-		return 0;
-	}
-
-	// set the individual row_pointers to point at the correct offsets of image_data
-	for (unsigned int i = 0; i < temp_height; i++)
-	{
-		row_pointers[temp_height - 1 - i] = image_data + i * rowbytes;
-	}
-
-	// read the png into image_data through row_pointers
-	png_read_image(png_ptr, row_pointers);
-
-	// Generate the OpenGL texture object
-	GLuint texture;
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, temp_width, temp_height, 0, GL_RGB, GL_UNSIGNED_BYTE, image_data);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-	// clean up
-	png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
-	free(image_data);
-	free(row_pointers);
-	fclose(fp);
-	return texture;
-}
 void print_vector(GLfloat* v, unsigned int m, unsigned int n)
 {
 	for(unsigned int a=0;a<m;++a)
@@ -216,11 +85,16 @@ int	glutpp::object::load(const char * filename)
 	vertices_ = new glutpp::vertex[fh_.len_vertices_];
 	indices_ = new GLushort[fh_.len_indices_];
 
-
 	fread(vertices_, sizeof(glutpp::vertex), fh_.len_vertices_, fp);
 	fread(indices_,  sizeof(GLushort),       fh_.len_indices_,  fp);
 
 	fclose(fp);
+
+	// print
+	for(int i = 0; i < fh_.len_vertices_; ++i)
+	{
+		vertices_[i].print();
+	}
 
 	init_buffer(window_->program_->o_);
 
@@ -252,6 +126,14 @@ int	glutpp::object::save(const char * filename)
 	fwrite(vertices_, sizeof(glutpp::vertex), fh_.len_vertices_, fp);
 	fwrite(indices_, sizeof(GLushort), fh_.len_indices_, fp);
 
+	// print
+	for(int i = 0; i < fh_.len_vertices_; ++i)
+	{
+		vertices_[i].print();
+	}
+	printf("'%s' saved\n",filename);
+
+	// close
 	fclose(fp);
 
 	return 0;
@@ -263,16 +145,13 @@ void glutpp::object::init_buffer(GLint program)
 	checkerror("unknown");
 
 	// attributes
-	
-	
 
 	// image
-	uniform_image_.init(window_->program_->o_, "image");
 	texture_image_.load_png("bigtux.png");
-	
+
 	// indices
 	int size = fh_.len_indices_ * sizeof(GLushort);
-	
+
 	glGenBuffers(1, &buffer_indices_);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer_indices_);
 	glBufferData(
@@ -299,25 +178,26 @@ void glutpp::object::init_buffer(GLint program)
 			sizeof(glutpp::vertex),
 			offsetof(glutpp::vertex, position));
 	checkerror("glVertexAttribPointer");
-	
+
 	glVertexAttribPointer(
-			1/*attrib_normal_.o_*/,
-			4,
+			attrib_normal_.o_,
+			3,
 			GL_FLOAT,
 			GL_FALSE,
 			sizeof(glutpp::vertex),
 			(void*)offsetof(glutpp::vertex, normal));
 	checkerror("glVertexAttribPointer normal");
-	
+
 	glVertexAttribPointer(
-			2/*attrib_texcoor_.o_*/,
-			4,
+			attrib_texcoor_.o_,
+			2,
 			GL_FLOAT,
 			GL_FALSE,
 			sizeof(glutpp::vertex),
 			(void*)offsetof(glutpp::vertex, texcoor));
 	checkerror("glVertexAttribPointer texcoor");
 
+	size = fh_.len_vertices_ * sizeof(glutpp::vertex);
 	glBufferData(
 			GL_ARRAY_BUFFER,
 			size,
@@ -335,38 +215,38 @@ void glutpp::object::draw()
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	checkerror("unknown");
-	
+
 	attrib_position_.enable();
 	attrib_normal_.enable();
 	attrib_texcoor_.enable();
 
 	printf("draw\n");
 
-	// vertices
-	glBindBuffer(GL_ARRAY_BUFFER, vbo_); checkerror("glBindBuffer");
+	// model matrix
+	window_->uniform_model_->load_matrix4fv(model_);
+
+	// material
+	material_front_.load();
+
 
 	// texture
-	glActiveTexture(GL_TEXTURE0);
+	glActiveTexture(GL_TEXTURE0);checkerror("glActiveTexture");
 	texture_image_.bind();
-	glUniform1i(texture_image_.o_, 0);
+	uniform_image_.load_1i(0);
+	//glUniform1i(texture_image_.o_, 0);checkerror("glUniform1i");
 
+	// vertices
+	glBindBuffer(GL_ARRAY_BUFFER, vbo_); checkerror("glBindBuffer");
 	// indices
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer_indices_);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer_indices_); checkerror("glBindBuffer");
 
-	//checkerror();
-
-	//readbuffer(buffer_position_);
-
-	printf("draw\n");
-
-	glDrawElements(GL_TRIANGLES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);
-
-	//checkerror();
+	// draw
+	glDrawElements(GL_TRIANGLES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);checkerror("glDrawElements");
 
 	printf("draw\n");
 
-	glBindBuffer(GL_ARRAY_BUFFER,0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
+	glBindBuffer(GL_ARRAY_BUFFER,0);checkerror("glBindBuffer");
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);checkerror("glBindBuffer");
 
 	printf("draw\n");
 
@@ -378,5 +258,12 @@ void glutpp::object::draw()
 }
 void	glutpp::object::render_reflection(){}
 
+void	glutpp::vertex::print()
+{
+	printf("% 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f\n",position.x,position.y,position.z,normal.x,normal.y,normal.z,texcoor.x,texcoor.y);
+	//position.print();
+	//normal.print();
+	//texcoor.print();
+}
 
 

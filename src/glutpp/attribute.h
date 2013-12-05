@@ -6,7 +6,7 @@ namespace glutpp
 	class attribute
 	{
 		public:
-			attribute(char const *);
+			attribute(GLuint,char const *);
 			void		enable();
 			void		disable();
 			

@@ -80,7 +80,7 @@ libglutpp_a_LIBADD =
 am_libglutpp_a_OBJECTS = master.$(OBJEXT) window.$(OBJEXT) \
 	object.$(OBJEXT) shader.$(OBJEXT) uniform.$(OBJEXT) \
 	attribute.$(OBJEXT) texture.$(OBJEXT) program.$(OBJEXT) \
-	camera.$(OBJEXT) light.$(OBJEXT)
+	camera.$(OBJEXT) light.$(OBJEXT) material.$(OBJEXT)
 libglutpp_a_OBJECTS = $(am_libglutpp_a_OBJECTS)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -203,7 +203,8 @@ libglutpp_a_SOURCES = \
 		glutpp/texture.h glutpp/texture.cpp \
 		glutpp/program.h glutpp/program.cpp \
 		glutpp/camera.h glutpp/camera.cpp \
-		glutpp/light.h glutpp/light.cpp
+		glutpp/light.h glutpp/light.cpp \
+		glutpp/material.h glutpp/material.cpp
 
 
 #glutpp/plane.h glutpp/plane.cpp
@@ -219,6 +220,9 @@ nobase_include_HEADERS = \
 		glutpp/attribute.h \
 		glutpp/camera.h \
 		glutpp/light.h \
+		glutpp/material.h \
+		glutpp/shaders/prog0/vs.glsl \
+		glutpp/shaders/prog0/fs.glsl \
 		glutpp/shaders/prog1/vs.glsl \
 		glutpp/shaders/prog1/fs.glsl \
 		glutpp/shaders/exp_map/vs.glsl \
@@ -306,6 +310,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/camera.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/light.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/master.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/material.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/object.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/program.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shader.Po@am__quote@
@@ -466,6 +471,20 @@ light.obj: glutpp/light.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='glutpp/light.cpp' object='light.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o light.obj `if test -f 'glutpp/light.cpp'; then $(CYGPATH_W) 'glutpp/light.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/light.cpp'; fi`
+
+material.o: glutpp/material.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT material.o -MD -MP -MF $(DEPDIR)/material.Tpo -c -o material.o `test -f 'glutpp/material.cpp' || echo '$(srcdir)/'`glutpp/material.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/material.Tpo $(DEPDIR)/material.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='glutpp/material.cpp' object='material.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o material.o `test -f 'glutpp/material.cpp' || echo '$(srcdir)/'`glutpp/material.cpp
+
+material.obj: glutpp/material.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT material.obj -MD -MP -MF $(DEPDIR)/material.Tpo -c -o material.obj `if test -f 'glutpp/material.cpp'; then $(CYGPATH_W) 'glutpp/material.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/material.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/material.Tpo $(DEPDIR)/material.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='glutpp/material.cpp' object='material.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o material.obj `if test -f 'glutpp/material.cpp'; then $(CYGPATH_W) 'glutpp/material.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/material.cpp'; fi`
 install-nobase_includeHEADERS: $(nobase_include_HEADERS)
 	@$(NORMAL_INSTALL)
 	test -z "$(includedir)" || $(MKDIR_P) "$(DESTDIR)$(includedir)"

@@ -59,7 +59,7 @@ namespace glutpp
 			virtual void		CallBackSpecialFunc(int key, int x, int y);   
 			virtual void		CallBackVisibilityFunc(int visible);
 
-			void			PrepRenderCamera(glutpp::camera);
+			//void			PrepRenderCamera(glutpp::camera);
 			//void			RenderLightPOV();
 			//void			RenderShadow();
 			void			RenderOrtho();
@@ -86,6 +86,11 @@ namespace glutpp
 			
 			std::vector<light*>	lights_;
 			std::vector<texture*>	shadow_maps_;
+
+			uniform*		uniform_light_count_;
+			uniform*		uniform_model_;
+			uniform*		uniform_view_;
+			uniform*		uniform_proj_;
 
 			shader*			shaders_;
 			program*		program_;

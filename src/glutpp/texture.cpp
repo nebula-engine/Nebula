@@ -7,17 +7,20 @@
 #include <math/color.h>
 
 #include <glutpp/texture.h>
+#include <glutpp/window.h>
 
 #include <png.h>
 
-glutpp::texture::texture()
-{
-}
+glutpp::texture::texture(window* window):
+	window_(window)
+{}
 glutpp::texture::~texture()
 {
 }
-void	glutpp::texture::init(int w,int h)
+void	glutpp::texture::init_shadow(int w,int h)
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	w_ = w; h_ = h;
 
 	glGenTextures(1, &o_);
@@ -38,13 +41,19 @@ void	glutpp::texture::init(int w,int h)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
+	checkerror("");
 }
 void	glutpp::texture::bind()
 {
 	glBindTexture(GL_TEXTURE_2D, o_);
+	
+	checkerror("glBindTexture");
 }
 int	glutpp::texture::load_png(char const * filename)
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	png_byte header[8];
 
 	FILE *fp = fopen(filename, "rb");
@@ -176,6 +185,10 @@ int	glutpp::texture::load_png(char const * filename)
 
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	
+	printf("image '%s' loaded into texture object %i\n",filename,o_);
+
+	checkerror("");
 
 	// clean up
 	png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);

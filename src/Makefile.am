@@ -10,7 +10,8 @@ libglutpp_a_SOURCES = \
 		glutpp/texture.h glutpp/texture.cpp \
 		glutpp/program.h glutpp/program.cpp \
 		glutpp/camera.h glutpp/camera.cpp \
-		glutpp/light.h glutpp/light.cpp
+		glutpp/light.h glutpp/light.cpp \
+		glutpp/material.h glutpp/material.cpp
 
 #glutpp/plane.h glutpp/plane.cpp
 #glutpp/sphere.h glutpp/sphere.cpp
@@ -26,6 +27,9 @@ nobase_include_HEADERS = \
 		glutpp/attribute.h \
 		glutpp/camera.h \
 		glutpp/light.h \
+		glutpp/material.h \
+		glutpp/shaders/prog0/vs.glsl \
+		glutpp/shaders/prog0/fs.glsl \
 		glutpp/shaders/prog1/vs.glsl \
 		glutpp/shaders/prog1/fs.glsl \
 		glutpp/shaders/exp_map/vs.glsl \
@@ -36,7 +40,6 @@ nobase_include_HEADERS = \
 
 #glutpp/plane.h
 #glutpp/sphere.h
-
 
 CXXFLAGS = -std=c++0x
 LIBS = -lglutpp

@@ -7,14 +7,16 @@
 
 namespace glutpp
 {
+	class window;
 	class camera
 	{
 		public:
-			camera();
+			camera(window*);
 			math::mat44	proj();
 			math::mat44	view();
 			void		load();
 			
+			window*		window_;
 
 			float		fovy_;
 			float		zn_;
