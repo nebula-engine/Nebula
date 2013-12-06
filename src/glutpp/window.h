@@ -4,6 +4,11 @@
 #include <functional>
 #include <vector>
 
+#define STR_VALUE(name) #name
+#define GLUTPP_OBJECT_PREFIX GLUTPP_PREFIX /include/glutpp/objects/
+#define GLUTPP_SHADER_PREFIX GLUTPP_PREFIX /include/glutpp/shaders/
+
+
 #include <glutpp/texture.h>
 #include <glutpp/camera.h>
 #include <glutpp/light.h>
@@ -11,8 +16,6 @@
 #include <glutpp/plane.h>
 #include <glutpp/program.h>
 #include <glutpp/shader.h>
-
-
 
 #include <math/mat44.h>
 #include <math/vec4.h>
@@ -45,17 +48,42 @@ namespace glutpp
 				REFLECT_CURVED			= 1 << 6,
 				TEX_IMAGE			= 1 << 7,
 				TEX_NORMAL_MAP			= 1 << 8,
-				ORTHO				= 1 << 9
+				ORTHO				= 1 << 9,
+				SHADER				= 1 << 10
 			};
 			
 			window(int, int, int, int, const char * );
 			~window();
+			
+			void			init();
 
 			void			StartSpinning();
 			void			CallBackDisplayFunc();
 			void			CallBackIdleFunc(void);
 
 
+
+			void			display_ortho();
+			
+			void			callback_display_ortho();
+			void			display_dim();
+			void			display_bright();
+			void			display();
+			void			display_all_but(object*);
+			
+			void			RenderReflection();
+			void			lights_for_each(std::function<void(glutpp::light*)>);
+			void			objects_for_each(std::function<void(glutpp::object*)>);
+
+			void			SetWindowID(int newWindowID);
+			int			GetWindowID(void);
+			
+			void			uniforms();
+			void			shaders();
+			GLint			get_program();
+			
+			// virtual
+			virtual void		Idle();
 			virtual void		CallBackKeyboardFunc(unsigned char key, int x, int y);
 			virtual void		CallBackMotionFunc(int x, int y);
 			virtual void		CallBackMouseFunc(int button, int state, int x, int y);
@@ -64,27 +92,15 @@ namespace glutpp
 			virtual void		CallBackSpecialFunc(int key, int x, int y);   
 			virtual void		CallBackVisibilityFunc(int visible);
 
-			void			display_ortho();
-			void			display_dim();
-			void			display_bright();
-			
-			void			RenderReflection();
-			void			lights_for_each(std::function<void(glutpp::light*)>);
-			void			SetWindowID(int newWindowID);
-			int			GetWindowID(void);
-			void			Display();
-			void			display_all_but(object*);
-			
-			virtual void		DisplayOrtho();
-			virtual void		Idle();
 
+			char const *		title_;
 			int			height;
 			int			width;
 			int			initPositionX;
 			int			initPositionY;
-
+			
 			camera			camera_;
-
+			
 			std::vector<light*>	lights_;
 			std::vector<texture*>	shadow_maps_;
 
@@ -94,10 +110,15 @@ namespace glutpp
 			uniform*		uniform_proj_;
 
 			shader*			shaders_;
-			program*		program_;
+			int			shader_count_;
+			
 
 
 			std::vector<object*>	objects_;
+
+
+		private:
+			program*		program_;
 	};
 }
 

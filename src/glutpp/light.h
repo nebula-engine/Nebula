@@ -23,12 +23,12 @@ namespace glutpp
 			};
 			
 			light(window*,int);
-			
+			void		init();
 			void		updateGL();
 			void		load();
 			void		draw();
+			void		draw_shadow_no_shader();
 			void		dim();
-			void		RenderShadow();
 			void		RenderShadowPost();
 			void		RenderLightPOV();
 			

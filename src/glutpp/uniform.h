@@ -15,6 +15,8 @@ namespace glutpp
 			uniform(window*, char const *);
 			uniform(window*, char const *,char const *,int);
 
+			void		locate();
+
 			void		load(math::mat44);
 			void		load_1i(int);
 			void		load_4fv(float*);
@@ -23,6 +25,7 @@ namespace glutpp
 			void		load_matrix4fv(float*);
 			void		load_1f(float);
 			
+			char		name_[128];
 			GLuint		location_;
 	
 			window*		window_;

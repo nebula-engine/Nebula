@@ -14,7 +14,7 @@ namespace glutpp
 		public:
 			program();
 			void	init();
-			void	add_shader(glutpp::shader*);
+			void	add_shaders(glutpp::shader*,int);
 			void	compile();
 			void	use();
 			

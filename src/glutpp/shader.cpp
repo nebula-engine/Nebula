@@ -13,6 +13,7 @@
 void	glutpp::shader::load(const char * filename, GLenum shader_type)
 {	
 	printf("%s\n",__PRETTY_FUNCTION__);
+	printf("loading %s\n",filename);
 
 	FILE * fp;
 	size_t filesize;
