@@ -3,6 +3,7 @@
 
 //#include <GLee.h>
 
+
 #include <map>
 
 #include <GL/glew.h>
@@ -56,6 +57,8 @@ glutpp::window::window(
 	title_(title)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
+
+	printf(PNT(GLUTPP_PREFIX));
 }
 GLint	glutpp::window::get_program()
 {

@@ -4,9 +4,12 @@
 #include <functional>
 #include <vector>
 
-#define STR_VALUE(name) #name
-#define GLUTPP_OBJECT_PREFIX GLUTPP_PREFIX /include/glutpp/objects/
-#define GLUTPP_SHADER_PREFIX GLUTPP_PREFIX /include/glutpp/shaders/
+#define STR(x) #x
+#define PNT(x) STR(x)
+#define GLUTPP_OBJECT_PREFIX__ GLUTPP_PREFIX/glutpp/objects/
+#define GLUTPP_SHADER_PREFIX__ GLUTPP_PREFIX/glutpp/shaders/
+#define GLUTPP_OBJECT_PREFIX PNT(GLUTPP_OBJECT_PREFIX__)
+#define GLUTPP_SHADER_PREFIX PNT(GLUTPP_SHADER_PREFIX__)
 
 
 #include <glutpp/texture.h>

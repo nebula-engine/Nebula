@@ -116,7 +116,7 @@ CXXDEPMODE = depmode=gcc3
 
 #glutpp/plane.h
 #glutpp/sphere.h
-CXXFLAGS = -std=c++0x -DGLUTPP_PREFIX=\"$(pkgprefix)\"
+CXXFLAGS = -std=c++0x -DGLUTPP_PREFIX=${includedir}
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
@@ -221,8 +221,8 @@ nobase_include_HEADERS = \
 		glutpp/camera.h \
 		glutpp/light.h \
 		glutpp/material.h \
-		glutpp/shaders/prog0/vs.glsl \
-		glutpp/shaders/prog0/fs.glsl \
+		glutpp/shaders/prog_0/vs.glsl \
+		glutpp/shaders/prog_0/fs.glsl \
 		glutpp/shaders/prog1/vs.glsl \
 		glutpp/shaders/prog1/fs.glsl \
 		glutpp/shaders/exp_map/vs.glsl \
