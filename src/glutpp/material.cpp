@@ -1,6 +1,10 @@
+#include <glutpp/window.h>
 #include <glutpp/material.h>
 
-glutpp::material::material(window* window, math::color ambient, math::color diffuse, math::color specular, math::color emission, float shininess):
+glutpp::material::material(
+		window* window, math::color ambient,
+		math::color diffuse, math::color specular,
+		math::color emission, float shininess):
 	window_(window),
 	ambient_(ambient),
 	diffuse_(diffuse),
@@ -13,11 +17,11 @@ glutpp::material::material(window* window, math::color ambient, math::color diff
 	uniform_emission_(window,"front.emission"),
 	uniform_shininess_(window,"front.shininess")
 {
-	
+
 }
 void	glutpp::material::load()
 {
-	if(window_->all(SHADER))
+	if(window_->all(glutpp::window::SHADER))
 	{
 		uniform_ambient_.load_4fv(ambient_);
 		uniform_diffuse_.load_4fv(diffuse_);

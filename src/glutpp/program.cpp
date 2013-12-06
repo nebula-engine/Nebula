@@ -21,13 +21,16 @@ void	glutpp::program::init()
 	o_ = glCreateProgram();
 	checkerror("glCreateProgram");
 }
-void	glutpp::program::add_shader(glutpp::shader* s)
+void	glutpp::program::add_shaders(glutpp::shader* s,int c)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	printf("shader %i attached to program %i\n",s->o_,o_);
 	
-	glAttachShader(o_, s->o_);
-	checkerror("glAttachShader");
+	for(int i = 0; i < c; ++i )
+	{
+		glAttachShader(o_, s[i].o_);
+		checkerror("glAttachShader");
+	}
 }
 void	glutpp::program::compile()
 {

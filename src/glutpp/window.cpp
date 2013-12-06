@@ -3,6 +3,8 @@
 
 //#include <GLee.h>
 
+#include <map>
+
 #include <GL/glew.h>
 #include <GL/glut.h>
 
@@ -15,13 +17,22 @@
 #include <glutpp/shader.h>
 #include <glutpp/program.h>
 
-void	fatal_error(char const * c,...)
+template <typename... Args>
+void	fatal_error(char const * c, Args ...args)
 {
 	char fmt[128];
 	strcat(fmt, "error: ");
 	strcat(fmt, c);
 	strcat(fmt, "\n");
-	printf(fmt,...);
+	printf(fmt, args...);
+	exit(0);
+}
+void	fatal_error(char const * c)
+{
+	char fmt[128];
+	strcat(fmt, "error: ");
+	strcat(fmt, c);
+	strcat(fmt, "\n");
 	exit(0);
 }
 void	check_error()
@@ -32,14 +43,37 @@ void	check_error()
 		printf("%s\n",gluErrorString(errCode));
 	}
 }
-glutpp::window::window(int setWidth, int setHeight,
+glutpp::window::window(
+		int setWidth, int setHeight,
 		int setInitPositionX, int setInitPositionY,
 		const char * title ):
 	width(setWidth),
 	height(setHeight),
 	initPositionX(setInitPositionX),
 	initPositionY(setInitPositionY),
-	camera_(this)
+	camera_(this),
+	program_(NULL),
+	title_(title)
+{
+	printf("%s\n",__PRETTY_FUNCTION__);
+}
+GLint	glutpp::window::get_program()
+{
+	if(program_ == NULL)
+	{
+		printf("program is NULL\n");
+		exit(0);
+	}
+	
+	if(program_->o_ == 0)
+	{
+		printf("program object is 0\n");
+		exit(0);
+	}
+	
+	return program_->o_;
+}
+void	glutpp::window::init()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -47,7 +81,7 @@ glutpp::window::window(int setWidth, int setHeight,
 	glutInitWindowSize(width, height);
 	glutInitWindowPosition(initPositionX, initPositionY);
 
-	glutpp::__master.CallGlutCreateWindow( (char *)title, this );
+	glutpp::__master.CallGlutCreateWindow( (char *)title_, this );
 
 	GLenum err = glewInit();
 	if (err != GLEW_OK) fatal_error("GLEW: %s", glewGetErrorString(err));
@@ -85,61 +119,84 @@ glutpp::window::window(int setWidth, int setHeight,
 	// shaders
 	shaders();
 
+	uniforms();
+
 	checkerror("unknown");
 }
 glutpp::window::~window()
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	glutDestroyWindow(windowID);
 }
 void	glutpp::window::shaders()
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
+	// remove old program
+	if(program_)
+	{
+		delete program_;
+	}
+	
 	std::map<unsigned int,int> shader_map;
-	
-	unsigned int mask = RAY_TRACE | LIGHTING | SHADOW | SHADOW_MAP | REFLECT | REFLECT_PLANAR | REFLECT_CURVED | TEX_IMAGE | TEX_NORMAL_MAP;
-	
+
+	unsigned int mask = 
+		RAY_TRACE |
+		LIGHTING | 
+		SHADOW |
+		SHADOW_MAP | 
+		REFLECT |
+		REFLECT_PLANAR |
+		REFLECT_CURVED |
+		TEX_IMAGE |
+		TEX_NORMAL_MAP;
+
 	// populate map based on platform capability
 	shader_map[ LIGHTING ] = 0;
-	
+
 	if(all(SHADER))
-	{	
+	{
+		printf("shaders enabled\n");
+		
 		unsigned int f = flag_ & mask;
-		
+
 		auto it = shader_map.find(f);
-		
+
 		if(it == shader_map.end()) fatal_error("shader configuration %i not implemented",f);
 
 		int s = it->second;
 
 		program_ = new program;
 		program_->init();
-		
+
 		shader_count_ = 0;
 		switch(s)
 		{
 			case 0:
 				shaders_ = new shader[2];
-				
-				shaders_[0].load(GLUTPP_SHADER_PREFIX"/prog_0/vs.glsl", GL_VERTEX_SHADER);
-				shaders_[1].load(GLUTPP_SHADER_PREFIX"/prog_0/fs.glsl", GL_FRAGMENT_SHADER);
-				
+
+				shaders_[0].load(GLUTPP_SHADER_PREFIX"prog_0/vs.glsl", GL_VERTEX_SHADER);
+				shaders_[1].load(GLUTPP_SHADER_PREFIX"prog_0/fs.glsl", GL_FRAGMENT_SHADER);
+
 				shader_count_ = 2;
 				break;
 			default:
 				fatal_error("shader configuration %i not implemented",f);
 				break;
 		}
-		
-		program_->add_shaders(shaders_,shader_count);
+
+		program_->add_shaders(shaders_,shader_count_);
 		program_->compile();
 		program_->use();
 	}
 }
 void	glutpp::window::uniforms()
 {
-	uniform_light_count_	= new uniform(this,"light_count");
-	uniform_model_		= new uniform(this,"model");
-	uniform_view_		= new uniform(this,"view");
-	uniform_proj_		= new uniform(this,"proj");
+	uniform_light_count_ = new uniform(this,"light_count");
+	uniform_model_ = new uniform(this,"model");
+	uniform_view_ = new uniform(this,"view");
+	uniform_proj_ = new uniform(this,"proj");
 }
 void	glutpp::window::lights_for_each(std::function<void(glutpp::light*)> func)
 {
@@ -155,7 +212,7 @@ void	glutpp::window::objects_for_each(std::function<void(glutpp::object*)> func)
 		func(objects_.at(i));
 	}
 }
-void	glutpp::window::display_ortho()
+void	glutpp::window::callback_display_ortho()
 {
 	//Restore other states
 	glDisable(GL_LIGHTING);
@@ -171,7 +228,7 @@ void	glutpp::window::display_ortho()
 	glPushMatrix();
 	glLoadIdentity();
 
-	DisplayOrtho();
+	display_ortho();
 
 	//Print text
 	//glRasterPos2f(-1.0f, 0.9f);
@@ -192,27 +249,27 @@ void	glutpp::window::RenderReflection()
 		(*it)->render_reflection();
 	}
 }
-void	glutpp::window::DisplayDim()
+void	glutpp::window::display_dim()
 {
 	//glEnable(GL_LIGHTING);
 
 	lights_for_each(&glutpp::light::dim);
 
-	Display();
+	display();
 }
 void	glutpp::window::display_bright()
 {
 	//3rd pass: Draw with bright light
 	lights_for_each(&glutpp::light::updateGL);
-	
+
 	if(all(REFLECT | REFLECT_PLANAR)) RenderReflection();
-	
-	if(all(SHADOW | SHADOW_MAP)) lights_for_each(&glutpp::light::RenderShadow);
-	
+
+	if(all(SHADOW | SHADOW_MAP) && !all(SHADER)) lights_for_each(&glutpp::light::draw_shadow_no_shader);
+
 	display();
-	
+
 	check_error();
-	
+
 	if(all(SHADOW | SHADOW_MAP)) lights_for_each(&glutpp::light::RenderShadowPost);
 }
 void glutpp::window::CallBackDisplayFunc()
@@ -220,19 +277,19 @@ void glutpp::window::CallBackDisplayFunc()
 	// uniforms
 	uniform_light_count_->load_1i(lights_.size());
 	lights_for_each(&glutpp::light::load);
-	
+
 	if(all(SHADOW | SHADOW_MAP)) lights_for_each(&glutpp::light::RenderLightPOV);
-	
+
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-	
+
 	camera_.load();
-	
+
 	if(all(SHADOW | SHADOW_MAP) && !all(SHADER)) display_dim();
-	
+
 	display_bright();
-	
+
 	if(all(ORTHO)) display_ortho();
-	
+
 	glFinish();
 	glutSwapBuffers();
 	glutPostRedisplay();
@@ -267,13 +324,13 @@ void glutpp::window::CallBackKeyboardFunc(unsigned char key, int x, int y)
 	switch(key)
 	{
 		case 's':
-			toggle( SHADOW );
+			toggle(SHADOW);
 			break;
 		case 'o':
-			toggle( ORTHO );
+			toggle(ORTHO);
 			break;
 		case 'r':
-			toggle( PLANAR_REFLECTION | PLANAR_REFLECTION_STENCIL );
+			toggle(REFLECT);
 			break;
 		case 27:
 			exit(0);
@@ -309,7 +366,7 @@ int glutpp::window::GetWindowID(void)
 	return( windowID );
 }
 
-void glutpp::window::Display()
+void glutpp::window::display()
 {
 	for( auto it = objects_.begin(); it != objects_.end(); ++it )
 	{
@@ -323,7 +380,7 @@ void	glutpp::window::display_all_but(object* o)
 		if( (*it) != o ) (*it)->draw();
 	}
 }     
-void glutpp::window::DisplayOrtho()
+void glutpp::window::display_ortho()
 {}   
 void glutpp::window::Idle()
 {}   

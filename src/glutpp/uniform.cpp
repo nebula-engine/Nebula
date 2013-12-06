@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <assert.h>
+
 //#include <GL/glew.h>
 //#include <GL/glut.h>
 
@@ -12,34 +14,36 @@
 glutpp::uniform::uniform(window* window, char const * name):
 	window_(window)
 {
-	location_ = glGetUniformLocation(window_->program_->o_, name);
+	strcpy(name_,name);
 	
-	printf("uniform %s %i\n",name,location_);
+	printf("%s\n",__PRETTY_FUNCTION__);
+	printf("uniform %s\n",name_);
 	
 	checkerror("glGetUniformLocation");
 }
 glutpp::uniform::uniform(window* window, char const * struct_str, char const * name, int o):
 	window_(window)
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
 	char o_str[32];
 	sprintf(o_str, "%i", o);
 	
-	char* fullname = new char[strlen(o_str) + strlen(struct_str) + strlen(name) + 4];
+	name_[0] = '\0';
 	
-	strncpy(fullname,						struct_str, strlen(struct_str));
-	memset(	fullname + strlen(struct_str),				'[', 1);
-	strncpy(fullname + strlen(struct_str) + 1,			o_str, strlen(o_str));
-	memset(	fullname + strlen(struct_str) + 1 + strlen(o_str),	']', 1);
-	memset(	fullname + strlen(struct_str) + 1 + strlen(o_str) + 1,	'.', 1);
-	strncpy(fullname + strlen(struct_str) + 1 + strlen(o_str) + 2,	name, strlen(name));
-
-	fullname[strlen(struct_str) + 1 + strlen(o_str) + 2 + strlen(name)] = '\0';
+	strcat(name_, struct_str);
+	strcat(name_, "[");
+	strcat(name_, o_str);
+	strcat(name_, "].");
+	strcat(name_, name);
 	
-	location_ = glGetUniformLocation(window_->program_->o_, fullname);
-	
-	printf("uniform %s %i\n",fullname,location_);
+	printf("uniform %s\n",name_);
 	
 	checkerror("glGetUniformLocation");
+}
+void	glutpp::uniform::locate()
+{
+	location_ = glGetUniformLocation(window_->get_program(), name_);
 }
 void	glutpp::uniform::load(math::mat44 m)
 {

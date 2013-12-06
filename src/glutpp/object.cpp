@@ -139,7 +139,7 @@ void glutpp::object::init_buffer()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	GLint program = window_->program_->o_;
+	GLint program = window_->get_program();
 	
 	checkerror("unknown");
 
@@ -211,7 +211,7 @@ void glutpp::object::init_buffer()
 }
 void	glutpp::object::model_load()
 {
-	if(window_->all(SHADER))
+	if(window_->all(glutpp::window::SHADER))
 	{
 		window_->uniform_model_->load_matrix4fv(model_);
 	}
@@ -219,12 +219,12 @@ void	glutpp::object::model_load()
 	{
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
-		glMultMatrix(model_);
+		glMultMatrixf(model_);
 	}
 }
 void	glutpp::object::model_unload()
 {
-	if(window_->all(SHADER))
+	if(window_->all(glutpp::window::SHADER))
 	{
 	}
 	else
