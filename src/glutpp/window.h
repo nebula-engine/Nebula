@@ -3,6 +3,7 @@
 
 #include <functional>
 #include <vector>
+#include <map>
 
 #define STR(x) #x
 #define PNT(x) STR(x)
@@ -19,6 +20,8 @@
 #include <glutpp/plane.h>
 #include <glutpp/program.h>
 #include <glutpp/shader.h>
+
+#include <sig/signal.h>
 
 #include <math/mat44.h>
 #include <math/vec4.h>
@@ -97,7 +100,9 @@ namespace glutpp
 			virtual void		CallBackSpecialFunc(int key, int x, int y);   
 			virtual void		CallBackVisibilityFunc(int visible);
 
-
+			// input signals
+			std::map<unsigned char,sig::signal1f>	map_sig_key_;
+			
 			char const *		title_;
 			int			height;
 			int			width;

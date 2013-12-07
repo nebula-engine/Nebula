@@ -60,7 +60,7 @@ glutpp::window::window(
 
 	printf(PNT(GLUTPP_PREFIX));
 	
-	memset(lights_, NULL, LIGHT_MAX);
+	memset(lights_, 0, LIGHT_MAX);
 }
 void	glutpp::window::add_object(object* o)
 {
@@ -381,7 +381,12 @@ void glutpp::window::StartSpinning()
 void glutpp::window::CallBackKeyboardFunc(unsigned char key, int x, int y)
 {
 	printf("%s\n",__FUNCTION__);
-
+	
+	if(action==GLFW_PRESS)
+	{
+		map_sig_key_[key](
+	}
+	
 	switch(key)
 	{
 		case 's':

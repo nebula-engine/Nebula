@@ -3,6 +3,8 @@
 
 #include <GL/glew.h>
 
+#include <sig/connection.h>
+
 #include <glutpp/window.h>
 #include <glutpp/camera.h>
 
@@ -22,6 +24,16 @@ glutpp::camera::camera():
 void		glutpp::camera::init(window* window)
 {
 	window_ = window;
+
+	connection_u_.push_back(
+			window_->map_sig_key_['w'].connect(std::bind(&glutpp::camera::north,this,std::placeholders::_1))
+			);
+
+
+}
+int		glutpp::camera::north(float)
+{
+	return 1;
 }
 math::mat44	glutpp::camera::view()
 {
@@ -40,7 +52,7 @@ math::mat44	glutpp::camera::proj()
 void		glutpp::camera::load()
 {
 	assert(window_);
-	
+
 	glViewport(0, 0, w_, h_);
 
 	if(window_->all(glutpp::window::SHADER))
@@ -57,7 +69,25 @@ void		glutpp::camera::load()
 		glLoadMatrixf(view());	
 	}
 }
+void		glutpp::camera::step(float dt)
+{
+	math::vec3 v(0.0,0.0,0.0);
 
+	for(auto it = connection_u_.begin(); it != connection_u_.end(); ++it)
+	{
+		v.x += std::get<0>((*it)->tup_);
+	}	
+	for(auto it = connection_v_.begin(); it != connection_v_.end(); ++it)
+	{
+		v.y += std::get<0>((*it)->tup_);
+	}
+	for(auto it = connection_w_.begin(); it != connection_w_.end(); ++it)
+	{
+		v.z += std::get<0>((*it)->tup_);
+	}
+
+	eye_ += v * dt;
+}
 
 
 

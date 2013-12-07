@@ -4,6 +4,7 @@
 #include <math/vec4.h>
 #include <math/vec3.h>
 #include <math/vec2.h>
+#include <math/geo/polyhedron.h>
 
 #include <glutpp/texture.h>
 #include <glutpp/uniform.h>
@@ -44,6 +45,7 @@ namespace glutpp
 			
 			object();
 			void		init(window*);
+			void		construct(math::geo::polyhedron*);
 			void		uniforms();
 			int		save(char const *);
 			int		load(char const *);
