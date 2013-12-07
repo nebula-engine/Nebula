@@ -24,19 +24,17 @@ struct Material
 	float shininess;
 };
 
-struct VS_OUT
+in VS_OUT
 {
 	vec4 P;
         vec3 N;
 	vec2 texcoor;
-};
+} fs_in;
 
 uniform Light lights[20];
 uniform int light_count;
 
 uniform Material front;
-
-in VS_OUT fs_in;
 
 out vec4 color;
 
@@ -64,14 +62,13 @@ void main(void)
 	// emission
 	emission = front.emission;
 
-
-	for (int i = 0; i < light_count; i++) // for all light sources
+	for(int i = 0; i < light_count; i++) // for all light sources
 	{
 		// ambient
 		ambient = lights[i].ambient * front.ambient;
 
 		// diffuse
-		if (0.0 == lights[i].position.w) // directional light?
+		if(0.0 == lights[i].position.w) // directional light?
 		{
 			atten = 1.0; // no atten
 			L = normalize(vec3(lights[i].position));
@@ -103,8 +100,20 @@ void main(void)
 				}
 			}
 		}
+		
+		float angle = max(0.0, dot(N,L));
+		
+		diffuse = atten * lights[i].diffuse * front.diffuse * vec4(vec3(angle),1.0);
+		
+		//diffuse = lights[i].diffuse;
+		
+		//diffuse.r = angle;
 
-		diffuse = atten * lights[i].diffuse * front.diffuse * vec4(vec3(max(0.0, dot(N,L))),1.0);
+		//if( angle <= 0.0 ) diffuse = front.diffuse;
+		//if( atten <= 0.0 ) diffuse = front.diffuse;
+		
+		
+		//diffuse.rgb = N;
 
 		// specular
 		if (dot(N,L) < 0.0) // light source behind
@@ -116,12 +125,14 @@ void main(void)
 			specular = atten * lights[i].specular * front.specular *
 				vec4(vec3(pow(max(0.0, dot(reflect(-L,N), -P.xyz)), front.shininess)),1.0);
 		}
-
+		
 		color += ambient + diffuse + specular;
+		
+		//color += front.diffuse;
 	}
 	
 	color += emission;
-	color = front.diffuse;
+	//color = front.diffuse;
 }
 
 

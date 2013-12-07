@@ -42,14 +42,16 @@ namespace glutpp
 				NONE = 0,
 			};
 			
-			object(window*);
-			GLuint		png_texture_load(const char *, int* , int*);
+			object();
+			void		init(window*);
+			void		uniforms();
 			int		save(char const *);
 			int		load(char const *);
 			void		init_buffer();
 			void		model_load();
 			void		model_unload();
-
+			
+			
 			virtual void	draw();
 			virtual void	render_reflection();
 			

@@ -1,26 +1,29 @@
+#include <stdio.h>
+
 #include <glutpp/window.h>
 #include <glutpp/material.h>
 
-glutpp::material::material(
-		window* window, math::color ambient,
-		math::color diffuse, math::color specular,
-		math::color emission, float shininess):
-	window_(window),
-	ambient_(ambient),
-	diffuse_(diffuse),
-	specular_(specular),
-	emission_(emission),
-	shininess_(shininess),
-	uniform_ambient_(window,"front.ambient"),
-	uniform_diffuse_(window,"front.diffuse"),
-	uniform_specular_(window,"front.specular"),
-	uniform_emission_(window,"front.emission"),
-	uniform_shininess_(window,"front.shininess")
+glutpp::material::material():
+	ambient_(math::black),
+	diffuse_(math::cyan),
+	specular_(math::white),
+	emission_(math::black),
+	shininess_(128)
+{}
+void	glutpp::material::init(window* window)
 {
-
+	window_ = window;
+	
+	uniform_ambient_.init(window,"front.ambient");
+	uniform_diffuse_.init(window,"front.diffuse");
+	uniform_specular_.init(window,"front.specular");
+	uniform_emission_.init(window,"front.emission");
+	uniform_shininess_.init(window,"front.shininess");
 }
 void	glutpp::material::load()
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
 	if(window_->all(glutpp::window::SHADER))
 	{
 		uniform_ambient_.load_4fv(ambient_);

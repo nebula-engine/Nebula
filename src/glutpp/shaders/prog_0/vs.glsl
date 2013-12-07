@@ -24,12 +24,12 @@ struct Material
 	float shininess;
 };
 
-struct VS_OUT
+out VS_OUT
 {
 	vec4 P;
 	vec3 N;
 	vec2 texcoor;
-};
+} vs_out;
 
 uniform mat4 model;
 uniform mat4 view;
@@ -38,8 +38,6 @@ uniform mat4 proj;
 layout (location = 0) in vec4 position;
 layout (location = 1) in vec3 normal;
 layout (location = 2) in vec2 texcoor;
-
-out VS_OUT vs_out;
 
 void main(void)
 {

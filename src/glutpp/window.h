@@ -27,7 +27,7 @@
 #include <gal/flag.h>
 
 
-#define LIGHTS_MAX 20
+#define LIGHT_MAX 20
 
 namespace glutpp
 {
@@ -59,7 +59,9 @@ namespace glutpp
 			~window();
 			
 			void			init();
-
+			void			add_object(object*);
+			void			add_light(light*);
+			
 			void			StartSpinning();
 			void			CallBackDisplayFunc();
 			void			CallBackIdleFunc(void);
@@ -104,13 +106,13 @@ namespace glutpp
 			
 			camera			camera_;
 			
-			std::vector<light*>	lights_;
-			std::vector<texture*>	shadow_maps_;
-
-			uniform*		uniform_light_count_;
-			uniform*		uniform_model_;
-			uniform*		uniform_view_;
-			uniform*		uniform_proj_;
+			light*			lights_[LIGHT_MAX];
+			int			light_count_;
+			
+			uniform			uniform_light_count_;
+			uniform			uniform_model_;
+			uniform			uniform_view_;
+			uniform			uniform_proj_;
 
 			shader*			shaders_;
 			int			shader_count_;

@@ -1,65 +1,80 @@
 #include <stdio.h>
+#include <assert.h>
+
 #include <glutpp/light.h>
 #include <glutpp/window.h>
 
-
-glutpp::light::light(window* window,int o):
-	window_(window),
+glutpp::light::light():
+	window_(NULL),
 	ambient_(math::white * 0.2f),
 	diffuse_(math::white),
 	specular_(math::white),
-	texture_shadow_map_(window),
-	o_(o),
-	camera_(window),
-	uniform_position_(window,"lights","position",o),
-	uniform_ambient_(window,"lights","ambient",o),
-	uniform_diffuse_(window,"lights","diffuse",o),
-	uniform_specular_(window,"lights","specular",o),
-	uniform_spot_direction_(window,"lights","spot_direction",o),
-	uniform_spot_cutoff_(window,"lights","spot_cutoff",o),
-	uniform_spot_exponent_(window,"lights","spot_exponent",o),
-	uniform_spot_light_cos_cutoff_(window,"lights","spot_light_cos_cutoff",o),
-	uniform_atten_const_(window,"lights","atten_const",o),
-	uniform_atten_linear_(window,"lights","atten_linear",o),
-	uniform_atten_quad_(window,"lights","atten_quad",o),
-	spot_cutoff_(10),
-	spot_exponent_(1),
+	o_(-1),
+	spot_direction_(0.0, 0.0, -1.0),
+	spot_cutoff_(10.0),
+	spot_exponent_(1.0),
 	atten_const_(1.0),
 	atten_linear_(0.0),
 	atten_quad_(0.0)
-{}
-void	glutpp::light::init()
+{
+
+}
+void	glutpp::light::init(window* window, int o)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-
+	
+	window_ = window;
+	o_ = o;
+	
 	camera_.fovy_ = 45.0f;
 	camera_.w_ = 512;
 	camera_.h_ = 512;
 	camera_.zn_ = 1.0f;
 	camera_.zf_ = 100.f;
-
+	
 	printf("GL_LIGHT%i\n",o_);
-
+	
 	glEnable(GL_LIGHTING); checkerror("glEnable lighting");
 	glEnable(GL_LIGHT0 + o_); checkerror("glEnable light");
-
-	updateGL();
-
+	
 	texture_shadow_map_.init_shadow(camera_.w_, camera_.h_);
+	
+	uniforms();
 }
-void	glutpp::light::updateGL()
+void	glutpp::light::uniforms()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	if(0)//!isset(SHADERS))
-	{
-	}
+	uniform_position_.init(
+			window_,"lights","position",o_);
+	uniform_ambient_.init(
+			window_,"lights","ambient",o_);
+	uniform_diffuse_.init(
+			window_,"lights","diffuse",o_);
+	uniform_specular_.init(
+			window_,"lights","specular",o_);
+	uniform_spot_direction_.init(
+			window_,"lights","spot_direction",o_);
+	uniform_spot_cutoff_.init(
+			window_,"lights","spot_cutoff",o_);
+	uniform_spot_exponent_.init(
+			window_,"lights","spot_exponent",o_);
+	uniform_spot_light_cos_cutoff_.init(
+			window_,"lights","spot_light_cos_cutoff",o_);
+	uniform_atten_const_.init(
+			window_,"lights","atten_const",o_);
+	uniform_atten_linear_.init(
+			window_,"lights","atten_linear",o_);
+	uniform_atten_quad_.init(
+			window_,"lights","atten_quad",o_);
 }
 void	glutpp::light::dim()
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
 	//printf("diffuse\n");
 	//diffuse_.print();
-
+	
 	glLightfv(o_, GL_POSITION, camera_.eye_);
 	glLightfv(o_, GL_AMBIENT, ambient_);
 	glLightfv(o_, GL_DIFFUSE, diffuse_ * 0.2f);
@@ -71,10 +86,14 @@ void	glutpp::light::draw()
 }
 void	glutpp::light::load()
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	if(window_->all(glutpp::window::LIGHTING))
 	{
 		if(window_->all(glutpp::window::SHADER))
 		{
+			printf("shader lighting\n");
+
 			uniform_position_.load_4fv(			camera_.eye_);
 			uniform_ambient_.load_4fv(			ambient_);
 			uniform_diffuse_.load_4fv(			diffuse_);

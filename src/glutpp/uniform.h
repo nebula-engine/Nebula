@@ -11,12 +11,11 @@ namespace glutpp
 	class uniform
 	{
 		public:
-
-			uniform(window*, char const *);
-			uniform(window*, char const *,char const *,int);
-
+			uniform();
+			void		init(window*, char const *);
+			void		init(window*, char const *,char const *,int);
 			void		locate();
-
+			
 			void		load(math::mat44);
 			void		load_1i(int);
 			void		load_4fv(float*);
@@ -29,7 +28,6 @@ namespace glutpp
 			GLuint		location_;
 	
 			window*		window_;
-
 	};
 }
 

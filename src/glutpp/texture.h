@@ -17,16 +17,17 @@ namespace glutpp
 	class texture
 	{
 		public:
-			texture(window*);
+			texture();
 			~texture();
+			void			init(window*);
 			void			init_shadow(int,int);
 			int			load_png(char const *);
 			void			bind();
-
+			
 			GLint			w_;
 			GLint			h_;
 			GLuint			o_;
-
+			
 			window*			window_;
 	};
 }

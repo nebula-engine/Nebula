@@ -11,20 +11,29 @@
 #include <glutpp/uniform.h>
 #include <glutpp/window.h>
 
-glutpp::uniform::uniform(window* window, char const * name):
-	window_(window)
+
+glutpp::uniform::uniform():
+	window_(NULL)
 {
+}
+void	glutpp::uniform::init(window* window, char const * name)
+{
+	window_ = window;
+	
 	strcpy(name_,name);
 	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	printf("uniform %s\n",name_);
 	
 	checkerror("glGetUniformLocation");
+
+	locate();
 }
-glutpp::uniform::uniform(window* window, char const * struct_str, char const * name, int o):
-	window_(window)
+void	glutpp::uniform::init(window* window, char const * struct_str, char const * name, int o)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
+
+	window_ = window;
 	
 	char o_str[32];
 	sprintf(o_str, "%i", o);
@@ -40,9 +49,13 @@ glutpp::uniform::uniform(window* window, char const * struct_str, char const * n
 	printf("uniform %s\n",name_);
 	
 	checkerror("glGetUniformLocation");
+	
+	locate();
 }
 void	glutpp::uniform::locate()
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	location_ = glGetUniformLocation(window_->get_program(), name_);
 }
 void	glutpp::uniform::load(math::mat44 m)

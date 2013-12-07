@@ -22,8 +22,9 @@ namespace glutpp
 				DIRECTIONAL = 1 << 0
 			};
 			
-			light(window*,int);
-			void		init();
+			light();
+			void		init(window*,int);
+			void		uniforms();
 			void		updateGL();
 			void		load();
 			void		draw();

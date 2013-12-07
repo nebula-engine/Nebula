@@ -11,23 +11,23 @@ namespace glutpp
 	class camera
 	{
 		public:
-			camera(window*);
+			camera();
+			void		init(window*);
 			math::mat44	proj();
 			math::mat44	view();
 			void		load();
 			
 			window*		window_;
-
+			
 			float		fovy_;
 			float		zn_;
 			float		zf_;
 			int		w_;
 			int		h_;
-
+			
 			math::vec4	eye_;
 			math::vec3	center_;
 			math::vec3	up_;
-
 	};
 }
 

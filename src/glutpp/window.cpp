@@ -52,13 +52,52 @@ glutpp::window::window(
 	height(setHeight),
 	initPositionX(setInitPositionX),
 	initPositionY(setInitPositionY),
-	camera_(this),
 	program_(NULL),
-	title_(title)
+	title_(title),
+	light_count_(0)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	printf(PNT(GLUTPP_PREFIX));
+	
+	memset(lights_, NULL, LIGHT_MAX);
+}
+void	glutpp::window::add_object(object* o)
+{
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
+	if(o == NULL)
+	{
+		printf("object is NULL\n");
+		return;
+	}
+	
+	objects_.push_back(o);
+	
+	o->init(this);
+	o->init_buffer();
+}
+void	glutpp::window::add_light(light* l)
+{
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
+	if(light_count_ == LIGHT_MAX)
+	{
+		printf("max light\n");
+		return;
+	}
+	
+	if(l == NULL)
+	{
+		printf("light is NULL\n");
+		return;
+	}
+	
+	lights_[light_count_] = l;
+	
+	l->init(this, light_count_);
+	
+	light_count_++;
 }
 GLint	glutpp::window::get_program()
 {
@@ -95,10 +134,6 @@ void	glutpp::window::init()
 
 	printf("%s\n",glGetString(GL_SHADING_LANGUAGE_VERSION));
 	
-	glEnable(GL_LIGHTING);
-
-	//lights_enable();
-
 	//Check for necessary extensions
 	if(!GL_ARB_depth_texture || !GL_ARB_shadow)
 	{
@@ -124,6 +159,8 @@ void	glutpp::window::init()
 
 	uniforms();
 
+	camera_.init(this);
+	
 	checkerror("unknown");
 }
 glutpp::window::~window()
@@ -195,23 +232,38 @@ void	glutpp::window::shaders()
 	}
 }
 void	glutpp::window::uniforms()
-{
-	uniform_light_count_ = new uniform(this,"light_count");
-	uniform_model_ = new uniform(this,"model");
-	uniform_view_ = new uniform(this,"view");
-	uniform_proj_ = new uniform(this,"proj");
+{	printf("%s\n",__PRETTY_FUNCTION__);
+
+	uniform_light_count_.init(this,"light_count");
+	uniform_model_.init(this,"model");
+	uniform_view_.init(this,"view");
+	uniform_proj_.init(this,"proj");
 }
 void	glutpp::window::lights_for_each(std::function<void(glutpp::light*)> func)
-{
-	for(int i = 0; i < lights_.size(); ++i)
+{	printf("%s\n",__PRETTY_FUNCTION__);
+
+	for(int i = 0; i < light_count_; ++i)
 	{
-		func(lights_.at(i));
+		if(lights_[i] == NULL)
+		{
+			printf("light is NULL\n");
+			exit(0);
+		}
+		
+		func(lights_[i]);
 	}
 }
 void	glutpp::window::objects_for_each(std::function<void(glutpp::object*)> func)
-{
+{	printf("%s\n",__PRETTY_FUNCTION__);
+
 	for(int i = 0; i < objects_.size(); ++i)
 	{
+		if(lights_[i] == NULL)
+		{
+			printf("light is NULL\n");
+			exit(0);
+		}
+
 		func(objects_.at(i));
 	}
 }
@@ -262,8 +314,10 @@ void	glutpp::window::display_dim()
 }
 void	glutpp::window::display_bright()
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	//3rd pass: Draw with bright light
-	lights_for_each(&glutpp::light::updateGL);
+	lights_for_each(&glutpp::light::load);
 
 	if(all(REFLECT | REFLECT_PLANAR)) RenderReflection();
 
@@ -277,10 +331,12 @@ void	glutpp::window::display_bright()
 }
 void glutpp::window::CallBackDisplayFunc()
 {
-	// uniforms
-	uniform_light_count_->load_1i(lights_.size());
-	lights_for_each(&glutpp::light::load);
+	printf("%s\n",__PRETTY_FUNCTION__);
 
+	// uniforms
+	uniform_light_count_.load_1i(light_count_);
+	lights_for_each(&glutpp::light::load);
+	
 	if(all(SHADOW | SHADOW_MAP)) lights_for_each(&glutpp::light::RenderLightPOV);
 
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
@@ -317,6 +373,8 @@ void glutpp::window::CallBackIdleFunc(void)
 }
 void glutpp::window::StartSpinning()
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	glutpp::__master.SetIdleToCurrentWindow();
 	glutpp::__master.EnableIdleFunction();
 }

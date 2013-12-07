@@ -11,7 +11,8 @@ namespace glutpp
 	class material
 	{
 		public:
-			material(window*,math::color,math::color,math::color,math::color,float);
+			material();
+			void		init(window*);
 			void		load();
 
 			window*		window_;

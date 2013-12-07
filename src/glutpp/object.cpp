@@ -10,21 +10,26 @@
 #include <glutpp/object.h>
 #include <glutpp/window.h>
 
-glutpp::object::object(window* window):
-	window_(window),
-	texture_image_(window),
-	uniform_image_(window,"image"),
-	attrib_position_(0,"position"),
-	attrib_normal_(1,"normal"),
-	attrib_texcoor_(2,"texcoor"),
-	material_front_(
-			window,
-			math::blue,
-			math::red,
-			math::white,
-			math::black,128.0),
+glutpp::object::object():
+	window_(NULL),
 	type_(NONE)
 {}
+void	glutpp::object::init(window* window)
+{
+	window_ = window;
+
+	uniforms();
+	
+	material_front_.init(window_);
+}
+void	glutpp::object::uniforms()
+{
+	uniform_image_.init(window_, "image");
+
+	attrib_position_.init(window_, 0, "position");
+	attrib_normal_.init(window_, 1, "normal");
+	attrib_texcoor_.init(window_, 2, "texcoor");
+}
 void print_vector(GLfloat* v, unsigned int m, unsigned int n)
 {
 	for(unsigned int a=0;a<m;++a)
@@ -59,12 +64,18 @@ void readbuffer(GLuint buffer)
 	glGetBufferSubData(GL_ARRAY_BUFFER, 0, 1*4*sizeof(GLfloat), data);
 	checkerror("glGetBufferSubData");
 }
-int	glutpp::object::load(const char * filename)
+int	glutpp::object::load(const char * name)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-
+	
+	char filename[256];
+	filename[0] = '\0';
+	
+	strcat(filename, GLUTPP_OBJECT_PREFIX);
+	strcat(filename, name);
+	
 	FILE * fp;
-
+	
 	printf("load file '%s'\n",filename);
 
 	fp = fopen(filename, "rb");
@@ -92,8 +103,6 @@ int	glutpp::object::load(const char * filename)
 
 	// print
 	for(int i = 0; i < fh_.len_vertices_; ++i) vertices_[i].print();
-	
-	init_buffer();
 	
 	return 0;
 }
@@ -138,13 +147,19 @@ int	glutpp::object::save(const char * filename)
 void glutpp::object::init_buffer()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
+
+	if(window_ == NULL)
+	{
+		printf("window is NULL\n");
+		exit(0);
+	}
 	
 	GLint program = window_->get_program();
 	
 	checkerror("unknown");
-
+	
 	// attributes
-
+	
 	// image
 	texture_image_.load_png("bigtux.png");
 
@@ -213,7 +228,7 @@ void	glutpp::object::model_load()
 {
 	if(window_->all(glutpp::window::SHADER))
 	{
-		window_->uniform_model_->load_matrix4fv(model_);
+		window_->uniform_model_.load_matrix4fv(model_);
 	}
 	else
 	{
@@ -238,7 +253,7 @@ void	glutpp::object::draw()
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	checkerror("unknown");
-	
+
 	attrib_position_.enable();
 	attrib_normal_.enable();
 	attrib_texcoor_.enable();
@@ -247,7 +262,7 @@ void	glutpp::object::draw()
 
 	// material
 	material_front_.load();
-	
+
 	// texture
 	glActiveTexture(GL_TEXTURE0);checkerror("glActiveTexture");
 	texture_image_.bind();
@@ -258,12 +273,12 @@ void	glutpp::object::draw()
 	glBindBuffer(GL_ARRAY_BUFFER, vbo_); checkerror("glBindBuffer");
 	// indices
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer_indices_); checkerror("glBindBuffer");
-	
+
 	// draw
 	model_load();
-	
+
 	glDrawElements(GL_TRIANGLES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);checkerror("glDrawElements");
-	
+
 	model_unload();
 
 	printf("draw\n");
