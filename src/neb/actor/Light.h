@@ -11,7 +11,7 @@ namespace neb
 			public neb::actor::Base
 		{
 			public:
-				void Display();
+				void	init();
 		};
 	}
 }

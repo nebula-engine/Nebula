@@ -11,7 +11,7 @@ namespace neb
 			public neb::actor::Actor
 		{
 			public:
-				virtual void Display() = 0;
+				virtual void		init() = 0;
 
 				physx::PxShape*		px_shape_;
 		};

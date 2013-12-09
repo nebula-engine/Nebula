@@ -11,7 +11,7 @@ namespace neb
 			public neb::actor::Rigid_Body
 		{
 			public:
-				virtual void Display() = 0;
+				virtual void	init();
 		};
 	}
 }

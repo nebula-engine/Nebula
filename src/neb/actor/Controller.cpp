@@ -1,15 +1,10 @@
-#include <NEB/Actor/Controller.h>
+#include <neb/actor/Controller.h>
 
-NEB::Actor::Controller::Controller()
+neb::actor::Controller::Controller()
 {
 
 }
-void	NEB::Actor::Controller::Display()
-{
-	
-	
-}
-void	NEB::Actor::Controller::step(float dt)
+void	neb::actor::Controller::step(float dt)
 {
 
 }

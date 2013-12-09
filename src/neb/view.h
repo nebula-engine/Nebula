@@ -3,13 +3,13 @@
 
 #include <memory>
 
-#include <GUL/layout.h>
+#include <glutpp/gui/layout.h>
 
 #include <glutpp/window.h>
 
-namespace NEB
+namespace neb
 {
-	class View
+	class view
 	{
 		public:
 			View();

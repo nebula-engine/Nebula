@@ -71,9 +71,10 @@ AR = ar
 ARFLAGS = cru
 libneb_a_AR = $(AR) $(ARFLAGS)
 libneb_a_LIBADD =
-am_libneb_a_OBJECTS = physics.$(OBJEXT) scene.$(OBJEXT) Base.$(OBJEXT) \
-	Actor.$(OBJEXT) Rigid_Actor.$(OBJEXT) Rigid_Body.$(OBJEXT) \
-	Rigid_Dynamic.$(OBJEXT)
+am_libneb_a_OBJECTS = physics.$(OBJEXT) scene.$(OBJEXT) view.$(OBJEXT) \
+	Base.$(OBJEXT) Actor.$(OBJEXT) Rigid_Actor.$(OBJEXT) \
+	Rigid_Body.$(OBJEXT) Rigid_Dynamic.$(OBJEXT) \
+	Rigid_Static.$(OBJEXT) Light.$(OBJEXT) Controller.$(OBJEXT)
 libneb_a_OBJECTS = $(am_libneb_a_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -185,16 +186,28 @@ lib_LIBRARIES = libneb.a
 libneb_a_SOURCES = \
 		neb/physics.h neb/physics.cpp \
 		neb/scene.h neb/scene.cpp \
+		neb/view.h neb/view.cpp \
 		neb/actor/Base.h neb/actor/Base.cpp \
-		neb/actor/Actor.h neb/actor/Actor.cpp \
+		neb/actor/actor.h neb/actor/Actor.cpp \
 		neb/actor/Rigid_Actor.h neb/actor/Rigid_Actor.cpp \
 		neb/actor/Rigid_Body.h neb/actor/Rigid_Body.cpp \
-		neb/actor/Rigid_Dynamic.h neb/actor/Rigid_Dynamic.cpp
+		neb/actor/Rigid_Dynamic.h neb/actor/Rigid_Dynamic.cpp \
+		neb/actor/Rigid_Static.h neb/actor/Rigid_Static.cpp \
+		neb/actor/Light.h neb/actor/Light.cpp \
+		neb/actor/Controller.h neb/actor/Controller.cpp
 
 nobase_include_HEADERS = \
 		neb/physics.h \
 		neb/scene.h \
-		neb/actor/Base.h
+		neb/view.h \
+		neb/actor/Base.h \
+		neb/actor/Actor.h \
+		neb/actor/Rigid_Actor.h \
+		neb/actor/Rigid_Body.h \
+		neb/actor/Rigid_Dynamic.h \
+		neb/actor/Rigid_Static.h \
+		neb/actor/Light.h \
+		neb/actor/Controller.h
 
 all: all-am
 
@@ -275,11 +288,15 @@ distclean-compile:
 
 include ./$(DEPDIR)/Actor.Po
 include ./$(DEPDIR)/Base.Po
+include ./$(DEPDIR)/Controller.Po
+include ./$(DEPDIR)/Light.Po
 include ./$(DEPDIR)/Rigid_Actor.Po
 include ./$(DEPDIR)/Rigid_Body.Po
 include ./$(DEPDIR)/Rigid_Dynamic.Po
+include ./$(DEPDIR)/Rigid_Static.Po
 include ./$(DEPDIR)/physics.Po
 include ./$(DEPDIR)/scene.Po
+include ./$(DEPDIR)/view.Po
 
 .cpp.o:
 	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -322,6 +339,20 @@ scene.obj: neb/scene.cpp
 #	source='neb/scene.cpp' object='scene.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o scene.obj `if test -f 'neb/scene.cpp'; then $(CYGPATH_W) 'neb/scene.cpp'; else $(CYGPATH_W) '$(srcdir)/neb/scene.cpp'; fi`
+
+view.o: neb/view.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT view.o -MD -MP -MF $(DEPDIR)/view.Tpo -c -o view.o `test -f 'neb/view.cpp' || echo '$(srcdir)/'`neb/view.cpp
+	$(am__mv) $(DEPDIR)/view.Tpo $(DEPDIR)/view.Po
+#	source='neb/view.cpp' object='view.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o view.o `test -f 'neb/view.cpp' || echo '$(srcdir)/'`neb/view.cpp
+
+view.obj: neb/view.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT view.obj -MD -MP -MF $(DEPDIR)/view.Tpo -c -o view.obj `if test -f 'neb/view.cpp'; then $(CYGPATH_W) 'neb/view.cpp'; else $(CYGPATH_W) '$(srcdir)/neb/view.cpp'; fi`
+	$(am__mv) $(DEPDIR)/view.Tpo $(DEPDIR)/view.Po
+#	source='neb/view.cpp' object='view.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o view.obj `if test -f 'neb/view.cpp'; then $(CYGPATH_W) 'neb/view.cpp'; else $(CYGPATH_W) '$(srcdir)/neb/view.cpp'; fi`
 
 Base.o: neb/actor/Base.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Base.o -MD -MP -MF $(DEPDIR)/Base.Tpo -c -o Base.o `test -f 'neb/actor/Base.cpp' || echo '$(srcdir)/'`neb/actor/Base.cpp
@@ -392,6 +423,48 @@ Rigid_Dynamic.obj: neb/actor/Rigid_Dynamic.cpp
 #	source='neb/actor/Rigid_Dynamic.cpp' object='Rigid_Dynamic.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Rigid_Dynamic.obj `if test -f 'neb/actor/Rigid_Dynamic.cpp'; then $(CYGPATH_W) 'neb/actor/Rigid_Dynamic.cpp'; else $(CYGPATH_W) '$(srcdir)/neb/actor/Rigid_Dynamic.cpp'; fi`
+
+Rigid_Static.o: neb/actor/Rigid_Static.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Rigid_Static.o -MD -MP -MF $(DEPDIR)/Rigid_Static.Tpo -c -o Rigid_Static.o `test -f 'neb/actor/Rigid_Static.cpp' || echo '$(srcdir)/'`neb/actor/Rigid_Static.cpp
+	$(am__mv) $(DEPDIR)/Rigid_Static.Tpo $(DEPDIR)/Rigid_Static.Po
+#	source='neb/actor/Rigid_Static.cpp' object='Rigid_Static.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Rigid_Static.o `test -f 'neb/actor/Rigid_Static.cpp' || echo '$(srcdir)/'`neb/actor/Rigid_Static.cpp
+
+Rigid_Static.obj: neb/actor/Rigid_Static.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Rigid_Static.obj -MD -MP -MF $(DEPDIR)/Rigid_Static.Tpo -c -o Rigid_Static.obj `if test -f 'neb/actor/Rigid_Static.cpp'; then $(CYGPATH_W) 'neb/actor/Rigid_Static.cpp'; else $(CYGPATH_W) '$(srcdir)/neb/actor/Rigid_Static.cpp'; fi`
+	$(am__mv) $(DEPDIR)/Rigid_Static.Tpo $(DEPDIR)/Rigid_Static.Po
+#	source='neb/actor/Rigid_Static.cpp' object='Rigid_Static.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Rigid_Static.obj `if test -f 'neb/actor/Rigid_Static.cpp'; then $(CYGPATH_W) 'neb/actor/Rigid_Static.cpp'; else $(CYGPATH_W) '$(srcdir)/neb/actor/Rigid_Static.cpp'; fi`
+
+Light.o: neb/actor/Light.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Light.o -MD -MP -MF $(DEPDIR)/Light.Tpo -c -o Light.o `test -f 'neb/actor/Light.cpp' || echo '$(srcdir)/'`neb/actor/Light.cpp
+	$(am__mv) $(DEPDIR)/Light.Tpo $(DEPDIR)/Light.Po
+#	source='neb/actor/Light.cpp' object='Light.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Light.o `test -f 'neb/actor/Light.cpp' || echo '$(srcdir)/'`neb/actor/Light.cpp
+
+Light.obj: neb/actor/Light.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Light.obj -MD -MP -MF $(DEPDIR)/Light.Tpo -c -o Light.obj `if test -f 'neb/actor/Light.cpp'; then $(CYGPATH_W) 'neb/actor/Light.cpp'; else $(CYGPATH_W) '$(srcdir)/neb/actor/Light.cpp'; fi`
+	$(am__mv) $(DEPDIR)/Light.Tpo $(DEPDIR)/Light.Po
+#	source='neb/actor/Light.cpp' object='Light.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Light.obj `if test -f 'neb/actor/Light.cpp'; then $(CYGPATH_W) 'neb/actor/Light.cpp'; else $(CYGPATH_W) '$(srcdir)/neb/actor/Light.cpp'; fi`
+
+Controller.o: neb/actor/Controller.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Controller.o -MD -MP -MF $(DEPDIR)/Controller.Tpo -c -o Controller.o `test -f 'neb/actor/Controller.cpp' || echo '$(srcdir)/'`neb/actor/Controller.cpp
+	$(am__mv) $(DEPDIR)/Controller.Tpo $(DEPDIR)/Controller.Po
+#	source='neb/actor/Controller.cpp' object='Controller.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Controller.o `test -f 'neb/actor/Controller.cpp' || echo '$(srcdir)/'`neb/actor/Controller.cpp
+
+Controller.obj: neb/actor/Controller.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Controller.obj -MD -MP -MF $(DEPDIR)/Controller.Tpo -c -o Controller.obj `if test -f 'neb/actor/Controller.cpp'; then $(CYGPATH_W) 'neb/actor/Controller.cpp'; else $(CYGPATH_W) '$(srcdir)/neb/actor/Controller.cpp'; fi`
+	$(am__mv) $(DEPDIR)/Controller.Tpo $(DEPDIR)/Controller.Po
+#	source='neb/actor/Controller.cpp' object='Controller.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Controller.obj `if test -f 'neb/actor/Controller.cpp'; then $(CYGPATH_W) 'neb/actor/Controller.cpp'; else $(CYGPATH_W) '$(srcdir)/neb/actor/Controller.cpp'; fi`
 install-nobase_includeHEADERS: $(nobase_include_HEADERS)
 	@$(NORMAL_INSTALL)
 	test -z "$(includedir)" || $(MKDIR_P) "$(DESTDIR)$(includedir)"
@@ -616,10 +689,6 @@ uninstall-am: uninstall-libLIBRARIES uninstall-nobase_includeHEADERS
 	uninstall-am uninstall-libLIBRARIES \
 	uninstall-nobase_includeHEADERS
 
-		neb/actor/Actor.h \
-		neb/actor/Rigid_Actor.h \
-		neb/actor/Rigid_Body.h \
-		neb/actor/Rigid_Dynamic.h
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

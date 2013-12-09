@@ -11,10 +11,10 @@ namespace neb
 			public neb::actor::Rigid_Actor
 		{
 			public:
-				virtual void Display() = 0;
+				virtual void		init() = 0;
 
-				float							density_;
-				physx::PxVec3						velocity_;
+				float			density_;
+				physx::PxVec3		velocity_;
 		};
 	}
 }

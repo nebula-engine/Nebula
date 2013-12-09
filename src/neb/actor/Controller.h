@@ -16,12 +16,12 @@ namespace neb
 				Controller();
 
 
-				virtual void	step( float );
-				virtual void	Display();
+				virtual void		step(float);
+				virtual void		init();
 
 
 
-				physx::PxController*                                    px_controller_;
+				physx::PxController*	px_controller_;
 
 		};
 	}

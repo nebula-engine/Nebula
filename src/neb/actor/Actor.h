@@ -13,7 +13,7 @@ namespace neb
 			public neb::actor::Base
 		{
 			public:
-				virtual void Display() = 0;
+				virtual void		init() = 0;
 
 				physx::PxActor*		px_actor_;
 

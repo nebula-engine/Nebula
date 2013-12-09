@@ -1,8 +1,8 @@
 #include <GL/glut.h>
 
-#include <NEB/Actor/Light.h>
+#include <neb/actor/Light.h>
 
-void NEB::Actor::Light::Display()
+/*void neb::actor::Light::Display()
 {
 	//fprintf(stderr, "%s\n", __FUNCTION__);
 	
@@ -16,4 +16,4 @@ void NEB::Actor::Light::Display()
 
 
 }
-
+*/

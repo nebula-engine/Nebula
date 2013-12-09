@@ -6,8 +6,8 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/actor/Rigid_Dynamic_Box.h>
-#include <neb/actor/Rigid_Static_Plane.h>
+#include <neb/actor/Rigid_Dynamic.h>
+#include <neb/actor/Rigid_Static.h>
 #include <neb/actor/Controller.h>
 #include <neb/actor/Light.h>
 
@@ -23,8 +23,8 @@ namespace neb
 			void		Create_Actor(TiXmlElement*);
 
 
-			neb::actor::Rigid_Dynamic_Box*			Create_Rigid_Dynamic_Box(TiXmlElement*);
-			neb::actor::Rigid_Static_Plane*			Create_Rigid_Static_Plane(TiXmlElement*);
+			neb::actor::Rigid_Dynamic*			Create_Rigid_Dynamic(TiXmlElement*);
+			neb::actor::Rigid_Static*			Create_Rigid_Static_Plane(TiXmlElement*);
 			std::shared_ptr<neb::actor::Controller>		Create_Controller(TiXmlElement*);
 			neb::actor::Light*				Create_Light(TiXmlElement*);
 	

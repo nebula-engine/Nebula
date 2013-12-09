@@ -1,31 +1,18 @@
 
 #include <assert.h>
 
-#include <GRU/Window.h>
+#include <glutpp/window.h>
 
-#include <NEB/Scene.h>
-#include <NEB/View.h>
-#include <NEB/Camera.h>
+#include <neb/scene.h>
+#include <neb/view.h>
+#include <neb/camera.h>
 
-NEB::View::View():
+neb::view::view():
 	scene_( NULL )
 {
 
 }
-void	NEB::View::Display()
-{
-
-	if( scene_ )
-	{
-		scene_->Display();
-	}
-	
-	if( layout_ )
-	{
-		layout_->Display();
-	}
-}
-void	NEB::View::delete_scene()
+void	NEB::view::delete_scene()
 {
 	scene_.reset();
 }

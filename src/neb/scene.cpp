@@ -3,8 +3,8 @@
 #include <neb/physics.h>
 #include <neb/scene.h>
 #include <neb/actor/Base.h>
-#include <neb/actor/Rigid_Dynamic_Box.h>
-#include <neb/actor/Rigid_Static_Plane.h>
+#include <neb/actor/Rigid_Dynamic.h>
+#include <neb/actor/Rigid_Static.h>
 #include <neb/actor/Controller.h>
 #include <neb/actor/Light.h>
 
@@ -24,11 +24,11 @@ float xml_parse_float(TiXmlElement* element)
 	
 	return f;
 }
-physx::PxQuat xml_parse_quat(TiXmlElement* element)
+math::quat xml_parse_quat(TiXmlElement* element)
 {
 	if( !element )
 	{
-		return physx::PxQuat(0.0f, physx::PxVec3(0,0,0));
+		return math::quat(0.0f, math::vec3(0,0,0));
 	}
 	
 	float x, y, z, w;
@@ -38,14 +38,14 @@ physx::PxQuat xml_parse_quat(TiXmlElement* element)
 	int c = sscanf(buf, "%f,%f,%f,%f", &x, &y, &z, &w);
 	assert(c==4);
 	
-	return physx::PxQuat(w, physx::PxVec3(x,y,z));
+	return math::quat(w, math::vec3(x,y,z));
 
 }
-physx::PxVec3 xml_parse_vec3(TiXmlElement* element)
+math::vec3 xml_parse_vec3(TiXmlElement* element)
 {
 	if( !element )
 	{
-		return physx::PxVec3(0,0,0);
+		return math::vec3(0,0,0);
 	}
 	
 	float x, y, z;
@@ -55,7 +55,7 @@ physx::PxVec3 xml_parse_vec3(TiXmlElement* element)
 	int c = sscanf(buf, "%f,%f,%f", &x, &y, &z);
 	assert(c==3);
 	
-	return physx::PxVec3(x,y,z);
+	return math::vec3(x,y,z);
 }
 
 neb::scene::scene():
@@ -91,7 +91,7 @@ void	neb::scene::Create_Actor(TiXmlElement* el_actor)
 	
 	if( strcmp(buf, "rigid_dynamic_box") == 0)
 	{
-		Create_Rigid_Dynamic_Box(el_actor);
+		Create_Rigid_Dynamic(el_actor);
 	}
 	else if( strcmp(buf, "rigid_static_plane") == 0)
 	{
@@ -107,11 +107,11 @@ void	neb::scene::Create_Actor(TiXmlElement* el_actor)
 	}
 
 }
-neb::actor::Rigid_Dynamic_Box*	neb::scene::Create_Rigid_Dynamic_Box(TiXmlElement* el_actor)
+neb::actor::Rigid_Dynamic*	neb::scene::Create_Rigid_Dynamic(TiXmlElement* el_actor)
 {
 	// create
-	neb::actor::Rigid_Dynamic_Box* actor = new neb::actor::Rigid_Dynamic_Box;
-
+	neb::actor::Rigid_Dynamic* actor = new neb::actor::Rigid_Dynamic;
+	
 	// inputs
 	physx::PxVec3 position;
 	physx::PxQuat orientation;
@@ -123,15 +123,14 @@ neb::actor::Rigid_Dynamic_Box*	neb::scene::Create_Rigid_Dynamic_Box(TiXmlElement
 //	TiXmlElement* el_velocity_lin = el_actor->FirstChildElement("velocity_linear");
 //	TiXmlElement* el_velocity_ang = el_actor->FirstChildElement("velocity_angular");
 	
-	physx::PxVec3 p = xml_parse_vec3( el_actor->FirstChildElement("p"));
-	physx::PxQuat q = xml_parse_quat(el_actor->FirstChildElement("q"));
+	math::vec3 p = xml_parse_vec3( el_actor->FirstChildElement("p"));
+	math::quat q = xml_parse_quat(el_actor->FirstChildElement("q"));
 	
-	actor->pose_ = physx::PxTransform(p, q);
+	actor->pose_ = math::transform(p, q);
 	
 	// PxMaterial
 	physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
-
-
+	
 	physx::PxRigidDynamic* px_rigid_dynamic = neb::__physics.px_physics_->createRigidDynamic( actor->pose_ );
 
 	if (!px_rigid_dynamic)
@@ -140,10 +139,20 @@ neb::actor::Rigid_Dynamic_Box*	neb::scene::Create_Rigid_Dynamic_Box(TiXmlElement
 		exit(1);
 	}
 	
-	physx::PxBoxGeometry px_geometry(1, 1, 1);
-
+	// choose geometry
+	physx::PxGeometry* geo = NULL;
+	char const * buf = el_actor->FirstChildElement("geo")->Attribute("type");
+	
+	if(strcmp(buf,"box")==0) geo = new physx::PxBoxGeometry(1, 1, 1);
+	
+	if(geo == NULL)
+	{
+		printf("geo error\n");
+		exit(0);
+	}
+	
 	// PxShape
-	actor->px_shape_ = px_rigid_dynamic->createShape( px_geometry, *px_mat );
+	actor->px_shape_ = px_rigid_dynamic->createShape( *geo, *px_mat );
 
 	// PxActor
 	actor->px_actor_ = px_rigid_dynamic;
@@ -160,13 +169,13 @@ neb::actor::Rigid_Dynamic_Box*	neb::scene::Create_Rigid_Dynamic_Box(TiXmlElement
 
 	return actor;
 }
-neb::actor::Rigid_Static_Plane*	neb::scene::Create_Rigid_Static_Plane(TiXmlElement* el_actor)
+neb::actor::Rigid_Static*	neb::scene::Create_Rigid_Static_Plane(TiXmlElement* el_actor)
 {
 	// create
-	neb::actor::Rigid_Static_Plane* actor = new neb::actor::Rigid_Static_Plane;
+	neb::actor::Rigid_Static* actor = new neb::actor::Rigid_Static;
 
 	// xml
-	physx::PxVec3 n = xml_parse_vec3(el_actor->FirstChildElement("n"));
+	math::vec3 n = xml_parse_vec3(el_actor->FirstChildElement("n"));
 	float d = xml_parse_float(el_actor->FirstChildElement("d"));
 	
 	n.normalize();
@@ -176,13 +185,13 @@ neb::actor::Rigid_Static_Plane*	neb::scene::Create_Rigid_Static_Plane(TiXmlEleme
 
 	// PxMaterial
 	physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
-
+	
 	// construct global pose for rendering
 	//physx::PxQuat q(n.x, n.y, n.z, 0.0f);
-	physx::PxQuat q(3.14f, physx::PxVec3(1,0,0));
+	math::quat q(3.14f, math::vec3(1,0,0));
 	
 	
-	physx::PxTransform pose(n * -1.0f * d, q);
+	math::transform pose(n * -1.0f * d, q);
 	
 	actor->pose_ = pose;
 	
@@ -260,7 +269,9 @@ void neb::scene::Step(float dt)
 	physx::PxActiveTransform* active_transforms = px_scene_->getActiveTransforms(nb_active_transforms);
 
 	//printf( "count PxRigidActor:%i count active transform:%i\n", nbPxactor, nb_active_transforms );
-
+	
+	physx::PxTransform pose;
+	
 	// update each render object with the new transform
 	for ( physx::PxU32 i = 0; i < nb_active_transforms; ++i )
 	{
@@ -279,7 +290,7 @@ void neb::scene::Step(float dt)
 	}
 
 }
-void				neb::scene::Display()
+/*void				neb::scene::Display()
 {
 	if( px_scene_ )
 	{
@@ -309,6 +320,6 @@ void				neb::scene::Display()
 
 	printf("Display %i actors\n", (int)actors_.size());
 }	
-
+*/
 
 

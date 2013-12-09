@@ -5,6 +5,8 @@
 
 //#include <tinyxml/tinyxml.h>
 
+#include <math/transform.h>
+
 #include <PxPhysicsAPI.h>
 
 namespace neb
@@ -15,11 +17,11 @@ namespace neb
 		{
 			public:
 				Base();
-				virtual void Display() = 0;
+				virtual void		init() = 0;
 
-				physx::PxTransform pose_;
-
-				GLuint list_;
+				math::transform		pose_;
+				
+				GLuint			list_;
 		};
 	}
 }
