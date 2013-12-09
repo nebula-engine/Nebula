@@ -1,0 +1,7 @@
+<scene name="my_scene">
+    <rigid_dynamic_box name="bob">
+        
+    </rigid_dynamic_box>
+</scene>
+
+

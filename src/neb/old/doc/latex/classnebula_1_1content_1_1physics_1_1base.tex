@@ -1,0 +1,242 @@
+\hypertarget{classnebula_1_1content_1_1physics_1_1base}{
+\section{nebula::content::physics::base Class Reference}
+\label{classnebula_1_1content_1_1physics_1_1base}\index{nebula::content::physics::base@{nebula::content::physics::base}}
+}
+
+
+\hyperlink{namespacenebula_1_1content_1_1physics}{physics} for app  
+
+
+{\ttfamily \#include $<$base.hpp$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnebula_1_1content_1_1physics_1_1base_a800356f190e4a2e4aaccf53d3fd1e8bf}{base} (jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1base}{n30000::base} $>$)
+\begin{DoxyCompactList}\small\item\em ctor \item\end{DoxyCompactList}\item 
+virtual \hyperlink{classnebula_1_1content_1_1physics_1_1base_a980739fcd78d28fbbe4b02f46b3cd97e}{$\sim$base} ()
+\begin{DoxyCompactList}\small\item\em dtor \item\end{DoxyCompactList}\item 
+virtual void \hyperlink{classnebula_1_1content_1_1physics_1_1base_ac797ea2145a84c7929d32c303f0c41ef}{init} ()
+\begin{DoxyCompactList}\small\item\em init \item\end{DoxyCompactList}\item 
+virtual void \hyperlink{classnebula_1_1content_1_1physics_1_1base_aeb6cf6fb210e1c83b1adef563470c737}{shutdown} ()
+\begin{DoxyCompactList}\small\item\em shutdown \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}{\bf create}\par
+{\em \label{_amgrp76ea0bebb3c22822b4f0dd9c9fd021c5}
+ \hyperlink{namespacenebula_1_1content_1_1scene}{scene} }\begin{DoxyCompactItemize}
+\item 
+jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1scene_1_1physics_1_1base}{n32200::base} $>$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a270629bb6c29e5d3121059ed434fbfaf}{create\_\-scene} ()
+\item 
+jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1actor_1_1physics_1_1rigid__dynamic}{n34200::rigid\_\-dynamic} $>$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a7a8b7ec354839b2d87ab5ef8b20e5da2}{create\_\-rigid\_\-dynamic} (jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1scene_1_1admin_1_1base}{n32100::base} $>$, jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1actor_1_1admin_1_1base}{n34100::base} $>$)
+\begin{DoxyCompactList}\small\item\em rigid dynamic \item\end{DoxyCompactList}\item 
+jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1actor_1_1physics_1_1rigid__dynamic__box}{n34200::rigid\_\-dynamic\_\-box} $>$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_ab0f705269191e10cdde2f83b7c96413b}{create\_\-rigid\_\-dynamic\_\-box} (jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1scene_1_1admin_1_1base}{n32100::base} $>$, jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1actor_1_1admin_1_1base}{n34100::base} $>$)
+\begin{DoxyCompactList}\small\item\em rigid dynamic box \item\end{DoxyCompactList}\item 
+jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1actor_1_1physics_1_1controller}{n34200::controller} $>$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a59cf1db2c6a98d9054db303a71019621}{create\_\-controller} (jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1scene_1_1admin_1_1base}{n32100::base} $>$, jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1actor_1_1admin_1_1base}{n34100::base} $>$)
+\begin{DoxyCompactList}\small\item\em controller \item\end{DoxyCompactList}\item 
+jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1actor_1_1physics_1_1material}{n34200::material} $>$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a6ee919f3584ddf99cc096e111540923d}{request\_\-physics\_\-material} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{namespacenebula_1_1content_1_1physics}{physics} material \item\end{DoxyCompactList}\item 
+jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1actor_1_1physics_1_1material}{n34200::material} $>$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a6c7e79271697c678c8634a5e5dbe976e}{create\_\-physics\_\-material} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{namespacenebula_1_1content_1_1physics}{physics} material \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf fetch}\par
+{\em \label{_amgrp5374034a40c8d6800cb4f449c2ea00a0}
+ physx \hyperlink{namespacenebula_1_1content_1_1physics}{physics} }\begin{DoxyCompactItemize}
+\item 
+physx::PxPhysics $\ast$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_abc804c1786fe0ce0044e33d4d5394738}{get\_\-px\_\-physics} () const 
+\item 
+physx::PxControllerManager $\ast$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a57ac03fda506751b4062aa75bb6dc33f}{get\_\-px\_\-controller\_\-manager} () const 
+\begin{DoxyCompactList}\small\item\em physx controller manager \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::weak\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1base}{n30000::base} $>$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a4b1990c57e38170ea69cbe7ae5ca8b70}{parent\_\-}
+\begin{DoxyCompactList}\small\item\em parent \item\end{DoxyCompactList}\item 
+jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1content_1_1actor_1_1physics_1_1material}{n34200::material} $>$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a648b28fd4c586b69c2f09ff51e539d5a}{default\_\-material\_\-}
+\begin{DoxyCompactList}\small\item\em default material \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}{\bf physx}\par
+{\em \label{_amgrpd5de07ce9583c40399aa882e8d4ef737}
+ }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDefaultErrorCallback}{DefaultErrorCallback} \hyperlink{classnebula_1_1content_1_1physics_1_1base_acbed0d466473d89c816bfb86d5ee54c1}{px\_\-default\_\-error\_\-callback\_\-}
+\begin{DoxyCompactList}\small\item\em physx default error callback \item\end{DoxyCompactList}\item 
+physx::PxDefaultAllocator \hyperlink{classnebula_1_1content_1_1physics_1_1base_af48d16416f3fe40622294c185e187c59}{px\_\-default\_\-allocator\_\-callback\_\-}
+\begin{DoxyCompactList}\small\item\em physx default allocator \item\end{DoxyCompactList}\item 
+physx::PxFoundation $\ast$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a63675a6e212b91289f28cbf29675bf30}{px\_\-foundation\_\-}
+\begin{DoxyCompactList}\small\item\em physx foundation \item\end{DoxyCompactList}\item 
+physx::PxPhysics $\ast$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a0f5bbd5c17cdb78f856b30ef2e423848}{px\_\-physics\_\-}
+\begin{DoxyCompactList}\small\item\em physx \hyperlink{namespacenebula_1_1content_1_1physics}{physics} \item\end{DoxyCompactList}\item 
+physx::PxProfileZoneManager $\ast$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a7e94c5f6e3573c17c4c1330a7726bcc6}{px\_\-profile\_\-zone\_\-manager\_\-}
+\begin{DoxyCompactList}\small\item\em physx profile zone manager \item\end{DoxyCompactList}\item 
+physx::PxCooking $\ast$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a13ae9c72e0c5138ab97fb2f91f574d51}{px\_\-cooking\_\-}
+\begin{DoxyCompactList}\small\item\em physx cooking \item\end{DoxyCompactList}\item 
+physx::pxtask::CudaContextManager $\ast$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a8013955852d69be077b892e62e65e609}{px\_\-cuda\_\-context\_\-manager\_\-}
+\begin{DoxyCompactList}\small\item\em physx cuda context manager \item\end{DoxyCompactList}\item 
+physx::PxControllerManager $\ast$ \hyperlink{classnebula_1_1content_1_1physics_1_1base_a05e856150d8220d4b8d1f6db1041bf59}{px\_\-character\_\-controller\_\-manager\_\-}
+\begin{DoxyCompactList}\small\item\em physx controller manager \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\hyperlink{namespacenebula_1_1content_1_1physics}{physics} for app 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classnebula_1_1content_1_1physics_1_1base_a800356f190e4a2e4aaccf53d3fd1e8bf}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!base@{base}}
+\index{base@{base}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{base}]{\setlength{\rightskip}{0pt plus 5cm}nebula::content::physics::base::base (jess::shared\_\-ptr$<$ {\bf n30000::base} $>$ {\em parent})}}
+\label{classnebula_1_1content_1_1physics_1_1base_a800356f190e4a2e4aaccf53d3fd1e8bf}
+
+
+ctor \hypertarget{classnebula_1_1content_1_1physics_1_1base_a980739fcd78d28fbbe4b02f46b3cd97e}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!$\sim$base@{$\sim$base}}
+\index{$\sim$base@{$\sim$base}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{$\sim$base}]{\setlength{\rightskip}{0pt plus 5cm}nebula::content::physics::base::$\sim$base ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_a980739fcd78d28fbbe4b02f46b3cd97e}
+
+
+dtor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classnebula_1_1content_1_1physics_1_1base_a59cf1db2c6a98d9054db303a71019621}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!create\_\-controller@{create\_\-controller}}
+\index{create\_\-controller@{create\_\-controller}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{create\_\-controller}]{\setlength{\rightskip}{0pt plus 5cm}jess::shared\_\-ptr$<$ {\bf n34200::controller} $>$ nebula::content::physics::base::create\_\-controller (jess::shared\_\-ptr$<$ {\bf n32100::base} $>$ {\em scene}, \/  jess::shared\_\-ptr$<$ {\bf n34100::base} $>$ {\em actor})}}
+\label{classnebula_1_1content_1_1physics_1_1base_a59cf1db2c6a98d9054db303a71019621}
+
+
+controller \hypertarget{classnebula_1_1content_1_1physics_1_1base_a6c7e79271697c678c8634a5e5dbe976e}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!create\_\-physics\_\-material@{create\_\-physics\_\-material}}
+\index{create\_\-physics\_\-material@{create\_\-physics\_\-material}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{create\_\-physics\_\-material}]{\setlength{\rightskip}{0pt plus 5cm}jess::shared\_\-ptr$<$ {\bf n34200::material} $>$ nebula::content::physics::base::create\_\-physics\_\-material ()}}
+\label{classnebula_1_1content_1_1physics_1_1base_a6c7e79271697c678c8634a5e5dbe976e}
+
+
+\hyperlink{namespacenebula_1_1content_1_1physics}{physics} material \hypertarget{classnebula_1_1content_1_1physics_1_1base_a7a8b7ec354839b2d87ab5ef8b20e5da2}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!create\_\-rigid\_\-dynamic@{create\_\-rigid\_\-dynamic}}
+\index{create\_\-rigid\_\-dynamic@{create\_\-rigid\_\-dynamic}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{create\_\-rigid\_\-dynamic}]{\setlength{\rightskip}{0pt plus 5cm}jess::shared\_\-ptr$<$ {\bf n34200::rigid\_\-dynamic} $>$ nebula::content::physics::base::create\_\-rigid\_\-dynamic (jess::shared\_\-ptr$<$ {\bf n32100::base} $>$ {\em scene}, \/  jess::shared\_\-ptr$<$ {\bf n34100::base} $>$ {\em actor})}}
+\label{classnebula_1_1content_1_1physics_1_1base_a7a8b7ec354839b2d87ab5ef8b20e5da2}
+
+
+rigid dynamic \hypertarget{classnebula_1_1content_1_1physics_1_1base_ab0f705269191e10cdde2f83b7c96413b}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!create\_\-rigid\_\-dynamic\_\-box@{create\_\-rigid\_\-dynamic\_\-box}}
+\index{create\_\-rigid\_\-dynamic\_\-box@{create\_\-rigid\_\-dynamic\_\-box}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{create\_\-rigid\_\-dynamic\_\-box}]{\setlength{\rightskip}{0pt plus 5cm}jess::shared\_\-ptr$<$ {\bf n34200::rigid\_\-dynamic\_\-box} $>$ nebula::content::physics::base::create\_\-rigid\_\-dynamic\_\-box (jess::shared\_\-ptr$<$ {\bf n32100::base} $>$ {\em scene}, \/  jess::shared\_\-ptr$<$ {\bf n34100::base} $>$ {\em actor})}}
+\label{classnebula_1_1content_1_1physics_1_1base_ab0f705269191e10cdde2f83b7c96413b}
+
+
+rigid dynamic box \hypertarget{classnebula_1_1content_1_1physics_1_1base_a270629bb6c29e5d3121059ed434fbfaf}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!create\_\-scene@{create\_\-scene}}
+\index{create\_\-scene@{create\_\-scene}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{create\_\-scene}]{\setlength{\rightskip}{0pt plus 5cm}jess::shared\_\-ptr$<$ {\bf n32200::base} $>$ nebula::content::physics::base::create\_\-scene ()}}
+\label{classnebula_1_1content_1_1physics_1_1base_a270629bb6c29e5d3121059ed434fbfaf}
+\hypertarget{classnebula_1_1content_1_1physics_1_1base_a57ac03fda506751b4062aa75bb6dc33f}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!get\_\-px\_\-controller\_\-manager@{get\_\-px\_\-controller\_\-manager}}
+\index{get\_\-px\_\-controller\_\-manager@{get\_\-px\_\-controller\_\-manager}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{get\_\-px\_\-controller\_\-manager}]{\setlength{\rightskip}{0pt plus 5cm}physx::PxControllerManager$\ast$ nebula::content::physics::base::get\_\-px\_\-controller\_\-manager () const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_a57ac03fda506751b4062aa75bb6dc33f}
+
+
+physx controller manager \hypertarget{classnebula_1_1content_1_1physics_1_1base_abc804c1786fe0ce0044e33d4d5394738}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!get\_\-px\_\-physics@{get\_\-px\_\-physics}}
+\index{get\_\-px\_\-physics@{get\_\-px\_\-physics}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{get\_\-px\_\-physics}]{\setlength{\rightskip}{0pt plus 5cm}physx::PxPhysics$\ast$ nebula::content::physics::base::get\_\-px\_\-physics () const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_abc804c1786fe0ce0044e33d4d5394738}
+\hypertarget{classnebula_1_1content_1_1physics_1_1base_ac797ea2145a84c7929d32c303f0c41ef}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!init@{init}}
+\index{init@{init}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void nebula::content::physics::base::init ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_ac797ea2145a84c7929d32c303f0c41ef}
+
+
+init \hypertarget{classnebula_1_1content_1_1physics_1_1base_a6ee919f3584ddf99cc096e111540923d}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!request\_\-physics\_\-material@{request\_\-physics\_\-material}}
+\index{request\_\-physics\_\-material@{request\_\-physics\_\-material}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{request\_\-physics\_\-material}]{\setlength{\rightskip}{0pt plus 5cm}jess::shared\_\-ptr$<$ {\bf n34200::material} $>$ nebula::content::physics::base::request\_\-physics\_\-material ()}}
+\label{classnebula_1_1content_1_1physics_1_1base_a6ee919f3584ddf99cc096e111540923d}
+
+
+\hyperlink{namespacenebula_1_1content_1_1physics}{physics} material \hypertarget{classnebula_1_1content_1_1physics_1_1base_aeb6cf6fb210e1c83b1adef563470c737}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{shutdown}]{\setlength{\rightskip}{0pt plus 5cm}void nebula::content::physics::base::shutdown ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_aeb6cf6fb210e1c83b1adef563470c737}
+
+
+shutdown 
+
+\subsection{Member Data Documentation}
+\hypertarget{classnebula_1_1content_1_1physics_1_1base_a648b28fd4c586b69c2f09ff51e539d5a}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!default\_\-material\_\-@{default\_\-material\_\-}}
+\index{default\_\-material\_\-@{default\_\-material\_\-}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{default\_\-material\_\-}]{\setlength{\rightskip}{0pt plus 5cm}jess::shared\_\-ptr$<${\bf n34200::material}$>$ {\bf nebula::content::physics::base::default\_\-material\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_a648b28fd4c586b69c2f09ff51e539d5a}
+
+
+default material \hypertarget{classnebula_1_1content_1_1physics_1_1base_a4b1990c57e38170ea69cbe7ae5ca8b70}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!parent\_\-@{parent\_\-}}
+\index{parent\_\-@{parent\_\-}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{parent\_\-}]{\setlength{\rightskip}{0pt plus 5cm}std::weak\_\-ptr$<${\bf n30000::base}$>$ {\bf nebula::content::physics::base::parent\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_a4b1990c57e38170ea69cbe7ae5ca8b70}
+
+
+parent \hypertarget{classnebula_1_1content_1_1physics_1_1base_a05e856150d8220d4b8d1f6db1041bf59}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!px\_\-character\_\-controller\_\-manager\_\-@{px\_\-character\_\-controller\_\-manager\_\-}}
+\index{px\_\-character\_\-controller\_\-manager\_\-@{px\_\-character\_\-controller\_\-manager\_\-}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{px\_\-character\_\-controller\_\-manager\_\-}]{\setlength{\rightskip}{0pt plus 5cm}physx::PxControllerManager$\ast$ {\bf nebula::content::physics::base::px\_\-character\_\-controller\_\-manager\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_a05e856150d8220d4b8d1f6db1041bf59}
+
+
+physx controller manager \hypertarget{classnebula_1_1content_1_1physics_1_1base_a13ae9c72e0c5138ab97fb2f91f574d51}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!px\_\-cooking\_\-@{px\_\-cooking\_\-}}
+\index{px\_\-cooking\_\-@{px\_\-cooking\_\-}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{px\_\-cooking\_\-}]{\setlength{\rightskip}{0pt plus 5cm}physx::PxCooking$\ast$ {\bf nebula::content::physics::base::px\_\-cooking\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_a13ae9c72e0c5138ab97fb2f91f574d51}
+
+
+physx cooking \hypertarget{classnebula_1_1content_1_1physics_1_1base_a8013955852d69be077b892e62e65e609}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!px\_\-cuda\_\-context\_\-manager\_\-@{px\_\-cuda\_\-context\_\-manager\_\-}}
+\index{px\_\-cuda\_\-context\_\-manager\_\-@{px\_\-cuda\_\-context\_\-manager\_\-}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{px\_\-cuda\_\-context\_\-manager\_\-}]{\setlength{\rightskip}{0pt plus 5cm}physx::pxtask::CudaContextManager$\ast$ {\bf nebula::content::physics::base::px\_\-cuda\_\-context\_\-manager\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_a8013955852d69be077b892e62e65e609}
+
+
+physx cuda context manager \hypertarget{classnebula_1_1content_1_1physics_1_1base_af48d16416f3fe40622294c185e187c59}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!px\_\-default\_\-allocator\_\-callback\_\-@{px\_\-default\_\-allocator\_\-callback\_\-}}
+\index{px\_\-default\_\-allocator\_\-callback\_\-@{px\_\-default\_\-allocator\_\-callback\_\-}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{px\_\-default\_\-allocator\_\-callback\_\-}]{\setlength{\rightskip}{0pt plus 5cm}physx::PxDefaultAllocator {\bf nebula::content::physics::base::px\_\-default\_\-allocator\_\-callback\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_af48d16416f3fe40622294c185e187c59}
+
+
+physx default allocator \hypertarget{classnebula_1_1content_1_1physics_1_1base_acbed0d466473d89c816bfb86d5ee54c1}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!px\_\-default\_\-error\_\-callback\_\-@{px\_\-default\_\-error\_\-callback\_\-}}
+\index{px\_\-default\_\-error\_\-callback\_\-@{px\_\-default\_\-error\_\-callback\_\-}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{px\_\-default\_\-error\_\-callback\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf DefaultErrorCallback} {\bf nebula::content::physics::base::px\_\-default\_\-error\_\-callback\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_acbed0d466473d89c816bfb86d5ee54c1}
+
+
+physx default error callback \hypertarget{classnebula_1_1content_1_1physics_1_1base_a63675a6e212b91289f28cbf29675bf30}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!px\_\-foundation\_\-@{px\_\-foundation\_\-}}
+\index{px\_\-foundation\_\-@{px\_\-foundation\_\-}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{px\_\-foundation\_\-}]{\setlength{\rightskip}{0pt plus 5cm}physx::PxFoundation$\ast$ {\bf nebula::content::physics::base::px\_\-foundation\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_a63675a6e212b91289f28cbf29675bf30}
+
+
+physx foundation \hypertarget{classnebula_1_1content_1_1physics_1_1base_a0f5bbd5c17cdb78f856b30ef2e423848}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!px\_\-physics\_\-@{px\_\-physics\_\-}}
+\index{px\_\-physics\_\-@{px\_\-physics\_\-}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{px\_\-physics\_\-}]{\setlength{\rightskip}{0pt plus 5cm}physx::PxPhysics$\ast$ {\bf nebula::content::physics::base::px\_\-physics\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_a0f5bbd5c17cdb78f856b30ef2e423848}
+
+
+physx \hyperlink{namespacenebula_1_1content_1_1physics}{physics} \hypertarget{classnebula_1_1content_1_1physics_1_1base_a7e94c5f6e3573c17c4c1330a7726bcc6}{
+\index{nebula::content::physics::base@{nebula::content::physics::base}!px\_\-profile\_\-zone\_\-manager\_\-@{px\_\-profile\_\-zone\_\-manager\_\-}}
+\index{px\_\-profile\_\-zone\_\-manager\_\-@{px\_\-profile\_\-zone\_\-manager\_\-}!nebula::content::physics::base@{nebula::content::physics::base}}
+\subsubsection[{px\_\-profile\_\-zone\_\-manager\_\-}]{\setlength{\rightskip}{0pt plus 5cm}physx::PxProfileZoneManager$\ast$ {\bf nebula::content::physics::base::px\_\-profile\_\-zone\_\-manager\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classnebula_1_1content_1_1physics_1_1base_a7e94c5f6e3573c17c4c1330a7726bcc6}
+
+
+physx profile zone manager 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+/nfs/stak/students/r/rymalc/cpp\_\-projects/nebula/inc/nebula/content/physics/\hyperlink{inc_2nebula_2content_2physics_2base_8hpp}{base.hpp}\item 
+/nfs/stak/students/r/rymalc/cpp\_\-projects/nebula/src/content/physics/\hyperlink{src_2content_2physics_2base_8cpp}{base.cpp}\end{DoxyCompactItemize}

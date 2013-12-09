@@ -1,0 +1,60 @@
+\hypertarget{structFramework_1_1Communication_1_1Message_1_1Dest}{
+\section{Framework::Communication::Message::Dest Struct Reference}
+\label{structFramework_1_1Communication_1_1Message_1_1Dest}\index{Framework::Communication::Message::Dest@{Framework::Communication::Message::Dest}}
+}
+
+
+Destination.  
+
+
+{\ttfamily \#include $<$destination.hpp$>$}\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{structFramework_1_1Communication_1_1Message_1_1Dest_ac1ec4f8071c73e984673138423c6918f}{type}
+\begin{DoxyCompactList}\small\item\em Destination Type. \item\end{DoxyCompactList}\item 
+FR\_\-COM\_\-IComm $\ast$ \hyperlink{structFramework_1_1Communication_1_1Message_1_1Dest_aa611b1a91261ddc29153c6ce2382f9f6}{icomm}
+\begin{DoxyCompactList}\small\item\em IComm pointer \item\end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\hyperlink{structFramework_1_1Communication_1_1Message_1_1Addr__CO__AC__AD__ActorBase}{Addr\_CO\_AC\_AD\_ActorBase} \hyperlink{structFramework_1_1Communication_1_1Message_1_1Dest_af22dbe20ca7387f9450d42bca01b04c7}{co\_ac\_ad\_actor\_base}\\
+\} \hyperlink{structFramework_1_1Communication_1_1Message_1_1Dest_ac7f87baccb2cd07e605d3ae1b4a713c1}{addr}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Address. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Destination. Data used to route the Message to its final destination. If icomm is NULL, addr is used instead. If the message is sent over a network, the sending object is responible for setting icomm to NULL. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structFramework_1_1Communication_1_1Message_1_1Dest_ac7f87baccb2cd07e605d3ae1b4a713c1}{
+\index{Framework::Communication::Message::Dest@{Framework::Communication::Message::Dest}!addr@{addr}}
+\index{addr@{addr}!Framework::Communication::Message::Dest@{Framework::Communication::Message::Dest}}
+\subsubsection[{addr}]{\setlength{\rightskip}{0pt plus 5cm}union \{ ... \}   {\bf Framework::Communication::Message::Dest::addr}}}
+\label{structFramework_1_1Communication_1_1Message_1_1Dest_ac7f87baccb2cd07e605d3ae1b4a713c1}
+
+
+Address. \hypertarget{structFramework_1_1Communication_1_1Message_1_1Dest_af22dbe20ca7387f9450d42bca01b04c7}{
+\index{Framework::Communication::Message::Dest@{Framework::Communication::Message::Dest}!co\_\-ac\_\-ad\_\-actor\_\-base@{co\_\-ac\_\-ad\_\-actor\_\-base}}
+\index{co\_\-ac\_\-ad\_\-actor\_\-base@{co\_\-ac\_\-ad\_\-actor\_\-base}!Framework::Communication::Message::Dest@{Framework::Communication::Message::Dest}}
+\subsubsection[{co\_\-ac\_\-ad\_\-actor\_\-base}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Addr\_\-CO\_\-AC\_\-AD\_\-ActorBase} {\bf Framework::Communication::Message::Dest::co\_\-ac\_\-ad\_\-actor\_\-base}}}
+\label{structFramework_1_1Communication_1_1Message_1_1Dest_af22dbe20ca7387f9450d42bca01b04c7}
+\hypertarget{structFramework_1_1Communication_1_1Message_1_1Dest_aa611b1a91261ddc29153c6ce2382f9f6}{
+\index{Framework::Communication::Message::Dest@{Framework::Communication::Message::Dest}!icomm@{icomm}}
+\index{icomm@{icomm}!Framework::Communication::Message::Dest@{Framework::Communication::Message::Dest}}
+\subsubsection[{icomm}]{\setlength{\rightskip}{0pt plus 5cm}FR\_\-COM\_\-IComm$\ast$ {\bf Framework::Communication::Message::Dest::icomm}}}
+\label{structFramework_1_1Communication_1_1Message_1_1Dest_aa611b1a91261ddc29153c6ce2382f9f6}
+
+
+IComm pointer \hypertarget{structFramework_1_1Communication_1_1Message_1_1Dest_ac1ec4f8071c73e984673138423c6918f}{
+\index{Framework::Communication::Message::Dest@{Framework::Communication::Message::Dest}!type@{type}}
+\index{type@{type}!Framework::Communication::Message::Dest@{Framework::Communication::Message::Dest}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Framework::Communication::Message::Dest::type}}}
+\label{structFramework_1_1Communication_1_1Message_1_1Dest_ac1ec4f8071c73e984673138423c6918f}
+
+
+Destination Type. 
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/nfs/stak/students/r/rymalc/cpp\_\-projects/nebula/inc/nebula/asio/\hyperlink{destination_8hpp}{destination.hpp}\end{DoxyCompactItemize}
