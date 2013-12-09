@@ -1,0 +1,239 @@
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base}{
+\section{nebula::platform::window::lin::base Class Reference}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base}\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+}
+
+
+{\ttfamily \#include $<$base.hpp$>$}Inheritance diagram for nebula::platform::window::lin::base::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{classnebula_1_1platform_1_1window_1_1lin_1_1base}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_a9441236d249988aee2ae24c70acc2d25}{base} ()
+\item 
+virtual \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_aee19a7238b38b14e69a87d7e9c95aa13}{$\sim$base} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \item\end{DoxyCompactList}\item 
+virtual void \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_adc69f1c00bd65bf27f33f502cd026ffa}{init} (jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1platform_1_1platform_1_1base}{n21000::base} $>$)
+\item 
+virtual void \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_a8541f8bd43b27bdf54c4951b5f2c76df}{shutdown} ()
+\begin{DoxyCompactList}\small\item\em shutdown \item\end{DoxyCompactList}\item 
+virtual void \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_ab3a910d3a1f8b6d37d57461e02071f3f}{update} ()
+\begin{DoxyCompactList}\small\item\em update \item\end{DoxyCompactList}\item 
+virtual void \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_ac42e5f39d083044ad4e6df1b94d6c621}{register\_\-keys} ()
+\item 
+virtual void \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_ab6395e5c5f91c4f593fb912d2b67380a}{center\_\-pointer} ()
+\item 
+virtual void \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_a3d02de6ccf6330049f1389e14c1650c0}{expose\_\-window} (XEvent)
+\item 
+virtual int \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_af5ca9a6a75a661884dd934dc65ea59b2}{lookup\_\-key} (int)
+\begin{DoxyCompactList}\small\item\em \} \item\end{DoxyCompactList}\item 
+virtual void \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_a9c10bd8e96d887a43e69c2593d17eeb5}{focus\_\-change} (XEvent)
+\item 
+virtual void \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_aa0edb939ba175c67019eacdb5a576226}{process\_\-message} (jess::shared\_\-ptr$<$ \hyperlink{classnebula_1_1asio_1_1message}{n40000::message} $>$)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::map$<$ int, int $>$ \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_a2d1f7ebc4e8cdbab2553e0ae344af178}{keys\_\-}
+\begin{DoxyCompactList}\small\item\em keys \item\end{DoxyCompactList}\item 
+::XGCValues \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_ad43cdc274bbb7e66479814e98887880b}{m\_\-values}
+\item 
+unsigned long \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_a6b248827e2b0465085540e494debc43b}{m\_\-valuemask}
+\item 
+int \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_ac87241d1655c8081bb222b2d8ace36e7}{m\_\-line\_\-width}
+\item 
+int \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_abf55d575bab55e744730d2faa62901c9}{m\_\-line\_\-style}
+\item 
+int \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_aa586adfb426345cea9f1b77e0bff11d5}{m\_\-cap\_\-style}
+\item 
+int \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_ad95f3f346ef12ae75b28a15b572867c3}{m\_\-join\_\-style}
+\item 
+UINT \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_aa71dac0b114e6d95a1e0fbcbbecd1bd6}{m\_\-center\_\-x}
+\item 
+UINT \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_a50a9c7422b5017396c18ec646bcc0f1c}{m\_\-center\_\-y}
+\item 
+int \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_a4f47d93e9e4897a9d26b7e4ffa726429}{m\_\-screen\_\-num}
+\item 
+long \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_a5e531bf83fd9a14f1bde5b880bf1d64a}{m\_\-event\_\-mask}
+\item 
+::Display $\ast$ \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_a06a95115e359f15e213bd0b8c3234526}{m\_\-xdisplay}
+\item 
+::Window \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_aca6ba787d38d9383b56d5844b4f53843}{m\_\-xwindow}
+\item 
+::Window \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_aeeb21f9b5859adce56ec5114f4cf9dc6}{m\_\-root\_\-xwindow}
+\item 
+::GC \hyperlink{classnebula_1_1platform_1_1window_1_1lin_1_1base_a6d601e21b61eefa641a9abd28bbdb36f}{m\_\-gc}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_a9441236d249988aee2ae24c70acc2d25}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!base@{base}}
+\index{base@{base}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{base}]{\setlength{\rightskip}{0pt plus 5cm}nebula::platform::window::lin::base::base ()}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_a9441236d249988aee2ae24c70acc2d25}
+
+
+Reimplemented from \hyperlink{classnebula_1_1platform_1_1window_1_1base_afcbf9d5d846a10cce5ebf100e1abbca1}{nebula::platform::window::base}.\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_aee19a7238b38b14e69a87d7e9c95aa13}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!$\sim$base@{$\sim$base}}
+\index{$\sim$base@{$\sim$base}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{$\sim$base}]{\setlength{\rightskip}{0pt plus 5cm}nebula::platform::window::lin::base::$\sim$base ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_aee19a7238b38b14e69a87d7e9c95aa13}
+
+
+Destructor. 
+
+Reimplemented from \hyperlink{classnebula_1_1platform_1_1window_1_1base_a40f1250dd3383ad57200c65e969d3e5b}{nebula::platform::window::base}.
+
+\subsection{Member Function Documentation}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_ab6395e5c5f91c4f593fb912d2b67380a}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!center\_\-pointer@{center\_\-pointer}}
+\index{center\_\-pointer@{center\_\-pointer}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{center\_\-pointer}]{\setlength{\rightskip}{0pt plus 5cm}void nebula::platform::window::lin::base::center\_\-pointer ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_ab6395e5c5f91c4f593fb912d2b67380a}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_a3d02de6ccf6330049f1389e14c1650c0}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!expose\_\-window@{expose\_\-window}}
+\index{expose\_\-window@{expose\_\-window}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{expose\_\-window}]{\setlength{\rightskip}{0pt plus 5cm}void nebula::platform::window::lin::base::expose\_\-window (XEvent {\em xevent})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_a3d02de6ccf6330049f1389e14c1650c0}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_a9c10bd8e96d887a43e69c2593d17eeb5}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!focus\_\-change@{focus\_\-change}}
+\index{focus\_\-change@{focus\_\-change}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{focus\_\-change}]{\setlength{\rightskip}{0pt plus 5cm}void nebula::platform::window::lin::base::focus\_\-change (XEvent {\em xevent})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_a9c10bd8e96d887a43e69c2593d17eeb5}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_adc69f1c00bd65bf27f33f502cd026ffa}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!init@{init}}
+\index{init@{init}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void nebula::platform::window::lin::base::init (jess::shared\_\-ptr$<$ {\bf n21000::base} $>$ {\em parent})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_adc69f1c00bd65bf27f33f502cd026ffa}
+
+
+Reimplemented from \hyperlink{classnebula_1_1platform_1_1window_1_1base_abd4bc47dc2a14a21885cc6df06c8ec43}{nebula::platform::window::base}.\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_af5ca9a6a75a661884dd934dc65ea59b2}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!lookup\_\-key@{lookup\_\-key}}
+\index{lookup\_\-key@{lookup\_\-key}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{lookup\_\-key}]{\setlength{\rightskip}{0pt plus 5cm}int nebula::platform::window::lin::base::lookup\_\-key (int {\em k})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_af5ca9a6a75a661884dd934dc65ea59b2}
+
+
+\} 
+
+Reimplemented from \hyperlink{classnebula_1_1platform_1_1window_1_1base_a9988c533e20319ce211ce20deab35cfa}{nebula::platform::window::base}.\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_aa0edb939ba175c67019eacdb5a576226}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!process\_\-message@{process\_\-message}}
+\index{process\_\-message@{process\_\-message}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{process\_\-message}]{\setlength{\rightskip}{0pt plus 5cm}void nebula::platform::window::lin::base::process\_\-message (jess::shared\_\-ptr$<$ {\bf n40000::message} $>$ {\em msg})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_aa0edb939ba175c67019eacdb5a576226}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_ac42e5f39d083044ad4e6df1b94d6c621}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!register\_\-keys@{register\_\-keys}}
+\index{register\_\-keys@{register\_\-keys}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{register\_\-keys}]{\setlength{\rightskip}{0pt plus 5cm}void nebula::platform::window::lin::base::register\_\-keys ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_ac42e5f39d083044ad4e6df1b94d6c621}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_a8541f8bd43b27bdf54c4951b5f2c76df}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{shutdown}]{\setlength{\rightskip}{0pt plus 5cm}void nebula::platform::window::lin::base::shutdown ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_a8541f8bd43b27bdf54c4951b5f2c76df}
+
+
+shutdown 
+
+Reimplemented from \hyperlink{classnebula_1_1platform_1_1window_1_1base_a656d35bf58a3c27a07117b68de3ff2f1}{nebula::platform::window::base}.\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_ab3a910d3a1f8b6d37d57461e02071f3f}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!update@{update}}
+\index{update@{update}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void nebula::platform::window::lin::base::update ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_ab3a910d3a1f8b6d37d57461e02071f3f}
+
+
+update 
+
+Reimplemented from \hyperlink{classnebula_1_1platform_1_1window_1_1base_aac6186e43bad0446f303ced7e3593a3a}{nebula::platform::window::base}.
+
+\subsection{Member Data Documentation}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_a2d1f7ebc4e8cdbab2553e0ae344af178}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!keys\_\-@{keys\_\-}}
+\index{keys\_\-@{keys\_\-}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{keys\_\-}]{\setlength{\rightskip}{0pt plus 5cm}std::map$<$int,int$>$ {\bf nebula::platform::window::lin::base::keys\_\-}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_a2d1f7ebc4e8cdbab2553e0ae344af178}
+
+
+keys 
+
+Reimplemented from \hyperlink{classnebula_1_1platform_1_1window_1_1base_a40e3611e00f67c3f0b2c59ad8fb05547}{nebula::platform::window::base}.\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_aa586adfb426345cea9f1b77e0bff11d5}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-cap\_\-style@{m\_\-cap\_\-style}}
+\index{m\_\-cap\_\-style@{m\_\-cap\_\-style}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-cap\_\-style}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf nebula::platform::window::lin::base::m\_\-cap\_\-style}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_aa586adfb426345cea9f1b77e0bff11d5}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_aa71dac0b114e6d95a1e0fbcbbecd1bd6}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-center\_\-x@{m\_\-center\_\-x}}
+\index{m\_\-center\_\-x@{m\_\-center\_\-x}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-center\_\-x}]{\setlength{\rightskip}{0pt plus 5cm}UINT {\bf nebula::platform::window::lin::base::m\_\-center\_\-x}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_aa71dac0b114e6d95a1e0fbcbbecd1bd6}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_a50a9c7422b5017396c18ec646bcc0f1c}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-center\_\-y@{m\_\-center\_\-y}}
+\index{m\_\-center\_\-y@{m\_\-center\_\-y}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-center\_\-y}]{\setlength{\rightskip}{0pt plus 5cm}UINT {\bf nebula::platform::window::lin::base::m\_\-center\_\-y}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_a50a9c7422b5017396c18ec646bcc0f1c}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_a5e531bf83fd9a14f1bde5b880bf1d64a}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-event\_\-mask@{m\_\-event\_\-mask}}
+\index{m\_\-event\_\-mask@{m\_\-event\_\-mask}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-event\_\-mask}]{\setlength{\rightskip}{0pt plus 5cm}long {\bf nebula::platform::window::lin::base::m\_\-event\_\-mask}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_a5e531bf83fd9a14f1bde5b880bf1d64a}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_a6d601e21b61eefa641a9abd28bbdb36f}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-gc@{m\_\-gc}}
+\index{m\_\-gc@{m\_\-gc}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-gc}]{\setlength{\rightskip}{0pt plus 5cm}::GC {\bf nebula::platform::window::lin::base::m\_\-gc}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_a6d601e21b61eefa641a9abd28bbdb36f}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_ad95f3f346ef12ae75b28a15b572867c3}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-join\_\-style@{m\_\-join\_\-style}}
+\index{m\_\-join\_\-style@{m\_\-join\_\-style}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-join\_\-style}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf nebula::platform::window::lin::base::m\_\-join\_\-style}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_ad95f3f346ef12ae75b28a15b572867c3}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_abf55d575bab55e744730d2faa62901c9}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-line\_\-style@{m\_\-line\_\-style}}
+\index{m\_\-line\_\-style@{m\_\-line\_\-style}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-line\_\-style}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf nebula::platform::window::lin::base::m\_\-line\_\-style}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_abf55d575bab55e744730d2faa62901c9}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_ac87241d1655c8081bb222b2d8ace36e7}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-line\_\-width@{m\_\-line\_\-width}}
+\index{m\_\-line\_\-width@{m\_\-line\_\-width}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-line\_\-width}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf nebula::platform::window::lin::base::m\_\-line\_\-width}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_ac87241d1655c8081bb222b2d8ace36e7}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_aeeb21f9b5859adce56ec5114f4cf9dc6}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-root\_\-xwindow@{m\_\-root\_\-xwindow}}
+\index{m\_\-root\_\-xwindow@{m\_\-root\_\-xwindow}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-root\_\-xwindow}]{\setlength{\rightskip}{0pt plus 5cm}::Window {\bf nebula::platform::window::lin::base::m\_\-root\_\-xwindow}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_aeeb21f9b5859adce56ec5114f4cf9dc6}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_a4f47d93e9e4897a9d26b7e4ffa726429}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-screen\_\-num@{m\_\-screen\_\-num}}
+\index{m\_\-screen\_\-num@{m\_\-screen\_\-num}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-screen\_\-num}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf nebula::platform::window::lin::base::m\_\-screen\_\-num}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_a4f47d93e9e4897a9d26b7e4ffa726429}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_a6b248827e2b0465085540e494debc43b}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-valuemask@{m\_\-valuemask}}
+\index{m\_\-valuemask@{m\_\-valuemask}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-valuemask}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long {\bf nebula::platform::window::lin::base::m\_\-valuemask}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_a6b248827e2b0465085540e494debc43b}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_ad43cdc274bbb7e66479814e98887880b}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-values@{m\_\-values}}
+\index{m\_\-values@{m\_\-values}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-values}]{\setlength{\rightskip}{0pt plus 5cm}::XGCValues {\bf nebula::platform::window::lin::base::m\_\-values}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_ad43cdc274bbb7e66479814e98887880b}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_a06a95115e359f15e213bd0b8c3234526}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-xdisplay@{m\_\-xdisplay}}
+\index{m\_\-xdisplay@{m\_\-xdisplay}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-xdisplay}]{\setlength{\rightskip}{0pt plus 5cm}::Display$\ast$ {\bf nebula::platform::window::lin::base::m\_\-xdisplay}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_a06a95115e359f15e213bd0b8c3234526}
+\hypertarget{classnebula_1_1platform_1_1window_1_1lin_1_1base_aca6ba787d38d9383b56d5844b4f53843}{
+\index{nebula::platform::window::lin::base@{nebula::platform::window::lin::base}!m\_\-xwindow@{m\_\-xwindow}}
+\index{m\_\-xwindow@{m\_\-xwindow}!nebula::platform::window::lin::base@{nebula::platform::window::lin::base}}
+\subsubsection[{m\_\-xwindow}]{\setlength{\rightskip}{0pt plus 5cm}::Window {\bf nebula::platform::window::lin::base::m\_\-xwindow}}}
+\label{classnebula_1_1platform_1_1window_1_1lin_1_1base_aca6ba787d38d9383b56d5844b4f53843}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+/nfs/stak/students/r/rymalc/cpp\_\-projects/nebula/inc/nebula/platform/window/lin/\hyperlink{inc_2nebula_2platform_2window_2lin_2base_8hpp}{base.hpp}\item 
+/nfs/stak/students/r/rymalc/cpp\_\-projects/nebula/src/platform/window/lin/\hyperlink{src_2platform_2window_2lin_2base_8cpp}{base.cpp}\end{DoxyCompactItemize}
