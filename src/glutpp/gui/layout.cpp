@@ -3,12 +3,12 @@
 #include <string>
 #include <algorithm>
 
-#include <GUL/object/object.h>
-#include <GUL/object/edittext.h>
+#include <glutpp/gui/object/object.h>
+#include <glutpp/gui/object/edittext.h>
 
-#include <GUL/layout.h>
+#include <glutpp/gui/layout.h>
 
-void	GUL::layout::init()
+void	glutpp::gui::layout::init()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	
@@ -16,11 +16,11 @@ void	GUL::layout::init()
 	
 	objects_[0] = object;
 }
-void	GUL::layout::load_xml( std::string file_name )
+void	glutpp::gui::layout::load_xml( std::string file_name )
 {
 
 }
-void	GUL::layout::Display()
+void	glutpp::gui::layout::Display()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	//jess::clog << "objects_.size()=" << objects_.map_.size() << std::endl;
@@ -29,3 +29,4 @@ void	GUL::layout::Display()
 		(*it).second->Display();
 
 }
+

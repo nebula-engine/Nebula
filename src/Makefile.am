@@ -14,6 +14,11 @@ libglutpp_a_SOURCES = \
 		glutpp/light.h		glutpp/light.cpp \
 		glutpp/material.h	glutpp/material.cpp \
 		glutpp/gui/layout.h	glutpp/gui/layout.cpp
+		glutpp/gui/object/object.h	glutpp/gui/object/object.cpp \
+		glutpp/gui/object/button.h	glutpp/gui/object/button.cpp \
+		glutpp/gui/object/textview.h	glutpp/gui/object/textview.cpp \
+		glutpp/gui/object/edittext.h	glutpp/gui/object/edittext.cpp
+
 
 		
 #glutpp/plane.h glutpp/plane.cpp
@@ -41,7 +46,11 @@ nobase_include_HEADERS = \
 		glutpp/shaders/prog3/vs.glsl \
 		glutpp/shaders/prog3/fs.glsl \
 		glutpp/objects/cube.obj \
-		glutpp/gui/layout.h
+		glutpp/gui/layout.h \
+		glutpp/gui/object/object.h \
+		glutpp/gui/object/button.h \
+		glutpp/gui/object/textview.h \
+		glutpp/gui/object/edittext.h
 
 #glutpp/plane.h
 #glutpp/sphere.h

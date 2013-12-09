@@ -1,14 +1,14 @@
 #ifndef __NEBULA_UI_LAYOUT_BASE_HPP__
 #define __NEBULA_UI_LAYOUT_BASE_HPP__
 
-#include <linux/input.h>
-
 #include <memory>
 #include <map>
 
-#include <GUL/object/object.h>
+#include <glutpp/gui/object/object.h>
 
-namespace GUL
+namespace glutpp
+{
+namespace gui
 {
 	class layout
 	{
@@ -23,6 +23,7 @@ namespace GUL
 			/// objects
 			std::map<__s32,std::shared_ptr<GUL::object::object> >	objects_;
 	};
+}
 }
 
 #endif

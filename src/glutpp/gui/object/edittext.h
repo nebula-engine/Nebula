@@ -1,7 +1,7 @@
 #ifndef __NEBULA_UI_OBJECT_EDITTEXT_H__
 #define __NEBULA_UI_OBJECT_EDITTEXT_H__
 
-#include <GUL/object/textview.h>
+#include <glutpp/gui/object/textview.h>
 
 namespace GUL
 {

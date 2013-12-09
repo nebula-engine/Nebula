@@ -1,9 +1,7 @@
 #ifndef __NEBULA_UI_OBJECT_TEXTVIEW_HPP__
 #define __NEBULA_UI_OBJECT_TEXTVIEW_HPP__
 
-#include <linux/input.h>
-
-#include <GUL/object/object.h>
+#include <glutpp/gui/object/object.h>
 
 namespace GUL
 {

@@ -5,7 +5,7 @@
 
 #include <linux/input.h>
 
-#include <SIG/connection.h>
+#include <sig/connection.h>
 
 
 namespace GUL
