@@ -18,6 +18,8 @@ namespace glutpp
 			static void CallBackDisplayFunc(void);
 			static void CallBackIdleFunc(void); 
 			static void CallBackKeyboardFunc(unsigned char key, int x, int y);
+			static void CallBackKeyboardUpFunc(unsigned char key, int x, int y);
+
 			static void CallBackMotionFunc(int x, int y);
 			static void CallBackMouseFunc(int button, int state, int x, int y);
 			static void CallBackPassiveMotionFunc(int x, int y);

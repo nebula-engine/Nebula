@@ -10,6 +10,7 @@ libglutpp_a_SOURCES = \
 		glutpp/texture.h glutpp/texture.cpp \
 		glutpp/program.h glutpp/program.cpp \
 		glutpp/camera.h glutpp/camera.cpp \
+		glutpp/camera_control.h glutpp/camera_control.cpp \
 		glutpp/light.h glutpp/light.cpp \
 		glutpp/material.h glutpp/material.cpp
 
@@ -26,6 +27,7 @@ nobase_include_HEADERS = \
 		glutpp/uniform.h \
 		glutpp/attribute.h \
 		glutpp/camera.h \
+		glutpp/camera_control.h \
 		glutpp/light.h \
 		glutpp/material.h \
 		glutpp/shaders/prog_0/vs.glsl \

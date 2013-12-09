@@ -316,7 +316,7 @@ void	glutpp::object::model_unload()
 }
 void	glutpp::object::draw()
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	//printf("%s\n",__PRETTY_FUNCTION__);
 
 	checkerror("unknown");
 
@@ -324,7 +324,6 @@ void	glutpp::object::draw()
 	attrib_normal_.enable();
 	attrib_texcoor_.enable();
 
-	printf("draw\n");
 
 	// material
 	material_front_.load();
@@ -348,18 +347,15 @@ void	glutpp::object::draw()
 
 	model_unload();
 
-	printf("draw\n");
 
 	glBindBuffer(GL_ARRAY_BUFFER,0);checkerror("glBindBuffer");
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);checkerror("glBindBuffer");
 
-	printf("draw\n");
 
 	attrib_position_.disable();
 	attrib_normal_.disable();
 	attrib_texcoor_.disable();
 
-	printf("draw\n");
 }
 void	glutpp::object::render_reflection(){}
 

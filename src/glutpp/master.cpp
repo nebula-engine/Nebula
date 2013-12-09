@@ -45,6 +45,11 @@ void glutpp::master::CallBackKeyboardFunc(unsigned char key, int x, int y)
 	int windowID = glutGetWindow();
 	viewPorts[windowID]->CallBackKeyboardFunc(key, x, y);
 }
+void glutpp::master::CallBackKeyboardUpFunc(unsigned char key, int x, int y)
+{
+	int windowID = glutGetWindow();
+	viewPorts[windowID]->CallBackKeyboardUpFunc(key, x, y);
+}
 void glutpp::master::CallBackMotionFunc(int x, int y)
 {
 	int windowID = glutGetWindow();
@@ -95,6 +100,7 @@ void glutpp::master::CallGlutCreateWindow(char * setTitle, glutpp::window * glut
 	glutDisplayFunc(CallBackDisplayFunc);
 	glutIdleFunc(CallBackIdleFunc); 
 	glutKeyboardFunc(CallBackKeyboardFunc);
+	glutKeyboardUpFunc(CallBackKeyboardUpFunc);
 	glutSpecialFunc(CallBackSpecialFunc);
 	glutMouseFunc(CallBackMouseFunc);
 	glutMotionFunc(CallBackMotionFunc);

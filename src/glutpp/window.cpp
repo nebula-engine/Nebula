@@ -240,7 +240,8 @@ void	glutpp::window::uniforms()
 	uniform_proj_.init(this,"proj");
 }
 void	glutpp::window::lights_for_each(std::function<void(glutpp::light*)> func)
-{	printf("%s\n",__PRETTY_FUNCTION__);
+{	
+	//printf("%s\n",__PRETTY_FUNCTION__);
 
 	for(int i = 0; i < light_count_; ++i)
 	{
@@ -254,7 +255,8 @@ void	glutpp::window::lights_for_each(std::function<void(glutpp::light*)> func)
 	}
 }
 void	glutpp::window::objects_for_each(std::function<void(glutpp::object*)> func)
-{	printf("%s\n",__PRETTY_FUNCTION__);
+{	
+	//printf("%s\n",__PRETTY_FUNCTION__);
 
 	for(int i = 0; i < objects_.size(); ++i)
 	{
@@ -314,7 +316,7 @@ void	glutpp::window::display_dim()
 }
 void	glutpp::window::display_bright()
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	//printf("%s\n",__PRETTY_FUNCTION__);
 
 	//3rd pass: Draw with bright light
 	lights_for_each(&glutpp::light::load);
@@ -331,7 +333,7 @@ void	glutpp::window::display_bright()
 }
 void glutpp::window::CallBackDisplayFunc()
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	//printf("%s\n",__PRETTY_FUNCTION__);
 
 	// uniforms
 	uniform_light_count_.load_1i(light_count_);
@@ -380,12 +382,9 @@ void glutpp::window::StartSpinning()
 }
 void glutpp::window::CallBackKeyboardFunc(unsigned char key, int x, int y)
 {
-	printf("%s\n",__FUNCTION__);
+	//printf("%s\n",__PRETTY_FUNCTION__);
 	
-	if(action==GLFW_PRESS)
-	{
-		map_sig_key_[key](
-	}
+	map_sig_key_down_[key]();
 	
 	switch(key)
 	{
@@ -401,6 +400,14 @@ void glutpp::window::CallBackKeyboardFunc(unsigned char key, int x, int y)
 		case 27:
 			exit(0);
 	}
+	//key; x; y;                //dummy function
+}
+void glutpp::window::CallBackKeyboardUpFunc(unsigned char key, int x, int y)
+{
+	//printf("%s\n",__PRETTY_FUNCTION__);
+	
+	map_sig_key_up_[key]();
+
 	//key; x; y;                //dummy function
 }
 void glutpp::window::CallBackMotionFunc(int x, int y)
@@ -449,7 +456,9 @@ void	glutpp::window::display_all_but(object* o)
 void glutpp::window::display_ortho()
 {}   
 void glutpp::window::Idle()
-{}   
+{
+	camera_.step(1.0/60.0);
+}   
 
 
 void checkerror(char const * msg)

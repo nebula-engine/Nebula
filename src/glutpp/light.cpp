@@ -86,13 +86,13 @@ void	glutpp::light::draw()
 }
 void	glutpp::light::load()
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	//printf("%s\n",__PRETTY_FUNCTION__);
 
 	if(window_->all(glutpp::window::LIGHTING))
 	{
 		if(window_->all(glutpp::window::SHADER))
 		{
-			printf("shader lighting\n");
+			//printf("shader lighting\n");
 
 			uniform_position_.load_4fv(			camera_.eye_);
 			uniform_ambient_.load_4fv(			ambient_);

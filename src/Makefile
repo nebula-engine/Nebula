@@ -80,7 +80,8 @@ libglutpp_a_LIBADD =
 am_libglutpp_a_OBJECTS = master.$(OBJEXT) window.$(OBJEXT) \
 	object.$(OBJEXT) shader.$(OBJEXT) uniform.$(OBJEXT) \
 	attribute.$(OBJEXT) texture.$(OBJEXT) program.$(OBJEXT) \
-	camera.$(OBJEXT) light.$(OBJEXT) material.$(OBJEXT)
+	camera.$(OBJEXT) camera_control.$(OBJEXT) light.$(OBJEXT) \
+	material.$(OBJEXT)
 libglutpp_a_OBJECTS = $(am_libglutpp_a_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -203,6 +204,7 @@ libglutpp_a_SOURCES = \
 		glutpp/texture.h glutpp/texture.cpp \
 		glutpp/program.h glutpp/program.cpp \
 		glutpp/camera.h glutpp/camera.cpp \
+		glutpp/camera_control.h glutpp/camera_control.cpp \
 		glutpp/light.h glutpp/light.cpp \
 		glutpp/material.h glutpp/material.cpp
 
@@ -219,6 +221,7 @@ nobase_include_HEADERS = \
 		glutpp/uniform.h \
 		glutpp/attribute.h \
 		glutpp/camera.h \
+		glutpp/camera_control.h \
 		glutpp/light.h \
 		glutpp/material.h \
 		glutpp/shaders/prog_0/vs.glsl \
@@ -308,6 +311,7 @@ distclean-compile:
 
 include ./$(DEPDIR)/attribute.Po
 include ./$(DEPDIR)/camera.Po
+include ./$(DEPDIR)/camera_control.Po
 include ./$(DEPDIR)/light.Po
 include ./$(DEPDIR)/master.Po
 include ./$(DEPDIR)/material.Po
@@ -457,6 +461,20 @@ camera.obj: glutpp/camera.cpp
 #	source='glutpp/camera.cpp' object='camera.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o camera.obj `if test -f 'glutpp/camera.cpp'; then $(CYGPATH_W) 'glutpp/camera.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/camera.cpp'; fi`
+
+camera_control.o: glutpp/camera_control.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT camera_control.o -MD -MP -MF $(DEPDIR)/camera_control.Tpo -c -o camera_control.o `test -f 'glutpp/camera_control.cpp' || echo '$(srcdir)/'`glutpp/camera_control.cpp
+	$(am__mv) $(DEPDIR)/camera_control.Tpo $(DEPDIR)/camera_control.Po
+#	source='glutpp/camera_control.cpp' object='camera_control.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o camera_control.o `test -f 'glutpp/camera_control.cpp' || echo '$(srcdir)/'`glutpp/camera_control.cpp
+
+camera_control.obj: glutpp/camera_control.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT camera_control.obj -MD -MP -MF $(DEPDIR)/camera_control.Tpo -c -o camera_control.obj `if test -f 'glutpp/camera_control.cpp'; then $(CYGPATH_W) 'glutpp/camera_control.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/camera_control.cpp'; fi`
+	$(am__mv) $(DEPDIR)/camera_control.Tpo $(DEPDIR)/camera_control.Po
+#	source='glutpp/camera_control.cpp' object='camera_control.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o camera_control.obj `if test -f 'glutpp/camera_control.cpp'; then $(CYGPATH_W) 'glutpp/camera_control.cpp'; else $(CYGPATH_W) '$(srcdir)/glutpp/camera_control.cpp'; fi`
 
 light.o: glutpp/light.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT light.o -MD -MP -MF $(DEPDIR)/light.Tpo -c -o light.o `test -f 'glutpp/light.cpp' || echo '$(srcdir)/'`glutpp/light.cpp

@@ -92,16 +92,20 @@ namespace glutpp
 			
 			// virtual
 			virtual void		Idle();
-			virtual void		CallBackKeyboardFunc(unsigned char key, int x, int y);
+
+			void			CallBackKeyboardFunc(unsigned char key, int x, int y);
+			void			CallBackKeyboardUpFunc(unsigned char key, int x, int y);
+
 			virtual void		CallBackMotionFunc(int x, int y);
 			virtual void		CallBackMouseFunc(int button, int state, int x, int y);
 			virtual void		CallBackPassiveMotionFunc(int x, int y);
 			virtual void		CallBackReshapeFunc(int w, int h);   
 			virtual void		CallBackSpecialFunc(int key, int x, int y);   
 			virtual void		CallBackVisibilityFunc(int visible);
-
+			
 			// input signals
-			std::map<unsigned char,sig::signal1f>	map_sig_key_;
+			std::map<unsigned char,sig::signal<> >	map_sig_key_down_;
+			std::map<unsigned char,sig::signal<> >	map_sig_key_up_;
 			
 			char const *		title_;
 			int			height;

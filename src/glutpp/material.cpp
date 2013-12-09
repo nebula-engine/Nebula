@@ -4,11 +4,11 @@
 #include <glutpp/material.h>
 
 glutpp::material::material():
-	ambient_(math::black),
+	ambient_(0.1,0.1,0.1,1.0),
 	diffuse_(math::cyan),
 	specular_(math::white),
 	emission_(math::black),
-	shininess_(128)
+	shininess_(1000)
 {}
 void	glutpp::material::init(window* window)
 {
@@ -22,7 +22,7 @@ void	glutpp::material::init(window* window)
 }
 void	glutpp::material::load()
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	//printf("%s\n",__PRETTY_FUNCTION__);
 	
 	if(window_->all(glutpp::window::SHADER))
 	{

@@ -5,6 +5,9 @@
 
 #include <sig/connection.h>
 
+#include <math/quat.h>
+#include <math/mat44.h>
+
 #include <glutpp/window.h>
 #include <glutpp/camera.h>
 
@@ -24,12 +27,8 @@ glutpp::camera::camera():
 void		glutpp::camera::init(window* window)
 {
 	window_ = window;
-
-	connection_u_.push_back(
-			window_->map_sig_key_['w'].connect(std::bind(&glutpp::camera::north,this,std::placeholders::_1))
-			);
-
-
+	
+	control_.init(window_);
 }
 int		glutpp::camera::north(float)
 {
@@ -71,8 +70,7 @@ void		glutpp::camera::load()
 }
 void		glutpp::camera::step(float dt)
 {
-	math::vec3 v(0.0,0.0,0.0);
-
+	/*
 	for(auto it = connection_u_.begin(); it != connection_u_.end(); ++it)
 	{
 		v.x += std::get<0>((*it)->tup_);
@@ -85,9 +83,52 @@ void		glutpp::camera::step(float dt)
 	{
 		v.z += std::get<0>((*it)->tup_);
 	}
+	*/
+	
+	// look vector
+	math::vec3 look = center_ - eye_;
+	
+	// project to xz-plane
+	look.y = 0.0;
+	look.normalize();
+	
+	math::vec3 x(1,0,0);
+	math::vec3 y(0,1,0);
+	math::vec3 z(0,0,-1);
+	
+	math::vec3 c = z.cross(look);
+	
+	float yaw = asin(c.magnitude());
+	
+	float d = y.dot(c);
+	float e = z.dot(look);
+	
+	if(e < 0) yaw = M_PI - yaw;
+	
 
-	eye_ += v * dt;
+	yaw *= (d > 0) ? 1.0 : -1.0;
+	
+	
+	printf("yaw = %f\n",yaw);
+	
+	// rotate velocity by camera yaw
+	math::quat q(yaw,y);
+	
+	
+	math::vec3 v = control_.v0_ + control_.v1_;
+	v *= dt;
+	v *= 4.0;
+		
+	v = q.rotate(v);
+	
+	eye_ += math::vec4(v, 0.0f);
 }
+
+
+
+
+
+
 
 
 
