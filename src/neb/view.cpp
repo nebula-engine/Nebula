@@ -12,7 +12,7 @@ neb::view::view():
 {
 
 }
-void	NEB::view::delete_scene()
+void	neb::view::delete_scene()
 {
 	scene_.reset();
 }

@@ -197,9 +197,10 @@ neb::actor::Rigid_Static*	neb::scene::Create_Rigid_Static_Plane(TiXmlElement* el
 	
 	printf("%f,%f,%f\n", pose.p.x, pose.p.y, pose.p.z);
 	
+	physx::PxPlane p(physx::PxVec3(n.x,n.y,n.z), d);
 	
 	// PxActor
-	physx::PxRigidStatic* px_rigid_static = PxCreatePlane(*(neb::__physics.px_physics_), physx::PxPlane(n, d), *px_mat);
+	physx::PxRigidStatic* px_rigid_static = PxCreatePlane(*(neb::__physics.px_physics_), p, *px_mat);
 	
 	if (!px_rigid_static)
 	{
@@ -226,8 +227,7 @@ std::shared_ptr<neb::actor::Controller>	neb::scene::Create_Controller(TiXmlEleme
 	printf("%s\n",__FUNCTION__);
 	
 	//jess::scoped_ostream( &jess::clog, neb_FUNCSIG );
-	physx::PxVec3 p = xml_parse_vec3(el_actor->FirstChildElement("p"));
-	
+	math::vec3 p = xml_parse_vec3(el_actor->FirstChildElement("p"));	
 	// create
 	std::shared_ptr<neb::actor::Controller> actor(new neb::actor::Controller);
 	

@@ -12,13 +12,13 @@ namespace neb
 	class view
 	{
 		public:
-			View();
+			view();
 			void				delete_scene();
 			void				Display();
 			
 			
-			std::shared_ptr<NEB::Scene>	scene_;
-			std::shared_ptr<GUL::layout>	layout_;
+			std::shared_ptr<neb::scene>		scene_;
+			std::shared_ptr<glutpp::gui::layout>	layout_;
 
 	};
 }

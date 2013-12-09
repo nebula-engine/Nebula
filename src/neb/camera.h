@@ -6,7 +6,8 @@
 #include <memory>
 #include <map>
 
-#include <JSL/Event.h>
+//#include <JSL/Event.h>
+
 #include <glutpp/window.h>
 
 
@@ -27,7 +28,7 @@ namespace NEB
 			Camera();
 			void		Connect();
 			void		delete_scene();
-			void		SetWindow(GRU::Window*);
+			void		SetWindow(glutpp::window*);
 			void		Display();
 			void		Look();
 			physx::PxVec3	Move();
@@ -50,7 +51,7 @@ namespace NEB
 
 			__s32	handle_delete_scene(__s32);
 
-			NEB::View* view_;
+			neb::view* view_;
 
 			__u32	flag_;
 
@@ -71,9 +72,9 @@ namespace NEB
 
 			
 
-			std::shared_ptr<JSL::Event>	ev_mouse;
-			std::shared_ptr<JSL::Event>	ev_keyboard;
-			std::shared_ptr<JSL::Event>	ev_gamepad;
+			//std::shared_ptr<JSL::Event>	ev_mouse;
+			//std::shared_ptr<JSL::Event>	ev_keyboard;
+			//std::shared_ptr<JSL::Event>	ev_gamepad;
 
 	};
 }
