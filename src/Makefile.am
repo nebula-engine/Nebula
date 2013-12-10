@@ -13,16 +13,12 @@ libglutpp_a_SOURCES = \
 		glutpp/camera.h		glutpp/camera.cpp \
 		glutpp/light.h		glutpp/light.cpp \
 		glutpp/material.h	glutpp/material.cpp \
-		glutpp/gui/layout.h	glutpp/gui/layout.cpp
+		glutpp/gui/layout.h	glutpp/gui/layout.cpp \
 		glutpp/gui/object/object.h	glutpp/gui/object/object.cpp \
 		glutpp/gui/object/button.h	glutpp/gui/object/button.cpp \
 		glutpp/gui/object/textview.h	glutpp/gui/object/textview.cpp \
 		glutpp/gui/object/edittext.h	glutpp/gui/object/edittext.cpp
 
-
-		
-#glutpp/plane.h glutpp/plane.cpp
-#glutpp/sphere.h glutpp/sphere.cpp
 
 nobase_include_HEADERS = \
 		glutpp/master.h \
@@ -52,8 +48,6 @@ nobase_include_HEADERS = \
 		glutpp/gui/object/textview.h \
 		glutpp/gui/object/edittext.h
 
-#glutpp/plane.h
-#glutpp/sphere.h
 
 CXXFLAGS = -std=c++0x -DGLUTPP_PREFIX=${includedir} -D_DEBUG
 LIBS = -lglutpp

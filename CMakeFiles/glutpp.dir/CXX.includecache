@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/nfs/stak/students/r/rymalc/Programming/C++/glutpp/src/glutpp/gui/layout.cpp
+tinyxml/tinyxml.h
+-
+string
+-
+algorithm
+-
+glutpp/gui/object/object.h
+-
+glutpp/gui/object/edittext.h
+-
+glutpp/gui/layout.h
+-
+
+src/glutpp/gui/layout.h
+memory
+-
+map
+-
+glutpp/gui/object/object.h
+-
+
+src/glutpp/gui/object/edittext.h
+glutpp/gui/object/textview.h
+-
+
+src/glutpp/gui/object/object.h
+memory
+-
+gal/sig/connection.h
+-
+
+src/glutpp/gui/object/textview.h
+glutpp/gui/object/object.h
+-
+

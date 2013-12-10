@@ -3,7 +3,7 @@
 
 #include <GL/glew.h>
 
-#include <sig/connection.h>
+#include <gal/sig/connection.h>
 
 #include <math/quat.h>
 #include <math/mat44.h>

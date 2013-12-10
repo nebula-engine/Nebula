@@ -73,10 +73,8 @@ void	glutpp::object::construct(math::geo::polyhedron* poly)
 	fh_.len_vertices_ = 3 * poly->nt_ + 4 * poly->nq_;
 	fh_.len_indices_ = 3 * poly->nt_ + 6 * poly->nq_;
 	
-	
 	printf("vertices: %i elements\n",fh_.len_vertices_);
 	printf("indices:  %i elements\n",fh_.len_indices_);
-
 	
 	vertices_ = new glutpp::vertex[fh_.len_vertices_];
 	indices_ = new GLushort[fh_.len_indices_];
@@ -249,14 +247,19 @@ void glutpp::object::init_buffer()
 	int baseOffset = 0;
 	glBindBuffer(GL_ARRAY_BUFFER, vbo_);
 	//glBindVertexBuffer(0, vbo_, baseOffset, sizeof(glutpp::vertex));
-
+	
+	glutpp::vertex v;
+	long off_position = (long)&v.position - (long)&v;
+	long off_normal = (long)&v.normal - (long)&v;
+	long off_texcoor = (long)&v.texcoor - (long)&v;
+	
 	glVertexAttribPointer(
 			attrib_position_.o_,
 			4,
 			GL_FLOAT,
 			GL_FALSE,
 			sizeof(glutpp::vertex),
-			offsetof(glutpp::vertex, position));
+			(void*)off_position);
 	checkerror("glVertexAttribPointer");
 
 	glVertexAttribPointer(
@@ -265,7 +268,7 @@ void glutpp::object::init_buffer()
 			GL_FLOAT,
 			GL_FALSE,
 			sizeof(glutpp::vertex),
-			(void*)offsetof(glutpp::vertex, normal));
+			(void*)off_normal);
 	checkerror("glVertexAttribPointer normal");
 
 	glVertexAttribPointer(
@@ -274,7 +277,7 @@ void glutpp::object::init_buffer()
 			GL_FLOAT,
 			GL_FALSE,
 			sizeof(glutpp::vertex),
-			(void*)offsetof(glutpp::vertex, texcoor));
+			(void*)off_texcoor);
 	checkerror("glVertexAttribPointer texcoor");
 
 	size = fh_.len_vertices_ * sizeof(glutpp::vertex);

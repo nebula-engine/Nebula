@@ -8,7 +8,7 @@ namespace GUL
 	namespace object
 	{
 		class edittext:
-			public GUL::object::textview
+			public glutpp::gui::object::textview
 		{
 			public:
 				edittext();
