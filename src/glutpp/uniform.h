@@ -1,7 +1,7 @@
 #ifndef __UNIFORM_H__
 #define __UNIFORM_H__
 
-#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 #include <math/mat44.h>
 

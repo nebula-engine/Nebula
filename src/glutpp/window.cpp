@@ -2,12 +2,12 @@
 #include <stdio.h>
 
 //#include <GLee.h>
-
+#include <GL/glfw.h>
 
 #include <map>
 
-#include <GL/glew.h>
-#include <GL/glut.h>
+//#include <GL/glew.h>
+//#include <GL/glut.h>
 
 #include <math/color.h>
 
@@ -34,6 +34,7 @@ void	fatal_error(char const * c)
 	strcat(fmt, "error: ");
 	strcat(fmt, c);
 	strcat(fmt, "\n");
+	printf("%s\n",c);
 	exit(0);
 }
 void	check_error()
@@ -58,7 +59,7 @@ glutpp::window::window(
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	printf(PNT(GLUTPP_PREFIX));
+	printf(PNT(GLUTPP_PREFIX)"\n");
 	
 	memset(lights_, 0, LIGHT_MAX);
 }
@@ -181,7 +182,7 @@ void	glutpp::window::shaders()
 	
 	std::map<unsigned int,int> shader_map;
 
-	unsigned int mask = 
+	unsigned int m = 
 		RAY_TRACE |
 		LIGHTING | 
 		SHADOW |
@@ -199,7 +200,7 @@ void	glutpp::window::shaders()
 	{
 		printf("shaders enabled\n");
 		
-		unsigned int f = flag_ & mask;
+		unsigned int f = mask(m);
 
 		auto it = shader_map.find(f);
 
@@ -299,13 +300,6 @@ void	glutpp::window::callback_display_ortho()
 	glPopMatrix();
 
 }
-void	glutpp::window::RenderReflection()
-{
-	for( auto it = objects_.begin(); it != objects_.end(); ++it )
-	{
-		(*it)->render_reflection();
-	}
-}
 void	glutpp::window::display_dim()
 {
 	//glEnable(GL_LIGHTING);
@@ -321,7 +315,7 @@ void	glutpp::window::display_bright()
 	//3rd pass: Draw with bright light
 	lights_for_each(&glutpp::light::load);
 
-	if(all(REFLECT | REFLECT_PLANAR)) RenderReflection();
+	if(all(REFLECT | REFLECT_PLANAR)) objects_for_each(&glutpp::object::render_reflection);
 
 	if(all(SHADOW | SHADOW_MAP) && !all(SHADER)) lights_for_each(&glutpp::light::draw_shadow_no_shader);
 
@@ -333,7 +327,7 @@ void	glutpp::window::display_bright()
 }
 void glutpp::window::CallBackDisplayFunc()
 {
-	//printf("%s\n",__PRETTY_FUNCTION__);
+	printf("%s\n",__PRETTY_FUNCTION__);
 
 	// uniforms
 	uniform_light_count_.load_1i(light_count_);
@@ -398,6 +392,7 @@ void glutpp::window::CallBackKeyboardFunc(unsigned char key, int x, int y)
 			toggle(REFLECT);
 			break;
 		case 27:
+			printf("exit\n");
 			exit(0);
 	}
 	//key; x; y;                //dummy function
@@ -457,7 +452,11 @@ void glutpp::window::display_ortho()
 {}   
 void glutpp::window::Idle()
 {
-	camera_.step(1.0/60.0);
+	double now = glfwGetTime();
+
+	camera_.step(now);
+	
+	if(func_indle) func_idle_(now);
 }   
 
 

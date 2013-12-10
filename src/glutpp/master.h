@@ -1,16 +1,11 @@
 #ifndef __GLUTPP_MASTER_H__
 #define __GLUTPP_MASTER_H__
 
-#include <GL/glew.h>
-#include <GL/glut.h>
-
-
-#define MAX_NUMBER_OF_WINDOWS 256 
+#include <GLFW/glfw3.h>
 
 namespace glutpp
 {
 	class window;
-
 	class master
 	{
 		private:
@@ -27,7 +22,6 @@ namespace glutpp
 			static void CallBackSpecialFunc(int key, int x, int y);   
 			static void CallBackVisibilityFunc(int visible);
 
-			static int currentIdleWindow;
 			static int idleFunctionEnabled;
 
 		public:
@@ -44,6 +38,10 @@ namespace glutpp
 
 			int   IdleSetToCurrentWindow(void);
 			void  SetIdleToCurrentWindow(void);
+		private:
+			GLFWwindow*				currentIdleWindow_;
+			std::map<GLFWwindow*,glutpp::window*>	windows_;
+
 	};
 	
 	extern "C" master __master;

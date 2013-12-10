@@ -2,8 +2,7 @@
 #define __DRAW_H__
 
 
-#include <GL/glew.h>
-#include <GL/glut.h>
+#include <GLFW/glfw3.h>
 
 namespace glutpp
 {

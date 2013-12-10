@@ -79,7 +79,6 @@ namespace glutpp
 			void			display();
 			void			display_all_but(object*);
 			
-			void			RenderReflection();
 			void			lights_for_each(std::function<void(glutpp::light*)>);
 			void			objects_for_each(std::function<void(glutpp::object*)>);
 
@@ -90,23 +89,31 @@ namespace glutpp
 			void			shaders();
 			GLint			get_program();
 			
-			// virtual
-			virtual void		Idle();
+			void			Idle();
 
 			void			CallBackKeyboardFunc(unsigned char key, int x, int y);
 			void			CallBackKeyboardUpFunc(unsigned char key, int x, int y);
 
-			virtual void		CallBackMotionFunc(int x, int y);
-			virtual void		CallBackMouseFunc(int button, int state, int x, int y);
-			virtual void		CallBackPassiveMotionFunc(int x, int y);
-			virtual void		CallBackReshapeFunc(int w, int h);   
-			virtual void		CallBackSpecialFunc(int key, int x, int y);   
-			virtual void		CallBackVisibilityFunc(int visible);
+			void			CallBackMotionFunc(int x, int y);
+			void			CallBackMouseFunc(int button, int state, int x, int y);
+			void			CallBackPassiveMotionFunc(int x, int y);
+			void			CallBackReshapeFunc(int w, int h);   
+			void			CallBackSpecialFunc(int key, int x, int y);   
+			void			CallBackVisibilityFunc(int visible);
 			
 			// input signals
 			std::map<unsigned char,sig::signal<> >	map_sig_key_down_;
 			std::map<unsigned char,sig::signal<> >	map_sig_key_up_;
 			
+			
+			
+			
+			// idle signal
+			std::function<void(double)>	func_idle_;
+			
+
+
+
 			char const *		title_;
 			int			height;
 			int			width;

@@ -1,12 +1,14 @@
 #include <stdio.h>
+#include <map>
+
+
+#include <GLFW/glfw3.h>
+//#include <glfw3.h>
 
 #include <glutpp/master.h>
 #include <glutpp/window.h>
 
-glutpp::window * viewPorts[MAX_NUMBER_OF_WINDOWS]; 
 
-int glutpp::master::currentIdleWindow   = 0;
-int glutpp::master::idleFunctionEnabled = 0;
 
 glutpp::master::master()
 {
@@ -18,7 +20,7 @@ glutpp::master::master()
 
 	// Initialize GLUT
 
-	glutInit( &dummy_argc, (char**)dummy_argv );
+	glfwInit();// &dummy_argc, (char**)dummy_argv );
 
 
 
@@ -29,16 +31,18 @@ glutpp::master::~master()
 }
 void glutpp::master::CallBackDisplayFunc(void)
 {
-	int windowID = glutGetWindow();
-	viewPorts[windowID]->CallBackDisplayFunc();
+	GLFWwindow* window = glfwGetCurrentContext();
+	if(window == NULL) return;
+	
+	__master.windows_[window]->CallBackDisplayFunc();
 }
 void glutpp::master::CallBackIdleFunc(void)
-{
-	if(idleFunctionEnabled && currentIdleWindow)
-	{
-		glutSetWindow(currentIdleWindow);
-		viewPorts[currentIdleWindow]->CallBackIdleFunc();
-	}
+{	
+	if(currentIdleWindow_ == NULL) return;
+	
+	glutSetWindow(currentIdleWindow);
+	viewPorts[currentIdleWindow]->CallBackIdleFunc();
+	
 }
 void glutpp::master::CallBackKeyboardFunc(unsigned char key, int x, int y)
 {
@@ -77,6 +81,67 @@ void glutpp::master::CallBackSpecialFunc(int key, int x, int y)
 }   
 void glutpp::master::CallBackVisibilityFunc(int visible)
 {
+	int windowID = glutGetWindow();
+	viewPorts[windowID]->CallBackVisibilityFunc(visible);
+}
+void glutpp::master::static_CallBackDisplayFunc(void)
+{
+	GLFWwindow* window = glfwGetCurrentContext();
+	if(window == NULL) return;
+	
+	__master.windows_[window]->CallBackDisplayFunc();
+}
+void glutpp::master::static_CallBackIdleFunc(void)
+{	
+	if(currentIdleWindow_ == NULL) return;
+	
+	glutSetWindow(currentIdleWindow);
+	viewPorts[currentIdleWindow]->CallBackIdleFunc();
+	
+}
+void glutpp::master::static_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	__master.(key,scancode,);
+}
+void glutpp::master::static_CallBackKeyboardUpFunc(unsigned char key, int x, int y)
+{
+__master.
+	int windowID = glutGetWindow();
+	viewPorts[windowID]->CallBackKeyboardUpFunc(key, x, y);
+}
+void glutpp::master::static_CallBackMotionFunc(int x, int y)
+{
+__master.
+	int windowID = glutGetWindow();
+	viewPorts[windowID]->CallBackMotionFunc(x, y);
+}
+void glutpp::master::static_CallBackMouseFunc(int button, int state, int x, int y)
+{
+__master.
+	int windowID = glutGetWindow();
+	viewPorts[windowID]->CallBackMouseFunc(button, state, x, y);
+}
+void glutpp::master::static_CallBackPassiveMotionFunc(int x, int y)
+{
+__master.
+	int windowID = glutGetWindow();
+	viewPorts[windowID]->CallBackPassiveMotionFunc(x, y);
+}
+void glutpp::master::static_CallBackReshapeFunc(int w, int h)
+{
+__master.
+	int windowID = glutGetWindow();
+	viewPorts[windowID]->CallBackReshapeFunc(w, h);
+}
+void glutpp::master::static_CallBackSpecialFunc(int key, int x, int y)
+{
+__master.
+	int windowID = glutGetWindow();
+	viewPorts[windowID]->CallBackSpecialFunc(key, x, y);
+}   
+void glutpp::master::static_CallBackVisibilityFunc(int visible)
+{
+__master.
 	int windowID = glutGetWindow();
 	viewPorts[windowID]->CallBackVisibilityFunc(visible);
 }

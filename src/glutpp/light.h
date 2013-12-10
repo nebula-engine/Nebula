@@ -1,7 +1,7 @@
 #ifndef __GLUTPP_LIGHT_H__
 #define __GLUTPP_LIGHT_H__
 
-#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 #include <glutpp/object.h>
 #include <glutpp/camera.h>
@@ -19,7 +19,9 @@ namespace glutpp
 		public:
 			enum
 			{
-				DIRECTIONAL = 1 << 0
+				POINT,
+				DIRECTIONAL,
+				SPOT
 			};
 			
 			light();
@@ -33,7 +35,7 @@ namespace glutpp
 			void		RenderShadowPost();
 			void		RenderLightPOV();
 			
-			// camera (position stored here)
+			// camera (light position stored here)
 			camera		camera_;
 
 			// colors

@@ -3,7 +3,9 @@
 
 #include <functional>
 
-#include <GL/glew.h>
+
+#include <GLFW/glfw3.h>
+
 
 #include <math/mat44.h>
 #include <math/vec4.h>
