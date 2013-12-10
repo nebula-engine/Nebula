@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include <sig/connection.h>
+#include <gal/sig/connection.h>
 
 #include <math/vec3.h>
 #include <math/vec4.h>

@@ -21,7 +21,7 @@
 #include <glutpp/program.h>
 #include <glutpp/shader.h>
 
-#include <sig/signal.h>
+#include <gal/sig/signal.h>
 
 #include <math/mat44.h>
 #include <math/vec4.h>
@@ -104,8 +104,8 @@ namespace glutpp
 			virtual void		CallBackVisibilityFunc(int visible);
 			
 			// input signals
-			std::map<unsigned char,sig::signal<> >	map_sig_key_down_;
-			std::map<unsigned char,sig::signal<> >	map_sig_key_up_;
+			std::map<unsigned char,gal::sig::signal<> >	map_sig_key_down_;
+			std::map<unsigned char,gal::sig::signal<> >	map_sig_key_up_;
 			
 			char const *		title_;
 			int			height;

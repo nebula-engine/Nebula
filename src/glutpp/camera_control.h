@@ -5,7 +5,7 @@
 
 #include <math/vec3.h>
 
-#include <sig/connection.h>
+#include <gal/sig/connection.h>
 
 namespace glutpp
 {
@@ -13,20 +13,20 @@ namespace glutpp
 	class camera_control
 	{
 		public:
-			void					init(window*);
+			void						init(window*);
 			
-			int					callback_x_(int,float);
-			int					callback_y_(int,float);
-			int					callback_z_(int,float);
+			int						callback_x_(int,float);
+			int						callback_y_(int,float);
+			int						callback_z_(int,float);
 
-			math::vec3				v0_;
-			math::vec3				v1_;
+			math::vec3					v0_;
+			math::vec3					v1_;
 		
-			std::vector<sig::connection<>*>		vec_x_;
-			std::vector<sig::connection<>*>		vec_y_;
-			std::vector<sig::connection<>*>		vec_z_;
+			std::vector<gal::sig::connection<>*>		vec_x_;
+			std::vector<gal::sig::connection<>*>		vec_y_;
+			std::vector<gal::sig::connection<>*>		vec_z_;
 
-			window*					window_;
+			window*						window_;
 	};
 }
 

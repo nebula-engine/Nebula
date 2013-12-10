@@ -181,7 +181,7 @@ void	glutpp::window::shaders()
 	
 	std::map<unsigned int,int> shader_map;
 
-	unsigned int mask = 
+	unsigned int m = 
 		RAY_TRACE |
 		LIGHTING | 
 		SHADOW |
@@ -199,7 +199,7 @@ void	glutpp::window::shaders()
 	{
 		printf("shaders enabled\n");
 		
-		unsigned int f = flag_ & mask;
+		unsigned int f = mask(m);
 
 		auto it = shader_map.find(f);
 

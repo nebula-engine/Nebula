@@ -3,45 +3,48 @@
 
 #include <glutpp/gui/object/object.h>
 
-namespace GUL
+namespace glutpp
 {
-	namespace object
+	namespace gui
 	{
-		/** \brief %textview
-		 * Display and optionally edit text
-		 */
-		class textview:
-			public GUL::object::object
+		namespace object
 		{
-			public:
-				/** \brief ctor
-				 */
-				textview();
-				/** \brief clear label
-				 */
-				void					clear_label();
-				/** \brief render
-				 */			
-				virtual void				Display();
-				///@{
-				/** on
-				 */
-				virtual int				handle_key(__u16, __s32);
-				virtual int				handle_key_down(__u16);
-				/** \brief key up
-				 */
-				virtual int				handle_key_up(__u16);
-				/** \brief linefeed
-				 */
-				virtual int				handle_enter();
-				///@}
-				/** \brief linefeed
-				 */
-				std::function<int()>			callback_enter_;
-				/** \brief label pos
-				 */
-				size_t					label_pos_;
-		};
+			/** \brief %textview
+			 * Display and optionally edit text
+			 */
+			class textview:
+				public glutpp::gui::object::object
+			{
+				public:
+					/** \brief ctor
+					*/
+					textview();
+					/** \brief clear label
+					*/
+					void					clear_label();
+					/** \brief render
+					*/			
+					virtual void				Display();
+					///@{
+					/** on
+					*/
+					virtual int				handle_key(unsigned short,int);
+					virtual int				handle_key_down(unsigned short);
+					/** \brief key up
+					*/
+					virtual int				handle_key_up(unsigned short);
+					/** \brief linefeed
+					*/
+					virtual int				handle_enter();
+					///@}
+					/** \brief linefeed
+					*/
+					std::function<int()>			callback_enter_;
+					/** \brief label pos
+					*/
+					size_t					label_pos_;
+			};
+		}
 	}
 }
 

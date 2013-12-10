@@ -1,9 +1,9 @@
 #include <cstring>
 #include <algorithm>
 
-#include <GUL/object/object.h>
+#include <glutpp/gui/object/object.h>
 
-GUL::object::object::object():
+glutpp::gui::object::object::object():
 	label_(0)
 {
 	label_ = new char[16];
