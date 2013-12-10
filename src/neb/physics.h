@@ -22,7 +22,7 @@ namespace neb
 		public:
 			void						Init();
 			void						Shutdown();
-			std::shared_ptr<neb::scene>			Create_Scene(TiXmlElement*);
+			neb::scene*					Create_Scene(TiXmlElement*);
 			neb::actor::Rigid_Dynamic*			Create_Rigid_Dynamic_Box();
 
 			DefaultErrorCallback 				px_default_error_callback_;

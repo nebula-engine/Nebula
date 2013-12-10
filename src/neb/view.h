@@ -4,7 +4,6 @@
 #include <memory>
 
 #include <glutpp/gui/layout.h>
-
 #include <glutpp/window.h>
 
 namespace neb
@@ -17,8 +16,8 @@ namespace neb
 			void				Display();
 			
 			
-			std::shared_ptr<neb::scene>		scene_;
-			std::shared_ptr<glutpp::gui::layout>	layout_;
+			neb::scene*		scene_;
+			glutpp::gui::layout*	layout_;
 
 	};
 }

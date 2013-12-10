@@ -1,12 +1,10 @@
 #include <assert.h>
-#include <memory>
 
 #include <PxPhysicsAPI.h>
 
 #include <neb/actor/Rigid_Dynamic_Box.h>
 #include <neb/physics.h>
 #include <neb/scene.h>
-
 
 namespace neb
 {
@@ -67,7 +65,11 @@ void	neb::physics::Init()
 	assert( px_profile_zone_manager_ );
 
 	// Physics
-	px_physics_ = PxCreatePhysics( PX_PHYSICS_VERSION, *px_foundation_, ::physx::PxTolerancesScale(), recordMemoryAllocations, px_profile_zone_manager_ );
+	px_physics_ = PxCreatePhysics(
+			PX_PHYSICS_VERSION,
+			*px_foundation_,
+			physx::PxTolerancesScale(),
+			recordMemoryAllocations, px_profile_zone_manager_ );
 	assert( px_physics_ );
 
 	// cooking
@@ -90,14 +92,14 @@ void				neb::physics::Shutdown()
 	px_physics_->release();
 	px_foundation_->release();
 }
-std::shared_ptr<neb::scene>	neb::physics::Create_Scene(TiXmlElement* el_scene)
+neb::scene*			neb::physics::Create_Scene(TiXmlElement* el_scene)
 {
 	//jess::clog << neb_FUNCSIG << std::endl;
-	
-	std::shared_ptr<neb::scene> scene(new neb::scene);
-	
+
+	neb::scene* scene = new neb::scene;
+
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
-	
+
 	scene_desc.gravity = physx::PxVec3(0.0f, -1.0f, 0.0f);
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 
@@ -136,10 +138,10 @@ std::shared_ptr<neb::scene>	neb::physics::Create_Scene(TiXmlElement* el_scene)
 
 	scene->px_scene_ = px_physics_->createScene(scene_desc);
 	assert(scene->px_scene_);
-	
+
 	// actors
 	scene->Create_Actors(el_scene);
-	
+
 	return scene;
 }
 /*std::shared_ptr<n34200::rigid_dynamic>		neb::physics::create_rigid_dynamic(
