@@ -37,12 +37,6 @@ void	glutpp::program::compile()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	//printf("normal location: %i\n",glGetAttribLocation(o_,"normal"));
-	
-	glBindAttribLocation(o_, 1, "normal");
-	
-	
-	// Link The Program Object
 	glLinkProgram(o_);
 	checkerror("glLinkProgram");
 	

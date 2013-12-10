@@ -42,11 +42,7 @@ void	glutpp::shader::load(const char * filename, GLenum shader_type)
 	o_ = glCreateShader(shader_type);
 	checkerror("glCreateShader");
 	
-	if (!o_)
-	{
-	
-	exit(0);
-	}
+	if (!o_) exit(0);
 
 	glShaderSource(o_, 1, (const GLchar**)&data, NULL);
 
