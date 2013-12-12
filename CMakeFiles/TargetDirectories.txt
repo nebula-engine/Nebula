@@ -1,1 +1,1 @@
-/nfs/stak/students/r/rymalc/Programming/C++/glutpp/CMakeFiles/glutpp.dir
+/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir

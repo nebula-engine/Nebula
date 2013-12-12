@@ -22,7 +22,7 @@ namespace glutpp
 				void							Display();
 
 				/// objects
-				gal::map						objects_;
+				gal::map<glutpp::gui::object::object>			objects_;
 		};
 	}
 }

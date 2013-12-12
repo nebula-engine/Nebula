@@ -40,11 +40,17 @@ void	glutpp::light::init(window* window, int o)
 	texture_shadow_map_.init_shadow(camera_.w_, camera_.h_);
 	
 	uniforms();
+
+	printf("%s exit\n",__PRETTY_FUNCTION__);
+
 }
 void	glutpp::light::uniforms()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-
+	
+	assert(window_);
+	assert(o_ != -1);
+	
 	uniform_position_.init(
 			window_,"lights","position",o_);
 	uniform_ambient_.init(
@@ -67,6 +73,9 @@ void	glutpp::light::uniforms()
 			window_,"lights","atten_linear",o_);
 	uniform_atten_quad_.init(
 			window_,"lights","atten_quad",o_);
+
+	printf("%s exit\n",__PRETTY_FUNCTION__);
+
 }
 void	glutpp::light::dim()
 {
@@ -216,7 +225,7 @@ void	glutpp::light::RenderLightPOV()
 	glColorMask(0, 0, 0, 0);
 
 	//Draw the scene
-	window_->display();
+	window_->draw();
 
 	//Read the depth buffer into the shadow map texture
 	texture_shadow_map_.bind();

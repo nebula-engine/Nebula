@@ -1,10 +1,10 @@
-#include <GUL/object/edittext.h>
+#include <glutpp/gui/object/edittext.h>
 
-GUL::object::edittext::edittext()
+glutpp::gui::object::edittext::edittext()
 {
 
 }
-void	GUL::object::edittext::Display()
+void	glutpp::gui::object::edittext::Display()
 {
 
 }

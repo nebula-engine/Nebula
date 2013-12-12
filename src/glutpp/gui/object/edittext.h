@@ -3,7 +3,9 @@
 
 #include <glutpp/gui/object/textview.h>
 
-namespace GUL
+namespace glutpp
+{
+namespace gui
 {
 	namespace object
 	{
@@ -15,6 +17,7 @@ namespace GUL
 				virtual void		Display();
 		};
 	}
+}
 }
 
 #endif

@@ -3,7 +3,8 @@
 
 #include <assert.h>
 
-//#include <GL/glew.h>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 //#include <GL/glut.h>
 
 #include <math/mat44.h>
@@ -18,12 +19,14 @@ glutpp::uniform::uniform():
 }
 void	glutpp::uniform::init(window* window, char const * name)
 {
+	//printf("%s\n",__PRETTY_FUNCTION__);
+
+	
 	window_ = window;
 	
 	strcpy(name_,name);
 	
-	printf("%s\n",__PRETTY_FUNCTION__);
-	printf("uniform %s\n",name_);
+	//printf("uniform %s\n",name_);
 	
 	checkerror("glGetUniformLocation");
 
@@ -31,7 +34,7 @@ void	glutpp::uniform::init(window* window, char const * name)
 }
 void	glutpp::uniform::init(window* window, char const * struct_str, char const * name, int o)
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	//printf("%s\n",__PRETTY_FUNCTION__);
 
 	window_ = window;
 	
@@ -46,7 +49,7 @@ void	glutpp::uniform::init(window* window, char const * struct_str, char const *
 	strcat(name_, "].");
 	strcat(name_, name);
 	
-	printf("uniform %s\n",name_);
+	//printf("uniform %s\n",name_);
 	
 	checkerror("glGetUniformLocation");
 	
@@ -56,7 +59,11 @@ void	glutpp::uniform::locate()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	location_ = glGetUniformLocation(window_->get_program(), name_);
+	assert(name_);
+	
+	GLint p = window_->get_program();
+	
+	if(p > 0) location_ = glGetUniformLocation(p, name_);
 }
 void	glutpp::uniform::load(math::mat44 m)
 {

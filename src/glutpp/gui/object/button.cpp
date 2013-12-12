@@ -1,6 +1,6 @@
-#include <GRU/free.h>
+#include <glutpp/free.h>
 
-#include <GUL/object/button.h>
+#include <glutpp/gui/object/button.h>
 
 void GUL::object::button::Display()
 {

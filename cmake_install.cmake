@@ -1,8 +1,8 @@
-# Install script for directory: /nfs/stak/students/r/rymalc/Programming/C++/glutpp
+# Install script for directory: /home/charles/Programming/C++/glutpp
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/nfs/stak/students/r/rymalc/usr")
+  SET(CMAKE_INSTALL_PREFIX "/home/charles/usr")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -29,115 +29,119 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT)
 
 # Install shared libraries without execute permission?
 IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  SET(CMAKE_INSTALL_SO_NO_EXE "0")
+  SET(CMAKE_INSTALL_SO_NO_EXE "1")
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/libglutpp.a")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/charles/Programming/C++/glutpp/libglutpp.a")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/master.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/config.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/window.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/master.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/object.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/window.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/shader.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/object.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/texture.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/shader.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/program.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/texture.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/uniform.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/program.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/attribute.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/uniform.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/camera.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/attribute.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/camera_control.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/camera.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/light.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/camera_control.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/material.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/light.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/gui" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/gui/layout.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/material.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/gui/object" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/gui/object/object.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/gui" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/gui/layout.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/gui/object" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/gui/object/button.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/gui/object" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/gui/object" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/gui/object/textview.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/gui/object" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/button.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/gui/object" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/gui/object/edittext.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/gui/object" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/textview.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/prog_0" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/shaders/prog_0/vs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/gui/object" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/edittext.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/prog_0" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/shaders/prog_0/fs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/prog_0" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/shaders/prog_0/vs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/prog1" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/shaders/prog1/vs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/prog_0" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/shaders/prog_0/fs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/prog1" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/shaders/prog1/fs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/prog1" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/shaders/prog1/vs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/exp_map" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/shaders/exp_map/vs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/prog1" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/shaders/prog1/fs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/exp_map" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/shaders/exp_map/fs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/exp_map" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/shaders/exp_map/vs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/prog3" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/shaders/prog3/vs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/exp_map" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/shaders/exp_map/fs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/prog3" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/shaders/prog3/fs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/prog3" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/shaders/prog3/vs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/objects" TYPE FILE FILES "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/srcglutpp/objects/cube.obj")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/shaders/prog3" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/shaders/prog3/fs.glsl")
+ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+
+IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/objects" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/objects/cube.obj")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(CMAKE_INSTALL_COMPONENT)
@@ -146,7 +150,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/charles/Programming/C++/glutpp/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/nfs/stak/students/r/rymalc/Programming/C++/glutpp/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/charles/Programming/C++/glutpp/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

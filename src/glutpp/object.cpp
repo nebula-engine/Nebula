@@ -7,6 +7,7 @@
 #include <string.h>
 #include <png.h>
 
+#include <math/mat44.h>
 #include <math/geo/polyhedron.h>
 
 #include <glutpp/object.h>
@@ -19,7 +20,7 @@ glutpp::object::object():
 void	glutpp::object::init(window* window)
 {
 	window_ = window;
-
+	
 	uniforms();
 	
 	material_front_.init(window_);
@@ -135,7 +136,7 @@ int	glutpp::object::load(const char * name)
 	char filename[256];
 	filename[0] = '\0';
 
-	strcat(filename, GLUTPP_OBJECT_PREFIX);
+	strcat(filename, GLUTPP_OBJECT_DIR"/");
 	strcat(filename, name);
 
 	FILE * fp;
@@ -295,15 +296,18 @@ void glutpp::object::init_buffer()
 }
 void	glutpp::object::model_load()
 {
+	math::mat44 model(pose_);
+	model.SetScale(s_);
+	
 	if(window_->all(glutpp::window::SHADER))
 	{
-		window_->uniform_model_.load_matrix4fv(model_);
+		window_->uniform_model_.load_matrix4fv(model);
 	}
 	else
 	{
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
-		glMultMatrixf(model_);
+		glMultMatrixf(model);
 	}
 }
 void	glutpp::object::model_unload()

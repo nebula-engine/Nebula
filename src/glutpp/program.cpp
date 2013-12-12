@@ -19,6 +19,9 @@ void	glutpp::program::init()
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	o_ = glCreateProgram();
+	
+	printf("program = %i\n",o_);
+	
 	checkerror("glCreateProgram");
 }
 void	glutpp::program::add_shaders(glutpp::shader* s,int c)

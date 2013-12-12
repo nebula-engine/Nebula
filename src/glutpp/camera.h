@@ -2,6 +2,7 @@
 #define __GLUTPP_CAMERA_H__
 
 #include <vector>
+#include <memory>
 
 #include <gal/sig/connection.h>
 
@@ -37,21 +38,14 @@ namespace glutpp
 			int					w_;
 			int					h_;
 			
-			float					pitch_;
-			float					yaw_;
+			math::vec3	eye_;
 
-					
-
-			math::vec4				eye_;
-			math::vec3				center_;
-			math::vec3				look_;
-			math::vec3				up_;
 
 		//	std::vector<sig::connection<float>*>	connection_u_;
 		//	std::vector<sig::connection<float>*>	connection_v_;
 		//	std::vector<sig::connection<float>*>	connection_w_;
 			
-			camera_control				control_;
+			std::shared_ptr<camera_control>		control_;
 	};
 }
 

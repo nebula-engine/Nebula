@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include <GL/glew.h>
+
 #include <glutpp/window.h>
 #include <glutpp/attribute.h>
 

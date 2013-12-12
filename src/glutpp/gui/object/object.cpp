@@ -10,7 +10,7 @@ glutpp::gui::object::object::object():
 	
 	memset( (void *)label_, '\0', 16 );
 }
-void	GUL::object::object::set_label( char const * cstr )
+void	glutpp::gui::object::object::set_label( char const * cstr )
 {
 	memcpy( (void *)label_, (const void *)cstr, std::min( strlen( cstr ), strlen( label_ ) ) );
 }

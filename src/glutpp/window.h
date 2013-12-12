@@ -5,14 +5,7 @@
 #include <vector>
 #include <map>
 
-#define STR(x) #x
-#define PNT(x) STR(x)
-#define GLUTPP_OBJECT_PREFIX__ GLUTPP_PREFIX/glutpp/objects/
-#define GLUTPP_SHADER_PREFIX__ GLUTPP_PREFIX/glutpp/shaders/
-#define GLUTPP_OBJECT_PREFIX PNT(GLUTPP_OBJECT_PREFIX__)
-#define GLUTPP_SHADER_PREFIX PNT(GLUTPP_SHADER_PREFIX__)
-
-
+#include <glutpp/config.h>
 #include <glutpp/texture.h>
 #include <glutpp/camera.h>
 #include <glutpp/light.h>
@@ -65,18 +58,22 @@ namespace glutpp
 			void			add_object(object*);
 			void			add_light(light*);
 			
-			void			StartSpinning();
-			void			CallBackDisplayFunc();
-			void			CallBackIdleFunc(void);
 
-
-
-			void			display_ortho();
+			void			callback_window_pos_fun(GLFWwindow*,int,int);
+			void			callback_window_size_fun(GLFWwindow*,int,int);
+			void			callback_window_close_fun(GLFWwindow*);
+			void			callback_window_refresh_fun(GLFWwindow*);
+			void			callback_key_fun(GLFWwindow*,int,int,int,int);
 			
-			void			callback_display_ortho();
+			void			loop();
+			virtual void		step(double);
+			void			render(double);
+			void			draw();
+			void			draw_ortho();
+			void			resize();
+			
 			void			display_dim();
 			void			display_bright();
-			void			display();
 			void			display_all_but(object*);
 			
 			void			lights_for_each(std::function<void(glutpp::light*)>);
@@ -89,17 +86,9 @@ namespace glutpp
 			void			shaders();
 			GLint			get_program();
 			
-			void			Idle();
+			void			idle();
 
-			void			CallBackKeyboardFunc(unsigned char key, int x, int y);
-			void			CallBackKeyboardUpFunc(unsigned char key, int x, int y);
 
-			void			CallBackMotionFunc(int x, int y);
-			void			CallBackMouseFunc(int button, int state, int x, int y);
-			void			CallBackPassiveMotionFunc(int x, int y);
-			void			CallBackReshapeFunc(int w, int h);   
-			void			CallBackSpecialFunc(int key, int x, int y);   
-			void			CallBackVisibilityFunc(int visible);
 			
 			// input signals
 			std::map<unsigned char,gal::sig::signal<> >	map_sig_key_down_;
@@ -115,10 +104,10 @@ namespace glutpp
 
 
 			char const *		title_;
-			int			height;
-			int			width;
-			int			initPositionX;
-			int			initPositionY;
+			int			w_;
+			int			h_;
+			int			x_;
+			int			y_;
 			
 			camera			camera_;
 			
@@ -138,7 +127,8 @@ namespace glutpp
 			std::vector<object*>	objects_;
 
 
-		private:
+		public:
+			GLFWwindow*		window_;
 			program*		program_;
 	};
 }

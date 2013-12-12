@@ -5,6 +5,7 @@
 #include <math/vec3.h>
 #include <math/vec2.h>
 #include <math/geo/polyhedron.h>
+#include <math/transform.h>
 
 #include <glutpp/texture.h>
 #include <glutpp/uniform.h>
@@ -61,8 +62,8 @@ namespace glutpp
 
 			int		type_;
 			unsigned int	flgs_;
-
-
+			
+			
 			attribute		attrib_position_;
 			attribute		attrib_normal_;
 			attribute		attrib_texcoor_;
@@ -74,8 +75,10 @@ namespace glutpp
 			GLuint			vbo_;
 			GLuint			buffer_indices_;
 			
-			math::mat44		model_;
-	
+			//math::mat44		model_;
+			math::transform		pose_;
+			math::vec3		s_;
+			
 			// draw data
 			file_header		fh_;
 			glutpp::vertex*		vertices_;

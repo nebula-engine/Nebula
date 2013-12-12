@@ -1,15 +1,14 @@
 #include <string.h>
 
-#include <SIG/free.h>
-#include <GRU/free.h>
+#include <glutpp/free.h>
 
-#include <GUL/object/textview.h>
+#include <glutpp/gui/object/textview.h>
 
-GUL::object::textview::textview():
+glutpp::gui::object::textview::textview():
 	label_pos_(0)
 {
 }
-void	GUL::object::textview::clear_label()
+void	glutpp::gui::object::textview::clear_label()
 {
 	delete[] label_;
 
@@ -19,13 +18,13 @@ void	GUL::object::textview::clear_label()
 
 	label_pos_ = 0;
 }
-void	GUL::object::textview::Display()
+void	glutpp::gui::object::textview::Display()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 
 	GRU::draw_text( x_, y_, label_ );
 }
-int	GUL::object::textview::handle_key(__u16 code, __s32 value)
+int	glutpp::gui::object::textview::handle_key(__u16 code, __s32 value)
 {
 	if(value==1)
 	{
@@ -38,9 +37,8 @@ int	GUL::object::textview::handle_key(__u16 code, __s32 value)
 	
 	return 1;
 }
-int	GUL::object::textview::handle_key_down(__u16 code)
+int	glutpp::gui::object::textview::handle_key_down(__u16 code)
 {
-	char k = SIG::code_2_char(code);
 
 	switch(code)
 	{
@@ -56,7 +54,7 @@ int	GUL::object::textview::handle_key_down(__u16 code)
 			if ( label_pos_ < label_length_ )
 			{
 				++label_pos_;
-				memset( (void *)( label_ + label_pos_ ), k, 1 );
+				//memset( (void *)( label_ + label_pos_ ), k, 1 );
 			}
 			return 1;
 		case KEY_ENTER:
@@ -65,11 +63,11 @@ int	GUL::object::textview::handle_key_down(__u16 code)
 	}
 	return 1;
 }
-int	GUL::object::textview::handle_key_up(__u16 code)
+int	glutpp::gui::object::textview::handle_key_up(__u16 code)
 {
 	return 1;
 }
-int	GUL::object::textview::handle_enter()
+int	glutpp::gui::object::textview::handle_enter()
 {	
 	if ( callback_enter_ )
 	{

@@ -1,8 +1,9 @@
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 //#include <GLee.h>
-#include <GL/glfw.h>
+#include <GLFW/glfw3.h>
 
 #include <map>
 
@@ -42,26 +43,23 @@ void	check_error()
 	GLenum errCode = glGetError();
 	if (errCode != GL_NO_ERROR)
 	{
-		printf("%s\n",gluErrorString(errCode));
+		//printf("%s\n",gluErrorString(errCode));
 	}
 }
-glutpp::window::window(
-		int setWidth, int setHeight,
-		int setInitPositionX, int setInitPositionY,
-		const char * title ):
-	width(setWidth),
-	height(setHeight),
-	initPositionX(setInitPositionX),
-	initPositionY(setInitPositionY),
+glutpp::window::window(int w, int h, int x, int y, const char * title):
+	w_(w), h_(h), x_(x), y_(y),
 	program_(NULL),
 	title_(title),
 	light_count_(0)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-
-	printf(PNT(GLUTPP_PREFIX)"\n");
+	
+	printf(GLUTPP_INSTALL_DIR);
+	printf("\n");
 	
 	memset(lights_, 0, LIGHT_MAX);
+	
+	__master.reg(this);
 }
 void	glutpp::window::add_object(object* o)
 {
@@ -99,19 +97,22 @@ void	glutpp::window::add_light(light* l)
 	l->init(this, light_count_);
 	
 	light_count_++;
+	
+	printf("%s exit\n",__PRETTY_FUNCTION__);
 }
 GLint	glutpp::window::get_program()
 {
 	if(program_ == NULL)
 	{
 		printf("program is NULL\n");
-		exit(0);
+		//exit(0);
+		return 0;
 	}
 	
 	if(program_->o_ == 0)
 	{
 		printf("program object is 0\n");
-		exit(0);
+		//exit(0);
 	}
 	
 	return program_->o_;
@@ -120,19 +121,17 @@ void	glutpp::window::init()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
-	glutInitWindowSize(width, height);
-	glutInitWindowPosition(initPositionX, initPositionY);
-
-	glutpp::__master.CallGlutCreateWindow( (char *)title_, this );
-
-	GLenum err = glewInit();
-	if (err != GLEW_OK) fatal_error("GLEW: %s", glewGetErrorString(err));
+	//glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
+	//glutInitWindowSize(width, height);
+	//glutInitWindowPosition(initPositionX, initPositionY);
 	
-	if (!GLEW_VERSION_2_1) fatal_error("wrong glew version");
+	//glutpp::__master.CallGlutCreateWindow( (char *)title_, this );
+
+		
+	//if (!GLEW_VERSION_2_1) fatal_error("wrong glew version");
 	
 	//CheckExt();
-
+	
 	printf("%s\n",glGetString(GL_SHADING_LANGUAGE_VERSION));
 	
 	//Check for necessary extensions
@@ -168,7 +167,7 @@ glutpp::window::~window()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	glutDestroyWindow(windowID);
+	glfwDestroyWindow(window_);
 }
 void	glutpp::window::shaders()
 {
@@ -217,8 +216,8 @@ void	glutpp::window::shaders()
 			case 0:
 				shaders_ = new shader[2];
 
-				shaders_[0].load(GLUTPP_SHADER_PREFIX"prog_0/vs.glsl", GL_VERTEX_SHADER);
-				shaders_[1].load(GLUTPP_SHADER_PREFIX"prog_0/fs.glsl", GL_FRAGMENT_SHADER);
+				shaders_[0].load(GLUTPP_SHADER_DIR"/prog_0/vs.glsl", GL_VERTEX_SHADER);
+				shaders_[1].load(GLUTPP_SHADER_DIR"/prog_0/fs.glsl", GL_FRAGMENT_SHADER);
 
 				shader_count_ = 2;
 				break;
@@ -231,9 +230,14 @@ void	glutpp::window::shaders()
 		program_->compile();
 		program_->use();
 	}
+	else
+	{
+		printf("shaders not enabled\n");
+	}
 }
 void	glutpp::window::uniforms()
-{	printf("%s\n",__PRETTY_FUNCTION__);
+{
+	printf("%s\n",__PRETTY_FUNCTION__);
 
 	uniform_light_count_.init(this,"light_count");
 	uniform_model_.init(this,"model");
@@ -270,7 +274,7 @@ void	glutpp::window::objects_for_each(std::function<void(glutpp::object*)> func)
 		func(objects_.at(i));
 	}
 }
-void	glutpp::window::callback_display_ortho()
+void	glutpp::window::draw_ortho()
 {
 	//Restore other states
 	glDisable(GL_LIGHTING);
@@ -280,13 +284,13 @@ void	glutpp::window::callback_display_ortho()
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	gluOrtho2D(-1.0f, 1.0f, -1.0f, 1.0f);
+	//gluOrtho2D(-1.0f, 1.0f, -1.0f, 1.0f);
 
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 	glLoadIdentity();
 
-	display_ortho();
+	draw_ortho();
 
 	//Print text
 	//glRasterPos2f(-1.0f, 0.9f);
@@ -306,7 +310,7 @@ void	glutpp::window::display_dim()
 
 	lights_for_each(&glutpp::light::dim);
 
-	display();
+	draw();
 }
 void	glutpp::window::display_bright()
 {
@@ -319,20 +323,44 @@ void	glutpp::window::display_bright()
 
 	if(all(SHADOW | SHADOW_MAP) && !all(SHADER)) lights_for_each(&glutpp::light::draw_shadow_no_shader);
 
-	display();
+	draw();
 
 	check_error();
 
 	if(all(SHADOW | SHADOW_MAP)) lights_for_each(&glutpp::light::RenderShadowPost);
 }
-void glutpp::window::CallBackDisplayFunc()
+void	glutpp::window::callback_window_refresh_fun(GLFWwindow*)
+{
+}
+void	glutpp::window::step(double)
+{
+}
+void	glutpp::window::loop()
+{
+	double time;
+	
+	resize();
+	
+	while (!glfwWindowShouldClose(window_))
+	{
+		time = glfwGetTime();
+		
+		step(time);
+		
+		render(time);
+		
+		glfwSwapBuffers(window_);
+		glfwPollEvents();
+	}
+}
+void	glutpp::window::render(double time)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	// uniforms
 	uniform_light_count_.load_1i(light_count_);
 	lights_for_each(&glutpp::light::load);
-	
+
 	if(all(SHADOW | SHADOW_MAP)) lights_for_each(&glutpp::light::RenderLightPOV);
 
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
@@ -343,41 +371,34 @@ void glutpp::window::CallBackDisplayFunc()
 
 	display_bright();
 
-	if(all(ORTHO)) display_ortho();
+	if(all(ORTHO)) draw_ortho();
 
 	glFinish();
-	glutSwapBuffers();
-	glutPostRedisplay();
+	glfwSwapBuffers(window_);
+	//glfwPostRedisplay();
 }
-void glutpp::window::CallBackReshapeFunc(int w, int h)
+void	glutpp::window::callback_window_size_fun(GLFWwindow* window, int w, int h)
 {
-	width = w;
-	height = h;
-
-	glViewport(0,0,width,height);
-
-	camera_.w_ = width;
-	camera_.h_ = height;
-
-	CallBackDisplayFunc();
-}
-void glutpp::window::CallBackIdleFunc(void)
-{
-	Idle();
-
-	CallBackDisplayFunc();
-}
-void glutpp::window::StartSpinning()
-{
-	printf("%s\n",__PRETTY_FUNCTION__);
-
-	glutpp::__master.SetIdleToCurrentWindow();
-	glutpp::__master.EnableIdleFunction();
-}
-void glutpp::window::CallBackKeyboardFunc(unsigned char key, int x, int y)
-{
-	//printf("%s\n",__PRETTY_FUNCTION__);
+	w_ = w;
+	h_ = h;
 	
+	resize();
+
+	callback_window_refresh_fun(window);
+}
+void	glutpp::window::callback_window_pos_fun(GLFWwindow* window, int x, int y)
+{
+	x_ = x;
+	y_ = y;
+
+	callback_window_refresh_fun(window);
+}
+void	glutpp::window::callback_window_close_fun(GLFWwindow* window)
+{
+
+}
+void	glutpp::window::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
 	map_sig_key_down_[key]();
 	
 	switch(key)
@@ -391,82 +412,93 @@ void glutpp::window::CallBackKeyboardFunc(unsigned char key, int x, int y)
 		case 'r':
 			toggle(REFLECT);
 			break;
-		case 27:
-			printf("exit\n");
-			exit(0);
+		case GLFW_KEY_ESCAPE:
+			glfwSetWindowShouldClose(window_, 1);
+			break;
 	}
 	//key; x; y;                //dummy function
 }
-void glutpp::window::CallBackKeyboardUpFunc(unsigned char key, int x, int y)
-{
-	//printf("%s\n",__PRETTY_FUNCTION__);
-	
-	map_sig_key_up_[key]();
+/*
+   void glutpp::window::CallBackKeyboardUpFunc(unsigned char key, int x, int y)
+   {
+//printf("%s\n",__PRETTY_FUNCTION__);
 
-	//key; x; y;                //dummy function
+map_sig_key_up_[key]();
+
+//key; x; y;                //dummy function
 }
 void glutpp::window::CallBackMotionFunc(int x, int y)
 {
-	//x; y;                     //dummy function
+//x; y;                     //dummy function
 }
 void glutpp::window::CallBackMouseFunc(int button, int state, int x, int y)
 {
-	//button; state; x; y;      //dummy function
+//button; state; x; y;      //dummy function
 }
 void glutpp::window::CallBackPassiveMotionFunc(int x, int y)
 {
-	//x; y;                     //dummy function
+//x; y;                     //dummy function
 }
 void glutpp::window::CallBackSpecialFunc(int key, int x, int y)
 {
-	//key; x; y;
+//key; x; y;
 }   
 void glutpp::window::CallBackVisibilityFunc(int visible)
 {
-	//visible;                  //dummy function
+//visible;                  //dummy function
 }
 void glutpp::window::SetWindowID(int newWindowID)
 {
-	windowID = newWindowID;
+windowID = newWindowID;
 }
 int glutpp::window::GetWindowID(void)
 {
-	return( windowID );
+return( windowID );
 }
-
-void glutpp::window::display()
+ */
+void glutpp::window::draw()
 {
 	for( auto it = objects_.begin(); it != objects_.end(); ++it )
 	{
 		(*it)->draw();
 	}
 }
-void	glutpp::window::display_all_but(object* o)
+void	glutpp::window::resize()
 {
-	for( auto it = objects_.begin(); it != objects_.end(); ++it )
-	{
-		if( (*it) != o ) (*it)->draw();
-	}
-}     
-void glutpp::window::display_ortho()
-{}   
-void glutpp::window::Idle()
-{
-	double now = glfwGetTime();
-
-	camera_.step(now);
+	glViewport(0, 0, w_, h_);
 	
-	if(func_indle) func_idle_(now);
-}   
+	camera_.w_ = w_;
+	camera_.h_ = h_;
 
+}
+/*
+   void	glutpp::window::display_all_but(object* o)
+   {
+   for( auto it = objects_.begin(); it != objects_.end(); ++it )
+   {
+   if( (*it) != o ) (*it)->draw();
+   }
+   }     
+   void glutpp::window::display_ortho()
+   {}*/   
+/*
+   void glutpp::window::callback_idle_fun()
+   {
+   double now = glfwGetTime();
 
+   camera_.step(now);
+
+   if(idle) func_idle_(now);
+   }   
+
+ */
 void checkerror(char const * msg)
 {
 	GLenum err = glGetError();
 	if(err != GL_NO_ERROR)
 	{
-		unsigned char const * str = gluErrorString(err);
-		printf("%s: %s\n",msg,str);
+		//unsigned char const * str = gluErrorString(err);
+		//printf("%s: %s\n",msg,str);
 		exit(0);
 	}
 
