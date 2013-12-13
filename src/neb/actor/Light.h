@@ -11,7 +11,8 @@ namespace neb
 			public neb::actor::Base
 		{
 			public:
-				void	init();
+				virtual void	init();
+				virtual void	add_force();
 		};
 	}
 }

@@ -2,7 +2,6 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/actor/Rigid_Dynamic_Box.h>
 #include <neb/physics.h>
 #include <neb/scene.h>
 
@@ -94,8 +93,8 @@ void				neb::physics::Shutdown()
 }
 neb::scene*			neb::physics::Create_Scene(TiXmlElement* el_scene)
 {
-	//jess::clog << neb_FUNCSIG << std::endl;
-
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
 	neb::scene* scene = new neb::scene;
 
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
@@ -104,8 +103,9 @@ neb::scene*			neb::physics::Create_Scene(TiXmlElement* el_scene)
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 
 	int m_nbThreads = 1;
-
+	
 	// cpu dispatcher
+	printf("cpu dispatcher\n");
 	if( !scene_desc.cpuDispatcher )
 	{
 		physx::PxDefaultCpuDispatcher* cpuDispatcher = ::physx::PxDefaultCpuDispatcherCreate( m_nbThreads );
@@ -115,6 +115,7 @@ neb::scene*			neb::physics::Create_Scene(TiXmlElement* el_scene)
 	}
 
 	// filter shader
+	printf("filter shader\n");
 	if( !scene_desc.filterShader )
 	{
 		if ( scene->px_filter_shader_ )
@@ -128,6 +129,7 @@ neb::scene*			neb::physics::Create_Scene(TiXmlElement* el_scene)
 	}
 
 	// gpu dispatcher
+	printf("gpu dispatcher\n");
 #ifdef PX_WINDOWS
 	if( !scene_desc.gpuDispatcher && m_cudaContextManager )
 	{

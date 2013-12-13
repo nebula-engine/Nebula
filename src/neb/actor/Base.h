@@ -18,10 +18,11 @@ namespace neb
 			public:
 				Base();
 				virtual void		init() = 0;
+				virtual void		add_force() = 0;
+				virtual void		set_pose(math::transform);
 
 				math::transform		pose_;
-				
-				GLuint			list_;
+				int			i_;
 		};
 	}
 }

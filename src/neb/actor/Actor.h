@@ -3,6 +3,8 @@
 
 #include <PxPhysicsAPI.h>
 
+#include <glutpp/object.h>
+
 #include <neb/actor/Base.h>
 
 namespace neb
@@ -13,10 +15,13 @@ namespace neb
 			public neb::actor::Base
 		{
 			public:
+				Actor();
 				virtual void		init() = 0;
-
+				virtual void		add_force() = 0;
+				virtual void		set_pose(math::transform);
+					
 				physx::PxActor*		px_actor_;
-
+				glutpp::object*		object_;
 		};
 	}
 }

@@ -6,12 +6,20 @@
 
 #include <PxPhysicsAPI.h>
 
+#include <gal/map.h>
+
 #include <neb/actor/Rigid_Dynamic.h>
 #include <neb/actor/Rigid_Static.h>
 #include <neb/actor/Controller.h>
 #include <neb/actor/Light.h>
 
 #include <tinyxml/tinyxml.h>
+
+int		parse_shape_type(char const * str);
+float		xml_parse_float(TiXmlElement* element);
+math::quat 	xml_parse_quat(TiXmlElement* element);
+math::vec3 	xml_parse_vec3(TiXmlElement* element);
+neb::shape*	xml_parse_geo(TiXmlElement* element);
 
 namespace neb
 {
@@ -24,22 +32,23 @@ namespace neb
 
 
 			neb::actor::Rigid_Dynamic*			Create_Rigid_Dynamic(TiXmlElement*);
+			neb::actor::Rigid_Static*			Create_Rigid_Static(TiXmlElement*);
 			neb::actor::Rigid_Static*			Create_Rigid_Static_Plane(TiXmlElement*);
 			std::shared_ptr<neb::actor::Controller>		Create_Controller(TiXmlElement*);
 			neb::actor::Light*				Create_Light(TiXmlElement*);
 	
-			void						Display();
-			void						Step(float);
+			void						draw();
+			void						step(double);
 
 
 			physx::PxSimulationFilterShader			px_filter_shader_;
 
-			std::vector<neb::actor::Base*>			actors_;
+			gal::map<neb::actor::Base>			actors_;
 			std::vector<neb::actor::Light*>			lights_;
 
 			physx::PxScene*					px_scene_;
-
-
+			
+			double						last_;
 
 	};
 }

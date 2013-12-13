@@ -7,11 +7,12 @@ namespace neb
 {
 	namespace actor
 	{
-		class Rigid_Dynamic:
-			public neb::actor::Rigid_Body
+		class Rigid_Dynamic: public neb::actor::Rigid_Body
 		{
 			public:
-				virtual void	init();
+				Rigid_Dynamic();
+				virtual void		init();
+
 		};
 	}
 }

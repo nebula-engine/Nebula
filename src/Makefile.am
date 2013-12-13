@@ -4,6 +4,8 @@ libneb_a_SOURCES = \
 		neb/physics.h neb/physics.cpp \
 		neb/scene.h neb/scene.cpp \
 		neb/view.h neb/view.cpp \
+		neb/shape.h neb/shape.cpp \
+		neb/camera.h	neb/camera.cpp	neb/camera_ridealong.cpp \
 		neb/actor/Base.h neb/actor/Base.cpp \
 		neb/actor/actor.h neb/actor/Actor.cpp \
 		neb/actor/Rigid_Actor.h neb/actor/Rigid_Actor.cpp \
@@ -18,6 +20,8 @@ nobase_include_HEADERS = \
 		neb/physics.h \
 		neb/scene.h \
 		neb/view.h \
+		neb/camera.h \
+		neb/shape.h \
 		neb/actor/Base.h \
 		neb/actor/Actor.h \
 		neb/actor/Rigid_Actor.h \

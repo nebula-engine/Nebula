@@ -5,6 +5,7 @@
 
 namespace neb
 {
+	class shape;
 	namespace actor
 	{
 		class Rigid_Actor:
@@ -12,8 +13,10 @@ namespace neb
 		{
 			public:
 				virtual void		init() = 0;
+				virtual void		add_force() = 0;
 
 				physx::PxShape*		px_shape_;
+				shape*			shape_;
 		};
 	}
 }

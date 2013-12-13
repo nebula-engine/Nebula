@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/charles/Programming/C++/neb/src/neb/camera_ridealong.cpp
+neb/actor/Base.h
+-
+neb/camera.h
+-
+
+src/neb/actor/Base.h
+GL/glut.h
+-
+math/transform.h
+-
+PxPhysicsAPI.h
+-
+
+src/neb/camera.h
+memory
+-
+map
+-
+glutpp/window.h
+-
+glutpp/camera_control.h
+-
+

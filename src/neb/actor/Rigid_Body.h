@@ -11,10 +11,17 @@ namespace neb
 			public neb::actor::Rigid_Actor
 		{
 			public:
+				Rigid_Body();
 				virtual void		init() = 0;
+				virtual void		add_force();
+				virtual int		key_force(int,int,int,math::vec3);
+				virtual int		key_torque(int,int,int,math::vec3);
 
 				float			density_;
 				physx::PxVec3		velocity_;
+				math::vec3		force_;
+				math::vec3		torque_;
+
 		};
 	}
 }

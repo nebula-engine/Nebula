@@ -18,7 +18,7 @@ namespace neb
 
 				virtual void		step(float);
 				virtual void		init();
-
+				virtual void		add_force();
 
 
 				physx::PxController*	px_controller_;

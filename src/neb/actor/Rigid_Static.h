@@ -10,15 +10,13 @@ namespace neb
 		class Rigid_Static:
 			public neb::actor::Rigid_Actor
 		{
+		public:
 			virtual void	init();
+			virtual void	add_force();
 		};
 	}
 }
 
-
 #endif
-
-
-
 
 

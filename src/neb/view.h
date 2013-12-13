@@ -13,12 +13,13 @@ namespace neb
 		public:
 			view();
 			void				delete_scene();
+			void				set_window(glutpp::window*);
 			void				Display();
 			
 			
 			neb::scene*		scene_;
 			glutpp::gui::layout*	layout_;
-
+			glutpp::window*		window_;
 	};
 }
 

@@ -1,0 +1,23 @@
+FILE(REMOVE_RECURSE
+  "CMakeFiles/nebula.dir/src/neb/physics.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/scene.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/view.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/shape.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/camera.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/actor/Actor.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/actor/Rigid_Actor.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/actor/Light.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o"
+  "libnebula.pdb"
+  "libnebula.a"
+)
+
+# Per-language clean rules from dependency scanning.
+FOREACH(lang CXX)
+  INCLUDE(CMakeFiles/nebula.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)
