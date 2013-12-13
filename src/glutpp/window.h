@@ -91,8 +91,7 @@ namespace glutpp
 
 			
 			// input signals
-			std::map<unsigned char,gal::sig::signal<> >	map_sig_key_down_;
-			std::map<unsigned char,gal::sig::signal<> >	map_sig_key_up_;
+			std::map<int,gal::sig::signal<int,int,int>>	map_sig_key_;
 			
 			
 			

@@ -19,14 +19,19 @@ glutpp::object::object():
 {}
 void	glutpp::object::init(window* window)
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
 	window_ = window;
 	
+
 	uniforms();
 	
 	material_front_.init(window_);
 }
 void	glutpp::object::uniforms()
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	uniform_image_.init(window_, "image");
 
 	attrib_position_.init(window_, 0, "position");
@@ -297,7 +302,11 @@ void glutpp::object::init_buffer()
 void	glutpp::object::model_load()
 {
 	math::mat44 model(pose_);
-	model.SetScale(s_);
+
+	math::mat44 scale;
+	scale.SetScale(s_);
+	
+	model = model * scale;
 	
 	if(window_->all(glutpp::window::SHADER))
 	{

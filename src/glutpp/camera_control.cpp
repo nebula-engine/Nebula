@@ -9,7 +9,7 @@ glutpp::camera_free::camera_free():
 void	glutpp::camera_free::init(glutpp::window* window)
 {
 	window_ = window;
-
+/*
 	vec_x_.push_back(
 			window_->map_sig_key_down_['d'].connect(
 				std::bind(&glutpp::camera_free::callback_x_, this, 0, 1.0)));
@@ -57,7 +57,7 @@ void	glutpp::camera_free::init(glutpp::window* window)
 	vec_z_.push_back(
 			window_->map_sig_key_up_['s'].connect(
 				std::bind(&glutpp::camera_free::callback_z_, this, 1, 0.0)));
-
+*/
 
 }
 int	glutpp::camera_free::callback_x_(int a, float s)

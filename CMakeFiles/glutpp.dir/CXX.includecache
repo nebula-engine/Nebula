@@ -6,12 +6,26 @@
 
 #IncludeRegexTransform: 
 
-/home/charles/Programming/C++/glutpp/src/glutpp/light.cpp
+/home/charles/Programming/C++/glutpp/src/glutpp/object.cpp
+GL/glew.h
+-
+GL/glut.h
+-
 stdio.h
 -
-assert.h
+stdlib.h
 -
-glutpp/light.h
+sys/time.h
+-
+string.h
+-
+png.h
+-
+math/mat44.h
+-
+math/geo/polyhedron.h
+-
+glutpp/object.h
 -
 glutpp/window.h
 -

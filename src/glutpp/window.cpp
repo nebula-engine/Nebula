@@ -399,11 +399,11 @@ void	glutpp::window::callback_window_close_fun(GLFWwindow* window)
 }
 void	glutpp::window::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	map_sig_key_down_[key]();
+	map_sig_key_[key](scancode, action, mods);
 	
 	switch(key)
 	{
-		case 's':
+	/*	case 's':
 			toggle(SHADOW);
 			break;
 		case 'o':
@@ -411,12 +411,11 @@ void	glutpp::window::callback_key_fun(GLFWwindow* window, int key, int scancode,
 			break;
 		case 'r':
 			toggle(REFLECT);
-			break;
+			break;*/
 		case GLFW_KEY_ESCAPE:
 			glfwSetWindowShouldClose(window_, 1);
 			break;
 	}
-	//key; x; y;                //dummy function
 }
 /*
    void glutpp::window::CallBackKeyboardUpFunc(unsigned char key, int x, int y)

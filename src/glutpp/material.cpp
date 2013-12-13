@@ -12,6 +12,8 @@ glutpp::material::material():
 {}
 void	glutpp::material::init(window* window)
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	window_ = window;
 	
 	uniform_ambient_.init(window,"front.ambient");
