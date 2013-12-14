@@ -38,7 +38,7 @@ namespace glutpp
 			int					w_;
 			int					h_;
 			
-			math::vec3	eye_;
+			math::vec4				eye_;
 
 
 		//	std::vector<sig::connection<float>*>	connection_u_;

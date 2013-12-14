@@ -74,6 +74,13 @@ void	glutpp::light::uniforms()
 	uniform_atten_quad_.init(
 			window_,"lights","atten_quad",o_);
 
+	uniform_matrix_shadow_.init(
+			window_,"lights","",o_);
+	uniform_tex_shadow_.init(
+			window_,"lights","atten_quad",o_);
+
+	
+
 	printf("%s exit\n",__PRETTY_FUNCTION__);
 
 }
@@ -114,6 +121,11 @@ void	glutpp::light::load()
 			uniform_atten_const_.load_1f(			atten_const_);
 			uniform_atten_linear_.load_1f(			atten_linear_);
 			uniform_atten_quad_.load_1f(			atten_quad_);
+
+			//if(window_->all(glutpp::window::SHADOW))
+			//{
+			//	load_shadow();
+			//}
 		}
 		else
 		{
@@ -139,6 +151,24 @@ void	glutpp::light::load()
 			checkerror("glLightfv spe");
 		}
 	}
+}
+void	glutpp::light::load_shadow()
+{
+	math::mat44 biasMatrix(
+			0.5f, 0.0f, 0.0f, 0.0f,
+			0.0f, 0.5f, 0.0f, 0.0f,
+			0.0f, 0.0f, 0.5f, 0.0f,
+			0.5f, 0.5f, 0.5f, 1.0f);
+	
+	math::mat44 textureMatrix = biasMatrix * camera_.proj() * camera_.view();
+	
+	uniform_matrix_shadow_.load_mat4f(textureMatrix);
+
+	// texture
+	glActiveTexture(GL_TEXTURE1);
+	texture_shadow_map_.bind();
+	uniform_tex_shadow_.load_1i(1);
+
 }
 void	glutpp::light::draw_shadow_no_shader()
 {
@@ -229,11 +259,12 @@ void	glutpp::light::RenderLightPOV()
 
 	//Read the depth buffer into the shadow map texture
 	texture_shadow_map_.bind();
+	
 	glCopyTexSubImage2D(
 			GL_TEXTURE_2D,
 			0, 0, 0, 0, 0,
 			texture_shadow_map_.w_, texture_shadow_map_.h_);
-
+	
 	//restore states
 	glCullFace(GL_BACK);
 	glShadeModel(GL_SMOOTH);

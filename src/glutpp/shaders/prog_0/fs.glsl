@@ -29,11 +29,12 @@ in VS_OUT
 	vec4 P;
         vec3 N;
 	vec2 texcoor;
+	mat4 modelview;
 } fs_in;
 
 uniform Light lights[20];
 uniform int light_count;
-
+uniform mat4 view;
 uniform Material front;
 
 out vec4 color;
@@ -45,6 +46,7 @@ void main(void)
 	// Normalize the incoming N, L and V vectors
 	vec3 N = normalize(fs_in.N);
 	vec4 P = normalize(fs_in.P);
+	mat4 modelview = fs_in.modelview;
 	//vec3 H = normalize(L + V);
 	
 	color = vec4(0.0);
@@ -55,6 +57,8 @@ void main(void)
 	vec4 diffuse;
 	vec4 specular;
 	vec4 emission;
+	vec3 light_pos;
+	vec3 light_spot_direction;
 	vec3 L;
 	vec4 shadow_coor;
 	vec4 shadow_coor_w_div;
@@ -64,6 +68,10 @@ void main(void)
 
 	for(int i = 0; i < light_count; i++) // for all light sources
 	{
+		// light
+		//light_pos = modelview + lights[i].position;
+		light_spot_direction = mat3(view) * lights[i].spot_direction;
+		
 		// ambient
 		ambient = lights[i].ambient * front.ambient;
 
@@ -71,11 +79,22 @@ void main(void)
 		if(0.0 == lights[i].position.w) // directional light?
 		{
 			atten = 1.0; // no atten
-			L = normalize(vec3(lights[i].position));
-		} 
+			
+			// rotate to view space
+			light_pos = mat3(view) * lights[i].position.xyz;
+			
+			
+			L = normalize(light_pos);
+		}
 		else // point light or spotlight (or other kind of light) 
 		{
-			L = vec3(lights[i].position - fs_in.P);
+			// translate to view space
+			//light_pos = lights[i].position.xyz - view[0].xyz;
+			//light_pos = mat3(view) * light_pos;
+			
+			light_pos = vec3( view * lights[i].position );
+			
+			L = light_pos - fs_in.P.xyz;
 
 			float l = length(L);
 
@@ -88,7 +107,7 @@ void main(void)
 
 			if(lights[i].spot_cutoff <= (tau/4.0)) // spotlight?
 			{
-				float clamped_cos = max(0.0, dot(-L, normalize(lights[i].spot_direction)));
+				float clamped_cos = max(0.0, dot(-L, normalize(light_spot_direction)));
 
 				if (clamped_cos < cos(lights[i].spot_cutoff)) // outside spotlight cone?
 				{

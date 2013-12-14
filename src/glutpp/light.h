@@ -29,6 +29,7 @@ namespace glutpp
 			void		uniforms();
 			void		updateGL();
 			void		load();
+			void		load_shadow();
 			void		draw();
 			void		draw_shadow_no_shader();
 			void		dim();
@@ -64,7 +65,8 @@ namespace glutpp
 			uniform		uniform_atten_const_;
 			uniform		uniform_atten_linear_;
 			uniform		uniform_atten_quad_;
-		
+			uniform		uniform_matrix_shadow_;
+			uniform		uniform_tex_shadow_;
 			
 			texture		texture_shadow_map_;
 
