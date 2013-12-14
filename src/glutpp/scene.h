@@ -42,16 +42,23 @@ namespace glutpp
 			struct
 			{
 				uniform		light_count_;
+				uniform		model_;
+				uniform		view_;
+				uniform		proj_;
 			} uniforms_;
 	
-			std::weak_ptr<renderable>	renderable_;
+	
+			std::weak_ptr<renderable>		renderable_;
 
-			std::vector<object*>	objects_;
-
-			camera			camera_;
+			std::vector<std::shared_ptr<object> >	objects_;
+	
+			camera					camera_;
 			
-			light*			lights_[LIGHT_MAX];
-			int			light_count_;
+			program*				program_;
+			std::vector<shader>			shaders_;
+			
+			light*					lights_[LIGHT_MAX];
+			int					light_count_;
 
 	};
 }
