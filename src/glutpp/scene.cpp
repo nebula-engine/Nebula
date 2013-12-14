@@ -96,12 +96,35 @@ void	glutpp::scene::render(double time)
 	if(all(SHADOW)) lights_for_each(&glutpp::light::RenderLightPOV);
 	
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-
+	
 	camera_.load();
-
+	
 	//if(all(SHADOW) && !all(SHADER)) display_dim();
-
+	
 	display_bright();
+}
+void	glutpp::scene::uniforms()
+{
+	printf("%s\n",__PRETTY_FUNCTION__);
+
+	uniforms_.light_count_.init(this,"light_count");
+	uniforms_.model_.init(this,"model");
+	uniforms_.view_.init(this,"view");
+	uniforms_.proj_.init(this,"proj");
+}
+void	glutpp::scene::display_bright()
+{
+	//printf("%s\n",__PRETTY_FUNCTION__);
+	
+	lights_for_each(&glutpp::light::load);
+	
+	if(all(REFLECT | REFLECT_PLANAR)) objects_for_each(&glutpp::object::render_reflection);
+	
+	draw();
+	
+	check_error();
+	
+	if(all(SHADOW)) lights_for_each(&glutpp::light::RenderShadowPost);
 }
 void	glutpp::scene::draw()
 {
@@ -110,10 +133,10 @@ void	glutpp::scene::draw()
 		(*it)->draw();
 	}
 }
-void	glutpp::scene::resize()
+void	glutpp::scene::resize(int w, int h)
 {
-	camera_.w_ = w_;
-	camera_.h_ = h_;
+	camera_.w_ = w;
+	camera_.h_ = h;
 }
 
 
