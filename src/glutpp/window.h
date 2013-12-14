@@ -36,20 +36,7 @@ namespace glutpp
 			int          windowID;
 
 		public:
-			enum
-			{
-				RAY_TRACE			= 1 << 0,
-				LIGHTING			= 1 << 1,
-				SHADOW				= 1 << 2,
-				SHADOW_MAP			= 1 << 3,
-				REFLECT				= 1 << 4,
-				REFLECT_PLANAR			= 1 << 5,
-				REFLECT_CURVED			= 1 << 6,
-				TEX_IMAGE			= 1 << 7,
-				TEX_NORMAL_MAP			= 1 << 8,
-				ORTHO				= 1 << 9,
-				SHADER				= 1 << 10
-			};
+			
 			
 			window(int, int, int, int, const char * );
 			~window();
@@ -107,13 +94,7 @@ namespace glutpp
 			int			y_;
 			
 			
-			uniform			uniform_light_count_;
-			uniform			uniform_model_;
-			uniform			uniform_view_;
-			uniform			uniform_proj_;
-
-			shader*			shaders_;
-			int			shader_count_;
+			
 			
 
 			
@@ -121,7 +102,7 @@ namespace glutpp
 
 		public:
 			GLFWwindow*		window_;
-			program*		program_;
+			
 	};
 }
 
