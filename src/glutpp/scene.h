@@ -13,9 +13,22 @@ namespace glutpp
 	class renderable;
 	class object;
 	class light;
-	class scene: public std::enable_shared_from_this<scene>
+	class scene: public gal:flag, public std::enable_shared_from_this<scene>
 	{
 		public:
+			enum
+			{
+				RAY_TRACE			= 1 << 0,
+				LIGHTING			= 1 << 1,
+				SHADOW				= 1 << 2,
+				REFLECT				= 1 << 4,
+				REFLECT_PLANAR			= 1 << 5,
+				REFLECT_CURVED			= 1 << 6,
+				TEX_IMAGE			= 1 << 7,
+				TEX_NORMAL_MAP			= 1 << 8,
+				SHADER				= 1 << 9
+			};
+			
 			scene();
 			void			init(std::shared_ptr<renderable>);
 			void			add_object(object*);
