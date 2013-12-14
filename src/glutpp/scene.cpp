@@ -93,7 +93,7 @@ void	glutpp::scene::render(double time)
 	uniforms_.light_count_.load_1i(light_count_);
 	lights_for_each(&glutpp::light::load);
 	
-	if(all(glutpp::window::SHADOW)) lights_for_each(&glutpp::light::RenderLightPOV);
+	if(all(SHADOW)) lights_for_each(&glutpp::light::RenderLightPOV);
 	
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
@@ -102,12 +102,6 @@ void	glutpp::scene::render(double time)
 	//if(all(SHADOW) && !all(SHADER)) display_dim();
 
 	display_bright();
-	
-	if(all(ORTHO)) draw_ortho();
-	
-	glFinish();
-	glfwSwapBuffers(window_);
-	//glfwPostRedisplay();
 }
 void	glutpp::scene::draw()
 {
