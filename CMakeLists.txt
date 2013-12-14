@@ -7,6 +7,8 @@ set(src
 	src/glutpp/camera_control.cpp
 	src/glutpp/master.cpp
 	src/glutpp/window.cpp
+	src/glutpp/scene.cpp
+	src/glutpp/renderable.cpp
 	src/glutpp/object.cpp
 	src/glutpp/shader.cpp
 	src/glutpp/uniform.cpp

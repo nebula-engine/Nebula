@@ -147,6 +147,12 @@ CMakeFiles/glutpp.dir/src/glutpp/program.cpp.o: src/glutpp/texture.h
 CMakeFiles/glutpp.dir/src/glutpp/program.cpp.o: src/glutpp/uniform.h
 CMakeFiles/glutpp.dir/src/glutpp/program.cpp.o: src/glutpp/window.h
 
+CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o: src/glutpp/renderable.cpp
+CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o: src/glutpp/renderable.h
+
+CMakeFiles/glutpp.dir/src/glutpp/scene.cpp.o: src/glutpp/scene.cpp
+CMakeFiles/glutpp.dir/src/glutpp/scene.cpp.o: src/glutpp/scene.h
+
 CMakeFiles/glutpp.dir/src/glutpp/shader.cpp.o: src/glutpp/shader.cpp
 CMakeFiles/glutpp.dir/src/glutpp/shader.cpp.o: src/glutpp/attribute.h
 CMakeFiles/glutpp.dir/src/glutpp/shader.cpp.o: src/glutpp/camera.h
@@ -207,6 +213,7 @@ CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o: src/glutpp/material.h
 CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o: src/glutpp/object.h
 CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o: src/glutpp/plane.h
 CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o: src/glutpp/program.h
+CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o: src/glutpp/renderable.h
 CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o: src/glutpp/shader.h
 CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o: src/glutpp/texture.h
 CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o: src/glutpp/uniform.h

@@ -162,7 +162,7 @@ void	glutpp::light::load_shadow()
 	
 	math::mat44 textureMatrix = biasMatrix * camera_.proj() * camera_.view();
 	
-	uniform_matrix_shadow_.load_mat4f(textureMatrix);
+	uniform_matrix_shadow_.load_matrix4fv(textureMatrix);
 
 	// texture
 	glActiveTexture(GL_TEXTURE1);

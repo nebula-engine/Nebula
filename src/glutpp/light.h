@@ -14,6 +14,7 @@
 
 namespace glutpp
 {
+	class scene;
 	class light
 	{
 		public:
@@ -25,7 +26,7 @@ namespace glutpp
 			};
 			
 			light();
-			void		init(window*,int);
+			void		init(std::shared_ptr<scene>,int);
 			void		uniforms();
 			void		updateGL();
 			void		load();

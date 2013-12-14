@@ -461,6 +461,54 @@ src/glutpp/program.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/program.cpp.s
 .PHONY : src/glutpp/program.cpp.s
 
+src/glutpp/renderable.o: src/glutpp/renderable.cpp.o
+.PHONY : src/glutpp/renderable.o
+
+# target to build an object file
+src/glutpp/renderable.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o
+.PHONY : src/glutpp/renderable.cpp.o
+
+src/glutpp/renderable.i: src/glutpp/renderable.cpp.i
+.PHONY : src/glutpp/renderable.i
+
+# target to preprocess a source file
+src/glutpp/renderable.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.i
+.PHONY : src/glutpp/renderable.cpp.i
+
+src/glutpp/renderable.s: src/glutpp/renderable.cpp.s
+.PHONY : src/glutpp/renderable.s
+
+# target to generate assembly for a file
+src/glutpp/renderable.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.s
+.PHONY : src/glutpp/renderable.cpp.s
+
+src/glutpp/scene.o: src/glutpp/scene.cpp.o
+.PHONY : src/glutpp/scene.o
+
+# target to build an object file
+src/glutpp/scene.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene.cpp.o
+.PHONY : src/glutpp/scene.cpp.o
+
+src/glutpp/scene.i: src/glutpp/scene.cpp.i
+.PHONY : src/glutpp/scene.i
+
+# target to preprocess a source file
+src/glutpp/scene.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene.cpp.i
+.PHONY : src/glutpp/scene.cpp.i
+
+src/glutpp/scene.s: src/glutpp/scene.cpp.s
+.PHONY : src/glutpp/scene.s
+
+# target to generate assembly for a file
+src/glutpp/scene.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene.cpp.s
+.PHONY : src/glutpp/scene.cpp.s
+
 src/glutpp/shader.o: src/glutpp/shader.cpp.o
 .PHONY : src/glutpp/shader.o
 
@@ -609,6 +657,12 @@ help:
 	@echo "... src/glutpp/program.o"
 	@echo "... src/glutpp/program.i"
 	@echo "... src/glutpp/program.s"
+	@echo "... src/glutpp/renderable.o"
+	@echo "... src/glutpp/renderable.i"
+	@echo "... src/glutpp/renderable.s"
+	@echo "... src/glutpp/scene.o"
+	@echo "... src/glutpp/scene.i"
+	@echo "... src/glutpp/scene.s"
 	@echo "... src/glutpp/shader.o"
 	@echo "... src/glutpp/shader.i"
 	@echo "... src/glutpp/shader.s"

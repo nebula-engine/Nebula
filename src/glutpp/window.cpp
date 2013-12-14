@@ -18,6 +18,7 @@
 #include <glutpp/light.h>
 #include <glutpp/shader.h>
 #include <glutpp/program.h>
+#include <glutpp/renderable.h>
 
 template <typename... Args>
 void	fatal_error(char const * c, Args ...args)
@@ -49,56 +50,15 @@ void	check_error()
 glutpp::window::window(int w, int h, int x, int y, const char * title):
 	w_(w), h_(h), x_(x), y_(y),
 	program_(NULL),
-	title_(title),
-	light_count_(0)
+	title_(title)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	printf(GLUTPP_INSTALL_DIR);
 	printf("\n");
 	
-	memset(lights_, 0, LIGHT_MAX);
 	
 	__master.reg(this);
-}
-void	glutpp::window::add_object(object* o)
-{
-	printf("%s\n",__PRETTY_FUNCTION__);
-	
-	if(o == NULL)
-	{
-		printf("object is NULL\n");
-		return;
-	}
-	
-	objects_.push_back(o);
-	
-	o->init(this);
-	o->init_buffer();
-}
-void	glutpp::window::add_light(light* l)
-{
-	printf("%s\n",__PRETTY_FUNCTION__);
-	
-	if(light_count_ == LIGHT_MAX)
-	{
-		printf("max light\n");
-		return;
-	}
-	
-	if(l == NULL)
-	{
-		printf("light is NULL\n");
-		return;
-	}
-	
-	lights_[light_count_] = l;
-	
-	l->init(this, light_count_);
-	
-	light_count_++;
-	
-	printf("%s exit\n",__PRETTY_FUNCTION__);
 }
 GLint	glutpp::window::get_program()
 {
@@ -159,7 +119,7 @@ void	glutpp::window::init()
 
 	uniforms();
 
-	camera_.init(this);
+	renderable_->init(shared_from_this());
 	
 	checkerror("unknown");
 }
@@ -244,36 +204,6 @@ void	glutpp::window::uniforms()
 	uniform_view_.init(this,"view");
 	uniform_proj_.init(this,"proj");
 }
-void	glutpp::window::lights_for_each(std::function<void(glutpp::light*)> func)
-{	
-	//printf("%s\n",__PRETTY_FUNCTION__);
-
-	for(int i = 0; i < light_count_; ++i)
-	{
-		if(lights_[i] == NULL)
-		{
-			printf("light is NULL\n");
-			exit(0);
-		}
-		
-		func(lights_[i]);
-	}
-}
-void	glutpp::window::objects_for_each(std::function<void(glutpp::object*)> func)
-{	
-	//printf("%s\n",__PRETTY_FUNCTION__);
-
-	for(int i = 0; i < objects_.size(); ++i)
-	{
-		if(lights_[i] == NULL)
-		{
-			printf("light is NULL\n");
-			exit(0);
-		}
-
-		func(objects_.at(i));
-	}
-}
 void	glutpp::window::draw_ortho()
 {
 	//Restore other states
@@ -353,30 +283,6 @@ void	glutpp::window::loop()
 		glfwPollEvents();
 	}
 }
-void	glutpp::window::render(double time)
-{
-	printf("%s\n",__PRETTY_FUNCTION__);
-
-	// uniforms
-	uniform_light_count_.load_1i(light_count_);
-	lights_for_each(&glutpp::light::load);
-
-	if(all(SHADOW | SHADOW_MAP)) lights_for_each(&glutpp::light::RenderLightPOV);
-
-	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-
-	camera_.load();
-
-	if(all(SHADOW | SHADOW_MAP) && !all(SHADER)) display_dim();
-
-	display_bright();
-
-	if(all(ORTHO)) draw_ortho();
-
-	glFinish();
-	glfwSwapBuffers(window_);
-	//glfwPostRedisplay();
-}
 void	glutpp::window::callback_window_size_fun(GLFWwindow* window, int w, int h)
 {
 	w_ = w;
@@ -417,80 +323,12 @@ void	glutpp::window::callback_key_fun(GLFWwindow* window, int key, int scancode,
 			break;
 	}
 }
-/*
-   void glutpp::window::CallBackKeyboardUpFunc(unsigned char key, int x, int y)
-   {
-//printf("%s\n",__PRETTY_FUNCTION__);
-
-map_sig_key_up_[key]();
-
-//key; x; y;                //dummy function
-}
-void glutpp::window::CallBackMotionFunc(int x, int y)
-{
-//x; y;                     //dummy function
-}
-void glutpp::window::CallBackMouseFunc(int button, int state, int x, int y)
-{
-//button; state; x; y;      //dummy function
-}
-void glutpp::window::CallBackPassiveMotionFunc(int x, int y)
-{
-//x; y;                     //dummy function
-}
-void glutpp::window::CallBackSpecialFunc(int key, int x, int y)
-{
-//key; x; y;
-}   
-void glutpp::window::CallBackVisibilityFunc(int visible)
-{
-//visible;                  //dummy function
-}
-void glutpp::window::SetWindowID(int newWindowID)
-{
-windowID = newWindowID;
-}
-int glutpp::window::GetWindowID(void)
-{
-return( windowID );
-}
- */
-void glutpp::window::draw()
-{
-	for( auto it = objects_.begin(); it != objects_.end(); ++it )
-	{
-		(*it)->draw();
-	}
-}
 void	glutpp::window::resize()
 {
 	glViewport(0, 0, w_, h_);
-	
-	camera_.w_ = w_;
-	camera_.h_ = h_;
 
+	renderable_->resize();
 }
-/*
-   void	glutpp::window::display_all_but(object* o)
-   {
-   for( auto it = objects_.begin(); it != objects_.end(); ++it )
-   {
-   if( (*it) != o ) (*it)->draw();
-   }
-   }     
-   void glutpp::window::display_ortho()
-   {}*/   
-/*
-   void glutpp::window::callback_idle_fun()
-   {
-   double now = glfwGetTime();
-
-   camera_.step(now);
-
-   if(idle) func_idle_(now);
-   }   
-
- */
 void checkerror(char const * msg)
 {
 	GLenum err = glGetError();

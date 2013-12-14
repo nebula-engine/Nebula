@@ -15,11 +15,12 @@
 namespace glutpp
 {
 	class window;
+	class scene;
 	class camera
 	{
 		public:
 			camera();
-			void		init(window*);
+			void		init(std::shared_ptr<scene>);
 			math::mat44	proj();
 			math::mat44	view();
 			void		load();

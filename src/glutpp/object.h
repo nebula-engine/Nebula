@@ -32,6 +32,7 @@ namespace glutpp
 	};
 	
 	class window;
+	class scene;
 	class object
 	{
 		public:
@@ -45,7 +46,7 @@ namespace glutpp
 			};
 			
 			object();
-			void		init(window*);
+			void		init(scene*);
 			void		construct(math::geo::polyhedron*);
 			void		uniforms();
 			int		save(char const *);
@@ -86,7 +87,7 @@ namespace glutpp
 
 			material		material_front_;
 			
-			window*			window_;
+			scene*			scene_;
 	};
 }
 

@@ -17,6 +17,8 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/charles/Programming/C++/glutpp/src/glutpp/material.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/object.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/object.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/program.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/program.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/renderable.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/scene.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/scene.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/shader.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/shader.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/texture.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/uniform.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/uniform.cpp.o"

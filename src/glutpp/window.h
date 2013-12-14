@@ -28,8 +28,8 @@
 namespace glutpp
 {
 	class object;
-	class window:
-		public gal::flag
+	class renderable;
+	class window: public gal::flag, public std::enable_shared_from_this<window>
 	{
 		protected:
 
@@ -55,9 +55,7 @@ namespace glutpp
 			~window();
 			
 			void			init();
-			void			add_object(object*);
-			void			add_light(light*);
-			
+					
 
 			void			callback_window_pos_fun(GLFWwindow*,int,int);
 			void			callback_window_size_fun(GLFWwindow*,int,int);
@@ -108,10 +106,6 @@ namespace glutpp
 			int			x_;
 			int			y_;
 			
-			camera			camera_;
-			
-			light*			lights_[LIGHT_MAX];
-			int			light_count_;
 			
 			uniform			uniform_light_count_;
 			uniform			uniform_model_;
@@ -122,9 +116,8 @@ namespace glutpp
 			int			shader_count_;
 			
 
-
-			std::vector<object*>	objects_;
-
+			
+			std::shared_ptr<renderable>	renderable_;
 
 		public:
 			GLFWwindow*		window_;
