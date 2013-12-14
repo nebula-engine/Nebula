@@ -85,6 +85,82 @@ void	glutpp::scene::lights_for_each(std::function<void(glutpp::light*)> func)
 		func(lights_[i]);
 	}
 }
+void	glutpp::scene::shaders()
+{
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
+	// remove old program
+	if(program_)
+	{
+		delete program_;
+	}
+	
+	std::map<unsigned int,int> shader_map;
+	
+	unsigned int m = 
+		RAY_TRACE |
+		LIGHTING | 
+		SHADOW | 
+		REFLECT |
+		REFLECT_PLANAR |
+		REFLECT_CURVED |
+		TEX_IMAGE |
+		TEX_NORMAL_MAP;
+
+	// populate map based on platform capability
+	shader_map[ LIGHTING ] = 0;
+	shader_map[ LIGHTING | SHADOW ] = 1;
+	
+	if(all(SHADER))
+	{
+		printf("shaders enabled\n");
+		
+		unsigned int f = mask(m);
+
+		auto it = shader_map.find(f);
+
+		if(it == shader_map.end()) fatal_error("shader configuration %i not implemented",f);
+
+		int s = it->second;
+
+		program_ = new program;
+		program_->init();
+
+		shaders_.clear();
+		switch(s)
+		{
+			case 0:
+				shaders_.emplace_back();
+				shaders_.emplace_back();
+				
+				shaders_.at(0).load(GLUTPP_SHADER_DIR"/prog_0/vs.glsl", GL_VERTEX_SHADER);
+				shaders_.at(1).load(GLUTPP_SHADER_DIR"/prog_0/fs.glsl", GL_FRAGMENT_SHADER);
+				
+				shader_count_ = 2;
+				break;
+			case 1:
+				shaders_.emplace_back();
+				shaders_.emplace_back();
+				
+				shaders_.at(0).load(GLUTPP_SHADER_DIR"/prog_1/vs.glsl", GL_VERTEX_SHADER);
+				shaders_.at(1).load(GLUTPP_SHADER_DIR"/prog_1/fs.glsl", GL_FRAGMENT_SHADER);
+				
+				shader_count_ = 2;
+				break;
+			default:
+				fatal_error("shader configuration %i not implemented",f);
+				break;
+		}
+		
+		program_->add_shaders(shaders_,shader_count_);
+		program_->compile();
+		program_->use();
+	}
+	else
+	{
+		printf("shaders not enabled\n");
+	}
+}
 void	glutpp::scene::render(double time)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
