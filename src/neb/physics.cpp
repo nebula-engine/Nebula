@@ -91,15 +91,15 @@ void				neb::physics::Shutdown()
 	px_physics_->release();
 	px_foundation_->release();
 }
-neb::scene*			neb::physics::Create_Scene(TiXmlElement* el_scene)
+std::shared_ptr<neb::scene>	neb::physics::Create_Scene(TiXmlElement* el_scene)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	neb::scene* scene = new neb::scene;
-
+	std::shared_ptr<neb::scene> scene(new neb::scene);
+	
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
 
-	scene_desc.gravity = physx::PxVec3(0.0f, -1.0f, 0.0f);
+	scene_desc.gravity = physx::PxVec3(0.0f, 0.0f, 0.0f);
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 
 	int m_nbThreads = 1;

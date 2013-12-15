@@ -354,6 +354,30 @@ src/neb/actor/Rigid_Static.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.s
 .PHONY : src/neb/actor/Rigid_Static.cpp.s
 
+src/neb/actor/desc.o: src/neb/actor/desc.cpp.o
+.PHONY : src/neb/actor/desc.o
+
+# target to build an object file
+src/neb/actor/desc.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.o
+.PHONY : src/neb/actor/desc.cpp.o
+
+src/neb/actor/desc.i: src/neb/actor/desc.cpp.i
+.PHONY : src/neb/actor/desc.i
+
+# target to preprocess a source file
+src/neb/actor/desc.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.i
+.PHONY : src/neb/actor/desc.cpp.i
+
+src/neb/actor/desc.s: src/neb/actor/desc.cpp.s
+.PHONY : src/neb/actor/desc.s
+
+# target to generate assembly for a file
+src/neb/actor/desc.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.s
+.PHONY : src/neb/actor/desc.cpp.s
+
 src/neb/camera.o: src/neb/camera.cpp.o
 .PHONY : src/neb/camera.o
 
@@ -474,6 +498,30 @@ src/neb/shape.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/shape.cpp.s
 .PHONY : src/neb/shape.cpp.s
 
+src/neb/user.o: src/neb/user.cpp.o
+.PHONY : src/neb/user.o
+
+# target to build an object file
+src/neb/user.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/user.cpp.o
+.PHONY : src/neb/user.cpp.o
+
+src/neb/user.i: src/neb/user.cpp.i
+.PHONY : src/neb/user.i
+
+# target to preprocess a source file
+src/neb/user.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/user.cpp.i
+.PHONY : src/neb/user.cpp.i
+
+src/neb/user.s: src/neb/user.cpp.s
+.PHONY : src/neb/user.s
+
+# target to generate assembly for a file
+src/neb/user.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/user.cpp.s
+.PHONY : src/neb/user.cpp.s
+
 src/neb/view.o: src/neb/view.cpp.o
 .PHONY : src/neb/view.o
 
@@ -536,6 +584,9 @@ help:
 	@echo "... src/neb/actor/Rigid_Static.o"
 	@echo "... src/neb/actor/Rigid_Static.i"
 	@echo "... src/neb/actor/Rigid_Static.s"
+	@echo "... src/neb/actor/desc.o"
+	@echo "... src/neb/actor/desc.i"
+	@echo "... src/neb/actor/desc.s"
 	@echo "... src/neb/camera.o"
 	@echo "... src/neb/camera.i"
 	@echo "... src/neb/camera.s"
@@ -551,6 +602,9 @@ help:
 	@echo "... src/neb/shape.o"
 	@echo "... src/neb/shape.i"
 	@echo "... src/neb/shape.s"
+	@echo "... src/neb/user.o"
+	@echo "... src/neb/user.i"
+	@echo "... src/neb/user.s"
 	@echo "... src/neb/view.o"
 	@echo "... src/neb/view.i"
 	@echo "... src/neb/view.s"

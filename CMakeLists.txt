@@ -6,12 +6,14 @@ project(nebula)
 set(PROJECT_SOURCE_DIR src)
 
 add_library(nebula
+	src/neb/user.cpp
 	src/neb/physics.cpp
 	src/neb/scene.cpp
 	src/neb/view.cpp
 	src/neb/shape.cpp
 	src/neb/camera.cpp
 	src/neb/camera_ridealong.cpp
+	src/neb/actor/desc.cpp
 	src/neb/actor/Base.cpp
 	src/neb/actor/Actor.cpp
 	src/neb/actor/Rigid_Actor.cpp
@@ -33,11 +35,13 @@ set(CMAKE_INSTALL_PREFIX $ENV{HOME}/usr)
 install(TARGETS nebula DESTINATION lib)
 
 install(FILES ${PROJECT_SOURCE_DIR}/neb/config.h	DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/user.h		DESTINATION include/neb/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/physics.h	DESTINATION include/neb/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/scene.h DESTINATION include/neb/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/view.h DESTINATION include/neb/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/camera.h DESTINATION include/neb/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/shape.h DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/desc.h DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Base.h DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Actor.h DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Actor.h DESTINATION include/neb/actor/)

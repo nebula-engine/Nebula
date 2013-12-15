@@ -22,8 +22,8 @@ namespace neb
 		public:
 			void						Init();
 			void						Shutdown();
-			neb::scene*					Create_Scene(TiXmlElement*);
-			neb::actor::Rigid_Dynamic*			Create_Rigid_Dynamic_Box();
+			std::shared_ptr<neb::scene>			Create_Scene(TiXmlElement*);
+			//neb::actor::Rigid_Dynamic*			Create_Rigid_Dynamic_Box();
 
 			DefaultErrorCallback 				px_default_error_callback_;
 			physx::PxDefaultAllocator 			px_default_allocator_callback_;

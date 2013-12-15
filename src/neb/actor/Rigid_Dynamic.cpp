@@ -9,7 +9,7 @@ void	neb::actor::Rigid_Dynamic::init()
 
 	assert(shape_);
 
-	object_ = new glutpp::object;
+	object_.reset(new glutpp::object);
 	object_->s_ = shape_->s_;
 
 	switch(shape_->type_)

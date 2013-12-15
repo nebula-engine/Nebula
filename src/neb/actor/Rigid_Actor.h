@@ -15,6 +15,8 @@ namespace neb
 				virtual void		init() = 0;
 				virtual void		add_force() = 0;
 
+				virtual void		step_remote(double);
+
 				physx::PxShape*		px_shape_;
 				shape*			shape_;
 		};

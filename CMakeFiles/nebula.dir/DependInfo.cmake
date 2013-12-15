@@ -12,11 +12,13 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/charles/Programming/C++/neb/src/neb/actor/Rigid_Body.cpp" "/home/charles/Programming/C++/neb/CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o"
   "/home/charles/Programming/C++/neb/src/neb/actor/Rigid_Dynamic.cpp" "/home/charles/Programming/C++/neb/CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic.cpp.o"
   "/home/charles/Programming/C++/neb/src/neb/actor/Rigid_Static.cpp" "/home/charles/Programming/C++/neb/CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.o"
+  "/home/charles/Programming/C++/neb/src/neb/actor/desc.cpp" "/home/charles/Programming/C++/neb/CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.o"
   "/home/charles/Programming/C++/neb/src/neb/camera.cpp" "/home/charles/Programming/C++/neb/CMakeFiles/nebula.dir/src/neb/camera.cpp.o"
   "/home/charles/Programming/C++/neb/src/neb/camera_ridealong.cpp" "/home/charles/Programming/C++/neb/CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o"
   "/home/charles/Programming/C++/neb/src/neb/physics.cpp" "/home/charles/Programming/C++/neb/CMakeFiles/nebula.dir/src/neb/physics.cpp.o"
   "/home/charles/Programming/C++/neb/src/neb/scene.cpp" "/home/charles/Programming/C++/neb/CMakeFiles/nebula.dir/src/neb/scene.cpp.o"
   "/home/charles/Programming/C++/neb/src/neb/shape.cpp" "/home/charles/Programming/C++/neb/CMakeFiles/nebula.dir/src/neb/shape.cpp.o"
+  "/home/charles/Programming/C++/neb/src/neb/user.cpp" "/home/charles/Programming/C++/neb/CMakeFiles/nebula.dir/src/neb/user.cpp.o"
   "/home/charles/Programming/C++/neb/src/neb/view.cpp" "/home/charles/Programming/C++/neb/CMakeFiles/nebula.dir/src/neb/view.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")

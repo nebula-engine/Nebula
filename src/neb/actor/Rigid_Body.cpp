@@ -1,3 +1,4 @@
+#include <neb/packet/packet.h>
 #include <neb/actor/Rigid_Body.h>
 
 neb::actor::Rigid_Body::Rigid_Body():
@@ -33,6 +34,19 @@ void	neb::actor::Rigid_Body::add_force()
 	((physx::PxRigidBody*)px_actor_)->addForce(f);
 	((physx::PxRigidBody*)px_actor_)->addTorque(t);
 }
-
+void	neb::actor::Rigid_Body::step_remote(double)
+{
+	neb::packet p;
+	p.type_ = neb::packet::ACTOR_FORCE;
+	p.af.i_ = i_;
+	p.af.f_[0] = force_.x;
+	p.af.f_[1] = force_.y;
+	p.af.f_[2] = force_.z;
+	p.af.t_[0] = torque_.x;
+	p.af.t_[1] = torque_.y;
+	p.af.t_[2] = torque_.z;
+	
+	get_app()->server_
+}
 
 

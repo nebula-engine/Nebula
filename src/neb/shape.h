@@ -23,12 +23,14 @@ namespace neb
 	class box: public neb::shape
 	{
 		public:
+			box(math::vec3);
 			box(TiXmlElement*);
 
 	};
 	class sphere: public neb::shape
 	{
 		public:
+			sphere(float);
 			sphere(TiXmlElement*);
 			float	radius_;
 	};

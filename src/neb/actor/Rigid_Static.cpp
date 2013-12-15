@@ -7,7 +7,8 @@ void	neb::actor::Rigid_Static::init()
 
 	assert(shape_);
 
-	object_ = new glutpp::object;
+	object_.reset(new glutpp::object);
+
 	object_->pose_ = pose_;
 	object_->s_ = shape_->s_;
 	

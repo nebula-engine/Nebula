@@ -8,18 +8,19 @@
 
 namespace neb
 {
+	class scene;
 	class view
 	{
 		public:
 			view();
 			void				delete_scene();
-			void				set_window(glutpp::window*);
+			void				set_window(std::shared_ptr<glutpp::window>);
 			void				Display();
-			
-			
-			neb::scene*		scene_;
-			glutpp::gui::layout*	layout_;
-			glutpp::window*		window_;
+
+
+			std::shared_ptr<neb::scene>	scene_;
+
+			std::weak_ptr<glutpp::window>	window_;
 	};
 }
 

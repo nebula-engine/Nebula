@@ -16,7 +16,9 @@ namespace neb
 				virtual void		add_force();
 				virtual int		key_force(int,int,int,math::vec3);
 				virtual int		key_torque(int,int,int,math::vec3);
-
+				
+				virtual void		step_remote(double);
+				
 				float			density_;
 				physx::PxVec3		velocity_;
 				math::vec3		force_;

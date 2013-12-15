@@ -2,35 +2,43 @@
 #include <assert.h>
 
 #include <glutpp/window.h>
+#include <glutpp/renderable.h>
+#include <glutpp/scene.h>
 
 #include <neb/scene.h>
 #include <neb/view.h>
 #include <neb/camera.h>
 
 neb::view::view():
-	scene_(NULL),
-	layout_(NULL),
-	window_(NULL)
+	scene_(NULL)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	neb::view::set_window(glutpp::window* window)
+void	neb::view::set_window(std::shared_ptr<glutpp::window> window)
 {	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	window_ = window;
 	
-	assert(window_);
+	assert(window);
+	assert(window->renderable_);
 	assert(scene_);
+	
+	
+	std::shared_ptr<glutpp::scene> scene = window->renderable_->scene_;
+	
+	assert(scene);
 	
 	for(auto it = scene_->actors_.map_.begin(); it != scene_->actors_.map_.end(); ++it)
 	{
 		printf("added object to window\n");
 		
-		neb::actor::Actor* actor = (neb::actor::Actor*)((*it).second);
+		std::shared_ptr<neb::actor::Actor> actor =
+				std::dynamic_pointer_cast<neb::actor::Actor>((*it).second);
+		
 		assert(actor);
 		
-		glutpp::object* object = actor->object_;
+		std::shared_ptr<glutpp::object> object = actor->object_;
 		
 		if(object == NULL)
 		{
@@ -38,11 +46,13 @@ void	neb::view::set_window(glutpp::window* window)
 			continue;
 		}
 		
-		window_->add_object(actor->object_);
+		scene->add_object(actor->object_);
 	}
 }
 void	neb::view::delete_scene()
 {
-	delete scene_;
+	scene_.reset();
 }
+
+
 
