@@ -11,17 +11,16 @@ set(src
 	src/glutpp/scene.cpp
 	src/glutpp/renderable.cpp
 	src/glutpp/object.cpp
-	src/glutpp/shader.cpp
-	src/glutpp/uniform.cpp
-	src/glutpp/attribute.cpp
+	src/glutpp/glsl/shader.cpp
+	src/glutpp/glsl/uniform.cpp
+	src/glutpp/glsl/attrib.cpp
 	src/glutpp/texture.cpp
-	src/glutpp/program.cpp
+	src/glutpp/glsl/program.cpp
 	src/glutpp/camera.cpp
 	src/glutpp/light.cpp
 	src/glutpp/material.cpp
 	src/glutpp/gui/layout.cpp
 	src/glutpp/gui/object/object.cpp
-	src/glutpp/gui/object/button.cpp
 	src/glutpp/gui/object/textview.cpp
 	src/glutpp/gui/object/edittext.cpp
 )
@@ -52,11 +51,13 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window.h		DESTINATION include/glutpp/
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/renderable.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/object.h		DESTINATION include/glutpp/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shader.h		DESTINATION include/glutpp/)
+
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shader.h		DESTINATION include/glutpp/glsl/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/program.h		DESTINATION include/glutpp/glsl/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/uniform.h		DESTINATION include/glutpp/glsl/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/attrib.h		DESTINATION include/glutpp/glsl/)
+
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/texture.h		DESTINATION include/glutpp/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/program.h		DESTINATION include/glutpp/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/uniform.h		DESTINATION include/glutpp/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/attribute.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/camera.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/camera_control.h	DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/light.h		DESTINATION include/glutpp/)
@@ -64,20 +65,15 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/material.h		DESTINATION include/glutp
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/layout.h			DESTINATION include/glutpp/gui)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/object.h		DESTINATION include/glutpp/gui/object)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/button.h		DESTINATION include/glutpp/gui/object)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/textview.h	DESTINATION include/glutpp/gui/object)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/edittext.h	DESTINATION include/glutpp/gui/object)
 
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shaders/prog_0/vs.glsl DESTINATION include/glutpp/shaders/prog_0)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shaders/prog_0/fs.glsl DESTINATION include/glutpp/shaders/prog_0)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shaders/prog_1/vs.glsl DESTINATION include/glutpp/shaders/prog1)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shaders/prog_1/fs.glsl DESTINATION include/glutpp/shaders/prog1)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shaders/exp_map/vs.glsl DESTINATION include/glutpp/shaders/exp_map)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shaders/exp_map/fs.glsl DESTINATION include/glutpp/shaders/exp_map)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shaders/prog3/vs.glsl DESTINATION include/glutpp/shaders/prog3)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shaders/prog3/fs.glsl DESTINATION include/glutpp/shaders/prog3)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shaders/text/vs.glsl DESTINATION include/glutpp/shaders/text)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shaders/text/fs.glsl DESTINATION include/glutpp/shaders/text)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/light/vs.glsl DESTINATION include/glutpp/shaders/light/glsl)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/light/fs.glsl DESTINATION include/glutpp/shaders/light/glsl)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/quad/vs.glsl DESTINATION include/glutpp/shaders/quad/glsl)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/quad/fs.glsl DESTINATION include/glutpp/shaders/quad/glsl)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/text/vs.glsl DESTINATION include/glutpp/shaders/text/glsl)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/text/fs.glsl DESTINATION include/glutpp/shaders/text/glsl)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/objects/cube.obj DESTINATION include/glutpp/objects)
 

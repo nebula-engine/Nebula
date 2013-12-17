@@ -54,6 +54,10 @@ void glutpp::master::static_window_refresh_fun(GLFWwindow* window)
 {
 	__master.get_window(window)->callback_window_refresh_fun(window);
 }
+void glutpp::master::static_mouse_button_fun(GLFWwindow* window, int button, int action, int mods)
+{
+	__master.get_window(window)->callback_mouse_button_fun(window, button, action, mods);
+}
 void glutpp::master::static_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	__master.get_window(window)->callback_key_fun(window, key, scancode, action, mods);
@@ -199,7 +203,7 @@ void	glutpp::master::reg(glutpp::window* w)
 	glfwSetWindowRefreshCallback(g, static_window_refresh_fun);
 
 	glfwSetKeyCallback(g, static_key_fun);
-
+	glfwSetMouseButtonCallback(g, static_mouse_button_fun);
 
 	GLenum err = glewInit();
 	if (err != GLEW_OK)
@@ -215,6 +219,63 @@ void	glutpp::master::reg(glutpp::window* w)
 		printf("could not find freetype library\n");
 		exit(0);
 	}
+}
+int	glutpp::master::create_programs()
+{
+	std::shared_ptr<glutpp::glsl::program> p;
+	
+	// text
+	p.reset(new glutpp::glsl::program);
+	p->init();
+	
+	p->add_shader(GLUTPP_SHADER_DIR"/text/vs.glsl", GL_VERTEX_SHADER);
+	p->add_shader(GLUTPP_SHADER_DIR"/text/fs.glsl", GL_FRAGMENT_SHADER);
+	
+	p->compile();
+	
+	programs_[glutpp::program_name::TEXT] = p;
+	
+	// quad
+	
+	// light
+	p.reset(new glutpp::glsl::program);
+	p->init();
+	
+	p->add_shader(GLUTPP_SHADER_DIR"/text/vs.glsl", GL_VERTEX_SHADER);
+	p->add_shader(GLUTPP_SHADER_DIR"/text/fs.glsl", GL_FRAGMENT_SHADER);
+	
+	p->compile();
+	
+	//p->add_uniform(glutpp::uniform_name::e::IMAGE, "image");
+	
+	p->add_attrib(glutpp::attrib_name::e::POSITION, "position");
+	p->add_attrib(glutpp::attrib_name::e::NORMAL, "normal");
+	p->add_attrib(glutpp::attrib_name::e::TEXCOOR, "texcoor");
+
+	
+	p->add_uniform(glutpp::uniform_name::e::FRONT_AMBIENT,"front.ambient");
+	p->add_uniform(glutpp::uniform_name::e::FRONT_DIFFUSE,"front.diffuse");
+	p->add_uniform(glutpp::uniform_name::e::FRONT_SPECULAR,"front.specular");
+	p->add_uniform(glutpp::uniform_name::e::FRONT_EMISSION,"front.emission");
+	p->add_uniform(glutpp::uniform_name::e::FRONT_SHININESS,"front.shininess");
+
+
+	p->add_uniform(glutpp::uniform_name::e::LIGHT_POSITION, "lights", "position");
+	p->add_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT, "lights","ambient");
+	p->add_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE, "lights","diffuse");
+	p->add_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR, "lights","specular");
+	p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION, "lights","spot_direction");
+	p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF, "lights","spot_cutoff");
+	p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_EXPONENT, "lights","spot_exponent");
+	p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF, "lights","spot_light_cos_cutoff");
+	p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
+	p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
+	p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
+
+
+
+	programs_[glutpp::program_name::TEXT] = p;
+
 }
 /*
    void glutpp::master::CallGlutMainLoop(void)

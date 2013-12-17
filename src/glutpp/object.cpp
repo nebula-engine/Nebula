@@ -29,7 +29,7 @@ void	glutpp::object::init(std::shared_ptr<scene> scene)
 	
 	uniforms();
 	
-	material_front_.init(scene);
+	material_front_.init();//scene);
 }
 void	glutpp::object::uniforms()
 {
@@ -37,11 +37,6 @@ void	glutpp::object::uniforms()
 
 	std::shared_ptr<scene> scene = scene_.lock();
 
-	uniform_image_.init(scene, "image");
-
-	attrib_position_.init(scene, 0, "position");
-	attrib_normal_.init(scene, 1, "normal");
-	attrib_texcoor_.init(scene, 2, "texcoor");
 }
 void print_vector(GLfloat* v, unsigned int m, unsigned int n)
 {
@@ -218,22 +213,22 @@ int	glutpp::object::save(const char * filename)
 
 	return 0;
 }
-void glutpp::object::init_buffer()
+void glutpp::object::init_buffer(std::shared_ptr<glutpp::glsl::program> p)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 
 	assert(!scene_.expired());
 
-	GLint program = scene_.lock()->get_program();
+	//GLint program = scene_.lock()->get_program();
 
 	checkerror("unknown");
-
+	
 	// attributes
-
+	
 	// image
 	texture_image_.load_png("bigtux.png");
-
+	
 	// indices
 	int size = fh_.len_indices_ * sizeof(GLushort);
 
@@ -261,7 +256,7 @@ void glutpp::object::init_buffer()
 	long off_texcoor = (long)&v.texcoor - (long)&v;
 	
 	glVertexAttribPointer(
-			attrib_position_.o_,
+			p->get_attrib(glutpp::attrib_name::e::POSITION)->o_,
 			4,
 			GL_FLOAT,
 			GL_FALSE,
@@ -270,7 +265,7 @@ void glutpp::object::init_buffer()
 	checkerror("glVertexAttribPointer");
 
 	glVertexAttribPointer(
-			attrib_normal_.o_,
+			p->get_attrib(glutpp::attrib_name::e::NORMAL)->o_,
 			3,
 			GL_FLOAT,
 			GL_FALSE,
@@ -279,7 +274,7 @@ void glutpp::object::init_buffer()
 	checkerror("glVertexAttribPointer normal");
 
 	glVertexAttribPointer(
-			attrib_texcoor_.o_,
+			p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->o_,
 			2,
 			GL_FLOAT,
 			GL_FALSE,
@@ -302,9 +297,11 @@ void glutpp::object::init_buffer()
 }
 void	glutpp::object::model_load()
 {
+	auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
+	
 	std::shared_ptr<scene> scene = scene_.lock();
-
-
+	
+	
 	math::mat44 model(pose_);
 
 	math::mat44 scale;
@@ -314,7 +311,7 @@ void	glutpp::object::model_load()
 	
 	if(scene->all(glutpp::scene::SHADER))
 	{
-		scene->uniforms_.model_.load_matrix4fv(model);
+		p->get_uniform(glutpp::uniform_name::e::MODEL)->load(model);
 	}
 	else
 	{
@@ -338,21 +335,22 @@ void	glutpp::object::model_unload()
 }
 void	glutpp::object::draw()
 {
+	auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
 	//printf("%s\n",__PRETTY_FUNCTION__);
-
+	
 	checkerror("unknown");
-
-	attrib_position_.enable();
-	attrib_normal_.enable();
-	attrib_texcoor_.enable();
+	
+	p->get_attrib(glutpp::attrib_name::e::POSITION)->enable();
+	p->get_attrib(glutpp::attrib_name::e::NORMAL)->enable();
+	p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->enable();
 
 	// material
-	material_front_.load();
+	material_front_.load_shader();
 
 	// texture
 	glActiveTexture(GL_TEXTURE0);checkerror("glActiveTexture");
 	texture_image_.bind();
-	uniform_image_.load_1i(0);
+	p->get_uniform(glutpp::uniform_name::e::IMAGE)->load(0);
 	//glUniform1i(texture_image_.o_, 0);checkerror("glUniform1i");
 
 	// vertices
@@ -371,9 +369,10 @@ void	glutpp::object::draw()
 	glBindBuffer(GL_ARRAY_BUFFER,0);checkerror("glBindBuffer");
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);checkerror("glBindBuffer");
 
-	attrib_position_.disable();
-	attrib_normal_.disable();
-	attrib_texcoor_.disable();
+	p->get_attrib(glutpp::attrib_name::e::POSITION)->disable();
+	p->get_attrib(glutpp::attrib_name::e::NORMAL)->disable();
+	p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->disable();
+
 }
 void	glutpp::object::render_reflection(){}
 

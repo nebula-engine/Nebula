@@ -10,9 +10,9 @@
 #include <glutpp/camera.h>
 #include <glutpp/light.h>
 #include <glutpp/master.h>
-#include <glutpp/plane.h>
-#include <glutpp/program.h>
-#include <glutpp/shader.h>
+//#include <glutpp/plane.h>
+#include <glutpp/glsl/program.h>
+#include <glutpp/glsl/shader.h>
 
 #include <gal/sig/signal.h>
 
@@ -45,36 +45,38 @@ namespace glutpp
 			void			callback_window_size_fun(GLFWwindow*,int,int);
 			void			callback_window_close_fun(GLFWwindow*);
 			void			callback_window_refresh_fun(GLFWwindow*);
+			void			callback_mouse_button_fun(GLFWwindow*,int,int,int);
 			void			callback_key_fun(GLFWwindow*,int,int,int,int);
-			
+
 			void			loop();
 			virtual void		step(double);
 			void			render(double);
 			void			draw();
 			void			draw_ortho();
 			void			resize(int,int);
-			
+
 			void			display_dim();
 			void			display_bright();
 			void			display_all_but(object*);
-			
+
 			void			lights_for_each(std::function<void(glutpp::light*)>);
 			void			objects_for_each(std::function<void(glutpp::object*)>);
 
 			void			SetWindowID(int newWindowID);
 			int			GetWindowID(void);
-			
-			
+
+
 			void			idle();
 
-			
+
 			// input signals
 			struct
-{
-			std::map<int,gal::sig::signal<int,int,int,int>>		map_key_fun_;
-			gal::sig::signal<int,int,int,int>			key_fun_;
-} sig_;
-			
+			{
+				//std::map<int,gal::sig::signal<int,int,int,int>>		map_key_fun_;
+				gal::sig::signal<int,int,int,int>			key_fun_;
+				gal::sig::signal<int,int,int>				mouse_button_fun_;
+			} sig_;
+
 			// idle signal
 			//std::function<void(double)>			func_idle_;
 
@@ -83,12 +85,12 @@ namespace glutpp
 			int			h_;
 			int			x_;
 			int			y_;
-			
+
 			std::shared_ptr<renderable>	renderable_;
 
 		public:
 			GLFWwindow*			window_;
-			
+
 	};
 }
 

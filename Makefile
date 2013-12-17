@@ -149,30 +149,6 @@ glutpp/fast:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/build
 .PHONY : glutpp/fast
 
-src/glutpp/attribute.o: src/glutpp/attribute.cpp.o
-.PHONY : src/glutpp/attribute.o
-
-# target to build an object file
-src/glutpp/attribute.cpp.o:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/attribute.cpp.o
-.PHONY : src/glutpp/attribute.cpp.o
-
-src/glutpp/attribute.i: src/glutpp/attribute.cpp.i
-.PHONY : src/glutpp/attribute.i
-
-# target to preprocess a source file
-src/glutpp/attribute.cpp.i:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/attribute.cpp.i
-.PHONY : src/glutpp/attribute.cpp.i
-
-src/glutpp/attribute.s: src/glutpp/attribute.cpp.s
-.PHONY : src/glutpp/attribute.s
-
-# target to generate assembly for a file
-src/glutpp/attribute.cpp.s:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/attribute.cpp.s
-.PHONY : src/glutpp/attribute.cpp.s
-
 src/glutpp/camera.o: src/glutpp/camera.cpp.o
 .PHONY : src/glutpp/camera.o
 
@@ -245,6 +221,102 @@ src/glutpp/free.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/free.cpp.s
 .PHONY : src/glutpp/free.cpp.s
 
+src/glutpp/glsl/attrib.o: src/glutpp/glsl/attrib.cpp.o
+.PHONY : src/glutpp/glsl/attrib.o
+
+# target to build an object file
+src/glutpp/glsl/attrib.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/glsl/attrib.cpp.o
+.PHONY : src/glutpp/glsl/attrib.cpp.o
+
+src/glutpp/glsl/attrib.i: src/glutpp/glsl/attrib.cpp.i
+.PHONY : src/glutpp/glsl/attrib.i
+
+# target to preprocess a source file
+src/glutpp/glsl/attrib.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/glsl/attrib.cpp.i
+.PHONY : src/glutpp/glsl/attrib.cpp.i
+
+src/glutpp/glsl/attrib.s: src/glutpp/glsl/attrib.cpp.s
+.PHONY : src/glutpp/glsl/attrib.s
+
+# target to generate assembly for a file
+src/glutpp/glsl/attrib.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/glsl/attrib.cpp.s
+.PHONY : src/glutpp/glsl/attrib.cpp.s
+
+src/glutpp/glsl/program.o: src/glutpp/glsl/program.cpp.o
+.PHONY : src/glutpp/glsl/program.o
+
+# target to build an object file
+src/glutpp/glsl/program.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o
+.PHONY : src/glutpp/glsl/program.cpp.o
+
+src/glutpp/glsl/program.i: src/glutpp/glsl/program.cpp.i
+.PHONY : src/glutpp/glsl/program.i
+
+# target to preprocess a source file
+src/glutpp/glsl/program.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.i
+.PHONY : src/glutpp/glsl/program.cpp.i
+
+src/glutpp/glsl/program.s: src/glutpp/glsl/program.cpp.s
+.PHONY : src/glutpp/glsl/program.s
+
+# target to generate assembly for a file
+src/glutpp/glsl/program.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.s
+.PHONY : src/glutpp/glsl/program.cpp.s
+
+src/glutpp/glsl/shader.o: src/glutpp/glsl/shader.cpp.o
+.PHONY : src/glutpp/glsl/shader.o
+
+# target to build an object file
+src/glutpp/glsl/shader.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.o
+.PHONY : src/glutpp/glsl/shader.cpp.o
+
+src/glutpp/glsl/shader.i: src/glutpp/glsl/shader.cpp.i
+.PHONY : src/glutpp/glsl/shader.i
+
+# target to preprocess a source file
+src/glutpp/glsl/shader.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.i
+.PHONY : src/glutpp/glsl/shader.cpp.i
+
+src/glutpp/glsl/shader.s: src/glutpp/glsl/shader.cpp.s
+.PHONY : src/glutpp/glsl/shader.s
+
+# target to generate assembly for a file
+src/glutpp/glsl/shader.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.s
+.PHONY : src/glutpp/glsl/shader.cpp.s
+
+src/glutpp/glsl/uniform.o: src/glutpp/glsl/uniform.cpp.o
+.PHONY : src/glutpp/glsl/uniform.o
+
+# target to build an object file
+src/glutpp/glsl/uniform.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.o
+.PHONY : src/glutpp/glsl/uniform.cpp.o
+
+src/glutpp/glsl/uniform.i: src/glutpp/glsl/uniform.cpp.i
+.PHONY : src/glutpp/glsl/uniform.i
+
+# target to preprocess a source file
+src/glutpp/glsl/uniform.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.i
+.PHONY : src/glutpp/glsl/uniform.cpp.i
+
+src/glutpp/glsl/uniform.s: src/glutpp/glsl/uniform.cpp.s
+.PHONY : src/glutpp/glsl/uniform.s
+
+# target to generate assembly for a file
+src/glutpp/glsl/uniform.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.s
+.PHONY : src/glutpp/glsl/uniform.cpp.s
+
 src/glutpp/gui/layout.o: src/glutpp/gui/layout.cpp.o
 .PHONY : src/glutpp/gui/layout.o
 
@@ -268,30 +340,6 @@ src/glutpp/gui/layout.s: src/glutpp/gui/layout.cpp.s
 src/glutpp/gui/layout.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.s
 .PHONY : src/glutpp/gui/layout.cpp.s
-
-src/glutpp/gui/object/button.o: src/glutpp/gui/object/button.cpp.o
-.PHONY : src/glutpp/gui/object/button.o
-
-# target to build an object file
-src/glutpp/gui/object/button.cpp.o:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/gui/object/button.cpp.o
-.PHONY : src/glutpp/gui/object/button.cpp.o
-
-src/glutpp/gui/object/button.i: src/glutpp/gui/object/button.cpp.i
-.PHONY : src/glutpp/gui/object/button.i
-
-# target to preprocess a source file
-src/glutpp/gui/object/button.cpp.i:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/gui/object/button.cpp.i
-.PHONY : src/glutpp/gui/object/button.cpp.i
-
-src/glutpp/gui/object/button.s: src/glutpp/gui/object/button.cpp.s
-.PHONY : src/glutpp/gui/object/button.s
-
-# target to generate assembly for a file
-src/glutpp/gui/object/button.cpp.s:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/gui/object/button.cpp.s
-.PHONY : src/glutpp/gui/object/button.cpp.s
 
 src/glutpp/gui/object/edittext.o: src/glutpp/gui/object/edittext.cpp.o
 .PHONY : src/glutpp/gui/object/edittext.o
@@ -461,30 +509,6 @@ src/glutpp/object.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/object.cpp.s
 .PHONY : src/glutpp/object.cpp.s
 
-src/glutpp/program.o: src/glutpp/program.cpp.o
-.PHONY : src/glutpp/program.o
-
-# target to build an object file
-src/glutpp/program.cpp.o:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/program.cpp.o
-.PHONY : src/glutpp/program.cpp.o
-
-src/glutpp/program.i: src/glutpp/program.cpp.i
-.PHONY : src/glutpp/program.i
-
-# target to preprocess a source file
-src/glutpp/program.cpp.i:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/program.cpp.i
-.PHONY : src/glutpp/program.cpp.i
-
-src/glutpp/program.s: src/glutpp/program.cpp.s
-.PHONY : src/glutpp/program.s
-
-# target to generate assembly for a file
-src/glutpp/program.cpp.s:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/program.cpp.s
-.PHONY : src/glutpp/program.cpp.s
-
 src/glutpp/renderable.o: src/glutpp/renderable.cpp.o
 .PHONY : src/glutpp/renderable.o
 
@@ -533,30 +557,6 @@ src/glutpp/scene.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene.cpp.s
 .PHONY : src/glutpp/scene.cpp.s
 
-src/glutpp/shader.o: src/glutpp/shader.cpp.o
-.PHONY : src/glutpp/shader.o
-
-# target to build an object file
-src/glutpp/shader.cpp.o:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shader.cpp.o
-.PHONY : src/glutpp/shader.cpp.o
-
-src/glutpp/shader.i: src/glutpp/shader.cpp.i
-.PHONY : src/glutpp/shader.i
-
-# target to preprocess a source file
-src/glutpp/shader.cpp.i:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shader.cpp.i
-.PHONY : src/glutpp/shader.cpp.i
-
-src/glutpp/shader.s: src/glutpp/shader.cpp.s
-.PHONY : src/glutpp/shader.s
-
-# target to generate assembly for a file
-src/glutpp/shader.cpp.s:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shader.cpp.s
-.PHONY : src/glutpp/shader.cpp.s
-
 src/glutpp/texture.o: src/glutpp/texture.cpp.o
 .PHONY : src/glutpp/texture.o
 
@@ -580,30 +580,6 @@ src/glutpp/texture.s: src/glutpp/texture.cpp.s
 src/glutpp/texture.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.s
 .PHONY : src/glutpp/texture.cpp.s
-
-src/glutpp/uniform.o: src/glutpp/uniform.cpp.o
-.PHONY : src/glutpp/uniform.o
-
-# target to build an object file
-src/glutpp/uniform.cpp.o:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/uniform.cpp.o
-.PHONY : src/glutpp/uniform.cpp.o
-
-src/glutpp/uniform.i: src/glutpp/uniform.cpp.i
-.PHONY : src/glutpp/uniform.i
-
-# target to preprocess a source file
-src/glutpp/uniform.cpp.i:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/uniform.cpp.i
-.PHONY : src/glutpp/uniform.cpp.i
-
-src/glutpp/uniform.s: src/glutpp/uniform.cpp.s
-.PHONY : src/glutpp/uniform.s
-
-# target to generate assembly for a file
-src/glutpp/uniform.cpp.s:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/uniform.cpp.s
-.PHONY : src/glutpp/uniform.cpp.s
 
 src/glutpp/window.o: src/glutpp/window.cpp.o
 .PHONY : src/glutpp/window.o
@@ -642,9 +618,6 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... src/glutpp/attribute.o"
-	@echo "... src/glutpp/attribute.i"
-	@echo "... src/glutpp/attribute.s"
 	@echo "... src/glutpp/camera.o"
 	@echo "... src/glutpp/camera.i"
 	@echo "... src/glutpp/camera.s"
@@ -654,12 +627,21 @@ help:
 	@echo "... src/glutpp/free.o"
 	@echo "... src/glutpp/free.i"
 	@echo "... src/glutpp/free.s"
+	@echo "... src/glutpp/glsl/attrib.o"
+	@echo "... src/glutpp/glsl/attrib.i"
+	@echo "... src/glutpp/glsl/attrib.s"
+	@echo "... src/glutpp/glsl/program.o"
+	@echo "... src/glutpp/glsl/program.i"
+	@echo "... src/glutpp/glsl/program.s"
+	@echo "... src/glutpp/glsl/shader.o"
+	@echo "... src/glutpp/glsl/shader.i"
+	@echo "... src/glutpp/glsl/shader.s"
+	@echo "... src/glutpp/glsl/uniform.o"
+	@echo "... src/glutpp/glsl/uniform.i"
+	@echo "... src/glutpp/glsl/uniform.s"
 	@echo "... src/glutpp/gui/layout.o"
 	@echo "... src/glutpp/gui/layout.i"
 	@echo "... src/glutpp/gui/layout.s"
-	@echo "... src/glutpp/gui/object/button.o"
-	@echo "... src/glutpp/gui/object/button.i"
-	@echo "... src/glutpp/gui/object/button.s"
 	@echo "... src/glutpp/gui/object/edittext.o"
 	@echo "... src/glutpp/gui/object/edittext.i"
 	@echo "... src/glutpp/gui/object/edittext.s"
@@ -681,24 +663,15 @@ help:
 	@echo "... src/glutpp/object.o"
 	@echo "... src/glutpp/object.i"
 	@echo "... src/glutpp/object.s"
-	@echo "... src/glutpp/program.o"
-	@echo "... src/glutpp/program.i"
-	@echo "... src/glutpp/program.s"
 	@echo "... src/glutpp/renderable.o"
 	@echo "... src/glutpp/renderable.i"
 	@echo "... src/glutpp/renderable.s"
 	@echo "... src/glutpp/scene.o"
 	@echo "... src/glutpp/scene.i"
 	@echo "... src/glutpp/scene.s"
-	@echo "... src/glutpp/shader.o"
-	@echo "... src/glutpp/shader.i"
-	@echo "... src/glutpp/shader.s"
 	@echo "... src/glutpp/texture.o"
 	@echo "... src/glutpp/texture.i"
 	@echo "... src/glutpp/texture.s"
-	@echo "... src/glutpp/uniform.o"
-	@echo "... src/glutpp/uniform.i"
-	@echo "... src/glutpp/uniform.s"
 	@echo "... src/glutpp/window.o"
 	@echo "... src/glutpp/window.i"
 	@echo "... src/glutpp/window.s"

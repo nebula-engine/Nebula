@@ -19,9 +19,10 @@ namespace glutpp
 
 					virtual int				key_fun(int,int,int,int);
 					virtual int				mouse_button_fun(int,int,int);
-
+					
 					virtual void				connect();
 
+					virtual int				enter();
 			};
 		}
 	}

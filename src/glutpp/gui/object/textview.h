@@ -17,20 +17,20 @@ namespace glutpp
 			{
 				public:
 					textview();
-					void					clear_label();
-					virtual void				draw();
+					void			clear_label();
+					virtual void		draw();
 
-					int					key(int key, int scancode, int action, int mods);
-					int					key_down(int);
-					virtual int				enter();
+					//int			key(int, int, int, int);
+					//int			key_down(int);
+					//virtual int		enter();
 
-					size_t					label_pos_;
+					virtual int		key_fun(int,int,int,int);
+					virtual int		mouse_button_fun(int,int,int);
+					//virtual void		connect();
 
-					virtual int				key_fun(int,int,int,int);
-					virtual int				mouse_button_fun(int,int,int);
 
-					virtual void				connect();
 
+					size_t			label_pos_;
 			};
 		}
 	}

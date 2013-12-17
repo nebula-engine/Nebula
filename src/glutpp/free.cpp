@@ -16,30 +16,75 @@
 
 void	print(unsigned char * s, int w, int h)
 {
-	
-	
+
+
 	for(int j = 0; j < h; j++)
 	{
-	for(int i = 0; i < w; i++)
-	{
-		printf("%4i ", *s);
-		s++;
-	}
-	printf("\n");
+		for(int i = 0; i < w; i++)
+		{
+			printf("%4i ", *s);
+			s++;
+		}
+		printf("\n");
 	}
 }
-void	glutpp::draw_text(float x, float y, float sx, float sy, char const * text)
+/*void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
+{
+		
+}*/
+void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
+{
+	GLint program;
+	glGetIntegerv(GL_CURRENT_PROGRAM, &program);
+
+	GLint uniform_color = glGetUniformLocation(program, "color");
+	GLint attribute_coord = glGetAttribLocation(program, "coord");
+
+	if(attribute_coord == -1)
+	{
+		printf("coord not found\n");
+		exit(0);
+	}
+	if(uniform_color == -1)
+	{
+		printf("color not found\n");
+		exit(0);
+	}
+
+	// vbo
+	GLuint vbo;
+	glGenBuffers(1, &vbo);
+	glEnableVertexAttribArray(attribute_coord);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+
+	GLfloat box[4][4] = 
+	{
+		{x,     -y    , 0, 0},
+		{x + w, -y    , 1, 0},
+		{x,     -y - h, 0, 1},
+		{x + w, -y - h, 1, 1},
+	};
+
+	glUniform4fv(uniform_color, 1, color);
+
+
+	glBufferData(GL_ARRAY_BUFFER, sizeof box, box, GL_DYNAMIC_DRAW);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+}
+void	glutpp::draw_text(float x, float y, float sx, float sy, math::color color, char const * text)
 {
 	const char *p;
-	
+
 	//text = "hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello";
 	printf("text %6.3f %6.3f %s\n", x, y, text);
-	
-	
+
+
 	// face
 	FT_Face face;
-	
-	
+
+
 	FT_Library ft = glutpp::__master.ft_;
 
 	char const fontfile[] = "/usr/share/fonts/truetype/freefont/FreeSans.ttf";
@@ -51,9 +96,9 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, char const * text)
 		printf("Could not open font '%s'\n",fontfile);
 		exit(1);
 	}
-	
+
 	FT_Set_Pixel_Sizes(face, 0, 48);
-	
+
 	if(FT_Load_Char(face, 'X', FT_LOAD_RENDER))
 	{
 		printf("Could not load character 'X'\n");
@@ -68,7 +113,7 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, char const * text)
 
 
 	GLint uniform_tex = glGetUniformLocation(program, "tex");
-	GLint uniform_color = glGetUniformLocation(program, "font_color");
+	GLint uniform_color = glGetUniformLocation(program, "color");
 	GLint attribute_coord = glGetAttribLocation(program, "coord");
 
 	if(uniform_tex == -1)
@@ -93,7 +138,6 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, char const * text)
 	//printf("coord = %i\n",attribute_coord);
 
 	// color
-	float color[] = {1.0, 1.0, 1.0, 1.0};
 	glUniform4fv(uniform_color, 1, color);
 
 	// texture
@@ -182,14 +226,14 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, char const * text)
 
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
-	
+
 	/*
 	   glDisableVertexAttribArray(attribute_coord);
 	   glBindBuffer(GL_ARRAY_BUFFER, 0);
 	   glBindTexture(GL_TEXTURE_2D, 0);
-	*/
+	 */
 	glDisable(GL_BLEND);
-	 
+
 }
 int	isExtensionSupported(const char *extension)
 {

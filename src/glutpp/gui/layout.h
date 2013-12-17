@@ -40,15 +40,17 @@ namespace glutpp
 				// connections
 				struct
 				{
-					mouse_button_fun_c	mouse_button_fun_;
-					key_fun_c		key_fun_;
+					mouse_button_fun_c		mouse_button_fun_;
+					key_fun_c			key_fun_;
 				} conns_;
-
-
+				
+				
 				int					key_fun(int,int,int,int);
 				int					mouse_button_fun(int,int,int);
-
+				int					search(int,int,int);
+				
 				void					connect();
+				
 		};
 	}
 }

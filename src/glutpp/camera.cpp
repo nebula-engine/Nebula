@@ -55,14 +55,16 @@ math::mat44	glutpp::camera::proj()
 }
 void		glutpp::camera::load()
 {
+	auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
+	
 	std::shared_ptr<scene> scene = scene_.lock();
-
+	
 	glViewport(0, 0, w_, h_);
 
 	if(scene->all(glutpp::scene::SHADER))
 	{
-		scene->uniforms_.proj_.load_matrix4fv(proj());
-		scene->uniforms_.view_.load_matrix4fv(view());
+		p->get_uniform(glutpp::uniform_name::e::PROJ)->load(proj());
+		p->get_uniform(glutpp::uniform_name::e::VIEW)->load(view());
 	}
 	else
 	{

@@ -5,9 +5,9 @@
 
 #include <gal/flag.h>
 
-#include <glutpp/uniform.h>
+//#include <glutpp/uniform.h>
 #include <glutpp/camera.h>
-#include <glutpp/shader.h>
+//#include <glutpp/shader.h>
 
 #define LIGHT_MAX 20
 
@@ -36,9 +36,10 @@ namespace glutpp
 			
 			scene();
 			void			init(std::shared_ptr<renderable>);
-			void			shaders();
-			void			uniforms();
-			GLint			get_program();
+			int			prepare();
+			//void			shaders();
+			//void			uniforms();
+			//GLint			get_program();
 
 			void			add_object(std::shared_ptr<object>);
 			void			add_light(std::shared_ptr<light>);
@@ -46,10 +47,16 @@ namespace glutpp
 			void			lights_for_each(std::function<void(glutpp::light*)>);
 		
 			void			resize(int,int);
-			void			render(double);
+
+			//void			render(double);
+			void			render_shader_light(double);
+			void			render_no_shader_light(double);
+
+
 			void			draw();
 			
-	
+
+/*	
 			struct
 			{
 				uniform		light_count_;
@@ -57,7 +64,7 @@ namespace glutpp
 				uniform		view_;
 				uniform		proj_;
 			} uniforms_;
-	
+*/	
 	
 			std::weak_ptr<renderable>		renderable_;
 
@@ -65,8 +72,6 @@ namespace glutpp
 	
 			camera					camera_;
 			
-			std::shared_ptr<program>		program_;
-			std::vector<shader>			shaders_;
 			
 			std::shared_ptr<light>			lights_[LIGHT_MAX];
 			int					light_count_;

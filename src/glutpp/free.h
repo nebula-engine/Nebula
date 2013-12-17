@@ -1,8 +1,9 @@
+#include <math/color.h>
 
 namespace glutpp
 {
-	void	draw_2d_quad(int x, int y, int w, int h);
-	void	draw_text(float, float, float, float, char const *);
+	void	draw_quad(float, float, float, float, math::color);
+	void	draw_text(float, float, float, float, math::color, char const *);
 }
 
 

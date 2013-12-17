@@ -16,8 +16,8 @@
 #include <glutpp/window.h>
 #include <glutpp/object.h>
 #include <glutpp/light.h>
-#include <glutpp/shader.h>
-#include <glutpp/program.h>
+//#include <glutpp/shader.h>
+//#include <glutpp/program.h>
 #include <glutpp/renderable.h>
 
 template <typename... Args>
@@ -47,6 +47,8 @@ void	check_error()
 		//printf("%s\n",gluErrorString(errCode));
 	}
 }
+
+
 glutpp::window::window(int w, int h, int x, int y, const char * title):
 	w_(w), h_(h), x_(x), y_(y),
 	title_(title)
@@ -108,6 +110,8 @@ void	glutpp::window::init()
 	renderable_ = std::shared_ptr<glutpp::renderable>(p);
 	//printf("renderable\n");
 	renderable_->init(shared_from_this());
+
+
 	
 	
 	checkerror("unknown");
@@ -161,11 +165,21 @@ void	glutpp::window::callback_window_pos_fun(GLFWwindow* window, int x, int y)
 }
 void	glutpp::window::callback_window_close_fun(GLFWwindow* window)
 {
-
+	printf("%s\n", __PRETTY_FUNCTION__);
+	
+	
+}
+void	glutpp::window::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods)
+{
+	printf("%s\n", __PRETTY_FUNCTION__);
+	
+	sig_.mouse_button_fun_(button, action, mods);
 }
 void	glutpp::window::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	sig_.map_key_fun_[key](key, scancode, action, mods);
+	printf("%s\n", __PRETTY_FUNCTION__);
+
+	sig_.key_fun_(key, scancode, action, mods);
 	
 	switch(key)
 	{
@@ -189,7 +203,9 @@ void	glutpp::window::resize(int w,int h)
 
 	renderable_->resize(w,h);
 }
-void checkerror(char const * msg)
+
+
+void	checkerror(char const * msg)
 {
 	GLenum err = glGetError();
 	if(err != GL_NO_ERROR)

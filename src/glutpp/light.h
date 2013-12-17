@@ -29,7 +29,9 @@ namespace glutpp
 			void		init(std::shared_ptr<scene>,int);
 			void		uniforms();
 			void		updateGL();
-			void		load();
+			void		load_shader();
+			void		load_no_shader();
+
 			void		load_shadow();
 			void		draw();
 			void		draw_shadow_no_shader();
@@ -55,6 +57,7 @@ namespace glutpp
 			float		atten_quad_;
 			
 			// uniforms
+/*
 			uniform		uniform_position_;
 			uniform		uniform_ambient_;
 			uniform		uniform_diffuse_;
@@ -68,7 +71,7 @@ namespace glutpp
 			uniform		uniform_atten_quad_;
 			uniform		uniform_matrix_shadow_;
 			uniform		uniform_tex_shadow_;
-			
+*/			
 			texture		texture_shadow_map_;
 
 			std::weak_ptr<scene>	scene_;

@@ -5,6 +5,8 @@
 
 namespace glutpp
 {
+namespace glsl
+{
 	class shader
 	{
 		public:
@@ -12,6 +14,7 @@ namespace glutpp
 
 			GLuint	o_;
 	};
+}
 }
 
 #endif

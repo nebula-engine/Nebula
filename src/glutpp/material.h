@@ -3,7 +3,7 @@
 
 #include <math/color.h>
 
-#include <glutpp/uniform.h>
+//#include <glutpp/uniform.h>
 
 namespace glutpp
 {
@@ -12,10 +12,11 @@ namespace glutpp
 	{
 		public:
 			material();
-			void		init(std::shared_ptr<scene>);
-			void		load();
+			void		init();//std::shared_ptr<scene>);
+			void		load_shader();
+			void		load_no_shader();
 
-			std::weak_ptr<scene>	scene_;
+			//std::weak_ptr<scene>	scene_;
 
 			math::color		ambient_;
 			math::color		diffuse_;
@@ -23,6 +24,7 @@ namespace glutpp
 			math::color		emission_;
 			float			shininess_;
 
+/*
 			struct
 			{
 				uniform		ambient_;
@@ -31,6 +33,7 @@ namespace glutpp
 				uniform		emission_;
 				uniform		shininess_;
 			} uniforms_;
+*/
 	};
 }
 

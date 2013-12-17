@@ -3,41 +3,43 @@
 #include <GL/glew.h>
 
 #include <glutpp/window.h>
-#include <glutpp/attribute.h>
+#include <glutpp/glsl/attrib.h>
 
-glutpp::attribute::attribute():
-	window_(NULL),
+glutpp::glsl::attrib::attrib():
 	o_(-1)
 {}
-void	glutpp::attribute::init(std::shared_ptr<scene> scene, int o, char const * name)
+void	glutpp::glsl::attrib::init(char const * name)
 {
-	o_ = o;
 	name_ = name;
 
-	printf("attribute %s\n",name_);
+	printf("attrib %s\n",name_);
 
 	GLint program;
 	glGetIntegerv(GL_CURRENT_PROGRAM,&program);
 
 	printf("program %i\n",program);
 
-	//o_ = glGetAttribLocation(program, name_);
-
+}
+int	glutpp::glsl::attrib::locate(std::shared_ptr<glutpp::glsl::program> p)
+{
+	o_ = glGetAttribLocation(p->o_, name_);
+	
 	checkerror("glGetAttribLocation");
 
 	if(o_ == -1)
 	{
-		printf("could not find attribute '%s'\n", name_);
+		printf("could not find attrib '%s'\n", name_);
 		//exit(0);
 	}
+
 }
-void	glutpp::attribute::enable()
+void	glutpp::glsl::attrib::enable()
 {
 	glEnableVertexAttribArray(o_);
 
 	checkerror("glEnableVertexAttribArray");
 }
-void	glutpp::attribute::disable()
+void	glutpp::glsl::attrib::disable()
 {
 	glDisableVertexAttribArray(o_);
 

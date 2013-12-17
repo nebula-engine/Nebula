@@ -8,9 +8,9 @@
 #include <string.h>
 
 #include <glutpp/window.h>
-#include <glutpp/shader.h>
+#include <glutpp/glsl/shader.h>
 
-void	glutpp::shader::load(const char * filename, GLenum shader_type)
+void	glutpp::glsl::shader::load(const char * filename, GLenum shader_type)
 {	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	printf("loading %s\n",filename);
