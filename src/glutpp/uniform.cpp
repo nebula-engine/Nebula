@@ -9,34 +9,32 @@
 
 #include <math/mat44.h>
 
+#include <glutpp/scene.h>
 #include <glutpp/uniform.h>
 #include <glutpp/window.h>
 
 
-glutpp::uniform::uniform():
-	window_(NULL)
-{
-}
-void	glutpp::uniform::init(window* window, char const * name)
+glutpp::uniform::uniform()
+{}
+void	glutpp::uniform::init(std::shared_ptr<scene> scene, char const * name)
 {
 	//printf("%s\n",__PRETTY_FUNCTION__);
-
 	
-	window_ = window;
+	scene_ = scene;
 	
 	strcpy(name_,name);
 	
 	//printf("uniform %s\n",name_);
 	
 	checkerror("glGetUniformLocation");
-
+	
 	locate();
 }
-void	glutpp::uniform::init(window* window, char const * struct_str, char const * name, int o)
+void	glutpp::uniform::init(std::shared_ptr<scene> scene, char const * struct_str, char const * name, int o)
 {
 	//printf("%s\n",__PRETTY_FUNCTION__);
 
-	window_ = window;
+	scene_ = scene;
 	
 	char o_str[32];
 	sprintf(o_str, "%i", o);
@@ -61,7 +59,7 @@ void	glutpp::uniform::locate()
 
 	assert(name_);
 	
-	GLint p = window_->get_program();
+	GLint p = scene_.lock()->get_program();
 	
 	if(p > 0) location_ = glGetUniformLocation(p, name_);
 }

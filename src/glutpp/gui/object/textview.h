@@ -16,33 +16,21 @@ namespace glutpp
 				public glutpp::gui::object::object
 			{
 				public:
-					/** \brief ctor
-					*/
 					textview();
-					/** \brief clear label
-					*/
 					void					clear_label();
-					/** \brief render
-					*/			
-					virtual void				Display();
-					///@{
-					/** on
-					*/
-					virtual int				handle_key(unsigned short,int);
-					virtual int				handle_key_down(unsigned short);
-					/** \brief key up
-					*/
-					virtual int				handle_key_up(unsigned short);
-					/** \brief linefeed
-					*/
-					virtual int				handle_enter();
-					///@}
-					/** \brief linefeed
-					*/
-					std::function<int()>			callback_enter_;
-					/** \brief label pos
-					*/
+					virtual void				draw();
+
+					int					key(int key, int scancode, int action, int mods);
+					int					key_down(int);
+					virtual int				enter();
+
 					size_t					label_pos_;
+
+					virtual int				key_fun(int,int,int,int);
+					virtual int				mouse_button_fun(int,int,int);
+
+					virtual void				connect();
+
 			};
 		}
 	}

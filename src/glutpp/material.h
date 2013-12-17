@@ -12,23 +12,25 @@ namespace glutpp
 	{
 		public:
 			material();
-			void		init(window*);
+			void		init(std::shared_ptr<scene>);
 			void		load();
 
-			window*		window_;
-			
-			math::color	ambient_;
-			math::color	diffuse_;
-			math::color	specular_;
-			math::color	emission_;
-			float		shininess_;
+			std::weak_ptr<scene>	scene_;
 
+			math::color		ambient_;
+			math::color		diffuse_;
+			math::color		specular_;
+			math::color		emission_;
+			float			shininess_;
 
-			uniform		uniform_ambient_;
-			uniform		uniform_diffuse_;
-			uniform		uniform_specular_;
-			uniform		uniform_emission_;
-			uniform		uniform_shininess_;
+			struct
+			{
+				uniform		ambient_;
+				uniform		diffuse_;
+				uniform		specular_;
+				uniform		emission_;
+				uniform		shininess_;
+			} uniforms_;
 	};
 }
 

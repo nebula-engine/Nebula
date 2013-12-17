@@ -49,7 +49,6 @@ void	check_error()
 }
 glutpp::window::window(int w, int h, int x, int y, const char * title):
 	w_(w), h_(h), x_(x), y_(y),
-	program_(NULL),
 	title_(title)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
@@ -60,22 +59,11 @@ glutpp::window::window(int w, int h, int x, int y, const char * title):
 	
 	__master.reg(this);
 }
-GLint	glutpp::window::get_program()
+glutpp::window::~window()
 {
-	if(program_ == NULL)
-	{
-		printf("program is NULL\n");
-		//exit(0);
-		return 0;
-	}
-	
-	if(program_->o_ == 0)
-	{
-		printf("program object is 0\n");
-		//exit(0);
-	}
-	
-	return program_->o_;
+	printf("%s\n",__PRETTY_FUNCTION__);
+
+	glfwDestroyWindow(window_);
 }
 void	glutpp::window::init()
 {
@@ -113,26 +101,23 @@ void	glutpp::window::init()
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_NORMALIZE);
+
+	glutpp::renderable* p = new glutpp::renderable;
 	
-	// shaders
-	shaders();
-
-	uniforms();
-
+	//printf("renderable\n");
+	renderable_ = std::shared_ptr<glutpp::renderable>(p);
+	//printf("renderable\n");
 	renderable_->init(shared_from_this());
+	
 	
 	checkerror("unknown");
 }
-glutpp::window::~window()
-{
-	printf("%s\n",__PRETTY_FUNCTION__);
-
-	glfwDestroyWindow(window_);
-}
-
 void	glutpp::window::render(double time)
 {
-	if(_renderable) renderable_->render(time);
+	if(renderable_) renderable_->render(time);
+
+	glFinish();
+	glfwSwapBuffers(window_);
 }
 void	glutpp::window::callback_window_refresh_fun(GLFWwindow*)
 {
@@ -144,7 +129,7 @@ void	glutpp::window::loop()
 {
 	double time;
 	
-	resize();
+	resize(w_,h_);
 	
 	while (!glfwWindowShouldClose(window_))
 	{
@@ -163,7 +148,7 @@ void	glutpp::window::callback_window_size_fun(GLFWwindow* window, int w, int h)
 	w_ = w;
 	h_ = h;
 	
-	resize();
+	resize(w,h);
 
 	callback_window_refresh_fun(window);
 }
@@ -180,7 +165,7 @@ void	glutpp::window::callback_window_close_fun(GLFWwindow* window)
 }
 void	glutpp::window::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	map_sig_key_[key](scancode, action, mods);
+	sig_.map_key_fun_[key](key, scancode, action, mods);
 	
 	switch(key)
 	{
@@ -198,11 +183,11 @@ void	glutpp::window::callback_key_fun(GLFWwindow* window, int key, int scancode,
 			break;
 	}
 }
-void	glutpp::window::resize()
+void	glutpp::window::resize(int w,int h)
 {
 	glViewport(0, 0, w_, h_);
 
-	renderable_->resize();
+	renderable_->resize(w,h);
 }
 void checkerror(char const * msg)
 {

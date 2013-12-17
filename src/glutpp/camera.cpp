@@ -9,10 +9,10 @@
 #include <math/mat44.h>
 
 #include <glutpp/window.h>
+#include <glutpp/scene.h>
 #include <glutpp/camera.h>
 
 glutpp::camera::camera():
-	window_(NULL),
 	fovy_(45.0f),
 	zn_(2.0f),
 	zf_(100.0f),
@@ -21,9 +21,9 @@ glutpp::camera::camera():
 {
 
 }
-void		glutpp::camera::init(window* window)
+void		glutpp::camera::init(std::shared_ptr<scene> scene)
 {
-	window_ = window;
+	scene_ = scene;
 
 	//control_.init(window_);
 }
@@ -55,14 +55,14 @@ math::mat44	glutpp::camera::proj()
 }
 void		glutpp::camera::load()
 {
-	assert(window_);
+	std::shared_ptr<scene> scene = scene_.lock();
 
 	glViewport(0, 0, w_, h_);
 
-	if(window_->all(glutpp::window::SHADER))
+	if(scene->all(glutpp::scene::SHADER))
 	{
-		window_->uniform_proj_.load_matrix4fv(proj());
-		window_->uniform_view_.load_matrix4fv(view());
+		scene->uniforms_.proj_.load_matrix4fv(proj());
+		scene->uniforms_.view_.load_matrix4fv(view());
 	}
 	else
 	{

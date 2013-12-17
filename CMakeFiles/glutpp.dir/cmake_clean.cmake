@@ -1,4 +1,5 @@
 FILE(REMOVE_RECURSE
+  "CMakeFiles/glutpp.dir/src/glutpp/free.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/camera_control.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/master.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o"

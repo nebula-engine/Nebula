@@ -4,6 +4,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include <vector>
+
 namespace glutpp
 {
 	class shader;
@@ -13,7 +15,7 @@ namespace glutpp
 		public:
 			program();
 			void	init();
-			void	add_shaders(glutpp::shader*,int);
+			void	add_shaders(std::vector<glutpp::shader>);
 			void	compile();
 			void	use();
 			

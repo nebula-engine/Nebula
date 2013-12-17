@@ -3,11 +3,12 @@
 
 namespace glutpp
 {
+	class window;
 	class attribute
 	{
 		public:
 			attribute();
-			void		init(window*,int,char const *);
+			void		init(std::shared_ptr<scene>,int,char const *);
 			void		enable();
 			void		disable();
 			

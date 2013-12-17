@@ -31,7 +31,7 @@ namespace glutpp
 
 
 	
-			window*					window_;
+			std::weak_ptr<scene>			scene_;
 				
 			float					fovy_;
 			float					zn_;

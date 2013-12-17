@@ -2,8 +2,21 @@
 #define __GLUTPP_MASTER_H__
 
 #include <map>
+#include <memory>
+
+#include <gal/sig/signal.h>
+
+#include <ft2build.h>
+#include FT_FREETYPE_H
 
 #include <GLFW/glfw3.h>
+
+typedef std::shared_ptr<gal::sig::connection<int,int,int> >	mouse_button_fun_c;
+typedef std::shared_ptr<gal::sig::connection<double,double> >	cursor_pos_fun_c;
+typedef std::shared_ptr<gal::sig::connection<int> >		cursor_enter_fun_c;
+typedef std::shared_ptr<gal::sig::connection<double,double> >	scroll_fun_c;
+typedef std::shared_ptr<gal::sig::connection<int,int,int,int> >	key_fun_c;
+typedef std::shared_ptr<gal::sig::connection<unsigned int> >	char_fun_c;
 
 namespace glutpp
 {
@@ -42,10 +55,12 @@ namespace glutpp
 
 			//int   IdleSetToCurrentWindow(void);
 			//void  SetIdleToCurrentWindow(void);
+			FT_Library				ft_;
+
 		private:
 			GLFWwindow*				currentIdleWindow_;
 			std::map<GLFWwindow*,glutpp::window*>	windows_;
-
+			
 	};
 
 	extern "C" master __master;

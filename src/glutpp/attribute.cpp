@@ -9,7 +9,7 @@ glutpp::attribute::attribute():
 	window_(NULL),
 	o_(-1)
 {}
-void	glutpp::attribute::init(window* window, int o, char const * name)
+void	glutpp::attribute::init(std::shared_ptr<scene> scene, int o, char const * name)
 {
 	o_ = o;
 	name_ = name;

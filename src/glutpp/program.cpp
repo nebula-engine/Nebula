@@ -24,15 +24,15 @@ void	glutpp::program::init()
 	
 	checkerror("glCreateProgram");
 }
-void	glutpp::program::add_shaders(glutpp::shader* s,int c)
+void	glutpp::program::add_shaders(std::vector<glutpp::shader> s)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	for(int i = 0; i < c; ++i )
+	for(int i = 0; i < s.size(); ++i )
 	{
 		printf("shader %i attached to program %i\n",s[i].o_,o_);
 		
-		glAttachShader(o_, s[i].o_);
+		glAttachShader(o_, s.at(i).o_);
 		checkerror("glAttachShader");
 	}
 }

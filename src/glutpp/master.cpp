@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <map>
 
+#include <ft2build.h>
+#include FT_FREETYPE_H
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 //#include <glfw3.h>
@@ -203,6 +206,14 @@ void	glutpp::master::reg(glutpp::window* w)
 	{
 		printf("GLEW: %s\n", glewGetErrorString(err));
 		exit(EXIT_FAILURE);
+	}
+
+	// font
+	//FT_Library ft;
+	if(FT_Init_FreeType(&ft_))
+	{
+		printf("could not find freetype library\n");
+		exit(0);
 	}
 }
 /*

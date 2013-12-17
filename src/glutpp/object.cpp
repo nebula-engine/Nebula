@@ -10,33 +10,38 @@
 #include <math/mat44.h>
 #include <math/geo/polyhedron.h>
 
-#include <glutpp/object.h>
 #include <glutpp/window.h>
+#include <glutpp/object.h>
+#include <glutpp/scene.h>
 
 glutpp::object::object():
-	window_(NULL),
 	type_(NONE)
-{}
-void	glutpp::object::init(window* window)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-	
-	window_ = window;
-	
+}
+void	glutpp::object::init(std::shared_ptr<scene> scene)
+{
+	printf("%s\n",__PRETTY_FUNCTION__);
 
+	assert(scene);
+	
+	scene_ = scene;
+	
 	uniforms();
 	
-	material_front_.init(window_);
+	material_front_.init(scene);
 }
 void	glutpp::object::uniforms()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	uniform_image_.init(window_, "image");
+	std::shared_ptr<scene> scene = scene_.lock();
 
-	attrib_position_.init(window_, 0, "position");
-	attrib_normal_.init(window_, 1, "normal");
-	attrib_texcoor_.init(window_, 2, "texcoor");
+	uniform_image_.init(scene, "image");
+
+	attrib_position_.init(scene, 0, "position");
+	attrib_normal_.init(scene, 1, "normal");
+	attrib_texcoor_.init(scene, 2, "texcoor");
 }
 void print_vector(GLfloat* v, unsigned int m, unsigned int n)
 {
@@ -67,10 +72,10 @@ void readbuffer(GLuint buffer)
 	GLfloat data[24*4];
 
 	glBindBuffer(GL_ARRAY_BUFFER, buffer);	
-	checkerror("glBindBuffer");
+	//checkerror("glBindBuffer");
 
 	glGetBufferSubData(GL_ARRAY_BUFFER, 0, 1*4*sizeof(GLfloat), data);
-	checkerror("glGetBufferSubData");
+	//checkerror("glGetBufferSubData");
 }
 void	glutpp::object::construct(math::geo::polyhedron* poly)
 {
@@ -106,7 +111,6 @@ void	glutpp::object::construct(math::geo::polyhedron* poly)
 	}
 
 	v = vertices_ + m;
-	
 	
 	// quads
 	for(int i = 0; i < poly->nq_; i++)
@@ -159,8 +163,8 @@ int	glutpp::object::load(const char * name)
 	// read header
 	fread(&fh_, sizeof(file_header), 1, fp);
 
-	printf("vertices: %i elements\n",fh_.len_vertices_);
-	printf("indices:  %i elements\n",fh_.len_indices_);
+	//printf("vertices: %i elements\n",fh_.len_vertices_);
+	//printf("indices:  %i elements\n",fh_.len_indices_);
 
 	// allocate
 	vertices_ = new glutpp::vertex[fh_.len_vertices_];
@@ -172,7 +176,7 @@ int	glutpp::object::load(const char * name)
 	fclose(fp);
 
 	// print
-	for(int i = 0; i < fh_.len_vertices_; ++i) vertices_[i].print();
+	//for(int i = 0; i < fh_.len_vertices_; ++i) vertices_[i].print();
 
 	return 0;
 }
@@ -193,9 +197,9 @@ int	glutpp::object::save(const char * filename)
 	//fh_.len_vertices_ = sizeof(vertices_)/sizeof(glutpp::vertex);
 	//fh_.len_indices_ = sizeof(indices_)/sizeof(GLushort);
 
-	printf("sizeof(vertex): %i\n",(int)sizeof(glutpp::vertex));
-	printf("indices:   %i elements\n",fh_.len_indices_);
-	printf("vertices:  %i elements\n",fh_.len_vertices_);
+	//printf("sizeof(vertex): %i\n",(int)sizeof(glutpp::vertex));
+	//printf("indices:   %i elements\n",fh_.len_indices_);
+	//printf("vertices:  %i elements\n",fh_.len_vertices_);
 
 	// read header
 	fwrite(&fh_, sizeof(file_header), 1, fp);
@@ -218,13 +222,10 @@ void glutpp::object::init_buffer()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	if(window_ == NULL)
-	{
-		printf("window is NULL\n");
-		exit(0);
-	}
 
-	GLint program = window_->get_program();
+	assert(!scene_.expired());
+
+	GLint program = scene_.lock()->get_program();
 
 	checkerror("unknown");
 
@@ -301,6 +302,9 @@ void glutpp::object::init_buffer()
 }
 void	glutpp::object::model_load()
 {
+	std::shared_ptr<scene> scene = scene_.lock();
+
+
 	math::mat44 model(pose_);
 
 	math::mat44 scale;
@@ -308,9 +312,9 @@ void	glutpp::object::model_load()
 	
 	model = model * scale;
 	
-	if(window_->all(glutpp::window::SHADER))
+	if(scene->all(glutpp::scene::SHADER))
 	{
-		window_->uniform_model_.load_matrix4fv(model);
+		scene->uniforms_.model_.load_matrix4fv(model);
 	}
 	else
 	{
@@ -321,7 +325,9 @@ void	glutpp::object::model_load()
 }
 void	glutpp::object::model_unload()
 {
-	if(window_->all(glutpp::window::SHADER))
+	std::shared_ptr<scene> scene = scene_.lock();
+
+	if(scene->all(glutpp::scene::SHADER))
 	{
 	}
 	else
@@ -339,7 +345,6 @@ void	glutpp::object::draw()
 	attrib_position_.enable();
 	attrib_normal_.enable();
 	attrib_texcoor_.enable();
-
 
 	// material
 	material_front_.load();
@@ -363,21 +368,21 @@ void	glutpp::object::draw()
 
 	model_unload();
 
-
 	glBindBuffer(GL_ARRAY_BUFFER,0);checkerror("glBindBuffer");
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);checkerror("glBindBuffer");
-
 
 	attrib_position_.disable();
 	attrib_normal_.disable();
 	attrib_texcoor_.disable();
-
 }
 void	glutpp::object::render_reflection(){}
 
 void	glutpp::vertex::print()
 {
-	printf("% 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f\n",position.x,position.y,position.z,normal.x,normal.y,normal.z,texcoor.x,texcoor.y);
+	printf("% 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f\n",
+			position.x,position.y,position.z,
+			normal.x,normal.y,normal.z,
+			texcoor.x,texcoor.y);
 	//position.print();
 	//normal.print();
 	//texcoor.print();

@@ -1,7 +1,10 @@
 /home/charles/usr/lib/libglutpp.a
 /home/charles/usr/include/glutpp/config.h
+/home/charles/usr/include/glutpp/free.h
 /home/charles/usr/include/glutpp/master.h
 /home/charles/usr/include/glutpp/window.h
+/home/charles/usr/include/glutpp/renderable.h
+/home/charles/usr/include/glutpp/scene.h
 /home/charles/usr/include/glutpp/object.h
 /home/charles/usr/include/glutpp/shader.h
 /home/charles/usr/include/glutpp/texture.h
@@ -25,4 +28,6 @@
 /home/charles/usr/include/glutpp/shaders/exp_map/fs.glsl
 /home/charles/usr/include/glutpp/shaders/prog3/vs.glsl
 /home/charles/usr/include/glutpp/shaders/prog3/fs.glsl
+/home/charles/usr/include/glutpp/shaders/text/vs.glsl
+/home/charles/usr/include/glutpp/shaders/text/fs.glsl
 /home/charles/usr/include/glutpp/objects/cube.obj

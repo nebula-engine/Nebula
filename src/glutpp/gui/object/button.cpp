@@ -2,9 +2,9 @@
 
 #include <glutpp/gui/object/button.h>
 
-void GUL::object::button::Display()
+void glutpp::gui::object::button::draw()
 {
-    GRU::draw_2d_quad( x_, y_, w_, h_ );
+	draw_2d_quad( x_, y_, w_, h_ );
 }
 
 

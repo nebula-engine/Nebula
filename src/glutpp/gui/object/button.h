@@ -3,16 +3,25 @@
 
 #include <glutpp/gui/object/object.h>
 
-namespace GUL
+namespace glutpp
 {
-	namespace object
+	namespace gui
 	{
-		class button:
-			public glutpp::gui::object::object
+		namespace object
 		{
-			public:
-				virtual void		Display();
-		};
+			class button:
+				public glutpp::gui::object::object
+			{
+				public:
+					virtual void		draw();
+
+					virtual int				key_fun(int,int,int,int);
+					virtual int				mouse_button_fun(int,int,int);
+
+					virtual void				connect();
+
+			};
+		}
 	}
 }
 

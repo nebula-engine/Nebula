@@ -32,12 +32,9 @@ namespace glutpp
 	class window: public gal::flag, public std::enable_shared_from_this<window>
 	{
 		protected:
-
 			int          windowID;
 
 		public:
-			
-			
 			window(int, int, int, int, const char * );
 			~window();
 			
@@ -55,7 +52,7 @@ namespace glutpp
 			void			render(double);
 			void			draw();
 			void			draw_ortho();
-			void			resize();
+			void			resize(int,int);
 			
 			void			display_dim();
 			void			display_bright();
@@ -67,25 +64,19 @@ namespace glutpp
 			void			SetWindowID(int newWindowID);
 			int			GetWindowID(void);
 			
-			void			uniforms();
-			void			shaders();
-			GLint			get_program();
 			
 			void			idle();
 
-
 			
 			// input signals
-			std::map<int,gal::sig::signal<int,int,int>>	map_sig_key_;
-			
-			
-			
+			struct
+{
+			std::map<int,gal::sig::signal<int,int,int,int>>		map_key_fun_;
+			gal::sig::signal<int,int,int,int>			key_fun_;
+} sig_;
 			
 			// idle signal
-			std::function<void(double)>	func_idle_;
-			
-
-
+			//std::function<void(double)>			func_idle_;
 
 			char const *		title_;
 			int			w_;
@@ -93,15 +84,10 @@ namespace glutpp
 			int			x_;
 			int			y_;
 			
-			
-			
-			
-
-			
 			std::shared_ptr<renderable>	renderable_;
 
 		public:
-			GLFWwindow*		window_;
+			GLFWwindow*			window_;
 			
 	};
 }

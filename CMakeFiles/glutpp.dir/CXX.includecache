@@ -6,54 +6,24 @@
 
 #IncludeRegexTransform: 
 
-/home/charles/Programming/C++/glutpp/src/glutpp/camera_control.cpp
+/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/edittext.cpp
 glutpp/window.h
 -
-glutpp/camera_control.h
+glutpp/gui/layout.h
+-
+glutpp/gui/object/edittext.h
 -
 
-/home/charles/Programming/C++/glutpp/src/glutpp/master.cpp
+/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/textview.cpp
 stdio.h
 -
-stdlib.h
--
-map
--
-GL/glew.h
--
-GLFW/glfw3.h
--
-glutpp/master.h
--
-glutpp/window.h
--
-
-/home/charles/Programming/C++/glutpp/src/glutpp/window.cpp
 string.h
 -
-stdio.h
--
-stdlib.h
--
 GLFW/glfw3.h
--
-map
--
-math/color.h
 -
 glutpp/free.h
 -
-glutpp/window.h
--
-glutpp/object.h
--
-glutpp/light.h
--
-glutpp/shader.h
--
-glutpp/program.h
--
-glutpp/renderable.h
+glutpp/gui/object/textview.h
 -
 
 src/glutpp/attribute.h
@@ -85,7 +55,31 @@ gal/sig/connection.h
 src/glutpp/config.h
 
 src/glutpp/free.h
-linux/input.h
+
+src/glutpp/gui/layout.h
+map
+-
+math/mat44.h
+-
+gal/gal.h
+-
+glutpp/gui/object/object.h
+-
+
+src/glutpp/gui/object/edittext.h
+glutpp/gui/object/textview.h
+-
+
+src/glutpp/gui/object/object.h
+memory
+-
+gal/sig/connection.h
+-
+glutpp/master.h
+-
+
+src/glutpp/gui/object/textview.h
+glutpp/gui/object/object.h
 -
 
 src/glutpp/light.h
@@ -102,6 +96,12 @@ math/color.h
 
 src/glutpp/master.h
 map
+-
+memory
+-
+gal/sig/signal.h
+-
+ft2build.h
 -
 GLFW/glfw3.h
 -
@@ -143,8 +143,8 @@ glutpp/object.h
 src/glutpp/program.h
 GLFW/glfw3.h
 -
-
-src/glutpp/renderable.h
+vector
+-
 
 src/glutpp/shader.h
 GLFW/glfw3.h
@@ -165,6 +165,8 @@ glutpp/uniform.h
 -
 
 src/glutpp/uniform.h
+memory
+-
 GLFW/glfw3.h
 -
 math/mat44.h

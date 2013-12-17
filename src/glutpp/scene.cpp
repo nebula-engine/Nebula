@@ -12,11 +12,16 @@ glutpp::scene::scene():
 }
 void	glutpp::scene::init(std::shared_ptr<renderable> renderable)
 {
+	assert(renderable);
+
 	renderable_ = renderable;
+	
+	shaders();
+	uniforms();
 	
 	camera_.init(shared_from_this());
 }
-void	glutpp::scene::add_object(object* o)
+void	glutpp::scene::add_object(std::shared_ptr<object> o)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -28,10 +33,10 @@ void	glutpp::scene::add_object(object* o)
 	
 	objects_.push_back(o);
 	
-	o->init(this);
+	o->init(shared_from_this());
 	o->init_buffer();
 }
-void	glutpp::scene::add_light(light* l)
+void	glutpp::scene::add_light(std::shared_ptr<light> l)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -67,7 +72,7 @@ void	glutpp::scene::objects_for_each(std::function<void(glutpp::object*)> func)
 			exit(0);
 		}
 
-		func(objects_.at(i));
+		func(objects_.at(i).get());
 	}
 }
 void	glutpp::scene::lights_for_each(std::function<void(glutpp::light*)> func)
@@ -82,7 +87,7 @@ void	glutpp::scene::lights_for_each(std::function<void(glutpp::light*)> func)
 			exit(0);
 		}
 		
-		func(lights_[i]);
+		func(lights_[i].get());
 	}
 }
 void	glutpp::scene::shaders()
@@ -92,7 +97,7 @@ void	glutpp::scene::shaders()
 	// remove old program
 	if(program_)
 	{
-		delete program_;
+		program_.reset();
 	}
 	
 	std::map<unsigned int,int> shader_map;
@@ -119,11 +124,15 @@ void	glutpp::scene::shaders()
 
 		auto it = shader_map.find(f);
 
-		if(it == shader_map.end()) fatal_error("shader configuration %i not implemented",f);
+		if(it == shader_map.end())
+		{
+			printf("shader configuration %i not implemented",f);
+			exit(0);
+		}
 
 		int s = it->second;
 
-		program_ = new program;
+		program_.reset(new program);
 		program_->init();
 
 		shaders_.clear();
@@ -136,7 +145,6 @@ void	glutpp::scene::shaders()
 				shaders_.at(0).load(GLUTPP_SHADER_DIR"/prog_0/vs.glsl", GL_VERTEX_SHADER);
 				shaders_.at(1).load(GLUTPP_SHADER_DIR"/prog_0/fs.glsl", GL_FRAGMENT_SHADER);
 				
-				shader_count_ = 2;
 				break;
 			case 1:
 				shaders_.emplace_back();
@@ -145,14 +153,14 @@ void	glutpp::scene::shaders()
 				shaders_.at(0).load(GLUTPP_SHADER_DIR"/prog_1/vs.glsl", GL_VERTEX_SHADER);
 				shaders_.at(1).load(GLUTPP_SHADER_DIR"/prog_1/fs.glsl", GL_FRAGMENT_SHADER);
 				
-				shader_count_ = 2;
 				break;
 			default:
-				fatal_error("shader configuration %i not implemented",f);
+				printf("shader configuration %i not implemented",f);
+				exit(0);
 				break;
 		}
 		
-		program_->add_shaders(shaders_,shader_count_);
+		program_->add_shaders(shaders_);
 		program_->compile();
 		program_->use();
 	}
@@ -165,6 +173,9 @@ void	glutpp::scene::render(double time)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
+	assert(program_);
+	program_->use();
+	
 	// uniforms
 	uniforms_.light_count_.load_1i(light_count_);
 	lights_for_each(&glutpp::light::load);
@@ -176,19 +187,30 @@ void	glutpp::scene::render(double time)
 	camera_.load();
 	
 	//if(all(SHADOW) && !all(SHADER)) display_dim();
+
+	lights_for_each(&glutpp::light::load);
 	
-	display_bright();
+	if(all(REFLECT | REFLECT_PLANAR)) objects_for_each(&glutpp::object::render_reflection);
+	
+	draw();
+	
+	//check_error();
+	
+	if(all(SHADOW)) lights_for_each(&glutpp::light::RenderShadowPost);
+
+	
+	//display_bright();
 }
 void	glutpp::scene::uniforms()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	uniforms_.light_count_.init(this,"light_count");
-	uniforms_.model_.init(this,"model");
-	uniforms_.view_.init(this,"view");
-	uniforms_.proj_.init(this,"proj");
+	uniforms_.light_count_.init(shared_from_this(),"light_count");
+	uniforms_.model_.init(shared_from_this(),"model");
+	uniforms_.view_.init(shared_from_this(),"view");
+	uniforms_.proj_.init(shared_from_this(),"proj");
 }
-void	glutpp::scene::display_bright()
+/*void	glutpp::scene::display_bright()
 {
 	//printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -201,7 +223,7 @@ void	glutpp::scene::display_bright()
 	check_error();
 	
 	if(all(SHADOW)) lights_for_each(&glutpp::light::RenderShadowPost);
-}
+}*/
 void	glutpp::scene::draw()
 {
 	for( auto it = objects_.begin(); it != objects_.end(); ++it )
@@ -213,6 +235,23 @@ void	glutpp::scene::resize(int w, int h)
 {
 	camera_.w_ = w;
 	camera_.h_ = h;
+}
+GLint	glutpp::scene::get_program()
+{
+	if(program_ == NULL)
+	{
+		printf("program is NULL\n");
+		//exit(0);
+		return 0;
+	}
+	
+	if(program_->o_ == 0)
+	{
+		printf("program object is 0\n");
+		//exit(0);
+	}
+	
+	return program_->o_;
 }
 
 

@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include <glutpp/window.h>
+#include <glutpp/scene.h>
 #include <glutpp/material.h>
 
 glutpp::material::material():
@@ -10,29 +11,31 @@ glutpp::material::material():
 	emission_(math::black),
 	shininess_(1000)
 {}
-void	glutpp::material::init(window* window)
+void	glutpp::material::init(std::shared_ptr<scene> scene)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	window_ = window;
+	scene_ = scene;
 	
-	uniform_ambient_.init(window,"front.ambient");
-	uniform_diffuse_.init(window,"front.diffuse");
-	uniform_specular_.init(window,"front.specular");
-	uniform_emission_.init(window,"front.emission");
-	uniform_shininess_.init(window,"front.shininess");
+	uniforms_.ambient_.init(scene,"front.ambient");
+	uniforms_.diffuse_.init(scene,"front.diffuse");
+	uniforms_.specular_.init(scene,"front.specular");
+	uniforms_.emission_.init(scene,"front.emission");
+	uniforms_.shininess_.init(scene,"front.shininess");
 }
 void	glutpp::material::load()
 {
 	//printf("%s\n",__PRETTY_FUNCTION__);
 	
-	if(window_->all(glutpp::window::SHADER))
+	std::shared_ptr<scene> scene = scene_.lock();
+	
+	if(scene->all(glutpp::scene::SHADER))
 	{
-		uniform_ambient_.load_4fv(ambient_);
-		uniform_diffuse_.load_4fv(diffuse_);
-		uniform_specular_.load_4fv(specular_);
-		uniform_emission_.load_4fv(emission_);
-		uniform_shininess_.load_1f(shininess_);
+		uniforms_.ambient_.load_4fv(ambient_);
+		uniforms_.diffuse_.load_4fv(diffuse_);
+		uniforms_.specular_.load_4fv(specular_);
+		uniforms_.emission_.load_4fv(emission_);
+		uniforms_.shininess_.load_1f(shininess_);
 	}
 	else
 	{

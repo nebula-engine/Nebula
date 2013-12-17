@@ -46,7 +46,7 @@ namespace glutpp
 			};
 			
 			object();
-			void		init(scene*);
+			void		init(std::shared_ptr<scene>);
 			void		construct(math::geo::polyhedron*);
 			void		uniforms();
 			int		save(char const *);
@@ -87,7 +87,7 @@ namespace glutpp
 
 			material		material_front_;
 			
-			scene*			scene_;
+			std::weak_ptr<scene>	scene_;
 	};
 }
 

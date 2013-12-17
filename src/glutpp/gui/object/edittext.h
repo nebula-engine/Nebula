@@ -5,19 +5,26 @@
 
 namespace glutpp
 {
-namespace gui
-{
-	namespace object
+	namespace gui
 	{
-		class edittext:
-			public glutpp::gui::object::textview
+		namespace object
 		{
-			public:
-				edittext();
-				virtual void		Display();
-		};
+			class edittext:
+				public glutpp::gui::object::textview
+			{
+				public:
+					edittext();
+					virtual void		draw();
+
+
+					virtual int				key_fun(int,int,int,int);
+					virtual int				mouse_button_fun(int,int,int);
+
+					virtual void				connect();
+
+			};
+		}
 	}
-}
 }
 
 #endif

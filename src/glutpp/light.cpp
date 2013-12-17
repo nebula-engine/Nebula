@@ -3,9 +3,9 @@
 
 #include <glutpp/light.h>
 #include <glutpp/window.h>
+#include <glutpp/scene.h>
 
 glutpp::light::light():
-	window_(NULL),
 	ambient_(math::white * 0.2f),
 	diffuse_(math::white),
 	specular_(math::white),
@@ -19,11 +19,11 @@ glutpp::light::light():
 {
 
 }
-void	glutpp::light::init(window* window, int o)
+void	glutpp::light::init(std::shared_ptr<scene> scene, int o)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	window_ = window;
+	scene_ = scene;
 	o_ = o;
 	
 	camera_.fovy_ = 45.0f;
@@ -48,36 +48,37 @@ void	glutpp::light::uniforms()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	assert(window_);
 	assert(o_ != -1);
 	
+	std::shared_ptr<scene> scene = scene_.lock();
+	
 	uniform_position_.init(
-			window_,"lights","position",o_);
+			scene,"lights","position",o_);
 	uniform_ambient_.init(
-			window_,"lights","ambient",o_);
+			scene,"lights","ambient",o_);
 	uniform_diffuse_.init(
-			window_,"lights","diffuse",o_);
+			scene,"lights","diffuse",o_);
 	uniform_specular_.init(
-			window_,"lights","specular",o_);
+			scene,"lights","specular",o_);
 	uniform_spot_direction_.init(
-			window_,"lights","spot_direction",o_);
+			scene,"lights","spot_direction",o_);
 	uniform_spot_cutoff_.init(
-			window_,"lights","spot_cutoff",o_);
+			scene,"lights","spot_cutoff",o_);
 	uniform_spot_exponent_.init(
-			window_,"lights","spot_exponent",o_);
+			scene,"lights","spot_exponent",o_);
 	uniform_spot_light_cos_cutoff_.init(
-			window_,"lights","spot_light_cos_cutoff",o_);
+			scene,"lights","spot_light_cos_cutoff",o_);
 	uniform_atten_const_.init(
-			window_,"lights","atten_const",o_);
+			scene,"lights","atten_const",o_);
 	uniform_atten_linear_.init(
-			window_,"lights","atten_linear",o_);
+			scene,"lights","atten_linear",o_);
 	uniform_atten_quad_.init(
-			window_,"lights","atten_quad",o_);
+			scene,"lights","atten_quad",o_);
 
 	uniform_matrix_shadow_.init(
-			window_,"lights","",o_);
+			scene,"lights","",o_);
 	uniform_tex_shadow_.init(
-			window_,"lights","atten_quad",o_);
+			scene,"lights","atten_quad",o_);
 
 	
 
@@ -104,9 +105,11 @@ void	glutpp::light::load()
 {
 	//printf("%s\n",__PRETTY_FUNCTION__);
 
-	if(window_->all(glutpp::window::LIGHTING))
+	std::shared_ptr<scene> scene = scene_.lock();
+
+	if(scene->all(glutpp::scene::LIGHTING))
 	{
-		if(window_->all(glutpp::window::SHADER))
+		if(scene->all(glutpp::scene::SHADER))
 		{
 			//printf("shader lighting\n");
 
@@ -226,6 +229,8 @@ void	glutpp::light::RenderLightPOV()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
+	std::shared_ptr<scene> scene = scene_.lock();
+
 	//First pass - from light's point of view
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClear(GL_DEPTH_BUFFER_BIT);
@@ -255,7 +260,7 @@ void	glutpp::light::RenderLightPOV()
 	glColorMask(0, 0, 0, 0);
 
 	//Draw the scene
-	window_->draw();
+	scene->draw();
 
 	//Read the depth buffer into the shadow map texture
 	texture_shadow_map_.bind();

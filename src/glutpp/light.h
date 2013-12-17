@@ -71,9 +71,8 @@ namespace glutpp
 			
 			texture		texture_shadow_map_;
 
-			window*		window_;
-			unsigned int	flags_;
-			GLenum		o_;
+			std::weak_ptr<scene>	scene_;
+			GLenum			o_;
 	};
 }
 

@@ -1,17 +1,25 @@
-#include <cstring>
+#include <string.h>
 #include <algorithm>
 
 #include <glutpp/gui/object/object.h>
 
 glutpp::gui::object::object::object():
-	label_(0)
+	x_(0),
+	y_(0),
+	label_(NULL),
+	label_length_(1)
 {
-	label_ = new char[16];
-	
-	memset( (void *)label_, '\0', 16 );
+	label_ = new char[1];
+	label_[0] = '\0';
 }
 void	glutpp::gui::object::object::set_label( char const * cstr )
 {
-	memcpy( (void *)label_, (const void *)cstr, std::min( strlen( cstr ), strlen( label_ ) ) );
+	if(label_ != NULL) delete[] label_;
+
+	size_t len = strlen(cstr);
+	
+	label_ = new char[len];
+	
+	memcpy(label_, cstr, len);
 }
 

@@ -1,4 +1,7 @@
+#include <stdio.h>
 #include <string.h>
+
+#include <GLFW/glfw3.h>
 
 #include <glutpp/free.h>
 
@@ -18,63 +21,14 @@ void	glutpp::gui::object::textview::clear_label()
 
 	label_pos_ = 0;
 }
-void	glutpp::gui::object::textview::Display()
+void	glutpp::gui::object::textview::draw()
 {
-	//jess::clog << NEB_FUNCSIG << std::endl;
+	//printf("%s\n",__PRETTY_FUNCTION__);
 
-	GRU::draw_text( x_, y_, label_ );
-}
-int	glutpp::gui::object::textview::handle_key(__u16 code, __s32 value)
-{
-	if(value==1)
-	{
-		return handle_key_down(code);
-	}
-	else if(value==0)
-	{
-		return handle_key_up(code);
-	}
-	
-	return 1;
-}
-int	glutpp::gui::object::textview::handle_key_down(__u16 code)
-{
+	float sx = 1.0/600.0;
+	float sy = 1.0/600.0;
 
-	switch(code)
-	{
-		case KEY_BACKSPACE:
-			if ( label_pos_ > 0 )
-			{
-				--label_pos_;
-				memset( (void *)( label_ + label_pos_ ), '\0', 1 );
-			}
-			return 1;
-		case KEY_A:
-		case KEY_Z:
-			if ( label_pos_ < label_length_ )
-			{
-				++label_pos_;
-				//memset( (void *)( label_ + label_pos_ ), k, 1 );
-			}
-			return 1;
-		case KEY_ENTER:
-			handle_enter();
-			return 1;
-	}
-	return 1;
-}
-int	glutpp::gui::object::textview::handle_key_up(__u16 code)
-{
-	return 1;
-}
-int	glutpp::gui::object::textview::handle_enter()
-{	
-	if ( callback_enter_ )
-	{
-		return callback_enter_();
-	}
-	
-	return 0;
+	draw_text(x_, y_, sx, sy, label_);
 }
 
 
