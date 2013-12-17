@@ -6,6 +6,8 @@ project(nebula)
 set(PROJECT_SOURCE_DIR src)
 
 add_library(nebula
+	src/neb/app.cpp
+	src/neb/window.cpp
 	src/neb/user.cpp
 	src/neb/physics.cpp
 	src/neb/scene.cpp
@@ -35,6 +37,8 @@ set(CMAKE_INSTALL_PREFIX $ENV{HOME}/usr)
 install(TARGETS nebula DESTINATION lib)
 
 install(FILES ${PROJECT_SOURCE_DIR}/neb/config.h	DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/app.h		DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/window.h	DESTINATION include/neb/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/user.h		DESTINATION include/neb/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/physics.h	DESTINATION include/neb/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/scene.h DESTINATION include/neb/)
@@ -50,6 +54,15 @@ install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Dynamic.h DESTINATION includ
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Static.h DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Light.h DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Controller.h DESTINATION include/neb/actor/)
+
+set(files
+	${PROJECT_SOURCE_DIR}/neb/network/communicating.h
+	${PROJECT_SOURCE_DIR}/neb/network/client.h
+	${PROJECT_SOURCE_DIR}/neb/network/server.h
+)
+
+install(FILES ${files} DESTINATION include/neb/network/)
+
 
 add_dependencies(nebula glutpp)
 

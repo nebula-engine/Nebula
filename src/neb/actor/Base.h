@@ -11,16 +11,22 @@
 
 #include <PxPhysicsAPI.h>
 
+
+
 namespace neb
 {
-class scene;
+	class app;
+	class scene;
 	namespace actor
 	{
 		class Base
 		{
 			public:
 				Base();
-				virtual void		init() = 0;
+				virtual void			init() = 0;
+				std::shared_ptr<neb::app>	get_app();
+
+
 				virtual void		add_force() = 0;
 				virtual void		set_pose(math::transform);
 				virtual int		fire(int,int,int);

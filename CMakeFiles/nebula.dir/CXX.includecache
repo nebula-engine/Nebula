@@ -6,26 +6,16 @@
 
 #IncludeRegexTransform: 
 
-/home/charles/Programming/C++/neb/src/neb/scene.cpp
-neb/actor/desc.h
+/home/charles/Programming/C++/neb/src/neb/app.cpp
+glutpp/renderable.h
 -
-neb/packet/packet.h
+neb/app.h
+-
+neb/window.h
+-
+neb/view.h
 -
 neb/physics.h
--
-neb/scene.h
--
-neb/actor/Base.h
--
-neb/actor/Rigid_Dynamic.h
--
-neb/actor/Rigid_Static.h
--
-neb/actor/Controller.h
--
-neb/actor/Light.h
--
-neb/shape.h
 -
 
 src/neb/actor/Actor.h
@@ -72,12 +62,28 @@ src/neb/actor/Rigid_Static.h
 neb/actor/Rigid_Actor.h
 -
 
-src/neb/actor/desc.h
-math/transform.h
+src/neb/app.h
+neb/window.h
+-
+neb/network/server.h
+-
+neb/network/client.h
 -
 
-src/neb/packet/packet.h
-math/vec3.h
+src/neb/network/client.h
+gal/network/client.h
+-
+neb/network/communicating.h
+-
+
+src/neb/network/communicating.h
+gal/network/communicating.h
+-
+
+src/neb/network/server.h
+gal/network/server.h
+-
+neb/network/communicating.h
 -
 
 src/neb/physics.h
@@ -108,9 +114,15 @@ neb/actor/Light.h
 tinyxml/tinyxml.h
 -
 
-src/neb/shape.h
-tinyxml/tinyxml.h
+src/neb/view.h
+memory
 -
-math/vec3.h
+glutpp/gui/layout.h
+-
+glutpp/window.h
+-
+
+src/neb/window.h
+glutpp/window.h
 -
 

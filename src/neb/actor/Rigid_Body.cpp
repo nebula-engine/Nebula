@@ -1,3 +1,6 @@
+#include <gal/network/server.h>
+
+#include <neb/app.h>
 #include <neb/packet/packet.h>
 #include <neb/actor/Rigid_Body.h>
 
@@ -46,7 +49,15 @@ void	neb::actor::Rigid_Body::step_remote(double)
 	p.af.t_[1] = torque_.y;
 	p.af.t_[2] = torque_.z;
 	
-	get_app()->server_
+	gal::network::message::shared_t msg(new gal::network::message);
+	
+	memcpy(msg->body(), &p, sizeof(neb::packet));
+	msg->body_length(sizeof(neb::packet));
+	msg->encode_header();
+	
+	get_app()->client_->write(msg);
 }
+
+
 
 

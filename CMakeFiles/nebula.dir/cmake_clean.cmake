@@ -1,4 +1,6 @@
 FILE(REMOVE_RECURSE
+  "CMakeFiles/nebula.dir/src/neb/app.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/window.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/user.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/physics.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/scene.cpp.o"

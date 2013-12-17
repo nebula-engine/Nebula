@@ -24,7 +24,6 @@ void	neb::view::set_window(std::shared_ptr<glutpp::window> window)
 	assert(window->renderable_);
 	assert(scene_);
 	
-	
 	std::shared_ptr<glutpp::scene> scene = window->renderable_->scene_;
 	
 	assert(scene);
@@ -40,11 +39,7 @@ void	neb::view::set_window(std::shared_ptr<glutpp::window> window)
 		
 		std::shared_ptr<glutpp::object> object = actor->object_;
 		
-		if(object == NULL)
-		{
-			printf("object is NULL");
-			continue;
-		}
+		assert(object);
 		
 		scene->add_object(actor->object_);
 	}

@@ -378,6 +378,30 @@ src/neb/actor/desc.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.s
 .PHONY : src/neb/actor/desc.cpp.s
 
+src/neb/app.o: src/neb/app.cpp.o
+.PHONY : src/neb/app.o
+
+# target to build an object file
+src/neb/app.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/app.cpp.o
+.PHONY : src/neb/app.cpp.o
+
+src/neb/app.i: src/neb/app.cpp.i
+.PHONY : src/neb/app.i
+
+# target to preprocess a source file
+src/neb/app.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/app.cpp.i
+.PHONY : src/neb/app.cpp.i
+
+src/neb/app.s: src/neb/app.cpp.s
+.PHONY : src/neb/app.s
+
+# target to generate assembly for a file
+src/neb/app.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/app.cpp.s
+.PHONY : src/neb/app.cpp.s
+
 src/neb/camera.o: src/neb/camera.cpp.o
 .PHONY : src/neb/camera.o
 
@@ -546,6 +570,30 @@ src/neb/view.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/view.cpp.s
 .PHONY : src/neb/view.cpp.s
 
+src/neb/window.o: src/neb/window.cpp.o
+.PHONY : src/neb/window.o
+
+# target to build an object file
+src/neb/window.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/window.cpp.o
+.PHONY : src/neb/window.cpp.o
+
+src/neb/window.i: src/neb/window.cpp.i
+.PHONY : src/neb/window.i
+
+# target to preprocess a source file
+src/neb/window.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/window.cpp.i
+.PHONY : src/neb/window.cpp.i
+
+src/neb/window.s: src/neb/window.cpp.s
+.PHONY : src/neb/window.s
+
+# target to generate assembly for a file
+src/neb/window.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/window.cpp.s
+.PHONY : src/neb/window.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -587,6 +635,9 @@ help:
 	@echo "... src/neb/actor/desc.o"
 	@echo "... src/neb/actor/desc.i"
 	@echo "... src/neb/actor/desc.s"
+	@echo "... src/neb/app.o"
+	@echo "... src/neb/app.i"
+	@echo "... src/neb/app.s"
 	@echo "... src/neb/camera.o"
 	@echo "... src/neb/camera.i"
 	@echo "... src/neb/camera.s"
@@ -608,6 +659,9 @@ help:
 	@echo "... src/neb/view.o"
 	@echo "... src/neb/view.i"
 	@echo "... src/neb/view.s"
+	@echo "... src/neb/window.o"
+	@echo "... src/neb/window.i"
+	@echo "... src/neb/window.s"
 .PHONY : help
 
 

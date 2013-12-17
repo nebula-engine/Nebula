@@ -31,12 +31,12 @@ namespace neb
 	class scene: public std::enable_shared_from_this<neb::scene>
 	{
 		public:
-enum
-{
-	NONE,
-	LOCAL,
-	REMOTE
-};
+			enum
+			{
+				NONE = 0,
+				LOCAL,
+				REMOTE
+			};
 			scene();
 			void		Create_Actors(TiXmlElement*);
 			void		Create_Actor(TiXmlElement*);
@@ -57,16 +57,17 @@ enum
 			void						step_local(double);
 			void						step_remote(double);
 
-			
+
 			int						user_type_;
-			
+
 			physx::PxSimulationFilterShader			px_filter_shader_;
 
 			gal::map<neb::actor::Base>			actors_;
 			std::vector<neb::actor::Light*>			lights_;
 
 			physx::PxScene*					px_scene_;
-
+			
+			std::weak_ptr<neb::app>				app_;
 			std::weak_ptr<neb::view>			view_;
 			double						last_;
 	};

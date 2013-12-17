@@ -39,6 +39,6 @@ int	neb::actor::Actor::fire(int,int,int)
 	
 	return 1;
 }
-void	neb::actor::Base::step_remote(double)
+void	neb::actor::Actor::step_remote(double)
 {}
 
