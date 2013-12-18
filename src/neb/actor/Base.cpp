@@ -5,17 +5,23 @@
 #include <neb/actor/desc.h>
 #include <neb/actor/Base.h>
 
-neb::actor::Base::Base():
-	pose_(math::transform(
-				math::vec3(0.0f, 0.0f, 0.0f), math::quat( 0.0f, math::vec3(1.0f, 0.0f, 0.0f))
-			     ))
+neb::actor::Base::Base()
 {}
 std::shared_ptr<neb::app>	neb::actor::Base::get_app()
 {
-	assert(!scene_.expired());
-	assert(!scene_.lock()->app_.expired());
+	auto scene = get_scene();
+
+	assert(scene->app_.expired());
 	
-	return scene_.lock()->app_.lock();
+	return scene->app_.lock();
+}
+std::shared_ptr<neb::scene>	neb::actor::Base::get_scene()
+{
+	assert(!scene_.expired());
+	
+	auto scene = std::dynamic_pointer_cast<neb::scene>(scene_.lock());
+
+	return scene;
 }
 void	neb::actor::Base::set_pose(math::transform pose)
 {

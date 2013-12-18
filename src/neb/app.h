@@ -16,15 +16,18 @@ namespace neb
 		public:
 			app();
 			void				init();
-			void				load(char const *);
+			void				load_scene(int,char const *);
 			void				step(double);
+			
+			int				activate_scene(int);
+			
 
 			std::shared_ptr<neb::window>	window_;
 
 			
 			std::shared_ptr<neb::view>      view_;
-			std::shared_ptr<neb::scene>     scene_;
-	
+			std::map<int,std::shared_ptr<neb::scene> >    	scenes_;
+			
 			// network
 			std::shared_ptr<neb::network::server>	server_;
 			std::shared_ptr<neb::network::client>	client_;

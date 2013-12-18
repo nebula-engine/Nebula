@@ -26,9 +26,14 @@ CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
  src/neb/actor/desc.h
+ src/neb/app.h
+ src/neb/network/client.h
+ src/neb/network/communicating.h
+ src/neb/network/server.h
  src/neb/scene.h
  src/neb/shape.h
  src/neb/view.h
+ src/neb/window.h
 CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o
  /home/charles/Programming/C++/neb/src/neb/actor/Controller.cpp
  src/neb/actor/Base.h

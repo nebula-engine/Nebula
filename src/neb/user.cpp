@@ -1,114 +1,49 @@
+#include <glutpp/renderable.h>
+
 #include <neb/user.h>
+#include <neb/camera.h>
 #include <neb/actor/Rigid_Body.h>
 
 neb::user::user()
 {}
 void	neb::user::connect(std::shared_ptr<glutpp::window> w)
 {
-
-	std::shared_ptr<neb::actor::Rigid_Body> actor = std::dynamic_pointer_cast<neb::actor::Rigid_Body>(actor_);
-
-	w->map_sig_key_[GLFW_KEY_E].connect(std::bind(
-				&neb::actor::Rigid_Body::key_force,
+	printf("%s\n", __PRETTY_FUNCTION__);
+	
+	std::shared_ptr<neb::actor::Rigid_Body> actor =
+			std::dynamic_pointer_cast<neb::actor::Rigid_Body>(actor_);
+	
+	assert(w);
+	assert(actor);
+	
+	conn_.key_fun_ = w->sig_.key_fun_.connect(std::bind(
+				&neb::actor::Rigid_Body::key_fun,
 				actor,
 				std::placeholders::_1,
 				std::placeholders::_2,
 				std::placeholders::_3,
-				math::vec3(0.0, 1.0, 0.0)));
-	w->map_sig_key_[GLFW_KEY_Q].connect(std::bind(
-				&neb::actor::Rigid_Body::key_force,
-				actor,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				math::vec3(0.0,-1.0, 0.0)));
+				std::placeholders::_4));
+	
+	assert(conn_.key_fun_);
+	
+	
+	
+	
+	
+	assert(camera_control_);
+	
+	w->renderable_->camera_->control_ = camera_control_;
 
+}
+int	neb::user::set_actor(std::shared_ptr<neb::actor::Base> actor, neb::camera_type::e RIDEALONG)
+{
+	std::shared_ptr<neb::camera_ridealong> ride(new neb::camera_ridealong);
+	
+	actor_ = actor;
+	camera_control_ = ride;
 
-	w->map_sig_key_[GLFW_KEY_W].connect(std::bind(
-				&neb::actor::Rigid_Body::key_force,
-				actor,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				math::vec3(0.0, 0.0,-1.0)));
-	w->map_sig_key_[GLFW_KEY_S].connect(std::bind(
-				&neb::actor::Rigid_Body::key_force,
-				actor,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				math::vec3(0.0, 0.0, 1.0)));
+	ride->actor_ = actor_;
 
-
-	w->map_sig_key_[GLFW_KEY_D].connect(std::bind(
-				&neb::actor::Rigid_Body::key_force,
-				actor,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				math::vec3( 1.0, 0.0, 0.0)));
-	w->map_sig_key_[GLFW_KEY_A].connect(std::bind(
-				&neb::actor::Rigid_Body::key_force,
-				actor,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				math::vec3(-1.0, 0.0, 0.0)));
-
-
-
-	w->map_sig_key_[GLFW_KEY_I].connect(std::bind(
-				&neb::actor::Rigid_Body::key_torque,
-				actor,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				math::vec3(-1.0, 0.0, 0.0)));
-	w->map_sig_key_[GLFW_KEY_K].connect(std::bind(
-				&neb::actor::Rigid_Body::key_torque,
-				actor,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				math::vec3( 1.0, 0.0, 0.0)));
-
-	w->map_sig_key_[GLFW_KEY_L].connect(std::bind(
-				&neb::actor::Rigid_Body::key_torque,
-				actor,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				math::vec3( 0.0,-1.0, 0.0)));
-	w->map_sig_key_[GLFW_KEY_J].connect(std::bind(
-				&neb::actor::Rigid_Body::key_torque,
-				actor,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				math::vec3( 0.0, 1.0, 0.0)));
-	w->map_sig_key_[GLFW_KEY_O].connect(std::bind(
-				&neb::actor::Rigid_Body::key_torque,
-				actor,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				math::vec3( 0.0, 0.0,-1.0)));
-	w->map_sig_key_[GLFW_KEY_U].connect(std::bind(
-				&neb::actor::Rigid_Body::key_torque,
-				actor,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				math::vec3( 0.0, 0.0, 1.0)));
-
-
-
-	w->map_sig_key_[GLFW_KEY_SPACE].connect(std::bind(
-				&neb::actor::Base::fire,
-				actor,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3));
-
+	return 0;
 }
 

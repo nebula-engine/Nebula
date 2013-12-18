@@ -24,6 +24,10 @@ void	neb::view::set_window(std::shared_ptr<glutpp::window> window)
 	assert(window->renderable_);
 	assert(scene_);
 	
+	
+	window->set_scene(scene_);
+	
+	/*
 	std::shared_ptr<glutpp::scene> scene = window->renderable_->scene_;
 	
 	assert(scene);
@@ -43,6 +47,7 @@ void	neb::view::set_window(std::shared_ptr<glutpp::window> window)
 		
 		scene->add_object(actor->object_);
 	}
+*/
 }
 void	neb::view::delete_scene()
 {

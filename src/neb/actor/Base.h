@@ -9,9 +9,9 @@
 
 #include <math/transform.h>
 
+#include <glutpp/actor.h>
+
 #include <PxPhysicsAPI.h>
-
-
 
 namespace neb
 {
@@ -19,12 +19,16 @@ namespace neb
 	class scene;
 	namespace actor
 	{
-		class Base
+		class Base: public glutpp::actor
 		{
 			public:
 				Base();
 				virtual void			init() = 0;
+
+
+
 				std::shared_ptr<neb::app>	get_app();
+				std::shared_ptr<neb::scene>	get_scene();
 
 
 				virtual void		add_force() = 0;
@@ -33,9 +37,8 @@ namespace neb
 
 				virtual void		step_remote(double);
 
-				std::weak_ptr<scene>	scene_;
-				math::transform		pose_;
-				int			i_;
+
+
 		};
 	}
 }

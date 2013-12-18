@@ -8,14 +8,11 @@
 #include <neb/actor/Actor.h>
 
 neb::actor::Actor::Actor():
-	px_actor_(NULL),
-	object_(NULL)
+	px_actor_(NULL)
 {}
 void	neb::actor::Actor::set_pose(math::transform pose)
 {
 	pose_ = pose;
-
-	object_->pose_ = pose;
 }
 int	neb::actor::Actor::fire(int,int,int)
 {
@@ -31,11 +28,12 @@ int	neb::actor::Actor::fire(int,int,int)
 	
 	assert(!scene_.expired());
 	
-	std::shared_ptr<neb::actor::Rigid_Dynamic> actor = scene_.lock()->Create_Rigid_Dynamic(desc);
+	auto scene = get_scene();
+	
+	auto actor = scene->Create_Rigid_Dynamic(desc);
 	
 	
-	
-	scene_.lock()->view_.lock()->window_.lock()->renderable_->scene_->add_object(actor->object_);
+	scene->add_actor(actor);
 	
 	return 1;
 }

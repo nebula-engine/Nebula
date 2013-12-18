@@ -8,6 +8,8 @@
 
 #include <gal/map.h>
 
+#include <glutpp/scene.h>
+
 #include <neb/actor/Rigid_Dynamic.h>
 #include <neb/actor/Rigid_Static.h>
 #include <neb/actor/Controller.h>
@@ -28,7 +30,7 @@ namespace neb
 		struct desc;
 	}
 	class view;
-	class scene: public std::enable_shared_from_this<neb::scene>
+	class scene: public glutpp::scene
 	{
 		public:
 			enum
@@ -49,7 +51,7 @@ namespace neb
 			std::shared_ptr<neb::actor::Rigid_Static>	Create_Rigid_Static(neb::actor::desc);
 
 			std::shared_ptr<neb::actor::Controller>		Create_Controller(TiXmlElement*);
-			neb::actor::Light*				Create_Light(TiXmlElement*);
+			std::shared_ptr<neb::actor::Light>		Create_Light(TiXmlElement*);
 
 			void						draw();
 
@@ -61,10 +63,10 @@ namespace neb
 			int						user_type_;
 
 			physx::PxSimulationFilterShader			px_filter_shader_;
-
-			gal::map<neb::actor::Base>			actors_;
-			std::vector<neb::actor::Light*>			lights_;
-
+			
+			//gal::map<neb::actor::Base>			actors_;
+			//std::vector<neb::actor::Light*>			lights_;
+			
 			physx::PxScene*					px_scene_;
 			
 			std::weak_ptr<neb::app>				app_;

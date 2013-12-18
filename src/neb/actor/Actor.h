@@ -3,7 +3,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <glutpp/object.h>
+#include <glutpp/actor.h>
 
 #include <neb/actor/Base.h>
 
@@ -24,7 +24,9 @@ namespace neb
 				virtual void		step_remote(double) = 0;
 
 				physx::PxActor*				px_actor_;
-				std::shared_ptr<glutpp::object>		object_;
+
+
+				//std::shared_ptr<glutpp::actor>		object_;
 		};
 	}
 }

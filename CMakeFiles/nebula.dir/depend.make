@@ -25,9 +25,14 @@ CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/actor/Rigid_Body.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/actor/Rigid_Dynamic.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/actor/Rigid_Static.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/actor/desc.h
+CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/app.h
+CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/network/client.h
+CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/network/communicating.h
+CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/network/server.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/scene.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/shape.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/view.h
+CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/window.h
 
 CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o: src/neb/actor/Controller.cpp
 CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o: src/neb/actor/Base.h

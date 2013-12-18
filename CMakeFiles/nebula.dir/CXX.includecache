@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 /home/charles/Programming/C++/neb/src/neb/app.cpp
+algorithm
+-
 glutpp/renderable.h
 -
 neb/app.h
@@ -21,7 +23,7 @@ neb/physics.h
 src/neb/actor/Actor.h
 PxPhysicsAPI.h
 -
-glutpp/object.h
+glutpp/actor.h
 -
 neb/actor/Base.h
 -
@@ -33,6 +35,8 @@ GL/glut.h
 -
 math/transform.h
 -
+glutpp/actor.h
+-
 PxPhysicsAPI.h
 -
 
@@ -43,6 +47,8 @@ neb/actor/Base.h
 -
 
 src/neb/actor/Light.h
+glutpp/light.h
+-
 neb/actor/Base.h
 -
 
@@ -102,6 +108,8 @@ vector
 PxPhysicsAPI.h
 -
 gal/map.h
+-
+glutpp/scene.h
 -
 neb/actor/Rigid_Dynamic.h
 -

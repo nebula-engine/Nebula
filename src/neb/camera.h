@@ -17,6 +17,15 @@ namespace neb
 	{
 		class Base;
 	}
+
+	struct camera_type
+	{
+		enum e
+		{
+			NONE = 0,
+			RIDEALONG
+		};
+	};
 	class camera_ridealong: public glutpp::camera_control
 	{
 		public:

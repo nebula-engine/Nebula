@@ -91,17 +91,16 @@ void				neb::physics::Shutdown()
 	px_physics_->release();
 	px_foundation_->release();
 }
-std::shared_ptr<neb::scene>	neb::physics::Create_Scene(TiXmlElement* el_scene)
-{
+std::shared_ptr<neb::scene>	neb::physics::Create_Scene(TiXmlElement* el_scene) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	std::shared_ptr<neb::scene> scene(new neb::scene);
 	
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
-
+	
 	scene_desc.gravity = physx::PxVec3(0.0f, 0.0f, 0.0f);
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
-
+	
 	int m_nbThreads = 1;
 	
 	// cpu dispatcher
@@ -137,13 +136,13 @@ std::shared_ptr<neb::scene>	neb::physics::Create_Scene(TiXmlElement* el_scene)
 	}
 #endif
 	assert( scene_desc.isValid() );
-
+	
 	scene->px_scene_ = px_physics_->createScene(scene_desc);
 	assert(scene->px_scene_);
-
+	
 	// actors
 	scene->Create_Actors(el_scene);
-
+	
 	return scene;
 }
 /*std::shared_ptr<n34200::rigid_dynamic>		neb::physics::create_rigid_dynamic(
