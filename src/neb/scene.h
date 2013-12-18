@@ -18,9 +18,6 @@
 #include <tinyxml/tinyxml.h>
 
 int		parse_shape_type(char const * str);
-float		xml_parse_float(TiXmlElement* element);
-math::quat 	xml_parse_quat(TiXmlElement* element);
-math::vec3 	xml_parse_vec3(TiXmlElement* element);
 neb::shape*	xml_parse_geo(TiXmlElement* element);
 
 namespace neb

@@ -19,7 +19,7 @@ void	neb::app::init()
 	
 	window_->init();
 }
-void	neb::app::load_scene(int name, char const * filename)
+int	neb::app::load_scene(int name, char const * filename)
 {
 	TiXmlDocument document(filename);
 	if ( !document.LoadFile() )
@@ -36,17 +36,26 @@ void	neb::app::load_scene(int name, char const * filename)
 	scene->user_type_ = neb::scene::LOCAL;
 	
 	scenes_[name] = scene;
-	
-	// view
-/*	view_.reset(new neb::view);
-	
 
-	view_->scene_ = scene_;
-	scene_->view_ = view_;
+	return 0;
+}
+int	neb::app::load_layout(int name, char const * filename) {
+
+	TiXmlDocument document(filename);
+	if ( !document.LoadFile() )
+	{
+		printf ("XML file not found\n");
+		exit(0);
+	}
 	
+	TiXmlElement* element = document.FirstChildElement("layout");
 	
-	view_->set_window(window_);
-*/
+	std::shared_ptr<glutpp::gui::layout> layout(new glutpp::gui::layout);
+	layout->load_xml(element);
+	
+	layouts_[name] = layout;
+	
+	return 0;
 }
 int	neb::app::activate_scene(int name)
 {
@@ -60,6 +69,21 @@ int	neb::app::activate_scene(int name)
 	}
 	
 	window_->set_scene(it->second);
+	
+	return 0;
+}
+int	neb::app::activate_layout(int name)
+{
+	assert(window_);
+	
+	auto it = layouts_.find(name);
+	if(it == layouts_.end())
+	{
+		printf("layout '%i' not found\n", name);
+		exit(0);
+	}
+	
+	window_->set_layout(it->second);
 	
 	return 0;
 }

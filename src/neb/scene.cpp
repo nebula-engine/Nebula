@@ -1,3 +1,4 @@
+#include <math/free.h>
 
 #include <neb/actor/desc.h>
 #include <neb/packet/packet.h>
@@ -16,91 +17,6 @@ int		parse_shape_type(char const * str)
 	if(strcmp(str,"box") == 0) return neb::shape::BOX;
 	if(strcmp(str ,"sphere") == 0) return neb::shape::SPHERE;
 	return neb::shape::NONE;
-}
-float		xml_parse_float(TiXmlElement* element)
-{
-	if( !element )
-	{
-		return 0.0f;
-	}
-
-	float f;
-
-	char const * buf = element->GetText();
-
-	int c = sscanf(buf, "%f", &f);
-	assert(c==1);
-
-	return f;
-}
-math::quat 	xml_parse_quat(TiXmlElement* element)
-{
-	if( !element )
-	{
-		return math::quat(0.0f, math::vec3(0,0,0));
-	}
-
-	float x, y, z, w;
-
-	char const * buf = element->GetText();
-
-	int c = sscanf(buf, "%f,%f,%f,%f", &x, &y, &z, &w);
-	assert(c==4);
-
-	return math::quat(w, math::vec3(x,y,z));
-
-}
-math::vec3 	xml_parse_vec3(TiXmlElement* element)
-{
-	if( !element )
-	{
-		printf("element not found\n");
-		exit(0);
-		return math::vec3(0.0,0.0,0.0);
-	}
-
-	float x, y, z;
-
-	char const * buf = element->GetText();
-
-	int c = sscanf(buf, "%f,%f,%f", &x, &y, &z);
-	assert(c==3);
-
-	return math::vec3(x,y,z);
-}
-math::color 	xml_parse_color(TiXmlElement* element) {
-	if( !element )
-	{
-		printf("element not found\n");
-		exit(0);
-		return math::black;
-	}
-	
-	float r,g,b,a;
-	
-	char const * buf = element->GetText();
-	
-	int c = sscanf(buf, "%f,%f,%f,%f", &r, &g, &b, &a);
-	assert(c==4);
-	
-	return math::color(r,g,b,a);
-}
-math::vec4 	xml_parse_vec4(TiXmlElement* element) {
-	if( !element )
-	{
-		printf("element not found\n");
-		exit(0);
-		return math::vec4(0,0,0,0);
-	}
-	
-	float r,g,b,a;
-	
-	char const * buf = element->GetText();
-	
-	int c = sscanf(buf, "%f,%f,%f,%f", &r, &g, &b, &a);
-	assert(c==4);
-	
-	return math::vec4(r,g,b,a);
 }
 neb::shape*	xml_parse_geo(TiXmlElement* element)
 {
@@ -134,13 +50,13 @@ std::shared_ptr<neb::actor::Light>			neb::scene::Create_Light(TiXmlElement* el_a
 	// create
 	std::shared_ptr<neb::actor::Light> actor(new neb::actor::Light);
 	
-	actor->camera_.eye_ = xml_parse_vec4(el_actor->FirstChildElement("p"));
+	actor->camera_.eye_ = math::xml_parse_vec4(el_actor->FirstChildElement("p"));
 	
-	actor->ambient_ = xml_parse_color(el_actor->FirstChildElement("ambient"));
-	actor->diffuse_ = xml_parse_color(el_actor->FirstChildElement("diffuse"));
-	actor->specular_ = xml_parse_color(el_actor->FirstChildElement("specular"));
+	actor->ambient_ = math::xml_parse_color(el_actor->FirstChildElement("ambient"));
+	actor->diffuse_ = math::xml_parse_color(el_actor->FirstChildElement("diffuse"));
+	actor->specular_ = math::xml_parse_color(el_actor->FirstChildElement("specular"));
 	
-	actor->atten_linear_ = xml_parse_float(el_actor->FirstChildElement("atten_linear"));
+	actor->atten_linear_ = math::xml_parse_float(el_actor->FirstChildElement("atten_linear"));
 	
 	actor->camera_.eye_.print();
 	
@@ -203,8 +119,8 @@ std::shared_ptr<neb::actor::Rigid_Dynamic>		neb::scene::Create_Rigid_Dynamic(TiX
 	// xml
 	assert(el_actor);
 
-	math::vec3 p = xml_parse_vec3( el_actor->FirstChildElement("p"));
-	math::quat q = xml_parse_quat(el_actor->FirstChildElement("q"));
+	math::vec3 p = math::xml_parse_vec3( el_actor->FirstChildElement("p"));
+	math::quat q = math::xml_parse_quat(el_actor->FirstChildElement("q"));
 
 	desc.pose_ = math::transform(p, q);
 
@@ -231,8 +147,8 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(TiXml
 	//	TiXmlElement* el_velocity_lin = el_actor->FirstChildElement("velocity_linear");
 	//	TiXmlElement* el_velocity_ang = el_actor->FirstChildElement("velocity_angular");
 
-	math::vec3 p = xml_parse_vec3( el_actor->FirstChildElement("p"));
-	math::quat q = xml_parse_quat(el_actor->FirstChildElement("q"));
+	math::vec3 p = math::xml_parse_vec3( el_actor->FirstChildElement("p"));
+	math::quat q = math::xml_parse_quat(el_actor->FirstChildElement("q"));
 
 	actor->pose_ = math::transform(p, q);
 
@@ -362,8 +278,8 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static_Plane
 	std::shared_ptr<neb::actor::Rigid_Static> actor(new neb::actor::Rigid_Static);
 
 	// xml
-	math::vec3 n = xml_parse_vec3(el_actor->FirstChildElement("n"));
-	float d = xml_parse_float(el_actor->FirstChildElement("d"));
+	math::vec3 n = math::xml_parse_vec3(el_actor->FirstChildElement("n"));
+	float d = math::xml_parse_float(el_actor->FirstChildElement("d"));
 
 	n.normalize();
 
@@ -414,7 +330,7 @@ std::shared_ptr<neb::actor::Controller>			neb::scene::Create_Controller(TiXmlEle
 	printf("%s\n",__FUNCTION__);
 
 	//jess::scoped_ostream( &jess::clog, neb_FUNCSIG );
-	math::vec3 p = xml_parse_vec3(el_actor->FirstChildElement("p"));	
+	math::vec3 p = math::xml_parse_vec3(el_actor->FirstChildElement("p"));	
 	// create
 	std::shared_ptr<neb::actor::Controller> actor(new neb::actor::Controller);
 
