@@ -5,7 +5,7 @@
 /home/charles/usr/include/glutpp/window.h
 /home/charles/usr/include/glutpp/renderable.h
 /home/charles/usr/include/glutpp/scene.h
-/home/charles/usr/include/glutpp/object.h
+/home/charles/usr/include/glutpp/actor.h
 /home/charles/usr/include/glutpp/glsl/shader.h
 /home/charles/usr/include/glutpp/glsl/program.h
 /home/charles/usr/include/glutpp/glsl/uniform.h
@@ -19,10 +19,10 @@
 /home/charles/usr/include/glutpp/gui/object/object.h
 /home/charles/usr/include/glutpp/gui/object/textview.h
 /home/charles/usr/include/glutpp/gui/object/edittext.h
-/home/charles/usr/include/glutpp/shaders/light/glsl/vs.glsl
-/home/charles/usr/include/glutpp/shaders/light/glsl/fs.glsl
-/home/charles/usr/include/glutpp/shaders/quad/glsl/vs.glsl
-/home/charles/usr/include/glutpp/shaders/quad/glsl/fs.glsl
-/home/charles/usr/include/glutpp/shaders/text/glsl/vs.glsl
-/home/charles/usr/include/glutpp/shaders/text/glsl/fs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/light/vs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/light/fs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/quad/vs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/quad/fs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/text/vs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/text/fs.glsl
 /home/charles/usr/include/glutpp/objects/cube.obj

@@ -34,23 +34,11 @@ void	print(unsigned char * s, int w, int h)
 }*/
 void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
 {
-	GLint program;
-	glGetIntegerv(GL_CURRENT_PROGRAM, &program);
-
-	GLint uniform_color = glGetUniformLocation(program, "color");
-	GLint attribute_coord = glGetAttribLocation(program, "coord");
-
-	if(attribute_coord == -1)
-	{
-		printf("coord not found\n");
-		exit(0);
-	}
-	if(uniform_color == -1)
-	{
-		printf("color not found\n");
-		exit(0);
-	}
-
+	printf("%s\n", __PRETTY_FUNCTION__);
+	
+	//GLint uniform_color = glGetUniformLocation(program, "color");
+	//GLint attribute_coord = glGetAttribLocation(program, "coord");
+/*
 	// vbo
 	GLuint vbo;
 	glGenBuffers(1, &vbo);
@@ -71,19 +59,43 @@ void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof box, box, GL_DYNAMIC_DRAW);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+ */
+
+	glUseProgram(0);
+
+	glDisable(GL_LIGHTING);
+	glDisable(GL_CULL_FACE);
+	glDisable(GL_DEPTH_TEST);
+
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	{
+		glLoadIdentity();
+		
+		glBegin(GL_QUADS);
+		
+		glVertex2f(x,  y);
+		glVertex2f(x+w,y);
+		glVertex2f(x+w,y+h);
+		glVertex2f(x,  y+h);
+
+		glEnd();
+	}
+	glPopMatrix();
 
 }
 void	glutpp::draw_text(float x, float y, float sx, float sy, math::color color, char const * text)
 {
-	const char *p;
+	printf("%s\n", __PRETTY_FUNCTION__);
 
-	//text = "hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello";
+	const char * c;
+
+	auto p = glutpp::__master.use_program(glutpp::program_name::e::TEXT);
+
 	printf("text %6.3f %6.3f %s\n", x, y, text);
-
 
 	// face
 	FT_Face face;
-
 
 	FT_Library ft = glutpp::__master.ft_;
 
@@ -111,41 +123,42 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, math::color color, 
 	GLint program;
 	glGetIntegerv(GL_CURRENT_PROGRAM, &program);
 
+	/*
+	   GLint uniform_tex = glGetUniformLocation(program, "tex");
+	   GLint uniform_color = glGetUniformLocation(program, "color");
+	   GLint attribute_coord = glGetAttribLocation(program, "coord");
 
-	GLint uniform_tex = glGetUniformLocation(program, "tex");
-	GLint uniform_color = glGetUniformLocation(program, "color");
-	GLint attribute_coord = glGetAttribLocation(program, "coord");
-
-	if(uniform_tex == -1)
-	{
-		printf("tex not found\n");
-		//exit(0);
+	   if(uniform_tex == -1)
+	   {
+	   printf("tex not found\n");
+	//exit(0);
 	}
 	if(uniform_color == -1)
 	{
-		printf("color not found\n");
-		exit(0);
+	printf("color not found\n");
+	exit(0);
 	}
 	if(attribute_coord == -1)
 	{
-		printf("coord not found\n");
-		exit(0);
+	printf("coord not found\n");
+	exit(0);
 	}
-
+	 */
 
 	//printf("tex   = %i\n",uniform_tex);
 	//printf("color = %i\n",uniform_color);
 	//printf("coord = %i\n",attribute_coord);
 
 	// color
-	glUniform4fv(uniform_color, 1, color);
+	p->get_uniform(glutpp::uniform_name::e::COLOR)->load(color);
 
 	// texture
 	GLuint tex;
 	glActiveTexture(GL_TEXTURE0);
 	glGenTextures(1, &tex);
 	glBindTexture(GL_TEXTURE_2D, tex);
-	glUniform1i(uniform_tex, 0);
+	p->get_uniform(glutpp::uniform_name::e::TEX)->load(0);
+	//glUniform1i(uniform_tex, 0);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -155,17 +168,17 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, math::color color, 
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
-
+	auto attrib_coord = p->get_attrib(glutpp::attrib_name::e::COOR);
 
 	// vbo
 	GLuint vbo;
 	glGenBuffers(1, &vbo);
-	glEnableVertexAttribArray(attribute_coord);
+	attrib_coord->enable();//glEnableVertexAttribArray(attribute_coord);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
 
 	// this line fucks everything up -- not anymore! needed to bind attrib location using layout in shader
-	glVertexAttribPointer(attribute_coord, 4, GL_FLOAT, GL_FALSE, 0, 0);
+	glVertexAttribPointer(attrib_coord->o_, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
 	glDisable(GL_DEPTH_TEST);
 
@@ -177,9 +190,9 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, math::color color, 
 
 
 
-	for(p = text; *p; p++)
+	for(c = text; *c; c++)
 	{
-		if(FT_Load_Char(face, *p, FT_LOAD_RENDER)) continue;
+		if(FT_Load_Char(face, *c, FT_LOAD_RENDER)) continue;
 
 
 

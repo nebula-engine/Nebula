@@ -29,7 +29,7 @@ int	glutpp::glsl::attrib::locate(std::shared_ptr<glutpp::glsl::program> p)
 	if(o_ == -1)
 	{
 		printf("could not find attrib '%s'\n", name_);
-		//exit(0);
+		exit(0);
 	}
 
 }

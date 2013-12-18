@@ -41,7 +41,7 @@ namespace glutpp
 					float				h_;
 					
 					math::color			font_color_;
-					
+					math::color			bg_color_;
 					
 					bool				active_;
 

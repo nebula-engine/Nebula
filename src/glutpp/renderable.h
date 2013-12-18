@@ -30,6 +30,8 @@ namespace glutpp
 
 			std::shared_ptr<scene>			scene_;
 			std::shared_ptr<glutpp::gui::layout>	layout_;
+			std::shared_ptr<camera>			camera_;
+			
 	};
 }
 

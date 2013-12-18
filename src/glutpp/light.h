@@ -3,7 +3,7 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glutpp/object.h>
+#include <glutpp/actor.h>
 #include <glutpp/camera.h>
 #include <glutpp/texture.h>
 
@@ -39,6 +39,11 @@ namespace glutpp
 			void		RenderShadowPost();
 			void		RenderLightPOV();
 			
+
+
+			int		i_;
+
+
 			// camera (light position stored here)
 			camera		camera_;
 

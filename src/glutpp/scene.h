@@ -4,8 +4,10 @@
 #include <vector>
 
 #include <gal/flag.h>
+#include <gal/map.h>
 
 //#include <glutpp/uniform.h>
+#include <glutpp/actor.h>
 #include <glutpp/camera.h>
 //#include <glutpp/shader.h>
 
@@ -14,7 +16,6 @@
 namespace glutpp
 {
 	class renderable;
-	class object;
 	class light;
 	class program;
 	class shader;
@@ -34,48 +35,32 @@ namespace glutpp
 				SHADER				= 1 << 9
 			};
 			
+			
 			scene();
+			virtual ~scene();
 			void			init(std::shared_ptr<renderable>);
+			
+			
 			int			prepare();
-			//void			shaders();
-			//void			uniforms();
-			//GLint			get_program();
-
-			void			add_object(std::shared_ptr<object>);
+			
+			void			add_actor(std::shared_ptr<glutpp::actor>);
 			void			add_light(std::shared_ptr<light>);
-			void			objects_for_each(std::function<void(glutpp::object*)>);
-			void			lights_for_each(std::function<void(glutpp::light*)>);
+	//		void			objects_for_each(std::function<void(glutpp::object*)>);
+	//		void			lights_for_each(std::function<void(glutpp::light*)>);
 		
 			void			resize(int,int);
 
-			//void			render(double);
 			void			render_shader_light(double);
 			void			render_no_shader_light(double);
-
-
+			
+			
 			void			draw();
 			
-
-/*	
-			struct
-			{
-				uniform		light_count_;
-				uniform		model_;
-				uniform		view_;
-				uniform		proj_;
-			} uniforms_;
-*/	
-	
+			
 			std::weak_ptr<renderable>		renderable_;
-
-			std::vector<std::shared_ptr<object> >	objects_;
-	
-			camera					camera_;
 			
-			
-			std::shared_ptr<light>			lights_[LIGHT_MAX];
-			int					light_count_;
-
+			gal::map<actor>				actors_;
+			gal::map<light>				lights_;
 	};
 }
 

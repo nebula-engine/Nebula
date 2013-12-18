@@ -36,8 +36,15 @@ void	glutpp::glsl::program::add_shaders(std::vector<glutpp::glsl::shader> s)
 		checkerror("glAttachShader");
 	}
 }
-void	glutpp::glsl::program::compile()
+void	glutpp::glsl::program::add_shader(char const * filename, GLenum type)
 {
+	glutpp::glsl::shader s;
+	s.load(filename, type);
+	
+	glAttachShader(o_, s.o_);
+	checkerror("glAttachShader");
+}
+void	glutpp::glsl::program::compile() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	glLinkProgram(o_);
@@ -69,31 +76,33 @@ void	glutpp::glsl::program::use()
 	glUseProgram(o_);
 	checkerror("glUseProgram");
 }
-int	glutpp::glsl::program::add_attrib(glutpp::attrib_name::e n, char const * s)
-{
+int	glutpp::glsl::program::add_attrib(glutpp::attrib_name::e name, char const * s) {
 	std::shared_ptr<glutpp::glsl::attrib> a(new glutpp::glsl::attrib);
 	
 	a->init(s);
+	
+	attrib_[name] = a;
 }
-int	glutpp::glsl::program::add_uniform(glutpp::uniform_name::e, char const * s)
-{
+int	glutpp::glsl::program::add_uniform(glutpp::uniform_name::e name, char const * s) {
 	std::shared_ptr<glutpp::glsl::uniform> u(new glutpp::glsl::uniform);
 	
 	u->init(s);
+	
+	uniform_[name] = u;
 }
-int	glutpp::glsl::program::add_uniform(glutpp::uniform_name::e, char const * s1, char const * s2)
-{
+int	glutpp::glsl::program::add_uniform(glutpp::uniform_name::e name, char const * s1, char const * s2) {
 	std::shared_ptr<glutpp::glsl::uniform> u(new glutpp::glsl::uniform);
 	
 	u->init(s1,s2,20);
+	
+	uniform_[name] = u;
 }
-std::shared_ptr<glutpp::glsl::attrib>	glutpp::glsl::program::get_attrib(int name)
-{
+std::shared_ptr<glutpp::glsl::attrib>	glutpp::glsl::program::get_attrib(int name) {
 	auto it = attrib_.find(name);
 	
 	if(it == attrib_.end())
 	{
-		printf("uniform %i not found\n",name);
+		printf("attribute %i not found\n",name);
 		exit(0);
 	}
 	
@@ -103,8 +112,9 @@ std::shared_ptr<glutpp::glsl::attrib>	glutpp::glsl::program::get_attrib(int name
 	
 	return p;
 }
-std::shared_ptr<glutpp::glsl::uniform>	glutpp::glsl::program::get_uniform(int name)
-{
+std::shared_ptr<glutpp::glsl::uniform>	glutpp::glsl::program::get_uniform(int name) {
+	//printf("%s\n", __PRETTY_FUNCTION__);
+	
 	auto it = uniform_.find(name);
 	
 	if(it == uniform_.end())
@@ -119,6 +129,26 @@ std::shared_ptr<glutpp::glsl::uniform>	glutpp::glsl::program::get_uniform(int na
 	
 	return p;
 }
+int	glutpp::glsl::program::locate() {
 
+	std::shared_ptr<glutpp::glsl::attrib> attrib;
+	
+	for(auto it = attrib_.begin(); it != attrib_.end(); ++it)
+	{
+		attrib = (*it).second;
+		
+		attrib->locate(shared_from_this());
+	}
+	
+	std::shared_ptr<glutpp::glsl::uniform> uniform;
+	
+	for(auto it = uniform_.begin(); it != uniform_.end(); ++it)
+	{
+		uniform = (*it).second;
+		
+		uniform->locate(shared_from_this());
+	}
+	
+}
 
 

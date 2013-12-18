@@ -28,6 +28,7 @@ void	glutpp::gui::object::textview::draw()
 	float sx = 1.0/600.0;
 	float sy = 1.0/600.0;
 
+	draw_quad(x_, y_, w_, h_, bg_color_);
 	draw_text(x_, y_, sx, sy, font_color_, label_);
 }
 int	glutpp::gui::object::textview::mouse_button_fun(int button, int action, int mods)

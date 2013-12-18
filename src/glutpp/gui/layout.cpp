@@ -46,39 +46,31 @@ void	glutpp::gui::layout::load_xml(char const * filename)
 {
 
 }
-void	glutpp::gui::layout::render(double time)
+void	glutpp::gui::layout::render_shader(double time)
 {
-	auto p = glutpp::__master.get_program(glutpp::program_name::e::TEXT);
-	p->use();
-
+	auto p = glutpp::__master.use_program(glutpp::program_name::e::TEXT);
+	
 	//Restore other states
 	glDisable(GL_LIGHTING);
-	glDisable(GL_ALPHA_TEST);
+	//glDisable(GL_ALPHA_TEST);
+	
+	//Set matrices for ortho
+	//glMatrixMode(GL_PROJECTION);
+	//glLoadMatrixf(ortho_);
+	//gluOrtho2D(-1.0f, 1.0f, -1.0f, 1.0f);
 
-	//if(!all(SHADERS))
-	{
-		//Set matrices for ortho
-		glMatrixMode(GL_PROJECTION);
-		glLoadMatrixf(ortho_);
-		//gluOrtho2D(-1.0f, 1.0f, -1.0f, 1.0f);
+	//glMatrixMode(GL_MODELVIEW);
+	//glLoadIdentity();
 
-		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
+	draw();
 
-		draw();
-		//Print text
-		//glRasterPos2f(-1.0f, 0.9f);
-		//for(unsigned int i=0; i<strlen(fpsString); ++i)
-		//	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, fpsString[i]);
-
-	}
 }
 void	glutpp::gui::layout::draw()
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	//jess::clog << "objects_.size()=" << objects_.map_.size() << std::endl;
 
-	objects_.foreach(&glutpp::gui::object::object::draw);
+	objects_.foreach<glutpp::gui::object::object>(&glutpp::gui::object::object::draw);
 }
 void	glutpp::gui::layout::connect()
 {
@@ -108,7 +100,7 @@ void	glutpp::gui::layout::connect()
 int	glutpp::gui::layout::mouse_button_fun(int button, int action, int mods)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
-	
+
 	switch(action)
 	{
 		case GLFW_PRESS:
@@ -131,25 +123,25 @@ int	glutpp::gui::layout::search(int button, int action, int mods)
 	int w, h;
 	glfwGetCursorPos(get_window()->window_, &x, &y);
 	glfwGetWindowSize(get_window()->window_, &w, &h);
-	
+
 	printf("%f %f %i %i\n", x, y, w, h);
-	
+
 	x = x / (float)w * 2.0 - 1.0;
 	y = y / (float)h * 2.0 - 1.0;
 
 	printf("%f %f\n", x, y, w, h);
-	
+
 	for(auto it = objects_.map_.begin(); it != objects_.map_.end(); ++it)
 	{
 		std::shared_ptr<glutpp::gui::object::object> o = (*it).second;
-	
+
 		printf("object %f %f %f %f\n", o->x_, o->y_, o->w_, o->h_);	
-	
+
 		if(x < o->x_) return 0;
 		if(x > (o->x_ + o->w_)) return 0;
-		if(y < o->y_) return 0;
-		if(y > (o->y_ + o->h_)) return 0;
-		
+		if(y > -o->y_) return 0;
+		if(y < (-o->y_ - o->h_)) return 0;
+
 		return o->mouse_button_fun(button, action, mods);
 	}
 }

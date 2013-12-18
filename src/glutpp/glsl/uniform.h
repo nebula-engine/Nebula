@@ -6,6 +6,7 @@
 #include <GLFW/glfw3.h>
 
 #include <math/mat44.h>
+#include <math/color.h>
 
 namespace glutpp
 {
@@ -21,12 +22,14 @@ namespace glutpp
 				void			locate(std::shared_ptr<program>);
 
 				void			load(int, math::mat44);
+				void			load(int, math::color);
 				void			load(int, int);
 				void			load_4fv(int, float*);
 				void			load_3fv(int, float*);
 				void			load(int, float);
 
 				void			load(math::mat44);
+				void			load(math::color);
 				void			load(int);
 				void			load_4fv(float*);
 				void			load_3fv(float*);

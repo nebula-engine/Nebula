@@ -15,15 +15,20 @@
 namespace glutpp
 {
 	class window;
+	class renderable;
 	class scene;
 	class camera
 	{
 		public:
 			camera();
-			void		init(std::shared_ptr<scene>);
+			void		init(std::shared_ptr<renderable>);
 			math::mat44	proj();
 			math::mat44	view();
-			void		load();
+
+			void		load_shader();
+			void		load_no_shader();
+
+
 			void		step(float);
 		
 
@@ -31,7 +36,7 @@ namespace glutpp
 
 
 	
-			std::weak_ptr<scene>			scene_;
+			std::weak_ptr<renderable>		renderable_;
 				
 			float					fovy_;
 			float					zn_;

@@ -17,7 +17,7 @@ namespace glutpp
 	{
 		class shader;
 
-		class program
+		class program: public std::enable_shared_from_this<program>
 		{
 			public:
 				program();
@@ -26,7 +26,7 @@ namespace glutpp
 				void	add_shaders(std::vector<glutpp::glsl::shader>);
 				void	compile();
 				void	use();
-
+				int	locate();
 
 				int	add_attrib(glutpp::attrib_name::e, char const *);
 				int	add_uniform(glutpp::uniform_name::e, char const *);

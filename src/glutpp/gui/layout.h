@@ -28,7 +28,8 @@ namespace glutpp
 				virtual void				init(renderable_p);
 				void					load_xml(char const *);
 
-				void					render(double);
+				void					render_shader(double);
+				
 				void					draw();
 				
 				math::mat44				ortho_;

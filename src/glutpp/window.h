@@ -39,7 +39,7 @@ namespace glutpp
 			~window();
 			
 			void			init();
-					
+			int			prepare();
 
 			void			callback_window_pos_fun(GLFWwindow*,int,int);
 			void			callback_window_size_fun(GLFWwindow*,int,int);
@@ -48,6 +48,12 @@ namespace glutpp
 			void			callback_mouse_button_fun(GLFWwindow*,int,int,int);
 			void			callback_key_fun(GLFWwindow*,int,int,int,int);
 
+
+
+			int			set_scene(std::shared_ptr<glutpp::scene>);
+
+
+
 			void			loop();
 			virtual void		step(double);
 			void			render(double);
@@ -55,12 +61,12 @@ namespace glutpp
 			void			draw_ortho();
 			void			resize(int,int);
 
+
+
 			void			display_dim();
 			void			display_bright();
 			void			display_all_but(object*);
 
-			void			lights_for_each(std::function<void(glutpp::light*)>);
-			void			objects_for_each(std::function<void(glutpp::object*)>);
 
 			void			SetWindowID(int newWindowID);
 			int			GetWindowID(void);
@@ -72,13 +78,10 @@ namespace glutpp
 			// input signals
 			struct
 			{
-				//std::map<int,gal::sig::signal<int,int,int,int>>		map_key_fun_;
 				gal::sig::signal<int,int,int,int>			key_fun_;
 				gal::sig::signal<int,int,int>				mouse_button_fun_;
 			} sig_;
 
-			// idle signal
-			//std::function<void(double)>			func_idle_;
 
 			char const *		title_;
 			int			w_;

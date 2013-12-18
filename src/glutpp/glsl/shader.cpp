@@ -23,8 +23,8 @@ void	glutpp::glsl::shader::load(const char * filename, GLenum shader_type)
 
 	if (!fp)
 	{
-	perror("fopen");
-	exit(0);
+		perror("fopen");
+		exit(0);
 	}
 
 	fseek(fp, 0, SEEK_END);
@@ -32,31 +32,39 @@ void	glutpp::glsl::shader::load(const char * filename, GLenum shader_type)
 	fseek(fp, 0, SEEK_SET);
 
 	data = new char [filesize + 1];
-	
-	if (!data) exit(0);
 
+	if (!data)
+	{
+		printf("memory allocation error\n");
+		exit(0);
+	}
+	
 	fread(data, 1, filesize, fp);
 	data[filesize] = 0;
 	fclose(fp);
 
 	o_ = glCreateShader(shader_type);
 	checkerror("glCreateShader");
-	
-	if (!o_) exit(0);
+
+	if (!o_)
+	{
+		printf("create shader failed\n");
+		exit(0);
+	}
 
 	glShaderSource(o_, 1, (const GLchar**)&data, NULL);
 
 	delete [] data;
 
 	glCompileShader(o_);
-	
+
 	GLint status = 0;
 	glGetShaderiv(o_, GL_COMPILE_STATUS, &status);
-	
+
 	char buffer[4096];
 	int len;
 	glGetShaderInfoLog(o_, 4096, &len, buffer);
-	
+
 	if(len>0)
 	{
 		fprintf(stderr, "%s: %s\n", filename, buffer);
@@ -64,8 +72,8 @@ void	glutpp::glsl::shader::load(const char * filename, GLenum shader_type)
 
 	if(!status)
 	{
-		printf("compile failed\n");
 		glDeleteShader(o_);
+		printf("compile failed\n");
 		exit(0);
 	}
 
@@ -152,4 +160,4 @@ free (compiler_log);
 printf("program=%i\n",program);
 
 }
- */
+*/

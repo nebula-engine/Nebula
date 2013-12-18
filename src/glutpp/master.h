@@ -37,7 +37,8 @@ namespace glutpp
 			NONE = 0,
 			POSITION,
 			NORMAL,
-			TEXCOOR
+			TEXCOOR,
+			COOR
 		};
 	};
 	struct uniform_name
@@ -45,6 +46,8 @@ namespace glutpp
 		enum e
 		{
 			UNIFORM_NONE = 0,
+			COLOR,
+			TEX,
 			LIGHT_COUNT,
 			MODEL,
 			VIEW,
@@ -91,6 +94,7 @@ namespace glutpp
 
 
 		public:
+			std::shared_ptr<glutpp::glsl::program>		use_program(glutpp::program_name::e);
 			std::shared_ptr<glutpp::glsl::program>		get_program(glutpp::program_name::e);
 			std::shared_ptr<glutpp::glsl::program>		current_program();
 			int						create_programs();
@@ -124,6 +128,7 @@ namespace glutpp
 
 
 			std::map<int, std::shared_ptr<glutpp::glsl::program> >	programs_;
+			std::shared_ptr<glutpp::glsl::program>			current_;
 	};
 
 	extern "C" master __master;

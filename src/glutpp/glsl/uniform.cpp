@@ -44,10 +44,12 @@ void	glutpp::glsl::uniform::locate(std::shared_ptr<glutpp::glsl::program> p)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
+	assert(p);
+
 	char o_str[8];
 	char name[128];
 	
-	
+	assert(s1_);
 	
 	if(c_ == 1)
 	{
@@ -55,10 +57,14 @@ void	glutpp::glsl::uniform::locate(std::shared_ptr<glutpp::glsl::program> p)
 	}
 	else
 	{
+		assert(s2_);
+		
 		for(int c = 0; c < c_; c++)
 		{
-			sprintf(o_str, "%i", o_[c]);
+			sprintf(o_str, "%i", c);
 			
+			//printf("str = '%s' c = %i\n", o_str, c);
+
 			name[0] = '\0';
 			
 			strcat(name, s1_);
@@ -67,6 +73,8 @@ void	glutpp::glsl::uniform::locate(std::shared_ptr<glutpp::glsl::program> p)
 			strcat(name, "].");
 			strcat(name, s2_);
 			
+			printf("locate '%s'\n", name);
+
 			o_[c] = glGetUniformLocation(p->o_, name);
 		}
 	}
@@ -76,6 +84,12 @@ void	glutpp::glsl::uniform::load(math::mat44 m) {
 
 	glUniformMatrix4fv(o_[0],1,GL_FALSE,m);
 
+	checkerror("glUniformMatrix4fv");
+}
+void	glutpp::glsl::uniform::load(math::color c) {
+
+	glUniform4fv(o_[0], 1, c);
+	
 	checkerror("glUniformMatrix4fv");
 }
 void	glutpp::glsl::uniform::load(int o)
@@ -102,4 +116,44 @@ void	glutpp::glsl::uniform::load(float f)
 
 	checkerror("glUniform1f");
 }
+void	glutpp::glsl::uniform::load(int c, math::mat44 m) {
+
+	glUniformMatrix4fv(o_[c],1,GL_FALSE,m);
+
+	checkerror("glUniformMatrix4fv");
+}
+void	glutpp::glsl::uniform::load(int c, math::color color) {
+
+	glUniform4fv(o_[c], 1, color);
+	
+	checkerror("glUniformMatrix4fv");
+}
+void	glutpp::glsl::uniform::load(int c, int o)
+{
+	glUniform1i(o_[c], o);
+
+	checkerror("glUniform1i");
+}
+void	glutpp::glsl::uniform::load_4fv(int c, float* v)
+{
+	glUniform4fv(o_[c], 1, v);
+
+	checkerror("glUniform4fv");
+}
+void	glutpp::glsl::uniform::load_3fv(int c, float* v)
+{
+	glUniform3fv(o_[c], 1, v);
+
+	checkerror("glUniform3fv");
+}
+void	glutpp::glsl::uniform::load(int c, float f)
+{
+	glUniform1f(o_[c], f);
+
+	checkerror("glUniform1f");
+}
+
+
+
+
 

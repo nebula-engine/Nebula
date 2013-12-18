@@ -98,6 +98,7 @@ void	glutpp::light::dim()
 	glLightfv(o_, GL_DIFFUSE, diffuse_ * 0.2f);
 	glLightfv(o_, GL_SPECULAR, math::black);checkerror(__PRETTY_FUNCTION__);
 	 */
+	printf("UNSUPPORTED\n");
 	exit(0);
 }
 void	glutpp::light::draw()
@@ -179,7 +180,7 @@ void	glutpp::light::RenderLightPOV()
 
 	glDisable(GL_LIGHTING);
 
-	camera_.load();
+	camera_.load_shader();
 	/*
 	   glMatrixMode(GL_PROJECTION);
 	   glLoadMatrixf(camera_.proj());

@@ -1,5 +1,5 @@
-#ifndef __OBJECT_H__
-#define __OBJECT_H__
+#ifndef __GLUTPP_ACTOR_H__
+#define __GLUTPP_ACTOR_H__
 #include <memory>
 
 #include <math/vec4.h>
@@ -16,7 +16,6 @@
 
 namespace glutpp
 {
-
 	struct file_header
 	{
 		GLint len_vertices_;
@@ -38,7 +37,7 @@ namespace glutpp
 	{
 		class program;
 	}
-	class object
+	class actor
 	{
 		public:
 			enum
@@ -50,8 +49,10 @@ namespace glutpp
 				NONE = 0,
 			};
 
-			object();
+			actor();
 			void		init(std::shared_ptr<scene>);
+			std::shared_ptr<scene>	get_scene();
+			
 			void		construct(math::geo::polyhedron*);
 			void		uniforms();
 			int		save(char const *);
@@ -64,10 +65,9 @@ namespace glutpp
 			virtual void	draw();
 			virtual void	render_reflection();
 
-
-
+			
+			int		i_;
 			int		type_;
-			unsigned int	flgs_;
 
 
 			//attribute		attrib_position_;

@@ -21,9 +21,9 @@ glutpp::camera::camera():
 {
 
 }
-void		glutpp::camera::init(std::shared_ptr<scene> scene)
+void		glutpp::camera::init(std::shared_ptr<renderable> renderable)
 {
-	scene_ = scene;
+	renderable_ = renderable;
 
 	//control_.init(window_);
 }
@@ -53,28 +53,26 @@ math::mat44	glutpp::camera::proj()
 
 	return ret;
 }
-void		glutpp::camera::load()
+void		glutpp::camera::load_shader()
 {
 	auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
-	
-	std::shared_ptr<scene> scene = scene_.lock();
-	
+
 	glViewport(0, 0, w_, h_);
 
-	if(scene->all(glutpp::scene::SHADER))
-	{
-		p->get_uniform(glutpp::uniform_name::e::PROJ)->load(proj());
-		p->get_uniform(glutpp::uniform_name::e::VIEW)->load(view());
-	}
-	else
-	{
-		glMatrixMode(GL_PROJECTION);
-		glLoadMatrixf(proj());
-
-		glMatrixMode(GL_MODELVIEW);
-		glLoadMatrixf(view());	
-	}
+	p->get_uniform(glutpp::uniform_name::e::PROJ)->load(proj());
+	p->get_uniform(glutpp::uniform_name::e::VIEW)->load(view());
 }
+void		glutpp::camera::load_no_shader()
+{
+	glViewport(0, 0, w_, h_);
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadMatrixf(proj());
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadMatrixf(view());	
+}
+
 void		glutpp::camera::step(float dt)
 {
 	/*

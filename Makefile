@@ -149,6 +149,30 @@ glutpp/fast:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/build
 .PHONY : glutpp/fast
 
+src/glutpp/actor.o: src/glutpp/actor.cpp.o
+.PHONY : src/glutpp/actor.o
+
+# target to build an object file
+src/glutpp/actor.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/actor.cpp.o
+.PHONY : src/glutpp/actor.cpp.o
+
+src/glutpp/actor.i: src/glutpp/actor.cpp.i
+.PHONY : src/glutpp/actor.i
+
+# target to preprocess a source file
+src/glutpp/actor.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/actor.cpp.i
+.PHONY : src/glutpp/actor.cpp.i
+
+src/glutpp/actor.s: src/glutpp/actor.cpp.s
+.PHONY : src/glutpp/actor.s
+
+# target to generate assembly for a file
+src/glutpp/actor.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/actor.cpp.s
+.PHONY : src/glutpp/actor.cpp.s
+
 src/glutpp/camera.o: src/glutpp/camera.cpp.o
 .PHONY : src/glutpp/camera.o
 
@@ -485,30 +509,6 @@ src/glutpp/material.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/material.cpp.s
 .PHONY : src/glutpp/material.cpp.s
 
-src/glutpp/object.o: src/glutpp/object.cpp.o
-.PHONY : src/glutpp/object.o
-
-# target to build an object file
-src/glutpp/object.cpp.o:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/object.cpp.o
-.PHONY : src/glutpp/object.cpp.o
-
-src/glutpp/object.i: src/glutpp/object.cpp.i
-.PHONY : src/glutpp/object.i
-
-# target to preprocess a source file
-src/glutpp/object.cpp.i:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/object.cpp.i
-.PHONY : src/glutpp/object.cpp.i
-
-src/glutpp/object.s: src/glutpp/object.cpp.s
-.PHONY : src/glutpp/object.s
-
-# target to generate assembly for a file
-src/glutpp/object.cpp.s:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/object.cpp.s
-.PHONY : src/glutpp/object.cpp.s
-
 src/glutpp/renderable.o: src/glutpp/renderable.cpp.o
 .PHONY : src/glutpp/renderable.o
 
@@ -618,6 +618,9 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... src/glutpp/actor.o"
+	@echo "... src/glutpp/actor.i"
+	@echo "... src/glutpp/actor.s"
 	@echo "... src/glutpp/camera.o"
 	@echo "... src/glutpp/camera.i"
 	@echo "... src/glutpp/camera.s"
@@ -660,9 +663,6 @@ help:
 	@echo "... src/glutpp/material.o"
 	@echo "... src/glutpp/material.i"
 	@echo "... src/glutpp/material.s"
-	@echo "... src/glutpp/object.o"
-	@echo "... src/glutpp/object.i"
-	@echo "... src/glutpp/object.s"
 	@echo "... src/glutpp/renderable.o"
 	@echo "... src/glutpp/renderable.i"
 	@echo "... src/glutpp/renderable.s"

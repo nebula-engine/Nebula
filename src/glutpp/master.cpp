@@ -17,7 +17,7 @@ namespace glutpp
 	master __master;
 }
 glutpp::master::master()
-{
+{	printf("%s\n", __PRETTY_FUNCTION__);
 	// Create dummy variables 
 
 	const char * dummy_argv[1];
@@ -31,7 +31,7 @@ glutpp::master::master()
 	glfwInit();// 
 }
 glutpp::master::~master()
-{
+{	printf("%s\n", __PRETTY_FUNCTION__);
 
 }
 glutpp::window*	glutpp::master::get_window(GLFWwindow* window)
@@ -182,6 +182,8 @@ void glutpp::master::static_key_fun(GLFWwindow* window, int key, int scancode, i
  */
 void	glutpp::master::reg(glutpp::window* w)
 {
+	printf("%s\n", __PRETTY_FUNCTION__);
+
 	GLFWwindow* g = glfwCreateWindow(w->w_, w->h_, w->title_, NULL, NULL);
 
 	if(g == NULL)
@@ -219,64 +221,121 @@ void	glutpp::master::reg(glutpp::window* w)
 		printf("could not find freetype library\n");
 		exit(0);
 	}
+
+	create_programs();
 }
 int	glutpp::master::create_programs()
 {
+	printf("%s\n", __PRETTY_FUNCTION__);
+
 	std::shared_ptr<glutpp::glsl::program> p;
-	
+
 	// text
-	p.reset(new glutpp::glsl::program);
-	p->init();
-	
-	p->add_shader(GLUTPP_SHADER_DIR"/text/vs.glsl", GL_VERTEX_SHADER);
-	p->add_shader(GLUTPP_SHADER_DIR"/text/fs.glsl", GL_FRAGMENT_SHADER);
-	
-	p->compile();
-	
-	programs_[glutpp::program_name::TEXT] = p;
-	
+	{
+		p.reset(new glutpp::glsl::program);
+		p->init();
+
+		p->add_shader(GLUTPP_SHADER_DIR"/text/vs.glsl", GL_VERTEX_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/text/fs.glsl", GL_FRAGMENT_SHADER);
+
+		p->compile();
+
+		p->add_attrib(glutpp::attrib_name::e::COOR, "coord");
+
+		p->add_uniform(glutpp::uniform_name::e::COLOR,"font_color");
+		p->add_uniform(glutpp::uniform_name::e::TEX,"tex");
+		
+		p->locate();
+
+		programs_[glutpp::program_name::TEXT] = p;
+	}
 	// quad
-	
+
+
+
+
+
+
+
+
 	// light
-	p.reset(new glutpp::glsl::program);
-	p->init();
-	
-	p->add_shader(GLUTPP_SHADER_DIR"/text/vs.glsl", GL_VERTEX_SHADER);
-	p->add_shader(GLUTPP_SHADER_DIR"/text/fs.glsl", GL_FRAGMENT_SHADER);
-	
-	p->compile();
-	
-	//p->add_uniform(glutpp::uniform_name::e::IMAGE, "image");
-	
-	p->add_attrib(glutpp::attrib_name::e::POSITION, "position");
-	p->add_attrib(glutpp::attrib_name::e::NORMAL, "normal");
-	p->add_attrib(glutpp::attrib_name::e::TEXCOOR, "texcoor");
+	{
+		p.reset(new glutpp::glsl::program);
+		p->init();
+
+		p->add_shader(GLUTPP_SHADER_DIR"/light/vs.glsl", GL_VERTEX_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/light/fs.glsl", GL_FRAGMENT_SHADER);
+
+		p->compile();
+
+		//p->add_uniform(glutpp::uniform_name::e::IMAGE, "image");
+
+		p->add_attrib(glutpp::attrib_name::e::POSITION, "position");
+		p->add_attrib(glutpp::attrib_name::e::NORMAL, "normal");
+		//p->add_attrib(glutpp::attrib_name::e::TEXCOOR, "texcoor");
+
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_COUNT,"light_count");
+		p->add_uniform(glutpp::uniform_name::e::MODEL,"model");
+		p->add_uniform(glutpp::uniform_name::e::VIEW,"view");
+		p->add_uniform(glutpp::uniform_name::e::PROJ,"proj");
+
+		p->add_uniform(glutpp::uniform_name::e::FRONT_AMBIENT,"front.ambient");
+		p->add_uniform(glutpp::uniform_name::e::FRONT_DIFFUSE,"front.diffuse");
+		p->add_uniform(glutpp::uniform_name::e::FRONT_SPECULAR,"front.specular");
+		p->add_uniform(glutpp::uniform_name::e::FRONT_EMISSION,"front.emission");
+		p->add_uniform(glutpp::uniform_name::e::FRONT_SHININESS,"front.shininess");
+
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_POSITION, "lights", "position");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT, "lights","ambient");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE, "lights","diffuse");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR, "lights","specular");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION, "lights","spot_direction");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF, "lights","spot_cutoff");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_EXPONENT, "lights","spot_exponent");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF, "lights","spot_light_cos_cutoff");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
 
 	
-	p->add_uniform(glutpp::uniform_name::e::FRONT_AMBIENT,"front.ambient");
-	p->add_uniform(glutpp::uniform_name::e::FRONT_DIFFUSE,"front.diffuse");
-	p->add_uniform(glutpp::uniform_name::e::FRONT_SPECULAR,"front.specular");
-	p->add_uniform(glutpp::uniform_name::e::FRONT_EMISSION,"front.emission");
-	p->add_uniform(glutpp::uniform_name::e::FRONT_SHININESS,"front.shininess");
+		p->locate();
 
-
-	p->add_uniform(glutpp::uniform_name::e::LIGHT_POSITION, "lights", "position");
-	p->add_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT, "lights","ambient");
-	p->add_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE, "lights","diffuse");
-	p->add_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR, "lights","specular");
-	p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION, "lights","spot_direction");
-	p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF, "lights","spot_cutoff");
-	p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_EXPONENT, "lights","spot_exponent");
-	p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF, "lights","spot_light_cos_cutoff");
-	p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
-	p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
-	p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
-
-
-
-	programs_[glutpp::program_name::TEXT] = p;
-
+		programs_[glutpp::program_name::LIGHT] = p;
+	}
 }
+std::shared_ptr<glutpp::glsl::program>	glutpp::master::use_program(glutpp::program_name::e name)
+{
+	auto p = get_program(name);
+
+	p->use();
+
+	current_ = p;
+
+	return p;
+}
+std::shared_ptr<glutpp::glsl::program>	glutpp::master::current_program()
+{
+	assert(current_);
+
+	return current_;
+}
+std::shared_ptr<glutpp::glsl::program>	glutpp::master::get_program(glutpp::program_name::e name)
+{
+	auto it = programs_.find(name);
+
+	if(it == programs_.end())
+	{
+		printf("program not found\n");
+		exit(0);
+	}
+
+	auto p = (*it).second;
+
+	assert(p);
+
+	return p;
+}
+
 /*
    void glutpp::master::CallGlutMainLoop(void)
    {

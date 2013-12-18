@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//#include <GLee.h>
 #include <GLFW/glfw3.h>
+#include <GL/glu.h>
 
 #include <map>
 
@@ -14,7 +14,7 @@
 
 #include <glutpp/free.h>
 #include <glutpp/window.h>
-#include <glutpp/object.h>
+#include <glutpp/actor.h>
 #include <glutpp/light.h>
 //#include <glutpp/shader.h>
 //#include <glutpp/program.h>
@@ -67,20 +67,8 @@ glutpp::window::~window()
 
 	glfwDestroyWindow(window_);
 }
-void	glutpp::window::init()
-{
+void	glutpp::window::init() {
 	printf("%s\n",__PRETTY_FUNCTION__);
-	
-	//glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
-	//glutInitWindowSize(width, height);
-	//glutInitWindowPosition(initPositionX, initPositionY);
-	
-	//glutpp::__master.CallGlutCreateWindow( (char *)title_, this );
-
-		
-	//if (!GLEW_VERSION_2_1) fatal_error("wrong glew version");
-	
-	//CheckExt();
 	
 	printf("%s\n",glGetString(GL_SHADING_LANGUAGE_VERSION));
 	
@@ -104,15 +92,9 @@ void	glutpp::window::init()
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_NORMALIZE);
 
-	glutpp::renderable* p = new glutpp::renderable;
 	
-	//printf("renderable\n");
-	renderable_ = std::shared_ptr<glutpp::renderable>(p);
-	//printf("renderable\n");
+	renderable_.reset(new glutpp::renderable);
 	renderable_->init(shared_from_this());
-
-
-	
 	
 	checkerror("unknown");
 }
@@ -197,25 +179,45 @@ void	glutpp::window::callback_key_fun(GLFWwindow* window, int key, int scancode,
 			break;
 	}
 }
-void	glutpp::window::resize(int w,int h)
-{
+void	glutpp::window::resize(int w,int h) {
+
 	glViewport(0, 0, w_, h_);
 
 	renderable_->resize(w,h);
 }
+int	glutpp::window::prepare() {
 
+	printf("%s\n", __PRETTY_FUNCTION__);
+
+	if(renderable_)
+	{
+		if(renderable_->scene_)
+		{
+			renderable_->scene_->prepare();
+		}
+	}
+}
+int	glutpp::window::set_scene(std::shared_ptr<scene> scene) {
+
+	printf("%s\n", __PRETTY_FUNCTION__);
+
+	assert(scene);
+	assert(renderable_);
+	
+	renderable_->scene_ = scene;
+	
+	scene->renderable_ = renderable_;
+}
 
 void	checkerror(char const * msg)
 {
 	GLenum err = glGetError();
 	if(err != GL_NO_ERROR)
 	{
-		//unsigned char const * str = gluErrorString(err);
-		//printf("%s: %s\n",msg,str);
+		unsigned char const * str = gluErrorString(err);
+		printf("%s: %s\n",msg,str);
 		exit(0);
 	}
-
-
 }
 
 

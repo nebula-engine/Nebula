@@ -4,6 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
+  "/home/charles/Programming/C++/glutpp/src/glutpp/actor.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/actor.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/camera.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/camera.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/camera_control.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/camera_control.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/free.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/free.cpp.o"
@@ -18,7 +19,6 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/charles/Programming/C++/glutpp/src/glutpp/light.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/light.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/master.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/master.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/material.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o"
-  "/home/charles/Programming/C++/glutpp/src/glutpp/object.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/object.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/renderable.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/scene.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/scene.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/texture.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.o"
