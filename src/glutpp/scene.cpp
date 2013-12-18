@@ -12,31 +12,28 @@
 glutpp::scene::scene() {
 }
 glutpp::scene::~scene() {
+	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	glutpp::scene::init(std::shared_ptr<renderable> renderable)
-{
+void	glutpp::scene::init(std::shared_ptr<renderable> renderable){
 	assert(renderable);
 
 	renderable_ = renderable;
 }
-void	glutpp::scene::add_actor(std::shared_ptr<actor> actor)
-{
+void	glutpp::scene::add_actor(std::shared_ptr<actor> actor) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	assert(actor);
-
+	
 	actors_.push(actor);
-
+	
 	actor->init(shared_from_this());
-
 }
 int	glutpp::scene::prepare() {	
 	auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
 	
 	actors_.foreach<glutpp::actor>(std::bind(&glutpp::actor::init_buffer, std::placeholders::_1, p));
 }
-void	glutpp::scene::add_light(std::shared_ptr<light> l)
-{
+void	glutpp::scene::add_light(std::shared_ptr<light> l) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	assert(l);
@@ -45,28 +42,26 @@ void	glutpp::scene::add_light(std::shared_ptr<light> l)
 	
 	l->init(shared_from_this(), lights_.next_ - 1);
 }
-void	glutpp::scene::render_shader_light(double time)
-{
+void	glutpp::scene::render_shader_light(double time) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	assert(!renderable_.expired());
 	auto cam = renderable_.lock()->camera_;
 	assert(cam);
 	
-	std::shared_ptr<glutpp::glsl::program> p = glutpp::__master.use_program(glutpp::program_name::e::LIGHT);
-
-	p->get_uniform(glutpp::uniform_name::LIGHT_COUNT)->load(lights_.next_-1);
-
+	auto p = glutpp::__master.use_program(glutpp::program_name::e::LIGHT);
+	
+	p->get_uniform(glutpp::uniform_name::LIGHT_COUNT)->load(lights_.next_);
+	
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
 	cam->load_shader();
-
+	
 	lights_.foreach<glutpp::light>(&glutpp::light::load_shader);
 
 	draw();
 }
-void	glutpp::scene::render_no_shader_light(double time)
-{
+void	glutpp::scene::render_no_shader_light(double time){
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	auto cam = renderable_.lock()->camera_;

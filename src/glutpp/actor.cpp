@@ -22,27 +22,16 @@ glutpp::actor::actor():
 void	glutpp::actor::init(std::shared_ptr<scene> scene)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-
+	
 	assert(scene);
 	
 	scene_ = scene;
-	
-	uniforms();
-	
-	material_front_.init();//scene);
 }
 std::shared_ptr<glutpp::scene>	glutpp::actor::get_scene()
 {
 	assert(!scene_.expired());
 	
 	return scene_.lock();
-}
-void	glutpp::actor::uniforms()
-{
-	printf("%s\n",__PRETTY_FUNCTION__);
-
-	std::shared_ptr<scene> scene = scene_.lock();
-
 }
 void	print_vector(GLfloat* v, unsigned int m, unsigned int n)
 {
@@ -297,9 +286,9 @@ void	glutpp::actor::init_buffer(std::shared_ptr<glutpp::glsl::program> p)
 }
 void	glutpp::actor::model_load()
 {
-	auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
+	auto p = glutpp::__master.current_program();
 	
-	auto scene = get_scene();
+	//auto scene = get_scene();
 	
 	
 	math::mat44 model(pose_);
@@ -309,21 +298,21 @@ void	glutpp::actor::model_load()
 	
 	model = model * scale;
 	
-	if(scene->all(glutpp::scene::SHADER))
+	//if(scene->all(glutpp::scene::SHADER))
 	{
 		p->get_uniform(glutpp::uniform_name::e::MODEL)->load(model);
 	}
-	else
+/*	else
 	{
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
 		glMultMatrixf(model);
-	}
+	}*/
 }
 void	glutpp::actor::model_unload()
 {
-	std::shared_ptr<scene> scene = scene_.lock();
-
+	//std::shared_ptr<scene> scene = scene_.lock();
+	/*
 	if(scene->all(glutpp::scene::SHADER))
 	{
 	}
@@ -331,7 +320,7 @@ void	glutpp::actor::model_unload()
 	{
 		glMatrixMode(GL_MODELVIEW);
 		glPopMatrix();
-	}
+	}*/
 }
 void	glutpp::actor::draw()
 {
@@ -355,6 +344,8 @@ void	glutpp::actor::draw()
 	texture_image_.bind();
 	p->get_uniform(glutpp::uniform_name::e::IMAGE)->load(0);
 */	//glUniform1i(texture_image_.o_, 0);checkerror("glUniform1i");
+
+	
 	
 	printf("bind vbo\n");
 	glBindBuffer(GL_ARRAY_BUFFER, vbo_); checkerror("glBindBuffer");
@@ -368,9 +359,10 @@ void	glutpp::actor::draw()
 	glDrawElements(GL_TRIANGLES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);checkerror("glDrawElements");
 	//glDrawElements(GL_LINES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);checkerror("glDrawElements");
 
-	printf("unload material\n");
+	printf("unload model\n");
 	model_unload();
 
+	
 	glBindBuffer(GL_ARRAY_BUFFER,0);checkerror("glBindBuffer");
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);checkerror("glBindBuffer");
 
