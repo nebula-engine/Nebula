@@ -13,7 +13,7 @@ void	glutpp::gui::object::edittext::draw()
 
 void	glutpp::gui::object::edittext::connect()
 {
-	std::shared_ptr<glutpp::window> w = get_window();
+	//std::shared_ptr<glutpp::window> w = get_window();
 /*
 	conns_.key_fun_ = w->sig_.key_fun_.connect(
 			std::bind(&glutpp::gui::object::object::key_fun,
@@ -24,6 +24,10 @@ void	glutpp::gui::object::edittext::connect()
 				std::placeholders::_4
 				));
 */
+}
+int	glutpp::gui::object::edittext::mouse_button_fun(int button, int action, int mods)
+{
+	return 0;
 }
 int	glutpp::gui::object::edittext::key_fun(int key, int scancode, int action, int mods)
 {

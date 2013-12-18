@@ -3,6 +3,8 @@
 
 #include <memory>
 
+#include <tinyxml/tinyxml.h>
+
 #include <math/color.h>
 
 #include <gal/sig/connection.h>
@@ -20,6 +22,9 @@ namespace glutpp
 				public:
 
 					object();
+					int				load_xml(TiXmlElement*);
+
+
 					std::shared_ptr<window>		get_window();
 					virtual void			draw() = 0;
 					void				set_label( char const * cstr );

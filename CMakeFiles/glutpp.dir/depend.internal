@@ -11,6 +11,8 @@ CMakeFiles/glutpp.dir/src/glutpp/actor.cpp.o
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
  src/glutpp/glsl/uniform.h
+ src/glutpp/gui/layout.h
+ src/glutpp/gui/object/object.h
  src/glutpp/light.h
  src/glutpp/master.h
  src/glutpp/material.h
@@ -27,6 +29,8 @@ CMakeFiles/glutpp.dir/src/glutpp/camera.cpp.o
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
  src/glutpp/glsl/uniform.h
+ src/glutpp/gui/layout.h
+ src/glutpp/gui/object/object.h
  src/glutpp/light.h
  src/glutpp/master.h
  src/glutpp/material.h
@@ -43,6 +47,8 @@ CMakeFiles/glutpp.dir/src/glutpp/camera_control.cpp.o
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
  src/glutpp/glsl/uniform.h
+ src/glutpp/gui/layout.h
+ src/glutpp/gui/object/object.h
  src/glutpp/light.h
  src/glutpp/master.h
  src/glutpp/material.h
@@ -59,6 +65,8 @@ CMakeFiles/glutpp.dir/src/glutpp/free.cpp.o
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
  src/glutpp/glsl/uniform.h
+ src/glutpp/gui/layout.h
+ src/glutpp/gui/object/object.h
  src/glutpp/light.h
  src/glutpp/master.h
  src/glutpp/material.h
@@ -74,6 +82,8 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/attrib.cpp.o
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
  src/glutpp/glsl/uniform.h
+ src/glutpp/gui/layout.h
+ src/glutpp/gui/object/object.h
  src/glutpp/light.h
  src/glutpp/master.h
  src/glutpp/material.h
@@ -89,6 +99,8 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
  src/glutpp/glsl/uniform.h
+ src/glutpp/gui/layout.h
+ src/glutpp/gui/object/object.h
  src/glutpp/light.h
  src/glutpp/master.h
  src/glutpp/material.h
@@ -104,6 +116,8 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.o
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
  src/glutpp/glsl/uniform.h
+ src/glutpp/gui/layout.h
+ src/glutpp/gui/object/object.h
  src/glutpp/light.h
  src/glutpp/master.h
  src/glutpp/material.h
@@ -119,6 +133,8 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.o
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
  src/glutpp/glsl/uniform.h
+ src/glutpp/gui/layout.h
+ src/glutpp/gui/object/object.h
  src/glutpp/light.h
  src/glutpp/master.h
  src/glutpp/material.h
@@ -138,6 +154,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o
  src/glutpp/gui/layout.h
  src/glutpp/gui/object/edittext.h
  src/glutpp/gui/object/object.h
+ src/glutpp/gui/object/object_factory.h
  src/glutpp/gui/object/textview.h
  src/glutpp/light.h
  src/glutpp/master.h
@@ -169,6 +186,13 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object.cpp
  src/glutpp/gui/object/object.h
  src/glutpp/master.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o
+ /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object_factory.cpp
+ src/glutpp/gui/object/edittext.h
+ src/glutpp/gui/object/object.h
+ src/glutpp/gui/object/object_factory.h
+ src/glutpp/gui/object/textview.h
+ src/glutpp/master.h
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/textview.cpp
  src/glutpp/free.h
@@ -185,6 +209,8 @@ CMakeFiles/glutpp.dir/src/glutpp/light.cpp.o
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
  src/glutpp/glsl/uniform.h
+ src/glutpp/gui/layout.h
+ src/glutpp/gui/object/object.h
  src/glutpp/light.h
  src/glutpp/master.h
  src/glutpp/material.h
@@ -201,6 +227,8 @@ CMakeFiles/glutpp.dir/src/glutpp/master.cpp.o
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
  src/glutpp/glsl/uniform.h
+ src/glutpp/gui/layout.h
+ src/glutpp/gui/object/object.h
  src/glutpp/light.h
  src/glutpp/master.h
  src/glutpp/material.h
@@ -216,6 +244,8 @@ CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
  src/glutpp/glsl/uniform.h
+ src/glutpp/gui/layout.h
+ src/glutpp/gui/object/object.h
  src/glutpp/light.h
  src/glutpp/master.h
  src/glutpp/material.h
@@ -270,6 +300,8 @@ CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.o
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
  src/glutpp/glsl/uniform.h
+ src/glutpp/gui/layout.h
+ src/glutpp/gui/object/object.h
  src/glutpp/light.h
  src/glutpp/master.h
  src/glutpp/material.h

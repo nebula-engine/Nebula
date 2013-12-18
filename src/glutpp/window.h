@@ -13,6 +13,7 @@
 //#include <glutpp/plane.h>
 #include <glutpp/glsl/program.h>
 #include <glutpp/glsl/shader.h>
+#include <glutpp/gui/layout.h>
 
 #include <gal/sig/signal.h>
 
@@ -51,6 +52,7 @@ namespace glutpp
 
 
 			int			set_scene(std::shared_ptr<glutpp::scene>);
+			int			set_layout(std::shared_ptr<glutpp::gui::layout>);
 
 
 

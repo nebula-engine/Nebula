@@ -26,7 +26,9 @@ namespace glutpp
 				layout();
 				std::shared_ptr<glutpp::window>		get_window();
 				virtual void				init(renderable_p);
-				void					load_xml(char const *);
+				void					load_xml(TiXmlElement*);
+
+				int					create_object(TiXmlElement*);
 
 				void					render_shader(double);
 				

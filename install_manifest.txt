@@ -19,6 +19,7 @@
 /home/charles/usr/include/glutpp/gui/object/object.h
 /home/charles/usr/include/glutpp/gui/object/textview.h
 /home/charles/usr/include/glutpp/gui/object/edittext.h
+/home/charles/usr/include/glutpp/gui/object/object_factory.h
 /home/charles/usr/include/glutpp/glsl/shaders/light/vs.glsl
 /home/charles/usr/include/glutpp/glsl/shaders/light/fs.glsl
 /home/charles/usr/include/glutpp/glsl/shaders/quad/vs.glsl

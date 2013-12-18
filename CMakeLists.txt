@@ -21,6 +21,7 @@ set(src
 	src/glutpp/material.cpp
 	src/glutpp/gui/layout.cpp
 	src/glutpp/gui/object/object.cpp
+	src/glutpp/gui/object/object_factory.cpp
 	src/glutpp/gui/object/textview.cpp
 	src/glutpp/gui/object/edittext.cpp
 )
@@ -67,6 +68,7 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/layout.h			DESTINATION include/gl
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/object.h		DESTINATION include/glutpp/gui/object)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/textview.h	DESTINATION include/glutpp/gui/object)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/edittext.h	DESTINATION include/glutpp/gui/object)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/object_factory.h	DESTINATION include/glutpp/gui/object)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/light/vs.glsl	DESTINATION include/glutpp/glsl/shaders/light/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/light/fs.glsl	DESTINATION include/glutpp/glsl/shaders/light/)

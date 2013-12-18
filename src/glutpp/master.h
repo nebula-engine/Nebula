@@ -72,6 +72,13 @@ namespace glutpp
 		};
 	};
 
+	namespace gui
+{
+namespace object
+{
+class object_factory;
+}
+}
 	namespace glsl
 	{
 		class program;
@@ -122,11 +129,15 @@ namespace glutpp
 			//void  SetIdleToCurrentWindow(void);
 			FT_Library				ft_;
 
+
+			std::shared_ptr<glutpp::gui::object::object_factory>	object_factory_;
+
+
 		private:
 			GLFWwindow*				currentIdleWindow_;
 			std::map<GLFWwindow*,glutpp::window*>	windows_;
-
-
+			
+			
 			std::map<int, std::shared_ptr<glutpp::glsl::program> >	programs_;
 			std::shared_ptr<glutpp::glsl::program>			current_;
 	};

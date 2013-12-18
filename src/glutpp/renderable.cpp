@@ -4,16 +4,13 @@
 #include <glutpp/renderable.h>
 #include <glutpp/gui/layout.h>
 
-glutpp::renderable::renderable()
-{
+glutpp::renderable::renderable(){
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-glutpp::renderable&	glutpp::renderable::operator=(glutpp::renderable const & r)
-{
+glutpp::renderable&	glutpp::renderable::operator=(glutpp::renderable const & r){
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	glutpp::renderable::init(std::shared_ptr<window> window)
-{
+void	glutpp::renderable::init(std::shared_ptr<window> window){
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	assert(window);
@@ -35,19 +32,17 @@ void	glutpp::renderable::init(std::shared_ptr<window> window)
 	//scene_->uniforms();
 
 	// layout
-	layout_.reset(new glutpp::gui::layout);
+/*	layout_.reset(new glutpp::gui::layout);
 	layout_->init(shared_from_this());
-	layout_->connect();
+	layout_->connect();*/
 }
-void	glutpp::renderable::resize(int w, int h)
-{
+void	glutpp::renderable::resize(int w, int h){
 	camera_->w_ = w;
 	camera_->h_ = h;
 	
 	scene_->resize(w,h);
 }
-void	glutpp::renderable::render(double time)
-{
+void	glutpp::renderable::render(double time){
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	if(scene_)

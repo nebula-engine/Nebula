@@ -15,6 +15,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/charles/Programming/C++/glutpp/src/glutpp/gui/layout.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/edittext.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object_factory.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/textview.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/light.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/light.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/master.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/master.cpp.o"

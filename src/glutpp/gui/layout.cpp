@@ -7,7 +7,7 @@
 
 #include <glutpp/window.h>
 #include <glutpp/renderable.h>
-
+#include <glutpp/gui/object/object_factory.h>
 #include <glutpp/gui/object/object.h>
 #include <glutpp/gui/object/edittext.h>
 
@@ -30,21 +30,29 @@ void	glutpp::gui::layout::init(std::shared_ptr<glutpp::renderable> renderable)
 
 	assert(renderable);
 
-
 	renderable_ = renderable;
-
-
-	// demo object
-	std::shared_ptr<glutpp::gui::object::textview> object(new glutpp::gui::object::textview);
-	object->set_label("hello");
-	object->x_ = 0.0;
-	object->y_ = 0.0;
-
-	objects_.push(object);
 }
-void	glutpp::gui::layout::load_xml(char const * filename)
+void	glutpp::gui::layout::load_xml(TiXmlElement* element)
 {
-
+	assert(element);
+	
+	TiXmlElement* e = element->FirstChildElement("object");
+	
+	while(e != NULL)
+	{
+		create_object(e);
+		
+		e = e->NextSiblingElement("object");
+	}
+	
+}
+int	glutpp::gui::layout::create_object(TiXmlElement* element) {
+	
+	assert(element);
+	
+	auto object = glutpp::__master.object_factory_->create(element);
+	
+	objects_.push(object);
 }
 void	glutpp::gui::layout::render_shader(double time)
 {
@@ -65,15 +73,13 @@ void	glutpp::gui::layout::render_shader(double time)
 	draw();
 
 }
-void	glutpp::gui::layout::draw()
-{
+void	glutpp::gui::layout::draw(){
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	//jess::clog << "objects_.size()=" << objects_.map_.size() << std::endl;
 
 	objects_.foreach<glutpp::gui::object::object>(&glutpp::gui::object::object::draw);
 }
-void	glutpp::gui::layout::connect()
-{
+void	glutpp::gui::layout::connect(){
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	std::shared_ptr<glutpp::window> w = get_window();
@@ -95,10 +101,8 @@ void	glutpp::gui::layout::connect()
 				std::placeholders::_3
 				));
 
-
 }
-int	glutpp::gui::layout::mouse_button_fun(int button, int action, int mods)
-{
+int	glutpp::gui::layout::mouse_button_fun(int button, int action, int mods){
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	switch(action)
@@ -115,8 +119,7 @@ int	glutpp::gui::layout::mouse_button_fun(int button, int action, int mods)
 			return 0;
 	}
 }
-int	glutpp::gui::layout::search(int button, int action, int mods)
-{
+int	glutpp::gui::layout::search(int button, int action, int mods){
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	double x, y;
@@ -137,13 +140,15 @@ int	glutpp::gui::layout::search(int button, int action, int mods)
 
 		printf("object %f %f %f %f\n", o->x_, o->y_, o->w_, o->h_);	
 
-		if(x < o->x_) return 0;
-		if(x > (o->x_ + o->w_)) return 0;
-		if(y > -o->y_) return 0;
-		if(y < (-o->y_ - o->h_)) return 0;
+		if(x < o->x_) continue;
+		if(x > (o->x_ + o->w_)) continue;
+		if(y > -o->y_) continue;
+		if(y < (-o->y_ - o->h_)) continue;
 
 		return o->mouse_button_fun(button, action, mods);
 	}
+	
+	return 0;
 }
 
 

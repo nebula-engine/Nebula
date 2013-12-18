@@ -208,7 +208,18 @@ int	glutpp::window::set_scene(std::shared_ptr<scene> scene) {
 	
 	scene->renderable_ = renderable_;
 }
+int	glutpp::window::set_layout(std::shared_ptr<glutpp::gui::layout> layout) {
 
+	printf("%s\n", __PRETTY_FUNCTION__);
+	
+	assert(layout);
+	assert(renderable_);
+	
+	renderable_->layout_ = layout;
+	
+	layout->init(renderable_);
+	layout->connect();
+}
 void	checkerror(char const * msg)
 {
 	GLenum err = glGetError();
