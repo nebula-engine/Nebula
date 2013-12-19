@@ -28,10 +28,16 @@ void	glutpp::scene::add_actor(std::shared_ptr<actor> actor) {
 	
 	actor->init(shared_from_this());
 }
-int	glutpp::scene::prepare() {	
-	auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
+int	glutpp::scene::prepare() {
 	
-	actors_.foreach<glutpp::actor>(std::bind(&glutpp::actor::init_buffer, std::placeholders::_1, p));
+	if(glutpp::__master.all(glutpp::master::option::SHADERS))
+	{
+		auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
+		
+		actors_.foreach<glutpp::actor>(std::bind(&glutpp::actor::init_buffer, std::placeholders::_1, p));
+	}
+	
+	return 0;
 }
 void	glutpp::scene::add_light(std::shared_ptr<light> l) {
 	printf("%s\n",__PRETTY_FUNCTION__);
@@ -42,7 +48,7 @@ void	glutpp::scene::add_light(std::shared_ptr<light> l) {
 	
 	l->init(shared_from_this(), lights_.next_ - 1);
 }
-void	glutpp::scene::render_shader_light(double time) {
+void	glutpp::scene::render_shader(double time) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	assert(!renderable_.expired());
@@ -59,9 +65,9 @@ void	glutpp::scene::render_shader_light(double time) {
 	
 	lights_.foreach<glutpp::light>(&glutpp::light::load_shader);
 
-	draw();
+	draw_shader();
 }
-void	glutpp::scene::render_no_shader_light(double time){
+void	glutpp::scene::render_no_shader(double time) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	auto cam = renderable_.lock()->camera_;
@@ -72,7 +78,7 @@ void	glutpp::scene::render_no_shader_light(double time){
 
 	lights_.foreach<glutpp::light>(&glutpp::light::load_no_shader);
 
-	draw();
+	draw_no_shader();
 }
 /*void	glutpp::scene::render(double time)
 {
@@ -129,14 +135,19 @@ check_error();
 
 if(all(SHADOW)) lights_for_each(&glutpp::light::RenderShadowPost);
 }*/
-void	glutpp::scene::draw()
-{
+int	glutpp::scene::draw_no_shader() {
+
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	actors_.foreach<glutpp::actor>(&glutpp::actor::draw);
+	actors_.foreach<glutpp::actor>(&glutpp::actor::draw_no_shader);
 }
-void	glutpp::scene::resize(int w, int h)
-{
+int	glutpp::scene::draw_shader() {
+	
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
+	actors_.foreach<glutpp::actor>(&glutpp::actor::draw_shader);
+}
+void	glutpp::scene::resize(int w, int h) {
 }
 
 

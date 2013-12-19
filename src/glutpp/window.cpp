@@ -58,8 +58,6 @@ glutpp::window::window(int w, int h, int x, int y, const char * title):
 	printf(GLUTPP_INSTALL_DIR);
 	printf("\n");
 	
-	
-	__master.reg(this);
 }
 glutpp::window::~window()
 {
@@ -68,9 +66,10 @@ glutpp::window::~window()
 	glfwDestroyWindow(window_);
 }
 void	glutpp::window::init() {
+
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	printf("%s\n",glGetString(GL_SHADING_LANGUAGE_VERSION));
+	//printf("%s\n",glGetString(GL_SHADING_LANGUAGE_VERSION));
 	
 	//Check for necessary extensions
 	if(!GL_ARB_depth_texture || !GL_ARB_shadow)

@@ -14,27 +14,23 @@
 #include <glutpp/actor.h>
 #include <glutpp/scene.h>
 
-glutpp::actor::actor():
-	type_(NONE)
-{
+glutpp::actor::actor(): type_(NONE) {
+
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	glutpp::actor::init(std::shared_ptr<scene> scene)
-{
+void	glutpp::actor::init(std::shared_ptr<scene> scene){
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	assert(scene);
 	
 	scene_ = scene;
 }
-std::shared_ptr<glutpp::scene>	glutpp::actor::get_scene()
-{
+std::shared_ptr<glutpp::scene>	glutpp::actor::get_scene(){
 	assert(!scene_.expired());
 	
 	return scene_.lock();
 }
-void	print_vector(GLfloat* v, unsigned int m, unsigned int n)
-{
+void	print_vector(GLfloat* v, unsigned int m, unsigned int n){
 	for(unsigned int a=0;a<m;++a)
 	{
 		for(unsigned int b = 0; b < n; ++b)
@@ -45,8 +41,7 @@ void	print_vector(GLfloat* v, unsigned int m, unsigned int n)
 	}
 
 }
-void	print_vectori(GLushort* v, unsigned int m, unsigned int n)
-{
+void	print_vectori(GLushort* v, unsigned int m, unsigned int n){
 	for(unsigned int a=0;a<m;++a)
 	{
 		for(unsigned int b = 0; b < n; ++b)
@@ -57,8 +52,7 @@ void	print_vectori(GLushort* v, unsigned int m, unsigned int n)
 	}
 
 }
-void	readbuffer(GLuint buffer)
-{
+void	readbuffer(GLuint buffer){
 	GLfloat data[24*4];
 
 	glBindBuffer(GL_ARRAY_BUFFER, buffer);	
@@ -67,8 +61,7 @@ void	readbuffer(GLuint buffer)
 	glGetBufferSubData(GL_ARRAY_BUFFER, 0, 1*4*sizeof(GLfloat), data);
 	//checkerror("glGetBufferSubData");
 }
-void	glutpp::actor::construct(math::geo::polyhedron* poly)
-{
+void	glutpp::actor::construct(math::geo::polyhedron* poly){
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	fh_.len_vertices_ = 3 * poly->nt_ + 4 * poly->nq_;
@@ -128,8 +121,7 @@ void	glutpp::actor::construct(math::geo::polyhedron* poly)
 	}
 
 }
-int	glutpp::actor::load(const char * name)
-{
+int	glutpp::actor::load(const char * name){
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	char filename[256];
@@ -170,8 +162,7 @@ int	glutpp::actor::load(const char * name)
 
 	return 0;
 }
-int	glutpp::actor::save(const char * filename)
-{
+int	glutpp::actor::save(const char * filename){
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	FILE * fp;
@@ -195,7 +186,7 @@ int	glutpp::actor::save(const char * filename)
 	fwrite(&fh_, sizeof(file_header), 1, fp);
 	fwrite(vertices_, sizeof(glutpp::vertex), fh_.len_vertices_, fp);
 	fwrite(indices_, sizeof(GLushort), fh_.len_indices_, fp);
-
+	
 	// print
 	for(int i = 0; i < fh_.len_vertices_; ++i)
 	{
@@ -208,8 +199,7 @@ int	glutpp::actor::save(const char * filename)
 
 	return 0;
 }
-void	glutpp::actor::init_buffer(std::shared_ptr<glutpp::glsl::program> p)
-{
+void	glutpp::actor::init_buffer(std::shared_ptr<glutpp::glsl::program> p){
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	checkerror("unknown");
@@ -284,8 +274,7 @@ void	glutpp::actor::init_buffer(std::shared_ptr<glutpp::glsl::program> p)
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 }
-void	glutpp::actor::model_load()
-{
+void	glutpp::actor::model_load_shader(){
 	auto p = glutpp::__master.current_program();
 	
 	//auto scene = get_scene();
@@ -304,26 +293,29 @@ void	glutpp::actor::model_load()
 	}
 /*	else
 	{
-		glMatrixMode(GL_MODELVIEW);
-		glPushMatrix();
-		glMultMatrixf(model);
 	}*/
 }
-void	glutpp::actor::model_unload()
-{
-	//std::shared_ptr<scene> scene = scene_.lock();
-	/*
-	if(scene->all(glutpp::scene::SHADER))
-	{
-	}
-	else
-	{
-		glMatrixMode(GL_MODELVIEW);
-		glPopMatrix();
-	}*/
+void	glutpp::actor::model_load_no_shader() {
+
+	math::mat44 model(pose_);
+
+	math::mat44 scale;
+	scale.SetScale(s_);
+	
+	model = model * scale;
+	
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glMultMatrixf(model);
+
 }
-void	glutpp::actor::draw()
-{
+void	glutpp::actor::model_unload_no_shader() {
+
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+
+}
+int	glutpp::actor::draw_shader() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
@@ -344,7 +336,6 @@ void	glutpp::actor::draw()
 	texture_image_.bind();
 	p->get_uniform(glutpp::uniform_name::e::IMAGE)->load(0);
 */	//glUniform1i(texture_image_.o_, 0);checkerror("glUniform1i");
-
 	
 	
 	printf("bind vbo\n");
@@ -353,14 +344,13 @@ void	glutpp::actor::draw()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer_indices_); checkerror("glBindBuffer");
 	
 	printf("load model\n");
-	model_load();
+	model_load_shader();
 	
 	printf("draw\n");
 	glDrawElements(GL_TRIANGLES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);checkerror("glDrawElements");
 	//glDrawElements(GL_LINES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);checkerror("glDrawElements");
 
-	printf("unload model\n");
-	model_unload();
+	
 
 	
 	glBindBuffer(GL_ARRAY_BUFFER,0);checkerror("glBindBuffer");
@@ -371,10 +361,27 @@ void	glutpp::actor::draw()
 	//p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->disable();
 
 }
-void	glutpp::actor::render_reflection(){}
+int	glutpp::actor::draw_no_shader() {
+	
+	model_load_no_shader();
+	
+	glBegin(GL_TRIANGLES);
+	
+	int b;
+	for(int a = 0; a < fh_.len_indices_; ++a)
+	{
+		b = indices_[a];
+		glVertex4fv(vertices_[b].position);
+	}
+	
+	glEnd();
+	
+	model_unload_no_shader();
+}
+void	glutpp::actor::render_reflection(){
+}
+void	glutpp::vertex::print(){
 
-void	glutpp::vertex::print()
-{
 	printf("% 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f\n",
 			position.x,position.y,position.z,
 			normal.x,normal.y,normal.z,

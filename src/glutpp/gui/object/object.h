@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include <tinyxml/tinyxml.h>
+#include <tinyxml2.h>
 
 #include <math/color.h>
 
@@ -22,7 +22,7 @@ namespace glutpp
 				public:
 
 					object();
-					int				load_xml(TiXmlElement*);
+					int				load_xml(tinyxml2::XMLElement*);
 
 
 					std::shared_ptr<window>		get_window();

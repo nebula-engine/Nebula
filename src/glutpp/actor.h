@@ -58,13 +58,18 @@ namespace glutpp
 			int		save(char const *);
 			int		load(char const *);
 			void		init_buffer(std::shared_ptr<glutpp::glsl::program> p);
-			void		model_load();
-			void		model_unload();
 
 
-			virtual void	draw();
+			void		model_load_shader();
+			void		model_load_no_shader();
+			void		model_unload_no_shader();
+			
+			
+			virtual int	draw_shader();
+			virtual int	draw_no_shader();
+			
 			virtual void	render_reflection();
-
+			
 			
 			int		i_;
 			int		type_;

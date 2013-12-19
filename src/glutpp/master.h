@@ -4,6 +4,7 @@
 #include <map>
 #include <memory>
 
+#include <gal/flag.h>
 #include <gal/sig/signal.h>
 
 #include <ft2build.h>
@@ -73,21 +74,28 @@ namespace glutpp
 	};
 
 	namespace gui
-{
-namespace object
-{
-class object_factory;
-}
-}
+	{
+		namespace object
+		{
+			class object_factory;
+		}
+	}
 	namespace glsl
 	{
 		class program;
 	}
 	class window;
-	class master
+	class master: public gal::flag
 	{
-		private:
+		public:
+			typedef std::shared_ptr<glutpp::window> window_t;
 
+			enum option
+			{
+				SHADERS = 1 << 0
+			};
+		private:
+			static void static_error_fun(int,char const *);
 			static void static_window_pos_fun(GLFWwindow*,int,int);
 			static void static_window_size_fun(GLFWwindow*,int,int);
 			static void static_window_close_fun(GLFWwindow*);
@@ -113,8 +121,19 @@ class object_factory;
 			master();
 			~master();
 
-			glutpp::window*	get_window(GLFWwindow*);
-			void		reg(glutpp::window*);
+			template <class U> std::shared_ptr<U>	create_window(int x,int y,int w,int h,char const * title)
+			{
+				std::shared_ptr<U> u(new U(x,y,w,h,title));
+				
+				reg(u);
+				
+				u->init();
+				
+				return u;
+			}
+			
+			window_t	get_window(GLFWwindow*);
+			int		reg(std::shared_ptr<glutpp::window>);
 
 
 
@@ -134,10 +153,10 @@ class object_factory;
 
 
 		private:
-			GLFWwindow*				currentIdleWindow_;
-			std::map<GLFWwindow*,glutpp::window*>	windows_;
-			
-			
+			GLFWwindow*						currentIdleWindow_;
+			std::map<GLFWwindow*,window_t>				windows_;
+
+
 			std::map<int, std::shared_ptr<glutpp::glsl::program> >	programs_;
 			std::shared_ptr<glutpp::glsl::program>			current_;
 	};

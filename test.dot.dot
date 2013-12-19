@@ -1,0 +1,5 @@
+digraph GG {
+	node [label="\N", fontsize=12];
+	graph [bb="0,0,96,36"];
+	node0 [label=glutpp, shape=diamond, pos="48,18", width="1.3333", height="0.5"];
+}

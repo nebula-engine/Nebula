@@ -6,32 +6,20 @@
 
 #IncludeRegexTransform: 
 
-/home/charles/Programming/C++/glutpp/src/glutpp/gui/layout.cpp
-tinyxml/tinyxml.h
--
-string
--
-algorithm
--
-GLFW/glfw3.h
+/home/charles/Programming/C++/glutpp/src/glutpp/scene.cpp
+stdio.h
 -
 glutpp/window.h
 -
 glutpp/renderable.h
 -
-glutpp/gui/object/object_factory.h
+glutpp/scene.h
 -
-glutpp/gui/object/object.h
+glutpp/actor.h
 -
-glutpp/gui/object/edittext.h
+glutpp/light.h
 -
-glutpp/gui/layout.h
--
-
-/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object_factory.cpp
-glutpp/gui/object/object_factory.h
--
-glutpp/gui/object/edittext.h
+glutpp/glsl/program.h
 -
 
 src/glutpp/actor.h
@@ -120,30 +108,16 @@ gal/gal.h
 glutpp/gui/object/object.h
 -
 
-src/glutpp/gui/object/edittext.h
-glutpp/gui/object/textview.h
--
-
 src/glutpp/gui/object/object.h
 memory
 -
-tinyxml/tinyxml.h
+tinyxml2.h
 -
 math/color.h
 -
 gal/sig/connection.h
 -
 glutpp/master.h
--
-
-src/glutpp/gui/object/object_factory.h
-memory
--
-tinyxml/tinyxml.h
--
-
-src/glutpp/gui/object/textview.h
-glutpp/gui/object/object.h
 -
 
 src/glutpp/light.h
@@ -162,6 +136,8 @@ src/glutpp/master.h
 map
 -
 memory
+-
+gal/flag.h
 -
 gal/sig/signal.h
 -

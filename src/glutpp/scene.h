@@ -50,11 +50,11 @@ namespace glutpp
 		
 			void			resize(int,int);
 
-			void			render_shader_light(double);
-			void			render_no_shader_light(double);
+			void			render_shader(double);
+			void			render_no_shader(double);
 			
-			
-			void			draw();
+			int			draw_shader();
+			int			draw_no_shader();
 			
 			
 			std::weak_ptr<renderable>		renderable_;

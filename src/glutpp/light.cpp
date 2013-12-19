@@ -203,7 +203,7 @@ void	glutpp::light::RenderLightPOV()
 	glColorMask(0, 0, 0, 0);
 
 	//Draw the scene
-	scene->draw();
+	scene->draw_shader();
 
 	//Read the depth buffer into the shadow map texture
 	texture_shadow_map_.bind();

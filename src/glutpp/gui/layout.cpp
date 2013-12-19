@@ -1,4 +1,4 @@
-#include <tinyxml/tinyxml.h>
+#include <tinyxml2.h>
 
 #include <string>
 #include <algorithm>
@@ -32,11 +32,11 @@ void	glutpp::gui::layout::init(std::shared_ptr<glutpp::renderable> renderable)
 
 	renderable_ = renderable;
 }
-void	glutpp::gui::layout::load_xml(TiXmlElement* element)
+void	glutpp::gui::layout::load_xml(tinyxml2::XMLElement* element)
 {
 	assert(element);
 	
-	TiXmlElement* e = element->FirstChildElement("object");
+	tinyxml2::XMLElement* e = element->FirstChildElement("object");
 	
 	while(e != NULL)
 	{
@@ -46,7 +46,7 @@ void	glutpp::gui::layout::load_xml(TiXmlElement* element)
 	}
 	
 }
-int	glutpp::gui::layout::create_object(TiXmlElement* element) {
+int	glutpp::gui::layout::create_object(tinyxml2::XMLElement* element) {
 	
 	assert(element);
 	

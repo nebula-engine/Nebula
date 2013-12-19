@@ -47,7 +47,7 @@ void	glutpp::renderable::render(double time){
 
 	if(scene_)
 	{
-		scene_->render_shader_light(time);
+		scene_->render_shader(time);
 	}
 	
 	if(layout_)

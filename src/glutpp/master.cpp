@@ -9,179 +9,55 @@
 #include <GLFW/glfw3.h>
 //#include <glfw3.h>
 
+#include <glutpp/config.h>
 #include <glutpp/master.h>
 #include <glutpp/window.h>
 
-namespace glutpp
-{
+namespace glutpp {
 	master __master;
 }
-glutpp::master::master()
-{	printf("%s\n", __PRETTY_FUNCTION__);
-	// Create dummy variables 
+glutpp::master::master() {
 
-	const char * dummy_argv[1];
-	dummy_argv[0] = "run";
-	int dummy_argc = 1;
+	printf("%s\n", __PRETTY_FUNCTION__);
 
-	// Initialize GLUT
+	glfwInit();
 
-
-	
-	glfwInit();// 
+	glfwSetErrorCallback(static_error_fun);
 }
-glutpp::master::~master()
-{	printf("%s\n", __PRETTY_FUNCTION__);
+glutpp::master::~master(){	printf("%s\n", __PRETTY_FUNCTION__);
 
 }
-glutpp::window*	glutpp::master::get_window(GLFWwindow* window)
-{
+std::shared_ptr<glutpp::window>		glutpp::master::get_window(GLFWwindow* window) {
+
 	return windows_[window];
+
 }
-void glutpp::master::static_window_pos_fun(GLFWwindow* window, int x,int y)
-{
+void	glutpp::master::static_error_fun(int error, char const * description) {
+	
+	printf("%s\n", description);
+	exit(0);
+
+}
+void glutpp::master::static_window_pos_fun(GLFWwindow* window, int x,int y){
 	__master.get_window(window)->callback_window_pos_fun(window,x,y);
 }
-void glutpp::master::static_window_size_fun(GLFWwindow* window, int w, int h)
-{
+void glutpp::master::static_window_size_fun(GLFWwindow* window, int w, int h){
 	__master.get_window(window)->callback_window_size_fun(window,w,h);
 }
-void glutpp::master::static_window_close_fun(GLFWwindow* window)
-{
+void glutpp::master::static_window_close_fun(GLFWwindow* window){
 	__master.get_window(window)->callback_window_close_fun(window);
 }
-void glutpp::master::static_window_refresh_fun(GLFWwindow* window)
-{
+void glutpp::master::static_window_refresh_fun(GLFWwindow* window){
 	__master.get_window(window)->callback_window_refresh_fun(window);
 }
-void glutpp::master::static_mouse_button_fun(GLFWwindow* window, int button, int action, int mods)
-{
+void glutpp::master::static_mouse_button_fun(GLFWwindow* window, int button, int action, int mods){
 	__master.get_window(window)->callback_mouse_button_fun(window, button, action, mods);
 }
-void glutpp::master::static_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
+void glutpp::master::static_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods){
 	__master.get_window(window)->callback_key_fun(window, key, scancode, action, mods);
 }
-/*
-   void glutpp::master::static_window_refresh_fun(GLFWwindow* window)
-   {
-   __master.get_window(window)->CallBackDisplayFunc();
-   }
- */
-/*
-   void glutpp::master::CallBackIdleFunc(void)
-   {	
-   if(currentIdleWindow_ == NULL) return;
+int	glutpp::master::reg(std::shared_ptr<glutpp::window> w) {
 
-   glutSetWindow(currentIdleWindow);
-   viewPorts[currentIdleWindow]->CallBackIdleFunc();
-
-   }*//*
-	 void glutpp::master::CallBackKeyboardFunc(unsigned char key, int x, int y)
-	 {
-	 int windowID = glutGetWindow();
-	 viewPorts[windowID]->CallBackKeyboardFunc(key, x, y);
-	 }
-	 void glutpp::master::CallBackKeyboardUpFunc(unsigned char key, int x, int y)
-	 {
-	 int windowID = glutGetWindow();
-	 viewPorts[windowID]->CallBackKeyboardUpFunc(key, x, y);
-	 }
-	 void glutpp::master::CallBackMotionFunc(int x, int y)
-	 {
-	 int windowID = glutGetWindow();
-	 viewPorts[windowID]->CallBackMotionFunc(x, y);
-	 }
-	 void glutpp::master::CallBackMouseFunc(int button, int state, int x, int y)
-	 {
-	 int windowID = glutGetWindow();
-	 viewPorts[windowID]->CallBackMouseFunc(button, state, x, y);
-	 }
-	 void glutpp::master::CallBackPassiveMotionFunc(int x, int y)
-	 {
-	 int windowID = glutGetWindow();
-	 viewPorts[windowID]->CallBackPassiveMotionFunc(x, y);
-	 }
-	 void glutpp::master::CallBackReshapeFunc(int w, int h)
-	 {
-	 int windowID = glutGetWindow();
-	 viewPorts[windowID]->CallBackReshapeFunc(w, h);
-	 }
-	 void glutpp::master::CallBackSpecialFunc(int key, int x, int y)
-	 {
-	 int windowID = glutGetWindow();
-	 viewPorts[windowID]->CallBackSpecialFunc(key, x, y);
-	 }   
-	 void glutpp::master::CallBackVisibilityFunc(int visible)
-	 {
-	 int windowID = glutGetWindow();
-	 viewPorts[windowID]->CallBackVisibilityFunc(visible);
-	 }
-	 void glutpp::master::static_CallBackDisplayFunc(void)
-	 {
-	 GLFWwindow* window = glfwGetCurrentContext();
-	 if(window == NULL) return;
-
-	 __master.windows_[window]->CallBackDisplayFunc();
-	 }
-	 void glutpp::master::static_CallBackIdleFunc(void)
-	 {	
-	 if(currentIdleWindow_ == NULL) return;
-
-	 glutSetWindow(currentIdleWindow);
-	 viewPorts[currentIdleWindow]->CallBackIdleFunc();
-
-	 }
-	 void glutpp::master::static_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods)
-	 {
-	 __master.(key,scancode,);
-	 }
-	 void glutpp::master::static_CallBackKeyboardUpFunc(unsigned char key, int x, int y)
-	 {
-	 __master.
-	 int windowID = glutGetWindow();
-	 viewPorts[windowID]->CallBackKeyboardUpFunc(key, x, y);
-	 }*/
-/*
-   void glutpp::master::static_CallBackMotionFunc(int x, int y)
-   {
-   __master.
-   int windowID = glutGetWindow();
-   viewPorts[windowID]->CallBackMotionFunc(x, y);
-   }
-   void glutpp::master::static_CallBackMouseFunc(int button, int state, int x, int y)
-   {
-   __master.
-   int windowID = glutGetWindow();
-   viewPorts[windowID]->CallBackMouseFunc(button, state, x, y);
-   }
-   void glutpp::master::static_CallBackPassiveMotionFunc(int x, int y)
-   {
-   __master.
-   int windowID = glutGetWindow();
-   viewPorts[windowID]->CallBackPassiveMotionFunc(x, y);
-   }
-   void glutpp::master::static_CallBackReshapeFunc(int w, int h)
-   {
-   __master.
-   int windowID = glutGetWindow();
-   viewPorts[windowID]->CallBackReshapeFunc(w, h);
-   }
-   void glutpp::master::static_CallBackSpecialFunc(int key, int x, int y)
-   {
-   __master.
-   int windowID = glutGetWindow();
-   viewPorts[windowID]->CallBackSpecialFunc(key, x, y);
-   }   
-   void glutpp::master::static_CallBackVisibilityFunc(int visible)
-   {
-   __master.
-   int windowID = glutGetWindow();
-   viewPorts[windowID]->CallBackVisibilityFunc(visible);
-   }
- */
-void	glutpp::master::reg(glutpp::window* w)
-{
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	GLFWwindow* g = glfwCreateWindow(w->w_, w->h_, w->title_, NULL, NULL);
@@ -221,11 +97,13 @@ void	glutpp::master::reg(glutpp::window* w)
 		printf("could not find freetype library\n");
 		exit(0);
 	}
-
-	create_programs();
+	
+	if(all(glutpp::master::option::SHADERS)) create_programs();
+	
+	return 0;
 }
-int	glutpp::master::create_programs()
-{
+int	glutpp::master::create_programs() {
+
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	std::shared_ptr<glutpp::glsl::program> p;
@@ -250,10 +128,6 @@ int	glutpp::master::create_programs()
 		programs_[glutpp::program_name::TEXT] = p;
 	}
 	// quad
-
-
-
-
 
 
 
@@ -303,8 +177,7 @@ int	glutpp::master::create_programs()
 		programs_[glutpp::program_name::LIGHT] = p;
 	}
 }
-std::shared_ptr<glutpp::glsl::program>	glutpp::master::use_program(glutpp::program_name::e name)
-{
+std::shared_ptr<glutpp::glsl::program>	glutpp::master::use_program(glutpp::program_name::e name){
 	auto p = get_program(name);
 
 	p->use();
@@ -313,14 +186,12 @@ std::shared_ptr<glutpp::glsl::program>	glutpp::master::use_program(glutpp::progr
 
 	return p;
 }
-std::shared_ptr<glutpp::glsl::program>	glutpp::master::current_program()
-{
+std::shared_ptr<glutpp::glsl::program>	glutpp::master::current_program(){
 	assert(current_);
 
 	return current_;
 }
-std::shared_ptr<glutpp::glsl::program>	glutpp::master::get_program(glutpp::program_name::e name)
-{
+std::shared_ptr<glutpp::glsl::program>	glutpp::master::get_program(glutpp::program_name::e name){
 	auto it = programs_.find(name);
 
 	if(it == programs_.end())
@@ -336,40 +207,4 @@ std::shared_ptr<glutpp::glsl::program>	glutpp::master::get_program(glutpp::progr
 	return p;
 }
 
-/*
-   void glutpp::master::CallGlutMainLoop(void)
-   {
-   glutMainLoop();
-   }
 
-   void glutpp::master::DisableIdleFunction(void)
-   {
-   idleFunctionEnabled = 0;
-   }
-   void glutpp::master::EnableIdleFunction(void)
-   {
-   idleFunctionEnabled = 1;
-   }
-   int glutpp::master::IdleFunctionEnabled(void)
-   {
-// Is idle function enabled?
-
-return(idleFunctionEnabled);
-}
-int glutpp::master::IdleSetToCurrentWindow(void)
-{
-// Is current idle window same as current window?
-
-return( currentIdleWindow == glutGetWindow() );
-}
-void glutpp::master::SetIdleToCurrentWindow(void)
-{
-currentIdleWindow = glutGetWindow();
-}
-
-namespace glutpp
-{
-master __master;
-}
-
- */

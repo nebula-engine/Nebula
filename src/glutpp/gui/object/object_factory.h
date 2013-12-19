@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include <tinyxml/tinyxml.h>
+#include <tinyxml2.h>
 
 namespace glutpp
 {
@@ -15,7 +15,9 @@ namespace glutpp
 			class object_factory
 			{
 				public:
-					virtual std::shared_ptr<glutpp::gui::object::object>    create(TiXmlElement* element);
+					typedef std::shared_ptr<glutpp::gui::object::object> object_t;
+
+					virtual object_t	create(tinyxml2::XMLElement* element);
 
 
 			};

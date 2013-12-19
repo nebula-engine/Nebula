@@ -1,7 +1,7 @@
 #include <string.h>
 #include <algorithm>
 
-#include <tinyxml/tinyxml.h>
+#include <tinyxml2.h>
 
 #include <math/free.h>
 
@@ -24,7 +24,7 @@ std::shared_ptr<glutpp::window>	get_window() {
 	printf("not yet supported");
 	exit(0);
 }
-int	glutpp::gui::object::object::load_xml(TiXmlElement* element) {
+int	glutpp::gui::object::object::load_xml(tinyxml2::XMLElement* element) {
 	
 	x_ = math::xml_parse_float(element->FirstChildElement("x"));	
 	y_ = math::xml_parse_float(element->FirstChildElement("y"));
