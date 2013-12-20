@@ -70,12 +70,12 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/textview.h	DESTINATION inc
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/edittext.h	DESTINATION include/glutpp/gui/object)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/object_factory.h	DESTINATION include/glutpp/gui/object)
 
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/light/vs.glsl	DESTINATION include/glutpp/glsl/shaders/light/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/light/fs.glsl	DESTINATION include/glutpp/glsl/shaders/light/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/quad/vs.glsl 	DESTINATION include/glutpp/glsl/shaders/quad/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/quad/fs.glsl 	DESTINATION include/glutpp/glsl/shaders/quad/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/text/vs.glsl 	DESTINATION include/glutpp/glsl/shaders/text/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/text/fs.glsl 	DESTINATION include/glutpp/glsl/shaders/text/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/light/vs.glsl	DESTINATION include/glutpp/glsl/shaders/v130/light/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/light/fs.glsl	DESTINATION include/glutpp/glsl/shaders/v130/light/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/quad/vs.glsl 	DESTINATION include/glutpp/glsl/shaders/v130/quad/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/quad/fs.glsl 	DESTINATION include/glutpp/glsl/shaders/v130/quad/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/text/vs.glsl 	DESTINATION include/glutpp/glsl/shaders/v130/text/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/text/fs.glsl 	DESTINATION include/glutpp/glsl/shaders/v130/text/)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/objects/cube.obj DESTINATION include/glutpp/objects)
 

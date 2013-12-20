@@ -6,22 +6,24 @@
 #include <glutpp/glsl/attrib.h>
 
 glutpp::glsl::attrib::attrib():
-	o_(-1)
+	o_(-1),
+	o_bind_(-1)
 {}
-void	glutpp::glsl::attrib::init(char const * name)
+void	glutpp::glsl::attrib::init(char const * name, GLuint o_bind)
 {
 	name_ = name;
-
+	o_bind_ = o_bind;
+	
 	printf("attrib %s\n",name_);
-
-	GLint program;
-	glGetIntegerv(GL_CURRENT_PROGRAM,&program);
-
-	printf("program %i\n",program);
-
+	
 }
 int	glutpp::glsl::attrib::locate(std::shared_ptr<glutpp::glsl::program> p)
 {
+	printf("program %i\n", p->o_);
+
+	glBindAttribLocation(p->o_, o_bind_, name_);
+	checkerror("glBindAttribLocation");
+	
 	o_ = glGetAttribLocation(p->o_, name_);
 	
 	checkerror("glGetAttribLocation");

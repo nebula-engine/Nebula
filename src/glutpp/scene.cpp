@@ -29,13 +29,18 @@ void	glutpp::scene::add_actor(std::shared_ptr<actor> actor) {
 	actor->init(shared_from_this());
 }
 int	glutpp::scene::prepare() {
+	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	if(glutpp::__master.all(glutpp::master::option::SHADERS))
-	{
+	//if(glutpp::__master.all(glutpp::master::option::SHADERS))
+	//{
 		auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
 		
 		actors_.foreach<glutpp::actor>(std::bind(&glutpp::actor::init_buffer, std::placeholders::_1, p));
-	}
+	//}
+	//else
+	//{
+	//	printf("no shader\n");
+	//}
 	
 	return 0;
 }
@@ -59,7 +64,9 @@ void	glutpp::scene::render_shader(double time) {
 	
 	p->get_uniform(glutpp::uniform_name::LIGHT_COUNT)->load(lights_.next_);
 	
-	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+	
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
 
 	cam->load_shader();
 	

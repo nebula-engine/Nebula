@@ -1,6 +1,4 @@
-
 #include <GL/glew.h>
-#include <GL/glut.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -75,11 +73,20 @@ void	glutpp::glsl::program::use()
 
 	glUseProgram(o_);
 	checkerror("glUseProgram");
+	
+	std::shared_ptr<glutpp::glsl::attrib> attrib;
+	
+	for(auto it = attrib_.begin(); it != attrib_.end(); ++it)
+	{
+		attrib = (*it).second;
+		assert(attrib);
+		attrib->locate(shared_from_this());
+	}
 }
-int	glutpp::glsl::program::add_attrib(glutpp::attrib_name::e name, char const * s) {
+int	glutpp::glsl::program::add_attrib(glutpp::attrib_name::e name, char const * s, GLuint o_bind) {
 	std::shared_ptr<glutpp::glsl::attrib> a(new glutpp::glsl::attrib);
 	
-	a->init(s);
+	a->init(s, o_bind);
 	
 	attrib_[name] = a;
 }

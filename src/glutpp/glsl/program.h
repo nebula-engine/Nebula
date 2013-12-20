@@ -28,7 +28,7 @@ namespace glutpp
 				void	use();
 				int	locate();
 
-				int	add_attrib(glutpp::attrib_name::e, char const *);
+				int	add_attrib(glutpp::attrib_name::e, char const *, GLuint);
 				int	add_uniform(glutpp::uniform_name::e, char const *);
 				int	add_uniform(glutpp::uniform_name::e, char const *, char const *);
 				

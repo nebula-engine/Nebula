@@ -92,7 +92,7 @@ namespace glutpp
 
 			enum option
 			{
-				SHADERS = 1 << 0
+				//SHADERS = 1 << 0
 			};
 		private:
 			static void static_error_fun(int,char const *);

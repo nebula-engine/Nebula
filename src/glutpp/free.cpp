@@ -14,9 +14,7 @@
 
 #include <glutpp/free.h>
 
-void	print(unsigned char * s, int w, int h)
-{
-
+void	print(unsigned char * s, int w, int h) {
 
 	for(int j = 0; j < h; j++)
 	{
@@ -29,16 +27,16 @@ void	print(unsigned char * s, int w, int h)
 	}
 }
 /*void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
-{
-		
-}*/
+  {
+
+  }*/
 void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
-	
+
 	//GLint uniform_color = glGetUniformLocation(program, "color");
 	//GLint attribute_coord = glGetAttribLocation(program, "coord");
-/*
+	/*
 	// vbo
 	GLuint vbo;
 	glGenBuffers(1, &vbo);
@@ -48,10 +46,10 @@ void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
 
 	GLfloat box[4][4] = 
 	{
-		{x,     -y    , 0, 0},
-		{x + w, -y    , 1, 0},
-		{x,     -y - h, 0, 1},
-		{x + w, -y - h, 1, 1},
+	{x,     -y    , 0, 0},
+	{x + w, -y    , 1, 0},
+	{x,     -y - h, 0, 1},
+	{x + w, -y - h, 1, 1},
 	};
 
 	glUniform4fv(uniform_color, 1, color);
@@ -59,7 +57,7 @@ void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof box, box, GL_DYNAMIC_DRAW);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
- */
+	 */
 
 	glUseProgram(0);
 
@@ -71,9 +69,9 @@ void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
 	glPushMatrix();
 	{
 		glLoadIdentity();
-		
+
 		glBegin(GL_QUADS);
-		
+
 		glVertex2f(x,  y);
 		glVertex2f(x+w,y);
 		glVertex2f(x+w,y+h);
@@ -119,9 +117,6 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, math::color color, 
 
 	FT_GlyphSlot g = face->glyph;
 
-	// locations
-	GLint program;
-	glGetIntegerv(GL_CURRENT_PROGRAM, &program);
 
 	/*
 	   GLint uniform_tex = glGetUniformLocation(program, "tex");
@@ -158,7 +153,6 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, math::color color, 
 	glGenTextures(1, &tex);
 	glBindTexture(GL_TEXTURE_2D, tex);
 	p->get_uniform(glutpp::uniform_name::e::TEX)->load(0);
-	//glUniform1i(uniform_tex, 0);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -175,16 +169,15 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, math::color color, 
 	glGenBuffers(1, &vbo);
 	attrib_coord->enable();//glEnableVertexAttribArray(attribute_coord);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-
 	// this line fucks everything up -- not anymore! needed to bind attrib location using layout in shader
 	glVertexAttribPointer(attrib_coord->o_, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
-	glDisable(GL_DEPTH_TEST);
 
+
+
+	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 	glDisable(GL_CULL_FACE);
 
 
@@ -193,9 +186,6 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, math::color color, 
 	for(c = text; *c; c++)
 	{
 		if(FT_Load_Char(face, *c, FT_LOAD_RENDER)) continue;
-
-
-
 
 		glTexImage2D(
 				GL_TEXTURE_2D,
@@ -236,16 +226,12 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, math::color color, 
 
 
 	checkerror("unknown");
-
-	glEnable(GL_CULL_FACE);
-	glEnable(GL_DEPTH_TEST);
-
-	/*
-	   glDisableVertexAttribArray(attribute_coord);
-	   glBindBuffer(GL_ARRAY_BUFFER, 0);
-	   glBindTexture(GL_TEXTURE_2D, 0);
-	 */
-	glDisable(GL_BLEND);
+	
+	
+	attrib_coord->disable();
+	
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 }
 int	isExtensionSupported(const char *extension)

@@ -45,6 +45,8 @@ void	glutpp::renderable::resize(int w, int h){
 void	glutpp::renderable::render(double time){
 	printf("%s\n",__PRETTY_FUNCTION__);
 
+	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+
 	if(scene_)
 	{
 		scene_->render_shader(time);

@@ -1,5 +1,4 @@
 #include <GL/glew.h>
-#include <GL/glut.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -158,7 +157,7 @@ int	glutpp::actor::load(const char * name){
 	fclose(fp);
 
 	// print
-	//for(int i = 0; i < fh_.len_vertices_; ++i) vertices_[i].print();
+	for(int i = 0; i < fh_.len_vertices_; ++i) vertices_[i].print();
 
 	return 0;
 }
@@ -200,6 +199,7 @@ int	glutpp::actor::save(const char * filename){
 	return 0;
 }
 void	glutpp::actor::init_buffer(std::shared_ptr<glutpp::glsl::program> p){
+
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	checkerror("unknown");
@@ -296,6 +296,7 @@ void	glutpp::actor::model_load_shader(){
 	}*/
 }
 void	glutpp::actor::model_load_no_shader() {
+	exit(0);
 
 	math::mat44 model(pose_);
 
@@ -310,7 +311,7 @@ void	glutpp::actor::model_load_no_shader() {
 
 }
 void	glutpp::actor::model_unload_no_shader() {
-
+	exit(0);
 	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 
@@ -318,7 +319,7 @@ void	glutpp::actor::model_unload_no_shader() {
 int	glutpp::actor::draw_shader() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
+	auto p = glutpp::__master.current_program();
 	
 	checkerror("unknown");
 	
@@ -348,7 +349,7 @@ int	glutpp::actor::draw_shader() {
 	
 	printf("draw\n");
 	glDrawElements(GL_TRIANGLES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);checkerror("glDrawElements");
-	//glDrawElements(GL_LINES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);checkerror("glDrawElements");
+	glDrawElements(GL_LINES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);checkerror("glDrawElements");
 
 	
 
@@ -362,6 +363,8 @@ int	glutpp::actor::draw_shader() {
 
 }
 int	glutpp::actor::draw_no_shader() {
+	
+	exit(0);
 	
 	model_load_no_shader();
 	
@@ -382,8 +385,8 @@ void	glutpp::actor::render_reflection(){
 }
 void	glutpp::vertex::print(){
 
-	printf("% 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f\n",
-			position.x,position.y,position.z,
+	printf("% 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f % 2.1f\n",
+			position.x,position.y,position.z,position.w,
 			normal.x,normal.y,normal.z,
 			texcoor.x,texcoor.y);
 	//position.print();

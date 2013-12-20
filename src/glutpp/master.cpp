@@ -98,7 +98,8 @@ int	glutpp::master::reg(std::shared_ptr<glutpp::window> w) {
 		exit(0);
 	}
 	
-	if(all(glutpp::master::option::SHADERS)) create_programs();
+	//if(all(glutpp::master::option::SHADERS)) create_programs();
+	create_programs();
 	
 	return 0;
 }
@@ -113,12 +114,12 @@ int	glutpp::master::create_programs() {
 		p.reset(new glutpp::glsl::program);
 		p->init();
 
-		p->add_shader(GLUTPP_SHADER_DIR"/text/vs.glsl", GL_VERTEX_SHADER);
-		p->add_shader(GLUTPP_SHADER_DIR"/text/fs.glsl", GL_FRAGMENT_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v130/text/vs.glsl", GL_VERTEX_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v130/text/fs.glsl", GL_FRAGMENT_SHADER);
 
 		p->compile();
 
-		p->add_attrib(glutpp::attrib_name::e::COOR, "coord");
+		p->add_attrib(glutpp::attrib_name::e::COOR, "coord", 0);
 
 		p->add_uniform(glutpp::uniform_name::e::COLOR,"font_color");
 		p->add_uniform(glutpp::uniform_name::e::TEX,"tex");
@@ -137,15 +138,15 @@ int	glutpp::master::create_programs() {
 		p.reset(new glutpp::glsl::program);
 		p->init();
 
-		p->add_shader(GLUTPP_SHADER_DIR"/light/vs.glsl", GL_VERTEX_SHADER);
-		p->add_shader(GLUTPP_SHADER_DIR"/light/fs.glsl", GL_FRAGMENT_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v130/light/vs.glsl", GL_VERTEX_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v130/light/fs.glsl", GL_FRAGMENT_SHADER);
 
 		p->compile();
 
 		//p->add_uniform(glutpp::uniform_name::e::IMAGE, "image");
 
-		p->add_attrib(glutpp::attrib_name::e::POSITION, "position");
-		p->add_attrib(glutpp::attrib_name::e::NORMAL, "normal");
+		p->add_attrib(glutpp::attrib_name::e::POSITION, "position", 1);
+		p->add_attrib(glutpp::attrib_name::e::NORMAL, "normal", 2);
 		//p->add_attrib(glutpp::attrib_name::e::TEXCOOR, "texcoor");
 
 		p->add_uniform(glutpp::uniform_name::e::LIGHT_COUNT,"light_count");

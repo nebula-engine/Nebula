@@ -112,6 +112,8 @@ void	glutpp::window::step(double)
 }
 void	glutpp::window::loop()
 {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
 	double time;
 	
 	resize(w_,h_);
@@ -127,6 +129,8 @@ void	glutpp::window::loop()
 		glfwSwapBuffers(window_);
 		glfwPollEvents();
 	}
+
+	printf("window should close\n");
 }
 void	glutpp::window::callback_window_size_fun(GLFWwindow* window, int w, int h)
 {
@@ -187,13 +191,21 @@ void	glutpp::window::resize(int w,int h) {
 int	glutpp::window::prepare() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
-
+	
 	if(renderable_)
 	{
 		if(renderable_->scene_)
 		{
 			renderable_->scene_->prepare();
 		}
+		else
+		{
+			printf("no scene\n");
+		}
+	}
+	else
+	{
+		printf("no renderable\n");
 	}
 }
 int	glutpp::window::set_scene(std::shared_ptr<scene> scene) {

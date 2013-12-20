@@ -121,27 +121,27 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders/light" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/shaders/light/vs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders/v130/light" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/shaders/v130/light/vs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders/light" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/shaders/light/fs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders/v130/light" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/shaders/v130/light/fs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders/quad" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/shaders/quad/vs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders/v130/quad" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/shaders/v130/quad/vs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders/quad" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/shaders/quad/fs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders/v130/quad" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/shaders/v130/quad/fs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders/text" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/shaders/text/vs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders/v130/text" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/shaders/v130/text/vs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders/text" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/shaders/text/fs.glsl")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders/v130/text" TYPE FILE FILES "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/shaders/v130/text/fs.glsl")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")

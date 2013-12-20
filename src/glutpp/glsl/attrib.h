@@ -12,13 +12,14 @@ namespace glutpp
 		{
 			public:
 				attrib();
-				void		init(char const *);
+				void		init(char const *, GLuint);
 				int		locate(std::shared_ptr<glutpp::glsl::program> p);
 				void		enable();
 				void		disable();
 
 				char const *	name_;
 				GLuint		o_;
+				GLuint		o_bind_;
 		};
 	}
 }

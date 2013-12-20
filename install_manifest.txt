@@ -20,10 +20,10 @@
 /home/charles/usr/include/glutpp/gui/object/textview.h
 /home/charles/usr/include/glutpp/gui/object/edittext.h
 /home/charles/usr/include/glutpp/gui/object/object_factory.h
-/home/charles/usr/include/glutpp/glsl/shaders/light/vs.glsl
-/home/charles/usr/include/glutpp/glsl/shaders/light/fs.glsl
-/home/charles/usr/include/glutpp/glsl/shaders/quad/vs.glsl
-/home/charles/usr/include/glutpp/glsl/shaders/quad/fs.glsl
-/home/charles/usr/include/glutpp/glsl/shaders/text/vs.glsl
-/home/charles/usr/include/glutpp/glsl/shaders/text/fs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/v130/light/vs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/v130/light/fs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/v130/quad/vs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/v130/quad/fs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/v130/text/vs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/v130/text/fs.glsl
 /home/charles/usr/include/glutpp/objects/cube.obj

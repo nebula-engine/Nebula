@@ -56,10 +56,10 @@ int	glutpp::gui::layout::create_object(tinyxml2::XMLElement* element) {
 }
 void	glutpp::gui::layout::render_shader(double time)
 {
-	auto p = glutpp::__master.use_program(glutpp::program_name::e::TEXT);
+	//auto p = glutpp::__master.use_program(glutpp::program_name::e::TEXT);
 	
 	//Restore other states
-	glDisable(GL_LIGHTING);
+	//glDisable(GL_LIGHTING);
 	//glDisable(GL_ALPHA_TEST);
 	
 	//Set matrices for ortho
@@ -132,7 +132,7 @@ int	glutpp::gui::layout::search(int button, int action, int mods){
 	x = x / (float)w * 2.0 - 1.0;
 	y = y / (float)h * 2.0 - 1.0;
 
-	printf("%f %f\n", x, y, w, h);
+	printf("%f %f\n", x, y);
 
 	for(auto it = objects_.map_.begin(); it != objects_.map_.end(); ++it)
 	{
