@@ -61,6 +61,9 @@ int	neb::actor::Rigid_Body::key_fun(int key, int scancode, int action, int mods)
 				case GLFW_KEY_U:
 					torque_ += z * torque_scale;
 					return 1;
+				case GLFW_KEY_SPACE:
+					fire();
+					return 1;
 				default:
 					return 0;
 			}

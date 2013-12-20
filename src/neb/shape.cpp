@@ -11,7 +11,7 @@ neb::box::box(math::vec3 s)
 	
 	geo_ = new physx::PxBoxGeometry(s_.x/2.0, s_.y/2.0, s_.z/2.0);
 }
-neb::box::box(TiXmlElement* element)
+neb::box::box(tinyxml2::XMLElement* element)
 {
 	type_ = neb::shape::BOX;
 
@@ -30,7 +30,7 @@ neb::sphere::sphere(float radius)
 	
 	geo_ = new physx::PxSphereGeometry(radius_);
 }
-neb::sphere::sphere(TiXmlElement* element)
+neb::sphere::sphere(tinyxml2::XMLElement* element)
 {
 	type_ = neb::shape::SPHERE;
 

@@ -18,7 +18,7 @@ int		parse_shape_type(char const * str)
 	if(strcmp(str ,"sphere") == 0) return neb::shape::SPHERE;
 	return neb::shape::NONE;
 }
-neb::shape*	xml_parse_geo(TiXmlElement* element)
+neb::shape*	xml_parse_geo(tinyxml2::XMLElement* element)
 {
 	if(element == NULL) return NULL;
 
@@ -44,7 +44,7 @@ neb::shape*	xml_parse_geo(TiXmlElement* element)
 
 neb::scene::scene(): px_filter_shader_(NULL) {
 }
-std::shared_ptr<neb::actor::Light>			neb::scene::Create_Light(TiXmlElement* el_actor) {
+std::shared_ptr<neb::actor::Light>			neb::scene::Create_Light(tinyxml2::XMLElement* el_actor) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	// create
@@ -64,10 +64,10 @@ std::shared_ptr<neb::actor::Light>			neb::scene::Create_Light(TiXmlElement* el_a
 	
 	return actor;
 }
-void							neb::scene::Create_Actors(TiXmlElement* el_scene) {
+void							neb::scene::Create_Actors(tinyxml2::XMLElement* el_scene) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	TiXmlElement* el_actor = el_scene->FirstChildElement("actor");
+	tinyxml2::XMLElement* el_actor = el_scene->FirstChildElement("actor");
 
 	while( el_actor )
 	{
@@ -76,7 +76,7 @@ void							neb::scene::Create_Actors(TiXmlElement* el_scene) {
 		el_actor = el_actor->NextSiblingElement();
 	}
 }
-void							neb::scene::Create_Actor(TiXmlElement* el_actor) {
+void							neb::scene::Create_Actor(tinyxml2::XMLElement* el_actor) {
 	printf("create actors\n");
 
 	const char* buf = el_actor->Attribute("type");
@@ -113,7 +113,7 @@ void							neb::scene::Create_Actor(TiXmlElement* el_actor) {
 		assert(shared_from_this());
 	}
 }
-std::shared_ptr<neb::actor::Rigid_Dynamic>		neb::scene::Create_Rigid_Dynamic(TiXmlElement* el_actor) {
+std::shared_ptr<neb::actor::Rigid_Dynamic>		neb::scene::Create_Rigid_Dynamic(tinyxml2::XMLElement* el_actor) {
 	neb::actor::desc desc(neb::actor::RIGID_DYNAMIC);
 
 	// xml
@@ -132,7 +132,7 @@ std::shared_ptr<neb::actor::Rigid_Dynamic>		neb::scene::Create_Rigid_Dynamic(TiX
 
 	return Create_Rigid_Dynamic(desc);
 }
-std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(TiXmlElement* el_actor) {
+std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(tinyxml2::XMLElement* el_actor) {
 	// create
 	std::shared_ptr<neb::actor::Rigid_Static> actor(new neb::actor::Rigid_Static);
 
@@ -143,9 +143,9 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(TiXml
 	// xml
 	assert(el_actor);
 
-	//	TiXmlElement* el_size = el_actor->FirstChildElement("size");
-	//	TiXmlElement* el_velocity_lin = el_actor->FirstChildElement("velocity_linear");
-	//	TiXmlElement* el_velocity_ang = el_actor->FirstChildElement("velocity_angular");
+	//	tinyxml2::XMLElement* el_size = el_actor->FirstChildElement("size");
+	//	tinyxml2::XMLElement* el_velocity_lin = el_actor->FirstChildElement("velocity_linear");
+	//	tinyxml2::XMLElement* el_velocity_ang = el_actor->FirstChildElement("velocity_angular");
 
 	math::vec3 p = math::xml_parse_vec3( el_actor->FirstChildElement("p"));
 	math::quat q = math::xml_parse_quat(el_actor->FirstChildElement("q"));
@@ -273,7 +273,7 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(neb::
 
 	return actor;
 }
-std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static_Plane(TiXmlElement* el_actor) {
+std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static_Plane(tinyxml2::XMLElement* el_actor) {
 	// create
 	std::shared_ptr<neb::actor::Rigid_Static> actor(new neb::actor::Rigid_Static);
 
@@ -325,7 +325,7 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static_Plane
 
 	return actor;
 }
-std::shared_ptr<neb::actor::Controller>			neb::scene::Create_Controller(TiXmlElement* el_actor)
+std::shared_ptr<neb::actor::Controller>			neb::scene::Create_Controller(tinyxml2::XMLElement* el_actor)
 {
 	printf("%s\n",__FUNCTION__);
 

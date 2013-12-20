@@ -15,10 +15,10 @@
 #include <neb/actor/Controller.h>
 #include <neb/actor/Light.h>
 
-#include <tinyxml/tinyxml.h>
+#include <tinyxml2.h>
 
 int		parse_shape_type(char const * str);
-neb::shape*	xml_parse_geo(TiXmlElement* element);
+neb::shape*	xml_parse_geo(tinyxml2::XMLElement* element);
 
 namespace neb
 {
@@ -37,18 +37,18 @@ namespace neb
 				REMOTE
 			};
 			scene();
-			void		Create_Actors(TiXmlElement*);
-			void		Create_Actor(TiXmlElement*);
+			void		Create_Actors(tinyxml2::XMLElement*);
+			void		Create_Actor(tinyxml2::XMLElement*);
 
 
-			std::shared_ptr<neb::actor::Rigid_Dynamic>	Create_Rigid_Dynamic(TiXmlElement*);
-			std::shared_ptr<neb::actor::Rigid_Static>	Create_Rigid_Static(TiXmlElement*);
-			std::shared_ptr<neb::actor::Rigid_Static>	Create_Rigid_Static_Plane(TiXmlElement*);
+			std::shared_ptr<neb::actor::Rigid_Dynamic>	Create_Rigid_Dynamic(tinyxml2::XMLElement*);
+			std::shared_ptr<neb::actor::Rigid_Static>	Create_Rigid_Static(tinyxml2::XMLElement*);
+			std::shared_ptr<neb::actor::Rigid_Static>	Create_Rigid_Static_Plane(tinyxml2::XMLElement*);
 			std::shared_ptr<neb::actor::Rigid_Dynamic>	Create_Rigid_Dynamic(neb::actor::desc);
 			std::shared_ptr<neb::actor::Rigid_Static>	Create_Rigid_Static(neb::actor::desc);
 
-			std::shared_ptr<neb::actor::Controller>		Create_Controller(TiXmlElement*);
-			std::shared_ptr<neb::actor::Light>		Create_Light(TiXmlElement*);
+			std::shared_ptr<neb::actor::Controller>		Create_Controller(tinyxml2::XMLElement*);
+			std::shared_ptr<neb::actor::Light>		Create_Light(tinyxml2::XMLElement*);
 
 			void						draw();
 

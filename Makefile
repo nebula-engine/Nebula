@@ -35,11 +35,14 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
+# Escaping for special characters.
+EQUALS = =
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charles/Programming/C++/neb
+CMAKE_SOURCE_DIR = /home/charles/Programming/C++/nebula
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charles/Programming/C++/neb
+CMAKE_BINARY_DIR = /home/charles/Programming/C++/nebula
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -107,9 +110,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charles/Programming/C++/neb/CMakeFiles /home/charles/Programming/C++/neb/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/charles/Programming/C++/nebula/CMakeFiles /home/charles/Programming/C++/nebula/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charles/Programming/C++/neb/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/charles/Programming/C++/nebula/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

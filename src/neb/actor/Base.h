@@ -3,7 +3,6 @@
 
 #include <memory>
 
-#include <GL/glut.h>
 
 //#include <tinyxml/tinyxml.h>
 
@@ -33,7 +32,7 @@ namespace neb
 
 				virtual void		add_force() = 0;
 				virtual void		set_pose(math::transform);
-				virtual int		fire(int,int,int);
+				virtual int		fire();
 
 				virtual void		step_remote(double);
 

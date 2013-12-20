@@ -26,10 +26,6 @@ void	neb::user::connect(std::shared_ptr<glutpp::window> w)
 	
 	assert(conn_.key_fun_);
 	
-	
-	
-	
-	
 	assert(camera_control_);
 	
 	w->renderable_->camera_->control_ = camera_control_;

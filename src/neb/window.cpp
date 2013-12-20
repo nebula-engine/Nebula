@@ -9,6 +9,8 @@ void	neb::window::step(double time)
 {
         printf("%s\n", __PRETTY_FUNCTION__);
 
+	assert(!app_.expired());
+
         app_.lock()->step(time);
 }
 

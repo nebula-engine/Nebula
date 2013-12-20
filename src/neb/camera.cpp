@@ -155,7 +155,7 @@ physx::PxVec3 neb::camera::Move()
 void neb::camera::Look()
 {
 	//printf("%s\n", __FUNCTION__);
-
+/*
 	physx::PxVec3 up(  0,1,0);
 	physx::PxVec3 look(0,0,-1);
 
@@ -174,7 +174,7 @@ void neb::camera::Look()
 			eye_.x, eye_.y, eye_.z,
 			center.x, center.y, center.z,
 			up.x, up.y, up.z );
-
+*/
 }
 void	neb::camera::delete_scene()
 {

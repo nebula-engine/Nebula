@@ -27,7 +27,7 @@ void	neb::actor::Base::set_pose(math::transform pose)
 {
 	pose_ = pose;
 }
-int	neb::actor::Base::fire(int,int,int)
+int	neb::actor::Base::fire()
 {
 	return 1;
 }

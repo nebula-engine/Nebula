@@ -31,11 +31,14 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
+# Escaping for special characters.
+EQUALS = =
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charles/Programming/C++/neb
+CMAKE_SOURCE_DIR = /home/charles/Programming/C++/nebula
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charles/Programming/C++/neb
+CMAKE_BINARY_DIR = /home/charles/Programming/C++/nebula
 
 # Utility rule file for glutpp.
 
@@ -52,20 +55,20 @@ CMakeFiles/glutpp-complete: /home/charles/Programming/C++/glutpp/src/glutpp-stam
 CMakeFiles/glutpp-complete: /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-configure
 CMakeFiles/glutpp-complete: /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-build
 CMakeFiles/glutpp-complete: /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-install
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/neb/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Completed 'glutpp'"
-	/usr/bin/cmake -E make_directory /home/charles/Programming/C++/neb/CMakeFiles
-	/usr/bin/cmake -E touch /home/charles/Programming/C++/neb/CMakeFiles/glutpp-complete
+	/usr/bin/cmake -E make_directory /home/charles/Programming/C++/nebula/CMakeFiles
+	/usr/bin/cmake -E touch /home/charles/Programming/C++/nebula/CMakeFiles/glutpp-complete
 	/usr/bin/cmake -E touch /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-done
 
 /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-install: /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/neb/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Performing install step for 'glutpp'"
 	cd /home/charles/Programming/C++/glutpp && $(MAKE) install
 	cd /home/charles/Programming/C++/glutpp && /usr/bin/cmake -E touch /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-install
 
 /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-mkdir:
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/neb/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Creating directories for 'glutpp'"
 	/usr/bin/cmake -E make_directory /home/charles/Programming/C++/glutpp
 	/usr/bin/cmake -E make_directory /home/charles/Programming/C++/glutpp
@@ -76,30 +79,30 @@ CMakeFiles/glutpp-complete: /home/charles/Programming/C++/glutpp/src/glutpp-stam
 	/usr/bin/cmake -E touch /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-mkdir
 
 /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-download: /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-mkdir
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/neb/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "No download step for 'glutpp'"
 	/usr/bin/cmake -E touch /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-download
 
 /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-update: /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-download
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/neb/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "No update step for 'glutpp'"
 	/usr/bin/cmake -E touch /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-update
 
 /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-patch: /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-download
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/neb/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "No patch step for 'glutpp'"
 	/usr/bin/cmake -E touch /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-patch
 
 /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-configure: /home/charles/Programming/C++/glutpp/tmp/glutpp-cfgcmd.txt
 /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-configure: /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-update
 /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-configure: /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-patch
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/neb/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Performing configure step for 'glutpp'"
 	cd /home/charles/Programming/C++/glutpp && /usr/bin/cmake "-GUnix Makefiles" /home/charles/Programming/C++/glutpp
 	cd /home/charles/Programming/C++/glutpp && /usr/bin/cmake -E touch /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-configure
 
 /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-build: /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-configure
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/neb/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Performing build step for 'glutpp'"
 	cd /home/charles/Programming/C++/glutpp && make install
 	cd /home/charles/Programming/C++/glutpp && /usr/bin/cmake -E touch /home/charles/Programming/C++/glutpp/src/glutpp-stamp/glutpp-build
@@ -125,6 +128,6 @@ CMakeFiles/glutpp.dir/clean:
 .PHONY : CMakeFiles/glutpp.dir/clean
 
 CMakeFiles/glutpp.dir/depend:
-	cd /home/charles/Programming/C++/neb && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charles/Programming/C++/neb /home/charles/Programming/C++/neb /home/charles/Programming/C++/neb /home/charles/Programming/C++/neb /home/charles/Programming/C++/neb/CMakeFiles/glutpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charles/Programming/C++/nebula && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charles/Programming/C++/nebula /home/charles/Programming/C++/nebula /home/charles/Programming/C++/nebula /home/charles/Programming/C++/nebula /home/charles/Programming/C++/nebula/CMakeFiles/glutpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/glutpp.dir/depend
 

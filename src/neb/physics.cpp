@@ -91,7 +91,7 @@ void				neb::physics::Shutdown()
 	px_physics_->release();
 	px_foundation_->release();
 }
-std::shared_ptr<neb::scene>	neb::physics::Create_Scene(TiXmlElement* el_scene) {
+std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* el_scene) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	std::shared_ptr<neb::scene> scene(new neb::scene);

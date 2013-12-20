@@ -1,7 +1,7 @@
 #ifndef __NEBULA_SHAPE_H__
 #define __NEBULA_SHAPE_H__
 
-#include <tinyxml/tinyxml.h>
+#include <tinyxml2.h>
 
 #include <math/vec3.h>
 
@@ -24,14 +24,14 @@ namespace neb
 	{
 		public:
 			box(math::vec3);
-			box(TiXmlElement*);
+			box(tinyxml2::XMLElement*);
 
 	};
 	class sphere: public neb::shape
 	{
 		public:
 			sphere(float);
-			sphere(TiXmlElement*);
+			sphere(tinyxml2::XMLElement*);
 			float	radius_;
 	};
 }

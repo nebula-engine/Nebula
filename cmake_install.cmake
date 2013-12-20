@@ -1,4 +1,4 @@
-# Install script for directory: /home/charles/Programming/C++/neb
+# Install script for directory: /home/charles/Programming/C++/nebula
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,86 +33,86 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/charles/Programming/C++/neb/libnebula.a")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/charles/Programming/C++/nebula/libnebula.a")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/config.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/config.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/app.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/app.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/window.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/window.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/user.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/user.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/physics.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/physics.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/scene.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/scene.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/view.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/view.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/camera.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/camera.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/shape.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/shape.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/actor/desc.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/actor/desc.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/actor/Base.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/actor/Base.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/actor/Actor.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/actor/Actor.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/actor/Rigid_Actor.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Actor.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/actor/Rigid_Body.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Body.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/actor/Rigid_Dynamic.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Dynamic.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/actor/Rigid_Static.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Static.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/actor/Light.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/actor/Light.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/neb/src/neb/actor/Controller.h")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/actor" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/actor/Controller.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/network" TYPE FILE FILES
-    "/home/charles/Programming/C++/neb/src/neb/network/communicating.h"
-    "/home/charles/Programming/C++/neb/src/neb/network/client.h"
-    "/home/charles/Programming/C++/neb/src/neb/network/server.h"
+    "/home/charles/Programming/C++/nebula/src/neb/network/communicating.h"
+    "/home/charles/Programming/C++/nebula/src/neb/network/client.h"
+    "/home/charles/Programming/C++/nebula/src/neb/network/server.h"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
@@ -122,7 +122,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/charles/Programming/C++/neb/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/charles/Programming/C++/nebula/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/charles/Programming/C++/neb/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/charles/Programming/C++/nebula/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

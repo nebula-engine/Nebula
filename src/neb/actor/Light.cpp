@@ -1,4 +1,3 @@
-#include <GL/glut.h>
 
 #include <neb/actor/Light.h>
 

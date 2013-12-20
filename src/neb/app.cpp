@@ -13,22 +13,28 @@ neb::app::app()
 }
 void	neb::app::init()
 {
-	window_.reset(new neb::window(600, 600, 200, 100, "First Window"));
+	window_ = glutpp::__master.create_window<neb::window>(600, 600, 200, 100, "box");
+	
+	assert(window_);
 	
 	window_->app_ = shared_from_this();
+		
+	//window_.reset(new neb::window(600, 600, 200, 100, "First Window"));
 	
-	window_->init();
+	//window_->app_ = shared_from_this();
+	
+	//window_->init();
 }
 int	neb::app::load_scene(int name, char const * filename)
 {
-	TiXmlDocument document(filename);
-	if ( !document.LoadFile() )
+	tinyxml2::XMLDocument document;
+	if(document.LoadFile(filename))
 	{
 		printf ("XML file not found\n");
 		exit(0);
 	}
 	
-	TiXmlElement* el_scene = document.FirstChildElement("scene");
+	tinyxml2::XMLElement* el_scene = document.FirstChildElement("scene");
 	
 	
 	// scene
@@ -41,14 +47,14 @@ int	neb::app::load_scene(int name, char const * filename)
 }
 int	neb::app::load_layout(int name, char const * filename) {
 
-	TiXmlDocument document(filename);
-	if ( !document.LoadFile() )
+	tinyxml2::XMLDocument document;
+	if(document.LoadFile(filename))
 	{
 		printf ("XML file not found\n");
 		exit(0);
 	}
 	
-	TiXmlElement* element = document.FirstChildElement("layout");
+	tinyxml2::XMLElement* element = document.FirstChildElement("layout");
 	
 	std::shared_ptr<glutpp::gui::layout> layout(new glutpp::gui::layout);
 	layout->load_xml(element);
@@ -91,10 +97,15 @@ void    neb::app::step(double time)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
+	std::shared_ptr<neb::scene> scene;
 	
 	for(auto it = scenes_.begin(); it != scenes_.end(); ++it)
 	{
-		it->second->step(time);
+		scene = it->second;
+		
+		assert(scene);
+		
+		scene->step(time);
 	}
 
 }

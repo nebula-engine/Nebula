@@ -1,1 +1,1 @@
-cmd='/usr/bin/cmake;-GUnix Makefiles;/home/charles/Programming/C++/neb'
+cmd='/usr/bin/cmake;-GUnix Makefiles;/home/charles/Programming/C++/nebula'
