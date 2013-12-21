@@ -13,6 +13,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/camera.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/light.cpp.o"
+  "CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o"

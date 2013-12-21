@@ -14,10 +14,32 @@ glutpp::scene::scene() {
 glutpp::scene::~scene() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	glutpp::scene::init(std::shared_ptr<renderable> renderable){
+void	glutpp::scene::init(std::shared_ptr<renderable> renderable) {
+
+
 	assert(renderable);
 
 	renderable_ = renderable;
+}
+int	glutpp::scene::remove_actor(int i) {
+
+	printf("%s\n",__PRETTY_FUNCTION__);
+
+	auto it = actors_.map_.find(i);
+	
+	it->second->release();
+	
+	actors_.map_.erase(it);
+}
+int	glutpp::scene::remove_light(int i) {
+
+	printf("%s\n",__PRETTY_FUNCTION__);
+
+	auto it = lights_.map_.find(i);
+	
+	it->second->release();
+	
+	lights_.map_.erase(it);
 }
 void	glutpp::scene::add_actor(std::shared_ptr<actor> actor) {
 	printf("%s\n",__PRETTY_FUNCTION__);
@@ -61,8 +83,9 @@ void	glutpp::scene::render_shader(double time) {
 	assert(cam);
 	
 	auto p = glutpp::__master.use_program(glutpp::program_name::e::LIGHT);
-	
-	p->get_uniform(glutpp::uniform_name::LIGHT_COUNT)->load(lights_.next_);
+
+	int light_count = lights_.map_.size();
+	p->get_uniform(glutpp::uniform_name::LIGHT_COUNT)->load(light_count);
 	
 	
 	glEnable(GL_CULL_FACE);
@@ -70,22 +93,13 @@ void	glutpp::scene::render_shader(double time) {
 
 	cam->load_shader();
 	
-	lights_.foreach<glutpp::light>(&glutpp::light::load_shader);
-
+	int i = 0;
+	for(auto it = lights_.map_.begin(); it != lights_.map_.end(); ++it)
+	{
+		it->second->load_shader(i++);
+	}
+	
 	draw_shader();
-}
-void	glutpp::scene::render_no_shader(double time) {
-	printf("%s\n",__PRETTY_FUNCTION__);
-
-	auto cam = renderable_.lock()->camera_;
-
-	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-
-	cam->load_no_shader();
-
-	lights_.foreach<glutpp::light>(&glutpp::light::load_no_shader);
-
-	draw_no_shader();
 }
 /*void	glutpp::scene::render(double time)
 {
@@ -142,12 +156,6 @@ check_error();
 
 if(all(SHADOW)) lights_for_each(&glutpp::light::RenderShadowPost);
 }*/
-int	glutpp::scene::draw_no_shader() {
-
-	printf("%s\n",__PRETTY_FUNCTION__);
-	
-	actors_.foreach<glutpp::actor>(&glutpp::actor::draw_no_shader);
-}
 int	glutpp::scene::draw_shader() {
 	
 	printf("%s\n",__PRETTY_FUNCTION__);

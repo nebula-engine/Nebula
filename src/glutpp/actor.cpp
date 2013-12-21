@@ -17,7 +17,27 @@ glutpp::actor::actor(): type_(NONE) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	glutpp::actor::init(std::shared_ptr<scene> scene){
+int	glutpp::actor::release() {
+
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
+	assert(!scene_.expired());
+	auto scene = scene_.lock();
+	
+	for(auto a = actors_.begin(); a != actors_.end(); ++a)
+	{
+		scene->remove_actor(*a);
+	}
+	
+	for(auto b = lights_.begin(); b != lights_.end(); ++b)
+	{
+		scene->remove_light(*b);
+	}
+	
+	actors_.clear();
+	lights_.clear();
+}
+void	glutpp::actor::init(std::shared_ptr<scene> scene) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	assert(scene);
@@ -295,27 +315,6 @@ void	glutpp::actor::model_load_shader(){
 	{
 	}*/
 }
-void	glutpp::actor::model_load_no_shader() {
-	exit(0);
-
-	math::mat44 model(pose_);
-
-	math::mat44 scale;
-	scale.SetScale(s_);
-	
-	model = model * scale;
-	
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glMultMatrixf(model);
-
-}
-void	glutpp::actor::model_unload_no_shader() {
-	exit(0);
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
-
-}
 int	glutpp::actor::draw_shader() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -362,26 +361,7 @@ int	glutpp::actor::draw_shader() {
 	//p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->disable();
 
 }
-int	glutpp::actor::draw_no_shader() {
-	
-	exit(0);
-	
-	model_load_no_shader();
-	
-	glBegin(GL_TRIANGLES);
-	
-	int b;
-	for(int a = 0; a < fh_.len_indices_; ++a)
-	{
-		b = indices_[a];
-		glVertex4fv(vertices_[b].position);
-	}
-	
-	glEnd();
-	
-	model_unload_no_shader();
-}
-void	glutpp::actor::render_reflection(){
+void	glutpp::actor::render_reflection() {
 }
 void	glutpp::vertex::print(){
 

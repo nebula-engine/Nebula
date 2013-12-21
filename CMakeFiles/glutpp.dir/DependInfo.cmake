@@ -7,6 +7,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/charles/Programming/C++/glutpp/src/glutpp/actor.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/actor.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/camera.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/camera.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/camera_control.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/camera_control.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/desc_light.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/free.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/free.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/attrib.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/glsl/attrib.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/program.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o"

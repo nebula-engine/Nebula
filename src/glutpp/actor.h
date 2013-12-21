@@ -1,6 +1,7 @@
 #ifndef __GLUTPP_ACTOR_H__
 #define __GLUTPP_ACTOR_H__
 #include <memory>
+#include <vector>
 
 #include <math/vec4.h>
 #include <math/vec3.h>
@@ -33,11 +34,12 @@ namespace glutpp
 
 	class window;
 	class scene;
+	class light;
 	namespace glsl
 	{
 		class program;
 	}
-	class actor
+	class actor: public std::enable_shared_from_this<actor>
 	{
 		public:
 			enum
@@ -61,12 +63,12 @@ namespace glutpp
 
 
 			void		model_load_shader();
-			void		model_load_no_shader();
-			void		model_unload_no_shader();
 			
 			
 			virtual int	draw_shader();
-			virtual int	draw_no_shader();
+			
+			virtual int	release();
+			
 			
 			virtual void	render_reflection();
 			
@@ -99,6 +101,9 @@ namespace glutpp
 			material		material_front_;
 
 			std::weak_ptr<scene>	scene_;
+
+			std::vector<int>	actors_;
+			std::vector<int>	lights_;
 	};
 }
 

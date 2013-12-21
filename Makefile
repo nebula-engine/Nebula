@@ -224,6 +224,30 @@ src/glutpp/camera_control.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/camera_control.cpp.s
 .PHONY : src/glutpp/camera_control.cpp.s
 
+src/glutpp/desc_light.o: src/glutpp/desc_light.cpp.o
+.PHONY : src/glutpp/desc_light.o
+
+# target to build an object file
+src/glutpp/desc_light.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o
+.PHONY : src/glutpp/desc_light.cpp.o
+
+src/glutpp/desc_light.i: src/glutpp/desc_light.cpp.i
+.PHONY : src/glutpp/desc_light.i
+
+# target to preprocess a source file
+src/glutpp/desc_light.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.i
+.PHONY : src/glutpp/desc_light.cpp.i
+
+src/glutpp/desc_light.s: src/glutpp/desc_light.cpp.s
+.PHONY : src/glutpp/desc_light.s
+
+# target to generate assembly for a file
+src/glutpp/desc_light.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.s
+.PHONY : src/glutpp/desc_light.cpp.s
+
 src/glutpp/free.o: src/glutpp/free.cpp.o
 .PHONY : src/glutpp/free.o
 
@@ -654,6 +678,9 @@ help:
 	@echo "... src/glutpp/camera_control.o"
 	@echo "... src/glutpp/camera_control.i"
 	@echo "... src/glutpp/camera_control.s"
+	@echo "... src/glutpp/desc_light.o"
+	@echo "... src/glutpp/desc_light.i"
+	@echo "... src/glutpp/desc_light.s"
 	@echo "... src/glutpp/free.o"
 	@echo "... src/glutpp/free.i"
 	@echo "... src/glutpp/free.s"

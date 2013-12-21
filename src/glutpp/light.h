@@ -3,10 +3,11 @@
 
 #include <GLFW/glfw3.h>
 
+
 #include <glutpp/actor.h>
 #include <glutpp/camera.h>
 #include <glutpp/texture.h>
-
+#include <glutpp/desc_light.h>
 
 
 #include <math/color.h>
@@ -27,14 +28,12 @@ namespace glutpp
 			
 			light();
 			void		init(std::shared_ptr<scene>,int);
-			void		uniforms();
-			void		updateGL();
-			void		load_shader();
-			void		load_no_shader();
+			virtual int	release();
+			
+			void		load_shader(int);
 
 			void		load_shadow();
 			void		draw();
-			void		draw_shadow_no_shader();
 			void		dim();
 			void		RenderShadowPost();
 			void		RenderLightPOV();
@@ -43,47 +42,13 @@ namespace glutpp
 			
 
 			int		i_;
-
-
-			// camera (light position stored here)
-			camera		camera_;
-
-			// colors
-			math::color	ambient_;
-			math::color	diffuse_;
-			math::color	specular_;
+			desc_light	desc_;
 			
-			// other properties
-			math::vec3	spot_direction_;
-			float		spot_cutoff_;
-			float		spot_exponent_;
-			float		spot_light_cos_cutoff_;
-			float		atten_const_;
-			float		atten_linear_;
-			float		atten_quad_;
-			
-			// uniforms
-/*
-			uniform		uniform_position_;
-			uniform		uniform_ambient_;
-			uniform		uniform_diffuse_;
-			uniform		uniform_specular_;
-			uniform		uniform_spot_direction_;
-			uniform		uniform_spot_cutoff_;
-			uniform		uniform_spot_exponent_;
-			uniform		uniform_spot_light_cos_cutoff_;
-			uniform		uniform_atten_const_;
-			uniform		uniform_atten_linear_;
-			uniform		uniform_atten_quad_;
-			uniform		uniform_matrix_shadow_;
-			uniform		uniform_tex_shadow_;
-*/			
 			texture		texture_shadow_map_;
 
 			std::weak_ptr<scene>	scene_;
-			std::weak_ptr<actor>	actor_;
+			std::weak_ptr<actor>	parent_;
 			
-			GLenum			o_;
 	};
 }
 

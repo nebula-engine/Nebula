@@ -7,6 +7,7 @@ CMakeFiles/glutpp.dir/src/glutpp/actor.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -25,6 +26,7 @@ CMakeFiles/glutpp.dir/src/glutpp/camera.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -43,6 +45,7 @@ CMakeFiles/glutpp.dir/src/glutpp/camera_control.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -54,12 +57,16 @@ CMakeFiles/glutpp.dir/src/glutpp/camera_control.cpp.o
  src/glutpp/material.h
  src/glutpp/texture.h
  src/glutpp/window.h
+CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o
+ /home/charles/Programming/C++/glutpp/src/glutpp/desc_light.cpp
+ src/glutpp/desc_light.h
 CMakeFiles/glutpp.dir/src/glutpp/free.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/free.cpp
  src/glutpp/actor.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/free.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
@@ -78,6 +85,7 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/attrib.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -95,6 +103,7 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -112,6 +121,7 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -129,6 +139,7 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -147,6 +158,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -169,6 +181,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -205,6 +218,7 @@ CMakeFiles/glutpp.dir/src/glutpp/light.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -223,6 +237,7 @@ CMakeFiles/glutpp.dir/src/glutpp/master.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -240,6 +255,7 @@ CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -258,6 +274,7 @@ CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -277,6 +294,7 @@ CMakeFiles/glutpp.dir/src/glutpp/scene.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -296,6 +314,7 @@ CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h
  src/glutpp/glsl/shader.h
@@ -313,6 +332,7 @@ CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o
  src/glutpp/camera.h
  src/glutpp/camera_control.h
  src/glutpp/config.h
+ src/glutpp/desc_light.h
  src/glutpp/free.h
  src/glutpp/glsl/attrib.h
  src/glutpp/glsl/program.h

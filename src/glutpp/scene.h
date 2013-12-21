@@ -48,16 +48,13 @@ namespace glutpp
 			void			add_light(std::shared_ptr<light>);
 		
 		public:
-	//		void			objects_for_each(std::function<void(glutpp::object*)>);
-	//		void			lights_for_each(std::function<void(glutpp::light*)>);
-		
+			int			remove_actor(int);
+			int			remove_light(int);
+			
 			void			resize(int,int);
 
 			void			render_shader(double);
-			void			render_no_shader(double);
-			
 			int			draw_shader();
-			int			draw_no_shader();
 			
 			
 			std::weak_ptr<renderable>		renderable_;

@@ -14,6 +14,7 @@
 /home/charles/usr/include/glutpp/camera.h
 /home/charles/usr/include/glutpp/camera_control.h
 /home/charles/usr/include/glutpp/light.h
+/home/charles/usr/include/glutpp/desc_light.h
 /home/charles/usr/include/glutpp/material.h
 /home/charles/usr/include/glutpp/gui/layout.h
 /home/charles/usr/include/glutpp/gui/object/object.h

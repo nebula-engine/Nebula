@@ -6,22 +6,50 @@
 
 #IncludeRegexTransform: 
 
-/home/charles/Programming/C++/glutpp/src/glutpp/light.cpp
+/home/charles/Programming/C++/glutpp/src/glutpp/actor.cpp
+GL/glew.h
+-
 stdio.h
 -
-assert.h
+stdlib.h
+-
+sys/time.h
+-
+string.h
+-
+png.h
 -
 math/mat44.h
 -
-glutpp/light.h
+math/geo/polyhedron.h
 -
 glutpp/window.h
+-
+glutpp/actor.h
 -
 glutpp/scene.h
 -
 
+/home/charles/Programming/C++/glutpp/src/glutpp/scene.cpp
+stdio.h
+-
+glutpp/window.h
+-
+glutpp/renderable.h
+-
+glutpp/scene.h
+-
+glutpp/actor.h
+-
+glutpp/light.h
+-
+glutpp/glsl/program.h
+-
+
 src/glutpp/actor.h
 memory
+-
+vector
 -
 math/vec4.h
 -
@@ -63,6 +91,16 @@ gal/sig/connection.h
 -
 
 src/glutpp/config.h
+
+src/glutpp/desc_light.h
+tinyxml2.h
+-
+math/vec3.h
+-
+math/vec4.h
+-
+math/color.h
+-
 
 src/glutpp/glsl/attrib.h
 memory
@@ -127,6 +165,8 @@ glutpp/camera.h
 -
 glutpp/texture.h
 -
+glutpp/desc_light.h
+-
 math/color.h
 -
 
@@ -146,6 +186,18 @@ GLFW/glfw3.h
 
 src/glutpp/material.h
 math/color.h
+-
+
+src/glutpp/renderable.h
+memory
+-
+gal/flag.h
+-
+glutpp/gui/layout.h
+-
+glutpp/window.h
+-
+glutpp/scene.h
 -
 
 src/glutpp/scene.h

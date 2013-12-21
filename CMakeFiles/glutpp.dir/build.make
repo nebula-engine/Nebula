@@ -371,9 +371,32 @@ CMakeFiles/glutpp.dir/src/glutpp/light.cpp.o.provides: CMakeFiles/glutpp.dir/src
 
 CMakeFiles/glutpp.dir/src/glutpp/light.cpp.o.provides.build: CMakeFiles/glutpp.dir/src/glutpp/light.cpp.o
 
+CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o: CMakeFiles/glutpp.dir/flags.make
+CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o: src/glutpp/desc_light.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_15)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/desc_light.cpp
+
+CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/charles/Programming/C++/glutpp/src/glutpp/desc_light.cpp > CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.i
+
+CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/charles/Programming/C++/glutpp/src/glutpp/desc_light.cpp -o CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.s
+
+CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o.requires:
+.PHONY : CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o.requires
+
+CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o.provides: CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o.requires
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o.provides.build
+.PHONY : CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o.provides
+
+CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o.provides.build: CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o
+
 CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o: src/glutpp/material.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/material.cpp
 
@@ -396,7 +419,7 @@ CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o.provides.build: CMakeFiles/glutp
 
 CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o: src/glutpp/gui/layout.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/gui/layout.cpp
 
@@ -419,7 +442,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o.provides.build: CMakeFiles/glu
 
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o: src/glutpp/gui/object/object.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object.cpp
 
@@ -442,7 +465,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o: src/glutpp/gui/object/object_factory.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_18)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_19)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object_factory.cpp
 
@@ -465,7 +488,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o.provides.build:
 
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o: src/glutpp/gui/object/textview.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_19)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_20)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/textview.cpp
 
@@ -488,7 +511,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o.provides.build: CMake
 
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o: src/glutpp/gui/object/edittext.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_20)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_21)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/edittext.cpp
 
@@ -525,6 +548,7 @@ glutpp_OBJECTS = \
 "CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o" \
 "CMakeFiles/glutpp.dir/src/glutpp/camera.cpp.o" \
 "CMakeFiles/glutpp.dir/src/glutpp/light.cpp.o" \
+"CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o" \
 "CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o" \
 "CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o" \
 "CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o" \
@@ -549,6 +573,7 @@ libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/camera.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/light.cpp.o
+libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o
@@ -579,6 +604,7 @@ CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.o.r
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o.requires
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/camera.cpp.o.requires
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/light.cpp.o.requires
+CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o.requires
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o.requires
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o.requires
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o.requires

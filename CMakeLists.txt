@@ -18,6 +18,7 @@ set(src
 	src/glutpp/glsl/program.cpp
 	src/glutpp/camera.cpp
 	src/glutpp/light.cpp
+	src/glutpp/desc_light.cpp
 	src/glutpp/material.cpp
 	src/glutpp/gui/layout.cpp
 	src/glutpp/gui/object/object.cpp
@@ -62,6 +63,7 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/texture.h			DESTINATION include/glutp
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/camera.h			DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/camera_control.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/light.h			DESTINATION include/glutpp/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/desc_light.h			DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/material.h			DESTINATION include/glutpp/)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/layout.h			DESTINATION include/glutpp/gui)
