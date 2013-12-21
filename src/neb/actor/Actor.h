@@ -17,14 +17,14 @@ namespace neb
 			public:
 				Actor();
 				virtual void		init() = 0;
+				virtual int		release();
 				virtual void		add_force() = 0;
 				virtual void		set_pose(math::transform);
 				virtual int		fire();
 				
 				virtual void		step_remote(double) = 0;
 
-				physx::PxActor*				px_actor_;
-
+				physx::PxActor*		px_actor_;
 
 				//std::shared_ptr<glutpp::actor>		object_;
 		};
@@ -32,11 +32,5 @@ namespace neb
 }
 
 #endif
-
-
-
-
-
-
 
 

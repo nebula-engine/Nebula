@@ -14,7 +14,7 @@ namespace neb
 		{
 			public:
 				Controller();
-
+				virtual int		release();
 
 				virtual void		step(float);
 				virtual void		init();

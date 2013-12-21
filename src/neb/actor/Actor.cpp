@@ -46,14 +46,37 @@ int	neb::actor::Actor::fire()
 	
 	auto scene = get_scene();
 	
-	auto actor = scene->Create_Rigid_Dynamic(desc);
+	auto me = std::dynamic_pointer_cast<neb::actor::Actor>(shared_from_this());
+	
+	auto actor = scene->Create_Rigid_Dynamic(desc, me);
 
 	auto p = glutpp::__master.use_program(glutpp::program_name::e::LIGHT);
 	
 	actor->init_buffer(p);
+
+	//light
+	glutpp::desc_light desc_light;
+	desc_light.pos_ = math::vec4(0.0, 0.0, 0.0, 1.0);
+	desc_light.atten_linear_ = 2.0;
 	
-	return 1;
+	
+	scene->Create_Light(desc_light, actor);
+	
+	return 0;
 }
 void	neb::actor::Actor::step_remote(double)
 {}
+int	neb::actor::Actor::release()
+{
+	neb::actor::Base::release();
+	
+	//assert(!scene_.expired());
+	
+	assert(px_actor_);
+	px_actor_->release();
+	px_actor_ = NULL;
+	
+	return 0;
+}
+
 

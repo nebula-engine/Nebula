@@ -19,7 +19,8 @@ physx::PxFilterFlags	DefaultFilterShader(
 		physx::PxPairFlags& pairFlags,
 		const void* constantBlock,
 		physx::PxU32 constantBlockSize )
-{	printf("%s\n",__PRETTY_FUNCTION__);
+{	
+	printf("%s\n",__PRETTY_FUNCTION__);
 
 	printf("%i %i %i %i\n", filterData0.word0, filterData1.word1, filterData1.word0, filterData0.word1);
 
@@ -152,6 +153,7 @@ std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* el_
 	scene->px_scene_->setSimulationEventCallback(sec);
 	
 	// actors
+	scene->Create_Lights(el_scene);
 	scene->Create_Actors(el_scene);
 	
 	return scene;

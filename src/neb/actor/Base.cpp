@@ -7,6 +7,11 @@
 
 neb::actor::Base::Base()
 {}
+int				neb::actor::Base::release() {
+	glutpp::actor::release();
+
+	return 0;
+}
 std::shared_ptr<neb::app>	neb::actor::Base::get_app()
 {
 	auto scene = get_scene();

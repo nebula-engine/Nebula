@@ -25,7 +25,7 @@ namespace neb
 			public:
 				Base();
 				virtual void			init() = 0;
-
+				virtual int			release();
 
 
 				std::shared_ptr<neb::app>	get_app();
