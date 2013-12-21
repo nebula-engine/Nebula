@@ -6,24 +6,18 @@
 
 #IncludeRegexTransform: 
 
-/home/charles/Programming/C++/glutpp/src/glutpp/master.cpp
+/home/charles/Programming/C++/glutpp/src/glutpp/light.cpp
 stdio.h
 -
-stdlib.h
+assert.h
 -
-map
+math/mat44.h
 -
-ft2build.h
--
-GL/glew.h
--
-GLFW/glfw3.h
--
-glutpp/config.h
--
-glutpp/master.h
+glutpp/light.h
 -
 glutpp/window.h
+-
+glutpp/scene.h
 -
 
 src/glutpp/actor.h
@@ -152,6 +146,18 @@ GLFW/glfw3.h
 
 src/glutpp/material.h
 math/color.h
+-
+
+src/glutpp/scene.h
+vector
+-
+gal/flag.h
+-
+gal/map.h
+-
+glutpp/actor.h
+-
+glutpp/camera.h
 -
 
 src/glutpp/texture.h

@@ -43,8 +43,11 @@ namespace glutpp
 			
 			int			prepare();
 			
+		protected:
 			void			add_actor(std::shared_ptr<glutpp::actor>);
 			void			add_light(std::shared_ptr<light>);
+		
+		public:
 	//		void			objects_for_each(std::function<void(glutpp::object*)>);
 	//		void			lights_for_each(std::function<void(glutpp::light*)>);
 		
@@ -58,7 +61,7 @@ namespace glutpp
 			
 			
 			std::weak_ptr<renderable>		renderable_;
-			
+		//private:
 			gal::map<actor>				actors_;
 			gal::map<light>				lights_;
 	};

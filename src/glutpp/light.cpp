@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <assert.h>
 
+#include <math/mat44.h>
+
 #include <glutpp/light.h>
 #include <glutpp/window.h>
 #include <glutpp/scene.h>
@@ -105,13 +107,26 @@ void	glutpp::light::draw()
 {
 
 }
-void	glutpp::light::load_shader()
+math::vec4	glutpp::light::get_pose()
+{
+	math::vec4 pos = camera_.eye_;
+	
+	if(!actor_.expired())
+	{
+		pos = math::mat44(actor_.lock()->pose_) * pos;
+	}
+	
+	return pos;
+}
+void		glutpp::light::load_shader()
 {
 	//printf("%s\n",__PRETTY_FUNCTION__);
-
+	
 	auto p = glutpp::__master.current_program();
-
-	p->get_uniform(glutpp::uniform_name::e::LIGHT_POSITION)->load_4fv(			o_, camera_.eye_);
+	
+	math::vec4 pos = get_pose();
+	
+	p->get_uniform(glutpp::uniform_name::e::LIGHT_POSITION)->load_4fv(			o_, pos);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT)->load_4fv(			o_, ambient_);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE)->load_4fv(			o_, diffuse_);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR)->load_4fv(			o_, specular_);
@@ -127,7 +142,9 @@ void	glutpp::light::load_shader()
 
 void	glutpp::light::load_no_shader()
 {
-	glLightfv(GL_LIGHT0 + o_, GL_POSITION, camera_.eye_);		
+
+
+	glLightfv(GL_LIGHT0 + o_, GL_POSITION, camera_.eye_);
 	checkerror("glLightfv pos");
 	glLightfv(GL_LIGHT0 + o_, GL_AMBIENT, ambient_);
 	checkerror("glLightfv amb");

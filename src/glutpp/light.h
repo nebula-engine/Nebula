@@ -39,7 +39,8 @@ namespace glutpp
 			void		RenderShadowPost();
 			void		RenderLightPOV();
 			
-
+			math::vec4	get_pose();
+			
 
 			int		i_;
 
@@ -80,6 +81,8 @@ namespace glutpp
 			texture		texture_shadow_map_;
 
 			std::weak_ptr<scene>	scene_;
+			std::weak_ptr<actor>	actor_;
+			
 			GLenum			o_;
 	};
 }
