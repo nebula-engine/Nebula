@@ -3,42 +3,57 @@
 #include <neb/scene.h>
 #include <neb/shape.h>
 
-neb::box::box(math::vec3 s)
+int			neb::shape::box(math::vec3 s)
+{
+	neb::shape shape;
+	
+	shape.type = neb::shape::BOX;
+	
+	shape.s.x = s.x;
+	shape.s.y = s.y;
+	shape.s.z = s.z;
+	
+}
+int			neb::shape::box(tinyxml2::XMLElement* element)
 {
 	type_ = neb::shape::BOX;
 	
-	s_ = s;
-	
-	geo_ = new physx::PxBoxGeometry(s_.x/2.0, s_.y/2.0, s_.z/2.0);
+	s = math::xml_parse_vec3(element->FirstChildElement("s"));
 }
-neb::box::box(tinyxml2::XMLElement* element)
+int			neb::shape::sphere(float r)
 {
-	type_ = neb::shape::BOX;
-
-	s_ = math::xml_parse_vec3(element->FirstChildElement("s"));
+	type = neb::shape::SPHERE;
 	
-	geo_ = new physx::PxBoxGeometry(s_.x/2.0, s_.y/2.0, s_.z/2.0);
-}
-
-
-neb::sphere::sphere(float radius)
-{
-	type_ = neb::shape::SPHERE;
-
-	radius_ = radius;
-	s_ = math::vec3(radius_, radius_, radius_);
+	radius = radius;
+	s = math::vec3(radius_, radius_, radius_);
 	
 	geo_ = new physx::PxSphereGeometry(radius_);
 }
-neb::sphere::sphere(tinyxml2::XMLElement* element)
+int			neb::shape::sphere(tinyxml2::XMLElement* element)
 {
-	type_ = neb::shape::SPHERE;
-
+	type = neb::shape::SPHERE;
+	
 	radius_ = math::xml_parse_float(element->FirstChildElement("s"));
 	s_ = math::vec3(radius_, radius_, radius_);
 	
 	geo_ = new physx::PxSphereGeometry(radius_);
 }
+physx::PxGeometry*	neb::shape::to_geometry()
+{
+	physx::PxGeometry geo = NULL;
+
+	switch(type)
+	{
+		geo = new physx::PxBoxGeometry(s_.x/2.0, s_.y/2.0, s_.z/2.0);
+	}
+	
+	return geo;
+}
+
+
+
+
+
 
 
 

@@ -146,6 +146,7 @@ CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/actor/Rigid_Body.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/actor/Rigid_Dynamic.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/actor/Rigid_Static.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/actor/desc.h
+CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/actor/free.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/packet/packet.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/physics.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/scene.h

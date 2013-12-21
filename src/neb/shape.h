@@ -16,9 +16,8 @@ namespace neb
 				BOX,
 				SPHERE
 			};
-			int			type_;
-			math::vec3		s_;
-			physx::PxGeometry*	geo_;
+			int			type;
+			neb::packet::vec3	s;
 	};
 	class box: public neb::shape
 	{

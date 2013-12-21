@@ -5,6 +5,7 @@
 #include <neb/physics.h>
 #include <neb/scene.h>
 #include <neb/simulation_callback.h>
+#include <neb/actor/free.h>
 #include <neb/actor/Base.h>
 #include <neb/actor/Rigid_Dynamic.h>
 #include <neb/actor/Rigid_Static.h>
@@ -148,27 +149,13 @@ std::shared_ptr<neb::actor::Base>			neb::scene::Create_Actor(
 
 	return actor;
 }
-std::shared_ptr<neb::actor::Rigid_Dynamic>		neb::scene::Create_Rigid_Dynamic(
-		tinyxml2::XMLElement* el_actor, std::shared_ptr<neb::actor::Base> parent) {
+neb::scene::rigid_dynamic_t neb::scene::Create_Rigid_Dynamic(tinyxml2::XMLElement* el_actor, neb::scene::base_t parent) {
 
-	neb::actor::desc desc(neb::actor::RIGID_DYNAMIC);
+	neb::actor::desc desc;
+	desc.type_ = neb::actor::RIGID_DYNAMIC;
 
-	// xml
-	assert(el_actor);
-
-	desc.pose_.p = math::xml_parse_vec3( el_actor->FirstChildElement("p"));
-	desc.pose_.q = math::xml_parse_quat(el_actor->FirstChildElement("q"));
-
-
-	// choose geometry
-	neb::shape* shape = xml_parse_geo(el_actor->FirstChildElement("geo"));
-	assert(shape);
-
-	desc.shape_ = shape;
-
-	desc.filter_group_ = neb::simulation_callback::filter_group::NORMAL;
-	desc.filter_mask_  = neb::simulation_callback::filter_group::PROJECTILE;
-
+	neb::actor::load_desc(el_actor, &desc);
+	
 	return Create_Rigid_Dynamic(desc, parent);
 }
 std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(
@@ -176,22 +163,10 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	neb::actor::desc desc(neb::actor::RIGID_STATIC);
+	neb::actor::desc desc;
+	desc.type_ = neb::actor::RIGID_STATIC;
 
-	// xml
-	assert(el_actor);
-
-	desc.pose_.p = math::xml_parse_vec3( el_actor->FirstChildElement("p"));
-	desc.pose_.q = math::xml_parse_quat(el_actor->FirstChildElement("q"));
-
-	// choose geometry
-	neb::shape* shape = xml_parse_geo(el_actor->FirstChildElement("geo"));
-	assert(shape);
-
-	desc.shape_ = shape;
-
-	desc.filter_group_ = neb::simulation_callback::filter_group::NORMAL;
-	desc.filter_mask_ = neb::simulation_callback::filter_group::PROJECTILE;
+	neb::actor::load_desc(el_actor, &desc);
 
 	return Create_Rigid_Static(desc, parent);
 }
@@ -204,9 +179,29 @@ neb::scene::rigid_dynamic_t	neb::scene::Create_Rigid_Dynamic(neb::actor::desc de
 
 	actor->desc_ = desc;
 
-	actor->pose_ = desc.pose_;
-	actor->velocity_ = desc.velocity_;
-	actor->density_ = desc.density_;
+	actor->pose_ = math::transform(
+			math::vec3(
+				desc.pose.p.x,
+				desc.pose.p.y,
+				desc.pose.p.z
+				), 
+			math::quat(
+				desc.pose.q.w,
+				math::vec3(
+					desc.pose.q.v.x,
+					desc.pose.q.v.y,
+					desc.pose.q.v.z
+					)
+				)
+			);
+
+	actor->velocity_ = math::vec3(
+			desc.velocity.x,
+			desc.velocity.y,
+			desc.velocity.z
+			);
+
+	actor->density_ = desc.density;
 
 
 	// PxMaterial
@@ -220,14 +215,16 @@ neb::scene::rigid_dynamic_t	neb::scene::Create_Rigid_Dynamic(neb::actor::desc de
 		printf("create shape failed!");
 		exit(1);
 	}
-
+	
 	// PxShape
-	actor->px_shape_ = px_rigid_dynamic->createShape( *(desc.shape_->geo_), *px_mat );
+	actor->px_shape_ = px_rigid_dynamic->createShape( *(desc.shape.to_geo()), *px_mat );
+	
+	
+	
+	px_rigid_dynamic->setLinearVelocity(actor->velocity_, true);
 
-	px_rigid_dynamic->setLinearVelocity(desc.velocity_, true);
 
-
-	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, desc.density_);
+	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, desc.density);
 
 	// PxActor
 	actor->px_actor_ = px_rigid_dynamic;
@@ -242,12 +239,12 @@ neb::scene::rigid_dynamic_t	neb::scene::Create_Rigid_Dynamic(neb::actor::desc de
 
 	// init actor
 	actor->scene_ = shared_from_this();
-	actor->shape_ = desc.shape_;
+	actor->shape_ = desc.shape;
 	actor->init();
-
+	
 	actor->setupFiltering(
-			desc.filter_group_,
-			desc.filter_mask_
+			desc.filter_group,
+			desc.filter_mask
 			);
 
 	add_actor(actor);
@@ -268,7 +265,7 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(neb::
 
 	actor->desc_ = desc;
 
-	actor->pose_ = desc.pose_;
+	actor->pose_ = desc.pose.to_math();
 
 	// PxMaterial
 	physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
@@ -283,7 +280,7 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(neb::
 	}
 
 	// PxShape
-	actor->px_shape_ = px_rigid_static->createShape( *(desc.shape_->geo_), *px_mat );
+	actor->px_shape_ = px_rigid_static->createShape( *(desc.shape.to_geo()), *px_mat );
 
 	// PxActor
 	actor->px_actor_ = px_rigid_static;
@@ -482,6 +479,13 @@ void							neb::scene::step_remote(double time){
 
 	// receive
 }
+int		neb::scene::serialize() {
+
+
+
+	return 0;
+}
+
 
 
 

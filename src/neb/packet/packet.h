@@ -3,6 +3,8 @@
 
 #include <math/vec3.h>
 
+#include <neb/actor/desc.h>
+
 namespace neb
 {
 	struct actor_force
@@ -12,21 +14,24 @@ namespace neb
 		float	t_[3];
 	};
 
-
-	struct packet
-	{
-		enum
-{
-ACTOR_FORCE
-};
-
-		int type_;
-
-		union
+	namespace packet
+	{	
+		struct packet
 		{
-			actor_force af;
+			enum type
+			{
+				ACTOR_FORCE
+			};
+
+			int type_;
+
+			union
+			{
+				actor_force		af;
+				neb::actor::desc	desc_actor;
+			};
 		};
-	};
+	}
 }
 
 #endif

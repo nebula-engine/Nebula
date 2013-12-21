@@ -19,8 +19,8 @@ int	neb::actor::Actor::fire()
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	neb::actor::desc desc(neb::actor::RIGID_DYNAMIC);
-	
+	neb::actor::desc desc;
+	desc.type_ = neb::actor::RIGID_DYNAMIC;
 	
 	math::vec3 velocity(0.0, 0.0, -2.0);
 	velocity = pose_.q.rotate(velocity);

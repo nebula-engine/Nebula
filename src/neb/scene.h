@@ -54,8 +54,8 @@ namespace neb
 			rigid_dynamic_t		Create_Rigid_Dynamic(tinyxml2::XMLElement*, base_t);
 			rigid_static_t		Create_Rigid_Static(tinyxml2::XMLElement*, base_t);
 			rigid_static_t		Create_Rigid_Static_Plane(tinyxml2::XMLElement*, base_t);
-			rigid_dynamic_t		Create_Rigid_Dynamic(neb::actor::desc, base_t);
-			rigid_static_t		Create_Rigid_Static(neb::actor::desc, base_t);
+			rigid_dynamic_t		Create_Rigid_Dynamic(	neb::actor::desc, base_t = base_t());
+			rigid_static_t		Create_Rigid_Static(	neb::actor::desc, base_t);
 			
 			controller_t		Create_Controller(tinyxml2::XMLElement*);
 
@@ -68,7 +68,7 @@ namespace neb
 			void						step_local(double);
 			void						step_remote(double);
 
-			
+			int						serialize();
 
 			int						user_type_;
 

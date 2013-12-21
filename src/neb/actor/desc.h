@@ -5,6 +5,28 @@
 
 namespace neb
 {
+	namespace packet
+	{
+		struct vec3
+		{
+			float	x, y, z;
+		};
+		struct quat
+		{
+			vec3	v;
+			float	w;
+		};
+		struct transform
+		{
+			math::transform		to_math();
+			
+			vec3	p;
+			quat	q;
+		};
+	}
+
+
+
 	class shape;
 	namespace actor
 	{
@@ -22,17 +44,17 @@ namespace neb
 		};
 		struct desc
 		{
-			desc(neb::actor::type t = NONE);
+			desc();
 			type		type_;
+
+			packet::transform	pose;
+			packet::vec3		velocity;
+			float			density;
 			
-			math::transform pose_;
-			math::vec3	velocity_;
-			float		density_;
-			
-			physx::PxU32	filter_group_;
-			physx::PxU32	filter_mask_;
-			
-			neb::shape*	shape_;
+			physx::PxU32	filter_group;
+			physx::PxU32	filter_mask;
+
+			neb::shape*	shape;
 		};
 	}
 }
