@@ -24,7 +24,14 @@ namespace neb
 		{
 			desc(neb::actor::type t = NONE);
 			type		type_;
+			
 			math::transform pose_;
+			math::vec3	velocity_;
+			float		density_;
+			
+			physx::PxU32	filter_group_;
+			physx::PxU32	filter_mask_;
+			
 			neb::shape*	shape_;
 		};
 	}

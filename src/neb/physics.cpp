@@ -4,6 +4,7 @@
 
 #include <neb/physics.h>
 #include <neb/scene.h>
+#include <neb/simulation_callback.h>
 
 namespace neb
 {
@@ -18,7 +19,10 @@ physx::PxFilterFlags	DefaultFilterShader(
 		physx::PxPairFlags& pairFlags,
 		const void* constantBlock,
 		physx::PxU32 constantBlockSize )
-{
+{	printf("%s\n",__PRETTY_FUNCTION__);
+
+	printf("%i %i %i %i\n", filterData0.word0, filterData1.word1, filterData1.word0, filterData0.word1);
+
 	// let triggers through
         if(physx::PxFilterObjectIsTrigger(attributes0) || physx::PxFilterObjectIsTrigger(attributes1))
         {
@@ -51,7 +55,8 @@ neb::Physics::~base()
 //	jess::clog << neb_FUNCSIG << std::endl;
 }*/
 void	neb::physics::Init()
-{
+{	printf("%s\n",__PRETTY_FUNCTION__);
+
 	// Physx
 	// Foundation
 	px_foundation_ = PxCreateFoundation( PX_PHYSICS_VERSION, px_default_allocator_callback_, px_default_error_callback_ );
@@ -87,6 +92,7 @@ void	neb::physics::Init()
 void				neb::physics::Shutdown()
 {
 	//jess::clog << neb_FUNCSIG << std::endl;
+	printf("%s\n",__PRETTY_FUNCTION__);
 
 	px_physics_->release();
 	px_foundation_->release();
@@ -139,6 +145,11 @@ std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* el_
 	
 	scene->px_scene_ = px_physics_->createScene(scene_desc);
 	assert(scene->px_scene_);
+
+	// simulation callback
+	neb::simulation_callback* sec = new neb::simulation_callback;
+	scene->simulation_callback_ = sec;
+	scene->px_scene_->setSimulationEventCallback(sec);
 	
 	// actors
 	scene->Create_Actors(el_scene);

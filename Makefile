@@ -525,6 +525,30 @@ src/neb/shape.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/shape.cpp.s
 .PHONY : src/neb/shape.cpp.s
 
+src/neb/simulation_callback.o: src/neb/simulation_callback.cpp.o
+.PHONY : src/neb/simulation_callback.o
+
+# target to build an object file
+src/neb/simulation_callback.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o
+.PHONY : src/neb/simulation_callback.cpp.o
+
+src/neb/simulation_callback.i: src/neb/simulation_callback.cpp.i
+.PHONY : src/neb/simulation_callback.i
+
+# target to preprocess a source file
+src/neb/simulation_callback.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.i
+.PHONY : src/neb/simulation_callback.cpp.i
+
+src/neb/simulation_callback.s: src/neb/simulation_callback.cpp.s
+.PHONY : src/neb/simulation_callback.s
+
+# target to generate assembly for a file
+src/neb/simulation_callback.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.s
+.PHONY : src/neb/simulation_callback.cpp.s
+
 src/neb/user.o: src/neb/user.cpp.o
 .PHONY : src/neb/user.o
 
@@ -656,6 +680,9 @@ help:
 	@echo "... src/neb/shape.o"
 	@echo "... src/neb/shape.i"
 	@echo "... src/neb/shape.s"
+	@echo "... src/neb/simulation_callback.o"
+	@echo "... src/neb/simulation_callback.i"
+	@echo "... src/neb/simulation_callback.s"
 	@echo "... src/neb/user.o"
 	@echo "... src/neb/user.i"
 	@echo "... src/neb/user.s"

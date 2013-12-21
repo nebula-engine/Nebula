@@ -11,6 +11,7 @@ add_library(nebula
 	src/neb/user.cpp
 	src/neb/physics.cpp
 	src/neb/scene.cpp
+	src/neb/simulation_callback.cpp
 	src/neb/view.cpp
 	src/neb/shape.cpp
 	src/neb/camera.cpp
@@ -36,24 +37,26 @@ set(CMAKE_INSTALL_PREFIX $ENV{HOME}/usr)
 
 install(TARGETS nebula DESTINATION lib)
 
-install(FILES ${PROJECT_SOURCE_DIR}/neb/config.h	DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/app.h		DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/window.h	DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/user.h		DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/physics.h	DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/scene.h DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/view.h DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/camera.h DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/shape.h DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/desc.h DESTINATION include/neb/actor/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Base.h DESTINATION include/neb/actor/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Actor.h DESTINATION include/neb/actor/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Actor.h DESTINATION include/neb/actor/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Body.h DESTINATION include/neb/actor/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Dynamic.h DESTINATION include/neb/actor/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Static.h DESTINATION include/neb/actor/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Light.h DESTINATION include/neb/actor/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Controller.h DESTINATION include/neb/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/config.h		DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/app.h			DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/window.h		DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/user.h			DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/physics.h		DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/scene.h			DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/simulation_callback.h	DESTINATION include/neb/)
+
+install(FILES ${PROJECT_SOURCE_DIR}/neb/view.h			DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/camera.h		DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/shape.h			DESTINATION include/neb/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/desc.h		DESTINATION include/neb/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Base.h		DESTINATION include/neb/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Actor.h		DESTINATION include/neb/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Actor.h	DESTINATION include/neb/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Body.h	DESTINATION include/neb/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Dynamic.h	DESTINATION include/neb/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Static.h	DESTINATION include/neb/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Light.h		DESTINATION include/neb/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Controller.h	DESTINATION include/neb/actor/)
 
 set(files
 	${PROJECT_SOURCE_DIR}/neb/network/communicating.h

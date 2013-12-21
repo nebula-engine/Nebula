@@ -19,7 +19,7 @@ namespace neb
 				virtual void		init() = 0;
 				virtual void		add_force() = 0;
 				virtual void		set_pose(math::transform);
-				virtual int		fire(int,int,int);
+				virtual int		fire();
 				
 				virtual void		step_remote(double) = 0;
 

@@ -21,7 +21,7 @@ math::mat44	neb::camera_ridealong::supply()
 
 	
 	// offset vector relative to object
-	math::vec3 offset_v(0.0,0.0,-3.0);
+	math::vec3 offset_v(0.0,0.0,-0.0);
 	
 	// transform offset vector to object space
 	rotate.RotateVector3D(offset_v);

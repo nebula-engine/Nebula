@@ -4,6 +4,7 @@
 #include <neb/packet/packet.h>
 #include <neb/physics.h>
 #include <neb/scene.h>
+#include <neb/simulation_callback.h>
 #include <neb/actor/Base.h>
 #include <neb/actor/Rigid_Dynamic.h>
 #include <neb/actor/Rigid_Static.h>
@@ -114,6 +115,7 @@ void							neb::scene::Create_Actor(tinyxml2::XMLElement* el_actor) {
 	}
 }
 std::shared_ptr<neb::actor::Rigid_Dynamic>		neb::scene::Create_Rigid_Dynamic(tinyxml2::XMLElement* el_actor) {
+
 	neb::actor::desc desc(neb::actor::RIGID_DYNAMIC);
 
 	// xml
@@ -123,7 +125,10 @@ std::shared_ptr<neb::actor::Rigid_Dynamic>		neb::scene::Create_Rigid_Dynamic(tin
 	math::quat q = math::xml_parse_quat(el_actor->FirstChildElement("q"));
 
 	desc.pose_ = math::transform(p, q);
-
+	
+	desc.filter_group_ = neb::simulation_callback::filter_group::NORMAL;
+	desc.filter_mask_  = neb::simulation_callback::filter_group::PROJECTILE;
+	
 	// choose geometry
 	neb::shape* shape = xml_parse_geo(el_actor->FirstChildElement("geo"));
 	assert(shape);
@@ -133,12 +138,10 @@ std::shared_ptr<neb::actor::Rigid_Dynamic>		neb::scene::Create_Rigid_Dynamic(tin
 	return Create_Rigid_Dynamic(desc);
 }
 std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(tinyxml2::XMLElement* el_actor) {
-	// create
-	std::shared_ptr<neb::actor::Rigid_Static> actor(new neb::actor::Rigid_Static);
-
-	// inputs
-	physx::PxVec3 position;
-	physx::PxQuat orientation;
+	
+	printf("%s\n", __PRETTY_FUNCTION__);
+	
+	neb::actor::desc desc(neb::actor::RIGID_DYNAMIC);
 
 	// xml
 	assert(el_actor);
@@ -150,7 +153,7 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(tinyx
 	math::vec3 p = math::xml_parse_vec3( el_actor->FirstChildElement("p"));
 	math::quat q = math::xml_parse_quat(el_actor->FirstChildElement("q"));
 
-	actor->pose_ = math::transform(p, q);
+	desc->pose_ = math::transform(p, q);
 
 	// PxMaterial
 	physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
@@ -163,7 +166,7 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(tinyx
 		printf("create actor failed!");
 		exit(1);
 	}
-
+	
 	// choose geometry
 	neb::shape* shape = xml_parse_geo(el_actor->FirstChildElement("geo"));
 	assert(shape);
@@ -188,6 +191,13 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(tinyx
 	actor->shape_ = shape;
 	actor->init();
 
+	neb::actor::desc desc;
+	
+
+	actor->setupFiltering(
+			neb::simulation_callback::filter_group::NORMAL,
+			neb::simulation_callback::filter_group::PROJECTILE
+			);
 
 	return actor;
 }
@@ -196,6 +206,9 @@ std::shared_ptr<neb::actor::Rigid_Dynamic>		neb::scene::Create_Rigid_Dynamic(neb
 	std::shared_ptr<neb::actor::Rigid_Dynamic> actor(new neb::actor::Rigid_Dynamic);
 
 	actor->pose_ = desc.pose_;
+	actor->velocity_ = desc.velocity_;
+	actor->density_ = desc.density_;
+
 
 	// PxMaterial
 	physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
@@ -211,6 +224,11 @@ std::shared_ptr<neb::actor::Rigid_Dynamic>		neb::scene::Create_Rigid_Dynamic(neb
 
 	// PxShape
 	actor->px_shape_ = px_rigid_dynamic->createShape( *(desc.shape_->geo_), *px_mat );
+
+	px_rigid_dynamic->setLinearVelocity(desc.velocity_, true);
+
+
+	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, desc.density_);
 
 	// PxActor
 	actor->px_actor_ = px_rigid_dynamic;
@@ -230,12 +248,22 @@ std::shared_ptr<neb::actor::Rigid_Dynamic>		neb::scene::Create_Rigid_Dynamic(neb
 	actor->shape_ = desc.shape_;
 	actor->init();
 
+	actor->setupFiltering(
+			desc.filter_group_,
+			desc.filter_mask_
+			);
+
 	return actor;
 }
 std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(neb::actor::desc desc) {
+
+	printf("%s\n", __PRETTY_FUNCTION__);
+
 	// create
 	std::shared_ptr<neb::actor::Rigid_Static> actor(new neb::actor::Rigid_Static);
-
+	
+	actor->desc_ = desc;
+	
 	actor->pose_ = desc.pose_;
 
 	// PxMaterial
@@ -325,8 +353,7 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static_Plane
 
 	return actor;
 }
-std::shared_ptr<neb::actor::Controller>			neb::scene::Create_Controller(tinyxml2::XMLElement* el_actor)
-{
+std::shared_ptr<neb::actor::Controller>			neb::scene::Create_Controller(tinyxml2::XMLElement* el_actor){
 	printf("%s\n",__FUNCTION__);
 
 	//jess::scoped_ostream( &jess::clog, neb_FUNCSIG );
@@ -359,33 +386,30 @@ std::shared_ptr<neb::actor::Controller>			neb::scene::Create_Controller(tinyxml2
 
 	return actor;
 }
-void							neb::scene::step(double time)
-{
+void							neb::scene::step(double time){
 	switch(user_type_)
 	{
-	case neb::scene::LOCAL:
-		step_local(time);
-		break;
-	case neb::scene::REMOTE:
-		step_remote(time);
-		break;
-	default:
-		printf("invlaid scene user type\n");
-		exit(0);
-	}
-}
-void							neb::scene::step_local(double time)
-{
+		case neb::scene::LOCAL:
+			step_local(time);
+			break;
+		case neb::scene::REMOTE:
+			step_remote(time);
+			break;
+		default:
+			printf("invlaid scene user type\n");
+			exit(0);
+	}}
+void							neb::scene::step_local(double time){
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	double dt = time - last_;
 	last_ = time;
 
 	//physx::PxU32 nbPxactor = px_scene_->getNbActors(physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC);
-	
+
 	// forces
 	actors_.foreach<neb::actor::Base>(std::bind(&neb::actor::Base::add_force, std::placeholders::_1));
-	
+
 	// PxScene
 	px_scene_->simulate(dt);
 	px_scene_->fetchResults(true);
@@ -416,22 +440,43 @@ void							neb::scene::step_local(double time)
 		}
 		//printf("transform.p.y=%16f\n",activeTransforms[i].actor2World.p.y);
 	}
-}
-void							neb::scene::step_remote(double time)
-{
+	
+	assert(simulation_callback_);
+	
+	auto it = simulation_callback_->actors_to_delete_.begin();
+	while(it != simulation_callback_->actors_to_delete_.end())
+	{
+		int i = *it;
+		
+		remove_actor(i);
+		
+		simulation_callback_->actors_to_delete_.erase(it);
+	}}
+void							neb::scene::step_remote(double time){
 	// send
 	actors_.foreach<neb::actor::Base>(std::bind(
 				&neb::actor::Base::step_remote,
 				std::placeholders::_1,
 				time));
-
 	//neb::packet p;
 
 	//p.af.i = ;
 
 	// receive
 }
+int							neb::scene::remove_actor(int i) {
+	
+	auto base = actors_.at(i);
+	assert(base);
+	
+	auto actor = std::dynamic_pointer_cast<neb::actor::Actor>(base);
+	
+	px_scene_->removeActor(*(actor->px_actor_));
+	
+	actors_.erase(i);
 
+	return 0;
+}
 
 
 

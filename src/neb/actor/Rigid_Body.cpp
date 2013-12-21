@@ -12,8 +12,8 @@ int	neb::actor::Rigid_Body::key_fun(int key, int scancode, int action, int mods)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	float force_scale = 1.0;
-	float torque_scale = 1.0;
+	float force_scale = 100.0;
+	float torque_scale = 5.0;
 	
 
 	math::vec3 x(1.0,0.0,0.0);

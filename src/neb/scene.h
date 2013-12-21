@@ -26,6 +26,7 @@ namespace neb
 	{
 		struct desc;
 	}
+	class simulation_callback;
 	class view;
 	class scene: public glutpp::scene
 	{
@@ -56,13 +57,16 @@ namespace neb
 			void						step_local(double);
 			void						step_remote(double);
 
+			int						remove_actor(int i);
+
+
 
 			int						user_type_;
 
 			physx::PxSimulationFilterShader			px_filter_shader_;
 			
-			//gal::map<neb::actor::Base>			actors_;
-			//std::vector<neb::actor::Light*>			lights_;
+			neb::simulation_callback*			simulation_callback_;
+			
 			
 			physx::PxScene*					px_scene_;
 			

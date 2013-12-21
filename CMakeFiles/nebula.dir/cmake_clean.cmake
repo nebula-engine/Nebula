@@ -4,6 +4,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/nebula.dir/src/neb/user.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/physics.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/scene.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/view.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/shape.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/camera.cpp.o"

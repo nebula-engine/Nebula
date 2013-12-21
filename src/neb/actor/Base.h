@@ -12,6 +12,8 @@
 
 #include <PxPhysicsAPI.h>
 
+#include <neb/actor/desc.h>
+
 namespace neb
 {
 	class app;
@@ -35,9 +37,9 @@ namespace neb
 				virtual int		fire();
 
 				virtual void		step_remote(double);
-
-
-
+				
+				neb::actor::desc	desc_;
+				
 		};
 	}
 }

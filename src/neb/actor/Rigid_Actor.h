@@ -14,9 +14,10 @@ namespace neb
 			public:
 				virtual void		init() = 0;
 				virtual void		add_force() = 0;
-
+				
 				virtual void		step_remote(double);
-
+				virtual void		setupFiltering(physx::PxU32, physx::PxU32);
+				
 				physx::PxShape*		px_shape_;
 				shape*			shape_;
 		};
