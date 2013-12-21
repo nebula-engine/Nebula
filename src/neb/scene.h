@@ -31,6 +31,11 @@ namespace neb
 	class scene: public glutpp::scene
 	{
 		public:
+			typedef std::shared_ptr<neb::actor::Base> rigid_dynamic_t;
+			typedef std::shared_ptr<neb::actor::Rigid_Dynamic> rigid_dynamic_t;
+			typedef std::shared_ptr<neb::actor::Rigid_Static> rigid_dynamic_t;
+			
+			
 			enum
 			{
 				NONE = 0,
@@ -40,11 +45,10 @@ namespace neb
 			scene();
 			void		Create_Actors(tinyxml2::XMLElement*);
 			void		Create_Actor(tinyxml2::XMLElement*);
-
-
-			std::shared_ptr<neb::actor::Rigid_Dynamic>	Create_Rigid_Dynamic(tinyxml2::XMLElement*);
-			std::shared_ptr<neb::actor::Rigid_Static>	Create_Rigid_Static(tinyxml2::XMLElement*);
-			std::shared_ptr<neb::actor::Rigid_Static>	Create_Rigid_Static_Plane(tinyxml2::XMLElement*);
+			
+			rigid_dynamic_t		Create_Rigid_Dynamic(tinyxml2::XMLElement*, );
+			rigid_static_t		Create_Rigid_Static(tinyxml2::XMLElement*, );
+			rigid_static_t		Create_Rigid_Static_Plane(tinyxml2::XMLElement*);
 			std::shared_ptr<neb::actor::Rigid_Dynamic>	Create_Rigid_Dynamic(neb::actor::desc);
 			std::shared_ptr<neb::actor::Rigid_Static>	Create_Rigid_Static(neb::actor::desc);
 
