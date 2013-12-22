@@ -26,12 +26,12 @@ void	neb::simulation_callback::onContact(
 			actor0 = reinterpret_cast<neb::actor::Actor*>(pxactor0->userData);
 			actor1 = reinterpret_cast<neb::actor::Actor*>(pxactor1->userData);
 			
-			if(actor0->desc_.filter_group_ & neb::simulation_callback::filter_group::PROJECTILE)
+			if(actor0->desc_.filter_group & neb::simulation_callback::filter_group::PROJECTILE)
 			{
 				actors_to_delete_.push_back(actor0->i_);
 			}
 			
-			if(actor1->desc_.filter_group_ & neb::simulation_callback::filter_group::PROJECTILE)
+			if(actor1->desc_.filter_group & neb::simulation_callback::filter_group::PROJECTILE)
 			{
 				actors_to_delete_.push_back(actor1->i_);
 			}

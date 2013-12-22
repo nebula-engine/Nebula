@@ -127,7 +127,8 @@ void	neb::actor::Rigid_Body::add_force()
 }
 void	neb::actor::Rigid_Body::step_remote(double)
 {
-	neb::packet p;
+	neb::packet::packet p;
+/*
 	p.type_ = neb::packet::ACTOR_FORCE;
 	p.af.i_ = i_;
 	p.af.f_[0] = force_.x;
@@ -136,11 +137,11 @@ void	neb::actor::Rigid_Body::step_remote(double)
 	p.af.t_[0] = torque_.x;
 	p.af.t_[1] = torque_.y;
 	p.af.t_[2] = torque_.z;
-
+*/
 	gal::network::message::shared_t msg(new gal::network::message);
 
-	memcpy(msg->body(), &p, sizeof(neb::packet));
-	msg->body_length(sizeof(neb::packet));
+	memcpy(msg->body(), &p, sizeof(neb::packet::packet));
+	msg->body_length(sizeof(neb::packet::packet));
 	msg->encode_header();
 
 	get_app()->client_->write(msg);

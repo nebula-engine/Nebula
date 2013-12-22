@@ -5,7 +5,6 @@ namespace neb
 {
 	namespace actor
 	{
-		int	load_desc(tinyxml2::XMLElement*, neb::actor::desc * const);
 	}
 }
 

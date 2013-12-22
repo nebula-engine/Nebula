@@ -5,6 +5,8 @@
 
 #include <math/vec3.h>
 
+#include <neb/packet/basic.h>
+
 namespace neb
 {
 	class shape
@@ -16,23 +18,18 @@ namespace neb
 				BOX,
 				SPHERE
 			};
+
+			int			box(math::vec3);
+			int			box(tinyxml2::XMLElement*);
+			
+			int			sphere(float);
+			int			sphere(tinyxml2::XMLElement*);
+
+			physx::PxGeometry*	to_geo();
+
 			int			type;
 			neb::packet::vec3	s;
-	};
-	class box: public neb::shape
-	{
-		public:
-			box(math::vec3);
-			box(tinyxml2::XMLElement*);
-
-	};
-	class sphere: public neb::shape
-	{
-		public:
-			sphere(float);
-			sphere(tinyxml2::XMLElement*);
-			float	radius_;
-	};
+		};	
 }
 
 #endif

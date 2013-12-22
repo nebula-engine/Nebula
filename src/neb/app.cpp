@@ -64,7 +64,7 @@ int	neb::app::load_layout(int name, char const * filename) {
 	return 0;
 }
 int	neb::app::activate_scene(int name)
-{
+{	printf("%s\n", __PRETTY_FUNCTION__);
 	assert(window_);
 
 	auto it = scenes_.find(name);
@@ -79,7 +79,7 @@ int	neb::app::activate_scene(int name)
 	return 0;
 }
 int	neb::app::activate_layout(int name)
-{
+{	printf("%s\n", __PRETTY_FUNCTION__);
 	assert(window_);
 	
 	auto it = layouts_.find(name);

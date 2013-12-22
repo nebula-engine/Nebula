@@ -6,6 +6,8 @@
 /home/charles/usr/include/neb/physics.h
 /home/charles/usr/include/neb/scene.h
 /home/charles/usr/include/neb/simulation_callback.h
+/home/charles/usr/include/neb/packet/basic.h
+/home/charles/usr/include/neb/packet/packet.h
 /home/charles/usr/include/neb/view.h
 /home/charles/usr/include/neb/camera.h
 /home/charles/usr/include/neb/shape.h

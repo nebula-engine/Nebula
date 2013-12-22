@@ -5,13 +5,11 @@ void	neb::actor::Rigid_Static::init()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	assert(shape_);
-
 	//object_.reset(new glutpp::object);
 
-	s_ = shape_->s_;
+	s_ = shape_.s.to_math();
 	
-	switch(shape_->type_)
+	switch(shape_.type)
 	{
 		case neb::shape::BOX:
 			load("cube.obj");

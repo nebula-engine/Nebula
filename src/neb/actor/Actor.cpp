@@ -20,7 +20,7 @@ int	neb::actor::Actor::fire()
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	neb::actor::desc desc;
-	desc.type_ = neb::actor::RIGID_DYNAMIC;
+	desc.type = neb::actor::RIGID_DYNAMIC;
 	
 	math::vec3 velocity(0.0, 0.0, -2.0);
 	velocity = pose_.q.rotate(velocity);
@@ -28,19 +28,22 @@ int	neb::actor::Actor::fire()
 	math::vec3 offset(0.0, 0.0, -2.0);
 	offset = pose_.q.rotate(offset);
 	
-	desc.pose_ = pose_;
-	desc.pose_.p += offset;
+	auto pose = pose_;
+	pose.p += offset;
+	
+	desc.pose.from_math(pose);
+	
+	desc.velocity.from_math(velocity);
+	desc.density = 1000.0;
+	
+	desc.filter_group = neb::simulation_callback::filter_group::PROJECTILE;
+	desc.filter_mask = neb::simulation_callback::filter_group::NORMAL;
 
-	desc.velocity_ = velocity;
-	desc.density_ = 1000.0;
 	
-	desc.filter_group_ = neb::simulation_callback::filter_group::PROJECTILE;
-	desc.filter_mask_ = neb::simulation_callback::filter_group::NORMAL;
-
+	neb::shape shape;
+	shape.box(math::vec3(0.1,0.1,0.1));
 	
-	neb::shape* shape = new neb::box(math::vec3(0.1,0.1,0.1));
-	
-	desc.shape_ = shape;
+	desc.shape = shape;
 	
 	assert(!scene_.expired());
 	

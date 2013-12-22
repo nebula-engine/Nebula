@@ -20,26 +20,25 @@ int		parse_shape_type(char const * str)
 	if(strcmp(str ,"sphere") == 0) return neb::shape::SPHERE;
 	return neb::shape::NONE;
 }
-neb::shape*	xml_parse_geo(tinyxml2::XMLElement* element)
+neb::shape	xml_parse_geo(tinyxml2::XMLElement* element)
 {
-	if(element == NULL) return NULL;
-
 	int type = parse_shape_type(element->Attribute("type"));
-
-	neb::shape* shape = NULL;
-
+	
+	neb::shape shape;
+	shape.type = type;
+	
 	switch(type)
 	{
 		case neb::shape::BOX:
-			shape = new neb::box(element);
+			shape.box(element);
 			break;
 		case neb::shape::SPHERE:
-			shape = new neb::sphere(element);
+			shape.sphere(element);
 			break;
 		default:
 			break;
 	}
-
+	
 	return shape;
 }
 
@@ -152,9 +151,9 @@ std::shared_ptr<neb::actor::Base>			neb::scene::Create_Actor(
 neb::scene::rigid_dynamic_t neb::scene::Create_Rigid_Dynamic(tinyxml2::XMLElement* el_actor, neb::scene::base_t parent) {
 
 	neb::actor::desc desc;
-	desc.type_ = neb::actor::RIGID_DYNAMIC;
+	desc.type = neb::actor::RIGID_DYNAMIC;
 
-	neb::actor::load_desc(el_actor, &desc);
+	desc.load(el_actor);
 	
 	return Create_Rigid_Dynamic(desc, parent);
 }
@@ -164,9 +163,9 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	neb::actor::desc desc;
-	desc.type_ = neb::actor::RIGID_STATIC;
+	desc.type = neb::actor::RIGID_STATIC;
 
-	neb::actor::load_desc(el_actor, &desc);
+	desc.load(el_actor);
 
 	return Create_Rigid_Static(desc, parent);
 }
@@ -179,21 +178,7 @@ neb::scene::rigid_dynamic_t	neb::scene::Create_Rigid_Dynamic(neb::actor::desc de
 
 	actor->desc_ = desc;
 
-	actor->pose_ = math::transform(
-			math::vec3(
-				desc.pose.p.x,
-				desc.pose.p.y,
-				desc.pose.p.z
-				), 
-			math::quat(
-				desc.pose.q.w,
-				math::vec3(
-					desc.pose.q.v.x,
-					desc.pose.q.v.y,
-					desc.pose.q.v.z
-					)
-				)
-			);
+	actor->pose_ = desc.pose.to_math();
 
 	actor->velocity_ = math::vec3(
 			desc.velocity.x,
@@ -294,14 +279,11 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(neb::
 	px_scene_->addActor(*px_rigid_static);
 
 	// init actor
-	actor->shape_ = desc.shape_;
+	actor->shape_ = desc.shape;
 	actor->init();
-
-	actor->setupFiltering(
-			desc.filter_group_,
-			desc.filter_mask_
-			);
-
+	
+	actor->setupFiltering(desc.filter_group, desc.filter_mask);
+	
 	add_actor(actor);
 	if(parent)
 	{

@@ -453,6 +453,30 @@ src/neb/camera_ridealong.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.s
 .PHONY : src/neb/camera_ridealong.cpp.s
 
+src/neb/packet/basic.o: src/neb/packet/basic.cpp.o
+.PHONY : src/neb/packet/basic.o
+
+# target to build an object file
+src/neb/packet/basic.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/packet/basic.cpp.o
+.PHONY : src/neb/packet/basic.cpp.o
+
+src/neb/packet/basic.i: src/neb/packet/basic.cpp.i
+.PHONY : src/neb/packet/basic.i
+
+# target to preprocess a source file
+src/neb/packet/basic.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/packet/basic.cpp.i
+.PHONY : src/neb/packet/basic.cpp.i
+
+src/neb/packet/basic.s: src/neb/packet/basic.cpp.s
+.PHONY : src/neb/packet/basic.s
+
+# target to generate assembly for a file
+src/neb/packet/basic.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/packet/basic.cpp.s
+.PHONY : src/neb/packet/basic.cpp.s
+
 src/neb/physics.o: src/neb/physics.cpp.o
 .PHONY : src/neb/physics.o
 
@@ -671,6 +695,9 @@ help:
 	@echo "... src/neb/camera_ridealong.o"
 	@echo "... src/neb/camera_ridealong.i"
 	@echo "... src/neb/camera_ridealong.s"
+	@echo "... src/neb/packet/basic.o"
+	@echo "... src/neb/packet/basic.i"
+	@echo "... src/neb/packet/basic.s"
 	@echo "... src/neb/physics.o"
 	@echo "... src/neb/physics.i"
 	@echo "... src/neb/physics.s"

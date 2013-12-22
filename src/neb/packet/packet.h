@@ -2,20 +2,21 @@
 #define __NEBULA_PACKET_H__
 
 #include <math/vec3.h>
+#include <math/transform.h>
 
 #include <neb/actor/desc.h>
 
 namespace neb
 {
-	struct actor_force
-	{
-		int i_;
-		float	f_[3];
-		float	t_[3];
-	};
-
 	namespace packet
-	{	
+	{
+		struct actor_force
+		{
+			int i_;
+			float	f_[3];
+			float	t_[3];
+		};
+
 		struct packet
 		{
 			enum type
@@ -28,7 +29,9 @@ namespace neb
 			union
 			{
 				actor_force		af;
-				neb::actor::desc	desc_actor;
+				neb::packet::vec3	desc_actor;
+				neb::packet::quat	q;
+				neb::shape		s;
 			};
 		};
 	}

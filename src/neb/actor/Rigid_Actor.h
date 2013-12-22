@@ -19,7 +19,7 @@ namespace neb
 				virtual void		setupFiltering(physx::PxU32, physx::PxU32);
 				
 				physx::PxShape*		px_shape_;
-				shape*			shape_;
+				neb::shape		shape_;
 		};
 	}
 }
