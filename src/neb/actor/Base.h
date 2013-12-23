@@ -31,14 +31,18 @@ namespace neb
 				std::shared_ptr<neb::app>	get_app();
 				std::shared_ptr<neb::scene>	get_scene();
 
-
-				virtual void		add_force() = 0;
-				virtual void		set_pose(math::transform);
-				virtual int		fire();
-
-				virtual void		step_remote(double);
+				virtual neb::actor::desc	get_desc();
+				virtual neb::actor::desc	get_projectile();
 				
-				neb::actor::desc	desc_;
+
+
+				virtual void			add_force() = 0;
+				virtual void			set_pose(math::transform);
+				virtual int			fire();
+
+				virtual void			step_remote(double);
+				
+				neb::actor::desc		desc_;
 				
 		};
 	}

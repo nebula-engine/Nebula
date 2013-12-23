@@ -36,6 +36,12 @@ namespace neb
 			physx::PxU32		filter_mask;
 
 			neb::shape		shape;
+
+			int			parent;
+			int			actors[20];
+			int			actors_size;
+			int			lights[20];
+			int			lights_size;
 		};
 	}
 }

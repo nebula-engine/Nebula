@@ -17,53 +17,7 @@ void	neb::actor::Actor::set_pose(math::transform pose)
 }
 int	neb::actor::Actor::fire()
 {
-	printf("%s\n", __PRETTY_FUNCTION__);
-
-	neb::actor::desc desc;
-	desc.type = neb::actor::RIGID_DYNAMIC;
-	
-	math::vec3 velocity(0.0, 0.0, -2.0);
-	velocity = pose_.q.rotate(velocity);
-	
-	math::vec3 offset(0.0, 0.0, -2.0);
-	offset = pose_.q.rotate(offset);
-	
-	auto pose = pose_;
-	pose.p += offset;
-	
-	desc.pose.from_math(pose);
-	
-	desc.velocity.from_math(velocity);
-	desc.density = 1000.0;
-	
-	desc.filter_group = neb::simulation_callback::filter_group::PROJECTILE;
-	desc.filter_mask = neb::simulation_callback::filter_group::NORMAL;
-
-	
-	neb::shape shape;
-	shape.box(math::vec3(0.1,0.1,0.1));
-	
-	desc.shape = shape;
-	
-	assert(!scene_.expired());
-	
-	auto scene = get_scene();
-	
-	auto me = std::dynamic_pointer_cast<neb::actor::Actor>(shared_from_this());
-	
-	auto actor = scene->Create_Rigid_Dynamic(desc, me);
-
-	auto p = glutpp::__master.use_program(glutpp::program_name::e::LIGHT);
-	
-	actor->init_buffer(p);
-
-	//light
-	glutpp::desc_light desc_light;
-	desc_light.pos_ = math::vec4(0.0, 0.0, 0.0, 1.0);
-	desc_light.atten_linear_ = 2.0;
-	
-	
-	scene->Create_Light(desc_light, actor);
+	neb::actor::Base::fire();
 	
 	return 0;
 }

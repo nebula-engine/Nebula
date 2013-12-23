@@ -453,6 +453,78 @@ src/neb/camera_ridealong.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.s
 .PHONY : src/neb/camera_ridealong.cpp.s
 
+src/neb/network/client.o: src/neb/network/client.cpp.o
+.PHONY : src/neb/network/client.o
+
+# target to build an object file
+src/neb/network/client.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/client.cpp.o
+.PHONY : src/neb/network/client.cpp.o
+
+src/neb/network/client.i: src/neb/network/client.cpp.i
+.PHONY : src/neb/network/client.i
+
+# target to preprocess a source file
+src/neb/network/client.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/client.cpp.i
+.PHONY : src/neb/network/client.cpp.i
+
+src/neb/network/client.s: src/neb/network/client.cpp.s
+.PHONY : src/neb/network/client.s
+
+# target to generate assembly for a file
+src/neb/network/client.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/client.cpp.s
+.PHONY : src/neb/network/client.cpp.s
+
+src/neb/network/communicating.o: src/neb/network/communicating.cpp.o
+.PHONY : src/neb/network/communicating.o
+
+# target to build an object file
+src/neb/network/communicating.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o
+.PHONY : src/neb/network/communicating.cpp.o
+
+src/neb/network/communicating.i: src/neb/network/communicating.cpp.i
+.PHONY : src/neb/network/communicating.i
+
+# target to preprocess a source file
+src/neb/network/communicating.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.i
+.PHONY : src/neb/network/communicating.cpp.i
+
+src/neb/network/communicating.s: src/neb/network/communicating.cpp.s
+.PHONY : src/neb/network/communicating.s
+
+# target to generate assembly for a file
+src/neb/network/communicating.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.s
+.PHONY : src/neb/network/communicating.cpp.s
+
+src/neb/network/server.o: src/neb/network/server.cpp.o
+.PHONY : src/neb/network/server.o
+
+# target to build an object file
+src/neb/network/server.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/server.cpp.o
+.PHONY : src/neb/network/server.cpp.o
+
+src/neb/network/server.i: src/neb/network/server.cpp.i
+.PHONY : src/neb/network/server.i
+
+# target to preprocess a source file
+src/neb/network/server.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/server.cpp.i
+.PHONY : src/neb/network/server.cpp.i
+
+src/neb/network/server.s: src/neb/network/server.cpp.s
+.PHONY : src/neb/network/server.s
+
+# target to generate assembly for a file
+src/neb/network/server.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/server.cpp.s
+.PHONY : src/neb/network/server.cpp.s
+
 src/neb/packet/basic.o: src/neb/packet/basic.cpp.o
 .PHONY : src/neb/packet/basic.o
 
@@ -695,6 +767,15 @@ help:
 	@echo "... src/neb/camera_ridealong.o"
 	@echo "... src/neb/camera_ridealong.i"
 	@echo "... src/neb/camera_ridealong.s"
+	@echo "... src/neb/network/client.o"
+	@echo "... src/neb/network/client.i"
+	@echo "... src/neb/network/client.s"
+	@echo "... src/neb/network/communicating.o"
+	@echo "... src/neb/network/communicating.i"
+	@echo "... src/neb/network/communicating.s"
+	@echo "... src/neb/network/server.o"
+	@echo "... src/neb/network/server.i"
+	@echo "... src/neb/network/server.s"
 	@echo "... src/neb/packet/basic.o"
 	@echo "... src/neb/packet/basic.i"
 	@echo "... src/neb/packet/basic.s"

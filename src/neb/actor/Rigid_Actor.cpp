@@ -25,5 +25,14 @@ void	neb::actor::Rigid_Actor::setupFiltering(physx::PxU32 filterGroup, physx::Px
 	
 	delete[] shapes;
 }
-
+neb::actor::desc	neb::actor::Rigid_Actor::get_projectile() {
+	exit(0);
+	neb::actor::desc desc;
+	return desc;
+}
+neb::actor::desc	neb::actor::Rigid_Actor::get_desc() {
+	exit(0);
+	neb::actor::desc desc;
+	return desc;
+}
 

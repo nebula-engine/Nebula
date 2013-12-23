@@ -5,12 +5,16 @@
 
 namespace neb
 {
+	class app;
 	namespace network
 	{
 		class communicating: virtual public gal::network::communicating
 		{
 			public:
+				communicating(int);
 				void	process(gal::network::message::shared_t);
+
+				std::weak_ptr<neb::app>	app_;
 		};
 	}
 }

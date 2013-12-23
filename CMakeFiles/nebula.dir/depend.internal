@@ -63,8 +63,12 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Body.cpp
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
+ src/neb/actor/Controller.h
+ src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
+ src/neb/actor/Rigid_Dynamic.h
+ src/neb/actor/Rigid_Static.h
  src/neb/actor/desc.h
  src/neb/app.h
  src/neb/network/client.h
@@ -73,6 +77,7 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o
  src/neb/packet/basic.h
  src/neb/packet/packet.h
  src/neb/shape.h
+ src/neb/simulation_callback.h
  src/neb/window.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Dynamic.cpp
@@ -152,6 +157,34 @@ CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o
  src/neb/camera.h
  src/neb/packet/basic.h
  src/neb/shape.h
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.o
+ /home/charles/Programming/C++/nebula/src/neb/network/client.cpp
+ src/neb/network/client.h
+ src/neb/network/communicating.h
+CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o
+ /home/charles/Programming/C++/nebula/src/neb/network/communicating.cpp
+ src/neb/actor/Actor.h
+ src/neb/actor/Base.h
+ src/neb/actor/Controller.h
+ src/neb/actor/Light.h
+ src/neb/actor/Rigid_Actor.h
+ src/neb/actor/Rigid_Body.h
+ src/neb/actor/Rigid_Dynamic.h
+ src/neb/actor/Rigid_Static.h
+ src/neb/actor/desc.h
+ src/neb/app.h
+ src/neb/network/client.h
+ src/neb/network/communicating.h
+ src/neb/network/server.h
+ src/neb/packet/basic.h
+ src/neb/packet/packet.h
+ src/neb/scene.h
+ src/neb/shape.h
+ src/neb/window.h
+CMakeFiles/nebula.dir/src/neb/network/server.cpp.o
+ /home/charles/Programming/C++/nebula/src/neb/network/server.cpp
+ src/neb/network/communicating.h
+ src/neb/network/server.h
 CMakeFiles/nebula.dir/src/neb/packet/basic.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/packet/basic.cpp
  src/neb/packet/basic.h
@@ -183,12 +216,17 @@ CMakeFiles/nebula.dir/src/neb/scene.cpp.o
  src/neb/actor/Rigid_Static.h
  src/neb/actor/desc.h
  src/neb/actor/free.h
+ src/neb/app.h
+ src/neb/network/client.h
+ src/neb/network/communicating.h
+ src/neb/network/server.h
  src/neb/packet/basic.h
  src/neb/packet/packet.h
  src/neb/physics.h
  src/neb/scene.h
  src/neb/shape.h
  src/neb/simulation_callback.h
+ src/neb/window.h
 CMakeFiles/nebula.dir/src/neb/shape.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/shape.cpp
  src/neb/actor/Actor.h

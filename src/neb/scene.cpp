@@ -1,5 +1,6 @@
 #include <math/free.h>
 
+#include <neb/app.h>
 #include <neb/actor/desc.h>
 #include <neb/packet/packet.h>
 #include <neb/physics.h>
@@ -45,9 +46,13 @@ neb::shape	xml_parse_geo(tinyxml2::XMLElement* element)
 
 neb::scene::scene(): px_filter_shader_(NULL) {
 }
-std::shared_ptr<neb::actor::Light>			neb::scene::Create_Light(
-		tinyxml2::XMLElement* el_actor,
-		std::shared_ptr<neb::actor::Base> parent) {
+std::shared_ptr<neb::app>	neb::scene::get_app() {
+	
+	assert(!app_.expired());
+	
+	return app_.lock();
+}
+std::shared_ptr<neb::actor::Light>	neb::scene::Create_Light(tinyxml2::XMLElement* el_actor, std::shared_ptr<neb::actor::Base> parent) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -56,9 +61,7 @@ std::shared_ptr<neb::actor::Light>			neb::scene::Create_Light(
 	
 	return Create_Light(desc, parent);
 }
-std::shared_ptr<neb::actor::Light>			neb::scene::Create_Light(
-		glutpp::desc_light desc,
-		std::shared_ptr<neb::actor::Base> parent) {
+std::shared_ptr<neb::actor::Light>			neb::scene::Create_Light(glutpp::desc_light desc,		std::shared_ptr<neb::actor::Base> parent) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -78,9 +81,7 @@ std::shared_ptr<neb::actor::Light>			neb::scene::Create_Light(
 	
 	return actor;
 }
-void							neb::scene::Create_Actors(
-		tinyxml2::XMLElement* el_scene,
-		std::shared_ptr<neb::actor::Base> parent) {
+void	neb::scene::Create_Actors(tinyxml2::XMLElement* el_scene,		std::shared_ptr<neb::actor::Base> parent) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -101,9 +102,7 @@ void							neb::scene::Create_Actors(
 
 
 }
-void							neb::scene::Create_Lights(
-		tinyxml2::XMLElement* element,
-		std::shared_ptr<neb::actor::Base> parent) {
+void	neb::scene::Create_Lights(tinyxml2::XMLElement* element, std::shared_ptr<neb::actor::Base> parent) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -117,8 +116,7 @@ void							neb::scene::Create_Lights(
 		element_light = element_light->NextSiblingElement("light");
 	}
 }
-std::shared_ptr<neb::actor::Base>			neb::scene::Create_Actor(
-		tinyxml2::XMLElement* el_actor, std::shared_ptr<neb::actor::Base> parent) {
+std::shared_ptr<neb::actor::Base>			neb::scene::Create_Actor(tinyxml2::XMLElement* el_actor, std::shared_ptr<neb::actor::Base> parent) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -157,8 +155,7 @@ neb::scene::rigid_dynamic_t neb::scene::Create_Rigid_Dynamic(tinyxml2::XMLElemen
 	
 	return Create_Rigid_Dynamic(desc, parent);
 }
-std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(
-		tinyxml2::XMLElement* el_actor, neb::scene::base_t parent) {
+std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(tinyxml2::XMLElement* el_actor, neb::scene::base_t parent) {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 
@@ -426,13 +423,24 @@ void							neb::scene::step_local(double time){
 
 		//printf( "actor type = %i\n", px_actor->getType() );
 
-		neb::actor::Base* actor = static_cast<neb::actor::Base*>( active_transforms[i].userData );
-
+		physx::PxActor* pxactor = active_transforms[i].actor;
+		
+		neb::actor::Actor* actor = static_cast<neb::actor::Actor*>( active_transforms[i].userData );
+		
 		//neb_ASSERT( act );
 		if(actor != NULL)
 		{
 			pose = active_transforms[i].actor2World;
 			actor->set_pose(pose);
+			
+			
+			physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
+			if(pxrigidbody != NULL)
+			{
+				neb::actor::Rigid_Body* rigidbody = dynamic_cast<neb::actor::Rigid_Body*>(actor);
+				
+				rigidbody->velocity_ = pxrigidbody->getLinearVelocity();
+			}
 		}
 		//printf("transform.p.y=%16f\n",activeTransforms[i].actor2World.p.y);
 	}
@@ -461,12 +469,38 @@ void							neb::scene::step_remote(double time){
 
 	// receive
 }
-int		neb::scene::serialize() {
+int	neb::scene::send() {
+	
+	auto app = get_app();
+	
+	assert(app->server_);
+	assert(app->server_->clients_.size() > 0);
 
-
-
+	auto client = app->server_->clients_.at(0);
+	assert(client);
+	
+	
+	neb::packet::packet p;
+	p.type = neb::packet::type::SCENE;
+	
+	int i = 0;
+	for(auto it = actors_.map_.begin(); it != actors_.map_.end(); ++it)
+	{
+		auto actor = std::dynamic_pointer_cast<neb::actor::Base>(it->second);
+		
+		p.scene.desc[i] = actor->get_desc();
+	}	
+	
+	
+	
 	return 0;
 }
+int	neb::scene::recv(neb::packet::packet p) {
+	
+	
+	return 0;
+}
+
 
 
 

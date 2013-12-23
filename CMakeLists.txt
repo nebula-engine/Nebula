@@ -26,6 +26,9 @@ add_library(nebula
 	src/neb/actor/Rigid_Static.cpp
 	src/neb/actor/Light.cpp
 	src/neb/actor/Controller.cpp
+	src/neb/network/server.cpp
+	src/neb/network/client.cpp
+	src/neb/network/communicating.cpp
 )
 
 include_directories("${PROJECT_SOURCE_DIR}")

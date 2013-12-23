@@ -123,6 +123,8 @@ PxPhysicsAPI.h
 -
 gal/map.h
 -
+gal/network/message.h
+-
 glutpp/scene.h
 -
 glutpp/desc_light.h

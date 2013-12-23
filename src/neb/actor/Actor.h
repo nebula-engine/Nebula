@@ -21,9 +21,11 @@ namespace neb
 				virtual void		add_force() = 0;
 				virtual void		set_pose(math::transform);
 				virtual int		fire();
+				virtual neb::actor::desc	get_projectile() = 0;
+				virtual neb::actor::desc	get_desc() = 0;
 				
 				virtual void		step_remote(double) = 0;
-
+				
 				physx::PxActor*		px_actor_;
 
 				//std::shared_ptr<glutpp::actor>		object_;

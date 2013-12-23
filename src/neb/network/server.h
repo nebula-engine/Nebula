@@ -9,8 +9,7 @@ namespace neb
 {
         namespace network
         {
-                typedef gal::network::server<neb::network::communicating> server;
-
+        	typedef gal::network::server<neb::network::communicating> server;
         }
 }
 

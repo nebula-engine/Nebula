@@ -11,19 +11,15 @@
 neb::app::app()
 {
 }
-void	neb::app::init()
-{
-	window_ = glutpp::__master.create_window<neb::window>(600, 600, 200, 100, "box");
+void	neb::app::init() {
+}
+int	neb::app::create_window(int name, int w, int h, int x, int y, char const * title) {
+
+	windows_[name] = glutpp::__master.create_window<neb::window>(w,h,x,y,title);
 	
-	assert(window_);
-	
-	window_->app_ = shared_from_this();
-		
-	//window_.reset(new neb::window(600, 600, 200, 100, "First Window"));
-	
-	//window_->app_ = shared_from_this();
-	
-	//window_->init();
+	windows_[name]->app_ = shared_from_this();
+
+	return 0;
 }
 int	neb::app::load_scene(int name, char const * filename)
 {
@@ -63,33 +59,31 @@ int	neb::app::load_layout(int name, char const * filename) {
 	
 	return 0;
 }
-int	neb::app::activate_scene(int name)
-{	printf("%s\n", __PRETTY_FUNCTION__);
-	assert(window_);
-
-	auto it = scenes_.find(name);
-	if(it == scenes_.end())
-	{
-		printf("scene '%i' not found\n", name);
-		exit(0);
-	}
+int	neb::app::activate_scene(int name_window, int name_scene)
+{	
+	printf("%s\n", __PRETTY_FUNCTION__);
 	
-	window_->set_scene(it->second);
+	auto w = windows_[name_window];
+	auto s = scenes_[name_scene];
+	
+	assert(w);
+	assert(s);
+	
+	w->set_scene(s);
 	
 	return 0;
 }
-int	neb::app::activate_layout(int name)
-{	printf("%s\n", __PRETTY_FUNCTION__);
-	assert(window_);
+int	neb::app::activate_layout(int name_window, int name_layout)
+{
+	printf("%s\n", __PRETTY_FUNCTION__);
+
+	auto w = windows_[name_window];
+	auto l = layouts_[name_layout];
+
+	assert(w);
+	assert(l);
 	
-	auto it = layouts_.find(name);
-	if(it == layouts_.end())
-	{
-		printf("layout '%i' not found\n", name);
-		exit(0);
-	}
-	
-	window_->set_layout(it->second);
+	w->set_layout(l);
 	
 	return 0;
 }
@@ -108,6 +102,43 @@ void    neb::app::step(double time)
 		scene->step(time);
 	}
 
+}
+int	neb::app::prepare() {
+	
+	for(auto it = windows_.begin(); it = windows_.end(); ++it)
+	{
+		if(it->second) it->second->prepare();
+	}
+	
+	return 0;
+}
+int	neb::app::loop() {
+
+	while(1)
+	{
+
+		time = glfwGetTime();
+		
+		
+		auto it = windows_.begin();
+		while(it != windows_.end())
+		{
+			assert(it->second);
+			if(it->second->step(time))
+			{
+				windows_.erase(it);
+			}
+			else
+			{
+				++it;
+			}
+		}
+
+		glfwPollEvents();
+
+	}
+
+	return 0;
 }
 
 

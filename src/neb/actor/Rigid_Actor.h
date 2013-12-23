@@ -12,12 +12,17 @@ namespace neb
 			public neb::actor::Actor
 		{
 			public:
-				virtual void		init() = 0;
-				virtual void		add_force() = 0;
+				virtual void			init() = 0;
+				virtual void			add_force() = 0;
 				
-				virtual void		step_remote(double);
-				virtual void		setupFiltering(physx::PxU32, physx::PxU32);
+			
+				virtual void			step_remote(double);
+				virtual void			setupFiltering(physx::PxU32, physx::PxU32);
 				
+				virtual neb::actor::desc	get_projectile();
+				virtual neb::actor::desc	get_desc();
+
+
 				physx::PxShape*		px_shape_;
 				neb::shape		shape_;
 		};

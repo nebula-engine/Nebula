@@ -509,6 +509,75 @@ CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o.provides: CMakeFiles/nebula
 
 CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o.provides.build: CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o
 
+CMakeFiles/nebula.dir/src/neb/network/server.cpp.o: CMakeFiles/nebula.dir/flags.make
+CMakeFiles/nebula.dir/src/neb/network/server.cpp.o: src/neb/network/server.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_21)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/network/server.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/network/server.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/network/server.cpp
+
+CMakeFiles/nebula.dir/src/neb/network/server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nebula.dir/src/neb/network/server.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/charles/Programming/C++/nebula/src/neb/network/server.cpp > CMakeFiles/nebula.dir/src/neb/network/server.cpp.i
+
+CMakeFiles/nebula.dir/src/neb/network/server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nebula.dir/src/neb/network/server.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/charles/Programming/C++/nebula/src/neb/network/server.cpp -o CMakeFiles/nebula.dir/src/neb/network/server.cpp.s
+
+CMakeFiles/nebula.dir/src/neb/network/server.cpp.o.requires:
+.PHONY : CMakeFiles/nebula.dir/src/neb/network/server.cpp.o.requires
+
+CMakeFiles/nebula.dir/src/neb/network/server.cpp.o.provides: CMakeFiles/nebula.dir/src/neb/network/server.cpp.o.requires
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/server.cpp.o.provides.build
+.PHONY : CMakeFiles/nebula.dir/src/neb/network/server.cpp.o.provides
+
+CMakeFiles/nebula.dir/src/neb/network/server.cpp.o.provides.build: CMakeFiles/nebula.dir/src/neb/network/server.cpp.o
+
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: CMakeFiles/nebula.dir/flags.make
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/network/client.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_22)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/network/client.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/network/client.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/network/client.cpp
+
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nebula.dir/src/neb/network/client.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/charles/Programming/C++/nebula/src/neb/network/client.cpp > CMakeFiles/nebula.dir/src/neb/network/client.cpp.i
+
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nebula.dir/src/neb/network/client.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/charles/Programming/C++/nebula/src/neb/network/client.cpp -o CMakeFiles/nebula.dir/src/neb/network/client.cpp.s
+
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.o.requires:
+.PHONY : CMakeFiles/nebula.dir/src/neb/network/client.cpp.o.requires
+
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.o.provides: CMakeFiles/nebula.dir/src/neb/network/client.cpp.o.requires
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/client.cpp.o.provides.build
+.PHONY : CMakeFiles/nebula.dir/src/neb/network/client.cpp.o.provides
+
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.o.provides.build: CMakeFiles/nebula.dir/src/neb/network/client.cpp.o
+
+CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: CMakeFiles/nebula.dir/flags.make
+CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/network/communicating.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_23)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/network/communicating.cpp
+
+CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/charles/Programming/C++/nebula/src/neb/network/communicating.cpp > CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.i
+
+CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/charles/Programming/C++/nebula/src/neb/network/communicating.cpp -o CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.s
+
+CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o.requires:
+.PHONY : CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o.requires
+
+CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o.provides: CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o.requires
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o.provides.build
+.PHONY : CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o.provides
+
+CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o.provides.build: CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o
+
 # Object files for target nebula
 nebula_OBJECTS = \
 "CMakeFiles/nebula.dir/src/neb/app.cpp.o" \
@@ -530,7 +599,10 @@ nebula_OBJECTS = \
 "CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic.cpp.o" \
 "CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.o" \
 "CMakeFiles/nebula.dir/src/neb/actor/Light.cpp.o" \
-"CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o"
+"CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o" \
+"CMakeFiles/nebula.dir/src/neb/network/server.cpp.o" \
+"CMakeFiles/nebula.dir/src/neb/network/client.cpp.o" \
+"CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o"
 
 # External object files for target nebula
 nebula_EXTERNAL_OBJECTS =
@@ -555,6 +627,9 @@ libnebula.a: CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/src/neb/actor/Light.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o
+libnebula.a: CMakeFiles/nebula.dir/src/neb/network/server.cpp.o
+libnebula.a: CMakeFiles/nebula.dir/src/neb/network/client.cpp.o
+libnebula.a: CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/build.make
 libnebula.a: CMakeFiles/nebula.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libnebula.a"
@@ -585,6 +660,9 @@ CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynami
 CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.o.requires
 CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/actor/Light.cpp.o.requires
 CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o.requires
+CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/network/server.cpp.o.requires
+CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/network/client.cpp.o.requires
+CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o.requires
 .PHONY : CMakeFiles/nebula.dir/requires
 
 CMakeFiles/nebula.dir/clean:

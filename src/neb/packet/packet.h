@@ -10,30 +10,37 @@ namespace neb
 {
 	namespace packet
 	{
+		enum type
+		{
+			ACTOR_FORCE,
+			SCENE
+		};
+		
 		struct actor_force
 		{
-			int i_;
-			float	f_[3];
-			float	t_[3];
+			int		i_;
+			float		f_[3];
+			float		t_[3];
 		};
-
+		
+		struct scene
+		{
+			int			scene;
+			neb::actor::desc	desc[100];
+			unsigned int		desc_size;
+		};
+		
 		struct packet
 		{
-			enum type
-			{
-				ACTOR_FORCE
-			};
-
-			int type_;
-
+			int	type;
 			union
 			{
-				actor_force		af;
-				neb::packet::vec3	desc_actor;
-				neb::packet::quat	q;
-				neb::shape		s;
+				neb::packet::actor_force	actor_force;
+				neb::packet::scene		scene;
 			};
 		};
+		
+		
 	}
 }
 

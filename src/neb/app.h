@@ -17,7 +17,7 @@ namespace neb
 			app();
 			void				init();
 		
-
+			int				create_window(int name, int w, int h, int x, int y, char const * title);
 			int				load_scene(int,char const *);
 			int				load_layout(int,char const *);
 
@@ -25,17 +25,13 @@ namespace neb
 
 
 			
-			int				activate_scene(int);
+			int				activate_scene(int,int);
 			int				deactivate_scene(int);
-			int				activate_layout(int);
+			int				activate_layout(int,int);
 			int				deactivate_layout(int);
 			
 			
-			std::shared_ptr<neb::window>	window_;
-
-			
-			//std::shared_ptr<neb::view>      		view_;
-
+			std::map<int,std::shared_ptr<neb::window> >		windows_;
 			std::map<int,std::shared_ptr<glutpp::gui::layout> >	layouts_;
 			std::map<int,std::shared_ptr<neb::scene> >		scenes_;
 			

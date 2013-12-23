@@ -12,16 +12,19 @@ namespace neb
 		{
 			public:
 				Rigid_Body();
-				virtual void		init() = 0;
-				virtual void		add_force();
-				virtual int		key_fun(int,int,int,int);
+				virtual void			init() = 0;
+				virtual void			add_force();
+				virtual int			key_fun(int,int,int,int);
+
+				virtual neb::actor::desc	get_projectile();
+				virtual neb::actor::desc	get_desc();
+
+				virtual void			step_remote(double);
 				
-				virtual void		step_remote(double);
-
-
+				
 				
 				float			density_;
-				physx::PxVec3		velocity_;
+				math::vec3		velocity_;
 				math::vec3		force_;
 				math::vec3		torque_;
 		};

@@ -19,6 +19,9 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/Light.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/network/server.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/network/client.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o"
   "libnebula.pdb"
   "libnebula.a"
 )

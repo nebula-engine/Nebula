@@ -1,6 +1,7 @@
 #include <gal/network/server.h>
 
 #include <neb/app.h>
+#include <neb/simulation_callback.h>
 #include <neb/packet/packet.h>
 #include <neb/actor/Rigid_Body.h>
 
@@ -146,6 +147,54 @@ void	neb::actor::Rigid_Body::step_remote(double)
 
 	get_app()->client_->write(msg);
 }
+neb::actor::desc	neb::actor::Rigid_Body::get_projectile() {
+	printf("%s\n", __PRETTY_FUNCTION__);
+	
+	neb::actor::desc desc;
+	
+	desc.type = neb::actor::RIGID_DYNAMIC;
+	
+	math::vec3 velocity(0.0, 0.0, -4.0);
+	velocity = pose_.q.rotate(velocity);
+	velocity += velocity_;
+	desc.velocity.from_math(velocity);
+	
+	math::vec3 offset(0.0, 0.0, -2.0);
+	offset = pose_.q.rotate(offset);
+
+	auto pose = pose_;
+	pose.p += offset;
+	
+	
+	
+	desc.pose.from_math(pose);
+
+	
+	desc.density = 1000.0;
+
+	desc.filter_group = neb::simulation_callback::filter_group::PROJECTILE;
+	desc.filter_mask = neb::simulation_callback::filter_group::NORMAL;
+
+
+	neb::shape shape;
+	shape.box(math::vec3(0.1,0.1,0.1));
+
+	desc.shape = shape;
+
+	return desc;
+}
+neb::actor::desc	neb::actor::Rigid_Body::get_desc() {
+	
+	neb::actor::desc desc = neb::actor::Base::get_desc();
+	
+	desc.velocity.from_math(velocity_);
+	
+	return desc;
+}
+
+
+
+
 
 
 
