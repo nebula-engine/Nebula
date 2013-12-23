@@ -107,10 +107,7 @@ void	glutpp::window::render(double time)
 void	glutpp::window::callback_window_refresh_fun(GLFWwindow*)
 {
 }
-void	glutpp::window::step(double)
-{
-}
-void	glutpp::window::loop()
+int	glutpp::window::step(double time)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -120,14 +117,11 @@ void	glutpp::window::loop()
 	
 	while (!glfwWindowShouldClose(window_))
 	{
-		time = glfwGetTime();
-		
 		step(time);
 		
 		render(time);
 		
 		glfwSwapBuffers(window_);
-		glfwPollEvents();
 	}
 
 	printf("window should close\n");
