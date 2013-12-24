@@ -10,6 +10,7 @@ add_library(nebula
 	src/neb/user.cpp
 	src/neb/physics.cpp
 	src/neb/scene.cpp
+	src/neb/vehicle_manager.cpp
 	src/neb/simulation_callback.cpp
 	src/neb/view.cpp
 	src/neb/shape.cpp

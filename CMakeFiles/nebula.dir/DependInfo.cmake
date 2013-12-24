@@ -25,6 +25,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/charles/Programming/C++/nebula/src/neb/shape.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/shape.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/simulation_callback.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/user.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/user.cpp.o"
+  "/home/charles/Programming/C++/nebula/src/neb/vehicle_manager.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/view.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/view.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")

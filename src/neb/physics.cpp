@@ -25,20 +25,31 @@ physx::PxFilterFlags	DefaultFilterShader(
 	printf("%i %i %i %i\n", filterData0.word0, filterData1.word1, filterData1.word0, filterData0.word1);
 
 	// let triggers through
-        if(physx::PxFilterObjectIsTrigger(attributes0) || physx::PxFilterObjectIsTrigger(attributes1))
-        {
-                pairFlags = physx::PxPairFlag::eTRIGGER_DEFAULT;
-                return physx::PxFilterFlag::eDEFAULT;
-        }
-	
-        // generate contacts for all that were not filtered above
-        pairFlags = physx::PxPairFlag::eCONTACT_DEFAULT;
+	if(physx::PxFilterObjectIsTrigger(attributes0) || physx::PxFilterObjectIsTrigger(attributes1))
+	{
+		pairFlags = physx::PxPairFlag::eTRIGGER_DEFAULT;
+		return physx::PxFilterFlag::eDEFAULT;
+	}
 
-        // trigger the contact callback for pairs (A,B) where
-        // the filtermask of A contains the ID of B and vice versa.
-        if((filterData0.word0 & filterData1.word1) && (filterData1.word0 & filterData0.word1))
-                pairFlags |= physx::PxPairFlag::eNOTIFY_TOUCH_FOUND;
-	
+	physx::PxU32 c0 = filterData0.word0 & filterData1.word1;
+	physx::PxU32 c1 = filterData1.word0 & filterData0.word1;
+
+
+	if(filterData0.word0 != 0 || filterData1.word0 != 0)
+	{
+		// trigger the contact callback for pairs (A,B) where
+		// the filtermask of A contains the ID of B and vice versa.
+		if(c0 && c1)
+		{
+			pairFlags = physx::PxPairFlag::eCONTACT_DEFAULT;
+			pairFlags |= physx::PxPairFlag::eNOTIFY_TOUCH_FOUND;	
+		}
+		else if(!(c0 || c1))
+		{
+			return physx::PxFilterFlag::eSUPPRESS;
+		}
+	}
+
 	return physx::PxFilterFlag::eDEFAULT;
 }
 
@@ -89,40 +100,40 @@ void	neb::physics::Init()
 	// character controller manager
 	px_character_controller_manager_ = ::PxCreateControllerManager( *px_foundation_ );
 	assert( px_character_controller_manager_ );
-	
+
 	// vehicle
 	assert( PxInitVehicleSDK(*px_physics_) );
-	
+
 	PxVehicleSetBasisVectors(physx::PxVec3(0,1,0), physx::PxVec3(0,0,-1));
-	
-	PxVehicleSetUpdateMode(PxVehicleUpdateMode::Enum::eACCELERATION);
-	
-	
+
+	PxVehicleSetUpdateMode(physx::PxVehicleUpdateMode::Enum::eACCELERATION);
+
+
 }
 void				neb::physics::Shutdown()
 {
 	//jess::clog << neb_FUNCSIG << std::endl;
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	PxCloseVehicleSDK();
+	physx::PxCloseVehicleSDK();
 
 	px_physics_->release();
 	px_foundation_->release();
 }
 std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* el_scene) {
 	printf("%s\n",__PRETTY_FUNCTION__);
-	
+
 	assert(px_physics_ != NULL);
-	
+
 	std::shared_ptr<neb::scene> scene(new neb::scene);
-	
+
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
-	
+
 	scene_desc.gravity = physx::PxVec3(0.0f, -9.8f, 0.0f);
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
-	
+
 	int m_nbThreads = 1;
-	
+
 	// cpu dispatcher
 	printf("cpu dispatcher\n");
 	if( !scene_desc.cpuDispatcher )
@@ -135,9 +146,9 @@ std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* el_
 
 	// filter shader
 	printf("filter shader\n");
-	if( !scene_desc.filterShader )
+	if(!scene_desc.filterShader)
 	{
-		if ( scene->px_filter_shader_ )
+		if(scene->px_filter_shader_)
 		{
 			scene_desc.filterShader = scene->px_filter_shader_;
 		}
@@ -146,7 +157,10 @@ std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* el_
 			scene_desc.filterShader = DefaultFilterShader;
 		}
 	}
-
+	
+	
+	
+	
 	// gpu dispatcher
 	printf("gpu dispatcher\n");
 #ifdef PX_WINDOWS
@@ -156,9 +170,9 @@ std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* el_
 	}
 #endif
 	assert( scene_desc.isValid() );
-	
-	
-	
+
+
+
 	scene->px_scene_ = px_physics_->createScene(scene_desc);
 	assert(scene->px_scene_);
 
@@ -166,11 +180,11 @@ std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* el_
 	neb::simulation_callback* sec = new neb::simulation_callback;
 	scene->simulation_callback_ = sec;
 	scene->px_scene_->setSimulationEventCallback(sec);
-	
+
 	// actors
 	scene->Create_Lights(el_scene);
 	scene->Create_Actors(el_scene);
-	
+
 	return scene;
 }
 /*std::shared_ptr<n34200::rigid_dynamic>		neb::physics::create_rigid_dynamic(

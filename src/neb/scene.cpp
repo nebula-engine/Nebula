@@ -12,6 +12,7 @@
 #include <neb/actor/Rigid_Static.h>
 #include <neb/actor/Controller.h>
 #include <neb/actor/Light.h>
+#include <neb/actor/vehicle.h>
 #include <neb/shape.h>
 
 int		parse_shape_type(char const * str)
@@ -24,10 +25,10 @@ int		parse_shape_type(char const * str)
 neb::shape	xml_parse_geo(tinyxml2::XMLElement* element)
 {
 	int type = parse_shape_type(element->Attribute("type"));
-	
+
 	neb::shape shape;
 	shape.type = type;
-	
+
 	switch(type)
 	{
 		case neb::shape::BOX:
@@ -39,46 +40,46 @@ neb::shape	xml_parse_geo(tinyxml2::XMLElement* element)
 		default:
 			break;
 	}
-	
+
 	return shape;
 }
 
 
-neb::scene::scene(): px_scene_(NULL), px_filter_shader_(NULL) {
+neb::scene::scene(): px_filter_shader_(NULL), px_scene_(NULL) {
 }
 std::shared_ptr<neb::app>	neb::scene::get_app() {
-	
+
 	assert(!app_.expired());
-	
+
 	return app_.lock();
 }
 std::shared_ptr<neb::actor::Light>	neb::scene::Create_Light(tinyxml2::XMLElement* el_actor, std::shared_ptr<neb::actor::Base> parent) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
-	
+
 	glutpp::desc_light desc;
 	desc.load(el_actor);
-	
+
 	return Create_Light(desc, parent);
 }
 std::shared_ptr<neb::actor::Light>			neb::scene::Create_Light(glutpp::desc_light desc,		std::shared_ptr<neb::actor::Base> parent) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
-	
+
 	// create
 	std::shared_ptr<neb::actor::Light> actor(new neb::actor::Light);
-	
+
 	actor->desc_ = desc;
-	
+
 	actor->parent_ = parent;
-	
+
 	add_light(actor);
-	
+
 	if(parent)
 	{
 		parent->lights_.push_back(actor->i_);
 	}
-	
+
 	return actor;
 }
 void	neb::scene::Create_Actors(tinyxml2::XMLElement* el_scene,		std::shared_ptr<neb::actor::Base> parent) {
@@ -152,7 +153,7 @@ neb::scene::rigid_dynamic_t neb::scene::Create_Rigid_Dynamic(tinyxml2::XMLElemen
 	desc.type = neb::actor::RIGID_DYNAMIC;
 
 	desc.load(el_actor);
-	
+
 	return Create_Rigid_Dynamic(desc, parent);
 }
 std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(tinyxml2::XMLElement* el_actor, neb::scene::base_t parent) {
@@ -197,12 +198,12 @@ neb::scene::rigid_dynamic_t	neb::scene::Create_Rigid_Dynamic(neb::actor::desc de
 		printf("create shape failed!");
 		exit(1);
 	}
-	
+
 	// PxShape
 	actor->px_shape_ = px_rigid_dynamic->createShape( *(desc.shape.to_geo()), *px_mat );
-	
-	
-	
+
+
+
 	px_rigid_dynamic->setLinearVelocity(actor->velocity_, true);
 
 
@@ -223,7 +224,7 @@ neb::scene::rigid_dynamic_t	neb::scene::Create_Rigid_Dynamic(neb::actor::desc de
 	actor->scene_ = shared_from_this();
 	actor->shape_ = desc.shape;
 	actor->init();
-	
+
 	actor->setupFiltering(
 			desc.filter_group,
 			desc.filter_mask
@@ -248,7 +249,7 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(neb::
 	actor->desc_ = desc;
 
 	actor->pose_ = desc.pose.to_math();
-	
+
 	// PxMaterial
 	printf("create material\n");
 	physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
@@ -266,15 +267,15 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(neb::
 	// PxShape
 	printf("create shape\n");
 	actor->px_shape_ = px_rigid_static->createShape( *(desc.shape.to_geo()), *px_mat );
-	
+
 	// PxActor
 	actor->px_actor_ = px_rigid_static;
-	
+
 	// userData
 	px_rigid_static->userData = actor.get();
 
 	//printf("box=%p\n",box);
-	
+
 	// add PxActor to PxScene
 	assert(px_scene_ != NULL);
 	printf("add actor\n");
@@ -284,16 +285,16 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(neb::
 	// init actor
 	actor->shape_ = desc.shape;
 	actor->init();
-	
+
 	printf("setup filtering\n");
 	actor->setupFiltering(desc.filter_group, desc.filter_mask);
-	
+
 	add_actor(actor);
 	if(parent)
 	{
 		parent->actors_.push_back(actor->i_);
 	}
-	
+
 	printf("return\n");
 	return actor;
 }
@@ -386,216 +387,11 @@ std::shared_ptr<neb::actor::Controller>			neb::scene::Create_Controller(tinyxml2
 
 	return actor;
 }
-
-void createVehicle4WSimulationData(
-		const PxF32 chassisMass,
-		PxConvexMesh* chassisConvexMesh,
-		const PxF32 wheelMass,
-		PxConvexMesh** wheelConvexMeshes,
-		const PxVec3* wheelCentreOffsets,
-		PxVehicleWheelsSimData& wheelsData,
-		PxVehicleDriveSimData4W& driveData, 
-		PxVehicleChassisData& chassisData)
-{
-	//Extract the chassis AABB dimensions from the chassis convex mesh.
-	const PxVec3 chassisDims=computeChassisAABBDimensions(chassisConvexMesh);
-
-	//The origin is at the center of the chassis mesh.
-	//Set the center of mass to be below this point and a little towards the front.
-	const PxVec3 chassisCMOffset=PxVec3(0.0f,-chassisDims.y*0.5f+0.65f,0.25f);
-
-	//Now compute the chassis mass and moment of inertia.
-	//Use the moment of inertia of a cuboid as an approximate value for the chassis moi.
-	PxVec3 chassisMOI
-		((chassisDims.y*chassisDims.y + chassisDims.z*chassisDims.z)*chassisMass/12.0f,
-		 (chassisDims.x*chassisDims.x + chassisDims.z*chassisDims.z)*chassisMass/12.0f,
-		 (chassisDims.x*chassisDims.x + chassisDims.y*chassisDims.y)*chassisMass/12.0f);
-	//A bit of tweaking here.  The car will have more responsive turning if we reduce the
-	//y-component of the chassis moment of inertia.
-	chassisMOI.y*=0.8f;
-
-	//Let's set up the chassis data structure now.
-	chassisData.mMass=chassisMass;
-	chassisData.mMOI=chassisMOI;
-	chassisData.mCMOffset=chassisCMOffset;
-
-	//Work out the front/rear mass split from the cm offset.
-	//This is a very approximate calculation with lots of assumptions.
-	//massRear*zRear + massFront*zFront = mass*cm           (1)
-	//massRear       + massFront        = mass                      (2)
-	//Rearrange (2)
-	//massFront = mass - massRear                                           (3)
-	//Substitute (3) into (1)
-	//massRear(zRear - zFront) + mass*zFront = mass*cm      (4)
-	//Solve (4) for massRear
-	//massRear = mass(cm - zFront)/(zRear-zFront)           (5)
-	//Now we also have
-	//zFront = (z-cm)/2                                                                     (6a)
-	//zRear = (-z-cm)/2                                                                     (6b)
-	//Substituting (6a-b) into (5) gives
-	//massRear = 0.5*mass*(z-3cm)/z                                         (7)
-	const PxF32 massRear=0.5f*chassisMass*(chassisDims.z-3*chassisCMOffset.z)/chassisDims.z;
-	const PxF32 massFront=chassisMass-massRear;
-
-	//Extract the wheel radius and width from the wheel convex meshes.
-	PxF32 wheelWidths[4];
-	PxF32 wheelRadii[4];
-	computeWheelWidthsAndRadii(wheelConvexMeshes,wheelWidths,wheelRadii);
-
-	//Now compute the wheel masses and inertias components around the axle's axis.
-	//http://en.wikipedia.org/wiki/List_of_moments_of_inertia
-	PxF32 wheelMOIs[4];
-	for(PxU32 i=0;i<4;i++)
-	{
-		wheelMOIs[i]=0.5f*wheelMass*wheelRadii[i]*wheelRadii[i];
-	}
-	//Let's set up the wheel data structures now with radius, mass, and moi.
-	PxVehicleWheelData wheels[4];
-	for(PxU32 i=0;i<4;i++)
-	{
-		wheels[i].mRadius=wheelRadii[i];
-		wheels[i].mMass=wheelMass;
-		wheels[i].mMOI=wheelMOIs[i];
-		wheels[i].mWidth=wheelWidths[i];
-	}
-	//Disable the handbrake from the front wheels and enable for the rear wheels
-	wheels[PxVehicleDrive4W::eFRONT_LEFT_WHEEL].mMaxHandBrakeTorque=0.0f;
-	wheels[PxVehicleDrive4W::eFRONT_RIGHT_WHEEL].mMaxHandBrakeTorque=0.0f;
-	wheels[PxVehicleDrive4W::eREAR_LEFT_WHEEL].mMaxHandBrakeTorque=4000.0f;
-	wheels[PxVehicleDrive4W::eREAR_RIGHT_WHEEL].mMaxHandBrakeTorque=4000.0f;
-	//Enable steering for the front wheels and disable for the front wheels.
-	wheels[PxVehicleDrive4W::eFRONT_LEFT_WHEEL].mMaxSteer=PxPi*0.3333f;
-	wheels[PxVehicleDrive4W::eFRONT_RIGHT_WHEEL].mMaxSteer=PxPi*0.3333f;
-	wheels[PxVehicleDrive4W::eREAR_LEFT_WHEEL].mMaxSteer=0.0f;
-	wheels[PxVehicleDrive4W::eREAR_RIGHT_WHEEL].mMaxSteer=0.0f;
-
-	//Let's set up the tire data structures now.
-	//Put slicks on the front tires and wets on the rear tires.
-	PxVehicleTireData tires[4];
-	tires[PxVehicleDrive4W::eFRONT_LEFT_WHEEL].mType=TIRE_TYPE_SLICKS;
-	tires[PxVehicleDrive4W::eFRONT_RIGHT_WHEEL].mType=TIRE_TYPE_SLICKS;
-	tires[PxVehicleDrive4W::eREAR_LEFT_WHEEL].mType=TIRE_TYPE_WETS;
-	tires[PxVehicleDrive4W::eREAR_RIGHT_WHEEL].mType=TIRE_TYPE_WETS;
-
-	//Let's set up the suspension data structures now.
-	PxVehicleSuspensionData susps[4];
-	for(PxU32 i=0;i<4;i++)
-	{
-		susps[i].mMaxCompression=0.3f;
-		susps[i].mMaxDroop=0.1f;
-		susps[i].mSpringStrength=35000.0f;
-		susps[i].mSpringDamperRate=4500.0f;
-	}
-	susps[PxVehicleDrive4W::eFRONT_LEFT_WHEEL].mSprungMass=massFront*0.5f;
-	susps[PxVehicleDrive4W::eFRONT_RIGHT_WHEEL].mSprungMass=massFront*0.5f;
-	susps[PxVehicleDrive4W::eREAR_LEFT_WHEEL].mSprungMass=massRear*0.5f;
-	susps[PxVehicleDrive4W::eREAR_RIGHT_WHEEL].mSprungMass=massRear*0.5f;
-
-	//We need to set up geometry data for the suspension, wheels, and tires.
-	//We already know the wheel centers described as offsets from the rigid body centre of mass.
-	//From here we can approximate application points for the tire and suspension forces.
-	//Lets assume that the suspension travel directions are absolutely vertical.
-	//Also assume that we apply the tire and suspension forces 30cm below the centre of mass.
-	PxVec3 suspTravelDirections[4]={PxVec3(0,-1,0),PxVec3(0,-1,0),PxVec3(0,-1,0),PxVec3(0,-1,0)};
-	PxVec3 wheelCentreCMOffsets[4];
-	PxVec3 suspForceAppCMOffsets[4];
-	PxVec3 tireForceAppCMOffsets[4];
-	for(PxU32 i=0;i<4;i++)
-	{
-		wheelCentreCMOffsets[i]=wheelCentreOffsets[i]-chassisCMOffset;
-		suspForceAppCMOffsets[i]=PxVec3(wheelCentreCMOffsets[i].x,-0.3f,wheelCentreCMOffsets[i].z);
-		tireForceAppCMOffsets[i]=PxVec3(wheelCentreCMOffsets[i].x,-0.3f,wheelCentreCMOffsets[i].z);
-	}
-
-	//Now add the wheel, tire and suspension data.
-	for(PxU32 i=0;i<4;i++)
-	{
-		wheelsData.setWheelData(i,wheels[i]);
-		wheelsData.setTireData(i,tires[i]);
-		wheelsData.setSuspensionData(i,susps[i]);
-		wheelsData.setSuspTravelDirection(i,suspTravelDirections[i]);
-		wheelsData.setWheelCentreOffset(i,wheelCentreCMOffsets[i]);
-		wheelsData.setSuspForceAppPointOffset(i,suspForceAppCMOffsets[i]);
-		wheelsData.setTireForceAppPointOffset(i,tireForceAppCMOffsets[i]);
-	}
-
-	//Now set up the differential, engine, gears, clutch, and ackermann steering.
-
-	//Diff
-	PxVehicleDifferential4WData diff;
-	diff.mType=PxVehicleDifferential4WData::eDIFF_TYPE_LS_4WD;
-	driveData.setDiffData(diff);
-
-	//Engine
-	PxVehicleEngineData engine;
-	engine.mPeakTorque=500.0f;
-	engine.mMaxOmega=600.0f;//approx 6000 rpm
-	driveData.setEngineData(engine);
-
-	//Gears
-	PxVehicleGearsData gears;
-	gears.mSwitchTime=0.5f;
-	driveData.setGearsData(gears);
-
-	//Clutch
-	PxVehicleClutchData clutch;
-	clutch.mStrength=10.0f;
-	driveData.setClutchData(clutch);
-
-	//Ackermann steer accuracy
-	PxVehicleAckermannGeometryData ackermann;
-	ackermann.mAccuracy=1.0f;
-	ackermann.mAxleSeparation =
-		wheelCentreOffsets[PxVehicleDrive4W::eFRONT_LEFT_WHEEL].z -
-		wheelCentreOffsets[PxVehicleDrive4W::eREAR_LEFT_WHEEL].z;
-
-	ackermann.mFrontWidth =
-		wheelCentreOffsets[PxVehicleDrive4W::eFRONT_RIGHT_WHEEL].x -
-		wheelCentreOffsets[PxVehicleDrive4W::eFRONT_LEFT_WHEEL].x;
-
-	ackermann.mRearWidth =
-		wheelCentreOffsets[PxVehicleDrive4W::eREAR_RIGHT_WHEEL].x -
-		wheelCentreOffsets[PxVehicleDrive4W::eREAR_LEFT_WHEEL].x;
-
-	driveData.setAckermannGeometryData(ackermann);
-}
-
-std::shared_ptr<neb::actor::vehicle>	Create_Vehicle() {
-
-	PxVehicleWheelsSimData* wheelsSimData=PxVehicleWheelsSimData::allocate(4);
-	PxVehicleDriveSimData4W driveSimData;
-
-	PxVehicleChassisData chassisData;
-	createVehicle4WSimulationData
-		(chassisMass,chassisConvexMesh,
-		 20.0f,wheelConvexMeshes4,wheelCentreOffsets4,
-		 *wheelsSimData,driveSimData,chassisData);
-
-PxRigidDynamic* vehActor=createVehicleActor4W(chassisData,wheelConvexMeshes4,chassisConvexMesh,scene,physics,material);
-
-PxVehicleDrive4W* car = PxVehicleDrive4W::allocate(4);
-car->setup(&physics,vehActor,*wheelsSimData,driveSimData,0);
-
-//Set up the mapping between wheel and actor shape.
-car->setWheelShapeMapping(0,0);
-car->setWheelShapeMapping(1,1);
-car->setWheelShapeMapping(2,2);
-car->setWheelShapeMapping(3,3);
-
-//Set up the scene query filter data for each suspension line.
-PxFilterData vehQryFilterData;
-SampleVehicleSetupVehicleShapeQueryFilterData(&vehQryFilterData);
-car->setSceneQueryFilterData(0, vehQryFilterData);
-car->setSceneQueryFilterData(1, vehQryFilterData);
-car->setSceneQueryFilterData(2, vehQryFilterData);
-car->setSceneQueryFilterData(3, vehQryFilterData);
-
-
-
-
-
-
-
+neb::scene::vehicle_t neb::scene::create_vehicle() {
+	
+	vehicle_manager_.create_vehicle();
+	
+	return neb::scene::vehicle_t;
 }
 void							neb::scene::step(double time){
 	printf("%s\n",__PRETTY_FUNCTION__);

@@ -12,6 +12,7 @@
 #include <glutpp/scene.h>
 #include <glutpp/desc_light.h>
 
+#include <neb/vehicle_manager.h>
 #include <neb/actor/Rigid_Dynamic.h>
 #include <neb/actor/Rigid_Static.h>
 #include <neb/actor/Controller.h>
@@ -27,13 +28,13 @@ namespace neb
 	namespace actor
 	{
 		struct desc;
+		class vehicle;
 	}
 	namespace packet
 	{
 		struct packet;
 	}
 	class simulation_callback;
-	class view;
 	class scene: public glutpp::scene
 	{
 		public:
@@ -42,6 +43,7 @@ namespace neb
 			typedef std::shared_ptr<neb::actor::Rigid_Static>	rigid_static_t;
 			typedef std::shared_ptr<neb::actor::Controller>		controller_t;
 			typedef std::shared_ptr<neb::actor::Light>		light_t;
+			typedef std::shared_ptr<neb::actor::vehicle>		vehicle_t;
 			typedef std::shared_ptr<neb::app>			app_t;
 			
 			enum
@@ -68,6 +70,8 @@ namespace neb
 			
 			light_t			Create_Light(tinyxml2::XMLElement*, base_t);
 			light_t			Create_Light(glutpp::desc_light, base_t);
+
+			vehicle_t		create_vehicle();
 			
 			void					draw();
 
@@ -88,8 +92,10 @@ namespace neb
 			physx::PxScene*				px_scene_;
 			
 			std::weak_ptr<neb::app>			app_;
-			std::weak_ptr<neb::view>		view_;
 			double					last_;
+
+	
+			neb::vehicle_manager			vehicle_manager_;
 	};
 }
 

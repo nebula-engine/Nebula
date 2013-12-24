@@ -7,6 +7,7 @@
 
 #include <neb/scene.h>
 
+
 class DefaultErrorCallback:
 	public physx::PxErrorCallback
 {
@@ -15,6 +16,8 @@ class DefaultErrorCallback:
 };
 
 
+/*
+*/
 namespace neb
 {
 	class physics

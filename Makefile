@@ -669,6 +669,30 @@ src/neb/user.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/user.cpp.s
 .PHONY : src/neb/user.cpp.s
 
+src/neb/vehicle_manager.o: src/neb/vehicle_manager.cpp.o
+.PHONY : src/neb/vehicle_manager.o
+
+# target to build an object file
+src/neb/vehicle_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o
+.PHONY : src/neb/vehicle_manager.cpp.o
+
+src/neb/vehicle_manager.i: src/neb/vehicle_manager.cpp.i
+.PHONY : src/neb/vehicle_manager.i
+
+# target to preprocess a source file
+src/neb/vehicle_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.i
+.PHONY : src/neb/vehicle_manager.cpp.i
+
+src/neb/vehicle_manager.s: src/neb/vehicle_manager.cpp.s
+.PHONY : src/neb/vehicle_manager.s
+
+# target to generate assembly for a file
+src/neb/vehicle_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.s
+.PHONY : src/neb/vehicle_manager.cpp.s
+
 src/neb/view.o: src/neb/view.cpp.o
 .PHONY : src/neb/view.o
 
@@ -770,6 +794,9 @@ help:
 	@echo "... src/neb/user.o"
 	@echo "... src/neb/user.i"
 	@echo "... src/neb/user.s"
+	@echo "... src/neb/vehicle_manager.o"
+	@echo "... src/neb/vehicle_manager.i"
+	@echo "... src/neb/vehicle_manager.s"
 	@echo "... src/neb/view.o"
 	@echo "... src/neb/view.i"
 	@echo "... src/neb/view.s"
