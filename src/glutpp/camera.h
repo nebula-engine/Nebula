@@ -25,13 +25,10 @@ namespace glutpp
 			math::mat44	proj();
 			math::mat44	view();
 
-			void		load_shader();
-			void		load_no_shader();
-
+			void		load();
 
 			void		step(float);
 		
-
 			int		north(float);
 
 

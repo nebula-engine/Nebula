@@ -11,7 +11,7 @@ glutpp::light::light()
 {
 
 }
-void	glutpp::light::init(std::shared_ptr<scene> scene, int o)
+void	glutpp::light::init(std::shared_ptr<scene> scene)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -25,11 +25,6 @@ void	glutpp::light::init(std::shared_ptr<scene> scene, int o)
 	*/
 	
 	//texture_shadow_map_.init_shadow(camera_.w_, camera_.h_);
-	
-	//uniforms();
-
-	printf("%s exit\n",__PRETTY_FUNCTION__);
-
 }
 int	glutpp::light::release() {
 

@@ -99,8 +99,10 @@ void	glutpp::window::init() {
 }
 void	glutpp::window::render(double time)
 {
-	if(renderable_) renderable_->render(time);
-
+	glfwMakeContextCurrent(window_);
+	
+	if(renderable_) renderable_->render(time, shared_from_this());
+	
 	glFinish();
 	glfwSwapBuffers(window_);
 }
@@ -111,26 +113,21 @@ int	glutpp::window::step(double time)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	double time;
-	
-	resize(w_,h_);
-	
-	while (!glfwWindowShouldClose(window_))
+	if(glfwWindowShouldClose(window_))
 	{
-		step(time);
-		
-		render(time);
-		
-		glfwSwapBuffers(window_);
+		printf("window should close\n");
+		return 1;
 	}
-
-	printf("window should close\n");
+	
+	render(time);
+	
+	return 0;
 }
 void	glutpp::window::callback_window_size_fun(GLFWwindow* window, int w, int h)
 {
 	w_ = w;
 	h_ = h;
-	
+
 	resize(w,h);
 
 	callback_window_refresh_fun(window);
@@ -145,13 +142,13 @@ void	glutpp::window::callback_window_pos_fun(GLFWwindow* window, int x, int y)
 void	glutpp::window::callback_window_close_fun(GLFWwindow* window)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
-	
-	
+
+
 }
 void	glutpp::window::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
-	
+
 	sig_.mouse_button_fun_(button, action, mods);
 }
 void	glutpp::window::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -159,16 +156,16 @@ void	glutpp::window::callback_key_fun(GLFWwindow* window, int key, int scancode,
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	sig_.key_fun_(key, scancode, action, mods);
-	
+
 	switch(key)
 	{
-	/*	case 's':
+		/*	case 's':
 			toggle(SHADOW);
 			break;
-		case 'o':
+			case 'o':
 			toggle(ORTHO);
 			break;
-		case 'r':
+			case 'r':
 			toggle(REFLECT);
 			break;*/
 		case GLFW_KEY_ESCAPE:
@@ -185,7 +182,7 @@ void	glutpp::window::resize(int w,int h) {
 int	glutpp::window::prepare() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
-	
+
 	if(renderable_)
 	{
 		if(renderable_->scene_)
@@ -208,20 +205,18 @@ int	glutpp::window::set_scene(std::shared_ptr<scene> scene) {
 
 	assert(scene);
 	assert(renderable_);
-	
+
 	renderable_->scene_ = scene;
-	
-	scene->renderable_ = renderable_;
 }
 int	glutpp::window::set_layout(std::shared_ptr<glutpp::gui::layout> layout) {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
-	
+
 	assert(layout);
 	assert(renderable_);
-	
+
 	renderable_->layout_ = layout;
-	
+
 	layout->init(renderable_);
 	layout->connect();
 }

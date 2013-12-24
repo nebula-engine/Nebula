@@ -30,26 +30,12 @@ glutpp/actor.h
 glutpp/scene.h
 -
 
-/home/charles/Programming/C++/glutpp/src/glutpp/scene.cpp
-stdio.h
--
-glutpp/window.h
--
-glutpp/renderable.h
--
-glutpp/scene.h
--
-glutpp/actor.h
--
-glutpp/light.h
--
-glutpp/glsl/program.h
--
-
 src/glutpp/actor.h
 memory
 -
 vector
+-
+map
 -
 math/vec4.h
 -
@@ -186,18 +172,6 @@ GLFW/glfw3.h
 
 src/glutpp/material.h
 math/color.h
--
-
-src/glutpp/renderable.h
-memory
--
-gal/flag.h
--
-glutpp/gui/layout.h
--
-glutpp/window.h
--
-glutpp/scene.h
 -
 
 src/glutpp/scene.h

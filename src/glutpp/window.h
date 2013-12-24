@@ -56,8 +56,7 @@ namespace glutpp
 
 
 
-			void			loop();
-			virtual void		step(double);
+			int			step(double);
 			void			render(double);
 			void			draw();
 			void			draw_ortho();

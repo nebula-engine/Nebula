@@ -2,6 +2,7 @@
 #define __GLUTPP_ACTOR_H__
 #include <memory>
 #include <vector>
+#include <map>
 
 #include <math/vec4.h>
 #include <math/vec3.h>
@@ -39,6 +40,14 @@ namespace glutpp
 	{
 		class program;
 	}
+	class actor_buffers
+	{
+		public:
+			GLuint			vbo_;
+			GLuint			buffer_indices_;	
+
+
+	};
 	class actor: public std::enable_shared_from_this<actor>
 	{
 		public:
@@ -54,25 +63,27 @@ namespace glutpp
 			actor();
 			void		init(std::shared_ptr<scene>);
 			std::shared_ptr<scene>	get_scene();
-			
+
 			void		construct(math::geo::polyhedron*);
 			void		uniforms();
 			int		save(char const *);
 			int		load(char const *);
-			void		init_buffer(std::shared_ptr<glutpp::glsl::program> p);
+
+		private:
+			void		init_buffer(std::shared_ptr<glutpp::window>, std::shared_ptr<glutpp::glsl::program>);
+		public:
+
+			void		model_load();
 
 
-			void		model_load_shader();
-			
-			
-			virtual int	draw_shader();
-			
+			virtual int	draw(std::shared_ptr<glutpp::window>);
+
 			virtual int	release();
-			
-			
+
+
 			virtual void	render_reflection();
-			
-			
+
+
 			int		i_;
 			int		type_;
 
@@ -86,8 +97,7 @@ namespace glutpp
 
 			//uniform			uniform_image_;
 
-			GLuint			vbo_;
-			GLuint			buffer_indices_;
+
 
 			//math::mat44		model_;
 			math::transform		pose_;
@@ -104,6 +114,8 @@ namespace glutpp
 
 			std::vector<int>	actors_;
 			std::vector<int>	lights_;
+
+			std::map<glutpp::window*,std::shared_ptr<glutpp::actor_buffers> >	context_;
 	};
 }
 

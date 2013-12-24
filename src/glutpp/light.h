@@ -27,7 +27,7 @@ namespace glutpp
 			};
 			
 			light();
-			void		init(std::shared_ptr<scene>,int);
+			void		init(std::shared_ptr<scene>);
 			virtual int	release();
 			
 			void		load_shader(int);

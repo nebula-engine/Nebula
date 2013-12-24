@@ -218,34 +218,37 @@ int	glutpp::actor::save(const char * filename){
 
 	return 0;
 }
-void	glutpp::actor::init_buffer(std::shared_ptr<glutpp::glsl::program> p){
-
+void	glutpp::actor::init_buffer(std::shared_ptr<glutpp::window> window, std::shared_ptr<glutpp::glsl::program> p) {
+	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	checkerror("unknown");
+	
+	std::shared_ptr<glutpp::actor_buffers> bufs(new glutpp::actor_buffers);
+	context_[window.get()] = bufs;
 	
 	// image
 	//texture_image_.load_png("bigtux.png");
 	
 	// indices
 	int size = fh_.len_indices_ * sizeof(GLushort);
-
-	glGenBuffers(1, &buffer_indices_);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer_indices_);
+	
+	glGenBuffers(1, &bufs->buffer_indices_);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufs->buffer_indices_);
 	glBufferData(
 			GL_ELEMENT_ARRAY_BUFFER,
 			size,
 			indices_,
 			GL_STATIC_DRAW);
-
+	
 	checkerror("glBufferData");
 
 	// vertices
-
-	glGenBuffers(1, &vbo_);
-
+	
+	glGenBuffers(1, &bufs->vbo_);
+	
 	int baseOffset = 0;
-	glBindBuffer(GL_ARRAY_BUFFER, vbo_);
+	glBindBuffer(GL_ARRAY_BUFFER, bufs->vbo_);
 	//glBindVertexBuffer(0, vbo_, baseOffset, sizeof(glutpp::vertex));
 	
 	glutpp::vertex v;
@@ -294,7 +297,7 @@ void	glutpp::actor::init_buffer(std::shared_ptr<glutpp::glsl::program> p){
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 }
-void	glutpp::actor::model_load_shader(){
+void	glutpp::actor::model_load(){
 	auto p = glutpp::__master.current_program();
 	
 	//auto scene = get_scene();
@@ -304,24 +307,37 @@ void	glutpp::actor::model_load_shader(){
 
 	math::mat44 scale;
 	scale.SetScale(s_);
-	
+
 	model = model * scale;
-	
+
 	//if(scene->all(glutpp::scene::SHADER))
 	{
 		p->get_uniform(glutpp::uniform_name::e::MODEL)->load(model);
 	}
-/*	else
-	{
-	}*/
+	/*	else
+		{
+		}*/
 }
-int	glutpp::actor::draw_shader() {
+int	glutpp::actor::draw(std::shared_ptr<glutpp::window> window) {
+
 	printf("%s\n",__PRETTY_FUNCTION__);
-	
+
 	auto p = glutpp::__master.current_program();
+
+	// initialize buffers if not already
+	auto bufs = context_[window.get()];
+	if(!bufs)
+	{	
+		init_buffer(window, p);
+		bufs = context_[window.get()];
+		assert(bufs);
+	}
+	
+	
+	
 	
 	checkerror("unknown");
-	
+
 	p->get_attrib(glutpp::attrib_name::e::POSITION)->enable();
 	p->get_attrib(glutpp::attrib_name::e::NORMAL)->enable();
 	//p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->enable();
@@ -330,29 +346,29 @@ int	glutpp::actor::draw_shader() {
 	// material
 	printf("load material\n");
 	material_front_.load_shader();
-	
+
 	// texture
-/*	glActiveTexture(GL_TEXTURE0);checkerror("glActiveTexture");
-	texture_image_.bind();
-	p->get_uniform(glutpp::uniform_name::e::IMAGE)->load(0);
-*/	//glUniform1i(texture_image_.o_, 0);checkerror("glUniform1i");
-	
-	
+	/*	glActiveTexture(GL_TEXTURE0);checkerror("glActiveTexture");
+		texture_image_.bind();
+		p->get_uniform(glutpp::uniform_name::e::IMAGE)->load(0);
+	 */	//glUniform1i(texture_image_.o_, 0);checkerror("glUniform1i");
+
+
 	printf("bind vbo\n");
-	glBindBuffer(GL_ARRAY_BUFFER, vbo_); checkerror("glBindBuffer");
+	glBindBuffer(GL_ARRAY_BUFFER, bufs->vbo_); checkerror("glBindBuffer");
 	printf("bind elements\n");// indices
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer_indices_); checkerror("glBindBuffer");
-	
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufs->buffer_indices_); checkerror("glBindBuffer");
+
 	printf("load model\n");
-	model_load_shader();
-	
+	model_load();
+
 	printf("draw\n");
 	glDrawElements(GL_TRIANGLES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);checkerror("glDrawElements");
 	glDrawElements(GL_LINES, fh_.len_indices_, GL_UNSIGNED_SHORT, 0);checkerror("glDrawElements");
 
-	
 
-	
+
+
 	glBindBuffer(GL_ARRAY_BUFFER,0);checkerror("glBindBuffer");
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);checkerror("glBindBuffer");
 

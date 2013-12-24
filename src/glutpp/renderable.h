@@ -17,14 +17,9 @@ namespace glutpp
 			renderable();
 			renderable&				operator=(renderable const &);
 			void					init(std::shared_ptr<window>);
-			void					render(double);
+			void					render(double, std::shared_ptr<window>);
 			void					resize(int,int);
 
-
-			struct
-			{
-				std::shared_ptr<program>	text_;
-			} programs_;
 
 			std::weak_ptr<window>			window_;
 

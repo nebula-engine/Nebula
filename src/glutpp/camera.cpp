@@ -39,7 +39,7 @@ math::mat44	glutpp::camera::view()
 	}
 
 
-	math::mat44 ret = math::lookat(math::vec3(0.0, 5.0, 5.0), math::vec3(0.0, 0.0, 0.0), math::vec3(0.0, 1.0, 0.0));
+	math::mat44 ret = math::lookat(math::vec3(0.0, 0.0, 30.0), math::vec3(0.0, 0.0, 0.0), math::vec3(0.0, 1.0, 0.0));
 
 
 
@@ -53,26 +53,15 @@ math::mat44	glutpp::camera::proj()
 
 	return ret;
 }
-void		glutpp::camera::load_shader()
+void		glutpp::camera::load()
 {
 	auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
-
+	
 	glViewport(0, 0, w_, h_);
-
+	
 	p->get_uniform(glutpp::uniform_name::e::PROJ)->load(proj());
 	p->get_uniform(glutpp::uniform_name::e::VIEW)->load(view());
 }
-void		glutpp::camera::load_no_shader()
-{
-	glViewport(0, 0, w_, h_);
-
-	glMatrixMode(GL_PROJECTION);
-	glLoadMatrixf(proj());
-
-	glMatrixMode(GL_MODELVIEW);
-	glLoadMatrixf(view());	
-}
-
 void		glutpp::camera::step(float dt)
 {
 	/*

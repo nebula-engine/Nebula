@@ -53,12 +53,12 @@ namespace glutpp
 			
 			void			resize(int,int);
 
-			void			render_shader(double);
-			int			draw_shader();
+			void			render(double, std::shared_ptr<glutpp::camera>, std::shared_ptr<glutpp::window>);
+			int			draw(std::shared_ptr<glutpp::window>);
 			
-			
-			std::weak_ptr<renderable>		renderable_;
-		//private:
+		//protected:
+			//std::weak_ptr<renderable>		renderable_;
+		public:
 			gal::map<actor>				actors_;
 			gal::map<light>				lights_;
 	};
