@@ -7,7 +7,6 @@ set(PROJECT_SOURCE_DIR src)
 
 add_library(nebula
 	src/neb/app.cpp
-	src/neb/window.cpp
 	src/neb/user.cpp
 	src/neb/physics.cpp
 	src/neb/scene.cpp
@@ -41,13 +40,16 @@ set(CMAKE_INSTALL_PREFIX $ENV{HOME}/usr)
 
 install(TARGETS nebula DESTINATION lib)
 
-install(FILES ${PROJECT_SOURCE_DIR}/neb/config.h		DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/app.h			DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/window.h		DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/user.h			DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/physics.h		DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/scene.h			DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/simulation_callback.h	DESTINATION include/neb/)
+set(files
+	${PROJECT_SOURCE_DIR}/neb/config.h
+	${PROJECT_SOURCE_DIR}/neb/app.h
+	${PROJECT_SOURCE_DIR}/neb/user.h
+	${PROJECT_SOURCE_DIR}/neb/physics.h
+	${PROJECT_SOURCE_DIR}/neb/scene.h
+	${PROJECT_SOURCE_DIR}/neb/simulation_callback.h
+)
+
+install(FILES ${files} DESTINATION include/neb/)
 
 install(FILES ${PROJECT_SOURCE_DIR}/neb/packet/basic.h		DESTINATION include/neb/packet)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/packet/packet.h		DESTINATION include/neb/packet)

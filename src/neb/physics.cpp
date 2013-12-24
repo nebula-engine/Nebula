@@ -55,6 +55,8 @@ neb::Physics::~base()
 {
 //	jess::clog << neb_FUNCSIG << std::endl;
 }*/
+neb::physics::physics(): px_physics_(NULL) {
+}
 void	neb::physics::Init()
 {	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -87,13 +89,22 @@ void	neb::physics::Init()
 	// character controller manager
 	px_character_controller_manager_ = ::PxCreateControllerManager( *px_foundation_ );
 	assert( px_character_controller_manager_ );
-
-
+	
+	// vehicle
+	assert( PxInitVehicleSDK(*px_physics_) );
+	
+	PxVehicleSetBasisVectors(physx::PxVec3(0,1,0), physx::PxVec3(0,0,-1));
+	
+	PxVehicleSetUpdateMode(PxVehicleUpdateMode::Enum::eACCELERATION);
+	
+	
 }
 void				neb::physics::Shutdown()
 {
 	//jess::clog << neb_FUNCSIG << std::endl;
 	printf("%s\n",__PRETTY_FUNCTION__);
+
+	PxCloseVehicleSDK();
 
 	px_physics_->release();
 	px_foundation_->release();
@@ -101,11 +112,13 @@ void				neb::physics::Shutdown()
 std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* el_scene) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
+	assert(px_physics_ != NULL);
+	
 	std::shared_ptr<neb::scene> scene(new neb::scene);
 	
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
 	
-	scene_desc.gravity = physx::PxVec3(0.0f, 0.0f, 0.0f);
+	scene_desc.gravity = physx::PxVec3(0.0f, -9.8f, 0.0f);
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 	
 	int m_nbThreads = 1;
@@ -143,6 +156,8 @@ std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* el_
 	}
 #endif
 	assert( scene_desc.isValid() );
+	
+	
 	
 	scene->px_scene_ = px_physics_->createScene(scene_desc);
 	assert(scene->px_scene_);

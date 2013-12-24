@@ -6,18 +6,16 @@
 
 #IncludeRegexTransform: 
 
-/home/charles/Programming/C++/nebula/src/neb/app.cpp
-algorithm
+/home/charles/Programming/C++/nebula/src/neb/physics.cpp
+assert.h
 -
-glutpp/renderable.h
--
-neb/app.h
--
-neb/window.h
--
-neb/view.h
+PxPhysicsAPI.h
 -
 neb/physics.h
+-
+neb/scene.h
+-
+neb/simulation_callback.h
 -
 
 src/neb/actor/Actor.h
@@ -76,30 +74,6 @@ neb/shape.h
 neb/packet/basic.h
 -
 
-src/neb/app.h
-neb/window.h
--
-neb/network/server.h
--
-neb/network/client.h
--
-
-src/neb/network/client.h
-gal/network/client.h
--
-neb/network/communicating.h
--
-
-src/neb/network/communicating.h
-gal/network/communicating.h
--
-
-src/neb/network/server.h
-gal/network/server.h
--
-neb/network/communicating.h
--
-
 src/neb/packet/basic.h
 math/vec3.h
 -
@@ -148,15 +122,25 @@ math/vec3.h
 neb/packet/basic.h
 -
 
-src/neb/view.h
+src/neb/simulation_callback.h
 memory
 -
-glutpp/gui/layout.h
+vector
 -
-glutpp/window.h
+PxPhysicsAPI.h
 -
-
-src/neb/window.h
-glutpp/window.h
+gal/map.h
+-
+glutpp/scene.h
+-
+neb/actor/Rigid_Dynamic.h
+-
+neb/actor/Rigid_Static.h
+-
+neb/actor/Controller.h
+-
+neb/actor/Light.h
+-
+tinyxml2.h
 -
 

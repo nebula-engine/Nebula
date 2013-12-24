@@ -1,7 +1,7 @@
 #ifndef __NEBULA_APP_H__
 #define __NEBULA_APP_H__
 
-#include <neb/window.h>
+#include <glutpp/window.h>
 
 #include <neb/network/server.h>
 #include <neb/network/client.h>
@@ -14,30 +14,36 @@ namespace neb
 	class app: public std::enable_shared_from_this<app>
 	{
 		public:
+			typedef std::map<int,std::shared_ptr<glutpp::window> >		map_window_t;
+			typedef std::map<int,std::shared_ptr<glutpp::gui::layout> >	map_layout_t;
+			typedef std::map<int,std::shared_ptr<neb::scene> >		map_scene_t;
+			typedef std::shared_ptr<neb::network::server>			server_t;
+			typedef std::shared_ptr<neb::network::client>			client_t;
+			
 			app();
-			void				init();
+			void		init();
 		
-			int				create_window(int name, int w, int h, int x, int y, char const * title);
-			int				load_scene(int,char const *);
-			int				load_layout(int,char const *);
+			int		create_window(int name, int w, int h, int x, int y, char const * title);
+			int		load_scene(int,char const *);
+			int		load_layout(int,char const *);
 
-			void				step(double);
-
-
+			int		step(double);
+			int		prepare();
+			int		loop();
 			
-			int				activate_scene(int,int);
-			int				deactivate_scene(int);
-			int				activate_layout(int,int);
-			int				deactivate_layout(int);
+			int		activate_scene(int,int);
+			int		deactivate_scene(int);
+			int		activate_layout(int,int);
+			int		deactivate_layout(int);
 			
 			
-			std::map<int,std::shared_ptr<neb::window> >		windows_;
-			std::map<int,std::shared_ptr<glutpp::gui::layout> >	layouts_;
-			std::map<int,std::shared_ptr<neb::scene> >		scenes_;
+			map_window_t	windows_;
+			map_layout_t	layouts_;
+			map_scene_t	scenes_;
 			
 			// network
-			std::shared_ptr<neb::network::server>	server_;
-			std::shared_ptr<neb::network::client>	client_;
+			server_t	server_;
+			client_t	client_;
 	};
 }
 

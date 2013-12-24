@@ -46,9 +46,9 @@ int	neb::actor::Base::fire()
 
 	auto actor = scene->Create_Rigid_Dynamic(desc, me);
 
-	auto p = glutpp::__master.use_program(glutpp::program_name::e::LIGHT);
+	//auto p = glutpp::__master.use_program(glutpp::program_name::e::LIGHT);
 
-	actor->init_buffer(p);
+	//actor->init_buffer(p);
 
 	//light
 	glutpp::desc_light desc_light;

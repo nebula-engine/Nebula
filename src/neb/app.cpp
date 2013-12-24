@@ -1,10 +1,9 @@
 #include <algorithm>
 
 #include <glutpp/renderable.h>
-
+#include <glutpp/window.h>
 
 #include <neb/app.h>
-#include <neb/window.h>
 #include <neb/view.h>
 #include <neb/physics.h>
 
@@ -15,10 +14,8 @@ void	neb::app::init() {
 }
 int	neb::app::create_window(int name, int w, int h, int x, int y, char const * title) {
 
-	windows_[name] = glutpp::__master.create_window<neb::window>(w,h,x,y,title);
+	windows_[name] = glutpp::__master.create_window<glutpp::window>(w,h,x,y,title);
 	
-	windows_[name]->app_ = shared_from_this();
-
 	return 0;
 }
 int	neb::app::load_scene(int name, char const * filename)
@@ -63,13 +60,13 @@ int	neb::app::activate_scene(int name_window, int name_scene)
 {	
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
-	auto w = windows_[name_window];
-	auto s = scenes_[name_scene];
+	auto w = windows_.find(name_window);
+	auto s = scenes_.find(name_scene);
 	
-	assert(w);
-	assert(s);
+	assert(w != windows_.end());
+	assert(s != scenes_.end());
 	
-	w->set_scene(s);
+	w->second->set_scene(s->second);
 	
 	return 0;
 }
@@ -77,17 +74,17 @@ int	neb::app::activate_layout(int name_window, int name_layout)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	auto w = windows_[name_window];
-	auto l = layouts_[name_layout];
-
-	assert(w);
-	assert(l);
+	auto w = windows_.find(name_window);
+	auto l = layouts_.find(name_layout);
 	
-	w->set_layout(l);
+	assert(w != windows_.end());
+	assert(l != layouts_.end());
+	
+	w->second->set_layout(l->second);
 	
 	return 0;
 }
-void    neb::app::step(double time)
+int    neb::app::step(double time)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
@@ -102,10 +99,11 @@ void    neb::app::step(double time)
 		scene->step(time);
 	}
 
+	return 0;
 }
 int	neb::app::prepare() {
 	
-	for(auto it = windows_.begin(); it = windows_.end(); ++it)
+	for(auto it = windows_.begin(); it != windows_.end(); ++it)
 	{
 		if(it->second) it->second->prepare();
 	}
@@ -113,27 +111,43 @@ int	neb::app::prepare() {
 	return 0;
 }
 int	neb::app::loop() {
-
+	
+	double time;
+	int r;
+	
 	while(1)
-	{
-
+	{	
 		time = glfwGetTime();
 		
-		
+		printf("time = %f\n", time);
+
+		// scene
+		auto s = scenes_.begin();
+		while(s != scenes_.end())
+		{
+			assert(s->second);
+			s->second->step(time);
+			s++;
+		}	
+
+		// windows		
 		auto it = windows_.begin();
 		while(it != windows_.end())
 		{
 			assert(it->second);
-			if(it->second->step(time))
+			r = it->second->step(time);
+
+			if(r)
 			{
+				printf("erase\n");
 				windows_.erase(it);
 			}
 			else
 			{
-				++it;
+				it++;
 			}
 		}
-
+		
 		glfwPollEvents();
 
 	}

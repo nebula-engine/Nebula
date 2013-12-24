@@ -20,6 +20,7 @@ namespace neb
 	class physics
 	{
 		public:
+			physics();
 			void						Init();
 			void						Shutdown();
 			std::shared_ptr<neb::scene>			Create_Scene(tinyxml2::XMLElement*);

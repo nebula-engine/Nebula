@@ -1,7 +1,6 @@
 /home/charles/usr/lib/libnebula.a
 /home/charles/usr/include/neb/config.h
 /home/charles/usr/include/neb/app.h
-/home/charles/usr/include/neb/window.h
 /home/charles/usr/include/neb/user.h
 /home/charles/usr/include/neb/physics.h
 /home/charles/usr/include/neb/scene.h

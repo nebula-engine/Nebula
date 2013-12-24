@@ -693,30 +693,6 @@ src/neb/view.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/view.cpp.s
 .PHONY : src/neb/view.cpp.s
 
-src/neb/window.o: src/neb/window.cpp.o
-.PHONY : src/neb/window.o
-
-# target to build an object file
-src/neb/window.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/window.cpp.o
-.PHONY : src/neb/window.cpp.o
-
-src/neb/window.i: src/neb/window.cpp.i
-.PHONY : src/neb/window.i
-
-# target to preprocess a source file
-src/neb/window.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/window.cpp.i
-.PHONY : src/neb/window.cpp.i
-
-src/neb/window.s: src/neb/window.cpp.s
-.PHONY : src/neb/window.s
-
-# target to generate assembly for a file
-src/neb/window.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/window.cpp.s
-.PHONY : src/neb/window.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -797,9 +773,6 @@ help:
 	@echo "... src/neb/view.o"
 	@echo "... src/neb/view.i"
 	@echo "... src/neb/view.s"
-	@echo "... src/neb/window.o"
-	@echo "... src/neb/window.i"
-	@echo "... src/neb/window.s"
 .PHONY : help
 
 
