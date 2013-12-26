@@ -19,7 +19,6 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/charles/Programming/C++/nebula/src/neb/network/client.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/network/client.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/network/communicating.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/network/server.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/network/server.cpp.o"
-  "/home/charles/Programming/C++/nebula/src/neb/packet/basic.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/packet/basic.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/physics.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/physics.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/scene.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/scene.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/shape.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/shape.cpp.o"
@@ -33,11 +32,3 @@ SET(CMAKE_CXX_COMPILER_ID "GNU")
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
   )
-
-# The include file search paths:
-SET(CMAKE_C_TARGET_INCLUDE_PATH
-  "src"
-  )
-SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
-SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
-SET(CMAKE_ASM_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

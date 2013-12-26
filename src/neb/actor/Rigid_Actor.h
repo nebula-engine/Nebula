@@ -17,14 +17,12 @@ namespace neb
 				
 			
 				virtual void			step_remote(double);
-				virtual void			setupFiltering(physx::PxU32, physx::PxU32);
+				virtual void			setupFiltering();
 				
 				virtual neb::actor::desc	get_projectile();
 				virtual neb::actor::desc	get_desc();
 
-
-				physx::PxShape*		px_shape_;
-				neb::shape		shape_;
+				int				create_shapes();
 		};
 	}
 }

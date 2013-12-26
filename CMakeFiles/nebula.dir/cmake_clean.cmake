@@ -9,7 +9,6 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/nebula.dir/src/neb/shape.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/camera.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o"
-  "CMakeFiles/nebula.dir/src/neb/packet/basic.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/Actor.cpp.o"

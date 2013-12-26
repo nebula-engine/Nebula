@@ -16,10 +16,30 @@ class DefaultErrorCallback:
 };
 
 
-/*
-*/
 namespace neb
 {
+	struct filter
+	{
+		enum type: unsigned int
+		{
+			NONE = 0,
+			STATIC = 1 << 0,
+			DYNAMIC = 1 << 1,
+			PROJECTILE = 1 << 2,
+			UNDRIVABLE_SURFACE = 1 << 3,
+		};
+		
+		static physx::PxU32 const RIGID_AGAINST = type::STATIC | type::DYNAMIC;
+		
+		static physx::PxU32 const DRIVABLE_SURFACE = type::STATIC | type::DYNAMIC;
+		
+		static physx::PxU32 const COLLISION_FLAG_WHEEL = 0;
+		static physx::PxU32 const COLLISION_FLAG_WHEEL_AGAINST = 0;
+		static physx::PxU32 const COLLISION_FLAG_CHASSIS = type::DYNAMIC;
+		static physx::PxU32 const COLLISION_FLAG_CHASSIS_AGAINST = RIGID_AGAINST;
+
+	};
+
 	class physics
 	{
 		public:
@@ -27,7 +47,6 @@ namespace neb
 			void						Init();
 			void						Shutdown();
 			std::shared_ptr<neb::scene>			Create_Scene(tinyxml2::XMLElement*);
-			//neb::actor::Rigid_Dynamic*			Create_Rigid_Dynamic_Box();
 
 			DefaultErrorCallback 				px_default_error_callback_;
 			physx::PxDefaultAllocator 			px_default_allocator_callback_;
@@ -39,7 +58,7 @@ namespace neb
 			physx::PxControllerManager*			px_character_controller_manager_;
 
 	};
-	
+
 	extern "C" physics __physics;
 }
 

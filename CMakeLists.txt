@@ -16,7 +16,6 @@ add_library(nebula
 	src/neb/shape.cpp
 	src/neb/camera.cpp
 	src/neb/camera_ridealong.cpp
-	src/neb/packet/basic.cpp
 	src/neb/actor/desc.cpp
 	src/neb/actor/Base.cpp
 	src/neb/actor/Actor.cpp
@@ -47,12 +46,12 @@ set(files
 	${PROJECT_SOURCE_DIR}/neb/user.h
 	${PROJECT_SOURCE_DIR}/neb/physics.h
 	${PROJECT_SOURCE_DIR}/neb/scene.h
+	${PROJECT_SOURCE_DIR}/neb/vehicle_manager.h
 	${PROJECT_SOURCE_DIR}/neb/simulation_callback.h
 )
 
 install(FILES ${files} DESTINATION include/neb/)
 
-install(FILES ${PROJECT_SOURCE_DIR}/neb/packet/basic.h		DESTINATION include/neb/packet)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/packet/packet.h		DESTINATION include/neb/packet)
 
 

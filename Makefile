@@ -35,9 +35,6 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
-# Escaping for special characters.
-EQUALS = =
-
 # The top-level source directory on which CMake was run.
 CMAKE_SOURCE_DIR = /home/charles/Programming/C++/nebula
 
@@ -525,30 +522,6 @@ src/neb/network/server.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/server.cpp.s
 .PHONY : src/neb/network/server.cpp.s
 
-src/neb/packet/basic.o: src/neb/packet/basic.cpp.o
-.PHONY : src/neb/packet/basic.o
-
-# target to build an object file
-src/neb/packet/basic.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/packet/basic.cpp.o
-.PHONY : src/neb/packet/basic.cpp.o
-
-src/neb/packet/basic.i: src/neb/packet/basic.cpp.i
-.PHONY : src/neb/packet/basic.i
-
-# target to preprocess a source file
-src/neb/packet/basic.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/packet/basic.cpp.i
-.PHONY : src/neb/packet/basic.cpp.i
-
-src/neb/packet/basic.s: src/neb/packet/basic.cpp.s
-.PHONY : src/neb/packet/basic.s
-
-# target to generate assembly for a file
-src/neb/packet/basic.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/packet/basic.cpp.s
-.PHONY : src/neb/packet/basic.cpp.s
-
 src/neb/physics.o: src/neb/physics.cpp.o
 .PHONY : src/neb/physics.o
 
@@ -776,9 +749,6 @@ help:
 	@echo "... src/neb/network/server.o"
 	@echo "... src/neb/network/server.i"
 	@echo "... src/neb/network/server.s"
-	@echo "... src/neb/packet/basic.o"
-	@echo "... src/neb/packet/basic.i"
-	@echo "... src/neb/packet/basic.s"
 	@echo "... src/neb/physics.o"
 	@echo "... src/neb/physics.i"
 	@echo "... src/neb/physics.s"

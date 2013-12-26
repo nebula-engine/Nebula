@@ -1,6 +1,7 @@
 #include <gal/network/server.h>
 
 #include <neb/app.h>
+#include <neb/physics.h>
 #include <neb/simulation_callback.h>
 #include <neb/packet/packet.h>
 #include <neb/actor/Rigid_Body.h>
@@ -151,6 +152,7 @@ neb::actor::desc	neb::actor::Rigid_Body::get_projectile() {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
 	neb::actor::desc desc;
+	desc.reset();
 	
 	desc.type = neb::actor::RIGID_DYNAMIC;
 	
@@ -172,15 +174,18 @@ neb::actor::desc	neb::actor::Rigid_Body::get_projectile() {
 	
 	desc.density = 1000.0;
 
-	desc.filter_group = neb::simulation_callback::filter_group::PROJECTILE;
-	desc.filter_mask = neb::simulation_callback::filter_group::NORMAL;
-
-
-	neb::shape shape;
-	shape.box(math::vec3(0.1,0.1,0.1));
-
-	desc.shape = shape;
-
+	desc.filter_data_.simulation_.word0 = neb::filter::type::DYNAMIC;
+	desc.filter_data_.simulation_.word1 = neb::filter::RIGID_AGAINST;
+	
+	glutpp::shape_desc sd;
+	sd.box(math::vec3(0.1,0.1,0.1));
+	
+	sd.front_.ambient_.from_math(math::black);
+	sd.front_.diffuse_.from_math(math::red);
+	sd.front_.emission_.from_math(math::black);
+	
+	desc.add_shape(sd);
+	
 	return desc;
 }
 neb::actor::desc	neb::actor::Rigid_Body::get_desc() {

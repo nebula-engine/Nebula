@@ -4,8 +4,8 @@
 /home/charles/usr/include/neb/user.h
 /home/charles/usr/include/neb/physics.h
 /home/charles/usr/include/neb/scene.h
+/home/charles/usr/include/neb/vehicle_manager.h
 /home/charles/usr/include/neb/simulation_callback.h
-/home/charles/usr/include/neb/packet/basic.h
 /home/charles/usr/include/neb/packet/packet.h
 /home/charles/usr/include/neb/view.h
 /home/charles/usr/include/neb/camera.h

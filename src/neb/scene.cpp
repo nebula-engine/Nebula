@@ -15,34 +15,7 @@
 #include <neb/actor/vehicle.h>
 #include <neb/shape.h>
 
-int		parse_shape_type(char const * str)
-{
-	assert(str);
-	if(strcmp(str,"box") == 0) return neb::shape::BOX;
-	if(strcmp(str ,"sphere") == 0) return neb::shape::SPHERE;
-	return neb::shape::NONE;
-}
-neb::shape	xml_parse_geo(tinyxml2::XMLElement* element)
-{
-	int type = parse_shape_type(element->Attribute("type"));
 
-	neb::shape shape;
-	shape.type = type;
-
-	switch(type)
-	{
-		case neb::shape::BOX:
-			shape.box(element);
-			break;
-		case neb::shape::SPHERE:
-			shape.sphere(element);
-			break;
-		default:
-			break;
-	}
-
-	return shape;
-}
 
 
 neb::scene::scene(): px_filter_shader_(NULL), px_scene_(NULL) {
@@ -187,30 +160,26 @@ neb::scene::rigid_dynamic_t	neb::scene::Create_Rigid_Dynamic(neb::actor::desc de
 	actor->density_ = desc.density;
 
 
-	// PxMaterial
-	physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
-
+	// PxActor
 	physx::PxRigidDynamic* px_rigid_dynamic =
 		neb::__physics.px_physics_->createRigidDynamic( actor->pose_ );
-
+	
 	if (!px_rigid_dynamic)
 	{
 		printf("create shape failed!");
 		exit(1);
 	}
+	
+	actor->px_actor_ = px_rigid_dynamic;
 
 	// PxShape
-	actor->px_shape_ = px_rigid_dynamic->createShape( *(desc.shape.to_geo()), *px_mat );
-
-
-
+	actor->create_shapes();
+	
+	
 	px_rigid_dynamic->setLinearVelocity(actor->velocity_, true);
 
 
 	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, desc.density);
-
-	// PxActor
-	actor->px_actor_ = px_rigid_dynamic;
 
 	// userData
 	px_rigid_dynamic->userData = actor.get();
@@ -222,13 +191,9 @@ neb::scene::rigid_dynamic_t	neb::scene::Create_Rigid_Dynamic(neb::actor::desc de
 
 	// init actor
 	actor->scene_ = shared_from_this();
-	actor->shape_ = desc.shape;
 	actor->init();
 
-	actor->setupFiltering(
-			desc.filter_group,
-			desc.filter_mask
-			);
+	actor->setupFiltering();
 
 	add_actor(actor);
 
@@ -250,11 +215,7 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(neb::
 
 	actor->pose_ = desc.pose.to_math();
 
-	// PxMaterial
-	printf("create material\n");
-	physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
-
-	printf("create px actor\n");
+	// PxActor
 	physx::PxRigidStatic* px_rigid_static =
 		neb::__physics.px_physics_->createRigidStatic( actor->pose_ );
 
@@ -263,14 +224,12 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(neb::
 		printf("create actor failed!");
 		exit(1);
 	}
-
-	// PxShape
-	printf("create shape\n");
-	actor->px_shape_ = px_rigid_static->createShape( *(desc.shape.to_geo()), *px_mat );
-
-	// PxActor
+	
 	actor->px_actor_ = px_rigid_static;
 
+	// PxShape
+	actor->create_shapes();
+	
 	// userData
 	px_rigid_static->userData = actor.get();
 
@@ -283,11 +242,10 @@ std::shared_ptr<neb::actor::Rigid_Static>		neb::scene::Create_Rigid_Static(neb::
 	printf("add actor\n");
 
 	// init actor
-	actor->shape_ = desc.shape;
 	actor->init();
 
 	printf("setup filtering\n");
-	actor->setupFiltering(desc.filter_group, desc.filter_mask);
+	actor->setupFiltering();
 
 	add_actor(actor);
 	if(parent)
@@ -389,9 +347,32 @@ std::shared_ptr<neb::actor::Controller>			neb::scene::Create_Controller(tinyxml2
 }
 neb::scene::vehicle_t neb::scene::create_vehicle() {
 	
-	vehicle_manager_.create_vehicle();
+	neb::actor::desc desc;
+	desc.reset();
 	
-	return neb::scene::vehicle_t;
+	glutpp::shape_desc sd;
+	
+	sd.box(math::vec3(3,1,6));
+	desc.add_shape(sd);
+	
+	sd.box(math::vec3(0.5,1,1));
+	desc.add_shape(sd);
+	desc.add_shape(sd);
+	desc.add_shape(sd);
+	desc.add_shape(sd);
+	
+	
+	neb::scene::vehicle_t vehicle;
+	
+	vehicle = vehicle_manager_.create_vehicle(
+		neb::__physics.px_physics_,
+		px_scene_,
+		desc);
+	
+
+	add_actor(vehicle);
+	
+	return vehicle;
 }
 void							neb::scene::step(double time){
 	printf("%s\n",__PRETTY_FUNCTION__);
@@ -462,8 +443,13 @@ void							neb::scene::step_local(double time){
 		//printf("transform.p.y=%16f\n",activeTransforms[i].actor2World.p.y);
 	}
 
+	// vehicle
+	//physx::PxVec3 g(0,-0.25,0);
+	//vehicle_manager_.vehicle_suspension_raycasts(px_scene_);
+	//vehicle_manager_.update((float)dt, g);
+	
+	// delete actors
 	assert(simulation_callback_);
-
 	auto it = simulation_callback_->actors_to_delete_.begin();
 	while(it != simulation_callback_->actors_to_delete_.end())
 	{
@@ -497,8 +483,8 @@ int	neb::scene::send() {
 
 	auto client = app->server_->clients_.at(0);
 	assert(client);
-
-
+	
+	
 	neb::packet::packet p;
 	p.type = neb::packet::type::SCENE;
 

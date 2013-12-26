@@ -43,12 +43,9 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     "/home/charles/Programming/C++/nebula/src/neb/user.h"
     "/home/charles/Programming/C++/nebula/src/neb/physics.h"
     "/home/charles/Programming/C++/nebula/src/neb/scene.h"
+    "/home/charles/Programming/C++/nebula/src/neb/vehicle_manager.h"
     "/home/charles/Programming/C++/nebula/src/neb/simulation_callback.h"
     )
-ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-
-IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/neb/packet" TYPE FILE FILES "/home/charles/Programming/C++/nebula/src/neb/packet/basic.h")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")

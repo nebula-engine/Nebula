@@ -3,13 +3,16 @@
 
 namespace neb
 {
-namespace actor
-{
-class vehicle: public neb::actor::Base
-{
-public:
-};
-}
+	namespace actor
+	{
+		class vehicle: public neb::actor::Rigid_Dynamic
+		{
+			public:
+			
+				physx::PxVehicleDrive4W* px_vehicle_drive_;
+			
+		};
+	}
 }
 
 #endif

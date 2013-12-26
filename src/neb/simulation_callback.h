@@ -28,13 +28,7 @@ namespace neb
 	class simulation_callback: public physx::PxSimulationEventCallback
 	{
 		public:
-			enum filter_group
-			{
-				NONE = 1 << 0,
-				NORMAL = 1 << 1,
-				PROJECTILE = 1 << 2
-			};
-			
+				
 			virtual void 	onConstraintBreak(physx::PxConstraintInfo *constraints, physx::PxU32 count);
 			virtual void 	onWake (physx::PxActor **actors, physx::PxU32 count);
 			virtual void 	onSleep (physx::PxActor **actors, physx::PxU32 count);

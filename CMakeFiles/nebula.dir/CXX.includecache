@@ -6,36 +6,18 @@
 
 #IncludeRegexTransform: 
 
-/home/charles/Programming/C++/nebula/src/neb/scene.cpp
-math/free.h
+/home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Body.cpp
+gal/network/server.h
 -
 neb/app.h
 -
-neb/actor/desc.h
--
-neb/packet/packet.h
--
 neb/physics.h
--
-neb/scene.h
 -
 neb/simulation_callback.h
 -
-neb/actor/free.h
+neb/packet/packet.h
 -
-neb/actor/Base.h
--
-neb/actor/Rigid_Dynamic.h
--
-neb/actor/Rigid_Static.h
--
-neb/actor/Controller.h
--
-neb/actor/Light.h
--
-neb/actor/vehicle.h
--
-neb/shape.h
+neb/actor/Rigid_Body.h
 -
 
 src/neb/actor/Actor.h
@@ -89,14 +71,12 @@ neb/actor/Rigid_Actor.h
 src/neb/actor/desc.h
 math/transform.h
 -
+math/raw/raw.h
+-
+glutpp/shape.h
+-
 neb/shape.h
 -
-neb/packet/basic.h
--
-
-src/neb/actor/free.h
-
-src/neb/actor/vehicle.h
 
 src/neb/app.h
 glutpp/window.h
@@ -120,12 +100,6 @@ src/neb/network/server.h
 gal/network/server.h
 -
 neb/network/communicating.h
--
-
-src/neb/packet/basic.h
-math/vec3.h
--
-math/transform.h
 -
 
 src/neb/packet/packet.h
@@ -177,7 +151,7 @@ tinyxml2.h
 -
 math/vec3.h
 -
-neb/packet/basic.h
+glutpp/shape.h
 -
 
 src/neb/simulation_callback.h
@@ -206,5 +180,7 @@ src/neb/vehicle_manager.h
 vector
 -
 PxPhysicsAPI.h
+-
+neb/actor/desc.h
 -
 

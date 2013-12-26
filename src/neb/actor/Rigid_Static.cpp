@@ -4,7 +4,7 @@
 void	neb::actor::Rigid_Static::init()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-
+/*
 	//object_.reset(new glutpp::object);
 
 	s_ = shape_.s.to_math();
@@ -20,6 +20,7 @@ void	neb::actor::Rigid_Static::init()
 		default:
 			break;
 	}
+*/
 }
 void	neb::actor::Rigid_Static::add_force()
 {

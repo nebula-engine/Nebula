@@ -21,43 +21,51 @@ physx::PxFilterFlags	DefaultFilterShader(
 		physx::PxU32 constantBlockSize )
 {	
 	printf("%s\n",__PRETTY_FUNCTION__);
-
+	
 	printf("%i %i %i %i\n", filterData0.word0, filterData1.word1, filterData1.word0, filterData0.word1);
-
+	
+	physx::PxFilterFlags filter_flags = physx::PxFilterFlag::eDEFAULT;
+	
 	// let triggers through
 	if(physx::PxFilterObjectIsTrigger(attributes0) || physx::PxFilterObjectIsTrigger(attributes1))
 	{
 		pairFlags = physx::PxPairFlag::eTRIGGER_DEFAULT;
 		return physx::PxFilterFlag::eDEFAULT;
 	}
-
-	physx::PxU32 c0 = filterData0.word0 & filterData1.word1;
-	physx::PxU32 c1 = filterData1.word0 & filterData0.word1;
-
-
-	if(filterData0.word0 != 0 || filterData1.word0 != 0)
+	
+	// collision
+	physx::PxU32 w0 = filterData0.word0 & filterData1.word1;
+	physx::PxU32 w1 = filterData1.word0 & filterData0.word1;
+	if(w0 && w1)
 	{
-		// trigger the contact callback for pairs (A,B) where
-		// the filtermask of A contains the ID of B and vice versa.
-		if(c0 && c1)
-		{
-			pairFlags = physx::PxPairFlag::eCONTACT_DEFAULT;
-			pairFlags |= physx::PxPairFlag::eNOTIFY_TOUCH_FOUND;	
-		}
-		else if(!(c0 || c1))
-		{
-			return physx::PxFilterFlag::eSUPPRESS;
-		}
+		pairFlags |= physx::PxPairFlag::eCONTACT_DEFAULT;
+		
+		filter_flags = physx::PxFilterFlag::eDEFAULT;	
 	}
-
-	return physx::PxFilterFlag::eDEFAULT;
+	else
+	{
+		filter_flags = physx::PxFilterFlag::eSUPPRESS;
+	}
+	
+	// notification
+	physx::PxU32 w2 = filterData0.word2 & filterData1.word3;
+	physx::PxU32 w3 = filterData1.word2 & filterData0.word3;
+	if(w2 && w3)
+	{
+		pairFlags |= physx::PxPairFlag::eNOTIFY_TOUCH_FOUND;
+	}
+	
+	return filter_flags;
 }
 
-void 	DefaultErrorCallback::reportError( physx::PxErrorCode::Enum code, char const * message, char const * file, int line)
+void DefaultErrorCallback::reportError(
+		physx::PxErrorCode::Enum code,
+		char const * message,
+		char const * file,
+		int line)
 {
 	printf("%s:%i: %s\n",file,line,message);
 }
-
 /*neb::Physics::Physics()
   {
 //	jess::clog << neb_FUNCSIG << std::endl;
@@ -73,9 +81,12 @@ void	neb::physics::Init()
 
 	// Physx
 	// Foundation
-	px_foundation_ = PxCreateFoundation( PX_PHYSICS_VERSION, px_default_allocator_callback_, px_default_error_callback_ );
-	assert( px_foundation_ );
-
+	px_foundation_ = PxCreateFoundation(
+			PX_PHYSICS_VERSION,
+			px_default_allocator_callback_,
+			px_default_error_callback_);
+	assert(px_foundation_);
+	
 	bool recordMemoryAllocations = true;
 
 	// Profile Zone Manager
@@ -103,12 +114,10 @@ void	neb::physics::Init()
 
 	// vehicle
 	assert( PxInitVehicleSDK(*px_physics_) );
-
 	PxVehicleSetBasisVectors(physx::PxVec3(0,1,0), physx::PxVec3(0,0,-1));
-
 	PxVehicleSetUpdateMode(physx::PxVehicleUpdateMode::Enum::eACCELERATION);
-
-
+	
+	
 }
 void				neb::physics::Shutdown()
 {
@@ -129,7 +138,7 @@ std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* el_
 
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
 
-	scene_desc.gravity = physx::PxVec3(0.0f, -9.8f, 0.0f);
+	scene_desc.gravity = physx::PxVec3(0.0f, -0.25f, 0.0f);
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 
 	int m_nbThreads = 1;
@@ -157,10 +166,10 @@ std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* el_
 			scene_desc.filterShader = DefaultFilterShader;
 		}
 	}
-	
-	
-	
-	
+
+
+
+
 	// gpu dispatcher
 	printf("gpu dispatcher\n");
 #ifdef PX_WINDOWS
