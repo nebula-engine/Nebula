@@ -48,7 +48,7 @@ void	glutpp::scene::add_actor(std::shared_ptr<actor> actor) {
 	
 	actors_.push(actor);
 	
-	actor->init(shared_from_this());
+	actor->scene_ = shared_from_this();
 }
 int	glutpp::scene::prepare() {
 

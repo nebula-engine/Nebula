@@ -11,6 +11,8 @@ set(src
 	src/glutpp/scene.cpp
 	src/glutpp/renderable.cpp
 	src/glutpp/actor.cpp
+	src/glutpp/shape.cpp
+	src/glutpp/shape_desc.cpp
 	src/glutpp/glsl/shader.cpp
 	src/glutpp/glsl/uniform.cpp
 	src/glutpp/glsl/attrib.cpp
@@ -47,12 +49,17 @@ configure_file("${PROJECT_SOURCE_DIR}/glutpp/config.h.in" "${PROJECT_SOURCE_DIR}
 install(TARGETS glutpp DESTINATION lib)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/config.h		DESTINATION include/glutpp/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/types.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/free.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/master.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/renderable.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor.h		DESTINATION include/glutpp/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape.h		DESTINATION include/glutpp/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape_desc.h		DESTINATION include/glutpp/)
+
+
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shader.h		DESTINATION include/glutpp/glsl/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/program.h		DESTINATION include/glutpp/glsl/)

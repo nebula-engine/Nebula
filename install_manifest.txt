@@ -1,11 +1,14 @@
 /home/charles/usr/lib/libglutpp.a
 /home/charles/usr/include/glutpp/config.h
+/home/charles/usr/include/glutpp/types.h
 /home/charles/usr/include/glutpp/free.h
 /home/charles/usr/include/glutpp/master.h
 /home/charles/usr/include/glutpp/window.h
 /home/charles/usr/include/glutpp/renderable.h
 /home/charles/usr/include/glutpp/scene.h
 /home/charles/usr/include/glutpp/actor.h
+/home/charles/usr/include/glutpp/shape.h
+/home/charles/usr/include/glutpp/shape_desc.h
 /home/charles/usr/include/glutpp/glsl/shader.h
 /home/charles/usr/include/glutpp/glsl/program.h
 /home/charles/usr/include/glutpp/glsl/uniform.h

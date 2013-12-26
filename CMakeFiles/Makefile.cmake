@@ -7,9 +7,9 @@ SET(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 SET(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "CMakeFiles/2.8.11.2/CMakeCCompiler.cmake"
-  "CMakeFiles/2.8.11.2/CMakeCXXCompiler.cmake"
-  "CMakeFiles/2.8.11.2/CMakeSystem.cmake"
+  "CMakeFiles/CMakeCCompiler.cmake"
+  "CMakeFiles/CMakeCXXCompiler.cmake"
+  "CMakeFiles/CMakeSystem.cmake"
   "CMakeLists.txt"
   "src/glutpp/config.h.in"
   "/usr/share/cmake-2.8/Modules/CMakeCInformation.cmake"

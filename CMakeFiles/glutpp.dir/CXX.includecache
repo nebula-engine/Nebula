@@ -6,28 +6,24 @@
 
 #IncludeRegexTransform: 
 
-/home/charles/Programming/C++/glutpp/src/glutpp/actor.cpp
-GL/glew.h
--
+/home/charles/Programming/C++/glutpp/src/glutpp/material.cpp
 stdio.h
 -
-stdlib.h
--
-sys/time.h
--
-string.h
--
-png.h
--
-math/mat44.h
--
-math/geo/polyhedron.h
+math/free.h
 -
 glutpp/window.h
 -
-glutpp/actor.h
--
 glutpp/scene.h
+-
+glutpp/material.h
+-
+
+/home/charles/Programming/C++/glutpp/src/glutpp/shape_desc.cpp
+math/free.h
+-
+glutpp/types.h
+-
+glutpp/shape_desc.h
 -
 
 src/glutpp/actor.h
@@ -46,6 +42,8 @@ math/vec2.h
 math/geo/polyhedron.h
 -
 math/transform.h
+-
+glutpp/types.h
 -
 glutpp/texture.h
 -
@@ -171,6 +169,10 @@ GLFW/glfw3.h
 -
 
 src/glutpp/material.h
+tinyxml2.h
+-
+math/raw/raw.h
+-
 math/color.h
 -
 
@@ -186,6 +188,16 @@ glutpp/actor.h
 glutpp/camera.h
 -
 
+src/glutpp/shape_desc.h
+tinyxml2.h
+-
+math/vec3.h
+-
+math/raw/raw.h
+-
+glutpp/material.h
+-
+
 src/glutpp/texture.h
 functional
 -
@@ -196,6 +208,12 @@ math/mat44.h
 math/vec4.h
 -
 math/vec3.h
+-
+
+src/glutpp/types.h
+memory
+-
+vector
 -
 
 src/glutpp/window.h

@@ -35,9 +35,6 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
-# Escaping for special characters.
-EQUALS = =
-
 # The top-level source directory on which CMake was run.
 CMAKE_SOURCE_DIR = /home/charles/Programming/C++/glutpp
 
@@ -608,6 +605,54 @@ src/glutpp/scene.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene.cpp.s
 .PHONY : src/glutpp/scene.cpp.s
 
+src/glutpp/shape.o: src/glutpp/shape.cpp.o
+.PHONY : src/glutpp/shape.o
+
+# target to build an object file
+src/glutpp/shape.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shape.cpp.o
+.PHONY : src/glutpp/shape.cpp.o
+
+src/glutpp/shape.i: src/glutpp/shape.cpp.i
+.PHONY : src/glutpp/shape.i
+
+# target to preprocess a source file
+src/glutpp/shape.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shape.cpp.i
+.PHONY : src/glutpp/shape.cpp.i
+
+src/glutpp/shape.s: src/glutpp/shape.cpp.s
+.PHONY : src/glutpp/shape.s
+
+# target to generate assembly for a file
+src/glutpp/shape.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shape.cpp.s
+.PHONY : src/glutpp/shape.cpp.s
+
+src/glutpp/shape_desc.o: src/glutpp/shape_desc.cpp.o
+.PHONY : src/glutpp/shape_desc.o
+
+# target to build an object file
+src/glutpp/shape_desc.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shape_desc.cpp.o
+.PHONY : src/glutpp/shape_desc.cpp.o
+
+src/glutpp/shape_desc.i: src/glutpp/shape_desc.cpp.i
+.PHONY : src/glutpp/shape_desc.i
+
+# target to preprocess a source file
+src/glutpp/shape_desc.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shape_desc.cpp.i
+.PHONY : src/glutpp/shape_desc.cpp.i
+
+src/glutpp/shape_desc.s: src/glutpp/shape_desc.cpp.s
+.PHONY : src/glutpp/shape_desc.s
+
+# target to generate assembly for a file
+src/glutpp/shape_desc.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shape_desc.cpp.s
+.PHONY : src/glutpp/shape_desc.cpp.s
+
 src/glutpp/texture.o: src/glutpp/texture.cpp.o
 .PHONY : src/glutpp/texture.o
 
@@ -726,6 +771,12 @@ help:
 	@echo "... src/glutpp/scene.o"
 	@echo "... src/glutpp/scene.i"
 	@echo "... src/glutpp/scene.s"
+	@echo "... src/glutpp/shape.o"
+	@echo "... src/glutpp/shape.i"
+	@echo "... src/glutpp/shape.s"
+	@echo "... src/glutpp/shape_desc.o"
+	@echo "... src/glutpp/shape_desc.i"
+	@echo "... src/glutpp/shape_desc.s"
 	@echo "... src/glutpp/texture.o"
 	@echo "... src/glutpp/texture.i"
 	@echo "... src/glutpp/texture.s"

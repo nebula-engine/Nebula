@@ -6,6 +6,8 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/glutpp.dir/src/glutpp/scene.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/actor.cpp.o"
+  "CMakeFiles/glutpp.dir/src/glutpp/shape.cpp.o"
+  "CMakeFiles/glutpp.dir/src/glutpp/shape_desc.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/glsl/attrib.cpp.o"

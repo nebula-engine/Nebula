@@ -1,39 +1,37 @@
 #ifndef __GLUTPP_MATERIAL_H__
 #define __GLUTPP_MATERIAL_H__
 
-#include <math/color.h>
+#include <tinyxml2.h>
 
-//#include <glutpp/uniform.h>
+#include <math/raw/raw.h>
+#include <math/color.h>
 
 namespace glutpp
 {
 	class window;
+	struct material_desc
+	{
+		void		load(tinyxml2::XMLElement*);
+
+		math::raw::color	ambient_;
+		math::raw::color	diffuse_;
+		math::raw::color	specular_;
+		math::raw::color	emission_;
+
+	};
 	class material
 	{
 		public:
 			material();
-			void		init();//std::shared_ptr<scene>);
-			void		load_shader();
-			void		load_no_shader();
-
-			//std::weak_ptr<scene>	scene_;
-
+			void		init();
+			void		load();
+			void		load(glutpp::material_desc);
+			
 			math::color		ambient_;
 			math::color		diffuse_;
 			math::color		specular_;
 			math::color		emission_;
 			float			shininess_;
-
-/*
-			struct
-			{
-				uniform		ambient_;
-				uniform		diffuse_;
-				uniform		specular_;
-				uniform		emission_;
-				uniform		shininess_;
-			} uniforms_;
-*/
 	};
 }
 
