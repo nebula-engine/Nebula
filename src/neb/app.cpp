@@ -3,12 +3,13 @@
 #include <glutpp/renderable.h>
 #include <glutpp/window.h>
 
+#include <neb/config.h>
 #include <neb/app.h>
 #include <neb/view.h>
 #include <neb/physics.h>
+#include <neb/packet/packet.h>
 
-neb::app::app()
-{
+neb::app::app() {
 }
 void	neb::app::init() {
 }
@@ -18,8 +19,7 @@ int	neb::app::create_window(int name, int w, int h, int x, int y, char const * t
 	
 	return 0;
 }
-int	neb::app::load_scene(int name, char const * filename)
-{
+int	neb::app::load_scene(int name, char const * filename) {
 	tinyxml2::XMLDocument document;
 	if(document.LoadFile(filename))
 	{
@@ -35,6 +35,16 @@ int	neb::app::load_scene(int name, char const * filename)
 	scene->user_type_ = neb::scene::LOCAL;
 	
 	scenes_[name] = scene;
+
+	return 0;
+}
+int	neb::app::load_scene(scene_desc* sd) {
+	
+	// scene
+	auto scene = neb::__physics.Create_Scene(sd);
+	scene->user_type_ = neb::scene::LOCAL;
+	
+	scenes_[sd->name_] = scene;
 
 	return 0;
 }
@@ -56,8 +66,7 @@ int	neb::app::load_layout(int name, char const * filename) {
 	
 	return 0;
 }
-int	neb::app::activate_scene(int name_window, int name_scene)
-{	
+int	neb::app::activate_scene(int name_window, int name_scene) {	
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
 	auto w = windows_.find(name_window);
@@ -70,8 +79,7 @@ int	neb::app::activate_scene(int name_window, int name_scene)
 	
 	return 0;
 }
-int	neb::app::activate_layout(int name_window, int name_layout)
-{
+int	neb::app::activate_layout(int name_window, int name_layout) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	auto w = windows_.find(name_window);
@@ -84,8 +92,8 @@ int	neb::app::activate_layout(int name_window, int name_layout)
 	
 	return 0;
 }
-int    neb::app::step(double time)
-{
+int neb::app::step(double time) {
+
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
 	std::shared_ptr<neb::scene> scene;
@@ -119,7 +127,7 @@ int	neb::app::loop() {
 	{	
 		time = glfwGetTime();
 		
-		printf("time = %f\n", time);
+		//printf("time = %f\n", time);
 
 		// scene
 		auto s = scenes_.begin();
@@ -129,14 +137,14 @@ int	neb::app::loop() {
 			s->second->step(time);
 			s++;
 		}	
-
+		
 		// windows		
 		auto it = windows_.begin();
 		while(it != windows_.end())
 		{
 			assert(it->second);
 			r = it->second->step(time);
-
+			
 			if(r)
 			{
 				printf("erase\n");
@@ -151,6 +159,32 @@ int	neb::app::loop() {
 		glfwPollEvents();
 
 	}
+
+	return 0;
+}
+int neb::app::transmit_scenes(std::shared_ptr<neb::network::communicating> c) {
+	
+	NEBULA_DEBUG_0_FUNCTION;
+	
+	assert(c);
+	
+	gal::network::message::shared_t msg;
+	
+	for(auto it = scenes_.begin(); it != scenes_.end(); ++it)
+	{
+		msg.reset(new gal::network::message);
+		
+		auto s = it->second;
+		assert(s);
+		
+		neb::packet::packet p = s->serialize();
+		
+		msg->set(&p, sizeof p);
+		
+		c->write(msg);
+	}
+	
+	NEBULA_DEBUG_0_FUNCTION;
 
 	return 0;
 }

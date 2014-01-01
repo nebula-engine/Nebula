@@ -28,10 +28,12 @@ CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/actor/Rigid_Dynamic.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/actor/Rigid_Static.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/actor/desc.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/app.h
+CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/network/client.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/network/communicating.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/network/server.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/scene.h
+CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/scene_desc.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/shape.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/vehicle_manager.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o: src/neb/view.h
@@ -74,12 +76,14 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/actor/Rigid_Dynami
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/actor/Rigid_Static.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/actor/desc.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/app.h
+CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/network/client.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/network/communicating.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/network/server.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/packet/packet.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/physics.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/scene.h
+CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/scene_desc.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/shape.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/simulation_callback.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o: src/neb/vehicle_manager.h
@@ -128,11 +132,14 @@ CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/actor/Rigid_Dynamic.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/actor/Rigid_Static.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/actor/desc.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/app.h
+CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/network/client.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/network/communicating.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/network/server.h
+CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/packet/packet.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/physics.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/scene.h
+CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/scene_desc.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/shape.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/vehicle_manager.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/view.h
@@ -160,8 +167,13 @@ CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o: src/neb/camera.h
 CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o: src/neb/shape.h
 
 CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/network/client.cpp
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/actor/desc.h
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/network/client.h
 CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/network/communicating.h
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/packet/packet.h
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/scene_desc.h
+CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/shape.h
 
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/network/communicating.cpp
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/actor/Actor.h
@@ -174,11 +186,13 @@ CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/actor/Rigid_D
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/actor/Rigid_Static.h
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/actor/desc.h
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/app.h
+CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/network/client.h
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/network/communicating.h
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/network/server.h
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/packet/packet.h
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/scene.h
+CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/scene_desc.h
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/shape.h
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o: src/neb/vehicle_manager.h
 
@@ -198,6 +212,7 @@ CMakeFiles/nebula.dir/src/neb/physics.cpp.o: src/neb/actor/Rigid_Static.h
 CMakeFiles/nebula.dir/src/neb/physics.cpp.o: src/neb/actor/desc.h
 CMakeFiles/nebula.dir/src/neb/physics.cpp.o: src/neb/physics.h
 CMakeFiles/nebula.dir/src/neb/physics.cpp.o: src/neb/scene.h
+CMakeFiles/nebula.dir/src/neb/physics.cpp.o: src/neb/scene_desc.h
 CMakeFiles/nebula.dir/src/neb/physics.cpp.o: src/neb/shape.h
 CMakeFiles/nebula.dir/src/neb/physics.cpp.o: src/neb/simulation_callback.h
 CMakeFiles/nebula.dir/src/neb/physics.cpp.o: src/neb/vehicle_manager.h
@@ -215,12 +230,14 @@ CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/actor/desc.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/actor/free.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/actor/vehicle.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/app.h
+CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/network/client.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/network/communicating.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/network/server.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/packet/packet.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/physics.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/scene.h
+CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/scene_desc.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/shape.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/simulation_callback.h
 CMakeFiles/nebula.dir/src/neb/scene.cpp.o: src/neb/vehicle_manager.h

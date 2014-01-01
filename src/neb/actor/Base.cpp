@@ -1,3 +1,4 @@
+#include <neb/config.h>
 #include <neb/app.h>
 #include <neb/view.h>
 #include <neb/scene.h>
@@ -53,6 +54,7 @@ int	neb::actor::Base::fire()
 	//light
 	glutpp::desc_light desc_light;
 	desc_light.pos_ = math::vec4(0.0, 0.0, 0.0, 1.0);
+	desc_light.ambient_ = math::black;
 	desc_light.atten_linear_ = 2.0;
 
 
@@ -61,14 +63,18 @@ int	neb::actor::Base::fire()
 	return 1;
 }
 neb::actor::desc	neb::actor::Base::get_projectile() {
-	printf("%s\n", __PRETTY_FUNCTION__);
-	exit(0);
+
+	NEBULA_DEBUG_0_FUNCTION;
+
+	abort();
 	neb::actor::desc desc;
 	return desc;
 }
 void	neb::actor::Base::step_remote(double)
 {}
 neb::actor::desc	neb::actor::Base::get_desc() {
+	
+	NEBULA_DEBUG_0_FUNCTION;
 	
 	neb::actor::desc desc = desc_;
 	

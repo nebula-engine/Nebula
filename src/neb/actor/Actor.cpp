@@ -35,5 +35,9 @@ int	neb::actor::Actor::release()
 	
 	return 0;
 }
+neb::actor::desc neb::actor::Actor::get_desc() {
+
+	return neb::actor::Base::get_desc();
+}
 
 

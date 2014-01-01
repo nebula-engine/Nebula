@@ -39,14 +39,13 @@ void	neb::actor::Rigid_Actor::setupFiltering()
 	delete[] shapes;
 }
 neb::actor::desc	neb::actor::Rigid_Actor::get_projectile() {
-	exit(0);
+	abort();
 	neb::actor::desc desc;
 	return desc;
 }
 neb::actor::desc	neb::actor::Rigid_Actor::get_desc() {
-	exit(0);
-	neb::actor::desc desc;
-	return desc;
+
+	return neb::actor::Actor::get_desc();
 }
 int			neb::actor::Rigid_Actor::create_shapes()
 {

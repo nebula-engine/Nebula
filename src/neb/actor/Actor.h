@@ -22,7 +22,7 @@ namespace neb
 				virtual void		set_pose(math::transform);
 				virtual int		fire();
 				virtual neb::actor::desc	get_projectile() = 0;
-				virtual neb::actor::desc	get_desc() = 0;
+				virtual neb::actor::desc	get_desc();
 				
 				virtual void		step_remote(double) = 0;
 				

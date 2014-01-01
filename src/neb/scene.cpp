@@ -1,5 +1,6 @@
 #include <math/free.h>
 
+#include <neb/config.h>
 #include <neb/app.h>
 #include <neb/actor/desc.h>
 #include <neb/packet/packet.h>
@@ -55,26 +56,23 @@ std::shared_ptr<neb::actor::Light>			neb::scene::Create_Light(glutpp::desc_light
 
 	return actor;
 }
-void	neb::scene::Create_Actors(tinyxml2::XMLElement* el_scene,		std::shared_ptr<neb::actor::Base> parent) {
-
+void neb::scene::create_actors(neb::actor::desc* ad, std::shared_ptr<neb::actor::Base> parent) {
+	
 	printf("%s\n",__PRETTY_FUNCTION__);
-
-	tinyxml2::XMLElement* el_actor = el_scene->FirstChildElement("actor");
-
+	
+	//tinyxml2::XMLElement* el_actor = el_scene->FirstChildElement("actor");
+	
 	std::shared_ptr<neb::actor::Base> actor;
-
-	while( el_actor )
+	
+	while(ad != NULL)
 	{
-		actor = Create_Actor(el_actor, parent);
-
+		actor = Create_Actor(ad, parent);
+		
 		// recursivly create children
-		Create_Actors(el_actor, actor);
-		Create_Lights(el_actor, actor);
-
-		el_actor = el_actor->NextSiblingElement("actor");
+		Create_Actors(ad->actor_, actor);
+		
+		ad += ad->next_sibling();
 	}
-
-
 }
 void	neb::scene::Create_Lights(tinyxml2::XMLElement* element, std::shared_ptr<neb::actor::Base> parent) {
 
@@ -263,9 +261,9 @@ std::shared_ptr<neb::actor::Rigid_Static>	neb::scene::Create_Rigid_Static_Plane(
 	std::shared_ptr<neb::actor::Rigid_Static> actor(new neb::actor::Rigid_Static);
 
 	// xml
-	math::vec3 n = math::xml_parse_vec3(el_actor->FirstChildElement("n"));
+	math::vec3 n = math::xml_parse_vec3(el_actor->FirstChildElement("n"), math::vec3(0,1,0));
 	float d = math::xml_parse_float(el_actor->FirstChildElement("d"));
-
+	
 	n.normalize();
 
 	printf("n=%f,%f,%f\n", n.x, n.y, n.z);
@@ -315,7 +313,7 @@ std::shared_ptr<neb::actor::Controller>			neb::scene::Create_Controller(tinyxml2
 	printf("%s\n",__FUNCTION__);
 
 	//jess::scoped_ostream( &jess::clog, neb_FUNCSIG );
-	math::vec3 p = math::xml_parse_vec3(el_actor->FirstChildElement("p"));	
+	math::vec3 p = math::xml_parse_vec3(el_actor->FirstChildElement("p"), math::vec3(0,0,0));	
 	// create
 	std::shared_ptr<neb::actor::Controller> actor(new neb::actor::Controller);
 
@@ -375,8 +373,8 @@ neb::scene::vehicle_t neb::scene::create_vehicle() {
 	return vehicle;
 }
 void							neb::scene::step(double time){
-	printf("%s\n",__PRETTY_FUNCTION__);
-
+	NEBULA_DEBUG_1_FUNCTION;
+	
 	switch(user_type_)
 	{
 		case neb::scene::LOCAL:
@@ -391,8 +389,8 @@ void							neb::scene::step(double time){
 	}
 }
 void							neb::scene::step_local(double time){
-	printf("%s\n",__PRETTY_FUNCTION__);
-
+	NEBULA_DEBUG_1_FUNCTION;
+	
 	double dt = time - last_;
 	last_ = time;
 
@@ -474,31 +472,36 @@ void							neb::scene::step_remote(double time){
 
 	// receive
 }
-int	neb::scene::send() {
-
-	auto app = get_app();
-
-	assert(app->server_);
-	assert(app->server_->clients_.size() > 0);
-
-	auto client = app->server_->clients_.at(0);
-	assert(client);
+neb::packet::packet neb::scene::serialize() {
 	
+	NEBULA_DEBUG_0_FUNCTION;
 	
 	neb::packet::packet p;
 	p.type = neb::packet::type::SCENE;
-
+	
 	int i = 0;
 	for(auto it = actors_.map_.begin(); it != actors_.map_.end(); ++it)
 	{
+		printf("actor %i\n", i);
+		
+		assert(it->second);
 		auto actor = std::dynamic_pointer_cast<neb::actor::Base>(it->second);
+		assert(actor);
+		
+		printf("actor %i\n", i);
+		
+		p.scene_desc.desc[i] = actor->get_desc();
+		
+		printf("actor %i\n", i);
 
-		p.scene.desc[i] = actor->get_desc();
+		i++;
 	}	
-
-
-
-	return 0;
+	
+	p.scene_desc.desc_size = i;
+	
+	NEBULA_DEBUG_0_FUNCTION;
+	
+	return p;
 }
 int	neb::scene::recv(neb::packet::packet p) {
 

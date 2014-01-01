@@ -1,5 +1,6 @@
 #include <gal/network/server.h>
 
+#include <neb/config.h>
 #include <neb/app.h>
 #include <neb/physics.h>
 #include <neb/simulation_callback.h>
@@ -149,8 +150,9 @@ void	neb::actor::Rigid_Body::step_remote(double)
 	get_app()->client_->write(msg);
 }
 neb::actor::desc	neb::actor::Rigid_Body::get_projectile() {
-	printf("%s\n", __PRETTY_FUNCTION__);
-	
+
+	NEBULA_DEBUG_0_FUNCTION;
+
 	neb::actor::desc desc;
 	desc.reset();
 	
@@ -180,6 +182,7 @@ neb::actor::desc	neb::actor::Rigid_Body::get_projectile() {
 	glutpp::shape_desc sd;
 	sd.box(math::vec3(0.1,0.1,0.1));
 	
+	sd.front_.reset();
 	sd.front_.ambient_.from_math(math::black);
 	sd.front_.diffuse_.from_math(math::red);
 	sd.front_.emission_.from_math(math::black);
@@ -189,6 +192,8 @@ neb::actor::desc	neb::actor::Rigid_Body::get_projectile() {
 	return desc;
 }
 neb::actor::desc	neb::actor::Rigid_Body::get_desc() {
+
+	NEBULA_DEBUG_0_FUNCTION;
 	
 	neb::actor::desc desc = neb::actor::Base::get_desc();
 	

@@ -1,3 +1,4 @@
+#include <neb/config.h>
 #include <neb/app.h>
 #include <neb/scene.h>
 #include <neb/packet/packet.h>
@@ -7,6 +8,10 @@ neb::network::communicating::communicating(int socket): gal::network::communicat
 
 }
 void	neb::network::communicating::process(gal::network::message::shared_t message) {
+
+	NEBULA_DEBUG_0_FUNCTION;
+	
+	abort();
 	
 	assert(!app_.expired());
 	
@@ -20,13 +25,14 @@ void	neb::network::communicating::process(gal::network::message::shared_t messag
 	switch(p.type)
 	{
 		case neb::packet::type::SCENE:
-			scene = app->scenes_[p.scene.scene];
+			scene = app->scenes_[p.scene_desc.name];
 			if(scene)
 			{
 				scene->recv(p);
 			}
 			break;
 	}
+	
 }
 
 

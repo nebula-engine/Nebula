@@ -5,6 +5,7 @@
 
 #include <PxPhysicsAPI.h>
 
+#include <neb/scene_desc.h>
 #include <neb/scene.h>
 
 
@@ -47,6 +48,7 @@ namespace neb
 			void						Init();
 			void						Shutdown();
 			std::shared_ptr<neb::scene>			Create_Scene(tinyxml2::XMLElement*);
+			std::shared_ptr<neb::scene>			Create_Scene(scene_desc*);
 
 			DefaultErrorCallback 				px_default_error_callback_;
 			physx::PxDefaultAllocator 			px_default_allocator_callback_;

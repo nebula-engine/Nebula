@@ -5,6 +5,7 @@
 
 #include <neb/network/server.h>
 #include <neb/network/client.h>
+#include <neb/scene_desc.h>
 
 namespace neb
 {
@@ -25,6 +26,7 @@ namespace neb
 		
 			int		create_window(int name, int w, int h, int x, int y, char const * title);
 			int		load_scene(int,char const *);
+			int		load_scene(scene_desc*);
 			int		load_layout(int,char const *);
 
 			int		step(double);
@@ -35,6 +37,9 @@ namespace neb
 			int		deactivate_scene(int);
 			int		activate_layout(int,int);
 			int		deactivate_layout(int);
+			
+			
+			int		transmit_scenes(std::shared_ptr<neb::network::communicating>);
 			
 			
 			map_window_t	windows_;

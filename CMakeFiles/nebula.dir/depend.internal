@@ -29,10 +29,12 @@ CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o
  src/neb/actor/Rigid_Static.h
  src/neb/actor/desc.h
  src/neb/app.h
+ src/neb/config.h
  src/neb/network/client.h
  src/neb/network/communicating.h
  src/neb/network/server.h
  src/neb/scene.h
+ src/neb/scene_desc.h
  src/neb/shape.h
  src/neb/vehicle_manager.h
  src/neb/view.h
@@ -75,12 +77,14 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o
  src/neb/actor/Rigid_Static.h
  src/neb/actor/desc.h
  src/neb/app.h
+ src/neb/config.h
  src/neb/network/client.h
  src/neb/network/communicating.h
  src/neb/network/server.h
  src/neb/packet/packet.h
  src/neb/physics.h
  src/neb/scene.h
+ src/neb/scene_desc.h
  src/neb/shape.h
  src/neb/simulation_callback.h
  src/neb/vehicle_manager.h
@@ -129,11 +133,14 @@ CMakeFiles/nebula.dir/src/neb/app.cpp.o
  src/neb/actor/Rigid_Static.h
  src/neb/actor/desc.h
  src/neb/app.h
+ src/neb/config.h
  src/neb/network/client.h
  src/neb/network/communicating.h
  src/neb/network/server.h
+ src/neb/packet/packet.h
  src/neb/physics.h
  src/neb/scene.h
+ src/neb/scene_desc.h
  src/neb/shape.h
  src/neb/vehicle_manager.h
  src/neb/view.h
@@ -161,8 +168,13 @@ CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o
  src/neb/shape.h
 CMakeFiles/nebula.dir/src/neb/network/client.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/network/client.cpp
+ src/neb/actor/desc.h
+ src/neb/config.h
  src/neb/network/client.h
  src/neb/network/communicating.h
+ src/neb/packet/packet.h
+ src/neb/scene_desc.h
+ src/neb/shape.h
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/network/communicating.cpp
  src/neb/actor/Actor.h
@@ -175,11 +187,13 @@ CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o
  src/neb/actor/Rigid_Static.h
  src/neb/actor/desc.h
  src/neb/app.h
+ src/neb/config.h
  src/neb/network/client.h
  src/neb/network/communicating.h
  src/neb/network/server.h
  src/neb/packet/packet.h
  src/neb/scene.h
+ src/neb/scene_desc.h
  src/neb/shape.h
  src/neb/vehicle_manager.h
 CMakeFiles/nebula.dir/src/neb/network/server.cpp.o
@@ -199,6 +213,7 @@ CMakeFiles/nebula.dir/src/neb/physics.cpp.o
  src/neb/actor/desc.h
  src/neb/physics.h
  src/neb/scene.h
+ src/neb/scene_desc.h
  src/neb/shape.h
  src/neb/simulation_callback.h
  src/neb/vehicle_manager.h
@@ -216,12 +231,14 @@ CMakeFiles/nebula.dir/src/neb/scene.cpp.o
  src/neb/actor/free.h
  src/neb/actor/vehicle.h
  src/neb/app.h
+ src/neb/config.h
  src/neb/network/client.h
  src/neb/network/communicating.h
  src/neb/network/server.h
  src/neb/packet/packet.h
  src/neb/physics.h
  src/neb/scene.h
+ src/neb/scene_desc.h
  src/neb/shape.h
  src/neb/simulation_callback.h
  src/neb/vehicle_manager.h

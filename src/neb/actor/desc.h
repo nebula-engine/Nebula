@@ -53,15 +53,11 @@ namespace neb
 					filter_data	simulation_;
 					filter_data	scene_query_;
 				} filter_data_;
-			private:
-				unsigned int		num_shapes_;
-				glutpp::shape_desc	shapes_[10];
 			public:
 				int			parent;
-				int			actors[20];
-				int			actors_size;
-				int			lights[20];
-				int			lights_size;
+				neb::actor::desc*	actor_;
+				neb::light_desc*	light_;
+				neb::shape_desc*	shape_;
 		};
 	}
 }

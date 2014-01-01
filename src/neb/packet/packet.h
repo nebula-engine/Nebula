@@ -4,7 +4,9 @@
 #include <math/vec3.h>
 #include <math/transform.h>
 
+#include <neb/scene_desc.h>
 #include <neb/actor/desc.h>
+
 
 namespace neb
 {
@@ -23,20 +25,13 @@ namespace neb
 			float		t_[3];
 		};
 		
-		struct scene
-		{
-			int			scene;
-			neb::actor::desc	desc[100];
-			unsigned int		desc_size;
-		};
-		
 		struct packet
 		{
 			int	type;
 			union
 			{
 				neb::packet::actor_force	actor_force;
-				neb::packet::scene		scene;
+				neb::scene_desc			scene_desc;
 			};
 		};
 		

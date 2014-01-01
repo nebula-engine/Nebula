@@ -10,7 +10,7 @@ int	neb::actor::desc::load(tinyxml2::XMLElement* element) {
 	// xml
 	assert(element);
 	
-	pose.p.from_math(math::xml_parse_vec3(element->FirstChildElement("p")));
+	pose.p.from_math(math::xml_parse_vec3(element->FirstChildElement("p"), math::vec3(0,0,0)));
 	pose.q.from_math(math::xml_parse_quat(element->FirstChildElement("q")));
 	
 	
@@ -30,7 +30,7 @@ int	neb::actor::desc::load(tinyxml2::XMLElement* element) {
 	filter_data_.simulation_.word1 = neb::filter::RIGID_AGAINST;
 	
 	filter_data_.scene_query_.word3 = neb::filter::DRIVABLE_SURFACE;
-
+	
 	return 0;
 }
 int	neb::actor::desc::add_shape(glutpp::shape_desc sd) {
