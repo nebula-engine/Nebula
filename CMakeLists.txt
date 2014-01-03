@@ -8,19 +8,20 @@ set(src
 	src/glutpp/camera_control.cpp
 	src/glutpp/master.cpp
 	src/glutpp/window.cpp
-	src/glutpp/scene.cpp
+	src/glutpp/scene/scene.cpp
 	src/glutpp/renderable.cpp
-	src/glutpp/actor.cpp
-	src/glutpp/shape.cpp
-	src/glutpp/shape_desc.cpp
+	src/glutpp/actor/desc.cpp
+	src/glutpp/actor/actor.cpp
+	src/glutpp/shape/shape.cpp
+	src/glutpp/shape/desc.cpp
 	src/glutpp/glsl/shader.cpp
 	src/glutpp/glsl/uniform.cpp
 	src/glutpp/glsl/attrib.cpp
 	src/glutpp/texture.cpp
 	src/glutpp/glsl/program.cpp
 	src/glutpp/camera.cpp
-	src/glutpp/light.cpp
-	src/glutpp/desc_light.cpp
+	src/glutpp/light/light.cpp
+	src/glutpp/light/desc.cpp
 	src/glutpp/material.cpp
 	src/glutpp/gui/layout.cpp
 	src/glutpp/gui/object/object.cpp
@@ -54,10 +55,14 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/free.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/master.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/renderable.h		DESTINATION include/glutpp/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene.h		DESTINATION include/glutpp/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor.h		DESTINATION include/glutpp/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape.h		DESTINATION include/glutpp/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape_desc.h		DESTINATION include/glutpp/)
+
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene/scene.h	DESTINATION include/glutpp/scene)
+
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/desc.h		DESTINATION include/glutpp/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/actor.h	DESTINATION include/glutpp/actor/)
+
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape/shape.h	DESTINATION include/glutpp/shape)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape/desc.h		DESTINATION include/glutpp/shape)
 
 
 
@@ -69,8 +74,10 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/attrib.h		DESTINATION include/gl
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/texture.h			DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/camera.h			DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/camera_control.h		DESTINATION include/glutpp/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/light.h			DESTINATION include/glutpp/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/desc_light.h			DESTINATION include/glutpp/)
+
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/light/light.h		DESTINATION include/glutpp/light)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/light/desc.h			DESTINATION include/glutpp/light)
+
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/material.h			DESTINATION include/glutpp/)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/layout.h			DESTINATION include/glutpp/gui)

@@ -19,8 +19,6 @@ void	glutpp::glsl::attrib::init(char const * name, GLuint o_bind)
 }
 int	glutpp::glsl::attrib::locate(std::shared_ptr<glutpp::glsl::program> p)
 {
-	printf("program %i\n", p->o_);
-
 	glBindAttribLocation(p->o_, o_bind_, name_);
 	checkerror("glBindAttribLocation");
 	

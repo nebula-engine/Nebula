@@ -4,10 +4,10 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/charles/Programming/C++/glutpp/src/glutpp/actor.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/actor.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/actor/actor.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/actor/actor.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/actor/desc.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/actor/desc.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/camera.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/camera.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/camera_control.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/camera_control.cpp.o"
-  "/home/charles/Programming/C++/glutpp/src/glutpp/desc_light.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/desc_light.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/free.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/free.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/attrib.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/glsl/attrib.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/glsl/program.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o"
@@ -18,13 +18,14 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object_factory.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/gui/object/textview.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o"
-  "/home/charles/Programming/C++/glutpp/src/glutpp/light.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/light.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/light/desc.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/light/desc.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/light/light.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/light/light.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/master.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/master.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/material.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/renderable.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o"
-  "/home/charles/Programming/C++/glutpp/src/glutpp/scene.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/scene.cpp.o"
-  "/home/charles/Programming/C++/glutpp/src/glutpp/shape.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/shape.cpp.o"
-  "/home/charles/Programming/C++/glutpp/src/glutpp/shape_desc.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/shape_desc.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/scene/scene.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/scene/scene.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/shape/desc.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/shape/desc.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/shape/shape.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/shape/shape.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/texture.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/window.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o"
   )

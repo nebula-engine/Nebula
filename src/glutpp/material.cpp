@@ -3,14 +3,24 @@
 #include <math/free.h>
 
 #include <glutpp/window.h>
-#include <glutpp/scene.h>
+#include <glutpp/scene/scene.h>
 #include <glutpp/material.h>
 
 
 
 
+void glutpp::material_desc::reset() {
+	
+	ambient_.from_math(math::color(0.1,0.1,0.1,1.0));
+	diffuse_ .from_math(math::cyan);
+	specular_.from_math(math::white);
+	emission_.from_math(math::black);
+	shininess_ = 500;
 
+}
 void	glutpp::material_desc::load(tinyxml2::XMLElement* element) {
+	
+	reset();
 	
 	if(element == NULL)
 	{
@@ -22,6 +32,7 @@ void	glutpp::material_desc::load(tinyxml2::XMLElement* element) {
 	diffuse_.from_math(math::xml_parse_color(element->FirstChildElement("diffuse"), diffuse_.to_math()));
 	specular_.from_math(math::xml_parse_color(element->FirstChildElement("specular"), specular_.to_math()));
 	emission_.from_math(math::xml_parse_color(element->FirstChildElement("emission"), emission_.to_math()));
+	
 }
 
 

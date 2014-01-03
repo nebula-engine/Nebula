@@ -67,10 +67,10 @@ void	glutpp::glsl::program::compile() {
 	printf("program=%i\n",o_);
 
 }
-void	glutpp::glsl::program::use()
-{
-	printf("%s\n",__PRETTY_FUNCTION__);
-
+void	glutpp::glsl::program::use() {
+	
+	GLUTPP_DEBUG_1_FUNCTION;
+	
 	glUseProgram(o_);
 	checkerror("glUseProgram");
 	

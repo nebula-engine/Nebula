@@ -5,10 +5,11 @@
 /home/charles/usr/include/glutpp/master.h
 /home/charles/usr/include/glutpp/window.h
 /home/charles/usr/include/glutpp/renderable.h
-/home/charles/usr/include/glutpp/scene.h
-/home/charles/usr/include/glutpp/actor.h
-/home/charles/usr/include/glutpp/shape.h
-/home/charles/usr/include/glutpp/shape_desc.h
+/home/charles/usr/include/glutpp/scene/scene.h
+/home/charles/usr/include/glutpp/actor/desc.h
+/home/charles/usr/include/glutpp/actor/actor.h
+/home/charles/usr/include/glutpp/shape/shape.h
+/home/charles/usr/include/glutpp/shape/desc.h
 /home/charles/usr/include/glutpp/glsl/shader.h
 /home/charles/usr/include/glutpp/glsl/program.h
 /home/charles/usr/include/glutpp/glsl/uniform.h
@@ -16,8 +17,8 @@
 /home/charles/usr/include/glutpp/texture.h
 /home/charles/usr/include/glutpp/camera.h
 /home/charles/usr/include/glutpp/camera_control.h
-/home/charles/usr/include/glutpp/light.h
-/home/charles/usr/include/glutpp/desc_light.h
+/home/charles/usr/include/glutpp/light/light.h
+/home/charles/usr/include/glutpp/light/desc.h
 /home/charles/usr/include/glutpp/material.h
 /home/charles/usr/include/glutpp/gui/layout.h
 /home/charles/usr/include/glutpp/gui/object/object.h

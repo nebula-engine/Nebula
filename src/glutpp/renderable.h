@@ -7,7 +7,7 @@
 
 #include <glutpp/gui/layout.h>
 #include <glutpp/window.h>
-#include <glutpp/scene.h>
+#include <glutpp/scene/scene.h>
 
 namespace glutpp
 {

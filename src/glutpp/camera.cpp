@@ -9,7 +9,7 @@
 #include <math/mat44.h>
 
 #include <glutpp/window.h>
-#include <glutpp/scene.h>
+#include <glutpp/scene/scene.h>
 #include <glutpp/camera.h>
 
 glutpp::camera::camera():

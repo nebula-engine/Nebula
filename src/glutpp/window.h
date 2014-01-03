@@ -8,7 +8,7 @@
 #include <glutpp/config.h>
 #include <glutpp/texture.h>
 #include <glutpp/camera.h>
-#include <glutpp/light.h>
+#include <glutpp/light/light.h>
 #include <glutpp/master.h>
 //#include <glutpp/plane.h>
 #include <glutpp/glsl/program.h>

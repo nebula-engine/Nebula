@@ -14,10 +14,8 @@
 
 #include <glutpp/free.h>
 #include <glutpp/window.h>
-#include <glutpp/actor.h>
-#include <glutpp/light.h>
-//#include <glutpp/shader.h>
-//#include <glutpp/program.h>
+#include <glutpp/actor/actor.h>
+#include <glutpp/light/light.h>
 #include <glutpp/renderable.h>
 
 template <typename... Args>
@@ -97,8 +95,7 @@ void	glutpp::window::init() {
 	
 	checkerror("unknown");
 }
-void	glutpp::window::render(double time)
-{
+void	glutpp::window::render(double time) {
 	glfwMakeContextCurrent(window_);
 	
 	if(renderable_) renderable_->render(time, shared_from_this());
@@ -111,7 +108,7 @@ void	glutpp::window::callback_window_refresh_fun(GLFWwindow*)
 }
 int	glutpp::window::step(double time)
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_1_FUNCTION;
 
 	if(glfwWindowShouldClose(window_))
 	{
@@ -123,8 +120,7 @@ int	glutpp::window::step(double time)
 	
 	return 0;
 }
-void	glutpp::window::callback_window_size_fun(GLFWwindow* window, int w, int h)
-{
+void	glutpp::window::callback_window_size_fun(GLFWwindow* window, int w, int h) {
 	w_ = w;
 	h_ = h;
 
@@ -132,8 +128,8 @@ void	glutpp::window::callback_window_size_fun(GLFWwindow* window, int w, int h)
 
 	callback_window_refresh_fun(window);
 }
-void	glutpp::window::callback_window_pos_fun(GLFWwindow* window, int x, int y)
-{
+void	glutpp::window::callback_window_pos_fun(GLFWwindow* window, int x, int y) {
+
 	x_ = x;
 	y_ = y;
 

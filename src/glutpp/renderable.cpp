@@ -1,6 +1,6 @@
 //#include <assert.h>
 
-#include <glutpp/scene.h>
+#include <glutpp/scene/scene.h>
 #include <glutpp/renderable.h>
 #include <glutpp/gui/layout.h>
 
@@ -27,7 +27,7 @@ void	glutpp::renderable::resize(int w, int h){
 }
 void	glutpp::renderable::render(double time, std::shared_ptr<glutpp::window> window) {
 
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_1_FUNCTION;
 
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 

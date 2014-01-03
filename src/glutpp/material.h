@@ -9,16 +9,21 @@
 namespace glutpp
 {
 	class window;
+	
+	
 	struct material_desc
 	{
-		void		load(tinyxml2::XMLElement*);
-
+		void			reset();
+		void			load(tinyxml2::XMLElement*);
+		
 		math::raw::color	ambient_;
 		math::raw::color	diffuse_;
 		math::raw::color	specular_;
 		math::raw::color	emission_;
-
+		float			shininess_;
 	};
+	
+	
 	class material
 	{
 		public:
