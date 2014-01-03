@@ -5,7 +5,7 @@
 #include <PxPhysicsAPI.h>
 
 #include <neb/physics.h>
-#include <neb/scene.h>
+#include <neb/scene/scene.h>
 #include <neb/simulation_callback.h>
 
 namespace neb
@@ -131,26 +131,17 @@ void				neb::physics::Shutdown() {
 	px_physics_->release();
 	px_foundation_->release();
 }
-std::shared_ptr<neb::scene>	neb::physics::Create_Scene(tinyxml2::XMLElement* element) {
-	
-	scene_desc_inter sdi;
-	sdi.load(element);
-	
-	scene_desc* sd = sdi.generate();
-	
-	return Create_Scene(sd);
-}
-std::shared_ptr<neb::scene> neb::physics::Create_Scene(scene_desc* sd) {
+std::shared_ptr<neb::scene::scene> neb::physics::create_scene(scene::desc* sd) {
 	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	assert(px_physics_ != NULL);
 	
-	std::shared_ptr<neb::scene> scene(new neb::scene);
+	std::shared_ptr<neb::scene::scene> scene(new neb::scene::scene);
 	
 	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
 	
-	scene_desc.gravity = sd->gravity_.to_math();
+	scene_desc.gravity = sd->raw_.gravity_.to_math();
 	
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 	
@@ -202,8 +193,8 @@ std::shared_ptr<neb::scene> neb::physics::Create_Scene(scene_desc* sd) {
 
 	// actors
 	//scene->Create_Lights(sd);
-	scene->create_actors(sd->actor_);
 
+	
 	return scene;
 }
 

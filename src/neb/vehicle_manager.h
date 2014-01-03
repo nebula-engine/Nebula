@@ -5,7 +5,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/actor/desc.h>
+#include <glutpp/actor/desc.h>
 
 //Tire model friction for each combination of drivable surface type and tire type.
 static const physx::PxU32 MAX_NUM_SURFACE_TYPES = 4;
@@ -146,7 +146,7 @@ namespace neb
 
 			void			vehicle_suspension_raycasts(physx::PxScene* scene);
 			void			update(const physx::PxF32, const physx::PxVec3&);
-			vehicle_t		create_vehicle(physx::PxPhysics*, physx::PxScene*, neb::actor::desc);
+			vehicle_t		create_vehicle(physx::PxPhysics*, physx::PxScene*, glutpp::actor::desc*);
 
 			physx::PxVehicleDrivableSurfaceToTireFrictionPairs*	surface_tire_pairs_;
 

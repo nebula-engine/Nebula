@@ -437,7 +437,7 @@ physx::PxRigidDynamic* createVehicleActor4W(
 std::shared_ptr<neb::actor::vehicle>	neb::vehicle_manager::create_vehicle(
 		physx::PxPhysics* physics,
 		physx::PxScene* scene,
-		neb::actor::desc desc) {
+		glutpp::actor::desc* desc) {
 
 	// material
 	physx::PxMaterial* material = physics->createMaterial(0.5f, 0.5f, 0.1f);
@@ -520,7 +520,7 @@ std::shared_ptr<neb::actor::vehicle>	neb::vehicle_manager::create_vehicle(
 	
 	// my stuff
 	
-	std::shared_ptr<neb::actor::vehicle> vehicle(new neb::actor::vehicle);
+	std::shared_ptr<neb::actor::vehicle> vehicle;//(new neb::actor::vehicle);
 	
 	vehicle->desc_ = desc;
 	

@@ -6,63 +6,53 @@ CMakeFiles/nebula.dir/src/neb/actor/Actor.cpp.o
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
- src/neb/scene.h
+ src/neb/config.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/shape.h
  src/neb/simulation_callback.h
  src/neb/vehicle_manager.h
- src/neb/view.h
 CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/actor/Base.cpp
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
+ src/neb/actor/empty.h
  src/neb/app.h
  src/neb/config.h
  src/neb/network/client.h
  src/neb/network/communicating.h
  src/neb/network/server.h
- src/neb/scene.h
- src/neb/scene_desc.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/shape.h
  src/neb/vehicle_manager.h
- src/neb/view.h
 CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/actor/Controller.cpp
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/desc.h
- src/neb/shape.h
-CMakeFiles/nebula.dir/src/neb/actor/Light.cpp.o
- /home/charles/Programming/C++/nebula/src/neb/actor/Light.cpp
- src/neb/actor/Base.h
- src/neb/actor/Light.h
- src/neb/actor/desc.h
- src/neb/shape.h
+ src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Actor.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Actor.cpp
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
+ src/neb/config.h
  src/neb/physics.h
- src/neb/scene.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/shape.h
  src/neb/vehicle_manager.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o
@@ -70,12 +60,10 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
  src/neb/app.h
  src/neb/config.h
  src/neb/network/client.h
@@ -83,55 +71,54 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o
  src/neb/network/server.h
  src/neb/packet/packet.h
  src/neb/physics.h
- src/neb/scene.h
- src/neb/scene_desc.h
- src/neb/shape.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/simulation_callback.h
  src/neb/vehicle_manager.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Dynamic.cpp
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
+ src/neb/actor/Controller.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
- src/neb/actor/desc.h
+ src/neb/actor/Rigid_Static.h
+ src/neb/config.h
+ src/neb/physics.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/shape.h
+ src/neb/vehicle_manager.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Static.cpp
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
- src/neb/actor/Rigid_Actor.h
- src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
- src/neb/shape.h
-CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.o
- /home/charles/Programming/C++/nebula/src/neb/actor/desc.cpp
- src/neb/actor/Actor.h
- src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
+ src/neb/config.h
  src/neb/physics.h
- src/neb/scene.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/shape.h
- src/neb/simulation_callback.h
  src/neb/vehicle_manager.h
+CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.o
+ /home/charles/Programming/C++/nebula/src/neb/actor/empty.cpp
+ src/neb/actor/Base.h
+ src/neb/actor/empty.h
+ src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/app.cpp
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
  src/neb/app.h
  src/neb/config.h
  src/neb/network/client.h
@@ -139,62 +126,41 @@ CMakeFiles/nebula.dir/src/neb/app.cpp.o
  src/neb/network/server.h
  src/neb/packet/packet.h
  src/neb/physics.h
- src/neb/scene.h
- src/neb/scene_desc.h
- src/neb/shape.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/vehicle_manager.h
- src/neb/view.h
 CMakeFiles/nebula.dir/src/neb/camera.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/camera.cpp
- src/neb/actor/Actor.h
- src/neb/actor/Base.h
- src/neb/actor/Controller.h
- src/neb/actor/Light.h
- src/neb/actor/Rigid_Actor.h
- src/neb/actor/Rigid_Body.h
- src/neb/actor/Rigid_Dynamic.h
- src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
  src/neb/camera.h
- src/neb/scene.h
- src/neb/shape.h
- src/neb/vehicle_manager.h
- src/neb/view.h
 CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/camera_ridealong.cpp
  src/neb/actor/Base.h
- src/neb/actor/desc.h
  src/neb/camera.h
- src/neb/shape.h
+ src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/network/client.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/network/client.cpp
- src/neb/actor/desc.h
  src/neb/config.h
  src/neb/network/client.h
  src/neb/network/communicating.h
  src/neb/packet/packet.h
- src/neb/scene_desc.h
- src/neb/shape.h
+ src/neb/scene/desc.h
 CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/network/communicating.cpp
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
  src/neb/app.h
  src/neb/config.h
  src/neb/network/client.h
  src/neb/network/communicating.h
  src/neb/network/server.h
  src/neb/packet/packet.h
- src/neb/scene.h
- src/neb/scene_desc.h
- src/neb/shape.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/vehicle_manager.h
 CMakeFiles/nebula.dir/src/neb/network/server.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/network/server.cpp
@@ -205,29 +171,31 @@ CMakeFiles/nebula.dir/src/neb/physics.cpp.o
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
+ src/neb/config.h
  src/neb/physics.h
- src/neb/scene.h
- src/neb/scene_desc.h
- src/neb/shape.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/simulation_callback.h
  src/neb/vehicle_manager.h
-CMakeFiles/nebula.dir/src/neb/scene.cpp.o
- /home/charles/Programming/C++/nebula/src/neb/scene.cpp
+CMakeFiles/nebula.dir/src/neb/scene/desc.cpp.o
+ /home/charles/Programming/C++/nebula/src/neb/scene/desc.cpp
+ src/neb/actor/Base.h
+ src/neb/config.h
+ src/neb/scene/desc.h
+CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o
+ /home/charles/Programming/C++/nebula/src/neb/scene/scene.cpp
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
+ src/neb/actor/empty.h
  src/neb/actor/free.h
  src/neb/actor/vehicle.h
  src/neb/app.h
@@ -237,8 +205,8 @@ CMakeFiles/nebula.dir/src/neb/scene.cpp.o
  src/neb/network/server.h
  src/neb/packet/packet.h
  src/neb/physics.h
- src/neb/scene.h
- src/neb/scene_desc.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/shape.h
  src/neb/simulation_callback.h
  src/neb/vehicle_manager.h
@@ -247,13 +215,14 @@ CMakeFiles/nebula.dir/src/neb/shape.cpp.o
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
- src/neb/scene.h
+ src/neb/config.h
+ src/neb/physics.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/shape.h
  src/neb/vehicle_manager.h
 CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o
@@ -261,15 +230,14 @@ CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
+ src/neb/config.h
  src/neb/physics.h
- src/neb/scene.h
- src/neb/shape.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/simulation_callback.h
  src/neb/vehicle_manager.h
 CMakeFiles/nebula.dir/src/neb/user.cpp.o
@@ -278,39 +246,21 @@ CMakeFiles/nebula.dir/src/neb/user.cpp.o
  src/neb/actor/Base.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
- src/neb/actor/desc.h
  src/neb/camera.h
- src/neb/shape.h
+ src/neb/config.h
  src/neb/user.h
 CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/vehicle_manager.cpp
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
- src/neb/actor/Light.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Body.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
  src/neb/actor/vehicle.h
+ src/neb/config.h
  src/neb/physics.h
- src/neb/scene.h
- src/neb/shape.h
+ src/neb/scene/desc.h
+ src/neb/scene/scene.h
  src/neb/vehicle_manager.h
-CMakeFiles/nebula.dir/src/neb/view.cpp.o
- /home/charles/Programming/C++/nebula/src/neb/view.cpp
- src/neb/actor/Actor.h
- src/neb/actor/Base.h
- src/neb/actor/Controller.h
- src/neb/actor/Light.h
- src/neb/actor/Rigid_Actor.h
- src/neb/actor/Rigid_Body.h
- src/neb/actor/Rigid_Dynamic.h
- src/neb/actor/Rigid_Static.h
- src/neb/actor/desc.h
- src/neb/camera.h
- src/neb/scene.h
- src/neb/shape.h
- src/neb/vehicle_manager.h
- src/neb/view.h

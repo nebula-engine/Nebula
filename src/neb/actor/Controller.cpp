@@ -1,12 +1,14 @@
 #include <neb/actor/Controller.h>
 
-neb::actor::Controller::Controller()
+neb::actor::Controller::Controller(
+		glutpp::actor::desc* desc,
+		std::shared_ptr<neb::scene::scene> scene):
+	neb::actor::Base(desc, scene)
 {
 
 }
-int	neb::actor::Controller::release()
+void	neb::actor::Controller::release()
 {
-	return 0;
 }
 void	neb::actor::Controller::step(float dt)
 {

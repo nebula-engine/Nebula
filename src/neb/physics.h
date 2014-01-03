@@ -5,8 +5,8 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/scene_desc.h>
-#include <neb/scene.h>
+#include <neb/scene/desc.h>
+#include <neb/scene/scene.h>
 
 
 class DefaultErrorCallback:
@@ -34,6 +34,8 @@ namespace neb
 		
 		static physx::PxU32 const DRIVABLE_SURFACE = type::STATIC | type::DYNAMIC;
 		
+		static physx::PxU32 const PROJECTILE_AGAINST = type::STATIC | type::DYNAMIC;
+
 		static physx::PxU32 const COLLISION_FLAG_WHEEL = 0;
 		static physx::PxU32 const COLLISION_FLAG_WHEEL_AGAINST = 0;
 		static physx::PxU32 const COLLISION_FLAG_CHASSIS = type::DYNAMIC;
@@ -47,9 +49,10 @@ namespace neb
 			physics();
 			void						Init();
 			void						Shutdown();
-			std::shared_ptr<neb::scene>			Create_Scene(tinyxml2::XMLElement*);
-			std::shared_ptr<neb::scene>			Create_Scene(scene_desc*);
-
+			std::shared_ptr<neb::scene::scene>		create_scene(scene::desc*);
+			
+			
+			
 			DefaultErrorCallback 				px_default_error_callback_;
 			physx::PxDefaultAllocator 			px_default_allocator_callback_;
 			physx::PxFoundation*				px_foundation_;

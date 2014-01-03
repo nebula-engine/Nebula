@@ -9,21 +9,20 @@ add_library(nebula
 	src/neb/app.cpp
 	src/neb/user.cpp
 	src/neb/physics.cpp
-	src/neb/scene.cpp
+	src/neb/scene/desc.cpp
+	src/neb/scene/scene.cpp
 	src/neb/vehicle_manager.cpp
 	src/neb/simulation_callback.cpp
-	src/neb/view.cpp
 	src/neb/shape.cpp
 	src/neb/camera.cpp
 	src/neb/camera_ridealong.cpp
-	src/neb/actor/desc.cpp
 	src/neb/actor/Base.cpp
+	src/neb/actor/empty.cpp
 	src/neb/actor/Actor.cpp
 	src/neb/actor/Rigid_Actor.cpp
 	src/neb/actor/Rigid_Body.cpp
 	src/neb/actor/Rigid_Dynamic.cpp
 	src/neb/actor/Rigid_Static.cpp
-	src/neb/actor/Light.cpp
 	src/neb/actor/Controller.cpp
 	src/neb/network/server.cpp
 	src/neb/network/client.cpp
@@ -45,7 +44,6 @@ set(files
 	${PROJECT_SOURCE_DIR}/neb/app.h
 	${PROJECT_SOURCE_DIR}/neb/user.h
 	${PROJECT_SOURCE_DIR}/neb/physics.h
-	${PROJECT_SOURCE_DIR}/neb/scene.h
 	${PROJECT_SOURCE_DIR}/neb/vehicle_manager.h
 	${PROJECT_SOURCE_DIR}/neb/simulation_callback.h
 )
@@ -55,17 +53,20 @@ install(FILES ${files} DESTINATION include/neb/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/packet/packet.h		DESTINATION include/neb/packet)
 
 
-install(FILES ${PROJECT_SOURCE_DIR}/neb/view.h			DESTINATION include/neb/)
+
+install(FILES ${PROJECT_SOURCE_DIR}/neb/scene/desc.h		DESTINATION include/neb/scene)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/scene/scene.h		DESTINATION include/neb/scene)
+
+
 install(FILES ${PROJECT_SOURCE_DIR}/neb/camera.h		DESTINATION include/neb/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/shape.h			DESTINATION include/neb/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/desc.h		DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Base.h		DESTINATION include/neb/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/empty.h		DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Actor.h		DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Actor.h	DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Body.h	DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Dynamic.h	DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Static.h	DESTINATION include/neb/actor/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Light.h		DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Controller.h	DESTINATION include/neb/actor/)
 
 set(files

@@ -1,6 +1,6 @@
 #include <neb/config.h>
 #include <neb/app.h>
-#include <neb/scene.h>
+#include <neb/scene/scene.h>
 #include <neb/packet/packet.h>
 #include <neb/network/communicating.h>
 
@@ -16,7 +16,7 @@ void	neb::network::communicating::process(gal::network::message::shared_t messag
 	assert(!app_.expired());
 	
 	auto app = app_.lock();
-	std::shared_ptr<neb::scene> scene;
+	std::shared_ptr<neb::scene::scene> scene;
 	
 	neb::packet::packet p;
 	
@@ -24,12 +24,7 @@ void	neb::network::communicating::process(gal::network::message::shared_t messag
 	
 	switch(p.type)
 	{
-		case neb::packet::type::SCENE:
-			scene = app->scenes_[p.scene_desc.name];
-			if(scene)
-			{
-				scene->recv(p);
-			}
+		case neb::packet::type::ACTOR_FORCE:
 			break;
 	}
 	

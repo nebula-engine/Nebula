@@ -10,9 +10,16 @@ namespace neb
 		class Rigid_Dynamic: public neb::actor::Rigid_Body
 		{
 			public:
-				Rigid_Dynamic();
+				Rigid_Dynamic(
+						glutpp::actor::desc*,
+						std::shared_ptr<neb::scene::scene>,
+						neb::actor::Base_shared = neb::actor::Base_shared());
+				
 				virtual void		init();
 
+
+				virtual void			create_physics();
+				virtual void			init_physics();
 		};
 	}
 }

@@ -10,9 +10,17 @@ namespace neb
 		class Rigid_Static:
 			public neb::actor::Rigid_Actor
 		{
-		public:
-			virtual void	init();
-			virtual void	add_force();
+			public:
+				Rigid_Static(
+						glutpp::actor::desc*,
+						std::shared_ptr<neb::scene::scene>,
+						neb::actor::Base_shared = neb::actor::Base_shared());
+
+				virtual void	init();
+				virtual void	create_physics();
+				virtual void	init_physics();
+				
+				virtual void	add_force();
 		};
 	}
 }

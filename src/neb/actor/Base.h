@@ -8,42 +8,56 @@
 
 #include <math/transform.h>
 
-#include <glutpp/actor.h>
+#include <glutpp/actor/actor.h>
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/actor/desc.h>
+#include <glutpp/actor/desc.h>
+
+#include <neb/config.h>
 
 namespace neb
 {
 	class app;
-	class scene;
+	namespace scene
+	{
+		class scene;
+	}
 	namespace actor
 	{
-		class Base: public glutpp::actor
+		class Base: public glutpp::actor::actor
 		{
 			public:
-				Base();
-				virtual void			init() = 0;
-				virtual int			release();
-
-
-				std::shared_ptr<neb::app>	get_app();
-				std::shared_ptr<neb::scene>	get_scene();
-
-				virtual neb::actor::desc	get_desc();
-				virtual neb::actor::desc	get_projectile();
+				Base(
+					glutpp::actor::desc*,
+					std::shared_ptr<neb::scene::scene>,
+					neb::actor::Base_shared = neb::actor::Base_shared());
 				
+				virtual void			init();
+				virtual void			release();
+				
+				void				create_actor(glutpp::actor::desc*);
+				void				create_shapes();
+				void				create_children();
+				
+				virtual void			create_physics() {abort();}
+				virtual void			init_physics() {abort();}
 
+				std::shared_ptr<neb::app>		get_app();
+				std::shared_ptr<neb::scene::scene>	get_scene();
 
-				virtual void			add_force() = 0;
+				virtual glutpp::actor::desc*		get_desc();
+				virtual glutpp::actor::desc*		get_projectile();
+				
+				
+				
+				virtual void			add_force() {abort();}
 				virtual void			set_pose(math::transform);
 				virtual int			fire();
-
+				
 				virtual void			step_remote(double);
 				
-				neb::actor::desc		desc_;
-				
+
 		};
 	}
 }

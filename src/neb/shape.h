@@ -5,13 +5,17 @@
 
 #include <math/vec3.h>
 
-#include <glutpp/shape.h>
+#include <glutpp/shape/shape.h>
 
 namespace neb
 {
-	class shape: public glutpp::shape
+	class shape: public glutpp::shape::shape
 	{
 		public:
+			shape(glutpp::actor::actor_shared, glutpp::shape::desc*);
+			
+			virtual void		init();
+			void			create_physics();
 			physx::PxGeometry*	to_geo();
 			
 			physx::PxShape*		px_shape_;

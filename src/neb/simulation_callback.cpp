@@ -6,8 +6,10 @@ void 	neb::simulation_callback::onConstraintBreak(
 	printf("%s\n", __PRETTY_FUNCTION__);
 }
 void	neb::simulation_callback::onContact(
-		const physx::PxContactPairHeader & pairHeader, const physx::PxContactPair *pairs, physx::PxU32 nbPairs) {
-
+		const physx::PxContactPairHeader & pairHeader,
+		const physx::PxContactPair *pairs,
+		physx::PxU32 nbPairs) {
+	
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
 	physx::PxActor* pxactor0 = pairHeader.actors[0];
@@ -21,14 +23,18 @@ void	neb::simulation_callback::onContact(
 		
 		if(cp.events & physx::PxPairFlag::eNOTIFY_TOUCH_FOUND)
 		{
-			if(actor0->desc_.filter_data_.simulation_.word3 & neb::filter::type::PROJECTILE)
+			if(actor0->desc_->raw_.filter_data_.simulation_.word3 & neb::filter::type::PROJECTILE)
 			{
-				actors_to_delete_.push_back(actor0->i_);
+				printf("delete actor\n");
+				//actor0->set(glutpp::actor::actor::flag::SHOULD_DELETE);
+				//actors_to_delete_.push_back(actor0->i_);
 			}
 			
-			if(actor1->desc_.filter_data_.simulation_.word3 & neb::filter::type::PROJECTILE)
+			if(actor1->desc_->raw_.filter_data_.simulation_.word3 & neb::filter::type::PROJECTILE)
 			{
-				actors_to_delete_.push_back(actor1->i_);
+				printf("delete actor\n");
+				//actor1->set(glutpp::actor::actor::flag::SHOULD_DELETE);
+				//actors_to_delete_.push_back(actor1->i_);
 			}
 		}
 	}

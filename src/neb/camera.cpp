@@ -5,8 +5,7 @@
 
 #include <glutpp/window.h>
 
-#include <neb/scene.h>
-#include <neb/view.h>
+#include <neb/scene/scene.h>
 #include <neb/camera.h>
 
 neb::camera::camera():
@@ -97,15 +96,6 @@ void	neb::camera::SetWindow( glutpp::window* window )
 void	neb::camera::Display()
 {
 	Step(1.0f/60.0f);
-
-	//Look();
-
-
-	if( view_ )
-	{
-		view_->Display();
-	}
-
 }
 void neb::camera::Step(float dt)
 {
@@ -178,7 +168,6 @@ void neb::camera::Look()
 }
 void	neb::camera::delete_scene()
 {
-	view_->delete_scene();
 }
 int	neb::camera::FirstOrderDeltaPitchRel(int d)
 {

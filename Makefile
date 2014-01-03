@@ -234,30 +234,6 @@ src/neb/actor/Controller.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.s
 .PHONY : src/neb/actor/Controller.cpp.s
 
-src/neb/actor/Light.o: src/neb/actor/Light.cpp.o
-.PHONY : src/neb/actor/Light.o
-
-# target to build an object file
-src/neb/actor/Light.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Light.cpp.o
-.PHONY : src/neb/actor/Light.cpp.o
-
-src/neb/actor/Light.i: src/neb/actor/Light.cpp.i
-.PHONY : src/neb/actor/Light.i
-
-# target to preprocess a source file
-src/neb/actor/Light.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Light.cpp.i
-.PHONY : src/neb/actor/Light.cpp.i
-
-src/neb/actor/Light.s: src/neb/actor/Light.cpp.s
-.PHONY : src/neb/actor/Light.s
-
-# target to generate assembly for a file
-src/neb/actor/Light.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Light.cpp.s
-.PHONY : src/neb/actor/Light.cpp.s
-
 src/neb/actor/Rigid_Actor.o: src/neb/actor/Rigid_Actor.cpp.o
 .PHONY : src/neb/actor/Rigid_Actor.o
 
@@ -354,29 +330,29 @@ src/neb/actor/Rigid_Static.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.s
 .PHONY : src/neb/actor/Rigid_Static.cpp.s
 
-src/neb/actor/desc.o: src/neb/actor/desc.cpp.o
-.PHONY : src/neb/actor/desc.o
+src/neb/actor/empty.o: src/neb/actor/empty.cpp.o
+.PHONY : src/neb/actor/empty.o
 
 # target to build an object file
-src/neb/actor/desc.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.o
-.PHONY : src/neb/actor/desc.cpp.o
+src/neb/actor/empty.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.o
+.PHONY : src/neb/actor/empty.cpp.o
 
-src/neb/actor/desc.i: src/neb/actor/desc.cpp.i
-.PHONY : src/neb/actor/desc.i
+src/neb/actor/empty.i: src/neb/actor/empty.cpp.i
+.PHONY : src/neb/actor/empty.i
 
 # target to preprocess a source file
-src/neb/actor/desc.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.i
-.PHONY : src/neb/actor/desc.cpp.i
+src/neb/actor/empty.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.i
+.PHONY : src/neb/actor/empty.cpp.i
 
-src/neb/actor/desc.s: src/neb/actor/desc.cpp.s
-.PHONY : src/neb/actor/desc.s
+src/neb/actor/empty.s: src/neb/actor/empty.cpp.s
+.PHONY : src/neb/actor/empty.s
 
 # target to generate assembly for a file
-src/neb/actor/desc.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.s
-.PHONY : src/neb/actor/desc.cpp.s
+src/neb/actor/empty.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.s
+.PHONY : src/neb/actor/empty.cpp.s
 
 src/neb/app.o: src/neb/app.cpp.o
 .PHONY : src/neb/app.o
@@ -546,29 +522,53 @@ src/neb/physics.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/physics.cpp.s
 .PHONY : src/neb/physics.cpp.s
 
-src/neb/scene.o: src/neb/scene.cpp.o
-.PHONY : src/neb/scene.o
+src/neb/scene/desc.o: src/neb/scene/desc.cpp.o
+.PHONY : src/neb/scene/desc.o
 
 # target to build an object file
-src/neb/scene.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene.cpp.o
-.PHONY : src/neb/scene.cpp.o
+src/neb/scene/desc.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene/desc.cpp.o
+.PHONY : src/neb/scene/desc.cpp.o
 
-src/neb/scene.i: src/neb/scene.cpp.i
-.PHONY : src/neb/scene.i
+src/neb/scene/desc.i: src/neb/scene/desc.cpp.i
+.PHONY : src/neb/scene/desc.i
 
 # target to preprocess a source file
-src/neb/scene.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene.cpp.i
-.PHONY : src/neb/scene.cpp.i
+src/neb/scene/desc.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene/desc.cpp.i
+.PHONY : src/neb/scene/desc.cpp.i
 
-src/neb/scene.s: src/neb/scene.cpp.s
-.PHONY : src/neb/scene.s
+src/neb/scene/desc.s: src/neb/scene/desc.cpp.s
+.PHONY : src/neb/scene/desc.s
 
 # target to generate assembly for a file
-src/neb/scene.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene.cpp.s
-.PHONY : src/neb/scene.cpp.s
+src/neb/scene/desc.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene/desc.cpp.s
+.PHONY : src/neb/scene/desc.cpp.s
+
+src/neb/scene/scene.o: src/neb/scene/scene.cpp.o
+.PHONY : src/neb/scene/scene.o
+
+# target to build an object file
+src/neb/scene/scene.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o
+.PHONY : src/neb/scene/scene.cpp.o
+
+src/neb/scene/scene.i: src/neb/scene/scene.cpp.i
+.PHONY : src/neb/scene/scene.i
+
+# target to preprocess a source file
+src/neb/scene/scene.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.i
+.PHONY : src/neb/scene/scene.cpp.i
+
+src/neb/scene/scene.s: src/neb/scene/scene.cpp.s
+.PHONY : src/neb/scene/scene.s
+
+# target to generate assembly for a file
+src/neb/scene/scene.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.s
+.PHONY : src/neb/scene/scene.cpp.s
 
 src/neb/shape.o: src/neb/shape.cpp.o
 .PHONY : src/neb/shape.o
@@ -666,30 +666,6 @@ src/neb/vehicle_manager.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.s
 .PHONY : src/neb/vehicle_manager.cpp.s
 
-src/neb/view.o: src/neb/view.cpp.o
-.PHONY : src/neb/view.o
-
-# target to build an object file
-src/neb/view.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/view.cpp.o
-.PHONY : src/neb/view.cpp.o
-
-src/neb/view.i: src/neb/view.cpp.i
-.PHONY : src/neb/view.i
-
-# target to preprocess a source file
-src/neb/view.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/view.cpp.i
-.PHONY : src/neb/view.cpp.i
-
-src/neb/view.s: src/neb/view.cpp.s
-.PHONY : src/neb/view.s
-
-# target to generate assembly for a file
-src/neb/view.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/view.cpp.s
-.PHONY : src/neb/view.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -713,9 +689,6 @@ help:
 	@echo "... src/neb/actor/Controller.o"
 	@echo "... src/neb/actor/Controller.i"
 	@echo "... src/neb/actor/Controller.s"
-	@echo "... src/neb/actor/Light.o"
-	@echo "... src/neb/actor/Light.i"
-	@echo "... src/neb/actor/Light.s"
 	@echo "... src/neb/actor/Rigid_Actor.o"
 	@echo "... src/neb/actor/Rigid_Actor.i"
 	@echo "... src/neb/actor/Rigid_Actor.s"
@@ -728,9 +701,9 @@ help:
 	@echo "... src/neb/actor/Rigid_Static.o"
 	@echo "... src/neb/actor/Rigid_Static.i"
 	@echo "... src/neb/actor/Rigid_Static.s"
-	@echo "... src/neb/actor/desc.o"
-	@echo "... src/neb/actor/desc.i"
-	@echo "... src/neb/actor/desc.s"
+	@echo "... src/neb/actor/empty.o"
+	@echo "... src/neb/actor/empty.i"
+	@echo "... src/neb/actor/empty.s"
 	@echo "... src/neb/app.o"
 	@echo "... src/neb/app.i"
 	@echo "... src/neb/app.s"
@@ -752,9 +725,12 @@ help:
 	@echo "... src/neb/physics.o"
 	@echo "... src/neb/physics.i"
 	@echo "... src/neb/physics.s"
-	@echo "... src/neb/scene.o"
-	@echo "... src/neb/scene.i"
-	@echo "... src/neb/scene.s"
+	@echo "... src/neb/scene/desc.o"
+	@echo "... src/neb/scene/desc.i"
+	@echo "... src/neb/scene/desc.s"
+	@echo "... src/neb/scene/scene.o"
+	@echo "... src/neb/scene/scene.i"
+	@echo "... src/neb/scene/scene.s"
 	@echo "... src/neb/shape.o"
 	@echo "... src/neb/shape.i"
 	@echo "... src/neb/shape.s"
@@ -767,9 +743,6 @@ help:
 	@echo "... src/neb/vehicle_manager.o"
 	@echo "... src/neb/vehicle_manager.i"
 	@echo "... src/neb/vehicle_manager.s"
-	@echo "... src/neb/view.o"
-	@echo "... src/neb/view.i"
-	@echo "... src/neb/view.s"
 .PHONY : help
 
 

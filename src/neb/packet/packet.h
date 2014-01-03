@@ -4,8 +4,8 @@
 #include <math/vec3.h>
 #include <math/transform.h>
 
-#include <neb/scene_desc.h>
-#include <neb/actor/desc.h>
+#include <neb/scene/desc.h>
+#include <glutpp/actor/desc.h>
 
 
 namespace neb
@@ -31,11 +31,8 @@ namespace neb
 			union
 			{
 				neb::packet::actor_force	actor_force;
-				neb::scene_desc			scene_desc;
 			};
 		};
-		
-		
 	}
 }
 

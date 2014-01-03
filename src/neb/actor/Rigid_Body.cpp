@@ -7,17 +7,26 @@
 #include <neb/packet/packet.h>
 #include <neb/actor/Rigid_Body.h>
 
-neb::actor::Rigid_Body::Rigid_Body():
+neb::actor::Rigid_Body::Rigid_Body(
+		glutpp::actor::desc* desc,
+		std::shared_ptr<neb::scene::scene> scene,
+		std::shared_ptr<neb::actor::Base> actor):
+	neb::actor::Rigid_Actor(desc, scene, actor),
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}
+void	neb::actor::Rigid_Body::init() {
+	
+	neb::actor::Rigid_Actor::init();
+
+}
 int	neb::actor::Rigid_Body::key_fun(int key, int scancode, int action, int mods)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	float force_scale = 100.0;
 	float torque_scale = 5.0;
-	
+
 
 	math::vec3 x(1.0,0.0,0.0);
 	math::vec3 y(0.0,1.0,0.0);
@@ -121,9 +130,11 @@ void	neb::actor::Rigid_Body::add_force()
 
 	math::vec3 f(force_);
 	math::vec3 t(torque_);
-
-	f = pose_.q.rotate(f);
-	t = pose_.q.rotate(t);
+	
+	math::transform pose = desc_->raw_.pose_.to_math();
+	
+	f = pose.q.rotate(f);
+	t = pose.q.rotate(t);
 
 	((physx::PxRigidBody*)px_actor_)->addForce(f);
 	((physx::PxRigidBody*)px_actor_)->addTorque(t);
@@ -131,16 +142,16 @@ void	neb::actor::Rigid_Body::add_force()
 void	neb::actor::Rigid_Body::step_remote(double)
 {
 	neb::packet::packet p;
-/*
-	p.type_ = neb::packet::ACTOR_FORCE;
-	p.af.i_ = i_;
-	p.af.f_[0] = force_.x;
-	p.af.f_[1] = force_.y;
-	p.af.f_[2] = force_.z;
-	p.af.t_[0] = torque_.x;
-	p.af.t_[1] = torque_.y;
-	p.af.t_[2] = torque_.z;
-*/
+	/*
+	   p.type_ = neb::packet::ACTOR_FORCE;
+	   p.af.i_ = i_;
+	   p.af.f_[0] = force_.x;
+	   p.af.f_[1] = force_.y;
+	   p.af.f_[2] = force_.z;
+	   p.af.t_[0] = torque_.x;
+	   p.af.t_[1] = torque_.y;
+	   p.af.t_[2] = torque_.z;
+	 */
 	gal::network::message::shared_t msg(new gal::network::message);
 
 	memcpy(msg->body(), &p, sizeof(neb::packet::packet));
@@ -149,56 +160,70 @@ void	neb::actor::Rigid_Body::step_remote(double)
 
 	get_app()->client_->write(msg);
 }
-neb::actor::desc	neb::actor::Rigid_Body::get_projectile() {
+glutpp::actor::desc* neb::actor::Rigid_Body::get_projectile() {
 
 	NEBULA_DEBUG_0_FUNCTION;
-
-	neb::actor::desc desc;
-	desc.reset();
 	
-	desc.type = neb::actor::RIGID_DYNAMIC;
+	glutpp::actor::desc* desc = new glutpp::actor::desc;
+	
+	desc->raw_.type_ = glutpp::actor::RIGID_DYNAMIC;
+	
+	math::transform pose(desc_->raw_.pose_.to_math());
 	
 	math::vec3 velocity(0.0, 0.0, -4.0);
-	velocity = pose_.q.rotate(velocity);
+	velocity = pose.q.rotate(velocity);
 	velocity += velocity_;
-	desc.velocity.from_math(velocity);
+	
+	desc->raw_.velocity_.from_math(velocity);
 	
 	math::vec3 offset(0.0, 0.0, -2.0);
-	offset = pose_.q.rotate(offset);
+	offset = pose.q.rotate(offset);
 
-	auto pose = pose_;
 	pose.p += offset;
-	
-	
-	
-	desc.pose.from_math(pose);
 
-	
-	desc.density = 1000.0;
+	desc->raw_.pose_.from_math(pose);
 
-	desc.filter_data_.simulation_.word0 = neb::filter::type::DYNAMIC;
-	desc.filter_data_.simulation_.word1 = neb::filter::RIGID_AGAINST;
+
+	desc->raw_.density_ = 1000.0;
+
+	desc->raw_.filter_data_.simulation_.word0 = neb::filter::type::DYNAMIC;
+	desc->raw_.filter_data_.simulation_.word1 = neb::filter::RIGID_AGAINST;
+	desc->raw_.filter_data_.simulation_.word2 = neb::filter::type::PROJECTILE;
+	desc->raw_.filter_data_.simulation_.word3 = neb::filter::PROJECTILE_AGAINST;
 	
-	glutpp::shape_desc sd;
-	sd.box(math::vec3(0.1,0.1,0.1));
-	
-	sd.front_.reset();
-	sd.front_.ambient_.from_math(math::black);
-	sd.front_.diffuse_.from_math(math::red);
-	sd.front_.emission_.from_math(math::black);
-	
-	desc.add_shape(sd);
-	
+	// shape
+	glutpp::shape::desc* sd = new glutpp::shape::desc;
+
+	sd->raw_.box(math::vec3(0.1,0.1,0.1));
+
+	sd->raw_.front_.reset();
+	sd->raw_.front_.ambient_.from_math(math::black);
+	sd->raw_.front_.diffuse_.from_math(math::red);
+	sd->raw_.front_.emission_.from_math(math::black);
+
+	desc->shapes_.push_back(sd);
+
+	// light
+	glutpp::light::desc* ld = new glutpp::light::desc;
+
+	ld->raw_.pos_.from_math(math::vec4(0.0, 0.0, 0.0, 1.0));
+	ld->raw_.ambient_.from_math(math::black);
+	ld->raw_.atten_linear_ = 2.0;
+
+	sd->lights_.push_back(ld);
+
+	//scene->create_light(ld, actor);
+
 	return desc;
 }
-neb::actor::desc	neb::actor::Rigid_Body::get_desc() {
+glutpp::actor::desc* neb::actor::Rigid_Body::get_desc() {
 
 	NEBULA_DEBUG_0_FUNCTION;
-	
-	neb::actor::desc desc = neb::actor::Base::get_desc();
-	
-	desc.velocity.from_math(velocity_);
-	
+
+	glutpp::actor::desc* desc = neb::actor::Base::get_desc();
+
+	desc->raw_.velocity_.from_math(velocity_);
+
 	return desc;
 }
 

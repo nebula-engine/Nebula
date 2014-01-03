@@ -13,8 +13,10 @@ namespace neb
 			public neb::actor::Base
 		{
 			public:
-				Controller();
-				virtual int		release();
+				Controller(
+						glutpp::actor::desc*,
+						std::shared_ptr<neb::scene::scene>);
+				virtual void		release();
 
 				virtual void		step(float);
 				virtual void		init();

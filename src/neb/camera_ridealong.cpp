@@ -10,13 +10,15 @@ math::mat44	neb::camera_ridealong::supply()
 	{
 		return math::mat44();
 	}
-
-	math::mat44 translate;
-	translate.SetTranslation(-actor_->pose_.p);
 	
-	math::mat44 rotate(actor_->pose_.q);
+	math::transform pose = actor_->desc_->raw_.pose_.to_math();
+	
+	math::mat44 translate;
+	translate.SetTranslation(-pose.p);
+	
+	math::mat44 rotate(pose.q);
 		
-	math::mat44 pose(actor_->pose_);
+	math::mat44 m(pose);
 	//pose.Invert();
 
 	
@@ -32,7 +34,7 @@ math::mat44	neb::camera_ridealong::supply()
 	
 	
 	//math::mat44 ret = pose * offset_m;
-	math::mat44 ret = pose.GetInverse() * offset_m;
+	math::mat44 ret = m.GetInverse() * offset_m;
 	//math::mat44 ret = offset_m * pose.GetInverse();
 	//math::mat44 ret = translate;//.GetInverse();
 	
