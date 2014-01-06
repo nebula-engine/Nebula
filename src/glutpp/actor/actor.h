@@ -5,6 +5,7 @@
 #include <map>
 
 #include <gal/flag.h>
+#include <gal/network/message.h>
 
 #include <math/vec4.h>
 #include <math/vec3.h>
@@ -24,6 +25,8 @@ namespace glutpp
 		class actor: public std::enable_shared_from_this<actor>, public gal::flag
 		{
 			public:
+				typedef std::shared_ptr<gal::network::message> msg_type;
+				
 				enum flag
 				{
 					SHOULD_DELETE = 1 << 0
@@ -45,6 +48,7 @@ namespace glutpp
 				virtual void		release();
 
 				
+				msg_type			serialize();
 				glutpp::actor::desc_shared	desc_generate();
 				
 				//virtual void	render_reflection();

@@ -314,6 +314,12 @@ CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o: src/glutpp/texture.h
 CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o: src/glutpp/window/window.h
 
 CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.o: src/glutpp/scene/desc.cpp
+CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.o: src/glutpp/actor/desc.h
+CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.o: src/glutpp/config.h
+CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.o: src/glutpp/light/desc.h
+CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.o: src/glutpp/material.h
+CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.o: src/glutpp/scene/desc.h
+CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.o: src/glutpp/shape/desc.h
 
 CMakeFiles/glutpp.dir/src/glutpp/scene/scene.cpp.o: src/glutpp/scene/scene.cpp
 CMakeFiles/glutpp.dir/src/glutpp/scene/scene.cpp.o: src/glutpp/actor/actor.h

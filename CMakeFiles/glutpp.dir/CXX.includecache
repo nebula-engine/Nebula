@@ -6,24 +6,32 @@
 
 #IncludeRegexTransform: 
 
-/home/charles/Programming/C++/glutpp/src/glutpp/camera.cpp
-stdio.h
--
-assert.h
--
+/home/charles/Programming/C++/glutpp/src/glutpp/actor/actor.cpp
 GL/glew.h
 -
-gal/sig/connection.h
+stdio.h
 -
-math/quat.h
+stdlib.h
+-
+sys/time.h
+-
+string.h
+-
+png.h
 -
 math/mat44.h
+-
+math/geo/polyhedron.h
 -
 glutpp/window/window.h
 -
 glutpp/scene/scene.h
 -
-glutpp/camera.h
+glutpp/actor/actor.h
+-
+glutpp/shape/shape.h
+-
+glutpp/actor/desc.h
 -
 
 src/glutpp/actor/actor.h
@@ -34,6 +42,8 @@ vector
 map
 -
 gal/flag.h
+-
+gal/network/message.h
 -
 math/vec4.h
 -
@@ -52,6 +62,14 @@ glutpp/texture.h
 glutpp/material.h
 -
 glutpp/shape/shape.h
+-
+
+src/glutpp/actor/desc.h
+math/transform.h
+-
+math/raw/raw.h
+-
+glutpp/shape/desc.h
 -
 
 src/glutpp/camera.h

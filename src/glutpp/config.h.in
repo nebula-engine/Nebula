@@ -29,9 +29,12 @@ namespace glutpp
 		enum type
 		{
 			SCENE,
-			ACTIVE_TRANSFORM_SET
+			ACTIVE_TRANSFORM_SET,
+			ACTOR_FORCE,
+			ACTOR_CREATE,
 		};
 	}
+
 	struct filter   
 	{
 		enum type: unsigned int
@@ -127,10 +130,10 @@ namespace glutpp
 	namespace scene
 	{
 		struct raw;
-		
+
 		class desc;
 		typedef std::shared_ptr<desc>		desc_shared;
-		
+
 		class scene;
 		typedef std::shared_ptr<scene>		scene_shared;
 		typedef std::weak_ptr<scene>		scene_weak;
@@ -165,10 +168,10 @@ namespace glutpp
 		};
 
 		struct raw;
-		
+
 		class desc;
 		typedef std::shared_ptr<desc>		desc_shared;
-		
+
 		class shape;
 		typedef std::shared_ptr<shape>		shape_shared;
 		typedef std::weak_ptr<shape>		shape_weak;

@@ -7,26 +7,23 @@
 //#include <neb/actor/Base.h>
 
 void glutpp::scene::raw::reset() {
-	
-	printf("%s\n",__PRETTY_FUNCTION__);
-	
+	GLUTPP_DEBUG_0_FUNCTION;
+
 	i_ = -1;
-	
 }
 void glutpp::scene::raw::load(tinyxml2::XMLElement* element) {
-	
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 	
 	gravity_.from_math(math::xml_parse_vec3(element->FirstChildElement("gravity"), math::vec3(0,0,0)));
 }
+
 
 
 glutpp::scene::desc::desc() {
 	raw_.reset();
 }
 void glutpp::scene::desc::load(char const* c) {
-	
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 	
 	tinyxml2::XMLDocument doc;
 	if(doc.LoadFile(c)) abort();
@@ -34,8 +31,7 @@ void glutpp::scene::desc::load(char const* c) {
 	load(doc.FirstChildElement("scene"));
 }
 void glutpp::scene::desc::load(tinyxml2::XMLElement* element) {
-
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 	
 	raw_.load(element);
 	
@@ -56,7 +52,6 @@ void glutpp::scene::desc::load(tinyxml2::XMLElement* element) {
 	}
 }
 gal::network::message::shared_t glutpp::scene::desc::serialize() {
-
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	gal::network::message::shared_t msg(new gal::network::message);
@@ -92,15 +87,12 @@ gal::network::message::shared_t glutpp::scene::desc::serialize() {
 	}	
 	
 	msg->set(data, len);
-	
-	//NEBULA_DEBUG_0_FUNCTION;
 
 	return msg;
 }
 void glutpp::scene::desc::read(char*& data) {
-	
-	printf("%s\n",__PRETTY_FUNCTION__);
-	
+	GLUTPP_DEBUG_0_FUNCTION;
+
 	char* head = data;
 	
 	memcpy(&raw_, head, sizeof(glutpp::scene::raw));
@@ -119,7 +111,8 @@ void glutpp::scene::desc::read(char*& data) {
 	}
 }
 size_t glutpp::scene::desc::size() {
-	
+	GLUTPP_DEBUG_0_FUNCTION;
+
 	size_t s = sizeof(glutpp::scene::raw);
 	
 	for(auto it = actors_.begin(); it != actors_.end(); ++it)

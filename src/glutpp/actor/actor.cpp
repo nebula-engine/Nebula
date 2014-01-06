@@ -158,6 +158,32 @@ void glutpp::actor::actor::draw(glutpp::window::window_shared window) {
 		it->second->draw(window, model);
 	}
 }
+std::shared_ptr<gal::network::message> glutpp::actor::actor::serialize() {
+
+	std::shared_ptr<gal::network::message> msg(new gal::network::message);
+	
+	size_t len = desc_->size() + sizeof(int) + sizeof(int);
+	
+	char data[len];
+	char* head = data;
+	
+	int type = glutpp::network::type::ACTOR_CREATE;
+	
+	// type
+	memcpy(head, &type, sizeof(int));
+	head += sizeof(int);
+	
+	// scene i
+	memcpy(head, &desc_->raw_.i_, sizeof(int));
+	head += sizeof(int);
+	
+	// actor desc
+	desc_->write(head);
+	
+	msg->set(data, len);
+	
+	return msg;
+}
 glutpp::actor::desc_shared glutpp::actor::actor::desc_generate() {
 	
 	glutpp::actor::desc_shared desc(new glutpp::actor::desc);
