@@ -41,7 +41,7 @@ namespace glutpp
 				void			plane(tinyxml2::XMLElement*);
 				void			controller(tinyxml2::XMLElement*);
 				
-				
+				int			i_;
 				
 				glutpp::actor::type	type_;
 
@@ -59,21 +59,26 @@ namespace glutpp
 					filter_data	scene_query_;
 				} filter_data_;
 
+				unsigned int		actor_size_;
+				unsigned int		shape_size_;
+
 		};
 		class desc
 		{
 			public:
 				void			load(tinyxml2::XMLElement*);
 				void			add_shape(glutpp::shape::desc);
-
-
-
+				
+				size_t			size();
+				void			write(char*&);
+				void			read(char*&);
+				
 			public:
 				glutpp::actor::raw	raw_;
 				
 				
-				std::vector<glutpp::actor::desc*>	actors_;
-				std::vector<glutpp::shape::desc*>	shapes_;
+				std::vector<glutpp::actor::desc_shared>	actors_;
+				std::vector<glutpp::shape::desc_shared>	shapes_;
 
 		};
 	}

@@ -7,7 +7,7 @@
 
 #include <glutpp/glsl/program.h>
 #include <glutpp/glsl/shader.h>
-#include <glutpp/window.h>
+#include <glutpp/window/window.h>
 
 glutpp::glsl::program::program()
 {

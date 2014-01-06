@@ -11,7 +11,8 @@
 
 #include <glutpp/config.h>
 #include <glutpp/master.h>
-#include <glutpp/window.h>
+#include <glutpp/window/desc.h>
+#include <glutpp/window/window.h>
 
 namespace glutpp {
 	master __master;
@@ -27,10 +28,9 @@ glutpp::master::master() {
 glutpp::master::~master(){	printf("%s\n", __PRETTY_FUNCTION__);
 
 }
-std::shared_ptr<glutpp::window>		glutpp::master::get_window(GLFWwindow* window) {
-
+glutpp::window::window_shared glutpp::master::get_window(GLFWwindow* window) {
+	
 	return windows_[window];
-
 }
 void	glutpp::master::static_error_fun(int error, char const * description) {
 	
@@ -56,11 +56,13 @@ void glutpp::master::static_mouse_button_fun(GLFWwindow* window, int button, int
 void glutpp::master::static_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods){
 	__master.get_window(window)->callback_key_fun(window, key, scancode, action, mods);
 }
-int	glutpp::master::reg(std::shared_ptr<glutpp::window> w) {
+int glutpp::master::reg(glutpp::window::window_shared w) {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
-
-	GLFWwindow* g = glfwCreateWindow(w->w_, w->h_, w->title_, NULL, NULL);
+	
+	
+	
+	GLFWwindow* g = glfwCreateWindow(w->desc_->raw_.w_, w->desc_->raw_.h_, w->desc_->raw_.title_, NULL, NULL);
 
 	if(g == NULL)
 	{
@@ -177,6 +179,52 @@ int	glutpp::master::create_programs() {
 
 		programs_[glutpp::program_name::LIGHT] = p;
 	}
+	
+	//light and image
+	{
+		p.reset(new glutpp::glsl::program);
+		p->init();
+
+		p->add_shader(GLUTPP_SHADER_DIR"/v130/image/vs.glsl", GL_VERTEX_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v130/image/fs.glsl", GL_FRAGMENT_SHADER);
+
+		p->compile();
+
+		p->add_uniform(glutpp::uniform_name::e::IMAGE, "image");
+
+		p->add_attrib(glutpp::attrib_name::e::POSITION, "position", 1);
+		p->add_attrib(glutpp::attrib_name::e::NORMAL, "normal", 2);
+		p->add_attrib(glutpp::attrib_name::e::TEXCOOR, "texcoor", 3);
+
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_COUNT,"light_count");
+		p->add_uniform(glutpp::uniform_name::e::MODEL,"model");
+		p->add_uniform(glutpp::uniform_name::e::VIEW,"view");
+		p->add_uniform(glutpp::uniform_name::e::PROJ,"proj");
+
+		p->add_uniform(glutpp::uniform_name::e::FRONT_AMBIENT,"front.ambient");
+		p->add_uniform(glutpp::uniform_name::e::FRONT_DIFFUSE,"front.diffuse");
+		p->add_uniform(glutpp::uniform_name::e::FRONT_SPECULAR,"front.specular");
+		p->add_uniform(glutpp::uniform_name::e::FRONT_EMISSION,"front.emission");
+		p->add_uniform(glutpp::uniform_name::e::FRONT_SHININESS,"front.shininess");
+
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_POSITION, "lights", "position");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT, "lights","ambient");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE, "lights","diffuse");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR, "lights","specular");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION, "lights","spot_direction");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF, "lights","spot_cutoff");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_EXPONENT, "lights","spot_exponent");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF, "lights","spot_light_cos_cutoff");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
+		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
+
+	
+		p->locate();
+
+		programs_[glutpp::program_name::IMAGE] = p;
+	}
+
 }
 std::shared_ptr<glutpp::glsl::program>	glutpp::master::use_program(glutpp::program_name::e name){
 	auto p = get_program(name);
@@ -197,7 +245,7 @@ std::shared_ptr<glutpp::glsl::program>	glutpp::master::get_program(glutpp::progr
 
 	if(it == programs_.end())
 	{
-		printf("program not found\n");
+		printf("program '%i' not found\n", name);
 		exit(0);
 	}
 

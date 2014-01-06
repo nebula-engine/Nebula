@@ -30,34 +30,35 @@ namespace glutpp
 				};
 
 				actor(
-						glutpp::actor::desc*,
-						std::shared_ptr<glutpp::scene>,
+						glutpp::actor::desc_shared,
+						std::shared_ptr<glutpp::scene::scene>,
 						glutpp::actor::actor_shared = glutpp::actor::actor_shared());
-
+				void			i(int);
 				math::mat44		get_pose();
+				
+				std::shared_ptr<scene::scene>	get_scene();
 
-				std::shared_ptr<scene>	get_scene();
-
-				void			draw(std::shared_ptr<glutpp::window>);
+				void			draw(glutpp::window::window_shared);
 				void			load_lights(int&);
 
 				virtual void		cleanup();
 				virtual void		release();
 
+				
+				glutpp::actor::desc_shared	desc_generate();
+				
 				//virtual void	render_reflection();
 
-				int			i_;
 				
 				
 				
-				glutpp::actor::desc*	desc_;
+				glutpp::actor::desc_shared	desc_;
 
-				std::weak_ptr<scene>	scene_;
-				std::weak_ptr<actor>	actor_;
+				std::weak_ptr<scene::scene>	scene_;
+				std::weak_ptr<actor>		actor_;
 			protected:
-				shape_vec		shapes_;
-			public:
-				actor_vec		actors_;
+				glutpp::shape::shape_map	shapes_;
+				glutpp::actor::actor_map	actors_;
 
 		};
 	}

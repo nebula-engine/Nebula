@@ -11,7 +11,7 @@
 
 #include <glutpp/scene/scene.h>
 #include <glutpp/glsl/uniform.h>
-#include <glutpp/window.h>
+#include <glutpp/window/window.h>
 
 
 glutpp::glsl::uniform::uniform()
@@ -73,7 +73,7 @@ void	glutpp::glsl::uniform::locate(std::shared_ptr<glutpp::glsl::program> p)
 			strcat(name, "].");
 			strcat(name, s2_);
 			
-			printf("locate '%s'\n", name);
+			//printf("locate '%s'\n", name);
 
 			o_[c] = glGetUniformLocation(p->o_, name);
 		}

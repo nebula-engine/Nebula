@@ -581,6 +581,30 @@ src/glutpp/material.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/material.cpp.s
 .PHONY : src/glutpp/material.cpp.s
 
+src/glutpp/mesh.o: src/glutpp/mesh.cpp.o
+.PHONY : src/glutpp/mesh.o
+
+# target to build an object file
+src/glutpp/mesh.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/mesh.cpp.o
+.PHONY : src/glutpp/mesh.cpp.o
+
+src/glutpp/mesh.i: src/glutpp/mesh.cpp.i
+.PHONY : src/glutpp/mesh.i
+
+# target to preprocess a source file
+src/glutpp/mesh.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/mesh.cpp.i
+.PHONY : src/glutpp/mesh.cpp.i
+
+src/glutpp/mesh.s: src/glutpp/mesh.cpp.s
+.PHONY : src/glutpp/mesh.s
+
+# target to generate assembly for a file
+src/glutpp/mesh.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/mesh.cpp.s
+.PHONY : src/glutpp/mesh.cpp.s
+
 src/glutpp/renderable.o: src/glutpp/renderable.cpp.o
 .PHONY : src/glutpp/renderable.o
 
@@ -604,6 +628,30 @@ src/glutpp/renderable.s: src/glutpp/renderable.cpp.s
 src/glutpp/renderable.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.s
 .PHONY : src/glutpp/renderable.cpp.s
+
+src/glutpp/scene/desc.o: src/glutpp/scene/desc.cpp.o
+.PHONY : src/glutpp/scene/desc.o
+
+# target to build an object file
+src/glutpp/scene/desc.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.o
+.PHONY : src/glutpp/scene/desc.cpp.o
+
+src/glutpp/scene/desc.i: src/glutpp/scene/desc.cpp.i
+.PHONY : src/glutpp/scene/desc.i
+
+# target to preprocess a source file
+src/glutpp/scene/desc.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.i
+.PHONY : src/glutpp/scene/desc.cpp.i
+
+src/glutpp/scene/desc.s: src/glutpp/scene/desc.cpp.s
+.PHONY : src/glutpp/scene/desc.s
+
+# target to generate assembly for a file
+src/glutpp/scene/desc.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.s
+.PHONY : src/glutpp/scene/desc.cpp.s
 
 src/glutpp/scene/scene.o: src/glutpp/scene/scene.cpp.o
 .PHONY : src/glutpp/scene/scene.o
@@ -701,29 +749,53 @@ src/glutpp/texture.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.s
 .PHONY : src/glutpp/texture.cpp.s
 
-src/glutpp/window.o: src/glutpp/window.cpp.o
-.PHONY : src/glutpp/window.o
+src/glutpp/window/desc.o: src/glutpp/window/desc.cpp.o
+.PHONY : src/glutpp/window/desc.o
 
 # target to build an object file
-src/glutpp/window.cpp.o:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o
-.PHONY : src/glutpp/window.cpp.o
+src/glutpp/window/desc.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/window/desc.cpp.o
+.PHONY : src/glutpp/window/desc.cpp.o
 
-src/glutpp/window.i: src/glutpp/window.cpp.i
-.PHONY : src/glutpp/window.i
+src/glutpp/window/desc.i: src/glutpp/window/desc.cpp.i
+.PHONY : src/glutpp/window/desc.i
 
 # target to preprocess a source file
-src/glutpp/window.cpp.i:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/window.cpp.i
-.PHONY : src/glutpp/window.cpp.i
+src/glutpp/window/desc.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/window/desc.cpp.i
+.PHONY : src/glutpp/window/desc.cpp.i
 
-src/glutpp/window.s: src/glutpp/window.cpp.s
-.PHONY : src/glutpp/window.s
+src/glutpp/window/desc.s: src/glutpp/window/desc.cpp.s
+.PHONY : src/glutpp/window/desc.s
 
 # target to generate assembly for a file
-src/glutpp/window.cpp.s:
-	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/window.cpp.s
-.PHONY : src/glutpp/window.cpp.s
+src/glutpp/window/desc.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/window/desc.cpp.s
+.PHONY : src/glutpp/window/desc.cpp.s
+
+src/glutpp/window/window.o: src/glutpp/window/window.cpp.o
+.PHONY : src/glutpp/window/window.o
+
+# target to build an object file
+src/glutpp/window/window.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/window/window.cpp.o
+.PHONY : src/glutpp/window/window.cpp.o
+
+src/glutpp/window/window.i: src/glutpp/window/window.cpp.i
+.PHONY : src/glutpp/window/window.i
+
+# target to preprocess a source file
+src/glutpp/window/window.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/window/window.cpp.i
+.PHONY : src/glutpp/window/window.cpp.i
+
+src/glutpp/window/window.s: src/glutpp/window/window.cpp.s
+.PHONY : src/glutpp/window/window.s
+
+# target to generate assembly for a file
+src/glutpp/window/window.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/window/window.cpp.s
+.PHONY : src/glutpp/window/window.cpp.s
 
 # Help Target
 help:
@@ -792,9 +864,15 @@ help:
 	@echo "... src/glutpp/material.o"
 	@echo "... src/glutpp/material.i"
 	@echo "... src/glutpp/material.s"
+	@echo "... src/glutpp/mesh.o"
+	@echo "... src/glutpp/mesh.i"
+	@echo "... src/glutpp/mesh.s"
 	@echo "... src/glutpp/renderable.o"
 	@echo "... src/glutpp/renderable.i"
 	@echo "... src/glutpp/renderable.s"
+	@echo "... src/glutpp/scene/desc.o"
+	@echo "... src/glutpp/scene/desc.i"
+	@echo "... src/glutpp/scene/desc.s"
 	@echo "... src/glutpp/scene/scene.o"
 	@echo "... src/glutpp/scene/scene.i"
 	@echo "... src/glutpp/scene/scene.s"
@@ -807,9 +885,12 @@ help:
 	@echo "... src/glutpp/texture.o"
 	@echo "... src/glutpp/texture.i"
 	@echo "... src/glutpp/texture.s"
-	@echo "... src/glutpp/window.o"
-	@echo "... src/glutpp/window.i"
-	@echo "... src/glutpp/window.s"
+	@echo "... src/glutpp/window/desc.o"
+	@echo "... src/glutpp/window/desc.i"
+	@echo "... src/glutpp/window/desc.s"
+	@echo "... src/glutpp/window/window.o"
+	@echo "... src/glutpp/window/window.i"
+	@echo "... src/glutpp/window/window.s"
 .PHONY : help
 
 

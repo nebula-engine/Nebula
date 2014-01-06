@@ -1,4 +1,5 @@
-#include <glutpp/window.h>
+#include <glutpp/config.h>
+#include <glutpp/window/window.h>
 #include <glutpp/camera_control.h>
 
 glutpp::camera_free::camera_free():
@@ -6,7 +7,7 @@ glutpp::camera_free::camera_free():
 	center_(0.0f,0.0f,0.0f),
 	up_(0.0f,1.0f,0.0f)
 {}
-void	glutpp::camera_free::init(glutpp::window* window)
+void	glutpp::camera_free::init(glutpp::window::window_shared window)
 {
 	window_ = window;
 /*

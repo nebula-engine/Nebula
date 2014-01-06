@@ -1,42 +1,35 @@
 cmake_minimum_required (VERSION 2.6)
 
-
 project(glutpp)
-
-set(src
-	src/glutpp/free.cpp
-	src/glutpp/camera_control.cpp
-	src/glutpp/master.cpp
-	src/glutpp/window.cpp
-	src/glutpp/scene/scene.cpp
-	src/glutpp/renderable.cpp
-	src/glutpp/actor/desc.cpp
-	src/glutpp/actor/actor.cpp
-	src/glutpp/shape/shape.cpp
-	src/glutpp/shape/desc.cpp
-	src/glutpp/glsl/shader.cpp
-	src/glutpp/glsl/uniform.cpp
-	src/glutpp/glsl/attrib.cpp
-	src/glutpp/texture.cpp
-	src/glutpp/glsl/program.cpp
-	src/glutpp/camera.cpp
-	src/glutpp/light/light.cpp
-	src/glutpp/light/desc.cpp
-	src/glutpp/material.cpp
-	src/glutpp/gui/layout.cpp
-	src/glutpp/gui/object/object.cpp
-	src/glutpp/gui/object/object_factory.cpp
-	src/glutpp/gui/object/textview.cpp
-	src/glutpp/gui/object/edittext.cpp
-)
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
-
-
-add_library(glutpp ${src})
 
 set(PROJECT_BINARY_DIR lib)
 set(PROJECT_SOURCE_DIR src)
+
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp		files_src_glutpp)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/window	files_src_glutpp_window)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/scene		files_src_glutpp_scene)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/actor		files_src_glutpp_actor)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/shape		files_src_glutpp_shape)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/light		files_src_glutpp_light)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/glsl		files_src_glutpp_glsl)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/gui		files_src_glutpp_gui)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/gui/object	files_src_glutpp_gui_object)
+
+
+add_library(glutpp
+	${files_src_glutpp}
+	${files_src_glutpp_window}
+	${files_src_glutpp_scene}
+	${files_src_glutpp_actor}
+	${files_src_glutpp_shape}
+	${files_src_glutpp_light}
+	${files_src_glutpp_glsl}
+	${files_src_glutpp_gui}
+	${files_src_glutpp_gui_object}
+)
+
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
 
 include_directories("${PROJECT_SOURCE_DIR}")
 
@@ -50,12 +43,15 @@ configure_file("${PROJECT_SOURCE_DIR}/glutpp/config.h.in" "${PROJECT_SOURCE_DIR}
 install(TARGETS glutpp DESTINATION lib)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/config.h		DESTINATION include/glutpp/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/types.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/free.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/master.h		DESTINATION include/glutpp/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/renderable.h		DESTINATION include/glutpp/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/mesh.h		DESTINATION include/glutpp/)
 
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window/window.h	DESTINATION include/glutpp/window)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window/desc.h	DESTINATION include/glutpp/window)
+
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene/desc.h		DESTINATION include/glutpp/scene)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene/scene.h	DESTINATION include/glutpp/scene)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/desc.h		DESTINATION include/glutpp/actor/)
@@ -86,12 +82,17 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/textview.h	DESTINATION inc
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/edittext.h	DESTINATION include/glutpp/gui/object)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/gui/object/object_factory.h	DESTINATION include/glutpp/gui/object)
 
+
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/light/vs.glsl	DESTINATION include/glutpp/glsl/shaders/v130/light/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/light/fs.glsl	DESTINATION include/glutpp/glsl/shaders/v130/light/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/image/vs.glsl	DESTINATION include/glutpp/glsl/shaders/v130/image/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/image/fs.glsl	DESTINATION include/glutpp/glsl/shaders/v130/image/)
+
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/quad/vs.glsl 	DESTINATION include/glutpp/glsl/shaders/v130/quad/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/quad/fs.glsl 	DESTINATION include/glutpp/glsl/shaders/v130/quad/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/text/vs.glsl 	DESTINATION include/glutpp/glsl/shaders/v130/text/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/text/fs.glsl 	DESTINATION include/glutpp/glsl/shaders/v130/text/)
+
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/objects/cube.obj DESTINATION include/glutpp/objects)
 

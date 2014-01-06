@@ -9,7 +9,6 @@
 
 namespace glutpp
 {
-	class window;
 	class camera_control
 	{
 		public:
@@ -20,13 +19,13 @@ namespace glutpp
 	{
 		public:
 			camera_free();
-			void						init(window*);
+			void					init(glutpp::window::window_shared);
 
-			int						callback_x_(int,float);
-			int						callback_y_(int,float);
-			int						callback_z_(int,float);
+			int					callback_x_(int,float);
+			int					callback_y_(int,float);
+			int					callback_z_(int,float);
 
-			void						step(double);
+			void					step(double);
 
 			float					pitch_;
 			float					yaw_;
@@ -45,7 +44,7 @@ namespace glutpp
 			std::vector<gal::sig::connection<>*>		vec_y_;
 			std::vector<gal::sig::connection<>*>		vec_z_;
 
-			window*						window_;
+			glutpp::window::window_shared			window_;
 	};
 }
 

@@ -19,7 +19,10 @@ glutpp::gui::object::object::object():
 	label_ = new char[1];
 	label_[0] = '\0';
 }
-std::shared_ptr<glutpp::window>	get_window() {
+void glutpp::gui::object::object::i(int ni) {
+	i_ = ni;
+}
+glutpp::window::window_shared get_window() {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	printf("not yet supported");
 	exit(0);

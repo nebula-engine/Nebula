@@ -5,8 +5,9 @@
 
 #include <gal/flag.h>
 
+#include <glutpp/config.h>
 #include <glutpp/gui/layout.h>
-#include <glutpp/window.h>
+#include <glutpp/window/window.h>
 #include <glutpp/scene/scene.h>
 
 namespace glutpp
@@ -15,18 +16,19 @@ namespace glutpp
 	{
 		public:
 			renderable();
-			renderable&				operator=(renderable const &);
-			void					init(std::shared_ptr<window>);
-			void					render(double, std::shared_ptr<window>);
-			void					resize(int,int);
-
-
-			std::weak_ptr<window>			window_;
-
-			std::shared_ptr<scene>			scene_;
-			std::shared_ptr<glutpp::gui::layout>	layout_;
-			std::shared_ptr<camera>			camera_;
+			renderable&			operator=(renderable const &);
+			void				init(glutpp::window::window_shared);
 			
+			void				render(double, glutpp::window::window_shared);
+			
+			void				resize(int,int);
+			
+			
+			glutpp::window::window_weak	window_;
+			
+			glutpp::scene::scene_shared		scene_;
+			glutpp::gui::layout_shared	layout_;
+			glutpp::camera_shared		camera_;
 	};
 }
 

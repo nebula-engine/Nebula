@@ -10,18 +10,16 @@
 #include <math/vec4.h>
 #include <math/mat44.h>
 
+#include <glutpp/config.h>
 #include <glutpp/camera_control.h>
 
 namespace glutpp
 {
-	class window;
-	class renderable;
-	class scene;
 	class camera
 	{
 		public:
 			camera();
-			void		init(std::shared_ptr<renderable>);
+			void		init(glutpp::renderable_shared);
 			math::mat44	proj();
 			math::mat44	view();
 

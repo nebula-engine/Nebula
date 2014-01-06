@@ -13,7 +13,8 @@
 #include <math/color.h>
 
 #include <glutpp/free.h>
-#include <glutpp/window.h>
+#include <glutpp/window/desc.h>
+#include <glutpp/window/window.h>
 #include <glutpp/actor/actor.h>
 #include <glutpp/light/light.h>
 #include <glutpp/renderable.h>
@@ -45,30 +46,39 @@ void	check_error()
 		//printf("%s\n",gluErrorString(errCode));
 	}
 }
+void	checkerror(char const * msg) {
+
+	GLenum err = glGetError();
+	if(err != GL_NO_ERROR)
+	{
+		unsigned char const * str = gluErrorString(err);
+		printf("%s: %s\n",msg,str);
+		exit(0);
+	}
+}
 
 
-glutpp::window::window(int w, int h, int x, int y, const char * title):
-	w_(w), h_(h), x_(x), y_(y),
-	title_(title)
+
+glutpp::window::window::window(glutpp::window::desc_shared desc):
+	desc_(desc)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-	
+
 	printf(GLUTPP_INSTALL_DIR);
 	printf("\n");
-	
+
 }
-glutpp::window::~window()
-{
+glutpp::window::window::~window() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	glfwDestroyWindow(window_);
 }
-void	glutpp::window::init() {
+void	glutpp::window::window::init() {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
-	
+
 	//printf("%s\n",glGetString(GL_SHADING_LANGUAGE_VERSION));
-	
+
 	//Check for necessary extensions
 	if(!GL_ARB_depth_texture || !GL_ARB_shadow)
 	{
@@ -89,25 +99,25 @@ void	glutpp::window::init() {
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_NORMALIZE);
 
-	
+
 	renderable_.reset(new glutpp::renderable);
 	renderable_->init(shared_from_this());
-	
+
 	checkerror("unknown");
 }
-void	glutpp::window::render(double time) {
+void	glutpp::window::window::render(double time) {
+
 	glfwMakeContextCurrent(window_);
-	
+
 	if(renderable_) renderable_->render(time, shared_from_this());
-	
+
 	glFinish();
 	glfwSwapBuffers(window_);
 }
-void	glutpp::window::callback_window_refresh_fun(GLFWwindow*)
-{
+void	glutpp::window::window::callback_window_refresh_fun(GLFWwindow*) {
 }
-int	glutpp::window::step(double time)
-{
+int glutpp::window::window::step(double time) {
+
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	if(glfwWindowShouldClose(window_))
@@ -115,40 +125,34 @@ int	glutpp::window::step(double time)
 		printf("window should close\n");
 		return 1;
 	}
-	
+
 	render(time);
-	
+
 	return 0;
 }
-void	glutpp::window::callback_window_size_fun(GLFWwindow* window, int w, int h) {
-	w_ = w;
-	h_ = h;
-
-	resize(w,h);
+void	glutpp::window::window::callback_window_size_fun(GLFWwindow* window, int w, int h) {
+	desc_->raw_.w_ = w;
+	desc_->raw_.h_ = h;
 
 	callback_window_refresh_fun(window);
 }
-void	glutpp::window::callback_window_pos_fun(GLFWwindow* window, int x, int y) {
+void	glutpp::window::window::callback_window_pos_fun(GLFWwindow* window, int x, int y) {
 
-	x_ = x;
-	y_ = y;
+	desc_->raw_.x_ = x;
+	desc_->raw_.y_ = y;
 
 	callback_window_refresh_fun(window);
 }
-void	glutpp::window::callback_window_close_fun(GLFWwindow* window)
-{
+void	glutpp::window::window::callback_window_close_fun(GLFWwindow* window){
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-
 }
-void	glutpp::window::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods)
-{
+void	glutpp::window::window::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods){
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	sig_.mouse_button_fun_(button, action, mods);
 }
-void	glutpp::window::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
+void	glutpp::window::window::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods){
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	sig_.key_fun_(key, scancode, action, mods);
@@ -169,33 +173,13 @@ void	glutpp::window::callback_key_fun(GLFWwindow* window, int key, int scancode,
 			break;
 	}
 }
-void	glutpp::window::resize(int w,int h) {
+void	glutpp::window::window::resize() {
 
-	glViewport(0, 0, w_, h_);
+	glViewport(0, 0, desc_->raw_.w_, desc_->raw_.h_);
 
-	renderable_->resize(w,h);
+	renderable_->resize(desc_->raw_.w_, desc_->raw_.h_);
 }
-int	glutpp::window::prepare() {
-
-	printf("%s\n", __PRETTY_FUNCTION__);
-
-	if(renderable_)
-	{
-		if(renderable_->scene_)
-		{
-			renderable_->scene_->prepare();
-		}
-		else
-		{
-			printf("no scene\n");
-		}
-	}
-	else
-	{
-		printf("no renderable\n");
-	}
-}
-int	glutpp::window::set_scene(std::shared_ptr<scene> scene) {
+int	glutpp::window::window::set_scene(std::shared_ptr<scene::scene> scene) {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 
@@ -204,7 +188,7 @@ int	glutpp::window::set_scene(std::shared_ptr<scene> scene) {
 
 	renderable_->scene_ = scene;
 }
-int	glutpp::window::set_layout(std::shared_ptr<glutpp::gui::layout> layout) {
+int	glutpp::window::window::set_layout(std::shared_ptr<glutpp::gui::layout> layout) {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 
@@ -216,15 +200,9 @@ int	glutpp::window::set_layout(std::shared_ptr<glutpp::gui::layout> layout) {
 	layout->init(renderable_);
 	layout->connect();
 }
-void	checkerror(char const * msg)
-{
-	GLenum err = glGetError();
-	if(err != GL_NO_ERROR)
-	{
-		unsigned char const * str = gluErrorString(err);
-		printf("%s: %s\n",msg,str);
-		exit(0);
-	}
+void glutpp::window::window::i(int ni) {
+
+	desc_->raw_.i_ = ni;
 }
 
 

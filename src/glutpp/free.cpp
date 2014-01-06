@@ -10,7 +10,7 @@
 //#include <GL/gl.h>
 
 #include <glutpp/master.h>
-#include <glutpp/window.h>
+#include <glutpp/window/window.h>
 
 #include <glutpp/free.h>
 

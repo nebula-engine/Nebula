@@ -8,9 +8,6 @@
 
 namespace glutpp
 {
-	class window;
-	
-	
 	struct material_desc
 	{
 		void			reset();
@@ -22,8 +19,6 @@ namespace glutpp
 		math::raw::color	emission_;
 		float			shininess_;
 	};
-	
-	
 	class material
 	{
 		public:

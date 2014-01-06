@@ -164,6 +164,9 @@ glutpp_LIB_DEPENDS:STATIC=
 //Value Computed by CMake
 glutpp_SOURCE_DIR:STATIC=/home/charles/Programming/C++/glutpp
 
+//Dependencies for target
+nebula_LIB_DEPENDS:STATIC=
+
 
 ########################
 # INTERNAL cache entries

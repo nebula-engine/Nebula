@@ -1,10 +1,12 @@
 /home/charles/usr/lib/libglutpp.a
 /home/charles/usr/include/glutpp/config.h
-/home/charles/usr/include/glutpp/types.h
 /home/charles/usr/include/glutpp/free.h
 /home/charles/usr/include/glutpp/master.h
-/home/charles/usr/include/glutpp/window.h
 /home/charles/usr/include/glutpp/renderable.h
+/home/charles/usr/include/glutpp/mesh.h
+/home/charles/usr/include/glutpp/window/window.h
+/home/charles/usr/include/glutpp/window/desc.h
+/home/charles/usr/include/glutpp/scene/desc.h
 /home/charles/usr/include/glutpp/scene/scene.h
 /home/charles/usr/include/glutpp/actor/desc.h
 /home/charles/usr/include/glutpp/actor/actor.h
@@ -27,6 +29,8 @@
 /home/charles/usr/include/glutpp/gui/object/object_factory.h
 /home/charles/usr/include/glutpp/glsl/shaders/v130/light/vs.glsl
 /home/charles/usr/include/glutpp/glsl/shaders/v130/light/fs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/v130/image/vs.glsl
+/home/charles/usr/include/glutpp/glsl/shaders/v130/image/fs.glsl
 /home/charles/usr/include/glutpp/glsl/shaders/v130/quad/vs.glsl
 /home/charles/usr/include/glutpp/glsl/shaders/v130/quad/fs.glsl
 /home/charles/usr/include/glutpp/glsl/shaders/v130/text/vs.glsl

@@ -14,93 +14,85 @@
 #include <math/geo/polyhedron.h>
 
 #include <glutpp/config.h>
-#include <glutpp/types.h>
 #include <glutpp/shape/desc.h>
 #include <glutpp/material.h>
+#include <glutpp/mesh.h>
 
 namespace glutpp
 {
 	namespace shape
 	{
-
-		struct file_header
-		{
-			int len_vertices_;
-			int len_indices_;
-		};
-		struct vertex
-		{
-			void		print();
-
-			math::vec4	position;
-			math::vec3	normal;
-			math::vec2	texcoor;
-		};
 		struct buffers
 		{
 			GLuint		vbo_;
 			GLuint		indices_;
+			
+			struct
+			{
+				std::shared_ptr<glutpp::texture>	image_;
+			} texture_;
 		};
 		class shape: public std::enable_shared_from_this<shape>, public gal::flag
 		{
 			public:
 				enum flag
 				{
-					SHOULD_DELETE = 1 << 0
+					SHOULD_DELETE = 1 << 0,
+					IMAGE = 1 << 1
 				};
 
-				virtual ~shape();
-
 				typedef std::shared_ptr<glutpp::shape::buffers>		buffer_t;
-				typedef std::map<glutpp::window*,buffer_t>		map_t;
+				typedef std::map<glutpp::window::window*,buffer_t>	map_t;
 
 
-				shape(glutpp::actor::actor_shared, glutpp::shape::desc*);
+
+				shape(glutpp::actor::actor_shared, glutpp::shape::desc_shared);
+				virtual ~shape();
+				void			i(int);
 
 				void			init();
 				void			release();
 				void			cleanup();
-
+				
 				math::mat44		get_pose();
-
-				int			save(char const *);
-				int			load(char const *);
-				void			construct(math::geo::polyhedron*);
-			private:
+				
+						private:
 				void			init_buffer(
-						window_t,
+						glutpp::window::window_shared,
 						std::shared_ptr<glutpp::glsl::program>);
 			public:
 
-				virtual void		draw(
-						std::shared_ptr<glutpp::window>,
+				virtual void			draw(
+						glutpp::window::window_shared,
 						math::mat44);
-				virtual void		draw_elements(
-						std::shared_ptr<glutpp::window>,
+				virtual void			draw_elements(
+						glutpp::window::window_shared,
 						math::mat44);
 
-				void			load_lights(int&);
+				void				load_lights(int&);
 
-				void			model_load(math::mat44);
+				void				model_load(math::mat44);
 
-
+				glutpp::shape::desc_shared	desc_generate();
+			public:
 				// draw data
-				file_header			fh_;
-				glutpp::shape::vertex*		vertices_;
-				GLushort*			indices_;
-
 				material			material_front_;
-
+				mesh				mesh_;
 				map_t				context_;
 
-				glutpp::shape::desc*		desc_;
-
-				light_vec			lights_;
-				glutpp::shape::shape_vec	shapes_;
-
+				glutpp::shape::desc_shared	desc_;
+				
+				glutpp::light::light_map	lights_;
+				glutpp::shape::shape_map	shapes_;
+				
+				
 				glutpp::actor::actor_weak	actor_;
 		};
 	}
 }
 
 #endif
+
+
+
+

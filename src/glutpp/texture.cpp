@@ -6,7 +6,7 @@
 #include <math/color.h>
 
 #include <glutpp/texture.h>
-#include <glutpp/window.h>
+#include <glutpp/window/window.h>
 
 #include <png.h>
 
@@ -60,7 +60,7 @@ int	glutpp::texture::load_png(char const * filename)
 	if (fp == 0)
 	{
 		perror(filename);
-		return 0;
+		exit(0);
 	}
 
 	// read the header
@@ -123,12 +123,15 @@ int	glutpp::texture::load_png(char const * filename)
 	png_uint_32 temp_width, temp_height;
 
 	// get info about png
-	png_get_IHDR(png_ptr, info_ptr, &temp_width, &temp_height, &bit_depth, &color_type,
+	png_get_IHDR(
+			png_ptr, info_ptr,
+			&temp_width, &temp_height,
+			&bit_depth, &color_type,
 			NULL, NULL, NULL);
 
 	w_ = temp_width;
 	h_ = temp_height;
-	
+
 	// Update the png info struct.
 	png_read_update_info(png_ptr, info_ptr);
 
@@ -185,7 +188,7 @@ int	glutpp::texture::load_png(char const * filename)
 
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	
+
 	printf("image '%s' loaded into texture object %i\n",filename,o_);
 
 	checkerror("");

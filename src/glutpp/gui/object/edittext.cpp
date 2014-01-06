@@ -1,4 +1,4 @@
-#include <glutpp/window.h>
+#include <glutpp/window/window.h>
 #include <glutpp/gui/layout.h>
 #include <glutpp/gui/object/edittext.h>
 

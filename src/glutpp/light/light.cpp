@@ -4,18 +4,17 @@
 #include <math/mat44.h>
 
 #include <glutpp/light/light.h>
-#include <glutpp/window.h>
+#include <glutpp/window/window.h>
 #include <glutpp/scene/scene.h>
 #include <glutpp/shape/shape.h>
 
 glutpp::light::light::light(glutpp::shape::shape_shared shape):
 	shape_(shape)
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 }
-void	glutpp::light::light::init(std::shared_ptr<scene> scene)
-{
-	printf("%s\n",__PRETTY_FUNCTION__);
+void	glutpp::light::light::init(std::shared_ptr<scene::scene> scene) {
+	GLUTPP_DEBUG_0_FUNCTION;
 	
 	scene_ = scene;
 	/*
@@ -29,16 +28,13 @@ void	glutpp::light::light::init(std::shared_ptr<scene> scene)
 	//texture_shadow_map_.init_shadow(camera_.w_, camera_.h_);
 }
 void glutpp::light::light::release() {
-	
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 }
 void glutpp::light::light::cleanup() {
-	
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_1_FUNCTION;
 }
 void glutpp::light::light::dim() {
-
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_1_FUNCTION;
 	/*	
 	//printf("diffuse\n");
 	//diffuse_.print();
@@ -51,13 +47,11 @@ void glutpp::light::light::dim() {
 	printf("UNSUPPORTED\n");
 	exit(0);
 }
-void	glutpp::light::light::draw() {
-	
-	
+void	glutpp::light::light::draw() {	
+	GLUTPP_DEBUG_1_FUNCTION;
 }
-math::mat44 glutpp::light::light::get_pose()
-{
-	//printf("%s\n",__PRETTY_FUNCTION__);
+math::mat44 glutpp::light::light::get_pose() {
+	GLUTPP_DEBUG_1_FUNCTION;
 	
 	assert(!shape_.expired());
 	
@@ -65,10 +59,9 @@ math::mat44 glutpp::light::light::get_pose()
 	
 	return m;
 }
-math::vec4 glutpp::light::light::get_pos()
-{
-	//printf("%s\n",__PRETTY_FUNCTION__);
-
+math::vec4 glutpp::light::light::get_pos() {
+	GLUTPP_DEBUG_1_FUNCTION;
+	
 	math::vec4 pos = desc_->raw_.pos_.to_math();
 	
 	math::mat44 m = get_pose();
@@ -85,9 +78,8 @@ math::vec4 glutpp::light::light::get_pos()
 	
 	return pos;
 }
-void		glutpp::light::light::load(int o)
-{
-	//printf("%s\n",__PRETTY_FUNCTION__);
+void		glutpp::light::light::load(int o) {
+	GLUTPP_DEBUG_1_FUNCTION;
 
 	auto p = glutpp::__master.current_program();
 	
@@ -98,11 +90,11 @@ void		glutpp::light::light::load(int o)
 	
 	if(desc_->raw_.spot_cutoff_ < (M_PI/2.0))
 	{
-		spot_direction.print();
+		//spot_direction.print();
 	
 		m.RotateVector3D(spot_direction);
 	
-		spot_direction.print();
+		//spot_direction.print();
 	}
 	//pos.print();
 	
@@ -130,8 +122,8 @@ void		glutpp::light::light::load(int o)
 			o, desc_->raw_.atten_quad_);
 
 }
-void	glutpp::light::light::load_shadow()
-{
+void	glutpp::light::light::load_shadow() {
+	GLUTPP_DEBUG_1_FUNCTION;
 	/*	auto p = glutpp::__master.current_program();
 
 		math::mat44 biasMatrix(
@@ -152,7 +144,7 @@ void	glutpp::light::light::load_shadow()
 }
 void	glutpp::light::light::RenderLightPOV()
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_1_FUNCTION;
 	/*
 	   std::shared_ptr<scene> scene = scene_.lock();
 
@@ -215,5 +207,23 @@ void	glutpp::light::light::RenderShadowPost()
 	glDisable(GL_ALPHA_TEST);
 	checkerror(__PRETTY_FUNCTION__);
 }
+glutpp::light::desc_shared glutpp::light::light::desc_generate() {
+	GLUTPP_DEBUG_0_FUNCTION;
+
+	glutpp::light::desc_shared desc(new glutpp::light::desc);
+	
+	desc->raw_ = desc_->raw_;
+	
+        return desc;
+}
+void glutpp::light::light::i(int ni) {
+	GLUTPP_DEBUG_0_FUNCTION;
+
+	desc_->raw_.i_ = ni;
+}
+
+
+
+
 
 

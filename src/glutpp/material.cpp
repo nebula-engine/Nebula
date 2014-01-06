@@ -2,7 +2,7 @@
 
 #include <math/free.h>
 
-#include <glutpp/window.h>
+#include <glutpp/window/window.h>
 #include <glutpp/scene/scene.h>
 #include <glutpp/material.h>
 

@@ -16,7 +16,6 @@
 
 namespace glutpp
 {
-	class scene;
 	namespace light
 	{
 		enum
@@ -38,30 +37,34 @@ namespace glutpp
 				};
 
 				light(glutpp::shape::shape_shared);
-				void			init(std::shared_ptr<scene>);
+				void				i(int);
+				void				init(std::shared_ptr<scene::scene>);
 
-				virtual void		release();
-				virtual void		cleanup();
+				virtual void			release();
+				virtual void			cleanup();
 
-				void			load(int);
+				void				load(int);
 
-				void			load_shadow();
-				void			draw();
-				void			dim();
-				void			RenderShadowPost();
-				void			RenderLightPOV();
-
+				void				load_shadow();
+				void				draw();
+				void				dim();
+				void				RenderShadowPost();
+				void				RenderLightPOV();
+				
+				
 				math::mat44			get_pose();
 				math::vec4			get_pos();
+
+				desc_shared			desc_generate();
 			public:
 
 				int				i_;
 
-				desc*				desc_;
-
+				desc_shared			desc_;
+				
 				texture				texture_shadow_map_;
-
-				std::weak_ptr<scene>		scene_;
+				
+				glutpp::scene::scene_weak	scene_;
 				glutpp::shape::shape_weak	shape_;
 
 		};

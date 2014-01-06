@@ -10,7 +10,7 @@ glutpp::renderable::renderable(){
 glutpp::renderable&	glutpp::renderable::operator=(glutpp::renderable const & r){
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	glutpp::renderable::init(std::shared_ptr<window> window) {
+void glutpp::renderable::init(glutpp::window::window_shared window) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	assert(window);
@@ -21,11 +21,11 @@ void	glutpp::renderable::init(std::shared_ptr<window> window) {
 	camera_.reset(new glutpp::camera);
 	camera_->init(shared_from_this());
 }
-void	glutpp::renderable::resize(int w, int h){
+void	glutpp::renderable::resize(int w, int h) {
 	camera_->w_ = w;
 	camera_->h_ = h;
 }
-void	glutpp::renderable::render(double time, std::shared_ptr<glutpp::window> window) {
+void glutpp::renderable::render(double time, glutpp::window::window_shared window) {
 
 	GLUTPP_DEBUG_1_FUNCTION;
 

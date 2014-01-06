@@ -14,10 +14,11 @@ namespace glutpp
 	{
 		struct raw
 		{
-			void		reset();
-			void		load(tinyxml2::XMLElement*);
+			void			reset();
+			void			load(tinyxml2::XMLElement*);
+			void			print();
 
-
+			int			i_;
 
 			math::raw::vec4		pos_;
 
@@ -39,6 +40,11 @@ namespace glutpp
 		{
 			public:
 				desc();
+
+				size_t		size();
+				void		write(char*&);
+				void		read(char*&);
+
 
 
 

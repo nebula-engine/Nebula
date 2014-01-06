@@ -118,16 +118,6 @@ void main(void)
 		
 		diffuse = atten * lights[i].diffuse * front.diffuse * vec4(vec3(angle),1.0);
 		
-		//diffuse = lights[i].diffuse;
-		
-		//diffuse.r = angle;
-
-		//if( angle <= 0.0 ) diffuse = front.diffuse;
-		//if( atten <= 0.0 ) diffuse = front.diffuse;
-		
-		
-		//diffuse.rgb = N;
-
 		// specular
 		if (dot(N,L) < 0.0) // light source behind
 		{
@@ -140,12 +130,9 @@ void main(void)
 		}
 		
 		color += ambient + diffuse + specular;
-		
-		//color += front.diffuse;
 	}
 	
 	color += emission;
-	//color = front.diffuse;
 }
 
 

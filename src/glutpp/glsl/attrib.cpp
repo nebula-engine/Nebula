@@ -2,7 +2,7 @@
 
 #include <GL/glew.h>
 
-#include <glutpp/window.h>
+#include <glutpp/window/window.h>
 #include <glutpp/glsl/attrib.h>
 
 glutpp::glsl::attrib::attrib():

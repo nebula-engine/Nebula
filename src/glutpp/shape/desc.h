@@ -8,6 +8,7 @@
 #include <math/vec3.h>
 #include <math/raw/raw.h>
 
+#include <glutpp/config.h>
 #include <glutpp/material.h>
 #include <glutpp/shape/desc.h>
 #include <glutpp/light/desc.h>
@@ -19,6 +20,11 @@ namespace glutpp
 		struct raw
 		{
 			public:
+				enum
+				{
+					max_filename_length = 20
+				};
+				
 				void			reset();
 				void			load(tinyxml2::XMLElement*);
 				void			parse_type(char const *);
@@ -31,27 +37,38 @@ namespace glutpp
 
 
 				int			type_;
+				int			i_;
 				math::raw::transform	pose_;
 				math::raw::vec3		s_;
 
 				glutpp::material_desc	front_;
 
+				glutpp::program_name::e	program_;
+
+				char			image_[max_filename_length];
+				char			normal_[max_filename_length];
+
+				unsigned int		shape_size_;
+				unsigned int		light_size_;
 		};
 		class desc
 		{
 			public:
+				desc();
 				void			reset();
 				void			load(tinyxml2::XMLElement*);
 
 				
+				size_t			size();
+				void			write(char*&);
+				void			read(char*&);
+				
 
 
-				
-				
-				raw					raw_;
-				
-				std::vector<glutpp::shape::desc*>	shapes_;
-				std::vector<light::desc*>		lights_;
+				raw						raw_;
+
+				std::vector<glutpp::shape::desc_shared>		shapes_;
+				std::vector<glutpp::light::desc_shared>		lights_;
 		};
 	}
 }

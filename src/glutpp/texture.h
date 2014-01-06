@@ -11,17 +11,16 @@
 #include <math/vec4.h>
 #include <math/vec3.h>
 
-//#include <glutpp/uniform.h>
+#include <glutpp/config.h>
 
 namespace glutpp
 {
-	class window;
 	class texture
 	{
 		public:
 			texture();
 			~texture();
-			void			init(window*);
+			void			init(glutpp::window::window_shared);
 			void			init_shadow(int,int);
 			int			load_png(char const *);
 			void			bind();
@@ -30,7 +29,7 @@ namespace glutpp
 			GLint			h_;
 			GLuint			o_;
 			
-			window*			window_;
+			glutpp::window::window_shared		window_;
 	};
 }
 

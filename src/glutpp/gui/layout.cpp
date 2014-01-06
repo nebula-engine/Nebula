@@ -5,7 +5,7 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glutpp/window.h>
+#include <glutpp/window/window.h>
 #include <glutpp/renderable.h>
 #include <glutpp/gui/object/object_factory.h>
 #include <glutpp/gui/object/object.h>
@@ -17,7 +17,7 @@ glutpp::gui::layout::layout()
 {
 
 }
-std::shared_ptr<glutpp::window>	glutpp::gui::layout::get_window()
+glutpp::window::window_shared glutpp::gui::layout::get_window()
 {
 	assert(!renderable_.expired());
 	assert(!renderable_.lock()->window_.expired());
@@ -52,7 +52,7 @@ int	glutpp::gui::layout::create_object(tinyxml2::XMLElement* element) {
 	
 	auto object = glutpp::__master.object_factory_->create(element);
 	
-	objects_.push(object);
+	objects_.push_back(object);
 }
 void	glutpp::gui::layout::render_shader(double time)
 {
@@ -82,7 +82,7 @@ void	glutpp::gui::layout::draw(){
 void	glutpp::gui::layout::connect(){
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	std::shared_ptr<glutpp::window> w = get_window();
+	glutpp::window::window_shared w = get_window();
 
 	/*conns_.key_fun_ = w->sig_.key_fun_.connect(
 	  std::bind(&glutpp::gui::layout::key_fun,

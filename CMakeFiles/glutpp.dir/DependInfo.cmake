@@ -22,12 +22,15 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/charles/Programming/C++/glutpp/src/glutpp/light/light.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/light/light.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/master.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/master.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/material.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/mesh.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/mesh.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/renderable.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/scene/desc.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/scene/scene.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/scene/scene.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/shape/desc.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/shape/desc.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/shape/shape.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/shape/shape.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/texture.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.o"
-  "/home/charles/Programming/C++/glutpp/src/glutpp/window.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/window.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/window/desc.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/window/desc.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/window/window.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/window/window.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
