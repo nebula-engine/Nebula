@@ -4,6 +4,8 @@
 
 #include <PxPhysicsAPI.h>
 
+#include <glutpp/scene/desc.h>
+
 #include <neb/physics.h>
 #include <neb/scene/scene.h>
 #include <neb/simulation_callback.h>
@@ -22,9 +24,9 @@ physx::PxFilterFlags	DefaultFilterShader(
 		const void* constantBlock,
 		physx::PxU32 constantBlockSize )
 {	
-	printf("%s\n",__PRETTY_FUNCTION__);
+	//printf("%s\n",__PRETTY_FUNCTION__);
 	
-	printf("%i %i %i %i\n", filterData0.word0, filterData1.word1, filterData1.word0, filterData0.word1);
+	//printf("%i %i %i %i\n", filterData0.word0, filterData1.word1, filterData1.word0, filterData0.word1);
 	
 	physx::PxFilterFlags filter_flags = physx::PxFilterFlag::eDEFAULT;
 	
@@ -130,72 +132,6 @@ void				neb::physics::Shutdown() {
 
 	px_physics_->release();
 	px_foundation_->release();
-}
-std::shared_ptr<neb::scene::scene> neb::physics::create_scene(scene::desc* sd) {
-	
-	printf("%s\n",__PRETTY_FUNCTION__);
-	
-	assert(px_physics_ != NULL);
-	
-	std::shared_ptr<neb::scene::scene> scene(new neb::scene::scene);
-	
-	physx::PxSceneDesc scene_desc( px_physics_->getTolerancesScale() );
-	
-	scene_desc.gravity = sd->raw_.gravity_.to_math();
-	
-	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
-	
-	int m_nbThreads = 1;
-	
-	// cpu dispatcher
-	printf("cpu dispatcher\n");
-	if( !scene_desc.cpuDispatcher )
-	{
-		physx::PxDefaultCpuDispatcher* cpuDispatcher = ::physx::PxDefaultCpuDispatcherCreate( m_nbThreads );
-		assert( cpuDispatcher );
-
-		scene_desc.cpuDispatcher = cpuDispatcher;
-	}
-
-	// filter shader
-	printf("filter shader\n");
-	if(!scene_desc.filterShader)
-	{
-		if(scene->px_filter_shader_)
-		{
-			scene_desc.filterShader = scene->px_filter_shader_;
-		}
-		else
-		{
-			scene_desc.filterShader = DefaultFilterShader;
-		}
-	}
-
-	// gpu dispatcher
-	printf("gpu dispatcher\n");
-#ifdef PX_WINDOWS
-	if( !scene_desc.gpuDispatcher && m_cudaContextManager )
-	{
-		sceneDesc.gpuDispatcher = m_cudaContextManager->getGpuDispatcher();
-	}
-#endif
-	assert( scene_desc.isValid() );
-
-
-
-	scene->px_scene_ = px_physics_->createScene(scene_desc);
-	assert(scene->px_scene_);
-
-	// simulation callback
-	neb::simulation_callback* sec = new neb::simulation_callback;
-	scene->simulation_callback_ = sec;
-	scene->px_scene_->setSimulationEventCallback(sec);
-
-	// actors
-	//scene->Create_Lights(sd);
-
-	
-	return scene;
 }
 
 

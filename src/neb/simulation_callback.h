@@ -19,11 +19,6 @@
 
 namespace neb
 {
-	namespace actor
-	{
-		struct desc;
-	}
-	class view;
 	class simulation_callback: public physx::PxSimulationEventCallback
 	{
 		public:

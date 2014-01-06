@@ -16,7 +16,7 @@ namespace neb
 		{
 			public:
 				Actor(
-						glutpp::actor::desc* desc,
+						glutpp::actor::desc_shared,
 						std::shared_ptr<neb::scene::scene>,
 						neb::actor::Base_shared = neb::actor::Base_shared());
 
@@ -26,8 +26,8 @@ namespace neb
 				virtual void			add_force() {abort();}
 				virtual void			set_pose(math::transform);
 				virtual int			fire();
-				virtual glutpp::actor::desc*	get_projectile() {abort(); return NULL;}
-				virtual glutpp::actor::desc*	get_desc();
+				virtual glutpp::actor::desc_shared	get_projectile() {abort(); return NULL;}
+				virtual glutpp::actor::desc_shared	get_desc();
 				
 				
 				virtual void			create_physics() {abort();}

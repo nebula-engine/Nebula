@@ -1,7 +1,7 @@
 #include <neb/actor/Controller.h>
 
 neb::actor::Controller::Controller(
-		glutpp::actor::desc* desc,
+		glutpp::actor::desc_shared desc,
 		std::shared_ptr<neb::scene::scene> scene):
 	neb::actor::Base(desc, scene)
 {

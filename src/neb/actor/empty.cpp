@@ -2,7 +2,7 @@
 #include <neb/actor/empty.h>
 
 neb::actor::empty::empty(
-		glutpp::actor::desc* desc,
+		glutpp::actor::desc_shared desc,
 		std::shared_ptr<neb::scene::scene> scene,
 		std::shared_ptr<neb::actor::Base> actor):
 	neb::actor::Base(desc, scene, actor)

@@ -146,7 +146,10 @@ namespace neb
 
 			void			vehicle_suspension_raycasts(physx::PxScene* scene);
 			void			update(const physx::PxF32, const physx::PxVec3&);
-			vehicle_t		create_vehicle(physx::PxPhysics*, physx::PxScene*, glutpp::actor::desc*);
+			vehicle_t		create_vehicle(
+					physx::PxPhysics*,
+					physx::PxScene*,
+					glutpp::actor::desc_shared);
 
 			physx::PxVehicleDrivableSurfaceToTireFrictionPairs*	surface_tire_pairs_;
 

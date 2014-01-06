@@ -3,7 +3,7 @@
 #include <neb/actor/Rigid_Static.h>
 
 neb::actor::Rigid_Static::Rigid_Static(
-		glutpp::actor::desc* desc,
+		glutpp::actor::desc_shared desc,
 		std::shared_ptr<neb::scene::scene> scene,
 		std::shared_ptr<neb::actor::Base> actor):
 	neb::actor::Rigid_Actor(desc, scene, actor)

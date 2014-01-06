@@ -3,7 +3,7 @@
 
 //#include <JSL/Master.h>
 
-#include <glutpp/window.h>
+#include <glutpp/window/window.h>
 
 #include <neb/scene/scene.h>
 #include <neb/camera.h>
@@ -84,14 +84,6 @@ void	neb::camera::Connect()
 	{
 		fprintf(stderr, "camera: no input devices");
 	}*/
-}
-void	neb::camera::SetWindow( glutpp::window* window )
-{
-	assert( window );
-/*
-	window->CallBackDisplay_ = std::bind( &neb::camera::Display, this );
-	window->CallBackIdle_ = std::bind( &neb::camera::Display, this );
-*/
 }
 void	neb::camera::Display()
 {

@@ -4,20 +4,13 @@
 #include <memory>
 #include <map>
 
-//#include <JSL/Event.h>
-
-#include <glutpp/window.h>
+#include <glutpp/window/window.h>
 #include <glutpp/camera_control.h>
 
+#include <neb/config.h>
 
 namespace neb
 {
-	class view;
-	namespace actor
-	{
-		class Base;
-	}
-
 	struct camera_type
 	{
 		enum e
@@ -30,8 +23,8 @@ namespace neb
 	{
 		public:
 			camera_ridealong();
-			virtual math::mat44			supply();
-			std::shared_ptr<neb::actor::Base>	actor_;
+			virtual math::mat44		supply();
+			neb::actor::Base_weak		actor_;
 	};
 	class camera: public glutpp::camera_control
 	{
@@ -47,7 +40,7 @@ namespace neb
 			camera();
 			void		Connect();
 			void		delete_scene();
-			void		SetWindow(glutpp::window*);
+			//void		SetWindow(glutpp::window::window*);
 			void		Display();
 			void		Look();
 			physx::PxVec3		Move();
@@ -70,7 +63,6 @@ namespace neb
 
 			int	handle_delete_scene(int);
 
-			neb::view* view_;
 
 			unsigned int	flag_;
 
@@ -86,7 +78,7 @@ namespace neb
 			physx::PxVec3 eye_;
 
 			std::map<int,unsigned int>		key_flag_;
-			std::map<int,physx::PxVec3>	head_;
+			std::map<int,physx::PxVec3>		head_;
 			std::map<unsigned int,int>		head_flag_;
 
 			//std::shared_ptr<JSL::Event>	ev_mouse;

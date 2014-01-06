@@ -4,7 +4,7 @@
 
 
 neb::actor::Rigid_Actor::Rigid_Actor(
-		glutpp::actor::desc* desc,
+		glutpp::actor::desc_shared desc,
 		std::shared_ptr<neb::scene::scene> scene,
 		std::shared_ptr<neb::actor::Base> actor):
 	neb::actor::Actor(desc, scene, actor)
@@ -52,13 +52,11 @@ void	neb::actor::Rigid_Actor::setupFiltering()
 
 	delete[] shapes;
 }
-glutpp::actor::desc*	neb::actor::Rigid_Actor::get_projectile() {
+glutpp::actor::desc_shared neb::actor::Rigid_Actor::get_projectile() {
 	abort();
-	glutpp::actor::desc* desc = new glutpp::actor::desc;
-	return desc;
+	return glutpp::actor::desc_shared();
 }
-glutpp::actor::desc*	neb::actor::Rigid_Actor::get_desc() {
-
+glutpp::actor::desc_shared neb::actor::Rigid_Actor::get_desc() {
 	return neb::actor::Actor::get_desc();
 }
 

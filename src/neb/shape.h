@@ -12,7 +12,7 @@ namespace neb
 	class shape: public glutpp::shape::shape
 	{
 		public:
-			shape(glutpp::actor::actor_shared, glutpp::shape::desc*);
+			shape(glutpp::actor::actor_shared, glutpp::shape::desc_shared);
 			
 			virtual void		init();
 			void			create_physics();

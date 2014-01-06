@@ -1,7 +1,9 @@
 #include <algorithm>
 
 #include <glutpp/renderable.h>
-#include <glutpp/window.h>
+#include <glutpp/window/desc.h>
+#include <glutpp/window/window.h>
+#include <glutpp/scene/desc.h>
 
 #include <neb/config.h>
 #include <neb/app.h>
@@ -12,22 +14,35 @@ neb::app::app() {
 }
 void	neb::app::init() {
 }
-void neb::app::create_window(int name, int w, int h, int x, int y, char const * title) {
-
-	windows_[name] = glutpp::__master.create_window<glutpp::window>(w,h,x,y,title);
+glutpp::window::window_shared neb::app::create_window(int w, int h, int x, int y, char const * title) {
+	
+	glutpp::window::desc_shared wd(new glutpp::window::desc(w,h,x,y,title));
+	
+	auto window = glutpp::__master.create_window<glutpp::window::window>(wd);
+	
+	window->resize();
+	
+	windows_.push_back(window);
+	
+	return window;
 }
-void neb::app::load_scene(int name, scene::desc* sd) {
+void neb::app::load_scene(glutpp::scene::desc_shared sd) {
 	
 	// scene
-	auto scene = neb::__physics.create_scene(sd);
-	
-	scene->desc_ = sd;
+	neb::scene::scene_shared scene(new neb::scene::scene(shared_from_this(), sd));
 	
 	scene->user_type_ = neb::scene::scene::LOCAL;
-	
 	scene->init();
 	
-	scenes_[name] = scene;
+	if(sd->raw_.i_ == -1)
+	{
+		scenes_.push_back(scene);
+	}
+	else
+	{
+		scenes_[scene->desc_->raw_.i_] = scene;
+	}
+	
 }
 void neb::app::load_layout(int name, char const * filename) {
 
@@ -84,15 +99,6 @@ int neb::app::step(double time) {
 
 	return 0;
 }
-int	neb::app::prepare() {
-	
-	for(auto it = windows_.begin(); it != windows_.end(); ++it)
-	{
-		if(it->second) it->second->prepare();
-	}
-	
-	return 0;
-}
 int	neb::app::loop() {
 	
 	double time;
@@ -124,6 +130,7 @@ int	neb::app::loop() {
 			{
 				printf("erase\n");
 				windows_.erase(it);
+				break;
 			}
 			else
 			{
@@ -137,6 +144,14 @@ int	neb::app::loop() {
 
 	return 0;
 }
+neb::scene::scene_shared neb::app::get_scene(int name) {
+	
+	auto s = scenes_[name];
+	
+	assert(s);
+	
+	return s;
+}
 int neb::app::transmit_scenes(std::shared_ptr<neb::network::communicating> c) {
 	
 	NEBULA_DEBUG_0_FUNCTION;
@@ -147,8 +162,6 @@ int neb::app::transmit_scenes(std::shared_ptr<neb::network::communicating> c) {
 	
 	for(auto it = scenes_.begin(); it != scenes_.end(); ++it)
 	{
-		msg.reset(new gal::network::message);
-		
 		auto s = it->second;
 		assert(s);
 		
@@ -157,12 +170,13 @@ int neb::app::transmit_scenes(std::shared_ptr<neb::network::communicating> c) {
 		c->write(msg);
 	}
 	
-	NEBULA_DEBUG_0_FUNCTION;
-
 	return 0;
 }
-
-
-
-
+void neb::app::send(gal::network::message::shared_t msg)  {
+	
+	if(server_)
+	{
+		server_->write(msg);
+	}
+}
 

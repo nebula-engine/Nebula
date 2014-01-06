@@ -162,6 +162,30 @@ nebula/fast:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/build
 .PHONY : nebula/fast
 
+src/neb/active_transform.o: src/neb/active_transform.cpp.o
+.PHONY : src/neb/active_transform.o
+
+# target to build an object file
+src/neb/active_transform.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/active_transform.cpp.o
+.PHONY : src/neb/active_transform.cpp.o
+
+src/neb/active_transform.i: src/neb/active_transform.cpp.i
+.PHONY : src/neb/active_transform.i
+
+# target to preprocess a source file
+src/neb/active_transform.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/active_transform.cpp.i
+.PHONY : src/neb/active_transform.cpp.i
+
+src/neb/active_transform.s: src/neb/active_transform.cpp.s
+.PHONY : src/neb/active_transform.s
+
+# target to generate assembly for a file
+src/neb/active_transform.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/active_transform.cpp.s
+.PHONY : src/neb/active_transform.cpp.s
+
 src/neb/actor/Actor.o: src/neb/actor/Actor.cpp.o
 .PHONY : src/neb/actor/Actor.o
 
@@ -306,6 +330,30 @@ src/neb/actor/Rigid_Dynamic.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic.cpp.s
 .PHONY : src/neb/actor/Rigid_Dynamic.cpp.s
 
+src/neb/actor/Rigid_Dynamic_Box.o: src/neb/actor/Rigid_Dynamic_Box.cpp.o
+.PHONY : src/neb/actor/Rigid_Dynamic_Box.o
+
+# target to build an object file
+src/neb/actor/Rigid_Dynamic_Box.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic_Box.cpp.o
+.PHONY : src/neb/actor/Rigid_Dynamic_Box.cpp.o
+
+src/neb/actor/Rigid_Dynamic_Box.i: src/neb/actor/Rigid_Dynamic_Box.cpp.i
+.PHONY : src/neb/actor/Rigid_Dynamic_Box.i
+
+# target to preprocess a source file
+src/neb/actor/Rigid_Dynamic_Box.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic_Box.cpp.i
+.PHONY : src/neb/actor/Rigid_Dynamic_Box.cpp.i
+
+src/neb/actor/Rigid_Dynamic_Box.s: src/neb/actor/Rigid_Dynamic_Box.cpp.s
+.PHONY : src/neb/actor/Rigid_Dynamic_Box.s
+
+# target to generate assembly for a file
+src/neb/actor/Rigid_Dynamic_Box.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic_Box.cpp.s
+.PHONY : src/neb/actor/Rigid_Dynamic_Box.cpp.s
+
 src/neb/actor/Rigid_Static.o: src/neb/actor/Rigid_Static.cpp.o
 .PHONY : src/neb/actor/Rigid_Static.o
 
@@ -353,6 +401,30 @@ src/neb/actor/empty.s: src/neb/actor/empty.cpp.s
 src/neb/actor/empty.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.s
 .PHONY : src/neb/actor/empty.cpp.s
+
+src/neb/actor/free.o: src/neb/actor/free.cpp.o
+.PHONY : src/neb/actor/free.o
+
+# target to build an object file
+src/neb/actor/free.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/free.cpp.o
+.PHONY : src/neb/actor/free.cpp.o
+
+src/neb/actor/free.i: src/neb/actor/free.cpp.i
+.PHONY : src/neb/actor/free.i
+
+# target to preprocess a source file
+src/neb/actor/free.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/free.cpp.i
+.PHONY : src/neb/actor/free.cpp.i
+
+src/neb/actor/free.s: src/neb/actor/free.cpp.s
+.PHONY : src/neb/actor/free.s
+
+# target to generate assembly for a file
+src/neb/actor/free.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/free.cpp.s
+.PHONY : src/neb/actor/free.cpp.s
 
 src/neb/app.o: src/neb/app.cpp.o
 .PHONY : src/neb/app.o
@@ -522,30 +594,6 @@ src/neb/physics.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/physics.cpp.s
 .PHONY : src/neb/physics.cpp.s
 
-src/neb/scene/desc.o: src/neb/scene/desc.cpp.o
-.PHONY : src/neb/scene/desc.o
-
-# target to build an object file
-src/neb/scene/desc.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene/desc.cpp.o
-.PHONY : src/neb/scene/desc.cpp.o
-
-src/neb/scene/desc.i: src/neb/scene/desc.cpp.i
-.PHONY : src/neb/scene/desc.i
-
-# target to preprocess a source file
-src/neb/scene/desc.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene/desc.cpp.i
-.PHONY : src/neb/scene/desc.cpp.i
-
-src/neb/scene/desc.s: src/neb/scene/desc.cpp.s
-.PHONY : src/neb/scene/desc.s
-
-# target to generate assembly for a file
-src/neb/scene/desc.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene/desc.cpp.s
-.PHONY : src/neb/scene/desc.cpp.s
-
 src/neb/scene/scene.o: src/neb/scene/scene.cpp.o
 .PHONY : src/neb/scene/scene.o
 
@@ -680,6 +728,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... nebula"
 	@echo "... rebuild_cache"
+	@echo "... src/neb/active_transform.o"
+	@echo "... src/neb/active_transform.i"
+	@echo "... src/neb/active_transform.s"
 	@echo "... src/neb/actor/Actor.o"
 	@echo "... src/neb/actor/Actor.i"
 	@echo "... src/neb/actor/Actor.s"
@@ -698,12 +749,18 @@ help:
 	@echo "... src/neb/actor/Rigid_Dynamic.o"
 	@echo "... src/neb/actor/Rigid_Dynamic.i"
 	@echo "... src/neb/actor/Rigid_Dynamic.s"
+	@echo "... src/neb/actor/Rigid_Dynamic_Box.o"
+	@echo "... src/neb/actor/Rigid_Dynamic_Box.i"
+	@echo "... src/neb/actor/Rigid_Dynamic_Box.s"
 	@echo "... src/neb/actor/Rigid_Static.o"
 	@echo "... src/neb/actor/Rigid_Static.i"
 	@echo "... src/neb/actor/Rigid_Static.s"
 	@echo "... src/neb/actor/empty.o"
 	@echo "... src/neb/actor/empty.i"
 	@echo "... src/neb/actor/empty.s"
+	@echo "... src/neb/actor/free.o"
+	@echo "... src/neb/actor/free.i"
+	@echo "... src/neb/actor/free.s"
 	@echo "... src/neb/app.o"
 	@echo "... src/neb/app.i"
 	@echo "... src/neb/app.s"
@@ -725,9 +782,6 @@ help:
 	@echo "... src/neb/physics.o"
 	@echo "... src/neb/physics.i"
 	@echo "... src/neb/physics.s"
-	@echo "... src/neb/scene/desc.o"
-	@echo "... src/neb/scene/desc.i"
-	@echo "... src/neb/scene/desc.s"
 	@echo "... src/neb/scene/scene.o"
 	@echo "... src/neb/scene/scene.i"
 	@echo "... src/neb/scene/scene.s"

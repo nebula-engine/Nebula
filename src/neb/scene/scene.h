@@ -14,7 +14,7 @@
 #include <glutpp/light/desc.h>
 
 #include <neb/config.h>
-#include <neb/scene/desc.h>
+//#include <neb/scene/desc.h>
 #include <neb/vehicle_manager.h>
 #include <neb/actor/Rigid_Dynamic.h>
 #include <neb/actor/Rigid_Static.h>
@@ -27,18 +27,9 @@ neb::shape	xml_parse_geo(tinyxml2::XMLElement* element);
 
 namespace neb
 {
-	namespace actor
-	{
-		class vehicle;
-	}
-	namespace packet
-	{
-		struct packet;
-	}
-	class simulation_callback;
 	namespace scene
 	{
-		class scene: public glutpp::scene
+		class scene: public glutpp::scene::scene
 		{
 			public:
 				typedef std::shared_ptr<neb::actor::Base>		base_t;
@@ -55,13 +46,14 @@ namespace neb
 					REMOTE
 				};
 
-				scene();
+				scene(neb::app_shared, glutpp::scene::desc_shared);
 				void			init();
+				void			create_physics();
 				app_t			get_app();
 				
 				
 				void			create_actors();
-				base_t			create_actor(glutpp::actor::desc*);
+				base_t			create_actor(glutpp::actor::desc_shared);
 				//base_t			create_actor(glutpp::actor::desc*, base_t);
 				
 	/*			rigid_dynamic_t		Create_Rigid_Dynamic(
@@ -92,20 +84,23 @@ namespace neb
 				gal::network::message::shared_t		serialize();
 				
 				int					recv(neb::packet::packet);
-
+				
+				void					read(neb::active_transform::set*);
+				
+				glutpp::scene::desc_shared		desc_generate();
 			public:
+				neb::app_weak				app_;
+			
+				
 				int					user_type_;
-
+				
 				physx::PxSimulationFilterShader		px_filter_shader_;
 
 				neb::simulation_callback*		simulation_callback_;
 
 				physx::PxScene*				px_scene_;
 
-				std::weak_ptr<neb::app>			app_;
 				double					last_;
-				
-				neb::scene::desc*			desc_;
 				
 				neb::vehicle_manager			vehicle_manager_;
 		};

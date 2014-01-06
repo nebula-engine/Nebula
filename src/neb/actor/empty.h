@@ -23,7 +23,7 @@ namespace neb
 		{
 			public:
 				empty(
-						glutpp::actor::desc*,
+						glutpp::actor::desc_shared,
 						std::shared_ptr<neb::scene::scene>,
 						neb::actor::Base_shared = neb::actor::Base_shared());
 				

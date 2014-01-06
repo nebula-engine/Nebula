@@ -7,21 +7,20 @@
 #include <neb/scene/scene.h>
 #include <neb/shape.h>
 
-neb::shape::shape(glutpp::actor::actor_shared actor, glutpp::shape::desc* desc):
+neb::shape::shape(glutpp::actor::actor_shared actor, glutpp::shape::desc_shared desc):
 	glutpp::shape::shape(actor, desc)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 }
 void neb::shape::init() {
-
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	glutpp::shape::shape::init();
 	
 	create_physics();
 }
-void neb::shape::create_physics()
-{
+void neb::shape::create_physics() {
+
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	assert(!actor_.expired());

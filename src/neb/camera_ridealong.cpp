@@ -1,17 +1,25 @@
 #include <neb/actor/Base.h>
 #include <neb/camera.h>
 
-neb::camera_ridealong::camera_ridealong():
-	actor_(NULL)
-{}
+neb::camera_ridealong::camera_ridealong() {
+}
 math::mat44	neb::camera_ridealong::supply()
 {
-	if(actor_ == NULL)
+	if(actor_.expired())
 	{
 		return math::mat44();
 	}
 	
-	math::transform pose = actor_->desc_->raw_.pose_.to_math();
+	auto actor = actor_.lock();
+
+	if(actor->all(glutpp::actor::actor::flag::SHOULD_DELETE))
+	{
+		abort();
+	}
+	
+	
+	
+	math::transform pose = actor->desc_->raw_.pose_.to_math();
 	
 	math::mat44 translate;
 	translate.SetTranslation(-pose.p);
@@ -23,7 +31,7 @@ math::mat44	neb::camera_ridealong::supply()
 
 	
 	// offset vector relative to object
-	math::vec3 offset_v(0.0,0.0,-0.0);
+	math::vec3 offset_v(0.0,-1.0,-4.0);
 	
 	// transform offset vector to object space
 	rotate.RotateVector3D(offset_v);

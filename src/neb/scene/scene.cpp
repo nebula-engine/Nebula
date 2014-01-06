@@ -6,6 +6,7 @@
 #include <neb/packet/packet.h>
 #include <neb/physics.h>
 #include <neb/scene/scene.h>
+#include <glutpp/scene/desc.h>
 #include <neb/simulation_callback.h>
 #include <neb/actor/free.h>
 #include <neb/actor/Base.h>
@@ -15,17 +16,24 @@
 #include <neb/actor/vehicle.h>
 #include <neb/actor/empty.h>
 #include <neb/shape.h>
+#include <neb/active_transform.h>
 
 
-
-neb::scene::scene::scene(): px_filter_shader_(NULL), px_scene_(NULL) {
+neb::scene::scene::scene(neb::app_shared app, glutpp::scene::desc_shared desc):
+	glutpp::scene::scene(desc),
+	app_(app),
+	px_filter_shader_(NULL),
+	px_scene_(NULL)
+{
 
 	NEBULA_DEBUG_0_FUNCTION;
 }
 void neb::scene::scene::init() {
-	
+
 	NEBULA_DEBUG_0_FUNCTION;
 	
+	create_physics();
+
 	create_actors();
 }
 std::shared_ptr<neb::app> neb::scene::scene::get_app() {
@@ -35,24 +43,23 @@ std::shared_ptr<neb::app> neb::scene::scene::get_app() {
 	return app_.lock();
 }
 void neb::scene::scene::create_actors() {
-
 	NEBULA_DEBUG_0_FUNCTION;
-	
+
 	assert(desc_);
-	
+
 	for(auto it = desc_->actors_.begin(); it != desc_->actors_.end(); ++it)
 	{
 		create_actor(*it);
 	}
 }
-neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::desc* ad) {
+neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::desc_shared ad) {
 
 	NEBULA_DEBUG_0_FUNCTION;
-	
+
 	auto me = std::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
-	
+
 	std::shared_ptr<neb::actor::Base> actor;
-	
+
 	switch(ad->raw_.type_)
 	{
 		case glutpp::actor::RIGID_DYNAMIC:
@@ -79,95 +86,95 @@ neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::desc* ad)
 		default:
 			abort();
 	}
-	
+
 	actor->init();
-	
-	actors_.push(actor);
-	
+
+	actors_.push_back(actor);
+
 	return actor;	
 }
 /*
 
-*/
+ */
 /*
-neb::scene::scene::rigid_static_t neb::scene::scene::Create_Rigid_Static_Plane(
-		glutpp::actor::desc* ad,
-		neb::scene::scene::base_t) {
+   neb::scene::scene::rigid_static_t neb::scene::scene::Create_Rigid_Static_Plane(
+   glutpp::actor::desc* ad,
+   neb::scene::scene::base_t) {
 
-	printf("%s\n", __PRETTY_FUNCTION__);
+   printf("%s\n", __PRETTY_FUNCTION__);
 
-	// create
-	std::shared_ptr<neb::actor::Rigid_Static> actor(new neb::actor::Rigid_Static);
-	
-	// PxMaterial
-	physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
+// create
+std::shared_ptr<neb::actor::Rigid_Static> actor(new neb::actor::Rigid_Static);
 
-
-	actor->pose_ = ad->raw_.pose_.to_math();
-
-	physx::PxPlane p(
-			ad->raw_.n_.to_math(),
-			ad->raw_.d_);
-
-	// PxActor
-	physx::PxRigidStatic* px_rigid_static = PxCreatePlane(*(neb::__physics.px_physics_), p, *px_mat);
-
-	if (!px_rigid_static)
-	{
-		printf("create shape failed!");
-		exit(1);
-	}
-
-	actor->px_actor_ = px_rigid_static;
-
-	// userData
-	px_rigid_static->userData = actor.get();
-
-	//printf("box=%p\n",box);
+// PxMaterial
+physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
 
 
-	// add PxActor to PxScene
-	px_scene_->addActor(*px_rigid_static);
+actor->pose_ = ad->raw_.pose_.to_math();
 
-	add_actor(actor);
+physx::PxPlane p(
+ad->raw_.n_.to_math(),
+ad->raw_.d_);
 
-	return actor;
+// PxActor
+physx::PxRigidStatic* px_rigid_static = PxCreatePlane(*(neb::__physics.px_physics_), p, *px_mat);
+
+if (!px_rigid_static)
+{
+printf("create shape failed!");
+exit(1);
+}
+
+actor->px_actor_ = px_rigid_static;
+
+// userData
+px_rigid_static->userData = actor.get();
+
+//printf("box=%p\n",box);
+
+
+// add PxActor to PxScene
+px_scene_->addActor(*px_rigid_static);
+
+add_actor(actor);
+
+return actor;
 }
 
 neb::scene::scene::controller_t neb::scene::scene::Create_Controller(neb::actor::desc* ad) {
-	printf("%s\n",__FUNCTION__);
+printf("%s\n",__FUNCTION__);
 
-	//jess::scoped_ostream( &jess::clog, neb_FUNCSIG );
-	// create
-	std::shared_ptr<neb::actor::Controller> actor(new neb::actor::Controller);
+//jess::scoped_ostream( &jess::clog, neb_FUNCSIG );
+// create
+std::shared_ptr<neb::actor::Controller> actor(new neb::actor::Controller);
 
-	physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
+physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
 
-	// description
-	math::vec3 p = ad->raw_.pose_.p.to_math();
+// description
+math::vec3 p = ad->raw_.pose_.p.to_math();
 
-	physx::PxExtendedVec3 position(p.x, p.y, p.z);
+physx::PxExtendedVec3 position(p.x, p.y, p.z);
 
-	physx::PxCapsuleControllerDesc desc;
+physx::PxCapsuleControllerDesc desc;
 
-	desc.position = position;
-	desc.height = 1.0;
-	desc.radius = 0.5;
-	desc.scaleCoeff = 1.0;
-	desc.volumeGrowth = 2.0;
-	desc.density = 1000.0;
-	desc.slopeLimit = 0.707;
-	desc.stepOffset = 1.0;
-	desc.contactOffset = 1.0;
-	desc.material = px_mat;
-	desc.climbingMode = physx::PxCapsuleClimbingMode::eEASY;
-	desc.userData = actor.get();
+desc.position = position;
+desc.height = 1.0;
+desc.radius = 0.5;
+desc.scaleCoeff = 1.0;
+desc.volumeGrowth = 2.0;
+desc.density = 1000.0;
+desc.slopeLimit = 0.707;
+desc.stepOffset = 1.0;
+desc.contactOffset = 1.0;
+desc.material = px_mat;
+desc.climbingMode = physx::PxCapsuleClimbingMode::eEASY;
+desc.userData = actor.get();
 
 
-	actor->px_controller_ = neb::__physics.px_character_controller_manager_->createController(
-			*neb::__physics.px_physics_, px_scene_, desc );
+actor->px_controller_ = neb::__physics.px_character_controller_manager_->createController(
+		*neb::__physics.px_physics_, px_scene_, desc );
 
-	return actor;
+return actor;
 }
 neb::scene::scene::vehicle_t neb::scene::scene::create_vehicle() {
 
@@ -210,6 +217,64 @@ neb::scene::scene::vehicle_t neb::scene::scene::create_vehicle() {
 	return vehicle;
 }
 */
+void neb::scene::scene::create_physics() {
+	
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
+	auto pxphysics = neb::__physics.px_physics_;
+		
+	physx::PxSceneDesc scene_desc(pxphysics->getTolerancesScale());
+	
+	scene_desc.gravity = desc_->raw_.gravity_.to_math();
+	
+	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
+	
+	int m_nbThreads = 1;
+	
+	// cpu dispatcher
+	printf("cpu dispatcher\n");
+	if( !scene_desc.cpuDispatcher )
+	{
+		physx::PxDefaultCpuDispatcher* cpuDispatcher = ::physx::PxDefaultCpuDispatcherCreate( m_nbThreads );
+		assert( cpuDispatcher );
+
+		scene_desc.cpuDispatcher = cpuDispatcher;
+	}
+
+	// filter shader
+	printf("filter shader\n");
+	if(!scene_desc.filterShader)
+	{
+		if(px_filter_shader_)
+		{
+			scene_desc.filterShader = px_filter_shader_;
+		}
+		else
+		{
+			scene_desc.filterShader = DefaultFilterShader;
+		}
+	}
+
+	// gpu dispatcher
+	printf("gpu dispatcher\n");
+#ifdef PX_WINDOWS
+	if( !scene_desc.gpuDispatcher && m_cudaContextManager )
+	{
+		sceneDesc.gpuDispatcher = m_cudaContextManager->getGpuDispatcher();
+	}
+#endif
+	assert( scene_desc.isValid() );
+
+
+
+	px_scene_ = pxphysics->createScene(scene_desc);
+	assert(px_scene_);
+
+	// simulation callback
+	neb::simulation_callback* sec = new neb::simulation_callback;
+	simulation_callback_ = sec;
+	px_scene_->setSimulationEventCallback(sec);
+}
 void neb::scene::scene::step(double time) {
 
 	NEBULA_DEBUG_1_FUNCTION;
@@ -226,32 +291,42 @@ void neb::scene::scene::step(double time) {
 			printf("invlaid scene user type\n");
 			exit(0);
 	}
-	
+
 	// cleanup
 	auto it = actors_.map_.begin();
 	while(it != actors_.map_.end())
 	{
 		std::shared_ptr<glutpp::actor::actor> actor = it->second;
-		
+
 		assert(actor);
-		
+
 		actor->cleanup();
-		
-		
+
+
 		if(actor->any(glutpp::light::light::flag::SHOULD_DELETE))
 		{
 			actor->release();
-			
+
 			actors_.map_.erase(it);
+
+			break;
 		}
 		else
 		{
 			++it;
 		}
 	}
+
+	// extras
+	//printf("desc size = %i\n", (int)desc_size());
+
+
 }
-void							neb::scene::scene::step_local(double time){
+void neb::scene::scene::step_local(double time) {
+
 	NEBULA_DEBUG_1_FUNCTION;
+
+	auto app = get_app();
 
 	double dt = time - last_;
 	last_ = time;
@@ -274,8 +349,11 @@ void							neb::scene::scene::step_local(double time){
 	//physx::PxTransform pose;
 	math::transform pose;
 
+	neb::active_transform::set ats;
+	ats.raw_.name_scene_ = desc_->raw_.i_;
+
 	// update each render object with the new transform
-	for ( physx::PxU32 i = 0; i < nb_active_transforms; ++i )
+	for(physx::PxU32 i = 0; i < nb_active_transforms; ++i)
 	{
 		//physx::PxActor* px_actor = active_transforms[i].actor;
 
@@ -283,14 +361,15 @@ void							neb::scene::scene::step_local(double time){
 
 		physx::PxActor* pxactor = active_transforms[i].actor;
 
-		neb::actor::Actor* actor = static_cast<neb::actor::Actor*>( active_transforms[i].userData );
+		neb::actor::Actor* actor = static_cast<neb::actor::Actor*>(active_transforms[i].userData);
+
+		assert(actor);
 
 		//neb_ASSERT( act );
 		if(actor != NULL)
 		{
 			pose = active_transforms[i].actor2World;
 			actor->set_pose(pose);
-
 
 			physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
 			if(pxrigidbody != NULL)
@@ -301,27 +380,22 @@ void							neb::scene::scene::step_local(double time){
 				rigidbody->velocity_ = pxrigidbody->getLinearVelocity();
 			}
 		}
+
+		ats.push_back(actor);
 		//printf("transform.p.y=%16f\n",activeTransforms[i].actor2World.p.y);
 	}
+
+	app->send(ats.serialize());
 
 	// vehicle
 	//physx::PxVec3 g(0,-0.25,0);
 	//vehicle_manager_.vehicle_suspension_raycasts(px_scene_);
 	//vehicle_manager_.update((float)dt, g);
-	
-	// delete actors
-	/*
-	assert(simulation_callback_);
-	auto it = simulation_callback_->actors_to_delete_.begin();
-	while(it != simulation_callback_->actors_to_delete_.end())
-	{
-		int i = *it;
 
-		remove_actor(i);
 
-		simulation_callback_->actors_to_delete_.erase(it);
-	}
-	*/
+
+
+
 }
 void							neb::scene::scene::step_remote(double time){
 	printf("%s\n",__PRETTY_FUNCTION__);
@@ -337,41 +411,53 @@ void							neb::scene::scene::step_remote(double time){
 
 	// receive
 }
+glutpp::scene::desc_shared neb::scene::scene::desc_generate() {
+
+	glutpp::scene::desc_shared desc(new glutpp::scene::desc);
+
+	desc->raw_ = desc_->raw_;
+
+	for(auto it = actors_.map_.begin(); it != actors_.map_.end(); ++it)
+	{
+		auto actor = it->second;
+
+		desc->actors_.push_back(actor->desc_generate());
+	}
+
+	return desc;
+}
 gal::network::message::shared_t neb::scene::scene::serialize() {
 
 	NEBULA_DEBUG_0_FUNCTION;
 
-	gal::network::message::shared_t msg(new gal::network::message);
+	auto desc = desc_generate();
 
-	int i = 0;
-	for(auto it = actors_.map_.begin(); it != actors_.map_.end(); ++it)
-	{
-		printf("actor %i\n", i);
-
-		assert(it->second);
-		auto actor = std::dynamic_pointer_cast<neb::actor::Base>(it->second);
-		assert(actor);
-
-		printf("actor %i\n", i);
-
-		neb::scene::desc sd;
-
-		sd.actors_.push_back(actor->get_desc());
-
-		printf("actor %i\n", i);
-
-		i++;
-	}	
-
-	NEBULA_DEBUG_0_FUNCTION;
-
-	return msg;
+	return desc->serialize();
 }
 int	neb::scene::scene::recv(neb::packet::packet p) {
 
 
 	return 0;
 }
+void neb::scene::scene::read(neb::active_transform::set* ats) {
+
+	NEBULA_DEBUG_0_FUNCTION;
+
+	for(auto it = ats->nodes_.begin(); it != ats->nodes_.end(); ++it)
+	{
+		auto n = *it;
+
+		auto it = actors_.find(n->raw_.name_);
+
+		auto a = it->second;
+
+		a->desc_->raw_.pose_ = n->raw_.pose_;
+	}
+
+
+}
+
+
 
 
 

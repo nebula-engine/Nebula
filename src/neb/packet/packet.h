@@ -4,7 +4,7 @@
 #include <math/vec3.h>
 #include <math/transform.h>
 
-#include <neb/scene/desc.h>
+//#include <neb/scene/desc.h>
 #include <glutpp/actor/desc.h>
 
 

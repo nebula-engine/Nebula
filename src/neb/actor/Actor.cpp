@@ -8,7 +8,7 @@
 #include <neb/actor/Actor.h>
 
 neb::actor::Actor::Actor(
-		glutpp::actor::desc* desc,
+		glutpp::actor::desc_shared desc,
 		std::shared_ptr<neb::scene::scene> scene,
 		std::shared_ptr<neb::actor::Base> actor):
 	neb::actor::Base(desc, scene, actor),
@@ -42,9 +42,13 @@ void neb::actor::Actor::release()
 	px_actor_->release();
 	px_actor_ = NULL;
 }
-glutpp::actor::desc* neb::actor::Actor::get_desc() {
+glutpp::actor::desc_shared neb::actor::Actor::get_desc() {
 
 	return neb::actor::Base::get_desc();
+}
+glutpp::actor::desc_shared get_projectile() {
+	abort();
+	return glutpp::actor::desc_shared();
 }
 
 

@@ -8,7 +8,7 @@
 #include <neb/actor/empty.h>
 
 neb::actor::Base::Base(
-		glutpp::actor::desc* desc,
+		glutpp::actor::desc_shared desc,
 		std::shared_ptr<neb::scene::scene> scene,
 		std::shared_ptr<neb::actor::Base> actor):
 	glutpp::actor::actor(desc, scene, actor)
@@ -17,6 +17,9 @@ neb::actor::Base::Base(
 	
 	assert(desc);
 	assert(scene);
+}
+neb::actor::Base::~Base() {
+	NEBULA_DEBUG_0_FUNCTION;
 }
 void neb::actor::Base::init() {
 	NEBULA_DEBUG_0_FUNCTION;
@@ -30,6 +33,8 @@ void neb::actor::Base::init() {
 void neb::actor::Base::release() {
 
 	glutpp::actor::actor::release();
+	
+	conn_.key_fun_.reset();
 }
 void neb::actor::Base::create_children() {
 	NEBULA_DEBUG_0_FUNCTION;
@@ -40,7 +45,7 @@ void neb::actor::Base::create_children() {
 		create_actor(*it);
 	}
 }
-void neb::actor::Base::create_actor(glutpp::actor::desc* ad) {
+void neb::actor::Base::create_actor(glutpp::actor::desc_shared ad) {
 	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -106,7 +111,7 @@ int	neb::actor::Base::fire() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
-	glutpp::actor::desc* desc = get_projectile();
+	glutpp::actor::desc_shared desc = get_projectile();
 	
 	auto scene = get_scene();
 	
@@ -116,24 +121,23 @@ int	neb::actor::Base::fire() {
 	
 	return 1;
 }
-glutpp::actor::desc* neb::actor::Base::get_projectile() {
+glutpp::actor::desc_shared neb::actor::Base::get_projectile() {
 
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	abort();
 	
-	glutpp::actor::desc* desc = new glutpp::actor::desc;
-	return desc;
+	return glutpp::actor::desc_shared();
 }
 void	neb::actor::Base::step_remote(double)
 {}
-glutpp::actor::desc*	neb::actor::Base::get_desc() {
+glutpp::actor::desc_shared neb::actor::Base::get_desc() {
 
 	NEBULA_DEBUG_0_FUNCTION;
 	
-	glutpp::actor::desc* desc = new glutpp::actor::desc;
+	glutpp::actor::desc_shared desc(new glutpp::actor::desc);
 	
-	*desc = *desc_;
+	desc->raw_ = desc_->raw_;
 	
 	return desc;
 }
@@ -149,7 +153,7 @@ void neb::actor::Base::create_shapes()
 
 	for(auto it = desc_->shapes_.begin(); it != desc_->shapes_.end(); ++it)
 	{
-		glutpp::shape::desc* sd = *it;
+		glutpp::shape::desc_shared sd = *it;
 		
 		shape.reset(new neb::shape(me, sd));
 		

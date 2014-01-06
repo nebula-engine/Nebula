@@ -8,15 +8,62 @@
 
 #include <memory>
 
+#include <gal/map.h>
+
 namespace neb
 {
 	class shape;
-	
+
+	namespace network
+	{
+		enum type
+		{
+			SCENE,
+			ACTIVE_TRANSFORM_SET
+		};
+
+		class server;
+		class client;
+		typedef std::shared_ptr<server>		server_shared;
+		typedef std::shared_ptr<client>		client_shared;
+	}
+	namespace packet
+	{
+		struct packet;
+	}
+	namespace active_transform
+	{
+		struct node_raw;
+		class node;
+		struct set_raw;
+		class set;
+	}
+
+	class app;
+	typedef std::shared_ptr<app>	app_shared;
+	typedef std::weak_ptr<app>	app_weak;
+
+	namespace scene
+	{
+		class scene;
+		typedef std::shared_ptr<scene>	scene_shared;
+		typedef std::weak_ptr<scene>	scene_weak;
+		typedef gal::map<scene>		scene_map;
+	}
+	class simulation_callback;
 	namespace actor
 	{
 		class Base;
+		class Actor;
+		class Rigid_Actor;
+		class Rigid_Body;
+		class Rigid_Dynamic;
+		class Rigid_Static;
+		class empty;
+
+
 		typedef std::shared_ptr<Base> Base_shared;
-		typedef std::shared_ptr<Base> Base_weak;
+		typedef std::weak_ptr<Base> Base_weak;
 	}
 }
 

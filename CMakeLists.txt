@@ -5,29 +5,17 @@ project(nebula)
 
 set(PROJECT_SOURCE_DIR src)
 
-add_library(nebula
-	src/neb/app.cpp
-	src/neb/user.cpp
-	src/neb/physics.cpp
-	src/neb/scene/desc.cpp
-	src/neb/scene/scene.cpp
-	src/neb/vehicle_manager.cpp
-	src/neb/simulation_callback.cpp
-	src/neb/shape.cpp
-	src/neb/camera.cpp
-	src/neb/camera_ridealong.cpp
-	src/neb/actor/Base.cpp
-	src/neb/actor/empty.cpp
-	src/neb/actor/Actor.cpp
-	src/neb/actor/Rigid_Actor.cpp
-	src/neb/actor/Rigid_Body.cpp
-	src/neb/actor/Rigid_Dynamic.cpp
-	src/neb/actor/Rigid_Static.cpp
-	src/neb/actor/Controller.cpp
-	src/neb/network/server.cpp
-	src/neb/network/client.cpp
-	src/neb/network/communicating.cpp
-)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb files_src_neb) 
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/actor files_src_neb_actor)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/scene files_src_neb_scene)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/network files_src_neb_network)
+
+
+add_library(nebula 
+	${files_src_neb}
+	${files_src_neb_network}
+	${files_src_neb_scene}
+	${files_src_neb_actor})
 
 include_directories("${PROJECT_SOURCE_DIR}")
 
@@ -54,7 +42,6 @@ install(FILES ${PROJECT_SOURCE_DIR}/neb/packet/packet.h		DESTINATION include/neb
 
 
 
-install(FILES ${PROJECT_SOURCE_DIR}/neb/scene/desc.h		DESTINATION include/neb/scene)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/scene/scene.h		DESTINATION include/neb/scene)
 
 

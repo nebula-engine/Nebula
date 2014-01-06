@@ -6,17 +6,21 @@
 
 neb::user::user()
 {}
-void	neb::user::connect(std::shared_ptr<glutpp::window> w)
+void	neb::user::connect(glutpp::window::window_shared w)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
+
+	assert(!actor_.expired());
 	
-	std::shared_ptr<neb::actor::Rigid_Body> actor =
-			std::dynamic_pointer_cast<neb::actor::Rigid_Body>(actor_);
+	auto actor = std::dynamic_pointer_cast<neb::actor::Rigid_Body>(actor_.lock());
 	
 	assert(w);
 	assert(actor);
+
+	printf("actor ref count = %i\n", (int)actor.use_count());
 	
-	conn_.key_fun_ = w->sig_.key_fun_.connect(std::bind(
+	
+	actor->conn_.key_fun_ = w->sig_.key_fun_.connect(std::bind(
 				&neb::actor::Rigid_Body::key_fun,
 				actor,
 				std::placeholders::_1,
@@ -24,7 +28,10 @@ void	neb::user::connect(std::shared_ptr<glutpp::window> w)
 				std::placeholders::_3,
 				std::placeholders::_4));
 	
-	assert(conn_.key_fun_);
+	printf("actor ref count = %i\n", (int)actor.use_count());
+
+	
+	assert(actor->conn_.key_fun_);
 	
 	assert(camera_control_);
 	
@@ -33,13 +40,21 @@ void	neb::user::connect(std::shared_ptr<glutpp::window> w)
 }
 int	neb::user::set_actor(std::shared_ptr<neb::actor::Base> actor, neb::camera_type::e RIDEALONG)
 {
+	NEBULA_DEBUG_0_FUNCTION;
+
 	std::shared_ptr<neb::camera_ridealong> ride(new neb::camera_ridealong);
+
+	printf("actor ref count = %i\n", (int)actor.use_count());
 	
 	actor_ = actor;
 	camera_control_ = ride;
 
+	printf("actor ref count = %i\n", (int)actor.use_count());
+
 	ride->actor_ = actor_;
 
+	printf("actor ref count = %i\n", (int)actor.use_count());
+	
 	return 0;
 }
 

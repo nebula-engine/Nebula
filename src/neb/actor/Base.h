@@ -18,25 +18,21 @@
 
 namespace neb
 {
-	class app;
-	namespace scene
-	{
-		class scene;
-	}
 	namespace actor
 	{
 		class Base: public glutpp::actor::actor
 		{
 			public:
 				Base(
-					glutpp::actor::desc*,
+					glutpp::actor::desc_shared,
 					std::shared_ptr<neb::scene::scene>,
 					neb::actor::Base_shared = neb::actor::Base_shared());
+				virtual ~Base();
 				
 				virtual void			init();
 				virtual void			release();
 				
-				void				create_actor(glutpp::actor::desc*);
+				void				create_actor(glutpp::actor::desc_shared);
 				void				create_shapes();
 				void				create_children();
 				
@@ -46,8 +42,8 @@ namespace neb
 				std::shared_ptr<neb::app>		get_app();
 				std::shared_ptr<neb::scene::scene>	get_scene();
 
-				virtual glutpp::actor::desc*		get_desc();
-				virtual glutpp::actor::desc*		get_projectile();
+				virtual glutpp::actor::desc_shared	get_desc();
+				virtual glutpp::actor::desc_shared	get_projectile();
 				
 				
 				
@@ -56,7 +52,12 @@ namespace neb
 				virtual int			fire();
 				
 				virtual void			step_remote(double);
-				
+
+			public:
+				struct
+				{
+					key_fun_c		key_fun_;
+				} conn_;
 
 		};
 	}

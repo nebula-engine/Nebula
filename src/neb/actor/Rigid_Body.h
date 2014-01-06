@@ -12,7 +12,7 @@ namespace neb
 		{
 			public:
 				Rigid_Body(
-						glutpp::actor::desc*,
+						glutpp::actor::desc_shared,
 						std::shared_ptr<neb::scene::scene>,
 						neb::actor::Base_shared = neb::actor::Base_shared());
 				
@@ -20,8 +20,8 @@ namespace neb
 				virtual void			add_force();
 				virtual int			key_fun(int,int,int,int);
 
-				virtual glutpp::actor::desc*	get_projectile();
-				virtual glutpp::actor::desc*	get_desc();
+				virtual glutpp::actor::desc_shared	get_projectile();
+				virtual glutpp::actor::desc_shared	get_desc();
 
 				virtual void			step_remote(double);
 

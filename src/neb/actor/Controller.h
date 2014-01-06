@@ -14,7 +14,7 @@ namespace neb
 		{
 			public:
 				Controller(
-						glutpp::actor::desc*,
+						glutpp::actor::desc_shared,
 						std::shared_ptr<neb::scene::scene>);
 				virtual void		release();
 
