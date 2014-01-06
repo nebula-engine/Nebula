@@ -25,8 +25,9 @@ neb::scene::scene::scene(neb::app_shared app, glutpp::scene::desc_shared desc):
 	px_filter_shader_(NULL),
 	px_scene_(NULL)
 {
-
 	NEBULA_DEBUG_0_FUNCTION;
+	
+	assert(app);
 }
 void neb::scene::scene::init() {
 
@@ -57,6 +58,8 @@ neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::desc_shar
 	NEBULA_DEBUG_0_FUNCTION;
 
 	auto me = std::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
+
+	auto app = get_app();
 
 	std::shared_ptr<neb::actor::Base> actor;
 
@@ -90,6 +93,16 @@ neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::desc_shar
 	actor->init();
 
 	actors_.push_back(actor);
+
+	// networking
+	switch(user_type_)
+	{
+		case neb::scene::scene::LOCAL:
+			app->server_->write(actor->serialize());
+			break;
+		case neb::scene::scene::REMOTE:
+			break;
+	}
 
 	return actor;	
 }
@@ -218,24 +231,26 @@ neb::scene::scene::vehicle_t neb::scene::scene::create_vehicle() {
 }
 */
 void neb::scene::scene::create_physics() {
-	
+
 	printf("%s\n",__PRETTY_FUNCTION__);
-	
+
 	auto pxphysics = neb::__physics.px_physics_;
-		
+
 	physx::PxSceneDesc scene_desc(pxphysics->getTolerancesScale());
-	
+
 	scene_desc.gravity = desc_->raw_.gravity_.to_math();
-	
+
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
-	
+
 	int m_nbThreads = 1;
-	
+
 	// cpu dispatcher
 	printf("cpu dispatcher\n");
 	if( !scene_desc.cpuDispatcher )
 	{
-		physx::PxDefaultCpuDispatcher* cpuDispatcher = ::physx::PxDefaultCpuDispatcherCreate( m_nbThreads );
+		physx::PxDefaultCpuDispatcher* cpuDispatcher =
+			::physx::PxDefaultCpuDispatcherCreate( m_nbThreads );
+
 		assert( cpuDispatcher );
 
 		scene_desc.cpuDispatcher = cpuDispatcher;
@@ -397,7 +412,7 @@ void neb::scene::scene::step_local(double time) {
 
 
 }
-void							neb::scene::scene::step_remote(double time){
+void neb::scene::scene::step_remote(double time){
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	// send
@@ -447,14 +462,27 @@ void neb::scene::scene::read(neb::active_transform::set* ats) {
 	{
 		auto n = *it;
 
-		auto it = actors_.find(n->raw_.name_);
+		auto actor_it = actors_.find(n->raw_.name_);
 
-		auto a = it->second;
+		if(actor_it != actors_.end())
+		{
+			auto a = actor_it->second;
 
-		a->desc_->raw_.pose_ = n->raw_.pose_;
+			if(a)
+			{
+				a->desc_->raw_.pose_ = n->raw_.pose_;
+			}
+			else
+			{
+				printf("actor is NULL\n");
+			}
+		}
+		else
+		{
+			printf("actor is NULL\n");
+		}
+
 	}
-
-
 }
 
 

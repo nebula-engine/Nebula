@@ -3,15 +3,16 @@
 
 #include <gal/network/communicating.h>
 
+#include <neb/config.h>
+
 namespace neb
 {
-	class app;
 	namespace network
 	{
 		class communicating: virtual public gal::network::communicating
 		{
 			public:
-				communicating(int);
+				communicating(neb::app_shared, int);
 				void	process(gal::network::message::shared_t);
 
 				std::weak_ptr<neb::app>	app_;
@@ -20,3 +21,10 @@ namespace neb
 }
 
 #endif
+
+
+
+
+
+
+

@@ -154,9 +154,7 @@ void	neb::actor::Rigid_Body::step_remote(double)
 	 */
 	gal::network::message::shared_t msg(new gal::network::message);
 
-	memcpy(msg->body(), &p, sizeof(neb::packet::packet));
-	msg->body_length(sizeof(neb::packet::packet));
-	msg->encode_header();
+	msg->set(&p, sizeof(neb::packet::packet));
 
 	get_app()->client_->write(msg);
 }

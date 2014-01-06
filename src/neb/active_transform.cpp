@@ -42,7 +42,7 @@ std::shared_ptr<gal::network::message> neb::active_transform::set::serialize() {
 	char* data = new char[len];
 	char* head = data;
 	
-	int type = neb::network::type::ACTIVE_TRANSFORM_SET;
+	int type = glutpp::network::type::ACTIVE_TRANSFORM_SET;
 	
 	memcpy(head, &type, sizeof(int));
 	head += sizeof(int);

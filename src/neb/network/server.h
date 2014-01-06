@@ -12,7 +12,7 @@ namespace neb
 		class server: public gal::network::server
 		{
 			public:
-				server(unsigned short, int);
+				server(neb::app_shared, unsigned short, int);
 				void	callback_accept(int);
 
 				std::weak_ptr<neb::app>		app_;

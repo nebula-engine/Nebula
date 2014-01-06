@@ -91,7 +91,7 @@ std::shared_ptr<neb::app> neb::actor::Base::get_app() {
 
 	auto scene = get_scene();
 
-	assert(scene->app_.expired());
+	assert(!scene->app_.expired());
 	
 	return scene->app_.lock();
 }

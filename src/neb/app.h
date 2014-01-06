@@ -6,16 +6,9 @@
 #include <neb/config.h>
 #include <neb/network/server.h>
 #include <neb/network/client.h>
-//#include <neb/scene/desc.h>
 
 namespace neb
 {
-	namespace scene
-	{
-		class scene;
-	}
-	class view;
-
 	class app: public std::enable_shared_from_this<app>
 	{
 		public:
@@ -24,8 +17,9 @@ namespace neb
 
 			glutpp::window::window_shared		create_window(int, int, int, int, char const *);
 
-			void		load_scene(int, char const *);
-			void		load_scene(glutpp::scene::desc_shared);
+			void		load_scene_local(glutpp::scene::desc_shared);
+			void		load_scene_remote(glutpp::scene::desc_shared);
+
 			void		load_layout(int,char const *);
 
 			int		step(double);
@@ -54,3 +48,8 @@ namespace neb
 }
 
 #endif
+
+
+
+
+

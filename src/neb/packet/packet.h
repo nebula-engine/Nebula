@@ -12,11 +12,6 @@ namespace neb
 {
 	namespace packet
 	{
-		enum type
-		{
-			ACTOR_FORCE,
-			SCENE
-		};
 		
 		struct actor_force
 		{

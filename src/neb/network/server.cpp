@@ -3,17 +3,19 @@
 #include <neb/app.h>
 #include <neb/network/server.h>
 
-neb::network::server::server(unsigned short port, int len):
-	gal::network::server(port, len)
+neb::network::server::server(neb::app_shared app, unsigned short port, int len):
+	gal::network::server(port, len),
+	app_(app)
 {
 }
-void neb::network::server::callback_accept(int s)
-{
-	std::shared_ptr<neb::network::communicating> c(new neb::network::communicating(s));
-	c->start();
+void neb::network::server::callback_accept(int s) {
+	NEBULA_DEBUG_0_FUNCTION;
 	
 	assert(!app_.expired());
 	auto app = app_.lock();
+
+	std::shared_ptr<neb::network::communicating> c(new neb::network::communicating(app, s));
+	c->start();
 	
 	app->transmit_scenes(c);
 	

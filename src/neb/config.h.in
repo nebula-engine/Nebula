@@ -16,12 +16,6 @@ namespace neb
 
 	namespace network
 	{
-		enum type
-		{
-			SCENE,
-			ACTIVE_TRANSFORM_SET
-		};
-
 		class server;
 		class client;
 		typedef std::shared_ptr<server>		server_shared;
