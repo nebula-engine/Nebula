@@ -158,6 +158,9 @@ CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o: src/neb/actor/Base.h
 CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o: src/neb/camera.h
 CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o: src/neb/config.h
 
+CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o: src/neb/network/actor_release.cpp
+CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o: src/neb/network/actor_release.h
+
 CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/network/client.cpp
 CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/active_transform.h
 CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/actor/Actor.h

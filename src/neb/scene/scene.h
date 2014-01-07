@@ -82,6 +82,7 @@ namespace neb
 				
 				// networking
 				gal::network::message::shared_t		serialize();
+				void					send_actor_update();
 				
 				int					recv(neb::packet::packet);
 				

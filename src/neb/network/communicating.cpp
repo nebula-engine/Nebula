@@ -11,8 +11,7 @@ neb::network::communicating::communicating(neb::app_shared app, int socket):
 
 }
 void neb::network::communicating::process(gal::network::message::shared_t message) {
-
-	NEBULA_DEBUG_0_FUNCTION;
+	NEBULA_DEBUG_1_FUNCTION;
 
 	//abort();
 

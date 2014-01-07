@@ -498,6 +498,30 @@ src/neb/camera_ridealong.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.s
 .PHONY : src/neb/camera_ridealong.cpp.s
 
+src/neb/network/actor_release.o: src/neb/network/actor_release.cpp.o
+.PHONY : src/neb/network/actor_release.o
+
+# target to build an object file
+src/neb/network/actor_release.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o
+.PHONY : src/neb/network/actor_release.cpp.o
+
+src/neb/network/actor_release.i: src/neb/network/actor_release.cpp.i
+.PHONY : src/neb/network/actor_release.i
+
+# target to preprocess a source file
+src/neb/network/actor_release.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.i
+.PHONY : src/neb/network/actor_release.cpp.i
+
+src/neb/network/actor_release.s: src/neb/network/actor_release.cpp.s
+.PHONY : src/neb/network/actor_release.s
+
+# target to generate assembly for a file
+src/neb/network/actor_release.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.s
+.PHONY : src/neb/network/actor_release.cpp.s
+
 src/neb/network/client.o: src/neb/network/client.cpp.o
 .PHONY : src/neb/network/client.o
 
@@ -770,6 +794,9 @@ help:
 	@echo "... src/neb/camera_ridealong.o"
 	@echo "... src/neb/camera_ridealong.i"
 	@echo "... src/neb/camera_ridealong.s"
+	@echo "... src/neb/network/actor_release.o"
+	@echo "... src/neb/network/actor_release.i"
+	@echo "... src/neb/network/actor_release.s"
 	@echo "... src/neb/network/client.o"
 	@echo "... src/neb/network/client.i"
 	@echo "... src/neb/network/client.s"

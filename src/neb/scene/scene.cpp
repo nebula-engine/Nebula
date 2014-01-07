@@ -17,7 +17,7 @@
 #include <neb/actor/empty.h>
 #include <neb/shape.h>
 #include <neb/active_transform.h>
-
+#include <glutpp/network/actor_update.h>
 
 neb::scene::scene::scene(neb::app_shared app, glutpp::scene::desc_shared desc):
 	glutpp::scene::scene(desc),
@@ -92,15 +92,18 @@ neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::desc_shar
 
 	actor->init();
 
-	actors_.push_back(actor);
+	
 
 	// networking
 	switch(user_type_)
 	{
 		case neb::scene::scene::LOCAL:
+			actors_.push_back(actor);
+
 			app->server_->write(actor->serialize());
 			break;
 		case neb::scene::scene::REMOTE:
+			actors_[ad->raw_.i_] = actor;
 			break;
 	}
 
@@ -291,7 +294,6 @@ void neb::scene::scene::create_physics() {
 	px_scene_->setSimulationEventCallback(sec);
 }
 void neb::scene::scene::step(double time) {
-
 	NEBULA_DEBUG_1_FUNCTION;
 
 	switch(user_type_)
@@ -306,24 +308,25 @@ void neb::scene::scene::step(double time) {
 			printf("invlaid scene user type\n");
 			exit(0);
 	}
-
+	
+	
+	
 	// cleanup
 	auto it = actors_.map_.begin();
 	while(it != actors_.map_.end())
 	{
 		std::shared_ptr<glutpp::actor::actor> actor = it->second;
-
+		
 		assert(actor);
-
+		
 		actor->cleanup();
-
-
+		
 		if(actor->any(glutpp::light::light::flag::SHOULD_DELETE))
 		{
 			actor->release();
-
+			
 			actors_.map_.erase(it);
-
+			
 			break;
 		}
 		else
@@ -331,14 +334,12 @@ void neb::scene::scene::step(double time) {
 			++it;
 		}
 	}
-
+	
 	// extras
 	//printf("desc size = %i\n", (int)desc_size());
 
-
 }
 void neb::scene::scene::step_local(double time) {
-
 	NEBULA_DEBUG_1_FUNCTION;
 
 	auto app = get_app();
@@ -406,14 +407,24 @@ void neb::scene::scene::step_local(double time) {
 	//physx::PxVec3 g(0,-0.25,0);
 	//vehicle_manager_.vehicle_suspension_raycasts(px_scene_);
 	//vehicle_manager_.update((float)dt, g);
-
-
-
-
-
+	
+	send_actor_update();
+}
+void neb::scene::scene::send_actor_update() {
+	
+	std::shared_ptr<glutpp::network::actor_update> au(new glutpp::network::actor_update);
+	
+	for(auto it = actors_.begin(); it != actors_.end(); ++it)
+	{
+		auto actor = it->second;
+		
+		actor->send_actor_update(au);
+	}
+	
+	
 }
 void neb::scene::scene::step_remote(double time){
-	printf("%s\n",__PRETTY_FUNCTION__);
+	NEBULA_DEBUG_1_FUNCTION;
 
 	// send
 	actors_.foreach<neb::actor::Base>(std::bind(
@@ -456,7 +467,7 @@ int	neb::scene::scene::recv(neb::packet::packet p) {
 }
 void neb::scene::scene::read(neb::active_transform::set* ats) {
 
-	NEBULA_DEBUG_0_FUNCTION;
+	NEBULA_DEBUG_1_FUNCTION;
 
 	for(auto it = ats->nodes_.begin(); it != ats->nodes_.end(); ++it)
 	{

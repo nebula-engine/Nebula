@@ -73,7 +73,7 @@ void neb::active_transform::set::read(char*& head) {
 	memcpy(&raw_, head, sizeof(neb::active_transform::set_raw));
 	head += sizeof(neb::active_transform::set_raw);
 
-	printf("node_size_ = %i\n", (int)raw_.node_size_);
+	//printf("node_size_ = %i\n", (int)raw_.node_size_);
 	
 	// nodes
 	for(size_t i = 0; i < raw_.node_size_; ++i)

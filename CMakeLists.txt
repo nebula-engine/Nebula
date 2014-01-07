@@ -9,11 +9,12 @@ AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb files_src_neb)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/actor files_src_neb_actor)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/scene files_src_neb_scene)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/network files_src_neb_network)
-
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/packet files_src_neb_packet)
 
 add_library(nebula 
 	${files_src_neb}
 	${files_src_neb_network}
+	${files_src_neb_packet}
 	${files_src_neb_scene}
 	${files_src_neb_actor})
 

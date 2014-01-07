@@ -23,12 +23,9 @@ neb::network::client::client(neb::app_shared app, char const * addr, unsigned sh
 	gal::network::client(addr, port)
 {
 
-
-
 }
 void neb::network::client::process(gal::network::message::shared_t msg) {
-
-	NEBULA_DEBUG_0_FUNCTION;
+	NEBULA_DEBUG_1_FUNCTION;
 
 	assert(!app_.expired());
 	auto app = app_.lock();
@@ -86,7 +83,7 @@ void neb::network::client::process(gal::network::message::shared_t msg) {
 			
 			// need seperate create_actor function for remote scene because actor desc already has
 			// valid i
-			app->get_scene(scene_i)->create_actor(
+			app->get_scene(scene_i)->create_actor(ad);
 			
 			break;
 		default:

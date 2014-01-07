@@ -18,6 +18,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/charles/Programming/C++/nebula/src/neb/app.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/app.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/camera.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/camera.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/camera_ridealong.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o"
+  "/home/charles/Programming/C++/nebula/src/neb/network/actor_release.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/network/client.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/network/client.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/network/communicating.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/network/server.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/network/server.cpp.o"

@@ -9,6 +9,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/nebula.dir/src/neb/user.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/network/client.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/network/server.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o"
