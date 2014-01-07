@@ -27,7 +27,9 @@ namespace glutpp
 {
 	namespace window
 	{
-		class window: public gal::flag, public std::enable_shared_from_this<window>
+		class window:
+			public gal::flag<unsigned int>,
+			public std::enable_shared_from_this<window>
 		{
 			protected:
 				int          windowID;
@@ -70,8 +72,10 @@ namespace glutpp
 
 
 				void			idle();
-
-
+			private:
+				unsigned int		f();
+				void			f(unsigned int);
+			public:
 				// input signals
 				struct
 				{
@@ -81,12 +85,12 @@ namespace glutpp
 
 				glutpp::window::desc_shared	desc_;
 
-/*				char const *			title_;
-				int				w_;
-				int				h_;
-				int				x_;
-				int				y_;
-*/
+				/*				char const *			title_;
+								int				w_;
+								int				h_;
+								int				x_;
+								int				y_;
+				 */
 				std::shared_ptr<renderable>	renderable_;
 
 			public:

@@ -20,9 +20,8 @@ glutpp::gui::layout::layout()
 glutpp::window::window_shared glutpp::gui::layout::get_window()
 {
 	assert(!renderable_.expired());
-	assert(!renderable_.lock()->window_.expired());
 
-	return renderable_.lock()->window_.lock();
+	return renderable_.lock()->get_window();
 }
 void	glutpp::gui::layout::init(std::shared_ptr<glutpp::renderable> renderable)
 {

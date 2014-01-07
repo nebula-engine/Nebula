@@ -14,6 +14,7 @@ AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/light		files_src_glutpp_light)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/glsl		files_src_glutpp_glsl)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/gui		files_src_glutpp_gui)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/gui/object	files_src_glutpp_gui_object)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/network	files_src_glutpp_network)
 
 
 add_library(glutpp
@@ -26,6 +27,7 @@ add_library(glutpp
 	${files_src_glutpp_glsl}
 	${files_src_glutpp_gui}
 	${files_src_glutpp_gui_object}
+	${files_src_glutpp_network}
 )
 
 
@@ -47,6 +49,8 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/free.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/master.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/renderable.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/mesh.h		DESTINATION include/glutpp/)
+
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/network/actor_update.h	DESTINATION include/glutpp/network)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window/window.h	DESTINATION include/glutpp/window)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window/desc.h	DESTINATION include/glutpp/window)

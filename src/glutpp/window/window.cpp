@@ -73,6 +73,12 @@ glutpp::window::window::~window() {
 
 	glfwDestroyWindow(window_);
 }
+unsigned int glutpp::window::window::f() {
+	return desc_->raw_.flag_;
+}
+void glutpp::window::window::f(unsigned int flag) {
+	desc_->raw_.flag_ = flag;
+}
 void	glutpp::window::window::init() {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
@@ -98,9 +104,9 @@ void	glutpp::window::window::init() {
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_NORMALIZE);
-
-
-	renderable_.reset(new glutpp::renderable);
+	
+	
+	renderable_.reset(new glutpp::renderable(shared_from_this()));
 	renderable_->init(shared_from_this());
 
 	checkerror("unknown");

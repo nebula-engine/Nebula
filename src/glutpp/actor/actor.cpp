@@ -11,6 +11,7 @@
 
 #include <glutpp/window/window.h>
 #include <glutpp/scene/scene.h>
+#include <glutpp/scene/desc.h>
 #include <glutpp/actor/actor.h>
 #include <glutpp/shape/shape.h>
 #include <glutpp/actor/desc.h>
@@ -54,8 +55,13 @@ glutpp::actor::actor::actor(
 	assert(scene);
 }
 void glutpp::actor::actor::i(int ni) {
-
 	desc_->raw_.i_ = ni;
+}
+unsigned int glutpp::actor::actor::f() {
+	return desc_->raw_.flag_;
+}
+void glutpp::actor::actor::f(unsigned int flag) {
+	desc_->raw_.flag_ = flag;
 }
 void glutpp::actor::actor::cleanup() {
 
@@ -67,7 +73,7 @@ void glutpp::actor::actor::cleanup() {
 		std::shared_ptr<glutpp::actor::actor> actor = it->second;
 
 		actor->cleanup();
-
+		
 		if(actor->any(SHOULD_DELETE))
 		{
 			actor->release();
@@ -160,6 +166,8 @@ void glutpp::actor::actor::draw(glutpp::window::window_shared window) {
 }
 std::shared_ptr<gal::network::message> glutpp::actor::actor::serialize() {
 
+	auto scene = get_scene();
+
 	std::shared_ptr<gal::network::message> msg(new gal::network::message);
 	
 	size_t len = desc_->size() + sizeof(int) + sizeof(int);
@@ -174,7 +182,7 @@ std::shared_ptr<gal::network::message> glutpp::actor::actor::serialize() {
 	head += sizeof(int);
 	
 	// scene i
-	memcpy(head, &desc_->raw_.i_, sizeof(int));
+	memcpy(head, &scene->desc_->raw_.i_, sizeof(int));
 	head += sizeof(int);
 	
 	// actor desc
@@ -208,6 +216,28 @@ glutpp::actor::desc_shared glutpp::actor::actor::desc_generate() {
 	
         return desc;
 }
+void glutpp::actor::actor::send_actor_update(std::shared_ptr<glutpp::network::actor_update> au) {
+	
+	assert(au);
+	
+	if(any(glutpp::actor::actor::SHOULD_UPDATE))
+	{
+		au->actors_.vector_.push_back(desc_->raw_);
+	}
+	
+	for(auto it = actors_.begin(); it != actors_.end(); ++it)
+	{
+		auto actor = it->second;
+		
+		actor->send_actor_update(au);
+	}
+}
+
+
+
+
+
+
 
 
 

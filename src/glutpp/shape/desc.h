@@ -38,6 +38,7 @@ namespace glutpp
 
 				int			type_;
 				int			i_;
+				unsigned int		flag_;
 				math::raw::transform	pose_;
 				math::raw::vec3		s_;
 

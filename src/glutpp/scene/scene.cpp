@@ -25,6 +25,12 @@ void glutpp::scene::scene::i(int ni) {
 
 	desc_->raw_.i_ = ni;
 }
+unsigned int glutpp::scene::scene::f() {
+	return desc_->raw_.flag_;
+}
+void glutpp::scene::scene::f(unsigned int flag) {
+	desc_->raw_.flag_ = flag;
+}
 void	glutpp::scene::scene::init(std::shared_ptr<renderable> renderable) {
 
 	assert(renderable);

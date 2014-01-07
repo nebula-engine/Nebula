@@ -53,6 +53,8 @@ namespace glutpp
 				math::raw::vec3		velocity_;
 				float			density_;
 
+				unsigned int		flag_;
+	
 				struct
 				{
 					filter_data	simulation_;

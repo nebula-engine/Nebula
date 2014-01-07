@@ -32,7 +32,7 @@ namespace glutpp
 				std::shared_ptr<glutpp::texture>	image_;
 			} texture_;
 		};
-		class shape: public std::enable_shared_from_this<shape>, public gal::flag
+		class shape: public std::enable_shared_from_this<shape>, public gal::flag<unsigned int>
 		{
 			public:
 				enum flag
@@ -43,9 +43,9 @@ namespace glutpp
 
 				typedef std::shared_ptr<glutpp::shape::buffers>		buffer_t;
 				typedef std::map<glutpp::window::window*,buffer_t>	map_t;
-
-
-
+				
+				
+				
 				shape(glutpp::actor::actor_shared, glutpp::shape::desc_shared);
 				virtual ~shape();
 				void			i(int);
@@ -56,7 +56,7 @@ namespace glutpp
 				
 				math::mat44		get_pose();
 				
-						private:
+			private:
 				void			init_buffer(
 						glutpp::window::window_shared,
 						std::shared_ptr<glutpp::glsl::program>);
@@ -87,6 +87,9 @@ namespace glutpp
 				
 				
 				glutpp::actor::actor_weak	actor_;
+			private:
+				unsigned int			f();
+				void				f(unsigned int);
 		};
 	}
 }

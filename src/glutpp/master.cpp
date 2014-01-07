@@ -28,6 +28,12 @@ glutpp::master::master() {
 glutpp::master::~master(){	printf("%s\n", __PRETTY_FUNCTION__);
 
 }
+unsigned int glutpp::master::master::f() {
+	return flag_;
+}
+void glutpp::master::master::f(unsigned int flag) {
+	flag_ = flag;
+}
 glutpp::window::window_shared glutpp::master::get_window(GLFWwindow* window) {
 	
 	return windows_[window];

@@ -605,6 +605,30 @@ src/glutpp/mesh.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/mesh.cpp.s
 .PHONY : src/glutpp/mesh.cpp.s
 
+src/glutpp/network/actor_update.o: src/glutpp/network/actor_update.cpp.o
+.PHONY : src/glutpp/network/actor_update.o
+
+# target to build an object file
+src/glutpp/network/actor_update.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o
+.PHONY : src/glutpp/network/actor_update.cpp.o
+
+src/glutpp/network/actor_update.i: src/glutpp/network/actor_update.cpp.i
+.PHONY : src/glutpp/network/actor_update.i
+
+# target to preprocess a source file
+src/glutpp/network/actor_update.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.i
+.PHONY : src/glutpp/network/actor_update.cpp.i
+
+src/glutpp/network/actor_update.s: src/glutpp/network/actor_update.cpp.s
+.PHONY : src/glutpp/network/actor_update.s
+
+# target to generate assembly for a file
+src/glutpp/network/actor_update.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.s
+.PHONY : src/glutpp/network/actor_update.cpp.s
+
 src/glutpp/renderable.o: src/glutpp/renderable.cpp.o
 .PHONY : src/glutpp/renderable.o
 
@@ -867,6 +891,9 @@ help:
 	@echo "... src/glutpp/mesh.o"
 	@echo "... src/glutpp/mesh.i"
 	@echo "... src/glutpp/mesh.s"
+	@echo "... src/glutpp/network/actor_update.o"
+	@echo "... src/glutpp/network/actor_update.i"
+	@echo "... src/glutpp/network/actor_update.s"
 	@echo "... src/glutpp/renderable.o"
 	@echo "... src/glutpp/renderable.i"
 	@echo "... src/glutpp/renderable.s"

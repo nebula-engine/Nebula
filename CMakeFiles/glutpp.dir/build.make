@@ -667,6 +667,29 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o.provides: CMake
 
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o.provides.build: CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o
 
+CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o: CMakeFiles/glutpp.dir/flags.make
+CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o: src/glutpp/network/actor_update.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_28)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/network/actor_update.cpp
+
+CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/charles/Programming/C++/glutpp/src/glutpp/network/actor_update.cpp > CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.i
+
+CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/charles/Programming/C++/glutpp/src/glutpp/network/actor_update.cpp -o CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.s
+
+CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o.requires:
+.PHONY : CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o.requires
+
+CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o.provides: CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o.requires
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o.provides.build
+.PHONY : CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o.provides
+
+CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o.provides.build: CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o
+
 # Object files for target glutpp
 glutpp_OBJECTS = \
 "CMakeFiles/glutpp.dir/src/glutpp/camera.cpp.o" \
@@ -695,7 +718,8 @@ glutpp_OBJECTS = \
 "CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o" \
 "CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o" \
 "CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o" \
-"CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o"
+"CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o" \
+"CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o"
 
 # External object files for target glutpp
 glutpp_EXTERNAL_OBJECTS =
@@ -727,6 +751,7 @@ libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o
+libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/build.make
 libglutpp.a: CMakeFiles/glutpp.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libglutpp.a"
@@ -764,6 +789,7 @@ CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/gui/object/obje
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o.requires
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o.requires
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o.requires
+CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o.requires
 .PHONY : CMakeFiles/glutpp.dir/requires
 
 CMakeFiles/glutpp.dir/clean:

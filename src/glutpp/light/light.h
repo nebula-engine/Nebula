@@ -22,7 +22,7 @@ namespace glutpp
 		{
 			light_max = 20
 		};
-		class light: public gal::flag
+		class light: public gal::flag<unsigned int>
 		{
 			public:
 				enum type
@@ -56,14 +56,17 @@ namespace glutpp
 				math::vec4			get_pos();
 
 				desc_shared			desc_generate();
+			private:
+				unsigned int			f();
+				void				f(unsigned int);
 			public:
 
 				int				i_;
 
 				desc_shared			desc_;
-				
+
 				texture				texture_shadow_map_;
-				
+
 				glutpp::scene::scene_weak	scene_;
 				glutpp::shape::shape_weak	shape_;
 

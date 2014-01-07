@@ -4,6 +4,7 @@
 /home/charles/usr/include/glutpp/master.h
 /home/charles/usr/include/glutpp/renderable.h
 /home/charles/usr/include/glutpp/mesh.h
+/home/charles/usr/include/glutpp/network/actor_update.h
 /home/charles/usr/include/glutpp/window/window.h
 /home/charles/usr/include/glutpp/window/desc.h
 /home/charles/usr/include/glutpp/scene/desc.h

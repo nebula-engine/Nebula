@@ -19,7 +19,7 @@ namespace glutpp
 			void			print();
 
 			int			i_;
-
+			unsigned int		flag_;
 			math::raw::vec4		pos_;
 
 			// colors

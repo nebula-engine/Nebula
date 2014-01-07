@@ -17,7 +17,7 @@
 
 namespace glutpp
 {
-	class master: public gal::flag
+	class master: public gal::flag<>
 	{
 		public:
 			enum option
@@ -76,13 +76,17 @@ namespace glutpp
 
 			//int   IdleSetToCurrentWindow(void);
 			//void  SetIdleToCurrentWindow(void);
-			FT_Library				ft_;
-
-
+			FT_Library						ft_;
+			
+			
 			std::shared_ptr<glutpp::gui::object::object_factory>	object_factory_;
 
 
 		private:
+			unsigned int						f();
+			void							f(unsigned int);
+			unsigned int						flag_;
+			
 			GLFWwindow*						currentIdleWindow_;
 			std::map<GLFWwindow*,window::window_shared>		windows_;
 

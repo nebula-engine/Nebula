@@ -26,6 +26,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o"
+  "CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o"
   "libglutpp.pdb"
   "libglutpp.a"
 )

@@ -32,6 +32,7 @@ namespace glutpp
 			ACTIVE_TRANSFORM_SET,
 			ACTOR_FORCE,
 			ACTOR_CREATE,
+			ACTOR_RELEASE,
 		};
 	}
 

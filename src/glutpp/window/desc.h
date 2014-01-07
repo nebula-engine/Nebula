@@ -14,12 +14,12 @@ namespace glutpp
 					title_length_max = 20
 				};
 
-				int	i_;
-
-				int x_;
-				int y_;
-				int w_;
-				int h_;
+				int		i_;
+				unsigned int	flag_;
+				int		x_;
+				int		y_;
+				int		w_;
+				int		h_;
 				char	title_[title_length_max];
 
 

@@ -17,19 +17,21 @@
 #include <glutpp/texture.h>
 #include <glutpp/material.h>
 #include <glutpp/shape/shape.h>
+#include <glutpp/network/actor_update.h>
 
 namespace glutpp
 {
 	namespace actor
 	{
-		class actor: public std::enable_shared_from_this<actor>, public gal::flag
+		class actor: public std::enable_shared_from_this<actor>, public gal::flag<unsigned int>
 		{
 			public:
 				typedef std::shared_ptr<gal::network::message> msg_type;
 				
 				enum flag
 				{
-					SHOULD_DELETE = 1 << 0
+					SHOULD_DELETE = 1 << 0,
+					SHOULD_UPDATE = 1 << 1,
 				};
 
 				actor(
@@ -53,9 +55,11 @@ namespace glutpp
 				
 				//virtual void	render_reflection();
 
-				
-				
-				
+				void				send_actor_update(
+						std::shared_ptr<glutpp::network::actor_update>);
+
+			public:
+
 				glutpp::actor::desc_shared	desc_;
 
 				std::weak_ptr<scene::scene>	scene_;
@@ -63,7 +67,9 @@ namespace glutpp
 			protected:
 				glutpp::shape::shape_map	shapes_;
 				glutpp::actor::actor_map	actors_;
-
+			private:
+				unsigned int			f();
+				void				f(unsigned int);
 		};
 	}
 }

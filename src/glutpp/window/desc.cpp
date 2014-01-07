@@ -6,6 +6,8 @@
 
 glutpp::window::desc::desc(int w, int h, int x, int y, const char * title)
 {
+	raw_.flag_ = 0;
+	
 	raw_.w_ = w;
 	raw_.h_ = h;
 	raw_.x_ = x;

@@ -27,6 +27,8 @@ glutpp/window/window.h
 -
 glutpp/scene/scene.h
 -
+glutpp/scene/desc.h
+-
 glutpp/actor/actor.h
 -
 glutpp/shape/shape.h
@@ -62,6 +64,8 @@ glutpp/texture.h
 glutpp/material.h
 -
 glutpp/shape/shape.h
+-
+glutpp/network/actor_update.h
 -
 
 src/glutpp/actor/desc.h
@@ -236,6 +240,22 @@ glutpp/config.h
 glutpp/shape/desc.h
 -
 glutpp/material.h
+-
+
+src/glutpp/network/actor_update.h
+gal/network/vector.h
+-
+gal/network/serializeable.h
+-
+glutpp/config.h
+-
+glutpp/scene/desc.h
+-
+
+src/glutpp/scene/desc.h
+gal/network/message.h
+-
+glutpp/actor/desc.h
 -
 
 src/glutpp/scene/scene.h

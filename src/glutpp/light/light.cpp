@@ -13,6 +13,12 @@ glutpp::light::light::light(glutpp::shape::shape_shared shape):
 {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
+unsigned int glutpp::light::light::f() {
+	return desc_->raw_.flag_;
+}
+void glutpp::light::light::f(unsigned int flag) {
+	desc_->raw_.flag_ = flag;
+}
 void	glutpp::light::light::init(std::shared_ptr<scene::scene> scene) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	

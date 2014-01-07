@@ -23,6 +23,12 @@ glutpp::shape::shape::shape(
 glutpp::shape::shape::~shape() {
 
 }
+unsigned int glutpp::shape::shape::f() {
+	return desc_->raw_.flag_;
+}
+void glutpp::shape::shape::f(unsigned int flag) {
+	desc_->raw_.flag_ = flag;
+}
 void glutpp::shape::shape::init() {
 
 	printf("%s\n",__PRETTY_FUNCTION__);

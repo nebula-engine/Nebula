@@ -17,6 +17,7 @@ namespace glutpp
 			
 
 				int			i_;
+				unsigned int		flag_;
 				math::raw::vec3		gravity_;
 				size_t			actor_size_;
 		};

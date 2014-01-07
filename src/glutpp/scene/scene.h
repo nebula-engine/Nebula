@@ -17,7 +17,7 @@ namespace glutpp
 {
 	namespace scene
 	{
-		class scene: public gal::flag, public std::enable_shared_from_this<scene>
+		class scene: public gal::flag<unsigned int>, public std::enable_shared_from_this<scene>
 		{
 			public:
 				enum
@@ -38,6 +38,9 @@ namespace glutpp
 				virtual ~scene();
 				void			i(int);
 				void			init(std::shared_ptr<renderable>);
+			protected:
+				unsigned int		f();
+				void			f(unsigned int);
 			public:
 				void			resize(int,int);
 				void			render(
