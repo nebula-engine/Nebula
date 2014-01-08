@@ -58,13 +58,19 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window/desc.h	DESTINATION include/glu
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene/desc.h		DESTINATION include/glutpp/scene)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene/scene.h	DESTINATION include/glutpp/scene)
 
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/addr.h		DESTINATION include/glutpp/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/desc.h		DESTINATION include/glutpp/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/actor.h	DESTINATION include/glutpp/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/actor_base.h	DESTINATION include/glutpp/actor/)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape/shape.h	DESTINATION include/glutpp/shape)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape/desc.h		DESTINATION include/glutpp/shape)
 
 
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/network/type_ext.h		DESTINATION include/glutpp/network/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/network/scene_create.h	DESTINATION include/glutpp/network/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/network/actor_create.h	DESTINATION include/glutpp/network/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/network/actor_update.h	DESTINATION include/glutpp/network/)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shader.h		DESTINATION include/glutpp/glsl/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/program.h		DESTINATION include/glutpp/glsl/)

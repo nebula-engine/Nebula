@@ -17,7 +17,10 @@ namespace glutpp
 {
 	namespace scene
 	{
-		class scene: public gal::flag<unsigned int>, public std::enable_shared_from_this<scene>
+		class scene:
+			public std::enable_shared_from_this<scene>,
+			public gal::flag<unsigned int>
+
 		{
 			public:
 				enum
@@ -36,8 +39,10 @@ namespace glutpp
 
 				scene(glutpp::scene::desc_shared);
 				virtual ~scene();
-				void			i(int);
-				void			init(std::shared_ptr<renderable>);
+				int				i();
+				void				i(int);
+				//glutpp::scene::id_shared	id();
+				void				init(std::shared_ptr<renderable>);
 			protected:
 				unsigned int		f();
 				void			f(unsigned int);
@@ -49,8 +54,12 @@ namespace glutpp
 						glutpp::window::window_shared);
 
 				int			draw(glutpp::window::window_shared);
+
+
+				void			write_addr(gal::network::message_shared);
 			public:
 				glutpp::scene::desc_shared		desc_;
+
 				gal::map<glutpp::actor::actor>		actors_;
 		};
 	}

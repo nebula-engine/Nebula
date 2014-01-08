@@ -14,6 +14,7 @@
 
 #include <gal/map.h>
 #include <gal/sig/connection.h>
+#include <gal/network/vector.h>
 
 typedef std::shared_ptr<gal::sig::connection<int,int,int> >	mouse_button_fun_c;
 typedef std::shared_ptr<gal::sig::connection<double,double> >	cursor_pos_fun_c;
@@ -26,6 +27,7 @@ namespace glutpp
 {
 	namespace network
 	{
+		class type_ext;
 		enum type
 		{
 			SCENE,
@@ -33,6 +35,7 @@ namespace glutpp
 			ACTOR_FORCE,
 			ACTOR_CREATE,
 			ACTOR_RELEASE,
+			ACTOR_UPDATE,
 		};
 	}
 
@@ -131,13 +134,16 @@ namespace glutpp
 	namespace scene
 	{
 		struct raw;
-
+		
+		struct id;
+		typedef std::shared_ptr<id>	id_shared;
+		
 		class desc;
-		typedef std::shared_ptr<desc>		desc_shared;
-
+		typedef std::shared_ptr<desc>	desc_shared;
+		
 		class scene;
-		typedef std::shared_ptr<scene>		scene_shared;
-		typedef std::weak_ptr<scene>		scene_weak;
+		typedef std::shared_ptr<scene>	scene_shared;
+		typedef std::weak_ptr<scene>	scene_weak;
 	}
 
 
@@ -147,7 +153,16 @@ namespace glutpp
 	namespace actor
 	{
 		struct raw;
-
+		typedef std::shared_ptr<raw>		raw_shared;
+		typedef gal::network::vector<raw>	raw_vec;
+		
+		struct addr;
+		typedef std::shared_ptr<addr>		addr_shared;
+		
+		struct addr_raw;
+		typedef std::shared_ptr<addr_raw>	addr_raw_shared;
+		typedef gal::network::vector<raw>	addr_raw_vec;
+		
 		class desc;
 		typedef std::shared_ptr<desc>		desc_shared;
 

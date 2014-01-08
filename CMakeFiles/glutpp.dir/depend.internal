@@ -4,6 +4,8 @@
 CMakeFiles/glutpp.dir/src/glutpp/actor/actor.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/actor/actor.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -26,6 +28,24 @@ CMakeFiles/glutpp.dir/src/glutpp/actor/actor.cpp.o
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
  src/glutpp/window/window.h
+CMakeFiles/glutpp.dir/src/glutpp/actor/addr.cpp.o
+ /home/charles/Programming/C++/glutpp/src/glutpp/actor/addr.cpp
+ src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
+ src/glutpp/actor/desc.h
+ src/glutpp/camera.h
+ src/glutpp/camera_control.h
+ src/glutpp/config.h
+ src/glutpp/light/desc.h
+ src/glutpp/material.h
+ src/glutpp/mesh.h
+ src/glutpp/network/actor_update.h
+ src/glutpp/scene/desc.h
+ src/glutpp/scene/scene.h
+ src/glutpp/shape/desc.h
+ src/glutpp/shape/shape.h
+ src/glutpp/texture.h
 CMakeFiles/glutpp.dir/src/glutpp/actor/desc.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/actor/desc.cpp
  src/glutpp/actor/desc.h
@@ -36,6 +56,8 @@ CMakeFiles/glutpp.dir/src/glutpp/actor/desc.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/camera.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/camera.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -64,6 +86,8 @@ CMakeFiles/glutpp.dir/src/glutpp/camera_control.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/free.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/free.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -92,6 +116,8 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/attrib.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/glsl/program.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -116,6 +142,8 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/glsl/shader.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -140,6 +168,8 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/glsl/uniform.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -165,6 +195,8 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/gui/layout.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -194,6 +226,8 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/edittext.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -243,6 +277,8 @@ CMakeFiles/glutpp.dir/src/glutpp/light/desc.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/light/light.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/light/light.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -268,6 +304,8 @@ CMakeFiles/glutpp.dir/src/glutpp/light/light.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/master.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/master.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -293,6 +331,8 @@ CMakeFiles/glutpp.dir/src/glutpp/master.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/material.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -334,6 +374,8 @@ CMakeFiles/glutpp.dir/src/glutpp/network/actor_update.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/renderable.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -368,6 +410,8 @@ CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/scene/scene.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/scene/scene.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -400,6 +444,8 @@ CMakeFiles/glutpp.dir/src/glutpp/shape/desc.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/shape/shape.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/shape/shape.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h
@@ -430,6 +476,8 @@ CMakeFiles/glutpp.dir/src/glutpp/window/desc.cpp.o
 CMakeFiles/glutpp.dir/src/glutpp/window/window.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/window/window.cpp
  src/glutpp/actor/actor.h
+ src/glutpp/actor/actor_base.h
+ src/glutpp/actor/addr.h
  src/glutpp/actor/desc.h
  src/glutpp/camera.h
  src/glutpp/camera_control.h

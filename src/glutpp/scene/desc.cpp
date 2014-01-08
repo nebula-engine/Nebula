@@ -9,12 +9,24 @@
 void glutpp::scene::raw::reset() {
 	GLUTPP_DEBUG_0_FUNCTION;
 
-	i_ = -1;
+	//i_ = -1;
 }
 void glutpp::scene::raw::load(tinyxml2::XMLElement* element) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	gravity_.from_math(math::xml_parse_vec3(element->FirstChildElement("gravity"), math::vec3(0,0,0)));
+}
+
+
+
+void glutpp::scene::id::write(gal::network::message_shared msg) {
+	msg->write(&i_, sizeof(int));
+}
+void glutpp::scene::id::read(gal::network::message_shared msg) {
+	msg->read(&i_, sizeof(int));
+}
+size_t glutpp::scene::id::size() {
+	return sizeof(int);
 }
 
 
@@ -51,33 +63,29 @@ void glutpp::scene::desc::load(tinyxml2::XMLElement* element) {
 		e = e->NextSiblingElement("actor");
 	}
 }
-gal::network::message::shared_t glutpp::scene::desc::serialize() {
+void glutpp::scene::desc::write(gal::network::message_shared msg) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
-	gal::network::message::shared_t msg(new gal::network::message);
+	assert(msg);
 	
 	size_t len = size() + sizeof(int);
-
+	
 	printf("len = %i\n", (int)len);
 	
-	// alloc
-	char* data = new char[len];
-	char* head = data;
-	
 	// type
-	int type = glutpp::network::type::SCENE;
+	//int type = glutpp::network::type::SCENE;
 	
-	memcpy(head, &type, sizeof(int));
-	head += sizeof(int);
+	//memcpy(head, &type, sizeof(int));
+	//head += sizeof(int);
 	
 	// write scene raw
-	raw_.actor_size_ = actors_.size();
-
-	printf("actor_size_ = %i\n", (int)raw_.actor_size_);
+	//raw_.actor_size_ = actors_.size();
 	
-	memcpy(head, &raw_, sizeof(glutpp::scene::raw));
-	head += sizeof(glutpp::scene::raw);
+	//printf("actor_size_ = %i\n", (int)raw_.actor_size_);
 	
+	msg->write(&raw_, sizeof(glutpp::scene::raw));
+	
+	/*
 	for(auto it = actors_.begin(); it != actors_.end(); ++it)
 	{
 		auto actor = *it;
@@ -87,19 +95,15 @@ gal::network::message::shared_t glutpp::scene::desc::serialize() {
 	}	
 	
 	msg->set(data, len);
-
-	return msg;
+	*/
 }
-void glutpp::scene::desc::read(char*& data) {
+void glutpp::scene::desc::read(gal::network::message_shared msg) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
-	char* head = data;
-	
-	memcpy(&raw_, head, sizeof(glutpp::scene::raw));
-	head += sizeof(glutpp::scene::raw);
+	msg->write(&raw_, sizeof(glutpp::scene::raw));
 
-	printf("actor_size_ = %i\n", (int)raw_.actor_size_);
-
+	//printf("actor_size_ = %i\n", (int)raw_.actor_size_);
+/*
 	// actors
 	for(size_t i = 0; i < raw_.actor_size_; ++i)
 	{
@@ -109,6 +113,7 @@ void glutpp::scene::desc::read(char*& data) {
 		
 		actors_.push_back(ad);
 	}
+*/
 }
 size_t glutpp::scene::desc::size() {
 	GLUTPP_DEBUG_0_FUNCTION;

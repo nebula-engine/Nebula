@@ -173,6 +173,30 @@ src/glutpp/actor/actor.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/actor/actor.cpp.s
 .PHONY : src/glutpp/actor/actor.cpp.s
 
+src/glutpp/actor/addr.o: src/glutpp/actor/addr.cpp.o
+.PHONY : src/glutpp/actor/addr.o
+
+# target to build an object file
+src/glutpp/actor/addr.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/actor/addr.cpp.o
+.PHONY : src/glutpp/actor/addr.cpp.o
+
+src/glutpp/actor/addr.i: src/glutpp/actor/addr.cpp.i
+.PHONY : src/glutpp/actor/addr.i
+
+# target to preprocess a source file
+src/glutpp/actor/addr.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/actor/addr.cpp.i
+.PHONY : src/glutpp/actor/addr.cpp.i
+
+src/glutpp/actor/addr.s: src/glutpp/actor/addr.cpp.s
+.PHONY : src/glutpp/actor/addr.s
+
+# target to generate assembly for a file
+src/glutpp/actor/addr.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/actor/addr.cpp.s
+.PHONY : src/glutpp/actor/addr.cpp.s
+
 src/glutpp/actor/desc.o: src/glutpp/actor/desc.cpp.o
 .PHONY : src/glutpp/actor/desc.o
 
@@ -837,6 +861,9 @@ help:
 	@echo "... src/glutpp/actor/actor.o"
 	@echo "... src/glutpp/actor/actor.i"
 	@echo "... src/glutpp/actor/actor.s"
+	@echo "... src/glutpp/actor/addr.o"
+	@echo "... src/glutpp/actor/addr.i"
+	@echo "... src/glutpp/actor/addr.s"
 	@echo "... src/glutpp/actor/desc.o"
 	@echo "... src/glutpp/actor/desc.i"
 	@echo "... src/glutpp/actor/desc.s"

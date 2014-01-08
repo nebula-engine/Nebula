@@ -9,10 +9,16 @@
 /home/charles/usr/include/glutpp/window/desc.h
 /home/charles/usr/include/glutpp/scene/desc.h
 /home/charles/usr/include/glutpp/scene/scene.h
+/home/charles/usr/include/glutpp/actor/addr.h
 /home/charles/usr/include/glutpp/actor/desc.h
 /home/charles/usr/include/glutpp/actor/actor.h
+/home/charles/usr/include/glutpp/actor/actor_base.h
 /home/charles/usr/include/glutpp/shape/shape.h
 /home/charles/usr/include/glutpp/shape/desc.h
+/home/charles/usr/include/glutpp/network/type_ext.h
+/home/charles/usr/include/glutpp/network/scene_create.h
+/home/charles/usr/include/glutpp/network/actor_create.h
+/home/charles/usr/include/glutpp/network/actor_update.h
 /home/charles/usr/include/glutpp/glsl/shader.h
 /home/charles/usr/include/glutpp/glsl/program.h
 /home/charles/usr/include/glutpp/glsl/uniform.h

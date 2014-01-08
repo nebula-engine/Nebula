@@ -8,6 +8,8 @@
 #include <math/vec4.h>
 #include <math/color.h>
 
+#include <gal/network/serializeable.h>
+
 namespace glutpp
 {
 	namespace light
@@ -39,12 +41,12 @@ namespace glutpp
 			float			atten_quad_;
 		};
 		class id: public gal::network::serializeable
-{
-public:
-	
-	
-	
-}
+		{
+			public:
+
+
+
+		};
 		class desc
 		{
 			public:

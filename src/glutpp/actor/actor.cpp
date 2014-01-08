@@ -9,6 +9,8 @@
 #include <math/mat44.h>
 #include <math/geo/polyhedron.h>
 
+#include <gal/network/vector.h>
+
 #include <glutpp/window/window.h>
 #include <glutpp/scene/scene.h>
 #include <glutpp/scene/desc.h>
@@ -45,25 +47,31 @@ void	print_vectori(GLushort* v, unsigned int m, unsigned int n) {
 glutpp::actor::actor::actor(
 		glutpp::actor::desc_shared desc,
 		std::shared_ptr<glutpp::scene::scene> scene,
-		std::shared_ptr<glutpp::actor::actor> actor):
-	desc_(desc),
-	scene_(scene),
-	actor_(actor)
+		std::shared_ptr<glutpp::actor::actor> actor)
 {	
 	printf("%s\n",__PRETTY_FUNCTION__);
 
+	desc_ = desc;
+	scene_ = scene;
+	actor_ = actor;
+
+
 	assert(scene);
 }
+
 void glutpp::actor::actor::i(int ni) {
-	desc_->raw_.i_ = ni;
+	i_ = ni;
 }
-unsigned int glutpp::actor::actor::f() {
+
+
+
+unsigned int glutpp::actor::actor_base::f() {
 	return desc_->raw_.flag_;
 }
-void glutpp::actor::actor::f(unsigned int flag) {
+void glutpp::actor::actor_base::f(unsigned int flag) {
 	desc_->raw_.flag_ = flag;
 }
-void glutpp::actor::actor::cleanup() {
+void glutpp::actor::actor_base::cleanup() {
 
 	//printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -106,7 +114,7 @@ void glutpp::actor::actor::cleanup() {
 	}
 
 }
-void glutpp::actor::actor::release() {
+void glutpp::actor::actor_base::release() {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -120,7 +128,7 @@ void glutpp::actor::actor::release() {
 
 	actors_.clear();
 }
-math::mat44 glutpp::actor::actor::get_pose() {
+math::mat44 glutpp::actor::actor_base::get_pose() {
 
 	math::mat44 m(desc_->raw_.pose_.to_math());
 
@@ -131,7 +139,7 @@ math::mat44 glutpp::actor::actor::get_pose() {
 
 	return m;
 }
-void glutpp::actor::actor::load_lights(int& i) {
+void glutpp::actor::actor_base::load_lights(int& i) {
 
 	//printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -148,12 +156,12 @@ void glutpp::actor::actor::load_lights(int& i) {
 	}
 
 }
-std::shared_ptr<glutpp::scene::scene>	glutpp::actor::actor::get_scene() {
+std::shared_ptr<glutpp::scene::scene>	glutpp::actor::actor_base::get_scene() {
 	assert(!scene_.expired());
 
 	return scene_.lock();
 }
-void glutpp::actor::actor::draw(glutpp::window::window_shared window) {
+void glutpp::actor::actor_base::draw(glutpp::window::window_shared window) {
 	
 	GLUTPP_DEBUG_1_FUNCTION;
 	
@@ -164,7 +172,7 @@ void glutpp::actor::actor::draw(glutpp::window::window_shared window) {
 		it->second->draw(window, model);
 	}
 }
-std::shared_ptr<gal::network::message> glutpp::actor::actor::serialize() {
+std::shared_ptr<gal::network::message> glutpp::actor::actor_base::serialize() {
 
 	auto scene = get_scene();
 
@@ -182,8 +190,11 @@ std::shared_ptr<gal::network::message> glutpp::actor::actor::serialize() {
 	head += sizeof(int);
 	
 	// scene i
-	memcpy(head, &scene->desc_->raw_.i_, sizeof(int));
-	head += sizeof(int);
+	//memcpy(head, &scene->desc_->raw_.i_, sizeof(int));
+	
+	
+	//memcpy(head, &scene->i(), sizeof(int));
+	//head += sizeof(int);
 	
 	// actor desc
 	desc_->write(head);
@@ -192,7 +203,7 @@ std::shared_ptr<gal::network::message> glutpp::actor::actor::serialize() {
 	
 	return msg;
 }
-glutpp::actor::desc_shared glutpp::actor::actor::desc_generate() {
+glutpp::actor::desc_shared glutpp::actor::actor_base::desc_generate() {
 	
 	glutpp::actor::desc_shared desc(new glutpp::actor::desc);
 	
@@ -216,20 +227,21 @@ glutpp::actor::desc_shared glutpp::actor::actor::desc_generate() {
 	
         return desc;
 }
-void glutpp::actor::actor::send_actor_update(std::shared_ptr<glutpp::network::actor_update> au) {
+void glutpp::actor::actor_base::send_actor_update(
+		std::shared_ptr<gal::network::vector<glutpp::actor::raw>> vec) {
 	
-	assert(au);
+	assert(vec);
 	
 	if(any(glutpp::actor::actor::SHOULD_UPDATE))
 	{
-		au->actors_.vector_.push_back(desc_->raw_);
+		vec->vector_.push_back(desc_->raw_);
 	}
 	
 	for(auto it = actors_.begin(); it != actors_.end(); ++it)
 	{
 		auto actor = it->second;
 		
-		actor->send_actor_update(au);
+		actor->send_actor_update(vec);
 	}
 }
 

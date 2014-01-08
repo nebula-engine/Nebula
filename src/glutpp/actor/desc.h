@@ -41,8 +41,6 @@ namespace glutpp
 				void			plane(tinyxml2::XMLElement*);
 				void			controller(tinyxml2::XMLElement*);
 				
-				int			i_;
-				
 				glutpp::actor::type	type_;
 
 				math::raw::transform	pose_;
@@ -60,10 +58,6 @@ namespace glutpp
 					filter_data	simulation_;
 					filter_data	scene_query_;
 				} filter_data_;
-
-				unsigned int		actor_size_;
-				unsigned int		shape_size_;
-
 		};
 		class desc
 		{

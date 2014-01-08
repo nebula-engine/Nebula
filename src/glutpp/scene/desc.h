@@ -16,27 +16,35 @@ namespace glutpp
 				void			load(tinyxml2::XMLElement*);
 			
 
-				int			i_;
 				unsigned int		flag_;
 				math::raw::vec3		gravity_;
-				size_t			actor_size_;
+				//size_t			actor_size_;
 		};
-
-		class desc
+		struct id: public gal::network::serializeable
+		{
+			void	write(gal::network::message_shared);
+			void	read(gal::network::message_shared);
+			size_t	size();
+			
+			int	i_;
+		};
+		class desc: public id
 		{
 			public:
 				typedef gal::network::message::shared_t msg_t;
 				
 				desc();
+				
 				void		load(char const *);
 				void		load(tinyxml2::XMLElement*);
-				
-				msg_t		serialize();
+			
+	
+				void		write(msg_t);
+				void		read(msg_t);
 				size_t		size();
-				void		read(char*&);
-		
-				raw		raw_;
 				
+				raw		raw_;
+
 				std::vector<glutpp::actor::desc_shared>		actors_;
 		};
 	}

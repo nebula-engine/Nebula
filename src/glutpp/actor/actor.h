@@ -6,6 +6,7 @@
 
 #include <gal/flag.h>
 #include <gal/network/message.h>
+#include <gal/network/vector.h>
 
 #include <math/vec4.h>
 #include <math/vec3.h>
@@ -14,6 +15,9 @@
 #include <math/transform.h>
 
 #include <glutpp/config.h>
+#include <glutpp/actor/addr.h>
+#include <glutpp/actor/actor_base.h>
+
 #include <glutpp/texture.h>
 #include <glutpp/material.h>
 #include <glutpp/shape/shape.h>
@@ -23,53 +27,22 @@ namespace glutpp
 {
 	namespace actor
 	{
-		class actor: public std::enable_shared_from_this<actor>, public gal::flag<unsigned int>
+		class actor:
+			virtual public actor_base
 		{
 			public:
-				typedef std::shared_ptr<gal::network::message> msg_type;
-				
-				enum flag
-				{
-					SHOULD_DELETE = 1 << 0,
-					SHOULD_UPDATE = 1 << 1,
-				};
-
 				actor(
 						glutpp::actor::desc_shared,
 						std::shared_ptr<glutpp::scene::scene>,
 						glutpp::actor::actor_shared = glutpp::actor::actor_shared());
-				void			i(int);
-				math::mat44		get_pose();
+
+				int		i();
+				void		i(int);
 				
-				std::shared_ptr<scene::scene>	get_scene();
+				void		write_addr(gal::network::message_shared);
 
-				void			draw(glutpp::window::window_shared);
-				void			load_lights(int&);
+				int		i_;
 
-				virtual void		cleanup();
-				virtual void		release();
-
-				
-				msg_type			serialize();
-				glutpp::actor::desc_shared	desc_generate();
-				
-				//virtual void	render_reflection();
-
-				void				send_actor_update(
-						std::shared_ptr<glutpp::network::actor_update>);
-
-			public:
-
-				glutpp::actor::desc_shared	desc_;
-
-				std::weak_ptr<scene::scene>	scene_;
-				std::weak_ptr<actor>		actor_;
-			protected:
-				glutpp::shape::shape_map	shapes_;
-				glutpp::actor::actor_map	actors_;
-			private:
-				unsigned int			f();
-				void				f(unsigned int);
 		};
 	}
 }

@@ -13,6 +13,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/glutpp.dir/src/glutpp/scene/scene.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/actor/desc.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/actor/actor.cpp.o"
+  "CMakeFiles/glutpp.dir/src/glutpp/actor/addr.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/shape/desc.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/shape/shape.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/light/desc.cpp.o"
