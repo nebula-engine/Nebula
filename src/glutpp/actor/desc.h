@@ -24,7 +24,6 @@ namespace glutpp
 			RIGID_STATIC,
 			PLANE,
 			CONTROLLER,
-			LIGHT,
 			EMPTY
 		};
 		struct filter_data
@@ -42,7 +41,7 @@ namespace glutpp
 				void			controller(tinyxml2::XMLElement*);
 				
 				glutpp::actor::type	type_;
-
+				
 				math::raw::transform	pose_;
 				
 				math::raw::vec3		n_;
@@ -50,7 +49,7 @@ namespace glutpp
 				
 				math::raw::vec3		velocity_;
 				float			density_;
-
+				
 				unsigned int		flag_;
 	
 				struct
@@ -66,15 +65,15 @@ namespace glutpp
 				void			add_shape(glutpp::shape::desc);
 				
 				size_t			size();
-				void			write(char*&);
-				void			read(char*&);
+				void			write(gal::network::message_shared);
+				void			read(gal::network::message_shared);
 				
 			public:
 				glutpp::actor::raw	raw_;
 				
 				
-				std::vector<glutpp::actor::desc_shared>	actors_;
-				std::vector<glutpp::shape::desc_shared>	shapes_;
+				gal::network::vector_ext<glutpp::actor::desc>	actors_;
+				gal::network::vector_ext<glutpp::shape::desc>	shapes_;
 
 		};
 	}
