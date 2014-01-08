@@ -20,6 +20,8 @@ namespace glutpp
 
 			int			i_;
 			unsigned int		flag_;
+			
+			// position
 			math::raw::vec4		pos_;
 
 			// colors
@@ -36,6 +38,13 @@ namespace glutpp
 			float			atten_linear_;
 			float			atten_quad_;
 		};
+		class id: public gal::network::serializeable
+{
+public:
+	
+	
+	
+}
 		class desc
 		{
 			public:
