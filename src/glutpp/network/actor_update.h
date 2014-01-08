@@ -11,17 +11,11 @@ namespace glutpp
 {
 	namespace network
 	{
-		class actor_update: public gal::network::serializeable
+		class actor_update:
+			public gal::network::message_ext<gal::network::vector<glutpp::actor::raw>,glutpp::scene::id>
 		{
-			public:
+			public:	
 				
-				virtual void    write(gal::network::message_shared);
-                                virtual void    read(gal::network::message_shared);
-                                virtual size_t  size();
-				
-				
-				int						scene_i_;
-				gal::network::vector<glutpp::actor::raw>	actors_;
 		};
 	}
 }
