@@ -26,7 +26,7 @@ namespace glutpp
 			void	read(gal::network::message_shared);
 			size_t	size();
 			
-			int	i_;
+			std::vector<int>	vec_;
 		};
 		class desc: public id
 		{
