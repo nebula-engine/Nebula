@@ -11,7 +11,7 @@ namespace neb
 		{
 			public:
 				Rigid_Dynamic(
-						glutpp::actor::desc_shared,
+						glutpp::actor::raw_shared,
 						std::shared_ptr<neb::scene::scene>,
 						neb::actor::Base_shared = neb::actor::Base_shared());
 				

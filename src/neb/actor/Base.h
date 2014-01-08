@@ -32,7 +32,11 @@ namespace neb
 				virtual void			init();
 				virtual void			release();
 				
-				void				create_actor(glutpp::actor::desc_shared);
+				void				create_actor(glutpp::actor::raw_shared);
+				void				create_actor_local(glutpp::actor::raw_shared);
+				void				create_actor_remote(glutpp::actor::addr_shared, glutpp::actor::raw_shared);
+
+
 				void				create_shapes();
 				void				create_children();
 				

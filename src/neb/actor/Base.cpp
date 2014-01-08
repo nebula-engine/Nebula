@@ -44,8 +44,10 @@ void neb::actor::Base::create_children() {
 	{
 		create_actor(*it);
 	}
+	
+	
 }
-void neb::actor::Base::create_actor(glutpp::actor::desc_shared ad) {
+neb::actor::Base_shared neb::actor::Base::create_actor(glutpp::actor::raw_shared raw) {
 	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -58,11 +60,11 @@ void neb::actor::Base::create_actor(glutpp::actor::desc_shared ad) {
 	switch(ad->raw_.type_)
 	{
 		case glutpp::actor::RIGID_DYNAMIC:
-			actor.reset(new neb::actor::Rigid_Dynamic(ad, scene, me));
+			actor.reset(new neb::actor::Rigid_Dynamic(raw, scene, me));
 			// = Create_Rigid_Dynamic(ad);
 			break;
 		case glutpp::actor::RIGID_STATIC:
-			actor.reset(new neb::actor::Rigid_Static(ad, scene, me));
+			actor.reset(new neb::actor::Rigid_Static(raw, scene, me));
 			// = Create_Rigid_Static(ad);
 			break;
 		case glutpp::actor::PLANE:
@@ -76,7 +78,7 @@ void neb::actor::Base::create_actor(glutpp::actor::desc_shared ad) {
 			//actor = Create_Controller(ad);
 			break;
 		case glutpp::actor::EMPTY:
-			actor.reset(new neb::actor::empty(ad, scene, me));
+			actor.reset(new neb::actor::empty(raw, scene, me));
 			break;
 		default:
 			abort();
@@ -84,7 +86,19 @@ void neb::actor::Base::create_actor(glutpp::actor::desc_shared ad) {
 	
 	actor->init();
 	
+	return actor;
+}
+neb::actor::Base_shared neb::actor::Base::create_actor_local(glutpp::actor::raw_shared raw) {
+	
+	
 	actors_.push_back(actor);
+	return actor;
+}
+neb::actor::Base_shared neb::actor::Base::create_actor_remote(glutpp::actor::addr_shared addr, glutpp::actor::raw_shared raw) {
+	auto actor = create_actor(raw);
+	
+	abort();
+	return actor;
 }
 
 std::shared_ptr<neb::app> neb::actor::Base::get_app() {

@@ -17,6 +17,8 @@
 #include <neb/actor/empty.h>
 #include <neb/shape.h>
 #include <neb/active_transform.h>
+
+#include <glutpp/network/type_ext.h>
 #include <glutpp/network/actor_update.h>
 
 neb::scene::scene::scene(neb::app_shared app, glutpp::scene::desc_shared desc):
@@ -50,27 +52,25 @@ void neb::scene::scene::create_actors() {
 
 	for(auto it = desc_->actors_.begin(); it != desc_->actors_.end(); ++it)
 	{
-		create_actor(*it);
+		//create_actor(*it);
 	}
 }
-neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::desc_shared ad) {
-
+neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::raw_shared raw) {
 	NEBULA_DEBUG_0_FUNCTION;
-
+	
 	auto me = std::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
 
-	auto app = get_app();
 
 	std::shared_ptr<neb::actor::Base> actor;
 
-	switch(ad->raw_.type_)
+	switch(raw->type_)
 	{
 		case glutpp::actor::RIGID_DYNAMIC:
-			actor.reset(new neb::actor::Rigid_Dynamic(ad, me));
+			actor.reset(new neb::actor::Rigid_Dynamic(raw, me));
 			// = Create_Rigid_Dynamic(ad);
 			break;
 		case glutpp::actor::RIGID_STATIC:
-			actor.reset(new neb::actor::Rigid_Static(ad, me));
+			actor.reset(new neb::actor::Rigid_Static(raw, me));
 			// = Create_Rigid_Static(ad);
 			break;
 		case glutpp::actor::PLANE:
@@ -84,7 +84,7 @@ neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::desc_shar
 			//actor = Create_Controller(ad);
 			break;
 		case glutpp::actor::EMPTY:
-			actor.reset(new neb::actor::empty(ad, me));
+			actor.reset(new neb::actor::empty(raw, me));
 			break;
 		default:
 			abort();
@@ -92,22 +92,26 @@ neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::desc_shar
 
 	actor->init();
 
-	
-
-	// networking
-	switch(user_type_)
-	{
-		case neb::scene::scene::LOCAL:
-			actors_.push_back(actor);
-
-			app->server_->write(actor->serialize());
-			break;
-		case neb::scene::scene::REMOTE:
-			actors_[ad->raw_.i_] = actor;
-			break;
-	}
-
 	return actor;	
+}
+neb::actor::Base_shared neb::scene::scene::create_actor_local(glutpp::actor::raw_shared raw) {
+	auto actor = create_actor(raw);
+	auto app = get_app();
+
+	actors_.push_back(actor);
+	
+	app->server_->write(actor->serialize());
+	
+	return actor;	
+}
+neb::actor::Base_shared neb::scene::scene::create_actor_remote(glutpp::actor::addr_shared addr, glutpp::actor::raw_shared raw) {
+	auto actor = create_actor(raw);
+	
+	abort();
+	
+	//actors_[raw_.i_] = actor;
+	
+	return actor;
 }
 /*
 
@@ -365,9 +369,6 @@ void neb::scene::scene::step_local(double time) {
 	//physx::PxTransform pose;
 	math::transform pose;
 
-	neb::active_transform::set ats;
-	ats.raw_.name_scene_ = desc_->raw_.i_;
-
 	// update each render object with the new transform
 	for(physx::PxU32 i = 0; i < nb_active_transforms; ++i)
 	{
@@ -381,27 +382,20 @@ void neb::scene::scene::step_local(double time) {
 
 		assert(actor);
 
-		//neb_ASSERT( act );
-		if(actor != NULL)
+		pose = active_transforms[i].actor2World;
+		actor->set_pose(pose);
+
+		physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
+		if(pxrigidbody != NULL)
 		{
-			pose = active_transforms[i].actor2World;
-			actor->set_pose(pose);
+			neb::actor::Rigid_Body* rigidbody =
+				dynamic_cast<neb::actor::Rigid_Body*>(actor);
 
-			physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
-			if(pxrigidbody != NULL)
-			{
-				neb::actor::Rigid_Body* rigidbody =
-					dynamic_cast<neb::actor::Rigid_Body*>(actor);
-
-				rigidbody->velocity_ = pxrigidbody->getLinearVelocity();
-			}
+			rigidbody->velocity_ = pxrigidbody->getLinearVelocity();
 		}
 
-		ats.push_back(actor);
-		//printf("transform.p.y=%16f\n",activeTransforms[i].actor2World.p.y);
+		actor->set(glutpp::actor::actor::flag::SHOULD_UPDATE);
 	}
-
-	app->send(ats.serialize());
 
 	// vehicle
 	//physx::PxVec3 g(0,-0.25,0);
@@ -412,15 +406,28 @@ void neb::scene::scene::step_local(double time) {
 }
 void neb::scene::scene::send_actor_update() {
 	
-	std::shared_ptr<glutpp::network::actor_update> au(new glutpp::network::actor_update);
+	// msg
+	std::shared_ptr<gal::network::message> msg(new gal::network::message);
 	
+	std::shared_ptr<glutpp::network::actor_update> actor_update(new glutpp::network::actor_update(msg));
+	
+	// type
+	int type = glutpp::network::type::ACTOR_UPDATE;
+	
+	msg->write(&type, sizeof(int));
+	
+	// actor raw
+	std::shared_ptr<glutpp::actor::addr_raw_vec> vec(new glutpp::actor::addr_raw_vec);
+
 	for(auto it = actors_.begin(); it != actors_.end(); ++it)
 	{
 		auto actor = it->second;
 		
-		actor->send_actor_update(au);
+		actor->send_actor_update(vec);
 	}
 	
+	
+	actor_update->write_expand(vec);
 	
 }
 void neb::scene::scene::step_remote(double time){
@@ -452,14 +459,14 @@ glutpp::scene::desc_shared neb::scene::scene::desc_generate() {
 
 	return desc;
 }
-gal::network::message::shared_t neb::scene::scene::serialize() {
+/*gal::network::message::shared_t neb::scene::scene::serialize() {
 
 	NEBULA_DEBUG_0_FUNCTION;
-
+	
 	auto desc = desc_generate();
-
+	
 	return desc->serialize();
-}
+}*/
 int	neb::scene::scene::recv(neb::packet::packet p) {
 
 

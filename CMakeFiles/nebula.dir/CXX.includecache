@@ -43,6 +43,8 @@ neb/shape.h
 -
 neb/active_transform.h
 -
+glutpp/network/type_ext.h
+-
 glutpp/network/actor_update.h
 -
 

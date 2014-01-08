@@ -1,7 +1,7 @@
 #include <neb/actor/Actor.h>
 #include <neb/active_transform.h>
 
-
+/*
 void neb::active_transform::node::write(char*& head) {
 	
 	memcpy(head, &raw_, sizeof(neb::active_transform::node_raw));
@@ -99,4 +99,5 @@ size_t neb::active_transform::set::size() {
 
 	return s;
 }
+*/
 

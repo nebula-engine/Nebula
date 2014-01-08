@@ -47,7 +47,7 @@ void neb::app::load_scene_remote(glutpp::scene::desc_shared sd) {
 	scene->user_type_ = neb::scene::scene::REMOTE;
 	scene->init();
 
-	int i = scene->desc_->raw_.i_;
+	int i = scene->i();//desc_->raw_.i_;
 
 	assert(i != -1);
 	

@@ -53,7 +53,10 @@ namespace neb
 				
 				
 				void			create_actors();
-				base_t			create_actor(glutpp::actor::desc_shared);
+				base_t			create_actor(glutpp::actor::raw_shared);
+				base_t			create_actor_local(glutpp::actor::raw_shared);
+				base_t			create_actor_remote(glutpp::actor::addr_shared, glutpp::actor::raw_shared);
+				
 				//base_t			create_actor(glutpp::actor::desc*, base_t);
 				
 	/*			rigid_dynamic_t		Create_Rigid_Dynamic(
