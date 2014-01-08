@@ -19,8 +19,10 @@ namespace glutpp
 				
 				
 				
-				glutpp::actor::actor_weak	actor_;
-				std::vector<int>		vec_;
+				glutpp::actor::actor_s		actor_;
+				
+				glutpp::scene::addr		scene_addr_;
+				gal::network::vector<int>	vec_;
 		};
 	}
 }
