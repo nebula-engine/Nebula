@@ -12,16 +12,21 @@ namespace glutpp
 {
 	namespace network
 	{
-		typedef gal::network::message_ext<glutpp::actor::addr_raw_vec> actor_update;
-			
-	/*
-			public gal::network::message_ext<
-			gal::network::vector<glutpp::actor::raw>,
-			glutpp::scene::id>
-		{
-			public:	
-			actor_update(gal::network::message_shared msg): gal::network::message_ext(msg) {}
-		};*/
+		typedef gal::network::message_ext<
+				glutpp::actor::addr_raw_vec
+				> actor_update;
+		
+		typedef gal::network::message_ext<
+				gal::network::vector<glutpp::actor::desc>,
+				glutpp::scene::raw,
+				glutpp::scene::addr
+				> scene_create
+				
+		typedef gal::network::message_ext<
+				glutpp::actor::addr_raw_vec
+				> actor_create;
+				
+		
 	}
 }
 
