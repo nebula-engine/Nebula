@@ -4,6 +4,7 @@
 //#include <neb/scene/scene.h>
 //#include <neb/simulation_callback.h>
 #include <glutpp/actor/desc.h>
+#include <glutpp/actor/actor.h>
 
 void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	
@@ -50,6 +51,14 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 
 	p.print();
 	q.print();	
+
+	// filtering
+	filter_data_.simulation_.word0 = glutpp::filter::type::STATIC;
+	filter_data_.simulation_.word1 = glutpp::filter::RIGID_AGAINST;
+	filter_data_.simulation_.word2 = glutpp::filter::type::STATIC;
+	filter_data_.simulation_.word3 = glutpp::filter::type::PROJECTILE;
+
+	filter_data_.scene_query_.word3 = glutpp::filter::DRIVABLE_SURFACE;
 }
 void glutpp::actor::raw::plane(tinyxml2::XMLElement* element) {
 	
@@ -85,6 +94,7 @@ void glutpp::actor::raw::controller(tinyxml2::XMLElement* element) {
 
 
 void glutpp::actor::desc::load(tinyxml2::XMLElement* element) {
+	GLUTPP_DEBUG_0_FUNCTION;
 	
 	raw_.load(element);
 	
@@ -98,105 +108,71 @@ void glutpp::actor::desc::load(tinyxml2::XMLElement* element) {
 
 		sd->load(element_shape);
 
-		shapes_.push_back(sd);
+		shapes_.vec_.push_back(sd);
 
 		element_shape = element->NextSiblingElement("shape");
 	}
 
-	// filtering
-	raw_.filter_data_.simulation_.word0 = glutpp::filter::type::STATIC;
-	raw_.filter_data_.simulation_.word1 = glutpp::filter::RIGID_AGAINST;
-	raw_.filter_data_.simulation_.word2 = glutpp::filter::type::STATIC;
-	raw_.filter_data_.simulation_.word3 = glutpp::filter::type::PROJECTILE;
-
-
-
-	raw_.filter_data_.scene_query_.word3 = glutpp::filter::DRIVABLE_SURFACE;
-
 }
-void glutpp::actor::desc::read(char*& head) {
+void glutpp::actor::desc::load(glutpp::actor::actor_shared actor) {
+	GLUTPP_DEBUG_0_FUNCTION;
 
-	printf("%s\n",__PRETTY_FUNCTION__);
+	i_ = actor->i_;
+	raw_ = actor->raw_;
 
-	memcpy(&raw_, head, sizeof(glutpp::actor::raw));
-	head += sizeof(glutpp::actor::raw);
-
-	printf("actor_size_ = %i\n", (int)raw_.actor_size_);
-	printf("shape_size_ = %i\n", (int)raw_.shape_size_);
-	
-	// actors
-	for(int i = 0; i < raw_.actor_size_; ++i)
+	// shape
+	for(auto it = actor->shapes_.begin(); it != actor->shapes_.end(); ++it)
 	{
-		glutpp::actor::desc_shared ad(new glutpp::actor::desc);
+		auto shape = it->second;
 
-		ad->read(head);
-
-		actors_.push_back(ad);
+		shapes_.vec_.push_back(shape->desc_generate());
 	}
 
-	// shapes
-	for(int i = 0; i < raw_.shape_size_; ++i)
+	// actor
+	for(auto it = actor->actors_.begin(); it != actor->actors_.end(); ++it)
 	{
-		glutpp::shape::desc_shared sd(new glutpp::shape::desc);
+		auto actor = it->second;
 
-		sd->read(head);
-
-		shapes_.push_back(sd);
+		actors_.vec_.push_back(actor->desc_generate());
 	}
 
 }
-void glutpp::actor::desc::write(char*& head) {
+void glutpp::actor::desc::read(gal::network::message_shared msg) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	size_t len = sizeof(glutpp::actor::raw);
-	
-	raw_.actor_size_ = actors_.size();
-	raw_.shape_size_ = shapes_.size();
+	msg->read(&i_, sizeof(int));
 
-	printf("actor_size_ = %i\n", (int)raw_.actor_size_);
-	printf("shape_size_ = %i\n", (int)raw_.shape_size_);
-	
-	memcpy(head, &raw_, len);
-	head += len;
-	
-	for(auto it = actors_.begin(); it != actors_.end(); ++it)
-	{
-		auto actor = *it;
-		assert(actor);
-		
-		actor->write(head);
-	} 
+	msg->read(&raw_, sizeof(glutpp::actor::raw));
 
-	for(auto it = shapes_.begin(); it != shapes_.end(); ++it)
-	{
-		auto shape = *it;
-		assert(shape);
-		
-		shape->write(head);
-	} 
+	shapes_.read(msg);
+	actors_.read(msg);
+
+	printf("shape_size_ = %i\n", (int)shapes_.vec_.size());
+	printf("actor_size_ = %i\n", (int)actors_.vec_.size());
+}
+void glutpp::actor::desc::write(gal::network::message_shared msg) {
+	GLUTPP_DEBUG_0_FUNCTION;
+
+	msg->write(&i_, sizeof(int));
+
+	msg->write(&raw_, sizeof(glutpp::actor::raw));
+
+	shapes_.write(msg);
+	actors_.write(msg);
+
+	printf("shape_size_ = %i\n", (int)shapes_.vec_.size());
+	printf("actor_size_ = %i\n", (int)actors_.vec_.size());
 }
 size_t glutpp::actor::desc::size() {
-	
-	size_t s = sizeof(glutpp::actor::raw);
-	
-	for(auto it = actors_.begin(); it != actors_.end(); ++it)
-	{
-		auto actor = *it;
-	
-		assert(actor);
+	GLUTPP_DEBUG_0_FUNCTION;
 
-		s += actor->size();
-	}
+	size_t s;
 
-	for(auto it = shapes_.begin(); it != shapes_.end(); ++it)
-	{
-		auto shape = *it;
-
-		assert(shape);
-
-		s += shape->size();
-	}
+	s += sizeof(int);
+	s += sizeof(glutpp::actor::raw);
+	s += shapes_.size();
+	s += actors_.size();
 
 	return s;
 }

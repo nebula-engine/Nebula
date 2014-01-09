@@ -58,6 +58,8 @@ namespace glutpp
 
 				void			write_addr(gal::network::message_shared);
 			public:
+				int					i_;
+
 				glutpp::scene::desc_shared		desc_;
 
 				gal::map<glutpp::actor::actor>		actors_;

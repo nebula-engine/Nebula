@@ -1,29 +1,44 @@
 #include <glutpp/scene/scene.h>
 #include <glutpp/actor/actor.h>
 
-void glutpp::actor::addr::write(gal::network::message_shared msg) {
+void glutpp::actor::addr::load(glutpp::actor::actor_shared actor) {
+	assert(actor);
 	
-	assert(!actor_.expired());
-	
-	auto a = actor_.lock();
-	
-	if(!a->actor_.expired())
+	if(!actor_->actor_.expired())
 	{
-		a->actor_.lock()->write_addr(msg);
+		load(actor_->actor_.lock());
 	}
 	else
 	{
-		a->scene_.lock()->write_addr(msg);
+		load(actor_->scene_.lock());
 	}
 	
-	msg->write(&a->i_, sizeof(int));
+	int i = actor->i();
+	vec_.vec_.push_back(i);
 	
-	int i = -1;
-	msg->write(&a, sizeof(int));
+}
+void glutpp::actor::addr::load(glutpp::scene::scene_shared scene) {
+	assert(scene);
+	
+	int i = scene->i();
+	vec_.vec_.push_back(i);
+	
+}
+
+
+
+void glutpp::actor::addr::write(gal::network::message_shared msg) {
+	
+		
+	
+	
+	
+	
+	msg->write(&actor_->i_, sizeof(int));
 }
 void glutpp::actor::addr::read(gal::network::message_shared msg) {
 
-	vec_.clear();
+	vec_.vec_.clear();
 	
 	int i;
 	while(1)
@@ -32,7 +47,7 @@ void glutpp::actor::addr::read(gal::network::message_shared msg) {
 
 		if(i == -1) break;
 
-		vec_.push_back(i);
+		vec_.vec_.push_back(i);
 	}
 	
 	

@@ -28,7 +28,7 @@ namespace glutpp
 			
 			std::vector<int>	vec_;
 		};
-		class desc: public id
+		class desc
 		{
 			public:
 				desc();
@@ -37,8 +37,8 @@ namespace glutpp
 				void		load(tinyxml2::XMLElement*);
 				
 				
-				void		write(msg_t);
-				void		read(msg_t);
+				void		write(gal::network::message_shared);
+				void		read(gal::network::message_shared);
 				size_t		size();
 				
 				raw		raw_;

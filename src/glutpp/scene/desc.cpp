@@ -19,15 +19,6 @@ void glutpp::scene::raw::load(tinyxml2::XMLElement* element) {
 
 
 
-void glutpp::scene::id::write(gal::network::message_shared msg) {
-	msg->write(&i_, sizeof(int));
-}
-void glutpp::scene::id::read(gal::network::message_shared msg) {
-	msg->read(&i_, sizeof(int));
-}
-size_t glutpp::scene::id::size() {
-	return sizeof(int);
-}
 
 
 
@@ -58,7 +49,7 @@ void glutpp::scene::desc::load(tinyxml2::XMLElement* element) {
 		
 		ad->load(e);
 		
-		actors_.push_back(ad);
+		actors_.vec_.push_back(ad);
 			
 		e = e->NextSiblingElement("actor");
 	}
@@ -120,15 +111,8 @@ size_t glutpp::scene::desc::size() {
 
 	size_t s = sizeof(glutpp::scene::raw);
 	
-	for(auto it = actors_.begin(); it != actors_.end(); ++it)
-	{
-		auto actor = *it;
-		
-		assert(actor);
-		
-		s += actor->size();
-	}
-	
+	s += actors_.size();
+
 	return s;
 }
 

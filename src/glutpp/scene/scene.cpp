@@ -24,10 +24,11 @@ void glutpp::scene::scene::i(int ni) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	//desc_->raw_.i_ = ni;
-	desc_->i_ = ni;
+	//desc_->i_ = ni;
+	i_ = ni;
 }
 int glutpp::scene::scene::i() {
-	return desc_->i_;
+	return i_;
 }
 unsigned int glutpp::scene::scene::f() {
 	return desc_->raw_.flag_;

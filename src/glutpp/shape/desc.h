@@ -37,7 +37,6 @@ namespace glutpp
 
 
 				int			type_;
-				int			i_;
 				unsigned int		flag_;
 				math::raw::transform	pose_;
 				math::raw::vec3		s_;
@@ -57,17 +56,18 @@ namespace glutpp
 			public:
 				desc();
 				void			reset();
+				void			load(glutpp::shape::shape_shared);
 				void			load(tinyxml2::XMLElement*);
-
 				
+				
+				
+				void			write(gal::network::message_shared);
+				void			read(gal::network::message_shared);
 				size_t			size();
-				void			write(char*&);
-				void			read(char*&);
 				
-
-
-				raw						raw_;
-
+				int			i_;
+				raw			raw_;
+				
 				std::vector<glutpp::shape::desc_shared>		shapes_;
 				std::vector<glutpp::light::desc_shared>		lights_;
 		};

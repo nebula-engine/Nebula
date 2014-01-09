@@ -58,12 +58,13 @@ namespace glutpp
 						std::shared_ptr<gal::network::vector<glutpp::actor::raw> >);
 
 			public:
-
 				glutpp::actor::desc_shared	desc_;
+
 
 				std::weak_ptr<scene::scene>	scene_;
 				std::weak_ptr<actor>		actor_;
-			protected:
+
+
 				glutpp::shape::shape_map	shapes_;
 				glutpp::actor::actor_map	actors_;
 			private:

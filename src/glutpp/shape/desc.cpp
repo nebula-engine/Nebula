@@ -163,23 +163,18 @@ size_t glutpp::shape::desc::size() {
 		s += light->size();
 	}
 	
-	
 	return s;
 }
-void glutpp::shape::desc::write(char*& head) {
-	
+void glutpp::shape::desc::write(gal::network::message_shared msg) {
 	GLUTPP_DEBUG_0_FUNCTION;
-
-	size_t len = sizeof(glutpp::shape::raw);
-
-	raw_.shape_size_ = shapes_.size();
-	raw_.light_size_ = lights_.size();
 	
 	printf("shape_size_ = %i\n", (int)raw_.shape_size_);
 	printf("light_size_ = %i\n", (int)raw_.light_size_);
-
-	memcpy(head, &raw_, len);
-	head += len;
+	
+	msg->write(&i_, sizeof(int));
+	msg->write(&raw_, sizeof(glutpp::shape::raw));
+	
+	shapes_.write(msg);
 	
 	for(auto it = shapes_.begin(); it != shapes_.end(); ++it)
 	{

@@ -42,7 +42,7 @@ namespace glutpp
 				void		write_addr(gal::network::message_shared);
 
 				int		i_;
-
+				raw		raw_;
 		};
 	}
 }

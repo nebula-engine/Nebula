@@ -61,6 +61,7 @@ namespace glutpp
 		class desc
 		{
 			public:
+				void			load(glutpp::actor::actor_shared);
 				void			load(tinyxml2::XMLElement*);
 				void			add_shape(glutpp::shape::desc);
 				
@@ -69,6 +70,8 @@ namespace glutpp
 				void			read(gal::network::message_shared);
 				
 			public:
+				int			i_;
+
 				glutpp::actor::raw	raw_;
 				
 				

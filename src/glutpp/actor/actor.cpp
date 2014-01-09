@@ -11,6 +11,7 @@
 
 #include <gal/network/vector.h>
 
+#include <glutpp/network/message.h>
 #include <glutpp/window/window.h>
 #include <glutpp/scene/scene.h>
 #include <glutpp/scene/desc.h>
@@ -172,7 +173,8 @@ void glutpp::actor::actor_base::draw(glutpp::window::window_shared window) {
 		it->second->draw(window, model);
 	}
 }
-std::shared_ptr<gal::network::message> glutpp::actor::actor_base::serialize() {
+/*
+void glutpp::actor::actor_base::serialize() {
 
 	auto scene = get_scene();
 
@@ -203,38 +205,14 @@ std::shared_ptr<gal::network::message> glutpp::actor::actor_base::serialize() {
 	
 	return msg;
 }
-glutpp::actor::desc_shared glutpp::actor::actor_base::desc_generate() {
-	
-	glutpp::actor::desc_shared desc(new glutpp::actor::desc);
-	
-	desc->raw_ = desc_->raw_;
-
-	// actor
-	for(auto it = actors_.begin(); it != actors_.end(); ++it)
-        {
-                auto actor = it->second;
-                
-                desc->actors_.push_back(actor->desc_generate());
-        }
-	
-	// shape
-	for(auto it = shapes_.begin(); it != shapes_.end(); ++it)
-        {
-                auto shape = it->second;
-                
-                desc->shapes_.push_back(shape->desc_generate());
-        }
-	
-        return desc;
-}
-void glutpp::actor::actor_base::send_actor_update(
-		std::shared_ptr<gal::network::vector<glutpp::actor::raw>> vec) {
+*/
+void glutpp::actor::actor_base::send_actor_update(std::shared_ptr<glutpp::network::actor::addr_raw_vec> vec) {
 	
 	assert(vec);
 	
 	if(any(glutpp::actor::actor::SHOULD_UPDATE))
 	{
-		vec->vector_.push_back(desc_->raw_);
+		vec->vec_.push_back(desc_->raw_);
 	}
 	
 	for(auto it = actors_.begin(); it != actors_.end(); ++it)
