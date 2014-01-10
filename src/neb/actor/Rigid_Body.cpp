@@ -8,16 +8,15 @@
 #include <neb/actor/Rigid_Body.h>
 
 neb::actor::Rigid_Body::Rigid_Body(
-		glutpp::actor::desc_shared desc,
 		std::shared_ptr<neb::scene::scene> scene,
 		std::shared_ptr<neb::actor::Base> actor):
-	neb::actor::Rigid_Actor(desc, scene, actor),
+	neb::actor::Rigid_Actor(scene, actor),
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}
-void	neb::actor::Rigid_Body::init() {
+void	neb::actor::Rigid_Body::init(glutpp::actor::desc_shared desc) {
 	
-	neb::actor::Rigid_Actor::init();
+	neb::actor::Rigid_Actor::init(desc);
 
 }
 int	neb::actor::Rigid_Body::key_fun(int key, int scancode, int action, int mods)
@@ -131,7 +130,7 @@ void	neb::actor::Rigid_Body::add_force()
 	math::vec3 f(force_);
 	math::vec3 t(torque_);
 	
-	math::transform pose = desc_->raw_.pose_.to_math();
+	math::transform pose = raw_.pose_.to_math();
 	
 	f = pose.q.rotate(f);
 	t = pose.q.rotate(t);
@@ -166,7 +165,7 @@ glutpp::actor::desc_shared neb::actor::Rigid_Body::get_projectile() {
 	
 	desc->raw_.type_ = glutpp::actor::RIGID_DYNAMIC;
 	
-	math::transform pose(desc_->raw_.pose_.to_math());
+	math::transform pose(raw_.pose_.to_math());
 	
 	math::vec3 velocity(0.0, 0.0, -10.0);
 	velocity = pose.q.rotate(velocity);
@@ -199,7 +198,7 @@ glutpp::actor::desc_shared neb::actor::Rigid_Body::get_projectile() {
 	sd->raw_.front_.diffuse_.from_math(math::red);
 	sd->raw_.front_.emission_.from_math(math::black);
 
-	desc->shapes_.push_back(sd);
+	desc->shapes_.vec_.push_back(std::make_tuple(sd));
 
 	// light
 	glutpp::light::desc_shared ld(new glutpp::light::desc);
@@ -208,7 +207,7 @@ glutpp::actor::desc_shared neb::actor::Rigid_Body::get_projectile() {
 	ld->raw_.ambient_.from_math(math::black);
 	ld->raw_.atten_linear_ = 2.0;
 
-	sd->lights_.push_back(ld);
+	sd->lights_.vec_.push_back(std::make_tuple(ld));
 
 	//scene->create_light(ld, actor);
 

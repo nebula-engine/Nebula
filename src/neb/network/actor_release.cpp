@@ -1,7 +1,7 @@
 #include <glutpp/config.h>
 
 #include <neb/network/actor_release.h>
-
+/*
 neb::packet::actor_release::actor_release(int scene_i):
 	scene_i_(scene_i)
 {
@@ -68,5 +68,5 @@ size_t neb::packet::actor_release::size() {
 	return len;
 }
 
-
+*/
 

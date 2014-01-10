@@ -23,13 +23,13 @@ void	neb::simulation_callback::onContact(
 		
 		if(cp.events & physx::PxPairFlag::eNOTIFY_TOUCH_FOUND)
 		{
-			if(actor0->desc_->raw_.filter_data_.simulation_.word2 & glutpp::filter::type::PROJECTILE)
+			if(actor0->raw_.filter_data_.simulation_.word2 & glutpp::filter::type::PROJECTILE)
 			{
 				//printf("delete actor\n");
 				actor0->set(glutpp::actor::actor::flag::SHOULD_DELETE);
 			}
 			
-			if(actor1->desc_->raw_.filter_data_.simulation_.word2 & glutpp::filter::type::PROJECTILE)
+			if(actor1->raw_.filter_data_.simulation_.word2 & glutpp::filter::type::PROJECTILE)
 			{
 				//printf("delete actor\n");
 				actor1->set(glutpp::actor::actor::flag::SHOULD_DELETE);

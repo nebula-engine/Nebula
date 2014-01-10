@@ -13,13 +13,12 @@ namespace neb
 			public neb::actor::Base
 		{
 			public:
-				Controller(
-						glutpp::actor::desc_shared,
-						std::shared_ptr<neb::scene::scene>);
+				Controller(std::shared_ptr<neb::scene::scene>);
+				
 				virtual void		release();
 
 				virtual void		step(float);
-				virtual void		init();
+				virtual void		init(glutpp::actor::desc_shared);
 				virtual void		add_force();
 
 

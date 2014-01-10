@@ -7,15 +7,15 @@
 #include <neb/scene/scene.h>
 #include <neb/shape.h>
 
-neb::shape::shape(glutpp::actor::actor_shared actor, glutpp::shape::desc_shared desc):
-	glutpp::shape::shape(actor, desc)
+neb::shape::shape(glutpp::actor::actor_shared actor):
+	glutpp::shape::shape(actor)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 }
-void neb::shape::init() {
+void neb::shape::init(glutpp::shape::desc_shared desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 	
-	glutpp::shape::shape::init();
+	glutpp::shape::shape::init(desc);
 	
 	create_physics();
 }
@@ -42,9 +42,9 @@ physx::PxGeometry* neb::shape::to_geo()
 
 	physx::PxGeometry* geo = NULL;
 
-	math::vec3 s = desc_->raw_.s_.to_math();
+	math::vec3 s = raw_.s_.to_math();
 
-	switch(desc_->raw_.type_)
+	switch(raw_.type_)
 	{
 		case glutpp::shape::type::BOX:
 			geo = new physx::PxBoxGeometry(s/2.0);

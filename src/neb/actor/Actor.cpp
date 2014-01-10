@@ -8,25 +8,19 @@
 #include <neb/actor/Actor.h>
 
 neb::actor::Actor::Actor(
-		glutpp::actor::desc_shared desc,
 		std::shared_ptr<neb::scene::scene> scene,
 		std::shared_ptr<neb::actor::Base> actor):
-	neb::actor::Base(desc, scene, actor),
+	neb::actor::Base(scene, actor),
 	px_actor_(NULL)
 {}
-void neb::actor::Actor::init() {
-	
-	neb::actor::Base::init();
+void neb::actor::Actor::init(glutpp::actor::desc_shared desc) {
+	neb::actor::Base::init(desc);
 }
-void	neb::actor::Actor::set_pose(math::transform pose)
-{
+void	neb::actor::Actor::set_pose(math::transform pose) {
 	neb::actor::Base::set_pose(pose);
 }
-int	neb::actor::Actor::fire()
-{
-	neb::actor::Base::fire();
-
-	return 0;
+int	neb::actor::Actor::fire() {
+	return neb::actor::Base::fire();
 }
 void neb::actor::Actor::step_remote(double)
 {

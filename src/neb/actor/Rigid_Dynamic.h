@@ -11,15 +11,14 @@ namespace neb
 		{
 			public:
 				Rigid_Dynamic(
-						glutpp::actor::raw_shared,
-						std::shared_ptr<neb::scene::scene>,
+						neb::scene::scene_shared,
 						neb::actor::Base_shared = neb::actor::Base_shared());
 				
-				virtual void		init();
+				virtual void		init(glutpp::actor::desc_shared);
 
 
-				virtual void			create_physics();
-				virtual void			init_physics();
+				virtual void		create_physics();
+				virtual void		init_physics();
 		};
 	}
 }

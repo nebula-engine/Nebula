@@ -523,12 +523,12 @@ std::shared_ptr<neb::actor::vehicle>	neb::vehicle_manager::create_vehicle(
 	
 	std::shared_ptr<neb::actor::vehicle> vehicle;//(new neb::actor::vehicle);
 	
-	vehicle->desc_ = desc;
+	//vehicle->desc_ = desc;
 	
 	vehicle->px_actor_ = vehActor;
 	vehicle->px_vehicle_drive_ = car;
 	
-	vehicle->create_shapes();
+	vehicle->create_shapes(desc);
 	
 	
 	vehActor->userData = vehicle.get();

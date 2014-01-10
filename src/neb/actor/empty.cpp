@@ -2,18 +2,17 @@
 #include <neb/actor/empty.h>
 
 neb::actor::empty::empty(
-		glutpp::actor::desc_shared desc,
 		std::shared_ptr<neb::scene::scene> scene,
 		std::shared_ptr<neb::actor::Base> actor):
-	neb::actor::Base(desc, scene, actor)
+	neb::actor::Base(scene, actor)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 }
-void neb::actor::empty::init() {
+void neb::actor::empty::init(glutpp::actor::desc_shared desc) {
 	
 	NEBULA_DEBUG_0_FUNCTION;
 	
-	neb::actor::Base::init();
+	neb::actor::Base::init(desc);
 }
 void neb::actor::empty::create_physics(std::shared_ptr<neb::shape> shape) {
 	

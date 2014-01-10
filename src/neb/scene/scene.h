@@ -46,58 +46,64 @@ namespace neb
 					REMOTE
 				};
 
-				scene(neb::app_shared, glutpp::scene::desc_shared);
-				void			init();
+				scene(neb::app_shared);
+				void			init(glutpp::scene::desc_shared);
 				void			create_physics();
 				app_t			get_app();
 				
+
+				void			create_actors(glutpp::scene::desc_shared);
 				
-				void			create_actors();
-				base_t			create_actor(glutpp::actor::raw_shared);
-				base_t			create_actor_local(glutpp::actor::raw_shared);
-				base_t			create_actor_remote(glutpp::actor::addr_shared, glutpp::actor::raw_shared);
+				base_t			create_actor(
+						glutpp::actor::desc_shared);
 				
+				base_t			create_actor_local(
+						glutpp::actor::desc_shared);
+
+				base_t			create_actor_remote(
+						glutpp::actor::addr_shared,
+						glutpp::actor::desc_shared);
+
 				//base_t			create_actor(glutpp::actor::desc*, base_t);
-				
-	/*			rigid_dynamic_t		Create_Rigid_Dynamic(
-						neb::actor::desc*,
-						base_t = base_t());
 
-				rigid_static_t		Create_Rigid_Static(
-						neb::actor::desc*,
-						base_t);
-*/
-/*				rigid_static_t		Create_Rigid_Static_Plane(
-						glutpp::actor::desc*,
-						base_t);
+				/*			rigid_dynamic_t		Create_Rigid_Dynamic(
+							neb::actor::desc*,
+							base_t = base_t());
 
-				controller_t		Create_Controller(glutpp::actor::desc*);
-				vehicle_t		create_vehicle();
-*/
+							rigid_static_t		Create_Rigid_Static(
+							neb::actor::desc*,
+							base_t);
+				 */
+				/*				rigid_static_t		Create_Rigid_Static_Plane(
+								glutpp::actor::desc*,
+								base_t);
+
+								controller_t		Create_Controller(glutpp::actor::desc*);
+								vehicle_t		create_vehicle();
+				 */
 
 
 				void					draw();
-				
+
 				void					step(double);
 				void					step_local(double);
 				void					step_remote(double);
-				
-				
+
+
 				// networking
-				gal::network::message::shared_t		serialize();
 				void					send_actor_update();
-				
+
 				int					recv(neb::packet::packet);
-				
+
 				void					read(neb::active_transform::set*);
-				
+
 				glutpp::scene::desc_shared		desc_generate();
 			public:
 				neb::app_weak				app_;
-			
-				
+
+
 				int					user_type_;
-				
+
 				physx::PxSimulationFilterShader		px_filter_shader_;
 
 				neb::simulation_callback*		simulation_callback_;
@@ -105,7 +111,7 @@ namespace neb
 				physx::PxScene*				px_scene_;
 
 				double					last_;
-				
+
 				neb::vehicle_manager			vehicle_manager_;
 		};
 	}

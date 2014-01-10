@@ -5,6 +5,8 @@
 #include <glutpp/window/window.h>
 #include <glutpp/scene/desc.h>
 
+#include <glutpp/network/message.h>
+
 #include <neb/config.h>
 #include <neb/app.h>
 #include <neb/physics.h>
@@ -32,21 +34,21 @@ glutpp::window::window_shared neb::app::create_window(int w, int h, int x, int y
 void neb::app::load_scene_local(glutpp::scene::desc_shared sd) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	neb::scene::scene_shared scene(new neb::scene::scene(shared_from_this(), sd));
-
+	neb::scene::scene_shared scene(new neb::scene::scene(shared_from_this()));
+	
+	scene->init(sd);
 	scene->user_type_ = neb::scene::scene::LOCAL;
-	scene->init();
-
+	
 	scenes_.push_back(scene);
 }
 void neb::app::load_scene_remote(glutpp::scene::desc_shared sd) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	neb::scene::scene_shared scene(new neb::scene::scene(shared_from_this(), sd));
-
+	neb::scene::scene_shared scene(new neb::scene::scene(shared_from_this()));
+	
+	scene->init(sd);
 	scene->user_type_ = neb::scene::scene::REMOTE;
-	scene->init();
-
+	
 	int i = scene->i();//desc_->raw_.i_;
 
 	assert(i != -1);
@@ -167,15 +169,21 @@ int neb::app::transmit_scenes(std::shared_ptr<neb::network::communicating> c) {
 
 	assert(c);
 
-	gal::network::message::shared_t msg;
-
-	for(auto it = scenes_.begin(); it != scenes_.end(); ++it)
-	{
+	int type = glutpp::network::type::SCENE_CREATE;
+	
+	for(auto it = scenes_.begin(); it != scenes_.end(); ++it) {
 		auto s = it->second;
 		assert(s);
-
-		msg = s->serialize();
-
+		
+		gal::network::message_shared msg(new gal::network::message);
+		
+		msg->write(&type, sizeof(int));
+		
+		glutpp::network::scene::create scene_create;
+		
+		scene_create.load(s);
+		scene_create.write(msg);
+		
 		c->write(msg);
 	}
 

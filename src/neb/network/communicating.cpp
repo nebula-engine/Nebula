@@ -26,7 +26,7 @@ void neb::network::communicating::process(gal::network::message::shared_t messag
 
 	switch(p.type)
 	{
-		case glutpp::network::type::ACTOR_FORCE:
+		default:
 			break;
 	}
 

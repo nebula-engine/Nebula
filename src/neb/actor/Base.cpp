@@ -8,25 +8,23 @@
 #include <neb/actor/empty.h>
 
 neb::actor::Base::Base(
-		glutpp::actor::desc_shared desc,
 		std::shared_ptr<neb::scene::scene> scene,
 		std::shared_ptr<neb::actor::Base> actor):
-	glutpp::actor::actor(desc, scene, actor)
+	glutpp::actor::actor(scene, actor)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 	
-	assert(desc);
 	assert(scene);
 }
 neb::actor::Base::~Base() {
 	NEBULA_DEBUG_0_FUNCTION;
 }
-void neb::actor::Base::init() {
+void neb::actor::Base::init(glutpp::actor::desc_shared desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	create_physics();
-	create_children();
-	create_shapes();
+	create_children(desc);
+	create_shapes(desc);
 	init_physics();
 	
 }
@@ -36,18 +34,18 @@ void neb::actor::Base::release() {
 	
 	conn_.key_fun_.reset();
 }
-void neb::actor::Base::create_children() {
+void neb::actor::Base::create_children(glutpp::actor::desc_shared desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	// create children
-	for(auto it = desc_->actors_.begin(); it != desc_->actors_.end(); ++it)
+	for(auto it = desc->actors_.vec_.begin(); it != desc->actors_.vec_.end(); ++it)
 	{
-		create_actor(*it);
+		create_actor(std::get<0>(*it));
 	}
 	
 	
 }
-neb::actor::Base_shared neb::actor::Base::create_actor(glutpp::actor::raw_shared raw) {
+neb::actor::Base_shared neb::actor::Base::create_actor(glutpp::actor::desc_shared desc) {
 	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -57,14 +55,14 @@ neb::actor::Base_shared neb::actor::Base::create_actor(glutpp::actor::raw_shared
 	
 	neb::actor::Base_shared actor;
 	
-	switch(ad->raw_.type_)
+	switch(desc->raw_.type_)
 	{
 		case glutpp::actor::RIGID_DYNAMIC:
-			actor.reset(new neb::actor::Rigid_Dynamic(raw, scene, me));
+			actor.reset(new neb::actor::Rigid_Dynamic(scene, me));
 			// = Create_Rigid_Dynamic(ad);
 			break;
 		case glutpp::actor::RIGID_STATIC:
-			actor.reset(new neb::actor::Rigid_Static(raw, scene, me));
+			actor.reset(new neb::actor::Rigid_Static(scene, me));
 			// = Create_Rigid_Static(ad);
 			break;
 		case glutpp::actor::PLANE:
@@ -78,25 +76,25 @@ neb::actor::Base_shared neb::actor::Base::create_actor(glutpp::actor::raw_shared
 			//actor = Create_Controller(ad);
 			break;
 		case glutpp::actor::EMPTY:
-			actor.reset(new neb::actor::empty(raw, scene, me));
+			actor.reset(new neb::actor::empty(scene, me));
 			break;
 		default:
 			abort();
 	}
 	
-	actor->init();
+	actor->init(desc);
 	
 	return actor;
 }
-neb::actor::Base_shared neb::actor::Base::create_actor_local(glutpp::actor::raw_shared raw) {
-	
-	
+neb::actor::Base_shared neb::actor::Base::create_actor_local(glutpp::actor::desc_shared desc) {
+	auto actor = create_actor(desc);
 	actors_.push_back(actor);
 	return actor;
 }
-neb::actor::Base_shared neb::actor::Base::create_actor_remote(glutpp::actor::addr_shared addr, glutpp::actor::raw_shared raw) {
-	auto actor = create_actor(raw);
-	
+neb::actor::Base_shared neb::actor::Base::create_actor_remote(
+		glutpp::actor::addr_shared addr,
+		glutpp::actor::desc_shared desc) {
+	auto actor = create_actor(desc);
 	abort();
 	return actor;
 }
@@ -119,7 +117,7 @@ std::shared_ptr<neb::scene::scene> neb::actor::Base::get_scene() {
 }
 void	neb::actor::Base::set_pose(math::transform pose) {
 	
-	desc_->raw_.pose_.from_math(pose);
+	raw_.pose_.from_math(pose);
 }
 int	neb::actor::Base::fire() {
 
@@ -151,27 +149,25 @@ glutpp::actor::desc_shared neb::actor::Base::get_desc() {
 	
 	glutpp::actor::desc_shared desc(new glutpp::actor::desc);
 	
-	desc->raw_ = desc_->raw_;
+	desc->raw_ = raw_;
 	
 	return desc;
 }
-void neb::actor::Base::create_shapes()
+void neb::actor::Base::create_shapes(glutpp::actor::desc_shared desc)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	auto me = std::dynamic_pointer_cast<neb::actor::Base>(shared_from_this());
 	
-	assert(desc_);
-
 	std::shared_ptr<neb::shape> shape;
 
-	for(auto it = desc_->shapes_.begin(); it != desc_->shapes_.end(); ++it)
+	for(auto it = desc->shapes_.vec_.begin(); it != desc->shapes_.vec_.end(); ++it)
 	{
-		glutpp::shape::desc_shared sd = *it;
+		glutpp::shape::desc_shared sd = std::get<0>(*it);
 		
-		shape.reset(new neb::shape(me, sd));
+		shape.reset(new neb::shape(me));
 		
-		shape->init();
+		shape->init(sd);
 		
 		shapes_.push_back(shape);
 	}

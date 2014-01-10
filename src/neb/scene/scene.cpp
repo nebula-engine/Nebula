@@ -18,11 +18,9 @@
 #include <neb/shape.h>
 #include <neb/active_transform.h>
 
-#include <glutpp/network/type_ext.h>
-#include <glutpp/network/actor_update.h>
+#include <glutpp/network/message.h>
 
-neb::scene::scene::scene(neb::app_shared app, glutpp::scene::desc_shared desc):
-	glutpp::scene::scene(desc),
+neb::scene::scene::scene(neb::app_shared app):
 	app_(app),
 	px_filter_shader_(NULL),
 	px_scene_(NULL)
@@ -31,13 +29,13 @@ neb::scene::scene::scene(neb::app_shared app, glutpp::scene::desc_shared desc):
 	
 	assert(app);
 }
-void neb::scene::scene::init() {
+void neb::scene::scene::init(glutpp::scene::desc_shared desc) {
 
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	create_physics();
 
-	create_actors();
+	create_actors(desc);
 }
 std::shared_ptr<neb::app> neb::scene::scene::get_app() {
 
@@ -45,32 +43,31 @@ std::shared_ptr<neb::app> neb::scene::scene::get_app() {
 
 	return app_.lock();
 }
-void neb::scene::scene::create_actors() {
+void neb::scene::scene::create_actors(glutpp::scene::desc_shared desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	assert(desc_);
+	assert(desc);
 
-	for(auto it = desc_->actors_.begin(); it != desc_->actors_.end(); ++it)
+	for(auto it = desc->actors_.vec_.begin(); it != desc->actors_.vec_.end(); ++it)
 	{
-		//create_actor(*it);
+		create_actor(std::get<0>(*it));
 	}
 }
-neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::raw_shared raw) {
+neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::desc_shared desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	auto me = std::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
-
-
+	
 	std::shared_ptr<neb::actor::Base> actor;
-
-	switch(raw->type_)
+	
+	switch(desc->raw_.type_)
 	{
 		case glutpp::actor::RIGID_DYNAMIC:
-			actor.reset(new neb::actor::Rigid_Dynamic(raw, me));
+			actor.reset(new neb::actor::Rigid_Dynamic(me));
 			// = Create_Rigid_Dynamic(ad);
 			break;
 		case glutpp::actor::RIGID_STATIC:
-			actor.reset(new neb::actor::Rigid_Static(raw, me));
+			actor.reset(new neb::actor::Rigid_Static(me));
 			// = Create_Rigid_Static(ad);
 			break;
 		case glutpp::actor::PLANE:
@@ -84,33 +81,46 @@ neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::raw_share
 			//actor = Create_Controller(ad);
 			break;
 		case glutpp::actor::EMPTY:
-			actor.reset(new neb::actor::empty(raw, me));
+			actor.reset(new neb::actor::empty(me));
 			break;
 		default:
 			abort();
 	}
 
-	actor->init();
+	actor->init(desc);
 
 	return actor;	
 }
-neb::actor::Base_shared neb::scene::scene::create_actor_local(glutpp::actor::raw_shared raw) {
+neb::actor::Base_shared neb::scene::scene::create_actor_local(glutpp::actor::desc_shared raw) {
 	auto actor = create_actor(raw);
 	auto app = get_app();
 
 	actors_.push_back(actor);
+
+	// network
+	gal::network::message_shared msg(new gal::network::message);
 	
-	app->server_->write(actor->serialize());
+	int type = glutpp::network::type::ACTOR_CREATE;
+	msg->write(&type, sizeof(int));
 	
+	glutpp::network::actor::create actor_create;
+	
+	actor_create.load(actor);
+	actor_create.write(msg);
+	
+	app->server_->write(msg);
+
 	return actor;	
 }
-neb::actor::Base_shared neb::scene::scene::create_actor_remote(glutpp::actor::addr_shared addr, glutpp::actor::raw_shared raw) {
-	auto actor = create_actor(raw);
-	
+neb::actor::Base_shared neb::scene::scene::create_actor_remote(
+		glutpp::actor::addr_shared addr,
+		glutpp::actor::desc_shared desc) {
+	auto actor = create_actor(desc);
+
 	abort();
-	
+
 	//actors_[raw_.i_] = actor;
-	
+
 	return actor;
 }
 /*
@@ -245,7 +255,7 @@ void neb::scene::scene::create_physics() {
 
 	physx::PxSceneDesc scene_desc(pxphysics->getTolerancesScale());
 
-	scene_desc.gravity = desc_->raw_.gravity_.to_math();
+	scene_desc.gravity = raw_.gravity_.to_math();
 
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 
@@ -312,25 +322,25 @@ void neb::scene::scene::step(double time) {
 			printf("invlaid scene user type\n");
 			exit(0);
 	}
-	
-	
-	
+
+
+
 	// cleanup
 	auto it = actors_.map_.begin();
 	while(it != actors_.map_.end())
 	{
 		std::shared_ptr<glutpp::actor::actor> actor = it->second;
-		
+
 		assert(actor);
-		
+
 		actor->cleanup();
-		
+
 		if(actor->any(glutpp::light::light::flag::SHOULD_DELETE))
 		{
 			actor->release();
-			
+
 			actors_.map_.erase(it);
-			
+
 			break;
 		}
 		else
@@ -338,7 +348,7 @@ void neb::scene::scene::step(double time) {
 			++it;
 		}
 	}
-	
+
 	// extras
 	//printf("desc size = %i\n", (int)desc_size());
 
@@ -401,34 +411,28 @@ void neb::scene::scene::step_local(double time) {
 	//physx::PxVec3 g(0,-0.25,0);
 	//vehicle_manager_.vehicle_suspension_raycasts(px_scene_);
 	//vehicle_manager_.update((float)dt, g);
-	
+
 	send_actor_update();
 }
 void neb::scene::scene::send_actor_update() {
-	
-	// msg
+
 	std::shared_ptr<gal::network::message> msg(new gal::network::message);
-	
-	std::shared_ptr<glutpp::network::actor_update> actor_update(new glutpp::network::actor_update(msg));
-	
-	// type
+
 	int type = glutpp::network::type::ACTOR_UPDATE;
-	
 	msg->write(&type, sizeof(int));
 	
-	// actor raw
-	std::shared_ptr<glutpp::actor::addr_raw_vec> vec(new glutpp::actor::addr_raw_vec);
-
+	glutpp::network::actor::update actor_update;
+	
 	for(auto it = actors_.begin(); it != actors_.end(); ++it)
 	{
 		auto actor = it->second;
 		
-		actor->send_actor_update(vec);
+		actor_update.load(actor);
 	}
 	
+	actor_update.write(msg);
 	
-	actor_update->write_expand(vec);
-	
+	get_app()->send(msg);
 }
 void neb::scene::scene::step_remote(double time){
 	NEBULA_DEBUG_1_FUNCTION;
@@ -444,29 +448,14 @@ void neb::scene::scene::step_remote(double time){
 
 	// receive
 }
-glutpp::scene::desc_shared neb::scene::scene::desc_generate() {
-
-	glutpp::scene::desc_shared desc(new glutpp::scene::desc);
-
-	desc->raw_ = desc_->raw_;
-
-	for(auto it = actors_.map_.begin(); it != actors_.map_.end(); ++it)
-	{
-		auto actor = it->second;
-
-		desc->actors_.push_back(actor->desc_generate());
-	}
-
-	return desc;
-}
 /*gal::network::message::shared_t neb::scene::scene::serialize() {
 
-	NEBULA_DEBUG_0_FUNCTION;
-	
-	auto desc = desc_generate();
-	
-	return desc->serialize();
-}*/
+  NEBULA_DEBUG_0_FUNCTION;
+
+  auto desc = desc_generate();
+
+  return desc->serialize();
+  }*/
 int	neb::scene::scene::recv(neb::packet::packet p) {
 
 
@@ -488,7 +477,7 @@ void neb::scene::scene::read(neb::active_transform::set* ats) {
 
 			if(a)
 			{
-				a->desc_->raw_.pose_ = n->raw_.pose_;
+				a->raw_.pose_ = n->raw_.pose_;
 			}
 			else
 			{

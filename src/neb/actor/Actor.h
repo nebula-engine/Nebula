@@ -16,12 +16,11 @@ namespace neb
 		{
 			public:
 				Actor(
-						glutpp::actor::desc_shared,
 						std::shared_ptr<neb::scene::scene>,
 						neb::actor::Base_shared = neb::actor::Base_shared());
 
 
-				virtual void			init();
+				virtual void			init(glutpp::actor::desc_shared);
 				virtual void			release();
 				virtual void			add_force() {abort();}
 				virtual void			set_pose(math::transform);

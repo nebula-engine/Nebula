@@ -3,18 +3,16 @@
 #include <neb/actor/Rigid_Dynamic.h>
 
 neb::actor::Rigid_Dynamic::Rigid_Dynamic(
-		glutpp::actor::desc_shared desc,
 		std::shared_ptr<neb::scene::scene> scene,
 		std::shared_ptr<neb::actor::Base> actor):
-	neb::actor::Rigid_Body(desc, scene, actor)
+	neb::actor::Rigid_Body(scene, actor) 
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 }
-void neb::actor::Rigid_Dynamic::init() {
-	
+void neb::actor::Rigid_Dynamic::init(glutpp::actor::desc_shared desc) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	neb::actor::Rigid_Body::init();
+	neb::actor::Rigid_Body::init(desc);
 }
 void neb::actor::Rigid_Dynamic::create_physics() {
 
@@ -26,7 +24,7 @@ void neb::actor::Rigid_Dynamic::create_physics() {
 
 	math::transform pose(get_pose());
 	
-	math::vec3 velocity	= desc_->raw_.velocity_.to_math();
+	math::vec3 velocity = raw_.velocity_.to_math();
 	
 
 	// PxActor
@@ -54,7 +52,7 @@ void neb::actor::Rigid_Dynamic::init_physics() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
-	float density = desc_->raw_.density_;
+	float density = raw_.density_;
 	
 	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();
 	

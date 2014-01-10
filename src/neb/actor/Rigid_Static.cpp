@@ -3,18 +3,16 @@
 #include <neb/actor/Rigid_Static.h>
 
 neb::actor::Rigid_Static::Rigid_Static(
-		glutpp::actor::desc_shared desc,
-		std::shared_ptr<neb::scene::scene> scene,
-		std::shared_ptr<neb::actor::Base> actor):
-	neb::actor::Rigid_Actor(desc, scene, actor)
+		neb::scene::scene_shared scene,
+		neb::actor::Base_shared actor):
+	neb::actor::Rigid_Actor(scene, actor)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	neb::actor::Rigid_Static::init()
-{
+void	neb::actor::Rigid_Static::init(glutpp::actor::desc_shared desc) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	neb::actor::Rigid_Actor::init();
+	neb::actor::Rigid_Actor::init(desc);
 }
 void	neb::actor::Rigid_Static::add_force() {
 
@@ -27,8 +25,6 @@ void neb::actor::Rigid_Static::create_physics() {
 	
 	assert(!scene_.expired());
 	auto scene = get_scene();//scene_.lock();
-	
-	assert(desc_);
 	
 	math::transform pose(get_pose());
 	

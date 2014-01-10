@@ -12,8 +12,7 @@
 
 #include <glutpp/scene/desc.h>
 
-#include <glutpp/network/scene_create.h>
-#include <glutpp/network/actor_create.h>
+#include <glutpp/network/message.h>
 
 #include <neb/config.h>
 #include <neb/app.h>
@@ -45,51 +44,53 @@ void neb::network::client::process(gal::network::message::shared_t msg) {
 	msg->read(&type, sizeof(int));
 
 	// possibly used
-	std::shared_ptr<glutpp::network::scene_create>			scene_create;
-	std::shared_ptr<glutpp::scene::desc>				scene_desc;
-	std::shared_ptr<gal::network::vector<glutpp::actor::desc>>	vec_actor_desc;
+	std::shared_ptr<glutpp::network::scene::create>	scene_create;
+	std::shared_ptr<glutpp::network::actor::create>	actor_create;
+	std::shared_ptr<glutpp::network::actor::create>	actor_update;
 	
-	
-	std::shared_ptr<glutpp::network::actor_create>	actor_create;
-	std::shared_ptr<glutpp::actor::addr>		actor_addr;
-	std::shared_ptr<glutpp::actor::raw>		actor_raw;
-	
+	// 
+	glutpp::scene::desc_shared sd;
+
+	glutpp::actor::addr_shared actor_addr;
+	glutpp::actor::desc_shared actor_desc;
 	
 	int scene_i = -1;
-	glutpp::actor::desc_shared ad;
 	int window_name = 0;
 	
 	switch(type)
 	{
-		case glutpp::network::type::SCENE:
+		case glutpp::network::type::SCENE_CREATE:
 			
-			scene_create.reset(new glutpp::network::scene_create(type));
-			scene_desc.reset(new glutpp::scene::desc);
-			vec_actor_desc.reset(new gal::network::vector<glutpp::actor::desc>);
+			scene_create.reset(new glutpp::network::scene::create);
+			//scene_desc.reset(new glutpp::scene::desc);
+			//vec_actor_desc.reset(new gal::network::vector<glutpp::actor::desc>)
 			
-			
-			scene_create->read_expand(vec_actor_desc, scene_desc);
+			scene_create->read(msg);
 			
 			
 			window_name = 0;
 			
-			app->load_scene_remote(scene_desc);
+			sd = std::get<0>(scene_create->tup_);
 			
 			
-			app->activate_scene(window_name, scene_desc->i_);
+			app->load_scene_remote(sd);
+			
+			app->activate_scene(window_name, sd->i_);
 			
 			break;
 		case glutpp::network::type::ACTOR_CREATE:
-			actor_create.reset(new glutpp::network::actor_create(type));
-			actor_addr.reset(new glutpp::actor::addr);
-			actor_raw.reset(new glutpp::actor::raw);
+
+			actor_create.reset(new glutpp::network::actor::create);
 			
+			actor_create->read(msg);
 			
+			actor_desc = std::get<0>(actor_create->tup_);
 			
 			// need seperate create_actor function for remote scene because actor desc already has
 			// valid i
-			app->get_scene(scene_i)->create_actor_remote(actor_addr, actor_raw);
-
+			
+			app->get_scene(scene_i)->create_actor_remote(actor_addr, actor_desc);
+			
 			break;
 		default:
 			printf("unknwon message type %i\n", type);
