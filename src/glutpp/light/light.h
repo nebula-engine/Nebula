@@ -38,7 +38,9 @@ namespace glutpp
 
 				light(glutpp::shape::shape_shared);
 				void				i(int);
-				void				init(std::shared_ptr<scene::scene>);
+				void				init(
+						glutpp::scene::scene_shared,
+						glutpp::light::desc_shared);
 
 				virtual void			release();
 				virtual void			cleanup();
@@ -50,8 +52,8 @@ namespace glutpp
 				void				dim();
 				void				RenderShadowPost();
 				void				RenderLightPOV();
-				
-				
+
+
 				math::mat44			get_pose();
 				math::vec4			get_pos();
 
@@ -62,8 +64,7 @@ namespace glutpp
 			public:
 
 				int				i_;
-
-				desc_shared			desc_;
+				raw				raw_;
 
 				texture				texture_shadow_map_;
 

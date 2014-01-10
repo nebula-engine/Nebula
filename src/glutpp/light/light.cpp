@@ -14,15 +14,18 @@ glutpp::light::light::light(glutpp::shape::shape_shared shape):
 	GLUTPP_DEBUG_0_FUNCTION;
 }
 unsigned int glutpp::light::light::f() {
-	return desc_->raw_.flag_;
+	return raw_.flag_;
 }
 void glutpp::light::light::f(unsigned int flag) {
-	desc_->raw_.flag_ = flag;
+	raw_.flag_ = flag;
 }
-void	glutpp::light::light::init(std::shared_ptr<scene::scene> scene) {
+void	glutpp::light::light::init(glutpp::scene::scene_shared scene, glutpp::light::desc_shared desc) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	scene_ = scene;
+	
+	
+	
 	/*
 	camera_.fovy_ = 45.0f;
 	camera_.w_ = 512;
@@ -68,7 +71,7 @@ math::mat44 glutpp::light::light::get_pose() {
 math::vec4 glutpp::light::light::get_pos() {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
-	math::vec4 pos = desc_->raw_.pos_.to_math();
+	math::vec4 pos = raw_.pos_.to_math();
 	
 	math::mat44 m = get_pose();
 	
@@ -80,7 +83,7 @@ math::vec4 glutpp::light::light::get_pos() {
 	
 	//pos.print();
 	
-	pos.w = desc_->raw_.pos_.w;
+	pos.w = raw_.pos_.w;
 	
 	return pos;
 }
@@ -92,9 +95,9 @@ void		glutpp::light::light::load(int o) {
 	math::mat44 m = get_pose();
 	math::vec4 pos = get_pos();
 	
-	math::vec3 spot_direction = desc_->raw_.spot_direction_.to_math();
+	math::vec3 spot_direction = raw_.spot_direction_.to_math();
 	
-	if(desc_->raw_.spot_cutoff_ < (M_PI/2.0))
+	if(raw_.spot_cutoff_ < (M_PI/2.0))
 	{
 		//spot_direction.print();
 	
@@ -107,25 +110,25 @@ void		glutpp::light::light::load(int o) {
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_POSITION)->load_4fv(
 			o, pos);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT)->load_4fv(
-			o, desc_->raw_.ambient_.to_math());
+			o, raw_.ambient_.to_math());
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE)->load_4fv(
-			o, desc_->raw_.diffuse_.to_math());
+			o, raw_.diffuse_.to_math());
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR)->load_4fv(
-			o, desc_->raw_.specular_.to_math());
+			o, raw_.specular_.to_math());
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION)->load_3fv(
 			o, spot_direction);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF)->load(
-			o, desc_->raw_.spot_cutoff_);
+			o, raw_.spot_cutoff_);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_EXPONENT)->load(
-			o, desc_->raw_.spot_exponent_);
+			o, raw_.spot_exponent_);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF)->load(
-			o, desc_->raw_.spot_light_cos_cutoff_);
+			o, raw_.spot_light_cos_cutoff_);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_CONST)->load(
-			o, desc_->raw_.atten_const_);
+			o, raw_.atten_const_);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR)->load(
-			o, desc_->raw_.atten_linear_);
+			o, raw_.atten_linear_);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD)->load(
-			o, desc_->raw_.atten_quad_);
+			o, raw_.atten_quad_);
 
 }
 void	glutpp::light::light::load_shadow() {
@@ -213,19 +216,10 @@ void	glutpp::light::light::RenderShadowPost()
 	glDisable(GL_ALPHA_TEST);
 	checkerror(__PRETTY_FUNCTION__);
 }
-glutpp::light::desc_shared glutpp::light::light::desc_generate() {
-	GLUTPP_DEBUG_0_FUNCTION;
-
-	glutpp::light::desc_shared desc(new glutpp::light::desc);
-	
-	desc->raw_ = desc_->raw_;
-	
-        return desc;
-}
 void glutpp::light::light::i(int ni) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
-	desc_->raw_.i_ = ni;
+	i_ = ni;
 }
 
 

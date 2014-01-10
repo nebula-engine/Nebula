@@ -26,7 +26,9 @@ namespace glutpp
 			void	read(gal::network::message_shared);
 			size_t	size();
 			
-			std::vector<int>	vec_;
+			void	load(glutpp::scene::scene_shared);
+			
+			gal::network::vector<int>	vec_;
 		};
 		class desc
 		{
@@ -35,12 +37,13 @@ namespace glutpp
 				
 				void		load(char const *);
 				void		load(tinyxml2::XMLElement*);
-				
+				void		load(glutpp::scene::scene_shared);
 				
 				void		write(gal::network::message_shared);
 				void		read(gal::network::message_shared);
 				size_t		size();
 				
+				int		i_;
 				raw		raw_;
 				
 				gal::network::vector_ext<glutpp::actor::desc>	actors_;

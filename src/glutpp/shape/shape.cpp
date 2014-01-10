@@ -8,14 +8,11 @@
 
 
 glutpp::shape::shape::shape(
-		glutpp::actor::actor_shared actor,
-		glutpp::shape::desc_shared desc):
-	desc_(desc),
+		glutpp::actor::actor_shared actor):
 	actor_(actor)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	assert(desc);
 	assert(actor);
 
 	//desc->reset();
@@ -24,19 +21,27 @@ glutpp::shape::shape::~shape() {
 
 }
 unsigned int glutpp::shape::shape::f() {
-	return desc_->raw_.flag_;
+	return raw_.flag_;
 }
 void glutpp::shape::shape::f(unsigned int flag) {
-	desc_->raw_.flag_ = flag;
+	raw_.flag_ = flag;
 }
-void glutpp::shape::shape::init() {
+glutpp::actor::actor_shared glutpp::shape::shape::get_actor() {
+	assert(!actor_.expired());
+	
+	return actor_.lock();
+}
+void glutpp::shape::shape::init(glutpp::shape::desc_shared desc) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
-
+	
 	auto me = std::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
-
+	auto scene = get_actor()->get_scene();
+	
+	raw_ = desc->raw_;
+	
 	// type
-	switch(desc_->raw_.type_)
+	switch(raw_.type_)
 	{
 		case glutpp::shape::type::BOX:
 			mesh_.load("cube.obj");
@@ -53,29 +58,33 @@ void glutpp::shape::shape::init() {
 	}
 
 	// program
-	if(strlen(desc_->raw_.image_) == 0)
+	if(strlen(raw_.image_) == 0)
 	{
-		desc_->raw_.program_ = glutpp::program_name::LIGHT;
+		raw_.program_ = glutpp::program_name::LIGHT;
 	}
 	else
 	{
 		set(glutpp::shape::shape::flag::IMAGE);
 		
-		desc_->raw_.program_ = glutpp::program_name::IMAGE;
+		raw_.program_ = glutpp::program_name::IMAGE;
 	}
 
 	// lights
-	for(auto it = desc_->lights_.begin(); it != desc_->lights_.end(); ++it)
+	glutpp::light::desc_shared ld;
+	glutpp::light::light_shared light;
+	for(auto it = desc->lights_.vec_.begin(); it != desc->lights_.vec_.end(); ++it)
 	{
-		std::shared_ptr<glutpp::light::light> light(new glutpp::light::light(me));
+		ld = std::get<0>(*it);
+
+		light.reset(new glutpp::light::light(me));
 		
-		light->desc_ = *it;
+		light->init(scene, ld);
 		
 		lights_.push_back(light);
 	}
 	
 	// material
-	material_front_.load(desc_->raw_.front_);
+	material_front_.load(raw_.front_);
 	
 }
 void glutpp::shape::shape::release() {
@@ -140,7 +149,7 @@ math::mat44 glutpp::shape::shape::get_pose() {
 
 	assert(!actor_.expired());
 
-	math::mat44 m(desc_->raw_.pose_.to_math());
+	math::mat44 m(raw_.pose_.to_math());
 
 	m = actor_.lock()->get_pose() * m;
 
@@ -182,7 +191,7 @@ void glutpp::shape::shape::init_buffer(
 	{
 		bufs->texture_.image_.reset(new glutpp::texture);
 
-		bufs->texture_.image_->load_png(desc_->raw_.image_);
+		bufs->texture_.image_->load_png(raw_.image_);
 	}
 
 	// indices
@@ -260,8 +269,8 @@ void glutpp::shape::shape::model_load(math::mat44 space) {
 
 	//auto scene = get_scene();
 
-	math::mat44 model(desc_->raw_.pose_.to_math());
-	math::vec3 s(desc_->raw_.s_.to_math());
+	math::mat44 model(raw_.pose_.to_math());
+	math::vec3 s(raw_.s_.to_math());
 
 	math::mat44 scale;
 	scale.SetScale(s);
@@ -270,7 +279,7 @@ void glutpp::shape::shape::model_load(math::mat44 space) {
 }
 void glutpp::shape::shape::draw(std::shared_ptr<glutpp::window::window> window, math::mat44 space) {
 
-	switch(desc_->raw_.type_)
+	switch(raw_.type_)
 	{
 		case BOX:
 		case SPHERE:
@@ -285,7 +294,7 @@ void glutpp::shape::shape::draw_elements(std::shared_ptr<glutpp::window::window>
 
 	//printf("%s\n",__PRETTY_FUNCTION__);
 
-	auto p = glutpp::__master.use_program(desc_->raw_.program_);
+	auto p = glutpp::__master.use_program(raw_.program_);
 
 	// initialize buffers if not already
 	if(!context_[window.get()])
@@ -355,33 +364,12 @@ void glutpp::shape::shape::draw_elements(std::shared_ptr<glutpp::window::window>
 		p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->disable();
 	}
 }
-glutpp::shape::desc_shared glutpp::shape::shape::desc_generate() {
-
-	glutpp::shape::desc_shared desc(new glutpp::shape::desc);
-
-	desc->raw_ = desc_->raw_;
-
-	// shape
-	for(auto it = shapes_.begin(); it != shapes_.end(); ++it)
-	{
-		auto shape = it->second;
-
-		desc->shapes_.push_back(shape->desc_generate());
-	}
-
-
-	// light
-	for(auto it = lights_.begin(); it != lights_.end(); ++it)
-	{
-		auto light = it->second;
-
-		desc->lights_.push_back(light->desc_generate());
-	}
-
-	return desc;
-}
 void glutpp::shape::shape::i(int ni) {
-	
-	desc_->raw_.i_ = ni;
+	i_ = ni;
 }
+int glutpp::shape::shape::i() {
+	return i_;
+}
+
+
 

@@ -4,7 +4,6 @@
 /home/charles/usr/include/glutpp/master.h
 /home/charles/usr/include/glutpp/renderable.h
 /home/charles/usr/include/glutpp/mesh.h
-/home/charles/usr/include/glutpp/network/actor_update.h
 /home/charles/usr/include/glutpp/window/window.h
 /home/charles/usr/include/glutpp/window/desc.h
 /home/charles/usr/include/glutpp/scene/desc.h
@@ -15,10 +14,7 @@
 /home/charles/usr/include/glutpp/actor/actor_base.h
 /home/charles/usr/include/glutpp/shape/shape.h
 /home/charles/usr/include/glutpp/shape/desc.h
-/home/charles/usr/include/glutpp/network/type_ext.h
-/home/charles/usr/include/glutpp/network/scene_create.h
-/home/charles/usr/include/glutpp/network/actor_create.h
-/home/charles/usr/include/glutpp/network/actor_update.h
+/home/charles/usr/include/glutpp/network/message.h
 /home/charles/usr/include/glutpp/glsl/shader.h
 /home/charles/usr/include/glutpp/glsl/program.h
 /home/charles/usr/include/glutpp/glsl/uniform.h

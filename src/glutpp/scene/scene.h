@@ -37,32 +37,33 @@ namespace glutpp
 				};
 
 
-				scene(glutpp::scene::desc_shared);
+				scene();
 				virtual ~scene();
 				int				i();
 				void				i(int);
 				//glutpp::scene::id_shared	id();
-				void				init(std::shared_ptr<renderable>);
+				void				init(glutpp::scene::desc_shared);
 			protected:
-				unsigned int		f();
-				void			f(unsigned int);
+				unsigned int			f();
+				void				f(unsigned int);
 			public:
-				void			resize(int,int);
-				void			render(
+				void				resize(int,int);
+
+				void				render(
 						double,
 						glutpp::camera_shared,
 						glutpp::window::window_shared);
 
-				int			draw(glutpp::window::window_shared);
+				int				draw(glutpp::window::window_shared);
 
-
-				void			write_addr(gal::network::message_shared);
+				void				write_addr(gal::network::message_shared);
 			public:
-				int					i_;
-
-				glutpp::scene::desc_shared		desc_;
-
-				gal::map<glutpp::actor::actor>		actors_;
+				int				i_;
+				raw				raw_;
+				
+				glutpp::renderable_weak		renderable_;
+				
+				gal::map<glutpp::actor::actor>	actors_;
 		};
 	}
 }

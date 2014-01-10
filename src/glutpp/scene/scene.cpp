@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 #include <glutpp/window/window.h>
 #include <glutpp/renderable.h>
 #include <glutpp/scene/desc.h>
@@ -10,12 +9,8 @@
 
 #include <glutpp/glsl/program.h>
 
-glutpp::scene::scene::scene(glutpp::scene::desc_shared desc):
-	desc_(desc)
-{
+glutpp::scene::scene::scene() {
 	GLUTPP_DEBUG_0_FUNCTION;
-
-	assert(desc);
 }
 glutpp::scene::scene::~scene() {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -31,15 +26,13 @@ int glutpp::scene::scene::i() {
 	return i_;
 }
 unsigned int glutpp::scene::scene::f() {
-	return desc_->raw_.flag_;
+	return raw_.flag_;
 }
 void glutpp::scene::scene::f(unsigned int flag) {
-	desc_->raw_.flag_ = flag;
+	raw_.flag_ = flag;
 }
-void	glutpp::scene::scene::init(std::shared_ptr<renderable> renderable) {
-
-	assert(renderable);
-
+void	glutpp::scene::scene::init(glutpp::scene::desc_shared desc) {
+	
 	//renderable_ = renderable;
 }
 void	glutpp::scene::scene::render(

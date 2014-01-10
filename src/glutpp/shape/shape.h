@@ -46,15 +46,19 @@ namespace glutpp
 				
 				
 				
-				shape(glutpp::actor::actor_shared, glutpp::shape::desc_shared);
+				shape(glutpp::actor::actor_shared);
 				virtual ~shape();
-				void			i(int);
-
-				void			init();
-				void			release();
-				void			cleanup();
+				void				i(int);
+				int				i();
 				
-				math::mat44		get_pose();
+				void				init(glutpp::shape::desc_shared);
+				void				release();
+				void				cleanup();
+				
+
+				glutpp::actor::actor_shared	get_actor();
+
+				math::mat44			get_pose();
 				
 			private:
 				void			init_buffer(
@@ -80,13 +84,16 @@ namespace glutpp
 				mesh				mesh_;
 				map_t				context_;
 
-				glutpp::shape::desc_shared	desc_;
 				
 				glutpp::light::light_map	lights_;
 				glutpp::shape::shape_map	shapes_;
 				
 				
 				glutpp::actor::actor_weak	actor_;
+			public:
+				int				i_;
+				raw				raw_;
+				
 			private:
 				unsigned int			f();
 				void				f(unsigned int);

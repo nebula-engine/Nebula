@@ -15,6 +15,8 @@ AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/glsl		files_src_glutpp_glsl)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/gui		files_src_glutpp_gui)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/gui/object	files_src_glutpp_gui_object)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/network	files_src_glutpp_network)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/network/scene	files_src_glutpp_network_scene)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/glutpp/network/actor	files_src_glutpp_network_actor)
 
 
 add_library(glutpp
@@ -28,6 +30,8 @@ add_library(glutpp
 	${files_src_glutpp_gui}
 	${files_src_glutpp_gui_object}
 	${files_src_glutpp_network}
+	${files_src_glutpp_network_scene}
+	${files_src_glutpp_network_actor}
 )
 
 
@@ -50,8 +54,6 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/master.h		DESTINATION include/glutpp/
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/renderable.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/mesh.h		DESTINATION include/glutpp/)
 
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/network/actor_update.h	DESTINATION include/glutpp/network)
-
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window/window.h	DESTINATION include/glutpp/window)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window/desc.h	DESTINATION include/glutpp/window)
 
@@ -67,10 +69,7 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape/shape.h	DESTINATION include/glu
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape/desc.h		DESTINATION include/glutpp/shape)
 
 
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/network/type_ext.h		DESTINATION include/glutpp/network/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/network/scene_create.h	DESTINATION include/glutpp/network/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/network/actor_create.h	DESTINATION include/glutpp/network/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/network/actor_update.h	DESTINATION include/glutpp/network/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/network/message.h	DESTINATION include/glutpp/network/)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shader.h		DESTINATION include/glutpp/glsl/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/program.h		DESTINATION include/glutpp/glsl/)

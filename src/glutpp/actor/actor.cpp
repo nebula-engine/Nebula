@@ -46,16 +46,13 @@ void	print_vectori(GLushort* v, unsigned int m, unsigned int n) {
 
 
 glutpp::actor::actor::actor(
-		glutpp::actor::desc_shared desc,
 		std::shared_ptr<glutpp::scene::scene> scene,
 		std::shared_ptr<glutpp::actor::actor> actor)
 {	
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	desc_ = desc;
 	scene_ = scene;
 	actor_ = actor;
-
 
 	assert(scene);
 }
@@ -63,16 +60,19 @@ glutpp::actor::actor::actor(
 void glutpp::actor::actor::i(int ni) {
 	i_ = ni;
 }
-
-
-
-unsigned int glutpp::actor::actor_base::f() {
-	return desc_->raw_.flag_;
+int glutpp::actor::actor::i() {
+	return i_;
 }
-void glutpp::actor::actor_base::f(unsigned int flag) {
-	desc_->raw_.flag_ = flag;
+void glutpp::actor::actor::init(glutpp::actor::desc_shared desc) {
+	raw_ = desc->raw_;
 }
-void glutpp::actor::actor_base::cleanup() {
+unsigned int glutpp::actor::actor::f() {
+	return raw_.flag_;
+}
+void glutpp::actor::actor::f(unsigned int flag) {
+	raw_.flag_ = flag;
+}
+void glutpp::actor::actor::cleanup() {
 
 	//printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -115,7 +115,7 @@ void glutpp::actor::actor_base::cleanup() {
 	}
 
 }
-void glutpp::actor::actor_base::release() {
+void glutpp::actor::actor::release() {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -129,9 +129,9 @@ void glutpp::actor::actor_base::release() {
 
 	actors_.clear();
 }
-math::mat44 glutpp::actor::actor_base::get_pose() {
+math::mat44 glutpp::actor::actor::get_pose() {
 
-	math::mat44 m(desc_->raw_.pose_.to_math());
+	math::mat44 m(raw_.pose_.to_math());
 
 	if(!actor_.expired())
 	{
@@ -140,7 +140,7 @@ math::mat44 glutpp::actor::actor_base::get_pose() {
 
 	return m;
 }
-void glutpp::actor::actor_base::load_lights(int& i) {
+void glutpp::actor::actor::load_lights(int& i) {
 
 	//printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -157,17 +157,17 @@ void glutpp::actor::actor_base::load_lights(int& i) {
 	}
 
 }
-std::shared_ptr<glutpp::scene::scene>	glutpp::actor::actor_base::get_scene() {
+std::shared_ptr<glutpp::scene::scene> glutpp::actor::actor::get_scene() {
 	assert(!scene_.expired());
 
 	return scene_.lock();
 }
-void glutpp::actor::actor_base::draw(glutpp::window::window_shared window) {
+void glutpp::actor::actor::draw(glutpp::window::window_shared window) {
 	
 	GLUTPP_DEBUG_1_FUNCTION;
 	
-	math::mat44 model(desc_->raw_.pose_.to_math());
-
+	math::mat44 model(raw_.pose_.to_math());
+	
 	for(auto it = shapes_.begin(); it != shapes_.end(); ++it)
 	{
 		it->second->draw(window, model);
@@ -206,22 +206,7 @@ void glutpp::actor::actor_base::serialize() {
 	return msg;
 }
 */
-void glutpp::actor::actor_base::send_actor_update(std::shared_ptr<glutpp::network::actor::addr_raw_vec> vec) {
-	
-	assert(vec);
-	
-	if(any(glutpp::actor::actor::SHOULD_UPDATE))
-	{
-		vec->vec_.push_back(desc_->raw_);
-	}
-	
-	for(auto it = actors_.begin(); it != actors_.end(); ++it)
-	{
-		auto actor = it->second;
-		
-		actor->send_actor_update(vec);
-	}
-}
+
 
 
 

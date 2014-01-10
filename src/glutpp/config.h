@@ -30,11 +30,8 @@ namespace glutpp
 		class type_ext;
 		enum type
 		{
-			SCENE,
-			ACTIVE_TRANSFORM_SET,
-			ACTOR_FORCE,
+			SCENE_CREATE,
 			ACTOR_CREATE,
-			ACTOR_RELEASE,
 			ACTOR_UPDATE,
 		};
 	}
@@ -130,7 +127,8 @@ namespace glutpp
 
 	class renderable;
 	typedef std::shared_ptr<renderable>	renderable_shared;
-
+	typedef std::weak_ptr<renderable>	renderable_weak;
+	
 	namespace scene
 	{
 		struct raw;

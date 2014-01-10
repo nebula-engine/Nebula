@@ -68,8 +68,8 @@ namespace glutpp
 				int			i_;
 				raw			raw_;
 				
-				std::vector<glutpp::shape::desc_shared>		shapes_;
-				std::vector<glutpp::light::desc_shared>		lights_;
+				gal::network::vector_ext<glutpp::shape::desc>	shapes_;
+				gal::network::vector_ext<glutpp::light::desc>	lights_;
 		};
 	}
 }

@@ -10,6 +10,8 @@
 
 #include <gal/network/serializeable.h>
 
+#include <glutpp/config.h>
+
 namespace glutpp
 {
 	namespace light
@@ -40,27 +42,20 @@ namespace glutpp
 			float			atten_linear_;
 			float			atten_quad_;
 		};
-		class id: public gal::network::serializeable
-		{
-			public:
-
-
-
-		};
 		class desc
 		{
 			public:
 				desc();
+				void		load(glutpp::light::light_shared);
 
+
+				
+				void		write(gal::network::message_shared);
+				void		read(gal::network::message_shared);
 				size_t		size();
-				void		write(char*&);
-				void		read(char*&);
-
-
-
-
+				
+				int		i_;
 				raw		raw_;
-
 		};
 	}
 }

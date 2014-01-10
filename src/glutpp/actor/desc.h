@@ -11,8 +11,6 @@ namespace glutpp
 {
 	namespace actor
 	{
-		class Rigid_Actor;
-
 		enum type
 		{
 			NONE = 0,
@@ -39,19 +37,27 @@ namespace glutpp
 				void			load(tinyxml2::XMLElement*);
 				void			plane(tinyxml2::XMLElement*);
 				void			controller(tinyxml2::XMLElement*);
-				
+
+
+				void			write(gal::network::message_shared);
+				void			read(gal::network::message_shared);
+				size_t			size();
+
+
+
+
 				glutpp::actor::type	type_;
-				
+
 				math::raw::transform	pose_;
-				
+
 				math::raw::vec3		n_;
 				float			d_;
-				
+
 				math::raw::vec3		velocity_;
 				float			density_;
-				
+
 				unsigned int		flag_;
-	
+
 				struct
 				{
 					filter_data	simulation_;
@@ -64,17 +70,17 @@ namespace glutpp
 				void			load(glutpp::actor::actor_shared);
 				void			load(tinyxml2::XMLElement*);
 				void			add_shape(glutpp::shape::desc);
-				
-				size_t			size();
+
+
 				void			write(gal::network::message_shared);
 				void			read(gal::network::message_shared);
-				
+				size_t			size();
 			public:
 				int			i_;
 
 				glutpp::actor::raw	raw_;
-				
-				
+
+
 				gal::network::vector_ext<glutpp::actor::desc>	actors_;
 				gal::network::vector_ext<glutpp::shape::desc>	shapes_;
 

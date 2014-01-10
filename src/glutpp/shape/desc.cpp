@@ -4,10 +4,12 @@
 #include <glutpp/config.h>
 
 #include <glutpp/shape/desc.h>
+#include <glutpp/shape/shape.h>
 #include <glutpp/light/desc.h>
+#include <glutpp/light/light.h>
+
 
 glutpp::shape::desc::desc() {
-	
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	reset();
@@ -134,93 +136,76 @@ void	glutpp::shape::desc::load(tinyxml2::XMLElement* element) {
 		
 		ld->raw_.load(element_light);
 		
-		lights_.push_back(ld);
+		lights_.vec_.push_back(std::make_tuple(ld));
 
 		element_light = element_light->NextSiblingElement("light");
+	}
+}
+void glutpp::shape::desc::load(glutpp::shape::shape_shared shape) {
+
+	i_ = shape->i();
+	raw_ = shape->raw_;
+	
+	// shape
+	glutpp::shape::desc_shared sd;
+	for(auto it = shape->shapes_.begin(); it != shape->shapes_.end(); ++it)
+	{
+		auto shape = it->second;
+		
+		sd.reset(new glutpp::shape::desc);
+		
+		sd->load(shape);
+		
+		shapes_.vec_.push_back(std::make_tuple(sd));
+	}
+
+
+	// light
+	glutpp::light::desc_shared ld;
+	for(auto it = shape->lights_.begin(); it != shape->lights_.end(); ++it)
+	{
+		auto light = it->second;
+
+		ld.reset(new glutpp::light::desc);
+
+		ld->load(light);
+		
+		lights_.vec_.push_back(std::make_tuple(ld));
 	}
 }
 size_t glutpp::shape::desc::size() {
 
 	GLUTPP_DEBUG_0_FUNCTION;
-
-	size_t s = sizeof(glutpp::shape::raw);
-
-	for(auto it = shapes_.begin(); it != shapes_.end(); ++it)
-	{
-		auto shape = *it;
-
-		assert(shape);
-
-		s += shape->size();
-	}
 	
-	for(auto it = lights_.begin(); it != lights_.end(); ++it)
-	{
-		auto light = *it;
-
-		assert(light);
-
-		s += light->size();
-	}
+	size_t s = 0;
+	
+	s += sizeof(int);
+	s += sizeof(glutpp::shape::raw);
+	s += shapes_.size();
+	s += lights_.size();
 	
 	return s;
 }
 void glutpp::shape::desc::write(gal::network::message_shared msg) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
-	printf("shape_size_ = %i\n", (int)raw_.shape_size_);
-	printf("light_size_ = %i\n", (int)raw_.light_size_);
-	
 	msg->write(&i_, sizeof(int));
 	msg->write(&raw_, sizeof(glutpp::shape::raw));
 	
 	shapes_.write(msg);
-	
-	for(auto it = shapes_.begin(); it != shapes_.end(); ++it)
-	{
-		auto shape = *it;
-		assert(shape);
-		
-		shape->write(head);
-	}
-
- 	for(auto it = lights_.begin(); it != lights_.end(); ++it)
-	{
-		auto light = *it;
-		assert(light);
-
-		light->write(head);
-	}
+	lights_.write(msg);
 }
-void glutpp::shape::desc::read(char*& head) {
+void glutpp::shape::desc::read(gal::network::message_shared msg) {
 
 	GLUTPP_DEBUG_0_FUNCTION;
 
-	memcpy(&raw_, head, sizeof(glutpp::shape::raw));
-	head += sizeof(glutpp::shape::raw);
+	msg->read(&i_, sizeof(int));
+	msg->read(&raw_, sizeof(glutpp::shape::raw));
+	
+	shapes_.read(msg);
+	lights_.read(msg);
 
-	printf("shape_size_ = %i\n", (int)raw_.shape_size_);
-	printf("light_size_ = %i\n", (int)raw_.light_size_);
-
-	// shapes
-	for(int i = 0; i < raw_.shape_size_; ++i)
-	{
-		glutpp::shape::desc_shared sd(new glutpp::shape::desc);
-
-		sd->read(head);
-		
-		shapes_.push_back(sd);
-	}
-
-	// lights
-	for(int i = 0; i < raw_.light_size_; ++i)
-	{
-		glutpp::light::desc_shared ld(new glutpp::light::desc);
-
-		ld->read(head);
-
-		lights_.push_back(ld);
-	}
+	
 }
 
 

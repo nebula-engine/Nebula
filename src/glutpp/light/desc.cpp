@@ -1,6 +1,7 @@
 #include <math/free.h>
 
 #include <glutpp/light/desc.h>
+#include <glutpp/light/light.h>
 
 
 
@@ -34,11 +35,16 @@ void	glutpp::light::raw::load(tinyxml2::XMLElement* element) {
 }
 void	glutpp::light::raw::print() {
 
-	printf("pos_                   = % 2.1f % 2.1f % 2.1f % 2.1f\n", pos_.x, pos_.y, pos_.z, pos_.w);
-	printf("ambient_               = % 2.1f % 2.1f % 2.1f % 2.1f\n", ambient_.r, ambient_.g, ambient_.b, ambient_.a);
-	printf("diffuse_               = % 2.1f % 2.1f % 2.1f % 2.1f\n", ambient_.r, ambient_.g, ambient_.b, ambient_.a);
-	printf("specular_              = % 2.1f % 2.1f % 2.1f % 2.1f\n", ambient_.r, ambient_.g, ambient_.b, ambient_.a);
-	printf("spot_direction_        = % 2.1f % 2.1f % 2.1f\n", spot_direction_.x, spot_direction_.y, spot_direction_.z);
+	printf("pos_                   = % 2.1f % 2.1f % 2.1f % 2.1f\n",
+			pos_.x, pos_.y, pos_.z, pos_.w);
+	printf("ambient_               = % 2.1f % 2.1f % 2.1f % 2.1f\n",
+			ambient_.r, ambient_.g, ambient_.b, ambient_.a);
+	printf("diffuse_               = % 2.1f % 2.1f % 2.1f % 2.1f\n",
+			ambient_.r, ambient_.g, ambient_.b, ambient_.a);
+	printf("specular_              = % 2.1f % 2.1f % 2.1f % 2.1f\n",
+			ambient_.r, ambient_.g, ambient_.b, ambient_.a);
+	printf("spot_direction_        = % 2.1f % 2.1f % 2.1f\n",
+			spot_direction_.x, spot_direction_.y, spot_direction_.z);
 	printf("spot_cutoff_           = % 2.1f\n", spot_cutoff_);
 	printf("spot_exponent_         = % 2.1f\n", spot_exponent_);
 	printf("spot_light_cos_cutoff_ = % 2.1f\n", spot_light_cos_cutoff_);
@@ -51,34 +57,33 @@ void	glutpp::light::raw::print() {
 
 
 glutpp::light::desc::desc() {
-	
+
 	raw_.reset();
+}
+void glutpp::light::desc::load(glutpp::light::light_shared light) {
+	i_ = light->i_;
+	raw_ = light->raw_;
+}
+void glutpp::light::desc::write(gal::network::message_shared msg) {
+	printf("%s\n",__PRETTY_FUNCTION__);
+	
+	msg->write(&raw_, sizeof(glutpp::light::raw));
+	
+	raw_.print();
+}
+void glutpp::light::desc::read(gal::network::message_shared msg) {
+	printf("%s\n",__PRETTY_FUNCTION__);
+
+	msg->read(&raw_, sizeof(glutpp::light::raw));
+
+	raw_.print();
 }
 size_t glutpp::light::desc::size() {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
-
+	
 	return sizeof(glutpp::light::raw);
 }
-void glutpp::light::desc::write(char*& head) {
-
-	printf("%s\n",__PRETTY_FUNCTION__);
-
-	memcpy(head, &raw_, sizeof(glutpp::light::raw));
-	head += sizeof(glutpp::light::raw);
-	
-	raw_.print();
-}
-void glutpp::light::desc::read(char*& head) {
-
-	printf("%s\n",__PRETTY_FUNCTION__);
-
-	memcpy(&raw_, head, sizeof(glutpp::light::raw));
-	head += sizeof(glutpp::light::raw);
-	
-	raw_.print();
-}
-
 
 
 
