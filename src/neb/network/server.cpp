@@ -3,7 +3,7 @@
 #include <neb/app.h>
 #include <neb/network/server.h>
 
-neb::network::server::server(neb::app_shared app, unsigned short port, int len):
+neb::network::server::server(neb::app_s app, unsigned short port, int len):
 	gal::network::server(port, len),
 	app_(app)
 {

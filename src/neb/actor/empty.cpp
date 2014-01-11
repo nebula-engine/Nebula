@@ -8,7 +8,7 @@ neb::actor::empty::empty(
 {
 	NEBULA_DEBUG_0_FUNCTION;
 }
-void neb::actor::empty::init(glutpp::actor::desc_shared desc) {
+void neb::actor::empty::init(glutpp::actor::desc_s desc) {
 	
 	NEBULA_DEBUG_0_FUNCTION;
 	

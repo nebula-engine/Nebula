@@ -12,15 +12,14 @@ namespace neb
 		{
 			public:
 				Rigid_Body(
-						std::shared_ptr<neb::scene::scene>,
-						neb::actor::Base_shared = neb::actor::Base_shared());
+						neb::scene::scene_s,
+						neb::actor::Base_s = neb::actor::Base_s());
 				
-				virtual void			init(glutpp::actor::desc_shared);
+				virtual void			init(glutpp::actor::desc_s);
 				virtual void			add_force();
 				virtual int			key_fun(int,int,int,int);
 
-				virtual glutpp::actor::desc_shared	get_projectile();
-				virtual glutpp::actor::desc_shared	get_desc();
+				virtual glutpp::actor::desc_s	get_projectile();
 
 				virtual void			step_remote(double);
 
@@ -29,8 +28,6 @@ namespace neb
 				virtual void			create_physics() {abort();}
 				
 				
-				float				density_;
-				math::vec3			velocity_;
 				math::vec3			force_;
 				math::vec3			torque_;
 		};

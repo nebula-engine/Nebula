@@ -162,30 +162,6 @@ nebula/fast:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/build
 .PHONY : nebula/fast
 
-src/neb/active_transform.o: src/neb/active_transform.cpp.o
-.PHONY : src/neb/active_transform.o
-
-# target to build an object file
-src/neb/active_transform.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/active_transform.cpp.o
-.PHONY : src/neb/active_transform.cpp.o
-
-src/neb/active_transform.i: src/neb/active_transform.cpp.i
-.PHONY : src/neb/active_transform.i
-
-# target to preprocess a source file
-src/neb/active_transform.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/active_transform.cpp.i
-.PHONY : src/neb/active_transform.cpp.i
-
-src/neb/active_transform.s: src/neb/active_transform.cpp.s
-.PHONY : src/neb/active_transform.s
-
-# target to generate assembly for a file
-src/neb/active_transform.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/active_transform.cpp.s
-.PHONY : src/neb/active_transform.cpp.s
-
 src/neb/actor/Actor.o: src/neb/actor/Actor.cpp.o
 .PHONY : src/neb/actor/Actor.o
 
@@ -752,9 +728,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... nebula"
 	@echo "... rebuild_cache"
-	@echo "... src/neb/active_transform.o"
-	@echo "... src/neb/active_transform.i"
-	@echo "... src/neb/active_transform.s"
 	@echo "... src/neb/actor/Actor.o"
 	@echo "... src/neb/actor/Actor.i"
 	@echo "... src/neb/actor/Actor.s"

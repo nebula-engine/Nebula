@@ -13,7 +13,7 @@ void	neb::actor::Controller::step(float dt)
 {
 
 }
-void	neb::actor::Controller::init(glutpp::actor::desc_shared) {
+void	neb::actor::Controller::init(glutpp::actor::desc_s) {
 
 }
 void	neb::actor::Controller::add_force()

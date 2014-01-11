@@ -25,33 +25,34 @@ namespace neb
 			public:
 				Base(
 						std::shared_ptr<neb::scene::scene>,
-						neb::actor::Base_shared = neb::actor::Base_shared());
+						neb::actor::Base_s = neb::actor::Base_s());
 				virtual ~Base();
 
-				virtual void			init(glutpp::actor::desc_shared);
+				virtual void			init(glutpp::actor::desc_s);
 				virtual void			release();
 				
+			private:
+				neb::actor::Base_s		create_actor(
+						glutpp::actor::desc_s);
+			public:
+				neb::actor::Base_s		create_actor_local(
+						glutpp::actor::desc_s);
 				
-				neb::actor::Base_shared		create_actor(
-						glutpp::actor::desc_shared);
-				neb::actor::Base_shared		create_actor_local(
-						glutpp::actor::desc_shared);
-				neb::actor::Base_shared		create_actor_remote(
-						glutpp::actor::addr_shared,
-						glutpp::actor::desc_shared);
+				neb::actor::Base_s		create_actor_remote(
+						glutpp::actor::addr_s,
+						glutpp::actor::desc_s);
+				
+				
+				void				create_shapes(glutpp::actor::desc_s);
+				void				create_children(glutpp::actor::desc_s);
+				
+				virtual void			create_physics() {abort();}
+				virtual void			init_physics() {abort();}
 
+				neb::app_s			get_app();
+				neb::scene::scene_s		get_scene();
 
-				void				create_shapes(glutpp::actor::desc_shared);
-				void				create_children(glutpp::actor::desc_shared);
-
-				virtual void				create_physics() {abort();}
-				virtual void				init_physics() {abort();}
-
-				std::shared_ptr<neb::app>		get_app();
-				std::shared_ptr<neb::scene::scene>	get_scene();
-
-				virtual glutpp::actor::desc_shared	get_desc();
-				virtual glutpp::actor::desc_shared	get_projectile();
+				virtual glutpp::actor::desc_s	get_projectile();
 
 
 

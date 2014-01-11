@@ -23,10 +23,10 @@ namespace neb
 		{
 			public:
 				empty(
-						neb::scene::scene_shared,
-						neb::actor::Base_shared = neb::actor::Base_shared());
+						neb::scene::scene_s,
+						neb::actor::Base_s = neb::actor::Base_s());
 				
-				virtual void			init(glutpp::actor::desc_shared);
+				virtual void			init(glutpp::actor::desc_s);
 
 				virtual void			create_physics(std::shared_ptr<neb::shape>);
 				
@@ -41,11 +41,5 @@ namespace neb
 
 
 #endif
-
-
-
-
-
-
 
 

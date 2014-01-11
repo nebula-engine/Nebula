@@ -13,11 +13,11 @@ namespace neb
 		public:
 			user();
 			void	init();
-			void	connect(glutpp::window::window_shared);
-			int	set_actor(neb::actor::Base_shared actor, neb::camera_type::e RIDEALONG);
+			void	connect(glutpp::window::window_s);
+			int	set_actor(neb::actor::Base_s actor, neb::camera_type::e RIDEALONG);
 			
 			
-			neb::actor::Base_weak				actor_;
+			neb::actor::Base_w				actor_;
 			
 			std::shared_ptr<glutpp::camera_control>		camera_control_;
 			

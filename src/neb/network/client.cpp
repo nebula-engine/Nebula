@@ -16,12 +16,11 @@
 
 #include <neb/config.h>
 #include <neb/app.h>
-#include <neb/active_transform.h>
 #include <neb/network/client.h>
 #include <neb/packet/packet.h>
 #include <neb/scene/scene.h>
 
-neb::network::client::client(neb::app_shared app, char const * addr, unsigned short port):
+neb::network::client::client(neb::app_s app, char const * addr, unsigned short port):
 	gal::network::communicating(::socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)),
 	neb::network::communicating(app, socket_),
 	gal::network::client(addr, port)
@@ -49,10 +48,10 @@ void neb::network::client::process(gal::network::message::shared_t msg) {
 	std::shared_ptr<glutpp::network::actor::create>	actor_update;
 	
 	// 
-	glutpp::scene::desc_shared sd;
+	glutpp::scene::desc_s sd;
 
-	glutpp::actor::addr_shared actor_addr;
-	glutpp::actor::desc_shared actor_desc;
+	glutpp::actor::addr_s actor_addr;
+	glutpp::actor::desc_s actor_desc;
 	
 	int scene_i = -1;
 	int window_name = 0;

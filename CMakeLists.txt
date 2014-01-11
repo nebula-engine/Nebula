@@ -36,15 +36,11 @@ set(files
 	${PROJECT_SOURCE_DIR}/neb/vehicle_manager.h
 	${PROJECT_SOURCE_DIR}/neb/simulation_callback.h
 )
-
 install(FILES ${files} DESTINATION include/neb/)
 
 install(FILES ${PROJECT_SOURCE_DIR}/neb/packet/packet.h		DESTINATION include/neb/packet)
 
-
-
 install(FILES ${PROJECT_SOURCE_DIR}/neb/scene/scene.h		DESTINATION include/neb/scene)
-
 
 install(FILES ${PROJECT_SOURCE_DIR}/neb/camera.h		DESTINATION include/neb/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/shape.h			DESTINATION include/neb/)

@@ -24,7 +24,7 @@ namespace neb
 		public:
 			camera_ridealong();
 			virtual math::mat44		supply();
-			neb::actor::Base_weak		actor_;
+			neb::actor::Base_w		actor_;
 	};
 	class camera: public glutpp::camera_control
 	{

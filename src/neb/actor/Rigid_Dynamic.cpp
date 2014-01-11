@@ -9,7 +9,7 @@ neb::actor::Rigid_Dynamic::Rigid_Dynamic(
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 }
-void neb::actor::Rigid_Dynamic::init(glutpp::actor::desc_shared desc) {
+void neb::actor::Rigid_Dynamic::init(glutpp::actor::desc_s desc) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	neb::actor::Rigid_Body::init(desc);
@@ -24,8 +24,6 @@ void neb::actor::Rigid_Dynamic::create_physics() {
 
 	math::transform pose(get_pose());
 	
-	math::vec3 velocity = raw_.velocity_.to_math();
-	
 
 	// PxActor
 	physx::PxRigidDynamic* px_rigid_dynamic = 
@@ -39,7 +37,7 @@ void neb::actor::Rigid_Dynamic::create_physics() {
 
 	px_actor_ = px_rigid_dynamic;
 
-	px_rigid_dynamic->setLinearVelocity(velocity, true);
+	px_rigid_dynamic->setLinearVelocity(raw_.velocity_, true);
 
 	// userData
 	px_rigid_dynamic->userData = this;
@@ -49,14 +47,11 @@ void neb::actor::Rigid_Dynamic::create_physics() {
 
 }
 void neb::actor::Rigid_Dynamic::init_physics() {
-
-	printf("%s\n", __PRETTY_FUNCTION__);
-	
-	float density = raw_.density_;
+	NEBULA_DEBUG_0_FUNCTION;
 	
 	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();
 	
-	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, density);
+	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, raw_.density_);
 	
 	setupFiltering();
 }

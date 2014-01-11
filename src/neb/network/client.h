@@ -12,7 +12,7 @@ namespace neb
                 class client: virtual public neb::network::communicating, virtual public gal::network::client
 		{
 			public:
-				client(neb::app_shared, char const *, unsigned short);
+				client(neb::app_s, char const *, unsigned short);
 				void	process(gal::network::message::shared_t);
 				
 		};

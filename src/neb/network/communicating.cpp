@@ -4,7 +4,7 @@
 #include <neb/packet/packet.h>
 #include <neb/network/communicating.h>
 
-neb::network::communicating::communicating(neb::app_shared app, int socket):
+neb::network::communicating::communicating(neb::app_s app, int socket):
 	gal::network::communicating(socket),
 	app_(app)
 {
@@ -31,5 +31,7 @@ void neb::network::communicating::process(gal::network::message::shared_t messag
 	}
 
 }
+
+
 
 

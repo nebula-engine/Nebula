@@ -5,7 +5,6 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/shape.cpp.o"
-  "CMakeFiles/nebula.dir/src/neb/active_transform.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/user.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/network/client.cpp.o"

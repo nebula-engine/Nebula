@@ -10,7 +10,7 @@ neb::actor::Rigid_Actor::Rigid_Actor(
 {
 
 }
-void neb::actor::Rigid_Actor::init(glutpp::actor::desc_shared desc) {
+void neb::actor::Rigid_Actor::init(glutpp::actor::desc_s desc) {
 	neb::actor::Actor::init(desc);
 }
 void	neb::actor::Rigid_Actor::step_remote(double) {
@@ -50,12 +50,9 @@ void	neb::actor::Rigid_Actor::setupFiltering()
 
 	delete[] shapes;
 }
-glutpp::actor::desc_shared neb::actor::Rigid_Actor::get_projectile() {
+glutpp::actor::desc_s neb::actor::Rigid_Actor::get_projectile() {
 	abort();
-	return glutpp::actor::desc_shared();
-}
-glutpp::actor::desc_shared neb::actor::Rigid_Actor::get_desc() {
-	return neb::actor::Actor::get_desc();
+	return glutpp::actor::desc_s();
 }
 
 

@@ -3,13 +3,13 @@
 #include <neb/actor/Rigid_Static.h>
 
 neb::actor::Rigid_Static::Rigid_Static(
-		neb::scene::scene_shared scene,
-		neb::actor::Base_shared actor):
+		neb::scene::scene_s scene,
+		neb::actor::Base_s actor):
 	neb::actor::Rigid_Actor(scene, actor)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	neb::actor::Rigid_Static::init(glutpp::actor::desc_shared desc) {
+void	neb::actor::Rigid_Static::init(glutpp::actor::desc_s desc) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	neb::actor::Rigid_Actor::init(desc);

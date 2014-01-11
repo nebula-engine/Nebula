@@ -18,8 +18,8 @@ namespace neb
 	{
 		class server;
 		class client;
-		typedef std::shared_ptr<server>		server_shared;
-		typedef std::shared_ptr<client>		client_shared;
+		typedef std::shared_ptr<server>		server_s;
+		typedef std::shared_ptr<client>		client_s;
 	}
 	namespace packet
 	{
@@ -34,15 +34,15 @@ namespace neb
 	}
 
 	class app;
-	typedef std::shared_ptr<app>	app_shared;
-	typedef std::weak_ptr<app>	app_weak;
+	typedef std::shared_ptr<app>	app_s;
+	typedef std::weak_ptr<app>	app_w;
 
 	namespace scene
 	{
 		class scene;
-		typedef std::shared_ptr<scene>	scene_shared;
-		typedef std::weak_ptr<scene>	scene_weak;
-		typedef gal::map<scene>		scene_map;
+		typedef std::shared_ptr<scene>	scene_s;
+		typedef std::weak_ptr<scene>	scene_w;
+		typedef gal::map<scene>		scene_m;
 	}
 	class simulation_callback;
 	namespace actor
@@ -56,8 +56,8 @@ namespace neb
 		class empty;
 
 
-		typedef std::shared_ptr<Base> Base_shared;
-		typedef std::weak_ptr<Base> Base_weak;
+		typedef std::shared_ptr<Base>	Base_s;
+		typedef std::weak_ptr<Base>	Base_w;
 	}
 }
 

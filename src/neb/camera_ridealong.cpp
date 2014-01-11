@@ -19,7 +19,7 @@ math::mat44	neb::camera_ridealong::supply()
 	
 	
 	
-	math::transform pose = actor->raw_.pose_.to_math();
+	math::transform pose = actor->raw_.pose_;
 	
 	math::mat44 translate;
 	translate.SetTranslation(-pose.p);

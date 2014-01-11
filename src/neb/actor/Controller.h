@@ -18,7 +18,7 @@ namespace neb
 				virtual void		release();
 
 				virtual void		step(float);
-				virtual void		init(glutpp::actor::desc_shared);
+				virtual void		init(glutpp::actor::desc_s);
 				virtual void		add_force();
 
 

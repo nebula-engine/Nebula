@@ -14,18 +14,17 @@ neb::actor::Rigid_Body::Rigid_Body(
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}
-void	neb::actor::Rigid_Body::init(glutpp::actor::desc_shared desc) {
+void	neb::actor::Rigid_Body::init(glutpp::actor::desc_s desc) {
+	NEBULA_DEBUG_0_FUNCTION;
 	
 	neb::actor::Rigid_Actor::init(desc);
 
 }
-int	neb::actor::Rigid_Body::key_fun(int key, int scancode, int action, int mods)
-{
-	printf("%s\n", __PRETTY_FUNCTION__);
+int	neb::actor::Rigid_Body::key_fun(int key, int scancode, int action, int mods) {
+	NEBULA_DEBUG_0_FUNCTION;
 
 	float force_scale = 100.0;
 	float torque_scale = 5.0;
-
 
 	math::vec3 x(1.0,0.0,0.0);
 	math::vec3 y(0.0,1.0,0.0);
@@ -123,23 +122,29 @@ int	neb::actor::Rigid_Body::key_fun(int key, int scancode, int action, int mods)
 	}
 	return 0;
 }
-void	neb::actor::Rigid_Body::add_force()
-{
-	assert(px_actor_);
+void neb::actor::Rigid_Body::add_force() {
+	NEBULA_DEBUG_1_FUNCTION;
 
 	math::vec3 f(force_);
 	math::vec3 t(torque_);
-	
-	math::transform pose = raw_.pose_.to_math();
-	
+
+	math::transform pose = raw_.pose_;
+
 	f = pose.q.rotate(f);
 	t = pose.q.rotate(t);
+	
+	f.print();
+	t.print();
+	
+	assert(px_actor_);
+	physx::PxRigidBody* pxrigidbody = px_actor_->isRigidBody();
+	assert(pxrigidbody);
 
-	((physx::PxRigidBody*)px_actor_)->addForce(f);
-	((physx::PxRigidBody*)px_actor_)->addTorque(t);
+	pxrigidbody->addForce(f);
+	pxrigidbody->addTorque(t);
 }
-void	neb::actor::Rigid_Body::step_remote(double)
-{
+void	neb::actor::Rigid_Body::step_remote(double) {
+
 	neb::packet::packet p;
 	/*
 	   p.type_ = neb::packet::ACTOR_FORCE;
@@ -157,72 +162,62 @@ void	neb::actor::Rigid_Body::step_remote(double)
 
 	get_app()->client_->write(msg);
 }
-glutpp::actor::desc_shared neb::actor::Rigid_Body::get_projectile() {
-
+glutpp::actor::desc_s neb::actor::Rigid_Body::get_projectile() {
 	NEBULA_DEBUG_0_FUNCTION;
-	
-	glutpp::actor::desc_shared desc(new glutpp::actor::desc);
-	
-	desc->raw_.type_ = glutpp::actor::RIGID_DYNAMIC;
-	
-	math::transform pose(raw_.pose_.to_math());
-	
+
+	glutpp::actor::desc_s desc(new glutpp::actor::desc);
+
+	desc->get_raw()->type_ = glutpp::actor::RIGID_DYNAMIC;
+
+	math::transform pose(raw_.pose_);
+
 	math::vec3 velocity(0.0, 0.0, -10.0);
 	velocity = pose.q.rotate(velocity);
-	velocity += velocity_;
-	
-	desc->raw_.velocity_.from_math(velocity);
-	
+	velocity += raw_.velocity_;
+
+	desc->get_raw()->velocity_ = velocity;
+
 	math::vec3 offset(0.0, 0.0, -2.0);
 	offset = pose.q.rotate(offset);
 
 	pose.p += offset;
 
-	desc->raw_.pose_.from_math(pose);
+	desc->get_raw()->pose_ = pose;
 
 
-	desc->raw_.density_ = 1000.0;
+	desc->get_raw()->density_ = 1000.0;
 
-	desc->raw_.filter_data_.simulation_.word0 = glutpp::filter::type::DYNAMIC;
-	desc->raw_.filter_data_.simulation_.word1 = glutpp::filter::RIGID_AGAINST;
-	desc->raw_.filter_data_.simulation_.word2 = glutpp::filter::type::PROJECTILE;
-	desc->raw_.filter_data_.simulation_.word3 = glutpp::filter::PROJECTILE_AGAINST;
-	
+	desc->get_raw()->filter_data_.simulation_.word0 = glutpp::filter::type::DYNAMIC;
+	desc->get_raw()->filter_data_.simulation_.word1 = glutpp::filter::RIGID_AGAINST;
+	desc->get_raw()->filter_data_.simulation_.word2 = glutpp::filter::type::PROJECTILE;
+	desc->get_raw()->filter_data_.simulation_.word3 = glutpp::filter::PROJECTILE_AGAINST;
+
 	// shape
-	glutpp::shape::desc_shared sd(new glutpp::shape::desc);
+	glutpp::shape::desc_s sd(new glutpp::shape::desc);
 
-	sd->raw_.box(math::vec3(0.1,0.1,0.1));
+	sd->get_raw()->box(math::vec3(0.1,0.1,0.1));
 
-	sd->raw_.front_.reset();
-	sd->raw_.front_.ambient_.from_math(math::black);
-	sd->raw_.front_.diffuse_.from_math(math::red);
-	sd->raw_.front_.emission_.from_math(math::black);
+	sd->get_raw()->front_.reset();
+	sd->get_raw()->front_.ambient_.from_math(math::black);
+	sd->get_raw()->front_.diffuse_.from_math(math::red);
+	sd->get_raw()->front_.emission_.from_math(math::black);
 
-	desc->shapes_.vec_.push_back(std::make_tuple(sd));
+	desc->get_shapes()->vec_.push_back(std::make_tuple(sd));
 
 	// light
-	glutpp::light::desc_shared ld(new glutpp::light::desc);
+	glutpp::light::desc_s ld(new glutpp::light::desc);
 
 	ld->raw_.pos_.from_math(math::vec4(0.0, 0.0, 0.0, 1.0));
 	ld->raw_.ambient_.from_math(math::black);
 	ld->raw_.atten_linear_ = 2.0;
 
-	sd->lights_.vec_.push_back(std::make_tuple(ld));
+	sd->get_lights()->vec_.push_back(std::make_tuple(ld));
 
 	//scene->create_light(ld, actor);
 
 	return desc;
 }
-glutpp::actor::desc_shared neb::actor::Rigid_Body::get_desc() {
 
-	NEBULA_DEBUG_0_FUNCTION;
-
-	glutpp::actor::desc_shared desc = neb::actor::Base::get_desc();
-	
-	desc->raw_.velocity_.from_math(velocity_);
-
-	return desc;
-}
 
 
 

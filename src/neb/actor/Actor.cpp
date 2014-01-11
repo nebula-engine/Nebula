@@ -13,7 +13,7 @@ neb::actor::Actor::Actor(
 	neb::actor::Base(scene, actor),
 	px_actor_(NULL)
 {}
-void neb::actor::Actor::init(glutpp::actor::desc_shared desc) {
+void neb::actor::Actor::init(glutpp::actor::desc_s desc) {
 	neb::actor::Base::init(desc);
 }
 void	neb::actor::Actor::set_pose(math::transform pose) {
@@ -36,13 +36,9 @@ void neb::actor::Actor::release()
 	px_actor_->release();
 	px_actor_ = NULL;
 }
-glutpp::actor::desc_shared neb::actor::Actor::get_desc() {
-
-	return neb::actor::Base::get_desc();
-}
-glutpp::actor::desc_shared get_projectile() {
+glutpp::actor::desc_s get_projectile() {
 	abort();
-	return glutpp::actor::desc_shared();
+	return glutpp::actor::desc_s();
 }
 
 

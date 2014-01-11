@@ -46,23 +46,23 @@ namespace neb
 					REMOTE
 				};
 
-				scene(neb::app_shared);
-				void			init(glutpp::scene::desc_shared);
+				scene(neb::app_s);
+				void			init(glutpp::scene::desc_s);
 				void			create_physics();
 				app_t			get_app();
 				
 
-				void			create_actors(glutpp::scene::desc_shared);
+				void			create_actors(glutpp::scene::desc_s);
 			private:	
 				base_t			create_actor(
-						glutpp::actor::desc_shared);
+						glutpp::actor::desc_s);
 			public:
 				base_t			create_actor_local(
-						glutpp::actor::desc_shared);
+						glutpp::actor::desc_s);
 
 				base_t			create_actor_remote(
-						glutpp::actor::addr_shared,
-						glutpp::actor::desc_shared);
+						glutpp::actor::addr_s,
+						glutpp::actor::desc_s);
 
 				//base_t			create_actor(glutpp::actor::desc*, base_t);
 
@@ -97,9 +97,9 @@ namespace neb
 
 				void					read(neb::active_transform::set*);
 
-				glutpp::scene::desc_shared		desc_generate();
+				glutpp::scene::desc_s		desc_generate();
 			public:
-				neb::app_weak				app_;
+				neb::app_w				app_;
 
 
 				int					user_type_;

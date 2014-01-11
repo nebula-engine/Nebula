@@ -18,10 +18,10 @@ neb::app::app() {
 void	neb::app::init() {
 	NEBULA_DEBUG_0_FUNCTION;
 }
-glutpp::window::window_shared neb::app::create_window(int w, int h, int x, int y, char const * title) {
+glutpp::window::window_s neb::app::create_window(int w, int h, int x, int y, char const * title) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	glutpp::window::desc_shared wd(new glutpp::window::desc(w,h,x,y,title));
+	glutpp::window::desc_s wd(new glutpp::window::desc(w,h,x,y,title));
 	
 	auto window = glutpp::__master.create_window<glutpp::window::window>(wd);
 	
@@ -35,20 +35,20 @@ glutpp::window::window_shared neb::app::create_window(int w, int h, int x, int y
 
 	return window;
 }
-void neb::app::load_scene_local(glutpp::scene::desc_shared sd) {
+void neb::app::load_scene_local(glutpp::scene::desc_s sd) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	neb::scene::scene_shared scene(new neb::scene::scene(shared_from_this()));
+	neb::scene::scene_s scene(new neb::scene::scene(shared_from_this()));
 	
 	scene->init(sd);
 	scene->user_type_ = neb::scene::scene::LOCAL;
 	
 	scenes_.push_back(scene);
 }
-void neb::app::load_scene_remote(glutpp::scene::desc_shared sd) {
+void neb::app::load_scene_remote(glutpp::scene::desc_s sd) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	neb::scene::scene_shared scene(new neb::scene::scene(shared_from_this()));
+	neb::scene::scene_s scene(new neb::scene::scene(shared_from_this()));
 	
 	scene->init(sd);
 	scene->user_type_ = neb::scene::scene::REMOTE;
@@ -157,7 +157,7 @@ int	neb::app::loop() {
 
 	return 0;
 }
-neb::scene::scene_shared neb::app::get_scene(int name) {
+neb::scene::scene_s neb::app::get_scene(int name) {
 	NEBULA_DEBUG_1_FUNCTION;
 
 	auto s = scenes_[name];
@@ -177,7 +177,7 @@ int neb::app::transmit_scenes(std::shared_ptr<neb::network::communicating> c) {
 		auto s = it->second;
 		assert(s);
 		
-		gal::network::message_shared msg(new gal::network::message);
+		gal::network::message_s msg(new gal::network::message);
 		
 		msg->write(&type, sizeof(int));
 		

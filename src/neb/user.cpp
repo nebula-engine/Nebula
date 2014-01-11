@@ -6,7 +6,7 @@
 
 neb::user::user()
 {}
-void	neb::user::connect(glutpp::window::window_shared w)
+void	neb::user::connect(glutpp::window::window_s w)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 

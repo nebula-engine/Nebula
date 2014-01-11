@@ -12,10 +12,10 @@ namespace neb
 		class communicating: virtual public gal::network::communicating
 		{
 			public:
-				communicating(neb::app_shared, int);
+				communicating(neb::app_s, int);
 				void	process(gal::network::message::shared_t);
 
-				std::weak_ptr<neb::app>	app_;
+				neb::app_w	app_;
 		};
 	}
 }

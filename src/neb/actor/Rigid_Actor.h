@@ -13,17 +13,16 @@ namespace neb
 		{
 			public:
 				Rigid_Actor(
-						std::shared_ptr<neb::scene::scene>,
-						neb::actor::Base_shared = neb::actor::Base_shared());
+						neb::scene::scene_s,
+						neb::actor::Base_s = neb::actor::Base_s());
 
-				virtual void			init(glutpp::actor::desc_shared);
+				virtual void			init(glutpp::actor::desc_s);
 				virtual void			add_force() {abort();}
 
 				virtual void			step_remote(double);
 				virtual void			setupFiltering();
 
-				virtual glutpp::actor::desc_shared	get_projectile();
-				virtual glutpp::actor::desc_shared	get_desc();
+				virtual glutpp::actor::desc_s	get_projectile();
 				
 				virtual void			create_physics() {abort();}
 				virtual void			init_physics() {abort();}
