@@ -18,7 +18,7 @@ namespace glutpp
 	{
 		struct raw
 		{
-			void			reset();
+			raw();
 			void			load(tinyxml2::XMLElement*);
 			void			print();
 

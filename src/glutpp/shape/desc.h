@@ -25,7 +25,7 @@ namespace glutpp
 					max_filename_length = 20
 				};
 				
-				void			reset();
+				raw();
 				void			load(tinyxml2::XMLElement*);
 				void			parse_type(char const *);
 

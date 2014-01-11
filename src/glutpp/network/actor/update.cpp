@@ -7,7 +7,7 @@
 void glutpp::network::actor::update::load(glutpp::actor::actor_shared actor) {
 	assert(actor);
 	
-	tup t;
+	tuple t;
 	gal::reset_tuple(t);
 	
 	std::get<1>(t)->load(actor);

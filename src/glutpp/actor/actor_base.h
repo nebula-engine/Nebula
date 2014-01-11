@@ -18,7 +18,6 @@
 #include <glutpp/texture.h>
 #include <glutpp/material.h>
 #include <glutpp/shape/shape.h>
-#include <glutpp/network/actor_update.h>
 
 
 #endif

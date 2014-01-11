@@ -14,11 +14,13 @@ glutpp::shape::desc::desc() {
 	
 	reset();
 }
-void	glutpp::shape::raw::reset() {
+glutpp::shape::raw::raw() {
 
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	pose_.from_math(math::transform());
+	
+	flag_ = 0;
 	
 	memset(image_, '\0', max_filename_length);
 }
@@ -117,8 +119,6 @@ void glutpp::shape::raw::sphere(tinyxml2::XMLElement* element)
 
 
 void	glutpp::shape::desc::reset() {
-
-	raw_.reset();
 }
 void	glutpp::shape::desc::load(tinyxml2::XMLElement* element) {
 

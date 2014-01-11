@@ -2,6 +2,13 @@
 
 #include <glutpp/actor/desc.h>
 
+glutpp::actor::raw::raw():
+	flag_(0)
+{
+	pose_.from_math(math::transform());
+	
+	
+}
 void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	
 	printf("%s\n", __PRETTY_FUNCTION__);

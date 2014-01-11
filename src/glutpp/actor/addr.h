@@ -4,6 +4,7 @@
 #include <math/transform.h>
 #include <math/raw/raw.h>
 
+#include <glutpp/scene/desc.h>
 #include <glutpp/actor/actor_base.h>
 
 namespace glutpp
@@ -13,7 +14,6 @@ namespace glutpp
 		class addr
 		{
 			public:
-				void			load(glutpp::scene::scene_shared);
 				void			load(glutpp::actor::actor_shared);
 
 
@@ -22,7 +22,7 @@ namespace glutpp
 				void			read(gal::network::message_shared);
 			
 				
-				glutpp::actor::actor_shared	actor_;
+				//glutpp::actor::actor_shared	actor_;
 				
 				glutpp::scene::addr		scene_addr_;
 				

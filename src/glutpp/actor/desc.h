@@ -31,41 +31,39 @@ namespace glutpp
 			unsigned int word2;
 			unsigned int word3;
 		};
-		struct raw
-		{
-			public:
-				void			load(tinyxml2::XMLElement*);
-				void			plane(tinyxml2::XMLElement*);
-				void			controller(tinyxml2::XMLElement*);
+		struct raw {
+			
+			raw();
+			void			load(tinyxml2::XMLElement*);
+			void			plane(tinyxml2::XMLElement*);
+			void			controller(tinyxml2::XMLElement*);
 
 
-				void			write(gal::network::message_shared);
-				void			read(gal::network::message_shared);
-				size_t			size();
+			void			write(gal::network::message_shared);
+			void			read(gal::network::message_shared);
+			size_t			size();
 
 
 
+			glutpp::actor::type	type_;
 
-				glutpp::actor::type	type_;
+			math::raw::transform	pose_;
 
-				math::raw::transform	pose_;
+			math::raw::vec3		n_;
+			float			d_;
 
-				math::raw::vec3		n_;
-				float			d_;
+			math::raw::vec3		velocity_;
+			float			density_;
 
-				math::raw::vec3		velocity_;
-				float			density_;
+			unsigned int		flag_;
 
-				unsigned int		flag_;
-
-				struct
-				{
-					filter_data	simulation_;
-					filter_data	scene_query_;
-				} filter_data_;
+			struct
+			{
+				filter_data	simulation_;
+				filter_data	scene_query_;
+			} filter_data_;
 		};
-		class desc
-		{
+		struct desc {
 			public:
 				void			load(glutpp::actor::actor_shared);
 				void			load(tinyxml2::XMLElement*);

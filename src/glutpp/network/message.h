@@ -3,7 +3,7 @@
 
 #include <gal/network/vector.h>
 #include <gal/network/serializeable.h>
-#include <gal/network/message_ext.h>
+#include <gal/network/serial.h>
 
 #include <glutpp/config.h>
 #include <glutpp/scene/desc.h>
@@ -16,32 +16,34 @@ namespace glutpp
 			typedef gal::network::vector_ext<
 				glutpp::actor::raw,
 				glutpp::actor::addr>
-					addr_raw_vec;
+					vec_addr_raw;
 
-			typedef gal::network::message_ext<
+			typedef gal::network::serial_ext<
 				glutpp::actor::desc,
 				glutpp::actor::addr>
-					me_create;
+					ser_create;
+		
+			typedef gal::network::serial_ext<
+				vec_addr_raw>
+					ser_update;
 
-			typedef gal::network::message_ext<addr_raw_vec> me_update;
-
-			struct create: me_create {
+			struct create: ser_create {
 				void load(glutpp::actor::actor_shared);
 			};
 
-			struct update: me_update {
-				typedef addr_raw_vec::tup tup;
+			struct update: ser_update {
+				typedef vec_addr_raw::tuple tuple;
 
 				void load(glutpp::actor::actor_shared);
 			};
 		}
 		namespace scene {
-			typedef gal::network::message_ext<
+			typedef gal::network::serial_ext<
 				glutpp::scene::desc,
 				glutpp::scene::addr>
-					me_create;
-
-			struct create: me_create {
+					ser_create;
+			
+			struct create: ser_create {
 				void load(glutpp::scene::scene_shared);
 			};
 		}

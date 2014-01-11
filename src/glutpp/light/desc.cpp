@@ -6,7 +6,7 @@
 
 
 
-void	glutpp::light::raw::reset() {
+glutpp::light::raw::raw() {
 
 	pos_.from_math(math::vec4(0.0, 0.0, 0.0, 1.0));
 	ambient_.from_math(math::white * 0.2f);
@@ -57,8 +57,6 @@ void	glutpp::light::raw::print() {
 
 
 glutpp::light::desc::desc() {
-
-	raw_.reset();
 }
 void glutpp::light::desc::load(glutpp::light::light_shared light) {
 	i_ = light->i_;

@@ -35,8 +35,14 @@ void glutpp::master::master::f(unsigned int flag) {
 	flag_ = flag;
 }
 glutpp::window::window_shared glutpp::master::get_window(GLFWwindow* window) {
+	auto w = windows_[window];
 	
-	return windows_[window];
+	if(w.expired()) {
+		return glutpp::window::window_shared();
+	}
+	else {
+		return w.lock();
+	}
 }
 void	glutpp::master::static_error_fun(int error, char const * description) {
 	
@@ -45,22 +51,34 @@ void	glutpp::master::static_error_fun(int error, char const * description) {
 
 }
 void glutpp::master::static_window_pos_fun(GLFWwindow* window, int x,int y){
-	__master.get_window(window)->callback_window_pos_fun(window,x,y);
+	auto w = __master.get_window(window);
+	
+	if(w) w->callback_window_pos_fun(window,x,y);
 }
 void glutpp::master::static_window_size_fun(GLFWwindow* window, int w, int h){
-	__master.get_window(window)->callback_window_size_fun(window,w,h);
+	auto wnd = __master.get_window(window);
+
+	if(wnd) wnd->callback_window_size_fun(window,w,h);
 }
 void glutpp::master::static_window_close_fun(GLFWwindow* window){
-	__master.get_window(window)->callback_window_close_fun(window);
+	auto w = __master.get_window(window);
+
+	if(w) w->callback_window_close_fun(window);
 }
 void glutpp::master::static_window_refresh_fun(GLFWwindow* window){
-	__master.get_window(window)->callback_window_refresh_fun(window);
+	auto w = __master.get_window(window);
+
+	if(w) w->callback_window_refresh_fun(window);
 }
 void glutpp::master::static_mouse_button_fun(GLFWwindow* window, int button, int action, int mods){
-	__master.get_window(window)->callback_mouse_button_fun(window, button, action, mods);
+	auto w = __master.get_window(window);
+
+	if(w) w->callback_mouse_button_fun(window, button, action, mods);
 }
 void glutpp::master::static_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods){
-	__master.get_window(window)->callback_key_fun(window, key, scancode, action, mods);
+	auto w = __master.get_window(window);
+
+	if(w) w->callback_key_fun(window, key, scancode, action, mods);
 }
 int glutpp::master::reg(glutpp::window::window_shared w) {
 

@@ -88,7 +88,7 @@ namespace glutpp
 			unsigned int						flag_;
 			
 			GLFWwindow*						currentIdleWindow_;
-			std::map<GLFWwindow*,window::window_shared>		windows_;
+			std::map<GLFWwindow*,window::window_weak>		windows_;
 
 
 			std::map<int, std::shared_ptr<glutpp::glsl::program> >	programs_;
