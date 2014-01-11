@@ -4,7 +4,7 @@
 
 #include <glutpp/actor/actor.h>
 
-void glutpp::network::actor::update::load(glutpp::actor::actor_shared actor) {
+void glutpp::network::actor::update::load(glutpp::actor::actor_s actor) {
 	assert(actor);
 	
 	tuple t;

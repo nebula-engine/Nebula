@@ -46,38 +46,38 @@ namespace glutpp
 				
 				
 				
-				shape(glutpp::actor::actor_shared);
+				shape(glutpp::actor::actor_s);
 				virtual ~shape();
 				void				i(int);
 				int				i();
 				
-				void				init(glutpp::shape::desc_shared);
+				void				init(glutpp::shape::desc_s);
 				void				release();
 				void				cleanup();
 				
 
-				glutpp::actor::actor_shared	get_actor();
+				glutpp::actor::actor_s	get_actor();
 
 				math::mat44			get_pose();
 				
 			private:
 				void			init_buffer(
-						glutpp::window::window_shared,
+						glutpp::window::window_s,
 						std::shared_ptr<glutpp::glsl::program>);
 			public:
 
 				virtual void			draw(
-						glutpp::window::window_shared,
+						glutpp::window::window_s,
 						math::mat44);
 				virtual void			draw_elements(
-						glutpp::window::window_shared,
+						glutpp::window::window_s,
 						math::mat44);
 
 				void				load_lights(int&);
 
 				void				model_load(math::mat44);
 
-				glutpp::shape::desc_shared	desc_generate();
+				glutpp::shape::desc_s	desc_generate();
 			public:
 				// draw data
 				material			material_front_;
@@ -85,11 +85,11 @@ namespace glutpp
 				map_t				context_;
 
 				
-				glutpp::light::light_map	lights_;
-				glutpp::shape::shape_map	shapes_;
+				glutpp::light::light_m		lights_;
+				glutpp::shape::shape_m		shapes_;
 				
 				
-				glutpp::actor::actor_weak	actor_;
+				glutpp::actor::actor_w		actor_;
 			public:
 				int				i_;
 				raw				raw_;

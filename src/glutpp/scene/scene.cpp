@@ -31,7 +31,7 @@ unsigned int glutpp::scene::scene::f() {
 void glutpp::scene::scene::f(unsigned int flag) {
 	raw_.flag_ = flag;
 }
-void	glutpp::scene::scene::init(glutpp::scene::desc_shared desc) {
+void	glutpp::scene::scene::init(glutpp::scene::desc_s desc) {
 	
 	//renderable_ = renderable;
 }

@@ -15,7 +15,9 @@
 #include <math/transform.h>
 
 #include <glutpp/config.h>
+
 #include <glutpp/actor/addr.h>
+#include <glutpp/actor/raw.h>
 
 #include <glutpp/texture.h>
 #include <glutpp/material.h>
@@ -40,16 +42,16 @@ namespace glutpp
 
 
 				actor(
-						glutpp::scene::scene_shared,
-						glutpp::actor::actor_shared = glutpp::actor::actor_shared());
+						glutpp::scene::scene_s,
+						glutpp::actor::actor_s = glutpp::actor::actor_s());
 
 
 
 				math::mat44		get_pose();
 
-				scene::scene_shared	get_scene();
+				scene::scene_s		get_scene();
 
-				void			draw(glutpp::window::window_shared);
+				void			draw(glutpp::window::window_s);
 				void			load_lights(int&);
 
 				virtual void		cleanup();
@@ -59,25 +61,21 @@ namespace glutpp
 			public:
 
 
-				std::weak_ptr<scene::scene>	scene_;
-				std::weak_ptr<actor>		actor_;
+				scene::scene_w		scene_;
+				actor_w			actor_;
 
 
-				glutpp::shape::shape_map	shapes_;
-				glutpp::actor::actor_map	actors_;
+				glutpp::shape::shape_m		shapes_;
+				glutpp::actor::actor_m		actors_;
 			private:
 				unsigned int			f();
 				void				f(unsigned int);
 
 
 
-
-
-
-
 			public:
 
-				void		init(glutpp::actor::desc_shared);
+				void		init(glutpp::actor::desc_s);
 
 				int		i();
 				void		i(int);

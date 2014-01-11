@@ -60,10 +60,11 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window/desc.h	DESTINATION include/glu
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene/desc.h		DESTINATION include/glutpp/scene)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene/scene.h	DESTINATION include/glutpp/scene)
 
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/id.h		DESTINATION include/glutpp/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/addr.h		DESTINATION include/glutpp/actor/)
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/raw.h		DESTINATION include/glutpp/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/desc.h		DESTINATION include/glutpp/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/actor.h	DESTINATION include/glutpp/actor/)
-install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/actor_base.h	DESTINATION include/glutpp/actor/)
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape/shape.h	DESTINATION include/glutpp/shape)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape/desc.h		DESTINATION include/glutpp/shape)

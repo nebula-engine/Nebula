@@ -26,7 +26,7 @@ namespace glutpp
 					int				load_xml(tinyxml2::XMLElement*);
 
 
-					window::window_shared		get_window();
+					window::window_s		get_window();
 					virtual void			draw() = 0;
 					void				set_label( char const * cstr );
 					virtual int			key_fun(int,int,int,int) = 0;

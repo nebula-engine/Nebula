@@ -8,10 +8,11 @@
 /home/charles/usr/include/glutpp/window/desc.h
 /home/charles/usr/include/glutpp/scene/desc.h
 /home/charles/usr/include/glutpp/scene/scene.h
+/home/charles/usr/include/glutpp/actor/id.h
 /home/charles/usr/include/glutpp/actor/addr.h
+/home/charles/usr/include/glutpp/actor/raw.h
 /home/charles/usr/include/glutpp/actor/desc.h
 /home/charles/usr/include/glutpp/actor/actor.h
-/home/charles/usr/include/glutpp/actor/actor_base.h
 /home/charles/usr/include/glutpp/shape/shape.h
 /home/charles/usr/include/glutpp/shape/desc.h
 /home/charles/usr/include/glutpp/network/message.h

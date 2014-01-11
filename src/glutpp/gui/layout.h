@@ -24,7 +24,7 @@ namespace glutpp
 		{
 			public:
 				layout();
-				glutpp::window::window_shared		get_window();
+				glutpp::window::window_s		get_window();
 				virtual void				init(renderable_p);
 				void					load_xml(tinyxml2::XMLElement*);
 

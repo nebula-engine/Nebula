@@ -20,7 +20,7 @@ namespace glutpp
 		public:
 			texture();
 			~texture();
-			void			init(glutpp::window::window_shared);
+			void			init(glutpp::window::window_s);
 			void			init_shadow(int,int);
 			int			load_png(char const *);
 			void			bind();
@@ -29,7 +29,7 @@ namespace glutpp
 			GLint			h_;
 			GLuint			o_;
 			
-			glutpp::window::window_shared		window_;
+			glutpp::window::window_s		window_;
 	};
 }
 

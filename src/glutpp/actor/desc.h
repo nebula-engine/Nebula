@@ -4,83 +4,35 @@
 #include <math/transform.h>
 #include <math/raw/raw.h>
 
+#include <gal/network/serial.h>
+
+#include <glutpp/actor/id.h>
 #include <glutpp/shape/desc.h>
 
+namespace glutpp {
+	namespace actor {
 
-namespace glutpp
-{
-	namespace actor
-	{
-		enum type
+		typedef gal::network::vector_ext<glutpp::actor::desc> vec_actor_desc;
+		typedef gal::network::vector_ext<glutpp::shape::desc> vec_shape_desc;
+		typedef std::shared_ptr<vec_actor_desc> vec_actor_desc_s;
+		typedef std::shared_ptr<vec_shape_desc> vec_shape_desc_s;
+
+
+		struct desc: gal::network::serial_ext<vec_shape_desc, vec_actor_desc, raw, id>
 		{
-			NONE = 0,
-			BASE,
-			ACTOR,
-			RIGID_ACTOR,
-			RIGID_BODY,
-			RIGID_DYNAMIC,
-			RIGID_STATIC,
-			PLANE,
-			CONTROLLER,
-			EMPTY
-		};
-		struct filter_data
-		{
-			unsigned int word0;
-			unsigned int word1;
-			unsigned int word2;
-			unsigned int word3;
-		};
-		struct raw {
-			
-			raw();
+
+			void			load(glutpp::actor::actor_s);
 			void			load(tinyxml2::XMLElement*);
-			void			plane(tinyxml2::XMLElement*);
-			void			controller(tinyxml2::XMLElement*);
-
-
-			void			write(gal::network::message_shared);
-			void			read(gal::network::message_shared);
-			size_t			size();
+			void			add_shape(glutpp::shape::desc);
 
 
 
-			glutpp::actor::type	type_;
+			id_s			get_id();
 
-			math::raw::transform	pose_;
+			raw_s			get_raw();
 
-			math::raw::vec3		n_;
-			float			d_;
-
-			math::raw::vec3		velocity_;
-			float			density_;
-
-			unsigned int		flag_;
-
-			struct
-			{
-				filter_data	simulation_;
-				filter_data	scene_query_;
-			} filter_data_;
-		};
-		struct desc {
-			public:
-				void			load(glutpp::actor::actor_shared);
-				void			load(tinyxml2::XMLElement*);
-				void			add_shape(glutpp::shape::desc);
-
-
-				void			write(gal::network::message_shared);
-				void			read(gal::network::message_shared);
-				size_t			size();
-			public:
-				int			i_;
-
-				glutpp::actor::raw	raw_;
-
-
-				gal::network::vector_ext<glutpp::actor::desc>	actors_;
-				gal::network::vector_ext<glutpp::shape::desc>	shapes_;
+			vec_actor_desc_s	get_actors();
+			vec_shape_desc_s	get_shapes();
 
 		};
 	}

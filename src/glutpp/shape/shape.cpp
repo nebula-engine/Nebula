@@ -8,7 +8,7 @@
 
 
 glutpp::shape::shape::shape(
-		glutpp::actor::actor_shared actor):
+		glutpp::actor::actor_s actor):
 	actor_(actor)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
@@ -26,19 +26,19 @@ unsigned int glutpp::shape::shape::f() {
 void glutpp::shape::shape::f(unsigned int flag) {
 	raw_.flag_ = flag;
 }
-glutpp::actor::actor_shared glutpp::shape::shape::get_actor() {
+glutpp::actor::actor_s glutpp::shape::shape::get_actor() {
 	assert(!actor_.expired());
 	
 	return actor_.lock();
 }
-void glutpp::shape::shape::init(glutpp::shape::desc_shared desc) {
-
-	printf("%s\n",__PRETTY_FUNCTION__);
+void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
+	GLUTPP_DEBUG_0_FUNCTION;
 	
 	auto me = std::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
 	auto scene = get_actor()->get_scene();
 	
-	raw_ = desc->raw_;
+	i_ = desc->get_id()->i_;
+	raw_ = *desc->get_raw();
 	
 	// type
 	switch(raw_.type_)
@@ -70,9 +70,9 @@ void glutpp::shape::shape::init(glutpp::shape::desc_shared desc) {
 	}
 
 	// lights
-	glutpp::light::desc_shared ld;
-	glutpp::light::light_shared light;
-	for(auto it = desc->lights_.vec_.begin(); it != desc->lights_.vec_.end(); ++it)
+	glutpp::light::desc_s ld;
+	glutpp::light::light_s light;
+	for(auto it = desc->get_lights()->vec_.begin(); it != desc->get_lights()->vec_.end(); ++it)
 	{
 		ld = std::get<0>(*it);
 
@@ -88,7 +88,8 @@ void glutpp::shape::shape::init(glutpp::shape::desc_shared desc) {
 	
 }
 void glutpp::shape::shape::release() {
-
+	GLUTPP_DEBUG_0_FUNCTION;
+	
 	for(auto it = lights_.begin(); it != lights_.end(); ++it)
 	{
 		it->second->release();
@@ -97,59 +98,49 @@ void glutpp::shape::shape::release() {
 	lights_.clear();
 }
 void glutpp::shape::shape::cleanup() {
+	GLUTPP_DEBUG_1_FUNCTION;
 
-	//printf("%s\n",__PRETTY_FUNCTION__);
-
-	auto it = shapes_.begin();
-	while(it != shapes_.end())
-	{
-		std::shared_ptr<glutpp::shape::shape> shape = it->second;
-
+	auto s = shapes_.begin();
+	while(s != shapes_.end()) {
+		auto shape = s->second;
 		assert(shape);
-
+		
 		shape->cleanup();
-
+		
 		if(shape->any(SHOULD_DELETE))
 		{
 			shape->release();
-
-			shapes_.erase(it);
+			
+			s = shapes_.erase(s);
 		}
 		else
 		{
-			++it;
+			++s;
 		}
 	}
-
+	
 	auto l = lights_.begin();
-	while(l != lights_.end())
-	{
-		std::shared_ptr<glutpp::light::light> light = l->second;
-
+	while(l != lights_.end()) {
+		auto light = l->second;
 		assert(light);
 
 		light->cleanup();
 
-		if(light->any(SHOULD_DELETE))
-		{
+		if(light->any(SHOULD_DELETE)) {
 			light->release();
 
-			lights_.erase(l);
-		}
-		else
-		{
+			l = lights_.erase(l);
+		} else {
 			++l;
 		}
 	}
-
-	//printf("%s exit\n",__PRETTY_FUNCTION__);
 
 }
 math::mat44 glutpp::shape::shape::get_pose() {
 
 	assert(!actor_.expired());
 
-	math::mat44 m(raw_.pose_.to_math());
+	math::mat44 m(raw_.pose_);
 
 	m = actor_.lock()->get_pose() * m;
 
@@ -167,18 +158,16 @@ void glutpp::shape::shape::load_lights(int& i) {
 	}
 }
 void glutpp::shape::shape::init_buffer(
-		glutpp::window::window_shared window,
+		glutpp::window::window_s window,
 		std::shared_ptr<glutpp::glsl::program> p) {
-
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 
 	glEnable(GL_TEXTURE_2D);
 
 	if(mesh_.indices_ == NULL)
 	{
-		return;
 		printf("not initialized\n");
-		abort();
+		return;
 	}
 
 	checkerror("unknown");
@@ -238,8 +227,7 @@ void glutpp::shape::shape::init_buffer(
 			(void*)off_normal);
 	checkerror("glVertexAttribPointer normal");
 
-	if(all(glutpp::shape::shape::flag::IMAGE))
-	{
+	if(all(glutpp::shape::shape::flag::IMAGE)) {
 		glVertexAttribPointer(
 				p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->o_,
 				2,
@@ -249,7 +237,7 @@ void glutpp::shape::shape::init_buffer(
 				(void*)off_texcoor);
 		checkerror("glVertexAttribPointer texcoor");
 	}
-
+	
 	size = mesh_.fh_.len_vertices_ * sizeof(glutpp::vertex);
 	glBufferData(
 			GL_ARRAY_BUFFER,
@@ -269,8 +257,9 @@ void glutpp::shape::shape::model_load(math::mat44 space) {
 
 	//auto scene = get_scene();
 
-	math::mat44 model(raw_.pose_.to_math());
-	math::vec3 s(raw_.s_.to_math());
+	math::mat44 model(raw_.pose_);
+	
+	math::vec3 s(raw_.s_);
 
 	math::mat44 scale;
 	scale.SetScale(s);
@@ -291,8 +280,7 @@ void glutpp::shape::shape::draw(std::shared_ptr<glutpp::window::window> window, 
 
 }
 void glutpp::shape::shape::draw_elements(std::shared_ptr<glutpp::window::window> window, math::mat44 space) {
-
-	//printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_1_FUNCTION;
 
 	auto p = glutpp::__master.use_program(raw_.program_);
 

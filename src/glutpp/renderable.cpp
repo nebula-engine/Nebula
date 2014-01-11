@@ -4,7 +4,7 @@
 #include <glutpp/renderable.h>
 #include <glutpp/gui/layout.h>
 
-glutpp::renderable::renderable(glutpp::window::window_shared window):
+glutpp::renderable::renderable(glutpp::window::window_s window):
 	window_(window)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
@@ -18,7 +18,7 @@ unsigned int glutpp::renderable::f() {
 void glutpp::renderable::f(unsigned int flag) {
 	flag_ = flag;
 }
-void glutpp::renderable::init(glutpp::window::window_shared window) {
+void glutpp::renderable::init(glutpp::window::window_s window) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	assert(window);
@@ -29,7 +29,7 @@ void glutpp::renderable::init(glutpp::window::window_shared window) {
 	camera_.reset(new glutpp::camera);
 	camera_->init(shared_from_this());
 }
-glutpp::window::window_shared glutpp::renderable::get_window() {
+glutpp::window::window_s glutpp::renderable::get_window() {
 	auto window = window_.lock();
 	
 	assert(window);
@@ -40,7 +40,7 @@ void	glutpp::renderable::resize(int w, int h) {
 	camera_->w_ = w;
 	camera_->h_ = h;
 }
-void glutpp::renderable::render(double time, glutpp::window::window_shared window) {
+void glutpp::renderable::render(double time, glutpp::window::window_s window) {
 
 	GLUTPP_DEBUG_1_FUNCTION;
 

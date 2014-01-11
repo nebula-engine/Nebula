@@ -42,7 +42,7 @@ namespace glutpp
 				int				i();
 				void				i(int);
 				//glutpp::scene::id_shared	id();
-				void				init(glutpp::scene::desc_shared);
+				void				init(glutpp::scene::desc_s);
 			protected:
 				unsigned int			f();
 				void				f(unsigned int);
@@ -51,10 +51,10 @@ namespace glutpp
 
 				void				render(
 						double,
-						glutpp::camera_shared,
-						glutpp::window::window_shared);
+						glutpp::camera_s,
+						glutpp::window::window_s);
 
-				int				draw(glutpp::window::window_shared);
+				int				draw(glutpp::window::window_s);
 
 				void				write_addr(gal::network::message_shared);
 			public:

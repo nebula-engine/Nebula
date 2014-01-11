@@ -17,7 +17,7 @@ glutpp::gui::layout::layout()
 {
 
 }
-glutpp::window::window_shared glutpp::gui::layout::get_window()
+glutpp::window::window_s glutpp::gui::layout::get_window()
 {
 	assert(!renderable_.expired());
 
@@ -81,7 +81,7 @@ void	glutpp::gui::layout::draw(){
 void	glutpp::gui::layout::connect(){
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	glutpp::window::window_shared w = get_window();
+	glutpp::window::window_s w = get_window();
 
 	/*conns_.key_fun_ = w->sig_.key_fun_.connect(
 	  std::bind(&glutpp::gui::layout::key_fun,

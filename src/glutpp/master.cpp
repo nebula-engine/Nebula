@@ -18,15 +18,14 @@ namespace glutpp {
 	master __master;
 }
 glutpp::master::master() {
-
-	printf("%s\n", __PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 
 	glfwInit();
 
 	glfwSetErrorCallback(static_error_fun);
 }
-glutpp::master::~master(){	printf("%s\n", __PRETTY_FUNCTION__);
-
+glutpp::master::~master(){
+	GLUTPP_DEBUG_0_FUNCTION;
 }
 unsigned int glutpp::master::master::f() {
 	return flag_;
@@ -34,59 +33,63 @@ unsigned int glutpp::master::master::f() {
 void glutpp::master::master::f(unsigned int flag) {
 	flag_ = flag;
 }
-glutpp::window::window_shared glutpp::master::get_window(GLFWwindow* window) {
+glutpp::window::window_s glutpp::master::get_window(GLFWwindow* window) {
 	auto w = windows_[window];
-	
+
 	if(w.expired()) {
-		return glutpp::window::window_shared();
+		return glutpp::window::window_s();
 	}
 	else {
 		return w.lock();
 	}
 }
 void	glutpp::master::static_error_fun(int error, char const * description) {
-	
 	printf("%s\n", description);
 	exit(0);
-
 }
 void glutpp::master::static_window_pos_fun(GLFWwindow* window, int x,int y){
 	auto w = __master.get_window(window);
-	
+	assert(w);
 	if(w) w->callback_window_pos_fun(window,x,y);
 }
 void glutpp::master::static_window_size_fun(GLFWwindow* window, int w, int h){
 	auto wnd = __master.get_window(window);
-
+	assert(w);
 	if(wnd) wnd->callback_window_size_fun(window,w,h);
 }
 void glutpp::master::static_window_close_fun(GLFWwindow* window){
 	auto w = __master.get_window(window);
-
+	assert(w);
 	if(w) w->callback_window_close_fun(window);
 }
 void glutpp::master::static_window_refresh_fun(GLFWwindow* window){
 	auto w = __master.get_window(window);
-
+	assert(w);
 	if(w) w->callback_window_refresh_fun(window);
 }
 void glutpp::master::static_mouse_button_fun(GLFWwindow* window, int button, int action, int mods){
+	GLUTPP_DEBUG_0_FUNCTION;
+	
 	auto w = __master.get_window(window);
-
+	assert(w);
 	if(w) w->callback_mouse_button_fun(window, button, action, mods);
 }
 void glutpp::master::static_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods){
-	auto w = __master.get_window(window);
+	GLUTPP_DEBUG_0_FUNCTION;
 
+	auto w = __master.get_window(window);
+	assert(w);
 	if(w) w->callback_key_fun(window, key, scancode, action, mods);
 }
-int glutpp::master::reg(glutpp::window::window_shared w) {
+int glutpp::master::reg(glutpp::window::window_s w) {
+	GLUTPP_DEBUG_0_FUNCTION;
 
-	printf("%s\n", __PRETTY_FUNCTION__);
-	
-	
-	
-	GLFWwindow* g = glfwCreateWindow(w->desc_->raw_.w_, w->desc_->raw_.h_, w->desc_->raw_.title_, NULL, NULL);
+	GLFWwindow* g = glfwCreateWindow(
+			w->desc_->raw_.w_,
+			w->desc_->raw_.h_,
+			w->desc_->raw_.title_,
+			NULL,
+			NULL);
 
 	if(g == NULL)
 	{
@@ -94,13 +97,13 @@ int glutpp::master::reg(glutpp::window::window_shared w) {
 		printf("error\n");
 		exit(EXIT_FAILURE);
 	}
-	
+
 	w->window_ = g;
-	
+
 	windows_[g] = w;
-	
+
 	glfwMakeContextCurrent(g);
-	
+
 	glfwSetWindowPosCallback(g, static_window_pos_fun);
 	glfwSetWindowSizeCallback(g, static_window_size_fun);
 	glfwSetWindowCloseCallback(g, static_window_close_fun);
@@ -123,10 +126,10 @@ int glutpp::master::reg(glutpp::window::window_shared w) {
 		printf("could not find freetype library\n");
 		exit(0);
 	}
-	
+
 	//if(all(glutpp::master::option::SHADERS)) create_programs();
 	create_programs();
-	
+
 	return 0;
 }
 int	glutpp::master::create_programs() {
@@ -149,7 +152,7 @@ int	glutpp::master::create_programs() {
 
 		p->add_uniform(glutpp::uniform_name::e::COLOR,"font_color");
 		p->add_uniform(glutpp::uniform_name::e::TEX,"tex");
-		
+
 		p->locate();
 
 		programs_[glutpp::program_name::TEXT] = p;
@@ -198,12 +201,12 @@ int	glutpp::master::create_programs() {
 		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
 		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
 
-	
+
 		p->locate();
 
 		programs_[glutpp::program_name::LIGHT] = p;
 	}
-	
+
 	//light and image
 	{
 		p.reset(new glutpp::glsl::program);
@@ -243,7 +246,7 @@ int	glutpp::master::create_programs() {
 		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
 		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
 
-	
+
 		p->locate();
 
 		programs_[glutpp::program_name::IMAGE] = p;

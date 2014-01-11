@@ -581,6 +581,30 @@ src/glutpp/light/light.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/light/light.cpp.s
 .PHONY : src/glutpp/light/light.cpp.s
 
+src/glutpp/light/raw.o: src/glutpp/light/raw.cpp.o
+.PHONY : src/glutpp/light/raw.o
+
+# target to build an object file
+src/glutpp/light/raw.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/light/raw.cpp.o
+.PHONY : src/glutpp/light/raw.cpp.o
+
+src/glutpp/light/raw.i: src/glutpp/light/raw.cpp.i
+.PHONY : src/glutpp/light/raw.i
+
+# target to preprocess a source file
+src/glutpp/light/raw.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/light/raw.cpp.i
+.PHONY : src/glutpp/light/raw.cpp.i
+
+src/glutpp/light/raw.s: src/glutpp/light/raw.cpp.s
+.PHONY : src/glutpp/light/raw.s
+
+# target to generate assembly for a file
+src/glutpp/light/raw.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/light/raw.cpp.s
+.PHONY : src/glutpp/light/raw.cpp.s
+
 src/glutpp/master.o: src/glutpp/master.cpp.o
 .PHONY : src/glutpp/master.o
 
@@ -845,6 +869,30 @@ src/glutpp/shape/desc.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shape/desc.cpp.s
 .PHONY : src/glutpp/shape/desc.cpp.s
 
+src/glutpp/shape/raw.o: src/glutpp/shape/raw.cpp.o
+.PHONY : src/glutpp/shape/raw.o
+
+# target to build an object file
+src/glutpp/shape/raw.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shape/raw.cpp.o
+.PHONY : src/glutpp/shape/raw.cpp.o
+
+src/glutpp/shape/raw.i: src/glutpp/shape/raw.cpp.i
+.PHONY : src/glutpp/shape/raw.i
+
+# target to preprocess a source file
+src/glutpp/shape/raw.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shape/raw.cpp.i
+.PHONY : src/glutpp/shape/raw.cpp.i
+
+src/glutpp/shape/raw.s: src/glutpp/shape/raw.cpp.s
+.PHONY : src/glutpp/shape/raw.s
+
+# target to generate assembly for a file
+src/glutpp/shape/raw.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/shape/raw.cpp.s
+.PHONY : src/glutpp/shape/raw.cpp.s
+
 src/glutpp/shape/shape.o: src/glutpp/shape/shape.cpp.o
 .PHONY : src/glutpp/shape/shape.o
 
@@ -1008,6 +1056,9 @@ help:
 	@echo "... src/glutpp/light/light.o"
 	@echo "... src/glutpp/light/light.i"
 	@echo "... src/glutpp/light/light.s"
+	@echo "... src/glutpp/light/raw.o"
+	@echo "... src/glutpp/light/raw.i"
+	@echo "... src/glutpp/light/raw.s"
 	@echo "... src/glutpp/master.o"
 	@echo "... src/glutpp/master.i"
 	@echo "... src/glutpp/master.s"
@@ -1041,6 +1092,9 @@ help:
 	@echo "... src/glutpp/shape/desc.o"
 	@echo "... src/glutpp/shape/desc.i"
 	@echo "... src/glutpp/shape/desc.s"
+	@echo "... src/glutpp/shape/raw.o"
+	@echo "... src/glutpp/shape/raw.i"
+	@echo "... src/glutpp/shape/raw.s"
 	@echo "... src/glutpp/shape/shape.o"
 	@echo "... src/glutpp/shape/shape.i"
 	@echo "... src/glutpp/shape/shape.s"

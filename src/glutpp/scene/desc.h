@@ -20,15 +20,11 @@ namespace glutpp
 				math::raw::vec3		gravity_;
 				//size_t			actor_size_;
 		};
-		struct addr: public gal::network::serializeable
-		{
-			void	write(gal::network::message_shared);
-			void	read(gal::network::message_shared);
-			size_t	size();
-			
-			void	load(glutpp::scene::scene_shared);
-			
-			gal::network::vector<int>	vec_;
+		
+		typedef gal::network::vector<int> vec_int;
+		
+		struct addr: gal::network::serial_ext<vec_int> {
+			void	load(glutpp::scene::scene_s);
 		};
 		class desc
 		{
@@ -37,7 +33,7 @@ namespace glutpp
 				
 				void		load(char const *);
 				void		load(tinyxml2::XMLElement*);
-				void		load(glutpp::scene::scene_shared);
+				void		load(glutpp::scene::scene_s);
 				
 				void		write(gal::network::message_shared);
 				void		read(gal::network::message_shared);

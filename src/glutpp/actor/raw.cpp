@@ -1,13 +1,11 @@
 #include <math/free.h>
 
-#include <glutpp/actor/desc.h>
+#include <glutpp/actor/raw.h>
 
 glutpp::actor::raw::raw():
-	flag_(0)
+	flag_(0),
+	density_(200)
 {
-	pose_.from_math(math::transform());
-	
-	
 }
 void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	
@@ -49,8 +47,8 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	math::vec3 p = math::xml_parse_vec3(element->FirstChildElement("p"), math::vec3(0,0,0));
 	math::quat q = math::xml_parse_quat(element->FirstChildElement("q"));
 	
-	pose_.p.from_math(p);
-	pose_.q.from_math(q);
+	pose_.p = p;
+	pose_.q = q;
 
 	p.print();
 	q.print();	
@@ -79,24 +77,18 @@ void glutpp::actor::raw::plane(tinyxml2::XMLElement* element) {
 	
 	math::transform pose(n * -1.0f * d, q);
 	
-	n_.from_math(n);
+	n_ = n;
 	d_ = d;
 	
-
-	pose_.from_math(pose);
-
+	pose_ = pose;
 }
 void glutpp::actor::raw::controller(tinyxml2::XMLElement* element) {
 
 	printf("%s\n",__FUNCTION__);
-	
-	pose_.p.from_math(math::xml_parse_vec3(element->FirstChildElement("p"), math::vec3(0,0,0)));
+		
+	pose_.p = math::xml_parse_vec3(element->FirstChildElement("p"), math::vec3(0,0,0));
 }
 
-
-void glutpp::actor::raw::write(gal::network::message_shared msg) {
-	msg->write(this, sizeof(glutpp::actor::raw));
-}
 
 
 

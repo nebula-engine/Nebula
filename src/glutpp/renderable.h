@@ -17,12 +17,12 @@ namespace glutpp
 		public std::enable_shared_from_this<glutpp::renderable>
 	{
 		public:
-			renderable(glutpp::window::window_shared);
+			renderable(glutpp::window::window_s);
 			renderable&			operator=(renderable const &);
-			void				init(glutpp::window::window_shared);
-			glutpp::window::window_shared	get_window();
+			void				init(glutpp::window::window_s);
+			glutpp::window::window_s	get_window();
 			
-			void				render(double, glutpp::window::window_shared);
+			void				render(double, glutpp::window::window_s);
 			
 			void				resize(int,int);
 			
@@ -32,11 +32,11 @@ namespace glutpp
 			unsigned int			flag_;
 		
 		
-			glutpp::window::window_weak	window_;
+			glutpp::window::window_w	window_;
 		public:
-			glutpp::scene::scene_shared	scene_;
-			glutpp::gui::layout_shared	layout_;
-			glutpp::camera_shared		camera_;
+			glutpp::scene::scene_s		scene_;
+			glutpp::gui::layout_s		layout_;
+			glutpp::camera_s		camera_;
 	};
 }
 

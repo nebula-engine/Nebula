@@ -13,11 +13,12 @@
 void glutpp::actor::desc::load(tinyxml2::XMLElement* element) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
-	raw_.load(element);
+	get_raw()->load(element);
 	
 	// shapes
 	tinyxml2::XMLElement* element_shape = element->FirstChildElement("shape");
-	glutpp::shape::desc_shared sd;
+
+	glutpp::shape::desc_s sd;
 
 	while(element_shape != NULL)
 	{
@@ -25,20 +26,21 @@ void glutpp::actor::desc::load(tinyxml2::XMLElement* element) {
 
 		sd->load(element_shape);
 
-		shapes_.vec_.push_back(std::make_tuple(sd));
+		get_shapes()->vec_.push_back(std::make_tuple(sd));
 
 		element_shape = element->NextSiblingElement("shape");
 	}
 
 }
-void glutpp::actor::desc::load(glutpp::actor::actor_shared actor) {
+void glutpp::actor::desc::load(glutpp::actor::actor_s actor) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
-	i_ = actor->i_;
-	raw_ = actor->raw_;
+	get_id()->i_ = actor->i_;
+
+	*get_raw() = actor->raw_;
 
 	// shape
-	glutpp::shape::desc_shared sd;
+	glutpp::shape::desc_s sd;
 	for(auto it = actor->shapes_.begin(); it != actor->shapes_.end(); ++it)
 	{
 		auto shape = it->second;
@@ -47,11 +49,11 @@ void glutpp::actor::desc::load(glutpp::actor::actor_shared actor) {
 		
 		sd->load(shape);
 		
-		shapes_.vec_.push_back(std::make_tuple(sd));
+		get_shapes()->vec_.push_back(std::make_tuple(sd));
 	}
 
 	// actor
-	glutpp::actor::desc_shared ad;
+	glutpp::actor::desc_s ad;
 	for(auto it = actor->actors_.begin(); it != actor->actors_.end(); ++it)
 	{
 		auto a = it->second;
@@ -60,49 +62,35 @@ void glutpp::actor::desc::load(glutpp::actor::actor_shared actor) {
 		
 		ad->load(a);
 		
-		actors_.vec_.push_back(std::make_tuple(ad));
+		get_actors()->vec_.push_back(std::make_tuple(ad));
 	}
 
 }
-void glutpp::actor::desc::read(gal::network::message_shared msg) {
-
-	printf("%s\n",__PRETTY_FUNCTION__);
-
-	msg->read(&i_, sizeof(int));
-
-	msg->read(&raw_, sizeof(glutpp::actor::raw));
-
-	shapes_.read(msg);
-	actors_.read(msg);
-
-	printf("shape_size_ = %i\n", (int)shapes_.vec_.size());
-	printf("actor_size_ = %i\n", (int)actors_.vec_.size());
+glutpp::actor::id_s glutpp::actor::desc::get_id() {
+	auto p = std::get<3>(tup_);
+	assert(p);
+	return p;
 }
-void glutpp::actor::desc::write(gal::network::message_shared msg) {
-	GLUTPP_DEBUG_0_FUNCTION;
-
-	msg->write(&i_, sizeof(int));
-
-	msg->write(&raw_, sizeof(glutpp::actor::raw));
-
-	shapes_.write(msg);
-	actors_.write(msg);
-
-	printf("shape_size_ = %i\n", (int)shapes_.vec_.size());
-	printf("actor_size_ = %i\n", (int)actors_.vec_.size());
+glutpp::actor::raw_s glutpp::actor::desc::get_raw() {
+	auto p = std::get<2>(tup_);
+	assert(p);
+	return p;
 }
-size_t glutpp::actor::desc::size() {
-	GLUTPP_DEBUG_0_FUNCTION;
-
-	size_t s;
-
-	s += sizeof(int);
-	s += sizeof(glutpp::actor::raw);
-	s += shapes_.size();
-	s += actors_.size();
-
-	return s;
+glutpp::actor::vec_actor_desc_s glutpp::actor::desc::get_actors() {
+	auto p = std::get<1>(tup_);
+	assert(p);
+	return p;
 }
+glutpp::actor::vec_shape_desc_s glutpp::actor::desc::get_shapes() {
+	auto p = std::get<0>(tup_);
+	assert(p);
+	return p;
+}
+
+
+
+
+
 
 
 

@@ -22,7 +22,7 @@ glutpp::gui::object::object::object():
 void glutpp::gui::object::object::i(int ni) {
 	i_ = ni;
 }
-glutpp::window::window_shared get_window() {
+glutpp::window::window_s get_window() {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	printf("not yet supported");
 	exit(0);

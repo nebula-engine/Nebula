@@ -46,7 +46,7 @@ void glutpp::scene::desc::load(tinyxml2::XMLElement* element) {
 	
 	while(e)
 	{
-		glutpp::actor::desc_shared ad(new glutpp::actor::desc);
+		glutpp::actor::desc_s ad(new glutpp::actor::desc);
 		
 		ad->load(e);
 		
@@ -55,7 +55,7 @@ void glutpp::scene::desc::load(tinyxml2::XMLElement* element) {
 		e = e->NextSiblingElement("actor");
 	}
 }
-void glutpp::scene::desc::load(glutpp::scene::scene_shared scene) {
+void glutpp::scene::desc::load(glutpp::scene::scene_s scene) {
 
 	i_ = scene->i_;
 	raw_ = scene->raw_;
@@ -64,17 +64,14 @@ void glutpp::scene::desc::load(glutpp::scene::scene_shared scene) {
 	{
 		auto actor = it->second;
 		
-		glutpp::actor::desc_shared ad(new glutpp::actor::desc);
+		glutpp::actor::desc_s ad(new glutpp::actor::desc);
 		
 		ad->load(actor);
 		
 		actors_.vec_.push_back(std::make_tuple(ad));
 	}
-	
-	
-	
 }
-void glutpp::scene::desc::write(gal::network::message_shared msg) {
+void glutpp::scene::desc::write(gal::network::message_s msg) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	assert(msg);
@@ -108,7 +105,7 @@ void glutpp::scene::desc::write(gal::network::message_shared msg) {
 	   msg->set(data, len);
 	 */
 }
-void glutpp::scene::desc::read(gal::network::message_shared msg) {
+void glutpp::scene::desc::read(gal::network::message_s msg) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	msg->write(&raw_, sizeof(glutpp::scene::raw));
@@ -118,7 +115,7 @@ void glutpp::scene::desc::read(gal::network::message_shared msg) {
 	// actors
 	for(size_t i = 0; i < raw_.actor_size_; ++i)
 	{
-	glutpp::actor::desc_shared ad(new glutpp::actor::desc);
+	glutpp::actor::desc_s ad(new glutpp::actor::desc);
 
 	ad->read(head);
 

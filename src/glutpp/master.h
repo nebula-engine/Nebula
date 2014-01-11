@@ -51,7 +51,7 @@ namespace glutpp
 			master();
 			~master();
 
-			template <class U> std::shared_ptr<U>	create_window(glutpp::window::desc_shared wd)
+			template <class U> std::shared_ptr<U>	create_window(glutpp::window::desc_s wd)
 			{
 				std::shared_ptr<U> u(new U(wd));
 				
@@ -62,8 +62,8 @@ namespace glutpp
 				return u;
 			}
 			
-			window::window_shared		get_window(GLFWwindow*);
-			int				reg(window::window_shared);
+			window::window_s		get_window(GLFWwindow*);
+			int				reg(window::window_s);
 
 
 
@@ -88,7 +88,7 @@ namespace glutpp
 			unsigned int						flag_;
 			
 			GLFWwindow*						currentIdleWindow_;
-			std::map<GLFWwindow*,window::window_weak>		windows_;
+			std::map<GLFWwindow*,window::window_w>			windows_;
 
 
 			std::map<int, std::shared_ptr<glutpp::glsl::program> >	programs_;

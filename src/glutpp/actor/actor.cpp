@@ -63,8 +63,8 @@ void glutpp::actor::actor::i(int ni) {
 int glutpp::actor::actor::i() {
 	return i_;
 }
-void glutpp::actor::actor::init(glutpp::actor::desc_shared desc) {
-	raw_ = desc->raw_;
+void glutpp::actor::actor::init(glutpp::actor::desc_s desc) {
+	raw_ = *desc->get_raw();
 }
 unsigned int glutpp::actor::actor::f() {
 	return raw_.flag_;
@@ -131,7 +131,7 @@ void glutpp::actor::actor::release() {
 }
 math::mat44 glutpp::actor::actor::get_pose() {
 
-	math::mat44 m(raw_.pose_.to_math());
+	math::mat44 m = raw_.pose_;
 
 	if(!actor_.expired())
 	{
@@ -162,11 +162,11 @@ std::shared_ptr<glutpp::scene::scene> glutpp::actor::actor::get_scene() {
 
 	return scene_.lock();
 }
-void glutpp::actor::actor::draw(glutpp::window::window_shared window) {
+void glutpp::actor::actor::draw(glutpp::window::window_s window) {
 	
 	GLUTPP_DEBUG_1_FUNCTION;
 	
-	math::mat44 model(raw_.pose_.to_math());
+	math::mat44 model(raw_.pose_);
 	
 	for(auto it = shapes_.begin(); it != shapes_.end(); ++it)
 	{

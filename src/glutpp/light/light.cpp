@@ -8,7 +8,7 @@
 #include <glutpp/scene/scene.h>
 #include <glutpp/shape/shape.h>
 
-glutpp::light::light::light(glutpp::shape::shape_shared shape):
+glutpp::light::light::light(glutpp::shape::shape_s shape):
 	shape_(shape)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -19,12 +19,15 @@ unsigned int glutpp::light::light::f() {
 void glutpp::light::light::f(unsigned int flag) {
 	raw_.flag_ = flag;
 }
-void	glutpp::light::light::init(glutpp::scene::scene_shared scene, glutpp::light::desc_shared desc) {
+void	glutpp::light::light::init(glutpp::scene::scene_s scene, glutpp::light::desc_s desc) {
 	GLUTPP_DEBUG_0_FUNCTION;
+	
+	assert(scene);
+	assert(desc);
 	
 	scene_ = scene;
 	
-	
+	raw_ = desc->raw_;
 	
 	/*
 	camera_.fovy_ = 45.0f;

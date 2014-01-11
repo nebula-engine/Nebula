@@ -7,7 +7,7 @@ glutpp::camera_free::camera_free():
 	center_(0.0f,0.0f,0.0f),
 	up_(0.0f,1.0f,0.0f)
 {}
-void	glutpp::camera_free::init(glutpp::window::window_shared window)
+void	glutpp::camera_free::init(glutpp::window::window_s window)
 {
 	window_ = window;
 /*

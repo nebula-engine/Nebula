@@ -118,58 +118,52 @@ namespace glutpp
 	{	
 		struct raw;
 		class desc;
-		typedef std::shared_ptr<desc>		desc_shared;
+		typedef std::shared_ptr<desc>		desc_s;
 		class window;
-		typedef std::shared_ptr<window>		window_shared;
-		typedef std::weak_ptr<window>		window_weak;
-		typedef gal::map<window>		window_map;
+		typedef std::shared_ptr<window>		window_s;
+		typedef std::weak_ptr<window>		window_w;
+		typedef gal::map<window>		window_m;
 	}
 
-	class renderable;
-	typedef std::shared_ptr<renderable>	renderable_shared;
-	typedef std::weak_ptr<renderable>	renderable_weak;
-	
+
 	namespace scene
 	{
 		struct raw;
-		
+
 		struct id;
-		typedef std::shared_ptr<id>	id_shared;
-		
+		typedef std::shared_ptr<id>	id_s;
+
+		struct addr;
+		typedef std::shared_ptr<addr>	addr_s;
+
 		class desc;
-		typedef std::shared_ptr<desc>	desc_shared;
-		
+		typedef std::shared_ptr<desc>	desc_s;
+
 		class scene;
-		typedef std::shared_ptr<scene>	scene_shared;
-		typedef std::weak_ptr<scene>	scene_weak;
+		typedef std::shared_ptr<scene>	scene_s;
+		typedef std::weak_ptr<scene>	scene_w;
 	}
-
-
-	class camera;
-	typedef std::shared_ptr<camera> camera_shared;
-
 	namespace actor
 	{
-		struct raw;
-		typedef std::shared_ptr<raw>		raw_shared;
-		typedef gal::network::vector<raw>	raw_vec;
-		
+		struct id;
+		typedef std::shared_ptr<id>		id_s;
+
 		struct addr;
-		typedef std::shared_ptr<addr>		addr_shared;
-		
-		struct addr_raw;
-		typedef std::shared_ptr<addr_raw>	addr_raw_shared;
-		typedef gal::network::vector<raw>	addr_raw_vec;
-		
+		typedef std::shared_ptr<addr>		addr_s;
+
+		struct raw;
+		typedef std::shared_ptr<raw>		raw_s;
+		typedef gal::network::vector<raw>	raw_v;
+
 		class desc;
-		typedef std::shared_ptr<desc>		desc_shared;
+		typedef std::shared_ptr<desc>		desc_s;
 
 		class actor;
-		typedef std::shared_ptr<actor>		actor_shared;
-		typedef std::weak_ptr<actor>		actor_weak;
-		typedef gal::map<actor>			actor_map;
+		typedef std::shared_ptr<actor>		actor_s;
+		typedef std::weak_ptr<actor>		actor_w;
+		typedef gal::map<actor>			actor_m;
 	}
-
+	
 	namespace shape
 	{
 
@@ -180,28 +174,32 @@ namespace glutpp
 			SPHERE,
 			EMPTY
 		};
-
+		
+		struct id;
+		typedef std::shared_ptr<id>		id_s;
+		
 		struct raw;
+		typedef std::shared_ptr<raw>		raw_s;
 
 		class desc;
-		typedef std::shared_ptr<desc>		desc_shared;
+		typedef std::shared_ptr<desc>		desc_s;
 
 		class shape;
-		typedef std::shared_ptr<shape>		shape_shared;
-		typedef std::weak_ptr<shape>		shape_weak;
-		typedef gal::map<shape>			shape_map;
+		typedef std::shared_ptr<shape>		shape_s;
+		typedef std::weak_ptr<shape>		shape_w;
+		typedef gal::map<shape>			shape_m;
 	}
 	namespace light
 	{
 		struct raw;
 
 		class desc;
-		typedef std::shared_ptr<desc>		desc_shared;
+		typedef std::shared_ptr<desc>		desc_s;
 
 		class light;
-		typedef std::shared_ptr<light>		light_shared;
-		typedef std::shared_ptr<light>		light_weak;
-		typedef gal::map<light>			light_map;
+		typedef std::shared_ptr<light>		light_s;
+		typedef std::shared_ptr<light>		light_w;
+		typedef gal::map<light>			light_m;
 	}
 	namespace glsl
 	{
@@ -210,20 +208,25 @@ namespace glutpp
 	namespace gui
 	{
 		class layout;
-		typedef std::shared_ptr<layout>		layout_shared;
-		typedef gal::map<layout>		layout_map;
+		typedef std::shared_ptr<layout>		layout_s;
+		typedef gal::map<layout>		layout_m;
 
 		namespace object
 		{
 			class object;
 			class object_factory;
-			typedef std::shared_ptr<object>		object_shared;
-			typedef gal::map<object>		object_map;
+			typedef std::shared_ptr<object>		object_s;
+			typedef gal::map<object>		object_m;
 		}
 	}
 	class texture;
+	class camera;
+	typedef std::shared_ptr<camera> camera_s;
 
 
+	class renderable;
+	typedef std::shared_ptr<renderable>	renderable_shared;
+	typedef std::weak_ptr<renderable>	renderable_weak;
 
 
 

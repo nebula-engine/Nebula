@@ -5,28 +5,24 @@
 #include <math/raw/raw.h>
 
 #include <glutpp/scene/desc.h>
-#include <glutpp/actor/actor_base.h>
+#include <glutpp/actor/actor.h>
 
 namespace glutpp
 {
 	namespace actor
 	{
-		class addr
-		{
+		typedef gal::network::vector<int> vec_int;
+		typedef std::shared_ptr<vec_int> vec_int_s;
+		
+		class addr: public gal::network::serial_ext<vec_int, glutpp::scene::addr> {
 			public:
-				void			load(glutpp::actor::actor_shared);
+				void			load(glutpp::actor::actor_s);
 
 
-				size_t			size();
-				void			write(gal::network::message_shared);
-				void			read(gal::network::message_shared);
-			
-				
 				//glutpp::actor::actor_shared	actor_;
 				
-				glutpp::scene::addr		scene_addr_;
-				
-				gal::network::vector<int>	vec_;
+				glutpp::scene::addr_s	get_scene_addr();
+				vec_int_s		get_vec();
 		};
 	}
 }

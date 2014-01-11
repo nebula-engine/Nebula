@@ -8,7 +8,7 @@
 #include <math/vec4.h>
 #include <math/color.h>
 
-#include <gal/network/serializeable.h>
+#include <gal/network/serial.h>
 
 #include <glutpp/config.h>
 
@@ -16,7 +16,7 @@ namespace glutpp
 {
 	namespace light
 	{
-		struct raw
+		struct raw: gal::network::serial<raw>
 		{
 			raw();
 			void			load(tinyxml2::XMLElement*);
@@ -42,18 +42,22 @@ namespace glutpp
 			float			atten_linear_;
 			float			atten_quad_;
 		};
-		class desc
+
+		class id: public gal::network::serial<id>
+		{
+			public:
+				int i_;
+		};
+
+		class desc: public gal::network::serial_ext<raw, id>
 		{
 			public:
 				desc();
-				void		load(glutpp::light::light_shared);
+				void		load(glutpp::light::light_s);
 
 
-				
-				void		write(gal::network::message_shared);
-				void		read(gal::network::message_shared);
-				size_t		size();
-				
+
+
 				int		i_;
 				raw		raw_;
 		};

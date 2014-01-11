@@ -1,7 +1,7 @@
 #include <glutpp/scene/scene.h>
 #include <glutpp/actor/actor.h>
 
-void glutpp::actor::addr::load(glutpp::actor::actor_shared actor) {
+void glutpp::actor::addr::load(glutpp::actor::actor_s actor) {
 	assert(actor);
 	
 	
@@ -11,26 +11,24 @@ void glutpp::actor::addr::load(glutpp::actor::actor_shared actor) {
 	}
 	else
 	{
-		scene_addr_.load(actor->get_scene());
+		get_scene_addr()->load(actor->get_scene());
 	}
 	
 	int i = actor->i();
-	vec_.vec_.push_back(i);
-	
-}
-
-
-
-void glutpp::actor::addr::write(gal::network::message_shared msg) {
-	
-	vec_.write(msg);
-}
-void glutpp::actor::addr::read(gal::network::message_shared msg) {
-
-	vec_.read(msg);
-}
-size_t glutpp::actor::addr::size() {
+	get_vec()->vec_.push_back(i);
 
 }
+glutpp::scene::addr_s glutpp::actor::addr::get_scene_addr() {
+	auto p = std::get<1>(tup_);
+	assert(p);
+	return p;
+}
+glutpp::actor::vec_int_s glutpp::actor::addr::get_vec() {
+	auto p = std::get<0>(tup_);
+	assert(p);
+	return p;
+
+}
+
 
 

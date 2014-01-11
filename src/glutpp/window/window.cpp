@@ -59,17 +59,17 @@ void	checkerror(char const * msg) {
 
 
 
-glutpp::window::window::window(glutpp::window::desc_shared desc):
+glutpp::window::window::window(glutpp::window::desc_s desc):
 	desc_(desc)
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 
 	printf(GLUTPP_INSTALL_DIR);
 	printf("\n");
 
 }
 glutpp::window::window::~window() {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 
 	glfwDestroyWindow(window_);
 }
@@ -80,8 +80,7 @@ void glutpp::window::window::f(unsigned int flag) {
 	desc_->raw_.flag_ = flag;
 }
 void	glutpp::window::window::init() {
-
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 
 	//printf("%s\n",glGetString(GL_SHADING_LANGUAGE_VERSION));
 
@@ -104,18 +103,23 @@ void	glutpp::window::window::init() {
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_NORMALIZE);
-	
-	
+
+
 	renderable_.reset(new glutpp::renderable(shared_from_this()));
 	renderable_->init(shared_from_this());
 
 	checkerror("unknown");
 }
 void	glutpp::window::window::render(double time) {
+	GLUTPP_DEBUG_1_FUNCTION;
 
 	glfwMakeContextCurrent(window_);
 
-	if(renderable_) renderable_->render(time, shared_from_this());
+	if(renderable_) {
+		renderable_->render(time, shared_from_this());
+	} else {
+		printf("no renderable\n");
+	}
 
 	glFinish();
 	glfwSwapBuffers(window_);
@@ -123,7 +127,6 @@ void	glutpp::window::window::render(double time) {
 void	glutpp::window::window::callback_window_refresh_fun(GLFWwindow*) {
 }
 int glutpp::window::window::step(double time) {
-
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	if(glfwWindowShouldClose(window_))

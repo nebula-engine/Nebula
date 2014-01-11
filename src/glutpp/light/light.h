@@ -36,11 +36,11 @@ namespace glutpp
 					SHOULD_DELETE = 1 << 0
 				};
 
-				light(glutpp::shape::shape_shared);
+				light(glutpp::shape::shape_s);
 				void				i(int);
 				void				init(
-						glutpp::scene::scene_shared,
-						glutpp::light::desc_shared);
+						glutpp::scene::scene_s,
+						glutpp::light::desc_s);
 
 				virtual void			release();
 				virtual void			cleanup();
@@ -56,8 +56,6 @@ namespace glutpp
 
 				math::mat44			get_pose();
 				math::vec4			get_pos();
-
-				desc_shared			desc_generate();
 			private:
 				unsigned int			f();
 				void				f(unsigned int);
@@ -68,8 +66,8 @@ namespace glutpp
 
 				texture				texture_shadow_map_;
 
-				glutpp::scene::scene_weak	scene_;
-				glutpp::shape::shape_weak	shape_;
+				glutpp::scene::scene_w		scene_;
+				glutpp::shape::shape_w		shape_;
 
 		};
 	}

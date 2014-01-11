@@ -26,15 +26,17 @@ namespace glutpp
 			typedef gal::network::serial_ext<
 				vec_addr_raw>
 					ser_update;
-
+			
+			
+			
 			struct create: ser_create {
-				void load(glutpp::actor::actor_shared);
+				void load(glutpp::actor::actor_s);
 			};
 
 			struct update: ser_update {
 				typedef vec_addr_raw::tuple tuple;
 
-				void load(glutpp::actor::actor_shared);
+				void load(glutpp::actor::actor_s);
 			};
 		}
 		namespace scene {
@@ -44,7 +46,7 @@ namespace glutpp
 					ser_create;
 			
 			struct create: ser_create {
-				void load(glutpp::scene::scene_shared);
+				void load(glutpp::scene::scene_s);
 			};
 		}
 	}

@@ -35,7 +35,7 @@ namespace glutpp
 				int          windowID;
 
 			public:
-				window(glutpp::window::desc_shared);
+				window(glutpp::window::desc_s);
 				//window(int, int, int, int, const char * );
 				~window();
 				void			i(int);
@@ -83,7 +83,7 @@ namespace glutpp
 					gal::sig::signal<int,int,int>		mouse_button_fun_;
 				} sig_;
 
-				glutpp::window::desc_shared	desc_;
+				glutpp::window::desc_s		desc_;
 
 				/*				char const *			title_;
 								int				w_;
