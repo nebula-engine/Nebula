@@ -25,10 +25,14 @@ glutpp::window::window_shared neb::app::create_window(int w, int h, int x, int y
 	
 	auto window = glutpp::__master.create_window<glutpp::window::window>(wd);
 	
+	printf("window use count = %i\n", (int)window.use_count());
+	
 	window->resize();
 	
 	windows_.push_back(window);
-	
+
+	printf("window use count = %i\n", (int)window.use_count());
+
 	return window;
 }
 void neb::app::load_scene_local(glutpp::scene::desc_shared sd) {
@@ -98,15 +102,14 @@ int neb::app::step(double time) {
 
 	std::shared_ptr<neb::scene::scene> scene;
 
-	for(auto it = scenes_.begin(); it != scenes_.end(); ++it)
-	{
+	for(auto it = scenes_.begin(); it != scenes_.end(); ++it) {
 		scene = it->second;
-
+		
 		assert(scene);
-
+		
 		scene->step(time);
 	}
-
+	
 	return 0;
 }
 int	neb::app::loop() {
@@ -125,32 +128,31 @@ int	neb::app::loop() {
 		auto s = scenes_.begin();
 		while(s != scenes_.end())
 		{
-			assert(s->second);
-			s->second->step(time);
+			auto scene = s->second;
+			assert(scene);
+			
+			scene->step(time);
+			
 			s++;
 		}	
 
-		// windows		
+		// windows
 		auto it = windows_.begin();
 		while(it != windows_.end())
 		{
 			assert(it->second);
 			r = it->second->step(time);
-
-			if(r)
-			{
+			
+			if(r) {
 				printf("erase\n");
-				windows_.erase(it);
-				break;
+				it = windows_.erase(it);
 			}
-			else
-			{
+			else {
 				it++;
 			}
 		}
-
+		
 		glfwPollEvents();
-
 	}
 
 	return 0;

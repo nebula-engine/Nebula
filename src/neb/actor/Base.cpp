@@ -129,7 +129,7 @@ int	neb::actor::Base::fire() {
 	
 	auto me = std::dynamic_pointer_cast<neb::actor::Actor>(shared_from_this());
 	
-	scene->create_actor(desc);
+	scene->create_actor_local(desc);
 	
 	return 1;
 }

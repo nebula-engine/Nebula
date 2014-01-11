@@ -11,10 +11,10 @@ math::mat44	neb::camera_ridealong::supply()
 	}
 	
 	auto actor = actor_.lock();
-
+	
 	if(actor->all(glutpp::actor::actor::flag::SHOULD_DELETE))
 	{
-		abort();
+		return math::mat44();
 	}
 	
 	

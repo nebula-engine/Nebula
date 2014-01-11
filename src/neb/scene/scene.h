@@ -53,10 +53,10 @@ namespace neb
 				
 
 				void			create_actors(glutpp::scene::desc_shared);
-				
+			private:	
 				base_t			create_actor(
 						glutpp::actor::desc_shared);
-				
+			public:
 				base_t			create_actor_local(
 						glutpp::actor::desc_shared);
 

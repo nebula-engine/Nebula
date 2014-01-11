@@ -17,7 +17,7 @@ void	neb::user::connect(glutpp::window::window_shared w)
 	assert(w);
 	assert(actor);
 
-	printf("actor ref count = %i\n", (int)actor.use_count());
+	//printf("actor ref count = %i\n", (int)actor.use_count());
 	
 	
 	actor->conn_.key_fun_ = w->sig_.key_fun_.connect(std::bind(
@@ -28,7 +28,7 @@ void	neb::user::connect(glutpp::window::window_shared w)
 				std::placeholders::_3,
 				std::placeholders::_4));
 	
-	printf("actor ref count = %i\n", (int)actor.use_count());
+	//printf("actor ref count = %i\n", (int)actor.use_count());
 
 	
 	assert(actor->conn_.key_fun_);
@@ -44,12 +44,12 @@ int	neb::user::set_actor(std::shared_ptr<neb::actor::Base> actor, neb::camera_ty
 
 	std::shared_ptr<neb::camera_ridealong> ride(new neb::camera_ridealong);
 
-	printf("actor ref count = %i\n", (int)actor.use_count());
+	//printf("actor ref count = %i\n", (int)actor.use_count());
 	
 	actor_ = actor;
 	camera_control_ = ride;
 
-	printf("actor ref count = %i\n", (int)actor.use_count());
+	//printf("actor ref count = %i\n", (int)actor.use_count());
 
 	ride->actor_ = actor_;
 

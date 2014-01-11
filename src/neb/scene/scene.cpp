@@ -103,10 +103,10 @@ neb::actor::Base_shared neb::scene::scene::create_actor_local(glutpp::actor::des
 	int type = glutpp::network::type::ACTOR_CREATE;
 	msg->write(&type, sizeof(int));
 	
-	glutpp::network::actor::create actor_create;
+	std::shared_ptr<glutpp::network::actor::create> actor_create(new glutpp::network::actor::create);
 	
-	actor_create.load(actor);
-	actor_create.write(msg);
+	actor_create->load(actor);
+	actor_create->write(msg);
 	
 	app->server_->write(msg);
 
@@ -248,7 +248,6 @@ neb::scene::scene::vehicle_t neb::scene::scene::create_vehicle() {
 }
 */
 void neb::scene::scene::create_physics() {
-
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	auto pxphysics = neb::__physics.px_physics_;
@@ -297,8 +296,6 @@ void neb::scene::scene::create_physics() {
 #endif
 	assert( scene_desc.isValid() );
 
-
-
 	px_scene_ = pxphysics->createScene(scene_desc);
 	assert(px_scene_);
 
@@ -330,21 +327,17 @@ void neb::scene::scene::step(double time) {
 	while(it != actors_.map_.end())
 	{
 		std::shared_ptr<glutpp::actor::actor> actor = it->second;
-
+		
 		assert(actor);
-
+		
 		actor->cleanup();
-
-		if(actor->any(glutpp::light::light::flag::SHOULD_DELETE))
-		{
+		
+		if(actor->any(glutpp::light::light::flag::SHOULD_DELETE)) {
 			actor->release();
-
-			actors_.map_.erase(it);
-
-			break;
+			
+			it = actors_.map_.erase(it);
 		}
-		else
-		{
+		else {
 			++it;
 		}
 	}
@@ -380,18 +373,24 @@ void neb::scene::scene::step_local(double time) {
 	math::transform pose;
 
 	// update each render object with the new transform
-	for(physx::PxU32 i = 0; i < nb_active_transforms; ++i)
-	{
+	for(physx::PxU32 i = 0; i < nb_active_transforms; ++i) {
 		//physx::PxActor* px_actor = active_transforms[i].actor;
-
+		
 		//printf( "actor type = %i\n", px_actor->getType() );
 
 		physx::PxActor* pxactor = active_transforms[i].actor;
-
-		neb::actor::Actor* actor = static_cast<neb::actor::Actor*>(active_transforms[i].userData);
-
+		
+		assert(pxactor);
+		
+		void* ud = active_transforms[i].userData;
+		assert(ud);
+		
+		
+		
+		neb::actor::Actor* actor = dynamic_cast<neb::actor::Actor*>((glutpp::actor::actor*)ud);
+		
 		assert(actor);
-
+		
 		pose = active_transforms[i].actor2World;
 		actor->set_pose(pose);
 
@@ -400,6 +399,8 @@ void neb::scene::scene::step_local(double time) {
 		{
 			neb::actor::Rigid_Body* rigidbody =
 				dynamic_cast<neb::actor::Rigid_Body*>(actor);
+
+			assert(rigidbody);
 
 			rigidbody->velocity_ = pxrigidbody->getLinearVelocity();
 		}
@@ -475,12 +476,10 @@ void neb::scene::scene::read(neb::active_transform::set* ats) {
 		{
 			auto a = actor_it->second;
 
-			if(a)
-			{
+			if(a) {
 				a->raw_.pose_ = n->raw_.pose_;
 			}
-			else
-			{
+			else {
 				printf("actor is NULL\n");
 			}
 		}
