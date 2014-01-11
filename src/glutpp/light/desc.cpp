@@ -22,6 +22,7 @@ glutpp::light::raw::raw() {
 
 }
 void	glutpp::light::raw::load(tinyxml2::XMLElement* element) {
+	GLUTPP_DEBUG_0_FUNCTION;
 
 	pos_.from_math(math::xml_parse_vec4(element->FirstChildElement("p")));
 	
@@ -40,9 +41,9 @@ void	glutpp::light::raw::print() {
 	printf("ambient_               = % 2.1f % 2.1f % 2.1f % 2.1f\n",
 			ambient_.r, ambient_.g, ambient_.b, ambient_.a);
 	printf("diffuse_               = % 2.1f % 2.1f % 2.1f % 2.1f\n",
-			ambient_.r, ambient_.g, ambient_.b, ambient_.a);
+			diffuse_.r, diffuse_.g, diffuse_.b, diffuse_.a);
 	printf("specular_              = % 2.1f % 2.1f % 2.1f % 2.1f\n",
-			ambient_.r, ambient_.g, ambient_.b, ambient_.a);
+			specular_.r, specular_.g, specular_.b, specular_.a);
 	printf("spot_direction_        = % 2.1f % 2.1f % 2.1f\n",
 			spot_direction_.x, spot_direction_.y, spot_direction_.z);
 	printf("spot_cutoff_           = % 2.1f\n", spot_cutoff_);
@@ -61,6 +62,8 @@ glutpp::light::desc::desc() {
 void glutpp::light::desc::load(glutpp::light::light_shared light) {
 	i_ = light->i_;
 	raw_ = light->raw_;
+	
+	raw_.print();
 }
 void glutpp::light::desc::write(gal::network::message_shared msg) {
 	printf("%s\n",__PRETTY_FUNCTION__);
