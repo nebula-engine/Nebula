@@ -50,7 +50,7 @@ void neb::scene::scene::create_actors(glutpp::scene::desc_shared desc) {
 
 	for(auto it = desc->actors_.vec_.begin(); it != desc->actors_.vec_.end(); ++it)
 	{
-		create_actor(std::get<0>(*it));
+		create_actor_local(std::get<0>(*it));
 	}
 }
 neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::desc_shared desc) {
@@ -92,6 +92,8 @@ neb::actor::Base_shared neb::scene::scene::create_actor(glutpp::actor::desc_shar
 	return actor;	
 }
 neb::actor::Base_shared neb::scene::scene::create_actor_local(glutpp::actor::desc_shared raw) {
+	NEBULA_DEBUG_0_FUNCTION;
+
 	auto actor = create_actor(raw);
 	auto app = get_app();
 
@@ -115,6 +117,8 @@ neb::actor::Base_shared neb::scene::scene::create_actor_local(glutpp::actor::des
 neb::actor::Base_shared neb::scene::scene::create_actor_remote(
 		glutpp::actor::addr_shared addr,
 		glutpp::actor::desc_shared desc) {
+	NEBULA_DEBUG_0_FUNCTION;
+
 	auto actor = create_actor(desc);
 
 	abort();
