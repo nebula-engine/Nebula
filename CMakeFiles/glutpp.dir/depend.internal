@@ -28,6 +28,7 @@ CMakeFiles/glutpp.dir/src/glutpp/actor/actor.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/actor/addr.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/actor/addr.cpp
@@ -95,6 +96,7 @@ CMakeFiles/glutpp.dir/src/glutpp/camera.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/camera_control.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/camera_control.cpp
@@ -121,6 +123,7 @@ CMakeFiles/glutpp.dir/src/glutpp/camera_control.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/free.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/free.cpp
@@ -148,6 +151,7 @@ CMakeFiles/glutpp.dir/src/glutpp/free.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/glsl/attrib.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/glsl/attrib.cpp
@@ -177,6 +181,7 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/glsl/shader.cpp
@@ -203,6 +208,7 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/glsl/uniform.cpp
@@ -230,6 +236,7 @@ CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/gui/layout.cpp
@@ -261,6 +268,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/edittext.cpp
@@ -289,6 +297,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object.cpp
@@ -354,6 +363,7 @@ CMakeFiles/glutpp.dir/src/glutpp/light/light.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/light/raw.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/light/raw.cpp
@@ -412,6 +422,7 @@ CMakeFiles/glutpp.dir/src/glutpp/material.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/mesh.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/mesh.cpp
@@ -489,6 +500,7 @@ CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/scene/addr.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/scene/addr.cpp
@@ -553,6 +565,7 @@ CMakeFiles/glutpp.dir/src/glutpp/scene/scene.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/shape/desc.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/shape/desc.cpp
@@ -603,6 +616,7 @@ CMakeFiles/glutpp.dir/src/glutpp/shape/shape.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/texture.cpp
@@ -629,6 +643,7 @@ CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.o
  src/glutpp/shape/desc.h
  src/glutpp/shape/shape.h
  src/glutpp/texture.h
+ src/glutpp/window/desc.h
  src/glutpp/window/window.h
 CMakeFiles/glutpp.dir/src/glutpp/window/desc.cpp.o
  /home/charles/Programming/C++/glutpp/src/glutpp/window/desc.cpp

@@ -18,10 +18,6 @@ namespace glutpp
 {
 	namespace light
 	{
-		enum
-		{
-			light_max = 20
-		};
 		class light: public gal::flag<unsigned int>
 		{
 			public:

@@ -191,6 +191,11 @@ namespace glutpp
 	}
 	namespace light
 	{
+		enum
+		{
+			light_max = 20
+		};
+
 		struct raw;
 
 		class desc;

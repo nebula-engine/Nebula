@@ -85,9 +85,9 @@ int glutpp::master::reg(glutpp::window::window_s w) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	GLFWwindow* g = glfwCreateWindow(
-			w->desc_->raw_.w_,
-			w->desc_->raw_.h_,
-			w->desc_->raw_.title_,
+			w->raw_.w_,
+			w->raw_.h_,
+			w->raw_.title_,
 			NULL,
 			NULL);
 

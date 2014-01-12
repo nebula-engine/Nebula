@@ -20,7 +20,7 @@ namespace glutpp
 				int		y_;
 				int		w_;
 				int		h_;
-				char	title_[title_length_max];
+				char		title_[title_length_max];
 
 
 

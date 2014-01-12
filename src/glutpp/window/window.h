@@ -6,6 +6,7 @@
 #include <map>
 
 #include <glutpp/config.h>
+#include <glutpp/window/desc.h>
 #include <glutpp/texture.h>
 #include <glutpp/camera.h>
 #include <glutpp/light/light.h>
@@ -83,7 +84,8 @@ namespace glutpp
 					gal::sig::signal<int,int,int>		mouse_button_fun_;
 				} sig_;
 
-				glutpp::window::desc_s		desc_;
+				int			i_;
+				glutpp::window::raw	raw_;
 
 				/*				char const *			title_;
 								int				w_;

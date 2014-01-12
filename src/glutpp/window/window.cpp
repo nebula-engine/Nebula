@@ -59,11 +59,11 @@ void	checkerror(char const * msg) {
 
 
 
-glutpp::window::window::window(glutpp::window::desc_s desc):
-	desc_(desc)
-{
+glutpp::window::window::window(glutpp::window::desc_s desc) {
 	GLUTPP_DEBUG_0_FUNCTION;
-
+	
+	raw_ = desc->raw_;
+	
 	printf(GLUTPP_INSTALL_DIR);
 	printf("\n");
 
@@ -74,10 +74,10 @@ glutpp::window::window::~window() {
 	glfwDestroyWindow(window_);
 }
 unsigned int glutpp::window::window::f() {
-	return desc_->raw_.flag_;
+	return raw_.flag_;
 }
 void glutpp::window::window::f(unsigned int flag) {
-	desc_->raw_.flag_ = flag;
+	raw_.flag_ = flag;
 }
 void	glutpp::window::window::init() {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -140,29 +140,34 @@ int glutpp::window::window::step(double time) {
 	return 0;
 }
 void	glutpp::window::window::callback_window_size_fun(GLFWwindow* window, int w, int h) {
-	desc_->raw_.w_ = w;
-	desc_->raw_.h_ = h;
+	GLUTPP_DEBUG_0_FUNCTION;
+
+	raw_.w_ = w;
+	raw_.h_ = h;
+
+	resize();
 
 	callback_window_refresh_fun(window);
 }
 void	glutpp::window::window::callback_window_pos_fun(GLFWwindow* window, int x, int y) {
+	GLUTPP_DEBUG_0_FUNCTION;
 
-	desc_->raw_.x_ = x;
-	desc_->raw_.y_ = y;
+	raw_.x_ = x;
+	raw_.y_ = y;
 
 	callback_window_refresh_fun(window);
 }
 void	glutpp::window::window::callback_window_close_fun(GLFWwindow* window){
-	printf("%s\n", __PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 
 }
 void	glutpp::window::window::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods){
-	printf("%s\n", __PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 
 	sig_.mouse_button_fun_(button, action, mods);
 }
 void	glutpp::window::window::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods){
-	printf("%s\n", __PRETTY_FUNCTION__);
+	GLUTPP_DEBUG_0_FUNCTION;
 
 	sig_.key_fun_(key, scancode, action, mods);
 
@@ -184,9 +189,9 @@ void	glutpp::window::window::callback_key_fun(GLFWwindow* window, int key, int s
 }
 void	glutpp::window::window::resize() {
 
-	glViewport(0, 0, desc_->raw_.w_, desc_->raw_.h_);
+	glViewport(0, 0, raw_.w_, raw_.h_);
 
-	renderable_->resize(desc_->raw_.w_, desc_->raw_.h_);
+	renderable_->resize(raw_.w_, raw_.h_);
 }
 int	glutpp::window::window::set_scene(std::shared_ptr<scene::scene> scene) {
 
@@ -211,7 +216,7 @@ int	glutpp::window::window::set_layout(std::shared_ptr<glutpp::gui::layout> layo
 }
 void glutpp::window::window::i(int ni) {
 
-	desc_->raw_.i_ = ni;
+	i_ = ni;
 }
 
 
