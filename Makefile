@@ -258,30 +258,6 @@ src/neb/actor/Rigid_Actor.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Actor.cpp.s
 .PHONY : src/neb/actor/Rigid_Actor.cpp.s
 
-src/neb/actor/Rigid_Body.o: src/neb/actor/Rigid_Body.cpp.o
-.PHONY : src/neb/actor/Rigid_Body.o
-
-# target to build an object file
-src/neb/actor/Rigid_Body.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o
-.PHONY : src/neb/actor/Rigid_Body.cpp.o
-
-src/neb/actor/Rigid_Body.i: src/neb/actor/Rigid_Body.cpp.i
-.PHONY : src/neb/actor/Rigid_Body.i
-
-# target to preprocess a source file
-src/neb/actor/Rigid_Body.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.i
-.PHONY : src/neb/actor/Rigid_Body.cpp.i
-
-src/neb/actor/Rigid_Body.s: src/neb/actor/Rigid_Body.cpp.s
-.PHONY : src/neb/actor/Rigid_Body.s
-
-# target to generate assembly for a file
-src/neb/actor/Rigid_Body.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.s
-.PHONY : src/neb/actor/Rigid_Body.cpp.s
-
 src/neb/actor/Rigid_Dynamic.o: src/neb/actor/Rigid_Dynamic.cpp.o
 .PHONY : src/neb/actor/Rigid_Dynamic.o
 
@@ -401,6 +377,54 @@ src/neb/actor/free.s: src/neb/actor/free.cpp.s
 src/neb/actor/free.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/free.cpp.s
 .PHONY : src/neb/actor/free.cpp.s
+
+src/neb/actor/rigid_body/control.o: src/neb/actor/rigid_body/control.cpp.o
+.PHONY : src/neb/actor/rigid_body/control.o
+
+# target to build an object file
+src/neb/actor/rigid_body/control.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/rigid_body/control.cpp.o
+.PHONY : src/neb/actor/rigid_body/control.cpp.o
+
+src/neb/actor/rigid_body/control.i: src/neb/actor/rigid_body/control.cpp.i
+.PHONY : src/neb/actor/rigid_body/control.i
+
+# target to preprocess a source file
+src/neb/actor/rigid_body/control.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/rigid_body/control.cpp.i
+.PHONY : src/neb/actor/rigid_body/control.cpp.i
+
+src/neb/actor/rigid_body/control.s: src/neb/actor/rigid_body/control.cpp.s
+.PHONY : src/neb/actor/rigid_body/control.s
+
+# target to generate assembly for a file
+src/neb/actor/rigid_body/control.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/rigid_body/control.cpp.s
+.PHONY : src/neb/actor/rigid_body/control.cpp.s
+
+src/neb/actor/rigid_body/rigid_body.o: src/neb/actor/rigid_body/rigid_body.cpp.o
+.PHONY : src/neb/actor/rigid_body/rigid_body.o
+
+# target to build an object file
+src/neb/actor/rigid_body/rigid_body.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o
+.PHONY : src/neb/actor/rigid_body/rigid_body.cpp.o
+
+src/neb/actor/rigid_body/rigid_body.i: src/neb/actor/rigid_body/rigid_body.cpp.i
+.PHONY : src/neb/actor/rigid_body/rigid_body.i
+
+# target to preprocess a source file
+src/neb/actor/rigid_body/rigid_body.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.i
+.PHONY : src/neb/actor/rigid_body/rigid_body.cpp.i
+
+src/neb/actor/rigid_body/rigid_body.s: src/neb/actor/rigid_body/rigid_body.cpp.s
+.PHONY : src/neb/actor/rigid_body/rigid_body.s
+
+# target to generate assembly for a file
+src/neb/actor/rigid_body/rigid_body.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.s
+.PHONY : src/neb/actor/rigid_body/rigid_body.cpp.s
 
 src/neb/app.o: src/neb/app.cpp.o
 .PHONY : src/neb/app.o
@@ -740,9 +764,6 @@ help:
 	@echo "... src/neb/actor/Rigid_Actor.o"
 	@echo "... src/neb/actor/Rigid_Actor.i"
 	@echo "... src/neb/actor/Rigid_Actor.s"
-	@echo "... src/neb/actor/Rigid_Body.o"
-	@echo "... src/neb/actor/Rigid_Body.i"
-	@echo "... src/neb/actor/Rigid_Body.s"
 	@echo "... src/neb/actor/Rigid_Dynamic.o"
 	@echo "... src/neb/actor/Rigid_Dynamic.i"
 	@echo "... src/neb/actor/Rigid_Dynamic.s"
@@ -758,6 +779,12 @@ help:
 	@echo "... src/neb/actor/free.o"
 	@echo "... src/neb/actor/free.i"
 	@echo "... src/neb/actor/free.s"
+	@echo "... src/neb/actor/rigid_body/control.o"
+	@echo "... src/neb/actor/rigid_body/control.i"
+	@echo "... src/neb/actor/rigid_body/control.s"
+	@echo "... src/neb/actor/rigid_body/rigid_body.o"
+	@echo "... src/neb/actor/rigid_body/rigid_body.i"
+	@echo "... src/neb/actor/rigid_body/rigid_body.s"
 	@echo "... src/neb/app.o"
 	@echo "... src/neb/app.i"
 	@echo "... src/neb/app.s"

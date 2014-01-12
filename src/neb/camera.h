@@ -22,7 +22,7 @@ namespace neb
 	class camera_ridealong: public glutpp::camera_control
 	{
 		public:
-			camera_ridealong();
+			camera_ridealong(neb::actor::Base_s);
 			virtual math::mat44		supply();
 			neb::actor::Base_w		actor_;
 	};

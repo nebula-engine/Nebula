@@ -92,15 +92,17 @@ neb::actor::Base_s neb::scene::scene::create_actor(glutpp::actor::desc_s desc) {
 
 	return actor;	
 }
-neb::actor::Base_s neb::scene::scene::create_actor_local(glutpp::actor::desc_s raw) {
+neb::actor::Base_s neb::scene::scene::create_actor_local(glutpp::actor::desc_s desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	auto actor = create_actor(raw);
-	auto app = get_app();
-
+	auto actor = create_actor(desc);
+	
 	actors_.push_back(actor);
 
 	// network
+
+	auto app = get_app();
+	
 	gal::network::message_s msg(new gal::network::message);
 	
 	int type = glutpp::network::type::ACTOR_CREATE;
@@ -362,7 +364,10 @@ void neb::scene::scene::step_local(double time) {
 	//physx::PxU32 nbPxactor = px_scene_->getNbActors(physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC);
 
 	// forces
-	actors_.foreach<neb::actor::Base>(std::bind(&neb::actor::Base::add_force, std::placeholders::_1));
+	actors_.foreach<neb::actor::Base>(std::bind(
+				&neb::actor::Base::add_force,
+				std::placeholders::_1,
+				time));
 
 	// PxScene
 	px_scene_->simulate(dt);
@@ -380,35 +385,35 @@ void neb::scene::scene::step_local(double time) {
 	// update each render object with the new transform
 	for(physx::PxU32 i = 0; i < nb_active_transforms; ++i) {
 		//physx::PxActor* px_actor = active_transforms[i].actor;
-		
+
 		//printf( "actor type = %i\n", px_actor->getType() );
 
 		physx::PxActor* pxactor = active_transforms[i].actor;
-		
+
 		assert(pxactor);
-		
+
 		void* ud = active_transforms[i].userData;
 		assert(ud);
-		
-		
-		
+
+
+
 		neb::actor::Actor* actor = dynamic_cast<neb::actor::Actor*>((glutpp::actor::actor*)ud);
-		
+
 		assert(actor);
-		
+
 		pose = active_transforms[i].actor2World;
 		actor->set_pose(pose);
 
 		physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
 		if(pxrigidbody != NULL)
 		{
-			neb::actor::Rigid_Body* rigidbody =
-				dynamic_cast<neb::actor::Rigid_Body*>(actor);
+			neb::actor::rigid_body::rigid_body* rigidbody =
+				dynamic_cast<neb::actor::rigid_body::rigid_body*>(actor);
 
 			assert(rigidbody != NULL);
-			
+
 			math::vec3 v(pxrigidbody->getLinearVelocity());
-			
+
 			rigidbody->raw_.velocity_ = v;
 
 			//v.print();
@@ -430,18 +435,18 @@ void neb::scene::scene::send_actor_update() {
 
 	int type = glutpp::network::type::ACTOR_UPDATE;
 	msg->write(&type, sizeof(int));
-	
+
 	glutpp::network::actor::update actor_update;
-	
+
 	for(auto it = actors_.begin(); it != actors_.end(); ++it)
 	{
 		auto actor = it->second;
-		
+
 		actor_update.load(actor);
 	}
-	
+
 	actor_update.write(msg);
-	
+
 	get_app()->send(msg);
 }
 void neb::scene::scene::step_remote(double time){

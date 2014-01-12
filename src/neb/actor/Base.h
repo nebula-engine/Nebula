@@ -56,12 +56,21 @@ namespace neb
 
 
 
-				virtual void			add_force() {abort();}
+				virtual void			add_force(double) {abort();}
 				virtual void			set_pose(math::transform);
 				virtual int			fire();
 
 				virtual void			step_remote(double);
 
+				// signal
+				void				connect(glutpp::window::window_s);
+				
+				int				key_fun(int,int,int,int);
+				
+				
+				// conversion
+				rigid_body::rigid_body_s	to_rigid_body();
+				
 			public:
 				struct
 				{

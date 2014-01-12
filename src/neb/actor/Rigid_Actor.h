@@ -17,7 +17,7 @@ namespace neb
 						neb::actor::Base_s = neb::actor::Base_s());
 
 				virtual void			init(glutpp::actor::desc_s);
-				virtual void			add_force() {abort();}
+				virtual void			add_force(double) {abort();}
 
 				virtual void			step_remote(double);
 				virtual void			setupFiltering();

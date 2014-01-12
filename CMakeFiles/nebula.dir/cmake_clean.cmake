@@ -14,7 +14,6 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/Rigid_Actor.cpp.o"
-  "CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/Actor.cpp.o"
@@ -22,6 +21,8 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic_Box.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/free.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/actor/rigid_body/control.cpp.o"
   "libnebula.pdb"
   "libnebula.a"
 )

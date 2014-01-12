@@ -22,7 +22,7 @@ namespace neb
 
 				virtual void			init(glutpp::actor::desc_s);
 				virtual void			release();
-				virtual void			add_force() {abort();}
+				virtual void			add_force(double) {abort();}
 				virtual void			set_pose(math::transform);
 				virtual int			fire();
 

@@ -155,17 +155,50 @@ void neb::actor::Base::create_shapes(glutpp::actor::desc_s desc)
 	for(auto it = desc->get_shapes()->vec_.begin(); it != desc->get_shapes()->vec_.end(); ++it)
 	{
 		glutpp::shape::desc_s sd = std::get<0>(*it);
-		
+
 		shape.reset(new neb::shape(me));
-		
+
 		shape->init(sd);
-		
+
 		shapes_.push_back(shape);
 	}
 }
+void neb::actor::Base::connect(glutpp::window::window_s window) {
+	
+	auto me = std::dynamic_pointer_cast<neb::actor::Base>(shared_from_this());
 
+	conn_.key_fun_ = window->sig_.key_fun_.connect(std::bind(
+				&neb::actor::Base::key_fun,
+				me,
+				std::placeholders::_1,
+				std::placeholders::_2,
+				std::placeholders::_3,
+				std::placeholders::_4));
 
+}
+int neb::actor::Base::key_fun(int key, int scancode, int action, int mods) {
 
+	switch(action) {
+		case GLFW_PRESS:
+			switch(key) {
+				case GLFW_KEY_SPACE:
+					fire();
+					return 1;
+				default:
+					return 0;
+			}
+		case GLFW_RELEASE:
+			switch(key) {
+				default:
+					return 0;
+			}
+	}
+	
+	return 0;
+}
+neb::actor::rigid_body::rigid_body_s neb::actor::Base::to_rigid_body() {
+	return std::dynamic_pointer_cast<neb::actor::rigid_body::rigid_body>(shared_from_this());
+}
 
 
 

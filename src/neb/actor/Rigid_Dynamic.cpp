@@ -5,14 +5,14 @@
 neb::actor::Rigid_Dynamic::Rigid_Dynamic(
 		std::shared_ptr<neb::scene::scene> scene,
 		std::shared_ptr<neb::actor::Base> actor):
-	neb::actor::Rigid_Body(scene, actor) 
+	neb::actor::rigid_body::rigid_body(scene, actor) 
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 }
 void neb::actor::Rigid_Dynamic::init(glutpp::actor::desc_s desc) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	neb::actor::Rigid_Body::init(desc);
+	neb::actor::rigid_body::rigid_body::init(desc);
 }
 void neb::actor::Rigid_Dynamic::create_physics() {
 

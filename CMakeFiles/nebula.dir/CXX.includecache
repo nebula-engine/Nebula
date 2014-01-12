@@ -6,12 +6,8 @@
 
 #IncludeRegexTransform: 
 
-/home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Dynamic.cpp
-neb/shape.h
--
-neb/physics.h
--
-neb/actor/Rigid_Dynamic.h
+/home/charles/Programming/C++/nebula/src/neb/actor/rigid_body/control.cpp
+neb/actor/rigid_body/control.h
 -
 
 src/neb/actor/Actor.h
@@ -36,25 +32,13 @@ glutpp/actor/desc.h
 neb/config.h
 -
 
-src/neb/actor/Controller.h
-PxPhysicsAPI.h
--
-neb/actor/Base.h
--
-
 src/neb/actor/Rigid_Actor.h
 neb/actor/Actor.h
 -
 
-src/neb/actor/Rigid_Body.h
-neb/actor/Rigid_Actor.h
+src/neb/actor/rigid_body/control.h
+gal/control/control.h
 -
-
-src/neb/actor/Rigid_Dynamic.h
-neb/actor/Rigid_Body.h
--
-
-src/neb/actor/Rigid_Static.h
 neb/actor/Rigid_Actor.h
 -
 
@@ -62,61 +46,5 @@ src/neb/config.h
 memory
 -
 gal/map.h
--
-
-src/neb/physics.h
-memory
--
-PxPhysicsAPI.h
--
-neb/config.h
--
-neb/scene/scene.h
--
-
-src/neb/scene/scene.h
-memory
--
-vector
--
-PxPhysicsAPI.h
--
-gal/map.h
--
-gal/network/message.h
--
-glutpp/config.h
--
-glutpp/scene/scene.h
--
-glutpp/light/desc.h
--
-neb/config.h
--
-neb/vehicle_manager.h
--
-neb/actor/Rigid_Dynamic.h
--
-neb/actor/Rigid_Static.h
--
-neb/actor/Controller.h
--
-tinyxml2.h
--
-
-src/neb/shape.h
-tinyxml2.h
--
-math/vec3.h
--
-glutpp/shape/shape.h
--
-
-src/neb/vehicle_manager.h
-vector
--
-PxPhysicsAPI.h
--
-glutpp/actor/desc.h
 -
 

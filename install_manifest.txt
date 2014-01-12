@@ -13,7 +13,8 @@
 /home/charles/usr/include/neb/actor/empty.h
 /home/charles/usr/include/neb/actor/Actor.h
 /home/charles/usr/include/neb/actor/Rigid_Actor.h
-/home/charles/usr/include/neb/actor/Rigid_Body.h
+/home/charles/usr/include/neb/actor/rigid_body/rigid_body.h
+/home/charles/usr/include/neb/actor/rigid_body/control.h
 /home/charles/usr/include/neb/actor/Rigid_Dynamic.h
 /home/charles/usr/include/neb/actor/Rigid_Static.h
 /home/charles/usr/include/neb/actor/Controller.h

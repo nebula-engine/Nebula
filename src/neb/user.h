@@ -4,6 +4,7 @@
 #include <glutpp/master.h>
 #include <glutpp/window/window.h>
 
+#include <neb/config.h>
 #include <neb/camera.h>
 
 namespace neb
@@ -14,15 +15,11 @@ namespace neb
 			user();
 			void	init();
 			void	connect(glutpp::window::window_s);
-			int	set_actor(neb::actor::Base_s actor, neb::camera_type::e RIDEALONG);
+			void	set_control(neb::actor::rigid_body::control_s);
 			
 			
-			neb::actor::Base_w				actor_;
+			neb::actor::rigid_body::control_s		control_;
 			
-			std::shared_ptr<glutpp::camera_control>		camera_control_;
-			
-			
-		
 	};
 }
 

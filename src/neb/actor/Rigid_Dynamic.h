@@ -1,13 +1,13 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_DYNAMIC_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_DYNAMIC_HPP__
 
-#include <neb/actor/Rigid_Body.h>
+#include <neb/actor/rigid_body/rigid_body.h>
 
 namespace neb
 {
 	namespace actor
 	{
-		class Rigid_Dynamic: public neb::actor::Rigid_Body
+		class Rigid_Dynamic: public neb::actor::rigid_body::rigid_body
 		{
 			public:
 				Rigid_Dynamic(

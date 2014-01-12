@@ -50,7 +50,14 @@ namespace neb
 		class Base;
 		class Actor;
 		class Rigid_Actor;
-		class Rigid_Body;
+		namespace rigid_body {
+			class rigid_body;
+			typedef std::shared_ptr<rigid_body>	rigid_body_s;
+
+			class control;
+			typedef std::shared_ptr<control>	control_s;
+
+		}
 		class Rigid_Dynamic;
 		class Rigid_Static;
 		class empty;

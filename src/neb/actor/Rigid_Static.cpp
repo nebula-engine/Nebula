@@ -14,7 +14,7 @@ void	neb::actor::Rigid_Static::init(glutpp::actor::desc_s desc) {
 	
 	neb::actor::Rigid_Actor::init(desc);
 }
-void	neb::actor::Rigid_Static::add_force() {
+void	neb::actor::Rigid_Static::add_force(double) {
 
 }
 void neb::actor::Rigid_Static::create_physics() {

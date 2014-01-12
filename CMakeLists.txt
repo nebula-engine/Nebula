@@ -6,8 +6,9 @@ project(nebula)
 set(PROJECT_SOURCE_DIR src)
 
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb files_src_neb) 
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/actor files_src_neb_actor)
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/scene files_src_neb_scene)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/actor			files_src_neb_actor)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/actor/rigid_body		files_src_neb_actor_rigid_body)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/scene			files_src_neb_scene)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/network files_src_neb_network)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/packet files_src_neb_packet)
 
@@ -16,7 +17,9 @@ add_library(nebula
 	${files_src_neb_network}
 	${files_src_neb_packet}
 	${files_src_neb_scene}
-	${files_src_neb_actor})
+	${files_src_neb_actor}
+	${files_src_neb_actor_rigid_body}
+)
 
 include_directories("${PROJECT_SOURCE_DIR}")
 
@@ -48,7 +51,10 @@ install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Base.h		DESTINATION include/neb/ac
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/empty.h		DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Actor.h		DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Actor.h	DESTINATION include/neb/actor/)
-install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Body.h	DESTINATION include/neb/actor/)
+
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/rigid_body/rigid_body.h	DESTINATION include/neb/actor/rigid_body)
+install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/rigid_body/control.h	DESTINATION include/neb/actor/rigid_body)
+
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Dynamic.h	DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Rigid_Static.h	DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Controller.h	DESTINATION include/neb/actor/)
