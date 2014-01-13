@@ -285,9 +285,10 @@ math::vec3 neb::actor::rigid_body::control::t1(double time) {
 	
 	auto pxrigidbody = actor->px_actor_->isRigidBody();
 	
-	physx::PxVec3 I = pxrigidbody->getMassSpaceInertiaTensor();
+	math::vec3 I = pxrigidbody->getMassSpaceInertiaTensor();
 	
-	float m = I.magnitude();
+	// todo: make m dependent on direction of rotation
+	float m = I.dot(math::vec3(1.0,0.0,0.0));
 	
 	float k = 10.0;
 	
@@ -305,18 +306,22 @@ math::vec3 neb::actor::rigid_body::control::t1(double time) {
 	{
 		float theta = 2.0 * acos(rot.w);
 
+		math::vec3 t(rot.x, rot.y, rot.z);
+		t.normalize();
+
+		// make sure getlinearvelocity is in actor-space
+		math::vec3 vel = pxrigidbody->getLinearVelocity();
+		float v = vel.dot(t);
+
 
 		//q.print();
 		//q_target_.print();
 
-		math::vec3 t(rot.x, rot.y, rot.z);
-
-		t.normalize();
-
-		float fs = pid_.f(theta, time);
+		
+		float fs = pid_.f(theta, v);
 		t *= fs;
-
-		printf("theta = %f fs = %f time = %f\n", theta, fs, time);
+		
+		printf("theta = %f v = %f fs = %f\n", theta, v, fs);
 
 		printf("torque=\n");
 		t.print();
