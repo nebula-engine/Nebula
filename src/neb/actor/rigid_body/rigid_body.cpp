@@ -124,11 +124,21 @@ glutpp::actor::desc_s neb::actor::rigid_body::rigid_body::get_projectile() {
 
 	return desc;
 }
-
-
-
-
-
+void neb::actor::rigid_body::rigid_body::print_info() {
+	auto pxrb = px_actor_->isRigidBody();
+	
+	float density = pxrb->
+	math::vec3    = pxrb->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
 
 
 
