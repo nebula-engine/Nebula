@@ -101,6 +101,8 @@ namespace neb
 			public:
 				neb::app_w				app_;
 
+				// timer
+				gal::timer::timer_set			timer_set_;
 
 				int					user_type_;
 
