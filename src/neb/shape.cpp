@@ -59,6 +59,35 @@ physx::PxGeometry* neb::shape::to_geo()
 
 	return geo;
 }
+void neb::shape::print_info() {
+	
+	physx::PxReal dynamic_friction;
+	physx::PxReal static_friction;
+	physx::PxReal restitution;
+	
+	
+	if(px_shape_ != NULL)
+	{
+		physx::PxU32 num_shapes = px_shape_->getNbMaterials();
+		
+		physx::PxMaterial** materials = new physx::PxMaterial*[num_shapes];
+		
+		num_shapes = px_shape_->getMaterials(materials, num_shapes);
+		
+		for(physx::PxU32 i = 0; i < num_shapes; ++i) {
+			dynamic_friction = materials[i]->getDynamicFriction();
+			static_friction = materials[i]->getStaticFriction();
+			restitution = materials[i]->getRestitution();
+
+			printf("dynamic friction = %f\n", dynamic_friction);
+			printf("static friction  = %f\n", static_friction);
+			printf("restitution      = %f\n", restitution);
+		}
+	}
+}
+
+
+
 
 
 

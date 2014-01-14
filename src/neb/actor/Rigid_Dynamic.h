@@ -18,6 +18,8 @@ namespace neb
 
 				virtual void		create_physics();
 				virtual void		init_physics();
+
+				virtual void		print_info();
 		};
 	}
 }

@@ -26,6 +26,8 @@ namespace neb
 				
 				virtual void			create_physics() {abort();}
 				virtual void			init_physics() {abort();}
+
+				virtual void			print_info();
 		};
 	}
 }

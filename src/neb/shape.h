@@ -17,6 +17,7 @@ namespace neb
 			virtual void		init(glutpp::shape::desc_s);
 			void			create_physics();
 			physx::PxGeometry*	to_geo();
+			void			print_info();
 			
 			physx::PxShape*		px_shape_;
 	};	

@@ -1,3 +1,5 @@
+#include <math/transform.h>
+
 #include <gal/network/server.h>
 
 #include <neb/config.h>
@@ -49,6 +51,8 @@ void neb::actor::rigid_body::rigid_body::add_force(double time) {
 	
 	pxrigidbody->addForce(f);
 	pxrigidbody->addTorque(t);
+
+	print_info();
 }
 void	neb::actor::rigid_body::rigid_body::step_remote(double) {
 
@@ -128,20 +132,27 @@ glutpp::actor::desc_s neb::actor::rigid_body::rigid_body::get_projectile() {
 	return desc;
 }
 void neb::actor::rigid_body::rigid_body::print_info() {
+	//NEBULA_DEBUG_0_FUNCTION;	
+	
+	neb::actor::Rigid_Actor::print_info();
+	
 	auto pxrb = px_actor_->isRigidBody();
 	
-	float density = pxrb->
-	math::vec3    = pxrb->
+	//math::transform pose		= pxrb->getCMassLocalPose();
+	float mass			= pxrb->getMass();
+	math::vec3 inertia		= pxrb->getMassSpaceInertiaTensor();
+	math::vec3 linear_velocity	= pxrb->getLinearVelocity();
+	math::vec3 angular_velocity	= pxrb->getAngularVelocity();
 	
 	
-	
-	
-	
-	
-	
-	
+	printf("mass             = %f\n", mass);
+	printf("interia          = "); inertia.print();
+	printf("linear velocity  = "); linear_velocity.print();
+	printf("angular velocity = "); angular_velocity.print();
 	
 }
+
+
 
 
 

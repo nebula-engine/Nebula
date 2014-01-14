@@ -54,6 +54,46 @@ glutpp::actor::desc_s neb::actor::Rigid_Actor::get_projectile() {
 	abort();
 	return glutpp::actor::desc_s();
 }
+void neb::actor::Rigid_Actor::print_info() {
+
+	neb::actor::Actor::print_info();
+	
+	auto pxra = px_actor_->isRigidActor();
+	
+	physx::PxShape* pxshape;
+	
+	physx::PxReal dynamic_friction;
+	physx::PxReal static_friction;
+	physx::PxReal restitution;
+	
+	physx::PxU32 num_shapes = pxra->getNbShapes();
+	
+	physx::PxShape** shapes = new physx::PxShape*[num_shapes];
+	
+	num_shapes = pxra->getShapes(shapes, num_shapes);
+	
+	for(physx::PxU32 i = 0; i < num_shapes; ++i) {
+		pxshape = shapes[i];
+		
+		physx::PxU32 num_materials = pxshape->getNbMaterials();
+
+		physx::PxMaterial** materials = new physx::PxMaterial*[num_materials];
+
+		num_materials = pxshape->getMaterials(materials, num_shapes);
+
+		for(physx::PxU32 i = 0; i < num_materials; ++i) {
+			dynamic_friction = materials[i]->getDynamicFriction();
+			static_friction = materials[i]->getStaticFriction();
+			restitution = materials[i]->getRestitution();
+
+			printf("dynamic friction = %f\n", dynamic_friction);
+			printf("static friction  = %f\n", static_friction);
+			printf("restitution      = %f\n", restitution);
+		}
+
+	}
+}
+
 
 
 

@@ -33,6 +33,8 @@ namespace neb
 				virtual void			init_physics() {abort();}
 				
 				virtual void			step_remote(double);
+
+				virtual void			print_info();
 				
 				physx::PxActor*			px_actor_;
 				

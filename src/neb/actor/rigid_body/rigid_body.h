@@ -24,7 +24,8 @@ namespace neb
 					virtual glutpp::actor::desc_s	get_projectile();
 
 					virtual void			step_remote(double);
-
+					
+					virtual void			print_info();
 
 
 					virtual void			create_physics() {abort();}

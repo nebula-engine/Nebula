@@ -6,32 +6,12 @@
 
 #IncludeRegexTransform: 
 
-/home/charles/Programming/C++/nebula/src/neb/camera/camera.cpp
-assert.h
+/home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Actor.cpp
+neb/physics.h
 -
-glutpp/window/window.h
+neb/actor/Rigid_Actor.h
 -
-neb/scene/scene.h
--
-neb/camera.h
--
-
-/home/charles/Programming/C++/nebula/src/neb/camera/ridealong.cpp
-neb/actor/Base.h
--
-neb/camera.h
--
-
-/home/charles/Programming/C++/nebula/src/neb/user.cpp
-glutpp/renderable.h
--
-neb/config.h
--
-neb/user.h
--
-neb/camera.h
--
-neb/actor/rigid_body/control.h
+neb/shape.h
 -
 
 src/neb/actor/Actor.h
@@ -74,12 +54,6 @@ src/neb/actor/Rigid_Static.h
 neb/actor/Rigid_Actor.h
 -
 
-src/neb/actor/rigid_body/control.h
-gal/control/control.h
--
-neb/actor/Rigid_Actor.h
--
-
 src/neb/actor/rigid_body/rigid_body.h
 neb/actor/Rigid_Actor.h
 -
@@ -88,6 +62,16 @@ src/neb/config.h
 memory
 -
 gal/map.h
+-
+
+src/neb/physics.h
+memory
+-
+PxPhysicsAPI.h
+-
+neb/config.h
+-
+neb/scene/scene.h
 -
 
 src/neb/scene/scene.h
@@ -120,14 +104,12 @@ neb/actor/Controller.h
 tinyxml2.h
 -
 
-src/neb/user.h
-glutpp/master.h
+src/neb/shape.h
+tinyxml2.h
 -
-glutpp/window/window.h
+math/vec3.h
 -
-neb/config.h
--
-neb/camera.h
+glutpp/shape/shape.h
 -
 
 src/neb/vehicle_manager.h

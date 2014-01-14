@@ -40,7 +40,16 @@ glutpp::actor::desc_s get_projectile() {
 	abort();
 	return glutpp::actor::desc_s();
 }
+void neb::actor::Actor::print_info() {
 
+	physx::PxActorType::Enum type	= px_actor_->getType();
+	//physx::PxBounds bounds	= px_actor_->getWorldBounds();
+	short unsigned int flags	= px_actor_->getActorFlags();
+	
+	printf("PxActor\n");
+	printf("type  = %X\n", type);
+	printf("flags = %X\n", flags);
+	
 
-
+}
 

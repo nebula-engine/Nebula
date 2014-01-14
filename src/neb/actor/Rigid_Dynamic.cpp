@@ -54,8 +54,24 @@ void neb::actor::Rigid_Dynamic::init_physics() {
 
 	setupFiltering();
 }
+void neb::actor::Rigid_Dynamic::print_info() {
+	
+	neb::actor::rigid_body::rigid_body::print_info();
+	
+	auto pxrd = px_actor_->isRigidDynamic();
+	
+	float linear_damping = pxrd->getLinearDamping();
+	float angular_damping = pxrd->getAngularDamping();
+	float max_angular_velocity = pxrd->getMaxAngularVelocity();
+	
+	printf("PxRigidDynamic:\n");
+	printf("linear damping      = %f\n", linear_damping);
+	printf("angular damping     = %f\n", angular_damping);
+	printf("max angular damping = %f\n", max_angular_velocity);
 
+	pxrd->setLinearDamping(15.0);
 
+}
 
 
 
