@@ -41,6 +41,9 @@ namespace neb
 			glutpp::gui::layout_m			layouts_;
 			neb::scene::scene_m			scenes_;
 			
+			// timer
+			gal::timer::timer_set		timer_set_;
+			
 			// network
 			neb::network::server_s		server_;
 			neb::network::client_s		client_;
