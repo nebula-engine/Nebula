@@ -5,9 +5,10 @@
 /home/charles/usr/include/neb/physics.h
 /home/charles/usr/include/neb/vehicle_manager.h
 /home/charles/usr/include/neb/simulation_callback.h
+/home/charles/usr/include/neb/camera/camera.h
+/home/charles/usr/include/neb/camera/ridealong.h
 /home/charles/usr/include/neb/packet/packet.h
 /home/charles/usr/include/neb/scene/scene.h
-/home/charles/usr/include/neb/camera.h
 /home/charles/usr/include/neb/shape.h
 /home/charles/usr/include/neb/actor/Base.h
 /home/charles/usr/include/neb/actor/empty.h

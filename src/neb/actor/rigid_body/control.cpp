@@ -1,7 +1,7 @@
 #include <neb/actor/rigid_body/control.h>
 
 neb::actor::rigid_body::control::control():
-	q_target_(math::quat(1.1 * M_PI,math::vec3(1.0,0.0,0.0)))
+	q_target_(math::quat(0.0 * M_PI,math::vec3(1.0,0.0,0.0)))
 {
 
 }
@@ -23,7 +23,7 @@ int neb::actor::rigid_body::control::key_fun(int key, int scancode, int action, 
 int neb::actor::rigid_body::control::key_fun0(int key, int action) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	float force_scale = 100.0;
+	float force_scale = 100000.0;
 	float torque_scale = 5.0;
 
 
@@ -129,7 +129,7 @@ int neb::actor::rigid_body::control::key_fun1(int key, int action) {
 	math::vec3 dq;
 
 	float p_scale = 1.0;
-	float q_scale = 0.1;
+	float q_scale = 0.5;
 
 	math::vec3 x(1.0,0.0,0.0);
 	math::vec3 y(0.0,1.0,0.0);
@@ -256,6 +256,8 @@ int neb::actor::rigid_body::control::key_fun1(int key, int action) {
 	return 0;
 }
 math::vec3 neb::actor::rigid_body::control::f() {
+	printf("force_ =\n");
+	force_.print();
 	return force_;
 }
 math::vec3 neb::actor::rigid_body::control::t(double time) {
@@ -273,13 +275,13 @@ math::vec3 neb::actor::rigid_body::control::t(double time) {
 	return math::vec3();
 }
 math::vec3 neb::actor::rigid_body::control::t0() {
-	NEBULA_DEBUG_0_FUNCTION;
+	NEBULA_DEBUG_1_FUNCTION;
 
 	return torque_;
 }
 math::vec3 neb::actor::rigid_body::control::t1(double time) {
-	NEBULA_DEBUG_0_FUNCTION;
-
+	NEBULA_DEBUG_1_FUNCTION;
+	
 	assert(!actor_.expired());
 	auto actor = std::dynamic_pointer_cast<neb::actor::Actor>(actor_.lock());
 	
@@ -291,42 +293,49 @@ math::vec3 neb::actor::rigid_body::control::t1(double time) {
 	float m = I.dot(math::vec3(1.0,0.0,0.0));
 	
 	float k = 10.0;
+	float c = -2.0f * sqrt(m * k);
+	pid_.coeff_p_ = k;
+	pid_.coeff_d_ = c;
 	
-	pid_.coeff_p = k;
-	pid_.coeff_d = 2.0f * sqrt(m * k);
-
-
-
-
-
+	
+	
+	
+	
 	math::quat q = actor->raw_.pose_.q;
 
 	math::quat rot = q * q_target_.getConjugate();
 	if(rot.magnitude() > 0)
 	{
-		float theta = 2.0 * acos(rot.w);
-
+		float theta = -2.0 * acos(rot.w);
+		
+		theta = (theta > M_PI) ? (theta - 360.f) : theta;
+		
 		math::vec3 t(rot.x, rot.y, rot.z);
 		t.normalize();
 
 		// make sure getlinearvelocity is in actor-space
-		math::vec3 vel = pxrigidbody->getLinearVelocity();
+		math::vec3 vel = pxrigidbody->getAngularVelocity();
 		float v = vel.dot(t);
-
-
+		
+		
+				
 		//q.print();
 		//q_target_.print();
 
+
+		//apply extra damping torque in all directions
+		math::vec3 te = vel * 1.f * c;
+		
 		
 		float fs = pid_.f(theta, v);
 		t *= fs;
 		
-		printf("theta = %f v = %f fs = %f\n", theta, v, fs);
-
-		printf("torque=\n");
-		t.print();
-
-		return -t;	
+		//printf("theta = %f v = %f fs = %f\n", theta, v, fs);
+		
+		//printf("torque=\n");
+		//t.print();
+		
+		return t + te;
 	}
 
 	return math::vec3();

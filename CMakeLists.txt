@@ -5,15 +5,17 @@ project(nebula)
 
 set(PROJECT_SOURCE_DIR src)
 
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb files_src_neb) 
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb				files_src_neb)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/camera			files_src_neb_camera)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/actor			files_src_neb_actor)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/actor/rigid_body		files_src_neb_actor_rigid_body)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/scene			files_src_neb_scene)
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/network files_src_neb_network)
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/packet files_src_neb_packet)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/network			files_src_neb_network)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/packet			files_src_neb_packet)
 
 add_library(nebula 
 	${files_src_neb}
+	${files_src_neb_camera}
 	${files_src_neb_network}
 	${files_src_neb_packet}
 	${files_src_neb_scene}
@@ -41,11 +43,20 @@ set(files
 )
 install(FILES ${files} DESTINATION include/neb/)
 
+set(files
+	${PROJECT_SOURCE_DIR}/neb/camera/camera.h
+	${PROJECT_SOURCE_DIR}/neb/camera/ridealong.h
+)
+install(FILES ${files} DESTINATION include/neb/camera)
+
+
+
 install(FILES ${PROJECT_SOURCE_DIR}/neb/packet/packet.h		DESTINATION include/neb/packet)
 
 install(FILES ${PROJECT_SOURCE_DIR}/neb/scene/scene.h		DESTINATION include/neb/scene)
 
-install(FILES ${PROJECT_SOURCE_DIR}/neb/camera.h		DESTINATION include/neb/)
+
+
 install(FILES ${PROJECT_SOURCE_DIR}/neb/shape.h			DESTINATION include/neb/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/Base.h		DESTINATION include/neb/actor/)
 install(FILES ${PROJECT_SOURCE_DIR}/neb/actor/empty.h		DESTINATION include/neb/actor/)

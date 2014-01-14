@@ -142,23 +142,21 @@ CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/physics.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/scene/scene.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/vehicle_manager.h
 
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/camera.cpp
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/actor/Actor.h
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/actor/Base.h
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/actor/Controller.h
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/actor/Rigid_Actor.h
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/actor/Rigid_Dynamic.h
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/actor/Rigid_Static.h
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/actor/rigid_body/rigid_body.h
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/camera.h
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/config.h
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/scene/scene.h
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/vehicle_manager.h
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: src/neb/camera/camera.cpp
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: src/neb/actor/Actor.h
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: src/neb/actor/Base.h
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: src/neb/actor/Controller.h
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: src/neb/actor/Rigid_Actor.h
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: src/neb/actor/Rigid_Dynamic.h
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: src/neb/actor/Rigid_Static.h
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: src/neb/actor/rigid_body/rigid_body.h
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: src/neb/config.h
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: src/neb/scene/scene.h
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: src/neb/vehicle_manager.h
 
-CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o: src/neb/camera_ridealong.cpp
-CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o: src/neb/actor/Base.h
-CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o: src/neb/camera.h
-CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o: src/neb/config.h
+CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o: src/neb/camera/ridealong.cpp
+CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o: src/neb/actor/Base.h
+CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o: src/neb/config.h
 
 CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o: src/neb/network/actor_release.cpp
 CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o: src/neb/network/actor_release.h
@@ -274,7 +272,6 @@ CMakeFiles/nebula.dir/src/neb/user.cpp.o: src/neb/actor/Actor.h
 CMakeFiles/nebula.dir/src/neb/user.cpp.o: src/neb/actor/Base.h
 CMakeFiles/nebula.dir/src/neb/user.cpp.o: src/neb/actor/Rigid_Actor.h
 CMakeFiles/nebula.dir/src/neb/user.cpp.o: src/neb/actor/rigid_body/control.h
-CMakeFiles/nebula.dir/src/neb/user.cpp.o: src/neb/camera.h
 CMakeFiles/nebula.dir/src/neb/user.cpp.o: src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/user.cpp.o: src/neb/user.h
 

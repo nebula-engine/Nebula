@@ -7,23 +7,22 @@ neb::actor::Rigid_Dynamic::Rigid_Dynamic(
 		std::shared_ptr<neb::actor::Base> actor):
 	neb::actor::rigid_body::rigid_body(scene, actor) 
 {
-	printf("%s\n", __PRETTY_FUNCTION__);
+	NEBULA_DEBUG_0_FUNCTION;
 }
 void neb::actor::Rigid_Dynamic::init(glutpp::actor::desc_s desc) {
-	printf("%s\n", __PRETTY_FUNCTION__);
+	NEBULA_DEBUG_0_FUNCTION;
 
 	neb::actor::rigid_body::rigid_body::init(desc);
 }
 void neb::actor::Rigid_Dynamic::create_physics() {
-
-	printf("%s\n", __PRETTY_FUNCTION__);
+	NEBULA_DEBUG_0_FUNCTION;
 
 	assert(px_actor_ == NULL);
-	
+
 	auto scene = get_scene();
 
 	math::transform pose(get_pose());
-	
+
 
 	// PxActor
 	physx::PxRigidDynamic* px_rigid_dynamic = 
@@ -48,11 +47,11 @@ void neb::actor::Rigid_Dynamic::create_physics() {
 }
 void neb::actor::Rigid_Dynamic::init_physics() {
 	NEBULA_DEBUG_0_FUNCTION;
-	
+
 	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();
-	
+
 	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, raw_.density_);
-	
+
 	setupFiltering();
 }
 

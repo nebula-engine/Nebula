@@ -37,13 +37,16 @@ void neb::actor::rigid_body::rigid_body::add_force(double time) {
 	f = pose.q.rotate(f);
 	t = pose.q.rotate(t);
 
+	//printf("f = ");
 	//f.print();
 	//t.print();
 
 	assert(px_actor_);
 	physx::PxRigidBody* pxrigidbody = px_actor_->isRigidBody();
 	assert(pxrigidbody);
-
+	
+	//printf("mass = %f\n", pxrigidbody->getMass());
+	
 	pxrigidbody->addForce(f);
 	pxrigidbody->addTorque(t);
 }

@@ -46,32 +46,9 @@ include CMakeFiles/nebula.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/nebula.dir/flags.make
 
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: CMakeFiles/nebula.dir/flags.make
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o: src/neb/camera.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/camera.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/camera.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/camera.cpp
-
-CMakeFiles/nebula.dir/src/neb/camera.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nebula.dir/src/neb/camera.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/charles/Programming/C++/nebula/src/neb/camera.cpp > CMakeFiles/nebula.dir/src/neb/camera.cpp.i
-
-CMakeFiles/nebula.dir/src/neb/camera.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nebula.dir/src/neb/camera.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/charles/Programming/C++/nebula/src/neb/camera.cpp -o CMakeFiles/nebula.dir/src/neb/camera.cpp.s
-
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o.requires:
-.PHONY : CMakeFiles/nebula.dir/src/neb/camera.cpp.o.requires
-
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o.provides: CMakeFiles/nebula.dir/src/neb/camera.cpp.o.requires
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera.cpp.o.provides.build
-.PHONY : CMakeFiles/nebula.dir/src/neb/camera.cpp.o.provides
-
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o.provides.build: CMakeFiles/nebula.dir/src/neb/camera.cpp.o
-
 CMakeFiles/nebula.dir/src/neb/physics.cpp.o: CMakeFiles/nebula.dir/flags.make
 CMakeFiles/nebula.dir/src/neb/physics.cpp.o: src/neb/physics.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/physics.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/physics.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/physics.cpp
 
@@ -94,7 +71,7 @@ CMakeFiles/nebula.dir/src/neb/physics.cpp.o.provides.build: CMakeFiles/nebula.di
 
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: CMakeFiles/nebula.dir/flags.make
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/app.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/app.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/app.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/app.cpp
 
@@ -117,7 +94,7 @@ CMakeFiles/nebula.dir/src/neb/app.cpp.o.provides.build: CMakeFiles/nebula.dir/sr
 
 CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o: CMakeFiles/nebula.dir/flags.make
 CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o: src/neb/vehicle_manager.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/vehicle_manager.cpp
 
@@ -140,7 +117,7 @@ CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o.provides.build: CMakeFiles/n
 
 CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o: CMakeFiles/nebula.dir/flags.make
 CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o: src/neb/simulation_callback.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/simulation_callback.cpp
 
@@ -163,7 +140,7 @@ CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/nebula.dir/src/neb/shape.cpp.o: CMakeFiles/nebula.dir/flags.make
 CMakeFiles/nebula.dir/src/neb/shape.cpp.o: src/neb/shape.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/shape.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/shape.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/shape.cpp
 
@@ -186,7 +163,7 @@ CMakeFiles/nebula.dir/src/neb/shape.cpp.o.provides.build: CMakeFiles/nebula.dir/
 
 CMakeFiles/nebula.dir/src/neb/user.cpp.o: CMakeFiles/nebula.dir/flags.make
 CMakeFiles/nebula.dir/src/neb/user.cpp.o: src/neb/user.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/user.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/user.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/user.cpp
 
@@ -207,28 +184,51 @@ CMakeFiles/nebula.dir/src/neb/user.cpp.o.provides: CMakeFiles/nebula.dir/src/neb
 
 CMakeFiles/nebula.dir/src/neb/user.cpp.o.provides.build: CMakeFiles/nebula.dir/src/neb/user.cpp.o
 
-CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o: CMakeFiles/nebula.dir/flags.make
-CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o: src/neb/camera_ridealong.cpp
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: CMakeFiles/nebula.dir/flags.make
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o: src/neb/camera/camera.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/camera/camera.cpp
+
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/charles/Programming/C++/nebula/src/neb/camera/camera.cpp > CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.i
+
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/charles/Programming/C++/nebula/src/neb/camera/camera.cpp -o CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.s
+
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o.requires:
+.PHONY : CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o.requires
+
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o.provides: CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o.requires
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o.provides.build
+.PHONY : CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o.provides
+
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o.provides.build: CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o
+
+CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o: CMakeFiles/nebula.dir/flags.make
+CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o: src/neb/camera/ridealong.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/nebula/CMakeFiles $(CMAKE_PROGRESS_8)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/camera_ridealong.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o -c /home/charles/Programming/C++/nebula/src/neb/camera/ridealong.cpp
 
-CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/charles/Programming/C++/nebula/src/neb/camera_ridealong.cpp > CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.i
+CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/charles/Programming/C++/nebula/src/neb/camera/ridealong.cpp > CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.i
 
-CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/charles/Programming/C++/nebula/src/neb/camera_ridealong.cpp -o CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.s
+CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/charles/Programming/C++/nebula/src/neb/camera/ridealong.cpp -o CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.s
 
-CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o.requires:
-.PHONY : CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o.requires
+CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o.requires:
+.PHONY : CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o.requires
 
-CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o.provides: CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o.requires
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o.provides.build
-.PHONY : CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o.provides
+CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o.provides: CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o.requires
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o.provides.build
+.PHONY : CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o.provides
 
-CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o.provides.build: CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o
+CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o.provides.build: CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o
 
 CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: CMakeFiles/nebula.dir/flags.make
 CMakeFiles/nebula.dir/src/neb/network/client.cpp.o: src/neb/network/client.cpp
@@ -600,14 +600,14 @@ CMakeFiles/nebula.dir/src/neb/actor/rigid_body/control.cpp.o.provides.build: CMa
 
 # Object files for target nebula
 nebula_OBJECTS = \
-"CMakeFiles/nebula.dir/src/neb/camera.cpp.o" \
 "CMakeFiles/nebula.dir/src/neb/physics.cpp.o" \
 "CMakeFiles/nebula.dir/src/neb/app.cpp.o" \
 "CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o" \
 "CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o" \
 "CMakeFiles/nebula.dir/src/neb/shape.cpp.o" \
 "CMakeFiles/nebula.dir/src/neb/user.cpp.o" \
-"CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o" \
+"CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o" \
+"CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o" \
 "CMakeFiles/nebula.dir/src/neb/network/client.cpp.o" \
 "CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o" \
 "CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o" \
@@ -628,14 +628,14 @@ nebula_OBJECTS = \
 # External object files for target nebula
 nebula_EXTERNAL_OBJECTS =
 
-libnebula.a: CMakeFiles/nebula.dir/src/neb/camera.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/src/neb/physics.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/src/neb/app.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/src/neb/shape.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/src/neb/user.cpp.o
-libnebula.a: CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o
+libnebula.a: CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o
+libnebula.a: CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/src/neb/network/client.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o
 libnebula.a: CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o
@@ -662,14 +662,14 @@ libnebula.a: CMakeFiles/nebula.dir/link.txt
 CMakeFiles/nebula.dir/build: libnebula.a
 .PHONY : CMakeFiles/nebula.dir/build
 
-CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/camera.cpp.o.requires
 CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/physics.cpp.o.requires
 CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/app.cpp.o.requires
 CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o.requires
 CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o.requires
 CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/shape.cpp.o.requires
 CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/user.cpp.o.requires
-CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o.requires
+CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o.requires
+CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o.requires
 CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/network/client.cpp.o.requires
 CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o.requires
 CMakeFiles/nebula.dir/requires: CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o.requires

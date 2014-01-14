@@ -142,8 +142,8 @@ CMakeFiles/nebula.dir/src/neb/app.cpp.o
  src/neb/physics.h
  src/neb/scene/scene.h
  src/neb/vehicle_manager.h
-CMakeFiles/nebula.dir/src/neb/camera.cpp.o
- /home/charles/Programming/C++/nebula/src/neb/camera.cpp
+CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o
+ /home/charles/Programming/C++/nebula/src/neb/camera/camera.cpp
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
@@ -151,14 +151,12 @@ CMakeFiles/nebula.dir/src/neb/camera.cpp.o
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
  src/neb/actor/rigid_body/rigid_body.h
- src/neb/camera.h
  src/neb/config.h
  src/neb/scene/scene.h
  src/neb/vehicle_manager.h
-CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o
- /home/charles/Programming/C++/nebula/src/neb/camera_ridealong.cpp
+CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o
+ /home/charles/Programming/C++/nebula/src/neb/camera/ridealong.cpp
  src/neb/actor/Base.h
- src/neb/camera.h
  src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/network/actor_release.cpp
@@ -275,7 +273,6 @@ CMakeFiles/nebula.dir/src/neb/user.cpp.o
  src/neb/actor/Base.h
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/rigid_body/control.h
- src/neb/camera.h
  src/neb/config.h
  src/neb/user.h
 CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o

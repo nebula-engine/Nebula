@@ -450,53 +450,53 @@ src/neb/app.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/app.cpp.s
 .PHONY : src/neb/app.cpp.s
 
-src/neb/camera.o: src/neb/camera.cpp.o
-.PHONY : src/neb/camera.o
+src/neb/camera/camera.o: src/neb/camera/camera.cpp.o
+.PHONY : src/neb/camera/camera.o
 
 # target to build an object file
-src/neb/camera.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera.cpp.o
-.PHONY : src/neb/camera.cpp.o
+src/neb/camera/camera.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o
+.PHONY : src/neb/camera/camera.cpp.o
 
-src/neb/camera.i: src/neb/camera.cpp.i
-.PHONY : src/neb/camera.i
+src/neb/camera/camera.i: src/neb/camera/camera.cpp.i
+.PHONY : src/neb/camera/camera.i
 
 # target to preprocess a source file
-src/neb/camera.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera.cpp.i
-.PHONY : src/neb/camera.cpp.i
+src/neb/camera/camera.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.i
+.PHONY : src/neb/camera/camera.cpp.i
 
-src/neb/camera.s: src/neb/camera.cpp.s
-.PHONY : src/neb/camera.s
+src/neb/camera/camera.s: src/neb/camera/camera.cpp.s
+.PHONY : src/neb/camera/camera.s
 
 # target to generate assembly for a file
-src/neb/camera.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera.cpp.s
-.PHONY : src/neb/camera.cpp.s
+src/neb/camera/camera.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.s
+.PHONY : src/neb/camera/camera.cpp.s
 
-src/neb/camera_ridealong.o: src/neb/camera_ridealong.cpp.o
-.PHONY : src/neb/camera_ridealong.o
+src/neb/camera/ridealong.o: src/neb/camera/ridealong.cpp.o
+.PHONY : src/neb/camera/ridealong.o
 
 # target to build an object file
-src/neb/camera_ridealong.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o
-.PHONY : src/neb/camera_ridealong.cpp.o
+src/neb/camera/ridealong.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o
+.PHONY : src/neb/camera/ridealong.cpp.o
 
-src/neb/camera_ridealong.i: src/neb/camera_ridealong.cpp.i
-.PHONY : src/neb/camera_ridealong.i
+src/neb/camera/ridealong.i: src/neb/camera/ridealong.cpp.i
+.PHONY : src/neb/camera/ridealong.i
 
 # target to preprocess a source file
-src/neb/camera_ridealong.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.i
-.PHONY : src/neb/camera_ridealong.cpp.i
+src/neb/camera/ridealong.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.i
+.PHONY : src/neb/camera/ridealong.cpp.i
 
-src/neb/camera_ridealong.s: src/neb/camera_ridealong.cpp.s
-.PHONY : src/neb/camera_ridealong.s
+src/neb/camera/ridealong.s: src/neb/camera/ridealong.cpp.s
+.PHONY : src/neb/camera/ridealong.s
 
 # target to generate assembly for a file
-src/neb/camera_ridealong.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.s
-.PHONY : src/neb/camera_ridealong.cpp.s
+src/neb/camera/ridealong.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.s
+.PHONY : src/neb/camera/ridealong.cpp.s
 
 src/neb/network/actor_release.o: src/neb/network/actor_release.cpp.o
 .PHONY : src/neb/network/actor_release.o
@@ -788,12 +788,12 @@ help:
 	@echo "... src/neb/app.o"
 	@echo "... src/neb/app.i"
 	@echo "... src/neb/app.s"
-	@echo "... src/neb/camera.o"
-	@echo "... src/neb/camera.i"
-	@echo "... src/neb/camera.s"
-	@echo "... src/neb/camera_ridealong.o"
-	@echo "... src/neb/camera_ridealong.i"
-	@echo "... src/neb/camera_ridealong.s"
+	@echo "... src/neb/camera/camera.o"
+	@echo "... src/neb/camera/camera.i"
+	@echo "... src/neb/camera/camera.s"
+	@echo "... src/neb/camera/ridealong.o"
+	@echo "... src/neb/camera/ridealong.i"
+	@echo "... src/neb/camera/ridealong.s"
 	@echo "... src/neb/network/actor_release.o"
 	@echo "... src/neb/network/actor_release.i"
 	@echo "... src/neb/network/actor_release.s"
