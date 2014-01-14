@@ -128,9 +128,13 @@ int	neb::actor::Base::fire() {
 	
 	auto scene = get_scene();
 	
-	auto me = std::dynamic_pointer_cast<neb::actor::Actor>(shared_from_this());
+	//auto me = std::dynamic_pointer_cast<neb::actor::Actor>(shared_from_this());
 	
-	scene->create_actor_local(desc);
+	auto a = scene->create_actor_local(desc);
+	
+	neb::timer::actor_s t(new neb::timer::actor(actor, neb::timer::actor::type::RELEASE, 5.0));
+	
+	scene->timer_set_.insert(t);
 	
 	return 1;
 }

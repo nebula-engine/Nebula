@@ -102,55 +102,61 @@ int neb::app::step(double time) {
 
 	std::shared_ptr<neb::scene::scene> scene;
 
-	for(auto it = scenes_.begin(); it != scenes_.end(); ++it) {
+	for(auto it = scenes_.begin(); it != scenes_.end();)
+	{
 		scene = it->second;
-		
 		assert(scene);
 		
-		scene->step(time);
+		if(scene->all(neb::scene::flag::SHOULD_RELEASE))
+		{
+			scene->release();
+			
+			it = scenes_.erase(it);
+		}
+		else
+		{
+			scene->step(time);
+			
+			++it;	
+		}
 	}
+	
+	// windows
+	for(auto it = windows_.begin(); it != windows_.end();)
+	{
+		auto w = it->second;
+		assert(w);
+		
+		if(w->all(neb::window::flag::SHOULD_RELEASE))
+		{
+		
+			printf("erase\n");
+			it = windows_.erase(it);
+		}
+		else
+		{
+			w->step(time);
+			
+			it++;
+		}
+	}
+	
+	// timer
+	timer_set_.step(time);
 	
 	return 0;
 }
 int	neb::app::loop() {
 	NEBULA_DEBUG_1_FUNCTION;
-
+	
 	double time;
 	int r;
-
+	
 	while(1)
 	{	
 		time = glfwGetTime();
-
-		//printf("time = %f\n", time);
-
-		// scene
-		auto s = scenes_.begin();
-		while(s != scenes_.end())
-		{
-			auto scene = s->second;
-			assert(scene);
-			
-			scene->step(time);
-			
-			s++;
-		}	
-
-		// windows
-		auto it = windows_.begin();
-		while(it != windows_.end())
-		{
-			assert(it->second);
-			r = it->second->step(time);
-			
-			if(r) {
-				printf("erase\n");
-				it = windows_.erase(it);
-			}
-			else {
-				it++;
-			}
-		}
+		
+		step(time);
 		
 		glfwPollEvents();
 	}
