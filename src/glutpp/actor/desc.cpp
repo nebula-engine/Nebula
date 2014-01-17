@@ -9,11 +9,35 @@
 
 
 
-
+glutpp::actor::desc::desc():
+	mode_create_(glutpp::actor::mode_create::e::NOW)
+{
+}		
 void glutpp::actor::desc::load(tinyxml2::XMLElement* element) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	get_raw()->load(element);
+	
+	// mode create
+	buf = element->Attribute("mode create");
+	if(buf != NULL)
+	{
+		if(strcmp(buf, "deferred") == 0)
+		{
+			printf("DEFERRED\n");
+			mode_create_ = glutpp::actor::mode_create::e::DEFERRED;
+		}
+		else if(strcmp(buf, "now") == 0)
+		{
+			printf("NOW\n");
+			mode_create_ = glutpp::actor::mode_create::e::NOW;
+		}
+		else
+		{
+			printf("invalid mode\n");
+			abort();
+		}
+	}
 	
 	// shapes
 	tinyxml2::XMLElement* element_shape = element->FirstChildElement("shape");

@@ -31,7 +31,7 @@ namespace glutpp {
 
 
 			glutpp::actor::type	type_;
-			glutpp::actor::mode	mode_;
+			//glutpp::actor::mode	mode_;
 			unsigned int		flag_;
 			char			name_[32];
 
