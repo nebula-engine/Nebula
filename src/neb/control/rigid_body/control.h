@@ -10,6 +10,13 @@
 namespace neb {
 	namespace control {
 		namespace rigid_body {
+			/** An object makes no distinction between local and remote.
+			 * In a remote scene, the actor will send a control update message.
+			 * In a local scene, the actor will call upon stored values; it makes no difference to the
+			 * actor whether these value were set by calls to key_fun or by a control update message.
+			 * This creates requirements for how control works. All infomation needed to determine 
+			 * force and torque at a given point in time must be stored in raw.
+			 **/
 			class control {
 				public:
 					control();
