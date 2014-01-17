@@ -45,26 +45,7 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 		abort();
 	}
 	
-	// mode
-	buf = element->Attribute("mode");
-	if(buf != NULL)
-	{
-		if(strcmp(buf, "deferred") == 0)
-		{
-			printf("DEFERRED\n");
-			mode_ = glutpp::actor::mode::DEFERRED;
-		}
-		else if(strcmp(buf, "now") == 0)
-		{
-			printf("NOW\n");
-			mode_ = glutpp::actor::mode::NOW;
-		}
-		else
-		{
-			printf("invalid mode\n");
-			abort();
-		}
-	}
+	
 	
 	// name
 	buf = element->Attribute("name");
