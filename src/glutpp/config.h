@@ -166,7 +166,7 @@ namespace glutpp {
 			NOW,
 			DEFERRED,
 		};
-		struct update_mode {
+		struct mode_update {
 			enum e {
 				NONE   = 0x0,
 				LOCAL  = 0x1,
