@@ -18,6 +18,12 @@ namespace neb {
 					public:
 						glutpp::actor::addr_s	get_addr() { return std::get<1>(tup_); }
 				};
+
+				class update: public ser_create {
+					public:
+						glutpp::actor::addr_s			get_addr() { return std::get<1>(tup_); }
+						neb::control::rigid_body::raw_s		get_raw() { return std::get<0>(tup_); }
+				};
 			}
 		}
 	}

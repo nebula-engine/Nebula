@@ -535,6 +535,8 @@ void neb::scene::scene::send_actor_update() {
 	actor_update.write(msg);
 
 	get_app()->send_server(msg);
+	
+	
 }
 void neb::scene::scene::step_remote(double time){
 	NEBULA_DEBUG_1_FUNCTION;

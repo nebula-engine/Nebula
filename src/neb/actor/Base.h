@@ -74,6 +74,8 @@ namespace neb
 				rigid_body::rigid_body_s	to_rigid_body();
 				
 			public:
+				glutpp::actor::mode_update::e	mode_update_;
+	
 				glutpp::window::window_w	window_;
 				
 				struct

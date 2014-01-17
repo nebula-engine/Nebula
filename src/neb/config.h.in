@@ -13,7 +13,7 @@
 namespace neb
 {
 	class shape;
-	
+
 	namespace timer {
 		class actor;
 		typedef std::shared_ptr<actor>		actor_s;
@@ -23,6 +23,15 @@ namespace neb
 		class client;
 		typedef std::shared_ptr<server>		server_s;
 		typedef std::shared_ptr<client>		client_s;
+
+		namespace control {
+			namespace rigid_body {
+				class create;
+
+				class update;
+				typedef std::shared_ptr<update>		update_s;
+			}
+		}
 	}
 	namespace packet
 	{
@@ -35,14 +44,14 @@ namespace neb
 		struct set_raw;
 		class set;
 	}
-	
+
 	enum flag {
 		SHOULD_RELEASE = 1 << 0,
 	};
 	class app;
 	typedef std::shared_ptr<app>	app_s;
 	typedef std::weak_ptr<app>	app_w;
-	
+
 	namespace scene
 	{
 		class scene;
@@ -75,7 +84,7 @@ namespace neb
 				T0,
 				T1,
 			};
-			
+
 			class raw;
 			typedef std::shared_ptr<raw>		raw_s;
 

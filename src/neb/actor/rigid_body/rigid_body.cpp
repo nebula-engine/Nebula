@@ -12,6 +12,7 @@
 #include <neb/actor/rigid_body/rigid_body.h>
 #include <neb/control/rigid_body/control.h>
 #include <neb/camera/ridealong.h>
+#include <neb/network/message.h>
 
 
 neb::actor::rigid_body::rigid_body::rigid_body(
@@ -29,19 +30,48 @@ void	neb::actor::rigid_body::rigid_body::init(glutpp::actor::desc_s desc) {
 }
 void neb::actor::rigid_body::rigid_body::step(double time) {
 	neb::actor::Rigid_Actor::step(time);
-	
-	
+
+	switch(mode_update_)
+	{
+		case glutpp::actor::mode_update::LOCAL:
+			break;
+		case glutpp::actor::mode_update::REMOTE:
+			step_remote(time);
+			break;
+		default:
+			break;
+	}
+
 }
 void neb::actor::rigid_body::rigid_body::step_local(double time) {
 	
+	
+	
+}
+void neb::actor::rigid_body::rigid_body::step_remote(double) {
+
+	NEBULA_DEBUG_1_FUNCTION;
+
+	if(control_)
+	{
+
+		gal::network::message::shared_t msg(new gal::network::message);
+
+		neb::network::control::rigid_body::update_s control_update;
+
+		control_update->get_addr()->load_this(to_rigid_body());
+		control_update->get_raw()->load(control_);
+
+	}
+
 }
 void neb::actor::rigid_body::rigid_body::add_force(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
-	
+
 	// non-user-controled
 	math::vec3 f(force_);
 	math::vec3 t(torque_);
-	
+
 	// user-controlled
 	if(control_) {
 		f += control_->f();
@@ -60,46 +90,25 @@ void neb::actor::rigid_body::rigid_body::add_force(double time) {
 	assert(px_actor_);
 	physx::PxRigidBody* pxrigidbody = px_actor_->isRigidBody();
 	assert(pxrigidbody);
-	
+
 	//printf("mass = %f\n", pxrigidbody->getMass());
-	
+
 	pxrigidbody->addForce(f);
 	pxrigidbody->addTorque(t);
-}
-void	neb::actor::rigid_body::rigid_body::step_remote(double) {
-	NEBULA_DEBUG_1_FUNCTION;
-
-	/*
-	   p.type_ = neb::packet::ACTOR_FORCE;
-	   p.af.i_ = i_;
-	   p.af.f_[0] = force_.x;
-	   p.af.f_[1] = force_.y;
-	   p.af.f_[2] = force_.z;
-	   p.af.t_[0] = torque_.x;
-	   p.af.t_[1] = torque_.y;
-	   p.af.t_[2] = torque_.z;
-	 */
-	gal::network::message::shared_t msg(new gal::network::message);
-	
-	// create glutpp message
-	
-	// write
-	
-	//get_app()->send_client(msg);
 }
 glutpp::actor::desc_s neb::actor::rigid_body::rigid_body::get_projectile() {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	auto scene = get_scene();
-	
+
 	glutpp::actor::desc_s ad = scene->actors_deferred_[(char*)"proj0"];
 	assert(ad);
-	
+
 	glutpp::actor::desc_s desc(new glutpp::actor::desc);
 	*desc = *ad;
-	
+
 	// modify description	
-	
+
 	math::vec3 offset = desc->get_raw()->pose_.p;
 
 	// pose
@@ -107,14 +116,14 @@ glutpp::actor::desc_s neb::actor::rigid_body::rigid_body::get_projectile() {
 	offset = pose.q.rotate(offset);
 	pose.p += offset;
 	desc->get_raw()->pose_ = pose;
-	
+
 	// velocity
 	math::vec3 velocity = desc->get_raw()->velocity_;
 	velocity = pose.q.rotate(velocity);
 	velocity += raw_.velocity_;
 	desc->get_raw()->velocity_ = velocity;
 
-	
+
 	return desc;
 }
 void neb::actor::rigid_body::rigid_body::print_info() {
@@ -138,17 +147,17 @@ void neb::actor::rigid_body::rigid_body::print_info() {
 
 }
 void neb::actor::rigid_body::rigid_body::create_control(neb::control::rigid_body::raw_s raw) {
-	
+
 	auto me = to_rigid_body();
-	
+
 	neb::control::rigid_body::control_s control(new neb::control::rigid_body::control);
-	
+
 	control_ = control;
-	
+
 	control->actor_ = me;
 	control->raw_.type_ = neb::control::rigid_body::type::T0;
-	
-	
+
+
 	if(!window_.expired())
 	{
 		auto wnd = window_.lock();
@@ -160,7 +169,7 @@ void neb::actor::rigid_body::rigid_body::create_control(neb::control::rigid_body
 					std::placeholders::_2,
 					std::placeholders::_3,
 					std::placeholders::_4));
-	
+
 
 
 		// camera control
