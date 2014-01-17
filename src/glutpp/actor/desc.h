@@ -20,7 +20,7 @@ namespace glutpp {
 
 		struct desc: gal::network::serial_ext<vec_shape_desc, vec_actor_desc, raw, id>
 		{
-
+			desc();
 			void			load(glutpp::actor::actor_s);
 			void			load(tinyxml2::XMLElement*);
 			void			add_shape(glutpp::shape::desc);
@@ -32,7 +32,9 @@ namespace glutpp {
 			raw_s			get_raw() const;
 			vec_actor_desc_s	get_actors() const;
 			vec_shape_desc_s	get_shapes() const;
-
+			
+			glutpp::actor::mode_create::e	mode_create_;
+			
 		};
 	}
 }
