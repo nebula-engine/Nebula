@@ -378,30 +378,6 @@ src/neb/actor/free.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/free.cpp.s
 .PHONY : src/neb/actor/free.cpp.s
 
-src/neb/actor/rigid_body/control.o: src/neb/actor/rigid_body/control.cpp.o
-.PHONY : src/neb/actor/rigid_body/control.o
-
-# target to build an object file
-src/neb/actor/rigid_body/control.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/rigid_body/control.cpp.o
-.PHONY : src/neb/actor/rigid_body/control.cpp.o
-
-src/neb/actor/rigid_body/control.i: src/neb/actor/rigid_body/control.cpp.i
-.PHONY : src/neb/actor/rigid_body/control.i
-
-# target to preprocess a source file
-src/neb/actor/rigid_body/control.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/rigid_body/control.cpp.i
-.PHONY : src/neb/actor/rigid_body/control.cpp.i
-
-src/neb/actor/rigid_body/control.s: src/neb/actor/rigid_body/control.cpp.s
-.PHONY : src/neb/actor/rigid_body/control.s
-
-# target to generate assembly for a file
-src/neb/actor/rigid_body/control.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/rigid_body/control.cpp.s
-.PHONY : src/neb/actor/rigid_body/control.cpp.s
-
 src/neb/actor/rigid_body/rigid_body.o: src/neb/actor/rigid_body/rigid_body.cpp.o
 .PHONY : src/neb/actor/rigid_body/rigid_body.o
 
@@ -497,6 +473,54 @@ src/neb/camera/ridealong.s: src/neb/camera/ridealong.cpp.s
 src/neb/camera/ridealong.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.s
 .PHONY : src/neb/camera/ridealong.cpp.s
+
+src/neb/control/rigid_body/control.o: src/neb/control/rigid_body/control.cpp.o
+.PHONY : src/neb/control/rigid_body/control.o
+
+# target to build an object file
+src/neb/control/rigid_body/control.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o
+.PHONY : src/neb/control/rigid_body/control.cpp.o
+
+src/neb/control/rigid_body/control.i: src/neb/control/rigid_body/control.cpp.i
+.PHONY : src/neb/control/rigid_body/control.i
+
+# target to preprocess a source file
+src/neb/control/rigid_body/control.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.i
+.PHONY : src/neb/control/rigid_body/control.cpp.i
+
+src/neb/control/rigid_body/control.s: src/neb/control/rigid_body/control.cpp.s
+.PHONY : src/neb/control/rigid_body/control.s
+
+# target to generate assembly for a file
+src/neb/control/rigid_body/control.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.s
+.PHONY : src/neb/control/rigid_body/control.cpp.s
+
+src/neb/control/rigid_body/raw.o: src/neb/control/rigid_body/raw.cpp.o
+.PHONY : src/neb/control/rigid_body/raw.o
+
+# target to build an object file
+src/neb/control/rigid_body/raw.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o
+.PHONY : src/neb/control/rigid_body/raw.cpp.o
+
+src/neb/control/rigid_body/raw.i: src/neb/control/rigid_body/raw.cpp.i
+.PHONY : src/neb/control/rigid_body/raw.i
+
+# target to preprocess a source file
+src/neb/control/rigid_body/raw.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.i
+.PHONY : src/neb/control/rigid_body/raw.cpp.i
+
+src/neb/control/rigid_body/raw.s: src/neb/control/rigid_body/raw.cpp.s
+.PHONY : src/neb/control/rigid_body/raw.s
+
+# target to generate assembly for a file
+src/neb/control/rigid_body/raw.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.s
+.PHONY : src/neb/control/rigid_body/raw.cpp.s
 
 src/neb/network/actor_release.o: src/neb/network/actor_release.cpp.o
 .PHONY : src/neb/network/actor_release.o
@@ -690,6 +714,30 @@ src/neb/simulation_callback.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.s
 .PHONY : src/neb/simulation_callback.cpp.s
 
+src/neb/timer/actor.o: src/neb/timer/actor.cpp.o
+.PHONY : src/neb/timer/actor.o
+
+# target to build an object file
+src/neb/timer/actor.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/timer/actor.cpp.o
+.PHONY : src/neb/timer/actor.cpp.o
+
+src/neb/timer/actor.i: src/neb/timer/actor.cpp.i
+.PHONY : src/neb/timer/actor.i
+
+# target to preprocess a source file
+src/neb/timer/actor.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/timer/actor.cpp.i
+.PHONY : src/neb/timer/actor.cpp.i
+
+src/neb/timer/actor.s: src/neb/timer/actor.cpp.s
+.PHONY : src/neb/timer/actor.s
+
+# target to generate assembly for a file
+src/neb/timer/actor.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/timer/actor.cpp.s
+.PHONY : src/neb/timer/actor.cpp.s
+
 src/neb/user.o: src/neb/user.cpp.o
 .PHONY : src/neb/user.o
 
@@ -779,9 +827,6 @@ help:
 	@echo "... src/neb/actor/free.o"
 	@echo "... src/neb/actor/free.i"
 	@echo "... src/neb/actor/free.s"
-	@echo "... src/neb/actor/rigid_body/control.o"
-	@echo "... src/neb/actor/rigid_body/control.i"
-	@echo "... src/neb/actor/rigid_body/control.s"
 	@echo "... src/neb/actor/rigid_body/rigid_body.o"
 	@echo "... src/neb/actor/rigid_body/rigid_body.i"
 	@echo "... src/neb/actor/rigid_body/rigid_body.s"
@@ -794,6 +839,12 @@ help:
 	@echo "... src/neb/camera/ridealong.o"
 	@echo "... src/neb/camera/ridealong.i"
 	@echo "... src/neb/camera/ridealong.s"
+	@echo "... src/neb/control/rigid_body/control.o"
+	@echo "... src/neb/control/rigid_body/control.i"
+	@echo "... src/neb/control/rigid_body/control.s"
+	@echo "... src/neb/control/rigid_body/raw.o"
+	@echo "... src/neb/control/rigid_body/raw.i"
+	@echo "... src/neb/control/rigid_body/raw.s"
 	@echo "... src/neb/network/actor_release.o"
 	@echo "... src/neb/network/actor_release.i"
 	@echo "... src/neb/network/actor_release.s"
@@ -818,6 +869,9 @@ help:
 	@echo "... src/neb/simulation_callback.o"
 	@echo "... src/neb/simulation_callback.i"
 	@echo "... src/neb/simulation_callback.s"
+	@echo "... src/neb/timer/actor.o"
+	@echo "... src/neb/timer/actor.i"
+	@echo "... src/neb/timer/actor.s"
 	@echo "... src/neb/user.o"
 	@echo "... src/neb/user.i"
 	@echo "... src/neb/user.s"

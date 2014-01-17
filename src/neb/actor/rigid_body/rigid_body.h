@@ -9,29 +9,36 @@ namespace neb
 	namespace actor
 	{
 		namespace rigid_body {
-			class rigid_body:
-				public neb::actor::Rigid_Actor
-			{
+			class rigid_body: public neb::actor::Rigid_Actor {
 				public:
 					rigid_body(
 							neb::scene::scene_s,
 							neb::actor::Base_s = neb::actor::Base_s());
-
-					virtual void			init(glutpp::actor::desc_s);
-					virtual void			add_force(double);
-
-
-					virtual glutpp::actor::desc_s	get_projectile();
-
-					virtual void			step_remote(double);
 					
+					virtual void			init(glutpp::actor::desc_s);
+					
+					
+					
+					virtual glutpp::actor::desc_s	get_projectile();
+					
+					virtual void			step(double);
+				private:
+					virtual void			step_local(double);
+					virtual void			step_remote(double);
+
+					virtual void			add_force(double);
+				public:
 					virtual void			print_info();
 
 
 					virtual void			create_physics() {abort();}
-
-					control_s			control_;
-
+					
+					// control
+					virtual void			create_control(
+							neb::control::rigid_body::raw_s);
+				private:
+					neb::control::rigid_body::control_s	control_;
+					
 					math::vec3			force_;
 					math::vec3			torque_;
 			};

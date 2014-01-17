@@ -6,16 +6,23 @@ project(nebula)
 set(PROJECT_SOURCE_DIR src)
 
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb				files_src_neb)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/timer			files_src_neb_timer)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/camera			files_src_neb_camera)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/control/rigid_body	files_src_neb_control_rigid_body)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/actor			files_src_neb_actor)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/actor/rigid_body		files_src_neb_actor_rigid_body)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/scene			files_src_neb_scene)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/network			files_src_neb_network)
 AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/packet			files_src_neb_packet)
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/timer			files_src_neb_timer)
+
+include_directories("${PROJECT_SOURCE_DIR}" ../glutpp/src ../galaxy/src ../math/src)
 
 add_library(nebula 
 	${files_src_neb}
+	${files_src_neb_timer}
 	${files_src_neb_camera}
+	${files_src_neb_control_rigid_body}
 	${files_src_neb_network}
 	${files_src_neb_packet}
 	${files_src_neb_scene}
@@ -23,7 +30,7 @@ add_library(nebula
 	${files_src_neb_actor_rigid_body}
 )
 
-include_directories("${PROJECT_SOURCE_DIR}")
+
 
 configure_file("${PROJECT_SOURCE_DIR}/neb/config.h.in" "${PROJECT_SOURCE_DIR}/neb/config.h")
 

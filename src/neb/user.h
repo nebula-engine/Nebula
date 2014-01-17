@@ -5,7 +5,7 @@
 #include <glutpp/window/window.h>
 
 #include <neb/config.h>
-#include <neb/camera.h>
+#include <neb/camera/camera.h>
 
 namespace neb
 {
@@ -15,10 +15,10 @@ namespace neb
 			user();
 			void	init();
 			void	connect(glutpp::window::window_s);
-			void	set_control(neb::actor::rigid_body::control_s);
+			void	set_control(neb::control::rigid_body::control_s);
 			
 			
-			neb::actor::rigid_body::control_s		control_;
+			neb::control::rigid_body::control_s		control_;
 			
 	};
 }

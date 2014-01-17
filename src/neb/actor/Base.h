@@ -51,15 +51,17 @@ namespace neb
 
 				neb::app_s			get_app();
 				neb::scene::scene_s		get_scene();
+				neb::actor::Base_s		get_actor(int);
+				neb::actor::Base_s		get_actor(glutpp::actor::addr_s);
 
 				virtual glutpp::actor::desc_s	get_projectile();
 
 
 
-				virtual void			add_force(double) {abort();}
 				virtual void			set_pose(math::transform);
 				virtual int			fire();
-
+				
+				virtual void			step(double) { abort(); }
 				virtual void			step_remote(double);
 
 				// signal
@@ -72,6 +74,8 @@ namespace neb
 				rigid_body::rigid_body_s	to_rigid_body();
 				
 			public:
+				glutpp::window::window_w	window_;
+				
 				struct
 				{
 					key_fun_c		key_fun_;

@@ -1,5 +1,5 @@
-#ifndef __NEB_CAMERA_H__
-#define __NEB_CAMERA_H__
+#ifndef __NEB_CAMERA_RIDEALONG_H__
+#define __NEB_CAMERA_RIDEALONG_H__
 
 #include <memory>
 #include <map>
@@ -14,7 +14,7 @@ namespace neb {
 		class ridealong: public glutpp::camera_control
 		{
 			public:
-				camera_ridealong(neb::actor::Base_s);
+				ridealong(neb::actor::Base_s);
 				virtual math::mat44		supply();
 
 

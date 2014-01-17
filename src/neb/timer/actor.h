@@ -1,6 +1,10 @@
 #ifndef __NEBULA_TIMER_ACTOR__
 #define __NEBULA_TIMER_ACTOR__
 
+#include <gal/timer/timer.h>
+
+#include <neb/config.h>
+
 namespace neb {
         namespace timer {
                 class actor: public gal::timer::timer {

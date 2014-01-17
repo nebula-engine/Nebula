@@ -1,7 +1,9 @@
 #include <neb/config.h>
+#include <neb/timer/actor.h>
 #include <neb/app.h>
 #include <neb/scene/scene.h>
 #include <neb/shape.h>
+
 #include <glutpp/actor/desc.h>
 
 #include <neb/actor/Base.h>
@@ -95,11 +97,34 @@ neb::actor::Base_s neb::actor::Base::create_actor_local(glutpp::actor::desc_s de
 neb::actor::Base_s neb::actor::Base::create_actor_remote(
 		glutpp::actor::addr_s addr,
 		glutpp::actor::desc_s desc) {
-	auto actor = create_actor(desc);
-	abort();
+	
+	auto vec = addr->get_vec();
+	assert(!vec->vec_.empty());
+	int i;
+	neb::actor::Base_s actor;
+	
+	if(vec->vec_.size() > 1)
+	{
+		// vector size > 1
+		// actor is under another actor
+		i = vec->vec_.front();
+		vec->vec_.pop_front();
+		
+		auto parent_actor = get_actor(i);
+		assert(parent_actor);
+		
+		actor = parent_actor->create_actor_remote(addr, desc);
+	}
+	else
+	{
+		// vector size == 1
+		// actor is directly under this
+		actor = create_actor(desc);
+		actors_[desc->get_id()->i_];
+	}
+	
 	return actor;
 }
-
 std::shared_ptr<neb::app> neb::actor::Base::get_app() {
 
 	auto scene = get_scene();
@@ -116,44 +141,75 @@ std::shared_ptr<neb::scene::scene> neb::actor::Base::get_scene() {
 
 	return scene;
 }
-void	neb::actor::Base::set_pose(math::transform pose) {
+neb::actor::Base_s neb::actor::Base::get_actor(int i) {
+	auto it = actors_.find(i);
+	neb::actor::Base_s a;
+	if(it == actors_.end())
+	{
+		return a;
+	}
+	else
+	{
+		a = std::dynamic_pointer_cast<neb::actor::Base>(it->second);
+		return a;
+	}
+}
+neb::actor::Base_s neb::actor::Base::get_actor(glutpp::actor::addr_s addr) {
 	
+	auto vec = addr->get_vec();
+	assert(vec);
+	assert(!vec->vec_.empty());
+	
+	int i = vec->vec_.front();
+	vec->vec_.pop_front();
+	
+	auto actor = get_actor(i);
+	assert(actor);
+	
+	if(!vec->vec_.empty())
+	{
+		return actor->get_actor(addr);
+	}
+	
+	return actor;
+}
+void	neb::actor::Base::set_pose(math::transform pose) {
+
 	raw_.pose_ = pose;
 }
 int	neb::actor::Base::fire() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
-	
+
 	glutpp::actor::desc_s desc = get_projectile();
-	
+
 	auto scene = get_scene();
-	
+
 	//auto me = std::dynamic_pointer_cast<neb::actor::Actor>(shared_from_this());
-	
+
 	auto a = scene->create_actor_local(desc);
-	
-	neb::timer::actor_s t(new neb::timer::actor(actor, neb::timer::actor::type::RELEASE, 5.0));
-	
-	scene->timer_set_.insert(t);
-	
+
+	neb::timer::actor_s t(new neb::timer::actor(a, neb::timer::actor::type::RELEASE, scene->last_ + 5.0));
+
+	scene->timer_set_.set_.insert(t);
+
 	return 1;
 }
 glutpp::actor::desc_s neb::actor::Base::get_projectile() {
 
 	NEBULA_DEBUG_0_FUNCTION;
-	
+
 	abort();
-	
+
 	return glutpp::actor::desc_s();
 }
-void	neb::actor::Base::step_remote(double)
-{}
-void neb::actor::Base::create_shapes(glutpp::actor::desc_s desc)
-{
+void	neb::actor::Base::step_remote(double) {
+}
+void neb::actor::Base::create_shapes(glutpp::actor::desc_s desc) {
 	NEBULA_DEBUG_0_FUNCTION;
-	
+
 	auto me = std::dynamic_pointer_cast<neb::actor::Base>(shared_from_this());
-	
+
 	std::shared_ptr<neb::shape> shape;
 
 	for(auto it = desc->get_shapes()->vec_.begin(); it != desc->get_shapes()->vec_.end(); ++it)
@@ -169,8 +225,10 @@ void neb::actor::Base::create_shapes(glutpp::actor::desc_s desc)
 }
 void neb::actor::Base::connect(glutpp::window::window_s window) {
 	
+	window_ = window;
+	
 	auto me = std::dynamic_pointer_cast<neb::actor::Base>(shared_from_this());
-
+	
 	conn_.key_fun_ = window->sig_.key_fun_.connect(std::bind(
 				&neb::actor::Base::key_fun,
 				me,
@@ -197,7 +255,7 @@ int neb::actor::Base::key_fun(int key, int scancode, int action, int mods) {
 					return 0;
 			}
 	}
-	
+
 	return 0;
 }
 neb::actor::rigid_body::rigid_body_s neb::actor::Base::to_rigid_body() {

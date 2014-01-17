@@ -10,12 +10,19 @@
 #include <neb/config.h>
 #include <neb/app.h>
 #include <neb/physics.h>
-#include <neb/packet/packet.h>
 
-neb::app::app() {
+neb::app::app():
+	flag_(0)
+{
 	NEBULA_DEBUG_0_FUNCTION;
 }
-void	neb::app::init() {
+void neb::app::f(unsigned int flag) {
+	flag_ = flag;
+}
+unsigned int neb::app::f() {
+	return flag_;
+}
+void neb::app::init() {
 	NEBULA_DEBUG_0_FUNCTION;
 }
 glutpp::window::window_s neb::app::create_window(int w, int h, int x, int y, char const * title) {
@@ -35,7 +42,7 @@ glutpp::window::window_s neb::app::create_window(int w, int h, int x, int y, cha
 
 	return window;
 }
-void neb::app::load_scene_local(glutpp::scene::desc_s sd) {
+neb::scene::scene_s neb::app::load_scene_local(glutpp::scene::desc_s sd) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	neb::scene::scene_s scene(new neb::scene::scene(shared_from_this()));
@@ -44,8 +51,10 @@ void neb::app::load_scene_local(glutpp::scene::desc_s sd) {
 	scene->user_type_ = neb::scene::scene::LOCAL;
 	
 	scenes_.push_back(scene);
+	
+	return scene;
 }
-void neb::app::load_scene_remote(glutpp::scene::desc_s sd) {
+neb::scene::scene_s neb::app::load_scene_remote(glutpp::scene::desc_s sd) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	neb::scene::scene_s scene(new neb::scene::scene(shared_from_this()));
@@ -58,6 +67,8 @@ void neb::app::load_scene_remote(glutpp::scene::desc_s sd) {
 	assert(i != -1);
 	
 	scenes_[i] = scene;
+	
+	return scene;
 }
 void neb::app::load_layout(int name, char const * filename) {
 
@@ -107,7 +118,7 @@ int neb::app::step(double time) {
 		scene = it->second;
 		assert(scene);
 		
-		if(scene->all(neb::scene::flag::SHOULD_RELEASE))
+		if(scene->all(glutpp::scene::flag::SHOULD_RELEASE))
 		{
 			scene->release();
 			
@@ -127,7 +138,7 @@ int neb::app::step(double time) {
 		auto w = it->second;
 		assert(w);
 		
-		if(w->all(neb::window::flag::SHOULD_RELEASE))
+		if(w->all(glutpp::window::flag::SHOULD_RELEASE))
 		{
 		
 			printf("erase\n");
@@ -150,7 +161,6 @@ int	neb::app::loop() {
 	NEBULA_DEBUG_1_FUNCTION;
 	
 	double time;
-	int r;
 	
 	while(1)
 	{	
@@ -163,6 +173,16 @@ int	neb::app::loop() {
 
 	return 0;
 }
+glutpp::window::window_s neb::app::get_window(int i) {
+	glutpp::window::window_s window;
+	auto it = windows_.find(i);
+	if(it != windows_.end())
+	{
+		return it->second;
+	}
+	
+	return window;
+}
 neb::scene::scene_s neb::app::get_scene(int name) {
 	NEBULA_DEBUG_1_FUNCTION;
 
@@ -171,6 +191,36 @@ neb::scene::scene_s neb::app::get_scene(int name) {
 	assert(s);
 
 	return s;
+}
+neb::scene::scene_s neb::app::get_scene(glutpp::scene::addr_s addr) {
+	NEBULA_DEBUG_1_FUNCTION;
+	
+	assert(addr);
+
+	auto vec = addr->get_vec();
+	
+	assert(vec->vec_.size() == 1);
+	
+	auto s = scenes_[vec->vec_.at(0)];
+	
+	assert(s);
+
+	return s;
+}
+neb::actor::Base_s neb::app::get_actor(glutpp::actor::addr_s addr) {
+	
+	neb::actor::Base_s actor;
+	
+	auto scene = get_scene(addr->get_scene_addr());
+	assert(scene);
+	
+	auto vec = addr->get_vec();
+	if(!vec->vec_.empty())
+	{
+		actor = scene->get_actor(addr);
+	}
+	
+	return actor;
 }
 int neb::app::transmit_scenes(std::shared_ptr<neb::network::communicating> c) {
 	NEBULA_DEBUG_0_FUNCTION;
@@ -197,12 +247,41 @@ int neb::app::transmit_scenes(std::shared_ptr<neb::network::communicating> c) {
 
 	return 0;
 }
-void neb::app::send(gal::network::message::shared_t msg)  {
+void neb::app::reset_server(unsigned short port) {
+	NEBULA_DEBUG_0_FUNCTION;
+	server_.reset(new neb::network::server(shared_from_this(), port, 10));
+}
+void neb::app::reset_client(char const * addr, unsigned short port) {
+	NEBULA_DEBUG_0_FUNCTION;
+	client_.reset(new neb::network::client(shared_from_this(), addr, port));
+	client_->start();
+}
+void neb::app::send_server(gal::network::message::shared_t msg)  {
 	NEBULA_DEBUG_1_FUNCTION;
-
+	
 	if(server_)
 	{
 		server_->write(msg);
 	}
+	else
+	{
+		printf("WARNING: no server\n");
+	}
 }
+void neb::app::send_client(gal::network::message::shared_t msg)  {
+	NEBULA_DEBUG_1_FUNCTION;
+	
+	if(client_)
+	{
+		client_->write(msg);
+	}
+	else
+	{
+		printf("WARNING: no server\n");
+	}
+}
+
+
+
+
 

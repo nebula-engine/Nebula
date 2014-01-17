@@ -8,16 +8,16 @@
 #include <unistd.h>          // For close()
 #include <netinet/in.h>      // For sockaddr_in
 
+#include <math/free.h>
+
 #include <glutpp/actor/actor.h>
-
 #include <glutpp/scene/desc.h>
-
 #include <glutpp/network/message.h>
 
 #include <neb/config.h>
 #include <neb/app.h>
 #include <neb/network/client.h>
-#include <neb/packet/packet.h>
+#include <neb/network/message.h>
 #include <neb/scene/scene.h>
 
 neb::network::client::client(neb::app_s app, char const * addr, unsigned short port):
@@ -38,27 +38,43 @@ void neb::network::client::process(gal::network::message::shared_t msg) {
 	//memcpy(&p, msg->body(), sizeof(neb::packet::packet));
 
 	//size_t len = msg->body_length();
-
+	
 	int type;
 	msg->read(&type, sizeof(int));
-
-	// possibly used
-	std::shared_ptr<glutpp::network::scene::create>	scene_create;
-	std::shared_ptr<glutpp::network::actor::create>	actor_create;
-	std::shared_ptr<glutpp::network::actor::create>	actor_update;
 	
-	// 
+	math::hexdump(&type, sizeof(int));
+	
+	// possibly used
+	std::shared_ptr<glutpp::network::scene::create>			scene_create;
+	std::shared_ptr<glutpp::network::actor::create>			actor_create;
+	std::shared_ptr<glutpp::network::actor::update>			actor_update;
+	std::shared_ptr<neb::network::control::rigid_body::create>	control_create;
+	
+	//
+	
+	glutpp::window::window_s window;
+	
+	neb::actor::Base_s			actor;
+	neb::actor::rigid_body::rigid_body_s	rigidbody;
+	
 	glutpp::scene::desc_s sd;
-
+	
+	
+	glutpp::scene::addr_s scene_addr;
+	
 	glutpp::actor::addr_s actor_addr;
 	glutpp::actor::desc_s actor_desc;
 	
-	int scene_i = -1;
+	neb::control::rigid_body::raw_s	control_raw;
+	
+	glutpp::network::actor::vec_addr_raw_s vec;
+
 	int window_name = 0;
 	
 	switch(type)
 	{
 		case glutpp::network::type::SCENE_CREATE:
+			printf("DEBUG: message SCENE_CREATE received\n");
 			
 			scene_create.reset(new glutpp::network::scene::create);
 			//scene_desc.reset(new glutpp::scene::desc);
@@ -74,26 +90,78 @@ void neb::network::client::process(gal::network::message::shared_t msg) {
 			
 			app->load_scene_remote(sd);
 			
-			app->activate_scene(window_name, sd->i_);
+			app->activate_scene(window_name, sd->get_id()->i_);
 			
 			break;
 		case glutpp::network::type::ACTOR_CREATE:
+			printf("DEBUG: message ACTOR_CREATE received\n");
 
 			actor_create.reset(new glutpp::network::actor::create);
 			
 			actor_create->read(msg);
 			
-			actor_desc = std::get<0>(actor_create->tup_);
+			actor_desc = actor_create->get_desc();
+			actor_addr = actor_create->get_addr();
 			
-			// need seperate create_actor function for remote scene because actor desc already has
-			// valid i
+			scene_addr = actor_addr->get_scene_addr();
 			
-			app->get_scene(scene_i)->create_actor_remote(actor_addr, actor_desc);
+			app->get_scene(scene_addr)->create_actor_remote(
+					actor_addr,
+					actor_desc);
+			
+			break;
+		case glutpp::network::type::ACTOR_UPDATE:
+			printf("DEBUG: message ACTOR_UPDATE received\n");
+
+			actor_update.reset(new glutpp::network::actor::update);
+
+			actor_update->read(msg);
+			
+			vec = std::get<0>(actor_update->tup_);
+			
+			for(auto it = vec->vec_.begin(); it != vec->vec_.end(); ++it)
+			{
+				auto t = *it;
+				glutpp::actor::addr_s addr = std::get<1>(t);
+				glutpp::actor::raw_s raw = std::get<0>(t);
+				
+				auto a = app->get_actor(addr);
+				if(a)
+				{
+					a->raw_ = *raw;
+				}
+				else
+				{
+					printf("WARNING: actor not found\n");
+				}
+			}
+			
+			break;
+		case glutpp::network::type::CONTROL_CREATE:
+			printf("DEBUG: message CONTROL_CREATE received\n");
+			
+			control_create.reset(new neb::network::control::rigid_body::create);
+			
+			control_create->read(msg);
+			
+			actor_addr = control_create->get_addr();
+			
+			window = app->get_window(0);
+			
+			actor = app->get_actor(actor_addr);
+			rigidbody = actor->to_rigid_body();
+			
+			if(window && rigidbody)
+			{
+				rigidbody->connect(window);
+				
+				rigidbody->create_control(control_raw);
+			}
 			
 			break;
 		default:
 			printf("unknwon message type %i\n", type);
-			abort();
+			//abort();
 	}
 }
 

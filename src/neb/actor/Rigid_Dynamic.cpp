@@ -13,6 +13,9 @@ void neb::actor::Rigid_Dynamic::init(glutpp::actor::desc_s desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	neb::actor::rigid_body::rigid_body::init(desc);
+	
+	auto pxrd = px_actor_->isRigidDynamic();
+	pxrd->setLinearDamping(0.5);
 }
 void neb::actor::Rigid_Dynamic::create_physics() {
 	NEBULA_DEBUG_0_FUNCTION;
@@ -69,7 +72,7 @@ void neb::actor::Rigid_Dynamic::print_info() {
 	printf("angular damping     = %f\n", angular_damping);
 	printf("max angular damping = %f\n", max_angular_velocity);
 
-	pxrd->setLinearDamping(15.0);
+	
 
 }
 

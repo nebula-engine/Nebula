@@ -6,9 +6,9 @@
 #include <glutpp/window/window.h>
 
 #include <neb/scene/scene.h>
-#include <neb/camera.h>
+#include <neb/camera/camera.h>
 
-neb::camera::camera():
+neb::camera::camera::camera():
 	pitch_(0.0f),
 	yaw_(0.0f),
 	v_pitch_(0.0f),
@@ -36,17 +36,17 @@ neb::camera::camera():
 	head_[6] = physx::PxVec3( -s, 0,  0 );
 	head_[7] = physx::PxVec3( -d, 0, -d );
 
-	head_flag_[neb::camera::flag::NORTH					] = 0;
-	head_flag_[neb::camera::flag::NORTH	|	neb::camera::flag::EAST	] = 1;
-	head_flag_[					neb::camera::flag::EAST	] = 2;
-	head_flag_[neb::camera::flag::SOUTH	|	neb::camera::flag::EAST	] = 3;
-	head_flag_[neb::camera::flag::SOUTH					] = 4;
-	head_flag_[neb::camera::flag::SOUTH	|	neb::camera::flag::WEST	] = 5;
-	head_flag_[					neb::camera::flag::WEST	] = 6;
-	head_flag_[neb::camera::flag::NORTH	|	neb::camera::flag::WEST	] = 7;
+	head_flag_[neb::camera::camera::flag::NORTH						] = 0;
+	head_flag_[neb::camera::camera::flag::NORTH	|	neb::camera::camera::flag::EAST	] = 1;
+	head_flag_[						neb::camera::camera::flag::EAST	] = 2;
+	head_flag_[neb::camera::camera::flag::SOUTH	|	neb::camera::camera::flag::EAST	] = 3;
+	head_flag_[neb::camera::camera::flag::SOUTH						] = 4;
+	head_flag_[neb::camera::camera::flag::SOUTH	|	neb::camera::camera::flag::WEST	] = 5;
+	head_flag_[						neb::camera::camera::flag::WEST	] = 6;
+	head_flag_[neb::camera::camera::flag::NORTH	|	neb::camera::camera::flag::WEST	] = 7;
 
 }
-void	neb::camera::Connect()
+void	neb::camera::camera::Connect()
 {
 /*	ev_mouse = JSL::master.find_event_device(	{LOGITECH,	MOUSE});
 	ev_keyboard = JSL::master.find_event_device(	{LOGITECH,	KEYBOARD});
@@ -85,11 +85,11 @@ void	neb::camera::Connect()
 		fprintf(stderr, "camera: no input devices");
 	}*/
 }
-void	neb::camera::Display()
+void	neb::camera::camera::Display()
 {
 	Step(1.0f/60.0f);
 }
-void neb::camera::Step(float dt)
+void neb::camera::camera::Step(float dt)
 {
 	//printf("%s\n", __FUNCTION__);
 
@@ -107,7 +107,7 @@ void neb::camera::Step(float dt)
 	// yaw
 	yaw_ += v_yaw_ * dt;
 }
-physx::PxVec3 neb::camera::Move()
+physx::PxVec3 neb::camera::camera::Move()
 {
 	//printf("%s\n", __FUNCTION__);
 
@@ -134,7 +134,7 @@ physx::PxVec3 neb::camera::Move()
 	 */
 	return mov;
 }
-void neb::camera::Look()
+void neb::camera::camera::Look()
 {
 	//printf("%s\n", __FUNCTION__);
 /*
@@ -158,10 +158,10 @@ void neb::camera::Look()
 			up.x, up.y, up.z );
 */
 }
-void	neb::camera::delete_scene()
+void	neb::camera::camera::delete_scene()
 {
 }
-int	neb::camera::FirstOrderDeltaPitchRel(int d)
+int	neb::camera::camera::FirstOrderDeltaPitchRel(int d)
 {
 	//printf("%s\n", __FUNCTION__);
 
@@ -169,7 +169,7 @@ int	neb::camera::FirstOrderDeltaPitchRel(int d)
 
 	return 1;
 }
-int	neb::camera::FirstOrderDeltaYawRel(int d)
+int	neb::camera::camera::FirstOrderDeltaYawRel(int d)
 {
 	//printf("%s\n", __FUNCTION__);
 
@@ -177,7 +177,7 @@ int	neb::camera::FirstOrderDeltaYawRel(int d)
 
 	return 1;
 }
-int neb::camera::FirstOrderDeltaPitchAbs(float d)
+int neb::camera::camera::FirstOrderDeltaPitchAbs(float d)
 {
 	printf("%s %f\n", __FUNCTION__, d);
 
@@ -187,7 +187,7 @@ int neb::camera::FirstOrderDeltaPitchAbs(float d)
 
 	return 1;
 }
-int neb::camera::FirstOrderDeltaYawAbs(float d)
+int neb::camera::camera::FirstOrderDeltaYawAbs(float d)
 {
 	printf("%s %f\n", __FUNCTION__, d);
 
@@ -197,7 +197,7 @@ int neb::camera::FirstOrderDeltaYawAbs(float d)
 
 	return 1;
 }
-int neb::camera::HandleAbsNorth(float d)
+int neb::camera::camera::HandleAbsNorth(float d)
 {
 	d = ((d > 0.1 || d < -0.1) ? d : 0.0f);
 
@@ -205,7 +205,7 @@ int neb::camera::HandleAbsNorth(float d)
 
 	return 1;
 }
-int neb::camera::HandleAbsEast(float d)
+int neb::camera::camera::HandleAbsEast(float d)
 {
 	d = ((d > 0.1 || d < -0.1) ? d : 0.0f);
 
@@ -213,60 +213,60 @@ int neb::camera::HandleAbsEast(float d)
 
 	return 1;
 }
-int	neb::camera::handle_delete_scene(int)
+int	neb::camera::camera::handle_delete_scene(int)
 {
 	delete_scene();
 
 	return 1;
 }
-int neb::camera::HandleKeyNorth(int value)
+int neb::camera::camera::HandleKeyNorth(int value)
 {
 	if( value == 0 )
 	{
-		flag_ &= ~( neb::camera::flag::NORTH );
+		flag_ &= ~( neb::camera::camera::flag::NORTH );
 	}
 	else if( value == 1 )
 	{
-		flag_ |= neb::camera::flag::NORTH;
+		flag_ |= neb::camera::camera::flag::NORTH;
 	}
 
 	return 1;
 }
-int neb::camera::HandleKeySouth(int value)
+int neb::camera::camera::HandleKeySouth(int value)
 {
 	if( value == 0 )
 	{
-		flag_ &= ~( neb::camera::flag::SOUTH );
+		flag_ &= ~( neb::camera::camera::flag::SOUTH );
 	}
 	else if( value == 1 )
 	{
-		flag_ |= neb::camera::flag::SOUTH;
+		flag_ |= neb::camera::camera::flag::SOUTH;
 	}
 
 	return 1;
 }
-int neb::camera::HandleKeyEast(int value)
+int neb::camera::camera::HandleKeyEast(int value)
 {
 	if( value == 0 )
 	{
-		flag_ &= ~( neb::camera::flag::EAST );
+		flag_ &= ~( neb::camera::camera::flag::EAST );
 	}
 	else if( value == 1 )
 	{
-		flag_ |= neb::camera::flag::EAST;
+		flag_ |= neb::camera::camera::flag::EAST;
 	}
 
 	return 1;
 }
-int neb::camera::HandleKeyWest(int value)
+int neb::camera::camera::HandleKeyWest(int value)
 {
 	if( value == 0 )
 	{
-		flag_ &= ~( neb::camera::flag::WEST );
+		flag_ &= ~( neb::camera::camera::flag::WEST );
 	}
 	else if( value == 1 )
 	{
-		flag_ |= neb::camera::flag::WEST;
+		flag_ |= neb::camera::camera::flag::WEST;
 	}
 
 	return 1;

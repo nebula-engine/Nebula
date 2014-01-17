@@ -1,11 +1,11 @@
 #include <neb/actor/Base.h>
-#include <neb/camera.h>
+#include <neb/camera/ridealong.h>
 
-neb::camera_ridealong::camera_ridealong(neb::actor::Base_s actor):
+neb::camera::ridealong::ridealong(neb::actor::Base_s actor):
 	actor_(actor)
 {
 }
-math::mat44	neb::camera_ridealong::supply()
+math::mat44	neb::camera::ridealong::supply()
 {
 	if(actor_.expired())
 	{
@@ -14,7 +14,7 @@ math::mat44	neb::camera_ridealong::supply()
 
 	auto actor = actor_.lock();
 
-	if(actor->all(glutpp::actor::actor::flag::SHOULD_DELETE))
+	if(actor->all(glutpp::actor::flag::SHOULD_RELEASE))
 	{
 		return math::mat44();
 	}

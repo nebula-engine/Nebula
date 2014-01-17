@@ -3,7 +3,6 @@
 #include <neb/config.h>
 #include <neb/app.h>
 #include <glutpp/actor/desc.h>
-#include <neb/packet/packet.h>
 #include <neb/physics.h>
 #include <neb/scene/scene.h>
 #include <glutpp/scene/desc.h>
@@ -42,25 +41,97 @@ std::shared_ptr<neb::app> neb::scene::scene::get_app() {
 
 	return app_.lock();
 }
+neb::actor::Base_s neb::scene::scene::get_actor(int i) {
+	auto it = actors_.find(i);
+	neb::actor::Base_s a;
+	if(it == actors_.end())
+	{
+		return a;
+	}
+	else
+	{
+		a = std::dynamic_pointer_cast<neb::actor::Base>(it->second);
+		assert(a);
+		return a;
+	}
+}
+neb::actor::Base_s neb::scene::scene::get_actor(glutpp::actor::addr_s addr) {
+	
+	neb::actor::Base_s actor;
+	
+	auto vec = addr->get_vec();
+	assert(vec);
+	
+	if(vec->vec_.empty()) return actor;
+	
+	int i = vec->vec_.front();
+	vec->vec_.pop_front();
+	
+	actor = get_actor(i);
+	
+	if(!actor) return actor;
+	
+	
+	if(!vec->vec_.empty())
+	{
+		return actor->get_actor(addr);
+	}
+	
+	return actor;
+}
 void neb::scene::scene::create_actors(glutpp::scene::desc_s desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	assert(desc);
 
-	for(auto it = desc->actors_.vec_.begin(); it != desc->actors_.vec_.end(); ++it)
+	for(auto it = desc->get_actors()->vec_.begin(); it != desc->get_actors()->vec_.end(); ++it)
 	{
 		auto ad = std::get<0>(*it);
-		
-		create_actor_local(ad);
+
+		switch(ad->get_raw()->mode_)
+		{
+			case glutpp::actor::mode::NOW:
+				printf("NOW\n");
+				create_actor_local(ad);
+				break;
+			case glutpp::actor::mode::DEFERRED:
+				printf("DEFERRED\n");
+				add_deferred(ad);
+				break;
+			default:
+				printf("invalid mode\n");
+				abort();
+		}
 	}
+}
+void neb::scene::scene::add_deferred(glutpp::actor::desc_s ad) {
+	NEBULA_DEBUG_0_FUNCTION;
+
+
+	assert(ad);
+
+	char* n = ad->get_raw()->name_;
+	assert(n);
+
+	int len = strlen(n);
+
+	char* name = new char[len + 1];
+
+	memcpy(name, n, len);
+
+	name[len] = 0;
+
+	actors_deferred_[name] = ad;
+
+
 }
 neb::actor::Base_s neb::scene::scene::create_actor(glutpp::actor::desc_s desc) {
 	NEBULA_DEBUG_0_FUNCTION;
-	
+
 	auto me = std::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
-	
+
 	std::shared_ptr<neb::actor::Base> actor;
-	
+
 	switch(desc->get_raw()->type_)
 	{
 		case glutpp::actor::RIGID_DYNAMIC:
@@ -96,37 +167,46 @@ neb::actor::Base_s neb::scene::scene::create_actor_local(glutpp::actor::desc_s d
 	NEBULA_DEBUG_0_FUNCTION;
 
 	auto actor = create_actor(desc);
-	
+
 	actors_.push_back(actor);
 
 	// network
 
 	auto app = get_app();
-	
+
 	gal::network::message_s msg(new gal::network::message);
-	
+
 	int type = glutpp::network::type::ACTOR_CREATE;
 	msg->write(&type, sizeof(int));
-	
+
 	std::shared_ptr<glutpp::network::actor::create> actor_create(new glutpp::network::actor::create);
-	
+
 	actor_create->load(actor);
 	actor_create->write(msg);
-	
-	app->server_->write(msg);
+
+	app->send_server(msg);
 
 	return actor;	
 }
 neb::actor::Base_s neb::scene::scene::create_actor_remote(
 		glutpp::actor::addr_s addr,
-		glutpp::actor::desc_s desc) {
+		glutpp::actor::desc_s desc)
+{
 	NEBULA_DEBUG_0_FUNCTION;
 
-	auto actor = create_actor(desc);
-
-	abort();
-
-	//actors_[raw_.i_] = actor;
+	auto actor = get_actor(addr);
+	
+	if(actor)
+	{
+		actor = actor->create_actor_remote(addr, desc);
+	}
+	else
+	{
+		int i = desc->get_id()->i_;
+		actor = create_actor(desc);
+		
+		actors_[i] = actor;
+	}
 
 	return actor;
 }
@@ -261,7 +341,7 @@ void neb::scene::scene::create_physics() {
 
 	physx::PxSceneDesc scene_desc(pxphysics->getTolerancesScale());
 
-	scene_desc.gravity = raw_.gravity_.to_math();
+	scene_desc.gravity = raw_.gravity_;
 
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 
@@ -327,6 +407,11 @@ void neb::scene::scene::step(double time) {
 			exit(0);
 	}
 
+	// step actors
+	actors_.foreach<neb::actor::Base>(std::bind(
+				&neb::actor::Base::step,
+				std::placeholders::_1,
+				time));
 
 
 	// cleanup
@@ -334,14 +419,14 @@ void neb::scene::scene::step(double time) {
 	while(it != actors_.map_.end())
 	{
 		std::shared_ptr<glutpp::actor::actor> actor = it->second;
-		
+
 		assert(actor);
-		
+
 		actor->cleanup();
-		
+
 		if(actor->any(glutpp::light::light::flag::SHOULD_DELETE)) {
 			actor->release();
-			
+
 			it = actors_.map_.erase(it);
 		}
 		else {
@@ -361,15 +446,16 @@ void neb::scene::scene::step_local(double time) {
 	double dt = time - last_;
 	last_ = time;
 
+	// timer
+	timer_set_.step(time);
+
 	//physx::PxU32 nbPxactor = px_scene_->getNbActors(physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC);
 
-	// forces
-	actors_.foreach<neb::actor::Base>(std::bind(
-				&neb::actor::Base::add_force,
-				std::placeholders::_1,
-				time));
+
 
 	// PxScene
+	assert(px_scene_ != NULL);
+
 	px_scene_->simulate(dt);
 	px_scene_->fetchResults(true);
 
@@ -419,7 +505,7 @@ void neb::scene::scene::step_local(double time) {
 			//v.print();
 		}
 
-		actor->set(glutpp::actor::actor::flag::SHOULD_UPDATE);
+		actor->set(glutpp::actor::flag::SHOULD_UPDATE);
 	}
 
 	// vehicle
@@ -430,8 +516,9 @@ void neb::scene::scene::step_local(double time) {
 	send_actor_update();
 }
 void neb::scene::scene::send_actor_update() {
+	printf("DEBUG: message ACTOR_UPDATE sent\n");
 
-	std::shared_ptr<gal::network::message> msg(new gal::network::message);
+	gal::network::message_s msg(new gal::network::message);
 
 	int type = glutpp::network::type::ACTOR_UPDATE;
 	msg->write(&type, sizeof(int));
@@ -447,7 +534,7 @@ void neb::scene::scene::send_actor_update() {
 
 	actor_update.write(msg);
 
-	get_app()->send(msg);
+	get_app()->send_server(msg);
 }
 void neb::scene::scene::step_remote(double time){
 	NEBULA_DEBUG_1_FUNCTION;
@@ -463,11 +550,7 @@ void neb::scene::scene::step_remote(double time){
 
 	// receive
 }
-int	neb::scene::scene::recv(neb::packet::packet p) {
 
-
-	return 0;
-}
 
 
 

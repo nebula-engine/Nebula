@@ -3,8 +3,8 @@
 
 #define NEB_INSTALL_DIR "@CMAKE_INSTALL_PREFIX@"
 
-#define NEBULA_DEBUG_0_FUNCTION printf("%s\n", __PRETTY_FUNCTION__);
-#define NEBULA_DEBUG_1_FUNCTION
+#define NEBULA_DEBUG_0_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
+#define NEBULA_DEBUG_1_FUNCTION //printf("%s\n", __PRETTY_FUNCTION__)
 
 #include <memory>
 
@@ -13,9 +13,12 @@
 namespace neb
 {
 	class shape;
-
-	namespace network
-	{
+	
+	namespace timer {
+		class actor;
+		typedef std::shared_ptr<actor>		actor_s;
+	}
+	namespace network {
 		class server;
 		class client;
 		typedef std::shared_ptr<server>		server_s;
@@ -32,11 +35,14 @@ namespace neb
 		struct set_raw;
 		class set;
 	}
-
+	
+	enum flag {
+		SHOULD_RELEASE = 1 << 0,
+	};
 	class app;
 	typedef std::shared_ptr<app>	app_s;
 	typedef std::weak_ptr<app>	app_w;
-
+	
 	namespace scene
 	{
 		class scene;
@@ -53,10 +59,6 @@ namespace neb
 		namespace rigid_body {
 			class rigid_body;
 			typedef std::shared_ptr<rigid_body>	rigid_body_s;
-
-			class control;
-			typedef std::shared_ptr<control>	control_s;
-
 		}
 		class Rigid_Dynamic;
 		class Rigid_Static;
@@ -66,6 +68,25 @@ namespace neb
 		typedef std::shared_ptr<Base>	Base_s;
 		typedef std::weak_ptr<Base>	Base_w;
 	}
+	namespace control {
+		namespace rigid_body {
+			enum type {
+				NONE = 0,
+				T0,
+				T1,
+			};
+			
+			class raw;
+			typedef std::shared_ptr<raw>		raw_s;
+
+			class control;
+			typedef std::shared_ptr<control>	control_s;
+
+		}
+	}
 }
 
 #endif
+
+
+

@@ -26,13 +26,13 @@ void	neb::simulation_callback::onContact(
 			if(actor0->raw_.filter_data_.simulation_.word2 & glutpp::filter::type::PROJECTILE)
 			{
 				//printf("delete actor\n");
-				actor0->set(glutpp::actor::actor::flag::SHOULD_DELETE);
+				actor0->set(glutpp::actor::flag::SHOULD_RELEASE);
 			}
 			
 			if(actor1->raw_.filter_data_.simulation_.word2 & glutpp::filter::type::PROJECTILE)
 			{
 				//printf("delete actor\n");
-				actor1->set(glutpp::actor::actor::flag::SHOULD_DELETE);
+				actor1->set(glutpp::actor::flag::SHOULD_RELEASE);
 			}
 		}
 	}

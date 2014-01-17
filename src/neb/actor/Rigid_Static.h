@@ -20,7 +20,7 @@ namespace neb
 				virtual void	create_physics();
 				virtual void	init_physics();
 				
-				virtual void	add_force(double);
+				virtual void	step(double);
 		};
 	}
 }

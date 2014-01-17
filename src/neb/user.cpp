@@ -2,8 +2,8 @@
 
 #include <neb/config.h>
 #include <neb/user.h>
-#include <neb/camera.h>
-#include <neb/actor/rigid_body/control.h>
+#include <neb/camera/camera.h>
+#include <neb/control/rigid_body/control.h>
 
 neb::user::user()
 {}
@@ -13,7 +13,7 @@ void	neb::user::connect(glutpp::window::window_s w)
 	
 	assert(control_);
 	
-	auto control = std::dynamic_pointer_cast<neb::actor::rigid_body::control>(control_);
+	auto control = std::dynamic_pointer_cast<neb::control::rigid_body::control>(control_);
 	
 	assert(w);
 	assert(control);
@@ -22,7 +22,7 @@ void	neb::user::connect(glutpp::window::window_s w)
 	
 	
 	control->conn_.key_fun_ = w->sig_.key_fun_.connect(std::bind(
-				&neb::actor::rigid_body::control::key_fun,
+				&neb::control::rigid_body::control::key_fun,
 				control,
 				std::placeholders::_1,
 				std::placeholders::_2,
@@ -33,8 +33,7 @@ void	neb::user::connect(glutpp::window::window_s w)
 
 	assert(control->conn_.key_fun_);
 }
-void neb::user::set_control(neb::actor::rigid_body::control_s control)
-{
+void neb::user::set_control(neb::control::rigid_body::control_s control) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	control_ = control;

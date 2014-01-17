@@ -1,7 +1,8 @@
 #include <neb/timer/actor.h>
+#include <neb/actor/Base.h>
 
 neb::timer::actor::actor(neb::actor::Base_s actor, neb::timer::actor::type type, double time):
-        gal::timer::timer(time):
+        gal::timer::timer(time),
         type_(type),
         actor_(actor)
 {
@@ -18,6 +19,8 @@ void neb::timer::actor::activate() {
                 case RELEASE:
                         a->set(glutpp::actor::flag::SHOULD_RELEASE);
                         break;
+		default:
+			break;
         }
         
 }

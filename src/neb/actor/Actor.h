@@ -32,6 +32,8 @@ namespace neb
 				virtual void			create_physics() {abort();}
 				virtual void			init_physics() {abort();}
 				
+				
+				virtual void			step(double) { abort(); }
 				virtual void			step_remote(double);
 
 				virtual void			print_info();
