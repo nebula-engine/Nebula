@@ -2,31 +2,37 @@
 
 #include <glutpp/light/desc.h>
 
-glutpp::light::raw::raw() {
+glutpp::light::raw::raw():
+	pos_(math::vec4(0.0, 0.0, 0.0, 1.0)),
+	ambient_(math::black),
+	diffuse_(math::white),
+	specular_(math::white),
+	spot_direction_(math::vec3(0.0, 0.0, -1.0)),
+	spot_cutoff_(10.0),
+	spot_exponent_(1.0),
+	atten_const_(1.0),
+	atten_linear_(0.0),
+	atten_quad_(0.0)
+{
 	GLUTPP_DEBUG_0_FUNCTION;
-	
-	pos_.from_math(math::vec4(0.0, 0.0, 0.0, 1.0));
-	ambient_.from_math(math::white * 0.2f);
-	diffuse_.from_math(math::white);
-	specular_.from_math(math::white);
-	spot_direction_.from_math(math::vec3(0.0, 0.0, -1.0));
-
-	spot_cutoff_ 	= 10.0;
-	spot_exponent_ 	= 1.0;
-	atten_const_ 	= 1.0;
-	atten_linear_ 	= 0.0;
-	atten_quad_ 	= 0.0;
-
 }
 void	glutpp::light::raw::load(tinyxml2::XMLElement* element) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
-	pos_.from_math(math::xml_parse_vec4(element->FirstChildElement("p")));
+	pos_ = math::xml_parse_vec4(element->FirstChildElement("p"));
 	
-	ambient_.from_math(math::xml_parse_color(element->FirstChildElement("ambient")));
-	diffuse_.from_math(math::xml_parse_color(element->FirstChildElement("diffuse")));
-	specular_.from_math(math::xml_parse_color(element->FirstChildElement("specular")));
-
+	ambient_ = math::xml_parse_color(
+			element->FirstChildElement("ambient"),
+			ambient_);
+	
+	diffuse_ = math::xml_parse_color(
+			element->FirstChildElement("diffuse"),
+			diffuse_);
+	
+	specular_ = math::xml_parse_color(
+			element->FirstChildElement("specular"),
+			specular_);
+	
 	atten_linear_ = math::xml_parse_float(element->FirstChildElement("atten_linear"));
 	
 	print();

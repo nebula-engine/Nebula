@@ -6,6 +6,7 @@
 /home/charles/usr/include/glutpp/mesh.h
 /home/charles/usr/include/glutpp/window/window.h
 /home/charles/usr/include/glutpp/window/desc.h
+/home/charles/usr/include/glutpp/scene/raw.h
 /home/charles/usr/include/glutpp/scene/desc.h
 /home/charles/usr/include/glutpp/scene/scene.h
 /home/charles/usr/include/glutpp/actor/id.h

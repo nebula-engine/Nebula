@@ -9,40 +9,37 @@ namespace glutpp
 {
 	namespace scene
 	{
-		struct raw
-		{
-			public:
-				void			reset();
-				void			load(tinyxml2::XMLElement*);
-			
-
-				unsigned int		flag_;
-				math::raw::vec3		gravity_;
-				//size_t			actor_size_;
-		};
+		typedef gal::network::vector<int>	vec_int;
+		typedef std::shared_ptr<vec_int>	vec_int_s;
 		
-		typedef gal::network::vector<int> vec_int;
+		struct id: public gal::network::serial<id> {
+			void	load(glutpp::scene::scene_s);
+			int	i_;
+		};
 		
 		struct addr: gal::network::serial_ext<vec_int> {
-			void	load(glutpp::scene::scene_s);
+			void		load(glutpp::scene::scene_s);
+			
+			vec_int_s	get_vec() { return std::get<0>(tup_); }
 		};
-		class desc
+		
+	
+		typedef gal::network::vector_ext<glutpp::actor::desc> vec_actor_desc;
+		typedef std::shared_ptr<vec_actor_desc> vec_actor_desc_s;
+	
+		class desc: public gal::network::serial_ext<vec_actor_desc, raw, id>
 		{
 			public:
 				desc();
+
+				void			load(char const *);
+				void			load(tinyxml2::XMLElement*);
+				void			load(glutpp::scene::scene_s);
 				
-				void		load(char const *);
-				void		load(tinyxml2::XMLElement*);
-				void		load(glutpp::scene::scene_s);
+				id_s			get_id();
+				raw_s			get_raw();
 				
-				void		write(gal::network::message_shared);
-				void		read(gal::network::message_shared);
-				size_t		size();
-				
-				int		i_;
-				raw		raw_;
-				
-				gal::network::vector_ext<glutpp::actor::desc>	actors_;
+				vec_actor_desc_s	get_actors();
 		};
 	}
 }

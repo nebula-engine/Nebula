@@ -1,8 +1,7 @@
-#ifndef __NEBULA_NETWORK_MESSAGE_H__
-#define __NEBULA_NETWORK_MESSAGE_H__
+#ifndef __GLUTPP_NETWORK_MESSAGE_H__
+#define __GLUTPP_NETWORK_MESSAGE_H__
 
 #include <gal/network/vector.h>
-#include <gal/network/serializeable.h>
 #include <gal/network/serial.h>
 
 #include <glutpp/config.h>
@@ -18,6 +17,8 @@ namespace glutpp
 				glutpp::actor::addr>
 					vec_addr_raw;
 
+			typedef std::shared_ptr<vec_addr_raw> vec_addr_raw_s;
+
 			typedef gal::network::serial_ext<
 				glutpp::actor::desc,
 				glutpp::actor::addr>
@@ -30,11 +31,14 @@ namespace glutpp
 			
 			
 			struct create: ser_create {
-				void load(glutpp::actor::actor_s);
+				void			load(glutpp::actor::actor_s);
+				
+				glutpp::actor::addr_s	get_addr() { return std::get<1>(tup_); }
+				glutpp::actor::desc_s	get_desc() { return std::get<0>(tup_); }
 			};
 
 			struct update: ser_update {
-				typedef vec_addr_raw::tuple tuple;
+				//typedef vec_addr_raw::tuple tuple;
 
 				void load(glutpp::actor::actor_s);
 			};
@@ -47,10 +51,15 @@ namespace glutpp
 			
 			struct create: ser_create {
 				void load(glutpp::scene::scene_s);
+				
+				
+				
 			};
 		}
 	}
 }
 
 #endif
+
+
 

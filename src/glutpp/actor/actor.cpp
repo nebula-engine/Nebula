@@ -83,7 +83,7 @@ void glutpp::actor::actor::cleanup() {
 
 		actor->cleanup();
 		
-		if(actor->any(SHOULD_DELETE))
+		if(actor->any(SHOULD_RELEASE))
 		{
 			actor->release();
 
@@ -102,7 +102,7 @@ void glutpp::actor::actor::cleanup() {
 
 		shape->cleanup();
 
-		if(shape->any(SHOULD_DELETE))
+		if(shape->any(SHOULD_RELEASE))
 		{
 			shape->release();
 

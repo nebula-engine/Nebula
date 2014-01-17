@@ -33,13 +33,6 @@ namespace glutpp
 
 		{
 			public:
-				enum flag
-				{
-					SHOULD_DELETE = 1 << 0,
-					SHOULD_UPDATE = 1 << 1,
-				};
-
-
 
 				actor(
 						glutpp::scene::scene_s,

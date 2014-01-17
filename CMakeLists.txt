@@ -37,7 +37,7 @@ add_library(glutpp
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
 
-include_directories("${PROJECT_SOURCE_DIR}")
+include_directories("${PROJECT_SOURCE_DIR}" "../galaxy/src" "../math/src")
 
 set(CMAKE_INSTALL_PREFIX $ENV{HOME}/usr)
 
@@ -57,6 +57,7 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/mesh.h		DESTINATION include/glutpp/)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window/window.h	DESTINATION include/glutpp/window)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/window/desc.h	DESTINATION include/glutpp/window)
 
+install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene/raw.h		DESTINATION include/glutpp/scene)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene/desc.h		DESTINATION include/glutpp/scene)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/scene/scene.h	DESTINATION include/glutpp/scene)
 
@@ -68,7 +69,6 @@ install(FILES ${PROJECT_SOURCE_DIR}/glutpp/actor/actor.h	DESTINATION include/glu
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape/shape.h	DESTINATION include/glutpp/shape)
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/shape/desc.h		DESTINATION include/glutpp/shape)
-
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/network/message.h	DESTINATION include/glutpp/network/)
 

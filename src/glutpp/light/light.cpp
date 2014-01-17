@@ -74,7 +74,7 @@ math::mat44 glutpp::light::light::get_pose() {
 math::vec4 glutpp::light::light::get_pos() {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
-	math::vec4 pos = raw_.pos_.to_math();
+	math::vec4 pos = raw_.pos_;
 	
 	math::mat44 m = get_pose();
 	
@@ -98,7 +98,7 @@ void		glutpp::light::light::load(int o) {
 	math::mat44 m = get_pose();
 	math::vec4 pos = get_pos();
 	
-	math::vec3 spot_direction = raw_.spot_direction_.to_math();
+	math::vec3 spot_direction = raw_.spot_direction_;
 	
 	if(raw_.spot_cutoff_ < (M_PI/2.0))
 	{
@@ -113,11 +113,11 @@ void		glutpp::light::light::load(int o) {
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_POSITION)->load_4fv(
 			o, pos);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT)->load_4fv(
-			o, raw_.ambient_.to_math());
+			o, raw_.ambient_);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE)->load_4fv(
-			o, raw_.diffuse_.to_math());
+			o, raw_.diffuse_);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR)->load_4fv(
-			o, raw_.specular_.to_math());
+			o, raw_.specular_);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION)->load_3fv(
 			o, spot_direction);
 	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF)->load(

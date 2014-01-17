@@ -821,6 +821,54 @@ src/glutpp/scene/desc.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.s
 .PHONY : src/glutpp/scene/desc.cpp.s
 
+src/glutpp/scene/id.o: src/glutpp/scene/id.cpp.o
+.PHONY : src/glutpp/scene/id.o
+
+# target to build an object file
+src/glutpp/scene/id.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene/id.cpp.o
+.PHONY : src/glutpp/scene/id.cpp.o
+
+src/glutpp/scene/id.i: src/glutpp/scene/id.cpp.i
+.PHONY : src/glutpp/scene/id.i
+
+# target to preprocess a source file
+src/glutpp/scene/id.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene/id.cpp.i
+.PHONY : src/glutpp/scene/id.cpp.i
+
+src/glutpp/scene/id.s: src/glutpp/scene/id.cpp.s
+.PHONY : src/glutpp/scene/id.s
+
+# target to generate assembly for a file
+src/glutpp/scene/id.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene/id.cpp.s
+.PHONY : src/glutpp/scene/id.cpp.s
+
+src/glutpp/scene/raw.o: src/glutpp/scene/raw.cpp.o
+.PHONY : src/glutpp/scene/raw.o
+
+# target to build an object file
+src/glutpp/scene/raw.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene/raw.cpp.o
+.PHONY : src/glutpp/scene/raw.cpp.o
+
+src/glutpp/scene/raw.i: src/glutpp/scene/raw.cpp.i
+.PHONY : src/glutpp/scene/raw.i
+
+# target to preprocess a source file
+src/glutpp/scene/raw.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene/raw.cpp.i
+.PHONY : src/glutpp/scene/raw.cpp.i
+
+src/glutpp/scene/raw.s: src/glutpp/scene/raw.cpp.s
+.PHONY : src/glutpp/scene/raw.s
+
+# target to generate assembly for a file
+src/glutpp/scene/raw.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/scene/raw.cpp.s
+.PHONY : src/glutpp/scene/raw.cpp.s
+
 src/glutpp/scene/scene.o: src/glutpp/scene/scene.cpp.o
 .PHONY : src/glutpp/scene/scene.o
 
@@ -1086,6 +1134,12 @@ help:
 	@echo "... src/glutpp/scene/desc.o"
 	@echo "... src/glutpp/scene/desc.i"
 	@echo "... src/glutpp/scene/desc.s"
+	@echo "... src/glutpp/scene/id.o"
+	@echo "... src/glutpp/scene/id.i"
+	@echo "... src/glutpp/scene/id.s"
+	@echo "... src/glutpp/scene/raw.o"
+	@echo "... src/glutpp/scene/raw.i"
+	@echo "... src/glutpp/scene/raw.s"
 	@echo "... src/glutpp/scene/scene.o"
 	@echo "... src/glutpp/scene/scene.i"
 	@echo "... src/glutpp/scene/scene.s"

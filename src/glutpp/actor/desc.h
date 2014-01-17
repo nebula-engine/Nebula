@@ -24,15 +24,14 @@ namespace glutpp {
 			void			load(glutpp::actor::actor_s);
 			void			load(tinyxml2::XMLElement*);
 			void			add_shape(glutpp::shape::desc);
-
-
-
-			id_s			get_id();
-
-			raw_s			get_raw();
-
-			vec_actor_desc_s	get_actors();
-			vec_shape_desc_s	get_shapes();
+			
+			desc&			operator=(desc const &);
+			
+			
+			id_s			get_id() const;
+			raw_s			get_raw() const;
+			vec_actor_desc_s	get_actors() const;
+			vec_shape_desc_s	get_shapes() const;
 
 		};
 	}

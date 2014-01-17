@@ -7,13 +7,17 @@
 void glutpp::network::actor::update::load(glutpp::actor::actor_s actor) {
 	assert(actor);
 	
-	tuple t;
+	glutpp::network::actor::vec_addr_raw::tuple t;
+	
 	gal::reset_tuple(t);
 	
-	std::get<1>(t)->load(actor);
-	*std::get<0>(t) = actor->raw_;
+	auto addr = std::get<1>(t);
+	auto raw = std::get<0>(t);
 	
-	if(actor->any(glutpp::actor::actor::SHOULD_UPDATE))
+	addr->load_this(actor);
+	*raw = actor->raw_;
+	
+	if(actor->any(glutpp::actor::flag::SHOULD_UPDATE))
 	{
 		std::get<0>(tup_)->vec_.push_back(t);
 	}

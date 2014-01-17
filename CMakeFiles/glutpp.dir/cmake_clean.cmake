@@ -9,6 +9,8 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/glutpp.dir/src/glutpp/free.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/window/desc.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/window/window.cpp.o"
+  "CMakeFiles/glutpp.dir/src/glutpp/scene/id.cpp.o"
+  "CMakeFiles/glutpp.dir/src/glutpp/scene/raw.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/scene/scene.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/scene/addr.cpp.o"

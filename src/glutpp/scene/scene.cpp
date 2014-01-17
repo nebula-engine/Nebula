@@ -32,10 +32,15 @@ void glutpp::scene::scene::f(unsigned int flag) {
 	raw_.flag_ = flag;
 }
 void	glutpp::scene::scene::init(glutpp::scene::desc_s desc) {
-	
+	GLUTPP_DEBUG_0_FUNCTION;
 	//renderable_ = renderable;
 }
-void	glutpp::scene::scene::render(
+void glutpp::scene::scene::release() {
+	GLUTPP_DEBUG_0_FUNCTION;
+	
+	
+}
+void glutpp::scene::scene::render(
 		double time,
 		std::shared_ptr<glutpp::camera> camera,
 		std::shared_ptr<glutpp::window::window> window) {

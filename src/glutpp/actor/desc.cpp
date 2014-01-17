@@ -66,22 +66,28 @@ void glutpp::actor::desc::load(glutpp::actor::actor_s actor) {
 	}
 
 }
-glutpp::actor::id_s glutpp::actor::desc::get_id() {
+glutpp::actor::desc& glutpp::actor::desc::operator=(const glutpp::actor::desc& ad) {
+	*get_id() = *(ad.get_id());
+	*get_raw() = *ad.get_raw();
+	*get_actors() = *(ad.get_actors());
+	*get_shapes() = *(ad.get_shapes());	
+}
+glutpp::actor::id_s glutpp::actor::desc::get_id() const {
 	auto p = std::get<3>(tup_);
 	assert(p);
 	return p;
 }
-glutpp::actor::raw_s glutpp::actor::desc::get_raw() {
+glutpp::actor::raw_s glutpp::actor::desc::get_raw() const {
 	auto p = std::get<2>(tup_);
 	assert(p);
 	return p;
 }
-glutpp::actor::vec_actor_desc_s glutpp::actor::desc::get_actors() {
+glutpp::actor::vec_actor_desc_s glutpp::actor::desc::get_actors() const {
 	auto p = std::get<1>(tup_);
 	assert(p);
 	return p;
 }
-glutpp::actor::vec_shape_desc_s glutpp::actor::desc::get_shapes() {
+glutpp::actor::vec_shape_desc_s glutpp::actor::desc::get_shapes() const {
 	auto p = std::get<0>(tup_);
 	assert(p);
 	return p;

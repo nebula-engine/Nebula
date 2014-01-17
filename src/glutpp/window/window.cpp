@@ -183,7 +183,7 @@ void	glutpp::window::window::callback_key_fun(GLFWwindow* window, int key, int s
 			toggle(REFLECT);
 			break;*/
 		case GLFW_KEY_ESCAPE:
-			glfwSetWindowShouldClose(window_, 1);
+			//glfwSetWindowShouldClose(window_, 1);
 			break;
 	}
 }

@@ -6,8 +6,7 @@
 #define GLUTPP_SHADER_DIR "@shader_dir@"
 
 #define GLUTPP_DEBUG_0_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
-
-#define GLUTPP_DEBUG_1_FUNCTION
+#define GLUTPP_DEBUG_1_FUNCTION //printf("%s\n", __PRETTY_FUNCTION__)
 
 #include <vector>
 #include <memory>
@@ -23,16 +22,14 @@ typedef std::shared_ptr<gal::sig::connection<double,double> >	scroll_fun_c;
 typedef std::shared_ptr<gal::sig::connection<int,int,int,int> >	key_fun_c;
 typedef std::shared_ptr<gal::sig::connection<unsigned int> >	char_fun_c;
 
-namespace glutpp
-{
-	namespace network
-	{
-		class type_ext;
-		enum type
-		{
-			SCENE_CREATE,
-			ACTOR_CREATE,
-			ACTOR_UPDATE,
+namespace glutpp {
+	namespace network {
+		enum type {
+			NONE           = 0x0,
+			SCENE_CREATE   = 0x1,
+			ACTOR_CREATE   = 0x2,
+			ACTOR_UPDATE   = 0x3,
+			CONTROL_CREATE = 0x4,
 		};
 	}
 
@@ -114,11 +111,16 @@ namespace glutpp
 	};
 
 
-	namespace window
-	{	
+	namespace window {
+		enum flag {
+			SHOULD_RELEASE = 1 << 0,
+		};
+		
 		struct raw;
+
 		class desc;
 		typedef std::shared_ptr<desc>		desc_s;
+
 		class window;
 		typedef std::shared_ptr<window>		window_s;
 		typedef std::weak_ptr<window>		window_w;
@@ -126,10 +128,14 @@ namespace glutpp
 	}
 
 
-	namespace scene
-	{
-		struct raw;
+	namespace scene {
+		enum flag {
+			SHOULD_RELEASE = 1 << 0
+		};
 
+		struct raw;
+		typedef std::shared_ptr<raw>		raw_s;
+		
 		struct id;
 		typedef std::shared_ptr<id>	id_s;
 
@@ -143,8 +149,33 @@ namespace glutpp
 		typedef std::shared_ptr<scene>	scene_s;
 		typedef std::weak_ptr<scene>	scene_w;
 	}
-	namespace actor
-	{
+	namespace actor {
+		enum type {
+			NONE = 0,
+			BASE,
+			ACTOR,
+			RIGID_ACTOR,
+			RIGID_BODY,
+			RIGID_DYNAMIC,
+			RIGID_STATIC,
+			PLANE,
+			CONTROLLER,
+			EMPTY
+		};
+		enum mode {
+			NOW,
+			DEFERRED,
+		};
+		enum update_mode {
+			NONE   = 0x0,
+			LOCAL  = 0x1,
+			REMOTE = 0x2,
+		};
+		enum flag {
+			SHOULD_RELEASE	= 1 << 0,
+			SHOULD_UPDATE	= 1 << 1,
+		};
+
 		struct id;
 		typedef std::shared_ptr<id>		id_s;
 
@@ -163,7 +194,7 @@ namespace glutpp
 		typedef std::weak_ptr<actor>		actor_w;
 		typedef gal::map<actor>			actor_m;
 	}
-	
+
 	namespace shape
 	{
 
@@ -174,10 +205,10 @@ namespace glutpp
 			SPHERE,
 			EMPTY
 		};
-		
+
 		struct id;
 		typedef std::shared_ptr<id>		id_s;
-		
+
 		struct raw;
 		typedef std::shared_ptr<raw>		raw_s;
 

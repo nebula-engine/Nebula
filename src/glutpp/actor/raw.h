@@ -10,18 +10,6 @@
 
 namespace glutpp {
 	namespace actor {
-		enum type {
-			NONE = 0,
-			BASE,
-			ACTOR,
-			RIGID_ACTOR,
-			RIGID_BODY,
-			RIGID_DYNAMIC,
-			RIGID_STATIC,
-			PLANE,
-			CONTROLLER,
-			EMPTY
-		};
 		struct filter_data {
 			unsigned int word0;
 			unsigned int word1;
@@ -29,7 +17,11 @@ namespace glutpp {
 			unsigned int word3;
 		};
 		struct raw: gal::network::serial<raw> {
-	
+			enum
+			{
+				max_name_length = 31
+			};
+			
 			raw();
 			void			load(tinyxml2::XMLElement*);
 			void			plane(tinyxml2::XMLElement*);
@@ -39,6 +31,9 @@ namespace glutpp {
 
 
 			glutpp::actor::type	type_;
+			glutpp::actor::mode	mode_;
+			unsigned int		flag_;
+			char			name_[32];
 
 			math::transform		pose_;
 
@@ -47,8 +42,6 @@ namespace glutpp {
 
 			math::vec3		velocity_;
 			float			density_;
-
-			unsigned int		flag_;
 
 			struct {
 				filter_data	simulation_;

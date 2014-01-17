@@ -3,21 +3,22 @@
 #include <glutpp/actor/raw.h>
 
 glutpp::actor::raw::raw():
+	type_(glutpp::actor::type::NONE),
+	mode_(glutpp::actor::mode::NOW),
 	flag_(0),
 	density_(200)
 {
+	memset(name_, 0, max_name_length + 1);
 }
 void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
+	GLUTPP_DEBUG_0_FUNCTION;
 	
-	printf("%s\n", __PRETTY_FUNCTION__);
-
 	// xml
 	assert(element);
 	
 	// type
 	const char* buf = element->Attribute("type");
 	assert(buf);
-	
 	if( strcmp(buf, "rigid_dynamic") == 0)
 	{
 		type_ = glutpp::actor::RIGID_DYNAMIC;
@@ -44,15 +45,46 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 		abort();
 	}
 	
-	math::vec3 p = math::xml_parse_vec3(element->FirstChildElement("p"), math::vec3(0,0,0));
-	math::quat q = math::xml_parse_quat(element->FirstChildElement("q"));
+	// mode
+	buf = element->Attribute("mode");
+	if(buf != NULL)
+	{
+		if(strcmp(buf, "deferred") == 0)
+		{
+			printf("DEFERRED\n");
+			mode_ = glutpp::actor::mode::DEFERRED;
+		}
+		else if(strcmp(buf, "now") == 0)
+		{
+			printf("NOW\n");
+			mode_ = glutpp::actor::mode::NOW;
+		}
+		else
+		{
+			printf("invalid mode\n");
+			abort();
+		}
+	}
 	
-	pose_.p = p;
-	pose_.q = q;
-
-	p.print();
-	q.print();	
-
+	// name
+	buf = element->Attribute("name");
+	if(buf != NULL)
+	{
+		int len = std::min(strlen(buf), (size_t)max_name_length);
+		
+		memcpy(name_, buf, len);
+		name_[len] = 0;
+	}
+	
+	// pose
+	pose_ = math::xml_parse_transform(
+			element->FirstChildElement("pose"),
+			math::transform(math::vec3(0,0,0), math::quat(0.0, math::vec3(1.0,0.0,0.0))));
+	
+	// velocity
+	velocity_ = math::xml_parse_vec3(element->FirstChildElement("velocity"), velocity_);
+	
+	
 	// filtering
 	filter_data_.simulation_.word0 = glutpp::filter::type::STATIC;
 	filter_data_.simulation_.word1 = glutpp::filter::RIGID_AGAINST;
@@ -62,33 +94,32 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	filter_data_.scene_query_.word3 = glutpp::filter::DRIVABLE_SURFACE;
 }
 void glutpp::actor::raw::plane(tinyxml2::XMLElement* element) {
-	
+
 	printf("%s\n", __PRETTY_FUNCTION__);
-	
-	
+
+
 	// xml
 	math::vec3 n = math::xml_parse_vec3(element->FirstChildElement("n"), math::vec3(0,1,0));
 	n.normalize();
-	
+
 	float d = math::xml_parse_float(element->FirstChildElement("d"));
-	
-	
+
+
 	math::quat q(3.14f, math::vec3(1,0,0));
-	
+
 	math::transform pose(n * -1.0f * d, q);
-	
+
 	n_ = n;
 	d_ = d;
-	
+
 	pose_ = pose;
 }
 void glutpp::actor::raw::controller(tinyxml2::XMLElement* element) {
 
 	printf("%s\n",__FUNCTION__);
-		
+
 	pose_.p = math::xml_parse_vec3(element->FirstChildElement("p"), math::vec3(0,0,0));
 }
-
 
 
 
