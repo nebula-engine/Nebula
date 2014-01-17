@@ -394,6 +394,8 @@ void neb::scene::scene::create_physics() {
 void neb::scene::scene::step(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
 
+
+
 	switch(user_type_)
 	{
 		case neb::scene::scene::LOCAL:
@@ -407,11 +409,7 @@ void neb::scene::scene::step(double time) {
 			exit(0);
 	}
 
-	// step actors
-	actors_.foreach<neb::actor::Base>(std::bind(
-				&neb::actor::Base::step,
-				std::placeholders::_1,
-				time));
+	
 
 
 	// cleanup
@@ -450,7 +448,12 @@ void neb::scene::scene::step_local(double time) {
 	timer_set_.step(time);
 
 	//physx::PxU32 nbPxactor = px_scene_->getNbActors(physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC);
-
+	
+	// step actors
+	actors_.foreach<neb::actor::Base>(std::bind(
+				&neb::actor::Base::step_local,
+				std::placeholders::_1,
+				time));
 
 
 	// PxScene
@@ -514,6 +517,22 @@ void neb::scene::scene::step_local(double time) {
 	//vehicle_manager_.update((float)dt, g);
 
 	send_actor_update();
+}
+void neb::scene::scene::step_local(double time) {
+	NEBULA_DEBUG_1_FUNCTION;
+
+	auto app = get_app();
+
+	double dt = time - last_;
+	last_ = time;
+	
+	
+	// step actors
+	actors_.foreach<neb::actor::Base>(std::bind(
+				&neb::actor::Base::step_remote,
+				std::placeholders::_1,
+				time));
+				
 }
 void neb::scene::scene::send_actor_update() {
 	printf("DEBUG: message ACTOR_UPDATE sent\n");
