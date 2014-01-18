@@ -415,14 +415,14 @@ void neb::scene::scene::step(double time) {
 	while(it != actors_.map_.end())
 	{
 		std::shared_ptr<glutpp::actor::actor> actor = it->second;
-
+		
 		assert(actor);
-
+		
 		actor->cleanup();
-
-		if(actor->any(glutpp::light::light::flag::SHOULD_DELETE)) {
+		
+		if(actor->any(glutpp::actor::flag::e::SHOULD_RELEASE)) {
 			actor->release();
-
+			
 			it = actors_.map_.erase(it);
 		}
 		else {
@@ -476,6 +476,7 @@ void neb::scene::scene::step_local(double time) {
 		//printf( "actor type = %i\n", px_actor->getType() );
 
 		physx::PxActor* pxactor = active_transforms[i].actor;
+physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
 
 		assert(pxactor);
 
@@ -487,28 +488,32 @@ void neb::scene::scene::step_local(double time) {
 		neb::actor::Actor* actor = dynamic_cast<neb::actor::Actor*>((glutpp::actor::actor*)ud);
 
 		assert(actor);
-
+		
 		pose = active_transforms[i].actor2World;
 		actor->set_pose(pose);
-
-		physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
+		
+		
+		fghfh
+		// call function that propages down actor hierarchy and sets flags in lights to load
+		
+		
 		if(pxrigidbody != NULL)
 		{
 			neb::actor::rigid_body::rigid_body* rigidbody =
 				dynamic_cast<neb::actor::rigid_body::rigid_body*>(actor);
-
+			
 			assert(rigidbody != NULL);
-
+			
 			math::vec3 v(pxrigidbody->getLinearVelocity());
-
+			
 			rigidbody->raw_.velocity_ = v;
-
+			
 			//v.print();
 		}
-
+		
 		actor->set(glutpp::actor::flag::SHOULD_UPDATE);
 	}
-
+	
 	// vehicle
 	//physx::PxVec3 g(0,-0.25,0);
 	//vehicle_manager_.vehicle_suspension_raycasts(px_scene_);
