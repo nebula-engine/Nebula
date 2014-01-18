@@ -45,6 +45,7 @@ void glutpp::scene::desc::load(glutpp::scene::scene_s scene) {
 	get_id()->load(scene);
 	get_raw()->load(scene);
 	
+	// now
 	for(auto it = scene->actors_.begin(); it != scene->actors_.end(); ++it)
 	{
 		auto actor = it->second;
@@ -53,7 +54,21 @@ void glutpp::scene::desc::load(glutpp::scene::scene_s scene) {
 		
 		ad->load(actor);
 		
-		ad->get_raw()->mode_ = glutpp::actor::mode::NOW;
+		ad->get_raw()->mode_create_ = glutpp::actor::mode_create::NOW;
+		
+		get_actors()->vec_.push_back(std::make_tuple(ad));
+	}
+	
+	// deferred
+	for(auto it = scene->actors_deferred_.begin(); it != scene->actors_deferred_.end(); ++it)
+	{
+		auto desc = it->second;
+		
+		glutpp::actor::desc_s ad(new glutpp::actor::desc);
+		
+		*ad = *desc;
+		
+		ad->get_raw()->mode_create_ = glutpp::actor::mode_create::DEFERRED;
 		
 		get_actors()->vec_.push_back(std::make_tuple(ad));
 	}

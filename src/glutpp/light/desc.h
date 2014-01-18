@@ -19,6 +19,7 @@ namespace glutpp
 		struct raw: gal::network::serial<raw>
 		{
 			raw();
+			void			load(glutpp::light::light_s);
 			void			load(tinyxml2::XMLElement*);
 			void			print();
 
@@ -46,20 +47,19 @@ namespace glutpp
 		class id: public gal::network::serial<id>
 		{
 			public:
+				void		load(glutpp::light::light_s);
 				int i_;
 		};
 
-		class desc: public gal::network::serial_ext<raw, id>
+		class desc: public gal::network::serial_ext<id, raw>
 		{
 			public:
 				desc();
 				void		load(glutpp::light::light_s);
 
-
-
-
-				int		i_;
-				raw		raw_;
+				id_s		get_id() { return std::get<0>(tup_); }
+				raw_s		get_raw() { return std::get<1>(tup_); }
+				
 		};
 	}
 }

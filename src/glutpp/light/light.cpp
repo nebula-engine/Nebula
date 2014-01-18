@@ -27,7 +27,7 @@ void	glutpp::light::light::init(glutpp::scene::scene_s scene, glutpp::light::des
 	
 	scene_ = scene;
 	
-	raw_ = desc->raw_;
+	raw_ = *(desc->get_raw());
 	
 	/*
 	camera_.fovy_ = 45.0f;

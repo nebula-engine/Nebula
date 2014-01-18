@@ -26,7 +26,7 @@ void	glutpp::shape::desc::load(tinyxml2::XMLElement* element) {
 	{
 		ld.reset(new glutpp::light::desc);
 		
-		ld->raw_.load(element_light);
+		ld->get_raw()->load(element_light);
 		
 		get_lights()->vec_.push_back(std::make_tuple(ld));
 

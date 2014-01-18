@@ -48,9 +48,6 @@ namespace glutpp
 
 			char			image_[max_filename_length];
 			char			normal_[max_filename_length];
-
-			unsigned int		shape_size_;
-			unsigned int		light_size_;
 		};
 		
 		struct id: gal::network::serial<id>

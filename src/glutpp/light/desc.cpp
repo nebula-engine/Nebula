@@ -4,8 +4,14 @@
 #include <glutpp/light/light.h>
 
 
+void glutpp::light::raw::load(glutpp::light::light_s light) {
+	operator=(light->raw_);
+}
 
 
+void glutpp::light::id::load(glutpp::light::light_s light) {
+	i_ = light->i_;
+}
 
 
 
@@ -13,10 +19,10 @@
 glutpp::light::desc::desc() {
 }
 void glutpp::light::desc::load(glutpp::light::light_s light) {
-	i_ = light->i_;
-	raw_ = light->raw_;
+	get_id()->load(light);
+	get_raw()->load(light);
 	
-	raw_.print();
+	get_raw()->print();
 }
 
 

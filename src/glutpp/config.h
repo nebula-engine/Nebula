@@ -29,7 +29,9 @@ namespace glutpp {
 			SCENE_CREATE   = 0x1,
 			ACTOR_CREATE   = 0x2,
 			ACTOR_UPDATE   = 0x3,
-			CONTROL_CREATE = 0x4,
+			ACTOR_EVENT    = 0x4,
+			CONTROL_CREATE = 0x5,
+			CONTROL_UPDATE = 0x6,
 		};
 	}
 
@@ -162,9 +164,17 @@ namespace glutpp {
 			CONTROLLER,
 			EMPTY
 		};
-		enum mode {
-			NOW,
-			DEFERRED,
+		struct type_event {
+			enum e {
+				NONE = 0x0,
+				FIRE = 0x1,
+			};
+		};
+		struct mode_create {
+			enum e {
+				NOW,
+				DEFERRED,
+			};
 		};
 		struct mode_update {
 			enum e {
@@ -187,6 +197,9 @@ namespace glutpp {
 		struct raw;
 		typedef std::shared_ptr<raw>		raw_s;
 		typedef gal::network::vector<raw>	raw_v;
+
+		class event;
+		typedef std::shared_ptr<event>		event_s;
 
 		class desc;
 		typedef std::shared_ptr<desc>		desc_s;
@@ -229,7 +242,11 @@ namespace glutpp {
 			light_max = 20
 		};
 
+		class id;
+		typedef std::shared_ptr<id>		id_s;
+		
 		struct raw;
+		typedef std::shared_ptr<raw>		raw_s;
 
 		class desc;
 		typedef std::shared_ptr<desc>		desc_s;

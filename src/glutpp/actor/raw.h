@@ -30,10 +30,10 @@ namespace glutpp {
 
 
 
-			glutpp::actor::type	type_;
-			//glutpp::actor::mode	mode_;
-			unsigned int		flag_;
-			char			name_[32];
+			glutpp::actor::type		type_;
+			glutpp::actor::mode_create::e	mode_create_;
+			unsigned int			flag_;
+			char				name_[32];
 
 			math::transform		pose_;
 
@@ -47,6 +47,13 @@ namespace glutpp {
 				filter_data	simulation_;
 				filter_data	scene_query_;
 			} filter_data_;
+		};
+
+
+
+		class event: public gal::network::serial<event> {
+			public:
+				glutpp::actor::type_event::e	type_;
 		};
 	}
 }

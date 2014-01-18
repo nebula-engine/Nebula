@@ -4,7 +4,7 @@
 
 glutpp::actor::raw::raw():
 	type_(glutpp::actor::type::NONE),
-	mode_(glutpp::actor::mode::NOW),
+	mode_create_(glutpp::actor::mode_create::e::NOW),
 	flag_(0),
 	density_(200)
 {
@@ -45,7 +45,26 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 		abort();
 	}
 	
-	
+	// mode create
+	buf = element->Attribute("mode_create");
+	if(buf != NULL)
+	{
+		if(strcmp(buf, "deferred") == 0)
+		{
+			printf("DEFERRED\n");
+			mode_create_ = glutpp::actor::mode_create::e::DEFERRED;
+		}
+		else if(strcmp(buf, "now") == 0)
+		{
+			printf("NOW\n");
+			mode_create_ = glutpp::actor::mode_create::e::NOW;
+		}
+		else
+		{
+			printf("invalid mode\n");
+			abort();
+		}
+	}
 	
 	// name
 	buf = element->Attribute("name");
@@ -66,13 +85,54 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	velocity_ = math::xml_parse_vec3(element->FirstChildElement("velocity"), velocity_);
 	
 	
-	// filtering
-	filter_data_.simulation_.word0 = glutpp::filter::type::STATIC;
-	filter_data_.simulation_.word1 = glutpp::filter::RIGID_AGAINST;
-	filter_data_.simulation_.word2 = glutpp::filter::type::STATIC;
-	filter_data_.simulation_.word3 = glutpp::filter::type::PROJECTILE;
+}
+void glutpp::actor::raw::parse_filtering(tinyxml2::XMLElement* element) {
+
+	tinyxml2::XMLElement* fd = element->FirstChildElement("fd");
+	tinyxml2::XMLElement* sim = NULL;
+
+	if(fd)
+	{
+		sim = fd->FirstChildElement("sim");
+		if(sim)
+		{
+			filter_data_.simulation_.word0 = glutpp::filter::type::STATIC;
+			filter_data_.simulation_.word1 = glutpp::filter::RIGID_AGAINST;
+			filter_data_.simulation_.word2 = glutpp::filter::type::STATIC;
+			filter_data_.simulation_.word3 = glutpp::filter::type::PROJECTILE;
+		}
+	}
 
 	filter_data_.scene_query_.word3 = glutpp::filter::DRIVABLE_SURFACE;
+
+
+}
+unsigned int glutpp::actor::raw::parse_filter(tinyxml2::XMLElement* element, unsigned int i) {
+
+	if(element == NULL) return i;
+
+	char const * buf = element->GetText();
+
+	if(strcmp(buf, "STATIC") == 0)
+	{
+		return glutpp::filter::type::STATIC;
+	}
+	else if(strcmp(buf, "DYNAMIC") == 0)
+	{
+		return glutpp::filter::type::DYNAMIC;
+	}
+	else if(strcmp(buf, "RIGID_AGAINST") == 0)
+	{
+		return glutpp::filter::RIGID_AGAINST;
+	}
+	else if(strcmp(buf, "PROJECTILE") == 0)
+	{
+		return glutpp::filter::type::DYNAMIC;
+	}
+	
+	
+	
+	abort();
 }
 void glutpp::actor::raw::plane(tinyxml2::XMLElement* element) {
 

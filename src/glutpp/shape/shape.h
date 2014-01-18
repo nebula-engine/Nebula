@@ -92,7 +92,7 @@ namespace glutpp
 				glutpp::actor::actor_w		actor_;
 			public:
 				int				i_;
-				raw				raw_;
+				glutpp::shape::raw		raw_;
 				
 			private:
 				unsigned int			f();

@@ -33,8 +33,7 @@ namespace glutpp {
 			vec_actor_desc_s	get_actors() const;
 			vec_shape_desc_s	get_shapes() const;
 			
-			glutpp::actor::mode_create::e	mode_create_;
-			
+						
 		};
 	}
 }
