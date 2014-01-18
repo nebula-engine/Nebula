@@ -110,29 +110,46 @@ void		glutpp::light::light::load(int o) {
 	}
 	//pos.print();
 	
-	p->get_uniform(glutpp::uniform_name::e::LIGHT_POSITION)->load_4fv(
-			o, pos);
-	p->get_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT)->load_4fv(
-			o, raw_.ambient_);
-	p->get_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE)->load_4fv(
-			o, raw_.diffuse_);
-	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR)->load_4fv(
-			o, raw_.specular_);
-	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION)->load_3fv(
-			o, spot_direction);
-	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF)->load(
-			o, raw_.spot_cutoff_);
-	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_EXPONENT)->load(
-			o, raw_.spot_exponent_);
-	p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF)->load(
-			o, raw_.spot_light_cos_cutoff_);
-	p->get_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_CONST)->load(
-			o, raw_.atten_const_);
-	p->get_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR)->load(
-			o, raw_.atten_linear_);
-	p->get_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD)->load(
-			o, raw_.atten_quad_);
+	
+	if(any(glutpp::light::flag::e::SHOULD_LOAD_POS))
+	{
+		p->get_uniform(glutpp::uniform_name::e::LIGHT_POSITION)->load_4fv(
+				o, pos);
+		
+		unset(glutpp::light::flag::e::SHOULD_LOAD_POS);
+	}	
+	if(any(glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION))
+	{
+		p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION)->load_3fv(
+				o, spot_direction);
+		
+		unset(glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION);
+	}
+	
+	if(any(glutpp::light::flag::e::SHOULD_LOAD_OTHER))
+	{
+		p->get_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT)->load_4fv(
+				o, raw_.ambient_);
+		p->get_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE)->load_4fv(
+				o, raw_.diffuse_);
+		p->get_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR)->load_4fv(
+				o, raw_.specular_);
+			
+		p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF)->load(
+				o, raw_.spot_cutoff_);
+		p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_EXPONENT)->load(
+				o, raw_.spot_exponent_);
+		p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF)->load(
+				o, raw_.spot_light_cos_cutoff_);
+		p->get_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_CONST)->load(
+				o, raw_.atten_const_);
+		p->get_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR)->load(
+				o, raw_.atten_linear_);
+		p->get_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD)->load(
+				o, raw_.atten_quad_);
 
+		unset(glutpp::light::flag::e::SHOULD_LOAD_OTHER);
+	}
 }
 void	glutpp::light::light::load_shadow() {
 	GLUTPP_DEBUG_1_FUNCTION;
