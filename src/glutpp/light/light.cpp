@@ -38,6 +38,12 @@ void	glutpp::light::light::init(glutpp::scene::scene_s scene, glutpp::light::des
 	*/
 	
 	//texture_shadow_map_.init_shadow(camera_.w_, camera_.h_);
+	
+	set(
+		glutpp::light::flag::e::SHOULD_LOAD_POS |
+		glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION |
+		glutpp::light::flag::e::SHOULD_LOAD_OTEHR
+	);
 }
 void glutpp::light::light::release() {
 	GLUTPP_DEBUG_0_FUNCTION;
