@@ -237,6 +237,22 @@ namespace glutpp {
 	}
 	namespace light
 	{
+		struct type {
+	        	enum e {
+		                POINT,
+		                DIRECTIONAL,
+		                SPOT,
+			};
+	        };
+	        struct flag
+	        {
+	        	enum e {
+	                	SHOULD_DELETE              = 1 << 0,
+	                	SHOULD_LOAD_POS            = 1 << 1,
+	                	SHOULD_LOAD_SPOT_DIRECTION = 1 << 2,
+	                	SHOULD_LOAD_OTHER          = 1 << 3,
+	                };
+	        };
 		enum
 		{
 			light_max = 20
