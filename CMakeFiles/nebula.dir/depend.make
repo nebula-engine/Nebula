@@ -482,6 +482,7 @@ CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o: src/neb/control
 CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o: src/neb/control/rigid_body/raw.h
 CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o: src/neb/network/client.h
 CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o: src/neb/network/communicating.h
+CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o: src/neb/network/message.h
 CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o: src/neb/network/server.h
 CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o: src/neb/physics.h
 CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o: src/neb/scene/scene.h
@@ -489,6 +490,7 @@ CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o: src/neb/simulat
 CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o: src/neb/vehicle_manager.h
 
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../galaxy/src/gal/config.h
+CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../galaxy/src/gal/control/control.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../galaxy/src/gal/except.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../galaxy/src/gal/flag.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../galaxy/src/gal/gal.h
@@ -553,8 +555,11 @@ CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/actor/Rigid_Static.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/actor/rigid_body/rigid_body.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/app.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/config.h
+CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/control/rigid_body/control.h
+CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/control/rigid_body/raw.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/network/client.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/network/communicating.h
+CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/network/message.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/network/server.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/physics.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: src/neb/scene/scene.h
@@ -674,13 +679,58 @@ CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o: src/neb/actor/Base.h
 CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o: src/neb/camera/ridealong.h
 CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o: src/neb/config.h
 
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../galaxy/src/gal/config.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../galaxy/src/gal/control/control.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../galaxy/src/gal/except.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../galaxy/src/gal/flag.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../galaxy/src/gal/map.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../galaxy/src/gal/network/message.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../galaxy/src/gal/network/serial.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../galaxy/src/gal/network/vector.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../galaxy/src/gal/sig/connection.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../galaxy/src/gal/util.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/actor/actor.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/actor/addr.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/actor/desc.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/actor/id.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/actor/raw.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/config.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/light/desc.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/material.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/mesh.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/scene/desc.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/shape/desc.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/shape/shape.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/texture.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/color.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/geo/polyhedron.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/mat44.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/math.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/quat.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/raw/raw.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/transform.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/vec2.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/vec3.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/vec4.h
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: src/neb/control/rigid_body/control.cpp
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: src/neb/actor/Actor.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: src/neb/actor/Base.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: src/neb/actor/Rigid_Actor.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: src/neb/config.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: src/neb/control/rigid_body/control.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: src/neb/control/rigid_body/raw.h
 
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o: ../galaxy/src/gal/config.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o: ../galaxy/src/gal/except.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o: ../galaxy/src/gal/map.h
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o: ../galaxy/src/gal/network/message.h
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o: ../galaxy/src/gal/network/serial.h
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o: ../galaxy/src/gal/util.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o: ../math/src/math/math.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o: ../math/src/math/quat.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o: ../math/src/math/vec3.h
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o: src/neb/control/rigid_body/raw.cpp
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o: src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o: src/neb/control/rigid_body/raw.h
 
 CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o: ../galaxy/src/gal/config.h
@@ -1035,6 +1085,7 @@ CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: src/neb/physics.h
 CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: src/neb/scene/scene.h
 CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: src/neb/shape.h
 CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: src/neb/simulation_callback.h
+CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: src/neb/timer/actor.h
 CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: src/neb/vehicle_manager.h
 
 CMakeFiles/nebula.dir/src/neb/shape.cpp.o: ../galaxy/src/gal/config.h

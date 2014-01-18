@@ -8,7 +8,9 @@
 #include <glutpp/network/message.h>
 
 #include <neb/config.h>
+#include <neb/control/rigid_body/control.h>
 #include <neb/app.h>
+#include <neb/network/message.h>
 #include <neb/physics.h>
 
 neb::app::app():
@@ -278,6 +280,67 @@ void neb::app::send_client(gal::network::message::shared_t msg)  {
 	else
 	{
 		printf("WARNING: no server\n");
+	}
+}
+void neb::app::recv_scene_create(gal::network::message_s msg) {
+	
+}
+void neb::app::recv_actor_create(gal::network::message_s msg) {
+	
+}
+void neb::app::recv_actor_update(gal::network::message_s msg) {
+
+}
+void neb::app::recv_actor_event(gal::network::message_s msg) {
+	
+	glutpp::network::actor::event actor_event;
+	actor_event.read(msg);
+
+	auto actor = get_actor(actor_event.get_addr());
+	assert(actor);
+	auto scene = actor->get_scene();
+	assert(scene);
+	
+	int type = actor_event.get_event()->type_;
+
+	switch(type)
+	{
+		case glutpp::actor::type_event::FIRE:
+			scene->fire(actor);
+			break;
+		default:
+			printf("DEBUG: unknown event type %i\n", type);
+			break;
+	}
+}
+void neb::app::recv_control_create(gal::network::message_s msg) {
+
+}
+void neb::app::recv_control_update(gal::network::message_s msg) {
+
+	neb::network::control::rigid_body::update control_update;
+	control_update.read(msg);
+
+	auto actor = get_actor(control_update.get_addr());
+	auto rigidbody = actor->to_rigid_body();
+
+	if(rigidbody)
+	{
+		auto control = rigidbody->control_;
+		if(control)
+		{
+			control->raw_ = *(control_update.get_raw());
+
+			control->print();
+		}
+		else
+		{
+			printf("control not found\n");
+		}
+	}
+	else
+	{
+		printf("actor not found\n");
 	}
 }
 

@@ -95,13 +95,20 @@ namespace neb
 				void					step_remote(double);
 
 
+				void					fire(neb::actor::Base_s);
+				void					fire_local(neb::actor::Base_s);
+				void					fire_remote(neb::actor::Base_s);
+
+
+
+
 				// networking
 				void					send_actor_update();
 
 				//int					recv(neb::packet::packet);
 				//void					read(neb::active_transform::set*);
 				//glutpp::scene::desc_s			desc_generate();
-				
+
 				virtual void				dumby() {}
 			public:
 				neb::app_w				app_;

@@ -704,6 +704,30 @@ neb/config.h
 neb/actor/empty.h
 -
 
+/home/charles/Programming/C++/nebula/src/neb/actor/rigid_body/rigid_body.cpp
+math/transform.h
+-
+gal/network/server.h
+-
+glutpp/renderable.h
+-
+neb/config.h
+-
+neb/app.h
+-
+neb/physics.h
+-
+neb/simulation_callback.h
+-
+neb/actor/rigid_body/rigid_body.h
+-
+neb/control/rigid_body/control.h
+-
+neb/camera/ridealong.h
+-
+neb/network/message.h
+-
+
 /home/charles/Programming/C++/nebula/src/neb/app.cpp
 algorithm
 -
@@ -719,7 +743,11 @@ glutpp/network/message.h
 -
 neb/config.h
 -
+neb/control/rigid_body/control.h
+-
 neb/app.h
+-
+neb/network/message.h
 -
 neb/physics.h
 -
@@ -738,6 +766,16 @@ neb/camera/camera.h
 neb/actor/Base.h
 -
 neb/camera/ridealong.h
+-
+
+/home/charles/Programming/C++/nebula/src/neb/control/rigid_body/control.cpp
+neb/control/rigid_body/control.h
+-
+
+/home/charles/Programming/C++/nebula/src/neb/network/actor_release.cpp
+glutpp/config.h
+-
+neb/network/actor_release.h
 -
 
 /home/charles/Programming/C++/nebula/src/neb/network/client.cpp
@@ -846,6 +884,8 @@ neb/actor/vehicle.h
 neb/actor/empty.h
 -
 neb/shape.h
+-
+neb/timer/actor.h
 -
 glutpp/network/message.h
 -
@@ -1022,6 +1062,12 @@ math/vec3.h
 gal/network/serial.h
 -
 neb/config.h
+-
+
+src/neb/network/actor_release.h
+vector
+-
+gal/network/message.h
 -
 
 src/neb/network/client.h

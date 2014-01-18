@@ -13,8 +13,11 @@ neb::actor::Rigid_Actor::Rigid_Actor(
 void neb::actor::Rigid_Actor::init(glutpp::actor::desc_s desc) {
 	neb::actor::Actor::init(desc);
 }
+void	neb::actor::Rigid_Actor::step_local(double) {
+	
+}
 void	neb::actor::Rigid_Actor::step_remote(double) {
-
+	
 }
 void	neb::actor::Rigid_Actor::setupFiltering()
 {

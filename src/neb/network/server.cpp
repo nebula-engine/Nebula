@@ -21,6 +21,7 @@ void neb::network::server::callback_accept(int s) {
 	
 	
 	// exp
+	neb::control::rigid_body::raw_s control_raw(new neb::control::rigid_body::raw);
 	
 	auto scene = app->get_scene(0);
 	assert(scene);
@@ -31,8 +32,7 @@ void neb::network::server::callback_accept(int s) {
         auto actor = app->scenes_[0]->create_actor_local(ad);
         auto rigidbody = actor->to_rigid_body();
 	
-	
-	
+	rigidbody->create_control(control_raw);
 	
 	// exp
 	

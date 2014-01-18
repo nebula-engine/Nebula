@@ -19,7 +19,9 @@ namespace neb
 				virtual void			init(glutpp::actor::desc_s);
 				virtual void			add_force(double) {abort();}
 
+				virtual void			step_local(double);
 				virtual void			step_remote(double);
+				
 				virtual void			setupFiltering();
 
 				virtual glutpp::actor::desc_s	get_projectile();

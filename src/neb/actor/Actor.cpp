@@ -22,6 +22,10 @@ void	neb::actor::Actor::set_pose(math::transform pose) {
 int	neb::actor::Actor::fire() {
 	return neb::actor::Base::fire();
 }
+void neb::actor::Actor::step_local(double)
+{
+	abort();
+}
 void neb::actor::Actor::step_remote(double)
 {
 	abort();

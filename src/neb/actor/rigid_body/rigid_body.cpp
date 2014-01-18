@@ -28,40 +28,37 @@ void	neb::actor::rigid_body::rigid_body::init(glutpp::actor::desc_s desc) {
 	neb::actor::Rigid_Actor::init(desc);
 
 }
-void neb::actor::rigid_body::rigid_body::step(double time) {
-	neb::actor::Rigid_Actor::step(time);
-
-	switch(mode_update_)
-	{
-		case glutpp::actor::mode_update::LOCAL:
-			break;
-		case glutpp::actor::mode_update::REMOTE:
-			step_remote(time);
-			break;
-		default:
-			break;
-	}
-
-}
 void neb::actor::rigid_body::rigid_body::step_local(double time) {
-	
-	
-	
-}
-void neb::actor::rigid_body::rigid_body::step_remote(double) {
-
 	NEBULA_DEBUG_1_FUNCTION;
 
+	neb::actor::Rigid_Actor::step_local(time);
+	
+	add_force(time);
+}
+void neb::actor::rigid_body::rigid_body::step_remote(double time) {
+	NEBULA_DEBUG_1_FUNCTION;
+	
+	auto app = get_app();
+	
+	gal::network::message::shared_t msg;
+	neb::network::control::rigid_body::update_s control_update;
+	
+	neb::actor::Rigid_Actor::step_remote(time);
+	
+	
+	
 	if(control_)
 	{
-
-		gal::network::message::shared_t msg(new gal::network::message);
-
-		neb::network::control::rigid_body::update_s control_update;
-
+		gal::reset(msg);
+		gal::reset(control_update);
+		
 		control_update->get_addr()->load_this(to_rigid_body());
 		control_update->get_raw()->load(control_);
-
+		
+		msg->write(glutpp::network::type::CONTROL_UPDATE);
+		control_update->write(msg);
+		
+		app->send_client(msg);
 	}
 
 }
@@ -71,13 +68,13 @@ void neb::actor::rigid_body::rigid_body::add_force(double time) {
 	// non-user-controled
 	math::vec3 f(force_);
 	math::vec3 t(torque_);
-
+	
 	// user-controlled
 	if(control_) {
 		f += control_->f();
-		t += control_->t(time);
+		t += control_->t();
 	}
-
+	
 	math::transform pose = raw_.pose_;
 
 	f = pose.q.rotate(f);

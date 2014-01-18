@@ -61,7 +61,7 @@ namespace neb
 				virtual void			set_pose(math::transform);
 				virtual int			fire();
 				
-				virtual void			step(double) { abort(); }
+				virtual void			step_local(double);
 				virtual void			step_remote(double);
 
 				// signal
@@ -71,6 +71,7 @@ namespace neb
 				
 				
 				// conversion
+				Base_s				to_base();
 				rigid_body::rigid_body_s	to_rigid_body();
 				
 			public:

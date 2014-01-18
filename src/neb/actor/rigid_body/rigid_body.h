@@ -21,7 +21,6 @@ namespace neb
 					
 					virtual glutpp::actor::desc_s	get_projectile();
 					
-					virtual void			step(double);
 				private:
 					virtual void			step_local(double);
 					virtual void			step_remote(double);
@@ -36,9 +35,9 @@ namespace neb
 					// control
 					virtual void			create_control(
 							neb::control::rigid_body::raw_s);
-				private:
+				public:
 					neb::control::rigid_body::control_s	control_;
-					
+				private:
 					math::vec3			force_;
 					math::vec3			torque_;
 			};

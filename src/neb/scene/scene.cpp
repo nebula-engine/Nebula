@@ -15,6 +15,7 @@
 #include <neb/actor/vehicle.h>
 #include <neb/actor/empty.h>
 #include <neb/shape.h>
+#include <neb/timer/actor.h>
 
 #include <glutpp/network/message.h>
 
@@ -88,13 +89,13 @@ void neb::scene::scene::create_actors(glutpp::scene::desc_s desc) {
 	{
 		auto ad = std::get<0>(*it);
 
-		switch(ad->get_raw()->mode_)
+		switch(ad->get_raw()->mode_create_)
 		{
-			case glutpp::actor::mode::NOW:
+			case glutpp::actor::mode_create::NOW:
 				printf("NOW\n");
 				create_actor_local(ad);
 				break;
-			case glutpp::actor::mode::DEFERRED:
+			case glutpp::actor::mode_create::DEFERRED:
 				printf("DEFERRED\n");
 				add_deferred(ad);
 				break;
@@ -409,9 +410,6 @@ void neb::scene::scene::step(double time) {
 			exit(0);
 	}
 
-	
-
-
 	// cleanup
 	auto it = actors_.map_.begin();
 	while(it != actors_.map_.end())
@@ -518,21 +516,15 @@ void neb::scene::scene::step_local(double time) {
 
 	send_actor_update();
 }
-void neb::scene::scene::step_local(double time) {
+void neb::scene::scene::step_remote(double time){
 	NEBULA_DEBUG_1_FUNCTION;
 
-	auto app = get_app();
-
-	double dt = time - last_;
-	last_ = time;
-	
-	
-	// step actors
+	// send
 	actors_.foreach<neb::actor::Base>(std::bind(
 				&neb::actor::Base::step_remote,
 				std::placeholders::_1,
 				time));
-				
+
 }
 void neb::scene::scene::send_actor_update() {
 	printf("DEBUG: message ACTOR_UPDATE sent\n");
@@ -554,27 +546,51 @@ void neb::scene::scene::send_actor_update() {
 	actor_update.write(msg);
 
 	get_app()->send_server(msg);
+
+
+}
+void neb::scene::scene::fire(neb::actor::Base_s actor) {
+
+	switch(user_type_)
+	{
+		case LOCAL:
+			fire_local(actor);
+			break;
+		case REMOTE:
+			fire_remote(actor);
+			break;
+		default:
+			abort();
+	}
+
+}
+void neb::scene::scene::fire_local(neb::actor::Base_s actor) {
+
+	glutpp::actor::desc_s desc = actor->get_projectile();
 	
+	//auto me = std::dynamic_pointer_cast<neb::actor::Actor>(shared_from_this());
+	
+	auto a = create_actor_local(desc);
+	
+	neb::timer::actor_s t(new neb::timer::actor(a, neb::timer::actor::type::RELEASE, last_ + 5.0));
+	
+	timer_set_.set_.insert(t);
 	
 }
-void neb::scene::scene::step_remote(double time){
-	NEBULA_DEBUG_1_FUNCTION;
+void neb::scene::scene::fire_remote(neb::actor::Base_s actor) {
+	
+	gal::network::message_s msg(new gal::network::message);
+	glutpp::network::actor::event actor_event;
+	
+	actor_event.get_addr()->load_this(actor);
+	
+	actor_event.get_event()->type_ = glutpp::actor::type_event::FIRE;
+	
+	msg->write(glutpp::network::type::ACTOR_EVENT);
+	actor_event.write(msg);
 
-	// send
-	actors_.foreach<neb::actor::Base>(std::bind(
-				&neb::actor::Base::step_remote,
-				std::placeholders::_1,
-				time));
-	//neb::packet p;
-
-	//p.af.i = ;
-
-	// receive
-}
-
-
-
-
+	get_app()->send_client(msg);
+}	
 
 
 

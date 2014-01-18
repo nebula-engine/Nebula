@@ -46,6 +46,14 @@ namespace neb {
 			int				transmit_scenes(
 					std::shared_ptr<neb::network::communicating>);
 			
+			void				recv_scene_create(gal::network::message_s);
+			void				recv_actor_create(gal::network::message_s);
+			void				recv_actor_update(gal::network::message_s);
+			void				recv_actor_event(gal::network::message_s);
+			void				recv_control_create(gal::network::message_s);
+			void				recv_control_update(gal::network::message_s);
+			
+
 			void			f(unsigned int);
 			unsigned int		f();
 		public:

@@ -94,9 +94,7 @@ neb::actor::Base_s neb::actor::Base::create_actor_local(glutpp::actor::desc_s de
 	actors_.push_back(actor);
 	return actor;
 }
-neb::actor::Base_s neb::actor::Base::create_actor_remote(
-		glutpp::actor::addr_s addr,
-		glutpp::actor::desc_s desc) {
+neb::actor::Base_s neb::actor::Base::create_actor_remote(glutpp::actor::addr_s addr, glutpp::actor::desc_s desc) {
 	
 	auto vec = addr->get_vec();
 	assert(!vec->vec_.empty());
@@ -180,18 +178,8 @@ void	neb::actor::Base::set_pose(math::transform pose) {
 int	neb::actor::Base::fire() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
-
-	glutpp::actor::desc_s desc = get_projectile();
-
-	auto scene = get_scene();
-
-	//auto me = std::dynamic_pointer_cast<neb::actor::Actor>(shared_from_this());
-
-	auto a = scene->create_actor_local(desc);
-
-	neb::timer::actor_s t(new neb::timer::actor(a, neb::timer::actor::type::RELEASE, scene->last_ + 5.0));
-
-	scene->timer_set_.set_.insert(t);
+	
+	get_scene()->fire(to_base());
 
 	return 1;
 }
@@ -202,6 +190,8 @@ glutpp::actor::desc_s neb::actor::Base::get_projectile() {
 	abort();
 
 	return glutpp::actor::desc_s();
+}
+void	neb::actor::Base::step_local(double) {
 }
 void	neb::actor::Base::step_remote(double) {
 }
@@ -257,6 +247,9 @@ int neb::actor::Base::key_fun(int key, int scancode, int action, int mods) {
 	}
 
 	return 0;
+}
+neb::actor::Base_s neb::actor::Base::to_base() {
+	return std::dynamic_pointer_cast<neb::actor::Base>(shared_from_this());
 }
 neb::actor::rigid_body::rigid_body_s neb::actor::Base::to_rigid_body() {
 	return std::dynamic_pointer_cast<neb::actor::rigid_body::rigid_body>(shared_from_this());

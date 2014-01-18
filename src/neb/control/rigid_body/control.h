@@ -25,11 +25,12 @@ namespace neb {
 					virtual int			key_fun0(int,int);
 					virtual int			key_fun1(int,int);
 
-					math::vec3			f();
-					math::vec3			t(double);
-					math::vec3			t0();
-					math::vec3			t1(double);
+					void				step_local(double);
 
+					math::vec3			f();
+					math::vec3			t();
+
+					void				print();
 				private:
 
 				public:
