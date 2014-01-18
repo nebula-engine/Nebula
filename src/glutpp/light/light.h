@@ -21,17 +21,6 @@ namespace glutpp
 		class light: public gal::flag<unsigned int>
 		{
 			public:
-				enum type
-				{
-					POINT,
-					DIRECTIONAL,
-					SPOT
-				};
-				enum flag
-				{
-					SHOULD_DELETE = 1 << 0
-				};
-
 				light(glutpp::shape::shape_s);
 				void				i(int);
 				void				init(
