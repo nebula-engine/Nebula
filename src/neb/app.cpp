@@ -164,7 +164,7 @@ int	neb::app::loop() {
 	
 	double time;
 	
-	while(1)
+	while(!any(neb::app::flag::e::SHOULD_RELEASE))
 	{	
 		time = glfwGetTime();
 		
@@ -172,8 +172,15 @@ int	neb::app::loop() {
 		
 		glfwPollEvents();
 	}
-
+	
+	
+	if(server_) server_->close();
+	if(client_) client_->close();
+	
 	return 0;
+}
+void neb::app::set_should_release() {
+	set(neb::app::flag::e::SHOULD_RELEASE);
 }
 glutpp::window::window_s neb::app::get_window(int i) {
 	glutpp::window::window_s window;

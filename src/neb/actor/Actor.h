@@ -15,9 +15,7 @@ namespace neb
 			public neb::actor::Base
 		{
 			public:
-				Actor(
-						std::shared_ptr<neb::scene::scene>,
-						neb::actor::Base_s = neb::actor::Base_s());
+				Actor(glutpp::parent_s);
 
 
 				virtual void			init(glutpp::actor::desc_s);

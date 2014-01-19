@@ -2,10 +2,8 @@
 #include <neb/physics.h>
 #include <neb/actor/Rigid_Dynamic.h>
 
-neb::actor::Rigid_Dynamic::Rigid_Dynamic(
-		std::shared_ptr<neb::scene::scene> scene,
-		std::shared_ptr<neb::actor::Base> actor):
-	neb::actor::rigid_body::rigid_body(scene, actor) 
+neb::actor::Rigid_Dynamic::Rigid_Dynamic(glutpp::parent_s parent):
+	neb::actor::rigid_body::rigid_body(parent)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 }

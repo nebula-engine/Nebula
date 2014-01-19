@@ -22,9 +22,7 @@ namespace neb
 		class empty: public neb::actor::Base
 		{
 			public:
-				empty(
-						neb::scene::scene_s,
-						neb::actor::Base_s = neb::actor::Base_s());
+				empty(glutpp::parent_s);
 				
 				virtual void			init(glutpp::actor::desc_s);
 

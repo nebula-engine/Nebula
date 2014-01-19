@@ -13,7 +13,7 @@ namespace neb
 			public neb::actor::Base
 		{
 			public:
-				Controller(std::shared_ptr<neb::scene::scene>);
+				Controller(glutpp::parent_s);
 				
 				virtual void		release();
 

@@ -10,9 +10,7 @@ namespace neb
 		class Rigid_Dynamic: public neb::actor::rigid_body::rigid_body
 		{
 			public:
-				Rigid_Dynamic(
-						neb::scene::scene_s,
-						neb::actor::Base_s = neb::actor::Base_s());
+				Rigid_Dynamic(glutpp::parent_s);
 				
 				virtual void		init(glutpp::actor::desc_s);
 

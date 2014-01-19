@@ -1,10 +1,8 @@
 #include <neb/config.h>
 #include <neb/actor/empty.h>
 
-neb::actor::empty::empty(
-		std::shared_ptr<neb::scene::scene> scene,
-		std::shared_ptr<neb::actor::Base> actor):
-	neb::actor::Base(scene, actor)
+neb::actor::empty::empty(glutpp::parent_s parent):
+	neb::actor::Base(parent)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 }

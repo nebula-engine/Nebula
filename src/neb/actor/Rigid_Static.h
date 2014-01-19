@@ -11,16 +11,15 @@ namespace neb
 			public neb::actor::Rigid_Actor
 		{
 			public:
-				Rigid_Static(
-						neb::scene::scene_s,
-						neb::actor::Base_s = neb::actor::Base_s());
+				Rigid_Static(glutpp::parent_s parent);
 
 				virtual void	init(glutpp::actor::desc_s);
 
 				virtual void	create_physics();
 				virtual void	init_physics();
 				
-				virtual void	step(double);
+				virtual void	step_local(double);
+				virtual void	step_remote(double);
 		};
 	}
 }

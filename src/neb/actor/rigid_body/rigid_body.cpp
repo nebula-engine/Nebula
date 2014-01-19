@@ -15,10 +15,8 @@
 #include <neb/network/message.h>
 
 
-neb::actor::rigid_body::rigid_body::rigid_body(
-		std::shared_ptr<neb::scene::scene> scene,
-		std::shared_ptr<neb::actor::Base> actor):
-	neb::actor::Rigid_Actor(scene, actor),
+neb::actor::rigid_body::rigid_body::rigid_body(glutpp::parent_s parent):
+	neb::actor::Rigid_Actor(parent),
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}

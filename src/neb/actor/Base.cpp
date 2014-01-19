@@ -9,14 +9,10 @@
 #include <neb/actor/Base.h>
 #include <neb/actor/empty.h>
 
-neb::actor::Base::Base(
-		std::shared_ptr<neb::scene::scene> scene,
-		std::shared_ptr<neb::actor::Base> actor):
-	glutpp::actor::actor(scene, actor)
+neb::actor::Base::Base(glutpp::parent_s parent):
+	glutpp::actor::actor(parent)
 {
 	NEBULA_DEBUG_0_FUNCTION;
-	
-	assert(scene);
 }
 neb::actor::Base::~Base() {
 	NEBULA_DEBUG_0_FUNCTION;
@@ -61,11 +57,11 @@ neb::actor::Base_s neb::actor::Base::create_actor(glutpp::actor::desc_s desc) {
 	switch(desc->get_raw()->type_)
 	{
 		case glutpp::actor::RIGID_DYNAMIC:
-			actor.reset(new neb::actor::Rigid_Dynamic(scene, me));
+			actor.reset(new neb::actor::Rigid_Dynamic(me));
 			// = Create_Rigid_Dynamic(ad);
 			break;
 		case glutpp::actor::RIGID_STATIC:
-			actor.reset(new neb::actor::Rigid_Static(scene, me));
+			actor.reset(new neb::actor::Rigid_Static(me));
 			// = Create_Rigid_Static(ad);
 			break;
 		case glutpp::actor::PLANE:
@@ -79,7 +75,7 @@ neb::actor::Base_s neb::actor::Base::create_actor(glutpp::actor::desc_s desc) {
 			//actor = Create_Controller(ad);
 			break;
 		case glutpp::actor::EMPTY:
-			actor.reset(new neb::actor::empty(scene, me));
+			actor.reset(new neb::actor::empty(me));
 			break;
 		default:
 			abort();
@@ -132,10 +128,8 @@ std::shared_ptr<neb::app> neb::actor::Base::get_app() {
 	return scene->app_.lock();
 }
 std::shared_ptr<neb::scene::scene> neb::actor::Base::get_scene() {
-
-	assert(!scene_.expired());
 	
-	auto scene = std::dynamic_pointer_cast<neb::scene::scene>(scene_.lock());
+	auto scene = std::dynamic_pointer_cast<neb::scene::scene>(glutpp::actor::actor::get_scene());
 
 	return scene;
 }
@@ -171,10 +165,6 @@ neb::actor::Base_s neb::actor::Base::get_actor(glutpp::actor::addr_s addr) {
 	
 	return actor;
 }
-void	neb::actor::Base::set_pose(math::transform pose) {
-
-	raw_.pose_ = pose;
-}
 int	neb::actor::Base::fire() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
@@ -191,9 +181,11 @@ glutpp::actor::desc_s neb::actor::Base::get_projectile() {
 
 	return glutpp::actor::desc_s();
 }
-void	neb::actor::Base::step_local(double) {
+void neb::actor::Base::step_local(double time) {
+	glutpp::actor::actor::step(time);
 }
-void	neb::actor::Base::step_remote(double) {
+void neb::actor::Base::step_remote(double time) {
+	glutpp::actor::actor::step(time);
 }
 void neb::actor::Base::create_shapes(glutpp::actor::desc_s desc) {
 	NEBULA_DEBUG_0_FUNCTION;
@@ -235,6 +227,9 @@ int neb::actor::Base::key_fun(int key, int scancode, int action, int mods) {
 			switch(key) {
 				case GLFW_KEY_SPACE:
 					fire();
+					return 1;
+				case GLFW_KEY_ESCAPE:
+					get_app()->set_should_release();
 					return 1;
 				default:
 					return 0;

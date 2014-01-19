@@ -23,9 +23,9 @@ void neb::shape::create_physics() {
 
 	NEBULA_DEBUG_0_FUNCTION;
 	
-	assert(!actor_.expired());
+	assert(!parent_.expired());
 	
-	auto actor = std::dynamic_pointer_cast<neb::actor::Rigid_Actor>(actor_.lock());
+	auto actor = std::dynamic_pointer_cast<neb::actor::Rigid_Actor>(parent_.lock());
 	
 	if(actor)
 	{

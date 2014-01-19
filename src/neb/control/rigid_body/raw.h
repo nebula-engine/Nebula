@@ -11,7 +11,7 @@
 namespace neb {
 	namespace control {
 		namespace rigid_body {
-			class raw: public gal::network::serial<raw> {
+			class raw: public gal::network::serial<raw, gal::network::base> {
 				public:
 					raw();
 					void				load(

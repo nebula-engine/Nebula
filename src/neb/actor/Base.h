@@ -14,18 +14,17 @@
 
 #include <glutpp/actor/desc.h>
 
+#include <neb/actor/raw.h>
 #include <neb/config.h>
 
 namespace neb
 {
 	namespace actor
 	{
-		class Base: public glutpp::actor::actor
+		class Base: public glutpp::actor::actor<neb::actor::raw>
 		{
 			public:
-				Base(
-						std::shared_ptr<neb::scene::scene>,
-						neb::actor::Base_s = neb::actor::Base_s());
+				Base(glutpp::parent_s);
 				virtual ~Base();
 
 				virtual void			init(glutpp::actor::desc_s);
@@ -58,7 +57,8 @@ namespace neb
 
 
 
-				virtual void			set_pose(math::transform);
+
+
 				virtual int			fire();
 				
 				virtual void			step_local(double);
@@ -76,7 +76,7 @@ namespace neb
 				
 			public:
 				glutpp::actor::mode_update::e	mode_update_;
-	
+				
 				glutpp::window::window_w	window_;
 				
 				struct

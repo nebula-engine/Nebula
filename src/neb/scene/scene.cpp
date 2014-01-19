@@ -476,26 +476,19 @@ void neb::scene::scene::step_local(double time) {
 		//printf( "actor type = %i\n", px_actor->getType() );
 
 		physx::PxActor* pxactor = active_transforms[i].actor;
-physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
-
 		assert(pxactor);
-
+		physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
+		
+		
 		void* ud = active_transforms[i].userData;
 		assert(ud);
-
-
-
+		
+		
 		neb::actor::Actor* actor = dynamic_cast<neb::actor::Actor*>((glutpp::actor::actor*)ud);
-
 		assert(actor);
 		
 		pose = active_transforms[i].actor2World;
 		actor->set_pose(pose);
-		
-		
-		fghfh
-		// call function that propages down actor hierarchy and sets flags in lights to load
-		
 		
 		if(pxrigidbody != NULL)
 		{

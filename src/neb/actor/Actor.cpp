@@ -7,10 +7,8 @@
 #include <glutpp/actor/desc.h>
 #include <neb/actor/Actor.h>
 
-neb::actor::Actor::Actor(
-		std::shared_ptr<neb::scene::scene> scene,
-		std::shared_ptr<neb::actor::Base> actor):
-	neb::actor::Base(scene, actor),
+neb::actor::Actor::Actor(glutpp::parent_s parent):
+	neb::actor::Base(parent),
 	px_actor_(NULL)
 {}
 void neb::actor::Actor::init(glutpp::actor::desc_s desc) {
@@ -22,13 +20,13 @@ void	neb::actor::Actor::set_pose(math::transform pose) {
 int	neb::actor::Actor::fire() {
 	return neb::actor::Base::fire();
 }
-void neb::actor::Actor::step_local(double)
-{
-	abort();
+void neb::actor::Actor::step_local(double time) {
+	NEBULA_DEBUG_1_FUNCTION;
+	neb::actor::Base::step_local(time);
 }
-void neb::actor::Actor::step_remote(double)
-{
-	abort();
+void neb::actor::Actor::step_remote(double time) {
+	NEBULA_DEBUG_1_FUNCTION;
+	neb::actor::Base::step_remote(time);
 }
 void neb::actor::Actor::release()
 {

@@ -11,9 +11,7 @@ namespace neb
 		namespace rigid_body {
 			class rigid_body: public neb::actor::Rigid_Actor {
 				public:
-					rigid_body(
-							neb::scene::scene_s,
-							neb::actor::Base_s = neb::actor::Base_s());
+					rigid_body(glutpp::parent_s);
 					
 					virtual void			init(glutpp::actor::desc_s);
 					

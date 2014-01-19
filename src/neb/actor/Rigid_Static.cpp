@@ -2,10 +2,8 @@
 #include <neb/shape.h>
 #include <neb/actor/Rigid_Static.h>
 
-neb::actor::Rigid_Static::Rigid_Static(
-		neb::scene::scene_s scene,
-		neb::actor::Base_s actor):
-	neb::actor::Rigid_Actor(scene, actor)
+neb::actor::Rigid_Static::Rigid_Static(glutpp::parent_s parent):
+	neb::actor::Rigid_Actor(parent)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
@@ -14,8 +12,13 @@ void	neb::actor::Rigid_Static::init(glutpp::actor::desc_s desc) {
 	
 	neb::actor::Rigid_Actor::init(desc);
 }
-void	neb::actor::Rigid_Static::step(double) {
-
+void	neb::actor::Rigid_Static::step_local(double time) {
+	NEBULA_DEBUG_1_FUNCTION;
+	neb::actor::Rigid_Actor::step_local(time);
+}
+void	neb::actor::Rigid_Static::step_remote(double time) {
+	NEBULA_DEBUG_1_FUNCTION;
+	neb::actor::Rigid_Actor::step_remote(time);
 }
 void neb::actor::Rigid_Static::create_physics() {
 
@@ -23,7 +26,6 @@ void neb::actor::Rigid_Static::create_physics() {
 	
 	assert(px_actor_ == NULL);
 	
-	assert(!scene_.expired());
 	auto scene = get_scene();//scene_.lock();
 	
 	math::transform pose(get_pose());

@@ -3,21 +3,21 @@
 #include <neb/shape.h>
 
 
-neb::actor::Rigid_Actor::Rigid_Actor(
-		std::shared_ptr<neb::scene::scene> scene,
-		std::shared_ptr<neb::actor::Base> actor):
-	neb::actor::Actor(scene, actor)
+neb::actor::Rigid_Actor::Rigid_Actor(glutpp::parent_s parent):
+	neb::actor::Actor(parent)
 {
 
 }
 void neb::actor::Rigid_Actor::init(glutpp::actor::desc_s desc) {
 	neb::actor::Actor::init(desc);
 }
-void	neb::actor::Rigid_Actor::step_local(double) {
-	
+void	neb::actor::Rigid_Actor::step_local(double time) {
+	NEBULA_DEBUG_1_FUNCTION;
+	neb::actor::Actor::step_local(time);
 }
-void	neb::actor::Rigid_Actor::step_remote(double) {
-	
+void	neb::actor::Rigid_Actor::step_remote(double time) {
+	NEBULA_DEBUG_1_FUNCTION;
+	neb::actor::Actor::step_remote(time);
 }
 void	neb::actor::Rigid_Actor::setupFiltering()
 {

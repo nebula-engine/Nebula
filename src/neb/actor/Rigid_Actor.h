@@ -12,9 +12,7 @@ namespace neb
 			public neb::actor::Actor
 		{
 			public:
-				Rigid_Actor(
-						neb::scene::scene_s,
-						neb::actor::Base_s = neb::actor::Base_s());
+				Rigid_Actor(glutpp::parent_s);
 
 				virtual void			init(glutpp::actor::desc_s);
 				virtual void			add_force(double) {abort();}
