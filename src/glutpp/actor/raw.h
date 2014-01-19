@@ -16,7 +16,7 @@ namespace glutpp {
 			unsigned int word2;
 			unsigned int word3;
 		};
-		struct raw: gal::network::serial<raw> {
+		struct raw: gal::network::serial<raw, gal::network::base> {
 			enum
 			{
 				max_name_length = 31
@@ -27,7 +27,8 @@ namespace glutpp {
 			void			plane(tinyxml2::XMLElement*);
 			void			controller(tinyxml2::XMLElement*);
 
-
+			unsigned int		parse_filter(tinyxml2::XMLElement*, unsigned int);
+			void			parse_filtering(tinyxml2::XMLElement*);
 
 
 			glutpp::actor::type		type_;
@@ -51,7 +52,7 @@ namespace glutpp {
 
 
 
-		class event: public gal::network::serial<event> {
+		class event: public gal::network::serial<event, gal::network::base> {
 			public:
 				glutpp::actor::type_event::e	type_;
 		};

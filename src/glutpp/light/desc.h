@@ -16,7 +16,7 @@ namespace glutpp
 {
 	namespace light
 	{
-		struct raw: gal::network::serial<raw>
+		struct raw: gal::network::serial<raw, gal::network::base>
 		{
 			raw();
 			void			load(glutpp::light::light_s);
@@ -44,7 +44,7 @@ namespace glutpp
 			float			atten_quad_;
 		};
 
-		class id: public gal::network::serial<id>
+		class id: public gal::network::serial<id, gal::network::base>
 		{
 			public:
 				void		load(glutpp::light::light_s);

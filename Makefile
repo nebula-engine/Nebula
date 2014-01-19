@@ -749,6 +749,30 @@ src/glutpp/network/scene/create.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/network/scene/create.cpp.s
 .PHONY : src/glutpp/network/scene/create.cpp.s
 
+src/glutpp/parent.o: src/glutpp/parent.cpp.o
+.PHONY : src/glutpp/parent.o
+
+# target to build an object file
+src/glutpp/parent.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/parent.cpp.o
+.PHONY : src/glutpp/parent.cpp.o
+
+src/glutpp/parent.i: src/glutpp/parent.cpp.i
+.PHONY : src/glutpp/parent.i
+
+# target to preprocess a source file
+src/glutpp/parent.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/parent.cpp.i
+.PHONY : src/glutpp/parent.cpp.i
+
+src/glutpp/parent.s: src/glutpp/parent.cpp.s
+.PHONY : src/glutpp/parent.s
+
+# target to generate assembly for a file
+src/glutpp/parent.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/parent.cpp.s
+.PHONY : src/glutpp/parent.cpp.s
+
 src/glutpp/renderable.o: src/glutpp/renderable.cpp.o
 .PHONY : src/glutpp/renderable.o
 
@@ -1125,6 +1149,9 @@ help:
 	@echo "... src/glutpp/network/scene/create.o"
 	@echo "... src/glutpp/network/scene/create.i"
 	@echo "... src/glutpp/network/scene/create.s"
+	@echo "... src/glutpp/parent.o"
+	@echo "... src/glutpp/parent.i"
+	@echo "... src/glutpp/parent.s"
 	@echo "... src/glutpp/renderable.o"
 	@echo "... src/glutpp/renderable.i"
 	@echo "... src/glutpp/renderable.s"

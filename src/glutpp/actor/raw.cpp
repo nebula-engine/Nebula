@@ -84,26 +84,35 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	// velocity
 	velocity_ = math::xml_parse_vec3(element->FirstChildElement("velocity"), velocity_);
 	
-	
+	// filtering
+	parse_filtering(element);
 }
 void glutpp::actor::raw::parse_filtering(tinyxml2::XMLElement* element) {
 
 	tinyxml2::XMLElement* fd = element->FirstChildElement("fd");
 	tinyxml2::XMLElement* sim = NULL;
-
+	tinyxml2::XMLElement* qry = NULL;
+	
 	if(fd)
 	{
 		sim = fd->FirstChildElement("sim");
 		if(sim)
 		{
-			filter_data_.simulation_.word0 = glutpp::filter::type::STATIC;
-			filter_data_.simulation_.word1 = glutpp::filter::RIGID_AGAINST;
-			filter_data_.simulation_.word2 = glutpp::filter::type::STATIC;
-			filter_data_.simulation_.word3 = glutpp::filter::type::PROJECTILE;
+			filter_data_.simulation_.word0 = parse_filter(sim->FirstChildElement("w0"), 0);
+			filter_data_.simulation_.word1 = parse_filter(sim->FirstChildElement("w1"), 0);
+			filter_data_.simulation_.word2 = parse_filter(sim->FirstChildElement("w2"), 0);
+			filter_data_.simulation_.word3 = parse_filter(sim->FirstChildElement("w3"), 0);
+		}
+		
+		qry = fd->FirstChildElement("qry");
+		if(sim)
+		{
+			filter_data_.scene_query_.word0 = parse_filter(sim->FirstChildElement("w0"), 0);
+			filter_data_.scene_query_.word1 = parse_filter(sim->FirstChildElement("w1"), 0);
+			filter_data_.scene_query_.word2 = parse_filter(sim->FirstChildElement("w2"), 0);
+			filter_data_.scene_query_.word3 = parse_filter(sim->FirstChildElement("w3"), 0);
 		}
 	}
-
-	filter_data_.scene_query_.word3 = glutpp::filter::DRIVABLE_SURFACE;
 
 
 }
@@ -127,7 +136,11 @@ unsigned int glutpp::actor::raw::parse_filter(tinyxml2::XMLElement* element, uns
 	}
 	else if(strcmp(buf, "PROJECTILE") == 0)
 	{
-		return glutpp::filter::type::DYNAMIC;
+		return glutpp::filter::type::PROJECTILE;
+	}
+	else if(strcmp(buf, "PROJECTILE_AGAINST") == 0)
+	{
+		return glutpp::filter::PROJECTILE_AGAINST;
 	}
 	
 	

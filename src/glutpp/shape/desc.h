@@ -19,7 +19,7 @@ namespace glutpp
 {
 	namespace shape
 	{
-		struct raw: gal::network::serial<raw> {
+		struct raw: gal::network::serial<raw, gal::network::base> {
 			enum
 			{
 				max_filename_length = 20
@@ -42,7 +42,7 @@ namespace glutpp
 			math::transform		pose_;
 			math::vec3		s_;
 			
-			glutpp::material_desc	front_;
+			glutpp::material::material	front_;
 			
 			glutpp::program_name::e	program_;
 
@@ -50,7 +50,7 @@ namespace glutpp
 			char			normal_[max_filename_length];
 		};
 		
-		struct id: gal::network::serial<id>
+		struct id: gal::network::serial<id, gal::network::base>
 		{
 			int i_;
 		};

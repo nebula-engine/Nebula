@@ -7,13 +7,12 @@
 #include <glutpp/texture.h>
 
 
-glutpp::shape::shape::shape(
-		glutpp::actor::actor_s actor):
-	actor_(actor)
+glutpp::shape::shape::shape(glutpp::parent_s parent):
+	glutpp::parent(parent)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	assert(actor);
+	assert(parent);
 
 	//desc->reset();
 }
@@ -26,16 +25,15 @@ unsigned int glutpp::shape::shape::f() {
 void glutpp::shape::shape::f(unsigned int flag) {
 	raw_.flag_ = flag;
 }
-glutpp::actor::actor_s glutpp::shape::shape::get_actor() {
-	assert(!actor_.expired());
-	
-	return actor_.lock();
+
+math::mat44 glutpp::shape::shape::get_pose() {
+	return raw_.pose_;
 }
 void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	auto me = std::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
-	auto scene = get_actor()->get_scene();
+	//auto scene = get_parent()->get_scene();
 	
 	i_ = desc->get_id()->i_;
 	raw_ = *desc->get_raw();
@@ -64,9 +62,24 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	}
 	else
 	{
-		set(glutpp::shape::shape::flag::IMAGE);
+		set(glutpp::shape::flag::e::IMAGE);
 		
 		raw_.program_ = glutpp::program_name::IMAGE;
+	}
+
+
+	// shape
+	glutpp::shape::desc_s sd;
+	glutpp::shape::shape_s shape;
+	for(auto it = desc->get_shapes()->vec_.begin(); it != desc->get_shapes()->vec_.end(); ++it)
+	{
+		sd = std::get<0>(*it);
+	
+		shape.reset(new glutpp::shape::shape(me));
+		
+		shape->init(sd);
+		
+		shapes_.push_back(shape);
 	}
 
 	// lights
@@ -78,14 +91,16 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 
 		light.reset(new glutpp::light::light(me));
 		
-		light->init(scene, ld);
+		light->init(/*scene,*/ ld);
 		
 		lights_.push_back(light);
 	}
 	
 	// material
-	material_front_.load(raw_.front_);
+	material_front_.raw_ = raw_.front_.raw_;
 	
+	printf("diffuse = ");
+	material_front_.raw_.diffuse_.print();
 }
 void glutpp::shape::shape::release() {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -107,7 +122,7 @@ void glutpp::shape::shape::cleanup() {
 		
 		shape->cleanup();
 		
-		if(shape->any(SHOULD_DELETE))
+		if(shape->any(glutpp::shape::flag::e::SHOULD_RELEASE))
 		{
 			shape->release();
 			
@@ -126,7 +141,7 @@ void glutpp::shape::shape::cleanup() {
 
 		light->cleanup();
 
-		if(light->any(SHOULD_DELETE)) {
+		if(light->any(glutpp::shape::flag::e::SHOULD_RELEASE)) {
 			light->release();
 
 			l = lights_.erase(l);
@@ -136,25 +151,49 @@ void glutpp::shape::shape::cleanup() {
 	}
 
 }
-math::mat44 glutpp::shape::shape::get_pose() {
+void glutpp::shape::shape::step(double time) {
 
-	assert(!actor_.expired());
+	shapes_.foreach<glutpp::shape::shape>(std::bind(
+				&glutpp::shape::shape::step,
+				std::placeholders::_1,
+				time
+				));
 
-	math::mat44 m(raw_.pose_);
-
-	m = actor_.lock()->get_pose() * m;
-
-	return m;
+	lights_.foreach<glutpp::light::light>(std::bind(
+				&glutpp::light::light::step,
+				std::placeholders::_1,
+				time
+				));
+	
+	material_front_.step(time);
 }
-void glutpp::shape::shape::load_lights(int& i) {
+void glutpp::shape::shape::notify_foundation_change_pose() {
 
-	//printf("%s\n",__PRETTY_FUNCTION__);
+	glutpp::shape::shape_s shape;
+	glutpp::light::light_s light;
+
+	for(auto it = shapes_.end(); it != shapes_.end(); ++it)
+	{
+		shape = it->second;
+		shape->notify_foundation_change_pose();
+	}
+
+	for(auto it = lights_.end(); it != lights_.end(); ++it)
+	{
+		light = it->second;
+		light->notify_foundation_change_pose();
+	}
+}
+void glutpp::shape::shape::load_lights(int& i, math::mat44 space) {
+	GLUTPP_DEBUG_1_FUNCTION;
+
+	space = space * raw_.pose_;
 
 	for(auto it = lights_.begin(); it != lights_.end(); ++it)
 	{
 		if(i == glutpp::light::light_max) break;
 
-		it->second->load(i++);
+		it->second->load(i++, space);
 	}
 }
 void glutpp::shape::shape::init_buffer(
@@ -176,7 +215,7 @@ void glutpp::shape::shape::init_buffer(
 	context_[window.get()] = bufs;
 
 	// image
-	if(all(glutpp::shape::shape::flag::IMAGE))
+	if(all(glutpp::shape::flag::e::IMAGE))
 	{
 		bufs->texture_.image_.reset(new glutpp::texture);
 
@@ -227,7 +266,7 @@ void glutpp::shape::shape::init_buffer(
 			(void*)off_normal);
 	checkerror("glVertexAttribPointer normal");
 
-	if(all(glutpp::shape::shape::flag::IMAGE)) {
+	if(all(glutpp::shape::flag::e::IMAGE)) {
 		glVertexAttribPointer(
 				p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->o_,
 				2,
@@ -237,7 +276,7 @@ void glutpp::shape::shape::init_buffer(
 				(void*)off_texcoor);
 		checkerror("glVertexAttribPointer texcoor");
 	}
-	
+
 	size = mesh_.fh_.len_vertices_ * sizeof(glutpp::vertex);
 	glBufferData(
 			GL_ARRAY_BUFFER,
@@ -255,26 +294,24 @@ void glutpp::shape::shape::model_load(math::mat44 space) {
 
 	auto p = glutpp::__master.current_program();
 
-	//auto scene = get_scene();
-
-	math::mat44 model(raw_.pose_);
-	
 	math::vec3 s(raw_.s_);
 
 	math::mat44 scale;
 	scale.SetScale(s);
 
-	p->get_uniform(glutpp::uniform_name::e::MODEL)->load(space * model * scale);
+	p->get_uniform(glutpp::uniform_name::e::MODEL)->load(space * scale);
 }
 void glutpp::shape::shape::draw(std::shared_ptr<glutpp::window::window> window, math::mat44 space) {
 
+	space = space * raw_.pose_;
+
 	switch(raw_.type_)
 	{
-		case BOX:
-		case SPHERE:
+		case glutpp::shape::type::e::BOX:
+		case glutpp::shape::type::e::SPHERE:
 			draw_elements(window, space);
 			break;
-		case EMPTY:
+		case glutpp::shape::type::e::EMPTY:
 			break;
 	}
 
@@ -297,7 +334,7 @@ void glutpp::shape::shape::draw_elements(std::shared_ptr<glutpp::window::window>
 	p->get_attrib(glutpp::attrib_name::e::POSITION)->enable();
 	p->get_attrib(glutpp::attrib_name::e::NORMAL)->enable();
 
-	if(all(glutpp::shape::shape::flag::IMAGE))
+	if(all(glutpp::shape::flag::e::IMAGE))
 	{
 		p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->enable();
 	}
@@ -307,7 +344,7 @@ void glutpp::shape::shape::draw_elements(std::shared_ptr<glutpp::window::window>
 	material_front_.load();
 
 	// texture
-	if(all(glutpp::shape::shape::flag::IMAGE))
+	if(all(glutpp::shape::flag::e::IMAGE))
 	{
 		glActiveTexture(GL_TEXTURE0);
 		checkerror("glActiveTexture");
@@ -347,7 +384,7 @@ void glutpp::shape::shape::draw_elements(std::shared_ptr<glutpp::window::window>
 	p->get_attrib(glutpp::attrib_name::e::POSITION)->disable();
 	p->get_attrib(glutpp::attrib_name::e::NORMAL)->disable();
 
-	if(all(glutpp::shape::shape::flag::IMAGE))
+	if(all(glutpp::shape::flag::e::IMAGE))
 	{
 		p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->disable();
 	}

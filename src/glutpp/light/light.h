@@ -24,13 +24,13 @@ namespace glutpp
 				light(glutpp::shape::shape_s);
 				void				i(int);
 				void				init(
-						glutpp::scene::scene_s,
+						/*glutpp::scene::scene_s,*/
 						glutpp::light::desc_s);
 
 				virtual void			release();
 				virtual void			cleanup();
-
-				void				load(int);
+				void				step(double) {}
+				void				load(int, math::mat44);
 
 				void				load_shadow();
 				void				draw();
@@ -39,6 +39,7 @@ namespace glutpp
 				void				RenderLightPOV();
 
 
+				void				notify_foundation_change_pose();
 				math::mat44			get_pose();
 				math::vec4			get_pos();
 			private:
@@ -51,7 +52,7 @@ namespace glutpp
 
 				texture				texture_shadow_map_;
 
-				glutpp::scene::scene_w		scene_;
+				//glutpp::scene::scene_w		scene_;
 				glutpp::shape::shape_w		shape_;
 
 		};

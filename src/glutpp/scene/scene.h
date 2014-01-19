@@ -45,11 +45,15 @@ namespace glutpp
 
 		typedef std::map<char*, glutpp::actor::desc_s, less_str> actors_deferred_map;
 
-		class scene:
-			public std::enable_shared_from_this<scene>,
+		template<typename ACTOR> class scene:
+			public glutpp::parent,
 			public gal::flag<unsigned int>
 		{
 			public:
+				typedef glutpp::scene::scene<ACTOR>	SCENE;
+				typedef glutpp::renderable<SCENE>	RENDERABLE;
+				typedef std::weak_ptr<RENDERABLE>	RENDERABLE_W;
+				
 				enum
 				{
 					RAY_TRACE			= 1 << 0,
@@ -87,14 +91,16 @@ namespace glutpp
 
 				void				release();
 				virtual void			dumby() = 0;
+				
+				math::mat44			get_pose();
 			public:
 				int				i_;
 				raw				raw_;
 
-				glutpp::renderable_weak		renderable_;
+				RENDERABLE_W			renderable_;
 
-				gal::map<glutpp::actor::actor>		actors_;
-				actors_deferred_map			actors_deferred_;
+				gal::map<ACTOR>			actors_;
+				actors_deferred_map		actors_deferred_;
 		};
 	}
 }

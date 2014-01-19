@@ -193,15 +193,7 @@ void	glutpp::window::window::resize() {
 
 	renderable_->resize(raw_.w_, raw_.h_);
 }
-int	glutpp::window::window::set_scene(std::shared_ptr<scene::scene> scene) {
 
-	printf("%s\n", __PRETTY_FUNCTION__);
-
-	assert(scene);
-	assert(renderable_);
-
-	renderable_->scene_ = scene;
-}
 int	glutpp::window::window::set_layout(std::shared_ptr<glutpp::gui::layout> layout) {
 
 	printf("%s\n", __PRETTY_FUNCTION__);

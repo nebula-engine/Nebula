@@ -19,7 +19,7 @@ namespace glutpp
 	{
 		public:
 			camera();
-			void		init(glutpp::renderable_shared);
+			//void		init(glutpp::renderable_shared);
 			math::mat44	proj();
 			math::mat44	view();
 
@@ -31,7 +31,7 @@ namespace glutpp
 
 
 	
-			std::weak_ptr<renderable>		renderable_;
+			//std::weak_ptr<renderable>		renderable_;
 				
 			float					fovy_;
 			float					zn_;

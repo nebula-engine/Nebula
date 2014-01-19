@@ -9,12 +9,12 @@ namespace glutpp
 {
 	namespace scene
 	{
-		struct raw: public gal::network::serial<raw>
+		struct raw: public gal::network::serial<raw, gal::network::base>
 		{
 			public:
 				raw();
 				void			load(tinyxml2::XMLElement*);
-				void			load(glutpp::scene::scene_s);
+				template<typename ACTOR> void load(std::shared_ptr<scene<ACTOR>> scene);
 
 				unsigned int		flag_;
 				math::vec3		gravity_;

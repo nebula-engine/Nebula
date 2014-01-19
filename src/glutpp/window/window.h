@@ -6,6 +6,7 @@
 #include <map>
 
 #include <glutpp/config.h>
+#include <glutpp/renderable.h>
 #include <glutpp/window/desc.h>
 #include <glutpp/texture.h>
 #include <glutpp/camera.h>
@@ -28,10 +29,13 @@ namespace glutpp
 {
 	namespace window
 	{
-		class window:
+		template<typename SCENE> class window:
 			public gal::flag<unsigned int>,
 			public std::enable_shared_from_this<window>
 		{
+			typedef glutpp::renderable<SCENE> RENDERABLE;
+			typedef glutpp::gui::layout<RENDERABLE> LAYOUT;
+			
 			protected:
 				int          windowID;
 
@@ -51,7 +55,15 @@ namespace glutpp
 
 
 
-				int			set_scene(std::shared_ptr<glutpp::scene::scene>);
+				template<typename SCENE> void set_scene(std::shared_ptr<SCENE> scene) {
+
+					GLUTPP_DEBUG_0_FUNCTION;
+
+					assert(scene);
+					assert(renderable_);
+
+					renderable_->scene_ = scene;
+				}
 				int			set_layout(std::shared_ptr<glutpp::gui::layout>);
 
 

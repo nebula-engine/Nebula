@@ -6,7 +6,7 @@
 #define GLUTPP_SHADER_DIR "@shader_dir@"
 
 #define GLUTPP_DEBUG_0_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
-#define GLUTPP_DEBUG_1_FUNCTION //printf("%s\n", __PRETTY_FUNCTION__)
+#define GLUTPP_DEBUG_1_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
 
 #include <vector>
 #include <memory>
@@ -123,12 +123,10 @@ namespace glutpp {
 		class desc;
 		typedef std::shared_ptr<desc>		desc_s;
 
-		class window;
-		typedef std::shared_ptr<window>		window_s;
-		typedef std::weak_ptr<window>		window_w;
-		typedef gal::map<window>		window_m;
+		template<typename> class window;
 	}
 
+	template<typename> class renderable;
 
 	namespace scene {
 		enum flag {
@@ -147,9 +145,7 @@ namespace glutpp {
 		class desc;
 		typedef std::shared_ptr<desc>	desc_s;
 
-		class scene;
-		typedef std::shared_ptr<scene>	scene_s;
-		typedef std::weak_ptr<scene>	scene_w;
+		template<typename> class scene;
 	}
 	namespace actor {
 		enum type {
@@ -183,9 +179,11 @@ namespace glutpp {
 				REMOTE = 0x2,
 			};
 		};
-		enum flag {
-			SHOULD_RELEASE	= 1 << 0,
-			SHOULD_UPDATE	= 1 << 1,
+		struct flag {
+			enum e {
+				SHOULD_RELEASE	= 1 << 0,
+				SHOULD_UPDATE	= 1 << 1,
+			};
 		};
 
 		struct id;
@@ -204,21 +202,24 @@ namespace glutpp {
 		class desc;
 		typedef std::shared_ptr<desc>		desc_s;
 
-		class actor;
-		typedef std::shared_ptr<actor>		actor_s;
-		typedef std::weak_ptr<actor>		actor_w;
-		typedef gal::map<actor>			actor_m;
+		template<typename> class actor;
 	}
 
 	namespace shape
 	{
-
-		enum type
-		{
-			NONE = 0,
-			BOX,
-			SPHERE,
-			EMPTY
+		struct type {
+			enum e {
+				NONE = 0,
+				BOX,
+				SPHERE,
+				EMPTY
+			};
+		};
+		struct flag {
+			enum e {
+				SHOULD_RELEASE = 1 << 0,
+				IMAGE          = 1 << 1,
+			};
 		};
 
 		struct id;
@@ -230,6 +231,7 @@ namespace glutpp {
 		class desc;
 		typedef std::shared_ptr<desc>		desc_s;
 
+
 		class shape;
 		typedef std::shared_ptr<shape>		shape_s;
 		typedef std::weak_ptr<shape>		shape_w;
@@ -238,21 +240,21 @@ namespace glutpp {
 	namespace light
 	{
 		struct type {
-	        	enum e {
-		                POINT,
-		                DIRECTIONAL,
-		                SPOT,
+			enum e {
+				POINT,
+				DIRECTIONAL,
+				SPOT,
 			};
-	        };
-	        struct flag
-	        {
-	        	enum e {
-	                	SHOULD_DELETE              = 1 << 0,
-	                	SHOULD_LOAD_POS            = 1 << 1,
-	                	SHOULD_LOAD_SPOT_DIRECTION = 1 << 2,
-	                	SHOULD_LOAD_OTHER          = 1 << 3,
-	                };
-	        };
+		};
+		struct flag
+		{
+			enum e {
+				SHOULD_DELETE              = 1 << 0,
+				SHOULD_LOAD_POS            = 1 << 1,
+				SHOULD_LOAD_SPOT_DIRECTION = 1 << 2,
+				SHOULD_LOAD_OTHER          = 1 << 3,
+			};
+		};
 		enum
 		{
 			light_max = 20
@@ -260,7 +262,7 @@ namespace glutpp {
 
 		class id;
 		typedef std::shared_ptr<id>		id_s;
-		
+
 		struct raw;
 		typedef std::shared_ptr<raw>		raw_s;
 
@@ -278,9 +280,7 @@ namespace glutpp {
 	}
 	namespace gui
 	{
-		class layout;
-		typedef std::shared_ptr<layout>		layout_s;
-		typedef gal::map<layout>		layout_m;
+		template<typename> class layout;
 
 		namespace object
 		{
@@ -295,11 +295,11 @@ namespace glutpp {
 	typedef std::shared_ptr<camera> camera_s;
 
 
-	class renderable;
-	typedef std::shared_ptr<renderable>	renderable_shared;
-	typedef std::weak_ptr<renderable>	renderable_weak;
 
 
+	class parent;
+	typedef std::shared_ptr<parent>		parent_s;
+	typedef std::weak_ptr<parent>		parent_w;
 
 
 

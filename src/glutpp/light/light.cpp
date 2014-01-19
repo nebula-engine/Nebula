@@ -19,13 +19,13 @@ unsigned int glutpp::light::light::f() {
 void glutpp::light::light::f(unsigned int flag) {
 	raw_.flag_ = flag;
 }
-void	glutpp::light::light::init(glutpp::scene::scene_s scene, glutpp::light::desc_s desc) {
+void glutpp::light::light::init(/*glutpp::scene::scene_s scene,*/ glutpp::light::desc_s desc) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
-	assert(scene);
+	//assert(scene);
 	assert(desc);
 	
-	scene_ = scene;
+	//scene_ = scene;
 	
 	raw_ = *(desc->get_raw());
 	
@@ -42,7 +42,7 @@ void	glutpp::light::light::init(glutpp::scene::scene_s scene, glutpp::light::des
 	set(
 		glutpp::light::flag::e::SHOULD_LOAD_POS |
 		glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION |
-		glutpp::light::flag::e::SHOULD_LOAD_OTEHR
+		glutpp::light::flag::e::SHOULD_LOAD_OTHER
 	);
 }
 void glutpp::light::light::release() {
@@ -50,6 +50,12 @@ void glutpp::light::light::release() {
 }
 void glutpp::light::light::cleanup() {
 	GLUTPP_DEBUG_1_FUNCTION;
+}
+void glutpp::light::light::notify_foundation_change_pose() {
+	set(
+		glutpp::light::flag::e::SHOULD_LOAD_POS |
+		glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION
+	);
 }
 void glutpp::light::light::dim() {
 	GLUTPP_DEBUG_1_FUNCTION;
@@ -73,58 +79,45 @@ math::mat44 glutpp::light::light::get_pose() {
 	
 	assert(!shape_.expired());
 	
-	math::mat44 m = shape_.lock()->get_pose();
+	math::mat44 m = shape_.lock()->get_pose_global();
 	
 	return m;
 }
-math::vec4 glutpp::light::light::get_pos() {
+void glutpp::light::light::load(int o, math::mat44 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
+	
+	auto p = glutpp::__master.current_program();
+
+	
 	
 	math::vec4 pos = raw_.pos_;
-	
-	math::mat44 m = get_pose();
-	
-	//m.print();
-	
-	//pos.print();
-	
-	pos = m.GetTranslatedVector3D(pos);
-	
-	//pos.print();
-	
+	pos = space.GetTranslatedVector3D(pos);
 	pos.w = raw_.pos_.w;
-	
-	return pos;
-}
-void		glutpp::light::light::load(int o) {
-	GLUTPP_DEBUG_1_FUNCTION;
 
-	auto p = glutpp::__master.current_program();
-	
-	math::mat44 m = get_pose();
-	math::vec4 pos = get_pos();
-	
+
+
+
 	math::vec3 spot_direction = raw_.spot_direction_;
 	
 	if(raw_.spot_cutoff_ < (M_PI/2.0))
 	{
 		//spot_direction.print();
 	
-		m.RotateVector3D(spot_direction);
+		space.RotateVector3D(spot_direction);
 	
 		//spot_direction.print();
 	}
 	//pos.print();
 	
 	
-	if(any(glutpp::light::flag::e::SHOULD_LOAD_POS))
+	//if(any(glutpp::light::flag::e::SHOULD_LOAD_POS))
 	{
 		p->get_uniform(glutpp::uniform_name::e::LIGHT_POSITION)->load_4fv(
 				o, pos);
 		
 		unset(glutpp::light::flag::e::SHOULD_LOAD_POS);
 	}	
-	if(any(glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION))
+	//if(any(glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION))
 	{
 		p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION)->load_3fv(
 				o, spot_direction);
@@ -132,7 +125,7 @@ void		glutpp::light::light::load(int o) {
 		unset(glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION);
 	}
 	
-	if(any(glutpp::light::flag::e::SHOULD_LOAD_OTHER))
+	//if(any(glutpp::light::flag::e::SHOULD_LOAD_OTHER))
 	{
 		p->get_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT)->load_4fv(
 				o, raw_.ambient_);

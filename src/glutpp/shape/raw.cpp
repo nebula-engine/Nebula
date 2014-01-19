@@ -32,7 +32,7 @@ void	glutpp::shape::raw::load(tinyxml2::XMLElement* element)
 	program_ = glutpp::program_name::LIGHT;
 
 	// material
-	front_.load(element->FirstChildElement("front"));	
+	front_.raw_.load(element->FirstChildElement("front"));	
 	
 	// image
 	tinyxml2::XMLElement* element_image = element->FirstChildElement("image");

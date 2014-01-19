@@ -33,7 +33,20 @@ void	glutpp::light::raw::load(tinyxml2::XMLElement* element) {
 			element->FirstChildElement("specular"),
 			specular_);
 	
-	atten_linear_ = math::xml_parse_float(element->FirstChildElement("atten_linear"));
+	
+	
+	spot_direction_ = math::xml_parse_vec3(
+		element->FirstChildElement("spot_direction"),
+		math::vec3(0.0, 0.0, 0.0));
+	
+	spot_cutoff_           = math::xml_parse_float(element->FirstChildElement("spot_cutoff"), M_PI);
+	spot_exponent_         = math::xml_parse_float(element->FirstChildElement("spot_exponent"), 0.0);
+	spot_light_cos_cutoff_ = math::xml_parse_float(element->FirstChildElement("spot_cutoff"), M_PI);
+	
+	
+	atten_const_  = math::xml_parse_float(element->FirstChildElement("atten_const"), 1.0);
+	atten_linear_ = math::xml_parse_float(element->FirstChildElement("atten_linear"), 0.0);
+	atten_quad_   = math::xml_parse_float(element->FirstChildElement("atten_quad"), 0.0);
 	
 	print();
 }

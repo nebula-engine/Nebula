@@ -15,6 +15,7 @@
 
 #include <glutpp/config.h>
 #include <glutpp/shape/desc.h>
+#include <glutpp/parent.h>
 #include <glutpp/material.h>
 #include <glutpp/mesh.h>
 
@@ -26,42 +27,39 @@ namespace glutpp
 		{
 			GLuint		vbo_;
 			GLuint		indices_;
-			
+
 			struct
 			{
 				std::shared_ptr<glutpp::texture>	image_;
 			} texture_;
 		};
-		class shape: public std::enable_shared_from_this<shape>, public gal::flag<unsigned int>
+		class shape:
+			public glutpp::parent,
+			public gal::flag<unsigned int>
 		{
 			public:
-				enum flag
-				{
-					SHOULD_DELETE = 1 << 0,
-					IMAGE = 1 << 1
-				};
-
 				typedef std::shared_ptr<glutpp::shape::buffers>		buffer_t;
 				typedef std::map<glutpp::window::window*,buffer_t>	map_t;
-				
-				
-				
-				shape(glutpp::actor::actor_s);
+
+
+
+				shape(glutpp::parent_s);
 				virtual ~shape();
 				void				i(int);
 				int				i();
-				
+
 				void				init(glutpp::shape::desc_s);
 				void				release();
 				void				cleanup();
+				void				step(double);
 				
-
-				glutpp::actor::actor_s	get_actor();
-
 				math::mat44			get_pose();
-				
+
+
+				void				notify_foundation_change_pose();
+
 			private:
-				void			init_buffer(
+				void				init_buffer(
 						glutpp::window::window_s,
 						std::shared_ptr<glutpp::glsl::program>);
 			public:
@@ -73,27 +71,28 @@ namespace glutpp
 						glutpp::window::window_s,
 						math::mat44);
 
-				void				load_lights(int&);
+				void				load_lights(int&, math::mat44);
 
 				void				model_load(math::mat44);
 
-				glutpp::shape::desc_s	desc_generate();
+				//glutpp::shape::desc_s	desc_generate();
 			public:
 				// draw data
-				material			material_front_;
+				glutpp::material::material	material_front_;
 				mesh				mesh_;
 				map_t				context_;
 
-				
+
 				glutpp::light::light_m		lights_;
 				glutpp::shape::shape_m		shapes_;
-				
-				
-				glutpp::actor::actor_w		actor_;
+
+
+				//glutpp::shape::parent_w		parent_;
+
 			public:
 				int				i_;
 				glutpp::shape::raw		raw_;
-				
+
 			private:
 				unsigned int			f();
 				void				f(unsigned int);

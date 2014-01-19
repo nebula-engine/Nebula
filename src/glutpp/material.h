@@ -6,33 +6,33 @@
 #include <math/raw/raw.h>
 #include <math/color.h>
 
-namespace glutpp
-{
-	struct material_desc
-	{
-		void			reset();
-		void			load(tinyxml2::XMLElement*);
-		
-		math::raw::color	ambient_;
-		math::raw::color	diffuse_;
-		math::raw::color	specular_;
-		math::raw::color	emission_;
-		float			shininess_;
-	};
-	class material
-	{
-		public:
-			material();
-			void		init();
-			void		load();
-			void		load(glutpp::material_desc);
-			
+namespace glutpp {
+	namespace material {
+
+
+		struct raw
+		{
+			raw();
+			void			load(tinyxml2::XMLElement*);
+
 			math::color		ambient_;
 			math::color		diffuse_;
 			math::color		specular_;
 			math::color		emission_;
 			float			shininess_;
-	};
+		};
+
+		class material
+		{
+			public:
+				material();
+				void		init();
+				void		load();
+				void		step(double);
+
+				raw		raw_;
+		};
+	}
 }
 
 #endif

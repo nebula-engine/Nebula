@@ -23,14 +23,7 @@ glutpp::window::window_s glutpp::gui::layout::get_window()
 
 	return renderable_.lock()->get_window();
 }
-void	glutpp::gui::layout::init(std::shared_ptr<glutpp::renderable> renderable)
-{
-	//jess::clog << NEB_FUNCSIG << std::endl;
 
-	assert(renderable);
-
-	renderable_ = renderable;
-}
 void	glutpp::gui::layout::load_xml(tinyxml2::XMLElement* element)
 {
 	assert(element);

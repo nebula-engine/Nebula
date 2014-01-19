@@ -39,38 +39,6 @@ void glutpp::actor::desc::load(tinyxml2::XMLElement* element) {
 
 }
 void glutpp::actor::desc::load(glutpp::actor::actor_s actor) {
-	GLUTPP_DEBUG_0_FUNCTION;
-
-	get_id()->i_ = actor->i_;
-
-	*get_raw() = actor->raw_;
-
-	// shape
-	glutpp::shape::desc_s sd;
-	for(auto it = actor->shapes_.begin(); it != actor->shapes_.end(); ++it)
-	{
-		auto shape = it->second;
-		
-		sd.reset(new glutpp::shape::desc);
-		
-		sd->load(shape);
-		
-		get_shapes()->vec_.push_back(std::make_tuple(sd));
-	}
-
-	// actor
-	glutpp::actor::desc_s ad;
-	for(auto it = actor->actors_.begin(); it != actor->actors_.end(); ++it)
-	{
-		auto a = it->second;
-		
-		ad.reset(new glutpp::actor::desc);
-		
-		ad->load(a);
-		
-		get_actors()->vec_.push_back(std::make_tuple(ad));
-	}
-
 }
 glutpp::actor::desc& glutpp::actor::desc::operator=(const glutpp::actor::desc& ad) {
 	*get_id() = *(ad.get_id());

@@ -29,6 +29,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/charles/Programming/C++/glutpp/src/glutpp/network/actor/create.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/network/actor/create.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/network/actor/update.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/network/actor/update.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/network/scene/create.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/network/scene/create.cpp.o"
+  "/home/charles/Programming/C++/glutpp/src/glutpp/parent.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/parent.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/renderable.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/scene/addr.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/scene/addr.cpp.o"
   "/home/charles/Programming/C++/glutpp/src/glutpp/scene/desc.cpp" "/home/charles/Programming/C++/glutpp/CMakeFiles/glutpp.dir/src/glutpp/scene/desc.cpp.o"

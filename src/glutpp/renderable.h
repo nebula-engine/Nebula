@@ -12,11 +12,15 @@
 
 namespace glutpp
 {
-	class renderable:
+	template<typename SCENE> class renderable:
 		public gal::flag<unsigned int>,
-		public std::enable_shared_from_this<glutpp::renderable>
+		public std::enable_shared_from_this<renderable<SCENE>>
 	{
 		public:
+			typedef glutpp::renderable<SCENE>	RENDERABLE;
+			typedef glutpp::gui::layout<RENDERABLE> LAYOUT;
+			typedef std::shared_ptr<LAYOUT>		LAYOUT_S;
+
 			renderable(glutpp::window::window_s);
 			renderable&			operator=(renderable const &);
 			void				init(glutpp::window::window_s);
@@ -34,8 +38,8 @@ namespace glutpp
 		
 			glutpp::window::window_w	window_;
 		public:
-			glutpp::scene::scene_s		scene_;
-			glutpp::gui::layout_s		layout_;
+			std::shared_ptr<SCENE>		scene_;
+			LAYOUT_S			layout_;
 			glutpp::camera_s		camera_;
 	};
 }

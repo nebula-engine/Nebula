@@ -4,6 +4,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/glutpp.dir/src/glutpp/camera_control.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/master.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/renderable.cpp.o"
+  "CMakeFiles/glutpp.dir/src/glutpp/parent.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/mesh.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/texture.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/free.cpp.o"

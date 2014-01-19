@@ -9,18 +9,14 @@
 
 
 
-void glutpp::material_desc::reset() {
-	
-	ambient_.from_math(math::color(0.1,0.1,0.1,1.0));
-	diffuse_ .from_math(math::cyan);
-	specular_.from_math(math::white);
-	emission_.from_math(math::black);
+glutpp::material::raw::raw() {
+	ambient_ = math::black;
+	diffuse_ = math::cyan;
+	specular_ = math::white;
+	emission_ = math::black;
 	shininess_ = 500;
-
 }
-void	glutpp::material_desc::load(tinyxml2::XMLElement* element) {
-	
-	reset();
+void	glutpp::material::raw::load(tinyxml2::XMLElement* element) {
 	
 	if(element == NULL)
 	{
@@ -28,46 +24,40 @@ void	glutpp::material_desc::load(tinyxml2::XMLElement* element) {
 		return;
 	}
 	
-	ambient_.from_math(math::xml_parse_color(element->FirstChildElement("ambient"), ambient_.to_math()));
-	diffuse_.from_math(math::xml_parse_color(element->FirstChildElement("diffuse"), diffuse_.to_math()));
-	specular_.from_math(math::xml_parse_color(element->FirstChildElement("specular"), specular_.to_math()));
-	emission_.from_math(math::xml_parse_color(element->FirstChildElement("emission"), emission_.to_math()));
+	ambient_  = math::xml_parse_color(element->FirstChildElement("ambient"), ambient_);
+	diffuse_  = math::xml_parse_color(element->FirstChildElement("diffuse"), diffuse_);
+	specular_ = math::xml_parse_color(element->FirstChildElement("specular"), specular_);
+	emission_ = math::xml_parse_color(element->FirstChildElement("emission"), emission_);
 	
+	shininess_ = math::xml_parse_float(element->FirstChildElement("shininess"), shininess_);
+
+	printf("diffuse = ");	
+	diffuse_.print();
 }
 
 
 
 
-glutpp::material::material():
-	ambient_(0.1,0.1,0.1,1.0),
-	diffuse_(math::cyan),
-	specular_(math::white),
-	emission_(math::black),
-	shininess_(500)
+glutpp::material::material::material()
 {}
-void	glutpp::material::load(glutpp::material_desc desc) {
-	
-	ambient_ = desc.ambient_.to_math();
-	diffuse_ = desc.diffuse_.to_math();
-	specular_ = desc.specular_.to_math();
-	emission_ = desc.emission_.to_math();
-	
-}
-void	glutpp::material::init()
+void	glutpp::material::material::init()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
 
-void	glutpp::material::load()
+void	glutpp::material::material::load()
 {
 	auto p = glutpp::__master.current_program();
 
-	p->get_uniform(glutpp::uniform_name::e::FRONT_AMBIENT)->load_4fv(ambient_);
-	p->get_uniform(glutpp::uniform_name::e::FRONT_DIFFUSE)->load_4fv(diffuse_);
-	p->get_uniform(glutpp::uniform_name::e::FRONT_SPECULAR)->load_4fv(specular_);
-	p->get_uniform(glutpp::uniform_name::e::FRONT_EMISSION)->load_4fv(emission_);
-	p->get_uniform(glutpp::uniform_name::e::FRONT_SHININESS)->load(shininess_);
+	p->get_uniform(glutpp::uniform_name::e::FRONT_AMBIENT)->load_4fv(raw_.ambient_);
+	p->get_uniform(glutpp::uniform_name::e::FRONT_DIFFUSE)->load_4fv(raw_.diffuse_);
+	p->get_uniform(glutpp::uniform_name::e::FRONT_SPECULAR)->load_4fv(raw_.specular_);
+	p->get_uniform(glutpp::uniform_name::e::FRONT_EMISSION)->load_4fv(raw_.emission_);
+	p->get_uniform(glutpp::uniform_name::e::FRONT_SHININESS)->load(raw_.shininess_);
 }
-
+void glutpp::material::material::step(double time) {
+		
+	raw_.diffuse_.step(time);
+}
 
 

@@ -21,19 +21,55 @@ namespace glutpp {
 		struct desc: gal::network::serial_ext<vec_shape_desc, vec_actor_desc, raw, id>
 		{
 			desc();
-			void			load(glutpp::actor::actor_s);
+			template<typename ACTOR> void load(std::shared_ptr<ACTOR> actor) {
+				GLUTPP_DEBUG_0_FUNCTION;
+
+				get_id()->i_ = actor->i_;
+
+				*get_raw() = actor->raw_;
+
+				// shape
+				glutpp::shape::desc_s sd;
+				for(auto it = actor->shapes_.begin(); it != actor->shapes_.end(); ++it)
+				{
+					auto shape = it->second;
+
+					sd.reset(new glutpp::shape::desc);
+
+					sd->load(shape);
+
+					get_shapes()->vec_.push_back(std::make_tuple(sd));
+				}
+
+				// actor
+				glutpp::actor::desc_s ad;
+				for(auto it = actor->actors_.begin(); it != actor->actors_.end(); ++it)
+				{
+					auto a = it->second;
+
+					ad.reset(new glutpp::actor::desc);
+
+					ad->load(a);
+
+					get_actors()->vec_.push_back(std::make_tuple(ad));
+				}
+
+
+
+
+			}
 			void			load(tinyxml2::XMLElement*);
 			void			add_shape(glutpp::shape::desc);
-			
+
 			desc&			operator=(desc const &);
-			
-			
+
+
 			id_s			get_id() const;
 			raw_s			get_raw() const;
 			vec_actor_desc_s	get_actors() const;
 			vec_shape_desc_s	get_shapes() const;
-			
-						
+
+
 		};
 	}
 }
