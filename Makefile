@@ -378,6 +378,54 @@ src/neb/actor/free.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/free.cpp.s
 .PHONY : src/neb/actor/free.cpp.s
 
+src/neb/actor/raw.o: src/neb/actor/raw.cpp.o
+.PHONY : src/neb/actor/raw.o
+
+# target to build an object file
+src/neb/actor/raw.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/raw.cpp.o
+.PHONY : src/neb/actor/raw.cpp.o
+
+src/neb/actor/raw.i: src/neb/actor/raw.cpp.i
+.PHONY : src/neb/actor/raw.i
+
+# target to preprocess a source file
+src/neb/actor/raw.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/raw.cpp.i
+.PHONY : src/neb/actor/raw.cpp.i
+
+src/neb/actor/raw.s: src/neb/actor/raw.cpp.s
+.PHONY : src/neb/actor/raw.s
+
+# target to generate assembly for a file
+src/neb/actor/raw.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/raw.cpp.s
+.PHONY : src/neb/actor/raw.cpp.s
+
+src/neb/actor/raw_factory.o: src/neb/actor/raw_factory.cpp.o
+.PHONY : src/neb/actor/raw_factory.o
+
+# target to build an object file
+src/neb/actor/raw_factory.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/raw_factory.cpp.o
+.PHONY : src/neb/actor/raw_factory.cpp.o
+
+src/neb/actor/raw_factory.i: src/neb/actor/raw_factory.cpp.i
+.PHONY : src/neb/actor/raw_factory.i
+
+# target to preprocess a source file
+src/neb/actor/raw_factory.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/raw_factory.cpp.i
+.PHONY : src/neb/actor/raw_factory.cpp.i
+
+src/neb/actor/raw_factory.s: src/neb/actor/raw_factory.cpp.s
+.PHONY : src/neb/actor/raw_factory.s
+
+# target to generate assembly for a file
+src/neb/actor/raw_factory.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/raw_factory.cpp.s
+.PHONY : src/neb/actor/raw_factory.cpp.s
+
 src/neb/actor/rigid_body/rigid_body.o: src/neb/actor/rigid_body/rigid_body.cpp.o
 .PHONY : src/neb/actor/rigid_body/rigid_body.o
 
@@ -827,6 +875,12 @@ help:
 	@echo "... src/neb/actor/free.o"
 	@echo "... src/neb/actor/free.i"
 	@echo "... src/neb/actor/free.s"
+	@echo "... src/neb/actor/raw.o"
+	@echo "... src/neb/actor/raw.i"
+	@echo "... src/neb/actor/raw.s"
+	@echo "... src/neb/actor/raw_factory.o"
+	@echo "... src/neb/actor/raw_factory.i"
+	@echo "... src/neb/actor/raw_factory.s"
 	@echo "... src/neb/actor/rigid_body/rigid_body.o"
 	@echo "... src/neb/actor/rigid_body/rigid_body.i"
 	@echo "... src/neb/actor/rigid_body/rigid_body.s"

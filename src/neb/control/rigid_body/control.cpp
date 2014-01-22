@@ -275,7 +275,7 @@ void neb::control::rigid_body::control::step_local(double time) {
 	pid_.coeff_d_ = c;
 
 
-	math::quat q = actor->raw_.pose_.q;
+	math::quat q = actor->get_raw()->pose_.q;
 
 	math::quat rot = q * raw_.q_target_.getConjugate();
 	if(rot.magnitude() > 0)

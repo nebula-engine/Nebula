@@ -26,16 +26,16 @@ void	neb::actor::Rigid_Actor::setupFiltering()
 	physx::PxRigidActor* actor = (physx::PxRigidActor*)px_actor_;
 
 	physx::PxFilterData coll_data;
-	coll_data.word0 = raw_.filter_data_.simulation_.word0;
-	coll_data.word1 = raw_.filter_data_.simulation_.word1;
-	coll_data.word2 = raw_.filter_data_.simulation_.word2;
-	coll_data.word3 = raw_.filter_data_.simulation_.word3;
+	coll_data.word0 = raw_->filter_data_.simulation_.word0;
+	coll_data.word1 = raw_->filter_data_.simulation_.word1;
+	coll_data.word2 = raw_->filter_data_.simulation_.word2;
+	coll_data.word3 = raw_->filter_data_.simulation_.word3;
 
 	physx::PxFilterData sq_data;
-	sq_data.word0 = raw_.filter_data_.scene_query_.word0;
-	sq_data.word1 = raw_.filter_data_.scene_query_.word1;
-	sq_data.word2 = raw_.filter_data_.scene_query_.word2;
-	sq_data.word3 = raw_.filter_data_.scene_query_.word3;
+	sq_data.word0 = raw_->filter_data_.scene_query_.word0;
+	sq_data.word1 = raw_->filter_data_.scene_query_.word1;
+	sq_data.word2 = raw_->filter_data_.scene_query_.word2;
+	sq_data.word3 = raw_->filter_data_.scene_query_.word3;
 
 
 	const physx::PxU32 numShapes = actor->getNbShapes();

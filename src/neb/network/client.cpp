@@ -128,7 +128,7 @@ void neb::network::client::process(gal::network::message::shared_t msg) {
 				auto a = app->get_actor(addr);
 				if(a)
 				{
-					a->raw_ = *raw;
+					a->get_raw()->operator=(*raw);
 				}
 				else
 				{

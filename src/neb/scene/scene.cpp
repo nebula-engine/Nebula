@@ -135,25 +135,25 @@ neb::actor::Base_s neb::scene::scene::create_actor(glutpp::actor::desc_s desc) {
 
 	switch(desc->get_raw()->type_)
 	{
-		case glutpp::actor::RIGID_DYNAMIC:
+		case glutpp::actor::type::e::RIGID_DYNAMIC:
 			actor.reset(new neb::actor::Rigid_Dynamic(me));
 			// = Create_Rigid_Dynamic(ad);
 			break;
-		case glutpp::actor::RIGID_STATIC:
+		case glutpp::actor::type::e::RIGID_STATIC:
 			actor.reset(new neb::actor::Rigid_Static(me));
 			// = Create_Rigid_Static(ad);
 			break;
-		case glutpp::actor::PLANE:
+		case glutpp::actor::type::e::PLANE:
 			//actor = Create_Rigid_Static_Plane(ad);
 			printf("not implemented\n");
 			abort();
 			break;
-		case glutpp::actor::CONTROLLER:
+		case glutpp::actor::type::e::CONTROLLER:
 			printf("not implemented\n");
 			abort();
 			//actor = Create_Controller(ad);
 			break;
-		case glutpp::actor::EMPTY:
+		case glutpp::actor::type::e::EMPTY:
 			actor.reset(new neb::actor::empty(me));
 			break;
 		default:
@@ -483,30 +483,31 @@ void neb::scene::scene::step_local(double time) {
 		void* ud = active_transforms[i].userData;
 		assert(ud);
 		
-		
+
 		neb::actor::Actor* actor = dynamic_cast<neb::actor::Actor*>((glutpp::actor::actor*)ud);
-		assert(actor);
-		
-		pose = active_transforms[i].actor2World;
-		actor->set_pose(pose);
-		
-		if(pxrigidbody != NULL)
+		if(actor != NULL)
 		{
-			neb::actor::rigid_body::rigid_body* rigidbody =
-				dynamic_cast<neb::actor::rigid_body::rigid_body*>(actor);
-			
-			assert(rigidbody != NULL);
-			
-			math::vec3 v(pxrigidbody->getLinearVelocity());
-			
-			rigidbody->raw_.velocity_ = v;
-			
-			//v.print();
+			pose = active_transforms[i].actor2World;
+			actor->set_pose(pose);
+
+			if(pxrigidbody != NULL)
+			{
+				neb::actor::rigid_body::rigid_body* rigidbody =
+					dynamic_cast<neb::actor::rigid_body::rigid_body*>(actor);
+
+				assert(rigidbody != NULL);
+
+				math::vec3 v(pxrigidbody->getLinearVelocity());
+
+				rigidbody->get_raw()->velocity_ = v;
+
+				//v.print();
+			}
+
+			actor->set(glutpp::actor::flag::SHOULD_UPDATE);
 		}
-		
-		actor->set(glutpp::actor::flag::SHOULD_UPDATE);
 	}
-	
+
 	// vehicle
 	//physx::PxVec3 g(0,-0.25,0);
 	//vehicle_manager_.vehicle_suspension_raycasts(px_scene_);
@@ -565,25 +566,25 @@ void neb::scene::scene::fire(neb::actor::Base_s actor) {
 void neb::scene::scene::fire_local(neb::actor::Base_s actor) {
 
 	glutpp::actor::desc_s desc = actor->get_projectile();
-	
+
 	//auto me = std::dynamic_pointer_cast<neb::actor::Actor>(shared_from_this());
-	
+
 	auto a = create_actor_local(desc);
-	
+
 	neb::timer::actor_s t(new neb::timer::actor(a, neb::timer::actor::type::RELEASE, last_ + 5.0));
-	
+
 	timer_set_.set_.insert(t);
-	
+
 }
 void neb::scene::scene::fire_remote(neb::actor::Base_s actor) {
-	
+
 	gal::network::message_s msg(new gal::network::message);
 	glutpp::network::actor::event actor_event;
-	
+
 	actor_event.get_addr()->load_this(actor);
-	
+
 	actor_event.get_event()->type_ = glutpp::actor::type_event::FIRE;
-	
+
 	msg->write(glutpp::network::type::ACTOR_EVENT);
 	actor_event.write(msg);
 

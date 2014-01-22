@@ -21,7 +21,7 @@ namespace neb
 {
 	namespace actor
 	{
-		class Base: public glutpp::actor::actor<neb::actor::raw>
+		class Base: public glutpp::actor::actor
 		{
 			public:
 				Base(glutpp::parent_s);

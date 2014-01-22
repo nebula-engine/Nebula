@@ -13,6 +13,8 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/charles/Programming/C++/nebula/src/neb/actor/Rigid_Static.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/actor/empty.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/actor/free.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/actor/free.cpp.o"
+  "/home/charles/Programming/C++/nebula/src/neb/actor/raw.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/actor/raw.cpp.o"
+  "/home/charles/Programming/C++/nebula/src/neb/actor/raw_factory.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/actor/raw_factory.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/actor/rigid_body/rigid_body.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/app.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/app.cpp.o"
   "/home/charles/Programming/C++/nebula/src/neb/camera/camera.cpp" "/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o"

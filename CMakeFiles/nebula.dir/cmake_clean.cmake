@@ -16,6 +16,8 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/nebula.dir/src/neb/network/server.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/actor/raw.cpp.o"
+  "CMakeFiles/nebula.dir/src/neb/actor/raw_factory.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/Rigid_Actor.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o"
   "CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.o"

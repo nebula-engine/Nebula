@@ -140,7 +140,7 @@ int neb::app::step(double time) {
 		auto w = it->second;
 		assert(w);
 		
-		if(w->all(glutpp::window::flag::SHOULD_RELEASE))
+		if(w->all(glutpp::window::window::flag::e::SHOULD_RELEASE))
 		{
 		
 			printf("erase\n");

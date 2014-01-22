@@ -21,7 +21,7 @@ math::mat44	neb::camera::ridealong::supply()
 
 
 
-	math::transform pose = actor->raw_.pose_;
+	math::transform pose = actor->get_raw()->pose_;
 
 	math::mat44 translate;
 	translate.SetTranslation(-pose.p);

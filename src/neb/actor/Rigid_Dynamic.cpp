@@ -37,7 +37,7 @@ void neb::actor::Rigid_Dynamic::create_physics() {
 
 	px_actor_ = px_rigid_dynamic;
 
-	px_rigid_dynamic->setLinearVelocity(raw_.velocity_, true);
+	px_rigid_dynamic->setLinearVelocity(get_raw()->velocity_, true);
 
 	// userData
 	px_rigid_dynamic->userData = this;
@@ -48,11 +48,11 @@ void neb::actor::Rigid_Dynamic::create_physics() {
 }
 void neb::actor::Rigid_Dynamic::init_physics() {
 	NEBULA_DEBUG_0_FUNCTION;
-
+	
 	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();
-
-	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, raw_.density_);
-
+	
+	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, get_raw()->density_);
+	
 	setupFiltering();
 }
 void neb::actor::Rigid_Dynamic::print_info() {

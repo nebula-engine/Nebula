@@ -4,7 +4,7 @@
 #define NEB_INSTALL_DIR "@CMAKE_INSTALL_PREFIX@"
 
 #define NEBULA_DEBUG_0_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
-#define NEBULA_DEBUG_1_FUNCTION //printf("%s\n", __PRETTY_FUNCTION__)
+#define NEBULA_DEBUG_1_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
 
 #include <memory>
 
@@ -62,6 +62,9 @@ namespace neb
 	class simulation_callback;
 	namespace actor
 	{
+		class raw;
+		class raw_factory;	
+
 		class Base;
 		class Actor;
 		class Rigid_Actor;
@@ -74,6 +77,8 @@ namespace neb
 		class empty;
 
 
+
+		typedef std::shared_ptr<raw>	raw_s;
 		typedef std::shared_ptr<Base>	Base_s;
 		typedef std::weak_ptr<Base>	Base_w;
 	}

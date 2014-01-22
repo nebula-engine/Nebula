@@ -66,9 +66,9 @@ namespace neb {
 		public:
 			unsigned int		flag_;
 
-			glutpp::window::window_m	windows_;
-			glutpp::gui::layout_m		layouts_;
-			neb::scene::scene_m		scenes_;
+			gal::map<glutpp::window::window>	windows_;
+			gal::map<glutpp::gui::layout>		layouts_;
+			gal::map<neb::scene::scene>		scenes_;
 
 			// timer
 			gal::timer::timer_set		timer_set_;

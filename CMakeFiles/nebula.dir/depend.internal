@@ -29,17 +29,20 @@ CMakeFiles/nebula.dir/src/neb/actor/Actor.cpp.o
  ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/gui/layout.h
  ../glutpp/src/glutpp/gui/object/object.h
+ ../glutpp/src/glutpp/gui/object/object_factory.h
  ../glutpp/src/glutpp/light/desc.h
  ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
  ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
  ../glutpp/src/glutpp/renderable.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../glutpp/src/glutpp/window/desc.h
@@ -61,6 +64,7 @@ CMakeFiles/nebula.dir/src/neb/actor/Actor.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/config.h
  src/neb/scene/scene.h
@@ -98,16 +102,20 @@ CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o
  ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/gui/layout.h
  ../glutpp/src/glutpp/gui/object/object.h
+ ../glutpp/src/glutpp/gui/object/object_factory.h
  ../glutpp/src/glutpp/light/desc.h
  ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
  ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/renderable.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../glutpp/src/glutpp/window/desc.h
@@ -130,6 +138,7 @@ CMakeFiles/nebula.dir/src/neb/actor/Base.cpp.o
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
  src/neb/actor/empty.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/app.h
  src/neb/config.h
@@ -149,19 +158,29 @@ CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/util.h
  ../glutpp/src/glutpp/actor/actor.h
  ../glutpp/src/glutpp/actor/addr.h
  ../glutpp/src/glutpp/actor/desc.h
  ../glutpp/src/glutpp/actor/id.h
  ../glutpp/src/glutpp/actor/raw.h
+ ../glutpp/src/glutpp/camera.h
+ ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -177,6 +196,7 @@ CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/actor/Controller.cpp
  src/neb/actor/Base.h
  src/neb/actor/Controller.h
+ src/neb/actor/raw.h
  src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Actor.cpp.o
  ../galaxy/src/gal/config.h
@@ -187,6 +207,7 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Actor.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/timer/timer.h
  ../galaxy/src/gal/timer/timer_set.h
  ../galaxy/src/gal/util.h
@@ -198,14 +219,21 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Actor.cpp.o
  ../glutpp/src/glutpp/camera.h
  ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -225,6 +253,7 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Actor.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/config.h
  src/neb/physics.h
@@ -240,6 +269,7 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/timer/timer.h
  ../galaxy/src/gal/timer/timer_set.h
  ../galaxy/src/gal/util.h
@@ -251,14 +281,21 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic.cpp.o
  ../glutpp/src/glutpp/camera.h
  ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -278,6 +315,7 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/config.h
  src/neb/physics.h
@@ -293,19 +331,29 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic_Box.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/util.h
  ../glutpp/src/glutpp/actor/actor.h
  ../glutpp/src/glutpp/actor/addr.h
  ../glutpp/src/glutpp/actor/desc.h
  ../glutpp/src/glutpp/actor/id.h
  ../glutpp/src/glutpp/actor/raw.h
+ ../glutpp/src/glutpp/camera.h
+ ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -324,6 +372,7 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic_Box.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Dynamic_Box.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.o
@@ -335,6 +384,7 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/timer/timer.h
  ../galaxy/src/gal/timer/timer_set.h
  ../galaxy/src/gal/util.h
@@ -346,14 +396,21 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.o
  ../glutpp/src/glutpp/camera.h
  ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -373,6 +430,7 @@ CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/config.h
  src/neb/physics.h
@@ -388,19 +446,29 @@ CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/util.h
  ../glutpp/src/glutpp/actor/actor.h
  ../glutpp/src/glutpp/actor/addr.h
  ../glutpp/src/glutpp/actor/desc.h
  ../glutpp/src/glutpp/actor/id.h
  ../glutpp/src/glutpp/actor/raw.h
+ ../glutpp/src/glutpp/camera.h
+ ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -416,10 +484,61 @@ CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/actor/empty.cpp
  src/neb/actor/Base.h
  src/neb/actor/empty.h
+ src/neb/actor/raw.h
  src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/actor/free.cpp.o
  /home/charles/Programming/C++/nebula/src/neb/actor/free.cpp
  src/neb/actor/free.h
+CMakeFiles/nebula.dir/src/neb/actor/raw.cpp.o
+ ../galaxy/src/gal/config.h
+ ../galaxy/src/gal/except.h
+ ../galaxy/src/gal/map.h
+ ../galaxy/src/gal/network/message.h
+ ../galaxy/src/gal/network/serial.h
+ ../galaxy/src/gal/network/vector.h
+ ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/util.h
+ ../glutpp/src/glutpp/actor/raw.h
+ ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/material.h
+ ../glutpp/src/glutpp/shape/desc.h
+ ../math/src/math/color.h
+ ../math/src/math/math.h
+ ../math/src/math/quat.h
+ ../math/src/math/raw/raw.h
+ ../math/src/math/transform.h
+ ../math/src/math/vec3.h
+ ../math/src/math/vec4.h
+ /home/charles/Programming/C++/nebula/src/neb/actor/raw.cpp
+ src/neb/actor/raw.h
+ src/neb/config.h
+CMakeFiles/nebula.dir/src/neb/actor/raw_factory.cpp.o
+ ../galaxy/src/gal/config.h
+ ../galaxy/src/gal/except.h
+ ../galaxy/src/gal/map.h
+ ../galaxy/src/gal/network/message.h
+ ../galaxy/src/gal/network/serial.h
+ ../galaxy/src/gal/network/vector.h
+ ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/util.h
+ ../glutpp/src/glutpp/actor/raw.h
+ ../glutpp/src/glutpp/actor/raw_factory.h
+ ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/material.h
+ ../glutpp/src/glutpp/shape/desc.h
+ ../math/src/math/color.h
+ ../math/src/math/math.h
+ ../math/src/math/quat.h
+ ../math/src/math/raw/raw.h
+ ../math/src/math/transform.h
+ ../math/src/math/vec3.h
+ ../math/src/math/vec4.h
+ /home/charles/Programming/C++/nebula/src/neb/actor/raw_factory.cpp
+ src/neb/actor/raw.h
+ src/neb/actor/raw_factory.h
+ src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o
  ../galaxy/src/gal/config.h
  ../galaxy/src/gal/control/control.h
@@ -452,17 +571,20 @@ CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o
  ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/gui/layout.h
  ../glutpp/src/glutpp/gui/object/object.h
+ ../glutpp/src/glutpp/gui/object/object_factory.h
  ../glutpp/src/glutpp/light/desc.h
  ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
  ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
  ../glutpp/src/glutpp/renderable.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../glutpp/src/glutpp/window/desc.h
@@ -484,6 +606,7 @@ CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/app.h
  src/neb/camera/ridealong.h
@@ -530,18 +653,22 @@ CMakeFiles/nebula.dir/src/neb/app.cpp.o
  ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/gui/layout.h
  ../glutpp/src/glutpp/gui/object/object.h
+ ../glutpp/src/glutpp/gui/object/object_factory.h
  ../glutpp/src/glutpp/light/desc.h
  ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
  ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/network/message.h
  ../glutpp/src/glutpp/parent.h
  ../glutpp/src/glutpp/renderable.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/desc.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../glutpp/src/glutpp/window/desc.h
@@ -563,6 +690,7 @@ CMakeFiles/nebula.dir/src/neb/app.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/app.h
  src/neb/config.h
@@ -603,16 +731,20 @@ CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o
  ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/gui/layout.h
  ../glutpp/src/glutpp/gui/object/object.h
+ ../glutpp/src/glutpp/gui/object/object_factory.h
  ../glutpp/src/glutpp/light/desc.h
  ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
  ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/renderable.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../glutpp/src/glutpp/window/desc.h
@@ -634,6 +766,7 @@ CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/camera/camera.h
  src/neb/config.h
@@ -665,14 +798,20 @@ CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o
  ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/gui/layout.h
  ../glutpp/src/glutpp/gui/object/object.h
+ ../glutpp/src/glutpp/gui/object/object_factory.h
  ../glutpp/src/glutpp/light/desc.h
  ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
  ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/renderable.h
+ ../glutpp/src/glutpp/scene/addr.h
+ ../glutpp/src/glutpp/scene/raw.h
+ ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../glutpp/src/glutpp/window/desc.h
@@ -689,6 +828,7 @@ CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o
  ../math/src/math/vec4.h
  /home/charles/Programming/C++/nebula/src/neb/camera/ridealong.cpp
  src/neb/actor/Base.h
+ src/neb/actor/raw.h
  src/neb/camera/ridealong.h
  src/neb/config.h
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o
@@ -701,19 +841,29 @@ CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/util.h
  ../glutpp/src/glutpp/actor/actor.h
  ../glutpp/src/glutpp/actor/addr.h
  ../glutpp/src/glutpp/actor/desc.h
  ../glutpp/src/glutpp/actor/id.h
  ../glutpp/src/glutpp/actor/raw.h
+ ../glutpp/src/glutpp/camera.h
+ ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -730,6 +880,7 @@ CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Rigid_Actor.h
+ src/neb/actor/raw.h
  src/neb/config.h
  src/neb/control/rigid_body/control.h
  src/neb/control/rigid_body/raw.h
@@ -743,19 +894,29 @@ CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/util.h
  ../glutpp/src/glutpp/actor/actor.h
  ../glutpp/src/glutpp/actor/addr.h
  ../glutpp/src/glutpp/actor/desc.h
  ../glutpp/src/glutpp/actor/id.h
  ../glutpp/src/glutpp/actor/raw.h
+ ../glutpp/src/glutpp/camera.h
+ ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -772,6 +933,7 @@ CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Rigid_Actor.h
+ src/neb/actor/raw.h
  src/neb/config.h
  src/neb/control/rigid_body/control.h
  src/neb/control/rigid_body/raw.h
@@ -817,17 +979,22 @@ CMakeFiles/nebula.dir/src/neb/network/client.cpp.o
  ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/gui/layout.h
  ../glutpp/src/glutpp/gui/object/object.h
+ ../glutpp/src/glutpp/gui/object/object_factory.h
  ../glutpp/src/glutpp/light/desc.h
  ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
  ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/network/message.h
  ../glutpp/src/glutpp/parent.h
+ ../glutpp/src/glutpp/renderable.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/desc.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../glutpp/src/glutpp/window/desc.h
@@ -850,6 +1017,7 @@ CMakeFiles/nebula.dir/src/neb/network/client.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/app.h
  src/neb/config.h
@@ -891,16 +1059,20 @@ CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o
  ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/gui/layout.h
  ../glutpp/src/glutpp/gui/object/object.h
+ ../glutpp/src/glutpp/gui/object/object_factory.h
  ../glutpp/src/glutpp/light/desc.h
  ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
  ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/renderable.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../glutpp/src/glutpp/window/desc.h
@@ -922,6 +1094,7 @@ CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/app.h
  src/neb/config.h
@@ -961,16 +1134,20 @@ CMakeFiles/nebula.dir/src/neb/network/server.cpp.o
  ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/gui/layout.h
  ../glutpp/src/glutpp/gui/object/object.h
+ ../glutpp/src/glutpp/gui/object/object_factory.h
  ../glutpp/src/glutpp/light/desc.h
  ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
  ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/renderable.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../glutpp/src/glutpp/window/desc.h
@@ -992,6 +1169,7 @@ CMakeFiles/nebula.dir/src/neb/network/server.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/app.h
  src/neb/config.h
@@ -1011,6 +1189,7 @@ CMakeFiles/nebula.dir/src/neb/physics.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/timer/timer.h
  ../galaxy/src/gal/timer/timer_set.h
  ../galaxy/src/gal/util.h
@@ -1022,14 +1201,22 @@ CMakeFiles/nebula.dir/src/neb/physics.cpp.o
  ../glutpp/src/glutpp/camera.h
  ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/desc.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -1050,6 +1237,7 @@ CMakeFiles/nebula.dir/src/neb/physics.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/config.h
  src/neb/physics.h
@@ -1087,17 +1275,22 @@ CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o
  ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/gui/layout.h
  ../glutpp/src/glutpp/gui/object/object.h
+ ../glutpp/src/glutpp/gui/object/object_factory.h
  ../glutpp/src/glutpp/light/desc.h
  ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
  ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/network/message.h
  ../glutpp/src/glutpp/parent.h
+ ../glutpp/src/glutpp/renderable.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/desc.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../glutpp/src/glutpp/window/desc.h
@@ -1122,6 +1315,7 @@ CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o
  src/neb/actor/Rigid_Static.h
  src/neb/actor/empty.h
  src/neb/actor/free.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/actor/vehicle.h
  src/neb/app.h
@@ -1144,6 +1338,7 @@ CMakeFiles/nebula.dir/src/neb/shape.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/timer/timer.h
  ../galaxy/src/gal/timer/timer_set.h
  ../galaxy/src/gal/util.h
@@ -1155,14 +1350,21 @@ CMakeFiles/nebula.dir/src/neb/shape.cpp.o
  ../glutpp/src/glutpp/camera.h
  ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -1183,6 +1385,7 @@ CMakeFiles/nebula.dir/src/neb/shape.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/config.h
  src/neb/physics.h
@@ -1198,6 +1401,7 @@ CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/timer/timer.h
  ../galaxy/src/gal/timer/timer_set.h
  ../galaxy/src/gal/util.h
@@ -1209,14 +1413,21 @@ CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o
  ../glutpp/src/glutpp/camera.h
  ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -1236,6 +1447,7 @@ CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/config.h
  src/neb/physics.h
@@ -1251,6 +1463,7 @@ CMakeFiles/nebula.dir/src/neb/timer/actor.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/timer/timer.h
  ../galaxy/src/gal/util.h
  ../glutpp/src/glutpp/actor/actor.h
@@ -1258,13 +1471,22 @@ CMakeFiles/nebula.dir/src/neb/timer/actor.cpp.o
  ../glutpp/src/glutpp/actor/desc.h
  ../glutpp/src/glutpp/actor/id.h
  ../glutpp/src/glutpp/actor/raw.h
+ ../glutpp/src/glutpp/camera.h
+ ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -1279,6 +1501,7 @@ CMakeFiles/nebula.dir/src/neb/timer/actor.cpp.o
  ../math/src/math/vec4.h
  /home/charles/Programming/C++/nebula/src/neb/timer/actor.cpp
  src/neb/actor/Base.h
+ src/neb/actor/raw.h
  src/neb/config.h
  src/neb/timer/actor.h
 CMakeFiles/nebula.dir/src/neb/user.cpp.o
@@ -1308,17 +1531,20 @@ CMakeFiles/nebula.dir/src/neb/user.cpp.o
  ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/gui/layout.h
  ../glutpp/src/glutpp/gui/object/object.h
+ ../glutpp/src/glutpp/gui/object/object_factory.h
  ../glutpp/src/glutpp/light/desc.h
  ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
  ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
  ../glutpp/src/glutpp/renderable.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../glutpp/src/glutpp/window/desc.h
@@ -1337,6 +1563,7 @@ CMakeFiles/nebula.dir/src/neb/user.cpp.o
  src/neb/actor/Actor.h
  src/neb/actor/Base.h
  src/neb/actor/Rigid_Actor.h
+ src/neb/actor/raw.h
  src/neb/camera/camera.h
  src/neb/config.h
  src/neb/control/rigid_body/control.h
@@ -1351,6 +1578,7 @@ CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o
  ../galaxy/src/gal/network/serial.h
  ../galaxy/src/gal/network/vector.h
  ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
  ../galaxy/src/gal/timer/timer.h
  ../galaxy/src/gal/timer/timer_set.h
  ../galaxy/src/gal/util.h
@@ -1362,14 +1590,21 @@ CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o
  ../glutpp/src/glutpp/camera.h
  ../glutpp/src/glutpp/camera_control.h
  ../glutpp/src/glutpp/config.h
+ ../glutpp/src/glutpp/glsl/attrib.h
+ ../glutpp/src/glutpp/glsl/program.h
+ ../glutpp/src/glutpp/glsl/uniform.h
  ../glutpp/src/glutpp/light/desc.h
+ ../glutpp/src/glutpp/light/light.h
+ ../glutpp/src/glutpp/light/raw.h
+ ../glutpp/src/glutpp/master.h
  ../glutpp/src/glutpp/material.h
  ../glutpp/src/glutpp/mesh.h
  ../glutpp/src/glutpp/parent.h
- ../glutpp/src/glutpp/scene/desc.h
+ ../glutpp/src/glutpp/scene/addr.h
  ../glutpp/src/glutpp/scene/raw.h
  ../glutpp/src/glutpp/scene/scene.h
  ../glutpp/src/glutpp/shape/desc.h
+ ../glutpp/src/glutpp/shape/raw.h
  ../glutpp/src/glutpp/shape/shape.h
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
@@ -1389,6 +1624,7 @@ CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o
  src/neb/actor/Rigid_Actor.h
  src/neb/actor/Rigid_Dynamic.h
  src/neb/actor/Rigid_Static.h
+ src/neb/actor/raw.h
  src/neb/actor/rigid_body/rigid_body.h
  src/neb/actor/vehicle.h
  src/neb/config.h
