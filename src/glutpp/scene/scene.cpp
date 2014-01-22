@@ -9,6 +9,7 @@
 
 #include <glutpp/glsl/program.h>
 
+
 glutpp::scene::scene::scene() {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
@@ -17,7 +18,7 @@ glutpp::scene::scene::~scene() {
 }
 void glutpp::scene::scene::i(int ni) {
 	GLUTPP_DEBUG_0_FUNCTION;
-	
+
 	//desc_->raw_.i_ = ni;
 	//desc_->i_ = ni;
 	i_ = ni;
@@ -31,7 +32,7 @@ unsigned int glutpp::scene::scene::f() {
 void glutpp::scene::scene::f(unsigned int flag) {
 	raw_.flag_ = flag;
 }
-void	glutpp::scene::scene::init(glutpp::scene::desc_s desc) {
+void glutpp::scene::scene::init(glutpp::scene::desc_s desc) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	//renderable_ = renderable;
 }
@@ -41,10 +42,9 @@ void glutpp::scene::scene::release() {
 math::mat44 glutpp::scene::scene::get_pose() {
 	return math::mat44();
 }
-void glutpp::scene::scene::render(
-		double time,
+void glutpp::scene::scene::render(double time,
 		std::shared_ptr<glutpp::camera> camera,
-		std::shared_ptr<glutpp::window::window> window) {
+		glutpp::window::window_s window) {
 
 	GLUTPP_DEBUG_1_FUNCTION;
 
@@ -70,7 +70,7 @@ void glutpp::scene::scene::render(
 
 	draw(window);
 }
-int	glutpp::scene::scene::draw(std::shared_ptr<glutpp::window::window> window) {
+void glutpp::scene::scene::draw(glutpp::window::window_s window) {
 
 	GLUTPP_DEBUG_1_FUNCTION;
 
@@ -79,10 +79,7 @@ int	glutpp::scene::scene::draw(std::shared_ptr<glutpp::window::window> window) {
 		it->second->draw(window, math::mat44());
 	}
 }
-void	glutpp::scene::scene::resize(int w, int h) {
+void glutpp::scene::scene::resize(int w, int h) {
 }
-
-
-
 
 

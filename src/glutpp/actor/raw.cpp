@@ -1,6 +1,8 @@
 #include <math/free.h>
 
+#include <glutpp/actor/actor.h>
 #include <glutpp/actor/raw.h>
+
 
 glutpp::actor::raw::raw():
 	type_(glutpp::actor::type::NONE),
@@ -13,7 +15,6 @@ glutpp::actor::raw::raw():
 void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
-	// xml
 	assert(element);
 	
 	// type
@@ -21,23 +22,23 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	assert(buf);
 	if( strcmp(buf, "rigid_dynamic") == 0)
 	{
-		type_ = glutpp::actor::RIGID_DYNAMIC;
+		type_ = glutpp::actor::type::e::RIGID_DYNAMIC;
 	}
 	else if( strcmp(buf, "rigid_static") == 0)
 	{
-		type_ = glutpp::actor::RIGID_STATIC;
+		type_ = glutpp::actor::type::e::RIGID_STATIC;
 	}	
 	else if( strcmp(buf, "plane") == 0)
 	{
-		type_ = glutpp::actor::PLANE;
+		type_ = glutpp::actor::type::e::PLANE;
 	}	
 	else if(strcmp(buf, "controller") == 0)
 	{
-		type_ = glutpp::actor::CONTROLLER;
+		type_ = glutpp::actor::type::e::CONTROLLER;
 	}
 	else if(strcmp(buf, "empty") == 0)
 	{
-		type_ = glutpp::actor::EMPTY;
+		type_ = glutpp::actor::type::e::EMPTY;
 	}
 	else
 	{
@@ -86,6 +87,9 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	
 	// filtering
 	parse_filtering(element);
+}
+void glutpp::actor::raw::load(glutpp::actor::actor_s actor) {
+	operator=(*actor->get_raw());
 }
 void glutpp::actor::raw::parse_filtering(tinyxml2::XMLElement* element) {
 

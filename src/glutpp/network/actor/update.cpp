@@ -14,8 +14,11 @@ void glutpp::network::actor::update::load(glutpp::actor::actor_s actor) {
 	auto addr = std::get<1>(t);
 	auto raw = std::get<0>(t);
 	
+	assert(addr);
+	assert(raw);
+	
 	addr->load_this(actor);
-	*raw = actor->raw_;
+	*raw = *actor->get_raw();
 	
 	if(actor->any(glutpp::actor::flag::SHOULD_UPDATE))
 	{

@@ -10,16 +10,19 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include <glutpp/config.h>
 
 
-namespace glutpp
-{
-	class master: public gal::flag<>
-	{
+namespace glutpp {
+	class master: public gal::flag<> {
 		public:
+			
+			//typedef std::shared_ptr<WINDOW>		WINDOW_S;
+			//typedef std::weak_ptr<WINDOW>		WINDOW_W;
+			
 			enum option
 			{
 				//SHADERS = 1 << 0
@@ -62,39 +65,33 @@ namespace glutpp
 				return u;
 			}
 			
-			window::window_s		get_window(GLFWwindow*);
-			int				reg(window::window_s);
+			glutpp::window::window_s	get_window(GLFWwindow*);
+			int				reg(glutpp::window::window_s);
+			
+			glutpp::actor::raw_factory_s	get_raw_factory();
 
+			unsigned int			f();
+			void				f(unsigned int);
 
-
-			//void  CallGlutCreateWindow(char * setTitle, glutpp::window * glutWindow);
-			//void  CallGlutMainLoop(void);
-
-			//void  DisableIdleFunction(void);
-			//void  EnableIdleFunction(void);
-			//int   IdleFunctionEnabled(void);
-
-			//int   IdleSetToCurrentWindow(void);
-			//void  SetIdleToCurrentWindow(void);
+		public:
 			FT_Library						ft_;
-			
-			
+					
 			std::shared_ptr<glutpp::gui::object::object_factory>	object_factory_;
 
-
+			glutpp::actor::raw_factory_s	raw_factory_;
 		private:
-			unsigned int						f();
-			void							f(unsigned int);
 			unsigned int						flag_;
 			
+			
+			
 			GLFWwindow*						currentIdleWindow_;
-			std::map<GLFWwindow*,window::window_w>			windows_;
+			std::map<GLFWwindow*,glutpp::window::window_w>		windows_;
 
 
 			std::map<int, std::shared_ptr<glutpp::glsl::program> >	programs_;
 			std::shared_ptr<glutpp::glsl::program>			current_;
 	};
-
+	
 	extern "C" master __master;
 }
 

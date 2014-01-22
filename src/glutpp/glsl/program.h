@@ -1,7 +1,7 @@
 #ifndef __DRAW_H__
 #define __DRAW_H__
 
-
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include <map>

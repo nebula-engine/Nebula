@@ -1,6 +1,6 @@
 #include <math/free.h>
 
-#include <glutpp/light/desc.h>
+#include <glutpp/light/raw.h>
 
 glutpp::light::raw::raw():
 	pos_(math::vec4(0.0, 0.0, 0.0, 1.0)),

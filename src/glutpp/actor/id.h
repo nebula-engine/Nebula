@@ -11,9 +11,10 @@
 
 namespace glutpp {
 	namespace actor {
-
-		struct id: gal::network::serial<id, gal::network::base> {
-			int i_;
+		class id: public gal::network::serial<id, gal::network::base>
+		{
+			public:
+				int i_;
 		};
 	}
 }

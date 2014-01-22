@@ -12,34 +12,27 @@
 
 namespace glutpp
 {
-	template<typename SCENE> class renderable:
+	class renderable:
 		public gal::flag<unsigned int>,
-		public std::enable_shared_from_this<renderable<SCENE>>
+		public std::enable_shared_from_this<renderable>
 	{
 		public:
-			typedef glutpp::renderable<SCENE>	RENDERABLE;
-			typedef glutpp::gui::layout<RENDERABLE> LAYOUT;
-			typedef std::shared_ptr<LAYOUT>		LAYOUT_S;
-
-			renderable(glutpp::window::window_s);
-			renderable&			operator=(renderable const &);
-			void				init(glutpp::window::window_s);
-			glutpp::window::window_s	get_window();
-			
-			void				render(double, glutpp::window::window_s);
-			
-			void				resize(int,int);
-			
-		private:
+			renderable(glutpp::window::window_s window);
+			renderable&			operator=(renderable const & r);
 			unsigned int			f();
-			void				f(unsigned int);
+			void				f(unsigned int flag);
+			void				init(glutpp::window::window_s window);
+			glutpp::window::window_s	get_window();
+			void			resize(int w, int h);
+			void			render(double time, glutpp::window::window_s window);
+		private:
 			unsigned int			flag_;
-		
-		
-			glutpp::window::window_w	window_;
+
+
+			glutpp::window::window_w		window_;
 		public:
-			std::shared_ptr<SCENE>		scene_;
-			LAYOUT_S			layout_;
+			glutpp::scene::scene_s		scene_;
+			glutpp::gui::layout_s		layout_;
 			glutpp::camera_s		camera_;
 	};
 }

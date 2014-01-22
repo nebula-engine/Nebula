@@ -12,6 +12,8 @@
 #include <glutpp/scene/scene.h>
 #include <glutpp/camera.h>
 
+
+
 glutpp::camera::camera():
 	fovy_(45.0f),
 	zn_(2.0f),
@@ -21,11 +23,11 @@ glutpp::camera::camera():
 {
 
 }
-void		glutpp::camera::init(std::shared_ptr<renderable> renderable) {
+/*void		glutpp::camera::init(RENDERABLE_S renderable) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	renderable_ = renderable;
-}
+}*/
 int		glutpp::camera::north(float) {
 	return 1;
 }
@@ -76,8 +78,6 @@ void		glutpp::camera::step(float dt) {
 	   }
 	 */
 }
-
-
 
 
 

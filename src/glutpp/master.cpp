@@ -282,5 +282,11 @@ std::shared_ptr<glutpp::glsl::program>	glutpp::master::get_program(glutpp::progr
 
 	return p;
 }
+glutpp::actor::raw_factory_s glutpp::master::get_raw_factory() {
+	assert(raw_factory_);
+	return raw_factory_;
+}
+
+
 
 

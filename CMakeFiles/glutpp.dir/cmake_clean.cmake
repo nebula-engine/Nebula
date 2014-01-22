@@ -16,6 +16,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/glutpp.dir/src/glutpp/scene/scene.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/scene/addr.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/actor/raw.cpp.o"
+  "CMakeFiles/glutpp.dir/src/glutpp/actor/raw_factory.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/actor/desc.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/actor/actor.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/actor/addr.cpp.o"

@@ -19,9 +19,8 @@ void glutpp::scene::raw::load(tinyxml2::XMLElement* element) {
 }
 void glutpp::scene::raw::load(glutpp::scene::scene_s scene) {
 	GLUTPP_DEBUG_0_FUNCTION;
-	
+
 	*this = scene->raw_;
-	
 }
 
 

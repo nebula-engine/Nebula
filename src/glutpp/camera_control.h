@@ -15,12 +15,14 @@ namespace glutpp
 			virtual math::mat44		supply() = 0;
 			double				last_;
 	};
-	class camera_free: public camera_control
-	{
+	class camera_free: public camera_control {
 		public:
+			//typedef std::shared_ptr<WINDOW>		WINDOW_S;
+			//typedef std::weak_ptr<WINDOW>		WINDOW_W;
+			
 			camera_free();
 			void					init(glutpp::window::window_s);
-
+			
 			int					callback_x_(int,float);
 			int					callback_y_(int,float);
 			int					callback_z_(int,float);
@@ -44,7 +46,7 @@ namespace glutpp
 			std::vector<gal::sig::connection<>*>		vec_y_;
 			std::vector<gal::sig::connection<>*>		vec_z_;
 
-			glutpp::window::window_w			window_;
+			glutpp::window::window_w				window_;
 	};
 }
 

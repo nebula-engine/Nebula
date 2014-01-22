@@ -25,69 +25,38 @@
 
 void	checkerror(char const *);
 
-namespace glutpp
-{
-	namespace window
-	{
-		template<typename SCENE> class window:
-			public gal::flag<unsigned int>,
-			public std::enable_shared_from_this<window>
-		{
-			typedef glutpp::renderable<SCENE> RENDERABLE;
-			typedef glutpp::gui::layout<RENDERABLE> LAYOUT;
-			
+namespace glutpp {
+	namespace window {
+		class window: public std::enable_shared_from_this<window>, public gal::flag<unsigned int> {
 			protected:
-				int          windowID;
-
+				
 			public:
-				window(glutpp::window::desc_s);
-				//window(int, int, int, int, const char * );
+				struct flag {
+					enum e {
+						SHOULD_RELEASE = 1 << 0,
+					};
+				};
+
+
+				window(glutpp::window::desc_s desc);
 				~window();
-				void			i(int);
-				void			init();
+				unsigned int f();
+				void	f(unsigned int flag);
+				void	init();
+				void	render(double time);
+				void	step(double time);
 
-				void			callback_window_pos_fun(GLFWwindow*,int,int);
-				void			callback_window_size_fun(GLFWwindow*,int,int);
-				void			callback_window_close_fun(GLFWwindow*);
-				void			callback_window_refresh_fun(GLFWwindow*);
-				void			callback_mouse_button_fun(GLFWwindow*,int,int,int);
-				void			callback_key_fun(GLFWwindow*,int,int,int,int);
+				void	resize();
+				void	set_layout(glutpp::gui::layout_s layout);
+				void	i(int ni);
+				void	set_scene(glutpp::scene::scene_s scene);
 
-
-
-				template<typename SCENE> void set_scene(std::shared_ptr<SCENE> scene) {
-
-					GLUTPP_DEBUG_0_FUNCTION;
-
-					assert(scene);
-					assert(renderable_);
-
-					renderable_->scene_ = scene;
-				}
-				int			set_layout(std::shared_ptr<glutpp::gui::layout>);
-
-
-
-				int			step(double);
-				void			render(double);
-				void			draw();
-				void			draw_ortho();
-				void			resize();
-
-
-
-				void			display_dim();
-				void			display_bright();
-
-
-				void			SetWindowID(int newWindowID);
-				int			GetWindowID(void);
-
-
-				void			idle();
-			private:
-				unsigned int		f();
-				void			f(unsigned int);
+				void	callback_window_pos_fun(GLFWwindow*,int,int);
+				void	callback_window_size_fun(GLFWwindow*,int,int);
+				void	callback_window_close_fun(GLFWwindow*);
+				void	callback_window_refresh_fun(GLFWwindow*);
+				void	callback_mouse_button_fun(GLFWwindow*,int,int,int);
+				void	callback_key_fun(GLFWwindow*,int,int,int,int);
 			public:
 				// input signals
 				struct
@@ -96,8 +65,6 @@ namespace glutpp
 					gal::sig::signal<int,int,int>		mouse_button_fun_;
 				} sig_;
 
-				int			i_;
-				glutpp::window::raw	raw_;
 
 				/*				char const *			title_;
 								int				w_;
@@ -105,10 +72,17 @@ namespace glutpp
 								int				x_;
 								int				y_;
 				 */
-				std::shared_ptr<renderable>	renderable_;
+				glutpp::renderable_s		renderable_;
+
+
+				int			i_;
+				glutpp::window::raw	raw_;
+
+				GLFWwindow*		window_;
+				
+				//int			windowID;
 
 			public:
-				GLFWwindow*			window_;
 
 		};
 	}

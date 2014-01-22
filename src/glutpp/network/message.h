@@ -21,8 +21,8 @@ namespace glutpp
 			typedef std::shared_ptr<vec_addr_raw> vec_addr_raw_s;
 
 			typedef gal::network::serial_ext<
-				glutpp::actor::desc,
-				glutpp::actor::addr>
+				glutpp::actor::addr,
+				glutpp::actor::desc>
 					ser_create;
 
 			typedef gal::network::serial_ext<vec_addr_raw> ser_update;
@@ -34,20 +34,20 @@ namespace glutpp
 
 
 			struct create: ser_create {
-				void			load(glutpp::actor::actor_s);
-
-				glutpp::actor::addr_s	get_addr() { return std::get<1>(tup_); }
-				glutpp::actor::desc_s	get_desc() { return std::get<0>(tup_); }
+				void	load(glutpp::actor::actor_s actor);
+				
+				glutpp::actor::addr_s	get_addr() { return std::get<0>(ser_create::tup_); }
+				glutpp::actor::desc_s	get_desc() { return std::get<1>(tup_); }
 			};
 
 			struct update: ser_update {
 				//typedef vec_addr_raw::tuple tuple;
-
-				void load(glutpp::actor::actor_s);
+				
+				void load(glutpp::actor::actor_s actor);
 			};
 
 			struct event: ser_event {
-				
+
 				glutpp::actor::addr_s	get_addr() { return std::get<0>(tup_); }
 				glutpp::actor::event_s	get_event() { return std::get<1>(tup_); }
 			};
@@ -59,9 +59,7 @@ namespace glutpp
 					ser_create;
 
 			struct create: ser_create {
-				void load(glutpp::scene::scene_s);
-
-
+				void load(glutpp::scene::scene_s scene);
 
 			};
 		}

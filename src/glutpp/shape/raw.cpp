@@ -1,6 +1,6 @@
 #include <math/free.h>
 
-#include <glutpp/shape/desc.h>
+#include <glutpp/shape/raw.h>
 
 
 glutpp::shape::raw::raw():
@@ -29,7 +29,7 @@ void	glutpp::shape::raw::load(tinyxml2::XMLElement* element)
 	}
 	
 	// program
-	program_ = glutpp::program_name::LIGHT;
+	//program_ = glutpp::program_name::LIGHT;
 
 	// material
 	front_.raw_.load(element->FirstChildElement("front"));	
@@ -47,7 +47,7 @@ void	glutpp::shape::raw::load(tinyxml2::XMLElement* element)
 			
 			memcpy(image_, text, len);
 			
-			program_ = glutpp::program_name::IMAGE;
+			//program_ = glutpp::program_name::IMAGE;
 		}
 	}
 	

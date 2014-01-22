@@ -11,7 +11,7 @@
 #include <png.h>
 
 glutpp::texture::texture():
-	window_(NULL),
+	/*window_(NULL),*/
 	o_(-1)
 {}
 glutpp::texture::~texture()

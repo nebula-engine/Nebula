@@ -4,12 +4,14 @@
 #include <glutpp/renderable.h>
 #include <glutpp/gui/layout.h>
 
-glutpp::renderable::renderable(glutpp::window::window_s window):
-	window_(window)
+
+
+
+glutpp::renderable::renderable(glutpp::window::window_s window): window_(window)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-glutpp::renderable&	glutpp::renderable::operator=(glutpp::renderable const & r){
+glutpp::renderable& glutpp::renderable::operator=(renderable const & r){
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
 unsigned int glutpp::renderable::f() {
@@ -22,21 +24,21 @@ void glutpp::renderable::init(glutpp::window::window_s window) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	assert(window);
-	
+
 	window_ = window;
-	
+
 	// camera
 	camera_.reset(new glutpp::camera);
-	camera_->init(shared_from_this());
+	//camera_->init(shared_from_this());
 }
 glutpp::window::window_s glutpp::renderable::get_window() {
 	auto window = window_.lock();
-	
+
 	assert(window);
-	
+
 	return window;
 }
-void	glutpp::renderable::resize(int w, int h) {
+void glutpp::renderable::resize(int w, int h) {
 	camera_->w_ = w;
 	camera_->h_ = h;
 }
@@ -50,14 +52,12 @@ void glutpp::renderable::render(double time, glutpp::window::window_s window) {
 	{
 		scene_->render(time, camera_, window);
 	}
-	
+
 	if(layout_)
 	{
-		layout_->render_shader(time);
+		layout_->render(time);
 	}
-}
-
-
+}		
 
 
 

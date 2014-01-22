@@ -7,9 +7,11 @@
 #include <gal/map.h>
 
 #include <glutpp/config.h>
+#include <glutpp/glsl/program.h>
 #include <glutpp/scene/raw.h>
 #include <glutpp/actor/actor.h>
 #include <glutpp/camera.h>
+
 //#include <glutpp/shader.h>
 
 #define LIGHT_MAX 20
@@ -23,9 +25,9 @@ namespace glutpp
 				bool operator()(char* s0, char* s1) {
 					assert(s0);
 					assert(s1);
-					
+
 					if(*s0 < *s1) return true;
-					
+
 					if(*s0 == *s1)
 					{
 						if(*s0 == 0)
@@ -45,15 +47,11 @@ namespace glutpp
 
 		typedef std::map<char*, glutpp::actor::desc_s, less_str> actors_deferred_map;
 
-		template<typename ACTOR> class scene:
+		class scene:
 			public glutpp::parent,
 			public gal::flag<unsigned int>
 		{
 			public:
-				typedef glutpp::scene::scene<ACTOR>	SCENE;
-				typedef glutpp::renderable<SCENE>	RENDERABLE;
-				typedef std::weak_ptr<RENDERABLE>	RENDERABLE_W;
-				
 				enum
 				{
 					RAY_TRACE			= 1 << 0,
@@ -67,40 +65,30 @@ namespace glutpp
 					SHADER				= 1 << 9
 				};
 
-
 				scene();
-				virtual ~scene();
-				int				i();
-				void				i(int);
-				//glutpp::scene::id_shared	id();
-				void				init(glutpp::scene::desc_s);
-			protected:
-				unsigned int			f();
-				void				f(unsigned int);
-			public:
-				void				resize(int,int);
+				~scene();
+				void		i(int ni);
+				int		i();
+				unsigned int	f();
+				void		f(unsigned int flag);
+				void		init(glutpp::scene::desc_s desc);
+				void		release();
+				math::mat44	get_pose();
+				void		render(double time,
+						std::shared_ptr<glutpp::camera> camera,
+						glutpp::window::window_s window);
+				void		draw(glutpp::window::window_s window);
+				void		resize(int w, int h);
 
-				void				render(
-						double,
-						glutpp::camera_s,
-						glutpp::window::window_s);
 
-				int				draw(glutpp::window::window_s);
-
-				//void				write_addr(gal::network::message_shared);
-
-				void				release();
-				virtual void			dumby() = 0;
-				
-				math::mat44			get_pose();
 			public:
 				int				i_;
 				raw				raw_;
 
-				RENDERABLE_W			renderable_;
+				renderable_w			renderable_;
 
-				gal::map<ACTOR>			actors_;
-				actors_deferred_map		actors_deferred_;
+				gal::map<glutpp::actor::actor>		actors_;
+				actors_deferred_map			actors_deferred_;
 		};
 	}
 }

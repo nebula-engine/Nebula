@@ -2,10 +2,10 @@
 #define __NEBULA_ACTOR_DESC_H__
 
 #include <math/transform.h>
-#include <math/raw/raw.h>
 
 #include <gal/network/serial.h>
 
+//#include <glutpp/actor/actor.h>
 #include <glutpp/actor/id.h>
 #include <glutpp/shape/desc.h>
 
@@ -17,57 +17,45 @@ namespace glutpp {
 		typedef std::shared_ptr<vec_actor_desc> vec_actor_desc_s;
 		typedef std::shared_ptr<vec_shape_desc> vec_shape_desc_s;
 
+		typedef gal::network::serial_ext<id,raw,vec_actor_desc,vec_shape_desc>	ser_desc;
 
-		struct desc: gal::network::serial_ext<vec_shape_desc, vec_actor_desc, raw, id>
+
+
+		class desc: public ser_desc
 		{
-			desc();
-			template<typename ACTOR> void load(std::shared_ptr<ACTOR> actor) {
-				GLUTPP_DEBUG_0_FUNCTION;
+			public:
+				typedef std::shared_ptr<id>	ID_S;
+				typedef std::shared_ptr<raw>	RAW_S;
 
-				get_id()->i_ = actor->i_;
+				typedef glutpp::actor::desc		ACTOR_DESC;
+				typedef glutpp::shape::desc		SHAPE_DESC;
+				typedef std::shared_ptr<ACTOR_DESC>	ACTOR_DESC_S;
+				typedef std::shared_ptr<SHAPE_DESC>	SHAPE_DESC_S;
 
-				*get_raw() = actor->raw_;
 
-				// shape
-				glutpp::shape::desc_s sd;
-				for(auto it = actor->shapes_.begin(); it != actor->shapes_.end(); ++it)
-				{
-					auto shape = it->second;
+				typedef gal::network::vector_ext<ACTOR_DESC>	VEC_ACTOR;
+				typedef gal::network::vector_ext<SHAPE_DESC>	VEC_SHAPE;
 
-					sd.reset(new glutpp::shape::desc);
+				typedef std::shared_ptr<VEC_ACTOR>	VEC_ACTOR_S;
+				typedef std::shared_ptr<VEC_SHAPE>	VEC_SHAPE_S;
 
-					sd->load(shape);
 
-					get_shapes()->vec_.push_back(std::make_tuple(sd));
-				}
+				desc();
 
-				// actor
-				glutpp::actor::desc_s ad;
-				for(auto it = actor->actors_.begin(); it != actor->actors_.end(); ++it)
-				{
-					auto a = it->second;
 
-					ad.reset(new glutpp::actor::desc);
-
-					ad->load(a);
-
-					get_actors()->vec_.push_back(std::make_tuple(ad));
-				}
+				void			load(tinyxml2::XMLElement*);
+				void			load(glutpp::actor::actor_s);
+				//void			add_shape(glutpp::shape::desc);
 
 
 
-
-			}
-			void			load(tinyxml2::XMLElement*);
-			void			add_shape(glutpp::shape::desc);
-
-			desc&			operator=(desc const &);
+				desc&			operator=(desc const &);
 
 
-			id_s			get_id() const;
-			raw_s			get_raw() const;
-			vec_actor_desc_s	get_actors() const;
-			vec_shape_desc_s	get_shapes() const;
+				ID_S			get_id() const;
+				RAW_S			get_raw() const;
+				VEC_ACTOR_S		get_actors() const;
+				VEC_SHAPE_S		get_shapes() const;
 
 
 		};

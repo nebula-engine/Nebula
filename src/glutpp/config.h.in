@@ -114,51 +114,51 @@ namespace glutpp {
 
 
 	namespace window {
-		enum flag {
-			SHOULD_RELEASE = 1 << 0,
-		};
 		
-		struct raw;
-
+		class raw;
 		class desc;
+		class window;
+
+		typedef std::shared_ptr<window>		window_s;
+		typedef std::weak_ptr<window>		window_w;
 		typedef std::shared_ptr<desc>		desc_s;
 
-		template<typename> class window;
 	}
 
-	template<typename> class renderable;
+	class renderable;
 
 	namespace scene {
 		enum flag {
 			SHOULD_RELEASE = 1 << 0
 		};
 
-		struct raw;
-		typedef std::shared_ptr<raw>		raw_s;
-		
-		struct id;
-		typedef std::shared_ptr<id>	id_s;
-
-		struct addr;
-		typedef std::shared_ptr<addr>	addr_s;
-
+		class raw;
+		class id;
+		class addr;
 		class desc;
+		class scene;
+		
+		typedef std::shared_ptr<raw>	raw_s;
+		typedef std::shared_ptr<id>	id_s;
+		typedef std::shared_ptr<addr>	addr_s;
 		typedef std::shared_ptr<desc>	desc_s;
-
-		template<typename> class scene;
+		typedef std::shared_ptr<scene>	scene_s;
+	
 	}
 	namespace actor {
-		enum type {
-			NONE = 0,
-			BASE,
-			ACTOR,
-			RIGID_ACTOR,
-			RIGID_BODY,
-			RIGID_DYNAMIC,
-			RIGID_STATIC,
-			PLANE,
-			CONTROLLER,
-			EMPTY
+		struct type {
+			enum e {
+				NONE          = 0,
+				BASE          = 1,
+				ACTOR         = 2,
+				RIGID_ACTOR   = 3,
+				RIGID_BODY    = 4,
+				RIGID_DYNAMIC = 5,
+				RIGID_STATIC  = 6,
+				PLANE         = 7,
+				CONTROLLER    = 8,
+				EMPTY         = 9
+			};
 		};
 		struct type_event {
 			enum e {
@@ -186,23 +186,21 @@ namespace glutpp {
 			};
 		};
 
-		struct id;
-		typedef std::shared_ptr<id>		id_s;
-
-		struct addr;
-		typedef std::shared_ptr<addr>		addr_s;
-
-		struct raw;
-		typedef std::shared_ptr<raw>		raw_s;
-		typedef gal::network::vector<raw>	raw_v;
-
+		class id;
+		class addr;
+		class raw;
+		class raw_factory;
 		class event;
-		typedef std::shared_ptr<event>		event_s;
-
 		class desc;
-		typedef std::shared_ptr<desc>		desc_s;
+		class actor;
 
-		template<typename> class actor;
+		typedef std::shared_ptr<id>		id_s;
+		typedef std::shared_ptr<addr>		addr_s;
+		typedef std::shared_ptr<raw>		raw_s;
+		typedef std::shared_ptr<raw_factory>	raw_factory_s;
+		typedef std::shared_ptr<desc>		desc_s;
+		typedef std::shared_ptr<event>		event_s;
+		typedef std::shared_ptr<actor>		actor_s;
 	}
 
 	namespace shape
@@ -222,20 +220,25 @@ namespace glutpp {
 			};
 		};
 
-		struct id;
-		typedef std::shared_ptr<id>		id_s;
-
-		struct raw;
-		typedef std::shared_ptr<raw>		raw_s;
-
+		class id;
+		class raw;
 		class desc;
-		typedef std::shared_ptr<desc>		desc_s;
-
-
+		class base;
 		class shape;
+
+		typedef std::shared_ptr<base>		base_s;
+		typedef std::shared_ptr<id>		id_s;
+		typedef std::shared_ptr<raw>		raw_s;
+		typedef std::shared_ptr<desc>		desc_s;
 		typedef std::shared_ptr<shape>		shape_s;
+
+		typedef std::weak_ptr<base>		base_w;
+		typedef std::weak_ptr<id>		id_w;
+		typedef std::weak_ptr<raw>		raw_w;
+		typedef std::weak_ptr<desc>		desc_w;
 		typedef std::weak_ptr<shape>		shape_w;
-		typedef gal::map<shape>			shape_m;
+
+
 	}
 	namespace light
 	{
@@ -261,18 +264,16 @@ namespace glutpp {
 		};
 
 		class id;
-		typedef std::shared_ptr<id>		id_s;
-
-		struct raw;
-		typedef std::shared_ptr<raw>		raw_s;
-
+		class raw;
 		class desc;
-		typedef std::shared_ptr<desc>		desc_s;
-
 		class light;
-		typedef std::shared_ptr<light>		light_s;
-		typedef std::shared_ptr<light>		light_w;
-		typedef gal::map<light>			light_m;
+
+
+		typedef std::shared_ptr<id>	id_s;
+		typedef std::shared_ptr<raw>	raw_s;
+		typedef std::shared_ptr<desc>	desc_s;
+		typedef std::shared_ptr<light>	light_s;
+
 	}
 	namespace glsl
 	{
@@ -280,7 +281,7 @@ namespace glutpp {
 	}
 	namespace gui
 	{
-		template<typename> class layout;
+		class layout;
 
 		namespace object
 		{
@@ -289,8 +290,13 @@ namespace glutpp {
 			typedef std::shared_ptr<object>		object_s;
 			typedef gal::map<object>		object_m;
 		}
+
+		typedef std::shared_ptr<layout>		layout_s;
+		typedef std::weak_ptr<layout>		layout_w;
 	}
-	class texture;
+
+
+	/*template<typename>*/ class texture;
 	class camera;
 	typedef std::shared_ptr<camera> camera_s;
 
@@ -298,6 +304,9 @@ namespace glutpp {
 
 
 	class parent;
+
+	typedef std::shared_ptr<renderable>	renderable_s;
+	typedef std::weak_ptr<renderable>	renderable_w;
 	typedef std::shared_ptr<parent>		parent_s;
 	typedef std::weak_ptr<parent>		parent_w;
 

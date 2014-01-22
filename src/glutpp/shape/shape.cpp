@@ -1,15 +1,6 @@
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
-#include <glutpp/config.h>
 #include <glutpp/shape/shape.h>
-#include <glutpp/window/window.h>
-#include <glutpp/texture.h>
 
-
-glutpp::shape::shape::shape(glutpp::parent_s parent):
-	glutpp::parent(parent)
-{
+glutpp::shape::shape::shape(glutpp::parent_s parent): glutpp::parent(parent) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	assert(parent);
@@ -31,13 +22,13 @@ math::mat44 glutpp::shape::shape::get_pose() {
 }
 void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	GLUTPP_DEBUG_0_FUNCTION;
-	
+
 	auto me = std::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
-	
+
 	i_ = desc->get_id()->i_;
 	raw_ = *desc->get_raw();
-	
+
 	// type
 	switch(raw_.type_)
 	{
@@ -58,13 +49,13 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	// program
 	if(strlen(raw_.image_) == 0)
 	{
-		raw_.program_ = glutpp::program_name::LIGHT;
+		program_ = glutpp::program_name::LIGHT;
 	}
 	else
 	{
 		set(glutpp::shape::flag::e::IMAGE);
-		
-		raw_.program_ = glutpp::program_name::IMAGE;
+
+		program_ = glutpp::program_name::IMAGE;
 	}
 
 
@@ -74,11 +65,11 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	for(auto it = desc->get_shapes()->vec_.begin(); it != desc->get_shapes()->vec_.end(); ++it)
 	{
 		sd = std::get<0>(*it);
-	
+
 		shape.reset(new glutpp::shape::shape(me));
-		
+
 		shape->init(sd);
-		
+
 		shapes_.push_back(shape);
 	}
 
@@ -90,26 +81,26 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 		ld = std::get<0>(*it);
 
 		light.reset(new glutpp::light::light(me));
-		
+
 		light->init(/*scene,*/ ld);
-		
+
 		lights_.push_back(light);
 	}
-	
+
 	// material
 	material_front_.raw_ = raw_.front_.raw_;
-	
+
 	printf("diffuse = ");
 	material_front_.raw_.diffuse_.print();
 }
 void glutpp::shape::shape::release() {
 	GLUTPP_DEBUG_0_FUNCTION;
-	
+
 	for(auto it = lights_.begin(); it != lights_.end(); ++it)
 	{
 		it->second->release();
 	}
-	
+
 	lights_.clear();
 }
 void glutpp::shape::shape::cleanup() {
@@ -119,13 +110,13 @@ void glutpp::shape::shape::cleanup() {
 	while(s != shapes_.end()) {
 		auto shape = s->second;
 		assert(shape);
-		
+
 		shape->cleanup();
-		
+
 		if(shape->any(glutpp::shape::flag::e::SHOULD_RELEASE))
 		{
 			shape->release();
-			
+
 			s = shapes_.erase(s);
 		}
 		else
@@ -133,7 +124,7 @@ void glutpp::shape::shape::cleanup() {
 			++s;
 		}
 	}
-	
+
 	auto l = lights_.begin();
 	while(l != lights_.end()) {
 		auto light = l->second;
@@ -164,7 +155,7 @@ void glutpp::shape::shape::step(double time) {
 				std::placeholders::_1,
 				time
 				));
-	
+
 	material_front_.step(time);
 }
 void glutpp::shape::shape::notify_foundation_change_pose() {
@@ -196,8 +187,33 @@ void glutpp::shape::shape::load_lights(int& i, math::mat44 space) {
 		it->second->load(i++, space);
 	}
 }
-void glutpp::shape::shape::init_buffer(
-		glutpp::window::window_s window,
+void glutpp::shape::shape::draw(glutpp::window::window_s window, math::mat44 space) {
+
+	space = space * raw_.pose_;
+
+	switch(raw_.type_)
+	{
+		case glutpp::shape::type::e::BOX:
+		case glutpp::shape::type::e::SPHERE:
+			draw_elements(window, space);
+			break;
+		case glutpp::shape::type::e::EMPTY:
+			break;
+	}
+
+}
+void glutpp::shape::shape::model_load(math::mat44 space) {
+
+	auto p = glutpp::__master.current_program();
+
+	math::vec3 s(raw_.s_);
+
+	math::mat44 scale;
+	scale.SetScale(s);
+
+	p->get_uniform(glutpp::uniform_name::e::MODEL)->load(space * scale);
+}
+void glutpp::shape::shape::init_buffer(glutpp::window::window_s window,
 		std::shared_ptr<glutpp::glsl::program> p) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
@@ -209,9 +225,9 @@ void glutpp::shape::shape::init_buffer(
 		return;
 	}
 
-	checkerror("unknown");
+	//checkerror("unknown");
 
-	std::shared_ptr<glutpp::shape::buffers> bufs(new glutpp::shape::buffers);
+	std::shared_ptr<glutpp::shape::buffer> bufs(new glutpp::shape::buffer);
 	context_[window.get()] = bufs;
 
 	// image
@@ -219,7 +235,7 @@ void glutpp::shape::shape::init_buffer(
 	{
 		bufs->texture_.image_.reset(new glutpp::texture);
 
-		bufs->texture_.image_->load_png(raw_.image_);
+		//bufs->texture_.image_->load_png(raw_.image_);
 	}
 
 	// indices
@@ -233,7 +249,7 @@ void glutpp::shape::shape::init_buffer(
 			mesh_.indices_,
 			GL_STATIC_DRAW);
 
-	checkerror("glBufferData");
+	//checkerror("glBufferData");
 
 	// vertices
 
@@ -255,7 +271,7 @@ void glutpp::shape::shape::init_buffer(
 			GL_FALSE,
 			sizeof(glutpp::vertex),
 			(void*)off_position);
-	checkerror("glVertexAttribPointer");
+	//checkerror("glVertexAttribPointer");
 
 	glVertexAttribPointer(
 			p->get_attrib(glutpp::attrib_name::e::NORMAL)->o_,
@@ -264,7 +280,7 @@ void glutpp::shape::shape::init_buffer(
 			GL_FALSE,
 			sizeof(glutpp::vertex),
 			(void*)off_normal);
-	checkerror("glVertexAttribPointer normal");
+	//checkerror("glVertexAttribPointer normal");
 
 	if(all(glutpp::shape::flag::e::IMAGE)) {
 		glVertexAttribPointer(
@@ -274,7 +290,7 @@ void glutpp::shape::shape::init_buffer(
 				GL_FALSE,
 				sizeof(glutpp::vertex),
 				(void*)off_texcoor);
-		checkerror("glVertexAttribPointer texcoor");
+		//checkerror("glVertexAttribPointer texcoor");
 	}
 
 	size = mesh_.fh_.len_vertices_ * sizeof(glutpp::vertex);
@@ -284,42 +300,17 @@ void glutpp::shape::shape::init_buffer(
 			mesh_.vertices_,
 			GL_STATIC_DRAW);
 
-	checkerror("glBufferData");
+	//checkerror("glBufferData");
 
 	//glBindBuffer(GL_ARRAY_BUFFER,0);
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 }
-void glutpp::shape::shape::model_load(math::mat44 space) {
-
-	auto p = glutpp::__master.current_program();
-
-	math::vec3 s(raw_.s_);
-
-	math::mat44 scale;
-	scale.SetScale(s);
-
-	p->get_uniform(glutpp::uniform_name::e::MODEL)->load(space * scale);
-}
-void glutpp::shape::shape::draw(std::shared_ptr<glutpp::window::window> window, math::mat44 space) {
-
-	space = space * raw_.pose_;
-
-	switch(raw_.type_)
-	{
-		case glutpp::shape::type::e::BOX:
-		case glutpp::shape::type::e::SPHERE:
-			draw_elements(window, space);
-			break;
-		case glutpp::shape::type::e::EMPTY:
-			break;
-	}
-
-}
-void glutpp::shape::shape::draw_elements(std::shared_ptr<glutpp::window::window> window, math::mat44 space) {
+void glutpp::shape::shape::draw_elements(glutpp::window::window_s window,
+		math::mat44 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
-	auto p = glutpp::__master.use_program(raw_.program_);
+	auto p = glutpp::__master.use_program(program_);
 
 	// initialize buffers if not already
 	if(!context_[window.get()])
@@ -328,7 +319,7 @@ void glutpp::shape::shape::draw_elements(std::shared_ptr<glutpp::window::window>
 	}
 	auto bufs = context_[window.get()];
 
-	checkerror("unknown");
+	//checkerror("unknown");
 
 	// attribs
 	p->get_attrib(glutpp::attrib_name::e::POSITION)->enable();
@@ -347,15 +338,17 @@ void glutpp::shape::shape::draw_elements(std::shared_ptr<glutpp::window::window>
 	if(all(glutpp::shape::flag::e::IMAGE))
 	{
 		glActiveTexture(GL_TEXTURE0);
-		checkerror("glActiveTexture");
+		//checkerror("glActiveTexture");
 		bufs->texture_.image_->bind();
 		p->get_uniform(glutpp::uniform_name::e::IMAGE)->load(0);
 	}
 
 	//printf("bind vbo\n");
-	glBindBuffer(GL_ARRAY_BUFFER, bufs->vbo_); checkerror("glBindBuffer");
+	glBindBuffer(GL_ARRAY_BUFFER, bufs->vbo_);
+	//checkerror("glBindBuffer");
 	//printf("bind elements\n");// indices
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufs->indices_); checkerror("glBindBuffer");
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufs->indices_);
+	//checkerror("glBindBuffer");
 
 	//printf("load model\n");
 	model_load(space);
@@ -366,20 +359,22 @@ void glutpp::shape::shape::draw_elements(std::shared_ptr<glutpp::window::window>
 			mesh_.fh_.len_indices_,
 			GL_UNSIGNED_SHORT,
 			0);
-	checkerror("glDrawElements");
+	//checkerror("glDrawElements");
 
 	glDrawElements(
 			GL_LINES,
 			mesh_.fh_.len_indices_,
 			GL_UNSIGNED_SHORT,
 			0);
-	checkerror("glDrawElements");
+	//checkerror("glDrawElements");
 
 
 
 
-	glBindBuffer(GL_ARRAY_BUFFER,0);checkerror("glBindBuffer");
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);checkerror("glBindBuffer");
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	//checkerror("glBindBuffer");
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	//checkerror("glBindBuffer");
 
 	p->get_attrib(glutpp::attrib_name::e::POSITION)->disable();
 	p->get_attrib(glutpp::attrib_name::e::NORMAL)->disable();
@@ -395,6 +390,5 @@ void glutpp::shape::shape::i(int ni) {
 int glutpp::shape::shape::i() {
 	return i_;
 }
-
 
 

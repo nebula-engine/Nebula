@@ -21,60 +21,26 @@ namespace glutpp
 			int	i_;
 		};
 
-		struct addr: gal::network::serial_ext<vec_int> {
-			template<typename SCENE> void load(std::shared_ptr<SCENE> scene) {
-				auto vec = std::get<0>(tup_);
-				vec->vec_.clear();
-				vec->vec_.push_back(scene->i());
-			}
 
-			vec_int_s	get_vec() { return std::get<0>(tup_); }
-		};
-
-
-		typedef gal::network::vector_ext<glutpp::actor::desc> vec_actor_desc;
-		typedef std::shared_ptr<vec_actor_desc> vec_actor_desc_s;
-
-		class desc: public gal::network::serial_ext<vec_actor_desc, raw, id>
+		typedef gal::network::vector_ext<glutpp::actor::desc>	vec_actor_desc;
+		typedef std::shared_ptr<vec_actor_desc>			vec_actor_desc_s;
+		
+		
+		
+		class desc: public gal::network::serial_ext<
+			    id,
+			    raw,
+			    vec_actor_desc>
 		{
 			public:
+				typedef gal::network::serial_ext<id,raw,vec_actor_desc> SER;
+				
+
 				desc();
 
 				void			load(char const *);
 				void			load(tinyxml2::XMLElement*);
-				template<typename SCENE> void load(std::shared_ptr<SCENE> scene) {
-					get_id()->load(scene);
-					get_raw()->load(scene);
-
-					// now
-					for(auto it = scene->actors_.begin(); it != scene->actors_.end(); ++it)
-					{
-						auto actor = it->second;
-
-						glutpp::actor::desc_s ad(new glutpp::actor::desc);
-
-						ad->load(actor);
-
-						ad->get_raw()->mode_create_ = glutpp::actor::mode_create::NOW;
-
-						get_actors()->vec_.push_back(std::make_tuple(ad));
-					}
-
-					// deferred
-					for(auto it = scene->actors_deferred_.begin(); it != scene->actors_deferred_.end(); ++it)
-					{
-						auto desc = it->second;
-
-						glutpp::actor::desc_s ad(new glutpp::actor::desc);
-
-						*ad = *desc;
-
-						ad->get_raw()->mode_create_ = glutpp::actor::mode_create::DEFERRED;
-
-						get_actors()->vec_.push_back(std::make_tuple(ad));
-					}
-				}		
-
+				void			load(glutpp::scene::scene_s);
 
 
 				id_s			get_id();

@@ -33,55 +33,26 @@ void	glutpp::shape::desc::load(tinyxml2::XMLElement* element) {
 		element_light = element_light->NextSiblingElement("light");
 	}
 }
-void glutpp::shape::desc::load(glutpp::shape::shape_s shape) {
-
-	get_id()->i_ = shape->i();
-	*get_raw() = shape->raw_;
+void	glutpp::shape::desc::load(glutpp::shape::shape_s shape) {
 	
-	// shape
-	glutpp::shape::desc_s sd;
-	for(auto it = shape->shapes_.begin(); it != shape->shapes_.end(); ++it)
-	{
-		auto shape = it->second;
-		
-		sd.reset(new glutpp::shape::desc);
-		
-		sd->load(shape);
-		
-		get_shapes()->vec_.push_back(std::make_tuple(sd));
-	}
-
-
-	// light
-	glutpp::light::desc_s ld;
-	for(auto it = shape->lights_.begin(); it != shape->lights_.end(); ++it)
-	{
-		auto light = it->second;
-
-		ld.reset(new glutpp::light::desc);
-
-		ld->load(light);
-		
-		get_lights()->vec_.push_back(std::make_tuple(ld));
-	}
 }
 glutpp::shape::id_s glutpp::shape::desc::get_id() {
-	auto p = std::get<3>(tup_);
+	glutpp::shape::id_s p = std::get<0>(tup_);
 	assert(p);
 	return p;
 }
 glutpp::shape::raw_s glutpp::shape::desc::get_raw() {
-	auto p = std::get<2>(tup_);
+	glutpp::shape::raw_s p = std::get<1>(tup_);
 	assert(p);
 	return p;
 }
 glutpp::shape::vec_shape_desc_s glutpp::shape::desc::get_shapes() {
-	auto p = std::get<1>(tup_);
+	glutpp::shape::vec_shape_desc_s p = std::get<2>(tup_);
 	assert(p);
 	return p;
 }
 glutpp::shape::vec_light_desc_s glutpp::shape::desc::get_lights() {
-	auto p = std::get<0>(tup_);
+	glutpp::shape::vec_light_desc_s p = std::get<3>(tup_);
 	assert(p);
 	return p;
 }

@@ -245,6 +245,30 @@ src/glutpp/actor/raw.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/actor/raw.cpp.s
 .PHONY : src/glutpp/actor/raw.cpp.s
 
+src/glutpp/actor/raw_factory.o: src/glutpp/actor/raw_factory.cpp.o
+.PHONY : src/glutpp/actor/raw_factory.o
+
+# target to build an object file
+src/glutpp/actor/raw_factory.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/actor/raw_factory.cpp.o
+.PHONY : src/glutpp/actor/raw_factory.cpp.o
+
+src/glutpp/actor/raw_factory.i: src/glutpp/actor/raw_factory.cpp.i
+.PHONY : src/glutpp/actor/raw_factory.i
+
+# target to preprocess a source file
+src/glutpp/actor/raw_factory.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/actor/raw_factory.cpp.i
+.PHONY : src/glutpp/actor/raw_factory.cpp.i
+
+src/glutpp/actor/raw_factory.s: src/glutpp/actor/raw_factory.cpp.s
+.PHONY : src/glutpp/actor/raw_factory.s
+
+# target to generate assembly for a file
+src/glutpp/actor/raw_factory.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/actor/raw_factory.cpp.s
+.PHONY : src/glutpp/actor/raw_factory.cpp.s
+
 src/glutpp/camera.o: src/glutpp/camera.cpp.o
 .PHONY : src/glutpp/camera.o
 
@@ -1086,6 +1110,9 @@ help:
 	@echo "... src/glutpp/actor/raw.o"
 	@echo "... src/glutpp/actor/raw.i"
 	@echo "... src/glutpp/actor/raw.s"
+	@echo "... src/glutpp/actor/raw_factory.o"
+	@echo "... src/glutpp/actor/raw_factory.i"
+	@echo "... src/glutpp/actor/raw_factory.s"
 	@echo "... src/glutpp/camera.o"
 	@echo "... src/glutpp/camera.i"
 	@echo "... src/glutpp/camera.s"

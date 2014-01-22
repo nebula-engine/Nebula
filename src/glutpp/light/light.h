@@ -1,15 +1,17 @@
 #ifndef __GLUTPP_LIGHT_H__
 #define __GLUTPP_LIGHT_H__
 
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <gal/flag.h>
+
 #include <glutpp/config.h>
-#include <glutpp/actor/actor.h>
 #include <glutpp/camera.h>
 #include <glutpp/texture.h>
 
 #include <glutpp/light/desc.h>
-
+#include <glutpp/light/raw.h>
 
 #include <math/color.h>
 
@@ -21,6 +23,7 @@ namespace glutpp
 		class light: public gal::flag<unsigned int>
 		{
 			public:
+				
 				light(glutpp::shape::shape_s);
 				void				i(int);
 				void				init(
@@ -53,7 +56,7 @@ namespace glutpp
 				texture				texture_shadow_map_;
 
 				//glutpp::scene::scene_w		scene_;
-				glutpp::shape::shape_w		shape_;
+				glutpp::shape::shape_w			shape_;
 
 		};
 	}

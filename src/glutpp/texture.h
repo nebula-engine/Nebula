@@ -15,12 +15,16 @@
 
 namespace glutpp
 {
-	class texture
+	/*template<typename WINDOW>*/ class texture
 	{
 		public:
+			//typedef std::shared_ptr<WINDOW>		WINDOW_S;
+			//typedef std::weak_ptr<WINDOW>		WINDOW_W;
+			
+
 			texture();
 			~texture();
-			void			init(glutpp::window::window_s);
+			//void			init(WINDOW_S);
 			void			init_shadow(int,int);
 			int			load_png(char const *);
 			void			bind();
@@ -29,7 +33,7 @@ namespace glutpp
 			GLint			h_;
 			GLuint			o_;
 			
-			glutpp::window::window_s		window_;
+//			WINDOW_W		window_;
 	};
 }
 
