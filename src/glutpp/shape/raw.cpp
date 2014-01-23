@@ -3,14 +3,14 @@
 #include <glutpp/shape/raw.h>
 
 
-glutpp::shape::raw::raw():
+glutpp::shape::raw_base::raw_base():
 	flag_(0)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	memset(image_, '\0', max_filename_length);
 }
-void	glutpp::shape::raw::load(tinyxml2::XMLElement* element)
+void	glutpp::shape::raw_base::load(tinyxml2::XMLElement* element)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
@@ -32,8 +32,7 @@ void	glutpp::shape::raw::load(tinyxml2::XMLElement* element)
 	//program_ = glutpp::program_name::LIGHT;
 
 	// material
-	front_.raw_.load(element->FirstChildElement("front"));	
-	
+		
 	// image
 	tinyxml2::XMLElement* element_image = element->FirstChildElement("image");
 	
@@ -53,7 +52,7 @@ void	glutpp::shape::raw::load(tinyxml2::XMLElement* element)
 	
 	printf("image = '%s'\n", image_);
 }
-void	glutpp::shape::raw::parse_type(char const * str)
+void	glutpp::shape::raw_base::parse_type(char const * str)
 {
 	assert(str);
 	if(strcmp(str,"box") == 0)
@@ -74,31 +73,55 @@ void	glutpp::shape::raw::parse_type(char const * str)
 		abort();
 	}
 }
-void glutpp::shape::raw::box(math::vec3 ns)
+void glutpp::shape::raw_base::box(math::vec3 ns)
 {
 	type_ = glutpp::shape::type::BOX;
 	
 	s_ = ns;
 }
-void glutpp::shape::raw::box(tinyxml2::XMLElement* element)
+void glutpp::shape::raw_base::box(tinyxml2::XMLElement* element)
 {
 	type_ = glutpp::shape::type::BOX;
 	
 	s_ = math::xml_parse_vec3(element->FirstChildElement("s"), math::vec3(1,1,1));
 }
-void glutpp::shape::raw::sphere(float r)
+void glutpp::shape::raw_base::sphere(float r)
 {
 	type_ = glutpp::shape::type::SPHERE;
 	
 	s_ = math::vec3(r, r, r);
 }
-void glutpp::shape::raw::sphere(tinyxml2::XMLElement* element)
+void glutpp::shape::raw_base::sphere(tinyxml2::XMLElement* element)
 {
 	type_ = glutpp::shape::type::SPHERE;
 
 	float r = math::xml_parse_float(element->FirstChildElement("s"));
 	s_ = math::vec3(r, r, r);
 }
+
+
+
+
+
+void	glutpp::shape::raw::load(tinyxml2::XMLElement* element) {
+	
+	get_raw_base()->load(element);
+	
+	tinyxml2::XMLElement* e = element->FirstChildElement("front");
+	
+	while(e != NULL)
+	{
+		glutpp::material::raw m;
+		m.load(e);
+		
+		get_vec_mat()->vec_.push_back(m);
+		
+		e = e->NextSiblingElement("front");	
+	}
+}
+
+
+
 
 
 

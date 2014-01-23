@@ -62,13 +62,6 @@ namespace glutpp {
 					filter_data	scene_query_;
 				} filter_data_;
 		};
-
-
-
-		class event: public gal::network::serial<event, gal::network::base> {
-			public:
-				glutpp::actor::type_event::e	type_;
-		};
 	}
 }
 

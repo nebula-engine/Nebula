@@ -18,14 +18,14 @@ namespace glutpp
 {
 	namespace shape
 	{
-		class raw: public gal::network::serial<raw, gal::network::base> {
+		class raw_base: public gal::network::serial<raw, gal::network::base> {
 			public:
 				enum
 				{
 					max_filename_length = 20
 				};
 
-				raw();
+				raw_base();
 				void			load(tinyxml2::XMLElement*);
 				void			parse_type(char const *);
 
@@ -42,11 +42,23 @@ namespace glutpp
 				math::transform		pose_;
 				math::vec3		s_;
 
-				glutpp::material::material	front_;
 
-				
 				char			image_[max_filename_length];
 				char			normal_[max_filename_length];
+
+		};
+		
+		typedef gal::network::vector<glutpp::material::raw> vec_mat;
+		
+		typedef std::shared_ptr<vec_mat> vec_mat_s;
+		
+		class raw: public gal::network::serial_ext<raw_base, vec_mat> {
+			public:
+				void		load(tinyxml2::XMLElement*);
+
+				raw_base_s	get_raw_base();
+				vec_mat_s	get_vec_mat();
+				
 		};
 	}
 }

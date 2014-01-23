@@ -160,12 +160,7 @@ namespace glutpp {
 				EMPTY         = 9
 			};
 		};
-		struct type_event {
-			enum e {
-				NONE = 0x0,
-				FIRE = 0x1,
-			};
-		};
+	
 		struct mode_create {
 			enum e {
 				NOW,
@@ -216,13 +211,15 @@ namespace glutpp {
 
 		class id;
 		class raw;
+		class raw_base;
 		class desc;
 		class base;
 		class shape;
-
+		
 		typedef std::shared_ptr<base>		base_s;
 		typedef std::shared_ptr<id>		id_s;
 		typedef std::shared_ptr<raw>		raw_s;
+		typedef std::shared_ptr<raw_base>	raw_base_s;
 		typedef std::shared_ptr<desc>		desc_s;
 		typedef std::shared_ptr<shape>		shape_s;
 
