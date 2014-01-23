@@ -179,13 +179,7 @@ namespace glutpp {
 				REMOTE = 0x2,
 			};
 		};
-		struct flag {
-			enum e {
-				SHOULD_RELEASE	= 1 << 0,
-				SHOULD_UPDATE	= 1 << 1,
-			};
-		};
-
+		
 		class id;
 		class addr;
 		class raw;

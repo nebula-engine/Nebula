@@ -57,11 +57,16 @@ void glutpp::actor::actor::i(int ni) {
 int glutpp::actor::actor::i() {
 	return i_;
 }
+glutpp::actor::raw_s glutpp::actor::actor::get_raw()
+{
+	assert(raw_);
+	return raw_;
+}
 void glutpp::actor::actor::init(glutpp::actor::desc_s desc) {
 	int type = desc->get_raw()->type_;
-	
+
 	raw_ = glutpp::__master.get_raw_factory()->create(type);
-	
+
 	assert(raw_);
 	//raw_.reset(new glutpp::actor::raw);
 	raw_->operator=(*desc->get_raw());
@@ -85,7 +90,7 @@ void glutpp::actor::actor::cleanup() {
 
 		actor->cleanup();
 
-		if(actor->any(glutpp::actor::flag::e::SHOULD_RELEASE))
+		if(actor->any(glutpp::actor::actor::flag::e::SHOULD_RELEASE))
 		{
 			actor->release();
 
@@ -141,10 +146,10 @@ math::mat44 glutpp::actor::actor::get_pose() {
 }
 void glutpp::actor::actor::set_pose(math::transform pose) {
 	assert(raw_);
-	
+
 	raw_->pose_ = pose;
 
-	set(glutpp::actor::flag::e::SHOULD_UPDATE);
+	set(glutpp::actor::actor::flag::e::SHOULD_UPDATE);
 
 	notify_foundation_change_pose();
 }
@@ -168,7 +173,7 @@ void glutpp::actor::actor::notify_foundation_change_pose() {
 void glutpp::actor::actor::load_lights(int& i, math::mat44 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 	assert(raw_);
-	
+
 	space *= raw_->pose_;
 
 	for(auto it = actors_.begin(); it != actors_.end(); ++it)

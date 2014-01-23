@@ -20,7 +20,7 @@ void glutpp::network::actor::update::load(glutpp::actor::actor_s actor) {
 	addr->load_this(actor);
 	*raw = *actor->get_raw();
 	
-	if(actor->any(glutpp::actor::flag::SHOULD_UPDATE))
+	if(actor->any(glutpp::actor::actor::flag::SHOULD_UPDATE))
 	{
 		std::get<0>(tup_)->vec_.push_back(t);
 	}

@@ -25,45 +25,55 @@
 #include <glutpp/material.h>
 #include <glutpp/shape/shape.h>
 
-namespace glutpp {
-	namespace actor {
-		class actor: public glutpp::parent, public gal::flag<unsigned int> {
-
-			public:
-				actor(glutpp::parent_s parent);
-				
-				void			i(int ni);
-				int			i();
-		
-				unsigned int		f();
-				void			f(unsigned int flag);
-		
-				void			init(glutpp::actor::desc_s desc);
-				void			cleanup();
-				void			release();
-				void			step(double time);
-
-				math::mat44		get_pose();
-				void			set_pose(math::transform pose);
-
-				void			notify_foundation_change_pose();
-
-				void			load_lights(int&, math::mat44);
-				glutpp::scene::scene_s	get_scene();
-				
-				void			draw(glutpp::window::window_s, math::mat44);
+namespace glutpp { namespace actor {
+	class actor: public glutpp::parent, public gal::flag<unsigned int> {
+		public:
+			struct flag {
+				enum e {
+					SHOULD_RELEASE	= 1 << 0,
+					SHOULD_UPDATE	= 1 << 1,
+					DESTRUCTIBLE    = 1 << 2,
+				};
+			};
 
 
-				gal::map<glutpp::shape::shape>		shapes_;
-				gal::map<glutpp::actor::actor>		actors_;
-				
-				glutpp::actor::raw_s		get_raw() { assert(raw_); return raw_; }
-				
-				int		i_;
-			protected:
-				raw_s		raw_;
-		};
-	}
+
+			actor(glutpp::parent_s parent);
+
+			void				i(int ni);
+			int				i();
+
+			unsigned int			f();
+			void				f(unsigned int flag);
+
+			virtual void			init(glutpp::actor::desc_s desc);
+			virtual void			cleanup();
+			virtual void			release();
+			virtual void			step(double time);
+
+			math::mat44			get_pose();
+			void				set_pose(math::transform pose);
+
+			void				notify_foundation_change_pose();
+
+			void				load_lights(int&, math::mat44);
+			glutpp::scene::scene_s		get_scene();
+
+			void				draw(glutpp::window::window_s, math::mat44);
+
+			virtual glutpp::actor::raw_s	get_raw();
+		public:
+
+			gal::map<glutpp::shape::shape>		shapes_;
+			gal::map<glutpp::actor::actor>		actors_;
+
+
+
+			int		i_;
+		protected:
+			raw_s		raw_;
+	};
+}
 }
 
 #endif

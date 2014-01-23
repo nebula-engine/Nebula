@@ -85,6 +85,28 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	// velocity
 	velocity_ = math::xml_parse_vec3(element->FirstChildElement("velocity"), velocity_);
 	
+	// flags
+	tinyxml2::XMLElement* e = element->FirstChildElement("flag");
+	while(e != NULL)
+	{
+		buf = e->GetText();
+		if(strcmp(buf, "DESTRUCTIBLE") == 0)
+		{
+			flag_ |= glutpp::actor::actor::flag::e::DESTRUCTIBLE;
+		}
+		else if(strcmp(buf, "DESTRUCTIBLE") == 0)
+		{
+			
+		}
+		else
+		{
+			printf("unknwon flag '%s'\n", buf);
+			abort();
+		}
+		
+		e = e->NextSiblingElement("flag");
+	}
+
 	// filtering
 	parse_filtering(element);
 }
@@ -96,7 +118,7 @@ void glutpp::actor::raw::parse_filtering(tinyxml2::XMLElement* element) {
 	tinyxml2::XMLElement* fd = element->FirstChildElement("fd");
 	tinyxml2::XMLElement* sim = NULL;
 	tinyxml2::XMLElement* qry = NULL;
-	
+
 	if(fd)
 	{
 		sim = fd->FirstChildElement("sim");
@@ -107,7 +129,7 @@ void glutpp::actor::raw::parse_filtering(tinyxml2::XMLElement* element) {
 			filter_data_.simulation_.word2 = parse_filter(sim->FirstChildElement("w2"), 0);
 			filter_data_.simulation_.word3 = parse_filter(sim->FirstChildElement("w3"), 0);
 		}
-		
+
 		qry = fd->FirstChildElement("qry");
 		if(sim)
 		{
@@ -146,9 +168,9 @@ unsigned int glutpp::actor::raw::parse_filter(tinyxml2::XMLElement* element, uns
 	{
 		return glutpp::filter::PROJECTILE_AGAINST;
 	}
-	
-	
-	
+
+
+
 	abort();
 }
 void glutpp::actor::raw::plane(tinyxml2::XMLElement* element) {
