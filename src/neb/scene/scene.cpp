@@ -420,7 +420,7 @@ void neb::scene::scene::step(double time) {
 		
 		actor->cleanup();
 		
-		if(actor->any(glutpp::actor::flag::e::SHOULD_RELEASE)) {
+		if(actor->any(glutpp::actor::actor::flag::e::SHOULD_RELEASE)) {
 			actor->release();
 			
 			it = actors_.map_.erase(it);
@@ -483,8 +483,9 @@ void neb::scene::scene::step_local(double time) {
 		void* ud = active_transforms[i].userData;
 		assert(ud);
 		
-
-		neb::actor::Actor* actor = dynamic_cast<neb::actor::Actor*>((glutpp::actor::actor*)ud);
+		glutpp::actor::actor* gl_actor = static_cast<glutpp::actor::actor*>(ud);
+		
+		neb::actor::Actor* actor = dynamic_cast<neb::actor::Actor*>(gl_actor);
 		if(actor != NULL)
 		{
 			pose = active_transforms[i].actor2World;
@@ -504,7 +505,7 @@ void neb::scene::scene::step_local(double time) {
 				//v.print();
 			}
 
-			actor->set(glutpp::actor::flag::SHOULD_UPDATE);
+			actor->set(glutpp::actor::actor::flag::SHOULD_UPDATE);
 		}
 	}
 

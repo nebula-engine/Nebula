@@ -26,6 +26,9 @@ namespace neb {
 					virtual int			key_fun1(int,int);
 
 					void				step_local(double);
+					void				step_local0(double);
+					void				step_local1(double);
+	
 
 					math::vec3			f();
 					math::vec3			t();

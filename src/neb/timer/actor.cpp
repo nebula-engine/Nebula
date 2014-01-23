@@ -17,7 +17,7 @@ void neb::timer::actor::activate() {
         switch(type_)
         {
                 case RELEASE:
-                        a->set(glutpp::actor::flag::SHOULD_RELEASE);
+                        a->set(glutpp::actor::actor::flag::SHOULD_RELEASE);
                         break;
 		default:
 			break;

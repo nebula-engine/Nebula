@@ -23,20 +23,8 @@ void	neb::simulation_callback::onContact(
 		
 		if(cp.events & physx::PxPairFlag::eNOTIFY_TOUCH_FOUND)
 		{
-			physx::PxU32 w02 = actor0->get_raw()->filter_data_.simulation_.word2;
-			physx::PxU32 w12 = actor1->get_raw()->filter_data_.simulation_.word2;
-			
-			if(w02 & glutpp::filter::type::PROJECTILE)
-			{
-				//printf("delete actor\n");
-				actor0->set(glutpp::actor::flag::SHOULD_RELEASE);
-			}
-			
-			if(w12 & glutpp::filter::type::PROJECTILE)
-			{
-				//printf("delete actor\n");
-				actor1->set(glutpp::actor::flag::SHOULD_RELEASE);
-			}
+			actor0->hit();
+			actor1->hit();
 		}
 	}
 }

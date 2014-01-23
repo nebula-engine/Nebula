@@ -1,3 +1,4 @@
+#include <math/mat33.h>
 #include <neb/control/rigid_body/control.h>
 
 neb::control::rigid_body::control::control()
@@ -256,6 +257,21 @@ int neb::control::rigid_body::control::key_fun1(int key, int action) {
 }
 void neb::control::rigid_body::control::step_local(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
+	
+	switch(raw_.type_) {
+		case neb::control::rigid_body::type::T0:
+			return step_local0(time);
+		case neb::control::rigid_body::type::T1:
+			return step_local1(time);
+		default:
+			break;
+	}
+}
+void neb::control::rigid_body::control::step_local0(double time) {
+	
+}
+void neb::control::rigid_body::control::step_local1(double time) {
+	NEBULA_DEBUG_1_FUNCTION;
 
 	raw_.torque_ = math::vec3();
 
@@ -263,23 +279,36 @@ void neb::control::rigid_body::control::step_local(double time) {
 	auto actor = std::dynamic_pointer_cast<neb::actor::Actor>(actor_.lock());
 
 	auto pxrigidbody = actor->px_actor_->isRigidBody();
+	
+	math::quat a;
 
-	math::vec3 I = pxrigidbody->getMassSpaceInertiaTensor();
+	math::mat33 ac(
+			0, -a.z, a.y,
+			a.z, 0, -a.x,
+			-a.y, a.x, 0);
+	
+	
+	
+	vec3 u = 0.5 * ((ac + I * a.w) * Gp + I * gamma * (1 - a.w)) * a.get_axis() - Gr * omega;
 
-	// todo: make m dependent on direction of rotation
-	float m = I.dot(math::vec3(1.0,0.0,0.0));
 
-	float k = 10.0;
-	float c = -2.0f * sqrt(m * k);
-	pid_.coeff_p_ = k;
-	pid_.coeff_d_ = c;
+		/*
+		   math::vec3 I = pxrigidbody->getMassSpaceInertiaTensor();
+
+		// todo: make m dependent on direction of rotation
+		float m = I.dot(math::vec3(1.0,0.0,0.0));
+
+		float k = 10.0;
+		float c = -2.0f * sqrt(m * k);
+		pid_.coeff_p_ = k;
+		pid_.coeff_d_ = c;
 
 
-	math::quat q = actor->get_raw()->pose_.q;
+		math::quat q = actor->get_raw()->pose_.q;
 
-	math::quat rot = q * raw_.q_target_.getConjugate();
-	if(rot.magnitude() > 0)
-	{
+		math::quat rot = q * raw_.q_target_.getConjugate();
+		if(rot.magnitude() > 0)
+		{
 		float theta = -2.0 * acos(rot.w);
 
 		theta = (theta > M_PI) ? (theta - 360.f) : theta;
@@ -306,9 +335,10 @@ void neb::control::rigid_body::control::step_local(double time) {
 
 		//printf("torque=\n");
 		//t.print();
-		
+
 		raw_.torque_ = t + te;
-	}
+		}
+		 */
 }
 math::vec3 neb::control::rigid_body::control::f() {
 	NEBULA_DEBUG_1_FUNCTION;
@@ -321,10 +351,10 @@ math::vec3 neb::control::rigid_body::control::t() {
 	return raw_.torque_;
 }
 void neb::control::rigid_body::control::print() {
-	
+
 	printf("torque\n");
 	raw_.torque_.print();
-	
+
 	printf("force\n");
 	raw_.force_.print();
 

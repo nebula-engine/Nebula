@@ -54,21 +54,24 @@ namespace neb
 				neb::actor::Base_s		get_actor(glutpp::actor::addr_s);
 
 				virtual glutpp::actor::desc_s	get_projectile();
+	
 
-
-
-
-
-				virtual int			fire();
+				virtual void			hit();
+				virtual void			damage(float);
+				
 				
 				virtual void			step_local(double);
 				virtual void			step_remote(double);
-
+				
+				neb::actor::raw_s		get_raw_base();
+				
 				// signal
 				void				connect(glutpp::window::window_s);
 				
-				int				key_fun(int,int,int,int);
 				
+				int				key_fun(int,int,int,int);
+				virtual int			fire();
+
 				
 				// conversion
 				Base_s				to_base();

@@ -14,7 +14,7 @@ math::mat44	neb::camera::ridealong::supply()
 
 	auto actor = actor_.lock();
 
-	if(actor->all(glutpp::actor::flag::SHOULD_RELEASE))
+	if(actor->all(glutpp::actor::actor::flag::SHOULD_RELEASE))
 	{
 		return math::mat44();
 	}

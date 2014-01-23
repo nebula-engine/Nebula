@@ -28,8 +28,10 @@ void	neb::actor::rigid_body::rigid_body::init(glutpp::actor::desc_s desc) {
 }
 void neb::actor::rigid_body::rigid_body::step_local(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
-
+	
 	neb::actor::Rigid_Actor::step_local(time);
+	
+	if(control_) control_->step_local(time);
 	
 	add_force(time);
 }
@@ -150,7 +152,7 @@ void neb::actor::rigid_body::rigid_body::create_control(neb::control::rigid_body
 	control_ = control;
 
 	control->actor_ = me;
-	control->raw_.type_ = neb::control::rigid_body::type::T0;
+	control->raw_.type_ = neb::control::rigid_body::type::T1;
 
 
 	if(!window_.expired())

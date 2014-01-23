@@ -150,6 +150,13 @@ neb::actor::Base_s neb::actor::Base::get_actor(int i) {
 		return a;
 	}
 }
+neb::actor::raw_s neb::actor::Base::get_raw_base() {
+	NEBULA_DEBUG_1_FUNCTION;
+	auto raw = get_raw();
+	auto raw_base = std::dynamic_pointer_cast<neb::actor::raw>(raw);
+	assert(raw_base);
+	return raw_base;
+}
 neb::actor::Base_s neb::actor::Base::get_actor(glutpp::actor::addr_s addr) {
 	NEBULA_DEBUG_1_FUNCTION;
 
@@ -213,6 +220,27 @@ void neb::actor::Base::create_shapes(glutpp::actor::desc_s desc) {
 		shape->init(sd);
 
 		shapes_.push_back(shape);
+	}
+}
+void neb::actor::Base::hit() {
+	
+	physx::PxU32 w2 = get_raw()->filter_data_.simulation_.word2;
+	
+	if(w2 & glutpp::filter::type::PROJECTILE)
+	{
+		set(glutpp::actor::actor::flag::e::SHOULD_RELEASE);
+	}
+	
+	if(any(glutpp::actor::actor::flag::e::DESTRUCTIBLE))
+	{
+		damage(0.1);
+	}
+}
+void neb::actor::Base::damage(float h) {
+	get_raw_base()->health_ -= h;
+	if(get_raw_base()->health_ < 0)
+	{
+		set(glutpp::actor::actor::flag::e::SHOULD_RELEASE);
 	}
 }
 void neb::actor::Base::connect(glutpp::window::window_s window) {
