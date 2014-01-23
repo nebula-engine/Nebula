@@ -22,6 +22,9 @@ namespace neb {
 					math::quat			q_target_;
 					math::vec3			p_target_;
 
+					math::vec3			f_;
+					math::vec3			t_;
+
 					math::vec3			force_;
 					math::vec3			torque_;
 			};

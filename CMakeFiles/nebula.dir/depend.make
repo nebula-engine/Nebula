@@ -867,6 +867,7 @@ CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/gl
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../glutpp/src/glutpp/texture.h
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/color.h
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/geo/polyhedron.h
+CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/mat33.h
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/mat44.h
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/math.h
 CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o: ../math/src/math/quat.h

@@ -22,8 +22,6 @@ namespace neb {
 					control();
 
 					virtual int			key_fun(int,int,int,int);
-					virtual int			key_fun0(int,int);
-					virtual int			key_fun1(int,int);
 
 					void				step_local(double);
 					void				step_local0(double);
@@ -47,6 +45,8 @@ namespace neb {
 					} conn_;
 
 					gal::control::control		pid_;
+
+					double last_;
 			};
 		}
 	}

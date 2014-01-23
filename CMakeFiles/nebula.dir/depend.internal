@@ -868,6 +868,7 @@ CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o
  ../glutpp/src/glutpp/texture.h
  ../math/src/math/color.h
  ../math/src/math/geo/polyhedron.h
+ ../math/src/math/mat33.h
  ../math/src/math/mat44.h
  ../math/src/math/math.h
  ../math/src/math/quat.h

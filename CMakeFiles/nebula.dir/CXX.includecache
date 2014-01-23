@@ -466,6 +466,8 @@ stdlib.h
 math/vec3.h
 -
 
+../math/src/math/mat33.h
+
 ../math/src/math/mat44.h
 
 ../math/src/math/math.h
@@ -507,6 +509,8 @@ math/math.h
 ../math/src/math/vec4.h
 
 /home/charles/Programming/C++/nebula/src/neb/control/rigid_body/control.cpp
+math/mat33.h
+-
 neb/control/rigid_body/control.h
 -
 

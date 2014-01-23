@@ -152,7 +152,7 @@ void neb::actor::rigid_body::rigid_body::create_control(neb::control::rigid_body
 	control_ = control;
 
 	control->actor_ = me;
-	control->raw_.type_ = neb::control::rigid_body::type::T1;
+	control->raw_.type_ = neb::control::rigid_body::type::T0;
 
 
 	if(!window_.expired())
