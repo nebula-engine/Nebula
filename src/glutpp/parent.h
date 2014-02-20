@@ -19,10 +19,8 @@
 #include <glutpp/material.h>
 #include <glutpp/mesh.h>
 
-namespace glutpp
-{
-	class parent: public std::enable_shared_from_this<parent>
-	{
+namespace glutpp {
+	class parent: public std::enable_shared_from_this<parent> {
 		public:
 			parent(glutpp::parent_s = glutpp::parent_s());
 			virtual ~parent();
@@ -33,6 +31,9 @@ namespace glutpp
 			virtual math::mat44		get_pose() = 0;
 			
 			glutpp::parent_w		parent_;
+			
+			glutpp::actor::actor_s		is_actor();
+			glutpp::shape::shape_s		is_shape();
 	};
 }
 

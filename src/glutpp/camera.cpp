@@ -17,7 +17,7 @@
 glutpp::camera::camera():
 	fovy_(45.0f),
 	zn_(2.0f),
-	zf_(100.0f),
+	zf_(10000.0f),
 	w_(100),
 	h_(100)
 {
@@ -54,7 +54,7 @@ math::mat44	glutpp::camera::proj() {
 }
 void		glutpp::camera::load() {
 	
-	auto p = glutpp::__master.get_program(glutpp::program_name::e::LIGHT);
+	auto p = glutpp::master::Global()->get_program(glutpp::program_name::e::LIGHT);
 
 	glViewport(0, 0, w_, h_);
 

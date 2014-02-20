@@ -758,6 +758,25 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o
  src/glutpp/gui/object/edittext.h
  src/glutpp/gui/object/object.h
  src/glutpp/gui/object/object_factory.h
+ src/glutpp/gui/object/terminal.h
+ src/glutpp/gui/object/textview.h
+ src/glutpp/master.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o
+ ../galaxy/src/gal/config.h
+ ../galaxy/src/gal/except.h
+ ../galaxy/src/gal/flag.h
+ ../galaxy/src/gal/map.h
+ ../galaxy/src/gal/network/message.h
+ ../galaxy/src/gal/network/vector.h
+ ../galaxy/src/gal/sig/connection.h
+ ../galaxy/src/gal/sig/signal.h
+ ../galaxy/src/gal/util.h
+ ../math/src/math/color.h
+ /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/terminal.cpp
+ src/glutpp/config.h
+ src/glutpp/free.h
+ src/glutpp/gui/object/object.h
+ src/glutpp/gui/object/terminal.h
  src/glutpp/gui/object/textview.h
  src/glutpp/master.h
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o

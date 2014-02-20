@@ -65,7 +65,7 @@ glutpp::actor::raw_s glutpp::actor::actor::get_raw()
 void glutpp::actor::actor::init(glutpp::actor::desc_s desc) {
 	int type = desc->get_raw()->type_;
 
-	raw_ = glutpp::__master.get_raw_factory()->create(type);
+	raw_ = glutpp::master::Global()->get_raw_factory()->create(type);
 
 	assert(raw_);
 	//raw_.reset(new glutpp::actor::raw);

@@ -51,12 +51,12 @@ void glutpp::gui::layout::create_object(tinyxml2::XMLElement* element) {
 
 	assert(element);
 
-	auto object = glutpp::__master.object_factory_->create(element);
+	auto object = glutpp::master::Global()->object_factory_->create(element);
 
 	objects_.push_back(object);
 }
 void glutpp::gui::layout::render(double time) {
-	//auto p = glutpp::__master.use_program(glutpp::program_name::e::TEXT);
+	//auto p = glutpp::master::Global()->use_program(glutpp::program_name::e::TEXT);
 
 	//Restore other states
 	//glDisable(GL_LIGHTING);
@@ -84,15 +84,15 @@ void glutpp::gui::layout::connect() {
 
 	glutpp::window::window_s w = get_window();
 
-	/*conns_.key_fun_ = w->sig_.key_fun_.connect(
-	  std::bind(&glutpp::gui::layout::key_fun,
-	  this,
-	  std::placeholders::_1,
-	  std::placeholders::_2,
-	  std::placeholders::_3,
-	  std::placeholders::_4
-	  ));
-	 */
+	conns_.key_fun_ = w->sig_.key_fun_.connect(
+			std::bind(&glutpp::gui::layout::key_fun,
+				this,
+				std::placeholders::_1,
+				std::placeholders::_2,
+				std::placeholders::_3,
+				std::placeholders::_4
+				));
+
 	conns_.mouse_button_fun_ = w->sig_.mouse_button_fun_.connect(
 			std::bind(&glutpp::gui::layout::mouse_button_fun,
 				this,
@@ -102,7 +102,10 @@ void glutpp::gui::layout::connect() {
 				));
 
 }
-int glutpp::gui::layout::mouse_button_fun(int button, int action, int mods){
+int glutpp::gui::layout::key_fun(int key, int scancode, int action, int mode) {
+	
+}
+int glutpp::gui::layout::mouse_button_fun(int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	switch(action)

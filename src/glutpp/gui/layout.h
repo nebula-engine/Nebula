@@ -35,7 +35,7 @@ namespace glutpp
 	
 				int		search(int button, int action, int mods);
 				int		mouse_button_fun(int button, int action, int mods);
-				
+				int		key_fun(int,int,int,int);
 
 
 				math::mat44				ortho_;

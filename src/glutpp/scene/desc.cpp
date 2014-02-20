@@ -27,7 +27,6 @@ void glutpp::scene::desc::load(tinyxml2::XMLElement* element) {
 	// actors
 	tinyxml2::XMLElement* e = element->FirstChildElement("actor");
 	
-	
 	while(e)
 	{
 		glutpp::actor::desc_s ad(new glutpp::actor::desc);

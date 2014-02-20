@@ -54,10 +54,12 @@ namespace glutpp
 		
 		class raw: public gal::network::serial_ext<raw_base, vec_mat> {
 			public:
+				raw&		operator=(raw const &);
+				
 				void		load(tinyxml2::XMLElement*);
 
-				raw_base_s	get_raw_base();
-				vec_mat_s	get_vec_mat();
+				raw_base_s	get_raw_base() const;
+				vec_mat_s	get_vec_mat() const;
 				
 		};
 	}

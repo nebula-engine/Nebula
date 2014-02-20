@@ -23,6 +23,10 @@ typedef std::shared_ptr<gal::sig::connection<int,int,int,int> >	key_fun_c;
 typedef std::shared_ptr<gal::sig::connection<unsigned int> >	char_fun_c;
 
 namespace glutpp {
+	
+	class master;
+	typedef std::shared_ptr<master>		master_s;
+
 	namespace network {
 		enum type {
 			NONE           = 0x0,
@@ -278,7 +282,9 @@ namespace glutpp {
 		{
 			class object;
 			class object_factory;
-			typedef std::shared_ptr<object>		object_s;
+			typedef std::shared_ptr<object>			object_s;
+			typedef std::shared_ptr<object_factory>		object_factory_s;
+
 			typedef gal::map<object>		object_m;
 		}
 

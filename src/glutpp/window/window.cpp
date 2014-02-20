@@ -172,31 +172,16 @@ void glutpp::window::window::callback_window_close_fun(GLFWwindow* window){
 	GLUTPP_DEBUG_0_FUNCTION;
 
 }
-void glutpp::window::window::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods){
+void glutpp::window::window::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods) {
 	GLUTPP_DEBUG_0_FUNCTION;
-
+	
 	sig_.mouse_button_fun_(button, action, mods);
 }
-void glutpp::window::window::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods){
+void glutpp::window::window::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	GLUTPP_DEBUG_0_FUNCTION;
-
+	
 	sig_.key_fun_(key, scancode, action, mods);
-
-	switch(key)
-	{
-		/*	case 's':
-			toggle(SHADOW);
-			break;
-			case 'o':
-			toggle(ORTHO);
-			break;
-			case 'r':
-			toggle(REFLECT);
-			break;*/
-		case GLFW_KEY_ESCAPE:
-			//glfwSetWindowShouldClose(window_, 1);
-			break;
-	}
+	
 }
 void glutpp::window::window::resize() {
 

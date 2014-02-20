@@ -40,8 +40,7 @@ namespace glutpp
 		};
 
 
-		class shape: public glutpp::parent, public gal::flag<unsigned int>
-		{
+		class shape: virtual public glutpp::parent, public gal::flag<unsigned int> {
 			public:
 				typedef std::shared_ptr<glutpp::shape::buffer>		buffer_t;
 				typedef std::map<glutpp::window::window*,buffer_t>	map_t;

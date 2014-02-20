@@ -1,5 +1,6 @@
 #include <math/mat44.h>
 
+#include <glutpp/actor/actor.h>
 #include <glutpp/parent.h>
 
 glutpp::parent::parent(glutpp::parent_s parent):
@@ -36,6 +37,17 @@ math::mat44 glutpp::parent::get_pose_global() {
 
 	return m;
 }
-
+glutpp::actor::actor_s glutpp::parent::is_actor() {
+	
+	glutpp::actor::actor_s a = std::dynamic_pointer_cast<glutpp::actor::actor>(shared_from_this());
+	
+	return a;
+}
+glutpp::shape::shape_s glutpp::parent::is_shape() {
+	
+	glutpp::shape::shape_s s = std::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
+	
+	return s;
+}
 
 

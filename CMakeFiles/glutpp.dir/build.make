@@ -782,9 +782,32 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o.provides: CMakeFiles/glutpp.di
 
 CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o.provides.build: CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o
 
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: CMakeFiles/glutpp.dir/flags.make
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: src/glutpp/gui/object/terminal.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_33)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/terminal.cpp
+
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/terminal.cpp > CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.i
+
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/terminal.cpp -o CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.s
+
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o.requires:
+.PHONY : CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o.requires
+
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o.provides: CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o.requires
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o.provides.build
+.PHONY : CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o.provides
+
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o.provides.build: CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o
+
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o: src/glutpp/gui/object/object.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_33)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_34)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object.cpp
 
@@ -807,7 +830,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o: src/glutpp/gui/object/textview.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_34)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_35)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/textview.cpp
 
@@ -830,7 +853,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o.provides.build: CMake
 
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o: src/glutpp/gui/object/edittext.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_35)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_36)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/edittext.cpp
 
@@ -853,7 +876,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o.provides.build: CMake
 
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o: src/glutpp/gui/object/object_factory.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_36)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_37)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/gui/object/object_factory.cpp
 
@@ -876,7 +899,7 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o.provides.build:
 
 CMakeFiles/glutpp.dir/src/glutpp/network/scene/create.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/network/scene/create.cpp.o: src/glutpp/network/scene/create.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_37)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_38)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/network/scene/create.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/network/scene/create.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/network/scene/create.cpp
 
@@ -899,7 +922,7 @@ CMakeFiles/glutpp.dir/src/glutpp/network/scene/create.cpp.o.provides.build: CMak
 
 CMakeFiles/glutpp.dir/src/glutpp/network/actor/update.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/network/actor/update.cpp.o: src/glutpp/network/actor/update.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_38)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_39)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/network/actor/update.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/network/actor/update.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/network/actor/update.cpp
 
@@ -922,7 +945,7 @@ CMakeFiles/glutpp.dir/src/glutpp/network/actor/update.cpp.o.provides.build: CMak
 
 CMakeFiles/glutpp.dir/src/glutpp/network/actor/create.cpp.o: CMakeFiles/glutpp.dir/flags.make
 CMakeFiles/glutpp.dir/src/glutpp/network/actor/create.cpp.o: src/glutpp/network/actor/create.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_39)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charles/Programming/C++/glutpp/CMakeFiles $(CMAKE_PROGRESS_40)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/glutpp.dir/src/glutpp/network/actor/create.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/glutpp.dir/src/glutpp/network/actor/create.cpp.o -c /home/charles/Programming/C++/glutpp/src/glutpp/network/actor/create.cpp
 
@@ -977,6 +1000,7 @@ glutpp_OBJECTS = \
 "CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.o" \
 "CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.o" \
 "CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o" \
+"CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o" \
 "CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o" \
 "CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o" \
 "CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o" \
@@ -1020,6 +1044,7 @@ libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o
+libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o
 libglutpp.a: CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o
@@ -1069,6 +1094,7 @@ CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/glsl/program.cp
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.o.requires
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.o.requires
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o.requires
+CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o.requires
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o.requires
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o.requires
 CMakeFiles/glutpp.dir/requires: CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o.requires

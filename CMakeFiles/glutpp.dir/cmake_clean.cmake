@@ -31,6 +31,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/glutpp.dir/src/glutpp/glsl/uniform.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/glsl/shader.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/gui/layout.cpp.o"
+  "CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/gui/object/object.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o"
   "CMakeFiles/glutpp.dir/src/glutpp/gui/object/edittext.cpp.o"

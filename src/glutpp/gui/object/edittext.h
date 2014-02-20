@@ -15,14 +15,14 @@ namespace glutpp
 				public:
 					edittext();
 					virtual void		draw();
+					virtual void		connect();
 
 
-					virtual int				key_fun(int,int,int,int);
-					virtual int				mouse_button_fun(int,int,int);
+					virtual int		key_fun(int,int,int,int);
+					virtual int		mouse_button_fun(int,int,int);
 					
-					virtual void				connect();
-
-					virtual int				enter();
+					
+					virtual int		enter();
 			};
 		}
 	}

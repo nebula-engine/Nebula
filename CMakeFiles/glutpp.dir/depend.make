@@ -757,8 +757,27 @@ CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o: src/glutpp/con
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o: src/glutpp/gui/object/edittext.h
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o: src/glutpp/gui/object/object.h
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o: src/glutpp/gui/object/object_factory.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o: src/glutpp/gui/object/terminal.h
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o: src/glutpp/gui/object/textview.h
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.o: src/glutpp/master.h
+
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: ../galaxy/src/gal/config.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: ../galaxy/src/gal/except.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: ../galaxy/src/gal/flag.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: ../galaxy/src/gal/map.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: ../galaxy/src/gal/network/message.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: ../galaxy/src/gal/network/vector.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: ../galaxy/src/gal/sig/connection.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: ../galaxy/src/gal/sig/signal.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: ../galaxy/src/gal/util.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: ../math/src/math/color.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: src/glutpp/gui/object/terminal.cpp
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: src/glutpp/config.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: src/glutpp/free.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: src/glutpp/gui/object/object.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: src/glutpp/gui/object/terminal.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: src/glutpp/gui/object/textview.h
+CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o: src/glutpp/master.h
 
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o: ../galaxy/src/gal/config.h
 CMakeFiles/glutpp.dir/src/glutpp/gui/object/textview.cpp.o: ../galaxy/src/gal/except.h

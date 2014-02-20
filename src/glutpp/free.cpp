@@ -64,14 +64,16 @@ void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
 	glDisable(GL_LIGHTING);
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_DEPTH_TEST);
-
+	
+	glColor4fv(color);
+	
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 	{
 		glLoadIdentity();
 
 		glBegin(GL_QUADS);
-
+		
 		glVertex2f(x,  y);
 		glVertex2f(x+w,y);
 		glVertex2f(x+w,y+h);
@@ -88,14 +90,14 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, math::color color, 
 
 	const char * c;
 
-	auto p = glutpp::__master.use_program(glutpp::program_name::e::TEXT);
+	auto p = glutpp::master::Global()->use_program(glutpp::program_name::e::TEXT);
 
 	printf("text %6.3f %6.3f %s\n", x, y, text);
 
 	// face
 	FT_Face face;
 
-	FT_Library ft = glutpp::__master.ft_;
+	FT_Library ft = glutpp::master::Global()->ft_;
 
 	char const fontfile[] = "/usr/share/fonts/truetype/freefont/FreeSans.ttf";
 	//char const fontfile[] = "/usr/share/fonts/truetype/msttcorefonts/arial.ttf";

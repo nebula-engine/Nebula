@@ -47,7 +47,7 @@ void	glutpp::material::material::init()
 
 void	glutpp::material::material::load()
 {
-	auto p = glutpp::__master.current_program();
+	auto p = glutpp::master::Global()->current_program();
 
 	p->get_uniform(glutpp::uniform_name::e::FRONT_AMBIENT)->load_4fv(raw_.ambient_);
 	p->get_uniform(glutpp::uniform_name::e::FRONT_DIFFUSE)->load_4fv(raw_.diffuse_);

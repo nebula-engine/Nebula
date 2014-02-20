@@ -50,7 +50,7 @@ void glutpp::scene::scene::render(double time,
 
 	assert(camera);
 
-	auto p = glutpp::__master.use_program(glutpp::program_name::e::LIGHT);
+	auto p = glutpp::master::Global()->use_program(glutpp::program_name::e::LIGHT);
 
 
 	glEnable(GL_CULL_FACE);

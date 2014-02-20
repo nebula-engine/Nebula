@@ -533,6 +533,30 @@ src/glutpp/gui/object/object_factory.cpp.s:
 	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/gui/object/object_factory.cpp.s
 .PHONY : src/glutpp/gui/object/object_factory.cpp.s
 
+src/glutpp/gui/object/terminal.o: src/glutpp/gui/object/terminal.cpp.o
+.PHONY : src/glutpp/gui/object/terminal.o
+
+# target to build an object file
+src/glutpp/gui/object/terminal.cpp.o:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.o
+.PHONY : src/glutpp/gui/object/terminal.cpp.o
+
+src/glutpp/gui/object/terminal.i: src/glutpp/gui/object/terminal.cpp.i
+.PHONY : src/glutpp/gui/object/terminal.i
+
+# target to preprocess a source file
+src/glutpp/gui/object/terminal.cpp.i:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.i
+.PHONY : src/glutpp/gui/object/terminal.cpp.i
+
+src/glutpp/gui/object/terminal.s: src/glutpp/gui/object/terminal.cpp.s
+.PHONY : src/glutpp/gui/object/terminal.s
+
+# target to generate assembly for a file
+src/glutpp/gui/object/terminal.cpp.s:
+	$(MAKE) -f CMakeFiles/glutpp.dir/build.make CMakeFiles/glutpp.dir/src/glutpp/gui/object/terminal.cpp.s
+.PHONY : src/glutpp/gui/object/terminal.cpp.s
+
 src/glutpp/gui/object/textview.o: src/glutpp/gui/object/textview.cpp.o
 .PHONY : src/glutpp/gui/object/textview.o
 
@@ -1146,6 +1170,9 @@ help:
 	@echo "... src/glutpp/gui/object/object_factory.o"
 	@echo "... src/glutpp/gui/object/object_factory.i"
 	@echo "... src/glutpp/gui/object/object_factory.s"
+	@echo "... src/glutpp/gui/object/terminal.o"
+	@echo "... src/glutpp/gui/object/terminal.i"
+	@echo "... src/glutpp/gui/object/terminal.s"
 	@echo "... src/glutpp/gui/object/textview.o"
 	@echo "... src/glutpp/gui/object/textview.i"
 	@echo "... src/glutpp/gui/object/textview.s"

@@ -11,14 +11,14 @@ glutpp::shape::shape::~shape() {
 
 }
 unsigned int glutpp::shape::shape::f() {
-	return raw_.flag_;
+	return raw_.get_raw_base()->flag_;
 }
 void glutpp::shape::shape::f(unsigned int flag) {
-	raw_.flag_ = flag;
+	raw_.get_raw_base()->flag_ = flag;
 }
 
 math::mat44 glutpp::shape::shape::get_pose() {
-	return raw_.pose_;
+	return raw_.get_raw_base()->pose_;
 }
 void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -30,7 +30,7 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	raw_ = *desc->get_raw();
 
 	// type
-	switch(raw_.type_)
+	switch(raw_.get_raw_base()->type_)
 	{
 		case glutpp::shape::type::BOX:
 			mesh_.load("cube.obj");
@@ -47,7 +47,7 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	}
 
 	// program
-	if(strlen(raw_.image_) == 0)
+	if(strlen(raw_.get_raw_base()->image_) == 0)
 	{
 		program_ = glutpp::program_name::LIGHT;
 	}
@@ -88,8 +88,13 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	}
 
 	// material
-	material_front_.raw_ = raw_.front_.raw_;
-
+	//assert(raw_.get_vec_mat()->vec_.size() > 0);
+	
+	if(!raw_.get_vec_mat()->vec_.empty())
+	{
+		material_front_.raw_ = raw_.get_vec_mat()->vec_.at(0);
+	}
+	
 	printf("diffuse = ");
 	material_front_.raw_.diffuse_.print();
 }
@@ -178,7 +183,7 @@ void glutpp::shape::shape::notify_foundation_change_pose() {
 void glutpp::shape::shape::load_lights(int& i, math::mat44 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
-	space = space * raw_.pose_;
+	space = space * raw_.get_raw_base()->pose_;
 
 	for(auto it = lights_.begin(); it != lights_.end(); ++it)
 	{
@@ -189,9 +194,9 @@ void glutpp::shape::shape::load_lights(int& i, math::mat44 space) {
 }
 void glutpp::shape::shape::draw(glutpp::window::window_s window, math::mat44 space) {
 
-	space = space * raw_.pose_;
+	space = space * raw_.get_raw_base()->pose_;
 
-	switch(raw_.type_)
+	switch(raw_.get_raw_base()->type_)
 	{
 		case glutpp::shape::type::e::BOX:
 		case glutpp::shape::type::e::SPHERE:
@@ -204,9 +209,9 @@ void glutpp::shape::shape::draw(glutpp::window::window_s window, math::mat44 spa
 }
 void glutpp::shape::shape::model_load(math::mat44 space) {
 
-	auto p = glutpp::__master.current_program();
+	auto p = glutpp::master::Global()->current_program();
 
-	math::vec3 s(raw_.s_);
+	math::vec3 s(raw_.get_raw_base()->s_);
 
 	math::mat44 scale;
 	scale.SetScale(s);
@@ -306,14 +311,13 @@ void glutpp::shape::shape::init_buffer(glutpp::window::window_s window,
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 }
-void glutpp::shape::shape::draw_elements(glutpp::window::window_s window,
-		math::mat44 space) {
+void glutpp::shape::shape::draw_elements(glutpp::window::window_s window, math::mat44 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
-	auto p = glutpp::__master.use_program(program_);
+	auto p = glutpp::master::Global()->use_program(program_);
 
 	// initialize buffers if not already
-	if(!context_[window.get()])
+//	if(!context_[window.get()])
 	{	
 		init_buffer(window, p);
 	}

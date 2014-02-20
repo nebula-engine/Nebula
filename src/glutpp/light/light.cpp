@@ -86,7 +86,7 @@ math::mat44 glutpp::light::light::get_pose() {
 void glutpp::light::light::load(int o, math::mat44 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
-	auto p = glutpp::__master.current_program();
+	auto p = glutpp::master::Global()->current_program();
 
 	
 	
@@ -152,7 +152,7 @@ void glutpp::light::light::load(int o, math::mat44 space) {
 }
 void	glutpp::light::light::load_shadow() {
 	GLUTPP_DEBUG_1_FUNCTION;
-	/*	auto p = glutpp::__master.current_program();
+	/*	auto p = glutpp::master::Global()->current_program();
 
 		math::mat44 biasMatrix(
 		0.5f, 0.0f, 0.0f, 0.0f,

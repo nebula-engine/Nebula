@@ -14,9 +14,9 @@
 #include <glutpp/window/desc.h>
 #include <glutpp/window/window.h>
 
-namespace glutpp {
-	master __master;
-}
+glutpp::window::window_w	glutpp::master::window_main_;// = glutpp::window::window_s;
+glutpp::master_s		glutpp::master::g_master_;
+
 glutpp::master::master() {
 	GLUTPP_DEBUG_0_FUNCTION;
 
@@ -24,8 +24,31 @@ glutpp::master::master() {
 
 	glfwSetErrorCallback(static_error_fun);
 }
-glutpp::master::~master(){
+glutpp::master::~master() {
 	GLUTPP_DEBUG_0_FUNCTION;
+}
+glutpp::master_s glutpp::master::Global() {
+	assert(g_master_);
+	return g_master_;
+}
+void glutpp::master::Global(glutpp::master_s m) {
+	assert(m);
+	g_master_ = m;
+}
+glutpp::window::window_s glutpp::master::Main_Window() {
+	glutpp::window::window_s w;
+	
+	if(!window_main_.expired())
+	{
+		w = window_main_.lock();
+		return w;
+	}
+
+	return w;
+}
+void glutpp::master::Main_Window(glutpp::window::window_s w) {
+	assert(w);
+	window_main_ = w;
 }
 unsigned int glutpp::master::master::f() {
 	return flag_;
@@ -43,43 +66,63 @@ glutpp::window::window_s glutpp::master::get_window(GLFWwindow* window) {
 		return w.lock();
 	}
 }
-void	glutpp::master::static_error_fun(int error, char const * description) {
+void glutpp::master::static_error_fun(int error, char const * description) {
 	printf("%s\n", description);
 	exit(0);
 }
-void glutpp::master::static_window_pos_fun(GLFWwindow* window, int x,int y){
-	auto w = __master.get_window(window);
+void glutpp::master::static_window_pos_fun(GLFWwindow* window, int x, int y){
+	GLUTPP_DEBUG_0_FUNCTION;
+
+	auto w = master::Global()->get_window(window);
 	assert(w);
 	if(w) w->callback_window_pos_fun(window,x,y);
 }
 void glutpp::master::static_window_size_fun(GLFWwindow* window, int w, int h){
-	auto wnd = __master.get_window(window);
+	GLUTPP_DEBUG_0_FUNCTION;
+
+	auto wnd = master::Global()->get_window(window);
 	assert(w);
 	if(wnd) wnd->callback_window_size_fun(window,w,h);
 }
 void glutpp::master::static_window_close_fun(GLFWwindow* window){
-	auto w = __master.get_window(window);
+	GLUTPP_DEBUG_0_FUNCTION;
+	
+	auto w = master::Global()->get_window(window);
 	assert(w);
 	if(w) w->callback_window_close_fun(window);
 }
-void glutpp::master::static_window_refresh_fun(GLFWwindow* window){
-	auto w = __master.get_window(window);
+void glutpp::master::static_window_refresh_fun(GLFWwindow* window) {
+	GLUTPP_DEBUG_0_FUNCTION;
+
+	auto w = master::Global()->get_window(window);
 	assert(w);
 	if(w) w->callback_window_refresh_fun(window);
 }
 void glutpp::master::static_mouse_button_fun(GLFWwindow* window, int button, int action, int mods){
 	GLUTPP_DEBUG_0_FUNCTION;
 	
-	auto w = __master.get_window(window);
-	assert(w);
-	if(w) w->callback_mouse_button_fun(window, button, action, mods);
+	auto wm = Global()->Main_Window();
+	
+	if(wm) {
+		wm = window_main_.lock();
+		wm->callback_mouse_button_fun(window, button, action, mods);
+	} else {
+		fprintf(stderr, "main window not set %p\n", wm.get());
+		abort();
+	}
 }
 void glutpp::master::static_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods){
 	GLUTPP_DEBUG_0_FUNCTION;
 
-	auto w = __master.get_window(window);
-	assert(w);
-	if(w) w->callback_key_fun(window, key, scancode, action, mods);
+	auto wm = Global()->Main_Window();
+	
+	if(wm) {
+		wm = window_main_.lock();
+		wm->callback_key_fun(window, key, scancode, action, mods);
+	} else {
+		fprintf(stderr, "main window not set %p\n", wm.get());
+		abort();
+	}
 }
 int glutpp::master::reg(glutpp::window::window_s w) {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -253,7 +296,7 @@ int	glutpp::master::create_programs() {
 	}
 
 }
-std::shared_ptr<glutpp::glsl::program>	glutpp::master::use_program(glutpp::program_name::e name){
+std::shared_ptr<glutpp::glsl::program> glutpp::master::use_program(glutpp::program_name::e name){
 	auto p = get_program(name);
 
 	p->use();
@@ -262,12 +305,12 @@ std::shared_ptr<glutpp::glsl::program>	glutpp::master::use_program(glutpp::progr
 
 	return p;
 }
-std::shared_ptr<glutpp::glsl::program>	glutpp::master::current_program(){
+std::shared_ptr<glutpp::glsl::program> glutpp::master::current_program(){
 	assert(current_);
 
 	return current_;
 }
-std::shared_ptr<glutpp::glsl::program>	glutpp::master::get_program(glutpp::program_name::e name){
+std::shared_ptr<glutpp::glsl::program> glutpp::master::get_program(glutpp::program_name::e name){
 	auto it = programs_.find(name);
 
 	if(it == programs_.end())
@@ -286,7 +329,9 @@ glutpp::actor::raw_factory_s glutpp::master::get_raw_factory() {
 	assert(raw_factory_);
 	return raw_factory_;
 }
-
+void glutpp::master::Command(std::string str) {
+	
+}
 
 
 

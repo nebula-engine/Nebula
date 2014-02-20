@@ -28,8 +28,10 @@ void	checkerror(char const *);
 namespace glutpp {
 	namespace window {
 		class window: public std::enable_shared_from_this<window>, public gal::flag<unsigned int> {
-			protected:
-				
+			public:
+				window(glutpp::window::desc_s desc);
+				~window();
+			
 			public:
 				struct flag {
 					enum e {
@@ -38,8 +40,6 @@ namespace glutpp {
 				};
 
 
-				window(glutpp::window::desc_s desc);
-				~window();
 				unsigned int f();
 				void	f(unsigned int flag);
 				void	init();
