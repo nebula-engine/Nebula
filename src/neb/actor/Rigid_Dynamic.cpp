@@ -13,7 +13,7 @@ void neb::actor::Rigid_Dynamic::init(glutpp::actor::desc_s desc) {
 	neb::actor::rigid_body::rigid_body::init(desc);
 	
 	auto pxrd = px_actor_->isRigidDynamic();
-	pxrd->setLinearDamping(0.5);
+	pxrd->setLinearDamping(0.01);
 }
 void neb::actor::Rigid_Dynamic::create_physics() {
 	NEBULA_DEBUG_0_FUNCTION;

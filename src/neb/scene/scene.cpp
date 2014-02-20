@@ -1,11 +1,15 @@
 #include <math/free.h>
 
+#include <glutpp/actor/desc.h>
+#include <glutpp/actor/event.h>
+
 #include <neb/config.h>
 #include <neb/app.h>
-#include <glutpp/actor/desc.h>
+
 #include <neb/physics.h>
 #include <neb/scene/scene.h>
 #include <glutpp/scene/desc.h>
+
 #include <neb/simulation_callback.h>
 #include <neb/actor/free.h>
 #include <neb/actor/Base.h>
@@ -584,7 +588,7 @@ void neb::scene::scene::fire_remote(neb::actor::Base_s actor) {
 
 	actor_event.get_addr()->load_this(actor);
 
-	actor_event.get_event()->type_ = glutpp::actor::type_event::FIRE;
+	actor_event.get_event()->type_ = glutpp::actor::event::type::e::FIRE;
 
 	msg->write(glutpp::network::type::ACTOR_EVENT);
 	actor_event.write(msg);

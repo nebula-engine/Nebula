@@ -149,62 +149,58 @@ void neb::control::rigid_body::control::step_local1(double time) {
 		//p_target_.print();
 	}
 
-
-
-
-
-
-	// calc torque
-
+	// get actor
 	assert(!actor_.expired());
 	auto actor = std::dynamic_pointer_cast<neb::actor::Actor>(actor_.lock());
-
 	auto pxrigidbody = actor->px_actor_->isRigidBody();
 
+
+	// rotation from pose to target pose
+	math::quat q = actor->get_raw()->pose_.q;
+	math::quat a = raw_.q_target_.getConjugate() * q;
+
+
+
+
+	// angular velocity
 	math::vec3 omega = pxrigidbody->getAngularVelocity();
-	math::vec3 vI = pxrigidbody->getMassSpaceInertiaTensor();
+	omega = q.rotate(omega);
 	
+	// inertia matrix
+	math::vec3 vI = pxrigidbody->getMassSpaceInertiaTensor();
 	math::mat33 I(vI);
 	
 
 
 
 
-
-
-
-	// what should a be???
-	//math::quat a;
 	
-	// rotation from pose to target pose???
-	math::quat q = actor->get_raw()->pose_.q;
-	math::quat a = q * raw_.q_target_.getConjugate();
-
-	
-	
-	
-	
-	
-
+/*
 	math::mat33 ac(
 			0, -a.z, a.y,
 			a.z, 0, -a.x,
 			-a.y, a.x, 0);
+*/
 	
 	//math::mat33 Gp(math::vec3(750, 800, 400));
 	//math::mat33 Gr(math::vec3(600, 550, 250));
+
+/*
 	float x = 10;
 	float y = 100;
 	math::mat33 Gp(math::vec3(x,x,x));
 	math::mat33 Gr(math::vec3(y,y,y));
+*/
 
-	float gamma = 100;
+	//float gamma = 100;
 	
-	math::vec3 va(a.x, a.y, a.z);
-
+	math::vec3 e(a.x, a.y, a.z);
 	
-	math::vec3 u = ((ac + I * a.w) * Gp + I * gamma * (1 - a.w)) * va * 0.5 - Gr * omega;
-
+	float ke = 0.5;
+	float ko = 3;
+	
+	//math::vec3 u = ((ac + I * a.w) * Gp + I * gamma * (1 - a.w)) * va * 0.5 - Gr * omega;
+	math::vec3 u = -I * e * ke - omega * ko;
 	
 	raw_.torque_ = u;
 		/*
@@ -260,7 +256,7 @@ math::vec3 neb::control::rigid_body::control::f() {
 
 	switch(raw_.type_) {
 		case neb::control::rigid_body::type::T0:
-			return raw_.f_ * 10;
+			return raw_.f_ * 100;
 		case neb::control::rigid_body::type::T1:
 			return raw_.force_;
 		default:
@@ -273,7 +269,7 @@ math::vec3 neb::control::rigid_body::control::t() {
 
 	switch(raw_.type_) {
 		case neb::control::rigid_body::type::T0:
-			return raw_.t_ * 10;
+			return raw_.t_ * 3;
 		case neb::control::rigid_body::type::T1:
 			return raw_.torque_;
 		default:

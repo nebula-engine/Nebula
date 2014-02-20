@@ -1,5 +1,6 @@
 #include <algorithm>
 
+#include <glutpp/actor/event.h>
 #include <glutpp/renderable.h>
 #include <glutpp/window/desc.h>
 #include <glutpp/window/window.h>
@@ -32,7 +33,7 @@ glutpp::window::window_s neb::app::create_window(int w, int h, int x, int y, cha
 
 	glutpp::window::desc_s wd(new glutpp::window::desc(w,h,x,y,title));
 	
-	auto window = glutpp::__master.create_window<glutpp::window::window>(wd);
+	auto window = glutpp::master::Global()->create_window<glutpp::window::window>(wd);
 	
 	printf("window use count = %i\n", (int)window.use_count());
 	
@@ -75,7 +76,11 @@ neb::scene::scene_s neb::app::load_scene_remote(glutpp::scene::desc_s sd) {
 void neb::app::load_layout(int name, char const * filename) {
 
 	tinyxml2::XMLDocument document;
-	if(document.LoadFile(filename)) abort();
+	if(document.LoadFile(filename))
+	{
+		fprintf(stderr, "error loading file %s\n", filename);
+		abort();
+	}
 
 	tinyxml2::XMLElement* element = document.FirstChildElement("layout");
 
@@ -119,64 +124,64 @@ int neb::app::step(double time) {
 	{
 		scene = it->second;
 		assert(scene);
-		
+
 		if(scene->all(glutpp::scene::flag::SHOULD_RELEASE))
 		{
 			scene->release();
-			
+
 			it = scenes_.erase(it);
 		}
 		else
 		{
 			scene->step(time);
-			
+
 			++it;	
 		}
 	}
-	
+
 	// windows
 	for(auto it = windows_.begin(); it != windows_.end();)
 	{
 		auto w = it->second;
 		assert(w);
-		
+
 		if(w->all(glutpp::window::window::flag::e::SHOULD_RELEASE))
 		{
-		
+
 			printf("erase\n");
 			it = windows_.erase(it);
 		}
 		else
 		{
 			w->step(time);
-			
+
 			it++;
 		}
 	}
-	
+
 	// timer
 	timer_set_.step(time);
-	
+
 	return 0;
 }
 int	neb::app::loop() {
 	NEBULA_DEBUG_1_FUNCTION;
-	
+
 	double time;
-	
+
 	while(!any(neb::app::flag::e::SHOULD_RELEASE))
 	{	
 		time = glfwGetTime();
-		
+
 		step(time);
-		
+
 		glfwPollEvents();
 	}
-	
-	
+
+
 	if(server_) server_->close();
 	if(client_) client_->close();
-	
+
 	return 0;
 }
 void neb::app::set_should_release() {
@@ -189,7 +194,7 @@ glutpp::window::window_s neb::app::get_window(int i) {
 	{
 		return it->second;
 	}
-	
+
 	return window;
 }
 neb::scene::scene_s neb::app::get_scene(int name) {
@@ -203,32 +208,32 @@ neb::scene::scene_s neb::app::get_scene(int name) {
 }
 neb::scene::scene_s neb::app::get_scene(glutpp::scene::addr_s addr) {
 	NEBULA_DEBUG_1_FUNCTION;
-	
+
 	assert(addr);
 
 	auto vec = addr->get_vec();
-	
+
 	assert(vec->vec_.size() == 1);
-	
+
 	auto s = scenes_[vec->vec_.at(0)];
-	
+
 	assert(s);
 
 	return s;
 }
 neb::actor::Base_s neb::app::get_actor(glutpp::actor::addr_s addr) {
-	
+
 	neb::actor::Base_s actor;
-	
+
 	auto scene = get_scene(addr->get_scene_addr());
 	assert(scene);
-	
+
 	auto vec = addr->get_vec();
 	if(!vec->vec_.empty())
 	{
 		actor = scene->get_actor(addr);
 	}
-	
+
 	return actor;
 }
 int neb::app::transmit_scenes(std::shared_ptr<neb::network::communicating> c) {
@@ -237,20 +242,20 @@ int neb::app::transmit_scenes(std::shared_ptr<neb::network::communicating> c) {
 	assert(c);
 
 	int type = glutpp::network::type::SCENE_CREATE;
-	
+
 	for(auto it = scenes_.begin(); it != scenes_.end(); ++it) {
 		auto s = it->second;
 		assert(s);
-		
+
 		gal::network::message_s msg(new gal::network::message);
-		
+
 		msg->write(&type, sizeof(int));
-		
+
 		glutpp::network::scene::create scene_create;
-		
+
 		scene_create.load(s);
 		scene_create.write(msg);
-		
+
 		c->write(msg);
 	}
 
@@ -267,7 +272,7 @@ void neb::app::reset_client(char const * addr, unsigned short port) {
 }
 void neb::app::send_server(gal::network::message::shared_t msg)  {
 	NEBULA_DEBUG_1_FUNCTION;
-	
+
 	if(server_)
 	{
 		server_->write(msg);
@@ -279,7 +284,7 @@ void neb::app::send_server(gal::network::message::shared_t msg)  {
 }
 void neb::app::send_client(gal::network::message::shared_t msg)  {
 	NEBULA_DEBUG_1_FUNCTION;
-	
+
 	if(client_)
 	{
 		client_->write(msg);
@@ -290,16 +295,16 @@ void neb::app::send_client(gal::network::message::shared_t msg)  {
 	}
 }
 void neb::app::recv_scene_create(gal::network::message_s msg) {
-	
+
 }
 void neb::app::recv_actor_create(gal::network::message_s msg) {
-	
+
 }
 void neb::app::recv_actor_update(gal::network::message_s msg) {
 
 }
 void neb::app::recv_actor_event(gal::network::message_s msg) {
-	
+
 	glutpp::network::actor::event actor_event;
 	actor_event.read(msg);
 
@@ -307,12 +312,12 @@ void neb::app::recv_actor_event(gal::network::message_s msg) {
 	assert(actor);
 	auto scene = actor->get_scene();
 	assert(scene);
-	
+
 	int type = actor_event.get_event()->type_;
 
 	switch(type)
 	{
-		case glutpp::actor::type_event::FIRE:
+		case glutpp::actor::event::type::e::FIRE:
 			scene->fire(actor);
 			break;
 		default:

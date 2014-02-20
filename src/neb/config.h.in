@@ -3,8 +3,11 @@
 
 #define NEB_INSTALL_DIR "@CMAKE_INSTALL_PREFIX@"
 
+
+
 #define NEBULA_DEBUG_0_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
 #define NEBULA_DEBUG_1_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
+
 
 #include <memory>
 
@@ -48,6 +51,7 @@ namespace neb
 	enum flag {
 		SHOULD_RELEASE = 1 << 0,
 	};
+	
 	class app;
 	typedef std::shared_ptr<app>	app_s;
 	typedef std::weak_ptr<app>	app_w;

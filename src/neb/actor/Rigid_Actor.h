@@ -3,14 +3,9 @@
 
 #include <neb/actor/Actor.h>
 
-namespace neb
-{
-	class shape;
-	namespace actor
-	{
-		class Rigid_Actor:
-			public neb::actor::Actor
-		{
+namespace neb {
+	namespace actor {
+		class Rigid_Actor: public neb::actor::Actor {
 			public:
 				Rigid_Actor(glutpp::parent_s);
 

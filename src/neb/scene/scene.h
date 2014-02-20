@@ -23,8 +23,8 @@
 
 #include <tinyxml2.h>
 
-int		parse_shape_type(char const * str);
-neb::shape	xml_parse_geo(tinyxml2::XMLElement* element);
+int			parse_shape_type(char const * str);
+neb::shape::shape	xml_parse_geo(tinyxml2::XMLElement* element);
 
 namespace neb
 {

@@ -641,6 +641,7 @@ CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../galaxy/src/gal/util.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../glutpp/src/glutpp/actor/actor.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../glutpp/src/glutpp/actor/addr.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../glutpp/src/glutpp/actor/desc.h
+CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../glutpp/src/glutpp/actor/event.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../glutpp/src/glutpp/actor/id.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../glutpp/src/glutpp/actor/raw.h
 CMakeFiles/nebula.dir/src/neb/app.cpp.o: ../glutpp/src/glutpp/camera.h
@@ -1264,6 +1265,7 @@ CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: ../galaxy/src/gal/util.h
 CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: ../glutpp/src/glutpp/actor/actor.h
 CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: ../glutpp/src/glutpp/actor/addr.h
 CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: ../glutpp/src/glutpp/actor/desc.h
+CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: ../glutpp/src/glutpp/actor/event.h
 CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: ../glutpp/src/glutpp/actor/id.h
 CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: ../glutpp/src/glutpp/actor/raw.h
 CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o: ../glutpp/src/glutpp/camera.h

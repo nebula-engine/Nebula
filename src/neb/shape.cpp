@@ -7,25 +7,25 @@
 #include <neb/scene/scene.h>
 #include <neb/shape.h>
 
-neb::shape::shape(glutpp::actor::actor_s actor):
+neb::shape::shape::shape(glutpp::actor::actor_s actor):
 	glutpp::shape::shape(actor)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 }
-void neb::shape::init(glutpp::shape::desc_s desc) {
+void neb::shape::shape::init(glutpp::shape::desc_s desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	glutpp::shape::shape::init(desc);
 	
 	create_physics();
 }
-void neb::shape::create_physics() {
+void neb::shape::shape::create_physics() {
 
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	assert(!parent_.expired());
 	
-	auto actor = std::dynamic_pointer_cast<neb::actor::Rigid_Actor>(parent_.lock());
+	auto actor = neb::parent::get_parent()->is_rigid_actor();//std::dynamic_pointer_cast<neb::actor::Rigid_Actor>(parent_.lock());
 	
 	if(actor)
 	{
@@ -36,15 +36,15 @@ void neb::shape::create_physics() {
 		px_shape_ = px_rigid_actor->createShape( *(to_geo()), *px_mat );
 	}
 }
-physx::PxGeometry* neb::shape::to_geo()
+physx::PxGeometry* neb::shape::shape::to_geo()
 {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	physx::PxGeometry* geo = NULL;
 
-	math::vec3 s = raw_.s_;
+	math::vec3 s = raw_.get_raw_base()->s_;
 
-	switch(raw_.type_)
+	switch(raw_.get_raw_base()->type_)
 	{
 		case glutpp::shape::type::BOX:
 			geo = new physx::PxBoxGeometry(s/2.0);
@@ -59,7 +59,7 @@ physx::PxGeometry* neb::shape::to_geo()
 
 	return geo;
 }
-void neb::shape::print_info() {
+void neb::shape::shape::print_info() {
 	
 	physx::PxReal dynamic_friction;
 	physx::PxReal static_friction;

@@ -7,20 +7,22 @@
 
 #include <glutpp/shape/shape.h>
 
-namespace neb
-{
-	class shape: public glutpp::shape::shape
-	{
-		public:
-			shape(glutpp::actor::actor_s);
-			
-			virtual void		init(glutpp::shape::desc_s);
-			void			create_physics();
-			physx::PxGeometry*	to_geo();
-			void			print_info();
-			
-			physx::PxShape*		px_shape_;
-	};	
+#include <neb/parent.h>
+
+namespace neb {
+	namespace shape {
+		class shape: virtual public neb::parent, public glutpp::shape::shape {
+			public:
+				shape(glutpp::actor::actor_s);
+
+				virtual void		init(glutpp::shape::desc_s);
+				void			create_physics();
+				physx::PxGeometry*	to_geo();
+				void			print_info();
+
+				physx::PxShape*		px_shape_;
+		};	
+	}
 }
 
 #endif

@@ -61,10 +61,10 @@ namespace neb {
 			void				recv_control_update(gal::network::message_s);
 
 
-			void			f(unsigned int);
-			unsigned int		f();
+			void				f(unsigned int);
+			unsigned int			f();
 		public:
-			unsigned int		flag_;
+			unsigned int			flag_;
 
 			gal::map<glutpp::window::window>	windows_;
 			gal::map<glutpp::gui::layout>		layouts_;

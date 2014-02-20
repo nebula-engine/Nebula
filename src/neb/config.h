@@ -3,8 +3,11 @@
 
 #define NEB_INSTALL_DIR "/usr/local"
 
+
+
 #define NEBULA_DEBUG_0_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
 #define NEBULA_DEBUG_1_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
+
 
 #include <memory>
 
@@ -12,7 +15,6 @@
 
 namespace neb
 {
-	class shape;
 
 	namespace timer {
 		class actor;
@@ -48,6 +50,7 @@ namespace neb
 	enum flag {
 		SHOULD_RELEASE = 1 << 0,
 	};
+	
 	class app;
 	typedef std::shared_ptr<app>	app_s;
 	typedef std::weak_ptr<app>	app_w;
@@ -82,6 +85,16 @@ namespace neb
 		typedef std::shared_ptr<Base>	Base_s;
 		typedef std::weak_ptr<Base>	Base_w;
 	}
+
+	namespace shape {
+		class shape;
+		
+		typedef std::shared_ptr<shape>	shape_s;
+	}
+
+	class parent;
+	typedef std::shared_ptr<parent>		parent_s;
+
 	namespace control {
 		namespace rigid_body {
 			enum type {
