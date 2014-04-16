@@ -18,3 +18,5 @@ requires [GRU](http://github.com/chuck1/GRU)
 - waypoint system
 - computer players
 - computer player targetting and firing system
+- win/lose conditions
+- complete first version of interface
