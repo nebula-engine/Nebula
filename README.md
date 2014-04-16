@@ -10,8 +10,7 @@ Window and 3D graphics library in c++ using GLFW
 - Stenciling
 - Fog
 - Curved Reflections
-
-Classes to contain data arrays for positions, normals, texture coordinates. Classes to hold textures. Classes for uniforms and attributes. Find on internet code to parse PLY files.
+- Find on internet code to parse PLY files. Or some other standard for 3d model storage.
 
 ### Curved reflections
 
