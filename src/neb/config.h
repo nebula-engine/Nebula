@@ -15,6 +15,7 @@
 
 namespace neb
 {
+	class shape;
 
 	namespace timer {
 		class actor;
@@ -85,16 +86,6 @@ namespace neb
 		typedef std::shared_ptr<Base>	Base_s;
 		typedef std::weak_ptr<Base>	Base_w;
 	}
-
-	namespace shape {
-		class shape;
-		
-		typedef std::shared_ptr<shape>	shape_s;
-	}
-
-	class parent;
-	typedef std::shared_ptr<parent>		parent_s;
-
 	namespace control {
 		namespace rigid_body {
 			enum type {
