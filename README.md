@@ -11,3 +11,10 @@ requires [GRU](http://github.com/chuck1/GRU)
     cmake .
     make install
     make doc
+
+## TODO
+
+- position and orientation controller for free floating objects
+- waypoint system
+- computer players
+- computer player targetting and firing system
