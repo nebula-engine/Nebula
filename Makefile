@@ -35,9 +35,6 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
-# Escaping for special characters.
-EQUALS = =
-
 # The top-level source directory on which CMake was run.
 CMAKE_SOURCE_DIR = /home/charles/Programming/C++/nebula
 
@@ -140,6 +137,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named doc
+
+# Build rule for target.
+doc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 doc
+.PHONY : doc
+
+# fast build rule for target.
+doc/fast:
+	$(MAKE) -f CMakeFiles/doc.dir/build.make CMakeFiles/doc.dir/build
+.PHONY : doc/fast
+
+#=============================================================================
 # Target rules for targets named glutpp
 
 # Build rule for target.
@@ -237,30 +247,6 @@ src/neb/actor/Controller.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Controller.cpp.s
 .PHONY : src/neb/actor/Controller.cpp.s
 
-src/neb/actor/Light.o: src/neb/actor/Light.cpp.o
-.PHONY : src/neb/actor/Light.o
-
-# target to build an object file
-src/neb/actor/Light.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Light.cpp.o
-.PHONY : src/neb/actor/Light.cpp.o
-
-src/neb/actor/Light.i: src/neb/actor/Light.cpp.i
-.PHONY : src/neb/actor/Light.i
-
-# target to preprocess a source file
-src/neb/actor/Light.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Light.cpp.i
-.PHONY : src/neb/actor/Light.cpp.i
-
-src/neb/actor/Light.s: src/neb/actor/Light.cpp.s
-.PHONY : src/neb/actor/Light.s
-
-# target to generate assembly for a file
-src/neb/actor/Light.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Light.cpp.s
-.PHONY : src/neb/actor/Light.cpp.s
-
 src/neb/actor/Rigid_Actor.o: src/neb/actor/Rigid_Actor.cpp.o
 .PHONY : src/neb/actor/Rigid_Actor.o
 
@@ -284,30 +270,6 @@ src/neb/actor/Rigid_Actor.s: src/neb/actor/Rigid_Actor.cpp.s
 src/neb/actor/Rigid_Actor.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Actor.cpp.s
 .PHONY : src/neb/actor/Rigid_Actor.cpp.s
-
-src/neb/actor/Rigid_Body.o: src/neb/actor/Rigid_Body.cpp.o
-.PHONY : src/neb/actor/Rigid_Body.o
-
-# target to build an object file
-src/neb/actor/Rigid_Body.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.o
-.PHONY : src/neb/actor/Rigid_Body.cpp.o
-
-src/neb/actor/Rigid_Body.i: src/neb/actor/Rigid_Body.cpp.i
-.PHONY : src/neb/actor/Rigid_Body.i
-
-# target to preprocess a source file
-src/neb/actor/Rigid_Body.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.i
-.PHONY : src/neb/actor/Rigid_Body.cpp.i
-
-src/neb/actor/Rigid_Body.s: src/neb/actor/Rigid_Body.cpp.s
-.PHONY : src/neb/actor/Rigid_Body.s
-
-# target to generate assembly for a file
-src/neb/actor/Rigid_Body.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Body.cpp.s
-.PHONY : src/neb/actor/Rigid_Body.cpp.s
 
 src/neb/actor/Rigid_Dynamic.o: src/neb/actor/Rigid_Dynamic.cpp.o
 .PHONY : src/neb/actor/Rigid_Dynamic.o
@@ -333,6 +295,30 @@ src/neb/actor/Rigid_Dynamic.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic.cpp.s
 .PHONY : src/neb/actor/Rigid_Dynamic.cpp.s
 
+src/neb/actor/Rigid_Dynamic_Box.o: src/neb/actor/Rigid_Dynamic_Box.cpp.o
+.PHONY : src/neb/actor/Rigid_Dynamic_Box.o
+
+# target to build an object file
+src/neb/actor/Rigid_Dynamic_Box.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic_Box.cpp.o
+.PHONY : src/neb/actor/Rigid_Dynamic_Box.cpp.o
+
+src/neb/actor/Rigid_Dynamic_Box.i: src/neb/actor/Rigid_Dynamic_Box.cpp.i
+.PHONY : src/neb/actor/Rigid_Dynamic_Box.i
+
+# target to preprocess a source file
+src/neb/actor/Rigid_Dynamic_Box.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic_Box.cpp.i
+.PHONY : src/neb/actor/Rigid_Dynamic_Box.cpp.i
+
+src/neb/actor/Rigid_Dynamic_Box.s: src/neb/actor/Rigid_Dynamic_Box.cpp.s
+.PHONY : src/neb/actor/Rigid_Dynamic_Box.s
+
+# target to generate assembly for a file
+src/neb/actor/Rigid_Dynamic_Box.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Dynamic_Box.cpp.s
+.PHONY : src/neb/actor/Rigid_Dynamic_Box.cpp.s
+
 src/neb/actor/Rigid_Static.o: src/neb/actor/Rigid_Static.cpp.o
 .PHONY : src/neb/actor/Rigid_Static.o
 
@@ -357,29 +343,125 @@ src/neb/actor/Rigid_Static.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/Rigid_Static.cpp.s
 .PHONY : src/neb/actor/Rigid_Static.cpp.s
 
-src/neb/actor/desc.o: src/neb/actor/desc.cpp.o
-.PHONY : src/neb/actor/desc.o
+src/neb/actor/empty.o: src/neb/actor/empty.cpp.o
+.PHONY : src/neb/actor/empty.o
 
 # target to build an object file
-src/neb/actor/desc.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.o
-.PHONY : src/neb/actor/desc.cpp.o
+src/neb/actor/empty.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.o
+.PHONY : src/neb/actor/empty.cpp.o
 
-src/neb/actor/desc.i: src/neb/actor/desc.cpp.i
-.PHONY : src/neb/actor/desc.i
+src/neb/actor/empty.i: src/neb/actor/empty.cpp.i
+.PHONY : src/neb/actor/empty.i
 
 # target to preprocess a source file
-src/neb/actor/desc.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.i
-.PHONY : src/neb/actor/desc.cpp.i
+src/neb/actor/empty.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.i
+.PHONY : src/neb/actor/empty.cpp.i
 
-src/neb/actor/desc.s: src/neb/actor/desc.cpp.s
-.PHONY : src/neb/actor/desc.s
+src/neb/actor/empty.s: src/neb/actor/empty.cpp.s
+.PHONY : src/neb/actor/empty.s
 
 # target to generate assembly for a file
-src/neb/actor/desc.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/desc.cpp.s
-.PHONY : src/neb/actor/desc.cpp.s
+src/neb/actor/empty.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/empty.cpp.s
+.PHONY : src/neb/actor/empty.cpp.s
+
+src/neb/actor/free.o: src/neb/actor/free.cpp.o
+.PHONY : src/neb/actor/free.o
+
+# target to build an object file
+src/neb/actor/free.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/free.cpp.o
+.PHONY : src/neb/actor/free.cpp.o
+
+src/neb/actor/free.i: src/neb/actor/free.cpp.i
+.PHONY : src/neb/actor/free.i
+
+# target to preprocess a source file
+src/neb/actor/free.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/free.cpp.i
+.PHONY : src/neb/actor/free.cpp.i
+
+src/neb/actor/free.s: src/neb/actor/free.cpp.s
+.PHONY : src/neb/actor/free.s
+
+# target to generate assembly for a file
+src/neb/actor/free.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/free.cpp.s
+.PHONY : src/neb/actor/free.cpp.s
+
+src/neb/actor/raw.o: src/neb/actor/raw.cpp.o
+.PHONY : src/neb/actor/raw.o
+
+# target to build an object file
+src/neb/actor/raw.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/raw.cpp.o
+.PHONY : src/neb/actor/raw.cpp.o
+
+src/neb/actor/raw.i: src/neb/actor/raw.cpp.i
+.PHONY : src/neb/actor/raw.i
+
+# target to preprocess a source file
+src/neb/actor/raw.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/raw.cpp.i
+.PHONY : src/neb/actor/raw.cpp.i
+
+src/neb/actor/raw.s: src/neb/actor/raw.cpp.s
+.PHONY : src/neb/actor/raw.s
+
+# target to generate assembly for a file
+src/neb/actor/raw.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/raw.cpp.s
+.PHONY : src/neb/actor/raw.cpp.s
+
+src/neb/actor/raw_factory.o: src/neb/actor/raw_factory.cpp.o
+.PHONY : src/neb/actor/raw_factory.o
+
+# target to build an object file
+src/neb/actor/raw_factory.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/raw_factory.cpp.o
+.PHONY : src/neb/actor/raw_factory.cpp.o
+
+src/neb/actor/raw_factory.i: src/neb/actor/raw_factory.cpp.i
+.PHONY : src/neb/actor/raw_factory.i
+
+# target to preprocess a source file
+src/neb/actor/raw_factory.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/raw_factory.cpp.i
+.PHONY : src/neb/actor/raw_factory.cpp.i
+
+src/neb/actor/raw_factory.s: src/neb/actor/raw_factory.cpp.s
+.PHONY : src/neb/actor/raw_factory.s
+
+# target to generate assembly for a file
+src/neb/actor/raw_factory.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/raw_factory.cpp.s
+.PHONY : src/neb/actor/raw_factory.cpp.s
+
+src/neb/actor/rigid_body/rigid_body.o: src/neb/actor/rigid_body/rigid_body.cpp.o
+.PHONY : src/neb/actor/rigid_body/rigid_body.o
+
+# target to build an object file
+src/neb/actor/rigid_body/rigid_body.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.o
+.PHONY : src/neb/actor/rigid_body/rigid_body.cpp.o
+
+src/neb/actor/rigid_body/rigid_body.i: src/neb/actor/rigid_body/rigid_body.cpp.i
+.PHONY : src/neb/actor/rigid_body/rigid_body.i
+
+# target to preprocess a source file
+src/neb/actor/rigid_body/rigid_body.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.i
+.PHONY : src/neb/actor/rigid_body/rigid_body.cpp.i
+
+src/neb/actor/rigid_body/rigid_body.s: src/neb/actor/rigid_body/rigid_body.cpp.s
+.PHONY : src/neb/actor/rigid_body/rigid_body.s
+
+# target to generate assembly for a file
+src/neb/actor/rigid_body/rigid_body.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/actor/rigid_body/rigid_body.cpp.s
+.PHONY : src/neb/actor/rigid_body/rigid_body.cpp.s
 
 src/neb/app.o: src/neb/app.cpp.o
 .PHONY : src/neb/app.o
@@ -405,53 +487,197 @@ src/neb/app.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/app.cpp.s
 .PHONY : src/neb/app.cpp.s
 
-src/neb/camera.o: src/neb/camera.cpp.o
-.PHONY : src/neb/camera.o
+src/neb/camera/camera.o: src/neb/camera/camera.cpp.o
+.PHONY : src/neb/camera/camera.o
 
 # target to build an object file
-src/neb/camera.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera.cpp.o
-.PHONY : src/neb/camera.cpp.o
+src/neb/camera/camera.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.o
+.PHONY : src/neb/camera/camera.cpp.o
 
-src/neb/camera.i: src/neb/camera.cpp.i
-.PHONY : src/neb/camera.i
+src/neb/camera/camera.i: src/neb/camera/camera.cpp.i
+.PHONY : src/neb/camera/camera.i
 
 # target to preprocess a source file
-src/neb/camera.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera.cpp.i
-.PHONY : src/neb/camera.cpp.i
+src/neb/camera/camera.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.i
+.PHONY : src/neb/camera/camera.cpp.i
 
-src/neb/camera.s: src/neb/camera.cpp.s
-.PHONY : src/neb/camera.s
+src/neb/camera/camera.s: src/neb/camera/camera.cpp.s
+.PHONY : src/neb/camera/camera.s
 
 # target to generate assembly for a file
-src/neb/camera.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera.cpp.s
-.PHONY : src/neb/camera.cpp.s
+src/neb/camera/camera.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/camera.cpp.s
+.PHONY : src/neb/camera/camera.cpp.s
 
-src/neb/camera_ridealong.o: src/neb/camera_ridealong.cpp.o
-.PHONY : src/neb/camera_ridealong.o
+src/neb/camera/ridealong.o: src/neb/camera/ridealong.cpp.o
+.PHONY : src/neb/camera/ridealong.o
 
 # target to build an object file
-src/neb/camera_ridealong.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.o
-.PHONY : src/neb/camera_ridealong.cpp.o
+src/neb/camera/ridealong.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.o
+.PHONY : src/neb/camera/ridealong.cpp.o
 
-src/neb/camera_ridealong.i: src/neb/camera_ridealong.cpp.i
-.PHONY : src/neb/camera_ridealong.i
+src/neb/camera/ridealong.i: src/neb/camera/ridealong.cpp.i
+.PHONY : src/neb/camera/ridealong.i
 
 # target to preprocess a source file
-src/neb/camera_ridealong.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.i
-.PHONY : src/neb/camera_ridealong.cpp.i
+src/neb/camera/ridealong.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.i
+.PHONY : src/neb/camera/ridealong.cpp.i
 
-src/neb/camera_ridealong.s: src/neb/camera_ridealong.cpp.s
-.PHONY : src/neb/camera_ridealong.s
+src/neb/camera/ridealong.s: src/neb/camera/ridealong.cpp.s
+.PHONY : src/neb/camera/ridealong.s
 
 # target to generate assembly for a file
-src/neb/camera_ridealong.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera_ridealong.cpp.s
-.PHONY : src/neb/camera_ridealong.cpp.s
+src/neb/camera/ridealong.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/camera/ridealong.cpp.s
+.PHONY : src/neb/camera/ridealong.cpp.s
+
+src/neb/control/rigid_body/control.o: src/neb/control/rigid_body/control.cpp.o
+.PHONY : src/neb/control/rigid_body/control.o
+
+# target to build an object file
+src/neb/control/rigid_body/control.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.o
+.PHONY : src/neb/control/rigid_body/control.cpp.o
+
+src/neb/control/rigid_body/control.i: src/neb/control/rigid_body/control.cpp.i
+.PHONY : src/neb/control/rigid_body/control.i
+
+# target to preprocess a source file
+src/neb/control/rigid_body/control.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.i
+.PHONY : src/neb/control/rigid_body/control.cpp.i
+
+src/neb/control/rigid_body/control.s: src/neb/control/rigid_body/control.cpp.s
+.PHONY : src/neb/control/rigid_body/control.s
+
+# target to generate assembly for a file
+src/neb/control/rigid_body/control.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/control/rigid_body/control.cpp.s
+.PHONY : src/neb/control/rigid_body/control.cpp.s
+
+src/neb/control/rigid_body/raw.o: src/neb/control/rigid_body/raw.cpp.o
+.PHONY : src/neb/control/rigid_body/raw.o
+
+# target to build an object file
+src/neb/control/rigid_body/raw.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.o
+.PHONY : src/neb/control/rigid_body/raw.cpp.o
+
+src/neb/control/rigid_body/raw.i: src/neb/control/rigid_body/raw.cpp.i
+.PHONY : src/neb/control/rigid_body/raw.i
+
+# target to preprocess a source file
+src/neb/control/rigid_body/raw.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.i
+.PHONY : src/neb/control/rigid_body/raw.cpp.i
+
+src/neb/control/rigid_body/raw.s: src/neb/control/rigid_body/raw.cpp.s
+.PHONY : src/neb/control/rigid_body/raw.s
+
+# target to generate assembly for a file
+src/neb/control/rigid_body/raw.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/control/rigid_body/raw.cpp.s
+.PHONY : src/neb/control/rigid_body/raw.cpp.s
+
+src/neb/network/actor_release.o: src/neb/network/actor_release.cpp.o
+.PHONY : src/neb/network/actor_release.o
+
+# target to build an object file
+src/neb/network/actor_release.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.o
+.PHONY : src/neb/network/actor_release.cpp.o
+
+src/neb/network/actor_release.i: src/neb/network/actor_release.cpp.i
+.PHONY : src/neb/network/actor_release.i
+
+# target to preprocess a source file
+src/neb/network/actor_release.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.i
+.PHONY : src/neb/network/actor_release.cpp.i
+
+src/neb/network/actor_release.s: src/neb/network/actor_release.cpp.s
+.PHONY : src/neb/network/actor_release.s
+
+# target to generate assembly for a file
+src/neb/network/actor_release.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/actor_release.cpp.s
+.PHONY : src/neb/network/actor_release.cpp.s
+
+src/neb/network/client.o: src/neb/network/client.cpp.o
+.PHONY : src/neb/network/client.o
+
+# target to build an object file
+src/neb/network/client.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/client.cpp.o
+.PHONY : src/neb/network/client.cpp.o
+
+src/neb/network/client.i: src/neb/network/client.cpp.i
+.PHONY : src/neb/network/client.i
+
+# target to preprocess a source file
+src/neb/network/client.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/client.cpp.i
+.PHONY : src/neb/network/client.cpp.i
+
+src/neb/network/client.s: src/neb/network/client.cpp.s
+.PHONY : src/neb/network/client.s
+
+# target to generate assembly for a file
+src/neb/network/client.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/client.cpp.s
+.PHONY : src/neb/network/client.cpp.s
+
+src/neb/network/communicating.o: src/neb/network/communicating.cpp.o
+.PHONY : src/neb/network/communicating.o
+
+# target to build an object file
+src/neb/network/communicating.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.o
+.PHONY : src/neb/network/communicating.cpp.o
+
+src/neb/network/communicating.i: src/neb/network/communicating.cpp.i
+.PHONY : src/neb/network/communicating.i
+
+# target to preprocess a source file
+src/neb/network/communicating.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.i
+.PHONY : src/neb/network/communicating.cpp.i
+
+src/neb/network/communicating.s: src/neb/network/communicating.cpp.s
+.PHONY : src/neb/network/communicating.s
+
+# target to generate assembly for a file
+src/neb/network/communicating.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/communicating.cpp.s
+.PHONY : src/neb/network/communicating.cpp.s
+
+src/neb/network/server.o: src/neb/network/server.cpp.o
+.PHONY : src/neb/network/server.o
+
+# target to build an object file
+src/neb/network/server.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/server.cpp.o
+.PHONY : src/neb/network/server.cpp.o
+
+src/neb/network/server.i: src/neb/network/server.cpp.i
+.PHONY : src/neb/network/server.i
+
+# target to preprocess a source file
+src/neb/network/server.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/server.cpp.i
+.PHONY : src/neb/network/server.cpp.i
+
+src/neb/network/server.s: src/neb/network/server.cpp.s
+.PHONY : src/neb/network/server.s
+
+# target to generate assembly for a file
+src/neb/network/server.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/network/server.cpp.s
+.PHONY : src/neb/network/server.cpp.s
 
 src/neb/physics.o: src/neb/physics.cpp.o
 .PHONY : src/neb/physics.o
@@ -477,29 +703,29 @@ src/neb/physics.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/physics.cpp.s
 .PHONY : src/neb/physics.cpp.s
 
-src/neb/scene.o: src/neb/scene.cpp.o
-.PHONY : src/neb/scene.o
+src/neb/scene/scene.o: src/neb/scene/scene.cpp.o
+.PHONY : src/neb/scene/scene.o
 
 # target to build an object file
-src/neb/scene.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene.cpp.o
-.PHONY : src/neb/scene.cpp.o
+src/neb/scene/scene.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.o
+.PHONY : src/neb/scene/scene.cpp.o
 
-src/neb/scene.i: src/neb/scene.cpp.i
-.PHONY : src/neb/scene.i
+src/neb/scene/scene.i: src/neb/scene/scene.cpp.i
+.PHONY : src/neb/scene/scene.i
 
 # target to preprocess a source file
-src/neb/scene.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene.cpp.i
-.PHONY : src/neb/scene.cpp.i
+src/neb/scene/scene.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.i
+.PHONY : src/neb/scene/scene.cpp.i
 
-src/neb/scene.s: src/neb/scene.cpp.s
-.PHONY : src/neb/scene.s
+src/neb/scene/scene.s: src/neb/scene/scene.cpp.s
+.PHONY : src/neb/scene/scene.s
 
 # target to generate assembly for a file
-src/neb/scene.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene.cpp.s
-.PHONY : src/neb/scene.cpp.s
+src/neb/scene/scene.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/scene/scene.cpp.s
+.PHONY : src/neb/scene/scene.cpp.s
 
 src/neb/shape.o: src/neb/shape.cpp.o
 .PHONY : src/neb/shape.o
@@ -525,6 +751,54 @@ src/neb/shape.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/shape.cpp.s
 .PHONY : src/neb/shape.cpp.s
 
+src/neb/simulation_callback.o: src/neb/simulation_callback.cpp.o
+.PHONY : src/neb/simulation_callback.o
+
+# target to build an object file
+src/neb/simulation_callback.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.o
+.PHONY : src/neb/simulation_callback.cpp.o
+
+src/neb/simulation_callback.i: src/neb/simulation_callback.cpp.i
+.PHONY : src/neb/simulation_callback.i
+
+# target to preprocess a source file
+src/neb/simulation_callback.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.i
+.PHONY : src/neb/simulation_callback.cpp.i
+
+src/neb/simulation_callback.s: src/neb/simulation_callback.cpp.s
+.PHONY : src/neb/simulation_callback.s
+
+# target to generate assembly for a file
+src/neb/simulation_callback.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/simulation_callback.cpp.s
+.PHONY : src/neb/simulation_callback.cpp.s
+
+src/neb/timer/actor.o: src/neb/timer/actor.cpp.o
+.PHONY : src/neb/timer/actor.o
+
+# target to build an object file
+src/neb/timer/actor.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/timer/actor.cpp.o
+.PHONY : src/neb/timer/actor.cpp.o
+
+src/neb/timer/actor.i: src/neb/timer/actor.cpp.i
+.PHONY : src/neb/timer/actor.i
+
+# target to preprocess a source file
+src/neb/timer/actor.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/timer/actor.cpp.i
+.PHONY : src/neb/timer/actor.cpp.i
+
+src/neb/timer/actor.s: src/neb/timer/actor.cpp.s
+.PHONY : src/neb/timer/actor.s
+
+# target to generate assembly for a file
+src/neb/timer/actor.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/timer/actor.cpp.s
+.PHONY : src/neb/timer/actor.cpp.s
+
 src/neb/user.o: src/neb/user.cpp.o
 .PHONY : src/neb/user.o
 
@@ -549,53 +823,29 @@ src/neb/user.cpp.s:
 	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/user.cpp.s
 .PHONY : src/neb/user.cpp.s
 
-src/neb/view.o: src/neb/view.cpp.o
-.PHONY : src/neb/view.o
+src/neb/vehicle_manager.o: src/neb/vehicle_manager.cpp.o
+.PHONY : src/neb/vehicle_manager.o
 
 # target to build an object file
-src/neb/view.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/view.cpp.o
-.PHONY : src/neb/view.cpp.o
+src/neb/vehicle_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.o
+.PHONY : src/neb/vehicle_manager.cpp.o
 
-src/neb/view.i: src/neb/view.cpp.i
-.PHONY : src/neb/view.i
-
-# target to preprocess a source file
-src/neb/view.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/view.cpp.i
-.PHONY : src/neb/view.cpp.i
-
-src/neb/view.s: src/neb/view.cpp.s
-.PHONY : src/neb/view.s
-
-# target to generate assembly for a file
-src/neb/view.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/view.cpp.s
-.PHONY : src/neb/view.cpp.s
-
-src/neb/window.o: src/neb/window.cpp.o
-.PHONY : src/neb/window.o
-
-# target to build an object file
-src/neb/window.cpp.o:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/window.cpp.o
-.PHONY : src/neb/window.cpp.o
-
-src/neb/window.i: src/neb/window.cpp.i
-.PHONY : src/neb/window.i
+src/neb/vehicle_manager.i: src/neb/vehicle_manager.cpp.i
+.PHONY : src/neb/vehicle_manager.i
 
 # target to preprocess a source file
-src/neb/window.cpp.i:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/window.cpp.i
-.PHONY : src/neb/window.cpp.i
+src/neb/vehicle_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.i
+.PHONY : src/neb/vehicle_manager.cpp.i
 
-src/neb/window.s: src/neb/window.cpp.s
-.PHONY : src/neb/window.s
+src/neb/vehicle_manager.s: src/neb/vehicle_manager.cpp.s
+.PHONY : src/neb/vehicle_manager.s
 
 # target to generate assembly for a file
-src/neb/window.cpp.s:
-	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/window.cpp.s
-.PHONY : src/neb/window.cpp.s
+src/neb/vehicle_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/nebula.dir/build.make CMakeFiles/nebula.dir/src/neb/vehicle_manager.cpp.s
+.PHONY : src/neb/vehicle_manager.cpp.s
 
 # Help Target
 help:
@@ -603,6 +853,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... doc"
 	@echo "... edit_cache"
 	@echo "... glutpp"
 	@echo "... install"
@@ -620,51 +871,81 @@ help:
 	@echo "... src/neb/actor/Controller.o"
 	@echo "... src/neb/actor/Controller.i"
 	@echo "... src/neb/actor/Controller.s"
-	@echo "... src/neb/actor/Light.o"
-	@echo "... src/neb/actor/Light.i"
-	@echo "... src/neb/actor/Light.s"
 	@echo "... src/neb/actor/Rigid_Actor.o"
 	@echo "... src/neb/actor/Rigid_Actor.i"
 	@echo "... src/neb/actor/Rigid_Actor.s"
-	@echo "... src/neb/actor/Rigid_Body.o"
-	@echo "... src/neb/actor/Rigid_Body.i"
-	@echo "... src/neb/actor/Rigid_Body.s"
 	@echo "... src/neb/actor/Rigid_Dynamic.o"
 	@echo "... src/neb/actor/Rigid_Dynamic.i"
 	@echo "... src/neb/actor/Rigid_Dynamic.s"
+	@echo "... src/neb/actor/Rigid_Dynamic_Box.o"
+	@echo "... src/neb/actor/Rigid_Dynamic_Box.i"
+	@echo "... src/neb/actor/Rigid_Dynamic_Box.s"
 	@echo "... src/neb/actor/Rigid_Static.o"
 	@echo "... src/neb/actor/Rigid_Static.i"
 	@echo "... src/neb/actor/Rigid_Static.s"
-	@echo "... src/neb/actor/desc.o"
-	@echo "... src/neb/actor/desc.i"
-	@echo "... src/neb/actor/desc.s"
+	@echo "... src/neb/actor/empty.o"
+	@echo "... src/neb/actor/empty.i"
+	@echo "... src/neb/actor/empty.s"
+	@echo "... src/neb/actor/free.o"
+	@echo "... src/neb/actor/free.i"
+	@echo "... src/neb/actor/free.s"
+	@echo "... src/neb/actor/raw.o"
+	@echo "... src/neb/actor/raw.i"
+	@echo "... src/neb/actor/raw.s"
+	@echo "... src/neb/actor/raw_factory.o"
+	@echo "... src/neb/actor/raw_factory.i"
+	@echo "... src/neb/actor/raw_factory.s"
+	@echo "... src/neb/actor/rigid_body/rigid_body.o"
+	@echo "... src/neb/actor/rigid_body/rigid_body.i"
+	@echo "... src/neb/actor/rigid_body/rigid_body.s"
 	@echo "... src/neb/app.o"
 	@echo "... src/neb/app.i"
 	@echo "... src/neb/app.s"
-	@echo "... src/neb/camera.o"
-	@echo "... src/neb/camera.i"
-	@echo "... src/neb/camera.s"
-	@echo "... src/neb/camera_ridealong.o"
-	@echo "... src/neb/camera_ridealong.i"
-	@echo "... src/neb/camera_ridealong.s"
+	@echo "... src/neb/camera/camera.o"
+	@echo "... src/neb/camera/camera.i"
+	@echo "... src/neb/camera/camera.s"
+	@echo "... src/neb/camera/ridealong.o"
+	@echo "... src/neb/camera/ridealong.i"
+	@echo "... src/neb/camera/ridealong.s"
+	@echo "... src/neb/control/rigid_body/control.o"
+	@echo "... src/neb/control/rigid_body/control.i"
+	@echo "... src/neb/control/rigid_body/control.s"
+	@echo "... src/neb/control/rigid_body/raw.o"
+	@echo "... src/neb/control/rigid_body/raw.i"
+	@echo "... src/neb/control/rigid_body/raw.s"
+	@echo "... src/neb/network/actor_release.o"
+	@echo "... src/neb/network/actor_release.i"
+	@echo "... src/neb/network/actor_release.s"
+	@echo "... src/neb/network/client.o"
+	@echo "... src/neb/network/client.i"
+	@echo "... src/neb/network/client.s"
+	@echo "... src/neb/network/communicating.o"
+	@echo "... src/neb/network/communicating.i"
+	@echo "... src/neb/network/communicating.s"
+	@echo "... src/neb/network/server.o"
+	@echo "... src/neb/network/server.i"
+	@echo "... src/neb/network/server.s"
 	@echo "... src/neb/physics.o"
 	@echo "... src/neb/physics.i"
 	@echo "... src/neb/physics.s"
-	@echo "... src/neb/scene.o"
-	@echo "... src/neb/scene.i"
-	@echo "... src/neb/scene.s"
+	@echo "... src/neb/scene/scene.o"
+	@echo "... src/neb/scene/scene.i"
+	@echo "... src/neb/scene/scene.s"
 	@echo "... src/neb/shape.o"
 	@echo "... src/neb/shape.i"
 	@echo "... src/neb/shape.s"
+	@echo "... src/neb/simulation_callback.o"
+	@echo "... src/neb/simulation_callback.i"
+	@echo "... src/neb/simulation_callback.s"
+	@echo "... src/neb/timer/actor.o"
+	@echo "... src/neb/timer/actor.i"
+	@echo "... src/neb/timer/actor.s"
 	@echo "... src/neb/user.o"
 	@echo "... src/neb/user.i"
 	@echo "... src/neb/user.s"
-	@echo "... src/neb/view.o"
-	@echo "... src/neb/view.i"
-	@echo "... src/neb/view.s"
-	@echo "... src/neb/window.o"
-	@echo "... src/neb/window.i"
-	@echo "... src/neb/window.s"
+	@echo "... src/neb/vehicle_manager.o"
+	@echo "... src/neb/vehicle_manager.i"
+	@echo "... src/neb/vehicle_manager.s"
 .PHONY : help
 
 

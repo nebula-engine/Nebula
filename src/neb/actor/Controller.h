@@ -13,11 +13,12 @@ namespace neb
 			public neb::actor::Base
 		{
 			public:
-				Controller();
-
+				Controller(glutpp::parent_s);
+				
+				virtual void		release();
 
 				virtual void		step(float);
-				virtual void		init();
+				virtual void		init(glutpp::actor::desc_s);
 				virtual void		add_force();
 
 

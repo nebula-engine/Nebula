@@ -5,35 +5,24 @@
 
 #include <math/vec3.h>
 
-namespace neb
-{
-	class shape
-	{
-		public:
-			enum
-			{
-				NONE = 0,
-				BOX,
-				SPHERE
-			};
-			int			type_;
-			math::vec3		s_;
-			physx::PxGeometry*	geo_;
-	};
-	class box: public neb::shape
-	{
-		public:
-			box(math::vec3);
-			box(tinyxml2::XMLElement*);
+#include <glutpp/shape/shape.h>
 
-	};
-	class sphere: public neb::shape
-	{
-		public:
-			sphere(float);
-			sphere(tinyxml2::XMLElement*);
-			float	radius_;
-	};
+#include <neb/parent.h>
+
+namespace neb {
+	namespace shape {
+		class shape: virtual public neb::parent, public glutpp::shape::shape {
+			public:
+				shape(glutpp::actor::actor_s);
+
+				virtual void		init(glutpp::shape::desc_s);
+				void			create_physics();
+				physx::PxGeometry*	to_geo();
+				void			print_info();
+
+				physx::PxShape*		px_shape_;
+		};	
+	}
 }
 
 #endif

@@ -1,44 +1,92 @@
 #include <math/free.h>
 
-#include <neb/scene.h>
+//#include <glutpp/types.h>
+
+#include <neb/config.h>
+#include <neb/physics.h>
+#include <neb/scene/scene.h>
 #include <neb/shape.h>
 
-neb::box::box(math::vec3 s)
+neb::shape::shape::shape(glutpp::actor::actor_s actor):
+	glutpp::shape::shape(actor)
 {
-	type_ = neb::shape::BOX;
-	
-	s_ = s;
-	
-	geo_ = new physx::PxBoxGeometry(s_.x/2.0, s_.y/2.0, s_.z/2.0);
+	NEBULA_DEBUG_0_FUNCTION;
 }
-neb::box::box(tinyxml2::XMLElement* element)
+void neb::shape::shape::init(glutpp::shape::desc_s desc) {
+	NEBULA_DEBUG_0_FUNCTION;
+	
+	glutpp::shape::shape::init(desc);
+	
+	create_physics();
+}
+void neb::shape::shape::create_physics() {
+
+	NEBULA_DEBUG_0_FUNCTION;
+	
+	assert(!parent_.expired());
+	
+	auto actor = neb::parent::get_parent()->is_rigid_actor();//std::dynamic_pointer_cast<neb::actor::Rigid_Actor>(parent_.lock());
+	
+	if(actor)
+	{
+		physx::PxRigidActor* px_rigid_actor = static_cast<physx::PxRigidActor*>(actor->px_actor_);
+
+		physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
+	
+		px_shape_ = px_rigid_actor->createShape( *(to_geo()), *px_mat );
+	}
+}
+physx::PxGeometry* neb::shape::shape::to_geo()
 {
-	type_ = neb::shape::BOX;
+	NEBULA_DEBUG_0_FUNCTION;
 
-	s_ = math::xml_parse_vec3(element->FirstChildElement("s"));
+	physx::PxGeometry* geo = NULL;
+
+	math::vec3 s = raw_.get_raw_base()->s_;
+
+	switch(raw_.get_raw_base()->type_)
+	{
+		case glutpp::shape::type::BOX:
+			geo = new physx::PxBoxGeometry(s/2.0);
+			break;
+		case glutpp::shape::type::SPHERE:
+			geo = new physx::PxSphereGeometry(s.x);
+			break;
+		default:
+			printf("unknown shape type\n");
+			abort();
+	}
+
+	return geo;
+}
+void neb::shape::shape::print_info() {
 	
-	geo_ = new physx::PxBoxGeometry(s_.x/2.0, s_.y/2.0, s_.z/2.0);
+	physx::PxReal dynamic_friction;
+	physx::PxReal static_friction;
+	physx::PxReal restitution;
+	
+	
+	if(px_shape_ != NULL)
+	{
+		physx::PxU32 num_shapes = px_shape_->getNbMaterials();
+		
+		physx::PxMaterial** materials = new physx::PxMaterial*[num_shapes];
+		
+		num_shapes = px_shape_->getMaterials(materials, num_shapes);
+		
+		for(physx::PxU32 i = 0; i < num_shapes; ++i) {
+			dynamic_friction = materials[i]->getDynamicFriction();
+			static_friction = materials[i]->getStaticFriction();
+			restitution = materials[i]->getRestitution();
+
+			printf("dynamic friction = %f\n", dynamic_friction);
+			printf("static friction  = %f\n", static_friction);
+			printf("restitution      = %f\n", restitution);
+		}
+	}
 }
 
 
-neb::sphere::sphere(float radius)
-{
-	type_ = neb::shape::SPHERE;
-
-	radius_ = radius;
-	s_ = math::vec3(radius_, radius_, radius_);
-	
-	geo_ = new physx::PxSphereGeometry(radius_);
-}
-neb::sphere::sphere(tinyxml2::XMLElement* element)
-{
-	type_ = neb::shape::SPHERE;
-
-	radius_ = math::xml_parse_float(element->FirstChildElement("s"));
-	s_ = math::vec3(radius_, radius_, radius_);
-	
-	geo_ = new physx::PxSphereGeometry(radius_);
-}
 
 
 

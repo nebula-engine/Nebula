@@ -1,28 +1,79 @@
 #include <neb/shape.h>
+#include <neb/physics.h>
 #include <neb/actor/Rigid_Dynamic.h>
 
-neb::actor::Rigid_Dynamic::Rigid_Dynamic()
-{}
-void	neb::actor::Rigid_Dynamic::init()
+neb::actor::Rigid_Dynamic::Rigid_Dynamic(glutpp::parent_s parent):
+	neb::actor::rigid_body::rigid_body(parent)
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
-
-	assert(shape_);
-
-	//object_.reset(new glutpp::object);
-	
-	s_ = shape_->s_;
-
-	switch(shape_->type_)
-	{
-		case neb::shape::BOX:
-			load("cube.obj");
-			break;
-		case neb::shape::SPHERE:
-			load("sphere.obj");
-			break;
-		default:
-			break;
-	}
+	NEBULA_DEBUG_0_FUNCTION;
 }
+void neb::actor::Rigid_Dynamic::init(glutpp::actor::desc_s desc) {
+	NEBULA_DEBUG_0_FUNCTION;
+
+	neb::actor::rigid_body::rigid_body::init(desc);
+	
+	auto pxrd = px_actor_->isRigidDynamic();
+	pxrd->setLinearDamping(0.01);
+}
+void neb::actor::Rigid_Dynamic::create_physics() {
+	NEBULA_DEBUG_0_FUNCTION;
+
+	assert(px_actor_ == NULL);
+
+	auto scene = get_scene();
+
+	math::transform pose(get_pose());
+
+
+	// PxActor
+	physx::PxRigidDynamic* px_rigid_dynamic = 
+		neb::__physics.px_physics_->createRigidDynamic(pose);
+
+	if (!px_rigid_dynamic)
+	{
+		printf("create shape failed!");
+		exit(1);
+	}
+
+	px_actor_ = px_rigid_dynamic;
+
+	px_rigid_dynamic->setLinearVelocity(get_raw()->velocity_, true);
+
+	// userData
+	px_rigid_dynamic->userData = this;
+
+	// add PxActor to PxScene
+	scene->px_scene_->addActor(*px_rigid_dynamic);
+
+}
+void neb::actor::Rigid_Dynamic::init_physics() {
+	NEBULA_DEBUG_0_FUNCTION;
+	
+	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();
+	
+	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, get_raw()->density_);
+	
+	setupFiltering();
+}
+void neb::actor::Rigid_Dynamic::print_info() {
+	
+	neb::actor::rigid_body::rigid_body::print_info();
+	
+	auto pxrd = px_actor_->isRigidDynamic();
+	
+	float linear_damping = pxrd->getLinearDamping();
+	float angular_damping = pxrd->getAngularDamping();
+	float max_angular_velocity = pxrd->getMaxAngularVelocity();
+	
+	printf("PxRigidDynamic:\n");
+	printf("linear damping      = %f\n", linear_damping);
+	printf("angular damping     = %f\n", angular_damping);
+	printf("max angular damping = %f\n", max_angular_velocity);
+
+	
+
+}
+
+
+
 

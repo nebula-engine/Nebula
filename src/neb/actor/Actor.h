@@ -3,7 +3,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <glutpp/actor.h>
+#include <glutpp/actor/actor.h>
 
 #include <neb/actor/Base.h>
 
@@ -15,28 +15,34 @@ namespace neb
 			public neb::actor::Base
 		{
 			public:
-				Actor();
-				virtual void		init() = 0;
-				virtual void		add_force() = 0;
-				virtual void		set_pose(math::transform);
-				virtual int		fire(int,int,int);
+				Actor(glutpp::parent_s);
+
+
+				virtual void			init(glutpp::actor::desc_s);
+				virtual void			release();
+				virtual void			add_force(double) {abort();}
+				virtual void			set_pose(math::transform);
+				virtual int			fire();
+
+				virtual glutpp::actor::desc_s	get_projectile() {abort(); return NULL;}
 				
-				virtual void		step_remote(double) = 0;
+				
+				virtual void			create_physics() {abort();}
+				virtual void			init_physics() {abort();}
+				
+				
+				virtual void			step_local(double);
+				virtual void			step_remote(double);
 
-				physx::PxActor*				px_actor_;
-
-
+				virtual void			print_info();
+				
+				physx::PxActor*			px_actor_;
+				
 				//std::shared_ptr<glutpp::actor>		object_;
 		};
 	}
 }
 
 #endif
-
-
-
-
-
-
 
 

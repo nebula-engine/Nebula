@@ -3,22 +3,26 @@
 
 #include <neb/actor/Actor.h>
 
-namespace neb
-{
-	class shape;
-	namespace actor
-	{
-		class Rigid_Actor:
-			public neb::actor::Actor
-		{
+namespace neb {
+	namespace actor {
+		class Rigid_Actor: public neb::actor::Actor {
 			public:
-				virtual void		init() = 0;
-				virtual void		add_force() = 0;
+				Rigid_Actor(glutpp::parent_s);
 
-				virtual void		step_remote(double);
+				virtual void			init(glutpp::actor::desc_s);
+				virtual void			add_force(double) {abort();}
 
-				physx::PxShape*		px_shape_;
-				shape*			shape_;
+				virtual void			step_local(double);
+				virtual void			step_remote(double);
+				
+				virtual void			setupFiltering();
+
+				virtual glutpp::actor::desc_s	get_projectile();
+				
+				virtual void			create_physics() {abort();}
+				virtual void			init_physics() {abort();}
+
+				virtual void			print_info();
 		};
 	}
 }

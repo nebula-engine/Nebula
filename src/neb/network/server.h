@@ -7,11 +7,17 @@
 
 namespace neb
 {
-        namespace network
-        {
-                typedef gal::network::server<neb::network::communicating> server;
+	namespace network
+	{
+		class server: public gal::network::server
+		{
+			public:
+				server(neb::app_s, unsigned short, int);
+				void	callback_accept(int);
 
-        }
+				std::weak_ptr<neb::app>		app_;
+		};
+	}
 }
 
 #endif
