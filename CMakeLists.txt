@@ -5,30 +5,16 @@ project(nebula)
 
 set(PROJECT_SOURCE_DIR src)
 
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb				files_src_neb)
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/timer			files_src_neb_timer)
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/camera			files_src_neb_camera)
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/control/rigid_body	files_src_neb_control_rigid_body)
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/actor			files_src_neb_actor)
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/actor/rigid_body		files_src_neb_actor_rigid_body)
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/scene			files_src_neb_scene)
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/network			files_src_neb_network)
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/packet			files_src_neb_packet)
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/neb/timer			files_src_neb_timer)
+set(LIB_NAME nebula)
 
 include_directories("${PROJECT_SOURCE_DIR}" ../glutpp/src ../galaxy/src ../math/src)
 
-add_library(nebula 
-	${files_src_neb}
-	${files_src_neb_timer}
-	${files_src_neb_camera}
-	${files_src_neb_control_rigid_body}
-	${files_src_neb_network}
-	${files_src_neb_packet}
-	${files_src_neb_scene}
-	${files_src_neb_actor}
-	${files_src_neb_actor_rigid_body}
-)
+
+# common methods for static library
+# =================================
+include(../static_library.cmake)
+
+
 
 # add a target to generate API documentation with Doxygen
 find_package(Doxygen)
@@ -41,16 +27,6 @@ if(DOXYGEN_FOUND)
 	)
 endif(DOXYGEN_FOUND)
 
-# add a target to generate API documentation with Doxygen
-find_package(Doxygen)
-if(DOXYGEN_FOUND)
-	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
-	add_custom_target(doc
-		${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
-		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-		COMMENT "Generating API documentation with Doxygen" VERBATIM
-	)
-endif(DOXYGEN_FOUND)
 
 configure_file("${PROJECT_SOURCE_DIR}/neb/config.h.in" "${PROJECT_SOURCE_DIR}/neb/config.h")
 
