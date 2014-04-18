@@ -5,9 +5,9 @@
 
 #include <gal/network/serial.h>
 
-//#include <glutpp/actor/actor.h>
-#include <glutpp/actor/id.h>
-#include <glutpp/shape/desc.h>
+//#include <gru/actor/actor.hpp>
+#include <gru/actor/id.hpp>
+#include <gru/shape/desc.hpp>
 
 namespace glutpp {
 	namespace actor {

@@ -6,11 +6,11 @@
 #include <gal/flag.h>
 #include <gal/map.h>
 
-#include <glutpp/config.h>
-#include <glutpp/glsl/program.h>
-#include <glutpp/scene/raw.h>
-#include <glutpp/actor/actor.h>
-#include <glutpp/camera.h>
+#include <gru/config.hpp>
+#include <gru/glsl/program.hpp>
+#include <gru/scene/raw.hpp>
+#include <gru/actor/actor.hpp>
+#include <gru/camera.hpp>
 
 //#include <glutpp/shader.h>
 

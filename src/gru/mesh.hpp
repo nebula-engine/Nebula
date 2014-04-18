@@ -13,9 +13,9 @@
 #include <math/transform.h>
 #include <math/geo/polyhedron.h>
 
-#include <glutpp/config.h>
-#include <glutpp/shape/desc.h>
-#include <glutpp/material.h>
+#include <gru/config.hpp>
+#include <gru/shape/desc.hpp>
+#include <gru/material.hpp>
 
 namespace glutpp
 {

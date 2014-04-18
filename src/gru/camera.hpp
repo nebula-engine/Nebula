@@ -10,8 +10,8 @@
 #include <math/vec4.h>
 #include <math/mat44.h>
 
-#include <glutpp/config.h>
-#include <glutpp/camera_control.h>
+#include <gru/config.hpp>
+#include <gru/camera_control.hpp>
 
 namespace glutpp
 {

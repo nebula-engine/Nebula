@@ -27,7 +27,7 @@ set(INSTALL_CMAKE_DIR ${CMAKE_INSTALL_PREFIX}/lib/${LIB_NAME})
 
 # common methods for static library
 # =================================
-include(../static_library.cmake)
+include(../cmake/static_library.cmake)
 
 
 

@@ -3,14 +3,14 @@
 
 #include <GL/glew.h>
 
-#include <gal/sig/connection.h>
+#include <gal/sig/connection.hpp>
 
 #include <math/quat.h>
 #include <math/mat44.h>
 
-#include <glutpp/window/window.h>
-#include <glutpp/scene/scene.h>
-#include <glutpp/camera.h>
+#include <gru/window/window.hpp>
+#include <gru/scene/scene.hpp>
+#include <gru/camera.hpp>
 
 
 

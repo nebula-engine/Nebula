@@ -4,8 +4,8 @@
 #include <math/transform.h>
 #include <math/raw/raw.h>
 
-#include <glutpp/scene/addr.h>
-//#include <glutpp/actor/actor.h>
+#include <gru/scene/addr.hpp>
+//#include <gru/actor/actor.hpp>
 
 namespace glutpp
 {

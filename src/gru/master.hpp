@@ -13,7 +13,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <glutpp/config.h>
+#include <gru/config.hpp>
 
 
 namespace glutpp {

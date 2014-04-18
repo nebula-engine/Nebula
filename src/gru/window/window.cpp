@@ -11,14 +11,14 @@
 //#include <GL/glew.h>
 //#include <GL/glut.h>
 
-#include <math/color.h>
+#include <math/color.hpp>
 
-#include <glutpp/free.h>
-#include <glutpp/window/desc.h>
-#include <glutpp/window/window.h>
-#include <glutpp/actor/actor.h>
-#include <glutpp/light/light.h>
-#include <glutpp/renderable.h>
+#include <glutpp/free.hpp>
+#include <glutpp/window/desc.hpp>
+#include <glutpp/window/window.hpp>
+#include <glutpp/actor/actor.hpp>
+#include <glutpp/light/light.hpp>
+#include <glutpp/renderable.hpp>
 
 template <typename... Args>
 void	fatal_error(char const * c, Args ...args)

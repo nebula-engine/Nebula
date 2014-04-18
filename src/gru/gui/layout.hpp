@@ -9,9 +9,9 @@
 #include <gal/gal.h>
 
 
-#include <glutpp/gui/object/object.h>
-#include <glutpp/gui/object/object_factory.h>
-#include <glutpp/window/window.h>
+#include <gru/gui/object/object.hpp>
+#include <gru/gui/object/object_factory.hpp>
+#include <gru/window/window.hpp>
 
 
 namespace glutpp

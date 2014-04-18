@@ -15,14 +15,14 @@
 #include <math/transform.h>
 #include <math/geo/polyhedron.h>
 
-#include <glutpp/config.h>
-#include <glutpp/glsl/program.h>
-#include <glutpp/light/light.h>
-#include <glutpp/shape/raw.h>
-#include <glutpp/parent.h>
-#include <glutpp/master.h>
-#include <glutpp/material.h>
-#include <glutpp/mesh.h>
+#include <gru/config.hpp>
+#include <gru/glsl/program.hpp>
+#include <gru/light/light.hpp>
+#include <gru/shape/raw.hpp>
+#include <gru/parent.hpp>
+#include <gru/master.hpp>
+#include <gru/material.hpp>
+#include <gru/mesh.hpp>
 
 namespace glutpp
 {

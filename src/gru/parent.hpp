@@ -14,10 +14,10 @@
 #include <math/transform.h>
 #include <math/geo/polyhedron.h>
 
-#include <glutpp/config.h>
-#include <glutpp/shape/desc.h>
-#include <glutpp/material.h>
-#include <glutpp/mesh.h>
+#include <gru/config.hpp>
+#include <gru/shape/desc.hpp>
+#include <gru/material.hpp>
+#include <gru/mesh.hpp>
 
 namespace glutpp {
 	class parent: public std::enable_shared_from_this<parent> {

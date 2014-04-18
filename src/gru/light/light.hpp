@@ -6,12 +6,12 @@
 
 #include <gal/flag.h>
 
-#include <glutpp/config.h>
-#include <glutpp/camera.h>
-#include <glutpp/texture.h>
+#include <gru/config.hpp>
+#include <gru/camera.hpp>
+#include <gru/texture.hpp>
 
-#include <glutpp/light/desc.h>
-#include <glutpp/light/raw.h>
+#include <gru/light/desc.hpp>
+#include <gru/light/raw.hpp>
 
 #include <math/color.h>
 

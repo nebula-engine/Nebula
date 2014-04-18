@@ -8,8 +8,8 @@
 
 #include <math/vec3.h>
 
-#include <glutpp/config.h>
-//#include <glutpp/actor/desc.h>
+#include <gru/config.hpp>
+//#include <gru/actor/desc.hpp>
 
 namespace glutpp
 {
@@ -23,7 +23,7 @@ namespace glutpp
 				void			load(glutpp::scene::scene_s scene);
 
 				unsigned int		flag_;
-				math::vec3		gravity_;
+				math::vec3<double>	gravity_;
 		};
 	}
 }

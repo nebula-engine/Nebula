@@ -10,9 +10,9 @@
 
 #include <gal/network/serial.h>
 
-#include <glutpp/config.h>
-#include <glutpp/material.h>
-//#include <glutpp/shape/desc.h>
+#include <gru/config.hpp>
+#include <gru/material.hpp>
+//#include <gru/shape/desc.hpp>
 
 namespace glutpp
 {

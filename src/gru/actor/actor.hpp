@@ -14,16 +14,14 @@
 #include <math/geo/polyhedron.h>
 #include <math/transform.h>
 
-#include <glutpp/config.h>
-
-#include <glutpp/actor/addr.h>
-#include <glutpp/actor/raw.h>
-#include <glutpp/actor/desc.h>
-
-#include <glutpp/parent.h>
-#include <glutpp/texture.h>
-#include <glutpp/material.h>
-#include <glutpp/shape/shape.h>
+#include <gru/config.hpp>
+#include <gru/actor/addr.hpp>
+#include <gru/actor/raw.hpp>
+#include <gru/actor/desc.hpp>
+#include <gru/parent.hpp>
+#include <gru/texture.hpp>
+#include <gru/material.hpp>
+#include <gru/shape/shape.hpp>
 
 namespace glutpp { namespace actor {
 	class actor: public glutpp::parent, public gal::flag<unsigned int> {

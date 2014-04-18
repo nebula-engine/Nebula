@@ -8,8 +8,8 @@
 #include <gal/network/serial.h>
 #include <gal/util.h>
 
-#include <glutpp/config.h>
-#include <glutpp/shape/desc.h>
+#include <gru/config.hpp>
+#include <gru/shape/desc.hpp>
 
 template void gal::reset<glutpp::actor::raw>(glutpp::actor::raw_s&);
 

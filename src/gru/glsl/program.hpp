@@ -7,9 +7,9 @@
 #include <map>
 #include <vector>
 
-#include <glutpp/master.h>
-#include <glutpp/glsl/attrib.h>
-#include <glutpp/glsl/uniform.h>
+#include <gru/master.hpp>
+#include <gru/glsl/attrib.hpp>
+#include <gru/glsl/uniform.hpp>
 
 namespace glutpp
 {

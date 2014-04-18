@@ -11,7 +11,7 @@
 #include <math/vec4.h>
 #include <math/vec3.h>
 
-#include <glutpp/config.h>
+#include <gru/config.hpp>
 
 namespace glutpp
 {

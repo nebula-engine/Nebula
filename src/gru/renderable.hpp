@@ -5,10 +5,10 @@
 
 #include <gal/flag.h>
 
-#include <glutpp/config.h>
-#include <glutpp/gui/layout.h>
-#include <glutpp/window/window.h>
-#include <glutpp/scene/scene.h>
+#include <gru/config.hpp>
+#include <gru/gui/layout.hpp>
+#include <gru/window/window.hpp>
+#include <gru/scene/scene.hpp>
 
 namespace glutpp
 {

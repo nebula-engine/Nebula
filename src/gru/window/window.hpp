@@ -5,16 +5,16 @@
 #include <vector>
 #include <map>
 
-#include <glutpp/config.h>
-#include <glutpp/renderable.h>
-#include <glutpp/window/desc.h>
-#include <glutpp/texture.h>
-#include <glutpp/camera.h>
-#include <glutpp/light/light.h>
-#include <glutpp/master.h>
-#include <glutpp/glsl/program.h>
-#include <glutpp/glsl/shader.h>
-#include <glutpp/gui/layout.h>
+#include <gru/config.hpp>
+#include <gru/renderable.hpp>
+#include <gru/window/desc.hpp>
+#include <gru/texture.hpp>
+#include <gru/camera.hpp>
+#include <gru/light/light.hpp>
+#include <gru/master.hpp>
+#include <gru/glsl/program.hpp>
+#include <gru/glsl/shader.hpp>
+#include <gru/gui/layout.hpp>
 
 #include <math/mat44.h>
 #include <math/vec4.h>

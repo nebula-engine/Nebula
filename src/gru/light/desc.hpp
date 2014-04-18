@@ -10,7 +10,7 @@
 
 #include <gal/network/serial.h>
 
-#include <glutpp/config.h>
+#include <gru/config.hpp>
 
 namespace glutpp
 {

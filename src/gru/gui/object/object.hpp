@@ -9,7 +9,7 @@
 
 #include <gal/sig/connection.h>
 
-#include <glutpp/master.h>
+#include <gru/master.hpp>
 
 namespace glutpp { namespace gui { namespace object {
 
