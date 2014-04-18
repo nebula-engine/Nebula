@@ -6,10 +6,10 @@
 #include <string.h>
 #include <png.h>
 
-#include <math/mat44.h>
-#include <math/geo/polyhedron.h>
+#include <math/mat44.hpp>
+#include <math/geo/polyhedron.hpp>
 
-#include <gal/network/vector.h>
+#include <gal/network/vector.hpp>
 
 #include <glutpp/network/message.h>
 #include <glutpp/window/window.h>

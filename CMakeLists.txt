@@ -18,8 +18,6 @@ set(CMAKE_INSTALL_PREFIX $ENV{HOME}/usr)
 set(object_dir ${CMAKE_INSTALL_PREFIX}/include/glutpp/objects)
 set(shader_dir ${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders)
 
-configure_file("${PROJECT_SOURCE_DIR}/glutpp/config.h.in" "${PROJECT_SOURCE_DIR}/glutpp/config.h")
-
 
 set(INSTALL_LIB_DIR ${CMAKE_INSTALL_PREFIX})
 set(INSTALL_BIN_DIR ${CMAKE_INSTALL_PREFIX})
