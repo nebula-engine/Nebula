@@ -16,7 +16,6 @@ set(INSTALL_BIN_DIR ${CMAKE_INSTALL_PREFIX})
 set(INSTALL_INCLUDE_DIR ${CMAKE_INSTALL_PREFIX}/include/math)
 set(INSTALL_CMAKE_DIR ${CMAKE_INSTALL_PREFIX}/lib/${LIB_NAME})
 
-
 include_directories("${PROJECT_SOURCE_DIR}" ../glutpp/src ../galaxy/src ../math/src)
 
 
@@ -41,7 +40,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x -Wall -Wno-unknow
 set(CMAKE_INSTALL_PREFIX $ENV{HOME}/usr)
 
 
-add_dependencies(nebula glutpp)
+add_dependencies(nebula ${GLUTPP_LIBRARIES})
 
 #ExternalProject_Add(
 #        glutpp
