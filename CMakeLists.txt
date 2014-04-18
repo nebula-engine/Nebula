@@ -3,6 +3,8 @@ cmake_minimum_required (VERSION 2.6)
 
 project(nebula)
 
+find_package(glutpp)
+
 set(PROJECT_SOURCE_DIR src)
 
 set(LIB_NAME nebula)
