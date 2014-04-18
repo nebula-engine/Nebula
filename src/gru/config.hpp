@@ -2,8 +2,8 @@
 #define __GLUTPP_CONFIG_H__
 
 #define GLUTPP_INSTALL_DIR "/nfs/stak/students/r/rymalc/usr"
-#define GLUTPP_OBJECT_DIR "/nfs/stak/students/r/rymalc/usr/include/glutpp/objects"
-#define GLUTPP_SHADER_DIR "/nfs/stak/students/r/rymalc/usr/include/glutpp/glsl/shaders"
+#define GLUTPP_OBJECT_DIR "/usr/local/include/glutpp/objects"
+#define GLUTPP_SHADER_DIR "/usr/local/include/glutpp/glsl/shaders"
 
 #define GLUTPP_DEBUG_0_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
 #define GLUTPP_DEBUG_1_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
