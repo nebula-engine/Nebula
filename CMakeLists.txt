@@ -2,6 +2,8 @@ cmake_minimum_required (VERSION 2.6)
 
 project(gru)
 
+find_package(GLFW REQUIRED glfw3)
+
 set(LIB_NAME gru)
 set(PROJECT_NAME GRU)
 set(PROJECT_name gru)
