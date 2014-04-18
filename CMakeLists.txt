@@ -6,18 +6,14 @@ set(LIB_NAME gru)
 set(PROJECT_NAME GRU)
 set(PROJECT_name gru)
 
-set(PROJECT_BINARY_DIR lib)
-set(PROJECT_SOURCE_DIR src)
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
 
-include_directories("${PROJECT_SOURCE_DIR}" "../galaxy/src" "../math/src")
+include_directories("${PROJECT_SOURCE_DIR}/src")
 
 set(CMAKE_INSTALL_PREFIX $ENV{HOME}/usr)
 
 set(object_dir ${CMAKE_INSTALL_PREFIX}/include/glutpp/objects)
 set(shader_dir ${CMAKE_INSTALL_PREFIX}/include/glutpp/glsl/shaders)
-
 
 set(INSTALL_LIB_DIR ${CMAKE_INSTALL_PREFIX})
 set(INSTALL_BIN_DIR ${CMAKE_INSTALL_PREFIX})
@@ -28,7 +24,6 @@ set(INSTALL_CMAKE_DIR ${CMAKE_INSTALL_PREFIX}/lib/${LIB_NAME})
 # common methods for static library
 # =================================
 include(../cmake/static_library.cmake)
-
 
 
 install(FILES ${PROJECT_SOURCE_DIR}/glutpp/glsl/shaders/v130/light/vs.glsl	DESTINATION include/glutpp/glsl/shaders/v130/light/)

@@ -1,5 +1,5 @@
-#include <glutpp/scene/scene.h>
-#include <glutpp/actor/actor.h>
+#include <gru/scene/scene.hpp>
+#include <gru/actor/actor.hpp>
 
 void glutpp::actor::addr::load_this(glutpp::actor::actor_s actor) {
 	assert(actor);
