@@ -1,8 +1,0 @@
-#ifndef __GLUTPP_CONFIG_H__
-#define __GLUTPP_CONFIG_H__
-
-#define GLUTPP_INSTALL_DIR "@CMAKE_INSTALL_PREFIX@"
-#define GLUTPP_OBJECT_DIR "@object_dir@"
-#define GLUTPP_SHADER_DIR "@shader_dir@"
-
-#endif
