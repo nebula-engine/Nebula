@@ -2,8 +2,8 @@
 
 #include <GL/glew.h>
 
-#include <glutpp/window/window.h>
-#include <glutpp/glsl/attrib.h>
+#include <gru/window/window.hpp>
+#include <gru/glsl/attrib.hpp>
 
 glutpp::glsl::attrib::attrib():
 	o_(-1),

@@ -5,9 +5,9 @@
 
 #include <tinyxml2.h>
 
-#include <math/color.h>
+#include <math/color.hpp>
 
-#include <gal/sig/connection.h>
+#include <galaxy/sig/connection.hpp>
 
 #include <gru/master.hpp>
 

@@ -3,23 +3,15 @@
 
 #include <map>
 
-
-#include <math/mat44.h>
-
-#include <gal/gal.h>
-
+#include <math/mat44.hpp>
 
 #include <gru/gui/object/object.hpp>
 #include <gru/gui/object/object_factory.hpp>
 #include <gru/window/window.hpp>
 
-
-namespace glutpp
-{
-	namespace gui
-	{
-		class layout
-		{
+namespace glutpp {
+	namespace gui {
+		class layout {
 			public:
 				layout();
 				virtual void			init(glutpp::renderable_s renderable);

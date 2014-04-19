@@ -7,11 +7,11 @@
 #include <GLFW/glfw3.h>
 //#include <GL/glut.h>
 
-#include <math/mat44.h>
+#include <math/mat44.hpp>
 
-#include <glutpp/scene/scene.h>
-#include <glutpp/glsl/uniform.h>
-#include <glutpp/window/window.h>
+#include <gru/scene/scene.hpp>
+#include <gru/glsl/uniform.hpp>
+#include <gru/window/window.hpp>
 
 
 glutpp::glsl::uniform::uniform()

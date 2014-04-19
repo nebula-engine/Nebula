@@ -1,4 +1,4 @@
-#include <glutpp/shape/shape.h>
+#include <gru/shape/shape.hpp>
 
 glutpp::shape::shape::shape(glutpp::parent_s parent): glutpp::parent(parent) {
 	printf("%s\n",__PRETTY_FUNCTION__);
@@ -211,7 +211,7 @@ void glutpp::shape::shape::model_load(math::mat44 space) {
 
 	auto p = glutpp::master::Global()->current_program();
 
-	math::vec3 s(raw_.get_raw_base()->s_);
+	math::vec3<double> s(raw_.get_raw_base()->s_);
 
 	math::mat44 scale;
 	scale.SetScale(s);

@@ -1,10 +1,11 @@
 #include <stdio.h>
 
-#include <math/free.h>
+#include <math/free.hpp>
 
-#include <glutpp/window/window.h>
-#include <glutpp/scene/scene.h>
-#include <glutpp/material.h>
+#include <gru/material.hpp>
+#include <gru/window/window.hpp>
+#include <gru/scene/scene.hpp>
+
 
 
 

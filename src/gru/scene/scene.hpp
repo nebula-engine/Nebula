@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include <gal/flag.h>
-#include <gal/map.h>
+#include <galaxy/flag.hpp>
+#include <galaxy/map.hpp>
 
 #include <gru/config.hpp>
 #include <gru/glsl/program.hpp>

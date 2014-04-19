@@ -1,6 +1,7 @@
-#include <glutpp/config.h>
-#include <glutpp/window/window.h>
-#include <glutpp/camera_control.h>
+
+#include <gru/config.hpp>
+#include <gru/window/window.hpp>
+#include <gru/camera_control.hpp>
 
 glutpp::camera_free::camera_free():
 	eye_(0.0f, 0.0f, 5.0f, 0.0f),
@@ -61,29 +62,27 @@ void	glutpp::camera_free::init(glutpp::window::window_s window)
 */
 
 }
-int	glutpp::camera_free::callback_x_(int a, float s)
-{
+int	glutpp::camera_free::callback_x_(int a, float s) {
+	/** TODO better system for turning key up/down into simple movement */
+
 	if(a==0) v0_.x = s;
 	if(a==1) v1_.x = s;
 
 	return 1;
 }
-int	glutpp::camera_free::callback_y_(int a, float s)
-{
+int	glutpp::camera_free::callback_y_(int a, float s) {
 	if(a==0) v0_.y = s;
 	if(a==1) v1_.y = s;
 
 	return 1;
 }
-int	glutpp::camera_free::callback_z_(int a, float s)
-{
+int	glutpp::camera_free::callback_z_(int a, float s) {
 	if(a==0) v0_.z = s;
 	if(a==1) v1_.z = s;
 
 	return 1;
 }
-void	glutpp::camera_free::step(double time)
-{
+void	glutpp::camera_free::step(double time) {
 	double dt = time - last_; last_ = time;
 
 	// look vector

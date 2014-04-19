@@ -16,12 +16,12 @@
 #include <gru/glsl/shader.hpp>
 #include <gru/gui/layout.hpp>
 
-#include <math/mat44.h>
-#include <math/vec4.h>
-#include <math/vec3.h>
+#include <math/mat44.hpp>
+#include <math/vec4.hpp>
+#include <math/vec3.hpp>
 
-#include <gal/sig/signal.h>
-#include <gal/flag.h>
+#include <galaxy/sig/signal.hpp>
+#include <galaxy/flag.hpp>
 
 void	checkerror(char const *);
 

@@ -1,6 +1,6 @@
-#include <math/free.h>
+#include <math/free.hpp>
 
-#include <glutpp/shape/raw.h>
+#include <gru/shape/raw.hpp>
 
 
 glutpp::shape::raw_base::raw_base():
@@ -52,8 +52,7 @@ void	glutpp::shape::raw_base::load(tinyxml2::XMLElement* element)
 	
 	printf("image = '%s'\n", image_);
 }
-void	glutpp::shape::raw_base::parse_type(char const * str)
-{
+void	glutpp::shape::raw_base::parse_type(char const * str) {
 	assert(str);
 	if(strcmp(str,"box") == 0)
 	{
@@ -73,30 +72,26 @@ void	glutpp::shape::raw_base::parse_type(char const * str)
 		abort();
 	}
 }
-void glutpp::shape::raw_base::box(math::vec3 ns)
-{
+void glutpp::shape::raw_base::box(math::vec3<double> ns) {
 	type_ = glutpp::shape::type::BOX;
 	
 	s_ = ns;
 }
-void glutpp::shape::raw_base::box(tinyxml2::XMLElement* element)
-{
+void glutpp::shape::raw_base::box(tinyxml2::XMLElement* element) {
 	type_ = glutpp::shape::type::BOX;
 	
-	s_ = math::xml_parse_vec3(element->FirstChildElement("s"), math::vec3(1,1,1));
+	s_ = math::xml_parse_vec3(element->FirstChildElement("s"), math::vec3<double>(1,1,1));
 }
-void glutpp::shape::raw_base::sphere(float r)
-{
+void glutpp::shape::raw_base::sphere(float r) {
 	type_ = glutpp::shape::type::SPHERE;
 	
-	s_ = math::vec3(r, r, r);
+	s_ = math::vec3<double>(r, r, r);
 }
-void glutpp::shape::raw_base::sphere(tinyxml2::XMLElement* element)
-{
+void glutpp::shape::raw_base::sphere(tinyxml2::XMLElement* element) {
 	type_ = glutpp::shape::type::SPHERE;
 
 	float r = math::xml_parse_float(element->FirstChildElement("s"));
-	s_ = math::vec3(r, r, r);
+	s_ = math::vec3<double>(r, r, r);
 }
 
 

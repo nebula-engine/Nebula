@@ -5,9 +5,9 @@
 #include <sys/time.h>
 #include <string.h>
 
-#include <glutpp/glsl/program.h>
-#include <glutpp/glsl/shader.h>
-#include <glutpp/window/window.h>
+#include <gru/glsl/program.hpp>
+#include <gru/glsl/shader.hpp>
+#include <gru/window/window.hpp>
 
 glutpp::glsl::program::program()
 {

@@ -6,8 +6,8 @@
 #include <sys/time.h>
 #include <string.h>
 
-#include <glutpp/window/window.h>
-#include <glutpp/glsl/shader.h>
+#include <gru/window/window.hpp>
+#include <gru/glsl/shader.hpp>
 
 void	glutpp::glsl::shader::load(const char * filename, GLenum shader_type)
 {	

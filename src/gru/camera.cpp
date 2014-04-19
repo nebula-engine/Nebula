@@ -3,10 +3,10 @@
 
 #include <GL/glew.h>
 
-#include <gal/sig/connection.hpp>
+#include <galaxy/sig/connection.hpp>
 
-#include <math/quat.h>
-#include <math/mat44.h>
+#include <math/quat.hpp>
+#include <math/mat44.hpp>
 
 #include <gru/window/window.hpp>
 #include <gru/scene/scene.hpp>
@@ -39,9 +39,9 @@ math::mat44	glutpp::camera::view() {
 	}
 	
 	math::mat44 ret = math::lookat(
-			math::vec3(0.0, 0.0, 30.0),
-			math::vec3(0.0, 0.0, 0.0),
-			math::vec3(0.0, 1.0, 0.0));
+			math::vec3<double>(0.0, 0.0, 30.0),
+			math::vec3<double>(0.0, 0.0, 0.0),
+			math::vec3<double>(0.0, 1.0, 0.0));
 	
 	return ret;
 }

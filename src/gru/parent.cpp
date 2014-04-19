@@ -1,7 +1,7 @@
-#include <math/mat44.h>
+#include <math/mat44.hpp>
 
-#include <glutpp/actor/actor.h>
-#include <glutpp/parent.h>
+#include <gru/actor/actor.hpp>
+#include <gru/parent.hpp>
 
 glutpp::parent::parent(glutpp::parent_s parent):
 	parent_(parent)

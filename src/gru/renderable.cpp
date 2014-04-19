@@ -1,8 +1,8 @@
 //#include <assert.h>
 
-#include <glutpp/scene/scene.h>
-#include <glutpp/renderable.h>
-#include <glutpp/gui/layout.h>
+#include <gru/scene/scene.hpp>
+#include <gru/renderable.hpp>
+#include <gru/gui/layout.hpp>
 
 
 

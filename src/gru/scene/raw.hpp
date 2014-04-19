@@ -3,10 +3,10 @@
 
 #include <tinyxml2.h>
 
-#include <gal/network/message.h>
-#include <gal/network/serial.h>
+#include <galaxy/network/message.hpp>
+#include <galaxy/network/serial.hpp>
 
-#include <math/vec3.h>
+#include <math/vec3.hpp>
 
 #include <gru/config.hpp>
 //#include <gru/actor/desc.hpp>

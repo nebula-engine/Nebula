@@ -1,12 +1,11 @@
-#include <math/free.h>
+#include <math/free.hpp>
 
 
-#include <glutpp/config.h>
-
-#include <glutpp/shape/desc.h>
-#include <glutpp/shape/shape.h>
-#include <glutpp/light/desc.h>
-#include <glutpp/light/light.h>
+#include <gru/config.hpp>
+#include <gru/shape/desc.hpp>
+#include <gru/shape/shape.hpp>
+#include <gru/light/desc.hpp>
+#include <gru/light/light.hpp>
 
 
 glutpp::shape::desc::desc() {
