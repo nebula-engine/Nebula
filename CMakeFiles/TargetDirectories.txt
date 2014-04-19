@@ -1,2 +1,0 @@
-/home/charles/Programming/C++/nebula/CMakeFiles/glutpp.dir
-/home/charles/Programming/C++/nebula/CMakeFiles/nebula.dir
