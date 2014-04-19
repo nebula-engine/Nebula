@@ -9,7 +9,7 @@
 #include <gru/renderable.hpp>
 #include <gru/window/desc.hpp>
 #include <gru/texture.hpp>
-#include <gru/camera.hpp>
+//#include <gru/camera.hpp>
 #include <gru/light/light.hpp>
 #include <gru/master.hpp>
 #include <gru/glsl/program.hpp>

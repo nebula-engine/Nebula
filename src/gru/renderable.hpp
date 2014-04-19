@@ -33,7 +33,7 @@ namespace glutpp
 		public:
 			glutpp::scene::scene_s		scene_;
 			glutpp::gui::layout_s		layout_;
-			glutpp::camera_s		camera_;
+			glutpp::Camera::View::Base_s	view_;
 	};
 }
 

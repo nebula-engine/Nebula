@@ -7,20 +7,27 @@
 
 #include <galaxy/sig/connection.hpp>
 
-namespace glutpp
-{
-	class camera_control
-	{
+namespace glutpp {
+	/*class camera_control {
 		public:
 			virtual math::mat44		supply() = 0;
 			double				last_;
-	};
-	class camera_free: public camera_control {
+	};*/
+	namespace camera {
+		namespace view {
+		/** @brief free flying camera
+		 * this camera can move freely through the scene
+		 * user input in interpreted as three-component velocity and yaw and pitch rate
+		 */
+		class free: public camera {
 		public:
-			//typedef std::shared_ptr<WINDOW>		WINDOW_S;
-			//typedef std::weak_ptr<WINDOW>		WINDOW_W;
+			/** @name constructors
+			 * @{
+			 */
+			free();
+			free(math::vec3<double> eye, double yaw, double pitch);
+			/** @} */
 			
-			camera_free();
 			void					init(glutpp::window::window_s);
 			
 			int					callback_x_(int,float);

@@ -7,7 +7,7 @@
 #include <galaxy/flag.hpp>
 
 #include <gru/config.hpp>
-#include <gru/camera.hpp>
+#include <gru/Camera/View/Base.hpp>
 #include <gru/texture.hpp>
 
 #include <gru/light/desc.hpp>

@@ -10,16 +10,14 @@
 #include <gru/glsl/program.hpp>
 #include <gru/scene/raw.hpp>
 #include <gru/actor/actor.hpp>
-#include <gru/camera.hpp>
+#include <gru/Camera/View/Base.hpp>
 
 //#include <glutpp/shader.h>
 
 #define LIGHT_MAX 20
 
-namespace glutpp
-{
-	namespace scene
-	{
+namespace glutpp {
+	namespace scene {
 		class less_str {
 			public:
 				bool operator()(char* s0, char* s1) {
@@ -47,13 +45,10 @@ namespace glutpp
 
 		typedef std::map<char*, glutpp::actor::desc_s, less_str> actors_deferred_map;
 
-		class scene:
-			public glutpp::parent,
-			public gal::flag<unsigned int>
-		{
+		class scene: public glutpp::parent, public gal::flag<unsigned int> {
 			public:
-				enum
-				{
+				struct Flag {
+				enum e {
 					RAY_TRACE			= 1 << 0,
 					LIGHTING			= 1 << 1,
 					SHADOW				= 1 << 2,
@@ -64,7 +59,8 @@ namespace glutpp
 					TEX_NORMAL_MAP			= 1 << 8,
 					SHADER				= 1 << 9
 				};
-
+				};
+				
 				scene();
 				~scene();
 				void		i(int ni);
@@ -74,9 +70,8 @@ namespace glutpp
 				void		init(glutpp::scene::desc_s desc);
 				void		release();
 				math::mat44	get_pose();
-				void		render(double time,
-						std::shared_ptr<glutpp::camera> camera,
-						glutpp::window::window_s window);
+				/** @brief render */
+				void		render(double time, glutpp::Camera::View::Base_s, glutpp::window::window_s);
 				void		draw(glutpp::window::window_s window);
 				void		resize(int w, int h);
 
