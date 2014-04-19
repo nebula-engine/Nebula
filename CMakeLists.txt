@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 2.6)
 
 project(nebula)
 
-find_package(glutpp)
+find_package(gru)
 
 # common methods for static library
 # =================================
