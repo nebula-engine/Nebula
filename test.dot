@@ -1,6 +1,0 @@
-digraph GG {
-node [
-  fontsize = "12"
-];
-    "node0" [ label="glutpp" shape="diamond"];
-}
