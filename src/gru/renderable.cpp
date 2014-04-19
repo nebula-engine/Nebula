@@ -3,7 +3,7 @@
 #include <gru/scene/scene.hpp>
 #include <gru/renderable.hpp>
 #include <gru/gui/layout.hpp>
-
+#include <gru/Camera/View/Free.hpp>
 
 
 
@@ -28,7 +28,7 @@ void glutpp::renderable::init(glutpp::window::window_s window) {
 	window_ = window;
 
 	// camera
-	camera_.reset(new glutpp::camera);
+	view_.reset(new glutpp::Camera::View::Free);
 	//camera_->init(shared_from_this());
 }
 glutpp::window::window_s glutpp::renderable::get_window() {
@@ -39,18 +39,17 @@ glutpp::window::window_s glutpp::renderable::get_window() {
 	return window;
 }
 void glutpp::renderable::resize(int w, int h) {
-	camera_->w_ = w;
-	camera_->h_ = h;
+	//camera_->w_ = w;
+	//camera_->h_ = h;
 }
 void glutpp::renderable::render(double time, glutpp::window::window_s window) {
 
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-
-	if(scene_)
-	{
-		scene_->render(time, camera_, window);
+	
+	if(scene_) {
+		scene_->render(time, view_, window);
 	}
 
 	if(layout_)

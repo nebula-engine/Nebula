@@ -1,7 +1,7 @@
-#include <glutpp/network/message.h>
 
-#include <glutpp/actor/addr.h>
-#include <glutpp/actor/actor.h>
+#include <gru/actor/addr.hpp>
+#include <gru/actor/actor.hpp>
+#include <gru/network/message.hpp>
 
 void glutpp::network::actor::create::load(glutpp::actor::actor_s actor) {
 	assert(actor);

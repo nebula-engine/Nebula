@@ -1,6 +1,7 @@
-#include <glutpp/window/window.h>
-#include <glutpp/gui/layout.h>
-#include <glutpp/gui/object/edittext.h>
+
+#include <gru/window/window.hpp>
+#include <gru/gui/layout.hpp>
+#include <gru/gui/object/edittext.hpp>
 
 glutpp::gui::object::edittext::edittext()
 {

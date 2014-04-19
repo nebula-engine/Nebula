@@ -9,10 +9,10 @@
 #include <GLFW/glfw3.h>
 //#include <glfw3.h>
 
-#include <glutpp/config.h>
-#include <glutpp/master.h>
-#include <glutpp/window/desc.h>
-#include <glutpp/window/window.h>
+#include <gru/config.hpp>
+#include <gru/master.hpp>
+#include <gru/window/desc.hpp>
+#include <gru/window/window.hpp>
 
 glutpp::window::window_w	glutpp::master::window_main_;// = glutpp::window::window_s;
 glutpp::master_s		glutpp::master::g_master_;

@@ -1,7 +1,7 @@
-#include <math/free.h>
+#include <math/free.hpp>
 
-#include <glutpp/actor/actor.h>
-#include <glutpp/actor/raw.h>
+#include <gru/actor/actor.hpp>
+#include <gru/actor/raw.hpp>
 
 
 glutpp::actor::raw::raw():
@@ -80,7 +80,7 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	// pose
 	pose_ = math::xml_parse_transform(
 			element->FirstChildElement("pose"),
-			math::transform(math::vec3(0,0,0), math::quat(0.0, math::vec3(1.0,0.0,0.0))));
+			math::transform(math::vec3<double>(0,0,0), math::quat(0.0, math::vec3<double>(1.0,0.0,0.0))));
 	
 	// velocity
 	velocity_ = math::xml_parse_vec3(element->FirstChildElement("velocity"), velocity_);
@@ -179,13 +179,13 @@ void glutpp::actor::raw::plane(tinyxml2::XMLElement* element) {
 
 
 	// xml
-	math::vec3 n = math::xml_parse_vec3(element->FirstChildElement("n"), math::vec3(0,1,0));
-	n.normalize();
+	math::vec3<double> n = math::xml_parse_vec3(element->FirstChildElement("n"), math::vec3<double>(0,1,0));
+	n.Normalize();
 
 	float d = math::xml_parse_float(element->FirstChildElement("d"));
 
 
-	math::quat q(3.14f, math::vec3(1,0,0));
+	math::quat q(3.14f, math::vec3<double>(1,0,0));
 
 	math::transform pose(n * -1.0f * d, q);
 
@@ -198,7 +198,7 @@ void glutpp::actor::raw::controller(tinyxml2::XMLElement* element) {
 
 	printf("%s\n",__FUNCTION__);
 
-	pose_.p = math::xml_parse_vec3(element->FirstChildElement("p"), math::vec3(0,0,0));
+	pose_.p = math::xml_parse_vec3(element->FirstChildElement("p"), math::vec3<double>(0,0,0));
 }
 
 

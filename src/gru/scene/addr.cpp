@@ -1,5 +1,6 @@
-#include <glutpp/scene/desc.h>
-#include <glutpp/scene/scene.h>
+
+#include <gru/scene/desc.hpp>
+#include <gru/scene/scene.hpp>
 
 
 void glutpp::scene::addr::load(glutpp::scene::scene_s scene) {

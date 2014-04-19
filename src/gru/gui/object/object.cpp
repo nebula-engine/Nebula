@@ -3,9 +3,9 @@
 
 #include <tinyxml2.h>
 
-#include <math/free.h>
+#include <math/free.hpp>
 
-#include <glutpp/gui/object/object.h>
+#include <gru/gui/object/object.hpp>
 
 glutpp::gui::object::object::object():
 	x_(0.0),

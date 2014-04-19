@@ -1,5 +1,6 @@
-#include <glutpp/free.h>
-#include <glutpp/gui/object/terminal.h>
+
+#include <gru/free.hpp>
+#include <gru/gui/object/terminal.hpp>
 
 void	glutpp::gui::object::terminal::draw()
 {

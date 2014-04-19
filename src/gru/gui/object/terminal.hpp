@@ -1,7 +1,7 @@
 #ifndef __NEBULA_UI_OBJECT_TERMINAL_H__
 #define __NEBULA_UI_OBJECT_TERMINAL_H__
 
-#include <glutpp/gui/object/textview.h>
+#include <gru/gui/object/textview.hpp>
 
 namespace glutpp { namespace gui { namespace object {
 

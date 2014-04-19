@@ -1,7 +1,7 @@
 #ifndef __NEBULA_UI_OBJECT_TEXTVIEW_HPP__
 #define __NEBULA_UI_OBJECT_TEXTVIEW_HPP__
 
-#include <glutpp/gui/object/object.h>
+#include <gru/gui/object/object.hpp>
 
 namespace glutpp
 {

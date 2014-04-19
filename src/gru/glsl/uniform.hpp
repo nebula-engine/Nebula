@@ -21,15 +21,15 @@ namespace glutpp {
 				void			load(int, math::mat44);
 				void			load(int, math::color);
 				void			load(int, int);
-				void			load_4fv(int, float*);
-				void			load_3fv(int, float*);
+				void			load_4fv(int, double*);
+				void			load_3fv(int, double*);
 				void			load(int, float);
 
 				void			load(math::mat44);
 				void			load(math::color);
 				void			load(int);
-				void			load_4fv(float*);
-				void			load_3fv(float*);
+				void			load_4fv(double*);
+				void			load_3fv(double*);
 				void			load(float);
 
 				char const *		s1_;

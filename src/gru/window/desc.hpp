@@ -6,8 +6,7 @@ namespace glutpp
 {
 	namespace window
 	{
-		struct raw
-		{
+		struct raw {
 			public:
 				enum
 				{
@@ -22,11 +21,8 @@ namespace glutpp
 				int		h_;
 				char		title_[title_length_max];
 
-
-
 		};
-		class desc
-		{
+		class desc {
 			public:
 				desc(int, int, int, int, const char *);
 

@@ -9,16 +9,16 @@
 #include <math/mat44.hpp>
 #include <math/geo/polyhedron.hpp>
 
-#include <gal/network/vector.hpp>
+#include <galaxy/network/vector.hpp>
 
-#include <glutpp/network/message.h>
-#include <glutpp/window/window.h>
-#include <glutpp/scene/scene.h>
-#include <glutpp/scene/desc.h>
-#include <glutpp/actor/actor.h>
-#include <glutpp/shape/shape.h>
-#include <glutpp/actor/desc.h>
-#include <glutpp/actor/raw_factory.h>
+#include <gru/network/message.hpp>
+#include <gru/window/window.hpp>
+#include <gru/scene/scene.hpp>
+#include <gru/scene/desc.hpp>
+#include <gru/actor/actor.hpp>
+#include <gru/shape/shape.hpp>
+#include <gru/actor/desc.hpp>
+#include <gru/actor/raw_factory.hpp>
 
 
 void	print_vector(GLfloat* v, unsigned int m, unsigned int n) {

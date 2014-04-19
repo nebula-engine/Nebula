@@ -21,7 +21,6 @@ namespace glutpp {
 				public:
 					Base();
 					//void		init(glutpp::renderable_shared);
-					virtual math::mat44	proj() = 0;
 					virtual math::mat44	view() = 0;
 
 					void			load();
@@ -37,21 +36,9 @@ namespace glutpp {
 
 					//std::weak_ptr<renderable>		renderable_;
 
-					/** @brief field of view angle */
-					float					fovy_;
-					/** @brief near clipping plane */
-					float					zn_;
-					/** @brief far clipping plane */
-					float					zf_;
-					/** @brief width of render context
-					 * TODO remove this and h_ from this class
-					 * TODO should be accessed by accessing parent context or scene or view object
-					 */
-					int					w_;
-					int					h_;
-
 					//math::vec4				eye_;
-
+					/** @brief time of last step */
+					double					last_;
 			};
 		}
 	}

@@ -4,9 +4,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <glutpp/free.h>
-
-#include <glutpp/gui/object/textview.h>
+#include <gru/free.hpp>
+#include <gru/gui/object/textview.hpp>
 
 glutpp::gui::object::textview::textview():
 	label_pos_(0)

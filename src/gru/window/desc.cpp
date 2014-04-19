@@ -2,7 +2,7 @@
 
 #include <string.h>
 
-#include <glutpp/window/desc.h>
+#include <gru/window/desc.hpp>
 
 glutpp::window::desc::desc(int w, int h, int x, int y, const char * title)
 {

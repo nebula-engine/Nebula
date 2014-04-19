@@ -1,8 +1,8 @@
 
 
-#include <glutpp/gui/object/object_factory.h>
-#include <glutpp/gui/object/edittext.h>
-#include <glutpp/gui/object/terminal.h>
+#include <gru/gui/object/object_factory.hpp>
+#include <gru/gui/object/edittext.hpp>
+#include <gru/gui/object/terminal.hpp>
 
 std::shared_ptr<glutpp::gui::object::object>    glutpp::gui::object::object_factory::create(tinyxml2::XMLElement* element) {
 

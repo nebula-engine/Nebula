@@ -1,13 +1,12 @@
 #include <stdio.h>
 
-#include <glutpp/window/window.h>
-#include <glutpp/renderable.h>
-#include <glutpp/scene/desc.h>
-#include <glutpp/scene/scene.h>
-#include <glutpp/actor/actor.h>
-#include <glutpp/light/light.h>
-
-#include <glutpp/glsl/program.h>
+#include <gru/window/window.hpp>
+#include <gru/renderable.hpp>
+#include <gru/scene/desc.hpp>
+#include <gru/scene/scene.hpp>
+#include <gru/actor/actor.hpp>
+#include <gru/light/light.hpp>
+#include <gru/glsl/program.hpp>
 
 
 glutpp::scene::scene::scene() {
@@ -43,7 +42,7 @@ math::mat44 glutpp::scene::scene::get_pose() {
 	return math::mat44();
 }
 void glutpp::scene::scene::render(double time,
-		std::shared_ptr<glutpp::camera> camera,
+		glutpp::Camera::View::Base_s camera,
 		glutpp::window::window_s window) {
 
 	GLUTPP_DEBUG_1_FUNCTION;

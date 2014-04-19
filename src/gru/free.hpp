@@ -1,4 +1,4 @@
-#include <math/color.h>
+#include <math/color.hpp>
 
 namespace glutpp
 {

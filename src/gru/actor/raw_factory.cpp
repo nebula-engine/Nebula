@@ -1,6 +1,7 @@
-#include <glutpp/actor/raw.h>
-#include <glutpp/actor/raw_factory.h>
-#include <glutpp/config.h>
+
+#include <gru/actor/raw.hpp>
+#include <gru/actor/raw_factory.hpp>
+#include <gru/config.hpp>
 
 glutpp::actor::raw_s glutpp::actor::raw_factory::create(int type) {
 

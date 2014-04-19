@@ -1,4 +1,4 @@
-#include <glutpp/mesh.h>
+#include <gru/mesh.hpp>
 
 glutpp::mesh::mesh():
 	vertices_(NULL),

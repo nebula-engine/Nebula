@@ -1,16 +1,14 @@
 #ifndef __GLUTPP_NETWORK_MESSAGE_H__
 #define __GLUTPP_NETWORK_MESSAGE_H__
 
-#include <gal/network/vector.h>
-#include <gal/network/serial.h>
+#include <galaxy/network/vector.hpp>
+#include <galaxy/network/serial.hpp>
 
-#include <glutpp/config.h>
-#include <glutpp/scene/desc.h>
+#include <gru/config.hpp>
+#include <gru/scene/desc.hpp>
 
-namespace glutpp
-{
-	namespace network
-	{
+namespace glutpp {
+	namespace network {
 		namespace actor {
 
 			typedef gal::network::vector_ext<

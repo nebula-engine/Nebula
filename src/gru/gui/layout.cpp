@@ -6,13 +6,13 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <glutpp/window/window.h>
-#include <glutpp/renderable.h>
-#include <glutpp/gui/object/object_factory.h>
-#include <glutpp/gui/object/object.h>
-#include <glutpp/gui/object/edittext.h>
+#include <gru/window/window.hpp>
+#include <gru/renderable.hpp>
+#include <gru/gui/object/object_factory.hpp>
+#include <gru/gui/object/object.hpp>
+#include <gru/gui/object/edittext.hpp>
 
-#include <glutpp/gui/layout.h>
+#include <gru/gui/layout.hpp>
 
 
 

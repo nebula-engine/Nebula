@@ -1,8 +1,8 @@
-#include <gal/util.h>
 
-#include <glutpp/network/message.h>
+#include <galaxy/util.hpp>
 
-#include <glutpp/actor/actor.h>
+#include <gru/network/message.hpp>
+#include <gru/actor/actor.hpp>
 
 void glutpp::network::actor::update::load(glutpp::actor::actor_s actor) {
 	assert(actor);

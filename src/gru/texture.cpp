@@ -3,10 +3,10 @@
 
 #include <GL/glew.h>
 
-#include <math/color.h>
+#include <math/color.hpp>
 
-#include <glutpp/texture.h>
-#include <glutpp/window/window.h>
+#include <gru/texture.hpp>
+#include <gru/window/window.hpp>
 
 #include <png.h>
 

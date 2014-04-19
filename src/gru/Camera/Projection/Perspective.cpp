@@ -10,73 +10,40 @@
 
 #include <gru/window/window.hpp>
 #include <gru/scene/scene.hpp>
-#include <gru/camera.hpp>
+#include <gru/Camera/Projection/Perspective.hpp>
 
-
-
-glutpp::camera::camera():
+glutpp::Camera::Projection::Base::Base():
 	fovy_(45.0f),
 	zn_(2.0f),
-	zf_(10000.0f),
-	w_(100),
-	h_(100)
+	zf_(10000.0f)
+{
+}
+void		glutpp::Camera::Projection::Base::load() {
+	
+	auto p = glutpp::master::Global()->get_program(glutpp::program_name::e::LIGHT);
+	
+	glViewport(0, 0, getWindow()->raw_.w_, getWindow()->raw_.h_);
+	
+	p->get_uniform(glutpp::uniform_name::e::PROJ)->load(proj());
+}
+
+glutpp::Camera::Projection::Perspective::Perspective()
 {
 
 }
-/*void		glutpp::camera::init(RENDERABLE_S renderable) {
+/*void		glutpp::Camera::Projection::Perspective::init(RENDERABLE_S renderable) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	renderable_ = renderable;
 }*/
-int		glutpp::camera::north(float) {
-	return 1;
-}
-math::mat44	glutpp::camera::view() {
-
-	if(control_)
-	{
-		return control_->supply();
-	}
-	
-	math::mat44 ret = math::lookat(
-			math::vec3<double>(0.0, 0.0, 30.0),
-			math::vec3<double>(0.0, 0.0, 0.0),
-			math::vec3<double>(0.0, 1.0, 0.0));
-	
-	return ret;
-}
-math::mat44	glutpp::camera::proj() {
+math::mat44	glutpp::Camera::Projection::Perspective::proj() {
 	math::mat44 ret;
-
-	ret.SetPerspective(fovy_, (float)w_/(float)h_, zn_, zf_);
+	ret.SetPerspective(fovy_, (float)getWindow()->raw_.w_/(float)getWindow()->raw_.h_, zn_, zf_);
 
 	return ret;
 }
-void		glutpp::camera::load() {
-	
-	auto p = glutpp::master::Global()->get_program(glutpp::program_name::e::LIGHT);
+void		glutpp::Camera::Projection::Perspective::step(float dt) {
 
-	glViewport(0, 0, w_, h_);
-
-	p->get_uniform(glutpp::uniform_name::e::PROJ)->load(proj());
-	p->get_uniform(glutpp::uniform_name::e::VIEW)->load(view());
-}
-void		glutpp::camera::step(float dt) {
-
-	/*
-	   for(auto it = connection_u_.begin(); it != connection_u_.end(); ++it)
-	   {
-	   v.x += std::get<0>((*it)->tup_);
-	   }	
-	   for(auto it = connection_v_.begin(); it != connection_v_.end(); ++it)
-	   {
-	   v.y += std::get<0>((*it)->tup_);
-	   }
-	   for(auto it = connection_w_.begin(); it != connection_w_.end(); ++it)
-	   {
-	   v.z += std::get<0>((*it)->tup_);
-	   }
-	 */
 }
 
 

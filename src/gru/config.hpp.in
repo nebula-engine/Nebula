@@ -302,7 +302,7 @@ namespace glutpp {
 			class Free;
 			class Ridealong;
 			
-			typedef std::shared_ptr<camera> Base_s;
+			typedef std::shared_ptr<Base> Base_s;
 		}
 		namespace Projection {
 			class Perspective;

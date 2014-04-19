@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include <math/mat44.h>
+#include <math/mat44.hpp>
 
-#include <glutpp/light/light.h>
-#include <glutpp/window/window.h>
-#include <glutpp/scene/scene.h>
-#include <glutpp/shape/shape.h>
+#include <gru/light/light.hpp>
+#include <gru/window/window.hpp>
+#include <gru/scene/scene.hpp>
+#include <gru/shape/shape.hpp>
 
 glutpp::light::light::light(glutpp::shape::shape_s shape):
 	shape_(shape)
@@ -97,7 +97,7 @@ void glutpp::light::light::load(int o, math::mat44 space) {
 
 
 
-	math::vec3 spot_direction = raw_.spot_direction_;
+	math::vec3<double> spot_direction = raw_.spot_direction_;
 	
 	if(raw_.spot_cutoff_ < (M_PI/2.0))
 	{
@@ -112,8 +112,7 @@ void glutpp::light::light::load(int o, math::mat44 space) {
 	
 	//if(any(glutpp::light::flag::e::SHOULD_LOAD_POS))
 	{
-		p->get_uniform(glutpp::uniform_name::e::LIGHT_POSITION)->load_4fv(
-				o, pos);
+		p->get_uniform(glutpp::uniform_name::e::LIGHT_POSITION)->load_4fv(o, pos);
 		
 		unset(glutpp::light::flag::e::SHOULD_LOAD_POS);
 	}	

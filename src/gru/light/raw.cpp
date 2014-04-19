@@ -1,13 +1,13 @@
-#include <math/free.h>
+#include <math/free.hpp>
 
-#include <glutpp/light/raw.h>
+#include <gru/light/raw.hpp>
 
 glutpp::light::raw::raw():
 	pos_(math::vec4(0.0, 0.0, 0.0, 1.0)),
 	ambient_(math::black),
 	diffuse_(math::white),
 	specular_(math::white),
-	spot_direction_(math::vec3(0.0, 0.0, -1.0)),
+	spot_direction_(math::vec3<double>(0.0, 0.0, -1.0)),
 	spot_cutoff_(10.0),
 	spot_exponent_(1.0),
 	atten_const_(1.0),
@@ -37,7 +37,7 @@ void	glutpp::light::raw::load(tinyxml2::XMLElement* element) {
 	
 	spot_direction_ = math::xml_parse_vec3(
 		element->FirstChildElement("spot_direction"),
-		math::vec3(0.0, 0.0, 0.0));
+		math::vec3<double>(0.0, 0.0, 0.0));
 	
 	spot_cutoff_           = math::xml_parse_float(element->FirstChildElement("spot_cutoff"), M_PI);
 	spot_exponent_         = math::xml_parse_float(element->FirstChildElement("spot_exponent"), 0.0);
@@ -52,6 +52,7 @@ void	glutpp::light::raw::load(tinyxml2::XMLElement* element) {
 }
 void	glutpp::light::raw::print() {
 
+	pos_.print();
 	printf("pos_                   = % 2.1f % 2.1f % 2.1f % 2.1f\n",
 			pos_.x, pos_.y, pos_.z, pos_.w);
 	printf("ambient_               = % 2.1f % 2.1f % 2.1f % 2.1f\n",
@@ -60,8 +61,7 @@ void	glutpp::light::raw::print() {
 			diffuse_.r, diffuse_.g, diffuse_.b, diffuse_.a);
 	printf("specular_              = % 2.1f % 2.1f % 2.1f % 2.1f\n",
 			specular_.r, specular_.g, specular_.b, specular_.a);
-	printf("spot_direction_        = % 2.1f % 2.1f % 2.1f\n",
-			spot_direction_.x, spot_direction_.y, spot_direction_.z);
+	spot_direction_.print();
 	printf("spot_cutoff_           = % 2.1f\n", spot_cutoff_);
 	printf("spot_exponent_         = % 2.1f\n", spot_exponent_);
 	printf("spot_light_cos_cutoff_ = % 2.1f\n", spot_light_cos_cutoff_);

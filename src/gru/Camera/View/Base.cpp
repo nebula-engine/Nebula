@@ -14,12 +14,7 @@
 
 
 
-glutpp::Camera::View::Base::Base():
-	fovy_(45.0f),
-	zn_(2.0f),
-	zf_(10000.0f),
-	w_(100),
-	h_(100)
+glutpp::Camera::View::Base::Base()
 {
 
 }
@@ -31,7 +26,7 @@ glutpp::Camera::View::Base::Base():
 int		glutpp::Camera::View::Base::north(float) {
 	return 1;
 }
-math::mat44	glutpp::Camera::View::Base::view() {
+/*math::mat44	glutpp::Camera::View::Base::view() {
 
 	if(control_)
 	{
@@ -44,21 +39,11 @@ math::mat44	glutpp::Camera::View::Base::view() {
 			math::vec3<double>(0.0, 1.0, 0.0));
 	
 	return ret;
-}
-math::mat44	glutpp::Camera::View::Base::proj() {
-	math::mat44 ret;
-
-	ret.SetPerspective(fovy_, (float)w_/(float)h_, zn_, zf_);
-
-	return ret;
-}
+}*/
 void		glutpp::Camera::View::Base::load() {
 	
 	auto p = glutpp::master::Global()->get_program(glutpp::program_name::e::LIGHT);
 
-	glViewport(0, 0, w_, h_);
-
-	p->get_uniform(glutpp::uniform_name::e::PROJ)->load(proj());
 	p->get_uniform(glutpp::uniform_name::e::VIEW)->load(view());
 }
 void		glutpp::Camera::View::Base::step(float dt) {

@@ -1,7 +1,7 @@
-#include <math/free.h>
+#include <math/free.hpp>
 
-#include <glutpp/light/desc.h>
-#include <glutpp/light/light.h>
+#include <gru/light/desc.hpp>
+#include <gru/light/light.hpp>
 
 
 void glutpp::light::raw::load(glutpp::light::light_s light) {

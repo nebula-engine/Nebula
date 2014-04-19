@@ -13,12 +13,12 @@
 
 #include <math/color.hpp>
 
-#include <glutpp/free.hpp>
-#include <glutpp/window/desc.hpp>
-#include <glutpp/window/window.hpp>
-#include <glutpp/actor/actor.hpp>
-#include <glutpp/light/light.hpp>
-#include <glutpp/renderable.hpp>
+#include <gru/free.hpp>
+#include <gru/window/desc.hpp>
+#include <gru/window/window.hpp>
+#include <gru/actor/actor.hpp>
+#include <gru/light/light.hpp>
+#include <gru/renderable.hpp>
 
 template <typename... Args>
 void	fatal_error(char const * c, Args ...args)

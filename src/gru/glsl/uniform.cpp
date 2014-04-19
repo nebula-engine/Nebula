@@ -88,7 +88,7 @@ void	glutpp::glsl::uniform::load(math::mat44 m) {
 }
 void	glutpp::glsl::uniform::load(math::color c) {
 
-	glUniform4fv(o_[0], 1, c);
+	glUniform4dv(o_[0], 1, c);
 	
 	checkerror("glUniformMatrix4fv");
 }
@@ -98,15 +98,14 @@ void	glutpp::glsl::uniform::load(int o)
 
 	checkerror("glUniform1i");
 }
-void	glutpp::glsl::uniform::load_4fv(float* v)
-{
-	glUniform4fv(o_[0], 1, v);
+void	glutpp::glsl::uniform::load_4fv(double* v) {
+	glUniform4dv(o_[0], 1, v);
 
 	checkerror("glUniform4fv");
 }
-void	glutpp::glsl::uniform::load_3fv(float* v)
+void	glutpp::glsl::uniform::load_3fv(double* v)
 {
-	glUniform3fv(o_[0], 1, v);
+	glUniform3dv(o_[0], 1, v);
 
 	checkerror("glUniform3fv");
 }
@@ -124,7 +123,7 @@ void	glutpp::glsl::uniform::load(int c, math::mat44 m) {
 }
 void	glutpp::glsl::uniform::load(int c, math::color color) {
 
-	glUniform4fv(o_[c], 1, color);
+	glUniform4dv(o_[c], 1, color);
 	
 	checkerror("glUniformMatrix4fv");
 }
@@ -134,15 +133,15 @@ void	glutpp::glsl::uniform::load(int c, int o)
 
 	checkerror("glUniform1i");
 }
-void	glutpp::glsl::uniform::load_4fv(int c, float* v)
+void	glutpp::glsl::uniform::load_4fv(int c, double* v)
 {
-	glUniform4fv(o_[c], 1, v);
+	glUniform4dv(o_[c], 1, v);
 
 	checkerror("glUniform4fv");
 }
-void	glutpp::glsl::uniform::load_3fv(int c, float* v)
+void	glutpp::glsl::uniform::load_3fv(int c, double* v)
 {
-	glUniform3fv(o_[c], 1, v);
+	glUniform3dv(o_[c], 1, v);
 
 	checkerror("glUniform3fv");
 }

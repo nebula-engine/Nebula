@@ -1,11 +1,11 @@
 #ifndef __GLUTPP_SCENE_DESC_H__
 #define __GLUTPP_SCENE_DESC_H__
 
-#include <gal/network/message.h>
+#include <galaxy/network/message.hpp>
 
-#include <glutpp/actor/desc.h>
-#include <glutpp/actor/raw.h>
-#include <glutpp/scene/raw.h>
+#include <gru/actor/desc.hpp>
+#include <gru/actor/raw.hpp>
+#include <gru/scene/raw.hpp>
 
 namespace glutpp
 {

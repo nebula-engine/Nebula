@@ -1,7 +1,7 @@
-#include <math/free.h>
+#include <math/free.hpp>
 
-#include <glutpp/scene/desc.h>
-#include <glutpp/scene/scene.h>
+#include <gru/scene/desc.hpp>
+#include <gru/scene/scene.hpp>
 
 
 glutpp::scene::desc::desc()
