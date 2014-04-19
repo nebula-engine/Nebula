@@ -1,10 +1,10 @@
 #ifndef __NEBULA_ACTOR_ID_H__
 #define __NEBULA_ACTOR_ID_H__
 
-#include <math/transform.h>
-#include <math/raw/raw.h>
+#include <math/transform.hpp>
+//#include <math/raw/raw.hpp>
 
-#include <gal/network/serial.h>
+#include <galaxy/network/serial.hpp>
 
 #include <gru/actor/id.hpp>
 #include <gru/shape/desc.hpp>

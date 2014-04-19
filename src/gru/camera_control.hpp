@@ -3,9 +3,9 @@
 
 #include <vector>
 
-#include <math/vec3.h>
+#include <math/vec3.hpp>
 
-#include <gal/sig/connection.h>
+#include <galaxy/sig/connection.hpp>
 
 namespace glutpp
 {
@@ -34,13 +34,13 @@ namespace glutpp
 
 
 
-			math::vec4				eye_;
-			math::vec3				center_;
-			math::vec3				look_;
-			math::vec3				up_;
+			math::vec4					eye_;
+			math::vec3<double>				center_;
+			math::vec3<double>				look_;
+			math::vec3<double>				up_;
 
-			math::vec3					v0_;
-			math::vec3					v1_;
+			math::vec3<double>				v0_;
+			math::vec3<double>				v1_;
 
 			std::vector<gal::sig::connection<>*>		vec_x_;
 			std::vector<gal::sig::connection<>*>		vec_y_;

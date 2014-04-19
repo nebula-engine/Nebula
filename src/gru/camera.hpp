@@ -4,11 +4,11 @@
 #include <vector>
 #include <memory>
 
-#include <gal/sig/connection.h>
+#include <galaxy/sig/connection.hpp>
 
-#include <math/vec3.h>
-#include <math/vec4.h>
-#include <math/mat44.h>
+#include <math/vec3.hpp>
+#include <math/vec4.hpp>
+#include <math/mat44.hpp>
 
 #include <gru/config.hpp>
 #include <gru/camera_control.hpp>

@@ -11,9 +11,9 @@
 #include <vector>
 #include <memory>
 
-#include <gal/map.h>
-#include <gal/sig/connection.h>
-#include <gal/network/vector.h>
+#include <galaxy/map.hpp>
+#include <galaxy/sig/connection.hpp>
+#include <galaxy/network/vector.hpp>
 
 typedef std::shared_ptr<gal::sig::connection<int,int,int> >	mouse_button_fun_c;
 typedef std::shared_ptr<gal::sig::connection<double,double> >	cursor_pos_fun_c;

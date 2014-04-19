@@ -5,16 +5,13 @@
 
 #include <GLFW/glfw3.h>
 
-#include <math/mat44.h>
-#include <math/color.h>
+#include <math/mat44.hpp>
+#include <math/color.hpp>
 
-namespace glutpp
-{
-	namespace glsl
-	{
+namespace glutpp {
+	namespace glsl {
 		class program;
-		class uniform
-		{
+		class uniform {
 			public:
 				uniform();
 				void			init(char const *);

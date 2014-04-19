@@ -1,10 +1,11 @@
-#include <math/free.h>
+#include <math/free.hpp>
 
 //#include <neb/physics.h>
 //#include <neb/scene/scene.h>
 //#include <neb/simulation_callback.h>
-#include <glutpp/actor/desc.h>
-#include <glutpp/actor/actor.h>
+
+#include <gru/actor/desc.hpp>
+#include <gru/actor/actor.hpp>
 
 
 

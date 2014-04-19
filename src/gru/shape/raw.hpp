@@ -5,10 +5,10 @@
 
 #include <tinyxml2.h>
 
-#include <math/vec3.h>
-#include <math/raw/raw.h>
+#include <math/vec3.hpp>
+//#include <math/raw/raw.h>
 
-#include <gal/network/serial.h>
+#include <galaxy/network/serial.hpp>
 
 #include <gru/config.hpp>
 #include <gru/material.hpp>
@@ -29,7 +29,7 @@ namespace glutpp
 				void			load(tinyxml2::XMLElement*);
 				void			parse_type(char const *);
 
-				void			box(math::vec3);
+				void			box(math::vec3<double>);
 				void			box(tinyxml2::XMLElement*);
 
 				void			sphere(float);
@@ -40,7 +40,7 @@ namespace glutpp
 				unsigned int		flag_;
 
 				math::transform		pose_;
-				math::vec3		s_;
+				math::vec3<double>	s_;
 
 
 				char			image_[max_filename_length];

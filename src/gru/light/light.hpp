@@ -4,7 +4,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <gal/flag.h>
+#include <galaxy/flag.hpp>
 
 #include <gru/config.hpp>
 #include <gru/camera.hpp>
@@ -13,7 +13,7 @@
 #include <gru/light/desc.hpp>
 #include <gru/light/raw.hpp>
 
-#include <math/color.h>
+#include <math/color.hpp>
 
 
 namespace glutpp

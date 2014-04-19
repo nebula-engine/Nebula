@@ -4,15 +4,15 @@
 #include <vector>
 #include <map>
 
-#include <gal/flag.h>
-#include <gal/network/message.h>
-#include <gal/network/vector.h>
+#include <galaxy/flag.hpp>
+#include <galaxy/network/message.hpp>
+#include <galaxy/network/vector.hpp>
 
-#include <math/vec4.h>
-#include <math/vec3.h>
-#include <math/vec2.h>
-#include <math/geo/polyhedron.h>
-#include <math/transform.h>
+#include <math/vec4.hpp>
+#include <math/vec3.hpp>
+#include <math/vec2.hpp>
+#include <math/geo/polyhedron.hpp>
+#include <math/transform.hpp>
 
 #include <gru/config.hpp>
 #include <gru/actor/addr.hpp>

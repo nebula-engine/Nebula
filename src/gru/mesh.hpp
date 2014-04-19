@@ -5,13 +5,13 @@
 
 #include <GLFW/glfw3.h>
 
-#include <gal/flag.h>
+#include <galaxy/flag.hpp>
 
-#include <math/vec4.h>
-#include <math/vec3.h>
-#include <math/vec2.h>
-#include <math/transform.h>
-#include <math/geo/polyhedron.h>
+#include <math/vec4.hpp>
+#include <math/vec3.hpp>
+#include <math/vec2.hpp>
+#include <math/transform.hpp>
+#include <math/geo/polyhedron.hpp>
 
 #include <gru/config.hpp>
 #include <gru/shape/desc.hpp>
@@ -28,9 +28,9 @@ namespace glutpp
 	{
 		//void		print();
 
-		math::vec4	position;
-		math::vec3	normal;
-		math::vec2	texcoor;
+		math::vec4		position;
+		math::vec3<double>	normal;
+		math::vec2		texcoor;
 	};
 	class mesh
 	{

@@ -3,8 +3,8 @@
 
 #include <tinyxml2.h>
 
-#include <math/raw/raw.h>
-#include <math/color.h>
+//#include <math/raw/raw.h>
+#include <math/color.hpp>
 
 namespace glutpp {
 	namespace material {

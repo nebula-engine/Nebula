@@ -1,12 +1,12 @@
 #ifndef __GLUTPP_ACTOR_RAW_H__
 #define __GLUTPP_ACTOR_RAW_H__
 
-#include <math/transform.h>
-#include <math/raw/raw.h>
+#include <math/transform.hpp>
+//#include <math/raw/raw.hpp>
 
 
-#include <gal/network/serial.h>
-#include <gal/util.h>
+#include <galaxy/network/serial.hpp>
+#include <galaxy/util.hpp>
 
 #include <gru/config.hpp>
 #include <gru/shape/desc.hpp>
@@ -51,10 +51,10 @@ namespace glutpp {
 
 				math::transform		pose_;
 
-				math::vec3		n_;
+				math::vec3<double>	n_;
 				float			d_;
 
-				math::vec3		velocity_;
+				math::vec3<double>	velocity_;
 				float			density_;
 
 				struct {

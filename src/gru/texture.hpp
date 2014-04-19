@@ -7,9 +7,9 @@
 #include <GLFW/glfw3.h>
 
 
-#include <math/mat44.h>
-#include <math/vec4.h>
-#include <math/vec3.h>
+#include <math/mat44.hpp>
+#include <math/vec4.hpp>
+#include <math/vec3.hpp>
 
 #include <gru/config.hpp>
 

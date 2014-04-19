@@ -3,12 +3,12 @@
 
 #include <tinyxml2.h>
 
-#include <math/raw/raw.h>
-#include <math/vec3.h>
-#include <math/vec4.h>
-#include <math/color.h>
+//#include <math/raw/raw.h>
+#include <math/vec3.hpp>
+#include <math/vec4.hpp>
+#include <math/color.hpp>
 
-#include <gal/network/serial.h>
+#include <galaxy/network/serial.hpp>
 
 #include <gru/config.hpp>
 

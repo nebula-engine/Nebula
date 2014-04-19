@@ -3,12 +3,12 @@
 
 #include <tinyxml2.h>
 
-#include <math/raw/raw.h>
-#include <math/vec3.h>
-#include <math/vec4.h>
-#include <math/color.h>
+//#include <math/raw/raw.hpp>
+#include <math/vec3.hpp>
+#include <math/vec4.hpp>
+#include <math/color.hpp>
 
-#include <gal/network/serial.h>
+#include <galaxy/network/serial.hpp>
 
 #include <gru/config.hpp>
 
@@ -38,7 +38,7 @@ namespace glutpp
 				math::color		specular_;
 
 				// other properties
-				math::vec3      	spot_direction_;
+				math::vec3<double>     	spot_direction_;
 				float			spot_cutoff_;
 				float			spot_exponent_;
 				float			spot_light_cos_cutoff_;

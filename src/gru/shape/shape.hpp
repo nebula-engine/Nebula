@@ -7,13 +7,13 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <gal/flag.h>
+#include <galaxy/flag.hpp>
 
-#include <math/vec4.h>
-#include <math/vec3.h>
-#include <math/vec2.h>
-#include <math/transform.h>
-#include <math/geo/polyhedron.h>
+#include <math/vec4.hpp>
+#include <math/vec3.hpp>
+#include <math/vec2.hpp>
+#include <math/transform.hpp>
+#include <math/geo/polyhedron.hpp>
 
 #include <gru/config.hpp>
 #include <gru/glsl/program.hpp>

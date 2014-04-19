@@ -4,8 +4,8 @@
 #include <map>
 #include <memory>
 
-#include <gal/flag.h>
-#include <gal/sig/signal.h>
+#include <galaxy/flag.hpp>
+#include <galaxy/sig/signal.hpp>
 
 #include <ft2build.h>
 #include FT_FREETYPE_H

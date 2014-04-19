@@ -5,10 +5,10 @@
 
 #include <tinyxml2.h>
 
-#include <math/vec3.h>
-#include <math/raw/raw.h>
+#include <math/vec3.hpp>
+//#include <math/raw/raw.hpp>
 
-#include <gal/network/serial.h>
+#include <galaxy/network/serial.hpp>
 
 #include <gru/config.hpp>
 #include <gru/material.hpp>

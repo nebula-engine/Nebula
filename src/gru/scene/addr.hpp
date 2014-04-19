@@ -1,8 +1,8 @@
 #ifndef __GLUTPP_SCENE_ADDR_H__
 #define __GLUTPP_SCENE_ADDR_H__
 
-#include <gal/network/message.h>
-#include <gal/network/serial.h>
+#include <galaxy/network/message.hpp>
+#include <galaxy/network/serial.hpp>
 
 //#include <glutpp/actor/desc.h>
 //#include <glutpp/actor/raw.h>
