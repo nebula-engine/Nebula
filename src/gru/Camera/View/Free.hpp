@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include <PxPhysicsAPI.h>
+
 #include <math/vec3.hpp>
 
 #include <galaxy/sig/connection.hpp>
@@ -56,6 +58,14 @@ namespace glutpp {
 					std::vector<gal::sig::connection<>*>		vec_z_;
 
 					glutpp::window::window_w				window_;
+
+
+					std::map<int,unsigned int>		key_flag_;
+					std::map<int,physx::PxVec3>		head_;
+					std::map<unsigned int,int>		head_flag_;
+
+
+
 			};
 		}
 	}

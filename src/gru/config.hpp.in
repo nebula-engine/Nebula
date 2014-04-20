@@ -194,7 +194,9 @@ namespace glutpp {
 		typedef std::shared_ptr<raw_factory>	raw_factory_s;
 		typedef std::shared_ptr<desc>		desc_s;
 		typedef std::shared_ptr<event>		event_s;
+		
 		typedef std::shared_ptr<actor>		actor_s;
+		typedef std::weak_ptr<actor>		actor_w;
 	}
 
 	namespace shape

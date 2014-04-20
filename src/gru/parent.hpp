@@ -20,6 +20,10 @@
 #include <gru/mesh.hpp>
 
 namespace glutpp {
+	/** @brief @Parent
+	 * abstract class for parent of a shape
+	 * actor and shape derive from this
+	 */
 	class parent: public std::enable_shared_from_this<parent> {
 		public:
 			parent(glutpp::parent_s = glutpp::parent_s());

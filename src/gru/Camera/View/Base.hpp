@@ -19,6 +19,15 @@ namespace glutpp {
 			/** @brief @Base */
 			class Base {
 				public:
+					struct Flag {
+						enum E {
+							NORTH = 1<<0,
+							SOUTH = 1<<1,
+							EAST = 1<<2,
+							WEST = 1<<3
+						};
+					};
+
 					Base();
 					//void		init(glutpp::renderable_shared);
 					virtual math::mat44	view() = 0;
