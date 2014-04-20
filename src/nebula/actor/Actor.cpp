@@ -1,11 +1,12 @@
-#include <glutpp/renderable.h>
-#include <glutpp/scene/scene.h>
 
-#include <neb/simulation_callback.h>
-#include <neb/shape.h>
-#include <neb/scene/scene.h>
-#include <glutpp/actor/desc.h>
-#include <neb/actor/Actor.h>
+#include <gru/renderable.hpp>
+#include <gru/scene/scene.hpp>
+#include <gru/actor/desc.hpp>
+
+#include <nebula/simulation_callback.hpp>
+#include <nebula/shape.hpp>
+#include <nebula/scene/scene.hpp>
+#include <nebula/actor/Actor.hpp>
 
 neb::actor::Actor::Actor(glutpp::parent_s parent):
 	neb::actor::Base(parent),

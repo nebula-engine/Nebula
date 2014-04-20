@@ -1,20 +1,24 @@
 #ifndef __NEB_PARENT_H__
 #define __NEB_PARENT_H__
 
-#include <neb/config.h>
+
+#include <gru/parent.hpp>
+
+#include <nebula/config.hpp>
 
 namespace neb {
-	class parent: public std::enable_shared_from_this<parent> {
+	class parent: virtual public glutpp::parent {
 		public:
 			parent(neb::parent_s = neb::parent_s());
 			virtual ~parent();
 			
-			neb::parent_s			get_parent();
-
-			neb::actor::Base_s		is_actor();
-			neb::shape::shape_s		is_shape();
+			neb::parent_s			getParent();
+			
+			neb::actor::Base_s		isActor();
+			neb::actor::RigidActor_s	isRigidActor();
+			neb::shape::shape_s		isShape();
 	};
-}                                               
+}
 
 #endif  
 

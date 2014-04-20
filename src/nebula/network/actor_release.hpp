@@ -3,14 +3,11 @@
 
 #include <vector>
 
-#include <gal/network/message.h>
+#include <galaxy/network/message.hpp>
 
-namespace neb
-{
-	namespace packet
-	{
-		class actor_release
-		{
+namespace neb {
+	namespace packet {
+		class actor_release {
 			public:
 				typedef std::shared_ptr<gal::network::message> msg_t;
 

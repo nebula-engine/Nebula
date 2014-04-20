@@ -1,7 +1,8 @@
-#include <neb/config.h>
-#include <neb/app.h>
-#include <neb/scene/scene.h>
-#include <neb/network/communicating.h>
+
+#include <nebula/config.hpp>
+#include <nebula/app.hpp>
+#include <nebula/scene/scene.hpp>
+#include <nebula/network/communicating.hpp>
 
 neb::network::communicating::communicating(neb::app_s app, int socket):
 	gal::network::communicating(socket),

@@ -1,15 +1,11 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_STATIC_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_STATIC_HPP__
 
-#include <neb/actor/Rigid_Actor.h>
+#include <nebula/actor/Rigid_Actor.hpp>
 
-namespace neb
-{
-	namespace actor
-	{
-		class Rigid_Static:
-			public neb::actor::Rigid_Actor
-		{
+namespace neb {
+	namespace actor {
+		class Rigid_Static: public neb::actor::RigidActor {
 			public:
 				Rigid_Static(glutpp::parent_s parent);
 

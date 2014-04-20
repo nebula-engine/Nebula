@@ -8,17 +8,17 @@
 #include <unistd.h>          // For close()
 #include <netinet/in.h>      // For sockaddr_in
 
-#include <math/free.h>
+#include <math/free.hpp>
 
-#include <glutpp/actor/actor.h>
-#include <glutpp/scene/desc.h>
-#include <glutpp/network/message.h>
+#include <gru/actor/actor.hpp>
+#include <gru/scene/desc.hpp>
+#include <gru/network/message.hpp>
 
-#include <neb/config.h>
-#include <neb/app.h>
-#include <neb/network/client.h>
-#include <neb/network/message.h>
-#include <neb/scene/scene.h>
+#include <nebula/config.hpp>
+#include <nebula/app.hpp>
+#include <nebula/network/client.hpp>
+#include <nebula/network/message.hpp>
+#include <nebula/scene/scene.hpp>
 
 neb::network::client::client(neb::app_s app, char const * addr, unsigned short port):
 	gal::network::communicating(::socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)),

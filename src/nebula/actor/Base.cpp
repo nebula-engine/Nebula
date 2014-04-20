@@ -1,13 +1,14 @@
-#include <neb/config.h>
-#include <neb/timer/actor.h>
-#include <neb/app.h>
-#include <neb/scene/scene.h>
-#include <neb/shape.h>
 
-#include <glutpp/actor/desc.h>
+#include <nebula/config.hpp>
+#include <nebula/timer/actor.hpp>
+#include <nebula/app.hpp>
+#include <nebula/scene/scene.hpp>
+#include <nebula/shape.hpp>
+#include <nebula/actor/Base.hpp>
+#include <nebula/actor/empty.hpp>
 
-#include <neb/actor/Base.h>
-#include <neb/actor/empty.h>
+#include <gru/actor/desc.hpp>
+
 
 neb::actor::Base::Base(glutpp::parent_s parent):
 	glutpp::actor::actor(parent)
@@ -208,14 +209,14 @@ void neb::actor::Base::create_shapes(glutpp::actor::desc_s desc) {
 
 	auto me = std::dynamic_pointer_cast<neb::actor::Base>(shared_from_this());
 
-	std::shared_ptr<neb::shape> shape;
+	neb::shape::shape_s shape;
 
 	for(auto it = desc->get_shapes()->vec_.begin(); it != desc->get_shapes()->vec_.end(); ++it)
 	{
 		glutpp::shape::desc_s sd = std::get<0>(*it);
 		assert(sd);
 
-		shape.reset(new neb::shape(me));
+		shape.reset(new neb::shape::shape(me));
 
 		shape->init(sd);
 

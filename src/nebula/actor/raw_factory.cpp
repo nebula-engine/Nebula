@@ -1,7 +1,7 @@
 
 
-#include <neb/actor/raw.h>
-#include <neb/actor/raw_factory.h>
+#include <nebula/actor/raw.hpp>
+#include <nebula/actor/raw_factory.hpp>
 
 glutpp::actor::raw_s neb::actor::raw_factory::create(int type) {
 

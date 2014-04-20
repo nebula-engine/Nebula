@@ -4,7 +4,7 @@ project(nebula)
 
 find_package(gru)
 
-add_definitions(-DNDEBUG)
+add_definitions(-DNDEBUG -DPHYSX)
 
 set(CMAKE_CXX_FLAGS "-std=c++0x")
 

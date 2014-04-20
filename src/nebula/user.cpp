@@ -1,9 +1,10 @@
-#include <glutpp/renderable.h>
 
-#include <neb/config.h>
-#include <neb/user.h>
-#include <neb/camera/camera.h>
-#include <neb/control/rigid_body/control.h>
+#include <gru/renderable.hpp>
+
+#include <nebula/config.hpp>
+#include <nebula/user.hpp>
+//#include <nebula/camera/camera.hpp>
+#include <nebula/control/rigid_body/control.hpp>
 
 neb::user::user()
 {}

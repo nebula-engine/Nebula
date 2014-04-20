@@ -3,11 +3,11 @@
 
 #include <tinyxml2.h>
 
-#include <math/vec3.h>
+#include <math/vec3.hpp>
 
-#include <glutpp/shape/shape.h>
+#include <gru/shape/shape.hpp>
 
-#include <neb/parent.h>
+#include <nebula/parent.hpp>
 
 namespace neb {
 	namespace shape {

@@ -1,9 +1,11 @@
-#include <neb/physics.h>
-#include <neb/actor/vehicle.h>
-#include <neb/vehicle_manager.h>
+
+#include <nebula/physics.hpp>
+//#include <nebula/actor/vehicle.hpp>
+#include <nebula/vehicle_manager.hpp>
 
 #define MAX_NUM_4W_VEHICLES 20
 #define MAX_WHEELS 80
+
 
 physx::PxSceneQueryHitType::Enum VehicleWheelRaycastPreFilter(
 		physx::PxFilterData filterData0,
@@ -33,7 +35,7 @@ physx::PxSceneQueryHitType::Enum VehicleWheelRaycastPreFilter(
 	return physx::PxSceneQueryHitType::eBLOCK;
 }
 
-
+/*
 neb::vehicle_manager::vehicle_manager():
 	surface_tire_pairs_(NULL),
 	sq_wheel_raycast_batch_query_(NULL),
@@ -366,8 +368,8 @@ physx::PxRigidDynamic* createVehicleActor4W(
 	// configure rigid body mass and inertia
 	// sets collision and scene query filters for wheel and chassis shapes.
 
-	math::vec3 p(0,0,0);
-	math::quat q(0, math::vec3(1,0,0));
+	math::vec3<double> p(0,0,0);
+	math::quat q(0, math::vec3<double>(1,0,0));
 	math::transform pose(p,q);
 	
 	// actor
@@ -641,7 +643,7 @@ physx::PxBatchQuery* SampleVehicleSceneQueryData::setUpBatchedSceneQuery(physx::
 	sqDesc.spuPreFilterShaderSize = mSpuPreFilterShaderSize;
 	return scene->createBatchQuery(sqDesc);
 }
-
+*/
 
 
 

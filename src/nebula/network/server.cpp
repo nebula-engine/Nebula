@@ -1,9 +1,9 @@
 #include <assert.h>
 
-#include <neb/app.h>
-#include <neb/scene/scene.h>
-#include <neb/network/message.h>
-#include <neb/network/server.h>
+#include <nebula/app.hpp>
+#include <nebula/scene/scene.hpp>
+#include <nebula/network/message.hpp>
+#include <nebula/network/server.hpp>
 
 neb::network::server::server(neb::app_s app, unsigned short port, int len):
 	gal::network::server(port, len),

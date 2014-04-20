@@ -1,5 +1,6 @@
-#include <neb/physics.h>
-#include <neb/simulation_callback.h>
+
+#include <nebula/physics.hpp>
+#include <nebula/simulation_callback.hpp>
 
 void 	neb::simulation_callback::onConstraintBreak(
 		physx::PxConstraintInfo *constraints, physx::PxU32 count) {

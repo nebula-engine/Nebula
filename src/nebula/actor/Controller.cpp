@@ -1,4 +1,5 @@
-#include <neb/actor/Controller.h>
+
+#include <nebula/actor/Controller.hpp>
 
 neb::actor::Controller::Controller(glutpp::parent_s parent):
 	neb::actor::Base(parent)

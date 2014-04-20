@@ -5,9 +5,9 @@
 
 namespace neb {
 	namespace actor {
-		class Rigid_Actor: public neb::actor::Actor {
+		class RigidActor: public neb::actor::Actor {
 			public:
-				Rigid_Actor(glutpp::parent_s);
+				RigidActor(glutpp::parent_s);
 
 				virtual void			init(glutpp::actor::desc_s);
 				virtual void			add_force(double) {abort();}

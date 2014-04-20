@@ -2,14 +2,12 @@
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_BODY_HPP__
 
 
-#include <neb/actor/Rigid_Actor.h>
+#include <nebula/actor/Rigid_Actor.hpp>
 
-namespace neb
-{
-	namespace actor
-	{
+namespace neb {
+	namespace actor {
 		namespace rigid_body {
-			class rigid_body: public neb::actor::Rigid_Actor {
+			class rigid_body: public neb::actor::RigidActor {
 				public:
 					rigid_body(glutpp::parent_s);
 					
@@ -36,8 +34,8 @@ namespace neb
 				public:
 					neb::control::rigid_body::control_s	control_;
 				private:
-					math::vec3			force_;
-					math::vec3			torque_;
+					math::vec3<double>			force_;
+					math::vec3<double>			torque_;
 			};
 		}
 	}

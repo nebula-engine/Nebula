@@ -6,13 +6,13 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <gal/map.h>
+#include <galaxy/map.hpp>
 
-#include <glutpp/scene/scene.h>
+#include <gru/scene/scene.hpp>
 
-#include <neb/actor/Rigid_Dynamic.h>
-#include <neb/actor/Rigid_Static.h>
-#include <neb/actor/Controller.h>
+#include <nebula/actor/Rigid_Dynamic.hpp>
+#include <nebula/actor/Rigid_Static.hpp>
+#include <nebula/actor/Controller.hpp>
 
 #include <tinyxml2.h>
 

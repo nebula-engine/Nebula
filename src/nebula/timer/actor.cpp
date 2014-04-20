@@ -1,5 +1,6 @@
-#include <neb/timer/actor.h>
-#include <neb/actor/Base.h>
+
+#include <nebula/timer/actor.hpp>
+#include <nebula/actor/Base.hpp>
 
 neb::timer::actor::actor(neb::actor::Base_s actor, neb::timer::actor::type type, double time):
         gal::timer::timer(time),

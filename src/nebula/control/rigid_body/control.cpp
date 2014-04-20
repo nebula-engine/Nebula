@@ -1,16 +1,16 @@
-#include <math/mat33.h>
-#include <neb/control/rigid_body/control.h>
+#include <math/mat33.hpp>
 
-neb::control::rigid_body::control::control()
-{
+#include <nebula/control/rigid_body/control.hpp>
+
+neb::control::rigid_body::control::control() {
 
 }
 int neb::control::rigid_body::control::key_fun(int key, int scancode, int action, int mods) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	math::vec3 x(1.0,0.0,0.0);
-	math::vec3 y(0.0,1.0,0.0);
-	math::vec3 z(0.0,0.0,1.0);
+	math::vec3<double> x(1.0,0.0,0.0);
+	math::vec3<double> y(0.0,1.0,0.0);
+	math::vec3<double> z(0.0,0.0,1.0);
 
 	switch(action)
 	{
@@ -163,11 +163,11 @@ void neb::control::rigid_body::control::step_local1(double time) {
 
 
 	// angular velocity
-	math::vec3 omega = pxrigidbody->getAngularVelocity();
+	math::vec3<double> omega = pxrigidbody->getAngularVelocity();
 	omega = q.rotate(omega);
 	
 	// inertia matrix
-	math::vec3 vI = pxrigidbody->getMassSpaceInertiaTensor();
+	math::vec3<double> vI = pxrigidbody->getMassSpaceInertiaTensor();
 	math::mat33 I(vI);
 	
 
@@ -194,13 +194,13 @@ void neb::control::rigid_body::control::step_local1(double time) {
 
 	//float gamma = 100;
 	
-	math::vec3 e(a.x, a.y, a.z);
+	math::vec3<double> e(a.x, a.y, a.z);
 	
 	float ke = 0.5;
 	float ko = 3;
 	
 	//math::vec3 u = ((ac + I * a.w) * Gp + I * gamma * (1 - a.w)) * va * 0.5 - Gr * omega;
-	math::vec3 u = -I * e * ke - omega * ko;
+	math::vec3<double> u = -I * e * ke - omega * ko;
 	
 	raw_.torque_ = u;
 		/*
@@ -251,7 +251,7 @@ void neb::control::rigid_body::control::step_local1(double time) {
 		}
 		 */
 }
-math::vec3 neb::control::rigid_body::control::f() {
+math::vec3<double> neb::control::rigid_body::control::f() {
 	NEBULA_DEBUG_1_FUNCTION;
 
 	switch(raw_.type_) {
@@ -262,9 +262,9 @@ math::vec3 neb::control::rigid_body::control::f() {
 		default:
 			break;
 	}
-	return math::vec3();
+	return math::vec3<double>();
 }
-math::vec3 neb::control::rigid_body::control::t() {
+math::vec3<double> neb::control::rigid_body::control::t() {
 	NEBULA_DEBUG_1_FUNCTION;
 
 	switch(raw_.type_) {
@@ -275,7 +275,7 @@ math::vec3 neb::control::rigid_body::control::t() {
 		default:
 			break;
 	}
-	return math::vec3();
+	return math::vec3<double>();
 }
 void neb::control::rigid_body::control::print() {
 

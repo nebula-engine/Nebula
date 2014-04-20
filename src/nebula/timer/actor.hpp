@@ -1,9 +1,9 @@
 #ifndef __NEBULA_TIMER_ACTOR__
 #define __NEBULA_TIMER_ACTOR__
 
-#include <gal/timer/timer.h>
+#include <galaxy/timer/timer.hpp>
 
-#include <neb/config.h>
+#include <nebula/config.hpp>
 
 namespace neb {
         namespace timer {

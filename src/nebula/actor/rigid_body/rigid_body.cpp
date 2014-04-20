@@ -1,35 +1,35 @@
-#include <math/transform.h>
 
-#include <gal/network/server.h>
+#include <math/transform.hpp>
 
-#include <glutpp/renderable.h>
+#include <galaxy/network/server.hpp>
 
+#include <gru/renderable.hpp>
+#include <gru/Camera/View/ridealong.hpp>
 
-#include <neb/config.h>
-#include <neb/app.h>
-#include <neb/physics.h>
-#include <neb/simulation_callback.h>
-#include <neb/actor/rigid_body/rigid_body.h>
-#include <neb/control/rigid_body/control.h>
-#include <neb/camera/ridealong.h>
-#include <neb/network/message.h>
+#include <nebula/config.hpp>
+#include <nebula/app.hpp>
+#include <nebula/physics.hpp>
+#include <nebula/simulation_callback.hpp>
+#include <nebula/actor/rigid_body/rigid_body.hpp>
+#include <nebula/control/rigid_body/control.hpp>
+#include <nebula/network/message.hpp>
 
 
 neb::actor::rigid_body::rigid_body::rigid_body(glutpp::parent_s parent):
-	neb::actor::Rigid_Actor(parent),
+	neb::actor::RigidActor(parent),
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}
 void	neb::actor::rigid_body::rigid_body::init(glutpp::actor::desc_s desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 	
-	neb::actor::Rigid_Actor::init(desc);
+	neb::actor::RigidActor::init(desc);
 
 }
 void neb::actor::rigid_body::rigid_body::step_local(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
 	
-	neb::actor::Rigid_Actor::step_local(time);
+	neb::actor::RigidActor::step_local(time);
 	
 	if(control_) control_->step_local(time);
 	
@@ -43,7 +43,7 @@ void neb::actor::rigid_body::rigid_body::step_remote(double time) {
 	gal::network::message::shared_t msg;
 	neb::network::control::rigid_body::update_s control_update;
 	
-	neb::actor::Rigid_Actor::step_remote(time);
+	neb::actor::RigidActor::step_remote(time);
 	
 	
 	
@@ -66,8 +66,8 @@ void neb::actor::rigid_body::rigid_body::add_force(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
 
 	// non-user-controled
-	math::vec3 f(force_);
-	math::vec3 t(torque_);
+	math::vec3<double> f(force_);
+	math::vec3<double> t(torque_);
 	
 	// user-controlled
 	if(control_) {
@@ -106,7 +106,7 @@ glutpp::actor::desc_s neb::actor::rigid_body::rigid_body::get_projectile() {
 
 	// modify description	
 
-	math::vec3 offset = desc->get_raw()->pose_.p;
+	math::vec3<double> offset = desc->get_raw()->pose_.p;
 
 	// pose
 	math::transform pose(get_raw()->pose_);	
@@ -115,7 +115,7 @@ glutpp::actor::desc_s neb::actor::rigid_body::rigid_body::get_projectile() {
 	desc->get_raw()->pose_ = pose;
 	
 	// velocity
-	math::vec3 velocity = desc->get_raw()->velocity_;
+	math::vec3<double> velocity = desc->get_raw()->velocity_;
 	velocity = pose.q.rotate(velocity);
 	velocity += get_raw()->velocity_;
 	desc->get_raw()->velocity_ = velocity;
@@ -126,15 +126,15 @@ glutpp::actor::desc_s neb::actor::rigid_body::rigid_body::get_projectile() {
 void neb::actor::rigid_body::rigid_body::print_info() {
 	//NEBULA_DEBUG_1_FUNCTION;	
 
-	neb::actor::Rigid_Actor::print_info();
+	neb::actor::RigidActor::print_info();
 
 	auto pxrb = px_actor_->isRigidBody();
 
 	//math::transform pose		= pxrb->getCMassLocalPose();
 	float mass			= pxrb->getMass();
-	math::vec3 inertia		= pxrb->getMassSpaceInertiaTensor();
-	math::vec3 linear_velocity	= pxrb->getLinearVelocity();
-	math::vec3 angular_velocity	= pxrb->getAngularVelocity();
+	math::vec3<double> inertia		= pxrb->getMassSpaceInertiaTensor();
+	math::vec3<double> linear_velocity	= pxrb->getLinearVelocity();
+	math::vec3<double> angular_velocity	= pxrb->getAngularVelocity();
 
 
 	printf("mass             = %f\n", mass);
@@ -170,8 +170,8 @@ void neb::actor::rigid_body::rigid_body::create_control(neb::control::rigid_body
 
 
 		// camera control
-		std::shared_ptr<neb::camera::ridealong> cam(new neb::camera::ridealong(me));
-		wnd->renderable_->camera_->control_ = cam;
+		std::shared_ptr<glutpp::Camera::View::ridealong> cam(new glutpp::Camera::View::ridealong(me));
+		wnd->renderable_->view_ = cam;
 
 	}
 

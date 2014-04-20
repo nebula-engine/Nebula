@@ -1,6 +1,6 @@
-#include <glutpp/config.h>
+#include <gru/config.hpp>
 
-#include <neb/network/actor_release.h>
+#include <nebula/network/actor_release.hpp>
 /*
 neb::packet::actor_release::actor_release(int scene_i):
 	scene_i_(scene_i)

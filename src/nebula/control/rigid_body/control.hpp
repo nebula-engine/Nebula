@@ -29,8 +29,8 @@ namespace neb {
 					void				step_local1(double);
 	
 
-					math::vec3			f();
-					math::vec3			t();
+					math::vec3<double>			f();
+					math::vec3<double>			t();
 
 					void				print();
 				private:

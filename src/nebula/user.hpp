@@ -1,16 +1,14 @@
 #ifndef __NEBULA_USER_H__
 #define __NEBULA_USER_H__
 
-#include <glutpp/master.h>
-#include <glutpp/window/window.h>
+#include <gru/master.hpp>
+#include <gru/window/window.hpp>
 
-#include <neb/config.h>
-#include <neb/camera/camera.h>
+#include <nebula/config.hpp>
+//#include <nebula/camera/camera.hpp>
 
-namespace neb
-{
-	class user
-	{
+namespace neb {
+	class user {
 		public:
 			user();
 			void	init();

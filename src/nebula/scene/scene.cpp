@@ -1,27 +1,26 @@
-#include <math/free.h>
+#include <math/free.hpp>
 
-#include <glutpp/actor/desc.h>
-#include <glutpp/actor/event.h>
+#include <gru/actor/desc.hpp>
+#include <gru/actor/event.hpp>
+#include <gru/network/message.hpp>
+#include <gru/scene/desc.hpp>
 
-#include <neb/config.h>
-#include <neb/app.h>
+#include <nebula/config.hpp>
+#include <nebula/app.hpp>
+#include <nebula/physics.hpp>
+#include <nebula/scene/scene.hpp>
+#include <nebula/simulation_callback.hpp>
+//#include <nebula/actor/free.hpp>
+#include <nebula/actor/Base.hpp>
+#include <nebula/actor/Rigid_Dynamic.hpp>
+#include <nebula/actor/Rigid_Static.hpp>
+#include <nebula/actor/Controller.hpp>
+//#include <nebula/actor/vehicle.hpp>
+#include <nebula/actor/empty.hpp>
+#include <nebula/shape.hpp>
+#include <nebula/timer/actor.hpp>
 
-#include <neb/physics.h>
-#include <neb/scene/scene.h>
-#include <glutpp/scene/desc.h>
 
-#include <neb/simulation_callback.h>
-#include <neb/actor/free.h>
-#include <neb/actor/Base.h>
-#include <neb/actor/Rigid_Dynamic.h>
-#include <neb/actor/Rigid_Static.h>
-#include <neb/actor/Controller.h>
-#include <neb/actor/vehicle.h>
-#include <neb/actor/empty.h>
-#include <neb/shape.h>
-#include <neb/timer/actor.h>
-
-#include <glutpp/network/message.h>
 
 neb::scene::scene::scene(neb::app_s app):
 	app_(app),
@@ -502,7 +501,7 @@ void neb::scene::scene::step_local(double time) {
 
 				assert(rigidbody != NULL);
 
-				math::vec3 v(pxrigidbody->getLinearVelocity());
+				math::vec3<double> v(pxrigidbody->getLinearVelocity());
 
 				rigidbody->get_raw()->velocity_ = v;
 

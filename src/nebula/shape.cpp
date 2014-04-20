@@ -1,11 +1,11 @@
-#include <math/free.h>
+#include <math/free.hpp>
 
 //#include <glutpp/types.h>
 
-#include <neb/config.h>
-#include <neb/physics.h>
-#include <neb/scene/scene.h>
-#include <neb/shape.h>
+#include <nebula/config.hpp>
+#include <nebula/physics.hpp>
+#include <nebula/scene/scene.hpp>
+#include <nebula/shape.hpp>
 
 neb::shape::shape::shape(glutpp::actor::actor_s actor):
 	glutpp::shape::shape(actor)
@@ -25,7 +25,7 @@ void neb::shape::shape::create_physics() {
 	
 	assert(!parent_.expired());
 	
-	auto actor = neb::parent::get_parent()->is_rigid_actor();//std::dynamic_pointer_cast<neb::actor::Rigid_Actor>(parent_.lock());
+	auto actor = neb::parent::getParent()->isRigidActor();//std::dynamic_pointer_cast<neb::actor::Rigid_Actor>(parent_.lock());
 	
 	if(actor)
 	{
@@ -42,15 +42,15 @@ physx::PxGeometry* neb::shape::shape::to_geo()
 
 	physx::PxGeometry* geo = NULL;
 
-	math::vec3 s = raw_.get_raw_base()->s_;
+	math::vec3<double> s = raw_.get_raw_base()->s_;
 
 	switch(raw_.get_raw_base()->type_)
 	{
 		case glutpp::shape::type::BOX:
-			geo = new physx::PxBoxGeometry(s/2.0);
+			geo = new physx::PxBoxGeometry(s * 0.5);
 			break;
 		case glutpp::shape::type::SPHERE:
-			geo = new physx::PxSphereGeometry(s.x);
+			geo = new physx::PxSphereGeometry(s.x());
 			break;
 		default:
 			printf("unknown shape type\n");

@@ -1,7 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_DYNAMIC_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_DYNAMIC_HPP__
 
-#include <neb/actor/rigid_body/rigid_body.h>
+#include <nebula/actor/rigid_body/rigid_body.hpp>
 
 namespace neb
 {

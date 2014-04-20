@@ -1,9 +1,10 @@
-#include <neb/control/rigid_body/control.h>
-#include <neb/control/rigid_body/raw.h>
+
+#include <nebula/control/rigid_body/control.hpp>
+#include <nebula/control/rigid_body/raw.hpp>
 
 
 neb::control::rigid_body::raw::raw():
-	q_target_(math::quat(0.0 * M_PI,math::vec3(1.0,0.0,0.0)))
+	q_target_(math::quat(0.0 * M_PI,math::vec3<double>(1.0,0.0,0.0)))
 {
 	
 }

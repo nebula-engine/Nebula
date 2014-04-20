@@ -26,12 +26,9 @@
 int			parse_shape_type(char const * str);
 neb::shape::shape	xml_parse_geo(tinyxml2::XMLElement* element);
 
-namespace neb
-{
-	namespace scene
-	{
-		class scene: public glutpp::scene::scene
-		{
+namespace neb {
+	namespace scene {
+		class scene: public glutpp::scene::scene {
 			public:
 				typedef std::shared_ptr<neb::actor::Base>		base_t;
 				typedef std::shared_ptr<neb::actor::Rigid_Dynamic>	rigid_dynamic_t;

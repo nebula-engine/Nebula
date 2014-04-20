@@ -16,12 +16,9 @@
 #include <nebula/actor/raw.hpp>
 #include <nebula/config.hpp>
 
-namespace neb
-{
-	namespace actor
-	{
-		class Base: public glutpp::actor::actor
-		{
+namespace neb {
+	namespace actor {
+		class Base: public glutpp::actor::actor {
 			public:
 				Base(glutpp::parent_s);
 				virtual ~Base();

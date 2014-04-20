@@ -1,24 +1,25 @@
-#include <neb/physics.h>
-#include <neb/shape.h>
-#include <neb/actor/Rigid_Static.h>
+
+#include <nebula/physics.hpp>
+#include <nebula/shape.hpp>
+#include <nebula/actor/Rigid_Static.hpp>
 
 neb::actor::Rigid_Static::Rigid_Static(glutpp::parent_s parent):
-	neb::actor::Rigid_Actor(parent)
+	neb::actor::RigidActor(parent)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
 void	neb::actor::Rigid_Static::init(glutpp::actor::desc_s desc) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	neb::actor::Rigid_Actor::init(desc);
+	neb::actor::RigidActor::init(desc);
 }
 void	neb::actor::Rigid_Static::step_local(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
-	neb::actor::Rigid_Actor::step_local(time);
+	neb::actor::RigidActor::step_local(time);
 }
 void	neb::actor::Rigid_Static::step_remote(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
-	neb::actor::Rigid_Actor::step_remote(time);
+	neb::actor::RigidActor::step_remote(time);
 }
 void neb::actor::Rigid_Static::create_physics() {
 

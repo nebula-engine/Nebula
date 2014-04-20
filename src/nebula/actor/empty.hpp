@@ -6,27 +6,25 @@
 
 //#include <tinyxml/tinyxml.h>
 
-#include <math/transform.h>
+#include <math/transform.hpp>
 
-#include <glutpp/actor/actor.h>
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/actor/Base.h>
-#include <glutpp/actor/desc.h>
+#include <nebula/actor/Base.hpp>
 
-namespace neb
-{
-	namespace actor
-	{
-		class empty: public neb::actor::Base
-		{
+#include <gru/actor/desc.hpp>
+#include <gru/actor/actor.hpp>
+
+namespace neb {
+	namespace actor {
+		class empty: public neb::actor::Base {
 			public:
 				empty(glutpp::parent_s);
 				
 				virtual void			init(glutpp::actor::desc_s);
 
-				virtual void			create_physics(std::shared_ptr<neb::shape>);
+				virtual void			create_physics(neb::shape::shape_s);
 				
 				virtual void			create_physics();
 				virtual void			init_physics();

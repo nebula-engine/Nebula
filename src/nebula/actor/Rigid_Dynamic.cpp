@@ -1,6 +1,7 @@
-#include <neb/shape.h>
-#include <neb/physics.h>
-#include <neb/actor/Rigid_Dynamic.h>
+
+#include <nebula/shape.hpp>
+#include <nebula/physics.hpp>
+#include <nebula/actor/Rigid_Dynamic.hpp>
 
 neb::actor::Rigid_Dynamic::Rigid_Dynamic(glutpp::parent_s parent):
 	neb::actor::rigid_body::rigid_body(parent)

@@ -1,4 +1,4 @@
-#include <neb/actor/raw.h>
+#include <nebula/actor/raw.hpp>
 
 neb::actor::raw::raw():
 	health_(1.0)

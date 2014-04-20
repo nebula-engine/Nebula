@@ -1,8 +1,8 @@
 #ifndef __NEBULA_ACTOR_RAW_FACTORY_H__
 #define __NEBULA_ACTOR_RAW_FACTORY_H__
 
-#include <glutpp/actor/raw_factory.h>
-#include <glutpp/config.h>
+#include <gru/actor/raw_factory.hpp>
+#include <gru/config.hpp>
 
 namespace neb {
         namespace actor {

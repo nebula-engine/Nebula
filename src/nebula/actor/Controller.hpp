@@ -3,7 +3,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/actor/Base.h>
+#include <nebula/actor/Base.hpp>
 
 namespace neb
 {

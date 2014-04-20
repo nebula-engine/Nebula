@@ -1,14 +1,14 @@
 #include <assert.h>
 
-#include <math/free.h>
+#include <math/free.hpp>
 
 #include <PxPhysicsAPI.h>
 
-#include <glutpp/scene/desc.h>
+#include <gru/scene/desc.hpp>
 
-#include <neb/physics.h>
-#include <neb/scene/scene.h>
-#include <neb/simulation_callback.h>
+#include <nebula/physics.hpp>
+#include <nebula/scene/scene.hpp>
+#include <nebula/simulation_callback.hpp>
 
 namespace neb
 {

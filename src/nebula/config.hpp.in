@@ -11,11 +11,10 @@
 
 #include <memory>
 
-#include <gal/map.h>
+#include <galaxy/map.hpp>
 
-namespace neb
-{
-	class shape;
+namespace neb {
+
 
 	namespace timer {
 		class actor;
@@ -56,22 +55,20 @@ namespace neb
 	typedef std::shared_ptr<app>	app_s;
 	typedef std::weak_ptr<app>	app_w;
 
-	namespace scene
-	{
+	namespace scene {
 		class scene;
 		typedef std::shared_ptr<scene>	scene_s;
 		typedef std::weak_ptr<scene>	scene_w;
 		typedef gal::map<scene>		scene_m;
 	}
 	class simulation_callback;
-	namespace actor
-	{
+	namespace actor {
 		class raw;
 		class raw_factory;	
 
 		class Base;
 		class Actor;
-		class Rigid_Actor;
+		class RigidActor;
 		namespace rigid_body {
 			class rigid_body;
 			typedef std::shared_ptr<rigid_body>	rigid_body_s;
@@ -79,11 +76,15 @@ namespace neb
 		class Rigid_Dynamic;
 		class Rigid_Static;
 		class empty;
-
-
-
+		
+		
+		
 		typedef std::shared_ptr<raw>	raw_s;
-		typedef std::shared_ptr<Base>	Base_s;
+		
+		typedef std::shared_ptr<Base>		Base_s;
+		typedef std::shared_ptr<RigidActor>	RigidActor_s;
+		typedef std::shared_ptr<Base>		Base_s;
+		
 		typedef std::weak_ptr<Base>	Base_w;
 	}
 	namespace control {
@@ -102,6 +103,12 @@ namespace neb
 
 		}
 	}
+	namespace shape {
+		class shape;
+		typedef std::shared_ptr<shape> shape_s;
+	}
+	class parent;
+	typedef std::shared_ptr<parent> parent_s;
 }
 
 #endif

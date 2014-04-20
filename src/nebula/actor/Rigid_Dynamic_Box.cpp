@@ -1,7 +1,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/actor/Rigid_Dynamic_Box.h>
+#include <nebula/actor/Rigid_Dynamic_Box.hpp>
 
 /*void	NEB::Actor::Rigid_Dynamic_Box::Display()
 {
