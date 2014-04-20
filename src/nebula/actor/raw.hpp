@@ -1,13 +1,13 @@
 #ifndef __NEBULA_ACTOR_RAW__
 #define __NEBULA_ACTOR_RAW__
 
-#include <gal/network/serial.h>
-#include <gal/util.h>
+#include <galaxy/network/serial.hpp>
+#include <galaxy/util.hpp>
 
-#include <glutpp/actor/raw.h>
-#include <glutpp/config.h>
+#include <gru/actor/raw.hpp>
+#include <gru/config.hpp>
 
-#include <neb/config.h>
+#include <nebula/config.hpp>
 
 template void gal::reset<neb::actor::raw>(neb::actor::raw_s&);
 

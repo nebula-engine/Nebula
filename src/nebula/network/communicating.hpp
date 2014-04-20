@@ -1,9 +1,9 @@
 #ifndef __NEBULA_ASIO_NETWORK_COMMUNICATING_H__
 #define __NEBULA_ASIO_NETWORK_COMMUNICATING_H__
 
-#include <gal/network/communicating.h>
+#include <galaxy/network/communicating.hpp>
 
-#include <neb/config.h>
+#include <nebula/config.hpp>
 
 namespace neb
 {

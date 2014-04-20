@@ -1,14 +1,14 @@
 #ifndef __NEBULA_APP_H__
 #define __NEBULA_APP_H__
 
-#include <gal/flag.h>
-#include <gal/timer/timer_set.h>
+#include <galaxy/flag.hpp>
+#include <galaxy/timer/timer_set.hpp>
 
-#include <glutpp/window/window.h>
+#include <gru/window/window.hpp>
 
-#include <neb/config.h>
-#include <neb/network/server.h>
-#include <neb/network/client.h>
+#include <nebula/config.hpp>
+#include <nebula/network/server.hpp>
+#include <nebula/network/client.hpp>
 
 namespace neb {
 	class app: public std::enable_shared_from_this<app>, public gal::flag<> {

@@ -1,9 +1,9 @@
 #ifndef __NEBULA_NETWORK_CLIENT_H__
 #define __NEBULA_NETWORK_CLIENT_H__
 
-#include <gal/network/client.h>
+#include <galaxy/network/client.hpp>
 
-#include <neb/network/communicating.h>
+#include <nebula/network/communicating.hpp>
 
 namespace neb
 {

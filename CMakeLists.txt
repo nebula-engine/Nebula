@@ -1,9 +1,12 @@
 cmake_minimum_required (VERSION 2.6)
-#include(ExternalProject)
 
 project(nebula)
 
 find_package(gru)
+
+add_definitions(-DNDEBUG)
+
+set(CMAKE_CXX_FLAGS "-std=c++0x")
 
 # common methods for static library
 # =================================

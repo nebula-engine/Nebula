@@ -1,12 +1,12 @@
 #ifndef __NEBULA_CONTROL_RIGID_BODY_RAW_H__
 #define __NEBULA_CONTROL_RIGID_BODY_RAW_H__
 
-#include <math/quat.h>
-#include <math/vec3.h>
+#include <math/quat.hpp>
+#include <math/vec3.hpp>
 
-#include <gal/network/serial.h>
+#include <galaxy/network/serial.hpp>
 
-#include <neb/config.h>
+#include <nebula/config.hpp>
 
 namespace neb {
 	namespace control {

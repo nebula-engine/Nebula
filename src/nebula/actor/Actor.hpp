@@ -3,17 +3,13 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <glutpp/actor/actor.h>
+#include <gru/actor/actor.hpp>
 
-#include <neb/actor/Base.h>
+#include <nebula/actor/Base.hpp>
 
-namespace neb
-{
-	namespace actor
-	{
-		class Actor:
-			public neb::actor::Base
-		{
+namespace neb {
+	namespace actor {
+		class Actor: public neb::actor::Base {
 			public:
 				Actor(glutpp::parent_s);
 

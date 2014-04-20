@@ -1,8 +1,8 @@
 #ifndef __NEBULA_NETWORK_MESSAGE_H__
 #define __NEBULA_NETWORK_MESSAGE_H__
 
-#include <neb/config.h>
-#include <neb/control/rigid_body/raw.h>
+#include <nebula/config.hpp>
+#include <nebula/control/rigid_body/raw.hpp>
 
 namespace neb {
 	namespace network {

@@ -5,7 +5,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <glutpp/actor/desc.h>
+#include <gru/actor/desc.hpp>
 
 //Tire model friction for each combination of drivable surface type and tire type.
 static const physx::PxU32 MAX_NUM_SURFACE_TYPES = 4;

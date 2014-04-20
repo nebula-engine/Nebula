@@ -6,16 +6,15 @@
 
 //#include <tinyxml/tinyxml.h>
 
-#include <math/transform.h>
-
-#include <glutpp/actor/actor.h>
-
 #include <PxPhysicsAPI.h>
 
-#include <glutpp/actor/desc.h>
+#include <math/transform.hpp>
 
-#include <neb/actor/raw.h>
-#include <neb/config.h>
+#include <gru/actor/actor.hpp>
+#include <gru/actor/desc.hpp>
+
+#include <nebula/actor/raw.hpp>
+#include <nebula/config.hpp>
 
 namespace neb
 {

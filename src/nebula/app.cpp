@@ -1,18 +1,17 @@
 #include <algorithm>
 
-#include <glutpp/actor/event.h>
-#include <glutpp/renderable.h>
-#include <glutpp/window/desc.h>
-#include <glutpp/window/window.h>
-#include <glutpp/scene/desc.h>
+#include <gru/actor/event.hpp>
+#include <gru/renderable.hpp>
+#include <gru/window/desc.hpp>
+#include <gru/window/window.hpp>
+#include <gru/scene/desc.hpp>
+#include <gru/network/message.hpp>
 
-#include <glutpp/network/message.h>
-
-#include <neb/config.h>
-#include <neb/control/rigid_body/control.h>
-#include <neb/app.h>
-#include <neb/network/message.h>
-#include <neb/physics.h>
+#include <nebula/config.hpp>
+#include <nebula/control/rigid_body/control.hpp>
+#include <nebula/app.hpp>
+#include <nebula/network/message.hpp>
+#include <nebula/physics.hpp>
 
 neb::app::app():
 	flag_(0)

@@ -6,20 +6,20 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <gal/map.h>
-#include <gal/network/message.h>
-#include <gal/timer/timer_set.h>
+#include <galaxy/map.hpp>
+#include <galaxy/network/message.hpp>
+#include <galaxy/timer/timer_set.hpp>
 
-#include <glutpp/config.h>
-#include <glutpp/scene/scene.h>
-#include <glutpp/light/desc.h>
+#include <gru/config.hpp>
+#include <gru/scene/scene.hpp>
+#include <gru/light/desc.hpp>
 
-#include <neb/config.h>
-//#include <neb/scene/desc.h>
-#include <neb/vehicle_manager.h>
-#include <neb/actor/Rigid_Dynamic.h>
-#include <neb/actor/Rigid_Static.h>
-#include <neb/actor/Controller.h>
+#include <nebula/config.hpp>
+//#include <nebula/scene/desc.hpp>
+#include <nebula/vehicle_manager.hpp>
+#include <nebula/actor/Rigid_Dynamic.hpp>
+#include <nebula/actor/Rigid_Static.hpp>
+#include <nebula/actor/Controller.hpp>
 
 #include <tinyxml2.h>
 

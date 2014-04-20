@@ -1,11 +1,11 @@
 #ifndef __NEBULA_CONTROL_RIGID_BODY_CONTROL_H__
 #define __NEBULA_CONTROL_RIGID_BODY_CONTROL_H__
 
-#include <gal/control/control.h>
+#include <galaxy/control/control.hpp>
 
-#include <neb/actor/Rigid_Actor.h>
-#include <neb/config.h>
-#include <neb/control/rigid_body/raw.h>
+#include <nebula/actor/Rigid_Actor.hpp>
+#include <nebula/config.hpp>
+#include <nebula/control/rigid_body/raw.hpp>
 
 namespace neb {
 	namespace control {

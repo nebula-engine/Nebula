@@ -5,9 +5,9 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/config.h>
-//#include <neb/scene/desc.h>
-#include <neb/scene/scene.h>
+#include <nebula/config.hpp>
+//#include <nebula/scene/desc.hpp>
+#include <nebula/scene/scene.hpp>
 
 class DefaultErrorCallback:
 	public physx::PxErrorCallback

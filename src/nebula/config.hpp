@@ -11,7 +11,7 @@
 
 #include <memory>
 
-#include <gal/map.h>
+#include <galaxy/map.hpp>
 
 namespace neb
 {
