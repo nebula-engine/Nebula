@@ -45,10 +45,11 @@ void	print_vectori(GLushort* v, unsigned int m, unsigned int n) {
 
 }
 
-glutpp::actor::actor::actor(glutpp::parent_s parent): glutpp::parent(parent)
+glutpp::actor::actor::actor(glutpp::actor::parent_s parent):
+	parent_(parent)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-
+	
 	assert(parent);
 }
 void glutpp::actor::actor::i(int ni) {
@@ -56,6 +57,10 @@ void glutpp::actor::actor::i(int ni) {
 }
 int glutpp::actor::actor::i() {
 	return i_;
+}
+glutpp::actor::parent_s	glutpp::actor::actor::getParent() {
+	assert(!parent_.expired());
+	return parent_.lock();
 }
 glutpp::actor::raw_s glutpp::actor::actor::get_raw()
 {
@@ -140,9 +145,22 @@ void glutpp::actor::actor::step(double time) {
 				time));
 
 }
-math::mat44 glutpp::actor::actor::get_pose() {
+math::mat44 glutpp::actor::actor::getPose() {
 	assert(raw_);
 	return raw_->pose_;
+}
+math::mat44 glutpp::actor::actor::getPoseGlobal() {
+	GLUTPP_DEBUG_1_FUNCTION;
+
+	math::mat44 m;
+	
+	if(!parent_.expired()) {
+		m = parent_.lock()->getPoseGlobal() * getPose();
+	} else {
+		m = getPose();
+	}
+
+	return m;
 }
 void glutpp::actor::actor::set_pose(math::transform pose) {
 	assert(raw_);
@@ -188,12 +206,12 @@ void glutpp::actor::actor::load_lights(int& i, math::mat44 space) {
 }
 glutpp::scene::scene_s glutpp::actor::actor::get_scene() {
 	GLUTPP_DEBUG_1_FUNCTION;
-
-	auto parent = get_parent();
+	
+	auto parent = getParent();
 	assert(parent);
-
+	
 	auto scene = std::dynamic_pointer_cast<glutpp::scene::scene>(parent);
-
+	
 	if(scene) return scene;
 
 	auto actor = std::dynamic_pointer_cast<glutpp::actor::actor>(parent);

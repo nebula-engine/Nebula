@@ -13,6 +13,7 @@ glutpp::renderable::renderable(glutpp::window::window_s window): window_(window)
 }
 glutpp::renderable& glutpp::renderable::operator=(renderable const & r){
 	printf("%s\n",__PRETTY_FUNCTION__);
+	return *this;
 }
 unsigned int glutpp::renderable::f() {
 	return flag_;

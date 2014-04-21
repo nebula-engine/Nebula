@@ -18,7 +18,7 @@ namespace glutpp { namespace gui { namespace object {
 
 			object();
 			void				i(int);
-			int				load_xml(tinyxml2::XMLElement*);
+			void				load_xml(tinyxml2::XMLElement*);
 
 
 			//window::window_s		get_window();

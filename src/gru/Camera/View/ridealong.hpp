@@ -15,7 +15,7 @@ namespace glutpp {
 				public:
 					ridealong(glutpp::actor::actor_s);
 					virtual math::mat44		view();
-					virtual void			step(double time);
+					virtual void			Step(double time);
 
 
 					glutpp::actor::actor_w		actor_;

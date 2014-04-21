@@ -97,10 +97,9 @@ void glutpp::shape::raw_base::sphere(tinyxml2::XMLElement* element) {
 
 
 glutpp::shape::raw& glutpp::shape::raw::operator=(glutpp::shape::raw const & rhs) {
-	
 	*get_raw_base() = *rhs.get_raw_base();
 	*get_vec_mat()  = *rhs.get_vec_mat();
-	
+	return *this;
 }
 glutpp::shape::raw_base_s glutpp::shape::raw::get_raw_base() const {
 	auto p = std::get<0>(tup_);

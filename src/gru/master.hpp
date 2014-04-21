@@ -51,7 +51,7 @@ namespace glutpp {
 			std::shared_ptr<glutpp::glsl::program>		use_program(glutpp::program_name::e);
 			std::shared_ptr<glutpp::glsl::program>		get_program(glutpp::program_name::e);
 			std::shared_ptr<glutpp::glsl::program>		current_program();
-			int						create_programs();
+			void						create_programs();
 
 
 

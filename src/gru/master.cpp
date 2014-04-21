@@ -175,7 +175,7 @@ int glutpp::master::reg(glutpp::window::window_s w) {
 
 	return 0;
 }
-int	glutpp::master::create_programs() {
+void	glutpp::master::create_programs() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 

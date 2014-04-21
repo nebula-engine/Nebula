@@ -31,15 +31,15 @@ void	glutpp::gui::object::textview::draw()
 	draw_quad(x_, y_, w_, h_, bg_color_);
 	draw_text(x_, y_, sx, sy, font_color_, label_);
 }
-int	glutpp::gui::object::textview::mouse_button_fun(int button, int action, int mods)
-{
+int	glutpp::gui::object::textview::mouse_button_fun(int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
-	glutpp::gui::object::object::mouse_button_fun(button, action, mods);
+	return glutpp::gui::object::object::mouse_button_fun(button, action, mods);
 }
 int	glutpp::gui::object::textview::key_fun(int key, int scancode, int action, int mods)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
+	return 0;
 }
 
 

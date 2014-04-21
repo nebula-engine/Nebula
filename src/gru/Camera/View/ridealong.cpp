@@ -53,6 +53,10 @@ math::mat44	glutpp::Camera::View::ridealong::view()
 
 	return ret;
 }
+void glutpp::Camera::View::ridealong::Step(double) {
+	
+}
+
 
 
 

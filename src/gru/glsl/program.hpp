@@ -26,9 +26,9 @@ namespace glutpp
 				void	add_shaders(std::vector<glutpp::glsl::shader>);
 				void	compile();
 				void	use();
-				int	locate();
+				void	locate();
 
-				int	add_attrib(glutpp::attrib_name::e, char const *, GLuint);
+				void	add_attrib(glutpp::attrib_name::e, char const *, GLuint);
 				int	add_uniform(glutpp::uniform_name::e, char const *);
 				int	add_uniform(glutpp::uniform_name::e, char const *, char const *);
 				

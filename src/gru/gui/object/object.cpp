@@ -14,8 +14,8 @@ glutpp::gui::object::object::object():
 	h_(0.3),
 	font_color_(math::magenta),
 	bg_color_(0,0,0,0),
-	label_(NULL),
-	label_length_(1)
+	label_length_(1),
+	label_(NULL)
 {
 	label_ = new char[1];
 	label_[0] = '\0';
@@ -28,7 +28,7 @@ glutpp::window::window_s get_window() {
 	printf("not yet supported");
 	abort();
 }
-int	glutpp::gui::object::object::load_xml(tinyxml2::XMLElement* element) {
+void	glutpp::gui::object::object::load_xml(tinyxml2::XMLElement* element) {
 	
 	x_ = math::xml_parse_float(element->FirstChildElement("x"));	
 	y_ = math::xml_parse_float(element->FirstChildElement("y"));
@@ -36,11 +36,10 @@ int	glutpp::gui::object::object::load_xml(tinyxml2::XMLElement* element) {
 	h_ = math::xml_parse_float(element->FirstChildElement("h"));
 
 	auto e = element->FirstChildElement("label");
-	if(e)
-	{
+	if(e) {
 		char const * label = e->GetText();
 		set_label(label);
-	}	
+	}
 }
 void	glutpp::gui::object::object::set_label( char const * cstr )
 {

@@ -187,6 +187,8 @@ namespace glutpp {
 		class event;
 		class desc;
 		class actor;
+		class parent;
+
 
 		typedef std::shared_ptr<id>		id_s;
 		typedef std::shared_ptr<addr>		addr_s;
@@ -197,6 +199,10 @@ namespace glutpp {
 		
 		typedef std::shared_ptr<actor>		actor_s;
 		typedef std::weak_ptr<actor>		actor_w;
+
+		typedef std::shared_ptr<parent>		parent_s;
+		typedef std::weak_ptr<parent>		parent_w;
+
 	}
 
 	namespace shape
@@ -222,7 +228,8 @@ namespace glutpp {
 		class desc;
 		class base;
 		class shape;
-		
+		class parent;
+
 		typedef std::shared_ptr<base>		base_s;
 		typedef std::shared_ptr<id>		id_s;
 		typedef std::shared_ptr<raw>		raw_s;
@@ -236,10 +243,11 @@ namespace glutpp {
 		typedef std::weak_ptr<desc>		desc_w;
 		typedef std::weak_ptr<shape>		shape_w;
 
+		typedef std::shared_ptr<parent>		parent_s;
+		typedef std::weak_ptr<parent>		parent_w;
 
 	}
-	namespace light
-	{
+	namespace light {
 		struct type {
 			enum e {
 				POINT,
@@ -297,30 +305,27 @@ namespace glutpp {
 
 
 	/*template<typename>*/ class texture;
-	
+
 	namespace Camera {
 		namespace View {
 			class Base;
 			class Free;
 			class Ridealong;
-			
+
 			typedef std::shared_ptr<Base> Base_s;
 		}
 		namespace Projection {
 			class Perspective;
 		}
 	}
-	
 
 
 
 
-	class parent;
+
 
 	typedef std::shared_ptr<renderable>	renderable_s;
 	typedef std::weak_ptr<renderable>	renderable_w;
-	typedef std::shared_ptr<parent>		parent_s;
-	typedef std::weak_ptr<parent>		parent_w;
 
 
 

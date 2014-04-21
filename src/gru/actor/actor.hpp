@@ -18,60 +18,72 @@
 #include <gru/actor/addr.hpp>
 #include <gru/actor/raw.hpp>
 #include <gru/actor/desc.hpp>
-#include <gru/parent.hpp>
+#include <gru/actor/parent.hpp>
 #include <gru/texture.hpp>
 #include <gru/material.hpp>
 #include <gru/shape/shape.hpp>
 
-namespace glutpp { namespace actor {
-	class actor: public glutpp::parent, public gal::flag<unsigned int> {
-		public:
-			struct flag {
-				enum e {
-					SHOULD_RELEASE	= 1 << 0,
-					SHOULD_UPDATE	= 1 << 1,
-					DESTRUCTIBLE    = 1 << 2,
+namespace glutpp {
+	namespace actor {
+		class actor:
+			public glutpp::actor::parent,
+			public glutpp::shape::parent,
+			public gal::flag<unsigned int>
+		{
+			public:
+				struct flag {
+					enum e {
+						SHOULD_RELEASE	= 1 << 0,
+						SHOULD_UPDATE	= 1 << 1,
+						DESTRUCTIBLE    = 1 << 2,
+					};
 				};
-			};
 
 
 
-			actor(glutpp::parent_s parent);
+				actor(glutpp::actor::parent_s parent);
 
-			void				i(int ni);
-			int				i();
+				void				i(int ni);
+				int				i();
 
-			unsigned int			f();
-			void				f(unsigned int flag);
+				unsigned int			f();
+				void				f(unsigned int flag);
 
-			virtual void			init(glutpp::actor::desc_s desc);
-			virtual void			cleanup();
-			virtual void			release();
-			virtual void			step(double time);
+				virtual void			init(glutpp::actor::desc_s desc);
+				virtual void			cleanup();
+				virtual void			release();
+				virtual void			step(double time);
 
-			math::mat44			get_pose();
-			void				set_pose(math::transform pose);
+				glutpp::actor::parent_s		getParent();
 
-			void				notify_foundation_change_pose();
+				math::mat44			getPose();
+				math::mat44			getPoseGlobal();
+				
+				void				set_pose(math::transform pose);
 
-			void				load_lights(int&, math::mat44);
-			glutpp::scene::scene_s		get_scene();
+				void				notify_foundation_change_pose();
 
-			void				draw(glutpp::window::window_s, math::mat44);
+				void				load_lights(int&, math::mat44);
+				glutpp::scene::scene_s		get_scene();
 
-			virtual glutpp::actor::raw_s	get_raw();
-		public:
+				void				draw(glutpp::window::window_s, math::mat44);
 
-			gal::map<glutpp::shape::shape>		shapes_;
-			gal::map<glutpp::actor::actor>		actors_;
+				virtual glutpp::actor::raw_s	get_raw();
 
 
+			public:
+				glutpp::actor::parent_w		parent_;
+				
+				gal::map<glutpp::shape::shape>		shapes_;
+				gal::map<glutpp::actor::actor>		actors_;
 
-			int		i_;
-		protected:
-			raw_s		raw_;
-	};
-}
+
+
+				int		i_;
+			protected:
+				raw_s		raw_;
+		};
+	}
 }
 
 #endif

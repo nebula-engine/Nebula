@@ -23,9 +23,6 @@ glutpp::Camera::View::Base::Base()
 	
 	renderable_ = renderable;
 }*/
-int		glutpp::Camera::View::Base::north(float) {
-	return 1;
-}
 /*math::mat44	glutpp::Camera::View::Base::view() {
 
 	if(control_)
@@ -45,23 +42,6 @@ void		glutpp::Camera::View::Base::load() {
 	auto p = glutpp::master::Global()->get_program(glutpp::program_name::e::LIGHT);
 
 	p->get_uniform(glutpp::uniform_name::e::VIEW)->load(view());
-}
-void		glutpp::Camera::View::Base::step(float dt) {
-
-	/*
-	   for(auto it = connection_u_.begin(); it != connection_u_.end(); ++it)
-	   {
-	   v.x += std::get<0>((*it)->tup_);
-	   }	
-	   for(auto it = connection_v_.begin(); it != connection_v_.end(); ++it)
-	   {
-	   v.y += std::get<0>((*it)->tup_);
-	   }
-	   for(auto it = connection_w_.begin(); it != connection_w_.end(); ++it)
-	   {
-	   v.z += std::get<0>((*it)->tup_);
-	   }
-	 */
 }
 
 

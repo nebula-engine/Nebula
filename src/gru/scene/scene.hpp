@@ -45,22 +45,25 @@ namespace glutpp {
 
 		typedef std::map<char*, glutpp::actor::desc_s, less_str> actors_deferred_map;
 
-		class scene: public glutpp::parent, public gal::flag<unsigned int> {
+		class scene:
+			public glutpp::actor::parent,
+			public gal::flag<unsigned int>
+		{
 			public:
 				struct Flag {
-				enum e {
-					RAY_TRACE			= 1 << 0,
-					LIGHTING			= 1 << 1,
-					SHADOW				= 1 << 2,
-					REFLECT				= 1 << 4,
-					REFLECT_PLANAR			= 1 << 5,
-					REFLECT_CURVED			= 1 << 6,
-					TEX_IMAGE			= 1 << 7,
-					TEX_NORMAL_MAP			= 1 << 8,
-					SHADER				= 1 << 9
+					enum e {
+						RAY_TRACE			= 1 << 0,
+						LIGHTING			= 1 << 1,
+						SHADOW				= 1 << 2,
+						REFLECT				= 1 << 4,
+						REFLECT_PLANAR			= 1 << 5,
+						REFLECT_CURVED			= 1 << 6,
+						TEX_IMAGE			= 1 << 7,
+						TEX_NORMAL_MAP			= 1 << 8,
+						SHADER				= 1 << 9
+					};
 				};
-				};
-				
+
 				scene();
 				~scene();
 				void		i(int ni);

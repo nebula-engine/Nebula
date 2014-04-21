@@ -29,19 +29,17 @@ namespace glutpp {
 					};
 
 					Base();
+					
 					//void		init(glutpp::renderable_shared);
 					virtual math::mat44	view() = 0;
-
+					
 					void			load();
-
+					
 					/** @brief step
 					 * TODO explain when in timeline this occurs and in which thread and why
 					 */
-					void		step(float);
+					virtual void		Step(double) = 0;
 
-					/** TODO is this needed?
-					 */
-					int		north(float);
 
 					//std::weak_ptr<renderable>		renderable_;
 

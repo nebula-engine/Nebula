@@ -95,27 +95,7 @@ void	glutpp::Camera::View::Free::init(glutpp::window::window_s window)
 */
 
 }
-int	glutpp::Camera::View::Free::callback_x_(int a, float s) {
-	/** TODO better system for turning key up/down into simple movement */
-
-	if(a==0) v0_.x() = s;
-	if(a==1) v1_.x() = s;
-
-	return 1;
-}
-int	glutpp::Camera::View::Free::callback_y_(int a, float s) {
-	if(a==0) v0_.y() = s;
-	if(a==1) v1_.y() = s;
-
-	return 1;
-}
-int	glutpp::Camera::View::Free::callback_z_(int a, float s) {
-	if(a==0) v0_.z() = s;
-	if(a==1) v1_.z() = s;
-
-	return 1;
-}
-void	glutpp::Camera::View::Free::step(double time) {
+void	glutpp::Camera::View::Free::Step(double time) {
 	double dt = time - last_; last_ = time;
 
 	// look vector
@@ -251,30 +231,35 @@ physx::PxVec3 neb::camera::camera::Move()
 	
 	return mov;
 }
-void neb::camera::camera::Look()
-{
+*/
+math::mat44 glutpp::Camera::View::Free::view() {
 	//printf("%s\n", __FUNCTION__);
 
-	physx::PxVec3 up(  0,1,0);
-	physx::PxVec3 look(0,0,-1);
+	math::vec3<double> up(0,1,0);
+	math::vec3<double> look(0,0,-1);
+	
+	
+	math::quat rot( yaw_, math::vec3<double>(0,1,0));
 
-
-	physx::PxQuat rot( yaw_, physx::PxVec3(0,1,0) );
-
-	rot *= physx::PxQuat( pitch_ , physx::PxVec3(1,0,0) );
+	rot *= math::quat( pitch_ , math::vec3<double>(1,0,0) );
 
 
 	up = rot.rotate( up );
 	look = rot.rotate( look );
+	
+	math::vec3<double> eye(eye_.x, eye_.y, eye_.z);
+	
+	math::vec3<double> center = eye + look;
 
-	physx::PxVec3 center = eye_ + look;
+	math::mat44 ret = math::lookat(eye_, center, up);
 
-	gluLookAt(
-			eye_.x, eye_.y, eye_.z,
-			center.x, center.y, center.z,
-			up.x, up.y, up.z );
-
+	//		eye_.x, eye_.y, eye_.z,
+	//		center.x, center.y, center.z,
+	//		up.x, up.y, up.z );
+	
+	return ret;
 }
+/*
 int	neb::camera::camera::FirstOrderDeltaPitchRel(int d)
 {
 	//printf("%s\n", __FUNCTION__);

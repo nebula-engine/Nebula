@@ -10,13 +10,12 @@
 
 
 
-glutpp::actor::desc::desc()	
-{
+glutpp::actor::desc::desc() {
 }		
 void glutpp::actor::desc::load(tinyxml2::XMLElement* element) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
-	const char * buf = NULL;
+	//const char * buf = NULL;
 	
 	get_raw()->load(element);
 	
@@ -77,7 +76,8 @@ glutpp::actor::desc& glutpp::actor::desc::operator=(const glutpp::actor::desc& a
 	*get_id() = *(ad.get_id());
 	*get_raw() = *ad.get_raw();
 	*get_actors() = *(ad.get_actors());
-	*get_shapes() = *(ad.get_shapes());	
+	*get_shapes() = *(ad.get_shapes());
+	return *this;
 }
 glutpp::actor::id_s glutpp::actor::desc::get_id() const {
 	auto p = std::get<0>(tup_);

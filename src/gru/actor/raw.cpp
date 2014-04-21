@@ -118,12 +118,10 @@ void glutpp::actor::raw::parse_filtering(tinyxml2::XMLElement* element) {
 	tinyxml2::XMLElement* fd = element->FirstChildElement("fd");
 	tinyxml2::XMLElement* sim = NULL;
 	tinyxml2::XMLElement* qry = NULL;
-
-	if(fd)
-	{
+	
+	if(fd) {
 		sim = fd->FirstChildElement("sim");
-		if(sim)
-		{
+		if(sim) {
 			filter_data_.simulation_.word0 = parse_filter(sim->FirstChildElement("w0"), 0);
 			filter_data_.simulation_.word1 = parse_filter(sim->FirstChildElement("w1"), 0);
 			filter_data_.simulation_.word2 = parse_filter(sim->FirstChildElement("w2"), 0);
@@ -131,12 +129,11 @@ void glutpp::actor::raw::parse_filtering(tinyxml2::XMLElement* element) {
 		}
 
 		qry = fd->FirstChildElement("qry");
-		if(sim)
-		{
-			filter_data_.scene_query_.word0 = parse_filter(sim->FirstChildElement("w0"), 0);
-			filter_data_.scene_query_.word1 = parse_filter(sim->FirstChildElement("w1"), 0);
-			filter_data_.scene_query_.word2 = parse_filter(sim->FirstChildElement("w2"), 0);
-			filter_data_.scene_query_.word3 = parse_filter(sim->FirstChildElement("w3"), 0);
+		if(qry) {
+			filter_data_.scene_query_.word0 = parse_filter(qry->FirstChildElement("w0"), 0);
+			filter_data_.scene_query_.word1 = parse_filter(qry->FirstChildElement("w1"), 0);
+			filter_data_.scene_query_.word2 = parse_filter(qry->FirstChildElement("w2"), 0);
+			filter_data_.scene_query_.word3 = parse_filter(qry->FirstChildElement("w3"), 0);
 		}
 	}
 

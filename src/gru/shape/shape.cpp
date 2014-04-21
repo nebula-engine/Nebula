@@ -1,6 +1,8 @@
 #include <gru/shape/shape.hpp>
 
-glutpp::shape::shape::shape(glutpp::parent_s parent): glutpp::parent(parent) {
+glutpp::shape::shape::shape(glutpp::shape::parent_s parent):
+	parent_(parent)
+{
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	assert(parent);
@@ -10,14 +12,33 @@ glutpp::shape::shape::shape(glutpp::parent_s parent): glutpp::parent(parent) {
 glutpp::shape::shape::~shape() {
 
 }
+glutpp::shape::parent_s	glutpp::shape::shape::getParent() {
+	if(!parent_.expired()) {
+		return parent_.lock();
+	} else {
+		return glutpp::shape::parent_s();
+	}
+}
 unsigned int glutpp::shape::shape::f() {
 	return raw_.get_raw_base()->flag_;
 }
 void glutpp::shape::shape::f(unsigned int flag) {
 	raw_.get_raw_base()->flag_ = flag;
 }
-
-math::mat44 glutpp::shape::shape::get_pose() {
+math::mat44 glutpp::shape::shape::getPoseGlobal() {
+	GLUTPP_DEBUG_1_FUNCTION;
+	
+	math::mat44 m;
+	
+	if(!parent_.expired()) {
+		m = parent_.lock()->getPoseGlobal() * getPose();
+	} else {
+		m = getPose();
+	}
+	
+	return m;
+}
+math::mat44 glutpp::shape::shape::getPose() {
 	return raw_.get_raw_base()->pose_;
 }
 void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
@@ -260,7 +281,7 @@ void glutpp::shape::shape::init_buffer(glutpp::window::window_s window,
 
 	glGenBuffers(1, &bufs->vbo_);
 
-	int baseOffset = 0;
+	//int baseOffset = 0;
 	glBindBuffer(GL_ARRAY_BUFFER, bufs->vbo_);
 	//glBindVertexBuffer(0, vbo_, baseOffset, sizeof(glutpp::vertex));
 

@@ -79,7 +79,7 @@ math::mat44 glutpp::light::light::get_pose() {
 	
 	assert(!shape_.expired());
 	
-	math::mat44 m = shape_.lock()->get_pose_global();
+	math::mat44 m = shape_.lock()->getPoseGlobal();
 	
 	return m;
 }
@@ -88,14 +88,9 @@ void glutpp::light::light::load(int o, math::mat44 space) {
 	
 	auto p = glutpp::master::Global()->current_program();
 
-	
-	
 	math::vec4 pos = raw_.pos_;
 	pos = space.GetTranslatedVector3D(pos);
 	pos.w = raw_.pos_.w;
-
-
-
 
 	math::vec3<double> spot_direction = raw_.spot_direction_;
 	

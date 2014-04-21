@@ -11,9 +11,9 @@ void glutpp::actor::addr::load_this(glutpp::actor::actor_s actor) {
 }
 void glutpp::actor::addr::load_parent(glutpp::actor::actor_s actor0) {
 	assert(actor0);
-
-	auto parent = actor0->get_parent();
-
+	
+	auto parent = actor0->getParent();
+	
 	auto scene = std::dynamic_pointer_cast<glutpp::scene::scene>(parent);
 	auto actor1 = std::dynamic_pointer_cast<glutpp::actor::actor>(parent);
 

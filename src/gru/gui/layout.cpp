@@ -103,7 +103,7 @@ void glutpp::gui::layout::connect() {
 
 }
 int glutpp::gui::layout::key_fun(int key, int scancode, int action, int mode) {
-	
+	return 0;
 }
 int glutpp::gui::layout::mouse_button_fun(int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
@@ -121,6 +121,8 @@ int glutpp::gui::layout::mouse_button_fun(int button, int action, int mods) {
 		default:
 			return 0;
 	}
+	
+	return 0;
 }
 int glutpp::gui::layout::search(int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);

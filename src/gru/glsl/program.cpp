@@ -26,7 +26,7 @@ void	glutpp::glsl::program::add_shaders(std::vector<glutpp::glsl::shader> s)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	for(int i = 0; i < s.size(); ++i )
+	for(unsigned int i = 0; i < s.size(); ++i )
 	{
 		printf("shader %i attached to program %i\n",s[i].o_,o_);
 		
@@ -83,7 +83,7 @@ void	glutpp::glsl::program::use() {
 		attrib->locate(shared_from_this());
 	}
 }
-int	glutpp::glsl::program::add_attrib(glutpp::attrib_name::e name, char const * s, GLuint o_bind) {
+void	glutpp::glsl::program::add_attrib(glutpp::attrib_name::e name, char const * s, GLuint o_bind) {
 	std::shared_ptr<glutpp::glsl::attrib> a(new glutpp::glsl::attrib);
 	
 	a->init(s, o_bind);
@@ -96,6 +96,8 @@ int	glutpp::glsl::program::add_uniform(glutpp::uniform_name::e name, char const 
 	u->init(s);
 	
 	uniform_[name] = u;
+
+	return 0;
 }
 int	glutpp::glsl::program::add_uniform(glutpp::uniform_name::e name, char const * s1, char const * s2) {
 	std::shared_ptr<glutpp::glsl::uniform> u(new glutpp::glsl::uniform);
@@ -103,6 +105,8 @@ int	glutpp::glsl::program::add_uniform(glutpp::uniform_name::e name, char const 
 	u->init(s1,s2,20);
 	
 	uniform_[name] = u;
+
+	return 0;
 }
 std::shared_ptr<glutpp::glsl::attrib>	glutpp::glsl::program::get_attrib(int name) {
 	auto it = attrib_.find(name);
@@ -136,7 +140,7 @@ std::shared_ptr<glutpp::glsl::uniform>	glutpp::glsl::program::get_uniform(int na
 	
 	return p;
 }
-int	glutpp::glsl::program::locate() {
+void	glutpp::glsl::program::locate() {
 
 	std::shared_ptr<glutpp::glsl::attrib> attrib;
 	

@@ -1,14 +1,13 @@
 #ifndef __GLUTPP_ACTOR_EVENT_H__
 #define __GLUTPP_ACTOR_EVENT_H__
 
-#include <math/transform.h>
-#include <math/raw/raw.h>
+#include <math/transform.hpp>
 
-#include <gal/network/serial.h>
-#include <gal/util.h>
+#include <galaxy/network/serial.hpp>
+#include <galaxy/util.hpp>
 
-#include <glutpp/config.h>
-#include <glutpp/shape/desc.h>
+#include <gru/config.hpp>
+#include <gru/shape/desc.hpp>
 
 namespace glutpp { namespace actor {
 	class event: public gal::network::serial<event, gal::network::base> {

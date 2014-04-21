@@ -27,23 +27,17 @@ namespace glutpp {
 					 * @{
 					 */
 					Free();
-					Free(math::vec3<double> eye, double yaw, double pitch);
+					//Free(math::vec3<double> eye, double yaw, double pitch);
 					/** @} */
 
+					/** @brief view matrix */
 					virtual math::mat44			view();
-
+					virtual void				Step(double);
+					
 					void					init(glutpp::window::window_s);
-
-					int					callback_x_(int,float);
-					int					callback_y_(int,float);
-					int					callback_z_(int,float);
-
-					void					step(double);
 
 					float					pitch_;
 					float					yaw_;
-
-
 
 					math::vec4					eye_;
 					math::vec3<double>				center_;
@@ -63,9 +57,6 @@ namespace glutpp {
 					std::map<int,unsigned int>		key_flag_;
 					std::map<int,physx::PxVec3>		head_;
 					std::map<unsigned int,int>		head_flag_;
-
-
-
 			};
 		}
 	}

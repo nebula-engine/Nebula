@@ -19,15 +19,13 @@
 #include <gru/glsl/program.hpp>
 #include <gru/light/light.hpp>
 #include <gru/shape/raw.hpp>
-#include <gru/parent.hpp>
+#include <gru/shape/parent.hpp>
 #include <gru/master.hpp>
 #include <gru/material.hpp>
 #include <gru/mesh.hpp>
 
-namespace glutpp
-{
-	namespace shape
-	{
+namespace glutpp {
+	namespace shape {
 		class buffer {
 			public:
 				GLuint		vbo_;
@@ -40,40 +38,43 @@ namespace glutpp
 		};
 
 
-		class shape: virtual public glutpp::parent, public gal::flag<unsigned int> {
+		class shape:
+			virtual public glutpp::shape::parent,
+			public gal::flag<unsigned int>
+		{
 			public:
 				typedef std::shared_ptr<glutpp::shape::buffer>		buffer_t;
 				typedef std::map<glutpp::window::window*,buffer_t>	map_t;
 
 
 
-				shape(glutpp::parent_s parent);
+				shape(glutpp::shape::parent_s parent);
 				~shape();
-				unsigned int		f();
-				void			f(unsigned int flag);
-				math::mat44		get_pose();
-				void			init(glutpp::shape::desc_s desc);
-				void			release();
-				void			cleanup();
-				void			step(double time);
-				void			notify_foundation_change_pose();
-				void			load_lights(int& i, math::mat44 space);
-				void			draw(
-						glutpp::window::window_s window,
-						math::mat44 space);
+				
+				math::mat44	getPose();
+				math::mat44	getPoseGlobal();
+				
+				glutpp::shape::parent_s	getParent();
 
-				void			model_load(math::mat44 space);
-				void			init_buffer(
-						glutpp::window::window_s window,
-						std::shared_ptr<glutpp::glsl::program> p);
+				void		init(glutpp::shape::desc_s desc);
+				void		release();
+				void		cleanup();
+				void		step(double time);
+				void		notify_foundation_change_pose();
+				void		load_lights(int& i, math::mat44 space);
+				void		draw(glutpp::window::window_s, math::mat44 space);
+	
+				void		model_load(math::mat44 space);
+				void		init_buffer(glutpp::window::window_s, std::shared_ptr<glutpp::glsl::program> p);
 
-				void			draw_elements(glutpp::window::window_s window,
-						math::mat44 space);
-				void			i(int ni);
-				int			i();
+				void		draw_elements(glutpp::window::window_s, math::mat44 space);
 
-			private:
-			public:
+				void		i(int ni);
+				int		i();
+
+				unsigned int	f();
+				void		f(unsigned int flag);
+
 
 			public:
 				// draw data
@@ -92,7 +93,7 @@ namespace glutpp
 
 				glutpp::program_name::e			program_;
 
-				//glutpp::shape::parent_w		parent_;
+				glutpp::shape::parent_w			parent_;
 		};
 	}
 }
