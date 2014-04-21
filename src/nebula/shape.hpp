@@ -11,9 +11,9 @@
 
 namespace neb {
 	namespace shape {
-		class shape: virtual public neb::parent, public glutpp::shape::shape {
+		class shape: public glutpp::shape::shape {
 			public:
-				shape(glutpp::actor::actor_s);
+				shape(glutpp::shape::parent_s);
 
 				virtual void		init(glutpp::shape::desc_s);
 				void			create_physics();

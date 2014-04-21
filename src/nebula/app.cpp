@@ -333,10 +333,10 @@ void neb::app::recv_control_update(gal::network::message_s msg) {
 	control_update.read(msg);
 
 	auto actor = get_actor(control_update.get_addr());
-	auto rigidbody = actor->to_rigid_body();
+	
+	auto rigidbody = actor->isRigidBody();
 
-	if(rigidbody)
-	{
+	if(rigidbody) {
 		auto control = rigidbody->control_;
 		if(control)
 		{
@@ -348,9 +348,7 @@ void neb::app::recv_control_update(gal::network::message_s msg) {
 		{
 			printf("control not found\n");
 		}
-	}
-	else
-	{
+	} else {
 		printf("actor not found\n");
 	}
 }

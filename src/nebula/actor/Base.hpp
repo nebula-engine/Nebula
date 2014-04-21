@@ -18,24 +18,22 @@
 
 namespace neb {
 	namespace actor {
-		class Base: public glutpp::actor::actor {
+		class Base:
+			public glutpp::actor::actor
+		{
 			public:
-				Base(glutpp::parent_s);
+				Base(glutpp::actor::parent_s);
 				virtual ~Base();
 
 				virtual void			init(glutpp::actor::desc_s);
 				virtual void			release();
 				
 			private:
-				neb::actor::Base_s		create_actor(
-						glutpp::actor::desc_s);
+				neb::actor::Base_s		create_actor(glutpp::actor::desc_s);
 			public:
-				neb::actor::Base_s		create_actor_local(
-						glutpp::actor::desc_s);
+				neb::actor::Base_s		create_actor_local(glutpp::actor::desc_s);
 				
-				neb::actor::Base_s		create_actor_remote(
-						glutpp::actor::addr_s,
-						glutpp::actor::desc_s);
+				neb::actor::Base_s		create_actor_remote(glutpp::actor::addr_s, glutpp::actor::desc_s);
 				
 				
 				void				create_shapes(glutpp::actor::desc_s);
@@ -50,8 +48,10 @@ namespace neb {
 				neb::actor::Base_s		get_actor(glutpp::actor::addr_s);
 
 				virtual glutpp::actor::desc_s	get_projectile();
-	
-
+				
+				
+				
+				
 				virtual void			hit();
 				virtual void			damage(float);
 				
@@ -67,12 +67,15 @@ namespace neb {
 				
 				int				key_fun(int,int,int,int);
 				virtual int			fire();
-
 				
-				// conversion
-				Base_s				to_base();
-				rigid_body::rigid_body_s	to_rigid_body();
 				
+				/** @name Convertion
+				 * @{
+				 */
+				Base_s				isBase();
+				RigidActor_s			isRigidActor();
+				rigid_body::rigid_body_s	isRigidBody();
+				/** @} */
 			public:
 				glutpp::actor::mode_update::e	mode_update_;
 				

@@ -34,7 +34,7 @@ namespace neb {
 				typedef std::shared_ptr<neb::actor::Rigid_Dynamic>	rigid_dynamic_t;
 				typedef std::shared_ptr<neb::actor::Rigid_Static>	rigid_static_t;
 				typedef std::shared_ptr<neb::actor::Controller>		controller_t;
-				typedef std::shared_ptr<neb::actor::vehicle>		vehicle_t;
+				//typedef std::shared_ptr<neb::actor::vehicle>		vehicle_t;
 				typedef std::shared_ptr<neb::app>			app_t;
 				
 				enum
@@ -96,7 +96,8 @@ namespace neb {
 				void					fire_local(neb::actor::Base_s);
 				void					fire_remote(neb::actor::Base_s);
 
-
+				math::mat44				getPose();
+				math::mat44				getPoseGlobal();
 
 
 				// networking
@@ -123,7 +124,7 @@ namespace neb {
 
 				double					last_;
 
-				neb::vehicle_manager			vehicle_manager_;
+				//neb::vehicle_manager			vehicle_manager_;
 		};
 	}
 }

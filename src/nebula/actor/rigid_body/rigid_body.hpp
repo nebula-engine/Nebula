@@ -7,9 +7,11 @@
 namespace neb {
 	namespace actor {
 		namespace rigid_body {
-			class rigid_body: public neb::actor::RigidActor {
+			class rigid_body:
+				public neb::actor::RigidActor
+			{
 				public:
-					rigid_body(glutpp::parent_s);
+					rigid_body(glutpp::actor::parent_s);
 					
 					virtual void			init(glutpp::actor::desc_s);
 					

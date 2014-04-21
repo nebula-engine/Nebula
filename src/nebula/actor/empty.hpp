@@ -20,15 +20,10 @@ namespace neb {
 	namespace actor {
 		class empty: public neb::actor::Base {
 			public:
-				empty(glutpp::parent_s);
+				empty(glutpp::actor::parent_s);
 				
 				virtual void			init(glutpp::actor::desc_s);
 
-				virtual void			create_physics(neb::shape::shape_s);
-				
-				virtual void			create_physics();
-				virtual void			init_physics();
-				
 				virtual void			add_force(double) {}
 
 		};

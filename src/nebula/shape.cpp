@@ -7,8 +7,8 @@
 #include <nebula/scene/scene.hpp>
 #include <nebula/shape.hpp>
 
-neb::shape::shape::shape(glutpp::actor::actor_s actor):
-	glutpp::shape::shape(actor)
+neb::shape::shape::shape(glutpp::shape::parent_s parent):
+	glutpp::shape::shape(parent)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 }
@@ -25,15 +25,19 @@ void neb::shape::shape::create_physics() {
 	
 	assert(!parent_.expired());
 	
-	auto actor = neb::parent::getParent()->isRigidActor();//std::dynamic_pointer_cast<neb::actor::Rigid_Actor>(parent_.lock());
-	
-	if(actor)
-	{
-		physx::PxRigidActor* px_rigid_actor = static_cast<physx::PxRigidActor*>(actor->px_actor_);
+	auto actor = std::dynamic_pointer_cast<neb::actor::Base>(getParent());
 
-		physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
-	
-		px_shape_ = px_rigid_actor->createShape( *(to_geo()), *px_mat );
+	if(actor) {
+
+		auto rigidactor = actor->isRigidActor();//std::dynamic_pointer_cast<neb::actor::Rigid_Actor>(parent_.lock());
+
+		if(rigidactor) {
+			physx::PxRigidActor* px_rigid_actor = static_cast<physx::PxRigidActor*>(rigidactor->px_actor_);
+
+			physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
+
+			px_shape_ = px_rigid_actor->createShape( *(to_geo()), *px_mat );
+		}
 	}
 }
 physx::PxGeometry* neb::shape::shape::to_geo()
@@ -60,20 +64,20 @@ physx::PxGeometry* neb::shape::shape::to_geo()
 	return geo;
 }
 void neb::shape::shape::print_info() {
-	
+
 	physx::PxReal dynamic_friction;
 	physx::PxReal static_friction;
 	physx::PxReal restitution;
-	
-	
+
+
 	if(px_shape_ != NULL)
 	{
 		physx::PxU32 num_shapes = px_shape_->getNbMaterials();
-		
+
 		physx::PxMaterial** materials = new physx::PxMaterial*[num_shapes];
-		
+
 		num_shapes = px_shape_->getMaterials(materials, num_shapes);
-		
+
 		for(physx::PxU32 i = 0; i < num_shapes; ++i) {
 			dynamic_friction = materials[i]->getDynamicFriction();
 			static_friction = materials[i]->getStaticFriction();

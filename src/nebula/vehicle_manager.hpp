@@ -7,6 +7,8 @@
 
 #include <gru/actor/desc.hpp>
 
+/*
+
 //Tire model friction for each combination of drivable surface type and tire type.
 static const physx::PxU32 MAX_NUM_SURFACE_TYPES = 4;
 static const physx::PxU32 MAX_NUM_TIRE_TYPES = 4;
@@ -159,5 +161,7 @@ namespace neb
 			SampleVehicleSceneQueryData*			sq_data_;
 	};
 }
+
+*/
 
 #endif

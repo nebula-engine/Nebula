@@ -7,7 +7,7 @@ namespace neb {
 	namespace actor {
 		class Rigid_Static: public neb::actor::RigidActor {
 			public:
-				Rigid_Static(glutpp::parent_s parent);
+				Rigid_Static(glutpp::actor::parent_s parent);
 
 				virtual void	init(glutpp::actor::desc_s);
 

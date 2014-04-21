@@ -126,8 +126,6 @@ void neb::scene::scene::add_deferred(glutpp::actor::desc_s ad) {
 	name[len] = 0;
 
 	actors_deferred_[name] = ad;
-
-
 }
 neb::actor::Base_s neb::scene::scene::create_actor(glutpp::actor::desc_s desc) {
 	NEBULA_DEBUG_0_FUNCTION;
@@ -136,8 +134,7 @@ neb::actor::Base_s neb::scene::scene::create_actor(glutpp::actor::desc_s desc) {
 
 	std::shared_ptr<neb::actor::Base> actor;
 
-	switch(desc->get_raw()->type_)
-	{
+	switch(desc->get_raw()->type_) {
 		case glutpp::actor::type::e::RIGID_DYNAMIC:
 			actor.reset(new neb::actor::Rigid_Dynamic(me));
 			// = Create_Rigid_Dynamic(ad);

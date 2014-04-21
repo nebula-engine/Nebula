@@ -9,9 +9,11 @@
 
 namespace neb {
 	namespace actor {
-		class Actor: public neb::actor::Base {
+		class Actor:
+			public neb::actor::Base
+		{
 			public:
-				Actor(glutpp::parent_s);
+				Actor(glutpp::actor::parent_s);
 
 
 				virtual void			init(glutpp::actor::desc_s);

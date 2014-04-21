@@ -3,14 +3,13 @@
 
 #include <nebula/actor/rigid_body/rigid_body.hpp>
 
-namespace neb
-{
-	namespace actor
-	{
-		class Rigid_Dynamic: public neb::actor::rigid_body::rigid_body
+namespace neb {
+	namespace actor {
+		class Rigid_Dynamic:
+			public neb::actor::rigid_body::rigid_body
 		{
 			public:
-				Rigid_Dynamic(glutpp::parent_s);
+				Rigid_Dynamic(glutpp::actor::parent_s);
 				
 				virtual void		init(glutpp::actor::desc_s);
 

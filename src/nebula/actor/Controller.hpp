@@ -13,7 +13,7 @@ namespace neb
 			public neb::actor::Base
 		{
 			public:
-				Controller(glutpp::parent_s);
+				Controller(glutpp::actor::parent_s);
 				
 				virtual void		release();
 
