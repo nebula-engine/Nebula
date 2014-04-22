@@ -20,6 +20,10 @@
 #include <gru/actor/desc.hpp>
 #include <gru/actor/raw_factory.hpp>
 
+#define VALUE_TO_STRING(x) #x
+#define VALUE(x) VALUE_TO_STRING(x)
+
+//#pragma message VALUE(__cplusplus)
 
 void	print_vector(GLfloat* v, unsigned int m, unsigned int n) {
 	for(unsigned int a=0;a<m;++a)
@@ -99,7 +103,7 @@ void glutpp::actor::actor::cleanup() {
 		{
 			actor->release();
 
-			actors_.erase(it);
+			it = actors_.erase(it);
 		}
 		else
 		{
@@ -125,7 +129,6 @@ void glutpp::actor::actor::cleanup() {
 			++s;
 		}
 	}
-
 }
 void glutpp::actor::actor::release() {
 	printf("%s\n",__PRETTY_FUNCTION__);

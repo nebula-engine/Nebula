@@ -11,7 +11,7 @@
 #include <gru/config.hpp>
 #include <gru/shape/desc.hpp>
 
-template void gal::reset<glutpp::actor::raw>(glutpp::actor::raw_s&);
+template void gal::reset<glutpp::actor::raw>(std::shared_ptr<glutpp::actor::raw>&);
 
 namespace glutpp {
 	namespace actor {
@@ -24,8 +24,10 @@ namespace glutpp {
 		class raw: public gal::network::serial<glutpp::actor::raw, gal::network::base> {
 			public:
 				friend class glutpp::actor::raw_factory;
-				friend void gal::reset<glutpp::actor::raw>(std::shared_ptr<raw>&);
-
+				
+				//friend void gal::reset<glutpp::actor::raw>(glutpp::actor::raw_s&);
+				template<typename T> friend void gal::reset(std::shared_ptr<T>&);
+				
 				enum
 				{
 					max_name_length = 31
