@@ -1,0 +1,189 @@
+\hypertarget{classneb_1_1scene_1_1scene}{
+\section{neb::scene::scene Class Reference}
+\label{classneb_1_1scene_1_1scene}\index{neb::scene::scene@{neb::scene::scene}}
+}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ {\bfseries NONE} =  0, 
+{\bfseries LOCAL}, 
+{\bfseries REMOTE}
+ \}
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a12a166d302ebe2c0ccc39c97d8dcd58b}{
+typedef std::shared\_\-ptr$<$ \hyperlink{classneb_1_1actor_1_1Base}{neb::actor::Base} $>$ {\bfseries base\_\-t}}
+\label{classneb_1_1scene_1_1scene_a12a166d302ebe2c0ccc39c97d8dcd58b}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a102a6dc3de38eda425650b9122676a78}{
+typedef std::shared\_\-ptr$<$ \hyperlink{classneb_1_1actor_1_1Rigid__Dynamic}{neb::actor::Rigid\_\-Dynamic} $>$ {\bfseries rigid\_\-dynamic\_\-t}}
+\label{classneb_1_1scene_1_1scene_a102a6dc3de38eda425650b9122676a78}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a782cb687dc9d61c8fcd5b12aa4189487}{
+typedef std::shared\_\-ptr$<$ \hyperlink{classneb_1_1actor_1_1Rigid__Static}{neb::actor::Rigid\_\-Static} $>$ {\bfseries rigid\_\-static\_\-t}}
+\label{classneb_1_1scene_1_1scene_a782cb687dc9d61c8fcd5b12aa4189487}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a4d26816606556e2642a49ba31d10e6e3}{
+typedef std::shared\_\-ptr$<$ \hyperlink{classneb_1_1actor_1_1Controller}{neb::actor::Controller} $>$ {\bfseries controller\_\-t}}
+\label{classneb_1_1scene_1_1scene_a4d26816606556e2642a49ba31d10e6e3}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a91d267e955478e0ae15693eb49103e3c}{
+typedef std::shared\_\-ptr$<$ \hyperlink{classneb_1_1app}{neb::app} $>$ {\bfseries app\_\-t}}
+\label{classneb_1_1scene_1_1scene_a91d267e955478e0ae15693eb49103e3c}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_abccb582576f45ce1b923bf6b6a153da6}{
+{\bfseries scene} (neb::app\_\-s)}
+\label{classneb_1_1scene_1_1scene_abccb582576f45ce1b923bf6b6a153da6}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a44f7744f9e07ad6a8722689b3f8392b4}{
+void {\bfseries init} (glutpp::scene::desc\_\-s)}
+\label{classneb_1_1scene_1_1scene_a44f7744f9e07ad6a8722689b3f8392b4}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a86d094b5dfff986da693d385c0f0f245}{
+void {\bfseries create\_\-physics} ()}
+\label{classneb_1_1scene_1_1scene_a86d094b5dfff986da693d385c0f0f245}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a4a18d76291ad008be51b7fb8b22f1451}{
+app\_\-t {\bfseries get\_\-app} ()}
+\label{classneb_1_1scene_1_1scene_a4a18d76291ad008be51b7fb8b22f1451}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a2d1b083bbbd21c78884713ae1b653ac7}{
+base\_\-t {\bfseries get\_\-actor} (int i)}
+\label{classneb_1_1scene_1_1scene_a2d1b083bbbd21c78884713ae1b653ac7}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a6282e366a0709fe0cb7b9a3448695473}{
+base\_\-t {\bfseries get\_\-actor} (glutpp::actor::addr\_\-s)}
+\label{classneb_1_1scene_1_1scene_a6282e366a0709fe0cb7b9a3448695473}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_ad407feafc7a6378d8c05bbe7e0bd65df}{
+void {\bfseries create\_\-actors} (glutpp::scene::desc\_\-s)}
+\label{classneb_1_1scene_1_1scene_ad407feafc7a6378d8c05bbe7e0bd65df}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a404da8d00ed2b2413f252c3b6bdd247b}{
+base\_\-t {\bfseries create\_\-actor\_\-local} (glutpp::actor::desc\_\-s)}
+\label{classneb_1_1scene_1_1scene_a404da8d00ed2b2413f252c3b6bdd247b}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a2ab9588c62f0e93d53163a7363d4c3ad}{
+base\_\-t {\bfseries create\_\-actor\_\-remote} (glutpp::actor::addr\_\-s, glutpp::actor::desc\_\-s)}
+\label{classneb_1_1scene_1_1scene_a2ab9588c62f0e93d53163a7363d4c3ad}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a5afc16565aeba302bcb42829499d263f}{
+void {\bfseries add\_\-deferred} (glutpp::actor::desc\_\-s)}
+\label{classneb_1_1scene_1_1scene_a5afc16565aeba302bcb42829499d263f}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_ad7ec98ad9a99bf3085c26da967e5b5ea}{
+void {\bfseries draw} ()}
+\label{classneb_1_1scene_1_1scene_ad7ec98ad9a99bf3085c26da967e5b5ea}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_abc55b6d1ba97b57881d0830f0121b11c}{
+void {\bfseries step} (double)}
+\label{classneb_1_1scene_1_1scene_abc55b6d1ba97b57881d0830f0121b11c}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a93c887dbb7f649c7c93383777f98715e}{
+void {\bfseries step\_\-local} (double)}
+\label{classneb_1_1scene_1_1scene_a93c887dbb7f649c7c93383777f98715e}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a897abb36acc753cb589bbf58b8603767}{
+void {\bfseries step\_\-remote} (double)}
+\label{classneb_1_1scene_1_1scene_a897abb36acc753cb589bbf58b8603767}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a8e067cc2571fc9e90af5e87b91215239}{
+void {\bfseries fire} (neb::actor::Base\_\-s)}
+\label{classneb_1_1scene_1_1scene_a8e067cc2571fc9e90af5e87b91215239}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_abc25a97ef005d7215593fd4f5c152392}{
+void {\bfseries fire\_\-local} (neb::actor::Base\_\-s)}
+\label{classneb_1_1scene_1_1scene_abc25a97ef005d7215593fd4f5c152392}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_afd02c1ebce4fb5eb238420d02d7cefff}{
+void {\bfseries fire\_\-remote} (neb::actor::Base\_\-s)}
+\label{classneb_1_1scene_1_1scene_afd02c1ebce4fb5eb238420d02d7cefff}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_acbac0a7094a148af1fe709bffb0589c1}{
+math::mat44 {\bfseries getPose} ()}
+\label{classneb_1_1scene_1_1scene_acbac0a7094a148af1fe709bffb0589c1}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a50132e0e00ed5707017f27308b1784cf}{
+math::mat44 {\bfseries getPoseGlobal} ()}
+\label{classneb_1_1scene_1_1scene_a50132e0e00ed5707017f27308b1784cf}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_abc96c584a43aabbb6e4bc8d66ed35a2a}{
+void {\bfseries send\_\-actor\_\-update} ()}
+\label{classneb_1_1scene_1_1scene_abc96c584a43aabbb6e4bc8d66ed35a2a}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a037bc8e01e290d9c1fc6959a13343c1e}{
+virtual void {\bfseries dumby} ()}
+\label{classneb_1_1scene_1_1scene_a037bc8e01e290d9c1fc6959a13343c1e}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a8527e6bb51b445c7dc99efcaaa8198c1}{
+neb::app\_\-w {\bfseries app\_\-}}
+\label{classneb_1_1scene_1_1scene_a8527e6bb51b445c7dc99efcaaa8198c1}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a99398d74631477541fe414f7455c6560}{
+gal::timer::timer\_\-set {\bfseries timer\_\-set\_\-}}
+\label{classneb_1_1scene_1_1scene_a99398d74631477541fe414f7455c6560}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a0c7cc06520332f35eaaa43d06f303e17}{
+int {\bfseries user\_\-type\_\-}}
+\label{classneb_1_1scene_1_1scene_a0c7cc06520332f35eaaa43d06f303e17}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a4080cb2f22531e88d5562834011dd8e0}{
+physx::PxSimulationFilterShader {\bfseries px\_\-filter\_\-shader\_\-}}
+\label{classneb_1_1scene_1_1scene_a4080cb2f22531e88d5562834011dd8e0}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a65cada9f46dc732db546eff588c9eae8}{
+\hyperlink{classneb_1_1simulation__callback}{neb::simulation\_\-callback} $\ast$ {\bfseries simulation\_\-callback\_\-}}
+\label{classneb_1_1scene_1_1scene_a65cada9f46dc732db546eff588c9eae8}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a94b89a56deddecfba35b9829f8315ad8}{
+physx::PxScene $\ast$ {\bfseries px\_\-scene\_\-}}
+\label{classneb_1_1scene_1_1scene_a94b89a56deddecfba35b9829f8315ad8}
+
+\item 
+\hypertarget{classneb_1_1scene_1_1scene_a37110b74e5abbe2e88c92815f533a937}{
+double {\bfseries last\_\-}}
+\label{classneb_1_1scene_1_1scene_a37110b74e5abbe2e88c92815f533a937}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/nebula/scene/scene.hpp\item 
+src/nebula/scene/scene.cpp\end{DoxyCompactItemize}
