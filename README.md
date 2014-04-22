@@ -3,6 +3,8 @@ nebula
 
 3d game engine in c++
 
+[online documentation](http://chuck1.github.io/nebula/html/index.html)
+
 ## installation
 
 requires [GRU](http://github.com/chuck1/GRU)
