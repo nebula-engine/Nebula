@@ -18,6 +18,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -40,6 +41,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
       <li><a href="classes.html"><span>Class&nbsp;Index</span></a></li>
       <li class="current"><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
     </ul>
   </div>
 </div>
@@ -48,23 +50,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li><a class="el" href="classneb_1_1timer_1_1actor.html">neb::timer::actor</a></li>
 <li><a class="el" href="classneb_1_1packet_1_1actor__release.html">neb::packet::actor_release</a></li>
 <li><a class="el" href="classneb_1_1app.html">neb::app</a></li>
-<li><a class="el" href="classneb_1_1actor_1_1Base.html">neb::actor::Base</a><ul>
-<li><a class="el" href="classneb_1_1actor_1_1Actor.html">neb::actor::Actor</a><ul>
-<li><a class="el" href="classneb_1_1actor_1_1RigidActor.html">neb::actor::RigidActor</a><ul>
-<li><a class="el" href="classneb_1_1actor_1_1rigid__body_1_1rigid__body.html">neb::actor::rigid_body::rigid_body</a><ul>
-<li><a class="el" href="classneb_1_1actor_1_1Rigid__Dynamic.html">neb::actor::Rigid_Dynamic</a><ul>
-<li><a class="el" href="classneb_1_1actor_1_1Rigid__Dynamic__Box.html">neb::actor::Rigid_Dynamic_Box</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="el" href="classneb_1_1actor_1_1Rigid__Static.html">neb::actor::Rigid_Static</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="el" href="classneb_1_1actor_1_1Controller.html">neb::actor::Controller</a></li>
-<li><a class="el" href="classneb_1_1actor_1_1empty.html">neb::actor::empty</a></li>
+<li><a class="el" href="classneb_1_1Actor_1_1Base.html">neb::Actor::Base</a><ul>
+<li><a class="el" href="classneb_1_1Actor_1_1Actor.html">neb::Actor::Actor</a></li>
 </ul>
 </li>
 <li><a class="el" href="classneb_1_1box.html">neb::box</a></li>
@@ -73,14 +60,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </ul>
 </li>
 <li><a class="el" href="classneb_1_1control_1_1rigid__body_1_1control.html">neb::control::rigid_body::control</a></li>
+<li><a class="el" href="classneb_1_1actor_1_1Controller.html">neb::actor::Controller</a></li>
 <li><a class="el" href="classneb_1_1network_1_1control_1_1rigid__body_1_1create.html">neb::network::control::rigid_body::create</a></li>
 <li><a class="el" href="classDefaultErrorCallback.html">DefaultErrorCallback</a></li>
+<li><a class="el" href="classneb_1_1actor_1_1empty.html">neb::actor::empty</a></li>
 <li><a class="el" href="structneb_1_1app_1_1flag.html">neb::app::flag</a></li>
 <li><a class="el" href="classneb_1_1geometry.html">neb::geometry</a></li>
 <li><a class="el" href="classneb_1_1physics.html">neb::physics</a></li>
 <li><a class="el" href="classneb_1_1actor_1_1raw.html">neb::actor::raw</a></li>
 <li><a class="el" href="classneb_1_1control_1_1rigid__body_1_1raw.html">neb::control::rigid_body::raw</a></li>
 <li><a class="el" href="classneb_1_1actor_1_1raw__factory.html">neb::actor::raw_factory</a></li>
+<li><a class="el" href="classneb_1_1actor_1_1Rigid__Dynamic.html">neb::actor::Rigid_Dynamic</a><ul>
+<li><a class="el" href="classneb_1_1actor_1_1Rigid__Dynamic__Box.html">neb::actor::Rigid_Dynamic_Box</a></li>
+</ul>
+</li>
+<li><a class="el" href="classneb_1_1actor_1_1Rigid__Static.html">neb::actor::Rigid_Static</a></li>
+<li><a class="el" href="classneb_1_1Actor_1_1RigidActor.html">neb::Actor::RigidActor</a></li>
+<li><a class="el" href="classneb_1_1Actor_1_1RigidBody_1_1RigidBody.html">neb::Actor::RigidBody::RigidBody</a></li>
 <li><a class="el" href="classneb_1_1scene_1_1scene.html">neb::scene::scene</a></li>
 <li><a class="el" href="classneb_1_1network_1_1server.html">neb::network::server</a></li>
 <li><a class="el" href="classneb_1_1shape_1_1shape.html">neb::shape::shape</a></li>
@@ -94,7 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

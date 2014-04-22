@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 576.923
+%%BoundingBox: 0 0 500 480.769
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,12 +19,12 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 0.866667 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 1.04 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
 /yspacing 0 def
-/rows 6 def
+/rows 5 def
 /cols 1 def
 /scalefactor 0 def
 /boxfont /Times-Roman findfont fontheight scalefont def
@@ -176,7 +176,6 @@ boxfont setfont
 (neb::actor::rigid_body::rigid_body) cw
 (neb::actor::RigidActor) cw
 (neb::actor::Actor) cw
-(neb::actor::Base) cw
 (neb::actor::Rigid_Dynamic) cw
 (neb::actor::Rigid_Dynamic_Box) cw
 /boxwidth boxwidth marginwidth 2 mul add def
@@ -193,7 +192,6 @@ boundx scalefactor div boundy scalefactor div scale
  (neb::actor::rigid_body::rigid_body) 0 2 box
  (neb::actor::RigidActor) 0 3 box
  (neb::actor::Actor) 0 4 box
- (neb::actor::Base) 0 5 box
  (neb::actor::Rigid_Dynamic) 0 1 box
  (neb::actor::Rigid_Dynamic_Box) 0 0 box
 
@@ -207,10 +205,6 @@ solid
 0 0 3 out
 solid
 1 0 4 in
-solid
-0 0 4 out
-solid
-1 0 5 in
 solid
 1 0 1.25 out
 solid

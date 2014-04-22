@@ -13,13 +13,14 @@
 
 #include <galaxy/map.hpp>
 
+/** @brief %Nebula */
 namespace neb {
-
-
+	/** @brief %Timer */
 	namespace timer {
 		class actor;
 		typedef std::shared_ptr<actor>		actor_s;
 	}
+	/** @brief %Network */
 	namespace network {
 		class server;
 		class client;
@@ -55,6 +56,7 @@ namespace neb {
 	typedef std::shared_ptr<app>	app_s;
 	typedef std::weak_ptr<app>	app_w;
 
+	/** @brief %Scene */
 	namespace scene {
 		class scene;
 		typedef std::shared_ptr<scene>	scene_s;
@@ -62,7 +64,8 @@ namespace neb {
 		typedef gal::map<scene>		scene_m;
 	}
 	class simulation_callback;
-	namespace actor {
+	/** @brief %Actor */
+	namespace Actor {
 		class raw;
 		class raw_factory;	
 
@@ -87,6 +90,7 @@ namespace neb {
 		
 		typedef std::weak_ptr<Base>	Base_w;
 	}
+	/** @brief %Control */
 	namespace control {
 		namespace rigid_body {
 			enum type {
@@ -103,6 +107,7 @@ namespace neb {
 
 		}
 	}
+	/** @brief %Shape */
 	namespace shape {
 		class shape;
 		typedef std::shared_ptr<shape> shape_s;

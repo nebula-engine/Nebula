@@ -18,6 +18,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -40,20 +41,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
       <li><a href="classes.html"><span>Class&nbsp;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
     </ul>
   </div>
 </div>
 <div class="contents">
 <h1>Class List</h1>Here are the classes, structs, unions and interfaces with brief descriptions:<table>
-  <tr><td class="indexkey"><a class="el" href="classneb_1_1actor_1_1Actor.html">neb::actor::Actor</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classneb_1_1Actor_1_1Actor.html">neb::Actor::Actor</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1timer_1_1actor.html">neb::timer::actor</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1packet_1_1actor__release.html">neb::packet::actor_release</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1app.html">neb::app</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classneb_1_1actor_1_1Base.html">neb::actor::Base</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classneb_1_1Actor_1_1Base.html">neb::Actor::Base</a></td><td class="indexvalue">Base </td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1box.html">neb::box</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1network_1_1client.html">neb::network::client</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1network_1_1communicating.html">neb::network::communicating</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classneb_1_1control_1_1rigid__body_1_1control.html">neb::control::rigid_body::control</a></td><td class="indexvalue">Rigid Body An object (what did I mean by 'object' here, an actor?) makes no distinction between local and remote. In a remote scene, the actor will send a <a class="el" href="classneb_1_1control_1_1rigid__body_1_1control.html" title="Rigid Body An object (what did I mean by &#39;object&#39; here, an actor?) makes...">control</a> update message. In a local scene, the actor will call upon stored values; it makes no difference to the actor whether these value were set by calls to key_fun or by a <a class="el" href="classneb_1_1control_1_1rigid__body_1_1control.html" title="Rigid Body An object (what did I mean by &#39;object&#39; here, an actor?) makes...">control</a> update message. This creates requirements for how <a class="el" href="classneb_1_1control_1_1rigid__body_1_1control.html" title="Rigid Body An object (what did I mean by &#39;object&#39; here, an actor?) makes...">control</a> works. All infomation needed to determine force and torque at a given point in time must be stored in <a class="el" href="classneb_1_1control_1_1rigid__body_1_1raw.html">raw</a> </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classneb_1_1control_1_1rigid__body_1_1control.html">neb::control::rigid_body::control</a></td><td class="indexvalue">Rigid Body An object (what did I mean by 'object' here, an actor?) makes no distinction between local and remote. In a remote <a class="el" href="namespaceneb_1_1scene.html" title="Scene">scene</a>, the actor will send a <a class="el" href="classneb_1_1control_1_1rigid__body_1_1control.html" title="Rigid Body An object (what did I mean by &#39;object&#39; here, an actor?) makes...">control</a> update message. In a local <a class="el" href="namespaceneb_1_1scene.html" title="Scene">scene</a>, the actor will call upon stored values; it makes no difference to the actor whether these value were set by calls to key_fun or by a <a class="el" href="classneb_1_1control_1_1rigid__body_1_1control.html" title="Rigid Body An object (what did I mean by &#39;object&#39; here, an actor?) makes...">control</a> update message. This creates requirements for how <a class="el" href="classneb_1_1control_1_1rigid__body_1_1control.html" title="Rigid Body An object (what did I mean by &#39;object&#39; here, an actor?) makes...">control</a> works. All infomation needed to determine force and torque at a given point in time must be stored in <a class="el" href="classneb_1_1control_1_1rigid__body_1_1raw.html">raw</a> </td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1actor_1_1Controller.html">neb::actor::Controller</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1network_1_1control_1_1rigid__body_1_1create.html">neb::network::control::rigid_body::create</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classDefaultErrorCallback.html">DefaultErrorCallback</a></td><td class="indexvalue"></td></tr>
@@ -64,11 +66,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <tr><td class="indexkey"><a class="el" href="classneb_1_1actor_1_1raw.html">neb::actor::raw</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1control_1_1rigid__body_1_1raw.html">neb::control::rigid_body::raw</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1actor_1_1raw__factory.html">neb::actor::raw_factory</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classneb_1_1actor_1_1rigid__body_1_1rigid__body.html">neb::actor::rigid_body::rigid_body</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1actor_1_1Rigid__Dynamic.html">neb::actor::Rigid_Dynamic</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1actor_1_1Rigid__Dynamic__Box.html">neb::actor::Rigid_Dynamic_Box</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1actor_1_1Rigid__Static.html">neb::actor::Rigid_Static</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classneb_1_1actor_1_1RigidActor.html">neb::actor::RigidActor</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classneb_1_1Actor_1_1RigidActor.html">neb::Actor::RigidActor</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classneb_1_1Actor_1_1RigidBody_1_1RigidBody.html">neb::Actor::RigidBody::RigidBody</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1scene_1_1scene.html">neb::scene::scene</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1network_1_1server.html">neb::network::server</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="classneb_1_1shape_1_1shape.html">neb::shape::shape</a></td><td class="indexvalue"></td></tr>
@@ -82,7 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

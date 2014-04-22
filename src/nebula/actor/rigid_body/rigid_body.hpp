@@ -5,13 +5,13 @@
 #include <nebula/actor/Rigid_Actor.hpp>
 
 namespace neb {
-	namespace actor {
-		namespace rigid_body {
-			class rigid_body:
+	namespace Actor {
+		namespace RigidBody {
+			class RigidBody:
 				public neb::actor::RigidActor
 			{
 				public:
-					rigid_body(glutpp::actor::parent_s);
+					RigidBody(glutpp::actor::parent_s);
 					
 					virtual void			init(glutpp::actor::desc_s);
 					

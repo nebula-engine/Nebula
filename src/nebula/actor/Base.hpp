@@ -17,7 +17,8 @@
 #include <nebula/config.hpp>
 
 namespace neb {
-	namespace actor {
+	namespace Actor {
+		/** @brief %Base */
 		class Base:
 			public glutpp::actor::actor
 		{
@@ -44,8 +45,14 @@ namespace neb {
 
 				neb::app_s			get_app();
 				neb::scene::scene_s		get_scene();
+				
 				neb::actor::Base_s		get_actor(int);
-				neb::actor::Base_s		get_actor(glutpp::actor::addr_s);
+				/** @brief get child actor
+				 *
+				 * casts gru actor to nebula actor
+				 * @param addr address of actor
+				 */
+				neb::actor::Base_s		get_actor(glutpp::actor::addr_s addr);
 
 				virtual glutpp::actor::desc_s	get_projectile();
 				

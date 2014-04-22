@@ -18,6 +18,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -40,9 +41,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
       <li><a href="classes.html"><span>Class&nbsp;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><b>neb</b>::<b>actor</b>::<a class="el" href="classneb_1_1actor_1_1Base.html">Base</a>
+  <div class="navpath"><a class="el" href="namespaceneb.html">neb</a>::<a class="el" href="namespaceneb_1_1actor.html">actor</a>::<a class="el" href="classneb_1_1actor_1_1Base.html">Base</a>
   </div>
 </div>
 <div class="contents">
@@ -91,8 +93,8 @@ neb::app_s&nbsp;</td><td class="memItemRight" valign="bottom"><b>get_app</b> ()<
 neb::scene::scene_s&nbsp;</td><td class="memItemRight" valign="bottom"><b>get_scene</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac993b623947e201f01582ec038673809"></a><!-- doxytag: member="neb::actor::Base::get_actor" ref="ac993b623947e201f01582ec038673809" args="(int)" -->
 neb::actor::Base_s&nbsp;</td><td class="memItemRight" valign="bottom"><b>get_actor</b> (int)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a540879bddb079620e352719275346b15"></a><!-- doxytag: member="neb::actor::Base::get_actor" ref="a540879bddb079620e352719275346b15" args="(glutpp::actor::addr_s)" -->
-neb::actor::Base_s&nbsp;</td><td class="memItemRight" valign="bottom"><b>get_actor</b> (glutpp::actor::addr_s)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">neb::actor::Base_s&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneb_1_1actor_1_1Base.html#a0e31f35ba460d472e9730d1e9e53933d">get_actor</a> (glutpp::actor::addr_s addr)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">get child <a class="el" href="namespaceneb_1_1actor.html" title="Actor">actor</a> casts gru <a class="el" href="namespaceneb_1_1actor.html" title="Actor">actor</a> to nebula <a class="el" href="namespaceneb_1_1actor.html" title="Actor">actor</a>  <a href="#a0e31f35ba460d472e9730d1e9e53933d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6aea29e7c87c3bb8507d2e249fe18a9b"></a><!-- doxytag: member="neb::actor::Base::get_projectile" ref="a6aea29e7c87c3bb8507d2e249fe18a9b" args="()" -->
 virtual glutpp::actor::desc_s&nbsp;</td><td class="memItemRight" valign="bottom"><b>get_projectile</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83a135f3543d02c0bd8a6d32b6d1d386"></a><!-- doxytag: member="neb::actor::Base::hit" ref="a83a135f3543d02c0bd8a6d32b6d1d386" args="()" -->
@@ -130,6 +132,33 @@ struct {</td></tr>
 <tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;key_fun_c&nbsp;&nbsp;&nbsp;<b>key_fun_</b></td></tr>
 <tr><td class="memItemLeft" valign="top">}&nbsp;</td><td class="memItemRight" valign="bottom"><b>conn_</b></td></tr>
 </table>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a0e31f35ba460d472e9730d1e9e53933d"></a><!-- doxytag: member="neb::actor::Base::get_actor" ref="a0e31f35ba460d472e9730d1e9e53933d" args="(glutpp::actor::addr_s addr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">neb::actor::Base_s neb::actor::Base::get_actor </td>
+          <td>(</td>
+          <td class="paramtype">glutpp::actor::addr_s&nbsp;</td>
+          <td class="paramname"> <em>addr</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>get child <a class="el" href="namespaceneb_1_1actor.html" title="Actor">actor</a> casts gru <a class="el" href="namespaceneb_1_1actor.html" title="Actor">actor</a> to nebula <a class="el" href="namespaceneb_1_1actor.html" title="Actor">actor</a> </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>addr</em>&nbsp;</td><td>address of <a class="el" href="namespaceneb_1_1actor.html" title="Actor">actor</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/nebula/actor/<a class="el" href="Base_8hpp_source.html">Base.hpp</a></li>
 <li>src/nebula/actor/Base.cpp</li>
@@ -140,7 +169,7 @@ struct {</td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

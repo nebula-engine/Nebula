@@ -4,7 +4,7 @@
 #include <nebula/actor/Actor.hpp>
 
 namespace neb {
-	namespace actor {
+	namespace Actor {
 		class RigidActor:
 			public neb::actor::Actor
 		{

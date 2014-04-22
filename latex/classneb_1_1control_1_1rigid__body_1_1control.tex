@@ -4,7 +4,7 @@
 }
 
 
-Rigid Body An object (what did I mean by 'object' here, an actor?) makes no distinction between local and remote. In a remote scene, the actor will send a \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} update message. In a local scene, the actor will call upon stored values; it makes no difference to the actor whether these value were set by calls to key\_\-fun or by a \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} update message. This creates requirements for how \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} works. All infomation needed to determine force and torque at a given point in time must be stored in \hyperlink{classneb_1_1control_1_1rigid__body_1_1raw}{raw}.  
+Rigid Body An object (what did I mean by 'object' here, an actor?) makes no distinction between local and remote. In a remote \hyperlink{namespaceneb_1_1scene}{scene}, the actor will send a \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} update message. In a local \hyperlink{namespaceneb_1_1scene}{scene}, the actor will call upon stored values; it makes no difference to the actor whether these value were set by calls to key\_\-fun or by a \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} update message. This creates requirements for how \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} works. All infomation needed to determine force and torque at a given point in time must be stored in \hyperlink{classneb_1_1control_1_1rigid__body_1_1raw}{raw}.  
 
 
 {\ttfamily \#include $<$control.hpp$>$}\subsection*{Public Member Functions}
@@ -81,7 +81,7 @@ double {\bfseries last\_\-}}
 
 
 \subsection{Detailed Description}
-Rigid Body An object (what did I mean by 'object' here, an actor?) makes no distinction between local and remote. In a remote scene, the actor will send a \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} update message. In a local scene, the actor will call upon stored values; it makes no difference to the actor whether these value were set by calls to key\_\-fun or by a \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} update message. This creates requirements for how \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} works. All infomation needed to determine force and torque at a given point in time must be stored in \hyperlink{classneb_1_1control_1_1rigid__body_1_1raw}{raw}. 
+Rigid Body An object (what did I mean by 'object' here, an actor?) makes no distinction between local and remote. In a remote \hyperlink{namespaceneb_1_1scene}{scene}, the actor will send a \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} update message. In a local \hyperlink{namespaceneb_1_1scene}{scene}, the actor will call upon stored values; it makes no difference to the actor whether these value were set by calls to key\_\-fun or by a \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} update message. This creates requirements for how \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} works. All infomation needed to determine force and torque at a given point in time must be stored in \hyperlink{classneb_1_1control_1_1rigid__body_1_1raw}{raw}. 
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
 \item 

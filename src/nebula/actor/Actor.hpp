@@ -8,9 +8,9 @@
 #include <nebula/actor/Base.hpp>
 
 namespace neb {
-	namespace actor {
+	namespace Actor {
 		class Actor:
-			public neb::actor::Base
+			public neb::Actor::Base
 		{
 			public:
 				Actor(glutpp::actor::parent_s);
