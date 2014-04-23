@@ -2,60 +2,60 @@
 
 struct Light
 {
-	vec4 position;
-	vec4 ambient;
-	vec4 diffuse;
-	vec4 specular;
-	vec3 spot_direction;
-	float spot_cutoff;
-	float atten_const;
-	float atten_linear;
-	float atten_quad;
-	float spot_exponent;
-	float spot_light_cos_cutoff;
+	dvec4 position;
+	dvec4 ambient;
+	dvec4 diffuse;
+	dvec4 specular;
+	dvec3 spot_direction;
+	double spot_cutoff;
+	double atten_const;
+	double atten_linear;
+	double atten_quad;
+	double spot_exponent;
+	double spot_light_cos_cutoff;
 };
 
 struct Material
 {
-	vec4 diffuse;
-	vec4 specular;
-	vec4 ambient;
-	vec4 emission;
-	float shininess;
+	dvec4 diffuse;
+	dvec4 specular;
+	dvec4 ambient;
+	dvec4 emission;
+	double shininess;
 };
 
-in vec4 vs_P;
-in vec3 vs_N;
-in vec2 vs_texcoor;
+in dvec4 vs_P;
+in dvec3 vs_N;
+in dvec2 vs_texcoor;
 
 uniform Light lights[20];
 uniform int light_count;
-uniform mat4 view;
+uniform dmat4 view;
 uniform Material front;
 
-out vec4 color;
+out dvec4 color;
 
 void main(void)
 {
-	float tau = 6.28318530718;
+	double tau = 6.28318530718;
 
-	// Normalize the incoming N, L and V vectors
-	vec3 N = normalize(vs_N);
-	vec4 P = normalize(vs_P);
+	// Normalize the incoming N, L and V dvectors
+	dvec3 N = normalize(vs_N);
+	dvec4 P = normalize(vs_P);
 	
-	color = vec4(0.0);
+	color = dvec4(0.0);
 	
-	float atten;
-	float shadow;
-	vec4 ambient;
-	vec4 diffuse;
-	vec4 specular;
-	vec4 emission;
-	vec3 light_pos;
-	vec3 light_spot_direction;
-	vec3 L;
-	vec4 shadow_coor;
-	vec4 shadow_coor_w_div;
+	double atten;
+	double shadow;
+	dvec4 ambient;
+	dvec4 diffuse;
+	dvec4 specular;
+	dvec4 emission;
+	dvec3 light_pos;
+	dvec3 light_spot_direction;
+	dvec3 L;
+	dvec4 shadow_coor;
+	dvec4 shadow_coor_w_div;
 
 	// emission
 	emission = front.emission;
@@ -64,7 +64,7 @@ void main(void)
 	{
 		// light
 		//light_pos = modelview + lights[i].position;
-		light_spot_direction = mat3(view) * lights[i].spot_direction;
+		light_spot_direction = dmat3(view) * lights[i].spot_direction;
 		
 		// ambient
 		ambient = lights[i].ambient * front.ambient;
@@ -75,7 +75,7 @@ void main(void)
 			atten = 1.0; // no atten
 			
 			// rotate to view space
-			light_pos = mat3(view) * lights[i].position.xyz;
+			light_pos = dmat3(view) * lights[i].position.xyz;
 			
 			
 			L = normalize(light_pos);
@@ -84,13 +84,13 @@ void main(void)
 		{
 			// translate to view space
 			//light_pos = lights[i].position.xyz - view[0].xyz;
-			//light_pos = mat3(view) * light_pos;
+			//light_pos = dmat3(view) * light_pos;
 			
-			light_pos = vec3( view * lights[i].position );
+			light_pos = dvec3( view * lights[i].position );
 			
 			L = light_pos - vs_P.xyz;
 
-			float l = length(L);
+			double l = length(L);
 
 			L = normalize(L);
 
@@ -101,7 +101,7 @@ void main(void)
 
 			if(lights[i].spot_cutoff <= (tau/4.0)) // spotlight?
 			{
-				float clamped_cos = max(0.0, dot(-L, normalize(light_spot_direction)));
+				double clamped_cos = max(0.0, dot(-L, normalize(light_spot_direction)));
 
 				if (clamped_cos < cos(lights[i].spot_cutoff)) // outside spotlight cone?
 				{
@@ -114,19 +114,19 @@ void main(void)
 			}
 		}
 		
-		float angle = max(0.0, dot(N,L));
+		double angle = max(0.0, dot(N,L));
 		
-		diffuse = atten * lights[i].diffuse * front.diffuse * vec4(vec3(angle),1.0);
+		diffuse = atten * lights[i].diffuse * front.diffuse * dvec4(vec3(angle),1.0);
 		
 		// specular
 		if (dot(N,L) < 0.0) // light source behind
 		{
-			specular = vec4(0.0, 0.0, 0.0, 0.0);
+			specular = dvec4(0.0, 0.0, 0.0, 0.0);
 		}
 		else // light source in front
 		{
 			specular = atten * lights[i].specular * front.specular *
-				vec4(vec3(pow(max(0.0, dot(reflect(-L,N), -P.xyz)), front.shininess)),1.0);
+				dvec4(vec3(pow(max(0.0, dot(reflect(-L,N), -P.xyz)), front.shininess)),1.0);
 		}
 		
 		color += ambient + diffuse + specular;

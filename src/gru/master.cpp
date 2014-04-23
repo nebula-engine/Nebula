@@ -186,8 +186,8 @@ void	glutpp::master::create_programs() {
 		p.reset(new glutpp::glsl::program);
 		p->init();
 
-		p->add_shader(GLUTPP_SHADER_DIR"/v130/text/vs.glsl", GL_VERTEX_SHADER);
-		p->add_shader(GLUTPP_SHADER_DIR"/v130/text/fs.glsl", GL_FRAGMENT_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v430/text/vs.glsl", GL_VERTEX_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v430/text/fs.glsl", GL_FRAGMENT_SHADER);
 
 		p->compile();
 
@@ -210,8 +210,8 @@ void	glutpp::master::create_programs() {
 		p.reset(new glutpp::glsl::program);
 		p->init();
 
-		p->add_shader(GLUTPP_SHADER_DIR"/v130/light/vs.glsl", GL_VERTEX_SHADER);
-		p->add_shader(GLUTPP_SHADER_DIR"/v130/light/fs.glsl", GL_FRAGMENT_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v430/light/vs.glsl", GL_VERTEX_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v430/light/fs.glsl", GL_FRAGMENT_SHADER);
 
 		p->compile();
 
@@ -255,8 +255,8 @@ void	glutpp::master::create_programs() {
 		p.reset(new glutpp::glsl::program);
 		p->init();
 
-		p->add_shader(GLUTPP_SHADER_DIR"/v130/image/vs.glsl", GL_VERTEX_SHADER);
-		p->add_shader(GLUTPP_SHADER_DIR"/v130/image/fs.glsl", GL_FRAGMENT_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v430/image/vs.glsl", GL_VERTEX_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v430/image/fs.glsl", GL_FRAGMENT_SHADER);
 
 		p->compile();
 

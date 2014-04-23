@@ -26,8 +26,8 @@
 namespace glutpp {
 	namespace actor {
 		class actor:
-			public glutpp::actor::parent,
-			public glutpp::shape::parent,
+			virtual public glutpp::actor::parent,
+			virtual public glutpp::shape::parent,
 			public gal::flag<unsigned int>
 		{
 			public:

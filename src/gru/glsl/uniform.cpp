@@ -116,7 +116,8 @@ void	glutpp::glsl::uniform::load(float f)
 	checkerror("glUniform1f");
 }
 void	glutpp::glsl::uniform::load(int c, math::mat44 m) {
-
+	/** @todo make all math vec and mat templates and make a load function here for both float and double */
+	
 	glUniformMatrix4fv(o_[c],1,GL_FALSE,m);
 
 	checkerror("glUniformMatrix4fv");

@@ -15,6 +15,7 @@
 #include <math/geo/polyhedron.hpp>
 
 #include <gru/config.hpp>
+#include <gru/shared.hpp>
 #include <gru/shape/desc.hpp>
 #include <gru/material.hpp>
 #include <gru/mesh.hpp>
@@ -24,7 +25,7 @@ namespace glutpp {
 		/** @brief @Parent
 		 * abstract class for parent of an @Actor
 		 */
-		class parent: public std::enable_shared_from_this<parent> {
+		class parent: virtual public gru::shared {
 			public:
 				virtual ~parent() {}
 
