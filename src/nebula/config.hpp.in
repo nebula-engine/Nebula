@@ -16,9 +16,9 @@
 /** @brief %Nebula */
 namespace neb {
 	/** @brief %Timer */
-	namespace timer {
-		class actor;
-		typedef std::shared_ptr<actor>		actor_s;
+	namespace Timer {
+		class Actor;
+		typedef std::shared_ptr<Actor>		Actor_s;
 	}
 	/** @brief %Network */
 	namespace network {

@@ -4,8 +4,8 @@
 #include <nebula/actor/Rigid_Actor.hpp>
 
 namespace neb {
-	namespace actor {
-		class Rigid_Static: public neb::actor::RigidActor {
+	namespace Actor {
+		class Rigid_Static: public neb::Actor::RigidActor {
 			public:
 				Rigid_Static(glutpp::actor::parent_s parent);
 

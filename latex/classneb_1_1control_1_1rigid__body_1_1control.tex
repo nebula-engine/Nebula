@@ -1,89 +1,68 @@
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control}{
-\section{neb::control::rigid\_\-body::control Class Reference}
-\label{classneb_1_1control_1_1rigid__body_1_1control}\index{neb::control::rigid\_\-body::control@{neb::control::rigid\_\-body::control}}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control}{\section{neb\-:\-:control\-:\-:rigid\-\_\-body\-:\-:control \-Class \-Reference}
+\label{classneb_1_1control_1_1rigid__body_1_1control}\index{neb\-::control\-::rigid\-\_\-body\-::control@{neb\-::control\-::rigid\-\_\-body\-::control}}
 }
 
 
-Rigid Body An object (what did I mean by 'object' here, an actor?) makes no distinction between local and remote. In a remote \hyperlink{namespaceneb_1_1scene}{scene}, the actor will send a \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} update message. In a local \hyperlink{namespaceneb_1_1scene}{scene}, the actor will call upon stored values; it makes no difference to the actor whether these value were set by calls to key\_\-fun or by a \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} update message. This creates requirements for how \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} works. All infomation needed to determine force and torque at a given point in time must be stored in \hyperlink{classneb_1_1control_1_1rigid__body_1_1raw}{raw}.  
+\-Rigid \-Body \-An object (what did \-I mean by 'object' here, an actor?) makes no distinction between local and remote. \-In a remote scene, the actor will send a control update message. \-In a local scene, the actor will call upon stored values; it makes no difference to the actor whether these value were set by calls to key\-\_\-fun or by a control update message. \-This creates requirements for how control works. \-All infomation needed to determine force and torque at a given point in time must be stored in raw.  
 
 
-{\ttfamily \#include $<$control.hpp$>$}\subsection*{Public Member Functions}
+
+
+{\ttfamily \#include $<$control.\-hpp$>$}
+
+\subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a66fc3682afd8f4a94ccd241cb3ddddb3}{
-virtual int {\bfseries key\_\-fun} (int, int, int, int)}
-\label{classneb_1_1control_1_1rigid__body_1_1control_a66fc3682afd8f4a94ccd241cb3ddddb3}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a66fc3682afd8f4a94ccd241cb3ddddb3}{virtual int {\bfseries key\-\_\-fun} (int, int, int, int)}\label{classneb_1_1control_1_1rigid__body_1_1control_a66fc3682afd8f4a94ccd241cb3ddddb3}
 
 \item 
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a0649203ba08991125250be485dad9308}{
-void {\bfseries step\_\-local} (double)}
-\label{classneb_1_1control_1_1rigid__body_1_1control_a0649203ba08991125250be485dad9308}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a0649203ba08991125250be485dad9308}{void {\bfseries step\-\_\-local} (double)}\label{classneb_1_1control_1_1rigid__body_1_1control_a0649203ba08991125250be485dad9308}
 
 \item 
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a347b217d2133bf301aa9f31e084ccd6a}{
-void {\bfseries step\_\-local0} (double)}
-\label{classneb_1_1control_1_1rigid__body_1_1control_a347b217d2133bf301aa9f31e084ccd6a}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a347b217d2133bf301aa9f31e084ccd6a}{void {\bfseries step\-\_\-local0} (double)}\label{classneb_1_1control_1_1rigid__body_1_1control_a347b217d2133bf301aa9f31e084ccd6a}
 
 \item 
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a6fad3693d3a31440201a928bc04e71d4}{
-void {\bfseries step\_\-local1} (double)}
-\label{classneb_1_1control_1_1rigid__body_1_1control_a6fad3693d3a31440201a928bc04e71d4}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a6fad3693d3a31440201a928bc04e71d4}{void {\bfseries step\-\_\-local1} (double)}\label{classneb_1_1control_1_1rigid__body_1_1control_a6fad3693d3a31440201a928bc04e71d4}
 
 \item 
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_aeaae8332076304e32a811e6f06410e18}{
-math::vec3$<$ double $>$ {\bfseries f} ()}
-\label{classneb_1_1control_1_1rigid__body_1_1control_aeaae8332076304e32a811e6f06410e18}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_aeaae8332076304e32a811e6f06410e18}{math\-::vec3$<$ double $>$ {\bfseries f} ()}\label{classneb_1_1control_1_1rigid__body_1_1control_aeaae8332076304e32a811e6f06410e18}
 
 \item 
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a0f2f5f0c00acbf26b2ae23c1db70f1d9}{
-math::vec3$<$ double $>$ {\bfseries t} ()}
-\label{classneb_1_1control_1_1rigid__body_1_1control_a0f2f5f0c00acbf26b2ae23c1db70f1d9}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a0f2f5f0c00acbf26b2ae23c1db70f1d9}{math\-::vec3$<$ double $>$ {\bfseries t} ()}\label{classneb_1_1control_1_1rigid__body_1_1control_a0f2f5f0c00acbf26b2ae23c1db70f1d9}
 
 \item 
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a13cbe1e4aa9e9cbd38cc2424526779a3}{
-void {\bfseries print} ()}
-\label{classneb_1_1control_1_1rigid__body_1_1control_a13cbe1e4aa9e9cbd38cc2424526779a3}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a13cbe1e4aa9e9cbd38cc2424526779a3}{void {\bfseries print} ()}\label{classneb_1_1control_1_1rigid__body_1_1control_a13cbe1e4aa9e9cbd38cc2424526779a3}
 
 \end{DoxyCompactItemize}
-\subsection*{Public Attributes}
+\subsection*{\-Public \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a5a8dc4754c9d46b288a468e0033af474}{
-neb::actor::Base\_\-w {\bfseries actor\_\-}}
-\label{classneb_1_1control_1_1rigid__body_1_1control_a5a8dc4754c9d46b288a468e0033af474}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a5a8dc4754c9d46b288a468e0033af474}{neb\-::actor\-::\-Base\-\_\-w {\bfseries actor\-\_\-}}\label{classneb_1_1control_1_1rigid__body_1_1control_a5a8dc4754c9d46b288a468e0033af474}
 
 \item 
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a4a547bcc332479f91eecfcbaccfcb1c2}{
-\hyperlink{classneb_1_1control_1_1rigid__body_1_1raw}{neb::control::rigid\_\-body::raw} {\bfseries raw\_\-}}
-\label{classneb_1_1control_1_1rigid__body_1_1control_a4a547bcc332479f91eecfcbaccfcb1c2}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a4a547bcc332479f91eecfcbaccfcb1c2}{\hyperlink{classneb_1_1control_1_1rigid__body_1_1raw}{neb\-::control\-::rigid\-\_\-body\-::raw} {\bfseries raw\-\_\-}}\label{classneb_1_1control_1_1rigid__body_1_1control_a4a547bcc332479f91eecfcbaccfcb1c2}
 
 \item 
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a5209e25d3b03696cd84710f34c991dea}{
-\begin{tabbing}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a5209e25d3b03696cd84710f34c991dea}{\begin{tabbing}
 xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
 struct \{\\
 \>key\_fun\_c {\bfseries key\_fun\_}\\
-\} {\bfseries conn\_}}
-\label{classneb_1_1control_1_1rigid__body_1_1control_a5209e25d3b03696cd84710f34c991dea}
+\} {\bfseries conn\_}}\label{classneb_1_1control_1_1rigid__body_1_1control_a5209e25d3b03696cd84710f34c991dea}
 \\
 
 \end{tabbing}\item 
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a621b7abb234dfeae7db854a70899a96f}{
-gal::control::control {\bfseries pid\_\-}}
-\label{classneb_1_1control_1_1rigid__body_1_1control_a621b7abb234dfeae7db854a70899a96f}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a621b7abb234dfeae7db854a70899a96f}{gal\-::control\-::control {\bfseries pid\-\_\-}}\label{classneb_1_1control_1_1rigid__body_1_1control_a621b7abb234dfeae7db854a70899a96f}
 
 \item 
-\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a15a9bb7db7b5d2b8dc8d99a3bff00d68}{
-double {\bfseries last\_\-}}
-\label{classneb_1_1control_1_1rigid__body_1_1control_a15a9bb7db7b5d2b8dc8d99a3bff00d68}
+\hypertarget{classneb_1_1control_1_1rigid__body_1_1control_a15a9bb7db7b5d2b8dc8d99a3bff00d68}{double {\bfseries last\-\_\-}}\label{classneb_1_1control_1_1rigid__body_1_1control_a15a9bb7db7b5d2b8dc8d99a3bff00d68}
 
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-Rigid Body An object (what did I mean by 'object' here, an actor?) makes no distinction between local and remote. In a remote \hyperlink{namespaceneb_1_1scene}{scene}, the actor will send a \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} update message. In a local \hyperlink{namespaceneb_1_1scene}{scene}, the actor will call upon stored values; it makes no difference to the actor whether these value were set by calls to key\_\-fun or by a \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} update message. This creates requirements for how \hyperlink{classneb_1_1control_1_1rigid__body_1_1control}{control} works. All infomation needed to determine force and torque at a given point in time must be stored in \hyperlink{classneb_1_1control_1_1rigid__body_1_1raw}{raw}. 
+\subsection{\-Detailed \-Description}
+\-Rigid \-Body \-An object (what did \-I mean by 'object' here, an actor?) makes no distinction between local and remote. \-In a remote scene, the actor will send a control update message. \-In a local scene, the actor will call upon stored values; it makes no difference to the actor whether these value were set by calls to key\-\_\-fun or by a control update message. \-This creates requirements for how control works. \-All infomation needed to determine force and torque at a given point in time must be stored in raw. 
 
-The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-src/nebula/control/rigid\_\-body/control.hpp\item 
-src/nebula/control/rigid\_\-body/control.cpp\end{DoxyCompactItemize}
+src/nebula/control/rigid\-\_\-body/control.\-hpp\item 
+src/nebula/control/rigid\-\_\-body/control.\-cpp\end{DoxyCompactItemize}

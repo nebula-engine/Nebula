@@ -30,10 +30,10 @@ namespace neb {
 	namespace scene {
 		class scene: public glutpp::scene::scene {
 			public:
-				typedef std::shared_ptr<neb::actor::Base>		base_t;
-				typedef std::shared_ptr<neb::actor::Rigid_Dynamic>	rigid_dynamic_t;
-				typedef std::shared_ptr<neb::actor::Rigid_Static>	rigid_static_t;
-				typedef std::shared_ptr<neb::actor::Controller>		controller_t;
+				typedef std::shared_ptr<neb::Actor::Base>		base_t;
+				typedef std::shared_ptr<neb::Actor::Rigid_Dynamic>	rigid_dynamic_t;
+				typedef std::shared_ptr<neb::Actor::Rigid_Static>	rigid_static_t;
+				typedef std::shared_ptr<neb::Actor::Controller>		controller_t;
 				//typedef std::shared_ptr<neb::actor::vehicle>		vehicle_t;
 				typedef std::shared_ptr<neb::app>			app_t;
 				
@@ -92,9 +92,9 @@ namespace neb {
 				void					step_remote(double);
 
 
-				void					fire(neb::actor::Base_s);
-				void					fire_local(neb::actor::Base_s);
-				void					fire_remote(neb::actor::Base_s);
+				void					fire(neb::Actor::Base_s);
+				void					fire_local(neb::Actor::Base_s);
+				void					fire_remote(neb::Actor::Base_s);
 
 				math::mat44				getPose();
 				math::mat44				getPoseGlobal();

@@ -5,23 +5,25 @@
 
 #include <nebula/config.hpp>
 
+/** @todo replace types with inheritance and possibly shared library support */
+
 namespace neb {
-        namespace timer {
-                class actor: public gal::timer::timer {
-                        public:
-                                enum type {
-                                        NONE = 0,
-                                        RELEASE,
-                                };
-                        
-                                actor(neb::actor::Base_s, neb::timer::actor::type, double);
-                                
-                                void  activate();
-                                
-                                neb::timer::actor::type         type_;
-                                neb::actor::Base_w              actor_;
-                };
-        }
+	namespace Timer {
+		class Actor: public gal::timer::timer {
+			public:
+				enum Type {
+					NONE = 0,
+					RELEASE,
+				};
+
+				Actor(neb::Actor::Base_s, neb::Timer::Actor::Type, double);
+
+				void  activate();
+
+				neb::Timer::Actor::Type         type_;
+				neb::Actor::Base_w              actor_;
+		};
+	}
 }
 
 #endif

@@ -17,8 +17,8 @@
 #include <gru/actor/actor.hpp>
 
 namespace neb {
-	namespace actor {
-		class empty: public neb::actor::Base {
+	namespace Actor {
+		class empty: public neb::Actor::Base {
 			public:
 				empty(glutpp::actor::parent_s);
 				

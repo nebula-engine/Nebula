@@ -5,12 +5,10 @@
 
 #include <nebula/actor/Base.hpp>
 
-namespace neb
-{
-	namespace actor
-	{
+namespace neb {
+	namespace Actor {
 		class Controller:
-			public neb::actor::Base
+			public neb::Actor::Base
 		{
 			public:
 				Controller(glutpp::actor::parent_s);
