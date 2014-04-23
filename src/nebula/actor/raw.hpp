@@ -9,14 +9,14 @@
 
 #include <nebula/config.hpp>
 
-template void gal::reset<neb::actor::raw>(neb::actor::raw_s&);
+template void gal::reset<neb::Actor::raw>(neb::Actor::raw_s&);
 
 namespace neb {
-	namespace actor {
-		class raw: public gal::network::serial<neb::actor::raw, glutpp::actor::raw> {
+	namespace Actor {
+		class raw: public gal::network::serial<neb::Actor::raw, glutpp::actor::raw> {
 			public:
-				friend class neb::actor::raw_factory;
-				friend void gal::reset<neb::actor::raw>(neb::actor::raw_s&);
+				friend class neb::Actor::raw_factory;
+				friend void gal::reset<neb::Actor::raw>(neb::Actor::raw_s&);
 		
 				raw();
 

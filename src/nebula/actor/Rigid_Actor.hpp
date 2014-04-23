@@ -6,7 +6,7 @@
 namespace neb {
 	namespace Actor {
 		class RigidActor:
-			public neb::actor::Actor
+			public neb::Actor::Actor
 		{
 			public:
 				RigidActor(glutpp::actor::parent_s);

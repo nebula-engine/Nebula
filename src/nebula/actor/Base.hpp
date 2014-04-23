@@ -30,11 +30,11 @@ namespace neb {
 				virtual void			release();
 				
 			private:
-				neb::actor::Base_s		create_actor(glutpp::actor::desc_s);
+				neb::Actor::Base_s		create_actor(glutpp::actor::desc_s);
 			public:
-				neb::actor::Base_s		create_actor_local(glutpp::actor::desc_s);
+				neb::Actor::Base_s		create_actor_local(glutpp::actor::desc_s);
 				
-				neb::actor::Base_s		create_actor_remote(glutpp::actor::addr_s, glutpp::actor::desc_s);
+				neb::Actor::Base_s		create_actor_remote(glutpp::actor::addr_s, glutpp::actor::desc_s);
 				
 				
 				void				create_shapes(glutpp::actor::desc_s);
@@ -46,13 +46,13 @@ namespace neb {
 				neb::app_s			get_app();
 				neb::scene::scene_s		get_scene();
 				
-				neb::actor::Base_s		get_actor(int);
+				neb::Actor::Base_s		get_actor(int);
 				/** @brief get child actor
 				 *
 				 * casts gru actor to nebula actor
 				 * @param addr address of actor
 				 */
-				neb::actor::Base_s		get_actor(glutpp::actor::addr_s addr);
+				neb::Actor::Base_s		get_actor(glutpp::actor::addr_s addr);
 
 				virtual glutpp::actor::desc_s	get_projectile();
 				
@@ -66,7 +66,7 @@ namespace neb {
 				virtual void			step_local(double);
 				virtual void			step_remote(double);
 				
-				neb::actor::raw_s		get_raw_base();
+				neb::Actor::raw_s		get_raw_base();
 				
 				// signal
 				void				connect(glutpp::window::window_s);

@@ -34,7 +34,7 @@ namespace neb {
 			glutpp::window::window_s	get_window(int);
 			neb::scene::scene_s		get_scene(int);
 			neb::scene::scene_s		get_scene(glutpp::scene::addr_s);
-			neb::actor::Base_s		get_actor(glutpp::actor::addr_s);
+			neb::Actor::Base_s		get_actor(glutpp::actor::addr_s);
 
 			void				set_should_release();
 

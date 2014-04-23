@@ -4,9 +4,9 @@
 #include <nebula/actor/rigid_body/rigid_body.hpp>
 
 namespace neb {
-	namespace actor {
+	namespace Actor {
 		class Rigid_Dynamic:
-			public neb::actor::rigid_body::rigid_body
+			public neb::Actor::RigidBody::RigidBody
 		{
 			public:
 				Rigid_Dynamic(glutpp::actor::parent_s);

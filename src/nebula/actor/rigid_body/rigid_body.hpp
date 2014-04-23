@@ -8,7 +8,7 @@ namespace neb {
 	namespace Actor {
 		namespace RigidBody {
 			class RigidBody:
-				public neb::actor::RigidActor
+				public neb::Actor::RigidActor
 			{
 				public:
 					RigidBody(glutpp::actor::parent_s);

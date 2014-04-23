@@ -15,27 +15,27 @@
 #include <nebula/network/message.hpp>
 
 
-neb::actor::rigid_body::rigid_body::rigid_body(glutpp::parent_s parent):
-	neb::actor::RigidActor(parent),
+neb::Actor::rigid_body::rigid_body::rigid_body(glutpp::parent_s parent):
+	neb::Actor::RigidActor(parent),
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}
-void	neb::actor::rigid_body::rigid_body::init(glutpp::actor::desc_s desc) {
+void	neb::Actor::rigid_body::rigid_body::init(glutpp::actor::desc_s desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 	
-	neb::actor::RigidActor::init(desc);
+	neb::Actor::RigidActor::init(desc);
 
 }
-void neb::actor::rigid_body::rigid_body::step_local(double time) {
+void neb::Actor::rigid_body::rigid_body::step_local(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
 	
-	neb::actor::RigidActor::step_local(time);
+	neb::Actor::RigidActor::step_local(time);
 	
 	if(control_) control_->step_local(time);
 	
 	add_force(time);
 }
-void neb::actor::rigid_body::rigid_body::step_remote(double time) {
+void neb::Actor::rigid_body::rigid_body::step_remote(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
 	
 	auto app = get_app();
@@ -43,7 +43,7 @@ void neb::actor::rigid_body::rigid_body::step_remote(double time) {
 	gal::network::message::shared_t msg;
 	neb::network::control::rigid_body::update_s control_update;
 	
-	neb::actor::RigidActor::step_remote(time);
+	neb::Actor::RigidActor::step_remote(time);
 	
 	
 	
@@ -62,7 +62,7 @@ void neb::actor::rigid_body::rigid_body::step_remote(double time) {
 	}
 
 }
-void neb::actor::rigid_body::rigid_body::add_force(double time) {
+void neb::Actor::rigid_body::rigid_body::add_force(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
 
 	// non-user-controled
@@ -93,7 +93,7 @@ void neb::actor::rigid_body::rigid_body::add_force(double time) {
 	pxrigidbody->addForce(f);
 	pxrigidbody->addTorque(t);
 }
-glutpp::actor::desc_s neb::actor::rigid_body::rigid_body::get_projectile() {
+glutpp::actor::desc_s neb::Actor::rigid_body::rigid_body::get_projectile() {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	auto scene = get_scene();
@@ -123,10 +123,10 @@ glutpp::actor::desc_s neb::actor::rigid_body::rigid_body::get_projectile() {
 
 	return desc;
 }
-void neb::actor::rigid_body::rigid_body::print_info() {
+void neb::Actor::rigid_body::rigid_body::print_info() {
 	//NEBULA_DEBUG_1_FUNCTION;	
 
-	neb::actor::RigidActor::print_info();
+	neb::Actor::RigidActor::print_info();
 
 	auto pxrb = px_actor_->isRigidBody();
 
@@ -143,7 +143,7 @@ void neb::actor::rigid_body::rigid_body::print_info() {
 	printf("angular velocity = "); angular_velocity.print();
 
 }
-void neb::actor::rigid_body::rigid_body::create_control(neb::control::rigid_body::raw_s raw) {
+void neb::Actor::rigid_body::rigid_body::create_control(neb::control::rigid_body::raw_s raw) {
 
 	auto me = to_rigid_body();
 
