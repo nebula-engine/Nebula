@@ -5,7 +5,7 @@
 
 namespace neb {
 	namespace actor {
-		class Rigid_Dynamic_Box: public neb::actor::Rigid_Dynamic {
+		class Rigid_Dynamic_Box: public neb::Actor::Rigid_Dynamic {
 			public:
 				void	Display();
 		};

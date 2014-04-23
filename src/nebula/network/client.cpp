@@ -54,8 +54,8 @@ void neb::network::client::process(gal::network::message::shared_t msg) {
 	
 	glutpp::window::window_s window;
 	
-	neb::actor::Base_s			actor;
-	neb::actor::rigid_body::rigid_body_s	rigidbody;
+	neb::Actor::Base_s			actor;
+	neb::Actor::RigidBody::RigidBody_s	rigidbody;
 	
 	glutpp::scene::desc_s sd;
 	
@@ -149,7 +149,7 @@ void neb::network::client::process(gal::network::message::shared_t msg) {
 			window = app->get_window(0);
 			
 			actor = app->get_actor(actor_addr);
-			rigidbody = actor->to_rigid_body();
+			rigidbody = actor->isRigidBody();
 			
 			if(window && rigidbody)
 			{

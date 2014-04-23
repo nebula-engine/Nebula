@@ -4,23 +4,23 @@
 #include <nebula/shape.hpp>
 
 
-neb::actor::RigidActor::RigidActor(glutpp::parent_s parent):
-	neb::actor::Actor(parent)
+neb::Actor::RigidActor::RigidActor(glutpp::actor::parent_s parent):
+	neb::Actor::Actor(parent)
 {
 
 }
-void neb::actor::RigidActor::init(glutpp::actor::desc_s desc) {
-	neb::actor::Actor::init(desc);
+void neb::Actor::RigidActor::init(glutpp::actor::desc_s desc) {
+	neb::Actor::Actor::init(desc);
 }
-void	neb::actor::RigidActor::step_local(double time) {
+void	neb::Actor::RigidActor::step_local(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
-	neb::actor::Actor::step_local(time);
+	neb::Actor::Actor::step_local(time);
 }
-void	neb::actor::RigidActor::step_remote(double time) {
+void	neb::Actor::RigidActor::step_remote(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
-	neb::actor::Actor::step_remote(time);
+	neb::Actor::Actor::step_remote(time);
 }
-void	neb::actor::RigidActor::setupFiltering()
+void	neb::Actor::RigidActor::setupFiltering()
 {
 	assert(px_actor_);
 
@@ -54,13 +54,13 @@ void	neb::actor::RigidActor::setupFiltering()
 
 	delete[] shapes;
 }
-glutpp::actor::desc_s neb::actor::RigidActor::get_projectile() {
+glutpp::actor::desc_s neb::Actor::RigidActor::get_projectile() {
 	abort();
 	return glutpp::actor::desc_s();
 }
-void neb::actor::RigidActor::print_info() {
+void neb::Actor::RigidActor::print_info() {
 
-	neb::actor::Actor::print_info();
+	neb::Actor::Actor::print_info();
 	
 	auto pxra = px_actor_->isRigidActor();
 	

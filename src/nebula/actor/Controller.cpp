@@ -1,22 +1,22 @@
 
 #include <nebula/actor/Controller.hpp>
 
-neb::actor::Controller::Controller(glutpp::parent_s parent):
-	neb::actor::Base(parent)
+neb::Actor::Controller::Controller(glutpp::actor::parent_s parent):
+	neb::Actor::Base(parent)
 {
 
 }
-void	neb::actor::Controller::release()
+void	neb::Actor::Controller::release()
 {
 }
-void	neb::actor::Controller::step(float dt)
+void	neb::Actor::Controller::step(float dt)
 {
 
 }
-void	neb::actor::Controller::init(glutpp::actor::desc_s) {
+void	neb::Actor::Controller::init(glutpp::actor::desc_s) {
 
 }
-void	neb::actor::Controller::add_force()
+void	neb::Actor::Controller::add_force()
 {
 
 }

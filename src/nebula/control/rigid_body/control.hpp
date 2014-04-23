@@ -36,7 +36,7 @@ namespace neb {
 				private:
 
 				public:
-					neb::actor::Base_w		actor_;
+					neb::Actor::Base_w		actor_;
 
 					neb::control::rigid_body::raw	raw_;
 

@@ -8,38 +8,38 @@
 #include <nebula/scene/scene.hpp>
 #include <nebula/actor/Actor.hpp>
 
-neb::actor::Actor::Actor(glutpp::parent_s parent):
-	neb::actor::Base(parent),
+neb::Actor::Actor::Actor(glutpp::actor::parent_s parent):
+	neb::Actor::Base(parent),
 	px_actor_(NULL)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 }
-void neb::actor::Actor::init(glutpp::actor::desc_s desc) {
+void neb::Actor::Actor::init(glutpp::actor::desc_s desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	neb::actor::Base::init(desc);
+	neb::Actor::Base::init(desc);
 }
-void	neb::actor::Actor::set_pose(math::transform pose) {
+void	neb::Actor::Actor::set_pose(math::transform pose) {
 	NEBULA_DEBUG_1_FUNCTION;
 
-	neb::actor::Base::set_pose(pose);
+	neb::Actor::Base::set_pose(pose);
 }
-int	neb::actor::Actor::fire() {
+int	neb::Actor::Actor::fire() {
 	NEBULA_DEBUG_1_FUNCTION;
-	return neb::actor::Base::fire();
+	return neb::Actor::Base::fire();
 }
-void neb::actor::Actor::step_local(double time) {
+void neb::Actor::Actor::step_local(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
-	neb::actor::Base::step_local(time);
+	neb::Actor::Base::step_local(time);
 }
-void neb::actor::Actor::step_remote(double time) {
+void neb::Actor::Actor::step_remote(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
-	neb::actor::Base::step_remote(time);
+	neb::Actor::Base::step_remote(time);
 }
-void neb::actor::Actor::release() {
+void neb::Actor::Actor::release() {
 	NEBULA_DEBUG_0_FUNCTION;
 	
-	neb::actor::Base::release();
+	neb::Actor::Base::release();
 
 	//assert(!scene_.expired());
 
@@ -52,7 +52,7 @@ glutpp::actor::desc_s get_projectile() {
 	abort();
 	return glutpp::actor::desc_s();
 }
-void neb::actor::Actor::print_info() {
+void neb::Actor::Actor::print_info() {
 
 	physx::PxActorType::Enum type	= px_actor_->getType();
 	//physx::PxBounds bounds	= px_actor_->getWorldBounds();

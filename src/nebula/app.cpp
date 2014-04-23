@@ -8,6 +8,7 @@
 #include <gru/network/message.hpp>
 
 #include <nebula/config.hpp>
+#include <nebula/actor/rigid_body/rigid_body.hpp>
 #include <nebula/control/rigid_body/control.hpp>
 #include <nebula/app.hpp>
 #include <nebula/network/message.hpp>
@@ -220,9 +221,9 @@ neb::scene::scene_s neb::app::get_scene(glutpp::scene::addr_s addr) {
 
 	return s;
 }
-neb::actor::Base_s neb::app::get_actor(glutpp::actor::addr_s addr) {
+neb::Actor::Base_s neb::app::get_actor(glutpp::actor::addr_s addr) {
 
-	neb::actor::Base_s actor;
+	neb::Actor::Base_s actor;
 
 	auto scene = get_scene(addr->get_scene_addr());
 	assert(scene);

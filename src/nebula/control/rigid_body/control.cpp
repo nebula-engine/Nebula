@@ -151,7 +151,7 @@ void neb::control::rigid_body::control::step_local1(double time) {
 
 	// get actor
 	assert(!actor_.expired());
-	auto actor = std::dynamic_pointer_cast<neb::actor::Actor>(actor_.lock());
+	auto actor = std::dynamic_pointer_cast<neb::Actor::Actor>(actor_.lock());
 	auto pxrigidbody = actor->px_actor_->isRigidBody();
 
 

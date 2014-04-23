@@ -3,27 +3,27 @@
 #include <nebula/physics.hpp>
 #include <nebula/actor/Rigid_Dynamic.hpp>
 
-neb::actor::Rigid_Dynamic::Rigid_Dynamic(glutpp::parent_s parent):
-	neb::actor::rigid_body::rigid_body(parent)
+neb::Actor::Rigid_Dynamic::Rigid_Dynamic(glutpp::actor::parent_s parent):
+	neb::Actor::RigidBody::RigidBody(parent)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 }
-void neb::actor::Rigid_Dynamic::init(glutpp::actor::desc_s desc) {
+void neb::Actor::Rigid_Dynamic::init(glutpp::actor::desc_s desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	neb::actor::rigid_body::rigid_body::init(desc);
+	neb::Actor::RigidBody::RigidBody::init(desc);
 	
 	auto pxrd = px_actor_->isRigidDynamic();
 	pxrd->setLinearDamping(0.01);
 }
-void neb::actor::Rigid_Dynamic::create_physics() {
+void neb::Actor::Rigid_Dynamic::create_physics() {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	assert(px_actor_ == NULL);
 
 	auto scene = get_scene();
 
-	math::transform pose(get_pose());
+	math::transform pose(getPose());
 
 
 	// PxActor
@@ -47,7 +47,7 @@ void neb::actor::Rigid_Dynamic::create_physics() {
 	scene->px_scene_->addActor(*px_rigid_dynamic);
 
 }
-void neb::actor::Rigid_Dynamic::init_physics() {
+void neb::Actor::Rigid_Dynamic::init_physics() {
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();
@@ -56,9 +56,9 @@ void neb::actor::Rigid_Dynamic::init_physics() {
 	
 	setupFiltering();
 }
-void neb::actor::Rigid_Dynamic::print_info() {
+void neb::Actor::Rigid_Dynamic::print_info() {
 	
-	neb::actor::rigid_body::rigid_body::print_info();
+	neb::Actor::RigidBody::RigidBody::print_info();
 	
 	auto pxrd = px_actor_->isRigidDynamic();
 	

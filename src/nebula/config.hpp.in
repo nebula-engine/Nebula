@@ -72,9 +72,9 @@ namespace neb {
 		class Base;
 		class Actor;
 		class RigidActor;
-		namespace rigid_body {
-			class rigid_body;
-			typedef std::shared_ptr<rigid_body>	rigid_body_s;
+		namespace RigidBody {
+			class RigidBody;
+			typedef std::shared_ptr<RigidBody>	RigidBody_s;
 		}
 		class Rigid_Dynamic;
 		class Rigid_Static;

@@ -25,11 +25,11 @@ void neb::shape::shape::create_physics() {
 	
 	assert(!parent_.expired());
 	
-	auto actor = std::dynamic_pointer_cast<neb::actor::Base>(getParent());
+	auto actor = std::dynamic_pointer_cast<neb::Actor::Base>(getParent());
 
 	if(actor) {
 
-		auto rigidactor = actor->isRigidActor();//std::dynamic_pointer_cast<neb::actor::Rigid_Actor>(parent_.lock());
+		auto rigidactor = actor->isRigidActor();//std::dynamic_pointer_cast<neb::Actor::Rigid_Actor>(parent_.lock());
 
 		if(rigidactor) {
 			physx::PxRigidActor* px_rigid_actor = static_cast<physx::PxRigidActor*>(rigidactor->px_actor_);

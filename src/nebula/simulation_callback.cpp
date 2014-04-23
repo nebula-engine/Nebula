@@ -15,8 +15,8 @@ void	neb::simulation_callback::onContact(
 	
 	physx::PxActor* pxactor0 = pairHeader.actors[0];
 	physx::PxActor* pxactor1 = pairHeader.actors[1];
-	neb::actor::Actor* actor0 = reinterpret_cast<neb::actor::Actor*>(pxactor0->userData);
-	neb::actor::Actor* actor1 = reinterpret_cast<neb::actor::Actor*>(pxactor1->userData);
+	neb::Actor::Actor* actor0 = reinterpret_cast<neb::Actor::Actor*>(pxactor0->userData);
+	neb::Actor::Actor* actor1 = reinterpret_cast<neb::Actor::Actor*>(pxactor1->userData);
 	
 	for(physx::PxU32 i=0; i < nbPairs; i++)
 	{

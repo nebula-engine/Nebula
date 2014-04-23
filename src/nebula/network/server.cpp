@@ -30,7 +30,7 @@ void neb::network::server::callback_accept(int s) {
         assert(ad);
 	
         auto actor = app->scenes_[0]->create_actor_local(ad);
-        auto rigidbody = actor->to_rigid_body();
+        auto rigidbody = actor->isRigidBody();
 	
 	rigidbody->create_control(control_raw);
 	

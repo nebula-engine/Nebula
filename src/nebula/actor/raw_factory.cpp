@@ -10,13 +10,13 @@ glutpp::actor::raw_s neb::actor::raw_factory::create(int type) {
 	switch(type)
 	{
 		case glutpp::actor::type::e::RIGID_DYNAMIC:
-			raw.reset(new neb::actor::raw);
+			raw.reset(new neb::Actor::raw);
 			break;
 		case glutpp::actor::type::e::RIGID_STATIC:
-			raw.reset(new neb::actor::raw);
+			raw.reset(new neb::Actor::raw);
 			break;
 		case glutpp::actor::type::e::EMPTY:
-			raw.reset(new neb::actor::raw);
+			raw.reset(new neb::Actor::raw);
 			break;
 		default:
 			raw = glutpp::actor::raw_factory::create(type);

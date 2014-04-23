@@ -45,6 +45,12 @@ std::shared_ptr<neb::app> neb::scene::scene::get_app() {
 
 	return app_.lock();
 }
+math::mat44		neb::scene::scene::getPose() {
+	return math::mat44();
+}
+math::mat44		neb::scene::scene::getPoseGlobal() {
+	return math::mat44();
+}
 neb::Actor::Base_s neb::scene::scene::get_actor(int i) {
 	auto it = actors_.find(i);
 	neb::Actor::Base_s a;

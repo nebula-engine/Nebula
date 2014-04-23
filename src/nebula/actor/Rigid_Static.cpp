@@ -3,25 +3,25 @@
 #include <nebula/shape.hpp>
 #include <nebula/actor/Rigid_Static.hpp>
 
-neb::actor::Rigid_Static::Rigid_Static(glutpp::parent_s parent):
-	neb::actor::RigidActor(parent)
+neb::Actor::Rigid_Static::Rigid_Static(glutpp::actor::parent_s parent):
+	neb::Actor::RigidActor(parent)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	neb::actor::Rigid_Static::init(glutpp::actor::desc_s desc) {
+void	neb::Actor::Rigid_Static::init(glutpp::actor::desc_s desc) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	neb::actor::RigidActor::init(desc);
+	neb::Actor::RigidActor::init(desc);
 }
-void	neb::actor::Rigid_Static::step_local(double time) {
+void	neb::Actor::Rigid_Static::step_local(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
-	neb::actor::RigidActor::step_local(time);
+	neb::Actor::RigidActor::step_local(time);
 }
-void	neb::actor::Rigid_Static::step_remote(double time) {
+void	neb::Actor::Rigid_Static::step_remote(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
-	neb::actor::RigidActor::step_remote(time);
+	neb::Actor::RigidActor::step_remote(time);
 }
-void neb::actor::Rigid_Static::create_physics() {
+void neb::Actor::Rigid_Static::create_physics() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
@@ -29,7 +29,7 @@ void neb::actor::Rigid_Static::create_physics() {
 	
 	auto scene = get_scene();//scene_.lock();
 	
-	math::transform pose(get_pose());
+	math::transform pose(getPose());
 	
 	// PxActor
 	physx::PxRigidStatic* px_rigid_static = neb::__physics.px_physics_->createRigidStatic(pose);
@@ -50,7 +50,7 @@ void neb::actor::Rigid_Static::create_physics() {
 
 	scene->px_scene_->addActor(*px_rigid_static);
 }
-void neb::actor::Rigid_Static::init_physics() {
+void neb::Actor::Rigid_Static::init_physics() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 	

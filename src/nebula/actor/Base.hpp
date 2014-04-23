@@ -40,8 +40,8 @@ namespace neb {
 				void				create_shapes(glutpp::actor::desc_s);
 				void				create_children(glutpp::actor::desc_s);
 				
-				virtual void			create_physics() {abort();}
-				virtual void			init_physics() {abort();}
+				virtual void			create_physics() = 0;
+				virtual void			init_physics() = 0;
 
 				neb::app_s			get_app();
 				neb::scene::scene_s		get_scene();
@@ -81,7 +81,7 @@ namespace neb {
 				 */
 				Base_s				isBase();
 				RigidActor_s			isRigidActor();
-				rigid_body::rigid_body_s	isRigidBody();
+				RigidBody::RigidBody_s		isRigidBody();
 				/** @} */
 			public:
 				glutpp::actor::mode_update::e	mode_update_;

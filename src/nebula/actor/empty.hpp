@@ -26,6 +26,8 @@ namespace neb {
 
 				virtual void			add_force(double) {}
 
+				virtual void			create_physics() {};
+				virtual void			init_physics() {};
 		};
 	}
 }
