@@ -4,7 +4,7 @@
 
 
 neb::control::rigid_body::raw::raw():
-	q_target_(math::quat(0.0 * M_PI,math::vec3<double>(1.0,0.0,0.0)))
+	q_target_(math::quat<double>(0.0 * M_PI,math::vec3<double>(1.0,0.0,0.0)))
 {
 	
 }

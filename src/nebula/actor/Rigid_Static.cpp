@@ -29,7 +29,7 @@ void neb::Actor::Rigid_Static::create_physics() {
 	
 	auto scene = get_scene();//scene_.lock();
 	
-	math::transform pose(getPose());
+	math::transform<double> pose(getPose());
 	
 	// PxActor
 	physx::PxRigidStatic* px_rigid_static = neb::__physics.px_physics_->createRigidStatic(pose);

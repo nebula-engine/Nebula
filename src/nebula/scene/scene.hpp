@@ -96,8 +96,8 @@ namespace neb {
 				void					fire_local(neb::Actor::Base_s);
 				void					fire_remote(neb::Actor::Base_s);
 
-				math::mat44				getPose();
-				math::mat44				getPoseGlobal();
+				math::mat44<double>				getPose();
+				math::mat44<double>				getPoseGlobal();
 
 
 				// networking

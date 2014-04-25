@@ -134,7 +134,7 @@ void neb::control::rigid_body::control::step_local1(double time) {
 	}
 	else
 	{
-		math::quat rot(q_scale * dt, raw_.t_);
+		math::quat<double> rot(q_scale * dt, raw_.t_);
 
 		raw_.q_target_ *= rot;
 
@@ -156,8 +156,8 @@ void neb::control::rigid_body::control::step_local1(double time) {
 
 
 	// rotation from pose to target pose
-	math::quat q = actor->get_raw()->pose_.q;
-	math::quat a = raw_.q_target_.getConjugate() * q;
+	math::quat<double> q = actor->get_raw()->pose_.q;
+	math::quat<double> a = raw_.q_target_.getConjugate() * q;
 
 
 
@@ -168,7 +168,7 @@ void neb::control::rigid_body::control::step_local1(double time) {
 	
 	// inertia matrix
 	math::vec3<double> vI = pxrigidbody->getMassSpaceInertiaTensor();
-	math::mat33 I(vI);
+	math::mat33<double> I(vI);
 	
 
 

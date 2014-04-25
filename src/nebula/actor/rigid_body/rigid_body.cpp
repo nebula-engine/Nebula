@@ -75,7 +75,7 @@ void neb::Actor::RigidBody::RigidBody::add_force(double time) {
 		t += control_->t();
 	}
 	
-	math::transform pose = get_raw()->pose_;
+	math::transform<double> pose = get_raw()->pose_;
 
 	f = pose.q.rotate(f);
 	t = pose.q.rotate(t);
@@ -109,7 +109,7 @@ glutpp::actor::desc_s neb::Actor::RigidBody::RigidBody::get_projectile() {
 	math::vec3<double> offset = desc->get_raw()->pose_.p;
 
 	// pose
-	math::transform pose(get_raw()->pose_);	
+	math::transform<double> pose(get_raw()->pose_);	
 	offset = pose.q.rotate(offset);
 	pose.p += offset;
 	desc->get_raw()->pose_ = pose;

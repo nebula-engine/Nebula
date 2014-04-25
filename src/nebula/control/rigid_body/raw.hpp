@@ -19,7 +19,7 @@ namespace neb {
 
 					type				type_;
 
-					math::quat			q_target_;
+					math::quat<double>			q_target_;
 					math::vec3<double>		p_target_;
 
 					math::vec3<double>		f_;

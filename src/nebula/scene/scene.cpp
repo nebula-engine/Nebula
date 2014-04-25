@@ -45,11 +45,11 @@ std::shared_ptr<neb::app> neb::scene::scene::get_app() {
 
 	return app_.lock();
 }
-math::mat44		neb::scene::scene::getPose() {
-	return math::mat44();
+math::mat44<double>		neb::scene::scene::getPose() {
+	return math::mat44<double>();
 }
-math::mat44		neb::scene::scene::getPoseGlobal() {
-	return math::mat44();
+math::mat44<double>		neb::scene::scene::getPoseGlobal() {
+	return math::mat44<double>();
 }
 neb::Actor::Base_s neb::scene::scene::get_actor(int i) {
 	auto it = actors_.find(i);
@@ -471,7 +471,7 @@ void neb::scene::scene::step_local(double time) {
 	//printf( "count PxRigidActor:%i count active transform:%i\n", nbPxactor, nb_active_transforms );
 
 	//physx::PxTransform pose;
-	math::transform pose;
+	math::transform<double> pose;
 
 	// update each render object with the new transform
 	for(physx::PxU32 i = 0; i < nb_active_transforms; ++i) {
