@@ -6,8 +6,12 @@ namespace Game {
 class Player {
 public:
   
-  /** @brief %Actor
+  /** @brief %Actor.
+   * %Actor which the player controls
+   */
   std::weak_ptr<neb::Actor::Base>   actor_;
+  
+  
   
 };
 }
