@@ -30,7 +30,7 @@ namespace glutpp {
 				int		key_fun(int,int,int,int);
 
 
-				math::mat44				ortho_;
+				math::mat44<double>			ortho_;
 
 				gal::map<glutpp::gui::object::object>	objects_;
 

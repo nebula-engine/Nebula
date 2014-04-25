@@ -51,8 +51,8 @@ namespace glutpp {
 				shape(glutpp::shape::parent_s parent);
 				~shape();
 				
-				math::mat44	getPose();
-				math::mat44	getPoseGlobal();
+				math::mat44<double>	getPose();
+				math::mat44<double>	getPoseGlobal();
 				
 				glutpp::shape::parent_s	getParent();
 
@@ -61,21 +61,26 @@ namespace glutpp {
 				void		cleanup();
 				void		step(double time);
 				void		notify_foundation_change_pose();
-				void		load_lights(int& i, math::mat44 space);
-				void		draw(glutpp::window::window_s, math::mat44 space);
+				void		load_lights(int& i, math::mat44<double> space);
+				void		draw(glutpp::window::window_s, math::mat44<double> space);
 	
-				void		model_load(math::mat44 space);
+				void		model_load(math::mat44<double> space);
 				void		init_buffer(glutpp::window::window_s, std::shared_ptr<glutpp::glsl::program> p);
 
-				void		draw_elements(glutpp::window::window_s, math::mat44 space);
-
+				void		draw_elements(glutpp::window::window_s, math::mat44<double> space);
+				
+				/** @name Index
+				 * @{
+				 */
 				void		i(int ni);
 				int		i();
-
+				/** @} */
+				/** @name Flag
+				 * @{
+				 */
 				unsigned int	f();
 				void		f(unsigned int flag);
-
-
+				/** @} */
 			public:
 				// draw data
 

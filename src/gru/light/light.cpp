@@ -74,23 +74,23 @@ void glutpp::light::light::dim() {
 void	glutpp::light::light::draw() {	
 	GLUTPP_DEBUG_1_FUNCTION;
 }
-math::mat44 glutpp::light::light::get_pose() {
+math::mat44<double> glutpp::light::light::get_pose() {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
 	assert(!shape_.expired());
 	
-	math::mat44 m = shape_.lock()->getPoseGlobal();
+	math::mat44<double> m = shape_.lock()->getPoseGlobal();
 	
 	return m;
 }
-void glutpp::light::light::load(int o, math::mat44 space) {
+void glutpp::light::light::load(int o, math::mat44<double> space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
 	auto p = glutpp::master::Global()->current_program();
 
-	math::vec4 pos = raw_.pos_;
+	math::vec4<double> pos = raw_.pos_;
 	pos = space.GetTranslatedVector3D(pos);
-	pos.w = raw_.pos_.w;
+	pos.w() = raw_.pos_.w();
 
 	math::vec3<double> spot_direction = raw_.spot_direction_;
 	

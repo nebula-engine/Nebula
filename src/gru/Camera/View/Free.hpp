@@ -31,15 +31,15 @@ namespace glutpp {
 					/** @} */
 
 					/** @brief view matrix */
-					virtual math::mat44			view();
-					virtual void				Step(double);
+					virtual math::mat44<double>			view();
+					virtual void					step(double);
 					
-					void					init(glutpp::window::window_s);
+					void						init(glutpp::window::window_s);
 
-					float					pitch_;
-					float					yaw_;
+					float						pitch_;
+					float						yaw_;
 
-					math::vec4					eye_;
+					math::vec4<double>				eye_;
 					math::vec3<double>				center_;
 					math::vec3<double>				look_;
 					math::vec3<double>				up_;

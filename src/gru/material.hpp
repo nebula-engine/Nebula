@@ -13,13 +13,13 @@ namespace glutpp {
 		struct raw
 		{
 			raw();
-			void			load(tinyxml2::XMLElement*);
+			void				load(tinyxml2::XMLElement*);
 
-			math::color		ambient_;
-			math::color		diffuse_;
-			math::color		specular_;
-			math::color		emission_;
-			float			shininess_;
+			math::Color::color<double>	ambient_;
+			math::Color::color<double>	diffuse_;
+			math::Color::color<double>	specular_;
+			math::Color::color<double>	emission_;
+			float				shininess_;
 		};
 
 		class material

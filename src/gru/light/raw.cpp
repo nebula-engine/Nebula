@@ -1,12 +1,13 @@
-#include <math/free.hpp>
+
+#include <math/xml.hpp>
 
 #include <gru/light/raw.hpp>
 
 glutpp::light::raw::raw():
-	pos_(math::vec4(0.0, 0.0, 0.0, 1.0)),
-	ambient_(math::black),
-	diffuse_(math::white),
-	specular_(math::white),
+	pos_(math::vec4<double>(0.0, 0.0, 0.0, 1.0)),
+	ambient_(math::Color::black),
+	diffuse_(math::Color::white),
+	specular_(math::Color::white),
 	spot_direction_(math::vec3<double>(0.0, 0.0, -1.0)),
 	spot_cutoff_(10.0),
 	spot_exponent_(1.0),
@@ -19,34 +20,34 @@ glutpp::light::raw::raw():
 void	glutpp::light::raw::load(tinyxml2::XMLElement* element) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
-	pos_ = math::xml_parse_vec4(element->FirstChildElement("p"));
+	pos_ = math::Xml::parse_vec4<double>(element->FirstChildElement("p"));
 	
-	ambient_ = math::xml_parse_color(
+	ambient_ = math::Xml::parse_color<double>(
 			element->FirstChildElement("ambient"),
 			ambient_);
 	
-	diffuse_ = math::xml_parse_color(
+	diffuse_ = math::Xml::parse_color<double>(
 			element->FirstChildElement("diffuse"),
 			diffuse_);
 	
-	specular_ = math::xml_parse_color(
+	specular_ = math::Xml::parse_color<double>(
 			element->FirstChildElement("specular"),
 			specular_);
 	
 	
 	
-	spot_direction_ = math::xml_parse_vec3(
+	spot_direction_ = math::Xml::parse_vec3<double>(
 		element->FirstChildElement("spot_direction"),
 		math::vec3<double>(0.0, 0.0, 0.0));
 	
-	spot_cutoff_           = math::xml_parse_float(element->FirstChildElement("spot_cutoff"), M_PI);
-	spot_exponent_         = math::xml_parse_float(element->FirstChildElement("spot_exponent"), 0.0);
-	spot_light_cos_cutoff_ = math::xml_parse_float(element->FirstChildElement("spot_cutoff"), M_PI);
+	spot_cutoff_           = math::Xml::parse_float<double>(element->FirstChildElement("spot_cutoff"), M_PI);
+	spot_exponent_         = math::Xml::parse_float<double>(element->FirstChildElement("spot_exponent"), 0.0);
+	spot_light_cos_cutoff_ = math::Xml::parse_float<double>(element->FirstChildElement("spot_cutoff"), M_PI);
 	
 	
-	atten_const_  = math::xml_parse_float(element->FirstChildElement("atten_const"), 1.0);
-	atten_linear_ = math::xml_parse_float(element->FirstChildElement("atten_linear"), 0.0);
-	atten_quad_   = math::xml_parse_float(element->FirstChildElement("atten_quad"), 0.0);
+	atten_const_  = math::Xml::parse_float<double>(element->FirstChildElement("atten_const"), 1.0);
+	atten_linear_ = math::Xml::parse_float<double>(element->FirstChildElement("atten_linear"), 0.0);
+	atten_quad_   = math::Xml::parse_float<double>(element->FirstChildElement("atten_quad"), 0.0);
 	
 	print();
 }
@@ -54,7 +55,7 @@ void	glutpp::light::raw::print() {
 
 	pos_.print();
 	printf("pos_                   = % 2.1f % 2.1f % 2.1f % 2.1f\n",
-			pos_.x, pos_.y, pos_.z, pos_.w);
+			pos_.x(), pos_.y(), pos_.z(), pos_.w());
 	printf("ambient_               = % 2.1f % 2.1f % 2.1f % 2.1f\n",
 			ambient_.r, ambient_.g, ambient_.b, ambient_.a);
 	printf("diffuse_               = % 2.1f % 2.1f % 2.1f % 2.1f\n",

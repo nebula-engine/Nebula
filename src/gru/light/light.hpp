@@ -33,7 +33,7 @@ namespace glutpp
 				virtual void			release();
 				virtual void			cleanup();
 				void				step(double) {}
-				void				load(int, math::mat44);
+				void				load(int, math::mat44<double>);
 
 				void				load_shadow();
 				void				draw();
@@ -43,8 +43,8 @@ namespace glutpp
 
 
 				void				notify_foundation_change_pose();
-				math::mat44			get_pose();
-				math::vec4			get_pos();
+				math::mat44<double>		get_pose();
+				math::vec4<double>		get_pos();
 			private:
 				unsigned int			f();
 				void				f(unsigned int);

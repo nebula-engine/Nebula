@@ -80,13 +80,13 @@ void	glutpp::glsl::uniform::locate(std::shared_ptr<glutpp::glsl::program> p)
 	}
 
 }
-void	glutpp::glsl::uniform::load(math::mat44 m) {
-
-	glUniformMatrix4fv(o_[0],1,GL_FALSE,m);
+void	glutpp::glsl::uniform::load(math::mat44<double> m) {
+	
+	glUniformMatrix4dv(o_[0], 1, GL_FALSE, m);
 
 	checkerror("glUniformMatrix4fv");
 }
-void	glutpp::glsl::uniform::load(math::color c) {
+void	glutpp::glsl::uniform::load(math::Color::color<double> c) {
 
 	glUniform4dv(o_[0], 1, c);
 	
@@ -115,14 +115,14 @@ void	glutpp::glsl::uniform::load(float f)
 
 	checkerror("glUniform1f");
 }
-void	glutpp::glsl::uniform::load(int c, math::mat44 m) {
+void	glutpp::glsl::uniform::load(int c, math::mat44<double> m) {
 	/** @todo make all math vec and mat templates and make a load function here for both float and double */
 	
-	glUniformMatrix4fv(o_[c],1,GL_FALSE,m);
+	glUniformMatrix4dv(o_[c], 1, GL_FALSE, m);
 
 	checkerror("glUniformMatrix4fv");
 }
-void	glutpp::glsl::uniform::load(int c, math::color color) {
+void	glutpp::glsl::uniform::load(int c, math::Color::color<double> color) {
 
 	glUniform4dv(o_[c], 1, color);
 	

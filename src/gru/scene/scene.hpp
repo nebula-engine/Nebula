@@ -66,17 +66,17 @@ namespace glutpp {
 
 				scene();
 				~scene();
-				void		i(int ni);
-				int		i();
-				unsigned int	f();
-				void		f(unsigned int flag);
-				void		init(glutpp::scene::desc_s desc);
-				void		release();
-				math::mat44	get_pose();
+				void			i(int ni);
+				int			i();
+				unsigned int		f();
+				void			f(unsigned int flag);
+				void			init(glutpp::scene::desc_s desc);
+				void			release();
+				math::mat44<double>	get_pose();
 				/** @brief render */
-				void		render(double time, glutpp::Camera::View::Base_s, glutpp::window::window_s);
-				void		draw(glutpp::window::window_s window);
-				void		resize(int w, int h);
+				void			render(double time, glutpp::Camera::View::Base_s, glutpp::window::window_s);
+				void			draw(glutpp::window::window_s window);
+				void			resize(int w, int h);
 
 
 			public:

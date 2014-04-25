@@ -36,14 +36,14 @@ namespace glutpp {
 			protected:
 				raw();
 			public:
-				virtual void		load(tinyxml2::XMLElement*);
-				virtual void		load(glutpp::actor::actor_s);
+				virtual void			load(tinyxml2::XMLElement*);
+				virtual void			load(glutpp::actor::actor_s);
 				
-				void			plane(tinyxml2::XMLElement*);
-				void			controller(tinyxml2::XMLElement*);
+				void				plane(tinyxml2::XMLElement*);
+				void				controller(tinyxml2::XMLElement*);
 
-				unsigned int		parse_filter(tinyxml2::XMLElement*, unsigned int);
-				void			parse_filtering(tinyxml2::XMLElement*);
+				unsigned int			parse_filter(tinyxml2::XMLElement*, unsigned int);
+				void				parse_filtering(tinyxml2::XMLElement*);
 
 
 				glutpp::actor::type::e		type_;
@@ -51,17 +51,17 @@ namespace glutpp {
 				unsigned int			flag_;
 				char				name_[32];
 
-				math::transform		pose_;
+				math::transform<double>		pose_;
 
-				math::vec3<double>	n_;
-				float			d_;
+				math::vec3<double>		n_;
+				float				d_;
 
-				math::vec3<double>	velocity_;
-				float			density_;
+				math::vec3<double>		velocity_;
+				float				density_;
 
 				struct {
-					filter_data	simulation_;
-					filter_data	scene_query_;
+					filter_data		simulation_;
+					filter_data		scene_query_;
 				} filter_data_;
 		};
 	}

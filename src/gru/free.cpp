@@ -29,7 +29,7 @@ void	print(unsigned char * s, int w, int h) {
   {
 
   }*/
-void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
+void	glutpp::draw_quad(float x, float y, float w, float h, math::Color::color<double> color)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
@@ -83,8 +83,7 @@ void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
 	glPopMatrix();
 
 }
-void	glutpp::draw_text(float x, float y, float sx, float sy, math::color color, char const * text)
-{
+void	glutpp::draw_text(float x, float y, float sx, float sy, math::Color::color<double> color, char const * text) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	const char * c;

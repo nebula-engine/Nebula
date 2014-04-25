@@ -5,6 +5,12 @@ project(gru)
 find_package(math)
 find_package(galaxy)
 find_package(glfw)
+find_package(TinyXML2)
+
+if(${TinyXML2_FOUND})
+else()
+	set(TinyXML2_FOUND 0)
+endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
 

@@ -38,8 +38,8 @@ namespace glutpp { namespace gui { namespace object {
 			float				w_;
 			float				h_;
 
-			math::color			font_color_;
-			math::color			bg_color_;
+			math::Color::color<double>	font_color_;
+			math::Color::color<double>	bg_color_;
 
 			bool				active_;
 

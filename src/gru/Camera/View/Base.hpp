@@ -31,14 +31,14 @@ namespace glutpp {
 					Base();
 					
 					//void		init(glutpp::renderable_shared);
-					virtual math::mat44	view() = 0;
+					virtual math::mat44<double>	view() = 0;
 					
-					void			load();
+					void				load();
 					
 					/** @brief step
 					 * TODO explain when in timeline this occurs and in which thread and why
 					 */
-					virtual void		Step(double) = 0;
+					virtual void			step(double) = 0;
 
 
 					//std::weak_ptr<renderable>		renderable_;

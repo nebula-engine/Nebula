@@ -17,23 +17,19 @@
 #include <gru/shape/desc.hpp>
 #include <gru/material.hpp>
 
-namespace glutpp
-{
-	struct file_header
-	{
+namespace glutpp {
+	struct file_header {
 		int len_vertices_;
 		int len_indices_;
 	};
-	struct vertex
-	{
+	struct vertex {
 		//void		print();
 
-		math::vec4		position;
+		math::vec4<double>	position;
 		math::vec3<double>	normal;
-		math::vec2		texcoor;
+		math::vec2<double>	texcoor;
 	};
-	class mesh
-	{
+	class mesh {
 		public:
 			mesh();
 			void				save(char const *);

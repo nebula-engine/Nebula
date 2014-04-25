@@ -6,7 +6,7 @@
 #include <tinyxml2.h>
 
 #include <math/vec3.hpp>
-//#include <math/raw/raw.h>
+#include <math/transform.hpp>
 
 #include <galaxy/network/serial.hpp>
 
@@ -39,8 +39,8 @@ namespace glutpp
 				int			type_;
 				unsigned int		flag_;
 
-				math::transform		pose_;
-				math::vec3<double>	s_;
+				math::transform<double>		pose_;
+				math::vec3<double>		s_;
 
 
 				char			image_[max_filename_length];

@@ -1,4 +1,6 @@
+#include <math/config.hpp>
 #include <math/free.hpp>
+#include <math/xml.hpp>
 
 #include <gru/shape/raw.hpp>
 
@@ -80,7 +82,7 @@ void glutpp::shape::raw_base::box(math::vec3<double> ns) {
 void glutpp::shape::raw_base::box(tinyxml2::XMLElement* element) {
 	type_ = glutpp::shape::type::BOX;
 	
-	s_ = math::xml_parse_vec3(element->FirstChildElement("s"), math::vec3<double>(1,1,1));
+	s_ = math::Xml::parse_vec3<double>(element->FirstChildElement("s"), math::vec3<double>(1,1,1));
 }
 void glutpp::shape::raw_base::sphere(float r) {
 	type_ = glutpp::shape::type::SPHERE;
@@ -90,7 +92,7 @@ void glutpp::shape::raw_base::sphere(float r) {
 void glutpp::shape::raw_base::sphere(tinyxml2::XMLElement* element) {
 	type_ = glutpp::shape::type::SPHERE;
 
-	float r = math::xml_parse_float(element->FirstChildElement("s"));
+	float r = math::Xml::parse_float<float>(element->FirstChildElement("s"),0);
 	s_ = math::vec3<double>(r, r, r);
 }
 

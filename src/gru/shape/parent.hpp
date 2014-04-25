@@ -29,11 +29,11 @@ namespace glutpp {
 			public:
 				virtual ~parent() {}
 
-				virtual math::mat44		getPoseGlobal() = 0;
-				virtual math::mat44		getPose() = 0;
+				virtual math::mat44<double>		getPoseGlobal() = 0;
+				virtual math::mat44<double>		getPose() = 0;
 
-				glutpp::actor::actor_s		is_actor();
-				glutpp::shape::shape_s		is_shape();
+				glutpp::actor::actor_s			isActor();
+				glutpp::shape::shape_s			isShape();
 		};
 	}
 }
