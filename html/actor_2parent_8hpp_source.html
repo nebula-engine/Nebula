@@ -47,7 +47,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -108,11 +107,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00029"></a>00029                         <span class="keyword">public</span>:
 <a name="l00030"></a>00030                                 <span class="keyword">virtual</span> ~<a class="code" href="classglutpp_1_1actor_1_1parent.html" title="abstract class for parent of an ">parent</a>() {}
 <a name="l00031"></a>00031 
-<a name="l00032"></a>00032                                 <span class="keyword">virtual</span> math::mat44             getPoseGlobal() = 0;
-<a name="l00033"></a>00033                                 <span class="keyword">virtual</span> math::mat44             getPose() = 0;
+<a name="l00032"></a>00032                                 <span class="keyword">virtual</span> math::mat44&lt;double&gt;             getPoseGlobal() = 0;
+<a name="l00033"></a>00033                                 <span class="keyword">virtual</span> math::mat44&lt;double&gt;             getPose() = 0;
 <a name="l00034"></a>00034 
-<a name="l00035"></a>00035                                 glutpp::actor::actor_s          is_actor();
-<a name="l00036"></a>00036                                 glutpp::shape::shape_s          is_shape();
+<a name="l00035"></a>00035                                 glutpp::actor::actor_s                  isActor();
+<a name="l00036"></a>00036                                 glutpp::shape::shape_s                  isShape();
 <a name="l00037"></a>00037                 };
 <a name="l00038"></a>00038         }
 <a name="l00039"></a>00039 }
@@ -141,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 11:03:55 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

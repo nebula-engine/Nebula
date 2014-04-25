@@ -47,7 +47,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -103,15 +102,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00025"></a>00025                                 <span class="keyword">public</span>:
 <a name="l00029"></a>00029                                         <a class="code" href="classglutpp_1_1Camera_1_1View_1_1Free.html" title="free flying camera this camera can move freely through the scene user input in interpreted as three-c...">Free</a>();
 <a name="l00030"></a>00030                                         <span class="comment">//Free(math::vec3&lt;double&gt; eye, double yaw, double pitch);</span>
-<a name="l00034"></a>00034 <span class="comment"></span>                                        <span class="keyword">virtual</span> math::mat44                     <a class="code" href="classglutpp_1_1Camera_1_1View_1_1Free.html#adf7e996cecb8aa10c26811d6045cbd34" title="view matrix">view</a>();
-<a name="l00035"></a>00035                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                            <a class="code" href="classglutpp_1_1Camera_1_1View_1_1Free.html#a02e9f6a1a10c36751e09ded96dcd63a6" title="step TODO explain when in timeline this occurs and in which thread and why">Step</a>(<span class="keywordtype">double</span>);
+<a name="l00034"></a>00034 <span class="comment"></span>                                        <span class="keyword">virtual</span> math::mat44&lt;double&gt;                     <a class="code" href="classglutpp_1_1Camera_1_1View_1_1Free.html#a0e9b8953cdc1b529de1a6549aa55759c" title="view matrix">view</a>();
+<a name="l00035"></a>00035                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    <a class="code" href="classglutpp_1_1Camera_1_1View_1_1Free.html#a2a117540633d55517305fa69cee5f336" title="step TODO explain when in timeline this occurs and in which thread and why">step</a>(<span class="keywordtype">double</span>);
 <a name="l00036"></a>00036                                         
-<a name="l00037"></a>00037                                         <span class="keywordtype">void</span>                                    init(glutpp::window::window_s);
+<a name="l00037"></a>00037                                         <span class="keywordtype">void</span>                                            init(glutpp::window::window_s);
 <a name="l00038"></a>00038 
-<a name="l00039"></a>00039                                         <span class="keywordtype">float</span>                                   pitch_;
-<a name="l00040"></a>00040                                         <span class="keywordtype">float</span>                                   yaw_;
+<a name="l00039"></a>00039                                         <span class="keywordtype">float</span>                                           pitch_;
+<a name="l00040"></a>00040                                         <span class="keywordtype">float</span>                                           yaw_;
 <a name="l00041"></a>00041 
-<a name="l00042"></a>00042                                         math::vec4                                      eye_;
+<a name="l00042"></a>00042                                         math::vec4&lt;double&gt;                              eye_;
 <a name="l00043"></a>00043                                         math::vec3&lt;double&gt;                              center_;
 <a name="l00044"></a>00044                                         math::vec3&lt;double&gt;                              look_;
 <a name="l00045"></a>00045                                         math::vec3&lt;double&gt;                              up_;
@@ -155,7 +154,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 11:03:55 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

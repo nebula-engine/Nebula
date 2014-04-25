@@ -47,7 +47,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -138,10 +137,10 @@ typedef std::map<br class="typebreak"/>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af33c4417a03c151603a0be870fc294c6"></a><!-- doxytag: member="glutpp::shape::shape::shape" ref="af33c4417a03c151603a0be870fc294c6" args="(glutpp::shape::parent_s parent)" -->
 &#160;</td><td class="memItemRight" valign="bottom"><b>shape</b> (glutpp::shape::parent_s <a class="el" href="classglutpp_1_1shape_1_1parent.html">parent</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a437ddc67b095ec123a3aaadda7cfc7f1"></a><!-- doxytag: member="glutpp::shape::shape::getPose" ref="a437ddc67b095ec123a3aaadda7cfc7f1" args="()" -->
-math::mat44&#160;</td><td class="memItemRight" valign="bottom"><b>getPose</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe773d34fe5e989c65935a7c507e3106"></a><!-- doxytag: member="glutpp::shape::shape::getPoseGlobal" ref="afe773d34fe5e989c65935a7c507e3106" args="()" -->
-math::mat44&#160;</td><td class="memItemRight" valign="bottom"><b>getPoseGlobal</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66cb8e0a10a35d7a507ad8acfb236f91"></a><!-- doxytag: member="glutpp::shape::shape::getPose" ref="a66cb8e0a10a35d7a507ad8acfb236f91" args="()" -->
+math::mat44&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPose</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4725bfab634f98e0e347e344c6216038"></a><!-- doxytag: member="glutpp::shape::shape::getPoseGlobal" ref="a4725bfab634f98e0e347e344c6216038" args="()" -->
+math::mat44&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPoseGlobal</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d68e601145d5e5479ec360748aa201a"></a><!-- doxytag: member="glutpp::shape::shape::getParent" ref="a4d68e601145d5e5479ec360748aa201a" args="()" -->
 glutpp::shape::parent_s&#160;</td><td class="memItemRight" valign="bottom"><b>getParent</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d25094ffd1119b04797289d1a3da851"></a><!-- doxytag: member="glutpp::shape::shape::init" ref="a7d25094ffd1119b04797289d1a3da851" args="(glutpp::shape::desc_s desc)" -->
@@ -154,20 +153,22 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>cleanup</b> ()</td></
 void&#160;</td><td class="memItemRight" valign="bottom"><b>step</b> (double time)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab30cd62c6b82b7554c75c888128af643"></a><!-- doxytag: member="glutpp::shape::shape::notify_foundation_change_pose" ref="ab30cd62c6b82b7554c75c888128af643" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>notify_foundation_change_pose</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ddc31299c0c30035cf3da2b459f0e33"></a><!-- doxytag: member="glutpp::shape::shape::load_lights" ref="a1ddc31299c0c30035cf3da2b459f0e33" args="(int &amp;i, math::mat44 space)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>load_lights</b> (int &amp;i, math::mat44 space)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1405b5fa5bd7ef35b95fe42398473dd6"></a><!-- doxytag: member="glutpp::shape::shape::draw" ref="a1405b5fa5bd7ef35b95fe42398473dd6" args="(glutpp::window::window_s, math::mat44 space)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (glutpp::window::window_s, math::mat44 space)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac92f92deca5aa0221155bbb236c580e2"></a><!-- doxytag: member="glutpp::shape::shape::model_load" ref="ac92f92deca5aa0221155bbb236c580e2" args="(math::mat44 space)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>model_load</b> (math::mat44 space)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a507aa22dd5afc70313f3787743d64ccc"></a><!-- doxytag: member="glutpp::shape::shape::load_lights" ref="a507aa22dd5afc70313f3787743d64ccc" args="(int &amp;i, math::mat44&lt; double &gt; space)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>load_lights</b> (int &amp;i, math::mat44&lt; double &gt; space)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b225fdba653c5d0a392518805bf443c"></a><!-- doxytag: member="glutpp::shape::shape::draw" ref="a7b225fdba653c5d0a392518805bf443c" args="(glutpp::window::window_s, math::mat44&lt; double &gt; space)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (glutpp::window::window_s, math::mat44&lt; double &gt; space)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c91a38dac528c55e364333a99c01b60"></a><!-- doxytag: member="glutpp::shape::shape::model_load" ref="a2c91a38dac528c55e364333a99c01b60" args="(math::mat44&lt; double &gt; space)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>model_load</b> (math::mat44&lt; double &gt; space)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a892f5bc48dc85c0e563d3a2d36d0a6a7"></a><!-- doxytag: member="glutpp::shape::shape::init_buffer" ref="a892f5bc48dc85c0e563d3a2d36d0a6a7" args="(glutpp::window::window_s, std::shared_ptr&lt; glutpp::glsl::program &gt; p)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>init_buffer</b> (glutpp::window::window_s, std::shared_ptr&lt; <a class="el" href="classglutpp_1_1glsl_1_1program.html">glutpp::glsl::program</a> &gt; p)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae227812031a08674adac60d98135f27"></a><!-- doxytag: member="glutpp::shape::shape::draw_elements" ref="aae227812031a08674adac60d98135f27" args="(glutpp::window::window_s, math::mat44 space)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_elements</b> (glutpp::window::window_s, math::mat44 space)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec9ad2b2ea72f384a4db87facbfacbbb"></a><!-- doxytag: member="glutpp::shape::shape::draw_elements" ref="aec9ad2b2ea72f384a4db87facbfacbbb" args="(glutpp::window::window_s, math::mat44&lt; double &gt; space)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_elements</b> (glutpp::window::window_s, math::mat44&lt; double &gt; space)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Index</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a691317aef9c651b798d5a9665a870951"></a><!-- doxytag: member="glutpp::shape::shape::i" ref="a691317aef9c651b798d5a9665a870951" args="(int ni)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>i</b> (int ni)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a517cac7ef31a24c2d01161d4db27efbb"></a><!-- doxytag: member="glutpp::shape::shape::i" ref="a517cac7ef31a24c2d01161d4db27efbb" args="()" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>i</b> ()</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Flag</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5186c28b74f4e8d141edf5b4895d54fc"></a><!-- doxytag: member="glutpp::shape::shape::f" ref="a5186c28b74f4e8d141edf5b4895d54fc" args="()" -->
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>f</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5528e1ff5838dcff3fa1e8cb5a47c49"></a><!-- doxytag: member="glutpp::shape::shape::f" ref="af5528e1ff5838dcff3fa1e8cb5a47c49" args="(unsigned int flag)" -->
@@ -215,7 +216,7 @@ glutpp::shape::parent_w&#160;</td><td class="memItemRight" valign="bottom"><b>pa
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 11:03:55 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

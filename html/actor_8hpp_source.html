@@ -47,7 +47,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -138,17 +137,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00056"></a>00056 
 <a name="l00057"></a>00057                                 glutpp::actor::parent_s         getParent();
 <a name="l00058"></a>00058 
-<a name="l00059"></a>00059                                 math::mat44                     getPose();
-<a name="l00060"></a>00060                                 math::mat44                     getPoseGlobal();
+<a name="l00059"></a>00059                                 math::mat44&lt;double&gt;             getPose();
+<a name="l00060"></a>00060                                 math::mat44&lt;double&gt;             getPoseGlobal();
 <a name="l00061"></a>00061                                 
-<a name="l00062"></a>00062                                 <span class="keywordtype">void</span>                            set_pose(math::transform pose);
+<a name="l00062"></a>00062                                 <span class="keywordtype">void</span>                            set_pose(math::transform&lt;double&gt; pose);
 <a name="l00063"></a>00063 
 <a name="l00064"></a>00064                                 <span class="keywordtype">void</span>                            notify_foundation_change_pose();
 <a name="l00065"></a>00065 
-<a name="l00066"></a>00066                                 <span class="keywordtype">void</span>                            load_lights(<span class="keywordtype">int</span>&amp;, math::mat44);
+<a name="l00066"></a>00066                                 <span class="keywordtype">void</span>                            load_lights(<span class="keywordtype">int</span>&amp;, math::mat44&lt;double&gt;);
 <a name="l00067"></a>00067                                 glutpp::scene::scene_s          get_scene();
 <a name="l00068"></a>00068 
-<a name="l00069"></a>00069                                 <span class="keywordtype">void</span>                            draw(glutpp::window::window_s, math::mat44);
+<a name="l00069"></a>00069                                 <span class="keywordtype">void</span>                            draw(glutpp::window::window_s, math::mat44&lt;double&gt;);
 <a name="l00070"></a>00070 
 <a name="l00071"></a>00071                                 <span class="keyword">virtual</span> glutpp::actor::raw_s    get_raw();
 <a name="l00072"></a>00072 
@@ -187,7 +186,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 11:03:55 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 25 2014 12:03:21 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

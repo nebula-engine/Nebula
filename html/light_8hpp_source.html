@@ -47,7 +47,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -115,7 +114,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00033"></a>00033                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    release();
 <a name="l00034"></a>00034                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    cleanup();
 <a name="l00035"></a>00035                                 <span class="keywordtype">void</span>                            step(<span class="keywordtype">double</span>) {}
-<a name="l00036"></a>00036                                 <span class="keywordtype">void</span>                            load(<span class="keywordtype">int</span>, math::mat44);
+<a name="l00036"></a>00036                                 <span class="keywordtype">void</span>                            load(<span class="keywordtype">int</span>, math::mat44&lt;double&gt;);
 <a name="l00037"></a>00037 
 <a name="l00038"></a>00038                                 <span class="keywordtype">void</span>                            load_shadow();
 <a name="l00039"></a>00039                                 <span class="keywordtype">void</span>                            draw();
@@ -125,8 +124,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00043"></a>00043 
 <a name="l00044"></a>00044 
 <a name="l00045"></a>00045                                 <span class="keywordtype">void</span>                            notify_foundation_change_pose();
-<a name="l00046"></a>00046                                 math::mat44                     get_pose();
-<a name="l00047"></a>00047                                 math::vec4                      get_pos();
+<a name="l00046"></a>00046                                 math::mat44&lt;double&gt;             get_pose();
+<a name="l00047"></a>00047                                 math::vec4&lt;double&gt;              get_pos();
 <a name="l00048"></a>00048                         <span class="keyword">private</span>:
 <a name="l00049"></a>00049                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                    f();
 <a name="l00050"></a>00050                                 <span class="keywordtype">void</span>                            f(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);
@@ -163,7 +162,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 11:03:55 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

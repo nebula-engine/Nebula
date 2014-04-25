@@ -47,7 +47,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -133,8 +132,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00051"></a>00051                                 <a class="code" href="classglutpp_1_1shape_1_1shape.html">shape</a>(glutpp::shape::parent_s <a class="code" href="classglutpp_1_1shape_1_1parent.html" title="abstract class for parent of a shape">parent</a>);
 <a name="l00052"></a>00052                                 ~<a class="code" href="classglutpp_1_1shape_1_1shape.html">shape</a>();
 <a name="l00053"></a>00053                                 
-<a name="l00054"></a>00054                                 math::mat44     getPose();
-<a name="l00055"></a>00055                                 math::mat44     getPoseGlobal();
+<a name="l00054"></a>00054                                 math::mat44&lt;double&gt;     getPose();
+<a name="l00055"></a>00055                                 math::mat44&lt;double&gt;     getPoseGlobal();
 <a name="l00056"></a>00056                                 
 <a name="l00057"></a>00057                                 glutpp::shape::parent_s getParent();
 <a name="l00058"></a>00058 
@@ -143,48 +142,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00061"></a>00061                                 <span class="keywordtype">void</span>            cleanup();
 <a name="l00062"></a>00062                                 <span class="keywordtype">void</span>            step(<span class="keywordtype">double</span> time);
 <a name="l00063"></a>00063                                 <span class="keywordtype">void</span>            notify_foundation_change_pose();
-<a name="l00064"></a>00064                                 <span class="keywordtype">void</span>            load_lights(<span class="keywordtype">int</span>&amp; i, math::mat44 space);
-<a name="l00065"></a>00065                                 <span class="keywordtype">void</span>            draw(glutpp::window::window_s, math::mat44 space);
+<a name="l00064"></a>00064                                 <span class="keywordtype">void</span>            load_lights(<span class="keywordtype">int</span>&amp; i, math::mat44&lt;double&gt; space);
+<a name="l00065"></a>00065                                 <span class="keywordtype">void</span>            draw(glutpp::window::window_s, math::mat44&lt;double&gt; space);
 <a name="l00066"></a>00066         
-<a name="l00067"></a>00067                                 <span class="keywordtype">void</span>            model_load(math::mat44 space);
+<a name="l00067"></a>00067                                 <span class="keywordtype">void</span>            model_load(math::mat44&lt;double&gt; space);
 <a name="l00068"></a>00068                                 <span class="keywordtype">void</span>            init_buffer(glutpp::window::window_s, std::shared_ptr&lt;glutpp::glsl::program&gt; p);
 <a name="l00069"></a>00069 
-<a name="l00070"></a>00070                                 <span class="keywordtype">void</span>            draw_elements(glutpp::window::window_s, math::mat44 space);
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072                                 <span class="keywordtype">void</span>            i(<span class="keywordtype">int</span> ni);
-<a name="l00073"></a>00073                                 <span class="keywordtype">int</span>             i();
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    f();
-<a name="l00076"></a>00076                                 <span class="keywordtype">void</span>            f(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structglutpp_1_1shape_1_1flag.html">flag</a>);
-<a name="l00077"></a>00077 
-<a name="l00078"></a>00078 
-<a name="l00079"></a>00079                         <span class="keyword">public</span>:
-<a name="l00080"></a>00080                                 <span class="comment">// draw data</span>
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082                                 <span class="keywordtype">int</span>                                     i_;
-<a name="l00083"></a>00083                                 <a class="code" href="classglutpp_1_1shape_1_1raw.html">raw</a>                                     raw_;
-<a name="l00084"></a>00084 
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086                                 gal::map&lt;glutpp::light::light&gt;          lights_;
-<a name="l00087"></a>00087                                 gal::map&lt;glutpp::shape::shape&gt;          shapes_;
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089                                 <a class="code" href="classglutpp_1_1material_1_1material.html">glutpp::material::material</a>              material_front_;
-<a name="l00090"></a>00090                                 <a class="code" href="classglutpp_1_1mesh.html">mesh</a>                                    mesh_;
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092                                 map_t                                   context_;
+<a name="l00070"></a>00070                                 <span class="keywordtype">void</span>            draw_elements(glutpp::window::window_s, math::mat44&lt;double&gt; space);
+<a name="l00071"></a>00071                                 
+<a name="l00075"></a>00075                                 <span class="keywordtype">void</span>            i(<span class="keywordtype">int</span> ni);
+<a name="l00076"></a>00076                                 <span class="keywordtype">int</span>             i();
+<a name="l00081"></a>00081                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    f();
+<a name="l00082"></a>00082                                 <span class="keywordtype">void</span>            f(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structglutpp_1_1shape_1_1flag.html">flag</a>);
+<a name="l00084"></a>00084                         <span class="keyword">public</span>:
+<a name="l00085"></a>00085                                 <span class="comment">// draw data</span>
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087                                 <span class="keywordtype">int</span>                                     i_;
+<a name="l00088"></a>00088                                 <a class="code" href="classglutpp_1_1shape_1_1raw.html">raw</a>                                     raw_;
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091                                 gal::map&lt;glutpp::light::light&gt;          lights_;
+<a name="l00092"></a>00092                                 gal::map&lt;glutpp::shape::shape&gt;          shapes_;
 <a name="l00093"></a>00093 
-<a name="l00094"></a>00094                                 glutpp::program_name::e                 program_;
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096                                 glutpp::shape::parent_w                 parent_;
-<a name="l00097"></a>00097                 };
-<a name="l00098"></a>00098         }
-<a name="l00099"></a>00099 }
+<a name="l00094"></a>00094                                 <a class="code" href="classglutpp_1_1material_1_1material.html">glutpp::material::material</a>              material_front_;
+<a name="l00095"></a>00095                                 <a class="code" href="classglutpp_1_1mesh.html">mesh</a>                                    mesh_;
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097                                 map_t                                   context_;
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099                                 glutpp::program_name::e                 program_;
 <a name="l00100"></a>00100 
-<a name="l00101"></a>00101 <span class="preprocessor">#endif</span>
-<a name="l00102"></a>00102 <span class="preprocessor"></span>
-<a name="l00103"></a>00103 
-<a name="l00104"></a>00104 
+<a name="l00101"></a>00101                                 glutpp::shape::parent_w                 parent_;
+<a name="l00102"></a>00102                 };
+<a name="l00103"></a>00103         }
+<a name="l00104"></a>00104 }
 <a name="l00105"></a>00105 
+<a name="l00106"></a>00106 <span class="preprocessor">#endif</span>
+<a name="l00107"></a>00107 <span class="preprocessor"></span>
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -203,7 +199,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 11:03:55 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

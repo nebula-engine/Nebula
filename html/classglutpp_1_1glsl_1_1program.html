@@ -47,7 +47,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -94,7 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="namespaceglutpp.html">glutpp</a>      </li>
-      <li class="navelem"><b>glsl</b>      </li>
+      <li class="navelem"><a class="el" href="namespaceglutpp_1_1glsl.html">glsl</a>      </li>
       <li class="navelem"><a class="el" href="classglutpp_1_1glsl_1_1program.html">program</a>      </li>
     </ul>
   </div>
@@ -124,6 +123,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>compile</b> ()</td></
 void&#160;</td><td class="memItemRight" valign="bottom"><b>use</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b7490fa9a0396a052d7d37140a551ab"></a><!-- doxytag: member="glutpp::glsl::program::locate" ref="a0b7490fa9a0396a052d7d37140a551ab" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>locate</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a861dd1120f2e6b68fbfadc48bfdb4832"></a><!-- doxytag: member="glutpp::glsl::program::scanUniforms" ref="a861dd1120f2e6b68fbfadc48bfdb4832" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>scanUniforms</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2403d0061bcb6e7eff6fd0e27ef57cf"></a><!-- doxytag: member="glutpp::glsl::program::add_attrib" ref="af2403d0061bcb6e7eff6fd0e27ef57cf" args="(glutpp::attrib_name::e, char const *, GLuint)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>add_attrib</b> (glutpp::attrib_name::e, char const *, GLuint)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03e5e8b1fa8d6e46c7b49ed1ba67ed66"></a><!-- doxytag: member="glutpp::glsl::program::add_uniform" ref="a03e5e8b1fa8d6e46c7b49ed1ba67ed66" args="(glutpp::uniform_name::e, char const *)" -->
@@ -133,16 +134,22 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>add_uniform</b> (glutp
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab77d4536050a8ee71796b3e12fd73ef8"></a><!-- doxytag: member="glutpp::glsl::program::get_attrib" ref="ab77d4536050a8ee71796b3e12fd73ef8" args="(int)" -->
 std::shared_ptr<br class="typebreak"/>
 &lt; <a class="el" href="classglutpp_1_1glsl_1_1attrib.html">glutpp::glsl::attrib</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_attrib</b> (int)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9cd3338616ce3b17a8831b88b81ea024"></a><!-- doxytag: member="glutpp::glsl::program::get_uniform" ref="a9cd3338616ce3b17a8831b88b81ea024" args="(int)" -->
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8428676476894db7104450b0d3b1c4ff"></a><!-- doxytag: member="glutpp::glsl::program::get_uniform_scalar" ref="a8428676476894db7104450b0d3b1c4ff" args="(int)" -->
 std::shared_ptr<br class="typebreak"/>
-&lt; <a class="el" href="classglutpp_1_1glsl_1_1uniform.html">glutpp::glsl::uniform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_uniform</b> (int)</td></tr>
+&lt; <a class="el" href="classglutpp_1_1glsl_1_1Uniform_1_1Scalar_1_1Base.html">glutpp::glsl::Uniform::Scalar::Base</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_uniform_scalar</b> (int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bf0b6975f699e5729ed79bd875d5aa2"></a><!-- doxytag: member="glutpp::glsl::program::get_uniform_vector" ref="a5bf0b6975f699e5729ed79bd875d5aa2" args="(int)" -->
+std::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Base.html">glutpp::glsl::Uniform::Vector::Base</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_uniform_vector</b> (int)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac72cb1de967afd0617edf350dfa80dfd"></a><!-- doxytag: member="glutpp::glsl::program::o_" ref="ac72cb1de967afd0617edf350dfa80dfd" args="" -->
 GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>o_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab30a37c24b7567c10dbb49d2020f3527"></a><!-- doxytag: member="glutpp::glsl::program::uniform_" ref="ab30a37c24b7567c10dbb49d2020f3527" args="" -->
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48aafa780d255592084de7806a65a196"></a><!-- doxytag: member="glutpp::glsl::program::uniform_scalar_" ref="a48aafa780d255592084de7806a65a196" args="" -->
 std::map&lt; int, std::shared_ptr<br class="typebreak"/>
-&lt; <a class="el" href="classglutpp_1_1glsl_1_1uniform.html">uniform</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>uniform_</b></td></tr>
+&lt; <a class="el" href="classglutpp_1_1glsl_1_1Uniform_1_1Scalar_1_1Base.html">glutpp::glsl::Uniform::Scalar::Base</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>uniform_scalar_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83a3f69a97e62342e3e81fe7548e9ffd"></a><!-- doxytag: member="glutpp::glsl::program::uniform_vector_" ref="a83a3f69a97e62342e3e81fe7548e9ffd" args="" -->
+std::map&lt; int, std::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Base.html">glutpp::glsl::Uniform::Vector::Base</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>uniform_vector_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8419390e2c2ba623c2a711568a7bdab"></a><!-- doxytag: member="glutpp::glsl::program::attrib_" ref="af8419390e2c2ba623c2a711568a7bdab" args="" -->
 std::map&lt; int, std::shared_ptr<br class="typebreak"/>
 &lt; <a class="el" href="classglutpp_1_1glsl_1_1attrib.html">attrib</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>attrib_</b></td></tr>
@@ -169,7 +176,7 @@ std::map&lt; int, std::shared_ptr<br class="typebreak"/>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 11:03:55 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

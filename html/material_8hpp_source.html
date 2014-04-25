@@ -47,7 +47,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -95,13 +94,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00013"></a><a class="code" href="structglutpp_1_1material_1_1raw.html">00013</a>                 <span class="keyword">struct </span><a class="code" href="structglutpp_1_1material_1_1raw.html">raw</a>
 <a name="l00014"></a>00014                 {
 <a name="l00015"></a>00015                         <a class="code" href="structglutpp_1_1material_1_1raw.html">raw</a>();
-<a name="l00016"></a>00016                         <span class="keywordtype">void</span>                    load(tinyxml2::XMLElement*);
+<a name="l00016"></a>00016                         <span class="keywordtype">void</span>                            load(tinyxml2::XMLElement*);
 <a name="l00017"></a>00017 
-<a name="l00018"></a>00018                         math::color             ambient_;
-<a name="l00019"></a>00019                         math::color             diffuse_;
-<a name="l00020"></a>00020                         math::color             specular_;
-<a name="l00021"></a>00021                         math::color             emission_;
-<a name="l00022"></a>00022                         <span class="keywordtype">float</span>                   shininess_;
+<a name="l00018"></a>00018                         math::Color::color&lt;double&gt;      ambient_;
+<a name="l00019"></a>00019                         math::Color::color&lt;double&gt;      diffuse_;
+<a name="l00020"></a>00020                         math::Color::color&lt;double&gt;      specular_;
+<a name="l00021"></a>00021                         math::Color::color&lt;double&gt;      emission_;
+<a name="l00022"></a>00022                         <span class="keywordtype">double</span>                          shininess_;
 <a name="l00023"></a>00023                 };
 <a name="l00024"></a>00024 
 <a name="l00025"></a><a class="code" href="classglutpp_1_1material_1_1material.html">00025</a>                 <span class="keyword">class </span><a class="code" href="classglutpp_1_1material_1_1material.html">material</a>
@@ -136,7 +135,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 11:03:55 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

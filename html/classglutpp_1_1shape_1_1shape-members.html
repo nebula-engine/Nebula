@@ -47,7 +47,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -94,8 +93,8 @@ This is the complete list of members for <a class="el" href="classglutpp_1_1shap
   <tr bgcolor="#f0f0f0"><td><b>buffer_t</b> typedef (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>cleanup</b>() (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>context_</b> (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>draw</b>(glutpp::window::window_s, math::mat44 space) (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>draw_elements</b>(glutpp::window::window_s, math::mat44 space) (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>draw</b>(glutpp::window::window_s, math::mat44&lt; double &gt; space) (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>draw_elements</b>(glutpp::window::window_s, math::mat44&lt; double &gt; space) (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>f</b>() (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>f</b>(unsigned int flag) (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>getParent</b>() (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
@@ -106,14 +105,14 @@ This is the complete list of members for <a class="el" href="classglutpp_1_1shap
   <tr bgcolor="#f0f0f0"><td><b>i_</b> (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>init</b>(glutpp::shape::desc_s desc) (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>init_buffer</b>(glutpp::window::window_s, std::shared_ptr&lt; glutpp::glsl::program &gt; p) (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>is_actor</b>() (defined in <a class="el" href="classglutpp_1_1shape_1_1parent.html">glutpp::shape::parent</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1parent.html">glutpp::shape::parent</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>is_shape</b>() (defined in <a class="el" href="classglutpp_1_1shape_1_1parent.html">glutpp::shape::parent</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1parent.html">glutpp::shape::parent</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>isActor</b>() (defined in <a class="el" href="classglutpp_1_1shape_1_1parent.html">glutpp::shape::parent</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1parent.html">glutpp::shape::parent</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>isShape</b>() (defined in <a class="el" href="classglutpp_1_1shape_1_1parent.html">glutpp::shape::parent</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1parent.html">glutpp::shape::parent</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>lights_</b> (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>load_lights</b>(int &amp;i, math::mat44 space) (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>load_lights</b>(int &amp;i, math::mat44&lt; double &gt; space) (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>map_t</b> typedef (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>material_front_</b> (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>mesh_</b> (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>model_load</b>(math::mat44 space) (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>model_load</b>(math::mat44&lt; double &gt; space) (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>notify_foundation_change_pose</b>() (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>parent_</b> (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>program_</b> (defined in <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>)</td><td><a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a></td><td></td></tr>
@@ -143,7 +142,7 @@ This is the complete list of members for <a class="el" href="classglutpp_1_1shap
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 11:03:55 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

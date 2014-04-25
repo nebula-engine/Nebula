@@ -47,7 +47,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -91,42 +90,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00009"></a>00009 
 <a name="l00010"></a>00010 <span class="preprocessor">#include &lt;gru/master.hpp&gt;</span>
 <a name="l00011"></a>00011 <span class="preprocessor">#include &lt;gru/glsl/attrib.hpp&gt;</span>
-<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;gru/glsl/uniform.hpp&gt;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;gru/glsl/Uniform/uniform.hpp&gt;</span>
 <a name="l00013"></a>00013 
-<a name="l00014"></a>00014 <span class="keyword">namespace </span>glutpp
-<a name="l00015"></a>00015 {
-<a name="l00016"></a>00016         <span class="keyword">namespace </span>glsl
-<a name="l00017"></a>00017         {
-<a name="l00018"></a>00018                 <span class="keyword">class </span>shader;
-<a name="l00019"></a>00019 
-<a name="l00020"></a><a class="code" href="classglutpp_1_1glsl_1_1program.html">00020</a>                 <span class="keyword">class </span><a class="code" href="classglutpp_1_1glsl_1_1program.html">program</a>: <span class="keyword">public</span> std::enable_shared_from_this&lt;program&gt;
-<a name="l00021"></a>00021                 {
-<a name="l00022"></a>00022                         <span class="keyword">public</span>:
-<a name="l00023"></a>00023                                 <a class="code" href="classglutpp_1_1glsl_1_1program.html">program</a>();
-<a name="l00024"></a>00024                                 <span class="keywordtype">void</span>    init();
-<a name="l00025"></a>00025                                 <span class="keywordtype">void</span>    add_shader(<span class="keywordtype">char</span> <span class="keyword">const</span> *, GLenum);
-<a name="l00026"></a>00026                                 <span class="keywordtype">void</span>    add_shaders(std::vector&lt;glutpp::glsl::shader&gt;);
-<a name="l00027"></a>00027                                 <span class="keywordtype">void</span>    compile();
-<a name="l00028"></a>00028                                 <span class="keywordtype">void</span>    use();
-<a name="l00029"></a>00029                                 <span class="keywordtype">void</span>    locate();
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031                                 <span class="keywordtype">void</span>    add_attrib(glutpp::attrib_name::e, <span class="keywordtype">char</span> <span class="keyword">const</span> *, GLuint);
-<a name="l00032"></a>00032                                 <span class="keywordtype">int</span>     add_uniform(glutpp::uniform_name::e, <span class="keywordtype">char</span> <span class="keyword">const</span> *);
-<a name="l00033"></a>00033                                 <span class="keywordtype">int</span>     add_uniform(glutpp::uniform_name::e, <span class="keywordtype">char</span> <span class="keyword">const</span> *, <span class="keywordtype">char</span> <span class="keyword">const</span> *);
-<a name="l00034"></a>00034                                 
-<a name="l00035"></a>00035                                 
-<a name="l00036"></a>00036                                 std::shared_ptr&lt;glutpp::glsl::attrib&gt;   get_attrib(<span class="keywordtype">int</span>);
-<a name="l00037"></a>00037                                 std::shared_ptr&lt;glutpp::glsl::uniform&gt;  get_uniform(<span class="keywordtype">int</span>);
+<a name="l00014"></a>00014 <span class="keyword">namespace </span>glutpp {
+<a name="l00015"></a>00015         <span class="keyword">namespace </span>glsl {
+<a name="l00016"></a>00016                 <span class="keyword">class </span>shader;
+<a name="l00017"></a>00017 
+<a name="l00018"></a><a class="code" href="classglutpp_1_1glsl_1_1program.html">00018</a>                 <span class="keyword">class </span><a class="code" href="classglutpp_1_1glsl_1_1program.html">program</a>: <span class="keyword">public</span> std::enable_shared_from_this&lt;program&gt; {
+<a name="l00019"></a>00019                         <span class="keyword">public</span>:
+<a name="l00020"></a>00020                                 <a class="code" href="classglutpp_1_1glsl_1_1program.html">program</a>();
+<a name="l00021"></a>00021                                 <span class="keywordtype">void</span>    init();
+<a name="l00022"></a>00022                                 <span class="keywordtype">void</span>    add_shader(<span class="keywordtype">char</span> <span class="keyword">const</span> *, GLenum);
+<a name="l00023"></a>00023                                 <span class="keywordtype">void</span>    add_shaders(std::vector&lt;glutpp::glsl::shader&gt;);
+<a name="l00024"></a>00024                                 <span class="keywordtype">void</span>    compile();
+<a name="l00025"></a>00025                                 <span class="keywordtype">void</span>    use();
+<a name="l00026"></a>00026                                 <span class="keywordtype">void</span>    locate();
+<a name="l00027"></a>00027                                 <span class="keywordtype">void</span>    scanUniforms();
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029                                 <span class="keywordtype">void</span>    add_attrib(glutpp::attrib_name::e, <span class="keywordtype">char</span> <span class="keyword">const</span> *, GLuint);
+<a name="l00030"></a>00030                                 <span class="keywordtype">int</span>     add_uniform(glutpp::uniform_name::e, <span class="keywordtype">char</span> <span class="keyword">const</span> *);
+<a name="l00031"></a>00031                                 <span class="keywordtype">int</span>     add_uniform(glutpp::uniform_name::e, <span class="keywordtype">char</span> <span class="keyword">const</span> *, <span class="keywordtype">char</span> <span class="keyword">const</span> *);
+<a name="l00032"></a>00032                                 
+<a name="l00033"></a>00033                                 
+<a name="l00034"></a>00034                                 std::shared_ptr&lt;glutpp::glsl::attrib&gt;                   get_attrib(<span class="keywordtype">int</span>);
+<a name="l00035"></a>00035                                 std::shared_ptr&lt;glutpp::glsl::Uniform::Scalar::Base&gt;            get_uniform_scalar(<span class="keywordtype">int</span>);
+<a name="l00036"></a>00036                                 std::shared_ptr&lt;glutpp::glsl::Uniform::Vector::Base&gt;            get_uniform_vector(<span class="keywordtype">int</span>);
+<a name="l00037"></a>00037 
 <a name="l00038"></a>00038                                 <span class="comment">//std::shared_ptr&lt;glutpp::glsl::uniform&gt;        get_uniform(int,int);</span>
 <a name="l00039"></a>00039 
 <a name="l00040"></a>00040                                 GLuint  o_;
 <a name="l00041"></a>00041                                 
-<a name="l00042"></a>00042                                 std::map&lt;int,std::shared_ptr&lt;uniform&gt; &gt;         uniform_;
-<a name="l00043"></a>00043                                 std::map&lt;int,std::shared_ptr&lt;attrib&gt; &gt;          attrib_;
-<a name="l00044"></a>00044                 };
-<a name="l00045"></a>00045         }
-<a name="l00046"></a>00046 }
-<a name="l00047"></a>00047 <span class="preprocessor">#endif</span>
+<a name="l00042"></a>00042                                 std::map&lt;int,std::shared_ptr&lt;glutpp::glsl::Uniform::Scalar::Base&gt; &gt;             uniform_scalar_;
+<a name="l00043"></a>00043                                 std::map&lt;int,std::shared_ptr&lt;glutpp::glsl::Uniform::Vector::Base&gt; &gt;             uniform_vector_;
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045                                 std::map&lt;int,std::shared_ptr&lt;attrib&gt; &gt;          attrib_;
+<a name="l00046"></a>00046                 };
+<a name="l00047"></a>00047         }
+<a name="l00048"></a>00048 }
+<a name="l00049"></a>00049 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -145,7 +146,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 11:03:55 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

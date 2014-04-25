@@ -283,16 +283,26 @@ namespace glutpp {
 		typedef std::shared_ptr<light>	light_s;
 
 	}
-	namespace glsl
-	{
+	/** @brief GLSL */
+	namespace glsl {
+		/** @brief GLSL Uniforms */
+		namespace Uniform {
+			/** @brief Scalar GLSL Uniforms */
+			namespace Scalar {
+				class Base;
+			}
+			/** @brief Vector GLSL Uniforms */
+			namespace Vector {
+				class Base;
+			}
+		}
 		class program;
 	}
 	namespace gui
 	{
 		class layout;
 
-		namespace object
-		{
+		namespace object {
 			class object;
 			class object_factory;
 			typedef std::shared_ptr<object>			object_s;
