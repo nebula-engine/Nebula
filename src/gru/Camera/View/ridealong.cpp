@@ -6,30 +6,30 @@ glutpp::Camera::View::ridealong::ridealong(glutpp::actor::actor_s actor):
 	actor_(actor)
 {
 }
-math::mat44	glutpp::Camera::View::ridealong::view()
+math::mat44<double>	glutpp::Camera::View::ridealong::view()
 {
 	if(actor_.expired())
 	{
-		return math::mat44();
+		return math::mat44<double>();
 	}
 
 	auto actor = actor_.lock();
 
 	if(actor->all(glutpp::actor::actor::flag::SHOULD_RELEASE))
 	{
-		return math::mat44();
+		return math::mat44<double>();
 	}
 
 
 
-	math::transform pose = actor->get_raw()->pose_;
+	math::transform<double> pose = actor->get_raw()->pose_;
 
-	math::mat44 translate;
+	math::mat44<double> translate;
 	translate.SetTranslation(-pose.p);
 
-	math::mat44 rotate(pose.q);
+	math::mat44<double> rotate(pose.q);
 
-	math::mat44 m(pose);
+	math::mat44<double> m(pose);
 	//pose.Invert();
 
 
@@ -40,12 +40,12 @@ math::mat44	glutpp::Camera::View::ridealong::view()
 	rotate.RotateVector3D(offset_v);
 
 	// create matrix from offset vector
-	math::mat44 offset_m;
+	math::mat44<double> offset_m;
 	offset_m.SetTranslation(offset_v);
 
 
 	//math::mat44 ret = pose * offset_m;
-	math::mat44 ret = m.GetInverse() * offset_m;
+	math::mat44<double> ret = m.getInverse() * offset_m;
 	//math::mat44 ret = offset_m * pose.GetInverse();
 	//math::mat44 ret = translate;//.GetInverse();
 
@@ -53,7 +53,7 @@ math::mat44	glutpp::Camera::View::ridealong::view()
 
 	return ret;
 }
-void glutpp::Camera::View::ridealong::Step(double) {
+void glutpp::Camera::View::ridealong::step(double) {
 	
 }
 

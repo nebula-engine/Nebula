@@ -14,8 +14,8 @@ namespace glutpp {
 			class ridealong: public glutpp::Camera::View::Base {
 				public:
 					ridealong(glutpp::actor::actor_s);
-					virtual math::mat44		view();
-					virtual void			Step(double time);
+					virtual math::mat44<double>		view();
+					virtual void				step(double time);
 
 
 					glutpp::actor::actor_w		actor_;

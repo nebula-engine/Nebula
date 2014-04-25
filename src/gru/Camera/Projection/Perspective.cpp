@@ -36,8 +36,8 @@ glutpp::Camera::Projection::Perspective::Perspective()
 	
 	renderable_ = renderable;
 }*/
-math::mat44	glutpp::Camera::Projection::Perspective::proj() {
-	math::mat44 ret;
+math::mat44<double>	glutpp::Camera::Projection::Perspective::proj() {
+	math::mat44<double> ret;
 	ret.SetPerspective(fovy_, (float)getWindow()->raw_.w_/(float)getWindow()->raw_.h_, zn_, zf_);
 
 	return ret;

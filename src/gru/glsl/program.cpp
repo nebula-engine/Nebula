@@ -156,10 +156,21 @@ void	glutpp::glsl::program::locate() {
 	for(auto it = uniform_.begin(); it != uniform_.end(); ++it)
 	{
 		uniform = (*it).second;
-		
+
 		uniform->locate(shared_from_this());
 	}
-	
+
+}
+void		glutpp::glsl::program::scanUniforms() {
+	GLsizei len;
+	GLint size;
+	GLenum type;
+	GLchar name[16];
+	for(int i = 0; i < 1000; i++) {
+		glGetActiveUniform(p->o_, i, 16, &len, &size, &type, name);
+		checkerror("glGetActiveUniform");
+		printf("name=%16s type=%s\n",name,shaderTypeString(type));
+	}
 }
 
 

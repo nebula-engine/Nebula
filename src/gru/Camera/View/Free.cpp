@@ -95,7 +95,7 @@ void	glutpp::Camera::View::Free::init(glutpp::window::window_s window)
 */
 
 }
-void	glutpp::Camera::View::Free::Step(double time) {
+void		glutpp::Camera::View::Free::step(double time) {
 	double dt = time - last_; last_ = time;
 
 	// look vector
@@ -125,7 +125,7 @@ void	glutpp::Camera::View::Free::Step(double time) {
 	printf("yaw = %f\n",yaw);
 
 	// rotate velocity by camera yaw
-	math::quat q(yaw,y);
+	math::quat<double> q(yaw,y);
 	
 	
 	math::vec3<double> v = v0_ + v1_;
@@ -134,7 +134,7 @@ void	glutpp::Camera::View::Free::Step(double time) {
 
 	v = q.rotate(v);
 	
-	eye_ += math::vec4(v, 0.0f);
+	eye_ += math::vec4<double>(v, 0.0f);
 }
 
 /*
@@ -232,26 +232,27 @@ physx::PxVec3 neb::camera::camera::Move()
 	return mov;
 }
 */
-math::mat44 glutpp::Camera::View::Free::view() {
+math::mat44<double>	glutpp::Camera::View::Free::view() {
 	//printf("%s\n", __FUNCTION__);
 
 	math::vec3<double> up(0,1,0);
 	math::vec3<double> look(0,0,-1);
 	
 	
-	math::quat rot( yaw_, math::vec3<double>(0,1,0));
+	math::quat<double> rot( yaw_, math::vec3<double>(0,1,0));
 
-	rot *= math::quat( pitch_ , math::vec3<double>(1,0,0) );
+	rot *= math::quat<double>( pitch_ , math::vec3<double>(1,0,0) );
 
 
 	up = rot.rotate( up );
 	look = rot.rotate( look );
 	
-	math::vec3<double> eye(eye_.x, eye_.y, eye_.z);
+	math::vec3<double> eye(eye_.x(), eye_.y(), eye_.z());
 	
 	math::vec3<double> center = eye + look;
 
-	math::mat44 ret = math::lookat(eye_, center, up);
+	math::mat44<double> ret;
+	ret.lookat(eye_, center, up);
 
 	//		eye_.x, eye_.y, eye_.z,
 	//		center.x, center.y, center.z,

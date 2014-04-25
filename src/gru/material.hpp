@@ -19,7 +19,7 @@ namespace glutpp {
 			math::Color::color<double>	diffuse_;
 			math::Color::color<double>	specular_;
 			math::Color::color<double>	emission_;
-			float				shininess_;
+			double				shininess_;
 		};
 
 		class material

@@ -21,12 +21,12 @@ namespace glutpp {
 				public:
 					Base();
 
-					virtual math::mat44	proj() = 0;
-					void			load();
+					virtual math::mat44<double>	proj() = 0;
+					void				load();
 					/** @brief step
 					 * TODO explain when in timeline this occurs and in which thread and why
 					 */
-					void			step(float);
+					void				step(double);
 
 					/** @name
 					 * @{
@@ -51,7 +51,7 @@ namespace glutpp {
 				public:
 					Perspective();
 					//void		init(glutpp::renderable_shared);
-					virtual math::mat44	proj() = 0;
+					virtual math::mat44<double>	proj() = 0;
 
 
 					/** @brief step */

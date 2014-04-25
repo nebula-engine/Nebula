@@ -109,10 +109,12 @@ void	glutpp::glsl::uniform::load_3fv(double* v)
 
 	checkerror("glUniform3fv");
 }
-void	glutpp::glsl::uniform::load(float f)
-{
+void	glutpp::glsl::uniform::load(float f) {
 	glUniform1f(o_[0], f);
-
+	checkerror("glUniform1f");
+}
+void	glutpp::glsl::uniform::load(double f) {
+	glUniform1d(o_[0], f);
 	checkerror("glUniform1f");
 }
 void	glutpp::glsl::uniform::load(int c, math::mat44<double> m) {
@@ -146,13 +148,16 @@ void	glutpp::glsl::uniform::load_3fv(int c, double* v)
 
 	checkerror("glUniform3fv");
 }
-void	glutpp::glsl::uniform::load(int c, float f)
-{
+void	glutpp::glsl::uniform::load(int c, float f) {
 	glUniform1f(o_[c], f);
 
 	checkerror("glUniform1f");
 }
+void	glutpp::glsl::uniform::load(int c, double f) {
+	glUniform1d(o_[c], f);
 
+	checkerror("glUniform1f");
+}
 
 
 
