@@ -63,7 +63,7 @@ void glutpp::scene::scene::render(double time,
 		it->second->load_lights(i, math::mat44<double>());
 	}
 
-	p->get_uniform(glutpp::uniform_name::LIGHT_COUNT)->load(i);
+	p->get_uniform_scalar(glutpp::uniform_name::LIGHT_COUNT)->load(i);
 
 	//printf("%i\n",i);
 

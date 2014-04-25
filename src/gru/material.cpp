@@ -50,11 +50,11 @@ void	glutpp::material::material::load()
 {
 	auto p = glutpp::master::Global()->current_program();
 
-	p->get_uniform(glutpp::uniform_name::e::FRONT_AMBIENT)->load_4fv(raw_.ambient_);
-	p->get_uniform(glutpp::uniform_name::e::FRONT_DIFFUSE)->load_4fv(raw_.diffuse_);
-	p->get_uniform(glutpp::uniform_name::e::FRONT_SPECULAR)->load_4fv(raw_.specular_);
-	p->get_uniform(glutpp::uniform_name::e::FRONT_EMISSION)->load_4fv(raw_.emission_);
-	p->get_uniform(glutpp::uniform_name::e::FRONT_SHININESS)->load(raw_.shininess_);
+	p->get_uniform_scalar(glutpp::uniform_name::e::FRONT_AMBIENT)->load_4fv(raw_.ambient_);
+	p->get_uniform_scalar(glutpp::uniform_name::e::FRONT_DIFFUSE)->load_4fv(raw_.diffuse_);
+	p->get_uniform_scalar(glutpp::uniform_name::e::FRONT_SPECULAR)->load_4fv(raw_.specular_);
+	p->get_uniform_scalar(glutpp::uniform_name::e::FRONT_EMISSION)->load_4fv(raw_.emission_);
+	p->get_uniform_scalar(glutpp::uniform_name::e::FRONT_SHININESS)->load(raw_.shininess_);
 }
 void glutpp::material::material::step(double time) {
 		

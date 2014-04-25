@@ -10,18 +10,10 @@
 #include <math/mat44.hpp>
 
 #include <gru/scene/scene.hpp>
-#include <gru/glsl/uniform.hpp>
+#include <gru/glsl/Uniform/uniform.hpp>
 #include <gru/window/window.hpp>
 
 
-void	glutpp::glsl::Uniform::Double::load(double f) {
-	glUniform1d(o_[0], f);
-	checkerror("glUniform1d");
-}
-void	glutpp::glsl::Uniform::Double::load(int c, double f) {
-	glUniform1d(o_[c], f);
-	checkerror("glUniform1d");
-}
 
 
 

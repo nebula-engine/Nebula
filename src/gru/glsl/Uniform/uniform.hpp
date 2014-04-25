@@ -11,56 +11,97 @@
 namespace glutpp {
 	namespace glsl {
 		class program;
-		namespace Base {
-			/** @brief %Base
-			 *
-			 * base GLSL uniform class
-			 */
-			class Base {
-				public:
-					uniform();
-					virtual ~uniform;
-					void			init(char const *);
-					void			init(char const *,char const *,int);
-					void			locate(std::shared_ptr<program>);
-					/** @name Load Array Element
-					 * @{
-					 */
-					virtual void			load(int, math::mat44<float>) { throw 0; }
-					virtual void			load(int, math::mat44<double>);
-					virtual void			load(int, math::Color::color<float>);
-					virtual void			load(int, math::Color::color<double>);
-					virtual void			load(int, int);
-					virtual void			load_4fv(int, double*);
-					virtual void			load_3fv(int, double*);
-					virtual void			load(int, float);
-					virtual void			load(int, double);
-					/** @} */
-					/** @name Load
-					 * @{
-					 */
-					virtual void			load(math::mat44<float>);
-					virtual void			load(math::mat44<double>);
-					virtual void			load(math::Color::color<float>);
-					virtual void			load(math::Color::color<double>);
-					virtual void			load(int);
-					virtual void			load_4fv(double*);
-					virtual void			load_3fv(double*);
-					virtual void			load(float);
-					virtual void			load(double);
-					/** @} */
 
-					char const *		s1_;
-					char const *		s2_;
-					int			c_;
+		namespace Uniform {
+			namespace Scalar {
+				/** @brief %Base
+				 *
+				 * base class for scalar GLSL uniform
+				 */
+				class Base {
+					public:
+						Base();
+						virtual ~Base();
+						void			init(char const *);
+						void			locate(std::shared_ptr<program>);
+						/** @name Load
+						 * @{
+						 */
+						virtual void			load(math::mat44<float>) { throw 0; }
+						virtual void			load(math::mat44<double>) { throw 0; }
+						virtual void			load(math::Color::color<float>) { throw 0; }
+						virtual void			load(math::Color::color<double>) { throw 0; }
+						virtual void			load(int) { throw 0; }
+						virtual void			load_4fv(double*) { throw 0; }
+						virtual void			load_3fv(double*) { throw 0; }
+						virtual void			load(float) { throw 0; }
+						virtual void			load(double) { throw 0; }
+						/** @} */
 
-					GLuint			o_[100];
+						char const *		s1_;
+						char const *		s2_;
+						int			c_;
 
-			};
-			class Int: public glutpp::glsl::Uniform::Base {
-				public:
-					virtual void		load(int);
-					virtual void		load(int,int);
+						GLuint			o_;
+
+				};
+
+				class Int: public glutpp::glsl::Uniform::Scalar::Base {
+					public:
+						virtual void		load(int);
+				};
+				class Float: public glutpp::glsl::Uniform::Scalar::Base {
+					public:
+						virtual void		load(float);
+				};
+				class Double: public glutpp::glsl::Uniform::Scalar::Base {
+					public:
+						virtual void		load(double);
+				};
+			}
+			namespace Vector {
+				/** @brief %Array
+				 * base class for array GLSL uniform
+				 */
+				class Base {
+					public:
+						Base();
+						virtual ~Base();
+						void			init(char const *,char const *,int);
+						void			locate(std::shared_ptr<program>);
+						/** @name Load
+						 * @{
+						 */
+						virtual void			load(int, math::mat44<float>) { throw 0; }
+						virtual void			load(int, math::mat44<double>) { throw 0; }
+						virtual void			load(int, math::Color::color<float>) { throw 0; }
+						virtual void			load(int, math::Color::color<double>) { throw 0; }
+						virtual void			load(int, int) { throw 0; }
+						virtual void			load_4fv(int, double*) { throw 0; }
+						virtual void			load_3fv(int, double*) { throw 0; }
+						virtual void			load(int, float) { throw 0; }
+						virtual void			load(int, double) { throw 0; }
+						/** @} */
+
+						char const *		s1_;
+						char const *		s2_;
+						int			c_;
+
+						GLuint			o_[100];
+
+				};
+				class Int: public glutpp::glsl::Uniform::Vector::Base {
+					public:
+						virtual void		load(int,int);
+				};
+				class Float: public glutpp::glsl::Uniform::Vector::Base {
+					public:
+						virtual void		load(int,float);
+				};
+				class Double: public glutpp::glsl::Uniform::Vector::Base {
+					public:
+						virtual void		load(int,double);
+				};
 			}
 		}
 	}
