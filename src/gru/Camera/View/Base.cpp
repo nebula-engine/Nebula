@@ -41,7 +41,7 @@ void		glutpp::Camera::View::Base::load() {
 	
 	auto p = glutpp::master::Global()->get_program(glutpp::program_name::e::LIGHT);
 
-	p->get_uniform(glutpp::uniform_name::e::VIEW)->load(view());
+	p->get_uniform_scalar("view")->load(view());
 }
 
 

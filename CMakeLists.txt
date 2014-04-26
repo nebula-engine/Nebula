@@ -21,7 +21,7 @@ set(INCLUDE_EXTENSIONS obj)
 
 # common methods for static library
 # =================================
-include($ENV{HOME}/usr/lib/cmake/CMakeHelper/static_library.cmake)
+include($ENV{HOME}/usr/lib/cmake/CMakeHelper/static/library.cmake)
 
 
 

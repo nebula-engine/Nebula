@@ -24,7 +24,7 @@ void		glutpp::Camera::Projection::Base::load() {
 	
 	glViewport(0, 0, getWindow()->raw_.w_, getWindow()->raw_.h_);
 	
-	p->get_uniform(glutpp::uniform_name::e::PROJ)->load(proj());
+	p->get_uniform_scalar("proj")->load(proj());
 }
 
 glutpp::Camera::Projection::Perspective::Perspective()

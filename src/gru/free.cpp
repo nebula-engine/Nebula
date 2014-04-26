@@ -145,7 +145,7 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, math::Color::color<
 	//printf("coord = %i\n",attribute_coord);
 
 	// color
-	p->get_uniform(glutpp::uniform_name::e::COLOR)->load(color);
+	p->get_uniform_scalar("color")->load(color);
 
 	// texture
 	GLuint tex;

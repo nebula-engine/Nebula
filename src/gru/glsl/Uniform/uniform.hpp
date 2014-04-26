@@ -38,12 +38,8 @@ namespace glutpp {
 						virtual void			load(double) { throw 0; }
 						/** @} */
 
-						char const *		s1_;
-						char const *		s2_;
-						int			c_;
-
+						std::string		name_;
 						GLuint			o_;
-
 				};
 
 				class Int: public glutpp::glsl::Uniform::Scalar::Base {
@@ -58,6 +54,14 @@ namespace glutpp {
 					public:
 						virtual void		load(double);
 				};
+				class Vec3: public glutpp::glsl::Uniform::Scalar::Base {
+					public:
+						virtual void		load_3fv(double*);
+				};
+				class DVec3: public glutpp::glsl::Uniform::Scalar::Base {
+					public:
+						virtual void		load_3fv(double*);
+				};
 			}
 			namespace Vector {
 				/** @brief %Array
@@ -67,7 +71,7 @@ namespace glutpp {
 					public:
 						Base();
 						virtual ~Base();
-						void			init(char const *,char const *,int);
+						void			init(std::string, std::string);
 						void			locate(std::shared_ptr<program>);
 						/** @name Load
 						 * @{
@@ -83,10 +87,9 @@ namespace glutpp {
 						virtual void			load(int, double) { throw 0; }
 						/** @} */
 
-						char const *		s1_;
-						char const *		s2_;
+						std::string		name1_;
+						std::string		name2_;
 						int			c_;
-
 						GLuint			o_[100];
 
 				};
@@ -101,6 +104,14 @@ namespace glutpp {
 				class Double: public glutpp::glsl::Uniform::Vector::Base {
 					public:
 						virtual void		load(int,double);
+				};
+				class Vec3: public glutpp::glsl::Uniform::Vector::Base {
+					public:
+						virtual void		load_3fv(int, double*);
+				};
+				class DVec3: public glutpp::glsl::Uniform::Vector::Base {
+					public:
+						virtual void		load_3fv(int ,double*);
 				};
 			}
 		}

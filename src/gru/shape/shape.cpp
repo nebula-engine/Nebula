@@ -233,7 +233,7 @@ void		glutpp::shape::shape::model_load(math::mat44<double> space) {
 	math::mat44<double> scale;
 	scale.SetScale(s);
 
-	p->get_uniform_scalar(glutpp::uniform_name::e::MODEL)->load(space * scale);
+	p->get_uniform_scalar("model")->load(space * scale);
 }
 void		glutpp::shape::shape::init_buffer(glutpp::window::window_s window, std::shared_ptr<glutpp::glsl::program> p) {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -360,7 +360,7 @@ void glutpp::shape::shape::draw_elements(glutpp::window::window_s window, math::
 		glActiveTexture(GL_TEXTURE0);
 		//checkerror("glActiveTexture");
 		bufs->texture_.image_->bind();
-		p->get_uniform_scalar(glutpp::uniform_name::e::IMAGE)->load(0);
+		p->get_uniform_scalar("image")->load(0);
 	}
 
 	//printf("bind vbo\n");
