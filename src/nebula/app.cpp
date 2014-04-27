@@ -161,7 +161,8 @@ int neb::app::step(double time) {
 
 	// timer
 	timer_set_.step(time);
-
+	std::cout << "timer " << timer_set_.set_.size() << std::endl;
+	
 	return 0;
 }
 int	neb::app::loop() {

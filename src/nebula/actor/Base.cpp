@@ -1,4 +1,5 @@
 
+#include <nebula/debug.hpp>
 #include <nebula/config.hpp>
 #include <nebula/timer/actor.hpp>
 #include <nebula/app.hpp>
@@ -13,13 +14,13 @@
 neb::Actor::Base::Base(glutpp::actor::parent_s parent):
 	glutpp::actor::actor(parent)
 {
-	NEBULA_DEBUG_0_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 }
 neb::Actor::Base::~Base() {
-	NEBULA_DEBUG_0_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 }
 void neb::Actor::Base::init(glutpp::actor::desc_s desc) {
-	NEBULA_DEBUG_0_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 
 	glutpp::actor::actor::init(desc);
 
@@ -35,7 +36,7 @@ void neb::Actor::Base::release() {
 	conn_.key_fun_.reset();
 }
 void neb::Actor::Base::create_children(glutpp::actor::desc_s desc) {
-	NEBULA_DEBUG_0_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 
 	// create children
 	for(auto it = desc->get_actors()->vec_.begin(); it != desc->get_actors()->vec_.end(); ++it)
@@ -121,7 +122,7 @@ neb::Actor::Base_s neb::Actor::Base::create_actor_remote(glutpp::actor::addr_s a
 	return actor;
 }
 std::shared_ptr<neb::app> neb::Actor::Base::get_app() {
-	NEBULA_DEBUG_1_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 
 	auto scene = get_scene();
 
@@ -130,14 +131,14 @@ std::shared_ptr<neb::app> neb::Actor::Base::get_app() {
 	return scene->app_.lock();
 }
 std::shared_ptr<neb::scene::scene> neb::Actor::Base::get_scene() {
-	NEBULA_DEBUG_1_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 
 	auto scene = std::dynamic_pointer_cast<neb::scene::scene>(glutpp::actor::actor::get_scene());
 
 	return scene;
 }
 neb::Actor::Base_s neb::Actor::Base::get_actor(int i) {
-	NEBULA_DEBUG_1_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 
 	auto it = actors_.find(i);
 	neb::Actor::Base_s a;
@@ -152,14 +153,14 @@ neb::Actor::Base_s neb::Actor::Base::get_actor(int i) {
 	}
 }
 neb::Actor::raw_s neb::Actor::Base::get_raw_base() {
-	NEBULA_DEBUG_1_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 	auto raw = get_raw();
 	auto raw_base = std::dynamic_pointer_cast<neb::Actor::raw>(raw);
 	assert(raw_base);
 	return raw_base;
 }
 neb::Actor::Base_s neb::Actor::Base::get_actor(glutpp::actor::addr_s addr) {
-	NEBULA_DEBUG_1_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 
 	auto vec = addr->get_vec();
 	assert(vec);
@@ -179,7 +180,7 @@ neb::Actor::Base_s neb::Actor::Base::get_actor(glutpp::actor::addr_s addr) {
 	return actor;
 }
 int	neb::Actor::Base::fire() {
-	NEBULA_DEBUG_1_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 
@@ -188,24 +189,24 @@ int	neb::Actor::Base::fire() {
 	return 1;
 }
 glutpp::actor::desc_s neb::Actor::Base::get_projectile() {
-	NEBULA_DEBUG_0_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 
 	abort();
 
 	return glutpp::actor::desc_s();
 }
 void neb::Actor::Base::step_local(double time) {
-	NEBULA_DEBUG_1_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 
 	glutpp::actor::actor::step(time);
 }
 void neb::Actor::Base::step_remote(double time) {
-	NEBULA_DEBUG_1_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 
 	glutpp::actor::actor::step(time);
 }
 void neb::Actor::Base::create_shapes(glutpp::actor::desc_s desc) {
-	NEBULA_DEBUG_0_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 
 	auto me = std::dynamic_pointer_cast<neb::Actor::Base>(shared_from_this());
 

@@ -1,4 +1,5 @@
 
+#include <nebula/debug.hpp>
 #include <nebula/physics.hpp>
 #include <nebula/shape.hpp>
 #include <nebula/actor/Rigid_Static.hpp>
@@ -6,19 +7,19 @@
 neb::Actor::Rigid_Static::Rigid_Static(glutpp::actor::parent_s parent):
 	neb::Actor::RigidActor(parent)
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	NEBULA_ACTOR_BASE_FUNC
 }
 void	neb::Actor::Rigid_Static::init(glutpp::actor::desc_s desc) {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	NEBULA_ACTOR_BASE_FUNC
 	
 	neb::Actor::RigidActor::init(desc);
 }
 void	neb::Actor::Rigid_Static::step_local(double time) {
-	NEBULA_DEBUG_1_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 	neb::Actor::RigidActor::step_local(time);
 }
 void	neb::Actor::Rigid_Static::step_remote(double time) {
-	NEBULA_DEBUG_1_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 	neb::Actor::RigidActor::step_remote(time);
 }
 void neb::Actor::Rigid_Static::create_physics() {

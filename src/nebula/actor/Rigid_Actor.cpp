@@ -1,4 +1,5 @@
 
+#include <nebula/debug.hpp>
 #include <nebula/physics.hpp>
 #include <nebula/actor/Rigid_Actor.hpp>
 #include <nebula/shape.hpp>
@@ -13,11 +14,11 @@ void neb::Actor::RigidActor::init(glutpp::actor::desc_s desc) {
 	neb::Actor::Actor::init(desc);
 }
 void	neb::Actor::RigidActor::step_local(double time) {
-	NEBULA_DEBUG_1_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 	neb::Actor::Actor::step_local(time);
 }
 void	neb::Actor::RigidActor::step_remote(double time) {
-	NEBULA_DEBUG_1_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 	neb::Actor::Actor::step_remote(time);
 }
 void	neb::Actor::RigidActor::setupFiltering()
