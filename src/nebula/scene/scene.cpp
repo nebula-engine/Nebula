@@ -24,8 +24,11 @@
 
 neb::scene::scene::scene(neb::app_s app):
 	app_(app),
+	user_type_(0),
 	px_filter_shader_(NULL),
-	px_scene_(NULL)
+	simulation_callback_(NULL),
+	px_scene_(NULL),
+	last_(0)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 	
