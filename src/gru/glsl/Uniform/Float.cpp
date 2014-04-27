@@ -11,7 +11,8 @@
 
 #include <gru/scene/scene.hpp>
 #include <gru/glsl/Uniform/uniform.hpp>
-#include <gru/window/window.hpp>
+#include <gru/free.hpp>
+
 
 
 

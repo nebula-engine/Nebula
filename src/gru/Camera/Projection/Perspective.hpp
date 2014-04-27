@@ -19,21 +19,35 @@ namespace glutpp {
 			/** @brief @Base */
 			class Base {
 				public:
-					Base();
-
-					virtual math::mat44<double>	proj() = 0;
-					void				load();
+					/** @brief Constructor */
+					Base(std::shared_ptr<glutpp::renderable>);
+					
+					virtual math::mat44<float>		proj() = 0;
+					void					load();
 					/** @brief step
-					 * TODO explain when in timeline this occurs and in which thread and why
+					 * @todo explain when in timeline this occurs and in which thread and why
 					 */
-					void				step(double);
+					void					step(double);
 
-					/** @name
-					 * @{
-					 */
-					/** @brief access parent */
-					glutpp::window::window_s&		getWindow();
+					/** @name Accessors @{ */
+					/** @brief Get parent window */
+					glutpp::window::window_s		getWindow();
 					/** @} */
+				protected:
+					/** @brief Parent */
+					std::weak_ptr<renderable>		renderable_;
+			};
+			class Perspective: public Base {
+				public:
+					Perspective(std::shared_ptr<glutpp::renderable>);
+					//void		init(glutpp::renderable_shared);
+					virtual math::mat44<float>	proj();
+
+
+					/** @brief step */
+					void		step(double);
+
+					//
 
 					/** @brief field of view angle */
 					float					fovy_;
@@ -41,25 +55,6 @@ namespace glutpp {
 					float					zn_;
 					/** @brief far clipping plane */
 					float					zf_;
-					/** @brief width of render context
-					 * TODO remove this and h_ from this class
-					 * TODO should be accessed by accessing parent context or scene or view object
-					 */
-
-			};
-			class Perspective: public Base {
-				public:
-					Perspective();
-					//void		init(glutpp::renderable_shared);
-					virtual math::mat44<double>	proj() = 0;
-
-
-					/** @brief step */
-					void		step(float);
-
-					//std::weak_ptr<renderable>		renderable_;
-
-
 
 			};
 		}

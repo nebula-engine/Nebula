@@ -15,11 +15,11 @@ namespace glutpp {
 			raw();
 			void				load(tinyxml2::XMLElement*);
 
-			math::Color::color<double>	ambient_;
-			math::Color::color<double>	diffuse_;
-			math::Color::color<double>	specular_;
-			math::Color::color<double>	emission_;
-			double				shininess_;
+			math::Color::color<float>	ambient_;
+			math::Color::color<float>	diffuse_;
+			math::Color::color<float>	specular_;
+			math::Color::color<float>	emission_;
+			float				shininess_;
 		};
 
 		class material

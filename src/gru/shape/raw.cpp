@@ -74,26 +74,26 @@ void	glutpp::shape::raw_base::parse_type(char const * str) {
 		abort();
 	}
 }
-void glutpp::shape::raw_base::box(math::vec3<double> ns) {
+void		glutpp::shape::raw_base::box(math::vec3<float> ns) {
 	type_ = glutpp::shape::type::BOX;
 	
 	s_ = ns;
 }
-void glutpp::shape::raw_base::box(tinyxml2::XMLElement* element) {
+void		glutpp::shape::raw_base::box(tinyxml2::XMLElement* element) {
 	type_ = glutpp::shape::type::BOX;
 	
-	s_ = math::Xml::parse_vec3<double>(element->FirstChildElement("s"), math::vec3<double>(1,1,1));
+	s_ = math::Xml::parse_vec3<float>(element->FirstChildElement("s"), math::vec3<float>(1,1,1));
 }
 void glutpp::shape::raw_base::sphere(float r) {
 	type_ = glutpp::shape::type::SPHERE;
 	
-	s_ = math::vec3<double>(r, r, r);
+	s_ = math::vec3<float>(r, r, r);
 }
 void glutpp::shape::raw_base::sphere(tinyxml2::XMLElement* element) {
 	type_ = glutpp::shape::type::SPHERE;
 
 	float r = math::Xml::parse_float<float>(element->FirstChildElement("s"),0);
-	s_ = math::vec3<double>(r, r, r);
+	s_ = math::vec3<float>(r, r, r);
 }
 
 

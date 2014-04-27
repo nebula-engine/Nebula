@@ -29,8 +29,8 @@ namespace glutpp {
 			public:
 				virtual ~parent() {}
 
-				virtual math::mat44<double>		getPoseGlobal() = 0;
-				virtual math::mat44<double>		getPose() = 0;
+				virtual math::mat44<float>		getPoseGlobal() = 0;
+				virtual math::mat44<float>		getPose() = 0;
 
 				glutpp::actor::actor_s			isActor();
 				glutpp::shape::shape_s			isShape();

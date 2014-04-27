@@ -187,16 +187,17 @@ void	glutpp::master::create_programs() {
 		p.reset(new glutpp::glsl::program);
 		p->init();
 
-		p->add_shader(GLUTPP_SHADER_DIR"/v430/text/vs.glsl", GL_VERTEX_SHADER);
-		p->add_shader(GLUTPP_SHADER_DIR"/v430/text/fs.glsl", GL_FRAGMENT_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v130/text/vs.glsl", GL_VERTEX_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v130/text/fs.glsl", GL_FRAGMENT_SHADER);
 
 		p->compile();
 
 		p->add_attrib(glutpp::attrib_name::e::COOR, "coord", 0);
 
-		p->add_uniform(glutpp::uniform_name::e::COLOR,"font_color");
-		p->add_uniform(glutpp::uniform_name::e::TEX,"tex");
+		//p->add_uniform("COLOR","font_color");
+		//p->add_uniform("TEX","tex");
 
+		p->scanUniforms();
 		p->locate();
 
 		programs_[glutpp::program_name::TEXT] = p;
@@ -211,8 +212,8 @@ void	glutpp::master::create_programs() {
 		p.reset(new glutpp::glsl::program);
 		p->init();
 
-		p->add_shader(GLUTPP_SHADER_DIR"/v430/light/vs.glsl", GL_VERTEX_SHADER);
-		p->add_shader(GLUTPP_SHADER_DIR"/v430/light/fs.glsl", GL_FRAGMENT_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v130/light/vs.glsl", GL_VERTEX_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v130/light/fs.glsl", GL_FRAGMENT_SHADER);
 
 		p->compile();
 
@@ -220,37 +221,39 @@ void	glutpp::master::create_programs() {
 
 		p->add_attrib(glutpp::attrib_name::e::POSITION, "position", 1);
 		p->add_attrib(glutpp::attrib_name::e::NORMAL, "normal", 2);
+
 		//p->add_attrib(glutpp::attrib_name::e::TEXCOOR, "texcoor");
 
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_COUNT,"light_count");
-		p->add_uniform(glutpp::uniform_name::e::MODEL,"model");
-		p->add_uniform(glutpp::uniform_name::e::VIEW,"view");
-		p->add_uniform(glutpp::uniform_name::e::PROJ,"proj");
+		/*
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_COUNT,"light_count");
+		   p->add_uniform(glutpp::uniform_name::e::MODEL,"model");
+		   p->add_uniform(glutpp::uniform_name::e::VIEW,"view");
+		   p->add_uniform(glutpp::uniform_name::e::PROJ,"proj");
 
-		p->add_uniform(glutpp::uniform_name::e::FRONT_AMBIENT,"front.ambient");
-		p->add_uniform(glutpp::uniform_name::e::FRONT_DIFFUSE,"front.diffuse");
-		p->add_uniform(glutpp::uniform_name::e::FRONT_SPECULAR,"front.specular");
-		p->add_uniform(glutpp::uniform_name::e::FRONT_EMISSION,"front.emission");
-		p->add_uniform(glutpp::uniform_name::e::FRONT_SHININESS,"front.shininess");
+		   p->add_uniform(glutpp::uniform_name::e::FRONT_AMBIENT,"front.ambient");
+		   p->add_uniform(glutpp::uniform_name::e::FRONT_DIFFUSE,"front.diffuse");
+		   p->add_uniform(glutpp::uniform_name::e::FRONT_SPECULAR,"front.specular");
+		   p->add_uniform(glutpp::uniform_name::e::FRONT_EMISSION,"front.emission");
+		   p->add_uniform(glutpp::uniform_name::e::FRONT_SHININESS,"front.shininess");
 
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_POSITION, "lights", "position");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT, "lights","ambient");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE, "lights","diffuse");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR, "lights","specular");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION, "lights","spot_direction");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF, "lights","spot_cutoff");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_EXPONENT, "lights","spot_exponent");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF, "lights","spot_light_cos_cutoff");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
-
-
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_POSITION, "lights", "position");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT, "lights","ambient");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE, "lights","diffuse");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR, "lights","specular");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION, "lights","spot_direction");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF, "lights","spot_cutoff");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_EXPONENT, "lights","spot_exponent");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF, "lights","spot_light_cos_cutoff");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
+		 */
+		p->scanUniforms();
 		p->locate();
 
 		programs_[glutpp::program_name::LIGHT] = p;
 
-		p->scanUniforms();
+
 	}
 
 	//light and image
@@ -258,41 +261,45 @@ void	glutpp::master::create_programs() {
 		p.reset(new glutpp::glsl::program);
 		p->init();
 
-		p->add_shader(GLUTPP_SHADER_DIR"/v430/image/vs.glsl", GL_VERTEX_SHADER);
-		p->add_shader(GLUTPP_SHADER_DIR"/v430/image/fs.glsl", GL_FRAGMENT_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v130/image/vs.glsl", GL_VERTEX_SHADER);
+		p->add_shader(GLUTPP_SHADER_DIR"/v130/image/fs.glsl", GL_FRAGMENT_SHADER);
 
 		p->compile();
 
-		p->add_uniform(glutpp::uniform_name::e::IMAGE, "image");
+
 
 		p->add_attrib(glutpp::attrib_name::e::POSITION, "position", 1);
 		p->add_attrib(glutpp::attrib_name::e::NORMAL, "normal", 2);
 		p->add_attrib(glutpp::attrib_name::e::TEXCOOR, "texcoor", 3);
 
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_COUNT,"light_count");
-		p->add_uniform(glutpp::uniform_name::e::MODEL,"model");
-		p->add_uniform(glutpp::uniform_name::e::VIEW,"view");
-		p->add_uniform(glutpp::uniform_name::e::PROJ,"proj");
-
-		p->add_uniform(glutpp::uniform_name::e::FRONT_AMBIENT,"front.ambient");
-		p->add_uniform(glutpp::uniform_name::e::FRONT_DIFFUSE,"front.diffuse");
-		p->add_uniform(glutpp::uniform_name::e::FRONT_SPECULAR,"front.specular");
-		p->add_uniform(glutpp::uniform_name::e::FRONT_EMISSION,"front.emission");
-		p->add_uniform(glutpp::uniform_name::e::FRONT_SHININESS,"front.shininess");
-
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_POSITION, "lights", "position");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT, "lights","ambient");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE, "lights","diffuse");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR, "lights","specular");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION, "lights","spot_direction");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF, "lights","spot_cutoff");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_EXPONENT, "lights","spot_exponent");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF, "lights","spot_light_cos_cutoff");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
-		p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
+		/*
+		   p->add_uniform(glutpp::uniform_name::e::IMAGE, "image");
 
 
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_COUNT,"light_count");
+		   p->add_uniform(glutpp::uniform_name::e::MODEL,"model");
+		   p->add_uniform(glutpp::uniform_name::e::VIEW,"view");
+		   p->add_uniform(glutpp::uniform_name::e::PROJ,"proj");
+
+		   p->add_uniform(glutpp::uniform_name::e::FRONT_AMBIENT,"front.ambient");
+		   p->add_uniform(glutpp::uniform_name::e::FRONT_DIFFUSE,"front.diffuse");
+		   p->add_uniform(glutpp::uniform_name::e::FRONT_SPECULAR,"front.specular");
+		   p->add_uniform(glutpp::uniform_name::e::FRONT_EMISSION,"front.emission");
+		   p->add_uniform(glutpp::uniform_name::e::FRONT_SHININESS,"front.shininess");
+
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_POSITION, "lights", "position");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT, "lights","ambient");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE, "lights","diffuse");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR, "lights","specular");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION, "lights","spot_direction");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF, "lights","spot_cutoff");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_EXPONENT, "lights","spot_exponent");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF, "lights","spot_light_cos_cutoff");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
+		   p->add_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
+		 */
+		p->scanUniforms();
 		p->locate();
 
 		programs_[glutpp::program_name::IMAGE] = p;

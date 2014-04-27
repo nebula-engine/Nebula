@@ -56,17 +56,17 @@ namespace glutpp {
 
 				glutpp::actor::parent_s		getParent();
 
-				math::mat44<double>		getPose();
-				math::mat44<double>		getPoseGlobal();
+				math::mat44<float>		getPose();
+				math::mat44<float>		getPoseGlobal();
 				
-				void				set_pose(math::transform<double> pose);
+				void				set_pose(math::transform<float> pose);
 
 				void				notify_foundation_change_pose();
 
-				void				load_lights(int&, math::mat44<double>);
+				void				load_lights(int&, math::mat44<float>);
 				glutpp::scene::scene_s		get_scene();
 
-				void				draw(glutpp::window::window_s, math::mat44<double>);
+				void				draw(glutpp::window::window_s, math::mat44<float>);
 
 				virtual glutpp::actor::raw_s	get_raw();
 

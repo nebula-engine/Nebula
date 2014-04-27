@@ -11,10 +11,10 @@
 namespace glutpp {
 	namespace Camera {
 		namespace View {
-			class ridealong: public glutpp::Camera::View::Base {
+			class ridealong: public glutpp::Camera::View::Base<float> {
 				public:
 					ridealong(glutpp::actor::actor_s);
-					virtual math::mat44<double>		view();
+					virtual math::mat44<float>		view();
 					virtual void				step(double time);
 
 

@@ -7,6 +7,7 @@
 
 #include <gru/texture.hpp>
 #include <gru/window/window.hpp>
+#include <gru/free.hpp>
 
 #include <png.h>
 

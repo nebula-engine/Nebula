@@ -31,7 +31,7 @@ glutpp::window::window_s glutpp::gui::layout::get_window()
 {
 	assert(!renderable_.expired());
 
-	return renderable_.lock()->get_window();
+	return renderable_.lock()->getWindow();
 }
 void glutpp::gui::layout::load_xml(tinyxml2::XMLElement* element)
 {

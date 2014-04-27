@@ -30,14 +30,14 @@ glutpp::Camera::View::Free::Free():
 	head_[6] = physx::PxVec3( -s, 0,  0 );
 	head_[7] = physx::PxVec3( -d, 0, -d );
 
-	head_flag_[glutpp::Camera::View::Base::Flag::E::NORTH								] = 0;
-	head_flag_[glutpp::Camera::View::Base::Flag::E::NORTH	|	glutpp::Camera::View::Base::Flag::E::EAST	] = 1;
-	head_flag_[							glutpp::Camera::View::Base::Flag::E::EAST	] = 2;
-	head_flag_[glutpp::Camera::View::Base::Flag::E::SOUTH	|	glutpp::Camera::View::Base::Flag::E::EAST	] = 3;
-	head_flag_[glutpp::Camera::View::Base::Flag::E::SOUTH								] = 4;
-	head_flag_[glutpp::Camera::View::Base::Flag::E::SOUTH	|	glutpp::Camera::View::Base::Flag::E::WEST	] = 5;
-	head_flag_[							glutpp::Camera::View::Base::Flag::E::WEST	] = 6;
-	head_flag_[glutpp::Camera::View::Base::Flag::E::NORTH	|	glutpp::Camera::View::Base::Flag::E::WEST	] = 7;
+	head_flag_[glutpp::Camera::View::Free::Flag::E::NORTH								] = 0;
+	head_flag_[glutpp::Camera::View::Free::Flag::E::NORTH	|	glutpp::Camera::View::Free::Flag::E::EAST	] = 1;
+	head_flag_[							glutpp::Camera::View::Free::Flag::E::EAST	] = 2;
+	head_flag_[glutpp::Camera::View::Free::Flag::E::SOUTH	|	glutpp::Camera::View::Free::Flag::E::EAST	] = 3;
+	head_flag_[glutpp::Camera::View::Free::Flag::E::SOUTH								] = 4;
+	head_flag_[glutpp::Camera::View::Free::Flag::E::SOUTH	|	glutpp::Camera::View::Free::Flag::E::WEST	] = 5;
+	head_flag_[							glutpp::Camera::View::Free::Flag::E::WEST	] = 6;
+	head_flag_[glutpp::Camera::View::Free::Flag::E::NORTH	|	glutpp::Camera::View::Free::Flag::E::WEST	] = 7;
 
 
 }
@@ -96,20 +96,20 @@ void	glutpp::Camera::View::Free::init(glutpp::window::window_s window)
 
 }
 void		glutpp::Camera::View::Free::step(double time) {
-	double dt = time - last_; last_ = time;
+	float dt = time - last_; last_ = time;
 
 	// look vector
-	math::vec3<double> look = center_ - eye_;
+	math::vec3<float> look = center_ - eye_;
 
 	// project to xz-plane
 	look.y() = 0.0;
 	look.Normalize();
 
-	math::vec3<double> x(1,0,0);
-	math::vec3<double> y(0,1,0);
-	math::vec3<double> z(0,0,-1);
+	math::vec3<float> x(1,0,0);
+	math::vec3<float> y(0,1,0);
+	math::vec3<float> z(0,0,-1);
 
-	math::vec3<double> c = z.cross(look);
+	math::vec3<float> c = z.cross(look);
 
 	float yaw = asin(c.magnitude());
 
@@ -125,16 +125,16 @@ void		glutpp::Camera::View::Free::step(double time) {
 	printf("yaw = %f\n",yaw);
 
 	// rotate velocity by camera yaw
-	math::quat<double> q(yaw,y);
+	math::quat<float> q(yaw,y);
 	
 	
-	math::vec3<double> v = v0_ + v1_;
+	math::vec3<float> v = v0_ + v1_;
 	v *= dt;
 	v *= 4.0;
 
 	v = q.rotate(v);
 	
-	eye_ += math::vec4<double>(v, 0.0f);
+	eye_ += math::vec4<float>(v, 0.0f);
 }
 
 /*
@@ -232,26 +232,26 @@ physx::PxVec3 neb::camera::camera::Move()
 	return mov;
 }
 */
-math::mat44<double>	glutpp::Camera::View::Free::view() {
+math::mat44<float>	glutpp::Camera::View::Free::view() {
 	//printf("%s\n", __FUNCTION__);
 
-	math::vec3<double> up(0,1,0);
-	math::vec3<double> look(0,0,-1);
+	math::vec3<float> up(0,1,0);
+	math::vec3<float> look(0,0,-1);
 	
 	
-	math::quat<double> rot( yaw_, math::vec3<double>(0,1,0));
+	math::quat<float> rot( yaw_, math::vec3<float>(0,1,0));
 
-	rot *= math::quat<double>( pitch_ , math::vec3<double>(1,0,0) );
+	rot *= math::quat<float>( pitch_ , math::vec3<float>(1,0,0) );
 
 
 	up = rot.rotate( up );
 	look = rot.rotate( look );
 	
-	math::vec3<double> eye(eye_.x(), eye_.y(), eye_.z());
+	math::vec3<float> eye(eye_.x(), eye_.y(), eye_.z());
 	
-	math::vec3<double> center = eye + look;
+	math::vec3<float> center = eye + look;
 
-	math::mat44<double> ret;
+	math::mat44<float> ret;
 	ret.lookat(eye_, center, up);
 
 	//		eye_.x, eye_.y, eye_.z,

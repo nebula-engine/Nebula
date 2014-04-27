@@ -29,7 +29,7 @@ namespace glutpp
 				void			load(tinyxml2::XMLElement*);
 				void			parse_type(char const *);
 
-				void			box(math::vec3<double>);
+				void			box(math::vec3<float>);
 				void			box(tinyxml2::XMLElement*);
 
 				void			sphere(float);
@@ -39,8 +39,8 @@ namespace glutpp
 				int			type_;
 				unsigned int		flag_;
 
-				math::transform<double>		pose_;
-				math::vec3<double>		s_;
+				math::transform<float>		pose_;
+				math::vec3<float>		s_;
 
 
 				char			image_[max_filename_length];

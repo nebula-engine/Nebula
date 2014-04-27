@@ -20,47 +20,76 @@ namespace glutpp {
 				 */
 				class Base {
 					public:
-						Base();
-						virtual ~Base();
-						void			init(char const *);
+						Base(std::string);
+						virtual ~Base() {}
 						void			locate(std::shared_ptr<program>);
 						/** @name Load
 						 * @{
 						 */
 						virtual void			load(math::mat44<float>) { throw 0; }
 						virtual void			load(math::mat44<double>) { throw 0; }
-						virtual void			load(math::Color::color<float>) { throw 0; }
-						virtual void			load(math::Color::color<double>) { throw 0; }
+						//virtual void			load(math::Color::color<float>) { throw 0; }
+						//virtual void			load(math::Color::color<double>) { throw 0; }
 						virtual void			load(int) { throw 0; }
-						virtual void			load_4fv(double*) { throw 0; }
-						virtual void			load_3fv(double*) { throw 0; }
+						virtual void			load(float*) { throw 0; }
+						virtual void			load(double*) { throw 0; }
 						virtual void			load(float) { throw 0; }
 						virtual void			load(double) { throw 0; }
 						/** @} */
-
+					protected:
 						std::string		name_;
-						GLuint			o_;
+						GLint			o_;
 				};
 
 				class Int: public glutpp::glsl::Uniform::Scalar::Base {
 					public:
+						Int(std::string s): Base(s) {}
 						virtual void		load(int);
 				};
 				class Float: public glutpp::glsl::Uniform::Scalar::Base {
 					public:
+						Float(std::string s): Base(s) {}
 						virtual void		load(float);
 				};
 				class Double: public glutpp::glsl::Uniform::Scalar::Base {
 					public:
+						Double(std::string s): Base(s) {}
 						virtual void		load(double);
 				};
 				class Vec3: public glutpp::glsl::Uniform::Scalar::Base {
 					public:
-						virtual void		load_3fv(double*);
+						Vec3(std::string s): Base(s) {}
+						virtual void		load(float*);
 				};
 				class DVec3: public glutpp::glsl::Uniform::Scalar::Base {
 					public:
-						virtual void		load_3fv(double*);
+						DVec3(std::string s): Base(s) {}
+						virtual void		load(double*);
+				};
+				class Vec4: public glutpp::glsl::Uniform::Scalar::Base {
+					public:
+						Vec4(std::string s): Base(s) {}
+						virtual void		load(float*);
+				};
+				class DVec4: public glutpp::glsl::Uniform::Scalar::Base {
+					public:
+						DVec4(std::string s): Base(s) {}
+						virtual void		load(double*);
+				};
+				class Mat4: public glutpp::glsl::Uniform::Scalar::Base {
+					public:
+						Mat4(std::string s): Base(s) {}
+						virtual void		load(math::mat44<float>);
+				};
+				class DMat4: public glutpp::glsl::Uniform::Scalar::Base {
+					public:
+						DMat4(std::string s): Base(s) {}
+						virtual void		load(math::mat44<double>);
+				};
+				class Sampler2D: public glutpp::glsl::Uniform::Scalar::Base {
+					public:
+						Sampler2D(std::string s): Base(s) {}
+						virtual void		load(int);
 				};
 			}
 			namespace Vector {
@@ -69,49 +98,64 @@ namespace glutpp {
 				 */
 				class Base {
 					public:
-						Base();
-						virtual ~Base();
-						void			init(std::string, std::string);
-						void			locate(std::shared_ptr<program>);
+						Base(std::string, std::string);
+						virtual ~Base() {}
+						void				locate(std::shared_ptr<program>);
 						/** @name Load
 						 * @{
 						 */
 						virtual void			load(int, math::mat44<float>) { throw 0; }
 						virtual void			load(int, math::mat44<double>) { throw 0; }
-						virtual void			load(int, math::Color::color<float>) { throw 0; }
-						virtual void			load(int, math::Color::color<double>) { throw 0; }
+						//virtual void			load(int, math::Color::color<float>) { throw 0; }
+						//virtual void			load(int, math::Color::color<double>) { throw 0; }
 						virtual void			load(int, int) { throw 0; }
-						virtual void			load_4fv(int, double*) { throw 0; }
-						virtual void			load_3fv(int, double*) { throw 0; }
+						virtual void			load(int, float*) { throw 0; }
+						virtual void			load(int, double*) { throw 0; }
 						virtual void			load(int, float) { throw 0; }
 						virtual void			load(int, double) { throw 0; }
 						/** @} */
-
+					protected:
+						enum { LEN = 100 };
 						std::string		name1_;
 						std::string		name2_;
 						int			c_;
-						GLuint			o_[100];
+						GLuint			o_[LEN];
 
 				};
 				class Int: public glutpp::glsl::Uniform::Vector::Base {
 					public:
+						Int(std::string s1, std::string s2): Base(s1,s2) {}
 						virtual void		load(int,int);
 				};
 				class Float: public glutpp::glsl::Uniform::Vector::Base {
 					public:
+						Float(std::string s1, std::string s2): Base(s1,s2) {}
 						virtual void		load(int,float);
 				};
 				class Double: public glutpp::glsl::Uniform::Vector::Base {
 					public:
+						Double(std::string s1, std::string s2): Base(s1,s2) {}
 						virtual void		load(int,double);
 				};
 				class Vec3: public glutpp::glsl::Uniform::Vector::Base {
 					public:
-						virtual void		load_3fv(int, double*);
+						Vec3(std::string s1, std::string s2): Base(s1,s2) {}
+						virtual void		load(int, float*);
 				};
 				class DVec3: public glutpp::glsl::Uniform::Vector::Base {
 					public:
-						virtual void		load_3fv(int ,double*);
+						DVec3(std::string s1, std::string s2): Base(s1,s2) {}
+						virtual void		load(int ,double*);
+				};
+				class Vec4: public glutpp::glsl::Uniform::Vector::Base {
+					public:
+						Vec4(std::string s1, std::string s2): Base(s1,s2) {}
+						virtual void		load(int, float*);
+				};
+				class DVec4: public glutpp::glsl::Uniform::Vector::Base {
+					public:
+						DVec4(std::string s1, std::string s2): Base(s1,s2) {}
+						virtual void		load(int ,double*);
 				};
 			}
 		}

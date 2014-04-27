@@ -51,12 +51,14 @@ namespace glutpp {
 				unsigned int			flag_;
 				char				name_[32];
 
-				math::transform<double>		pose_;
+				math::transform<float>		pose_;
 
-				math::vec3<double>		n_;
+				/** @brief Normal for planes. */
+				math::vec3<float>		n_;
+				/** @brief Distance for planes. */
 				float				d_;
 
-				math::vec3<double>		velocity_;
+				math::vec3<float>		velocity_;
 				float				density_;
 
 				struct {

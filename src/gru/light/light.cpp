@@ -7,6 +7,8 @@
 #include <gru/window/window.hpp>
 #include <gru/scene/scene.hpp>
 #include <gru/shape/shape.hpp>
+#include <gru/free.hpp>
+
 
 glutpp::light::light::light(glutpp::shape::shape_s shape):
 	shape_(shape)
@@ -74,25 +76,25 @@ void glutpp::light::light::dim() {
 void	glutpp::light::light::draw() {	
 	GLUTPP_DEBUG_1_FUNCTION;
 }
-math::mat44<double> glutpp::light::light::get_pose() {
+math::mat44<float> glutpp::light::light::get_pose() {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
 	assert(!shape_.expired());
 	
-	math::mat44<double> m = shape_.lock()->getPoseGlobal();
+	math::mat44<float> m = shape_.lock()->getPoseGlobal();
 	
 	return m;
 }
-void glutpp::light::light::load(int o, math::mat44<double> space) {
+void glutpp::light::light::load(int o, math::mat44<float> space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
 	auto p = glutpp::master::Global()->current_program();
 
-	math::vec4<double> pos = raw_.pos_;
+	math::vec4<float> pos = raw_.pos_;
 	pos = space.GetTranslatedVector3D(pos);
 	pos.w() = raw_.pos_.w();
 
-	math::vec3<double> spot_direction = raw_.spot_direction_;
+	math::vec3<float> spot_direction = raw_.spot_direction_;
 	
 	if(raw_.spot_cutoff_ < (M_PI/2.0))
 	{
@@ -107,41 +109,30 @@ void glutpp::light::light::load(int o, math::mat44<double> space) {
 	
 	//if(any(glutpp::light::flag::e::SHOULD_LOAD_POS))
 	{
-		p->get_uniform(glutpp::uniform_name::e::LIGHT_POSITION)->load_4fv(o, pos);
+		p->get_uniform_vector("lights.position")->load(o, pos);
 		
-		unset(glutpp::light::flag::e::SHOULD_LOAD_POS);
+		//unset(glutpp::light::flag::e::SHOULD_LOAD_POS);
 	}	
 	//if(any(glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION))
 	{
-		p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_DIRECTION)->load_3fv(
-				o, spot_direction);
+		p->get_uniform_vector("lights.spot_direction")->load(o, spot_direction);
 		
-		unset(glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION);
+		//unset(glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION);
 	}
 	
 	//if(any(glutpp::light::flag::e::SHOULD_LOAD_OTHER))
 	{
-		p->get_uniform(glutpp::uniform_name::e::LIGHT_AMBIENT)->load_4fv(
-				o, raw_.ambient_);
-		p->get_uniform(glutpp::uniform_name::e::LIGHT_DIFFUSE)->load_4fv(
-				o, raw_.diffuse_);
-		p->get_uniform(glutpp::uniform_name::e::LIGHT_SPECULAR)->load_4fv(
-				o, raw_.specular_);
-			
-		p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_CUTOFF)->load(
-				o, raw_.spot_cutoff_);
-		p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_EXPONENT)->load(
-				o, raw_.spot_exponent_);
-		p->get_uniform(glutpp::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF)->load(
-				o, raw_.spot_light_cos_cutoff_);
-		p->get_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_CONST)->load(
-				o, raw_.atten_const_);
-		p->get_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_LINEAR)->load(
-				o, raw_.atten_linear_);
-		p->get_uniform(glutpp::uniform_name::e::LIGHT_ATTEN_QUAD)->load(
-				o, raw_.atten_quad_);
+		p->get_uniform_vector("lights.ambient")->load(o, raw_.ambient_);
+		p->get_uniform_vector("lights.diffuse")->load(o, raw_.diffuse_);
+		p->get_uniform_vector("lights.specular")->load(o, raw_.specular_);
+		p->get_uniform_vector("lights.spot_cutoff")->load(o, raw_.spot_cutoff_);
+		p->get_uniform_vector("lights.spot_exponent")->load(o, raw_.spot_exponent_);
+		p->get_uniform_vector("lights.spot_light_cos_cutoff")->load(o, raw_.spot_light_cos_cutoff_);
+		p->get_uniform_vector("lights.atten_const")->load(o, raw_.atten_const_);
+		p->get_uniform_vector("lights.atten_linear")->load(o, raw_.atten_linear_);
+		p->get_uniform_vector("lights.atten_quad")->load(o, raw_.atten_quad_);
 
-		unset(glutpp::light::flag::e::SHOULD_LOAD_OTHER);
+		//unset(glutpp::light::flag::e::SHOULD_LOAD_OTHER);
 	}
 }
 void	glutpp::light::light::load_shadow() {

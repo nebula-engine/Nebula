@@ -79,11 +79,11 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	}
 	
 	// pose
-	math::transform<double> def(math::vec3<double>(0,0,0), math::quat<double>(0.0, math::vec3<double>(1.0,0.0,0.0)));
-	pose_ = math::Xml::parse_transform<double>(element->FirstChildElement("pose"), def);
+	math::transform<float> def(math::vec3<float>(0,0,0), math::quat<float>(0.0, math::vec3<float>(1.0,0.0,0.0)));
+	pose_ = math::Xml::parse_transform<float>(element->FirstChildElement("pose"), def);
 	
 	// velocity
-	velocity_ = math::Xml::parse_vec3<double>(element->FirstChildElement("velocity"), velocity_);
+	velocity_ = math::Xml::parse_vec3<float>(element->FirstChildElement("velocity"), velocity_);
 	
 	// flags
 	tinyxml2::XMLElement* e = element->FirstChildElement("flag");
@@ -176,15 +176,15 @@ void glutpp::actor::raw::plane(tinyxml2::XMLElement* element) {
 
 
 	// xml
-	math::vec3<double> n = math::Xml::parse_vec3<double>(element->FirstChildElement("n"), math::vec3<double>(0,1,0));
+	math::vec3<float> n = math::Xml::parse_vec3<float>(element->FirstChildElement("n"), math::vec3<float>(0,1,0));
 	n.Normalize();
 
-	float d = math::Xml::parse_float<double>(element->FirstChildElement("d"), 0);
+	float d = math::Xml::parse_float<float>(element->FirstChildElement("d"), 0);
 
 
-	math::quat<double> q(3.14f, math::vec3<double>(1,0,0));
+	math::quat<float> q(3.14f, math::vec3<float>(1,0,0));
 
-	math::transform<double> pose(n * -1.0f * d, q);
+	math::transform<float> pose(n * -1.0f * d, q);
 
 	n_ = n;
 	d_ = d;
@@ -195,7 +195,7 @@ void glutpp::actor::raw::controller(tinyxml2::XMLElement* element) {
 
 	printf("%s\n",__FUNCTION__);
 
-	pose_.p = math::Xml::parse_vec3<double>(element->FirstChildElement("p"), math::vec3<double>(0,0,0));
+	pose_.p = math::Xml::parse_vec3<float>(element->FirstChildElement("p"), math::vec3<float>(0,0,0));
 }
 
 

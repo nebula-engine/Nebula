@@ -2,43 +2,43 @@
 
 struct Light
 {
-	dvec4 position;
-	dvec4 ambient;
-	dvec4 diffuse;
-	dvec4 specular;
-	dvec3 spot_direction;
-	double spot_cutoff;
-	double atten_const;
-	double atten_linear;
-	double atten_quad;
-	double spot_exponent;
-	double spot_light_cos_cutoff;
+	vec4 position;
+	vec4 ambient;
+	vec4 diffuse;
+	vec4 specular;
+	vec3 spot_direction;
+	float spot_cutoff;
+	float atten_const;
+	float atten_linear;
+	float atten_quad;
+	float spot_exponent;
+	float spot_light_cos_cutoff;
 };
 
 struct Material
 {
-	dvec4 diffuse;
-	dvec4 specular;
-	dvec4 ambient;
-	dvec4 emission;
-	double shininess;
+	vec4 diffuse;
+	vec4 specular;
+	vec4 ambient;
+	vec4 emission;
+	float shininess;
 };
 
-out dvec4 vs_P;
-out dvec3 vs_N;
-out dvec2 vs_texcoor;
+out vec4 vs_P;
+out vec3 vs_N;
+out vec2 vs_texcoor;
 
-uniform dmat4 model;
-uniform dmat4 view;
-uniform dmat4 proj;
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 proj;
 
-in dvec4 position; // 0
-in dvec3 normal; // 1
-in dvec2 texcoor; // 2
+in vec4 position; // 0
+in vec3 normal; // 1
+in vec2 texcoor; // 2
 
 void main(void)
 {
-	dmat4 modelview = view * model;
+	mat4 modelview = view * model;
 	
 	// Calculate view-space coordinate
 	vs_P = modelview * position;

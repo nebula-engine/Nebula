@@ -11,10 +11,10 @@
 
 
 glutpp::material::raw::raw() {
-	ambient_ = math::Color::black;
-	diffuse_ = math::Color::cyan;
-	specular_ = math::Color::white;
-	emission_ = math::Color::black;
+	ambient_ = math::Color::black<float>();
+	diffuse_ = math::Color::cyan<float>();
+	specular_ = math::Color::white<float>();
+	emission_ = math::Color::black<float>();
 	shininess_ = 500;
 }
 void	glutpp::material::raw::load(tinyxml2::XMLElement* element) {
@@ -25,7 +25,7 @@ void	glutpp::material::raw::load(tinyxml2::XMLElement* element) {
 		return;
 	}
 	
-	ambient_  = math::Xml::parse_color<double>(element->FirstChildElement("ambient"), ambient_);
+	ambient_  = math::Xml::parse_color<float>(element->FirstChildElement("ambient"), ambient_);
 	diffuse_  = math::Xml::parse_color(element->FirstChildElement("diffuse"), diffuse_);
 	specular_ = math::Xml::parse_color(element->FirstChildElement("specular"), specular_);
 	emission_ = math::Xml::parse_color(element->FirstChildElement("emission"), emission_);
@@ -50,10 +50,10 @@ void	glutpp::material::material::load()
 {
 	auto p = glutpp::master::Global()->current_program();
 
-	p->get_uniform_scalar("front.ambient")->load_4fv(raw_.ambient_);
-	p->get_uniform_scalar("front.diffuse")->load_4fv(raw_.diffuse_);
-	p->get_uniform_scalar("front.specular")->load_4fv(raw_.specular_);
-	p->get_uniform_scalar("front.emission")->load_4fv(raw_.emission_);
+	p->get_uniform_scalar("front.ambient")->load(raw_.ambient_);
+	p->get_uniform_scalar("front.diffuse")->load(raw_.diffuse_);
+	p->get_uniform_scalar("front.specular")->load(raw_.specular_);
+	p->get_uniform_scalar("front.emission")->load(raw_.emission_);
 	p->get_uniform_scalar("front.shininess")->load(raw_.shininess_);
 }
 void glutpp::material::material::step(double time) {

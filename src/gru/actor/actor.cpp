@@ -148,14 +148,14 @@ void glutpp::actor::actor::step(double time) {
 				time));
 
 }
-math::mat44<double>		glutpp::actor::actor::getPose() {
+math::mat44<float>		glutpp::actor::actor::getPose() {
 	assert(raw_);
 	return raw_->pose_;
 }
-math::mat44<double> glutpp::actor::actor::getPoseGlobal() {
+math::mat44<float> glutpp::actor::actor::getPoseGlobal() {
 	GLUTPP_DEBUG_1_FUNCTION;
 
-	math::mat44<double> m;
+	math::mat44<float> m;
 	
 	if(!parent_.expired()) {
 		m = parent_.lock()->getPoseGlobal() * getPose();
@@ -165,7 +165,7 @@ math::mat44<double> glutpp::actor::actor::getPoseGlobal() {
 
 	return m;
 }
-void glutpp::actor::actor::set_pose(math::transform<double> pose) {
+void		glutpp::actor::actor::set_pose(math::transform<float> pose) {
 	assert(raw_);
 
 	raw_->pose_ = pose;
@@ -191,7 +191,7 @@ void glutpp::actor::actor::notify_foundation_change_pose() {
 		shape->notify_foundation_change_pose();
 	}
 }
-void glutpp::actor::actor::load_lights(int& i, math::mat44<double> space) {
+void		glutpp::actor::actor::load_lights(int& i, math::mat44<float> space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 	assert(raw_);
 
@@ -223,7 +223,7 @@ glutpp::scene::scene_s glutpp::actor::actor::get_scene() {
 
 	abort();
 }
-void glutpp::actor::actor::draw(glutpp::window::window_s window, math::mat44<double> space) {
+void		glutpp::actor::actor::draw(glutpp::window::window_s window, math::mat44<float> space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 	assert(raw_);
 

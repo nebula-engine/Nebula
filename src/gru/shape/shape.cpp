@@ -25,10 +25,10 @@ unsigned int glutpp::shape::shape::f() {
 void glutpp::shape::shape::f(unsigned int flag) {
 	raw_.get_raw_base()->flag_ = flag;
 }
-math::mat44<double>	glutpp::shape::shape::getPoseGlobal() {
+math::mat44<float>	glutpp::shape::shape::getPoseGlobal() {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
-	math::mat44<double> m;
+	math::mat44<float> m;
 	
 	if(!parent_.expired()) {
 		m = parent_.lock()->getPoseGlobal() * getPose();
@@ -38,7 +38,7 @@ math::mat44<double>	glutpp::shape::shape::getPoseGlobal() {
 	
 	return m;
 }
-math::mat44<double> glutpp::shape::shape::getPose() {
+math::mat44<float> glutpp::shape::shape::getPose() {
 	return raw_.get_raw_base()->pose_;
 }
 void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
@@ -200,7 +200,7 @@ void glutpp::shape::shape::notify_foundation_change_pose() {
 		light->notify_foundation_change_pose();
 	}
 }
-void glutpp::shape::shape::load_lights(int& i, math::mat44<double> space) {
+void glutpp::shape::shape::load_lights(int& i, math::mat44<float> space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	space = space * raw_.get_raw_base()->pose_;
@@ -212,7 +212,7 @@ void glutpp::shape::shape::load_lights(int& i, math::mat44<double> space) {
 		it->second->load(i++, space);
 	}
 }
-void glutpp::shape::shape::draw(glutpp::window::window_s window, math::mat44<double> space) {
+void glutpp::shape::shape::draw(glutpp::window::window_s window, math::mat44<float> space) {
 	space = space * raw_.get_raw_base()->pose_;
 
 	switch(raw_.get_raw_base()->type_)
@@ -225,12 +225,12 @@ void glutpp::shape::shape::draw(glutpp::window::window_s window, math::mat44<dou
 			break;
 	}
 }
-void		glutpp::shape::shape::model_load(math::mat44<double> space) {
+void		glutpp::shape::shape::model_load(math::mat44<float> space) {
 	auto p = glutpp::master::Global()->current_program();
 
-	math::vec3<double> s(raw_.get_raw_base()->s_);
+	math::vec3<float> s(raw_.get_raw_base()->s_);
 
-	math::mat44<double> scale;
+	math::mat44<float> scale;
 	scale.SetScale(s);
 
 	p->get_uniform_scalar("model")->load(space * scale);
@@ -327,7 +327,7 @@ void		glutpp::shape::shape::init_buffer(glutpp::window::window_s window, std::sh
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 }
-void glutpp::shape::shape::draw_elements(glutpp::window::window_s window, math::mat44<double> space) {
+void		glutpp::shape::shape::draw_elements(glutpp::window::window_s window, math::mat44<float> space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	auto p = glutpp::master::Global()->use_program(program_);

@@ -20,43 +20,7 @@
 #include <gru/light/light.hpp>
 #include <gru/renderable.hpp>
 
-template <typename... Args>
-void	fatal_error(char const * c, Args ...args)
-{
-	char fmt[128];
-	strcat(fmt, "error: ");
-	strcat(fmt, c);
-	strcat(fmt, "\n");
-	printf(fmt, args...);
-	exit(0);
-}
-void	fatal_error(char const * c)
-{
-	char fmt[128];
-	strcat(fmt, "error: ");
-	strcat(fmt, c);
-	strcat(fmt, "\n");
-	printf("%s\n",c);
-	exit(0);
-}
-void	check_error()
-{
-	GLenum errCode = glGetError();
-	if (errCode != GL_NO_ERROR)
-	{
-		//printf("%s\n",gluErrorString(errCode));
-	}
-}
-void	checkerror(char const * msg) {
 
-	GLenum err = glGetError();
-	if(err != GL_NO_ERROR)
-	{
-		unsigned char const * str = gluErrorString(err);
-		printf("%s: %s\n",msg,str);
-		exit(0);
-	}
-}
 
 
 

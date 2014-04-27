@@ -74,7 +74,11 @@ namespace glutpp {
 				void			release();
 				math::mat44<double>	get_pose();
 				/** @brief render */
-				void			render(double time, glutpp::Camera::View::Base_s, glutpp::window::window_s);
+				void			render(
+						double time,
+						std::shared_ptr<glutpp::Camera::View::Base<float> >,
+						std::shared_ptr<glutpp::Camera::Projection::Base>,
+						glutpp::window::window_s);
 				void			draw(glutpp::window::window_s window);
 				void			resize(int w, int h);
 

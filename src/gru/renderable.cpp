@@ -4,6 +4,7 @@
 #include <gru/renderable.hpp>
 #include <gru/gui/layout.hpp>
 #include <gru/Camera/View/Free.hpp>
+#include <gru/Camera/Projection/Perspective.hpp>
 
 
 
@@ -30,9 +31,10 @@ void glutpp::renderable::init(glutpp::window::window_s window) {
 
 	// camera
 	view_.reset(new glutpp::Camera::View::Free);
+	proj_.reset(new glutpp::Camera::Projection::Perspective(shared_from_this()));
 	//camera_->init(shared_from_this());
 }
-glutpp::window::window_s glutpp::renderable::get_window() {
+glutpp::window::window_s glutpp::renderable::getWindow() {
 	auto window = window_.lock();
 
 	assert(window);
@@ -50,12 +52,12 @@ void glutpp::renderable::render(double time, glutpp::window::window_s window) {
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 	
 	if(scene_) {
-		scene_->render(time, view_, window);
+		scene_->render(time, view_, proj_, window);
 	}
 
 	if(layout_)
 	{
-		layout_->render(time);
+		//layout_->render(time);
 	}
 }		
 

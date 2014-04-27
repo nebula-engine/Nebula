@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include <GL/glew.h>
 
 #include <stdio.h>
@@ -6,9 +8,9 @@
 #include <string.h>
 #include <algorithm>
 
-#include <gru/glsl/program.hpp>
 #include <gru/glsl/shader.hpp>
-#include <gru/window/window.hpp>
+#include <gru/free.hpp>
+#include <gru/glsl/program.hpp>
 
 glutpp::glsl::program::program()
 {
@@ -91,37 +93,61 @@ void	glutpp::glsl::program::add_attrib(glutpp::attrib_name::e name, char const *
 	
 	attrib_[name] = a;
 }
-void	glutpp::glsl::program::add_uniform_scalar(char const * name, GLenum type) {
+void	glutpp::glsl::program::add_uniform_scalar(std::string name, GLenum type) {
 	
 	std::shared_ptr<glutpp::glsl::Uniform::Scalar::Base> u;
 
 	switch(type) {
 		case GL_INT:
-			u.reset(new glutpp::glsl::Uniform::Scalar::Int);
+			u.reset(new glutpp::glsl::Uniform::Scalar::Int(name));
 			break;
+		case GL_FLOAT:
+			u.reset(new glutpp::glsl::Uniform::Scalar::Float(name));
+			break;
+		case GL_FLOAT_VEC3:
+			u.reset(new glutpp::glsl::Uniform::Scalar::Vec3(name));
+			break;
+		case GL_FLOAT_VEC4:
+			u.reset(new glutpp::glsl::Uniform::Scalar::Vec4(name));
+			break;
+		case GL_FLOAT_MAT4:
+			u.reset(new glutpp::glsl::Uniform::Scalar::Mat4(name));
+			break;
+		case GL_SAMPLER_2D:
+			u.reset(new glutpp::glsl::Uniform::Scalar::Sampler2D(name));
+			break;
+		default:
+			printf("unsupported glsl type \"%s\"\n", name.c_str());
+			exit(0);
 	}
-
-	u->init(name);
 
 	uniform_scalar_[name] = u;
 }
-void	glutpp::glsl::program::add_uniform_vector(char const * name1, char const * name2, GLenum type) {
+void	glutpp::glsl::program::add_uniform_vector(std::string name1, std::string name2, GLenum type) {
 
-	std::shared_ptr<glutpp::glsl::Uniform::Scalar::Base> u;
+	std::shared_ptr<glutpp::glsl::Uniform::Vector::Base> u;
 
 	switch(type) {
 		case GL_INT:
-			u.reset(new glutpp::glsl::Uniform::Scalar::Int);
+			u.reset(new glutpp::glsl::Uniform::Vector::Int(name1, name2));
 			break;
+		case GL_FLOAT:
+			u.reset(new glutpp::glsl::Uniform::Vector::Float(name1, name2));
+			break;
+		case GL_FLOAT_VEC3:
+			u.reset(new glutpp::glsl::Uniform::Vector::Vec3(name1, name2));
+			break;
+		case GL_FLOAT_VEC4:
+			u.reset(new glutpp::glsl::Uniform::Vector::Vec4(name1, name2));
+			break;
+		default:
+			printf("unsupported glsl type \"%s.%s\"\n", name1.c_str(), name2.c_str());
+			exit(0);
 	}
 	
-	char* name = new char[strlen(name1) + strlen(name2) + 1];
+	std::string name = name1 + "." + name2;
 	
-	u->init(name);
-	
-	
-	
-	uniform_scalar_[name] = u;
+	uniform_vector_[name] = u;
 	
 }
 std::shared_ptr<glutpp::glsl::attrib>	glutpp::glsl::program::get_attrib(int name) {
@@ -161,8 +187,12 @@ std::shared_ptr<glutpp::glsl::Uniform::Vector::Base>	glutpp::glsl::program::get_
 
 	auto it = uniform_vector_.find(name);
 
-	if(it == uniform_vector_.end())
-	{
+	if(it == uniform_vector_.end()) {
+		
+		for(auto it2 = uniform_vector_.begin(); it2 != uniform_vector_.end(); ++it2) {
+			std::cout << (*it2).first << std::endl;
+		}
+		
 		printf("uniform \"%s\" not found\n", name.c_str());
 		exit(0);
 	}
@@ -209,74 +239,73 @@ char const * shaderTypeString(GLenum type) {
 	m[GL_DOUBLE_VEC2]	="dvec2";
 	m[GL_DOUBLE_VEC3]	="dvec3";
 	m[GL_DOUBLE_VEC4] 	="dvec4";
-	/*
-	   GL_INT 	int
-	   GL_INT_VEC2 	ivec2​
-	   GL_INT_VEC3 	ivec3​
-	   GL_INT_VEC4 	ivec4​
-	   GL_UNSIGNED_INT 	unsigned int​
-	   GL_UNSIGNED_INT_VEC2 	uvec2​
-	   GL_UNSIGNED_INT_VEC3 	uvec3​
-	   GL_UNSIGNED_INT_VEC4 	uvec4​
-	   GL_BOOL 	bool
-	   GL_BOOL_VEC2 	bvec2​
-	   GL_BOOL_VEC3 	bvec3​
-	   GL_BOOL_VEC4 	bvec4​
-	   GL_FLOAT_MAT2 	mat2​
-	   GL_FLOAT_MAT3 	mat3​
-	   GL_FLOAT_MAT4 	mat4​
-	   GL_FLOAT_MAT2x3 	mat2x3
-	   GL_FLOAT_MAT2x4 	mat2x4​
-	   GL_FLOAT_MAT3x2 	mat3x2​
-	   GL_FLOAT_MAT3x4 	mat3x4​
-	   GL_FLOAT_MAT4x2 	mat4x2​
-	   GL_FLOAT_MAT4x3 	mat4x3​
-	   GL_DOUBLE_MAT2 	dmat2​
-	   GL_DOUBLE_MAT3 	dmat3​
-	   GL_DOUBLE_MAT4 	dmat4​
-	   GL_DOUBLE_MAT2x3 	dmat2x3​
-	   GL_DOUBLE_MAT2x4 	dmat2x4​
-	   GL_DOUBLE_MAT3x2 	dmat3x2​
-	   GL_DOUBLE_MAT3x4 	dmat3x4​
-	   GL_DOUBLE_MAT4x2 	dmat4x2​
-	   GL_DOUBLE_MAT4x3 	dmat4x3​
-	   GL_SAMPLER_1D 	sampler1D​
-	   GL_SAMPLER_2D 	sampler2D​
-	   GL_SAMPLER_3D 	sampler3D​
-	   GL_SAMPLER_CUBE 	samplerCube​
-	   GL_SAMPLER_1D_SHADOW 	sampler1DShadow​
-	   GL_SAMPLER_2D_SHADOW 	sampler2DShadow​
-	   GL_SAMPLER_1D_ARRAY 	sampler1DArray​
-	   GL_SAMPLER_2D_ARRAY 	sampler2DArray​
-	   GL_SAMPLER_1D_ARRAY_SHADOW 	sampler1DArrayShadow​
-	   GL_SAMPLER_2D_ARRAY_SHADOW 	sampler2DArrayShadow​
-	   GL_SAMPLER_2D_MULTISAMPLE 	sampler2DMS​
-	   GL_SAMPLER_2D_MULTISAMPLE_ARRAY 	sampler2DMSArray​
-	   GL_SAMPLER_CUBE_SHADOW 	samplerCubeShadow​
-	   GL_SAMPLER_BUFFER 	samplerBuffer​
-	   GL_SAMPLER_2D_RECT 	sampler2DRect​
-	   GL_SAMPLER_2D_RECT_SHADOW 	sampler2DRectShadow​
-	   GL_INT_SAMPLER_1D 	isampler1D​
-	   GL_INT_SAMPLER_2D 	isampler2D​
-	   GL_INT_SAMPLER_3D 	isampler3D​
-	   GL_INT_SAMPLER_CUBE 	isamplerCube​
-	   GL_INT_SAMPLER_1D_ARRAY 	isampler1DArray​
-	   GL_INT_SAMPLER_2D_ARRAY 	isampler2DArray​
-	   GL_INT_SAMPLER_2D_MULTISAMPLE 	isampler2DMS​
-	   GL_INT_SAMPLER_2D_MULTISAMPLE_ARRAY 	isampler2DMSArray​
-	   GL_INT_SAMPLER_BUFFER 	isamplerBuffer​
-	   GL_INT_SAMPLER_2D_RECT 	isampler2DRect​
-	   GL_UNSIGNED_INT_SAMPLER_1D 	usampler1D​
-	   GL_UNSIGNED_INT_SAMPLER_2D 	usampler2D​
-	   GL_UNSIGNED_INT_SAMPLER_3D​ 	usampler3D​
-	   GL_UNSIGNED_INT_SAMPLER_CUBE​ 	usamplerCube​
-	   GL_UNSIGNED_INT_SAMPLER_1D_ARRAY​ 	usampler2DArray​
-	   GL_UNSIGNED_INT_SAMPLER_2D_ARRAY​ 	usampler2DArray​
-	   GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE​ 	usampler2DMS​
-	   GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE_ARRAY​ 	usampler2DMSArray​
-	   GL_UNSIGNED_INT_SAMPLER_BUFFER​ 	usamplerBuffer​
-	   GL_UNSIGNED_INT_SAMPLER_2D_RECT​ 	usampler2DRect​
-	 */
+	m[GL_INT]		="int";
+	m[GL_INT_VEC2]		="ivec2";
+	m[GL_INT_VEC3]		="ivec3";
+	m[GL_INT_VEC4]		="ivec4";
+	m[GL_UNSIGNED_INT]	="unsigned int";
+	m[GL_UNSIGNED_INT_VEC2]	="uvec2";
+	m[GL_UNSIGNED_INT_VEC3]	="uvec3";
+	m[GL_UNSIGNED_INT_VEC4]	="uvec4";
+	m[GL_BOOL]				="bool";
+	m[GL_BOOL_VEC2]				="bvec2";
+	m[GL_BOOL_VEC3]				="bvec3";
+	m[GL_BOOL_VEC4]				="bvec4";
+	m[GL_FLOAT_MAT2]			="mat2";
+	m[GL_FLOAT_MAT3]			="mat3";
+	m[GL_FLOAT_MAT4]			="mat4";
+	m[GL_FLOAT_MAT2x3]			="mat2x3";
+	m[GL_FLOAT_MAT2x4]			="mat2x4";
+	m[GL_FLOAT_MAT3x2]			="mat3x2";
+	m[GL_FLOAT_MAT3x4]			="mat3x4";
+	m[GL_FLOAT_MAT4x2]			="mat4x2";
+	m[GL_FLOAT_MAT4x3]			="mat4x3";
+	m[GL_DOUBLE_MAT2]			="dmat2";
+	m[GL_DOUBLE_MAT3]			="dmat3";
+	m[GL_DOUBLE_MAT4]			="dmat4";
+	m[GL_DOUBLE_MAT2x3]			="dmat2x3";
+	m[GL_DOUBLE_MAT2x4]			="dmat2x4";
+	m[GL_DOUBLE_MAT3x2]			="dmat3x2";
+	m[GL_DOUBLE_MAT3x4]			="dmat3x4";
+	m[GL_DOUBLE_MAT4x2]			="dmat4x2";
+	m[GL_DOUBLE_MAT4x3]			="dmat4x3";
+	m[GL_SAMPLER_1D]			="sampler1D";
+	m[GL_SAMPLER_2D]			="sampler2D";
+	m[GL_SAMPLER_3D]			="sampler3D";
+	m[GL_SAMPLER_CUBE]			="samplerCube";
+	m[GL_SAMPLER_1D_SHADOW]			="sampler1DShadow";
+	m[GL_SAMPLER_2D_SHADOW]			="sampler2DShadow";
+	m[GL_SAMPLER_1D_ARRAY]			="sampler1DArray";
+	m[GL_SAMPLER_2D_ARRAY]			="sampler2DArray";
+	m[GL_SAMPLER_1D_ARRAY_SHADOW]			="sampler1DArrayShadow";
+	m[GL_SAMPLER_2D_ARRAY_SHADOW]			="sampler2DArrayShadow";
+	m[GL_SAMPLER_2D_MULTISAMPLE]			="sampler2DMS";
+	m[GL_SAMPLER_2D_MULTISAMPLE_ARRAY]		="sampler2DMSArray";
+	m[GL_SAMPLER_CUBE_SHADOW]			="samplerCubeShadow";
+	m[GL_SAMPLER_BUFFER]				="samplerBuffer";
+	m[GL_SAMPLER_2D_RECT]				="sampler2DRect";
+	m[GL_SAMPLER_2D_RECT_SHADOW]			="sampler2DRectShadow";
+	m[GL_INT_SAMPLER_1D]				="isampler1D";
+	m[GL_INT_SAMPLER_2D]				="isampler2D";
+	m[GL_INT_SAMPLER_3D]				="isampler3D";
+	m[GL_INT_SAMPLER_CUBE]				="isamplerCube";
+	m[GL_INT_SAMPLER_1D_ARRAY]			="isampler1DArray";
+	m[GL_INT_SAMPLER_2D_ARRAY]			="isampler2DArray";
+	m[GL_INT_SAMPLER_2D_MULTISAMPLE]		="isampler2DMS";
+	m[GL_INT_SAMPLER_2D_MULTISAMPLE_ARRAY]		="isampler2DMSArray";
+	m[GL_INT_SAMPLER_BUFFER]			="isamplerBuffer";
+	m[GL_INT_SAMPLER_2D_RECT]			="isampler2DRect";
+	m[GL_UNSIGNED_INT_SAMPLER_1D]			="usampler1D";
+	m[GL_UNSIGNED_INT_SAMPLER_2D]			="usampler2D";
+	m[GL_UNSIGNED_INT_SAMPLER_3D]			="usampler3D";
+	m[GL_UNSIGNED_INT_SAMPLER_CUBE]			="usamplerCube";
+	m[GL_UNSIGNED_INT_SAMPLER_1D_ARRAY]		="usampler2DArray";
+	m[GL_UNSIGNED_INT_SAMPLER_2D_ARRAY]		="usampler2DArray";
+	m[GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE]	="usampler2DMS";
+	m[GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE_ARRAY]	="usampler2DMSArray";
+	m[GL_UNSIGNED_INT_SAMPLER_BUFFER]		="usamplerBuffer";
+	m[GL_UNSIGNED_INT_SAMPLER_2D_RECT]		="usampler2DRect";
+
 	auto it = m.find(type);
 
 	if(it != m.end()) return it->second;
@@ -287,11 +316,35 @@ void		glutpp::glsl::program::scanUniforms() {
 	GLsizei len;
 	GLint size;
 	GLenum type;
-	GLchar name[16];
+	GLchar str_name[128];
 	for(int i = 0; i < 1000; i++) {
-		glGetActiveUniform(o_, i, 16, &len, &size, &type, name);
-		checkerror("glGetActiveUniform");
-		printf("name=%16s type=%s\n",name,shaderTypeString(type));
+		glGetActiveUniform(o_, i, 128, &len, &size, &type, str_name);
+		
+		if(isGLError()) break;
+		
+		//printf("name=%32s type=%s\n", str_name, shaderTypeString(type));
+
+		// scalar or vector
+
+		std::string name = str_name;
+
+		size_t find_open = name.find("[");
+		size_t find_close = name.find("]");
+
+		if(find_open != std::string::npos) {
+
+			std::string name1 = name.substr(0, find_open);
+			std::string name2 = name.substr(find_close + 2);
+			
+			auto it = uniform_vector_.find(name1 + "." + name2);
+			if(it != uniform_vector_.end()) continue;
+			
+			add_uniform_vector(name1, name2, type);
+	
+		} else {
+			
+			add_uniform_scalar(name, type);
+		}
 	}
 }
 

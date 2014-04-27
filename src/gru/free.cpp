@@ -29,8 +29,7 @@ void	print(unsigned char * s, int w, int h) {
   {
 
   }*/
-void	glutpp::draw_quad(float x, float y, float w, float h, math::Color::color<double> color)
-{
+void	glutpp::draw_quad(float x, float y, float w, float h, math::Color::color<float> color) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	//GLint uniform_color = glGetUniformLocation(program, "color");
@@ -64,7 +63,7 @@ void	glutpp::draw_quad(float x, float y, float w, float h, math::Color::color<do
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_DEPTH_TEST);
 	
-	glColor4dv(color);
+	glColor4fv(color);
 	
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
@@ -83,7 +82,7 @@ void	glutpp::draw_quad(float x, float y, float w, float h, math::Color::color<do
 	glPopMatrix();
 
 }
-void	glutpp::draw_text(float x, float y, float sx, float sy, math::Color::color<double> color, char const * text) {
+void	glutpp::draw_text(float x, float y, float sx, float sy, math::Color::color<float> color, char const * text) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	const char * c;
@@ -145,14 +144,14 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, math::Color::color<
 	//printf("coord = %i\n",attribute_coord);
 
 	// color
-	p->get_uniform_scalar("color")->load(color);
+	p->get_uniform_scalar("font_color")->load(color);
 
 	// texture
 	GLuint tex;
 	glActiveTexture(GL_TEXTURE0);
 	glGenTextures(1, &tex);
 	glBindTexture(GL_TEXTURE_2D, tex);
-	p->get_uniform(glutpp::uniform_name::e::TEX)->load(0);
+	p->get_uniform_scalar("tex")->load(0);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -281,4 +280,39 @@ void CheckExt()
 	isSupported("GL_ARB_vertex_shader");
 	isSupported("GL_ARB_fragment_shader");
 }
+
+
+template <typename... Args>
+void	fatal_error(char const * c, Args ...args)
+{
+	char fmt[128];
+	strcat(fmt, "error: ");
+	strcat(fmt, c);
+	strcat(fmt, "\n");
+	printf(fmt, args...);
+	exit(0);
+}
+void	fatal_error(char const * c)
+{
+	char fmt[128];
+	strcat(fmt, "error: ");
+	strcat(fmt, c);
+	strcat(fmt, "\n");
+	printf("%s\n",c);
+	exit(0);
+}
+void	checkerror(char const * msg) {
+
+	GLenum err = glGetError();
+	if(err != GL_NO_ERROR)
+	{
+		unsigned char const * str = gluErrorString(err);
+		printf("%s: %s\n",msg,str);
+		exit(0);
+	}
+}
+bool	isGLError() {
+	return (glGetError() != GL_NO_ERROR);
+}
+
 

@@ -30,21 +30,21 @@ namespace glutpp
 				unsigned int		flag_;
 
 				// position
-				math::vec4<double>		pos_;
+				math::vec4<float>		pos_;
 
 				// colors
-				math::Color::color<double>	ambient_;
-				math::Color::color<double>	diffuse_;
-				math::Color::color<double>	specular_;
+				math::Color::color<float>	ambient_;
+				math::Color::color<float>	diffuse_;
+				math::Color::color<float>	specular_;
 
 				// other properties
-				math::vec3<double>     	spot_direction_;
-				double			spot_cutoff_;
-				double			spot_exponent_;
-				double			spot_light_cos_cutoff_;
-				double			atten_const_;
-				double			atten_linear_;
-				double			atten_quad_;
+				math::vec3<float>     	spot_direction_;
+				float			spot_cutoff_;
+				float			spot_exponent_;
+				float			spot_light_cos_cutoff_;
+				float			atten_const_;
+				float			atten_linear_;
+				float			atten_quad_;
 		};
 	}
 }

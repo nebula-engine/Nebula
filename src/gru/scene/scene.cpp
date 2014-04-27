@@ -7,6 +7,7 @@
 #include <gru/actor/actor.hpp>
 #include <gru/light/light.hpp>
 #include <gru/glsl/program.hpp>
+#include <gru/Camera/Projection/Perspective.hpp>
 
 
 glutpp::scene::scene::scene() {
@@ -42,12 +43,14 @@ math::mat44<double>	glutpp::scene::scene::get_pose() {
 	return math::mat44<double>();
 }
 void glutpp::scene::scene::render(double time,
-		glutpp::Camera::View::Base_s camera,
+		std::shared_ptr<glutpp::Camera::View::Base<float> > view,
+		std::shared_ptr<glutpp::Camera::Projection::Base> proj,
 		glutpp::window::window_s window) {
 
 	GLUTPP_DEBUG_1_FUNCTION;
 
-	assert(camera);
+	assert(view);
+	assert(proj);
 
 	auto p = glutpp::master::Global()->use_program(glutpp::program_name::e::LIGHT);
 
@@ -55,15 +58,17 @@ void glutpp::scene::scene::render(double time,
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 
-	camera->load();
+	
+	view->load();
+	proj->load();
 
 	int i = 0;
 	for(auto it = actors_.map_.begin(); it != actors_.map_.end(); ++it)
 	{
-		it->second->load_lights(i, math::mat44<double>());
+		it->second->load_lights(i, math::mat44<float>());
 	}
 
-	p->get_uniform_scalar(glutpp::uniform_name::LIGHT_COUNT)->load(i);
+	p->get_uniform_scalar("light_count")->load(i);
 
 	//printf("%i\n",i);
 
@@ -75,7 +80,7 @@ void glutpp::scene::scene::draw(glutpp::window::window_s window) {
 
 	for(auto it = actors_.map_.begin(); it != actors_.map_.end(); ++it)
 	{
-		it->second->draw(window, math::mat44<double>());
+		it->second->draw(window, math::mat44<float>());
 	}
 }
 void glutpp::scene::scene::resize(int w, int h) {

@@ -4,11 +4,11 @@
 #include <gru/light/raw.hpp>
 
 glutpp::light::raw::raw():
-	pos_(math::vec4<double>(0.0, 0.0, 0.0, 1.0)),
-	ambient_(math::Color::black),
-	diffuse_(math::Color::white),
-	specular_(math::Color::white),
-	spot_direction_(math::vec3<double>(0.0, 0.0, -1.0)),
+	pos_(math::vec4<float>(0.0, 0.0, 0.0, 1.0)),
+	ambient_(math::Color::black<float>()),
+	diffuse_(math::Color::white<float>()),
+	specular_(math::Color::white<float>()),
+	spot_direction_(math::vec3<float>(0.0, 0.0, -1.0)),
 	spot_cutoff_(10.0),
 	spot_exponent_(1.0),
 	atten_const_(1.0),
@@ -20,34 +20,34 @@ glutpp::light::raw::raw():
 void	glutpp::light::raw::load(tinyxml2::XMLElement* element) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
-	pos_ = math::Xml::parse_vec4<double>(element->FirstChildElement("p"));
+	pos_ = math::Xml::parse_vec4<float>(element->FirstChildElement("p"));
 	
-	ambient_ = math::Xml::parse_color<double>(
+	ambient_ = math::Xml::parse_color<float>(
 			element->FirstChildElement("ambient"),
 			ambient_);
 	
-	diffuse_ = math::Xml::parse_color<double>(
+	diffuse_ = math::Xml::parse_color<float>(
 			element->FirstChildElement("diffuse"),
 			diffuse_);
 	
-	specular_ = math::Xml::parse_color<double>(
+	specular_ = math::Xml::parse_color<float>(
 			element->FirstChildElement("specular"),
 			specular_);
 	
 	
 	
-	spot_direction_ = math::Xml::parse_vec3<double>(
+	spot_direction_ = math::Xml::parse_vec3<float>(
 		element->FirstChildElement("spot_direction"),
-		math::vec3<double>(0.0, 0.0, 0.0));
+		math::vec3<float>(0.0, 0.0, 0.0));
 	
-	spot_cutoff_           = math::Xml::parse_float<double>(element->FirstChildElement("spot_cutoff"), M_PI);
-	spot_exponent_         = math::Xml::parse_float<double>(element->FirstChildElement("spot_exponent"), 0.0);
-	spot_light_cos_cutoff_ = math::Xml::parse_float<double>(element->FirstChildElement("spot_cutoff"), M_PI);
+	spot_cutoff_           = math::Xml::parse_float<float>(element->FirstChildElement("spot_cutoff"), M_PI);
+	spot_exponent_         = math::Xml::parse_float<float>(element->FirstChildElement("spot_exponent"), 0.0);
+	spot_light_cos_cutoff_ = math::Xml::parse_float<float>(element->FirstChildElement("spot_cutoff"), M_PI);
 	
 	
-	atten_const_  = math::Xml::parse_float<double>(element->FirstChildElement("atten_const"), 1.0);
-	atten_linear_ = math::Xml::parse_float<double>(element->FirstChildElement("atten_linear"), 0.0);
-	atten_quad_   = math::Xml::parse_float<double>(element->FirstChildElement("atten_quad"), 0.0);
+	atten_const_  = math::Xml::parse_float<float>(element->FirstChildElement("atten_const"), 1.0);
+	atten_linear_ = math::Xml::parse_float<float>(element->FirstChildElement("atten_linear"), 0.0);
+	atten_quad_   = math::Xml::parse_float<float>(element->FirstChildElement("atten_quad"), 0.0);
 	
 	print();
 }

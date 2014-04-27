@@ -2,8 +2,10 @@
 
 #include <GL/glew.h>
 
-#include <gru/window/window.hpp>
+
 #include <gru/glsl/attrib.hpp>
+#include <gru/free.hpp>
+#include <gru/glsl/program.hpp>
 
 glutpp::glsl::attrib::attrib():
 	o_(-1),

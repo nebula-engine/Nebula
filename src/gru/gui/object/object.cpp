@@ -12,7 +12,7 @@ glutpp::gui::object::object::object():
 	y_(0.0),
 	w_(0.3),
 	h_(0.3),
-	font_color_(math::Color::magenta),
+	font_color_(math::Color::magenta<float>()),
 	bg_color_(0,0,0,0),
 	label_length_(1),
 	label_(NULL)
@@ -30,10 +30,10 @@ glutpp::window::window_s get_window() {
 }
 void	glutpp::gui::object::object::load_xml(tinyxml2::XMLElement* element) {
 	
-	x_ = math::Xml::parse_float<double>(element->FirstChildElement("x"),0);	
-	y_ = math::Xml::parse_float<double>(element->FirstChildElement("y"),0);
-	w_ = math::Xml::parse_float<double>(element->FirstChildElement("w"),0);
-	h_ = math::Xml::parse_float<double>(element->FirstChildElement("h"),0);
+	x_ = math::Xml::parse_float<float>(element->FirstChildElement("x"),0);	
+	y_ = math::Xml::parse_float<float>(element->FirstChildElement("y"),0);
+	w_ = math::Xml::parse_float<float>(element->FirstChildElement("w"),0);
+	h_ = math::Xml::parse_float<float>(element->FirstChildElement("h"),0);
 
 	auto e = element->FirstChildElement("label");
 	if(e) {
@@ -56,7 +56,7 @@ int	glutpp::gui::object::object::mouse_button_fun(int,int,int)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	font_color_ = math::Color::green;
+	font_color_ = math::Color::green<float>();
 
 	return 1;
 }

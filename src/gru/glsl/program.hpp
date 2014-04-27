@@ -27,8 +27,8 @@ namespace glutpp {
 				void	scanUniforms();
 
 				void	add_attrib(glutpp::attrib_name::e, char const *, GLuint);
-				void	add_uniform_scalar(char const *, GLenum);
-				void	add_uniform_vector(char const *, char const *, GLenum);
+				void	add_uniform_scalar(std::string, GLenum);
+				void	add_uniform_vector(std::string, std::string, GLenum);
 				
 				
 				std::shared_ptr<glutpp::glsl::attrib>			get_attrib(int);

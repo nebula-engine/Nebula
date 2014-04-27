@@ -16,12 +16,9 @@
 #include <math/color.hpp>
 
 
-namespace glutpp
-{
-	namespace light
-	{
-		class light: public gal::flag<unsigned int>
-		{
+namespace glutpp {
+	namespace light {
+		class light: public gal::flag<unsigned int> {
 			public:
 				
 				light(glutpp::shape::shape_s);
@@ -33,7 +30,7 @@ namespace glutpp
 				virtual void			release();
 				virtual void			cleanup();
 				void				step(double) {}
-				void				load(int, math::mat44<double>);
+				void				load(int, math::mat44<float>);
 
 				void				load_shadow();
 				void				draw();
@@ -43,8 +40,8 @@ namespace glutpp
 
 
 				void				notify_foundation_change_pose();
-				math::mat44<double>		get_pose();
-				math::vec4<double>		get_pos();
+				math::mat44<float>		get_pose();
+				math::vec4<float>		get_pos();
 			private:
 				unsigned int			f();
 				void				f(unsigned int);

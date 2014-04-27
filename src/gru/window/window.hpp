@@ -23,7 +23,7 @@
 #include <galaxy/sig/signal.hpp>
 #include <galaxy/flag.hpp>
 
-void	checkerror(char const *);
+
 
 namespace glutpp {
 	namespace window {

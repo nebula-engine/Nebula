@@ -5,7 +5,7 @@
 
 #include <galaxy/flag.hpp>
 
-#include <gru/config.hpp>
+#include <gru/config.hpp> // gru/config.hpp.in
 #include <gru/gui/layout.hpp>
 #include <gru/window/window.hpp>
 #include <gru/scene/scene.hpp>
@@ -22,7 +22,7 @@ namespace glutpp
 			unsigned int			f();
 			void				f(unsigned int flag);
 			void				init(glutpp::window::window_s window);
-			glutpp::window::window_s	get_window();
+			glutpp::window::window_s	getWindow();
 			void				resize(int w, int h);
 			void				render(double time, glutpp::window::window_s window);
 		private:
@@ -31,9 +31,10 @@ namespace glutpp
 
 			glutpp::window::window_w	window_;
 		public:
-			glutpp::scene::scene_s		scene_;
-			glutpp::gui::layout_s		layout_;
-			glutpp::Camera::View::Base_s	view_;
+			glutpp::scene::scene_s						scene_;
+			glutpp::gui::layout_s						layout_;
+			std::shared_ptr<glutpp::Camera::View::Base<float> >		view_;
+			std::shared_ptr<glutpp::Camera::Projection::Base>		proj_;
 	};
 }
 

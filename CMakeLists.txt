@@ -23,6 +23,6 @@ set(INCLUDE_EXTENSIONS obj)
 # =================================
 include($ENV{HOME}/usr/lib/cmake/CMakeHelper/static/library.cmake)
 
-
+add_subdirectory(test)
 
 

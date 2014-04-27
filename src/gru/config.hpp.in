@@ -320,13 +320,14 @@ namespace glutpp {
 
 	namespace Camera {
 		namespace View {
-			class Base;
+			template<typename, typename> class Base;
 			class Free;
 			class Ridealong;
-
-			typedef std::shared_ptr<Base> Base_s;
+			
+			//typedef std::shared_ptr<Base<> > Base_s;
 		}
 		namespace Projection {
+			class Base;
 			class Perspective;
 		}
 	}
