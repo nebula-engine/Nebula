@@ -46,7 +46,7 @@ physx::PxGeometry* neb::shape::shape::to_geo()
 
 	physx::PxGeometry* geo = NULL;
 
-	math::vec3<double> s = raw_.get_raw_base()->s_;
+	math::vec3<float> s = raw_.get_raw_base()->s_;
 
 	switch(raw_.get_raw_base()->type_)
 	{

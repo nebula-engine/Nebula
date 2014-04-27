@@ -8,9 +8,9 @@ neb::control::rigid_body::control::control() {
 int neb::control::rigid_body::control::key_fun(int key, int scancode, int action, int mods) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	math::vec3<double> x(1.0,0.0,0.0);
-	math::vec3<double> y(0.0,1.0,0.0);
-	math::vec3<double> z(0.0,0.0,1.0);
+	math::vec3<float> x(1.0,0.0,0.0);
+	math::vec3<float> y(0.0,1.0,0.0);
+	math::vec3<float> z(0.0,0.0,1.0);
 
 	switch(action)
 	{
@@ -134,7 +134,7 @@ void neb::control::rigid_body::control::step_local1(double time) {
 	}
 	else
 	{
-		math::quat<double> rot(q_scale * dt, raw_.t_);
+		math::quat<float> rot(q_scale * dt, raw_.t_);
 
 		raw_.q_target_ *= rot;
 
@@ -156,19 +156,19 @@ void neb::control::rigid_body::control::step_local1(double time) {
 
 
 	// rotation from pose to target pose
-	math::quat<double> q = actor->get_raw()->pose_.q;
-	math::quat<double> a = raw_.q_target_.getConjugate() * q;
+	math::quat<float> q = actor->get_raw()->pose_.q;
+	math::quat<float> a = raw_.q_target_.getConjugate() * q;
 
 
 
 
 	// angular velocity
-	math::vec3<double> omega = pxrigidbody->getAngularVelocity();
+	math::vec3<float> omega = pxrigidbody->getAngularVelocity();
 	omega = q.rotate(omega);
 	
 	// inertia matrix
-	math::vec3<double> vI = pxrigidbody->getMassSpaceInertiaTensor();
-	math::mat33<double> I(vI);
+	math::vec3<float> vI = pxrigidbody->getMassSpaceInertiaTensor();
+	math::mat33<float> I(vI);
 	
 
 
@@ -194,13 +194,14 @@ void neb::control::rigid_body::control::step_local1(double time) {
 
 	//float gamma = 100;
 	
-	math::vec3<double> e(a.x, a.y, a.z);
+	math::vec3<float> e(a.x, a.y, a.z);
 	
 	float ke = 0.5;
 	float ko = 3;
 	
+	/** @todo replace with independent control system library */
 	//math::vec3 u = ((ac + I * a.w) * Gp + I * gamma * (1 - a.w)) * va * 0.5 - Gr * omega;
-	math::vec3<double> u = -I * e * ke - omega * ko;
+	math::vec3<float> u = -I * e * ke - omega * ko;
 	
 	raw_.torque_ = u;
 		/*
@@ -251,7 +252,7 @@ void neb::control::rigid_body::control::step_local1(double time) {
 		}
 		 */
 }
-math::vec3<double> neb::control::rigid_body::control::f() {
+math::vec3<float> neb::control::rigid_body::control::f() {
 	NEBULA_DEBUG_1_FUNCTION;
 
 	switch(raw_.type_) {
@@ -262,9 +263,9 @@ math::vec3<double> neb::control::rigid_body::control::f() {
 		default:
 			break;
 	}
-	return math::vec3<double>();
+	return math::vec3<float>();
 }
-math::vec3<double> neb::control::rigid_body::control::t() {
+math::vec3<float> neb::control::rigid_body::control::t() {
 	NEBULA_DEBUG_1_FUNCTION;
 
 	switch(raw_.type_) {
@@ -275,7 +276,7 @@ math::vec3<double> neb::control::rigid_body::control::t() {
 		default:
 			break;
 	}
-	return math::vec3<double>();
+	return math::vec3<float>();
 }
 void neb::control::rigid_body::control::print() {
 

@@ -23,7 +23,7 @@ void neb::Actor::Rigid_Dynamic::create_physics() {
 
 	auto scene = get_scene();
 
-	math::transform<double> pose(getPose());
+	math::transform<float> pose(getPose());
 
 
 	// PxActor

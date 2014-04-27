@@ -66,8 +66,8 @@ void neb::Actor::RigidBody::RigidBody::add_force(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
 
 	// non-user-controled
-	math::vec3<double> f(force_);
-	math::vec3<double> t(torque_);
+	math::vec3<float> f(force_);
+	math::vec3<float> t(torque_);
 	
 	// user-controlled
 	if(control_) {
@@ -75,7 +75,7 @@ void neb::Actor::RigidBody::RigidBody::add_force(double time) {
 		t += control_->t();
 	}
 	
-	math::transform<double> pose = get_raw()->pose_;
+	math::transform<float> pose = get_raw()->pose_;
 
 	f = pose.q.rotate(f);
 	t = pose.q.rotate(t);
@@ -106,16 +106,16 @@ glutpp::actor::desc_s neb::Actor::RigidBody::RigidBody::get_projectile() {
 
 	// modify description	
 
-	math::vec3<double> offset = desc->get_raw()->pose_.p;
+	math::vec3<float> offset = desc->get_raw()->pose_.p;
 
 	// pose
-	math::transform<double> pose(get_raw()->pose_);	
+	math::transform<float> pose(get_raw()->pose_);	
 	offset = pose.q.rotate(offset);
 	pose.p += offset;
 	desc->get_raw()->pose_ = pose;
 	
 	// velocity
-	math::vec3<double> velocity = desc->get_raw()->velocity_;
+	math::vec3<float> velocity = desc->get_raw()->velocity_;
 	velocity = pose.q.rotate(velocity);
 	velocity += get_raw()->velocity_;
 	desc->get_raw()->velocity_ = velocity;

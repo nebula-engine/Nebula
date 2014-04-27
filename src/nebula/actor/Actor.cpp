@@ -19,7 +19,7 @@ void neb::Actor::Actor::init(glutpp::actor::desc_s desc) {
 
 	neb::Actor::Base::init(desc);
 }
-void	neb::Actor::Actor::set_pose(math::transform<double> pose) {
+void	neb::Actor::Actor::set_pose(math::transform<float> pose) {
 	NEBULA_DEBUG_1_FUNCTION;
 
 	neb::Actor::Base::set_pose(pose);

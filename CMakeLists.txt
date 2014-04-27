@@ -10,6 +10,6 @@ set(CMAKE_CXX_FLAGS "-std=c++0x")
 
 # common methods for static library
 # =================================
-include($ENV{HOME}/usr/lib/cmake/CMakeHelper/static_library.cmake)
+include($ENV{HOME}/usr/lib/cmake/CMakeHelper/static/library.cmake)
 
 

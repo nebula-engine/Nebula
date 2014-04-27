@@ -19,14 +19,14 @@ namespace neb {
 
 					type				type_;
 
-					math::quat<double>			q_target_;
-					math::vec3<double>		p_target_;
+					math::quat<float>		q_target_;
+					math::vec3<float>		p_target_;
 
-					math::vec3<double>		f_;
-					math::vec3<double>		t_;
+					math::vec3<float>		f_;
+					math::vec3<float>		t_;
 
-					math::vec3<double>		force_;
-					math::vec3<double>		torque_;
+					math::vec3<float>		force_;
+					math::vec3<float>		torque_;
 			};
 		}
 	}

@@ -19,7 +19,7 @@ namespace neb {
 				virtual void			init(glutpp::actor::desc_s);
 				virtual void			release();
 				virtual void			add_force(double) {abort();}
-				virtual void			set_pose(math::transform<double>);
+				virtual void			set_pose(math::transform<float>);
 				virtual int			fire();
 
 				virtual glutpp::actor::desc_s	get_projectile() {abort(); return NULL;}
