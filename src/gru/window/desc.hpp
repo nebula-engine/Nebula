@@ -2,14 +2,13 @@
 #define __GRU_WINDOW_DESC_H__
 
 
-namespace glutpp
-{
-	namespace window
-	{
+namespace glutpp {
+	namespace window {
 		struct raw {
 			public:
-				enum
-				{
+				raw();
+				
+				enum {
 					title_length_max = 20
 				};
 

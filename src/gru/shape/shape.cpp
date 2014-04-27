@@ -1,9 +1,11 @@
+
+#include <gru/debug.hpp>
 #include <gru/shape/shape.hpp>
 
 glutpp::shape::shape::shape(glutpp::shape::parent_s parent):
 	parent_(parent)
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GRU_SHAPE_SHAPE_FUNC
 
 	assert(parent);
 
@@ -26,7 +28,7 @@ void glutpp::shape::shape::f(unsigned int flag) {
 	raw_.get_raw_base()->flag_ = flag;
 }
 math::mat44<float>	glutpp::shape::shape::getPoseGlobal() {
-	GLUTPP_DEBUG_1_FUNCTION;
+	GRU_SHAPE_SHAPE_FUNC;
 	
 	math::mat44<float> m;
 	
@@ -42,7 +44,7 @@ math::mat44<float> glutpp::shape::shape::getPose() {
 	return raw_.get_raw_base()->pose_;
 }
 void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
-	GLUTPP_DEBUG_0_FUNCTION;
+	GRU_SHAPE_SHAPE_FUNC
 
 	auto me = std::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
@@ -119,7 +121,7 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	material_front_.raw_.diffuse_.print();
 }
 void glutpp::shape::shape::release() {
-	GLUTPP_DEBUG_0_FUNCTION;
+	GRU_SHAPE_SHAPE_FUNC
 
 	for(auto it = lights_.begin(); it != lights_.end(); ++it)
 	{
@@ -129,7 +131,7 @@ void glutpp::shape::shape::release() {
 	lights_.clear();
 }
 void glutpp::shape::shape::cleanup() {
-	GLUTPP_DEBUG_1_FUNCTION;
+	GRU_SHAPE_SHAPE_FUNC
 
 	auto s = shapes_.begin();
 	while(s != shapes_.end()) {
@@ -201,7 +203,7 @@ void glutpp::shape::shape::notify_foundation_change_pose() {
 	}
 }
 void glutpp::shape::shape::load_lights(int& i, math::mat44<float> space) {
-	GLUTPP_DEBUG_1_FUNCTION;
+	GRU_SHAPE_SHAPE_FUNC;
 
 	space = space * raw_.get_raw_base()->pose_;
 
@@ -236,7 +238,7 @@ void		glutpp::shape::shape::model_load(math::mat44<float> space) {
 	p->get_uniform_scalar("model")->load(space * scale);
 }
 void		glutpp::shape::shape::init_buffer(glutpp::window::window_s window, std::shared_ptr<glutpp::glsl::program> p) {
-	GLUTPP_DEBUG_0_FUNCTION;
+	GRU_SHAPE_SHAPE_FUNC;
 
 	glEnable(GL_TEXTURE_2D);
 
@@ -328,7 +330,7 @@ void		glutpp::shape::shape::init_buffer(glutpp::window::window_s window, std::sh
 
 }
 void		glutpp::shape::shape::draw_elements(glutpp::window::window_s window, math::mat44<float> space) {
-	GLUTPP_DEBUG_1_FUNCTION;
+	GRU_SHAPE_SHAPE_FUNC;
 
 	auto p = glutpp::master::Global()->use_program(program_);
 

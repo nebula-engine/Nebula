@@ -8,6 +8,7 @@
 #include <string.h>
 #include <algorithm>
 
+#include <gru/debug.hpp>
 #include <gru/glsl/shader.hpp>
 #include <gru/free.hpp>
 #include <gru/glsl/program.hpp>
@@ -17,7 +18,7 @@ glutpp::glsl::program::program()
 }
 void	glutpp::glsl::program::init()
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GRU_GLSL_PROGRAM_FUNC
 
 	o_ = glCreateProgram();
 	
@@ -27,7 +28,7 @@ void	glutpp::glsl::program::init()
 }
 void	glutpp::glsl::program::add_shaders(std::vector<glutpp::glsl::shader> s)
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GRU_GLSL_PROGRAM_FUNC
 	
 	for(unsigned int i = 0; i < s.size(); ++i )
 	{
@@ -46,7 +47,7 @@ void	glutpp::glsl::program::add_shader(char const * filename, GLenum type)
 	checkerror("glAttachShader");
 }
 void	glutpp::glsl::program::compile() {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GRU_GLSL_PROGRAM_FUNC
 	
 	glLinkProgram(o_);
 	checkerror("glLinkProgram");
@@ -72,7 +73,7 @@ void	glutpp::glsl::program::compile() {
 }
 void	glutpp::glsl::program::use() {
 	
-	GLUTPP_DEBUG_1_FUNCTION;
+	GRU_GLSL_PROGRAM_FUNC;
 	
 	glUseProgram(o_);
 	checkerror("glUseProgram");

@@ -11,6 +11,7 @@
 
 #include <galaxy/network/vector.hpp>
 
+#include <gru/debug.hpp>
 #include <gru/network/message.hpp>
 #include <gru/window/window.hpp>
 #include <gru/scene/scene.hpp>
@@ -24,7 +25,7 @@
 #define VALUE(x) VALUE_TO_STRING(x)
 
 //#pragma message VALUE(__cplusplus)
-
+/*
 void	print_vector(GLfloat* v, unsigned int m, unsigned int n) {
 	for(unsigned int a=0;a<m;++a)
 	{
@@ -48,11 +49,11 @@ void	print_vectori(GLushort* v, unsigned int m, unsigned int n) {
 	}
 
 }
-
+*/
 glutpp::actor::actor::actor(glutpp::actor::parent_s parent):
 	parent_(parent)
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	GRU_ACTOR_ACTOR_FUNC
 	
 	assert(parent);
 }
@@ -89,7 +90,7 @@ void glutpp::actor::actor::f(unsigned int flag) {
 	raw_->flag_ = flag;
 }
 void glutpp::actor::actor::cleanup() {
-	GLUTPP_DEBUG_1_FUNCTION;
+	GRU_ACTOR_ACTOR_FUNC;
 	//printf("%s\n",__PRETTY_FUNCTION__);
 
 	auto it = actors_.begin();
@@ -153,7 +154,7 @@ math::mat44<float>		glutpp::actor::actor::getPose() {
 	return raw_->pose_;
 }
 math::mat44<float> glutpp::actor::actor::getPoseGlobal() {
-	GLUTPP_DEBUG_1_FUNCTION;
+	GRU_ACTOR_ACTOR_FUNC;
 
 	math::mat44<float> m;
 	
@@ -192,7 +193,7 @@ void glutpp::actor::actor::notify_foundation_change_pose() {
 	}
 }
 void		glutpp::actor::actor::load_lights(int& i, math::mat44<float> space) {
-	GLUTPP_DEBUG_1_FUNCTION;
+	GRU_ACTOR_ACTOR_FUNC;
 	assert(raw_);
 
 	space *= raw_->pose_;
@@ -208,7 +209,7 @@ void		glutpp::actor::actor::load_lights(int& i, math::mat44<float> space) {
 	}
 }
 glutpp::scene::scene_s glutpp::actor::actor::get_scene() {
-	GLUTPP_DEBUG_1_FUNCTION;
+	GRU_ACTOR_ACTOR_FUNC;
 	
 	auto parent = getParent();
 	assert(parent);
@@ -224,7 +225,7 @@ glutpp::scene::scene_s glutpp::actor::actor::get_scene() {
 	abort();
 }
 void		glutpp::actor::actor::draw(glutpp::window::window_s window, math::mat44<float> space) {
-	GLUTPP_DEBUG_1_FUNCTION;
+	GRU_ACTOR_ACTOR_FUNC;
 	assert(raw_);
 
 	space = space * raw_->pose_;

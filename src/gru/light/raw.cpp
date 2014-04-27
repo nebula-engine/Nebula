@@ -3,8 +3,8 @@
 #include <gru/light/raw.hpp>
 
 glutpp::light::raw::raw():
-	f_(0),
-	i_(0),
+	i_(-1),
+	flag_(0),
 	pos_(math::vec4<float>(0.0, 0.0, 0.0, 1.0)),
 	ambient_(math::Color::black<float>()),
 	diffuse_(math::Color::white<float>()),
