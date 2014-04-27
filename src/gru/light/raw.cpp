@@ -11,6 +11,7 @@ glutpp::light::raw::raw():
 	spot_direction_(math::vec3<float>(0.0, 0.0, -1.0)),
 	spot_cutoff_(10.0),
 	spot_exponent_(1.0),
+	spot_light_cos_cutoff_(1.0),
 	atten_const_(1.0),
 	atten_linear_(0.0),
 	atten_quad_(0.0)

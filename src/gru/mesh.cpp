@@ -1,3 +1,5 @@
+#include <math/geo/polyhedron.hpp>
+
 #include <gru/mesh.hpp>
 
 glutpp::mesh::mesh():
@@ -6,7 +8,7 @@ glutpp::mesh::mesh():
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	glutpp::mesh::construct(math::geo::polyhedron* poly) {
+void	glutpp::mesh::construct(math::geo::polyhedron<float>* poly) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -31,7 +33,7 @@ void	glutpp::mesh::construct(math::geo::polyhedron* poly) {
 			int k = i*3 + j;
 			printf("% 2i ",k);
 
-			v[i*3+j].position = poly->tris_[i].v_[j].xyz;
+			v[i*3+j].position = poly->tris_[i].v_[j].p;
 			v[i*3+j].normal = poly->tris_[i].v_[j].n;
 
 			indices_[i*3+j] = i*3+j;
@@ -46,7 +48,7 @@ void	glutpp::mesh::construct(math::geo::polyhedron* poly) {
 	{
 		for(int j = 0; j < 4; ++j)
 		{
-			v[i*4 + j].position = poly->quads_[i].v_[j].xyz;
+			v[i*4 + j].position = poly->quads_[i].v_[j].p;
 			v[i*4 + j].normal = poly->quads_[i].v_[j].n;
 		}
 

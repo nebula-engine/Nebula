@@ -25,16 +25,16 @@ namespace glutpp {
 	struct vertex {
 		//void		print();
 
-		math::vec4<double>	position;
-		math::vec3<double>	normal;
-		math::vec2<double>	texcoor;
+		math::vec4<float>	position;
+		math::vec3<float>	normal;
+		math::vec2<float>	texcoor;
 	};
 	class mesh {
 		public:
 			mesh();
 			void				save(char const *);
 			void				load(char const *);
-			void				construct(math::geo::polyhedron*);
+			void				construct(math::geo::polyhedron<float>*);
 
 			// draw data
 			file_header			fh_;

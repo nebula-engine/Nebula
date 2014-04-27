@@ -12,10 +12,8 @@
 
 #include <gru/config.hpp>
 
-namespace glutpp
-{
-	namespace light
-	{
+namespace glutpp {
+	namespace light {
 		class raw: public gal::network::serial<raw, gal::network::base> {
 			public:
 				//typedef glutpp::light::light<raw>	LIGHT;
