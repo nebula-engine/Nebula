@@ -82,7 +82,7 @@ void		glutpp::shape::raw_base::box(math::vec3<float> ns) {
 void		glutpp::shape::raw_base::box(tinyxml2::XMLElement* element) {
 	type_ = glutpp::shape::type::BOX;
 	
-	s_ = math::Xml::parse_vec3<float>(element->FirstChildElement("s"), math::vec3<float>(1,1,1));
+	s_ << element->FirstChildElement("s");
 }
 void glutpp::shape::raw_base::sphere(float r) {
 	type_ = glutpp::shape::type::SPHERE;
