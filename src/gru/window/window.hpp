@@ -62,8 +62,8 @@ namespace glutpp {
 				// input signals
 				struct
 				{
-					sig_key_fun		key_fun_;
-					gal::sig::signal<int,int,int>		mouse_button_fun_;
+					Neb::Signals::KeyFun		key_fun_;
+					Neb::Signals::MouseButtonFun	mouse_button_fun_;
 				} sig_;
 
 

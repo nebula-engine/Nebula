@@ -5,8 +5,11 @@
 
 //#include <galaxy/network/serial.hpp>
 
+#include <boost/serialization/nvp.hpp>
+
 //#include <gru/actor/actor.hpp>
 #include <gru/actor/id.hpp>
+#include <gru/actor/raw.hpp>
 #include <gru/shape/desc.hpp>
 
 namespace glutpp {
@@ -42,11 +45,11 @@ namespace glutpp {
 
 				desc();
 
-				template<class Archive> void	serialize(Archive & ar) {
-					ar & i_;
-					ar & raw_;
-					ar & actors_;
-					ar & shapes_;
+				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("i",i_);
+					ar & boost::serialization::make_nvp("raw",raw_);
+					ar & boost::serialization::make_nvp("actors",actors_);
+					ar & boost::serialization::make_nvp("shapes",shapes_);
 				}
 
 				void			load(tinyxml2::XMLElement*);

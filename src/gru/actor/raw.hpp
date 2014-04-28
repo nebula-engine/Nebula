@@ -4,6 +4,8 @@
 //#include <math/transform.hpp>
 //#include <math/raw/raw.hpp>
 
+#include <boost/serialization/nvp.hpp>
+
 #include <PxPhysicsAPI.h>
 
 //#include <galaxy/network/serial.hpp>
@@ -16,7 +18,17 @@
 
 namespace glutpp {
 	namespace actor {
-		struct filter_data {
+		class filter_data {
+			public:
+
+			template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
+				ar & boost::serialization::make_nvp("word0",word0);
+				ar & boost::serialization::make_nvp("word1",word1);
+				ar & boost::serialization::make_nvp("word2",word2);
+				ar & boost::serialization::make_nvp("word3",word3);
+				
+			}
+
 			unsigned int word0;
 			unsigned int word1;
 			unsigned int word2;
@@ -46,8 +58,19 @@ namespace glutpp {
 				unsigned int			parse_filter(tinyxml2::XMLElement*, unsigned int);
 				void				parse_filtering(tinyxml2::XMLElement*);
 				
-				template<class Archive> void	serialize(Archive & ar) {
-
+				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("type",type_);
+					ar & boost::serialization::make_nvp("mode_create",mode_create_);
+					ar & boost::serialization::make_nvp("flag",flag_);
+					ar & boost::serialization::make_nvp("name",name_);
+					ar & boost::serialization::make_nvp("pose",pose_);
+					ar & boost::serialization::make_nvp("normal",n_);
+					ar & boost::serialization::make_nvp("distance",d_);
+					ar & boost::serialization::make_nvp("velocity",velocity_);
+					ar & boost::serialization::make_nvp("density",density_);
+					ar & boost::serialization::make_nvp("filter_data_simulation",filter_data_.simulation_);
+					ar & boost::serialization::make_nvp("filter_data_scene_query",filter_data_.scene_query_);
+					
 				}
 				
 				glutpp::actor::type::e		type_;

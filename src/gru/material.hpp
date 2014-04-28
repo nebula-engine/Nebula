@@ -18,7 +18,13 @@ namespace glutpp {
 			raw(tinyxml2::XMLElement*);
 
 			
-			template<class Archive> void	serialize(Archive & ar);
+			template<class Archive> void	serialize(Archive & ar) {
+				ar & ambient_;
+				ar & diffuse_;
+				ar & specular_;
+				ar & emission_;
+				ar & shininess_;
+			}
 
 			gru::Color::color<float>	ambient_;
 			gru::Color::color<float>	diffuse_;

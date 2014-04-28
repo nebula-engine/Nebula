@@ -25,14 +25,6 @@
 */
 
 /*
-typedef bool ret_type;
-
-typedef boost::signals2::signal<ret_type (int,int,int> >	mouse_button_fun_c;
-typedef boost::signals2::signal<ret_type (double,double> >	cursor_pos_fun_c;
-typedef boost::signals2::signal<ret_type (int> >		cursor_enter_fun_c;
-typedef boost::signals2::signal<ret_type (double,double> >	scroll_fun_c;
-typedef boost::signals2::signal<ret_type (int,int,int,int> >	key_fun_c;
-typedef boost::signals2::signal<ret_type (unsigned int> >	char_fun_c;
 */
 
 /** @brief root namespace for @gru */

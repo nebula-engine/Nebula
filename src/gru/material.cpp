@@ -6,7 +6,7 @@
 #include <gru/window/window.hpp>
 #include <gru/scene/scene.hpp>
 
-
+/*
 gru::Color::color<float> operator<<(gru::Color::color<float> c, tinyxml2::XMLElement* element) {
 	if(element != NULL) {
 		char const * buf = element->GetText();
@@ -25,7 +25,7 @@ float operator<<(float f, tinyxml2::XMLElement* element) {
 	
 	return c;
 }
-
+*/
 
 glutpp::material::raw::raw() {
 	ambient_ = gru::Color::black<float>();
@@ -34,6 +34,7 @@ glutpp::material::raw::raw() {
 	emission_ = gru::Color::black<float>();
 	shininess_ = 500;
 }
+/* implement through serialize(ar)
 void	glutpp::material::raw::load(tinyxml2::XMLElement* element) {
 	
 	if(element == NULL)
@@ -52,7 +53,7 @@ void	glutpp::material::raw::load(tinyxml2::XMLElement* element) {
 	printf("diffuse = ");	
 	diffuse_.print();
 }
-
+*/
 
 
 

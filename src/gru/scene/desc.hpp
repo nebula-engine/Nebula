@@ -1,52 +1,57 @@
 #ifndef __GLUTPP_SCENE_DESC_H__
 #define __GLUTPP_SCENE_DESC_H__
 
-#include <galaxy/network/message.hpp>
+//#include <galaxy/network/message.hpp>
+
+#include <boost/serialization/vector.hpp>
+#include <boost/serialization/shared_ptr.hpp>
+
+#include <gru/Math/Serialization.hpp>
 
 #include <gru/actor/desc.hpp>
 #include <gru/actor/raw.hpp>
 #include <gru/scene/raw.hpp>
 
-namespace glutpp
-{
-	namespace scene
-	{
-		typedef gal::network::vector<int>	vec_int;
-		typedef std::shared_ptr<vec_int>	vec_int_s;
+
+namespace glutpp {
+	namespace scene {
+//		typedef gal::network::vector<int>	vec_int;
+//		typedef std::shared_ptr<vec_int>	vec_int_s;
 		
-		struct id: public gal::network::serial<id, gal::network::base> {
+/*		struct id: public gal::network::serial<id, gal::network::base> {
 			template<typename SCENE> void load(std::shared_ptr<SCENE> scene) {
 				i_ = scene->i_;
 			}
 			int	i_;
 		};
+*/
 
-
-		typedef gal::network::vector_ext<glutpp::actor::desc>	vec_actor_desc;
-		typedef std::shared_ptr<vec_actor_desc>			vec_actor_desc_s;
+//		typedef gal::network::vector_ext<glutpp::actor::desc>	vec_actor_desc;
+//		typedef std::shared_ptr<vec_actor_desc>			vec_actor_desc_s;
 		
 		
 		
-		class desc: public gal::network::serial_ext<
-			    id,
-			    raw,
-			    vec_actor_desc>
-		{
+		class desc {
 			public:
-				typedef gal::network::serial_ext<id,raw,vec_actor_desc> SER;
-				
+				friend class boost::serialization::access;
 
 				desc();
 
+				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("i",i_);
+					ar & boost::serialization::make_nvp("raw",raw_);
+					ar & boost::serialization::make_nvp("actors",actors_);
+				}
+
 				void			load(char const *);
-				void			load(tinyxml2::XMLElement*);
+				//void			load(tinyxml2::XMLElement*);
 				void			load(glutpp::scene::scene_s);
 
 
-				id_s			get_id();
-				raw_s			get_raw();
-
-				vec_actor_desc_s	get_actors();
+				int					i_;
+				glutpp::scene::raw			raw_;
+				
+				std::vector<boost::shared_ptr<glutpp::actor::desc> >	actors_;
 		};
 	}
 }
