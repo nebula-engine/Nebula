@@ -5,8 +5,10 @@
 
 #include <GLFW/glfw3.h>
 
-#include <math/mat44.hpp>
-#include <math/color.hpp>
+#include <PxPhysicsAPI.h>
+
+//#include <math/mat44.hpp>
+//#include <math/color.hpp>
 
 namespace glutpp {
 	namespace glsl {
@@ -26,8 +28,7 @@ namespace glutpp {
 						/** @name Load
 						 * @{
 						 */
-						virtual void			load(math::mat44<float>) { throw 0; }
-						virtual void			load(math::mat44<double>) { throw 0; }
+						virtual void			load(physx::PxMat44) { throw 0; }
 						//virtual void			load(math::Color::color<float>) { throw 0; }
 						//virtual void			load(math::Color::color<double>) { throw 0; }
 						virtual void			load(int) { throw 0; }
@@ -79,12 +80,12 @@ namespace glutpp {
 				class Mat4: public glutpp::glsl::Uniform::Scalar::Base {
 					public:
 						Mat4(std::string s): Base(s) {}
-						virtual void		load(math::mat44<float>);
+						virtual void		load(physx::PxMat44);
 				};
 				class DMat4: public glutpp::glsl::Uniform::Scalar::Base {
 					public:
 						DMat4(std::string s): Base(s) {}
-						virtual void		load(math::mat44<double>);
+						virtual void		load(physx::PxMat44);
 				};
 				class Sampler2D: public glutpp::glsl::Uniform::Scalar::Base {
 					public:
@@ -104,8 +105,7 @@ namespace glutpp {
 						/** @name Load
 						 * @{
 						 */
-						virtual void			load(int, math::mat44<float>) { throw 0; }
-						virtual void			load(int, math::mat44<double>) { throw 0; }
+						virtual void			load(int, physx::PxMat44) { throw 0; }
 						//virtual void			load(int, math::Color::color<float>) { throw 0; }
 						//virtual void			load(int, math::Color::color<double>) { throw 0; }
 						virtual void			load(int, int) { throw 0; }

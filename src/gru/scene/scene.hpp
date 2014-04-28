@@ -72,7 +72,7 @@ namespace glutpp {
 				void			f(unsigned int flag);
 				void			init(glutpp::scene::desc_s desc);
 				void			release();
-				math::mat44<double>	get_pose();
+				physx::PxMat44	get_pose();
 				/** @brief render */
 				void			render(
 						double time,

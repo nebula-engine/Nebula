@@ -7,11 +7,13 @@
 
 #include <galaxy/flag.hpp>
 
+/*
 #include <math/vec4.hpp>
 #include <math/vec3.hpp>
 #include <math/vec2.hpp>
 #include <math/transform.hpp>
 #include <math/geo/polyhedron.hpp>
+*/
 
 #include <gru/config.hpp>
 #include <gru/shape/desc.hpp>
@@ -25,16 +27,16 @@ namespace glutpp {
 	struct vertex {
 		//void		print();
 
-		math::vec4<float>	position;
-		math::vec3<float>	normal;
-		math::vec2<float>	texcoor;
+		physx::PxVec4	position;
+		physx::PxVec3	normal;
+		physx::PxVec2	texcoor;
 	};
 	class mesh {
 		public:
 			mesh();
 			void				save(char const *);
 			void				load(char const *);
-			void				construct(math::geo::polyhedron<float>*);
+			//void				construct(math::geo::polyhedron<float>*);
 
 			// draw data
 			file_header			fh_;

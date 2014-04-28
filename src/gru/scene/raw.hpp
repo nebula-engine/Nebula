@@ -3,27 +3,28 @@
 
 #include <tinyxml2.h>
 
-#include <galaxy/network/message.hpp>
-#include <galaxy/network/serial.hpp>
+//#include <galaxy/network/message.hpp>
+//#include <galaxy/network/serial.hpp>
 
-#include <math/vec3.hpp>
+#include <PxPhysicsAPI.h>
+
+//#include <math/vec3.hpp>
 
 #include <gru/config.hpp>
 //#include <gru/actor/desc.hpp>
 
-namespace glutpp
-{
-	namespace scene
-	{
-		class raw: public gal::network::serial<raw, gal::network::base>
-		{
+namespace glutpp {
+	namespace scene {
+		class raw {
 			public:
 				raw();
-				void			load(tinyxml2::XMLElement*);
-				void			load(glutpp::scene::scene_s scene);
+				void					load(tinyxml2::XMLElement*);
+				void					load(glutpp::scene::scene_s scene);
+
+				template <class Archive> void		serialize(Archive & ar);
 
 				unsigned int		flag_;
-				math::vec3<double>	gravity_;
+				physx::PxVec3	gravity_;
 		};
 	}
 }

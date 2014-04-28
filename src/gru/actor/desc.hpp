@@ -1,9 +1,9 @@
 #ifndef __NEBULA_ACTOR_DESC_H__
 #define __NEBULA_ACTOR_DESC_H__
 
-#include <math/transform.hpp>
+//#include <math/transform.hpp>
 
-#include <galaxy/network/serial.hpp>
+//#include <galaxy/network/serial.hpp>
 
 //#include <gru/actor/actor.hpp>
 #include <gru/actor/id.hpp>

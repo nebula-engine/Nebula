@@ -6,14 +6,14 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <galaxy/flag.hpp>
-
+//#include <galaxy/flag.hpp>
+/*
 #include <math/vec4.hpp>
 #include <math/vec3.hpp>
 #include <math/vec2.hpp>
 #include <math/transform.hpp>
 #include <math/geo/polyhedron.hpp>
-
+*/
 #include <gru/config.hpp>
 #include <gru/shared.hpp>
 #include <gru/shape/desc.hpp>
@@ -29,8 +29,8 @@ namespace glutpp {
 			public:
 				virtual ~parent() {}
 
-				virtual math::mat44<float>		getPoseGlobal() = 0;
-				virtual math::mat44<float>		getPose() = 0;
+				virtual physx::PxMat44		getPoseGlobal() = 0;
+				virtual physx::PxMat44		getPose() = 0;
 
 				glutpp::actor::actor_s			isActor();
 				glutpp::shape::shape_s			isShape();

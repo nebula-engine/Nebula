@@ -3,7 +3,9 @@
 
 #include <map>
 
-#include <math/mat44.hpp>
+//#include <math/mat44.hpp>
+
+#include <PxPhysicsAPI.h>
 
 #include <gru/gui/object/object.hpp>
 #include <gru/gui/object/object_factory.hpp>
@@ -29,8 +31,7 @@ namespace glutpp {
 				int		mouse_button_fun(int button, int action, int mods);
 				int		key_fun(int,int,int,int);
 
-
-				math::mat44<double>			ortho_;
+				physx::PxMat44				otrho_;
 
 				gal::map<glutpp::gui::object::object>	objects_;
 

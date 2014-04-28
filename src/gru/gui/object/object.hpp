@@ -5,9 +5,9 @@
 
 #include <tinyxml2.h>
 
-#include <math/color.hpp>
+//#include <math/color.hpp>
 
-#include <galaxy/sig/connection.hpp>
+//#include <galaxy/sig/connection.hpp>
 
 #include <gru/master.hpp>
 
@@ -38,8 +38,8 @@ namespace glutpp { namespace gui { namespace object {
 			float				w_;
 			float				h_;
 
-			math::Color::color<float>	font_color_;
-			math::Color::color<float>	bg_color_;
+			gru::Color::color<float>	font_color_;
+			gru::Color::color<float>	bg_color_;
 
 			bool				active_;
 

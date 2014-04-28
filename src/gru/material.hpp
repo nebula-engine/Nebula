@@ -4,7 +4,9 @@
 #include <tinyxml2.h>
 
 //#include <math/raw/raw.h>
-#include <math/color.hpp>
+//#include <math/color.hpp>
+
+#include <gru/Color/Color.hpp>
 
 namespace glutpp {
 	namespace material {
@@ -15,10 +17,10 @@ namespace glutpp {
 			raw();
 			void				load(tinyxml2::XMLElement*);
 
-			math::Color::color<float>	ambient_;
-			math::Color::color<float>	diffuse_;
-			math::Color::color<float>	specular_;
-			math::Color::color<float>	emission_;
+			gru::Color::color<float>	ambient_;
+			gru::Color::color<float>	diffuse_;
+			gru::Color::color<float>	specular_;
+			gru::Color::color<float>	emission_;
 			float				shininess_;
 		};
 

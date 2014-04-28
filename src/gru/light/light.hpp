@@ -4,7 +4,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <galaxy/flag.hpp>
+//#include <galaxy/flag.hpp>
 
 #include <gru/config.hpp>
 #include <gru/Camera/View/Base.hpp>
@@ -13,7 +13,7 @@
 #include <gru/light/desc.hpp>
 #include <gru/light/raw.hpp>
 
-#include <math/color.hpp>
+//#include <math/color.hpp>
 
 
 namespace glutpp {
@@ -30,7 +30,7 @@ namespace glutpp {
 				virtual void			release();
 				virtual void			cleanup();
 				void				step(double) {}
-				void				load(int, math::mat44<float>);
+				void				load(int, physx::PxMat44);
 
 				void				load_shadow();
 				void				draw();
@@ -40,8 +40,8 @@ namespace glutpp {
 
 
 				void				notify_foundation_change_pose();
-				math::mat44<float>		get_pose();
-				math::vec4<float>		get_pos();
+				physx::PxMat44			get_pose();
+				physx::PxVec4			get_pos();
 			private:
 				unsigned int			f();
 				void				f(unsigned int);

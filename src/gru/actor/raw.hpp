@@ -1,12 +1,13 @@
 #ifndef __GLUTPP_ACTOR_RAW_H__
 #define __GLUTPP_ACTOR_RAW_H__
 
-#include <math/transform.hpp>
+//#include <math/transform.hpp>
 //#include <math/raw/raw.hpp>
 
+#include <PxPhysicsAPI.h>
 
-#include <galaxy/network/serial.hpp>
-#include <galaxy/util.hpp>
+//#include <galaxy/network/serial.hpp>
+//#include <galaxy/util.hpp>
 
 #include <gru/config.hpp>
 #include <gru/shape/desc.hpp>
@@ -51,14 +52,15 @@ namespace glutpp {
 				unsigned int			flag_;
 				char				name_[32];
 
-				math::transform<float>		pose_;
+				physx::PxTransform		pose_;
 
 				/** @brief Normal for planes. */
-				math::vec3<float>		n_;
+				physx::PxVec3		n_;
 				/** @brief Distance for planes. */
 				float				d_;
 
-				math::vec3<float>		velocity_;
+				//physx::PxVec3		velocity_;
+				physx::PxVec3			velocity_;
 				float				density_;
 
 				struct {
