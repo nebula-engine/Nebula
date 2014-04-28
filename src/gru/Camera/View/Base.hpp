@@ -6,9 +6,11 @@
 
 #include <galaxy/sig/connection.hpp>
 
+/*
 #include <math/vec3.hpp>
 #include <math/vec4.hpp>
 #include <math/mat44.hpp>
+*/
 
 #include <gru/config.hpp> //<gru/config.hpp.in>
 //#include <gru/camera_control.hpp>
@@ -30,7 +32,7 @@ namespace glutpp {
 						p->get_uniform_scalar("view")->load(view());
 					}
 					/** @brief Get view matrix. */
-					virtual math::mat44<MATRIX_T>	view() = 0;
+					virtual physx::PxMat44	view() = 0;
 					/** @brief Step.
 					 * @todo explain when in timeline this occurs and in which thread and why
 					 */

@@ -3,19 +3,18 @@
 
 #include <tinyxml2.h>
 
+/*
 //#include <math/raw/raw.h>
 #include <math/vec3.hpp>
 #include <math/vec4.hpp>
 #include <math/color.hpp>
-
+*/
 #include <galaxy/network/serial.hpp>
 
 #include <gru/config.hpp>
 
-namespace glutpp
-{
-	namespace light
-	{
+namespace glutpp {
+	namespace light {
 
 		class id: public gal::network::serial<id, gal::network::base>
 		{

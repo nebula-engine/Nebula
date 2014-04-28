@@ -3,7 +3,7 @@
 
 #include <gru/actor/actor.hpp>
 #include <gru/actor/raw.hpp>
-
+#include <gru/Xml/Xml.hpp>
 
 glutpp::actor::raw::raw():
 	type_(glutpp::actor::type::NONE),
@@ -83,12 +83,13 @@ void glutpp::actor::raw::load(tinyxml2::XMLElement* element) {
 	pose_ = math::Xml::parse_transform<float>(element->FirstChildElement("pose"), def);
 	
 	// velocity
-	velocity_ = math::Xml::parse_vec3<float>(element->FirstChildElement("velocity"), velocity_);
+	tinyxml2::XMLElement* e = element->FirstChildElement("velocity");
+	if(e != NULL) velocity_ = gru::Xml::parseVec3(e);
+	
 	
 	// flags
-	tinyxml2::XMLElement* e = element->FirstChildElement("flag");
-	while(e != NULL)
-	{
+	e = element->FirstChildElement("flag");
+	while(e != NULL) {
 		buf = e->GetText();
 		if(strcmp(buf, "DESTRUCTIBLE") == 0)
 		{

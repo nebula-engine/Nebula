@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 
+/*
 #include <galaxy/flag.hpp>
 #include <galaxy/network/message.hpp>
 #include <galaxy/network/vector.hpp>
@@ -13,6 +14,7 @@
 #include <math/vec2.hpp>
 #include <math/geo/polyhedron.hpp>
 #include <math/transform.hpp>
+*/
 
 #include <gru/config.hpp>
 #include <gru/actor/addr.hpp>
@@ -56,17 +58,17 @@ namespace glutpp {
 
 				glutpp::actor::parent_s		getParent();
 
-				math::mat44<float>		getPose();
-				math::mat44<float>		getPoseGlobal();
+				physx::PxMat44		getPose();
+				physx::PxMat44		getPoseGlobal();
 				
-				void				set_pose(math::transform<float> pose);
+				void				set_pose(physx::PxTransform pose);
 
 				void				notify_foundation_change_pose();
 
-				void				load_lights(int&, math::mat44<float>);
+				void				load_lights(int&, physx::PxMat44);
 				glutpp::scene::scene_s		get_scene();
 
-				void				draw(glutpp::window::window_s, math::mat44<float>);
+				void				draw(glutpp::window::window_s, physx::PxMat44);
 
 				virtual glutpp::actor::raw_s	get_raw();
 

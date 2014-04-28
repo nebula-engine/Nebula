@@ -3,11 +3,12 @@
 
 #include <tinyxml2.h>
 
+/*
 //#include <math/raw/raw.hpp>
 #include <math/vec3.hpp>
 #include <math/vec4.hpp>
 #include <math/color.hpp>
-
+*/
 #include <galaxy/network/serial.hpp>
 
 #include <gru/config.hpp>
@@ -28,15 +29,15 @@ namespace glutpp {
 				unsigned int		flag_;
 
 				// position
-				math::vec4<float>		pos_;
+				physx::PxVec4		pos_;
 
 				// colors
-				math::Color::color<float>	ambient_;
-				math::Color::color<float>	diffuse_;
-				math::Color::color<float>	specular_;
+				gru::Color::color<float>	ambient_;
+				gru::Color::color<float>	diffuse_;
+				gru::Color::color<float>	specular_;
 
 				// other properties
-				math::vec3<float>     	spot_direction_;
+				physx::PxVec3     	spot_direction_;
 				float			spot_cutoff_;
 				float			spot_exponent_;
 				float			spot_light_cos_cutoff_;

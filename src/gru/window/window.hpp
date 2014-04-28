@@ -15,11 +15,11 @@
 #include <gru/glsl/program.hpp>
 #include <gru/glsl/shader.hpp>
 #include <gru/gui/layout.hpp>
-
+/*
 #include <math/mat44.hpp>
 #include <math/vec4.hpp>
 #include <math/vec3.hpp>
-
+*/
 #include <galaxy/sig/signal.hpp>
 #include <galaxy/flag.hpp>
 

@@ -1,20 +1,37 @@
 #include <stdio.h>
 
-#include <math/xml.hpp>
+//#include <math/xml.hpp>
 
 #include <gru/material.hpp>
 #include <gru/window/window.hpp>
 #include <gru/scene/scene.hpp>
 
 
-
+gru::Color::color<float> operator<<(gru::Color::color<float> c, tinyxml2::XMLElement* element) {
+	if(element != NULL) {
+		char const * buf = element->GetText();
+		
+		sscanf(buf, "%f,%f,%f,%f", &c.r, &c.g, &c.b, &c.a);
+	}
+	
+	return c;
+}
+float operator<<(float f, tinyxml2::XMLElement* element) {
+	if(element != NULL) {
+		char const * buf = element->GetText();
+		
+		sscanf(buf, "%f,%f,%f,%f", &c.r, &c.g, &c.b, &c.a);
+	}
+	
+	return c;
+}
 
 
 glutpp::material::raw::raw() {
-	ambient_ = math::Color::black<float>();
-	diffuse_ = math::Color::cyan<float>();
-	specular_ = math::Color::white<float>();
-	emission_ = math::Color::black<float>();
+	ambient_ = gru::Color::black<float>();
+	diffuse_ = gru::Color::cyan<float>();
+	specular_ = gru::Color::white<float>();
+	emission_ = gru::Color::black<float>();
 	shininess_ = 500;
 }
 void	glutpp::material::raw::load(tinyxml2::XMLElement* element) {
@@ -25,12 +42,12 @@ void	glutpp::material::raw::load(tinyxml2::XMLElement* element) {
 		return;
 	}
 	
-	ambient_  = math::Xml::parse_color<float>(element->FirstChildElement("ambient"), ambient_);
-	diffuse_  = math::Xml::parse_color(element->FirstChildElement("diffuse"), diffuse_);
-	specular_ = math::Xml::parse_color(element->FirstChildElement("specular"), specular_);
-	emission_ = math::Xml::parse_color(element->FirstChildElement("emission"), emission_);
+	ambient_ << element->FirstChildElement("ambient");
+	diffuse_  << element->FirstChildElement("diffuse");
+	specular_ << element->FirstChildElement("specular");
+	emission_ << element->FirstChildElement("emission");
 	
-	shininess_ = math::Xml::parse_float<double>(element->FirstChildElement("shininess"), shininess_);
+	shininess_ << element->FirstChildElement("shininess");
 
 	printf("diffuse = ");	
 	diffuse_.print();

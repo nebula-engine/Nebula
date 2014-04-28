@@ -6,17 +6,16 @@
 
 #include <GLFW/glfw3.h>
 
-
+/*
 #include <math/mat44.hpp>
 #include <math/vec4.hpp>
 #include <math/vec3.hpp>
+*/
 
 #include <gru/config.hpp>
 
-namespace glutpp
-{
-	/*template<typename WINDOW>*/ class texture
-	{
+namespace glutpp {
+	/*template<typename WINDOW>*/ class texture {
 		public:
 			//typedef std::shared_ptr<WINDOW>		WINDOW_S;
 			//typedef std::weak_ptr<WINDOW>		WINDOW_W;

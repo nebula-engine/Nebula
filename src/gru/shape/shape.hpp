@@ -9,11 +9,13 @@
 
 #include <galaxy/flag.hpp>
 
+/*
 #include <math/vec4.hpp>
 #include <math/vec3.hpp>
 #include <math/vec2.hpp>
 #include <math/transform.hpp>
 #include <math/geo/polyhedron.hpp>
+*/
 
 #include <gru/config.hpp>
 #include <gru/glsl/program.hpp>
@@ -51,8 +53,8 @@ namespace glutpp {
 				shape(glutpp::shape::parent_s parent);
 				~shape();
 				
-				math::mat44<float>	getPose();
-				math::mat44<float>	getPoseGlobal();
+				physx::PxMat44	getPose();
+				physx::PxMat44	getPoseGlobal();
 				
 				glutpp::shape::parent_s	getParent();
 
@@ -61,13 +63,13 @@ namespace glutpp {
 				void		cleanup();
 				void		step(double time);
 				void		notify_foundation_change_pose();
-				void		load_lights(int& i, math::mat44<float> space);
-				void		draw(glutpp::window::window_s, math::mat44<float> space);
+				void		load_lights(int& i, physx::PxMat44 space);
+				void		draw(glutpp::window::window_s, physx::PxMat44 space);
 	
-				void		model_load(math::mat44<float> space);
+				void		model_load(physx::PxMat44 space);
 				void		init_buffer(glutpp::window::window_s, std::shared_ptr<glutpp::glsl::program> p);
 
-				void		draw_elements(glutpp::window::window_s, math::mat44<float> space);
+				void		draw_elements(glutpp::window::window_s, physx::PxMat44 space);
 				
 				/** @name Index
 				 * @{

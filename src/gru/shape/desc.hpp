@@ -5,20 +5,18 @@
 
 #include <tinyxml2.h>
 
-#include <math/vec3.hpp>
+//#include <math/vec3.hpp>
 //#include <math/raw/raw.hpp>
 
-#include <galaxy/network/serial.hpp>
+//#include <galaxy/network/serial.hpp>
 
 #include <gru/config.hpp>
 #include <gru/material.hpp>
 //#include <gru/shape/desc.hpp>
 #include <gru/light/desc.hpp>
 
-namespace glutpp
-{
-	namespace shape
-	{
+namespace glutpp {
+	namespace shape {
 		class id: public gal::network::serial<id, gal::network::base> {
 			public:
 				int i_;

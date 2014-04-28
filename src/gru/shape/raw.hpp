@@ -5,8 +5,8 @@
 
 #include <tinyxml2.h>
 
-#include <math/vec3.hpp>
-#include <math/transform.hpp>
+//#include <math/vec3.hpp>
+//#include <math/transform.hpp>
 
 #include <galaxy/network/serial.hpp>
 
@@ -29,7 +29,7 @@ namespace glutpp
 				void			load(tinyxml2::XMLElement*);
 				void			parse_type(char const *);
 
-				void			box(math::vec3<float>);
+				void			box(physx::PxVec3);
 				void			box(tinyxml2::XMLElement*);
 
 				void			sphere(float);
@@ -39,8 +39,8 @@ namespace glutpp
 				int			type_;
 				unsigned int		flag_;
 
-				math::transform<float>		pose_;
-				math::vec3<float>		s_;
+				physx::PxTransform		pose_;
+				physx::PxVec3		s_;
 
 
 				char			image_[max_filename_length];
