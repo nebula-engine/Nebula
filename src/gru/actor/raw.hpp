@@ -12,7 +12,7 @@
 #include <gru/config.hpp>
 #include <gru/shape/desc.hpp>
 
-template void gal::reset<glutpp::actor::raw>(std::shared_ptr<glutpp::actor::raw>&);
+//template void gal::reset<glutpp::actor::raw>(std::shared_ptr<glutpp::actor::raw>&);
 
 namespace glutpp {
 	namespace actor {
@@ -22,12 +22,12 @@ namespace glutpp {
 			unsigned int word2;
 			unsigned int word3;
 		};
-		class raw: public gal::network::serial<glutpp::actor::raw, gal::network::base> {
+		class raw {
 			public:
 				friend class glutpp::actor::raw_factory;
 				
 				//friend void gal::reset<glutpp::actor::raw>(glutpp::actor::raw_s&);
-				template<typename T> friend void gal::reset(std::shared_ptr<T>&);
+				//template<typename T> friend void gal::reset(std::shared_ptr<T>&);
 				
 				enum
 				{
@@ -45,8 +45,11 @@ namespace glutpp {
 
 				unsigned int			parse_filter(tinyxml2::XMLElement*, unsigned int);
 				void				parse_filtering(tinyxml2::XMLElement*);
+				
+				template<class Archive> void	serialize(Archive & ar) {
 
-
+				}
+				
 				glutpp::actor::type::e		type_;
 				glutpp::actor::mode_create::e	mode_create_;
 				unsigned int			flag_;

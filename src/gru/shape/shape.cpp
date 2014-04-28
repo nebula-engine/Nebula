@@ -1,6 +1,9 @@
 
 #include <gru/debug.hpp>
+#include <gru/master.hpp>
 #include <gru/shape/shape.hpp>
+#include <gru/shape/desc.hpp>
+//#include <
 
 glutpp::shape::shape::shape(glutpp::shape::parent_s parent):
 	parent_(parent)
@@ -22,15 +25,15 @@ glutpp::shape::parent_s	glutpp::shape::shape::getParent() {
 	}
 }
 unsigned int glutpp::shape::shape::f() {
-	return raw_.get_raw_base()->flag_;
+	return raw_.flag_;
 }
 void glutpp::shape::shape::f(unsigned int flag) {
-	raw_.get_raw_base()->flag_ = flag;
+	raw_.flag_ = flag;
 }
-math::mat44<float>	glutpp::shape::shape::getPoseGlobal() {
+Neb::Math::Mat44	glutpp::shape::shape::getPoseGlobal() {
 	GRU_SHAPE_SHAPE_FUNC;
 	
-	math::mat44<float> m;
+	Neb::Math::Mat44 m;
 	
 	if(!parent_.expired()) {
 		m = parent_.lock()->getPoseGlobal() * getPose();
@@ -40,8 +43,8 @@ math::mat44<float>	glutpp::shape::shape::getPoseGlobal() {
 	
 	return m;
 }
-math::mat44<float> glutpp::shape::shape::getPose() {
-	return raw_.get_raw_base()->pose_;
+Neb::Math::Mat44 glutpp::shape::shape::getPose() {
+	return raw_.pose_;
 }
 void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	GRU_SHAPE_SHAPE_FUNC
@@ -49,32 +52,16 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	auto me = std::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
 
-	i_ = desc->get_id()->i_;
-	raw_ = *desc->get_raw();
-
+	i_ = desc->i_;
+	raw_ = desc->raw_;
+	
 	// type
-	switch(raw_.get_raw_base()->type_) {
-		case glutpp::shape::type::BOX:
-			mesh_.load("cube.obj");
-			break;
-		case glutpp::shape::type::SPHERE:
-			mesh_.load("sphere.obj");
-			break;
-		case glutpp::shape::type::EMPTY:
-			break;
-		default:
-			printf("invalid shape type\n");
-			exit(0);
-			break;
-	}
+
 
 	// program
-	if(strlen(raw_.get_raw_base()->image_) == 0)
-	{
+	if(strlen(raw_.image_) == 0) {
 		program_ = glutpp::program_name::LIGHT;
-	}
-	else
-	{
+	} else {
 		set(glutpp::shape::flag::e::IMAGE);
 
 		program_ = glutpp::program_name::IMAGE;
@@ -84,12 +71,13 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	// shape
 	glutpp::shape::desc_s sd;
 	glutpp::shape::shape_s shape;
-	for(auto it = desc->get_shapes()->vec_.begin(); it != desc->get_shapes()->vec_.end(); ++it)
-	{
-		sd = std::get<0>(*it);
-
-		shape.reset(new glutpp::shape::shape(me));
-
+	for(auto it = desc->shapes_.begin(); it != desc->shapes_.end(); ++it) {
+		sd = *it;
+		
+		//glutpp::master::Global()->shape_raw_factory_->create(desc_->type_);
+		
+		shape.reset(desc->construct());
+		
 		shape->init(sd);
 
 		shapes_.push_back(shape);
@@ -98,9 +86,9 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	// lights
 	glutpp::light::desc_s ld;
 	glutpp::light::light_s light;
-	for(auto it = desc->get_lights()->vec_.begin(); it != desc->get_lights()->vec_.end(); ++it)
+	for(auto it = desc->lights_.begin(); it != desc->lights_.end(); ++it)
 	{
-		ld = std::get<0>(*it);
+		ld = *it;
 
 		light.reset(new glutpp::light::light(me));
 
@@ -112,10 +100,7 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 	// material
 	//assert(raw_.get_vec_mat()->vec_.size() > 0);
 	
-	if(!raw_.get_vec_mat()->vec_.empty())
-	{
-		material_front_.raw_ = raw_.get_vec_mat()->vec_.at(0);
-	}
+	material_front_.raw_ = raw_.material_;
 	
 	printf("diffuse = ");
 	material_front_.raw_.diffuse_.print();
@@ -202,10 +187,10 @@ void glutpp::shape::shape::notify_foundation_change_pose() {
 		light->notify_foundation_change_pose();
 	}
 }
-void glutpp::shape::shape::load_lights(int& i, math::mat44<float> space) {
+void glutpp::shape::shape::load_lights(int& i, Neb::Math::Mat44 space) {
 	GRU_SHAPE_SHAPE_FUNC;
 
-	space = space * raw_.get_raw_base()->pose_;
+	space = space * raw_.pose_;
 
 	for(auto it = lights_.begin(); it != lights_.end(); ++it)
 	{
@@ -214,28 +199,17 @@ void glutpp::shape::shape::load_lights(int& i, math::mat44<float> space) {
 		it->second->load(i++, space);
 	}
 }
-void glutpp::shape::shape::draw(glutpp::window::window_s window, math::mat44<float> space) {
-	space = space * raw_.get_raw_base()->pose_;
+void glutpp::shape::shape::draw(glutpp::window::window_s window, Neb::Math::Mat44 space) {
+	space = space * raw_.pose_;
 
-	switch(raw_.get_raw_base()->type_)
-	{
-		case glutpp::shape::type::e::BOX:
-		case glutpp::shape::type::e::SPHERE:
-			draw_elements(window, space);
-			break;
-		case glutpp::shape::type::e::EMPTY:
-			break;
-	}
+	draw_elements(window, space);
 }
-void		glutpp::shape::shape::model_load(math::mat44<float> space) {
+void		glutpp::shape::shape::model_load(Neb::Math::Mat44 space) {
 	auto p = glutpp::master::Global()->current_program();
-
-	math::vec3<float> s(raw_.get_raw_base()->s_);
-
-	math::mat44<float> scale;
-	scale.SetScale(s);
-
-	p->get_uniform_scalar("model")->load(space * scale);
+	
+	space.scale(raw_.s_);
+	
+	p->get_uniform_scalar("model")->load(space);
 }
 void		glutpp::shape::shape::init_buffer(glutpp::window::window_s window, std::shared_ptr<glutpp::glsl::program> p) {
 	GRU_SHAPE_SHAPE_FUNC;
@@ -329,7 +303,7 @@ void		glutpp::shape::shape::init_buffer(glutpp::window::window_s window, std::sh
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 }
-void		glutpp::shape::shape::draw_elements(glutpp::window::window_s window, math::mat44<float> space) {
+void		glutpp::shape::shape::draw_elements(glutpp::window::window_s window, Neb::Math::Mat44 space) {
 	GRU_SHAPE_SHAPE_FUNC;
 
 	auto p = glutpp::master::Global()->use_program(program_);
@@ -406,6 +380,16 @@ void		glutpp::shape::shape::draw_elements(glutpp::window::window_s window, math:
 		p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->disable();
 	}
 }
+void glutpp::shape::Box::Box::createMesh() {
+	mesh_.load("cube.obj");
+}
+void glutpp::shape::Sphere::Sphere::createMesh() {
+	mesh_.load("sphere.obj");
+}
+void glutpp::shape::Empty::Empty::createMesh() {
+	mesh_.load("sphere.obj");
+}
+
 void glutpp::shape::shape::i(int ni) {
 	i_ = ni;
 }

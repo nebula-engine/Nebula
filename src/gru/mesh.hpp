@@ -5,7 +5,7 @@
 
 #include <GLFW/glfw3.h>
 
-#include <galaxy/flag.hpp>
+//#include <galaxy/flag.hpp>
 
 /*
 #include <math/vec4.hpp>

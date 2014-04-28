@@ -1,6 +1,8 @@
 #ifndef __GLUTPP_CONFIG_H__
 #define __GLUTPP_CONFIG_H__
 
+// gru/config.hpp.in
+
 #define GLUTPP_INSTALL_DIR "@CMAKE_INSTALL_PREFIX@"
 
 #define GLUTPP_OBJECT_DIR "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME@/objects"
@@ -14,16 +16,24 @@
 #include <vector>
 #include <memory>
 
+#include <gru/Map.hpp>
+
+/*
 #include <galaxy/map.hpp>
 #include <galaxy/sig/connection.hpp>
 #include <galaxy/network/vector.hpp>
+*/
 
-typedef std::shared_ptr<gal::sig::connection<int,int,int> >	mouse_button_fun_c;
-typedef std::shared_ptr<gal::sig::connection<double,double> >	cursor_pos_fun_c;
-typedef std::shared_ptr<gal::sig::connection<int> >		cursor_enter_fun_c;
-typedef std::shared_ptr<gal::sig::connection<double,double> >	scroll_fun_c;
-typedef std::shared_ptr<gal::sig::connection<int,int,int,int> >	key_fun_c;
-typedef std::shared_ptr<gal::sig::connection<unsigned int> >	char_fun_c;
+/*
+typedef bool ret_type;
+
+typedef boost::signals2::signal<ret_type (int,int,int> >	mouse_button_fun_c;
+typedef boost::signals2::signal<ret_type (double,double> >	cursor_pos_fun_c;
+typedef boost::signals2::signal<ret_type (int> >		cursor_enter_fun_c;
+typedef boost::signals2::signal<ret_type (double,double> >	scroll_fun_c;
+typedef boost::signals2::signal<ret_type (int,int,int,int> >	key_fun_c;
+typedef boost::signals2::signal<ret_type (unsigned int> >	char_fun_c;
+*/
 
 /** @brief root namespace for @gru */
 namespace glutpp {
@@ -231,6 +241,7 @@ namespace glutpp {
 		class base;
 		class shape;
 		class parent;
+		class raw_factory;
 
 		typedef std::shared_ptr<base>		base_s;
 		typedef std::shared_ptr<id>		id_s;
@@ -238,6 +249,7 @@ namespace glutpp {
 		typedef std::shared_ptr<raw_base>	raw_base_s;
 		typedef std::shared_ptr<desc>		desc_s;
 		typedef std::shared_ptr<shape>		shape_s;
+		typedef std::shared_ptr<raw_factory>	raw_factory_s;
 
 		typedef std::weak_ptr<base>		base_w;
 		typedef std::weak_ptr<id>		id_w;
@@ -308,7 +320,7 @@ namespace glutpp {
 			typedef std::shared_ptr<object>			object_s;
 			typedef std::shared_ptr<object_factory>		object_factory_s;
 
-			typedef gal::map<object>		object_m;
+			typedef Neb::Map<object>		object_m;
 		}
 
 		typedef std::shared_ptr<layout>		layout_s;

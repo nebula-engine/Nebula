@@ -3,6 +3,8 @@
 
 #include <memory>
 
+#include <boost/signals2.hpp>
+
 #include <tinyxml2.h>
 
 //#include <math/color.hpp>
@@ -60,8 +62,8 @@ namespace glutpp { namespace gui { namespace object {
 			// connections
 			struct
 			{
-				mouse_button_fun_c	mouse_button_fun_;
-				key_fun_c		key_fun_;
+				boost::signals2::connection		mouse_button_fun_;
+				boost::signals2::connection		key_fun_;
 			} conns_;
 
 

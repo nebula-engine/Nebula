@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 
-#include <galaxy/sig/connection.hpp>
+//#include <galaxy/sig/connection.hpp>
 
 /*
 #include <math/vec3.hpp>

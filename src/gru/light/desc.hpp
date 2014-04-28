@@ -9,36 +9,36 @@
 #include <math/vec4.hpp>
 #include <math/color.hpp>
 */
-#include <galaxy/network/serial.hpp>
+//#include <galaxy/network/serial.hpp>
 
 #include <gru/config.hpp>
+#include <gru/light/raw.hpp>
 
 namespace glutpp {
 	namespace light {
 
-		class id: public gal::network::serial<id, gal::network::base>
-		{
+		class id {
 			public:
 				void		load(glutpp::light::light_s);
+				
+				template<class Archive> void	serialize(Archive& ar) {
+
+				}
+				
 				int i_;
 		};
 
-		class desc: public gal::network::serial_ext<id, raw>
-		{
+		class desc {
 			public:
-				//typedef glutpp::light::light<raw>	LIGHT;
-				//typedef std::shared_ptr<LIGHT>		LIGHT_S;
-				typedef std::shared_ptr<id>		ID_S;
-				typedef std::shared_ptr<raw>		RAW_S;
-
-				typedef gal::network::serial_ext<id, raw> SER;
-
 				desc();
 				void		load(glutpp::light::light_s);
 
-				ID_S		get_id() { return std::get<0>(SER::tup_); }
-				RAW_S		get_raw() { return std::get<1>(SER::tup_); }
-
+				//ID_S		get_id() { return std::get<0>(SER::tup_); }
+				//RAW_S		get_raw() { return std::get<1>(SER::tup_); }
+				
+				id		id_;
+				raw		raw_;
+				
 		};
 	}
 }

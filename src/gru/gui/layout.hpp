@@ -32,15 +32,15 @@ namespace glutpp {
 				int		key_fun(int,int,int,int);
 
 				physx::PxMat44				otrho_;
-
-				gal::map<glutpp::gui::object::object>	objects_;
-
+				
+				Neb::Map<glutpp::gui::object::object>	objects_;
+				
 				glutpp::renderable_w			renderable_;
 				// connections
 				struct
 				{
-					mouse_button_fun_c		mouse_button_fun_;
-					key_fun_c			key_fun_;
+					boost::signals2::connection		mouse_button_fun_;
+					boost::signals2::connection		key_fun_;
 				} conns_;
 
 

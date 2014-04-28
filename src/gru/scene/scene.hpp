@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include <galaxy/flag.hpp>
-#include <galaxy/map.hpp>
+#include <gru/Flag.hpp>
+#include <gru/Map.hpp>
 
 #include <gru/config.hpp>
 #include <gru/glsl/program.hpp>
@@ -89,7 +89,7 @@ namespace glutpp {
 
 				renderable_w			renderable_;
 
-				gal::map<glutpp::actor::actor>		actors_;
+				Neb::Map<glutpp::actor::actor>		actors_;
 				actors_deferred_map			actors_deferred_;
 		};
 	}

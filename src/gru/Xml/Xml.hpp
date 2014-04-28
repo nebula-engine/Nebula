@@ -1,25 +1,46 @@
 #ifndef GRU_XML_XML_HPP
 #define GRU_XML_XML_HPP
 
+#include <tinyxml2.h>
+
 #include <PxPhysicsAPI.h>
 
-namespace gru {
-	namespace Xml {
+#include <gru/Math/Typedef.hpp>
 
-		physx::PxVec3	parseVec3(tinyxml2::XMLElement* element) {
-			physx::PxVec3 ret(0,0,0);
+class XmlArchive {
+	public:
+		friend XmlArchive	operator>>(XmlArchive, float&);
+		friend XmlArchive	operator>>(XmlArchive, Neb::Math::Vec3&);
 
-			if(!element) return ret;
+		XmlArchive(tinyxml2::XMLElement*);
+	private:
+		tinyxml2::XMLElement* element_;
+};
 
-			char const * buf = element->GetText();
+XmlArchive	operator>>(XmlArchive ar, float& ret) {
 
-			int c = sscanf(buf, "%f,%f,%f", &ret.x, &ret.y, &ret.z);
-			assert(c == 3);
-
-			return ret;
-		}
-	}
+	if(!ar.element_) return ar;
+	
+	char const * buf = ar.element_->GetText();
+	
+	int c = sscanf(buf, "%f", &ret);
+	assert(c == 1);
+	
+	return ar;
 }
+XmlArchive	operator>>(XmlArchive ar, Neb::Math::Vec3& ret) {
+
+	if(!ar.element_) return ar;
+	
+	char const * buf = ar.element_->GetText();
+	
+	int c = sscanf(buf, "%f,%f,%f", &ret.x, &ret.y, &ret.z);
+	assert(c == 3);
+	
+	return ar;
+}
+
+
 
 #endif
 

@@ -13,38 +13,40 @@
 #include <gru/config.hpp>
 #include <gru/material.hpp>
 //#include <gru/shape/desc.hpp>
+#include <gru/shape/raw.hpp>
 #include <gru/light/desc.hpp>
 
 namespace glutpp {
 	namespace shape {
-		class id: public gal::network::serial<id, gal::network::base> {
+		class id {
 			public:
+				template<class Archive> void	serialize(Archive& ar) {
+					ar & i_;
+				}
+
 				int i_;
 		};
 
-
-		typedef gal::network::vector_ext<glutpp::shape::desc> vec_shape_desc;
-		typedef gal::network::vector_ext<glutpp::light::desc> vec_light_desc;
-		
-		typedef std::shared_ptr<vec_shape_desc> vec_shape_desc_s;
-		typedef std::shared_ptr<vec_light_desc> vec_light_desc_s;
-		
-		typedef gal::network::serial_ext<id,raw,vec_shape_desc,vec_light_desc>	ser_desc;
-
-		class desc: public ser_desc
-		{
+		class desc {
 			public:
-				//typedef gal::network::serial_ext<id,raw,vec_shape_desc,vec_light_desc> SER;
-
 				desc();
+				
+				glutpp::shape::shape*		construct();
+				
+				template<class Archive> void	serialize(Archive& ar) {
+					ar & i_;
+					ar & raw_;
+					ar & shapes_;
+					ar & lights_;
+				}
+
 				void			load(glutpp::shape::shape_s);
-				void			load(tinyxml2::XMLElement*);
-
-
-				id_s				get_id();
-				raw_s				get_raw();
-				vec_shape_desc_s		get_shapes();
-				vec_light_desc_s		get_lights();
+				//void			load(tinyxml2::XMLElement*);
+				
+				int					i_;
+				Raw					raw_;
+				std::vector<glutpp::shape::desc_s>	shapes_;
+				std::vector<glutpp::light::desc_s>	lights_;
 		};
 	}
 }

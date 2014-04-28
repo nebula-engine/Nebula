@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include <galaxy/flag.hpp>
+#include <gru/Flag.hpp>
 
 #include <gru/config.hpp> // gru/config.hpp.in
 #include <gru/gui/layout.hpp>

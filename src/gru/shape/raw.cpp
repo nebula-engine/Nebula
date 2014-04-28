@@ -1,19 +1,21 @@
-#include <math/config.hpp>
-#include <math/free.hpp>
-#include <math/xml.hpp>
+//#include <math/config.hpp>
+//#include <math/free.hpp>
 
+#include <gru/free.hpp>
+#include <gru/Xml/Xml.hpp>
 #include <gru/shape/raw.hpp>
 
 
-glutpp::shape::raw_base::raw_base():
+glutpp::shape::Raw::Raw():
 	flag_(0)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	memset(image_, '\0', max_filename_length);
+	memset(normal_, '\0', max_filename_length);
 }
-void	glutpp::shape::raw_base::load(tinyxml2::XMLElement* element)
-{
+/*
+void	glutpp::shape::raw_base::load(tinyxml2::XMLElement* element) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	parse_type(element->Attribute("type"));
@@ -32,9 +34,9 @@ void	glutpp::shape::raw_base::load(tinyxml2::XMLElement* element)
 	
 	// program
 	//program_ = glutpp::program_name::LIGHT;
-
+	
 	// material
-		
+	
 	// image
 	tinyxml2::XMLElement* element_image = element->FirstChildElement("image");
 	
@@ -54,55 +56,44 @@ void	glutpp::shape::raw_base::load(tinyxml2::XMLElement* element)
 	
 	printf("image = '%s'\n", image_);
 }
-void	glutpp::shape::raw_base::parse_type(char const * str) {
+*/
+/*
+void	glutpp::shape::Raw::parse_type(char const * str) {
 	assert(str);
+	int type;
 	if(strcmp(str,"box") == 0)
 	{
-		type_ = glutpp::shape::type::BOX;
+		type = glutpp::shape::type::BOX;
 	}
 	else if(strcmp(str,"sphere") == 0)
 	{
-		type_ = glutpp::shape::type::SPHERE;
+		type = glutpp::shape::type::SPHERE;
 	}
 	else if(strcmp(str,"empty") == 0)
 	{
-		type_ = glutpp::shape::type::EMPTY;
+		type = glutpp::shape::type::EMPTY;
 	}
 	else
 	{
 		printf("invalid shape type\n");
 		abort();
 	}
+
 }
-void		glutpp::shape::raw_base::box(math::vec3<float> ns) {
-	type_ = glutpp::shape::type::BOX;
+*/
+
+glutpp::shape::Raw& glutpp::shape::Raw::operator=(glutpp::shape::Raw const & rhs) {
+	// copy raw_base_
+	//raw_base_.reset(new_copy(rhs.raw_base_));
 	
-	s_ = ns;
-}
-void		glutpp::shape::raw_base::box(tinyxml2::XMLElement* element) {
-	type_ = glutpp::shape::type::BOX;
-	
-	s_ << element->FirstChildElement("s");
-}
-void glutpp::shape::raw_base::sphere(float r) {
-	type_ = glutpp::shape::type::SPHERE;
-	
-	s_ = math::vec3<float>(r, r, r);
-}
-void glutpp::shape::raw_base::sphere(tinyxml2::XMLElement* element) {
-	type_ = glutpp::shape::type::SPHERE;
-
-	float r = math::Xml::parse_float<float>(element->FirstChildElement("s"),0);
-	s_ = math::vec3<float>(r, r, r);
-}
 
 
+	// copy material
+	material_ = rhs.material_;
 
-glutpp::shape::raw& glutpp::shape::raw::operator=(glutpp::shape::raw const & rhs) {
-	*get_raw_base() = *rhs.get_raw_base();
-	*get_vec_mat()  = *rhs.get_vec_mat();
 	return *this;
 }
+/*
 glutpp::shape::raw_base_s glutpp::shape::raw::get_raw_base() const {
 	auto p = std::get<0>(tup_);
 	assert(p);
@@ -113,27 +104,31 @@ glutpp::shape::vec_mat_s glutpp::shape::raw::get_vec_mat() const {
 	assert(p);
 	return p;
 }
+*/
+/*
 void glutpp::shape::raw::load(tinyxml2::XMLElement* element) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	printf("%s\n", element->Name());
+
+	XmlArchive ar(element);
 	
-	get_raw_base()->load(element);
+	//raw_base_->load(element);
+	raw_base_->serialize(ar);
 	
 	tinyxml2::XMLElement* e = element->FirstChildElement("front");
 	
-	while(e != NULL)
-	{
-		glutpp::material::raw m;
-		m.load(e);
+	while(e != NULL) {
+		glutpp::material::raw_s m(new glutpp::material::raw(e));
+		//m.load(e);
 		
-		get_vec_mat()->vec_.push_back(m);
+		materials_.push_back(m);
 		
 		e = e->NextSiblingElement("front");	
 	}
 	
 	//assert(get_vec_mat()->vec_.size() > 0);
 }
-
+*/
 
 
 

@@ -1,5 +1,5 @@
-#ifndef color_HPP
-#define color_HPP
+#ifndef GRU_color_HPP
+#define GRU_color_HPP
 
 #include <cstdlib>
 #include <cstdio>

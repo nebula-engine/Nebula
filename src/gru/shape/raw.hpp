@@ -8,60 +8,94 @@
 //#include <math/vec3.hpp>
 //#include <math/transform.hpp>
 
-#include <galaxy/network/serial.hpp>
+//#include <galaxy/network/serial.hpp>
+
+#include <gru/Archive.hpp>
+
+#include <gru/Types/Material.hpp>
+
+#include <gru/Math/Typedef.hpp>
 
 #include <gru/config.hpp>
 #include <gru/material.hpp>
+
 //#include <gru/shape/desc.hpp>
 
-namespace glutpp
-{
-	namespace shape
-	{
-		class raw_base: public gal::network::serial<raw, gal::network::base> {
+namespace glutpp {
+	namespace shape {
+		class Raw {
 			public:
 				enum
 				{
 					max_filename_length = 20
 				};
 
-				raw_base();
-				void			load(tinyxml2::XMLElement*);
+				Raw();
+
+				Raw&			operator=(Raw const &);
+
+				//void			load(tinyxml2::XMLElement*);
 				void			parse_type(char const *);
 
-				void			box(physx::PxVec3);
+				void			box(Neb::Math::Vec3);
 				void			box(tinyxml2::XMLElement*);
 
 				void			sphere(float);
 				void			sphere(tinyxml2::XMLElement*);
+				
+				template<class Archive>	void	serialize(Archive & ar) {
+					type_	& ar;
+					flag_	& ar;
+					pose_	& ar;
+					s_	& ar;
+					image_	& ar;
+					normal_	& ar;
+				}
 
-
-				int			type_;
-				unsigned int		flag_;
-
+			public:
+				/** @brief Type.
+				 * used to tell shape factory what to create */
+				int				type_;
+				unsigned int			flag_;
+				
+				/** @brief Pose. */
 				physx::PxTransform		pose_;
-				physx::PxVec3		s_;
-
-
-				char			image_[max_filename_length];
-				char			normal_[max_filename_length];
-
+				/** @brief Scale. */
+				physx::PxVec4			s_;
+				
+				/** @brief Name of image file */
+				char				image_[max_filename_length];
+				/** @brief Name of normal map file */
+				char				normal_[max_filename_length];
+				/** @brief Material. */
+				glutpp::material::raw		material_;
 		};
+		namespace Box {
+			class Raw {
+				
+			};
+		}
+		namespace Sphere {
+			class Raw {
+			};
+		}
 		
-		typedef gal::network::vector<glutpp::material::raw> vec_mat;
+		//typedef gal::network::vector<glutpp::material::raw> vec_mat;
 		
-		typedef std::shared_ptr<vec_mat> vec_mat_s;
-		
-		class raw: public gal::network::serial_ext<raw_base, vec_mat> {
+		//typedef std::shared_ptr<vec_mat> vec_mat_s;
+		/*	
+		class raw { //: public gal::network::serial_ext<raw_base, vec_mat> {
 			public:
 				raw&		operator=(raw const &);
 				
 				void		load(tinyxml2::XMLElement*);
-
-				raw_base_s	get_raw_base() const;
-				vec_mat_s	get_vec_mat() const;
 				
-		};
+				//raw_base_s	get_raw_base() const;
+				//vec_mat_s	get_vec_mat() const;
+				
+				glutpp::shape::raw_base_s		raw_base_;
+				std::vector<glutpp::material::raw_s>	materials_;
+		};*/
 	}
 }
 

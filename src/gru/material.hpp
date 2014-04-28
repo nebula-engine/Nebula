@@ -15,7 +15,10 @@ namespace glutpp {
 		struct raw
 		{
 			raw();
-			void				load(tinyxml2::XMLElement*);
+			raw(tinyxml2::XMLElement*);
+
+			
+			template<class Archive> void	serialize(Archive & ar);
 
 			gru::Color::color<float>	ambient_;
 			gru::Color::color<float>	diffuse_;

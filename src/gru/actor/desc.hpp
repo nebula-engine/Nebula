@@ -12,18 +12,18 @@
 namespace glutpp {
 	namespace actor {
 
-		typedef gal::network::vector_ext<glutpp::actor::desc> vec_actor_desc;
+/*		typedef gal::network::vector_ext<glutpp::actor::desc> vec_actor_desc;
 		typedef gal::network::vector_ext<glutpp::shape::desc> vec_shape_desc;
 		typedef std::shared_ptr<vec_actor_desc> vec_actor_desc_s;
 		typedef std::shared_ptr<vec_shape_desc> vec_shape_desc_s;
 
 		typedef gal::network::serial_ext<id,raw,vec_actor_desc,vec_shape_desc>	ser_desc;
+*/
 
 
-
-		class desc: public ser_desc
-		{
+		class desc {
 			public:
+				/*
 				typedef std::shared_ptr<id>	ID_S;
 				typedef std::shared_ptr<raw>	RAW_S;
 
@@ -36,12 +36,18 @@ namespace glutpp {
 				typedef gal::network::vector_ext<ACTOR_DESC>	VEC_ACTOR;
 				typedef gal::network::vector_ext<SHAPE_DESC>	VEC_SHAPE;
 
-				typedef std::shared_ptr<VEC_ACTOR>	VEC_ACTOR_S;
-				typedef std::shared_ptr<VEC_SHAPE>	VEC_SHAPE_S;
-
+				typedef std::shared_ptr<VEC_ACTOR>		VEC_ACTOR_S;
+				typedef std::shared_ptr<VEC_SHAPE>		VEC_SHAPE_S;
+*/
 
 				desc();
 
+				template<class Archive> void	serialize(Archive & ar) {
+					ar & i_;
+					ar & raw_;
+					ar & actors_;
+					ar & shapes_;
+				}
 
 				void			load(tinyxml2::XMLElement*);
 				void			load(glutpp::actor::actor_s);
@@ -52,10 +58,10 @@ namespace glutpp {
 				desc&			operator=(desc const &);
 
 
-				ID_S			get_id() const;
-				RAW_S			get_raw() const;
-				VEC_ACTOR_S		get_actors() const;
-				VEC_SHAPE_S		get_shapes() const;
+				int					i_;
+				glutpp::actor::raw			raw_;
+				std::vector<glutpp::actor::desc_s>	actors_;
+				std::vector<glutpp::shape::desc_s>	shapes_;
 
 
 		};

@@ -76,8 +76,8 @@ namespace glutpp {
 			public:
 				glutpp::actor::parent_w		parent_;
 				
-				gal::map<glutpp::shape::shape>		shapes_;
-				gal::map<glutpp::actor::actor>		actors_;
+				Neb::Map<glutpp::shape::shape>		shapes_;
+				Neb::Map<glutpp::actor::actor>		actors_;
 
 
 

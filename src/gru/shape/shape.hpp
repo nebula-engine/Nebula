@@ -7,7 +7,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <galaxy/flag.hpp>
+//#include <galaxy/flag.hpp>
 
 /*
 #include <math/vec4.hpp>
@@ -58,7 +58,11 @@ namespace glutpp {
 				
 				glutpp::shape::parent_s	getParent();
 
-				void		init(glutpp::shape::desc_s desc);
+
+				void			init(glutpp::shape::desc_s desc);
+
+				virtual void		createMesh() = 0;
+				
 				void		release();
 				void		cleanup();
 				void		step(double time);
@@ -69,7 +73,7 @@ namespace glutpp {
 				void		model_load(physx::PxMat44 space);
 				void		init_buffer(glutpp::window::window_s, std::shared_ptr<glutpp::glsl::program> p);
 
-				void		draw_elements(glutpp::window::window_s, physx::PxMat44 space);
+				virtual void		draw_elements(glutpp::window::window_s, physx::PxMat44 space);
 				
 				/** @name Index
 				 * @{
@@ -86,12 +90,13 @@ namespace glutpp {
 			public:
 				// draw data
 
+				/** @brief ID */
 				int					i_;
-				raw					raw_;
-
-
-				gal::map<glutpp::light::light>		lights_;
-				gal::map<glutpp::shape::shape>		shapes_;
+				/** @brief Raw data. */
+				glutpp::shape::Raw			raw_;
+				
+				Neb::Map<glutpp::light::light>		lights_;
+				Neb::Map<glutpp::shape::shape>		shapes_;
 
 				glutpp::material::material		material_front_;
 				mesh					mesh_;
@@ -102,6 +107,23 @@ namespace glutpp {
 
 				glutpp::shape::parent_w			parent_;
 		};
+		namespace Box {
+			class Box: public glutpp::shape::shape {
+				virtual void		createMesh();
+			};
+		}
+		namespace Sphere {
+			class Sphere: public glutpp::shape::shape {
+				virtual void		createMesh();
+			};
+		}
+		namespace Empty {
+			class Empty: public glutpp::shape::shape {
+				virtual void		createMesh();
+
+				virtual void		draw_elements(glutpp::window::window_s, physx::PxMat44 space) {}
+			};
+		}
 	}
 }
 

@@ -9,27 +9,40 @@
 #include <math/vec4.hpp>
 #include <math/color.hpp>
 */
-#include <galaxy/network/serial.hpp>
+//#include <galaxy/network/serial.hpp>
 
 #include <gru/config.hpp>
+#include <gru/Math/Typedef.hpp>
+#include <gru/Color/Color.hpp>
 
 namespace glutpp {
 	namespace light {
-		class raw: public gal::network::serial<raw, gal::network::base> {
+		class raw {
 			public:
 				//typedef glutpp::light::light<raw>	LIGHT;
 				//typedef std::shared_ptr<LIGHT>	LIGHT_S;
 				
 				raw();
 				void			load(glutpp::light::light_s);
-				void			load(tinyxml2::XMLElement*);
+				//void			load(tinyxml2::XMLElement*);
+				
+				template<class Archive> void	serialize(Archive& ar) {
+					ar << i_;
+					ar << flag_;
+					ar << pos_;
+					ar << ambient_;
+					ar << diffuse_;
+					ar << specular_;
+					
+				}
+
 				void			print();
 
 				int			i_;
 				unsigned int		flag_;
 
 				// position
-				physx::PxVec4		pos_;
+				Neb::Math::Vec4		pos_;
 
 				// colors
 				gru::Color::color<float>	ambient_;

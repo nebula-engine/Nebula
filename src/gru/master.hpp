@@ -4,8 +4,10 @@
 #include <map>
 #include <memory>
 
+/*
 #include <galaxy/flag.hpp>
 #include <galaxy/sig/signal.hpp>
+*/
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -13,14 +15,13 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <gru/config.hpp>
+#include <gru/config.hpp> // gru/config.hpp.in
 
+#include <gru/Flag.hpp>
 
 namespace glutpp {
 	
-	class master:
-		public gal::flag<unsigned int>
-	{
+	class master: public gal::flag<unsigned int> {
 		public:
 	
 			//typedef std::shared_ptr<WINDOW>		WINDOW_S;
@@ -102,9 +103,11 @@ namespace glutpp {
 			// font
 			FT_Library						ft_;
 
-			// factories
+			/** @name Factories @{ */
 			glutpp::gui::object::object_factory_s			object_factory_;
-			glutpp::actor::raw_factory_s				raw_factory_;
+			glutpp::actor::raw_factory_s				actor_raw_factory_;
+			glutpp::shape::raw_factory_s				shape_raw_factory_;
+			/** @} */
 		private:
 			unsigned int						flag_;
 			
