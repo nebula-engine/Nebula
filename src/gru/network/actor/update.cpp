@@ -1,4 +1,3 @@
-
 //#include <galaxy/util.hpp>
 
 #include <gru/network/message.hpp>
@@ -9,25 +8,27 @@
 void glutpp::network::actor::update::load(boost::shared_ptr<glutpp::actor::actor> actor) {
 	assert(actor);
 	
+	/** @todo this and all similar functions should be not be called "load", in fact, they are used on the "save" 
+	 * side of the serialization process. if anything, call them save.
+	 */
+	 
 	//glutpp::network::actor::vec_addr_raw::tuple t;
 	
 	//gal::reset_tuple(t);
 
 	boost::shared_ptr<glutpp::network::actor::addr_raw> ar(new glutpp::network::actor::addr_raw);
 	
-	
 	ar->addr_.load_this(actor);
 	
-	ar->raw_ = glutpp::master::Global()->actor_raw_factory_->create(actor->raw_->type_);
-	
-	ar->raw_->operator=(*(actor->raw_));
+	ar->raw_ = actor->raw_;
 	
 	if(actor->any(glutpp::actor::actor::flag::SHOULD_UPDATE))
 	{
 		vector_.push_back(ar);
 	}
 	
-	for(auto it = actor->actors_.begin(); it != actor->actors_.end(); ++it)
+	// children
+	for(auto it = actor->actors_.cbegin(); it != actor->actors_.cend(); ++it)
 	{
 		auto a = it->second;
 		
