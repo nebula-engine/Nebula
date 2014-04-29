@@ -16,45 +16,8 @@
 namespace glutpp {
 	namespace network {
 		namespace actor {
-
-/*			typedef gal::network::vector_ext<
-				glutpp::actor::raw,
-				glutpp::actor::addr>
-					vec_addr_raw;
-
-			typedef std::shared_ptr<vec_addr_raw> vec_addr_raw_s;
-
-			typedef gal::network::serial_ext<
-				glutpp::actor::addr,
-				glutpp::actor::desc>
-					ser_create;
-
-			typedef gal::network::serial_ext<vec_addr_raw> ser_update;
 			
-			typedef gal::network::serial_ext<
-				glutpp::actor::addr,
-				glutpp::actor::event>
-					ser_event;
-
-*/
-			struct addr_raw {
-				addr_raw() {}
-				
-				
-				
-				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
-					ar & addr_;
-					ar & type_;
-					
-					raw_ = glutpp::master::Global()->actor_raw_factory_->create(type_);
-					
-					ar & *raw_;
-				}
-				
-				glutpp::actor::addr			addr_; //() { return std::get<0>(ser_create::tup_); }
-				glutpp::actor::Type			type_;
-				boost::shared_ptr<glutpp::actor::raw>	raw_; //() { return std::get<1>(tup_); }
-			};
+			
 
 			struct create {
 				void	load(boost::shared_ptr<glutpp::actor::actor> actor);
@@ -69,6 +32,36 @@ namespace glutpp {
 			};
 
 			struct update {
+				/** @brief Address and Data. */
+				struct addr_raw {
+					/** @brief Load.
+					 * Find the actor at the address and write directly into its Data object */
+					template<class Archive> void	load(Archive & ar, unsigned int const & version) {
+						ar & addr_;
+						
+						// find the actor
+						auto actor = glutpp::master::Global::getActor(addr_);
+						if(!actor) throw 0; /** @todo handle this gracefully */
+						
+						ar & *(actor->raw_);
+					}
+					/** @brief Save.
+					 * The pointer to the actor's Data object should already be set. */
+					template<class Archive> void	save(Archive & ar, unsigned int const & version) {
+						ar & addr_;
+						
+						assert(raw_);
+						
+						ar & *raw_;
+					}
+					
+					/** @brief Address. */
+					glutpp::actor::addr			addr_;
+					/** @brief Data pointer.
+					 * could be replaced with Actor pointer with similar results */
+					boost::shared_ptr<glutpp::actor::raw>	raw_;
+				};
+				
 				//typedef vec_addr_raw::tuple tuple;
 				
 				void load(boost::shared_ptr<glutpp::actor::actor> actor);
