@@ -52,7 +52,7 @@ namespace glutpp {
 				}
 				
 				glutpp::actor::addr			addr_; //() { return std::get<0>(ser_create::tup_); }
-				unsigned int				type_;
+				glutpp::actor::Type			type_;
 				boost::shared_ptr<glutpp::actor::raw>	raw_; //() { return std::get<1>(tup_); }
 			};
 

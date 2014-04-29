@@ -9,10 +9,11 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 
-
-//#include <gru/actor/actor.hpp>
+#include <gru/master.hpp>
+#include <gru/actor/Type.hpp>
 #include <gru/actor/id.hpp>
 #include <gru/actor/raw.hpp>
+#include <gru/actor/raw_factory.hpp>
 #include <gru/shape/desc.hpp>
 #include <gru/Filter.hpp>
 
@@ -55,7 +56,7 @@ namespace glutpp {
 					
 				       	raw_ = glutpp::master::Global()->actor_raw_factory_->create(type_);
 					
-					ar & boost::serialization::make_nvp("raw",raw_);
+					ar & boost::serialization::make_nvp("raw",*raw_);
 					
 					ar & boost::serialization::make_nvp("actors",actors_);
 					ar & boost::serialization::make_nvp("shapes",shapes_);

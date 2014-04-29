@@ -124,6 +124,7 @@ namespace glutpp {
 	
 	}
 	namespace actor {
+		/*
 		struct type {
 			enum e {
 				NONE          = 0,
@@ -138,7 +139,7 @@ namespace glutpp {
 				EMPTY         = 9
 			};
 		};
-	
+		*/
 		struct mode_create {
 			enum e {
 				NOW,

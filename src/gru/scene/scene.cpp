@@ -27,10 +27,10 @@ int glutpp::scene::scene::i() {
 	return i_;
 }
 unsigned int glutpp::scene::scene::f() {
-	return raw_.flag_;
+	return raw_->flag_;
 }
 void glutpp::scene::scene::f(unsigned int flag) {
-	raw_.flag_ = flag;
+	raw_->flag_ = flag;
 }
 void glutpp::scene::scene::init(glutpp::scene::desc_s desc) {
 	GLUTPP_DEBUG_0_FUNCTION;

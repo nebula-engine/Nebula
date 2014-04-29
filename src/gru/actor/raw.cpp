@@ -5,7 +5,7 @@
 #include <gru/Xml/Xml.hpp>
 
 glutpp::actor::raw::raw():
-	type_(glutpp::actor::type::NONE),
+	type_(glutpp::actor::Type::NONE),
 	mode_create_(glutpp::actor::mode_create::e::NOW),
 	flag_(0),
 	density_(200)

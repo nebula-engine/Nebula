@@ -13,6 +13,7 @@
 
 #include <gru/config.hpp> // gru/config.hpp.in
 #include <gru/shape/desc.hpp>
+#include <gru/actor/Type.hpp>
 #include <gru/Filter.hpp>
 
 //template void gal::reset<glutpp::actor::raw>(std::shared_ptr<glutpp::actor::raw>&);
@@ -169,7 +170,7 @@ namespace glutpp {
 
 				}
 
-				glutpp::actor::type::e		type_;
+				glutpp::actor::Type		type_;
 				glutpp::actor::mode_create::e	mode_create_;
 				unsigned int			flag_;
 				char				name_[32];

@@ -16,7 +16,7 @@
 #include <math/transform.hpp>
 */
 
-#include <gru/config.hpp>
+#include <gru/config.hpp> // gru/config.hpp.in
 #include <gru/actor/addr.hpp>
 #include <gru/actor/raw.hpp>
 #include <gru/actor/desc.hpp>
@@ -25,16 +25,9 @@
 #include <gru/material.hpp>
 #include <gru/shape/shape.hpp>
 
+
 namespace glutpp {
 	namespace actor {
-		class Type {
-			public:
-			enum E {
-
-			};
-
-
-		};
 		class actor:
 			virtual public glutpp::actor::parent,
 			virtual public glutpp::shape::parent,
