@@ -84,10 +84,10 @@ namespace glutpp {
 
 
 			public:
-				int				i_;
-				raw				raw_;
+				int					i_;
+				boost::shared_ptr<raw>			raw_;
 
-				renderable_w			renderable_;
+				renderable_w				renderable_;
 
 				Neb::Map<glutpp::actor::actor>		actors_;
 				actors_deferred_map			actors_deferred_;

@@ -3,11 +3,11 @@
 #include <gru/actor/actor.hpp>
 #include <gru/network/message.hpp>
 
-void glutpp::network::actor::create::load(glutpp::actor::actor_s actor) {
+void glutpp::network::actor::create::load(boost::shared_ptr<glutpp::actor::actor> actor) {
 	assert(actor);
 	
-	get_addr()->load_parent(actor);
-	get_desc()->load(actor);
+	addr_.load_parent(actor);
+	desc_.load(actor);
 	
 }
 

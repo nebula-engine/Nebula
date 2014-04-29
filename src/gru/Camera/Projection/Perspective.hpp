@@ -4,11 +4,6 @@
 #include <vector>
 #include <memory>
 
-#include <galaxy/sig/connection.hpp>
-
-#include <math/vec3.hpp>
-#include <math/vec4.hpp>
-#include <math/mat44.hpp>
 
 #include <gru/config.hpp>
 //#include <gru/camera_control.hpp>
@@ -22,7 +17,7 @@ namespace glutpp {
 					/** @brief Constructor */
 					Base(std::shared_ptr<glutpp::renderable>);
 					
-					virtual math::mat44<float>		proj() = 0;
+					virtual physx::PxMat44			proj() = 0;
 					void					load();
 					/** @brief step
 					 * @todo explain when in timeline this occurs and in which thread and why
@@ -41,11 +36,11 @@ namespace glutpp {
 				public:
 					Perspective(std::shared_ptr<glutpp::renderable>);
 					//void		init(glutpp::renderable_shared);
-					virtual math::mat44<float>	proj();
+					virtual physx::PxMat44			proj();
 
 
 					/** @brief step */
-					void		step(double);
+					void					step(double);
 
 					//
 

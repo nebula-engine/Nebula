@@ -5,7 +5,7 @@
 #include <gru/shape/desc.hpp>
 //#include <
 
-glutpp::shape::shape::shape(glutpp::shape::parent_s parent):
+glutpp::shape::shape::shape(boost::shared_ptr<glutpp::shape::parent> parent):
 	parent_(parent)
 {
 	GRU_SHAPE_SHAPE_FUNC
@@ -17,11 +17,11 @@ glutpp::shape::shape::shape(glutpp::shape::parent_s parent):
 glutpp::shape::shape::~shape() {
 
 }
-glutpp::shape::parent_s	glutpp::shape::shape::getParent() {
+boost::shared_ptr<glutpp::shape::parent>	glutpp::shape::shape::getParent() {
 	if(!parent_.expired()) {
 		return parent_.lock();
 	} else {
-		return glutpp::shape::parent_s();
+		return boost::shared_ptr<glutpp::shape::parent>();
 	}
 }
 unsigned int glutpp::shape::shape::f() {
@@ -46,7 +46,7 @@ Neb::Math::Mat44	glutpp::shape::shape::getPoseGlobal() {
 Neb::Math::Mat44 glutpp::shape::shape::getPose() {
 	return raw_.pose_;
 }
-void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
+void glutpp::shape::shape::init(boost::shared_ptr<glutpp::shape::desc> desc) {
 	GRU_SHAPE_SHAPE_FUNC
 
 	auto me = std::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
@@ -69,23 +69,18 @@ void glutpp::shape::shape::init(glutpp::shape::desc_s desc) {
 
 
 	// shape
-	glutpp::shape::desc_s sd;
-	glutpp::shape::shape_s shape;
+	boost::shared_ptr<glutpp::shape::desc> sd;
+	boost::shared_ptr<glutpp::shape::shape> shape;
 	for(auto it = desc->shapes_.begin(); it != desc->shapes_.end(); ++it) {
 		sd = *it;
-		
-		//glutpp::master::Global()->shape_raw_factory_->create(desc_->type_);
-		
 		shape.reset(desc->construct());
-		
 		shape->init(sd);
-
 		shapes_.push_back(shape);
 	}
 
 	// lights
-	glutpp::light::desc_s ld;
-	glutpp::light::light_s light;
+	boost::shared_ptr<glutpp::light::desc> ld;
+	boost::shared_ptr<glutpp::light::light> light;
 	for(auto it = desc->lights_.begin(); it != desc->lights_.end(); ++it)
 	{
 		ld = *it;
@@ -172,9 +167,9 @@ void glutpp::shape::shape::step(double time) {
 }
 void glutpp::shape::shape::notify_foundation_change_pose() {
 
-	glutpp::shape::shape_s shape;
-	glutpp::light::light_s light;
-
+	boost::shared_ptr<glutpp::shape::shape> shape;
+	boost::shared_ptr<glutpp::light::light> light;
+	
 	for(auto it = shapes_.end(); it != shapes_.end(); ++it)
 	{
 		shape = it->second;

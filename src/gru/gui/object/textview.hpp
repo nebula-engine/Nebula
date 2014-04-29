@@ -28,9 +28,6 @@ namespace glutpp
 					virtual int		mouse_button_fun(int,int,int);
 					//virtual void		connect();
 
-
-
-					size_t			label_pos_;
 			};
 		}
 	}

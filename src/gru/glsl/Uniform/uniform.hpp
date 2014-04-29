@@ -83,11 +83,6 @@ namespace glutpp {
 						Mat4(std::string s): Base(s) {}
 						virtual void		load(physx::PxMat44);
 				};
-				class DMat4: public glutpp::glsl::Uniform::Scalar::Base {
-					public:
-						DMat4(std::string s): Base(s) {}
-						virtual void		load(physx::PxMat44);
-				};
 				class Sampler2D: public glutpp::glsl::Uniform::Scalar::Base {
 					public:
 						Sampler2D(std::string s): Base(s) {}

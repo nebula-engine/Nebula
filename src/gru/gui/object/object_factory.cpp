@@ -4,15 +4,14 @@
 #include <gru/gui/object/edittext.hpp>
 #include <gru/gui/object/terminal.hpp>
 
-std::shared_ptr<glutpp::gui::object::object>    glutpp::gui::object::object_factory::create(tinyxml2::XMLElement* element) {
+std::shared_ptr<glutpp::gui::object::object>    glutpp::gui::object::object_factory::create(boost::archive::xml_iarchive & ar) {
 
-	assert(element);
-	
 	std::shared_ptr<glutpp::gui::object::object> object;
 	
-	char const * buf = element->Attribute("type");
-	assert(buf);
-	
+//	std::string type;
+
+//	ar >> type;
+	/*
 	if(strcmp(buf, "textview") == 0)
 	{
 		object.reset(new glutpp::gui::object::textview);
@@ -30,8 +29,8 @@ std::shared_ptr<glutpp::gui::object::object>    glutpp::gui::object::object_fact
 		printf("object type not recognized %s\n",buf);
 		abort();
 	}
-	
-	object->load_xml(element);
+	*/
+//	ar >> object;
 	
 	return object;
 }

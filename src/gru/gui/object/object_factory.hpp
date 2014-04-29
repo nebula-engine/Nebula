@@ -3,23 +3,18 @@
 
 #include <memory>
 
-#include <tinyxml2.h>
+#include <boost/archive/xml_iarchive.hpp>
 
-namespace glutpp
-{
-	namespace gui
-	{
-		namespace object
-		{
+namespace glutpp {
+	namespace gui {
+		namespace object {
 			class object;
-			class object_factory
-			{
+
+			class object_factory {
 				public:
 					typedef std::shared_ptr<glutpp::gui::object::object> object_t;
 
-					virtual object_t	create(tinyxml2::XMLElement* element);
-
-
+					virtual object_t	create(boost::archive::xml_iarchive& ar);
 			};
 		}
 	}

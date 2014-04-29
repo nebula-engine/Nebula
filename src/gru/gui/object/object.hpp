@@ -12,65 +12,75 @@
 //#include <galaxy/sig/connection.hpp>
 
 #include <gru/master.hpp>
+#include <gru/Color/Color.hpp>
 
-namespace glutpp { namespace gui { namespace object {
+namespace glutpp {
+	namespace gui {
+		namespace object {
+			class Data {
+				public:
+					Data();
 
-	class object {
-		public:
+					template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
+						ar & boost::serialization::make_nvp("x",x_);
+						ar & boost::serialization::make_nvp("y",y_);
+						ar & boost::serialization::make_nvp("w",w_);
+						ar & boost::serialization::make_nvp("h",h_);
+						ar & boost::serialization::make_nvp("font_color",font_color_);
+						ar & boost::serialization::make_nvp("bg_color",bg_color_);
+						ar & boost::serialization::make_nvp("label",label_);
 
-			object();
-			void				i(int);
-			void				load_xml(tinyxml2::XMLElement*);
+					}
 
+					float				x_;
+					float				y_;
+					float				w_;
+					float				h_;
 
-			//window::window_s		get_window();
-			virtual void			draw() = 0;
-			void				set_label(char const *);
-			virtual int			key_fun(int,int,int,int) = 0;
-			virtual int			mouse_button_fun(int,int,int);
-			//virtual void			connect();
+					gru::Color::color<float>	font_color_;
+					gru::Color::color<float>	bg_color_;
 
+					std::string			label_;
 
+			};
+			class object {
+				public:
 
-			int				i_;
+					object();
+					void				i(int);
+			
+					void				init(boost::shared_ptr<glutpp::gui::object::Data>);
 
+					//window::window_s		get_window();
+					virtual void			draw() = 0;
 
-			float				x_;
-			float				y_;
-			float				w_;
-			float				h_;
-
-			gru::Color::color<float>	font_color_;
-			gru::Color::color<float>	bg_color_;
-
-			bool				active_;
-
-			//std::shared_ptr<jess::signal::connection<int> > connection_key_down_;
-			/// key up
-			//std::shared_ptr<jess::signal::connection<int> > connection_key_up_;
-			/// key_down
-			/*virtual int		handle_key(unsigned short,int) = 0;
-			  virtual int		handle_key_down(unsigned short) = 0;
-			/// key_up
-			virtual int		handle_key_up(unsigned short) = 0;*/
-			//int			key_down_mask_;
-			//int			key_up_mask_;
-			size_t				label_length_;
-			char *				label_;
-
-
-			// connections
-			struct
-			{
-				boost::signals2::connection		mouse_button_fun_;
-				boost::signals2::connection		key_fun_;
-			} conns_;
+					virtual int			key_fun(int,int,int,int) = 0;
+					virtual int			mouse_button_fun(int,int,int);
+					//virtual void			connect();
 
 
 
-	};
-}
-}
+					int				i_;
+
+
+
+					bool				active_;
+
+
+					Data				data_;
+
+					// connections
+					struct
+					{
+						boost::signals2::connection		mouse_button_fun_;
+						boost::signals2::connection		key_fun_;
+					} conns_;
+
+
+
+			};
+		}
+	}
 }
 #endif
 

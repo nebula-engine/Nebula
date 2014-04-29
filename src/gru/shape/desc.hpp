@@ -10,6 +10,16 @@
 
 //#include <galaxy/network/serial.hpp>
 
+#include <boost/serialization/nvp.hpp>
+#include <boost/serialization/vector.hpp>
+#include <boost/serialization/shared_ptr.hpp>
+
+
+
+
+
+#include <gru/Math/Serialization.hpp>
+
 #include <gru/config.hpp>
 #include <gru/material.hpp>
 //#include <gru/shape/desc.hpp>
@@ -33,20 +43,20 @@ namespace glutpp {
 				
 				glutpp::shape::shape*		construct();
 				
-				template<class Archive> void	serialize(Archive& ar) {
-					ar & i_;
-					ar & raw_;
-					ar & shapes_;
-					ar & lights_;
+				template<class Archive> void	serialize(Archive& ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("i",i_);
+					ar & boost::serialization::make_nvp("raw",raw_);
+					ar & boost::serialization::make_nvp("shapes",shapes_);
+					ar & boost::serialization::make_nvp("lights",lights_);
 				}
 
 				void			load(glutpp::shape::shape_s);
 				//void			load(tinyxml2::XMLElement*);
 				
-				int					i_;
-				Raw					raw_;
-				std::vector<glutpp::shape::desc_s>	shapes_;
-				std::vector<glutpp::light::desc_s>	lights_;
+				int							i_;
+				Raw							raw_;
+				std::vector<boost::shared_ptr<glutpp::shape::desc> >	shapes_;
+				std::vector<boost::shared_ptr<glutpp::light::desc> >	lights_;
 		};
 	}
 }

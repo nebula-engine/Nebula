@@ -1,28 +1,30 @@
 
-#include <galaxy/util.hpp>
+//#include <galaxy/util.hpp>
 
 #include <gru/network/message.hpp>
+
+#include <gru/actor/addr.hpp>
 #include <gru/actor/actor.hpp>
 
-void glutpp::network::actor::update::load(glutpp::actor::actor_s actor) {
+void glutpp::network::actor::update::load(boost::shared_ptr<glutpp::actor::actor> actor) {
 	assert(actor);
 	
-	glutpp::network::actor::vec_addr_raw::tuple t;
+	//glutpp::network::actor::vec_addr_raw::tuple t;
 	
-	gal::reset_tuple(t);
+	//gal::reset_tuple(t);
+
+	boost::shared_ptr<glutpp::network::actor::addr_raw> ar(new glutpp::network::actor::addr_raw);
 	
-	auto addr = std::get<1>(t);
-	auto raw = std::get<0>(t);
 	
-	assert(addr);
-	assert(raw);
+	ar->addr_.load_this(actor);
 	
-	addr->load_this(actor);
-	*raw = *actor->get_raw();
+	ar->raw_ = glutpp::master::Global()->actor_raw_factory_->create(actor->raw_->type_);
+	
+	ar->raw_->operator=(*(actor->raw_));
 	
 	if(actor->any(glutpp::actor::actor::flag::SHOULD_UPDATE))
 	{
-		std::get<0>(tup_)->vec_.push_back(t);
+		vector_.push_back(ar);
 	}
 	
 	for(auto it = actor->actors_.begin(); it != actor->actors_.end(); ++it)

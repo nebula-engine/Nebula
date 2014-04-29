@@ -3,6 +3,7 @@
 
 #include <map>
 
+#include <boost/weak_ptr.hpp>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -50,31 +51,33 @@ namespace glutpp {
 
 
 
-				shape(glutpp::shape::parent_s parent);
+				shape(boost::shared_ptr<glutpp::shape::parent> parent);
 				~shape();
 				
-				physx::PxMat44	getPose();
-				physx::PxMat44	getPoseGlobal();
-				
-				glutpp::shape::parent_s	getParent();
+				physx::PxMat44					getPose();
+				physx::PxMat44					getPoseGlobal();
+				boost::shared_ptr<glutpp::shape::parent>	getParent();
 
 
-				void			init(glutpp::shape::desc_s desc);
+				void			init(boost::shared_ptr<glutpp::shape::desc> desc);
 
 				virtual void		createMesh() = 0;
 				
-				void		release();
-				void		cleanup();
-				void		step(double time);
-				void		notify_foundation_change_pose();
-				void		load_lights(int& i, physx::PxMat44 space);
-				void		draw(glutpp::window::window_s, physx::PxMat44 space);
+				void			release();
+				void			cleanup();
+				void			step(double time);
+				void			notify_foundation_change_pose();
+				
+				/** @name Rendering @{ */
+				void			load_lights(int& i, physx::PxMat44 space);
+
+				void			draw(glutpp::window::window_s, physx::PxMat44 space);
 	
-				void		model_load(physx::PxMat44 space);
-				void		init_buffer(glutpp::window::window_s, std::shared_ptr<glutpp::glsl::program> p);
+				void			model_load(physx::PxMat44 space);
+				void			init_buffer(glutpp::window::window_s, std::shared_ptr<glutpp::glsl::program> p);
 
 				virtual void		draw_elements(glutpp::window::window_s, physx::PxMat44 space);
-				
+				/** @} */
 				/** @name Index
 				 * @{
 				 */
@@ -105,7 +108,7 @@ namespace glutpp {
 
 				glutpp::program_name::e			program_;
 
-				glutpp::shape::parent_w			parent_;
+				boost::weak_ptr<glutpp::shape::parent>		parent_;
 		};
 		namespace Box {
 			class Box: public glutpp::shape::shape {

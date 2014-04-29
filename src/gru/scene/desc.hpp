@@ -6,6 +6,8 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 
+#include <gru/master.hpp>
+#include <gru/actor/raw_factory.hpp>
 #include <gru/Math/Serialization.hpp>
 
 #include <gru/actor/desc.hpp>
@@ -39,17 +41,22 @@ namespace glutpp {
 
 				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("i",i_);
-					ar & boost::serialization::make_nvp("raw",raw_);
+					ar & boost::serialization::make_nvp("type",type_);
+
+					raw_.reset(new glutpp::scene::raw);
+
+					ar & boost::serialization::make_nvp("raw",*raw_);
 					ar & boost::serialization::make_nvp("actors",actors_);
 				}
 
 				void			load(char const *);
 				//void			load(tinyxml2::XMLElement*);
 				void			load(glutpp::scene::scene_s);
-
-
-				int					i_;
-				glutpp::scene::raw			raw_;
+				
+				
+				int							i_;
+				int							type_;
+				boost::shared_ptr<glutpp::scene::raw>			raw_;
 				
 				std::vector<boost::shared_ptr<glutpp::actor::desc> >	actors_;
 		};

@@ -5,10 +5,6 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <math/vec3.hpp>
-
-#include <galaxy/sig/connection.hpp>
-
 #include <gru/Camera/View/Base.hpp>
 
 namespace glutpp {
@@ -38,7 +34,7 @@ namespace glutpp {
 					/** @} */
 
 					/** @brief view matrix */
-					virtual math::mat44<float>			view();
+					virtual physx::PxMat44			view();
 					virtual void					step(double);
 					
 					void						init(glutpp::window::window_s);
@@ -46,17 +42,17 @@ namespace glutpp {
 					float						pitch_;
 					float						yaw_;
 
-					math::vec4<float>				eye_;
-					math::vec3<float>				center_;
-					math::vec3<float>				look_;
-					math::vec3<float>				up_;
+					physx::PxVec4				eye_;
+					physx::PxVec3				center_;
+					physx::PxVec3				look_;
+					physx::PxVec3				up_;
 
-					math::vec3<float>				v0_;
-					math::vec3<float>				v1_;
+					physx::PxVec3				v0_;
+					physx::PxVec3				v1_;
 
-					std::vector<gal::sig::connection<>*>		vec_x_;
-					std::vector<gal::sig::connection<>*>		vec_y_;
-					std::vector<gal::sig::connection<>*>		vec_z_;
+					//std::vector<gal::sig::connection<>*>		vec_x_;
+					//std::vector<gal::sig::connection<>*>		vec_y_;
+					//std::vector<gal::sig::connection<>*>		vec_z_;
 
 					glutpp::window::window_w				window_;
 

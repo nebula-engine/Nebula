@@ -33,20 +33,17 @@ glutpp::window::window_s glutpp::gui::layout::get_window()
 
 	return renderable_.lock()->getWindow();
 }
+/*
 void glutpp::gui::layout::load_xml(tinyxml2::XMLElement* element)
 {
 	assert(element);
-
 	tinyxml2::XMLElement* e = element->FirstChildElement("object");
-
-	while(e != NULL)
-	{
+	while(e != NULL){
 		create_object(e);
-
 		e = e->NextSiblingElement("object");
 	}
-
-}
+}*/
+/*
 void glutpp::gui::layout::create_object(tinyxml2::XMLElement* element) {
 
 	assert(element);
@@ -54,7 +51,7 @@ void glutpp::gui::layout::create_object(tinyxml2::XMLElement* element) {
 	auto object = glutpp::master::Global()->object_factory_->create(element);
 
 	objects_.push_back(object);
-}
+}*/
 void glutpp::gui::layout::render(double time) {
 	//auto p = glutpp::master::Global()->use_program(glutpp::program_name::e::TEXT);
 
@@ -139,16 +136,16 @@ int glutpp::gui::layout::search(int button, int action, int mods) {
 
 	printf("%f %f\n", x, y);
 
-	for(auto it = objects_.map_.begin(); it != objects_.map_.end(); ++it)
-	{
-		std::shared_ptr<glutpp::gui::object::object> o = (*it).second;
+	for(auto it = objects_.map_.begin(); it != objects_.map_.end(); ++it) {
 
-		printf("object %f %f %f %f\n", o->x_, o->y_, o->w_, o->h_);	
+		auto o = (*it).second;
 
-		if(x < o->x_) continue;
-		if(x > (o->x_ + o->w_)) continue;
-		if(y > -o->y_) continue;
-		if(y < (-o->y_ - o->h_)) continue;
+		printf("object %f %f %f %f\n", o->data_.x_, o->data_.y_, o->data_.w_, o->data_.h_);	
+
+		if(x < o->data_.x_) continue;
+		if(x > (o->data_.x_ + o->data_.w_)) continue;
+		if(y > -o->data_.y_) continue;
+		if(y < (-o->data_.y_ - o->data_.h_)) continue;
 
 		return o->mouse_button_fun(button, action, mods);
 	}

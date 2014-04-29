@@ -11,7 +11,6 @@
 //#include <GL/glew.h>
 //#include <GL/glut.h>
 
-#include <math/color.hpp>
 
 #include <gru/free.hpp>
 #include <gru/window/desc.hpp>

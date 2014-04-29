@@ -2,25 +2,27 @@
 #define __JESS_MAP_HPP__
 
 #include <map>
-#include <memory>
 #include <assert.h>
 #include <functional>
 #include <stdio.h>
+
+#include <boost/shared_ptr.hpp>
 
 //#include <galaxy/except.hpp>
 
 namespace Neb {
 	template <class T> class Map {
 		public:
-			typedef std::shared_ptr<T> mapped_type;
-			typedef std::map<int,std::shared_ptr<T> > map_type;
-			typedef typename map_type::iterator iter;
+			typedef boost::shared_ptr<T>		mapped_type;
+			typedef std::map<int,mapped_type>	map_type;
+			typedef typename map_type::iterator	iter;
+			
 			
 			Map():next_(0) {}
 			mapped_type& operator[](const int& k) {
 				return map_[k];
 			}
-			template <class U = T> void push_back(std::shared_ptr<U> u) {
+			template <class U = T> void push_back(mapped_type u) {
 				//printf("%s\n", __PRETTY_FUNCTION__);
 				
 				assert(u);
@@ -41,10 +43,10 @@ namespace Neb {
 			{
 				assert(func);
 				
-				std::shared_ptr<U> u;
+				mapped_type u;
 				for(auto it = map_.begin(); it != map_.end(); ++it)
 				{
-					u = std::dynamic_pointer_cast<U>(it->second);
+					u = boost::dynamic_pointer_cast<U>(it->second);
 
 					if(u)
 					{

@@ -5,6 +5,8 @@
 #include <cstdio>
 #include <cmath>
 
+#include <boost/serialization/nvp.hpp>
+
 namespace gru {
 	namespace Color {
 		template <typename T> class color {
@@ -41,6 +43,12 @@ namespace gru {
 				/** @} */
 				~color()
 				{
+				}
+				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("r",r);
+					ar & boost::serialization::make_nvp("g",g);
+					ar & boost::serialization::make_nvp("b",b);
+					ar & boost::serialization::make_nvp("a",a);
 				}
 				void		set(T newR, T newG, T newB, T newA) {
 					r=newR;

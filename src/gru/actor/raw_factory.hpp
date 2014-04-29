@@ -5,7 +5,7 @@ namespace glutpp {
 	namespace actor {
 		class raw_factory {
 			public:	
-				virtual glutpp::actor::raw_s		create(int);
+				virtual boost::shared_ptr<glutpp::actor::raw>		create(int);
 		};
 	}
 }

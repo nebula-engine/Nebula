@@ -7,7 +7,6 @@
 #include <GLFW/glfw3.h>
 //#include <GL/glut.h>
 
-#include <math/mat44.hpp>
 
 #include <gru/scene/scene.hpp>
 #include <gru/glsl/Uniform/uniform.hpp>

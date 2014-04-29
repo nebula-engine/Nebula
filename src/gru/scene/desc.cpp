@@ -64,7 +64,7 @@ void glutpp::scene::desc::load(glutpp::scene::scene_s scene) {
 
 		ad->load(actor);
 
-		ad->raw_.mode_create_ = glutpp::actor::mode_create::NOW;
+		ad->raw_->mode_create_ = glutpp::actor::mode_create::NOW;
 
 		actors_.push_back(ad);
 	}
@@ -78,7 +78,7 @@ void glutpp::scene::desc::load(glutpp::scene::scene_s scene) {
 
 		*ad = *desc;
 
-		ad->raw_.mode_create_ = glutpp::actor::mode_create::DEFERRED;
+		ad->raw_->mode_create_ = glutpp::actor::mode_create::DEFERRED;
 
 		actors_.push_back(ad);
 	}

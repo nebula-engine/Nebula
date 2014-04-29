@@ -11,16 +11,16 @@ void	glutpp::gui::object::terminal::draw()
 	
 	//draw_quad(x_, y_, w_, h_, bg_color_);
 	
-	float y = y_ + 1;
+	float y = data_.y_ + 1;
 	float line_height = 0.1;
 	
 	for(auto it = lines_.begin(); it != lines_.end(); ++it)
 	{
-		draw_text(x_, y, sx, sy, font_color_, it->c_str());
+		draw_text(data_.x_, y, sx, sy, data_.font_color_, it->c_str());
 		y -= line_height;
 	}
 	
-	draw_text(x_, y_, sx, sy, font_color_, line_.c_str());
+	draw_text(data_.x_, data_.y_, sx, sy, data_.font_color_, line_.c_str());
 	
 }
 int	glutpp::gui::object::terminal::key_fun(int key, int scancode, int action, int mods)

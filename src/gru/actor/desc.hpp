@@ -6,11 +6,15 @@
 //#include <galaxy/network/serial.hpp>
 
 #include <boost/serialization/nvp.hpp>
+#include <boost/serialization/vector.hpp>
+#include <boost/serialization/shared_ptr.hpp>
+
 
 //#include <gru/actor/actor.hpp>
 #include <gru/actor/id.hpp>
 #include <gru/actor/raw.hpp>
 #include <gru/shape/desc.hpp>
+#include <gru/Filter.hpp>
 
 namespace glutpp {
 	namespace actor {
@@ -47,13 +51,17 @@ namespace glutpp {
 
 				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("i",i_);
+					ar & boost::serialization::make_nvp("type",type_);
+					
+				       	raw_ = glutpp::master::Global()->actor_raw_factory_->create(type_);
+					
 					ar & boost::serialization::make_nvp("raw",raw_);
+					
 					ar & boost::serialization::make_nvp("actors",actors_);
 					ar & boost::serialization::make_nvp("shapes",shapes_);
 				}
 
-				void			load(tinyxml2::XMLElement*);
-				void			load(glutpp::actor::actor_s);
+				void			load(boost::shared_ptr<glutpp::actor::actor>);
 				//void			add_shape(glutpp::shape::desc);
 
 
@@ -61,10 +69,11 @@ namespace glutpp {
 				desc&			operator=(desc const &);
 
 
-				int					i_;
-				glutpp::actor::raw			raw_;
-				std::vector<glutpp::actor::desc_s>	actors_;
-				std::vector<glutpp::shape::desc_s>	shapes_;
+				int							i_;
+				glutpp::actor::Type					type_;
+				boost::shared_ptr<glutpp::actor::raw>			raw_;
+				std::vector<boost::shared_ptr<glutpp::actor::desc> >	actors_;
+				std::vector<boost::shared_ptr<glutpp::shape::desc> >	shapes_;
 
 
 		};

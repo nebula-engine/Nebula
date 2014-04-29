@@ -16,8 +16,8 @@ namespace glutpp {
 
 		class addr { //: public gal::network::serial_ext<vec_int, glutpp::scene::addr> {
 			public:
-				void	load_this(glutpp::actor::actor_s);
-				void	load_parent(glutpp::actor::actor_s);
+				void	load_this(boost::shared_ptr<glutpp::actor::actor>);
+				void	load_parent(boost::shared_ptr<glutpp::actor::actor>);
 				
 				glutpp::scene::addr	scene_;
 				std::vector<int>	vec_;

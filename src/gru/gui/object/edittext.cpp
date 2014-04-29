@@ -30,28 +30,19 @@ int	glutpp::gui::object::edittext::mouse_button_fun(int button, int action, int 
 {
 	return 0;
 }
-int	glutpp::gui::object::edittext::key_fun(int key, int scancode, int action, int mods)
-{
+int	glutpp::gui::object::edittext::key_fun(int key, int scancode, int action, int mods) {
 	char k = 'a' - GLFW_KEY_A + key;
 
-	if(action == GLFW_PRESS)
-	{
-		switch(key)
-		{
+	if(action == GLFW_PRESS) {
+		switch(key) {
 			case GLFW_KEY_BACKSPACE:
-				if ( label_pos_ > 0 )
-				{
-					--label_pos_;
-					memset( (void *)( label_ + label_pos_ ), '\0', 1 );
+				if(!data_.label_.empty()) {
+					data_.label_.pop_back();
 				}
 				return 1;
 			case GLFW_KEY_A:
 			case GLFW_KEY_Z:
-				if ( label_pos_ < label_length_ )
-				{
-					++label_pos_;
-					label_[label_pos_] = k;
-				}
+				data_.label_.push_back(k);
 				return 1;
 			case GLFW_KEY_ENTER:
 				return enter();

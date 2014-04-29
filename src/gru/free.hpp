@@ -7,7 +7,7 @@
 
 namespace glutpp {
 	void	draw_quad(float, float, float, float, gru::Color::color<float>);
-	void	draw_text(float, float, float, float, gru::Color::color<float>, char const *);
+	void	draw_text(float, float, float, float, gru::Color::color<float>, std::string);
 }
 
 void	checkerror(char const *);

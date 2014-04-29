@@ -1,16 +1,11 @@
 #ifndef __GLUTPP_ACTOR_EVENT_H__
 #define __GLUTPP_ACTOR_EVENT_H__
 
-#include <math/transform.hpp>
-
-#include <galaxy/network/serial.hpp>
-#include <galaxy/util.hpp>
-
 #include <gru/config.hpp>
 #include <gru/shape/desc.hpp>
 
 namespace glutpp { namespace actor {
-	class event: public gal::network::serial<event, gal::network::base> {
+	class event {
 		public:
 			struct type {
 				enum e {

@@ -23,9 +23,7 @@ namespace glutpp {
 				
 				light(glutpp::shape::shape_s);
 				void				i(int);
-				void				init(
-						/*glutpp::scene::scene_s,*/
-						glutpp::light::desc_s);
+				void				init(boost::shared_ptr<glutpp::light::desc>);
 
 				virtual void			release();
 				virtual void			cleanup();

@@ -26,13 +26,13 @@ namespace glutpp {
 				void			load(glutpp::light::light_s);
 				//void			load(tinyxml2::XMLElement*);
 				
-				template<class Archive> void	serialize(Archive& ar) {
-					ar << i_;
-					ar << flag_;
-					ar << pos_;
-					ar << ambient_;
-					ar << diffuse_;
-					ar << specular_;
+				template<class Archive> void	serialize(Archive& ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("i",i_);
+					ar & boost::serialization::make_nvp("flag",flag_);
+					ar & boost::serialization::make_nvp("pos",pos_);
+					ar & boost::serialization::make_nvp("ambient",ambient_);
+					ar & boost::serialization::make_nvp("diffuse",diffuse_);
+					ar & boost::serialization::make_nvp("specular",specular_);
 					
 				}
 

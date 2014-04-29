@@ -27,6 +27,14 @@
 
 namespace glutpp {
 	namespace actor {
+		class Type {
+			public:
+			enum E {
+
+			};
+
+
+		};
 		class actor:
 			virtual public glutpp::actor::parent,
 			virtual public glutpp::shape::parent,
@@ -70,7 +78,6 @@ namespace glutpp {
 
 				void				draw(glutpp::window::window_s, physx::PxMat44);
 
-				virtual glutpp::actor::raw_s	get_raw();
 
 
 			public:
@@ -81,9 +88,9 @@ namespace glutpp {
 
 
 
-				int		i_;
-			protected:
-				raw_s		raw_;
+				int				i_;
+				/** @brief Data */
+				boost::shared_ptr<glutpp::actor::raw>		raw_;
 		};
 	}
 }

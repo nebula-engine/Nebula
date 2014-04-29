@@ -3,7 +3,9 @@
 
 #include <vector>
 
-#include <tinyxml2.h>
+#include <boost/serialization/nvp.hpp>
+
+//#include <tinyxml2.h>
 
 //#include <math/vec3.hpp>
 //#include <math/transform.hpp>
@@ -43,13 +45,14 @@ namespace glutpp {
 				void			sphere(float);
 				void			sphere(tinyxml2::XMLElement*);
 				
-				template<class Archive>	void	serialize(Archive & ar) {
-					type_	& ar;
-					flag_	& ar;
-					pose_	& ar;
-					s_	& ar;
-					image_	& ar;
-					normal_	& ar;
+				template<class Archive>	void	serialize(Archive & ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("type",type_);
+					ar & boost::serialization::make_nvp("flag",flag_);
+					ar & boost::serialization::make_nvp("pose",pose_);
+					ar & boost::serialization::make_nvp("s",s_);
+					ar & boost::serialization::make_nvp("image",image_);
+					ar & boost::serialization::make_nvp("normal",normal_);
+					ar & boost::serialization::make_nvp("material",material_);
 				}
 
 			public:

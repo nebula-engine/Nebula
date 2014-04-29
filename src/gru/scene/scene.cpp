@@ -39,8 +39,8 @@ void glutpp::scene::scene::init(glutpp::scene::desc_s desc) {
 void glutpp::scene::scene::release() {
 	GLUTPP_DEBUG_0_FUNCTION;	
 }
-math::mat44<double>	glutpp::scene::scene::get_pose() {
-	return math::mat44<double>();
+physx::PxMat44		glutpp::scene::scene::get_pose() {
+	return physx::PxMat44();
 }
 void glutpp::scene::scene::render(double time,
 		std::shared_ptr<glutpp::Camera::View::Base<float> > view,
@@ -65,7 +65,7 @@ void glutpp::scene::scene::render(double time,
 	int i = 0;
 	for(auto it = actors_.map_.begin(); it != actors_.map_.end(); ++it)
 	{
-		it->second->load_lights(i, math::mat44<float>());
+		it->second->load_lights(i, physx::PxMat44());
 	}
 
 	p->get_uniform_scalar("light_count")->load(i);
@@ -80,7 +80,7 @@ void glutpp::scene::scene::draw(glutpp::window::window_s window) {
 
 	for(auto it = actors_.map_.begin(); it != actors_.map_.end(); ++it)
 	{
-		it->second->draw(window, math::mat44<float>());
+		it->second->draw(window, physx::PxMat44());
 	}
 }
 void glutpp::scene::scene::resize(int w, int h) {
