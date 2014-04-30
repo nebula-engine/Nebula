@@ -35,7 +35,7 @@ namespace glutpp {
 				virtual physx::PxMat44		getPose() = 0;
 
 				glutpp::actor::actor_s			isActor();
-				glutpp::shape::shape_s			isShape();
+				glutpp::scene::scene_s			isScene();
 		};
 	}
 }

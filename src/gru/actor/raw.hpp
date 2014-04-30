@@ -178,7 +178,7 @@ namespace glutpp {
 				physx::PxTransform		pose_;
 
 				/** @brief Normal for planes. */
-				physx::PxVec3		n_;
+				physx::PxVec3			n_;
 				/** @brief Distance for planes. */
 				float				d_;
 

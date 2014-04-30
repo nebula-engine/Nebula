@@ -1,5 +1,3 @@
-#include <math/mat44.hpp>
-
 #include <gru/actor/actor.hpp>
 #include <gru/actor/parent.hpp>
 

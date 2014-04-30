@@ -44,7 +44,7 @@ namespace glutpp {
 
 
 
-				actor(glutpp::actor::parent_s parent);
+				actor(boost::shared_ptr<glutpp::actor::parent> parent);
 
 				void				i(int ni);
 				int				i();
@@ -56,8 +56,9 @@ namespace glutpp {
 				virtual void			cleanup();
 				virtual void			release();
 				virtual void			step(double time);
-
-				glutpp::actor::parent_s		getParent();
+				
+				
+				boost::shared_ptr<glutpp::actor::parent>		getParent();
 
 				physx::PxMat44		getPose();
 				physx::PxMat44		getPoseGlobal();
@@ -67,14 +68,14 @@ namespace glutpp {
 				void				notify_foundation_change_pose();
 
 				void				load_lights(int&, physx::PxMat44);
-				glutpp::scene::scene_s		get_scene();
+				boost::shared_ptr<glutpp::scene::scene>		get_scene();
 
 				void				draw(glutpp::window::window_s, physx::PxMat44);
 
 
 
 			public:
-				glutpp::actor::parent_w		parent_;
+				boost::weak_ptr<glutpp::actor::parent>		parent_;
 				
 				Neb::Map<glutpp::shape::shape>		shapes_;
 				Neb::Map<glutpp::actor::actor>		actors_;
