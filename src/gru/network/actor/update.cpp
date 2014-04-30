@@ -16,7 +16,7 @@ void glutpp::network::actor::update::load(boost::shared_ptr<glutpp::actor::actor
 	
 	//gal::reset_tuple(t);
 
-	boost::shared_ptr<glutpp::network::actor::addr_raw> ar(new glutpp::network::actor::addr_raw);
+	boost::shared_ptr<glutpp::network::actor::update::addr_raw> ar(new glutpp::network::actor::update::addr_raw);
 	
 	ar->addr_.load_this(actor);
 	
@@ -28,7 +28,7 @@ void glutpp::network::actor::update::load(boost::shared_ptr<glutpp::actor::actor
 	}
 	
 	// children
-	for(auto it = actor->actors_.cbegin(); it != actor->actors_.cend(); ++it)
+	for(auto it = actor->actors_.map_.cbegin(); it != actor->actors_.map_.cend(); ++it)
 	{
 		auto a = it->second;
 		

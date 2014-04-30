@@ -7,6 +7,7 @@ void glutpp::network::actor::create::load(boost::shared_ptr<glutpp::actor::actor
 	assert(actor);
 	
 	addr_.load_parent(actor);
+
 	desc_.load(actor);
 	
 }

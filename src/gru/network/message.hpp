@@ -11,7 +11,7 @@
 #include <gru/actor/addr.hpp>
 #include <gru/actor/event.hpp>
 #include <gru/actor/raw_factory.hpp>
-
+#include <gru/actor/actor.hpp>
 
 namespace glutpp {
 	namespace network {
@@ -40,7 +40,7 @@ namespace glutpp {
 						ar & addr_;
 						
 						// find the actor
-						auto actor = glutpp::master::Global::getActor(addr_);
+						auto actor = glutpp::master::Global()->getActor(addr_);
 						if(!actor) throw 0; /** @todo handle this gracefully */
 						
 						ar & *(actor->raw_);
@@ -70,7 +70,7 @@ namespace glutpp {
 					ar & vector_;
 				}	
 
-				std::vector<boost::shared_ptr<glutpp::network::actor::addr_raw> >	vector_;
+				std::vector<boost::shared_ptr<glutpp::network::actor::update::addr_raw> >	vector_;
 			};
 
 			struct event {

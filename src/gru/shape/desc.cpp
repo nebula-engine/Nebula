@@ -34,8 +34,8 @@ void	glutpp::shape::desc::load(tinyxml2::XMLElement* element) {
 		element_light = element_light->NextSiblingElement("light");
 	}
 }*/
-void	glutpp::shape::desc::load(glutpp::shape::shape_s shape) {
-	
+glutpp::shape::desc &	glutpp::shape::desc::operator<<(boost::shared_ptr<glutpp::shape::shape> shape) {
+	return *this;	
 }
 
 

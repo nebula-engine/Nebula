@@ -5,14 +5,12 @@
 
 using namespace std;
 
-boost::shared_ptr<glutpp::actor::raw> glutpp::actor::raw_factory::create(glutpp::actor::Type type) {
-
-	boost::shared_ptr<glutpp::actor::raw> raw;
+void glutpp::actor::raw_factory::reset(boost::shared_ptr<glutpp::actor::raw> & raw, glutpp::actor::Type type) {
 	
 	switch(type.val_) {
 		case glutpp::actor::Type::E::ACTOR:
 			raw.reset(new glutpp::actor::raw);
-			return raw;
+			return;
 		default:
 			cout << "invalid actor type " << type.val_ << endl;
 			abort();

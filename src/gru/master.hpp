@@ -92,6 +92,10 @@ namespace glutpp {
 				return u;
 			}
 
+			/** @name Search @{ */
+			boost::shared_ptr<glutpp::actor::actor>		getActor(glutpp::actor::addr);
+
+
 			glutpp::window::window_s	get_window(GLFWwindow*);
 			int				reg(glutpp::window::window_s);
 

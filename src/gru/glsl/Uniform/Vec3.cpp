@@ -8,7 +8,7 @@
 //#include <GL/glut.h>
 
 
-#include <gru/scene/scene.hpp>
+//#include <gru/scene/scene.hpp>
 #include <gru/glsl/Uniform/uniform.hpp>
 #include <gru/free.hpp>
 

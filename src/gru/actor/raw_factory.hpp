@@ -10,9 +10,9 @@ namespace glutpp {
 		 * Because allocation is expensive, should make @c create private and track usage using friends. */
 		class raw_factory {
 			public:
-				friend class...;
+				friend class glutpp::actor::desc;
 			protected:
-				virtual boost::shared_ptr<glutpp::actor::raw>		create(glutpp::actor::Type);
+				virtual void		reset(boost::shared_ptr<glutpp::actor::raw>&, glutpp::actor::Type);
 		};
 	}
 }

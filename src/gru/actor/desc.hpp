@@ -8,6 +8,7 @@
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
+#include <boost/serialization/split_member.hpp>
 
 #include <gru/master.hpp>
 #include <gru/actor/Type.hpp>
@@ -19,57 +20,44 @@
 
 namespace glutpp {
 	namespace actor {
-
-/*		typedef gal::network::vector_ext<glutpp::actor::desc> vec_actor_desc;
-		typedef gal::network::vector_ext<glutpp::shape::desc> vec_shape_desc;
-		typedef std::shared_ptr<vec_actor_desc> vec_actor_desc_s;
-		typedef std::shared_ptr<vec_shape_desc> vec_shape_desc_s;
-
-		typedef gal::network::serial_ext<id,raw,vec_actor_desc,vec_shape_desc>	ser_desc;
-*/
-
-
 		class desc {
 			public:
-				/*
-				typedef std::shared_ptr<id>	ID_S;
-				typedef std::shared_ptr<raw>	RAW_S;
-
-				typedef glutpp::actor::desc		ACTOR_DESC;
-				typedef glutpp::shape::desc		SHAPE_DESC;
-				typedef std::shared_ptr<ACTOR_DESC>	ACTOR_DESC_S;
-				typedef std::shared_ptr<SHAPE_DESC>	SHAPE_DESC_S;
-
-
-				typedef gal::network::vector_ext<ACTOR_DESC>	VEC_ACTOR;
-				typedef gal::network::vector_ext<SHAPE_DESC>	VEC_SHAPE;
-
-				typedef std::shared_ptr<VEC_ACTOR>		VEC_ACTOR_S;
-				typedef std::shared_ptr<VEC_SHAPE>		VEC_SHAPE_S;
-*/
-
+				friend class boost::serialization::access;
 				desc();
-
-				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
-					ar & boost::serialization::make_nvp("i",i_);
-					ar & boost::serialization::make_nvp("type",type_);
+				template<class Archive> void	save(Archive & ar, unsigned int const & version) const {
+					ar << boost::serialization::make_nvp("i",i_);
+					ar << boost::serialization::make_nvp("type",type_);
 					
-				       	raw_ = glutpp::master::Global()->actor_raw_factory_->create(type_);
+					ar << boost::serialization::make_nvp("raw",*raw_);
 					
-					ar & boost::serialization::make_nvp("raw",*raw_);
-					
-					ar & boost::serialization::make_nvp("actors",actors_);
-					ar & boost::serialization::make_nvp("shapes",shapes_);
+					ar << boost::serialization::make_nvp("actors",actors_);
+					ar << boost::serialization::make_nvp("shapes",shapes_);
 				}
+				template<class Archive> void	load(Archive & ar, unsigned int const & version) {
+					ar >> boost::serialization::make_nvp("i",i_);
+					ar >> boost::serialization::make_nvp("type",type_);
+					
+					
+					glutpp::master::Global()->actor_raw_factory_->reset(raw_, type_);
 
+					ar >> boost::serialization::make_nvp("raw",*raw_);
+					
+					
+					ar >> boost::serialization::make_nvp("actors",actors_);
+					ar >> boost::serialization::make_nvp("shapes",shapes_);
+				}
+				
+				
+				// make this an archive...
+				desc&		operator<<(boost::shared_ptr<glutpp::actor::actor> const & actor);
+
+				
+				BOOST_SERIALIZATION_SPLIT_MEMBER();
+				
 				void			load(boost::shared_ptr<glutpp::actor::actor>);
 				//void			add_shape(glutpp::shape::desc);
-
-
-
 				desc&			operator=(desc const &);
-
-
+			public:
 				int							i_;
 				glutpp::actor::Type					type_;
 				boost::shared_ptr<glutpp::actor::raw>			raw_;

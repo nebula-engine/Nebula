@@ -5,71 +5,39 @@
 
 #include <gru/actor/desc.hpp>
 #include <gru/actor/actor.hpp>
-
+#include <gru/shape/desc.hpp>
 
 
 
 glutpp::actor::desc::desc() {
 }		
-void glutpp::actor::desc::load(tinyxml2::XMLElement* element) {
+
+glutpp::actor::desc &		glutpp::actor::desc::operator<<(boost::shared_ptr<glutpp::actor::actor> const & actor) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
-	//const char * buf = NULL;
+	i_ = actor->i_;
 	
-	get_raw()->load(element);
+	glutpp::master::Global()->actor_raw_factory_->reset(raw_, actor->raw_->type_);
 	
-
+	*raw_ = *actor->raw_;
 	
-	// shapes
-	tinyxml2::XMLElement* element_shape = element->FirstChildElement("shape");
-
-	glutpp::shape::desc_s sd;
-
-	while(element_shape != NULL)
-	{
-		sd.reset(new glutpp::shape::desc);
-
-		sd->load(element_shape);
-
-		get_shapes()->vec_.push_back(std::make_tuple(sd));
-
-		element_shape = element->NextSiblingElement("shape");
-	}
-
-}
-void glutpp::actor::desc::load(glutpp::actor::actor_s actor) {
-	GLUTPP_DEBUG_0_FUNCTION;
-
-	get_id()->i_ = actor->i_;
-
-	get_raw()->operator=(*actor->get_raw());
-
-
 	// actor
-	glutpp::actor::desc_s ad;
-	for(auto it = actor->actors_.begin(); it != actor->actors_.end(); ++it)
-	{
-		auto a = it->second;
-
+	boost::shared_ptr<glutpp::actor::desc> ad;
+	for(auto it = actor->actors_.begin(); it != actor->actors_.end(); ++it) {
 		ad.reset(new glutpp::actor::desc);
-
-		ad->load(a);
-
-		get_actors()->vec_.push_back(std::make_tuple(ad));
+		ad->load(it->second);
+		actors_.push_back(ad);
 	}
 
 	// shape
-	glutpp::shape::desc_s sd;
-	for(auto it = actor->shapes_.begin(); it != actor->shapes_.end(); ++it)
-	{
-		auto shape = it->second;
-
+	boost::shared_ptr<glutpp::shape::desc> sd;
+	for(auto it = actor->shapes_.begin(); it != actor->shapes_.end(); ++it) {
 		sd.reset(new glutpp::shape::desc);
-
-		sd->load(shape);
-
-		get_shapes()->vec_.push_back(std::make_tuple(sd));
+		sd->operator<<(it->second);
+		shapes_.push_back(sd);
 	}
+
+	return *this;
 }
 glutpp::actor::desc& glutpp::actor::desc::operator=(const glutpp::actor::desc& ad) {
 	*get_id() = *(ad.get_id());
