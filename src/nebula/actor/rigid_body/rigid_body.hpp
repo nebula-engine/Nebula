@@ -36,8 +36,8 @@ namespace neb {
 				public:
 					neb::control::rigid_body::control_s	control_;
 				private:
-					math::vec3<double>			force_;
-					math::vec3<double>			torque_;
+					physx::PxVec3			force_;
+					physx::PxVec3			torque_;
 			};
 		}
 	}

@@ -3,7 +3,7 @@
 
 #include <tinyxml2.h>
 
-#include <math/vec3.hpp>
+//#include <math/vec3.hpp>
 
 #include <gru/shape/shape.hpp>
 

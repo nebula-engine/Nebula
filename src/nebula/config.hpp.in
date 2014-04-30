@@ -1,6 +1,8 @@
 #ifndef __NEBULA_CONFIG_H__
 #define __NEBULA_CONFIG_H__
 
+// nebula/config.hpp.in
+
 #define NEB_INSTALL_DIR "@CMAKE_INSTALL_PREFIX@"
 
 
@@ -11,7 +13,7 @@
 
 #include <memory>
 
-#include <galaxy/map.hpp>
+#include <gru/Map.hpp>
 
 /** @brief %Nebula */
 namespace neb {
@@ -61,7 +63,7 @@ namespace neb {
 		class scene;
 		typedef std::shared_ptr<scene>	scene_s;
 		typedef std::weak_ptr<scene>	scene_w;
-		typedef gal::map<scene>		scene_m;
+		typedef Neb::Map<scene>		scene_m;
 	}
 	class simulation_callback;
 	/** @brief %Actor */

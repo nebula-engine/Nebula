@@ -1,7 +1,7 @@
 #ifndef __NEBULA_NETWORK_SERVER_H__
 #define __NEBULA_NETWORK_SERVER_H__
 
-#include <galaxy/network/server.hpp>
+#include <gru/network/server.hpp>
 
 #include <nebula/network/communicating.hpp>
 

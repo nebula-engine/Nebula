@@ -1,8 +1,8 @@
 #ifndef __NEBULA_APP_H__
 #define __NEBULA_APP_H__
 
-#include <galaxy/flag.hpp>
-#include <galaxy/timer/timer_set.hpp>
+//#include <galaxy/flag.hpp>
+//#include <galaxy/timer/timer_set.hpp>
 
 #include <gru/window/window.hpp>
 
@@ -47,18 +47,18 @@ namespace neb {
 			// network
 			void				reset_server(unsigned short);
 			void				reset_client(char const *, unsigned short);		
-			void				send_server(gal::network::message_s);
-			void				send_client(gal::network::message_s);
+			void				send_server(std::shared_ptr<gal::network::message>);
+			void				send_client(std::shared_ptr<gal::network::message>);
 
 			int				transmit_scenes(
 					std::shared_ptr<neb::network::communicating>);
 
-			void				recv_scene_create(gal::network::message_s);
-			void				recv_actor_create(gal::network::message_s);
-			void				recv_actor_update(gal::network::message_s);
-			void				recv_actor_event(gal::network::message_s);
-			void				recv_control_create(gal::network::message_s);
-			void				recv_control_update(gal::network::message_s);
+			void				recv_scene_create(	std::shared_ptr<gal::network::message>);
+			void				recv_actor_create(	std::shared_ptr<gal::network::message>);
+			void				recv_actor_update(	std::shared_ptr<gal::network::message>);
+			void				recv_actor_event(	std::shared_ptr<gal::network::message>);
+			void				recv_control_create(	std::shared_ptr<gal::network::message>);
+			void				recv_control_update(	std::shared_ptr<gal::network::message>);
 
 
 			void				f(unsigned int);
@@ -66,12 +66,12 @@ namespace neb {
 		public:
 			unsigned int			flag_;
 
-			gal::map<glutpp::window::window>	windows_;
-			gal::map<glutpp::gui::layout>		layouts_;
-			gal::map<neb::scene::scene>		scenes_;
+			Neb::Map<glutpp::window::window>	windows_;
+			Neb::Map<glutpp::gui::layout>		layouts_;
+			Neb::Map<neb::scene::scene>		scenes_;
 
 			// timer
-			gal::timer::timer_set		timer_set_;
+			//gal::timer::timer_set		timer_set_;
 
 		private:
 			// network

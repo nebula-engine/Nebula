@@ -8,7 +8,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <math/transform.hpp>
+//#include <math/transform.hpp>
 
 #include <gru/actor/actor.hpp>
 #include <gru/actor/desc.hpp>
@@ -90,7 +90,7 @@ namespace neb {
 				
 				struct
 				{
-					key_fun_c		key_fun_;
+					boost::signals2::connection		key_fun_;
 				} conn_;
 
 		};

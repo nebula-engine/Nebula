@@ -6,9 +6,9 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <galaxy/map.hpp>
-#include <galaxy/network/message.hpp>
-#include <galaxy/timer/timer_set.hpp>
+//#include <galaxy/map.hpp>
+//#include <galaxy/network/message.hpp>
+//#include <galaxy/timer/timer_set.hpp>
 
 #include <gru/config.hpp>
 #include <gru/scene/scene.hpp>
@@ -23,14 +23,14 @@
 
 #include <tinyxml2.h>
 
-int			parse_shape_type(char const * str);
-neb::shape::shape	xml_parse_geo(tinyxml2::XMLElement* element);
+//int			parse_shape_type(char const * str);
+//neb::shape::shape	xml_parse_geo(tinyxml2::XMLElement* element);
 
 namespace neb {
 	namespace scene {
 		class scene: public glutpp::scene::scene {
 			public:
-				typedef std::shared_ptr<neb::Actor::Base>		base_t;
+				typedef boost::shared_ptr<neb::Actor::Base>		base_t;
 				typedef std::shared_ptr<neb::Actor::Rigid_Dynamic>	rigid_dynamic_t;
 				typedef std::shared_ptr<neb::Actor::Rigid_Static>	rigid_static_t;
 				typedef std::shared_ptr<neb::Actor::Controller>		controller_t;
@@ -96,8 +96,8 @@ namespace neb {
 				void					fire_local(neb::Actor::Base_s);
 				void					fire_remote(neb::Actor::Base_s);
 
-				math::mat44<float>			getPose();
-				math::mat44<float>			getPoseGlobal();
+				physx::PxMat44			getPose();
+				physx::PxMat44			getPoseGlobal();
 
 
 				// networking
@@ -112,7 +112,7 @@ namespace neb {
 				neb::app_w				app_;
 
 				// timer
-				gal::timer::timer_set			timer_set_;
+				//gal::timer::timer_set			timer_set_;
 
 				int					user_type_;
 

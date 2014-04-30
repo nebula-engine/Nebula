@@ -6,7 +6,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <galaxy/map.hpp>
+//#include <galaxy/map.hpp>
 
 #include <gru/scene/scene.hpp>
 
@@ -14,13 +14,11 @@
 #include <nebula/actor/Rigid_Static.hpp>
 #include <nebula/actor/Controller.hpp>
 
-#include <tinyxml2.h>
+//#include <tinyxml2.h>
 
 
-namespace neb
-{
-	class simulation_callback: public physx::PxSimulationEventCallback
-	{
+namespace neb {
+	class simulation_callback: public physx::PxSimulationEventCallback {
 		public:
 
 			virtual void 	onConstraintBreak(

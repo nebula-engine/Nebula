@@ -1,4 +1,4 @@
-#include <math/free.hpp>
+//#include <math/free.hpp>
 
 #include <gru/actor/desc.hpp>
 #include <gru/actor/event.hpp>
@@ -48,20 +48,20 @@ std::shared_ptr<neb::app> neb::scene::scene::get_app() {
 
 	return app_.lock();
 }
-math::mat44<float>		neb::scene::scene::getPose() {
-	return math::mat44<float>();
+physx::PxMat44		neb::scene::scene::getPose() {
+	return physx::PxMat44();
 }
-math::mat44<float>		neb::scene::scene::getPoseGlobal() {
-	return math::mat44<float>();
+physx::PxMat44		neb::scene::scene::getPoseGlobal() {
+	return physx::PxMat44();
 }
-neb::Actor::Base_s neb::scene::scene::get_actor(int i) {
+boost::shared_ptr<neb::Actor::Base>		neb::scene::scene::get_actor(int i) {
 	auto it = actors_.find(i);
-	neb::Actor::Base_s a;
+	boost::shared_ptr<neb::Actor::Base> a;
 	if(it == actors_.end())
 	{
 		return a;
 	} else {
-		a = std::dynamic_pointer_cast<neb::Actor::Base>(it->second);
+		a = boost::dynamic_pointer_cast<neb::Actor::Base>(it->second);
 		assert(a);
 		return a;
 	}
