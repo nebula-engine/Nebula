@@ -29,7 +29,7 @@ void	print(unsigned char * s, int w, int h) {
   {
 
   }*/
-void	glutpp::draw_quad(float x, float y, float w, float h, math::Color::color<float> color) {
+void	glutpp::draw_quad(float x, float y, float w, float h, gru::Color::color<float> color) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	//GLint uniform_color = glGetUniformLocation(program, "color");
@@ -82,14 +82,14 @@ void	glutpp::draw_quad(float x, float y, float w, float h, math::Color::color<fl
 	glPopMatrix();
 
 }
-void	glutpp::draw_text(float x, float y, float sx, float sy, math::Color::color<float> color, char const * text) {
+void	glutpp::draw_text(float x, float y, float sx, float sy, gru::Color::color<float> color, std::string text) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	const char * c;
 
 	auto p = glutpp::master::Global()->use_program(glutpp::program_name::e::TEXT);
 
-	printf("text %6.3f %6.3f %s\n", x, y, text);
+	printf("text %6.3f %6.3f %s\n", x, y, text.c_str());
 
 	// face
 	FT_Face face;
@@ -182,7 +182,7 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, math::Color::color<
 
 
 
-	for(c = text; *c; c++)
+	for(c = text.c_str(); *c; c++)
 	{
 		if(FT_Load_Char(face, *c, FT_LOAD_RENDER)) continue;
 

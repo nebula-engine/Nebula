@@ -51,7 +51,7 @@ void glutpp::scene::desc::load(tinyxml2::XMLElement* element) {
 		e = e->NextSiblingElement("actor");
 	}
 }*/
-void glutpp::scene::desc::load(glutpp::scene::scene_s scene) {
+void glutpp::scene::desc::load(boost::shared_ptr<glutpp::scene::scene> scene) {
 	i_ = scene->i_;
 	raw_ = scene->raw_;
 

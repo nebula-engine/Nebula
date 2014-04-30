@@ -1,4 +1,5 @@
-#include <math/geo/polyhedron.hpp>
+
+#include <gru/Math/geo/polyhedron.hpp>
 
 #include <gru/mesh.hpp>
 
@@ -8,7 +9,7 @@ glutpp::mesh::mesh():
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	glutpp::mesh::construct(math::geo::polyhedron<float>* poly) {
+void	glutpp::mesh::construct(math::geo::polyhedron* poly) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 

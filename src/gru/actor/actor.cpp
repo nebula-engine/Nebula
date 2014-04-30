@@ -20,6 +20,7 @@
 #include <gru/shape/shape.hpp>
 #include <gru/actor/desc.hpp>
 #include <gru/actor/raw_factory.hpp>
+#include <gru/actor/parent.hpp>
 
 #define VALUE_TO_STRING(x) #x
 #define VALUE(x) VALUE_TO_STRING(x)

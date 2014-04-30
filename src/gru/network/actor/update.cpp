@@ -1,6 +1,6 @@
 //#include <galaxy/util.hpp>
 
-#include <gru/network/message.hpp>
+#include <gru/network/scene/message.hpp>
 
 #include <gru/actor/addr.hpp>
 #include <gru/actor/actor.hpp>

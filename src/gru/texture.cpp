@@ -3,7 +3,7 @@
 
 #include <GL/glew.h>
 
-#include <math/color.hpp>
+#include <gru/Color/Color.hpp>
 
 #include <gru/texture.hpp>
 #include <gru/window/window.hpp>

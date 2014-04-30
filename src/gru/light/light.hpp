@@ -6,6 +6,8 @@
 
 //#include <galaxy/flag.hpp>
 
+#include <boost/weak_ptr.hpp>
+
 #include <gru/config.hpp>
 #include <gru/Camera/View/Base.hpp>
 #include <gru/texture.hpp>
@@ -21,7 +23,7 @@ namespace glutpp {
 		class light: public gal::flag<unsigned int> {
 			public:
 				
-				light(glutpp::shape::shape_s);
+				light(boost::shared_ptr<glutpp::shape::shape>);
 				void				i(int);
 				void				init(boost::shared_ptr<glutpp::light::desc>);
 
@@ -51,7 +53,7 @@ namespace glutpp {
 				texture				texture_shadow_map_;
 
 				//glutpp::scene::scene_w		scene_;
-				glutpp::shape::shape_w			shape_;
+				boost::weak_ptr<glutpp::shape::shape>			shape_;
 
 		};
 	}

@@ -1,15 +1,15 @@
-#include <math/xml.hpp>
+//#include <math/xml.hpp>
 
 #include <gru/light/raw.hpp>
 
 glutpp::light::raw::raw():
 	i_(-1),
 	flag_(0),
-	pos_(math::vec4<float>(0.0, 0.0, 0.0, 1.0)),
-	ambient_(math::Color::black<float>()),
-	diffuse_(math::Color::white<float>()),
-	specular_(math::Color::white<float>()),
-	spot_direction_(math::vec3<float>(0.0, 0.0, -1.0)),
+	pos_(physx::PxVec4(0.0, 0.0, 0.0, 1.0)),
+	ambient_(gru::Color::black<float>()),
+	diffuse_(gru::Color::white<float>()),
+	specular_(gru::Color::white<float>()),
+	spot_direction_(physx::PxVec3(0.0, 0.0, -1.0)),
 	spot_cutoff_(10.0),
 	spot_exponent_(1.0),
 	spot_light_cos_cutoff_(1.0),
@@ -19,52 +19,19 @@ glutpp::light::raw::raw():
 {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-void	glutpp::light::raw::load(tinyxml2::XMLElement* element) {
-	GLUTPP_DEBUG_0_FUNCTION;
 
-	pos_ = math::Xml::parse_vec4<float>(element->FirstChildElement("p"));
-	
-	ambient_ = math::Xml::parse_color<float>(
-			element->FirstChildElement("ambient"),
-			ambient_);
-	
-	diffuse_ = math::Xml::parse_color<float>(
-			element->FirstChildElement("diffuse"),
-			diffuse_);
-	
-	specular_ = math::Xml::parse_color<float>(
-			element->FirstChildElement("specular"),
-			specular_);
-	
-	
-	
-	spot_direction_ = math::Xml::parse_vec3<float>(
-		element->FirstChildElement("spot_direction"),
-		math::vec3<float>(0.0, 0.0, 0.0));
-	
-	spot_cutoff_           = math::Xml::parse_float<float>(element->FirstChildElement("spot_cutoff"), M_PI);
-	spot_exponent_         = math::Xml::parse_float<float>(element->FirstChildElement("spot_exponent"), 0.0);
-	spot_light_cos_cutoff_ = math::Xml::parse_float<float>(element->FirstChildElement("spot_cutoff"), M_PI);
-	
-	
-	atten_const_  = math::Xml::parse_float<float>(element->FirstChildElement("atten_const"), 1.0);
-	atten_linear_ = math::Xml::parse_float<float>(element->FirstChildElement("atten_linear"), 0.0);
-	atten_quad_   = math::Xml::parse_float<float>(element->FirstChildElement("atten_quad"), 0.0);
-	
-	print();
-}
 void	glutpp::light::raw::print() {
 
-	pos_.print();
+	//pos_.print();
 	printf("pos_                   = % 2.1f % 2.1f % 2.1f % 2.1f\n",
-			pos_.x(), pos_.y(), pos_.z(), pos_.w());
+			pos_.x, pos_.y, pos_.z, pos_.w);
 	printf("ambient_               = % 2.1f % 2.1f % 2.1f % 2.1f\n",
 			ambient_.r, ambient_.g, ambient_.b, ambient_.a);
 	printf("diffuse_               = % 2.1f % 2.1f % 2.1f % 2.1f\n",
 			diffuse_.r, diffuse_.g, diffuse_.b, diffuse_.a);
 	printf("specular_              = % 2.1f % 2.1f % 2.1f % 2.1f\n",
 			specular_.r, specular_.g, specular_.b, specular_.a);
-	spot_direction_.print();
+	//spot_direction_.print();
 	printf("spot_cutoff_           = % 2.1f\n", spot_cutoff_);
 	printf("spot_exponent_         = % 2.1f\n", spot_exponent_);
 	printf("spot_light_cos_cutoff_ = % 2.1f\n", spot_light_cos_cutoff_);

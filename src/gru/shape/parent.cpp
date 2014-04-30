@@ -3,15 +3,15 @@
 #include <gru/shape/parent.hpp>
 
 
-glutpp::actor::actor_s glutpp::shape::parent::isActor() {
+boost::shared_ptr<glutpp::actor::actor> glutpp::shape::parent::isActor() {
 	
-	glutpp::actor::actor_s a = std::dynamic_pointer_cast<glutpp::actor::actor>(shared_from_this());
+	boost::shared_ptr<glutpp::actor::actor> a = boost::dynamic_pointer_cast<glutpp::actor::actor>(shared_from_this());
 	
 	return a;
 }
-glutpp::shape::shape_s glutpp::shape::parent::isShape() {
+boost::shared_ptr<glutpp::shape::shape> glutpp::shape::parent::isShape() {
 	
-	glutpp::shape::shape_s s = std::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
+	boost::shared_ptr<glutpp::shape::shape> s = boost::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
 	
 	return s;
 }

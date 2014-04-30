@@ -20,7 +20,7 @@ namespace glutpp {
 
 		class addr {
 			public:
-				void		load(glutpp::scene::scene_s scene);
+				void		load(boost::shared_ptr<glutpp::scene::scene> scene);
 			
 				template<class Archive> void	serialize(Archive& ar) {
 					ar & vec_;

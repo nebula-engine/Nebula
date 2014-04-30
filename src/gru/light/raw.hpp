@@ -33,8 +33,15 @@ namespace glutpp {
 					ar & boost::serialization::make_nvp("ambient",ambient_);
 					ar & boost::serialization::make_nvp("diffuse",diffuse_);
 					ar & boost::serialization::make_nvp("specular",specular_);
-					
+					ar & boost::serialization::make_nvp("spot_direction",spot_direction_);
+					ar & boost::serialization::make_nvp("spot_cutoff",spot_cutoff_);
+					ar & boost::serialization::make_nvp("spot_exponent",spot_exponent_);
+					ar & boost::serialization::make_nvp("spot_light_cos_cutoff",spot_light_cos_cutoff_);
+					ar & boost::serialization::make_nvp("atten_const",atten_const_);
+					ar & boost::serialization::make_nvp("atten_linear",atten_linear_);
+					ar & boost::serialization::make_nvp("atten_quad",atten_quad_);
 				}
+
 
 				void			print();
 

@@ -3,10 +3,8 @@
 #include <gru/scene/scene.hpp>
 
 
-void glutpp::scene::addr::load(glutpp::scene::scene_s scene) {
-
+void		glutpp::scene::addr::load(boost::shared_ptr<glutpp::scene::scene> scene) {
 	vec_.push_back(scene->i());
-	
 }
 
 

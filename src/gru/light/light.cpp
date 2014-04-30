@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include <math/mat44.hpp>
 
 #include <gru/light/light.hpp>
 #include <gru/window/window.hpp>
 #include <gru/scene/scene.hpp>
 #include <gru/shape/shape.hpp>
 #include <gru/free.hpp>
+#include <gru/glsl/Uniform/uniform.hpp>
 
 
-glutpp::light::light::light(glutpp::shape::shape_s shape):
+glutpp::light::light::light(boost::shared_ptr<glutpp::shape::shape> shape):
 	shape_(shape)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -21,7 +21,7 @@ unsigned int glutpp::light::light::f() {
 void glutpp::light::light::f(unsigned int flag) {
 	raw_.flag_ = flag;
 }
-void glutpp::light::light::init(/*glutpp::scene::scene_s scene,*/ glutpp::light::desc_s desc) {
+void glutpp::light::light::init(/*boost::shared_ptr<glutpp::scene::scene> scene,*/ boost::shared_ptr<glutpp::light::desc> desc) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	//assert(scene);
@@ -29,7 +29,7 @@ void glutpp::light::light::init(/*glutpp::scene::scene_s scene,*/ glutpp::light:
 	
 	//scene_ = scene;
 	
-	raw_ = *(desc->get_raw());
+	raw_ = desc->raw_;
 	
 	/*
 	camera_.fovy_ = 45.0f;
@@ -76,31 +76,33 @@ void glutpp::light::light::dim() {
 void	glutpp::light::light::draw() {	
 	GLUTPP_DEBUG_1_FUNCTION;
 }
-math::mat44<float> glutpp::light::light::get_pose() {
+physx::PxMat44		glutpp::light::light::get_pose() {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
 	assert(!shape_.expired());
 	
-	math::mat44<float> m = shape_.lock()->getPoseGlobal();
+	physx::PxMat44 m = shape_.lock()->getPoseGlobal();
 	
 	return m;
 }
-void glutpp::light::light::load(int o, math::mat44<float> space) {
+void glutpp::light::light::load(int o, physx::PxMat44 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
 	auto p = glutpp::master::Global()->current_program();
 
-	math::vec4<float> pos = raw_.pos_;
-	pos = space.GetTranslatedVector3D(pos);
-	pos.w() = raw_.pos_.w();
+	physx::PxVec4 pos = raw_.pos_;
 
-	math::vec3<float> spot_direction = raw_.spot_direction_;
+	pos += physx::PxVec4(space.getPosition(), 0);
+
+	pos.w = raw_.pos_.w;
+
+	physx::PxVec3 spot_direction = raw_.spot_direction_;
 	
 	if(raw_.spot_cutoff_ < (M_PI/2.0))
 	{
 		//spot_direction.print();
 	
-		space.RotateVector3D(spot_direction);
+		space.rotate(spot_direction);
 	
 		//spot_direction.print();
 	}

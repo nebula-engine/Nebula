@@ -1,16 +1,17 @@
+
 #include <gru/actor/actor.hpp>
 #include <gru/actor/parent.hpp>
+#include <gru/scene/scene.hpp>
 
-
-glutpp::actor::actor_s glutpp::actor::parent::isActor() {
+boost::shared_ptr<glutpp::actor::actor> glutpp::actor::parent::isActor() {
 	
-	glutpp::actor::actor_s a = std::dynamic_pointer_cast<glutpp::actor::actor>(shared_from_this());
+	boost::shared_ptr<glutpp::actor::actor> a = boost::dynamic_pointer_cast<glutpp::actor::actor>(shared_from_this());
 	
 	return a;
 }
-glutpp::shape::shape_s glutpp::actor::parent::isShape() {
+boost::shared_ptr<glutpp::scene::scene> glutpp::actor::parent::isScene() {
 	
-	glutpp::shape::shape_s s = std::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
+	boost::shared_ptr<glutpp::scene::scene> s = boost::dynamic_pointer_cast<glutpp::scene::scene>(shared_from_this());
 	
 	return s;
 }

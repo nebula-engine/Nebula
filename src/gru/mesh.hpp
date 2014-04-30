@@ -19,6 +19,12 @@
 #include <gru/shape/desc.hpp>
 #include <gru/material.hpp>
 
+namespace math {
+	namespace geo {
+		class polyhedron;
+	}
+}
+
 namespace glutpp {
 	struct file_header {
 		int len_vertices_;
@@ -27,7 +33,7 @@ namespace glutpp {
 	struct vertex {
 		//void		print();
 
-		physx::PxVec4	position;
+		physx::PxVec3	position;
 		physx::PxVec3	normal;
 		physx::PxVec2	texcoor;
 	};
@@ -36,7 +42,7 @@ namespace glutpp {
 			mesh();
 			void				save(char const *);
 			void				load(char const *);
-			//void				construct(math::geo::polyhedron<float>*);
+			void				construct(math::geo::polyhedron*);
 
 			// draw data
 			file_header			fh_;

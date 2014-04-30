@@ -1,106 +1,76 @@
-#ifndef __GLUTPP_NETWORK_MESSAGE_H__
-#define __GLUTPP_NETWORK_MESSAGE_H__
+#ifndef __JESS_ASIO_MESSAGE_HPP__
+#define __JESS_ASIO_MESSAGE_HPP__
 
-#include <boost/serialization/vector.hpp>
-#include <boost/serialization/shared_ptr.hpp>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 
-#include <gru/config.hpp>
-#include <gru/master.hpp>
-#include <gru/scene/desc.hpp>
-#include <gru/actor/desc.hpp>
-#include <gru/actor/addr.hpp>
-#include <gru/actor/event.hpp>
-#include <gru/actor/raw_factory.hpp>
-#include <gru/actor/actor.hpp>
+#include <memory> 
+#include <deque>
 
-namespace glutpp {
-	namespace network {
-		namespace actor {
-			
-			
-
-			struct create {
-				void	load(boost::shared_ptr<glutpp::actor::actor> actor);
-
-				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
-					ar & addr_;
-					ar & desc_;
-				}
-				
-				glutpp::actor::addr	addr_; //() { return std::get<0>(ser_create::tup_); }
-				glutpp::actor::desc	desc_; //() { return std::get<1>(tup_); }
-			};
-
-			struct update {
-				/** @brief Address and Data. */
-				struct addr_raw {
-					/** @brief Load.
-					 * Find the actor at the address and write directly into its Data object */
-					template<class Archive> void	load(Archive & ar, unsigned int const & version) {
-						ar & addr_;
-						
-						// find the actor
-						auto actor = glutpp::master::Global()->getActor(addr_);
-						if(!actor) throw 0; /** @todo handle this gracefully */
-						
-						ar & *(actor->raw_);
-					}
-					/** @brief Save.
-					 * The pointer to the actor's Data object should already be set. */
-					template<class Archive> void	save(Archive & ar, unsigned int const & version) {
-						ar & addr_;
-						
-						assert(raw_);
-						
-						ar & *raw_;
-					}
-					
-					/** @brief Address. */
-					glutpp::actor::addr			addr_;
-					/** @brief Data pointer.
-					 * could be replaced with Actor pointer with similar results */
-					boost::shared_ptr<glutpp::actor::raw>	raw_;
+namespace gal
+{
+	namespace network
+	{
+		/// message
+		class message: public std::enable_shared_from_this<message>
+		{
+			public:
+				/// shared__t
+				typedef std::shared_ptr<message>		shared_t;
+				/// function_t
+				typedef std::function<void(shared_t)>		function_t;
+				/// deque_t
+				typedef std::deque<shared_t>			deque_t;
+				/// header length
+				enum
+				{
+					header_length	= sizeof(unsigned int),
+					max_body_length = 1048576
 				};
-				
-				//typedef vec_addr_raw::tuple tuple;
-				
-				void load(boost::shared_ptr<glutpp::actor::actor> actor);
-			
-				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
-					ar & vector_;
-				}	
-
-				std::vector<boost::shared_ptr<glutpp::network::actor::update::addr_raw> >	vector_;
-			};
-
-			struct event {
-
-				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
-					ar & addr_;
-					ar & event_;
+			public:
+				/// ctor
+				message();
+				void				set(void const * const, unsigned int);
+				void				reset_head();
+				void				write(void const * const, size_t);
+				template<typename T> void	write(const T& t) {
+					write(&t, sizeof(T));
 				}
-
-				glutpp::actor::addr		addr_; //() { return std::get<0>(tup_); }
-				glutpp::actor::event		event_; //() { return std::get<1>(tup_); }
-			};
-		}
-		namespace scene {
-			struct create {
-				void load(glutpp::scene::scene_s scene);
-				
-				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
-					ar & addr_;
-					ar & desc_;
+				void				read(void * const, size_t);
+				template<typename T> void	read(T& t) {
+					read(&t, sizeof(T));
 				}
-
-				glutpp::scene::addr	addr_;
-				glutpp::scene::desc	desc_;
-			};
-		}
+				/// data
+				const char*			data() const;
+				/// data
+				char*				data();
+				/// length
+				std::size_t			length() const;
+				/// body
+				const char*			body() const;
+				/// body
+				char*				body();
+				/// body length
+				std::size_t			body_length() const;
+				/// body length
+				void				body_length(std::size_t);
+				/// decode header
+				bool				decode_header();
+				/// encode header
+				void			encode_header();
+			private:
+				/// data
+				char			data_[header_length + max_body_length];
+				char*			head_;
+				/// body length
+				std::size_t		body_length_;
+		};
 	}
 }
 
-#endif
 
 
 
+
+#endif // __JESS_ASIO_MESSAGE_HPP__

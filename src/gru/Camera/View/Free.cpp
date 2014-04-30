@@ -1,4 +1,6 @@
 
+#include <gru/Math/Matrix.hpp>
+
 #include <gru/config.hpp>
 #include <gru/window/window.hpp>
 #include <gru/Camera/View/Free.hpp>
@@ -99,17 +101,17 @@ void		glutpp::Camera::View::Free::step(double time) {
 	float dt = time - last_; last_ = time;
 
 	// look vector
-	math::vec3<float> look = center_ - eye_;
+	physx::PxVec3 look = center_ - eye_.getXYZ();
 
 	// project to xz-plane
-	look.y() = 0.0;
-	look.Normalize();
+	look.y = 0.0;
+	look.normalize();
 
-	math::vec3<float> x(1,0,0);
-	math::vec3<float> y(0,1,0);
-	math::vec3<float> z(0,0,-1);
+	physx::PxVec3 x(1,0,0);
+	physx::PxVec3 y(0,1,0);
+	physx::PxVec3 z(0,0,-1);
 
-	math::vec3<float> c = z.cross(look);
+	physx::PxVec3 c = z.cross(look);
 
 	float yaw = asin(c.magnitude());
 
@@ -125,16 +127,16 @@ void		glutpp::Camera::View::Free::step(double time) {
 	printf("yaw = %f\n",yaw);
 
 	// rotate velocity by camera yaw
-	math::quat<float> q(yaw,y);
+	physx::PxQuat q(yaw,y);
 	
 	
-	math::vec3<float> v = v0_ + v1_;
+	physx::PxVec3 v = v0_ + v1_;
 	v *= dt;
 	v *= 4.0;
 
 	v = q.rotate(v);
 	
-	eye_ += math::vec4<float>(v, 0.0f);
+	eye_ += physx::PxVec4(v, 0.0f);
 }
 
 /*
@@ -232,27 +234,26 @@ physx::PxVec3 neb::camera::camera::Move()
 	return mov;
 }
 */
-math::mat44<float>	glutpp::Camera::View::Free::view() {
+physx::PxMat44	glutpp::Camera::View::Free::view() {
 	//printf("%s\n", __FUNCTION__);
 
-	math::vec3<float> up(0,1,0);
-	math::vec3<float> look(0,0,-1);
+	physx::PxVec3 up(0,1,0);
+	physx::PxVec3 look(0,0,-1);
 	
 	
-	math::quat<float> rot( yaw_, math::vec3<float>(0,1,0));
+	physx::PxQuat rot( yaw_, physx::PxVec3(0,1,0));
 
-	rot *= math::quat<float>( pitch_ , math::vec3<float>(1,0,0) );
+	rot *= physx::PxQuat( pitch_ , physx::PxVec3(1,0,0) );
 
 
 	up = rot.rotate( up );
 	look = rot.rotate( look );
 	
-	math::vec3<float> eye(eye_.x(), eye_.y(), eye_.z());
+	physx::PxVec3 eye(eye_.getXYZ());//.x(), eye_.y(), eye_.z());
 	
-	math::vec3<float> center = eye + look;
+	physx::PxVec3 center = eye + look;
 
-	math::mat44<float> ret;
-	ret.lookat(eye_, center, up);
+	physx::PxMat44 ret = lookat(eye, center, up);
 
 	//		eye_.x, eye_.y, eye_.z,
 	//		center.x, center.y, center.z,

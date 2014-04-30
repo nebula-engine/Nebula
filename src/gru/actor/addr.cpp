@@ -22,22 +22,11 @@ void		glutpp::actor::addr::load_parent(boost::shared_ptr<glutpp::actor::actor> a
 		load_this(actor1);
 	} else {
 		assert(scene);
-		get_scene_addr()->load(scene);
+		scene_.load(scene);
 	}
 }
 
 
-glutpp::scene::addr_s glutpp::actor::addr::get_scene_addr() {
-	auto p = std::get<1>(tup_);
-	assert(p);
-	return p;
-}
-glutpp::actor::vec_int_s glutpp::actor::addr::get_vec() {
-	auto p = std::get<0>(tup_);
-	assert(p);
-	return p;
-
-}
 
 
 

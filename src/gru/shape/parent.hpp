@@ -32,8 +32,8 @@ namespace glutpp {
 				virtual physx::PxMat44		getPoseGlobal() = 0;
 				virtual physx::PxMat44		getPose() = 0;
 
-				glutpp::actor::actor_s			isActor();
-				glutpp::shape::shape_s			isShape();
+				boost::shared_ptr<glutpp::actor::actor>			isActor();
+				boost::shared_ptr<glutpp::shape::shape>			isShape();
 		};
 	}
 }

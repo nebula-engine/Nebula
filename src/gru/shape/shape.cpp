@@ -3,6 +3,7 @@
 #include <gru/master.hpp>
 #include <gru/shape/shape.hpp>
 #include <gru/shape/desc.hpp>
+#include <gru/light/light.hpp>
 //#include <
 
 glutpp::shape::shape::shape(boost::shared_ptr<glutpp::shape::parent> parent):
@@ -49,7 +50,7 @@ Neb::Math::Mat44 glutpp::shape::shape::getPose() {
 void glutpp::shape::shape::init(boost::shared_ptr<glutpp::shape::desc> desc) {
 	GRU_SHAPE_SHAPE_FUNC
 
-	auto me = std::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
+	auto me = boost::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
 
 	i_ = desc->i_;

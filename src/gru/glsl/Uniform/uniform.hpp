@@ -29,7 +29,9 @@ namespace glutpp {
 						/** @name Load
 						 * @{
 						 */
-						virtual void			load(physx::PxMat44) { throw 0; }
+						virtual void			load(physx::PxVec3 const &) { throw 0; }
+						virtual void			load(physx::PxVec4 const &) { throw 0; }
+						virtual void			load(physx::PxMat44 const &) { throw 0; }
 						//virtual void			load(math::Color::color<float>) { throw 0; }
 						//virtual void			load(math::Color::color<double>) { throw 0; }
 						virtual void			load(int) { throw 0; }
@@ -61,13 +63,14 @@ namespace glutpp {
 				class Vec3: public glutpp::glsl::Uniform::Scalar::Base {
 					public:
 						Vec3(std::string s): Base(s) {}
+						virtual void		load(physx::PxVec3 const &);
 						virtual void		load(float*);
 				};
-				class DVec3: public glutpp::glsl::Uniform::Scalar::Base {
+/*				class DVec3: public glutpp::glsl::Uniform::Scalar::Base {
 					public:
 						DVec3(std::string s): Base(s) {}
 						virtual void		load(double*);
-				};
+				};*/
 				class Vec4: public glutpp::glsl::Uniform::Scalar::Base {
 					public:
 						Vec4(std::string s): Base(s) {}
@@ -101,7 +104,9 @@ namespace glutpp {
 						/** @name Load
 						 * @{
 						 */
-						virtual void			load(int, physx::PxMat44) { throw 0; }
+						virtual void			load(int, physx::PxVec3 const &) { throw 0; }
+						virtual void			load(int, physx::PxVec4 const &) { throw 0; }
+						virtual void			load(int, physx::PxMat44 const &) { throw 0; }
 						//virtual void			load(int, math::Color::color<float>) { throw 0; }
 						//virtual void			load(int, math::Color::color<double>) { throw 0; }
 						virtual void			load(int, int) { throw 0; }

@@ -3,10 +3,12 @@
 
 #include <GL/glew.h>
 
-#include <galaxy/sig/connection.hpp>
+//#include <galaxy/sig/connection.hpp>
 
-#include <math/quat.hpp>
-#include <math/mat44.hpp>
+//#include <math/quat.hpp>
+//#include <math/mat44.hpp>
+
+#include <gru/Math/Matrix.hpp>
 
 #include <gru/window/window.hpp>
 #include <gru/scene/scene.hpp>
@@ -44,11 +46,11 @@ glutpp::Camera::Projection::Perspective::Perspective(std::shared_ptr<glutpp::ren
 	
 	renderable_ = renderable;
 }*/
-math::mat44<float>	glutpp::Camera::Projection::Perspective::proj() {
-	math::mat44<float> ret;
-	ret.SetPerspective(fovy_, (float)getWindow()->raw_.w_/(float)getWindow()->raw_.h_, zn_, zf_);
+physx::PxMat44	glutpp::Camera::Projection::Perspective::proj() {
+
+	physx::PxMat44 ret = SetPerspective(fovy_, (float)getWindow()->raw_.w_/(float)getWindow()->raw_.h_, zn_, zf_);
 	
-	ret.print();
+	//ret.print();
 	
 	return ret;
 }
