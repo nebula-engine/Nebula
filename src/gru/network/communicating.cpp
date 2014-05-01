@@ -139,8 +139,7 @@ void	gal::network::communicating::thread_write(gal::network::message::shared_t m
 void	gal::network::communicating::thread_read() {
 	//GALAXY_DEBUG_1_FUNCTION;
 
-	while ( 1 )
-	{
+	while (1) {
 		{
 			std::lock_guard<std::mutex> lk( mutex_ );
 
@@ -149,13 +148,10 @@ void	gal::network::communicating::thread_read() {
 				return;
 			}
 		}
-
-		try
-		{
+		
+		try {
 			thread_read_header();
-		}
-		catch(...)
-		{
+		} catch(...) {
 			/// \todo pass exception to main thread ( or whoever )
 		}
 	}
@@ -164,33 +160,29 @@ void	gal::network::communicating::thread_read_header() {
 	//GALAXY_DEBUG_1_FUNCTION;
 	
 	//if ( !socket_->is_open() ) exit(0);//gal::cerr << "SOCKET NOT OPEN" << endl;
-	if ( !read_msg_->data() ) exit(0); //gal::cerr << "WTF!" << std::endl;
-
+	
 	
 	//printf("waiting for %i bytes\n", message::header_length);
 	
 	// wail until all data is available
-	int bytes = ::recv(socket_, read_msg_->data(), message::header_length, MSG_WAITALL);
-
-	if ( bytes < 0 )
-	{
+	int bytes = ::recv(socket_, read_header_ message::header_length, MSG_WAITALL);
+	
+	if (bytes < 0) {
 		perror("recv:");
 		exit(0);
 	}
-
-	if ( bytes == 0 )
-	{
+	
+	if (bytes == 0) {
 		printf("connection is closed\n");
 		exit(0);
 	}
-
-	if ( bytes < message::header_length )
-	{
+	
+	if (bytes < message::header_length) {
 		printf("%s\n", __PRETTY_FUNCTION__);
 		printf("not enough data\n");
 		exit(0);
 	}
-
+	
 	handle_do_read_header();
 }
 void	gal::network::communicating::thread_read_body() {
@@ -212,8 +204,7 @@ void	gal::network::communicating::thread_read_body() {
 		printf("connection is closed\n");
 		exit(0);
 	}
-
-
+	
 	if(bytes < message::header_length)
 	{
 		printf("not enough data\n");
