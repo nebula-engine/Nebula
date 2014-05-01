@@ -67,10 +67,13 @@ namespace gal {
 				void				encode_header();
 			private:
 				/// data
-				char				data_[header_length + max_body_length];
-				char*				head_;
+				//char				data_[header_length + max_body_length];
+				//char*				head_;
 				/// body length
-				std::size_t			body_length_;
+				//std::size_t			body_length_;
+				
+				// new implementation using stringstream
+				std::stringstream		ss_;
 		};
 	}
 }
