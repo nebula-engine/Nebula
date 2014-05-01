@@ -67,6 +67,10 @@ namespace gal {
 				/** message
 				 */
 				message_t::shared_t			read_msg_;
+				HEADER_TYPE				read_header_;
+				char					read_buffer_[MAX_MESSAGE_LENGTH]
+				
+				HEADER_TYPE				write_header_;
 				/** message deque
 				 */
 				message_t::deque_t			write_queue_;
