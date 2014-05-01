@@ -9,28 +9,29 @@
 #include <boost/preprocessor/seq/size.hpp>
 #include <boost/preprocessor/seq/seq.hpp>
 
+#include <map>
 
 /*
 namespace gru {
 	template<typename enum_type> class Enum {
 
-		static std::map<enum_type, std::string>	map_int_string;
-		static std::map<std::string, enum_type>	map_string_int;
+	static std::map<enum_type, std::string>	map_int_string;
+	static std::map<std::string, enum_type>	map_string_int;
 
-		static enum_type		Convert(std::string str) {
-		auto it = map_string_int.find(str);
-		if(it == map_string_int.cend()) throw 0;
-		return it->second;
-		}
-		static std::string		Convert(enum_type i) {
-		auto it = map_int_string.find(i);
-		if(it == map_int_string.cend()) throw 0;
-		return it->second;
-		}
+	static enum_type		Convert(std::string str) {
+	auto it = map_string_int.find(str);
+	if(it == map_string_int.cend()) throw 0;
+	return it->second;
+	}
+	static std::string		Convert(enum_type i) {
+	auto it = map_int_string.find(i);
+	if(it == map_int_string.cend()) throw 0;
+	return it->second;
+	}
 
-		};
-		}
-		*/
+	};
+	}
+	*/
 
 #define DEFINE_ENUM(name, type, values)					\
 	struct name {								\

@@ -4,6 +4,8 @@
 //#include <math/transform.hpp>
 //#include <math/raw/raw.hpp>
 
+#include <deque>
+
 #include <gru/scene/addr.hpp>
 //#include <gru/actor/actor.hpp>
 
@@ -20,7 +22,7 @@ namespace glutpp {
 				void	load_parent(boost::shared_ptr<glutpp::actor::actor>);
 				
 				glutpp::scene::addr	scene_;
-				std::vector<int>	vec_;
+				std::deque<int>		vec_;
 
 
 		};

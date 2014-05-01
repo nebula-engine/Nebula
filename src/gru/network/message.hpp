@@ -5,16 +5,15 @@
 #include <cstdlib>
 #include <cstring>
 
-#include <memory> 
+#include <memory>
 #include <deque>
 
-namespace gal
-{
-	namespace network
-	{
+#include <gru/shared.hpp>
+
+namespace gal {
+	namespace network {
 		/// message
-		class message: public std::enable_shared_from_this<message>
-		{
+		class message: public gru::shared {
 			public:
 				/// shared__t
 				typedef std::shared_ptr<message>		shared_t;
@@ -37,6 +36,13 @@ namespace gal
 				template<typename T> void	write(const T& t) {
 					write(&t, sizeof(T));
 				}
+				
+				template<class T> message&	operator<<(T t) {
+					t.serialize(*this, 0);
+					return *this;
+				}
+				
+				
 				void				read(void * const, size_t);
 				template<typename T> void	read(T& t) {
 					read(&t, sizeof(T));
@@ -58,13 +64,13 @@ namespace gal
 				/// decode header
 				bool				decode_header();
 				/// encode header
-				void			encode_header();
+				void				encode_header();
 			private:
 				/// data
-				char			data_[header_length + max_body_length];
-				char*			head_;
+				char				data_[header_length + max_body_length];
+				char*				head_;
 				/// body length
-				std::size_t		body_length_;
+				std::size_t			body_length_;
 		};
 	}
 }

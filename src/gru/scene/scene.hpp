@@ -43,7 +43,6 @@ namespace glutpp {
 				}
 		};
 
-		typedef std::map<char*, glutpp::actor::desc_s, less_str> actors_deferred_map;
 
 		class scene:
 			public glutpp::actor::parent,
@@ -87,10 +86,10 @@ namespace glutpp {
 				int					i_;
 				boost::shared_ptr<raw>			raw_;
 
-				renderable_w				renderable_;
+				renderable_w								renderable_;
 
-				Neb::Map<glutpp::actor::actor>		actors_;
-				actors_deferred_map			actors_deferred_;
+				Neb::Map<glutpp::actor::actor>						actors_;
+				std::map<std::string, boost::shared_ptr<glutpp::actor::desc> >		actors_deferred_;
 		};
 	}
 }

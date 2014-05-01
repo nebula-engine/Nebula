@@ -2,6 +2,7 @@
 #define NEBULA_ACTOR_TYPE
 
 #include <string>
+#include <map>
 
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/archive/xml_iarchive.hpp>
@@ -15,6 +16,13 @@ namespace glutpp {
 		DEFINE_ENUM(Type,int,
 				((NONE)(0))
 				((ACTOR)(1))
+				((RIGID_ACTOR)(2))
+				((RIGID_STATIC)(3))
+				((RIGID_BODY)(4))
+				((RIGID_DYNAMIC)(5))
+				((PLANE)(6))
+				((CONTROLLER)(7))
+				((EMPTY)(8))
 				)
 
 	}

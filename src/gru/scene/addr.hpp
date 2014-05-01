@@ -26,7 +26,7 @@ namespace glutpp {
 					ar & vec_;
 				}
 
-				std::vector<int>	vec_;
+				std::deque<int>	vec_;
 		};
 	}
 }
