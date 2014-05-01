@@ -119,18 +119,18 @@ void	gal::network::communicating::thread_write(gal::network::message::shared_t m
 	//GALAXY_DEBUG_1_FUNCTION;
 	
 	printf("DEBUG: sending message of length %i\n", (int)message->length());
-
-	int result = ::send(socket_, message->data(), message->length(), 0 );
-
-	if ( result < 0 )
-	{
+	
+	std::string str(message->ss_.str());
+	
+	int result = ::send(socket_, str.c_str(), str.size(), 0 );
+	
+	if ( result < 0 ) {
 		perror("send:");
 		exit(0);
 		/// \todo pass exception to main thread ( or whoever )
 	}
 
-	if ( result < (int)message->length() )
-	{
+	if ( result < (int)str->size() ) {
 		// ???
 		printf("unknown error\n");
 		exit(0);
@@ -165,7 +165,7 @@ void	gal::network::communicating::thread_read_header() {
 	//printf("waiting for %i bytes\n", message::header_length);
 	
 	// wail until all data is available
-	int bytes = ::recv(socket_, read_header_ message::header_length, MSG_WAITALL);
+	int bytes = ::recv(socket_, read_header_, HEADER_LENGTH, MSG_WAITALL);
 	
 	if (bytes < 0) {
 		perror("recv:");
@@ -177,7 +177,7 @@ void	gal::network::communicating::thread_read_header() {
 		exit(0);
 	}
 	
-	if (bytes < message::header_length) {
+	if (bytes < HEADER_LENGTH) {
 		printf("%s\n", __PRETTY_FUNCTION__);
 		printf("not enough data\n");
 		exit(0);
@@ -188,10 +188,9 @@ void	gal::network::communicating::thread_read_header() {
 void	gal::network::communicating::thread_read_body() {
 	//GALAXY_DEBUG_1_FUNCTION;
 	
-	
 	// wail until all data is available
-	int bytes = ::recv(socket_, read_msg_->body(), read_msg_->body_length(), MSG_WAITALL);
-
+	int bytes = ::recv(socket_, read_buffer_, read_header_, MSG_WAITALL);
+	
 	if(bytes < 0)
 	{
 		perror("recv:");
@@ -211,7 +210,7 @@ void	gal::network::communicating::thread_read_body() {
 		exit(0);
 	}
 	
-	printf("DEBUG: received %i bytes\n", (int)read_msg_->body_length());
+	printf("DEBUG: received %i bytes\n", read_header_);
 	//math::hexdump(read_msg_->body(), read_msg_->body_length());
 	
 	handle_do_read_body();
@@ -220,12 +219,9 @@ void	gal::network::communicating::thread_read_body() {
 void	gal::network::communicating::handle_do_read_header() {
 	//GALAXY_DEBUG_1_FUNCTION;
 	
-	if ( read_msg_->decode_header() )
-	{	
+	if (read_msg_) {
 		thread_read_body();
-	}
-	else
-	{
+	} else {
 		printf("header decode failed\n");
 
 		std::thread(&gal::network::communicating::close, this).detach();
@@ -236,9 +232,14 @@ void	gal::network::communicating::handle_do_read_body() {
 	
 	//gal::network::message_s msg(new gal::network::message);
 	
+	// copy buffer to message
+	
 	read_msg_->reset_head();
+	
+	read_msg_->ss_.write(read_buffer_, read_header_);
+	
 	process(read_msg_);
-
+	
 	thread_read_header();
 }
 
