@@ -20,9 +20,9 @@ namespace neb {
 	namespace Actor {
 		class empty: public neb::Actor::Base {
 			public:
-				empty(glutpp::actor::parent_s);
+				empty(boost::shared_ptr<glutpp::actor::parent>);
 				
-				virtual void			init(glutpp::actor::desc_s);
+				virtual void			init(boost::shared_ptr<glutpp::actor::desc>);
 
 				virtual void			add_force(double) {}
 

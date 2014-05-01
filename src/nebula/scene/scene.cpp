@@ -1,9 +1,12 @@
 //#include <math/free.hpp>
 
+#include <gru/actor/Type.hpp>
+#include <gru/actor/addr.hpp>
 #include <gru/actor/desc.hpp>
 #include <gru/actor/event.hpp>
-#include <gru/network/message.hpp>
+#include <gru/network/scene/message.hpp>
 #include <gru/scene/desc.hpp>
+#include <gru/network/message.hpp>
 
 #include <nebula/config.hpp>
 #include <nebula/app.hpp>
@@ -34,7 +37,7 @@ neb::scene::scene::scene(neb::app_s app):
 	
 	assert(app);
 }
-void neb::scene::scene::init(glutpp::scene::desc_s desc) {
+void neb::scene::scene::init(boost::shared_ptr<glutpp::scene::desc> desc) {
 
 	NEBULA_DEBUG_0_FUNCTION;
 	
@@ -66,41 +69,39 @@ boost::shared_ptr<neb::Actor::Base>		neb::scene::scene::get_actor(int i) {
 		return a;
 	}
 }
-neb::Actor::Base_s neb::scene::scene::get_actor(glutpp::actor::addr_s addr) {
+boost::shared_ptr<neb::Actor::Base>	neb::scene::scene::get_actor(boost::shared_ptr<glutpp::actor::addr> addr) {
 	
-	neb::Actor::Base_s actor;
+	boost::shared_ptr<neb::Actor::Base> actor;
 	
-	auto vec = addr->get_vec();
+	std::deque<int> vec = addr->vec_;
 	assert(vec);
 	
-	if(vec->vec_.empty()) return actor;
+	if(vec.empty()) return actor;
 	
-	int i = vec->vec_.front();
-	vec->vec_.pop_front();
+	int i = vec.front();
+	vec.pop_front();
 	
 	actor = get_actor(i);
 	
 	if(!actor) return actor;
 	
 	
-	if(!vec->vec_.empty())
+	if(!vec.empty())
 	{
 		return actor->get_actor(addr);
 	}
 	
 	return actor;
 }
-void neb::scene::scene::create_actors(glutpp::scene::desc_s desc) {
+void neb::scene::scene::create_actors(boost::shared_ptr<glutpp::scene::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
-
+	
 	assert(desc);
+	
+	for(auto it = desc->actors_.cbegin(); it != desc->actors_.cend(); ++it) {
+		auto ad = *it;
 
-	for(auto it = desc->get_actors()->vec_.begin(); it != desc->get_actors()->vec_.end(); ++it)
-	{
-		auto ad = std::get<0>(*it);
-
-		switch(ad->get_raw()->mode_create_)
-		{
+		switch(ad->raw_->mode_create_) {
 			case glutpp::actor::mode_create::NOW:
 				printf("NOW\n");
 				create_actor_local(ad);
@@ -115,13 +116,13 @@ void neb::scene::scene::create_actors(glutpp::scene::desc_s desc) {
 		}
 	}
 }
-void neb::scene::scene::add_deferred(glutpp::actor::desc_s ad) {
+void		neb::scene::scene::add_deferred(boost::shared_ptr<glutpp::actor::desc> ad) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 
 	assert(ad);
 
-	char* n = ad->get_raw()->name_;
+	char* n = ad->raw_->name_;
 	assert(n);
 
 	int len = strlen(n);
@@ -134,33 +135,33 @@ void neb::scene::scene::add_deferred(glutpp::actor::desc_s ad) {
 
 	actors_deferred_[name] = ad;
 }
-neb::Actor::Base_s neb::scene::scene::create_actor(glutpp::actor::desc_s desc) {
+boost::shared_ptr<neb::Actor::Base>	neb::scene::scene::create_actor(boost::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	auto me = std::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
+	auto me = boost::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
 
-	std::shared_ptr<neb::Actor::Base> actor;
+	boost::shared_ptr<neb::Actor::Base> actor;
 
-	switch(desc->get_raw()->type_) {
-		case glutpp::actor::type::e::RIGID_DYNAMIC:
+	switch(desc->raw_->type_.val_) {
+		case glutpp::actor::Type::E::RIGID_DYNAMIC:
 			actor.reset(new neb::Actor::Rigid_Dynamic(me));
 			// = Create_Rigid_Dynamic(ad);
 			break;
-		case glutpp::actor::type::e::RIGID_STATIC:
+		case glutpp::actor::Type::E::RIGID_STATIC:
 			actor.reset(new neb::Actor::Rigid_Static(me));
 			// = Create_Rigid_Static(ad);
 			break;
-		case glutpp::actor::type::e::PLANE:
+		case glutpp::actor::Type::E::PLANE:
 			//actor = Create_Rigid_Static_Plane(ad);
 			printf("not implemented\n");
 			abort();
 			break;
-		case glutpp::actor::type::e::CONTROLLER:
+		case glutpp::actor::Type::E::CONTROLLER:
 			printf("not implemented\n");
 			abort();
 			//actor = Create_Controller(ad);
 			break;
-		case glutpp::actor::type::e::EMPTY:
+		case glutpp::actor::Type::E::EMPTY:
 			actor.reset(new neb::Actor::empty(me));
 			break;
 		default:
@@ -171,7 +172,7 @@ neb::Actor::Base_s neb::scene::scene::create_actor(glutpp::actor::desc_s desc) {
 
 	return actor;	
 }
-neb::Actor::Base_s neb::scene::scene::create_actor_local(glutpp::actor::desc_s desc) {
+boost::shared_ptr<neb::Actor::Base>		neb::scene::scene::create_actor_local(boost::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	auto actor = create_actor(desc);
@@ -182,23 +183,26 @@ neb::Actor::Base_s neb::scene::scene::create_actor_local(glutpp::actor::desc_s d
 
 	auto app = get_app();
 
-	gal::network::message_s msg(new gal::network::message);
+	boost::shared_ptr<gal::network::message> msg(new gal::network::message);
 
 	int type = glutpp::network::type::ACTOR_CREATE;
 	msg->write(&type, sizeof(int));
 
-	std::shared_ptr<glutpp::network::actor::create> actor_create(new glutpp::network::actor::create);
+	boost::shared_ptr<glutpp::network::actor::create> actor_create(new glutpp::network::actor::create);
 
 	actor_create->load(actor);
-	actor_create->write(msg);
+	
+	msg->operator<<(actor_create);
+	
+	//actor_create->write(msg);
 
 	app->send_server(msg);
 
 	return actor;	
 }
-neb::Actor::Base_s neb::scene::scene::create_actor_remote(
-		glutpp::actor::addr_s addr,
-		glutpp::actor::desc_s desc)
+boost::shared_ptr<neb::Actor::Base> neb::scene::scene::create_actor_remote(
+		boost::shared_ptr<glutpp::actor::addr> addr,
+		boost::shared_ptr<glutpp::actor::desc> desc)
 {
 	NEBULA_DEBUG_0_FUNCTION;
 
@@ -210,7 +214,7 @@ neb::Actor::Base_s neb::scene::scene::create_actor_remote(
 	}
 	else
 	{
-		int i = desc->get_id()->i_;
+		int i = desc->i_;
 		actor = create_actor(desc);
 		
 		actors_[i] = actor;
@@ -349,7 +353,7 @@ void neb::scene::scene::create_physics() {
 
 	physx::PxSceneDesc scene_desc(pxphysics->getTolerancesScale());
 
-	scene_desc.gravity = raw_.gravity_;
+	scene_desc.gravity = raw_->gravity_;
 
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 
@@ -419,9 +423,8 @@ void neb::scene::scene::step(double time) {
 
 	// cleanup
 	auto it = actors_.map_.begin();
-	while(it != actors_.map_.end())
-	{
-		std::shared_ptr<glutpp::actor::actor> actor = it->second;
+	while(it != actors_.map_.end()) {
+		boost::shared_ptr<glutpp::actor::actor> actor = it->second;
 		
 		assert(actor);
 		

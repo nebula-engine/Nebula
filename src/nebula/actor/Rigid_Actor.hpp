@@ -9,9 +9,9 @@ namespace neb {
 			public neb::Actor::Actor
 		{
 			public:
-				RigidActor(glutpp::actor::parent_s);
+				RigidActor(boost::shared_ptr<glutpp::actor::parent>);
 
-				virtual void			init(glutpp::actor::desc_s);
+				virtual void			init(boost::shared_ptr<glutpp::actor::desc>);
 				virtual void			add_force(double) {abort();}
 
 				virtual void			step_local(double);
@@ -19,7 +19,7 @@ namespace neb {
 				
 				virtual void			setupFiltering();
 
-				virtual glutpp::actor::desc_s	get_projectile();
+				virtual boost::shared_ptr<glutpp::actor::desc>		get_projectile();
 				
 				virtual void			create_physics() {abort();}
 				virtual void			init_physics() {abort();}

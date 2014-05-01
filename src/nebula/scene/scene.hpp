@@ -43,29 +43,27 @@ namespace neb {
 					LOCAL,
 					REMOTE
 				};
-				
+
 				scene(neb::app_s);
-				void			init(glutpp::scene::desc_s);
+				void			init(boost::shared_ptr<glutpp::scene::desc>);
 				void			create_physics();
 				app_t			get_app();
-				
+
 				base_t			get_actor(int i);
-				base_t			get_actor(glutpp::actor::addr_s);
-				
-				void			create_actors(glutpp::scene::desc_s);
+				base_t			get_actor(boost::shared_ptr<glutpp::actor::addr>);
+
+				void			create_actors(boost::shared_ptr<glutpp::scene::desc>);
 			private:	
-				base_t			create_actor(
-						glutpp::actor::desc_s);
+				boost::shared_ptr<neb::Actor::Base>			create_actor(boost::shared_ptr<glutpp::actor::desc>);
 			public:
-				base_t			create_actor_local(
-						glutpp::actor::desc_s);
+				boost::shared_ptr<neb::Actor::Base>			create_actor_local(boost::shared_ptr<glutpp::actor::desc>);
 
 				base_t			create_actor_remote(
-						glutpp::actor::addr_s,
-						glutpp::actor::desc_s);
+						boost::shared_ptr<glutpp::actor::addr>,
+						boost::shared_ptr<glutpp::actor::desc>);
 
-				void		add_deferred(glutpp::actor::desc_s);
-				
+				void		add_deferred(boost::shared_ptr<glutpp::actor::desc>);
+
 				//base_t	create_actor(glutpp::actor::desc*, base_t);
 
 				/*		rigid_dynamic_t		Create_Rigid_Dynamic(
@@ -75,14 +73,14 @@ namespace neb {
 						rigid_static_t		Create_Rigid_Static(
 						neb::actor::desc*,
 						base_t);
-				 */
+						*/
 				/*	rigid_static_t		Create_Rigid_Static_Plane(
 					glutpp::actor::desc*,
 					base_t);
 
 					controller_t		Create_Controller(glutpp::actor::desc*);
 					vehicle_t		create_vehicle();
-				 */
+					*/
 
 
 				void					draw();

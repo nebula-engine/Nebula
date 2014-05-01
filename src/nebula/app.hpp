@@ -47,11 +47,10 @@ namespace neb {
 			// network
 			void				reset_server(unsigned short);
 			void				reset_client(char const *, unsigned short);		
-			void				send_server(std::shared_ptr<gal::network::message>);
-			void				send_client(std::shared_ptr<gal::network::message>);
+			void				send_server(boost::shared_ptr<gal::network::message>);
+			void				send_client(boost::shared_ptr<gal::network::message>);
 
-			int				transmit_scenes(
-					std::shared_ptr<neb::network::communicating>);
+			int				transmit_scenes(boost::shared_ptr<neb::network::communicating>);
 
 			void				recv_scene_create(	std::shared_ptr<gal::network::message>);
 			void				recv_actor_create(	std::shared_ptr<gal::network::message>);

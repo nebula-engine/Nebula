@@ -13,16 +13,16 @@ namespace neb {
 			public neb::Actor::Base
 		{
 			public:
-				Actor(glutpp::actor::parent_s);
+				Actor(boost::shared_ptr<glutpp::actor::parent>);
 
+				virtual void			init(boost::shared_ptr<glutpp::actor::desc>);
 
-				virtual void			init(glutpp::actor::desc_s);
 				virtual void			release();
 				virtual void			add_force(double) {abort();}
 				virtual void			set_pose(physx::PxTransform);
 				virtual int			fire();
 
-				virtual glutpp::actor::desc_s	get_projectile() {abort(); return NULL;}
+				virtual boost::shared_ptr<glutpp::actor::desc>		get_projectile() {abort(); return NULL;}
 				
 				
 				virtual void			create_physics() {abort();}

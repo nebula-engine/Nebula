@@ -9,9 +9,9 @@ namespace neb {
 			public neb::Actor::RigidBody::RigidBody
 		{
 			public:
-				Rigid_Dynamic(glutpp::actor::parent_s);
+				Rigid_Dynamic(boost::shared_ptr<glutpp::actor::parent>);
 				
-				virtual void		init(glutpp::actor::desc_s);
+				virtual void		init(boost::shared_ptr<glutpp::actor::desc>);
 
 				virtual void		create_physics();
 				virtual void		init_physics();

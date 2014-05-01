@@ -23,18 +23,18 @@ namespace neb {
 			public glutpp::actor::actor
 		{
 			public:
-				Base(glutpp::actor::parent_s);
+				Base(boost::shared_ptr<glutpp::actor::parent>);
 				virtual ~Base();
 
-				virtual void			init(glutpp::actor::desc_s);
+				virtual void			init(boost::shared_ptr<glutpp::actor::desc>);
 				virtual void			release();
 				
 			private:
-				neb::Actor::Base_s		create_actor(glutpp::actor::desc_s);
+				boost::shared_ptr<neb::Actor::Base>		create_actor(boost::shared_ptr<glutpp::actor::desc>);
 			public:
-				neb::Actor::Base_s		create_actor_local(glutpp::actor::desc_s);
+				boost::shared_ptr<neb::Actor::Base>		create_actor_local(boost::shared_ptr<glutpp::actor::desc>);
 				
-				neb::Actor::Base_s		create_actor_remote(glutpp::actor::addr_s, glutpp::actor::desc_s);
+				boost::shared_ptr<neb::Actor::Base>		create_actor_remote(boost::shared_ptr<glutpp::actor::addr>, boost::shared_ptr<glutpp::actor::desc>);
 				
 				
 				void				create_shapes(glutpp::actor::desc_s);
@@ -52,9 +52,9 @@ namespace neb {
 				 * casts gru actor to nebula actor
 				 * @param addr address of actor
 				 */
-				neb::Actor::Base_s		get_actor(glutpp::actor::addr_s addr);
-
-				virtual glutpp::actor::desc_s	get_projectile();
+				boost::shared_ptr<neb::Actor::Base>			get_actor(boost::shared_ptr<glutpp::actor::addr> addr);
+				
+				virtual boost::shared_ptr<glutpp::actor::desc>		get_projectile();
 				
 				
 				

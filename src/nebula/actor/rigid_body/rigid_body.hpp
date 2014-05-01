@@ -11,13 +11,13 @@ namespace neb {
 				public neb::Actor::RigidActor
 			{
 				public:
-					RigidBody(glutpp::actor::parent_s);
+					RigidBody(boost::shared_ptr<glutpp::actor::parent>);
 					
-					virtual void			init(glutpp::actor::desc_s);
+					virtual void			init(boost::shared_ptr<glutpp::actor::desc>);
 					
 					
 					
-					virtual glutpp::actor::desc_s	get_projectile();
+					virtual boost::shared_ptr<glutpp::actor::desc>	get_projectile();
 					
 				private:
 					virtual void			step_local(double);
