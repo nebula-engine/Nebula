@@ -10,7 +10,7 @@ namespace neb {
 		class communicating: virtual public gal::network::communicating {
 			public:
 				communicating(neb::app_s, int);
-				void	process(gal::network::message::shared_t);
+				void	process(boost::shared_ptr<gal::network::message::shared>);
 
 				neb::app_w	app_;
 		};

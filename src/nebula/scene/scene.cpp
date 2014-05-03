@@ -8,7 +8,7 @@
 #include <gru/scene/desc.hpp>
 #include <gru/network/message.hpp>
 
-#include <nebula/config.hpp>
+#include <nebula/config.hpp> // nebula/config.hpp.in
 #include <nebula/app.hpp>
 #include <nebula/physics.hpp>
 #include <nebula/scene/scene.hpp>
@@ -21,7 +21,8 @@
 //#include <nebula/actor/vehicle.hpp>
 #include <nebula/actor/empty.hpp>
 #include <nebula/shape.hpp>
-#include <nebula/timer/actor.hpp>
+#include <nebula/timer/Types.hpp>
+#include <nebula/timer/Actor/Release.hpp>
 
 
 
@@ -180,19 +181,21 @@ boost::shared_ptr<neb::Actor::Base>		neb::scene::scene::create_actor_local(boost
 	actors_.push_back(actor);
 
 	// network
-
+	
 	auto app = get_app();
 
-	boost::shared_ptr<gal::network::message> msg(new gal::network::message);
+	boost::shared_ptr<gal::network::omessage> msg(new gal::network::omessage);
 
 	int type = glutpp::network::type::ACTOR_CREATE;
 	msg->write(&type, sizeof(int));
-
-	boost::shared_ptr<glutpp::network::actor::create> actor_create(new glutpp::network::actor::create);
-
-	actor_create->load(actor);
 	
-	msg->operator<<(actor_create);
+	//boost::shared_ptr<glutpp::network::actor::create> actor_create(new glutpp::network::actor::create);
+	
+	glutpp::network::actor::create actor_create;
+
+	actor_create.load(actor);
+	
+	msg->ar_ << actor_create;
 	
 	//actor_create->write(msg);
 
@@ -453,15 +456,15 @@ void neb::scene::scene::step_local(double time) {
 	last_ = time;
 
 	// timer
-	timer_set_.step(time);
+	//timer_set_.step(time);
 
 	//physx::PxU32 nbPxactor = px_scene_->getNbActors(physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC);
+
 	
 	// step actors
-	actors_.foreach<neb::Actor::Base>(std::bind(
-				&neb::Actor::Base::step_local,
-				std::placeholders::_1,
-				time));
+	for(auto it = actors_.map_.cbegin(); it != actors_.map_.cend(); ++it) {
+		it->second->step_local(time);
+	}
 
 
 	// PxScene
@@ -477,7 +480,7 @@ void neb::scene::scene::step_local(double time) {
 	//printf( "count PxRigidActor:%i count active transform:%i\n", nbPxactor, nb_active_transforms );
 
 	//physx::PxTransform pose;
-	math::transform<float> pose;
+	physx::PxTransform pose;
 
 	// update each render object with the new transform
 	for(physx::PxU32 i = 0; i < nb_active_transforms; ++i) {
@@ -488,13 +491,13 @@ void neb::scene::scene::step_local(double time) {
 		physx::PxActor* pxactor = active_transforms[i].actor;
 		assert(pxactor);
 		physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
-		
-		
+
+
 		void* ud = active_transforms[i].userData;
 		assert(ud);
-		
+
 		glutpp::actor::actor* gl_actor = static_cast<glutpp::actor::actor*>(ud);
-		
+
 		neb::Actor::Actor* actor = dynamic_cast<neb::Actor::Actor*>(gl_actor);
 		if(actor != NULL)
 		{
@@ -507,9 +510,9 @@ void neb::scene::scene::step_local(double time) {
 
 				assert(rigidbody != NULL);
 
-				math::vec3<float> v(pxrigidbody->getLinearVelocity());
+				physx::PxVec3 v(pxrigidbody->getLinearVelocity());
 
-				rigidbody->get_raw()->velocity_ = v;
+				rigidbody->raw_->velocity_ = v;
 
 				//v.print();
 			}
@@ -528,17 +531,15 @@ void neb::scene::scene::step_local(double time) {
 void neb::scene::scene::step_remote(double time){
 	NEBULA_DEBUG_1_FUNCTION;
 
-	// send
-	actors_.foreach<neb::Actor::Base>(std::bind(
-				&neb::Actor::Base::step_remote,
-				std::placeholders::_1,
-				time));
+	for(auto it = actors_.map_.cbegin(); it != actors_.map_.cend(); ++it) {
+		it->second->step_remote(time);
+	}
 
 }
 void neb::scene::scene::send_actor_update() {
 	printf("DEBUG: message ACTOR_UPDATE sent\n");
 
-	gal::network::message_s msg(new gal::network::message);
+	boost::shared_ptr<gal::network::omessage> msg(new gal::network::omessage);
 
 	int type = glutpp::network::type::ACTOR_UPDATE;
 	msg->write(&type, sizeof(int));
@@ -552,7 +553,7 @@ void neb::scene::scene::send_actor_update() {
 		actor_update.load(actor);
 	}
 
-	actor_update.write(msg);
+	msg->ar_ << actor_update;
 
 	get_app()->send_server(msg);
 
@@ -575,7 +576,7 @@ void neb::scene::scene::fire(neb::Actor::Base_s actor) {
 }
 void neb::scene::scene::fire_local(neb::Actor::Base_s actor) {
 
-	glutpp::actor::desc_s desc = actor->get_projectile();
+	boost::shared_ptr<glutpp::actor::desc> desc = actor->get_projectile();
 
 	//auto me = std::dynamic_pointer_cast<neb::Actor::Actor>(shared_from_this());
 
@@ -583,22 +584,25 @@ void neb::scene::scene::fire_local(neb::Actor::Base_s actor) {
 
 	/** @todo replace neb::timer::actor::type with inheritance */
 
-	neb::Timer::Actor_s t(new neb::Timer::Actor(a, neb::Timer::Actor::Type::RELEASE, last_ + 5.0));
+	boost::shared_ptr<neb::Timer::Actor::Base> t(
+			new neb::Timer::Actor::Release(glutpp::master::Global()->ios_, a, last_ + 5.0));
 
-	timer_set_.set_.insert(t);
 
 }
 void neb::scene::scene::fire_remote(neb::Actor::Base_s actor) {
 
-	gal::network::message_s msg(new gal::network::message);
+	boost::shared_ptr<gal::network::omessage> msg(new gal::network::omessage);
+
+
 	glutpp::network::actor::event actor_event;
 
-	actor_event.get_addr()->load_this(actor);
+	actor_event.addr_.load_this(actor);
 
-	actor_event.get_event()->type_ = glutpp::actor::event::type::e::FIRE;
+	actor_event.event_.type_ = glutpp::actor::event::type::e::FIRE;
 
 	msg->write(glutpp::network::type::ACTOR_EVENT);
-	actor_event.write(msg);
+
+	msg->ar_ << actor_event;
 
 	get_app()->send_client(msg);
 }	

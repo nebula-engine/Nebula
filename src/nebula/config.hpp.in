@@ -17,11 +17,6 @@
 
 /** @brief %Nebula */
 namespace neb {
-	/** @brief %Timer */
-	namespace Timer {
-		class Actor;
-		typedef std::shared_ptr<Actor>		Actor_s;
-	}
 	/** @brief %Network */
 	namespace network {
 		class server;
@@ -86,9 +81,9 @@ namespace neb {
 		
 		typedef std::shared_ptr<raw>	raw_s;
 		
-		typedef std::shared_ptr<Base>		Base_s;
-		typedef std::shared_ptr<RigidActor>	RigidActor_s;
-		typedef std::shared_ptr<Base>		Base_s;
+		typedef boost::shared_ptr<Base>		Base_s;
+		typedef boost::shared_ptr<RigidActor>	RigidActor_s;
+		typedef boost::shared_ptr<Base>		Base_s;
 		
 		typedef std::weak_ptr<Base>	Base_w;
 	}
