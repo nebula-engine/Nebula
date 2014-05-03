@@ -30,8 +30,8 @@ namespace gal
 		class server
 		{
 			public:
-				typedef std::shared_ptr<gal::network::communicating> comm_t;
-				typedef std::shared_ptr<gal::network::message> msg_t;
+				typedef boost::shared_ptr<gal::network::communicating>	comm_t;
+				typedef boost::shared_ptr<gal::network::message>	msg_t;
 				
 				server(unsigned short localPort, int queueLen);
 				void			thread_accept();

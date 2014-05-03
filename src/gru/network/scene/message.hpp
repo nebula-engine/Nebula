@@ -4,7 +4,7 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 
-#include <gru/config.hpp>
+#include <gru/config.hpp> // gru/config.hpp.in
 #include <gru/master.hpp>
 #include <gru/scene/desc.hpp>
 #include <gru/actor/desc.hpp>
@@ -81,7 +81,7 @@ namespace glutpp {
 				}
 
 				glutpp::actor::addr		addr_; //() { return std::get<0>(tup_); }
-				glutpp::actor::event		event_; //() { return std::get<1>(tup_); }
+				Neb::Event::Actor::Base		event_; //() { return std::get<1>(tup_); }
 			};
 		}
 		namespace scene {

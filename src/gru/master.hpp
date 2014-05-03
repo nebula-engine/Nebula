@@ -4,6 +4,8 @@
 #include <map>
 #include <memory>
 
+#include <boost/asio/io_service.hpp>
+
 /*
 #include <galaxy/flag.hpp>
 #include <galaxy/sig/signal.hpp>
@@ -104,8 +106,13 @@ namespace glutpp {
 			unsigned int			f();
 			void				f(unsigned int);
 		public:
-			// font
+			/** @name Font @{ */
 			FT_Library						ft_;
+			/** @} */
+
+			/** @name Boost Asio @{ */
+			boost::asio::io_service					ios_;
+			/** @} */
 
 			/** @name Factories @{ */
 			glutpp::gui::object::object_factory_s			object_factory_;

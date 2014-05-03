@@ -70,8 +70,7 @@ void gal::network::server::thread_accept() {
 }
 void gal::network::server::write(msg_t msg) {
 	
-	for(auto it = clients_.begin(); it != clients_.end(); ++it)
-	{
+	for(auto it = clients_.begin(); it != clients_.end(); ++it) {
 		(*it)->write(msg);
 	}
 	

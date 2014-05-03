@@ -39,7 +39,7 @@ void	gal::network::communicating::start()
 	
 	read_thread_ = std::thread(std::bind(&communicating::thread_read, this ) );
 }
-void	gal::network::communicating::write(gal::network::message::shared_t msg) {	
+void		gal::network::communicating::write(boost::shared_ptr<gal::network::message> msg) {	
 	//GALAXY_DEBUG_1_FUNCTION;
 
 	{
@@ -115,12 +115,13 @@ void	gal::network::communicating::thread_write_dispatch() {
 		write_queue_.pop_front();
 	}
 }
-void	gal::network::communicating::thread_write(gal::network::message::shared_t message) {
+void		gal::network::communicating::thread_write(boost::shared_ptr<gal::network::message> message) {
 	//GALAXY_DEBUG_1_FUNCTION;
 	
-	printf("DEBUG: sending message of length %i\n", (int)message->length());
-	
+
 	std::string str(message->ss_.str());
+	
+	printf("DEBUG: sending message of length %i\n", (int)str.size());
 	
 	int result = ::send(socket_, str.c_str(), str.size(), 0 );
 	
@@ -130,7 +131,7 @@ void	gal::network::communicating::thread_write(gal::network::message::shared_t m
 		/// \todo pass exception to main thread ( or whoever )
 	}
 
-	if ( result < (int)str->size() ) {
+	if ( result < (int)str.size() ) {
 		// ???
 		printf("unknown error\n");
 		exit(0);
@@ -165,7 +166,7 @@ void	gal::network::communicating::thread_read_header() {
 	//printf("waiting for %i bytes\n", message::header_length);
 	
 	// wail until all data is available
-	int bytes = ::recv(socket_, read_header_, HEADER_LENGTH, MSG_WAITALL);
+	int bytes = ::recv(socket_, &read_header_, sizeof(HEADER_TYPE), MSG_WAITALL);
 	
 	if (bytes < 0) {
 		perror("recv:");
@@ -177,7 +178,7 @@ void	gal::network::communicating::thread_read_header() {
 		exit(0);
 	}
 	
-	if (bytes < HEADER_LENGTH) {
+	if (bytes < (int)sizeof(HEADER_TYPE)) {
 		printf("%s\n", __PRETTY_FUNCTION__);
 		printf("not enough data\n");
 		exit(0);
@@ -198,14 +199,12 @@ void	gal::network::communicating::thread_read_body() {
 	}
 
 
-	if(bytes == 0)
-	{
+	if(bytes == 0) {
 		printf("connection is closed\n");
 		exit(0);
 	}
 	
-	if(bytes < message::header_length)
-	{
+	if(bytes < (int)sizeof(HEADER_TYPE)) {
 		printf("not enough data\n");
 		exit(0);
 	}

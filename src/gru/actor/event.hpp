@@ -4,20 +4,27 @@
 #include <gru/config.hpp>
 #include <gru/shape/desc.hpp>
 
-namespace glutpp { namespace actor {
-	class event {
-		public:
-			struct type {
-				enum e {
-					NONE = 0x0,
-					FIRE = 0x1,
-				};
-			};
-			
-			glutpp::actor::event::type::e		type_;
+namespace Neb {
+	namespace Event {
+		namespace Actor {
+			class Base {
+				public:
+					template<class Archive> void		serialize(Archive & ar, unsigned int const & version) {
+						ar & hash_code_;
+						serialize_derived(ar, version);
+					}
+					
 
-	};
-}
+					static int hash_code_;
+			};
+			class Fire {
+				public:
+					template<class Archive> void		serialize(Archive & ar, unsigned int const & version) {
+						Base::serialize(ar, version);
+					}
+			};
+		}
+	}
 }
 
 #endif

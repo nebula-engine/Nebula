@@ -18,16 +18,17 @@ namespace gal {
 		 */
 		class communicating {
 			public:
-				typedef gal::network::message			message_t;
+				typedef int	HEADER_TYPE;
 				typedef std::shared_ptr<communicating>		shared_t;
 				typedef std::vector<shared_t>			vector_t;
+				enum { MAX_MESSAGE_LENGTH = 10000 };
 			public:
 				/** ctor
 				 */
 				communicating( int socket );
 				/** write
 				 */
-				void					write(message_t::shared_t );
+				void					write(boost::shared_ptr<message>);
 				/** close
 				 */
 				void					close();
@@ -35,8 +36,8 @@ namespace gal {
 				/** thread write
 				 */
 				void					start();
-				virtual void				process(message_t::shared_t) = 0;
-				void					thread_write(message_t::shared_t );
+				virtual void				process(boost::shared_ptr<message>) = 0;
+				void					thread_write(boost::shared_ptr<message>);
 				/** thread write dispath
 				 */
 				void					thread_write_dispatch();
@@ -64,16 +65,15 @@ namespace gal {
 				 */
 				int					socket_;
 			private:
-				/** message
-				 */
-				message_t::shared_t			read_msg_;
-				HEADER_TYPE				read_header_;
-				char					read_buffer_[MAX_MESSAGE_LENGTH]
-				
-				HEADER_TYPE				write_header_;
+				/** @name Read Data Members @{ */
+				boost::shared_ptr<message>			read_msg_;
+				HEADER_TYPE					read_header_;
+				char						read_buffer_[MAX_MESSAGE_LENGTH];
+				/** @} */
+				HEADER_TYPE					write_header_;
 				/** message deque
 				 */
-				message_t::deque_t			write_queue_;
+				std::deque<boost::shared_ptr<message> >		write_queue_;
 				/** process body
 				 */
 				bool					terminate_;

@@ -21,6 +21,11 @@ namespace glutpp {
 				void	load_this(boost::shared_ptr<glutpp::actor::actor>);
 				void	load_parent(boost::shared_ptr<glutpp::actor::actor>);
 				
+				template <class Archive> void		serialize(Archive & ar, unsigned int const & version) {
+					ar & scene_;
+					ar & vec_;
+				}
+				
 				glutpp::scene::addr	scene_;
 				std::deque<int>		vec_;
 

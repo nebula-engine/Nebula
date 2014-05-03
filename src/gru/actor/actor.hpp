@@ -55,8 +55,12 @@ namespace glutpp {
 				virtual void			init(glutpp::actor::desc_s desc);
 				virtual void			cleanup();
 				virtual void			release();
-				virtual void			step(double time);
 				
+
+				virtual void			step(double time);
+				virtual void			step_local(double);
+				virtual void			step_remote(double);
+
 				
 				boost::shared_ptr<glutpp::actor::parent>		getParent();
 

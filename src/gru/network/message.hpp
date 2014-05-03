@@ -4,63 +4,44 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <sstream>
 
 #include <memory>
 #include <deque>
 
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
+
 #include <gru/shared.hpp>
+#include <gru/network/config.hpp>
+#include <gru/network/Types.hpp>
 
 namespace gal {
 	namespace network {
 		/// message
 		class message: public gru::shared {
 			public:
-				/// shared__t
-				typedef std::shared_ptr<message>		shared_t;
-				/// function_t
-				typedef std::function<void(shared_t)>		function_t;
-				/// deque_t
-				typedef std::deque<shared_t>			deque_t;
-				/// header length
-				enum
-				{
-					header_length	= sizeof(unsigned int),
-					max_body_length = 1048576
-				};
+				friend class gal::network::communicating;
 			public:
 				/// ctor
 				message();
-				void				set(void const * const, unsigned int);
+				//void				set(void const * const, unsigned int);
 				void				reset_head();
 				void				write(void const * const, size_t);
 				template<typename T> void	write(const T& t) {
 					write(&t, sizeof(T));
 				}
 				
-				template<class T> message&	operator<<(T t) {
+				/*template<class T> message&	operator<<(T t) {
 					t.serialize(*this, 0);
 					return *this;
-				}
+				}*/
 				
 				
 				void				read(void * const, size_t);
 				template<typename T> void	read(T& t) {
 					read(&t, sizeof(T));
 				}
-				/// data
-				const char*			data() const;
-				/// data
-				char*				data();
-				/// length
-				std::size_t			length() const;
-				/// body
-				const char*			body() const;
-				/// body
-				char*				body();
-				/// body length
-				std::size_t			body_length() const;
-				/// body length
-				void				body_length(std::size_t);
 				/// decode header
 				bool				decode_header();
 				/// encode header
@@ -71,12 +52,45 @@ namespace gal {
 				//char*				head_;
 				/// body length
 				//std::size_t			body_length_;
-				
+
 				// new implementation using stringstream
 				std::stringstream		ss_;
 		};
+		class omessage: public message {
+			public:
+				omessage();
+				/*template<class T> message&	operator&(T t) {
+					return operator<<(t);
+				}
+				template<class T> message&	operator<<(T t) {
+					t.serialize(*this, 0);
+					return *this;
+				}*/
+				boost::archive::binary_oarchive		ar_;
+		};
+		class imessage: public message {
+			public:
+				imessage();
+				/*template<class T> message&	operator&(T t) {
+					return operator<<(t);
+				}
+				template<class T> message&	operator>>(T t) {
+					t.serialize(*this, 0);
+					return *this;
+				}*/
+				boost::archive::binary_iarchive		ar_;
+		};
 	}
 }
+
+
+
+
+
+
+
+
+
 
 
 
