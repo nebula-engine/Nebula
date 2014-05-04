@@ -4,7 +4,9 @@
 #include <gru/actor/addr.hpp>
 #include <gru/actor/desc.hpp>
 #include <gru/actor/event.hpp>
-#include <gru/network/scene/message.hpp>
+#include <gru/Message/Actor/Create.hpp>
+#include <gru/Message/Actor/Update.hpp>
+#include <gru/Message/Actor/Event.hpp>
 #include <gru/scene/desc.hpp>
 #include <gru/network/message.hpp>
 
@@ -594,14 +596,14 @@ void neb::scene::scene::fire_remote(neb::Actor::Base_s actor) {
 	boost::shared_ptr<gal::network::omessage> msg(new gal::network::omessage);
 
 
-	glutpp::network::actor::event actor_event;
+	Neb::Message::Actor::Event actor_event;
 
 	actor_event.addr_.load_this(actor);
 
-	actor_event.event_.type_ = glutpp::actor::event::type::e::FIRE;
-
-	msg->write(glutpp::network::type::ACTOR_EVENT);
-
+	//actor_event.event_.type_ = glutpp::actor::event::type::e::FIRE;
+	
+	//msg->write(glutpp::network::type::ACTOR_EVENT);
+	
 	msg->ar_ << actor_event;
 
 	get_app()->send_client(msg);

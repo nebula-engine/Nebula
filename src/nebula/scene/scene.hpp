@@ -12,7 +12,7 @@
 
 #include <gru/config.hpp>
 #include <gru/scene/scene.hpp>
-#include <gru/light/desc.hpp>
+#include <gru/Graphics/light/desc.hpp>
 
 #include <nebula/config.hpp>
 //#include <nebula/scene/desc.hpp>

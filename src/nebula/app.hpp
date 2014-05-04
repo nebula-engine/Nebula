@@ -4,7 +4,7 @@
 //#include <galaxy/flag.hpp>
 //#include <galaxy/timer/timer_set.hpp>
 
-#include <gru/window/window.hpp>
+#include <gru/Graphics/window/window.hpp>
 
 #include <nebula/config.hpp>
 #include <nebula/network/server.hpp>
