@@ -104,7 +104,7 @@ void neb::scene::scene::create_actors(boost::shared_ptr<glutpp::scene::desc> des
 	for(auto it = desc->actors_.cbegin(); it != desc->actors_.cend(); ++it) {
 		auto ad = *it;
 
-		switch(ad->raw_->mode_create_) {
+		switch(ad->raw_wrapper_.ptr_->mode_create_) {
 			case glutpp::actor::mode_create::NOW:
 				printf("NOW\n");
 				create_actor_local(ad);
@@ -125,7 +125,7 @@ void		neb::scene::scene::add_deferred(boost::shared_ptr<glutpp::actor::desc> ad)
 
 	assert(ad);
 
-	char* n = ad->raw_->name_;
+	char* n = ad->raw_wrapper_.ptr_->name_;
 	assert(n);
 
 	int len = strlen(n);
@@ -145,7 +145,7 @@ boost::shared_ptr<neb::Actor::Base>	neb::scene::scene::create_actor(boost::share
 
 	boost::shared_ptr<neb::Actor::Base> actor;
 
-	switch(desc->raw_->type_.val_) {
+	switch(desc->raw_wrapper_.ptr_->type_.val_) {
 		case glutpp::actor::Type::E::RIGID_DYNAMIC:
 			actor.reset(new neb::Actor::Rigid_Dynamic(me));
 			// = Create_Rigid_Dynamic(ad);
