@@ -34,14 +34,15 @@ namespace glutpp {
 					}
 					/** @brief Save.
 					 * The pointer to the actor's Data object should already be set. */
-					template<class Archive> void	save(Archive & ar, unsigned int const & version) {
+					template<class Archive> void	save(Archive & ar, unsigned int const & version) const {
 						ar & addr_;
 						
 						assert(raw_);
 						
 						ar & *raw_;
 					}
-					
+					BOOST_SERIALIZATION_SPLIT_MEMBER();
+
 					/** @brief Address. */
 					glutpp::actor::addr			addr_;
 					/** @brief Data pointer.

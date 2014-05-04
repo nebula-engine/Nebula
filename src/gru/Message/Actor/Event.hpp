@@ -14,6 +14,8 @@
 #include <gru/actor/actor.hpp>
 #include <gru/Message/Actor/Base.hpp>
 
+/** @todo under what conditions is it necessary to */
+
 namespace Neb {
 	namespace Message {
 		namespace Actor {
@@ -21,8 +23,9 @@ namespace Neb {
 			class Event: public Neb::Message::Actor::Base {
 				public:
 					virtual void		serializeDerived(boost::archive::binary_oarchive & ar, unsigned int const & version);
+					virtual void		serializeDerived(boost::archive::binary_iarchive & ar, unsigned int const & version);
 				public:
-					glutpp::actor::addr				addr_;
+					//glutpp::actor::addr				addr_;
 					boost::shared_ptr<Neb::Event::Actor::Base>	event_;
 			};
 		}

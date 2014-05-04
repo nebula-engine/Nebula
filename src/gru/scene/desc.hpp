@@ -5,6 +5,8 @@
 
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
+#include <boost/serialization/nvp.hpp>
+
 
 #include <gru/master.hpp>
 #include <gru/actor/raw_factory.hpp>
@@ -28,7 +30,8 @@ namespace glutpp {
 					ar & boost::serialization::make_nvp("i",i_);
 					ar & boost::serialization::make_nvp("type",type_);
 					ar & boost::serialization::make_nvp("raw",raw_wrapper_);
-					ar & boost::serialization::make_nvp("actors",actors_);
+					/** @todo no idea why this fails */
+					//ar & boost::serialization::make_nvp("actors",actors_);
 				}
 
 				void			load(char const *);

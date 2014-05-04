@@ -10,7 +10,7 @@ namespace Neb {
 			/** @brief Destructor */
 			virtual ~Typed() {}
 			/** @brief Hash Code */
-			long int		hash_code() { return hash_code_; }
+			long int &		hash_code() { return hash_code_; }
 		private:
 			/** @brief Hash Code */
 			static long int		hash_code_;
@@ -54,7 +54,7 @@ namespace Neb {
 				ptr_.reset((T*)Neb::Factory<T>::global()->alloc(hash_code));
 				ar >> boost::serialization::make_nvp("object", *ptr_);
 			}
-			template<class Archive> void		save(Archive & ar, unsigned int const & version) {
+			template<class Archive> void		save(Archive & ar, unsigned int const & version) const {
 				ar << boost::serialization::make_nvp("hash_code", ptr_->hash_code());
 				ar << boost::serialization::make_nvp("object", *ptr_);
 			}

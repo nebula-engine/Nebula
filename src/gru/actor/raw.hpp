@@ -15,13 +15,13 @@
 #include <gru/shape/desc.hpp>
 #include <gru/actor/Type.hpp>
 #include <gru/Filter.hpp>
+#include <gru/Typed.hpp>
 
 //template void gal::reset<glutpp::actor::raw>(std::shared_ptr<glutpp::actor::raw>&);
 
 namespace glutpp {
 	namespace actor {
-
-		class raw {
+		class raw: public Neb::Typed {
 			public:
 				friend class glutpp::actor::raw_factory;
 

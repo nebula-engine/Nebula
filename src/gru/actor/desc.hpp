@@ -23,7 +23,7 @@ namespace glutpp {
 				friend class boost::serialization::access;
 				desc();
 				virtual ~desc() {}
-				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) const {
+				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("i",i_);
 					ar & boost::serialization::make_nvp("type",type_);
 					ar & boost::serialization::make_nvp("raw",raw_wrapper_);
