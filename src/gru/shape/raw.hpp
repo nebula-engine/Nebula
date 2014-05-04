@@ -19,7 +19,7 @@
 #include <gru/Math/Typedef.hpp>
 
 #include <gru/config.hpp>
-#include <gru/material.hpp>
+#include <gru/Graphics/material.hpp>
 
 //#include <gru/shape/desc.hpp>
 
@@ -39,11 +39,11 @@ namespace glutpp {
 				//void			load(tinyxml2::XMLElement*);
 				void			parse_type(char const *);
 
-				void			box(Neb::Math::Vec3);
-				void			box(tinyxml2::XMLElement*);
+				//void			box(Neb::Math::Vec3);
+				//void			box(tinyxml2::XMLElement*);
 
-				void			sphere(float);
-				void			sphere(tinyxml2::XMLElement*);
+				//void			sphere(float);
+				//void			sphere(tinyxml2::XMLElement*);
 				
 				template<class Archive>	void	serialize(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("type",type_);

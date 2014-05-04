@@ -10,7 +10,7 @@
 //#include <GL/gl.h>
 
 #include <gru/master.hpp>
-#include <gru/window/window.hpp>
+#include <gru/Graphics/window/window.hpp>
 #include <gru/free.hpp>
 
 void	print(unsigned char * s, int w, int h) {

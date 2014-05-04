@@ -53,8 +53,8 @@ void glutpp::scene::desc::load(tinyxml2::XMLElement* element) {
 }*/
 void glutpp::scene::desc::load(boost::shared_ptr<glutpp::scene::scene> scene) {
 	i_ = scene->i_;
-	raw_ = scene->raw_;
-
+	raw_wrapper_.ptr_ = scene->raw_;
+	
 	// now
 	for(auto it = scene->actors_.begin(); it != scene->actors_.end(); ++it)
 	{
@@ -64,7 +64,7 @@ void glutpp::scene::desc::load(boost::shared_ptr<glutpp::scene::scene> scene) {
 
 		ad->load(actor);
 
-		ad->raw_->mode_create_ = glutpp::actor::mode_create::NOW;
+		ad->getRaw()->mode_create_ = glutpp::actor::mode_create::NOW;
 
 		actors_.push_back(ad);
 	}
@@ -78,7 +78,7 @@ void glutpp::scene::desc::load(boost::shared_ptr<glutpp::scene::scene> scene) {
 
 		*ad = *desc;
 
-		ad->raw_->mode_create_ = glutpp::actor::mode_create::DEFERRED;
+		ad->getRaw()->mode_create_ = glutpp::actor::mode_create::DEFERRED;
 
 		actors_.push_back(ad);
 	}

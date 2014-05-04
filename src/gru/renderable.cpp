@@ -2,9 +2,9 @@
 
 #include <gru/scene/scene.hpp>
 #include <gru/renderable.hpp>
-#include <gru/gui/layout.hpp>
-#include <gru/Camera/View/Free.hpp>
-#include <gru/Camera/Projection/Perspective.hpp>
+#include <gru/Graphics/gui/layout.hpp>
+#include <gru/Graphics/Camera/View/Free.hpp>
+#include <gru/Graphics/Camera/Projection/Perspective.hpp>
 
 
 

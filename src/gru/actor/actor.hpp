@@ -21,8 +21,8 @@
 #include <gru/actor/raw.hpp>
 #include <gru/actor/desc.hpp>
 #include <gru/actor/parent.hpp>
-#include <gru/texture.hpp>
-#include <gru/material.hpp>
+#include <gru/Graphics/texture.hpp>
+#include <gru/Graphics/material.hpp>
 #include <gru/shape/shape.hpp>
 
 

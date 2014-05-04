@@ -1,0 +1,29 @@
+#ifndef __NEB_CAMERA_RIDEALONG_H__
+#define __NEB_CAMERA_RIDEALONG_H__
+
+#include <memory>
+#include <map>
+
+#include <gru/Graphics/window/window.hpp>
+#include <gru/Graphics/Camera/View/Base.hpp>
+#include <gru/config.hpp>
+
+namespace glutpp {
+	namespace Camera {
+		namespace View {
+			class ridealong: public glutpp::Camera::View::Base<float> {
+				public:
+					ridealong(glutpp::actor::actor_s);
+					virtual physx::PxMat44			view();
+					virtual void				step(double time);
+
+
+					glutpp::actor::actor_w		actor_;
+			};
+		}
+	}
+}
+
+#endif
+
+

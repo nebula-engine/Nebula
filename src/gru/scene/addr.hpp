@@ -10,6 +10,8 @@
 //#include <glutpp/actor/raw.h>
 //#include <glutpp/scene/raw.h>
 
+#include <deque>
+
 #include <gru/config.hpp>
 
 namespace glutpp {
@@ -22,7 +24,7 @@ namespace glutpp {
 			public:
 				void		load(boost::shared_ptr<glutpp::scene::scene> scene);
 			
-				template<class Archive> void	serialize(Archive& ar) {
+				template<class Archive> void	serialize(Archive& ar, unsigned int const & version) {
 					ar & vec_;
 				}
 

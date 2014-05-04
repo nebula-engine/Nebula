@@ -5,8 +5,8 @@
 #include <gru/config.hpp>
 #include <gru/shape/desc.hpp>
 #include <gru/shape/shape.hpp>
-#include <gru/light/desc.hpp>
-#include <gru/light/light.hpp>
+#include <gru/Graphics/light/desc.hpp>
+#include <gru/Graphics/light/light.hpp>
 
 
 glutpp::shape::desc::desc() {

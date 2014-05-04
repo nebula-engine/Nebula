@@ -13,7 +13,7 @@
 
 #include <gru/debug.hpp>
 #include <gru/network/message.hpp>
-#include <gru/window/window.hpp>
+#include <gru/Graphics/window/window.hpp>
 #include <gru/scene/scene.hpp>
 #include <gru/scene/desc.hpp>
 #include <gru/actor/actor.hpp>
@@ -80,7 +80,7 @@ void glutpp::actor::actor::init(glutpp::actor::desc_s desc) {
 	
 	// instead of allocating a new raw and copying it, just swap the one in the desc object, it shouldn't be used for anything else... swap it!!!
 	raw_.reset();
-	raw_.swap(desc->raw_);
+	raw_.swap(desc->raw_wrapper_.ptr_);
 }
 unsigned int glutpp::actor::actor::f() {
 	assert(raw_);

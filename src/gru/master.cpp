@@ -11,8 +11,8 @@
 
 #include <gru/config.hpp>
 #include <gru/master.hpp>
-#include <gru/window/desc.hpp>
-#include <gru/window/window.hpp>
+#include <gru/Graphics/window/desc.hpp>
+#include <gru/Graphics/window/window.hpp>
 
 glutpp::window::window_w	glutpp::master::window_main_;// = glutpp::window::window_s;
 glutpp::master_s		glutpp::master::g_master_;

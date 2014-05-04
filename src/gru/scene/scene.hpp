@@ -7,10 +7,10 @@
 #include <gru/Map.hpp>
 
 #include <gru/config.hpp>
-#include <gru/glsl/program.hpp>
+#include <gru/Graphics/glsl/program.hpp>
 #include <gru/scene/raw.hpp>
 #include <gru/actor/actor.hpp>
-#include <gru/Camera/View/Base.hpp>
+#include <gru/Graphics/Camera/View/Base.hpp>
 
 //#include <glutpp/shader.h>
 

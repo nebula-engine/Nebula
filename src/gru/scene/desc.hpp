@@ -13,23 +13,21 @@
 #include <gru/actor/desc.hpp>
 #include <gru/actor/raw.hpp>
 #include <gru/scene/raw.hpp>
-
+#include <gru/Typed.hpp>
 
 namespace glutpp {
 	namespace scene {
 		class desc {
 			public:
 				friend class boost::serialization::access;
-
+				
 				desc();
+				virtual ~desc() {}
 
 				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("i",i_);
 					ar & boost::serialization::make_nvp("type",type_);
-
-					raw_.reset(new glutpp::scene::raw);
-
-					ar & boost::serialization::make_nvp("raw",*raw_);
+					ar & boost::serialization::make_nvp("raw",raw_wrapper_);
 					ar & boost::serialization::make_nvp("actors",actors_);
 				}
 
@@ -40,8 +38,7 @@ namespace glutpp {
 				
 				int							i_;
 				int							type_;
-				boost::shared_ptr<glutpp::scene::raw>			raw_;
-				
+				Neb::WrapperTyped<glutpp::scene::raw>			raw_wrapper_;
 				std::vector<boost::shared_ptr<glutpp::actor::desc> >	actors_;
 		};
 	}

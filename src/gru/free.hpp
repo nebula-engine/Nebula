@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include <gru/Color/Color.hpp>
+#include <gru/Graphics/Color/Color.hpp>
 
 namespace glutpp {
 	void	draw_quad(float, float, float, float, gru::Color::color<float>);

@@ -19,13 +19,13 @@
 */
 
 #include <gru/config.hpp>
-#include <gru/glsl/program.hpp>
-#include <gru/light/light.hpp>
 #include <gru/shape/raw.hpp>
 #include <gru/shape/parent.hpp>
 #include <gru/master.hpp>
-#include <gru/material.hpp>
-#include <gru/mesh.hpp>
+#include <gru/Graphics/glsl/program.hpp>
+#include <gru/Graphics/light/light.hpp>
+#include <gru/Graphics/material.hpp>
+#include <gru/Graphics/mesh.hpp>
 
 namespace glutpp {
 	namespace shape {

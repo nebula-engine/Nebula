@@ -6,8 +6,8 @@
 #include <gru/Flag.hpp>
 
 #include <gru/config.hpp> // gru/config.hpp.in
-#include <gru/gui/layout.hpp>
-#include <gru/window/window.hpp>
+#include <gru/Graphics/gui/layout.hpp>
+#include <gru/Graphics/window/window.hpp>
 #include <gru/scene/scene.hpp>
 
 namespace glutpp

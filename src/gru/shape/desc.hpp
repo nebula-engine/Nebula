@@ -21,10 +21,10 @@
 #include <gru/Math/Serialization.hpp>
 
 #include <gru/config.hpp>
-#include <gru/material.hpp>
+#include <gru/Graphics/material.hpp>
 //#include <gru/shape/desc.hpp>
 #include <gru/shape/raw.hpp>
-#include <gru/light/desc.hpp>
+#include <gru/Graphics/light/desc.hpp>
 
 namespace glutpp {
 	namespace shape {

@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-#include <gru/window/window.hpp>
+#include <gru/Graphics/window/window.hpp>
 #include <gru/renderable.hpp>
 #include <gru/scene/desc.hpp>
 #include <gru/scene/scene.hpp>
 #include <gru/actor/actor.hpp>
-#include <gru/light/light.hpp>
-#include <gru/glsl/program.hpp>
-#include <gru/Camera/Projection/Perspective.hpp>
+#include <gru/Graphics/light/light.hpp>
+#include <gru/Graphics/glsl/program.hpp>
+#include <gru/Graphics/Camera/Projection/Perspective.hpp>
 
 
 glutpp::scene::scene::scene() {

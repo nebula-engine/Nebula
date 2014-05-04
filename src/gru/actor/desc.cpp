@@ -17,9 +17,9 @@ glutpp::actor::desc &		glutpp::actor::desc::operator<<(boost::shared_ptr<glutpp:
 	
 	i_ = actor->i_;
 	
-	glutpp::master::Global()->actor_raw_factory_->reset(raw_, actor->raw_->type_);
+	glutpp::master::Global()->actor_raw_factory_->reset(raw_wrapper_.ptr_, actor->raw_->type_);
 	
-	*raw_ = *actor->raw_;
+	*(raw_wrapper_.ptr_) = *actor->raw_;
 	
 	// actor
 	boost::shared_ptr<glutpp::actor::desc> ad;
@@ -41,7 +41,7 @@ glutpp::actor::desc &		glutpp::actor::desc::operator<<(boost::shared_ptr<glutpp:
 }
 glutpp::actor::desc& glutpp::actor::desc::operator=(const glutpp::actor::desc& ad) {
 	i_ = ad.i_;
-	raw_ = ad.raw_;
+	raw_wrapper_.ptr_ = ad.raw_wrapper_.ptr_;
 	actors_ = ad.actors_;
 	shapes_ = ad.shapes_;
 	return *this;

@@ -17,8 +17,8 @@
 #include <gru/config.hpp>
 #include <gru/shared.hpp>
 #include <gru/shape/desc.hpp>
-#include <gru/material.hpp>
-#include <gru/mesh.hpp>
+#include <gru/Graphics/material.hpp>
+#include <gru/Graphics/mesh.hpp>
 
 namespace glutpp {
 	namespace shape {

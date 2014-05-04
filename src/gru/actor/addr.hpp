@@ -6,6 +6,8 @@
 
 #include <deque>
 
+#include <boost/serialization/deque.hpp>
+
 #include <gru/scene/addr.hpp>
 //#include <gru/actor/actor.hpp>
 

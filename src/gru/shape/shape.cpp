@@ -3,7 +3,7 @@
 #include <gru/master.hpp>
 #include <gru/shape/shape.hpp>
 #include <gru/shape/desc.hpp>
-#include <gru/light/light.hpp>
+#include <gru/Graphics/light/light.hpp>
 //#include <
 
 glutpp::shape::shape::shape(boost::shared_ptr<glutpp::shape::parent> parent):
