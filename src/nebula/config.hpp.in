@@ -21,15 +21,15 @@ namespace neb {
 	namespace network {
 		class server;
 		class client;
-		typedef std::shared_ptr<server>		server_s;
-		typedef std::shared_ptr<client>		client_s;
+		typedef boost::shared_ptr<server>		server_s;
+		typedef boost::shared_ptr<client>		client_s;
 
 		namespace control {
 			namespace rigid_body {
 				class create;
 
 				class update;
-				typedef std::shared_ptr<update>		update_s;
+				typedef boost::shared_ptr<update>		update_s;
 			}
 		}
 	}
@@ -50,14 +50,14 @@ namespace neb {
 	};
 	
 	class app;
-	typedef std::shared_ptr<app>	app_s;
-	typedef std::weak_ptr<app>	app_w;
+	typedef boost::shared_ptr<app>	app_s;
+	typedef Neb::weak_ptr<app>	app_w;
 
 	/** @brief %Scene */
 	namespace scene {
 		class scene;
-		typedef std::shared_ptr<scene>	scene_s;
-		typedef std::weak_ptr<scene>	scene_w;
+		typedef boost::shared_ptr<scene>	scene_s;
+		typedef Neb::weak_ptr<scene>	scene_w;
 		typedef Neb::Map<scene>		scene_m;
 	}
 	class simulation_callback;
@@ -71,7 +71,7 @@ namespace neb {
 		class RigidActor;
 		namespace RigidBody {
 			class RigidBody;
-			typedef std::shared_ptr<RigidBody>	RigidBody_s;
+			typedef boost::shared_ptr<RigidBody>	RigidBody_s;
 		}
 		class Rigid_Dynamic;
 		class Rigid_Static;
@@ -79,13 +79,13 @@ namespace neb {
 		
 		
 		
-		typedef std::shared_ptr<raw>	raw_s;
+		typedef boost::shared_ptr<raw>	raw_s;
 		
 		typedef boost::shared_ptr<Base>		Base_s;
 		typedef boost::shared_ptr<RigidActor>	RigidActor_s;
 		typedef boost::shared_ptr<Base>		Base_s;
 		
-		typedef std::weak_ptr<Base>	Base_w;
+		typedef Neb::weak_ptr<Base>	Base_w;
 	}
 	/** @brief %Control */
 	namespace control {
@@ -97,20 +97,20 @@ namespace neb {
 			};
 
 			class raw;
-			typedef std::shared_ptr<raw>		raw_s;
+			typedef boost::shared_ptr<raw>		raw_s;
 
 			class control;
-			typedef std::shared_ptr<control>	control_s;
+			typedef boost::shared_ptr<control>	control_s;
 
 		}
 	}
 	/** @brief %Shape */
 	namespace shape {
 		class shape;
-		typedef std::shared_ptr<shape> shape_s;
+		typedef boost::shared_ptr<shape> shape_s;
 	}
 	class parent;
-	typedef std::shared_ptr<parent> parent_s;
+	typedef boost::shared_ptr<parent> parent_s;
 }
 
 #endif

@@ -9,20 +9,19 @@ namespace neb {
 		namespace control {
 			namespace rigid_body {
 
-				typedef gal::network::serial_ext<
-					neb::control::rigid_body::raw,
-					glutpp::actor::addr>
-						ser_create;
-
-				class create: public ser_create {
+				class create {
 					public:
-						glutpp::actor::addr_s	get_addr() { return std::get<1>(tup_); }
+						virtual void				serializeDerived(boost::archive::binary_oarchive & ar, unsigned int const & version);
+						virtual void				serializeDerived(boost::archive::binary_iarchive & ar, unsigned int const & version);
+
+						glutpp::actor::addr			addr_;
+						neb::control::rigid_body::raw		raw_;
 				};
-
-				class update: public ser_create {
+				
+				class update {
 					public:
-						glutpp::actor::addr_s			get_addr() { return std::get<1>(tup_); }
-						neb::control::rigid_body::raw_s		get_raw() { return std::get<0>(tup_); }
+						glutpp::actor::addr			addr_;
+						neb::control::rigid_body::raw		raw_;
 				};
 			}
 		}

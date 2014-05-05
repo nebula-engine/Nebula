@@ -30,72 +30,43 @@ namespace neb {
 	namespace scene {
 		class scene: public glutpp::scene::scene {
 			public:
-				typedef boost::shared_ptr<neb::Actor::Base>		base_t;
-				typedef std::shared_ptr<neb::Actor::Rigid_Dynamic>	rigid_dynamic_t;
-				typedef std::shared_ptr<neb::Actor::Rigid_Static>	rigid_static_t;
-				typedef std::shared_ptr<neb::Actor::Controller>		controller_t;
-				//typedef std::shared_ptr<neb::actor::vehicle>		vehicle_t;
-				typedef std::shared_ptr<neb::app>			app_t;
-				
-				enum
-				{
+				/** @todo replace types with inheritance */
+				enum {
 					NONE = 0,
 					LOCAL,
 					REMOTE
 				};
 
 				scene(neb::app_s);
-				void			init(boost::shared_ptr<glutpp::scene::desc>);
-				void			create_physics();
-				app_t			get_app();
+				void						init(boost::shared_ptr<glutpp::scene::desc>);
+				void						create_physics();
+				/** @name Accessors @{ */
+				Neb::weak_ptr<neb::app>				get_app();
+				Neb::weak_ptr<neb::Actor::Base>			get_actor(int i);
+				Neb::weak_ptr<neb::Actor::Base>			get_actor(boost::shared_ptr<glutpp::actor::addr>);
+				physx::PxMat44					getPose();
+				physx::PxMat44					getPoseGlobal();
+				/** @} */
 
-				base_t			get_actor(int i);
-				base_t			get_actor(boost::shared_ptr<glutpp::actor::addr>);
-
-				void			create_actors(boost::shared_ptr<glutpp::scene::desc>);
+				void						create_actors(boost::shared_ptr<glutpp::scene::desc>);
 			private:	
-				boost::shared_ptr<neb::Actor::Base>			create_actor(boost::shared_ptr<glutpp::actor::desc>);
+				boost::shared_ptr<neb::Actor::Base>		create_actor(boost::shared_ptr<glutpp::actor::desc>);
 			public:
-				boost::shared_ptr<neb::Actor::Base>			create_actor_local(boost::shared_ptr<glutpp::actor::desc>);
+				Neb::weak_ptr<neb::Actor::Base>			create_actor_local(boost::shared_ptr<glutpp::actor::desc>);
+				Neb::weak_ptr<neb::Actor::Base>			create_actor_remote(boost::shared_ptr<glutpp::actor::addr>, boost::shared_ptr<glutpp::actor::desc>);
+				void						add_deferred(boost::shared_ptr<glutpp::actor::desc>);
 
-				base_t			create_actor_remote(
-						boost::shared_ptr<glutpp::actor::addr>,
-						boost::shared_ptr<glutpp::actor::desc>);
+				/** @name Main Loop @{ */
+				void						draw();
+				void						step(double);
+				void						step_local(double);
+				void						step_remote(double);
+				/** @} */
 
-				void		add_deferred(boost::shared_ptr<glutpp::actor::desc>);
+				void						fire(neb::Actor::Base_s);
+				void						fire_local(neb::Actor::Base_s);
+				void						fire_remote(neb::Actor::Base_s);
 
-				//base_t	create_actor(glutpp::actor::desc*, base_t);
-
-				/*		rigid_dynamic_t		Create_Rigid_Dynamic(
-						neb::actor::desc*,
-						base_t = base_t());
-
-						rigid_static_t		Create_Rigid_Static(
-						neb::actor::desc*,
-						base_t);
-						*/
-				/*	rigid_static_t		Create_Rigid_Static_Plane(
-					glutpp::actor::desc*,
-					base_t);
-
-					controller_t		Create_Controller(glutpp::actor::desc*);
-					vehicle_t		create_vehicle();
-					*/
-
-
-				void					draw();
-
-				void					step(double);
-				void					step_local(double);
-				void					step_remote(double);
-
-
-				void					fire(neb::Actor::Base_s);
-				void					fire_local(neb::Actor::Base_s);
-				void					fire_remote(neb::Actor::Base_s);
-
-				physx::PxMat44			getPose();
-				physx::PxMat44			getPoseGlobal();
 
 
 				// networking

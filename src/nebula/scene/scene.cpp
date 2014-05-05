@@ -9,6 +9,8 @@
 #include <gru/Message/Actor/Event.hpp>
 #include <gru/scene/desc.hpp>
 #include <gru/network/message.hpp>
+#include <gru/Typed.hpp>
+#include <gru/Memory/smart_ptr.hpp>
 
 #include <nebula/config.hpp> // nebula/config.hpp.in
 #include <nebula/app.hpp>
@@ -48,19 +50,16 @@ void neb::scene::scene::init(boost::shared_ptr<glutpp::scene::desc> desc) {
 
 	create_actors(desc);
 }
-std::shared_ptr<neb::app> neb::scene::scene::get_app() {
-
-	assert(!app_.expired());
-
-	return app_.lock();
+Neb::weak_ptr<neb::app>			neb::scene::scene::get_app() {
+	return app_;
 }
-physx::PxMat44		neb::scene::scene::getPose() {
+physx::PxMat44				neb::scene::scene::getPose() {
 	return physx::PxMat44();
 }
 physx::PxMat44		neb::scene::scene::getPoseGlobal() {
 	return physx::PxMat44();
 }
-boost::shared_ptr<neb::Actor::Base>		neb::scene::scene::get_actor(int i) {
+Neb::weak_ptr<neb::Actor::Base>		neb::scene::scene::get_actor(int i) {
 	auto it = actors_.find(i);
 	boost::shared_ptr<neb::Actor::Base> a;
 	if(it == actors_.end())
@@ -72,21 +71,20 @@ boost::shared_ptr<neb::Actor::Base>		neb::scene::scene::get_actor(int i) {
 		return a;
 	}
 }
-boost::shared_ptr<neb::Actor::Base>	neb::scene::scene::get_actor(boost::shared_ptr<glutpp::actor::addr> addr) {
-	
-	boost::shared_ptr<neb::Actor::Base> actor;
+Neb::weak_ptr<neb::Actor::Base>		neb::scene::scene::get_actor(boost::shared_ptr<glutpp::actor::addr> addr) {
 	
 	std::deque<int> vec = addr->vec_;
 	assert(vec);
 	
-	if(vec.empty()) return actor;
+	assert(!vec.empty());
+	//if(vec.empty()) return actor;
 	
 	int i = vec.front();
 	vec.pop_front();
 	
-	actor = get_actor(i);
+	auto actor = get_actor(i);
 	
-	if(!actor) return actor;
+	//if(!actor) return actor;
 	
 	
 	if(!vec.empty())
@@ -140,11 +138,13 @@ void		neb::scene::scene::add_deferred(boost::shared_ptr<glutpp::actor::desc> ad)
 }
 boost::shared_ptr<neb::Actor::Base>	neb::scene::scene::create_actor(boost::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
-
+	
 	auto me = boost::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
 
-	boost::shared_ptr<neb::Actor::Base> actor;
+	long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
 
+	Neb::unique_ptr<neb::Actor::Base> actor(Neb::Factory<glutpp::actor::actor>::global()->alloc(hash_code));
+	/*
 	switch(desc->raw_wrapper_.ptr_->type_.val_) {
 		case glutpp::actor::Type::E::RIGID_DYNAMIC:
 			actor.reset(new neb::Actor::Rigid_Dynamic(me));
@@ -170,12 +170,13 @@ boost::shared_ptr<neb::Actor::Base>	neb::scene::scene::create_actor(boost::share
 		default:
 			abort();
 	}
+	*/
 
 	actor->init(desc);
-
+	
 	return actor;	
 }
-boost::shared_ptr<neb::Actor::Base>		neb::scene::scene::create_actor_local(boost::shared_ptr<glutpp::actor::desc> desc) {
+Neb::weak_ptr<neb::Actor::Base>			neb::scene::scene::create_actor_local(boost::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	auto actor = create_actor(desc);
@@ -205,24 +206,18 @@ boost::shared_ptr<neb::Actor::Base>		neb::scene::scene::create_actor_local(boost
 
 	return actor;	
 }
-boost::shared_ptr<neb::Actor::Base> neb::scene::scene::create_actor_remote(
-		boost::shared_ptr<glutpp::actor::addr> addr,
-		boost::shared_ptr<glutpp::actor::desc> desc)
-{
+Neb::weak_ptr<neb::Actor::Base>			neb::scene::scene::create_actor_remote(boost::shared_ptr<glutpp::actor::addr> addr, boost::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	auto actor = get_actor(addr);
 	
-	if(actor)
-	{
+	if(actor) {
 		actor = actor->create_actor_remote(addr, desc);
-	}
-	else
-	{
+	} else {
 		int i = desc->i_;
 		actor = create_actor(desc);
 		
-		actors_[i] = actor;
+		actors_[i].swap(actor);
 	}
 
 	return actor;

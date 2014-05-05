@@ -6,17 +6,16 @@
 #include <gru/Graphics/window/window.hpp>
 #include <gru/scene/desc.hpp>
 #include <gru/network/message.hpp>
+#include <gru/master.hpp>
 
-#include <nebula/config.hpp>
+#include <nebula/config.hpp> // nebula/config.hpp.in
 #include <nebula/actor/rigid_body/rigid_body.hpp>
 #include <nebula/control/rigid_body/control.hpp>
 #include <nebula/app.hpp>
 #include <nebula/network/message.hpp>
 #include <nebula/physics.hpp>
 
-neb::app::app():
-	flag_(0)
-{
+neb::app::app(): flag_(0){
 	NEBULA_DEBUG_0_FUNCTION;
 }
 void neb::app::f(unsigned int flag) {
@@ -28,20 +27,20 @@ unsigned int neb::app::f() {
 void neb::app::init() {
 	NEBULA_DEBUG_0_FUNCTION;
 }
-glutpp::window::window_s neb::app::create_window(int w, int h, int x, int y, char const * title) {
+Neb::weak_ptr<glutpp::window::window>			neb::app::create_window(int w, int h, int x, int y, char const * title) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	glutpp::window::desc_s wd(new glutpp::window::desc(w,h,x,y,title));
+	boost::shared_ptr<glutpp::window::desc> wd(new glutpp::window::desc(w,h,x,y,title));
 	
 	auto window = glutpp::master::Global()->create_window<glutpp::window::window>(wd);
 	
-	printf("window use count = %i\n", (int)window.use_count());
+	//printf("window use count = %i\n", (int)window.use_count());
 	
 	window->resize();
 	
-	windows_.push_back(window);
+	//windows_.push_back(window);
 
-	printf("window use count = %i\n", (int)window.use_count());
+	//printf("window use count = %i\n", (int)window.use_count());
 
 	return window;
 }

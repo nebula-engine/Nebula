@@ -11,7 +11,7 @@
 #include <nebula/network/client.hpp>
 
 namespace neb {
-	class app: public std::enable_shared_from_this<app>, public gal::flag<> {
+	class app: public boost::enable_shared_from_this<app>, public gal::flag<> {
 		public:
 			struct flag {
 				enum e {
@@ -21,10 +21,10 @@ namespace neb {
 			app();
 			void				init();
 
-			glutpp::window::window_s	create_window(int, int, int, int, char const *);
+			Neb::weak_ptr<glutpp::window::window>		create_window(int, int, int, int, char const *);
 
-			neb::scene::scene_s		load_scene_local(glutpp::scene::desc_s);
-			neb::scene::scene_s		load_scene_remote(glutpp::scene::desc_s);
+			neb::scene::scene_s				load_scene_local(glutpp::scene::desc_s);
+			neb::scene::scene_s				load_scene_remote(glutpp::scene::desc_s);
 
 			void				load_layout(int,char const *);
 
@@ -51,13 +51,14 @@ namespace neb {
 			void				send_client(boost::shared_ptr<gal::network::message>);
 
 			int				transmit_scenes(boost::shared_ptr<neb::network::communicating>);
-
-			void				recv_scene_create(	std::shared_ptr<gal::network::message>);
-			void				recv_actor_create(	std::shared_ptr<gal::network::message>);
-			void				recv_actor_update(	std::shared_ptr<gal::network::message>);
-			void				recv_actor_event(	std::shared_ptr<gal::network::message>);
-			void				recv_control_create(	std::shared_ptr<gal::network::message>);
-			void				recv_control_update(	std::shared_ptr<gal::network::message>);
+			
+			/** @todo consider putting following functions into the messages themselves: would be cleaner that way. */
+			void				recv_scene_create(std::shared_ptr<gal::network::message>);
+			void				recv_actor_create(std::shared_ptr<gal::network::message>);
+			void				recv_actor_update(std::shared_ptr<gal::network::message>);
+			void				recv_actor_event(std::shared_ptr<gal::network::message>);
+			void				recv_control_create(std::shared_ptr<gal::network::message>);
+			void				recv_control_update(std::shared_ptr<gal::network::message>);
 
 
 			void				f(unsigned int);
@@ -65,7 +66,7 @@ namespace neb {
 		public:
 			unsigned int			flag_;
 
-			Neb::Map<glutpp::window::window>	windows_;
+			//Neb::Map<glutpp::window::window>	windows_;
 			Neb::Map<glutpp::gui::layout>		layouts_;
 			Neb::Map<neb::scene::scene>		scenes_;
 

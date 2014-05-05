@@ -43,7 +43,7 @@ namespace neb {
 						boost::signals2::connection	key_fun_;
 					} conn_;
 
-					gal::control::control		pid_;
+					//gal::control::control		pid_;
 
 					double last_;
 			};
