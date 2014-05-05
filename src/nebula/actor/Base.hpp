@@ -3,6 +3,7 @@
 
 #include <memory>
 
+#include <boost/signals2.hpp>
 
 //#include <tinyxml/tinyxml.h>
 

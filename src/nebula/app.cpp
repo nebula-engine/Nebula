@@ -2,8 +2,8 @@
 
 #include <gru/actor/event.hpp>
 #include <gru/renderable.hpp>
-#include <gru/window/desc.hpp>
-#include <gru/window/window.hpp>
+#include <gru/Graphics/window/desc.hpp>
+#include <gru/Graphics/window/window.hpp>
 #include <gru/scene/desc.hpp>
 #include <gru/network/message.hpp>
 

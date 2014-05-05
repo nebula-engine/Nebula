@@ -1,8 +1,6 @@
 #ifndef __NEBULA_CONTROL_RIGID_BODY_CONTROL_H__
 #define __NEBULA_CONTROL_RIGID_BODY_CONTROL_H__
 
-#include <galaxy/control/control.hpp>
-
 #include <nebula/actor/Rigid_Actor.hpp>
 #include <nebula/config.hpp>
 #include <nebula/control/rigid_body/raw.hpp>
@@ -29,8 +27,8 @@ namespace neb {
 					void				step_local1(double);
 	
 
-					math::vec3<float>			f();
-					math::vec3<float>			t();
+					physx::PxVec3			f();
+					physx::PxVec3			t();
 
 					void				print();
 				private:
@@ -42,7 +40,7 @@ namespace neb {
 
 					struct
 					{
-						key_fun_c		key_fun_;
+						boost::signals2::connection	key_fun_;
 					} conn_;
 
 					gal::control::control		pid_;
