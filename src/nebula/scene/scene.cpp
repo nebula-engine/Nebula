@@ -144,33 +144,6 @@ boost::shared_ptr<neb::Actor::Base>	neb::scene::scene::create_actor(boost::share
 	long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
 
 	Neb::unique_ptr<neb::Actor::Base> actor(Neb::Factory<glutpp::actor::actor>::global()->alloc(hash_code));
-	/*
-	switch(desc->raw_wrapper_.ptr_->type_.val_) {
-		case glutpp::actor::Type::E::RIGID_DYNAMIC:
-			actor.reset(new neb::Actor::Rigid_Dynamic(me));
-			// = Create_Rigid_Dynamic(ad);
-			break;
-		case glutpp::actor::Type::E::RIGID_STATIC:
-			actor.reset(new neb::Actor::Rigid_Static(me));
-			// = Create_Rigid_Static(ad);
-			break;
-		case glutpp::actor::Type::E::PLANE:
-			//actor = Create_Rigid_Static_Plane(ad);
-			printf("not implemented\n");
-			abort();
-			break;
-		case glutpp::actor::Type::E::CONTROLLER:
-			printf("not implemented\n");
-			abort();
-			//actor = Create_Controller(ad);
-			break;
-		case glutpp::actor::Type::E::EMPTY:
-			actor.reset(new neb::Actor::empty(me));
-			break;
-		default:
-			abort();
-	}
-	*/
 
 	actor->init(desc);
 	
