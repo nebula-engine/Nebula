@@ -142,12 +142,12 @@ boost::shared_ptr<neb::Actor::Base>	neb::scene::scene::create_actor(boost::share
 	auto me = boost::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
 
 	long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
-
-	Neb::unique_ptr<neb::Actor::Base> actor(Neb::Factory<glutpp::actor::actor>::global()->alloc(hash_code));
-
+	
+	Neb::unique_ptr<neb::Actor::Base> actor((neb::Actor::Base*)Neb::Factory<glutpp::actor::actor>::global()->alloc(hash_code));
+	
 	actor->init(desc);
 	
-	return actor;	
+	return boost::shared_ptr<neb::Actor::Base>();
 }
 Neb::weak_ptr<neb::Actor::Base>			neb::scene::scene::create_actor_local(boost::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
@@ -182,15 +182,32 @@ Neb::weak_ptr<neb::Actor::Base>			neb::scene::scene::create_actor_local(boost::s
 Neb::weak_ptr<neb::Actor::Base>			neb::scene::scene::create_actor_remote(boost::shared_ptr<glutpp::actor::addr> addr, boost::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
-	auto actor = get_actor(addr);
+	auto parent = get_actor(addr);
+
+	Neb::weak_ptr<neb::Actor::Base> weak;
 	
-	if(actor) {
-		actor = actor->create_actor_remote(addr, desc);
+	if(parent) {
+		weak = parent->create_actor_remote(addr, desc);
 	} else {
 		int i = desc->i_;
-		actor = create_actor(desc);
+		//actor = create_actor(desc);
+
+
+		auto me = boost::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
+
+		long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
+
+		Neb::unique_ptr<neb::Actor::Base> actor((neb::Actor::Base*)Neb::Factory<glutpp::actor::actor>::global()->alloc(hash_code));
 		
-		actors_[i].swap(actor);
+		actor->init(desc);
+		
+		Neb::Map<glutpp::actor::actor>::value_type p;
+		p.first = i;
+		p.second.swap(actor);
+
+		actors_.map_.insert(p);
+		
+		weak = actor;
 	}
 
 	return actor;
