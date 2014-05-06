@@ -13,6 +13,7 @@
 #include <gru/master.hpp>
 #include <gru/Graphics/window/desc.hpp>
 #include <gru/Graphics/window/window.hpp>
+#include <gru/Memory/smart_ptr.hpp>
 
 glutpp::window::window_w	glutpp::master::window_main_;// = glutpp::window::window_s;
 glutpp::master_s		glutpp::master::g_master_;
@@ -56,15 +57,14 @@ unsigned int glutpp::master::master::f() {
 void glutpp::master::master::f(unsigned int flag) {
 	flag_ = flag;
 }
-glutpp::window::window_s glutpp::master::get_window(GLFWwindow* window) {
-	auto w = windows_[window];
-
-	if(w.expired()) {
-		return glutpp::window::window_s();
-	}
-	else {
-		return w.lock();
-	}
+Neb::weak_ptr<glutpp::window::window>		glutpp::master::get_window(GLFWwindow* window) {
+	auto it = windows_.find(window);
+	
+	Neb::weak_ptr<glutpp::window::window> w(it->second);
+	
+	//Neb::weak_ptr<glutpp::window::window> w(windows_[window]);
+	
+	return w;
 }
 void glutpp::master::static_error_fun(int error, char const * description) {
 	printf("%s\n", description);
@@ -74,29 +74,24 @@ void glutpp::master::static_window_pos_fun(GLFWwindow* window, int x, int y){
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	auto w = master::Global()->get_window(window);
-	assert(w);
-	if(w) w->callback_window_pos_fun(window,x,y);
+	
+	w->callback_window_pos_fun(window,x,y);
 }
-void glutpp::master::static_window_size_fun(GLFWwindow* window, int w, int h){
+void glutpp::master::static_window_size_fun(GLFWwindow* window, int width, int h){
 	GLUTPP_DEBUG_0_FUNCTION;
-
-	auto wnd = master::Global()->get_window(window);
-	assert(w);
-	if(wnd) wnd->callback_window_size_fun(window,w,h);
+	auto w = master::Global()->get_window(window);
+	w->callback_window_size_fun(window, width, h);
 }
 void glutpp::master::static_window_close_fun(GLFWwindow* window){
 	GLUTPP_DEBUG_0_FUNCTION;
-	
 	auto w = master::Global()->get_window(window);
-	assert(w);
-	if(w) w->callback_window_close_fun(window);
+	w->callback_window_close_fun(window);
 }
 void glutpp::master::static_window_refresh_fun(GLFWwindow* window) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	auto w = master::Global()->get_window(window);
-	assert(w);
-	if(w) w->callback_window_refresh_fun(window);
+	w->callback_window_refresh_fun(window);
 }
 void glutpp::master::static_mouse_button_fun(GLFWwindow* window, int button, int action, int mods){
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -124,7 +119,7 @@ void glutpp::master::static_key_fun(GLFWwindow* window, int key, int scancode, i
 		abort();
 	}
 }
-int glutpp::master::reg(glutpp::window::window_s w) {
+GLFWwindow*		glutpp::master::reg(glutpp::window::window_s w) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	GLFWwindow* g = glfwCreateWindow(
@@ -143,7 +138,7 @@ int glutpp::master::reg(glutpp::window::window_s w) {
 
 	w->window_ = g;
 
-	windows_[g] = w;
+	
 
 	glfwMakeContextCurrent(g);
 
@@ -173,7 +168,7 @@ int glutpp::master::reg(glutpp::window::window_s w) {
 	//if(all(glutpp::master::option::SHADERS)) create_programs();
 	create_programs();
 
-	return 0;
+	return g;
 }
 
 void	glutpp::master::create_programs() {

@@ -65,21 +65,21 @@ namespace glutpp {
 
 				scene();
 				~scene();
-				void			i(int ni);
-				int			i();
-				unsigned int		f();
-				void			f(unsigned int flag);
-				void			init(glutpp::scene::desc_s desc);
-				void			release();
-				physx::PxMat44	get_pose();
+				void				i(int ni);
+				int				i();
+				unsigned int			f();
+				void				f(unsigned int flag);
+				void				init(glutpp::scene::desc_s desc);
+				void				release();
+				physx::PxMat44			get_pose();
 				/** @brief render */
-				void			render(
+				void				render(
 						double time,
 						std::shared_ptr<glutpp::Camera::View::Base<float> >,
 						std::shared_ptr<glutpp::Camera::Projection::Base>,
 						glutpp::window::window_s);
-				void			draw(glutpp::window::window_s window);
-				void			resize(int w, int h);
+				void				draw(glutpp::window::window_s window);
+				void				resize(int w, int h);
 
 
 			public:

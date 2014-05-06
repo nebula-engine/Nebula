@@ -6,54 +6,64 @@
 #include <functional>
 #include <stdio.h>
 
-#include <boost/shared_ptr.hpp>
+#include <gru/Memory/smart_ptr.hpp>
 
 //#include <galaxy/except.hpp>
 
 namespace Neb {
 	template <class T> class Map {
 		public:
-			typedef boost::shared_ptr<T>		mapped_type;
-			typedef std::map<int,mapped_type>	map_type;
-			typedef typename map_type::iterator	iter;
-			
+			typedef Neb::unique_ptr<T>			mapped_type;
+			typedef Neb::weak_ptr<T>			weak_type;
+			typedef std::map<int,mapped_type>		map_type;
+			typedef typename map_type::iterator		iter;
+			typedef typename map_type::value_type		value_type_const;
+			typedef std::pair<int,mapped_type>		value_type;
 			
 			Map():next_(0) {}
 			mapped_type& operator[](const int& k) {
 				return map_[k];
 			}
-			template <class U = T> void push_back(mapped_type u) {
+			void		add(value_type& p) {
+				p.first = next_++;
+				map_.insert(p);
+			}
+			void		push_back(mapped_type& u) {
 				//printf("%s\n", __PRETTY_FUNCTION__);
 				
 				assert(u);
-
+				
 				u->i(next_);
+				
+				//value_type p;
 
-				map_[next_] = u;
+				//p.first = next_;
+				//p.second.swap(u);
+				
+				map_.emplace(next_, std::move(u));
+				
+				//map_.insert(p);
 
 				next_++;
 			}
-			iter find(int a)
-			{
+			iter find(int a) {
 				auto it = map_.find( a );
 
 				return it;
 			}
-			template <class U> void foreach(std::function<void(U*)> func)
+			//template <class U> void foreach(std::function<void(U*)> func)
+			template <class U> void foreach(std::function<void(Neb::weak_ptr<U>)> func)
 			{
 				assert(func);
 				
-				mapped_type u;
-				for(auto it = map_.begin(); it != map_.end(); ++it)
-				{
-					u = boost::dynamic_pointer_cast<U>(it->second);
+				weak_type u;
+				for(auto it = map_.begin(); it != map_.end(); ++it) {
+					u = Neb::dynamic_pointer_cast<T,U>(it->second);
 
-					if(u)
-					{
-						func(u.get());
-					}
-					else
-					{
+					if(u) {
+						//func(u.get());
+						func(u);
+					} else {
 						throw;// gal::except("null pointer");
 					}
 				}

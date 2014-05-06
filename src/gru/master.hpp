@@ -18,6 +18,7 @@
 #include <GLFW/glfw3.h>
 
 #include <gru/config.hpp> // gru/config.hpp.in
+#include <gru/Memory/smart_ptr.hpp>
 
 #include <gru/Flag.hpp>
 
@@ -69,17 +70,16 @@ namespace glutpp {
 			window::window_s	Main_Window();
 			void			Main_Window(window::window_s);
 			
-			template <class U> std::shared_ptr<U>	create_window(glutpp::window::desc_s wd)
-			{
+			template <class U> Neb::weak_ptr<U>	create_window(boost::shared_ptr<glutpp::window::desc> wd) {
 				GLUTPP_DEBUG_0_FUNCTION;
 
-				auto p = new U(wd);
+				Neb::unique_ptr<U> u(new U(wd));
 				
-				std::shared_ptr<U> u(p);
-
-				reg(u);
+				auto g = reg(u);
 
 				u->init();
+
+				windows_[g] = u;
 				
 				auto wm = Main_Window();
 				if(!wm) {
@@ -95,16 +95,16 @@ namespace glutpp {
 			}
 
 			/** @name Search @{ */
-			boost::shared_ptr<glutpp::actor::actor>		getActor(glutpp::actor::addr);
+			boost::shared_ptr<glutpp::actor::actor>			getActor(glutpp::actor::addr);
 
 
-			glutpp::window::window_s	get_window(GLFWwindow*);
-			int				reg(glutpp::window::window_s);
+			Neb::weak_ptr<glutpp::window::window>			get_window(GLFWwindow*);
+			GLFWwindow*						reg(glutpp::window::window_s);
 
-			glutpp::actor::raw_factory_s	get_raw_factory();
+			glutpp::actor::raw_factory_s				get_raw_factory();
 
-			unsigned int			f();
-			void				f(unsigned int);
+			unsigned int						f();
+			void							f(unsigned int);
 		public:
 			/** @name Font @{ */
 			FT_Library						ft_;
@@ -123,8 +123,8 @@ namespace glutpp {
 			unsigned int						flag_;
 			
 			//GLFWwindow*						currentIdleWindow_;
-			std::map<GLFWwindow*,glutpp::window::window_w>		windows_;
-			static glutpp::window::window_w				window_main_;
+			std::map< GLFWwindow*, Neb::unique_ptr<glutpp::window::window> >			windows_;
+			static glutpp::window::window_w								window_main_;
 			
 			std::map<int, std::shared_ptr<glutpp::glsl::program> >	programs_;
 			std::shared_ptr<glutpp::glsl::program>			current_;

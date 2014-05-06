@@ -73,8 +73,9 @@ void glutpp::gui::layout::draw() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	//jess::clog << "objects_.size()=" << objects_.map_.size() << std::endl;
 
-	objects_.foreach<glutpp::gui::object::object>(
-			&glutpp::gui::object::object::draw);
+	for(auto it = objects_.map_.begin(); it != objects_.map_.end(); ++it) {
+		it->second->draw();
+	}
 }
 void glutpp::gui::layout::connect() {
 	printf("%s\n", __PRETTY_FUNCTION__);
@@ -138,16 +139,20 @@ int glutpp::gui::layout::search(int button, int action, int mods) {
 
 	for(auto it = objects_.map_.begin(); it != objects_.map_.end(); ++it) {
 
-		auto o = (*it).second;
+		//auto o = (*it).second;
+		
+		printf("object %f %f %f %f\n",
+				it->second->data_.x_,
+				it->second->data_.y_,
+				it->second->data_.w_,
+				it->second->data_.h_);	
+		
+		if(x <   it->second->data_.x_) continue;
+		if(x > ( it->second->data_.x_ + it->second->data_.w_)) continue;
+		if(y >  -it->second->data_.y_) continue;
+		if(y < (-it->second->data_.y_ - it->second->data_.h_)) continue;
 
-		printf("object %f %f %f %f\n", o->data_.x_, o->data_.y_, o->data_.w_, o->data_.h_);	
-
-		if(x < o->data_.x_) continue;
-		if(x > (o->data_.x_ + o->data_.w_)) continue;
-		if(y > -o->data_.y_) continue;
-		if(y < (-o->data_.y_ - o->data_.h_)) continue;
-
-		return o->mouse_button_fun(button, action, mods);
+		return it->second->mouse_button_fun(button, action, mods);
 	}
 
 	return 0;

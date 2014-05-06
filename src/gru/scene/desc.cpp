@@ -4,6 +4,7 @@
 
 #include <boost/archive/xml_iarchive.hpp>
 
+#include <gru/actor/desc.hpp>
 #include <gru/scene/desc.hpp>
 #include <gru/scene/scene.hpp>
 
@@ -56,27 +57,25 @@ void glutpp::scene::desc::load(boost::shared_ptr<glutpp::scene::scene> scene) {
 	raw_wrapper_.ptr_ = scene->raw_;
 	
 	// now
-	for(auto it = scene->actors_.begin(); it != scene->actors_.end(); ++it)
-	{
-		auto actor = it->second;
-
+	for(auto it = scene->actors_.begin(); it != scene->actors_.end(); ++it) {
+		//auto actor = it->second;
+		
 		boost::shared_ptr<glutpp::actor::desc> ad(new glutpp::actor::desc);
-
-		ad->load(actor);
-
+		
+		ad->load(it->second);
+		
 		ad->getRaw()->mode_create_ = glutpp::actor::mode_create::NOW;
 
 		actors_.push_back(ad);
 	}
 
 	// deferred
-	for(auto it = scene->actors_deferred_.begin(); it != scene->actors_deferred_.end(); ++it)
-	{
-		auto desc = it->second;
+	for(auto it = scene->actors_deferred_.begin(); it != scene->actors_deferred_.end(); ++it) {
+		//auto desc = it->second;
 
 		boost::shared_ptr<glutpp::actor::desc> ad(new glutpp::actor::desc);
 
-		*ad = *desc;
+		*ad = *(it->second);
 
 		ad->getRaw()->mode_create_ = glutpp::actor::mode_create::DEFERRED;
 

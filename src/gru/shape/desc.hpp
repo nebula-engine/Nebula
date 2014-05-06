@@ -50,7 +50,7 @@ namespace glutpp {
 					ar & boost::serialization::make_nvp("lights",lights_);
 				}
 
-				glutpp::shape::desc & 		operator<<(boost::shared_ptr<glutpp::shape::shape>);
+				glutpp::shape::desc & 		operator<<(Neb::unique_ptr<glutpp::shape::shape> const &);
 				//void			load(tinyxml2::XMLElement*);
 				
 				int							i_;

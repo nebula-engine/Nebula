@@ -32,9 +32,8 @@ namespace glutpp {
 				}
 				
 				// make this an archive...
-				desc&		operator<<(boost::shared_ptr<glutpp::actor::actor> const & actor);
-
-				void			load(boost::shared_ptr<glutpp::actor::actor>);
+				desc&			operator<<(boost::shared_ptr<glutpp::actor::actor> const & actor);
+				void			load(Neb::unique_ptr<glutpp::actor::actor> const &);
 				//void			add_shape(glutpp::shape::desc);
 				desc&			operator=(desc const &);
 

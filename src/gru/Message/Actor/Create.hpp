@@ -17,7 +17,7 @@ namespace glutpp {
 	namespace network {
 		namespace actor {
 			struct create {
-				void	load(boost::shared_ptr<glutpp::actor::actor> actor);
+				void				load(Neb::unique_ptr<glutpp::actor::actor> actor);
 
 				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 					ar & addr_;

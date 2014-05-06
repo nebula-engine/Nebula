@@ -3,7 +3,7 @@
 #include <gru/actor/actor.hpp>
 #include <gru/Message/Actor/Create.hpp>
 
-void glutpp::network::actor::create::load(boost::shared_ptr<glutpp::actor::actor> actor) {
+void		glutpp::network::actor::create::load(Neb::unique_ptr<glutpp::actor::actor> actor) {
 	assert(actor);
 	
 	addr_.load_parent(actor);

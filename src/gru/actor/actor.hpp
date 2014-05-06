@@ -47,9 +47,9 @@ namespace glutpp {
 				actor(boost::shared_ptr<glutpp::actor::parent> parent);
 
 				void				i(int ni);
-				int				i();
+				int				i() const;
 
-				unsigned int			f();
+				unsigned int			f() const;
 				void				f(unsigned int flag);
 
 				virtual void			init(glutpp::actor::desc_s desc);

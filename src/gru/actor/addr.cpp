@@ -2,15 +2,16 @@
 #include <gru/actor/actor.hpp>
 #include <gru/actor/addr.hpp>
 
-void		glutpp::actor::addr::load_this(boost::shared_ptr<glutpp::actor::actor> actor) {
-	assert(actor);
+void		glutpp::actor::addr::load_this(Neb::unique_ptr<glutpp::actor::actor> const & actor) {
+	//assert(actor);
 
 	load_parent(actor);
 	
 	int i = actor->i();
+
 	vec_.push_back(i);
 }
-void		glutpp::actor::addr::load_parent(boost::shared_ptr<glutpp::actor::actor> actor0) {
+void		glutpp::actor::addr::load_parent(Neb::unique_ptr<glutpp::actor::actor> const & actor0) {i
 	assert(actor0);
 	
 	auto parent = actor0->getParent();

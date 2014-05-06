@@ -4,6 +4,8 @@
 #include <gru/shape/shape.hpp>
 #include <gru/shape/desc.hpp>
 #include <gru/Graphics/light/light.hpp>
+#include <gru/Map.hpp>
+
 //#include <
 
 glutpp::shape::shape::shape(boost::shared_ptr<glutpp::shape::parent> parent):
@@ -71,17 +73,22 @@ void glutpp::shape::shape::init(boost::shared_ptr<glutpp::shape::desc> desc) {
 
 	// shape
 	boost::shared_ptr<glutpp::shape::desc> sd;
-	boost::shared_ptr<glutpp::shape::shape> shape;
+	Neb::unique_ptr<glutpp::shape::shape> shape;
 	for(auto it = desc->shapes_.begin(); it != desc->shapes_.end(); ++it) {
 		sd = *it;
 		shape.reset(desc->construct());
 		shape->init(sd);
+		
+		//Neb::Map<glutpp::shape::shape>::value_type p;
+
+		//shapes_.map_.insert(p);
+
 		shapes_.push_back(shape);
 	}
 
 	// lights
 	boost::shared_ptr<glutpp::light::desc> ld;
-	boost::shared_ptr<glutpp::light::light> light;
+	Neb::unique_ptr<glutpp::light::light> light;
 	for(auto it = desc->lights_.begin(); it != desc->lights_.end(); ++it)
 	{
 		ld = *it;
@@ -89,7 +96,11 @@ void glutpp::shape::shape::init(boost::shared_ptr<glutpp::shape::desc> desc) {
 		light.reset(new glutpp::light::light(me));
 
 		light->init(/*scene,*/ ld);
-
+		
+		//Neb::Map<glutpp::light::light>::value_type p;
+		
+		//lights_.map_.insert(p);
+	
 		lights_.push_back(light);
 	}
 
@@ -116,32 +127,28 @@ void glutpp::shape::shape::cleanup() {
 
 	auto s = shapes_.begin();
 	while(s != shapes_.end()) {
-		auto shape = s->second;
-		assert(shape);
-
-		shape->cleanup();
-
-		if(shape->any(glutpp::shape::flag::e::SHOULD_RELEASE))
-		{
-			shape->release();
+		//auto shape = s->second;
+		assert(s->second);
+		
+		s->second->cleanup();
+		
+		if(s->second->any(glutpp::shape::flag::e::SHOULD_RELEASE)) {
+			s->second->release();
 
 			s = shapes_.erase(s);
-		}
-		else
-		{
+		} else {
 			++s;
 		}
 	}
 
 	auto l = lights_.begin();
 	while(l != lights_.end()) {
-		auto light = l->second;
-		assert(light);
+		assert(l->second);
 
-		light->cleanup();
+		l->second->cleanup();
 
-		if(light->any(glutpp::shape::flag::e::SHOULD_RELEASE)) {
-			light->release();
+		if(l->second->any(glutpp::shape::flag::e::SHOULD_RELEASE)) {
+			l->second->release();
 
 			l = lights_.erase(l);
 		} else {
@@ -152,35 +159,39 @@ void glutpp::shape::shape::cleanup() {
 }
 void glutpp::shape::shape::step(double time) {
 
-	shapes_.foreach<glutpp::shape::shape>(std::bind(
+	for(auto it = shapes_.map_.begin(); it != shapes_.map_.end(); ++it) {
+		it->second->step(time);
+	}
+	/*shapes_.foreach<glutpp::shape::shape>(std::bind(
 				&glutpp::shape::shape::step,
 				std::placeholders::_1,
 				time
 				));
-
-	lights_.foreach<glutpp::light::light>(std::bind(
+*/
+	for(auto it = lights_.map_.begin(); it != lights_.map_.end(); ++it) {
+		it->second->step(time);
+	}
+	
+/*	lights_.foreach<glutpp::light::light>(std::bind(
 				&glutpp::light::light::step,
 				std::placeholders::_1,
 				time
 				));
-
+*/
 	material_front_.step(time);
 }
 void glutpp::shape::shape::notify_foundation_change_pose() {
 
-	boost::shared_ptr<glutpp::shape::shape> shape;
 	boost::shared_ptr<glutpp::light::light> light;
 	
 	for(auto it = shapes_.end(); it != shapes_.end(); ++it)
 	{
-		shape = it->second;
-		shape->notify_foundation_change_pose();
+		it->second->notify_foundation_change_pose();
 	}
 
 	for(auto it = lights_.end(); it != lights_.end(); ++it)
 	{
-		light = it->second;
-		light->notify_foundation_change_pose();
+		it->second->notify_foundation_change_pose();
 	}
 }
 void glutpp::shape::shape::load_lights(int& i, Neb::Math::Mat44 space) {

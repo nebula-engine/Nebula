@@ -61,7 +61,7 @@ glutpp::actor::actor::actor(boost::shared_ptr<glutpp::actor::parent> parent):
 void glutpp::actor::actor::i(int ni) {
 	i_ = ni;
 }
-int glutpp::actor::actor::i() {
+int glutpp::actor::actor::i() const {
 	return i_;
 }
 boost::shared_ptr<glutpp::actor::parent>	glutpp::actor::actor::getParent() {
@@ -82,7 +82,7 @@ void glutpp::actor::actor::init(glutpp::actor::desc_s desc) {
 	raw_.reset();
 	raw_.swap(desc->raw_wrapper_.ptr_);
 }
-unsigned int glutpp::actor::actor::f() {
+unsigned int glutpp::actor::actor::f() const {
 	assert(raw_);
 	return raw_->flag_;
 }
@@ -96,12 +96,12 @@ void glutpp::actor::actor::cleanup() {
 	
 	auto it = actors_.begin();
 	while(it != actors_.end()) {
-		boost::shared_ptr<glutpp::actor::actor> actor = it->second;
+		//boost::shared_ptr<glutpp::actor::actor> actor = it->second;
 		
-		actor->cleanup();
+		it->second->cleanup();
 		
-		if(actor->any(glutpp::actor::actor::flag::e::SHOULD_RELEASE)) {
-			actor->release();
+		if(it->second->any(glutpp::actor::actor::flag::e::SHOULD_RELEASE)) {
+			it->second->release();
 			it = actors_.erase(it);
 		} else {
 			++it;
@@ -110,12 +110,12 @@ void glutpp::actor::actor::cleanup() {
 
 	auto s = shapes_.begin();
 	while(s != shapes_.end()) {
-		boost::shared_ptr<glutpp::shape::shape> shape = s->second;
+		//boost::shared_ptr<glutpp::shape::shape> shape = s->second;
 
-		shape->cleanup();
+		s->second->cleanup();
 
-		if(shape->any(glutpp::shape::flag::e::SHOULD_RELEASE)) {
-			shape->release();
+		if(s->second->any(glutpp::shape::flag::e::SHOULD_RELEASE)) {
+			s->second->release();
 			shapes_.erase(s);
 		} else {
 			++s;
@@ -133,12 +133,9 @@ void glutpp::actor::actor::release() {
 	actors_.clear();
 }
 void glutpp::actor::actor::step(double time) {
-
-	shapes_.foreach<glutpp::shape::shape>(std::bind(
-				&glutpp::shape::shape::step,
-				std::placeholders::_1,
-				time));
-
+	for(auto it = shapes_.begin(); it != shapes_.end(); ++it) {
+		it->second->step(time);
+	}
 }
 physx::PxMat44		glutpp::actor::actor::getPose() {
 	assert(raw_);
@@ -173,13 +170,11 @@ void glutpp::actor::actor::notify_foundation_change_pose() {
 
 
 	for(auto it = actors_.end(); it != actors_.end(); ++it) {
-		actor = it->second;
-		actor->notify_foundation_change_pose();
+		it->second->notify_foundation_change_pose();
 	}
 
 	for(auto it = shapes_.end(); it != shapes_.end(); ++it) {
-		shape = it->second;
-		shape->notify_foundation_change_pose();
+		it->second->notify_foundation_change_pose();
 	}
 }
 void		glutpp::actor::actor::load_lights(int& i, physx::PxMat44 space) {

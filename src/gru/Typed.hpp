@@ -19,16 +19,17 @@ namespace Neb {
 	template<class T> class Factory {
 		public:
 			typedef void* (*allocptr)();
+			typedef std::function<T*()> allocfun;
 			
 			Factory() {}
 			virtual ~Factory() = 0;
 			
-			void*					alloc(long hash_code) {
+			T*						alloc(long hash_code) {
 				auto it = map_.find(hash_code);
 				if(it == map_.cend()) {
 					throw 0;
 				} else {
-					return (*(it->second))();
+					return (it->second)();
 				}
 			}
 			
@@ -40,7 +41,7 @@ namespace Neb {
 			};
 		private:
 			static boost::shared_ptr< Factory<T> >		global_;
-			static std::map<long int, allocptr>		map_;
+			static std::map<long int, allocfun>		map_;
 	};
 	/** @brief WrapperTyped */
 	template<class T> class WrapperTyped {
