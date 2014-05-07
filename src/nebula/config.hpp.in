@@ -63,30 +63,7 @@ namespace neb {
 	class simulation_callback;
 	/** @brief %Actor */
 	namespace Actor {
-		class raw;
-		class raw_factory;	
-
-		class Base;
-		class Actor;
-		class RigidActor;
-		namespace RigidBody {
-			class RigidBody;
-			typedef boost::shared_ptr<RigidBody>	RigidBody_s;
 		}
-		class Rigid_Dynamic;
-		class Rigid_Static;
-		class empty;
-		
-		
-		
-		typedef boost::shared_ptr<raw>	raw_s;
-		
-		typedef boost::shared_ptr<Base>		Base_s;
-		typedef boost::shared_ptr<RigidActor>	RigidActor_s;
-		typedef boost::shared_ptr<Base>		Base_s;
-		
-		typedef Neb::weak_ptr<Base>	Base_w;
-	}
 	/** @brief %Control */
 	namespace control {
 		namespace rigid_body {
