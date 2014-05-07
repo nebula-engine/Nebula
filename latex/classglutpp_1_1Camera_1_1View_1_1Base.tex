@@ -1,5 +1,5 @@
-\hypertarget{classglutpp_1_1Camera_1_1View_1_1Base}{\section{glutpp\-:\-:\-Camera\-:\-:\-View\-:\-:\-Base \-Class \-Reference}
-\label{classglutpp_1_1Camera_1_1View_1_1Base}\index{glutpp\-::\-Camera\-::\-View\-::\-Base@{glutpp\-::\-Camera\-::\-View\-::\-Base}}
+\hypertarget{classglutpp_1_1Camera_1_1View_1_1Base}{\section{glutpp\-:\-:\-Camera\-:\-:\-View\-:\-:\-Base$<$ \-M\-A\-T\-R\-I\-X\-\_\-\-T, \-T\-I\-M\-E\-\_\-\-T $>$ \-Class \-Template \-Reference}
+\label{classglutpp_1_1Camera_1_1View_1_1Base}\index{glutpp\-::\-Camera\-::\-View\-::\-Base$<$ M\-A\-T\-R\-I\-X\-\_\-\-T, T\-I\-M\-E\-\_\-\-T $>$@{glutpp\-::\-Camera\-::\-View\-::\-Base$<$ M\-A\-T\-R\-I\-X\-\_\-\-T, T\-I\-M\-E\-\_\-\-T $>$}}
 }
 
 
@@ -12,42 +12,61 @@
 
 
 
-\-Inheritance diagram for glutpp\-:\-:\-Camera\-:\-:\-View\-:\-:\-Base\-:\nopagebreak
+\-Collaboration diagram for glutpp\-:\-:\-Camera\-:\-:\-View\-:\-:\-Base$<$ \-M\-A\-T\-R\-I\-X\-\_\-\-T, \-T\-I\-M\-E\-\_\-\-T $>$\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classglutpp_1_1Camera_1_1View_1_1Base__inherit__graph}
+\includegraphics[width=328pt]{classglutpp_1_1Camera_1_1View_1_1Base__coll__graph}
 \end{center}
 \end{figure}
-\subsection*{\-Classes}
-\begin{DoxyCompactItemize}
-\item 
-struct \hyperlink{structglutpp_1_1Camera_1_1View_1_1Base_1_1Flag}{\-Flag}
-\end{DoxyCompactItemize}
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classglutpp_1_1Camera_1_1View_1_1Base_ac1bcaaff95e5b689756a19ef54c859ca}{virtual math\-::mat44$<$ double $>$ {\bfseries view} ()=0}\label{classglutpp_1_1Camera_1_1View_1_1Base_ac1bcaaff95e5b689756a19ef54c859ca}
+\hypertarget{classglutpp_1_1Camera_1_1View_1_1Base_ad3bde1a3cfcd829bf81724997fee91b5}{\hyperlink{classglutpp_1_1Camera_1_1View_1_1Base_ad3bde1a3cfcd829bf81724997fee91b5}{\-Base} ()}\label{classglutpp_1_1Camera_1_1View_1_1Base_ad3bde1a3cfcd829bf81724997fee91b5}
 
-\item 
-\hypertarget{classglutpp_1_1Camera_1_1View_1_1Base_aa50111a2f1afe732fb01a073b35cc0c0}{void {\bfseries load} ()}\label{classglutpp_1_1Camera_1_1View_1_1Base_aa50111a2f1afe732fb01a073b35cc0c0}
+\begin{DoxyCompactList}\small\item\em \-Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classglutpp_1_1Camera_1_1View_1_1Base_a653df09aad239e1a24ba6d29e7a4cc42}{void \hyperlink{classglutpp_1_1Camera_1_1View_1_1Base_a653df09aad239e1a24ba6d29e7a4cc42}{load} ()}\label{classglutpp_1_1Camera_1_1View_1_1Base_a653df09aad239e1a24ba6d29e7a4cc42}
 
-\item 
-\hypertarget{classglutpp_1_1Camera_1_1View_1_1Base_abce83ff7d7f2b50811489ff85cd870c7}{virtual void \hyperlink{classglutpp_1_1Camera_1_1View_1_1Base_abce83ff7d7f2b50811489ff85cd870c7}{step} (double)=0}\label{classglutpp_1_1Camera_1_1View_1_1Base_abce83ff7d7f2b50811489ff85cd870c7}
+\begin{DoxyCompactList}\small\item\em \-Load view matrix into \-G\-L\-S\-L. \end{DoxyCompactList}\item 
+\hypertarget{classglutpp_1_1Camera_1_1View_1_1Base_a5f7e27817005dd4d75e15d00ae58cb68}{virtual physx\-::\-Px\-Mat44 \hyperlink{classglutpp_1_1Camera_1_1View_1_1Base_a5f7e27817005dd4d75e15d00ae58cb68}{view} ()=0}\label{classglutpp_1_1Camera_1_1View_1_1Base_a5f7e27817005dd4d75e15d00ae58cb68}
 
-\begin{DoxyCompactList}\small\item\em step \-T\-O\-D\-O explain when in timeline this occurs and in which thread and why \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \-Get view matrix. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classglutpp_1_1Camera_1_1View_1_1Base_a92154fdd1ef6a972cf5d38c51aea616a}{step} (\-T\-I\-M\-E\-\_\-\-T)=0
+\begin{DoxyCompactList}\small\item\em \-Step. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{\-Public \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classglutpp_1_1Camera_1_1View_1_1Base_a2f131c109db4a70bbfdf9fdf38891e52}{double \hyperlink{classglutpp_1_1Camera_1_1View_1_1Base_a2f131c109db4a70bbfdf9fdf38891e52}{last\-\_\-}}\label{classglutpp_1_1Camera_1_1View_1_1Base_a2f131c109db4a70bbfdf9fdf38891e52}
+\hypertarget{classglutpp_1_1Camera_1_1View_1_1Base_a541a8a64ac1ad4ee8cd03482232f1773}{\-T\-I\-M\-E\-\_\-\-T \hyperlink{classglutpp_1_1Camera_1_1View_1_1Base_a541a8a64ac1ad4ee8cd03482232f1773}{last\-\_\-}}\label{classglutpp_1_1Camera_1_1View_1_1Base_a541a8a64ac1ad4ee8cd03482232f1773}
 
-\begin{DoxyCompactList}\small\item\em time of last step \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \-Time of last step. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
+\subsubsection*{template$<$typename \-M\-A\-T\-R\-I\-X\-\_\-\-T, typename \-T\-I\-M\-E\-\_\-\-T = double$>$class glutpp\-::\-Camera\-::\-View\-::\-Base$<$ M\-A\-T\-R\-I\-X\-\_\-\-T, T\-I\-M\-E\-\_\-\-T $>$}
 
 
-\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classglutpp_1_1Camera_1_1View_1_1Base_a92154fdd1ef6a972cf5d38c51aea616a}{\index{glutpp\-::\-Camera\-::\-View\-::\-Base@{glutpp\-::\-Camera\-::\-View\-::\-Base}!step@{step}}
+\index{step@{step}!glutpp::Camera::View::Base@{glutpp\-::\-Camera\-::\-View\-::\-Base}}
+\subsubsection[{step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename \-M\-A\-T\-R\-I\-X\-\_\-\-T, typename \-T\-I\-M\-E\-\_\-\-T = double$>$ virtual void {\bf glutpp\-::\-Camera\-::\-View\-::\-Base}$<$ \-M\-A\-T\-R\-I\-X\-\_\-\-T, \-T\-I\-M\-E\-\_\-\-T $>$\-::{\bf step} (
+\begin{DoxyParamCaption}
+\item[{\-T\-I\-M\-E\-\_\-\-T}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}\label{classglutpp_1_1Camera_1_1View_1_1Base_a92154fdd1ef6a972cf5d38c51aea616a}
+
+
+\-Step. 
+
+\begin{DoxyRefDesc}{\-Todo}
+\item[\hyperlink{todo__todo000002}{\-Todo}]explain when in timeline this occurs and in which thread and why \end{DoxyRefDesc}
+
+
+\-Implemented in \hyperlink{classglutpp_1_1Camera_1_1View_1_1Free_a2a117540633d55517305fa69cee5f336}{glutpp\-::\-Camera\-::\-View\-::\-Free}, and \hyperlink{classglutpp_1_1Camera_1_1View_1_1ridealong_a4ab29cdafb2d4ba835485f47d41ae2b6}{glutpp\-::\-Camera\-::\-View\-::ridealong}.
+
+
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-src/gru/\-Camera/\-View/\-Base.\-hpp\item 
-src/gru/\-Camera/\-View/\-Base.\-cpp\end{DoxyCompactItemize}
+src/gru/\-Graphics/\-Camera/\-View/\-Base.\-hpp\end{DoxyCompactItemize}

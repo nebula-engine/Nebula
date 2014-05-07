@@ -1,3 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$structglutpp_1_1light_1_1type.html" title="glutpp::light::type" alt="" coords="5,5,128,35"/>
+<area shape="rect" id="node1" href="$classglutpp_1_1gui_1_1object_1_1object.html" title="glutpp::gui::object::object" alt="" coords="5,32,173,61"/>
+<area shape="rect" id="node3" href="$classglutpp_1_1gui_1_1object_1_1terminal.html" title="glutpp::gui::object::terminal" alt="" coords="224,5,403,35"/>
+<area shape="rect" id="node5" href="$classglutpp_1_1gui_1_1object_1_1textview.html" title="textview Display and optionally edit text" alt="" coords="223,59,404,88"/>
+<area shape="rect" id="node7" href="$classglutpp_1_1gui_1_1object_1_1edittext.html" title="glutpp::gui::object::edittext" alt="" coords="453,59,629,88"/>
 </map>

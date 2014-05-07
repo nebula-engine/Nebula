@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,29 +107,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">glutpp::material::raw Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="glutpp::material::raw" -->
+<!-- doxytag: class="glutpp::material::raw" --><div class="dynheader">
+Collaboration diagram for glutpp::material::raw:</div>
+<div class="dyncontent">
+<div class="center"><img src="structglutpp_1_1material_1_1raw__coll__graph.png" border="0" usemap="#glutpp_1_1material_1_1raw_coll__map" alt="Collaboration graph"/></div>
+<map name="glutpp_1_1material_1_1raw_coll__map" id="glutpp_1_1material_1_1raw_coll__map">
+<area shape="rect" id="node2" href="classgru_1_1Color_1_1color.html" title="gru::Color::color\&lt; float \&gt;" alt="" coords="5,5,168,35"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+
 <p><a href="structglutpp_1_1material_1_1raw-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf689c9d6f960423b18174104d1c7c1a"></a><!-- doxytag: member="glutpp::material::raw::load" ref="acf689c9d6f960423b18174104d1c7c1a" args="(tinyxml2::XMLElement *)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (tinyxml2::XMLElement *)</td></tr>
+<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="a3062e16f1da2217db62fa54b30f2d2e2"></a><!-- doxytag: member="glutpp::material::raw::serialize" ref="a3062e16f1da2217db62fa54b30f2d2e2" args="(Archive &amp;ar, unsigned int const &amp;version)" -->
+template&lt;class Archive &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialize</b> (Archive &amp;ar, unsigned int const &amp;version)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0c0b2ec3b40ff095217d7e5b37a7765"></a><!-- doxytag: member="glutpp::material::raw::ambient_" ref="ac0c0b2ec3b40ff095217d7e5b37a7765" args="" -->
-math::Color::color&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ambient_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab99d372fb50b80c04563cab7bbe42eab"></a><!-- doxytag: member="glutpp::material::raw::diffuse_" ref="ab99d372fb50b80c04563cab7bbe42eab" args="" -->
-math::Color::color&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>diffuse_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6d444ff878d55556869ed8d28a4ad13c"></a><!-- doxytag: member="glutpp::material::raw::specular_" ref="a6d444ff878d55556869ed8d28a4ad13c" args="" -->
-math::Color::color&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>specular_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a437f25c5f3d890cb5e79618c44c593bf"></a><!-- doxytag: member="glutpp::material::raw::emission_" ref="a437f25c5f3d890cb5e79618c44c593bf" args="" -->
-math::Color::color&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>emission_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0cb37e7cae90a758c488bdf1dd8fd63c"></a><!-- doxytag: member="glutpp::material::raw::shininess_" ref="a0cb37e7cae90a758c488bdf1dd8fd63c" args="" -->
-double&#160;</td><td class="memItemRight" valign="bottom"><b>shininess_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bc634326c49ac8836b5726024a8ef95"></a><!-- doxytag: member="glutpp::material::raw::ambient_" ref="a7bc634326c49ac8836b5726024a8ef95" args="" -->
+<a class="el" href="classgru_1_1Color_1_1color.html">gru::Color::color</a>&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ambient_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa139c8d1f8d569e677467bb03f273120"></a><!-- doxytag: member="glutpp::material::raw::diffuse_" ref="aa139c8d1f8d569e677467bb03f273120" args="" -->
+<a class="el" href="classgru_1_1Color_1_1color.html">gru::Color::color</a>&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>diffuse_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafcf25c7a5e30393d4a37290207bb041"></a><!-- doxytag: member="glutpp::material::raw::specular_" ref="aafcf25c7a5e30393d4a37290207bb041" args="" -->
+<a class="el" href="classgru_1_1Color_1_1color.html">gru::Color::color</a>&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>specular_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd14da23e424d13ed13a21326be98f5a"></a><!-- doxytag: member="glutpp::material::raw::emission_" ref="abd14da23e424d13ed13a21326be98f5a" args="" -->
+<a class="el" href="classgru_1_1Color_1_1color.html">gru::Color::color</a>&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>emission_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a002a3524745e18b298dbb995cc83c19e"></a><!-- doxytag: member="glutpp::material::raw::shininess_" ref="a002a3524745e18b298dbb995cc83c19e" args="" -->
+float&#160;</td><td class="memItemRight" valign="bottom"><b>shininess_</b></td></tr>
 </table>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li>src/gru/<a class="el" href="material_8hpp_source.html">material.hpp</a></li>
-<li>src/gru/material.cpp</li>
+<li>src/gru/Graphics/<a class="el" href="material_8hpp_source.html">material.hpp</a></li>
+<li>src/gru/Graphics/material.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -136,7 +145,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>shininess_</b></td>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -148,7 +157,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>shininess_</b></td>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

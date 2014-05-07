@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,37 +101,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">glutpp::light::desc Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="glutpp::light::desc" -->
+<!-- doxytag: class="glutpp::light::desc" --><div class="dynheader">
+Collaboration diagram for glutpp::light::desc:</div>
+<div class="dyncontent">
+<div class="center"><img src="classglutpp_1_1light_1_1desc__coll__graph.png" border="0" usemap="#glutpp_1_1light_1_1desc_coll__map" alt="Collaboration graph"/></div>
+<map name="glutpp_1_1light_1_1desc_coll__map" id="glutpp_1_1light_1_1desc_coll__map">
+<area shape="rect" id="node2" href="classglutpp_1_1light_1_1raw.html" title="glutpp::light::raw" alt="" coords="28,136,145,165"/><area shape="rect" id="node4" href="classgru_1_1Color_1_1color.html" title="gru::Color::color\&lt; float \&gt;" alt="" coords="5,5,168,35"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+
 <p><a href="classglutpp_1_1light_1_1desc-members.html">List of all members.</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a3ba7e7c2f64d1f62b64e6728688a49"></a><!-- doxytag: member="glutpp::light::desc::ID_S" ref="a5a3ba7e7c2f64d1f62b64e6728688a49" args="" -->
-typedef std::shared_ptr&lt; <a class="el" href="classglutpp_1_1light_1_1id.html">id</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ID_S</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e1d1706bb05d66ace94342d0b281ac9"></a><!-- doxytag: member="glutpp::light::desc::RAW_S" ref="a7e1d1706bb05d66ace94342d0b281ac9" args="" -->
-typedef std::shared_ptr&lt; <a class="el" href="classglutpp_1_1light_1_1raw.html">raw</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>RAW_S</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a361129092ae637f8218fd0228c8b03e1"></a><!-- doxytag: member="glutpp::light::desc::SER" ref="a361129092ae637f8218fd0228c8b03e1" args="" -->
-typedef <br class="typebreak"/>
-gal::network::serial_ext&lt; <a class="el" href="classglutpp_1_1light_1_1id.html">id</a>, <br class="typebreak"/>
-<a class="el" href="classglutpp_1_1light_1_1raw.html">raw</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>SER</b></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4da8561e1313aa9fc72a30bae278faa5"></a><!-- doxytag: member="glutpp::light::desc::load" ref="a4da8561e1313aa9fc72a30bae278faa5" args="(glutpp::light::light_s)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (glutpp::light::light_s)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15262f1b1025ae0f3e5c2b6e074befc5"></a><!-- doxytag: member="glutpp::light::desc::get_id" ref="a15262f1b1025ae0f3e5c2b6e074befc5" args="()" -->
-ID_S&#160;</td><td class="memItemRight" valign="bottom"><b>get_id</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a349979ba9075fe1c876c97cde3ef60bc"></a><!-- doxytag: member="glutpp::light::desc::get_raw" ref="a349979ba9075fe1c876c97cde3ef60bc" args="()" -->
-RAW_S&#160;</td><td class="memItemRight" valign="bottom"><b>get_raw</b> ()</td></tr>
+<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="ad1d6be4fb431b158e6c5b5e97f45deb9"></a><!-- doxytag: member="glutpp::light::desc::serialize" ref="ad1d6be4fb431b158e6c5b5e97f45deb9" args="(Archive &amp;ar, unsigned int const &amp;version)" -->
+template&lt;class Archive &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialize</b> (Archive &amp;ar, unsigned int const &amp;version)</td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7e6b6c520eae85c7393daeb663d7a14"></a><!-- doxytag: member="glutpp::light::desc::i_" ref="aa7e6b6c520eae85c7393daeb663d7a14" args="" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>i_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a593475e0ddb2755783b0d666196f4a74"></a><!-- doxytag: member="glutpp::light::desc::raw_" ref="a593475e0ddb2755783b0d666196f4a74" args="" -->
+<a class="el" href="classglutpp_1_1light_1_1raw.html">raw</a>&#160;</td><td class="memItemRight" valign="bottom"><b>raw_</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/gru/light/<a class="el" href="light_2desc_8hpp_source.html">desc.hpp</a></li>
-<li>src/gru/light/desc.cpp</li>
+<li>src/gru/Graphics/light/<a class="el" href="Graphics_2light_2desc_8hpp_source.html">desc.hpp</a></li>
+<li>src/gru/Graphics/light/desc.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -138,7 +141,7 @@ RAW_S&#160;</td><td class="memItemRight" valign="bottom"><b>get_raw</b> ()</td><
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -150,7 +153,7 @@ RAW_S&#160;</td><td class="memItemRight" valign="bottom"><b>get_raw</b> ()</td><
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -28,22 +28,22 @@
 \hypertarget{classglutpp_1_1glsl_1_1program_af2403d0061bcb6e7eff6fd0e27ef57cf}{void {\bfseries add\-\_\-attrib} (glutpp\-::attrib\-\_\-name\-::e, char const $\ast$, \-G\-Luint)}\label{classglutpp_1_1glsl_1_1program_af2403d0061bcb6e7eff6fd0e27ef57cf}
 
 \item 
-\hypertarget{classglutpp_1_1glsl_1_1program_a03e5e8b1fa8d6e46c7b49ed1ba67ed66}{int {\bfseries add\-\_\-uniform} (glutpp\-::uniform\-\_\-name\-::e, char const $\ast$)}\label{classglutpp_1_1glsl_1_1program_a03e5e8b1fa8d6e46c7b49ed1ba67ed66}
+\hypertarget{classglutpp_1_1glsl_1_1program_a73343348c02d88760f98af88e0a84f45}{void {\bfseries add\-\_\-uniform\-\_\-scalar} (std\-::string, \-G\-Lenum)}\label{classglutpp_1_1glsl_1_1program_a73343348c02d88760f98af88e0a84f45}
 
 \item 
-\hypertarget{classglutpp_1_1glsl_1_1program_a332a3612070f74fc2974c0d214fb0293}{int {\bfseries add\-\_\-uniform} (glutpp\-::uniform\-\_\-name\-::e, char const $\ast$, char const $\ast$)}\label{classglutpp_1_1glsl_1_1program_a332a3612070f74fc2974c0d214fb0293}
+\hypertarget{classglutpp_1_1glsl_1_1program_a35275f3f95ea83f2023364f585626845}{void {\bfseries add\-\_\-uniform\-\_\-vector} (std\-::string, std\-::string, \-G\-Lenum)}\label{classglutpp_1_1glsl_1_1program_a35275f3f95ea83f2023364f585626845}
 
 \item 
 \hypertarget{classglutpp_1_1glsl_1_1program_ab77d4536050a8ee71796b3e12fd73ef8}{std\-::shared\-\_\-ptr\*
 $<$ \hyperlink{classglutpp_1_1glsl_1_1attrib}{glutpp\-::glsl\-::attrib} $>$ {\bfseries get\-\_\-attrib} (int)}\label{classglutpp_1_1glsl_1_1program_ab77d4536050a8ee71796b3e12fd73ef8}
 
 \item 
-\hypertarget{classglutpp_1_1glsl_1_1program_a8428676476894db7104450b0d3b1c4ff}{std\-::shared\-\_\-ptr\*
-$<$ \hyperlink{classglutpp_1_1glsl_1_1Uniform_1_1Scalar_1_1Base}{glutpp\-::glsl\-::\-Uniform\-::\-Scalar\-::\-Base} $>$ {\bfseries get\-\_\-uniform\-\_\-scalar} (int)}\label{classglutpp_1_1glsl_1_1program_a8428676476894db7104450b0d3b1c4ff}
+\hypertarget{classglutpp_1_1glsl_1_1program_a1ad4caea22dd6d3bdd788cf40ac32fd2}{std\-::shared\-\_\-ptr\*
+$<$ \hyperlink{classglutpp_1_1glsl_1_1Uniform_1_1Scalar_1_1Base}{glutpp\-::glsl\-::\-Uniform\-::\-Scalar\-::\-Base} $>$ {\bfseries get\-\_\-uniform\-\_\-scalar} (std\-::string)}\label{classglutpp_1_1glsl_1_1program_a1ad4caea22dd6d3bdd788cf40ac32fd2}
 
 \item 
-\hypertarget{classglutpp_1_1glsl_1_1program_a5bf0b6975f699e5729ed79bd875d5aa2}{std\-::shared\-\_\-ptr\*
-$<$ \hyperlink{classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Base}{glutpp\-::glsl\-::\-Uniform\-::\-Vector\-::\-Base} $>$ {\bfseries get\-\_\-uniform\-\_\-vector} (int)}\label{classglutpp_1_1glsl_1_1program_a5bf0b6975f699e5729ed79bd875d5aa2}
+\hypertarget{classglutpp_1_1glsl_1_1program_aa5920f8b94fb3503b6ce9c883a29fcdf}{std\-::shared\-\_\-ptr\*
+$<$ \hyperlink{classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Base}{glutpp\-::glsl\-::\-Uniform\-::\-Vector\-::\-Base} $>$ {\bfseries get\-\_\-uniform\-\_\-vector} (std\-::string)}\label{classglutpp_1_1glsl_1_1program_aa5920f8b94fb3503b6ce9c883a29fcdf}
 
 \end{DoxyCompactItemize}
 \subsection*{\-Public \-Attributes}
@@ -52,12 +52,14 @@ $<$ \hyperlink{classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Base}{glutpp\-::glsl\
 \hypertarget{classglutpp_1_1glsl_1_1program_ac72cb1de967afd0617edf350dfa80dfd}{\-G\-Luint {\bfseries o\-\_\-}}\label{classglutpp_1_1glsl_1_1program_ac72cb1de967afd0617edf350dfa80dfd}
 
 \item 
-\hypertarget{classglutpp_1_1glsl_1_1program_a48aafa780d255592084de7806a65a196}{std\-::map$<$ int, std\-::shared\-\_\-ptr\*
-$<$ \hyperlink{classglutpp_1_1glsl_1_1Uniform_1_1Scalar_1_1Base}{glutpp\-::glsl\-::\-Uniform\-::\-Scalar\-::\-Base} $>$ $>$ {\bfseries uniform\-\_\-scalar\-\_\-}}\label{classglutpp_1_1glsl_1_1program_a48aafa780d255592084de7806a65a196}
+\hypertarget{classglutpp_1_1glsl_1_1program_ad49f6361ebe16617065fdce1ea2e1c57}{std\-::map$<$ std\-::string, \*
+std\-::shared\-\_\-ptr\*
+$<$ \hyperlink{classglutpp_1_1glsl_1_1Uniform_1_1Scalar_1_1Base}{glutpp\-::glsl\-::\-Uniform\-::\-Scalar\-::\-Base} $>$ $>$ {\bfseries uniform\-\_\-scalar\-\_\-}}\label{classglutpp_1_1glsl_1_1program_ad49f6361ebe16617065fdce1ea2e1c57}
 
 \item 
-\hypertarget{classglutpp_1_1glsl_1_1program_a83a3f69a97e62342e3e81fe7548e9ffd}{std\-::map$<$ int, std\-::shared\-\_\-ptr\*
-$<$ \hyperlink{classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Base}{glutpp\-::glsl\-::\-Uniform\-::\-Vector\-::\-Base} $>$ $>$ {\bfseries uniform\-\_\-vector\-\_\-}}\label{classglutpp_1_1glsl_1_1program_a83a3f69a97e62342e3e81fe7548e9ffd}
+\hypertarget{classglutpp_1_1glsl_1_1program_a391deb5c96ae54df3c26f2e446fe71f1}{std\-::map$<$ std\-::string, \*
+std\-::shared\-\_\-ptr\*
+$<$ \hyperlink{classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Base}{glutpp\-::glsl\-::\-Uniform\-::\-Vector\-::\-Base} $>$ $>$ {\bfseries uniform\-\_\-vector\-\_\-}}\label{classglutpp_1_1glsl_1_1program_a391deb5c96ae54df3c26f2e446fe71f1}
 
 \item 
 \hypertarget{classglutpp_1_1glsl_1_1program_af8419390e2c2ba623c2a711568a7bdab}{std\-::map$<$ int, std\-::shared\-\_\-ptr\*
@@ -68,5 +70,5 @@ $<$ \hyperlink{classglutpp_1_1glsl_1_1attrib}{attrib} $>$ $>$ {\bfseries attrib\
 
 \-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-src/gru/glsl/program.\-hpp\item 
-src/gru/glsl/program.\-cpp\end{DoxyCompactItemize}
+src/gru/\-Graphics/glsl/program.\-hpp\item 
+src/gru/\-Graphics/glsl/program.\-cpp\end{DoxyCompactItemize}

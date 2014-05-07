@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,7 +104,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a>  </div>
+<a href="#pro-types">Protected Types</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">glutpp::glsl::Uniform::Vector::Base Class Reference</div>  </div>
 </div><!--header-->
@@ -118,51 +120,54 @@ Inheritance diagram for glutpp::glsl::Uniform::Vector::Base:</div>
 <div class="dyncontent">
 <div class="center"><img src="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Base__inherit__graph.png" border="0" usemap="#glutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Base_inherit__map" alt="Inheritance graph"/></div>
 <map name="glutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Base_inherit__map" id="glutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Base_inherit__map">
-<area shape="rect" id="node3" href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Double.html" title="glutpp::glsl::Uniform::Vector::Double" alt="" coords="277,5,512,35"/><area shape="rect" id="node5" href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Float.html" title="glutpp::glsl::Uniform::Vector::Float" alt="" coords="284,59,505,88"/><area shape="rect" id="node7" href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Int.html" title="glutpp::glsl::Uniform::Vector::Int" alt="" coords="291,112,499,141"/></map>
+<area shape="rect" id="node3" href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Double.html" title="glutpp::glsl::Uniform::Vector::Double" alt="" coords="277,5,512,35"/><area shape="rect" id="node5" href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1DVec3.html" title="glutpp::glsl::Uniform::Vector::DVec3" alt="" coords="279,59,511,88"/><area shape="rect" id="node7" href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1DVec4.html" title="glutpp::glsl::Uniform::Vector::DVec4" alt="" coords="279,112,511,141"/><area shape="rect" id="node9" href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Float.html" title="glutpp::glsl::Uniform::Vector::Float" alt="" coords="284,165,505,195"/><area shape="rect" id="node11" href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Int.html" title="glutpp::glsl::Uniform::Vector::Int" alt="" coords="291,219,499,248"/><area shape="rect" id="node13" href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Vec3.html" title="glutpp::glsl::Uniform::Vector::Vec3" alt="" coords="284,272,505,301"/><area shape="rect" id="node15" href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Vec4.html" title="glutpp::glsl::Uniform::Vector::Vec4" alt="" coords="284,325,505,355"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Base-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ee18a39b620a79ff8d7008cf18b5ac9"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::init" ref="a4ee18a39b620a79ff8d7008cf18b5ac9" args="(char const *, char const *, int)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (char const *, char const *, int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a3a57789fc5d09c853c1804b300be25"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::Base" ref="a6a3a57789fc5d09c853c1804b300be25" args="(std::string, std::string)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><b>Base</b> (std::string, std::string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab58938592072e9c3c899e57340cc640"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::locate" ref="aab58938592072e9c3c899e57340cc640" args="(std::shared_ptr&lt; program &gt;)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>locate</b> (std::shared_ptr&lt; <a class="el" href="classglutpp_1_1glsl_1_1program.html">program</a> &gt;)</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Load</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaba33e4b22b6222e7775d0b90a952533"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load" ref="aaba33e4b22b6222e7775d0b90a952533" args="(int, math::mat44&lt; float &gt;)" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (int, math::mat44&lt; float &gt;)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05f8e674f4eac6c3db1d9e7483ca39bc"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load" ref="a05f8e674f4eac6c3db1d9e7483ca39bc" args="(int, math::mat44&lt; double &gt;)" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (int, math::mat44&lt; double &gt;)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acdaaf0ed82533e2cbcb1a8c179b51d18"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load" ref="acdaaf0ed82533e2cbcb1a8c179b51d18" args="(int, math::Color::color&lt; float &gt;)" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (int, math::Color::color&lt; float &gt;)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e6f83948bb4e87cd8ba319e004e3eac"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load" ref="a5e6f83948bb4e87cd8ba319e004e3eac" args="(int, math::Color::color&lt; double &gt;)" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (int, math::Color::color&lt; double &gt;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ccd9e2682554d3a6c8f8321e1017cb2"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load" ref="a1ccd9e2682554d3a6c8f8321e1017cb2" args="(int, physx::PxVec3 const &amp;)" -->
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (int, physx::PxVec3 const &amp;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a28302b7745c12c3964da36603ce72c52"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load" ref="a28302b7745c12c3964da36603ce72c52" args="(int, physx::PxVec4 const &amp;)" -->
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (int, physx::PxVec4 const &amp;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46a96dfd8dd1b1ac746e55b1c2497015"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load" ref="a46a96dfd8dd1b1ac746e55b1c2497015" args="(int, physx::PxMat44 const &amp;)" -->
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (int, physx::PxMat44 const &amp;)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af67cd7ff424da6066b348b247ccf1007"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load" ref="af67cd7ff424da6066b348b247ccf1007" args="(int, int)" -->
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (int, int)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ff7e5e7dcf8f3c391aa4acf7e32d7bd"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load_4fv" ref="a5ff7e5e7dcf8f3c391aa4acf7e32d7bd" args="(int, double *)" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load_4fv</b> (int, double *)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef997df4f20d046458161964d43b45e0"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load_3fv" ref="aef997df4f20d046458161964d43b45e0" args="(int, double *)" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load_3fv</b> (int, double *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06b6e1bbce0de56a61692fdf6becb547"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load" ref="a06b6e1bbce0de56a61692fdf6becb547" args="(int, float *)" -->
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (int, float *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a40fa6bea421bed822805b3a21057f8a8"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load" ref="a40fa6bea421bed822805b3a21057f8a8" args="(int, double *)" -->
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (int, double *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d303e127e2c040fff2debf49bfde300"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load" ref="a8d303e127e2c040fff2debf49bfde300" args="(int, float)" -->
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (int, float)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab470dd1ce9fa344d8dfab3fa84f54a00"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::load" ref="ab470dd1ce9fa344d8dfab3fa84f54a00" args="(int, double)" -->
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (int, double)</td></tr>
-<tr><td colspan="2"><h2><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab32678185a508e4806f05e5fd5ad813e"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::s1_" ref="ab32678185a508e4806f05e5fd5ad813e" args="" -->
-char const *&#160;</td><td class="memItemRight" valign="bottom"><b>s1_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d9d882ba030dcd0b0c2cfceb0588393"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::s2_" ref="a7d9d882ba030dcd0b0c2cfceb0588393" args="" -->
-char const *&#160;</td><td class="memItemRight" valign="bottom"><b>s2_</b></td></tr>
+<tr><td colspan="2"><h2><a name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>LEN</b> =  100
+ }</td></tr>
+<tr><td colspan="2"><h2><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25bc74a90af2fbc47dfc58e8776fecd6"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::name1_" ref="a25bc74a90af2fbc47dfc58e8776fecd6" args="" -->
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name1_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7947153fe1281a684aa8919d24cd2cc2"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::name2_" ref="a7947153fe1281a684aa8919d24cd2cc2" args="" -->
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name2_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16177fcc79cf039fee87f64761edf9c7"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::c_" ref="a16177fcc79cf039fee87f64761edf9c7" args="" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>c_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b253ae19e493fc0c8c27240fc184dc6"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::o_" ref="a5b253ae19e493fc0c8c27240fc184dc6" args="[100]" -->
-GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>o_</b> [100]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44dd7d8da8ecd2b894c3e14ba3234750"></a><!-- doxytag: member="glutpp::glsl::Uniform::Vector::Base::o_" ref="a44dd7d8da8ecd2b894c3e14ba3234750" args="[LEN]" -->
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>o_</b> [LEN]</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Array base class for array GLSL uniform </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/gru/glsl/Uniform/<a class="el" href="uniform_8hpp_source.html">uniform.hpp</a></li>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/gru/Graphics/glsl/Uniform/<a class="el" href="uniform_8hpp_source.html">uniform.hpp</a></li>
+<li>src/gru/Graphics/glsl/Uniform/Vector.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -170,7 +175,7 @@ GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>o_</b> [100]</td></
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -182,7 +187,7 @@ GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>o_</b> [100]</td></
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

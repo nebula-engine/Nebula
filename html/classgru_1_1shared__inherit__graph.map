@@ -1,7 +1,13 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classglutpp_1_1actor_1_1parent.html" title="abstract class for parent of an " alt="" coords="84,83,223,112"/>
-<area shape="rect" id="node9" href="$classglutpp_1_1shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="247,83,391,112"/>
-<area shape="rect" id="node5" href="$classglutpp_1_1actor_1_1actor.html" title="glutpp::actor::actor" alt="" coords="171,160,301,189"/>
-<area shape="rect" id="node7" href="$classglutpp_1_1scene_1_1scene.html" title="glutpp::scene::scene" alt="" coords="5,160,147,189"/>
-<area shape="rect" id="node12" href="$classglutpp_1_1shape_1_1shape.html" title="glutpp::shape::shape" alt="" coords="325,160,467,189"/>
+<area shape="rect" id="node3" href="$classgal_1_1network_1_1message.html" title="message" alt="" coords="141,59,296,88"/>
+<area shape="rect" id="node9" href="$classglutpp_1_1actor_1_1parent.html" title="abstract class for parent of an " alt="" coords="149,112,288,141"/>
+<area shape="rect" id="node15" href="$classglutpp_1_1shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="147,165,291,195"/>
+<area shape="rect" id="node5" href="$classgal_1_1network_1_1imessage.html" title="gal::network::imessage" alt="" coords="347,5,504,35"/>
+<area shape="rect" id="node7" href="$classgal_1_1network_1_1omessage.html" title="gal::network::omessage" alt="" coords="345,59,505,88"/>
+<area shape="rect" id="node11" href="$classglutpp_1_1actor_1_1actor.html" title="glutpp::actor::actor" alt="" coords="360,165,491,195"/>
+<area shape="rect" id="node13" href="$classglutpp_1_1scene_1_1scene.html" title="glutpp::scene::scene" alt="" coords="355,112,496,141"/>
+<area shape="rect" id="node18" href="$classglutpp_1_1shape_1_1shape.html" title="glutpp::shape::shape" alt="" coords="355,219,496,248"/>
+<area shape="rect" id="node20" href="$classglutpp_1_1shape_1_1Box_1_1Box.html" title="glutpp::shape::Box::Box" alt="" coords="573,165,736,195"/>
+<area shape="rect" id="node22" href="$classglutpp_1_1shape_1_1Empty_1_1Empty.html" title="glutpp::shape::Empty::Empty" alt="" coords="559,219,751,248"/>
+<area shape="rect" id="node24" href="$classglutpp_1_1shape_1_1Sphere_1_1Sphere.html" title="glutpp::shape::Sphere::Sphere" alt="" coords="556,272,753,301"/>
 </map>

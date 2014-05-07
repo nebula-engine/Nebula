@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>gru: src/gru/Camera/Projection/Perspective.hpp Source File</title>
+<title>gru: src/gru/Graphics/Camera/Projection/Perspective.hpp Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -76,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">src/gru/Camera/Projection/Perspective.hpp</div>  </div>
+<div class="title">src/gru/Graphics/Camera/Projection/Perspective.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef __GLUTPP_CAMERA_PROJECTION_H__</span>
@@ -85,56 +86,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00004"></a>00004 <span class="preprocessor">#include &lt;vector&gt;</span>
 <a name="l00005"></a>00005 <span class="preprocessor">#include &lt;memory&gt;</span>
 <a name="l00006"></a>00006 
-<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;galaxy/sig/connection.hpp&gt;</span>
-<a name="l00008"></a>00008 
-<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;math/vec3.hpp&gt;</span>
-<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;math/vec4.hpp&gt;</span>
-<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;math/mat44.hpp&gt;</span>
-<a name="l00012"></a>00012 
-<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;gru/config.hpp&gt;</span>
-<a name="l00014"></a>00014 <span class="comment">//#include &lt;gru/camera_control.hpp&gt;</span>
-<a name="l00015"></a>00015 
-<a name="l00016"></a>00016 <span class="keyword">namespace </span>glutpp {
-<a name="l00017"></a>00017         <span class="keyword">namespace </span>Camera {
-<a name="l00018"></a>00018                 <span class="keyword">namespace </span>Projection {
-<a name="l00020"></a><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html">00020</a>                         <span class="keyword">class </span><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html">Base</a> {
-<a name="l00021"></a>00021                                 <span class="keyword">public</span>:
-<a name="l00022"></a>00022                                         <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html">Base</a>();
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024                                         <span class="keyword">virtual</span> math::mat44&lt;double&gt;     proj() = 0;
-<a name="l00025"></a>00025                                         <span class="keywordtype">void</span>                            load();
-<a name="l00029"></a>00029                                         <span class="keywordtype">void</span>                            <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#ac42d1a82122668c3958c586eea0d88d3" title="step TODO explain when in timeline this occurs and in which thread and why">step</a>(<span class="keywordtype">double</span>);
-<a name="l00030"></a>00030 
-<a name="l00035"></a>00035                                         glutpp::window::window_s&amp;               <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a48be27bb0adf9017c29c6bd58e535f10" title="access parent">getWindow</a>();
-<a name="l00039"></a><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#acf034b2276c7e933a2e0ce1036beede1">00039</a>                                         <span class="keywordtype">float</span>                                   <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#acf034b2276c7e933a2e0ce1036beede1" title="field of view angle">fovy_</a>;
-<a name="l00041"></a><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a7fee9eba771a25b2189ba18cce3583c1">00041</a>                                         <span class="keywordtype">float</span>                                   <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a7fee9eba771a25b2189ba18cce3583c1" title="near clipping plane">zn_</a>;
-<a name="l00043"></a><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a318bb31bdc6f63546a4bc127223c3295">00043</a>                                         <span class="keywordtype">float</span>                                   <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a318bb31bdc6f63546a4bc127223c3295" title="far clipping plane">zf_</a>;
-<a name="l00049"></a>00049                         };
-<a name="l00050"></a><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html">00050</a>                         <span class="keyword">class </span><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html">Perspective</a>: <span class="keyword">public</span> <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html">Base</a> {
-<a name="l00051"></a>00051                                 <span class="keyword">public</span>:
-<a name="l00052"></a>00052                                         <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html">Perspective</a>();
-<a name="l00053"></a>00053                                         <span class="comment">//void          init(glutpp::renderable_shared);</span>
-<a name="l00054"></a>00054                                         <span class="keyword">virtual</span> math::mat44&lt;double&gt;     proj() = 0;
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056 
-<a name="l00058"></a>00058                                         <span class="keywordtype">void</span>            <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#a0ddb1d4c5039ca1e58f3d89680d7bcf7" title="step">step</a>(<span class="keywordtype">float</span>);
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060                                         <span class="comment">//std::weak_ptr&lt;renderable&gt;             renderable_;</span>
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064                         };
-<a name="l00065"></a>00065                 }
-<a name="l00066"></a>00066         }
-<a name="l00067"></a>00067 }
-<a name="l00068"></a>00068 <span class="preprocessor">#endif</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;gru/config.hpp&gt;</span>
+<a name="l00009"></a>00009 <span class="comment">//#include &lt;gru/camera_control.hpp&gt;</span>
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 <span class="keyword">namespace </span>glutpp {
+<a name="l00012"></a>00012         <span class="keyword">namespace </span>Camera {
+<a name="l00013"></a>00013                 <span class="keyword">namespace </span>Projection {
+<a name="l00015"></a><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html">00015</a>                         <span class="keyword">class </span><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html">Base</a> {
+<a name="l00016"></a>00016                                 <span class="keyword">public</span>:
+<a name="l00018"></a>00018                                         <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a1682a678dcfd54b0db8de94efcc2d700" title="Constructor.">Base</a>(std::shared_ptr&lt;glutpp::renderable&gt;);
+<a name="l00019"></a>00019                                         
+<a name="l00020"></a>00020                                         <span class="keyword">virtual</span> physx::PxMat44                  proj() = 0;
+<a name="l00021"></a>00021                                         <span class="keywordtype">void</span>                                    load();
+<a name="l00025"></a>00025                                         <span class="keywordtype">void</span>                                    <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#ac42d1a82122668c3958c586eea0d88d3" title="step">step</a>(<span class="keywordtype">double</span>);
+<a name="l00026"></a>00026 
+<a name="l00029"></a>00029                                         glutpp::window::window_s                <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a341df0c373f2c137f37cc9bfab3d00fd" title="Get parent window.">getWindow</a>();
+<a name="l00031"></a>00031                                 <span class="keyword">protected</span>:
+<a name="l00033"></a><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a5df3657d15a48561bfbc24443377456e">00033</a>                                         std::weak_ptr&lt;renderable&gt;               <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a5df3657d15a48561bfbc24443377456e" title="Parent.">renderable_</a>;
+<a name="l00034"></a>00034                         };
+<a name="l00035"></a><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html">00035</a>                         <span class="keyword">class </span><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html">Perspective</a>: <span class="keyword">public</span> <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html">Base</a> {
+<a name="l00036"></a>00036                                 <span class="keyword">public</span>:
+<a name="l00037"></a>00037                                         <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html">Perspective</a>(std::shared_ptr&lt;glutpp::renderable&gt;);
+<a name="l00038"></a>00038                                         <span class="comment">//void          init(glutpp::renderable_shared);</span>
+<a name="l00039"></a>00039                                         <span class="keyword">virtual</span> physx::PxMat44                  proj();
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 
+<a name="l00043"></a>00043                                         <span class="keywordtype">void</span>                                    <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#a74771031b253ee639dff1a15e6b9c32d" title="step">step</a>(<span class="keywordtype">double</span>);
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045                                         <span class="comment">//</span>
+<a name="l00046"></a>00046 
+<a name="l00048"></a><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#adbbd4f2e6c7c1d4028195680bcd88756">00048</a>                                         <span class="keywordtype">float</span>                                   <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#adbbd4f2e6c7c1d4028195680bcd88756" title="field of view angle">fovy_</a>;
+<a name="l00050"></a><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#a873fea74faea3fcee819e92534b3ea59">00050</a>                                         <span class="keywordtype">float</span>                                   <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#a873fea74faea3fcee819e92534b3ea59" title="near clipping plane">zn_</a>;
+<a name="l00052"></a><a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#aa3301a764cbcc06f9640f982525c2480">00052</a>                                         <span class="keywordtype">float</span>                                   <a class="code" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#aa3301a764cbcc06f9640f982525c2480" title="far clipping plane">zf_</a>;
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054                         };
+<a name="l00055"></a>00055                 }
+<a name="l00056"></a>00056         }
+<a name="l00057"></a>00057 }
+<a name="l00058"></a>00058 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -146,7 +143,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

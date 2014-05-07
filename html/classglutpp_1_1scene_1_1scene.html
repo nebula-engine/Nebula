@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,19 +108,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">glutpp::scene::scene Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="glutpp::scene::scene" --><!-- doxytag: inherits="glutpp::actor::parent" --><div class="dynheader">
+<!-- doxytag: class="glutpp::scene::scene" --><!-- doxytag: inherits="glutpp::actor::parent,flag&lt; unsigned int &gt;" --><div class="dynheader">
 Inheritance diagram for glutpp::scene::scene:</div>
 <div class="dyncontent">
 <div class="center"><img src="classglutpp_1_1scene_1_1scene__inherit__graph.png" border="0" usemap="#glutpp_1_1scene_1_1scene_inherit__map" alt="Inheritance graph"/></div>
 <map name="glutpp_1_1scene_1_1scene_inherit__map" id="glutpp_1_1scene_1_1scene_inherit__map">
-<area shape="rect" id="node2" href="classglutpp_1_1actor_1_1parent.html" title="abstract class for parent of an " alt="" coords="7,83,145,112"/><area shape="rect" id="node4" href="classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="33,5,119,35"/></map>
+<area shape="rect" id="node2" href="classglutpp_1_1actor_1_1parent.html" title="abstract class for parent of an " alt="" coords="5,83,144,112"/><area shape="rect" id="node4" href="classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="32,5,117,35"/><area shape="rect" id="node6" href="classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="168,83,331,112"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for glutpp::scene::scene:</div>
 <div class="dyncontent">
 <div class="center"><img src="classglutpp_1_1scene_1_1scene__coll__graph.png" border="0" usemap="#glutpp_1_1scene_1_1scene_coll__map" alt="Collaboration graph"/></div>
 <map name="glutpp_1_1scene_1_1scene_coll__map" id="glutpp_1_1scene_1_1scene_coll__map">
-<area shape="rect" id="node2" href="classglutpp_1_1actor_1_1parent.html" title="abstract class for parent of an " alt="" coords="5,85,144,115"/><area shape="rect" id="node4" href="classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="32,5,117,35"/><area shape="rect" id="node6" href="classglutpp_1_1scene_1_1raw.html" title="glutpp::scene::raw" alt="" coords="168,85,296,115"/></map>
+<area shape="rect" id="node2" href="classglutpp_1_1actor_1_1parent.html" title="abstract class for parent of an " alt="" coords="5,85,144,115"/><area shape="rect" id="node4" href="classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="32,5,117,35"/><area shape="rect" id="node6" href="classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="168,85,331,115"/><area shape="rect" id="node8" href="classNeb_1_1Map.html" title="Neb::Map\&lt; glutpp::actor::actor \&gt;" alt="" coords="355,85,565,115"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classglutpp_1_1scene_1_1scene-members.html">List of all members.</a></p>
@@ -141,10 +142,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>f</b> (unsigned int f
 void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (glutpp::scene::desc_s <a class="el" href="classglutpp_1_1scene_1_1desc.html">desc</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5de02f6d7763af6ad7b5fb8e57499a65"></a><!-- doxytag: member="glutpp::scene::scene::release" ref="a5de02f6d7763af6ad7b5fb8e57499a65" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>release</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab60b4329ae765b2fe64e0cfc08a406a8"></a><!-- doxytag: member="glutpp::scene::scene::get_pose" ref="ab60b4329ae765b2fe64e0cfc08a406a8" args="()" -->
-math::mat44&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_pose</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab785a0fe5fbb72652a7e96d4ae9f5c4e"></a><!-- doxytag: member="glutpp::scene::scene::render" ref="ab785a0fe5fbb72652a7e96d4ae9f5c4e" args="(double time, glutpp::Camera::View::Base_s, glutpp::window::window_s)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1scene_1_1scene.html#ab785a0fe5fbb72652a7e96d4ae9f5c4e">render</a> (double time, glutpp::Camera::View::Base_s, glutpp::window::window_s)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac14e8f1e177017420a5ef773a42f3b97"></a><!-- doxytag: member="glutpp::scene::scene::get_pose" ref="ac14e8f1e177017420a5ef773a42f3b97" args="()" -->
+physx::PxMat44&#160;</td><td class="memItemRight" valign="bottom"><b>get_pose</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a62e8789911000041f65647f1513edc7e"></a><!-- doxytag: member="glutpp::scene::scene::render" ref="a62e8789911000041f65647f1513edc7e" args="(double time, std::shared_ptr&lt; glutpp::Camera::View::Base&lt; float &gt; &gt;, std::shared_ptr&lt; glutpp::Camera::Projection::Base &gt;, glutpp::window::window_s)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1scene_1_1scene.html#a62e8789911000041f65647f1513edc7e">render</a> (double time, std::shared_ptr&lt; <a class="el" href="classglutpp_1_1Camera_1_1View_1_1Base.html">glutpp::Camera::View::Base</a>&lt; float &gt; &gt;, std::shared_ptr&lt; <a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html">glutpp::Camera::Projection::Base</a> &gt;, glutpp::window::window_s)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">render <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9bbb023db7322d1aed04f9ae5c541222"></a><!-- doxytag: member="glutpp::scene::scene::draw" ref="a9bbb023db7322d1aed04f9ae5c541222" args="(glutpp::window::window_s window)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (glutpp::window::window_s window)</td></tr>
@@ -154,14 +155,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>resize</b> (int w, in
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a928bc6e75e5521c28ccdd48f6b54da80"></a><!-- doxytag: member="glutpp::scene::scene::i_" ref="a928bc6e75e5521c28ccdd48f6b54da80" args="" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>i_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af6e1bc3b0f6139a204bda6f1084cf14e"></a><!-- doxytag: member="glutpp::scene::scene::raw_" ref="af6e1bc3b0f6139a204bda6f1084cf14e" args="" -->
-<a class="el" href="classglutpp_1_1scene_1_1raw.html">raw</a>&#160;</td><td class="memItemRight" valign="bottom"><b>raw_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af1f1a94a434d3a0bb82fc0f30d663fab"></a><!-- doxytag: member="glutpp::scene::scene::raw_" ref="af1f1a94a434d3a0bb82fc0f30d663fab" args="" -->
+boost::shared_ptr&lt; <a class="el" href="classglutpp_1_1scene_1_1raw.html">raw</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>raw_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7cb4b325dcdf8a43307927db29d8dcc"></a><!-- doxytag: member="glutpp::scene::scene::renderable_" ref="ae7cb4b325dcdf8a43307927db29d8dcc" args="" -->
 renderable_w&#160;</td><td class="memItemRight" valign="bottom"><b>renderable_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af54deb6f8bbc4044640249810d90579c"></a><!-- doxytag: member="glutpp::scene::scene::actors_" ref="af54deb6f8bbc4044640249810d90579c" args="" -->
-gal::map&lt; <a class="el" href="classglutpp_1_1actor_1_1actor.html">glutpp::actor::actor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>actors_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a311bc04b84484ff34e30a52350f011d8"></a><!-- doxytag: member="glutpp::scene::scene::actors_deferred_" ref="a311bc04b84484ff34e30a52350f011d8" args="" -->
-actors_deferred_map&#160;</td><td class="memItemRight" valign="bottom"><b>actors_deferred_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a006a66605a07cc4a08303e766de7def4"></a><!-- doxytag: member="glutpp::scene::scene::actors_" ref="a006a66605a07cc4a08303e766de7def4" args="" -->
+<a class="el" href="classNeb_1_1Map.html">Neb::Map</a>&lt; <a class="el" href="classglutpp_1_1actor_1_1actor.html">glutpp::actor::actor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>actors_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb5b377dfd9af31a3476ba4b3a721481"></a><!-- doxytag: member="glutpp::scene::scene::actors_deferred_" ref="afb5b377dfd9af31a3476ba4b3a721481" args="" -->
+std::map&lt; std::string, <br class="typebreak"/>
+boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classglutpp_1_1actor_1_1desc.html">glutpp::actor::desc</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>actors_deferred_</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/gru/scene/<a class="el" href="scene_8hpp_source.html">scene.hpp</a></li>
@@ -173,7 +176,7 @@ actors_deferred_map&#160;</td><td class="memItemRight" valign="bottom"><b>actors
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -185,7 +188,7 @@ actors_deferred_map&#160;</td><td class="memItemRight" valign="bottom"><b>actors
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

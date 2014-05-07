@@ -1,5 +1,9 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Double.html" title="glutpp::glsl::Uniform::Vector::Double" alt="" coords="277,5,512,35"/>
-<area shape="rect" id="node5" href="$classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Float.html" title="glutpp::glsl::Uniform::Vector::Float" alt="" coords="284,59,505,88"/>
-<area shape="rect" id="node7" href="$classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Int.html" title="glutpp::glsl::Uniform::Vector::Int" alt="" coords="291,112,499,141"/>
+<area shape="rect" id="node5" href="$classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1DVec3.html" title="glutpp::glsl::Uniform::Vector::DVec3" alt="" coords="279,59,511,88"/>
+<area shape="rect" id="node7" href="$classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1DVec4.html" title="glutpp::glsl::Uniform::Vector::DVec4" alt="" coords="279,112,511,141"/>
+<area shape="rect" id="node9" href="$classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Float.html" title="glutpp::glsl::Uniform::Vector::Float" alt="" coords="284,165,505,195"/>
+<area shape="rect" id="node11" href="$classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Int.html" title="glutpp::glsl::Uniform::Vector::Int" alt="" coords="291,219,499,248"/>
+<area shape="rect" id="node13" href="$classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Vec3.html" title="glutpp::glsl::Uniform::Vector::Vec3" alt="" coords="284,272,505,301"/>
+<area shape="rect" id="node15" href="$classglutpp_1_1glsl_1_1Uniform_1_1Vector_1_1Vec4.html" title="glutpp::glsl::Uniform::Vector::Vec4" alt="" coords="284,325,505,355"/>
 </map>

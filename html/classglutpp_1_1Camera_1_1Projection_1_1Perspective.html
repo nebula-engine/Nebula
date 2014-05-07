@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,7 +102,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">glutpp::Camera::Projection::Perspective Class Reference</div>  </div>
 </div><!--header-->
@@ -125,15 +127,28 @@ Collaboration diagram for glutpp::Camera::Projection::Perspective:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d46649214b573fedd251cd7d7e5ba4d"></a><!-- doxytag: member="glutpp::Camera::Projection::Perspective::proj" ref="a4d46649214b573fedd251cd7d7e5ba4d" args="()=0" -->
-virtual math::mat44&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>proj</b> ()=0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ddb1d4c5039ca1e58f3d89680d7bcf7"></a><!-- doxytag: member="glutpp::Camera::Projection::Perspective::step" ref="a0ddb1d4c5039ca1e58f3d89680d7bcf7" args="(float)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#a0ddb1d4c5039ca1e58f3d89680d7bcf7">step</a> (float)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab11e22787e90b3ebd444e32991fb5a7a"></a><!-- doxytag: member="glutpp::Camera::Projection::Perspective::Perspective" ref="ab11e22787e90b3ebd444e32991fb5a7a" args="(std::shared_ptr&lt; glutpp::renderable &gt;)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><b>Perspective</b> (std::shared_ptr&lt; <a class="el" href="classglutpp_1_1renderable.html">glutpp::renderable</a> &gt;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fec5469b70c19093e4d2932a9ceec0a"></a><!-- doxytag: member="glutpp::Camera::Projection::Perspective::proj" ref="a2fec5469b70c19093e4d2932a9ceec0a" args="()" -->
+virtual physx::PxMat44&#160;</td><td class="memItemRight" valign="bottom"><b>proj</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74771031b253ee639dff1a15e6b9c32d"></a><!-- doxytag: member="glutpp::Camera::Projection::Perspective::step" ref="a74771031b253ee639dff1a15e6b9c32d" args="(double)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#a74771031b253ee639dff1a15e6b9c32d">step</a> (double)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">step <br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adbbd4f2e6c7c1d4028195680bcd88756"></a><!-- doxytag: member="glutpp::Camera::Projection::Perspective::fovy_" ref="adbbd4f2e6c7c1d4028195680bcd88756" args="" -->
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#adbbd4f2e6c7c1d4028195680bcd88756">fovy_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">field of view angle <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a873fea74faea3fcee819e92534b3ea59"></a><!-- doxytag: member="glutpp::Camera::Projection::Perspective::zn_" ref="a873fea74faea3fcee819e92534b3ea59" args="" -->
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#a873fea74faea3fcee819e92534b3ea59">zn_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">near clipping plane <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3301a764cbcc06f9640f982525c2480"></a><!-- doxytag: member="glutpp::Camera::Projection::Perspective::zf_" ref="aa3301a764cbcc06f9640f982525c2480" args="" -->
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#aa3301a764cbcc06f9640f982525c2480">zf_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">far clipping plane <br/></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/gru/Camera/Projection/<a class="el" href="Perspective_8hpp_source.html">Perspective.hpp</a></li>
-<li>src/gru/Camera/Projection/Perspective.cpp</li>
+<li>src/gru/Graphics/Camera/Projection/<a class="el" href="Perspective_8hpp_source.html">Perspective.hpp</a></li>
+<li>src/gru/Graphics/Camera/Projection/Perspective.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -141,7 +156,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -153,7 +168,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

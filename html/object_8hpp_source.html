@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>gru: src/gru/gui/object/object.hpp Source File</title>
+<title>gru: src/gru/Graphics/gui/object/object.hpp Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -76,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">src/gru/gui/object/object.hpp</div>  </div>
+<div class="title">src/gru/Graphics/gui/object/object.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef __NEBULA_UI_OBJECT_BASE_HPP__</span>
@@ -84,79 +85,94 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00004"></a>00004 <span class="preprocessor">#include &lt;memory&gt;</span>
 <a name="l00005"></a>00005 
-<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;tinyxml2.h&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;boost/signals2.hpp&gt;</span>
 <a name="l00007"></a>00007 
-<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;math/color.hpp&gt;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;tinyxml2.h&gt;</span>
 <a name="l00009"></a>00009 
-<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;galaxy/sig/connection.hpp&gt;</span>
+<a name="l00010"></a>00010 <span class="comment">//#include &lt;math/color.hpp&gt;</span>
 <a name="l00011"></a>00011 
-<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;gru/master.hpp&gt;</span>
+<a name="l00012"></a>00012 <span class="comment">//#include &lt;galaxy/sig/connection.hpp&gt;</span>
 <a name="l00013"></a>00013 
-<a name="l00014"></a>00014 <span class="keyword">namespace </span>glutpp { <span class="keyword">namespace </span>gui { <span class="keyword">namespace </span>object {
-<a name="l00015"></a>00015 
-<a name="l00016"></a><a class="code" href="classglutpp_1_1gui_1_1object_1_1object.html">00016</a>         <span class="keyword">class </span><a class="code" href="classglutpp_1_1gui_1_1object_1_1object.html">object</a> {
-<a name="l00017"></a>00017                 <span class="keyword">public</span>:
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019                         <a class="code" href="classglutpp_1_1gui_1_1object_1_1object.html">object</a>();
-<a name="l00020"></a>00020                         <span class="keywordtype">void</span>                            i(<span class="keywordtype">int</span>);
-<a name="l00021"></a>00021                         <span class="keywordtype">void</span>                            load_xml(tinyxml2::XMLElement*);
-<a name="l00022"></a>00022 
+<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;gru/master.hpp&gt;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;gru/Graphics/Color/Color.hpp&gt;</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="keyword">namespace </span>glutpp {
+<a name="l00018"></a>00018         <span class="keyword">namespace </span>gui {
+<a name="l00019"></a>00019                 <span class="keyword">namespace </span>object {
+<a name="l00020"></a><a class="code" href="classglutpp_1_1gui_1_1object_1_1Data.html">00020</a>                         <span class="keyword">class </span><a class="code" href="classglutpp_1_1gui_1_1object_1_1Data.html">Data</a> {
+<a name="l00021"></a>00021                                 <span class="keyword">public</span>:
+<a name="l00022"></a>00022                                         <a class="code" href="classglutpp_1_1gui_1_1object_1_1Data.html">Data</a>();
 <a name="l00023"></a>00023 
-<a name="l00024"></a>00024                         <span class="comment">//window::window_s              get_window();</span>
-<a name="l00025"></a>00025                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    draw() = 0;
-<a name="l00026"></a>00026                         <span class="keywordtype">void</span>                            set_label(<span class="keywordtype">char</span> <span class="keyword">const</span> *);
-<a name="l00027"></a>00027                         <span class="keyword">virtual</span> <span class="keywordtype">int</span>                     key_fun(<span class="keywordtype">int</span>,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>) = 0;
-<a name="l00028"></a>00028                         <span class="keyword">virtual</span> <span class="keywordtype">int</span>                     mouse_button_fun(<span class="keywordtype">int</span>,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>);
-<a name="l00029"></a>00029                         <span class="comment">//virtual void                  connect();</span>
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031 
+<a name="l00024"></a>00024                                         <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>    serialize(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
+<a name="l00025"></a>00025                                                 ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;x&quot;</span>,x_);
+<a name="l00026"></a>00026                                                 ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;y&quot;</span>,y_);
+<a name="l00027"></a>00027                                                 ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;w&quot;</span>,w_);
+<a name="l00028"></a>00028                                                 ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;h&quot;</span>,h_);
+<a name="l00029"></a>00029                                                 ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;font_color&quot;</span>,font_color_);
+<a name="l00030"></a>00030                                                 ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;bg_color&quot;</span>,bg_color_);
+<a name="l00031"></a>00031                                                 ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;label&quot;</span>,label_);
 <a name="l00032"></a>00032 
-<a name="l00033"></a>00033                         <span class="keywordtype">int</span>                             i_;
+<a name="l00033"></a>00033                                         }
 <a name="l00034"></a>00034 
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036                         <span class="keywordtype">float</span>                           x_;
-<a name="l00037"></a>00037                         <span class="keywordtype">float</span>                           y_;
-<a name="l00038"></a>00038                         <span class="keywordtype">float</span>                           w_;
-<a name="l00039"></a>00039                         <span class="keywordtype">float</span>                           h_;
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041                         math::Color::color&lt;double&gt;      font_color_;
-<a name="l00042"></a>00042                         math::Color::color&lt;double&gt;      bg_color_;
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044                         <span class="keywordtype">bool</span>                            active_;
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046                         <span class="comment">//std::shared_ptr&lt;jess::signal::connection&lt;int&gt; &gt; connection_key_down_;</span>
-<a name="l00048"></a>00048 <span class="comment"></span>                        <span class="comment">//std::shared_ptr&lt;jess::signal::connection&lt;int&gt; &gt; connection_key_up_;</span>
-<a name="l00050"></a>00050 <span class="comment"></span>                        <span class="comment">/*virtual int           handle_key(unsigned short,int) = 0;</span>
-<a name="l00051"></a>00051 <span class="comment">                          virtual int           handle_key_down(unsigned short) = 0;</span>
-<a name="l00053"></a>00053 <span class="comment">                        virtual int             handle_key_up(unsigned short) = 0;*/</span>
-<a name="l00054"></a>00054                         <span class="comment">//int                   key_down_mask_;</span>
-<a name="l00055"></a>00055                         <span class="comment">//int                   key_up_mask_;</span>
-<a name="l00056"></a><a class="code" href="classglutpp_1_1gui_1_1object_1_1object.html#a005b249bfdbe95ec9ecba9b701a55273">00056</a>                         <span class="keywordtype">size_t</span>                          <a class="code" href="classglutpp_1_1gui_1_1object_1_1object.html#a005b249bfdbe95ec9ecba9b701a55273" title="key up">label_length_</a>;
-<a name="l00057"></a>00057                         <span class="keywordtype">char</span> *                          label_;
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060                         <span class="comment">// connections</span>
-<a name="l00061"></a>00061                         <span class="keyword">struct</span>
-<a name="l00062"></a>00062                         {
-<a name="l00063"></a>00063                                 mouse_button_fun_c      mouse_button_fun_;
-<a name="l00064"></a>00064                                 key_fun_c               key_fun_;
-<a name="l00065"></a>00065                         } conns_;
+<a name="l00035"></a>00035                                         <span class="keywordtype">float</span>                           x_;
+<a name="l00036"></a>00036                                         <span class="keywordtype">float</span>                           y_;
+<a name="l00037"></a>00037                                         <span class="keywordtype">float</span>                           w_;
+<a name="l00038"></a>00038                                         <span class="keywordtype">float</span>                           h_;
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040                                         <a class="code" href="classgru_1_1Color_1_1color.html">gru::Color::color&lt;float&gt;</a>        font_color_;
+<a name="l00041"></a>00041                                         <a class="code" href="classgru_1_1Color_1_1color.html">gru::Color::color&lt;float&gt;</a>        bg_color_;
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043                                         std::string                     label_;
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045                         };
+<a name="l00046"></a><a class="code" href="classglutpp_1_1gui_1_1object_1_1object.html">00046</a>                         <span class="keyword">class </span><a class="code" href="classglutpp_1_1gui_1_1object_1_1object.html">object</a> {
+<a name="l00047"></a>00047                                 <span class="keyword">public</span>:
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049                                         <a class="code" href="classglutpp_1_1gui_1_1object_1_1object.html">object</a>();
+<a name="l00050"></a>00050                                         <span class="keywordtype">void</span>                            i(<span class="keywordtype">int</span>);
+<a name="l00051"></a>00051                         
+<a name="l00052"></a>00052                                         <span class="keywordtype">void</span>                            init(boost::shared_ptr&lt;glutpp::gui::object::Data&gt;);
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054                                         <span class="comment">//window::window_s              get_window();</span>
+<a name="l00055"></a>00055                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    draw() = 0;
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057                                         <span class="keyword">virtual</span> <span class="keywordtype">int</span>                     key_fun(<span class="keywordtype">int</span>,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>) = 0;
+<a name="l00058"></a>00058                                         <span class="keyword">virtual</span> <span class="keywordtype">int</span>                     mouse_button_fun(<span class="keywordtype">int</span>,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>);
+<a name="l00059"></a>00059                                         <span class="comment">//virtual void                  connect();</span>
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063                                         <span class="keywordtype">int</span>                             i_;
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 
 <a name="l00066"></a>00066 
-<a name="l00067"></a>00067 
+<a name="l00067"></a>00067                                         <span class="keywordtype">bool</span>                            active_;
 <a name="l00068"></a>00068 
-<a name="l00069"></a>00069         };
-<a name="l00070"></a>00070 }
-<a name="l00071"></a>00071 }
-<a name="l00072"></a>00072 }
-<a name="l00073"></a>00073 <span class="preprocessor">#endif</span>
-<a name="l00074"></a>00074 <span class="preprocessor"></span>
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070                                         <a class="code" href="classglutpp_1_1gui_1_1object_1_1Data.html">Data</a>                            data_;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072                                         <span class="comment">// connections</span>
+<a name="l00073"></a>00073                                         <span class="keyword">struct</span>
+<a name="l00074"></a>00074                                         {
+<a name="l00075"></a>00075                                                 boost::signals2::connection             mouse_button_fun_;
+<a name="l00076"></a>00076                                                 boost::signals2::connection             key_fun_;
+<a name="l00077"></a>00077                                         } conns_;
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081                         };
+<a name="l00082"></a>00082                 }
+<a name="l00083"></a>00083         }
+<a name="l00084"></a>00084 }
+<a name="l00085"></a>00085 <span class="preprocessor">#endif</span>
+<a name="l00086"></a>00086 <span class="preprocessor"></span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -168,7 +184,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

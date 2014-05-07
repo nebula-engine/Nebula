@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -114,6 +115,13 @@ Inheritance diagram for glutpp::gui::object::object:</div>
 <map name="glutpp_1_1gui_1_1object_1_1object_inherit__map" id="glutpp_1_1gui_1_1object_1_1object_inherit__map">
 <area shape="rect" id="node3" href="classglutpp_1_1gui_1_1object_1_1terminal.html" title="glutpp::gui::object::terminal" alt="" coords="5,83,184,112"/><area shape="rect" id="node5" href="classglutpp_1_1gui_1_1object_1_1textview.html" title="textview Display and optionally edit text" alt="" coords="208,83,389,112"/><area shape="rect" id="node7" href="classglutpp_1_1gui_1_1object_1_1edittext.html" title="glutpp::gui::object::edittext" alt="" coords="211,160,387,189"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for glutpp::gui::object::object:</div>
+<div class="dyncontent">
+<div class="center"><img src="classglutpp_1_1gui_1_1object_1_1object__coll__graph.png" border="0" usemap="#glutpp_1_1gui_1_1object_1_1object_coll__map" alt="Collaboration graph"/></div>
+<map name="glutpp_1_1gui_1_1object_1_1object_coll__map" id="glutpp_1_1gui_1_1object_1_1object_coll__map">
+<area shape="rect" id="node2" href="classglutpp_1_1gui_1_1object_1_1Data.html" title="glutpp::gui::object::Data" alt="" coords="9,117,169,147"/><area shape="rect" id="node4" href="classgru_1_1Color_1_1color.html" title="gru::Color::color\&lt; float \&gt;" alt="" coords="8,5,171,35"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classglutpp_1_1gui_1_1object_1_1object-members.html">List of all members.</a></p>
 <table class="memberdecls">
@@ -121,12 +129,10 @@ Inheritance diagram for glutpp::gui::object::object:</div>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a006afaeceb89f8feb38bdadee1de8ab6"></a><!-- doxytag: member="glutpp::gui::object::object::i" ref="a006afaeceb89f8feb38bdadee1de8ab6" args="(int)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>i</b> (int)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0026a69fac8b8257817395806935a348"></a><!-- doxytag: member="glutpp::gui::object::object::load_xml" ref="a0026a69fac8b8257817395806935a348" args="(tinyxml2::XMLElement *)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>load_xml</b> (tinyxml2::XMLElement *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3cc45cb2de4441451e7c5adc0bc4d1a9"></a><!-- doxytag: member="glutpp::gui::object::object::init" ref="a3cc45cb2de4441451e7c5adc0bc4d1a9" args="(boost::shared_ptr&lt; glutpp::gui::object::Data &gt;)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (boost::shared_ptr&lt; <a class="el" href="classglutpp_1_1gui_1_1object_1_1Data.html">glutpp::gui::object::Data</a> &gt;)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa444e18e9d861c9dc3303a7baefaff25"></a><!-- doxytag: member="glutpp::gui::object::object::draw" ref="aa444e18e9d861c9dc3303a7baefaff25" args="()=0" -->
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> ()=0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9a25796fed624c224301a7de4601937"></a><!-- doxytag: member="glutpp::gui::object::object::set_label" ref="ac9a25796fed624c224301a7de4601937" args="(char const *)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_label</b> (char const *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63569b7bbd67ffe91fa48ce08288c388"></a><!-- doxytag: member="glutpp::gui::object::object::key_fun" ref="a63569b7bbd67ffe91fa48ce08288c388" args="(int, int, int, int)=0" -->
 virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>key_fun</b> (int, int, int, int)=0</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9fe2709890ef4285fbfebec5b117eb6f"></a><!-- doxytag: member="glutpp::gui::object::object::mouse_button_fun" ref="a9fe2709890ef4285fbfebec5b117eb6f" args="(int, int, int)" -->
@@ -135,50 +141,19 @@ virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>mouse_button_f
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a872bc716a3da0e21826a55ecda93ea09"></a><!-- doxytag: member="glutpp::gui::object::object::i_" ref="a872bc716a3da0e21826a55ecda93ea09" args="" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>i_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af43dabeecf209f6f76f63084a9c46278"></a><!-- doxytag: member="glutpp::gui::object::object::x_" ref="af43dabeecf209f6f76f63084a9c46278" args="" -->
-float&#160;</td><td class="memItemRight" valign="bottom"><b>x_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac367ab365ffcec89c7b2967b36080afc"></a><!-- doxytag: member="glutpp::gui::object::object::y_" ref="ac367ab365ffcec89c7b2967b36080afc" args="" -->
-float&#160;</td><td class="memItemRight" valign="bottom"><b>y_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9d186399e3f87838181cd0c102bef7e"></a><!-- doxytag: member="glutpp::gui::object::object::w_" ref="ad9d186399e3f87838181cd0c102bef7e" args="" -->
-float&#160;</td><td class="memItemRight" valign="bottom"><b>w_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa568a2621eb9e20129d1166f78d9b76"></a><!-- doxytag: member="glutpp::gui::object::object::h_" ref="aaa568a2621eb9e20129d1166f78d9b76" args="" -->
-float&#160;</td><td class="memItemRight" valign="bottom"><b>h_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5ac65cfad80700543eef857810260a4"></a><!-- doxytag: member="glutpp::gui::object::object::font_color_" ref="aa5ac65cfad80700543eef857810260a4" args="" -->
-math::Color::color&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>font_color_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81ffe55b2f835a6031ff4f66f9a6006f"></a><!-- doxytag: member="glutpp::gui::object::object::bg_color_" ref="a81ffe55b2f835a6031ff4f66f9a6006f" args="" -->
-math::Color::color&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bg_color_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae49a9bf7272bc699054def137a41fcd6"></a><!-- doxytag: member="glutpp::gui::object::object::active_" ref="ae49a9bf7272bc699054def137a41fcd6" args="" -->
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1gui_1_1object_1_1object.html#a005b249bfdbe95ec9ecba9b701a55273">label_length_</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">key up  <a href="#a005b249bfdbe95ec9ecba9b701a55273"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8728bcf68a68a6e28442dfb3e6f8a2b9"></a><!-- doxytag: member="glutpp::gui::object::object::label_" ref="a8728bcf68a68a6e28442dfb3e6f8a2b9" args="" -->
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>label_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8c9db0dbce6abe2f618d1f04c160c186"></a><!-- doxytag: member="glutpp::gui::object::object::data_" ref="a8c9db0dbce6abe2f618d1f04c160c186" args="" -->
+<a class="el" href="classglutpp_1_1gui_1_1object_1_1Data.html">Data</a>&#160;</td><td class="memItemRight" valign="bottom"><b>data_</b></td></tr>
 <tr><td class="memItemLeft" ><a class="anchor" id="ab75373c0a722d4f6c1d4db348b41993b"></a><!-- doxytag: member="glutpp::gui::object::object::conns_" ref="ab75373c0a722d4f6c1d4db348b41993b" args="" -->
 struct {</td></tr>
-<tr><td class="memItemLeft" >&#160;&#160;&#160;mouse_button_fun_c&#160;&#160;&#160;<b>mouse_button_fun_</b></td></tr>
-<tr><td class="memItemLeft" >&#160;&#160;&#160;key_fun_c&#160;&#160;&#160;<b>key_fun_</b></td></tr>
+<tr><td class="memItemLeft" >&#160;&#160;&#160;boost::signals2::connection&#160;&#160;&#160;<b>mouse_button_fun_</b></td></tr>
+<tr><td class="memItemLeft" >&#160;&#160;&#160;boost::signals2::connection&#160;&#160;&#160;<b>key_fun_</b></td></tr>
 <tr><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>conns_</b></td></tr>
 </table>
-<hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a005b249bfdbe95ec9ecba9b701a55273"></a><!-- doxytag: member="glutpp::gui::object::object::label_length_" ref="a005b249bfdbe95ec9ecba9b701a55273" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t <a class="el" href="classglutpp_1_1gui_1_1object_1_1object.html#a005b249bfdbe95ec9ecba9b701a55273">glutpp::gui::object::object::label_length_</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>key up </p>
-<p>key_down </p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/gru/gui/object/<a class="el" href="object_8hpp_source.html">object.hpp</a></li>
-<li>src/gru/gui/object/object.cpp</li>
+<li>src/gru/Graphics/gui/object/<a class="el" href="object_8hpp_source.html">object.hpp</a></li>
+<li>src/gru/Graphics/gui/object/object.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -186,7 +161,7 @@ struct {</td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -198,7 +173,7 @@ struct {</td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

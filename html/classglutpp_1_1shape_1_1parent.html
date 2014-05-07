@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -115,7 +116,7 @@ Inheritance diagram for glutpp::shape::parent:</div>
 <div class="dyncontent">
 <div class="center"><img src="classglutpp_1_1shape_1_1parent__inherit__graph.png" border="0" usemap="#glutpp_1_1shape_1_1parent_inherit__map" alt="Inheritance graph"/></div>
 <map name="glutpp_1_1shape_1_1parent_inherit__map" id="glutpp_1_1shape_1_1parent_inherit__map">
-<area shape="rect" id="node5" href="classglutpp_1_1actor_1_1actor.html" title="glutpp::actor::actor" alt="" coords="5,160,136,189"/><area shape="rect" id="node7" href="classglutpp_1_1shape_1_1shape.html" title="glutpp::shape::shape" alt="" coords="160,160,301,189"/><area shape="rect" id="node2" href="classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="108,5,193,35"/></map>
+<area shape="rect" id="node5" href="classglutpp_1_1actor_1_1actor.html" title="glutpp::actor::actor" alt="" coords="63,160,193,189"/><area shape="rect" id="node7" href="classglutpp_1_1shape_1_1shape.html" title="glutpp::shape::shape" alt="" coords="217,160,359,189"/><area shape="rect" id="node2" href="classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="165,5,251,35"/><area shape="rect" id="node9" href="classglutpp_1_1shape_1_1Box_1_1Box.html" title="glutpp::shape::Box::Box" alt="" coords="5,237,168,267"/><area shape="rect" id="node11" href="classglutpp_1_1shape_1_1Empty_1_1Empty.html" title="glutpp::shape::Empty::Empty" alt="" coords="192,237,384,267"/><area shape="rect" id="node13" href="classglutpp_1_1shape_1_1Sphere_1_1Sphere.html" title="glutpp::shape::Sphere::Sphere" alt="" coords="408,237,605,267"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for glutpp::shape::parent:</div>
@@ -129,14 +130,16 @@ Collaboration diagram for glutpp::shape::parent:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75c44c5a8ec68eeca674edc733cf2175"></a><!-- doxytag: member="glutpp::shape::parent::getPoseGlobal" ref="a75c44c5a8ec68eeca674edc733cf2175" args="()=0" -->
-virtual math::mat44&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPoseGlobal</b> ()=0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a456b7cd7f8d8ce14eb0c5cf69981b8c7"></a><!-- doxytag: member="glutpp::shape::parent::getPose" ref="a456b7cd7f8d8ce14eb0c5cf69981b8c7" args="()=0" -->
-virtual math::mat44&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPose</b> ()=0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a62fdbb0a57fcb5febeb527c920f6823d"></a><!-- doxytag: member="glutpp::shape::parent::isActor" ref="a62fdbb0a57fcb5febeb527c920f6823d" args="()" -->
-glutpp::actor::actor_s&#160;</td><td class="memItemRight" valign="bottom"><b>isActor</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a76f9ddcfe510be429b2d3374ff5a7db8"></a><!-- doxytag: member="glutpp::shape::parent::isShape" ref="a76f9ddcfe510be429b2d3374ff5a7db8" args="()" -->
-glutpp::shape::shape_s&#160;</td><td class="memItemRight" valign="bottom"><b>isShape</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ead2abbf18ef98c91e13f30be9800b3"></a><!-- doxytag: member="glutpp::shape::parent::getPoseGlobal" ref="a9ead2abbf18ef98c91e13f30be9800b3" args="()=0" -->
+virtual physx::PxMat44&#160;</td><td class="memItemRight" valign="bottom"><b>getPoseGlobal</b> ()=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a14d46d2a6c3af5ff76f98ca7937c47d4"></a><!-- doxytag: member="glutpp::shape::parent::getPose" ref="a14d46d2a6c3af5ff76f98ca7937c47d4" args="()=0" -->
+virtual physx::PxMat44&#160;</td><td class="memItemRight" valign="bottom"><b>getPose</b> ()=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a705464e43bd758db0b3131449da413cc"></a><!-- doxytag: member="glutpp::shape::parent::isActor" ref="a705464e43bd758db0b3131449da413cc" args="()" -->
+boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classglutpp_1_1actor_1_1actor.html">glutpp::actor::actor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isActor</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a794d45acffc1ff512f02fe0db48a72ae"></a><!-- doxytag: member="glutpp::shape::parent::isShape" ref="a794d45acffc1ff512f02fe0db48a72ae" args="()" -->
+boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isShape</b> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>abstract class for parent of a shape </p>
@@ -150,7 +153,7 @@ glutpp::shape::shape_s&#160;</td><td class="memItemRight" valign="bottom"><b>isS
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -162,7 +165,7 @@ glutpp::shape::shape_s&#160;</td><td class="memItemRight" valign="bottom"><b>isS
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

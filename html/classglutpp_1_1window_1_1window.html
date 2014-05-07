@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,12 +108,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">glutpp::window::window Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="glutpp::window::window" --><div class="dynheader">
+<!-- doxytag: class="glutpp::window::window" --><!-- doxytag: inherits="flag&lt; unsigned int &gt;" --><div class="dynheader">
+Inheritance diagram for glutpp::window::window:</div>
+<div class="dyncontent">
+<div class="center"><img src="classglutpp_1_1window_1_1window__inherit__graph.png" border="0" usemap="#glutpp_1_1window_1_1window_inherit__map" alt="Inheritance graph"/></div>
+<map name="glutpp_1_1window_1_1window_inherit__map" id="glutpp_1_1window_1_1window_inherit__map">
+<area shape="rect" id="node2" href="classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="5,5,168,35"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
 Collaboration diagram for glutpp::window::window:</div>
 <div class="dyncontent">
 <div class="center"><img src="classglutpp_1_1window_1_1window__coll__graph.png" border="0" usemap="#glutpp_1_1window_1_1window_coll__map" alt="Collaboration graph"/></div>
 <map name="glutpp_1_1window_1_1window_coll__map" id="glutpp_1_1window_1_1window_coll__map">
-<area shape="rect" id="node2" href="structglutpp_1_1window_1_1raw.html" title="glutpp::window::raw" alt="" coords="16,5,155,35"/></map>
+<area shape="rect" id="node2" href="classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="5,5,168,35"/><area shape="rect" id="node4" href="structglutpp_1_1window_1_1raw.html" title="glutpp::window::raw" alt="" coords="192,5,331,35"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classglutpp_1_1window_1_1window-members.html">List of all members.</a></p>
@@ -156,11 +164,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>callback_mouse_button
 void&#160;</td><td class="memItemRight" valign="bottom"><b>callback_key_fun</b> (GLFWwindow *, int, int, int, int)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" ><a class="anchor" id="a95195cc9b30e5df54a0e85928fc078ee"></a><!-- doxytag: member="glutpp::window::window::sig_" ref="a95195cc9b30e5df54a0e85928fc078ee" args="" -->
+<tr><td class="memItemLeft" ><a class="anchor" id="aa11925db4252838d5585319ed5c50657"></a><!-- doxytag: member="glutpp::window::window::sig_" ref="aa11925db4252838d5585319ed5c50657" args="" -->
 struct {</td></tr>
-<tr><td class="memItemLeft" >&#160;&#160;&#160;gal::sig::signal&lt; int, int, <br class="typebreak"/>
-int, int &gt;&#160;&#160;&#160;<b>key_fun_</b></td></tr>
-<tr><td class="memItemLeft" >&#160;&#160;&#160;gal::sig::signal&lt; int, int, int &gt;&#160;&#160;&#160;<b>mouse_button_fun_</b></td></tr>
+<tr><td class="memItemLeft" >&#160;&#160;&#160;Neb::Signals::KeyFun&#160;&#160;&#160;<b>key_fun_</b></td></tr>
+<tr><td class="memItemLeft" >&#160;&#160;&#160;Neb::Signals::MouseButtonFun&#160;&#160;&#160;<b>mouse_button_fun_</b></td></tr>
 <tr><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>sig_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaacdf60ffe63742d11985ebf5cb9d1a7"></a><!-- doxytag: member="glutpp::window::window::renderable_" ref="aaacdf60ffe63742d11985ebf5cb9d1a7" args="" -->
 glutpp::renderable_s&#160;</td><td class="memItemRight" valign="bottom"><b>renderable_</b></td></tr>
@@ -172,8 +179,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>i_</b></td></tr>
 GLFWwindow *&#160;</td><td class="memItemRight" valign="bottom"><b>window_</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/gru/window/<a class="el" href="window_8hpp_source.html">window.hpp</a></li>
-<li>src/gru/window/window.cpp</li>
+<li>src/gru/Graphics/window/<a class="el" href="window_8hpp_source.html">window.hpp</a></li>
+<li>src/gru/Graphics/window/window.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -181,7 +188,7 @@ GLFWwindow *&#160;</td><td class="memItemRight" valign="bottom"><b>window_</b></
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -193,7 +200,7 @@ GLFWwindow *&#160;</td><td class="memItemRight" valign="bottom"><b>window_</b></
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

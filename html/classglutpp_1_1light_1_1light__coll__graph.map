@@ -1,4 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classglutpp_1_1light_1_1raw.html" title="glutpp::light::raw" alt="" coords="5,5,123,35"/>
-<area shape="rect" id="node4" href="$classglutpp_1_1texture.html" title="glutpp::texture" alt="" coords="147,5,251,35"/>
+<area shape="rect" id="node2" href="$classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="5,136,168,165"/>
+<area shape="rect" id="node4" href="$classglutpp_1_1light_1_1raw.html" title="glutpp::light::raw" alt="" coords="192,136,309,165"/>
+<area shape="rect" id="node6" href="$classgru_1_1Color_1_1color.html" title="gru::Color::color\&lt; float \&gt;" alt="" coords="169,5,332,35"/>
+<area shape="rect" id="node8" href="$classglutpp_1_1texture.html" title="glutpp::texture" alt="" coords="333,136,437,165"/>
 </map>

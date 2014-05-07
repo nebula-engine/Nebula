@@ -1,5 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classglutpp_1_1actor_1_1parent.html" title="abstract class for parent of an " alt="" coords="5,83,144,112"/>
-<area shape="rect" id="node4" href="$classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="115,5,200,35"/>
-<area shape="rect" id="node6" href="$classglutpp_1_1shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="168,83,312,112"/>
+<area shape="rect" id="node2" href="$classglutpp_1_1actor_1_1parent.html" title="abstract class for parent of an " alt="" coords="187,5,325,35"/>
+<area shape="rect" id="node4" href="$classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="7,31,92,60"/>
+<area shape="rect" id="node6" href="$classglutpp_1_1shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="184,59,328,88"/>
+<area shape="rect" id="node9" href="$classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="175,112,337,141"/>
+<area shape="rect" id="node11" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; glutpp::actor::actor \&gt;" alt="" coords="151,165,361,195"/>
+<area shape="rect" id="node13" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; glutpp::shape::shape \&gt;" alt="" coords="144,219,368,248"/>
 </map>

@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -129,14 +130,16 @@ Collaboration diagram for glutpp::actor::parent:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab068cbe871896c5554096dffbd15e304"></a><!-- doxytag: member="glutpp::actor::parent::getPoseGlobal" ref="ab068cbe871896c5554096dffbd15e304" args="()=0" -->
-virtual math::mat44&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPoseGlobal</b> ()=0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af748af3f0a3291109fb9b3fc0b9b71c7"></a><!-- doxytag: member="glutpp::actor::parent::getPose" ref="af748af3f0a3291109fb9b3fc0b9b71c7" args="()=0" -->
-virtual math::mat44&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPose</b> ()=0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46d5c9edf657c619a5245d231de5fac1"></a><!-- doxytag: member="glutpp::actor::parent::isActor" ref="a46d5c9edf657c619a5245d231de5fac1" args="()" -->
-glutpp::actor::actor_s&#160;</td><td class="memItemRight" valign="bottom"><b>isActor</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a879dd673ee1a887efa2ad4175d61ba14"></a><!-- doxytag: member="glutpp::actor::parent::isShape" ref="a879dd673ee1a887efa2ad4175d61ba14" args="()" -->
-glutpp::shape::shape_s&#160;</td><td class="memItemRight" valign="bottom"><b>isShape</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9fac5481a523174d39efae704850ba22"></a><!-- doxytag: member="glutpp::actor::parent::getPoseGlobal" ref="a9fac5481a523174d39efae704850ba22" args="()=0" -->
+virtual physx::PxMat44&#160;</td><td class="memItemRight" valign="bottom"><b>getPoseGlobal</b> ()=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac72a9f63348a6493f3437839c3f3b17b"></a><!-- doxytag: member="glutpp::actor::parent::getPose" ref="ac72a9f63348a6493f3437839c3f3b17b" args="()=0" -->
+virtual physx::PxMat44&#160;</td><td class="memItemRight" valign="bottom"><b>getPose</b> ()=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7cd25ee9d11a6652f0be2e9c7cc6a20b"></a><!-- doxytag: member="glutpp::actor::parent::isActor" ref="a7cd25ee9d11a6652f0be2e9c7cc6a20b" args="()" -->
+boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classglutpp_1_1actor_1_1actor.html">glutpp::actor::actor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isActor</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a79d907398b663b55197babc36184dc33"></a><!-- doxytag: member="glutpp::actor::parent::isScene" ref="a79d907398b663b55197babc36184dc33" args="()" -->
+boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classglutpp_1_1scene_1_1scene.html">glutpp::scene::scene</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isScene</b> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>abstract class for parent of an  </p>
@@ -150,7 +153,7 @@ glutpp::shape::shape_s&#160;</td><td class="memItemRight" valign="bottom"><b>isS
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -162,7 +165,7 @@ glutpp::shape::shape_s&#160;</td><td class="memItemRight" valign="bottom"><b>isS
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

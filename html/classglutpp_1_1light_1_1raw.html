@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,15 +107,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">glutpp::light::raw Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="glutpp::light::raw" -->
+<!-- doxytag: class="glutpp::light::raw" --><div class="dynheader">
+Collaboration diagram for glutpp::light::raw:</div>
+<div class="dyncontent">
+<div class="center"><img src="classglutpp_1_1light_1_1raw__coll__graph.png" border="0" usemap="#glutpp_1_1light_1_1raw_coll__map" alt="Collaboration graph"/></div>
+<map name="glutpp_1_1light_1_1raw_coll__map" id="glutpp_1_1light_1_1raw_coll__map">
+<area shape="rect" id="node2" href="classgru_1_1Color_1_1color.html" title="gru::Color::color\&lt; float \&gt;" alt="" coords="5,5,168,35"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+
 <p><a href="classglutpp_1_1light_1_1raw-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6162f0f546b1b04b07757456dd5649b0"></a><!-- doxytag: member="glutpp::light::raw::load" ref="a6162f0f546b1b04b07757456dd5649b0" args="(glutpp::light::light_s)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (glutpp::light::light_s)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a18d0e77687236ebb13ffd48872c35a3c"></a><!-- doxytag: member="glutpp::light::raw::load" ref="a18d0e77687236ebb13ffd48872c35a3c" args="(tinyxml2::XMLElement *)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (tinyxml2::XMLElement *)</td></tr>
+<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="afc814b37f0c86ce19d5c7f468bcf4cd1"></a><!-- doxytag: member="glutpp::light::raw::serialize" ref="afc814b37f0c86ce19d5c7f468bcf4cd1" args="(Archive &amp;ar, unsigned int const &amp;version)" -->
+template&lt;class Archive &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialize</b> (Archive &amp;ar, unsigned int const &amp;version)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9818fe2fc9498110fa26b408a15df2e7"></a><!-- doxytag: member="glutpp::light::raw::print" ref="a9818fe2fc9498110fa26b408a15df2e7" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
@@ -123,33 +132,32 @@ Public Attributes</h2></td></tr>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>i_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23186cbd578307e19e25de70506bf685"></a><!-- doxytag: member="glutpp::light::raw::flag_" ref="a23186cbd578307e19e25de70506bf685" args="" -->
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>flag_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ee6c818d16ba1907575c8113fe77d62"></a><!-- doxytag: member="glutpp::light::raw::pos_" ref="a4ee6c818d16ba1907575c8113fe77d62" args="" -->
-math::vec4&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pos_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e1de5922bb65113dd176dda60312c83"></a><!-- doxytag: member="glutpp::light::raw::ambient_" ref="a6e1de5922bb65113dd176dda60312c83" args="" -->
-math::Color::color&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ambient_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c0a3bc332e06b7210fce32401da2aa3"></a><!-- doxytag: member="glutpp::light::raw::diffuse_" ref="a0c0a3bc332e06b7210fce32401da2aa3" args="" -->
-math::Color::color&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>diffuse_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9fc07b70dc8063a6ff5a41d68805e589"></a><!-- doxytag: member="glutpp::light::raw::specular_" ref="a9fc07b70dc8063a6ff5a41d68805e589" args="" -->
-math::Color::color&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>specular_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a662c16441e5d75558b67844791b2659f"></a><!-- doxytag: member="glutpp::light::raw::spot_direction_" ref="a662c16441e5d75558b67844791b2659f" args="" -->
-math::vec3&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>spot_direction_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af27668a3d72b3d7a93cc0ed090485f61"></a><!-- doxytag: member="glutpp::light::raw::spot_cutoff_" ref="af27668a3d72b3d7a93cc0ed090485f61" args="" -->
-double&#160;</td><td class="memItemRight" valign="bottom"><b>spot_cutoff_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad752c25c478b49bec77c2a504d1e120e"></a><!-- doxytag: member="glutpp::light::raw::spot_exponent_" ref="ad752c25c478b49bec77c2a504d1e120e" args="" -->
-double&#160;</td><td class="memItemRight" valign="bottom"><b>spot_exponent_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d0cdb6db2721483f12bee0dc1f63eb0"></a><!-- doxytag: member="glutpp::light::raw::spot_light_cos_cutoff_" ref="a0d0cdb6db2721483f12bee0dc1f63eb0" args="" -->
-double&#160;</td><td class="memItemRight" valign="bottom"><b>spot_light_cos_cutoff_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac74fe4904b037eac04b7b6dcc397f01a"></a><!-- doxytag: member="glutpp::light::raw::atten_const_" ref="ac74fe4904b037eac04b7b6dcc397f01a" args="" -->
-double&#160;</td><td class="memItemRight" valign="bottom"><b>atten_const_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1092ff2401dac4849e20652fc5223d76"></a><!-- doxytag: member="glutpp::light::raw::atten_linear_" ref="a1092ff2401dac4849e20652fc5223d76" args="" -->
-double&#160;</td><td class="memItemRight" valign="bottom"><b>atten_linear_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4195d675298045abd04ccf3c3317c55a"></a><!-- doxytag: member="glutpp::light::raw::atten_quad_" ref="a4195d675298045abd04ccf3c3317c55a" args="" -->
-double&#160;</td><td class="memItemRight" valign="bottom"><b>atten_quad_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04be696e0e68a0605031b4ca589d5c6c"></a><!-- doxytag: member="glutpp::light::raw::pos_" ref="a04be696e0e68a0605031b4ca589d5c6c" args="" -->
+Neb::Math::Vec4&#160;</td><td class="memItemRight" valign="bottom"><b>pos_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7df75e01a3757c6a97e6c0e31716851f"></a><!-- doxytag: member="glutpp::light::raw::ambient_" ref="a7df75e01a3757c6a97e6c0e31716851f" args="" -->
+<a class="el" href="classgru_1_1Color_1_1color.html">gru::Color::color</a>&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ambient_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5068926040b6b4a7c56814b203d75fd1"></a><!-- doxytag: member="glutpp::light::raw::diffuse_" ref="a5068926040b6b4a7c56814b203d75fd1" args="" -->
+<a class="el" href="classgru_1_1Color_1_1color.html">gru::Color::color</a>&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>diffuse_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7818ecf4423f542dd734b7e7af7fbaa2"></a><!-- doxytag: member="glutpp::light::raw::specular_" ref="a7818ecf4423f542dd734b7e7af7fbaa2" args="" -->
+<a class="el" href="classgru_1_1Color_1_1color.html">gru::Color::color</a>&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>specular_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01ca74836c1cb15c6840337902dafe51"></a><!-- doxytag: member="glutpp::light::raw::spot_direction_" ref="a01ca74836c1cb15c6840337902dafe51" args="" -->
+physx::PxVec3&#160;</td><td class="memItemRight" valign="bottom"><b>spot_direction_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64b2bf603905b262df5f4bba59656773"></a><!-- doxytag: member="glutpp::light::raw::spot_cutoff_" ref="a64b2bf603905b262df5f4bba59656773" args="" -->
+float&#160;</td><td class="memItemRight" valign="bottom"><b>spot_cutoff_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc838bbb511b1804b854f72238c98088"></a><!-- doxytag: member="glutpp::light::raw::spot_exponent_" ref="adc838bbb511b1804b854f72238c98088" args="" -->
+float&#160;</td><td class="memItemRight" valign="bottom"><b>spot_exponent_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a95ff4f47036d288753adf1af64eb2b96"></a><!-- doxytag: member="glutpp::light::raw::spot_light_cos_cutoff_" ref="a95ff4f47036d288753adf1af64eb2b96" args="" -->
+float&#160;</td><td class="memItemRight" valign="bottom"><b>spot_light_cos_cutoff_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11158655fbf3292e6c63aa127e5b1b93"></a><!-- doxytag: member="glutpp::light::raw::atten_const_" ref="a11158655fbf3292e6c63aa127e5b1b93" args="" -->
+float&#160;</td><td class="memItemRight" valign="bottom"><b>atten_const_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4b209c2c061da557e02c996ebb052a3"></a><!-- doxytag: member="glutpp::light::raw::atten_linear_" ref="aa4b209c2c061da557e02c996ebb052a3" args="" -->
+float&#160;</td><td class="memItemRight" valign="bottom"><b>atten_linear_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae86cc622a59f30f2ec79fe342e3597a7"></a><!-- doxytag: member="glutpp::light::raw::atten_quad_" ref="ae86cc622a59f30f2ec79fe342e3597a7" args="" -->
+float&#160;</td><td class="memItemRight" valign="bottom"><b>atten_quad_</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/gru/light/<a class="el" href="light_2raw_8hpp_source.html">raw.hpp</a></li>
-<li>src/gru/light/desc.cpp</li>
-<li>src/gru/light/raw.cpp</li>
+<li>src/gru/Graphics/light/<a class="el" href="Graphics_2light_2raw_8hpp_source.html">raw.hpp</a></li>
+<li>src/gru/Graphics/light/raw.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -157,7 +165,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>atten_quad_</b></td
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -169,7 +177,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>atten_quad_</b></td
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

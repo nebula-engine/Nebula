@@ -1,5 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node5" href="$classglutpp_1_1actor_1_1actor.html" title="glutpp::actor::actor" alt="" coords="5,160,136,189"/>
-<area shape="rect" id="node7" href="$classglutpp_1_1shape_1_1shape.html" title="glutpp::shape::shape" alt="" coords="160,160,301,189"/>
-<area shape="rect" id="node2" href="$classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="108,5,193,35"/>
+<area shape="rect" id="node5" href="$classglutpp_1_1actor_1_1actor.html" title="glutpp::actor::actor" alt="" coords="63,160,193,189"/>
+<area shape="rect" id="node7" href="$classglutpp_1_1shape_1_1shape.html" title="glutpp::shape::shape" alt="" coords="217,160,359,189"/>
+<area shape="rect" id="node2" href="$classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="165,5,251,35"/>
+<area shape="rect" id="node9" href="$classglutpp_1_1shape_1_1Box_1_1Box.html" title="glutpp::shape::Box::Box" alt="" coords="5,237,168,267"/>
+<area shape="rect" id="node11" href="$classglutpp_1_1shape_1_1Empty_1_1Empty.html" title="glutpp::shape::Empty::Empty" alt="" coords="192,237,384,267"/>
+<area shape="rect" id="node13" href="$classglutpp_1_1shape_1_1Sphere_1_1Sphere.html" title="glutpp::shape::Sphere::Sphere" alt="" coords="408,237,605,267"/>
 </map>

@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -92,14 +93,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 This is the complete list of members for <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>, including all inherited members.<table>
   <tr bgcolor="#f0f0f0"><td><b>connect</b>() (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>conns_</b> (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>create_object</b>(tinyxml2::XMLElement *element) (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>draw</b>() (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>get_window</b>() (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>init</b>(glutpp::renderable_s renderable) (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td><code> [virtual]</code></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>init</b>(boost::shared_ptr&lt; glutpp::gui::Desc &gt;) (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>key_fun</b>(int, int, int, int) (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>key_fun_</b> (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>layout</b>() (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>load_xml</b>(tinyxml2::XMLElement *element) (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>mouse_button_fun</b>(int button, int action, int mods) (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>mouse_button_fun_</b> (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>objects_</b> (defined in <a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a>)</td><td><a class="el" href="classglutpp_1_1gui_1_1layout.html">glutpp::gui::layout</a></td><td></td></tr>
@@ -113,7 +113,7 @@ This is the complete list of members for <a class="el" href="classglutpp_1_1gui_
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -125,7 +125,7 @@ This is the complete list of members for <a class="el" href="classglutpp_1_1gui_
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

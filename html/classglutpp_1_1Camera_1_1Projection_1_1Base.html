@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -102,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a>  </div>
+<a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">glutpp::Camera::Projection::Base Class Reference</div>  </div>
 </div><!--header-->
@@ -124,33 +125,52 @@ Inheritance diagram for glutpp::Camera::Projection::Base:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d32d33143126264cf78f5522f5b7cde"></a><!-- doxytag: member="glutpp::Camera::Projection::Base::proj" ref="a9d32d33143126264cf78f5522f5b7cde" args="()=0" -->
-virtual math::mat44&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>proj</b> ()=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1682a678dcfd54b0db8de94efcc2d700"></a><!-- doxytag: member="glutpp::Camera::Projection::Base::Base" ref="a1682a678dcfd54b0db8de94efcc2d700" args="(std::shared_ptr&lt; glutpp::renderable &gt;)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a1682a678dcfd54b0db8de94efcc2d700">Base</a> (std::shared_ptr&lt; <a class="el" href="classglutpp_1_1renderable.html">glutpp::renderable</a> &gt;)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a675ea3d7add2f1f35dfe78efbd830c2d"></a><!-- doxytag: member="glutpp::Camera::Projection::Base::proj" ref="a675ea3d7add2f1f35dfe78efbd830c2d" args="()=0" -->
+virtual physx::PxMat44&#160;</td><td class="memItemRight" valign="bottom"><b>proj</b> ()=0</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d348ea3fc3134598b02d373a8d081d5"></a><!-- doxytag: member="glutpp::Camera::Projection::Base::load" ref="a4d348ea3fc3134598b02d373a8d081d5" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac42d1a82122668c3958c586eea0d88d3"></a><!-- doxytag: member="glutpp::Camera::Projection::Base::step" ref="ac42d1a82122668c3958c586eea0d88d3" args="(double)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#ac42d1a82122668c3958c586eea0d88d3">step</a> (double)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">step TODO explain when in timeline this occurs and in which thread and why <br/></td></tr>
-<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48be27bb0adf9017c29c6bd58e535f10"></a><!-- doxytag: member="glutpp::Camera::Projection::Base::getWindow" ref="a48be27bb0adf9017c29c6bd58e535f10" args="()" -->
-glutpp::window::window_s &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a48be27bb0adf9017c29c6bd58e535f10">getWindow</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">access parent <br/></td></tr>
-<tr><td colspan="2"><h2><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf034b2276c7e933a2e0ce1036beede1"></a><!-- doxytag: member="glutpp::Camera::Projection::Base::fovy_" ref="acf034b2276c7e933a2e0ce1036beede1" args="" -->
-float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#acf034b2276c7e933a2e0ce1036beede1">fovy_</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">field of view angle <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fee9eba771a25b2189ba18cce3583c1"></a><!-- doxytag: member="glutpp::Camera::Projection::Base::zn_" ref="a7fee9eba771a25b2189ba18cce3583c1" args="" -->
-float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a7fee9eba771a25b2189ba18cce3583c1">zn_</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">near clipping plane <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a318bb31bdc6f63546a4bc127223c3295"></a><!-- doxytag: member="glutpp::Camera::Projection::Base::zf_" ref="a318bb31bdc6f63546a4bc127223c3295" args="" -->
-float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a318bb31bdc6f63546a4bc127223c3295">zf_</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">far clipping plane <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#ac42d1a82122668c3958c586eea0d88d3">step</a> (double)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">step  <a href="#ac42d1a82122668c3958c586eea0d88d3"></a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Accessors @{</div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a341df0c373f2c137f37cc9bfab3d00fd"></a><!-- doxytag: member="glutpp::Camera::Projection::Base::getWindow" ref="a341df0c373f2c137f37cc9bfab3d00fd" args="()" -->
+glutpp::window::window_s&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a341df0c373f2c137f37cc9bfab3d00fd">getWindow</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get parent window. <br/></td></tr>
+<tr><td colspan="2"><h2><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5df3657d15a48561bfbc24443377456e"></a><!-- doxytag: member="glutpp::Camera::Projection::Base::renderable_" ref="a5df3657d15a48561bfbc24443377456e" args="" -->
+std::weak_ptr&lt; <a class="el" href="classglutpp_1_1renderable.html">renderable</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#a5df3657d15a48561bfbc24443377456e">renderable_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parent. <br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"></div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/gru/Camera/Projection/<a class="el" href="Perspective_8hpp_source.html">Perspective.hpp</a></li>
-<li>src/gru/Camera/Projection/Perspective.cpp</li>
+<div class="textblock"></div><hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ac42d1a82122668c3958c586eea0d88d3"></a><!-- doxytag: member="glutpp::Camera::Projection::Base::step" ref="ac42d1a82122668c3958c586eea0d88d3" args="(double)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#ac42d1a82122668c3958c586eea0d88d3">glutpp::Camera::Projection::Base::step</a> </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>step </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>explain when in timeline this occurs and in which thread and why </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Perspective.html#a74771031b253ee639dff1a15e6b9c32d">glutpp::Camera::Projection::Perspective</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/gru/Graphics/Camera/Projection/<a class="el" href="Perspective_8hpp_source.html">Perspective.hpp</a></li>
+<li>src/gru/Graphics/Camera/Projection/Perspective.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -158,7 +178,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -170,7 +190,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

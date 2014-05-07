@@ -1,0 +1,177 @@
+\hypertarget{classgal_1_1network_1_1communicating}{\section{gal\-:\-:network\-:\-:communicating \-Class \-Reference}
+\label{classgal_1_1network_1_1communicating}\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}}
+}
+
+
+{\ttfamily \#include $<$communicating.\-hpp$>$}
+
+
+
+\-Inheritance diagram for gal\-:\-:network\-:\-:communicating\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{classgal_1_1network_1_1communicating__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ {\bfseries \-M\-A\-X\-\_\-\-M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-T\-H} =  10000
+ \}
+\item 
+\hypertarget{classgal_1_1network_1_1communicating_aef6c11aca9b227ec65e289b5f194cd83}{typedef int {\bfseries \-H\-E\-A\-D\-E\-R\-\_\-\-T\-Y\-P\-E}}\label{classgal_1_1network_1_1communicating_aef6c11aca9b227ec65e289b5f194cd83}
+
+\item 
+\hypertarget{classgal_1_1network_1_1communicating_a20c6f2dc53a296b6b34a82d5dc8f894a}{typedef std\-::shared\-\_\-ptr\*
+$<$ \hyperlink{classgal_1_1network_1_1communicating}{communicating} $>$ {\bfseries shared\-\_\-t}}\label{classgal_1_1network_1_1communicating_a20c6f2dc53a296b6b34a82d5dc8f894a}
+
+\item 
+\hypertarget{classgal_1_1network_1_1communicating_acde720b70acbd7aecc86d2ebd4d91113}{typedef std\-::vector$<$ shared\-\_\-t $>$ {\bfseries vector\-\_\-t}}\label{classgal_1_1network_1_1communicating_acde720b70acbd7aecc86d2ebd4d91113}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classgal_1_1network_1_1communicating_a151e8a718480e38a21ee0a953dc4b57f}{communicating} (int socket)
+\item 
+void \hyperlink{classgal_1_1network_1_1communicating_a388de6dcc741701cffaea874898643e6}{write} (boost\-::shared\-\_\-ptr$<$ \hyperlink{classgal_1_1network_1_1message}{message} $>$)
+\item 
+void \hyperlink{classgal_1_1network_1_1communicating_a3b39dcb940d746f44b6c2c72e198450d}{close} ()
+\item 
+void \hyperlink{classgal_1_1network_1_1communicating_a43bf55d2d11f1798b4814e069639a239}{start} ()
+\item 
+\hypertarget{classgal_1_1network_1_1communicating_aa9eb8cf91d093cbf9cd7293e8f10122e}{virtual void {\bfseries process} (boost\-::shared\-\_\-ptr$<$ \hyperlink{classgal_1_1network_1_1message}{message} $>$)=0}\label{classgal_1_1network_1_1communicating_aa9eb8cf91d093cbf9cd7293e8f10122e}
+
+\item 
+void \hyperlink{classgal_1_1network_1_1communicating_a271caa9e5d4d13fffda9d38218231b2c}{thread\-\_\-write} (boost\-::shared\-\_\-ptr$<$ \hyperlink{classgal_1_1network_1_1message}{message} $>$)
+\item 
+void \hyperlink{classgal_1_1network_1_1communicating_a32da51cf806bdc60b1a653ef20557af9}{thread\-\_\-write\-\_\-dispatch} ()
+\item 
+void \hyperlink{classgal_1_1network_1_1communicating_abd5efaa6563dda2097f69ae3679f87a1}{thread\-\_\-read} ()
+\item 
+void \hyperlink{classgal_1_1network_1_1communicating_aa7ef767d5117ba5d99cddcb1d7696a1d}{thread\-\_\-read\-\_\-header} ()
+\item 
+void \hyperlink{classgal_1_1network_1_1communicating_aeba5f8e491d9c6a4ddd75aa0a698bed9}{thread\-\_\-read\-\_\-body} ()
+\item 
+void \hyperlink{classgal_1_1network_1_1communicating_ab1434959e6a6b7311e7189078679124f}{handle\-\_\-do\-\_\-read\-\_\-header} ()
+\item 
+void \hyperlink{classgal_1_1network_1_1communicating_a383465f75d9d656a0e80ea3f57963630}{handle\-\_\-do\-\_\-read\-\_\-body} ()
+\item 
+void \hyperlink{classgal_1_1network_1_1communicating_a5a0d9fbfe61ff1d35380854d8aa3860e}{handle\-\_\-do\-\_\-write} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classgal_1_1network_1_1communicating_afe5f9de9e2535e261c78485dec4d9e82}{socket\-\_\-}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+socket communicating 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classgal_1_1network_1_1communicating_a151e8a718480e38a21ee0a953dc4b57f}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!communicating@{communicating}}
+\index{communicating@{communicating}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{communicating}]{\setlength{\rightskip}{0pt plus 5cm}{\bf gal\-::network\-::communicating\-::communicating} (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}\label{classgal_1_1network_1_1communicating_a151e8a718480e38a21ee0a953dc4b57f}
+ctor 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classgal_1_1network_1_1communicating_a3b39dcb940d746f44b6c2c72e198450d}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!close@{close}}
+\index{close@{close}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::close} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classgal_1_1network_1_1communicating_a3b39dcb940d746f44b6c2c72e198450d}
+close \hypertarget{classgal_1_1network_1_1communicating_a383465f75d9d656a0e80ea3f57963630}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!handle\-\_\-do\-\_\-read\-\_\-body@{handle\-\_\-do\-\_\-read\-\_\-body}}
+\index{handle\-\_\-do\-\_\-read\-\_\-body@{handle\-\_\-do\-\_\-read\-\_\-body}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{handle\-\_\-do\-\_\-read\-\_\-body}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::handle\-\_\-do\-\_\-read\-\_\-body} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classgal_1_1network_1_1communicating_a383465f75d9d656a0e80ea3f57963630}
+handle read body \hypertarget{classgal_1_1network_1_1communicating_ab1434959e6a6b7311e7189078679124f}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!handle\-\_\-do\-\_\-read\-\_\-header@{handle\-\_\-do\-\_\-read\-\_\-header}}
+\index{handle\-\_\-do\-\_\-read\-\_\-header@{handle\-\_\-do\-\_\-read\-\_\-header}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{handle\-\_\-do\-\_\-read\-\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::handle\-\_\-do\-\_\-read\-\_\-header} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classgal_1_1network_1_1communicating_ab1434959e6a6b7311e7189078679124f}
+handle read header \hypertarget{classgal_1_1network_1_1communicating_a5a0d9fbfe61ff1d35380854d8aa3860e}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!handle\-\_\-do\-\_\-write@{handle\-\_\-do\-\_\-write}}
+\index{handle\-\_\-do\-\_\-write@{handle\-\_\-do\-\_\-write}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{handle\-\_\-do\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::handle\-\_\-do\-\_\-write} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classgal_1_1network_1_1communicating_a5a0d9fbfe61ff1d35380854d8aa3860e}
+handle write \hypertarget{classgal_1_1network_1_1communicating_a43bf55d2d11f1798b4814e069639a239}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!start@{start}}
+\index{start@{start}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::start} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classgal_1_1network_1_1communicating_a43bf55d2d11f1798b4814e069639a239}
+thread write \hypertarget{classgal_1_1network_1_1communicating_abd5efaa6563dda2097f69ae3679f87a1}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!thread\-\_\-read@{thread\-\_\-read}}
+\index{thread\-\_\-read@{thread\-\_\-read}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{thread\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::thread\-\_\-read} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classgal_1_1network_1_1communicating_abd5efaa6563dda2097f69ae3679f87a1}
+thread read \begin{DoxyRefDesc}{\-Todo}
+\item[\hyperlink{todo__todo000008}{\-Todo}]pass exception to main thread ( or whoever ) \end{DoxyRefDesc}
+\hypertarget{classgal_1_1network_1_1communicating_aeba5f8e491d9c6a4ddd75aa0a698bed9}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!thread\-\_\-read\-\_\-body@{thread\-\_\-read\-\_\-body}}
+\index{thread\-\_\-read\-\_\-body@{thread\-\_\-read\-\_\-body}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{thread\-\_\-read\-\_\-body}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::thread\-\_\-read\-\_\-body} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classgal_1_1network_1_1communicating_aeba5f8e491d9c6a4ddd75aa0a698bed9}
+thread read body \hypertarget{classgal_1_1network_1_1communicating_aa7ef767d5117ba5d99cddcb1d7696a1d}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!thread\-\_\-read\-\_\-header@{thread\-\_\-read\-\_\-header}}
+\index{thread\-\_\-read\-\_\-header@{thread\-\_\-read\-\_\-header}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{thread\-\_\-read\-\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::thread\-\_\-read\-\_\-header} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classgal_1_1network_1_1communicating_aa7ef767d5117ba5d99cddcb1d7696a1d}
+thread read header \hypertarget{classgal_1_1network_1_1communicating_a271caa9e5d4d13fffda9d38218231b2c}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!thread\-\_\-write@{thread\-\_\-write}}
+\index{thread\-\_\-write@{thread\-\_\-write}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{thread\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::thread\-\_\-write} (
+\begin{DoxyParamCaption}
+\item[{boost\-::shared\-\_\-ptr$<$ {\bf message} $>$}]{}
+\end{DoxyParamCaption}
+)}}\label{classgal_1_1network_1_1communicating_a271caa9e5d4d13fffda9d38218231b2c}
+\begin{DoxyRefDesc}{\-Todo}
+\item[\hyperlink{todo__todo000007}{\-Todo}]pass exception to main thread ( or whoever ) \end{DoxyRefDesc}
+\hypertarget{classgal_1_1network_1_1communicating_a32da51cf806bdc60b1a653ef20557af9}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!thread\-\_\-write\-\_\-dispatch@{thread\-\_\-write\-\_\-dispatch}}
+\index{thread\-\_\-write\-\_\-dispatch@{thread\-\_\-write\-\_\-dispatch}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{thread\-\_\-write\-\_\-dispatch}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::thread\-\_\-write\-\_\-dispatch} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classgal_1_1network_1_1communicating_a32da51cf806bdc60b1a653ef20557af9}
+thread write dispath \hypertarget{classgal_1_1network_1_1communicating_a388de6dcc741701cffaea874898643e6}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!write@{write}}
+\index{write@{write}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::write} (
+\begin{DoxyParamCaption}
+\item[{boost\-::shared\-\_\-ptr$<$ {\bf message} $>$}]{}
+\end{DoxyParamCaption}
+)}}\label{classgal_1_1network_1_1communicating_a388de6dcc741701cffaea874898643e6}
+write 
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{classgal_1_1network_1_1communicating_afe5f9de9e2535e261c78485dec4d9e82}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!socket\-\_\-@{socket\-\_\-}}
+\index{socket\-\_\-@{socket\-\_\-}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{socket\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf gal\-::network\-::communicating\-::socket\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classgal_1_1network_1_1communicating_afe5f9de9e2535e261c78485dec4d9e82}
+socket 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/gru/network/communicating.\-hpp\item 
+src/gru/network/communicating.\-cpp\end{DoxyCompactItemize}

@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,13 +102,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a>  </div>
+<a href="#pub-static-methods">Static Public Member Functions</a>  </div>
   <div class="headertitle">
 <div class="title">glutpp::master Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="glutpp::master" -->
+<!-- doxytag: class="glutpp::master" --><!-- doxytag: inherits="flag&lt; unsigned int &gt;" --><div class="dynheader">
+Inheritance diagram for glutpp::master:</div>
+<div class="dyncontent">
+<div class="center"><img src="classglutpp_1_1master__inherit__graph.png" border="0" usemap="#glutpp_1_1master_inherit__map" alt="Inheritance graph"/></div>
+<map name="glutpp_1_1master_inherit__map" id="glutpp_1_1master_inherit__map">
+<area shape="rect" id="node2" href="classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="5,5,168,35"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for glutpp::master:</div>
+<div class="dyncontent">
+<div class="center"><img src="classglutpp_1_1master__coll__graph.png" border="0" usemap="#glutpp_1_1master_coll__map" alt="Collaboration graph"/></div>
+<map name="glutpp_1_1master_coll__map" id="glutpp_1_1master_coll__map">
+<area shape="rect" id="node2" href="classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="5,5,168,35"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+
 <p><a href="classglutpp_1_1master-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-types"></a>
@@ -132,13 +146,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>create_programs</b> (
 window::window_s&#160;</td><td class="memItemRight" valign="bottom"><b>Main_Window</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af66d4b05d87fa96993bb4fc708ad9dca"></a><!-- doxytag: member="glutpp::master::Main_Window" ref="af66d4b05d87fa96993bb4fc708ad9dca" args="(window::window_s)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Main_Window</b> (window::window_s)</td></tr>
-<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="a49f7dc1063160596f0107701c5f3008b"></a><!-- doxytag: member="glutpp::master::create_window" ref="a49f7dc1063160596f0107701c5f3008b" args="(glutpp::window::desc_s wd)" -->
+<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="a683b657d3a5a45b736594d0572b16b26"></a><!-- doxytag: member="glutpp::master::create_window" ref="a683b657d3a5a45b736594d0572b16b26" args="(boost::shared_ptr&lt; glutpp::window::desc &gt; wd)" -->
 template&lt;class U &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; U &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>create_window</b> (glutpp::window::desc_s wd)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf692194f5c27b5dfd38e8bc4b4e964f"></a><!-- doxytag: member="glutpp::master::get_window" ref="acf692194f5c27b5dfd38e8bc4b4e964f" args="(GLFWwindow *)" -->
-glutpp::window::window_s&#160;</td><td class="memItemRight" valign="bottom"><b>get_window</b> (GLFWwindow *)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a421473396319973aab3f23c8d0af5e1b"></a><!-- doxytag: member="glutpp::master::reg" ref="a421473396319973aab3f23c8d0af5e1b" args="(glutpp::window::window_s)" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>reg</b> (glutpp::window::window_s)</td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a>&lt; U &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>create_window</b> (boost::shared_ptr&lt; <a class="el" href="classglutpp_1_1window_1_1desc.html">glutpp::window::desc</a> &gt; wd)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Search @{</div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0820faa8de395f51d44144d6aa90a310"></a><!-- doxytag: member="glutpp::master::getActor" ref="a0820faa8de395f51d44144d6aa90a310" args="(glutpp::actor::addr)" -->
+boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classglutpp_1_1actor_1_1actor.html">glutpp::actor::actor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getActor</b> (<a class="el" href="classglutpp_1_1actor_1_1addr.html">glutpp::actor::addr</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a52f234f4ba1485910dc1590f7e0b8c33"></a><!-- doxytag: member="glutpp::master::get_window" ref="a52f234f4ba1485910dc1590f7e0b8c33" args="(GLFWwindow *)" -->
+<a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a><br class="typebreak"/>
+&lt; <a class="el" href="classglutpp_1_1window_1_1window.html">glutpp::window::window</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_window</b> (GLFWwindow *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ea9e9ca525ef83a119183ee3ada30aa"></a><!-- doxytag: member="glutpp::master::reg" ref="a5ea9e9ca525ef83a119183ee3ada30aa" args="(glutpp::window::window_s)" -->
+GLFWwindow *&#160;</td><td class="memItemRight" valign="bottom"><b>reg</b> (glutpp::window::window_s)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d3e7f660c81e0e34302167d58082a1b"></a><!-- doxytag: member="glutpp::master::get_raw_factory" ref="a7d3e7f660c81e0e34302167d58082a1b" args="()" -->
 glutpp::actor::raw_factory_s&#160;</td><td class="memItemRight" valign="bottom"><b>get_raw_factory</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2a0598fc64a3539f7420bdde0df3c70"></a><!-- doxytag: member="glutpp::master::f" ref="ac2a0598fc64a3539f7420bdde0df3c70" args="()" -->
@@ -153,12 +172,19 @@ static master_s&#160;</td><td class="memItemRight" valign="bottom"><b>Global</b>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>Global</b> (master_s)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Font @{</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a592c6c858ab83ef126cd00ad2369dea2"></a><!-- doxytag: member="glutpp::master::ft_" ref="a592c6c858ab83ef126cd00ad2369dea2" args="" -->
 FT_Library&#160;</td><td class="memItemRight" valign="bottom"><b>ft_</b></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Boost Asio @{</div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35e69672b100fd82e9ff538ef120a85a"></a><!-- doxytag: member="glutpp::master::ios_" ref="a35e69672b100fd82e9ff538ef120a85a" args="" -->
+boost::asio::io_service&#160;</td><td class="memItemRight" valign="bottom"><b>ios_</b></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Factories @{</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d4c1404d4ce9241304b4de5040f9ebe"></a><!-- doxytag: member="glutpp::master::object_factory_" ref="a2d4c1404d4ce9241304b4de5040f9ebe" args="" -->
 glutpp::gui::object::object_factory_s&#160;</td><td class="memItemRight" valign="bottom"><b>object_factory_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae158c0ec4a392a8e34551c7439b37cce"></a><!-- doxytag: member="glutpp::master::raw_factory_" ref="ae158c0ec4a392a8e34551c7439b37cce" args="" -->
-glutpp::actor::raw_factory_s&#160;</td><td class="memItemRight" valign="bottom"><b>raw_factory_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63f4ef4068e6e045d79d943a50233a61"></a><!-- doxytag: member="glutpp::master::actor_raw_factory_" ref="a63f4ef4068e6e045d79d943a50233a61" args="" -->
+glutpp::actor::raw_factory_s&#160;</td><td class="memItemRight" valign="bottom"><b>actor_raw_factory_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae46f8577d3f033018d8b3acdadec4f2"></a><!-- doxytag: member="glutpp::master::shape_raw_factory_" ref="aae46f8577d3f033018d8b3acdadec4f2" args="" -->
+glutpp::shape::raw_factory_s&#160;</td><td class="memItemRight" valign="bottom"><b>shape_raw_factory_</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/gru/<a class="el" href="master_8hpp_source.html">master.hpp</a></li>
@@ -170,7 +196,7 @@ glutpp::actor::raw_factory_s&#160;</td><td class="memItemRight" valign="bottom">
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -182,7 +208,7 @@ glutpp::actor::raw_factory_s&#160;</td><td class="memItemRight" valign="bottom">
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

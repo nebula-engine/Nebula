@@ -3,16 +3,18 @@
 }
 
 
-\-Inheritance diagram for glutpp\-:\-:shape\-:\-:shape\-:\nopagebreak
+\-Inheritance diagram for glutpp\-:\-:shape\-:\-:shape\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=188pt]{classglutpp_1_1shape_1_1shape__inherit__graph}
+\includegraphics[width=350pt]{classglutpp_1_1shape_1_1shape__inherit__graph}
 \end{center}
 \end{figure}
 
 
-\-Collaboration diagram for glutpp\-:\-:shape\-:\-:shape\-:\nopagebreak
+\-Collaboration diagram for glutpp\-:\-:shape\-:\-:shape\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -34,19 +36,23 @@ $\ast$, buffer\-\_\-t $>$ {\bfseries map\-\_\-t}}\label{classglutpp_1_1shape_1_1
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classglutpp_1_1shape_1_1shape_af33c4417a03c151603a0be870fc294c6}{{\bfseries shape} (glutpp\-::shape\-::parent\-\_\-s \hyperlink{classglutpp_1_1shape_1_1parent}{parent})}\label{classglutpp_1_1shape_1_1shape_af33c4417a03c151603a0be870fc294c6}
+\hypertarget{classglutpp_1_1shape_1_1shape_ad27024bb015566044175510b3b13b312}{{\bfseries shape} (boost\-::shared\-\_\-ptr$<$ \hyperlink{classglutpp_1_1shape_1_1parent}{glutpp\-::shape\-::parent} $>$ \hyperlink{classglutpp_1_1shape_1_1parent}{parent})}\label{classglutpp_1_1shape_1_1shape_ad27024bb015566044175510b3b13b312}
 
 \item 
-\hypertarget{classglutpp_1_1shape_1_1shape_a66cb8e0a10a35d7a507ad8acfb236f91}{math\-::mat44$<$ double $>$ {\bfseries get\-Pose} ()}\label{classglutpp_1_1shape_1_1shape_a66cb8e0a10a35d7a507ad8acfb236f91}
+\hypertarget{classglutpp_1_1shape_1_1shape_af6b5b0c8d6c543e0e7684579dc4a44bb}{physx\-::\-Px\-Mat44 {\bfseries get\-Pose} ()}\label{classglutpp_1_1shape_1_1shape_af6b5b0c8d6c543e0e7684579dc4a44bb}
 
 \item 
-\hypertarget{classglutpp_1_1shape_1_1shape_a4725bfab634f98e0e347e344c6216038}{math\-::mat44$<$ double $>$ {\bfseries get\-Pose\-Global} ()}\label{classglutpp_1_1shape_1_1shape_a4725bfab634f98e0e347e344c6216038}
+\hypertarget{classglutpp_1_1shape_1_1shape_a0f8827ec90ebe784f6bd5318cb2393d7}{physx\-::\-Px\-Mat44 {\bfseries get\-Pose\-Global} ()}\label{classglutpp_1_1shape_1_1shape_a0f8827ec90ebe784f6bd5318cb2393d7}
 
 \item 
-\hypertarget{classglutpp_1_1shape_1_1shape_a4d68e601145d5e5479ec360748aa201a}{glutpp\-::shape\-::parent\-\_\-s {\bfseries get\-Parent} ()}\label{classglutpp_1_1shape_1_1shape_a4d68e601145d5e5479ec360748aa201a}
+\hypertarget{classglutpp_1_1shape_1_1shape_a423c20c1de295bed60771370113e4b98}{boost\-::shared\-\_\-ptr\*
+$<$ \hyperlink{classglutpp_1_1shape_1_1parent}{glutpp\-::shape\-::parent} $>$ {\bfseries get\-Parent} ()}\label{classglutpp_1_1shape_1_1shape_a423c20c1de295bed60771370113e4b98}
 
 \item 
-\hypertarget{classglutpp_1_1shape_1_1shape_a7d25094ffd1119b04797289d1a3da851}{void {\bfseries init} (glutpp\-::shape\-::desc\-\_\-s \hyperlink{classglutpp_1_1shape_1_1desc}{desc})}\label{classglutpp_1_1shape_1_1shape_a7d25094ffd1119b04797289d1a3da851}
+\hypertarget{classglutpp_1_1shape_1_1shape_aeab11615caba7d21e8754cfdf0c37e31}{void {\bfseries init} (boost\-::shared\-\_\-ptr$<$ \hyperlink{classglutpp_1_1shape_1_1desc}{glutpp\-::shape\-::desc} $>$ \hyperlink{classglutpp_1_1shape_1_1desc}{desc})}\label{classglutpp_1_1shape_1_1shape_aeab11615caba7d21e8754cfdf0c37e31}
+
+\item 
+\hypertarget{classglutpp_1_1shape_1_1shape_acc94e366420871ee4e55c089d9dc3268}{virtual void {\bfseries create\-Mesh} ()=0}\label{classglutpp_1_1shape_1_1shape_acc94e366420871ee4e55c089d9dc3268}
 
 \item 
 \hypertarget{classglutpp_1_1shape_1_1shape_a7788abfe661a5fd92c93e2081e1d72e7}{void {\bfseries release} ()}\label{classglutpp_1_1shape_1_1shape_a7788abfe661a5fd92c93e2081e1d72e7}
@@ -60,22 +66,26 @@ $\ast$, buffer\-\_\-t $>$ {\bfseries map\-\_\-t}}\label{classglutpp_1_1shape_1_1
 \item 
 \hypertarget{classglutpp_1_1shape_1_1shape_ab30cd62c6b82b7554c75c888128af643}{void {\bfseries notify\-\_\-foundation\-\_\-change\-\_\-pose} ()}\label{classglutpp_1_1shape_1_1shape_ab30cd62c6b82b7554c75c888128af643}
 
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf \-Rendering @\{}\par
+\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classglutpp_1_1shape_1_1shape_a507aa22dd5afc70313f3787743d64ccc}{void {\bfseries load\-\_\-lights} (int \&i, math\-::mat44$<$ double $>$ space)}\label{classglutpp_1_1shape_1_1shape_a507aa22dd5afc70313f3787743d64ccc}
+\hypertarget{classglutpp_1_1shape_1_1shape_ab59d62900fa186e3ed898aa54e21adb1}{void {\bfseries load\-\_\-lights} (int \&i, physx\-::\-Px\-Mat44 space)}\label{classglutpp_1_1shape_1_1shape_ab59d62900fa186e3ed898aa54e21adb1}
 
 \item 
-\hypertarget{classglutpp_1_1shape_1_1shape_a7b225fdba653c5d0a392518805bf443c}{void {\bfseries draw} (glutpp\-::window\-::window\-\_\-s, math\-::mat44$<$ double $>$ space)}\label{classglutpp_1_1shape_1_1shape_a7b225fdba653c5d0a392518805bf443c}
+\hypertarget{classglutpp_1_1shape_1_1shape_a52bdb1e55946a6a264358ba84073baa1}{void {\bfseries draw} (glutpp\-::window\-::window\-\_\-s, physx\-::\-Px\-Mat44 space)}\label{classglutpp_1_1shape_1_1shape_a52bdb1e55946a6a264358ba84073baa1}
 
 \item 
-\hypertarget{classglutpp_1_1shape_1_1shape_a2c91a38dac528c55e364333a99c01b60}{void {\bfseries model\-\_\-load} (math\-::mat44$<$ double $>$ space)}\label{classglutpp_1_1shape_1_1shape_a2c91a38dac528c55e364333a99c01b60}
+\hypertarget{classglutpp_1_1shape_1_1shape_ad3f642bee81fc4976f236efffb2aebb7}{void {\bfseries model\-\_\-load} (physx\-::\-Px\-Mat44 space)}\label{classglutpp_1_1shape_1_1shape_ad3f642bee81fc4976f236efffb2aebb7}
 
 \item 
 \hypertarget{classglutpp_1_1shape_1_1shape_a892f5bc48dc85c0e563d3a2d36d0a6a7}{void {\bfseries init\-\_\-buffer} (glutpp\-::window\-::window\-\_\-s, std\-::shared\-\_\-ptr$<$ \hyperlink{classglutpp_1_1glsl_1_1program}{glutpp\-::glsl\-::program} $>$ p)}\label{classglutpp_1_1shape_1_1shape_a892f5bc48dc85c0e563d3a2d36d0a6a7}
 
 \item 
-\hypertarget{classglutpp_1_1shape_1_1shape_aec9ad2b2ea72f384a4db87facbfacbbb}{void {\bfseries draw\-\_\-elements} (glutpp\-::window\-::window\-\_\-s, math\-::mat44$<$ double $>$ space)}\label{classglutpp_1_1shape_1_1shape_aec9ad2b2ea72f384a4db87facbfacbbb}
+\hypertarget{classglutpp_1_1shape_1_1shape_adc614843f48e9eebf2ce9de23d6ee8f2}{virtual void {\bfseries draw\-\_\-elements} (glutpp\-::window\-::window\-\_\-s, physx\-::\-Px\-Mat44 space)}\label{classglutpp_1_1shape_1_1shape_adc614843f48e9eebf2ce9de23d6ee8f2}
 
 \end{DoxyCompactItemize}
+\end{Indent}
 \begin{Indent}{\bf \-Index}\par
 \begin{DoxyCompactItemize}
 \item 
@@ -99,16 +109,16 @@ $\ast$, buffer\-\_\-t $>$ {\bfseries map\-\_\-t}}\label{classglutpp_1_1shape_1_1
 \subsection*{\-Public \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classglutpp_1_1shape_1_1shape_a963f3a4b84d97461e834290edf73e403}{int {\bfseries i\-\_\-}}\label{classglutpp_1_1shape_1_1shape_a963f3a4b84d97461e834290edf73e403}
+\hypertarget{classglutpp_1_1shape_1_1shape_a963f3a4b84d97461e834290edf73e403}{int \hyperlink{classglutpp_1_1shape_1_1shape_a963f3a4b84d97461e834290edf73e403}{i\-\_\-}}\label{classglutpp_1_1shape_1_1shape_a963f3a4b84d97461e834290edf73e403}
+
+\begin{DoxyCompactList}\small\item\em \-I\-D. \end{DoxyCompactList}\item 
+\hypertarget{classglutpp_1_1shape_1_1shape_a1f1361357284b6902ef7ebcbc2aa4faa}{\hyperlink{classglutpp_1_1shape_1_1Raw}{glutpp\-::shape\-::\-Raw} \hyperlink{classglutpp_1_1shape_1_1shape_a1f1361357284b6902ef7ebcbc2aa4faa}{raw\-\_\-}}\label{classglutpp_1_1shape_1_1shape_a1f1361357284b6902ef7ebcbc2aa4faa}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classglutpp_1_1shape_1_1Raw}{\-Raw} data. \end{DoxyCompactList}\item 
+\hypertarget{classglutpp_1_1shape_1_1shape_a6cb8f52fe3a017db70c1a3fd9bf24e43}{\hyperlink{classNeb_1_1Map}{\-Neb\-::\-Map}$<$ \hyperlink{classglutpp_1_1light_1_1light}{glutpp\-::light\-::light} $>$ {\bfseries lights\-\_\-}}\label{classglutpp_1_1shape_1_1shape_a6cb8f52fe3a017db70c1a3fd9bf24e43}
 
 \item 
-\hypertarget{classglutpp_1_1shape_1_1shape_a739d3c33effd15e2310938745e161db4}{\hyperlink{classglutpp_1_1shape_1_1raw}{raw} {\bfseries raw\-\_\-}}\label{classglutpp_1_1shape_1_1shape_a739d3c33effd15e2310938745e161db4}
-
-\item 
-\hypertarget{classglutpp_1_1shape_1_1shape_a4867d4995d7601c427ca14bb3724f01d}{gal\-::map$<$ \hyperlink{classglutpp_1_1light_1_1light}{glutpp\-::light\-::light} $>$ {\bfseries lights\-\_\-}}\label{classglutpp_1_1shape_1_1shape_a4867d4995d7601c427ca14bb3724f01d}
-
-\item 
-\hypertarget{classglutpp_1_1shape_1_1shape_a8d531d6132ea4c7ae732d07316deddf2}{gal\-::map$<$ \hyperlink{classglutpp_1_1shape_1_1shape}{glutpp\-::shape\-::shape} $>$ {\bfseries shapes\-\_\-}}\label{classglutpp_1_1shape_1_1shape_a8d531d6132ea4c7ae732d07316deddf2}
+\hypertarget{classglutpp_1_1shape_1_1shape_a4239f6a99489e49e5bb8b8b4ec959f22}{\hyperlink{classNeb_1_1Map}{\-Neb\-::\-Map}$<$ \hyperlink{classglutpp_1_1shape_1_1shape}{glutpp\-::shape\-::shape} $>$ {\bfseries shapes\-\_\-}}\label{classglutpp_1_1shape_1_1shape_a4239f6a99489e49e5bb8b8b4ec959f22}
 
 \item 
 \hypertarget{classglutpp_1_1shape_1_1shape_a4a8c3bd997b65947911c268760ab9215}{\hyperlink{classglutpp_1_1material_1_1material}{glutpp\-::material\-::material} {\bfseries material\-\_\-front\-\_\-}}\label{classglutpp_1_1shape_1_1shape_a4a8c3bd997b65947911c268760ab9215}
@@ -123,7 +133,8 @@ $\ast$, buffer\-\_\-t $>$ {\bfseries map\-\_\-t}}\label{classglutpp_1_1shape_1_1
 \hypertarget{classglutpp_1_1shape_1_1shape_a539fc204bb3d66edfd27d5b4fa4d6824}{glutpp\-::program\-\_\-name\-::e {\bfseries program\-\_\-}}\label{classglutpp_1_1shape_1_1shape_a539fc204bb3d66edfd27d5b4fa4d6824}
 
 \item 
-\hypertarget{classglutpp_1_1shape_1_1shape_adfdf982474ebdd3d4de09a6cbf895155}{glutpp\-::shape\-::parent\-\_\-w {\bfseries parent\-\_\-}}\label{classglutpp_1_1shape_1_1shape_adfdf982474ebdd3d4de09a6cbf895155}
+\hypertarget{classglutpp_1_1shape_1_1shape_abfdfbb519b30adc412d81b80ae86fae2}{boost\-::weak\-\_\-ptr\*
+$<$ \hyperlink{classglutpp_1_1shape_1_1parent}{glutpp\-::shape\-::parent} $>$ {\bfseries parent\-\_\-}}\label{classglutpp_1_1shape_1_1shape_abfdfbb519b30adc412d81b80ae86fae2}
 
 \end{DoxyCompactItemize}
 

@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,26 +102,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">glutpp::network::actor::create Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="glutpp::network::actor::create" -->
+<!-- doxytag: class="glutpp::network::actor::create" --><div class="dynheader">
+Collaboration diagram for glutpp::network::actor::create:</div>
+<div class="dyncontent">
+<div class="center"><img src="structglutpp_1_1network_1_1actor_1_1create__coll__graph.png" border="0" usemap="#glutpp_1_1network_1_1actor_1_1create_coll__map" alt="Collaboration graph"/></div>
+<map name="glutpp_1_1network_1_1actor_1_1create_coll__map" id="glutpp_1_1network_1_1actor_1_1create_coll__map">
+<area shape="rect" id="node2" href="classglutpp_1_1actor_1_1addr.html" title="glutpp::actor::addr" alt="" coords="28,101,153,131"/><area shape="rect" id="node4" href="classglutpp_1_1scene_1_1addr.html" title="glutpp::scene::addr" alt="" coords="5,5,139,35"/><area shape="rect" id="node6" href="classglutpp_1_1actor_1_1desc.html" title="glutpp::actor::desc" alt="" coords="212,101,343,131"/><area shape="rect" id="node8" href="classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt; glutpp::actor::raw \&gt;" alt="" coords="163,5,427,35"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+
 <p><a href="structglutpp_1_1network_1_1actor_1_1create-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea0003956e928ec83111fb120c54b53e"></a><!-- doxytag: member="glutpp::network::actor::create::load" ref="aea0003956e928ec83111fb120c54b53e" args="(glutpp::actor::actor_s actor)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (glutpp::actor::actor_s actor)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e1ef23618f2897553f39c83ca5aa139"></a><!-- doxytag: member="glutpp::network::actor::create::get_addr" ref="a5e1ef23618f2897553f39c83ca5aa139" args="()" -->
-glutpp::actor::addr_s&#160;</td><td class="memItemRight" valign="bottom"><b>get_addr</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9eecf7aeb89c344c0a2807eda390b5de"></a><!-- doxytag: member="glutpp::network::actor::create::get_desc" ref="a9eecf7aeb89c344c0a2807eda390b5de" args="()" -->
-glutpp::actor::desc_s&#160;</td><td class="memItemRight" valign="bottom"><b>get_desc</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="accc621699dd1fd80af572dda0caf64cf"></a><!-- doxytag: member="glutpp::network::actor::create::load" ref="accc621699dd1fd80af572dda0caf64cf" args="(Neb::unique_ptr&lt; glutpp::actor::actor &gt; actor)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (<a class="el" href="classNeb_1_1unique__ptr.html">Neb::unique_ptr</a>&lt; <a class="el" href="classglutpp_1_1actor_1_1actor.html">glutpp::actor::actor</a> &gt; actor)</td></tr>
+<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="aad9dd37d1bfd140b16db4576e2e0cf95"></a><!-- doxytag: member="glutpp::network::actor::create::serialize" ref="aad9dd37d1bfd140b16db4576e2e0cf95" args="(Archive &amp;ar, unsigned int const &amp;version)" -->
+template&lt;class Archive &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialize</b> (Archive &amp;ar, unsigned int const &amp;version)</td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7ae6922af0930010bd0c78073c7745c"></a><!-- doxytag: member="glutpp::network::actor::create::addr_" ref="ad7ae6922af0930010bd0c78073c7745c" args="" -->
+<a class="el" href="classglutpp_1_1actor_1_1addr.html">glutpp::actor::addr</a>&#160;</td><td class="memItemRight" valign="bottom"><b>addr_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae55eea93cbd958365387635335596945"></a><!-- doxytag: member="glutpp::network::actor::create::desc_" ref="ae55eea93cbd958365387635335596945" args="" -->
+<a class="el" href="classglutpp_1_1actor_1_1desc.html">glutpp::actor::desc</a>&#160;</td><td class="memItemRight" valign="bottom"><b>desc_</b></td></tr>
 </table>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li>src/gru/network/<a class="el" href="message_8hpp_source.html">message.hpp</a></li>
-<li>src/gru/network/actor/create.cpp</li>
+<li>src/gru/Message/Actor/<a class="el" href="Actor_2Create_8hpp_source.html">Create.hpp</a></li>
+<li>src/gru/Message/Actor/Create.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -128,7 +142,7 @@ glutpp::actor::desc_s&#160;</td><td class="memItemRight" valign="bottom"><b>get_
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -140,7 +154,7 @@ glutpp::actor::desc_s&#160;</td><td class="memItemRight" valign="bottom"><b>get_
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 12:03:22 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
