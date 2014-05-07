@@ -2,7 +2,7 @@
 #define __GRU_WINDOW_DESC_H__
 
 
-namespace glutpp {
+namespace Neb {
 	namespace window {
 		struct raw {
 			public:

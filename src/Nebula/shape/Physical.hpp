@@ -5,17 +5,17 @@
 
 //#include <math/vec3.hpp>
 
-#include <gru/shape/shape.hpp>
+#include <Nebula/shape/shape.hpp>
 
-#include <nebula/parent.hpp>
+#include <Nebula/shape/parent.hpp>
 
-namespace neb {
-	namespace shape {
-		class shape: public glutpp::shape::shape {
+namespace Neb {
+	namespace Shape {
+		class Physical: public Neb::Shape::shape {
 			public:
-				shape(glutpp::shape::parent_s);
+				Physical(Neb::weak_ptr<Neb::Shape::parent>);
 
-				virtual void		init(glutpp::shape::desc_s);
+				virtual void		init(Neb::weak_ptr<Neb::Shape::desc>);
 				void			create_physics();
 				physx::PxGeometry*	to_geo();
 				void			print_info();

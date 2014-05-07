@@ -4,13 +4,14 @@
 //#include <galaxy/flag.hpp>
 //#include <galaxy/timer/timer_set.hpp>
 
-#include <gru/Graphics/window/window.hpp>
+#include <Nebula/Graphics/window/window.hpp>
 
-#include <nebula/config.hpp>
-#include <nebula/network/server.hpp>
-#include <nebula/network/client.hpp>
+#include <Nebula/Types.hpp>
+#include <Nebula/network2/server.hpp>
+#include <Nebula/network2/client.hpp>
 
-namespace neb {
+
+namespace Neb {
 	class app: public boost::enable_shared_from_this<app>, public gal::flag<> {
 		public:
 			struct flag {
@@ -21,20 +22,22 @@ namespace neb {
 			app();
 			void				init();
 
-			Neb::weak_ptr<glutpp::window::window>		create_window(int, int, int, int, char const *);
+			Neb::weak_ptr<Neb::window::window>		create_window(int, int, int, int, char const *);
 
-			neb::scene::scene_s				load_scene_local(glutpp::scene::desc_s);
-			neb::scene::scene_s				load_scene_remote(glutpp::scene::desc_s);
+			Neb::Scene::scene_w				load_scene_local(Neb::Scene::desc_w);
+			Neb::Scene::scene_w				load_scene_remote(Neb::Scene::desc_w);
 
 			void				load_layout(int,char const *);
 
 			int				step(double);
 			int				loop();
 
-			glutpp::window::window_s	get_window(int);
-			neb::scene::scene_s		get_scene(int);
-			neb::scene::scene_s		get_scene(glutpp::scene::addr_s);
-			neb::Actor::Base_s		get_actor(glutpp::actor::addr_s);
+			/** @name Accessors @{ */
+			Neb::window::window_w			get_window(int);
+			Neb::Scene::scene_w			get_scene(int);
+			Neb::Scene::scene_w			get_scene(Neb::Scene::addr_w);
+			Neb::Actor::Base_w			get_actor(Neb::Actor::addr_w);
+			/** @} */
 
 			void				set_should_release();
 
@@ -50,7 +53,7 @@ namespace neb {
 			void				send_server(boost::shared_ptr<gal::network::message>);
 			void				send_client(boost::shared_ptr<gal::network::message>);
 
-			int				transmit_scenes(boost::shared_ptr<neb::network::communicating>);
+			int				transmit_scenes(boost::shared_ptr<gal::network::communicating>);
 			
 			/** @todo consider putting following functions into the messages themselves: would be cleaner that way. */
 			void				recv_scene_create(std::shared_ptr<gal::network::message>);
@@ -66,17 +69,17 @@ namespace neb {
 		public:
 			unsigned int			flag_;
 
-			//Neb::Map<glutpp::window::window>	windows_;
-			Neb::Map<glutpp::gui::layout>		layouts_;
-			Neb::Map<neb::scene::scene>		scenes_;
+			//Neb::Map<Neb::window::window>	windows_;
+			Neb::Map<Neb::gui::layout>		layouts_;
+			Neb::Map<Neb::Scene::scene>		scenes_;
 
 			// timer
 			//gal::timer::timer_set		timer_set_;
 
 		private:
 			// network
-			neb::network::server_s		server_;
-			neb::network::client_s		client_;
+			Neb::unique_ptr<Neb::network::server>		server_;
+			Neb::unique_ptr<Neb::network::client>		client_;
 	};
 }
 

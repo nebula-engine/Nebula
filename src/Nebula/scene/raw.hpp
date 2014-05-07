@@ -12,8 +12,8 @@
 
 //#include <math/vec3.hpp>
 
-#include <gru/config.hpp>
-//#include <gru/actor/desc.hpp>
+#include <Nebula/config.hpp> // Nebula/config.hpp.in
+//#include <Nebula/actor/desc.hpp>
 
 namespace glutpp {
 	namespace scene {
@@ -21,7 +21,7 @@ namespace glutpp {
 			public:
 				raw();
 				//void					load(tinyxml2::XMLElement*);
-				void					load(glutpp::scene::scene_s scene);
+				void					load(Neb::Scene::scene_w scene);
 
 				template <class Archive> void		serialize(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("flag",flag_);

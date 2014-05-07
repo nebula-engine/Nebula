@@ -10,7 +10,7 @@
 
 #include <sys/socket.h>
 
-#include <gru/network/message.hpp>
+#include <Nebula/network/message.hpp>
 
 namespace gal {
 	namespace network {

@@ -1,30 +1,28 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_ACTOR_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_ACTOR_HPP__
 
-#include <nebula/actor/Actor.hpp>
+#include <Nebula/Actor/Actor.hpp>
 
-namespace neb {
+namespace Neb {
 	namespace Actor {
-		class RigidActor:
-			public neb::Actor::Actor
-		{
+		class RigidActor: public Neb::Actor::Actor {
 			public:
-				RigidActor(boost::shared_ptr<glutpp::actor::parent>);
+				RigidActor(Neb::weak_ptr<Neb::Actor::parent>);
 
-				virtual void			init(boost::shared_ptr<glutpp::actor::desc>);
-				virtual void			add_force(double) {abort();}
+				virtual void					init(Neb::weak_ptr<Neb::Actor::desc>);
+				virtual void					add_force(double) {abort();}
 
-				virtual void			step_local(double);
-				virtual void			step_remote(double);
+				virtual void					step_local(double);
+				virtual void					step_remote(double);
 				
-				virtual void			setupFiltering();
+				virtual void					setupFiltering();
 
-				virtual boost::shared_ptr<glutpp::actor::desc>		get_projectile();
+				virtual Neb::weak_ptr<Neb::Actor::desc>		get_projectile() = 0;
 				
-				virtual void			create_physics() {abort();}
-				virtual void			init_physics() {abort();}
+				virtual void					create_physics() = 0;
+				virtual void					init_physics() = 0;
 
-				virtual void			print_info();
+				virtual void					print_info();
 		};
 	}
 }

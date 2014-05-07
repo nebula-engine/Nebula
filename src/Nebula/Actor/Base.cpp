@@ -1,83 +1,89 @@
 
-#include <nebula/debug.hpp>
-#include <nebula/config.hpp>
-#include <nebula/timer/actor.hpp>
-#include <nebula/app.hpp>
-#include <nebula/scene/scene.hpp>
-#include <nebula/shape.hpp>
-#include <nebula/actor/Base.hpp>
-#include <nebula/actor/empty.hpp>
 
-#include <gru/actor/desc.hpp>
+#include <Nebula/debug.hpp>
+#include <Nebula/Typed.hpp>
+#include <Nebula/config.hpp>
+#include <Nebula/timer/Actor/Base.hpp>
+#include <Nebula/app.hpp>
+#include <Nebula/scene/scene.hpp>
+#include <Nebula/shape/Physical.hpp>
+#include <Nebula/Actor/Base.hpp>
+#include <Nebula/Actor/empty.hpp>
+#include <Nebula/Actor/Types.hpp>
+#include <Nebula/Actor/Util/desc.hpp>
 
 
-neb::Actor::Base::Base(glutpp::actor::parent_s parent):
-	glutpp::actor::actor(parent)
-{
+Neb::Actor::Base::Base(Neb::Actor::parent_w parent): parent_(parent) {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-neb::Actor::Base::~Base() {
+Neb::Actor::Base::~Base() {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-void neb::Actor::Base::init(glutpp::actor::desc_s desc) {
+void Neb::Actor::Base::init(Neb::Actor::desc_w desc) {
 	NEBULA_ACTOR_BASE_FUNC;
+	
+	raw_.reset();
+	raw_.swap(desc->raw_wrapper_.ptr_);
 
-	glutpp::actor::actor::init(desc);
 
 	create_physics();
 	create_children(desc);
 	create_shapes(desc);
 	init_physics();
 }
-void neb::Actor::Base::release() {
+void Neb::Actor::Base::release() {
 
-	glutpp::actor::actor::release();
+	for(auto it = actors_.begin(); it != actors_.end(); ++it) {
+		it->second->release();
+	}
+	actors_.clear();
 
-	conn_.key_fun_.reset();
+
+	conn_.key_fun_.disconnect();
 }
-void neb::Actor::Base::create_children(glutpp::actor::desc_s desc) {
+void Neb::Actor::Base::create_children(Neb::Actor::desc_w desc) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	// create children
-	for(auto it = desc->get_actors()->vec_.begin(); it != desc->get_actors()->vec_.end(); ++it)
+	for(auto it = desc->actors_.begin(); it != desc->actors_.end(); ++it)
 	{
-		create_actor(std::get<0>(*it));
+		create_actor(*it);
 	}
 
 
 }
-neb::Actor::Base_s neb::Actor::Base::create_actor(glutpp::actor::desc_s desc) {
+Neb::Actor::Base_w		Neb::Actor::Base::create_actor(Neb::Actor::desc_w desc) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	auto scene = get_scene();//std::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
+	auto scene = get_scene();//std::dynamic_pointer_cast<Neb::scene::scene>(shared_from_this());
 
-	auto me = std::dynamic_pointer_cast<neb::Actor::Base>(shared_from_this());
+	auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
 
-	neb::Actor::Base_s actor;
+	Neb::Actor::Base_s actor;
 
 	switch(desc->get_raw()->type_)
 	{
-		case glutpp::actor::type::e::RIGID_DYNAMIC:
-			actor.reset(new neb::Actor::Rigid_Dynamic(me));
+		case Neb::Actor::type::e::RIGID_DYNAMIC:
+			actor.reset(new Neb::Actor::Rigid_Dynamic(me));
 			// = Create_Rigid_Dynamic(ad);
 			break;
-		case glutpp::actor::type::e::RIGID_STATIC:
-			actor.reset(new neb::Actor::Rigid_Static(me));
+		case Neb::Actor::type::e::RIGID_STATIC:
+			actor.reset(new Neb::Actor::Rigid_Static(me));
 			// = Create_Rigid_Static(ad);
 			break;
-		case glutpp::actor::type::e::PLANE:
+		case Neb::Actor::type::e::PLANE:
 			//actor = Create_Rigid_Static_Plane(ad);
 			printf("not implemented\n");
 			abort();
 			break;
-		case glutpp::actor::type::e::CONTROLLER:
+		case Neb::Actor::type::e::CONTROLLER:
 			printf("not implemented\n");
 			abort();
 			//actor = Create_Controller(ad);
 			break;
-		case glutpp::actor::type::e::EMPTY:
-			actor.reset(new neb::Actor::empty(me));
+		case Neb::Actor::type::e::EMPTY:
+			actor.reset(new Neb::Actor::empty(me));
 			break;
 		default:
 			abort();
@@ -87,17 +93,17 @@ neb::Actor::Base_s neb::Actor::Base::create_actor(glutpp::actor::desc_s desc) {
 
 	return actor;
 }
-neb::Actor::Base_s neb::Actor::Base::create_actor_local(glutpp::actor::desc_s desc) {
+Neb::Actor::Base_s Neb::Actor::Base::create_actor_local(Neb::Actor::desc_s desc) {
 	auto actor = create_actor(desc);
 	actors_.push_back(actor);
 	return actor;
 }
-neb::Actor::Base_s neb::Actor::Base::create_actor_remote(glutpp::actor::addr_s addr, glutpp::actor::desc_s desc) {
+Neb::Actor::Base_s Neb::Actor::Base::create_actor_remote(Neb::Actor::addr_s addr, Neb::actor::desc_s desc) {
 
 	auto vec = addr->get_vec();
 	assert(!vec->vec_.empty());
 	int i;
-	neb::Actor::Base_s actor;
+	Neb::Actor::Base_s actor;
 
 	if(vec->vec_.size() > 1)
 	{
@@ -121,7 +127,7 @@ neb::Actor::Base_s neb::Actor::Base::create_actor_remote(glutpp::actor::addr_s a
 
 	return actor;
 }
-std::shared_ptr<neb::app> neb::Actor::Base::get_app() {
+std::shared_ptr<Neb::app> Neb::Actor::Base::get_app() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	auto scene = get_scene();
@@ -130,36 +136,36 @@ std::shared_ptr<neb::app> neb::Actor::Base::get_app() {
 
 	return scene->app_.lock();
 }
-std::shared_ptr<neb::scene::scene> neb::Actor::Base::get_scene() {
+std::shared_ptr<Neb::scene::scene> Neb::Actor::Base::get_scene() {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	auto scene = std::dynamic_pointer_cast<neb::scene::scene>(glutpp::actor::actor::get_scene());
+	auto scene = std::dynamic_pointer_cast<Neb::scene::scene>(Neb::Actor::actor::get_scene());
 
 	return scene;
 }
-neb::Actor::Base_s neb::Actor::Base::get_actor(int i) {
+Neb::Actor::Base_s Neb::Actor::Base::get_actor(int i) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	auto it = actors_.find(i);
-	neb::Actor::Base_s a;
+	Neb::Actor::Base_s a;
 	if(it == actors_.end())
 	{
 		return a;
 	}
 	else
 	{
-		a = std::dynamic_pointer_cast<neb::Actor::Base>(it->second);
+		a = std::dynamic_pointer_cast<Neb::Actor::Base>(it->second);
 		return a;
 	}
 }
-neb::Actor::raw_s neb::Actor::Base::get_raw_base() {
+Neb::Actor::raw_s Neb::Actor::Base::get_raw_base() {
 	NEBULA_ACTOR_BASE_FUNC;
 	auto raw = get_raw();
-	auto raw_base = std::dynamic_pointer_cast<neb::Actor::raw>(raw);
+	auto raw_base = std::dynamic_pointer_cast<Neb::Actor::raw>(raw);
 	assert(raw_base);
 	return raw_base;
 }
-neb::Actor::Base_s neb::Actor::Base::get_actor(glutpp::actor::addr_s addr) {
+Neb::Actor::Base_s Neb::Actor::Base::get_actor(Neb::Actor::addr_s addr) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	auto vec = addr->get_vec();
@@ -179,7 +185,7 @@ neb::Actor::Base_s neb::Actor::Base::get_actor(glutpp::actor::addr_s addr) {
 
 	return actor;
 }
-int	neb::Actor::Base::fire() {
+int	Neb::Actor::Base::fire() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	printf("%s\n", __PRETTY_FUNCTION__);
@@ -188,71 +194,71 @@ int	neb::Actor::Base::fire() {
 
 	return 1;
 }
-glutpp::actor::desc_s neb::Actor::Base::get_projectile() {
+Neb::Actor::desc_s Neb::Actor::Base::get_projectile() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	abort();
 
-	return glutpp::actor::desc_s();
+	return Neb::Actor::desc_s();
 }
-void neb::Actor::Base::step_local(double time) {
+void Neb::Actor::Base::step_local(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	glutpp::actor::actor::step(time);
+	Neb::Actor::actor::step(time);
 }
-void neb::Actor::Base::step_remote(double time) {
+void Neb::Actor::Base::step_remote(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	glutpp::actor::actor::step(time);
+	Neb::Actor::actor::step(time);
 }
-void neb::Actor::Base::create_shapes(glutpp::actor::desc_s desc) {
+void Neb::Actor::Base::create_shapes(Neb::Actor::desc_s desc) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	auto me = std::dynamic_pointer_cast<neb::Actor::Base>(shared_from_this());
+	auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
 
-	neb::shape::shape_s shape;
+	Neb::shape::shape_s shape;
 
 	for(auto it = desc->get_shapes()->vec_.begin(); it != desc->get_shapes()->vec_.end(); ++it)
 	{
-		glutpp::shape::desc_s sd = std::get<0>(*it);
+		Neb::shape::desc_s sd = std::get<0>(*it);
 		assert(sd);
 
-		shape.reset(new neb::shape::shape(me));
+		shape.reset(new Neb::shape::shape(me));
 
 		shape->init(sd);
 
 		shapes_.push_back(shape);
 	}
 }
-void neb::Actor::Base::hit() {
+void Neb::Actor::Base::hit() {
 	
 	physx::PxU32 w2 = get_raw()->filter_data_.simulation_.word2;
 	
-	if(w2 & glutpp::filter::type::PROJECTILE)
+	if(w2 & Neb::filter::type::PROJECTILE)
 	{
-		set(glutpp::actor::actor::flag::e::SHOULD_RELEASE);
+		set(Neb::Actor::actor::flag::e::SHOULD_RELEASE);
 	}
 	
-	if(any(glutpp::actor::actor::flag::e::DESTRUCTIBLE))
+	if(any(Neb::Actor::actor::flag::e::DESTRUCTIBLE))
 	{
 		damage(0.1);
 	}
 }
-void neb::Actor::Base::damage(float h) {
+void Neb::Actor::Base::damage(float h) {
 	get_raw_base()->health_ -= h;
 	if(get_raw_base()->health_ < 0)
 	{
-		set(glutpp::actor::actor::flag::e::SHOULD_RELEASE);
+		set(Neb::Actor::actor::flag::e::SHOULD_RELEASE);
 	}
 }
-void neb::Actor::Base::connect(glutpp::window::window_s window) {
+void Neb::Actor::Base::connect(Neb::window::window_s window) {
 
 	window_ = window;
 
-	auto me = std::dynamic_pointer_cast<neb::Actor::Base>(shared_from_this());
+	auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
 
 	conn_.key_fun_ = window->sig_.key_fun_.connect(std::bind(
-				&neb::Actor::Base::key_fun,
+				&Neb::Actor::Base::key_fun,
 				me,
 				std::placeholders::_1,
 				std::placeholders::_2,
@@ -260,7 +266,7 @@ void neb::Actor::Base::connect(glutpp::window::window_s window) {
 				std::placeholders::_4));
 
 }
-int neb::Actor::Base::key_fun(int key, int scancode, int action, int mods) {
+int Neb::Actor::Base::key_fun(int key, int scancode, int action, int mods) {
 
 	switch(action) {
 		case GLFW_PRESS:
@@ -283,14 +289,14 @@ int neb::Actor::Base::key_fun(int key, int scancode, int action, int mods) {
 
 	return 0;
 }
-neb::Actor::Base_s			neb::Actor::Base::isBase() {
-	return std::dynamic_pointer_cast<neb::Actor::Base>(shared_from_this());
+Neb::Actor::Base_s			Neb::Actor::Base::isBase() {
+	return std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
 }
-neb::Actor::RigidActor_s		neb::Actor::Base::isRigidActor() {
-	return std::dynamic_pointer_cast<neb::Actor::RigidActor>(shared_from_this());
+Neb::Actor::RigidActor_s		Neb::Actor::Base::isRigidActor() {
+	return std::dynamic_pointer_cast<Neb::Actor::RigidActor>(shared_from_this());
 }
-neb::Actor::RigidBody::RigidBody_s	neb::Actor::Base::isRigidBody() {
-	return std::dynamic_pointer_cast<neb::Actor::RigidBody::RigidBody>(shared_from_this());
+Neb::Actor::RigidBody::RigidBody_s	Neb::Actor::Base::isRigidBody() {
+	return std::dynamic_pointer_cast<Neb::Actor::RigidBody::RigidBody>(shared_from_this());
 }
 
 

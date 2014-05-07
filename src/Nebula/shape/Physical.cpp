@@ -1,60 +1,54 @@
-#include <math/free.hpp>
+#include <Nebula/config.hpp>
+#include <Nebula/physics.hpp>
+#include <Nebula/scene/scene.hpp>
+#include <Nebula/shape/shape.hpp>
+#include <Nebula/shape/Physical.hpp>
+#include <Nebula/Actor/Rigid_Actor.hpp>
 
-//#include <glutpp/types.h>
-
-#include <nebula/config.hpp>
-#include <nebula/physics.hpp>
-#include <nebula/scene/scene.hpp>
-#include <nebula/shape.hpp>
-
-neb::shape::shape::shape(glutpp::shape::parent_s parent):
-	glutpp::shape::shape(parent)
-{
-	NEBULA_DEBUG_0_FUNCTION;
+Neb::Shape::Physical::Physical(Neb::weak_ptr<Neb::Shape::parent> parent): Neb::Shape::shape(parent) {
+	//NEBULA_DEBUG_0_FUNCTION;
 }
-void neb::shape::shape::init(glutpp::shape::desc_s desc) {
-	NEBULA_DEBUG_0_FUNCTION;
+void Neb::Shape::Physical::init(Neb::weak_ptr<Neb::Shape::desc> desc) {
+	//NEBULA_DEBUG_0_FUNCTION;
 	
-	glutpp::shape::shape::init(desc);
+	Neb::Shape::Physical::init(desc);
 	
 	create_physics();
 }
-void neb::shape::shape::create_physics() {
+void Neb::Shape::Physical::create_physics() {
 
-	NEBULA_DEBUG_0_FUNCTION;
+	//NEBULA_DEBUG_0_FUNCTION;
 	
 	assert(!parent_.expired());
 	
-	auto actor = std::dynamic_pointer_cast<neb::Actor::Base>(getParent());
-
+	auto actor = getParent()->isActor();
+	
 	if(actor) {
-
-		auto rigidactor = actor->isRigidActor();//std::dynamic_pointer_cast<neb::Actor::Rigid_Actor>(parent_.lock());
+		auto rigidactor = actor->isRigidActor();//std::dynamic_pointer_cast<Neb::Actor::Rigid_Actor>(parent_.lock());
 
 		if(rigidactor) {
 			physx::PxRigidActor* px_rigid_actor = static_cast<physx::PxRigidActor*>(rigidactor->px_actor_);
 
-			physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
+			physx::PxMaterial* px_mat = Neb::__physics.px_physics_->createMaterial(1,1,1);
 
 			px_shape_ = px_rigid_actor->createShape( *(to_geo()), *px_mat );
 		}
 	}
 }
-physx::PxGeometry* neb::shape::shape::to_geo()
+physx::PxGeometry* Neb::Shape::Physical::to_geo()
 {
-	NEBULA_DEBUG_0_FUNCTION;
+	//NEBULA_DEBUG_0_FUNCTION;
 
 	physx::PxGeometry* geo = NULL;
-
-	math::vec3<float> s = raw_.get_raw_base()->s_;
-
-	switch(raw_.get_raw_base()->type_)
-	{
-		case glutpp::shape::type::BOX:
+	
+	physx::PxVec3 s = raw_.s_;
+	
+	switch(raw_.type_) {
+		case Neb::Shape::type::BOX:
 			geo = new physx::PxBoxGeometry(s * 0.5);
 			break;
-		case glutpp::shape::type::SPHERE:
-			geo = new physx::PxSphereGeometry(s.x());
+		case Neb::Shape::type::SPHERE:
+			geo = new physx::PxSphereGeometry(s.x);
 			break;
 		default:
 			printf("unknown shape type\n");
@@ -63,15 +57,14 @@ physx::PxGeometry* neb::shape::shape::to_geo()
 
 	return geo;
 }
-void neb::shape::shape::print_info() {
+void Neb::Shape::Physical::print_info() {
 
 	physx::PxReal dynamic_friction;
 	physx::PxReal static_friction;
 	physx::PxReal restitution;
 
 
-	if(px_shape_ != NULL)
-	{
+	if(px_shape_ != NULL) {
 		physx::PxU32 num_shapes = px_shape_->getNbMaterials();
 
 		physx::PxMaterial** materials = new physx::PxMaterial*[num_shapes];

@@ -35,19 +35,27 @@ namespace Neb {
 				Base(Neb::weak_ptr<Neb::Actor::parent>);
 				virtual ~Base();
 
-				virtual void			init(Neb::weak_ptr<Neb::Actor::desc>);
-				virtual void			release();
+				virtual void				init(Neb::weak_ptr<Neb::Actor::desc>);
+				virtual void				release();
+				virtual void				cleanup();
+
+
+				void					i(int ni);
+				int					i() const;
+
+				unsigned int				f() const;
+				void					f(unsigned int flag);
 
 			private:
-				Neb::weak_ptr<Neb::Actor::Base>			create_actor(Neb::weak_ptr<Neb::Actor::desc>);
+				Neb::Actor::Base_w			create_actor(Neb::weak_ptr<Neb::Actor::desc>);
 			public:
-				Neb::weak_ptr<Neb::Actor::Base>			create_actor_local(Neb::weak_ptr<Neb::Actor::desc>);
+				Neb::Actor::Base_w			create_actor_local(Neb::weak_ptr<Neb::Actor::desc>);
 
-				Neb::weak_ptr<Neb::Actor::Base>			create_actor_remote(Neb::weak_ptr<Neb::Actor::addr>, Neb::weak_ptr<Neb::Actor::desc>);
+				Neb::Actor::Base_w			create_actor_remote(Neb::weak_ptr<Neb::Actor::addr>, Neb::weak_ptr<Neb::Actor::desc>);
 
 
-				void							create_shapes(Neb::Actor::desc_s);
-				void							create_children(Neb::Actor::desc_s);
+				void							create_shapes(Neb::Actor::desc_w);
+				void							create_children(Neb::Actor::desc_w);
 
 				virtual void						create_physics() = 0;
 				virtual void						init_physics() = 0;
@@ -72,9 +80,6 @@ namespace Neb {
 				virtual void						damage(float);
 
 
-				
-				Neb::Actor::raw_s		get_raw_base();
-				
 				// signal
 				void				connect(Neb::window::window_s);
 				
@@ -102,15 +107,7 @@ namespace Neb {
 
 				
 
-				void						i(int ni);
-				int						i() const;
-
-				unsigned int					f() const;
-				void						f(unsigned int flag);
-
-				virtual void					init(Neb::Actor::desc_s desc);
-				virtual void					cleanup();
-
+				
 				/** @name Stepping @{ */
 				virtual void					step(double time);
 				virtual void					step_local(double);

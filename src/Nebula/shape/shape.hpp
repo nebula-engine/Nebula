@@ -46,9 +46,7 @@ namespace Neb {
 				typedef std::shared_ptr<Neb::Shape::buffer>		buffer_t;
 				typedef std::map<Neb::window::window*,buffer_t>	map_t;
 
-
-
-				shape(boost::shared_ptr<Neb::Shape::parent> parent);
+				shape(Neb::weak_ptr<Neb::Shape::parent> parent);
 				~shape();
 				
 				physx::PxMat44					getPose();

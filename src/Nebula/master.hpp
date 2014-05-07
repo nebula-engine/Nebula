@@ -17,7 +17,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <Nebula/config.hpp> // Nebula/config.hpp.in
+#include <Nebula/Types.hpp> // Nebula/config.hpp.in
 #include <Nebula/Actor/Types.hpp>
 #include <Nebula/Memory/smart_ptr.hpp>
 

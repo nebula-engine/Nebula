@@ -3,26 +3,23 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <gru/actor/actor.hpp>
+#include <Nebula/Actor/Base.hpp>
 
-#include <nebula/actor/Base.hpp>
-
-namespace neb {
+namespace Neb {
 	namespace Actor {
-		class Actor:
-			public neb::Actor::Base
+		class Actor: public Neb::Actor::Base
 		{
 			public:
-				Actor(boost::shared_ptr<glutpp::actor::parent>);
+				Actor(Neb::weak_ptr<Neb::Actor::parent>);
 
-				virtual void			init(boost::shared_ptr<glutpp::actor::desc>);
+				virtual void			init(Neb::weak_ptr<Neb::Actor::desc>);
 
 				virtual void			release();
 				virtual void			add_force(double) {abort();}
 				virtual void			set_pose(physx::PxTransform);
 				virtual int			fire();
 
-				virtual boost::shared_ptr<glutpp::actor::desc>		get_projectile() {abort(); return NULL;}
+				virtual Neb::weak_ptr<Neb::Actor::desc>		get_projectile() = 0;
 				
 				
 				virtual void			create_physics() {abort();}
@@ -36,7 +33,7 @@ namespace neb {
 				
 				physx::PxActor*			px_actor_;
 				
-				//std::shared_ptr<glutpp::actor>		object_;
+				//std::shared_ptr<Neb::actor>		object_;
 		};
 	}
 }

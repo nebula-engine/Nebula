@@ -6,11 +6,11 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <gru/Graphics/gui/object/object.hpp>
-#include <gru/Graphics/gui/object/object_factory.hpp>
-#include <gru/Graphics/window/window.hpp>
+#include <Nebula/Graphics/gui/object/object.hpp>
+#include <Nebula/Graphics/gui/object/object_factory.hpp>
+#include <Nebula/Graphics/window/window.hpp>
 
-namespace glutpp {
+namespace Neb {
 	namespace gui {
 		class Desc {
 			public:
@@ -18,15 +18,15 @@ namespace glutpp {
 					ar & objects_;
 				}
 				
-				std::vector<glutpp::gui::object::Data>		objects_;
+				std::vector<Neb::gui::object::Data>		objects_;
 		};
 		class layout {
 			public:
 				layout();
-				virtual void			init(glutpp::renderable_s renderable);
-				glutpp::window::window_s	get_window();
+				virtual void			init(Neb::renderable_w renderable);
+				Neb::window::window_w		get_window();
 				
-				void				init(boost::shared_ptr<glutpp::gui::Desc>);
+				void				init(Neb::weak_ptr<Neb::gui::Desc>);
 				
 				
 				//void				load_xml(tinyxml2::XMLElement* element);
@@ -46,9 +46,9 @@ namespace glutpp {
 
 				physx::PxMat44				ortho_;
 
-				Neb::Map<glutpp::gui::object::object>	objects_;
+				Neb::Map<Neb::gui::object::object>	objects_;
 
-				glutpp::renderable_w			renderable_;
+				Neb::renderable_w			renderable_;
 				// connections
 				struct
 				{

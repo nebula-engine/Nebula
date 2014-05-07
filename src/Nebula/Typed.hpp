@@ -1,7 +1,13 @@
 #ifndef NEBULA_TYPED_HPP
 #define NEBULA_TYPED_HPP
 
+#include <map>
+
+#include <boost/function.hpp>
 #include <boost/serialization/split_member.hpp>
+#include <boost/serialization/nvp.hpp>
+
+#include <Nebula/Memory/smart_ptr.hpp>
 
 namespace Neb {
 	/** @brief Typed */
@@ -19,7 +25,7 @@ namespace Neb {
 	template<class T> class Factory {
 		public:
 			typedef void* (*allocptr)();
-			typedef std::function<T*()> allocfun;
+			typedef boost::function<T*()> allocfun;
 			
 			Factory() {}
 			virtual ~Factory() = 0;
@@ -62,7 +68,7 @@ namespace Neb {
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 		public:
 			/** @brief Object */
-			boost::shared_ptr<T>			ptr_;
+			Neb::unique_ptr<T>			ptr_;
 	};
 }
 

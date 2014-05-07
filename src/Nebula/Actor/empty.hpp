@@ -11,18 +11,17 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <nebula/actor/Base.hpp>
-
-#include <gru/actor/desc.hpp>
-#include <gru/actor/actor.hpp>
+#include <Nebula/Actor/Base.hpp>
+#include <Nebula/Actor/Types.hpp>
+#include <Nebula/Actor/Util/desc.hpp>
 
 namespace neb {
 	namespace Actor {
-		class empty: public neb::Actor::Base {
+		class empty: public Neb::Actor::Base {
 			public:
-				empty(boost::shared_ptr<glutpp::actor::parent>);
+				empty(Neb::Actor::parent_w);
 				
-				virtual void			init(boost::shared_ptr<glutpp::actor::desc>);
+				virtual void			init(Neb::Actor::desc_w);
 
 				virtual void			add_force(double) {}
 

@@ -5,17 +5,18 @@
 #include <vector>
 #include <map>
 
-#include <gru/config.hpp>
-#include <gru/renderable.hpp>
-#include <gru/Graphics/window/desc.hpp>
-#include <gru/Graphics/texture.hpp>
-//#include <gru/camera.hpp>
-#include <gru/Graphics/light/light.hpp>
-#include <gru/master.hpp>
-#include <gru/Graphics/glsl/program.hpp>
-#include <gru/Graphics/glsl/shader.hpp>
-#include <gru/Graphics/gui/layout.hpp>
-#include <gru/Signals.hpp>
+#include <Nebula/config.hpp>
+#include <Nebula/Types.hpp>
+#include <Nebula/renderable.hpp>
+#include <Nebula/Graphics/window/desc.hpp>
+#include <Nebula/Graphics/texture.hpp>
+//#include <Nebula/camera.hpp>
+#include <Nebula/Graphics/light/light.hpp>
+#include <Nebula/master.hpp>
+#include <Nebula/Graphics/glsl/program.hpp>
+#include <Nebula/Graphics/glsl/shader.hpp>
+#include <Nebula/Graphics/gui/layout.hpp>
+#include <Nebula/Signals.hpp>
 /*
 #include <math/mat44.hpp>
 #include <math/vec4.hpp>
@@ -30,7 +31,7 @@ namespace glutpp {
 	namespace window {
 		class window: public std::enable_shared_from_this<window>, public gal::flag<unsigned int> {
 			public:
-				window(glutpp::window::desc_s desc);
+				window(Neb::window::desc_s desc);
 				~window();
 			
 			public:
@@ -41,16 +42,22 @@ namespace glutpp {
 				};
 
 
-				unsigned int f();
-				void	f(unsigned int flag);
-				void	init();
-				void	render(double time);
-				void	step(double time);
+				unsigned int const		f() const;
+				void				f(unsigned int const & flag);
+				int const			i() const;
+				void				i(int const & ni);
 
+
+				void				init();
+
+
+				/** @name Main Loop @{ */
+				void				render(double time);
+				void				step(double time);
+				/** @} */
 				void	resize();
-				void	set_layout(glutpp::gui::layout_s layout);
-				void	i(int ni);
-				void	set_scene(glutpp::scene::scene_s scene);
+				void	set_layout(Neb::gui::layout_w layout);
+				void	set_scene(Neb::Scene::scene_w scene);
 
 				void	callback_window_pos_fun(GLFWwindow*,int,int);
 				void	callback_window_size_fun(GLFWwindow*,int,int);
@@ -73,11 +80,11 @@ namespace glutpp {
 								int				x_;
 								int				y_;
 				 */
-				glutpp::renderable_s		renderable_;
+				Neb::renderable_u		renderable_;
 
 
 				int			i_;
-				glutpp::window::raw	raw_;
+				Neb::window::raw	raw_;
 
 				GLFWwindow*		window_;
 				

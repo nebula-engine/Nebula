@@ -12,9 +12,9 @@
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 
-#include <gru/shared.hpp>
-#include <gru/network/config.hpp>
-#include <gru/network/Types.hpp>
+#include <Nebula/shared.hpp>
+#include <Nebula/network/config.hpp>
+#include <Nebula/network/Types.hpp>
 
 namespace gal {
 	namespace network {

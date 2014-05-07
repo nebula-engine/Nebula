@@ -2,42 +2,39 @@
 #include <Nebula/debug.hpp>
 #include <Nebula/physics.hpp>
 #include <Nebula/Actor/Rigid_Actor.hpp>
-#include <Nebula/shape.hpp>
+#include <Nebula/shape/Physical.hpp>
 
 
-neb::Actor::RigidActor::RigidActor(glutpp::actor::parent_s parent):
-	neb::Actor::Actor(parent)
-{
+Neb::Actor::RigidActor::RigidActor(Neb::weak_ptr<Neb::Actor::parent> parent): Neb::Actor::Actor(parent) {}
 
+void		Neb::Actor::RigidActor::init(Neb::weak_ptr<Neb::Actor::desc> desc) {
+	Neb::Actor::Actor::init(desc);
 }
-void neb::Actor::RigidActor::init(glutpp::actor::desc_s desc) {
-	neb::Actor::Actor::init(desc);
-}
-void	neb::Actor::RigidActor::step_local(double time) {
+void		Neb::Actor::RigidActor::step_local(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
-	neb::Actor::Actor::step_local(time);
+	Neb::Actor::Actor::step_local(time);
 }
-void	neb::Actor::RigidActor::step_remote(double time) {
+void	Neb::Actor::RigidActor::step_remote(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
-	neb::Actor::Actor::step_remote(time);
+	Neb::Actor::Actor::step_remote(time);
 }
-void	neb::Actor::RigidActor::setupFiltering()
+void	Neb::Actor::RigidActor::setupFiltering()
 {
 	assert(px_actor_);
 
 	physx::PxRigidActor* actor = (physx::PxRigidActor*)px_actor_;
 
 	physx::PxFilterData coll_data;
-	coll_data.word0 = raw_->filter_data_.simulation_.word0;
-	coll_data.word1 = raw_->filter_data_.simulation_.word1;
-	coll_data.word2 = raw_->filter_data_.simulation_.word2;
-	coll_data.word3 = raw_->filter_data_.simulation_.word3;
+	coll_data.word0 = raw_->simulation_.word0;
+	coll_data.word1 = raw_->simulation_.word1;
+	coll_data.word2 = raw_->simulation_.word2;
+	coll_data.word3 = raw_->simulation_.word3;
 
 	physx::PxFilterData sq_data;
-	sq_data.word0 = raw_->filter_data_.scene_query_.word0;
-	sq_data.word1 = raw_->filter_data_.scene_query_.word1;
-	sq_data.word2 = raw_->filter_data_.scene_query_.word2;
-	sq_data.word3 = raw_->filter_data_.scene_query_.word3;
+	sq_data.word0 = raw_->scene_query_.word0;
+	sq_data.word1 = raw_->scene_query_.word1;
+	sq_data.word2 = raw_->scene_query_.word2;
+	sq_data.word3 = raw_->scene_query_.word3;
 
 
 	const physx::PxU32 numShapes = actor->getNbShapes();
@@ -55,13 +52,9 @@ void	neb::Actor::RigidActor::setupFiltering()
 
 	delete[] shapes;
 }
-glutpp::actor::desc_s neb::Actor::RigidActor::get_projectile() {
-	abort();
-	return glutpp::actor::desc_s();
-}
-void neb::Actor::RigidActor::print_info() {
+void Neb::Actor::RigidActor::print_info() {
 
-	neb::Actor::Actor::print_info();
+	Neb::Actor::Actor::print_info();
 	
 	auto pxra = px_actor_->isRigidActor();
 	

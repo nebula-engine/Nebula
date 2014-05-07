@@ -64,7 +64,7 @@ namespace Neb {
 				/** @brief Pose. */
 				physx::PxTransform		pose_;
 				/** @brief Scale. */
-				physx::PxVec4			s_;
+				physx::PxVec3			s_;
 				
 				/** @brief Name of image file */
 				char				image_[max_filename_length];

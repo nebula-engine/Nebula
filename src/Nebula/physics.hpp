@@ -5,9 +5,9 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <nebula/config.hpp>
-//#include <nebula/scene/desc.hpp>
-#include <nebula/scene/scene.hpp>
+#include <Nebula/config.hpp>
+//#include <Nebula/scene/desc.hpp>
+#include <Nebula/scene/scene.hpp>
 
 class DefaultErrorCallback:
 	public physx::PxErrorCallback
@@ -29,12 +29,8 @@ physx::PxFilterFlags DefaultFilterShader(
 		const void* constantBlock,
 		physx::PxU32 constantBlockSize );
 
-namespace neb
-{
-
-
-	class physics
-	{
+namespace Neb {
+	class physics {
 		public:
 			physics();
 			void						Init();

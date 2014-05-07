@@ -3,51 +3,22 @@
 
 #include <vector>
 
-#include <gru/Flag.hpp>
-#include <gru/Map.hpp>
+#include <Nebula/Flag.hpp>
+#include <Nebula/Map.hpp>
 
-#include <gru/config.hpp>
-#include <gru/Graphics/glsl/program.hpp>
-#include <gru/scene/raw.hpp>
-#include <gru/actor/actor.hpp>
-#include <gru/Graphics/Camera/View/Base.hpp>
+#include <Nebula/config.hpp> // Nebula/config.hpp.in
+#include <Nebula/Graphics/glsl/program.hpp>
+#include <Nebula/scene/raw.hpp>
+#include <Nebula/Actor/Base.hpp>
+#include <Nebula/Graphics/Camera/View/Base.hpp>
 
 //#include <glutpp/shader.h>
 
 #define LIGHT_MAX 20
 
-namespace glutpp {
-	namespace scene {
-		class less_str {
-			public:
-				bool operator()(char* s0, char* s1) {
-					assert(s0);
-					assert(s1);
-
-					if(*s0 < *s1) return true;
-
-					if(*s0 == *s1)
-					{
-						if(*s0 == 0)
-						{
-							return false;
-						}
-						else
-						{
-							return operator()(s0+1, s1+1);
-						}
-					}
-
-					return false;
-
-				}
-		};
-
-
-		class scene:
-			public glutpp::actor::parent,
-			public gal::flag<unsigned int>
-		{
+namespace Neb {
+	namespace Scene {
+		class scene: public Neb::Actor::parent, public gal::flag<unsigned int> {
 			public:
 				struct Flag {
 					enum e {
@@ -69,27 +40,27 @@ namespace glutpp {
 				int				i();
 				unsigned int			f();
 				void				f(unsigned int flag);
-				void				init(glutpp::scene::desc_s desc);
+				void				init(Neb::Scene::desc_w desc);
 				void				release();
 				physx::PxMat44			get_pose();
 				/** @brief render */
 				void				render(
 						double time,
-						std::shared_ptr<glutpp::Camera::View::Base<float> >,
-						std::shared_ptr<glutpp::Camera::Projection::Base>,
-						glutpp::window::window_s);
-				void				draw(glutpp::window::window_s window);
+						std::shared_ptr<Neb::Camera::View::Base>,
+						std::shared_ptr<Neb::Camera::Projection::Base>,
+						Neb::window::window_s);
+				void				draw(Neb::window::window_s window);
 				void				resize(int w, int h);
 
 
 			public:
-				int					i_;
-				boost::shared_ptr<raw>			raw_;
+				int									i_;
+				boost::shared_ptr<raw>							raw_;
 
-				renderable_w								renderable_;
+				Neb::weak_ptr<Neb::renderable>						renderable_;
 
-				Neb::Map<glutpp::actor::actor>						actors_;
-				std::map<std::string, boost::shared_ptr<glutpp::actor::desc> >		actors_deferred_;
+				Neb::Map<Neb::Actor::Base>						actors_;
+				std::map<std::string, boost::shared_ptr<Neb::Actor::desc> >		actors_deferred_;
 		};
 	}
 }

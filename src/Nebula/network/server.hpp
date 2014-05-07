@@ -17,18 +17,14 @@
 #include <netinet/in.h>      // For sockaddr_in
 
 //#include <galaxy/config.hpp>
-#include <gru/network/communicating.hpp>
+#include <Nebula/network/communicating.hpp>
 
 //typedef std::shared_ptr<boost::asio::io_service>      boost_io_service_ptr;
 //typedef std::shared_ptr<boost::asio::ip::tcp::socket> boost_socket_ptr;
 
-namespace gal
-{
-	namespace network
-	{
-		class communicating;
-		class server
-		{
+namespace gal {
+	namespace network {
+		class server {
 			public:
 				typedef boost::shared_ptr<gal::network::communicating>	comm_t;
 				typedef boost::shared_ptr<gal::network::message>	msg_t;

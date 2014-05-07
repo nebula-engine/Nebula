@@ -11,10 +11,10 @@
 
 //#include <galaxy/sig/connection.hpp>
 
-#include <gru/master.hpp>
-#include <gru/Graphics/Color/Color.hpp>
+#include <Nebula/master.hpp>
+#include <Nebula/Graphics/Color/Color.hpp>
 
-namespace glutpp {
+namespace Neb {
 	namespace gui {
 		namespace object {
 			class Data {
@@ -37,8 +37,8 @@ namespace glutpp {
 					float				w_;
 					float				h_;
 
-					gru::Color::color<float>	font_color_;
-					gru::Color::color<float>	bg_color_;
+					Neb::Color::color<float>	font_color_;
+					Neb::Color::color<float>	bg_color_;
 
 					std::string			label_;
 
@@ -49,7 +49,7 @@ namespace glutpp {
 					object();
 					void				i(int);
 			
-					void				init(boost::shared_ptr<glutpp::gui::object::Data>);
+					void				init(boost::shared_ptr<Neb::gui::object::Data>);
 
 					//window::window_s		get_window();
 					virtual void			draw() = 0;

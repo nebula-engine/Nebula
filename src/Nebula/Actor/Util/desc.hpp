@@ -16,8 +16,8 @@
 #include <Nebula/Filter.hpp>
 #include <Nebula/Typed.hpp>
 
-namespace glutpp {
-	namespace actor {
+namespace Neb {
+	namespace Actor {
 		class desc {
 			public:
 				friend class boost::serialization::access;

@@ -6,7 +6,7 @@
 #include <iostream>
 #include <thread>
 
-#include <gru/network/communicating.hpp>
+#include <Nebula/network/communicating.hpp>
 
 //typedef std::shared_ptr<boost::asio::io_service>	boost_io_service_ptr;
 

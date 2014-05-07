@@ -52,7 +52,7 @@ void	print_vectori(GLushort* v, unsigned int m, unsigned int n) {
 }
 */
 glutpp::actor::actor::actor(boost::shared_ptr<glutpp::actor::parent> parent):
-	parent_(parent)
+	
 {
 	GRU_ACTOR_ACTOR_FUNC
 	
@@ -67,20 +67,6 @@ int glutpp::actor::actor::i() const {
 boost::shared_ptr<glutpp::actor::parent>	glutpp::actor::actor::getParent() {
 	assert(!parent_.expired());
 	return parent_.lock();
-}
-void glutpp::actor::actor::init(glutpp::actor::desc_s desc) {
-	/*
-	glutpp::actor::Type type = desc->raw_->type_;
-	
-	glutpp::master::Global()->get_raw_factory()->reset(raw_, type);
-	
-	assert(raw_);
-	//raw_.reset(new glutpp::actor::raw);
-	raw_->operator=(*desc->get_raw());*/
-	
-	// instead of allocating a new raw and copying it, just swap the one in the desc object, it shouldn't be used for anything else... swap it!!!
-	raw_.reset();
-	raw_.swap(desc->raw_wrapper_.ptr_);
 }
 unsigned int glutpp::actor::actor::f() const {
 	assert(raw_);
@@ -125,12 +111,6 @@ void glutpp::actor::actor::cleanup() {
 void glutpp::actor::actor::release() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	for(auto it = actors_.begin(); it != actors_.end(); ++it)
-	{
-		it->second->release();
-	}
-
-	actors_.clear();
 }
 void glutpp::actor::actor::step(double time) {
 	for(auto it = shapes_.begin(); it != shapes_.end(); ++it) {
