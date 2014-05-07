@@ -21,33 +21,56 @@ namespace Neb {
 			/** @brief Hash Code */
 			static long int		hash_code_;
 	};
-	/** @brief Factory */
+	/** @brief Factory
+	 * the app shall hold instances of Factory for the various types and use cases
+	 */
 	template<class T> class Factory {
+		private:
+			struct __base_function {
+	                        virtual ~__base_function() {}
+	                };
+	                template<class... A> struct __function: __base_function {
+	                        __function(function<T*(A...)> f): f_(f) {}
+	                        function<T*(A...)>              f_;
+	                };
 		public:
-			typedef void* (*allocptr)();
-			typedef boost::function<T*()> allocfun;
-			
+
 			Factory() {}
 			virtual ~Factory() = 0;
 			
-			template<class... Args> T*			alloc(long hash_code, Args&&... args) {
-				auto it = map_.find(hash_code);
-				if(it == map_.cend()) {
-					throw 0;
-				} else {
-					return (it->second)(std::forward<Args>(args)...);
-				}
+			template<class... Args> void	add(hash_code, std::function<T*(Args...)> f) {
+				std::shared_ptr<__base_function> b(new __function<Args...>(f));
+				
+				map_.emplace(hash_code, b)
 			}
 			
-			static boost::shared_ptr< Factory<T> >		global() {
+			template<class... Args> T*      alloc(long hash_code, Args&&... args) {
+	                        auto it = map_.find(hash_code);
+	                        if(it == map_.cend()) {
+	                                cout << "no alloc for " << hash_code << endl;
+	                                return 0;
+	                        } else {
+	                                std::shared_ptr< __function<Args...> > f = std::dynamic_pointer_cast< __function<Args...> >(it->second);
+	
+	                                if(f == NULL) {
+	                                        cout << "wrong arg list" << endl;
+	                                        return 0;
+	                                }
+	
+	                                return (f->f_)(forward<Args>(args)...);
+	                        }
+	                }
+
+			static std::shared_ptr< Factory<T> >		global() {
 				if(!global_) {
 					throw 0;
 				}
 				return global_;
 			};
 		private:
-			static boost::shared_ptr< Factory<T> >		global_;
-			static std::map<long int, allocfun>		map_;
+			//static std::shared_ptr< Factory<T> >		global_;
+			std::map<long int, __base_function*>         	map_;
+
 	};
 	/** @brief WrapperTyped */
 	template<class T> class WrapperTyped {
