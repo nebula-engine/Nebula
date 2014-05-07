@@ -193,22 +193,6 @@ void		glutpp::actor::actor::load_lights(int& i, physx::PxMat44 space) {
 		it->second->load_lights(i, space);
 	}
 }
-boost::shared_ptr<glutpp::scene::scene>		glutpp::actor::actor::get_scene() {
-	GRU_ACTOR_ACTOR_FUNC;
-
-	auto parent = getParent();
-	assert(parent);
-
-	auto scene = parent->isScene(); //boost::dynamic_pointer_cast<glutpp::scene::scene>(parent);
-
-	if(scene) return scene;
-
-	auto actor = boost::dynamic_pointer_cast<glutpp::actor::actor>(parent);
-
-	if(actor) return actor->get_scene();
-
-	abort();
-}
 void		glutpp::actor::actor::draw(glutpp::window::window_s window, physx::PxMat44 space) {
 	GRU_ACTOR_ACTOR_FUNC;
 	assert(raw_);

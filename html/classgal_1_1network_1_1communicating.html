@@ -103,7 +103,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a>  </div>
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">gal::network::communicating Class Reference</div>  </div>
 </div><!--header-->
@@ -150,6 +151,28 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgal_1_1network_1_1communicating.html#afe5f9de9e2535e261c78485dec4d9e82">socket_</a></td></tr>
+<tr><td colspan="2"><h2><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="addb0099bce03feeb9ff20a5244976c54"></a><!-- doxytag: member="gal::network::communicating::write_header_" ref="addb0099bce03feeb9ff20a5244976c54" args="" -->
+HEADER_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>write_header_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::deque&lt; boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classgal_1_1network_1_1message.html">message</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgal_1_1network_1_1communicating.html#a5d0757e59bab953f76f65edfc1b3bd15">write_queue_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgal_1_1network_1_1communicating.html#a4dc031687aa84ce7e3cca5ce9839d5d7">terminate_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgal_1_1network_1_1communicating.html#afc83d88ea30befb842e16a5cf7d5e936">write_thread_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgal_1_1network_1_1communicating.html#a2d94e9fcd2cd765768b354a87b726bf3">read_thread_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgal_1_1network_1_1communicating.html#aff2d38da260c4e5f9182eec6f8bc16bd">cv_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1027b607900f3d087baac99aba3507e"></a><!-- doxytag: member="gal::network::communicating::cv_ready_" ref="ac1027b607900f3d087baac99aba3507e" args="" -->
+std::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><b>cv_ready_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgal_1_1network_1_1communicating.html#a7afe6898e58ca9087f05124cf4d18b65">mutex_</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f59c7c2c3034687f96369a9c76cc90b"></a><!-- doxytag: member="gal::network::communicating::mutex_start_" ref="a6f59c7c2c3034687f96369a9c76cc90b" args="" -->
+std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>mutex_start_</b></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Read Data Members @{</div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9d721c71a996f044175a10741341bf8"></a><!-- doxytag: member="gal::network::communicating::read_msg_" ref="ad9d721c71a996f044175a10741341bf8" args="" -->
+boost::shared_ptr&lt; <a class="el" href="classgal_1_1network_1_1message.html">message</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>read_msg_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab4813fff665c6d4379ba8f410f97bd7"></a><!-- doxytag: member="gal::network::communicating::read_header_" ref="aab4813fff665c6d4379ba8f410f97bd7" args="" -->
+HEADER_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>read_header_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa33fdc45c281e7664950a272e63b585f"></a><!-- doxytag: member="gal::network::communicating::read_buffer_" ref="aa33fdc45c281e7664950a272e63b585f" args="[MAX_MESSAGE_LENGTH]" -->
+char&#160;</td><td class="memItemRight" valign="bottom"><b>read_buffer_</b> [MAX_MESSAGE_LENGTH]</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>socket communicating </p>
@@ -364,6 +387,48 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="aff2d38da260c4e5f9182eec6f8bc16bd"></a><!-- doxytag: member="gal::network::communicating::cv_" ref="aff2d38da260c4e5f9182eec6f8bc16bd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::condition_variable <a class="el" href="classgal_1_1network_1_1communicating.html#aff2d38da260c4e5f9182eec6f8bc16bd">gal::network::communicating::cv_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>condition variable </p>
+
+</div>
+</div>
+<a class="anchor" id="a7afe6898e58ca9087f05124cf4d18b65"></a><!-- doxytag: member="gal::network::communicating::mutex_" ref="a7afe6898e58ca9087f05124cf4d18b65" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex <a class="el" href="classgal_1_1network_1_1communicating.html#a7afe6898e58ca9087f05124cf4d18b65">gal::network::communicating::mutex_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>mutex mutex for write_queue_ and terminate_ </p>
+
+</div>
+</div>
+<a class="anchor" id="a2d94e9fcd2cd765768b354a87b726bf3"></a><!-- doxytag: member="gal::network::communicating::read_thread_" ref="a2d94e9fcd2cd765768b354a87b726bf3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::thread <a class="el" href="classgal_1_1network_1_1communicating.html#a2d94e9fcd2cd765768b354a87b726bf3">gal::network::communicating::read_thread_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>thread read </p>
+
+</div>
+</div>
 <a class="anchor" id="afe5f9de9e2535e261c78485dec4d9e82"></a><!-- doxytag: member="gal::network::communicating::socket_" ref="afe5f9de9e2535e261c78485dec4d9e82" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -375,6 +440,48 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>socket </p>
+
+</div>
+</div>
+<a class="anchor" id="a4dc031687aa84ce7e3cca5ce9839d5d7"></a><!-- doxytag: member="gal::network::communicating::terminate_" ref="a4dc031687aa84ce7e3cca5ce9839d5d7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classgal_1_1network_1_1communicating.html#a4dc031687aa84ce7e3cca5ce9839d5d7">gal::network::communicating::terminate_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>process body </p>
+
+</div>
+</div>
+<a class="anchor" id="a5d0757e59bab953f76f65edfc1b3bd15"></a><!-- doxytag: member="gal::network::communicating::write_queue_" ref="a5d0757e59bab953f76f65edfc1b3bd15" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::deque&lt;boost::shared_ptr&lt;<a class="el" href="classgal_1_1network_1_1message.html">message</a>&gt; &gt; <a class="el" href="classgal_1_1network_1_1communicating.html#a5d0757e59bab953f76f65edfc1b3bd15">gal::network::communicating::write_queue_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>message deque </p>
+
+</div>
+</div>
+<a class="anchor" id="afc83d88ea30befb842e16a5cf7d5e936"></a><!-- doxytag: member="gal::network::communicating::write_thread_" ref="afc83d88ea30befb842e16a5cf7d5e936" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::thread <a class="el" href="classgal_1_1network_1_1communicating.html#afc83d88ea30befb842e16a5cf7d5e936">gal::network::communicating::write_thread_</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>thread write </p>
 
 </div>
 </div>
@@ -400,7 +507,7 @@ Protected Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 18:06:49 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

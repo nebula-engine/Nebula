@@ -31,11 +31,13 @@ namespace glutpp {
 			public:
 				virtual ~parent() {}
 
-				virtual physx::PxMat44		getPoseGlobal() = 0;
-				virtual physx::PxMat44		getPose() = 0;
+				virtual physx::PxMat44					getPoseGlobal() = 0;
+				virtual physx::PxMat44					getPose() = 0;
 
-				boost::shared_ptr<glutpp::actor::actor>			isActor();
-				boost::shared_ptr<glutpp::scene::scene>			isScene();
+				Neb::weak_ptr<glutpp::actor::actor>			isActor();
+				Neb::weak_ptr<glutpp::scene::scene>			isScene();
+				
+				Neb::weak_ptr<glutpp::scene::scene>			getScene();
 		};
 	}
 }

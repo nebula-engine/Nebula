@@ -52,7 +52,7 @@ namespace glutpp {
 				
 				//typedef vec_addr_raw::tuple tuple;
 				
-				void load(boost::shared_ptr<glutpp::actor::actor> actor);
+				void load(Neb::weak_ptr<glutpp::actor::actor> const & actor);
 			
 				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 					ar & vector_;

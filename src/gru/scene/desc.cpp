@@ -32,27 +32,7 @@ void glutpp::scene::desc::load(char const* filename) {
 
 //	load(doc.FirstChildElement("scene"));
 }
-/*
-void glutpp::scene::desc::load(tinyxml2::XMLElement* element) {
-	GLUTPP_DEBUG_0_FUNCTION;
-	
-	get_raw()->load(element);
-	
-	// actors
-	tinyxml2::XMLElement* e = element->FirstChildElement("actor");
-	
-	while(e)
-	{
-		glutpp::actor::desc_s ad(new glutpp::actor::desc);
-		
-		ad->load(e);
-		
-		get_actors()->vec_.push_back(std::make_tuple(ad));
-			
-		e = e->NextSiblingElement("actor");
-	}
-}*/
-void glutpp::scene::desc::load(boost::shared_ptr<glutpp::scene::scene> scene) {
+void		glutpp::scene::desc::load(Neb::weak_ptr<glutpp::scene::scene> scene) {
 	i_ = scene->i_;
 	raw_wrapper_.ptr_ = scene->raw_;
 	

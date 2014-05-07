@@ -102,7 +102,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a>  </div>
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">glutpp::master Class Reference</div>  </div>
 </div><!--header-->
@@ -185,6 +188,42 @@ glutpp::gui::object::object_factory_s&#160;</td><td class="memItemRight" valign=
 glutpp::actor::raw_factory_s&#160;</td><td class="memItemRight" valign="bottom"><b>actor_raw_factory_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae46f8577d3f033018d8b3acdadec4f2"></a><!-- doxytag: member="glutpp::master::shape_raw_factory_" ref="aae46f8577d3f033018d8b3acdadec4f2" args="" -->
 glutpp::shape::raw_factory_s&#160;</td><td class="memItemRight" valign="bottom"><b>shape_raw_factory_</b></td></tr>
+<tr><td colspan="2"><h2><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6d82e95e75a0d37fdf9b236702774899"></a><!-- doxytag: member="glutpp::master::static_error_fun" ref="a6d82e95e75a0d37fdf9b236702774899" args="(int, char const *)" -->
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>static_error_fun</b> (int, char const *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30fbed019ece0021f18ce80c60b0ba89"></a><!-- doxytag: member="glutpp::master::static_window_pos_fun" ref="a30fbed019ece0021f18ce80c60b0ba89" args="(GLFWwindow *, int, int)" -->
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>static_window_pos_fun</b> (GLFWwindow *, int, int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b6428affa9f9ab5ac87892f7629bd2e"></a><!-- doxytag: member="glutpp::master::static_window_size_fun" ref="a4b6428affa9f9ab5ac87892f7629bd2e" args="(GLFWwindow *, int, int)" -->
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>static_window_size_fun</b> (GLFWwindow *, int, int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acddfa25faa2103e6d25f236c2130de65"></a><!-- doxytag: member="glutpp::master::static_window_close_fun" ref="acddfa25faa2103e6d25f236c2130de65" args="(GLFWwindow *)" -->
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>static_window_close_fun</b> (GLFWwindow *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83dd98838de37000db7cc7435dc33929"></a><!-- doxytag: member="glutpp::master::static_window_refresh_fun" ref="a83dd98838de37000db7cc7435dc33929" args="(GLFWwindow *)" -->
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>static_window_refresh_fun</b> (GLFWwindow *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83827e15765c9deca4c96b39c4ee10da"></a><!-- doxytag: member="glutpp::master::static_mouse_button_fun" ref="a83827e15765c9deca4c96b39c4ee10da" args="(GLFWwindow *, int, int, int)" -->
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>static_mouse_button_fun</b> (GLFWwindow *, int, int, int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ec3c0de2a873e7bf16e83ef6a76aa1d"></a><!-- doxytag: member="glutpp::master::static_key_fun" ref="a2ec3c0de2a873e7bf16e83ef6a76aa1d" args="(GLFWwindow *, int, int, int, int)" -->
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>static_key_fun</b> (GLFWwindow *, int, int, int, int)</td></tr>
+<tr><td colspan="2"><h2><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a95bb6d82b55bb9badd6e90b540887edf"></a><!-- doxytag: member="glutpp::master::flag_" ref="a95bb6d82b55bb9badd6e90b540887edf" args="" -->
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>flag_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a716b47f5017b0629c093248e855be046"></a><!-- doxytag: member="glutpp::master::windows_" ref="a716b47f5017b0629c093248e855be046" args="" -->
+std::map&lt; GLFWwindow <br class="typebreak"/>
+*, <a class="el" href="classNeb_1_1unique__ptr.html">Neb::unique_ptr</a><br class="typebreak"/>
+&lt; <a class="el" href="classglutpp_1_1window_1_1window.html">glutpp::window::window</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>windows_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad74d09a19af8e83e0e350555036e6983"></a><!-- doxytag: member="glutpp::master::programs_" ref="ad74d09a19af8e83e0e350555036e6983" args="" -->
+std::map&lt; int, std::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classglutpp_1_1glsl_1_1program.html">glutpp::glsl::program</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>programs_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a64b4b1fc3347a2523b28b70c49ef62"></a><!-- doxytag: member="glutpp::master::current_" ref="a4a64b4b1fc3347a2523b28b70c49ef62" args="" -->
+std::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classglutpp_1_1glsl_1_1program.html">glutpp::glsl::program</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>current_</b></td></tr>
+<tr><td colspan="2"><h2><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab43b29dfb8f37694c89f08411a68f267"></a><!-- doxytag: member="glutpp::master::window_main_" ref="ab43b29dfb8f37694c89f08411a68f267" args="" -->
+static glutpp::window::window_w&#160;</td><td class="memItemRight" valign="bottom"><b>window_main_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0151ff558558393aa9aff680a66f0c31"></a><!-- doxytag: member="glutpp::master::g_master_" ref="a0151ff558558393aa9aff680a66f0c31" args="" -->
+static master_s&#160;</td><td class="memItemRight" valign="bottom"><b>g_master_</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/gru/<a class="el" href="master_8hpp_source.html">master.hpp</a></li>
@@ -208,7 +247,7 @@ glutpp::shape::raw_factory_s&#160;</td><td class="memItemRight" valign="bottom">
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 18:06:49 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

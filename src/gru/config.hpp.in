@@ -123,6 +123,8 @@ namespace glutpp {
 		typedef std::shared_ptr<scene>	scene_s;
 	
 	}
+
+	/** @brief %Actor */
 	namespace actor {
 		/*
 		struct type {

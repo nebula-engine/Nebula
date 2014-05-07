@@ -36,13 +36,13 @@ namespace glutpp {
 
 				void			load(char const *);
 				//void			load(tinyxml2::XMLElement*);
-				void			load(boost::shared_ptr<glutpp::scene::scene>);
+				void			load(Neb::weak_ptr<glutpp::scene::scene>);
 				
 				
 				int							i_;
 				int							type_;
 				Neb::WrapperTyped<glutpp::scene::raw>			raw_wrapper_;
-				std::vector<boost::shared_ptr<glutpp::actor::desc> >	actors_;
+				std::vector<Neb::weak_ptr<glutpp::actor::desc> >	actors_;
 		};
 	}
 }

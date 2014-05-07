@@ -125,13 +125,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00070"></a>00070                                 HEADER_TYPE                                     read_header_;
 <a name="l00071"></a>00071                                 <span class="keywordtype">char</span>                                            read_buffer_[MAX_MESSAGE_LENGTH];
 <a name="l00073"></a>00073                                 HEADER_TYPE                                     write_header_;
-<a name="l00076"></a>00076                                 std::deque&lt;boost::shared_ptr&lt;message&gt; &gt;         write_queue_;
-<a name="l00079"></a>00079                                 <span class="keywordtype">bool</span>                                    terminate_;
-<a name="l00082"></a>00082                                 std::thread                             write_thread_;
-<a name="l00085"></a>00085                                 std::thread                             read_thread_;
-<a name="l00088"></a>00088                                 std::condition_variable                 cv_;
+<a name="l00076"></a><a class="code" href="classgal_1_1network_1_1communicating.html#a5d0757e59bab953f76f65edfc1b3bd15">00076</a>                                 std::deque&lt;boost::shared_ptr&lt;message&gt; &gt;         <a class="code" href="classgal_1_1network_1_1communicating.html#a5d0757e59bab953f76f65edfc1b3bd15">write_queue_</a>;
+<a name="l00079"></a><a class="code" href="classgal_1_1network_1_1communicating.html#a4dc031687aa84ce7e3cca5ce9839d5d7">00079</a>                                 <span class="keywordtype">bool</span>                                    <a class="code" href="classgal_1_1network_1_1communicating.html#a4dc031687aa84ce7e3cca5ce9839d5d7">terminate_</a>;
+<a name="l00082"></a><a class="code" href="classgal_1_1network_1_1communicating.html#afc83d88ea30befb842e16a5cf7d5e936">00082</a>                                 std::thread                             <a class="code" href="classgal_1_1network_1_1communicating.html#afc83d88ea30befb842e16a5cf7d5e936">write_thread_</a>;
+<a name="l00085"></a><a class="code" href="classgal_1_1network_1_1communicating.html#a2d94e9fcd2cd765768b354a87b726bf3">00085</a>                                 std::thread                             <a class="code" href="classgal_1_1network_1_1communicating.html#a2d94e9fcd2cd765768b354a87b726bf3">read_thread_</a>;
+<a name="l00088"></a><a class="code" href="classgal_1_1network_1_1communicating.html#aff2d38da260c4e5f9182eec6f8bc16bd">00088</a>                                 std::condition_variable                 <a class="code" href="classgal_1_1network_1_1communicating.html#aff2d38da260c4e5f9182eec6f8bc16bd">cv_</a>;
 <a name="l00089"></a>00089                                 std::condition_variable                 cv_ready_;
-<a name="l00093"></a>00093                                 std::mutex                              mutex_;
+<a name="l00093"></a><a class="code" href="classgal_1_1network_1_1communicating.html#a7afe6898e58ca9087f05124cf4d18b65">00093</a>                                 std::mutex                              <a class="code" href="classgal_1_1network_1_1communicating.html#a7afe6898e58ca9087f05124cf4d18b65">mutex_</a>;
 <a name="l00094"></a>00094                                 std::mutex                              mutex_start_;
 <a name="l00095"></a>00095                 };
 <a name="l00096"></a>00096         }
@@ -164,7 +164,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 18:06:49 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

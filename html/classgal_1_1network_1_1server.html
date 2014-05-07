@@ -103,7 +103,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a>  </div>
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">gal::network::server Class Reference</div>  </div>
 </div><!--header-->
@@ -135,6 +136,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4de485e44eab83025b8fd34b7b3c6928"></a><!-- doxytag: member="gal::network::server::clients_" ref="a4de485e44eab83025b8fd34b7b3c6928" args="" -->
 std::vector&lt; comm_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>clients_</b></td></tr>
+<tr><td colspan="2"><h2><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab30387fed262865c5b4fdaf31127e03f"></a><!-- doxytag: member="gal::network::server::socket_" ref="ab30387fed262865c5b4fdaf31127e03f" args="" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>socket_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac269b4e460b0907bb6c12e400bd35b4f"></a><!-- doxytag: member="gal::network::server::thread_accept_" ref="ac269b4e460b0907bb6c12e400bd35b4f" args="" -->
+std::thread&#160;</td><td class="memItemRight" valign="bottom"><b>thread_accept_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa431c88e212e3d616be9e94f9701e3ee"></a><!-- doxytag: member="gal::network::server::mutex_" ref="aa431c88e212e3d616be9e94f9701e3ee" args="" -->
+std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>mutex_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acfcf5712d71ffa9b03b0e53a69d68d77"></a><!-- doxytag: member="gal::network::server::local_port_" ref="acfcf5712d71ffa9b03b0e53a69d68d77" args="" -->
+unsigned short&#160;</td><td class="memItemRight" valign="bottom"><b>local_port_</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/gru/network/<a class="el" href="server_8hpp_source.html">server.hpp</a></li>
@@ -158,7 +169,7 @@ std::vector&lt; comm_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 6 2014 17:55:11 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 6 2014 18:06:49 for gru by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

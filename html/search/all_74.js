@@ -1,6 +1,7 @@
 var searchData=
 [
   ['terminal',['terminal',['../classglutpp_1_1gui_1_1object_1_1terminal.html',1,'glutpp::gui::object']]],
+  ['terminate_5f',['terminate_',['../classgal_1_1network_1_1communicating.html#a4dc031687aa84ce7e3cca5ce9839d5d7',1,'gal::network::communicating']]],
   ['tetrahedron',['tetrahedron',['../classmath_1_1geo_1_1tetrahedron.html',1,'math::geo']]],
   ['texture',['texture',['../classglutpp_1_1texture.html',1,'glutpp']]],
   ['textview',['textview',['../classglutpp_1_1gui_1_1object_1_1textview.html',1,'glutpp::gui::object']]],
@@ -10,8 +11,8 @@ var searchData=
   ['thread_5fwrite',['thread_write',['../classgal_1_1network_1_1communicating.html#a271caa9e5d4d13fffda9d38218231b2c',1,'gal::network::communicating']]],
   ['thread_5fwrite_5fdispatch',['thread_write_dispatch',['../classgal_1_1network_1_1communicating.html#a32da51cf806bdc60b1a653ef20557af9',1,'gal::network::communicating']]],
   ['tri',['tri',['../classmath_1_1geo_1_1tri.html',1,'math::geo']]],
-  ['type',['type',['../structglutpp_1_1light_1_1type.html',1,'glutpp::light']]],
   ['type',['type',['../structglutpp_1_1shape_1_1event_1_1type.html',1,'glutpp::shape::event']]],
+  ['type',['type',['../structglutpp_1_1light_1_1type.html',1,'glutpp::light']]],
   ['type',['type',['../structgru_1_1Color_1_1color_1_1type.html',1,'gru::Color::color']]],
   ['type',['type',['../structglutpp_1_1shape_1_1type.html',1,'glutpp::shape']]],
   ['type_5f',['type_',['../classglutpp_1_1shape_1_1Raw.html#afdf8cef82798f62db8e15cb00cb2231f',1,'glutpp::shape::Raw']]],

@@ -20,8 +20,8 @@ namespace glutpp {
 
 		class addr { //: public gal::network::serial_ext<vec_int, glutpp::scene::addr> {
 			public:
-				void	load_this(Neb::unique_ptr<glutpp::actor::actor> const &);
-				void	load_parent(Neb::unique_ptr<glutpp::actor::actor> const &);
+				void	load_this(Neb::weak_ptr<glutpp::actor::actor> const &);
+				void	load_parent(Neb::weak_ptr<glutpp::actor::actor> const &);
 				
 				template <class Archive> void		serialize(Archive & ar, unsigned int const & version) {
 					ar & scene_;
