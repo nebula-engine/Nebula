@@ -11,12 +11,13 @@ void		glutpp::actor::addr::load_this(Neb::unique_ptr<glutpp::actor::actor> const
 
 	vec_.push_back(i);
 }
-void		glutpp::actor::addr::load_parent(Neb::unique_ptr<glutpp::actor::actor> const & actor0) {i
-	assert(actor0);
+void		glutpp::actor::addr::load_parent(Neb::unique_ptr<glutpp::actor::actor> const & actor0) {
+	//assert(actor0);
 	
 	auto parent = actor0->getParent();
 	
 	auto scene = boost::dynamic_pointer_cast<glutpp::scene::scene>(parent);
+
 	auto actor1 = boost::dynamic_pointer_cast<glutpp::actor::actor>(parent);
 
 	if(actor1) {
