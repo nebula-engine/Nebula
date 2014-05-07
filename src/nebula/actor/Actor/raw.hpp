@@ -20,7 +20,7 @@ namespace neb {
 		
 				raw();
 
-				virtual void		load(tinyxml2::XMLElement*);		
+				//virtual void		load(tinyxml2::XMLElement*);		
 				virtual void		load(glutpp::actor::actor_s);
 				
 				float			health_;
