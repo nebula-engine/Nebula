@@ -52,18 +52,19 @@ void Neb::Actor::Base::create_children(Neb::Actor::desc_w desc) {
 
 
 }
-Neb::Actor::Base_w		Neb::Actor::Base::create_actor(Neb::Actor::desc_w desc) {
+/*Neb::Actor::Base_w		Neb::Actor::Base::create_actor(Neb::Actor::desc_w desc) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	auto scene = get_scene();//std::dynamic_pointer_cast<Neb::scene::scene>(shared_from_this());
+	auto scene = get_scene();//std::dynamic_pointer_cast<Neb::Scene::scene>(shared_from_this());
 
-	auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
+	//auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
+	auto me = isBase();
 
-	Neb::Actor::Base_s actor;
+	Neb::Actor::Base_w actor;
 
-	switch(desc->get_raw()->type_)
-	{
+
+	switch(desc->get_raw()->type_) {
 		case Neb::Actor::type::e::RIGID_DYNAMIC:
 			actor.reset(new Neb::Actor::Rigid_Dynamic(me));
 			// = Create_Rigid_Dynamic(ad);
@@ -92,93 +93,88 @@ Neb::Actor::Base_w		Neb::Actor::Base::create_actor(Neb::Actor::desc_w desc) {
 	actor->init(desc);
 
 	return actor;
-}
-Neb::Actor::Base_s Neb::Actor::Base::create_actor_local(Neb::Actor::desc_s desc) {
-	auto actor = create_actor(desc);
+}*/
+Neb::Actor::Base_w		Neb::Actor::Base::create_actor_local(Neb::Actor::desc_w desc) {
+
+	long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
+	Neb::unique_ptr<Neb::Actor::Base> actor(Neb::Factory<Neb::Actor::Base>::global()->alloc(hash_code));
+
 	actors_.push_back(actor);
+
 	return actor;
 }
-Neb::Actor::Base_s Neb::Actor::Base::create_actor_remote(Neb::Actor::addr_s addr, Neb::actor::desc_s desc) {
+Neb::Actor::Base_w		Neb::Actor::Base::create_actor_remote(Neb::Actor::addr_w addr, Neb::Actor::desc_w desc) {
 
-	auto vec = addr->get_vec();
-	assert(!vec->vec_.empty());
+	//auto vec = addr->get_vec();
+	assert(!addr->vec_.empty());
 	int i;
-	Neb::Actor::Base_s actor;
+	Neb::Actor::Base_w actor;
 
-	if(vec->vec_.size() > 1)
-	{
+	if(addr->vec_.size() > 1) {
 		// vector size > 1
 		// actor is under another actor
-		i = vec->vec_.front();
-		vec->vec_.pop_front();
+		i = addr->vec_.front();
+		addr->vec_.pop_front();
 
 		auto parent_actor = get_actor(i);
 		assert(parent_actor);
 
 		actor = parent_actor->create_actor_remote(addr, desc);
-	}
-	else
-	{
+	} else {
 		// vector size == 1
 		// actor is directly under this
-		actor = create_actor(desc);
-		actors_[desc->get_id()->i_];
+		
+		long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
+		Neb::unique_ptr<Neb::Actor::Base> actor(Neb::Factory<Neb::Actor::Base>::global()->alloc(hash_code));
+
+		//
+		actors_.map_.emplace(desc->i_, std::move(actor));
 	}
 
 	return actor;
 }
-std::shared_ptr<Neb::app> Neb::Actor::Base::get_app() {
+Neb::app_w			Neb::Actor::Base::get_app() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	auto scene = get_scene();
 
-	assert(!scene->app_.expired());
-
-	return scene->app_.lock();
+	//assert(!scene->app_.expired());
+	
+	return scene->get_app();
 }
-std::shared_ptr<Neb::scene::scene> Neb::Actor::Base::get_scene() {
+Neb::Scene::scene_w		Neb::Actor::Base::get_scene() {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	auto scene = std::dynamic_pointer_cast<Neb::scene::scene>(Neb::Actor::actor::get_scene());
-
-	return scene;
+	return parent_->getScene();
 }
-Neb::Actor::Base_s Neb::Actor::Base::get_actor(int i) {
+Neb::Actor::Base_w		Neb::Actor::Base::get_actor(int i) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	auto it = actors_.find(i);
-	Neb::Actor::Base_s a;
+	Neb::Actor::Base_w a;
 	if(it == actors_.end())
 	{
 		return a;
 	}
 	else
 	{
-		a = std::dynamic_pointer_cast<Neb::Actor::Base>(it->second);
-		return a;
+		return it->second;
 	}
 }
-Neb::Actor::raw_s Neb::Actor::Base::get_raw_base() {
-	NEBULA_ACTOR_BASE_FUNC;
-	auto raw = get_raw();
-	auto raw_base = std::dynamic_pointer_cast<Neb::Actor::raw>(raw);
-	assert(raw_base);
-	return raw_base;
-}
-Neb::Actor::Base_s Neb::Actor::Base::get_actor(Neb::Actor::addr_s addr) {
+Neb::Actor::Base_w Neb::Actor::Base::get_actor(Neb::Actor::addr_w addr) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	auto vec = addr->get_vec();
-	assert(vec);
-	assert(!vec->vec_.empty());
+	//auto vec = addr->get_vec();
+	//assert(vec);
+	assert(!addr->vec_.empty());
 
-	int i = vec->vec_.front();
-	vec->vec_.pop_front();
+	int i = addr->vec_.front();
+	addr->vec_.pop_front();
 
 	auto actor = get_actor(i);
 	assert(actor);
 
-	if(!vec->vec_.empty())
+	if(!addr->vec_.empty())
 	{
 		return actor->get_actor(addr);
 	}
@@ -194,52 +190,53 @@ int	Neb::Actor::Base::fire() {
 
 	return 1;
 }
-Neb::Actor::desc_s Neb::Actor::Base::get_projectile() {
-	NEBULA_ACTOR_BASE_FUNC;
-
-	abort();
-
-	return Neb::Actor::desc_s();
-}
 void Neb::Actor::Base::step_local(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	Neb::Actor::actor::step(time);
+	for(auto it = shapes_.begin(); it != shapes_.end(); ++it) {
+		it->second->step(time);
+	}
+
+
 }
 void Neb::Actor::Base::step_remote(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	Neb::Actor::actor::step(time);
+	for(auto it = shapes_.begin(); it != shapes_.end(); ++it) {
+		it->second->step(time);
+	}
 }
-void Neb::Actor::Base::create_shapes(Neb::Actor::desc_s desc) {
+void Neb::Actor::Base::create_shapes(Neb::Actor::desc_w desc) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
+	//auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
+	auto me = isBase();
 
-	Neb::shape::shape_s shape;
+	Neb::Shape::shape_u shape;
 
-	for(auto it = desc->get_shapes()->vec_.begin(); it != desc->get_shapes()->vec_.end(); ++it)
-	{
-		Neb::shape::desc_s sd = std::get<0>(*it);
+	for(auto it = desc->shapes_.begin(); it != desc->shapes_.end(); ++it) {
+		Neb::Shape::desc_w sd = *it;
 		assert(sd);
-
-		shape.reset(new Neb::shape::shape(me));
-
+		
+		long int hash_code;// = desc->raw_->hash_code_;
+		
+		shape.reset(Neb::Factory<Neb::Shape::shape>::global()->alloc(hash_code, me));
+		
 		shape->init(sd);
-
+		
 		shapes_.push_back(shape);
 	}
 }
 void Neb::Actor::Base::hit() {
-	
-	physx::PxU32 w2 = get_raw()->filter_data_.simulation_.word2;
-	
+
+	physx::PxU32 w2 = raw_->simulation_.word2;
+
 	if(w2 & Neb::filter::type::PROJECTILE)
 	{
-		set(Neb::Actor::actor::flag::e::SHOULD_RELEASE);
+		set(Neb::Actor::Actor::flag::e::SHOULD_RELEASE);
 	}
-	
-	if(any(Neb::Actor::actor::flag::e::DESTRUCTIBLE))
+
+	if(any(Neb::Actor::Actor::flag::e::DESTRUCTIBLE))
 	{
 		damage(0.1);
 	}
@@ -248,10 +245,10 @@ void Neb::Actor::Base::damage(float h) {
 	get_raw_base()->health_ -= h;
 	if(get_raw_base()->health_ < 0)
 	{
-		set(Neb::Actor::actor::flag::e::SHOULD_RELEASE);
+		set(Neb::Actor::Actor::flag::e::SHOULD_RELEASE);
 	}
 }
-void Neb::Actor::Base::connect(Neb::window::window_s window) {
+void Neb::Actor::Base::connect(Neb::window::window_w window) {
 
 	window_ = window;
 

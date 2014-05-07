@@ -21,6 +21,7 @@
 #include <Nebula/Math/Serialization.hpp>
 
 #include <Nebula/config.hpp>
+#include <Nebula/Types.hpp>
 #include <Nebula/Graphics/material.hpp>
 //#include <Nebula/shape/desc.hpp>
 #include <Nebula/shape/raw.hpp>
@@ -53,10 +54,10 @@ namespace Neb {
 				Neb::Shape::desc & 					operator<<(Neb::unique_ptr<Neb::Shape::shape> const &);
 				//void			load(tinyxml2::XMLElement*);
 				
-				int							i_;
-				Raw							raw_;
-				std::vector<boost::shared_ptr<Neb::Shape::desc> >	shapes_;
-				std::vector<boost::shared_ptr<Neb::light::desc> >	lights_;
+				int						i_;
+				Raw						raw_;
+				std::vector<Neb::Shape::desc_u>			shapes_;
+				std::vector<Neb::light::desc_u>			lights_;
 		};
 	}
 }

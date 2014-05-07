@@ -30,12 +30,12 @@ namespace Neb {
 			Factory() {}
 			virtual ~Factory() = 0;
 			
-			T*						alloc(long hash_code) {
+			template<class... Args> T*			alloc(long hash_code, Args&&... args) {
 				auto it = map_.find(hash_code);
 				if(it == map_.cend()) {
 					throw 0;
 				} else {
-					return (it->second)();
+					return (it->second)(std::forward<Args>(args)...);
 				}
 			}
 			

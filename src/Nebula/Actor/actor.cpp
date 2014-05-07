@@ -108,15 +108,6 @@ void glutpp::actor::actor::cleanup() {
 		}
 	}
 }
-void glutpp::actor::actor::release() {
-	printf("%s\n",__PRETTY_FUNCTION__);
-
-}
-void glutpp::actor::actor::step(double time) {
-	for(auto it = shapes_.begin(); it != shapes_.end(); ++it) {
-		it->second->step(time);
-	}
-}
 physx::PxMat44		glutpp::actor::actor::getPose() {
 	assert(raw_);
 	return raw_->pose_;

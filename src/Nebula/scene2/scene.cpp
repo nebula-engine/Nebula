@@ -142,7 +142,6 @@ boost::shared_ptr<neb::Actor::Base>	neb::scene::scene::create_actor(boost::share
 	auto me = boost::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
 
 	long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
-	
 	Neb::unique_ptr<neb::Actor::Base> actor((neb::Actor::Base*)Neb::Factory<glutpp::actor::actor>::global()->alloc(hash_code));
 	
 	actor->init(desc);

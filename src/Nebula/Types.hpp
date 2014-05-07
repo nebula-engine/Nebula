@@ -5,7 +5,9 @@
 
 /** @brief root namespace for @gru */
 namespace Neb {
-	
+
+	class simulation_callback;
+
 	class app;
 	class master;
 
@@ -139,7 +141,10 @@ namespace Neb {
 		typedef std::shared_ptr<id>		id_s;
 		typedef std::shared_ptr<raw>		raw_s;
 		typedef std::shared_ptr<raw_base>	raw_base_s;
-		typedef std::shared_ptr<desc>		desc_s;
+
+		typedef Neb::unique_ptr<desc>		desc_u;
+
+
 		typedef std::shared_ptr<shape>		shape_s;
 		typedef std::shared_ptr<raw_factory>	raw_factory_s;
 
@@ -147,9 +152,13 @@ namespace Neb {
 		typedef Neb::weak_ptr<id>		id_w;
 		typedef Neb::weak_ptr<raw>		raw_w;
 		typedef Neb::weak_ptr<desc>		desc_w;
-		typedef Neb::weak_ptr<shape>		shape_w;
 
-		typedef std::shared_ptr<parent>		parent_s;
+
+		typedef Neb::unique_ptr<shape>		shape_u;
+		typedef Neb::weak_ptr<shape>		shape_w;
+		
+
+		typedef Neb::unique_ptr<parent>		parent_u;
 		typedef Neb::weak_ptr<parent>		parent_w;
 
 	}
@@ -175,16 +184,16 @@ namespace Neb {
 			light_max = 20
 		};
 
-		class id;
 		class raw;
 		class desc;
 		class light;
 
 
-		typedef std::shared_ptr<id>	id_s;
-		typedef std::shared_ptr<raw>	raw_s;
-		typedef std::shared_ptr<desc>	desc_s;
-		typedef std::shared_ptr<light>	light_s;
+		typedef Neb::unique_ptr<raw>	raw_u;
+		typedef Neb::unique_ptr<desc>	desc_u;
+
+
+		typedef Neb::unique_ptr<light>	light_u;
 
 	}
 	/** @brief GLSL */

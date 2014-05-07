@@ -51,10 +51,10 @@ namespace Neb {
 				
 				physx::PxMat44					getPose();
 				physx::PxMat44					getPoseGlobal();
-				boost::shared_ptr<Neb::Shape::parent>	getParent();
+				Neb::Shape::parent_w				getParent();
 
 
-				void			init(boost::shared_ptr<Neb::Shape::desc> desc);
+				void			init(Neb::Shape::desc_w desc);
 
 				virtual void		createMesh() = 0;
 				

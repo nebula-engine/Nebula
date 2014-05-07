@@ -8,16 +8,16 @@
 
 //#include <galaxy/map.hpp>
 
-#include <gru/scene/scene.hpp>
+#include <Nebula/scene/scene.hpp>
 
-#include <nebula/actor/Rigid_Dynamic.hpp>
-#include <nebula/actor/Rigid_Static.hpp>
-#include <nebula/actor/Controller.hpp>
+#include <Nebula/actor/Rigid_Dynamic.hpp>
+#include <Nebula/actor/Rigid_Static.hpp>
+#include <Nebula/actor/Controller.hpp>
 
 //#include <tinyxml2.h>
 
 
-namespace neb {
+namespace Neb {
 	class simulation_callback: public physx::PxSimulationEventCallback {
 		public:
 
