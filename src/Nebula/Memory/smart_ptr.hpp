@@ -33,7 +33,7 @@ namespace Neb {
 				assert(ptr);
 				return ptr;
 			}
-		private:
+		//private:
 			boost::weak_ptr<T>	ptr_;
 	};
 	template<class T> class unique_ptr {

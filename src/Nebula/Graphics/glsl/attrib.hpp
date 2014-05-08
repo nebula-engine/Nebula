@@ -3,17 +3,14 @@
 
 #include <memory>
 
-namespace glutpp
-{
-	namespace glsl
-	{
+namespace Neb {
+	namespace glsl {
 		class program;
-		class attrib
-		{
+		class attrib {
 			public:
 				attrib();
 				void		init(char const *, GLuint);
-				int		locate(std::shared_ptr<glutpp::glsl::program> p);
+				int		locate(std::shared_ptr<Neb::glsl::program> p);
 				void		enable();
 				void		disable();
 

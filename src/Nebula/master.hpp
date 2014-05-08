@@ -17,6 +17,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <Nebula/Enums.hpp>
+#include <Nebula/Typed.hpp>
 #include <Nebula/Types.hpp> // Nebula/config.hpp.in
 #include <Nebula/Actor/Types.hpp>
 #include <Nebula/Memory/smart_ptr.hpp>
@@ -70,7 +72,7 @@ namespace Neb {
 			void								setWindowMain(Neb::weak_ptr<Neb::window::window>);
 			
 			template <class U> Neb::weak_ptr<U>				create_window(Neb::weak_ptr<Neb::window::desc> wd) {
-				GLUTPP_DEBUG_0_FUNCTION;
+				//GLUTPP_DEBUG_0_FUNCTION;
 
 				Neb::unique_ptr<U> u(new U(wd));
 				
@@ -113,18 +115,32 @@ namespace Neb {
 			boost::asio::io_service							ios_;
 			/** @} */
 
-			/** @name Factories @{ */
-			//Neb::gui::object::object_factory_s					object_factory_;
-			//Neb::Actor::raw_factory_s						actor_raw_factory_;
-			//Neb::Shape::raw_factory_s						shape_raw_factory_;
-			/** @} */
+			
+
+
+			/** @brief Factories */
+			struct {
+				typedef Neb::unique_ptr< Neb::Factory<Neb::gui::object::object> >	Gui_Object;
+				typedef Neb::unique_ptr< Neb::Factory<Neb::Actor::raw> >		Actor_Raw;
+				typedef Neb::unique_ptr< Neb::Factory<Neb::Actor::Base> >		Actor_Base;
+				typedef Neb::unique_ptr< Neb::Factory<Neb::Shape::raw> >		Shape_Raw;
+				typedef Neb::unique_ptr< Neb::Factory<Neb::Shape::shape> >		Shape_Base;
+
+
+				Gui_Object			gui_object_;
+				Actor_Raw			actor_raw_;
+				Actor_Base			actor_base_;
+				Shape_Raw			shape_raw_;
+				Shape_Base			shape_base_;
+			} factories_;
+
 		private:
 			unsigned int								flag_;
-	
+
 			//GLFWwindow*								currentIdleWindow_;
 			Window_Map_Type								windows_;
 			static Neb::window::window_w						window_main_;
-			
+
 			std::map<int, std::shared_ptr<Neb::glsl::program> >			programs_;
 			std::shared_ptr<Neb::glsl::program>					current_;
 
@@ -132,7 +148,7 @@ namespace Neb {
 	};
 
 	//extern "C" master_s g_master;
-}
+	}
 
 
 #endif

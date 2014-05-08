@@ -7,8 +7,7 @@
 
 namespace Neb {
 	namespace Actor {
-		class Actor: public Neb::Actor::Base
-		{
+		class Actor: public Neb::Actor::Base {
 			public:
 				Actor(Neb::weak_ptr<Neb::Actor::parent>);
 

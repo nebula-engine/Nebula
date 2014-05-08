@@ -4,7 +4,7 @@
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/xml_oarchive.hpp>
 
-namespace gru {
+namespace Neb {
 	namespace Filter {
 		struct Filter {
 			enum Type: unsigned int {

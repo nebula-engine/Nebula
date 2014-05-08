@@ -32,7 +32,7 @@ namespace Neb {
 					};
 				};
 
-				Base(Neb::weak_ptr<Neb::Actor::parent>);
+				Base(Neb::Actor::parent_w);
 				virtual ~Base();
 
 				virtual void				init(Neb::weak_ptr<Neb::Actor::desc>);
@@ -81,7 +81,7 @@ namespace Neb {
 
 
 				// signal
-				void				connect(Neb::window::window_s);
+				void				connect(Neb::window::window_w);
 				
 				
 				int				key_fun(int,int,int,int);

@@ -9,10 +9,10 @@
 #include <Nebula/Graphics/light/light.hpp>
 
 
-glutpp::shape::desc::desc() {
+Neb::Shape::desc::desc() {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-glutpp::shape::desc &		glutpp::shape::desc::operator<<(Neb::unique_ptr<glutpp::shape::shape> const & shape) {
+Neb::Shape::desc &		Neb::Shape::desc::operator<<(Neb::Shape::shape_w const & shape) {
 
 	/** @todo fill this out */
 

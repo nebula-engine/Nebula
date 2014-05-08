@@ -9,6 +9,7 @@
 #include <boost/weak_ptr.hpp>
 
 #include <Nebula/config.hpp>
+#include <Nebula/Types.hpp>
 #include <Nebula/Graphics/Camera/View/Base.hpp>
 #include <Nebula/Graphics/texture.hpp>
 #include <Nebula/Graphics/light/desc.hpp>
@@ -23,8 +24,11 @@ namespace Neb {
 			public:
 				
 				light(boost::shared_ptr<Neb::Shape::shape>);
-				void				i(int);
-				void				init(boost::shared_ptr<Neb::light::desc>);
+
+				void				i(int const &);
+				int const &			i() const;
+
+				void				init(Neb::light::desc_w);
 
 				virtual void			release();
 				virtual void			cleanup();

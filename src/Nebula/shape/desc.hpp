@@ -51,8 +51,7 @@ namespace Neb {
 					ar & boost::serialization::make_nvp("lights",lights_);
 				}
 
-				Neb::Shape::desc & 					operator<<(Neb::unique_ptr<Neb::Shape::shape> const &);
-				//void			load(tinyxml2::XMLElement*);
+				Neb::Shape::desc & 				operator<<(Neb::Shape::shape_w const &);
 				
 				int						i_;
 				Raw						raw_;

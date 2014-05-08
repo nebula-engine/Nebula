@@ -77,8 +77,8 @@ namespace Neb {
 				physx::PxVec3				velocity_;
 				float					density_;
 
-				gru::Filter::Data			simulation_;
-				gru::Filter::Data			scene_query_;
+				Neb::Filter::Data			simulation_;
+				Neb::Filter::Data			scene_query_;
 
 				double					health_;
 

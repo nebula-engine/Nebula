@@ -26,50 +26,51 @@ namespace Neb {
 	 */
 	template<class T> class Factory {
 		private:
+			struct invalid_key: std::exception {
+				char *	what() {
+					return "invalid key";
+				}
+			};
+			struct invalid_args: std::exception {
+				char *	what() {
+					return "invalid args";
+				}
+			};
+
 			struct __base_function {
 	                        virtual ~__base_function() {}
 	                };
 	                template<class... A> struct __function: __base_function {
-	                        __function(function<T*(A...)> f): f_(f) {}
-	                        function<T*(A...)>              f_;
+	                        __function(std::function<T*(A...)> f): f_(f) {}
+				std::function<T*(A...)>              f_;
 	                };
 		public:
-
 			Factory() {}
 			virtual ~Factory() = 0;
 			
-			template<class... Args> void	add(hash_code, std::function<T*(Args...)> f) {
+			template<class... Args> void	add(long int hash_code, std::function<T*(Args...)> f) {
 				std::shared_ptr<__base_function> b(new __function<Args...>(f));
 				
-				map_.emplace(hash_code, b)
+				map_.emplace(hash_code, b);
 			}
 			
 			template<class... Args> T*      alloc(long hash_code, Args&&... args) {
 	                        auto it = map_.find(hash_code);
 	                        if(it == map_.cend()) {
-	                                cout << "no alloc for " << hash_code << endl;
-	                                return 0;
+					throw invalid_key();
 	                        } else {
 	                                std::shared_ptr< __function<Args...> > f = std::dynamic_pointer_cast< __function<Args...> >(it->second);
 	
 	                                if(f == NULL) {
-	                                        cout << "wrong arg list" << endl;
-	                                        return 0;
+						throw invalid_args();
 	                                }
 	
-	                                return (f->f_)(forward<Args>(args)...);
+	                                return (f->f_)(std::forward<Args>(args)...);
 	                        }
 	                }
 
-			static std::shared_ptr< Factory<T> >		global() {
-				if(!global_) {
-					throw 0;
-				}
-				return global_;
-			};
 		private:
-			//static std::shared_ptr< Factory<T> >		global_;
-			std::map<long int, __base_function*>         	map_;
+			std::map< long int, std::shared_ptr<__base_function> >         	map_;
 
 	};
 	/** @brief WrapperTyped */

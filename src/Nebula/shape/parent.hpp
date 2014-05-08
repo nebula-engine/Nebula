@@ -15,6 +15,7 @@
 #include <math/geo/polyhedron.hpp>
 */
 #include <Nebula/config.hpp> // Nebula/config.hpp.in
+#include <Nebula/Actor/Types.hpp>
 #include <Nebula/shared.hpp>
 #include <Nebula/shape/desc.hpp>
 #include <Nebula/Graphics/material.hpp>

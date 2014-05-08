@@ -3,28 +3,29 @@
 #include <Nebula/shape/shape.hpp>
 #include <Nebula/shape/desc.hpp>
 #include <Nebula/Graphics/light/light.hpp>
+#include <Nebula/Graphics/glsl/attrib.hpp>
 #include <Nebula/Map.hpp>
 
-glutpp::shape::shape::shape(boost::shared_ptr<glutpp::shape::parent> parent): parent_(parent) {
-	GRU_SHAPE_SHAPE_FUNC
+Neb::Shape::shape::shape(Neb::Shape::parent_w parent): parent_(parent) {
+	NEBULA_SHAPE_BASE_FUNC;
 	assert(parent);
 }
-glutpp::shape::shape::~shape() {}
-boost::shared_ptr<glutpp::shape::parent>	glutpp::shape::shape::getParent() {
+Neb::Shape::shape::~shape() {}
+Neb::Shape::parent_w		Neb::Shape::shape::getParent() {
 	if(!parent_.expired()) {
 		return parent_.lock();
 	} else {
-		return boost::shared_ptr<glutpp::shape::parent>();
+		return boost::shared_ptr<Neb::Shape::parent>();
 	}
 }
-unsigned int glutpp::shape::shape::f() {
+unsigned int Neb::Shape::shape::f() {
 	return raw_.flag_;
 }
-void glutpp::shape::shape::f(unsigned int flag) {
+void Neb::Shape::shape::f(unsigned int flag) {
 	raw_.flag_ = flag;
 }
-Neb::Math::Mat44	glutpp::shape::shape::getPoseGlobal() {
-	GRU_SHAPE_SHAPE_FUNC;
+Neb::Math::Mat44	Neb::Shape::shape::getPoseGlobal() {
+	NEBULA_SHAPE_BASE_FUNC;
 	
 	Neb::Math::Mat44 m;
 	
@@ -36,13 +37,13 @@ Neb::Math::Mat44	glutpp::shape::shape::getPoseGlobal() {
 	
 	return m;
 }
-Neb::Math::Mat44 glutpp::shape::shape::getPose() {
+Neb::Math::Mat44 Neb::Shape::shape::getPose() {
 	return raw_.pose_;
 }
-void glutpp::shape::shape::init(boost::shared_ptr<glutpp::shape::desc> desc) {
-	GRU_SHAPE_SHAPE_FUNC
+void		Neb::Shape::shape::init(Neb::Shape::desc_w desc) {
+	NEBULA_SHAPE_BASE_FUNC
 
-	auto me = boost::dynamic_pointer_cast<glutpp::shape::shape>(shared_from_this());
+	auto me = boost::dynamic_pointer_cast<Neb::Shape::shape>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
 
 	i_ = desc->i_;
@@ -53,23 +54,22 @@ void glutpp::shape::shape::init(boost::shared_ptr<glutpp::shape::desc> desc) {
 
 	// program
 	if(strlen(raw_.image_) == 0) {
-		program_ = glutpp::program_name::LIGHT;
+		program_ = Neb::program_name::LIGHT;
 	} else {
-		set(glutpp::shape::flag::e::IMAGE);
+		set(Neb::Shape::flag::e::IMAGE);
 
-		program_ = glutpp::program_name::IMAGE;
+		program_ = Neb::program_name::IMAGE;
 	}
 
 
 	// shape
-	boost::shared_ptr<glutpp::shape::desc> sd;
-	Neb::unique_ptr<glutpp::shape::shape> shape;
+	boost::shared_ptr<Neb::Shape::desc> sd;
+	Neb::unique_ptr<Neb::Shape::shape> shape;
 	for(auto it = desc->shapes_.begin(); it != desc->shapes_.end(); ++it) {
-		sd = *it;
 		shape.reset(desc->construct());
-		shape->init(sd);
+		shape->init(*it);
 		
-		//Neb::Map<glutpp::shape::shape>::value_type p;
+		//Neb::Map<Neb::Shape::shape>::value_type p;
 
 		//shapes_.map_.insert(p);
 
@@ -77,17 +77,14 @@ void glutpp::shape::shape::init(boost::shared_ptr<glutpp::shape::desc> desc) {
 	}
 
 	// lights
-	boost::shared_ptr<glutpp::light::desc> ld;
-	Neb::unique_ptr<glutpp::light::light> light;
-	for(auto it = desc->lights_.begin(); it != desc->lights_.end(); ++it)
-	{
-		ld = *it;
+	boost::shared_ptr<Neb::light::desc> ld;
+	Neb::unique_ptr<Neb::light::light> light;
+	for(auto it = desc->lights_.begin(); it != desc->lights_.end(); ++it) {
+		light.reset(new Neb::light::light(me));
 
-		light.reset(new glutpp::light::light(me));
-
-		light->init(/*scene,*/ ld);
+		light->init(*it);
 		
-		//Neb::Map<glutpp::light::light>::value_type p;
+		//Neb::Map<Neb::light::light>::value_type p;
 		
 		//lights_.map_.insert(p);
 	
@@ -102,8 +99,8 @@ void glutpp::shape::shape::init(boost::shared_ptr<glutpp::shape::desc> desc) {
 	printf("diffuse = ");
 	material_front_.raw_.diffuse_.print();
 }
-void glutpp::shape::shape::release() {
-	GRU_SHAPE_SHAPE_FUNC
+void Neb::Shape::shape::release() {
+	NEBULA_SHAPE_BASE_FUNC
 
 	for(auto it = lights_.begin(); it != lights_.end(); ++it)
 	{
@@ -112,8 +109,8 @@ void glutpp::shape::shape::release() {
 
 	lights_.clear();
 }
-void glutpp::shape::shape::cleanup() {
-	GRU_SHAPE_SHAPE_FUNC
+void Neb::Shape::shape::cleanup() {
+	NEBULA_SHAPE_BASE_FUNC
 
 	auto s = shapes_.begin();
 	while(s != shapes_.end()) {
@@ -122,7 +119,7 @@ void glutpp::shape::shape::cleanup() {
 		
 		s->second->cleanup();
 		
-		if(s->second->any(glutpp::shape::flag::e::SHOULD_RELEASE)) {
+		if(s->second->any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
 			s->second->release();
 
 			s = shapes_.erase(s);
@@ -137,7 +134,7 @@ void glutpp::shape::shape::cleanup() {
 
 		l->second->cleanup();
 
-		if(l->second->any(glutpp::shape::flag::e::SHOULD_RELEASE)) {
+		if(l->second->any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
 			l->second->release();
 
 			l = lights_.erase(l);
@@ -147,13 +144,13 @@ void glutpp::shape::shape::cleanup() {
 	}
 
 }
-void glutpp::shape::shape::step(double time) {
+void Neb::Shape::shape::step(double time) {
 
 	for(auto it = shapes_.map_.begin(); it != shapes_.map_.end(); ++it) {
 		it->second->step(time);
 	}
-	/*shapes_.foreach<glutpp::shape::shape>(std::bind(
-				&glutpp::shape::shape::step,
+	/*shapes_.foreach<Neb::Shape::shape>(std::bind(
+				&Neb::Shape::shape::step,
 				std::placeholders::_1,
 				time
 				));
@@ -162,17 +159,17 @@ void glutpp::shape::shape::step(double time) {
 		it->second->step(time);
 	}
 	
-/*	lights_.foreach<glutpp::light::light>(std::bind(
-				&glutpp::light::light::step,
+/*	lights_.foreach<Neb::light::light>(std::bind(
+				&Neb::light::light::step,
 				std::placeholders::_1,
 				time
 				));
 */
 	material_front_.step(time);
 }
-void glutpp::shape::shape::notify_foundation_change_pose() {
+void Neb::Shape::shape::notify_foundation_change_pose() {
 
-	boost::shared_ptr<glutpp::light::light> light;
+	boost::shared_ptr<Neb::light::light> light;
 	
 	for(auto it = shapes_.end(); it != shapes_.end(); ++it)
 	{
@@ -184,32 +181,32 @@ void glutpp::shape::shape::notify_foundation_change_pose() {
 		it->second->notify_foundation_change_pose();
 	}
 }
-void glutpp::shape::shape::load_lights(int& i, Neb::Math::Mat44 space) {
-	GRU_SHAPE_SHAPE_FUNC;
+void Neb::Shape::shape::load_lights(int& i, Neb::Math::Mat44 space) {
+	NEBULA_SHAPE_BASE_FUNC;
 
 	space = space * raw_.pose_;
 
 	for(auto it = lights_.begin(); it != lights_.end(); ++it)
 	{
-		if(i == glutpp::light::light_max) break;
+		if(i == Neb::light::light_max) break;
 
 		it->second->load(i++, space);
 	}
 }
-void glutpp::shape::shape::draw(glutpp::window::window_s window, Neb::Math::Mat44 space) {
+void Neb::Shape::shape::draw(Neb::window::window_s window, Neb::Math::Mat44 space) {
 	space = space * raw_.pose_;
 
 	draw_elements(window, space);
 }
-void		glutpp::shape::shape::model_load(Neb::Math::Mat44 space) {
-	auto p = glutpp::master::Global()->current_program();
+void		Neb::Shape::shape::model_load(Neb::Math::Mat44 space) {
+	auto p = Neb::master::global()->current_program();
 	
-	space.scale(raw_.s_);
+	space.scale(physx::PxVec4(raw_.s_, 0));
 	
 	p->get_uniform_scalar("model")->load(space);
 }
-void		glutpp::shape::shape::init_buffer(glutpp::window::window_s window, std::shared_ptr<glutpp::glsl::program> p) {
-	GRU_SHAPE_SHAPE_FUNC;
+void		Neb::Shape::shape::init_buffer(Neb::window::window_s window, std::shared_ptr<Neb::glsl::program> p) {
+	NEBULA_SHAPE_BASE_FUNC;
 
 	glEnable(GL_TEXTURE_2D);
 
@@ -221,13 +218,13 @@ void		glutpp::shape::shape::init_buffer(glutpp::window::window_s window, std::sh
 
 	//checkerror("unknown");
 
-	std::shared_ptr<glutpp::shape::buffer> bufs(new glutpp::shape::buffer);
+	std::shared_ptr<Neb::Shape::buffer> bufs(new Neb::Shape::buffer);
 	context_[window.get()] = bufs;
 
 	// image
-	if(all(glutpp::shape::flag::e::IMAGE))
+	if(all(Neb::Shape::flag::e::IMAGE))
 	{
-		bufs->texture_.image_.reset(new glutpp::texture);
+		bufs->texture_.image_.reset(new Neb::texture);
 
 		//bufs->texture_.image_->load_png(raw_.image_);
 	}
@@ -251,43 +248,43 @@ void		glutpp::shape::shape::init_buffer(glutpp::window::window_s window, std::sh
 
 	//int baseOffset = 0;
 	glBindBuffer(GL_ARRAY_BUFFER, bufs->vbo_);
-	//glBindVertexBuffer(0, vbo_, baseOffset, sizeof(glutpp::vertex));
+	//glBindVertexBuffer(0, vbo_, baseOffset, sizeof(Neb::vertex));
 
-	glutpp::vertex v;
+	Neb::vertex v;
 	long off_position = (long)&v.position - (long)&v;
 	long off_normal = (long)&v.normal - (long)&v;
 	long off_texcoor = (long)&v.texcoor - (long)&v;
 
 	glVertexAttribPointer(
-			p->get_attrib(glutpp::attrib_name::e::POSITION)->o_,
+			p->get_attrib(Neb::attrib_name::e::POSITION)->o_,
 			4,
 			GL_FLOAT,
 			GL_FALSE,
-			sizeof(glutpp::vertex),
+			sizeof(Neb::vertex),
 			(void*)off_position);
 	//checkerror("glVertexAttribPointer");
 
 	glVertexAttribPointer(
-			p->get_attrib(glutpp::attrib_name::e::NORMAL)->o_,
+			p->get_attrib(Neb::attrib_name::e::NORMAL)->o_,
 			3,
 			GL_FLOAT,
 			GL_FALSE,
-			sizeof(glutpp::vertex),
+			sizeof(Neb::vertex),
 			(void*)off_normal);
 	//checkerror("glVertexAttribPointer normal");
 
-	if(all(glutpp::shape::flag::e::IMAGE)) {
+	if(all(Neb::Shape::flag::e::IMAGE)) {
 		glVertexAttribPointer(
-				p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->o_,
+				p->get_attrib(Neb::attrib_name::e::TEXCOOR)->o_,
 				2,
 				GL_FLOAT,
 				GL_FALSE,
-				sizeof(glutpp::vertex),
+				sizeof(Neb::vertex),
 				(void*)off_texcoor);
 		//checkerror("glVertexAttribPointer texcoor");
 	}
 
-	size = mesh_.fh_.len_vertices_ * sizeof(glutpp::vertex);
+	size = mesh_.fh_.len_vertices_ * sizeof(Neb::vertex);
 	glBufferData(
 			GL_ARRAY_BUFFER,
 			size,
@@ -300,10 +297,10 @@ void		glutpp::shape::shape::init_buffer(glutpp::window::window_s window, std::sh
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 }
-void		glutpp::shape::shape::draw_elements(glutpp::window::window_s window, Neb::Math::Mat44 space) {
-	GRU_SHAPE_SHAPE_FUNC;
+void		Neb::Shape::shape::draw_elements(Neb::window::window_s window, Neb::Math::Mat44 space) {
+	NEBULA_SHAPE_BASE_FUNC;
 
-	auto p = glutpp::master::Global()->use_program(program_);
+	auto p = Neb::master::global()->use_program(program_);
 
 	// initialize buffers if not already
 //	if(!context_[window.get()])
@@ -315,12 +312,12 @@ void		glutpp::shape::shape::draw_elements(glutpp::window::window_s window, Neb::
 	//checkerror("unknown");
 
 	// attribs
-	p->get_attrib(glutpp::attrib_name::e::POSITION)->enable();
-	p->get_attrib(glutpp::attrib_name::e::NORMAL)->enable();
+	p->get_attrib(Neb::attrib_name::e::POSITION)->enable();
+	p->get_attrib(Neb::attrib_name::e::NORMAL)->enable();
 
-	if(all(glutpp::shape::flag::e::IMAGE))
+	if(all(Neb::Shape::flag::e::IMAGE))
 	{
-		p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->enable();
+		p->get_attrib(Neb::attrib_name::e::TEXCOOR)->enable();
 	}
 
 	// material
@@ -328,7 +325,7 @@ void		glutpp::shape::shape::draw_elements(glutpp::window::window_s window, Neb::
 	material_front_.load();
 
 	// texture
-	if(all(glutpp::shape::flag::e::IMAGE))
+	if(all(Neb::Shape::flag::e::IMAGE))
 	{
 		glActiveTexture(GL_TEXTURE0);
 		//checkerror("glActiveTexture");
@@ -369,28 +366,28 @@ void		glutpp::shape::shape::draw_elements(glutpp::window::window_s window, Neb::
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	//checkerror("glBindBuffer");
 
-	p->get_attrib(glutpp::attrib_name::e::POSITION)->disable();
-	p->get_attrib(glutpp::attrib_name::e::NORMAL)->disable();
+	p->get_attrib(Neb::attrib_name::e::POSITION)->disable();
+	p->get_attrib(Neb::attrib_name::e::NORMAL)->disable();
 
-	if(all(glutpp::shape::flag::e::IMAGE))
+	if(all(Neb::Shape::flag::e::IMAGE))
 	{
-		p->get_attrib(glutpp::attrib_name::e::TEXCOOR)->disable();
+		p->get_attrib(Neb::attrib_name::e::TEXCOOR)->disable();
 	}
 }
-void glutpp::shape::Box::Box::createMesh() {
+void Neb::Shape::Box::Box::createMesh() {
 	mesh_.load("cube.obj");
 }
-void glutpp::shape::Sphere::Sphere::createMesh() {
+void Neb::Shape::Sphere::Sphere::createMesh() {
 	mesh_.load("sphere.obj");
 }
-void glutpp::shape::Empty::Empty::createMesh() {
+void Neb::Shape::Empty::Empty::createMesh() {
 	mesh_.load("sphere.obj");
 }
 
-void glutpp::shape::shape::i(int ni) {
+void Neb::Shape::shape::i(int ni) {
 	i_ = ni;
 }
-int glutpp::shape::shape::i() {
+int Neb::Shape::shape::i() {
 	return i_;
 }
 

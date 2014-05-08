@@ -69,7 +69,7 @@ namespace Neb {
 				void			draw(Neb::window::window_s, physx::PxMat44 space);
 	
 				void			model_load(physx::PxMat44 space);
-				void			init_buffer(Neb::window::window_s, std::shared_ptr<glutpp::glsl::program> p);
+				void			init_buffer(Neb::window::window_s, std::shared_ptr<Neb::glsl::program> p);
 
 				virtual void		draw_elements(Neb::window::window_s, physx::PxMat44 space);
 				/** @} */

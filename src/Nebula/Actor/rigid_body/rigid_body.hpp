@@ -1,23 +1,21 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_BODY_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_BODY_HPP__
 
+#include <Nebula/Actor/Types.hpp>
+#include <Nebula/Actor/Rigid_Actor.hpp>
 
-#include <nebula/actor/Rigid_Actor.hpp>
-
-namespace neb {
+namespace Neb {
 	namespace Actor {
 		namespace RigidBody {
-			class RigidBody:
-				public neb::Actor::RigidActor
-			{
+			class RigidBody: public Neb::Actor::RigidActor {
 				public:
-					RigidBody(boost::shared_ptr<glutpp::actor::parent>);
+					RigidBody(Neb::Actor::parent_w);
 					
-					virtual void			init(boost::shared_ptr<glutpp::actor::desc>);
+					virtual void			init(Neb::Actor::desc_w);
 					
 					
 					
-					virtual boost::shared_ptr<glutpp::actor::desc>	get_projectile();
+					virtual Neb::Actor::desc_w	get_projectile();
 					
 				private:
 					virtual void			step_local(double);
@@ -32,9 +30,9 @@ namespace neb {
 					
 					// control
 					virtual void			create_control(
-							neb::control::rigid_body::raw_s);
+							Neb::Actor::control::rigid_body::raw_s);
 				public:
-					neb::control::rigid_body::control_s	control_;
+					Neb::Actor::control::rigid_body::control_s	control_;
 				private:
 					physx::PxVec3			force_;
 					physx::PxVec3			torque_;

@@ -14,7 +14,7 @@ namespace Neb {
 				virtual void		release();
 
 				virtual void		step(float);
-				virtual void		init(Neb::Actor::desc_s);
+				virtual void		init(Neb::Actor::desc_w);
 				virtual void		add_force();
 
 

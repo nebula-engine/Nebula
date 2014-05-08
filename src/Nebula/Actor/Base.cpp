@@ -2,16 +2,22 @@
 
 #include <Nebula/debug.hpp>
 #include <Nebula/Typed.hpp>
-#include <Nebula/config.hpp>
+#include <Nebula/Types.hpp>
+#include <Nebula/config.hpp> // Nebula/config.hpp.in
 #include <Nebula/timer/Actor/Base.hpp>
 #include <Nebula/app.hpp>
 #include <Nebula/scene/scene.hpp>
 #include <Nebula/shape/Physical.hpp>
+
 #include <Nebula/Actor/Base.hpp>
+#include <Nebula/Actor/Rigid_Actor.hpp>
+#include <Nebula/Actor/rigid_body/rigid_body.hpp>
 #include <Nebula/Actor/empty.hpp>
 #include <Nebula/Actor/Types.hpp>
 #include <Nebula/Actor/Util/desc.hpp>
 
+#include <Nebula/Filter.hpp>
+#include <Nebula/Graphics/window/window.hpp>
 
 Neb::Actor::Base::Base(Neb::Actor::parent_w parent): parent_(parent) {
 	NEBULA_ACTOR_BASE_FUNC;
@@ -97,8 +103,9 @@ void Neb::Actor::Base::create_children(Neb::Actor::desc_w desc) {
 Neb::Actor::Base_w		Neb::Actor::Base::create_actor_local(Neb::Actor::desc_w desc) {
 
 	long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
-	Neb::unique_ptr<Neb::Actor::Base> actor(Neb::Factory<Neb::Actor::Base>::global()->alloc(hash_code));
-
+	
+	Neb::Actor::Base_u actor(Neb::master::global()->factories_.actor_base_->alloc(hash_code));
+	
 	actors_.push_back(actor);
 
 	return actor;
@@ -125,7 +132,7 @@ Neb::Actor::Base_w		Neb::Actor::Base::create_actor_remote(Neb::Actor::addr_w add
 		// actor is directly under this
 		
 		long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
-		Neb::unique_ptr<Neb::Actor::Base> actor(Neb::Factory<Neb::Actor::Base>::global()->alloc(hash_code));
+		Neb::unique_ptr<Neb::Actor::Base> actor(Neb::master::global()->factories_.actor_base_->alloc(hash_code));
 
 		//
 		actors_.map_.emplace(desc->i_, std::move(actor));
@@ -219,8 +226,8 @@ void Neb::Actor::Base::create_shapes(Neb::Actor::desc_w desc) {
 		assert(sd);
 		
 		long int hash_code;// = desc->raw_->hash_code_;
-		
-		shape.reset(Neb::Factory<Neb::Shape::shape>::global()->alloc(hash_code, me));
+
+		shape.reset(Neb::master::global()->factories_.shape_base_->alloc(hash_code, me));
 		
 		shape->init(sd);
 		
@@ -230,31 +237,37 @@ void Neb::Actor::Base::create_shapes(Neb::Actor::desc_w desc) {
 void Neb::Actor::Base::hit() {
 
 	physx::PxU32 w2 = raw_->simulation_.word2;
-
-	if(w2 & Neb::filter::type::PROJECTILE)
-	{
-		set(Neb::Actor::Actor::flag::e::SHOULD_RELEASE);
+	
+	if(w2 & Neb::Filter::Filter::PROJECTILE) {
+		set(Neb::Actor::Base::flag::e::SHOULD_RELEASE);
 	}
-
-	if(any(Neb::Actor::Actor::flag::e::DESTRUCTIBLE))
-	{
+	
+	if(any(Neb::Actor::Base::flag::e::DESTRUCTIBLE)) {
 		damage(0.1);
 	}
 }
 void Neb::Actor::Base::damage(float h) {
-	get_raw_base()->health_ -= h;
-	if(get_raw_base()->health_ < 0)
-	{
-		set(Neb::Actor::Actor::flag::e::SHOULD_RELEASE);
+	raw_->health_ -= h;
+	if(raw_->health_ < 0) {
+		set(Neb::Actor::Base::flag::e::SHOULD_RELEASE);
 	}
 }
-void Neb::Actor::Base::connect(Neb::window::window_w window) {
+void		Neb::Actor::Base::connect(Neb::window::window_w window) {
 
 	window_ = window;
 
-	auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
+	//auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
+	auto me = isBase();
 
-	conn_.key_fun_ = window->sig_.key_fun_.connect(std::bind(
+	boost::function<int(int,int,int,int)> f(boost::bind(
+				&Neb::Actor::Base::key_fun,
+				me.ptr_,
+				_1,
+				_2,
+				_3,
+				_4));
+
+	conn_.key_fun_ = window->sig_.key_fun_.connect(boost::bind(
 				&Neb::Actor::Base::key_fun,
 				me,
 				std::placeholders::_1,
@@ -286,15 +299,16 @@ int Neb::Actor::Base::key_fun(int key, int scancode, int action, int mods) {
 
 	return 0;
 }
-Neb::Actor::Base_s			Neb::Actor::Base::isBase() {
-	return std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
+Neb::Actor::Base_w			Neb::Actor::Base::isBase() {
+	return boost::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
 }
-Neb::Actor::RigidActor_s		Neb::Actor::Base::isRigidActor() {
-	return std::dynamic_pointer_cast<Neb::Actor::RigidActor>(shared_from_this());
+Neb::Actor::RigidActor_w		Neb::Actor::Base::isRigidActor() {
+	return boost::dynamic_pointer_cast<Neb::Actor::RigidActor>(shared_from_this());
 }
-Neb::Actor::RigidBody::RigidBody_s	Neb::Actor::Base::isRigidBody() {
-	return std::dynamic_pointer_cast<Neb::Actor::RigidBody::RigidBody>(shared_from_this());
+Neb::Actor::RigidBody::RigidBody_w	Neb::Actor::Base::isRigidBody() {
+	return boost::dynamic_pointer_cast<Neb::Actor::RigidBody::RigidBody>(shared_from_this());
 }
+
 
 
 

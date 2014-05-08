@@ -27,7 +27,7 @@
 
 
 
-namespace glutpp {
+namespace Neb {
 	namespace window {
 		class window: public std::enable_shared_from_this<window>, public gal::flag<unsigned int> {
 			public:
