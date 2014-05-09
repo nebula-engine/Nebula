@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>gru: src/gru/Graphics/glsl/attrib.hpp Source File</title>
+<title>Nebula: src/Nebula/Graphics/glsl/attrib.hpp Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,7 +27,7 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gru
+   <div id="projectname">Nebula
    
    </div>
    
@@ -77,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">src/gru/Graphics/glsl/attrib.hpp</div>  </div>
+<div class="title">src/Nebula/Graphics/glsl/attrib.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef __GLUTPP_ATTRIBUTE_H__</span>
@@ -85,28 +85,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00004"></a>00004 <span class="preprocessor">#include &lt;memory&gt;</span>
 <a name="l00005"></a>00005 
-<a name="l00006"></a>00006 <span class="keyword">namespace </span>glutpp
-<a name="l00007"></a>00007 {
-<a name="l00008"></a><a class="code" href="namespaceglutpp_1_1glsl.html">00008</a>         <span class="keyword">namespace </span>glsl
-<a name="l00009"></a>00009         {
-<a name="l00010"></a>00010                 <span class="keyword">class </span><a class="code" href="classglutpp_1_1glsl_1_1program.html">program</a>;
-<a name="l00011"></a><a class="code" href="classglutpp_1_1glsl_1_1attrib.html">00011</a>                 <span class="keyword">class </span><a class="code" href="classglutpp_1_1glsl_1_1attrib.html">attrib</a>
-<a name="l00012"></a>00012                 {
-<a name="l00013"></a>00013                         <span class="keyword">public</span>:
-<a name="l00014"></a>00014                                 <a class="code" href="classglutpp_1_1glsl_1_1attrib.html">attrib</a>();
-<a name="l00015"></a>00015                                 <span class="keywordtype">void</span>            init(<span class="keywordtype">char</span> <span class="keyword">const</span> *, GLuint);
-<a name="l00016"></a>00016                                 <span class="keywordtype">int</span>             locate(std::shared_ptr&lt;glutpp::glsl::program&gt; p);
-<a name="l00017"></a>00017                                 <span class="keywordtype">void</span>            enable();
-<a name="l00018"></a>00018                                 <span class="keywordtype">void</span>            disable();
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020                                 <span class="keywordtype">char</span> <span class="keyword">const</span> *    name_;
-<a name="l00021"></a>00021                                 GLuint          o_;
-<a name="l00022"></a>00022                                 GLuint          o_bind_;
-<a name="l00023"></a>00023                 };
-<a name="l00024"></a>00024         }
-<a name="l00025"></a>00025 }
-<a name="l00026"></a>00026 
-<a name="l00027"></a>00027 <span class="preprocessor">#endif</span>
+<a name="l00006"></a>00006 <span class="keyword">namespace </span>Neb {
+<a name="l00007"></a><a class="code" href="namespaceNeb_1_1glsl.html">00007</a>         <span class="keyword">namespace </span>glsl {
+<a name="l00008"></a>00008                 <span class="keyword">class </span><a class="code" href="classNeb_1_1glsl_1_1program.html">program</a>;
+<a name="l00009"></a><a class="code" href="classNeb_1_1glsl_1_1attrib.html">00009</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1glsl_1_1attrib.html">attrib</a> {
+<a name="l00010"></a>00010                         <span class="keyword">public</span>:
+<a name="l00011"></a>00011                                 <a class="code" href="classNeb_1_1glsl_1_1attrib.html">attrib</a>();
+<a name="l00012"></a>00012                                 <span class="keywordtype">void</span>            init(<span class="keywordtype">char</span> <span class="keyword">const</span> *, GLuint);
+<a name="l00013"></a>00013                                 <span class="keywordtype">int</span>             locate(std::shared_ptr&lt;Neb::glsl::program&gt; p);
+<a name="l00014"></a>00014                                 <span class="keywordtype">void</span>            enable();
+<a name="l00015"></a>00015                                 <span class="keywordtype">void</span>            disable();
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017                                 <span class="keywordtype">char</span> <span class="keyword">const</span> *    name_;
+<a name="l00018"></a>00018                                 GLuint          o_;
+<a name="l00019"></a>00019                                 GLuint          o_bind_;
+<a name="l00020"></a>00020                 };
+<a name="l00021"></a>00021         }
+<a name="l00022"></a>00022 }
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -125,7 +122,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 6 2014 18:06:49 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 08:31:56 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

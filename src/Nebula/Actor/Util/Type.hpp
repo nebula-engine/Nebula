@@ -13,7 +13,7 @@
 namespace Neb {
 	namespace Actor {
 
-		DEFINE_TYPE(Type,int,
+		DEFINE_TYPE(Type,
 				((NONE)(0))
 				((ACTOR)(1))
 				((RIGID_ACTOR)(2))

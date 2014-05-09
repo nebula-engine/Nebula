@@ -14,7 +14,6 @@
 
 #include <Nebula/Archive.hpp>
 
-#include <Nebula/Types/Material.hpp>
 
 #include <Nebula/Math/Typedef.hpp>
 
@@ -46,7 +45,7 @@ namespace Neb {
 				//void			sphere(tinyxml2::XMLElement*);
 				
 				template<class Archive>	void	serialize(Archive & ar, unsigned int const & version) {
-					ar & boost::serialization::make_nvp("type",type_);
+					ar & boost::serialization::make_nvp("hash_code",hash_code_);
 					ar & boost::serialization::make_nvp("flag",flag_);
 					ar & boost::serialization::make_nvp("pose",pose_);
 					ar & boost::serialization::make_nvp("s",s_);
@@ -58,7 +57,7 @@ namespace Neb {
 			public:
 				/** @brief Type.
 				 * used to tell shape factory what to create */
-				int				type_;
+				int				hash_code_;
 				unsigned int			flag_;
 				
 				/** @brief Pose. */

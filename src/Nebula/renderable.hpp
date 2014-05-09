@@ -10,12 +10,11 @@
 #include <Nebula/Graphics/window/window.hpp>
 #include <Nebula/scene/scene.hpp>
 
-namespace glutpp
-{
-	class renderable:
-		public gal::flag<unsigned int>,
-		public std::enable_shared_from_this<renderable>
-	{
+namespace Neb {
+	/** @brief Renderable.
+	 * @todo eventually replace this with Context and allow multiple Contexts per window and allow scene and layout to have different and overalpping Contexts.
+	 */
+	class renderable: public gal::flag, public std::enable_shared_from_this<renderable> {
 		public:
 			renderable(Neb::window::window_s window);
 			renderable&			operator=(renderable const & r);

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>gru: src/gru/Graphics/light/desc.hpp Source File</title>
+<title>Nebula: src/Nebula/Graphics/light/desc.hpp Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,7 +27,7 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gru
+   <div id="projectname">Nebula
    
    </div>
    
@@ -77,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">src/gru/Graphics/light/desc.hpp</div>  </div>
+<div class="title">src/Nebula/Graphics/light/desc.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef __NEBULA_DESC_LIGHT_H__</span>
@@ -93,45 +93,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00011"></a>00011 <span class="comment">*/</span>
 <a name="l00012"></a>00012 <span class="comment">//#include &lt;galaxy/network/serial.hpp&gt;</span>
 <a name="l00013"></a>00013 
-<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;gru/config.hpp&gt;</span>
-<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;gru/Graphics/light/raw.hpp&gt;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;Nebula/config.hpp&gt;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;Nebula/Graphics/light/raw.hpp&gt;</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="keyword">namespace </span>glutpp {
+<a name="l00017"></a>00017 <span class="keyword">namespace </span>Neb {
 <a name="l00018"></a>00018         <span class="keyword">namespace </span>light {
-<a name="l00019"></a>00019                 <span class="comment">/*</span>
-<a name="l00020"></a>00020 <span class="comment">                class id {</span>
-<a name="l00021"></a>00021 <span class="comment">                        public:</span>
-<a name="l00022"></a>00022 <span class="comment">                                void            load(glutpp::light::light_s);</span>
-<a name="l00023"></a>00023 <span class="comment">                                </span>
-<a name="l00024"></a>00024 <span class="comment">                                template&lt;class Archive&gt; void    serialize(Archive&amp; ar) {</span>
-<a name="l00025"></a>00025 <span class="comment"></span>
-<a name="l00026"></a>00026 <span class="comment">                                }</span>
-<a name="l00027"></a>00027 <span class="comment">                                </span>
-<a name="l00028"></a>00028 <span class="comment">                                int i_;</span>
-<a name="l00029"></a>00029 <span class="comment">                };</span>
-<a name="l00030"></a>00030 <span class="comment">                */</span>
-<a name="l00031"></a><a class="code" href="classglutpp_1_1light_1_1desc.html">00031</a>                 <span class="keyword">class </span><a class="code" href="classglutpp_1_1light_1_1desc.html">desc</a> {
-<a name="l00032"></a>00032                         <span class="keyword">public</span>:
-<a name="l00033"></a>00033                                 <a class="code" href="classglutpp_1_1light_1_1desc.html">desc</a>();
-<a name="l00034"></a>00034                                 <span class="keywordtype">void</span>            load(glutpp::light::light_s);
-<a name="l00035"></a>00035                                 
-<a name="l00036"></a>00036                                 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>    serialize(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
-<a name="l00037"></a>00037                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;i&quot;</span>,i_);
-<a name="l00038"></a>00038                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;raw&quot;</span>,raw_);
-<a name="l00039"></a>00039                                 }
-<a name="l00040"></a>00040                                 
-<a name="l00041"></a>00041                                 <span class="comment">//ID_S          get_id() { return std::get&lt;0&gt;(SER::tup_); }</span>
-<a name="l00042"></a>00042                                 <span class="comment">//RAW_S         get_raw() { return std::get&lt;1&gt;(SER::tup_); }</span>
-<a name="l00043"></a>00043                                 
-<a name="l00044"></a>00044                                 <span class="keywordtype">int</span>             i_;
-<a name="l00045"></a>00045                                 <a class="code" href="classglutpp_1_1light_1_1raw.html">raw</a>             raw_;
-<a name="l00046"></a>00046                                 
-<a name="l00047"></a>00047                 };
-<a name="l00048"></a>00048         }
-<a name="l00049"></a>00049 }
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 <span class="preprocessor">#endif</span>
-<a name="l00052"></a>00052 <span class="preprocessor"></span>
+<a name="l00019"></a><a class="code" href="classNeb_1_1light_1_1desc.html">00019</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1light_1_1desc.html">desc</a> {
+<a name="l00020"></a>00020                         <span class="keyword">public</span>:
+<a name="l00021"></a>00021                                 <a class="code" href="classNeb_1_1light_1_1desc.html">desc</a>();
+<a name="l00022"></a>00022                                 <span class="keywordtype">void</span>                                    load(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::light::light&gt;</a>);
+<a name="l00023"></a>00023                                 
+<a name="l00024"></a>00024                                 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>            serialize(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
+<a name="l00025"></a>00025                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;i&quot;</span>,i_);
+<a name="l00026"></a>00026                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;raw&quot;</span>,raw_);
+<a name="l00027"></a>00027                                 }
+<a name="l00028"></a>00028                                 
+<a name="l00029"></a>00029                                 
+<a name="l00030"></a>00030                                 <span class="keywordtype">int</span>                                     i_;
+<a name="l00031"></a>00031                                 <a class="code" href="classNeb_1_1light_1_1raw.html">raw</a>                                     raw_;
+<a name="l00032"></a>00032                                 
+<a name="l00033"></a>00033                 };
+<a name="l00034"></a>00034         }
+<a name="l00035"></a>00035 }
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 <span class="preprocessor">#endif</span>
+<a name="l00038"></a>00038 <span class="preprocessor"></span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -150,7 +136,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 6 2014 18:06:49 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 08:31:56 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

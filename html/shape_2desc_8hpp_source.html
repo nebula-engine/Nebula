@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>gru: src/gru/shape/desc.hpp Source File</title>
+<title>Nebula: src/Nebula/shape/desc.hpp Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,7 +27,7 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gru
+   <div id="projectname">Nebula
    
    </div>
    
@@ -77,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">src/gru/shape/desc.hpp</div>  </div>
+<div class="title">src/Nebula/shape/desc.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef __GLUTPP_SHAPE_DESC_H__</span>
@@ -100,45 +100,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00018"></a>00018 
 <a name="l00019"></a>00019 
 <a name="l00020"></a>00020 
-<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;gru/Math/Serialization.hpp&gt;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;Nebula/Math/Serialization.hpp&gt;</span>
 <a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;gru/config.hpp&gt;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;gru/Graphics/material.hpp&gt;</span>
-<a name="l00025"></a>00025 <span class="comment">//#include &lt;gru/shape/desc.hpp&gt;</span>
-<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;gru/shape/raw.hpp&gt;</span>
-<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;gru/Graphics/light/desc.hpp&gt;</span>
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029 <span class="keyword">namespace </span>glutpp {
-<a name="l00030"></a>00030         <span class="keyword">namespace </span>shape {
-<a name="l00031"></a><a class="code" href="classglutpp_1_1shape_1_1id.html">00031</a>                 <span class="keyword">class </span><a class="code" href="classglutpp_1_1shape_1_1id.html">id</a> {
-<a name="l00032"></a>00032                         <span class="keyword">public</span>:
-<a name="l00033"></a>00033                                 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>    serialize(Archive&amp; ar) {
-<a name="l00034"></a>00034                                         ar &amp; i_;
-<a name="l00035"></a>00035                                 }
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037                                 <span class="keywordtype">int</span> i_;
-<a name="l00038"></a>00038                 };
-<a name="l00039"></a>00039 
-<a name="l00040"></a><a class="code" href="classglutpp_1_1shape_1_1desc.html">00040</a>                 <span class="keyword">class </span><a class="code" href="classglutpp_1_1shape_1_1desc.html">desc</a> {
-<a name="l00041"></a>00041                         <span class="keyword">public</span>:
-<a name="l00042"></a>00042                                 <a class="code" href="classglutpp_1_1shape_1_1desc.html">desc</a>();
-<a name="l00043"></a>00043                                 
-<a name="l00044"></a>00044                                 <a class="code" href="classglutpp_1_1shape_1_1shape.html">glutpp::shape::shape</a>*           construct();
-<a name="l00045"></a>00045                                 
-<a name="l00046"></a>00046                                 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>    serialize(Archive&amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
-<a name="l00047"></a>00047                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;i&quot;</span>,i_);
-<a name="l00048"></a>00048                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;raw&quot;</span>,raw_);
-<a name="l00049"></a>00049                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;shapes&quot;</span>,shapes_);
-<a name="l00050"></a>00050                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;lights&quot;</span>,lights_);
-<a name="l00051"></a>00051                                 }
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053                                 <a class="code" href="classglutpp_1_1shape_1_1desc.html">glutpp::shape::desc</a> &amp;           operator&lt;&lt;(Neb::unique_ptr&lt;glutpp::shape::shape&gt; <span class="keyword">const</span> &amp;);
-<a name="l00054"></a>00054                                 <span class="comment">//void                  load(tinyxml2::XMLElement*);</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;Nebula/config.hpp&gt;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;Nebula/Types.hpp&gt;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;Nebula/Graphics/material.hpp&gt;</span>
+<a name="l00026"></a>00026 <span class="comment">//#include &lt;Nebula/shape/desc.hpp&gt;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;Nebula/shape/raw.hpp&gt;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#include &lt;Nebula/Graphics/light/desc.hpp&gt;</span>
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="keyword">namespace </span>Neb {
+<a name="l00031"></a><a class="code" href="namespaceNeb_1_1Shape.html">00031</a>         <span class="keyword">namespace </span>Shape {
+<a name="l00032"></a><a class="code" href="classNeb_1_1Shape_1_1id.html">00032</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1id.html">id</a> {
+<a name="l00033"></a>00033                         <span class="keyword">public</span>:
+<a name="l00034"></a>00034                                 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>    serialize(Archive&amp; ar) {
+<a name="l00035"></a>00035                                         ar &amp; i_;
+<a name="l00036"></a>00036                                 }
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038                                 <span class="keywordtype">int</span> i_;
+<a name="l00039"></a>00039                 };
+<a name="l00040"></a>00040 
+<a name="l00041"></a><a class="code" href="classNeb_1_1Shape_1_1desc.html">00041</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1desc.html">desc</a> {
+<a name="l00042"></a>00042                         <span class="keyword">public</span>:
+<a name="l00043"></a>00043                                 <a class="code" href="classNeb_1_1Shape_1_1desc.html">desc</a>();
+<a name="l00044"></a>00044                                 
+<a name="l00045"></a>00045                                 <a class="code" href="classNeb_1_1Shape_1_1shape.html">Neb::Shape::shape</a>*              construct();
+<a name="l00046"></a>00046                                 
+<a name="l00047"></a>00047                                 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>    serialize(Archive&amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
+<a name="l00048"></a>00048                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;i&quot;</span>,i_);
+<a name="l00049"></a>00049                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;raw&quot;</span>,raw_);
+<a name="l00050"></a>00050                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;shapes&quot;</span>,shapes_);
+<a name="l00051"></a>00051                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;lights&quot;</span>,lights_);
+<a name="l00052"></a>00052                                 }
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054                                 <a class="code" href="classNeb_1_1Shape_1_1desc.html">Neb::Shape::desc</a> &amp;                              <a class="code" href="classNeb_1_1Shape_1_1desc.html#a8356295ceee1f17dd24afbdb455dd206">operator&lt;&lt;</a>(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::Shape::shape_w</a> <span class="keyword">const</span> &amp;);
 <a name="l00055"></a>00055                                 
-<a name="l00056"></a>00056                                 <span class="keywordtype">int</span>                                                     i_;
-<a name="l00057"></a>00057                                 <a class="code" href="classglutpp_1_1shape_1_1Raw.html">Raw</a>                                                     raw_;
-<a name="l00058"></a>00058                                 std::vector&lt;boost::shared_ptr&lt;glutpp::shape::desc&gt; &gt;    shapes_;
-<a name="l00059"></a>00059                                 std::vector&lt;boost::shared_ptr&lt;glutpp::light::desc&gt; &gt;    lights_;
+<a name="l00056"></a>00056                                 <span class="keywordtype">int</span>                                             i_;
+<a name="l00057"></a>00057                                 <a class="code" href="classNeb_1_1Shape_1_1Raw.html">Raw</a>                                             raw_;
+<a name="l00058"></a>00058                                 std::vector&lt;Neb::Shape::desc_u&gt;                 shapes_;
+<a name="l00059"></a>00059                                 std::vector&lt;Neb::light::desc_u&gt;                 lights_;
 <a name="l00060"></a>00060                 };
 <a name="l00061"></a>00061         }
 <a name="l00062"></a>00062 }
@@ -165,7 +165,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 6 2014 18:06:49 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 08:31:56 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

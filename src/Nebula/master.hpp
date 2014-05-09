@@ -26,7 +26,7 @@
 #include <Nebula/Flag.hpp>
 
 namespace Neb {
-	class master: public gal::flag<unsigned int> {
+	class master: public gal::flag {
 		public:
 			typedef std::map< GLFWwindow*, Neb::unique_ptr<Neb::window::window> >			Window_Map_Type;
 			
@@ -104,7 +104,7 @@ namespace Neb {
 
 			//Neb::Actor::raw_factory_s						get_raw_factory();
 
-			unsigned int								f();
+			gal::flag::flag_type								f();
 			void									f(unsigned int);
 		public:
 			/** @name Font @{ */
@@ -123,7 +123,7 @@ namespace Neb {
 				typedef Neb::unique_ptr< Neb::Factory<Neb::gui::object::object> >	Gui_Object;
 				typedef Neb::unique_ptr< Neb::Factory<Neb::Actor::raw> >		Actor_Raw;
 				typedef Neb::unique_ptr< Neb::Factory<Neb::Actor::Base> >		Actor_Base;
-				typedef Neb::unique_ptr< Neb::Factory<Neb::Shape::raw> >		Shape_Raw;
+				typedef Neb::unique_ptr< Neb::Factory<Neb::Shape::Raw> >		Shape_Raw;
 				typedef Neb::unique_ptr< Neb::Factory<Neb::Shape::shape> >		Shape_Base;
 
 

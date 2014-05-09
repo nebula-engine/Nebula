@@ -1,17 +1,15 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_DYNAMIC_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_RIGID_DYNAMIC_HPP__
 
-#include <nebula/actor/rigid_body/rigid_body.hpp>
+#include <Nebula/Actor/rigid_body/rigid_body.hpp>
 
-namespace neb {
+namespace Neb {
 	namespace Actor {
-		class Rigid_Dynamic:
-			public neb::Actor::RigidBody::RigidBody
-		{
+		class Rigid_Dynamic: public Neb::Actor::RigidBody::RigidBody {
 			public:
-				Rigid_Dynamic(boost::shared_ptr<glutpp::actor::parent>);
+				Rigid_Dynamic(Neb::Actor::parent_w);
 				
-				virtual void		init(boost::shared_ptr<glutpp::actor::desc>);
+				virtual void		init(Neb::Actor::desc_w);
 
 				virtual void		create_physics();
 				virtual void		init_physics();

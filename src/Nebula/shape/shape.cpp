@@ -5,6 +5,7 @@
 #include <Nebula/Graphics/light/light.hpp>
 #include <Nebula/Graphics/glsl/attrib.hpp>
 #include <Nebula/Map.hpp>
+#include <Nebula/Memory/smart_ptr.hpp>
 
 Neb::Shape::shape::shape(Neb::Shape::parent_w parent): parent_(parent) {
 	NEBULA_SHAPE_BASE_FUNC;
@@ -18,11 +19,11 @@ Neb::Shape::parent_w		Neb::Shape::shape::getParent() {
 		return boost::shared_ptr<Neb::Shape::parent>();
 	}
 }
-unsigned int Neb::Shape::shape::f() {
-	return raw_.flag_;
+gal::flag::flag_type		Neb::Shape::shape::f() {
+	return raw_->flag_;
 }
 void Neb::Shape::shape::f(unsigned int flag) {
-	raw_.flag_ = flag;
+	raw_->flag_ = flag;
 }
 Neb::Math::Mat44	Neb::Shape::shape::getPoseGlobal() {
 	NEBULA_SHAPE_BASE_FUNC;
@@ -38,22 +39,22 @@ Neb::Math::Mat44	Neb::Shape::shape::getPoseGlobal() {
 	return m;
 }
 Neb::Math::Mat44 Neb::Shape::shape::getPose() {
-	return raw_.pose_;
+	return raw_->pose_;
 }
 void		Neb::Shape::shape::init(Neb::Shape::desc_w desc) {
 	NEBULA_SHAPE_BASE_FUNC
-
+	
 	auto me = boost::dynamic_pointer_cast<Neb::Shape::shape>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
-
+	
 	i_ = desc->i_;
-	raw_ = desc->raw_;
+	raw_.swap(desc->raw_wrapper_.ptr_);
 	
 	// type
 
 
 	// program
-	if(strlen(raw_.image_) == 0) {
+	if(strlen(raw_->image_) == 0) {
 		program_ = Neb::program_name::LIGHT;
 	} else {
 		set(Neb::Shape::flag::e::IMAGE);
@@ -94,7 +95,7 @@ void		Neb::Shape::shape::init(Neb::Shape::desc_w desc) {
 	// material
 	//assert(raw_.get_vec_mat()->vec_.size() > 0);
 	
-	material_front_.raw_ = raw_.material_;
+	material_front_.raw_ = raw_->material_;
 	
 	printf("diffuse = ");
 	material_front_.raw_.diffuse_.print();
@@ -184,7 +185,7 @@ void Neb::Shape::shape::notify_foundation_change_pose() {
 void Neb::Shape::shape::load_lights(int& i, Neb::Math::Mat44 space) {
 	NEBULA_SHAPE_BASE_FUNC;
 
-	space = space * raw_.pose_;
+	space = space * raw_->pose_;
 
 	for(auto it = lights_.begin(); it != lights_.end(); ++it)
 	{
@@ -194,14 +195,14 @@ void Neb::Shape::shape::load_lights(int& i, Neb::Math::Mat44 space) {
 	}
 }
 void Neb::Shape::shape::draw(Neb::window::window_s window, Neb::Math::Mat44 space) {
-	space = space * raw_.pose_;
+	space = space * raw_->pose_;
 
 	draw_elements(window, space);
 }
 void		Neb::Shape::shape::model_load(Neb::Math::Mat44 space) {
 	auto p = Neb::master::global()->current_program();
 	
-	space.scale(physx::PxVec4(raw_.s_, 0));
+	space.scale(physx::PxVec4(raw_->s_, 0));
 	
 	p->get_uniform_scalar("model")->load(space);
 }

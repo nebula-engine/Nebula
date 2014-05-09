@@ -1,3 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classglutpp_1_1actor_1_1raw__factory.html" title="Data Factory. Used to ensure correct derived class is allocated. Because allocation is expensive..." alt="" coords="5,5,176,35"/>
+<area shape="rect" id="node1" href="$classglutpp_1_1Camera_1_1Projection_1_1Base.html" title="glutpp::Camera::Projection::Base" alt="" coords="7,5,220,35"/>
+<area shape="rect" id="node3" href="$classglutpp_1_1Camera_1_1Projection_1_1Perspective.html" title="glutpp::Camera::Projection::Perspective" alt="" coords="271,5,524,35"/>
 </map>

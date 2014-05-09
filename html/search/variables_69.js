@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['i_5f',['i_',['../classglutpp_1_1shape_1_1shape.html#a963f3a4b84d97461e834290edf73e403',1,'glutpp::shape::shape']]],
-  ['image_5f',['image_',['../classglutpp_1_1shape_1_1Raw.html#a4f750dd9582a40cbe80d8e3f8caeaef5',1,'glutpp::shape::Raw']]]
+  ['i_5f',['i_',['../classNeb_1_1Shape_1_1shape.html#a4ea8904ea7cb02b3580586d23ef65736',1,'Neb::Shape::shape']]],
+  ['image_5f',['image_',['../classNeb_1_1Shape_1_1Raw.html#ac868d3e6b52bd1cdca2a19d21e9d030c',1,'Neb::Shape::Raw']]]
 ];

@@ -3,8 +3,9 @@
 #define __GALAXY_FLAG_H__
 
 namespace gal {
-	template <typename flag_type = unsigned int> class flag {
+	class flag {
 		public:
+			typedef unsigned long int flag_type;
 			flag() {}
 			void		set(flag_type fl)
 			{

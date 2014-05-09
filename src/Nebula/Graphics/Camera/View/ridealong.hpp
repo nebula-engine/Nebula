@@ -4,21 +4,21 @@
 #include <memory>
 #include <map>
 
-#include <gru/Graphics/window/window.hpp>
-#include <gru/Graphics/Camera/View/Base.hpp>
-#include <gru/config.hpp>
+#include <Nebula/Graphics/window/window.hpp>
+#include <Nebula/Graphics/Camera/View/Base.hpp>
+#include <Nebula/config.hpp>
 
-namespace glutpp {
+namespace Neb {
 	namespace Camera {
 		namespace View {
-			class ridealong: public glutpp::Camera::View::Base<float> {
+			class ridealong: public Neb::Camera::View::Base {
 				public:
-					ridealong(glutpp::actor::actor_s);
+					ridealong(Neb::Actor::Base_w);
 					virtual physx::PxMat44			view();
 					virtual void				step(double time);
 
 
-					glutpp::actor::actor_w		actor_;
+					Neb::Actor::Base_w		actor_;
 			};
 		}
 	}

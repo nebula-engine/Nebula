@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>gru: glutpp::scene::desc Class Reference</title>
+<title>Nebula: glutpp::scene::desc Class Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,7 +27,7 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gru
+   <div id="projectname">Nebula
    
    </div>
    
@@ -113,7 +113,7 @@ Collaboration diagram for glutpp::scene::desc:</div>
 <div class="dyncontent">
 <div class="center"><img src="classglutpp_1_1scene_1_1desc__coll__graph.png" border="0" usemap="#glutpp_1_1scene_1_1desc_coll__map" alt="Collaboration graph"/></div>
 <map name="glutpp_1_1scene_1_1desc_coll__map" id="glutpp_1_1scene_1_1desc_coll__map">
-<area shape="rect" id="node2" href="classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt; glutpp::scene::raw \&gt;" alt="" coords="5,5,275,35"/></map>
+<area shape="rect" id="node2" href="classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt; glutpp::scene::raw \&gt;" alt="" coords="5,101,275,131"/><area shape="rect" id="node4" href="classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; glutpp::scene::raw \&gt;" alt="" coords="17,5,263,35"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classglutpp_1_1scene_1_1desc-members.html">List of all members.</a></p>
@@ -124,8 +124,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classglutpp_1_1scene_1_1desc.html#a90063754f769b68b932ee7a54c252d69">serialize</a> (Archive &amp;ar, unsigned int const &amp;version)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f68fd9fba4752e874f12ed7a4deaeaf"></a><!-- doxytag: member="glutpp::scene::desc::load" ref="a7f68fd9fba4752e874f12ed7a4deaeaf" args="(char const *)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (char const *)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d5bcfef9cb840cde257ce5281ffa5d4"></a><!-- doxytag: member="glutpp::scene::desc::load" ref="a7d5bcfef9cb840cde257ce5281ffa5d4" args="(boost::shared_ptr&lt; glutpp::scene::scene &gt;)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (boost::shared_ptr&lt; <a class="el" href="classglutpp_1_1scene_1_1scene.html">glutpp::scene::scene</a> &gt;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c546a2b725400e983f1e57c6e1bb5d9"></a><!-- doxytag: member="glutpp::scene::desc::load" ref="a4c546a2b725400e983f1e57c6e1bb5d9" args="(Neb::weak_ptr&lt; glutpp::scene::scene &gt;)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (<a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a>&lt; glutpp::scene::scene &gt;)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac190024571d236c1afd7486e8a060551"></a><!-- doxytag: member="glutpp::scene::desc::i_" ref="ac190024571d236c1afd7486e8a060551" args="" -->
@@ -135,9 +135,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>type_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7111c2115c45c44d416d47484b87b1c8"></a><!-- doxytag: member="glutpp::scene::desc::raw_wrapper_" ref="a7111c2115c45c44d416d47484b87b1c8" args="" -->
 <a class="el" href="classNeb_1_1WrapperTyped.html">Neb::WrapperTyped</a><br class="typebreak"/>
 &lt; <a class="el" href="classglutpp_1_1scene_1_1raw.html">glutpp::scene::raw</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>raw_wrapper_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a418d80ba5e56fd8dd564030b7fdb47a8"></a><!-- doxytag: member="glutpp::scene::desc::actors_" ref="a418d80ba5e56fd8dd564030b7fdb47a8" args="" -->
-std::vector&lt; boost::shared_ptr<br class="typebreak"/>
-&lt; <a class="el" href="classglutpp_1_1actor_1_1desc.html">glutpp::actor::desc</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>actors_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3c91b43ba95990985eded44bb61a11b"></a><!-- doxytag: member="glutpp::scene::desc::actors_" ref="ac3c91b43ba95990985eded44bb61a11b" args="" -->
+std::vector&lt; <a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a><br class="typebreak"/>
+&lt; glutpp::actor::desc &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>actors_</b></td></tr>
 <tr><td colspan="2"><h2><a name="friends"></a>
 Friends</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac98d07dd8f7b70e16ccb9a01abf56b9c"></a><!-- doxytag: member="glutpp::scene::desc::boost::serialization::access" ref="ac98d07dd8f7b70e16ccb9a01abf56b9c" args="" -->
@@ -170,13 +170,13 @@ template&lt;class Archive &gt; </div>
       </table>
 </div>
 <div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>no idea why this fails </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>no idea why this fails </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/gru/scene/<a class="el" href="scene_2desc_8hpp_source.html">desc.hpp</a></li>
-<li>src/gru/scene/desc.cpp</li>
+<li>src/Nebula/scene/<a class="el" href="scene_2desc_8hpp_source.html">desc.hpp</a></li>
+<li>src/Nebula/scene/desc.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -196,7 +196,7 @@ template&lt;class Archive &gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 6 2014 18:06:50 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 08:31:56 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

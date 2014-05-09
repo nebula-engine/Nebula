@@ -16,10 +16,10 @@ namespace Neb {
 			/** @brief Destructor */
 			virtual ~Typed() {}
 			/** @brief Hash Code */
-			long int &		hash_code() { return hash_code_; }
+			long int &		hash_code() { return _M_hash_code_; }
 		private:
 			/** @brief Hash Code */
-			static long int		hash_code_;
+			static long int		_M_hash_code_;
 	};
 	/** @brief Factory
 	 * the app shall hold instances of Factory for the various types and use cases

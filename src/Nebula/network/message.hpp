@@ -31,13 +31,13 @@ namespace gal {
 				template<typename T> void	write(const T& t) {
 					write(&t, sizeof(T));
 				}
-				
+
 				/*template<class T> message&	operator<<(T t) {
-					t.serialize(*this, 0);
-					return *this;
-				}*/
-				
-				
+				  t.serialize(*this, 0);
+				  return *this;
+				  }*/
+
+
 				void				read(void * const, size_t);
 				template<typename T> void	read(T& t) {
 					read(&t, sizeof(T));
@@ -60,24 +60,24 @@ namespace gal {
 			public:
 				omessage();
 				/*template<class T> message&	operator&(T t) {
-					return operator<<(t);
-				}
-				template<class T> message&	operator<<(T t) {
-					t.serialize(*this, 0);
-					return *this;
-				}*/
+				  return operator<<(t);
+				  }
+				  template<class T> message&	operator<<(T t) {
+				  t.serialize(*this, 0);
+				  return *this;
+				  }*/
 				boost::archive::binary_oarchive		ar_;
 		};
 		class imessage: public message {
 			public:
 				imessage();
 				/*template<class T> message&	operator&(T t) {
-					return operator<<(t);
-				}
-				template<class T> message&	operator>>(T t) {
-					t.serialize(*this, 0);
-					return *this;
-				}*/
+				  return operator<<(t);
+				  }
+				  template<class T> message&	operator>>(T t) {
+				  t.serialize(*this, 0);
+				  return *this;
+				  }*/
 				boost::archive::binary_iarchive		ar_;
 		};
 	}

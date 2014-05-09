@@ -17,6 +17,7 @@ namespace Neb {
 			weak_ptr(boost::shared_ptr<T> const & ptr): ptr_(ptr) {}
 			//weak_ptr(boost::weak_ptr<T> ptr): ptr_(ptr) {}
 			
+
 			operator bool() {
 				return bool(!ptr_.expired());
 			}
@@ -26,6 +27,10 @@ namespace Neb {
 			boost::shared_ptr<T>			operator->() {
 				auto ptr = ptr_.lock();
 				assert(ptr);
+				return ptr;
+			}
+			boost::shared_ptr<T>			lock() {
+				auto ptr = ptr_.lock();
 				return ptr;
 			}
 			boost::shared_ptr<T> const		operator->() const {
@@ -51,8 +56,14 @@ namespace Neb {
 			void			reset(T* t = NULL) {
 				ptr_.reset(t);
 			}
-			boost::shared_ptr<T> operator->() {
+			boost::shared_ptr<T>	operator->() {
 				return ptr_;
+			}
+			T &			operator*() {
+				return *ptr_;
+			}
+			T const &		operator*() const {
+				return *ptr_;
 			}
 			boost::shared_ptr<T> const & operator->() const {
 				return ptr_;

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>gru: Neb::Factory&lt; T &gt; Class Template Reference</title>
+<title>Nebula: Neb::Factory&lt; T &gt; Class Template Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,7 +27,7 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gru
+   <div id="projectname">Nebula
    
    </div>
    
@@ -100,53 +100,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a>  </div>
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">Neb::Factory&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="Neb::Factory" -->
-<p><a class="el" href="classNeb_1_1Factory.html" title="Factory.">Factory</a>.  
+<p><a class="el" href="classNeb_1_1Factory.html" title="Factory the app shall hold instances of Factory for the various types and use cases.">Factory</a> the app shall hold instances of <a class="el" href="classNeb_1_1Factory.html" title="Factory the app shall hold instances of Factory for the various types and use cases.">Factory</a> for the various types and use cases.  
  <a href="classNeb_1_1Factory.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Typed_8hpp_source.html">Typed.hpp</a>&gt;</code></p>
 
 <p><a href="classNeb_1_1Factory-members.html">List of all members.</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27acfb756f654d0cc21c7e8a6b087cb0"></a><!-- doxytag: member="Neb::Factory::allocptr" ref="a27acfb756f654d0cc21c7e8a6b087cb0" args=")()" -->
-typedef void *(*&#160;</td><td class="memItemRight" valign="bottom"><b>allocptr</b> )()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1563001d6157ee7a3dec5adbb5f7a066"></a><!-- doxytag: member="Neb::Factory::allocfun" ref="a1563001d6157ee7a3dec5adbb5f7a066" args="" -->
-typedef std::function&lt; T *()&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>allocfun</b></td></tr>
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNeb_1_1Factory_1_1____base__function.html">__base_function</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNeb_1_1Factory_1_1____function.html">__function</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNeb_1_1Factory_1_1invalid__args.html">invalid_args</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNeb_1_1Factory_1_1invalid__key.html">invalid_key</a></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf737fbedc2c0ce6583dd7144947d51b"></a><!-- doxytag: member="Neb::Factory::alloc" ref="acf737fbedc2c0ce6583dd7144947d51b" args="(long hash_code)" -->
-T *&#160;</td><td class="memItemRight" valign="bottom"><b>alloc</b> (long hash_code)</td></tr>
-<tr><td colspan="2"><h2><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d30d92c97c32b968d95e5b503ab5f7d"></a><!-- doxytag: member="Neb::Factory::global" ref="a8d30d92c97c32b968d95e5b503ab5f7d" args="()" -->
-static boost::shared_ptr<br class="typebreak"/>
-&lt; <a class="el" href="classNeb_1_1Factory.html">Factory</a>&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>global</b> ()</td></tr>
-<tr><td colspan="2"><h2><a name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5dfcb071e1eb6d958542dbf8cc78a475"></a><!-- doxytag: member="Neb::Factory::global_" ref="a5dfcb071e1eb6d958542dbf8cc78a475" args="" -->
-static boost::shared_ptr<br class="typebreak"/>
-&lt; <a class="el" href="classNeb_1_1Factory.html">Factory</a>&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>global_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab44e98845974965837852826a710ad2e"></a><!-- doxytag: member="Neb::Factory::map_" ref="ab44e98845974965837852826a710ad2e" args="" -->
-static std::map&lt; long int, <br class="typebreak"/>
-allocfun &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map_</b></td></tr>
+<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="af8dac02d0e0327fcbe54bcb9aa419b59"></a><!-- doxytag: member="Neb::Factory::add" ref="af8dac02d0e0327fcbe54bcb9aa419b59" args="(long int hash_code, std::function&lt; T *(Args...)&gt; f)" -->
+template&lt;class... Args&gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>add</b> (long int hash_code, std::function&lt; T *(Args...)&gt; f)</td></tr>
+<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="ac499b39e795c35e0894811b2706d5c74"></a><!-- doxytag: member="Neb::Factory::alloc" ref="ac499b39e795c35e0894811b2706d5c74" args="(long hash_code, Args &amp;&amp;...args)" -->
+template&lt;class... Args&gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>alloc</b> (long hash_code, Args &amp;&amp;...args)</td></tr>
+<tr><td colspan="2"><h2><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4a797d4d36a2ff4a76c300643b848fe"></a><!-- doxytag: member="Neb::Factory::map_" ref="ac4a797d4d36a2ff4a76c300643b848fe" args="" -->
+std::map&lt; long int, <br class="typebreak"/>
+std::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="structNeb_1_1Factory_1_1____base__function.html">__base_function</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map_</b></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T&gt;<br/>
 class Neb::Factory&lt; T &gt;</h3>
 
-<p><a class="el" href="classNeb_1_1Factory.html" title="Factory.">Factory</a>. </p>
+<p><a class="el" href="classNeb_1_1Factory.html" title="Factory the app shall hold instances of Factory for the various types and use cases.">Factory</a> the app shall hold instances of <a class="el" href="classNeb_1_1Factory.html" title="Factory the app shall hold instances of Factory for the various types and use cases.">Factory</a> for the various types and use cases. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/gru/<a class="el" href="Typed_8hpp_source.html">Typed.hpp</a></li>
+<li>src/Nebula/<a class="el" href="Typed_8hpp_source.html">Typed.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -166,7 +162,7 @@ class Neb::Factory&lt; T &gt;</h3>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 6 2014 18:06:50 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 08:31:56 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

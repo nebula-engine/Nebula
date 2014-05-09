@@ -32,8 +32,8 @@ namespace Neb {
 				}
 				
 				// make this an archive...
-				desc&								operator<<(boost::shared_ptr<Neb::Actor::Base> const & actor);
-				void								load(Neb::unique_ptr<Neb::Actor::Base> const &);
+				desc&								operator<<(Neb::Actor::Base_w const & actor);
+				void								load(Neb::Actor::Base_w const &);
 				//void			add_shape(Neb::shape::desc);
 				desc&								operator=(desc const &);
 

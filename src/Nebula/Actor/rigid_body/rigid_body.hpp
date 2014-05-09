@@ -30,9 +30,9 @@ namespace Neb {
 					
 					// control
 					virtual void			create_control(
-							Neb::Actor::control::rigid_body::raw_s);
+							Neb::Actor::Control::RigidBody::Raw_s);
 				public:
-					Neb::Actor::control::rigid_body::control_s	control_;
+					Neb::Actor::Control::RigidBody::Control_w	control_;
 				private:
 					physx::PxVec3			force_;
 					physx::PxVec3			torque_;

@@ -18,7 +18,7 @@
 #include <math/geo/polyhedron.hpp>
 */
 
-#include <Nebula/config.hpp>
+#include <Nebula/Types.hpp>
 #include <Nebula/shape/raw.hpp>
 #include <Nebula/shape/parent.hpp>
 #include <Nebula/master.hpp>
@@ -41,7 +41,7 @@ namespace Neb {
 		};
 
 
-		class shape: virtual public Neb::Shape::parent, public gal::flag<unsigned int> {
+		class shape: virtual public Neb::Shape::parent, public gal::flag {
 			public:
 				typedef std::shared_ptr<Neb::Shape::buffer>		buffer_t;
 				typedef std::map<Neb::window::window*,buffer_t>	map_t;
@@ -82,8 +82,8 @@ namespace Neb {
 				/** @name Flag
 				 * @{
 				 */
-				unsigned int	f();
-				void		f(unsigned int flag);
+				gal::flag::flag_type		f();
+				void				f(unsigned int flag);
 				/** @} */
 			public:
 				// draw data
@@ -91,7 +91,7 @@ namespace Neb {
 				/** @brief ID */
 				int					i_;
 				/** @brief Raw data. */
-				Neb::Shape::Raw			raw_;
+				Neb::Shape::Raw_u			raw_;
 				
 				Neb::Map<Neb::light::light>		lights_;
 				Neb::Map<Neb::Shape::shape>		shapes_;

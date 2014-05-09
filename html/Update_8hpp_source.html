@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>gru: src/gru/Message/Actor/Update.hpp Source File</title>
+<title>Nebula: src/Nebula/Message/Actor/Update.hpp Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,7 +27,7 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gru
+   <div id="projectname">Nebula
    
    </div>
    
@@ -77,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">src/gru/Message/Actor/Update.hpp</div>  </div>
+<div class="title">src/Nebula/Message/Actor/Update.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef __GLUTPP_NETWORK_ACTOR_UPDATE_HPP__</span>
@@ -117,13 +117,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00043"></a>00043                                         }
 <a name="l00044"></a>00044                                         BOOST_SERIALIZATION_SPLIT_MEMBER();
 <a name="l00045"></a>00045 
-<a name="l00047"></a><a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a30478c5051b040fbaafb8fb138793517">00047</a>                                         <a class="code" href="classglutpp_1_1actor_1_1addr.html">glutpp::actor::addr</a>                     <a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a30478c5051b040fbaafb8fb138793517" title="Address.">addr_</a>;
+<a name="l00047"></a><a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a30478c5051b040fbaafb8fb138793517">00047</a>                                         glutpp::actor::addr                     <a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a30478c5051b040fbaafb8fb138793517" title="Address.">addr_</a>;
 <a name="l00050"></a><a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a78a532b30c2fe195ce15e420c25d45d7">00050</a>                                         boost::shared_ptr&lt;glutpp::actor::raw&gt;   <a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a78a532b30c2fe195ce15e420c25d45d7" title="Data pointer. could be replaced with Actor pointer with similar results.">raw_</a>;
 <a name="l00051"></a>00051                                 };
 <a name="l00052"></a>00052                                 
 <a name="l00053"></a>00053                                 <span class="comment">//typedef vec_addr_raw::tuple tuple;</span>
 <a name="l00054"></a>00054                                 
-<a name="l00055"></a>00055                                 <span class="keywordtype">void</span> <a class="code" href="structglutpp_1_1network_1_1actor_1_1update.html#a1bd07663519737a80df43482d8569a93">load</a>(boost::shared_ptr&lt;glutpp::actor::actor&gt; actor);
+<a name="l00055"></a>00055                                 <span class="keywordtype">void</span> <a class="code" href="structglutpp_1_1network_1_1actor_1_1update.html#a2a7bee8209aa582266f5bb4e6e729501">load</a>(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;glutpp::actor::actor&gt;</a> <span class="keyword">const</span> &amp; actor);
 <a name="l00056"></a>00056                         
 <a name="l00057"></a>00057                                 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>    serialize(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
 <a name="l00058"></a>00058                                         ar &amp; vector_;
@@ -157,7 +157,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 6 2014 18:06:49 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 08:31:56 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

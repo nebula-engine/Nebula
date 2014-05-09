@@ -1,0 +1,142 @@
+\hypertarget{classNeb_1_1Shape_1_1shape}{\section{\-Neb\-:\-:\-Shape\-:\-:shape \-Class \-Reference}
+\label{classNeb_1_1Shape_1_1shape}\index{\-Neb\-::\-Shape\-::shape@{\-Neb\-::\-Shape\-::shape}}
+}
+
+
+\-Inheritance diagram for \-Neb\-:\-:\-Shape\-:\-:shape\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNeb_1_1Shape_1_1shape__inherit__graph}
+\end{center}
+\end{figure}
+
+
+\-Collaboration diagram for \-Neb\-:\-:\-Shape\-:\-:shape\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNeb_1_1Shape_1_1shape__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_adeae7cac9264b6e69472cc6805595d98}{typedef std\-::shared\-\_\-ptr\*
+$<$ \hyperlink{classNeb_1_1Shape_1_1buffer}{\-Neb\-::\-Shape\-::buffer} $>$ {\bfseries buffer\-\_\-t}}\label{classNeb_1_1Shape_1_1shape_adeae7cac9264b6e69472cc6805595d98}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a2e96cc27b784e0aef915f8e1e0419279}{typedef std\-::map\*
+$<$ \hyperlink{classNeb_1_1window_1_1window}{\-Neb\-::window\-::window} \*
+$\ast$, buffer\-\_\-t $>$ {\bfseries map\-\_\-t}}\label{classNeb_1_1Shape_1_1shape_a2e96cc27b784e0aef915f8e1e0419279}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_ab541b376a9dc6c86368b0374efa72247}{{\bfseries shape} (\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::weak\-\_\-ptr}$<$ \hyperlink{classNeb_1_1Shape_1_1parent}{\-Neb\-::\-Shape\-::parent} $>$ \hyperlink{classNeb_1_1Shape_1_1parent}{parent})}\label{classNeb_1_1Shape_1_1shape_ab541b376a9dc6c86368b0374efa72247}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a1af582be37e62e3e27227d101764887b}{physx\-::\-Px\-Mat44 {\bfseries get\-Pose} ()}\label{classNeb_1_1Shape_1_1shape_a1af582be37e62e3e27227d101764887b}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a6e3e61b523dcb784ab30fee8cca44119}{physx\-::\-Px\-Mat44 {\bfseries get\-Pose\-Global} ()}\label{classNeb_1_1Shape_1_1shape_a6e3e61b523dcb784ab30fee8cca44119}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a08849b8b742ef42de207091ff9598521}{\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Shape\-::parent\-\_\-w} {\bfseries get\-Parent} ()}\label{classNeb_1_1Shape_1_1shape_a08849b8b742ef42de207091ff9598521}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_af467bc3c9286f1d10114480c9d5d0db0}{void {\bfseries init} (\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Shape\-::desc\-\_\-w} \hyperlink{classNeb_1_1Shape_1_1desc}{desc})}\label{classNeb_1_1Shape_1_1shape_af467bc3c9286f1d10114480c9d5d0db0}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_aa7a6106b9e5901d903b527b171cf8800}{virtual void {\bfseries create\-Mesh} ()=0}\label{classNeb_1_1Shape_1_1shape_aa7a6106b9e5901d903b527b171cf8800}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_ada83179ec6b4f3737a6e5ef2eb29564d}{void {\bfseries release} ()}\label{classNeb_1_1Shape_1_1shape_ada83179ec6b4f3737a6e5ef2eb29564d}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a7ce08185aa4431ec2f39fef1e1933a7a}{void {\bfseries cleanup} ()}\label{classNeb_1_1Shape_1_1shape_a7ce08185aa4431ec2f39fef1e1933a7a}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_adb1a3c375e57fbf636182719f4f8f2a3}{void {\bfseries step} (double time)}\label{classNeb_1_1Shape_1_1shape_adb1a3c375e57fbf636182719f4f8f2a3}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_ac96d4dc310d2393672bf331a9b4eaad9}{void {\bfseries notify\-\_\-foundation\-\_\-change\-\_\-pose} ()}\label{classNeb_1_1Shape_1_1shape_ac96d4dc310d2393672bf331a9b4eaad9}
+
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf \-Rendering @\{}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_ad1ab9b88edbd6fd0e03591ff75036abb}{void {\bfseries load\-\_\-lights} (int \&i, physx\-::\-Px\-Mat44 space)}\label{classNeb_1_1Shape_1_1shape_ad1ab9b88edbd6fd0e03591ff75036abb}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_ab5ac6ec5c373da456f7c3d72b51c691f}{void {\bfseries draw} (\-Neb\-::window\-::window\-\_\-s, physx\-::\-Px\-Mat44 space)}\label{classNeb_1_1Shape_1_1shape_ab5ac6ec5c373da456f7c3d72b51c691f}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a5fa42d964935d426ba7b0f1aa95cfc6a}{void {\bfseries model\-\_\-load} (physx\-::\-Px\-Mat44 space)}\label{classNeb_1_1Shape_1_1shape_a5fa42d964935d426ba7b0f1aa95cfc6a}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a8df9182a4079c3a05e8df6f9f4b32676}{void {\bfseries init\-\_\-buffer} (\-Neb\-::window\-::window\-\_\-s, std\-::shared\-\_\-ptr$<$ \hyperlink{classNeb_1_1glsl_1_1program}{\-Neb\-::glsl\-::program} $>$ p)}\label{classNeb_1_1Shape_1_1shape_a8df9182a4079c3a05e8df6f9f4b32676}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_aaf7bb44f2cc26a0e151ed9993a240c07}{virtual void {\bfseries draw\-\_\-elements} (\-Neb\-::window\-::window\-\_\-s, physx\-::\-Px\-Mat44 space)}\label{classNeb_1_1Shape_1_1shape_aaf7bb44f2cc26a0e151ed9993a240c07}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \-Index}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a45d9147fdf8c2a76abbefa7b1c00c506}{void {\bfseries i} (int ni)}\label{classNeb_1_1Shape_1_1shape_a45d9147fdf8c2a76abbefa7b1c00c506}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a31fe7d23c1f300a3b84ddb10852cc348}{int {\bfseries i} ()}\label{classNeb_1_1Shape_1_1shape_a31fe7d23c1f300a3b84ddb10852cc348}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \-Flag}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a17e1ec21fa4ee0017b8af48e61f66280}{unsigned int {\bfseries f} ()}\label{classNeb_1_1Shape_1_1shape_a17e1ec21fa4ee0017b8af48e61f66280}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a4d7dfc5f91260f5a5227ef824ae38e7f}{void {\bfseries f} (unsigned int \hyperlink{structNeb_1_1Shape_1_1flag}{flag})}\label{classNeb_1_1Shape_1_1shape_a4d7dfc5f91260f5a5227ef824ae38e7f}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a4ea8904ea7cb02b3580586d23ef65736}{int \hyperlink{classNeb_1_1Shape_1_1shape_a4ea8904ea7cb02b3580586d23ef65736}{i\-\_\-}}\label{classNeb_1_1Shape_1_1shape_a4ea8904ea7cb02b3580586d23ef65736}
+
+\begin{DoxyCompactList}\small\item\em \-I\-D. \end{DoxyCompactList}\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a8aba02e1580ff15ee8b91ded3a5f95c2}{\hyperlink{classNeb_1_1Shape_1_1Raw}{\-Neb\-::\-Shape\-::\-Raw} \hyperlink{classNeb_1_1Shape_1_1shape_a8aba02e1580ff15ee8b91ded3a5f95c2}{raw\-\_\-}}\label{classNeb_1_1Shape_1_1shape_a8aba02e1580ff15ee8b91ded3a5f95c2}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classNeb_1_1Shape_1_1Raw}{\-Raw} data. \end{DoxyCompactList}\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a3070b9f1cecd871b3bf0febbef8de711}{\hyperlink{classNeb_1_1Map}{\-Neb\-::\-Map}$<$ \hyperlink{classNeb_1_1light_1_1light}{\-Neb\-::light\-::light} $>$ {\bfseries lights\-\_\-}}\label{classNeb_1_1Shape_1_1shape_a3070b9f1cecd871b3bf0febbef8de711}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a880326855a69925260706d175a1ccccc}{\hyperlink{classNeb_1_1Map}{\-Neb\-::\-Map}$<$ \hyperlink{classNeb_1_1Shape_1_1shape}{\-Neb\-::\-Shape\-::shape} $>$ {\bfseries shapes\-\_\-}}\label{classNeb_1_1Shape_1_1shape_a880326855a69925260706d175a1ccccc}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a02bd5170774b0217748d01376795e50d}{\hyperlink{classNeb_1_1material_1_1material}{\-Neb\-::material\-::material} {\bfseries material\-\_\-front\-\_\-}}\label{classNeb_1_1Shape_1_1shape_a02bd5170774b0217748d01376795e50d}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_af4ece0a2eed3386efae772a88a53b757}{\hyperlink{classNeb_1_1mesh}{mesh} {\bfseries mesh\-\_\-}}\label{classNeb_1_1Shape_1_1shape_af4ece0a2eed3386efae772a88a53b757}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_aaa83ac6a5dbb4f005389562fd04078a0}{map\-\_\-t {\bfseries context\-\_\-}}\label{classNeb_1_1Shape_1_1shape_aaa83ac6a5dbb4f005389562fd04078a0}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_adabbb91a4ab1a04ced1972fd64641864}{\-Neb\-::program\-\_\-name\-::e {\bfseries program\-\_\-}}\label{classNeb_1_1Shape_1_1shape_adabbb91a4ab1a04ced1972fd64641864}
+
+\item 
+\hypertarget{classNeb_1_1Shape_1_1shape_a039af70afef2476ca5df890c5fdcf8d3}{boost\-::weak\-\_\-ptr\*
+$<$ \hyperlink{classNeb_1_1Shape_1_1parent}{\-Neb\-::\-Shape\-::parent} $>$ {\bfseries parent\-\_\-}}\label{classNeb_1_1Shape_1_1shape_a039af70afef2476ca5df890c5fdcf8d3}
+
+\end{DoxyCompactItemize}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/\-Nebula/shape/shape.\-hpp\item 
+src/\-Nebula/shape/shape.\-cpp\end{DoxyCompactItemize}

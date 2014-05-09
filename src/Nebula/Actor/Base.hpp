@@ -23,7 +23,7 @@
 namespace Neb {
 	namespace Actor {
 		/** @brief %Base */
-		class Base: virtual public Neb::Actor::parent, virtual public Neb::Shape::parent, public gal::flag<unsigned int> {
+		class Base: virtual public Neb::Actor::parent, virtual public Neb::Shape::parent, public gal::flag {
 			public:
 				struct flag {
 					enum e {

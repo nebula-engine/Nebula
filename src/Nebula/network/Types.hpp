@@ -4,6 +4,17 @@
 namespace gal {
 	namespace network {
 		class communicating;
+
+		class message;
+		class omessage;
+		class imessage;
+
+
+
+		typedef boost::shared_ptr<message>	message_s;
+		typedef boost::shared_ptr<omessage>	omessage_s;
+		typedef boost::shared_ptr<imessage>	imessage_s;
+
 	}
 }
 

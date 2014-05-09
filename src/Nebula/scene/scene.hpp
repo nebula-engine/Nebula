@@ -19,7 +19,7 @@
 
 namespace Neb {
 	namespace Scene {
-		class scene: public Neb::Actor::parent, public gal::flag<unsigned int> {
+		class scene: public Neb::Actor::parent, public gal::flag {
 			public:
 				struct Flag {
 					enum e {

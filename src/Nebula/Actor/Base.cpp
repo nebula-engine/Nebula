@@ -226,8 +226,8 @@ void Neb::Actor::Base::create_shapes(Neb::Actor::desc_w desc) {
 		Neb::Shape::desc_w sd = *it;
 		assert(sd);
 		
-		long int hash_code;// = desc->raw_->hash_code_;
-
+		long int hash_code = sd->raw_wrapper_.ptr_->hash_code_;
+		
 		shape.reset(Neb::master::global()->factories_.shape_base_->alloc(hash_code, me));
 		
 		shape->init(sd);

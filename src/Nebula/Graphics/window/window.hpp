@@ -29,7 +29,7 @@
 
 namespace Neb {
 	namespace window {
-		class window: public std::enable_shared_from_this<window>, public gal::flag<unsigned int> {
+		class window: public std::enable_shared_from_this<window>, public gal::flag {
 			public:
 				window(Neb::window::desc_s desc);
 				~window();

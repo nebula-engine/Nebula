@@ -3,44 +3,39 @@
 }
 
 
-\hyperlink{classNeb_1_1Factory}{\-Factory}.  
+\hyperlink{classNeb_1_1Factory}{\-Factory} the app shall hold instances of \hyperlink{classNeb_1_1Factory}{\-Factory} for the various types and use cases.  
 
 
 
 
 {\ttfamily \#include $<$\-Typed.\-hpp$>$}
 
-\subsection*{\-Public \-Types}
+\subsection*{\-Classes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classNeb_1_1Factory_a27acfb756f654d0cc21c7e8a6b087cb0}{typedef void $\ast$($\ast$ {\bfseries allocptr} )()}\label{classNeb_1_1Factory_a27acfb756f654d0cc21c7e8a6b087cb0}
-
+struct \hyperlink{structNeb_1_1Factory_1_1____base__function}{\-\_\-\-\_\-base\-\_\-function}
 \item 
-\hypertarget{classNeb_1_1Factory_a1563001d6157ee7a3dec5adbb5f7a066}{typedef std\-::function$<$ \-T $\ast$()$>$ {\bfseries allocfun}}\label{classNeb_1_1Factory_a1563001d6157ee7a3dec5adbb5f7a066}
-
+struct \hyperlink{structNeb_1_1Factory_1_1____function}{\-\_\-\-\_\-function}
+\item 
+struct \hyperlink{structNeb_1_1Factory_1_1invalid__args}{invalid\-\_\-args}
+\item 
+struct \hyperlink{structNeb_1_1Factory_1_1invalid__key}{invalid\-\_\-key}
 \end{DoxyCompactItemize}
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classNeb_1_1Factory_acf737fbedc2c0ce6583dd7144947d51b}{\-T $\ast$ {\bfseries alloc} (long hash\-\_\-code)}\label{classNeb_1_1Factory_acf737fbedc2c0ce6583dd7144947d51b}
+\hypertarget{classNeb_1_1Factory_af8dac02d0e0327fcbe54bcb9aa419b59}{{\footnotesize template$<$class... \-Args$>$ }\\void {\bfseries add} (long int hash\-\_\-code, std\-::function$<$ \-T $\ast$(\-Args...)$>$ f)}\label{classNeb_1_1Factory_af8dac02d0e0327fcbe54bcb9aa419b59}
+
+\item 
+\hypertarget{classNeb_1_1Factory_ac499b39e795c35e0894811b2706d5c74}{{\footnotesize template$<$class... \-Args$>$ }\\\-T $\ast$ {\bfseries alloc} (long hash\-\_\-code, \-Args \&\&...args)}\label{classNeb_1_1Factory_ac499b39e795c35e0894811b2706d5c74}
 
 \end{DoxyCompactItemize}
-\subsection*{\-Static \-Public \-Member \-Functions}
+\subsection*{\-Private \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classNeb_1_1Factory_a8d30d92c97c32b968d95e5b503ab5f7d}{static boost\-::shared\-\_\-ptr\*
-$<$ \hyperlink{classNeb_1_1Factory}{\-Factory}$<$ \-T $>$ $>$ {\bfseries global} ()}\label{classNeb_1_1Factory_a8d30d92c97c32b968d95e5b503ab5f7d}
-
-\end{DoxyCompactItemize}
-\subsection*{\-Static \-Private \-Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\hypertarget{classNeb_1_1Factory_a5dfcb071e1eb6d958542dbf8cc78a475}{static boost\-::shared\-\_\-ptr\*
-$<$ \hyperlink{classNeb_1_1Factory}{\-Factory}$<$ \-T $>$ $>$ {\bfseries global\-\_\-}}\label{classNeb_1_1Factory_a5dfcb071e1eb6d958542dbf8cc78a475}
-
-\item 
-\hypertarget{classNeb_1_1Factory_ab44e98845974965837852826a710ad2e}{static std\-::map$<$ long int, \*
-allocfun $>$ {\bfseries map\-\_\-}}\label{classNeb_1_1Factory_ab44e98845974965837852826a710ad2e}
+\hypertarget{classNeb_1_1Factory_ac4a797d4d36a2ff4a76c300643b848fe}{std\-::map$<$ long int, \*
+std\-::shared\-\_\-ptr\*
+$<$ \hyperlink{structNeb_1_1Factory_1_1____base__function}{\-\_\-\-\_\-base\-\_\-function} $>$ $>$ {\bfseries map\-\_\-}}\label{classNeb_1_1Factory_ac4a797d4d36a2ff4a76c300643b848fe}
 
 \end{DoxyCompactItemize}
 
@@ -48,8 +43,8 @@ allocfun $>$ {\bfseries map\-\_\-}}\label{classNeb_1_1Factory_ab44e9884597496583
 \subsection{\-Detailed \-Description}
 \subsubsection*{template$<$class T$>$class Neb\-::\-Factory$<$ T $>$}
 
-\hyperlink{classNeb_1_1Factory}{\-Factory}. 
+\hyperlink{classNeb_1_1Factory}{\-Factory} the app shall hold instances of \hyperlink{classNeb_1_1Factory}{\-Factory} for the various types and use cases. 
 
 \-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-src/gru/\-Typed.\-hpp\end{DoxyCompactItemize}
+src/\-Nebula/\-Typed.\-hpp\end{DoxyCompactItemize}

@@ -36,10 +36,11 @@
    }
    */
 
-#define DEFINE_TYPE(name, type, values)\
+
+#define DEFINE_TYPE(name, values)\
 	struct name {\
 		public:\
-			enum E: type {\
+			enum E: short {\
 				BOOST_PP_SEQ_FOR_EACH(DEFINE_ENUM_VALUE, , values)\
 			};\
 			name(): val_((E)0) {}\

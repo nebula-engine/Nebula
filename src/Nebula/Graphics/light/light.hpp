@@ -20,7 +20,7 @@
 
 namespace Neb {
 	namespace light {
-		class light: public gal::flag<unsigned int> {
+		class light: public gal::flag {
 			public:
 				
 				light(boost::shared_ptr<Neb::Shape::shape>);
@@ -46,8 +46,8 @@ namespace Neb {
 				physx::PxMat44			get_pose();
 				physx::PxVec4			get_pos();
 			private:
-				unsigned int			f();
-				void				f(unsigned int);
+				gal::flag::flag_type		f();
+				void				f(gal::flag::flag_type);
 			public:
 
 				int				i_;

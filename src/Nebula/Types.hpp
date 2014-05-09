@@ -28,7 +28,7 @@ namespace Neb {
 
 	}
 
-
+	/** @brief %Scene */
 	namespace Scene {
 		enum flag {
 			SHOULD_RELEASE = 1 << 0
@@ -47,7 +47,8 @@ namespace Neb {
 		typedef Neb::unique_ptr<scene>		scene_u;
 		typedef Neb::weak_ptr<scene>		scene_w;
 	}
-	
+
+	/** @brief %Shape */	
 	namespace Shape {
 		struct type {
 			enum e {
@@ -65,8 +66,7 @@ namespace Neb {
 		};
 
 		class id;
-		class raw;
-		class raw_base;
+		class Raw;
 		class desc;
 		class base;
 		class shape;
@@ -75,18 +75,20 @@ namespace Neb {
 
 		typedef std::shared_ptr<base>		base_s;
 		typedef std::shared_ptr<id>		id_s;
-		typedef std::shared_ptr<raw>		raw_s;
-		typedef std::shared_ptr<raw_base>	raw_base_s;
+		typedef std::shared_ptr<Raw>		raw_s;
 
 		typedef Neb::unique_ptr<desc>		desc_u;
 
 
 		typedef std::shared_ptr<shape>		shape_s;
-		typedef std::shared_ptr<raw_factory>	raw_factory_s;
 
 		typedef Neb::weak_ptr<base>		base_w;
 		typedef Neb::weak_ptr<id>		id_w;
-		typedef Neb::weak_ptr<raw>		raw_w;
+
+		typedef Neb::weak_ptr<Raw>		Raw_w;
+		typedef Neb::unique_ptr<Raw>		Raw_u;
+
+
 		typedef Neb::weak_ptr<desc>		desc_w;
 
 
@@ -98,6 +100,7 @@ namespace Neb {
 		typedef Neb::weak_ptr<parent>		parent_w;
 
 	}
+	/** @brief Lights */
 	namespace light {
 		struct type {
 			enum e {
@@ -173,6 +176,7 @@ namespace Neb {
 
 	/*template<typename>*/ class texture;
 
+	/** @brief Camera */
 	namespace Camera {
 		namespace View {
 			class Base;

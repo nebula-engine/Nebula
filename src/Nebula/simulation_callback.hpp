@@ -10,9 +10,9 @@
 
 #include <Nebula/scene/scene.hpp>
 
-#include <Nebula/actor/Rigid_Dynamic.hpp>
-#include <Nebula/actor/Rigid_Static.hpp>
-#include <Nebula/actor/Controller.hpp>
+#include <Nebula/Actor/Rigid_Dynamic.hpp>
+#include <Nebula/Actor/Rigid_Static.hpp>
+#include <Nebula/Actor/Controller.hpp>
 
 //#include <tinyxml2.h>
 

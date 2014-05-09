@@ -50,28 +50,35 @@ namespace Neb {
 		typedef Neb::weak_ptr<RigidActor>	RigidActor_w;
 
 		// Util
-
+		typedef Neb::unique_ptr<raw>		raw_u;
 		typedef Neb::weak_ptr<raw>		raw_w;
+
+
 		typedef Neb::weak_ptr<addr>		addr_w;
+
+
+		typedef Neb::unique_ptr<desc>		desc_u;
 		typedef Neb::weak_ptr<desc>		desc_w;
 
 
 		typedef Neb::weak_ptr<parent>		parent_w;
 
 		/** @brief %Control */
-		namespace control {
-			namespace rigid_body {
-				enum type {
+		namespace Control {
+			namespace RigidBody {
+				enum Type {
 					NONE = 0,
 					T0,
 					T1,
 				};
 
-				class raw;
-				typedef boost::shared_ptr<raw>          raw_s;
+				class Raw;
+				typedef boost::shared_ptr<raw>		Raw_s;
 
-				class control;
-				typedef boost::shared_ptr<control>      control_s;
+				class Control;
+
+				typedef Neb::unique_ptr<Control>	Control_u;
+				typedef Neb::weak_ptr<Control>		Control_w;
 
 			}
 		}

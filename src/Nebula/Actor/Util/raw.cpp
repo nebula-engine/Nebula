@@ -1,23 +1,23 @@
 
 
-#include <gru/actor/actor.hpp>
-#include <gru/actor/raw.hpp>
-#include <gru/Xml/Xml.hpp>
+#include <Nebula/Actor/Base.hpp>
+#include <Nebula/Actor/Util/raw.hpp>
+#include <Nebula/Xml/Xml.hpp>
 
-glutpp::actor::raw::raw():
-	type_(glutpp::actor::Type::NONE),
-	mode_create_(glutpp::actor::mode_create::e::NOW),
+Neb::Actor::raw::raw():
+	type_(Neb::Actor::Type::NONE),
+	mode_create_(Neb::Actor::mode_create::e::NOW),
 	flag_(0),
 	density_(200),
 	health_(1.0)
 {
 	memset(name_, 0, max_name_length + 1);
 }
-void glutpp::actor::raw::load(boost::shared_ptr<glutpp::actor::actor> actor) {
-	operator=(*actor->raw_);
+void		Neb::Actor::raw::load(Neb::weak_ptr<Neb::Actor::Base> actor) {
+	operator=(*(actor->raw_));
 }
 /*
-unsigned int glutpp::actor::raw::parse_filter(tinyxml2::XMLElement* element, unsigned int i) {
+unsigned int Neb::Actor::raw::parse_filter(tinyxml2::XMLElement* element, unsigned int i) {
 
 	if(element == NULL) return i;
 
@@ -25,28 +25,28 @@ unsigned int glutpp::actor::raw::parse_filter(tinyxml2::XMLElement* element, uns
 
 	if(strcmp(buf, "STATIC") == 0)
 	{
-		return glutpp::filter::type::STATIC;
+		return Neb::filter::type::STATIC;
 	}
 	else if(strcmp(buf, "DYNAMIC") == 0)
 	{
-		return glutpp::filter::type::DYNAMIC;
+		return Neb::filter::type::DYNAMIC;
 	}
 	else if(strcmp(buf, "RIGID_AGAINST") == 0)
 	{
-		return glutpp::filter::RIGID_AGAINST;
+		return Neb::filter::RIGID_AGAINST;
 	}
 	else if(strcmp(buf, "PROJECTILE") == 0)
 	{
-		return glutpp::filter::type::PROJECTILE;
+		return Neb::filter::type::PROJECTILE;
 	}
 	else if(strcmp(buf, "PROJECTILE_AGAINST") == 0)
 	{
-		return glutpp::filter::PROJECTILE_AGAINST;
+		return Neb::filter::PROJECTILE_AGAINST;
 	}
 	abort();
 }*/
 /*
-void glutpp::actor::raw::plane(tinyxml2::XMLElement* element) {
+void Neb::Actor::raw::plane(tinyxml2::XMLElement* element) {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 
@@ -67,7 +67,7 @@ void glutpp::actor::raw::plane(tinyxml2::XMLElement* element) {
 
 	pose_ = pose;
 }
-void glutpp::actor::raw::controller(tinyxml2::XMLElement* element) {
+void Neb::Actor::raw::controller(tinyxml2::XMLElement* element) {
 
 	printf("%s\n",__FUNCTION__);
 

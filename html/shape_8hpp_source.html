@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>gru: src/gru/shape/shape.hpp Source File</title>
+<title>Nebula: src/Nebula/shape/shape.hpp Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,7 +27,7 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gru
+   <div id="projectname">Nebula
    
    </div>
    
@@ -77,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">src/gru/shape/shape.hpp</div>  </div>
+<div class="title">src/Nebula/shape/shape.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef __GLUTPP_SHAPE_H__</span>
@@ -100,111 +100,106 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00018"></a>00018 <span class="comment">#include &lt;math/geo/polyhedron.hpp&gt;</span>
 <a name="l00019"></a>00019 <span class="comment">*/</span>
 <a name="l00020"></a>00020 
-<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;gru/config.hpp&gt;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;gru/shape/raw.hpp&gt;</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;gru/shape/parent.hpp&gt;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;gru/master.hpp&gt;</span>
-<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;gru/Graphics/glsl/program.hpp&gt;</span>
-<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;gru/Graphics/light/light.hpp&gt;</span>
-<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;gru/Graphics/material.hpp&gt;</span>
-<a name="l00028"></a>00028 <span class="preprocessor">#include &lt;gru/Graphics/mesh.hpp&gt;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;Nebula/config.hpp&gt;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;Nebula/shape/raw.hpp&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;Nebula/shape/parent.hpp&gt;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;Nebula/master.hpp&gt;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;Nebula/Graphics/glsl/program.hpp&gt;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;Nebula/Graphics/light/light.hpp&gt;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;Nebula/Graphics/material.hpp&gt;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#include &lt;Nebula/Graphics/mesh.hpp&gt;</span>
 <a name="l00029"></a>00029 
-<a name="l00030"></a>00030 <span class="keyword">namespace </span>glutpp {
-<a name="l00031"></a>00031         <span class="keyword">namespace </span>shape {
-<a name="l00032"></a><a class="code" href="classglutpp_1_1shape_1_1buffer.html">00032</a>                 <span class="keyword">class </span><a class="code" href="classglutpp_1_1shape_1_1buffer.html">buffer</a> {
+<a name="l00030"></a>00030 <span class="keyword">namespace </span>Neb {
+<a name="l00031"></a>00031         <span class="keyword">namespace </span>Shape {
+<a name="l00032"></a><a class="code" href="classNeb_1_1Shape_1_1buffer.html">00032</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1buffer.html">buffer</a> {
 <a name="l00033"></a>00033                         <span class="keyword">public</span>:
 <a name="l00034"></a>00034                                 GLuint          vbo_;
 <a name="l00035"></a>00035                                 GLuint          indices_;
 <a name="l00036"></a>00036 
 <a name="l00037"></a>00037                                 <span class="keyword">struct</span>
 <a name="l00038"></a>00038                                 {
-<a name="l00039"></a>00039                                         std::shared_ptr&lt;glutpp::texture&gt;        image_;
+<a name="l00039"></a>00039                                         std::shared_ptr&lt;Neb::texture&gt;   image_;
 <a name="l00040"></a>00040                                 } texture_;
 <a name="l00041"></a>00041                 };
 <a name="l00042"></a>00042 
 <a name="l00043"></a>00043 
-<a name="l00044"></a><a class="code" href="classglutpp_1_1shape_1_1shape.html">00044</a>                 <span class="keyword">class </span><a class="code" href="classglutpp_1_1shape_1_1shape.html">shape</a>:
-<a name="l00045"></a>00045                         <span class="keyword">virtual</span> <span class="keyword">public</span> glutpp::<a class="code" href="classglutpp_1_1shape_1_1shape.html">shape</a>::<a class="code" href="classglutpp_1_1shape_1_1parent.html" title="abstract class for parent of a shape">parent</a>,
-<a name="l00046"></a>00046                         <span class="keyword">public</span> gal::<a class="code" href="structglutpp_1_1shape_1_1flag.html">flag</a>&lt;unsigned int&gt;
-<a name="l00047"></a>00047                 {
-<a name="l00048"></a>00048                         <span class="keyword">public</span>:
-<a name="l00049"></a>00049                                 <span class="keyword">typedef</span> std::shared_ptr&lt;glutpp::shape::buffer&gt;          buffer_t;
-<a name="l00050"></a>00050                                 <span class="keyword">typedef</span> std::map&lt;glutpp::window::window*,buffer_t&gt;      map_t;
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054                                 <a class="code" href="classglutpp_1_1shape_1_1shape.html">shape</a>(boost::shared_ptr&lt;glutpp::shape::parent&gt; <a class="code" href="classglutpp_1_1shape_1_1parent.html" title="abstract class for parent of a shape">parent</a>);
-<a name="l00055"></a>00055                                 ~<a class="code" href="classglutpp_1_1shape_1_1shape.html">shape</a>();
-<a name="l00056"></a>00056                                 
-<a name="l00057"></a>00057                                 physx::PxMat44                                  getPose();
-<a name="l00058"></a>00058                                 physx::PxMat44                                  getPoseGlobal();
-<a name="l00059"></a>00059                                 boost::shared_ptr&lt;glutpp::shape::parent&gt;        getParent();
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062                                 <span class="keywordtype">void</span>                    init(boost::shared_ptr&lt;glutpp::shape::desc&gt; <a class="code" href="classglutpp_1_1shape_1_1desc.html">desc</a>);
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh() = 0;
+<a name="l00044"></a><a class="code" href="classNeb_1_1Shape_1_1shape.html">00044</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a>: <span class="keyword">virtual</span> <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape">parent</a>, <span class="keyword">public</span> gal::<a class="code" href="structNeb_1_1Shape_1_1flag.html">flag</a>&lt;unsigned int&gt; {
+<a name="l00045"></a>00045                         <span class="keyword">public</span>:
+<a name="l00046"></a>00046                                 <span class="keyword">typedef</span> std::shared_ptr&lt;Neb::Shape::buffer&gt;             buffer_t;
+<a name="l00047"></a>00047                                 <span class="keyword">typedef</span> std::map&lt;Neb::window::window*,buffer_t&gt; map_t;
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049                                 <a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a>(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Shape::parent&gt;</a> <a class="code" href="classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape">parent</a>);
+<a name="l00050"></a>00050                                 ~<a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a>();
+<a name="l00051"></a>00051                                 
+<a name="l00052"></a>00052                                 physx::PxMat44                                  getPose();
+<a name="l00053"></a>00053                                 physx::PxMat44                                  getPoseGlobal();
+<a name="l00054"></a>00054                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::Shape::parent_w</a>                            getParent();
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057                                 <span class="keywordtype">void</span>                    init(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::Shape::desc_w</a> <a class="code" href="classNeb_1_1Shape_1_1desc.html">desc</a>);
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh() = 0;
+<a name="l00060"></a>00060                                 
+<a name="l00061"></a>00061                                 <span class="keywordtype">void</span>                    release();
+<a name="l00062"></a>00062                                 <span class="keywordtype">void</span>                    cleanup();
+<a name="l00063"></a>00063                                 <span class="keywordtype">void</span>                    step(<span class="keywordtype">double</span> time);
+<a name="l00064"></a>00064                                 <span class="keywordtype">void</span>                    notify_foundation_change_pose();
 <a name="l00065"></a>00065                                 
-<a name="l00066"></a>00066                                 <span class="keywordtype">void</span>                    release();
-<a name="l00067"></a>00067                                 <span class="keywordtype">void</span>                    cleanup();
-<a name="l00068"></a>00068                                 <span class="keywordtype">void</span>                    step(<span class="keywordtype">double</span> time);
-<a name="l00069"></a>00069                                 <span class="keywordtype">void</span>                    notify_foundation_change_pose();
-<a name="l00070"></a>00070                                 
-<a name="l00072"></a>00072                                 <span class="keywordtype">void</span>                    load_lights(<span class="keywordtype">int</span>&amp; i, physx::PxMat44 space);
+<a name="l00067"></a>00067                                 <span class="keywordtype">void</span>                    load_lights(<span class="keywordtype">int</span>&amp; i, physx::PxMat44 space);
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069                                 <span class="keywordtype">void</span>                    draw(Neb::window::window_s, physx::PxMat44 space);
+<a name="l00070"></a>00070         
+<a name="l00071"></a>00071                                 <span class="keywordtype">void</span>                    model_load(physx::PxMat44 space);
+<a name="l00072"></a>00072                                 <span class="keywordtype">void</span>                    init_buffer(Neb::window::window_s, std::shared_ptr&lt;Neb::glsl::program&gt; p);
 <a name="l00073"></a>00073 
-<a name="l00074"></a>00074                                 <span class="keywordtype">void</span>                    draw(glutpp::window::window_s, physx::PxMat44 space);
-<a name="l00075"></a>00075         
-<a name="l00076"></a>00076                                 <span class="keywordtype">void</span>                    model_load(physx::PxMat44 space);
-<a name="l00077"></a>00077                                 <span class="keywordtype">void</span>                    init_buffer(glutpp::window::window_s, std::shared_ptr&lt;glutpp::glsl::program&gt; p);
-<a name="l00078"></a>00078 
-<a name="l00079"></a>00079                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            draw_elements(glutpp::window::window_s, physx::PxMat44 space);
-<a name="l00084"></a>00084                                 <span class="keywordtype">void</span>            i(<span class="keywordtype">int</span> ni);
-<a name="l00085"></a>00085                                 <span class="keywordtype">int</span>             i();
-<a name="l00090"></a>00090                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    f();
-<a name="l00091"></a>00091                                 <span class="keywordtype">void</span>            f(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structglutpp_1_1shape_1_1flag.html">flag</a>);
-<a name="l00093"></a>00093                         <span class="keyword">public</span>:
-<a name="l00094"></a>00094                                 <span class="comment">// draw data</span>
-<a name="l00095"></a>00095 
-<a name="l00097"></a><a class="code" href="classglutpp_1_1shape_1_1shape.html#a963f3a4b84d97461e834290edf73e403">00097</a>                                 <span class="keywordtype">int</span>                                     <a class="code" href="classglutpp_1_1shape_1_1shape.html#a963f3a4b84d97461e834290edf73e403" title="ID.">i_</a>;
-<a name="l00099"></a><a class="code" href="classglutpp_1_1shape_1_1shape.html#a1f1361357284b6902ef7ebcbc2aa4faa">00099</a>                                 <a class="code" href="classglutpp_1_1shape_1_1Raw.html">glutpp::shape::Raw</a>                      <a class="code" href="classglutpp_1_1shape_1_1shape.html#a1f1361357284b6902ef7ebcbc2aa4faa" title="Raw data.">raw_</a>;
-<a name="l00100"></a>00100                                 
-<a name="l00101"></a>00101                                 <a class="code" href="classNeb_1_1Map.html">Neb::Map&lt;glutpp::light::light&gt;</a>          lights_;
-<a name="l00102"></a>00102                                 <a class="code" href="classNeb_1_1Map.html">Neb::Map&lt;glutpp::shape::shape&gt;</a>          shapes_;
+<a name="l00074"></a>00074                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            draw_elements(Neb::window::window_s, physx::PxMat44 space);
+<a name="l00079"></a>00079                                 <span class="keywordtype">void</span>            i(<span class="keywordtype">int</span> ni);
+<a name="l00080"></a>00080                                 <span class="keywordtype">int</span>             i();
+<a name="l00085"></a>00085                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    f();
+<a name="l00086"></a>00086                                 <span class="keywordtype">void</span>            f(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structNeb_1_1Shape_1_1flag.html">flag</a>);
+<a name="l00088"></a>00088                         <span class="keyword">public</span>:
+<a name="l00089"></a>00089                                 <span class="comment">// draw data</span>
+<a name="l00090"></a>00090 
+<a name="l00092"></a><a class="code" href="classNeb_1_1Shape_1_1shape.html#a4ea8904ea7cb02b3580586d23ef65736">00092</a>                                 <span class="keywordtype">int</span>                                     <a class="code" href="classNeb_1_1Shape_1_1shape.html#a4ea8904ea7cb02b3580586d23ef65736" title="ID.">i_</a>;
+<a name="l00094"></a><a class="code" href="classNeb_1_1Shape_1_1shape.html#a8aba02e1580ff15ee8b91ded3a5f95c2">00094</a>                                 <a class="code" href="classNeb_1_1Shape_1_1Raw.html">Neb::Shape::Raw</a>                 <a class="code" href="classNeb_1_1Shape_1_1shape.html#a8aba02e1580ff15ee8b91ded3a5f95c2" title="Raw data.">raw_</a>;
+<a name="l00095"></a>00095                                 
+<a name="l00096"></a>00096                                 <a class="code" href="classNeb_1_1Map.html">Neb::Map&lt;Neb::light::light&gt;</a>             lights_;
+<a name="l00097"></a>00097                                 <a class="code" href="classNeb_1_1Map.html">Neb::Map&lt;Neb::Shape::shape&gt;</a>             shapes_;
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099                                 <a class="code" href="classNeb_1_1material_1_1material.html">Neb::material::material</a>                 material_front_;
+<a name="l00100"></a>00100                                 <a class="code" href="classNeb_1_1mesh.html">mesh</a>                                    mesh_;
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102                                 map_t                                   context_;
 <a name="l00103"></a>00103 
-<a name="l00104"></a>00104                                 <a class="code" href="classglutpp_1_1material_1_1material.html">glutpp::material::material</a>              material_front_;
-<a name="l00105"></a>00105                                 <a class="code" href="classglutpp_1_1mesh.html">mesh</a>                                    mesh_;
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107                                 map_t                                   context_;
-<a name="l00108"></a>00108 
-<a name="l00109"></a>00109                                 glutpp::program_name::e                 program_;
-<a name="l00110"></a>00110 
-<a name="l00111"></a>00111                                 boost::weak_ptr&lt;glutpp::shape::parent&gt;          parent_;
-<a name="l00112"></a>00112                 };
-<a name="l00113"></a>00113                 <span class="keyword">namespace </span>Box {
-<a name="l00114"></a><a class="code" href="classglutpp_1_1shape_1_1Box_1_1Box.html">00114</a>                         <span class="keyword">class </span><a class="code" href="classglutpp_1_1shape_1_1Box_1_1Box.html">Box</a>: <span class="keyword">public</span> glutpp::<a class="code" href="classglutpp_1_1shape_1_1shape.html">shape</a>::<a class="code" href="classglutpp_1_1shape_1_1shape.html">shape</a> {
+<a name="l00104"></a>00104                                 Neb::program_name::e                    program_;
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106                                 boost::weak_ptr&lt;Neb::Shape::parent&gt;             parent_;
+<a name="l00107"></a>00107                 };
+<a name="l00108"></a>00108                 <span class="keyword">namespace </span>Box {
+<a name="l00109"></a><a class="code" href="classNeb_1_1Shape_1_1Box_1_1Box.html">00109</a>                         <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1Box_1_1Box.html">Box</a>: <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a> {
+<a name="l00110"></a>00110                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh();
+<a name="l00111"></a>00111                         };
+<a name="l00112"></a>00112                 }
+<a name="l00113"></a>00113                 <span class="keyword">namespace </span>Sphere {
+<a name="l00114"></a><a class="code" href="classNeb_1_1Shape_1_1Sphere_1_1Sphere.html">00114</a>                         <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1Sphere_1_1Sphere.html">Sphere</a>: <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a> {
 <a name="l00115"></a>00115                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh();
 <a name="l00116"></a>00116                         };
 <a name="l00117"></a>00117                 }
-<a name="l00118"></a>00118                 <span class="keyword">namespace </span>Sphere {
-<a name="l00119"></a><a class="code" href="classglutpp_1_1shape_1_1Sphere_1_1Sphere.html">00119</a>                         <span class="keyword">class </span><a class="code" href="classglutpp_1_1shape_1_1Sphere_1_1Sphere.html">Sphere</a>: <span class="keyword">public</span> glutpp::<a class="code" href="classglutpp_1_1shape_1_1shape.html">shape</a>::<a class="code" href="classglutpp_1_1shape_1_1shape.html">shape</a> {
+<a name="l00118"></a>00118                 <span class="keyword">namespace </span>Empty {
+<a name="l00119"></a><a class="code" href="classNeb_1_1Shape_1_1Empty_1_1Empty.html">00119</a>                         <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1Empty_1_1Empty.html">Empty</a>: <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a> {
 <a name="l00120"></a>00120                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh();
-<a name="l00121"></a>00121                         };
-<a name="l00122"></a>00122                 }
-<a name="l00123"></a>00123                 <span class="keyword">namespace </span>Empty {
-<a name="l00124"></a><a class="code" href="classglutpp_1_1shape_1_1Empty_1_1Empty.html">00124</a>                         <span class="keyword">class </span><a class="code" href="classglutpp_1_1shape_1_1Empty_1_1Empty.html">Empty</a>: <span class="keyword">public</span> glutpp::<a class="code" href="classglutpp_1_1shape_1_1shape.html">shape</a>::<a class="code" href="classglutpp_1_1shape_1_1shape.html">shape</a> {
-<a name="l00125"></a>00125                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh();
-<a name="l00126"></a>00126 
-<a name="l00127"></a>00127                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            draw_elements(glutpp::window::window_s, physx::PxMat44 space) {}
-<a name="l00128"></a>00128                         };
-<a name="l00129"></a>00129                 }
-<a name="l00130"></a>00130         }
-<a name="l00131"></a>00131 }
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            draw_elements(Neb::window::window_s, physx::PxMat44 space) {}
+<a name="l00123"></a>00123                         };
+<a name="l00124"></a>00124                 }
+<a name="l00125"></a>00125         }
+<a name="l00126"></a>00126 }
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128 <span class="preprocessor">#endif</span>
+<a name="l00129"></a>00129 <span class="preprocessor"></span>
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131 
 <a name="l00132"></a>00132 
-<a name="l00133"></a>00133 <span class="preprocessor">#endif</span>
-<a name="l00134"></a>00134 <span class="preprocessor"></span>
-<a name="l00135"></a>00135 
-<a name="l00136"></a>00136 
-<a name="l00137"></a>00137 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -223,7 +218,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 6 2014 18:06:49 for gru by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 08:31:56 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

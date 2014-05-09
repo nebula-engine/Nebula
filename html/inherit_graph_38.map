@@ -1,3 +1,25 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classglutpp_1_1material_1_1material.html" title="glutpp::material::material" alt="" coords="5,5,171,35"/>
+<area shape="rect" id="node1" href="$classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="141,272,304,301"/>
+<area shape="rect" id="node3" href="$classglutpp_1_1renderable.html" title="glutpp::renderable" alt="" coords="371,112,496,141"/>
+<area shape="rect" id="node5" href="$classNeb_1_1Actor_1_1Base.html" title="Base" alt="" coords="372,432,495,461"/>
+<area shape="rect" id="node17" href="$classNeb_1_1light_1_1light.html" title="Neb::light::light" alt="" coords="379,165,488,195"/>
+<area shape="rect" id="node19" href="$classNeb_1_1master.html" title="Neb::master" alt="" coords="387,219,480,248"/>
+<area shape="rect" id="node21" href="$classNeb_1_1Scene_1_1scene.html" title="Neb::Scene::scene" alt="" coords="367,379,500,408"/>
+<area shape="rect" id="node23" href="$classNeb_1_1Shape_1_1shape.html" title="Neb::Shape::shape" alt="" coords="367,325,500,355"/>
+<area shape="rect" id="node33" href="$classNeb_1_1window_1_1window.html" title="Neb::window::window" alt="" coords="359,272,508,301"/>
+<area shape="rect" id="node7" href="$classNeb_1_1Actor_1_1Actor.html" title="Neb::Actor::Actor" alt="" coords="596,539,719,568"/>
+<area shape="rect" id="node13" href="$classNeb_1_1Actor_1_1Controller.html" title="Neb::Actor::Controller" alt="" coords="583,432,732,461"/>
+<area shape="rect" id="node15" href="$classneb_1_1Actor_1_1empty.html" title="neb::Actor::empty" alt="" coords="595,485,720,515"/>
+<area shape="rect" id="node9" href="$classNeb_1_1Actor_1_1RigidActor.html" title="Neb::Actor::RigidActor" alt="" coords="800,539,955,568"/>
+<area shape="rect" id="node11" href="$classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html" title="Neb::Actor::RigidBody::RigidBody" alt="" coords="1003,539,1224,568"/>
+<area shape="rect" id="node25" href="$classNeb_1_1Shape_1_1Box_1_1Box.html" title="Neb::Shape::Box::Box" alt="" coords="581,272,733,301"/>
+<area shape="rect" id="node27" href="$classNeb_1_1Shape_1_1Empty_1_1Empty.html" title="Neb::Shape::Empty::Empty" alt="" coords="567,325,748,355"/>
+<area shape="rect" id="node29" href="$classNeb_1_1Shape_1_1Physical.html" title="Neb::Shape::Physical" alt="" coords="583,379,732,408"/>
+<area shape="rect" id="node31" href="$classNeb_1_1Shape_1_1Sphere_1_1Sphere.html" title="Neb::Shape::Sphere::Sphere" alt="" coords="563,219,752,248"/>
+<area shape="rect" id="node34" href="$classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="7,325,92,355"/>
+<area shape="rect" id="node36" href="$classgal_1_1network_1_1message.html" title="message" alt="" coords="145,59,300,88"/>
+<area shape="rect" id="node42" href="$classNeb_1_1Actor_1_1parent.html" title="abstract class for parent of an " alt="" coords="159,379,287,408"/>
+<area shape="rect" id="node46" href="$classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="156,325,289,355"/>
+<area shape="rect" id="node38" href="$classgal_1_1network_1_1imessage.html" title="gal::network::imessage" alt="" coords="355,5,512,35"/>
+<area shape="rect" id="node40" href="$classgal_1_1network_1_1omessage.html" title="gal::network::omessage" alt="" coords="353,59,513,88"/>
 </map>

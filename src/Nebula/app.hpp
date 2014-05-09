@@ -47,12 +47,12 @@ namespace Neb {
 			int				deactivate_layout(int);
 
 
-			// network
+			/** @name %Network @{ */
 			void				reset_server(unsigned short);
 			void				reset_client(char const *, unsigned short);		
-			void				send_server(boost::shared_ptr<gal::network::message>);
-			void				send_client(boost::shared_ptr<gal::network::message>);
-
+			void				send_server(boost::shared_ptr<gal::network::omessage>);
+			void				send_client(boost::shared_ptr<gal::network::omessage>);
+			
 			int				transmit_scenes(boost::shared_ptr<gal::network::communicating>);
 			
 			/** @todo consider putting following functions into the messages themselves: would be cleaner that way. */
@@ -62,7 +62,7 @@ namespace Neb {
 			void				recv_actor_event(std::shared_ptr<gal::network::message>);
 			void				recv_control_create(std::shared_ptr<gal::network::message>);
 			void				recv_control_update(std::shared_ptr<gal::network::message>);
-
+			/** @} */
 
 			void				f(unsigned int);
 			unsigned int			f();

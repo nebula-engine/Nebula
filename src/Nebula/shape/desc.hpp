@@ -22,6 +22,7 @@
 
 #include <Nebula/config.hpp>
 #include <Nebula/Types.hpp>
+#include <Nebula/Typed.hpp>
 #include <Nebula/Graphics/material.hpp>
 //#include <Nebula/shape/desc.hpp>
 #include <Nebula/shape/raw.hpp>
@@ -46,7 +47,7 @@ namespace Neb {
 				
 				template<class Archive> void	serialize(Archive& ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("i",i_);
-					ar & boost::serialization::make_nvp("raw",raw_);
+					ar & boost::serialization::make_nvp("raw",raw_wrapper_);
 					ar & boost::serialization::make_nvp("shapes",shapes_);
 					ar & boost::serialization::make_nvp("lights",lights_);
 				}
@@ -54,7 +55,7 @@ namespace Neb {
 				Neb::Shape::desc & 				operator<<(Neb::Shape::shape_w const &);
 				
 				int						i_;
-				Raw						raw_;
+				Neb::WrapperTyped<Shape::Raw>			raw_wrapper_;
 				std::vector<Neb::Shape::desc_u>			shapes_;
 				std::vector<Neb::light::desc_u>			lights_;
 		};

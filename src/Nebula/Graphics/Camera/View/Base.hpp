@@ -17,7 +17,7 @@
 #include <Nebula/master.hpp>
 #include <Nebula/Graphics/glsl/program.hpp>
 
-namespace glutpp {
+namespace Neb {
 	namespace Camera {
 		namespace View {
 			/** @brief @Base */

@@ -1,3 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt; glutpp::scene::raw \&gt;" alt="" coords="5,5,275,35"/>
+<area shape="rect" id="node2" href="$classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt; glutpp::scene::raw \&gt;" alt="" coords="5,101,275,131"/>
+<area shape="rect" id="node4" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; glutpp::scene::raw \&gt;" alt="" coords="17,5,263,35"/>
 </map>
