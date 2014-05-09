@@ -1,5 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Raw.html" title="Neb::Actor::Control::RigidBody::Raw" alt="" coords="5,101,243,131"/>
-<area shape="rect" id="node4" href="$classNeb_1_1Actor_1_1addr.html" title="Neb::Actor::addr" alt="" coords="267,101,384,131"/>
-<area shape="rect" id="node6" href="$classNeb_1_1Scene_1_1addr.html" title="Neb::Scene::addr" alt="" coords="264,5,387,35"/>
+<area shape="rect" id="node2" href="$classNeb_1_1Message_1_1Actor_1_1Base.html" title="Neb::Message::Actor::Base" alt="" coords="5,197,189,227"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Typed.html" title="Typed." alt="" coords="31,101,121,131"/>
+<area shape="rect" id="node6" href="$classNeb_1_1Actor_1_1addr.html" title="Neb::Actor::addr" alt="" coords="145,101,263,131"/>
+<area shape="rect" id="node8" href="$classNeb_1_1Scene_1_1addr.html" title="Neb::Scene::addr" alt="" coords="143,5,265,35"/>
+<area shape="rect" id="node10" href="$classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Raw.html" title="Neb::Actor::Control::RigidBody::Raw" alt="" coords="213,197,451,227"/>
 </map>

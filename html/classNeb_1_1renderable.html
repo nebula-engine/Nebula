@@ -101,30 +101,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">Neb::renderable Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="Neb::renderable" --><!-- doxytag: inherits="gal::flag" -->
+<!-- doxytag: class="Neb::renderable" -->
 <p>Renderable.  
  <a href="classNeb_1_1renderable.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="renderable_8hpp_source.html">renderable.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for Neb::renderable:</div>
-<div class="dyncontent">
-<div class="center"><img src="classNeb_1_1renderable__inherit__graph.png" border="0" usemap="#Neb_1_1renderable_inherit__map" alt="Inheritance graph"/></div>
-<map name="Neb_1_1renderable_inherit__map" id="Neb_1_1renderable_inherit__map">
-<area shape="rect" id="node2" href="classgal_1_1flag.html" title="gal::flag" alt="" coords="29,5,96,35"/></map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
 Collaboration diagram for Neb::renderable:</div>
 <div class="dyncontent">
 <div class="center"><img src="classNeb_1_1renderable__coll__graph.png" border="0" usemap="#Neb_1_1renderable_coll__map" alt="Collaboration graph"/></div>
 <map name="Neb_1_1renderable_coll__map" id="Neb_1_1renderable_coll__map">
-<area shape="rect" id="node2" href="classgal_1_1flag.html" title="gal::flag" alt="" coords="60,5,127,35"/><area shape="rect" id="node4" href="classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Base \&gt;" alt="" coords="9,59,177,88"/><area shape="rect" id="node6" href="classNeb_1_1weak__ptr.html" title="Neb::weak_ptr\&lt; window \&gt;" alt="" coords="7,112,180,141"/><area shape="rect" id="node8" href="classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; scene \&gt;" alt="" coords="7,165,180,195"/><area shape="rect" id="node10" href="classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; layout \&gt;" alt="" coords="7,219,180,248"/></map>
+<area shape="rect" id="node2" href="classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Base \&gt;" alt="" coords="5,5,173,35"/><area shape="rect" id="node4" href="classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; layout \&gt;" alt="" coords="197,5,371,35"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classNeb_1_1renderable-members.html">List of all members.</a></p>
@@ -135,10 +127,6 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>renderable</b> (Neb::window::window_s window)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c18c1b5d009a3fb73f86e335ffcc556"></a><!-- doxytag: member="Neb::renderable::operator=" ref="a7c18c1b5d009a3fb73f86e335ffcc556" args="(renderable const &amp;r)" -->
 <a class="el" href="classNeb_1_1renderable.html">renderable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classNeb_1_1renderable.html">renderable</a> const &amp;r)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac705af4136c474069d851a9520f5720"></a><!-- doxytag: member="Neb::renderable::f" ref="aac705af4136c474069d851a9520f5720" args="()" -->
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>f</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a971cd016cc408f732f5d0460744e2a48"></a><!-- doxytag: member="Neb::renderable::f" ref="a971cd016cc408f732f5d0460744e2a48" args="(unsigned int flag)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>f</b> (unsigned int flag)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ff2af24b83fef9b240858976257ab3d"></a><!-- doxytag: member="Neb::renderable::init" ref="a7ff2af24b83fef9b240858976257ab3d" args="(Neb::window::window_s window)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (Neb::window::window_s window)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33656881f53f9be7bab71ea5cc316ef1"></a><!-- doxytag: member="Neb::renderable::getWindow" ref="a33656881f53f9be7bab71ea5cc316ef1" args="()" -->
@@ -147,26 +135,28 @@ Neb::window::window_s&#160;</td><td class="memItemRight" valign="bottom"><b>getW
 void&#160;</td><td class="memItemRight" valign="bottom"><b>resize</b> (int w, int h)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9c70cca0380015ecfde70d9a106c31c"></a><!-- doxytag: member="Neb::renderable::render" ref="ab9c70cca0380015ecfde70d9a106c31c" args="(double time, Neb::window::window_s window)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> (double time, Neb::window::window_s window)</td></tr>
-<tr><td colspan="2"><h2><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c92004d6b58759f1399cf1ed6da1e19"></a><!-- doxytag: member="Neb::renderable::scene_" ref="a7c92004d6b58759f1399cf1ed6da1e19" args="" -->
-<a class="el" href="classNeb_1_1unique__ptr.html">Neb::Scene::scene_u</a>&#160;</td><td class="memItemRight" valign="bottom"><b>scene_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58382d2c86f9d70e3315717d0b5d0cfd"></a><!-- doxytag: member="Neb::renderable::moveView" ref="a58382d2c86f9d70e3315717d0b5d0cfd" args="(Neb::Camera::View::Base_s &amp;&amp;)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>moveView</b> (Neb::Camera::View::Base_s &amp;&amp;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22c9a9e313115bd24976d607d09b75e7"></a><!-- doxytag: member="Neb::renderable::moveScene" ref="a22c9a9e313115bd24976d607d09b75e7" args="(Neb::Scene::scene_s &amp;&amp;)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>moveScene</b> (Neb::Scene::scene_s &amp;&amp;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac43c83e45f5f10eaf6b8ffc2c3a8a3ee"></a><!-- doxytag: member="Neb::renderable::moveLayout" ref="ac43c83e45f5f10eaf6b8ffc2c3a8a3ee" args="(Neb::gui::layout_s &amp;&amp;)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>moveLayout</b> (Neb::gui::layout_s &amp;&amp;)</td></tr>
+<tr><td colspan="2"><h2><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f8954124931d93eddf660c98a45cf7d"></a><!-- doxytag: member="Neb::renderable::window_" ref="a4f8954124931d93eddf660c98a45cf7d" args="" -->
+Neb::window::window_w&#160;</td><td class="memItemRight" valign="bottom"><b>window_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a56c97489c92bfa73d8a131efd1c1958d"></a><!-- doxytag: member="Neb::renderable::scene_" ref="a56c97489c92bfa73d8a131efd1c1958d" args="" -->
+Neb::Scene::scene_s&#160;</td><td class="memItemRight" valign="bottom"><b>scene_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e90c1aba3bb47b0071bd79a00975b49"></a><!-- doxytag: member="Neb::renderable::layout_" ref="a5e90c1aba3bb47b0071bd79a00975b49" args="" -->
 <a class="el" href="classNeb_1_1unique__ptr.html">Neb::gui::layout_u</a>&#160;</td><td class="memItemRight" valign="bottom"><b>layout_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6585f1507f5afeb152b50fa2a103697a"></a><!-- doxytag: member="Neb::renderable::view_" ref="a6585f1507f5afeb152b50fa2a103697a" args="" -->
 <a class="el" href="classNeb_1_1unique__ptr.html">Neb::Camera::View::Base_u</a>&#160;</td><td class="memItemRight" valign="bottom"><b>view_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3178d18be5e839c357afefb42e85f788"></a><!-- doxytag: member="Neb::renderable::proj_" ref="a3178d18be5e839c357afefb42e85f788" args="" -->
 <a class="el" href="classNeb_1_1unique__ptr.html">Neb::Camera::Projection::Base_u</a>&#160;</td><td class="memItemRight" valign="bottom"><b>proj_</b></td></tr>
-<tr><td colspan="2"><h2><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c3a3a42294d977aac7a4deaccc098e2"></a><!-- doxytag: member="Neb::renderable::flag_" ref="a3c3a3a42294d977aac7a4deaccc098e2" args="" -->
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>flag_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f8954124931d93eddf660c98a45cf7d"></a><!-- doxytag: member="Neb::renderable::window_" ref="a4f8954124931d93eddf660c98a45cf7d" args="" -->
-<a class="el" href="classNeb_1_1weak__ptr.html">Neb::window::window_w</a>&#160;</td><td class="memItemRight" valign="bottom"><b>window_</b></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Renderable. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>eventually replace this with Context and allow multiple Contexts per window and allow scene and layout to have different and overalpping Contexts. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>eventually replace this with Context and allow multiple Contexts per window and allow scene and layout to have different and overalpping Contexts. </dd></dl>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/Nebula/<a class="el" href="renderable_8hpp_source.html">renderable.hpp</a></li>
 <li>src/Nebula/renderable.cpp</li>
@@ -189,7 +179,7 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>flag_</b></td
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 10:34:19 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 15:24:41 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

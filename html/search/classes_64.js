@@ -6,7 +6,7 @@ var searchData=
   ['desc',['Desc',['../classNeb_1_1gui_1_1Desc.html',1,'Neb::gui']]],
   ['desc',['desc',['../classNeb_1_1window_1_1desc.html',1,'Neb::window']]],
   ['desc',['desc',['../classNeb_1_1Actor_1_1desc.html',1,'Neb::Actor']]],
-  ['desc',['desc',['../classglutpp_1_1scene_1_1desc.html',1,'glutpp::scene']]],
+  ['desc',['desc',['../classNeb_1_1Scene_1_1desc.html',1,'Neb::Scene']]],
   ['desc',['desc',['../classNeb_1_1Shape_1_1desc.html',1,'Neb::Shape']]],
   ['desc',['desc',['../classNeb_1_1light_1_1desc.html',1,'Neb::light']]],
   ['double',['Double',['../classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Double.html',1,'Neb::glsl::Uniform::Scalar']]],

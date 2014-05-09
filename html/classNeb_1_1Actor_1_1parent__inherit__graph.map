@@ -1,12 +1,13 @@
 <map id="G" name="G">
-<area shape="rect" id="node5" href="$classNeb_1_1Actor_1_1Base.html" title="Base" alt="" coords="293,160,416,189"/>
-<area shape="rect" id="node21" href="$classNeb_1_1Scene_1_1scene.html" title="Neb::Scene::scene" alt="" coords="440,160,573,189"/>
-<area shape="rect" id="node2" href="$classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="388,5,473,35"/>
-<area shape="rect" id="node7" href="$classNeb_1_1Actor_1_1Actor.html" title="Neb::Actor::Actor" alt="" coords="133,237,256,267"/>
-<area shape="rect" id="node17" href="$classNeb_1_1Actor_1_1Controller.html" title="Neb::Actor::Controller" alt="" coords="280,237,429,267"/>
-<area shape="rect" id="node19" href="$classneb_1_1Actor_1_1empty.html" title="neb::Actor::empty" alt="" coords="453,237,579,267"/>
-<area shape="rect" id="node9" href="$classNeb_1_1Actor_1_1RigidActor.html" title="Neb::Actor::RigidActor" alt="" coords="117,315,272,344"/>
-<area shape="rect" id="node11" href="$classNeb_1_1Actor_1_1Rigid__Static.html" title="Neb::Actor::Rigid_Static" alt="" coords="5,392,168,421"/>
-<area shape="rect" id="node13" href="$classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html" title="Neb::Actor::RigidBody::RigidBody" alt="" coords="192,392,413,421"/>
-<area shape="rect" id="node15" href="$classNeb_1_1Actor_1_1Rigid__Dynamic.html" title="Neb::Actor::Rigid_Dynamic" alt="" coords="212,469,393,499"/>
+<area shape="rect" id="node7" href="$classNeb_1_1Actor_1_1Base.html" title="Base" alt="" coords="293,160,416,189"/>
+<area shape="rect" id="node23" href="$classNeb_1_1Scene_1_1scene.html" title="Neb::Scene::scene" alt="" coords="440,160,573,189"/>
+<area shape="rect" id="node2" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="305,5,425,35"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="449,5,543,35"/>
+<area shape="rect" id="node9" href="$classNeb_1_1Actor_1_1Actor.html" title="Neb::Actor::Actor" alt="" coords="133,237,256,267"/>
+<area shape="rect" id="node19" href="$classNeb_1_1Actor_1_1Controller.html" title="Neb::Actor::Controller" alt="" coords="280,237,429,267"/>
+<area shape="rect" id="node21" href="$classNeb_1_1Actor_1_1empty.html" title="Neb::Actor::empty" alt="" coords="453,237,581,267"/>
+<area shape="rect" id="node11" href="$classNeb_1_1Actor_1_1RigidActor.html" title="Neb::Actor::RigidActor" alt="" coords="117,315,272,344"/>
+<area shape="rect" id="node13" href="$classNeb_1_1Actor_1_1Rigid__Static.html" title="Neb::Actor::Rigid_Static" alt="" coords="5,392,168,421"/>
+<area shape="rect" id="node15" href="$classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html" title="Neb::Actor::RigidBody::RigidBody" alt="" coords="192,392,413,421"/>
+<area shape="rect" id="node17" href="$classNeb_1_1Actor_1_1Rigid__Dynamic.html" title="Neb::Actor::Rigid_Dynamic" alt="" coords="212,469,393,499"/>
 </map>

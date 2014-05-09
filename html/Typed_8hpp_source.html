@@ -150,27 +150,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00075"></a>00075         };
 <a name="l00077"></a><a class="code" href="classNeb_1_1WrapperTyped.html">00077</a>         <span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span><a class="code" href="classNeb_1_1WrapperTyped.html" title="WrapperTyped.">WrapperTyped</a> {
 <a name="l00078"></a>00078                 <span class="keyword">public</span>:
-<a name="l00080"></a><a class="code" href="classNeb_1_1WrapperTyped.html#acca2803bb2a5c1ca4b3b5ff51a04b421">00080</a>                         <span class="keyword">virtual</span> <a class="code" href="classNeb_1_1WrapperTyped.html#acca2803bb2a5c1ca4b3b5ff51a04b421" title="Destructor.">~WrapperTyped</a>() {}
-<a name="l00082"></a><a class="code" href="classNeb_1_1WrapperTyped.html#a293a6083747b145c8b9db4a9f1410f89">00082</a>                         <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>            <a class="code" href="classNeb_1_1WrapperTyped.html#a293a6083747b145c8b9db4a9f1410f89" title="Serialize.">load</a>(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
-<a name="l00083"></a>00083                                 <span class="keywordtype">long</span> <span class="keywordtype">int</span> hash_code;
-<a name="l00084"></a>00084                                 ar &gt;&gt; boost::serialization::make_nvp(<span class="stringliteral">&quot;hash_code&quot;</span>, hash_code);
-<a name="l00085"></a>00085                                 <a class="code" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6" title="Object.">ptr_</a>.reset((T*)<a class="code" href="classNeb_1_1Factory.html" title="Factory the app shall hold instances of Factory for the various types and use cases.">Neb::Factory&lt;T&gt;::global</a>()-&gt;alloc(hash_code));
-<a name="l00086"></a>00086                                 ar &gt;&gt; boost::serialization::make_nvp(<span class="stringliteral">&quot;object&quot;</span>, *<a class="code" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6" title="Object.">ptr_</a>);
-<a name="l00087"></a>00087                         }
-<a name="l00088"></a>00088                         <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>            save(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version)<span class="keyword"> const </span>{
-<a name="l00089"></a>00089                                 ar &lt;&lt; boost::serialization::make_nvp(<span class="stringliteral">&quot;hash_code&quot;</span>, <a class="code" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6" title="Object.">ptr_</a>-&gt;hash_code());
-<a name="l00090"></a>00090                                 ar &lt;&lt; boost::serialization::make_nvp(<span class="stringliteral">&quot;object&quot;</span>, *<a class="code" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6" title="Object.">ptr_</a>);
-<a name="l00091"></a>00091                         }
-<a name="l00092"></a>00092                         BOOST_SERIALIZATION_SPLIT_MEMBER();
-<a name="l00093"></a>00093                 <span class="keyword">public</span>:
-<a name="l00095"></a><a class="code" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6">00095</a>                         <a class="code" href="classNeb_1_1unique__ptr.html">Neb::unique_ptr&lt;T&gt;</a>                      <a class="code" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6" title="Object.">ptr_</a>;
-<a name="l00096"></a>00096         };
-<a name="l00097"></a>00097 }
-<a name="l00098"></a>00098 
-<a name="l00099"></a>00099 <span class="preprocessor">#endif</span>
-<a name="l00100"></a>00100 <span class="preprocessor"></span>
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102 
+<a name="l00080"></a><a class="code" href="classNeb_1_1WrapperTyped.html#affd6a7fcbeb1df7b5923d304c41089bd">00080</a>                         <a class="code" href="classNeb_1_1WrapperTyped.html#affd6a7fcbeb1df7b5923d304c41089bd" title="Constructor.">WrapperTyped</a>(boost::weak_ptr&lt; <a class="code" href="classNeb_1_1Factory.html" title="Factory the app shall hold instances of Factory for the various types and use cases.">Neb::Factory&lt;T&gt;</a> &gt; factory): factory_(factory) {}
+<a name="l00082"></a><a class="code" href="classNeb_1_1WrapperTyped.html#acca2803bb2a5c1ca4b3b5ff51a04b421">00082</a>                         <span class="keyword">virtual</span> <a class="code" href="classNeb_1_1WrapperTyped.html#acca2803bb2a5c1ca4b3b5ff51a04b421" title="Destructor.">~WrapperTyped</a>() {}
+<a name="l00084"></a><a class="code" href="classNeb_1_1WrapperTyped.html#a293a6083747b145c8b9db4a9f1410f89">00084</a>                         <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>            <a class="code" href="classNeb_1_1WrapperTyped.html#a293a6083747b145c8b9db4a9f1410f89" title="Serialize.">load</a>(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
+<a name="l00085"></a>00085                                 <span class="keywordtype">long</span> <span class="keywordtype">int</span> hash_code;
+<a name="l00086"></a>00086                                 ar &gt;&gt; boost::serialization::make_nvp(<span class="stringliteral">&quot;hash_code&quot;</span>, hash_code);
+<a name="l00087"></a>00087                                 
+<a name="l00088"></a>00088                                 <span class="keyword">auto</span> fs = factory_.lock();
+<a name="l00089"></a>00089                                 assert(fs);
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091                                 <a class="code" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6" title="Object.">ptr_</a>.reset((T*)fs-&gt;alloc(hash_code));
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093                                 ar &gt;&gt; boost::serialization::make_nvp(<span class="stringliteral">&quot;object&quot;</span>, *<a class="code" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6" title="Object.">ptr_</a>);
+<a name="l00094"></a>00094                         }
+<a name="l00095"></a>00095                         <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>            save(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version)<span class="keyword"> const </span>{
+<a name="l00096"></a>00096                                 ar &lt;&lt; boost::serialization::make_nvp(<span class="stringliteral">&quot;hash_code&quot;</span>, <a class="code" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6" title="Object.">ptr_</a>-&gt;hash_code());
+<a name="l00097"></a>00097                                 ar &lt;&lt; boost::serialization::make_nvp(<span class="stringliteral">&quot;object&quot;</span>, *<a class="code" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6" title="Object.">ptr_</a>);
+<a name="l00098"></a>00098                         }
+<a name="l00099"></a>00099                         BOOST_SERIALIZATION_SPLIT_MEMBER();
+<a name="l00100"></a>00100                 <span class="keyword">public</span>:
+<a name="l00102"></a><a class="code" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6">00102</a>                         <a class="code" href="classNeb_1_1unique__ptr.html">Neb::unique_ptr&lt;T&gt;</a>                      <a class="code" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6" title="Object.">ptr_</a>;
+<a name="l00103"></a>00103                         boost::weak_ptr&lt; Neb::Factory&lt;T&gt; &gt;      factory_;
+<a name="l00104"></a>00104         };
+<a name="l00105"></a>00105 }
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 <span class="preprocessor">#endif</span>
+<a name="l00108"></a>00108 <span class="preprocessor"></span>
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -189,7 +196,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 10:34:19 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 15:24:40 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

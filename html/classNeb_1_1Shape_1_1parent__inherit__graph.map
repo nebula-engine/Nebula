@@ -1,16 +1,17 @@
 <map id="G" name="G">
-<area shape="rect" id="node5" href="$classNeb_1_1Actor_1_1Base.html" title="Base" alt="" coords="332,112,455,141"/>
-<area shape="rect" id="node21" href="$classNeb_1_1Shape_1_1shape.html" title="Neb::Shape::shape" alt="" coords="327,245,460,275"/>
-<area shape="rect" id="node2" href="$classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="7,192,92,221"/>
-<area shape="rect" id="node7" href="$classNeb_1_1Actor_1_1Actor.html" title="Neb::Actor::Actor" alt="" coords="543,32,665,61"/>
-<area shape="rect" id="node17" href="$classNeb_1_1Actor_1_1Controller.html" title="Neb::Actor::Controller" alt="" coords="529,85,679,115"/>
-<area shape="rect" id="node19" href="$classneb_1_1Actor_1_1empty.html" title="neb::Actor::empty" alt="" coords="541,139,667,168"/>
-<area shape="rect" id="node9" href="$classNeb_1_1Actor_1_1RigidActor.html" title="Neb::Actor::RigidActor" alt="" coords="747,32,901,61"/>
-<area shape="rect" id="node11" href="$classNeb_1_1Actor_1_1Rigid__Static.html" title="Neb::Actor::Rigid_Static" alt="" coords="979,5,1141,35"/>
-<area shape="rect" id="node13" href="$classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html" title="Neb::Actor::RigidBody::RigidBody" alt="" coords="949,59,1171,88"/>
-<area shape="rect" id="node15" href="$classNeb_1_1Actor_1_1Rigid__Dynamic.html" title="Neb::Actor::Rigid_Dynamic" alt="" coords="1220,59,1401,88"/>
-<area shape="rect" id="node23" href="$classNeb_1_1Shape_1_1Box_1_1Box.html" title="Neb::Shape::Box::Box" alt="" coords="528,192,680,221"/>
-<area shape="rect" id="node25" href="$classNeb_1_1Shape_1_1Empty_1_1Empty.html" title="Neb::Shape::Empty::Empty" alt="" coords="513,245,695,275"/>
-<area shape="rect" id="node27" href="$classNeb_1_1Shape_1_1Physical.html" title="Neb::Shape::Physical" alt="" coords="529,299,679,328"/>
-<area shape="rect" id="node29" href="$classNeb_1_1Shape_1_1Sphere_1_1Sphere.html" title="Neb::Shape::Sphere::Sphere" alt="" coords="509,352,699,381"/>
+<area shape="rect" id="node7" href="$classNeb_1_1Actor_1_1Base.html" title="Base" alt="" coords="364,112,487,141"/>
+<area shape="rect" id="node23" href="$classNeb_1_1Shape_1_1shape.html" title="Neb::Shape::shape" alt="" coords="359,245,492,275"/>
+<area shape="rect" id="node2" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="5,165,125,195"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="19,219,112,248"/>
+<area shape="rect" id="node9" href="$classNeb_1_1Actor_1_1Actor.html" title="Neb::Actor::Actor" alt="" coords="575,32,697,61"/>
+<area shape="rect" id="node19" href="$classNeb_1_1Actor_1_1Controller.html" title="Neb::Actor::Controller" alt="" coords="561,85,711,115"/>
+<area shape="rect" id="node21" href="$classNeb_1_1Actor_1_1empty.html" title="Neb::Actor::empty" alt="" coords="572,139,700,168"/>
+<area shape="rect" id="node11" href="$classNeb_1_1Actor_1_1RigidActor.html" title="Neb::Actor::RigidActor" alt="" coords="779,32,933,61"/>
+<area shape="rect" id="node13" href="$classNeb_1_1Actor_1_1Rigid__Static.html" title="Neb::Actor::Rigid_Static" alt="" coords="1011,5,1173,35"/>
+<area shape="rect" id="node15" href="$classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html" title="Neb::Actor::RigidBody::RigidBody" alt="" coords="981,59,1203,88"/>
+<area shape="rect" id="node17" href="$classNeb_1_1Actor_1_1Rigid__Dynamic.html" title="Neb::Actor::Rigid_Dynamic" alt="" coords="1252,59,1433,88"/>
+<area shape="rect" id="node25" href="$classNeb_1_1Shape_1_1Box_1_1Box.html" title="Neb::Shape::Box::Box" alt="" coords="560,192,712,221"/>
+<area shape="rect" id="node27" href="$classNeb_1_1Shape_1_1Empty_1_1Empty.html" title="Neb::Shape::Empty::Empty" alt="" coords="545,245,727,275"/>
+<area shape="rect" id="node29" href="$classNeb_1_1Shape_1_1Physical.html" title="Neb::Shape::Physical" alt="" coords="561,299,711,328"/>
+<area shape="rect" id="node31" href="$classNeb_1_1Shape_1_1Sphere_1_1Sphere.html" title="Neb::Shape::Sphere::Sphere" alt="" coords="541,352,731,381"/>
 </map>

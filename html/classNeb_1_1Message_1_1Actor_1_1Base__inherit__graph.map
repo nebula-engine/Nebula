@@ -1,4 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node5" href="$classNeb_1_1Message_1_1Actor_1_1Event.html" title="Event" alt="" coords="5,160,192,189"/>
-<area shape="rect" id="node2" href="$classNeb_1_1Typed.html" title="Typed." alt="" coords="53,5,144,35"/>
+<area shape="rect" id="node5" href="$classNeb_1_1Message_1_1Actor_1_1Control_1_1RigidBody_1_1Create.html" title="Create." alt="" coords="379,5,688,35"/>
+<area shape="rect" id="node7" href="$classNeb_1_1Message_1_1Actor_1_1Control_1_1RigidBody_1_1Update.html" title="Update." alt="" coords="376,59,691,88"/>
+<area shape="rect" id="node9" href="$classNeb_1_1Message_1_1Actor_1_1Event.html" title="Event" alt="" coords="440,112,627,141"/>
+<area shape="rect" id="node2" href="$classNeb_1_1Typed.html" title="Typed." alt="" coords="5,59,96,88"/>
 </map>

@@ -1,9 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" id="node9" href="$classNeb_1_1Shape_1_1Box_1_1Box.html" title="Neb::Shape::Box::Box" alt="" coords="528,5,680,35"/>
-<area shape="rect" id="node11" href="$classNeb_1_1Shape_1_1Empty_1_1Empty.html" title="Neb::Shape::Empty::Empty" alt="" coords="513,59,695,88"/>
-<area shape="rect" id="node13" href="$classNeb_1_1Shape_1_1Physical.html" title="Neb::Shape::Physical" alt="" coords="529,112,679,141"/>
-<area shape="rect" id="node15" href="$classNeb_1_1Shape_1_1Sphere_1_1Sphere.html" title="Neb::Shape::Sphere::Sphere" alt="" coords="509,165,699,195"/>
-<area shape="rect" id="node2" href="$classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="143,59,276,88"/>
-<area shape="rect" id="node4" href="$classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="7,59,92,88"/>
-<area shape="rect" id="node6" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="176,112,243,141"/>
+<area shape="rect" id="node11" href="$classNeb_1_1Shape_1_1Box_1_1Box.html" title="Neb::Shape::Box::Box" alt="" coords="560,5,712,35"/>
+<area shape="rect" id="node13" href="$classNeb_1_1Shape_1_1Empty_1_1Empty.html" title="Neb::Shape::Empty::Empty" alt="" coords="545,59,727,88"/>
+<area shape="rect" id="node15" href="$classNeb_1_1Shape_1_1Physical.html" title="Neb::Shape::Physical" alt="" coords="561,112,711,141"/>
+<area shape="rect" id="node17" href="$classNeb_1_1Shape_1_1Sphere_1_1Sphere.html" title="Neb::Shape::Sphere::Sphere" alt="" coords="541,165,731,195"/>
+<area shape="rect" id="node2" href="$classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="175,59,308,88"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="5,32,125,61"/>
+<area shape="rect" id="node6" href="$classNeb_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="19,85,112,115"/>
+<area shape="rect" id="node8" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="208,112,275,141"/>
 </map>

@@ -8,9 +8,9 @@ var searchData=
   ['serial_5fext',['serial_ext',['../classgal_1_1network_1_1serial__ext.html',1,'gal::network']]],
   ['server',['server',['../classgal_1_1network_1_1server.html',1,'gal::network']]],
   ['server',['server',['../classNeb_1_1network_1_1server.html',1,'Neb::network']]],
-  ['shader',['shader',['../classglutpp_1_1glsl_1_1shader.html',1,'glutpp::glsl']]],
+  ['shader',['shader',['../classNeb_1_1glsl_1_1shader.html',1,'Neb::glsl']]],
   ['shape',['shape',['../classNeb_1_1Shape_1_1shape.html',1,'Neb::Shape']]],
-  ['shared',['shared',['../classgru_1_1shared.html',1,'gru']]],
+  ['shared',['Shared',['../classNeb_1_1Shared.html',1,'Neb']]],
   ['simulation_5fcallback',['simulation_callback',['../classNeb_1_1simulation__callback.html',1,'Neb']]],
   ['sphere',['Sphere',['../classNeb_1_1Shape_1_1Sphere_1_1Sphere.html',1,'Neb::Shape::Sphere']]],
   ['sphere',['sphere',['../classmath_1_1geo_1_1sphere.html',1,'math::geo']]]

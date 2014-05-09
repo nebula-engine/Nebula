@@ -1,10 +1,10 @@
 <map id="G" name="G">
 <area shape="rect" id="node2" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="159,5,225,35"/>
 <area shape="rect" id="node4" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Neb::Factory\&lt; Neb::Actor::Base \&gt; \&gt;" alt="" coords="23,59,361,88"/>
-<area shape="rect" id="node6" href="$classNeb_1_1weak__ptr.html" title="Neb::weak_ptr\&lt; T \&gt;" alt="" coords="123,112,261,141"/>
-<area shape="rect" id="node8" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Neb::Factory\&lt; Neb::gui::object::object \&gt; \&gt;" alt="" coords="5,165,379,195"/>
-<area shape="rect" id="node10" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Neb::Factory\&lt; Neb::Shape::shape \&gt; \&gt;" alt="" coords="17,219,367,248"/>
-<area shape="rect" id="node12" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Neb::Factory\&lt; Neb::Shape::Raw \&gt; \&gt;" alt="" coords="21,272,363,301"/>
+<area shape="rect" id="node6" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Neb::Factory\&lt; Neb::gui::object::object \&gt; \&gt;" alt="" coords="5,112,379,141"/>
+<area shape="rect" id="node8" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Neb::Factory\&lt; Neb::Shape::shape \&gt; \&gt;" alt="" coords="17,165,367,195"/>
+<area shape="rect" id="node10" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Neb::Factory\&lt; Neb::Shape::Raw \&gt; \&gt;" alt="" coords="21,219,363,248"/>
+<area shape="rect" id="node12" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Neb::Factory\&lt; Neb::Scene::raw \&gt; \&gt;" alt="" coords="24,272,360,301"/>
 <area shape="rect" id="node14" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Neb::master \&gt;" alt="" coords="87,325,297,355"/>
 <area shape="rect" id="node16" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Neb::Factory\&lt; Neb::Actor::raw \&gt; \&gt;" alt="" coords="27,379,357,408"/>
 </map>

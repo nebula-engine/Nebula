@@ -1,8 +1,8 @@
 var searchData=
 [
   ['camera',['camera',['../classneb_1_1camera_1_1camera.html',1,'neb::camera']]],
-  ['client',['client',['../classgal_1_1network_1_1client.html',1,'gal::network']]],
   ['client',['client',['../classNeb_1_1network_1_1client.html',1,'Neb::network']]],
+  ['client',['client',['../classgal_1_1network_1_1client.html',1,'gal::network']]],
   ['client',['client',['../classgal_1_1network_1_1client.html#a85a7d1b17d3f72516ad76375c79d7bec',1,'gal::network::client']]],
   ['close',['close',['../classgal_1_1network_1_1communicating.html#a3b39dcb940d746f44b6c2c72e198450d',1,'gal::network::communicating']]],
   ['color',['color',['../classNeb_1_1Color_1_1color.html',1,'Neb::Color']]],
