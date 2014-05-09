@@ -9,12 +9,12 @@
 
 //#include <math/mat44.hpp>
 
-//#include <gru/scene/scene.hpp>
-#include <gru/Graphics/glsl/program.hpp>
-#include <gru/Graphics/glsl/Uniform/uniform.hpp>
-//#include <gru/window/window.hpp>
+//#include <Nebula/scene/scene.hpp>
+#include <Nebula/Graphics/glsl/program.hpp>
+#include <Nebula/Graphics/glsl/Uniform/uniform.hpp>
+//#include <Nebula/window/window.hpp>
 
-glutpp::glsl::Uniform::Scalar::Base::Base(std::string name) {
+Neb::glsl::Uniform::Scalar::Base::Base(std::string name) {
 	//printf("%s\n",__PRETTY_FUNCTION__);
 	name_ = name;
 	o_ = -1;
@@ -22,7 +22,7 @@ glutpp::glsl::Uniform::Scalar::Base::Base(std::string name) {
 	//checkerror("glGetUniformLocation");
 	//locate();
 }
-void	glutpp::glsl::Uniform::Scalar::Base::locate(std::shared_ptr<glutpp::glsl::program> p) {
+void	Neb::glsl::Uniform::Scalar::Base::locate(std::shared_ptr<Neb::glsl::program> p) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	assert(p);

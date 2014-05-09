@@ -6,35 +6,34 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <gru/Graphics/window/window.hpp>
-#include <gru/renderable.hpp>
-#include <gru/Graphics/gui/object/object_factory.hpp>
-#include <gru/Graphics/gui/object/object.hpp>
-#include <gru/Graphics/gui/object/edittext.hpp>
+#include <Nebula/Types.hpp>
+#include <Nebula/Graphics/window/window.hpp>
+#include <Nebula/renderable.hpp>
+#include <Nebula/Graphics/gui/object/object_factory.hpp>
+#include <Nebula/Graphics/gui/object/object.hpp>
+#include <Nebula/Graphics/gui/object/edittext.hpp>
 
-#include <gru/Graphics/gui/layout.hpp>
+#include <Nebula/Graphics/gui/layout.hpp>
 
 
 
 
-glutpp::gui::layout::layout()
+Neb::gui::layout::layout()
 {
 
 }
-void glutpp::gui::layout::init(glutpp::renderable_s renderable)
+void Neb::gui::layout::init(Neb::renderable_w renderable)
 {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	assert(renderable);
 	renderable_ = renderable;
 }
-glutpp::window::window_s glutpp::gui::layout::get_window()
-{
-	assert(!renderable_.expired());
-
-	return renderable_.lock()->getWindow();
+Neb::window::window_w Neb::gui::layout::get_window() {
+	auto s = renderable_.lock();
+	return s->getWindow();
 }
 /*
-void glutpp::gui::layout::load_xml(tinyxml2::XMLElement* element)
+void Neb::gui::layout::load_xml(tinyxml2::XMLElement* element)
 {
 	assert(element);
 	tinyxml2::XMLElement* e = element->FirstChildElement("object");
@@ -44,16 +43,16 @@ void glutpp::gui::layout::load_xml(tinyxml2::XMLElement* element)
 	}
 }*/
 /*
-void glutpp::gui::layout::create_object(tinyxml2::XMLElement* element) {
+void Neb::gui::layout::create_object(tinyxml2::XMLElement* element) {
 
 	assert(element);
 
-	auto object = glutpp::master::Global()->object_factory_->create(element);
+	auto object = Neb::master::Global()->object_factory_->create(element);
 
 	objects_.push_back(object);
 }*/
-void glutpp::gui::layout::render(double time) {
-	//auto p = glutpp::master::Global()->use_program(glutpp::program_name::e::TEXT);
+void Neb::gui::layout::render(double time) {
+	//auto p = Neb::master::Global()->use_program(Neb::program_name::e::TEXT);
 
 	//Restore other states
 	//glDisable(GL_LIGHTING);
@@ -69,7 +68,7 @@ void glutpp::gui::layout::render(double time) {
 
 	draw();
 }
-void glutpp::gui::layout::draw() {
+void Neb::gui::layout::draw() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	//jess::clog << "objects_.size()=" << objects_.map_.size() << std::endl;
 
@@ -77,13 +76,15 @@ void glutpp::gui::layout::draw() {
 		it->second->draw();
 	}
 }
-void glutpp::gui::layout::connect() {
+void Neb::gui::layout::connect() {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	glutpp::window::window_s w = get_window();
+	Neb::window::window_s w = get_window().lock();
+	
+	assert(w);
 
 	conns_.key_fun_ = w->sig_.key_fun_.connect(
-			std::bind(&glutpp::gui::layout::key_fun,
+			std::bind(&Neb::gui::layout::key_fun,
 				this,
 				std::placeholders::_1,
 				std::placeholders::_2,
@@ -92,7 +93,7 @@ void glutpp::gui::layout::connect() {
 				));
 
 	conns_.mouse_button_fun_ = w->sig_.mouse_button_fun_.connect(
-			std::bind(&glutpp::gui::layout::mouse_button_fun,
+			std::bind(&Neb::gui::layout::mouse_button_fun,
 				this,
 				std::placeholders::_1,
 				std::placeholders::_2,
@@ -100,10 +101,10 @@ void glutpp::gui::layout::connect() {
 				));
 
 }
-int glutpp::gui::layout::key_fun(int key, int scancode, int action, int mode) {
+int Neb::gui::layout::key_fun(int key, int scancode, int action, int mode) {
 	return 0;
 }
-int glutpp::gui::layout::mouse_button_fun(int button, int action, int mods) {
+int Neb::gui::layout::mouse_button_fun(int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	switch(action)
@@ -122,13 +123,16 @@ int glutpp::gui::layout::mouse_button_fun(int button, int action, int mods) {
 	
 	return 0;
 }
-int glutpp::gui::layout::search(int button, int action, int mods) {
+int Neb::gui::layout::search(int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
+
+	auto s_window = get_window().lock();
+	assert(s_window);
 
 	double x, y;
 	int w, h;
-	glfwGetCursorPos(get_window()->window_, &x, &y);
-	glfwGetWindowSize(get_window()->window_, &w, &h);
+	glfwGetCursorPos(s_window->window_, &x, &y);
+	glfwGetWindowSize(s_window->window_, &w, &h);
 
 	printf("%f %f %i %i\n", x, y, w, h);
 

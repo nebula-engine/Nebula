@@ -1,6 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classgal_1_1network_1_1communicating.html" title="gal::network::communicating" alt="" coords="5,32,195,61"/>
-<area shape="rect" id="node3" href="$classgal_1_1network_1_1client.html" title="socket_client" alt="" coords="276,5,407,35"/>
-<area shape="rect" id="node7" href="$classNeb_1_1network_1_1communicating.html" title="Neb::network::communicating" alt="" coords="244,59,439,88"/>
-<area shape="rect" id="node5" href="$classNeb_1_1network_1_1client.html" title="Neb::network::client" alt="" coords="488,32,627,61"/>
+<area shape="rect" id="node1" href="$classgal_1_1network_1_1serial2.html" title="gal::network::serial2\&lt; T \&gt;" alt="" coords="5,5,176,35"/>
 </map>

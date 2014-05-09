@@ -42,7 +42,7 @@ namespace Neb {
 				};
 
 
-				unsigned int const		f() const;
+				unsigned int const &		f() const;
 				void				f(unsigned int const & flag);
 				int const			i() const;
 				void				i(int const & ni);
@@ -55,9 +55,12 @@ namespace Neb {
 				void				render(double time);
 				void				step(double time);
 				/** @} */
-				void	resize();
-				void	set_layout(Neb::gui::layout_w layout);
-				void	set_scene(Neb::Scene::scene_w scene);
+				void		resize();
+				/** @ brief Set Layout.
+				 * @param layout @c shared_ptr what will be moved
+				 */
+				void		set_layout(Neb::gui::layout_s & layout);
+				void		set_scene(Neb::Scene::scene_s & scene);
 
 				void	callback_window_pos_fun(GLFWwindow*,int,int);
 				void	callback_window_size_fun(GLFWwindow*,int,int);

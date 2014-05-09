@@ -2,9 +2,9 @@
 
 #include <string.h>
 
-#include <gru/Graphics/window/desc.hpp>
+#include <Nebula/Graphics/window/desc.hpp>
 
-glutpp::window::raw::raw():
+Neb::window::raw::raw():
 	i_(-1),
 	flag_(0),
 	x_(0),
@@ -15,7 +15,7 @@ glutpp::window::raw::raw():
 	memset(title_, 0, title_length_max);
 }
 
-glutpp::window::desc::desc(int w, int h, int x, int y, const char * title) {
+Neb::window::desc::desc(int w, int h, int x, int y, const char * title) {
 	raw_.flag_ = 0;
 
 	raw_.w_ = w;

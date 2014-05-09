@@ -1,7 +1,7 @@
 #include <Nebula/debug.hpp>
 #include <Nebula/Actor/Base.hpp>
 #include <Nebula/Actor/Util/parent.hpp>
-#include <Nebula/scene/scene.hpp>
+#include <Nebula/Scene/scene.hpp>
 
 Neb::weak_ptr<Neb::Actor::Base>			Neb::Actor::parent::isActor() {
 	

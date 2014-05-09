@@ -49,10 +49,11 @@ namespace Neb {
 				shape(Neb::weak_ptr<Neb::Shape::parent> parent);
 				~shape();
 				
-				physx::PxMat44					getPose();
-				physx::PxMat44					getPoseGlobal();
+				/** @name Accessors @{ */
+				physx::PxTransform				getPose();
+				physx::PxTransform				getPoseGlobal();
 				Neb::Shape::parent_w				getParent();
-
+				/** @} */
 
 				void			init(Neb::Shape::desc_w desc);
 

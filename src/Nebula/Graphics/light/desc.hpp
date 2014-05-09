@@ -19,7 +19,7 @@ namespace Neb {
 		class desc {
 			public:
 				desc();
-				void					load(Neb::weak_ptr<Neb::light::light>);
+				void					load(Neb::light::light_w);
 				
 				template<class Archive> void		serialize(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("i",i_);

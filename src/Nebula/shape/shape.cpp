@@ -25,10 +25,10 @@ gal::flag::flag_type		Neb::Shape::shape::f() {
 void Neb::Shape::shape::f(unsigned int flag) {
 	raw_->flag_ = flag;
 }
-Neb::Math::Mat44	Neb::Shape::shape::getPoseGlobal() {
+Neb::Math::Transform	Neb::Shape::shape::getPoseGlobal() {
 	NEBULA_SHAPE_BASE_FUNC;
 	
-	Neb::Math::Mat44 m;
+	Neb::Math::Transform m;
 	
 	if(!parent_.expired()) {
 		m = parent_.lock()->getPoseGlobal() * getPose();
@@ -38,7 +38,7 @@ Neb::Math::Mat44	Neb::Shape::shape::getPoseGlobal() {
 	
 	return m;
 }
-Neb::Math::Mat44 Neb::Shape::shape::getPose() {
+Neb::Math::Transform		Neb::Shape::shape::getPose() {
 	return raw_->pose_;
 }
 void		Neb::Shape::shape::init(Neb::Shape::desc_w desc) {

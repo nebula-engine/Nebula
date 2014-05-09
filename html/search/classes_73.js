@@ -12,6 +12,6 @@ var searchData=
   ['shape',['shape',['../classNeb_1_1Shape_1_1shape.html',1,'Neb::Shape']]],
   ['shared',['shared',['../classgru_1_1shared.html',1,'gru']]],
   ['simulation_5fcallback',['simulation_callback',['../classNeb_1_1simulation__callback.html',1,'Neb']]],
-  ['sphere',['sphere',['../classmath_1_1geo_1_1sphere.html',1,'math::geo']]],
-  ['sphere',['Sphere',['../classNeb_1_1Shape_1_1Sphere_1_1Sphere.html',1,'Neb::Shape::Sphere']]]
+  ['sphere',['Sphere',['../classNeb_1_1Shape_1_1Sphere_1_1Sphere.html',1,'Neb::Shape::Sphere']]],
+  ['sphere',['sphere',['../classmath_1_1geo_1_1sphere.html',1,'math::geo']]]
 ];

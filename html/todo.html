@@ -82,15 +82,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <dd>pass exception to main thread ( or whoever )  </dd>
 <dt><a class="anchor" id="_todo000003"></a>Member <a class="el" href="classglutpp_1_1Camera_1_1Projection_1_1Base.html#ac42d1a82122668c3958c586eea0d88d3">glutpp::Camera::Projection::Base::step</a>  (double)</dt>
 <dd>explain when in timeline this occurs and in which thread and why  </dd>
-<dt><a class="anchor" id="_todo000004"></a>Member <a class="el" href="classglutpp_1_1Camera_1_1View_1_1Base.html#abce83ff7d7f2b50811489ff85cd870c7">glutpp::Camera::View::Base::step</a>  (double)=0</dt>
-<dd>explain when in timeline this occurs and in which thread and why  </dd>
 <dt><a class="anchor" id="_todo000007"></a>Class <a class="el" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html">glutpp::network::actor::update::addr_raw</a>  </dt>
 <dd>find a way to implement this using WrapperTyped or somehting like it  </dd>
 <dt><a class="anchor" id="_todo000008"></a>Member <a class="el" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a4883db7c0b5227e0fcb124f786a121c1">glutpp::network::actor::update::addr_raw::load</a>  (Archive &amp;ar, unsigned int const &amp;version)</dt>
 <dd>handle this gracefully  </dd>
 <dt><a class="anchor" id="_todo000006"></a>Member <a class="el" href="structglutpp_1_1network_1_1actor_1_1update.html#a2a7bee8209aa582266f5bb4e6e729501">glutpp::network::actor::update::load</a>  (Neb::weak_ptr&lt; glutpp::actor::actor &gt; const &amp;actor)</dt>
 <dd>this and all similar functions should be not be called "load", in fact, they are used on the "save" side of the serialization process. if anything, call them save.  </dd>
-<dt><a class="anchor" id="_todo000011"></a>Member <a class="el" href="classglutpp_1_1scene_1_1desc.html#a90063754f769b68b932ee7a54c252d69">glutpp::scene::desc::serialize</a>  (Archive &amp;ar, unsigned int const &amp;version)</dt>
+<dt><a class="anchor" id="_todo000012"></a>Member <a class="el" href="classglutpp_1_1scene_1_1desc.html#a90063754f769b68b932ee7a54c252d69">glutpp::scene::desc::serialize</a>  (Archive &amp;ar, unsigned int const &amp;version)</dt>
 <dd>no idea why this fails  </dd>
 <dt><a class="anchor" id="_todo000005"></a>Namespace <a class="el" href="namespaceNeb.html">Neb</a>  </dt>
 <dd><p class="startdd">under what conditions is it necessary to </p>
@@ -98,9 +96,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </dd>
 <dt><a class="anchor" id="_todo000001"></a>Member <a class="el" href="classNeb_1_1app.html#acefbc3bb3de71f3c8cca0afc1fada857">Neb::app::recv_scene_create</a>  (std::shared_ptr&lt; gal::network::message &gt;)</dt>
 <dd>consider putting following functions into the messages themselves: would be cleaner that way.  </dd>
-<dt><a class="anchor" id="_todo000002"></a>Member <a class="el" href="classneb_1_1control_1_1rigid__body_1_1control.html#a6fad3693d3a31440201a928bc04e71d4">neb::control::rigid_body::control::step_local1</a>  (double)</dt>
-<dd>replace with independent control system library  </dd>
-<dt><a class="anchor" id="_todo000014"></a>Member <a class="el" href="classNeb_1_1Shape_1_1desc.html#a8356295ceee1f17dd24afbdb455dd206">Neb::Shape::desc::operator&lt;&lt;</a>  (Neb::Shape::shape_w const &amp;)</dt>
+<dt><a class="anchor" id="_todo000004"></a>Member <a class="el" href="classNeb_1_1Camera_1_1View_1_1Base.html#aa3c5978efc6cd916f0f91bb8def375c5">Neb::Camera::View::Base::step</a>  (double)=0</dt>
+<dd>explain when in timeline this occurs and in which thread and why  </dd>
+<dt><a class="anchor" id="_todo000011"></a>Class <a class="el" href="classNeb_1_1renderable.html">Neb::renderable</a>  </dt>
+<dd>eventually replace this with Context and allow multiple Contexts per window and allow scene and layout to have different and overalpping Contexts.  </dd>
+<dt><a class="anchor" id="_todo000015"></a>Member <a class="el" href="classNeb_1_1Shape_1_1desc.html#a8356295ceee1f17dd24afbdb455dd206">Neb::Shape::desc::operator&lt;&lt;</a>  (Neb::Shape::shape_w const &amp;)</dt>
 <dd>fill this out </dd>
 </dl>
 </div></div><!-- contents -->
@@ -121,7 +121,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 08:31:56 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 10:34:19 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

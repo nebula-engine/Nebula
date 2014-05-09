@@ -4,18 +4,17 @@
 #include <vector>
 #include <memory>
 
+#include <Nebula/config.hpp>
+//#include <Nebula/camera_control.hpp>
 
-#include <gru/config.hpp>
-//#include <gru/camera_control.hpp>
-
-namespace glutpp {
+namespace Neb {
 	namespace Camera {
 		namespace Projection {
 			/** @brief @Base */
 			class Base {
 				public:
 					/** @brief Constructor */
-					Base(std::shared_ptr<glutpp::renderable>);
+					Base(std::shared_ptr<Neb::renderable>);
 					
 					virtual physx::PxMat44			proj() = 0;
 					void					load();
@@ -26,7 +25,7 @@ namespace glutpp {
 
 					/** @name Accessors @{ */
 					/** @brief Get parent window */
-					glutpp::window::window_s		getWindow();
+					Neb::window::window_s		getWindow();
 					/** @} */
 				protected:
 					/** @brief Parent */
@@ -34,8 +33,8 @@ namespace glutpp {
 			};
 			class Perspective: public Base {
 				public:
-					Perspective(std::shared_ptr<glutpp::renderable>);
-					//void		init(glutpp::renderable_shared);
+					Perspective(std::shared_ptr<Neb::renderable>);
+					//void		init(Neb::renderable_shared);
 					virtual physx::PxMat44			proj();
 
 

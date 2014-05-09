@@ -5,7 +5,7 @@
 
 #include <Nebula/Graphics/Color/Color.hpp>
 
-namespace glutpp {
+namespace Neb {
 	void	draw_quad(float, float, float, float, Neb::Color::color<float>);
 	void	draw_text(float, float, float, float, Neb::Color::color<float>, std::string);
 }

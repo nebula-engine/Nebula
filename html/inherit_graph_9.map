@@ -1,4 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classgal_1_1network_1_1server.html" title="gal::network::server" alt="" coords="7,5,143,35"/>
-<area shape="rect" id="node3" href="$classNeb_1_1network_1_1server.html" title="Neb::network::server" alt="" coords="192,5,336,35"/>
+<area shape="rect" id="node1" href="$structgal_1_1network_1_1vector.html" title="gal::network::vector\&lt; T \&gt;" alt="" coords="7,5,175,35"/>
 </map>

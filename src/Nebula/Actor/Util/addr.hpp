@@ -8,7 +8,7 @@
 
 #include <boost/serialization/deque.hpp>
 
-#include <Nebula/scene/addr.hpp>
+#include <Nebula/Scene/addr.hpp>
 //#include <Nebula/actor/actor.hpp>
 
 namespace Neb {

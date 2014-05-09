@@ -23,6 +23,8 @@
 #include <Nebula/Actor/Types.hpp>
 #include <Nebula/Memory/smart_ptr.hpp>
 
+#include <Nebula/Scene/Types.hpp>
+
 #include <Nebula/Flag.hpp>
 
 namespace Neb {
@@ -126,12 +128,14 @@ namespace Neb {
 				typedef Neb::unique_ptr< Neb::Factory<Neb::Shape::Raw> >		Shape_Raw;
 				typedef Neb::unique_ptr< Neb::Factory<Neb::Shape::shape> >		Shape_Base;
 
+				typedef Neb::unique_ptr< Neb::Factory<Neb::Scene::raw> >		SceneRaw;
 
 				Gui_Object			gui_object_;
 				Actor_Raw			actor_raw_;
 				Actor_Base			actor_base_;
 				Shape_Raw			shape_raw_;
 				Shape_Base			shape_base_;
+				SceneRaw			scene_raw_;
 			} factories_;
 
 		private:

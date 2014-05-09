@@ -8,7 +8,7 @@
 
 //#include <galaxy/map.hpp>
 
-#include <Nebula/scene/scene.hpp>
+#include <Nebula/Scene/scene.hpp>
 
 #include <Nebula/Actor/Rigid_Dynamic.hpp>
 #include <Nebula/Actor/Rigid_Static.hpp>

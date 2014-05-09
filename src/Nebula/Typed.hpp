@@ -76,13 +76,20 @@ namespace Neb {
 	/** @brief WrapperTyped */
 	template<class T> class WrapperTyped {
 		public:
+			/** @brief Constructor */
+			WrapperTyped(boost::weak_ptr< Neb::Factory<T> > factory): factory_(factory) {}
 			/** @brief Destructor */
 			virtual ~WrapperTyped() {}
 			/** @brief Serialize */
 			template<class Archive> void		load(Archive & ar, unsigned int const & version) {
 				long int hash_code;
 				ar >> boost::serialization::make_nvp("hash_code", hash_code);
-				ptr_.reset((T*)Neb::Factory<T>::global()->alloc(hash_code));
+				
+				auto fs = factory_.lock();
+				assert(fs);
+
+				ptr_.reset((T*)fs->alloc(hash_code));
+
 				ar >> boost::serialization::make_nvp("object", *ptr_);
 			}
 			template<class Archive> void		save(Archive & ar, unsigned int const & version) const {
@@ -93,6 +100,7 @@ namespace Neb {
 		public:
 			/** @brief Object */
 			Neb::unique_ptr<T>			ptr_;
+			boost::weak_ptr< Neb::Factory<T> >	factory_;
 	};
 }
 

@@ -1,0 +1,73 @@
+\hypertarget{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control}{\section{\-Neb\-:\-:\-Actor\-:\-:\-Control\-:\-:\-Rigid\-Body\-:\-:\-Control \-Class \-Reference}
+\label{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control}\index{\-Neb\-::\-Actor\-::\-Control\-::\-Rigid\-Body\-::\-Control@{\-Neb\-::\-Actor\-::\-Control\-::\-Rigid\-Body\-::\-Control}}
+}
+
+
+\-Rigid \-Body \-An object (what did \-I mean by 'object' here, an actor?) makes no distinction between local and remote. \-In a remote scene, the actor will send a control update message. \-In a local scene, the actor will call upon stored values; it makes no difference to the actor whether these value were set by calls to key\-\_\-fun or by a control update message. \-This creates requirements for how control works. \-All infomation needed to determine force and torque at a given point in time must be stored in raw.  
+
+
+
+
+{\ttfamily \#include $<$control.\-hpp$>$}
+
+
+
+\-Collaboration diagram for \-Neb\-:\-:\-Actor\-:\-:\-Control\-:\-:\-Rigid\-Body\-:\-:\-Control\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_aa3e9a66d3be01a43cd1c7199f748fc9d}{virtual int {\bfseries key\-\_\-fun} (int, int, int, int)}\label{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_aa3e9a66d3be01a43cd1c7199f748fc9d}
+
+\item 
+\hypertarget{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a616fd6c157d1f7d5c449514feeb884e7}{void {\bfseries step\-\_\-local} (double)}\label{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a616fd6c157d1f7d5c449514feeb884e7}
+
+\item 
+\hypertarget{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a02e01c325ffcc8da377e65ecbe817992}{void {\bfseries step\-\_\-local0} (double)}\label{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a02e01c325ffcc8da377e65ecbe817992}
+
+\item 
+\hypertarget{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a39580b60ad3098e9fd43dca011c88887}{void {\bfseries step\-\_\-local1} (double)}\label{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a39580b60ad3098e9fd43dca011c88887}
+
+\item 
+\hypertarget{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a91df14fa03a50a714b03af82d7820f24}{physx\-::\-Px\-Vec3 {\bfseries f} ()}\label{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a91df14fa03a50a714b03af82d7820f24}
+
+\item 
+\hypertarget{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_aba27fec3965e7ed17467ca18a6f0f614}{physx\-::\-Px\-Vec3 {\bfseries t} ()}\label{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_aba27fec3965e7ed17467ca18a6f0f614}
+
+\item 
+\hypertarget{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a57c10edecffbf10da86491a8198b789f}{void {\bfseries print} ()}\label{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a57c10edecffbf10da86491a8198b789f}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a24e16704bc48e49910ac07e9edcc0a30}{\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Actor\-::\-Base\-\_\-w} {\bfseries actor\-\_\-}}\label{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a24e16704bc48e49910ac07e9edcc0a30}
+
+\item 
+\hypertarget{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_ab218281197a0d4a1d824799bf758c824}{\hyperlink{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Raw}{\-Neb\-::\-Actor\-::\-Control\-::\-Rigid\-Body\-::\-Raw} {\bfseries raw\-\_\-}}\label{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_ab218281197a0d4a1d824799bf758c824}
+
+\item 
+\hypertarget{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a8196b951987da9350c4b4aebd13c4601}{\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>boost::signals2::connection {\bfseries key\_fun\_}\\
+\} {\bfseries conn\_}}\label{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a8196b951987da9350c4b4aebd13c4601}
+\\
+
+\end{tabbing}\item 
+\hypertarget{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a03650da4b6ce01cda2f10e45284fc9d6}{double {\bfseries last\-\_\-}}\label{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control_a03650da4b6ce01cda2f10e45284fc9d6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Rigid \-Body \-An object (what did \-I mean by 'object' here, an actor?) makes no distinction between local and remote. \-In a remote scene, the actor will send a control update message. \-In a local scene, the actor will call upon stored values; it makes no difference to the actor whether these value were set by calls to key\-\_\-fun or by a control update message. \-This creates requirements for how control works. \-All infomation needed to determine force and torque at a given point in time must be stored in raw. 
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/\-Nebula/control/rigid\-\_\-body/control.\-hpp\end{DoxyCompactItemize}

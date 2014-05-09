@@ -5,6 +5,7 @@
 #include <Nebula/Graphics/Camera/View/ridealong.hpp>
 
 #include <Nebula/debug.hpp>
+#include <Nebula/Types.hpp>
 #include <Nebula/app.hpp>
 #include <Nebula/physics.hpp>
 #include <Nebula/simulation_callback.hpp>
@@ -59,8 +60,8 @@ void Neb::Actor::RigidBody::RigidBody::step_remote(double time) {
 		control_update->raw_.load(control_);
 		
 		msg->write(Neb::network::type::CONTROL_UPDATE);
-
-		msg->ar_ << control_update;
+		
+		control_update->serialize(msg->ar_, 0);
 		
 		app->send_client(msg);
 	}
@@ -154,7 +155,9 @@ void Neb::Actor::RigidBody::RigidBody::create_control(Neb::Actor::Control::Rigid
 	auto me = isRigidBody();
 
 	Neb::Actor::Control::RigidBody::Control_u control(new Neb::Actor::Control::RigidBody::Control);
+	Neb::Actor::Control::RigidBody::Control_w weak(control);
 
+	
 	control_ = control;
 
 	control->actor_ = isBase();
@@ -163,20 +166,28 @@ void Neb::Actor::RigidBody::RigidBody::create_control(Neb::Actor::Control::Rigid
 
 	auto wnd = window_.lock();
 	if(wnd) {
-		control->conn_.key_fun_ = wnd->sig_.key_fun_.connect(std::bind(
+		auto s = weak.lock();
+
+		control->conn_.key_fun_ = wnd->sig_.key_fun_.connect(
+				Neb::Signals::KeyFun::slot_type(
 					&Neb::Actor::Control::RigidBody::Control::key_fun,
-					control,
-					std::placeholders::_1,
-					std::placeholders::_2,
-					std::placeholders::_3,
-					std::placeholders::_4));
+					s.get(),
+					_1,
+					_2,
+					_3,
+					_4
+					).track(s)
+				);
 
 
 
 		// camera control
-		std::shared_ptr<Neb::Camera::View::ridealong> cam(new Neb::Camera::View::ridealong(isBase()));
-
-		wnd->renderable_->view_ = cam;
+		//std::shared_ptr<Neb::Camera::View::ridealong> cam();
+		
+		Neb::Camera::View::Ridealong_s view(new Neb::Camera::View::Ridealong(isBase()));
+		
+		wnd->renderable_->moveView(std::move(view));
+		
 	}
 
 }

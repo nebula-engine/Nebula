@@ -1,14 +1,14 @@
 //#include <math/xml.hpp>
 
-#include <gru/Graphics/light/raw.hpp>
+#include <Nebula/Graphics/light/raw.hpp>
 
-glutpp::light::raw::raw():
+Neb::light::raw::raw():
 	i_(-1),
 	flag_(0),
 	pos_(physx::PxVec4(0.0, 0.0, 0.0, 1.0)),
-	ambient_(gru::Color::black<float>()),
-	diffuse_(gru::Color::white<float>()),
-	specular_(gru::Color::white<float>()),
+	ambient_(Neb::Color::black<float>()),
+	diffuse_(Neb::Color::white<float>()),
+	specular_(Neb::Color::white<float>()),
 	spot_direction_(physx::PxVec3(0.0, 0.0, -1.0)),
 	spot_cutoff_(10.0),
 	spot_exponent_(1.0),
@@ -17,10 +17,10 @@ glutpp::light::raw::raw():
 	atten_linear_(0.0),
 	atten_quad_(0.0)
 {
-	GLUTPP_DEBUG_0_FUNCTION;
+	//GLUTPP_DEBUG_0_FUNCTION;
 }
 
-void	glutpp::light::raw::print() {
+void	Neb::light::raw::print() {
 
 	//pos_.print();
 	printf("pos_                   = % 2.1f % 2.1f % 2.1f % 2.1f\n",

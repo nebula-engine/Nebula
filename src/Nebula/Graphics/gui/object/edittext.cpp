@@ -1,23 +1,23 @@
 
-#include <gru/Graphics/window/window.hpp>
-#include <gru/Graphics/gui/layout.hpp>
-#include <gru/Graphics/gui/object/edittext.hpp>
+#include <Nebula/Graphics/window/window.hpp>
+#include <Nebula/Graphics/gui/layout.hpp>
+#include <Nebula/Graphics/gui/object/edittext.hpp>
 
-glutpp::gui::object::edittext::edittext()
+Neb::gui::object::edittext::edittext()
 {
 
 }
-void	glutpp::gui::object::edittext::draw()
+void	Neb::gui::object::edittext::draw()
 {
 
 }
 
-void	glutpp::gui::object::edittext::connect()
+void	Neb::gui::object::edittext::connect()
 {
-	//std::shared_ptr<glutpp::window> w = get_window();
+	//std::shared_ptr<Neb::window> w = get_window();
 /*
 	conns_.key_fun_ = w->sig_.key_fun_.connect(
-			std::bind(&glutpp::gui::object::object::key_fun,
+			std::bind(&Neb::gui::object::object::key_fun,
 				this,
 				std::placeholders::_1,
 				std::placeholders::_2,
@@ -26,11 +26,11 @@ void	glutpp::gui::object::edittext::connect()
 				));
 */
 }
-int	glutpp::gui::object::edittext::mouse_button_fun(int button, int action, int mods)
+int	Neb::gui::object::edittext::mouse_button_fun(int button, int action, int mods)
 {
 	return 0;
 }
-int	glutpp::gui::object::edittext::key_fun(int key, int scancode, int action, int mods) {
+int	Neb::gui::object::edittext::key_fun(int key, int scancode, int action, int mods) {
 	char k = 'a' - GLFW_KEY_A + key;
 
 	if(action == GLFW_PRESS) {
@@ -53,7 +53,7 @@ int	glutpp::gui::object::edittext::key_fun(int key, int scancode, int action, in
 	
 	return 0;
 }
-int	glutpp::gui::object::edittext::enter()
+int	Neb::gui::object::edittext::enter()
 {
 	return 1;	
 }

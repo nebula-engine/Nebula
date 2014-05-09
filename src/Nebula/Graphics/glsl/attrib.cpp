@@ -3,15 +3,15 @@
 #include <GL/glew.h>
 
 
-#include <gru/Graphics/glsl/attrib.hpp>
-#include <gru/free.hpp>
-#include <gru/Graphics/glsl/program.hpp>
+#include <Nebula/Graphics/glsl/attrib.hpp>
+#include <Nebula/free.hpp>
+#include <Nebula/Graphics/glsl/program.hpp>
 
-glutpp::glsl::attrib::attrib():
+Neb::glsl::attrib::attrib():
 	o_(-1),
 	o_bind_(-1)
 {}
-void	glutpp::glsl::attrib::init(char const * name, GLuint o_bind)
+void	Neb::glsl::attrib::init(char const * name, GLuint o_bind)
 {
 	name_ = name;
 	o_bind_ = o_bind;
@@ -19,7 +19,7 @@ void	glutpp::glsl::attrib::init(char const * name, GLuint o_bind)
 	printf("attrib %s\n",name_);
 	
 }
-int	glutpp::glsl::attrib::locate(std::shared_ptr<glutpp::glsl::program> p) {
+int	Neb::glsl::attrib::locate(std::shared_ptr<Neb::glsl::program> p) {
 	glBindAttribLocation(p->o_, o_bind_, name_);
 	checkerror("glBindAttribLocation");
 	
@@ -36,13 +36,13 @@ int	glutpp::glsl::attrib::locate(std::shared_ptr<glutpp::glsl::program> p) {
 	*/
 	return o_;
 }
-void	glutpp::glsl::attrib::enable()
+void	Neb::glsl::attrib::enable()
 {
 	glEnableVertexAttribArray(o_);
 
 	checkerror("glEnableVertexAttribArray");
 }
-void	glutpp::glsl::attrib::disable()
+void	Neb::glsl::attrib::disable()
 {
 	glDisableVertexAttribArray(o_);
 

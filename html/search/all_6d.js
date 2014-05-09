@@ -14,9 +14,7 @@ var searchData=
   ['mesh',['mesh',['../classNeb_1_1mesh.html',1,'Neb']]],
   ['message',['message',['../classgal_1_1network_1_1message.html#aeec430b4ea74cce419d9a5ab771ebf25',1,'gal::network::message']]],
   ['message',['message',['../classgal_1_1network_1_1message.html',1,'gal::network']]],
-  ['mode_5fcreate',['mode_create',['../structglutpp_1_1actor_1_1mode__create.html',1,'glutpp::actor']]],
   ['mode_5fcreate',['mode_create',['../structNeb_1_1Actor_1_1mode__create.html',1,'Neb::Actor']]],
   ['mode_5fupdate',['mode_update',['../structNeb_1_1Actor_1_1mode__update.html',1,'Neb::Actor']]],
-  ['mode_5fupdate',['mode_update',['../structglutpp_1_1actor_1_1mode__update.html',1,'glutpp::actor']]],
   ['mutex_5f',['mutex_',['../classgal_1_1network_1_1communicating.html#a7afe6898e58ca9087f05124cf4d18b65',1,'gal::network::communicating']]]
 ];

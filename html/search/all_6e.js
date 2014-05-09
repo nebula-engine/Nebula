@@ -1,9 +1,14 @@
 var searchData=
 [
   ['actor',['Actor',['../namespaceNeb_1_1Actor.html',1,'Neb']]],
-  ['control',['control',['../namespaceNeb_1_1Actor_1_1control.html',1,'Neb::Actor']]],
+  ['actor',['Actor',['../namespaceNeb_1_1Message_1_1Actor.html',1,'Neb::Message']]],
+  ['camera',['Camera',['../namespaceNeb_1_1Camera.html',1,'Neb']]],
+  ['control',['Control',['../namespaceNeb_1_1Actor_1_1Control.html',1,'Neb::Actor']]],
+  ['control',['Control',['../namespaceNeb_1_1Message_1_1Actor_1_1Control.html',1,'Neb::Message::Actor']]],
   ['glsl',['glsl',['../namespaceNeb_1_1glsl.html',1,'Neb']]],
   ['gui',['gui',['../namespaceNeb_1_1gui.html',1,'Neb']]],
+  ['light',['light',['../namespaceNeb_1_1light.html',1,'Neb']]],
+  ['message',['Message',['../namespaceNeb_1_1Message.html',1,'Neb']]],
   ['n_5f',['n_',['../classNeb_1_1Actor_1_1raw.html#a635f1e6f3c4be06095d8ebd382de2ac8',1,'Neb::Actor::raw']]],
   ['neb',['Neb',['../namespaceNeb.html',1,'']]],
   ['normal_5f',['normal_',['../classNeb_1_1Shape_1_1Raw.html#a8d5db26dbd8b92368a4a0e024053d134',1,'Neb::Shape::Raw']]],

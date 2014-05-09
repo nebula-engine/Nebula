@@ -6,10 +6,10 @@
 #include <sys/time.h>
 #include <string.h>
 
-#include <gru/free.hpp>
-#include <gru/Graphics/glsl/shader.hpp>
+#include <Nebula/free.hpp>
+#include <Nebula/Graphics/glsl/shader.hpp>
 
-void	glutpp::glsl::shader::load(const char * filename, GLenum shader_type)
+void	Neb::glsl::shader::load(const char * filename, GLenum shader_type)
 {	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	printf("loading %s\n",filename);
@@ -129,7 +129,7 @@ isSupported("GL_ARB_vertex_shader");
 isSupported("GL_ARB_fragment_shader");
 }
 
-void glutpp::shader::CompileProgram(GLuint &program, GLuint shaderObjects[], int numShaders)
+void Neb::shader::CompileProgram(GLuint &program, GLuint shaderObjects[], int numShaders)
 {
 program = glCreateProgram();
 

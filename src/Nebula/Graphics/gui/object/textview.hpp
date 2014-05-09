@@ -1,19 +1,16 @@
 #ifndef __NEBULA_UI_OBJECT_TEXTVIEW_HPP__
 #define __NEBULA_UI_OBJECT_TEXTVIEW_HPP__
 
-#include <gru/Graphics/gui/object/object.hpp>
+#include <Nebula/Graphics/gui/object/object.hpp>
 
-namespace glutpp
-{
-	namespace gui
-	{
-		namespace object
-		{
+namespace Neb {
+	namespace gui {
+		namespace object {
 			/** \brief %textview
 			 * Display and optionally edit text
 			 */
 			class textview:
-				public glutpp::gui::object::object
+				public Neb::gui::object::object
 			{
 				public:
 					textview();

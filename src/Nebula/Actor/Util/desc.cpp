@@ -10,9 +10,8 @@
 
 
 
-Neb::Actor::desc::desc() {
+Neb::Actor::desc::desc(): raw_wrapper_(Neb::master::global()->factories_.actor_raw_) {
 }		
-
 Neb::Actor::desc &		Neb::Actor::desc::operator<<(Neb::Actor::Base_w const & actor) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	

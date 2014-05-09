@@ -9,27 +9,27 @@
 
 //#include <math/mat44.hpp>
 
-//#include <gru/scene/scene.hpp>
-#include <gru/Graphics/glsl/Uniform/uniform.hpp>
-#include <gru/free.hpp>
+//#include <Nebula/scene/scene.hpp>
+#include <Nebula/Graphics/glsl/Uniform/uniform.hpp>
+#include <Nebula/free.hpp>
 
 
 
 
-void	glutpp::glsl::Uniform::Scalar::Float::load(float f) {
+void	Neb::glsl::Uniform::Scalar::Float::load(float f) {
 	glUniform1f(o_, f);
 	checkerror("glUniform1f");
 }
-void	glutpp::glsl::Uniform::Scalar::Double::load(double f) {
+void	Neb::glsl::Uniform::Scalar::Double::load(double f) {
 	glUniform1d(o_, f);
 	checkerror("glUniform1d");
 }
 
-void	glutpp::glsl::Uniform::Vector::Float::load(int c, float f) {
+void	Neb::glsl::Uniform::Vector::Float::load(int c, float f) {
 	glUniform1f(o_[c], f);
 	checkerror("glUniform1f");
 }
-void	glutpp::glsl::Uniform::Vector::Double::load(int c, double f) {
+void	Neb::glsl::Uniform::Vector::Double::load(int c, double f) {
 	glUniform1d(o_[c], f);
 	checkerror("glUniform1d");
 }

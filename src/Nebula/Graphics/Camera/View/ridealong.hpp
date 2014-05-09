@@ -11,9 +11,10 @@
 namespace Neb {
 	namespace Camera {
 		namespace View {
-			class ridealong: public Neb::Camera::View::Base {
+			class Ridealong: public Neb::Camera::View::Base {
 				public:
-					ridealong(Neb::Actor::Base_w);
+					Ridealong(Neb::Actor::Base_w);
+
 					virtual physx::PxMat44			view();
 					virtual void				step(double time);
 

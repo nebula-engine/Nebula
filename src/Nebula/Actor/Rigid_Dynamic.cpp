@@ -1,34 +1,34 @@
+#include <Nebula/debug.hpp>
+#include <Nebula/shape/shape.hpp>
+#include <Nebula/physics.hpp>
+#include <Nebula/Actor/Rigid_Dynamic.hpp>
 
-#include <nebula/shape.hpp>
-#include <nebula/physics.hpp>
-#include <nebula/actor/Rigid_Dynamic.hpp>
-
-neb::Actor::Rigid_Dynamic::Rigid_Dynamic(glutpp::actor::parent_s parent):
-	neb::Actor::RigidBody::RigidBody(parent)
+Neb::Actor::Rigid_Dynamic::Rigid_Dynamic(Neb::Actor::parent_w parent):
+	Neb::Actor::RigidBody::RigidBody(parent)
 {
-	NEBULA_DEBUG_0_FUNCTION;
+	NEBULA_ACTOR_BASE_FUNC;
 }
-void neb::Actor::Rigid_Dynamic::init(glutpp::actor::desc_s desc) {
-	NEBULA_DEBUG_0_FUNCTION;
+void		Neb::Actor::Rigid_Dynamic::init(Neb::Actor::desc_w desc) {
+	NEBULA_ACTOR_BASE_FUNC;
 
-	neb::Actor::RigidBody::RigidBody::init(desc);
+	Neb::Actor::RigidBody::RigidBody::init(desc);
 	
 	auto pxrd = px_actor_->isRigidDynamic();
 	pxrd->setLinearDamping(0.01);
 }
-void neb::Actor::Rigid_Dynamic::create_physics() {
-	NEBULA_DEBUG_0_FUNCTION;
+void Neb::Actor::Rigid_Dynamic::create_physics() {
+	NEBULA_ACTOR_BASE_FUNC;
 
 	assert(px_actor_ == NULL);
 
 	auto scene = get_scene();
 
-	math::transform<float> pose(getPose());
+	physx::PxTransform pose(getPose());
 
 
 	// PxActor
 	physx::PxRigidDynamic* px_rigid_dynamic = 
-		neb::__physics.px_physics_->createRigidDynamic(pose);
+		Neb::__physics.px_physics_->createRigidDynamic(pose);
 
 	if (!px_rigid_dynamic)
 	{
@@ -38,7 +38,7 @@ void neb::Actor::Rigid_Dynamic::create_physics() {
 
 	px_actor_ = px_rigid_dynamic;
 
-	px_rigid_dynamic->setLinearVelocity(get_raw()->velocity_, true);
+	px_rigid_dynamic->setLinearVelocity(raw_->velocity_, true);
 
 	// userData
 	px_rigid_dynamic->userData = this;
@@ -47,18 +47,18 @@ void neb::Actor::Rigid_Dynamic::create_physics() {
 	scene->px_scene_->addActor(*px_rigid_dynamic);
 
 }
-void neb::Actor::Rigid_Dynamic::init_physics() {
-	NEBULA_DEBUG_0_FUNCTION;
+void Neb::Actor::Rigid_Dynamic::init_physics() {
+	NEBULA_ACTOR_BASE_FUNC;
 	
 	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();
 	
-	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, get_raw()->density_);
+	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, raw_->density_);
 	
 	setupFiltering();
 }
-void neb::Actor::Rigid_Dynamic::print_info() {
+void Neb::Actor::Rigid_Dynamic::print_info() {
 	
-	neb::Actor::RigidBody::RigidBody::print_info();
+	Neb::Actor::RigidBody::RigidBody::print_info();
 	
 	auto pxrd = px_actor_->isRigidDynamic();
 	

@@ -1,5 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classNeb_1_1Shape_1_1Raw.html" title="Neb::Shape::Raw" alt="" coords="28,248,153,277"/>
-<area shape="rect" id="node4" href="$structNeb_1_1material_1_1raw.html" title="Neb::material::raw" alt="" coords="27,152,155,181"/>
-<area shape="rect" id="node6" href="$classNeb_1_1Color_1_1color.html" title="Neb::Color::color\&lt; float \&gt;" alt="" coords="5,5,176,35"/>
+<area shape="rect" id="node2" href="$classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt; Shape::Raw \&gt;" alt="" coords="5,101,240,131"/>
+<area shape="rect" id="node4" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Shape::Raw \&gt;" alt="" coords="17,5,228,35"/>
 </map>

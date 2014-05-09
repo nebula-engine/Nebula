@@ -1,46 +1,47 @@
 
-#include <gru/renderable.hpp>
-#include <gru/scene/scene.hpp>
-#include <gru/actor/desc.hpp>
+#include <Nebula/renderable.hpp>
+#include <Nebula/Scene/scene.hpp>
 
-#include <nebula/debug.hpp>
-#include <nebula/simulation_callback.hpp>
-#include <nebula/shape.hpp>
-#include <nebula/scene/scene.hpp>
-#include <nebula/actor/Actor.hpp>
+#include <Nebula/debug.hpp>
+#include <Nebula/simulation_callback.hpp>
+#include <Nebula/shape/shape.hpp>
+#include <Nebula/Scene/scene.hpp>
 
-neb::Actor::Actor::Actor(glutpp::actor::parent_s parent):
-	neb::Actor::Base(parent),
+#include <Nebula/Actor/Util/desc.hpp>
+#include <Nebula/Actor/Actor.hpp>
+
+Neb::Actor::Actor::Actor(Neb::Actor::parent_w parent):
+	Neb::Actor::Base(parent),
 	px_actor_(NULL)
 {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-void neb::Actor::Actor::init(glutpp::actor::desc_s desc) {
+void Neb::Actor::Actor::init(Neb::Actor::desc_w desc) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	neb::Actor::Base::init(desc);
+	Neb::Actor::Base::init(desc);
 }
-void	neb::Actor::Actor::set_pose(math::transform<float> pose) {
+void	Neb::Actor::Actor::set_pose(physx::PxTransform pose) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	neb::Actor::Base::set_pose(pose);
+	Neb::Actor::Base::setPose(pose);
 }
-int	neb::Actor::Actor::fire() {
+int	Neb::Actor::Actor::fire() {
 	NEBULA_ACTOR_BASE_FUNC;
-	return neb::Actor::Base::fire();
+	return Neb::Actor::Base::fire();
 }
-void neb::Actor::Actor::step_local(double time) {
+void Neb::Actor::Actor::step_local(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
-	neb::Actor::Base::step_local(time);
+	Neb::Actor::Base::step_local(time);
 }
-void neb::Actor::Actor::step_remote(double time) {
+void Neb::Actor::Actor::step_remote(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
-	neb::Actor::Base::step_remote(time);
+	Neb::Actor::Base::step_remote(time);
 }
-void neb::Actor::Actor::release() {
+void				Neb::Actor::Actor::release() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
-	neb::Actor::Base::release();
+	Neb::Actor::Base::release();
 
 	//assert(!scene_.expired());
 
@@ -48,12 +49,7 @@ void neb::Actor::Actor::release() {
 	px_actor_->release();
 	px_actor_ = NULL;
 }
-glutpp::actor::desc_s get_projectile() {
-	NEBULA_ACTOR_BASE_FUNC;
-	abort();
-	return glutpp::actor::desc_s();
-}
-void neb::Actor::Actor::print_info() {
+void Neb::Actor::Actor::print_info() {
 
 	physx::PxActorType::Enum type	= px_actor_->getType();
 	//physx::PxBounds bounds	= px_actor_->getWorldBounds();

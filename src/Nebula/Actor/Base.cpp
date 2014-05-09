@@ -6,7 +6,7 @@
 #include <Nebula/config.hpp> // Nebula/config.hpp.in
 #include <Nebula/timer/Actor/Base.hpp>
 #include <Nebula/app.hpp>
-#include <Nebula/scene/scene.hpp>
+#include <Nebula/Scene/scene.hpp>
 #include <Nebula/shape/Physical.hpp>
 #include <Nebula/Signals.hpp>
 
@@ -19,6 +19,130 @@
 
 #include <Nebula/Filter.hpp>
 #include <Nebula/Graphics/window/window.hpp>
+
+
+void Neb::Actor::Base::i(int ni) {
+	i_ = ni;
+}
+int Neb::Actor::Base::i() const {
+	return i_;
+}
+
+unsigned int Neb::Actor::Base::f() const {
+	return raw_->flag_;
+}
+void Neb::Actor::Base::f(unsigned int flag) {
+	assert(raw_);
+	raw_->flag_ = flag;
+}
+void Neb::Actor::Base::cleanup() {
+	NEBULA_ACTOR_BASE_FUNC;
+	//printf("%s\n",__PRETTY_FUNCTION__);
+	
+	auto it = actors_.begin();
+	while(it != actors_.end()) {
+		//boost::shared_ptr<Neb::Actor::Base> actor = it->second;
+		
+		it->second->cleanup();
+		
+		if(it->second->any(Neb::Actor::Base::flag::e::SHOULD_RELEASE)) {
+			it->second->release();
+			it = actors_.erase(it);
+		} else {
+			++it;
+		}
+	}
+
+	auto s = shapes_.begin();
+	while(s != shapes_.end()) {
+		//boost::shared_ptr<Neb::shape::shape> shape = s->second;
+
+		s->second->cleanup();
+
+		if(s->second->any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
+			s->second->release();
+			shapes_.erase(s);
+		} else {
+			++s;
+		}
+	}
+}
+Neb::Actor::parent_w		Neb::Actor::Base::getParent() {
+	return parent_;
+}
+physx::PxTransform		Neb::Actor::Base::getPose() {
+	assert(raw_);
+	return raw_->pose_;
+}
+physx::PxTransform		Neb::Actor::Base::getPoseGlobal() {
+	NEBULA_ACTOR_BASE_FUNC;
+
+	physx::PxTransform m;
+
+	auto s = parent_.lock();
+	if(!s) {
+		m = s->getPoseGlobal() * getPose();
+	} else {
+		m = getPose();
+	}
+
+	return m;
+}
+void		Neb::Actor::Base::setPose(physx::PxTransform pose) {
+	assert(raw_);
+
+	raw_->pose_ = pose;
+
+	set(Neb::Actor::Base::flag::e::SHOULD_UPDATE);
+
+	notify_foundation_change_pose();
+}
+void Neb::Actor::Base::notify_foundation_change_pose() {
+
+	boost::shared_ptr<Neb::Actor::Base> actor;
+	boost::shared_ptr<Neb::Shape::shape> shape;
+
+
+	for(auto it = actors_.end(); it != actors_.end(); ++it) {
+		it->second->notify_foundation_change_pose();
+	}
+
+	for(auto it = shapes_.end(); it != shapes_.end(); ++it) {
+		it->second->notify_foundation_change_pose();
+	}
+}
+void		Neb::Actor::Base::load_lights(int& i, physx::PxMat44 space) {
+	NEBULA_ACTOR_BASE_FUNC;
+	assert(raw_);
+
+	space = space * physx::PxMat44(raw_->pose_);
+
+	for(auto it = actors_.begin(); it != actors_.end(); ++it)
+	{
+		it->second->load_lights(i, space);
+	}
+
+	for(auto it = shapes_.begin(); it != shapes_.end(); ++it)
+	{
+		it->second->load_lights(i, space);
+	}
+}
+void		Neb::Actor::Base::draw(Neb::window::window_s window, physx::PxMat44 space) {
+	NEBULA_ACTOR_BASE_FUNC;
+	assert(raw_);
+
+	space = space * raw_->pose_;
+
+	for(auto it = shapes_.begin(); it != shapes_.end(); ++it)
+	{
+		it->second->draw(window, space);
+	}
+}
+
+
+
+
+
 
 Neb::Actor::Base::Base(Neb::Actor::parent_w parent): parent_(parent) {
 	NEBULA_ACTOR_BASE_FUNC;
@@ -264,7 +388,10 @@ void		Neb::Actor::Base::connect(Neb::window::window_w window) {
 	
 	//conn_.key_fun_.reset(new Neb::weak_function<int,int,int,int,int>(&Neb::Actor::Base::key_fun));
 	
-	auto c = window->sig_.key_fun_.connect(
+	auto s_window = window.lock();
+	assert(s_window);
+
+	auto c = s_window->sig_.key_fun_.connect(
 			Neb::Signals::KeyFun::slot_type(
 				&Neb::Actor::Base::key_fun,
 				shared.get(),

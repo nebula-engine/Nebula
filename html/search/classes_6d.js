@@ -12,8 +12,6 @@ var searchData=
   ['material',['material',['../classNeb_1_1material_1_1material.html',1,'Neb::material']]],
   ['mesh',['mesh',['../classNeb_1_1mesh.html',1,'Neb']]],
   ['message',['message',['../classgal_1_1network_1_1message.html',1,'gal::network']]],
-  ['mode_5fcreate',['mode_create',['../structglutpp_1_1actor_1_1mode__create.html',1,'glutpp::actor']]],
   ['mode_5fcreate',['mode_create',['../structNeb_1_1Actor_1_1mode__create.html',1,'Neb::Actor']]],
-  ['mode_5fupdate',['mode_update',['../structglutpp_1_1actor_1_1mode__update.html',1,'glutpp::actor']]],
   ['mode_5fupdate',['mode_update',['../structNeb_1_1Actor_1_1mode__update.html',1,'Neb::Actor']]]
 ];

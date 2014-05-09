@@ -1,8 +1,8 @@
 
-#include <gru/free.hpp>
-#include <gru/Graphics/gui/object/terminal.hpp>
+#include <Nebula/free.hpp>
+#include <Nebula/Graphics/gui/object/terminal.hpp>
 
-void	glutpp::gui::object::terminal::draw()
+void	Neb::gui::object::terminal::draw()
 {
 	//printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -23,7 +23,7 @@ void	glutpp::gui::object::terminal::draw()
 	draw_text(data_.x_, data_.y_, sx, sy, data_.font_color_, line_.c_str());
 	
 }
-int	glutpp::gui::object::terminal::key_fun(int key, int scancode, int action, int mods)
+int	Neb::gui::object::terminal::key_fun(int key, int scancode, int action, int mods)
 {
 	char k = 'a' - GLFW_KEY_A + key;
 
@@ -47,9 +47,9 @@ int	glutpp::gui::object::terminal::key_fun(int key, int scancode, int action, in
 
 	return 0;
 }
-int glutpp::gui::object::terminal::enter() {
+int Neb::gui::object::terminal::enter() {
 	
-	glutpp::master::Global()->Command(line_);
+	Neb::master::global()->Command(line_);
 	
 	lines_.push_back(line_);
 	line_.clear();

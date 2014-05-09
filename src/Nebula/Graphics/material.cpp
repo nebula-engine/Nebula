@@ -2,9 +2,9 @@
 
 //#include <math/xml.hpp>
 
-#include <gru/Graphics/material.hpp>
-#include <gru/Graphics/window/window.hpp>
-#include <gru/scene/scene.hpp>
+#include <Nebula/Graphics/material.hpp>
+#include <Nebula/Graphics/window/window.hpp>
+#include <Nebula/Scene/scene.hpp>
 
 /*
 gru::Color::color<float> operator<<(gru::Color::color<float> c, tinyxml2::XMLElement* element) {
@@ -27,15 +27,15 @@ float operator<<(float f, tinyxml2::XMLElement* element) {
 }
 */
 
-glutpp::material::raw::raw() {
-	ambient_ = gru::Color::black<float>();
-	diffuse_ = gru::Color::cyan<float>();
-	specular_ = gru::Color::white<float>();
-	emission_ = gru::Color::black<float>();
+Neb::material::raw::raw() {
+	ambient_ = Neb::Color::black<float>();
+	diffuse_ = Neb::Color::cyan<float>();
+	specular_ = Neb::Color::white<float>();
+	emission_ = Neb::Color::black<float>();
 	shininess_ = 500;
 }
 /* implement through serialize(ar)
-void	glutpp::material::raw::load(tinyxml2::XMLElement* element) {
+void	Neb::material::raw::load(tinyxml2::XMLElement* element) {
 	
 	if(element == NULL)
 	{
@@ -57,16 +57,16 @@ void	glutpp::material::raw::load(tinyxml2::XMLElement* element) {
 
 
 
-glutpp::material::material::material()
+Neb::material::material::material()
 {}
-void	glutpp::material::material::init()
+void	Neb::material::material::init()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
 
-void	glutpp::material::material::load()
+void	Neb::material::material::load()
 {
-	auto p = glutpp::master::Global()->current_program();
+	auto p = Neb::master::global()->current_program();
 
 	p->get_uniform_scalar("front.ambient")->load(raw_.ambient_);
 	p->get_uniform_scalar("front.diffuse")->load(raw_.diffuse_);
@@ -74,7 +74,7 @@ void	glutpp::material::material::load()
 	p->get_uniform_scalar("front.emission")->load(raw_.emission_);
 	p->get_uniform_scalar("front.shininess")->load(raw_.shininess_);
 }
-void glutpp::material::material::step(double time) {
+void Neb::material::material::step(double time) {
 		
 	//raw_.diffuse_.step(time);
 }

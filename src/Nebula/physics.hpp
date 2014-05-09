@@ -7,7 +7,7 @@
 
 #include <Nebula/config.hpp>
 //#include <Nebula/scene/desc.hpp>
-#include <Nebula/scene/scene.hpp>
+#include <Nebula/Scene/scene.hpp>
 
 class DefaultErrorCallback:
 	public physx::PxErrorCallback

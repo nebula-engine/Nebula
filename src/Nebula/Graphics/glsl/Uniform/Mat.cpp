@@ -8,12 +8,12 @@
 //#include <GL/glut.h>
 
 
-#include <gru/scene/scene.hpp>
-#include <gru/Graphics/glsl/Uniform/uniform.hpp>
-#include <gru/Graphics/window/window.hpp>
-#include <gru/free.hpp>
+#include <Nebula/Scene/scene.hpp>
+#include <Nebula/Graphics/glsl/Uniform/uniform.hpp>
+#include <Nebula/Graphics/window/window.hpp>
+#include <Nebula/free.hpp>
 
-void	glutpp::glsl::Uniform::Scalar::Mat4::load(physx::PxMat44 m) {
+void	Neb::glsl::Uniform::Scalar::Mat4::load(physx::PxMat44 m) {
 	assert(o_ != -1);
 	glUniformMatrix4fv(o_, 1, false, (float*)&m);
 	checkerror("glUniform1i");
@@ -22,12 +22,12 @@ void	glutpp::glsl::Uniform::Scalar::Mat4::load(physx::PxMat44 m) {
 
 
 /*
-void	glutpp::glsl::Uniform::Vector::Mat3::load(int c, int i) {
+void	Neb::glsl::Uniform::Vector::Mat3::load(int c, int i) {
 	glUniform1i(o_[c], i);
 	checkerror("glUniform1i");
 }
 
-void	glutpp::glsl::Uniform::Vector::Mat3::load(int c, int i) {
+void	Neb::glsl::Uniform::Vector::Mat3::load(int c, int i) {
 	glUniform1i(o_[c], i);
 	checkerror("glUniform1i");
 }

@@ -1,19 +1,19 @@
 #include <algorithm>
 
-#include <gru/actor/event.hpp>
-#include <gru/renderable.hpp>
-#include <gru/Graphics/window/desc.hpp>
-#include <gru/Graphics/window/window.hpp>
-#include <gru/scene/desc.hpp>
-#include <gru/network/message.hpp>
-#include <gru/master.hpp>
+#include <Nebula/actor/event.hpp>
+#include <Nebula/renderable.hpp>
+#include <Nebula/Graphics/window/desc.hpp>
+#include <Nebula/Graphics/window/window.hpp>
+#include <Nebula/scene/desc.hpp>
+#include <Nebula/network/message.hpp>
+#include <Nebula/master.hpp>
 
-#include <nebula/config.hpp> // nebula/config.hpp.in
-#include <nebula/actor/rigid_body/rigid_body.hpp>
-#include <nebula/control/rigid_body/control.hpp>
-#include <nebula/app.hpp>
-#include <nebula/network/message.hpp>
-#include <nebula/physics.hpp>
+#include <Nebula/config.hpp> // nebula/config.hpp.in
+#include <Nebula/actor/rigid_body/rigid_body.hpp>
+#include <Nebula/control/rigid_body/control.hpp>
+#include <Nebula/app.hpp>
+#include <Nebula/network/message.hpp>
+#include <Nebula/physics.hpp>
 
 neb::app::app(): flag_(0){
 	NEBULA_DEBUG_0_FUNCTION;

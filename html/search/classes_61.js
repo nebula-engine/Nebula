@@ -8,6 +8,5 @@ var searchData=
   ['app',['app',['../classNeb_1_1app.html',1,'Neb']]],
   ['archiveread',['ArchiveRead',['../classArchiveRead.html',1,'']]],
   ['attrib',['attrib',['../classNeb_1_1glsl_1_1attrib.html',1,'Neb::glsl']]],
-  ['attrib_5fname',['attrib_name',['../structNeb_1_1attrib__name.html',1,'Neb']]],
-  ['attrib_5fname',['attrib_name',['../structglutpp_1_1attrib__name.html',1,'glutpp']]]
+  ['attrib_5fname',['attrib_name',['../structNeb_1_1attrib__name.html',1,'Neb']]]
 ];

@@ -16,22 +16,24 @@
 */
 #include <Nebula/config.hpp> // Nebula/config.hpp.in
 #include <Nebula/Actor/Types.hpp>
-#include <Nebula/shared.hpp>
+#include <Nebula/Util/Shared.hpp>
 #include <Nebula/shape/desc.hpp>
 #include <Nebula/Graphics/material.hpp>
 #include <Nebula/Graphics/mesh.hpp>
+
+#include <Nebula/Core/Pose.hpp>
 
 namespace Neb {
 	namespace Shape {
 		/** @brief @Parent
 		 * abstract class for parent of a shape
 		 */
-		class parent: virtual public gru::shared {
+		class parent: virtual public Neb::Core::Pose, virtual public Neb::Shared {
 			public:
 				virtual ~parent() {}
 
-				virtual physx::PxMat44					getPoseGlobal() = 0;
-				virtual physx::PxMat44					getPose() = 0;
+				//virtual physx::PxMat44					getPoseGlobal() = 0;
+				//virtual physx::PxMat44					getPose() = 0;
 
 				Neb::weak_ptr<Neb::Actor::Base>				isActor();
 				Neb::weak_ptr<Neb::Shape::shape>			isShape();

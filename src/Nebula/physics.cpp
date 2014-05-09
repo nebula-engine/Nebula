@@ -4,16 +4,12 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <gru/scene/desc.hpp>
+#include <Nebula/Scene/desc.hpp>
 
-#include <nebula/physics.hpp>
-#include <nebula/scene/scene.hpp>
-#include <nebula/simulation_callback.hpp>
+#include <Nebula/physics.hpp>
+#include <Nebula/Scene/scene.hpp>
+#include <Nebula/simulation_callback.hpp>
 
-namespace neb
-{
-	physics __physics;
-}
 
 physx::PxFilterFlags	DefaultFilterShader(
 		physx::PxFilterObjectAttributes attributes0,
@@ -70,17 +66,17 @@ void DefaultErrorCallback::reportError(
 {
 	printf("%s:%i: %s\n",file,line,message);
 }
-/*neb::Physics::Physics()
+/*Neb::Physics::Physics()
   {
 //	jess::clog << neb_FUNCSIG << std::endl;
 }
-neb::Physics::~base()
+Neb::Physics::~base()
 {
 //	jess::clog << neb_FUNCSIG << std::endl;
 }*/
-neb::physics::physics(): px_physics_(NULL) {
+Neb::physics::physics(): px_physics_(NULL) {
 }
-void	neb::physics::Init() {
+void	Neb::physics::Init() {
 	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -124,7 +120,7 @@ void	neb::physics::Init() {
 	
 	
 }
-void				neb::physics::Shutdown() {
+void				Neb::physics::Shutdown() {
 	//jess::clog << neb_FUNCSIG << std::endl;
 	printf("%s\n",__PRETTY_FUNCTION__);
 

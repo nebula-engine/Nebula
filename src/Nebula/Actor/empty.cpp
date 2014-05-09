@@ -1,17 +1,17 @@
 
-#include <nebula/config.hpp>
-#include <nebula/actor/empty.hpp>
+#include <Nebula/config.hpp>
+#include <Nebula/Actor/empty.hpp>
 
-neb::Actor::empty::empty(glutpp::actor::parent_s parent):
-	neb::Actor::Base(parent)
+Neb::Actor::empty::empty(Neb::Actor::parent_w parent):
+	Neb::Actor::Base(parent)
 {
-	NEBULA_DEBUG_0_FUNCTION;
+	//NEBULA_DEBUG_0_FUNCTION;
 }
-void neb::Actor::empty::init(glutpp::actor::desc_s desc) {
+void		Neb::Actor::empty::init(Neb::Actor::desc_w desc) {
 	
-	NEBULA_DEBUG_0_FUNCTION;
+	//NEBULA_DEBUG_0_FUNCTION;
 	
-	neb::Actor::Base::init(desc);
+	Neb::Actor::Base::init(desc);
 }
 
 

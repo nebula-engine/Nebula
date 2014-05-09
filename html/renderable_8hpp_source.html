@@ -92,38 +92,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00010"></a>00010 <span class="preprocessor">#include &lt;Nebula/Graphics/window/window.hpp&gt;</span>
 <a name="l00011"></a>00011 <span class="preprocessor">#include &lt;Nebula/scene/scene.hpp&gt;</span>
 <a name="l00012"></a>00012 
-<a name="l00013"></a>00013 <span class="keyword">namespace </span>glutpp
-<a name="l00014"></a>00014 {
-<a name="l00015"></a><a class="code" href="classglutpp_1_1renderable.html">00015</a>         <span class="keyword">class </span><a class="code" href="classglutpp_1_1renderable.html">renderable</a>:
-<a name="l00016"></a>00016                 <span class="keyword">public</span> gal::flag&lt;unsigned int&gt;,
-<a name="l00017"></a>00017                 <span class="keyword">public</span> std::enable_shared_from_this&lt;renderable&gt;
-<a name="l00018"></a>00018         {
-<a name="l00019"></a>00019                 <span class="keyword">public</span>:
-<a name="l00020"></a>00020                         <a class="code" href="classglutpp_1_1renderable.html">renderable</a>(Neb::window::window_s window);
-<a name="l00021"></a>00021                         <a class="code" href="classglutpp_1_1renderable.html">renderable</a>&amp;                     operator=(<a class="code" href="classglutpp_1_1renderable.html">renderable</a> <span class="keyword">const</span> &amp; r);
-<a name="l00022"></a>00022                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                    f();
-<a name="l00023"></a>00023                         <span class="keywordtype">void</span>                            f(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> flag);
-<a name="l00024"></a>00024                         <span class="keywordtype">void</span>                            init(Neb::window::window_s window);
-<a name="l00025"></a>00025                         Neb::window::window_s   getWindow();
-<a name="l00026"></a>00026                         <span class="keywordtype">void</span>                            resize(<span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h);
-<a name="l00027"></a>00027                         <span class="keywordtype">void</span>                            render(<span class="keywordtype">double</span> time, Neb::window::window_s window);
-<a name="l00028"></a>00028                 <span class="keyword">private</span>:
-<a name="l00029"></a>00029                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                    flag_;
+<a name="l00013"></a>00013 <span class="keyword">namespace </span>Neb {
+<a name="l00017"></a><a class="code" href="classNeb_1_1renderable.html">00017</a>         <span class="keyword">class </span><a class="code" href="classNeb_1_1renderable.html" title="Renderable.">renderable</a>: <span class="keyword">public</span> gal::flag, <span class="keyword">public</span> std::enable_shared_from_this&lt;renderable&gt; {
+<a name="l00018"></a>00018                 <span class="keyword">public</span>:
+<a name="l00019"></a>00019                         <a class="code" href="classNeb_1_1renderable.html" title="Renderable.">renderable</a>(Neb::window::window_s window);
+<a name="l00020"></a>00020                         <a class="code" href="classNeb_1_1renderable.html" title="Renderable.">renderable</a>&amp;                     operator=(<a class="code" href="classNeb_1_1renderable.html" title="Renderable.">renderable</a> <span class="keyword">const</span> &amp; r);
+<a name="l00021"></a>00021                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                    f();
+<a name="l00022"></a>00022                         <span class="keywordtype">void</span>                            f(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> flag);
+<a name="l00023"></a>00023                         <span class="keywordtype">void</span>                            init(Neb::window::window_s window);
+<a name="l00024"></a>00024                         Neb::window::window_s   getWindow();
+<a name="l00025"></a>00025                         <span class="keywordtype">void</span>                            resize(<span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h);
+<a name="l00026"></a>00026                         <span class="keywordtype">void</span>                            render(<span class="keywordtype">double</span> time, Neb::window::window_s window);
+<a name="l00027"></a>00027                 <span class="keyword">private</span>:
+<a name="l00028"></a>00028                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                    flag_;
+<a name="l00029"></a>00029 
 <a name="l00030"></a>00030 
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032                         <a class="code" href="classNeb_1_1weak__ptr.html">Neb::window::window_w</a>   window_;
-<a name="l00033"></a>00033                 <span class="keyword">public</span>:
-<a name="l00034"></a>00034                         <a class="code" href="classNeb_1_1unique__ptr.html">Neb::Scene::scene_u</a>                             scene_;
-<a name="l00035"></a>00035                         <a class="code" href="classNeb_1_1unique__ptr.html">Neb::gui::layout_u</a>                              layout_;
-<a name="l00036"></a>00036                         <a class="code" href="classNeb_1_1unique__ptr.html">Neb::Camera::View::Base_u</a>                       view_;
-<a name="l00037"></a>00037                         <a class="code" href="classNeb_1_1unique__ptr.html">Neb::Camera::Projection::Base_u</a>                 proj_;
-<a name="l00038"></a>00038         };
-<a name="l00039"></a>00039 }
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 <span class="preprocessor">#endif</span>
-<a name="l00042"></a>00042 <span class="preprocessor"></span>
+<a name="l00031"></a>00031                         <a class="code" href="classNeb_1_1weak__ptr.html">Neb::window::window_w</a>   window_;
+<a name="l00032"></a>00032                 <span class="keyword">public</span>:
+<a name="l00033"></a>00033                         <a class="code" href="classNeb_1_1unique__ptr.html">Neb::Scene::scene_u</a>                             scene_;
+<a name="l00034"></a>00034                         <a class="code" href="classNeb_1_1unique__ptr.html">Neb::gui::layout_u</a>                              layout_;
+<a name="l00035"></a>00035                         <a class="code" href="classNeb_1_1unique__ptr.html">Neb::Camera::View::Base_u</a>                       view_;
+<a name="l00036"></a>00036                         <a class="code" href="classNeb_1_1unique__ptr.html">Neb::Camera::Projection::Base_u</a>                 proj_;
+<a name="l00037"></a>00037         };
+<a name="l00038"></a>00038 }
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="preprocessor">#endif</span>
+<a name="l00041"></a>00041 <span class="preprocessor"></span>
+<a name="l00042"></a>00042 
 <a name="l00043"></a>00043 
-<a name="l00044"></a>00044 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -142,7 +138,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 08:31:56 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 10:34:18 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

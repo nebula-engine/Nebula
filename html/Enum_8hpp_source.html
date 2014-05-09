@@ -118,73 +118,73 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00036"></a>00036 <span class="comment">   }</span>
 <a name="l00037"></a>00037 <span class="comment">   */</span>
 <a name="l00038"></a>00038 
-<a name="l00039"></a>00039 <span class="preprocessor">#define DEFINE_TYPE(name, type, values)\</span>
-<a name="l00040"></a>00040 <span class="preprocessor">        struct name {\</span>
-<a name="l00041"></a>00041 <span class="preprocessor">                public:\</span>
-<a name="l00042"></a>00042 <span class="preprocessor">                        enum E: type {\</span>
-<a name="l00043"></a>00043 <span class="preprocessor">                                BOOST_PP_SEQ_FOR_EACH(DEFINE_ENUM_VALUE, , values)\</span>
-<a name="l00044"></a>00044 <span class="preprocessor">                        };\</span>
-<a name="l00045"></a>00045 <span class="preprocessor">                        name(): val_((E)0) {}\</span>
-<a name="l00046"></a>00046 <span class="preprocessor">                        name(E e): val_(e) {}\</span>
-<a name="l00047"></a>00047 <span class="preprocessor">                        \</span>
-<a name="l00048"></a>00048 <span class="preprocessor">                        static std::string              toString(E val) {\</span>
-<a name="l00049"></a>00049 <span class="preprocessor">                                auto it = maps_.map_enum_string_.find(val);\</span>
-<a name="l00050"></a>00050 <span class="preprocessor">                                if(it == maps_.map_enum_string_.cend()) throw 0;\</span>
-<a name="l00051"></a>00051 <span class="preprocessor">                                return it-&gt;second;\</span>
-<a name="l00052"></a>00052 <span class="preprocessor">                        }\</span>
-<a name="l00053"></a>00053 <span class="preprocessor">                        static E                        toEnum(std::string str) {\</span>
-<a name="l00054"></a>00054 <span class="preprocessor">                                auto it = maps_.map_string_enum_.find(str);\</span>
-<a name="l00055"></a>00055 <span class="preprocessor">                                if(it == maps_.map_string_enum_.cend()) throw 0;\</span>
-<a name="l00056"></a>00056 <span class="preprocessor">                                return it-&gt;second;\</span>
-<a name="l00057"></a>00057 <span class="preprocessor">                        }                                                                                               \</span>
-<a name="l00058"></a>00058 <span class="preprocessor">                        void                            save(boost::archive::xml_oarchive &amp; ar, unsigned int const &amp; version) {         \</span>
-<a name="l00059"></a>00059 <span class="preprocessor">                                std::string str = toString(val_);                                               \</span>
-<a name="l00060"></a>00060 <span class="preprocessor">                                ar &lt;&lt; boost::serialization::make_nvp(&quot;value&quot;,str);                                      \</span>
-<a name="l00061"></a>00061 <span class="preprocessor">                        }                                                                                               \</span>
-<a name="l00062"></a>00062 <span class="preprocessor">                        void                            load(boost::archive::xml_iarchive &amp; ar, unsigned int const &amp; version) {         \</span>
-<a name="l00063"></a>00063 <span class="preprocessor">                                std::string str;                                                                        \</span>
-<a name="l00064"></a>00064 <span class="preprocessor">                                ar &gt;&gt; boost::serialization::make_nvp(&quot;value&quot;,str);                                      \</span>
-<a name="l00065"></a>00065 <span class="preprocessor">                                val_ = toEnum(str);                                                             \</span>
-<a name="l00066"></a>00066 <span class="preprocessor">                        }                                                                                               \</span>
-<a name="l00067"></a>00067 <span class="preprocessor">                        template&lt;class Archive&gt; void    serialize(Archive &amp; ar, unsigned int const &amp; version) {         \</span>
-<a name="l00068"></a>00068 <span class="preprocessor">                                ar &amp; boost::serialization::make_nvp(&quot;value&quot;,val_);                                      \</span>
-<a name="l00069"></a>00069 <span class="preprocessor">                        }                                                                                               \</span>
-<a name="l00070"></a>00070 <span class="preprocessor">                        private:\</span>
-<a name="l00071"></a>00071 <span class="preprocessor">                                struct Maps {\</span>
-<a name="l00072"></a>00072 <span class="preprocessor">                                        Maps() {\</span>
-<a name="l00073"></a>00073 <span class="preprocessor">                                                BOOST_PP_SEQ_FOR_EACH(DEFINE_MAP_STRING_ENUM_VALUE, , values)\</span>
-<a name="l00074"></a>00074 <span class="preprocessor">                                                BOOST_PP_SEQ_FOR_EACH(DEFINE_MAP_ENUM_STRING_VALUE, , values)\</span>
-<a name="l00075"></a>00075 <span class="preprocessor">                                        }\</span>
-<a name="l00076"></a>00076 <span class="preprocessor">                                        std::map&lt;std::string,E&gt;         map_string_enum_;\</span>
-<a name="l00077"></a>00077 <span class="preprocessor">                                        std::map&lt;E,std::string&gt;         map_enum_string_;\</span>
-<a name="l00078"></a>00078 <span class="preprocessor">                                };\</span>
-<a name="l00079"></a>00079 <span class="preprocessor">                                static Maps maps_;\</span>
-<a name="l00080"></a>00080 <span class="preprocessor">                        public:\</span>
-<a name="l00081"></a>00081 <span class="preprocessor">                               E        val_;\</span>
-<a name="l00082"></a>00082 <span class="preprocessor">        };\</span>
-<a name="l00083"></a>00083 <span class="preprocessor"></span>
-<a name="l00084"></a>00084 <span class="preprocessor"></span><span class="preprocessor">#define DEFINE_TYPE_STATICS(name) name::Maps name::maps_;</span>
-<a name="l00085"></a>00085 <span class="preprocessor"></span>
-<a name="l00086"></a>00086 <span class="preprocessor">#define DEFINE_ENUM_VALUE(r, data, elem)\</span>
-<a name="l00087"></a>00087 <span class="preprocessor">        BOOST_PP_SEQ_HEAD(elem) = BOOST_PP_SEQ_TAIL(elem) BOOST_PP_COMMA()</span>
-<a name="l00088"></a>00088 <span class="preprocessor"></span>
-<a name="l00089"></a>00089 <span class="preprocessor">#define DEFINE_MAP_STRING_ENUM_VALUE(r, data, elem)\</span>
-<a name="l00090"></a>00090 <span class="preprocessor">        map_string_enum_[BOOST_PP_STRINGIZE(BOOST_PP_SEQ_HEAD(elem))] = (E)BOOST_PP_SEQ_TAIL(elem);</span>
-<a name="l00091"></a>00091 <span class="preprocessor"></span>
-<a name="l00092"></a>00092 <span class="preprocessor">#define DEFINE_MAP_ENUM_STRING_VALUE(r, data, elem)\</span>
-<a name="l00093"></a>00093 <span class="preprocessor">        map_enum_string_[(E)BOOST_PP_SEQ_TAIL(elem)] = BOOST_PP_STRINGIZE(BOOST_PP_SEQ_HEAD(elem));</span>
-<a name="l00094"></a>00094 <span class="preprocessor"></span>
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096 <span class="preprocessor">#define DEFINE_ENUM_FORMAT(r, data, elem)             \</span>
-<a name="l00097"></a>00097 <span class="preprocessor">                case BOOST_PP_SEQ_HEAD(elem):                       \</span>
-<a name="l00098"></a>00098 <span class="preprocessor">                        return BOOST_PP_STRINGIZE(BOOST_PP_SEQ_HEAD(elem));</span>
-<a name="l00099"></a>00099 <span class="preprocessor"></span>
-<a name="l00100"></a>00100 
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="preprocessor">#define DEFINE_TYPE(name, values)\</span>
+<a name="l00041"></a>00041 <span class="preprocessor">        struct name {\</span>
+<a name="l00042"></a>00042 <span class="preprocessor">                public:\</span>
+<a name="l00043"></a>00043 <span class="preprocessor">                        enum E: short {\</span>
+<a name="l00044"></a>00044 <span class="preprocessor">                                BOOST_PP_SEQ_FOR_EACH(DEFINE_ENUM_VALUE, , values)\</span>
+<a name="l00045"></a>00045 <span class="preprocessor">                        };\</span>
+<a name="l00046"></a>00046 <span class="preprocessor">                        name(): val_((E)0) {}\</span>
+<a name="l00047"></a>00047 <span class="preprocessor">                        name(E e): val_(e) {}\</span>
+<a name="l00048"></a>00048 <span class="preprocessor">                        \</span>
+<a name="l00049"></a>00049 <span class="preprocessor">                        static std::string              toString(E val) {\</span>
+<a name="l00050"></a>00050 <span class="preprocessor">                                auto it = maps_.map_enum_string_.find(val);\</span>
+<a name="l00051"></a>00051 <span class="preprocessor">                                if(it == maps_.map_enum_string_.cend()) throw 0;\</span>
+<a name="l00052"></a>00052 <span class="preprocessor">                                return it-&gt;second;\</span>
+<a name="l00053"></a>00053 <span class="preprocessor">                        }\</span>
+<a name="l00054"></a>00054 <span class="preprocessor">                        static E                        toEnum(std::string str) {\</span>
+<a name="l00055"></a>00055 <span class="preprocessor">                                auto it = maps_.map_string_enum_.find(str);\</span>
+<a name="l00056"></a>00056 <span class="preprocessor">                                if(it == maps_.map_string_enum_.cend()) throw 0;\</span>
+<a name="l00057"></a>00057 <span class="preprocessor">                                return it-&gt;second;\</span>
+<a name="l00058"></a>00058 <span class="preprocessor">                        }                                                                                               \</span>
+<a name="l00059"></a>00059 <span class="preprocessor">                        void                            save(boost::archive::xml_oarchive &amp; ar, unsigned int const &amp; version) {         \</span>
+<a name="l00060"></a>00060 <span class="preprocessor">                                std::string str = toString(val_);                                               \</span>
+<a name="l00061"></a>00061 <span class="preprocessor">                                ar &lt;&lt; boost::serialization::make_nvp(&quot;value&quot;,str);                                      \</span>
+<a name="l00062"></a>00062 <span class="preprocessor">                        }                                                                                               \</span>
+<a name="l00063"></a>00063 <span class="preprocessor">                        void                            load(boost::archive::xml_iarchive &amp; ar, unsigned int const &amp; version) {         \</span>
+<a name="l00064"></a>00064 <span class="preprocessor">                                std::string str;                                                                        \</span>
+<a name="l00065"></a>00065 <span class="preprocessor">                                ar &gt;&gt; boost::serialization::make_nvp(&quot;value&quot;,str);                                      \</span>
+<a name="l00066"></a>00066 <span class="preprocessor">                                val_ = toEnum(str);                                                             \</span>
+<a name="l00067"></a>00067 <span class="preprocessor">                        }                                                                                               \</span>
+<a name="l00068"></a>00068 <span class="preprocessor">                        template&lt;class Archive&gt; void    serialize(Archive &amp; ar, unsigned int const &amp; version) {         \</span>
+<a name="l00069"></a>00069 <span class="preprocessor">                                ar &amp; boost::serialization::make_nvp(&quot;value&quot;,val_);                                      \</span>
+<a name="l00070"></a>00070 <span class="preprocessor">                        }                                                                                               \</span>
+<a name="l00071"></a>00071 <span class="preprocessor">                        private:\</span>
+<a name="l00072"></a>00072 <span class="preprocessor">                                struct Maps {\</span>
+<a name="l00073"></a>00073 <span class="preprocessor">                                        Maps() {\</span>
+<a name="l00074"></a>00074 <span class="preprocessor">                                                BOOST_PP_SEQ_FOR_EACH(DEFINE_MAP_STRING_ENUM_VALUE, , values)\</span>
+<a name="l00075"></a>00075 <span class="preprocessor">                                                BOOST_PP_SEQ_FOR_EACH(DEFINE_MAP_ENUM_STRING_VALUE, , values)\</span>
+<a name="l00076"></a>00076 <span class="preprocessor">                                        }\</span>
+<a name="l00077"></a>00077 <span class="preprocessor">                                        std::map&lt;std::string,E&gt;         map_string_enum_;\</span>
+<a name="l00078"></a>00078 <span class="preprocessor">                                        std::map&lt;E,std::string&gt;         map_enum_string_;\</span>
+<a name="l00079"></a>00079 <span class="preprocessor">                                };\</span>
+<a name="l00080"></a>00080 <span class="preprocessor">                                static Maps maps_;\</span>
+<a name="l00081"></a>00081 <span class="preprocessor">                        public:\</span>
+<a name="l00082"></a>00082 <span class="preprocessor">                               E        val_;\</span>
+<a name="l00083"></a>00083 <span class="preprocessor">        };\</span>
+<a name="l00084"></a>00084 <span class="preprocessor"></span>
+<a name="l00085"></a>00085 <span class="preprocessor"></span><span class="preprocessor">#define DEFINE_TYPE_STATICS(name) name::Maps name::maps_;</span>
+<a name="l00086"></a>00086 <span class="preprocessor"></span>
+<a name="l00087"></a>00087 <span class="preprocessor">#define DEFINE_ENUM_VALUE(r, data, elem)\</span>
+<a name="l00088"></a>00088 <span class="preprocessor">        BOOST_PP_SEQ_HEAD(elem) = BOOST_PP_SEQ_TAIL(elem) BOOST_PP_COMMA()</span>
+<a name="l00089"></a>00089 <span class="preprocessor"></span>
+<a name="l00090"></a>00090 <span class="preprocessor">#define DEFINE_MAP_STRING_ENUM_VALUE(r, data, elem)\</span>
+<a name="l00091"></a>00091 <span class="preprocessor">        map_string_enum_[BOOST_PP_STRINGIZE(BOOST_PP_SEQ_HEAD(elem))] = (E)BOOST_PP_SEQ_TAIL(elem);</span>
+<a name="l00092"></a>00092 <span class="preprocessor"></span>
+<a name="l00093"></a>00093 <span class="preprocessor">#define DEFINE_MAP_ENUM_STRING_VALUE(r, data, elem)\</span>
+<a name="l00094"></a>00094 <span class="preprocessor">        map_enum_string_[(E)BOOST_PP_SEQ_TAIL(elem)] = BOOST_PP_STRINGIZE(BOOST_PP_SEQ_HEAD(elem));</span>
+<a name="l00095"></a>00095 <span class="preprocessor"></span>
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 <span class="preprocessor">#define DEFINE_ENUM_FORMAT(r, data, elem)             \</span>
+<a name="l00098"></a>00098 <span class="preprocessor">                case BOOST_PP_SEQ_HEAD(elem):                       \</span>
+<a name="l00099"></a>00099 <span class="preprocessor">                        return BOOST_PP_STRINGIZE(BOOST_PP_SEQ_HEAD(elem));</span>
+<a name="l00100"></a>00100 <span class="preprocessor"></span>
 <a name="l00101"></a>00101 
 <a name="l00102"></a>00102 
-<a name="l00103"></a>00103 <span class="preprocessor">#endif</span>
-<a name="l00104"></a>00104 <span class="preprocessor"></span>
-<a name="l00105"></a>00105 
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104 <span class="preprocessor">#endif</span>
+<a name="l00105"></a>00105 <span class="preprocessor"></span>
 <a name="l00106"></a>00106 
 <a name="l00107"></a>00107 
 <a name="l00108"></a>00108 
@@ -195,6 +195,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00113"></a>00113 
 <a name="l00114"></a>00114 
 <a name="l00115"></a>00115 
+<a name="l00116"></a>00116 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -213,7 +214,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 08:31:56 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 10:34:18 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -1,14 +1,14 @@
 <map id="G" name="G">
 <area shape="rect" id="node2" href="$classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="564,5,697,35"/>
 <area shape="rect" id="node4" href="$classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="308,5,393,35"/>
-<area shape="rect" id="node6" href="$classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="549,59,712,88"/>
+<area shape="rect" id="node6" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="597,59,664,88"/>
 <area shape="rect" id="node8" href="$classNeb_1_1mesh.html" title="Neb::mesh" alt="" coords="588,112,673,141"/>
 <area shape="rect" id="node10" href="$structNeb_1_1vertex.html" title="Neb::vertex" alt="" coords="305,85,396,115"/>
 <area shape="rect" id="node12" href="$structNeb_1_1file__header.html" title="Neb::file_header" alt="" coords="292,139,409,168"/>
 <area shape="rect" id="node14" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::light::light \&gt;" alt="" coords="536,165,725,195"/>
 <area shape="rect" id="node16" href="$classNeb_1_1material_1_1material.html" title="Neb::material::material" alt="" coords="553,219,708,248"/>
-<area shape="rect" id="node18" href="$structNeb_1_1material_1_1raw.html" title="Neb::material::raw" alt="" coords="287,245,415,275"/>
-<area shape="rect" id="node24" href="$classNeb_1_1Shape_1_1Raw.html" title="Neb::Shape::Raw" alt="" coords="568,272,693,301"/>
-<area shape="rect" id="node20" href="$classNeb_1_1Color_1_1color.html" title="Neb::Color::color\&lt; float \&gt;" alt="" coords="5,245,176,275"/>
-<area shape="rect" id="node22" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Shape::shape \&gt;" alt="" coords="524,325,737,355"/>
+<area shape="rect" id="node18" href="$structNeb_1_1material_1_1raw.html" title="Neb::material::raw" alt="" coords="287,219,415,248"/>
+<area shape="rect" id="node20" href="$classNeb_1_1Color_1_1color.html" title="Neb::Color::color\&lt; float \&gt;" alt="" coords="5,219,176,248"/>
+<area shape="rect" id="node22" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Shape::shape \&gt;" alt="" coords="524,272,737,301"/>
+<area shape="rect" id="node24" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Raw \&gt;" alt="" coords="548,325,713,355"/>
 </map>

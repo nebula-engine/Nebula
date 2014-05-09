@@ -7,13 +7,13 @@
 #include <GLFW/glfw3.h>
 //#include <GL/glut.h>
 
-//#include <gru/scene/scene.hpp>
-#include <gru/Graphics/glsl/Uniform/uniform.hpp>
-#include <gru/Graphics/glsl/program.hpp>
-//#include <gru/window/window.hpp>
+//#include <Nebula/scene/scene.hpp>
+#include <Nebula/Graphics/glsl/Uniform/uniform.hpp>
+#include <Nebula/Graphics/glsl/program.hpp>
+//#include <Nebula/window/window.hpp>
 
 
-glutpp::glsl::Uniform::Vector::Base::Base(std::string name1, std::string name2) {
+Neb::glsl::Uniform::Vector::Base::Base(std::string name1, std::string name2) {
 	name1_ = name1;
 	name2_ = name2;
 	c_ = 0;
@@ -22,7 +22,7 @@ glutpp::glsl::Uniform::Vector::Base::Base(std::string name1, std::string name2) 
 	}
 	//printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	glutpp::glsl::Uniform::Vector::Base::locate(std::shared_ptr<glutpp::glsl::program> p) {
+void	Neb::glsl::Uniform::Vector::Base::locate(std::shared_ptr<Neb::glsl::program> p) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	assert(p);

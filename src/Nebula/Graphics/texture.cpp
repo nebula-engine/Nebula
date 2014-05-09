@@ -3,22 +3,22 @@
 
 #include <GL/glew.h>
 
-#include <gru/Graphics/Color/Color.hpp>
+#include <Nebula/Graphics/Color/Color.hpp>
 
-#include <gru/Graphics/texture.hpp>
-#include <gru/Graphics/window/window.hpp>
-#include <gru/free.hpp>
+#include <Nebula/Graphics/texture.hpp>
+#include <Nebula/Graphics/window/window.hpp>
+#include <Nebula/free.hpp>
 
 #include <png.h>
 
-glutpp::texture::texture():
+Neb::texture::texture():
 	/*window_(NULL),*/
 	o_(-1)
 {}
-glutpp::texture::~texture()
+Neb::texture::~texture()
 {
 }
-void	glutpp::texture::init_shadow(int w,int h)
+void	Neb::texture::init_shadow(int w,int h)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -45,13 +45,13 @@ void	glutpp::texture::init_shadow(int w,int h)
 
 	checkerror("");
 }
-void	glutpp::texture::bind()
+void	Neb::texture::bind()
 {
 	glBindTexture(GL_TEXTURE_2D, o_);
 	
 	checkerror("glBindTexture");
 }
-int	glutpp::texture::load_png(char const * filename)
+int	Neb::texture::load_png(char const * filename)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 

@@ -1,15 +1,15 @@
 
-#include <gru/Math/geo/polyhedron.hpp>
+#include <Nebula/Math/geo/polyhedron.hpp>
 
-#include <gru/Graphics/mesh.hpp>
+#include <Nebula/Graphics/mesh.hpp>
 
-glutpp::mesh::mesh():
+Neb::mesh::mesh():
 	vertices_(NULL),
 	indices_(NULL)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	glutpp::mesh::construct(math::geo::polyhedron* poly) {
+void	Neb::mesh::construct(math::geo::polyhedron* poly) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -19,12 +19,12 @@ void	glutpp::mesh::construct(math::geo::polyhedron* poly) {
 	printf("vertices: %i elements\n",fh_.len_vertices_);
 	printf("indices:  %i elements\n",fh_.len_indices_);
 
-	vertices_ = new glutpp::vertex[fh_.len_vertices_];
+	vertices_ = new Neb::vertex[fh_.len_vertices_];
 	indices_ = new GLushort[fh_.len_indices_];
 
 	int m = 3 * poly->nt_;
 
-	glutpp::vertex* v = vertices_;
+	Neb::vertex* v = vertices_;
 
 	// tris
 	for(int i = 0; i < poly->nt_; i++)
@@ -70,7 +70,7 @@ void	glutpp::mesh::construct(math::geo::polyhedron* poly) {
 	}
 
 }
-void glutpp::mesh::load(const char * name){
+void Neb::mesh::load(const char * name){
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -99,10 +99,10 @@ void glutpp::mesh::load(const char * name){
 	//printf("indices:  %i elements\n",fh_.len_indices_);
 
 	// allocate
-	vertices_ = new glutpp::vertex[fh_.len_vertices_];
+	vertices_ = new Neb::vertex[fh_.len_vertices_];
 	indices_ = new GLushort[fh_.len_indices_];
 
-	fread(vertices_, sizeof(glutpp::vertex), fh_.len_vertices_, fp);
+	fread(vertices_, sizeof(Neb::vertex), fh_.len_vertices_, fp);
 	fread(indices_,  sizeof(GLushort),       fh_.len_indices_,  fp);
 
 	fclose(fp);
@@ -111,7 +111,7 @@ void glutpp::mesh::load(const char * name){
 	//for(int i = 0; i < fh_.len_vertices_; ++i) vertices_[i].print();
 
 }
-void glutpp::mesh::save(const char * filename){
+void Neb::mesh::save(const char * filename){
 	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -127,7 +127,7 @@ void glutpp::mesh::save(const char * filename){
 	
 	// read header
 	fwrite(&fh_, sizeof(file_header), 1, fp);
-	fwrite(vertices_, sizeof(glutpp::vertex), fh_.len_vertices_, fp);
+	fwrite(vertices_, sizeof(Neb::vertex), fh_.len_vertices_, fp);
 	fwrite(indices_, sizeof(GLushort), fh_.len_indices_, fp);
 	
 	// print

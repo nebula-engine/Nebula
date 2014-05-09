@@ -15,7 +15,7 @@
 #include <Nebula/Actor/Types.hpp>
 #include <Nebula/Actor/Util/desc.hpp>
 
-namespace neb {
+namespace Neb {
 	namespace Actor {
 		class empty: public Neb::Actor::Base {
 			public:

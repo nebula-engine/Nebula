@@ -3,14 +3,16 @@
 
 #include <Nebula/config.hpp>
 #include <Nebula/control/rigid_body/raw.hpp>
+#include <Nebula/Message/Actor/Base.hpp>
 
 namespace Neb {
 	namespace Message {
 		namespace Actor {
 			namespace Control {
 				namespace RigidBody {
+					
 					/** @brief %Create. */
-					class Create {
+					class Create: public Neb::Message::Actor::Base {
 						public:
 							/** @brief derived serialize. */
 							virtual void					serializeDerived(
@@ -22,13 +24,20 @@ namespace Neb {
 									unsigned int const & version);
 
 
-							Neb::Actor::addr				addr_;
 							Neb::Actor::Control::RigidBody::Raw		raw_;
 					};
 					/** @brief %Update. */
-					class Update {
+					class Update: public Neb::Message::Actor::Base {
 						public:
-							Neb::Actor::addr				addr_;
+							/** @brief derived serialize. */
+							virtual void					serializeDerived(
+									boost::archive::binary_oarchive & ar,
+									unsigned int const & version);
+							/** @brief derived serialize. */
+							virtual void					serializeDerived(
+									boost::archive::binary_iarchive & ar,
+									unsigned int const & version);
+
 							Neb::Actor::Control::RigidBody::Raw		raw_;
 					};
 				}

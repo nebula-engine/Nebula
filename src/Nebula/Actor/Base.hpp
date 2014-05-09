@@ -16,7 +16,10 @@
 #include <Nebula/Actor/Util/parent.hpp>
 #include <Nebula/Graphics/texture.hpp>
 #include <Nebula/Graphics/material.hpp>
+
 #include <Nebula/shape/shape.hpp>
+#include <Nebula/shape/parent.hpp>
+
 #include <Nebula/Actor/Util/raw.hpp>
 #include <Nebula/Util/weak_function.hpp>
 
@@ -60,10 +63,12 @@ namespace Neb {
 
 				virtual void						create_physics() = 0;
 				virtual void						init_physics() = 0;
-
+				
+				/** @name Accessors @{ */
 				Neb::weak_ptr<Neb::app>					get_app();
 				Neb::weak_ptr<Neb::Scene::scene>			get_scene();
-
+				virtual physx::PxTransform				getPose();
+				virtual physx::PxTransform				getPoseGlobal();
 				Neb::weak_ptr<Neb::Actor::Base>				get_actor(int);
 				/** @brief get child actor
 				 *
@@ -71,10 +76,8 @@ namespace Neb {
 				 * @param addr address of actor
 				 */
 				Neb::weak_ptr<Neb::Actor::Base>			get_actor(Neb::weak_ptr<Neb::Actor::addr> addr);
-
 				virtual Neb::weak_ptr<Neb::Actor::desc>		get_projectile();
-
-
+				/** @} */
 
 
 				virtual void						hit();
@@ -83,11 +86,11 @@ namespace Neb {
 
 				// signal
 				void				connect(Neb::window::window_w);
-				
-				
+
+
 				int				key_fun(int,int,int,int);
 				virtual int			fire();
-				
+
 				/** @name Convertion @{ */
 				Neb::weak_ptr<Neb::Actor::Base>					isBase();
 				Neb::weak_ptr<Neb::Actor::RigidActor>				isRigidActor();
@@ -98,7 +101,7 @@ namespace Neb {
 				Neb::Actor::mode_update::e	mode_update_;
 
 				Neb::window::window_w	window_;
-				
+
 				struct {
 					std::shared_ptr< Neb::weak_function<int,int,int,int,int> >	key_fun_;
 				} conn_;
@@ -106,9 +109,9 @@ namespace Neb {
 			public:
 
 
-				
 
-				
+
+
 				/** @name Stepping @{ */
 				virtual void					step(double time);
 				virtual void					step_local(double);
@@ -121,15 +124,15 @@ namespace Neb {
 				/** @name Render @{ */
 				void						draw(Neb::window::window_s, physx::PxMat44);
 				/** @} */
-				
+
 				/** @name Accessors @{ */
 				Neb::weak_ptr<Neb::Actor::parent>		getParent();
 				void						setPose(physx::PxTransform pose);
 				/** @} */
-				
+
 				void						notify_foundation_change_pose();
 				void						load_lights(int&, physx::PxMat44);
-				
+
 
 
 

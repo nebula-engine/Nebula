@@ -111,13 +111,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00031"></a>00031                                 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">void</span>       <a class="code" href="classgal_1_1network_1_1communicating.html#a388de6dcc741701cffaea874898643e6">write</a>(<span class="keyword">const</span> T&amp; t) {
 <a name="l00032"></a>00032                                         <a class="code" href="classgal_1_1network_1_1communicating.html#a388de6dcc741701cffaea874898643e6">write</a>(&amp;t, <span class="keyword">sizeof</span>(T));
 <a name="l00033"></a>00033                                 }
-<a name="l00034"></a>00034                                 
+<a name="l00034"></a>00034 
 <a name="l00035"></a>00035                                 <span class="comment">/*template&lt;class T&gt; message&amp;    operator&lt;&lt;(T t) {</span>
-<a name="l00036"></a>00036 <span class="comment">                                        t.serialize(*this, 0);</span>
-<a name="l00037"></a>00037 <span class="comment">                                        return *this;</span>
-<a name="l00038"></a>00038 <span class="comment">                                }*/</span>
-<a name="l00039"></a>00039                                 
-<a name="l00040"></a>00040                                 
+<a name="l00036"></a>00036 <span class="comment">                                  t.serialize(*this, 0);</span>
+<a name="l00037"></a>00037 <span class="comment">                                  return *this;</span>
+<a name="l00038"></a>00038 <span class="comment">                                  }*/</span>
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 
 <a name="l00041"></a>00041                                 <span class="keywordtype">void</span>                            read(<span class="keywordtype">void</span> * <span class="keyword">const</span>, <span class="keywordtype">size_t</span>);
 <a name="l00042"></a>00042                                 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">void</span>       read(T&amp; t) {
 <a name="l00043"></a>00043                                         read(&amp;t, <span class="keyword">sizeof</span>(T));
@@ -136,24 +136,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00060"></a>00060                         <span class="keyword">public</span>:
 <a name="l00061"></a>00061                                 <a class="code" href="classgal_1_1network_1_1omessage.html">omessage</a>();
 <a name="l00062"></a>00062                                 <span class="comment">/*template&lt;class T&gt; message&amp;    operator&amp;(T t) {</span>
-<a name="l00063"></a>00063 <span class="comment">                                        return operator&lt;&lt;(t);</span>
-<a name="l00064"></a>00064 <span class="comment">                                }</span>
-<a name="l00065"></a>00065 <span class="comment">                                template&lt;class T&gt; message&amp;      operator&lt;&lt;(T t) {</span>
-<a name="l00066"></a>00066 <span class="comment">                                        t.serialize(*this, 0);</span>
-<a name="l00067"></a>00067 <span class="comment">                                        return *this;</span>
-<a name="l00068"></a>00068 <span class="comment">                                }*/</span>
+<a name="l00063"></a>00063 <span class="comment">                                  return operator&lt;&lt;(t);</span>
+<a name="l00064"></a>00064 <span class="comment">                                  }</span>
+<a name="l00065"></a>00065 <span class="comment">                                  template&lt;class T&gt; message&amp;    operator&lt;&lt;(T t) {</span>
+<a name="l00066"></a>00066 <span class="comment">                                  t.serialize(*this, 0);</span>
+<a name="l00067"></a>00067 <span class="comment">                                  return *this;</span>
+<a name="l00068"></a>00068 <span class="comment">                                  }*/</span>
 <a name="l00069"></a>00069                                 boost::archive::binary_oarchive         ar_;
 <a name="l00070"></a>00070                 };
 <a name="l00071"></a><a class="code" href="classgal_1_1network_1_1imessage.html">00071</a>                 <span class="keyword">class </span><a class="code" href="classgal_1_1network_1_1imessage.html">imessage</a>: <span class="keyword">public</span> <a class="code" href="classgal_1_1network_1_1message.html" title="message">message</a> {
 <a name="l00072"></a>00072                         <span class="keyword">public</span>:
 <a name="l00073"></a>00073                                 <a class="code" href="classgal_1_1network_1_1imessage.html">imessage</a>();
 <a name="l00074"></a>00074                                 <span class="comment">/*template&lt;class T&gt; message&amp;    operator&amp;(T t) {</span>
-<a name="l00075"></a>00075 <span class="comment">                                        return operator&lt;&lt;(t);</span>
-<a name="l00076"></a>00076 <span class="comment">                                }</span>
-<a name="l00077"></a>00077 <span class="comment">                                template&lt;class T&gt; message&amp;      operator&gt;&gt;(T t) {</span>
-<a name="l00078"></a>00078 <span class="comment">                                        t.serialize(*this, 0);</span>
-<a name="l00079"></a>00079 <span class="comment">                                        return *this;</span>
-<a name="l00080"></a>00080 <span class="comment">                                }*/</span>
+<a name="l00075"></a>00075 <span class="comment">                                  return operator&lt;&lt;(t);</span>
+<a name="l00076"></a>00076 <span class="comment">                                  }</span>
+<a name="l00077"></a>00077 <span class="comment">                                  template&lt;class T&gt; message&amp;    operator&gt;&gt;(T t) {</span>
+<a name="l00078"></a>00078 <span class="comment">                                  t.serialize(*this, 0);</span>
+<a name="l00079"></a>00079 <span class="comment">                                  return *this;</span>
+<a name="l00080"></a>00080 <span class="comment">                                  }*/</span>
 <a name="l00081"></a>00081                                 boost::archive::binary_iarchive         ar_;
 <a name="l00082"></a>00082                 };
 <a name="l00083"></a>00083         }
@@ -191,7 +191,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 08:31:56 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 10:34:18 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

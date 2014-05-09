@@ -109,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceNeb_1_1Actor_1_1control.html">control</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceNeb_1_1Actor_1_1Control.html">Control</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>Control </p>
 <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceNeb_1_1Actor_1_1RigidBody.html">RigidBody</a></td></tr>
@@ -122,6 +122,8 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Base  <a href="classNeb_1_1Actor_1_1Base.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Actor_1_1Controller.html">Controller</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Actor_1_1RigidActor.html">RigidActor</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Actor_1_1Rigid__Dynamic.html">Rigid_Dynamic</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Actor_1_1Rigid__Static.html">Rigid_Static</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNeb_1_1Actor_1_1mode__create.html">mode_create</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNeb_1_1Actor_1_1mode__update.html">mode_update</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Actor_1_1addr.html">addr</a></td></tr>
@@ -138,10 +140,14 @@ typedef <a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a>&lt; <a
 typedef <a class="el" href="classNeb_1_1unique__ptr.html">Neb::unique_ptr</a>&lt; <a class="el" href="classNeb_1_1Actor_1_1Base.html">Base</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Base_u</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a582f5119d9a59cbc1fa042196d01bb4e"></a><!-- doxytag: member="Neb::Actor::RigidActor_w" ref="a582f5119d9a59cbc1fa042196d01bb4e" args="" -->
 typedef <a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a>&lt; <a class="el" href="classNeb_1_1Actor_1_1RigidActor.html">RigidActor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>RigidActor_w</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91df606f415397d4d15cfc949f208792"></a><!-- doxytag: member="Neb::Actor::raw_u" ref="a91df606f415397d4d15cfc949f208792" args="" -->
+typedef <a class="el" href="classNeb_1_1unique__ptr.html">Neb::unique_ptr</a>&lt; <a class="el" href="classNeb_1_1Actor_1_1raw.html">raw</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>raw_u</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b47d877ea1ae0505306c281f65f30fa"></a><!-- doxytag: member="Neb::Actor::raw_w" ref="a6b47d877ea1ae0505306c281f65f30fa" args="" -->
 typedef <a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a>&lt; <a class="el" href="classNeb_1_1Actor_1_1raw.html">raw</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>raw_w</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0fbf0b60bc1e1a788cf928db172a7f42"></a><!-- doxytag: member="Neb::Actor::addr_w" ref="a0fbf0b60bc1e1a788cf928db172a7f42" args="" -->
 typedef <a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a>&lt; <a class="el" href="classNeb_1_1Actor_1_1addr.html">addr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>addr_w</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab338b7005be7ed3e5284f25a3632bf35"></a><!-- doxytag: member="Neb::Actor::desc_u" ref="ab338b7005be7ed3e5284f25a3632bf35" args="" -->
+typedef <a class="el" href="classNeb_1_1unique__ptr.html">Neb::unique_ptr</a>&lt; <a class="el" href="classNeb_1_1Actor_1_1desc.html">desc</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>desc_u</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac603fe9e781b5144d265d79465517bc6"></a><!-- doxytag: member="Neb::Actor::desc_w" ref="ac603fe9e781b5144d265d79465517bc6" args="" -->
 typedef <a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a>&lt; <a class="el" href="classNeb_1_1Actor_1_1desc.html">desc</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>desc_w</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2af6911fc9dbf37f305439efed56e1e8"></a><!-- doxytag: member="Neb::Actor::parent_w" ref="a2af6911fc9dbf37f305439efed56e1e8" args="" -->
@@ -167,7 +173,7 @@ typedef <a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a>&lt; <a
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 08:31:56 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 9 2014 10:34:19 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -7,12 +7,13 @@
 #include <Nebula/Graphics/window/window.hpp>
 
 #include <Nebula/Types.hpp>
+#include <Nebula/Util/Shared.hpp>
 #include <Nebula/network2/server.hpp>
 #include <Nebula/network2/client.hpp>
 
 
 namespace Neb {
-	class app: public boost::enable_shared_from_this<app>, public gal::flag<> {
+	class app: virtual public Neb::Shared, public gal::flag {
 		public:
 			struct flag {
 				enum e {
@@ -65,7 +66,7 @@ namespace Neb {
 			/** @} */
 
 			void				f(unsigned int);
-			unsigned int			f();
+			gal::flag::flag_type			f();
 		public:
 			unsigned int			flag_;
 

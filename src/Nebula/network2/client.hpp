@@ -10,7 +10,7 @@ namespace Neb {
 		class client: virtual public Neb::network::communicating, virtual public gal::network::client {
 			public:
 				client(Neb::app_w, char const *, unsigned short);
-				void	process(boost::shared_ptr<gal::network::message::shared>);
+				void	process(gal::network::message_s);
 
 		};
 	}

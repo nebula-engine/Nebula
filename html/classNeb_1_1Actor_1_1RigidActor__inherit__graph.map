@@ -1,9 +1,11 @@
 <map id="G" name="G">
-<area shape="rect" id="node16" href="$classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html" title="Neb::Actor::RigidBody::RigidBody" alt="" coords="113,392,335,421"/>
+<area shape="rect" id="node16" href="$classNeb_1_1Actor_1_1Rigid__Static.html" title="Neb::Actor::Rigid_Static" alt="" coords="35,392,197,421"/>
+<area shape="rect" id="node18" href="$classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html" title="Neb::Actor::RigidBody::RigidBody" alt="" coords="221,392,443,421"/>
 <area shape="rect" id="node2" href="$classNeb_1_1Actor_1_1Actor.html" title="Neb::Actor::Actor" alt="" coords="163,237,285,267"/>
 <area shape="rect" id="node4" href="$classNeb_1_1Actor_1_1Base.html" title="Base" alt="" coords="163,160,285,189"/>
 <area shape="rect" id="node6" href="$classNeb_1_1Actor_1_1parent.html" title="abstract class for parent of an " alt="" coords="5,83,133,112"/>
 <area shape="rect" id="node8" href="$classgru_1_1shared.html" title="Shared avoid multiple enabled_shared_from_this bases" alt="" coords="104,5,189,35"/>
 <area shape="rect" id="node10" href="$classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="157,83,291,112"/>
-<area shape="rect" id="node13" href="$classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="315,83,477,112"/>
+<area shape="rect" id="node13" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="315,83,381,112"/>
+<area shape="rect" id="node20" href="$classNeb_1_1Actor_1_1Rigid__Dynamic.html" title="Neb::Actor::Rigid_Dynamic" alt="" coords="241,469,423,499"/>
 </map>

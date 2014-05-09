@@ -1,9 +1,10 @@
-#include <Nebula/config.hpp>
+#include <Nebula/Types.hpp>
 #include <Nebula/physics.hpp>
-#include <Nebula/scene/scene.hpp>
+#include <Nebula/Scene/scene.hpp>
 #include <Nebula/shape/shape.hpp>
 #include <Nebula/shape/Physical.hpp>
 #include <Nebula/Actor/Rigid_Actor.hpp>
+#include <Nebula/shape/raw.hpp>
 
 Neb::Shape::Physical::Physical(Neb::weak_ptr<Neb::Shape::parent> parent): Neb::Shape::shape(parent) {
 	//NEBULA_DEBUG_0_FUNCTION;
@@ -41,13 +42,13 @@ physx::PxGeometry* Neb::Shape::Physical::to_geo()
 
 	physx::PxGeometry* geo = NULL;
 	
-	physx::PxVec3 s = raw_.s_;
+	physx::PxVec3 s = raw_->s_;
 	
-	switch(raw_.type_) {
-		case Neb::Shape::type::BOX:
+	switch(raw_->type_.val_) {
+		case Neb::Shape::Type::BOX:
 			geo = new physx::PxBoxGeometry(s * 0.5);
 			break;
-		case Neb::Shape::type::SPHERE:
+		case Neb::Shape::Type::SPHERE:
 			geo = new physx::PxSphereGeometry(s.x);
 			break;
 		default:

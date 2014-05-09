@@ -1,7 +1,7 @@
 #ifndef NEBULA_MESSAGE_ACTOR_BASE_HPP
 #define NEBULA_MESSAGE_ACTOR_BASE_HPP
 
-#include <gru/Typed.hpp>
+#include <Nebula/Typed.hpp>
 
 namespace Neb {
 	namespace Message {
@@ -18,7 +18,7 @@ namespace Neb {
 					virtual void		serializeDerived(boost::archive::binary_oarchive & ar, unsigned int const & version) = 0;
 					virtual void		serializeDerived(boost::archive::binary_iarchive & ar, unsigned int const & version) = 0;
 				public:
-					glutpp::actor::addr				addr_;
+					Neb::Actor::addr				addr_;
 			};
 		}
 	}

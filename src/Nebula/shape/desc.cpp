@@ -9,7 +9,7 @@
 #include <Nebula/Graphics/light/light.hpp>
 
 
-Neb::Shape::desc::desc() {
+Neb::Shape::desc::desc(): raw_wrapper_(Neb::master::global()->factories_.shape_raw_) {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
 Neb::Shape::desc &		Neb::Shape::desc::operator<<(Neb::Shape::shape_w const & shape) {

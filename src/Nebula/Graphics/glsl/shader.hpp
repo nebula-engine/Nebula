@@ -3,18 +3,15 @@
 
 #include <GLFW/glfw3.h>
 
-namespace glutpp
-{
-namespace glsl
-{
-	class shader
-	{
-		public:
-			void	load(const char * filename, GLenum shader_type);
+namespace Neb {
+	namespace glsl {
+		class shader {
+			public:
+				void	load(const char * filename, GLenum shader_type);
 
-			GLuint	o_;
-	};
-}
+				GLuint	o_;
+		};
+	}
 }
 
 #endif

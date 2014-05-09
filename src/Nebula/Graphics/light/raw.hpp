@@ -11,7 +11,7 @@
 */
 //#include <galaxy/network/serial.hpp>
 
-#include <Nebula/config.hpp>
+#include <Nebula/Types.hpp>
 #include <Nebula/Math/Typedef.hpp>
 #include <Nebula/Graphics/Color/Color.hpp>
 
@@ -23,7 +23,7 @@ namespace Neb {
 				//typedef std::shared_ptr<LIGHT>	LIGHT_S;
 				
 				raw();
-				void			load(Neb::weak_ptr<Neb::light::light>);
+				void			load(Neb::light::light_w);
 				//void			load(tinyxml2::XMLElement*);
 				
 				template<class Archive> void	serialize(Archive& ar, unsigned int const & version) {

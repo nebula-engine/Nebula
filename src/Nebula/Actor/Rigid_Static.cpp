@@ -1,28 +1,26 @@
 
-#include <nebula/debug.hpp>
-#include <nebula/physics.hpp>
-#include <nebula/shape.hpp>
-#include <nebula/actor/Rigid_Static.hpp>
+#include <Nebula/debug.hpp>
+#include <Nebula/physics.hpp>
+#include <Nebula/shape/shape.hpp>
+#include <Nebula/Actor/Rigid_Static.hpp>
 
-neb::Actor::Rigid_Static::Rigid_Static(glutpp::actor::parent_s parent):
-	neb::Actor::RigidActor(parent)
-{
+Neb::Actor::Rigid_Static::Rigid_Static(Neb::Actor::parent_w parent): Neb::Actor::RigidActor(parent) {
 	NEBULA_ACTOR_BASE_FUNC
 }
-void	neb::Actor::Rigid_Static::init(glutpp::actor::desc_s desc) {
+void	Neb::Actor::Rigid_Static::init(Neb::Actor::desc_w desc) {
 	NEBULA_ACTOR_BASE_FUNC
 	
-	neb::Actor::RigidActor::init(desc);
+	Neb::Actor::RigidActor::init(desc);
 }
-void	neb::Actor::Rigid_Static::step_local(double time) {
+void	Neb::Actor::Rigid_Static::step_local(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
-	neb::Actor::RigidActor::step_local(time);
+	Neb::Actor::RigidActor::step_local(time);
 }
-void	neb::Actor::Rigid_Static::step_remote(double time) {
+void	Neb::Actor::Rigid_Static::step_remote(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
-	neb::Actor::RigidActor::step_remote(time);
+	Neb::Actor::RigidActor::step_remote(time);
 }
-void neb::Actor::Rigid_Static::create_physics() {
+void Neb::Actor::Rigid_Static::create_physics() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
@@ -30,13 +28,13 @@ void neb::Actor::Rigid_Static::create_physics() {
 	
 	auto scene = get_scene();//scene_.lock();
 	
-	math::transform<float> pose(getPose());
+	physx::PxTransform pose(getPose());
 
-	pose.p.print();
-	pose.q.print();
+	//pose.p.print();
+	//pose.q.print();
 	
 	// PxActor
-	physx::PxRigidStatic* px_rigid_static = neb::__physics.px_physics_->createRigidStatic(pose);
+	physx::PxRigidStatic* px_rigid_static = Neb::__physics.px_physics_->createRigidStatic(pose);
 
 	if(px_rigid_static == NULL)
 	{
@@ -54,7 +52,7 @@ void neb::Actor::Rigid_Static::create_physics() {
 
 	scene->px_scene_->addActor(*px_rigid_static);
 }
-void neb::Actor::Rigid_Static::init_physics() {
+void Neb::Actor::Rigid_Static::init_physics() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 	

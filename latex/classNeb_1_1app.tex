@@ -64,16 +64,41 @@ $<$ \hyperlink{classNeb_1_1window_1_1window}{\-Neb\-::window\-::window} $>$ {\bf
 \hypertarget{classNeb_1_1app_a81e36552d5b9bd439237b8ca7950f82b}{int {\bfseries deactivate\-\_\-layout} (int)}\label{classNeb_1_1app_a81e36552d5b9bd439237b8ca7950f82b}
 
 \item 
+\hypertarget{classNeb_1_1app_a373ce82cfb06b21444d90daeaa0900a5}{void {\bfseries f} (unsigned int)}\label{classNeb_1_1app_a373ce82cfb06b21444d90daeaa0900a5}
+
+\item 
+\hypertarget{classNeb_1_1app_a4158adddede1a017c151da072503dcad}{unsigned int {\bfseries f} ()}\label{classNeb_1_1app_a4158adddede1a017c151da072503dcad}
+
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf \-Accessors @\{}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1app_a9e1237d528a0bfd338526751bff4a60d}{\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::window\-::window\-\_\-w} {\bfseries get\-\_\-window} (int)}\label{classNeb_1_1app_a9e1237d528a0bfd338526751bff4a60d}
+
+\item 
+\hypertarget{classNeb_1_1app_af34dfea535edde96fc5e5dfb67c37505}{\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Scene\-::scene\-\_\-w} {\bfseries get\-\_\-scene} (int)}\label{classNeb_1_1app_af34dfea535edde96fc5e5dfb67c37505}
+
+\item 
+\hypertarget{classNeb_1_1app_ae37a92e33de6acf1fd0c338300862ca8}{\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Scene\-::scene\-\_\-w} {\bfseries get\-\_\-scene} (\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Scene\-::addr\-\_\-w})}\label{classNeb_1_1app_ae37a92e33de6acf1fd0c338300862ca8}
+
+\item 
+\hypertarget{classNeb_1_1app_a22284f20ae70f616792bceef3fa15bfe}{\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Actor\-::\-Base\-\_\-w} {\bfseries get\-\_\-actor} (\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Actor\-::addr\-\_\-w})}\label{classNeb_1_1app_a22284f20ae70f616792bceef3fa15bfe}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \-Network @\{}\par
+\begin{DoxyCompactItemize}
+\item 
 \hypertarget{classNeb_1_1app_a88525d86c44907e36e534ffb5d8c9f04}{void {\bfseries reset\-\_\-server} (unsigned short)}\label{classNeb_1_1app_a88525d86c44907e36e534ffb5d8c9f04}
 
 \item 
 \hypertarget{classNeb_1_1app_a94908472755f4f20846a75a5368825cb}{void {\bfseries reset\-\_\-client} (char const $\ast$, unsigned short)}\label{classNeb_1_1app_a94908472755f4f20846a75a5368825cb}
 
 \item 
-\hypertarget{classNeb_1_1app_a5e164b1f78877b9e82f37fb7ce277619}{void {\bfseries send\-\_\-server} (boost\-::shared\-\_\-ptr$<$ \hyperlink{classgal_1_1network_1_1message}{gal\-::network\-::message} $>$)}\label{classNeb_1_1app_a5e164b1f78877b9e82f37fb7ce277619}
+\hypertarget{classNeb_1_1app_a851a1aac45ad8ae23d4b1e7328ad328a}{void {\bfseries send\-\_\-server} (boost\-::shared\-\_\-ptr$<$ \hyperlink{classgal_1_1network_1_1omessage}{gal\-::network\-::omessage} $>$)}\label{classNeb_1_1app_a851a1aac45ad8ae23d4b1e7328ad328a}
 
 \item 
-\hypertarget{classNeb_1_1app_a3b6e10c925c9bb50a3d0046f627df1b7}{void {\bfseries send\-\_\-client} (boost\-::shared\-\_\-ptr$<$ \hyperlink{classgal_1_1network_1_1message}{gal\-::network\-::message} $>$)}\label{classNeb_1_1app_a3b6e10c925c9bb50a3d0046f627df1b7}
+\hypertarget{classNeb_1_1app_a74d06a6804ae94e53025b770600bdc83}{void {\bfseries send\-\_\-client} (boost\-::shared\-\_\-ptr$<$ \hyperlink{classgal_1_1network_1_1omessage}{gal\-::network\-::omessage} $>$)}\label{classNeb_1_1app_a74d06a6804ae94e53025b770600bdc83}
 
 \item 
 \hypertarget{classNeb_1_1app_a72ee12a8337acc834d944d59917eaf16}{int {\bfseries transmit\-\_\-scenes} (boost\-::shared\-\_\-ptr$<$ \hyperlink{classgal_1_1network_1_1communicating}{gal\-::network\-::communicating} $>$)}\label{classNeb_1_1app_a72ee12a8337acc834d944d59917eaf16}
@@ -94,27 +119,6 @@ void \hyperlink{classNeb_1_1app_acefbc3bb3de71f3c8cca0afc1fada857}{recv\-\_\-sce
 
 \item 
 \hypertarget{classNeb_1_1app_af78185f60b42955a1ac44e2dd3b16246}{void {\bfseries recv\-\_\-control\-\_\-update} (std\-::shared\-\_\-ptr$<$ \hyperlink{classgal_1_1network_1_1message}{gal\-::network\-::message} $>$)}\label{classNeb_1_1app_af78185f60b42955a1ac44e2dd3b16246}
-
-\item 
-\hypertarget{classNeb_1_1app_a373ce82cfb06b21444d90daeaa0900a5}{void {\bfseries f} (unsigned int)}\label{classNeb_1_1app_a373ce82cfb06b21444d90daeaa0900a5}
-
-\item 
-\hypertarget{classNeb_1_1app_a4158adddede1a017c151da072503dcad}{unsigned int {\bfseries f} ()}\label{classNeb_1_1app_a4158adddede1a017c151da072503dcad}
-
-\end{DoxyCompactItemize}
-\begin{Indent}{\bf \-Accessors @\{}\par
-\begin{DoxyCompactItemize}
-\item 
-\hypertarget{classNeb_1_1app_a9e1237d528a0bfd338526751bff4a60d}{\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::window\-::window\-\_\-w} {\bfseries get\-\_\-window} (int)}\label{classNeb_1_1app_a9e1237d528a0bfd338526751bff4a60d}
-
-\item 
-\hypertarget{classNeb_1_1app_af34dfea535edde96fc5e5dfb67c37505}{\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Scene\-::scene\-\_\-w} {\bfseries get\-\_\-scene} (int)}\label{classNeb_1_1app_af34dfea535edde96fc5e5dfb67c37505}
-
-\item 
-\hypertarget{classNeb_1_1app_ae37a92e33de6acf1fd0c338300862ca8}{\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Scene\-::scene\-\_\-w} {\bfseries get\-\_\-scene} (\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Scene\-::addr\-\_\-w})}\label{classNeb_1_1app_ae37a92e33de6acf1fd0c338300862ca8}
-
-\item 
-\hypertarget{classNeb_1_1app_a22284f20ae70f616792bceef3fa15bfe}{\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Actor\-::\-Base\-\_\-w} {\bfseries get\-\_\-actor} (\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::\-Actor\-::addr\-\_\-w})}\label{classNeb_1_1app_a22284f20ae70f616792bceef3fa15bfe}
 
 \end{DoxyCompactItemize}
 \end{Indent}

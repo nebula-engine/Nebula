@@ -12,11 +12,8 @@ var searchData=
   ['thread_5fwrite_5fdispatch',['thread_write_dispatch',['../classgal_1_1network_1_1communicating.html#a32da51cf806bdc60b1a653ef20557af9',1,'gal::network::communicating']]],
   ['tri',['tri',['../classmath_1_1geo_1_1tri.html',1,'math::geo']]],
   ['type',['type',['../structNeb_1_1Color_1_1color_1_1type.html',1,'Neb::Color::color']]],
-  ['type',['type',['../structglutpp_1_1light_1_1type.html',1,'glutpp::light']]],
   ['type',['type',['../structNeb_1_1Shape_1_1type.html',1,'Neb::Shape']]],
-  ['type',['type',['../structglutpp_1_1shape_1_1event_1_1type.html',1,'glutpp::shape::event']]],
-  ['type',['type',['../structglutpp_1_1shape_1_1type.html',1,'glutpp::shape']]],
   ['type',['type',['../structNeb_1_1light_1_1type.html',1,'Neb::light']]],
-  ['type_5f',['type_',['../classNeb_1_1Shape_1_1Raw.html#ae4588d516d6dc605f6a3444a8bb3ed54',1,'Neb::Shape::Raw']]],
+  ['type',['type',['../structglutpp_1_1shape_1_1event_1_1type.html',1,'glutpp::shape::event']]],
   ['typed',['Typed',['../classNeb_1_1Typed.html',1,'Neb']]]
 ];

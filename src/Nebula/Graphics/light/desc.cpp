@@ -1,23 +1,26 @@
 //#include <math/free.hpp>
 
-#include <gru/Graphics/light/desc.hpp>
-#include <gru/Graphics/light/light.hpp>
+#include <Nebula/Graphics/light/desc.hpp>
+#include <Nebula/Graphics/light/light.hpp>
 
 /*
-void glutpp::light::raw::load(glutpp::light::light_s light) {
+void Neb::light::raw::load(Neb::light::light_s light) {
 	operator=(light->raw_);
 }
-void glutpp::light::id::load(glutpp::light::light_s light) {
+void Neb::light::id::load(Neb::light::light_s light) {
 	i_ = light->i_;
 }
 */
 
 
 
-glutpp::light::desc::desc() {
+Neb::light::desc::desc() {
 }
-void glutpp::light::desc::load(glutpp::light::light_s light) {
-	i_ = light->i_;
+void		Neb::light::desc::load(Neb::light::light_w light) {
+	auto s_light = light.lock();
+	assert(s_light);
+
+	i_ = s_light->i_;
 
 	raw_.load(light);
 	

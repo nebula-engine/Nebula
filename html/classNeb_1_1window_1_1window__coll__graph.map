@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="5,5,168,35"/>
-<area shape="rect" id="node4" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; renderable \&gt;" alt="" coords="192,5,389,35"/>
-<area shape="rect" id="node6" href="$structNeb_1_1window_1_1raw.html" title="Neb::window::raw" alt="" coords="413,5,539,35"/>
+<area shape="rect" id="node2" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="5,5,72,35"/>
+<area shape="rect" id="node4" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; renderable \&gt;" alt="" coords="96,5,293,35"/>
+<area shape="rect" id="node6" href="$structNeb_1_1window_1_1raw.html" title="Neb::window::raw" alt="" coords="317,5,443,35"/>
 </map>

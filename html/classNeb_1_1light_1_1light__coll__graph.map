@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classgal_1_1flag.html" title="gal::flag\&lt; unsigned int \&gt;" alt="" coords="5,136,168,165"/>
-<area shape="rect" id="node4" href="$classNeb_1_1light_1_1raw.html" title="Neb::light::raw" alt="" coords="192,136,299,165"/>
-<area shape="rect" id="node6" href="$classNeb_1_1Color_1_1color.html" title="Neb::Color::color\&lt; float \&gt;" alt="" coords="160,5,331,35"/>
-<area shape="rect" id="node8" href="$classNeb_1_1texture.html" title="Neb::texture" alt="" coords="323,136,416,165"/>
+<area shape="rect" id="node2" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="5,136,72,165"/>
+<area shape="rect" id="node4" href="$classNeb_1_1light_1_1raw.html" title="Neb::light::raw" alt="" coords="96,136,203,165"/>
+<area shape="rect" id="node6" href="$classNeb_1_1Color_1_1color.html" title="Neb::Color::color\&lt; float \&gt;" alt="" coords="64,5,235,35"/>
+<area shape="rect" id="node8" href="$classNeb_1_1texture.html" title="Neb::texture" alt="" coords="227,136,320,165"/>
 </map>

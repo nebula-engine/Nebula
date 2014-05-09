@@ -1,5 +1,5 @@
-#include <Nebula/scene/scene.hpp>
-#include <Nebula/scene/addr.hpp>
+#include <Nebula/Scene/scene.hpp>
+#include <Nebula/Scene/addr.hpp>
 #include <Nebula/Actor/Base.hpp>
 #include <Nebula/Actor/Util/addr.hpp>
 #include <Nebula/Actor/Util/parent.hpp>

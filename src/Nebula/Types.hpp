@@ -23,41 +23,16 @@ namespace Neb {
 		class window;
 
 		typedef std::shared_ptr<window>		window_s;
-		typedef Neb::weak_ptr<window>		window_w;
+		typedef std::weak_ptr<window>		window_w;
+
 		typedef std::shared_ptr<desc>		desc_s;
 
 	}
 
-	/** @brief %Scene */
-	namespace Scene {
-		enum flag {
-			SHOULD_RELEASE = 1 << 0
-		};
 
-		class raw;
-		class addr;
-		class desc;
-
-		class scene;
-		
-		typedef Neb::weak_ptr<raw>		raw_w;
-		typedef Neb::weak_ptr<addr>		addr_w;
-		typedef Neb::weak_ptr<desc>		desc_w;
-
-		typedef Neb::unique_ptr<scene>		scene_u;
-		typedef Neb::weak_ptr<scene>		scene_w;
-	}
 
 	/** @brief %Shape */	
 	namespace Shape {
-		struct type {
-			enum e {
-				NONE = 0,
-				BOX,
-				SPHERE,
-				EMPTY
-			};
-		};
 		struct flag {
 			enum e {
 				SHOULD_RELEASE = 1 << 0,
@@ -134,7 +109,9 @@ namespace Neb {
 		typedef Neb::weak_ptr<desc>	desc_w;
 
 
-		typedef Neb::unique_ptr<light>	light_u;
+		typedef std::shared_ptr<light>		light_s;
+		typedef std::weak_ptr<light>		light_w;
+		typedef std::unique_ptr<light>		light_u;
 
 	}
 	/** @brief GLSL */
@@ -157,7 +134,8 @@ namespace Neb {
 	/** @brief Graphical User Interface */
 	namespace gui {
 		class layout;
-		
+
+		typedef std::shared_ptr<layout>		layout_s;
 		typedef Neb::unique_ptr<layout>		layout_u;
 		typedef Neb::weak_ptr<layout>		layout_w;
 
@@ -183,8 +161,11 @@ namespace Neb {
 			class Free;
 			class Ridealong;
 			
-			typedef Neb::unique_ptr<Base>	Base_u;
-
+			typedef std::shared_ptr<Base>		Base_s;
+			typedef Neb::unique_ptr<Base>		Base_u;
+			
+			typedef std::shared_ptr<Ridealong>	Ridealong_s;
+			typedef std::weak_ptr<Ridealong>	Ridealong_w;
 		}
 		namespace Projection {
 			class Base;
@@ -199,6 +180,7 @@ namespace Neb {
 
 	class renderable;
 
+	//typedef Neb::unique_ptr<renderable>	renderable_u;
 	typedef Neb::unique_ptr<renderable>	renderable_u;
 	typedef Neb::weak_ptr<renderable>	renderable_w;
 
