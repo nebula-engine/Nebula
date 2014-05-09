@@ -3,7 +3,7 @@
 
 #include <boost/signals2.hpp>
 
-typedef bool ret_type;
+typedef int ret_type;
 
 namespace Neb {
 	namespace Signals {

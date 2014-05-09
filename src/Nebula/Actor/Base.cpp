@@ -8,6 +8,7 @@
 #include <Nebula/app.hpp>
 #include <Nebula/scene/scene.hpp>
 #include <Nebula/shape/Physical.hpp>
+#include <Nebula/Signals.hpp>
 
 #include <Nebula/Actor/Base.hpp>
 #include <Nebula/Actor/Rigid_Actor.hpp>
@@ -45,7 +46,7 @@ void Neb::Actor::Base::release() {
 	actors_.clear();
 
 
-	conn_.key_fun_.disconnect();
+	//conn_.key_fun_.disconnect();
 }
 void Neb::Actor::Base::create_children(Neb::Actor::desc_w desc) {
 	NEBULA_ACTOR_BASE_FUNC;
@@ -258,22 +259,21 @@ void		Neb::Actor::Base::connect(Neb::window::window_w window) {
 
 	//auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
 	auto me = isBase();
-
-	boost::function<int(int,int,int,int)> f(boost::bind(
+	
+	auto shared = sharedBase();
+	
+	//conn_.key_fun_.reset(new Neb::weak_function<int,int,int,int,int>(&Neb::Actor::Base::key_fun));
+	
+	auto c = window->sig_.key_fun_.connect(
+			Neb::Signals::KeyFun::slot_type(
 				&Neb::Actor::Base::key_fun,
-				me.ptr_,
+				shared.get(),
 				_1,
 				_2,
 				_3,
-				_4));
-
-	conn_.key_fun_ = window->sig_.key_fun_.connect(boost::bind(
-				&Neb::Actor::Base::key_fun,
-				me,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				std::placeholders::_4));
+				_4
+				).track(shared)
+			);
 
 }
 int Neb::Actor::Base::key_fun(int key, int scancode, int action, int mods) {

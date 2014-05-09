@@ -18,6 +18,7 @@
 #include <Nebula/Graphics/material.hpp>
 #include <Nebula/shape/shape.hpp>
 #include <Nebula/Actor/Util/raw.hpp>
+#include <Nebula/Util/weak_function.hpp>
 
 namespace Neb {
 	namespace Actor {
@@ -91,15 +92,15 @@ namespace Neb {
 				Neb::weak_ptr<Neb::Actor::Base>					isBase();
 				Neb::weak_ptr<Neb::Actor::RigidActor>				isRigidActor();
 				Neb::weak_ptr<Neb::Actor::RigidBody::RigidBody>			isRigidBody();
+				boost::shared_ptr<Neb::Actor::Base>				sharedBase();
 				/** @} */
 			public:
 				Neb::Actor::mode_update::e	mode_update_;
 
 				Neb::window::window_w	window_;
-
-				struct
-				{
-					boost::signals2::connection		key_fun_;
+				
+				struct {
+					std::shared_ptr< Neb::weak_function<int,int,int,int,int> >	key_fun_;
 				} conn_;
 
 			public:
