@@ -13,19 +13,25 @@
 #include <gru/actor/raw_factory.hpp>
 #include <gru/actor/actor.hpp>
 
-namespace glutpp {
-	namespace network {
-		namespace actor {
-			struct create {
-				void				load(Neb::unique_ptr<glutpp::actor::actor> actor);
+namespace Neb {
+	namespace Message {
+		namespace Actor {
+			struct Create {
+				void				load(Neb::actor::actor_w actor);
 
 				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 					ar & addr_;
 					ar & desc_;
 				}
 				
-				glutpp::actor::addr	addr_; //() { return std::get<0>(ser_create::tup_); }
-				glutpp::actor::desc	desc_; //() { return std::get<1>(tup_); }
+				/** @brief Address.
+				 * address at which the new actor object will be stored
+				 */
+				Neb::Actor::addr				addr_;
+				/** @brief Wrapper.
+				 * wrapper to create the actor object
+				 */
+				Neb::WrapperTyped<Neb::Actor::Base>		wrapper_;
 			};
 		}
 	}
