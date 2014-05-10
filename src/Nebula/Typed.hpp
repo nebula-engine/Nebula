@@ -17,7 +17,8 @@ namespace Neb {
 			/** @brief Destructor */
 			virtual ~Typed() {}
 			/** @brief Hash Code */
-			hash_type const 		hash_code() const;
+			hash_type const &		hash_code() const;
+			std::string const &		name() const;
 	};
 	/** @brief Factory
 	 * the app shall hold instances of Factory for the various types and use cases
