@@ -13,13 +13,11 @@ namespace Neb {
 	/** @brief Typed */
 	class Typed {
 		public:
+			typedef hash_type		long int;
 			/** @brief Destructor */
 			virtual ~Typed() {}
 			/** @brief Hash Code */
-			long int &		hash_code() { return _M_hash_code_; }
-		private:
-			/** @brief Hash Code */
-			static long int		_M_hash_code_;
+			hash_type const 		hash_code() const;
 	};
 	/** @brief Factory
 	 * the app shall hold instances of Factory for the various types and use cases
