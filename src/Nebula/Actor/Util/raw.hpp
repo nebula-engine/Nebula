@@ -24,27 +24,11 @@ namespace Neb {
 	namespace Actor {
 		class raw: public Neb::Typed {
 			public:
-				//friend class Neb::Actor::raw_factory;
+				Raw();
+				Raw&				operator=(Neb::Actor::Base_w const &);
 
-				//template<typename T> friend void gal::reset(std::shared_ptr<T>&);
+				Raw&				operator=(Raw const &);
 
-				enum
-				{
-					max_name_length = 31
-				};
-			protected:
-				raw();
-			public:
-				virtual void			load(Neb::weak_ptr<Neb::Actor::Base>);
-
-				raw&				operator=(raw const & r);
-
-				//void				plane(tinyxml2::XMLElement*);
-				//void				controller(tinyxml2::XMLElement*);
-
-				unsigned int			parse_filter_word(tinyxml2::XMLElement*, unsigned int);
-				void				parse_filter(tinyxml2::XMLElement*);
-				void				parse_type(std::string);
 
 				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("mode_create",mode_create_);
@@ -61,7 +45,7 @@ namespace Neb {
 				
 				Neb::Actor::mode_create::e		mode_create_;
 				unsigned int				flag_;
-				char					name_[32];
+				std::string				name_;
 
 				physx::PxTransform			pose_;
 
