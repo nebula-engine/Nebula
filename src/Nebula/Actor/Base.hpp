@@ -76,6 +76,7 @@ namespace Neb {
 				 */
 				Neb::weak_ptr<Neb::Actor::Base>				get_actor(Neb::weak_ptr<Neb::Actor::addr> addr);
 				//virtual Neb::Actor::Base_s				get_projectile();
+				Neb::Actor::Address					getAddress() const;
 				/** @} */
 
 
