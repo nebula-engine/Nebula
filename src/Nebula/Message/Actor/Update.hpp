@@ -13,53 +13,78 @@
 #include <gru/actor/raw_factory.hpp>
 #include <gru/actor/actor.hpp>
 
-namespace glutpp {
-	namespace network {
-		namespace actor {
-			struct update {
-				/** @brief Address and Data.
-				 * @todo find a way to implement this using WrapperTyped or somehting like it
+namespace Neb {
+	namespace Message {
+		namespace Actor {
+			struct Update: Neb::Message::Base {
+				
+				Update(): count_(0) {}
+				
+				/** @brief Default load/save operator.
+				 * All other types are simply passed to the archive
 				 */
-				struct addr_raw {
-					/** @brief Load.
-					 * Find the actor at the address and write directly into its Data object */
-					template<class Archive> void	load(Archive & ar, unsigned int const & version) {
-						ar & addr_;
-						
-						// find the actor
-						auto actor = glutpp::master::Global()->getActor(addr_);
-						if(!actor) throw 0; /** @todo handle this gracefully */
-						
-						ar & *(actor->raw_);
-					}
-					/** @brief Save.
-					 * The pointer to the actor's Data object should already be set. */
-					template<class Archive> void	save(Archive & ar, unsigned int const & version) const {
-						ar & addr_;
-						
-						assert(raw_);
-						
-						ar & *raw_;
-					}
-					BOOST_SERIALIZATION_SPLIT_MEMBER();
-
-					/** @brief Address. */
-					glutpp::actor::addr			addr_;
-					/** @brief Data pointer.
-					 * could be replaced with Actor pointer with similar results */
-					boost::shared_ptr<glutpp::actor::raw>	raw_;
-				};
+				template<typename T> Update&		operator&(T const & t) {
+					msg_->ar_ & t;
+				}
 				
-				//typedef vec_addr_raw::tuple tuple;
+				int				count_;
+				std::stringstream::pos_type	pos_count_;
 				
-				void load(Neb::weak_ptr<glutpp::actor::actor> const & actor);
-			
-				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
-					ar & vector_;
-				}	
-
-				std::vector<boost::shared_ptr<glutpp::network::actor::update::addr_raw> >	vector_;
 			};
+			struct OUpdate: Update {
+				/** @brief Save %Actor. */
+				Update&		operator<<(Neb::Actor::Base_s actor) {
+					count_++;
+					actor->serialize(*this, 0);
+				}
+				
+				/** @brief Before saving.
+				 * Implement the virtual savePre function.
+				 * Record the position of the count data.
+				 * Doing so enables @c this to load and save arrays whose length
+				 * is unknown until all data is saved.
+				 * This function is called by the initialization of an omessage object
+				*/
+				virtual void		pre() {
+					// save the position of count
+					pos_count_ = msg_->ss_.tellp();
+					
+					// allocate space for count
+					msg->ar_ << count_;
+				}
+				/** @brief After saving.
+				 * Implement the virtual savePost function. Overwrite the count data.
+				*/
+				virtual void		post() {
+					auto pos = msg_->ss_.tellp();
+					
+					msg_->ss_.seekp(pos_count_);
+					/** @todo determine if I count just say "ar << count" here */
+					msg->ss_.write(count_, sizeof(count));
+					
+					msg_->ss_.seekp(pos);
+				}
+			};
+			struct IUpdate: Update {
+				/** @brief Load */
+				Update&		operator>>(Neb::Scene::Base_s scene) {
+					msg_->ar_ >> count_;
+					
+					Neb::Actor::Util::Address address;
+					Neb::Actor::Base_s actor;
+					for(int i = 0; i < count_; ++i) {
+						msg_->ar_ >> address;
+						
+						actor = scene->getActor(address);
+						assert(actor);
+						
+						msg_->ar_ >> *actor;
+					}
+					actor->serialize(*this, 0);
+				}
+				
+			};
+			
 		}
 	}
 }
