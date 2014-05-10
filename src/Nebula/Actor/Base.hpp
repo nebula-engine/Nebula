@@ -116,6 +116,13 @@ namespace Neb {
 					ar & boost::serialization::make_nvp("actors", actors_);				
 					ar & boost::serialization::make_nvp("shapes", shapes_);
 				}
+				/** @brief %Serialize specialization */
+				void						serialize(
+					Neb::Message::Actor::Update & ar,
+					unsigned int const & version) {
+					ar & boost::serialization::make_nvp("address", getAddress());
+					ar & boost::serialization::make_nvp("raw", raw_);
+				}
 
 				/** @name Stepping @{ */
 				virtual void					step(double time);
@@ -142,8 +149,13 @@ namespace Neb {
 			public:
 				/** @brief ID */
 				int						i_;
-				/** @brief Data */
-				Neb::unique_ptr<Neb::Actor::raw>		raw_;
+				/** @brief Data.
+				 * Consider eliminating the raw class entirely (or at least make it
+				 * a simple data container). If it is desired to serialize only the
+				 * raw data (like in actor update), or a subset of it, implement this by
+				 * overloading the serialize functions...
+				*/
+				Neb::Actor::raw					raw_;
 				/** @brief Actors */
 				Neb::Map<Neb::Actor::Base>			actors_;
 				/** @brief Shapes */
