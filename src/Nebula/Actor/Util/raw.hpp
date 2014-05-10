@@ -60,8 +60,7 @@ namespace Neb {
 					ar & boost::serialization::make_nvp("filter_data_simulation",simulation_);
 					ar & boost::serialization::make_nvp("filter_data_scene_query",scene_query_);
 				}
-
-				Neb::Actor::Type			type_;
+				
 				Neb::Actor::mode_create::e		mode_create_;
 				unsigned int				flag_;
 				char					name_[32];
