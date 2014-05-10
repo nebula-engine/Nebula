@@ -11,25 +11,27 @@ namespace Neb {
 				public:
 					RigidBody(Neb::Actor::parent_w);
 					
-					virtual void			init(Neb::Actor::desc_w);
+					
+
+					//virtual void					init(Neb::Actor::desc_w);
 					
 					
 					
-					virtual Neb::Actor::desc_w	get_projectile();
+					virtual Neb::Actor::Base_s			get_projectile();
 					
 				private:
-					virtual void			step_local(double);
-					virtual void			step_remote(double);
+					virtual void					step_local(double);
+					virtual void					step_remote(double);
 
-					virtual void			add_force(double);
+					virtual void					add_force(double);
 				public:
-					virtual void			print_info();
+					virtual void					print_info();
 
 
-					virtual void			create_physics() {abort();}
+					virtual void					create_physics() = 0;
 					
 					// control
-					virtual void			create_control(
+					virtual void					create_control(
 							Neb::Actor::Control::RigidBody::Raw_s);
 				public:
 					Neb::Actor::Control::RigidBody::Control_w	control_;

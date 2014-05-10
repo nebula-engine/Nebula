@@ -9,12 +9,12 @@ namespace Neb {
 	namespace Actor {
 		class Controller: public Neb::Actor::Base {
 			public:
-				Controller(Neb::weak_ptr<Neb::Actor::parent>);
+				Controller(Neb::Actor::parent_w);
 				
 				virtual void		release();
 
 				virtual void		step(float);
-				virtual void		init(Neb::Actor::desc_w);
+				//virtual void		init(Neb::Actor::desc_w);
 				virtual void		add_force();
 
 

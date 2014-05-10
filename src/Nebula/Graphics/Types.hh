@@ -12,9 +12,9 @@ namespace Neb {
 				SPOT,
 			};
 		};
-		//enum {
-		//	light_max = 20
-		//};
+		enum {
+			light_max = 20
+		};
 
 		class raw;
 		class desc;

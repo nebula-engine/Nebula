@@ -2,8 +2,10 @@
 #include <Nebula/master.hpp>
 #include <Nebula/shape/shape.hpp>
 #include <Nebula/shape/desc.hpp>
-#include <Nebula/Graphics/light/light.hpp>
+
+#include <Nebula/Graphics/Light/light.hpp>
 #include <Nebula/Graphics/glsl/attrib.hpp>
+
 #include <Nebula/Map.hpp>
 
 Neb::Shape::shape::shape(Neb::Shape::parent_w parent): parent_(parent) {
@@ -81,11 +83,11 @@ void		Neb::Shape::shape::init(Neb::Shape::desc_w desc) {
 	}
 
 	// create lights
-	Neb::light::desc_s ld;
-	Neb::light::light_s light;
+	Neb::Light::desc_s ld;
+	Neb::Light::light_s light;
 	for(auto it = desc_s->lights_.begin(); it != desc_s->lights_.end(); ++it) {
 
-		light.reset(new Neb::light::light(me));
+		light.reset(new Neb::Light::light(me));
 
 		light->init(*it);
 		
@@ -109,7 +111,7 @@ void Neb::Shape::shape::release() {
 
 	for(auto it = lights_.begin(); it != lights_.end(); ++it)
 	{
-		it->second->release();
+		it->second.ptr_->release();
 	}
 
 	lights_.clear();
@@ -119,13 +121,14 @@ void Neb::Shape::shape::cleanup() {
 
 	auto s = shapes_.begin();
 	while(s != shapes_.end()) {
-		//auto shape = s->second;
-		assert(s->second);
+		auto shape = s->second.ptr_;
 		
-		s->second->cleanup();
+		assert(shape);
 		
-		if(s->second->any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
-			s->second->release();
+		shape->cleanup();
+		
+		if(shape->any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
+			shape->release();
 
 			s = shapes_.erase(s);
 		} else {
@@ -135,12 +138,14 @@ void Neb::Shape::shape::cleanup() {
 
 	auto l = lights_.begin();
 	while(l != lights_.end()) {
-		assert(l->second);
+		auto light = l->second.ptr_;
+		
+		assert(light);
+		
+		light->cleanup();
 
-		l->second->cleanup();
-
-		if(l->second->raw_.flag_.any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
-			l->second->release();
+		if(light->raw_.flag_.any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
+			light->release();
 
 			l = lights_.erase(l);
 		} else {
@@ -152,7 +157,9 @@ void Neb::Shape::shape::cleanup() {
 void Neb::Shape::shape::step(double time) {
 
 	for(auto it = shapes_.map_.begin(); it != shapes_.map_.end(); ++it) {
-		it->second->step(time);
+		auto shape = it->second.ptr_;
+		assert(shape);
+		shape->step(time);
 	}
 	/*shapes_.foreach<Neb::Shape::shape>(std::bind(
 				&Neb::Shape::shape::step,
@@ -161,7 +168,9 @@ void Neb::Shape::shape::step(double time) {
 				));
 */
 	for(auto it = lights_.map_.begin(); it != lights_.map_.end(); ++it) {
-		it->second->step(time);
+		auto light = it->second.ptr_;
+		assert(light);
+		light->step(time);
 	}
 	
 /*	lights_.foreach<Neb::light::light>(std::bind(
@@ -174,16 +183,16 @@ void Neb::Shape::shape::step(double time) {
 }
 void Neb::Shape::shape::notify_foundation_change_pose() {
 
-	boost::shared_ptr<Neb::light::light> light;
-	
-	for(auto it = shapes_.end(); it != shapes_.end(); ++it)
-	{
-		it->second->notify_foundation_change_pose();
+	for(auto it = shapes_.end(); it != shapes_.end(); ++it) {
+		auto shape = it->second.ptr_;
+		assert(shape);
+		shape->notify_foundation_change_pose();
 	}
 
-	for(auto it = lights_.end(); it != lights_.end(); ++it)
-	{
-		it->second->notify_foundation_change_pose();
+	for(auto it = lights_.end(); it != lights_.end(); ++it) {
+		auto light = it->second.ptr_;
+		assert(light);
+		light->notify_foundation_change_pose();
 	}
 }
 void Neb::Shape::shape::load_lights(int& i, Neb::Math::Mat44 space) {
@@ -193,9 +202,9 @@ void Neb::Shape::shape::load_lights(int& i, Neb::Math::Mat44 space) {
 
 	for(auto it = lights_.begin(); it != lights_.end(); ++it)
 	{
-		if(i == Neb::light::light_max) break;
+		if(i == Neb::Light::light_max) break;
 
-		it->second->load(i++, space);
+		it->second.ptr_->load(i++, space);
 	}
 }
 void Neb::Shape::shape::draw(Neb::window::window_s window, Neb::Math::Mat44 space) {

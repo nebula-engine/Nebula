@@ -33,7 +33,7 @@ namespace Neb {
 		/** @brief %RigidBody @{ */
 		namespace RigidBody {
 			class RigidBody;
-			typedef Neb::weak_ptr<RigidBody>	RigidBody_w;
+			typedef std::weak_ptr<RigidBody>	RigidBody_w;
 		}
 
 		class Rigid_Dynamic;
@@ -42,26 +42,28 @@ namespace Neb {
 
 
 
+		typedef std::shared_ptr<Base>		Base_s;
+		typedef std::weak_ptr<Base>		Base_w;
+		typedef std::unique_ptr<Base>		Base_u;
 
-		typedef Neb::weak_ptr<Base>		Base_w;
-		typedef Neb::unique_ptr<Base>		Base_u;
 
-
-		typedef Neb::weak_ptr<RigidActor>	RigidActor_w;
+		typedef std::weak_ptr<RigidActor>	RigidActor_w;
 
 		// Util
-		typedef Neb::unique_ptr<raw>		raw_u;
-		typedef Neb::weak_ptr<raw>		raw_w;
+
+		typedef std::unique_ptr<raw>		raw_u;
+		typedef std::weak_ptr<raw>		raw_w;
 
 
-		typedef Neb::weak_ptr<addr>		addr_w;
+		typedef std::weak_ptr<addr>		addr_w;
 
 
-		typedef Neb::unique_ptr<desc>		desc_u;
-		typedef Neb::weak_ptr<desc>		desc_w;
 
 
-		typedef Neb::weak_ptr<parent>		parent_w;
+		typedef std::shared_ptr<parent>			parent_s;
+		typedef std::weak_ptr<parent>			parent_w;
+		typedef std::unique_ptr<parent>			parent_u;
+
 
 		/** @brief %Control */
 		namespace Control {
@@ -77,8 +79,8 @@ namespace Neb {
 
 				class Control;
 
-				typedef Neb::unique_ptr<Control>	Control_u;
-				typedef Neb::weak_ptr<Control>		Control_w;
+				typedef std::unique_ptr<Control>	Control_u;
+				typedef std::weak_ptr<Control>		Control_w;
 
 			}
 		}

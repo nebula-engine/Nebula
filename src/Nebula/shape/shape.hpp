@@ -97,9 +97,7 @@ namespace Neb {
 				int						i_;
 				
 				
-				Neb::Map<Neb::light::light>			lights_;
-				Neb::Map<Neb::Shape::shape>			shapes_;
-
+				
 				Neb::material::material				material_front_;
 				mesh						mesh_;
 
@@ -108,6 +106,11 @@ namespace Neb {
 				Neb::program_name::e				program_;
 				/** @brief Parent */
 				Neb::Shape::parent_w				parent_;
+
+				
+				Neb::Map<Neb::Light::light>			lights_;
+				
+
 		};
 		namespace Box {
 			class Box: public Neb::Shape::shape {

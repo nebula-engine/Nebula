@@ -39,10 +39,9 @@ namespace Neb {
 				Base(Neb::Actor::parent_w);
 				virtual ~Base();
 
-				virtual void				init(Neb::weak_ptr<Neb::Actor::desc>);
+				//virtual void				init(Neb::weak_ptr<Neb::Actor::desc>);
 				virtual void				release();
 				virtual void				cleanup();
-
 
 				void					i(int ni);
 				int					i() const;
@@ -58,8 +57,8 @@ namespace Neb {
 				Neb::Actor::Base_w			create_actor_remote(Neb::weak_ptr<Neb::Actor::addr>, Neb::weak_ptr<Neb::Actor::desc>);
 
 
-				void							create_shapes(Neb::Actor::desc_w);
-				void							create_children(Neb::Actor::desc_w);
+				//void							create_shapes(Neb::Actor::desc_w);
+				//void							create_children(Neb::Actor::desc_w);
 
 				virtual void						create_physics() = 0;
 				virtual void						init_physics() = 0;
@@ -75,8 +74,8 @@ namespace Neb {
 				 * casts gru actor to nebula actor
 				 * @param addr address of actor
 				 */
-				Neb::weak_ptr<Neb::Actor::Base>			get_actor(Neb::weak_ptr<Neb::Actor::addr> addr);
-				virtual Neb::weak_ptr<Neb::Actor::desc>		get_projectile();
+				Neb::weak_ptr<Neb::Actor::Base>				get_actor(Neb::weak_ptr<Neb::Actor::addr> addr);
+				//virtual Neb::Actor::Base_s				get_projectile();
 				/** @} */
 
 
@@ -107,10 +106,16 @@ namespace Neb {
 				} conn_;
 
 			public:
-
-
-
-
+				/** @brief %Serialize
+				 * @param ar archive
+				 * @param version version
+				 */
+				template<class Archive> void			serialize(Archive & ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("i", i_);
+					ar & boost::serialization::make_nvp("raw", raw_);
+					ar & boost::serialization::make_nvp("actors", actors_);				
+					ar & boost::serialization::make_nvp("shapes", shapes_);
+				}
 
 				/** @name Stepping @{ */
 				virtual void					step(double time);
@@ -126,7 +131,7 @@ namespace Neb {
 				/** @} */
 
 				/** @name Accessors @{ */
-				Neb::weak_ptr<Neb::Actor::parent>		getParent();
+				Neb::Actor::parent_s				getParent();
 				void						setPose(physx::PxTransform pose);
 				/** @} */
 
@@ -134,15 +139,18 @@ namespace Neb {
 				void						load_lights(int&, physx::PxMat44);
 
 
-
-
 			public:
+				/** @brief ID */
 				int						i_;
-				Neb::weak_ptr<Neb::Actor::parent>		parent_;
-				Neb::Map<Neb::Shape::shape>			shapes_;
-				Neb::Map<Neb::Actor::Base>			actors_;
 				/** @brief Data */
 				Neb::unique_ptr<Neb::Actor::raw>		raw_;
+				/** @brief Actors */
+				Neb::Map<Neb::Actor::Base>			actors_;
+				/** @brief Shapes */
+				Neb::Map<Neb::Shape::shape>			shapes_;
+
+				/** @brief Parent */
+				Neb::Actor::parent_w				parent_;
 		};
 	}
 }

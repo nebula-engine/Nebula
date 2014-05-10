@@ -16,6 +16,7 @@
 
 namespace Neb {
 	namespace light {
+		/*
 		class desc {
 			public:
 				desc();
@@ -28,9 +29,9 @@ namespace Neb {
 				
 				
 				int					i_;
-				raw					raw_;
+				Raw					raw_;
 				
-		};
+		};*/
 	}
 }
 

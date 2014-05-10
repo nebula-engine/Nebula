@@ -20,7 +20,8 @@
 
 #include <Nebula/config.hpp>
 #include <Nebula/Types.hpp>
-#include <Nebula/Typed.hpp>
+
+#include <Nebula/Util/Typed.hpp>
 #include <Nebula/Util/WrapperTyped.hpp>
 
 #include <Nebula/Graphics/material.hpp>

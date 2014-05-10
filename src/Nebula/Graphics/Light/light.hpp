@@ -18,7 +18,7 @@
 //#include <math/color.hpp>
 
 namespace Neb {
-	namespace light {
+	namespace Light {
 		class light { //: public gal::flag {
 			public:
 				
@@ -50,7 +50,7 @@ namespace Neb {
 			public:
 
 				int				i_;
-				raw				raw_;
+				Raw				raw_;
 
 				texture				texture_shadow_map_;
 

@@ -11,7 +11,7 @@
 #include <Nebula/Graphics/window/desc.hpp>
 #include <Nebula/Graphics/texture.hpp>
 //#include <Nebula/camera.hpp>
-#include <Nebula/Graphics/light/light.hpp>
+#include <Nebula/Graphics/Light/light.hpp>
 #include <Nebula/master.hpp>
 #include <Nebula/Graphics/glsl/program.hpp>
 #include <Nebula/Graphics/glsl/shader.hpp>

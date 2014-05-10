@@ -9,6 +9,7 @@
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/xml_oarchive.hpp>
 
+#include <Nebula/Util/Typed.hpp>
 #include <Nebula/Util/Factory.hpp>
 
 namespace Neb {
@@ -17,8 +18,14 @@ namespace Neb {
 	 */
 	template<class T> class WrapperTyped {
 		public:
-			/** @brief Constructor */
-			WrapperTyped(std::weak_ptr< Neb::Factory<T> > factory): factory_(factory) {}
+			typedef std::weak_ptr< Neb::Factory<T> >		factory_weak;
+			typedef std::shared_ptr<T>				shared;
+			/** @name Constructors @{ */
+			WrapperTyped(factory_weak factory): factory_(factory) {}
+			WrapperTyped(factory_weak factory, shared s): factory_(factory) {
+				ptr_ = s;
+			}
+			/** @} */
 			/** @brief Destructor */
 			virtual ~WrapperTyped() {}
 			/** @brief Serialize */
@@ -64,13 +71,11 @@ namespace Neb {
 				ar << boost::serialization::make_nvp("object", *ptr_);
 			}
 			
-			
-			
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 		public:
-			/** @brief Object */
-			std::shared_ptr< T >				ptr_;
-			std::weak_ptr< Neb::Factory<T> >		factory_;
+			/** @brief Pointer */
+			shared				ptr_;
+			factory_weak			factory_;
 	};
 }
 

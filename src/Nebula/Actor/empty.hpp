@@ -21,7 +21,7 @@ namespace Neb {
 			public:
 				empty(Neb::Actor::parent_w);
 				
-				virtual void			init(Neb::Actor::desc_w);
+				//virtual void			init(Neb::Actor::desc_w);
 
 				virtual void			add_force(double) {}
 

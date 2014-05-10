@@ -65,9 +65,9 @@ namespace Neb {
 			private:	
 				//_wNeb::Actor::Base>		create_actor(boost::shared_ptr<Neb::Actor::desc>);
 			public:
-				Neb::weak_ptr<Neb::Actor::Base>			create_actor_local(Neb::Actor::desc_w);
-				Neb::weak_ptr<Neb::Actor::Base>			create_actor_remote(Neb::Actor::addr_w, Neb::Actor::desc_w);
-				void						add_deferred(Neb::Actor::desc_w);
+				//Neb::weak_ptr<Neb::Actor::Base>			create_actor_local(Neb::Actor::desc_w);
+				//Neb::weak_ptr<Neb::Actor::Base>			create_actor_remote(Neb::Actor::addr_w, Neb::Actor::desc_w);
+				//void						add_deferred(Neb::Actor::desc_w);
 
 				/** @name Main Loop @{ */
 				void						draw();
@@ -116,7 +116,7 @@ namespace Neb {
 				Neb::weak_ptr<Neb::renderable>				renderable_;
 
 				Neb::Map<Neb::Actor::Base>				actors_;
-				std::map<std::string, Neb::Actor::desc_w>		actors_deferred_;
+				std::map<std::string, Neb::Actor::Base_s>		actors_deferred_;
 		};
 	}
 }

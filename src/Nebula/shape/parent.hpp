@@ -30,13 +30,19 @@ namespace Neb {
 		 */
 		class parent: virtual public Neb::Core::Pose, virtual public Neb::Shared {
 			public:
+				parent();
 				virtual ~parent() {}
 
 				//virtual physx::PxMat44					getPoseGlobal() = 0;
 				//virtual physx::PxMat44					getPose() = 0;
+				
+				
+				Neb::Actor::Base_s			isActor();
+				Neb::Shape::shape_s			isShape();
+				
+				/** @brief Shapes */
+				Neb::Map<Neb::Shape::shape>			shapes_;
 
-				Neb::weak_ptr<Neb::Actor::Base>				isActor();
-				Neb::weak_ptr<Neb::Shape::shape>			isShape();
 		};
 	}
 }

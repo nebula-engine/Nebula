@@ -17,7 +17,7 @@ namespace Neb {
 				
 				virtual void					setupFiltering();
 
-				virtual Neb::weak_ptr<Neb::Actor::desc>		get_projectile() = 0;
+				virtual Neb::Actor::Base_s			get_projectile() = 0;
 				
 				virtual void					create_physics() = 0;
 				virtual void					init_physics() = 0;

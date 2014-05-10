@@ -16,7 +16,7 @@
 #include <Nebula/Actor/Types.hpp>
 #include <Nebula/Actor/Util/Type.hpp>
 #include <Nebula/Filter.hpp>
-#include <Nebula/Typed.hpp>
+#include <Nebula/Util/Typed.hpp>
 
 //template void gal::reset<Neb::Actor::raw>(std::shared_ptr<glutpp::actor::raw>&);
 

@@ -18,7 +18,7 @@
 #include <GLFW/glfw3.h>
 
 #include <Nebula/Enums.hpp>
-#include <Nebula/Typed.hpp>
+#include <Nebula/Util/Typed.hpp>
 #include <Nebula/Util/Factory.hpp>
 
 

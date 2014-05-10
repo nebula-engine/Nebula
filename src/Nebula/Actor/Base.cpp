@@ -67,8 +67,8 @@ void Neb::Actor::Base::cleanup() {
 		}
 	}
 }
-Neb::Actor::parent_w		Neb::Actor::Base::getParent() {
-	return parent_;
+Neb::Actor::parent_s		Neb::Actor::Base::getParent() {
+	return parent_.lock();
 }
 physx::PxTransform		Neb::Actor::Base::getPose() {
 	assert(raw_);
@@ -150,7 +150,7 @@ Neb::Actor::Base::Base(Neb::Actor::parent_w parent): parent_(parent) {
 Neb::Actor::Base::~Base() {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-void Neb::Actor::Base::init(Neb::Actor::desc_w desc) {
+/*void Neb::Actor::Base::init(Neb::Actor::desc_w desc) {
 	NEBULA_ACTOR_BASE_FUNC;
 	
 	raw_.reset();
@@ -161,7 +161,7 @@ void Neb::Actor::Base::init(Neb::Actor::desc_w desc) {
 	create_children(desc);
 	create_shapes(desc);
 	init_physics();
-}
+}*/
 void Neb::Actor::Base::release() {
 
 	for(auto it = actors_.begin(); it != actors_.end(); ++it) {
@@ -172,7 +172,7 @@ void Neb::Actor::Base::release() {
 
 	//conn_.key_fun_.disconnect();
 }
-void Neb::Actor::Base::create_children(Neb::Actor::desc_w desc) {
+/*void Neb::Actor::Base::create_children(Neb::Actor::desc_w desc) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	// create children
@@ -180,9 +180,7 @@ void Neb::Actor::Base::create_children(Neb::Actor::desc_w desc) {
 	{
 		create_actor(*it);
 	}
-
-
-}
+}*/
 /*Neb::Actor::Base_w		Neb::Actor::Base::create_actor(Neb::Actor::desc_w desc) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
@@ -225,7 +223,7 @@ void Neb::Actor::Base::create_children(Neb::Actor::desc_w desc) {
 
 	return actor;
 }*/
-Neb::Actor::Base_w		Neb::Actor::Base::create_actor_local(Neb::Actor::desc_w desc) {
+/*Neb::Actor::Base_w		Neb::Actor::Base::create_actor_local(Neb::Actor::desc_w desc) {
 
 	long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
 	
@@ -234,8 +232,8 @@ Neb::Actor::Base_w		Neb::Actor::Base::create_actor_local(Neb::Actor::desc_w desc
 	actors_.push_back(actor);
 
 	return actor;
-}
-Neb::Actor::Base_w		Neb::Actor::Base::create_actor_remote(Neb::Actor::addr_w addr, Neb::Actor::desc_w desc) {
+}*/
+/*Neb::Actor::Base_w		Neb::Actor::Base::create_actor_remote(Neb::Actor::addr_w addr, Neb::Actor::desc_w desc) {
 
 	//auto vec = addr->get_vec();
 	assert(!addr->vec_.empty());
@@ -264,7 +262,7 @@ Neb::Actor::Base_w		Neb::Actor::Base::create_actor_remote(Neb::Actor::addr_w add
 	}
 
 	return actor;
-}
+}*/
 Neb::app_w			Neb::Actor::Base::get_app() {
 	NEBULA_ACTOR_BASE_FUNC;
 
@@ -274,12 +272,13 @@ Neb::app_w			Neb::Actor::Base::get_app() {
 	
 	return scene->get_app();
 }
-Neb::Scene::scene_w		Neb::Actor::Base::get_scene() {
+Neb::Scene::scene_s		Neb::Actor::Base::get_scene() {
 	NEBULA_ACTOR_BASE_FUNC;
-
-	return parent_->getScene();
+	auto s = parent_.lock();
+	assert(s);
+	return s->getScene();
 }
-Neb::Actor::Base_w		Neb::Actor::Base::get_actor(int i) {
+Neb::Actor::Base_s		Neb::Actor::Base::get_actor(int i) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	auto it = actors_.find(i);

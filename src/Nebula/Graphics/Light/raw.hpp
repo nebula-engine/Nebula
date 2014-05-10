@@ -20,13 +20,13 @@
 #include <Nebula/Graphics/Light/Flag.hpp>
 
 namespace Neb {
-	namespace light {
-		class raw {
+	namespace Light {
+		class Raw {
 			public:
 				//typedef Neb::light::light<raw>	LIGHT;
 				//typedef std::shared_ptr<LIGHT>	LIGHT_S;
 				
-				raw();
+				Raw();
 				void			load(Neb::Light::light_w);
 				//void			load(tinyxml2::XMLElement*);
 				
