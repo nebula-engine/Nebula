@@ -39,13 +39,14 @@ void	gal::network::communicating::start()
 	
 	read_thread_ = std::thread(std::bind(&communicating::thread_read, this ) );
 }
-void		gal::network::communicating::write(boost::shared_ptr<gal::network::message> msg) {	
+void		gal::network::communicating::write(boost::shared_ptr<gal::network::message> & msg) {	
 	//GALAXY_DEBUG_1_FUNCTION;
-
+	
 	{
 		std::lock_guard<std::mutex> lk(mutex_);
 		
-		write_queue_.push_back( msg );
+		// take ownership of the message
+		write_queue_.push_back( std::move(msg) );
 	}
 	
 	//printf("notify one\n");
