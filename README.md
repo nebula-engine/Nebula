@@ -1,6 +1,10 @@
-# glutpp
+# GRU
 
 Window and 3D graphics library in c++ using GLFW
+
+## News
+
+Nebula is mergin into GRU. All my game engine code is being condesend and put in GRU.
 
 ## TODO
 
