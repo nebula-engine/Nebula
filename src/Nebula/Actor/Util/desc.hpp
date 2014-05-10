@@ -9,9 +9,7 @@
 
 #include <Nebula/master.hpp>
 #include <Nebula/Actor/Util/Type.hpp>
-//#include <Nebula/Actor/Util/id.hpp>
 #include <Nebula/Actor/Util/raw.hpp>
-//#include <Nebula/Actor/raw_factory.hpp>
 #include <Nebula/shape/desc.hpp>
 #include <Nebula/Filter.hpp>
 #include <Nebula/Typed.hpp>
@@ -25,7 +23,6 @@ namespace Neb {
 				virtual ~desc() {}
 				template<class Archive> void					serialize(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("i",i_);
-					ar & boost::serialization::make_nvp("type",type_);
 					ar & boost::serialization::make_nvp("raw",raw_wrapper_);
 					ar & boost::serialization::make_nvp("actors",actors_);
 					ar & boost::serialization::make_nvp("shapes",shapes_);
@@ -39,12 +36,10 @@ namespace Neb {
 
 				boost::shared_ptr<Neb::Actor::raw>				getRaw();
 			public:
-				int								i_;
-				Neb::Actor::Type						type_;
-				//boost::shared_ptr<Nebula::Actor::raw>				raw_;
-				Neb::WrapperTyped<Neb::Actor::raw>				raw_wrapper_;
-				std::vector<boost::shared_ptr<Neb::Actor::desc> >		actors_;
-				std::vector<boost::shared_ptr<Neb::Shape::desc> >		shapes_;
+				int							i_;
+				Neb::WrapperTyped<Neb::Actor::raw>			raw_wrapper_;
+				std::vector<Neb::Actor::desc_s>				actors_;
+				std::vector<Neb::Shape::desc_s>				shapes_;
 
 
 		};
