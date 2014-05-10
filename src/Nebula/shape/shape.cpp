@@ -5,26 +5,21 @@
 #include <Nebula/Graphics/light/light.hpp>
 #include <Nebula/Graphics/glsl/attrib.hpp>
 #include <Nebula/Map.hpp>
-#include <Nebula/Memory/smart_ptr.hpp>
 
 Neb::Shape::shape::shape(Neb::Shape::parent_w parent): parent_(parent) {
 	NEBULA_SHAPE_BASE_FUNC;
-	assert(parent);
+	assert(!parent.expired());
 }
 Neb::Shape::shape::~shape() {}
-Neb::Shape::parent_w		Neb::Shape::shape::getParent() {
-	if(!parent_.expired()) {
-		return parent_.lock();
-	} else {
-		return boost::shared_ptr<Neb::Shape::parent>();
-	}
+Neb::Shape::parent_s		Neb::Shape::shape::getParent() {
+	return parent_.lock();
 }
-gal::flag::flag_type		Neb::Shape::shape::f() {
+/*gal::flag::flag_type		Neb::Shape::shape::f() {
 	return raw_->flag_;
 }
 void Neb::Shape::shape::f(unsigned int flag) {
 	raw_->flag_ = flag;
-}
+}*/
 Neb::Math::Transform	Neb::Shape::shape::getPoseGlobal() {
 	NEBULA_SHAPE_BASE_FUNC;
 	
@@ -44,11 +39,13 @@ Neb::Math::Transform		Neb::Shape::shape::getPose() {
 void		Neb::Shape::shape::init(Neb::Shape::desc_w desc) {
 	NEBULA_SHAPE_BASE_FUNC
 	
-	auto me = boost::dynamic_pointer_cast<Neb::Shape::shape>(shared_from_this());
+	auto me = std::dynamic_pointer_cast<Neb::Shape::shape>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
 	
-	i_ = desc->i_;
-	raw_.swap(desc->raw_wrapper_.ptr_);
+	auto desc_s = desc.lock();
+	
+	i_ = desc_s->i_;
+	raw_->copy(desc_s->raw_wrapper_.ptr_);
 	
 	// type
 
@@ -63,11 +60,17 @@ void		Neb::Shape::shape::init(Neb::Shape::desc_w desc) {
 	}
 
 
-	// shape
-	boost::shared_ptr<Neb::Shape::desc> sd;
-	Neb::unique_ptr<Neb::Shape::shape> shape;
-	for(auto it = desc->shapes_.begin(); it != desc->shapes_.end(); ++it) {
-		shape.reset(desc->construct());
+	// create shape
+	Neb::Shape::desc_s sd;
+	Neb::Shape::shape_s shape;
+	for(auto it = desc_s->shapes_.begin(); it != desc_s->shapes_.end(); ++it) {
+
+		shape.reset(
+				Neb::master::global()->factories_.shape_base_->alloc(
+					(*it)->raw_wrapper_.ptr_->hash_code_
+					)
+				);
+
 		shape->init(*it);
 		
 		//Neb::Map<Neb::Shape::shape>::value_type p;
@@ -77,10 +80,11 @@ void		Neb::Shape::shape::init(Neb::Shape::desc_w desc) {
 		shapes_.push_back(shape);
 	}
 
-	// lights
-	boost::shared_ptr<Neb::light::desc> ld;
-	Neb::unique_ptr<Neb::light::light> light;
-	for(auto it = desc->lights_.begin(); it != desc->lights_.end(); ++it) {
+	// create lights
+	Neb::light::desc_s ld;
+	Neb::light::light_s light;
+	for(auto it = desc_s->lights_.begin(); it != desc_s->lights_.end(); ++it) {
+
 		light.reset(new Neb::light::light(me));
 
 		light->init(*it);
@@ -135,7 +139,7 @@ void Neb::Shape::shape::cleanup() {
 
 		l->second->cleanup();
 
-		if(l->second->any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
+		if(l->second->raw_.flag_.any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
 			l->second->release();
 
 			l = lights_.erase(l);

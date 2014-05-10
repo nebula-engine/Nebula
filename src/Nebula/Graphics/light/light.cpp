@@ -1,27 +1,25 @@
 #include <stdio.h>
 #include <assert.h>
 
+#include <Nebula/Types.hpp>
+#include <Nebula/Graphics/light/light.hpp>
+#include <Nebula/Graphics/window/window.hpp>
+#include <Nebula/Scene/scene.hpp>
+#include <Nebula/shape/shape.hpp>
+#include <Nebula/free.hpp>
+#include <Nebula/Graphics/glsl/Uniform/uniform.hpp>
 
-#include <gru/Graphics/light/light.hpp>
-#include <gru/Graphics/window/window.hpp>
-#include <gru/scene/scene.hpp>
-#include <gru/shape/shape.hpp>
-#include <gru/free.hpp>
-#include <gru/Graphics/glsl/Uniform/uniform.hpp>
 
-
-glutpp::light::light::light(boost::shared_ptr<glutpp::shape::shape> shape):
-	shape_(shape)
-{
+Neb::light::light::light(Neb::Shape::shape_w shape): shape_(shape) {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-unsigned int glutpp::light::light::f() {
+unsigned int Neb::light::light::f() {
 	return raw_.flag_;
 }
-void glutpp::light::light::f(unsigned int flag) {
+void Neb::light::light::f(unsigned int flag) {
 	raw_.flag_ = flag;
 }
-void glutpp::light::light::init(/*boost::shared_ptr<glutpp::scene::scene> scene,*/ boost::shared_ptr<glutpp::light::desc> desc) {
+void Neb::light::light::init(/*boost::shared_ptr<Neb::scene::scene> scene,*/ boost::shared_ptr<Neb::light::desc> desc) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	//assert(scene);
@@ -42,24 +40,24 @@ void glutpp::light::light::init(/*boost::shared_ptr<glutpp::scene::scene> scene,
 	//texture_shadow_map_.init_shadow(camera_.w_, camera_.h_);
 	
 	set(
-		glutpp::light::flag::e::SHOULD_LOAD_POS |
-		glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION |
-		glutpp::light::flag::e::SHOULD_LOAD_OTHER
+		Neb::light::flag::e::SHOULD_LOAD_POS |
+		Neb::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION |
+		Neb::light::flag::e::SHOULD_LOAD_OTHER
 	);
 }
-void glutpp::light::light::release() {
+void Neb::light::light::release() {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-void glutpp::light::light::cleanup() {
+void Neb::light::light::cleanup() {
 	GLUTPP_DEBUG_1_FUNCTION;
 }
-void glutpp::light::light::notify_foundation_change_pose() {
+void Neb::light::light::notify_foundation_change_pose() {
 	set(
-		glutpp::light::flag::e::SHOULD_LOAD_POS |
-		glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION
+		Neb::light::flag::e::SHOULD_LOAD_POS |
+		Neb::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION
 	);
 }
-void glutpp::light::light::dim() {
+void Neb::light::light::dim() {
 	GLUTPP_DEBUG_1_FUNCTION;
 	/*	
 	//printf("diffuse\n");
@@ -73,10 +71,10 @@ void glutpp::light::light::dim() {
 	printf("UNSUPPORTED\n");
 	exit(0);
 }
-void	glutpp::light::light::draw() {	
+void	Neb::light::light::draw() {	
 	GLUTPP_DEBUG_1_FUNCTION;
 }
-physx::PxMat44		glutpp::light::light::get_pose() {
+physx::PxMat44		Neb::light::light::get_pose() {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
 	assert(!shape_.expired());
@@ -85,10 +83,10 @@ physx::PxMat44		glutpp::light::light::get_pose() {
 	
 	return m;
 }
-void glutpp::light::light::load(int o, physx::PxMat44 space) {
+void Neb::light::light::load(int o, physx::PxMat44 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
-	auto p = glutpp::master::Global()->current_program();
+	auto p = Neb::master::Global()->current_program();
 
 	physx::PxVec4 pos = raw_.pos_;
 
@@ -109,20 +107,20 @@ void glutpp::light::light::load(int o, physx::PxMat44 space) {
 	//pos.print();
 	
 	
-	//if(any(glutpp::light::flag::e::SHOULD_LOAD_POS))
+	//if(any(Neb::light::flag::e::SHOULD_LOAD_POS))
 	{
 		p->get_uniform_vector("lights.position")->load(o, pos);
 		
-		//unset(glutpp::light::flag::e::SHOULD_LOAD_POS);
+		//unset(Neb::light::flag::e::SHOULD_LOAD_POS);
 	}	
-	//if(any(glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION))
+	//if(any(Neb::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION))
 	{
 		p->get_uniform_vector("lights.spot_direction")->load(o, spot_direction);
 		
-		//unset(glutpp::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION);
+		//unset(Neb::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION);
 	}
 	
-	//if(any(glutpp::light::flag::e::SHOULD_LOAD_OTHER))
+	//if(any(Neb::light::flag::e::SHOULD_LOAD_OTHER))
 	{
 		p->get_uniform_vector("lights.ambient")->load(o, raw_.ambient_);
 		p->get_uniform_vector("lights.diffuse")->load(o, raw_.diffuse_);
@@ -134,12 +132,12 @@ void glutpp::light::light::load(int o, physx::PxMat44 space) {
 		p->get_uniform_vector("lights.atten_linear")->load(o, raw_.atten_linear_);
 		p->get_uniform_vector("lights.atten_quad")->load(o, raw_.atten_quad_);
 
-		//unset(glutpp::light::flag::e::SHOULD_LOAD_OTHER);
+		//unset(Neb::light::flag::e::SHOULD_LOAD_OTHER);
 	}
 }
-void	glutpp::light::light::load_shadow() {
+void	Neb::light::light::load_shadow() {
 	GLUTPP_DEBUG_1_FUNCTION;
-	/*	auto p = glutpp::master::Global()->current_program();
+	/*	auto p = Neb::master::Global()->current_program();
 
 		math::mat44 biasMatrix(
 		0.5f, 0.0f, 0.0f, 0.0f,
@@ -157,7 +155,7 @@ void	glutpp::light::light::load_shadow() {
 	uniform_tex_shadow_.load_1i(1);
 	 */
 }
-void	glutpp::light::light::RenderLightPOV()
+void	Neb::light::light::RenderLightPOV()
 {
 	GLUTPP_DEBUG_1_FUNCTION;
 	/*
@@ -209,7 +207,7 @@ void	glutpp::light::light::RenderLightPOV()
 	 */
 	checkerror("unknown");
 }
-void	glutpp::light::light::RenderShadowPost()
+void	Neb::light::light::RenderShadowPost()
 {
 	//Disable textures and texgen
 	glDisable(GL_TEXTURE_2D);
@@ -222,7 +220,7 @@ void	glutpp::light::light::RenderShadowPost()
 	glDisable(GL_ALPHA_TEST);
 	checkerror(__PRETTY_FUNCTION__);
 }
-void glutpp::light::light::i(int ni) {
+void Neb::light::light::i(int ni) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	i_ = ni;

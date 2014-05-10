@@ -3,8 +3,10 @@
 
 
 #include <Nebula/config.hpp>
+
 #include <Nebula/shape/desc.hpp>
 #include <Nebula/shape/shape.hpp>
+
 #include <Nebula/Graphics/light/desc.hpp>
 #include <Nebula/Graphics/light/light.hpp>
 

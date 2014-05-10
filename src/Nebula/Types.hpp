@@ -40,39 +40,34 @@ namespace Neb {
 			};
 		};
 
-		class id;
 		class Raw;
 		class desc;
 		class base;
 		class shape;
 		class parent;
-		class raw_factory;
 
 		typedef std::shared_ptr<base>		base_s;
-		typedef std::shared_ptr<id>		id_s;
-		typedef std::shared_ptr<Raw>		raw_s;
+		typedef Neb::weak_ptr<base>		base_w;
 
-		typedef Neb::unique_ptr<desc>		desc_u;
+
+		typedef std::shared_ptr<desc>		desc_s;
+		typedef std::weak_ptr<desc>		desc_w;
+		typedef std::unique_ptr<desc>		desc_u;
+
+
+		typedef std::shared_ptr<Raw>		Raw_s;
+		typedef std::weak_ptr<Raw>		Raw_w;
+		typedef std::unique_ptr<Raw>		Raw_u;
 
 
 		typedef std::shared_ptr<shape>		shape_s;
-
-		typedef Neb::weak_ptr<base>		base_w;
-		typedef Neb::weak_ptr<id>		id_w;
-
-		typedef Neb::weak_ptr<Raw>		Raw_w;
-		typedef Neb::unique_ptr<Raw>		Raw_u;
-
-
-		typedef Neb::weak_ptr<desc>		desc_w;
-
-
-		typedef Neb::unique_ptr<shape>		shape_u;
-		typedef Neb::weak_ptr<shape>		shape_w;
+		typedef std::weak_ptr<shape>		shape_w;
+		typedef std::unique_ptr<shape>		shape_u;
 		
 
-		typedef Neb::unique_ptr<parent>		parent_u;
-		typedef Neb::weak_ptr<parent>		parent_w;
+		typedef std::shared_ptr<parent>		parent_s;
+		typedef std::unique_ptr<parent>		parent_u;
+		typedef std::weak_ptr<parent>		parent_w;
 
 	}
 	/** @brief Lights */
@@ -105,8 +100,10 @@ namespace Neb {
 
 		typedef Neb::unique_ptr<raw>	raw_u;
 
-		typedef Neb::unique_ptr<desc>	desc_u;
-		typedef Neb::weak_ptr<desc>	desc_w;
+
+		typedef std::shared_ptr<desc>	desc_s;
+		typedef std::weak_ptr<desc>	desc_w;
+		typedef std::unique_ptr<desc>	desc_u;
 
 
 		typedef std::shared_ptr<light>		light_s;
@@ -160,10 +157,10 @@ namespace Neb {
 			class Base;
 			class Free;
 			class Ridealong;
-			
+
 			typedef std::shared_ptr<Base>		Base_s;
 			typedef Neb::unique_ptr<Base>		Base_u;
-			
+
 			typedef std::shared_ptr<Ridealong>	Ridealong_s;
 			typedef std::weak_ptr<Ridealong>	Ridealong_w;
 		}

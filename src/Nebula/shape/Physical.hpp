@@ -13,7 +13,7 @@ namespace Neb {
 	namespace Shape {
 		class Physical: public Neb::Shape::shape {
 			public:
-				Physical(Neb::weak_ptr<Neb::Shape::parent>);
+				Physical(Neb::Shape::parent_w);
 
 				virtual void		init(Neb::weak_ptr<Neb::Shape::desc>);
 				void			create_physics();

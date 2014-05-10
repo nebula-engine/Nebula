@@ -122,13 +122,15 @@ namespace Neb {
 
 			/** @brief Factories */
 			struct {
-				typedef Neb::unique_ptr< Neb::Factory<Neb::gui::object::object> >	Gui_Object;
-				typedef Neb::unique_ptr< Neb::Factory<Neb::Actor::raw> >		Actor_Raw;
-				typedef Neb::unique_ptr< Neb::Factory<Neb::Actor::Base> >		Actor_Base;
-				typedef Neb::unique_ptr< Neb::Factory<Neb::Shape::Raw> >		Shape_Raw;
-				typedef Neb::unique_ptr< Neb::Factory<Neb::Shape::shape> >		Shape_Base;
-
-				typedef Neb::unique_ptr< Neb::Factory<Neb::Scene::raw> >		SceneRaw;
+				template<typename T>
+				using pointer = std::shared_ptr<T>;
+				
+				typedef pointer< Neb::Factory<Neb::gui::object::object> >		Gui_Object;
+				typedef pointer< Neb::Factory<Neb::Actor::raw> >			Actor_Raw;
+				typedef pointer< Neb::Factory<Neb::Actor::Base> >			Actor_Base;
+				typedef pointer< Neb::Factory<Neb::Shape::Raw> >			Shape_Raw;
+				typedef pointer< Neb::Factory<Neb::Shape::shape> >			Shape_Base;
+				typedef pointer< Neb::Factory<Neb::Scene::raw> >			SceneRaw;
 
 				Gui_Object			gui_object_;
 				Actor_Raw			actor_raw_;

@@ -17,7 +17,7 @@
 
 #include <Nebula/Math/Typedef.hpp>
 
-#include <Nebula/config.hpp>
+#include <Nebula/Types.hpp>
 #include <Nebula/Graphics/material.hpp>
 
 #include <Nebula/shape/Type.hpp>
@@ -34,6 +34,8 @@ namespace Neb {
 				Raw();
 
 				Raw&			operator=(Raw const &);
+				void			copy(Neb::Shape::Raw_w const &);
+				
 
 				//void			load(tinyxml2::XMLElement*);
 				void			parse_type(char const *);

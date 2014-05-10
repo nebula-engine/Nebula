@@ -46,13 +46,13 @@ namespace Neb {
 				typedef std::shared_ptr<Neb::Shape::buffer>		buffer_t;
 				typedef std::map<Neb::window::window*,buffer_t>	map_t;
 
-				shape(Neb::weak_ptr<Neb::Shape::parent> parent);
+				shape(Neb::Shape::parent_w parent);
 				~shape();
 				
 				/** @name Accessors @{ */
 				physx::PxTransform				getPose();
 				physx::PxTransform				getPoseGlobal();
-				Neb::Shape::parent_w				getParent();
+				Neb::Shape::parent_s				getParent();
 				/** @} */
 
 				void			init(Neb::Shape::desc_w desc);
@@ -83,28 +83,30 @@ namespace Neb {
 				/** @name Flag
 				 * @{
 				 */
-				gal::flag::flag_type		f();
-				void				f(unsigned int flag);
+				//gal::flag::flag_type		f();
+				//void				f(unsigned int flag);
 				/** @} */
+			protected:
+				/** @brief Raw data. */
+				Neb::Shape::Raw_s				raw_;
 			public:
 				// draw data
 
 				/** @brief ID */
-				int					i_;
-				/** @brief Raw data. */
-				Neb::Shape::Raw_u			raw_;
+				int						i_;
 				
-				Neb::Map<Neb::light::light>		lights_;
-				Neb::Map<Neb::Shape::shape>		shapes_;
+				
+				Neb::Map<Neb::light::light>			lights_;
+				Neb::Map<Neb::Shape::shape>			shapes_;
 
-				Neb::material::material			material_front_;
-				mesh					mesh_;
+				Neb::material::material				material_front_;
+				mesh						mesh_;
 
-				map_t					context_;
+				map_t						context_;
 
-				Neb::program_name::e			program_;
-
-				boost::weak_ptr<Neb::Shape::parent>		parent_;
+				Neb::program_name::e				program_;
+				/** @brief Parent */
+				Neb::Shape::parent_w				parent_;
 		};
 		namespace Box {
 			class Box: public Neb::Shape::shape {

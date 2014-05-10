@@ -43,13 +43,13 @@ namespace Neb {
 				}
 
 
-				void			print();
+				void				print();
 
-				int			i_;
-				unsigned int		flag_;
+				int				i_;
+				Neb::Light::Flag		flag_;
 
 				// position
-				Neb::Math::Vec4		pos_;
+				Neb::Math::Vec4			pos_;
 
 				// colors
 				Neb::Color::color<float>	ambient_;

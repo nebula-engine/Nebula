@@ -15,6 +15,12 @@
 #include <Nebula/network/message.hpp>
 #include <Nebula/physics.hpp>
 
+/** @todo since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers.
+ * to avoid unwanted shared_ptrs to owned objects, care must be taken when passing these objects around.
+ * better documentation inside function bodies should be used to let me know what a shared_ptr is being used (how it 
+ * should be treated.
+ */
+
 neb::app::app(): flag_(0){
 	NEBULA_DEBUG_0_FUNCTION;
 }

@@ -17,13 +17,12 @@
 
 //#include <math/color.hpp>
 
-
 namespace Neb {
 	namespace light {
-		class light: public gal::flag {
+		class light { //: public gal::flag {
 			public:
 				
-				light(boost::shared_ptr<Neb::Shape::shape>);
+				light(Neb::Shape::shape_w);
 
 				void				i(int const &);
 				int const &			i() const;
@@ -46,8 +45,8 @@ namespace Neb {
 				physx::PxMat44			get_pose();
 				physx::PxVec4			get_pos();
 			private:
-				gal::flag::flag_type		f();
-				void				f(gal::flag::flag_type);
+				//gal::flag::flag_type const &		f() const;
+				//void					f(gal::flag::flag_type const &);
 			public:
 
 				int				i_;

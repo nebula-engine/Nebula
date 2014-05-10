@@ -6,13 +6,9 @@
 #include <Nebula/shape/raw.hpp>
 
 
-Neb::Shape::Raw::Raw():
-	flag_(0)
-{
-	GLUTPP_DEBUG_0_FUNCTION;
+Neb::Shape::Raw::Raw() {
+	//GLUTPP_DEBUG_0_FUNCTION;
 	
-	memset(image_, '\0', max_filename_length);
-	memset(normal_, '\0', max_filename_length);
 }
 /*
 void	Neb::Shape::raw_base::load(tinyxml2::XMLElement* element) {

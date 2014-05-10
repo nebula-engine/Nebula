@@ -6,7 +6,7 @@
 #include <Nebula/Actor/Rigid_Actor.hpp>
 #include <Nebula/shape/raw.hpp>
 
-Neb::Shape::Physical::Physical(Neb::weak_ptr<Neb::Shape::parent> parent): Neb::Shape::shape(parent) {
+Neb::Shape::Physical::Physical(Neb::Shape::parent_w parent): Neb::Shape::shape(parent) {
 	//NEBULA_DEBUG_0_FUNCTION;
 }
 void Neb::Shape::Physical::init(Neb::weak_ptr<Neb::Shape::desc> desc) {
@@ -22,7 +22,10 @@ void Neb::Shape::Physical::create_physics() {
 	
 	assert(!parent_.expired());
 	
-	auto actor = getParent()->isActor();
+	auto parent = getParent();
+	assert(parent);
+
+	auto actor = parent->isActor();
 	
 	if(actor) {
 		auto rigidactor = actor->isRigidActor();//std::dynamic_pointer_cast<Neb::Actor::Rigid_Actor>(parent_.lock());

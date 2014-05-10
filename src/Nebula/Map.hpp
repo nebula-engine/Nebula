@@ -13,21 +13,24 @@
 namespace Neb {
 	template <class T> class Map {
 		public:
-			typedef Neb::unique_ptr<T>			mapped_type;
-			typedef Neb::weak_ptr<T>			weak_type;
+			typedef std::shared_ptr<T>			mapped_type;
+			typedef std::weak_ptr<T>			weak_type;
+
 			typedef std::map<int,mapped_type>		map_type;
 			typedef typename map_type::iterator		iter;
 			typedef typename map_type::value_type		value_type_const;
 			typedef std::pair<int,mapped_type>		value_type;
-			
+			/** @brief Constructor */
 			Map():next_(0) {}
-			mapped_type& operator[](const int& k) {
+			/** @brief Array Subscript */
+			weak_type& operator[](const int& k) {
 				return map_[k];
 			}
-			void		add(value_type& p) {
+			
+			/*void		add(value_type& p) {
 				p.first = next_++;
 				map_.insert(p);
-			}
+			}*/
 			void		push_back(mapped_type& u) {
 				//printf("%s\n", __PRETTY_FUNCTION__);
 				

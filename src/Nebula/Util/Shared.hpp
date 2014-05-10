@@ -7,7 +7,7 @@ namespace Neb {
 	/** @brief %Shared.
 	 * avoid multiple enabled_shared_from_this bases
 	 */
-	class Shared: virtual public boost::enable_shared_from_this<Shared> {
+	class Shared: virtual public std::enable_shared_from_this<Shared> {
 		public:
 		virtual ~Shared() {}
 	};

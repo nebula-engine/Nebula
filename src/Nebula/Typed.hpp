@@ -77,7 +77,7 @@ namespace Neb {
 	template<class T> class WrapperTyped {
 		public:
 			/** @brief Constructor */
-			WrapperTyped(boost::weak_ptr< Neb::Factory<T> > factory): factory_(factory) {}
+			WrapperTyped(std::weak_ptr< Neb::Factory<T> > factory): factory_(factory) {}
 			/** @brief Destructor */
 			virtual ~WrapperTyped() {}
 			/** @brief Serialize */
@@ -99,8 +99,8 @@ namespace Neb {
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 		public:
 			/** @brief Object */
-			Neb::unique_ptr<T>			ptr_;
-			boost::weak_ptr< Neb::Factory<T> >	factory_;
+			std::shared_ptr< T >				ptr_;
+			std::weak_ptr< Neb::Factory<T> >		factory_;
 	};
 }
 

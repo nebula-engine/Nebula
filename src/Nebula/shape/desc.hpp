@@ -56,8 +56,8 @@ namespace Neb {
 				
 				int						i_;
 				Neb::WrapperTyped<Shape::Raw>			raw_wrapper_;
-				std::vector<Neb::Shape::desc_u>			shapes_;
-				std::vector<Neb::light::desc_u>			lights_;
+				std::vector<Neb::Shape::desc_s>			shapes_;
+				std::vector<Neb::light::desc_s>			lights_;
 		};
 	}
 }
