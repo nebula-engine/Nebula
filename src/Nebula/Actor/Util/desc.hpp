@@ -14,8 +14,15 @@
 #include <Nebula/Filter.hpp>
 #include <Nebula/Typed.hpp>
 
+/** @todo consider deleting the desc classes. could implement actor creation message by serializaing
+ * the Actor objects themselves with the help of WrapperTyped
+ */
+
 namespace Neb {
 	namespace Actor {
+		/** @brief desc.
+		 * used solely for the creation of an actor?????
+		 */
 		class desc {
 			public:
 				friend class boost::serialization::access;
@@ -37,6 +44,10 @@ namespace Neb {
 				boost::shared_ptr<Neb::Actor::raw>				getRaw();
 			public:
 				int							i_;
+				/** @brief hash code
+				 * hash code of the Actor object to be created
+				 */
+				Neb::Typed::hash_type					hash_code_;
 				Neb::WrapperTyped<Neb::Actor::raw>			raw_wrapper_;
 				std::vector<Neb::Actor::desc_s>				actors_;
 				std::vector<Neb::Shape::desc_s>				shapes_;
