@@ -1,6 +1,10 @@
-# glutpp
+# GRU
 
 Window and 3D graphics library in c++ using GLFW
+
+## News
+
+The Nebula library is merging into GRU as part of my campaign to reduce my game engine to a single static library. I am also replacing some of my own implementations with boost in order to reduce the size of my code. Once Nebula is merged into GRU, GRU will be renamed Nebula.
 
 ## TODO
 
@@ -11,6 +15,8 @@ Window and 3D graphics library in c++ using GLFW
 - Fog
 - Curved Reflections
 - Find on internet code to parse PLY files. Or some other standard for 3d model storage.
+
+## Rendering Ideas
 
 ### Curved reflections
 
