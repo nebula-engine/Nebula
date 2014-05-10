@@ -12,14 +12,14 @@
 //#include <galaxy/network/serial.hpp>
 
 #include <Nebula/config.hpp>
-#include <Nebula/Graphics/light/raw.hpp>
+#include <Nebula/Graphics/Light/raw.hpp>
 
 namespace Neb {
 	namespace light {
 		class desc {
 			public:
 				desc();
-				void					load(Neb::light::light_w);
+				void					load(Neb::Light::light_w);
 				
 				template<class Archive> void		serialize(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("i",i_);

@@ -47,8 +47,6 @@ namespace Neb {
 				void				parse_type(std::string);
 
 				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
-
-					ar & boost::serialization::make_nvp("type",type_);
 					ar & boost::serialization::make_nvp("mode_create",mode_create_);
 					ar & boost::serialization::make_nvp("flag",flag_);
 					ar & boost::serialization::make_nvp("name",name_);

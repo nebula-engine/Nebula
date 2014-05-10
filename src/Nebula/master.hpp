@@ -19,7 +19,12 @@
 
 #include <Nebula/Enums.hpp>
 #include <Nebula/Typed.hpp>
+#include <Nebula/Util/Factory.hpp>
+
+
 #include <Nebula/Types.hpp> // Nebula/config.hpp.in
+#include <Nebula/Graphics/Types.hh>
+
 #include <Nebula/Actor/Types.hpp>
 #include <Nebula/Memory/smart_ptr.hpp>
 

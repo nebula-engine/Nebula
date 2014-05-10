@@ -53,8 +53,6 @@ namespace Neb {
 				return it->second;
 			}
 
-		};	
-		template <typename enum_type> struct MapsFlag: Neb::Enum::Maps<enum_type> {
 			std::vector<std::string>	toStringVec(enum_type val) {
 				enum_type e = 0;
 				std::vector<std::string> vec;
@@ -121,15 +119,16 @@ namespace Neb {
 #define DEFINE_FLAG(name, values)\
 	struct name {\
 		public:\
-			enum E: unsigned long {\
+			typedef unsigned long int		flag_type;\
+			enum E: unsigned long int {\
 				BOOST_PP_SEQ_FOR_EACH(DEFINE_ENUM_VALUE, , values)\
 			};\
 			name(): val_((E)0) {}\
 			name(E e): val_(e) {}\
 			\
-			void		set(flag_type fl)	{ val_ |= fl} }\
-			void		unset(flag_type fl)	{ val_ &= !fl; }\
-			void		toggle(flag_type fl)	{ val_ ^= fl; }\
+			void		set(flag_type fl)	{ val_ = (E)(val_ | fl); }\
+			void		unset(flag_type fl)	{ val_ = (E)(val_ & !fl); }\
+			void		toggle(flag_type fl)	{ val_ = (E)(val_ ^ fl); }\
 			bool		all(flag_type fl)	{ return ( ( val_ & fl ) == fl ); }\
 			bool		any(flag_type fl)	{ return ( val_ & fl ); }\
 			flag_type	mask(flag_type fl)	{ return ( val_ & fl ); }\
@@ -139,21 +138,21 @@ namespace Neb {
 				std::vector<std::string> vec = maps_.maps_.toStringVec(val_);\
 				ar << boost::serialization::make_nvp("value",vec);\
 			}\
-			void				load(boost::archive::xml_iarchive & ar, unsigned int const & version) {		\
+			void				load(boost::archive::xml_iarchive & ar, unsigned int const & version) {\
 				std::vector<std::string> vec;\
 				ar >> boost::serialization::make_nvp("value",vec);\
-				val_ = maps_.maps_.toEnum(vec);\
-			}												\
-			template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {		\
-				ar & boost::serialization::make_nvp("value",val_);					\
-			}												\
+				val_ = (E)maps_.maps_.toEnum(vec);\
+			}\
+			template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {\
+				ar & boost::serialization::make_nvp("value",val_);\
+			}\
 			private:\
 				struct Maps {\
 					Maps() {\
 						BOOST_PP_SEQ_FOR_EACH(DEFINE_MAP_STRING_ENUM_VALUE, , values)\
 						BOOST_PP_SEQ_FOR_EACH(DEFINE_MAP_ENUM_STRING_VALUE, , values)\
 					}\
-					Neb::Enum::MapsFlag<unsigned long> maps_;\
+					Neb::Enum::Maps<unsigned long> maps_;\
 				};\
 				static Maps maps_;\
 			public:\

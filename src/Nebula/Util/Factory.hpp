@@ -1,7 +1,8 @@
 #ifndef NEBULA_UTIL_FACTORY_HPP
 #define NEBULA_UTIL_FACTORY_HPP
 
-/** @brief Factory
+namespace Neb {
+	/** @brief Factory
 	 * the app shall hold instances of Factory for the various types and use cases
 	 */
 	template<class T> class Factory {
@@ -53,6 +54,6 @@
 			std::map< long int, std::shared_ptr<__base_function> >         	map_;
 
 	};
+}
 	
-	
-	#endif
+#endif

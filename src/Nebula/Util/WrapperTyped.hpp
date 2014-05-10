@@ -1,13 +1,15 @@
-#ifndef NEBULA_TYPED_HPP
-#define NEBULA_TYPED_HPP
+#ifndef NEBULA_UTIL_WRAPPERTYPED_HH
+#define NEBULA_UTIL_WRAPPERTYPED_HH
 
 #include <map>
 
-#include <boost/function.hpp>
+//#include <boost/function.hpp>
 #include <boost/serialization/split_member.hpp>
 #include <boost/serialization/nvp.hpp>
+#include <boost/archive/xml_iarchive.hpp>
+#include <boost/archive/xml_oarchive.hpp>
 
-#include <Nebula/Memory/smart_ptr.hpp>
+#include <Nebula/Util/Factory.hpp>
 
 namespace Neb {
 	/** @brief WrapperTyped

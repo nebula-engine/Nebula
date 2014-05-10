@@ -1,6 +1,7 @@
 #ifndef NEBULA_TYPED_HPP
 #define NEBULA_TYPED_HPP
 
+#include <typeindex>
 #include <map>
 
 #include <boost/function.hpp>
@@ -13,7 +14,7 @@ namespace Neb {
 	/** @brief Typed */
 	class Typed {
 		public:
-			typedef hash_type		long int;
+			typedef long int		hash_type;
 			/** @brief Destructor */
 			virtual ~Typed() {}
 			/** @brief Hash Code */
@@ -22,12 +23,12 @@ namespace Neb {
 			
 			static hash_type const &	to_hash_code(std::string const & str) {
 				auto it = map_string_hash_.find(str);
-				if(it == map_string_hash_.cend()) raise 0;
+				if(it == map_string_hash_.cend()) throw 0;
 				return it->second;
 			}
 			static std::string const &	to_string(hash_type const & hash) {
 				auto it = map_hash_string_.find(hash);
-				if(it == map_hash_string_.cend()) raise 0;
+				if(it == map_hash_string_.cend()) throw 0;
 				return it->second;
 			}
 			/** @brief Register new type index.

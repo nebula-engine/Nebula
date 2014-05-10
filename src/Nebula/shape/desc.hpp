@@ -16,17 +16,17 @@
 
 
 
-
-
 #include <Nebula/Math/Serialization.hpp>
 
 #include <Nebula/config.hpp>
 #include <Nebula/Types.hpp>
 #include <Nebula/Typed.hpp>
+#include <Nebula/Util/WrapperTyped.hpp>
+
 #include <Nebula/Graphics/material.hpp>
 //#include <Nebula/shape/desc.hpp>
 #include <Nebula/shape/raw.hpp>
-#include <Nebula/Graphics/light/desc.hpp>
+#include <Nebula/Graphics/Light/desc.hpp>
 
 namespace Neb {
 	namespace Shape {
@@ -53,11 +53,13 @@ namespace Neb {
 				}
 
 				Neb::Shape::desc & 				operator<<(Neb::Shape::shape_w const &);
-				
-				int						i_;
-				Neb::WrapperTyped<Shape::Raw>			raw_wrapper_;
-				std::vector<Neb::Shape::desc_s>			shapes_;
-				std::vector<Neb::light::desc_s>			lights_;
+			
+
+
+				int							i_;
+				Neb::WrapperTyped<Neb::Shape::Raw>			raw_wrapper_;
+				std::vector<Neb::Shape::desc_s>				shapes_;
+				std::vector<Neb::Light::desc_s>				lights_;
 		};
 	}
 }

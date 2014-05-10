@@ -12,8 +12,8 @@
 #include <Nebula/Types.hpp>
 #include <Nebula/Graphics/Camera/View/Base.hpp>
 #include <Nebula/Graphics/texture.hpp>
-#include <Nebula/Graphics/light/desc.hpp>
-#include <Nebula/Graphics/light/raw.hpp>
+#include <Nebula/Graphics/Light/desc.hpp>
+#include <Nebula/Graphics/Light/raw.hpp>
 
 //#include <math/color.hpp>
 
@@ -27,7 +27,7 @@ namespace Neb {
 				void				i(int const &);
 				int const &			i() const;
 
-				void				init(Neb::light::desc_w);
+				void				init(Neb::Light::desc_w);
 
 				virtual void			release();
 				virtual void			cleanup();

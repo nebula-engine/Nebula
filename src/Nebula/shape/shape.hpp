@@ -22,8 +22,9 @@
 #include <Nebula/shape/raw.hpp>
 #include <Nebula/shape/parent.hpp>
 #include <Nebula/master.hpp>
+
 #include <Nebula/Graphics/glsl/program.hpp>
-#include <Nebula/Graphics/light/light.hpp>
+#include <Nebula/Graphics/Light/light.hpp>
 #include <Nebula/Graphics/material.hpp>
 #include <Nebula/Graphics/mesh.hpp>
 

@@ -7,8 +7,8 @@
 #include <Nebula/shape/desc.hpp>
 #include <Nebula/shape/shape.hpp>
 
-#include <Nebula/Graphics/light/desc.hpp>
-#include <Nebula/Graphics/light/light.hpp>
+#include <Nebula/Graphics/Light/desc.hpp>
+#include <Nebula/Graphics/Light/light.hpp>
 
 
 Neb::Shape::desc::desc(): raw_wrapper_(Neb::master::global()->factories_.shape_raw_) {
