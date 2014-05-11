@@ -112,51 +112,158 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2803848f87f38d8ce8d563f7c95498a1"></a><!-- doxytag: member="Neb::Map::mapped_type" ref="a2803848f87f38d8ce8d563f7c95498a1" args="" -->
-typedef <a class="el" href="classNeb_1_1unique__ptr.html">Neb::unique_ptr</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mapped_type</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c3fc1b8c8704182490ce063857fd8ec"></a><!-- doxytag: member="Neb::Map::weak_type" ref="a1c3fc1b8c8704182490ce063857fd8ec" args="" -->
-typedef <a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>weak_type</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6810d118b98686c87dbd11fb46549e10"></a><!-- doxytag: member="Neb::Map::shared_type" ref="a6810d118b98686c87dbd11fb46549e10" args="" -->
+typedef std::shared_ptr&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>shared_type</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac47c5fb9744284a4b6644f7850040095"></a><!-- doxytag: member="Neb::Map::mapped_type" ref="ac47c5fb9744284a4b6644f7850040095" args="" -->
+typedef <a class="el" href="classNeb_1_1WrapperTyped.html">Neb::WrapperTyped</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mapped_type</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a833c7da4ecc80e82f0697466fcb6aa96"></a><!-- doxytag: member="Neb::Map::factory_weak" ref="a833c7da4ecc80e82f0697466fcb6aa96" args="" -->
+typedef std::weak_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classNeb_1_1Factory.html">Neb::Factory</a>&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>factory_weak</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff92d7127de1554a67d6c668f99c1f8e"></a><!-- doxytag: member="Neb::Map::map_type" ref="aff92d7127de1554a67d6c668f99c1f8e" args="" -->
 typedef std::map&lt; int, <br class="typebreak"/>
-<a class="el" href="classNeb_1_1unique__ptr.html">mapped_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map_type</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa1c580f6c0cb1fe57fce27233c56ac1c"></a><!-- doxytag: member="Neb::Map::iter" ref="aa1c580f6c0cb1fe57fce27233c56ac1c" args="" -->
-typedef map_type::iterator&#160;</td><td class="memItemRight" valign="bottom"><b>iter</b></td></tr>
+<a class="el" href="classNeb_1_1WrapperTyped.html">mapped_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map_type</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2414c63c11316575065264c75670475"></a><!-- doxytag: member="Neb::Map::iterator" ref="ad2414c63c11316575065264c75670475" args="" -->
+typedef map_type::iterator&#160;</td><td class="memItemRight" valign="bottom"><b>iterator</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9beb63846e033e9650dd4d3f2fb1eb2c"></a><!-- doxytag: member="Neb::Map::value_type_const" ref="a9beb63846e033e9650dd4d3f2fb1eb2c" args="" -->
 typedef map_type::value_type&#160;</td><td class="memItemRight" valign="bottom"><b>value_type_const</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6fab819e1d3f93075362c71f2c69d8ca"></a><!-- doxytag: member="Neb::Map::value_type" ref="a6fab819e1d3f93075362c71f2c69d8ca" args="" -->
 typedef std::pair&lt; int, <br class="typebreak"/>
-<a class="el" href="classNeb_1_1unique__ptr.html">mapped_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b></td></tr>
+<a class="el" href="classNeb_1_1WrapperTyped.html">mapped_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a619275cf1c717233117860461cd8207d"></a><!-- doxytag: member="Neb::Map::operator[]" ref="a619275cf1c717233117860461cd8207d" args="(const int &amp;k)" -->
-<a class="el" href="classNeb_1_1unique__ptr.html">mapped_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (const int &amp;k)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd4f6527c258fbce9bbfa13b4c29128c"></a><!-- doxytag: member="Neb::Map::add" ref="acd4f6527c258fbce9bbfa13b4c29128c" args="(value_type &amp;p)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (value_type &amp;p)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bff24c0bbb40e952f03201bf0068432"></a><!-- doxytag: member="Neb::Map::push_back" ref="a5bff24c0bbb40e952f03201bf0068432" args="(mapped_type &amp;u)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>push_back</b> (<a class="el" href="classNeb_1_1unique__ptr.html">mapped_type</a> &amp;u)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a0aa4204a34ac09566fcefcdb0b2613"></a><!-- doxytag: member="Neb::Map::find" ref="a6a0aa4204a34ac09566fcefcdb0b2613" args="(int a)" -->
-iter&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (int a)</td></tr>
-<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="a053be30ff1b6e6f0e5396406ee1da55a"></a><!-- doxytag: member="Neb::Map::foreach" ref="a053be30ff1b6e6f0e5396406ee1da55a" args="(std::function&lt; void(Neb::weak_ptr&lt; U &gt;)&gt; func)" -->
-template&lt;class U &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>foreach</b> (std::function&lt; void(<a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a>&lt; U &gt;)&gt; func)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae0fedef74480d411f5b35583927e237c"></a><!-- doxytag: member="Neb::Map::clear" ref="ae0fedef74480d411f5b35583927e237c" args="()" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6e1c2ef08531a5696515392e2ddf811"></a><!-- doxytag: member="Neb::Map::begin" ref="ae6e1c2ef08531a5696515392e2ddf811" args="()" -->
-iter&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aad55064cd5483e90f2e0badc1b47a18c"></a><!-- doxytag: member="Neb::Map::end" ref="aad55064cd5483e90f2e0badc1b47a18c" args="()" -->
-iter&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bbe7fb4b2899bb707cf38e3c2ecd0ea"></a><!-- doxytag: member="Neb::Map::erase" ref="a5bbe7fb4b2899bb707cf38e3c2ecd0ea" args="(iter it)" -->
-iter&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (iter it)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e15e6246362cebda8a9fbf6e4fdfff2"></a><!-- doxytag: member="Neb::Map::Map" ref="a7e15e6246362cebda8a9fbf6e4fdfff2" args="(factory_weak factory)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Map.html#a7e15e6246362cebda8a9fbf6e4fdfff2">Map</a> (factory_weak factory)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Map.html#a628b2826bd845181f8fdec7de0255aff">push_back</a> (shared_type &amp;u)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Map.html#a3e040f5d07053dbdc8853e242f633142">find</a> (int a)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Map.html#ae0fedef74480d411f5b35583927e237c">clear</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Map.html#aaa7f3f7057179fef6a38559258a217b4">begin</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Map.html#abd67f06c1909b3cb1982d7637c7a3877">end</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Map.html#a0d5ff20f0bce0ca3a55ed0d204d138bb">erase</a> (iterator it)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90e63f3ea00d82d366192f092cdb5fa9"></a><!-- doxytag: member="Neb::Map::map_" ref="a90e63f3ea00d82d366192f092cdb5fa9" args="" -->
-map_type&#160;</td><td class="memItemRight" valign="bottom"><b>map_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7291ffc371a2419502e1765c8a78c14f"></a><!-- doxytag: member="Neb::Map::factory_" ref="a7291ffc371a2419502e1765c8a78c14f" args="" -->
+factory_weak&#160;</td><td class="memItemRight" valign="bottom"><b>factory_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b62fd79e9fc42a74a72f22c21a932ba"></a><!-- doxytag: member="Neb::Map::next_" ref="a8b62fd79e9fc42a74a72f22c21a932ba" args="" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>next_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90e63f3ea00d82d366192f092cdb5fa9"></a><!-- doxytag: member="Neb::Map::map_" ref="a90e63f3ea00d82d366192f092cdb5fa9" args="" -->
+map_type&#160;</td><td class="memItemRight" valign="bottom"><b>map_</b></td></tr>
 </table>
 <h3>template&lt;class T&gt;<br/>
  class Neb::Map&lt; T &gt;</h3>
 
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="aaa7f3f7057179fef6a38559258a217b4"></a><!-- doxytag: member="Neb::Map::begin" ref="aaa7f3f7057179fef6a38559258a217b4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classNeb_1_1Map.html">Neb::Map</a>&lt; T &gt;::<a class="el" href="classNeb_1_1Map.html#aaa7f3f7057179fef6a38559258a217b4">begin</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae0fedef74480d411f5b35583927e237c"></a><!-- doxytag: member="Neb::Map::clear" ref="ae0fedef74480d411f5b35583927e237c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classNeb_1_1Map.html">Neb::Map</a>&lt; T &gt;::<a class="el" href="classNeb_1_1Map.html#ae0fedef74480d411f5b35583927e237c">clear</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abd67f06c1909b3cb1982d7637c7a3877"></a><!-- doxytag: member="Neb::Map::end" ref="abd67f06c1909b3cb1982d7637c7a3877" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classNeb_1_1Map.html">Neb::Map</a>&lt; T &gt;::<a class="el" href="classNeb_1_1Map.html#abd67f06c1909b3cb1982d7637c7a3877">end</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0d5ff20f0bce0ca3a55ed0d204d138bb"></a><!-- doxytag: member="Neb::Map::erase" ref="a0d5ff20f0bce0ca3a55ed0d204d138bb" args="(iterator it)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classNeb_1_1Map.html">Neb::Map</a>&lt; T &gt;::<a class="el" href="classNeb_1_1Map.html#a0d5ff20f0bce0ca3a55ed0d204d138bb">erase</a> </td>
+          <td>(</td>
+          <td class="paramtype">iterator&#160;</td>
+          <td class="paramname"><em>it</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3e040f5d07053dbdc8853e242f633142"></a><!-- doxytag: member="Neb::Map::find" ref="a3e040f5d07053dbdc8853e242f633142" args="(int a)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classNeb_1_1Map.html">Neb::Map</a>&lt; T &gt;::<a class="el" href="classNeb_1_1Map.html#a3e040f5d07053dbdc8853e242f633142">find</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>a</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a628b2826bd845181f8fdec7de0255aff"></a><!-- doxytag: member="Neb::Map::push_back" ref="a628b2826bd845181f8fdec7de0255aff" args="(shared_type &amp;u)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classNeb_1_1Map.html">Neb::Map</a>&lt; T &gt;::<a class="el" href="classNeb_1_1Map.html#a628b2826bd845181f8fdec7de0255aff">push_back</a> </td>
+          <td>(</td>
+          <td class="paramtype">shared_type &amp;&#160;</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/Nebula/<a class="el" href="Map_8hpp_source.html">Map.hpp</a></li>
 </ul>
@@ -178,7 +285,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>next_</b></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:41 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:04 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

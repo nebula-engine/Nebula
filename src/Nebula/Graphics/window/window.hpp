@@ -12,7 +12,7 @@
 #include <Nebula/Graphics/texture.hpp>
 //#include <Nebula/camera.hpp>
 #include <Nebula/Graphics/Light/light.hpp>
-#include <Nebula/master.hpp>
+//#include <Nebula/master.hpp>
 #include <Nebula/Graphics/glsl/program.hpp>
 #include <Nebula/Graphics/glsl/shader.hpp>
 #include <Nebula/Graphics/gui/layout.hpp>
@@ -60,7 +60,7 @@ namespace Neb {
 				 * @param layout @c shared_ptr what will be moved
 				 */
 				void		set_layout(Neb::gui::layout_s & layout);
-				void		set_scene(Neb::Scene::scene_s & scene);
+				void		set_scene(Neb::Scene::Base_s & scene);
 
 				void	callback_window_pos_fun(GLFWwindow*,int,int);
 				void	callback_window_size_fun(GLFWwindow*,int,int);

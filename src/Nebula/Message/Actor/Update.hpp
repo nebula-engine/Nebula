@@ -4,40 +4,49 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 
-#include <gru/config.hpp> // gru/config.hpp.in
-#include <gru/master.hpp>
-#include <gru/scene/desc.hpp>
-#include <gru/actor/desc.hpp>
-#include <gru/actor/addr.hpp>
-#include <gru/actor/event.hpp>
-#include <gru/actor/raw_factory.hpp>
-#include <gru/actor/actor.hpp>
+#include <Nebula/Scene/Types.hpp>
+
+#include <Nebula/config.hpp> // gru/config.hpp.in
+//#include <Nebula/master.hpp>
+//#include <Nebula/Scene/desc.hpp>
+//#include <Nebula/Actor/desc.hpp>
+#include <Nebula/Actor/Util/Address.hpp>
+//#include <Nebula/Actor/event.hpp>
+#include <Nebula/Actor/Base.hpp>
+
+#include <Nebula/Scene/scene.hpp>
+
+#include <Nebula/Message/Base.hpp>
 
 namespace Neb {
 	namespace Message {
 		namespace Actor {
-			struct Update: Neb::Message::Base {
+			struct Update {
 				
 				Update(): count_(0) {}
 				
 				/** @brief Default load/save operator.
 				 * All other types are simply passed to the archive
 				 */
-				template<typename T> Update&		operator&(T const & t) {
-					msg_->ar_ & t;
-				}
+				//template<typename T> Update&		operator&(T const & t) {
+			//		msg_->ar_ & t;
+			//	}
 				
 				int				count_;
 				std::stringstream::pos_type	pos_count_;
 				
 			};
-			struct OUpdate: Update {
+			struct OUpdate: Neb::Message::OBase, Update{
+
 				/** @brief Save %Actor. */
-				Update&		operator<<(Neb::Actor::Base_s actor) {
-					count_++;
-					actor->serialize(*this, 0);
+				Update&		operator<<(Neb::Actor::Base_s actor);
+				/** */
+				template<typename T> Update&		operator&(T const & t) {
+					msg_->ar_ & t;
+					return *this;
 				}
 				
+
 				/** @brief Before saving.
 				 * Implement the virtual savePre function.
 				 * Record the position of the count data.
@@ -50,7 +59,7 @@ namespace Neb {
 					pos_count_ = msg_->ss_.tellp();
 					
 					// allocate space for count
-					msg->ar_ << count_;
+					msg_->ar_ << count_;
 				}
 				/** @brief After saving.
 				 * Implement the virtual savePost function. Overwrite the count data.
@@ -60,29 +69,19 @@ namespace Neb {
 					
 					msg_->ss_.seekp(pos_count_);
 					/** @todo determine if I count just say "ar << count" here */
-					msg->ss_.write(count_, sizeof(count));
+					msg_->ss_.write((char*)&count_, sizeof(count_));
 					
 					msg_->ss_.seekp(pos);
 				}
 			};
-			struct IUpdate: Update {
+			struct IUpdate: Neb::Message::IBase, Update {
 				/** @brief Load */
-				Update&		operator>>(Neb::Scene::Base_s scene) {
-					msg_->ar_ >> count_;
-					
-					Neb::Actor::Util::Address address;
-					Neb::Actor::Base_s actor;
-					for(int i = 0; i < count_; ++i) {
-						msg_->ar_ >> address;
-						
-						actor = scene->getActor(address);
-						assert(actor);
-						
-						msg_->ar_ >> *actor;
-					}
-					actor->serialize(*this, 0);
+				Update&		operator>>(Neb::Scene::Base_s);
+				/** */
+				template<typename T> Update&		operator&(T const & t) {
+					msg_->ar_ & t;
+					return *this;
 				}
-				
 			};
 			
 		}

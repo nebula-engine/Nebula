@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['d_5f',['d_',['../classNeb_1_1Actor_1_1raw.html#a74025fb0b8d387d25229163d217bfb95',1,'Neb::Actor::raw']]]
+  ['d_5f',['d_',['../classNeb_1_1Actor_1_1Util_1_1Raw.html#afc9237b8b83472e7e15ab8d8f0f00511',1,'Neb::Actor::Util::Raw']]]
 ];

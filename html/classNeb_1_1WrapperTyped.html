@@ -100,6 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
@@ -107,46 +108,162 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="Neb::WrapperTyped" -->
-<p><a class="el" href="classNeb_1_1WrapperTyped.html" title="WrapperTyped.">WrapperTyped</a>.  
+<p><a class="el" href="classNeb_1_1WrapperTyped.html" title="WrapperTyped class T must be derived from and registered with Neb::Util::Typed or exceptions will be ...">WrapperTyped</a> class T must be derived from and registered with Neb::Util::Typed or exceptions will be thrown.  
  <a href="classNeb_1_1WrapperTyped.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Typed_8hpp_source.html">Typed.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="WrapperTyped_8hpp_source.html">WrapperTyped.hpp</a>&gt;</code></p>
 
 <p><a href="classNeb_1_1WrapperTyped-members.html">List of all members.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5aa27220e225486790dc20ba7ec748fb"></a><!-- doxytag: member="Neb::WrapperTyped::factory_weak" ref="a5aa27220e225486790dc20ba7ec748fb" args="" -->
+typedef std::weak_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classNeb_1_1Factory.html">Neb::Factory</a>&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>factory_weak</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3467a3d9954e2176508f0913fb28bc43"></a><!-- doxytag: member="Neb::WrapperTyped::shared" ref="a3467a3d9954e2176508f0913fb28bc43" args="" -->
+typedef std::shared_ptr&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>shared</b></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="affd6a7fcbeb1df7b5923d304c41089bd"></a><!-- doxytag: member="Neb::WrapperTyped::WrapperTyped" ref="affd6a7fcbeb1df7b5923d304c41089bd" args="(boost::weak_ptr&lt; Neb::Factory&lt; T &gt; &gt; factory)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1WrapperTyped.html#affd6a7fcbeb1df7b5923d304c41089bd">WrapperTyped</a> (boost::weak_ptr&lt; <a class="el" href="classNeb_1_1Factory.html">Neb::Factory</a>&lt; T &gt; &gt; factory)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1WrapperTyped.html#ab3ae54407d5d88247591a7d05d181b4a">WrapperTyped</a> (factory_weak factory)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1WrapperTyped.html#a390ac7ae4c75440e417c85f042f0d6b4">WrapperTyped</a> (factory_weak factory, shared s)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acca2803bb2a5c1ca4b3b5ff51a04b421"></a><!-- doxytag: member="Neb::WrapperTyped::~WrapperTyped" ref="acca2803bb2a5c1ca4b3b5ff51a04b421" args="()" -->
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1WrapperTyped.html#acca2803bb2a5c1ca4b3b5ff51a04b421">~WrapperTyped</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br/></td></tr>
 <tr><td class="memTemplParams" colspan="2"><a class="anchor" id="a293a6083747b145c8b9db4a9f1410f89"></a><!-- doxytag: member="Neb::WrapperTyped::load" ref="a293a6083747b145c8b9db4a9f1410f89" args="(Archive &amp;ar, unsigned int const &amp;version)" -->
 template&lt;class Archive &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classNeb_1_1WrapperTyped.html#a293a6083747b145c8b9db4a9f1410f89">load</a> (Archive &amp;ar, unsigned int const &amp;version)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Load <br/></td></tr>
 <tr><td class="memTemplParams" colspan="2"><a class="anchor" id="a756a81384782fe7820f383ea989c9ec1"></a><!-- doxytag: member="Neb::WrapperTyped::save" ref="a756a81384782fe7820f383ea989c9ec1" args="(Archive &amp;ar, unsigned int const &amp;version) const " -->
 template&lt;class Archive &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>save</b> (Archive &amp;ar, unsigned int const &amp;version) const </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classNeb_1_1WrapperTyped.html#a756a81384782fe7820f383ea989c9ec1">save</a> (Archive &amp;ar, unsigned int const &amp;version) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Save <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1WrapperTyped.html#a2fffc14882368b94658a3cbc50ba2a99">load</a> (boost::archive::xml_iarchive &amp;ar, unsigned int const &amp;version)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1WrapperTyped.html#aeece54c65d4e1edab4d51225b0944a3c">save</a> (boost::archive::xml_oarchive &amp;ar, unsigned int const &amp;version) const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a68f3e137a2c358c596f4358c3a15d1f8"></a><!-- doxytag: member="Neb::WrapperTyped::BOOST_SERIALIZATION_SPLIT_MEMBER" ref="a68f3e137a2c358c596f4358c3a15d1f8" args="()" -->
 &#160;</td><td class="memItemRight" valign="bottom"><b>BOOST_SERIALIZATION_SPLIT_MEMBER</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d25b0d41e0b8400f47dd11615509fc6"></a><!-- doxytag: member="Neb::WrapperTyped::ptr_" ref="a7d25b0d41e0b8400f47dd11615509fc6" args="" -->
-<a class="el" href="classNeb_1_1unique__ptr.html">Neb::unique_ptr</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1WrapperTyped.html#a7d25b0d41e0b8400f47dd11615509fc6">ptr_</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Object. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07a4590d708916a3dc3c4ca6e1f913e3"></a><!-- doxytag: member="Neb::WrapperTyped::factory_" ref="a07a4590d708916a3dc3c4ca6e1f913e3" args="" -->
-boost::weak_ptr&lt; <a class="el" href="classNeb_1_1Factory.html">Neb::Factory</a><br class="typebreak"/>
-&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>factory_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a92ba07879ca9c2072d7dd2b5acb9d7f5"></a><!-- doxytag: member="Neb::WrapperTyped::ptr_" ref="a92ba07879ca9c2072d7dd2b5acb9d7f5" args="" -->
+shared&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1WrapperTyped.html#a92ba07879ca9c2072d7dd2b5acb9d7f5">ptr_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd7867968e08d0ea4e3d681715e6684d"></a><!-- doxytag: member="Neb::WrapperTyped::factory_" ref="abd7867968e08d0ea4e3d681715e6684d" args="" -->
+factory_weak&#160;</td><td class="memItemRight" valign="bottom"><b>factory_</b></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T&gt;<br/>
 class Neb::WrapperTyped&lt; T &gt;</h3>
 
-<p><a class="el" href="classNeb_1_1WrapperTyped.html" title="WrapperTyped.">WrapperTyped</a>. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/Nebula/<a class="el" href="Typed_8hpp_source.html">Typed.hpp</a></li>
+<p><a class="el" href="classNeb_1_1WrapperTyped.html" title="WrapperTyped class T must be derived from and registered with Neb::Util::Typed or exceptions will be ...">WrapperTyped</a> class T must be derived from and registered with Neb::Util::Typed or exceptions will be thrown. </p>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ab3ae54407d5d88247591a7d05d181b4a"></a><!-- doxytag: member="Neb::WrapperTyped::WrapperTyped" ref="ab3ae54407d5d88247591a7d05d181b4a" args="(factory_weak factory)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classNeb_1_1WrapperTyped.html">Neb::WrapperTyped</a>&lt; T &gt;::<a class="el" href="classNeb_1_1WrapperTyped.html">WrapperTyped</a> </td>
+          <td>(</td>
+          <td class="paramtype">factory_weak&#160;</td>
+          <td class="paramname"><em>factory</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a390ac7ae4c75440e417c85f042f0d6b4"></a><!-- doxytag: member="Neb::WrapperTyped::WrapperTyped" ref="a390ac7ae4c75440e417c85f042f0d6b4" args="(factory_weak factory, shared s)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classNeb_1_1WrapperTyped.html">Neb::WrapperTyped</a>&lt; T &gt;::<a class="el" href="classNeb_1_1WrapperTyped.html">WrapperTyped</a> </td>
+          <td>(</td>
+          <td class="paramtype">factory_weak&#160;</td>
+          <td class="paramname"><em>factory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">shared&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a2fffc14882368b94658a3cbc50ba2a99"></a><!-- doxytag: member="Neb::WrapperTyped::load" ref="a2fffc14882368b94658a3cbc50ba2a99" args="(boost::archive::xml_iarchive &amp;ar, unsigned int const &amp;version)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classNeb_1_1WrapperTyped.html">Neb::WrapperTyped</a>&lt; T &gt;::<a class="el" href="classNeb_1_1WrapperTyped.html#a293a6083747b145c8b9db4a9f1410f89">load</a> </td>
+          <td>(</td>
+          <td class="paramtype">boost::archive::xml_iarchive &amp;&#160;</td>
+          <td class="paramname"><em>ar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int const &amp;&#160;</td>
+          <td class="paramname"><em>version</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aeece54c65d4e1edab4d51225b0944a3c"></a><!-- doxytag: member="Neb::WrapperTyped::save" ref="aeece54c65d4e1edab4d51225b0944a3c" args="(boost::archive::xml_oarchive &amp;ar, unsigned int const &amp;version) const " -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classNeb_1_1WrapperTyped.html">Neb::WrapperTyped</a>&lt; T &gt;::<a class="el" href="classNeb_1_1WrapperTyped.html#a756a81384782fe7820f383ea989c9ec1">save</a> </td>
+          <td>(</td>
+          <td class="paramtype">boost::archive::xml_oarchive &amp;&#160;</td>
+          <td class="paramname"><em>ar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int const &amp;&#160;</td>
+          <td class="paramname"><em>version</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>src/Nebula/Util/<a class="el" href="WrapperTyped_8hpp_source.html">WrapperTyped.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -166,7 +283,7 @@ class Neb::WrapperTyped&lt; T &gt;</h3>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:41 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:04 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

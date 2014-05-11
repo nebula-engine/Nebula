@@ -76,33 +76,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt><a class="anchor" id="_todo000011"></a>Member <a class="el" href="classgal_1_1network_1_1communicating.html#abd5efaa6563dda2097f69ae3679f87a1">gal::network::communicating::thread_read</a>  ()</dt>
+<dt><a class="anchor" id="_todo000012"></a>Member <a class="el" href="classgal_1_1network_1_1communicating.html#abd5efaa6563dda2097f69ae3679f87a1">gal::network::communicating::thread_read</a>  ()</dt>
 <dd>pass exception to main thread ( or whoever )  </dd>
-<dt><a class="anchor" id="_todo000010"></a>Member <a class="el" href="classgal_1_1network_1_1communicating.html#a271caa9e5d4d13fffda9d38218231b2c">gal::network::communicating::thread_write</a>  (boost::shared_ptr&lt; message &gt;)</dt>
+<dt><a class="anchor" id="_todo000011"></a>Member <a class="el" href="classgal_1_1network_1_1communicating.html#a271caa9e5d4d13fffda9d38218231b2c">gal::network::communicating::thread_write</a>  (boost::shared_ptr&lt; message &gt;)</dt>
 <dd>pass exception to main thread ( or whoever )  </dd>
-<dt><a class="anchor" id="_todo000008"></a>Class <a class="el" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html">glutpp::network::actor::update::addr_raw</a>  </dt>
-<dd>find a way to implement this using WrapperTyped or somehting like it  </dd>
-<dt><a class="anchor" id="_todo000009"></a>Member <a class="el" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a4883db7c0b5227e0fcb124f786a121c1">glutpp::network::actor::update::addr_raw::load</a>  (Archive &amp;ar, unsigned int const &amp;version)</dt>
-<dd>handle this gracefully  </dd>
-<dt><a class="anchor" id="_todo000007"></a>Member <a class="el" href="structglutpp_1_1network_1_1actor_1_1update.html#a2a7bee8209aa582266f5bb4e6e729501">glutpp::network::actor::update::load</a>  (Neb::weak_ptr&lt; glutpp::actor::actor &gt; const &amp;actor)</dt>
-<dd>this and all similar functions should be not be called "load", in fact, they are used on the "save" side of the serialization process. if anything, call them save.  </dd>
-<dt><a class="anchor" id="_todo000006"></a>Namespace <a class="el" href="namespaceNeb.html">Neb</a>  </dt>
+<dt><a class="anchor" id="_todo000008"></a>Namespace <a class="el" href="namespaceNeb.html">Neb</a>  </dt>
 <dd><p class="startdd">under what conditions is it necessary to </p>
 <p class="enddd">replace types with inheritance and possibly shared library support  </p>
 </dd>
-<dt><a class="anchor" id="_todo000001"></a>Member <a class="el" href="classNeb_1_1app.html#acefbc3bb3de71f3c8cca0afc1fada857">Neb::app::recv_scene_create</a>  (std::shared_ptr&lt; gal::network::message &gt;)</dt>
+<dt><a class="anchor" id="_todo000002"></a>Member <a class="el" href="classNeb_1_1app.html#a729bf4c1785929d7449d614619f74191">Neb::app::app</a>  ()</dt>
+<dd>since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers. to avoid unwanted shared_ptrs to owned objects, care must be taken when passing these objects around. better documentation inside function bodies should be used to let me know what a shared_ptr is being used (how it should be treated.  </dd>
+<dt><a class="anchor" id="_todo000003"></a>Member <a class="el" href="classNeb_1_1app.html#acefbc3bb3de71f3c8cca0afc1fada857">Neb::app::recv_scene_create</a>  (std::shared_ptr&lt; gal::network::message &gt;)</dt>
 <dd>consider putting following functions into the messages themselves: would be cleaner that way.  </dd>
-<dt><a class="anchor" id="_todo000003"></a>Member <a class="el" href="classNeb_1_1Camera_1_1Projection_1_1Base.html#a7a0ef0507f546a0da56bb596de53c962">Neb::Camera::Projection::Base::step</a>  (double)</dt>
+<dt><a class="anchor" id="_todo000005"></a>Member <a class="el" href="classNeb_1_1Camera_1_1Projection_1_1Base.html#a7a0ef0507f546a0da56bb596de53c962">Neb::Camera::Projection::Base::step</a>  (double)</dt>
 <dd>explain when in timeline this occurs and in which thread and why  </dd>
-<dt><a class="anchor" id="_todo000004"></a>Member <a class="el" href="classNeb_1_1Camera_1_1View_1_1Base.html#aa3c5978efc6cd916f0f91bb8def375c5">Neb::Camera::View::Base::step</a>  (double)=0</dt>
+<dt><a class="anchor" id="_todo000006"></a>Member <a class="el" href="classNeb_1_1Camera_1_1View_1_1Base.html#aa3c5978efc6cd916f0f91bb8def375c5">Neb::Camera::View::Base::step</a>  (double)=0</dt>
 <dd>explain when in timeline this occurs and in which thread and why  </dd>
-<dt><a class="anchor" id="_todo000012"></a>Class <a class="el" href="classNeb_1_1renderable.html">Neb::renderable</a>  </dt>
+<dt><a class="anchor" id="_todo000010"></a>Member <a class="el" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html#aa972a33a8c8220e7f6194e44c019d817">Neb::Message::Actor::OUpdate::post</a>  ()</dt>
+<dd>determine if I count just say "ar &lt;&lt; count" here  </dd>
+<dt><a class="anchor" id="_todo000013"></a>Class <a class="el" href="classNeb_1_1renderable.html">Neb::renderable</a>  </dt>
 <dd>eventually replace this with Context and allow multiple Contexts per window and allow scene and layout to have different and overalpping Contexts.  </dd>
-<dt><a class="anchor" id="_todo000013"></a>Member <a class="el" href="classNeb_1_1Scene_1_1desc.html#aa456a9a431a4f93be8278f6aee75b8f6">Neb::Scene::desc::serialize</a>  (Archive &amp;ar, unsigned int const &amp;version)</dt>
-<dd>no idea why this fails  </dd>
 <dt><a class="anchor" id="_todo000016"></a>Member <a class="el" href="classNeb_1_1Shape_1_1desc.html#a8356295ceee1f17dd24afbdb455dd206">Neb::Shape::desc::operator&lt;&lt;</a>  (Neb::Shape::shape_w const &amp;)</dt>
 <dd>fill this out  </dd>
-<dt><a class="anchor" id="_todo000005"></a>Member <a class="el" href="classNeb_1_1window_1_1window.html#a04992828fdcd620216728e607654e26a">Neb::window::window::window</a>  (Neb::window::desc_s desc)</dt>
+<dt><a class="anchor" id="_todo000007"></a>Member <a class="el" href="classNeb_1_1window_1_1window.html#a04992828fdcd620216728e607654e26a">Neb::window::window::window</a>  (Neb::window::desc_s desc)</dt>
 <dd>get rid of my unique ptr class. Just use private member and be careful not to pass around shared ptrs to things </dd>
 </dl>
 </div></div><!-- contents -->
@@ -123,7 +119,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:40 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:04 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

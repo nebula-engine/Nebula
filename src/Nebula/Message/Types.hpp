@@ -4,6 +4,10 @@
 namespace Neb {
 	/** @brief %Message */
 	namespace Message {
+
+		class Base;
+		typedef std::shared_ptr<Base>		Base_s;
+
 		/** @brief %Actor */
 		namespace Actor {
 			/** @brief %Control */

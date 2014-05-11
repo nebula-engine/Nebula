@@ -1,16 +1,15 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classNeb_1_1Shape_1_1shape.html" title="Neb::Shape::shape" alt="" coords="879,205,1012,235"/>
-<area shape="rect" id="node4" href="$classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="564,45,697,75"/>
-<area shape="rect" id="node6" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="291,5,411,35"/>
-<area shape="rect" id="node8" href="$classNeb_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="304,59,397,88"/>
-<area shape="rect" id="node10" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="597,99,664,128"/>
-<area shape="rect" id="node12" href="$classNeb_1_1mesh.html" title="Neb::mesh" alt="" coords="588,152,673,181"/>
-<area shape="rect" id="node14" href="$structNeb_1_1vertex.html" title="Neb::vertex" alt="" coords="305,125,396,155"/>
-<area shape="rect" id="node16" href="$structNeb_1_1file__header.html" title="Neb::file_header" alt="" coords="292,179,409,208"/>
-<area shape="rect" id="node18" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::light::light \&gt;" alt="" coords="536,205,725,235"/>
-<area shape="rect" id="node20" href="$classNeb_1_1material_1_1material.html" title="Neb::material::material" alt="" coords="553,259,708,288"/>
-<area shape="rect" id="node22" href="$structNeb_1_1material_1_1raw.html" title="Neb::material::raw" alt="" coords="287,259,415,288"/>
-<area shape="rect" id="node24" href="$classNeb_1_1Color_1_1color.html" title="Neb::Color::color\&lt; float \&gt;" alt="" coords="5,259,176,288"/>
-<area shape="rect" id="node26" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Shape::shape \&gt;" alt="" coords="524,312,737,341"/>
-<area shape="rect" id="node28" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Raw \&gt;" alt="" coords="548,365,713,395"/>
+<area shape="rect" id="node2" href="$classNeb_1_1Shape_1_1shape.html" title="Neb::Shape::shape" alt="" coords="943,191,1076,220"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="639,71,772,100"/>
+<area shape="rect" id="node6" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="333,5,453,35"/>
+<area shape="rect" id="node8" href="$classNeb_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="347,59,440,88"/>
+<area shape="rect" id="node10" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Shape::shape \&gt;" alt="" coords="287,112,500,141"/>
+<area shape="rect" id="node12" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="672,137,739,167"/>
+<area shape="rect" id="node14" href="$classNeb_1_1mesh.html" title="Neb::mesh" alt="" coords="663,191,748,220"/>
+<area shape="rect" id="node16" href="$structNeb_1_1vertex.html" title="Neb::vertex" alt="" coords="348,165,439,195"/>
+<area shape="rect" id="node18" href="$structNeb_1_1file__header.html" title="Neb::file_header" alt="" coords="335,219,452,248"/>
+<area shape="rect" id="node20" href="$classNeb_1_1material_1_1material.html" title="Neb::material::material" alt="" coords="628,244,783,273"/>
+<area shape="rect" id="node22" href="$structNeb_1_1material_1_1raw.html" title="Neb::material::raw" alt="" coords="329,272,457,301"/>
+<area shape="rect" id="node24" href="$classNeb_1_1Color_1_1color.html" title="Neb::Color::color\&lt; float \&gt;" alt="" coords="5,272,176,301"/>
+<area shape="rect" id="node26" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Light::light \&gt;" alt="" coords="608,297,803,327"/>
 </map>

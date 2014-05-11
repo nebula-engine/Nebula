@@ -1,6 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classNeb_1_1gui_1_1object_1_1object.html" title="Neb::gui::object::object" alt="" coords="5,32,163,61"/>
-<area shape="rect" id="node3" href="$classNeb_1_1gui_1_1object_1_1terminal.html" title="Neb::gui::object::terminal" alt="" coords="212,5,380,35"/>
-<area shape="rect" id="node5" href="$classNeb_1_1gui_1_1object_1_1textview.html" title="textview Display and optionally edit text" alt="" coords="211,59,381,88"/>
-<area shape="rect" id="node7" href="$classNeb_1_1gui_1_1object_1_1edittext.html" title="Neb::gui::object::edittext" alt="" coords="429,59,595,88"/>
+<area shape="rect" id="node1" href="$classNeb_1_1material_1_1material.html" title="Neb::material::material" alt="" coords="5,5,160,35"/>
 </map>

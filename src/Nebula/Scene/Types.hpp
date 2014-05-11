@@ -3,8 +3,6 @@
 
 #include <memory>
 
-#include <Nebula/Memory/smart_ptr.hpp>
-
 namespace Neb {
 	/** @brief %Scene */
 	namespace Scene {
@@ -12,29 +10,32 @@ namespace Neb {
 		namespace Util {
 			class Parent;
 
-			
+
 			typedef std::weak_ptr<Parent>		Parent_w;
+
+
+			class Raw;
+			class Address;
+
+			typedef std::shared_ptr<Raw>		Raw_s;
+			typedef std::weak_ptr<Raw>		Raw_w;
+
+			typedef std::weak_ptr<Address>		Address_w;
+
+
+
 		}
 
 		enum flag {
 			SHOULD_RELEASE = 1 << 0
 		};
 
-		class raw;
-		class addr;
-		class desc;
+		class Base;
 
-		class scene;
 
-		typedef std::shared_ptr<raw>		raw_s;
-		typedef Neb::weak_ptr<raw>		raw_w;
-
-		typedef Neb::weak_ptr<addr>		addr_w;
-		typedef Neb::weak_ptr<desc>		desc_w;
-
-		typedef std::shared_ptr<scene>		scene_s;
-		typedef Neb::unique_ptr<scene>		scene_u;
-		typedef Neb::weak_ptr<scene>		scene_w;
+		typedef std::shared_ptr<Base>		Base_s;
+		typedef std::unique_ptr<Base>		Base_u;
+		typedef std::weak_ptr<Base>		Base_w;
 	}
 }
 

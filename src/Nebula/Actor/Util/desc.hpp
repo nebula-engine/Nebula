@@ -1,7 +1,7 @@
 #ifndef __NEBULA_ACTOR_DESC_H__
 #define __NEBULA_ACTOR_DESC_H__
 
-
+/*
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
@@ -12,7 +12,7 @@
 #include <Nebula/Actor/Util/raw.hpp>
 #include <Nebula/shape/desc.hpp>
 #include <Nebula/Filter.hpp>
-
+*/
 /** @todo consider deleting the desc classes. could implement actor creation message by serializaing
  * the Actor objects themselves with the help of WrapperTyped
  */

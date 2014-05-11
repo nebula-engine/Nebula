@@ -12,34 +12,60 @@
 
 
 
-\-Inheritance diagram for \-Neb\-:\-:\-Typed\-:
-\nopagebreak
+\-Inheritance diagram for \-Neb\-:\-:\-Typed\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classNeb_1_1Typed__inherit__graph}
 \end{center}
 \end{figure}
+\subsection*{\-Public \-Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Typed_a8232d82e43986c8c95180aa17d848c32}{typedef long int {\bfseries hash\-\_\-type}}\label{classNeb_1_1Typed_a8232d82e43986c8c95180aa17d848c32}
+
+\end{DoxyCompactItemize}
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{classNeb_1_1Typed_ac7a0fd653ad4c09abc20fc9f24942042}{virtual \hyperlink{classNeb_1_1Typed_ac7a0fd653ad4c09abc20fc9f24942042}{$\sim$\-Typed} ()}\label{classNeb_1_1Typed_ac7a0fd653ad4c09abc20fc9f24942042}
 
 \begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\item 
-\hypertarget{classNeb_1_1Typed_a75878612e933c37ce060bb0d63889051}{long int \& \hyperlink{classNeb_1_1Typed_a75878612e933c37ce060bb0d63889051}{hash\-\_\-code} ()}\label{classNeb_1_1Typed_a75878612e933c37ce060bb0d63889051}
+\hypertarget{classNeb_1_1Typed_af32707079ebb9e68b2def3d2e334b661}{hash\-\_\-type const \& \hyperlink{classNeb_1_1Typed_af32707079ebb9e68b2def3d2e334b661}{hash\-\_\-code} () const }\label{classNeb_1_1Typed_af32707079ebb9e68b2def3d2e334b661}
 
-\begin{DoxyCompactList}\small\item\em \-Hash \-Code. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{\-Static \-Private \-Attributes}
+\begin{DoxyCompactList}\small\item\em \-Hash \-Code. \end{DoxyCompactList}\item 
+\hypertarget{classNeb_1_1Typed_ac14568e450df58aa9379966e19edeb87}{std\-::string const \& {\bfseries name} () const }\label{classNeb_1_1Typed_ac14568e450df58aa9379966e19edeb87}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classNeb_1_1Typed_a2bd73a4e10813616f46086157538bece}{static long int \hyperlink{classNeb_1_1Typed_a2bd73a4e10813616f46086157538bece}{\-\_\-\-M\-\_\-hash\-\_\-code\-\_\-}}\label{classNeb_1_1Typed_a2bd73a4e10813616f46086157538bece}
+\hypertarget{classNeb_1_1Typed_a6f742a935083c88cfca3ca6532bed215}{static hash\-\_\-type const \& {\bfseries to\-\_\-hash\-\_\-code} (std\-::string const \&str)}\label{classNeb_1_1Typed_a6f742a935083c88cfca3ca6532bed215}
 
-\begin{DoxyCompactList}\small\item\em \-Hash \-Code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Typed_aa67110641dab6b84fb39df31317a097f}{static std\-::string const \& {\bfseries to\-\_\-string} (hash\-\_\-type const \&hash)}\label{classNeb_1_1Typed_aa67110641dab6b84fb39df31317a097f}
+
+\item 
+\hypertarget{classNeb_1_1Typed_adf1adc534a150147904cf95ae6e562b6}{static void \hyperlink{classNeb_1_1Typed_adf1adc534a150147904cf95ae6e562b6}{register\-\_\-type} (std\-::type\-\_\-index new\-\_\-index)}\label{classNeb_1_1Typed_adf1adc534a150147904cf95ae6e562b6}
+
+\begin{DoxyCompactList}\small\item\em \-Register new type index. a type must be registered before the conversion functions will work. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Typed_a0e2dd45af0f2d3b85f2285795bb370b3}{static std\-::map$<$ hash\-\_\-type, \*
+std\-::string $>$ {\bfseries map\-\_\-hash\-\_\-string\-\_\-}}\label{classNeb_1_1Typed_a0e2dd45af0f2d3b85f2285795bb370b3}
+
+\item 
+\hypertarget{classNeb_1_1Typed_a06b5054c1ccff608d9f412dd0bcb24dd}{static std\-::map$<$ std\-::string, \*
+hash\-\_\-type $>$ {\bfseries map\-\_\-string\-\_\-hash\-\_\-}}\label{classNeb_1_1Typed_a06b5054c1ccff608d9f412dd0bcb24dd}
+
+\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
 \hyperlink{classNeb_1_1Typed}{\-Typed}. 
 
-\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-src/\-Nebula/\-Typed.\-hpp\end{DoxyCompactItemize}
+src/\-Nebula/\-Util/\-Typed.\-hpp\item 
+src/\-Nebula/\-Util/\-Typed.\-cpp\end{DoxyCompactItemize}

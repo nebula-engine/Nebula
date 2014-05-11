@@ -8,7 +8,9 @@
 #include <vector>
 
 #include <Nebula/config.hpp> // Nebula/config.hpp.in
-#include <Nebula/master.hpp>
+#include <Nebula/Types.hpp>
+#include <Nebula/Graphics/Types.hh>
+
 #include <Nebula/Graphics/glsl/attrib.hpp>
 #include <Nebula/Graphics/glsl/Uniform/uniform.hpp>
 

@@ -1,4 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt; Shape::Raw \&gt;" alt="" coords="5,101,240,131"/>
-<area shape="rect" id="node4" href="$classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Shape::Raw \&gt;" alt="" coords="17,5,228,35"/>
+<area shape="rect" id="node2" href="$classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt; Neb::Shape::Raw \&gt;" alt="" coords="5,5,272,35"/>
 </map>

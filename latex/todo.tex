@@ -1,44 +1,38 @@
 
 \begin{DoxyRefList}
+\item[\label{todo__todo000012}%
+\hypertarget{todo__todo000012}{}%
+\-Member \hyperlink{classgal_1_1network_1_1communicating_abd5efaa6563dda2097f69ae3679f87a1}{gal\-:\-:network\-:\-:communicating\-:\-:thread\-\_\-read} ()]pass exception to main thread ( or whoever )  
 \item[\label{todo__todo000011}%
 \hypertarget{todo__todo000011}{}%
-\-Member \hyperlink{classgal_1_1network_1_1communicating_abd5efaa6563dda2097f69ae3679f87a1}{gal\-:\-:network\-:\-:communicating\-:\-:thread\-\_\-read} ()]pass exception to main thread ( or whoever )  
-\item[\label{todo__todo000010}%
-\hypertarget{todo__todo000010}{}%
 \-Member \hyperlink{classgal_1_1network_1_1communicating_a271caa9e5d4d13fffda9d38218231b2c}{gal\-:\-:network\-:\-:communicating\-:\-:thread\-\_\-write} (boost\-::shared\-\_\-ptr$<$ message $>$)]pass exception to main thread ( or whoever )  
 \item[\label{todo__todo000008}%
 \hypertarget{todo__todo000008}{}%
-\-Class \hyperlink{structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw}{glutpp\-:\-:network\-:\-:actor\-:\-:update\-:\-:addr\-\_\-raw} ]find a way to implement this using \-Wrapper\-Typed or somehting like it  
-\item[\label{todo__todo000009}%
-\hypertarget{todo__todo000009}{}%
-\-Member \hyperlink{structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw_a4883db7c0b5227e0fcb124f786a121c1}{glutpp\-:\-:network\-:\-:actor\-:\-:update\-:\-:addr\-\_\-raw\-:\-:load} (\-Archive \&ar, unsigned int const \&version)]handle this gracefully  
-\item[\label{todo__todo000007}%
-\hypertarget{todo__todo000007}{}%
-\-Member \hyperlink{structglutpp_1_1network_1_1actor_1_1update_a2a7bee8209aa582266f5bb4e6e729501}{glutpp\-:\-:network\-:\-:actor\-:\-:update\-:\-:load} (\-Neb\-::weak\-\_\-ptr$<$ glutpp\-::actor\-::actor $>$ const \&actor)]this and all similar functions should be not be called \char`\"{}load\char`\"{}, in fact, they are used on the \char`\"{}save\char`\"{} side of the serialization process. if anything, call them save.  
-\item[\label{todo__todo000006}%
-\hypertarget{todo__todo000006}{}%
 \-Namespace \hyperlink{namespaceNeb}{\-Neb} ]under what conditions is it necessary to 
 
 replace types with inheritance and possibly shared library support  
-\item[\label{todo__todo000001}%
-\hypertarget{todo__todo000001}{}%
-\-Member \hyperlink{classNeb_1_1app_acefbc3bb3de71f3c8cca0afc1fada857}{\-Neb\-:\-:app\-:\-:recv\-\_\-scene\-\_\-create} (std\-::shared\-\_\-ptr$<$ gal\-::network\-::message $>$)]consider putting following functions into the messages themselves\-: would be cleaner that way.  
+\item[\label{todo__todo000002}%
+\hypertarget{todo__todo000002}{}%
+\-Member \hyperlink{classNeb_1_1app_a729bf4c1785929d7449d614619f74191}{\-Neb\-:\-:app\-:\-:app} ()]since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers. to avoid unwanted shared\-\_\-ptrs to owned objects, care must be taken when passing these objects around. better documentation inside function bodies should be used to let me know what a shared\-\_\-ptr is being used (how it should be treated.  
 \item[\label{todo__todo000003}%
 \hypertarget{todo__todo000003}{}%
+\-Member \hyperlink{classNeb_1_1app_acefbc3bb3de71f3c8cca0afc1fada857}{\-Neb\-:\-:app\-:\-:recv\-\_\-scene\-\_\-create} (std\-::shared\-\_\-ptr$<$ gal\-::network\-::message $>$)]consider putting following functions into the messages themselves\-: would be cleaner that way.  
+\item[\label{todo__todo000005}%
+\hypertarget{todo__todo000005}{}%
 \-Member \hyperlink{classNeb_1_1Camera_1_1Projection_1_1Base_a7a0ef0507f546a0da56bb596de53c962}{\-Neb\-:\-:\-Camera\-:\-:\-Projection\-:\-:\-Base\-:\-:step} (double)]explain when in timeline this occurs and in which thread and why  
-\item[\label{todo__todo000004}%
-\hypertarget{todo__todo000004}{}%
+\item[\label{todo__todo000006}%
+\hypertarget{todo__todo000006}{}%
 \-Member \hyperlink{classNeb_1_1Camera_1_1View_1_1Base_aa3c5978efc6cd916f0f91bb8def375c5}{\-Neb\-:\-:\-Camera\-:\-:\-View\-:\-:\-Base\-:\-:step} (double)=0]explain when in timeline this occurs and in which thread and why  
-\item[\label{todo__todo000012}%
-\hypertarget{todo__todo000012}{}%
-\-Class \hyperlink{classNeb_1_1renderable}{\-Neb\-:\-:renderable} ]eventually replace this with \-Context and allow multiple \-Contexts per window and allow scene and layout to have different and overalpping \-Contexts.  
+\item[\label{todo__todo000010}%
+\hypertarget{todo__todo000010}{}%
+\-Member \hyperlink{structNeb_1_1Message_1_1Actor_1_1OUpdate_aa972a33a8c8220e7f6194e44c019d817}{\-Neb\-:\-:\-Message\-:\-:\-Actor\-:\-:\-O\-Update\-:\-:post} ()]determine if \-I count just say \char`\"{}ar $<$$<$ count\char`\"{} here  
 \item[\label{todo__todo000013}%
 \hypertarget{todo__todo000013}{}%
-\-Member \hyperlink{classNeb_1_1Scene_1_1desc_aa456a9a431a4f93be8278f6aee75b8f6}{\-Neb\-:\-:\-Scene\-:\-:desc\-:\-:serialize} (\-Archive \&ar, unsigned int const \&version)]no idea why this fails  
+\-Class \hyperlink{classNeb_1_1renderable}{\-Neb\-:\-:renderable} ]eventually replace this with \-Context and allow multiple \-Contexts per window and allow scene and layout to have different and overalpping \-Contexts.  
 \item[\label{todo__todo000016}%
 \hypertarget{todo__todo000016}{}%
 \-Member \hyperlink{classNeb_1_1Shape_1_1desc_a8356295ceee1f17dd24afbdb455dd206}{\-Neb\-:\-:\-Shape\-:\-:desc\-:\-:operator$<$$<$} (\-Neb\-::\-Shape\-::shape\-\_\-w const \&)]fill this out  
-\item[\label{todo__todo000005}%
-\hypertarget{todo__todo000005}{}%
+\item[\label{todo__todo000007}%
+\hypertarget{todo__todo000007}{}%
 \-Member \hyperlink{classNeb_1_1window_1_1window_a04992828fdcd620216728e607654e26a}{\-Neb\-:\-:window\-:\-:window\-:\-:window} (\-Neb\-::window\-::desc\-\_\-s desc)]get rid of my unique ptr class. \-Just use private member and be careful not to pass around shared ptrs to things 
 \end{DoxyRefList}

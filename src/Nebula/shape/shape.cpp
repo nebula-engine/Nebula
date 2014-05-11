@@ -8,7 +8,10 @@
 
 #include <Nebula/Map.hpp>
 
-Neb::Shape::shape::shape(Neb::Shape::parent_w parent): parent_(parent) {
+Neb::Shape::shape::shape(Neb::Shape::parent_w parent):
+	parent_(parent),
+	lights_(Neb::master::global()->factories_.light_base_)
+{
 	NEBULA_SHAPE_BASE_FUNC;
 	assert(!parent.expired());
 }

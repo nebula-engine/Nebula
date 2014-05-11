@@ -4,67 +4,107 @@
 \subsection*{\-Public \-Types}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classNeb_1_1Map_a2803848f87f38d8ce8d563f7c95498a1}{typedef \hyperlink{classNeb_1_1unique__ptr}{\-Neb\-::unique\-\_\-ptr}$<$ \-T $>$ {\bfseries mapped\-\_\-type}}\label{classNeb_1_1Map_a2803848f87f38d8ce8d563f7c95498a1}
+\hypertarget{classNeb_1_1Map_a6810d118b98686c87dbd11fb46549e10}{typedef std\-::shared\-\_\-ptr$<$ \-T $>$ {\bfseries shared\-\_\-type}}\label{classNeb_1_1Map_a6810d118b98686c87dbd11fb46549e10}
 
 \item 
-\hypertarget{classNeb_1_1Map_a1c3fc1b8c8704182490ce063857fd8ec}{typedef \hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::weak\-\_\-ptr}$<$ \-T $>$ {\bfseries weak\-\_\-type}}\label{classNeb_1_1Map_a1c3fc1b8c8704182490ce063857fd8ec}
+\hypertarget{classNeb_1_1Map_ac47c5fb9744284a4b6644f7850040095}{typedef \hyperlink{classNeb_1_1WrapperTyped}{\-Neb\-::\-Wrapper\-Typed}$<$ \-T $>$ {\bfseries mapped\-\_\-type}}\label{classNeb_1_1Map_ac47c5fb9744284a4b6644f7850040095}
+
+\item 
+\hypertarget{classNeb_1_1Map_a833c7da4ecc80e82f0697466fcb6aa96}{typedef std\-::weak\-\_\-ptr\*
+$<$ \hyperlink{classNeb_1_1Factory}{\-Neb\-::\-Factory}$<$ \-T $>$ $>$ {\bfseries factory\-\_\-weak}}\label{classNeb_1_1Map_a833c7da4ecc80e82f0697466fcb6aa96}
 
 \item 
 \hypertarget{classNeb_1_1Map_aff92d7127de1554a67d6c668f99c1f8e}{typedef std\-::map$<$ int, \*
-\hyperlink{classNeb_1_1unique__ptr}{mapped\-\_\-type} $>$ {\bfseries map\-\_\-type}}\label{classNeb_1_1Map_aff92d7127de1554a67d6c668f99c1f8e}
+\hyperlink{classNeb_1_1WrapperTyped}{mapped\-\_\-type} $>$ {\bfseries map\-\_\-type}}\label{classNeb_1_1Map_aff92d7127de1554a67d6c668f99c1f8e}
 
 \item 
-\hypertarget{classNeb_1_1Map_aa1c580f6c0cb1fe57fce27233c56ac1c}{typedef map\-\_\-type\-::iterator {\bfseries iter}}\label{classNeb_1_1Map_aa1c580f6c0cb1fe57fce27233c56ac1c}
+\hypertarget{classNeb_1_1Map_ad2414c63c11316575065264c75670475}{typedef map\-\_\-type\-::iterator {\bfseries iterator}}\label{classNeb_1_1Map_ad2414c63c11316575065264c75670475}
 
 \item 
 \hypertarget{classNeb_1_1Map_a9beb63846e033e9650dd4d3f2fb1eb2c}{typedef map\-\_\-type\-::value\-\_\-type {\bfseries value\-\_\-type\-\_\-const}}\label{classNeb_1_1Map_a9beb63846e033e9650dd4d3f2fb1eb2c}
 
 \item 
 \hypertarget{classNeb_1_1Map_a6fab819e1d3f93075362c71f2c69d8ca}{typedef std\-::pair$<$ int, \*
-\hyperlink{classNeb_1_1unique__ptr}{mapped\-\_\-type} $>$ {\bfseries value\-\_\-type}}\label{classNeb_1_1Map_a6fab819e1d3f93075362c71f2c69d8ca}
+\hyperlink{classNeb_1_1WrapperTyped}{mapped\-\_\-type} $>$ {\bfseries value\-\_\-type}}\label{classNeb_1_1Map_a6fab819e1d3f93075362c71f2c69d8ca}
 
 \end{DoxyCompactItemize}
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classNeb_1_1Map_a619275cf1c717233117860461cd8207d}{\hyperlink{classNeb_1_1unique__ptr}{mapped\-\_\-type} \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int \&k)}\label{classNeb_1_1Map_a619275cf1c717233117860461cd8207d}
+\hypertarget{classNeb_1_1Map_a7e15e6246362cebda8a9fbf6e4fdfff2}{\hyperlink{classNeb_1_1Map_a7e15e6246362cebda8a9fbf6e4fdfff2}{\-Map} (factory\-\_\-weak factory)}\label{classNeb_1_1Map_a7e15e6246362cebda8a9fbf6e4fdfff2}
 
+\begin{DoxyCompactList}\small\item\em \-Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classNeb_1_1Map_a628b2826bd845181f8fdec7de0255aff}{push\-\_\-back} (shared\-\_\-type \&u)
 \item 
-\hypertarget{classNeb_1_1Map_acd4f6527c258fbce9bbfa13b4c29128c}{void {\bfseries add} (value\-\_\-type \&p)}\label{classNeb_1_1Map_acd4f6527c258fbce9bbfa13b4c29128c}
-
+iterator \hyperlink{classNeb_1_1Map_a3e040f5d07053dbdc8853e242f633142}{find} (int a)
 \item 
-\hypertarget{classNeb_1_1Map_a5bff24c0bbb40e952f03201bf0068432}{void {\bfseries push\-\_\-back} (\hyperlink{classNeb_1_1unique__ptr}{mapped\-\_\-type} \&u)}\label{classNeb_1_1Map_a5bff24c0bbb40e952f03201bf0068432}
-
+void \hyperlink{classNeb_1_1Map_ae0fedef74480d411f5b35583927e237c}{clear} ()
 \item 
-\hypertarget{classNeb_1_1Map_a6a0aa4204a34ac09566fcefcdb0b2613}{iter {\bfseries find} (int a)}\label{classNeb_1_1Map_a6a0aa4204a34ac09566fcefcdb0b2613}
-
+iterator \hyperlink{classNeb_1_1Map_aaa7f3f7057179fef6a38559258a217b4}{begin} ()
 \item 
-\hypertarget{classNeb_1_1Map_a053be30ff1b6e6f0e5396406ee1da55a}{{\footnotesize template$<$class U $>$ }\\void {\bfseries foreach} (std\-::function$<$ void(\hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::weak\-\_\-ptr}$<$ \-U $>$)$>$ func)}\label{classNeb_1_1Map_a053be30ff1b6e6f0e5396406ee1da55a}
-
+iterator \hyperlink{classNeb_1_1Map_abd67f06c1909b3cb1982d7637c7a3877}{end} ()
 \item 
-\hypertarget{classNeb_1_1Map_ae0fedef74480d411f5b35583927e237c}{void {\bfseries clear} ()}\label{classNeb_1_1Map_ae0fedef74480d411f5b35583927e237c}
-
-\item 
-\hypertarget{classNeb_1_1Map_ae6e1c2ef08531a5696515392e2ddf811}{iter {\bfseries begin} ()}\label{classNeb_1_1Map_ae6e1c2ef08531a5696515392e2ddf811}
-
-\item 
-\hypertarget{classNeb_1_1Map_aad55064cd5483e90f2e0badc1b47a18c}{iter {\bfseries end} ()}\label{classNeb_1_1Map_aad55064cd5483e90f2e0badc1b47a18c}
-
-\item 
-\hypertarget{classNeb_1_1Map_a5bbe7fb4b2899bb707cf38e3c2ecd0ea}{iter {\bfseries erase} (iter it)}\label{classNeb_1_1Map_a5bbe7fb4b2899bb707cf38e3c2ecd0ea}
-
+iterator \hyperlink{classNeb_1_1Map_a0d5ff20f0bce0ca3a55ed0d204d138bb}{erase} (iterator it)
 \end{DoxyCompactItemize}
 \subsection*{\-Public \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classNeb_1_1Map_a90e63f3ea00d82d366192f092cdb5fa9}{map\-\_\-type {\bfseries map\-\_\-}}\label{classNeb_1_1Map_a90e63f3ea00d82d366192f092cdb5fa9}
+\hypertarget{classNeb_1_1Map_a7291ffc371a2419502e1765c8a78c14f}{factory\-\_\-weak {\bfseries factory\-\_\-}}\label{classNeb_1_1Map_a7291ffc371a2419502e1765c8a78c14f}
 
 \item 
 \hypertarget{classNeb_1_1Map_a8b62fd79e9fc42a74a72f22c21a932ba}{int {\bfseries next\-\_\-}}\label{classNeb_1_1Map_a8b62fd79e9fc42a74a72f22c21a932ba}
 
+\item 
+\hypertarget{classNeb_1_1Map_a90e63f3ea00d82d366192f092cdb5fa9}{map\-\_\-type {\bfseries map\-\_\-}}\label{classNeb_1_1Map_a90e63f3ea00d82d366192f092cdb5fa9}
+
 \end{DoxyCompactItemize}
 \subsubsection*{template$<$class \-T$>$ class Neb\-::\-Map$<$ T $>$}
 
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classNeb_1_1Map_aaa7f3f7057179fef6a38559258a217b4}{\index{\-Neb\-::\-Map@{\-Neb\-::\-Map}!begin@{begin}}
+\index{begin@{begin}!Neb::Map@{\-Neb\-::\-Map}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-T$>$ iterator {\bf \-Neb\-::\-Map}$<$ \-T $>$\-::{\bf begin} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classNeb_1_1Map_aaa7f3f7057179fef6a38559258a217b4}
+\hypertarget{classNeb_1_1Map_ae0fedef74480d411f5b35583927e237c}{\index{\-Neb\-::\-Map@{\-Neb\-::\-Map}!clear@{clear}}
+\index{clear@{clear}!Neb::Map@{\-Neb\-::\-Map}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-T$>$ void {\bf \-Neb\-::\-Map}$<$ \-T $>$\-::{\bf clear} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classNeb_1_1Map_ae0fedef74480d411f5b35583927e237c}
+\hypertarget{classNeb_1_1Map_abd67f06c1909b3cb1982d7637c7a3877}{\index{\-Neb\-::\-Map@{\-Neb\-::\-Map}!end@{end}}
+\index{end@{end}!Neb::Map@{\-Neb\-::\-Map}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-T$>$ iterator {\bf \-Neb\-::\-Map}$<$ \-T $>$\-::{\bf end} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classNeb_1_1Map_abd67f06c1909b3cb1982d7637c7a3877}
+\hypertarget{classNeb_1_1Map_a0d5ff20f0bce0ca3a55ed0d204d138bb}{\index{\-Neb\-::\-Map@{\-Neb\-::\-Map}!erase@{erase}}
+\index{erase@{erase}!Neb::Map@{\-Neb\-::\-Map}}
+\subsubsection[{erase}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-T$>$ iterator {\bf \-Neb\-::\-Map}$<$ \-T $>$\-::{\bf erase} (
+\begin{DoxyParamCaption}
+\item[{iterator}]{it}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classNeb_1_1Map_a0d5ff20f0bce0ca3a55ed0d204d138bb}
+\hypertarget{classNeb_1_1Map_a3e040f5d07053dbdc8853e242f633142}{\index{\-Neb\-::\-Map@{\-Neb\-::\-Map}!find@{find}}
+\index{find@{find}!Neb::Map@{\-Neb\-::\-Map}}
+\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-T$>$ iterator {\bf \-Neb\-::\-Map}$<$ \-T $>$\-::{\bf find} (
+\begin{DoxyParamCaption}
+\item[{int}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classNeb_1_1Map_a3e040f5d07053dbdc8853e242f633142}
+\hypertarget{classNeb_1_1Map_a628b2826bd845181f8fdec7de0255aff}{\index{\-Neb\-::\-Map@{\-Neb\-::\-Map}!push\-\_\-back@{push\-\_\-back}}
+\index{push\-\_\-back@{push\-\_\-back}!Neb::Map@{\-Neb\-::\-Map}}
+\subsubsection[{push\-\_\-back}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-T$>$ void {\bf \-Neb\-::\-Map}$<$ \-T $>$\-::{\bf push\-\_\-back} (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-type \&}]{u}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classNeb_1_1Map_a628b2826bd845181f8fdec7de0255aff}
 
 
 \-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}

@@ -3,6 +3,14 @@
 
 namespace Neb {
 
+	struct attrib_name {
+		enum e {};
+	};
+	struct program_name {
+		enum e {};
+	};
+
+
 	/** @brief Lights */
 	namespace Light {
 		struct type {
@@ -91,8 +99,9 @@ namespace Neb {
 			class Base;
 			class Perspective;
 
-
-			typedef Neb::unique_ptr<Base>	Base_u;
+			typedef std::shared_ptr<Base>		Base_s;
+			typedef Neb::weak_ptr<Base>		Base_w;
+			typedef std::unique_ptr<Base>		Base_u;
 		}
 	}
 
@@ -108,3 +117,6 @@ namespace Neb {
 }
 
 #endif
+
+
+

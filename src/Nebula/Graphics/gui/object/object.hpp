@@ -11,7 +11,6 @@
 
 //#include <galaxy/sig/connection.hpp>
 
-#include <Nebula/master.hpp>
 #include <Nebula/Graphics/Color/Color.hpp>
 
 namespace Neb {

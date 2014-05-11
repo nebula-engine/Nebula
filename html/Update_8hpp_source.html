@@ -86,59 +86,76 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00004"></a>00004 <span class="preprocessor">#include &lt;boost/serialization/vector.hpp&gt;</span>
 <a name="l00005"></a>00005 <span class="preprocessor">#include &lt;boost/serialization/shared_ptr.hpp&gt;</span>
 <a name="l00006"></a>00006 
-<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;gru/config.hpp&gt;</span> <span class="comment">// gru/config.hpp.in</span>
-<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;gru/master.hpp&gt;</span>
-<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;gru/scene/desc.hpp&gt;</span>
-<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;gru/actor/desc.hpp&gt;</span>
-<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;gru/actor/addr.hpp&gt;</span>
-<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;gru/actor/event.hpp&gt;</span>
-<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;gru/actor/raw_factory.hpp&gt;</span>
-<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;gru/actor/actor.hpp&gt;</span>
-<a name="l00015"></a>00015 
-<a name="l00016"></a>00016 <span class="keyword">namespace </span>glutpp {
-<a name="l00017"></a>00017         <span class="keyword">namespace </span>network {
-<a name="l00018"></a>00018                 <span class="keyword">namespace </span>actor {
-<a name="l00019"></a><a class="code" href="structglutpp_1_1network_1_1actor_1_1update.html">00019</a>                         <span class="keyword">struct </span><a class="code" href="structglutpp_1_1network_1_1actor_1_1update.html">update</a> {
-<a name="l00023"></a><a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html">00023</a>                                 <span class="keyword">struct </span><a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html" title="Address and Data.">addr_raw</a> {
-<a name="l00026"></a><a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a4883db7c0b5227e0fcb124f786a121c1">00026</a>                                         <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>    <a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a4883db7c0b5227e0fcb124f786a121c1" title="Load. Find the actor at the address and write directly into its Data object.">load</a>(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
-<a name="l00027"></a>00027                                                 ar &amp; <a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a30478c5051b040fbaafb8fb138793517" title="Address.">addr_</a>;
-<a name="l00028"></a>00028                                                 
-<a name="l00029"></a>00029                                                 <span class="comment">// find the actor</span>
-<a name="l00030"></a>00030                                                 <span class="keyword">auto</span> actor = glutpp::master::Global()-&gt;getActor(addr_);
-<a name="l00031"></a>00031                                                 <span class="keywordflow">if</span>(!actor) <span class="keywordflow">throw</span> 0; 
-<a name="l00033"></a>00033                                                 ar &amp; *(actor-&gt;raw_);
-<a name="l00034"></a>00034                                         }
-<a name="l00037"></a><a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a52ecb325c7b91c90244d0d80a3f52ce0">00037</a>                                         <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>    <a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a52ecb325c7b91c90244d0d80a3f52ce0" title="Save. The pointer to the actor&#39;s Data object should already be set.">save</a>(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version)<span class="keyword"> const </span>{
-<a name="l00038"></a>00038                                                 ar &amp; <a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a30478c5051b040fbaafb8fb138793517" title="Address.">addr_</a>;
-<a name="l00039"></a>00039                                                 
-<a name="l00040"></a>00040                                                 assert(<a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a78a532b30c2fe195ce15e420c25d45d7" title="Data pointer. could be replaced with Actor pointer with similar results.">raw_</a>);
-<a name="l00041"></a>00041                                                 
-<a name="l00042"></a>00042                                                 ar &amp; *<a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a78a532b30c2fe195ce15e420c25d45d7" title="Data pointer. could be replaced with Actor pointer with similar results.">raw_</a>;
-<a name="l00043"></a>00043                                         }
-<a name="l00044"></a>00044                                         BOOST_SERIALIZATION_SPLIT_MEMBER();
-<a name="l00045"></a>00045 
-<a name="l00047"></a><a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a30478c5051b040fbaafb8fb138793517">00047</a>                                         glutpp::actor::addr                     <a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a30478c5051b040fbaafb8fb138793517" title="Address.">addr_</a>;
-<a name="l00050"></a><a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a78a532b30c2fe195ce15e420c25d45d7">00050</a>                                         boost::shared_ptr&lt;glutpp::actor::raw&gt;   <a class="code" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html#a78a532b30c2fe195ce15e420c25d45d7" title="Data pointer. could be replaced with Actor pointer with similar results.">raw_</a>;
-<a name="l00051"></a>00051                                 };
-<a name="l00052"></a>00052                                 
-<a name="l00053"></a>00053                                 <span class="comment">//typedef vec_addr_raw::tuple tuple;</span>
-<a name="l00054"></a>00054                                 
-<a name="l00055"></a>00055                                 <span class="keywordtype">void</span> <a class="code" href="structglutpp_1_1network_1_1actor_1_1update.html#a2a7bee8209aa582266f5bb4e6e729501">load</a>(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;glutpp::actor::actor&gt;</a> <span class="keyword">const</span> &amp; actor);
-<a name="l00056"></a>00056                         
-<a name="l00057"></a>00057                                 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>    serialize(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
-<a name="l00058"></a>00058                                         ar &amp; vector_;
-<a name="l00059"></a>00059                                 }       
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061                                 std::vector&lt;boost::shared_ptr&lt;glutpp::network::actor::update::addr_raw&gt; &gt;       vector_;
-<a name="l00062"></a>00062                         };
-<a name="l00063"></a>00063                 }
-<a name="l00064"></a>00064         }
-<a name="l00065"></a>00065 }
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067 <span class="preprocessor">#endif</span>
-<a name="l00068"></a>00068 <span class="preprocessor"></span>
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070 
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;Nebula/Scene/Types.hpp&gt;</span>
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;Nebula/config.hpp&gt;</span> <span class="comment">// gru/config.hpp.in</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;Nebula/master.hpp&gt;</span>
+<a name="l00011"></a>00011 <span class="comment">//#include &lt;Nebula/Scene/desc.hpp&gt;</span>
+<a name="l00012"></a>00012 <span class="comment">//#include &lt;Nebula/Actor/desc.hpp&gt;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;Nebula/Actor/Util/Address.hpp&gt;</span>
+<a name="l00014"></a>00014 <span class="comment">//#include &lt;Nebula/Actor/event.hpp&gt;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;Nebula/Actor/Base.hpp&gt;</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;Nebula/Scene/scene.hpp&gt;</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;Nebula/Message/Base.hpp&gt;</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="keyword">namespace </span>Neb {
+<a name="l00022"></a>00022         <span class="keyword">namespace </span>Message {
+<a name="l00023"></a>00023                 <span class="keyword">namespace </span>Actor {
+<a name="l00024"></a><a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html">00024</a>                         <span class="keyword">struct </span><a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html">Update</a> {
+<a name="l00025"></a>00025                                 
+<a name="l00026"></a>00026                                 <a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html">Update</a>(): <a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html#a4e82d6d5a0a84f6593b7322a535fbb6c" title="Default load/save operator. All other types are simply passed to the archive.">count_</a>(0) {}
+<a name="l00027"></a>00027                                 
+<a name="l00031"></a>00031                                 <span class="comment">//template&lt;typename T&gt; Update&amp;          operator&amp;(T const &amp; t) {</span>
+<a name="l00032"></a>00032                         <span class="comment">//              msg_-&gt;ar_ &amp; t;</span>
+<a name="l00033"></a>00033                         <span class="comment">//      }</span>
+<a name="l00034"></a>00034                                 
+<a name="l00035"></a><a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html#a4e82d6d5a0a84f6593b7322a535fbb6c">00035</a>                                 <span class="keywordtype">int</span>                             <a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html#a4e82d6d5a0a84f6593b7322a535fbb6c" title="Default load/save operator. All other types are simply passed to the archive.">count_</a>;
+<a name="l00036"></a>00036                                 std::stringstream::pos_type     pos_count_;
+<a name="l00037"></a>00037                                 
+<a name="l00038"></a>00038                         };
+<a name="l00039"></a><a class="code" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html">00039</a>                         <span class="keyword">struct </span><a class="code" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html">OUpdate</a>: Neb::Message::<a class="code" href="classNeb_1_1Message_1_1OBase.html">OBase</a>, <a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html">Update</a>{
+<a name="l00040"></a>00040 
+<a name="l00042"></a>00042                                 <a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html">Update</a>&amp;         <a class="code" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html#a4a04c15c17b062b23cd4c7fd52913960" title="Save Actor.">operator&lt;&lt;</a>(Neb::Actor::Base_s actor);
+<a name="l00044"></a><a class="code" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html#a41db1aba7ffab53676915f7ca8036968">00044</a>                                 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html">Update</a>&amp;            <a class="code" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html#a41db1aba7ffab53676915f7ca8036968">operator&amp;</a>(T <span class="keyword">const</span> &amp; t) {
+<a name="l00045"></a>00045                                         msg_-&gt;ar_ &amp; t;
+<a name="l00046"></a>00046                                         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00047"></a>00047                                 }
+<a name="l00048"></a>00048                                 
+<a name="l00049"></a>00049 
+<a name="l00057"></a><a class="code" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html#ad7b4c3680889ed31f6bcc2db453f61e3">00057</a>                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            <a class="code" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html#ad7b4c3680889ed31f6bcc2db453f61e3" title="Before saving. Implement the virtual savePre function. Record the position of the count data...">pre</a>() {
+<a name="l00058"></a>00058                                         <span class="comment">// save the position of count</span>
+<a name="l00059"></a>00059                                         pos_count_ = msg_-&gt;ss_.tellp();
+<a name="l00060"></a>00060                                         
+<a name="l00061"></a>00061                                         <span class="comment">// allocate space for count</span>
+<a name="l00062"></a>00062                                         msg_-&gt;ar_ &lt;&lt; <a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html#a4e82d6d5a0a84f6593b7322a535fbb6c" title="Default load/save operator. All other types are simply passed to the archive.">count_</a>;
+<a name="l00063"></a>00063                                 }
+<a name="l00067"></a><a class="code" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html#aa972a33a8c8220e7f6194e44c019d817">00067</a>                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            <a class="code" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html#aa972a33a8c8220e7f6194e44c019d817" title="After saving. Implement the virtual savePost function. Overwrite the count data.">post</a>() {
+<a name="l00068"></a>00068                                         <span class="keyword">auto</span> pos = msg_-&gt;ss_.tellp();
+<a name="l00069"></a>00069                                         
+<a name="l00070"></a>00070                                         msg_-&gt;ss_.seekp(pos_count_);
+<a name="l00072"></a>00072                                         msg_-&gt;ss_.write((<span class="keywordtype">char</span>*)&amp;<a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html#a4e82d6d5a0a84f6593b7322a535fbb6c" title="Default load/save operator. All other types are simply passed to the archive.">count_</a>, <span class="keyword">sizeof</span>(count_));
+<a name="l00073"></a>00073                                         
+<a name="l00074"></a>00074                                         msg_-&gt;ss_.seekp(pos);
+<a name="l00075"></a>00075                                 }
+<a name="l00076"></a>00076                         };
+<a name="l00077"></a><a class="code" href="structNeb_1_1Message_1_1Actor_1_1IUpdate.html">00077</a>                         <span class="keyword">struct </span><a class="code" href="structNeb_1_1Message_1_1Actor_1_1IUpdate.html">IUpdate</a>: Neb::Message::<a class="code" href="classNeb_1_1Message_1_1IBase.html">IBase</a>, <a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html">Update</a> {
+<a name="l00079"></a>00079                                 <a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html">Update</a>&amp;         <a class="code" href="structNeb_1_1Message_1_1Actor_1_1IUpdate.html#a8f7b5c8de10ee6107239c6b472d13780" title="Load.">operator&gt;&gt;</a>(Neb::Scene::Base_s);
+<a name="l00081"></a><a class="code" href="structNeb_1_1Message_1_1Actor_1_1IUpdate.html#aa12f9fdbb6239e686c1d362ada27d85e">00081</a>                                 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <a class="code" href="structNeb_1_1Message_1_1Actor_1_1Update.html">Update</a>&amp;            <a class="code" href="structNeb_1_1Message_1_1Actor_1_1IUpdate.html#aa12f9fdbb6239e686c1d362ada27d85e">operator&amp;</a>(T <span class="keyword">const</span> &amp; t) {
+<a name="l00082"></a>00082                                         msg_-&gt;ar_ &amp; t;
+<a name="l00083"></a>00083                                         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00084"></a>00084                                 }
+<a name="l00085"></a>00085                         };
+<a name="l00086"></a>00086                         
+<a name="l00087"></a>00087                 }
+<a name="l00088"></a>00088         }
+<a name="l00089"></a>00089 }
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 <span class="preprocessor">#endif</span>
+<a name="l00092"></a>00092 <span class="preprocessor"></span>
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -157,7 +174,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:40 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:04 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

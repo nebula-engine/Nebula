@@ -91,47 +91,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00009"></a><a class="code" href="namespaceNeb_1_1Actor_1_1RigidBody.html">00009</a>                 <span class="keyword">namespace </span><a class="code" href="classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html">RigidBody</a> {
 <a name="l00010"></a><a class="code" href="classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html">00010</a>                         <span class="keyword">class </span><a class="code" href="classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html">RigidBody</a>: <span class="keyword">public</span> Neb::<a class="code" href="classNeb_1_1Actor_1_1Actor.html">Actor</a>::<a class="code" href="classNeb_1_1Actor_1_1RigidActor.html">RigidActor</a> {
 <a name="l00011"></a>00011                                 <span class="keyword">public</span>:
-<a name="l00012"></a>00012                                         <a class="code" href="classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html">RigidBody</a>(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::parent_w</a>);
+<a name="l00012"></a>00012                                         <a class="code" href="classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html">RigidBody</a>(Neb::Actor::parent_w);
 <a name="l00013"></a>00013                                         
-<a name="l00014"></a>00014                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    init(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::desc_w</a>);
-<a name="l00015"></a>00015                                         
-<a name="l00016"></a>00016                                         
+<a name="l00014"></a>00014                                         
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016                                         <span class="comment">//virtual void                                  init(Neb::Actor::desc_w);</span>
 <a name="l00017"></a>00017                                         
-<a name="l00018"></a>00018                                         <span class="keyword">virtual</span> <a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::desc_w</a>      get_projectile();
+<a name="l00018"></a>00018                                         
 <a name="l00019"></a>00019                                         
-<a name="l00020"></a>00020                                 <span class="keyword">private</span>:
-<a name="l00021"></a>00021                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    step_local(<span class="keywordtype">double</span>);
-<a name="l00022"></a>00022                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    step_remote(<span class="keywordtype">double</span>);
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    add_force(<span class="keywordtype">double</span>);
-<a name="l00025"></a>00025                                 <span class="keyword">public</span>:
-<a name="l00026"></a>00026                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    print_info();
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    create_physics() {abort();}
-<a name="l00030"></a>00030                                         
-<a name="l00031"></a>00031                                         <span class="comment">// control</span>
-<a name="l00032"></a>00032                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    create_control(
-<a name="l00033"></a>00033                                                         Neb::Actor::Control::RigidBody::Raw_s);
-<a name="l00034"></a>00034                                 <span class="keyword">public</span>:
-<a name="l00035"></a>00035                                         <a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::Control::RigidBody::Control_w</a>       control_;
-<a name="l00036"></a>00036                                 <span class="keyword">private</span>:
-<a name="l00037"></a>00037                                         physx::PxVec3                   force_;
-<a name="l00038"></a>00038                                         physx::PxVec3                   torque_;
-<a name="l00039"></a>00039                         };
-<a name="l00040"></a>00040                 }
-<a name="l00041"></a>00041         }
-<a name="l00042"></a>00042 }
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044 <span class="preprocessor">#endif</span>
-<a name="l00045"></a>00045 <span class="preprocessor"></span>
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047 
+<a name="l00020"></a>00020                                         <span class="keyword">virtual</span> Neb::Actor::Base_s                      get_projectile();
+<a name="l00021"></a>00021                                         
+<a name="l00022"></a>00022                                 <span class="keyword">private</span>:
+<a name="l00023"></a>00023                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    step_local(<span class="keywordtype">double</span>);
+<a name="l00024"></a>00024                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    step_remote(<span class="keywordtype">double</span>);
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    add_force(<span class="keywordtype">double</span>);
+<a name="l00027"></a>00027                                 <span class="keyword">public</span>:
+<a name="l00028"></a>00028                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    print_info();
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    create_physics() = 0;
+<a name="l00032"></a>00032                                         
+<a name="l00033"></a>00033                                         <span class="comment">// control</span>
+<a name="l00034"></a>00034                                         <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    create_control(
+<a name="l00035"></a>00035                                                         Neb::Actor::Control::RigidBody::Raw_s);
+<a name="l00036"></a>00036                                 <span class="keyword">public</span>:
+<a name="l00037"></a>00037                                         Neb::Actor::Control::RigidBody::Control_w       control_;
+<a name="l00038"></a>00038                                 <span class="keyword">private</span>:
+<a name="l00039"></a>00039                                         physx::PxVec3                   force_;
+<a name="l00040"></a>00040                                         physx::PxVec3                   torque_;
+<a name="l00041"></a>00041                         };
+<a name="l00042"></a>00042                 }
+<a name="l00043"></a>00043         }
+<a name="l00044"></a>00044 }
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="preprocessor">#endif</span>
+<a name="l00047"></a>00047 <span class="preprocessor"></span>
 <a name="l00048"></a>00048 
 <a name="l00049"></a>00049 
 <a name="l00050"></a>00050 
 <a name="l00051"></a>00051 
 <a name="l00052"></a>00052 
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -150,7 +152,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:40 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:04 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

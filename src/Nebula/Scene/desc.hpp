@@ -2,7 +2,7 @@
 #define __GLUTPP_SCENE_DESC_H__
 
 //#include <galaxy/network/message.hpp>
-
+/*
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 #include <boost/serialization/nvp.hpp>
@@ -15,7 +15,7 @@
 #include <Nebula/Actor/Util/desc.hpp>
 #include <Nebula/Actor/Util/raw.hpp>
 #include <Nebula/Scene/raw.hpp>
-#include <Nebula/Typed.hpp>
+#include <Nebula/Util/Typed.hpp>
 
 namespace Neb {
 	namespace Scene {
@@ -30,7 +30,7 @@ namespace Neb {
 					ar & boost::serialization::make_nvp("i",i_);
 					ar & boost::serialization::make_nvp("type",type_);
 					ar & boost::serialization::make_nvp("raw",raw_wrapper_);
-					/** @todo no idea why this fails */
+					/ ** @todo no idea why this fails * /
 					//ar & boost::serialization::make_nvp("actors",actors_);
 				}
 
@@ -47,7 +47,7 @@ namespace Neb {
 	}
 }
 
-
+*/
 #endif
 
 

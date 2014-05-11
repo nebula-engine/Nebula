@@ -1,13 +1,12 @@
 \section{\-Class \-Hierarchy}
 \-This inheritance list is sorted roughly, but not completely, alphabetically\-:\begin{DoxyCompactList}
-\item \contentsline{section}{\-Neb\-:\-:\-Factory$<$ \-T $>$\-:\-:\-\_\-\-\_\-base\-\_\-function}{\pageref{structNeb_1_1Factory_1_1____base__function}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Func\-Map\-:\-:\-\_\-\-\_\-base\-\_\-function}{\pageref{structNeb_1_1FuncMap_1_1____base__function}}{}
 \begin{DoxyCompactList}
-\item \contentsline{section}{\-Neb\-:\-:\-Factory$<$ \-T $>$\-:\-:\-\_\-\-\_\-function$<$ \-A $>$}{\pageref{structNeb_1_1Factory_1_1____function}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Func\-Map\-:\-:\-\_\-\-\_\-function$<$ \-R, \-A $>$}{\pageref{structNeb_1_1FuncMap_1_1____function}}{}
 \end{DoxyCompactList}
 \item \contentsline{section}{neb\-:\-:packet\-:\-:actor\-\_\-release}{\pageref{classneb_1_1packet_1_1actor__release}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Scene\-:\-:addr}{\pageref{classNeb_1_1Scene_1_1addr}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Actor\-:\-:addr}{\pageref{classNeb_1_1Actor_1_1addr}}{}
-\item \contentsline{section}{glutpp\-:\-:network\-:\-:actor\-:\-:update\-:\-:addr\-\_\-raw}{\pageref{structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Scene\-:\-:\-Address}{\pageref{classNeb_1_1Scene_1_1Address}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Actor\-:\-:\-Util\-:\-:\-Address}{\pageref{classNeb_1_1Actor_1_1Util_1_1Address}}{}
 \item \contentsline{section}{\-Archive\-Read}{\pageref{classArchiveRead}}{}
 \item \contentsline{section}{\-Neb\-:\-:glsl\-:\-:attrib}{\pageref{classNeb_1_1glsl_1_1attrib}}{}
 \item \contentsline{section}{\-Neb\-:\-:attrib\-\_\-name}{\pageref{structNeb_1_1attrib__name}}{}
@@ -31,6 +30,7 @@
 \item \contentsline{section}{\-Neb\-:\-:glsl\-:\-:\-Uniform\-:\-:\-Scalar\-:\-:\-Vec3}{\pageref{classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Vec3}}{}
 \item \contentsline{section}{\-Neb\-:\-:glsl\-:\-:\-Uniform\-:\-:\-Scalar\-:\-:\-Vec4}{\pageref{classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Vec4}}{}
 \end{DoxyCompactList}
+\item \contentsline{section}{\-Neb\-:\-:\-Event\-:\-:\-Actor\-:\-:\-Base}{\pageref{classNeb_1_1Event_1_1Actor_1_1Base}}{}
 \item \contentsline{section}{\-Neb\-:\-:glsl\-:\-:\-Uniform\-:\-:\-Vector\-:\-:\-Base}{\pageref{classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1Base}}{}
 \begin{DoxyCompactList}
 \item \contentsline{section}{\-Neb\-:\-:glsl\-:\-:\-Uniform\-:\-:\-Vector\-:\-:\-Double}{\pageref{classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1Double}}{}
@@ -42,7 +42,16 @@
 \item \contentsline{section}{\-Neb\-:\-:glsl\-:\-:\-Uniform\-:\-:\-Vector\-:\-:\-Vec4}{\pageref{classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1Vec4}}{}
 \end{DoxyCompactList}
 \item \contentsline{section}{\-Neb\-:\-:\-Message\-:\-:\-Base}{\pageref{classNeb_1_1Message_1_1Base}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Event\-:\-:\-Actor\-:\-:\-Base}{\pageref{classNeb_1_1Event_1_1Actor_1_1Base}}{}
+\begin{DoxyCompactList}
+\item \contentsline{section}{\-Neb\-:\-:\-Message\-:\-:\-I\-Base}{\pageref{classNeb_1_1Message_1_1IBase}}{}
+\begin{DoxyCompactList}
+\item \contentsline{section}{\-Neb\-:\-:\-Message\-:\-:\-Actor\-:\-:\-I\-Update}{\pageref{structNeb_1_1Message_1_1Actor_1_1IUpdate}}{}
+\end{DoxyCompactList}
+\item \contentsline{section}{\-Neb\-:\-:\-Message\-:\-:\-O\-Base}{\pageref{classNeb_1_1Message_1_1OBase}}{}
+\begin{DoxyCompactList}
+\item \contentsline{section}{\-Neb\-:\-:\-Message\-:\-:\-Actor\-:\-:\-O\-Update}{\pageref{structNeb_1_1Message_1_1Actor_1_1OUpdate}}{}
+\end{DoxyCompactList}
+\end{DoxyCompactList}
 \item \contentsline{section}{gal\-:\-:network\-:\-:base}{\pageref{classgal_1_1network_1_1base}}{}
 \begin{DoxyCompactList}
 \item \contentsline{section}{gal\-:\-:network\-:\-:serial$<$ event, gal\-:\-:network\-:\-:base $>$}{\pageref{classgal_1_1network_1_1serial}}{}
@@ -66,19 +75,15 @@
 \end{DoxyCompactList}
 \end{DoxyCompactList}
 \item \contentsline{section}{\-Neb\-:\-:\-Actor\-:\-:\-Control\-:\-:\-Rigid\-Body\-:\-:\-Control}{\pageref{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control}}{}
-\item \contentsline{section}{glutpp\-:\-:network\-:\-:actor\-:\-:create}{\pageref{structglutpp_1_1network_1_1actor_1_1create}}{}
-\item \contentsline{section}{glutpp\-:\-:network\-:\-:scene\-:\-:create}{\pageref{structglutpp_1_1network_1_1scene_1_1create}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Filter\-:\-:\-Data}{\pageref{classNeb_1_1Filter_1_1Data}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Message\-:\-:\-Actor\-:\-:\-Create}{\pageref{structNeb_1_1Message_1_1Actor_1_1Create}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Message\-:\-:\-Scene\-:\-:\-Create}{\pageref{structNeb_1_1Message_1_1Scene_1_1Create}}{}
 \item \contentsline{section}{\-Neb\-:\-:gui\-:\-:object\-:\-:\-Data}{\pageref{classNeb_1_1gui_1_1object_1_1Data}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Filter\-:\-:\-Data}{\pageref{classNeb_1_1Filter_1_1Data}}{}
 \item \contentsline{section}{\-Default\-Error\-Callback}{\pageref{classDefaultErrorCallback}}{}
 \item \contentsline{section}{\-Neb\-:\-:gui\-:\-:\-Desc}{\pageref{classNeb_1_1gui_1_1Desc}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Scene\-:\-:desc}{\pageref{classNeb_1_1Scene_1_1desc}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Shape\-:\-:desc}{\pageref{classNeb_1_1Shape_1_1desc}}{}
-\item \contentsline{section}{\-Neb\-:\-:light\-:\-:desc}{\pageref{classNeb_1_1light_1_1desc}}{}
 \item \contentsline{section}{\-Neb\-:\-:window\-:\-:desc}{\pageref{classNeb_1_1window_1_1desc}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Actor\-:\-:desc}{\pageref{classNeb_1_1Actor_1_1desc}}{}
 \item \contentsline{section}{math\-:\-:\-Color\-:\-:\-Dynamic$<$ \-T, \-R, \-G, \-B $>$}{\pageref{classmath_1_1Color_1_1Dynamic}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Factory$<$ \-T $>$}{\pageref{classNeb_1_1Factory}}{}
 \item \contentsline{section}{\-Neb\-:\-:file\-\_\-header}{\pageref{structNeb_1_1file__header}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Filter\-:\-:\-Filter}{\pageref{structNeb_1_1Filter_1_1Filter}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Event\-:\-:\-Actor\-:\-:\-Fire}{\pageref{classNeb_1_1Event_1_1Actor_1_1Fire}}{}
@@ -101,9 +106,8 @@
 \item \contentsline{section}{\-Neb\-:\-:\-Actor\-:\-:empty}{\pageref{classNeb_1_1Actor_1_1empty}}{}
 \end{DoxyCompactList}
 \item \contentsline{section}{\-Neb\-:\-:app}{\pageref{classNeb_1_1app}}{}
-\item \contentsline{section}{\-Neb\-:\-:light\-:\-:light}{\pageref{classNeb_1_1light_1_1light}}{}
 \item \contentsline{section}{\-Neb\-:\-:master}{\pageref{classNeb_1_1master}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Scene\-:\-:scene}{\pageref{classNeb_1_1Scene_1_1scene}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Scene\-:\-:\-Base}{\pageref{classNeb_1_1Scene_1_1Base}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Shape\-:\-:shape}{\pageref{classNeb_1_1Shape_1_1shape}}{}
 \begin{DoxyCompactList}
 \item \contentsline{section}{\-Neb\-:\-:\-Shape\-:\-:\-Box\-:\-:\-Box}{\pageref{classNeb_1_1Shape_1_1Box_1_1Box}}{}
@@ -113,24 +117,26 @@
 \end{DoxyCompactList}
 \item \contentsline{section}{\-Neb\-:\-:window\-:\-:window}{\pageref{classNeb_1_1window_1_1window}}{}
 \end{DoxyCompactList}
-\item \contentsline{section}{\-Neb\-:\-:\-Shape\-:\-:flag}{\pageref{structNeb_1_1Shape_1_1flag}}{}
-\item \contentsline{section}{\-Neb\-:\-:light\-:\-:flag}{\pageref{structNeb_1_1light_1_1flag}}{}
-\item \contentsline{section}{glutpp\-:\-:\-Camera\-:\-:\-View\-:\-:\-Free\-:\-:\-Flag}{\pageref{structglutpp_1_1Camera_1_1View_1_1Free_1_1Flag}}{}
 \item \contentsline{section}{\-Neb\-:\-:app\-:\-:flag}{\pageref{structNeb_1_1app_1_1flag}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Shape\-:\-:flag}{\pageref{structNeb_1_1Shape_1_1flag}}{}
+\item \contentsline{section}{glutpp\-:\-:\-Camera\-:\-:\-View\-:\-:\-Free\-:\-:\-Flag}{\pageref{structglutpp_1_1Camera_1_1View_1_1Free_1_1Flag}}{}
 \item \contentsline{section}{\-Neb\-:\-:window\-:\-:window\-:\-:flag}{\pageref{structNeb_1_1window_1_1window_1_1flag}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Actor\-:\-:\-Base\-:\-:flag}{\pageref{structNeb_1_1Actor_1_1Base_1_1flag}}{}
 \item \contentsline{section}{glutpp\-:\-:\-Camera\-:\-:\-View\-:\-:\-Free}{\pageref{classglutpp_1_1Camera_1_1View_1_1Free}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Func\-Map}{\pageref{classNeb_1_1FuncMap}}{}
+\begin{DoxyCompactList}
+\item \contentsline{section}{\-Neb\-:\-:\-Factory$<$ \-T $>$}{\pageref{classNeb_1_1Factory}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Initializer$<$ \-T $>$}{\pageref{classNeb_1_1Initializer}}{}
+\end{DoxyCompactList}
 \item \contentsline{section}{neb\-:\-:\-Game\-:\-:\-Game}{\pageref{classneb_1_1Game_1_1Game}}{}
 \item \contentsline{section}{math\-:\-:geo\-:\-:height\-\_\-map}{\pageref{classmath_1_1geo_1_1height__map}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Shape\-:\-:id}{\pageref{classNeb_1_1Shape_1_1id}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Factory$<$ \-T $>$\-:\-:invalid\-\_\-args}{\pageref{structNeb_1_1Factory_1_1invalid__args}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Factory$<$ \-T $>$\-:\-:invalid\-\_\-key}{\pageref{structNeb_1_1Factory_1_1invalid__key}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Func\-Map\-:\-:invalid\-\_\-args}{\pageref{structNeb_1_1FuncMap_1_1invalid__args}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Func\-Map\-:\-:invalid\-\_\-key}{\pageref{structNeb_1_1FuncMap_1_1invalid__key}}{}
 \item \contentsline{section}{\-Neb\-:\-:gui\-:\-:layout}{\pageref{classNeb_1_1gui_1_1layout}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Light\-:\-:light}{\pageref{classNeb_1_1Light_1_1light}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Map$<$ \-T $>$}{\pageref{classNeb_1_1Map}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Enum\-:\-:\-Maps$<$ enum\-\_\-type $>$}{\pageref{structNeb_1_1Enum_1_1Maps}}{}
-\begin{DoxyCompactList}
-\item \contentsline{section}{\-Neb\-:\-:\-Enum\-:\-:\-Maps\-Flag$<$ enum\-\_\-type $>$}{\pageref{structNeb_1_1Enum_1_1MapsFlag}}{}
-\end{DoxyCompactList}
 \item \contentsline{section}{\-Neb\-:\-:material\-:\-:material}{\pageref{classNeb_1_1material_1_1material}}{}
 \item \contentsline{section}{\-Neb\-:\-:mesh}{\pageref{classNeb_1_1mesh}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Actor\-:\-:mode\-\_\-create}{\pageref{structNeb_1_1Actor_1_1mode__create}}{}
@@ -161,7 +167,7 @@
 \item \contentsline{section}{\-Neb\-:\-:\-Actor\-:\-:parent}{\pageref{classNeb_1_1Actor_1_1parent}}{}
 \begin{DoxyCompactList}
 \item \contentsline{section}{\-Neb\-:\-:\-Actor\-:\-:\-Base}{\pageref{classNeb_1_1Actor_1_1Base}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Scene\-:\-:scene}{\pageref{classNeb_1_1Scene_1_1scene}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Scene\-:\-:\-Base}{\pageref{classNeb_1_1Scene_1_1Base}}{}
 \end{DoxyCompactList}
 \item \contentsline{section}{\-Neb\-:\-:\-Scene\-:\-:\-Util\-:\-:\-Parent}{\pageref{classNeb_1_1Scene_1_1Util_1_1Parent}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Shape\-:\-:parent}{\pageref{classNeb_1_1Shape_1_1parent}}{}
@@ -174,13 +180,14 @@
 \item \contentsline{section}{\-Neb\-:\-:program\-\_\-name}{\pageref{structNeb_1_1program__name}}{}
 \item \contentsline{section}{math\-:\-:geo\-:\-:quad}{\pageref{classmath_1_1geo_1_1quad}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Shape\-:\-:\-Box\-:\-:\-Raw}{\pageref{classNeb_1_1Shape_1_1Box_1_1Raw}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Scene\-:\-:raw}{\pageref{classNeb_1_1Scene_1_1raw}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Shape\-:\-:\-Raw}{\pageref{classNeb_1_1Shape_1_1Raw}}{}
-\item \contentsline{section}{\-Neb\-:\-:\-Shape\-:\-:\-Sphere\-:\-:\-Raw}{\pageref{classNeb_1_1Shape_1_1Sphere_1_1Raw}}{}
-\item \contentsline{section}{\-Neb\-:\-:light\-:\-:raw}{\pageref{classNeb_1_1light_1_1raw}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Light\-:\-:\-Raw}{\pageref{classNeb_1_1Light_1_1Raw}}{}
 \item \contentsline{section}{\-Neb\-:\-:material\-:\-:raw}{\pageref{structNeb_1_1material_1_1raw}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Actor\-:\-:\-Control\-:\-:\-Rigid\-Body\-:\-:\-Raw}{\pageref{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Raw}}{}
 \item \contentsline{section}{\-Neb\-:\-:window\-:\-:raw}{\pageref{structNeb_1_1window_1_1raw}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Shape\-:\-:\-Raw}{\pageref{classNeb_1_1Shape_1_1Raw}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Scene\-:\-:\-Util\-:\-:\-Raw}{\pageref{classNeb_1_1Scene_1_1Util_1_1Raw}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Actor\-:\-:\-Util\-:\-:\-Raw}{\pageref{classNeb_1_1Actor_1_1Util_1_1Raw}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Shape\-:\-:\-Sphere\-:\-:\-Raw}{\pageref{classNeb_1_1Shape_1_1Sphere_1_1Raw}}{}
 \item \contentsline{section}{neb\-:\-:\-Timer\-:\-:\-Actor\-:\-:\-Release}{\pageref{classneb_1_1Timer_1_1Actor_1_1Release}}{}
 \item \contentsline{section}{\-Neb\-:\-:renderable}{\pageref{classNeb_1_1renderable}}{}
 \item \contentsline{section}{gal\-:\-:network\-:\-:serial$<$ \-D\-E\-R\-I\-V\-E\-D, \-B\-A\-S\-E $>$}{\pageref{classgal_1_1network_1_1serial}}{}
@@ -207,11 +214,9 @@
 \item \contentsline{section}{\-Neb\-:\-:texture}{\pageref{classNeb_1_1texture}}{}
 \item \contentsline{section}{math\-:\-:geo\-:\-:tri}{\pageref{classmath_1_1geo_1_1tri}}{}
 \item \contentsline{section}{glutpp\-:\-:shape\-:\-:event\-:\-:type}{\pageref{structglutpp_1_1shape_1_1event_1_1type}}{}
-\item \contentsline{section}{\-Neb\-:\-:light\-:\-:type}{\pageref{structNeb_1_1light_1_1type}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Color\-:\-:color$<$ \-T $>$\-:\-:type}{\pageref{structNeb_1_1Color_1_1color_1_1type}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Typed}{\pageref{classNeb_1_1Typed}}{}
 \begin{DoxyCompactList}
-\item \contentsline{section}{\-Neb\-:\-:\-Actor\-:\-:raw}{\pageref{classNeb_1_1Actor_1_1raw}}{}
 \item \contentsline{section}{\-Neb\-:\-:\-Message\-:\-:\-Actor\-:\-:\-Base}{\pageref{classNeb_1_1Message_1_1Actor_1_1Base}}{}
 \begin{DoxyCompactList}
 \item \contentsline{section}{\-Neb\-:\-:\-Message\-:\-:\-Actor\-:\-:\-Control\-:\-:\-Rigid\-Body\-:\-:\-Create}{\pageref{classNeb_1_1Message_1_1Actor_1_1Control_1_1RigidBody_1_1Create}}{}
@@ -221,7 +226,11 @@
 \end{DoxyCompactList}
 \item \contentsline{section}{\-Neb\-:\-:uniform\-\_\-name}{\pageref{structNeb_1_1uniform__name}}{}
 \item \contentsline{section}{\-Neb\-:\-:unique\-\_\-ptr$<$ \-T $>$}{\pageref{classNeb_1_1unique__ptr}}{}
-\item \contentsline{section}{glutpp\-:\-:network\-:\-:actor\-:\-:update}{\pageref{structglutpp_1_1network_1_1actor_1_1update}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Message\-:\-:\-Actor\-:\-:\-Update}{\pageref{structNeb_1_1Message_1_1Actor_1_1Update}}{}
+\begin{DoxyCompactList}
+\item \contentsline{section}{\-Neb\-:\-:\-Message\-:\-:\-Actor\-:\-:\-I\-Update}{\pageref{structNeb_1_1Message_1_1Actor_1_1IUpdate}}{}
+\item \contentsline{section}{\-Neb\-:\-:\-Message\-:\-:\-Actor\-:\-:\-O\-Update}{\pageref{structNeb_1_1Message_1_1Actor_1_1OUpdate}}{}
+\end{DoxyCompactList}
 \item \contentsline{section}{neb\-:\-:user}{\pageref{classneb_1_1user}}{}
 \item \contentsline{section}{glutpp\-:\-:vao}{\pageref{classglutpp_1_1vao}}{}
 \item \contentsline{section}{gal\-:\-:network\-:\-:vector$<$ \-T $>$}{\pageref{structgal_1_1network_1_1vector}}{}

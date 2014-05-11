@@ -103,7 +103,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a>  </div>
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">Neb::Shape::shape Class Reference</div>  </div>
 </div><!--header-->
@@ -120,7 +121,7 @@ Collaboration diagram for Neb::Shape::shape:</div>
 <div class="dyncontent">
 <div class="center"><img src="classNeb_1_1Shape_1_1shape__coll__graph.png" border="0" usemap="#Neb_1_1Shape_1_1shape_coll__map" alt="Collaboration graph"/></div>
 <map name="Neb_1_1Shape_1_1shape_coll__map" id="Neb_1_1Shape_1_1shape_coll__map">
-<area shape="rect" id="node2" href="classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="564,45,697,75"/><area shape="rect" id="node4" href="classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="291,5,411,35"/><area shape="rect" id="node6" href="classNeb_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="304,59,397,88"/><area shape="rect" id="node8" href="classgal_1_1flag.html" title="gal::flag" alt="" coords="597,99,664,128"/><area shape="rect" id="node10" href="classNeb_1_1mesh.html" title="Neb::mesh" alt="" coords="588,152,673,181"/><area shape="rect" id="node12" href="structNeb_1_1vertex.html" title="Neb::vertex" alt="" coords="305,125,396,155"/><area shape="rect" id="node14" href="structNeb_1_1file__header.html" title="Neb::file_header" alt="" coords="292,179,409,208"/><area shape="rect" id="node16" href="classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::light::light \&gt;" alt="" coords="536,205,725,235"/><area shape="rect" id="node18" href="classNeb_1_1material_1_1material.html" title="Neb::material::material" alt="" coords="553,259,708,288"/><area shape="rect" id="node20" href="structNeb_1_1material_1_1raw.html" title="Neb::material::raw" alt="" coords="287,259,415,288"/><area shape="rect" id="node22" href="classNeb_1_1Color_1_1color.html" title="Neb::Color::color\&lt; float \&gt;" alt="" coords="5,259,176,288"/><area shape="rect" id="node24" href="classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Shape::shape \&gt;" alt="" coords="524,312,737,341"/><area shape="rect" id="node26" href="classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Raw \&gt;" alt="" coords="548,365,713,395"/></map>
+<area shape="rect" id="node2" href="classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="639,71,772,100"/><area shape="rect" id="node4" href="classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="333,5,453,35"/><area shape="rect" id="node6" href="classNeb_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="347,59,440,88"/><area shape="rect" id="node8" href="classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Shape::shape \&gt;" alt="" coords="287,112,500,141"/><area shape="rect" id="node10" href="classgal_1_1flag.html" title="gal::flag" alt="" coords="672,137,739,167"/><area shape="rect" id="node12" href="classNeb_1_1mesh.html" title="Neb::mesh" alt="" coords="663,191,748,220"/><area shape="rect" id="node14" href="structNeb_1_1vertex.html" title="Neb::vertex" alt="" coords="348,165,439,195"/><area shape="rect" id="node16" href="structNeb_1_1file__header.html" title="Neb::file_header" alt="" coords="335,219,452,248"/><area shape="rect" id="node18" href="classNeb_1_1material_1_1material.html" title="Neb::material::material" alt="" coords="628,244,783,273"/><area shape="rect" id="node20" href="structNeb_1_1material_1_1raw.html" title="Neb::material::raw" alt="" coords="329,272,457,301"/><area shape="rect" id="node22" href="classNeb_1_1Color_1_1color.html" title="Neb::Color::color\&lt; float \&gt;" alt="" coords="5,272,176,301"/><area shape="rect" id="node24" href="classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Light::light \&gt;" alt="" coords="608,297,803,327"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classNeb_1_1Shape_1_1shape-members.html">List of all members.</a></p>
@@ -136,10 +137,10 @@ typedef std::map<br class="typebreak"/>
 *, buffer_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map_t</b></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab541b376a9dc6c86368b0374efa72247"></a><!-- doxytag: member="Neb::Shape::shape::shape" ref="ab541b376a9dc6c86368b0374efa72247" args="(Neb::weak_ptr&lt; Neb::Shape::parent &gt; parent)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>shape</b> (<a class="el" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr</a>&lt; <a class="el" href="classNeb_1_1Shape_1_1parent.html">Neb::Shape::parent</a> &gt; <a class="el" href="classNeb_1_1Shape_1_1parent.html">parent</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2547b328a70cdf62f5ad2b0331ccb1a"></a><!-- doxytag: member="Neb::Shape::shape::shape" ref="ad2547b328a70cdf62f5ad2b0331ccb1a" args="(Neb::Shape::parent_w parent)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><b>shape</b> (Neb::Shape::parent_w <a class="el" href="classNeb_1_1Shape_1_1parent.html">parent</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af467bc3c9286f1d10114480c9d5d0db0"></a><!-- doxytag: member="Neb::Shape::shape::init" ref="af467bc3c9286f1d10114480c9d5d0db0" args="(Neb::Shape::desc_w desc)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (<a class="el" href="classNeb_1_1weak__ptr.html">Neb::Shape::desc_w</a> <a class="el" href="classNeb_1_1Shape_1_1desc.html">desc</a>)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (Neb::Shape::desc_w <a class="el" href="classNeb_1_1Shape_1_1desc.html">desc</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7a6106b9e5901d903b527b171cf8800"></a><!-- doxytag: member="Neb::Shape::shape::createMesh" ref="aa7a6106b9e5901d903b527b171cf8800" args="()=0" -->
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>createMesh</b> ()=0</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada83179ec6b4f3737a6e5ef2eb29564d"></a><!-- doxytag: member="Neb::Shape::shape::release" ref="ada83179ec6b4f3737a6e5ef2eb29564d" args="()" -->
@@ -155,8 +156,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>notify_foundation_cha
 physx::PxTransform&#160;</td><td class="memItemRight" valign="bottom"><b>getPose</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2ea5bcbb4c82d19e5ca13ac5c40fb19"></a><!-- doxytag: member="Neb::Shape::shape::getPoseGlobal" ref="ad2ea5bcbb4c82d19e5ca13ac5c40fb19" args="()" -->
 physx::PxTransform&#160;</td><td class="memItemRight" valign="bottom"><b>getPoseGlobal</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08849b8b742ef42de207091ff9598521"></a><!-- doxytag: member="Neb::Shape::shape::getParent" ref="a08849b8b742ef42de207091ff9598521" args="()" -->
-<a class="el" href="classNeb_1_1weak__ptr.html">Neb::Shape::parent_w</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getParent</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abbb47b5c40f81653d206e7dd991a18dd"></a><!-- doxytag: member="Neb::Shape::shape::getParent" ref="abbb47b5c40f81653d206e7dd991a18dd" args="()" -->
+Neb::Shape::parent_s&#160;</td><td class="memItemRight" valign="bottom"><b>getParent</b> ()</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Rendering @{</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1ab9b88edbd6fd0e03591ff75036abb"></a><!-- doxytag: member="Neb::Shape::shape::load_lights" ref="ad1ab9b88edbd6fd0e03591ff75036abb" args="(int &amp;i, physx::PxMat44 space)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>load_lights</b> (int &amp;i, physx::PxMat44 space)</td></tr>
@@ -173,23 +174,11 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_elements
 void&#160;</td><td class="memItemRight" valign="bottom"><b>i</b> (int ni)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31fe7d23c1f300a3b84ddb10852cc348"></a><!-- doxytag: member="Neb::Shape::shape::i" ref="a31fe7d23c1f300a3b84ddb10852cc348" args="()" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>i</b> ()</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Flag</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a593ed3f10407d4f22fef000d7df6f508"></a><!-- doxytag: member="Neb::Shape::shape::f" ref="a593ed3f10407d4f22fef000d7df6f508" args="()" -->
-gal::flag::flag_type&#160;</td><td class="memItemRight" valign="bottom"><b>f</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d7dfc5f91260f5a5227ef824ae38e7f"></a><!-- doxytag: member="Neb::Shape::shape::f" ref="a4d7dfc5f91260f5a5227ef824ae38e7f" args="(unsigned int flag)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>f</b> (unsigned int <a class="el" href="structNeb_1_1Shape_1_1flag.html">flag</a>)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ea8904ea7cb02b3580586d23ef65736"></a><!-- doxytag: member="Neb::Shape::shape::i_" ref="a4ea8904ea7cb02b3580586d23ef65736" args="" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Shape_1_1shape.html#a4ea8904ea7cb02b3580586d23ef65736">i_</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">ID. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a106c15be1906384e872874a999c1a773"></a><!-- doxytag: member="Neb::Shape::shape::raw_" ref="a106c15be1906384e872874a999c1a773" args="" -->
-<a class="el" href="classNeb_1_1unique__ptr.html">Neb::Shape::Raw_u</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Shape_1_1shape.html#a106c15be1906384e872874a999c1a773">raw_</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classNeb_1_1Shape_1_1Raw.html">Raw</a> data. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3070b9f1cecd871b3bf0febbef8de711"></a><!-- doxytag: member="Neb::Shape::shape::lights_" ref="a3070b9f1cecd871b3bf0febbef8de711" args="" -->
-<a class="el" href="classNeb_1_1Map.html">Neb::Map</a>&lt; <a class="el" href="classNeb_1_1light_1_1light.html">Neb::light::light</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lights_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a880326855a69925260706d175a1ccccc"></a><!-- doxytag: member="Neb::Shape::shape::shapes_" ref="a880326855a69925260706d175a1ccccc" args="" -->
-<a class="el" href="classNeb_1_1Map.html">Neb::Map</a>&lt; <a class="el" href="classNeb_1_1Shape_1_1shape.html">Neb::Shape::shape</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>shapes_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a02bd5170774b0217748d01376795e50d"></a><!-- doxytag: member="Neb::Shape::shape::material_front_" ref="a02bd5170774b0217748d01376795e50d" args="" -->
 <a class="el" href="classNeb_1_1material_1_1material.html">Neb::material::material</a>&#160;</td><td class="memItemRight" valign="bottom"><b>material_front_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4ece0a2eed3386efae772a88a53b757"></a><!-- doxytag: member="Neb::Shape::shape::mesh_" ref="af4ece0a2eed3386efae772a88a53b757" args="" -->
@@ -198,9 +187,16 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 map_t&#160;</td><td class="memItemRight" valign="bottom"><b>context_</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adabbb91a4ab1a04ced1972fd64641864"></a><!-- doxytag: member="Neb::Shape::shape::program_" ref="adabbb91a4ab1a04ced1972fd64641864" args="" -->
 Neb::program_name::e&#160;</td><td class="memItemRight" valign="bottom"><b>program_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a039af70afef2476ca5df890c5fdcf8d3"></a><!-- doxytag: member="Neb::Shape::shape::parent_" ref="a039af70afef2476ca5df890c5fdcf8d3" args="" -->
-boost::weak_ptr<br class="typebreak"/>
-&lt; <a class="el" href="classNeb_1_1Shape_1_1parent.html">Neb::Shape::parent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>parent_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10c47c6099da789d8a6665ef774c9e75"></a><!-- doxytag: member="Neb::Shape::shape::parent_" ref="a10c47c6099da789d8a6665ef774c9e75" args="" -->
+Neb::Shape::parent_w&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Shape_1_1shape.html#a10c47c6099da789d8a6665ef774c9e75">parent_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parent. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a52665fa7beb0522cc1ded5a61bb5f7"></a><!-- doxytag: member="Neb::Shape::shape::lights_" ref="a9a52665fa7beb0522cc1ded5a61bb5f7" args="" -->
+<a class="el" href="classNeb_1_1Map.html">Neb::Map</a>&lt; <a class="el" href="classNeb_1_1Light_1_1light.html">Neb::Light::light</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lights_</b></td></tr>
+<tr><td colspan="2"><h2><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade9c0431ec637723b0b1e6109b833a9e"></a><!-- doxytag: member="Neb::Shape::shape::raw_" ref="ade9c0431ec637723b0b1e6109b833a9e" args="" -->
+Neb::Shape::Raw_s&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Shape_1_1shape.html#ade9c0431ec637723b0b1e6109b833a9e">raw_</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classNeb_1_1Shape_1_1Raw.html">Raw</a> data. <br/></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/Nebula/shape/<a class="el" href="shape_8hpp_source.html">shape.hpp</a></li>
@@ -224,7 +220,7 @@ boost::weak_ptr<br class="typebreak"/>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:41 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:05 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

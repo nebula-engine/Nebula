@@ -19,9 +19,11 @@
 */
 
 #include <Nebula/Types.hpp>
+#include <Nebula/Graphics/Types.hh>
+
 #include <Nebula/shape/raw.hpp>
 #include <Nebula/shape/parent.hpp>
-#include <Nebula/master.hpp>
+//#include <Nebula/master.hpp>
 
 #include <Nebula/Graphics/glsl/program.hpp>
 #include <Nebula/Graphics/Light/light.hpp>

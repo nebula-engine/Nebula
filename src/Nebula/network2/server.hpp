@@ -9,10 +9,11 @@ namespace Neb {
 	namespace network {
 		class server: public gal::network::server {
 			public:
-				server(Neb::app_w, unsigned short, int);
-				void	callback_accept(int);
-
-				Neb::app_w		app_;
+				/** @brief ctor.
+				 * @param port port
+				 */
+				server(unsigned short port, int);
+				void		callback_accept(int);
 		};
 	}
 }

@@ -8,10 +8,12 @@ namespace Neb {
 
 	class simulation_callback;
 
-	class app;
-	class master;
 
-	typedef Neb::weak_ptr<app>	app_w;
+	class App;
+	
+	typedef std::shared_ptr<App>		App_s;
+	typedef std::weak_ptr<App>		App_w;
+	typedef std::unique_ptr<App>		App_u;
 
 
 

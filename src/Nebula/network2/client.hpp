@@ -9,7 +9,7 @@ namespace Neb {
 	namespace network {
 		class client: virtual public Neb::network::communicating, virtual public gal::network::client {
 			public:
-				client(Neb::app_w, char const *, unsigned short);
+				client(char const *, unsigned short);
 				void	process(gal::network::message_s);
 
 		};

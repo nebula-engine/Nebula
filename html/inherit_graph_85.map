@@ -1,29 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="223,299,289,328"/>
-<area shape="rect" id="node3" href="$classNeb_1_1Actor_1_1Base.html" title="Base" alt="" coords="407,139,529,168"/>
-<area shape="rect" id="node19" href="$classNeb_1_1app.html" title="Neb::app" alt="" coords="431,459,505,488"/>
-<area shape="rect" id="node21" href="$classNeb_1_1light_1_1light.html" title="Neb::light::light" alt="" coords="413,299,523,328"/>
-<area shape="rect" id="node23" href="$classNeb_1_1master.html" title="Neb::master" alt="" coords="421,352,515,381"/>
-<area shape="rect" id="node25" href="$classNeb_1_1Scene_1_1scene.html" title="Neb::Scene::scene" alt="" coords="401,192,535,221"/>
-<area shape="rect" id="node27" href="$classNeb_1_1Shape_1_1shape.html" title="Neb::Shape::shape" alt="" coords="401,245,535,275"/>
-<area shape="rect" id="node37" href="$classNeb_1_1window_1_1window.html" title="Neb::window::window" alt="" coords="393,405,543,435"/>
-<area shape="rect" id="node5" href="$classNeb_1_1Actor_1_1Actor.html" title="Neb::Actor::Actor" alt="" coords="631,32,753,61"/>
-<area shape="rect" id="node15" href="$classNeb_1_1Actor_1_1Controller.html" title="Neb::Actor::Controller" alt="" coords="617,85,767,115"/>
-<area shape="rect" id="node17" href="$classNeb_1_1Actor_1_1empty.html" title="Neb::Actor::empty" alt="" coords="628,139,756,168"/>
-<area shape="rect" id="node7" href="$classNeb_1_1Actor_1_1RigidActor.html" title="Neb::Actor::RigidActor" alt="" coords="835,32,989,61"/>
-<area shape="rect" id="node9" href="$classNeb_1_1Actor_1_1Rigid__Static.html" title="Neb::Actor::Rigid_Static" alt="" coords="1067,5,1229,35"/>
-<area shape="rect" id="node11" href="$classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html" title="Neb::Actor::RigidBody::RigidBody" alt="" coords="1037,59,1259,88"/>
-<area shape="rect" id="node13" href="$classNeb_1_1Actor_1_1Rigid__Dynamic.html" title="Neb::Actor::Rigid_Dynamic" alt="" coords="1308,59,1489,88"/>
-<area shape="rect" id="node29" href="$classNeb_1_1Shape_1_1Box_1_1Box.html" title="Neb::Shape::Box::Box" alt="" coords="616,245,768,275"/>
-<area shape="rect" id="node31" href="$classNeb_1_1Shape_1_1Empty_1_1Empty.html" title="Neb::Shape::Empty::Empty" alt="" coords="601,299,783,328"/>
-<area shape="rect" id="node33" href="$classNeb_1_1Shape_1_1Physical.html" title="Neb::Shape::Physical" alt="" coords="617,352,767,381"/>
-<area shape="rect" id="node35" href="$classNeb_1_1Shape_1_1Sphere_1_1Sphere.html" title="Neb::Shape::Sphere::Sphere" alt="" coords="597,192,787,221"/>
-<area shape="rect" id="node38" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="5,245,125,275"/>
-<area shape="rect" id="node40" href="$classNeb_1_1Actor_1_1parent.html" title="abstract class for parent of an " alt="" coords="192,192,320,221"/>
-<area shape="rect" id="node44" href="$classNeb_1_1Scene_1_1Util_1_1Parent.html" title="Neb::Scene::Util::Parent" alt="" coords="173,352,339,381"/>
-<area shape="rect" id="node46" href="$classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="189,245,323,275"/>
-<area shape="rect" id="node49" href="$classNeb_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="19,352,112,381"/>
-<area shape="rect" id="node51" href="$classgal_1_1network_1_1message.html" title="message" alt="" coords="179,512,333,541"/>
-<area shape="rect" id="node53" href="$classgal_1_1network_1_1imessage.html" title="gal::network::imessage" alt="" coords="389,565,547,595"/>
-<area shape="rect" id="node55" href="$classgal_1_1network_1_1omessage.html" title="gal::network::omessage" alt="" coords="388,512,548,541"/>
+<area shape="rect" id="node1" href="$classNeb_1_1Typed.html" title="Typed." alt="" coords="5,59,96,88"/>
+<area shape="rect" id="node3" href="$classNeb_1_1Message_1_1Actor_1_1Base.html" title="Neb::Message::Actor::Base" alt="" coords="144,59,328,88"/>
+<area shape="rect" id="node5" href="$classNeb_1_1Message_1_1Actor_1_1Control_1_1RigidBody_1_1Create.html" title="Create." alt="" coords="379,5,688,35"/>
+<area shape="rect" id="node7" href="$classNeb_1_1Message_1_1Actor_1_1Control_1_1RigidBody_1_1Update.html" title="Update." alt="" coords="376,59,691,88"/>
+<area shape="rect" id="node9" href="$classNeb_1_1Message_1_1Actor_1_1Event.html" title="Event" alt="" coords="440,112,627,141"/>
 </map>

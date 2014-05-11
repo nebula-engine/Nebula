@@ -12,9 +12,9 @@
 #include <math/mat44.hpp>
 */
 
-#include <Nebula/config.hpp> //<gru/config.hpp.in>
+#include <Nebula/Types.hpp> //<gru/config.hpp.in>
 //#include <Nebula/camera_control.hpp>
-#include <Nebula/master.hpp>
+//#include <Nebula/master.hpp>
 #include <Nebula/Graphics/glsl/program.hpp>
 
 namespace Neb {
@@ -26,11 +26,7 @@ namespace Neb {
 					/** @brief Constructor */
 					Base() {}
 					/** @brief Load view matrix into GLSL. */
-					void				load() {
-						auto p = Neb::master::global()->get_program(Neb::program_name::e::LIGHT);
-						
-						p->get_uniform_scalar("view")->load(view());
-					}
+					void				load();
 					/** @brief Get view matrix. */
 					virtual physx::PxMat44	view() = 0;
 					/** @brief Step.

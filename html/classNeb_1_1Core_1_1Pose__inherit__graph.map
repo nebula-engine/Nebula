@@ -3,7 +3,7 @@
 <area shape="rect" id="node23" href="$classNeb_1_1Scene_1_1Util_1_1Parent.html" title="Neb::Scene::Util::Parent" alt="" coords="173,165,339,195"/>
 <area shape="rect" id="node25" href="$classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape" alt="" coords="189,219,323,248"/>
 <area shape="rect" id="node5" href="$classNeb_1_1Actor_1_1Base.html" title="Base" alt="" coords="393,125,516,155"/>
-<area shape="rect" id="node21" href="$classNeb_1_1Scene_1_1scene.html" title="Neb::Scene::scene" alt="" coords="388,72,521,101"/>
+<area shape="rect" id="node21" href="$classNeb_1_1Scene_1_1Base.html" title="Neb::Scene::Base" alt="" coords="391,72,519,101"/>
 <area shape="rect" id="node7" href="$classNeb_1_1Actor_1_1Actor.html" title="Neb::Actor::Actor" alt="" coords="604,32,727,61"/>
 <area shape="rect" id="node17" href="$classNeb_1_1Actor_1_1Controller.html" title="Neb::Actor::Controller" alt="" coords="591,85,740,115"/>
 <area shape="rect" id="node19" href="$classNeb_1_1Actor_1_1empty.html" title="Neb::Actor::empty" alt="" coords="601,139,729,168"/>

@@ -20,16 +20,16 @@ namespace Neb {
 		public:
 			typedef std::weak_ptr< Neb::Factory<T> >		factory_weak;
 			typedef std::shared_ptr<T>				shared;
-			/** @name Constructors @{ */
-			WrapperTyped(factory_weak factory): factory_(factory) {}
+			/** */
+			WrapperTyped(factory_weak factory): factory_(factory) {
+			}
+			/** */
 			WrapperTyped(factory_weak factory, shared s): factory_(factory) {
 				ptr_ = s;
 			}
-			/** @} */
 			/** @brief Destructor */
 			virtual ~WrapperTyped() {}
-			/** @brief Serialize */
-			
+			/** @brief %Load */
 			template<class Archive> void		load(Archive & ar, unsigned int const & version) {
 				// get the code
 				long int hash_code;
@@ -45,10 +45,12 @@ namespace Neb {
 				// read objcet data
 				ar >> boost::serialization::make_nvp("object", *ptr_);
 			}
+			/** @brief %Save */
 			template<class Archive> void		save(Archive & ar, unsigned int const & version) const {
 				ar << boost::serialization::make_nvp("hash_code", ptr_->hash_code());
 				ar << boost::serialization::make_nvp("object", *ptr_);
 			}
+			/** */
 			void		load(boost::archive::xml_iarchive & ar, unsigned int const & version) {
 				// get the code
 				std::string name;
@@ -65,12 +67,12 @@ namespace Neb {
 				// read objcet data
 				ar >> boost::serialization::make_nvp("object", *ptr_);
 			}
+			/** */
 			void		save(boost::archive::xml_oarchive & ar, unsigned int const & version) const {
 				std::string name = Neb::Typed::to_string(ptr_->hash_code());
 				ar << boost::serialization::make_nvp("name", name);
 				ar << boost::serialization::make_nvp("object", *ptr_);
 			}
-			
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 		public:
 			/** @brief Pointer */

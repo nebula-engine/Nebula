@@ -112,7 +112,7 @@ Collaboration diagram for Neb::Shape::desc:</div>
 <div class="dyncontent">
 <div class="center"><img src="classNeb_1_1Shape_1_1desc__coll__graph.png" border="0" usemap="#Neb_1_1Shape_1_1desc_coll__map" alt="Collaboration graph"/></div>
 <map name="Neb_1_1Shape_1_1desc_coll__map" id="Neb_1_1Shape_1_1desc_coll__map">
-<area shape="rect" id="node2" href="classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt; Shape::Raw \&gt;" alt="" coords="5,101,240,131"/><area shape="rect" id="node4" href="classNeb_1_1unique__ptr.html" title="Neb::unique_ptr\&lt; Shape::Raw \&gt;" alt="" coords="17,5,228,35"/></map>
+<area shape="rect" id="node2" href="classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt; Neb::Shape::Raw \&gt;" alt="" coords="5,5,272,35"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classNeb_1_1Shape_1_1desc-members.html">List of all members.</a></p>
@@ -124,17 +124,18 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memTemplParams" colspan="2"><a class="anchor" id="a88bfba50969272baa492ffe519f39b8d"></a><!-- doxytag: member="Neb::Shape::desc::serialize" ref="a88bfba50969272baa492ffe519f39b8d" args="(Archive &amp;ar, unsigned int const &amp;version)" -->
 template&lt;class Archive &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialize</b> (Archive &amp;ar, unsigned int const &amp;version)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classNeb_1_1Shape_1_1desc.html">Neb::Shape::desc</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Shape_1_1desc.html#a8356295ceee1f17dd24afbdb455dd206">operator&lt;&lt;</a> (<a class="el" href="classNeb_1_1weak__ptr.html">Neb::Shape::shape_w</a> const &amp;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classNeb_1_1Shape_1_1desc.html">Neb::Shape::desc</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeb_1_1Shape_1_1desc.html#a8356295ceee1f17dd24afbdb455dd206">operator&lt;&lt;</a> (Neb::Shape::shape_w const &amp;)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ac7cca23b2ca99d9d33df36f4c11446"></a><!-- doxytag: member="Neb::Shape::desc::i_" ref="a9ac7cca23b2ca99d9d33df36f4c11446" args="" -->
 int&#160;</td><td class="memItemRight" valign="bottom"><b>i_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae236fe4a7ea57f98374c6458d026eed6"></a><!-- doxytag: member="Neb::Shape::desc::raw_wrapper_" ref="ae236fe4a7ea57f98374c6458d026eed6" args="" -->
-<a class="el" href="classNeb_1_1WrapperTyped.html">Neb::WrapperTyped</a>&lt; <a class="el" href="classNeb_1_1Shape_1_1Raw.html">Shape::Raw</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>raw_wrapper_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c5ac10514e73c2e4a2ad883f94a2751"></a><!-- doxytag: member="Neb::Shape::desc::shapes_" ref="a1c5ac10514e73c2e4a2ad883f94a2751" args="" -->
-std::vector&lt; <a class="el" href="classNeb_1_1unique__ptr.html">Neb::Shape::desc_u</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>shapes_</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3486971286d6dda3374f42d6011b287b"></a><!-- doxytag: member="Neb::Shape::desc::lights_" ref="a3486971286d6dda3374f42d6011b287b" args="" -->
-std::vector&lt; <a class="el" href="classNeb_1_1unique__ptr.html">Neb::light::desc_u</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lights_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a668f2501e228d50e4dd074b50bc2d69a"></a><!-- doxytag: member="Neb::Shape::desc::raw_wrapper_" ref="a668f2501e228d50e4dd074b50bc2d69a" args="" -->
+<a class="el" href="classNeb_1_1WrapperTyped.html">Neb::WrapperTyped</a><br class="typebreak"/>
+&lt; <a class="el" href="classNeb_1_1Shape_1_1Raw.html">Neb::Shape::Raw</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>raw_wrapper_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7cad48ea37089f40aaee5872b76cf4e7"></a><!-- doxytag: member="Neb::Shape::desc::shapes_" ref="a7cad48ea37089f40aaee5872b76cf4e7" args="" -->
+std::vector&lt; Neb::Shape::desc_s &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>shapes_</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63b88627e82c44a5407b88c781dd8ca3"></a><!-- doxytag: member="Neb::Shape::desc::lights_" ref="a63b88627e82c44a5407b88c781dd8ca3" args="" -->
+std::vector&lt; Neb::Light::desc_s &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lights_</b></td></tr>
 </table>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a8356295ceee1f17dd24afbdb455dd206"></a><!-- doxytag: member="Neb::Shape::desc::operator&lt;&lt;" ref="a8356295ceee1f17dd24afbdb455dd206" args="(Neb::Shape::shape_w const &amp;)" -->
@@ -144,7 +145,7 @@ std::vector&lt; <a class="el" href="classNeb_1_1unique__ptr.html">Neb::light::de
         <tr>
           <td class="memname"><a class="el" href="classNeb_1_1Shape_1_1desc.html">Neb::Shape::desc</a> &amp; Neb::Shape::desc::operator&lt;&lt; </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classNeb_1_1weak__ptr.html">Neb::Shape::shape_w</a> const &amp;&#160;</td>
+          <td class="paramtype">Neb::Shape::shape_w const &amp;&#160;</td>
           <td class="paramname"><em>shape</em></td><td>)</td>
           <td></td>
         </tr>
@@ -157,6 +158,9 @@ std::vector&lt; <a class="el" href="classNeb_1_1unique__ptr.html">Neb::light::de
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/Nebula/shape/<a class="el" href="shape_2desc_8hpp_source.html">desc.hpp</a></li>
+<li>src/Nebula/Actor/Util/desc.cpp</li>
+<li>src/Nebula/Graphics/Light/desc.cpp</li>
+<li>src/Nebula/Scene/desc.cpp</li>
 <li>src/Nebula/shape/desc.cpp</li>
 </ul>
 </div><!-- contents -->
@@ -177,7 +181,7 @@ std::vector&lt; <a class="el" href="classNeb_1_1unique__ptr.html">Neb::light::de
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:41 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:05 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

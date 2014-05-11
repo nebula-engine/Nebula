@@ -46,14 +46,7 @@ namespace gal {
 				bool				decode_header();
 				/// encode header
 				void				encode_header();
-			private:
-				/// data
-				//char				data_[header_length + max_body_length];
-				//char*				head_;
-				/// body length
-				//std::size_t			body_length_;
-
-				// new implementation using stringstream
+			public: //protected:
 				std::stringstream		ss_;
 		};
 		class omessage: public message {

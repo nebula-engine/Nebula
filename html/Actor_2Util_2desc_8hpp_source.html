@@ -91,57 +91,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00009"></a>00009 
 <a name="l00010"></a>00010 <span class="preprocessor">#include &lt;Nebula/master.hpp&gt;</span>
 <a name="l00011"></a>00011 <span class="preprocessor">#include &lt;Nebula/Actor/Util/Type.hpp&gt;</span>
-<a name="l00012"></a>00012 <span class="comment">//#include &lt;Nebula/Actor/Util/id.hpp&gt;</span>
-<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;Nebula/Actor/Util/raw.hpp&gt;</span>
-<a name="l00014"></a>00014 <span class="comment">//#include &lt;Nebula/Actor/raw_factory.hpp&gt;</span>
-<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;Nebula/shape/desc.hpp&gt;</span>
-<a name="l00016"></a>00016 <span class="preprocessor">#include &lt;Nebula/Filter.hpp&gt;</span>
-<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;Nebula/Typed.hpp&gt;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">namespace </span>Neb {
-<a name="l00020"></a>00020         <span class="keyword">namespace </span>Actor {
-<a name="l00021"></a><a class="code" href="classNeb_1_1Actor_1_1desc.html">00021</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1Actor_1_1desc.html">desc</a> {
-<a name="l00022"></a>00022                         <span class="keyword">public</span>:
-<a name="l00023"></a>00023                                 <span class="keyword">friend</span> <span class="keyword">class </span>boost::serialization::access;
-<a name="l00024"></a>00024                                 <a class="code" href="classNeb_1_1Actor_1_1desc.html">desc</a>();
-<a name="l00025"></a>00025                                 <span class="keyword">virtual</span> ~<a class="code" href="classNeb_1_1Actor_1_1desc.html">desc</a>() {}
-<a name="l00026"></a>00026                                 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>                                    serialize(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
-<a name="l00027"></a>00027                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;i&quot;</span>,i_);
-<a name="l00028"></a>00028                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;type&quot;</span>,type_);
-<a name="l00029"></a>00029                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;raw&quot;</span>,raw_wrapper_);
-<a name="l00030"></a>00030                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;actors&quot;</span>,actors_);
-<a name="l00031"></a>00031                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;shapes&quot;</span>,shapes_);
-<a name="l00032"></a>00032                                 }
-<a name="l00033"></a>00033                                 
-<a name="l00034"></a>00034                                 <span class="comment">// make this an archive...</span>
-<a name="l00035"></a>00035                                 <a class="code" href="classNeb_1_1Actor_1_1desc.html">desc</a>&amp;                                                           operator&lt;&lt;(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::Base_w</a> <span class="keyword">const</span> &amp; actor);
-<a name="l00036"></a>00036                                 <span class="keywordtype">void</span>                                                            load(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::Base_w</a> <span class="keyword">const</span> &amp;);
-<a name="l00037"></a>00037                                 <span class="comment">//void                  add_shape(Neb::shape::desc);</span>
-<a name="l00038"></a>00038                                 <a class="code" href="classNeb_1_1Actor_1_1desc.html">desc</a>&amp;                                                           operator=(<a class="code" href="classNeb_1_1Actor_1_1desc.html">desc</a> <span class="keyword">const</span> &amp;);
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040                                 boost::shared_ptr&lt;Neb::Actor::raw&gt;                              getRaw();
-<a name="l00041"></a>00041                         <span class="keyword">public</span>:
-<a name="l00042"></a>00042                                 <span class="keywordtype">int</span>                                                             i_;
-<a name="l00043"></a>00043                                 Neb::Actor::Type                                                type_;
-<a name="l00044"></a>00044                                 <span class="comment">//boost::shared_ptr&lt;Nebula::Actor::raw&gt;                         raw_;</span>
-<a name="l00045"></a>00045                                 <a class="code" href="classNeb_1_1WrapperTyped.html">Neb::WrapperTyped&lt;Neb::Actor::raw&gt;</a>                              raw_wrapper_;
-<a name="l00046"></a>00046                                 std::vector&lt;boost::shared_ptr&lt;Neb::Actor::desc&gt; &gt;               actors_;
-<a name="l00047"></a>00047                                 std::vector&lt;boost::shared_ptr&lt;Neb::Shape::desc&gt; &gt;               shapes_;
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050                 };
-<a name="l00051"></a>00051         }
-<a name="l00052"></a>00052 }
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054 <span class="preprocessor">#endif</span>
-<a name="l00055"></a>00055 <span class="preprocessor"></span>
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 
+<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;Nebula/Actor/Util/raw.hpp&gt;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;Nebula/shape/desc.hpp&gt;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;Nebula/Filter.hpp&gt;</span>
+<a name="l00015"></a>00015 
+<a name="l00019"></a>00019 <span class="comment">/*</span>
+<a name="l00020"></a>00020 <span class="comment">namespace Neb {</span>
+<a name="l00021"></a>00021 <span class="comment">        namespace Actor {</span>
+<a name="l00022"></a>00022 <span class="comment">                / ** @brief desc.</span>
+<a name="l00023"></a>00023 <span class="comment">                 * used solely for the creation of an actor?????</span>
+<a name="l00024"></a>00024 <span class="comment">                 * /</span>
+<a name="l00025"></a>00025 <span class="comment">                class desc {</span>
+<a name="l00026"></a>00026 <span class="comment">                        public:</span>
+<a name="l00027"></a>00027 <span class="comment">                                friend class boost::serialization::access;</span>
+<a name="l00028"></a>00028 <span class="comment">                                desc();</span>
+<a name="l00029"></a>00029 <span class="comment">                                virtual ~desc() {}</span>
+<a name="l00030"></a>00030 <span class="comment">                                template&lt;class Archive&gt; void                                    serialize(Archive &amp; ar, unsigned int const &amp; version) {</span>
+<a name="l00031"></a>00031 <span class="comment">                                        ar &amp; boost::serialization::make_nvp(&quot;i&quot;,i_);</span>
+<a name="l00032"></a>00032 <span class="comment">                                        ar &amp; boost::serialization::make_nvp(&quot;raw&quot;,raw_wrapper_);</span>
+<a name="l00033"></a>00033 <span class="comment">                                        ar &amp; boost::serialization::make_nvp(&quot;actors&quot;,actors_);</span>
+<a name="l00034"></a>00034 <span class="comment">                                        ar &amp; boost::serialization::make_nvp(&quot;shapes&quot;,shapes_);</span>
+<a name="l00035"></a>00035 <span class="comment">                                }</span>
+<a name="l00036"></a>00036 <span class="comment">                                </span>
+<a name="l00037"></a>00037 <span class="comment">                                // make this an archive...</span>
+<a name="l00038"></a>00038 <span class="comment">                                desc&amp;                                                           operator&lt;&lt;(Neb::Actor::Base_w const &amp; actor);</span>
+<a name="l00039"></a>00039 <span class="comment">                                void                                                            load(Neb::Actor::Base_w const &amp;);</span>
+<a name="l00040"></a>00040 <span class="comment">                                //void                  add_shape(Neb::shape::desc);</span>
+<a name="l00041"></a>00041 <span class="comment">                                desc&amp;                                                           operator=(desc const &amp;);</span>
+<a name="l00042"></a>00042 <span class="comment"></span>
+<a name="l00043"></a>00043 <span class="comment">                                boost::shared_ptr&lt;Neb::Actor::raw&gt;                              getRaw();</span>
+<a name="l00044"></a>00044 <span class="comment">                        public:</span>
+<a name="l00045"></a>00045 <span class="comment">                                int                                                     i_;</span>
+<a name="l00046"></a>00046 <span class="comment">                                / ** @brief hash code</span>
+<a name="l00047"></a>00047 <span class="comment">                                 * hash code of the Actor object to be created</span>
+<a name="l00048"></a>00048 <span class="comment">                                 * /</span>
+<a name="l00049"></a>00049 <span class="comment">                                Neb::Typed::hash_type                                   hash_code_;</span>
+<a name="l00050"></a>00050 <span class="comment">                                Neb::WrapperTyped&lt;Neb::Actor::raw&gt;                      raw_wrapper_;</span>
+<a name="l00051"></a>00051 <span class="comment">                                std::vector&lt;Neb::Actor::desc_s&gt;                         actors_;</span>
+<a name="l00052"></a>00052 <span class="comment">                                std::vector&lt;Neb::Shape::desc_s&gt;                         shapes_;</span>
+<a name="l00053"></a>00053 <span class="comment"></span>
+<a name="l00054"></a>00054 <span class="comment"></span>
+<a name="l00055"></a>00055 <span class="comment">                };</span>
+<a name="l00056"></a>00056 <span class="comment">        }</span>
+<a name="l00057"></a>00057 <span class="comment">}</span>
+<a name="l00058"></a>00058 <span class="comment">*/</span>
+<a name="l00059"></a>00059 <span class="preprocessor">#endif</span>
+<a name="l00060"></a>00060 <span class="preprocessor"></span>
 <a name="l00061"></a>00061 
 <a name="l00062"></a>00062 
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -160,7 +162,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:40 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:04 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

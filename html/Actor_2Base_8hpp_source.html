@@ -80,8 +80,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/Nebula/Actor/Base.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__</span>
+<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef __NEBULA_ACTOR_BASE_HPP</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define __NEBULA_ACTOR_BASE_HPP</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00004"></a>00004 <span class="preprocessor">#include &lt;memory&gt;</span>
 <a name="l00005"></a>00005 
@@ -91,132 +91,154 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00009"></a>00009 
 <a name="l00010"></a>00010 <span class="preprocessor">#include &lt;Nebula/config.hpp&gt;</span> <span class="comment">// Nebula/config.hpp.in</span>
 <a name="l00011"></a>00011 <span class="preprocessor">#include &lt;Nebula/Actor/Types.hpp&gt;</span>
-<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;Nebula/Actor/Util/desc.hpp&gt;</span>
-<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;Nebula/Actor/Util/addr.hpp&gt;</span>
+<a name="l00012"></a>00012 <span class="comment">//#include &lt;Nebula/Actor/Util/desc.hpp&gt;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;Nebula/Actor/Util/Address.hpp&gt;</span>
 <a name="l00014"></a>00014 <span class="preprocessor">#include &lt;Nebula/Actor/Util/raw.hpp&gt;</span>
 <a name="l00015"></a>00015 <span class="preprocessor">#include &lt;Nebula/Actor/Util/desc.hpp&gt;</span>
 <a name="l00016"></a>00016 <span class="preprocessor">#include &lt;Nebula/Actor/Util/parent.hpp&gt;</span>
-<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;Nebula/Graphics/texture.hpp&gt;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;Nebula/Graphics/material.hpp&gt;</span>
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;Nebula/Message/Actor/Update.hpp&gt;</span>
 <a name="l00019"></a>00019 
-<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;Nebula/shape/shape.hpp&gt;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;Nebula/shape/parent.hpp&gt;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;Nebula/Graphics/texture.hpp&gt;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;Nebula/Graphics/material.hpp&gt;</span>
 <a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;Nebula/Actor/Util/raw.hpp&gt;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;Nebula/Util/weak_function.hpp&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;Nebula/shape/shape.hpp&gt;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;Nebula/shape/parent.hpp&gt;</span>
 <a name="l00025"></a>00025 
-<a name="l00026"></a>00026 <span class="keyword">namespace </span>Neb {
-<a name="l00027"></a>00027         <span class="keyword">namespace </span>Actor {
-<a name="l00029"></a><a class="code" href="classNeb_1_1Actor_1_1Base.html">00029</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1Actor_1_1Base.html" title="Base">Base</a>: <span class="keyword">virtual</span> <span class="keyword">public</span> Neb::<a class="code" href="classNeb_1_1Actor_1_1Actor.html">Actor</a>::<a class="code" href="classNeb_1_1Actor_1_1parent.html" title="abstract class for parent of an ">parent</a>, <span class="keyword">virtual</span> <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Actor_1_1parent.html" title="abstract class for parent of an ">parent</a>, <span class="keyword">public</span> gal::<a class="code" href="structNeb_1_1Actor_1_1Base_1_1flag.html">flag</a> {
-<a name="l00030"></a>00030                         <span class="keyword">public</span>:
-<a name="l00031"></a><a class="code" href="structNeb_1_1Actor_1_1Base_1_1flag.html">00031</a>                                 <span class="keyword">struct </span><a class="code" href="structNeb_1_1Actor_1_1Base_1_1flag.html">flag</a> {
-<a name="l00032"></a>00032                                         <span class="keyword">enum</span> e {
-<a name="l00033"></a>00033                                                 SHOULD_RELEASE  = 1 &lt;&lt; 0,
-<a name="l00034"></a>00034                                                 SHOULD_UPDATE   = 1 &lt;&lt; 1,
-<a name="l00035"></a>00035                                                 DESTRUCTIBLE    = 1 &lt;&lt; 2,
-<a name="l00036"></a>00036                                         };
-<a name="l00037"></a>00037                                 };
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039                                 <a class="code" href="classNeb_1_1Actor_1_1Base.html" title="Base">Base</a>(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::parent_w</a>);
-<a name="l00040"></a>00040                                 <span class="keyword">virtual</span> ~<a class="code" href="classNeb_1_1Actor_1_1Base.html" title="Base">Base</a>();
+<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;Nebula/Actor/Util/raw.hpp&gt;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;Nebula/Util/weak_function.hpp&gt;</span>
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 <span class="keyword">namespace </span>Neb {
+<a name="l00030"></a>00030         <span class="keyword">namespace </span>Actor {
+<a name="l00032"></a><a class="code" href="classNeb_1_1Actor_1_1Base.html">00032</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1Actor_1_1Base.html" title="Base">Base</a>: <span class="keyword">virtual</span> <span class="keyword">public</span> Neb::<a class="code" href="classNeb_1_1Actor_1_1Actor.html">Actor</a>::<a class="code" href="classNeb_1_1Actor_1_1parent.html" title="abstract class for parent of an ">parent</a>, <span class="keyword">virtual</span> <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Actor_1_1parent.html" title="abstract class for parent of an ">parent</a>, <span class="keyword">public</span> gal::<a class="code" href="structNeb_1_1Actor_1_1Base_1_1flag.html">flag</a> {
+<a name="l00033"></a>00033                         <span class="keyword">public</span>:
+<a name="l00034"></a><a class="code" href="structNeb_1_1Actor_1_1Base_1_1flag.html">00034</a>                                 <span class="keyword">struct </span><a class="code" href="structNeb_1_1Actor_1_1Base_1_1flag.html">flag</a> {
+<a name="l00035"></a>00035                                         <span class="keyword">enum</span> e {
+<a name="l00036"></a>00036                                                 SHOULD_RELEASE  = 1 &lt;&lt; 0,
+<a name="l00037"></a>00037                                                 SHOULD_UPDATE   = 1 &lt;&lt; 1,
+<a name="l00038"></a>00038                                                 DESTRUCTIBLE    = 1 &lt;&lt; 2,
+<a name="l00039"></a>00039                                         };
+<a name="l00040"></a>00040                                 };
 <a name="l00041"></a>00041 
-<a name="l00042"></a>00042                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                            init(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::desc&gt;</a>);
-<a name="l00043"></a>00043                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                            release();
-<a name="l00044"></a>00044                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                            cleanup();
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047                                 <span class="keywordtype">void</span>                                    i(<span class="keywordtype">int</span> ni);
-<a name="l00048"></a>00048                                 <span class="keywordtype">int</span>                                     i() <span class="keyword">const</span>;
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                            f() <span class="keyword">const</span>;
-<a name="l00051"></a>00051                                 <span class="keywordtype">void</span>                                    f(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structNeb_1_1Actor_1_1Base_1_1flag.html">flag</a>);
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053                         <span class="keyword">private</span>:
-<a name="l00054"></a>00054                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::Base_w</a>                      create_actor(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::desc&gt;</a>);
-<a name="l00055"></a>00055                         <span class="keyword">public</span>:
-<a name="l00056"></a>00056                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::Base_w</a>                      create_actor_local(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::desc&gt;</a>);
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::Base_w</a>                      create_actor_remote(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::addr&gt;</a>, <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::desc&gt;</a>);
+<a name="l00042"></a>00042                                 <a class="code" href="classNeb_1_1Actor_1_1Base.html" title="Base">Base</a>(Neb::Actor::parent_w);
+<a name="l00043"></a>00043                                 <span class="keyword">virtual</span> ~<a class="code" href="classNeb_1_1Actor_1_1Base.html" title="Base">Base</a>();
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045                                 <span class="comment">//virtual void                          init(Neb::weak_ptr&lt;Neb::Actor::desc&gt;);</span>
+<a name="l00046"></a>00046                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                            release();
+<a name="l00047"></a>00047                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                            cleanup();
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049                                 <span class="keywordtype">void</span>                                    i(<span class="keywordtype">int</span> ni);
+<a name="l00050"></a>00050                                 <span class="keywordtype">int</span>                                     i() <span class="keyword">const</span>;
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                            f() <span class="keyword">const</span>;
+<a name="l00053"></a>00053                                 <span class="keywordtype">void</span>                                    f(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structNeb_1_1Actor_1_1Base_1_1flag.html">flag</a>);
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055                         <span class="keyword">private</span>:
+<a name="l00056"></a>00056                                 Neb::Actor::Base_w                      create_actor(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::desc&gt;</a>);
+<a name="l00057"></a>00057                         <span class="keyword">public</span>:
+<a name="l00058"></a>00058                                 Neb::Actor::Base_w                      create_actor_local(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::desc&gt;</a>);
 <a name="l00059"></a>00059 
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061                                 <span class="keywordtype">void</span>                                                    create_shapes(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::desc_w</a>);
-<a name="l00062"></a>00062                                 <span class="keywordtype">void</span>                                                    create_children(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::desc_w</a>);
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                            create_physics() = 0;
-<a name="l00065"></a>00065                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                            init_physics() = 0;
-<a name="l00066"></a>00066                                 
-<a name="l00068"></a>00068                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::app&gt;</a>                                 get_app();
-<a name="l00069"></a>00069                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Scene::scene&gt;</a>                        get_scene();
-<a name="l00070"></a>00070                                 <span class="keyword">virtual</span> physx::PxTransform                              getPose();
-<a name="l00071"></a>00071                                 <span class="keyword">virtual</span> physx::PxTransform                              getPoseGlobal();
+<a name="l00060"></a>00060                                 Neb::Actor::Base_w                      create_actor_remote(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::addr&gt;</a>, <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::desc&gt;</a>);
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063                                 <span class="comment">//void                                                  create_shapes(Neb::Actor::desc_w);</span>
+<a name="l00064"></a>00064                                 <span class="comment">//void                                                  create_children(Neb::Actor::desc_w);</span>
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                            create_physics() = 0;
+<a name="l00067"></a>00067                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                            init_physics() = 0;
+<a name="l00068"></a>00068 
+<a name="l00070"></a>00070                                 <span class="comment">//Neb::app_s                                            get_app();</span>
+<a name="l00071"></a>00071                                 Neb::Scene::Base_s                                      get_scene();
 <a name="l00072"></a>00072                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::Base&gt;</a>                         get_actor(<span class="keywordtype">int</span>);
-<a name="l00078"></a>00078                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::Base&gt;</a>                 get_actor(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::addr&gt;</a> <a class="code" href="classNeb_1_1Actor_1_1addr.html">addr</a>);
-<a name="l00079"></a>00079                                 <span class="keyword">virtual</span> <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::desc&gt;</a>         get_projectile();
-<a name="l00083"></a>00083                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                            hit();
-<a name="l00084"></a>00084                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                            damage(<span class="keywordtype">float</span>);
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087                                 <span class="comment">// signal</span>
-<a name="l00088"></a>00088                                 <span class="keywordtype">void</span>                            connect(Neb::window::window_w);
-<a name="l00089"></a>00089 
+<a name="l00078"></a>00078                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::Base&gt;</a>                         get_actor(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::addr&gt;</a> addr);
+<a name="l00079"></a>00079                                 <span class="comment">//virtual Neb::Actor::Base_s                            get_projectile();</span>
+<a name="l00080"></a>00080                                 <a class="code" href="classNeb_1_1Actor_1_1Util_1_1Address.html">Neb::Actor::Util::Address</a>                               getAddress() <span class="keyword">const</span>;
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083                                 <span class="keyword">virtual</span> physx::PxTransform                              getPose();
+<a name="l00084"></a>00084                                 <span class="keyword">virtual</span> physx::PxTransform                              getPoseGlobal();
+<a name="l00088"></a>00088                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                            hit();
+<a name="l00089"></a>00089                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                            damage(<span class="keywordtype">float</span>);
 <a name="l00090"></a>00090 
-<a name="l00091"></a>00091                                 <span class="keywordtype">int</span>                             key_fun(<span class="keywordtype">int</span>,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>);
-<a name="l00092"></a>00092                                 <span class="keyword">virtual</span> <span class="keywordtype">int</span>                     fire();
-<a name="l00093"></a>00093 
-<a name="l00095"></a>00095                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::Base&gt;</a>                                 isBase();
-<a name="l00096"></a>00096                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::RigidActor&gt;</a>                           isRigidActor();
-<a name="l00097"></a>00097                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::RigidBody::RigidBody&gt;</a>                 isRigidBody();
-<a name="l00098"></a>00098                                 boost::shared_ptr&lt;Neb::Actor::Base&gt;                             sharedBase();
-<a name="l00100"></a>00100                         <span class="keyword">public</span>:
-<a name="l00101"></a>00101                                 Neb::Actor::mode_update::e      mode_update_;
-<a name="l00102"></a>00102 
-<a name="l00103"></a>00103                                 Neb::window::window_w   window_;
-<a name="l00104"></a>00104 
-<a name="l00105"></a>00105                                 <span class="keyword">struct </span>{
-<a name="l00106"></a>00106                                         std::shared_ptr&lt; Neb::weak_function&lt;int,int,int,int,int&gt; &gt;      key_fun_;
-<a name="l00107"></a>00107                                 } conn_;
-<a name="l00108"></a>00108 
-<a name="l00109"></a>00109                         <span class="keyword">public</span>:
-<a name="l00110"></a>00110 
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112 
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092                                 <span class="comment">// signal</span>
+<a name="l00093"></a>00093                                 <span class="keywordtype">void</span>                            connect(Neb::window::window_w);
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096                                 <span class="keywordtype">int</span>                             key_fun(<span class="keywordtype">int</span>,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>);
+<a name="l00097"></a>00097                                 <span class="keyword">virtual</span> <span class="keywordtype">int</span>                     fire();
+<a name="l00098"></a>00098 
+<a name="l00100"></a>00100                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::Base&gt;</a>                                 isBase();
+<a name="l00101"></a>00101                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::RigidActor&gt;</a>                           isRigidActor();
+<a name="l00102"></a>00102                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::RigidBody::RigidBody&gt;</a>                 isRigidBody();
+<a name="l00103"></a>00103                                 boost::shared_ptr&lt;Neb::Actor::Base&gt;                             sharedBase();
+<a name="l00105"></a>00105                         <span class="keyword">public</span>:
+<a name="l00106"></a>00106                                 Neb::Actor::mode_update::e      mode_update_;
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108                                 Neb::window::window_w   window_;
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110                                 <span class="keyword">struct </span>{
+<a name="l00111"></a>00111                                         std::shared_ptr&lt; Neb::weak_function&lt;int,int,int,int,int&gt; &gt;      key_fun_;
+<a name="l00112"></a>00112                                 } conn_;
 <a name="l00113"></a>00113 
-<a name="l00114"></a>00114 
-<a name="l00116"></a>00116                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    step(<span class="keywordtype">double</span> time);
-<a name="l00117"></a>00117                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    step_local(<span class="keywordtype">double</span>);
-<a name="l00118"></a>00118                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    step_remote(<span class="keywordtype">double</span>);
-<a name="l00119"></a>00119 
-<a name="l00120"></a>00120                                 <span class="comment">//virtual void                                  step_local(double);</span>
-<a name="l00121"></a>00121                                 <span class="comment">//virtual void                                  step_remote(double);</span>
-<a name="l00122"></a>00122 
-<a name="l00125"></a>00125                                 <span class="keywordtype">void</span>                                            draw(Neb::window::window_s, physx::PxMat44);
-<a name="l00129"></a>00129                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::parent&gt;</a>               getParent();
-<a name="l00130"></a>00130                                 <span class="keywordtype">void</span>                                            setPose(physx::PxTransform pose);
-<a name="l00133"></a>00133                                 <span class="keywordtype">void</span>                                            notify_foundation_change_pose();
-<a name="l00134"></a>00134                                 <span class="keywordtype">void</span>                                            load_lights(<span class="keywordtype">int</span>&amp;, physx::PxMat44);
-<a name="l00135"></a>00135 
-<a name="l00136"></a>00136 
-<a name="l00137"></a>00137 
-<a name="l00138"></a>00138 
-<a name="l00139"></a>00139                         <span class="keyword">public</span>:
-<a name="l00140"></a>00140                                 <span class="keywordtype">int</span>                                             i_;
-<a name="l00141"></a>00141                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::parent&gt;</a>               parent_;
-<a name="l00142"></a>00142                                 <a class="code" href="classNeb_1_1Map.html">Neb::Map&lt;Neb::Shape::shape&gt;</a>                     shapes_;
-<a name="l00143"></a>00143                                 <a class="code" href="classNeb_1_1Map.html">Neb::Map&lt;Neb::Actor::Base&gt;</a>                      actors_;
-<a name="l00145"></a><a class="code" href="classNeb_1_1Actor_1_1Base.html#aab73170adab56da4b53e40726da05cf0">00145</a>                                 <a class="code" href="classNeb_1_1unique__ptr.html">Neb::unique_ptr&lt;Neb::Actor::raw&gt;</a>                <a class="code" href="classNeb_1_1Actor_1_1Base.html#aab73170adab56da4b53e40726da05cf0" title="Data.">raw_</a>;
-<a name="l00146"></a>00146                 };
-<a name="l00147"></a>00147         }
-<a name="l00148"></a>00148 }
-<a name="l00149"></a>00149 
-<a name="l00150"></a>00150 <span class="preprocessor">#endif</span>
-<a name="l00151"></a>00151 <span class="preprocessor"></span>
-<a name="l00152"></a>00152 
-<a name="l00153"></a>00153 
-<a name="l00154"></a>00154 
-<a name="l00155"></a>00155 
-<a name="l00156"></a>00156 
-<a name="l00157"></a>00157 
-<a name="l00158"></a>00158 
+<a name="l00114"></a>00114                         <span class="keyword">public</span>:
+<a name="l00119"></a><a class="code" href="classNeb_1_1Actor_1_1Base.html#a1b1e7cf679c2cb84e532deed6a2ec90c">00119</a>                                 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt; <span class="keywordtype">void</span>                    <a class="code" href="classNeb_1_1Actor_1_1Base.html#a1b1e7cf679c2cb84e532deed6a2ec90c" title="Serialize">serialize</a>(Archive &amp; ar, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
+<a name="l00120"></a>00120                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;i&quot;</span>, <a class="code" href="classNeb_1_1Actor_1_1Base.html#a037d85da810e1cc39361ea1f25ff7df7" title="ID.">i_</a>);
+<a name="l00121"></a>00121                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;raw&quot;</span>, <a class="code" href="classNeb_1_1Actor_1_1Base.html#a0969dc914ad31bc26686bd9b29cf9885" title="Data. Consider eliminating the raw class entirely (or at least make it a simple data container)...">raw_</a>);
+<a name="l00122"></a>00122                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;actors&quot;</span>, <a class="code" href="classNeb_1_1Actor_1_1Base.html#a37bec6f052f9394c549c3ef3f2604463" title="Actors.">actors_</a>);                         
+<a name="l00123"></a>00123                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;shapes&quot;</span>, <a class="code" href="classNeb_1_1Actor_1_1Base.html#a2f86088b28161b53b2a0a270adc5d7fd" title="Shapes.">shapes_</a>);
+<a name="l00124"></a>00124                                 }
+<a name="l00126"></a><a class="code" href="classNeb_1_1Actor_1_1Base.html#a7ee74ffdae30690b3d874a174e333e7f">00126</a>                                 <span class="keywordtype">void</span>                                            <a class="code" href="classNeb_1_1Actor_1_1Base.html#a1b1e7cf679c2cb84e532deed6a2ec90c" title="Serialize">serialize</a>(
+<a name="l00127"></a>00127                                                 <a class="code" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html">Neb::Message::Actor::OUpdate</a> &amp; ar,
+<a name="l00128"></a>00128                                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
+<a name="l00129"></a>00129                                         <span class="keyword">auto</span> address = getAddress();
+<a name="l00130"></a>00130                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;address&quot;</span>, address);
+<a name="l00131"></a>00131                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;raw&quot;</span>, <a class="code" href="classNeb_1_1Actor_1_1Base.html#a0969dc914ad31bc26686bd9b29cf9885" title="Data. Consider eliminating the raw class entirely (or at least make it a simple data container)...">raw_</a>);
+<a name="l00132"></a>00132                                 }
+<a name="l00134"></a><a class="code" href="classNeb_1_1Actor_1_1Base.html#aedee981b6f4c1123f7cc3d73295cdcbe">00134</a>                                 <span class="keywordtype">void</span>                                            <a class="code" href="classNeb_1_1Actor_1_1Base.html#a1b1e7cf679c2cb84e532deed6a2ec90c" title="Serialize">serialize</a>(
+<a name="l00135"></a>00135                                                 <a class="code" href="structNeb_1_1Message_1_1Actor_1_1IUpdate.html">Neb::Message::Actor::IUpdate</a> &amp; ar,
+<a name="l00136"></a>00136                                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> &amp; version) {
+<a name="l00137"></a>00137                                         <span class="keyword">auto</span> address = getAddress();
+<a name="l00138"></a>00138                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;address&quot;</span>, address);
+<a name="l00139"></a>00139                                         ar &amp; boost::serialization::make_nvp(<span class="stringliteral">&quot;raw&quot;</span>, <a class="code" href="classNeb_1_1Actor_1_1Base.html#a0969dc914ad31bc26686bd9b29cf9885" title="Data. Consider eliminating the raw class entirely (or at least make it a simple data container)...">raw_</a>);
+<a name="l00140"></a>00140                                 }
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143 
+<a name="l00145"></a>00145                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    step(<span class="keywordtype">double</span> time);
+<a name="l00146"></a>00146                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    step_local(<span class="keywordtype">double</span>);
+<a name="l00147"></a>00147                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>                                    step_remote(<span class="keywordtype">double</span>);
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149                                 <span class="comment">//virtual void                                  step_local(double);</span>
+<a name="l00150"></a>00150                                 <span class="comment">//virtual void                                  step_remote(double);</span>
+<a name="l00151"></a>00151 
+<a name="l00154"></a>00154                                 <span class="keywordtype">void</span>                                            draw(Neb::window::window_s, physx::PxMat44);
+<a name="l00158"></a>00158                                 Neb::Actor::parent_s                            getParent();
+<a name="l00159"></a>00159                                 <span class="keywordtype">void</span>                                            setPose(physx::PxTransform pose);
+<a name="l00162"></a>00162                                 <span class="keywordtype">void</span>                                            notify_foundation_change_pose();
+<a name="l00163"></a>00163                                 <span class="keywordtype">void</span>                                            load_lights(<span class="keywordtype">int</span>&amp;, physx::PxMat44);
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165 
+<a name="l00166"></a>00166                         <span class="keyword">public</span>:
+<a name="l00168"></a><a class="code" href="classNeb_1_1Actor_1_1Base.html#a037d85da810e1cc39361ea1f25ff7df7">00168</a>                                 <span class="keywordtype">int</span>                                             <a class="code" href="classNeb_1_1Actor_1_1Base.html#a037d85da810e1cc39361ea1f25ff7df7" title="ID.">i_</a>;
+<a name="l00175"></a><a class="code" href="classNeb_1_1Actor_1_1Base.html#a0969dc914ad31bc26686bd9b29cf9885">00175</a>                                 <a class="code" href="classNeb_1_1Actor_1_1Util_1_1Raw.html">Neb::Actor::Util::Raw</a>                           <a class="code" href="classNeb_1_1Actor_1_1Base.html#a0969dc914ad31bc26686bd9b29cf9885" title="Data. Consider eliminating the raw class entirely (or at least make it a simple data container)...">raw_</a>;
+<a name="l00177"></a><a class="code" href="classNeb_1_1Actor_1_1Base.html#a37bec6f052f9394c549c3ef3f2604463">00177</a>                                 <a class="code" href="classNeb_1_1Map.html">Neb::Map&lt;Neb::Actor::Base&gt;</a>                      <a class="code" href="classNeb_1_1Actor_1_1Base.html#a37bec6f052f9394c549c3ef3f2604463" title="Actors.">actors_</a>;
+<a name="l00179"></a><a class="code" href="classNeb_1_1Actor_1_1Base.html#a2f86088b28161b53b2a0a270adc5d7fd">00179</a>                                 <a class="code" href="classNeb_1_1Map.html">Neb::Map&lt;Neb::Shape::shape&gt;</a>                     <a class="code" href="classNeb_1_1Actor_1_1Base.html#a2f86088b28161b53b2a0a270adc5d7fd" title="Shapes.">shapes_</a>;
+<a name="l00180"></a>00180 
+<a name="l00182"></a><a class="code" href="classNeb_1_1Actor_1_1Base.html#abeafd817e187aea634174d9091bdcc7b">00182</a>                                 Neb::Actor::parent_w                            <a class="code" href="classNeb_1_1Actor_1_1Base.html#abeafd817e187aea634174d9091bdcc7b" title="Parent.">parent_</a>;
+<a name="l00183"></a>00183                 };
+<a name="l00184"></a>00184         }
+<a name="l00185"></a>00185 }
+<a name="l00186"></a>00186 
+<a name="l00187"></a>00187 <span class="preprocessor">#endif</span>
+<a name="l00188"></a>00188 <span class="preprocessor"></span>
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190 
+<a name="l00191"></a>00191 
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -235,7 +257,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:40 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:04 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

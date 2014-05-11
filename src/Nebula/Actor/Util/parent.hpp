@@ -36,10 +36,10 @@ namespace Neb {
 				//virtual physx::PxMat44					getPoseGlobal() = 0;
 				//virtual physx::PxMat44					getPose() = 0;
 
-				Neb::weak_ptr<Neb::Actor::Base>				isActor();
-				Neb::weak_ptr<Neb::Scene::scene>			isScene();
+				Neb::Actor::Base_s			isActor();
+				Neb::Scene::Base_s			isScene();
 				
-				Neb::weak_ptr<Neb::Scene::scene>			getScene();
+				Neb::Scene::Base_s			getScene();
 		};
 	}
 }

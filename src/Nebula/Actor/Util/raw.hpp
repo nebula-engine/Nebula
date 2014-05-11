@@ -22,7 +22,9 @@
 
 namespace Neb {
 	namespace Actor {
-		class raw: public Neb::Typed {
+		namespace Util {
+		/** %brief Simple Data Container */
+		class Raw {
 			public:
 				Raw();
 				Raw&				operator=(Neb::Actor::Base_w const &);
@@ -65,6 +67,7 @@ namespace Neb {
 
 		};
 	}
+}
 }
 #endif
 

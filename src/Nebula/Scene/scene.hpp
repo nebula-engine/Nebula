@@ -11,7 +11,10 @@
 
 #include <Nebula/config.hpp> // Nebula/config.hpp.in
 #include <Nebula/Graphics/glsl/program.hpp>
+
+
 #include <Nebula/Scene/raw.hpp>
+
 #include <Nebula/Actor/Base.hpp>
 #include <Nebula/Graphics/Camera/View/Base.hpp>
 
@@ -21,16 +24,16 @@
 
 namespace Neb {
 	namespace Scene {
-		class scene: virtual public Neb::Actor::parent, public gal::flag {
+		class Base: virtual public Neb::Actor::parent, public gal::flag {
 			public:
 
-				scene(Neb::Scene::Util::Parent_w);
-				virtual ~scene();
+				Base(Neb::Scene::Util::Parent_w);
+				virtual ~Base();
 				void				i(int ni);
 				int				i();
 				gal::flag::flag_type const &		f() const;
 				void					f(unsigned int flag);
-				void				init(Neb::Scene::desc_w desc);
+				//void				init(Neb::Scene::desc_w desc);
 				void				release();
 				physx::PxMat44			get_pose();
 				/** @brief render */
@@ -54,14 +57,13 @@ namespace Neb {
 
 				void						create_physics();
 				/** @name Accessors @{ */
-				Neb::weak_ptr<Neb::app>				get_app();
 				Neb::weak_ptr<Neb::Actor::Base>			get_actor(int i);
 				Neb::weak_ptr<Neb::Actor::Base>			get_actor(Neb::Actor::addr_w);
 				physx::PxTransform				getPose();
 				physx::PxTransform				getPoseGlobal();
 				/** @} */
 
-				void						create_actors(Neb::Scene::desc_w);
+				//void						create_actors(Neb::Scene::desc_w);
 			private:	
 				//_wNeb::Actor::Base>		create_actor(boost::shared_ptr<Neb::Actor::desc>);
 			public:
@@ -91,7 +93,7 @@ namespace Neb {
 
 				virtual void					dumby() {}
 			public:
-				Neb::app_w					app_;
+				Neb::Scene::Util::Parent_w			parent_;
 
 				// timer
 				//gal::timer::timer_set			timer_set_;
@@ -111,9 +113,10 @@ namespace Neb {
 
 			public:
 				int							i_;
-				raw_s							raw_;
+				Neb::Scene::Util::Raw					raw_;
 				
-				Neb::weak_ptr<Neb::renderable>				renderable_;
+
+				Neb::Scene::Util::Parent_w				renderable_;
 
 				Neb::Map<Neb::Actor::Base>				actors_;
 				std::map<std::string, Neb::Actor::Base_s>		actors_deferred_;

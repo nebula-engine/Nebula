@@ -1,0 +1,74 @@
+\hypertarget{classNeb_1_1Initializer}{\section{\-Neb\-:\-:\-Initializer$<$ \-T $>$ \-Class \-Template \-Reference}
+\label{classNeb_1_1Initializer}\index{\-Neb\-::\-Initializer$<$ T $>$@{\-Neb\-::\-Initializer$<$ T $>$}}
+}
+
+
+\hyperlink{classNeb_1_1Initializer}{\-Initializer}. \-Store and use initializer functions. \-Allocate an object with arbitrary alloc function stored in the \hyperlink{classNeb_1_1FuncMap}{\-Func\-Map} and call the object's {\ttfamily init} method with arbitrary arguments.  
+
+
+
+
+{\ttfamily \#include $<$\-Factory.\-hpp$>$}
+
+
+
+\-Inheritance diagram for \-Neb\-:\-:\-Initializer$<$ \-T $>$\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classNeb_1_1Initializer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+\-Collaboration diagram for \-Neb\-:\-:\-Initializer$<$ \-T $>$\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classNeb_1_1Initializer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Initializer_a50e05ce7fe54c798cd00495214bf2df4}{typedef std\-::shared\-\_\-ptr$<$ \-T $>$ {\bfseries shared}}\label{classNeb_1_1Initializer_a50e05ce7fe54c798cd00495214bf2df4}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class... \-Alloc\-Args, class... \-Init\-Args$>$ }\\shared \hyperlink{classNeb_1_1Initializer_aa6c409694511459956b7cfbc27feb8fc}{alloc} (long hash\-\_\-code, std\-::tuple$<$ \-Alloc\-Args...$>$ \&\&allocargs, std\-::tuple$<$ \-Init\-Args...$>$ \&\&initargs)
+\item 
+\hypertarget{classNeb_1_1Initializer_ad30f8a193fa13c284fd20cd516ed0b78}{{\footnotesize template$<$class... \-Alloc\-Args, class... \-Init\-Args, int... \-S\-A, int... \-S\-B$>$ }\\shared {\bfseries call\-Alloc} (long hash\-\_\-code, std\-::tuple$<$ \-Alloc\-Args...$>$ \&\&allocargs, std\-::tuple$<$ \-Init\-Args...$>$ \&\&initargs, seq$<$ \-S\-A...$>$, seq$<$ \-S\-B...$>$)}\label{classNeb_1_1Initializer_ad30f8a193fa13c284fd20cd516ed0b78}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\subsubsection*{template$<$class T$>$class Neb\-::\-Initializer$<$ T $>$}
+
+\hyperlink{classNeb_1_1Initializer}{\-Initializer}. \-Store and use initializer functions. \-Allocate an object with arbitrary alloc function stored in the \hyperlink{classNeb_1_1FuncMap}{\-Func\-Map} and call the object's {\ttfamily init} method with arbitrary arguments. 
+
+\begin{DoxyParagraph}{\-Motivation\-:}
+create an object guaranteeing virtual initialization
+\end{DoxyParagraph}
+\begin{DoxyWarning}{\-Warning}
+{\ttfamily \-T} must have an {\ttfamily init} member with arguments passed to {\ttfamily alloc} which must be accessible from {\ttfamily \hyperlink{classNeb_1_1Initializer}{\-Initializer}} 
+\end{DoxyWarning}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classNeb_1_1Initializer_aa6c409694511459956b7cfbc27feb8fc}{\index{\-Neb\-::\-Initializer@{\-Neb\-::\-Initializer}!alloc@{alloc}}
+\index{alloc@{alloc}!Neb::Initializer@{\-Neb\-::\-Initializer}}
+\subsubsection[{alloc}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ template$<$class... \-Alloc\-Args, class... \-Init\-Args$>$ shared {\bf \-Neb\-::\-Initializer}$<$ \-T $>$\-::{\bf alloc} (
+\begin{DoxyParamCaption}
+\item[{long}]{hash\-\_\-code, }
+\item[{std\-::tuple$<$ \-Alloc\-Args...$>$ \&\&}]{allocargs, }
+\item[{std\-::tuple$<$ \-Init\-Args...$>$ \&\&}]{initargs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classNeb_1_1Initializer_aa6c409694511459956b7cfbc27feb8fc}
+
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/\-Nebula/\-Util/\-Factory.\-hpp\end{DoxyCompactItemize}

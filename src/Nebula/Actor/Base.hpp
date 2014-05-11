@@ -1,5 +1,5 @@
-#ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
-#define __NEBULA_CONTENT_ACTOR_PHYSICS_BASE_HPP__
+#ifndef __NEBULA_ACTOR_BASE_HPP
+#define __NEBULA_ACTOR_BASE_HPP
 
 #include <memory>
 
@@ -9,11 +9,14 @@
 
 #include <Nebula/config.hpp> // Nebula/config.hpp.in
 #include <Nebula/Actor/Types.hpp>
-#include <Nebula/Actor/Util/desc.hpp>
-#include <Nebula/Actor/Util/addr.hpp>
+//#include <Nebula/Actor/Util/desc.hpp>
+#include <Nebula/Actor/Util/Address.hpp>
 #include <Nebula/Actor/Util/raw.hpp>
 #include <Nebula/Actor/Util/desc.hpp>
 #include <Nebula/Actor/Util/parent.hpp>
+
+#include <Nebula/Message/Actor/Update.hpp>
+
 #include <Nebula/Graphics/texture.hpp>
 #include <Nebula/Graphics/material.hpp>
 
@@ -62,12 +65,10 @@ namespace Neb {
 
 				virtual void						create_physics() = 0;
 				virtual void						init_physics() = 0;
-				
+
 				/** @name Accessors @{ */
-				Neb::weak_ptr<Neb::app>					get_app();
-				Neb::weak_ptr<Neb::Scene::scene>			get_scene();
-				virtual physx::PxTransform				getPose();
-				virtual physx::PxTransform				getPoseGlobal();
+				//Neb::app_s						get_app();
+				Neb::Scene::Base_s					get_scene();
 				Neb::weak_ptr<Neb::Actor::Base>				get_actor(int);
 				/** @brief get child actor
 				 *
@@ -76,7 +77,11 @@ namespace Neb {
 				 */
 				Neb::weak_ptr<Neb::Actor::Base>				get_actor(Neb::weak_ptr<Neb::Actor::addr> addr);
 				//virtual Neb::Actor::Base_s				get_projectile();
-				Neb::Actor::Address					getAddress() const;
+				Neb::Actor::Util::Address				getAddress() const;
+
+
+				virtual physx::PxTransform				getPose();
+				virtual physx::PxTransform				getPoseGlobal();
 				/** @} */
 
 
@@ -119,11 +124,22 @@ namespace Neb {
 				}
 				/** @brief %Serialize specialization */
 				void						serialize(
-					Neb::Message::Actor::Update & ar,
-					unsigned int const & version) {
-					ar & boost::serialization::make_nvp("address", getAddress());
+						Neb::Message::Actor::OUpdate & ar,
+						unsigned int const & version) {
+					auto address = getAddress();
+					ar & boost::serialization::make_nvp("address", address);
 					ar & boost::serialization::make_nvp("raw", raw_);
 				}
+				/** @brief %Serialize specialization */
+				void						serialize(
+						Neb::Message::Actor::IUpdate & ar,
+						unsigned int const & version) {
+					auto address = getAddress();
+					ar & boost::serialization::make_nvp("address", address);
+					ar & boost::serialization::make_nvp("raw", raw_);
+				}
+
+
 
 				/** @name Stepping @{ */
 				virtual void					step(double time);
@@ -155,8 +171,8 @@ namespace Neb {
 				 * a simple data container). If it is desired to serialize only the
 				 * raw data (like in actor update), or a subset of it, implement this by
 				 * overloading the serialize functions...
-				*/
-				Neb::Actor::raw					raw_;
+				 */
+				Neb::Actor::Util::Raw				raw_;
 				/** @brief Actors */
 				Neb::Map<Neb::Actor::Base>			actors_;
 				/** @brief Shapes */

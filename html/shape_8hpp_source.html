@@ -104,100 +104,105 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00022"></a>00022 <span class="preprocessor">#include &lt;Nebula/shape/raw.hpp&gt;</span>
 <a name="l00023"></a>00023 <span class="preprocessor">#include &lt;Nebula/shape/parent.hpp&gt;</span>
 <a name="l00024"></a>00024 <span class="preprocessor">#include &lt;Nebula/master.hpp&gt;</span>
-<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;Nebula/Graphics/glsl/program.hpp&gt;</span>
-<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;Nebula/Graphics/light/light.hpp&gt;</span>
-<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;Nebula/Graphics/material.hpp&gt;</span>
-<a name="l00028"></a>00028 <span class="preprocessor">#include &lt;Nebula/Graphics/mesh.hpp&gt;</span>
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 <span class="keyword">namespace </span>Neb {
-<a name="l00031"></a>00031         <span class="keyword">namespace </span>Shape {
-<a name="l00032"></a><a class="code" href="classNeb_1_1Shape_1_1buffer.html">00032</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1buffer.html">buffer</a> {
-<a name="l00033"></a>00033                         <span class="keyword">public</span>:
-<a name="l00034"></a>00034                                 GLuint          vbo_;
-<a name="l00035"></a>00035                                 GLuint          indices_;
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037                                 <span class="keyword">struct</span>
-<a name="l00038"></a>00038                                 {
-<a name="l00039"></a>00039                                         std::shared_ptr&lt;Neb::texture&gt;   image_;
-<a name="l00040"></a>00040                                 } texture_;
-<a name="l00041"></a>00041                 };
-<a name="l00042"></a>00042 
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;Nebula/Graphics/glsl/program.hpp&gt;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;Nebula/Graphics/Light/light.hpp&gt;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#include &lt;Nebula/Graphics/material.hpp&gt;</span>
+<a name="l00029"></a>00029 <span class="preprocessor">#include &lt;Nebula/Graphics/mesh.hpp&gt;</span>
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 <span class="keyword">namespace </span>Neb {
+<a name="l00032"></a>00032         <span class="keyword">namespace </span>Shape {
+<a name="l00033"></a><a class="code" href="classNeb_1_1Shape_1_1buffer.html">00033</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1buffer.html">buffer</a> {
+<a name="l00034"></a>00034                         <span class="keyword">public</span>:
+<a name="l00035"></a>00035                                 GLuint          vbo_;
+<a name="l00036"></a>00036                                 GLuint          indices_;
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038                                 <span class="keyword">struct</span>
+<a name="l00039"></a>00039                                 {
+<a name="l00040"></a>00040                                         std::shared_ptr&lt;Neb::texture&gt;   image_;
+<a name="l00041"></a>00041                                 } texture_;
+<a name="l00042"></a>00042                 };
 <a name="l00043"></a>00043 
-<a name="l00044"></a><a class="code" href="classNeb_1_1Shape_1_1shape.html">00044</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a>: <span class="keyword">virtual</span> <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape">parent</a>, <span class="keyword">public</span> gal::<a class="code" href="structNeb_1_1Shape_1_1flag.html">flag</a> {
-<a name="l00045"></a>00045                         <span class="keyword">public</span>:
-<a name="l00046"></a>00046                                 <span class="keyword">typedef</span> std::shared_ptr&lt;Neb::Shape::buffer&gt;             buffer_t;
-<a name="l00047"></a>00047                                 <span class="keyword">typedef</span> std::map&lt;Neb::window::window*,buffer_t&gt; map_t;
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049                                 <a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a>(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Shape::parent&gt;</a> <a class="code" href="classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape">parent</a>);
-<a name="l00050"></a>00050                                 ~<a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a>();
-<a name="l00051"></a>00051                                 
-<a name="l00053"></a>00053                                 physx::PxTransform                              getPose();
-<a name="l00054"></a>00054                                 physx::PxTransform                              getPoseGlobal();
-<a name="l00055"></a>00055                                 <a class="code" href="classNeb_1_1weak__ptr.html">Neb::Shape::parent_w</a>                            getParent();
-<a name="l00058"></a>00058                                 <span class="keywordtype">void</span>                    init(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::Shape::desc_w</a> <a class="code" href="classNeb_1_1Shape_1_1desc.html">desc</a>);
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh() = 0;
-<a name="l00061"></a>00061                                 
-<a name="l00062"></a>00062                                 <span class="keywordtype">void</span>                    release();
-<a name="l00063"></a>00063                                 <span class="keywordtype">void</span>                    cleanup();
-<a name="l00064"></a>00064                                 <span class="keywordtype">void</span>                    step(<span class="keywordtype">double</span> time);
-<a name="l00065"></a>00065                                 <span class="keywordtype">void</span>                    notify_foundation_change_pose();
-<a name="l00066"></a>00066                                 
-<a name="l00068"></a>00068                                 <span class="keywordtype">void</span>                    load_lights(<span class="keywordtype">int</span>&amp; i, physx::PxMat44 space);
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070                                 <span class="keywordtype">void</span>                    draw(Neb::window::window_s, physx::PxMat44 space);
-<a name="l00071"></a>00071         
-<a name="l00072"></a>00072                                 <span class="keywordtype">void</span>                    model_load(physx::PxMat44 space);
-<a name="l00073"></a>00073                                 <span class="keywordtype">void</span>                    init_buffer(Neb::window::window_s, std::shared_ptr&lt;Neb::glsl::program&gt; p);
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            draw_elements(Neb::window::window_s, physx::PxMat44 space);
-<a name="l00080"></a>00080                                 <span class="keywordtype">void</span>            i(<span class="keywordtype">int</span> ni);
-<a name="l00081"></a>00081                                 <span class="keywordtype">int</span>             i();
-<a name="l00086"></a>00086                                 gal::flag::flag_type            f();
-<a name="l00087"></a>00087                                 <span class="keywordtype">void</span>                            f(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structNeb_1_1Shape_1_1flag.html">flag</a>);
-<a name="l00089"></a>00089                         <span class="keyword">public</span>:
-<a name="l00090"></a>00090                                 <span class="comment">// draw data</span>
-<a name="l00091"></a>00091 
-<a name="l00093"></a><a class="code" href="classNeb_1_1Shape_1_1shape.html#a4ea8904ea7cb02b3580586d23ef65736">00093</a>                                 <span class="keywordtype">int</span>                                     <a class="code" href="classNeb_1_1Shape_1_1shape.html#a4ea8904ea7cb02b3580586d23ef65736" title="ID.">i_</a>;
-<a name="l00095"></a><a class="code" href="classNeb_1_1Shape_1_1shape.html#a106c15be1906384e872874a999c1a773">00095</a>                                 <a class="code" href="classNeb_1_1unique__ptr.html">Neb::Shape::Raw_u</a>                       <a class="code" href="classNeb_1_1Shape_1_1shape.html#a106c15be1906384e872874a999c1a773" title="Raw data.">raw_</a>;
-<a name="l00096"></a>00096                                 
-<a name="l00097"></a>00097                                 <a class="code" href="classNeb_1_1Map.html">Neb::Map&lt;Neb::light::light&gt;</a>             lights_;
-<a name="l00098"></a>00098                                 <a class="code" href="classNeb_1_1Map.html">Neb::Map&lt;Neb::Shape::shape&gt;</a>             shapes_;
-<a name="l00099"></a>00099 
-<a name="l00100"></a>00100                                 <a class="code" href="classNeb_1_1material_1_1material.html">Neb::material::material</a>                 material_front_;
-<a name="l00101"></a>00101                                 <a class="code" href="classNeb_1_1mesh.html">mesh</a>                                    mesh_;
-<a name="l00102"></a>00102 
-<a name="l00103"></a>00103                                 map_t                                   context_;
-<a name="l00104"></a>00104 
-<a name="l00105"></a>00105                                 Neb::program_name::e                    program_;
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107                                 boost::weak_ptr&lt;Neb::Shape::parent&gt;             parent_;
-<a name="l00108"></a>00108                 };
-<a name="l00109"></a>00109                 <span class="keyword">namespace </span>Box {
-<a name="l00110"></a><a class="code" href="classNeb_1_1Shape_1_1Box_1_1Box.html">00110</a>                         <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1Box_1_1Box.html">Box</a>: <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a> {
-<a name="l00111"></a>00111                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh();
-<a name="l00112"></a>00112                         };
-<a name="l00113"></a>00113                 }
-<a name="l00114"></a>00114                 <span class="keyword">namespace </span>Sphere {
-<a name="l00115"></a><a class="code" href="classNeb_1_1Shape_1_1Sphere_1_1Sphere.html">00115</a>                         <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1Sphere_1_1Sphere.html">Sphere</a>: <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a> {
-<a name="l00116"></a>00116                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh();
-<a name="l00117"></a>00117                         };
-<a name="l00118"></a>00118                 }
-<a name="l00119"></a>00119                 <span class="keyword">namespace </span>Empty {
-<a name="l00120"></a><a class="code" href="classNeb_1_1Shape_1_1Empty_1_1Empty.html">00120</a>                         <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1Empty_1_1Empty.html">Empty</a>: <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a> {
-<a name="l00121"></a>00121                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh();
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            draw_elements(Neb::window::window_s, physx::PxMat44 space) {}
-<a name="l00124"></a>00124                         };
-<a name="l00125"></a>00125                 }
-<a name="l00126"></a>00126         }
-<a name="l00127"></a>00127 }
+<a name="l00044"></a>00044 
+<a name="l00045"></a><a class="code" href="classNeb_1_1Shape_1_1shape.html">00045</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a>: <span class="keyword">virtual</span> <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape">parent</a>, <span class="keyword">public</span> gal::<a class="code" href="structNeb_1_1Shape_1_1flag.html">flag</a> {
+<a name="l00046"></a>00046                         <span class="keyword">public</span>:
+<a name="l00047"></a>00047                                 <span class="keyword">typedef</span> std::shared_ptr&lt;Neb::Shape::buffer&gt;             buffer_t;
+<a name="l00048"></a>00048                                 <span class="keyword">typedef</span> std::map&lt;Neb::window::window*,buffer_t&gt; map_t;
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050                                 <a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a>(Neb::Shape::parent_w <a class="code" href="classNeb_1_1Shape_1_1parent.html" title="abstract class for parent of a shape">parent</a>);
+<a name="l00051"></a>00051                                 ~<a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a>();
+<a name="l00052"></a>00052                                 
+<a name="l00054"></a>00054                                 physx::PxTransform                              getPose();
+<a name="l00055"></a>00055                                 physx::PxTransform                              getPoseGlobal();
+<a name="l00056"></a>00056                                 Neb::Shape::parent_s                            getParent();
+<a name="l00059"></a>00059                                 <span class="keywordtype">void</span>                    init(Neb::Shape::desc_w <a class="code" href="classNeb_1_1Shape_1_1desc.html">desc</a>);
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh() = 0;
+<a name="l00062"></a>00062                                 
+<a name="l00063"></a>00063                                 <span class="keywordtype">void</span>                    release();
+<a name="l00064"></a>00064                                 <span class="keywordtype">void</span>                    cleanup();
+<a name="l00065"></a>00065                                 <span class="keywordtype">void</span>                    step(<span class="keywordtype">double</span> time);
+<a name="l00066"></a>00066                                 <span class="keywordtype">void</span>                    notify_foundation_change_pose();
+<a name="l00067"></a>00067                                 
+<a name="l00069"></a>00069                                 <span class="keywordtype">void</span>                    load_lights(<span class="keywordtype">int</span>&amp; i, physx::PxMat44 space);
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071                                 <span class="keywordtype">void</span>                    draw(Neb::window::window_s, physx::PxMat44 space);
+<a name="l00072"></a>00072         
+<a name="l00073"></a>00073                                 <span class="keywordtype">void</span>                    model_load(physx::PxMat44 space);
+<a name="l00074"></a>00074                                 <span class="keywordtype">void</span>                    init_buffer(Neb::window::window_s, std::shared_ptr&lt;Neb::glsl::program&gt; p);
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            draw_elements(Neb::window::window_s, physx::PxMat44 space);
+<a name="l00081"></a>00081                                 <span class="keywordtype">void</span>            i(<span class="keywordtype">int</span> ni);
+<a name="l00082"></a>00082                                 <span class="keywordtype">int</span>             i();
+<a name="l00087"></a>00087                                 <span class="comment">//gal::flag::flag_type          f();</span>
+<a name="l00088"></a>00088                                 <span class="comment">//void                          f(unsigned int flag);</span>
+<a name="l00090"></a>00090 <span class="comment"></span>                        <span class="keyword">protected</span>:
+<a name="l00092"></a><a class="code" href="classNeb_1_1Shape_1_1shape.html#ade9c0431ec637723b0b1e6109b833a9e">00092</a>                                 Neb::Shape::Raw_s                               <a class="code" href="classNeb_1_1Shape_1_1shape.html#ade9c0431ec637723b0b1e6109b833a9e" title="Raw data.">raw_</a>;
+<a name="l00093"></a>00093                         <span class="keyword">public</span>:
+<a name="l00094"></a>00094                                 <span class="comment">// draw data</span>
+<a name="l00095"></a>00095 
+<a name="l00097"></a><a class="code" href="classNeb_1_1Shape_1_1shape.html#a4ea8904ea7cb02b3580586d23ef65736">00097</a>                                 <span class="keywordtype">int</span>                                             <a class="code" href="classNeb_1_1Shape_1_1shape.html#a4ea8904ea7cb02b3580586d23ef65736" title="ID.">i_</a>;
+<a name="l00098"></a>00098                                 
+<a name="l00099"></a>00099                                 
+<a name="l00100"></a>00100                                 
+<a name="l00101"></a>00101                                 <a class="code" href="classNeb_1_1material_1_1material.html">Neb::material::material</a>                         material_front_;
+<a name="l00102"></a>00102                                 <a class="code" href="classNeb_1_1mesh.html">mesh</a>                                            mesh_;
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104                                 map_t                                           context_;
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106                                 Neb::program_name::e                            program_;
+<a name="l00108"></a><a class="code" href="classNeb_1_1Shape_1_1shape.html#a10c47c6099da789d8a6665ef774c9e75">00108</a>                                 Neb::Shape::parent_w                            <a class="code" href="classNeb_1_1Shape_1_1shape.html#a10c47c6099da789d8a6665ef774c9e75" title="Parent.">parent_</a>;
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110                                 
+<a name="l00111"></a>00111                                 <a class="code" href="classNeb_1_1Map.html">Neb::Map&lt;Neb::Light::light&gt;</a>                     lights_;
+<a name="l00112"></a>00112                                 
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114                 };
+<a name="l00115"></a>00115                 <span class="keyword">namespace </span>Box {
+<a name="l00116"></a><a class="code" href="classNeb_1_1Shape_1_1Box_1_1Box.html">00116</a>                         <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1Box_1_1Box.html">Box</a>: <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a> {
+<a name="l00117"></a>00117                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh();
+<a name="l00118"></a>00118                         };
+<a name="l00119"></a>00119                 }
+<a name="l00120"></a>00120                 <span class="keyword">namespace </span>Sphere {
+<a name="l00121"></a><a class="code" href="classNeb_1_1Shape_1_1Sphere_1_1Sphere.html">00121</a>                         <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1Sphere_1_1Sphere.html">Sphere</a>: <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a> {
+<a name="l00122"></a>00122                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh();
+<a name="l00123"></a>00123                         };
+<a name="l00124"></a>00124                 }
+<a name="l00125"></a>00125                 <span class="keyword">namespace </span>Empty {
+<a name="l00126"></a><a class="code" href="classNeb_1_1Shape_1_1Empty_1_1Empty.html">00126</a>                         <span class="keyword">class </span><a class="code" href="classNeb_1_1Shape_1_1Empty_1_1Empty.html">Empty</a>: <span class="keyword">public</span> Neb::Shape::<a class="code" href="classNeb_1_1Shape_1_1shape.html">shape</a> {
+<a name="l00127"></a>00127                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            createMesh();
 <a name="l00128"></a>00128 
-<a name="l00129"></a>00129 <span class="preprocessor">#endif</span>
-<a name="l00130"></a>00130 <span class="preprocessor"></span>
-<a name="l00131"></a>00131 
-<a name="l00132"></a>00132 
-<a name="l00133"></a>00133 
+<a name="l00129"></a>00129                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            draw_elements(Neb::window::window_s, physx::PxMat44 space) {}
+<a name="l00130"></a>00130                         };
+<a name="l00131"></a>00131                 }
+<a name="l00132"></a>00132         }
+<a name="l00133"></a>00133 }
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135 <span class="preprocessor">#endif</span>
+<a name="l00136"></a>00136 <span class="preprocessor"></span>
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -216,7 +221,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:40 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:04 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

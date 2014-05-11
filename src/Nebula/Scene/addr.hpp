@@ -13,12 +13,13 @@
 #include <deque>
 
 #include <Nebula/config.hpp>
+#include <Nebula/Scene/Types.hpp>
 
 namespace Neb {
 	namespace Scene {
-		class addr {
+		class Address {
 			public:
-				void						load(Neb::weak_ptr<Neb::Scene::scene>& scene);
+				void						load(Neb::Scene::Base_w & scene);
 				
 				template<class Archive> void			serialize(Archive& ar, unsigned int const & version) {
 					ar & vec_;

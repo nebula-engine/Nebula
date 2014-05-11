@@ -13,7 +13,6 @@ var searchData=
   ['tri',['tri',['../classmath_1_1geo_1_1tri.html',1,'math::geo']]],
   ['type',['type',['../structglutpp_1_1shape_1_1event_1_1type.html',1,'glutpp::shape::event']]],
   ['type',['type',['../structNeb_1_1Color_1_1color_1_1type.html',1,'Neb::Color::color']]],
-  ['type',['type',['../structNeb_1_1light_1_1type.html',1,'Neb::light']]],
   ['type_5f',['type_',['../classNeb_1_1Shape_1_1Raw.html#a5957d1e0e9878dd9dfa44f0fc8c82b7b',1,'Neb::Shape::Raw']]],
   ['typed',['Typed',['../classNeb_1_1Typed.html',1,'Neb']]]
 ];

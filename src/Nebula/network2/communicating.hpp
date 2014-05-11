@@ -9,10 +9,8 @@ namespace Neb {
 	namespace network {
 		class communicating: virtual public gal::network::communicating {
 			public:
-				communicating(Neb::app_w, int);
+				communicating(int);
 				void	process(gal::network::message_s);
-
-				Neb::app_w	app_;
 		};
 	}
 }

@@ -11,14 +11,6 @@ root namespace for
 \item 
 namespace \hyperlink{namespaceNeb_1_1Actor}{\-Actor}
 \begin{DoxyCompactList}\small\item\em \-Actor \end{DoxyCompactList}\item 
-namespace \hyperlink{namespaceNeb_1_1Camera}{\-Camera}
-\begin{DoxyCompactList}\small\item\em \hyperlink{namespaceNeb_1_1Camera}{\-Camera}. \end{DoxyCompactList}\item 
-namespace \hyperlink{namespaceNeb_1_1glsl}{glsl}
-\begin{DoxyCompactList}\small\item\em \-G\-L\-S\-L. \end{DoxyCompactList}\item 
-namespace \hyperlink{namespaceNeb_1_1gui}{gui}
-\begin{DoxyCompactList}\small\item\em \-Graphical \-User \-Interface. \end{DoxyCompactList}\item 
-namespace \hyperlink{namespaceNeb_1_1light}{light}
-\begin{DoxyCompactList}\small\item\em \-Lights. \end{DoxyCompactList}\item 
 namespace \hyperlink{namespaceNeb_1_1Message}{\-Message}
 \begin{DoxyCompactList}\small\item\em \-Message \end{DoxyCompactList}\item 
 namespace \hyperlink{namespaceNeb_1_1Scene}{\-Scene}
@@ -58,27 +50,24 @@ class \hyperlink{classNeb_1_1renderable}{renderable}
 \begin{DoxyCompactList}\small\item\em \-Renderable. \end{DoxyCompactList}\item 
 class \hyperlink{classNeb_1_1simulation__callback}{simulation\-\_\-callback}
 \item 
-class \hyperlink{classNeb_1_1Typed}{\-Typed}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classNeb_1_1Typed}{\-Typed}. \end{DoxyCompactList}\item 
+class \hyperlink{classNeb_1_1FuncMap}{\-Func\-Map}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classNeb_1_1FuncMap}{\-Func\-Map} \-A map containing {\ttfamily std\-::function} objects with arbitrary signatures \-Motivation\-: \-See \hyperlink{classNeb_1_1Factory}{\-Factory} and \hyperlink{classNeb_1_1Initializer}{\-Initializer} classes. \end{DoxyCompactList}\item 
 class \hyperlink{classNeb_1_1Factory}{\-Factory}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classNeb_1_1Factory}{\-Factory} the app shall hold instances of \hyperlink{classNeb_1_1Factory}{\-Factory} for the various types and use cases. \end{DoxyCompactList}\item 
-class \hyperlink{classNeb_1_1WrapperTyped}{\-Wrapper\-Typed}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classNeb_1_1WrapperTyped}{\-Wrapper\-Typed}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classNeb_1_1Factory}{\-Factory}. \-Store and use allocator functions. \end{DoxyCompactList}\item 
+class \hyperlink{classNeb_1_1Initializer}{\-Initializer}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classNeb_1_1Initializer}{\-Initializer}. \-Store and use initializer functions. \-Allocate an object with arbitrary alloc function stored in the \hyperlink{classNeb_1_1FuncMap}{\-Func\-Map} and call the object's {\ttfamily init} method with arbitrary arguments. \end{DoxyCompactList}\item 
 class \hyperlink{classNeb_1_1Shared}{\-Shared}
 \begin{DoxyCompactList}\small\item\em \-Shared. avoid multiple enabled\-\_\-shared\-\_\-from\-\_\-this bases \end{DoxyCompactList}\item 
+class \hyperlink{classNeb_1_1Typed}{\-Typed}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classNeb_1_1Typed}{\-Typed}. \end{DoxyCompactList}\item 
 class \hyperlink{classNeb_1_1weak__function}{weak\-\_\-function}
-\end{DoxyCompactItemize}
+\item 
+class \hyperlink{classNeb_1_1WrapperTyped}{\-Wrapper\-Typed}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classNeb_1_1WrapperTyped}{\-Wrapper\-Typed} class \-T must be derived from and registered with \-Neb\-::\-Util\-::\-Typed or exceptions will be thrown. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{\-Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{namespaceNeb_aa4fcad20cebfd0160ee2d0285a6fc129}{typedef \hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::weak\-\_\-ptr}$<$ \hyperlink{classNeb_1_1app}{app} $>$ {\bfseries app\-\_\-w}}\label{namespaceNeb_aa4fcad20cebfd0160ee2d0285a6fc129}
-
-\item 
-\hypertarget{namespaceNeb_ae8d36138d23d3c479a601c88b3393b43}{typedef \hyperlink{classNeb_1_1unique__ptr}{\-Neb\-::unique\-\_\-ptr}\*
-$<$ \hyperlink{classNeb_1_1renderable}{renderable} $>$ {\bfseries renderable\-\_\-u}}\label{namespaceNeb_ae8d36138d23d3c479a601c88b3393b43}
-
-\item 
-\hypertarget{namespaceNeb_a0aac28857d44701417babbe71c47de0b}{typedef \hyperlink{classNeb_1_1weak__ptr}{\-Neb\-::weak\-\_\-ptr}$<$ \hyperlink{classNeb_1_1renderable}{renderable} $>$ {\bfseries renderable\-\_\-w}}\label{namespaceNeb_a0aac28857d44701417babbe71c47de0b}
 
 \end{DoxyCompactItemize}
 \subsection*{\-Functions}
@@ -103,7 +92,7 @@ $<$ \hyperlink{classNeb_1_1renderable}{renderable} $>$ {\bfseries renderable\-\_
 
 \subsection{\-Detailed \-Description}
 root namespace for  \begin{DoxyRefDesc}{\-Todo}
-\item[\hyperlink{todo__todo000006}{\-Todo}]under what conditions is it necessary to \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000008}{\-Todo}]under what conditions is it necessary to \end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{\-Todo}

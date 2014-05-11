@@ -7,7 +7,7 @@
 <area shape="rect" id="node5" href="$classgal_1_1network_1_1imessage.html" title="gal::network::imessage" alt="" coords="365,5,523,35"/>
 <area shape="rect" id="node7" href="$classgal_1_1network_1_1omessage.html" title="gal::network::omessage" alt="" coords="364,59,524,88"/>
 <area shape="rect" id="node11" href="$classNeb_1_1Actor_1_1Base.html" title="Base" alt="" coords="383,165,505,195"/>
-<area shape="rect" id="node27" href="$classNeb_1_1Scene_1_1scene.html" title="Neb::Scene::scene" alt="" coords="377,112,511,141"/>
+<area shape="rect" id="node27" href="$classNeb_1_1Scene_1_1Base.html" title="Neb::Scene::Base" alt="" coords="380,112,508,141"/>
 <area shape="rect" id="node13" href="$classNeb_1_1Actor_1_1Actor.html" title="Neb::Actor::Actor" alt="" coords="607,85,729,115"/>
 <area shape="rect" id="node23" href="$classNeb_1_1Actor_1_1Controller.html" title="Neb::Actor::Controller" alt="" coords="593,139,743,168"/>
 <area shape="rect" id="node25" href="$classNeb_1_1Actor_1_1empty.html" title="Neb::Actor::empty" alt="" coords="604,192,732,221"/>

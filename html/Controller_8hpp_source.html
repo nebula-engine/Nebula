@@ -91,12 +91,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00009"></a>00009         <span class="keyword">namespace </span>Actor {
 <a name="l00010"></a><a class="code" href="classNeb_1_1Actor_1_1Controller.html">00010</a>                 <span class="keyword">class </span><a class="code" href="classNeb_1_1Actor_1_1Controller.html">Controller</a>: <span class="keyword">public</span> Neb::<a class="code" href="classNeb_1_1Actor_1_1Actor.html">Actor</a>::<a class="code" href="classNeb_1_1Actor_1_1Base.html" title="Base">Base</a> {
 <a name="l00011"></a>00011                         <span class="keyword">public</span>:
-<a name="l00012"></a>00012                                 <a class="code" href="classNeb_1_1Actor_1_1Controller.html">Controller</a>(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::weak_ptr&lt;Neb::Actor::parent&gt;</a>);
+<a name="l00012"></a>00012                                 <a class="code" href="classNeb_1_1Actor_1_1Controller.html">Controller</a>(Neb::Actor::parent_w);
 <a name="l00013"></a>00013                                 
 <a name="l00014"></a>00014                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            release();
 <a name="l00015"></a>00015 
 <a name="l00016"></a>00016                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            step(<span class="keywordtype">float</span>);
-<a name="l00017"></a>00017                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            init(<a class="code" href="classNeb_1_1weak__ptr.html">Neb::Actor::desc_w</a>);
+<a name="l00017"></a>00017                                 <span class="comment">//virtual void          init(Neb::Actor::desc_w);</span>
 <a name="l00018"></a>00018                                 <span class="keyword">virtual</span> <span class="keywordtype">void</span>            add_force();
 <a name="l00019"></a>00019 
 <a name="l00020"></a>00020 
@@ -128,7 +128,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:40 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:04 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

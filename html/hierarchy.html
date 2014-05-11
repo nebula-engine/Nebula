@@ -86,14 +86,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock">
 <p><a href="inherits.html">Go to the graphical class hierarchy</a></p>
 This inheritance list is sorted roughly, but not completely, alphabetically:</div><ul>
-<li><a class="el" href="structNeb_1_1Factory_1_1____base__function.html">Neb::Factory&lt; T &gt;::__base_function</a><ul>
-<li><a class="el" href="structNeb_1_1Factory_1_1____function.html">Neb::Factory&lt; T &gt;::__function&lt; A &gt;</a></li>
+<li><a class="el" href="structNeb_1_1FuncMap_1_1____base__function.html">Neb::FuncMap::__base_function</a><ul>
+<li><a class="el" href="structNeb_1_1FuncMap_1_1____function.html">Neb::FuncMap::__function&lt; R, A &gt;</a></li>
 </ul>
 </li>
 <li><a class="el" href="classneb_1_1packet_1_1actor__release.html">neb::packet::actor_release</a></li>
-<li><a class="el" href="classNeb_1_1Scene_1_1addr.html">Neb::Scene::addr</a></li>
-<li><a class="el" href="classNeb_1_1Actor_1_1addr.html">Neb::Actor::addr</a></li>
-<li><a class="el" href="structglutpp_1_1network_1_1actor_1_1update_1_1addr__raw.html">glutpp::network::actor::update::addr_raw</a></li>
+<li><a class="el" href="classNeb_1_1Scene_1_1Address.html">Neb::Scene::Address</a></li>
+<li><a class="el" href="classNeb_1_1Actor_1_1Util_1_1Address.html">Neb::Actor::Util::Address</a></li>
 <li><a class="el" href="classArchiveRead.html">ArchiveRead</a></li>
 <li><a class="el" href="classNeb_1_1glsl_1_1attrib.html">Neb::glsl::attrib</a></li>
 <li><a class="el" href="structNeb_1_1attrib__name.html">Neb::attrib_name</a></li>
@@ -117,6 +116,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:</di
 <li><a class="el" href="classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Vec4.html">Neb::glsl::Uniform::Scalar::Vec4</a></li>
 </ul>
 </li>
+<li><a class="el" href="classNeb_1_1Event_1_1Actor_1_1Base.html">Neb::Event::Actor::Base</a></li>
 <li><a class="el" href="classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1Base.html">Neb::glsl::Uniform::Vector::Base</a><ul>
 <li><a class="el" href="classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1Double.html">Neb::glsl::Uniform::Vector::Double</a></li>
 <li><a class="el" href="classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1DVec3.html">Neb::glsl::Uniform::Vector::DVec3</a></li>
@@ -127,8 +127,17 @@ This inheritance list is sorted roughly, but not completely, alphabetically:</di
 <li><a class="el" href="classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1Vec4.html">Neb::glsl::Uniform::Vector::Vec4</a></li>
 </ul>
 </li>
-<li><a class="el" href="classNeb_1_1Message_1_1Base.html">Neb::Message::Base</a></li>
-<li><a class="el" href="classNeb_1_1Event_1_1Actor_1_1Base.html">Neb::Event::Actor::Base</a></li>
+<li><a class="el" href="classNeb_1_1Message_1_1Base.html">Neb::Message::Base</a><ul>
+<li><a class="el" href="classNeb_1_1Message_1_1IBase.html">Neb::Message::IBase</a><ul>
+<li><a class="el" href="structNeb_1_1Message_1_1Actor_1_1IUpdate.html">Neb::Message::Actor::IUpdate</a></li>
+</ul>
+</li>
+<li><a class="el" href="classNeb_1_1Message_1_1OBase.html">Neb::Message::OBase</a><ul>
+<li><a class="el" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html">Neb::Message::Actor::OUpdate</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="el" href="classgal_1_1network_1_1base.html">gal::network::base</a><ul>
 <li><a class="el" href="classgal_1_1network_1_1serial.html">gal::network::serial&lt; event, gal::network::base &gt;</a><ul>
 <li><a class="el" href="classglutpp_1_1shape_1_1event.html">glutpp::shape::event</a></li>
@@ -152,19 +161,15 @@ This inheritance list is sorted roughly, but not completely, alphabetically:</di
 </ul>
 </li>
 <li><a class="el" href="classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Control.html">Neb::Actor::Control::RigidBody::Control</a></li>
-<li><a class="el" href="structglutpp_1_1network_1_1actor_1_1create.html">glutpp::network::actor::create</a></li>
-<li><a class="el" href="structglutpp_1_1network_1_1scene_1_1create.html">glutpp::network::scene::create</a></li>
-<li><a class="el" href="classNeb_1_1Filter_1_1Data.html">Neb::Filter::Data</a></li>
+<li><a class="el" href="structNeb_1_1Message_1_1Actor_1_1Create.html">Neb::Message::Actor::Create</a></li>
+<li><a class="el" href="structNeb_1_1Message_1_1Scene_1_1Create.html">Neb::Message::Scene::Create</a></li>
 <li><a class="el" href="classNeb_1_1gui_1_1object_1_1Data.html">Neb::gui::object::Data</a></li>
+<li><a class="el" href="classNeb_1_1Filter_1_1Data.html">Neb::Filter::Data</a></li>
 <li><a class="el" href="classDefaultErrorCallback.html">DefaultErrorCallback</a></li>
 <li><a class="el" href="classNeb_1_1gui_1_1Desc.html">Neb::gui::Desc</a></li>
-<li><a class="el" href="classNeb_1_1Scene_1_1desc.html">Neb::Scene::desc</a></li>
 <li><a class="el" href="classNeb_1_1Shape_1_1desc.html">Neb::Shape::desc</a></li>
-<li><a class="el" href="classNeb_1_1light_1_1desc.html">Neb::light::desc</a></li>
 <li><a class="el" href="classNeb_1_1window_1_1desc.html">Neb::window::desc</a></li>
-<li><a class="el" href="classNeb_1_1Actor_1_1desc.html">Neb::Actor::desc</a></li>
 <li><a class="el" href="classmath_1_1Color_1_1Dynamic.html">math::Color::Dynamic&lt; T, R, G, B &gt;</a></li>
-<li><a class="el" href="classNeb_1_1Factory.html">Neb::Factory&lt; T &gt;</a></li>
 <li><a class="el" href="structNeb_1_1file__header.html">Neb::file_header</a></li>
 <li><a class="el" href="structNeb_1_1Filter_1_1Filter.html">Neb::Filter::Filter</a></li>
 <li><a class="el" href="classNeb_1_1Event_1_1Actor_1_1Fire.html">Neb::Event::Actor::Fire</a></li>
@@ -186,9 +191,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:</di
 </ul>
 </li>
 <li><a class="el" href="classNeb_1_1app.html">Neb::app</a></li>
-<li><a class="el" href="classNeb_1_1light_1_1light.html">Neb::light::light</a></li>
 <li><a class="el" href="classNeb_1_1master.html">Neb::master</a></li>
-<li><a class="el" href="classNeb_1_1Scene_1_1scene.html">Neb::Scene::scene</a></li>
+<li><a class="el" href="classNeb_1_1Scene_1_1Base.html">Neb::Scene::Base</a></li>
 <li><a class="el" href="classNeb_1_1Shape_1_1shape.html">Neb::Shape::shape</a><ul>
 <li><a class="el" href="classNeb_1_1Shape_1_1Box_1_1Box.html">Neb::Shape::Box::Box</a></li>
 <li><a class="el" href="classNeb_1_1Shape_1_1Empty_1_1Empty.html">Neb::Shape::Empty::Empty</a></li>
@@ -199,24 +203,26 @@ This inheritance list is sorted roughly, but not completely, alphabetically:</di
 <li><a class="el" href="classNeb_1_1window_1_1window.html">Neb::window::window</a></li>
 </ul>
 </li>
-<li><a class="el" href="structNeb_1_1Shape_1_1flag.html">Neb::Shape::flag</a></li>
-<li><a class="el" href="structNeb_1_1light_1_1flag.html">Neb::light::flag</a></li>
-<li><a class="el" href="structglutpp_1_1Camera_1_1View_1_1Free_1_1Flag.html">glutpp::Camera::View::Free::Flag</a></li>
 <li><a class="el" href="structNeb_1_1app_1_1flag.html">Neb::app::flag</a></li>
+<li><a class="el" href="structNeb_1_1Shape_1_1flag.html">Neb::Shape::flag</a></li>
+<li><a class="el" href="structglutpp_1_1Camera_1_1View_1_1Free_1_1Flag.html">glutpp::Camera::View::Free::Flag</a></li>
 <li><a class="el" href="structNeb_1_1window_1_1window_1_1flag.html">Neb::window::window::flag</a></li>
 <li><a class="el" href="structNeb_1_1Actor_1_1Base_1_1flag.html">Neb::Actor::Base::flag</a></li>
 <li><a class="el" href="classglutpp_1_1Camera_1_1View_1_1Free.html">glutpp::Camera::View::Free</a></li>
+<li><a class="el" href="classNeb_1_1FuncMap.html">Neb::FuncMap</a><ul>
+<li><a class="el" href="classNeb_1_1Factory.html">Neb::Factory&lt; T &gt;</a></li>
+<li><a class="el" href="classNeb_1_1Initializer.html">Neb::Initializer&lt; T &gt;</a></li>
+</ul>
+</li>
 <li><a class="el" href="classneb_1_1Game_1_1Game.html">neb::Game::Game</a></li>
 <li><a class="el" href="classmath_1_1geo_1_1height__map.html">math::geo::height_map</a></li>
 <li><a class="el" href="classNeb_1_1Shape_1_1id.html">Neb::Shape::id</a></li>
-<li><a class="el" href="structNeb_1_1Factory_1_1invalid__args.html">Neb::Factory&lt; T &gt;::invalid_args</a></li>
-<li><a class="el" href="structNeb_1_1Factory_1_1invalid__key.html">Neb::Factory&lt; T &gt;::invalid_key</a></li>
+<li><a class="el" href="structNeb_1_1FuncMap_1_1invalid__args.html">Neb::FuncMap::invalid_args</a></li>
+<li><a class="el" href="structNeb_1_1FuncMap_1_1invalid__key.html">Neb::FuncMap::invalid_key</a></li>
 <li><a class="el" href="classNeb_1_1gui_1_1layout.html">Neb::gui::layout</a></li>
+<li><a class="el" href="classNeb_1_1Light_1_1light.html">Neb::Light::light</a></li>
 <li><a class="el" href="classNeb_1_1Map.html">Neb::Map&lt; T &gt;</a></li>
-<li><a class="el" href="structNeb_1_1Enum_1_1Maps.html">Neb::Enum::Maps&lt; enum_type &gt;</a><ul>
-<li><a class="el" href="structNeb_1_1Enum_1_1MapsFlag.html">Neb::Enum::MapsFlag&lt; enum_type &gt;</a></li>
-</ul>
-</li>
+<li><a class="el" href="structNeb_1_1Enum_1_1Maps.html">Neb::Enum::Maps&lt; enum_type &gt;</a></li>
 <li><a class="el" href="classNeb_1_1material_1_1material.html">Neb::material::material</a></li>
 <li><a class="el" href="classNeb_1_1mesh.html">Neb::mesh</a></li>
 <li><a class="el" href="structNeb_1_1Actor_1_1mode__create.html">Neb::Actor::mode_create</a></li>
@@ -245,7 +251,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:</di
 <li><a class="el" href="classNeb_1_1Core_1_1Pose.html">Neb::Core::Pose</a><ul>
 <li><a class="el" href="classNeb_1_1Actor_1_1parent.html">Neb::Actor::parent</a><ul>
 <li><a class="el" href="classNeb_1_1Actor_1_1Base.html">Neb::Actor::Base</a></li>
-<li><a class="el" href="classNeb_1_1Scene_1_1scene.html">Neb::Scene::scene</a></li>
+<li><a class="el" href="classNeb_1_1Scene_1_1Base.html">Neb::Scene::Base</a></li>
 </ul>
 </li>
 <li><a class="el" href="classNeb_1_1Scene_1_1Util_1_1Parent.html">Neb::Scene::Util::Parent</a></li>
@@ -260,13 +266,14 @@ This inheritance list is sorted roughly, but not completely, alphabetically:</di
 <li><a class="el" href="structNeb_1_1program__name.html">Neb::program_name</a></li>
 <li><a class="el" href="classmath_1_1geo_1_1quad.html">math::geo::quad</a></li>
 <li><a class="el" href="classNeb_1_1Shape_1_1Box_1_1Raw.html">Neb::Shape::Box::Raw</a></li>
-<li><a class="el" href="classNeb_1_1Scene_1_1raw.html">Neb::Scene::raw</a></li>
-<li><a class="el" href="classNeb_1_1Shape_1_1Raw.html">Neb::Shape::Raw</a></li>
-<li><a class="el" href="classNeb_1_1Shape_1_1Sphere_1_1Raw.html">Neb::Shape::Sphere::Raw</a></li>
-<li><a class="el" href="classNeb_1_1light_1_1raw.html">Neb::light::raw</a></li>
+<li><a class="el" href="classNeb_1_1Light_1_1Raw.html">Neb::Light::Raw</a></li>
 <li><a class="el" href="structNeb_1_1material_1_1raw.html">Neb::material::raw</a></li>
 <li><a class="el" href="classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1Raw.html">Neb::Actor::Control::RigidBody::Raw</a></li>
 <li><a class="el" href="structNeb_1_1window_1_1raw.html">Neb::window::raw</a></li>
+<li><a class="el" href="classNeb_1_1Shape_1_1Raw.html">Neb::Shape::Raw</a></li>
+<li><a class="el" href="classNeb_1_1Scene_1_1Util_1_1Raw.html">Neb::Scene::Util::Raw</a></li>
+<li><a class="el" href="classNeb_1_1Actor_1_1Util_1_1Raw.html">Neb::Actor::Util::Raw</a></li>
+<li><a class="el" href="classNeb_1_1Shape_1_1Sphere_1_1Raw.html">Neb::Shape::Sphere::Raw</a></li>
 <li><a class="el" href="classneb_1_1Timer_1_1Actor_1_1Release.html">neb::Timer::Actor::Release</a></li>
 <li><a class="el" href="classNeb_1_1renderable.html">Neb::renderable</a></li>
 <li><a class="el" href="classgal_1_1network_1_1serial.html">gal::network::serial&lt; DERIVED, BASE &gt;</a></li>
@@ -293,10 +300,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:</di
 <li><a class="el" href="classNeb_1_1texture.html">Neb::texture</a></li>
 <li><a class="el" href="classmath_1_1geo_1_1tri.html">math::geo::tri</a></li>
 <li><a class="el" href="structglutpp_1_1shape_1_1event_1_1type.html">glutpp::shape::event::type</a></li>
-<li><a class="el" href="structNeb_1_1light_1_1type.html">Neb::light::type</a></li>
 <li><a class="el" href="structNeb_1_1Color_1_1color_1_1type.html">Neb::Color::color&lt; T &gt;::type</a></li>
 <li><a class="el" href="classNeb_1_1Typed.html">Neb::Typed</a><ul>
-<li><a class="el" href="classNeb_1_1Actor_1_1raw.html">Neb::Actor::raw</a></li>
 <li><a class="el" href="classNeb_1_1Message_1_1Actor_1_1Base.html">Neb::Message::Actor::Base</a><ul>
 <li><a class="el" href="classNeb_1_1Message_1_1Actor_1_1Control_1_1RigidBody_1_1Create.html">Neb::Message::Actor::Control::RigidBody::Create</a></li>
 <li><a class="el" href="classNeb_1_1Message_1_1Actor_1_1Control_1_1RigidBody_1_1Update.html">Neb::Message::Actor::Control::RigidBody::Update</a></li>
@@ -307,7 +312,11 @@ This inheritance list is sorted roughly, but not completely, alphabetically:</di
 </li>
 <li><a class="el" href="structNeb_1_1uniform__name.html">Neb::uniform_name</a></li>
 <li><a class="el" href="classNeb_1_1unique__ptr.html">Neb::unique_ptr&lt; T &gt;</a></li>
-<li><a class="el" href="structglutpp_1_1network_1_1actor_1_1update.html">glutpp::network::actor::update</a></li>
+<li><a class="el" href="structNeb_1_1Message_1_1Actor_1_1Update.html">Neb::Message::Actor::Update</a><ul>
+<li><a class="el" href="structNeb_1_1Message_1_1Actor_1_1IUpdate.html">Neb::Message::Actor::IUpdate</a></li>
+<li><a class="el" href="structNeb_1_1Message_1_1Actor_1_1OUpdate.html">Neb::Message::Actor::OUpdate</a></li>
+</ul>
+</li>
 <li><a class="el" href="classneb_1_1user.html">neb::user</a></li>
 <li><a class="el" href="classglutpp_1_1vao.html">glutpp::vao</a></li>
 <li><a class="el" href="structgal_1_1network_1_1vector.html">gal::network::vector&lt; T &gt;</a></li>
@@ -338,7 +347,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:</di
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:41 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:05 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

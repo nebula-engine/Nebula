@@ -6,6 +6,8 @@
 #include <Nebula/Flag.hpp>
 
 #include <Nebula/Types.hpp> // gru/config.hpp.in
+#include <Nebula/Graphics/Types.hh>
+
 #include <Nebula/Graphics/gui/layout.hpp>
 #include <Nebula/Graphics/window/window.hpp>
 #include <Nebula/Scene/scene.hpp>
@@ -28,7 +30,7 @@ namespace Neb {
 
 
 			void				moveView(Neb::Camera::View::Base_s &&);
-			void				moveScene(Neb::Scene::scene_s &&);
+			void				moveScene(Neb::Scene::Base_s &&);
 			void				moveLayout(Neb::gui::layout_s &&);
 
 			
@@ -38,10 +40,10 @@ namespace Neb {
 
 			Neb::window::window_w				window_;
 		private:
-			Neb::Scene::scene_s				scene_;
-			Neb::gui::layout_u				layout_;
-			Neb::Camera::View::Base_u			view_;
-			Neb::Camera::Projection::Base_u			proj_;
+			Neb::Scene::Base_s				scene_;
+			Neb::gui::layout_s				layout_;
+			Neb::Camera::View::Base_s			view_;
+			Neb::Camera::Projection::Base_s			proj_;
 	};
 }
 

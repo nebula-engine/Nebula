@@ -18,23 +18,24 @@
 
 namespace Neb {
 	namespace Scene {
-		class raw {
-			public:
-				raw();
-				//void					load(tinyxml2::XMLElement*);
-				void					load(Neb::Scene::scene_w scene);
+		namespace Util {
+			class Raw {
+				public:
+					Raw();
+					//void					load(tinyxml2::XMLElement*);
+					void					load(Neb::Scene::Base_w scene);
 
-				template <class Archive> void		serialize(Archive & ar, unsigned int const & version) {
-					ar & boost::serialization::make_nvp("flag",flag_);
-					ar & boost::serialization::make_nvp("gravity",gravity_);
-				}
-				
-				unsigned int		flag_;
-				physx::PxVec3		gravity_;
-		};
+					template <class Archive> void		serialize(Archive & ar, unsigned int const & version) {
+						ar & boost::serialization::make_nvp("flag",flag_);
+						ar & boost::serialization::make_nvp("gravity",gravity_);
+					}
+
+					unsigned int		flag_;
+					physx::PxVec3		gravity_;
+			};
+		}
 	}
 }
-
 
 #endif
 

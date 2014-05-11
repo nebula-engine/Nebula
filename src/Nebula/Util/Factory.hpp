@@ -1,6 +1,8 @@
 #ifndef NEBULA_UTIL_FACTORY_HPP
 #define NEBULA_UTIL_FACTORY_HPP
 
+#include <Nebula/Util/Helper.hh>
+
 namespace Neb {
 	/** @brief FuncMap
 	 * A map containing @c std::function objects with arbitrary signatures
@@ -10,13 +12,13 @@ namespace Neb {
 		private:
 			/** */
 			struct invalid_key: std::exception {
-				char *	what() {
+				char const *	what() {
 					return "invalid key";
 				}
 			};
 			/** */
 			struct invalid_args: std::exception {
-				char *	what() {
+				char const *	what() {
 					return "invalid args";
 				}
 			};
@@ -33,8 +35,8 @@ namespace Neb {
 				std::function<R(A...)>		f_;
 	                };
 		public:
-			Factory() {}
-			virtual ~Factory() = 0;
+			FuncMap() {}
+			virtual ~FuncMap() {}
 			/** */
 			template<class R, class... Args>
 			void		add(long int hash_code, std::function<R(Args...)> f) {
@@ -91,42 +93,43 @@ namespace Neb {
 	 * 
 	 */
 	template <class T>
-	class Initializer: public FuncMap {
-		public:
-			typedef std::shared_ptr<T> shared;
-			/** */
-			template<class... AllocArgs, class... InitArgs>
-			shared			alloc(
-					long hash_code,
-					std::tuple<AllocArgs...>&& allocargs,
-					std::tuple<InitArgs...>&& initargs) {
-				callAlloc(
-						hash_code,
-						allocargs,
-						initargs,
-						typename gens<sizeof...(AllocArgs)>::type(),
-						typename gens<sizeof...(InitArgs)>::type());
-			}
-			template<class... AllocArgs, class... InitArgs, int... SA, int... SB>
-			shared			callAlloc(
-					long hash_code,
-					std::tuple<AllocArgs...>&& allocargs,
-					std::tuple<InitArgs...>&& initargs,
-					seq<SA...>,
-					seq<SB...>) {
-				
-	                        auto f = find<shared,AllocArgs...>(hash_code);
-	                        
-	                        shared s = (f->f_)(get<SA>(allocargs)...);
-	                        
-	                        // call (possibly) virtual initialization method
-				s->init(get<SB>(initargs)...);
-				
-				return s;
-	                }
-	                
-	                
-	};
+		class Initializer: public FuncMap {
+			public:
+				typedef std::shared_ptr<T> shared;
+				/** */
+				template<class... AllocArgs, class... InitArgs>
+					shared			alloc(
+							long hash_code,
+							std::tuple<AllocArgs...>&& allocargs,
+							std::tuple<InitArgs...>&& initargs) {
+						// callAlloc
+						callAlloc(
+								hash_code,
+								allocargs,
+								initargs,
+								typename gens<sizeof...(AllocArgs)>::type(),
+								typename gens<sizeof...(InitArgs)>::type());
+					}
+				template<class... AllocArgs, class... InitArgs, int... SA, int... SB>
+					shared			callAlloc(
+							long hash_code,
+							std::tuple<AllocArgs...>&& allocargs,
+							std::tuple<InitArgs...>&& initargs,
+							seq<SA...>,
+							seq<SB...>) {
+
+						auto f = find<shared,AllocArgs...>(hash_code);
+
+						shared s = (f->f_)(std::get<SA>(allocargs)...);
+
+						// call (possibly) virtual initialization method
+						s->init(std::get<SB>(initargs)...);
+
+						return s;
+					}
+
+
+		};
 }
 
 #endif

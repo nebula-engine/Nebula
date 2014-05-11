@@ -100,49 +100,79 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a>  </div>
+<a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Neb::Factory&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="Neb::Factory" -->
-<p><a class="el" href="classNeb_1_1Factory.html" title="Factory the app shall hold instances of Factory for the various types and use cases.">Factory</a> the app shall hold instances of <a class="el" href="classNeb_1_1Factory.html" title="Factory the app shall hold instances of Factory for the various types and use cases.">Factory</a> for the various types and use cases.  
+<!-- doxytag: class="Neb::Factory" --><!-- doxytag: inherits="Neb::FuncMap" -->
+<p><a class="el" href="classNeb_1_1Factory.html" title="Factory. Store and use allocator functions.">Factory</a>. Store and use allocator functions.  
  <a href="classNeb_1_1Factory.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Typed_8hpp_source.html">Typed.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Factory_8hpp_source.html">Factory.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Neb::Factory&lt; T &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classNeb_1_1Factory__inherit__graph.png" border="0" usemap="#Neb_1_1Factory_3_01T_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="Neb_1_1Factory_3_01T_01_4_inherit__map" id="Neb_1_1Factory_3_01T_01_4_inherit__map">
+<area shape="rect" id="node2" href="classNeb_1_1FuncMap.html" title="FuncMap A map containing std::function objects with arbitrary signatures Motivation: See Factory and ..." alt="" coords="17,5,124,35"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Neb::Factory&lt; T &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classNeb_1_1Factory__coll__graph.png" border="0" usemap="#Neb_1_1Factory_3_01T_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="Neb_1_1Factory_3_01T_01_4_coll__map" id="Neb_1_1Factory_3_01T_01_4_coll__map">
+<area shape="rect" id="node2" href="classNeb_1_1FuncMap.html" title="FuncMap A map containing std::function objects with arbitrary signatures Motivation: See Factory and ..." alt="" coords="17,5,124,35"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classNeb_1_1Factory-members.html">List of all members.</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNeb_1_1Factory_1_1____base__function.html">__base_function</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNeb_1_1Factory_1_1____function.html">__function</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNeb_1_1Factory_1_1invalid__args.html">invalid_args</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNeb_1_1Factory_1_1invalid__key.html">invalid_key</a></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="af8dac02d0e0327fcbe54bcb9aa419b59"></a><!-- doxytag: member="Neb::Factory::add" ref="af8dac02d0e0327fcbe54bcb9aa419b59" args="(long int hash_code, std::function&lt; T *(Args...)&gt; f)" -->
-template&lt;class... Args&gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>add</b> (long int hash_code, std::function&lt; T *(Args...)&gt; f)</td></tr>
-<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="ac499b39e795c35e0894811b2706d5c74"></a><!-- doxytag: member="Neb::Factory::alloc" ref="ac499b39e795c35e0894811b2706d5c74" args="(long hash_code, Args &amp;&amp;...args)" -->
-template&lt;class... Args&gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>alloc</b> (long hash_code, Args &amp;&amp;...args)</td></tr>
-<tr><td colspan="2"><h2><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4a797d4d36a2ff4a76c300643b848fe"></a><!-- doxytag: member="Neb::Factory::map_" ref="ac4a797d4d36a2ff4a76c300643b848fe" args="" -->
-std::map&lt; long int, <br class="typebreak"/>
-std::shared_ptr<br class="typebreak"/>
-&lt; <a class="el" href="structNeb_1_1Factory_1_1____base__function.html">__base_function</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map_</b></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classNeb_1_1Factory.html#ac499b39e795c35e0894811b2706d5c74">alloc</a> (long hash_code, Args &amp;&amp;...args)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T&gt;<br/>
 class Neb::Factory&lt; T &gt;</h3>
 
-<p><a class="el" href="classNeb_1_1Factory.html" title="Factory the app shall hold instances of Factory for the various types and use cases.">Factory</a> the app shall hold instances of <a class="el" href="classNeb_1_1Factory.html" title="Factory the app shall hold instances of Factory for the various types and use cases.">Factory</a> for the various types and use cases. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/Nebula/<a class="el" href="Typed_8hpp_source.html">Typed.hpp</a></li>
+<p><a class="el" href="classNeb_1_1Factory.html" title="Factory. Store and use allocator functions.">Factory</a>. Store and use allocator functions. </p>
+<dl class="user"><dt><b>Motivation:</b></dt><dd>create an object who type is unknown but identified by a has_code.</dd></dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>the app shall hold instances of <a class="el" href="classNeb_1_1Factory.html" title="Factory. Store and use allocator functions.">Factory</a> for the various types and use cases </dd></dl>
+</div><hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ac499b39e795c35e0894811b2706d5c74"></a><!-- doxytag: member="Neb::Factory::alloc" ref="ac499b39e795c35e0894811b2706d5c74" args="(long hash_code, Args &amp;&amp;...args)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<div class="memtemplate">
+template&lt;class... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T* <a class="el" href="classNeb_1_1Factory.html">Neb::Factory</a>&lt; T &gt;::<a class="el" href="classNeb_1_1Factory.html#ac499b39e795c35e0894811b2706d5c74">alloc</a> </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>hash_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>src/Nebula/Util/<a class="el" href="Factory_8hpp_source.html">Factory.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -162,7 +192,7 @@ class Neb::Factory&lt; T &gt;</h3>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 9 2014 15:24:41 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 11 2014 00:01:04 for Nebula by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
