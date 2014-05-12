@@ -36,7 +36,11 @@
 namespace Neb {
 	namespace Actor {
 		/** @brief %Base */
-		class Base: virtual public Neb::Actor::parent, virtual public Neb::Shape::parent, public gal::flag {
+		class Base:
+				virtual public Neb::Actor::parent,
+				virtual public Neb::Shape::parent,
+				virtual public Neb::Util::Release,
+				public gal::flag {
 			public:
 				struct flag {
 					enum e {
@@ -50,7 +54,7 @@ namespace Neb {
 				virtual ~Base();
 
 				//virtual void				init(Neb::weak_ptr<Neb::Actor::desc>);
-				virtual void				release();
+				virtual void				releaseDerived();
 				virtual void				cleanup();
 
 				void					i(int ni);
@@ -184,7 +188,7 @@ namespace Neb {
 				
 
 				/** @brief Parent */
-				Neb::Actor::parent_w				parent_;
+				Neb::Actor::Parent_w				parent_;
 		};
 	}
 }
