@@ -424,15 +424,6 @@ int Neb::Actor::Base::key_fun(int key, int scancode, int action, int mods) {
 
 	return 0;
 }
-Neb::Actor::Base_w			Neb::Actor::Base::isBase() {
-	return boost::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
-}
-Neb::Actor::RigidActor_w		Neb::Actor::Base::isRigidActor() {
-	return boost::dynamic_pointer_cast<Neb::Actor::RigidActor>(shared_from_this());
-}
-Neb::Actor::RigidBody::RigidBody_w	Neb::Actor::Base::isRigidBody() {
-	return boost::dynamic_pointer_cast<Neb::Actor::RigidBody::RigidBody>(shared_from_this());
-}
 
 
 
