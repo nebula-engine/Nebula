@@ -487,8 +487,6 @@ void neb::scene::scene::create_physics() {
 void neb::scene::scene::step(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
 
-
-
 	switch(user_type_)
 	{
 		case neb::scene::scene::LOCAL:
@@ -503,6 +501,10 @@ void neb::scene::scene::step(double time) {
 	}
 
 	// cleanup
+	/** @todo this will become obsolete if following procedure is used:
+	 * when it is determined (inside or outside Actor) that an actor is to be destoryed, call
+	 * @c parent.sig(i) when @c parent is the actor's parent and @c i is the actor's index
+	 */
 	auto it = actors_.map_.begin();
 	while(it != actors_.map_.end()) {
 		boost::shared_ptr<glutpp::actor::actor> actor = it->second;
