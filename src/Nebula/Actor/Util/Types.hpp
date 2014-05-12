@@ -20,11 +20,7 @@ namespace Neb {
 			};
 		};
 
-		class addr;
-		class raw;
-		class desc;
-		class parent;
-
+		// Core
 
 		class Base;
 		class Actor;
@@ -49,21 +45,20 @@ namespace Neb {
 
 		typedef std::weak_ptr<RigidActor>	RigidActor_w;
 
-		// Util
-
-		typedef std::unique_ptr<raw>		raw_u;
-		typedef std::weak_ptr<raw>		raw_w;
-
-
-		typedef std::weak_ptr<addr>		addr_w;
-
-
-
-
-		typedef std::shared_ptr<parent>			parent_s;
-		typedef std::weak_ptr<parent>			parent_w;
-		typedef std::unique_ptr<parent>			parent_u;
-
+		/** @brief Utilities */
+		namespace Util {
+			typedef int					index_type;
+			
+			class addr;
+			
+			typedef std::weak_ptr<addr>			addr_w;
+	
+			class parent;
+	
+			typedef std::shared_ptr<parent>			parent_s;
+			typedef std::weak_ptr<parent>			parent_w;
+			typedef std::unique_ptr<parent>			parent_u;
+		}
 
 		/** @brief %Control */
 		namespace Control {
