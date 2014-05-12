@@ -64,11 +64,24 @@ namespace Neb {
 				void					f(unsigned int flag);
 
 			private:
-				Neb::Actor::Base_w			create_actor(Neb::weak_ptr<Neb::Actor::desc>);
+				/** %brief Insert Actor
+				 * @param actor the actor to [copy and] insert
+				 * @return the newly created and stored actor
+				 * 
+				 * @note this function replaces the old @c create_actor function
+				 * 
+				 * @warning the value of @c actor.i_ must be accurate
+				 * 
+				 * the new pattern is, an actor object is deserialized and passed as @c actor
+				 * since the type of the actor MAY need to change (ex. between local and remote),
+				 * a copy of @c actor is create with the correct type
+				 */
+				virtual Neb::Actor::Base_s		insertActor(Neb::Actor::Base_s actor);
 			public:
 				Neb::Actor::Base_w			create_actor_local(Neb::weak_ptr<Neb::Actor::desc>);
 
 				Neb::Actor::Base_w			create_actor_remote(Neb::weak_ptr<Neb::Actor::addr>, Neb::weak_ptr<Neb::Actor::desc>);
+
 
 
 				//void							create_shapes(Neb::Actor::desc_w);
@@ -78,24 +91,13 @@ namespace Neb {
 				virtual void						init_physics() = 0;
 
 				/** @name Accessors @{ */
-				//Neb::app_s						get_app();
-				Neb::Scene::Base_s					get_scene();
-				Neb::weak_ptr<Neb::Actor::Base>				get_actor(int);
-				/** @brief get child actor
-				 *
-				 * casts gru actor to nebula actor
-				 * @param addr address of actor
-				 */
-				Neb::weak_ptr<Neb::Actor::Base>				get_actor(Neb::weak_ptr<Neb::Actor::addr> addr);
 				//virtual Neb::Actor::Base_s				get_projectile();
 				Neb::Actor::Util::Address				getAddress() const;
-
-
 				virtual physx::PxTransform				getPose();
 				virtual physx::PxTransform				getPoseGlobal();
 				/** @} */
 
-
+				/** @todo move to derived class */
 				virtual void						hit();
 				virtual void						damage(float);
 
