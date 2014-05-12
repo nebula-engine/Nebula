@@ -15,8 +15,14 @@ void	neb::simulation_callback::onContact(
 	
 	physx::PxActor* pxactor0 = pairHeader.actors[0];
 	physx::PxActor* pxactor1 = pairHeader.actors[1];
-	neb::Actor::Actor* actor0 = reinterpret_cast<neb::Actor::Actor*>(pxactor0->userData);
-	neb::Actor::Actor* actor1 = reinterpret_cast<neb::Actor::Actor*>(pxactor1->userData);
+	
+	/* cast the userdata to a plain old pointer
+	 * then call @c isActor to get the shared opinter
+	 * doing so keeps the actors alive long enough to return from the call to @c hit
+	 * allows the scene to release the actors safely during the call to @c hit
+	 */
+	neb::Actor::Actor* actor0 = reinterpret_cast<neb::Actor::Actor*>(pxactor0->userData)->isActor();
+	neb::Actor::Actor* actor1 = reinterpret_cast<neb::Actor::Actor*>(pxactor1->userData)->isActor();
 	
 	for(physx::PxU32 i=0; i < nbPairs; i++)
 	{
