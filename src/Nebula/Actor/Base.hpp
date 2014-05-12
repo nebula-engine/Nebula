@@ -12,7 +12,16 @@
 //#include <Nebula/Actor/Util/desc.hpp>
 #include <Nebula/Actor/Util/Address.hpp>
 #include <Nebula/Actor/Util/raw.hpp>
-#include <Nebula/Actor/Util/desc.hpp>
+
+#include <Nebula/Actor/Util/parent.hpp>
+#include <Nebula/Message/Actor/Update.hpp>
+#include <Nebula/Graphics/texture.hpp>
+#include <Nebula/Graphics/material.hpp>
+#include <Nebula/shape/shape.hpp>
+#include <Nebula/shape/parent.hpp>
+
+
+#include <Nebula/Actor/Util/raw.hpp>
 #include <Nebula/Actor/Util/parent.hpp>
 
 #include <Nebula/Message/Actor/Update.hpp>
@@ -23,8 +32,6 @@
 #include <Nebula/shape/shape.hpp>
 #include <Nebula/shape/parent.hpp>
 
-#include <Nebula/Actor/Util/raw.hpp>
-#include <Nebula/Util/weak_function.hpp>
 
 namespace Neb {
 	namespace Actor {
@@ -97,18 +104,17 @@ namespace Neb {
 				virtual int			fire();
 
 				/** @name Convertion @{ */
-				Neb::weak_ptr<Neb::Actor::Base>					isBase();
-				Neb::weak_ptr<Neb::Actor::RigidActor>				isRigidActor();
-				Neb::weak_ptr<Neb::Actor::RigidBody::RigidBody>			isRigidBody();
-				boost::shared_ptr<Neb::Actor::Base>				sharedBase();
+				Neb::Actor::Base_s				isBase();
+				Neb::Actor::RigidActor_s			isRigidActor();
+				Neb::Actor::RigidBody::RigidBody_s		isRigidBody();
 				/** @} */
 			public:
-				Neb::Actor::mode_update::e	mode_update_;
+				/** @todo what is this??? */
+				Neb::Actor::mode_update::e		mode_update_;
 
-				Neb::window::window_w	window_;
-
+				
 				struct {
-					std::shared_ptr< Neb::weak_function<int,int,int,int,int> >	key_fun_;
+					boost::signals2::connection		key_fun_;
 				} conn_;
 
 			public:
@@ -116,27 +122,32 @@ namespace Neb {
 				 * @param ar archive
 				 * @param version version
 				 */
-				template<class Archive> void			serialize(Archive & ar, unsigned int const & version) {
+				template<class Archive>
+				void			serialize(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("i", i_);
-					ar & boost::serialization::make_nvp("raw", raw_);
+					
+					serializeData(ar, version);
+					
 					ar & boost::serialization::make_nvp("actors", actors_);				
 					ar & boost::serialization::make_nvp("shapes", shapes_);
 				}
+				virtual void		serializeData(Archive & ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("raw", raw_);
+				}
+				
 				/** @brief %Serialize specialization */
-				void						serialize(
+				void			serialize(
 						Neb::Message::Actor::OUpdate & ar,
 						unsigned int const & version) {
 					auto address = getAddress();
-					ar & boost::serialization::make_nvp("address", address);
-					ar & boost::serialization::make_nvp("raw", raw_);
+					ar << boost::serialization::make_nvp("address", address);
+					ar << boost::serialization::make_nvp("raw", raw_);
 				}
 				/** @brief %Serialize specialization */
-				void						serialize(
+				void			serialize(
 						Neb::Message::Actor::IUpdate & ar,
 						unsigned int const & version) {
-					auto address = getAddress();
-					ar & boost::serialization::make_nvp("address", address);
-					ar & boost::serialization::make_nvp("raw", raw_);
+					ar >> boost::serialization::make_nvp("raw", raw_);
 				}
 
 
@@ -151,7 +162,7 @@ namespace Neb {
 
 				/** @} */
 				/** @name Render @{ */
-				void						draw(Neb::window::window_s, physx::PxMat44);
+				void						draw(Neb::window::window_s, physx::PxTransform);
 				/** @} */
 
 				/** @name Accessors @{ */
@@ -166,17 +177,17 @@ namespace Neb {
 			public:
 				/** @brief ID */
 				int						i_;
+				
 				/** @brief Data.
+				 * @todo dissolve raw so. move certain members of raw up the hierarchy
+				 * 
 				 * Consider eliminating the raw class entirely (or at least make it
 				 * a simple data container). If it is desired to serialize only the
 				 * raw data (like in actor update), or a subset of it, implement this by
 				 * overloading the serialize functions...
 				 */
 				Neb::Actor::Util::Raw				raw_;
-				/** @brief Actors */
-				Neb::Map<Neb::Actor::Base>			actors_;
-				/** @brief Shapes */
-				Neb::Map<Neb::Shape::shape>			shapes_;
+				
 
 				/** @brief Parent */
 				Neb::Actor::parent_w				parent_;
