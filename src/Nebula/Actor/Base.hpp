@@ -102,12 +102,6 @@ namespace Neb {
 
 				int				key_fun(int,int,int,int);
 				virtual int			fire();
-
-				/** @name Convertion @{ */
-				Neb::Actor::Base_s				isBase();
-				Neb::Actor::RigidActor_s			isRigidActor();
-				Neb::Actor::RigidBody::RigidBody_s		isRigidBody();
-				/** @} */
 			public:
 				/** @todo what is this??? */
 				Neb::Actor::mode_update::e		mode_update_;
