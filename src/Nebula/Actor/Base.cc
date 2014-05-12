@@ -23,6 +23,24 @@
 #include <Nebula/Graphics/window/window.hpp>
 
 
+Neb::Actor::Base::Base(Neb::Actor::parent_w parent):
+	actors_(Neb::master::global()->factories_.actor_base_),
+	shapes_(Neb::master::global()->factories_.shape_base_),
+	parent_(parent)
+{
+	NEBULA_ACTOR_BASE_FUNC;
+	
+	sig_release_.connect(
+		std::bind(
+			&Neb::Actor::Base::release,
+			this
+			));
+}
+Neb::Actor::Base::~Base() {
+	NEBULA_ACTOR_BASE_FUNC;
+}
+
+
 void Neb::Actor::Base::i(int ni) {
 	i_ = ni;
 }
@@ -141,16 +159,7 @@ void		Neb::Actor::Base::draw(Neb::window::window_s window, physx::PxMat44 space)
 
 
 
-Neb::Actor::Base::Base(Neb::Actor::parent_w parent):
-	actors_(Neb::master::global()->factories_.actor_base_),
-	shapes_(Neb::master::global()->factories_.shape_base_),
-	parent_(parent)
-{
-	NEBULA_ACTOR_BASE_FUNC;
-}
-Neb::Actor::Base::~Base() {
-	NEBULA_ACTOR_BASE_FUNC;
-}
+
 /*void Neb::Actor::Base::init(Neb::Actor::desc_w desc) {
   NEBULA_ACTOR_BASE_FUNC;
 
@@ -170,7 +179,6 @@ void Neb::Actor::Base::release() {
 	}
 
 	actors_.clear();
-
 
 	//conn_.key_fun_.disconnect();
 }
