@@ -29,9 +29,10 @@ namespace Neb {
 		/** @brief @Parent
 		 * abstract class for parent of an @Actor
 		 */
-		class parent: virtual public Neb::Core::Pose, virtual public Neb::Shared {
+		class Parent: virtual public Neb::Core::Pose, virtual public Neb::Shared {
 			public:
-				virtual ~parent() {}
+				Parent();
+				virtual ~Parent() {}
 
 				//virtual physx::PxMat44					getPoseGlobal() = 0;
 				//virtual physx::PxMat44					getPose() = 0;
@@ -40,6 +41,9 @@ namespace Neb {
 				Neb::Scene::Base_s			isScene();
 				
 				Neb::Scene::Base_s			getScene();
+				
+			protected:
+				Neb::Map<Neb::Actor::Base>		actors_;
 		};
 	}
 }
