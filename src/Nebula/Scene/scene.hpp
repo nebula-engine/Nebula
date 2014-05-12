@@ -36,6 +36,7 @@ namespace Neb {
 				//void				init(Neb::Scene::desc_w desc);
 				void				release();
 				physx::PxMat44			get_pose();
+				/** @name Main Loop @{ */
 				/** @brief render */
 				void				render(
 						double time,
@@ -44,7 +45,9 @@ namespace Neb {
 						Neb::window::window_s);
 				void				draw(Neb::window::window_s window);
 				void				resize(int w, int h);
-
+				void				draw();
+				void				step(double);
+				/** @} */
 
 
 			public:
@@ -71,12 +74,8 @@ namespace Neb {
 				//Neb::weak_ptr<Neb::Actor::Base>			create_actor_remote(Neb::Actor::addr_w, Neb::Actor::desc_w);
 				//void						add_deferred(Neb::Actor::desc_w);
 
-				/** @name Main Loop @{ */
-				void						draw();
-				void						step(double);
-				void						step_local(double);
-				void						step_remote(double);
-				/** @} */
+				
+				
 
 				void						fire(Neb::Actor::Base_w);
 				void						fire_local(Neb::Actor::Base_w);
@@ -120,6 +119,12 @@ namespace Neb {
 
 				Neb::Map<Neb::Actor::Base>				actors_;
 				std::map<std::string, Neb::Actor::Base_s>		actors_deferred_;
+		};
+		class Local: public Neb::Scene::Base {
+			
+		};
+		class Remote: public Neb::Scene::Base {
+			
 		};
 	}
 }
