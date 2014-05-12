@@ -3,6 +3,10 @@
 #include <Nebula/Actor/Util/parent.hpp>
 #include <Nebula/Scene/scene.hpp>
 
+Neb::Actor::Parent::Parent():
+	actors_(Neb::App::global()->factories_.actor_base_)
+{
+}
 Neb::weak_ptr<Neb::Actor::Base>			Neb::Actor::parent::isActor() {
 	
 	Neb::weak_ptr<Neb::Actor::Base> a = boost::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
