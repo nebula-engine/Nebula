@@ -1,12 +1,12 @@
-#ifndef NEBULA_ACTOR_UTIL_CAST_HH
-#define NEBULA_ACTOR_UTIL_CAST_HH
+#ifndef NEBULA_SHAPE_UTIL_CAST_HH
+#define NEBULA_SHAPE_UTIL_CAST_HH
 
 #include <Nebula/Util/Shared.hh>
 
-#include <Nebula/Actor/Util/Types.hh>
+#include <Nebula/Shape/Util/Types.hh>
 
 namespace Neb {
-        namespace Actor {
+        namespace Shape {
                 namespace Util {
                         class Cast: virtual public Neb::Util::Shared {
                                 public:

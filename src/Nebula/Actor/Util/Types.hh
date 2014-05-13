@@ -28,6 +28,9 @@ namespace Neb {
 		/** @brief %RigidBody @{ */
 		namespace RigidBody {
 			class RigidBody;
+
+			typedef std::shared_ptr<RigidBody>	RigidBody_s;
+			typedef std::unique_ptr<RigidBody>	RigidBody_u;
 			typedef std::weak_ptr<RigidBody>	RigidBody_w;
 		}
 
@@ -42,18 +45,28 @@ namespace Neb {
 		typedef std::unique_ptr<Base>		Base_u;
 
 
+		typedef std::shared_ptr<Actor>		Actor_s;
+		typedef std::weak_ptr<Actor>		Actor_w;
+		typedef std::unique_ptr<Actor>		Actor_u;
+
+		typedef std::shared_ptr<RigidActor>		RigidActor_s;
+		typedef std::weak_ptr<RigidActor>		RigidActor_w;
+		typedef std::unique_ptr<RigidActor>		RigidActor_u;
+
+
+
 		typedef std::weak_ptr<RigidActor>	RigidActor_w;
 
 		/** @brief Utilities */
 		namespace Util {
 			typedef int					index_type;
-			
+
 			class addr;
-			
+
 			typedef std::weak_ptr<addr>			addr_w;
-	
+
 			class Parent;
-	
+
 			typedef std::shared_ptr<Parent>			Parent_s;
 			typedef std::weak_ptr<Parent>			Parent_w;
 			typedef std::unique_ptr<Parent>			Parent_u;

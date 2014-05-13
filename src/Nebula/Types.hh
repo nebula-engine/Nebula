@@ -33,47 +33,6 @@ namespace Neb {
 
 
 
-	/** @brief %Shape */	
-	namespace Shape {
-		struct flag {
-			enum e {
-				SHOULD_RELEASE = 1 << 0,
-				IMAGE          = 1 << 1,
-			};
-		};
-
-		class Raw;
-		class desc;
-		class base;
-		class shape;
-		class parent;
-
-		typedef std::shared_ptr<base>		base_s;
-		typedef std::weak_ptr<base>		base_w;
-
-
-		typedef std::shared_ptr<desc>		desc_s;
-		typedef std::weak_ptr<desc>		desc_w;
-		typedef std::unique_ptr<desc>		desc_u;
-
-
-		typedef std::shared_ptr<Raw>		Raw_s;
-		typedef std::weak_ptr<Raw>		Raw_w;
-		typedef std::unique_ptr<Raw>		Raw_u;
-
-
-		typedef std::shared_ptr<shape>		shape_s;
-		typedef std::weak_ptr<shape>		shape_w;
-		typedef std::unique_ptr<shape>		shape_u;
-		
-
-		typedef std::shared_ptr<parent>		parent_s;
-		typedef std::unique_ptr<parent>		parent_u;
-		typedef std::weak_ptr<parent>		parent_w;
-
-	}
-
-
 }
 
 #endif

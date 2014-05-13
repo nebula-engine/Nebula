@@ -22,7 +22,7 @@ namespace Neb {
 		class light { //: public gal::flag {
 			public:
 				
-				light(Neb::Shape::shape_w);
+				light(Neb::Shape::Base_w);
 
 				void				i(int const &);
 				int const &			i() const;
@@ -55,7 +55,7 @@ namespace Neb {
 				texture				texture_shadow_map_;
 
 				//Neb::scene::scene_w		scene_;
-				boost::weak_ptr<Neb::Shape::shape>			shape_;
+				Neb::Light::Util::Parent_w		parent_;
 
 		};
 	}

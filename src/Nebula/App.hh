@@ -61,7 +61,7 @@ namespace Neb {
 				return u;
 			}*/
 			/** @name Search @{ */
-			Neb::weak_ptr<Neb::Actor::Base>					getActor(Neb::Actor::Address);
+			Neb::weak_ptr<Neb::Actor::Base>					getActor(Neb::Actor::Util::Address);
 
 
 			Neb::weak_ptr<Neb::window::window>					get_window(GLFWwindow*);
@@ -83,11 +83,13 @@ namespace Neb {
 				using pointer = std::shared_ptr<T>;
 				
 				typedef pointer< Neb::Factory<Neb::gui::object::object> >		Gui_Object;
-				typedef pointer< Neb::Factory<Neb::Actor::raw> >			Actor_Raw;
+
 				typedef pointer< Neb::Factory<Neb::Actor::Base> >			Actor_Base;
-				typedef pointer< Neb::Factory<Neb::Shape::Raw> >			Shape_Raw;
-				typedef pointer< Neb::Factory<Neb::Shape::shape> >			Shape_Base;
+
+				typedef pointer< Neb::Factory<Neb::Shape::Base> >			Shape_Base;
+
 				typedef pointer< Neb::Factory<Neb::Light::light> >			Light_Base;
+
 				typedef pointer< Neb::Factory<Neb::window::window> >			Window;
 
 				//typedef pointer< Neb::Factory<Neb::Scene::Raw> >			SceneRaw;

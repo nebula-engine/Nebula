@@ -19,7 +19,7 @@
 namespace gal {
 	namespace network {
 		/// message
-		class message: public Neb::Shared {
+		class message: public Neb::Util::Shared {
 			public:
 				friend class gal::network::communicating;
 			public:

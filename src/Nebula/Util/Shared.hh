@@ -4,13 +4,15 @@
 #include <boost/enable_shared_from_this.hpp>
 
 namespace Neb {
-	/** @brief %Shared.
-	 * avoid multiple enabled_shared_from_this bases
-	 */
-	class Shared: virtual public std::enable_shared_from_this<Shared> {
-		public:
-		virtual ~Shared() {}
-	};
+	namespace Util {
+		/** @brief %Shared.
+		 * avoid multiple enabled_shared_from_this bases
+		 */
+		class Shared: virtual public std::enable_shared_from_this<Shared> {
+			public:
+				virtual ~Shared() {}
+		};
+	}
 }
 
 #endif

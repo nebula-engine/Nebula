@@ -15,7 +15,14 @@
 #include <math/geo/polyhedron.hpp>
 */
 #include <Nebula/config.hh> // Nebula/config.hpp.in
+
 #include <Nebula/Actor/Util/Types.hh>
+#include <Nebula/Actor/Util/Cast.hh>
+
+//#include <Nebula/Shape/Util/Types.hh>
+#include <Nebula/Shape/Util/Cast.hh>
+
+
 #include <Nebula/Util/Shared.hh>
 
 #include <Nebula/Graphics/material.hh>
@@ -29,7 +36,11 @@ namespace Neb {
 			/** @brief @Parent
 			 * abstract class for parent of a shape
 			 */
-			class Parent: virtual public Neb::Core::Pose, virtual public Neb::Shared {
+			class Parent:
+				virtual public Neb::Actor::Util::Cast,
+				virtual public Neb::Shape::Util::Cast,
+				virtual public Neb::Core::Pose,
+				virtual public Neb::Util::Shared {
 				public:
 					Parent();
 					virtual ~Parent() {}
@@ -37,12 +48,8 @@ namespace Neb {
 					//virtual physx::PxMat44					getPoseGlobal() = 0;
 					//virtual physx::PxMat44					getPose() = 0;
 
-
-					Neb::Actor::Base_s			isActor();
-					Neb::Shape::shape_s			isShape();
-
 					/** @brief Shapes */
-					Neb::Map<Neb::Shape::shape>			shapes_;
+					Neb::Map<Neb::Shape::Base>		shapes_;
 
 			};
 		}
