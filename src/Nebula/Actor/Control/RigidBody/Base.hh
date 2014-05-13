@@ -17,9 +17,7 @@ namespace Neb {
 				 * This creates requirements for how control works. All infomation needed to determine 
 				 * force and torque at a given point in time must be stored in raw.
 				 **/
-				class Control {
-					public:
-				
+				class Base {
 					public:
 						Control();
 
@@ -37,10 +35,18 @@ namespace Neb {
 					private:
 
 					public:
-						Neb::Actor::Base_w				actor_;
+						Neb::Actor::Base_w		actor_;
 
-						Neb::Actor::Control::RigidBody::Raw		raw_;
+						physx::PxQuat			q_target_;
+						physx::PxVec3			p_target_;
 
+						physx::PxVec3			f_;
+						physx::PxVec3			t_;
+
+						physx::PxVec3			force_;
+						physx::PxVec3			torque_;
+
+		
 						struct
 						{
 							boost::signals2::connection	key_fun_;
@@ -48,7 +54,6 @@ namespace Neb {
 
 						//gal::control::control		pid_;
 
-						double last_;
 				};
 			}
 		}
