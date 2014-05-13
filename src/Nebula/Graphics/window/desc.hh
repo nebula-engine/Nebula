@@ -12,13 +12,7 @@ namespace Neb {
 					title_length_max = 20
 				};
 
-				int		i_;
-				unsigned int	flag_;
-				int		x_;
-				int		y_;
-				int		w_;
-				int		h_;
-				char		title_[title_length_max];
+				
 
 		};
 		class desc {
