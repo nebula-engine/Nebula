@@ -1,0 +1,20 @@
+#ifndef NEBULA_GRAPHICS_CONTEXT_UTIL_PARENT_HH
+#define NEBULA_GRAPHICS_CONTEXT_UTIL_PARENT_HH
+
+namespace Neb {
+        namespace Graphics {
+                namespace Context {
+                        namespace Util {
+                                class Parent {
+                                        public:
+                                                
+                                                
+                                                
+                                                Neb::Map<Neb::Graphics::Context::Base>          contexts_;
+                                };
+                        }
+                }
+        }
+}
+
+#endif
