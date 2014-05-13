@@ -2,18 +2,19 @@
 
 
 void            Neb::Scene::Local::step(double time) {
-	NEBULA_DEBUG_1_FUNCTION;
-
+	
+	Neb::Scene::Base::stepPre(time);
+	
 	auto app = get_app();
-
+	
 	double dt = time - last_;
 	last_ = time;
-
+	
 	// timer
 	//timer_set_.step(time);
-
+	
 	//physx::PxU32 nbPxactor = px_scene_->getNbActors(physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC);
-
+	
 	
 	// step actors
 	for(auto it = actors_.map_.cbegin(); it != actors_.map_.cend(); ++it) {
@@ -79,6 +80,8 @@ void            Neb::Scene::Local::step(double time) {
 	//physx::PxVec3 g(0,-0.25,0);
 	//vehicle_manager_.vehicle_suspension_raycasts(px_scene_);
 	//vehicle_manager_.update((float)dt, g);
-
+	
 	send_actor_update();
+	
+	Neb::Scene::base::stepPost(time);
 }
