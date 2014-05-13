@@ -10,7 +10,22 @@
 #include <Nebula/Graphics/glsl/Uniform/uniform.hpp>
 
 
-Neb::light::light::light(Neb::Shape::shape_w shape): shape_(shape) {
+Neb::light::light::light(Neb::Light::Util::Parent_s parent):
+	parent_(parent),
+	i_(-1),
+	flag_(0),
+	pos_(physx::PxVec4(0.0, 0.0, 0.0, 1.0)),
+	ambient_(Neb::Color::black<float>()),
+	diffuse_(Neb::Color::white<float>()),
+	specular_(Neb::Color::white<float>()),
+	spot_direction_(physx::PxVec3(0.0, 0.0, -1.0)),
+	spot_cutoff_(10.0),
+	spot_exponent_(1.0),
+	spot_light_cos_cutoff_(1.0),
+	atten_const_(1.0),
+	atten_linear_(0.0),
+	atten_quad_(0.0)
+{
 	GLUTPP_DEBUG_0_FUNCTION;
 }
 unsigned int Neb::light::light::f() {
