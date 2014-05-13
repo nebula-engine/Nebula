@@ -1,7 +1,7 @@
 #include <Neb/Scene/Local.hh>
 
 
-void            Neb::Scene::Local::step(double time) {
+void            Neb::Scene::Local::stepDeriv(double time) {
 	
 	/* steps the actors */
 	Neb::Scene::Base::stepPre(time);
