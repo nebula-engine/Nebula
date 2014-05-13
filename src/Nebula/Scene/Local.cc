@@ -3,6 +3,7 @@
 
 void            Neb::Scene::Local::step(double time) {
 	
+	/* steps the actors */
 	Neb::Scene::Base::stepPre(time);
 	
 	auto app = get_app();
@@ -15,13 +16,6 @@ void            Neb::Scene::Local::step(double time) {
 	
 	//physx::PxU32 nbPxactor = px_scene_->getNbActors(physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC);
 	
-	
-	// step actors
-	for(auto it = actors_.map_.cbegin(); it != actors_.map_.cend(); ++it) {
-		it->second->step_local(time);
-	}
-
-
 	// PxScene
 	assert(px_scene_ != NULL);
 
@@ -83,5 +77,6 @@ void            Neb::Scene::Local::step(double time) {
 	
 	send_actor_update();
 	
+	/* cleans up */
 	Neb::Scene::base::stepPost(time);
 }
