@@ -12,9 +12,12 @@
 
 
 namespace Neb {
-	class App: virtual public Neb::Shared, public gal::flag {
+	class App:
+		virtual public Neb::Util::Shared,
+		public Neb::Graphics::Window::Util::Parent
+	{
 		public:
-			typedef std::map< GLFWwindow*, Neb::window::window_s >			window_map_type;
+			typedef std::map< GLFWwindow*, Neb::window::window_s >			glfwwindow_map_type;
 		private:
 			static void static_error_fun(int,char const *);
 			static void static_window_pos_fun(GLFWwindow*,int,int);
@@ -151,22 +154,25 @@ namespace Neb {
 			/** @} */
 
 		public:
-			Neb::Map<Neb::window::window>			windows_;
+			
 			Neb::Map<Neb::gui::layout>			layouts_;
 			Neb::Map<Neb::Scene::Base>			scenes_;
 		private:
 			// network
-			Neb::unique_ptr<Neb::network::server>		server_;
-			Neb::unique_ptr<Neb::network::client>		client_;
+			/** @todo make derived App classes for Server and Client??? */
+			Neb::Network::Server_s				server_;
+			Neb::Network::Client_s				client_;
 
 
-			unsigned int							flag_;
+			Neb::App::Util::Flag						flag_;
 			//GLFWwindow*							currentIdleWindow_;
-			window_map_type							windows_glfw_;
-			static Neb::window::window_w					window_main_;
+			glfwwindow_map_type						windows_glfw_;
+			static Neb::Graphics::Window::Base_w				window_main_;
 			std::map<int, std::shared_ptr<Neb::glsl::program> >		programs_;
 			std::shared_ptr<Neb::glsl::program>				current_;
-			static Neb::App_s						g_master_;
+			
+			/** %brief global app object */
+			static Neb::App::Base_s						g_app_;
 	};
 }
 
