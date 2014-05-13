@@ -3,8 +3,6 @@
 
 void            Neb::Scene::Local::stepDeriv(double time) {
 	
-	/* steps the actors */
-	Neb::Scene::Base::stepPre(time);
 	
 	auto app = get_app();
 	
@@ -77,6 +75,4 @@ void            Neb::Scene::Local::stepDeriv(double time) {
 	
 	send_actor_update();
 	
-	/* cleans up */
-	Neb::Scene::base::stepPost(time);
 }
