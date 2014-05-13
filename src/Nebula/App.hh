@@ -3,7 +3,7 @@
 
 #include <boost/asio/io_service.hpp>
 
-#include <Nebula/Graphics/window/window.hh>
+#include <Nebula/Graphics/Window/Base.hh>
 
 #include <Nebula/Types.hh>
 #include <Nebula/Util/Shared.hh>

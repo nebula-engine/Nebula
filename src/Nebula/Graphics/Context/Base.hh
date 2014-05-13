@@ -9,8 +9,9 @@
 #include <Nebula/Graphics/Types.hh>
 
 #include <Nebula/Graphics/gui/layout.hh>
-#include <Nebula/Graphics/window/window.hh>
-#include <Nebula/Scene/scene.hh>
+#include <Nebula/Graphics/Window/Base.hh>
+
+#include <Nebula/Scene/Base.hh>
 
 namespace Neb {
 	/** @brief Renderable.

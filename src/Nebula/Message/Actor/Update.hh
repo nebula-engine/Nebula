@@ -4,7 +4,7 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 
-#include <Nebula/Scene/Types.hh>
+#include <Nebula/Scene/Util/Types.hh>
 
 #include <Nebula/config.hh> // gru/config.hpp.in
 //#include <Nebula/master.hh>
@@ -14,7 +14,7 @@
 //#include <Nebula/Actor/event.hh>
 #include <Nebula/Actor/Base.hh>
 
-#include <Nebula/Scene/scene.hh>
+#include <Nebula/Scene/Base.hh>
 
 #include <Nebula/Message/Base.hh>
 

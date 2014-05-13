@@ -11,23 +11,20 @@
 //#include <glfw3.h>
 
 #include <Nebula/config.hh>
-#include <Nebula/Graphics/window/desc.hh>
-#include <Nebula/Graphics/window/window.hh>
-#include <Nebula/Memory/smart_ptr.hh>
+
+#include <Nebula/Graphics/Window/Base.hh>
 
 //#include <Nebula/actor/event.hh>
 
-#include <Nebula/renderable.hh>
-#include <Nebula/Graphics/window/desc.hh>
-#include <Nebula/Graphics/window/window.hh>
-//#include <Nebula/scene/desc.hh>
+#include <Nebula/Graphics/Context/Base.hh>
+#include <Nebula/Graphics/Window/Base.hh>
+
 #include <Nebula/network/message.hh>
-//#include <Nebula/master.hh>
 
 
 #include <Nebula/Actor/rigid_body/rigid_body.hh>
 
-#include <Nebula/control/rigid_body/control.hh>
+#include <Nebula/Actor/Control/RigidBody/Base.hh>
 
 #include <Nebula/App.hh>
 

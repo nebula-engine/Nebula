@@ -13,7 +13,7 @@
 #include <deque>
 
 #include <Nebula/config.hh>
-#include <Nebula/Scene/Types.hh>
+#include <Nebula/Scene/Util/Types.hh>
 
 namespace Neb {
 	namespace Scene {

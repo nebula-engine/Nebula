@@ -6,8 +6,8 @@
 #include <PxPhysicsAPI.h>
 
 #include <Nebula/config.hh>
-//#include <Nebula/scene/desc.hh>
-#include <Nebula/Scene/scene.hh>
+
+#include <Nebula/Scene/Base.hh>
 
 class DefaultErrorCallback:
 	public physx::PxErrorCallback

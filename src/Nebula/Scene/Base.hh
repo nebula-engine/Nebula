@@ -7,13 +7,12 @@
 #include <Nebula/Util/Map.hh>
 
 #include <Nebula/Types.hh>
-#include <Nebula/Scene/Types.hh>
+
+#include <Nebula/Scene/Util/Types.hh>
 
 #include <Nebula/config.hh> // Nebula/config.hpp.in
 #include <Nebula/Graphics/glsl/program.hh>
 
-
-#include <Nebula/Scene/raw.hh>
 
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Graphics/Camera/View/Base.hh>

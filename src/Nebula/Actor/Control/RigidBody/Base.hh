@@ -3,7 +3,6 @@
 
 #include <Nebula/Actor/Rigid_Actor.hh>
 #include <Nebula/config.hh>
-#include <Nebula/control/rigid_body/raw.hh>
 
 namespace Neb {
 	namespace Actor {

@@ -8,7 +8,7 @@
 
 #include <Nebula/Graphics/gui/object/object.hh>
 #include <Nebula/Graphics/gui/object/object_factory.hh>
-#include <Nebula/Graphics/window/window.hh>
+#include <Nebula/Graphics/Window/Base.hh>
 
 namespace Neb {
 	namespace gui {

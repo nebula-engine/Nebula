@@ -26,7 +26,7 @@
 //#include <Nebula/master.hh>
 
 #include <Nebula/Graphics/glsl/program.hh>
-#include <Nebula/Graphics/Light/light.hh>
+#include <Nebula/Graphics/Light/Base.hh>
 #include <Nebula/Graphics/material.hh>
 #include <Nebula/Graphics/mesh.hh>
 
@@ -44,12 +44,12 @@ namespace Neb {
 		};
 
 
-		class shape: virtual public Neb::Shape::Util::Parent, public gal::flag {
+		class Base: virtual public Neb::Shape::Util::Parent, public gal::flag {
 			public:
 				typedef std::shared_ptr<Neb::Shape::buffer>		buffer_t;
 				typedef std::map<Neb::window::window*,buffer_t>	map_t;
 
-				shape(Neb::Shape::parent_w parent);
+				Base(Neb::Shape::Utilparent_w parent);
 				~shape();
 				
 				/** @name Accessors @{ */

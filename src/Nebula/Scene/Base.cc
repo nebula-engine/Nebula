@@ -593,7 +593,26 @@ void neb::scene::scene::fire_remote(neb::Actor::Base_s actor) {
 
 	get_app()->send_client(msg);
 }	
+void Neb::Scene::desc::load(char const* filename) {
+	GLUTPP_DEBUG_0_FUNCTION;
 
+	/*	
+	tinyxml2::XMLDocument doc;
+	if(doc.LoadFile(c))
+	{
+		printf("error loading %s\n", c);
+		abort();
+	}
+	*/
+	std::ifstream ifs(filename);
+	assert(ifs.good());
+	boost::archive::xml_iarchive ia(ifs);
+	
+	serialize(ia,0);
+	//ia >> *this;
+
+//	load(doc.FirstChildElement("scene"));
+}
 
 
 

@@ -5,9 +5,11 @@
 
 namespace Neb {
 	namespace Light {
-		DEFINE_FLAG(Flag,
-				((SHOULD_RELEASE)(1 << 0))
-			   )
+		namespace Util {
+			DEFINE_FLAG(Flag,
+					((SHOULD_RELEASE)(1 << 0))
+				   )
+		}
 	}
 }
 

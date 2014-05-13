@@ -7,11 +7,12 @@
 
 #include <Nebula/config.hh>
 #include <Nebula/Types.hh>
-#include <Nebula/renderable.hh>
-#include <Nebula/Graphics/window/desc.hh>
+
+#include <Nebula/Graphics/Context/Base.hh>
+
 #include <Nebula/Graphics/texture.hh>
 //#include <Nebula/camera.hh>
-#include <Nebula/Graphics/Light/light.hh>
+#include <Nebula/Graphics/Light/Base.hh>
 //#include <Nebula/master.hh>
 #include <Nebula/Graphics/glsl/program.hh>
 #include <Nebula/Graphics/glsl/shader.hh>
