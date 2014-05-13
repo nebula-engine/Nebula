@@ -1,7 +1,7 @@
 #ifndef NEBULA_TYPES_HH
 #define NEBULA_TYPES_HH
 
-#include <Nebula/Map.hpp>
+#include <Nebula/Util/Map.hpp>
 
 /** @brief root namespace for @gru */
 namespace Neb {
