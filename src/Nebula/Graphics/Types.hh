@@ -29,7 +29,7 @@ namespace Neb {
 		class light;
 
 
-		typedef Neb::unique_ptr<raw>	raw_u;
+		typedef std::unique_ptr<raw>	raw_u;
 
 
 		typedef std::shared_ptr<desc>	desc_s;
@@ -64,8 +64,8 @@ namespace Neb {
 		class layout;
 
 		typedef std::shared_ptr<layout>		layout_s;
-		typedef Neb::unique_ptr<layout>		layout_u;
-		typedef Neb::weak_ptr<layout>		layout_w;
+		typedef std::unique_ptr<layout>		layout_u;
+		typedef std::weak_ptr<layout>		layout_w;
 
 
 		namespace object {
@@ -90,7 +90,7 @@ namespace Neb {
 			class Ridealong;
 
 			typedef std::shared_ptr<Base>		Base_s;
-			typedef Neb::unique_ptr<Base>		Base_u;
+			typedef std::unique_ptr<Base>		Base_u;
 
 			typedef std::shared_ptr<Ridealong>	Ridealong_s;
 			typedef std::weak_ptr<Ridealong>	Ridealong_w;
@@ -100,7 +100,7 @@ namespace Neb {
 			class Perspective;
 
 			typedef std::shared_ptr<Base>		Base_s;
-			typedef Neb::weak_ptr<Base>		Base_w;
+			typedef std::weak_ptr<Base>		Base_w;
 			typedef std::unique_ptr<Base>		Base_u;
 		}
 	}
@@ -110,8 +110,8 @@ namespace Neb {
 	class renderable;
 
 	//typedef Neb::unique_ptr<renderable>	renderable_u;
-	typedef Neb::unique_ptr<renderable>	renderable_u;
-	typedef Neb::weak_ptr<renderable>	renderable_w;
+	typedef std::unique_ptr<renderable>	renderable_u;
+	typedef std::weak_ptr<renderable>	renderable_w;
 
 
 }

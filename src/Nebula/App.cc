@@ -10,29 +10,29 @@
 #include <GLFW/glfw3.h>
 //#include <glfw3.h>
 
-#include <Nebula/config.hpp>
-#include <Nebula/Graphics/window/desc.hpp>
-#include <Nebula/Graphics/window/window.hpp>
-#include <Nebula/Memory/smart_ptr.hpp>
+#include <Nebula/config.hh>
+#include <Nebula/Graphics/window/desc.hh>
+#include <Nebula/Graphics/window/window.hh>
+#include <Nebula/Memory/smart_ptr.hh>
 
-//#include <Nebula/actor/event.hpp>
+//#include <Nebula/actor/event.hh>
 
-#include <Nebula/renderable.hpp>
-#include <Nebula/Graphics/window/desc.hpp>
-#include <Nebula/Graphics/window/window.hpp>
-//#include <Nebula/scene/desc.hpp>
-#include <Nebula/network/message.hpp>
-//#include <Nebula/master.hpp>
+#include <Nebula/renderable.hh>
+#include <Nebula/Graphics/window/desc.hh>
+#include <Nebula/Graphics/window/window.hh>
+//#include <Nebula/scene/desc.hh>
+#include <Nebula/network/message.hh>
+//#include <Nebula/master.hh>
 
 
-#include <Nebula/Actor/rigid_body/rigid_body.hpp>
+#include <Nebula/Actor/rigid_body/rigid_body.hh>
 
-#include <Nebula/control/rigid_body/control.hpp>
+#include <Nebula/control/rigid_body/control.hh>
 
 #include <Nebula/App.hh>
 
-#include <Nebula/network/message.hpp>
-#include <Nebula/physics.hpp>
+#include <Nebula/network/message.hh>
+#include <Nebula/physics.hh>
 
 /** @todo since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers.
  * to avoid unwanted shared_ptrs to owned objects, care must be taken when passing these objects around.

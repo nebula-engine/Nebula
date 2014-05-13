@@ -3,12 +3,12 @@
 
 #include <boost/asio/io_service.hpp>
 
-#include <Nebula/Graphics/window/window.hpp>
+#include <Nebula/Graphics/window/window.hh>
 
-#include <Nebula/Types.hpp>
-#include <Nebula/Util/Shared.hpp>
-#include <Nebula/network2/server.hpp>
-#include <Nebula/network2/client.hpp>
+#include <Nebula/Types.hh>
+#include <Nebula/Util/Shared.hh>
+#include <Nebula/network2/server.hh>
+#include <Nebula/network2/client.hh>
 
 
 namespace Neb {
@@ -61,7 +61,7 @@ namespace Neb {
 				return u;
 			}*/
 			/** @name Search @{ */
-			Neb::weak_ptr<Neb::Actor::Base>					getActor(Neb::Actor::addr);
+			Neb::weak_ptr<Neb::Actor::Base>					getActor(Neb::Actor::Address);
 
 
 			Neb::weak_ptr<Neb::window::window>					get_window(GLFWwindow*);
