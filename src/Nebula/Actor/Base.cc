@@ -47,13 +47,6 @@ void Neb::Actor::Base::i(int ni) {
 int Neb::Actor::Base::i() const {
 	return i_;
 }
-
-unsigned int Neb::Actor::Base::f() const {
-	return raw_.flag_;
-}
-void Neb::Actor::Base::f(unsigned int flag) {
-	raw_.flag_ = flag;
-}
 void Neb::Actor::Base::cleanup() {
 	NEBULA_ACTOR_BASE_FUNC;
 	//printf("%s\n",__PRETTY_FUNCTION__);
@@ -90,11 +83,11 @@ void Neb::Actor::Base::cleanup() {
 		}
 	}
 }
-Neb::Actor::parent_s		Neb::Actor::Base::getParent() {
+Neb::Actor::Util::Parent_s	Neb::Actor::Base::getParent() {
 	return parent_.lock();
 }
 physx::PxTransform		Neb::Actor::Base::getPose() {
-	return raw_.pose_;
+	return pose_;
 }
 physx::PxTransform		Neb::Actor::Base::getPoseGlobal() {
 	NEBULA_ACTOR_BASE_FUNC;
@@ -153,13 +146,6 @@ void		Neb::Actor::Base::draw(Neb::window::window_s window, physx::PxMat44 space)
 		it->second.ptr_->draw(window, space);
 	}
 }
-
-
-
-
-
-
-
 /*void Neb::Actor::Base::init(Neb::Actor::desc_w desc) {
   NEBULA_ACTOR_BASE_FUNC;
 
@@ -174,12 +160,12 @@ void		Neb::Actor::Base::draw(Neb::window::window_s window, physx::PxMat44 space)
   }*/
 void Neb::Actor::Base::release() {
 
-	for(auto it = actors_.begin(); it != actors_.end(); ++it) {
+	std::for_each(actors_.map_.cbegin(), actors_.map_.cend(), [] (auto it) {
 		it->second.ptr_->release();
-	}
-
-	actors_.clear();
-
+	} );
+	
+	actors_.map_.clear();
+	
 	//conn_.key_fun_.disconnect();
 }
 /*void Neb::Actor::Base::create_children(Neb::Actor::desc_w desc) {
@@ -273,51 +259,12 @@ actors_.map_.emplace(desc->i_, std::move(actor));
 
 return actor;
 }*/
-/*Neb::app_w			Neb::Actor::Base::get_app() {
-	NEBULA_ACTOR_BASE_FUNC;
-	auto scene = get_scene();
-	//assert(!scene->app_.expired());
-	return scene->get_app();
-}*/
+
 Neb::Scene::Base_s		Neb::Actor::Base::get_scene() {
 	NEBULA_ACTOR_BASE_FUNC;
 	auto s = parent_.lock();
 	assert(s);
 	return s->getScene();
-}
-Neb::Actor::Base_s		Neb::Actor::Base::get_actor(int i) {
-	NEBULA_ACTOR_BASE_FUNC;
-
-	auto it = actors_.find(i);
-	Neb::Actor::Base_w a;
-	if(it == actors_.end())
-	{
-		return a;
-	}
-	else
-	{
-		return it->second;
-	}
-}
-Neb::Actor::Base_w Neb::Actor::Base::get_actor(Neb::Actor::addr_w addr) {
-	NEBULA_ACTOR_BASE_FUNC;
-
-	//auto vec = addr->get_vec();
-	//assert(vec);
-	assert(!addr->vec_.empty());
-
-	int i = addr->vec_.front();
-	addr->vec_.pop_front();
-
-	auto actor = get_actor(i);
-	assert(actor);
-
-	if(!addr->vec_.empty())
-	{
-		return actor->get_actor(addr);
-	}
-
-	return actor;
 }
 int	Neb::Actor::Base::fire() {
 	NEBULA_ACTOR_BASE_FUNC;
@@ -328,23 +275,15 @@ int	Neb::Actor::Base::fire() {
 
 	return 1;
 }
-void Neb::Actor::Base::step_local(double time) {
+void Neb::Actor::Base::step(double dt) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	for(auto it = shapes_.begin(); it != shapes_.end(); ++it) {
-		it->second->step(time);
-	}
-
-
+	std:for_each(shapes_.map_.cbegin(), shape_.map_.cend(), [] (auto it) {
+		it->second.ptr_->step(dt);
+	} );
+	
 }
-void Neb::Actor::Base::step_remote(double time) {
-	NEBULA_ACTOR_BASE_FUNC;
-
-	for(auto it = shapes_.begin(); it != shapes_.end(); ++it) {
-		it->second->step(time);
-	}
-}
-void Neb::Actor::Base::create_shapes(Neb::Actor::desc_w desc) {
+/*void Neb::Actor::Base::create_shapes(Neb::Actor::desc_w desc) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	//auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
@@ -364,7 +303,7 @@ void Neb::Actor::Base::create_shapes(Neb::Actor::desc_w desc) {
 
 		shapes_.push_back(shape);
 	}
-}
+}*/
 void Neb::Actor::Base::hit() {
 
 	physx::PxU32 w2 = raw_->simulation_.word2;
