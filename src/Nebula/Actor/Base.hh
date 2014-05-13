@@ -95,12 +95,41 @@ namespace Neb {
 				virtual void						create_physics() = 0;
 				virtual void						init_physics() = 0;
 
+
+
+				/** @name Stepping @{ */
+				virtual void					step(double dt) final;
+				virtual void					stepActorBase(double dt) = 0;
+				
+				//virtual void					step_local(double);
+				//virtual void					step_remote(double);
+
+				/** @} */
+				/** @name Render @{ */
+				void						draw(Neb::window::window_s, physx::PxTransform);
+				/** @} */
+
+
+
+
 				/** @name Accessors @{ */
 				//virtual Neb::Actor::Base_s				get_projectile();
 				Neb::Actor::Util::Address				getAddress() const;
 				virtual physx::PxTransform				getPose();
 				virtual physx::PxTransform				getPoseGlobal();
 				/** @} */
+
+
+				
+
+				/** @name Accessors @{ */
+				Neb::Actor::Util::Parent_s			getParent();
+				void						setPose(physx::PxTransform pose);
+				/** @} */
+
+				void						notify_foundation_change_pose();
+				void						load_lights(int&, physx::PxMat44);
+
 
 				/** @todo move to derived class */
 				virtual void						hit();
@@ -203,27 +232,7 @@ namespace Neb {
 
 
 
-				/** @name Stepping @{ */
-				virtual void					step(double time);
-				virtual void					step_local(double);
-				virtual void					step_remote(double);
-
-				//virtual void					step_local(double);
-				//virtual void					step_remote(double);
-
-				/** @} */
-				/** @name Render @{ */
-				void						draw(Neb::window::window_s, physx::PxTransform);
-				/** @} */
-
-				/** @name Accessors @{ */
-				Neb::Actor::Util::Parent_s			getParent();
-				void						setPose(physx::PxTransform pose);
-				/** @} */
-
-				void						notify_foundation_change_pose();
-				void						load_lights(int&, physx::PxMat44);
-
+			
 
 			public:
 				/** @brief ID */
