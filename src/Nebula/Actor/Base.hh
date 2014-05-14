@@ -106,7 +106,7 @@ namespace Neb {
 
 				/** @} */
 				/** @name Render @{ */
-				void						draw(Neb::window::window_s, physx::PxTransform);
+				void						draw(Neb::Graphics::Window::Base_s, physx::PxTransform);
 				/** @} */
 
 
@@ -137,7 +137,7 @@ namespace Neb {
 
 
 				// signal
-				void				connect(Neb::window::window_w);
+				void				connect(Neb::Graphics::Window::Base_w);
 
 
 				int				key_fun(int,int,int,int);

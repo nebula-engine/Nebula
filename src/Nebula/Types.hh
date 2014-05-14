@@ -18,18 +18,7 @@ namespace Neb {
 
 
 
-	namespace window {
-		
-		class raw;
-		class desc;
-		class window;
 
-		typedef std::shared_ptr<window>		window_s;
-		typedef std::weak_ptr<window>		window_w;
-
-		typedef std::shared_ptr<desc>		desc_s;
-
-	}
 
 
 

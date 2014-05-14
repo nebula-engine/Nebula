@@ -9,34 +9,28 @@
 #include <Nebula/Types.hh>
 
 #include <Nebula/Graphics/Context/Base.hh>
-
+#include <Nebula/Graphics/Context/Util/Parent.hh>
+#include <Nebula/Graphics/Types.hh>
 #include <Nebula/Graphics/texture.hh>
-//#include <Nebula/camera.hh>
 #include <Nebula/Graphics/Light/Base.hh>
-//#include <Nebula/master.hh>
 #include <Nebula/Graphics/glsl/program.hh>
 #include <Nebula/Graphics/glsl/shader.hh>
-#include <Nebula/Graphics/gui/layout.hh>
+#include <Nebula/Graphics/GUI/Layout/Base.hh>
+#include <Nebula/Graphics/Window/Util/Flag.hh>
+
 #include <Nebula/Signals.hh>
-/*
-#include <math/mat44.hpp>
-#include <math/vec4.hpp>
-#include <math/vec3.hpp>
-*/
-//#include <galaxy/sig/signal.hpp>
-//#include <galaxy/flag.hpp>
 
 
 
 namespace Neb {
-	namespace Graphics
+	namespace Graphics {
 		namespace Window {
 			class Base:
 				public Neb::Graphics::Context::Util::Parent
 			{
 				public:
-					window(Neb::window::desc_s desc);
-					~window();
+					Base(Neb::Graphics::Window::Util::Parent_s parent);
+					virtual ~Base() = 0;
 				
 				public:
 					struct flag {
@@ -60,7 +54,7 @@ namespace Neb {
 					/** @ brief Set Layout.
 					 * @param layout @c shared_ptr what will be moved
 					 */
-					void		set_layout(Neb::gui::layout_s & layout);
+					void		set_layout(Neb::Graphics::GUI::Layout::Base_s & layout);
 					void		set_scene(Neb::Scene::Base_s & scene);
 	
 					void	callback_window_pos_fun(GLFWwindow*,int,int);

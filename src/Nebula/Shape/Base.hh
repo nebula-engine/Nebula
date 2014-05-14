@@ -43,11 +43,11 @@ namespace Neb {
 				} texture_;
 		};
 
+		typedef std::shared_ptr<Neb::Shape::buffer>			buffer_s;
 
 		class Base: virtual public Neb::Shape::Util::Parent, public gal::flag {
 			public:
-				typedef std::shared_ptr<Neb::Shape::buffer>		buffer_t;
-				typedef std::map<Neb::window::window*,buffer_t>	map_t;
+				typedef std::map<Neb::Graphics::Window::Base*,buffer_s>			map_t;
 
 				Base(Neb::Shape::Util::Parent_s parent);
 				~Base();
@@ -70,12 +70,12 @@ namespace Neb {
 				/** @name Rendering @{ */
 				void			load_lights(int& i, physx::PxMat44 space);
 
-				void			draw(Neb::window::window_s, physx::PxMat44 space);
+				void			draw(Neb::Graphics::Window::Base_s, physx::PxMat44 space);
 	
 				void			model_load(physx::PxMat44 space);
-				void			init_buffer(Neb::window::window_s, std::shared_ptr<Neb::glsl::program> p);
+				void			init_buffer(Neb::Graphics::Window::Base_s, std::shared_ptr<Neb::glsl::program> p);
 
-				virtual void		draw_elements(Neb::window::window_s, physx::PxMat44 space);
+				virtual void		draw_elements(Neb::Graphics::Window::Base_s, physx::PxMat44 space);
 				/** @} */
 				/** @name Index
 				 * @{
@@ -154,7 +154,7 @@ namespace Neb {
 			class Empty: public Neb::Shape::Base {
 				virtual void		createMesh();
 
-				virtual void		draw_elements(Neb::window::window_s, physx::PxMat44 space) {}
+				virtual void		draw_elements(Neb::Graphics::Window::Base_s, physx::PxMat44 space) {}
 			};
 		}
 	}

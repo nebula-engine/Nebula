@@ -44,8 +44,8 @@ namespace Neb {
 						double time,
 						std::shared_ptr<Neb::Camera::View::Base>,
 						std::shared_ptr<Neb::Camera::Projection::Base>,
-						Neb::window::window_s);
-				void				draw(Neb::window::window_s window);
+						Neb::Graphics::Window::Base_s);
+				void				draw(Neb::Graphics::Window::Base_s window);
 				void				resize(int w, int h);
 				void				draw();
 				void				step(double);

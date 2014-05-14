@@ -30,7 +30,10 @@ namespace Neb {
 			/** @brief @Parent
 			 * abstract class for parent of an @Actor
 			 */
-			class Parent: virtual public Neb::Core::Pose, virtual public Neb::Shared {
+			class Parent:
+				virtual public Neb::Core::Pose,
+				virtual public Neb::Util::Shared
+			{
 				public:
 					Parent();
 					virtual ~Parent() {}

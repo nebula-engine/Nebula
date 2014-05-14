@@ -18,7 +18,7 @@ namespace Neb {
 				 **/
 				class Base {
 					public:
-						Control();
+						Base();
 
 						virtual int			key_fun(int,int,int,int);
 

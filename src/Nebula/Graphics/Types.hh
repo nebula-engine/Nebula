@@ -59,26 +59,60 @@ namespace Neb {
 		class shader;
 		class attrib;
 	}
-	/** @brief Graphical User Interface */
-	namespace gui {
-		class layout;
 
-		typedef std::shared_ptr<layout>		layout_s;
-		typedef std::unique_ptr<layout>		layout_u;
-		typedef std::weak_ptr<layout>		layout_w;
+	/** @brief %Graphics */
+	namespace Graphics {
+		namespace Window {
+			namespace Util {
+				class Parent;
 
+				typedef std::shared_ptr<Parent>		Parent_s;
+				typedef std::weak_ptr<Parent>		Parent_w;
 
-		namespace object {
-			class object;
-			class object_factory;
-			typedef std::shared_ptr<object>			object_s;
-			typedef std::shared_ptr<object_factory>		object_factory_s;
+			}
+			class Base;
 
-			typedef Neb::Map<object>		object_m;
+			typedef std::shared_ptr<Base>		Base_s;
+			typedef std::weak_ptr<Base>		Base_w;
 		}
 
-	}
+		/** @brief Graphical User Interface */
+		namespace gui {
+			class layout;
 
+			typedef std::shared_ptr<layout>		layout_s;
+			typedef std::unique_ptr<layout>		layout_u;
+			typedef std::weak_ptr<layout>		layout_w;
+
+
+			namespace object {
+				class object;
+				class object_factory;
+				typedef std::shared_ptr<object>			object_s;
+				typedef std::shared_ptr<object_factory>		object_factory_s;
+
+				typedef Neb::Map<object>		object_m;
+			}
+
+		}
+
+		/**@brief %Context */
+		namespace Context {
+			/** @brief %Util */
+			namespace Util {
+				class Parent;
+
+				typedef std::shared_ptr<Parent>		Parent_s;
+				typedef std::weak_ptr<Parent>		Parent_w;
+				typedef std::unique_ptr<Parent>		Parent_u;
+			}
+			class Base;
+
+			//typedef Neb::unique_ptr<renderable>	renderable_u;
+			typedef std::unique_ptr<Base>	Base_u;
+			typedef std::weak_ptr<Base>	Base_w;
+		}
+	}
 
 	/*template<typename>*/ class texture;
 
@@ -104,16 +138,6 @@ namespace Neb {
 			typedef std::unique_ptr<Base>		Base_u;
 		}
 	}
-
-
-
-	class renderable;
-
-	//typedef Neb::unique_ptr<renderable>	renderable_u;
-	typedef std::unique_ptr<renderable>	renderable_u;
-	typedef std::weak_ptr<renderable>	renderable_w;
-
-
 }
 
 #endif

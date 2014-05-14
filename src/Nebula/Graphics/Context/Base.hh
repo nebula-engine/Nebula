@@ -1,53 +1,55 @@
-#ifndef __RENDERABLE_H__
-#define __RENDERABLE_H__
+#ifndef NEBULA_GRAPHICS_CONTEXT_BASE_HH
+#define NEBULA_GRAPHICS_CONTEXT_BASE_HH
 
 #include <memory>
 
 #include <Nebula/Flag.hh>
 
 #include <Nebula/Types.hh> // gru/config.hpp.in
-#include <Nebula/Graphics/Types.hh>
 
-#include <Nebula/Graphics/gui/layout.hh>
+#include <Nebula/Graphics/Types.hh>
+//#include <Nebula/Graphics/Context/Util/Parent.hh>
+#include <Nebula/Graphics/GUI/Layout/Base.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 
 #include <Nebula/Scene/Base.hh>
 
 namespace Neb {
-	/** @brief Renderable.
-	 * @todo eventually replace this with Context and allow multiple Contexts per window and allow scene and layout to have different and overalpping Contexts.
-	 */
-	class renderable: public std::enable_shared_from_this<renderable> {
-		public:
-			renderable(Neb::window::window_s window);
-			renderable&			operator=(renderable const & r);
-			//unsigned int			f();
-			//void				f(unsigned int flag);
-			void				init(Neb::window::window_s window);
+	namespace Graphics {
+		namespace Context {
+			/** @brief Renderable.
+			 * @todo eventually replace this with Context and allow multiple Contexts per window and allow scene and layout to have different and overalpping Contexts.
+			 */
+			class Base: virtual public Neb::Util::Shared {
+				public:
+					Base(Neb::Graphics::Context::Util::Parent_s parent);
+					Base&				operator=(Base const & r);
+					void				init();
 
-			Neb::window::window_s		getWindow();
-			void				resize(int w, int h);
-			void				render(double time, Neb::window::window_s window);
+					Neb::Graphics::Context::Util::Parent_s		getParent();
 
+					void				resize(int w, int h);
+					void				render(double time, Neb::Graphics::Window::Base_s window);
 
-			void				moveView(Neb::Camera::View::Base_s &&);
-			void				moveScene(Neb::Scene::Base_s &&);
-			void				moveLayout(Neb::gui::layout_s &&);
+				private:
+					//unsigned int					flag_;
 
-			
-
-		private:
-			//unsigned int					flag_;
-
-			Neb::window::window_w				window_;
-		private:
-			Neb::Scene::Base_s				scene_;
-			Neb::gui::layout_s				layout_;
-			Neb::Camera::View::Base_s			view_;
-			Neb::Camera::Projection::Base_s			proj_;
-	};
+					Neb::Graphics::Context::Util::Parent_w		window_;
+				private:
+					/** @brief scene.
+					 * weak because scene is owned by app.
+					 */
+					Neb::Scene::Base_w				scene_;
+					/** @brief layout.
+					 * weak because layout is owned by app.
+					 */
+					Neb::Graphics::GUI::Layout::Base_w			layout_;
+					Neb::Camera::View::Base_s			view_;
+					Neb::Camera::Projection::Base_s			proj_;
+			};
+		}
+	}
 }
-
 #endif
 
 

@@ -3,13 +3,14 @@
 
 #include <boost/asio/io_service.hpp>
 
-#include <Nebula/Graphics/Window/Base.hh>
 
 #include <Nebula/Types.hh>
 #include <Nebula/Util/Shared.hh>
 #include <Nebula/network2/server.hh>
 #include <Nebula/network2/client.hh>
 
+#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/Window/Util/Parent.hh>
 
 namespace Neb {
 	class App:
@@ -17,7 +18,7 @@ namespace Neb {
 		public Neb::Graphics::Window::Util::Parent
 	{
 		public:
-			typedef std::map< GLFWwindow*, Neb::window::window_s >			glfwwindow_map_type;
+			typedef std::map< GLFWwindow*, Neb::Graphics::Window::Base_s >			glfwwindow_map_type;
 		private:
 			static void static_error_fun(int,char const *);
 			static void static_window_pos_fun(GLFWwindow*,int,int);
@@ -42,33 +43,34 @@ namespace Neb {
 		public:
 			static App_s					global();
 			static void					global(App_s);
-			
-			Neb::weak_ptr<Neb::window::window>				getWindowMain();
-			void								setWindowMain(Neb::window::window_w);
-/*			template <class U> Neb::weak_ptr<U>				create_window(Neb::window::desc> wd) {
-				//GLUTPP_DEBUG_0_FUNCTION;
-				Neb::unique_ptr<U> u(new U(wd));
-				auto g = reg(u);
-				u->init();
-				windows_[g] = u;
-				
-				auto wm = getWindowMain();
-				if(!wm) {
-					Main_Window(u);
-					//fprintf(stderr, "window main set\n");
-					//abort();
-				} else {
-					//fprintf(stderr, "window main already set\n");
-					//abort();
-				}	
-				return u;
+
+			Neb::Graphics::Window::Base_s			getWindowMain();
+			void						setWindowMain(Neb::Graphics::Window::Base_w);
+
+			/*			template <class U> Neb::weak_ptr<U>				create_window(Neb::window::desc> wd) {
+			//GLUTPP_DEBUG_0_FUNCTION;
+			Neb::unique_ptr<U> u(new U(wd));
+			auto g = reg(u);
+			u->init();
+			windows_[g] = u;
+
+			auto wm = getWindowMain();
+			if(!wm) {
+			Main_Window(u);
+			//fprintf(stderr, "window main set\n");
+			//abort();
+			} else {
+			//fprintf(stderr, "window main already set\n");
+			//abort();
+			}	
+			return u;
 			}*/
 			/** @name Search @{ */
-			Neb::weak_ptr<Neb::Actor::Base>					getActor(Neb::Actor::Util::Address);
+			Neb::Actor::Base_w							getActor(Neb::Actor::Util::Address);
 
 
-			Neb::weak_ptr<Neb::window::window>					get_window(GLFWwindow*);
-			GLFWwindow*								reg(Neb::window::window_s);
+			Neb::Graphics::Window::Base_w						get_window(GLFWwindow*);
+			GLFWwindow*								reg(Neb::Graphics::Window::Base_s);
 
 			//Neb::Actor::raw_factory_s						get_raw_factory();
 			void						f(gal::flag::flag_type);
@@ -83,8 +85,8 @@ namespace Neb {
 			/** @brief Factories */
 			struct {
 				template<typename T>
-				using pointer = std::shared_ptr<T>;
-				
+					using pointer = std::shared_ptr<T>;
+
 				typedef pointer< Neb::Factory<Neb::gui::object::object> >		Gui_Object;
 
 				typedef pointer< Neb::Factory<Neb::Actor::Base> >			Actor_Base;
@@ -93,14 +95,12 @@ namespace Neb {
 
 				typedef pointer< Neb::Factory<Neb::Light::light> >			Light_Base;
 
-				typedef pointer< Neb::Factory<Neb::window::window> >			Window;
+				typedef pointer< Neb::Factory<Neb::Graphics::Window::Base> >			Window;
 
 				//typedef pointer< Neb::Factory<Neb::Scene::Raw> >			SceneRaw;
 
 				Gui_Object			gui_object_;
-				Actor_Raw			actor_raw_;
 				Actor_Base			actor_base_;
-				Shape_Raw			shape_raw_;
 				Shape_Base			shape_base_;
 
 				Light_Base			light_base_;
@@ -116,7 +116,7 @@ namespace Neb {
 				};
 			};
 			void					init();
-			Neb::window::window_w			create_window(int, int, int, int, char const *);
+			Neb::Graphics::Window::Base_w			create_window(int, int, int, int, char const *);
 			//Neb::Scene::Base_w				load_scene_local(Neb::Scene::desc_w);
 			//Neb::Scene::Base_w				load_scene_remote(Neb::Scene::desc_w);
 			void					load_layout(int,char const *);
@@ -124,10 +124,10 @@ namespace Neb {
 			int					loop();
 
 			/** @name Accessors @{ */
-			Neb::window::window_w			get_window(int);
+			Neb::Graphics::Window::Base_w			get_window(int);
 			Neb::Scene::Base_w			get_scene(int);
 			Neb::Scene::Base_w			get_scene(Neb::Scene::Address);
-			Neb::Actor::Base_w			get_actor(Neb::Actor::addr);
+			Neb::Actor::Base_w			get_actor(Neb::Actor::Addr);
 			/** @} */
 
 			void				set_should_release();
@@ -154,7 +154,7 @@ namespace Neb {
 			/** @} */
 
 		public:
-			
+
 			Neb::Map<Neb::gui::layout>			layouts_;
 			Neb::Map<Neb::Scene::Base>			scenes_;
 		private:
@@ -170,11 +170,11 @@ namespace Neb {
 			static Neb::Graphics::Window::Base_w				window_main_;
 			std::map<int, std::shared_ptr<Neb::glsl::program> >		programs_;
 			std::shared_ptr<Neb::glsl::program>				current_;
-			
+
 			/** %brief global app object */
 			static Neb::App::Base_s						g_app_;
 	};
-}
+	}
 
 #endif
 
