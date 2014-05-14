@@ -6,13 +6,13 @@
 #include <Nebula/network2/communicating.hh>
 
 namespace Neb {
-	namespace network {
-		class server: public gal::network::server {
+	namespace Network {
+		class Server: public gal::network::server {
 			public:
 				/** @brief ctor.
 				 * @param port port
 				 */
-				server(unsigned short port, int);
+				Server(unsigned short port, int);
 				void		callback_accept(int);
 		};
 	}

@@ -1,5 +1,5 @@
 
-
+/*
 #include <Nebula/Actor/Base.hpp>
 #include <Nebula/Actor/Util/raw.hpp>
 #include <Nebula/Xml/Xml.hpp>
@@ -16,7 +16,6 @@ Neb::Actor::raw::raw():
 void		Neb::Actor::raw::load(Neb::weak_ptr<Neb::Actor::Base> actor) {
 	operator=(*(actor->raw_));
 }
-/*
 unsigned int Neb::Actor::raw::parse_filter(tinyxml2::XMLElement* element, unsigned int i) {
 
 	if(element == NULL) return i;
@@ -44,8 +43,7 @@ unsigned int Neb::Actor::raw::parse_filter(tinyxml2::XMLElement* element, unsign
 		return Neb::filter::PROJECTILE_AGAINST;
 	}
 	abort();
-}*/
-/*
+}
 void Neb::Actor::raw::plane(tinyxml2::XMLElement* element) {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
@@ -73,8 +71,7 @@ void Neb::Actor::raw::controller(tinyxml2::XMLElement* element) {
 
 	pose_.p = math::Xml::parse_vec3<float>(element->FirstChildElement("p"), math::vec3<float>(0,0,0));
 }
+
 */
-
-
 
 

@@ -1,7 +1,7 @@
 #ifndef NEBULA_MESSAGE_ACTOR_BASE_HPP
 #define NEBULA_MESSAGE_ACTOR_BASE_HPP
 
-#include <Nebula/Typed.hpp>
+#include <Nebula/Util/Typed.hh>
 
 namespace Neb {
 	namespace Message {

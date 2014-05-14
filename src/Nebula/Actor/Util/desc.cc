@@ -3,13 +3,13 @@
 //#include <neb/scene/scene.h>
 //#include <neb/simulation_callback.h>
 
-#include <Nebula/Actor/Types.hpp>
-#include <Nebula/Actor/Util/desc.hpp>
-#include <Nebula/Actor/Base.hpp>
-#include <Nebula/shape/desc.hpp>
+#include <Nebula/Actor/Util/Types.hh>
+#include <Nebula/Actor/Base.hh>
+
+//#include <Nebula/Shape/desc.hh>
 
 
-
+/*
 Neb::Actor::desc::desc(): raw_wrapper_(Neb::master::global()->factories_.actor_raw_) {
 }		
 Neb::Actor::desc &		Neb::Actor::desc::operator<<(Neb::Actor::Base_w const & actor) {
@@ -50,7 +50,7 @@ Neb::Actor::desc& Neb::Actor::desc::operator=(const Neb::Actor::desc& ad) {
 	shapes_ = ad.shapes_;
 	return *this;
 }
-
+*/
 
 
 

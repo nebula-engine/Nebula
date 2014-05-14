@@ -1,16 +1,15 @@
-#include <math/mat33.hpp>
 
-#include <nebula/control/rigid_body/control.hpp>
+#include <Nebula/Actor/Control/RigidBody/Base.hh>
 
-neb::control::rigid_body::control::control() {
+Neb::Actor::Control::RigidBody::Base::Base() {
 
 }
-int neb::control::rigid_body::control::key_fun(int key, int scancode, int action, int mods) {
-	NEBULA_DEBUG_0_FUNCTION;
+int Neb::Actor::Control::RigidBody::Base::key_fun(int key, int scancode, int action, int mods) {
+	//NEBULA_DEBUG_0_FUNCTION;
 
-	math::vec3<float> x(1.0,0.0,0.0);
-	math::vec3<float> y(0.0,1.0,0.0);
-	math::vec3<float> z(0.0,0.0,1.0);
+	physx::PxVec3 x(1.0,0.0,0.0);
+	physx::PxVec3 y(0.0,1.0,0.0);
+	physx::PxVec3 z(0.0,0.0,1.0);
 
 	switch(action)
 	{
@@ -18,82 +17,81 @@ int neb::control::rigid_body::control::key_fun(int key, int scancode, int action
 			switch(key)
 			{
 				case GLFW_KEY_D:
-					raw_.f_ += x;
+					f_ += x;
 					return 1;
 				case GLFW_KEY_A:
-					raw_.f_ -= x;
+					f_ -= x;
 					return 1;
 				case GLFW_KEY_E:
-					raw_.f_ += y;
+					f_ += y;
 					return 1;
 				case GLFW_KEY_Q:
-					raw_.f_ -= y;
+					f_ -= y;
 					return 1;
 				case GLFW_KEY_W:
-					raw_.f_ -= z;
+					f_ -= z;
 					return 1;
 				case GLFW_KEY_S:
-					raw_.f_ += z;
+					f_ += z;
 					return 1;
 				case GLFW_KEY_I:
-					raw_.t_ += x;
+					t_ += x;
 					return 1;
 				case GLFW_KEY_K:
-					raw_.t_ -= x;
+					t_ -= x;
 					return 1;
 				case GLFW_KEY_L:
-					raw_.t_ -= y;
+					t_ -= y;
 					return 1;
 				case GLFW_KEY_J:
-					raw_.t_ += y;
+					t_ += y;
 					return 1;
 				case GLFW_KEY_O:
-					raw_.t_ -= z;
+					t_ -= z;
 					return 1;
 				case GLFW_KEY_U:
-					raw_.t_ += z;
+					t_ += z;
 					return 1;
 				default:
 					return 0;
 			}
 		case GLFW_RELEASE:
-			switch(key)
-			{
+			switch(key) {
 				case GLFW_KEY_D:
-					raw_.f_ -= x;
+					f_ -= x;
 					return 1;
 				case GLFW_KEY_A:
-					raw_.f_ += x;
+					f_ += x;
 					return 1;
 				case GLFW_KEY_E:
-					raw_.f_ -= y;
+					f_ -= y;
 					return 1;
 				case GLFW_KEY_Q:
-					raw_.f_ += y;
+					f_ += y;
 					return 1;
 				case GLFW_KEY_W:
-					raw_.f_ += z;
+					f_ += z;
 					return 1;
 				case GLFW_KEY_S:
-					raw_.f_ -= z;
+					f_ -= z;
 					return 1;
 				case GLFW_KEY_I:
-					raw_.t_ -= x;
+					t_ -= x;
 					return 1;
 				case GLFW_KEY_K:
-					raw_.t_ += x;
+					t_ += x;
 					return 1;
 				case GLFW_KEY_L:
-					raw_.t_ += y;
+					t_ += y;
 					return 1;
 				case GLFW_KEY_J:
-					raw_.t_ -= y;
+					t_ -= y;
 					return 1;
 				case GLFW_KEY_O:
-					raw_.t_ += z;
+					t_ += z;
 					return 1;
 				case GLFW_KEY_U:
-					raw_.t_ -= z;
+					t_ -= z;
 					return 1;
 				default:
 					return 0;
@@ -103,46 +101,32 @@ int neb::control::rigid_body::control::key_fun(int key, int scancode, int action
 
 	return 0;
 }
-void neb::control::rigid_body::control::step_local(double time) {
-	NEBULA_DEBUG_1_FUNCTION;
-	
-	switch(raw_.type_) {
-		case neb::control::rigid_body::type::T0:
-			return step_local0(time);
-		case neb::control::rigid_body::type::T1:
-			return step_local1(time);
-		default:
-			break;
-	}
+void Neb::Actor::Control::RigidBody::Manual::step(double dt) { // 0
+
 }
-void neb::control::rigid_body::control::step_local0(double time) {
-	
-}
-void neb::control::rigid_body::control::step_local1(double time) {
-	NEBULA_DEBUG_1_FUNCTION;
-	
-	double dt = time - last_; last_ = time;
-	
+void Neb::Actor::Control::RigidBody::PD::step(double dt) { // 1
+	//NEBULA_DEBUG_1_FUNCTION;
+
 	// step target
-	
+
 	float q_scale = 0.5;
 	float p_scale = 0.5;
-	
-	if(raw_.t_.magnitude() == 0.0f)
+
+	if(t_.magnitude() == 0.0f)
 	{
 		//printf("no key\n");
 	}
 	else
 	{
-		math::quat<float> rot(q_scale * dt, raw_.t_);
+		physx::PxQuat rot(q_scale * dt, t_);
 
-		raw_.q_target_ *= rot;
+		q_target_ *= rot;
 
-		printf("q_target_=\n");
-		raw_.q_target_.print();
+		//printf("q_target_=\n");
+		//q_target_.print();
 
 
-		raw_.p_target_ += raw_.f_ * p_scale;
+		p_target_ += f_ * p_scale;
 
 
 		//printf("p_target_=\n");
@@ -150,142 +134,135 @@ void neb::control::rigid_body::control::step_local1(double time) {
 	}
 
 	// get actor
-	assert(!actor_.expired());
-	auto actor = std::dynamic_pointer_cast<neb::Actor::Actor>(actor_.lock());
+	auto base = actor_.lock();
+	auto actor = base->isActorActor();
+	assert(actor);
+	
 	auto pxrigidbody = actor->px_actor_->isRigidBody();
 
 
 	// rotation from pose to target pose
-	math::quat<float> q = actor->get_raw()->pose_.q;
-	math::quat<float> a = raw_.q_target_.getConjugate() * q;
+	physx::PxQuat q = actor->pose_.q;
+	physx::PxQuat a = q_target_.getConjugate() * q;
 
 
 
 
 	// angular velocity
-	math::vec3<float> omega = pxrigidbody->getAngularVelocity();
+	physx::PxVec3 omega = pxrigidbody->getAngularVelocity();
 	omega = q.rotate(omega);
-	
+
 	// inertia matrix
-	math::vec3<float> vI = pxrigidbody->getMassSpaceInertiaTensor();
-	math::mat33<float> I(vI);
+	//physx::PxVec3 vI = pxrigidbody->getMassSpaceInertiaTensor();
+	
+	//physx::PxMat33 I(vI);
+	
 	
 
 
 
 
-	
-/*
-	math::mat33 ac(
-			0, -a.z, a.y,
-			a.z, 0, -a.x,
-			-a.y, a.x, 0);
-*/
-	
+	/*
+	   math::mat33 ac(
+	   0, -a.z, a.y,
+	   a.z, 0, -a.x,
+	   -a.y, a.x, 0);
+	   */
+
 	//math::mat33 Gp(math::vec3(750, 800, 400));
 	//math::mat33 Gr(math::vec3(600, 550, 250));
 
-/*
-	float x = 10;
-	float y = 100;
-	math::mat33 Gp(math::vec3(x,x,x));
-	math::mat33 Gr(math::vec3(y,y,y));
-*/
+	/*
+	   float x = 10;
+	   float y = 100;
+	   math::mat33 Gp(math::vec3(x,x,x));
+	   math::mat33 Gr(math::vec3(y,y,y));
+	   */
 
 	//float gamma = 100;
-	
-	math::vec3<float> e(a.x, a.y, a.z);
-	
-	float ke = 0.5;
+
+	physx::PxVec3 e(a.x, a.y, a.z);
+
+/*	float ke = 0.5;
 	float ko = 3;
-	
+*/
 	/** @todo replace with independent control system library */
 	//math::vec3 u = ((ac + I * a.w) * Gp + I * gamma * (1 - a.w)) * va * 0.5 - Gr * omega;
-	math::vec3<float> u = -I * e * ke - omega * ko;
-	
-	raw_.torque_ = u;
-		/*
-		   
+	physx::PxVec3 u;// = -I * e * ke - omega * ko;
 
-		// todo: make m dependent on direction of rotation
-		float m = I.dot(math::vec3(1.0,0.0,0.0));
-
-		float k = 10.0;
-		float c = -2.0f * sqrt(m * k);
-		pid_.coeff_p_ = k;
-		pid_.coeff_d_ = c;
+	torque_ = u;
+	/*
 
 
-		math::quat q = actor->get_raw()->pose_.q;
+	// todo: make m dependent on direction of rotation
+	float m = I.dot(math::vec3(1.0,0.0,0.0));
 
-		math::quat rot = q * raw_.q_target_.getConjugate();
-		if(rot.magnitude() > 0)
-		{
-		float theta = -2.0 * acos(rot.w);
-
-		theta = (theta > M_PI) ? (theta - 360.f) : theta;
-
-		math::vec3 t(rot.x, rot.y, rot.z);
-		t.normalize();
-
-		// make sure getlinearvelocity is in actor-space
-		
-		float v = vel.dot(t);
-
-		//q.print();
-		//q_target_.print();
+	float k = 10.0;
+	float c = -2.0f * sqrt(m * k);
+	pid_.coeff_p_ = k;
+	pid_.coeff_d_ = c;
 
 
-		//apply extra damping torque in all directions
-		math::vec3 te = vel * 1.f * c;
+	math::quat q = actor->get_raw()->pose_.q;
+
+	math::quat rot = q * raw_.q_target_.getConjugate();
+	if(rot.magnitude() > 0)
+	{
+	float theta = -2.0 * acos(rot.w);
+
+	theta = (theta > M_PI) ? (theta - 360.f) : theta;
+
+	math::vec3 t(rot.x, rot.y, rot.z);
+	t.normalize();
+
+	// make sure getlinearvelocity is in actor-space
+
+	float v = vel.dot(t);
+
+	//q.print();
+	//q_target_.print();
 
 
-		float fs = pid_.f(theta, v);
-		t *= fs;
+	//apply extra damping torque in all directions
+	math::vec3 te = vel * 1.f * c;
 
-		//printf("theta = %f v = %f fs = %f\n", theta, v, fs);
 
-		//printf("torque=\n");
-		//t.print();
+	float fs = pid_.f(theta, v);
+	t *= fs;
 
-		raw_.torque_ = t + te;
-		}
-		 */
-}
-math::vec3<float> neb::control::rigid_body::control::f() {
-	NEBULA_DEBUG_1_FUNCTION;
+	//printf("theta = %f v = %f fs = %f\n", theta, v, fs);
 
-	switch(raw_.type_) {
-		case neb::control::rigid_body::type::T0:
-			return raw_.f_ * 100;
-		case neb::control::rigid_body::type::T1:
-			return raw_.force_;
-		default:
-			break;
+	//printf("torque=\n");
+	//t.print();
+
+	raw_.torque_ = t + te;
 	}
-	return math::vec3<float>();
+	*/
 }
-math::vec3<float> neb::control::rigid_body::control::t() {
-	NEBULA_DEBUG_1_FUNCTION;
-
-	switch(raw_.type_) {
-		case neb::control::rigid_body::type::T0:
-			return raw_.t_ * 3;
-		case neb::control::rigid_body::type::T1:
-			return raw_.torque_;
-		default:
-			break;
-	}
-	return math::vec3<float>();
+physx::PxVec3 Neb::Actor::Control::RigidBody::Manual::f() {
+	//NEBULA_DEBUG_1_FUNCTION;
+	return f_ * 100;
 }
-void neb::control::rigid_body::control::print() {
-
+physx::PxVec3 Neb::Actor::Control::RigidBody::Manual::t() {
+	//NEBULA_DEBUG_1_FUNCTION;
+	return t_ * 3;
+}
+physx::PxVec3 Neb::Actor::Control::RigidBody::PD::f() {
+	//NEBULA_DEBUG_1_FUNCTION;
+	return force_;
+}
+physx::PxVec3 Neb::Actor::Control::RigidBody::PD::t() {
+	//NEBULA_DEBUG_1_FUNCTION;
+	return torque_;
+}
+void Neb::Actor::Control::RigidBody::Base::print() {
+/*
 	printf("torque\n");
-	raw_.torque_.print();
+	torque_.print();
 
 	printf("force\n");
-	raw_.force_.print();
-
+	force_.print();
+*/
 }
 
 

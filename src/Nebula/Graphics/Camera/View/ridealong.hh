@@ -4,9 +4,9 @@
 #include <memory>
 #include <map>
 
-#include <Nebula/Graphics/window/window.hpp>
-#include <Nebula/Graphics/Camera/View/Base.hpp>
-#include <Nebula/config.hpp>
+#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/Camera/View/Base.hh>
+#include <Nebula/config.hh>
 
 namespace Neb {
 	namespace Camera {

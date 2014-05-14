@@ -22,13 +22,9 @@ namespace Neb {
 
 						virtual int			key_fun(int,int,int,int);
 
-						void				step_local(double);
-						void				step_local0(double);
-						void				step_local1(double);
-
-
-						physx::PxVec3			f();
-						physx::PxVec3			t();
+						virtual void			step(double dt) = 0;
+						virtual physx::PxVec3		f() = 0;
+						virtual physx::PxVec3		t() = 0;
 
 						void				print();
 					private:
@@ -53,6 +49,17 @@ namespace Neb {
 
 						//gal::control::control		pid_;
 
+				};
+				class Manual: public Neb::Actor::Control::RigidBody::Base {
+					void				step(double dt);
+					physx::PxVec3			f();
+					physx::PxVec3			t();
+
+				};
+				class PD: public Neb::Actor::Control::RigidBody::Base {
+					void				step(double dt);
+					physx::PxVec3			f();
+					physx::PxVec3			t();
 				};
 			}
 		}

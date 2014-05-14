@@ -19,7 +19,7 @@ namespace Neb {
 	namespace Scene {
 		class Address {
 			public:
-				void						load(Neb::Scene::Base_w & scene);
+				void						load(Neb::Scene::Base_s & scene);
 				
 				template<class Archive> void			serialize(Archive& ar, unsigned int const & version) {
 					ar & vec_;

@@ -1,3 +1,5 @@
+
+#include <Nebula/Actor/rigid_body/rigid_body.hh>
 #include <Nebula/Actor/Util/Cast.hh>
 
 Neb::Actor::Base_s			Neb::Actor::Util::Cast::isActorBase() {

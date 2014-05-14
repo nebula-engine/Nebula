@@ -14,6 +14,7 @@
 //#include <Nebula/Actor/Util/desc.hh>
 
 #include <Nebula/Util/Release.hh>
+#include <Nebula/Util/Serialize.hh>
 
 #include <Nebula/Filter.hh>
 
@@ -58,7 +59,7 @@ namespace Neb {
 				Base(Neb::Actor::Util::Parent_s);
 				virtual ~Base();
 
-				//virtual void				init(Neb::weak_ptr<Neb::Actor::desc>);
+				virtual void				init();
 				virtual void				releaseDerived();
 				virtual void				cleanup();
 

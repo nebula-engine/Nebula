@@ -1,16 +1,16 @@
 
-#include <Nebula/debug.hpp>
-#include <Nebula/physics.hpp>
-#include <Nebula/shape/shape.hpp>
-#include <Nebula/Actor/Rigid_Static.hpp>
+#include <Nebula/debug.hh>
+#include <Nebula/physics.hh>
+#include <Nebula/Shape/Base.hh>
+#include <Nebula/Actor/Rigid_Static.hh>
 
-Neb::Actor::Rigid_Static::Rigid_Static(Neb::Actor::parent_w parent): Neb::Actor::RigidActor(parent) {
+Neb::Actor::Rigid_Static::Rigid_Static(Neb::Actor::Util::Parent_s parent): Neb::Actor::RigidActor(parent) {
 	NEBULA_ACTOR_BASE_FUNC
 }
-void	Neb::Actor::Rigid_Static::init(Neb::Actor::desc_w desc) {
+void	Neb::Actor::Rigid_Static::init() {
 	NEBULA_ACTOR_BASE_FUNC
 	
-	Neb::Actor::RigidActor::init(desc);
+	Neb::Actor::RigidActor::init();
 }
 void	Neb::Actor::Rigid_Static::step_local(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
@@ -26,7 +26,7 @@ void Neb::Actor::Rigid_Static::create_physics() {
 	
 	assert(px_actor_ == NULL);
 	
-	auto scene = get_scene();//scene_.lock();
+	auto scene = getScene();//scene_.lock();
 	
 	physx::PxTransform pose(getPose());
 

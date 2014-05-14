@@ -1,6 +1,7 @@
 #ifndef NEBULA_ACTOR_TYPES_HPP
 #define NEBULA_ACTOR_TYPES_HPP
 
+#include <memory>
 
 namespace Neb {
 	/** @brief %Actor */

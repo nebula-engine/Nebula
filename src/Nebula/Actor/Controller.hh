@@ -3,13 +3,13 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Actor/Base.hpp>
+#include <Nebula/Actor/Base.hh>
 
 namespace Neb {
 	namespace Actor {
 		class Controller: public Neb::Actor::Base {
 			public:
-				Controller(Neb::Actor::parent_w);
+				Controller(Neb::Actor::Util::Parent_s);
 				
 				virtual void		release();
 

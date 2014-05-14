@@ -11,17 +11,16 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Actor/Base.hpp>
+#include <Nebula/Actor/Base.hh>
 #include <Nebula/Actor/Util/Types.hh>
-#include <Nebula/Actor/Util/desc.hpp>
 
 namespace Neb {
 	namespace Actor {
 		class empty: public Neb::Actor::Base {
 			public:
-				empty(Neb::Actor::parent_w);
+				empty(Neb::Actor::Util::Parent_s);
 				
-				//virtual void			init(Neb::Actor::desc_w);
+				virtual void			init();
 
 				virtual void			add_force(double) {}
 

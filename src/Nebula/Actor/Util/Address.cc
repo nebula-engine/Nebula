@@ -1,10 +1,11 @@
-#include <Nebula/Scene/scene.hpp>
-#include <Nebula/Scene/addr.hpp>
-#include <Nebula/Actor/Base.hpp>
-#include <Nebula/Actor/Util/addr.hpp>
-#include <Nebula/Actor/Util/parent.hpp>
+#include <Nebula/Scene/Base.hh>
+#include <Nebula/Scene/Util/Address.hh>
 
-void		Neb::Actor::addr::load_this(Neb::weak_ptr<Neb::Actor::Base> const & actor) {
+#include <Nebula/Actor/Base.hh>
+#include <Nebula/Actor/Util/Address.hh>
+#include <Nebula/Actor/Util/Parent.hh>
+
+void		Neb::Actor::Util::Address::load_this(Neb::Actor::Base_s const & actor) {
 	//assert(actor);
 
 	load_parent(actor);
@@ -13,7 +14,7 @@ void		Neb::Actor::addr::load_this(Neb::weak_ptr<Neb::Actor::Base> const & actor)
 
 	vec_.push_back(i);
 }
-void		Neb::Actor::addr::load_parent(Neb::weak_ptr<Neb::Actor::Base> const & actor0) {
+void		Neb::Actor::Util::Address::load_parent(Neb::Actor::Base_s const & actor0) {
 	//assert(actor0);
 	
 	auto parent = actor0->getParent();

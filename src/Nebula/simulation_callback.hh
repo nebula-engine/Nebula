@@ -8,11 +8,11 @@
 
 //#include <galaxy/map.hpp>
 
-#include <Nebula/Scene/scene.hpp>
+#include <Nebula/Scene/Base.hh>
 
-#include <Nebula/Actor/Rigid_Dynamic.hpp>
-#include <Nebula/Actor/Rigid_Static.hpp>
-#include <Nebula/Actor/Controller.hpp>
+#include <Nebula/Actor/Rigid_Dynamic.hh>
+#include <Nebula/Actor/Rigid_Static.hh>
+#include <Nebula/Actor/Controller.hh>
 
 //#include <tinyxml2.h>
 

@@ -6,7 +6,8 @@
 
 //#include <galaxy/flag.hpp>
 
-#include <boost/weak_ptr.hpp>
+#include <boost/archive/polymorphic_iarchive.hpp>
+#include <boost/archive/polymorphic_oarchive.hpp>
 
 #include <Nebula/config.hh>
 #include <Nebula/Types.hh>

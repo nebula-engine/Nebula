@@ -1,6 +1,6 @@
-#include <Nebula/Actor/Controller.hpp>
+#include <Nebula/Actor/Controller.hh>
 
-Neb::Actor::Controller::Controller(Neb::Actor::parent_w parent): Neb::Actor::Base(parent) {
+Neb::Actor::Controller::Controller(Neb::Actor::Util::Parent_s parent): Neb::Actor::Base(parent) {
 
 }
 void	Neb::Actor::Controller::release() {

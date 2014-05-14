@@ -2,8 +2,7 @@
 #define NEBULA_MESSAGE_ACTOR_CONTROL_HPP
 
 #include <Nebula/config.hpp>
-#include <Nebula/control/rigid_body/raw.hpp>
-#include <Nebula/Message/Actor/Base.hpp>
+#include <Nebula/Message/Actor/Base.hh>
 
 namespace Neb {
 	namespace Message {

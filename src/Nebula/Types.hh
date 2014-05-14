@@ -8,20 +8,27 @@ namespace Neb {
 
 	class simulation_callback;
 
+	namespace App {
+		class Base;
 
-	class App;
-	
-	typedef std::shared_ptr<App>		App_s;
-	typedef std::weak_ptr<App>		App_w;
-	typedef std::unique_ptr<App>		App_u;
+		typedef std::shared_ptr<Base>		Base_s;
+		typedef std::weak_ptr<Base>		Base_w;
+		typedef std::unique_ptr<Base>		Base_u;
+	}
+
+	namespace Network {
+		class Server;
+		class Client;
+
+		typedef std::shared_ptr<Server>		Server_s;
+		typedef std::weak_ptr<Server>		Server_w;
+
+		typedef std::shared_ptr<Client>		Client_s;
+		typedef std::weak_ptr<Client>		Client_w;
 
 
 
-
-
-
-
-
+	}
 }
 
 #endif

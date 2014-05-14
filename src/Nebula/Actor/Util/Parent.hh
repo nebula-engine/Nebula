@@ -6,18 +6,14 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-/*
-#include <galaxy/flag.hpp>
-
-#include <math/vec4.hpp>
-#include <math/vec3.hpp>
-#include <math/vec2.hpp>
-#include <math/transform.hpp>
-#include <math/geo/polyhedron.hpp>
-*/
-
 #include <Nebula/config.hh>
 #include <Nebula/Util/Shared.hh>
+
+#include <Nebula/Scene/Util/Cast.hh>
+
+#include <Nebula/Actor/Util/Types.hh>
+#include <Nebula/Actor/Util/Address.hh>
+#include <Nebula/Actor/Util/Cast.hh>
 
 #include <Nebula/Graphics/material.hh>
 #include <Nebula/Graphics/mesh.hh>
@@ -32,14 +28,16 @@ namespace Neb {
 			 */
 			class Parent:
 				virtual public Neb::Core::Pose,
+				virtual public Neb::Scene::Util::Cast,
+				virtual public Neb::Actor::Util::Cast,
 				virtual public Neb::Util::Shared
 			{
 				public:
 					Parent();
 					virtual ~Parent() {}
 
-					//virtual physx::PxMat44					getPoseGlobal() = 0;
-					//virtual physx::PxMat44					getPose() = 0;
+					//virtual physx::PxMat44		getPoseGlobal() = 0;
+					//virtual physx::PxMat44		getPose() = 0;
 
 					Neb::Actor::Base_s			getActor(Neb::Actor::Util::index_type i);
 					Neb::Actor::Base_s			getActor(Neb::Actor::Util::Address address);
@@ -59,8 +57,4 @@ namespace Neb {
 }
 
 #endif
-
-
-
-
 

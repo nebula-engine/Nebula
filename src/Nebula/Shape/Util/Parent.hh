@@ -40,7 +40,8 @@ namespace Neb {
 				virtual public Neb::Actor::Util::Cast,
 				virtual public Neb::Shape::Util::Cast,
 				virtual public Neb::Core::Pose,
-				virtual public Neb::Util::Shared {
+				virtual public Neb::Util::Shared
+			{
 				public:
 					Parent();
 					virtual ~Parent() {}

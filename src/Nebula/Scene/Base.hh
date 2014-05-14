@@ -14,7 +14,9 @@
 #include <Nebula/Graphics/glsl/program.hh>
 
 
-#include <Nebula/Actor/Base.hh>
+//#include <Nebula/Actor/Base.hh>
+#include <Nebula/Actor/Util/Parent.hh>
+
 #include <Nebula/Graphics/Camera/View/Base.hh>
 
 //#include <glutpp/shader.h>
