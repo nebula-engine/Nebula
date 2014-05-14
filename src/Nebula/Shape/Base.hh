@@ -49,16 +49,16 @@ namespace Neb {
 				typedef std::shared_ptr<Neb::Shape::buffer>		buffer_t;
 				typedef std::map<Neb::window::window*,buffer_t>	map_t;
 
-				Base(Neb::Shape::Utilparent_w parent);
-				~shape();
+				Base(Neb::Shape::Util::Parent_s parent);
+				~Base();
 				
 				/** @name Accessors @{ */
 				physx::PxTransform				getPose();
 				physx::PxTransform				getPoseGlobal();
-				Neb::Shape::parent_s				getParent();
+				Neb::Shape::Util::Parent_s			getParent();
 				/** @} */
 
-				void			init(Neb::Shape::desc_w desc);
+				void			init();
 
 				virtual void		createMesh() = 0;
 				
@@ -133,7 +133,7 @@ namespace Neb {
 
 				Neb::program_name::e				program_;
 				/** @brief Parent */
-				Neb::Shape::parent_w				parent_;
+				Neb::Shape::Util::Parent_w			parent_;
 
 				
 				Neb::Map<Neb::Light::light>			lights_;
@@ -141,17 +141,17 @@ namespace Neb {
 
 		};
 		namespace Box {
-			class Box: public Neb::Shape::shape {
+			class Box: public Neb::Shape::Base {
 				virtual void		createMesh();
 			};
 		}
 		namespace Sphere {
-			class Sphere: public Neb::Shape::shape {
+			class Sphere: public Neb::Shape::Base {
 				virtual void		createMesh();
 			};
 		}
 		namespace Empty {
-			class Empty: public Neb::Shape::shape {
+			class Empty: public Neb::Shape::Base {
 				virtual void		createMesh();
 
 				virtual void		draw_elements(Neb::window::window_s, physx::PxMat44 space) {}
