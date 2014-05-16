@@ -24,15 +24,31 @@ namespace Neb {
 				virtual void			create_physics() {abort();}
 				virtual void			init_physics() {abort();}
 				
-				
-				virtual void			step_local(double);
-				virtual void			step_remote(double);
+				virtual void			stepActorBase(double dt) final;
+				virtual void			stepActorActor(double dt) = 0;
 
+				//virtual void			step_local(double);
+				//virtual void			step_remote(double);
+				
 				virtual void			print_info();
 				
 				physx::PxActor*			px_actor_;
 				
 				//std::shared_ptr<Neb::actor>		object_;
+		};
+		class Local:
+			virtual public Neb::Actor::Actor::Base,
+			virtual public Neb::Actor::Base::Local
+		{
+			public:
+				virtual void		stepRigidBodyDerived(double);
+		};
+		class Remote:
+			virtual public Neb::Actor::Actor::Base,
+			virtual public Neb::Actor::Base::Remote,
+		{
+			public:
+				virtual void		stepRigidBodyDerived(double);
 		};
 	}
 }

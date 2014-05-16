@@ -85,11 +85,11 @@ namespace Neb {
 				//class Raw;
 				//typedef boost::shared_ptr<raw>		Raw_s;
 
-				class Control;
+				class Base;
 
-				typedef std::shared_ptr<Control>	Control_s;
-				typedef std::weak_ptr<Control>		Control_w;
-				typedef std::unique_ptr<Control>	Control_u;
+				typedef std::shared_ptr<Base>		Base_s;
+				typedef std::weak_ptr<Base>		Base_w;
+				typedef std::unique_ptr<Base>		Base_u;
 
 			}
 		}

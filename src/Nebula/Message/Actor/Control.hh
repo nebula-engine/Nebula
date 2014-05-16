@@ -1,7 +1,8 @@
 #ifndef NEBULA_MESSAGE_ACTOR_CONTROL_HPP
 #define NEBULA_MESSAGE_ACTOR_CONTROL_HPP
 
-#include <Nebula/config.hpp>
+#include <Nebula/Util/WrapperTyped.hh>
+
 #include <Nebula/Message/Actor/Base.hh>
 
 namespace Neb {
@@ -23,7 +24,7 @@ namespace Neb {
 									unsigned int const & version);
 
 
-							Neb::Actor::Control::RigidBody::Raw		raw_;
+							Neb::WrapperTyped<Neb::Actor::Control::RigidBody::Base>		control_;
 					};
 					/** @brief %Update. */
 					class Update: public Neb::Message::Actor::Base {
@@ -37,7 +38,7 @@ namespace Neb {
 									boost::archive::binary_iarchive & ar,
 									unsigned int const & version);
 
-							Neb::Actor::Control::RigidBody::Raw		raw_;
+							Neb::WrapperTyped<Neb::Actor::Control::RigidBody::Base>		control_;
 					};
 				}
 			}

@@ -11,6 +11,7 @@
 #include <Nebula/simulation_callback.hh>
 
 #include <Nebula/Actor/Util/Types.hh>
+//#include <Nebula/Actor/Control/Util/Types.hh>
 #include <Nebula/Actor/rigid_body/rigid_body.hh>
 #include <Nebula/Actor/Control/RigidBody/Base.hh>
 
@@ -19,15 +20,15 @@
 #include <Nebula/Message/Actor/Control.hh>
 #include <Nebula/Message/Types.hh>
 
-Neb::Actor::RigidBody::RigidBody::RigidBody(Neb::Actor::parent_w parent):
+Neb::Actor::RigidBody::RigidBody::RigidBody(Neb::Actor::Util::Parent_s parent):
 	Neb::Actor::RigidActor(parent),
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}
-void	Neb::Actor::RigidBody::RigidBody::init(Neb::Actor::desc_w desc) {
+void	Neb::Actor::RigidBody::RigidBody::init() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
-	Neb::Actor::RigidActor::init(desc);
+	Neb::Actor::RigidActor::init();
 
 }
 void Neb::Actor::RigidBody::RigidBody::step_local(double time) {
@@ -35,7 +36,10 @@ void Neb::Actor::RigidBody::RigidBody::step_local(double time) {
 	
 	Neb::Actor::RigidActor::step_local(time);
 	
-	if(control_) control_->step_local(time);
+	auto control_s = control_.lock();
+	
+	/** @todo was step_local */
+	if(control_s) control_s->step(time);
 	
 	add_force(time);
 }
@@ -49,7 +53,6 @@ void Neb::Actor::RigidBody::RigidBody::step_remote(double time) {
 	Neb::Message::Actor::Control::RigidBody::Update_s control_update;
 	
 	Neb::Actor::RigidActor::step_remote(time);
-	
 	
 	
 	if(control_) {

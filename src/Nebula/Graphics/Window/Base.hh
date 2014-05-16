@@ -7,6 +7,7 @@
 
 #include <Nebula/config.hh>
 #include <Nebula/Types.hh>
+#include <Nebula/Scene/Util/Types.hh>
 
 #include <Nebula/Graphics/Context/Base.hh>
 #include <Nebula/Graphics/Context/Util/Parent.hh>

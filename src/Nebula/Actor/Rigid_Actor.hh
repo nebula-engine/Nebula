@@ -5,24 +5,40 @@
 
 namespace Neb {
 	namespace Actor {
-		class RigidActor: public Neb::Actor::Actor {
-			public:
-				RigidActor(Neb::Actor::Util::Parent_s);
+		namespace RigidActor {
+			class Base: public Neb::Actor::Actor {
+				public:
+					RigidActor(Neb::Actor::Util::Parent_s);
 
-				virtual void					init();
+					virtual void					init();
 
-				/*virtual void					step_local(double);
-				virtual void					step_remote(double);*/
-				
-				virtual void					setupFiltering();
+					/*virtual void					step_local(double);
+					  virtual void					step_remote(double);*/
 
-				virtual Neb::Actor::Base_s			get_projectile() = 0;
-				
-				virtual void					create_physics() = 0;
-				virtual void					init_physics() = 0;
+					virtual void					setupFiltering();
 
-				virtual void					print_info();
-		};
+					virtual Neb::Actor::Base_s			get_projectile() = 0;
+
+					virtual void					create_physics() = 0;
+					virtual void					init_physics() = 0;
+
+					virtual void					print_info();
+			};
+			class Local:
+				virtual public Neb::Actor::RigidActor::Base,
+				virtual public Neb::Actor::Actor::Local
+			{
+				public:
+					virtual void		stepRigidBodyDerived(double);
+			};
+			class Remote:
+				virtual public Neb::Actor::RigidActor::Base,
+				virtual public Neb::Actor::Actor::Remote,
+			{
+				public:
+					virtual void		stepRigidBodyDerived(double);
+			};
+		}
 	}
 }
 

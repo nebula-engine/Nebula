@@ -18,7 +18,7 @@ namespace Neb {
 					virtual void		serializeDerived(boost::archive::binary_oarchive & ar, unsigned int const & version) = 0;
 					virtual void		serializeDerived(boost::archive::binary_iarchive & ar, unsigned int const & version) = 0;
 				public:
-					Neb::Actor::addr				addr_;
+					Neb::Actor::Util::Address			addr_;
 			};
 		}
 	}

@@ -7,19 +7,19 @@
 namespace Neb {
 	namespace Actor {
 		namespace RigidBody {
-			class RigidBody: public Neb::Actor::RigidActor {
+			class Base: public Neb::Actor::RigidActor {
 				public:
-					RigidBody(Neb::Actor::Util::Parent_s);
+					Base(Neb::Actor::Util::Parent_s);
 					
 					virtual void					init();
-					
 					
 					
 					virtual Neb::Actor::Base_s			get_projectile();
 					
 				private:
-					virtual void					step_local(double);
-					virtual void					step_remote(double);
+					virtual void					stepRigidActor(double dt);
+					virtual void					stepRigidBody(double dt) = 0;
+					virtual void					stepRigidBodyDerived(double dt) = 0;
 
 					virtual void					add_force(double);
 				public:
@@ -31,12 +31,26 @@ namespace Neb {
 					// control
 					//virtual void					create_control(
 					//		Neb::Actor::Control::RigidBody::Raw_s);
-					void						setControl(Neb::Actor::Control::RigidBody::Control_s);
+					void						setControl(Neb::Actor::Control::RigidBody::Base_s);
 				public:
-					Neb::Actor::Control::RigidBody::Control_w	control_;
+					Neb::Actor::Control::RigidBody::Base_w		control_;
 				private:
 					physx::PxVec3			force_;
 					physx::PxVec3			torque_;
+			};
+			class Local:
+				virtual public Neb::Actor::RigidBody::Base,
+				virtual public Neb::Actor::RigidActor::Local
+			{
+				public:
+					virtual void		stepRigidBodyDerived(double);
+			};
+			class Remote:
+				virtual public Neb::Actor::RigidBody::Base,
+				virtual public Neb::Actor::RigidActor::Remote,
+			{
+				public:
+					virtual void		stepRigidBodyDerived(double);
 			};
 		}
 	}

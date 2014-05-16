@@ -5,11 +5,11 @@
 
 namespace Neb {
 	namespace Actor {
-		class Rigid_Dynamic: public Neb::Actor::RigidBody::RigidBody {
+		class Rigid_Dynamic: public Neb::Actor::RigidBody::Base {
 			public:
-				Rigid_Dynamic(Neb::Actor::parent_w);
+				Rigid_Dynamic(Neb::Actor::Util::Parent_w);
 				
-				virtual void		init(Neb::Actor::desc_w);
+				virtual void		init();
 
 				virtual void		create_physics();
 				virtual void		init_physics();
