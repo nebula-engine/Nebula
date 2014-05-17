@@ -1,6 +1,8 @@
 #ifndef __NEBULA_APP_H__
 #define __NEBULA_APP_H__
 
+#include <fstream>
+
 #include <boost/asio/io_service.hpp>
 
 #include <ft2build.h>
@@ -52,12 +54,23 @@ namespace Neb {
 				std::shared_ptr<Neb::glsl::program>		current_program();
 				void						create_programs();
 			public:
+				/** @name Accessors @{ */
 				static Base_s					global();
 				static void					global(Base_s);
-
+				
 				Neb::Graphics::Window::Base_s			getWindowMain();
 				void						setWindowMain(Neb::Graphics::Window::Base_w);
-
+				/** @} */
+				/** @name Serialization @{ */
+				template<class A> A				loadXml(std::string filename) {
+					std::ifstream ifs;
+					ifs.open(filename, std::ifstream::in);
+					boost::archive::xml_iarchive ar(ifs);
+					A a;
+					ar >> a;
+					return a;
+				}
+				/** @} */
 				/*			template <class U> Neb::weak_ptr<U>				create_window(Neb::window::desc> wd) {
 				//GLUTPP_DEBUG_0_FUNCTION;
 				Neb::unique_ptr<U> u(new U(wd));
@@ -98,25 +111,16 @@ namespace Neb {
 					template<typename T> using pointer = std::shared_ptr<T>;
 
 					typedef pointer< Neb::Factory<Neb::gui::object::object> >		Gui_Object;
-
 					typedef pointer< Neb::Factory<Neb::Actor::Base> >			Actor_Base;
-
 					typedef pointer< Neb::Factory<Neb::Shape::Base> >			Shape_Base;
-
 					typedef pointer< Neb::Factory<Neb::Light::light> >			Light_Base;
-
 					typedef pointer< Neb::Factory<Neb::Graphics::Window::Base> >		Window_Base;
-
 					typedef pointer< Neb::Factory<Neb::Scene::Base> >			Scene_Base;
-
 					Gui_Object			gui_object_;
 					Actor_Base			actor_base_;
 					Shape_Base			shape_base_;
-
 					Light_Base			light_base_;
-
 					Window_Base			window_base_;
-	
 					Scene_Base			scene_base_;
 				} factories_;
 

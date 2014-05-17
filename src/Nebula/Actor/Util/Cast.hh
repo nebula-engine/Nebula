@@ -14,8 +14,8 @@ namespace Neb {
                                 public:
                                         Neb::Actor::Base_s				isActorBase();
         				Neb::Actor::Actor::Base_s			isActorActor();
-        				Neb::Actor::RigidActor_s			isActorRigidActor();
-        				Neb::Actor::RigidBody::RigidBody_s		isActorRigidBody();
+        				Neb::Actor::RigidActor::Base_s			isActorRigidActor();
+        				Neb::Actor::RigidBody::Base_s			isActorRigidBody();
                         };
                 }
         }

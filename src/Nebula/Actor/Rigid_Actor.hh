@@ -6,9 +6,9 @@
 namespace Neb {
 	namespace Actor {
 		namespace RigidActor {
-			class Base: public Neb::Actor::Actor {
+			class Base: virtual public Neb::Actor::Actor::Base {
 				public:
-					RigidActor(Neb::Actor::Util::Parent_s);
+					Base(Neb::Actor::Util::Parent_s);
 
 					virtual void					init();
 
@@ -33,7 +33,7 @@ namespace Neb {
 			};
 			class Remote:
 				virtual public Neb::Actor::RigidActor::Base,
-				virtual public Neb::Actor::Actor::Remote,
+				virtual public Neb::Actor::Actor::Remote
 			{
 				public:
 					virtual void		stepRigidBodyDerived(double);

@@ -7,7 +7,7 @@
 namespace Neb {
 	namespace Actor {
 		namespace RigidBody {
-			class Base: public Neb::Actor::RigidActor {
+			class Base: virtual public Neb::Actor::RigidActor::Base {
 				public:
 					Base(Neb::Actor::Util::Parent_s);
 					
@@ -33,7 +33,7 @@ namespace Neb {
 					//		Neb::Actor::Control::RigidBody::Raw_s);
 					void						setControl(Neb::Actor::Control::RigidBody::Base_s);
 				public:
-					Neb::Actor::Control::RigidBody::Base_w		control_;
+					Neb::Actor::Control::RigidBody::Base_s		control_;
 				private:
 					physx::PxVec3			force_;
 					physx::PxVec3			torque_;
@@ -47,7 +47,7 @@ namespace Neb {
 			};
 			class Remote:
 				virtual public Neb::Actor::RigidBody::Base,
-				virtual public Neb::Actor::RigidActor::Remote,
+				virtual public Neb::Actor::RigidActor::Remote
 			{
 				public:
 					virtual void		stepRigidBodyDerived(double);

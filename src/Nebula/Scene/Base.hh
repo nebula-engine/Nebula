@@ -68,7 +68,10 @@ namespace Neb {
 				physx::PxTransform				getPose();
 				physx::PxTransform				getPoseGlobal();
 				/** @} */
-
+				/** @name Children @{ */
+				void						insertActor(Neb::Actor::Base_s actor);
+				void						insertActor(Neb::Actor::Base_s actor, int i);
+				/** @} */
 				//void						create_actors(Neb::Scene::desc_w);
 			private:	
 				//_wNeb::Actor::Base>		create_actor(boost::shared_ptr<Neb::Actor::desc>);

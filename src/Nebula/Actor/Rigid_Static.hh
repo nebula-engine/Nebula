@@ -5,7 +5,7 @@
 
 namespace Neb {
 	namespace Actor {
-		class Rigid_Static: public Neb::Actor::RigidActor {
+		class Rigid_Static: public Neb::Actor::RigidActor::Base {
 			public:
 				Rigid_Static(Neb::Actor::Util::Parent_s parent);
 

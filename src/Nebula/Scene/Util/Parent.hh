@@ -15,7 +15,8 @@ namespace Neb {
 					Neb::Scene::Base_s			getScene(int);
 					Neb::Scene::Base_s			getScene(Neb::Scene::Util::Address);
 
-
+					void					insertScene(Neb::Scene::Base_s scene);
+					void					insertScene(Neb::Scene::Base_s scene, int i);
 				private:
 					Neb::Map<Neb::Scene::Base>		scenes_;
 			};

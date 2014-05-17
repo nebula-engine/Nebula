@@ -33,15 +33,22 @@ namespace Neb {
 			typedef std::unique_ptr<Base>		Base_u;
 		}
 
-		class RigidActor;
+		namespace RigidActor {
+			class Base;
+
+			typedef std::shared_ptr<Base>		Base_s;
+			typedef std::weak_ptr<Base>		Base_w;
+			typedef std::unique_ptr<Base>		Base_u;
+
+		}
 
 		/** @brief %RigidBody */
 		namespace RigidBody {
-			class RigidBody;
+			class Base;
 
-			typedef std::shared_ptr<RigidBody>	RigidBody_s;
-			typedef std::unique_ptr<RigidBody>	RigidBody_u;
-			typedef std::weak_ptr<RigidBody>	RigidBody_w;
+			typedef std::shared_ptr<Base>	Base_s;
+			typedef std::unique_ptr<Base>	Base_u;
+			typedef std::weak_ptr<Base>	Base_w;
 		}
 
 		class Rigid_Dynamic;
@@ -56,13 +63,8 @@ namespace Neb {
 
 
 
-		typedef std::shared_ptr<RigidActor>		RigidActor_s;
-		typedef std::weak_ptr<RigidActor>		RigidActor_w;
-		typedef std::unique_ptr<RigidActor>		RigidActor_u;
 
 
-
-		typedef std::weak_ptr<RigidActor>	RigidActor_w;
 
 		/** @brief Utilities */
 		namespace Util {
@@ -90,12 +92,15 @@ namespace Neb {
 
 				//class Raw;
 				//typedef boost::shared_ptr<raw>		Raw_s;
-
+				
 				class Base;
-
+				class Manual;
+				
 				typedef std::shared_ptr<Base>		Base_s;
 				typedef std::weak_ptr<Base>		Base_w;
-				typedef std::unique_ptr<Base>		Base_u;
+
+				typedef std::shared_ptr<Manual>		Manual_s;
+				typedef std::weak_ptr<Manual>		Manual_w;
 
 			}
 		}
