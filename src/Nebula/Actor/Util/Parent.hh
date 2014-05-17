@@ -38,6 +38,8 @@ namespace Neb {
 
 					//virtual physx::PxMat44		getPoseGlobal() = 0;
 					//virtual physx::PxMat44		getPose() = 0;
+					void					insertActor(Neb::Actor::Base_s actor);
+					void					insertActor(Neb::Actor::Base_s actor, int i);
 
 					Neb::Actor::Base_s			getActor(Neb::Actor::Util::index_type i);
 					Neb::Actor::Base_s			getActor(Neb::Actor::Util::Address address);

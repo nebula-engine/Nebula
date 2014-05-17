@@ -6,6 +6,8 @@
 #include <functional>
 #include <stdio.h>
 
+#include <boost/serialization/map.hpp>
+
 #include <Nebula/Util/WrapperTyped.hh>
 
 namespace Neb {
@@ -30,6 +32,9 @@ namespace Neb {
 			  map_.insert(p);
 			  }*/
 			/** */
+			template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
+				ar & boost::serialization::make_nvp("map",map_);
+			}
 			void				push_back(shared_type& u) {
 				assert(u);
 				

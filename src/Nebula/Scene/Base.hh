@@ -54,7 +54,11 @@ namespace Neb {
 				void				step(double);
 				/** @} */
 
-
+				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("i",i_);
+					ar & boost::serialization::make_nvp("flag",flag_);
+					ar & boost::serialization::make_nvp("gravity",gravity_);
+				}
 			public:
 				/** @todo replace types with inheritance */
 				enum {
@@ -69,8 +73,6 @@ namespace Neb {
 				physx::PxTransform				getPoseGlobal();
 				/** @} */
 				/** @name Children @{ */
-				void						insertActor(Neb::Actor::Base_s actor);
-				void						insertActor(Neb::Actor::Base_s actor, int i);
 				/** @} */
 				//void						create_actors(Neb::Scene::desc_w);
 			private:	

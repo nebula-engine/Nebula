@@ -10,6 +10,7 @@ namespace Neb {
 		namespace Actor {
 			class Base: virtual public Neb::Actor::Base {
 				public:
+					Base();
 					Base(Neb::Actor::Util::Parent_s);
 
 					virtual void			init(/*Neb::weak_ptr<Neb::Actor::desc>*/);

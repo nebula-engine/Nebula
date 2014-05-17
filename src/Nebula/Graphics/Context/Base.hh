@@ -22,6 +22,7 @@ namespace Neb {
 			 */
 			class Base: virtual public Neb::Util::Shared {
 				public:
+					Base();
 					Base(Neb::Graphics::Context::Util::Parent_s parent);
 					Base&				operator=(Base const & r);
 					void				init();
@@ -35,7 +36,7 @@ namespace Neb {
 					//unsigned int					flag_;
 
 					Neb::Graphics::Context::Util::Parent_w		window_;
-				private:
+				public://private:
 					/** @brief scene.
 					 * weak because scene is owned by app.
 					 */

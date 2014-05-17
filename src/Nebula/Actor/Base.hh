@@ -57,6 +57,7 @@ namespace Neb {
 					};
 				};
 
+				Base();
 				Base(Neb::Actor::Util::Parent_s);
 				virtual ~Base();
 
@@ -151,16 +152,17 @@ namespace Neb {
 				 * @param ar archive
 				 * @param version version
 				 */
-				template<class Archive>
-					void			serialize(Archive & ar, unsigned int const & version) {
-						ar & boost::serialization::make_nvp("i", i_);
+				template<class Archive> void			serialize(Archive & ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("i", i_);
 
-						serializeData(ar, version);
+					serializeData(ar, version);
 
-						ar & boost::serialization::make_nvp("actors", actors_);				
-						ar & boost::serialization::make_nvp("shapes", shapes_);
-					}
-				virtual void		saveData(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("actors", actors_);				
+					ar & boost::serialization::make_nvp("shapes", shapes_);
+				}
+				virtual void		serializeData(
+						boost::archive::polymorphic_oarchive & ar,
+						unsigned int const & version) {
 					ar & boost::serialization::make_nvp("mode_create",mode_create_);
 					ar & boost::serialization::make_nvp("flag",flag_);
 					ar & boost::serialization::make_nvp("name",name_);
@@ -172,7 +174,7 @@ namespace Neb {
 					ar & boost::serialization::make_nvp("filter_data_simulation",simulation_);
 					ar & boost::serialization::make_nvp("filter_data_scene_query",scene_query_);
 				}
-				virtual void		loadData(
+				virtual void		serializeData(
 						boost::archive::polymorphic_iarchive & ar,
 						unsigned int const & version) {
 					ar & boost::serialization::make_nvp("mode_create",mode_create_);
@@ -188,18 +190,18 @@ namespace Neb {
 				}
 
 				/** @brief %Serialize specialization */
-				void			saveUdate(
+				void			saveUpdate(
 						boost::archive::polymorphic_oarchive & ar,
 						unsigned int const & version) {
 					auto address = getAddress();
 					ar << boost::serialization::make_nvp("address", address);
-					saveData(ar, version);
+					serializeData(ar, version);
 				}
 				/** @brief %Serialize specialization */
 				void			loadUpdate(
 						boost::archive::polymorphic_iarchive & ar,
 						unsigned int const & version) {
-					loadData(ar, version);
+					serializeData(ar, version);
 				}
 
 

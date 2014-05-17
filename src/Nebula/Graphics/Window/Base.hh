@@ -30,8 +30,9 @@ namespace Neb {
 				public Neb::Graphics::Context::Util::Parent
 			{
 				public:
+					Base();
 					Base(Neb::Graphics::Window::Util::Parent_s parent);
-					virtual ~Base() = 0;
+					virtual ~Base() {}
 				
 				public:
 					struct flag {

@@ -10,13 +10,19 @@ Neb::Actor::Util::Parent::Parent():
 	actors_(Neb::App::Base::global()->factories_.actor_base_)
 {
 }
+void				Neb::Actor::Util::Parent::insertActor(Neb::Actor::Base_s actor) {
+	actor_.
+}
+void				Neb::Actor::Util::Parent::insertActor(Neb::Actor::Base_s actor, int i) {
+	
+}
 Neb::Actor::Base_s		Neb::Actor::Util::Parent::getActor(int i) {
 	NEBULA_ACTOR_BASE_FUNC;
-	
+
 	auto it = actors_.find(i);
-	
+
 	if(it == actors_.end()) return Neb::Actor::Base_s();
-	
+
 	return it->second.ptr_;
 }
 Neb::Actor::Base_s		Neb::Actor::Util::Parent::getActor(Neb::Actor::Util::Address addr) {
@@ -30,7 +36,7 @@ Neb::Actor::Base_s		Neb::Actor::Util::Parent::getActor(Neb::Actor::Util::Address
 
 	auto actor = getActor(i);
 	assert(actor);
-	
+
 	if(!addr.vec_.empty()) {
 		return actor->getActor(addr);
 	}
@@ -39,25 +45,25 @@ Neb::Actor::Base_s		Neb::Actor::Util::Parent::getActor(Neb::Actor::Util::Address
 }
 void					Neb::Actor::Util::Parent::releaseActor(Neb::Actor::Util::index_type i) {
 	auto it = actors_.find(i);
-	
+
 	if(it == actors_.map_.cend()) throw 0;
-	
+
 	// release the actor
 	it->second.ptr_->release();
-	
+
 	actors_.erase(it);
 }
 Neb::Scene::Base_s			Neb::Actor::Util::Parent::getScene() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	auto scene = isSceneBase();
-	
+
 	if(scene) return scene;
-	
+
 	auto actor = isActorBase();
-	
+
 	if(!actor) throw 0;
-	
+
 	return actor->getScene();
 }
 

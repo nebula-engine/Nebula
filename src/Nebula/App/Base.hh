@@ -4,6 +4,7 @@
 #include <fstream>
 
 #include <boost/asio/io_service.hpp>
+#include <boost/archive/polymorphic_xml_iarchive.hpp>
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -12,6 +13,7 @@
 #include <Nebula/Util/Shared.hh>
 
 #include <Nebula/App/Util/Flag.hh>
+#include <Nebula/App/BaseFactory.hh>
 
 #include <Nebula/network2/server.hh>
 #include <Nebula/network2/client.hh>
@@ -27,6 +29,7 @@ namespace Neb {
 	namespace App {
 		class Base:
 			virtual public Neb::Util::Shared,
+			public Neb::App::BaseFactory,
 			public Neb::Graphics::Window::Util::Parent,
 			public Neb::Scene::Util::Parent
 		{
@@ -54,21 +57,23 @@ namespace Neb {
 				std::shared_ptr<Neb::glsl::program>		current_program();
 				void						create_programs();
 			public:
+				physx::PxTransform				getPose();
+				physx::PxTransform				getPoseGlobal();
+				
+
 				/** @name Accessors @{ */
-				static Base_s					global();
+				static Base_s					global() { return g_app_; }
 				static void					global(Base_s);
 				
 				Neb::Graphics::Window::Base_s			getWindowMain();
 				void						setWindowMain(Neb::Graphics::Window::Base_w);
 				/** @} */
 				/** @name Serialization @{ */
-				template<class A> A				loadXml(std::string filename) {
+				template<class A> void				loadXml(std::string filename, A& a) {
 					std::ifstream ifs;
 					ifs.open(filename, std::ifstream::in);
-					boost::archive::xml_iarchive ar(ifs);
-					A a;
-					ar >> a;
-					return a;
+					boost::archive::polymorphic_xml_iarchive ar(ifs);
+					ar >> boost::serialization::make_nvp("archive",a);
 				}
 				/** @} */
 				/*			template <class U> Neb::weak_ptr<U>				create_window(Neb::window::desc> wd) {
@@ -106,85 +111,88 @@ namespace Neb {
 				/** @name Boost Asio @{ */
 				boost::asio::io_service							ios_;
 				/** @} */
+
+				template<typename T> using pointer = std::shared_ptr<T>;
+
+				typedef pointer< Neb::Factory<Neb::gui::object::object> >		Gui_Object;
+				typedef pointer< Neb::Factory<Neb::Actor::Base> >			Factory_Actor_Base;
+				typedef pointer< Neb::Factory<Neb::Shape::Base> >			Shape_Base;
+				typedef pointer< Neb::Factory<Neb::Light::light> >			Light_Base;
+				typedef pointer< Neb::Factory<Neb::Graphics::Window::Base> >		Window_Base;
+				typedef pointer< Neb::Factory<Neb::Scene::Base> >			Scene_Base;
 				/** @brief Factories */
 				struct {
-					template<typename T> using pointer = std::shared_ptr<T>;
 
-					typedef pointer< Neb::Factory<Neb::gui::object::object> >		Gui_Object;
-					typedef pointer< Neb::Factory<Neb::Actor::Base> >			Actor_Base;
-					typedef pointer< Neb::Factory<Neb::Shape::Base> >			Shape_Base;
-					typedef pointer< Neb::Factory<Neb::Light::light> >			Light_Base;
-					typedef pointer< Neb::Factory<Neb::Graphics::Window::Base> >		Window_Base;
-					typedef pointer< Neb::Factory<Neb::Scene::Base> >			Scene_Base;
 					Gui_Object			gui_object_;
-					Actor_Base			actor_base_;
+					Factory_Actor_Base		actor_base_;
 					Shape_Base			shape_base_;
 					Light_Base			light_base_;
 					Window_Base			window_base_;
 					Scene_Base			scene_base_;
 				} factories_;
-
+				
+				
 			private:
 			public:
-				struct flag {
-					enum e {
-						SHOULD_RELEASE = 1 << 0,			
+					struct flag {
+						enum e {
+							SHOULD_RELEASE = 1 << 0,			
+						};
 					};
-				};
-				void					init();
-				Neb::Graphics::Window::Base_w			create_window(int, int, int, int, char const *);
-				//Neb::Scene::Base_w				load_scene_local(Neb::Scene::desc_w);
-				//Neb::Scene::Base_w				load_scene_remote(Neb::Scene::desc_w);
-				void					load_layout(int,char const *);
-				int					step(double);
-				int					loop();
+					void					init();
+					//Neb::Graphics::Window::Base_w			create_window(int, int, int, int, char const *);
+					//Neb::Scene::Base_w				load_scene_local(Neb::Scene::desc_w);
+					//Neb::Scene::Base_w				load_scene_remote(Neb::Scene::desc_w);
+					void					load_layout(int,char const *);
+					int					step(double);
+					int					loop();
 
-				/** @name Accessors @{ */
-				Neb::Graphics::Window::Base_w			get_window(int);
-				/** @} */
+					/** @name Accessors @{ */
+					Neb::Graphics::Window::Base_w			get_window(int);
+					/** @} */
 
-				void				set_should_release();
+					void				set_should_release();
 
-				int				activate_scene(int,int);
-				int				deactivate_scene(int);
-				int				activate_layout(int,int);
-				int				deactivate_layout(int);
+					int				activate_scene(int,int);
+					int				deactivate_scene(int);
+					int				activate_layout(int,int);
+					int				deactivate_layout(int);
 
 
-				/** @name %Network @{ */
-				void				reset_server(unsigned short);
-				void				reset_client(char const *, unsigned short);		
-				void				send_server(boost::shared_ptr<gal::network::omessage>);
-				void				send_client(boost::shared_ptr<gal::network::omessage>);
-				int				transmit_scenes(boost::shared_ptr<gal::network::communicating>);
-				/** @todo consider putting following functions into the messages themselves: would be cleaner that way. */
-				void				recv_scene_create(std::shared_ptr<gal::network::message>);
-				void				recv_actor_create(std::shared_ptr<gal::network::message>);
-				void				recv_actor_update(std::shared_ptr<gal::network::message>);
-				void				recv_actor_event(std::shared_ptr<gal::network::message>);
-				void				recv_control_create(std::shared_ptr<gal::network::message>);
-				void				recv_control_update(std::shared_ptr<gal::network::message>);
-				/** @} */
+					/** @name %Network @{ */
+					void				reset_server(unsigned short);
+					void				reset_client(char const *, unsigned short);		
+					void				send_server(boost::shared_ptr<gal::network::omessage>);
+					void				send_client(boost::shared_ptr<gal::network::omessage>);
+					int				transmit_scenes(boost::shared_ptr<gal::network::communicating>);
+					/** @todo consider putting following functions into the messages themselves: would be cleaner that way. */
+					void				recv_scene_create(std::shared_ptr<gal::network::message>);
+					void				recv_actor_create(std::shared_ptr<gal::network::message>);
+					void				recv_actor_update(std::shared_ptr<gal::network::message>);
+					void				recv_actor_event(std::shared_ptr<gal::network::message>);
+					void				recv_control_create(std::shared_ptr<gal::network::message>);
+					void				recv_control_update(std::shared_ptr<gal::network::message>);
+					/** @} */
 
 			public:
 
-				Neb::Map<Neb::Graphics::GUI::Layout::Base>			layouts_;
+					Neb::Map<Neb::Graphics::GUI::Layout::Base>			layouts_;
 			private:
-				// network
-				/** @todo make derived App classes for Server and Client??? */
-				Neb::Network::Server_s				server_;
-				Neb::Network::Client_s				client_;
+					// network
+					/** @todo make derived App classes for Server and Client??? */
+					Neb::Network::Server_s				server_;
+					Neb::Network::Client_s				client_;
 
 
-				Neb::App::Util::Flag						flag_;
-				//GLFWwindow*							currentIdleWindow_;
-				glfwwindow_map_type						windows_glfw_;
-				static Neb::Graphics::Window::Base_w				window_main_;
-				std::map<int, std::shared_ptr<Neb::glsl::program> >		programs_;
-				std::shared_ptr<Neb::glsl::program>				current_;
+					Neb::App::Util::Flag						flag_;
+					//GLFWwindow*							currentIdleWindow_;
+					glfwwindow_map_type						windows_glfw_;
+					static Neb::Graphics::Window::Base_w				window_main_;
+					std::map<int, std::shared_ptr<Neb::glsl::program> >		programs_;
+					std::shared_ptr<Neb::glsl::program>				current_;
 
-				/** %brief global app object */
-				static Neb::App::Base_s						g_app_;
+					/** %brief global app object */
+					static Neb::App::Base_s						g_app_;
 		};
 	}
 }

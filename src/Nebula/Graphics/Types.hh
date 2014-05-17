@@ -91,7 +91,7 @@ namespace Neb {
 				typedef std::shared_ptr<object>			object_s;
 				typedef std::shared_ptr<object_factory>		object_factory_s;
 
-				typedef Neb::Map<object>		object_m;
+				//typedef Neb::Map<object>		object_m;
 			}
 
 		}
@@ -108,8 +108,7 @@ namespace Neb {
 			}
 			class Base;
 
-			//typedef Neb::unique_ptr<renderable>	renderable_u;
-			typedef std::unique_ptr<Base>	Base_u;
+			typedef std::shared_ptr<Base>	Base_s;
 			typedef std::weak_ptr<Base>	Base_w;
 		}
 	}
