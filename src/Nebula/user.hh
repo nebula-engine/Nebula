@@ -1,22 +1,24 @@
 #ifndef __NEBULA_USER_H__
 #define __NEBULA_USER_H__
 
-#include <gru/master.hpp>
-#include <gru/window/window.hpp>
+//#include <gru/master.hpp>
+#include <Nebula/Graphics/Window/Base.hh>
 
-#include <nebula/config.hpp>
+//#include <nebula/config.hpp>
 //#include <nebula/camera/camera.hpp>
 
-namespace neb {
-	class user {
+#include <Nebula/Actor/Util/Types.hh>
+
+namespace Neb {
+	class User {
 		public:
-			user();
+			User();
 			void	init();
-			void	connect(glutpp::window::window_s);
-			void	set_control(neb::control::rigid_body::control_s);
+			void	connect(Neb::Graphics::Window::Base_s);
+			void	set_control(Neb::Actor::Control::RigidBody::Base_s);
 			
 			
-			neb::control::rigid_body::control_s		control_;
+			Neb::Actor::Control::RigidBody::Base_s		control_;
 			
 	};
 }

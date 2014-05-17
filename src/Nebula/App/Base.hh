@@ -105,9 +105,9 @@ namespace Neb {
 
 					typedef pointer< Neb::Factory<Neb::Light::light> >			Light_Base;
 
-					typedef pointer< Neb::Factory<Neb::Graphics::Window::Base> >			Window;
+					typedef pointer< Neb::Factory<Neb::Graphics::Window::Base> >		Window_Base;
 
-					//typedef pointer< Neb::Factory<Neb::Scene::Raw> >			SceneRaw;
+					typedef pointer< Neb::Factory<Neb::Scene::Base> >			Scene_Base;
 
 					Gui_Object			gui_object_;
 					Actor_Base			actor_base_;
@@ -115,7 +115,9 @@ namespace Neb {
 
 					Light_Base			light_base_;
 
-					//SceneRaw			scene_raw_;
+					Window_Base			window_base_;
+	
+					Scene_Base			scene_base_;
 				} factories_;
 
 			private:

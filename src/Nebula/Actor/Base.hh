@@ -1,5 +1,5 @@
-#ifndef __NEBULA_ACTOR_BASE_HPP
-#define __NEBULA_ACTOR_BASE_HPP
+#ifndef __NEBULA_ACTOR_BASE_HH
+#define __NEBULA_ACTOR_BASE_HH
 
 #include <memory>
 
@@ -43,10 +43,11 @@ namespace Neb {
 	namespace Actor {
 		/** @brief %Base */
 		class Base:
-				virtual public Neb::Actor::Util::Parent,
-				virtual public Neb::Shape::Util::Parent,
-				virtual public Neb::Util::Release,
-				public gal::flag {
+			virtual public Neb::Actor::Util::Parent,
+			virtual public Neb::Shape::Util::Parent,
+			virtual public Neb::Util::Release,
+			virtual public Neb::Util::Typed
+		{
 			public:
 				struct flag {
 					enum e {
@@ -85,7 +86,6 @@ namespace Neb {
 				virtual Neb::Actor::Base_s		insertActor(Neb::Actor::Base_s actor);
 			public:
 				//Neb::Actor::Base_w			create_actor_local(Neb::weak_ptr<Neb::Actor::desc>);
-
 				//Neb::Actor::Base_w			create_actor_remote(Neb::weak_ptr<Neb::Actor::addr>, Neb::weak_ptr<Neb::Actor::desc>);
 
 
@@ -96,12 +96,12 @@ namespace Neb {
 				virtual void						create_physics() = 0;
 				virtual void						init_physics() = 0;
 
-
-
 				/** @name Stepping @{ */
 				virtual void					step(double dt) final;
 				virtual void					stepActorBase(double dt) = 0;
-				
+				virtual void					stepActorBaseDerived(double dt) = 0;
+
+
 				//virtual void					step_local(double);
 				//virtual void					step_remote(double);
 
@@ -110,18 +110,12 @@ namespace Neb {
 				void						draw(Neb::Graphics::Window::Base_s, physx::PxTransform);
 				/** @} */
 
-
-
-
 				/** @name Accessors @{ */
 				//virtual Neb::Actor::Base_s				get_projectile();
 				Neb::Actor::Util::Address				getAddress() const;
 				virtual physx::PxTransform				getPose();
 				virtual physx::PxTransform				getPoseGlobal();
 				/** @} */
-
-
-				
 
 				/** @name Accessors @{ */
 				Neb::Actor::Util::Parent_s			getParent();
@@ -147,7 +141,7 @@ namespace Neb {
 				/** @todo what is this??? */
 				Neb::Actor::mode_update::e		mode_update_;
 
-				
+
 				struct {
 					boost::signals2::connection		key_fun_;
 				} conn_;
@@ -158,14 +152,14 @@ namespace Neb {
 				 * @param version version
 				 */
 				template<class Archive>
-				void			serialize(Archive & ar, unsigned int const & version) {
-					ar & boost::serialization::make_nvp("i", i_);
-					
-					serializeData(ar, version);
-					
-					ar & boost::serialization::make_nvp("actors", actors_);				
-					ar & boost::serialization::make_nvp("shapes", shapes_);
-				}
+					void			serialize(Archive & ar, unsigned int const & version) {
+						ar & boost::serialization::make_nvp("i", i_);
+
+						serializeData(ar, version);
+
+						ar & boost::serialization::make_nvp("actors", actors_);				
+						ar & boost::serialization::make_nvp("shapes", shapes_);
+					}
 				virtual void		saveData(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("mode_create",mode_create_);
 					ar & boost::serialization::make_nvp("flag",flag_);
@@ -208,21 +202,17 @@ namespace Neb {
 					loadData(ar, version);
 				}
 
-			
 
-					
+
+
 				Neb::Actor::mode_create::e		mode_create_;
 				unsigned int				flag_;
 				std::string				name_;
-
 				physx::PxTransform			pose_;
-
 				/** @brief Normal for planes. */
 				physx::PxVec3				n_;
 				/** @brief Distance for planes. */
 				float					d_;
-
-				//physx::PxVec3		velocity_;
 				physx::PxVec3				velocity_;
 				float					density_;
 
@@ -233,25 +223,21 @@ namespace Neb {
 
 
 
-			
+
 
 			public:
 				/** @brief ID */
 				int						i_;
-				
-				/** @brief Data.
-				 * @todo dissolve raw so. move certain members of raw up the hierarchy
-				 * 
-				 * Consider eliminating the raw class entirely (or at least make it
-				 * a simple data container). If it is desired to serialize only the
-				 * raw data (like in actor update), or a subset of it, implement this by
-				 * overloading the serialize functions...
-				 */
-				//Neb::Actor::Util::Raw				raw_;
-				
-
 				/** @brief Parent */
 				Neb::Actor::Util::Parent_s			parent_;
+		};
+		class Local: virtual public Neb::Actor::Base {
+			public:
+				virtual void		stepActorBaseDerived(double dt);
+		};
+		class Remote: virtual public Neb::Actor::Base {
+			public:
+				virtual void		stepActorBaseDerived(double dt);
 		};
 	}
 }

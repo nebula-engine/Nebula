@@ -26,7 +26,7 @@ namespace Neb {
 						ar & vec_;
 					}
 					
-					Neb::Scene::Address			scene_;
+					Neb::Scene::Util::Address		scene_;
 					std::deque<int>				vec_;
 					
 					

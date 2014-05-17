@@ -23,10 +23,19 @@ namespace Neb {
 		// Core
 
 		class Base;
-		class Actor;
+
+		/** @brief %Actor */
+		namespace Actor {
+			class Base;
+
+			typedef std::shared_ptr<Base>		Base_s;
+			typedef std::weak_ptr<Base>		Base_w;
+			typedef std::unique_ptr<Base>		Base_u;
+		}
+
 		class RigidActor;
 
-		/** @brief %RigidBody @{ */
+		/** @brief %RigidBody */
 		namespace RigidBody {
 			class RigidBody;
 
@@ -46,9 +55,6 @@ namespace Neb {
 		typedef std::unique_ptr<Base>		Base_u;
 
 
-		typedef std::shared_ptr<Actor>		Actor_s;
-		typedef std::weak_ptr<Actor>		Actor_w;
-		typedef std::unique_ptr<Actor>		Actor_u;
 
 		typedef std::shared_ptr<RigidActor>		RigidActor_s;
 		typedef std::weak_ptr<RigidActor>		RigidActor_w;
@@ -94,6 +100,6 @@ namespace Neb {
 			}
 		}
 	}
-	}
+}
 
 #endif

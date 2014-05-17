@@ -55,7 +55,7 @@ namespace Neb {
 				// get the code
 				std::string name;
 				ar >> boost::serialization::make_nvp("name", name);
-				Neb::Typed::hash_type hash = Neb::Typed::to_hash_code(name);
+				Neb::Util::Typed::hash_type hash = Neb::Util::Typed::to_hash_code(name);
 				
 				// get the factory
 				auto fs = factory_.lock();
@@ -69,7 +69,7 @@ namespace Neb {
 			}
 			/** */
 			void		save(boost::archive::xml_oarchive & ar, unsigned int const & version) const {
-				std::string name = Neb::Typed::to_string(ptr_->hash_code());
+				std::string name = Neb::Util::Typed::to_string(ptr_->hash_code());
 				ar << boost::serialization::make_nvp("name", name);
 				ar << boost::serialization::make_nvp("object", *ptr_);
 			}

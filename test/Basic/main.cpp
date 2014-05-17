@@ -1,5 +1,5 @@
 
-#include <gru/actor/actor.hpp>
+#include <Nebula/Actor/Base.hh>
 
 int main() {
 

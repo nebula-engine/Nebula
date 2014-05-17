@@ -3,7 +3,7 @@
 
 #include <deque>
 
-#include <Nebula/Graphics/gui/object/textview.hpp>
+#include <Nebula/Graphics/GUI/Object/object.hh>
 
 namespace Neb {
 	namespace gui {

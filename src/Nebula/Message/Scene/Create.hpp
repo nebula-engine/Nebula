@@ -4,28 +4,25 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 
-#include <Nebula/config.hpp> // gru/config.hpp.in
-#include <Nebula/master.hpp>
-#include <Nebula/scene/desc.hpp>
-#include <Nebula/actor/desc.hpp>
-#include <Nebula/actor/addr.hpp>
-#include <Nebula/actor/event.hpp>
-#include <Nebula/actor/raw_factory.hpp>
-#include <Nebula/actor/actor.hpp>
+#include <Nebula/config.hh> // gru/config.hpp.in
+//#include <Nebulahh>
+#include <Nebula/Scene/Util/Address.hh>
+//#include <Nebula/Actor/Util/Event.hh>
+#include <Nebula/Actor/Base.hh>
 
 namespace Neb {
 	namespace Message {
 		namespace Scene {
 			struct Create {
-				void load(Neb::weak_ptr<glutpp::scene::scene> scene);
+				void load(Neb::Scene::Base_s scene);
 				
 				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 					ar & addr_;
-					ar & desc_;
+					ar & scene_;
 				}
-
-				glutpp::scene::addr				addr_;
-				Neb::WrapperTyped<Neb::Scene::scene>		desc_;
+				
+				Neb::Scene::Util::Address			addr_;
+				Neb::WrapperTyped<Neb::Scene::Base>		scene_;
 			};
 		}
 	}

@@ -17,16 +17,18 @@
 
 namespace Neb {
 	namespace Scene {
-		class Address {
-			public:
-				void						load(Neb::Scene::Base_s & scene);
-				
-				template<class Archive> void			serialize(Archive& ar, unsigned int const & version) {
-					ar & vec_;
-				}
+		namespace Util {
+			class Address {
+				public:
+					void						load(Neb::Scene::Base_s & scene);
 
-				std::deque<int>					vec_;
-		};
+					template<class Archive> void			serialize(Archive& ar, unsigned int const & version) {
+						ar & vec_;
+					}
+
+					std::deque<int>					vec_;
+			};
+		}
 	}
 }
 

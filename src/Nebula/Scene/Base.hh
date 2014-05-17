@@ -5,6 +5,9 @@
 
 #include <Nebula/Flag.hh>
 #include <Nebula/Util/Map.hh>
+#include <Nebula/Util/Typed.hh>
+
+
 
 #include <Nebula/Types.hh>
 
@@ -27,7 +30,7 @@ namespace Neb {
 	namespace Scene {
 		class Base:
 			virtual public Neb::Actor::Util::Parent,
-			public gal::flag
+			virtual public Neb::Util::Typed
 		{
 			public:
 
@@ -35,8 +38,6 @@ namespace Neb {
 				virtual ~Base();
 				void				i(int ni);
 				int				i();
-				gal::flag::flag_type const &		f() const;
-				void					f(unsigned int flag);
 				//void				init(Neb::Scene::desc_w desc);
 				void				release();
 				physx::PxMat44			get_pose();
