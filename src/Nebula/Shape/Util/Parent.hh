@@ -37,21 +37,14 @@ namespace Neb {
 			 * abstract class for parent of a shape
 			 */
 			class Parent:
+				virtual public Neb::Util::Parent<Neb::Shape::Base>,
 				virtual public Neb::Actor::Util::Cast,
 				virtual public Neb::Shape::Util::Cast,
 				virtual public Neb::Core::Pose,
 				virtual public Neb::Util::Shared
 			{
 				public:
-					Parent();
 					virtual ~Parent() {}
-
-					//virtual physx::PxMat44					getPoseGlobal() = 0;
-					//virtual physx::PxMat44					getPose() = 0;
-
-					/** @brief Shapes */
-					Neb::Map<Neb::Shape::Base>		shapes_;
-
 			};
 		}
 	}

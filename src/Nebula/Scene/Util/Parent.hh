@@ -2,6 +2,7 @@
 #define NEBULA_SCENE_UTIL_PARENT_HH
 
 #include <Nebula/Util/Map.hh>
+#include <Nebula/Util/Parent.hh>
 
 #include <Nebula/Core/Pose.hh>
 

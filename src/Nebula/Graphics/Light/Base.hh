@@ -12,6 +12,8 @@
 #include <Nebula/config.hh>
 #include <Nebula/Types.hh>
 
+#include <Nebula/Math/Serialization.hh>
+
 #include <Nebula/Graphics/Light/Util/Flag.hh>
 #include <Nebula/Graphics/Light/Util/Types.hh>
 
@@ -23,13 +25,10 @@ namespace Neb {
 	namespace Light {
 		class Base { //: public gal::flag {
 			public:
-				
+				Base();
 				Base(Neb::Light::Util::Parent_s);
 
-				void				i(int const &);
-				int const &			i() const;
-
-				void				init(Neb::Light::desc_w);
+				void				init();
 
 				virtual void			release();
 				virtual void			cleanup();

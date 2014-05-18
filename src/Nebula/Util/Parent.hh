@@ -15,9 +15,10 @@ namespace Neb {
 				typedef std::shared_ptr<T>	__shared_type;
 				typedef Neb::WrapperTyped<T>	__wrapper_type;
 				typedef Neb::Map<T>		__map_type;
+				
 				typedef Neb::Util::Address<T>	__address_type;
 				typedef Neb::Util::index_type	__index_type;
-				
+	
 				Parent();
 
 				void					insert(__shared_type s);

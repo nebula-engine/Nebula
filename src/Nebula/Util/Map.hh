@@ -13,17 +13,21 @@
 namespace Neb {
 	template <class T> class Map {
 		public:
-			typedef std::shared_ptr<T>			shared_type;
-
-			typedef Neb::WrapperTyped<T>			mapped_type;
-
-			typedef std::weak_ptr< Neb::Factory<T> >	factory_weak;
+			typedef int							__index_type;
+			typedef std::shared_ptr<T>					shared_type;
 			
-			typedef std::map<int,mapped_type>		map_type;
+			typedef Neb::WrapperTyped<T>					mapped_type;
+
+			typedef std::weak_ptr< Neb::Factory<T> >			factory_weak;
 			
-			typedef typename map_type::iterator		iterator;
-			typedef typename map_type::value_type		value_type_const;
-			typedef std::pair<int,mapped_type>		value_type;
+			typedef std::map<__index_type,mapped_type>			__map_type;
+			typedef typename __map_type::iterator				__iter;			
+			typedef typename __map_type::const_iterator			__citer;			
+
+
+			typedef typename __map_type::iterator			iterator;
+			typedef typename __map_type::value_type			value_type_const;
+			typedef std::pair<__index_type,mapped_type>		value_type;
 			
 			/** @brief Constructor */
 			Map(factory_weak factory): factory_(factory), next_(0) {}
@@ -47,9 +51,8 @@ namespace Neb {
 				next_++;
 			}
 			/** */
-			iterator			find(int a) {
-				auto it = map_.find( a );
-
+			iterator			find(__index_type i) {
+				auto it = map_.find(i);
 				return it;
 			}
 			/** */
@@ -70,9 +73,9 @@ namespace Neb {
 				return it;
 			}
 			//private:
-			factory_weak	factory_;
-			int		next_;
-			map_type	map_;
+			factory_weak			factory_;
+			__index_type			next_;
+			__map_type			map_;
 
 	};	
 }

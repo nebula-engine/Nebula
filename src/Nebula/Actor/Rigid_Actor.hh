@@ -8,7 +8,7 @@ namespace Neb {
 		namespace RigidActor {
 			class Base: virtual public Neb::Actor::Actor::Base {
 				public:
-Base();
+					Base();
 					Base(Neb::Actor::Util::Parent_s);
 
 					virtual void					init();

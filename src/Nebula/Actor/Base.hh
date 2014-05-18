@@ -14,7 +14,7 @@
 //#include <Nebula/Actor/Util/desc.hh>
 
 #include <Nebula/Util/Release.hh>
-#include <Nebula/Util/Serialize.hh>
+#include <Nebula/Math/Serialization.hh>
 
 #include <Nebula/Filter.hh>
 
@@ -24,7 +24,6 @@
 
 #include <Nebula/Shape/Base.hh>
 #include <Nebula/Shape/Util/Parent.hh>
-
 
 #include <Nebula/Actor/Util/Types.hh>
 #include <Nebula/Actor/Util/Address.hh>
