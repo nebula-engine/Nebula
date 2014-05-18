@@ -4,10 +4,20 @@
 namespace Neb {
 
 	struct attrib_name {
-		enum e {};
+		enum e {
+			COOR,
+			TEX,
+			POSITION,
+			NORMAL,
+TEXCOOR,
+		};
 	};
 	struct program_name {
-		enum e {};
+		enum e {
+			TEXT,
+			LIGHT,
+IMAGE,
+		};
 	};
 
 
@@ -77,7 +87,7 @@ namespace Neb {
 		}
 
 		/** @brief Graphical User Interface */
-		namespace gui {
+		namespace GUI {
 			class layout;
 
 			typedef std::shared_ptr<layout>		layout_s;
@@ -85,7 +95,7 @@ namespace Neb {
 			typedef std::weak_ptr<layout>		layout_w;
 
 
-			namespace object {
+			namespace Object {
 				class object;
 				class object_factory;
 				typedef std::shared_ptr<object>			object_s;

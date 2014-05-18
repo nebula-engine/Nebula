@@ -1,6 +1,11 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classNeb_1_1Actor_1_1parent.html" title="abstract class for parent of an " alt="" coords="67,83,195,112"/>
-<area shape="rect" id="node4" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="5,5,125,35"/>
-<area shape="rect" id="node6" href="$classNeb_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="149,5,243,35"/>
-<area shape="rect" id="node8" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="219,83,285,112"/>
+<map id="Neb::Scene::Base" name="Neb::Scene::Base">
+<area shape="rect" id="node10" href="$classNeb_1_1Scene_1_1Local.html" title="Neb::Scene::Local" alt="" coords="971,121,1101,148"/>
+<area shape="rect" id="node11" href="$classNeb_1_1Scene_1_1Remote.html" title="Neb::Scene::Remote" alt="" coords="963,172,1109,199"/>
+<area shape="rect" id="node2" href="$classNeb_1_1Actor_1_1Util_1_1Parent.html" title="abstract class for parent of an &#160;" alt="" coords="577,121,735,148"/>
+<area shape="rect" id="node3" href="$classNeb_1_1Util_1_1Parent.html" title="Neb::Util::Parent\&lt;\l Neb::Actor::Base \&gt;" alt="" coords="381,5,520,46"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="391,71,511,97"/>
+<area shape="rect" id="node5" href="$classNeb_1_1Scene_1_1Util_1_1Cast.html" title="Neb::Scene::Util::Cast" alt="" coords="373,172,528,199"/>
+<area shape="rect" id="node6" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases " alt="" coords="203,172,325,199"/>
+<area shape="rect" id="node8" href="$classNeb_1_1Actor_1_1Util_1_1Cast.html" title="Neb::Actor::Util::Cast" alt="" coords="376,223,525,249"/>
+<area shape="rect" id="node9" href="$classNeb_1_1Util_1_1Typed.html" title="Typed. " alt="" coords="597,172,715,199"/>
 </map>

@@ -104,6 +104,11 @@ namespace Neb {
 
 			}
 		}
+
+		/** @brief %Event */
+		namespace Event {
+			class Base;
+		}
 	}
 }
 

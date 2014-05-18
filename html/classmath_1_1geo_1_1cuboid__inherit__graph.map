@@ -1,4 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classmath_1_1geo_1_1polyhedron__convex.html" title="math::geo::polyhedron_convex" alt="" coords="5,83,205,112"/>
-<area shape="rect" id="node4" href="$classmath_1_1geo_1_1polyhedron.html" title="math::geo::polyhedron" alt="" coords="31,5,180,35"/>
+<map id="math::geo::cuboid" name="math::geo::cuboid">
+<area shape="rect" id="node2" href="$classmath_1_1geo_1_1polyhedron__convex.html" title="math::geo::polyhedron\l_convex" alt="" coords="5,81,155,122"/>
+<area shape="rect" id="node3" href="$classmath_1_1geo_1_1polyhedron.html" title="math::geo::polyhedron" alt="" coords="5,5,155,32"/>
 </map>

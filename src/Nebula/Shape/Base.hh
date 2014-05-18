@@ -48,7 +48,8 @@ namespace Neb {
 		class Base: virtual public Neb::Shape::Util::Parent, public gal::flag {
 			public:
 				typedef std::map<Neb::Graphics::Window::Base*,buffer_s>			map_t;
-
+				
+				Base();
 				Base(Neb::Shape::Util::Parent_s parent);
 				~Base();
 				

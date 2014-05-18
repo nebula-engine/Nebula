@@ -1,4 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classNeb_1_1Message_1_1Actor_1_1Base.html" title="Neb::Message::Actor::Base" alt="" coords="68,83,252,112"/>
-<area shape="rect" id="node4" href="$classNeb_1_1Typed.html" title="Typed." alt="" coords="115,5,205,35"/>
+<map id="Neb::Message::Actor::Control::RigidBody::Create" name="Neb::Message::Actor::Control::RigidBody::Create">
+<area shape="rect" id="node2" href="$classNeb_1_1Message_1_1Actor_1_1Base.html" title="Neb::Message::Actor\l::Base" alt="" coords="5,81,152,122"/>
+<area shape="rect" id="node3" href="$classNeb_1_1Message_1_1Base.html" title="Neb::Message::Base" alt="" coords="6,5,151,32"/>
 </map>

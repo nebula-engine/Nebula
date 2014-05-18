@@ -1,7 +1,7 @@
 #ifndef NEBULA_GRAPHICS_GUI_LAYOUT_UTIL_PARENT_HH
 #define NEBULA_GRAPHICS_GUI_LAYOUT_UTIL_PARENT_HH
 
-#include <Nebula/Util/Map.hh>
+#include <Nebula/Util/Parent.hh>
 
 #include <Nebula/Graphics/GUI/Layout/Types.hh>
 
@@ -10,9 +10,7 @@ namespace Neb {
 		namespace GUI {
 			namespace Layout {
 				namespace Util {
-					class Parent {
-						public:
-							Neb::Map<Neb::Graphics::GUI::Layout::Base>		layouts_;
+					class Parent: virtual public Neb::Util::Parent<Neb::Graphics::GUI::Layout::Base> {
 					};
 				}
 			}

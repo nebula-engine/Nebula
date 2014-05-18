@@ -1,7 +1,7 @@
-<map id="G" name="G">
-<area shape="rect" id="node5" href="$classmath_1_1geo_1_1cuboid.html" title="math::geo::cuboid" alt="" coords="5,160,131,189"/>
-<area shape="rect" id="node7" href="$classmath_1_1geo_1_1sphere.html" title="math::geo::sphere" alt="" coords="155,160,280,189"/>
-<area shape="rect" id="node9" href="$classmath_1_1geo_1_1tetrahedron.html" title="math::geo::tetrahedron" alt="" coords="304,160,456,189"/>
-<area shape="rect" id="node11" href="$classmath_1_1geo_1_1wedge.html" title="math::geo::wedge" alt="" coords="480,160,605,189"/>
-<area shape="rect" id="node2" href="$classmath_1_1geo_1_1polyhedron.html" title="math::geo::polyhedron" alt="" coords="224,5,373,35"/>
+<map id="math::geo::polyhedron_convex" name="math::geo::polyhedron_convex">
+<area shape="rect" id="node3" href="$classmath_1_1geo_1_1cuboid.html" title="math::geo::cuboid" alt="" coords="5,171,131,197"/>
+<area shape="rect" id="node4" href="$classmath_1_1geo_1_1sphere.html" title="math::geo::sphere" alt="" coords="155,171,281,197"/>
+<area shape="rect" id="node5" href="$classmath_1_1geo_1_1tetrahedron.html" title="math::geo::tetrahedron" alt="" coords="306,171,459,197"/>
+<area shape="rect" id="node6" href="$classmath_1_1geo_1_1wedge.html" title="math::geo::wedge" alt="" coords="483,171,609,197"/>
+<area shape="rect" id="node2" href="$classmath_1_1geo_1_1polyhedron.html" title="math::geo::polyhedron" alt="" coords="225,5,375,32"/>
 </map>

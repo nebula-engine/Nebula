@@ -6,10 +6,13 @@
 #include <Nebula/network2/communicating.hh>
 
 namespace Neb {
-	namespace network {
-		class client: virtual public Neb::network::communicating, virtual public gal::network::client {
+	namespace Network {
+		class Client:
+			virtual public Neb::Network::Communicating,
+			virtual public gal::network::client
+		{
 			public:
-				client(char const *, unsigned short);
+				Client(char const *, unsigned short);
 				void	process(gal::network::message_s);
 
 		};

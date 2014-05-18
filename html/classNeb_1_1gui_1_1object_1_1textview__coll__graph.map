@@ -1,5 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classNeb_1_1gui_1_1object_1_1object.html" title="Neb::gui::object::object" alt="" coords="12,213,169,243"/>
-<area shape="rect" id="node4" href="$classNeb_1_1gui_1_1object_1_1Data.html" title="Neb::gui::object::Data" alt="" coords="16,117,165,147"/>
-<area shape="rect" id="node6" href="$classNeb_1_1Color_1_1color.html" title="Neb::Color::color\&lt; float \&gt;" alt="" coords="5,5,176,35"/>
+<map id="Neb::gui::object::textview" name="Neb::gui::object::textview">
+<area shape="rect" id="node2" href="$classNeb_1_1gui_1_1object_1_1object.html" title="Neb::gui::object::object" alt="" coords="12,216,169,243"/>
+<area shape="rect" id="node3" href="$classNeb_1_1gui_1_1object_1_1Data.html" title="Neb::gui::object::Data" alt="" coords="15,125,165,152"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Color_1_1color.html" title="Neb::Color::color\&lt;\l float \&gt;" alt="" coords="26,6,155,47"/>
 </map>

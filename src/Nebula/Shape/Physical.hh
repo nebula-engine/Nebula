@@ -5,20 +5,20 @@
 
 //#include <math/vec3.hpp>
 
-#include <Nebula/shape/shape.hpp>
+#include <Nebula/Shape/Base.hh>
 
-#include <Nebula/shape/parent.hpp>
+//#include <Nebula/Shape/parent.hh>
 
 namespace Neb {
 	namespace Shape {
 		class Physical: public Neb::Shape::Base {
 			public:
-				Physical(Neb::Shape:Util::Parent_s);
+				Physical();
+				Physical(Neb::Shape::Util::Parent_s);
 				
 				virtual void		init();
 				void			create_physics();
 				physx::PxGeometry*	to_geo();
-				void			print_info();
 			public:
 				physx::PxShape*		px_shape_;
 		};	

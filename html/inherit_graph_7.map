@@ -1,4 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classgal_1_1network_1_1server.html" title="gal::network::server" alt="" coords="7,5,143,35"/>
-<area shape="rect" id="node3" href="$classNeb_1_1network_1_1server.html" title="Neb::network::server" alt="" coords="192,5,336,35"/>
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classgal_1_1network_1_1server.html" title="gal::network::server" alt="" coords="6,5,143,32"/>
+<area shape="rect" id="node2" href="$classNeb_1_1Network_1_1Server.html" title="Neb::Network::Server" alt="" coords="192,5,341,32"/>
 </map>

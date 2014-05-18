@@ -1,6 +1,6 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classmath_1_1geo_1_1polyhedron.html" title="math::geo::polyhedron" alt="" coords="54,197,204,227"/>
-<area shape="rect" id="node4" href="$classmath_1_1geo_1_1tri.html" title="math::geo::tri" alt="" coords="80,101,178,131"/>
-<area shape="rect" id="node6" href="$classmath_1_1geo_1_1vertex.html" title="math::geo::vertex" alt="" coords="68,5,190,35"/>
-<area shape="rect" id="node8" href="$classmath_1_1geo_1_1quad.html" title="math::geo::quad" alt="" coords="202,101,317,131"/>
+<map id="math::geo::polyhedron_convex" name="math::geo::polyhedron_convex">
+<area shape="rect" id="node2" href="$classmath_1_1geo_1_1polyhedron.html" title="math::geo::polyhedron" alt="" coords="54,187,204,213"/>
+<area shape="rect" id="node3" href="$classmath_1_1geo_1_1tri.html" title="math::geo::tri" alt="" coords="80,96,178,123"/>
+<area shape="rect" id="node4" href="$classmath_1_1geo_1_1vertex.html" title="math::geo::vertex" alt="" coords="67,5,190,32"/>
+<area shape="rect" id="node5" href="$classmath_1_1geo_1_1quad.html" title="math::geo::quad" alt="" coords="203,96,318,123"/>
 </map>

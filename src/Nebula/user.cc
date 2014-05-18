@@ -1,20 +1,19 @@
 
-#include <gru/renderable.hpp>
+#include <Nebula/Graphics/Context/Base.hh>
 
-#include <nebula/config.hpp>
-#include <nebula/user.hpp>
+#include <Nebula/config.hh>
+#include <Nebula/user.hh>
 //#include <nebula/camera/camera.hpp>
-#include <nebula/control/rigid_body/control.hpp>
+#include <Nebula/Actor/Control/RigidBody/Base.hh>
 
-neb::user::user()
+Neb::User::User()
 {}
-void	neb::user::connect(glutpp::window::window_s w)
-{
+void	Neb::User::connect(Neb::Graphics::Window::Base_s w) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
 	assert(control_);
 	
-	auto control = std::dynamic_pointer_cast<neb::control::rigid_body::control>(control_);
+	auto control = std::dynamic_pointer_cast<Neb::Actor::Control::RigidBody::Base>(control_);
 	
 	assert(w);
 	assert(control);
@@ -23,7 +22,7 @@ void	neb::user::connect(glutpp::window::window_s w)
 	
 	
 	control->conn_.key_fun_ = w->sig_.key_fun_.connect(std::bind(
-				&neb::control::rigid_body::control::key_fun,
+				&Neb::Actor::Control::RigidBody::Base::key_fun,
 				control,
 				std::placeholders::_1,
 				std::placeholders::_2,
@@ -32,10 +31,10 @@ void	neb::user::connect(glutpp::window::window_s w)
 	
 	//printf("actor ref count = %i\n", (int)actor.use_count());
 
-	assert(control->conn_.key_fun_);
+	//assert(control->conn_.key_fun_);
 }
-void neb::user::set_control(neb::control::rigid_body::control_s control) {
-	NEBULA_DEBUG_0_FUNCTION;
+void Neb::User::set_control(Neb::Actor::Control::RigidBody::Base_s control) {
+	//NEBULA_DEBUG_0_FUNCTION;
 
 	control_ = control;
 }

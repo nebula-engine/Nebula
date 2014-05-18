@@ -23,7 +23,7 @@ namespace Neb {
 			typedef std::weak_ptr< Neb::Factory<T> >		factory_weak;
 			typedef std::shared_ptr<T>				shared;
 			/** */
-			WrapperTyped(): factory_(Neb::App::BaseFactory::getFactoryDefault<T>()) {
+			WrapperTyped(): factory_(Neb::App::BaseFactory::global()->getFactoryDefault<T>()) {
 			}
 			/** */
 			WrapperTyped(factory_weak factory): factory_(factory) {

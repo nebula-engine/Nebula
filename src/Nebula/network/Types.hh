@@ -11,9 +11,14 @@ namespace gal {
 
 
 
-		typedef boost::shared_ptr<message>	message_s;
-		typedef boost::shared_ptr<omessage>	omessage_s;
-		typedef boost::shared_ptr<imessage>	imessage_s;
+
+		typedef std::shared_ptr<message>	message_s;
+		typedef std::shared_ptr<omessage>	omessage_s;
+		typedef std::shared_ptr<imessage>	imessage_s;
+
+
+		typedef std::shared_ptr<communicating>	communicating_s;
+
 
 	}
 }

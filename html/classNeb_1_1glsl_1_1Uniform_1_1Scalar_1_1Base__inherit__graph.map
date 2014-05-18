@@ -1,10 +1,10 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Double.html" title="Neb::glsl::Uniform::Scalar::Double" alt="" coords="277,5,499,35"/>
-<area shape="rect" id="node5" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1DVec4.html" title="Neb::glsl::Uniform::Scalar::DVec4" alt="" coords="277,59,499,88"/>
-<area shape="rect" id="node7" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Float.html" title="Neb::glsl::Uniform::Scalar::Float" alt="" coords="283,112,493,141"/>
-<area shape="rect" id="node9" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Int.html" title="Neb::glsl::Uniform::Scalar::Int" alt="" coords="291,165,485,195"/>
-<area shape="rect" id="node11" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Mat4.html" title="Neb::glsl::Uniform::Scalar::Mat4" alt="" coords="283,219,493,248"/>
-<area shape="rect" id="node13" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Sampler2D.html" title="Neb::glsl::Uniform::Scalar::Sampler2D" alt="" coords="265,272,511,301"/>
-<area shape="rect" id="node15" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Vec3.html" title="Neb::glsl::Uniform::Scalar::Vec3" alt="" coords="283,325,493,355"/>
-<area shape="rect" id="node17" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Vec4.html" title="Neb::glsl::Uniform::Scalar::Vec4" alt="" coords="283,379,493,408"/>
+<map id="Neb::glsl::Uniform::Scalar::Base" name="Neb::glsl::Uniform::Scalar::Base">
+<area shape="rect" id="node2" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Double.html" title="Neb::glsl::Uniform\l::Scalar::Double" alt="" coords="188,5,316,46"/>
+<area shape="rect" id="node3" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1DVec4.html" title="Neb::glsl::Uniform\l::Scalar::DVec4" alt="" coords="188,70,316,111"/>
+<area shape="rect" id="node4" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Float.html" title="Neb::glsl::Uniform\l::Scalar::Float" alt="" coords="188,135,316,177"/>
+<area shape="rect" id="node5" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Int.html" title="Neb::glsl::Uniform\l::Scalar::Int" alt="" coords="188,201,316,242"/>
+<area shape="rect" id="node6" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Mat4.html" title="Neb::glsl::Uniform\l::Scalar::Mat4" alt="" coords="188,266,316,307"/>
+<area shape="rect" id="node7" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Sampler2D.html" title="Neb::glsl::Uniform\l::Scalar::Sampler2D" alt="" coords="182,331,322,373"/>
+<area shape="rect" id="node8" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Vec3.html" title="Neb::glsl::Uniform\l::Scalar::Vec3" alt="" coords="188,397,316,438"/>
+<area shape="rect" id="node9" href="$classNeb_1_1glsl_1_1Uniform_1_1Scalar_1_1Vec4.html" title="Neb::glsl::Uniform\l::Scalar::Vec4" alt="" coords="188,462,316,503"/>
 </map>

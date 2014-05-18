@@ -1,3 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt; Neb::Scene::scene \&gt;" alt="" coords="5,5,280,35"/>
+<map id="Neb::Message::Scene::Create" name="Neb::Message::Scene::Create">
+<area shape="rect" id="node2" href="$classNeb_1_1Scene_1_1Util_1_1Address.html" title="Neb::Scene::Util::Address" alt="" coords="5,20,179,47"/>
+<area shape="rect" id="node3" href="$classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt;\l Neb::Scene::Neb::Message\l::Base \&gt;" alt="" coords="203,5,391,61"/>
 </map>

@@ -9,12 +9,11 @@ namespace Neb {
 	namespace Message {
 		class Base {
 			public:
-				template<class D, class... A>
-					static Neb::Message::Base_s	alloc(A... a) {
-						Neb::Message::Base_s d(new D(a...));
-						d->pre();
-						return d;
-					}
+				template<class D, class... A> static Neb::Message::Base_s	alloc(A... a) {
+					Neb::Message::Base_s d(new D(a...));
+					d->pre();
+					return d;
+				}
 			protected:
 				Base();
 				virtual void			pre() {}
@@ -31,11 +30,17 @@ namespace Neb {
 			public:
 				OBase();
 
+				
 				gal::network::omessage_s	msg_;
 		};
 		class IBase: public Base {
 			public:
 				IBase();
+
+				/** @brief process.
+				 * called after message is deserialized
+				 */
+				virtual void			process() = 0;
 
 				gal::network::imessage_s	msg_;
 		};

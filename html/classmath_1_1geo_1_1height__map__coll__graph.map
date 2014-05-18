@@ -1,4 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classmath_1_1geo_1_1tri.html" title="math::geo::tri" alt="" coords="121,101,220,131"/>
-<area shape="rect" id="node4" href="$classmath_1_1geo_1_1vertex.html" title="math::geo::vertex" alt="" coords="21,5,144,35"/>
+<map id="math::geo::height_map" name="math::geo::height_map">
+<area shape="rect" id="node2" href="$classmath_1_1geo_1_1tri.html" title="math::geo::tri" alt="" coords="120,96,219,123"/>
+<area shape="rect" id="node3" href="$classmath_1_1geo_1_1vertex.html" title="math::geo::vertex" alt="" coords="19,5,143,32"/>
 </map>

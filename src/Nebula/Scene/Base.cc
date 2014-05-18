@@ -122,7 +122,7 @@ void Neb::Scene::scene::resize(int w, int h) {
 
 
 
-neb::scene::scene::scene(neb::app_s app):
+Neb::scene::scene::scene(Neb::app_s app):
 	app_(app),
 	user_type_(0),
 	px_filter_shader_(NULL),
@@ -134,7 +134,7 @@ neb::scene::scene::scene(neb::app_s app):
 	
 	assert(app);
 }
-void neb::scene::scene::init(boost::shared_ptr<glutpp::scene::desc> desc) {
+void Neb::scene::scene::init(std::shared_ptr<glutpp::scene::desc> desc) {
 
 	NEBULA_DEBUG_0_FUNCTION;
 	
@@ -142,28 +142,28 @@ void neb::scene::scene::init(boost::shared_ptr<glutpp::scene::desc> desc) {
 
 	create_actors(desc);
 }
-Neb::weak_ptr<neb::app>			neb::scene::scene::get_app() {
+Neb::weak_ptr<Neb::app>			Neb::scene::scene::get_app() {
 	return app_;
 }
-physx::PxMat44				neb::scene::scene::getPose() {
+physx::PxMat44				Neb::scene::scene::getPose() {
 	return physx::PxMat44();
 }
-physx::PxMat44		neb::scene::scene::getPoseGlobal() {
+physx::PxMat44		Neb::scene::scene::getPoseGlobal() {
 	return physx::PxMat44();
 }
-Neb::weak_ptr<neb::Actor::Base>		neb::scene::scene::get_actor(int i) {
+Neb::weak_ptr<Neb::Actor::Base>		Neb::scene::scene::get_actor(int i) {
 	auto it = actors_.find(i);
-	boost::shared_ptr<neb::Actor::Base> a;
+	std::shared_ptr<Neb::Actor::Base> a;
 	if(it == actors_.end())
 	{
 		return a;
 	} else {
-		a = boost::dynamic_pointer_cast<neb::Actor::Base>(it->second);
+		a = boost::dynamic_pointer_cast<Neb::Actor::Base>(it->second);
 		assert(a);
 		return a;
 	}
 }
-Neb::weak_ptr<neb::Actor::Base>		neb::scene::scene::get_actor(boost::shared_ptr<glutpp::actor::addr> addr) {
+Neb::weak_ptr<Neb::Actor::Base>		Neb::scene::scene::get_actor(std::shared_ptr<glutpp::actor::addr> addr) {
 	
 	std::deque<int> vec = addr->vec_;
 	assert(vec);
@@ -186,7 +186,7 @@ Neb::weak_ptr<neb::Actor::Base>		neb::scene::scene::get_actor(boost::shared_ptr<
 	
 	return actor;
 }
-void neb::scene::scene::create_actors(boost::shared_ptr<glutpp::scene::desc> desc) {
+void Neb::scene::scene::create_actors(std::shared_ptr<glutpp::scene::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	assert(desc);
@@ -209,7 +209,7 @@ void neb::scene::scene::create_actors(boost::shared_ptr<glutpp::scene::desc> des
 		}
 	}
 }
-void		neb::scene::scene::add_deferred(boost::shared_ptr<glutpp::actor::desc> ad) {
+void		Neb::scene::scene::add_deferred(std::shared_ptr<glutpp::actor::desc> ad) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 
@@ -228,19 +228,19 @@ void		neb::scene::scene::add_deferred(boost::shared_ptr<glutpp::actor::desc> ad)
 
 	actors_deferred_[name] = ad;
 }
-boost::shared_ptr<neb::Actor::Base>	neb::scene::scene::create_actor(boost::shared_ptr<glutpp::actor::desc> desc) {
+std::shared_ptr<Neb::Actor::Base>	Neb::scene::scene::create_actor(std::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 	
-	auto me = boost::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
+	auto me = boost::dynamic_pointer_cast<Neb::scene::scene>(shared_from_this());
 
 	long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
-	Neb::unique_ptr<neb::Actor::Base> actor((neb::Actor::Base*)Neb::Factory<glutpp::actor::actor>::global()->alloc(hash_code));
+	Neb::unique_ptr<Neb::Actor::Base> actor((Neb::Actor::Base*)Neb::Factory<glutpp::actor::actor>::global()->alloc(hash_code));
 	
 	actor->init(desc);
 	
-	return boost::shared_ptr<neb::Actor::Base>();
+	return std::shared_ptr<Neb::Actor::Base>();
 }
-Neb::weak_ptr<neb::Actor::Base>			neb::scene::scene::create_actor_local(boost::shared_ptr<glutpp::actor::desc> desc) {
+Neb::weak_ptr<Neb::Actor::Base>			Neb::scene::scene::create_actor_local(std::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	auto actor = create_actor(desc);
@@ -251,12 +251,12 @@ Neb::weak_ptr<neb::Actor::Base>			neb::scene::scene::create_actor_local(boost::s
 	
 	auto app = get_app();
 
-	boost::shared_ptr<gal::network::omessage> msg(new gal::network::omessage);
+	std::shared_ptr<gal::network::omessage> msg(new gal::network::omessage);
 
 	int type = glutpp::network::type::ACTOR_CREATE;
 	msg->write(&type, sizeof(int));
 	
-	//boost::shared_ptr<glutpp::network::actor::create> actor_create(new glutpp::network::actor::create);
+	//std::shared_ptr<glutpp::network::actor::create> actor_create(new glutpp::network::actor::create);
 	
 	glutpp::network::actor::create actor_create;
 
@@ -270,12 +270,12 @@ Neb::weak_ptr<neb::Actor::Base>			neb::scene::scene::create_actor_local(boost::s
 
 	return actor;	
 }
-Neb::weak_ptr<neb::Actor::Base>			neb::scene::scene::create_actor_remote(boost::shared_ptr<glutpp::actor::addr> addr, boost::shared_ptr<glutpp::actor::desc> desc) {
+Neb::weak_ptr<Neb::Actor::Base>			Neb::scene::scene::create_actor_remote(std::shared_ptr<glutpp::actor::addr> addr, std::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	auto parent = get_actor(addr);
 
-	Neb::weak_ptr<neb::Actor::Base> weak;
+	Neb::weak_ptr<Neb::Actor::Base> weak;
 	
 	if(parent) {
 		weak = parent->create_actor_remote(addr, desc);
@@ -284,11 +284,11 @@ Neb::weak_ptr<neb::Actor::Base>			neb::scene::scene::create_actor_remote(boost::
 		//actor = create_actor(desc);
 
 
-		auto me = boost::dynamic_pointer_cast<neb::scene::scene>(shared_from_this());
+		auto me = boost::dynamic_pointer_cast<Neb::scene::scene>(shared_from_this());
 
 		long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
 
-		Neb::unique_ptr<neb::Actor::Base> actor((neb::Actor::Base*)Neb::Factory<glutpp::actor::actor>::global()->alloc(hash_code));
+		Neb::unique_ptr<Neb::Actor::Base> actor((Neb::Actor::Base*)Neb::Factory<glutpp::actor::actor>::global()->alloc(hash_code));
 		
 		actor->init(desc);
 		
@@ -307,17 +307,17 @@ Neb::weak_ptr<neb::Actor::Base>			neb::scene::scene::create_actor_remote(boost::
 
  */
 /*
-   neb::scene::scene::rigid_static_t neb::scene::scene::Create_Rigid_Static_Plane(
+   Neb::scene::scene::rigid_static_t Neb::scene::scene::Create_Rigid_Static_Plane(
    glutpp::actor::desc* ad,
-   neb::scene::scene::base_t) {
+   Neb::scene::scene::base_t) {
 
    printf("%s\n", __PRETTY_FUNCTION__);
 
 // create
-std::shared_ptr<neb::Actor::Rigid_Static> actor(new neb::actor::Rigid_Static);
+std::shared_ptr<Neb::Actor::Rigid_Static> actor(new Neb::actor::Rigid_Static);
 
 // PxMaterial
-physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
+physx::PxMaterial* px_mat = Neb::__physics.px_physics_->createMaterial(1,1,1);
 
 
 actor->pose_ = ad->raw_.pose_.to_math();
@@ -327,7 +327,7 @@ ad->raw_.n_.to_math(),
 ad->raw_.d_);
 
 // PxActor
-physx::PxRigidStatic* px_rigid_static = PxCreatePlane(*(neb::__physics.px_physics_), p, *px_mat);
+physx::PxRigidStatic* px_rigid_static = PxCreatePlane(*(Neb::__physics.px_physics_), p, *px_mat);
 
 if (!px_rigid_static)
 {
@@ -351,14 +351,14 @@ add_actor(actor);
 return actor;
 }
 
-neb::scene::scene::controller_t neb::scene::scene::Create_Controller(neb::Actor::desc* ad) {
+Neb::scene::scene::controller_t Neb::scene::scene::Create_Controller(Neb::Actor::desc* ad) {
 printf("%s\n",__FUNCTION__);
 
 //jess::scoped_ostream( &jess::clog, neb_FUNCSIG );
 // create
-std::shared_ptr<neb::Actor::Controller> actor(new neb::actor::Controller);
+std::shared_ptr<Neb::Actor::Controller> actor(new Neb::actor::Controller);
 
-physx::PxMaterial* px_mat = neb::__physics.px_physics_->createMaterial(1,1,1);
+physx::PxMaterial* px_mat = Neb::__physics.px_physics_->createMaterial(1,1,1);
 
 // description
 math::vec3 p = ad->raw_.pose_.p.to_math();
@@ -381,14 +381,14 @@ desc.climbingMode = physx::PxCapsuleClimbingMode::eEASY;
 desc.userData = actor.get();
 
 
-actor->px_controller_ = neb::__physics.px_character_controller_manager_->createController(
-		*neb::__physics.px_physics_, px_scene_, desc );
+actor->px_controller_ = Neb::__physics.px_character_controller_manager_->createController(
+		*Neb::__physics.px_physics_, px_scene_, desc );
 
 return actor;
 }
-neb::scene::scene::vehicle_t neb::scene::scene::create_vehicle() {
+Neb::scene::scene::vehicle_t Neb::scene::scene::create_vehicle() {
 
-	neb::Actor::desc* desc = new neb::actor::desc;
+	Neb::Actor::desc* desc = new Neb::actor::desc;
 	//desc.raw_.reset();
 
 	glutpp::shape::desc* sd = NULL;
@@ -414,10 +414,10 @@ neb::scene::scene::vehicle_t neb::scene::scene::create_vehicle() {
 	desc->shapes_.push_back(sd);
 
 
-	neb::scene::scene::vehicle_t vehicle;
+	Neb::scene::scene::vehicle_t vehicle;
 
 	vehicle = vehicle_manager_.create_vehicle(
-			neb::__physics.px_physics_,
+			Neb::__physics.px_physics_,
 			px_scene_,
 			desc);
 
@@ -427,10 +427,10 @@ neb::scene::scene::vehicle_t neb::scene::scene::create_vehicle() {
 	return vehicle;
 }
 */
-void neb::scene::scene::create_physics() {
+void Neb::scene::scene::create_physics() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	auto pxphysics = neb::__physics.px_physics_;
+	auto pxphysics = Neb::__physics.px_physics_;
 
 	physx::PxSceneDesc scene_desc(pxphysics->getTolerancesScale());
 
@@ -480,11 +480,11 @@ void neb::scene::scene::create_physics() {
 	assert(px_scene_);
 
 	// simulation callback
-	neb::simulation_callback* sec = new neb::simulation_callback;
+	Neb::simulation_callback* sec = new Neb::simulation_callback;
 	simulation_callback_ = sec;
 	px_scene_->setSimulationEventCallback(sec);
 }
-void neb::scene::scene::step(double time) {
+void Neb::scene::scene::step(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
 	
 	for(auto it = actors_.map_.cbegin(); it != actors_.map_.cend(); ++it) {
@@ -502,7 +502,7 @@ void neb::scene::scene::step(double time) {
 	 */
 	auto it = actors_.map_.begin();
 	while(it != actors_.map_.end()) {
-		boost::shared_ptr<glutpp::actor::actor> actor = it->second;
+		std::shared_ptr<glutpp::actor::actor> actor = it->second;
 		
 		assert(actor);
 		
@@ -523,10 +523,10 @@ void neb::scene::scene::step(double time) {
 
 }
 
-void neb::scene::scene::send_actor_update() {
+void Neb::scene::scene::send_actor_update() {
 	printf("DEBUG: message ACTOR_UPDATE sent\n");
 
-	boost::shared_ptr<gal::network::omessage> msg(new gal::network::omessage);
+	std::shared_ptr<gal::network::omessage> msg(new gal::network::omessage);
 
 	int type = glutpp::network::type::ACTOR_UPDATE;
 	msg->write(&type, sizeof(int));
@@ -546,53 +546,6 @@ void neb::scene::scene::send_actor_update() {
 
 
 }
-void neb::scene::scene::fire(neb::Actor::Base_s actor) {
-
-	switch(user_type_)
-	{
-		case LOCAL:
-			fire_local(actor);
-			break;
-		case REMOTE:
-			fire_remote(actor);
-			break;
-		default:
-			abort();
-	}
-
-}
-void neb::scene::scene::fire_local(neb::Actor::Base_s actor) {
-
-	boost::shared_ptr<glutpp::actor::desc> desc = actor->get_projectile();
-
-	//auto me = std::dynamic_pointer_cast<neb::Actor::Actor>(shared_from_this());
-
-	auto a = create_actor_local(desc);
-
-	/** @todo replace neb::timer::actor::type with inheritance */
-
-	boost::shared_ptr<neb::Timer::Actor::Base> t(
-			new neb::Timer::Actor::Release(glutpp::master::Global()->ios_, a, last_ + 5.0));
-
-
-}
-void neb::scene::scene::fire_remote(neb::Actor::Base_s actor) {
-
-	boost::shared_ptr<gal::network::omessage> msg(new gal::network::omessage);
-
-
-	Neb::Message::Actor::Event actor_event;
-
-	actor_event.addr_.load_this(actor);
-
-	//actor_event.event_.type_ = glutpp::actor::event::type::e::FIRE;
-	
-	//msg->write(glutpp::network::type::ACTOR_EVENT);
-	
-	msg->ar_ << actor_event;
-
-	get_app()->send_client(msg);
-}	
 void Neb::Scene::desc::load(char const* filename) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
@@ -618,6 +571,37 @@ void Neb::Scene::desc::load(char const* filename) {
 
 
 
+void Neb::Scene::Local::fire(Neb::Actor::Base_s actor) {
 
+	std::shared_ptr<glutpp::actor::desc> desc = actor->get_projectile();
+
+	//auto me = std::dynamic_pointer_cast<Neb::Actor::Actor>(shared_from_this());
+
+	auto a = create_actor_local(desc);
+
+	/** @todo replace Neb::timer::actor::type with inheritance */
+
+	std::shared_ptr<Neb::Timer::Actor::Base> t(
+			new Neb::Timer::Actor::Release(glutpp::master::Global()->ios_, a, last_ + 5.0));
+
+
+}
+void Neb::Scene::Remote::fire(Neb::Actor::Base_s actor) {
+
+	gal::network::omessage_s msg(new gal::network::omessage);
+
+	Neb::Message::Actor::Event actor_event;
+
+	actor_event.addr_.load_this(actor);
+	actor_event.event_.ptr_.reset(new Neb::Actor::Event::Fire)
+
+	//actor_event.event_.type_ = glutpp::actor::event::type::e::FIRE;
+	
+	//msg->write(glutpp::network::type::ACTOR_EVENT);
+	
+	msg->ar_ << actor_event;
+
+	get_app()->send_client(msg);
+}
 
 

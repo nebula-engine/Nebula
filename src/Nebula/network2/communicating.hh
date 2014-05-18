@@ -3,13 +3,15 @@
 
 #include <Nebula/Types.hh>
 
-#include <Nebula/network2/communicating.hh>
+#include <Nebula/network/communicating.hh>
 
 namespace Neb {
-	namespace network {
-		class communicating: virtual public gal::network::communicating {
+	namespace Network {
+		class Communicating:
+			virtual public gal::network::communicating
+		{
 			public:
-				communicating(int);
+				Communicating(int);
 				void	process(gal::network::message_s);
 		};
 	}

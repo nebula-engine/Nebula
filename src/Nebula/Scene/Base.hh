@@ -11,6 +11,7 @@
 
 #include <Nebula/Types.hh>
 
+#include <Nebula/Scene/Util/Flag.hh>
 #include <Nebula/Scene/Util/Types.hh>
 
 #include <Nebula/config.hh> // Nebula/config.hpp.in
@@ -120,7 +121,7 @@ namespace Neb {
 
 			public:
 				int							i_;
-				unsigned int						flag_;
+				Neb::Scene::Util::Flag					flag_;
 				physx::PxVec3						gravity_;
 
 				Neb::Scene::Util::Parent_w				renderable_;

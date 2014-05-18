@@ -14,7 +14,6 @@ set(INCLUDE_EXTENSIONS obj)
 SET(GRU_VERSION 0.1.1)
 
 
-
 # common methods for static library
 # =================================
 include($ENV{HOME}/usr/lib/cmake/CMakeHelper/static/library.cmake)

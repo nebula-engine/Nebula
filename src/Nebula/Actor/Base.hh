@@ -157,8 +157,8 @@ namespace Neb {
 
 					serializeData(ar, version);
 
-					ar & boost::serialization::make_nvp("actors", actors_);				
-					ar & boost::serialization::make_nvp("shapes", shapes_);
+					ar & boost::serialization::make_nvp("actors", Neb::Util::Parent<Neb::Actor::Base>::map_);
+					ar & boost::serialization::make_nvp("shapes", Neb::Util::Parent<Neb::Shape::Base>::map_);
 				}
 				virtual void		serializeData(
 						boost::archive::polymorphic_oarchive & ar,

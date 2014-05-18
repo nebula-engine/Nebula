@@ -1,6 +1,8 @@
 #ifndef NEBULA_UTIL_FACTORY_HPP
 #define NEBULA_UTIL_FACTORY_HPP
 
+#include <map>
+
 #include <Nebula/Util/Helper.hh>
 
 namespace Neb {

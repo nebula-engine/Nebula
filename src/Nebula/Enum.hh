@@ -125,6 +125,7 @@ namespace Neb {
 			};\
 			name(): val_((E)0) {}\
 			name(E e): val_(e) {}\
+			name(unsigned int e): val_((E)e) {}\
 			\
 			void		set(flag_type fl)	{ val_ = (E)(val_ | fl); }\
 			void		unset(flag_type fl)	{ val_ = (E)(val_ & !fl); }\

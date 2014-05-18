@@ -1,74 +1,40 @@
-\hypertarget{classNeb_1_1FuncMap}{\section{\-Neb\-:\-:\-Func\-Map \-Class \-Reference}
-\label{classNeb_1_1FuncMap}\index{\-Neb\-::\-Func\-Map@{\-Neb\-::\-Func\-Map}}
+\hypertarget{classNeb_1_1FuncMap}{\section{Neb\-:\-:Func\-Map Class Reference}
+\label{classNeb_1_1FuncMap}\index{Neb\-::\-Func\-Map@{Neb\-::\-Func\-Map}}
 }
 
 
-\hyperlink{classNeb_1_1FuncMap}{\-Func\-Map} \-A map containing {\ttfamily std\-::function} objects with arbitrary signatures \-Motivation\-: \-See \hyperlink{classNeb_1_1Factory}{\-Factory} and \hyperlink{classNeb_1_1Initializer}{\-Initializer} classes.  
+\hyperlink{classNeb_1_1FuncMap}{Func\-Map} A map containing {\ttfamily std\-::function} objects with arbitrary signatures Motivation\-: See \hyperlink{classNeb_1_1Factory}{Factory} and \hyperlink{classNeb_1_1Initializer}{Initializer} classes.  
 
 
 
 
-{\ttfamily \#include $<$\-Factory.\-hpp$>$}
+{\ttfamily \#include $<$Factory.\-hh$>$}
 
 
 
-\-Inheritance diagram for \-Neb\-:\-:\-Func\-Map\-:\nopagebreak
+Inheritance diagram for Neb\-:\-:Func\-Map\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=300pt]{classNeb_1_1FuncMap__inherit__graph}
 \end{center}
 \end{figure}
-\subsection*{\-Classes}
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structNeb_1_1FuncMap_1_1____base__function}{\-\_\-\-\_\-base\-\_\-function}
+\hypertarget{classNeb_1_1FuncMap_aec4e7fa106d2843596ec782e310c60ab}{{\footnotesize template$<$class R , class... Args$>$ }\\void {\bfseries add} (long int hash\-\_\-code, std\-::function$<$ R(Args...)$>$ f)}\label{classNeb_1_1FuncMap_aec4e7fa106d2843596ec782e310c60ab}
+
 \item 
-struct \hyperlink{structNeb_1_1FuncMap_1_1____function}{\-\_\-\-\_\-function}
-\item 
-struct \hyperlink{structNeb_1_1FuncMap_1_1invalid__args}{invalid\-\_\-args}
-\item 
-struct \hyperlink{structNeb_1_1FuncMap_1_1invalid__key}{invalid\-\_\-key}
-\end{DoxyCompactItemize}
-\subsection*{\-Public \-Member \-Functions}
-\begin{DoxyCompactItemize}
-\item 
-{\footnotesize template$<$class R , class... \-Args$>$ }\\void \hyperlink{classNeb_1_1FuncMap_aec4e7fa106d2843596ec782e310c60ab}{add} (long int hash\-\_\-code, std\-::function$<$ \-R(\-Args...)$>$ f)
-\item 
-{\footnotesize template$<$class R , class... \-Args$>$ }\\std\-::shared\-\_\-ptr$<$ \hyperlink{structNeb_1_1FuncMap_1_1____function}{\-\_\-\-\_\-function}$<$ \-R, \*
-\-Args...$>$ $>$ \hyperlink{classNeb_1_1FuncMap_a77755854f1bac2503578c415c01dc0c3}{find} (long hash\-\_\-code)
-\end{DoxyCompactItemize}
-\subsection*{\-Private \-Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\hypertarget{classNeb_1_1FuncMap_ad95fe1cadcf903eb199555d7e9b5f5c0}{std\-::map$<$ long int, \*
-std\-::shared\-\_\-ptr\*
-$<$ \hyperlink{structNeb_1_1FuncMap_1_1____base__function}{\-\_\-\-\_\-base\-\_\-function} $>$ $>$ {\bfseries map\-\_\-}}\label{classNeb_1_1FuncMap_ad95fe1cadcf903eb199555d7e9b5f5c0}
+\hypertarget{classNeb_1_1FuncMap_a77755854f1bac2503578c415c01dc0c3}{{\footnotesize template$<$class R , class... Args$>$ }\\std\-::shared\-\_\-ptr$<$ \-\_\-\-\_\-function$<$ R, \\*
+Args...$>$ $>$ {\bfseries find} (long hash\-\_\-code)}\label{classNeb_1_1FuncMap_a77755854f1bac2503578c415c01dc0c3}
 
 \end{DoxyCompactItemize}
 
 
-\subsection{\-Detailed \-Description}
-\hyperlink{classNeb_1_1FuncMap}{\-Func\-Map} \-A map containing {\ttfamily std\-::function} objects with arbitrary signatures \-Motivation\-: \-See \hyperlink{classNeb_1_1Factory}{\-Factory} and \hyperlink{classNeb_1_1Initializer}{\-Initializer} classes. 
+\subsection{Detailed Description}
+\hyperlink{classNeb_1_1FuncMap}{Func\-Map} A map containing {\ttfamily std\-::function} objects with arbitrary signatures Motivation\-: See \hyperlink{classNeb_1_1Factory}{Factory} and \hyperlink{classNeb_1_1Initializer}{Initializer} classes. 
 
-\subsection{\-Member \-Function \-Documentation}
-\hypertarget{classNeb_1_1FuncMap_aec4e7fa106d2843596ec782e310c60ab}{\index{\-Neb\-::\-Func\-Map@{\-Neb\-::\-Func\-Map}!add@{add}}
-\index{add@{add}!Neb::FuncMap@{\-Neb\-::\-Func\-Map}}
-\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class R , class... \-Args$>$ void {\bf \-Neb\-::\-Func\-Map\-::add} (
-\begin{DoxyParamCaption}
-\item[{long int}]{hash\-\_\-code, }
-\item[{std\-::function$<$ \-R(\-Args...)$>$}]{f}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classNeb_1_1FuncMap_aec4e7fa106d2843596ec782e310c60ab}
-\hypertarget{classNeb_1_1FuncMap_a77755854f1bac2503578c415c01dc0c3}{\index{\-Neb\-::\-Func\-Map@{\-Neb\-::\-Func\-Map}!find@{find}}
-\index{find@{find}!Neb::FuncMap@{\-Neb\-::\-Func\-Map}}
-\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class R , class... \-Args$>$ std\-::shared\-\_\-ptr$<$ {\bf \-\_\-\-\_\-function}$<$\-R, \-Args...$>$ $>$ {\bf \-Neb\-::\-Func\-Map\-::find} (
-\begin{DoxyParamCaption}
-\item[{long}]{hash\-\_\-code}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classNeb_1_1FuncMap_a77755854f1bac2503578c415c01dc0c3}
-
-
-\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-src/\-Nebula/\-Util/\-Factory.\-hpp\end{DoxyCompactItemize}
+src/\-Nebula/\-Util/Factory.\-hh\end{DoxyCompactItemize}

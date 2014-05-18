@@ -1,6 +1,10 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classNeb_1_1Message_1_1IBase.html" title="Neb::Message::IBase" alt="" coords="43,83,192,112"/>
-<area shape="rect" id="node7" href="$classNeb_1_1Message_1_1OBase.html" title="Neb::Message::OBase" alt="" coords="241,83,396,112"/>
-<area shape="rect" id="node5" href="$structNeb_1_1Message_1_1Actor_1_1IUpdate.html" title="Neb::Message::Actor::IUpdate" alt="" coords="5,160,205,189"/>
-<area shape="rect" id="node9" href="$structNeb_1_1Message_1_1Actor_1_1OUpdate.html" title="Neb::Message::Actor::OUpdate" alt="" coords="229,160,435,189"/>
+<map id="Neb::Message::Base" name="Neb::Message::Base">
+<area shape="rect" id="node2" href="$classNeb_1_1Message_1_1Actor_1_1Base.html" title="Neb::Message::Actor\l::Base" alt="" coords="204,129,351,170"/>
+<area shape="rect" id="node6" href="$classNeb_1_1Message_1_1IBase.html" title="Neb::Message::IBase" alt="" coords="203,237,352,264"/>
+<area shape="rect" id="node8" href="$classNeb_1_1Message_1_1OBase.html" title="Neb::Message::OBase" alt="" coords="200,295,355,321"/>
+<area shape="rect" id="node3" href="$classNeb_1_1Message_1_1Actor_1_1Control_1_1RigidBody_1_1Create.html" title="Create. " alt="" coords="403,5,549,61"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Message_1_1Actor_1_1Control_1_1RigidBody_1_1Update.html" title="Update. " alt="" coords="403,85,549,141"/>
+<area shape="rect" id="node5" href="$classNeb_1_1Message_1_1Actor_1_1Event.html" title="Event " alt="" coords="403,165,549,206"/>
+<area shape="rect" id="node7" href="$structNeb_1_1Message_1_1Actor_1_1IUpdate.html" title="Neb::Message::Actor\l::IUpdate" alt="" coords="403,230,549,271"/>
+<area shape="rect" id="node9" href="$structNeb_1_1Message_1_1Actor_1_1OUpdate.html" title="Neb::Message::Actor\l::OUpdate" alt="" coords="403,295,549,337"/>
 </map>

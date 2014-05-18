@@ -1,0 +1,12 @@
+<map id="Neb::Shape::Base" name="Neb::Shape::Base">
+<area shape="rect" id="node9" href="$classNeb_1_1Shape_1_1Box_1_1Box.html" title="Neb::Shape::Box::Box" alt="" coords="969,5,1122,32"/>
+<area shape="rect" id="node10" href="$classNeb_1_1Shape_1_1Empty_1_1Empty.html" title="Neb::Shape::Empty::\lEmpty" alt="" coords="973,57,1118,98"/>
+<area shape="rect" id="node11" href="$classNeb_1_1Shape_1_1Physical.html" title="Neb::Shape::Physical" alt="" coords="971,123,1120,149"/>
+<area shape="rect" id="node12" href="$classNeb_1_1Shape_1_1Sphere_1_1Sphere.html" title="Neb::Shape::Sphere\l::Sphere" alt="" coords="975,174,1115,215"/>
+<area shape="rect" id="node2" href="$classNeb_1_1Shape_1_1Util_1_1Parent.html" title="abstract class for parent of a shape " alt="" coords="576,68,741,95"/>
+<area shape="rect" id="node3" href="$classNeb_1_1Actor_1_1Util_1_1Cast.html" title="Neb::Actor::Util::Cast" alt="" coords="376,43,525,69"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases " alt="" coords="203,43,325,69"/>
+<area shape="rect" id="node6" href="$classNeb_1_1Shape_1_1Util_1_1Cast.html" title="Neb::Shape::Util::Cast" alt="" coords="373,93,528,120"/>
+<area shape="rect" id="node7" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="391,144,511,171"/>
+<area shape="rect" id="node8" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="625,119,693,145"/>
+</map>

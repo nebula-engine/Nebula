@@ -1,0 +1,11 @@
+<map id="Neb::App::Base" name="Neb::App::Base">
+<area shape="rect" id="node2" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases " alt="" coords="224,121,347,148"/>
+<area shape="rect" id="node9" href="$classNeb_1_1Scene_1_1Util_1_1Parent.html" title="Neb::Scene::Util::Parent" alt="" coords="416,71,581,97"/>
+<area shape="rect" id="node4" href="$classNeb_1_1App_1_1BaseFactory.html" title="Neb::App::BaseFactory" alt="" coords="419,172,578,199"/>
+<area shape="rect" id="node5" href="$classNeb_1_1Graphics_1_1Window_1_1Util_1_1Parent.html" title="Neb::Graphics::Window\l::Util::Parent" alt="" coords="418,223,579,265"/>
+<area shape="rect" id="node6" href="$classNeb_1_1Util_1_1Parent.html" title="Neb::Util::Parent\&lt;\l Neb::Graphics::Window\l::Base \&gt;" alt="" coords="203,212,368,268"/>
+<area shape="rect" id="node7" href="$classNeb_1_1Graphics_1_1GUI_1_1Layout_1_1Util_1_1Parent.html" title="Neb::Graphics::GUI\l::Layout::Util::Parent" alt="" coords="427,293,570,334"/>
+<area shape="rect" id="node8" href="$classNeb_1_1Util_1_1Parent.html" title="Neb::Util::Parent\&lt;\l Neb::Graphics::GUI\l::Layout::Base \&gt;" alt="" coords="214,292,357,348"/>
+<area shape="rect" id="node10" href="$classNeb_1_1Util_1_1Parent.html" title="Neb::Util::Parent\&lt;\l Neb::Scene::Base \&gt;" alt="" coords="213,5,358,46"/>
+<area shape="rect" id="node11" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="225,71,345,97"/>
+</map>

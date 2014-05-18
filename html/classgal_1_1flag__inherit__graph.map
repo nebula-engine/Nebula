@@ -1,19 +1,7 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classNeb_1_1Actor_1_1Base.html" title="Base" alt="" coords="137,85,260,115"/>
-<area shape="rect" id="node19" href="$classNeb_1_1app.html" title="Neb::app" alt="" coords="161,139,236,168"/>
-<area shape="rect" id="node21" href="$classNeb_1_1master.html" title="Neb::master" alt="" coords="152,192,245,221"/>
-<area shape="rect" id="node23" href="$classNeb_1_1Scene_1_1Base.html" title="Neb::Scene::Base" alt="" coords="135,245,263,275"/>
-<area shape="rect" id="node25" href="$classNeb_1_1Shape_1_1shape.html" title="Neb::Shape::shape" alt="" coords="132,299,265,328"/>
-<area shape="rect" id="node35" href="$classNeb_1_1window_1_1window.html" title="Neb::window::window" alt="" coords="124,352,273,381"/>
-<area shape="rect" id="node5" href="$classNeb_1_1Actor_1_1Actor.html" title="Neb::Actor::Actor" alt="" coords="356,32,479,61"/>
-<area shape="rect" id="node15" href="$classNeb_1_1Actor_1_1Controller.html" title="Neb::Actor::Controller" alt="" coords="343,85,492,115"/>
-<area shape="rect" id="node17" href="$classNeb_1_1Actor_1_1empty.html" title="Neb::Actor::empty" alt="" coords="353,139,481,168"/>
-<area shape="rect" id="node7" href="$classNeb_1_1Actor_1_1RigidActor.html" title="Neb::Actor::RigidActor" alt="" coords="560,32,715,61"/>
-<area shape="rect" id="node9" href="$classNeb_1_1Actor_1_1Rigid__Static.html" title="Neb::Actor::Rigid_Static" alt="" coords="792,5,955,35"/>
-<area shape="rect" id="node11" href="$classNeb_1_1Actor_1_1RigidBody_1_1RigidBody.html" title="Neb::Actor::RigidBody::RigidBody" alt="" coords="763,59,984,88"/>
-<area shape="rect" id="node13" href="$classNeb_1_1Actor_1_1Rigid__Dynamic.html" title="Neb::Actor::Rigid_Dynamic" alt="" coords="1033,59,1215,88"/>
-<area shape="rect" id="node27" href="$classNeb_1_1Shape_1_1Box_1_1Box.html" title="Neb::Shape::Box::Box" alt="" coords="341,219,493,248"/>
-<area shape="rect" id="node29" href="$classNeb_1_1Shape_1_1Empty_1_1Empty.html" title="Neb::Shape::Empty::Empty" alt="" coords="327,272,508,301"/>
-<area shape="rect" id="node31" href="$classNeb_1_1Shape_1_1Physical.html" title="Neb::Shape::Physical" alt="" coords="343,325,492,355"/>
-<area shape="rect" id="node33" href="$classNeb_1_1Shape_1_1Sphere_1_1Sphere.html" title="Neb::Shape::Sphere::Sphere" alt="" coords="323,379,512,408"/>
+<map id="gal::flag" name="gal::flag">
+<area shape="rect" id="node2" href="$classNeb_1_1Shape_1_1Base.html" title="Neb::Shape::Base" alt="" coords="123,93,253,120"/>
+<area shape="rect" id="node3" href="$classNeb_1_1Shape_1_1Box_1_1Box.html" title="Neb::Shape::Box::Box" alt="" coords="302,5,455,32"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Shape_1_1Empty_1_1Empty.html" title="Neb::Shape::Empty::\lEmpty" alt="" coords="306,57,451,98"/>
+<area shape="rect" id="node5" href="$classNeb_1_1Shape_1_1Physical.html" title="Neb::Shape::Physical" alt="" coords="304,123,453,149"/>
+<area shape="rect" id="node6" href="$classNeb_1_1Shape_1_1Sphere_1_1Sphere.html" title="Neb::Shape::Sphere\l::Sphere" alt="" coords="309,174,449,215"/>
 </map>
