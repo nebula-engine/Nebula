@@ -28,6 +28,7 @@ namespace Neb {
 		{
 			public:
 				Shared();
+				Shared(Neb::Util::index_type);
 				virtual ~Shared() {}
 
 			public:
