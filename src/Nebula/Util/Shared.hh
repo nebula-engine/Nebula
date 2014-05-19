@@ -17,7 +17,6 @@ namespace Neb {
 				Registry(): next_(0) {
 				}
 				void					reg(shared s);
-				void					reg(shared s, Neb::Util::index_type);
 				shared					get(Neb::Util::index_type i);
 			private:
 				std::map<index_type, weak>		map_;
@@ -32,12 +31,12 @@ namespace Neb {
 		{
 			public:
 				Shared();
-				Shared(Neb::Util::index_type);
 				virtual ~Shared() {}
 
+				virtual void				init();
 			public:
-				static Registry					registry_;
-				Neb::Util::index_type				i_;
+				static Registry				registry_;
+				Neb::Util::index_type			i_;
 		};
 	}
 }
