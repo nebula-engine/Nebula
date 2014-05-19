@@ -11,13 +11,17 @@ namespace Neb {
 		class Shared;
 		class Registry {
 			public:
+				typedef std::shared_ptr<Neb::Util::Shared>	shared;
+				typedef std::weak_ptr<Neb::Util::Shared>	weak;
+				
 				Registry(): next_(0) {
 				}
-				void						reg(std::shared_ptr<Neb::Util::Shared> s);
-				std::shared_ptr<Neb::Util::Shared>		get(Neb::Util::index_type i);
+				void					reg(shared s);
+				void					reg(shared s, Neb::Util::index_type);
+				shared					get(Neb::Util::index_type i);
 			private:
-				std::map<index_type, std::weak_ptr<Neb::Util::Shared> >		map_;
-				Neb::Util::index_type						next_;
+				std::map<index_type, weak>		map_;
+				Neb::Util::index_type			next_;
 
 		};
 		/** @brief %Shared.
