@@ -22,7 +22,7 @@
 #include <Nebula/network/message.hh>
 
 
-#include <Nebula/Actor/rigid_body/rigid_body.hh>
+#include <Nebula/Actor/RigidBody/Base.hh>
 
 #include <Nebula/Actor/Control/RigidBody/Base.hh>
 

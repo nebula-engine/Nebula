@@ -10,35 +10,50 @@ namespace Neb {
 		namespace Actor {
 			namespace Control {
 				namespace RigidBody {
-					
 					/** @brief %Create. */
 					class Create: public Neb::Message::Actor::Base {
 						public:
 							/** @brief derived serialize. */
 							virtual void					serializeDerived(
-									boost::archive::binary_oarchive & ar,
+									boost::archive::polymorphic_oarchive & ar,
 									unsigned int const & version);
 							/** @brief derived serialize. */
 							virtual void					serializeDerived(
-									boost::archive::binary_iarchive & ar,
+									boost::archive::polymorphic_iarchive & ar,
 									unsigned int const & version);
 
 
 							Neb::WrapperTyped<Neb::Actor::Control::RigidBody::Base>		control_;
 					};
+					
+					
 					/** @brief %Update. */
-					class Update: public Neb::Message::Actor::Base {
+					class Update {
+						public:
+							virtual ~Update() = 0;
+							Neb::WrapperTyped<Neb::Actor::Control::RigidBody::Base>		control_;
+					};
+					/** @brief %Update. */
+					class IUpdate:
+						public Neb::Message::Actor::IBase,
+						public Neb::Message::Actor::Control::RigidBody::Update
+					{
 						public:
 							/** @brief derived serialize. */
 							virtual void					serializeDerived(
-									boost::archive::binary_oarchive & ar,
+									boost::archive::polymorphic_iarchive & ar,
 									unsigned int const & version);
+					};
+					/** @brief %Update. */
+					class OUpdate:
+						public Neb::Message::Actor::OBase,
+						public Neb::Message::Actor::Control::RigidBody::Update
+					{
+						public:
 							/** @brief derived serialize. */
 							virtual void					serializeDerived(
-									boost::archive::binary_iarchive & ar,
+									boost::archive::polymorphic_oarchive & ar,
 									unsigned int const & version);
-
-							Neb::WrapperTyped<Neb::Actor::Control::RigidBody::Base>		control_;
 					};
 				}
 			}

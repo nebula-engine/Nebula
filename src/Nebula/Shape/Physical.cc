@@ -4,7 +4,7 @@
 #include <Nebula/Scene/Base.hh>
 #include <Nebula/Shape/Base.hh>
 #include <Nebula/Shape/Physical.hh>
-#include <Nebula/Actor/Rigid_Actor.hh>
+#include <Nebula/Actor/RigidActor/Base.hh>
 
 Neb::Shape::Physical::Physical() {
 }

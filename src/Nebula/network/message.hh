@@ -9,8 +9,8 @@
 #include <memory>
 #include <deque>
 
-#include <boost/archive/binary_oarchive.hpp>
-#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/polymorphic_binary_oarchive.hpp>
+#include <boost/archive/polymorphic_binary_iarchive.hpp>
 
 #include <Nebula/Util/Shared.hh>
 #include <Nebula/network/config.hh>
@@ -59,7 +59,7 @@ namespace gal {
 				  t.serialize(*this, 0);
 				  return *this;
 				  }*/
-				boost::archive::binary_oarchive		ar_;
+				boost::archive::polymorphic_binary_oarchive		ar_;
 		};
 		class imessage: public message {
 			public:
@@ -71,7 +71,7 @@ namespace gal {
 				  t.serialize(*this, 0);
 				  return *this;
 				  }*/
-				boost::archive::binary_iarchive		ar_;
+				boost::archive::polymorphic_binary_iarchive		ar_;
 		};
 	}
 }

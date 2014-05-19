@@ -12,7 +12,8 @@
 
 #include <Nebula/Actor/Util/Types.hh>
 //#include <Nebula/Actor/Control/Util/Types.hh>
-#include <Nebula/Actor/rigid_body/rigid_body.hh>
+#include <Nebula/Actor/RigidBody/Base.hh>
+#include <Nebula/Actor/RigidDynamic/Local.hh>
 #include <Nebula/Actor/Control/RigidBody/Base.hh>
 
 #include <Nebula/network/Types.hh>
@@ -20,57 +21,18 @@
 #include <Nebula/Message/Actor/Control.hh>
 #include <Nebula/Message/Types.hh>
 
-Neb::Actor::RigidBody::RigidBody::RigidBody(Neb::Actor::Util::Parent_s parent):
-	Neb::Actor::RigidActor(parent),
+Neb::Actor::RigidBody::Base::Base() {}
+Neb::Actor::RigidBody::Base::Base(Neb::Actor::Util::Parent_s parent):
+	Neb::Actor::RigidActor::Base(parent),
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}
-void	Neb::Actor::RigidBody::RigidBody::init() {
+void	Neb::Actor::RigidBody::Base::init() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
-	Neb::Actor::RigidActor::init();
-
+	Neb::Actor::RigidActor::Base::init();
 }
-void Neb::Actor::RigidBody::RigidBody::step_local(double time) {
-	NEBULA_ACTOR_BASE_FUNC;
-	
-	Neb::Actor::RigidActor::step_local(time);
-	
-	auto control_s = control_.lock();
-	
-	/** @todo was step_local */
-	if(control_s) control_s->step(time);
-	
-	add_force(time);
-}
-void Neb::Actor::RigidBody::RigidBody::step_remote(double time) {
-	NEBULA_ACTOR_BASE_FUNC;
-	
-	auto app = get_app();
-	
-	gal::network::omessage_s msg;
-
-	Neb::Message::Actor::Control::RigidBody::Update_s control_update;
-	
-	Neb::Actor::RigidActor::step_remote(time);
-	
-	
-	if(control_) {
-		msg.reset(new gal::network::omessage);
-		control_update.reset(new Neb::Message::Actor::Control::RigidBody::Update);
-		
-		control_update->addr_.load_this(isBase());
-		control_update->raw_.load(control_);
-		
-		msg->write(Neb::network::type::CONTROL_UPDATE);
-		
-		control_update->serialize(msg->ar_, 0);
-		
-		app->send_client(msg);
-	}
-
-}
-void Neb::Actor::RigidBody::RigidBody::add_force(double time) {
+void Neb::Actor::RigidBody::Base::add_force(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	// non-user-controled
@@ -83,10 +45,10 @@ void Neb::Actor::RigidBody::RigidBody::add_force(double time) {
 		t += control_->t();
 	}
 	
-	physx::PxTransform pose = raw_->pose_;
+	//physx::PxTransform pose = pose_;
 
-	f = pose.q.rotate(f);
-	t = pose.q.rotate(t);
+	f = pose_.q.rotate(f);
+	t = pose_.q.rotate(t);
 
 	//printf("f = ");
 	//f.print();
@@ -101,18 +63,20 @@ void Neb::Actor::RigidBody::RigidBody::add_force(double time) {
 	pxrigidbody->addForce(f);
 	pxrigidbody->addTorque(t);
 }
-Neb::Actor::desc_w	Neb::Actor::RigidBody::RigidBody::get_projectile() {
+Neb::Actor::Base_s	Neb::Actor::RigidBody::Base::get_projectile() {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	auto scene = get_scene();
+	auto scene = getScene();
 
-	Neb::Actor::desc_w ad = scene->actors_deferred_[(char*)"proj0"];
-	assert(ad);
+	Neb::Actor::RigidDynamic::Local_s actor(new Neb::Actor::RigidDynamic::Local);
 
-	Neb::Actor::desc_u desc(new Neb::Actor::desc);
-	auto s = ad.lock();
-	assert(s);
-	*desc = *s;
+	//Neb::Actor::desc_w ad = scene->actors_deferred_[(char*)"proj0"];
+	//assert(ad);
+
+	//Neb::Actor::desc_u desc(new Neb::Actor::desc);
+	//auto s = ad.lock();
+	//assert(s);
+	//*desc = *s;
 
 	// modify description	
 
@@ -133,7 +97,7 @@ Neb::Actor::desc_w	Neb::Actor::RigidBody::RigidBody::get_projectile() {
 
 	return desc;
 }
-void Neb::Actor::RigidBody::RigidBody::print_info() {
+void Neb::Actor::RigidBody::Base::print_info() {
 	//NEBULA_ACTOR_BASE_FUNC;	
 
 	Neb::Actor::RigidActor::print_info();
@@ -153,7 +117,7 @@ void Neb::Actor::RigidBody::RigidBody::print_info() {
 	   printf("angular velocity = "); angular_velocity.print();
 	   */
 }
-void Neb::Actor::RigidBody::RigidBody::create_control(Neb::Actor::Control::RigidBody::Raw_s raw) {
+void Neb::Actor::RigidBody::Base::create_control(Neb::Actor::Control::RigidBody::Raw_s raw) {
 
 	auto me = isRigidBody();
 
@@ -193,6 +157,10 @@ void Neb::Actor::RigidBody::RigidBody::create_control(Neb::Actor::Control::Rigid
 		
 	}
 
+}
+void		Neb::Actor::RigidBody::Base::stepRigidActor(double time) {
+	stepRigidBody(time);
+	stepRigidBodyDerived(time);
 }
 
 

@@ -1,6 +1,8 @@
 #ifndef NEBULA_SHAPE_UTIL_FLAG_HH
 #define NEBULA_SHAPE_UTIL_FLAG_HH
 
+#include <Nebula/Enum.hh>
+
 namespace Neb {
 	namespace Shape {
 		namespace Util {

@@ -1,7 +1,7 @@
 #ifndef __NEBULA_CONTROL_RIGID_BODY_CONTROL_H__
 #define __NEBULA_CONTROL_RIGID_BODY_CONTROL_H__
 
-#include <Nebula/Actor/Rigid_Actor.hh>
+#include <Nebula/Actor/RigidActor/Base.hh>
 #include <Nebula/config.hh>
 
 namespace Neb {

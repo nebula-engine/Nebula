@@ -97,9 +97,7 @@ namespace Neb {
 				virtual void						init_physics() = 0;
 
 				/** @name Stepping @{ */
-				virtual void					step(double dt) final;
-				virtual void					stepActorBase(double dt) = 0;
-				virtual void					stepActorBaseDerived(double dt) = 0;
+				virtual void					step(double dt);
 
 
 				//virtual void					step_local(double);
@@ -231,14 +229,6 @@ namespace Neb {
 				int						i_;
 				/** @brief Parent */
 				Neb::Actor::Util::Parent_s			parent_;
-		};
-		class Local: virtual public Neb::Actor::Base {
-			public:
-				virtual void		stepActorBaseDerived(double dt);
-		};
-		class Remote: virtual public Neb::Actor::Base {
-			public:
-				virtual void		stepActorBaseDerived(double dt);
 		};
 	}
 }

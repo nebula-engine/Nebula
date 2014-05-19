@@ -24,6 +24,7 @@
 
 
 #include <Nebula/Util/Shared.hh>
+#include <Nebula/Util/Parent.hh>
 
 #include <Nebula/Graphics/material.hh>
 #include <Nebula/Graphics/mesh.hh>

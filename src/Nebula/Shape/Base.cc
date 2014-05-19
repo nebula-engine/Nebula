@@ -343,15 +343,5 @@ void		Neb::Shape::Base::draw_elements(Neb::Graphics::Window::Base_s window, phys
 		p->get_attrib(Neb::attrib_name::e::TEXCOOR)->disable();
 	}
 }
-void Neb::Shape::Box::Box::createMesh() {
-	mesh_.load("cube.obj");
-}
-void Neb::Shape::Sphere::Sphere::createMesh() {
-	mesh_.load("sphere.obj");
-}
-void Neb::Shape::Empty::Empty::createMesh() {
-	//mesh_.load("sphere.obj");
-}
-
 
 

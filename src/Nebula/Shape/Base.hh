@@ -110,23 +110,12 @@ namespace Neb {
 				/** @brief Parent */
 				Neb::Shape::Util::Parent_w			parent_;
 		};
-		namespace Box {
-			class Box: public Neb::Shape::Base {
-				virtual void		createMesh();
-			};
-		}
-		namespace Sphere {
-			class Sphere: public Neb::Shape::Base {
-				virtual void		createMesh();
-			};
-		}
-		namespace Empty {
-			class Empty: public Neb::Shape::Base {
-				virtual void		createMesh();
 
-				virtual void		draw_elements(Neb::Graphics::Window::Base_s, physx::PxMat44 space) {}
-			};
-		}
+		class Empty: public Neb::Shape::Base {
+			virtual void		createMesh();
+
+			virtual void		draw_elements(Neb::Graphics::Window::Base_s, physx::PxMat44 space) {}
+		};
 	}
 }
 

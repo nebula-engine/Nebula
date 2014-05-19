@@ -1,6 +1,6 @@
 #include <Nebula/Actor/Util/Types.hh>
 #include <Nebula/Actor/Util/Cast.hh>
-#include <Nebula/Actor/Rigid_Dynamic.hh>
+#include <Nebula/Actor/RigidDynamic/Base.hh>
 
 
 Neb::Actor::Base_s				Neb::Actor::Util::Cast::isActorBase() {
