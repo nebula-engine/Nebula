@@ -26,7 +26,6 @@ namespace Neb {
 
 					return it->second.ptr_;
 				}
-
 				void					release(Neb::Util::index_type i) {
 					auto it = map_.find(i);
 
