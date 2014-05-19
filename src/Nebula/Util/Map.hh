@@ -69,15 +69,23 @@ namespace Neb {
 			void				clear() {
 				boost::lock_guard(mutex_);
 				
+				for(auto it = map_.cbegin(); it != map_.cend(); ++it) {
+					it->second.ptr_->release();
+				}
+				
 				map_.clear();
 			}
 			/** */
-			void				erase(Neb::Util::index_type i) {
+			void				release(Neb::Util::index_type i) {
 				boost::lock_guard(mutex_);
 				
 				auto it = map_.find(i);
 				
-				if(it != map_.cend()) map_.erase(it);
+				if(it == map_.cend()) return;
+				
+				it->second.ptr_->release();
+				
+				map_.erase(it);
 			}
 		private:
 			factory_weak			factory_;
