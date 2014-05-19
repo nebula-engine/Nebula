@@ -6,6 +6,8 @@
 #include <functional>
 #include <stdio.h>
 
+#include <boost/mutex.hpp>
+
 #include <boost/serialization/map.hpp>
 
 #include <Nebula/Util/WrapperTyped.hh>
@@ -48,8 +50,8 @@ namespace Neb {
 				map_.emplace(u->i_, m);
 			}
 			void				for_each(std::function<void(const_iterator)> const & f) {
-				// lock mutex
-				
+				boost::lock_guard(mutex_);
+
 				for(auto it = map_.cbegin(); it != map_.cend(); ++it) {
 					f(it);
 				}
@@ -73,13 +75,15 @@ namespace Neb {
 			}
 			/** */
 			iterator			erase(iterator it) {
+				boost::lock_guard(mutex_);
+
 				it = map_.erase(it);
 				return it;
 			}
 		private:
 			factory_weak			factory_;
 			__map_type			map_;
-
+			boost::mutex			mutex_;
 	};	
 }
 
