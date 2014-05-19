@@ -15,21 +15,19 @@
 namespace Neb {
 	template <class T> class Map {
 		public:
-			typedef int							__index_type;
 			typedef std::shared_ptr<T>					shared_type;
 			
 			typedef Neb::WrapperTyped<T>					mapped_type;
 
 			typedef std::weak_ptr< Neb::Factory<T> >			factory_weak;
 			
-			typedef std::map<__index_type,mapped_type>			__map_type;
+			typedef std::map<Neb::Util::index_type,mapped_type>		map_type;
 
+			typedef typename map_type::iterator				iterator;
+			typedef typename map_type::const_iterator			const_iterator;
 
-			typedef typename __map_type::iterator			iterator;
-			typedef typename __map_type::const_iterator		const_iterator;
-
-			typedef typename __map_type::value_type			value_type_const;
-			typedef std::pair<__index_type,mapped_type>		value_type;
+			typedef typename __map_type::value_type				value_type_const;
+			typedef std::pair<Neb::Utilindex_type, mapped_type>		value_type;
 			
 			/** @brief Constructor */
 			Map() {}
@@ -40,9 +38,13 @@ namespace Neb {
 			  }*/
 			/** */
 			template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
+				boost::lock_guard(mutex_);
+				
 				ar & boost::serialization::make_nvp("map",map_);
 			}
 			void				push_back(shared_type& u) {
+				boost::lock_guard(mutex_);
+				
 				assert(u);
 				
 				mapped_type m(u);
@@ -57,32 +59,29 @@ namespace Neb {
 				}
 			}
 			/** */
-			iterator			find(__index_type i) {
+			shared_type			find(Neb::Util::index_type i) {
+				boost::lock_guard(mutex_);
+				
 				auto it = map_.find(i);
-				return it;
+				return it->second.ptr_;
 			}
 			/** */
 			void				clear() {
+				boost::lock_guard(mutex_);
+				
 				map_.clear();
 			}
 			/** */
-			iterator			begin() {
-				return map_.begin();
-			}
-			/** */
-			iterator			end() {
-				return map_.end();
-			}
-			/** */
-			iterator			erase(iterator it) {
+			void				erase(Neb::Util::index_type i) {
 				boost::lock_guard(mutex_);
-
-				it = map_.erase(it);
-				return it;
+				
+				auto it = map_.find(i);
+				
+				if(it != map_.cend()) map_.erase(it);
 			}
 		private:
 			factory_weak			factory_;
-			__map_type			map_;
+			map_type			map_;
 			boost::mutex			mutex_;
 	};	
 }
