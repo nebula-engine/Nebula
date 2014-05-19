@@ -24,12 +24,18 @@ namespace Neb {
 				void					insert(__shared_type s);
 				void					insert(__shared_type s, int i);
 				
-				__shared_type				getActor(__index_type i);
-				__shared_type				getActor(__address_type a);
-				
+				__shared_type				get(__index_type i) {
+					auto it = actors_.find(i);
+					if(it == actors_.end()) return __shared_type;
+					return it->second.ptr_;
+				}
+				__shared_type				get(__address_type a) {
+					
+				}
+
 				void					releaseActor(__index_type i);
-				
-				
+
+
 
 
 				__map_type				map_;

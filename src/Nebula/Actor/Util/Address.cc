@@ -19,9 +19,9 @@ void		Neb::Actor::Util::Address::load_parent(Neb::Actor::Base_s const & actor0) 
 	
 	auto parent = actor0->getParent();
 	
-	auto scene = parent->isScene();//  boost::dynamic_pointer_cast<Neb::scene::scene>(parent);
+	auto scene = parent->isSceneBase();//  boost::dynamic_pointer_cast<Neb::scene::scene>(parent);
 
-	auto actor1 = parent->isActor(); //boost::dynamic_pointer_cast<Neb::Actor::actor>(parent);
+	auto actor1 = parent->isActorBase(); //boost::dynamic_pointer_cast<Neb::Actor::actor>(parent);
 
 	if(actor1) {
 		load_this(actor1);

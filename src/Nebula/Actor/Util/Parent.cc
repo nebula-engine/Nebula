@@ -6,15 +6,7 @@
 #include <Nebula/Actor/Util/Parent.hh>
 #include <Nebula/Scene/Base.hh>
 
-Neb::Actor::Util::Parent::Parent():
-	actors_(Neb::App::Base::global()->factories_.actor_base_)
-{
-}
-void				Neb::Actor::Util::Parent::insertActor(Neb::Actor::Base_s actor) {
-	actor_.
-}
-void				Neb::Actor::Util::Parent::insertActor(Neb::Actor::Base_s actor, int i) {
-	
+Neb::Actor::Util::Parent::Parent() {
 }
 Neb::Actor::Base_s		Neb::Actor::Util::Parent::getActor(int i) {
 	NEBULA_ACTOR_BASE_FUNC;

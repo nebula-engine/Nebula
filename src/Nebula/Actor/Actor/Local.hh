@@ -14,7 +14,7 @@ namespace Neb {
 				virtual public Neb::Actor::Local
 			{
 				public:
-					virtual void		stepRigidBodyDerived(double);
+					virtual void		step(double);
 			};
 		}
 	}

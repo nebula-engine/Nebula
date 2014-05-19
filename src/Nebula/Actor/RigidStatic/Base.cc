@@ -2,27 +2,23 @@
 #include <Nebula/debug.hh>
 #include <Nebula/physics.hh>
 #include <Nebula/Shape/Base.hh>
-#include <Nebula/Actor/Rigid_Static.hh>
+#include <Nebula/Actor/RigidStatic/Base.hh>
 
-Neb::Actor::Rigid_Static::Rigid_Static(Neb::Actor::Util::Parent_s parent): Neb::Actor::RigidActor(parent) {
+Neb::Actor::RigidStatic::Base::Base() {
+}
+Neb::Actor::RigidStatic::Base::Base(Neb::Actor::Util::Parent_s parent):
+	Neb::Actor::RigidActor::Base(parent)
+{
 	NEBULA_ACTOR_BASE_FUNC
 }
-void	Neb::Actor::Rigid_Static::init() {
+void	Neb::Actor::RigidStatic::Base::init() {
 	NEBULA_ACTOR_BASE_FUNC
-	
-	Neb::Actor::RigidActor::init();
 }
-void	Neb::Actor::Rigid_Static::step_local(double time) {
+void	Neb::Actor::RigidStatic::Base::step(double dt) {
 	NEBULA_ACTOR_BASE_FUNC;
-	Neb::Actor::RigidActor::step_local(time);
 }
-void	Neb::Actor::Rigid_Static::step_remote(double time) {
+void Neb::Actor::RigidStatic::Base::create_physics() {
 	NEBULA_ACTOR_BASE_FUNC;
-	Neb::Actor::RigidActor::step_remote(time);
-}
-void Neb::Actor::Rigid_Static::create_physics() {
-
-	printf("%s\n", __PRETTY_FUNCTION__);
 	
 	assert(px_actor_ == NULL);
 	
@@ -52,7 +48,7 @@ void Neb::Actor::Rigid_Static::create_physics() {
 
 	scene->px_scene_->addActor(*px_rigid_static);
 }
-void Neb::Actor::Rigid_Static::init_physics() {
+void Neb::Actor::RigidStatic::Base::init_physics() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 	

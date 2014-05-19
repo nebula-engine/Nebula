@@ -14,7 +14,7 @@ namespace Neb {
 				virtual public Neb::Actor::Remote
 			{
 				public:
-					virtual void		stepRigidBodyDerived(double);
+					virtual void		step(double dt);
 			};
 		}
 	}
