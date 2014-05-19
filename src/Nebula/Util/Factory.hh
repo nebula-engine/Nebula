@@ -26,38 +26,35 @@ namespace Neb {
 			};
 			/** */
 			struct __base_function {
-	                        virtual ~__base_function() {}
-	                };
-	                /** */
-	                template<class R, class... A>
-	                struct __function: __base_function {
-	                	/** */
-	                        __function(std::function<R(A...)> f): f_(f) {}
-	                        /** */
+				virtual ~__base_function() {}
+			};
+			/** */
+			template<class R, class... A> struct __function: __base_function {
+				/** */
+				__function(std::function<R(A...)> f): f_(f) {}
+				/** */
 				std::function<R(A...)>		f_;
-	                };
+			};
 		public:
 			FuncMap() {}
 			virtual ~FuncMap() {}
 			/** */
-			template<class R, class... Args>
-			void		add(long int hash_code, std::function<R(Args...)> f) {
+			template<class R, class... Args> void		add(long int hash_code, std::function<R(Args...)> f) {
 				std::shared_ptr<__base_function> b(new __function<R, Args...>(f));
-				
+
 				map_.emplace(hash_code, b);
 			}
 			/** */
-			template<class R, class... Args>
-			std::shared_ptr< __function<R, Args...> >		find(long hash_code) {
+			template<class R, class... Args> std::shared_ptr< __function<R, Args...> >		find(long hash_code) {
 				auto it = map_.find(hash_code);
-				
-	                        if(it == map_.cend()) throw invalid_key();
-	                        
-	                        std::shared_ptr< __function<R, Args...> > f = std::dynamic_pointer_cast< __function<R, Args...> >(it->second);
-				
+
+				if(it == map_.cend()) throw invalid_key();
+
+				std::shared_ptr< __function<R, Args...> > f = std::dynamic_pointer_cast< __function<R, Args...> >(it->second);
+
 				if(!f) throw invalid_args();
-				
-	                        return f;
+
+				return f;
 			}
 		private:
 			std::map< long int, std::shared_ptr<__base_function> >         	map_;
@@ -71,16 +68,15 @@ namespace Neb {
 	 * 
 	 * @note the app shall hold instances of Factory for the various types and use cases
 	 */
-	template <class T>
-	class Factory: public FuncMap {
+	template <class T> class Factory: public FuncMap {
 		public:
 			/** */
 			template<class... Args>
-			T*      					alloc(long hash_code, Args&&... args) {
-	                        auto f = find<T*, Args...>(hash_code);
-	                        
-	                        return (f->f_)(std::forward<Args>(args)...);
-	                }
+				T*      					alloc(long hash_code, Args&&... args) {
+					auto f = find<T*, Args...>(hash_code);
+
+					return (f->f_)(std::forward<Args>(args)...);
+				}
 	};
 	/** @brief Initializer.
 	 * Store and use initializer functions.
@@ -94,44 +90,44 @@ namespace Neb {
 	 * which must be accessible from @c Initializer
 	 * 
 	 */
-	template <class T>
-		class Initializer: public FuncMap {
-			public:
-				typedef std::shared_ptr<T> shared;
-				/** */
-				template<class... AllocArgs, class... InitArgs>
-					shared			alloc(
-							long hash_code,
-							std::tuple<AllocArgs...>&& allocargs,
-							std::tuple<InitArgs...>&& initargs) {
-						// callAlloc
-						callAlloc(
-								hash_code,
-								allocargs,
-								initargs,
-								typename gens<sizeof...(AllocArgs)>::type(),
-								typename gens<sizeof...(InitArgs)>::type());
-					}
-				template<class... AllocArgs, class... InitArgs, int... SA, int... SB>
-					shared			callAlloc(
-							long hash_code,
-							std::tuple<AllocArgs...>&& allocargs,
-							std::tuple<InitArgs...>&& initargs,
-							seq<SA...>,
-							seq<SB...>) {
+	template <class T> class Initializer: public FuncMap {
+		public:
+			typedef std::shared_ptr<T> shared;
+			/** */
+			template<class... AllocArgs, class... InitArgs> shared						alloc(
+					long hash_code,
+					std::tuple<AllocArgs...>&& allocargs,
+					std::tuple<InitArgs...>&& initargs) {
+				// callAlloc
+				callAlloc(
+						hash_code,
+						allocargs,
+						initargs,
+						typename gens<sizeof...(AllocArgs)>::type(),
+						typename gens<sizeof...(InitArgs)>::type());
+			}
+			template<class... AllocArgs, class... InitArgs, int... SA, int... SB> shared			callAlloc(
+					long hash_code,
+					std::tuple<AllocArgs...>&& allocargs,
+					std::tuple<InitArgs...>&& initargs,
+					seq<SA...>,
+					seq<SB...>) {
 
-						auto f = find<shared,AllocArgs...>(hash_code);
+				auto f = find<shared,AllocArgs...>(hash_code);
 
-						shared s = (f->f_)(std::get<SA>(allocargs)...);
+				shared s = (f->f_)(std::get<SA>(allocargs)...);
 
-						// call (possibly) virtual initialization method
-						s->init(std::get<SB>(initargs)...);
+				// call (possibly) virtual initialization method
+				s->init(std::get<SB>(initargs)...);
 
-						return s;
-					}
-
-
-		};
+				return s;
+			}
+	};
 }
 
 #endif
+
+
+
+
+

@@ -31,7 +31,7 @@ int	Neb::Actor::Actor::Base::fire() {
 	NEBULA_ACTOR_BASE_FUNC;
 	return Neb::Actor::Base::fire();
 }
-void		Neb::Actor::Actor::Base::step(double dt) {
+void		Neb::Actor::Actor::Base::step(double const & time, double const & dt) {
 }
 
 

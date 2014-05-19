@@ -1,33 +1,28 @@
 
 
-#include <Nebula/debug.hpp>
+#include <Nebula/debug.hh>
 
-#include <Nebula/Util/Typed.hpp>
+#include <Nebula/Util/Typed.hh>
 
-#include <Nebula/Types.hpp>
-#include <Nebula/config.hpp> // Nebula/config.hpp.in
+#include <Nebula/Types.hh>
+#include <Nebula/config.hh> // Nebula/config.hpp.in
 #include <Nebula/timer/Actor/Base.hpp>
-#include <Nebula/app.hpp>
-#include <Nebula/Scene/scene.hpp>
-#include <Nebula/shape/Physical.hpp>
-#include <Nebula/Signals.hpp>
+#include <Nebula/App/Base.hh>
+#include <Nebula/Scene/Base.hh>
+#include <Nebula/Shape/Physical.hh>
+#include <Nebula/Signals.hh>
 
-#include <Nebula/Actor/Base.hpp>
-#include <Nebula/Actor/Rigid_Actor.hpp>
-#include <Nebula/Actor/rigid_body/rigid_body.hpp>
-#include <Nebula/Actor/empty.hpp>
-#include <Nebula/Actor/Types.hpp>
-#include <Nebula/Actor/Util/desc.hpp>
+#include <Nebula/Actor/Base.hh>
+#include <Nebula/Actor/RigidActor/Base.hh>
+#include <Nebula/Actor/RigidBody/Base.hh>
+#include <Nebula/Actor/empty.hh>
+#include <Nebula/Actor/Util/Types.hh>
 
-#include <Nebula/Filter.hpp>
-#include <Nebula/Graphics/window/window.hpp>
+#include <Nebula/Filter.hh>
+#include <Nebula/Graphics/Window/Base.hh>
 
 
-Neb::Actor::Base::Base(Neb::Actor::parent_w parent):
-	actors_(Neb::master::global()->factories_.actor_base_),
-	shapes_(Neb::master::global()->factories_.shape_base_),
-	parent_(parent)
-{
+Neb::Actor::Base::Base(Neb::Actor::Util::Parent_s parent): parent_(parent) {
 	NEBULA_ACTOR_BASE_FUNC;
 	
 	sig_release_.connect(
@@ -47,7 +42,7 @@ void Neb::Actor::Base::i(int ni) {
 int Neb::Actor::Base::i() const {
 	return i_;
 }
-void Neb::Actor::Base::cleanup() {
+/*void Neb::Actor::Base::cleanup() {
 	NEBULA_ACTOR_BASE_FUNC;
 	//printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -82,9 +77,9 @@ void Neb::Actor::Base::cleanup() {
 			}
 		}
 	}
-}
+}*/
 Neb::Actor::Util::Parent_s	Neb::Actor::Base::getParent() {
-	return parent_.lock();
+	return parent_;
 }
 physx::PxTransform		Neb::Actor::Base::getPose() {
 	return pose_;
@@ -94,9 +89,8 @@ physx::PxTransform		Neb::Actor::Base::getPoseGlobal() {
 
 	physx::PxTransform m;
 
-	auto s = parent_.lock();
-	if(!s) {
-		m = s->getPoseGlobal() * getPose();
+	if(!parent_) {
+		m = parent_->getPoseGlobal() * getPose();
 	} else {
 		m = getPose();
 	}
@@ -104,47 +98,60 @@ physx::PxTransform		Neb::Actor::Base::getPoseGlobal() {
 	return m;
 }
 void		Neb::Actor::Base::setPose(physx::PxTransform pose) {
-	raw_.pose_ = pose;
+	pose_ = pose;
 	
-	set(Neb::Actor::Base::flag::e::SHOULD_UPDATE);
+	flag_.set(Neb::Actor::Util::Flag::E::SHOULD_UPDATE);
 	
 	notify_foundation_change_pose();
 }
 void Neb::Actor::Base::notify_foundation_change_pose() {
 
-	boost::shared_ptr<Neb::Actor::Base> actor;
-	boost::shared_ptr<Neb::Shape::shape> shape;
+	typedef Neb::Util::Parent<Neb::Actor::Base> A;
+	typedef Neb::Util::Parent<Neb::Shape::Base> S;
 	
-	
-	for(auto it = actors_.end(); it != actors_.end(); ++it) {
+	A::map_.for_each([] (A::map_type::const_iterator it) {
 		it->second.ptr_->notify_foundation_change_pose();
-	}
+	});
 
-	for(auto it = shapes_.end(); it != shapes_.end(); ++it) {
+	S::map_.for_each([] (S::map_type::const_iterator it) {
 		it->second.ptr_->notify_foundation_change_pose();
-	}
+	});
+
 }
 void		Neb::Actor::Base::load_lights(int& i, physx::PxMat44 space) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	space = space * physx::PxMat44(raw_.pose_);
-
-	for(auto it = actors_.begin(); it != actors_.end(); ++it) {
+	space = space * physx::PxMat44(pose_);
+	
+	typedef Neb::Util::Parent<Neb::Actor::Base> A;
+	typedef Neb::Util::Parent<Neb::Shape::Base> S;
+	
+	A::map_.for_each([&] (A::map_type::const_iterator it) {
 		it->second.ptr_->load_lights(i, space);
-	}
-
-	for(auto it = shapes_.begin(); it != shapes_.end(); ++it) {
+	});
+	
+	S::map_.for_each([&] (S::map_type::const_iterator it) {
 		it->second.ptr_->load_lights(i, space);
-	}
+	});
+
 }
-void		Neb::Actor::Base::draw(Neb::window::window_s window, physx::PxMat44 space) {
+void		Neb::Actor::Base::draw(Neb::Graphics::Window::Base_s window, physx::PxTransform space) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	space = space * raw_.pose_;
-
-	for(auto it = shapes_.begin(); it != shapes_.end(); ++it) {
+	space = space * pose_;
+	
+	typedef Neb::Util::Parent<Neb::Actor::Base> A;
+	typedef Neb::Util::Parent<Neb::Shape::Base> S;
+	
+	A::map_.for_each([&] (A::map_type::const_iterator it) {
 		it->second.ptr_->draw(window, space);
-	}
+	});
+
+	S::map_.for_each([&] (S::map_type::const_iterator it) {
+		it->second.ptr_->draw(window, space);
+	});
+
+
 }
 /*void Neb::Actor::Base::init(Neb::Actor::desc_w desc) {
   NEBULA_ACTOR_BASE_FUNC;
@@ -160,12 +167,9 @@ void		Neb::Actor::Base::draw(Neb::window::window_s window, physx::PxMat44 space)
   }*/
 void Neb::Actor::Base::release() {
 
-	std::for_each(actors_.map_.cbegin(), actors_.map_.cend(), [] (auto it) {
-		it->second.ptr_->release();
-	} );
-	
-	actors_.map_.clear();
-	
+	Neb::Util::Parent<Neb::Actor::Base>::clear();
+	Neb::Util::Parent<Neb::Shape::Base>::clear();
+
 	//conn_.key_fun_.disconnect();
 }
 /*void Neb::Actor::Base::create_children(Neb::Actor::desc_w desc) {
@@ -260,91 +264,92 @@ actors_.map_.emplace(desc->i_, std::move(actor));
 return actor;
 }*/
 
-Neb::Scene::Base_s		Neb::Actor::Base::get_scene() {
-	NEBULA_ACTOR_BASE_FUNC;
-	auto s = parent_.lock();
-	assert(s);
-	return s->getScene();
-}
 int	Neb::Actor::Base::fire() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	get_scene()->fire(isBase());
+	getScene()->fire(isActorBase());
 
 	return 1;
 }
-void Neb::Actor::Base::step(double dt) {
+void		Neb::Actor::Base::step(double const & time, double const & dt) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	std:for_each(shapes_.map_.cbegin(), shape_.map_.cend(), [] (auto it) {
-		it->second.ptr_->step(dt);
-	} );
+	typedef Neb::Util::Parent<Neb::Actor::Base> A;
+	typedef Neb::Util::Parent<Neb::Shape::Base> S;
 	
+	A::map_.for_each([&] (A::map_type::const_iterator it) {
+		it->second.ptr_->step(time, dt);
+	});
+	
+	S::map_.for_each([&] (S::map_type::const_iterator it) {
+		it->second.ptr_->step(time, dt);
+	});
+
 }
 /*void Neb::Actor::Base::create_shapes(Neb::Actor::desc_w desc) {
-	NEBULA_ACTOR_BASE_FUNC;
+  NEBULA_ACTOR_BASE_FUNC;
 
-	//auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
-	auto me = isBase();
+//auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
+auto me = isBase();
 
-	Neb::Shape::shape_u shape;
+Neb::Shape::shape_u shape;
 
-	for(auto it = desc->shapes_.begin(); it != desc->shapes_.end(); ++it) {
-		Neb::Shape::desc_w sd = *it;
-		assert(sd);
+for(auto it = desc->shapes_.begin(); it != desc->shapes_.end(); ++it) {
+Neb::Shape::desc_w sd = *it;
+assert(sd);
 
-		long int hash_code = sd->raw_wrapper_.ptr_->hash_code_;
+long int hash_code = sd->raw_wrapper_.ptr_->hash_code_;
 
-		shape.reset(Neb::master::global()->factories_.shape_base_->alloc(hash_code, me));
+shape.reset(Neb::master::global()->factories_.shape_base_->alloc(hash_code, me));
 
-		shape->init(sd);
+shape->init(sd);
 
-		shapes_.push_back(shape);
-	}
+shapes_.push_back(shape);
+}
 }*/
 void Neb::Actor::Base::hit() {
 
-	physx::PxU32 w2 = raw_->simulation_.word2;
-
+	physx::PxU32 w2 = simulation_.word2;
+	
 	if(w2 & Neb::Filter::Filter::PROJECTILE) {
-		set(Neb::Actor::Base::flag::e::SHOULD_RELEASE);
+		parent_->release(i_);
+		//set(Neb::Actor::Base::flag::e::SHOULD_RELEASE);
 	}
 
-	if(any(Neb::Actor::Base::flag::e::DESTRUCTIBLE)) {
+	if(flag_.any(Neb::Actor::Util::Flag::E::DESTRUCTIBLE)) {
 		damage(0.1);
 	}
 }
 void Neb::Actor::Base::damage(float h) {
-	raw_->health_ -= h;
-	if(raw_->health_ < 0) {
-		set(Neb::Actor::Base::flag::e::SHOULD_RELEASE);
+	health_ -= h;
+	if(health_ < 0) {
+		parent_->release(i_);
 	}
 }
-void		Neb::Actor::Base::connect(Neb::window::window_w window) {
+void		Neb::Actor::Base::connect(Neb::Graphics::Window::Base_s window) {
 
-	window_ = window;
+	//window_ = window;
 
 	//auto me = std::dynamic_pointer_cast<Neb::Actor::Base>(shared_from_this());
-	auto me = isBase();
+	auto me = isActorBase();
 
-	auto shared = sharedBase();
+	//auto shared = sharedBase();
 
 	//conn_.key_fun_.reset(new Neb::weak_function<int,int,int,int,int>(&Neb::Actor::Base::key_fun));
 
-	auto s_window = window.lock();
-	assert(s_window);
+	assert(window);
 
-	auto c = s_window->sig_.key_fun_.connect(
+	auto c = window->sig_.key_fun_.connect(
 			Neb::Signals::KeyFun::slot_type(
 				&Neb::Actor::Base::key_fun,
-				shared.get(),
+				me.get(),
 				_1,
 				_2,
 				_3,
 				_4
-				).track(shared)
+				).track_foreign(me)
 			);
 
 }
@@ -357,7 +362,7 @@ int Neb::Actor::Base::key_fun(int key, int scancode, int action, int mods) {
 					fire();
 					return 1;
 				case GLFW_KEY_ESCAPE:
-					get_app()->set_should_release();
+					Neb::App::Base::globalBase()->set_should_release();
 					return 1;
 				default:
 					return 0;

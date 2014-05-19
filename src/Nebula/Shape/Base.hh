@@ -58,7 +58,7 @@ namespace Neb {
 
 				void			release();
 				void			cleanup();
-				void			step(double time);
+				void			step(double const & time, double const & dt);
 				void			notify_foundation_change_pose();
 
 				/** @name Rendering @{ */

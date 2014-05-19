@@ -14,7 +14,7 @@ namespace Neb {
 				virtual public Neb::Actor::Local
 			{
 				public:
-					virtual void		step(double);
+					virtual void		step(double const & time, double const & dt);
 			};
 		}
 	}

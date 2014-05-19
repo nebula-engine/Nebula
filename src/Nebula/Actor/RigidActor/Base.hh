@@ -13,7 +13,7 @@ namespace Neb {
 
 					virtual void					init();
 			
-					virtual void					step(double);
+					virtual void					step(double const & time, double const & dt);
 
 
 					virtual void					setupFiltering();
@@ -22,8 +22,6 @@ namespace Neb {
 
 					virtual void					create_physics() = 0;
 					virtual void					init_physics() = 0;
-
-					virtual void					print_info();
 			};
 		}
 	}

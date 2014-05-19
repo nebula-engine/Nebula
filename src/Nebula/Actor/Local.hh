@@ -7,7 +7,7 @@ namespace Neb {
 	namespace Actor {
 		class Local: virtual public Neb::Actor::Base {
 			public:
-				virtual void		stepBaseDerived(double dt);
+				virtual void		stepBaseDerived(double const & time, double const & dt);
 		};
 	}
 }

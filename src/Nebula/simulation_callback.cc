@@ -1,12 +1,14 @@
 
-#include <nebula/physics.hpp>
-#include <nebula/simulation_callback.hpp>
+#include <Nebula/physics.hh>
+#include <Nebula/simulation_callback.hh>
 
-void 	neb::simulation_callback::onConstraintBreak(
+#include <Nebula/Actor/Base.hh>
+
+void 	Neb::simulation_callback::onConstraintBreak(
 		physx::PxConstraintInfo *constraints, physx::PxU32 count) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 }
-void	neb::simulation_callback::onContact(
+void	Neb::simulation_callback::onContact(
 		const physx::PxContactPairHeader & pairHeader,
 		const physx::PxContactPair *pairs,
 		physx::PxU32 nbPairs) {
@@ -21,27 +23,25 @@ void	neb::simulation_callback::onContact(
 	 * doing so keeps the actors alive long enough to return from the call to @c hit
 	 * allows the scene to release the actors safely during the call to @c hit
 	 */
-	neb::Actor::Actor* actor0 = reinterpret_cast<neb::Actor::Actor*>(pxactor0->userData)->isActor();
-	neb::Actor::Actor* actor1 = reinterpret_cast<neb::Actor::Actor*>(pxactor1->userData)->isActor();
+	auto actor0 = reinterpret_cast<Neb::Actor::Base*>(pxactor0->userData)->isActorBase();
+	auto actor1 = reinterpret_cast<Neb::Actor::Base*>(pxactor1->userData)->isActorBase();
 	
-	for(physx::PxU32 i=0; i < nbPairs; i++)
-	{
+	for(physx::PxU32 i=0; i < nbPairs; i++) {
 		const physx::PxContactPair& cp = pairs[i];
 		
-		if(cp.events & physx::PxPairFlag::eNOTIFY_TOUCH_FOUND)
-		{
+		if(cp.events & physx::PxPairFlag::eNOTIFY_TOUCH_FOUND) {
 			actor0->hit();
 			actor1->hit();
 		}
 	}
 }
-void 	neb::simulation_callback::onWake(physx::PxActor **actors, physx::PxU32 count) {
+void 	Neb::simulation_callback::onWake(physx::PxActor **actors, physx::PxU32 count) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 }
-void 	neb::simulation_callback::onSleep(physx::PxActor **actors, physx::PxU32 count) {
+void 	Neb::simulation_callback::onSleep(physx::PxActor **actors, physx::PxU32 count) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 }
-void 	neb::simulation_callback::onTrigger(physx::PxTriggerPair *pairs, physx::PxU32 count)
+void 	Neb::simulation_callback::onTrigger(physx::PxTriggerPair *pairs, physx::PxU32 count)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 }

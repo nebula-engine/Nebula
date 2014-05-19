@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include <Nebula/Graphics/Color/Color.hpp>
+#include <Nebula/Graphics/Color/Color.hh>
 
 namespace Neb {
 	void	draw_quad(float, float, float, float, Neb::Color::color<float>);

@@ -18,7 +18,7 @@ namespace Neb {
 					virtual Neb::Actor::Base_s			get_projectile();
 
 				protected:
-					virtual void					step(double dt);
+					virtual void					step(double const & time, double const & dt);
 
 					virtual void					add_force(double);
 				public:

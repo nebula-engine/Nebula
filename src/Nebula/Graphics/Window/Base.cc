@@ -11,48 +11,38 @@
 //#include <GL/glew.h>
 //#include <GL/glut.h>
 
-#include <Nebula/Scene/Types.hpp>
+#include <Nebula/Scene/Util/Types.hh>
 
-#include <Nebula/free.hpp>
-#include <Nebula/Actor/Base.hpp>
+#include <Nebula/free.hh>
+#include <Nebula/Actor/Base.hh>
 
-#include <Nebula/renderable.hpp>
-#include <Nebula/Graphics/window/desc.hpp>
-#include <Nebula/Graphics/window/window.hpp>
-#include <Nebula/Graphics/light/light.hpp>
+#include <Nebula/Graphics/Context/Base.hh>
+#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/Light/Base.hh>
 
 /** @todo get rid of my unique ptr class. Just use private member and be careful not to pass around shared ptrs to things */
 
-Neb::window::window::window(Neb::window::desc_s desc) {
-	GLUTPP_DEBUG_0_FUNCTION;
-
-	raw_ = desc->raw_;
-
-	printf(GLUTPP_INSTALL_DIR);
-	printf("\n");
-
+Neb::Graphics::Window::Base::Base() {
 }
-Neb::window::window::~window() {
-	GLUTPP_DEBUG_0_FUNCTION;
+Neb::Graphics::Window::Base::Base(Neb::Graphics::Window::Util::Parent_s parent) {
+	//GLUTPP_DEBUG_0_FUNCTION;
+}
+Neb::Graphics::Window::Base::~Base() {
+	//GLUTPP_DEBUG_0_FUNCTION;
 
 	glfwDestroyWindow(window_);
 }
-unsigned int const &	Neb::window::window::f() const {
-	return raw_.flag_;
-}
-void Neb::window::window::f(unsigned int const & flag) {
-	raw_.flag_ = flag;
-}
-void		Neb::window::window::set_scene(Neb::Scene::scene_s & scene) {
+void		Neb::Graphics::Window::Base::set_scene(Neb::Scene::Base_s & scene) {
 
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	assert(scene);
-	assert(renderable_);
 	
-	renderable_->moveScene(std::move(scene));
+	/** @todo make way to set context's scene */
+
+	//renderable_->moveScene(std::move(scene));
 }
-void Neb::window::window::init() {
+void Neb::Graphics::Window::Base::init() {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	//printf("%s\n",glGetString(GL_SHADING_LANGUAGE_VERSION));
@@ -78,28 +68,30 @@ void Neb::window::window::init() {
 	glEnable(GL_NORMALIZE);
 
 
-	renderable_.reset(new Neb::renderable(shared_from_this()));
-	renderable_->init(shared_from_this());
+	//renderable_.reset(new Neb::renderable(shared_from_this()));
+	//renderable_->init(shared_from_this());
 
 	checkerror("unknown");
 }
-void Neb::window::window::render(double time) {
+void Neb::Graphics::Window::Base::render(double time) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	glfwMakeContextCurrent(window_);
-
-	if(renderable_) {
-		renderable_->render(time, shared_from_this());
-	} else {
-		printf("no renderable\n");
-	}
+	
+	/** @todo rendering multiple contexts in a window */
+	
+	typedef Neb::Util::Parent<Neb::Graphics::Context::Base> C;
+	
+	C::map_.for_each([] (C::map_type::const_iterator it) {
+		it->second.ptr_->render(time, shared_from_this());
+	});
 
 	glFinish();
 	glfwSwapBuffers(window_);
 }
-void Neb::window::window::callback_window_refresh_fun(GLFWwindow*) {
+void Neb::Graphics::Window::Base::callback_window_refresh_fun(GLFWwindow*) {
 }
-void Neb::window::window::step(double time) {
+void Neb::Graphics::Window::Base::step(double time) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	if(glfwWindowShouldClose(window_))
@@ -110,7 +102,7 @@ void Neb::window::window::step(double time) {
 
 	render(time);
 }
-void Neb::window::window::callback_window_size_fun(GLFWwindow* window, int w, int h) {
+void Neb::Graphics::Window::Base::callback_window_size_fun(GLFWwindow* window, int w, int h) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	raw_.w_ = w;
@@ -120,7 +112,7 @@ void Neb::window::window::callback_window_size_fun(GLFWwindow* window, int w, in
 
 	callback_window_refresh_fun(window);
 }
-void Neb::window::window::callback_window_pos_fun(GLFWwindow* window, int x, int y) {
+void Neb::Graphics::Window::Base::callback_window_pos_fun(GLFWwindow* window, int x, int y) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	raw_.x_ = x;
@@ -128,28 +120,28 @@ void Neb::window::window::callback_window_pos_fun(GLFWwindow* window, int x, int
 
 	callback_window_refresh_fun(window);
 }
-void Neb::window::window::callback_window_close_fun(GLFWwindow* window){
+void Neb::Graphics::Window::Base::callback_window_close_fun(GLFWwindow* window){
 	GLUTPP_DEBUG_0_FUNCTION;
 
 }
-void Neb::window::window::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods) {
+void Neb::Graphics::Window::Base::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	sig_.mouse_button_fun_(button, action, mods);
 }
-void Neb::window::window::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods) {
+void Neb::Graphics::Window::Base::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	sig_.key_fun_(key, scancode, action, mods);
 	
 }
-void Neb::window::window::resize() {
+void Neb::Graphics::Window::Base::resize() {
 
 	glViewport(0, 0, raw_.w_, raw_.h_);
 
 	renderable_->resize(raw_.w_, raw_.h_);
 }
-void		Neb::window::window::set_layout(Neb::gui::layout_s & layout) {
+void		Neb::Graphics::Window::Base::set_layout(Neb::gui::layout_s & layout) {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 
@@ -161,7 +153,7 @@ void		Neb::window::window::set_layout(Neb::gui::layout_s & layout) {
 	layout->init(renderable_);
 	layout->connect();
 }
-void		Neb::window::window::i(int const & ni) {
+void		Neb::Graphics::Window::Base::i(int const & ni) {
 
 	i_ = ni;
 }

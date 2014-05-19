@@ -11,10 +11,12 @@ namespace Neb {
 					Base();
 					Base(Neb::Actor::Util::Parent_s);
 
-					virtual void		init();
+					virtual void				init();
 
-					virtual void		create_physics();
-					virtual void		init_physics();
+					virtual Neb::Actor::Base_s		get_projective();
+
+					virtual void				create_physics();
+					virtual void				init_physics();
 			};
 		}
 	}

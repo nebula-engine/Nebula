@@ -22,7 +22,7 @@ namespace Neb {
 
 						virtual int			key_fun(int,int,int,int);
 
-						virtual void			step(double dt) = 0;
+						virtual void			step(double const & time, double const & dt) = 0;
 						virtual physx::PxVec3		f() = 0;
 						virtual physx::PxVec3		t() = 0;
 

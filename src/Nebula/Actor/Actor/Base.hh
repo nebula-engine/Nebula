@@ -26,7 +26,7 @@ namespace Neb {
 					virtual void			create_physics() {abort();}
 					virtual void			init_physics() {abort();}
 
-					virtual void			step(double dt);
+					virtual void			step(double const & time, double const & dt);
 
 					physx::PxActor*			px_actor_;
 

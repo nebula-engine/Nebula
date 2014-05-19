@@ -26,6 +26,7 @@
 #include <Nebula/Shape/Util/Parent.hh>
 
 #include <Nebula/Actor/Util/Types.hh>
+#include <Nebula/Actor/Util/Flag.hh>
 #include <Nebula/Actor/Util/Address.hh>
 #include <Nebula/Actor/Util/Parent.hh>
 
@@ -37,7 +38,6 @@
 #include <Nebula/Shape/Base.hh>
 #include <Nebula/Shape/Util/Parent.hh>
 
-
 namespace Neb {
 	namespace Actor {
 		/** @brief %Base */
@@ -48,13 +48,7 @@ namespace Neb {
 			virtual public Neb::Util::Typed
 		{
 			public:
-				struct flag {
-					enum e {
-						SHOULD_RELEASE	= 1 << 0,
-						SHOULD_UPDATE	= 1 << 1,
-						DESTRUCTIBLE    = 1 << 2,
-					};
-				};
+			
 
 				Base();
 				Base(Neb::Actor::Util::Parent_s);
@@ -63,6 +57,7 @@ namespace Neb {
 				virtual void				init();
 				virtual void				releaseDerived();
 				virtual void				cleanup();
+				virtual void				release();
 
 				void					i(int ni);
 				int					i() const;
@@ -97,7 +92,7 @@ namespace Neb {
 				virtual void						init_physics() = 0;
 
 				/** @name Stepping @{ */
-				virtual void					step(double dt);
+				virtual void					step(double const & time, double const & dt);
 
 
 				//virtual void					step_local(double);
@@ -130,7 +125,7 @@ namespace Neb {
 
 
 				// signal
-				void				connect(Neb::Graphics::Window::Base_w);
+				void				connect(Neb::Graphics::Window::Base_s);
 
 
 				int				key_fun(int,int,int,int);
@@ -205,7 +200,7 @@ namespace Neb {
 
 
 				Neb::Actor::mode_create::e		mode_create_;
-				unsigned int				flag_;
+				Neb::Actor::Util::Flag			flag_;
 				std::string				name_;
 				physx::PxTransform			pose_;
 				/** @brief Normal for planes. */

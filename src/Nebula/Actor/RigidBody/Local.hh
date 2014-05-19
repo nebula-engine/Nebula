@@ -14,7 +14,9 @@ namespace Neb {
 				virtual public Neb::Actor::RigidActor::Local
 			{
 				public:
-					virtual void		step(double dt);
+					virtual void		step(double const & time, double const & dt);
+
+					virtual Neb::Actor::Base_s		get_projective();
 			};
 		}
 	}

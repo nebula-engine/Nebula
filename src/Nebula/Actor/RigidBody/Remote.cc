@@ -4,7 +4,11 @@
 
 #include <Nebula/Message/Actor/Control.hh>
 
-void		Neb::Actor::RigidBody::Remote::stepRigidBodyDerived(double time) {
+void		Neb::Actor::RigidBody::Remote::step(double const & time, double const & dt) {
+
+	Neb::Actor::RigidBody::Base::step(time, dt);
+	Neb::Actor::RigidActor::Remote::step(time, dt);
+
 
 	auto app = Neb::App::Base::globalBase();
 	

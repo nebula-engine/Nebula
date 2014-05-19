@@ -21,16 +21,17 @@ namespace Neb {
 			typedef std::weak_ptr< Neb::Factory<T> >			factory_weak;
 			
 			typedef std::map<__index_type,mapped_type>			__map_type;
-			typedef typename __map_type::iterator				__iter;			
-			typedef typename __map_type::const_iterator			__citer;			
 
 
 			typedef typename __map_type::iterator			iterator;
+			typedef typename __map_type::const_iterator		const_iterator;
+
 			typedef typename __map_type::value_type			value_type_const;
 			typedef std::pair<__index_type,mapped_type>		value_type;
 			
 			/** @brief Constructor */
-			Map(factory_weak factory): factory_(factory), next_(0) {}
+			Map() {}
+			Map(factory_weak factory): factory_(factory) {}
 			/*void		add(value_type& p) {
 			  p.first = next_++;
 			  map_.insert(p);
@@ -42,13 +43,16 @@ namespace Neb {
 			void				push_back(shared_type& u) {
 				assert(u);
 				
-				u->i(next_);
+				mapped_type m(u);
 				
-				mapped_type m(factory_, u);
-
-				map_.emplace(next_, m);
-
-				next_++;
+				map_.emplace(u->i_, m);
+			}
+			void				for_each(std::function<void(const_iterator)> const & f) {
+				// lock mutex
+				
+				for(auto it = map_.cbegin(); it != map_.cend(); ++it) {
+					f(it);
+				}
 			}
 			/** */
 			iterator			find(__index_type i) {
@@ -72,9 +76,8 @@ namespace Neb {
 				it = map_.erase(it);
 				return it;
 			}
-			//private:
+		private:
 			factory_weak			factory_;
-			__index_type			next_;
 			__map_type			map_;
 
 	};	

@@ -32,7 +32,7 @@ namespace Neb {
 				public:
 					Base();
 					Base(Neb::Graphics::Window::Util::Parent_s parent);
-					virtual ~Base() {}
+					virtual ~Base();
 				
 				public:
 					struct flag {

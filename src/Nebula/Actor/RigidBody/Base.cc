@@ -80,44 +80,23 @@ Neb::Actor::Base_s	Neb::Actor::RigidBody::Base::get_projectile() {
 
 	// modify description	
 
-	physx::PxVec3 offset = desc->raw_wrapper_.ptr_->pose_.p;
+	physx::PxVec3 offset = pose_.p;
 
 	// pose
-	physx::PxTransform pose(raw_->pose_);	
+	physx::PxTransform pose(pose_);	
 	offset = pose.q.rotate(offset);
 	pose.p += offset;
-	desc->raw_wrapper_.ptr_->pose_ = pose;
+	pose_ = pose;
 	
 	// velocity
-	physx::PxVec3 velocity = desc->raw_wrapper_.ptr_->velocity_;
+	physx::PxVec3 velocity = velocity_;
 	velocity = pose.q.rotate(velocity);
-	velocity += raw_->velocity_;
-	desc->raw_wrapper_.ptr_->velocity_ = velocity;
-
-
-	return desc;
+	velocity += velocity_;
+	velocity_ = velocity;
+	
+	return actor;
 }
-void Neb::Actor::RigidBody::Base::print_info() {
-	//NEBULA_ACTOR_BASE_FUNC;	
-
-	Neb::Actor::RigidActor::print_info();
-
-//	auto pxrb = px_actor_->isRigidBody();
-
-	//math::transform pose		= pxrb->getCMassLocalPose();
-/*	float mass			= pxrb->getMass();
-	physx::PxVec3 inertia		= pxrb->getMassSpaceInertiaTensor();
-	physx::PxVec3 linear_velocity	= pxrb->getLinearVelocity();
-	physx::PxVec3 angular_velocity	= pxrb->getAngularVelocity();
-	*/
-	/*
-	   printf("mass             = %f\n", mass);
-	   printf("interia          = "); inertia.print();
-	   printf("linear velocity  = "); linear_velocity.print();
-	   printf("angular velocity = "); angular_velocity.print();
-	   */
-}
-void Neb::Actor::RigidBody::Base::create_control(Neb::Actor::Control::RigidBody::Raw_s raw) {
+/*void Neb::Actor::RigidBody::Base::create_control() {
 
 	auto me = isRigidBody();
 
@@ -146,21 +125,15 @@ void Neb::Actor::RigidBody::Base::create_control(Neb::Actor::Control::RigidBody:
 					).track(s)
 				);
 
-
-
 		// camera control
 		//std::shared_ptr<Neb::Camera::View::ridealong> cam();
 		
 		Neb::Camera::View::Ridealong_s view(new Neb::Camera::View::Ridealong(isBase()));
 		
-		wnd->renderable_->moveView(std::move(view));
-		
+		wnd->renderable_->moveView(std::move(view));	
 	}
-
-}
-void		Neb::Actor::RigidBody::Base::stepRigidActor(double time) {
-	stepRigidBody(time);
-	stepRigidBodyDerived(time);
+}*/
+void		Neb::Actor::RigidBody::Base::step(double const & time, double const & dt) {
 }
 
 

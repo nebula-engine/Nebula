@@ -12,7 +12,7 @@ namespace Neb {
 				virtual public Neb::Actor::Actor::Remote
 			{
 				public:
-					virtual void		stepRigidActorDerived(double) final;
+					virtual void		step(double const & time, double const & dt);
 			};
 		}
 	}

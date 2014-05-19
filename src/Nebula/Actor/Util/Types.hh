@@ -35,26 +35,69 @@ namespace Neb {
 
 		namespace RigidActor {
 			class Base;
+			class Local;
+			class Remote;
 
-			typedef std::shared_ptr<Base>		Base_s;
-			typedef std::weak_ptr<Base>		Base_w;
-			typedef std::unique_ptr<Base>		Base_u;
+			typedef std::shared_ptr<Base>	Base_s;
+			typedef std::weak_ptr<Base>	Base_w;
+
+			typedef std::shared_ptr<Local>	Local_s;
+			typedef std::weak_ptr<Local>	Local_w;
+
+			typedef std::shared_ptr<Remote>	Remote_s;
+			typedef std::weak_ptr<Remote>	Remote_w;
 
 		}
 
 		/** @brief %RigidBody */
 		namespace RigidBody {
 			class Base;
+			class Local;
+			class Remote;
 
 			typedef std::shared_ptr<Base>	Base_s;
-			typedef std::unique_ptr<Base>	Base_u;
 			typedef std::weak_ptr<Base>	Base_w;
+
+			typedef std::shared_ptr<Local>	Local_s;
+			typedef std::weak_ptr<Local>	Local_w;
+
+			typedef std::shared_ptr<Remote>	Remote_s;
+			typedef std::weak_ptr<Remote>	Remote_w;
 		}
 
-		class Rigid_Dynamic;
-		class Rigid_Static;
-		class empty;
+		/** @brief %RigidDynamic */
+		namespace RigidDynamic {
+			class Base;
+			class Local;
+			class Remote;
 
+			typedef std::shared_ptr<Base>	Base_s;
+			typedef std::weak_ptr<Base>	Base_w;
+
+			typedef std::shared_ptr<Local>	Local_s;
+			typedef std::weak_ptr<Local>	Local_w;
+
+			typedef std::shared_ptr<Remote>	Remote_s;
+			typedef std::weak_ptr<Remote>	Remote_w;
+		}
+
+		/** @brief %RigidStatic */
+		namespace RigidStatic {
+			class Base;
+			class Local;
+			class Remote;
+
+			typedef std::shared_ptr<Base>	Base_s;
+			typedef std::weak_ptr<Base>	Base_w;
+
+			typedef std::shared_ptr<Local>	Local_s;
+			typedef std::weak_ptr<Local>	Local_w;
+
+			typedef std::shared_ptr<Remote>	Remote_s;
+			typedef std::weak_ptr<Remote>	Remote_w;
+		}
+
+		class empty;
 
 
 		typedef std::shared_ptr<Base>		Base_s;
@@ -92,10 +135,10 @@ namespace Neb {
 
 				//class Raw;
 				//typedef boost::shared_ptr<raw>		Raw_s;
-				
+
 				class Base;
 				class Manual;
-				
+
 				typedef std::shared_ptr<Base>		Base_s;
 				typedef std::weak_ptr<Base>		Base_w;
 
