@@ -29,8 +29,17 @@ namespace Neb {
 					if(it == actors_.end()) return __shared_type;
 					return it->second.ptr_;
 				}
-				__shared_type				get(__address_type a) {
+				__shared_type				get(Neb::Util::Address_ a) {
+	
+				}
+					if(a.vec_.empty()) return __shared_type;
 					
+					std::shared_ptr<Neb::Util::IndexBase> = a.vec_.front();
+					
+					a.vec_.pop_front();
+					
+					auto i = std::dynamic_ pointer_cast<Neb::Util::Index<T> >(ib);
+					sNeb::Util::Parent
 				}
 
 				void					releaseActor(__index_type i);
