@@ -20,26 +20,12 @@ namespace Neb {
 				void					insert(__shared_type s, int i);
 
 				__shared_type				get(Neb::Util::index_type i) {
-					auto it = map_.find(i);
-
-					if(it == map_.end()) return __shared_type();
-
-					return it->second.ptr_;
+					return map_.find(i);
 				}
 				void					release(Neb::Util::index_type i) {
-					auto it = map_.find(i);
-
-					assert(it != map_.end());
-
-					it->second.ptr_->release();
-
-					map_.erase(it);
+					map_.release(i);
 				}
 				void					clear() {
-					map_.for_each([] (typename std::map<int, __wrapper_type>::const_iterator it) {
-							it->second.ptr_->release();
-							});
-
 					map_.clear();
 				}
 
