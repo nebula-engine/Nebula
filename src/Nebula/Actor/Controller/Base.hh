@@ -10,6 +10,10 @@ namespace Neb {
 		class Controller: public Neb::Actor::Base {
 			public:
 				Controller(Neb::Actor::Util::Parent_s);
+
+				template<class D, typename... Args> inline void	dispatch(Args... a) {
+					D::visit(this, a...);
+				}				
 				
 				virtual void		release();
 
