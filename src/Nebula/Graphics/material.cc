@@ -2,9 +2,10 @@
 
 //#include <math/xml.hpp>
 
-#include <Nebula/Graphics/material.hpp>
-#include <Nebula/Graphics/window/window.hpp>
-#include <Nebula/Scene/scene.hpp>
+#include <Nebula/App/Base.hh>
+#include <Nebula/Graphics/material.hh>
+#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Scene/Base.hh>
 
 /*
 gru::Color::color<float> operator<<(gru::Color::color<float> c, tinyxml2::XMLElement* element) {
@@ -66,7 +67,7 @@ void	Neb::material::material::init()
 
 void	Neb::material::material::load()
 {
-	auto p = Neb::master::global()->current_program();
+	auto p = Neb::App::Base::globalBase()->current_program();
 
 	p->get_uniform_scalar("front.ambient")->load(raw_.ambient_);
 	p->get_uniform_scalar("front.diffuse")->load(raw_.diffuse_);

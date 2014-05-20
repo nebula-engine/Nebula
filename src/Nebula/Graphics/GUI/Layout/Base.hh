@@ -9,6 +9,8 @@
 #include <Nebula/Graphics/GUI/Object/object.hh>
 #include <Nebula/Graphics/GUI/Object/object_factory.hh>
 #include <Nebula/Graphics/GUI/Layout/Util/Parent.hh>
+#include <Nebula/Graphics/GUI/Object/Util/Parent.hh>
+
 
 #include <Nebula/Graphics/Window/Base.hh>
 
@@ -17,8 +19,9 @@ namespace Neb {
 		namespace GUI {
 			namespace Layout {
 			/** @brief %Base */
-				class Base {
+				class Base: virtual public Neb::Graphics::GUI::Object::Util::Parent {
 					public:
+						Base();
 						Base(Neb::Graphics::GUI::Layout::Util::Parent_s parent);
 
 						virtual void				init();
@@ -39,7 +42,6 @@ namespace Neb {
 					public:
 						physx::PxMat44					ortho_;
 
-						Neb::Map<Neb::gui::object::object>		objects_;
 
 						Neb::Graphics::GUI::Layout::Util::Parent_w		parent_;
 						// connections

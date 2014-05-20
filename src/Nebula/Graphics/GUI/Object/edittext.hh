@@ -1,7 +1,7 @@
 #ifndef __NEBULA_UI_OBJECT_EDITTEXT_H__
 #define __NEBULA_UI_OBJECT_EDITTEXT_H__
 
-#include <Nebula/Graphics/gui/object/textview.hpp>
+#include <Nebula/Graphics/GUI/Object/textview.hh>
 
 namespace Neb {
 	namespace gui {

@@ -6,34 +6,24 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <Nebula/Types.hpp>
-#include <Nebula/Graphics/window/window.hpp>
-#include <Nebula/renderable.hpp>
-#include <Nebula/Graphics/gui/object/object_factory.hpp>
-#include <Nebula/Graphics/gui/object/object.hpp>
-#include <Nebula/Graphics/gui/object/edittext.hpp>
+#include <Nebula/Types.hh>
+#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/Context/Base.hh>
+#include <Nebula/Graphics/GUI/Object/object.hh>
+#include <Nebula/Graphics/GUI/Object/edittext.hh>
 
-#include <Nebula/Graphics/gui/layout.hpp>
-
+#include <Nebula/Graphics/GUI/Layout/Base.hh>
 
 
-
-Neb::gui::layout::layout()
-{
-
+Neb::Graphics::GUI::Layout::Base::Base() {
 }
-void Neb::gui::layout::init(Neb::renderable_w renderable)
-{
+Neb::Graphics::GUI::Layout::Base::Base(Neb::Graphics::GUI::Layout::Util::Parent_s parent): parent_(parent) {
+}
+void Neb::Graphics::GUI::Layout::Base::init() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
-	assert(renderable);
-	renderable_ = renderable;
-}
-Neb::window::window_w Neb::gui::layout::get_window() {
-	auto s = renderable_.lock();
-	return s->getWindow();
 }
 /*
-void Neb::gui::layout::load_xml(tinyxml2::XMLElement* element)
+void Neb::Graphics::GUI::Layout::Base::load_xml(tinyxml2::XMLElement* element)
 {
 	assert(element);
 	tinyxml2::XMLElement* e = element->FirstChildElement("object");
@@ -43,7 +33,7 @@ void Neb::gui::layout::load_xml(tinyxml2::XMLElement* element)
 	}
 }*/
 /*
-void Neb::gui::layout::create_object(tinyxml2::XMLElement* element) {
+void Neb::Graphics::GUI::Layout::Base::create_object(tinyxml2::XMLElement* element) {
 
 	assert(element);
 
@@ -51,7 +41,7 @@ void Neb::gui::layout::create_object(tinyxml2::XMLElement* element) {
 
 	objects_.push_back(object);
 }*/
-void Neb::gui::layout::render(double time) {
+void Neb::Graphics::GUI::Layout::Base::render(double time) {
 	//auto p = Neb::master::Global()->use_program(Neb::program_name::e::TEXT);
 
 	//Restore other states
@@ -68,23 +58,26 @@ void Neb::gui::layout::render(double time) {
 
 	draw();
 }
-void Neb::gui::layout::draw() {
+void Neb::Graphics::GUI::Layout::Base::draw() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	//jess::clog << "objects_.size()=" << objects_.map_.size() << std::endl;
-
-	for(auto it = objects_.map_.begin(); it != objects_.map_.end(); ++it) {
+	
+	typedef Neb::Util::Parent<Neb::Graphics::GUI::Object::Base> O;
+	
+	O::map_.for_each([] (C::map_type::const_iterator it) {
 		it->second->draw();
-	}
+	});
+
 }
-void Neb::gui::layout::connect() {
+void Neb::Graphics::GUI::Layout::Base::connect() {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	Neb::window::window_s w = get_window().lock();
+	Neb::Graphics::Window::Base_s s = get_window().lock();
 	
 	assert(w);
 
 	conns_.key_fun_ = w->sig_.key_fun_.connect(
-			std::bind(&Neb::gui::layout::key_fun,
+			std::bind(&Neb::Graphics::GUI::Layout::Base::key_fun,
 				this,
 				std::placeholders::_1,
 				std::placeholders::_2,
@@ -93,7 +86,7 @@ void Neb::gui::layout::connect() {
 				));
 
 	conns_.mouse_button_fun_ = w->sig_.mouse_button_fun_.connect(
-			std::bind(&Neb::gui::layout::mouse_button_fun,
+			std::bind(&Neb::Graphics::GUI::Layout::Base::mouse_button_fun,
 				this,
 				std::placeholders::_1,
 				std::placeholders::_2,
@@ -101,10 +94,10 @@ void Neb::gui::layout::connect() {
 				));
 
 }
-int Neb::gui::layout::key_fun(int key, int scancode, int action, int mode) {
+int Neb::Graphics::GUI::Layout::Base::key_fun(int key, int scancode, int action, int mode) {
 	return 0;
 }
-int Neb::gui::layout::mouse_button_fun(int button, int action, int mods) {
+int Neb::Graphics::GUI::Layout::Base::mouse_button_fun(int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	switch(action)
@@ -123,7 +116,7 @@ int Neb::gui::layout::mouse_button_fun(int button, int action, int mods) {
 	
 	return 0;
 }
-int Neb::gui::layout::search(int button, int action, int mods) {
+int Neb::Graphics::GUI::Layout::Base::search(int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	auto s_window = get_window().lock();

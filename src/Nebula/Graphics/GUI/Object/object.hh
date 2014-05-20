@@ -5,14 +5,31 @@
 
 #include <boost/signals2.hpp>
 
+#include <Nebula/Util/Shared.hh>
 #include <Nebula/Graphics/Color/Color.hh>
 
 namespace Neb {
-	namespace gui {
-		namespace object {
-			class Data {
+	namespace GUI {
+		namespace Object {
+			class Base: virtual public Neb::Util::Shared {
 				public:
-					Data();
+
+					Base();
+			
+					void				init();
+
+					//window::window_s		get_window();
+					virtual void			draw() = 0;
+
+					virtual int			key_fun(int,int,int,int) = 0;
+					virtual int			mouse_button_fun(int,int,int);
+					//virtual void			connect();
+
+
+
+
+					bool				active_;
+
 
 					template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 						ar & boost::serialization::make_nvp("x",x_);
@@ -34,34 +51,6 @@ namespace Neb {
 					Neb::Color::color<float>	bg_color_;
 
 					std::string			label_;
-
-			};
-			class object {
-				public:
-
-					object();
-					void				i(int);
-			
-					void				init(boost::shared_ptr<Neb::gui::object::Data>);
-
-					//window::window_s		get_window();
-					virtual void			draw() = 0;
-
-					virtual int			key_fun(int,int,int,int) = 0;
-					virtual int			mouse_button_fun(int,int,int);
-					//virtual void			connect();
-
-
-
-					int				i_;
-
-
-
-					bool				active_;
-
-
-					Data				data_;
-
 					// connections
 					struct
 					{

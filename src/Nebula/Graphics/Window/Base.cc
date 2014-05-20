@@ -17,8 +17,9 @@
 #include <Nebula/Actor/Base.hh>
 
 #include <Nebula/Graphics/Context/Base.hh>
-#include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Graphics/Light/Base.hh>
+#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/Window/Util/Parent.hh>
 
 /** @todo get rid of my unique ptr class. Just use private member and be careful not to pass around shared ptrs to things */
 
@@ -31,16 +32,6 @@ Neb::Graphics::Window::Base::~Base() {
 	//GLUTPP_DEBUG_0_FUNCTION;
 
 	glfwDestroyWindow(window_);
-}
-void		Neb::Graphics::Window::Base::set_scene(Neb::Scene::Base_s & scene) {
-
-	GLUTPP_DEBUG_0_FUNCTION;
-
-	assert(scene);
-	
-	/** @todo make way to set context's scene */
-
-	//renderable_->moveScene(std::move(scene));
 }
 void Neb::Graphics::Window::Base::init() {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -79,11 +70,11 @@ void Neb::Graphics::Window::Base::render(double time) {
 	glfwMakeContextCurrent(window_);
 	
 	/** @todo rendering multiple contexts in a window */
-	
+
 	typedef Neb::Util::Parent<Neb::Graphics::Context::Base> C;
-	
-	C::map_.for_each([] (C::map_type::const_iterator it) {
-		it->second.ptr_->render(time, shared_from_this());
+
+	C::map_.for_each([&] (C::map_type::const_iterator it) {
+		it->second.ptr_->render(time, isWindowBase());
 	});
 
 	glFinish();
@@ -94,19 +85,18 @@ void Neb::Graphics::Window::Base::callback_window_refresh_fun(GLFWwindow*) {
 void Neb::Graphics::Window::Base::step(double time) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
-	if(glfwWindowShouldClose(window_))
-	{
-		set(flag::e::SHOULD_RELEASE);
+	if(glfwWindowShouldClose(window_)) {
+		parent_->release(i_);
 		return;
 	}
-
+	
 	render(time);
 }
 void Neb::Graphics::Window::Base::callback_window_size_fun(GLFWwindow* window, int w, int h) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
-	raw_.w_ = w;
-	raw_.h_ = h;
+	w_ = w;
+	h_ = h;
 
 	resize();
 
@@ -115,8 +105,8 @@ void Neb::Graphics::Window::Base::callback_window_size_fun(GLFWwindow* window, i
 void Neb::Graphics::Window::Base::callback_window_pos_fun(GLFWwindow* window, int x, int y) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
-	raw_.x_ = x;
-	raw_.y_ = y;
+	x_ = x;
+	y_ = y;
 
 	callback_window_refresh_fun(window);
 }
@@ -137,27 +127,15 @@ void Neb::Graphics::Window::Base::callback_key_fun(GLFWwindow* window, int key, 
 }
 void Neb::Graphics::Window::Base::resize() {
 
-	glViewport(0, 0, raw_.w_, raw_.h_);
-
-	renderable_->resize(raw_.w_, raw_.h_);
-}
-void		Neb::Graphics::Window::Base::set_layout(Neb::gui::layout_s & layout) {
-
-	printf("%s\n", __PRETTY_FUNCTION__);
-
-	assert(layout);
-	assert(renderable_);
+	glViewport(0, 0, w_, h_);
 	
-	renderable_->moveLayout(std::move(layout));
+	typedef Neb::Util::Parent<Neb::Graphics::Context::Base> C;
+
+	C::map_.for_each([&] (C::map_type::const_iterator it) {
+		it->second.ptr_->resize(w_, h_);
+	});
 	
-	layout->init(renderable_);
-	layout->connect();
 }
-void		Neb::Graphics::Window::Base::i(int const & ni) {
-
-	i_ = ni;
-}
-
 
 
 

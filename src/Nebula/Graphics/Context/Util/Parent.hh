@@ -7,9 +7,8 @@ namespace Neb {
 	namespace Graphics {
 		namespace Context {
 			namespace Util {
-				class Parent {
+				class Parent: virtual public Neb::Util::Parent<Neb::Graphics::Context::Base> {
 					public:
-						Neb::Map<Neb::Graphics::Context::Base>          contexts_;
 				};
 			}
 		}

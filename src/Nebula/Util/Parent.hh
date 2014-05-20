@@ -3,6 +3,7 @@
 
 #include <Nebula/Types.hh>
 #include <Nebula/Util/Map.hh>
+#include <Nebula/Util/Shared.hh>
 #include <Nebula/Util/WrapperTyped.hh>
 
 namespace Neb {

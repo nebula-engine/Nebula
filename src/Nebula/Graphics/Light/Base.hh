@@ -11,6 +11,7 @@
 
 #include <Nebula/config.hh>
 #include <Nebula/Types.hh>
+#include <Nebula/Util/Shared.hh>
 
 #include <Nebula/Math/Serialization.hh>
 
@@ -18,12 +19,14 @@
 #include <Nebula/Graphics/Light/Util/Types.hh>
 
 #include <Nebula/Graphics/texture.hh>
+#include <Nebula/Graphics/Color/Color.hh>
+
 
 //#include <math/color.hpp>
 
 namespace Neb {
 	namespace Light {
-		class Base { //: public gal::flag {
+		class Base: virtual public Neb::Util::Shared { //: public gal::flag {
 			public:
 				Base();
 				Base(Neb::Light::Util::Parent_s);
@@ -71,8 +74,9 @@ namespace Neb {
 				}
 				virtual void		loadLightBase(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) = 0;
 				virtual void		saveLightBase(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) = 0;
+			public:
+				Neb::Light::Util::Parent_s	parent_;
 
-				int	i_;
 				Neb::Light::Util::Flag		flag_;
 				
 				// position
@@ -94,9 +98,7 @@ namespace Neb {
 
 				texture				texture_shadow_map_;
 
-				//Neb::scene::scene_w		scene_;
-				Neb::Light::Util::Parent_w		parent_;
-
+				
 		};
 		class Point: public Neb::Light::Base {
 			public:

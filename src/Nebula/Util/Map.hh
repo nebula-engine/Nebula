@@ -6,7 +6,7 @@
 #include <functional>
 #include <stdio.h>
 
-#include <boost/mutex.hpp>
+#include <boost/thread.hpp>
 
 #include <boost/serialization/map.hpp>
 
@@ -26,8 +26,8 @@ namespace Neb {
 			typedef typename map_type::iterator				iterator;
 			typedef typename map_type::const_iterator			const_iterator;
 
-			typedef typename __map_type::value_type				value_type_const;
-			typedef std::pair<Neb::Utilindex_type, mapped_type>		value_type;
+			typedef typename map_type::value_type				value_type_const;
+			typedef std::pair<Neb::Util::index_type, mapped_type>		value_type;
 			
 			/** @brief Constructor */
 			Map() {}
@@ -38,12 +38,12 @@ namespace Neb {
 			  }*/
 			/** */
 			template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
-				boost::lock_guard(mutex_);
+				boost::lock_guard<boost::mutex>(mutex_);
 				
 				ar & boost::serialization::make_nvp("map",map_);
 			}
 			void				push_back(shared_type& u) {
-				boost::lock_guard(mutex_);
+				boost::lock_guard<boost::mutex> lk(mutex_);
 				
 				assert(u);
 				
@@ -52,7 +52,7 @@ namespace Neb {
 				map_.emplace(u->i_, m);
 			}
 			void				for_each(std::function<void(const_iterator)> const & f) {
-				boost::lock_guard(mutex_);
+				boost::lock_guard<boost::mutex> lk(mutex_);
 
 				for(auto it = map_.cbegin(); it != map_.cend(); ++it) {
 					f(it);
@@ -60,14 +60,14 @@ namespace Neb {
 			}
 			/** */
 			shared_type			find(Neb::Util::index_type i) {
-				boost::lock_guard(mutex_);
+				boost::lock_guard<boost::mutex>(mutex_);
 				
 				auto it = map_.find(i);
 				return it->second.ptr_;
 			}
 			/** */
 			void				clear() {
-				boost::lock_guard(mutex_);
+				boost::lock_guard<boost::mutex> lk(mutex_);
 				
 				for(auto it = map_.cbegin(); it != map_.cend(); ++it) {
 					it->second.ptr_->release();
@@ -77,7 +77,7 @@ namespace Neb {
 			}
 			/** */
 			void				release(Neb::Util::index_type i) {
-				boost::lock_guard(mutex_);
+				boost::lock_guard<boost::mutex> lk(mutex_);
 				
 				auto it = map_.find(i);
 				
