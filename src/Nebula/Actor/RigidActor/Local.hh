@@ -13,6 +13,13 @@ namespace Neb {
 			{
 				public:
 					virtual void				step(double const & time, double const & dt);
+
+					template<class D, typename... Args> inline void		dispatch(Args... a) {
+						Neb::Actor::Actor::Local::dispatch<D>(a...);
+						Neb::Actor::RigidActor::Base::dispatch<D>(a...);
+						D::visit(this, a...);
+					}
+
 					virtual Neb::Actor::Base_s		get_projective();
 			};
 		}
