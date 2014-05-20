@@ -12,7 +12,11 @@ namespace Neb {
 				public:
 					Base();
 					Base(Neb::Actor::Util::Parent_s);
-
+					
+					template<class D, typename... Args> inline void	dispatch(Args... a) {
+						D::visit(this, a...);
+					}
+					
 					virtual void			init(/*Neb::weak_ptr<Neb::Actor::desc>*/);
 
 					virtual void			release();
