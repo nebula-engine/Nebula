@@ -8,6 +8,11 @@ namespace Neb {
 		class Local: virtual public Neb::Actor::Base {
 			public:
 				virtual void		stepBaseDerived(double const & time, double const & dt);
+
+				template<class D, typename... Args> inline void		dispatch(Args... a) {
+					Neb::Actor::Base::dispatch<D>(a...);
+					D::visit(this, a...);
+				}
 		};
 	}
 }
