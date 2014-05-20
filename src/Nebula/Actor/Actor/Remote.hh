@@ -14,6 +14,12 @@ namespace Neb {
 				virtual public Neb::Actor::Remote
 			{
 				public:
+					template<class D, typename... Args> inline void		dispatch(Args... a) {
+						Neb::Actor::Remote::dispatch<D>(a...);
+						Neb::Actor::Actor::Base::dispatch<D>(a...);
+						D::visit(this, a...);
+					}
+
 					virtual void		step(double dt);
 			};
 		}
