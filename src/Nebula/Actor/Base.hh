@@ -54,6 +54,10 @@ namespace Neb {
 				Base(Neb::Actor::Util::Parent_s);
 				virtual ~Base();
 
+				template<class D, typename... Args> inline void		dispatch(Args... a) {
+					D::visit(this, a...);
+				}
+
 				virtual void				init();
 				virtual void				releaseDerived();
 				virtual void				cleanup();
