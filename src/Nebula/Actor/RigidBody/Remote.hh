@@ -12,6 +12,12 @@ namespace Neb {
 				virtual public Neb::Actor::RigidActor::Remote
 			{
 				public:
+					template<class D, typename... Args> inline void		dispatch(Args... a) {
+						Neb::Actor::RigidActor::Remote::dispatch<D>(a...);
+						Neb::Actor::RigidBody::Base::dispatch<D>(a...);
+						D::visit(this, a...);
+					}
+
 					virtual void		step(double const & time, double const & dt);
 				
 			};
