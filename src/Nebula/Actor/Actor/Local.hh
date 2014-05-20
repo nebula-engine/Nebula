@@ -14,6 +14,12 @@ namespace Neb {
 				virtual public Neb::Actor::Local
 			{
 				public:
+					template<class D, typename... Args> inline void		dispatch(Args... a) {
+						Neb::Actor::Local::dispatch<D>(a...);
+						Neb::Actor::Actor::Base::dispatch<D>(a...);
+						D::visit(this, a...);
+					}
+
 					virtual void		step(double const & time, double const & dt);
 			};
 		}
