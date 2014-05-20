@@ -8,12 +8,18 @@ namespace Neb {
 	namespace Actor {
 		namespace RigidDynamic {
 			class Local:
-				virtual public Neb::Actor::RigidDynamic::Base,
-				virtual public Neb::Actor::RigidBody::Local
+				virtual public Neb::Actor::RigidBody::Local,
+				virtual public Neb::Actor::RigidDynamic::Base
 			{
 				public:
 					Local();
 					Local(Neb::Actor::Util::Parent_s);
+
+					template<class D, typename... Args> inline void		dispatch(Args... a) {
+						Neb::Actor::RigidBody::Local::dispatch<D>(a...);
+						Neb::Actor::RigidDynamic::Base::dispatch<D>(a...);
+						D::visit(this, a...);
+					}
 
 					virtual void				init();
 
