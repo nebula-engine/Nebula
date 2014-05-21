@@ -1,13 +1,12 @@
-#include <Neb/Scene/Local.hh>
+#include <Nebula/App/Base.hh>
+#include <Nebula/Scene/Base.hh>
+#include <Nebula/Actor/Base.hh>
+#include <Nebula/Actor/RigidBody/Base.hh>
 
 
-void            Neb::Scene::Local::stepDeriv(double time) {
+void            Neb::Scene::Local::step(double const & time, double const & dt) {
 	
-	
-	auto app = get_app();
-	
-	double dt = time - last_;
-	last_ = time;
+	auto app = Neb::App::Base::globalBase();
 	
 	// timer
 	//timer_set_.step(time);
@@ -43,28 +42,28 @@ void            Neb::Scene::Local::stepDeriv(double time) {
 		void* ud = active_transforms[i].userData;
 		assert(ud);
 
-		glutpp::actor::actor* gl_actor = static_cast<glutpp::actor::actor*>(ud);
+		Neb::Actor::Base* pactor = static_cast<Neb::Actor::Base*>(ud);
+		auto actor = pactor->isActorBase();
+		
 
-		neb::Actor::Actor* actor = dynamic_cast<neb::Actor::Actor*>(gl_actor);
-		if(actor != NULL)
-		{
+		if(actor) {
 			pose = active_transforms[i].actor2World;
-			actor->set_pose(pose);
-
+			actor->setPose(pose);
+			
 			if(pxrigidbody != NULL) {
-				neb::Actor::RigidBody::RigidBody* rigidbody =
-					dynamic_cast<neb::Actor::RigidBody::RigidBody*>(actor);
+				auto rigidbody = isActorRigidBody();
+				//dynamic_cast<neb::Actor::RigidBody::RigidBody*>(actor);
 
 				assert(rigidbody != NULL);
 
 				physx::PxVec3 v(pxrigidbody->getLinearVelocity());
 
-				rigidbody->raw_->velocity_ = v;
+				rigidbody->velocity_ = v;
 
 				//v.print();
 			}
 
-			actor->set(glutpp::actor::actor::flag::SHOULD_UPDATE);
+			actor->flag_.set(Neb::Actor::Util::Flag::E::SHOULD_UPDATE);
 		}
 	}
 

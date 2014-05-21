@@ -1,59 +1,79 @@
 #include <stdio.h>
 
-#include <Nebula/Graphics/window/window.hpp>
-#include <Nebula/renderable.hpp>
-#include <Nebula/scene/desc.hpp>
-#include <Nebula/scene/scene.hpp>
-#include <Nebula/Actor/Base.hpp>
-
-#include <Nebula/Graphics/light/light.hpp>
-#include <Nebula/Graphics/glsl/program.hpp>
-#include <Nebula/Graphics/Camera/Projection/Perspective.hpp>
+#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/Context/Base.hh>
 
 
-Neb::Scene::Base::Base() {
-	GLUTPP_DEBUG_0_FUNCTION;
-}
-Neb::Scene::scene::~scene() {
-	GLUTPP_DEBUG_0_FUNCTION;
-}
-void Neb::Scene::scene::i(int ni) {
-	GLUTPP_DEBUG_0_FUNCTION;
+#include <Nebula/Scene/Base.hh>
+#include <Nebula/Scene/Util/Types.hh>
+#include <Nebula/Scene/Util/Parent.hh>
 
-	//desc_->raw_.i_ = ni;
-	//desc_->i_ = ni;
-	i_ = ni;
-}
-int Neb::Scene::scene::i() {
-	return i_;
-}
-unsigned int Neb::Scene::scene::f() {
-	return raw_->flag_;
-}
-void Neb::Scene::scene::f(unsigned int flag) {
-	raw_->flag_ = flag;
-}
-void Neb::Scene::scene::init(Neb::Scene::desc_s desc) {
+#include <Nebula/Actor/Base.hh>
+
+#include <Nebula/Graphics/Light/Base.hh>
+#include <Nebula/Graphics/glsl/program.hh>
+#include <Nebula/Graphics/Camera/Projection/Perspective.hh>
+
+//#include <math/free.hpp>
+
+#include <Nebula/Actor/Util/Type.hh>
+#include <Nebula/Message/Actor/Event/Base.hh>
+#include <Nebula/Message/Actor/Create.hh>
+#include <Nebula/Message/Actor/Update.hh>
+#include <Nebula/Message/Actor/Event/Base.hh>
+#include <Nebula/network/message.hh>
+#include <Nebula/Util/Typed.hh>
+#include <Nebula/Memory/smart_ptr.hh>
+
+#include <Nebula/config.hh> // nebula/config.hpp.in
+#include <Nebula/App/Base.hh>
+#include <Nebula/physics.hh>
+#include <Nebula/simulation_callback.hh>
+//#include <Nebula/actor/free.hh>
+#include <Nebula/Actor/RigidDynamic/Base.hh>
+#include <Nebula/Actor/RigidStatic/Base.hh>
+#include <Nebula/Actor/Controller/Base.hh>
+//#include <Nebula/actor/vehicle.hh>
+#include <Nebula/Actor/empty.hh>
+#include <Nebula/Shape/Base.hh>
+#include <Nebula/timer/Types.hh>
+#include <Nebula/timer/Actor/Release.hpp>
+
+Neb::Scene::Base::Base(Neb::Scene::Util::Parent_s parent):
+	parent_(parent),
+	user_type_(0),
+	px_filter_shader_(NULL),
+	simulation_callback_(NULL),
+	px_scene_(NULL),
+	last_(0)
+{
 	GLUTPP_DEBUG_0_FUNCTION;
-	//renderable_ = renderable;
 }
-void Neb::Scene::scene::release() {
+Neb::Scene::Base::~Base() {
+	GLUTPP_DEBUG_0_FUNCTION;
+}
+void Neb::Scene::Base::init() {
+	GLUTPP_DEBUG_0_FUNCTION;
+	
+	create_physics();
+}
+void Neb::Scene::Base::release() {
 	GLUTPP_DEBUG_0_FUNCTION;	
 }
-physx::PxMat44		Neb::Scene::scene::get_pose() {
+physx::PxMat44		Neb::Scene::Base::get_pose() {
 	return physx::PxMat44();
 }
-void Neb::Scene::scene::render(double time,
-		std::shared_ptr<Neb::Camera::View::Base<float> > view,
-		std::shared_ptr<Neb::Camera::Projection::Base> proj,
-		Neb::window::window_s window) {
+void Neb::Scene::Base::render(double time,
+		std::shared_ptr<Neb::Graphics::Camera::View::Base> view,
+		std::shared_ptr<Neb::Graphics::Camera::Projection::Base> proj,
+		Neb::Graphics::Window::Base_s window) {
 
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	assert(view);
 	assert(proj);
 
-	auto p = Neb::master::Global()->use_program(Neb::program_name::e::LIGHT);
+	auto p = Neb::App::Base::globalBase()->use_program(Neb::program_name::e::LIGHT);
 
 
 	glEnable(GL_CULL_FACE);
@@ -64,10 +84,12 @@ void Neb::Scene::scene::render(double time,
 	proj->load();
 
 	int i = 0;
-	for(auto it = actors_.map_.begin(); it != actors_.map_.end(); ++it)
-	{
-		it->second->load_lights(i, physx::PxMat44());
-	}
+	
+	typedef Neb::Util::Parent<Neb::Actor::Base> A;
+	
+	A::map_.for_each([&] (A::map_type::const_iterator it) {
+		it->second.ptr_->load_lights(i, physx::PxMat44());
+	});
 
 	p->get_uniform_scalar("light_count")->load(i);
 
@@ -75,83 +97,28 @@ void Neb::Scene::scene::render(double time,
 
 	draw(window);
 }
-void Neb::Scene::scene::draw(Neb::window::window_s window) {
-
+void Neb::Scene::Base::draw(Neb::Graphics::Window::Base_s window) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
-	for(auto it = actors_.map_.begin(); it != actors_.map_.end(); ++it)
-	{
-		it->second->draw(window, physx::PxMat44());
-	}
-}
-void Neb::Scene::scene::resize(int w, int h) {
-}
-
-
-
-
-//#include <math/free.hpp>
-
-#include <gru/actor/Type.hpp>
-#include <gru/actor/addr.hpp>
-#include <gru/actor/desc.hpp>
-#include <gru/actor/event.hpp>
-#include <gru/Message/Actor/Create.hpp>
-#include <gru/Message/Actor/Update.hpp>
-#include <gru/Message/Actor/Event.hpp>
-#include <gru/scene/desc.hpp>
-#include <gru/network/message.hpp>
-#include <gru/Typed.hpp>
-#include <gru/Memory/smart_ptr.hpp>
-
-#include <nebula/config.hpp> // nebula/config.hpp.in
-#include <nebula/app.hpp>
-#include <nebula/physics.hpp>
-#include <nebula/scene/scene.hpp>
-#include <nebula/simulation_callback.hpp>
-//#include <nebula/actor/free.hpp>
-#include <nebula/actor/Base.hpp>
-#include <nebula/actor/Rigid_Dynamic.hpp>
-#include <nebula/actor/Rigid_Static.hpp>
-#include <nebula/actor/Controller.hpp>
-//#include <nebula/actor/vehicle.hpp>
-#include <nebula/actor/empty.hpp>
-#include <nebula/shape.hpp>
-#include <nebula/timer/Types.hpp>
-#include <nebula/timer/Actor/Release.hpp>
-
-
-
-Neb::scene::scene::scene(Neb::app_s app):
-	app_(app),
-	user_type_(0),
-	px_filter_shader_(NULL),
-	simulation_callback_(NULL),
-	px_scene_(NULL),
-	last_(0)
-{
-	NEBULA_DEBUG_0_FUNCTION;
+	typedef Neb::Util::Parent<Neb::Actor::Base> A;
 	
-	assert(app);
-}
-void Neb::scene::scene::init(std::shared_ptr<glutpp::scene::desc> desc) {
+	A::map_.for_each([&] (A::map_type::const_iterator it) {
+		it->second.ptr_->draw(window, physx::PxTransform());
+	});
 
-	NEBULA_DEBUG_0_FUNCTION;
-	
-	create_physics();
+}
+void Neb::Scene::Base::resize(int w, int h) {
+}
 
-	create_actors(desc);
+
+
+physx::PxTransform				Neb::Scene::Base::getPose() {
+	return physx::PxTransform();
 }
-Neb::weak_ptr<Neb::app>			Neb::scene::scene::get_app() {
-	return app_;
+physx::PxTransform				Neb::Scene::Base::getPoseGlobal() {
+	return physx::PxTransform();
 }
-physx::PxMat44				Neb::scene::scene::getPose() {
-	return physx::PxMat44();
-}
-physx::PxMat44		Neb::scene::scene::getPoseGlobal() {
-	return physx::PxMat44();
-}
-Neb::weak_ptr<Neb::Actor::Base>		Neb::scene::scene::get_actor(int i) {
+/*Neb::weak_ptr<Neb::Actor::Base>		Neb::Scene::Base::get_actor(int i) {
 	auto it = actors_.find(i);
 	std::shared_ptr<Neb::Actor::Base> a;
 	if(it == actors_.end())
@@ -162,8 +129,8 @@ Neb::weak_ptr<Neb::Actor::Base>		Neb::scene::scene::get_actor(int i) {
 		assert(a);
 		return a;
 	}
-}
-Neb::weak_ptr<Neb::Actor::Base>		Neb::scene::scene::get_actor(std::shared_ptr<glutpp::actor::addr> addr) {
+}*/
+/*Neb::weak_ptr<Neb::Actor::Base>		Neb::Scene::Base::get_actor(Neb::Actor::addr> addr) {
 	
 	std::deque<int> vec = addr->vec_;
 	assert(vec);
@@ -185,8 +152,8 @@ Neb::weak_ptr<Neb::Actor::Base>		Neb::scene::scene::get_actor(std::shared_ptr<gl
 	}
 	
 	return actor;
-}
-void Neb::scene::scene::create_actors(std::shared_ptr<glutpp::scene::desc> desc) {
+}*/
+void Neb::Scene::Base::create_actors(std::shared_ptr<glutpp::scene::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	assert(desc);
@@ -209,7 +176,7 @@ void Neb::scene::scene::create_actors(std::shared_ptr<glutpp::scene::desc> desc)
 		}
 	}
 }
-void		Neb::scene::scene::add_deferred(std::shared_ptr<glutpp::actor::desc> ad) {
+void		Neb::Scene::Base::add_deferred(std::shared_ptr<glutpp::actor::desc> ad) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 
@@ -228,10 +195,10 @@ void		Neb::scene::scene::add_deferred(std::shared_ptr<glutpp::actor::desc> ad) {
 
 	actors_deferred_[name] = ad;
 }
-std::shared_ptr<Neb::Actor::Base>	Neb::scene::scene::create_actor(std::shared_ptr<glutpp::actor::desc> desc) {
+std::shared_ptr<Neb::Actor::Base>	Neb::Scene::Base::create_actor(std::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 	
-	auto me = boost::dynamic_pointer_cast<Neb::scene::scene>(shared_from_this());
+	auto me = boost::dynamic_pointer_cast<Neb::Scene::Base>(shared_from_this());
 
 	long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
 	Neb::unique_ptr<Neb::Actor::Base> actor((Neb::Actor::Base*)Neb::Factory<glutpp::actor::actor>::global()->alloc(hash_code));
@@ -240,7 +207,7 @@ std::shared_ptr<Neb::Actor::Base>	Neb::scene::scene::create_actor(std::shared_pt
 	
 	return std::shared_ptr<Neb::Actor::Base>();
 }
-Neb::weak_ptr<Neb::Actor::Base>			Neb::scene::scene::create_actor_local(std::shared_ptr<glutpp::actor::desc> desc) {
+Neb::weak_ptr<Neb::Actor::Base>			Neb::Scene::Base::create_actor_local(std::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	auto actor = create_actor(desc);
@@ -270,7 +237,7 @@ Neb::weak_ptr<Neb::Actor::Base>			Neb::scene::scene::create_actor_local(std::sha
 
 	return actor;	
 }
-Neb::weak_ptr<Neb::Actor::Base>			Neb::scene::scene::create_actor_remote(std::shared_ptr<glutpp::actor::addr> addr, std::shared_ptr<glutpp::actor::desc> desc) {
+Neb::weak_ptr<Neb::Actor::Base>			Neb::Scene::Base::create_actor_remote(std::shared_ptr<glutpp::actor::addr> addr, std::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 
 	auto parent = get_actor(addr);
@@ -284,7 +251,7 @@ Neb::weak_ptr<Neb::Actor::Base>			Neb::scene::scene::create_actor_remote(std::sh
 		//actor = create_actor(desc);
 
 
-		auto me = boost::dynamic_pointer_cast<Neb::scene::scene>(shared_from_this());
+		auto me = boost::dynamic_pointer_cast<Neb::Scene::Base>(shared_from_this());
 
 		long int hash_code = desc->raw_wrapper_.ptr_->type_.val_;
 
@@ -307,9 +274,9 @@ Neb::weak_ptr<Neb::Actor::Base>			Neb::scene::scene::create_actor_remote(std::sh
 
  */
 /*
-   Neb::scene::scene::rigid_static_t Neb::scene::scene::Create_Rigid_Static_Plane(
+   Neb::Scene::Base::rigid_static_t Neb::scene::scene::Create_Rigid_Static_Plane(
    glutpp::actor::desc* ad,
-   Neb::scene::scene::base_t) {
+   Neb::Scene::Base::base_t) {
 
    printf("%s\n", __PRETTY_FUNCTION__);
 
@@ -351,7 +318,7 @@ add_actor(actor);
 return actor;
 }
 
-Neb::scene::scene::controller_t Neb::scene::scene::Create_Controller(Neb::Actor::desc* ad) {
+Neb::Scene::Base::controller_t Neb::scene::scene::Create_Controller(Neb::Actor::desc* ad) {
 printf("%s\n",__FUNCTION__);
 
 //jess::scoped_ostream( &jess::clog, neb_FUNCSIG );
@@ -386,7 +353,7 @@ actor->px_controller_ = Neb::__physics.px_character_controller_manager_->createC
 
 return actor;
 }
-Neb::scene::scene::vehicle_t Neb::scene::scene::create_vehicle() {
+Neb::Scene::Base::vehicle_t Neb::scene::scene::create_vehicle() {
 
 	Neb::Actor::desc* desc = new Neb::actor::desc;
 	//desc.raw_.reset();
@@ -414,7 +381,7 @@ Neb::scene::scene::vehicle_t Neb::scene::scene::create_vehicle() {
 	desc->shapes_.push_back(sd);
 
 
-	Neb::scene::scene::vehicle_t vehicle;
+	Neb::Scene::Base::vehicle_t vehicle;
 
 	vehicle = vehicle_manager_.create_vehicle(
 			Neb::__physics.px_physics_,
@@ -427,7 +394,7 @@ Neb::scene::scene::vehicle_t Neb::scene::scene::create_vehicle() {
 	return vehicle;
 }
 */
-void Neb::scene::scene::create_physics() {
+void Neb::Scene::Base::create_physics() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	auto pxphysics = Neb::__physics.px_physics_;
@@ -484,7 +451,7 @@ void Neb::scene::scene::create_physics() {
 	simulation_callback_ = sec;
 	px_scene_->setSimulationEventCallback(sec);
 }
-void Neb::scene::scene::step(double time) {
+void Neb::Scene::Base::step(double time) {
 	NEBULA_DEBUG_1_FUNCTION;
 	
 	for(auto it = actors_.map_.cbegin(); it != actors_.map_.cend(); ++it) {
@@ -523,7 +490,7 @@ void Neb::scene::scene::step(double time) {
 
 }
 
-void Neb::scene::scene::send_actor_update() {
+void Neb::Scene::Base::send_actor_update() {
 	printf("DEBUG: message ACTOR_UPDATE sent\n");
 
 	std::shared_ptr<gal::network::omessage> msg(new gal::network::omessage);

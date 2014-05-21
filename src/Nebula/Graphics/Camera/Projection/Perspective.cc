@@ -8,53 +8,50 @@
 //#include <math/quat.hpp>
 //#include <math/mat44.hpp>
 
-#include <gru/Math/Matrix.hpp>
+#include <Nebula/Math/Matrix.hh>
+#include <Nebula/App/Base.hh>
+#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Scene/Base.hh>
+#include <Nebula/Graphics/Camera/Projection/Perspective.hh>
 
-#include <gru/Graphics/window/window.hpp>
-#include <gru/scene/scene.hpp>
-#include <gru/Graphics/Camera/Projection/Perspective.hpp>
-
-glutpp::Camera::Projection::Base::Base(std::shared_ptr<glutpp::renderable> renderable):
-	renderable_(renderable)
+Neb::Graphics::Camera::Projection::Base::Base(Neb::Graphics::Context::Base_s parent):
+	parent_(parent)
 {
 }
-void		glutpp::Camera::Projection::Base::load() {
+void		Neb::Graphics::Camera::Projection::Base::load() {
 	
-	auto p = glutpp::master::Global()->get_program(glutpp::program_name::e::LIGHT);
+	auto p = Neb::App::Base::globalBase()->get_program(Neb::program_name::e::LIGHT);
 	
-	glViewport(0, 0, getWindow()->raw_.w_, getWindow()->raw_.h_);
+	glViewport(0, 0, getWindow()->w_, getWindow()->h_);
 	
 	p->get_uniform_scalar("proj")->load(proj());
 }
-std::shared_ptr<glutpp::window::window>		glutpp::Camera::Projection::Base::getWindow() {
-	assert(!renderable_.expired());
-	auto r = renderable_.lock();
-	
-	return r->getWindow();
+std::shared_ptr<Neb::Graphics::Window::Base>		Neb::Graphics::Camera::Projection::Base::getWindow() {
+	return parent_->parent_->isWindowBase();
 }
 
-glutpp::Camera::Projection::Perspective::Perspective(std::shared_ptr<glutpp::renderable> renderable):
-	glutpp::Camera::Projection::Base(renderable),
+Neb::Graphics::Camera::Projection::Perspective::Perspective(std::shared_ptr<Neb::Graphics::Context::Base> renderable):
+	Neb::Graphics::Camera::Projection::Base(renderable),
 	fovy_(45.0f),
 	zn_(2.0f),
 	zf_(10000.0f)
 {
 
 }
-/*void		glutpp::Camera::Projection::Perspective::init(RENDERABLE_S renderable) {
+/*void		Neb::Graphics::Camera::Projection::Perspective::init(RENDERABLE_S renderable) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	renderable_ = renderable;
 }*/
-physx::PxMat44	glutpp::Camera::Projection::Perspective::proj() {
+physx::PxMat44	Neb::Graphics::Camera::Projection::Perspective::proj() {
 
-	physx::PxMat44 ret = SetPerspective(fovy_, (float)getWindow()->raw_.w_/(float)getWindow()->raw_.h_, zn_, zf_);
+	physx::PxMat44 ret = SetPerspective(fovy_, (float)getWindow()->w_/(float)getWindow()->h_, zn_, zf_);
 	
 	//ret.print();
 	
 	return ret;
 }
-void		glutpp::Camera::Projection::Perspective::step(double dt) {
+void		Neb::Graphics::Camera::Projection::Perspective::step(double dt) {
 
 }
 

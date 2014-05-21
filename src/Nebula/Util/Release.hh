@@ -21,14 +21,14 @@
  *          MULTIPLE INHERITANCE OF DIFFERENT TEMPLATE VERSIONS OF BASE CLASS
  */
 namespace Neb {
-        namespace Util {
-                class Release {
-                        public:
-                                void                                    release();
-                        protected:
-                                boost::signals2::signal<void()>         sig_release_;
-                };
-        }
+	namespace Util {
+		class Release {
+			public:
+				virtual void				release();
+			protected:
+				boost::signals2::signal<void()>		sig_release_;
+		};
+	}
 }
 
 #endif

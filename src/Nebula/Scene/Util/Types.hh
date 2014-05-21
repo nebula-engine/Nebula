@@ -10,7 +10,7 @@ namespace Neb {
 		namespace Util {
 			class Parent;
 
-
+			typedef std::shared_ptr<Parent>		Parent_s;
 			typedef std::weak_ptr<Parent>		Parent_w;
 
 

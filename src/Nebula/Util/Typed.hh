@@ -18,10 +18,10 @@ namespace Neb {
 				/** @brief Destructor */
 				virtual ~Typed() {}
 				/** @brief Hash Code */
-				hash_type const &		hash_code() const;
-				std::string const &		name() const;
+				hash_type			hash_code() const;
+				std::string			name() const;
 
-				static hash_type const &	to_hash_code(std::string const & str) {
+				static hash_type		to_hash_code(std::string const & str) {
 					auto it = map_string_hash_.find(str);
 					if(it == map_string_hash_.cend()) throw 0;
 					return it->second;

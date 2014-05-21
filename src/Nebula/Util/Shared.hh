@@ -14,8 +14,7 @@ namespace Neb {
 				typedef std::shared_ptr<Neb::Util::Shared>	shared;
 				typedef std::weak_ptr<Neb::Util::Shared>	weak;
 				
-				Registry(): next_(0) {
-				}
+				Registry();
 				void					reg(shared s);
 				shared					get(Neb::Util::index_type i);
 			private:

@@ -9,6 +9,7 @@ namespace Neb {
 			namespace Util {
 				class Parent: virtual public Neb::Util::Parent<Neb::Graphics::Context::Base> {
 					public:
+						Neb::Graphics::Window::Base_s		isWindowBase();
 				};
 			}
 		}

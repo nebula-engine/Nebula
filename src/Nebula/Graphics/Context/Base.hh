@@ -34,7 +34,7 @@ namespace Neb {
 					void				resize(int w, int h);
 					void				render(double time, Neb::Graphics::Window::Base_s window);
 
-				private:
+				public:
 
 					Neb::Graphics::Context::Util::Parent_s		parent_;
 				public://private:

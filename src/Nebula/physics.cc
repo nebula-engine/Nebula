@@ -4,11 +4,10 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Scene/desc.hpp>
 
-#include <Nebula/physics.hpp>
-#include <Nebula/Scene/scene.hpp>
-#include <Nebula/simulation_callback.hpp>
+#include <Nebula/physics.hh>
+#include <Nebula/Scene/Base.hh>
+#include <Nebula/simulation_callback.hh>
 
 
 physx::PxFilterFlags	DefaultFilterShader(
@@ -36,20 +35,19 @@ physx::PxFilterFlags	DefaultFilterShader(
 	// collision
 	physx::PxU32 w0 = filterData0.word0 & filterData1.word1;
 	physx::PxU32 w1 = filterData1.word0 & filterData0.word1;
-	if(w0 && w1)
-	{
+
+	if(w0 && w1) {
 		pairFlags |= physx::PxPairFlag::eCONTACT_DEFAULT;
 		
 		filter_flags = physx::PxFilterFlag::eDEFAULT;	
-	}
-	else
-	{
+	} else {
 		filter_flags = physx::PxFilterFlag::eSUPPRESS;
 	}
 	
 	// notification
 	physx::PxU32 w2 = filterData0.word2 & filterData1.word3;
 	physx::PxU32 w3 = filterData1.word2 & filterData0.word3;
+
 	if(w2 && w3)
 	{
 		pairFlags |= physx::PxPairFlag::eNOTIFY_TOUCH_FOUND;

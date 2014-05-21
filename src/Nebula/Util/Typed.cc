@@ -1,10 +1,10 @@
-#include <Nebula/Typed.hpp>
+#include <Nebula/Util/Typed.hh>
 
-Neb::Typed::hash_type const &           Neb::Typed::hash_code() const {
+Neb::Util::Typed::hash_type			Neb::Util::Typed::hash_code() const {
         std::type_index type(typeid(*this));
         return type.hash_code();
 }
-std::string const &                     Neb::Typed::name() const {
+std::string					Neb::Util::Typed::name() const {
         std::type_index type(typeid(*this));
         return type.name();
 }

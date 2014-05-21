@@ -34,12 +34,9 @@ namespace Neb {
 			virtual public Neb::Util::Typed
 		{
 			public:
-
-				Base(Neb::Scene::Util::Parent_w);
+				Base(Neb::Scene::Util::Parent_s);
 				virtual ~Base();
-				void				i(int ni);
-				int				i();
-				//void				init(Neb::Scene::desc_w desc);
+				void				init();
 				void				release();
 				physx::PxMat44			get_pose();
 				/** @name Main Loop @{ */
@@ -120,7 +117,6 @@ namespace Neb {
 				//Neb::vehicle_manager					vehicle_manager_;
 
 			public:
-				int							i_;
 				Neb::Scene::Util::Flag					flag_;
 				physx::PxVec3						gravity_;
 
@@ -130,10 +126,10 @@ namespace Neb {
 				std::map<std::string, Neb::Actor::Base_s>		actors_deferred_;
 		};
 		class Local: public Neb::Scene::Base {
-
+			void				step(double const & time, double const & dt);
 		};
 		class Remote: public Neb::Scene::Base {
-
+			void				step(double const & time, double const & dt);
 		};
 	}
 }

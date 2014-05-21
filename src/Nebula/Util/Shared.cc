@@ -3,5 +3,5 @@
 Neb::Util::Shared::Shared() {
 }
 void            Neb::Util::Shared::init() {
-        register_.get(shared_from_this());
+        registry_.reg(shared_from_this());
 }
