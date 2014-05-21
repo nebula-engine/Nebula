@@ -26,7 +26,7 @@
 
 namespace Neb {
 	namespace Light {
-		class Base: virtual public Neb::Util::Shared { //: public gal::flag {
+		class Base: virtual public Neb::Util::Shared {
 			public:
 				Base();
 				Base(Neb::Light::Util::Parent_s);
@@ -49,9 +49,6 @@ namespace Neb {
 				physx::PxMat44			get_pose();
 				physx::PxVec4			get_pos();
 			private:
-				//gal::flag::flag_type const &		f() const;
-				//void					f(gal::flag::flag_type const &);
-				
 				template<class Archive> void		serializeTemplate(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("i",i_);
 					ar & boost::serialization::make_nvp("flag",flag_);
@@ -78,17 +75,17 @@ namespace Neb {
 				Neb::Light::Util::Parent_s	parent_;
 
 				Neb::Light::Util::Flag		flag_;
-				
+
 				// position
 				physx::PxVec4			pos_;
-				
+
 				// colors
 				Neb::Color::color<float>	ambient_;
 				Neb::Color::color<float>	diffuse_;
 				Neb::Color::color<float>	specular_;
-				
+
 				// other properties
-				
+
 				float				atten_const_;
 				float				atten_linear_;
 				float				atten_quad_;
@@ -98,37 +95,9 @@ namespace Neb {
 
 				texture				texture_shadow_map_;
 
-				
-		};
-		class Point: public Neb::Light::Base {
-			public:
-		};
-		class Spot: public Neb::Light::Base {
-			private:
-				template<class Archive> void		serializeTemplate(Archive & ar, unsigned int const & version) {
-					ar & boost::serialization::make_nvp("spot_direction",spot_direction_);
-					ar & boost::serialization::make_nvp("spot_cutoff",spot_cutoff_);
-					ar & boost::serialization::make_nvp("spot_exponent",spot_exponent_);
-					ar & boost::serialization::make_nvp("spot_light_cos_cutoff",spot_light_cos_cutoff_);
-				}
-			public:
-				virtual void		loadLightBase(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
-					serializeTemplate(ar, version);
-				}
-				virtual void		saveLightBase(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
-					serializeTemplate(ar, version);
-				}	
 
-
-				physx::PxVec3			spot_direction_;
-				float				spot_cutoff_;
-				float				spot_exponent_;
-				float				spot_light_cos_cutoff_;
 		};
-		class Directional: public Neb::Light::Base {
-			public:
-		};
-		}
 	}
+}
 
 #endif

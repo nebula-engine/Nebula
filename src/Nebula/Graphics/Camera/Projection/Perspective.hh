@@ -4,53 +4,55 @@
 #include <vector>
 #include <memory>
 
-#include <Nebula/config.hpp>
+#include <Nebula/config.hh>
 //#include <Nebula/camera_control.hpp>
 
 namespace Neb {
-	namespace Camera {
-		namespace Projection {
-			/** @brief @Base */
-			class Base {
-				public:
-					/** @brief Constructor */
-					Base(std::shared_ptr<Neb::renderable>);
-					
-					virtual physx::PxMat44			proj() = 0;
-					void					load();
-					/** @brief step
-					 * @todo explain when in timeline this occurs and in which thread and why
-					 */
-					void					step(double);
+	namespace Graphics {
+		namespace Camera {
+			namespace Projection {
+				/** @brief @Base */
+				class Base {
+					public:
+						/** @brief Constructor */
+						Base(Neb::Graphics::Context::Base_s);
 
-					/** @name Accessors @{ */
-					/** @brief Get parent window */
-					Neb::window::window_s		getWindow();
-					/** @} */
-				protected:
-					/** @brief Parent */
-					std::weak_ptr<renderable>		renderable_;
-			};
-			class Perspective: public Base {
-				public:
-					Perspective(std::shared_ptr<Neb::renderable>);
-					//void		init(Neb::renderable_shared);
-					virtual physx::PxMat44			proj();
+						virtual physx::PxMat44			proj() = 0;
+						void					load();
+						/** @brief step
+						 * @todo explain when in timeline this occurs and in which thread and why
+						 */
+						void					step(double);
+
+						/** @name Accessors @{ */
+						/** @brief Get parent window */
+						Neb::Graphics::Window::Base_s		getWindow();
+						/** @} */
+					protected:
+						/** @brief Parent */
+						Neb::Graphics::Context::Base_s		parent_;
+				};
+				class Perspective: public Base {
+					public:
+						Perspective(Neb::Graphics::Context::Base_s);
+						//void		init(Neb::renderable_shared);
+						virtual physx::PxMat44			proj();
 
 
-					/** @brief step */
-					void					step(double);
+						/** @brief step */
+						void					step(double);
 
-					//
+						//
 
-					/** @brief field of view angle */
-					float					fovy_;
-					/** @brief near clipping plane */
-					float					zn_;
-					/** @brief far clipping plane */
-					float					zf_;
+						/** @brief field of view angle */
+						float					fovy_;
+						/** @brief near clipping plane */
+						float					zn_;
+						/** @brief far clipping plane */
+						float					zf_;
 
-			};
+				};
+			}
 		}
 	}
 }

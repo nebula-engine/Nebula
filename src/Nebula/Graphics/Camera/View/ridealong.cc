@@ -1,28 +1,17 @@
 
-//#include <neb/actor/Base.h>
-#include <gru/Graphics/Camera/View/ridealong.hpp>
+#include <Nebula/Actor/Base.hh>
+#include <Nebula/Graphics/Camera/View/ridealong.hh>
 
-glutpp::Camera::View::ridealong::ridealong(glutpp::actor::actor_s actor):
-	actor_(actor)
+Neb::Graphics::Camera::View::Ridealong::Ridealong(Neb::Graphics::Context::Base_s parent):
+	Neb::Graphics::Camera::View::Base(parent)
 {
 }
-physx::PxMat44	glutpp::Camera::View::ridealong::view()
-{
-	if(actor_.expired())
-	{
-		return physx::PxMat44();
-	}
-
+physx::PxMat44	Neb::Graphics::Camera::View::Ridealong::view() {
 	auto actor = actor_.lock();
 
-	if(actor->all(glutpp::actor::actor::flag::SHOULD_RELEASE))
-	{
-		return physx::PxMat44();
-	}
+	if(!actor) return physx::PxMat44();
 
-
-
-	physx::PxTransform pose = actor->raw_->pose_;
+	physx::PxTransform pose = actor->pose_;
 
 	physx::PxMat44 translate(physx::PxTransform(-pose.p));
 	//translate.SetTranslation(-pose.p);
@@ -63,7 +52,7 @@ physx::PxMat44	glutpp::Camera::View::ridealong::view()
 	*/
 	return physx::PxMat44(ret);
 }
-void glutpp::Camera::View::ridealong::step(double) {
+void Neb::Graphics::Camera::View::Ridealong::step(double) {
 	
 }
 

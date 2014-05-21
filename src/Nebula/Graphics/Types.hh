@@ -78,8 +78,8 @@ IMAGE,
 
 				typedef std::shared_ptr<Parent>		Parent_s;
 				typedef std::weak_ptr<Parent>		Parent_w;
-
 			}
+
 			class Base;
 
 			typedef std::shared_ptr<Base>		Base_s;
@@ -88,20 +88,26 @@ IMAGE,
 
 		/** @brief Graphical User Interface */
 		namespace GUI {
-			class layout;
 
-			typedef std::shared_ptr<layout>		layout_s;
-			typedef std::unique_ptr<layout>		layout_u;
-			typedef std::weak_ptr<layout>		layout_w;
+			namespace Layout {
+				class Base;
 
+				typedef std::shared_ptr<Base>		Base_s;
+				typedef std::weak_ptr<Base>		Base_w;
+			}
 
 			namespace Object {
-				class object;
-				class object_factory;
-				typedef std::shared_ptr<object>			object_s;
-				typedef std::shared_ptr<object_factory>		object_factory_s;
+				namespace Util {
+					class Parent;
 
-				//typedef Neb::Map<object>		object_m;
+					typedef std::shared_ptr<Parent>		Parent_s;
+					typedef std::weak_ptr<Parent>		Parent_w;
+				}
+
+				class Base;
+
+				typedef std::shared_ptr<Base>		Base_s;
+				typedef std::weak_ptr<Base>		Base_w;
 			}
 
 		}
@@ -121,32 +127,32 @@ IMAGE,
 			typedef std::shared_ptr<Base>	Base_s;
 			typedef std::weak_ptr<Base>	Base_w;
 		}
+
+		/** @brief Camera */
+		namespace Camera {
+			namespace View {
+				class Base;
+				class Free;
+				class Ridealong;
+
+				typedef std::shared_ptr<Base>		Base_s;
+				typedef std::unique_ptr<Base>		Base_u;
+
+				typedef std::shared_ptr<Ridealong>	Ridealong_s;
+				typedef std::weak_ptr<Ridealong>	Ridealong_w;
+			}
+			namespace Projection {
+				class Base;
+				class Perspective;
+
+				typedef std::shared_ptr<Base>		Base_s;
+				typedef std::weak_ptr<Base>		Base_w;
+				typedef std::unique_ptr<Base>		Base_u;
+			}
+		}
 	}
 
 	/*template<typename>*/ class texture;
-
-	/** @brief Camera */
-	namespace Camera {
-		namespace View {
-			class Base;
-			class Free;
-			class Ridealong;
-
-			typedef std::shared_ptr<Base>		Base_s;
-			typedef std::unique_ptr<Base>		Base_u;
-
-			typedef std::shared_ptr<Ridealong>	Ridealong_s;
-			typedef std::weak_ptr<Ridealong>	Ridealong_w;
-		}
-		namespace Projection {
-			class Base;
-			class Perspective;
-
-			typedef std::shared_ptr<Base>		Base_s;
-			typedef std::weak_ptr<Base>		Base_w;
-			typedef std::unique_ptr<Base>		Base_u;
-		}
-	}
 }
 
 #endif

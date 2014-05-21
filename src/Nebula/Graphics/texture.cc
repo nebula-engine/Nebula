@@ -3,11 +3,11 @@
 
 #include <GL/glew.h>
 
-#include <Nebula/Graphics/Color/Color.hpp>
+#include <Nebula/Graphics/Color/Color.hh>
 
-#include <Nebula/Graphics/texture.hpp>
-#include <Nebula/Graphics/window/window.hpp>
-#include <Nebula/free.hpp>
+#include <Nebula/Graphics/texture.hh>
+#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/free.hh>
 
 #include <png.h>
 

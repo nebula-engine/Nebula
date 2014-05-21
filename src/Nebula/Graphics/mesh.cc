@@ -1,7 +1,7 @@
 
-#include <Nebula/Math/geo/polyhedron.hpp>
+#include <Nebula/Math/geo/polyhedron.hh>
 
-#include <Nebula/Graphics/mesh.hpp>
+#include <Nebula/Graphics/mesh.hh>
 
 Neb::mesh::mesh():
 	vertices_(NULL),

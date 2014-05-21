@@ -46,8 +46,8 @@ namespace Neb {
 				/** @brief render */
 				void				render(
 						double time,
-						std::shared_ptr<Neb::Camera::View::Base>,
-						std::shared_ptr<Neb::Camera::Projection::Base>,
+						std::shared_ptr<Neb::Graphics::Camera::View::Base>,
+						std::shared_ptr<Neb::Graphics::Camera::Projection::Base>,
 						Neb::Graphics::Window::Base_s);
 				void				draw(Neb::Graphics::Window::Base_s window);
 				void				resize(int w, int h);

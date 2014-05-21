@@ -16,24 +16,26 @@
 #include <Nebula/Graphics/glsl/program.hh>
 
 namespace Neb {
-	namespace Camera {
-		namespace View {
-			/** @brief @Base */
-			class Base {
-				public:
-					/** @brief Constructor */
-					Base() {}
-					/** @brief Load view matrix into GLSL. */
-					void				load();
-					/** @brief Get view matrix. */
-					virtual physx::PxMat44	view() = 0;
-					/** @brief Step.
-					 * @todo explain when in timeline this occurs and in which thread and why
-					 */
-					virtual void			step(double) = 0;
-					/** @brief Time of last step */
-					double				last_;
-			};
+	namespace Graphics {
+		namespace Camera {
+			namespace View {
+				/** @brief @Base */
+				class Base {
+					public:
+						/** @brief Constructor */
+						Base(Neb::Graphics::Context::Base_s parent);
+						/** @brief Load view matrix into GLSL. */
+						void				load();
+						/** @brief Get view matrix. */
+						virtual physx::PxMat44	view() = 0;
+						/** @brief Step.
+						 * @todo explain when in timeline this occurs and in which thread and why
+						 */
+						virtual void			step(double) = 0;
+						/** @brief Time of last step */
+						double				last_;
+				};
+			}
 		}
 	}
 }

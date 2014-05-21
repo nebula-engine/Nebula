@@ -4,24 +4,28 @@
 #include <Nebula/Graphics/GUI/Object/textview.hh>
 
 namespace Neb {
-	namespace gui {
-		namespace object {
-			class edittext: public Neb::gui::object::textview {
-				public:
-					edittext();
-					virtual void		draw();
-					virtual void		connect();
+	namespace Graphics {
+		namespace GUI {
+			namespace Object {
+				class edittext: public Neb::Graphics::GUI::Object::textview {
+					public:
+						edittext();
+						virtual void		draw();
+						virtual void		connect();
 
 
-					virtual int		key_fun(int,int,int,int);
-					virtual int		mouse_button_fun(int,int,int);
-					
-					
-					virtual int		enter();
-			};
+						virtual int		key_fun(int,int,int,int);
+						virtual int		mouse_button_fun(int,int,int);
+
+
+						virtual int		enter();
+				};
+			}
 		}
 	}
 }
 
 #endif
+
+
 

@@ -20,7 +20,7 @@ namespace Neb {
 			public:
 				template<typename T> using pointer = std::shared_ptr<T>;
 
-				typedef pointer< Neb::Factory<Neb::Graphics::GUI::Object::object> >		GUI_Object;
+				typedef pointer< Neb::Factory<Neb::Graphics::GUI::Object::Base> >		GUI_Object;
 				typedef pointer< Neb::Factory<Neb::Actor::Base> >				Factory_Actor_Base;
 				typedef pointer< Neb::Factory<Neb::Shape::Base> >				Shape_Base;
 				typedef pointer< Neb::Factory<Neb::Light::light> >				Light_Base;

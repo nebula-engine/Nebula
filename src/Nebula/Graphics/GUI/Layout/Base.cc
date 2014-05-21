@@ -9,7 +9,7 @@
 #include <Nebula/Types.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Graphics/Context/Base.hh>
-#include <Nebula/Graphics/GUI/Object/object.hh>
+#include <Nebula/Graphics/GUI/Object/Base.hh>
 #include <Nebula/Graphics/GUI/Object/edittext.hh>
 
 #include <Nebula/Graphics/GUI/Layout/Base.hh>
@@ -64,19 +64,18 @@ void Neb::Graphics::GUI::Layout::Base::draw() {
 	
 	typedef Neb::Util::Parent<Neb::Graphics::GUI::Object::Base> O;
 	
-	O::map_.for_each([] (C::map_type::const_iterator it) {
-		it->second->draw();
+	O::map_.for_each([] (O::map_type::const_iterator it) {
+		it->second.ptr_->draw();
 	});
 
 }
 void Neb::Graphics::GUI::Layout::Base::connect() {
 	printf("%s\n", __PRETTY_FUNCTION__);
-
-	Neb::Graphics::Window::Base_s s = get_window().lock();
 	
-	assert(w);
-
-	conns_.key_fun_ = w->sig_.key_fun_.connect(
+	auto window = parent_->getWindow();
+	assert(window);
+	
+	conns_.key_fun_ = window->sig_.key_fun_.connect(
 			std::bind(&Neb::Graphics::GUI::Layout::Base::key_fun,
 				this,
 				std::placeholders::_1,
@@ -84,8 +83,8 @@ void Neb::Graphics::GUI::Layout::Base::connect() {
 				std::placeholders::_3,
 				std::placeholders::_4
 				));
-
-	conns_.mouse_button_fun_ = w->sig_.mouse_button_fun_.connect(
+	
+	conns_.mouse_button_fun_ = window->sig_.mouse_button_fun_.connect(
 			std::bind(&Neb::Graphics::GUI::Layout::Base::mouse_button_fun,
 				this,
 				std::placeholders::_1,
@@ -100,8 +99,7 @@ int Neb::Graphics::GUI::Layout::Base::key_fun(int key, int scancode, int action,
 int Neb::Graphics::GUI::Layout::Base::mouse_button_fun(int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	switch(action)
-	{
+	switch(action) {
 		case GLFW_PRESS:
 			switch(button)
 			{
@@ -119,13 +117,13 @@ int Neb::Graphics::GUI::Layout::Base::mouse_button_fun(int button, int action, i
 int Neb::Graphics::GUI::Layout::Base::search(int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	auto s_window = get_window().lock();
-	assert(s_window);
+	auto window = parent_->getWindow();
+	assert(window);
 
 	double x, y;
 	int w, h;
-	glfwGetCursorPos(s_window->window_, &x, &y);
-	glfwGetWindowSize(s_window->window_, &w, &h);
+	glfwGetCursorPos(window->window_, &x, &y);
+	glfwGetWindowSize(window->window_, &w, &h);
 
 	printf("%f %f %i %i\n", x, y, w, h);
 
@@ -133,25 +131,31 @@ int Neb::Graphics::GUI::Layout::Base::search(int button, int action, int mods) {
 	y = y / (float)h * 2.0 - 1.0;
 
 	printf("%f %f\n", x, y);
-
-	for(auto it = objects_.map_.begin(); it != objects_.map_.end(); ++it) {
-
-		//auto o = (*it).second;
+	
+	typedef Neb::Util::Parent<Neb::Graphics::GUI::Object::Base> O;
+	
+	Neb::Graphics::GUI::Object::Base_s object;
+	
+	O::map_.for_each_int([&] (O::map_type::const_iterator it) {
 		
 		printf("object %f %f %f %f\n",
-				it->second->data_.x_,
-				it->second->data_.y_,
-				it->second->data_.w_,
-				it->second->data_.h_);	
+				it->second.ptr_->x_,
+				it->second.ptr_->y_,
+				it->second.ptr_->w_,
+				it->second.ptr_->h_);	
 		
-		if(x <   it->second->data_.x_) continue;
-		if(x > ( it->second->data_.x_ + it->second->data_.w_)) continue;
-		if(y >  -it->second->data_.y_) continue;
-		if(y < (-it->second->data_.y_ - it->second->data_.h_)) continue;
-
-		return it->second->mouse_button_fun(button, action, mods);
-	}
-
+		if(x <   it->second.ptr_->x_) return O::map_type::CONTINUE;
+		if(x > ( it->second.ptr_->x_ + it->second.ptr_->w_)) return O::map_type::CONTINUE;
+		if(y >  -it->second.ptr_->y_) return O::map_type::CONTINUE;
+		if(y < (-it->second.ptr_->y_ - it->second.ptr_->h_)) return O::map_type::CONTINUE;
+		
+		object = it->second.ptr_;
+		
+		return O::map_type::BREAK;
+	});
+	
+	if(object) return object->mouse_button_fun(button, action, mods);
+	
 	return 0;
 }
 

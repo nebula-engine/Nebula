@@ -1,9 +1,11 @@
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
-#include <Nebula/free.hpp>
-#include <Nebula/Graphics/gui/object/terminal.hpp>
+#include <Nebula/free.hh>
+#include <Nebula/App/Base.hh>
+#include <Nebula/Graphics/GUI/Object/terminal.hh>
 
-void	Neb::gui::object::terminal::draw()
-{
+void	Neb::Graphics::GUI::Object::terminal::draw() {
 	//printf("%s\n",__PRETTY_FUNCTION__);
 	
 	float sx = 1.0/1200.0;
@@ -11,20 +13,18 @@ void	Neb::gui::object::terminal::draw()
 	
 	//draw_quad(x_, y_, w_, h_, bg_color_);
 	
-	float y = data_.y_ + 1;
+	float y = y_ + 1.0;
 	float line_height = 0.1;
 	
-	for(auto it = lines_.begin(); it != lines_.end(); ++it)
-	{
-		draw_text(data_.x_, y, sx, sy, data_.font_color_, it->c_str());
+	for(auto it = lines_.begin(); it != lines_.end(); ++it) {
+		draw_text(x_, y, sx, sy, font_color_, it->c_str());
 		y -= line_height;
 	}
 	
-	draw_text(data_.x_, data_.y_, sx, sy, data_.font_color_, line_.c_str());
+	draw_text(x_, y_, sx, sy, font_color_, line_.c_str());
 	
 }
-int	Neb::gui::object::terminal::key_fun(int key, int scancode, int action, int mods)
-{
+int	Neb::Graphics::GUI::Object::terminal::key_fun(int key, int scancode, int action, int mods) {
 	char k = 'a' - GLFW_KEY_A + key;
 
 	if(action == GLFW_PRESS)
@@ -47,9 +47,9 @@ int	Neb::gui::object::terminal::key_fun(int key, int scancode, int action, int m
 
 	return 0;
 }
-int Neb::gui::object::terminal::enter() {
+int Neb::Graphics::GUI::Object::terminal::enter() {
 	
-	Neb::master::global()->Command(line_);
+	Neb::App::Base::globalBase()->command(line_);
 	
 	lines_.push_back(line_);
 	line_.clear();

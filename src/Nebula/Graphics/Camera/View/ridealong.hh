@@ -9,22 +9,23 @@
 #include <Nebula/config.hh>
 
 namespace Neb {
-	namespace Camera {
-		namespace View {
-			class Ridealong: public Neb::Camera::View::Base {
-				public:
-					Ridealong(Neb::Actor::Base_w);
+	namespace Graphics {
+		namespace Camera {
+			namespace View {
+				class Ridealong: public Neb::Graphics::Camera::View::Base {
+					public:
+						Ridealong(Neb::Graphics::Context::Base_s);
 
-					virtual physx::PxMat44			view();
-					virtual void				step(double time);
+						virtual physx::PxMat44			view();
+						virtual void				step(double time);
 
 
-					Neb::Actor::Base_w		actor_;
-			};
+						Neb::Actor::Base_w		actor_;
+				};
+			}
 		}
 	}
 }
-
 #endif
 
 

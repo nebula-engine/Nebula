@@ -9,8 +9,8 @@
 
 
 //#include <Nebula/scene/scene.hpp>
-#include <Nebula/Graphics/glsl/Uniform/uniform.hpp>
-#include <Nebula/free.hpp>
+#include <Nebula/Graphics/glsl/Uniform/uniform.hh>
+#include <Nebula/free.hh>
 
 
 void	Neb::glsl::Uniform::Scalar::Vec3::load(float* v) {

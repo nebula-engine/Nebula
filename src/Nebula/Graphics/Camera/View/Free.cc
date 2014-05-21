@@ -1,11 +1,12 @@
 
-#include <gru/Math/Matrix.hpp>
+//#include <gru/Math/Matrix.hpp>
 
-#include <gru/config.hpp>
-#include <gru/Graphics/window/window.hpp>
-#include <gru/Graphics/Camera/View/Free.hpp>
+#include <Nebula/config.hh>
+#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/Camera/View/Free.hh>
 
-glutpp::Camera::View::Free::Free():
+Neb::Graphics::Camera::View::Free::Free(Neb::Graphics::Context::Base_s parent):
+	Neb::Graphics::Camera::View::Base(parent),
 	eye_(0.0f, 0.0f, 5.0f, 0.0f),
 	center_(0.0f,0.0f,0.0f),
 	up_(0.0f,1.0f,0.0f)
@@ -32,72 +33,70 @@ glutpp::Camera::View::Free::Free():
 	head_[6] = physx::PxVec3( -s, 0,  0 );
 	head_[7] = physx::PxVec3( -d, 0, -d );
 
-	head_flag_[glutpp::Camera::View::Free::Flag::E::NORTH								] = 0;
-	head_flag_[glutpp::Camera::View::Free::Flag::E::NORTH	|	glutpp::Camera::View::Free::Flag::E::EAST	] = 1;
-	head_flag_[							glutpp::Camera::View::Free::Flag::E::EAST	] = 2;
-	head_flag_[glutpp::Camera::View::Free::Flag::E::SOUTH	|	glutpp::Camera::View::Free::Flag::E::EAST	] = 3;
-	head_flag_[glutpp::Camera::View::Free::Flag::E::SOUTH								] = 4;
-	head_flag_[glutpp::Camera::View::Free::Flag::E::SOUTH	|	glutpp::Camera::View::Free::Flag::E::WEST	] = 5;
-	head_flag_[							glutpp::Camera::View::Free::Flag::E::WEST	] = 6;
-	head_flag_[glutpp::Camera::View::Free::Flag::E::NORTH	|	glutpp::Camera::View::Free::Flag::E::WEST	] = 7;
+	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::NORTH								] = 0;
+	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::NORTH	|	Neb::Graphics::Camera::View::Free::Flag::E::EAST	] = 1;
+	head_flag_[							Neb::Graphics::Camera::View::Free::Flag::E::EAST	] = 2;
+	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::SOUTH	|	Neb::Graphics::Camera::View::Free::Flag::E::EAST	] = 3;
+	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::SOUTH								] = 4;
+	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::SOUTH	|	Neb::Graphics::Camera::View::Free::Flag::E::WEST	] = 5;
+	head_flag_[							Neb::Graphics::Camera::View::Free::Flag::E::WEST	] = 6;
+	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::NORTH	|	Neb::Graphics::Camera::View::Free::Flag::E::WEST	] = 7;
 
 
 }
-void	glutpp::Camera::View::Free::init(glutpp::window::window_s window)
-{
-	window_ = window;
+void	Neb::Graphics::Camera::View::Free::init() {
 /*
 	vec_x_.push_back(
 			window_->map_sig_key_down_['d'].connect(
-				std::bind(&glutpp::Camera::View::Free::callback_x_, this, 0, 1.0)));
+				std::bind(&Neb::Graphics::Camera::View::Free::callback_x_, this, 0, 1.0)));
 
 	vec_x_.push_back(
 			window_->map_sig_key_up_['d'].connect(
-				std::bind(&glutpp::Camera::View::Free::callback_x_, this, 0, 0.0)));
+				std::bind(&Neb::Graphics::Camera::View::Free::callback_x_, this, 0, 0.0)));
 
 	vec_x_.push_back(
 			window_->map_sig_key_down_['a'].connect(
-				std::bind(&glutpp::Camera::View::Free::callback_x_, this, 1, -1.0)));
+				std::bind(&Neb::Graphics::Camera::View::Free::callback_x_, this, 1, -1.0)));
 
 	vec_x_.push_back(
 			window_->map_sig_key_up_['a'].connect(
-				std::bind(&glutpp::Camera::View::Free::callback_x_, this, 1, 0.0)));
+				std::bind(&Neb::Graphics::Camera::View::Free::callback_x_, this, 1, 0.0)));
 
 	vec_y_.push_back(
 			window_->map_sig_key_down_['e'].connect(
-				std::bind(&glutpp::Camera::View::Free::callback_y_, this, 0, 1.0)));
+				std::bind(&Neb::Graphics::Camera::View::Free::callback_y_, this, 0, 1.0)));
 
 	vec_y_.push_back(
 			window_->map_sig_key_up_['e'].connect(
-				std::bind(&glutpp::Camera::View::Free::callback_y_, this, 0, 0.0)));
+				std::bind(&Neb::Graphics::Camera::View::Free::callback_y_, this, 0, 0.0)));
 
 	vec_y_.push_back(
 			window_->map_sig_key_down_['c'].connect(
-				std::bind(&glutpp::Camera::View::Free::callback_y_, this, 1, -1.0)));
+				std::bind(&Neb::Graphics::Camera::View::Free::callback_y_, this, 1, -1.0)));
 
 	vec_y_.push_back(
 			window_->map_sig_key_up_['c'].connect(
-				std::bind(&glutpp::Camera::View::Free::callback_y_, this, 1, 0.0)));
+				std::bind(&Neb::Graphics::Camera::View::Free::callback_y_, this, 1, 0.0)));
 
 	vec_z_.push_back(
 			window_->map_sig_key_down_['w'].connect(
-				std::bind(&glutpp::Camera::View::Free::callback_z_, this, 0, -1.0)));
+				std::bind(&Neb::Graphics::Camera::View::Free::callback_z_, this, 0, -1.0)));
 
 	vec_z_.push_back(
 			window_->map_sig_key_up_['w'].connect(
-				std::bind(&glutpp::Camera::View::Free::callback_z_, this, 0, 0.0)));
+				std::bind(&Neb::Graphics::Camera::View::Free::callback_z_, this, 0, 0.0)));
 
 	vec_z_.push_back(
 			window_->map_sig_key_down_['s'].connect(
-				std::bind(&glutpp::Camera::View::Free::callback_z_, this, 1, 1.0)));
+				std::bind(&Neb::Graphics::Camera::View::Free::callback_z_, this, 1, 1.0)));
 
 	vec_z_.push_back(
 			window_->map_sig_key_up_['s'].connect(
-				std::bind(&glutpp::Camera::View::Free::callback_z_, this, 1, 0.0)));
+				std::bind(&Neb::Graphics::Camera::View::Free::callback_z_, this, 1, 0.0)));
 */
 
 }
-void		glutpp::Camera::View::Free::step(double time) {
+void		Neb::Graphics::Camera::View::Free::step(double time) {
 	float dt = time - last_; last_ = time;
 
 	// look vector
@@ -234,7 +233,7 @@ physx::PxVec3 neb::camera::camera::Move()
 	return mov;
 }
 */
-physx::PxMat44	glutpp::Camera::View::Free::view() {
+physx::PxMat44	Neb::Graphics::Camera::View::Free::view() {
 	//printf("%s\n", __FUNCTION__);
 
 	physx::PxVec3 up(0,1,0);

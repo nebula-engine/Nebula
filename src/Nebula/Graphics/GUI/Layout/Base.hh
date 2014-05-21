@@ -3,11 +3,9 @@
 
 #include <map>
 
-
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Graphics/GUI/Object/object.hh>
-#include <Nebula/Graphics/GUI/Object/object_factory.hh>
+#include <Nebula/Graphics/GUI/Object/Base.hh>
 #include <Nebula/Graphics/GUI/Layout/Util/Parent.hh>
 #include <Nebula/Graphics/GUI/Object/Util/Parent.hh>
 
@@ -43,7 +41,7 @@ namespace Neb {
 						physx::PxMat44					ortho_;
 
 
-						Neb::Graphics::GUI::Layout::Util::Parent_w		parent_;
+						Neb::Graphics::GUI::Layout::Util::Parent_s		parent_;
 						// connections
 						struct
 						{

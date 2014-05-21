@@ -1,62 +1,46 @@
 //#include <assert.h>
 
-#include <gru/scene/scene.hpp>
-#include <gru/renderable.hpp>
-#include <gru/Graphics/gui/layout.hpp>
-#include <gru/Graphics/Camera/View/Free.hpp>
-#include <gru/Graphics/Camera/Projection/Perspective.hpp>
+#include <Nebula/Scene/Base.hh>
+#include <Nebula/Graphics/Context/Base.hh>
+#include <Nebula/Graphics/GUI/Layout/Base.hh>
+#include <Nebula/Graphics/Camera/View/Free.hh>
+#include <Nebula/Graphics/Camera/Projection/Perspective.hh>
 
 
 
-glutpp::renderable::renderable(glutpp::window::window_s window): window_(window)
-{
+Neb::Graphics::Context::Base::Base(Neb::Graphics::Context::Util::Parent_s parent): parent_(parent) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-glutpp::renderable& glutpp::renderable::operator=(renderable const & r){
+Neb::Graphics::Context::Base&		Neb::Graphics::Context::Base::operator=(Neb::Graphics::Context::Base const & r){
 	printf("%s\n",__PRETTY_FUNCTION__);
 	return *this;
 }
-unsigned int glutpp::renderable::f() {
-	return flag_;
-}
-void glutpp::renderable::f(unsigned int flag) {
-	flag_ = flag;
-}
-void glutpp::renderable::init(glutpp::window::window_s window) {
+void Neb::Graphics::Context::Base::init() {
 	printf("%s\n",__PRETTY_FUNCTION__);
-
-	assert(window);
-
-	window_ = window;
-
+	
 	// camera
-	view_.reset(new glutpp::Camera::View::Free);
-	proj_.reset(new glutpp::Camera::Projection::Perspective(shared_from_this()));
+	view_.reset(new Neb::Graphics::Camera::View::Free);
+	proj_.reset(new Neb::Graphics::Camera::Projection::Perspective(isContextBase()));
 	//camera_->init(shared_from_this());
 }
-glutpp::window::window_s glutpp::renderable::getWindow() {
-	auto window = window_.lock();
-
-	assert(window);
-
-	return window;
-}
-void glutpp::renderable::resize(int w, int h) {
+void Neb::Graphics::Context::Base::resize(int w, int h) {
 	//camera_->w_ = w;
 	//camera_->h_ = h;
 }
-void glutpp::renderable::render(double time, glutpp::window::window_s window) {
+void Neb::Graphics::Context::Base::render(double time, Neb::Graphics::Window::Base_s window) {
 
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-	
-	if(scene_) {
-		scene_->render(time, view_, proj_, window);
+
+	auto scene = scene_.lock();
+	auto layout = layout_.lock();
+
+	if(scene) {
+		scene->render(time, view_, proj_, window);
 	}
 
-	if(layout_)
-	{
+	if(layout) {
 		//layout_->render(time);
 	}
 }		

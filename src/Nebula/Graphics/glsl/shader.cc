@@ -6,8 +6,8 @@
 #include <sys/time.h>
 #include <string.h>
 
-#include <Nebula/free.hpp>
-#include <Nebula/Graphics/glsl/shader.hpp>
+#include <Nebula/free.hh>
+#include <Nebula/Graphics/glsl/shader.hh>
 
 void	Neb::glsl::shader::load(const char * filename, GLenum shader_type)
 {	

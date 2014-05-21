@@ -1,5 +1,5 @@
-
-#include <Neb/Grpahics/Light/Spot.hh>
+#include <Nebula/App/Base.hh>
+#include <Nebula/Graphics/Light/Spot.hh>
 
 Neb::Light::Spot::Spot():
 	spot_direction_(physx::PxVec3(0.0, 0.0, -1.0)),
@@ -21,15 +21,7 @@ void Neb::Light::Spot::load(int o, physx::PxMat44 space) {
 
 	physx::PxVec3 spot_direction = spot_direction_;
 	
-	if(raw_.spot_cutoff_ < (M_PI/2.0)) {
-		//spot_direction.print();
-	
-		space.rotate(spot_direction);
-	
-		//spot_direction.print();
-	}
-	//pos.print();
-	
+	space.rotate(spot_direction);
 	
 	//if(any(Neb::light::flag::e::SHOULD_LOAD_POS))
 	{

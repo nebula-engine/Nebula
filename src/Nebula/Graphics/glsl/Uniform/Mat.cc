@@ -8,10 +8,10 @@
 //#include <GL/glut.h>
 
 
-#include <Nebula/Scene/scene.hpp>
-#include <Nebula/Graphics/glsl/Uniform/uniform.hpp>
-#include <Nebula/Graphics/window/window.hpp>
-#include <Nebula/free.hpp>
+#include <Nebula/Scene/Base.hh>
+#include <Nebula/Graphics/glsl/Uniform/uniform.hh>
+#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/free.hh>
 
 void	Neb::glsl::Uniform::Scalar::Mat4::load(physx::PxMat44 m) {
 	assert(o_ != -1);

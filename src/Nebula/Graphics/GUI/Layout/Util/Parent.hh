@@ -11,6 +11,8 @@ namespace Neb {
 			namespace Layout {
 				namespace Util {
 					class Parent: virtual public Neb::Util::Parent<Neb::Graphics::GUI::Layout::Base> {
+						public:
+							Neb::Graphics::Window::Base_s			getWindow();
 					};
 				}
 			}

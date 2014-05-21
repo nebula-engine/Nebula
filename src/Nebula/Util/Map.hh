@@ -29,6 +29,8 @@ namespace Neb {
 			typedef typename map_type::value_type				value_type_const;
 			typedef std::pair<Neb::Util::index_type, mapped_type>		value_type;
 			
+			enum { CONTINUE, BREAK };
+
 			/** @brief Constructor */
 			Map() {}
 			Map(factory_weak factory): factory_(factory) {}
@@ -56,6 +58,20 @@ namespace Neb {
 
 				for(auto it = map_.cbegin(); it != map_.cend(); ++it) {
 					f(it);
+				}
+			}
+			void				for_each_int(std::function<int(const_iterator)> const & f) {
+				boost::lock_guard<boost::mutex> lk(mutex_);
+				
+				int ret;
+				
+				for(auto it = map_.cbegin(); it != map_.cend(); ++it) {
+					ret = f(it);
+					if(ret == CONTINUE) {
+						continue;
+					} else {
+						break;
+					}
 				}
 			}
 			/** */

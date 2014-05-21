@@ -29,13 +29,14 @@ namespace Neb {
 
 					Neb::Graphics::Context::Util::Parent_s		getParent();
 
+					Neb::Graphics::Context::Base_s			isContextBase();
+					
 					void				resize(int w, int h);
 					void				render(double time, Neb::Graphics::Window::Base_s window);
 
 				private:
-					//unsigned int					flag_;
 
-					Neb::Graphics::Context::Util::Parent_w		window_;
+					Neb::Graphics::Context::Util::Parent_s		parent_;
 				public://private:
 					/** @brief scene.
 					 * weak because scene is owned by app.
@@ -45,8 +46,8 @@ namespace Neb {
 					 * weak because layout is owned by app.
 					 */
 					Neb::Graphics::GUI::Layout::Base_w			layout_;
-					Neb::Camera::View::Base_s			view_;
-					Neb::Camera::Projection::Base_s			proj_;
+					Neb::Graphics::Camera::View::Base_s			view_;
+					Neb::Graphics::Camera::Projection::Base_s			proj_;
 			};
 		}
 	}

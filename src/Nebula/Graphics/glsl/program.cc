@@ -8,10 +8,10 @@
 #include <string.h>
 #include <algorithm>
 
-#include <Nebula/debug.hpp>
-#include <Nebula/Graphics/glsl/shader.hpp>
-#include <Nebula/free.hpp>
-#include <Nebula/Graphics/glsl/program.hpp>
+#include <Nebula/debug.hh>
+#include <Nebula/Graphics/glsl/shader.hh>
+#include <Nebula/free.hh>
+#include <Nebula/Graphics/glsl/program.hh>
 
 Neb::glsl::program::program()
 {
