@@ -20,6 +20,8 @@
 #include <Nebula/network2/server.hh>
 #include <Nebula/network2/client.hh>
 
+#include <Nebula/Message/Types.hh>
+
 #include <Nebula/Scene/Util/Parent.hh>
 
 #include <Nebula/Graphics/Window/Base.hh>
@@ -141,6 +143,7 @@ namespace Neb {
 				void				reset_client(char const *, unsigned short);		
 				void				send_server(gal::network::omessage_s);
 				void				send_client(gal::network::omessage_s);
+				void				sendClient(Neb::Message::OBase_s message);
 				int				transmit_scenes(Neb::Network::Communicating_s);
 				/** @} */
 			private:

@@ -108,7 +108,8 @@ namespace Neb {
 				/** @} */
 
 				/** @name Accessors @{ */
-				//virtual Neb::Actor::Base_s				get_projectile();
+				virtual Neb::Actor::Base_s				get_projectile();
+
 				Neb::Actor::Util::Address				getAddress() const;
 				virtual physx::PxTransform				getPose();
 				virtual physx::PxTransform				getPoseGlobal();

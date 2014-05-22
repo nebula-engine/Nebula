@@ -1,0 +1,121 @@
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free}{\section{\-Neb\-:\-:\-Graphics\-:\-:\-Camera\-:\-:\-View\-:\-:\-Free \-Class \-Reference}
+\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free}\index{\-Neb\-::\-Graphics\-::\-Camera\-::\-View\-::\-Free@{\-Neb\-::\-Graphics\-::\-Camera\-::\-View\-::\-Free}}
+}
+
+
+free flying camera this camera can move freely through the scene user input in interpreted as three-\/component velocity and yaw and pitch rate  
+
+
+
+
+{\ttfamily \#include $<$\-Free.\-hh$>$}
+
+
+
+\-Inheritance diagram for \-Neb\-:\-:\-Graphics\-:\-:\-Camera\-:\-:\-View\-:\-:\-Free\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free__inherit__graph}
+\end{center}
+\end{figure}
+
+
+\-Collaboration diagram for \-Neb\-:\-:\-Graphics\-:\-:\-Camera\-:\-:\-View\-:\-:\-Free\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_1_1Flag}{\-Flag}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classNeb_1_1Map}{\-Map}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a4029cc5e1912c93d1d0d82ca6ed7c125}{virtual physx\-::\-Px\-Mat44 \hyperlink{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a4029cc5e1912c93d1d0d82ca6ed7c125}{view} ()}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a4029cc5e1912c93d1d0d82ca6ed7c125}
+
+\begin{DoxyCompactList}\small\item\em view matrix \end{DoxyCompactList}\item 
+virtual void \hyperlink{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a735e8aa6d1a5d9bfd925fc6a4192b3ba}{step} (double)
+\begin{DoxyCompactList}\small\item\em \-Step. \end{DoxyCompactList}\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a0123e8820b5df74c2c98067f0308e3c5}{void {\bfseries init} ()}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a0123e8820b5df74c2c98067f0308e3c5}
+
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf constructors}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a2c54b77bc158e4a4de8cdc65ea9c8039}{{\bfseries \-Free} (\-Neb\-::\-Graphics\-::\-Context\-::\-Base\-\_\-s parent)}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a2c54b77bc158e4a4de8cdc65ea9c8039}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a8254b484c472cb67b6df2141ca84b311}{float {\bfseries pitch\-\_\-}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a8254b484c472cb67b6df2141ca84b311}
+
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a156a504fa93cf9c7c858208dff82bc88}{float {\bfseries yaw\-\_\-}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a156a504fa93cf9c7c858208dff82bc88}
+
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a8cd06c2837cac6dc768b58b12c2c0b59}{physx\-::\-Px\-Vec4 {\bfseries eye\-\_\-}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a8cd06c2837cac6dc768b58b12c2c0b59}
+
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_ab961fdfcb6e3cce869e89578186d489d}{physx\-::\-Px\-Vec3 {\bfseries center\-\_\-}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_ab961fdfcb6e3cce869e89578186d489d}
+
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a712db542a3b1f33f86c1b82cd32c884a}{physx\-::\-Px\-Vec3 {\bfseries look\-\_\-}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a712db542a3b1f33f86c1b82cd32c884a}
+
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_aecb57d23d05d2255c3a8a70cac0c3b83}{physx\-::\-Px\-Vec3 {\bfseries up\-\_\-}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_aecb57d23d05d2255c3a8a70cac0c3b83}
+
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_af674475d3eabae042324b6a7438ef849}{physx\-::\-Px\-Vec3 {\bfseries v0\-\_\-}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_af674475d3eabae042324b6a7438ef849}
+
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_ae0a5e284d3051b83790fdc045d1a3972}{physx\-::\-Px\-Vec3 {\bfseries v1\-\_\-}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_ae0a5e284d3051b83790fdc045d1a3972}
+
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_ae0fe1f9e9873c7484fb7f84beddee9e5}{\-Neb\-::\-Graphics\-::\-Window\-::\-Base\-\_\-w {\bfseries window\-\_\-}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_ae0fe1f9e9873c7484fb7f84beddee9e5}
+
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a10e2aaa526b965dc19b5b5a1a29ded18}{std\-::map$<$ int, unsigned int $>$ {\bfseries key\-\_\-flag\-\_\-}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a10e2aaa526b965dc19b5b5a1a29ded18}
+
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a9dd0768ea3f42cc80b6a84677f24365a}{std\-::map$<$ int, physx\-::\-Px\-Vec3 $>$ {\bfseries head\-\_\-}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a9dd0768ea3f42cc80b6a84677f24365a}
+
+\item 
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_af07d5f56e905e7ae56bd95b49b1ee167}{std\-::map$<$ unsigned int, int $>$ {\bfseries head\-\_\-flag\-\_\-}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_af07d5f56e905e7ae56bd95b49b1ee167}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+free flying camera this camera can move freely through the scene user input in interpreted as three-\/component velocity and yaw and pitch rate 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a735e8aa6d1a5d9bfd925fc6a4192b3ba}{\index{\-Neb\-::\-Graphics\-::\-Camera\-::\-View\-::\-Free@{\-Neb\-::\-Graphics\-::\-Camera\-::\-View\-::\-Free}!step@{step}}
+\index{step@{step}!Neb::Graphics::Camera::View::Free@{\-Neb\-::\-Graphics\-::\-Camera\-::\-View\-::\-Free}}
+\subsubsection[{step}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Neb\-::\-Graphics\-::\-Camera\-::\-View\-::\-Free\-::step} (
+\begin{DoxyParamCaption}
+\item[{double}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free_a735e8aa6d1a5d9bfd925fc6a4192b3ba}
+
+
+\-Step. 
+
+\begin{DoxyRefDesc}{\-Todo}
+\item[\hyperlink{todo__todo000009}{\-Todo}]explain when in timeline this occurs and in which thread and why \end{DoxyRefDesc}
+
+
+\-Implements \hyperlink{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Base_a90b789b94d88db1e913f3c4933ea41d4}{\-Neb\-::\-Graphics\-::\-Camera\-::\-View\-::\-Base}.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/\-Nebula/\-Graphics/\-Camera/\-View/\-Free.\-hh\item 
+src/\-Nebula/\-Graphics/\-Camera/\-View/\-Free.\-cc\end{DoxyCompactItemize}

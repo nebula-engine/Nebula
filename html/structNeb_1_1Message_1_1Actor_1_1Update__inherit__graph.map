@@ -1,4 +1,5 @@
-<map id="Neb::Message::Actor::Update" name="Neb::Message::Actor::Update">
-<area shape="rect" id="node2" href="$structNeb_1_1Message_1_1Actor_1_1IUpdate.html" title="Neb::Message::Actor\l::IUpdate" alt="" coords="5,97,152,138"/>
-<area shape="rect" id="node3" href="$structNeb_1_1Message_1_1Actor_1_1OUpdate.html" title="Neb::Message::Actor\l::OUpdate" alt="" coords="176,97,323,138"/>
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$structNeb_1_1Message_1_1Actor_1_1IUpdate.html" title="Neb::Message::Actor::IUpdate" alt="" coords="5,160,205,189"/>
+<area shape="rect" id="node7" href="$structNeb_1_1Message_1_1Actor_1_1OUpdate.html" title="Neb::Message::Actor::OUpdate" alt="" coords="229,160,435,189"/>
+<area shape="rect" id="node2" href="$classNeb_1_1Message_1_1Base.html" title="Base" alt="" coords="147,5,291,35"/>
 </map>

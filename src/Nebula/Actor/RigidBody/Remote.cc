@@ -21,7 +21,7 @@ void		Neb::Actor::RigidBody::Remote::step(double const & time, double const & dt
 		msg.reset(new gal::network::omessage);
 		control_update.reset(new Neb::Message::Actor::Control::RigidBody::OUpdate);
 		
-		control_update->addr_.load_this(isActorBase());
+		control_update->i_ = i_;
 		control_update->control_.ptr_ = control_;
 		
 		control_update->serialize(msg->ar_, 0);

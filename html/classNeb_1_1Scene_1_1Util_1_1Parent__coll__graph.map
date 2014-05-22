@@ -1,6 +1,7 @@
-<map id="Neb::Scene::Util::Parent" name="Neb::Scene::Util::Parent">
-<area shape="rect" id="node2" href="$classNeb_1_1Util_1_1Parent.html" title="Neb::Util::Parent\&lt;\l Neb::Scene::Base \&gt;" alt="" coords="22,113,167,154"/>
-<area shape="rect" id="node3" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Scene\l::Base \&gt;" alt="" coords="5,6,164,47"/>
-<area shape="rect" id="node4" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases " alt="" coords="197,120,320,147"/>
-<area shape="rect" id="node6" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="344,120,464,147"/>
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classNeb_1_1Util_1_1Parent.html" title="Neb::Util::Parent\&lt; Neb::Scene::Base \&gt;" alt="" coords="108,197,359,227"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="9,101,132,131"/>
+<area shape="rect" id="node6" href="$classNeb_1_1Util_1_1Registry.html" title="Neb::Util::Registry" alt="" coords="5,5,136,35"/>
+<area shape="rect" id="node8" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Scene::Base \&gt;" alt="" coords="156,101,367,131"/>
+<area shape="rect" id="node11" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="383,197,503,227"/>
 </map>

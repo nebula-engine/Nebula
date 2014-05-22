@@ -1,5 +1,3 @@
-<map id="Neb::Message::Actor::Base" name="Neb::Message::Actor::Base">
-<area shape="rect" id="node2" href="$classNeb_1_1Message_1_1Base.html" title="Neb::Message::Base" alt="" coords="5,96,149,123"/>
-<area shape="rect" id="node3" href="$classNeb_1_1Actor_1_1Util_1_1Address.html" title="Neb::Actor::Util::Address" alt="" coords="174,96,343,123"/>
-<area shape="rect" id="node4" href="$classNeb_1_1Scene_1_1Util_1_1Address.html" title="Neb::Scene::Util::Address" alt="" coords="171,5,345,32"/>
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classNeb_1_1Message_1_1Base.html" title="Base" alt="" coords="25,5,169,35"/>
 </map>

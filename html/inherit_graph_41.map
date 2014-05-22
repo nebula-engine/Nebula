@@ -1,3 +1,4 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classNeb_1_1Event_1_1Actor_1_1Fire.html" title="Neb::Event::Actor::Fire" alt="" coords="5,5,163,32"/>
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$structNeb_1_1FuncMap_1_1____base__function.html" title="Neb::FuncMap::__base_function" alt="" coords="5,5,216,35"/>
+<area shape="rect" id="node3" href="$structNeb_1_1FuncMap_1_1____function.html" title="Neb::FuncMap::__function\&lt; R, A \&gt;" alt="" coords="264,5,491,35"/>
 </map>

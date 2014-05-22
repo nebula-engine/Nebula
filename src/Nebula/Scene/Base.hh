@@ -125,12 +125,6 @@ namespace Neb {
 				Neb::Map<Neb::Actor::Base>				actors_;
 				std::map<std::string, Neb::Actor::Base_s>		actors_deferred_;
 		};
-		class Local: public Neb::Scene::Base {
-			void				step(double const & time, double const & dt);
-		};
-		class Remote: public Neb::Scene::Base {
-			void				step(double const & time, double const & dt);
-		};
 	}
 }
 

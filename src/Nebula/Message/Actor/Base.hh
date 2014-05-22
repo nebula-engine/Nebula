@@ -8,34 +8,32 @@
 namespace Neb {
 	namespace Message {
 		namespace Actor {
-			class Base: public Neb::Message::Base {
+			class Base:
+				virtual public Neb::Message::Base
+			{
 				public:
-					template<class Archive> void		serialize(Archive & ar, unsigned int const & version) {
-						ar & addr_;
-						serializeDerived(ar, version);
+					virtual void		serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
+						ar & i_;
 					}
+					
 				public:
-					Neb::Actor::Util::Address			addr_;
+					Neb::Util::index_type			i_;
 			};
-			class IBase: public Neb::Message::Actor::Base {
+			class IBase:
+				virtual public Neb::Message::IBase,
+				virtual public Neb::Message::Actor::Base
+			{
 				public:
-					template<class Archive> void		serialize(Archive & ar, unsigned int const & version) {
-						ar & addr_;
-						serializeDerived(ar, version);
-					}
-
-					virtual void		serializeDerived(
+					virtual void		serialize(
 							boost::archive::polymorphic_iarchive & ar,
 							unsigned int const & version) = 0;
 			};
-			class OBase: public Neb::Message::Actor::Base {
+			class OBase:
+				virtual public Neb::Message::OBase,
+				virtual public Neb::Message::Actor::Base
+			{
 				public:
-					template<class Archive> void		serialize(Archive & ar, unsigned int const & version) {
-						ar & addr_;
-						serializeDerived(ar, version);
-					}
-
-					virtual void		serializeDerived(
+					virtual void		serialize(
 							boost::archive::polymorphic_oarchive & ar,
 							unsigned int const & version) = 0;
 			};

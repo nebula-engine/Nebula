@@ -1,5 +1,6 @@
-<map id="Neb::Light::Base" name="Neb::Light::Base">
-<area shape="rect" id="node2" href="$classNeb_1_1Light_1_1Directional.html" title="Neb::Light::Directional" alt="" coords="5,80,157,107"/>
-<area shape="rect" id="node3" href="$classNeb_1_1Light_1_1Point.html" title="Neb::Light::Point" alt="" coords="181,80,301,107"/>
-<area shape="rect" id="node4" href="$classNeb_1_1Light_1_1Spot.html" title="Neb::Light::Spot" alt="" coords="325,80,441,107"/>
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$classNeb_1_1Light_1_1Directional.html" title="Neb::Light::Directional" alt="" coords="5,160,157,189"/>
+<area shape="rect" id="node7" href="$classNeb_1_1Light_1_1Point.html" title="Neb::Light::Point" alt="" coords="181,160,301,189"/>
+<area shape="rect" id="node9" href="$classNeb_1_1Light_1_1Spot.html" title="Neb::Light::Spot" alt="" coords="325,160,443,189"/>
+<area shape="rect" id="node2" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="180,5,303,35"/>
 </map>

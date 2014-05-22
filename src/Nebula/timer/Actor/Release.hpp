@@ -3,7 +3,7 @@
 
 #include <Nebula/timer/Actor/Base.hpp>
 
-namespace neb {
+namespace Neb {
 	namespace Timer {
 		namespace Actor {
 			class Release: public Neb::Timer::Actor::Base {

@@ -1,7 +1,5 @@
-<map id="Neb::Message::Actor::Control::RigidBody::Create" name="Neb::Message::Actor::Control::RigidBody::Create">
-<area shape="rect" id="node2" href="$classNeb_1_1Message_1_1Actor_1_1Base.html" title="Neb::Message::Actor\l::Base" alt="" coords="552,15,699,57"/>
-<area shape="rect" id="node3" href="$classNeb_1_1Message_1_1Base.html" title="Neb::Message::Base" alt="" coords="290,5,435,32"/>
-<area shape="rect" id="node4" href="$classNeb_1_1Actor_1_1Util_1_1Address.html" title="Neb::Actor::Util::Address" alt="" coords="278,56,447,83"/>
-<area shape="rect" id="node5" href="$classNeb_1_1Scene_1_1Util_1_1Address.html" title="Neb::Scene::Util::Address" alt="" coords="6,56,181,83"/>
-<area shape="rect" id="node6" href="$classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt;\l Neb::Actor::Control\l::RigidBody::Neb::Message\l::Actor::Base \&gt;" alt="" coords="534,81,717,151"/>
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classNeb_1_1Message_1_1Actor_1_1Base.html" title="Neb::Message::Actor::Base" alt="" coords="303,5,487,35"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Message_1_1Base.html" title="Base" alt="" coords="7,5,151,35"/>
+<area shape="rect" id="node6" href="$classNeb_1_1WrapperTyped.html" title="Neb::WrapperTyped\&lt; Neb::Actor::Control::RigidBody::Base \&gt;" alt="" coords="204,59,585,88"/>
 </map>

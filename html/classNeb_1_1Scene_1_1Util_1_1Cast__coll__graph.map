@@ -1,3 +1,4 @@
-<map id="Neb::Scene::Util::Cast" name="Neb::Scene::Util::Cast">
-<area shape="rect" id="node2" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases " alt="" coords="20,96,143,123"/>
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="21,101,144,131"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Util_1_1Registry.html" title="Neb::Util::Registry" alt="" coords="17,5,148,35"/>
 </map>

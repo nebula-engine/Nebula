@@ -1,0 +1,26 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classNeb_1_1Actor_1_1RigidBody_1_1Remote.html" title="Neb::Actor::RigidBody::Remote" alt="" coords="2025,313,2231,343"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Actor_1_1RigidBody_1_1Base.html" title="Neb::Actor::RigidBody::Base" alt="" coords="1772,267,1961,296"/>
+<area shape="rect" id="node59" href="$classNeb_1_1Actor_1_1RigidDynamic_1_1Base.html" title="Neb::Actor::RigidDynamic::Base" alt="" coords="2021,260,2235,289"/>
+<area shape="rect" id="node6" href="$classNeb_1_1Actor_1_1RigidActor_1_1Base.html" title="Neb::Actor::RigidActor::Base" alt="" coords="1520,273,1712,303"/>
+<area shape="rect" id="node50" href="$classNeb_1_1Actor_1_1RigidActor_1_1Remote.html" title="Neb::Actor::RigidActor::Remote" alt="" coords="1763,327,1971,356"/>
+<area shape="rect" id="node8" href="$classNeb_1_1Actor_1_1Actor_1_1Base.html" title="Neb::Actor::Actor::Base" alt="" coords="1307,287,1469,316"/>
+<area shape="rect" id="node53" href="$classNeb_1_1Actor_1_1Actor_1_1Remote.html" title="Neb::Actor::Actor::Remote" alt="" coords="1527,333,1705,363"/>
+<area shape="rect" id="node10" href="$classNeb_1_1Actor_1_1Base.html" title="Base" alt="" coords="1133,319,1256,348"/>
+<area shape="rect" id="node56" href="$classNeb_1_1Actor_1_1Remote.html" title="Neb::Actor::Remote" alt="" coords="1319,340,1457,369"/>
+<area shape="rect" id="node12" href="$classNeb_1_1Actor_1_1Util_1_1Parent.html" title="abstract class for parent of an " alt="" coords="841,265,999,295"/>
+<area shape="rect" id="node14" href="$classNeb_1_1Util_1_1Parent.html" title="Neb::Util::Parent\&lt; Neb::Actor::Base \&gt;" alt="" coords="539,328,784,357"/>
+<area shape="rect" id="node16" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="284,168,407,197"/>
+<area shape="rect" id="node24" href="$classNeb_1_1Scene_1_1Util_1_1Cast.html" title="Neb::Scene::Util::Cast" alt="" coords="584,275,739,304"/>
+<area shape="rect" id="node27" href="$classNeb_1_1Actor_1_1Util_1_1Cast.html" title="Neb::Actor::Util::Cast" alt="" coords="587,168,736,197"/>
+<area shape="rect" id="node31" href="$classNeb_1_1Shape_1_1Util_1_1Parent.html" title="abstract class for parent of a shape" alt="" coords="837,133,1003,163"/>
+<area shape="rect" id="node33" href="$classNeb_1_1Util_1_1Parent.html" title="Neb::Util::Parent\&lt; Neb::Shape::Base \&gt;" alt="" coords="536,64,787,93"/>
+<area shape="rect" id="node39" href="$classNeb_1_1Shape_1_1Util_1_1Cast.html" title="Neb::Shape::Util::Cast" alt="" coords="584,11,739,40"/>
+<area shape="rect" id="node18" href="$classNeb_1_1Util_1_1Registry.html" title="Neb::Util::Registry" alt="" coords="5,168,136,197"/>
+<area shape="rect" id="node20" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Actor::Base \&gt;" alt="" coords="244,417,447,447"/>
+<area shape="rect" id="node22" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="601,221,721,251"/>
+<area shape="rect" id="node36" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Shape::Base \&gt;" alt="" coords="240,5,451,35"/>
+<area shape="rect" id="node44" href="$classNeb_1_1Util_1_1Release.html" title="Neb::Util::Release" alt="" coords="855,319,985,348"/>
+<area shape="rect" id="node46" href="$classNeb_1_1Util_1_1Typed.html" title="Typed." alt="" coords="861,372,979,401"/>
+<area shape="rect" id="node48" href="$classNeb_1_1Filter_1_1Data.html" title="Neb::Filter::Data" alt="" coords="861,425,979,455"/>
+</map>

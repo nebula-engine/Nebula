@@ -1,4 +1,4 @@
-\hypertarget{classgal_1_1network_1_1communicating}{\section{gal\-:\-:network\-:\-:communicating Class Reference}
+\hypertarget{classgal_1_1network_1_1communicating}{\section{gal\-:\-:network\-:\-:communicating \-Class \-Reference}
 \label{classgal_1_1network_1_1communicating}\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}}
 }
 
@@ -7,31 +7,30 @@
 
 
 
-Inheritance diagram for gal\-:\-:network\-:\-:communicating\-:
-\nopagebreak
+\-Inheritance diagram for gal\-:\-:network\-:\-:communicating\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=349pt]{classgal_1_1network_1_1communicating__inherit__graph}
+\includegraphics[width=348pt]{classgal_1_1network_1_1communicating__inherit__graph}
 \end{center}
 \end{figure}
-\subsection*{Public Types}
+\subsection*{\-Public \-Types}
 \begin{DoxyCompactItemize}
 \item 
-enum \{ {\bfseries M\-A\-X\-\_\-\-M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-T\-H} = 10000
+enum \{ {\bfseries \-M\-A\-X\-\_\-\-M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-T\-H} =  10000
  \}
 \item 
-\hypertarget{classgal_1_1network_1_1communicating_aef6c11aca9b227ec65e289b5f194cd83}{typedef int {\bfseries H\-E\-A\-D\-E\-R\-\_\-\-T\-Y\-P\-E}}\label{classgal_1_1network_1_1communicating_aef6c11aca9b227ec65e289b5f194cd83}
+\hypertarget{classgal_1_1network_1_1communicating_aef6c11aca9b227ec65e289b5f194cd83}{typedef int {\bfseries \-H\-E\-A\-D\-E\-R\-\_\-\-T\-Y\-P\-E}}\label{classgal_1_1network_1_1communicating_aef6c11aca9b227ec65e289b5f194cd83}
 
 \item 
-\hypertarget{classgal_1_1network_1_1communicating_a20c6f2dc53a296b6b34a82d5dc8f894a}{typedef std\-::shared\-\_\-ptr\\*
+\hypertarget{classgal_1_1network_1_1communicating_a20c6f2dc53a296b6b34a82d5dc8f894a}{typedef std\-::shared\-\_\-ptr\*
 $<$ \hyperlink{classgal_1_1network_1_1communicating}{communicating} $>$ {\bfseries shared\-\_\-t}}\label{classgal_1_1network_1_1communicating_a20c6f2dc53a296b6b34a82d5dc8f894a}
 
 \item 
 \hypertarget{classgal_1_1network_1_1communicating_acde720b70acbd7aecc86d2ebd4d91113}{typedef std\-::vector$<$ shared\-\_\-t $>$ {\bfseries vector\-\_\-t}}\label{classgal_1_1network_1_1communicating_acde720b70acbd7aecc86d2ebd4d91113}
 
 \end{DoxyCompactItemize}
-\subsection*{Public Member Functions}
+\subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classgal_1_1network_1_1communicating_adccfea2eeae7892217bf01f71f011d93}{communicating} (int socket)
@@ -61,17 +60,55 @@ void \hyperlink{classgal_1_1network_1_1communicating_a383465f75d9d656a0e80ea3f57
 \item 
 void \hyperlink{classgal_1_1network_1_1communicating_a5a0d9fbfe61ff1d35380854d8aa3860e}{handle\-\_\-do\-\_\-write} ()
 \end{DoxyCompactItemize}
-\subsection*{Protected Attributes}
+\subsection*{\-Protected \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
 int \hyperlink{classgal_1_1network_1_1communicating_afe5f9de9e2535e261c78485dec4d9e82}{socket\-\_\-}
 \end{DoxyCompactItemize}
+\subsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classgal_1_1network_1_1communicating_addb0099bce03feeb9ff20a5244976c54}{\-H\-E\-A\-D\-E\-R\-\_\-\-T\-Y\-P\-E {\bfseries write\-\_\-header\-\_\-}}\label{classgal_1_1network_1_1communicating_addb0099bce03feeb9ff20a5244976c54}
+
+\item 
+std\-::deque$<$ std\-::shared\-\_\-ptr\*
+$<$ \hyperlink{classgal_1_1network_1_1message}{message} $>$ $>$ \hyperlink{classgal_1_1network_1_1communicating_abc369b818849e23007089c5f7baf8924}{write\-\_\-queue\-\_\-}
+\item 
+bool \hyperlink{classgal_1_1network_1_1communicating_a4dc031687aa84ce7e3cca5ce9839d5d7}{terminate\-\_\-}
+\item 
+std\-::thread \hyperlink{classgal_1_1network_1_1communicating_afc83d88ea30befb842e16a5cf7d5e936}{write\-\_\-thread\-\_\-}
+\item 
+std\-::thread \hyperlink{classgal_1_1network_1_1communicating_a2d94e9fcd2cd765768b354a87b726bf3}{read\-\_\-thread\-\_\-}
+\item 
+std\-::condition\-\_\-variable \hyperlink{classgal_1_1network_1_1communicating_aff2d38da260c4e5f9182eec6f8bc16bd}{cv\-\_\-}
+\item 
+\hypertarget{classgal_1_1network_1_1communicating_ac1027b607900f3d087baac99aba3507e}{std\-::condition\-\_\-variable {\bfseries cv\-\_\-ready\-\_\-}}\label{classgal_1_1network_1_1communicating_ac1027b607900f3d087baac99aba3507e}
+
+\item 
+std\-::mutex \hyperlink{classgal_1_1network_1_1communicating_a7afe6898e58ca9087f05124cf4d18b65}{mutex\-\_\-}
+\item 
+\hypertarget{classgal_1_1network_1_1communicating_a6f59c7c2c3034687f96369a9c76cc90b}{std\-::mutex {\bfseries mutex\-\_\-start\-\_\-}}\label{classgal_1_1network_1_1communicating_a6f59c7c2c3034687f96369a9c76cc90b}
+
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf \-Read \-Data \-Members @\{}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classgal_1_1network_1_1communicating_afe6f305710046f3fcf35c07395e51927}{std\-::shared\-\_\-ptr$<$ \hyperlink{classgal_1_1network_1_1message}{message} $>$ {\bfseries read\-\_\-msg\-\_\-}}\label{classgal_1_1network_1_1communicating_afe6f305710046f3fcf35c07395e51927}
+
+\item 
+\hypertarget{classgal_1_1network_1_1communicating_aab4813fff665c6d4379ba8f410f97bd7}{\-H\-E\-A\-D\-E\-R\-\_\-\-T\-Y\-P\-E {\bfseries read\-\_\-header\-\_\-}}\label{classgal_1_1network_1_1communicating_aab4813fff665c6d4379ba8f410f97bd7}
+
+\item 
+\hypertarget{classgal_1_1network_1_1communicating_aa33fdc45c281e7664950a272e63b585f}{char {\bfseries read\-\_\-buffer\-\_\-} \mbox{[}\-M\-A\-X\-\_\-\-M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-T\-H\mbox{]}}\label{classgal_1_1network_1_1communicating_aa33fdc45c281e7664950a272e63b585f}
+
+\end{DoxyCompactItemize}
+\end{Indent}
 
 
-\subsection{Detailed Description}
+\subsection{\-Detailed \-Description}
 socket communicating 
 
-\subsection{Constructor \& Destructor Documentation}
+\subsection{\-Constructor \& \-Destructor \-Documentation}
 \hypertarget{classgal_1_1network_1_1communicating_adccfea2eeae7892217bf01f71f011d93}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!communicating@{communicating}}
 \index{communicating@{communicating}!gal::network::communicating@{gal\-::network\-::communicating}}
 \subsubsection[{communicating}]{\setlength{\rightskip}{0pt plus 5cm}neb\-::network\-::communicating\-::communicating (
@@ -81,97 +118,116 @@ socket communicating
 )}}\label{classgal_1_1network_1_1communicating_adccfea2eeae7892217bf01f71f011d93}
 ctor 
 
-\subsection{Member Function Documentation}
+\subsection{\-Member \-Function \-Documentation}
 \hypertarget{classgal_1_1network_1_1communicating_a3b39dcb940d746f44b6c2c72e198450d}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!close@{close}}
 \index{close@{close}!gal::network::communicating@{gal\-::network\-::communicating}}
-\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void gal\-::network\-::communicating\-::close (
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::close} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{classgal_1_1network_1_1communicating_a3b39dcb940d746f44b6c2c72e198450d}
 close \hypertarget{classgal_1_1network_1_1communicating_a383465f75d9d656a0e80ea3f57963630}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!handle\-\_\-do\-\_\-read\-\_\-body@{handle\-\_\-do\-\_\-read\-\_\-body}}
 \index{handle\-\_\-do\-\_\-read\-\_\-body@{handle\-\_\-do\-\_\-read\-\_\-body}!gal::network::communicating@{gal\-::network\-::communicating}}
-\subsubsection[{handle\-\_\-do\-\_\-read\-\_\-body}]{\setlength{\rightskip}{0pt plus 5cm}void gal\-::network\-::communicating\-::handle\-\_\-do\-\_\-read\-\_\-body (
+\subsubsection[{handle\-\_\-do\-\_\-read\-\_\-body}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::handle\-\_\-do\-\_\-read\-\_\-body} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{classgal_1_1network_1_1communicating_a383465f75d9d656a0e80ea3f57963630}
 handle read body \hypertarget{classgal_1_1network_1_1communicating_ab1434959e6a6b7311e7189078679124f}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!handle\-\_\-do\-\_\-read\-\_\-header@{handle\-\_\-do\-\_\-read\-\_\-header}}
 \index{handle\-\_\-do\-\_\-read\-\_\-header@{handle\-\_\-do\-\_\-read\-\_\-header}!gal::network::communicating@{gal\-::network\-::communicating}}
-\subsubsection[{handle\-\_\-do\-\_\-read\-\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}void gal\-::network\-::communicating\-::handle\-\_\-do\-\_\-read\-\_\-header (
+\subsubsection[{handle\-\_\-do\-\_\-read\-\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::handle\-\_\-do\-\_\-read\-\_\-header} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{classgal_1_1network_1_1communicating_ab1434959e6a6b7311e7189078679124f}
 handle read header \hypertarget{classgal_1_1network_1_1communicating_a5a0d9fbfe61ff1d35380854d8aa3860e}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!handle\-\_\-do\-\_\-write@{handle\-\_\-do\-\_\-write}}
 \index{handle\-\_\-do\-\_\-write@{handle\-\_\-do\-\_\-write}!gal::network::communicating@{gal\-::network\-::communicating}}
-\subsubsection[{handle\-\_\-do\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}void gal\-::network\-::communicating\-::handle\-\_\-do\-\_\-write (
+\subsubsection[{handle\-\_\-do\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::handle\-\_\-do\-\_\-write} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{classgal_1_1network_1_1communicating_a5a0d9fbfe61ff1d35380854d8aa3860e}
 handle write \hypertarget{classgal_1_1network_1_1communicating_a43bf55d2d11f1798b4814e069639a239}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!start@{start}}
 \index{start@{start}!gal::network::communicating@{gal\-::network\-::communicating}}
-\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void gal\-::network\-::communicating\-::start (
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::start} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{classgal_1_1network_1_1communicating_a43bf55d2d11f1798b4814e069639a239}
 thread write \hypertarget{classgal_1_1network_1_1communicating_abd5efaa6563dda2097f69ae3679f87a1}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!thread\-\_\-read@{thread\-\_\-read}}
 \index{thread\-\_\-read@{thread\-\_\-read}!gal::network::communicating@{gal\-::network\-::communicating}}
-\subsubsection[{thread\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}void gal\-::network\-::communicating\-::thread\-\_\-read (
+\subsubsection[{thread\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::thread\-\_\-read} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{classgal_1_1network_1_1communicating_abd5efaa6563dda2097f69ae3679f87a1}
-thread read \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000015}{Todo}]pass exception to main thread ( or whoever ) \end{DoxyRefDesc}
+thread read \begin{DoxyRefDesc}{\-Todo}
+\item[\hyperlink{todo__todo000018}{\-Todo}]pass exception to main thread ( or whoever ) \end{DoxyRefDesc}
 \hypertarget{classgal_1_1network_1_1communicating_aeba5f8e491d9c6a4ddd75aa0a698bed9}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!thread\-\_\-read\-\_\-body@{thread\-\_\-read\-\_\-body}}
 \index{thread\-\_\-read\-\_\-body@{thread\-\_\-read\-\_\-body}!gal::network::communicating@{gal\-::network\-::communicating}}
-\subsubsection[{thread\-\_\-read\-\_\-body}]{\setlength{\rightskip}{0pt plus 5cm}void gal\-::network\-::communicating\-::thread\-\_\-read\-\_\-body (
+\subsubsection[{thread\-\_\-read\-\_\-body}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::thread\-\_\-read\-\_\-body} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{classgal_1_1network_1_1communicating_aeba5f8e491d9c6a4ddd75aa0a698bed9}
 thread read body \hypertarget{classgal_1_1network_1_1communicating_aa7ef767d5117ba5d99cddcb1d7696a1d}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!thread\-\_\-read\-\_\-header@{thread\-\_\-read\-\_\-header}}
 \index{thread\-\_\-read\-\_\-header@{thread\-\_\-read\-\_\-header}!gal::network::communicating@{gal\-::network\-::communicating}}
-\subsubsection[{thread\-\_\-read\-\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}void gal\-::network\-::communicating\-::thread\-\_\-read\-\_\-header (
+\subsubsection[{thread\-\_\-read\-\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::thread\-\_\-read\-\_\-header} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{classgal_1_1network_1_1communicating_aa7ef767d5117ba5d99cddcb1d7696a1d}
 thread read header \hypertarget{classgal_1_1network_1_1communicating_ae183aa977aa6963e96a1abe2a94a749c}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!thread\-\_\-write@{thread\-\_\-write}}
 \index{thread\-\_\-write@{thread\-\_\-write}!gal::network::communicating@{gal\-::network\-::communicating}}
-\subsubsection[{thread\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}void gal\-::network\-::communicating\-::thread\-\_\-write (
+\subsubsection[{thread\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::thread\-\_\-write} (
 \begin{DoxyParamCaption}
 \item[{std\-::shared\-\_\-ptr$<$ {\bf message} $>$}]{}
 \end{DoxyParamCaption}
 )}}\label{classgal_1_1network_1_1communicating_ae183aa977aa6963e96a1abe2a94a749c}
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000014}{Todo}]pass exception to main thread ( or whoever ) \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{\-Todo}
+\item[\hyperlink{todo__todo000017}{\-Todo}]pass exception to main thread ( or whoever ) \end{DoxyRefDesc}
 \hypertarget{classgal_1_1network_1_1communicating_a32da51cf806bdc60b1a653ef20557af9}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!thread\-\_\-write\-\_\-dispatch@{thread\-\_\-write\-\_\-dispatch}}
 \index{thread\-\_\-write\-\_\-dispatch@{thread\-\_\-write\-\_\-dispatch}!gal::network::communicating@{gal\-::network\-::communicating}}
-\subsubsection[{thread\-\_\-write\-\_\-dispatch}]{\setlength{\rightskip}{0pt plus 5cm}void gal\-::network\-::communicating\-::thread\-\_\-write\-\_\-dispatch (
+\subsubsection[{thread\-\_\-write\-\_\-dispatch}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::thread\-\_\-write\-\_\-dispatch} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{classgal_1_1network_1_1communicating_a32da51cf806bdc60b1a653ef20557af9}
 thread write dispath \hypertarget{classgal_1_1network_1_1communicating_ad839348b2caf46ddee874b78afaaeb1f}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!write@{write}}
 \index{write@{write}!gal::network::communicating@{gal\-::network\-::communicating}}
-\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void gal\-::network\-::communicating\-::write (
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf gal\-::network\-::communicating\-::write} (
 \begin{DoxyParamCaption}
 \item[{std\-::shared\-\_\-ptr$<$ {\bf message} $>$}]{}
 \end{DoxyParamCaption}
 )}}\label{classgal_1_1network_1_1communicating_ad839348b2caf46ddee874b78afaaeb1f}
 write 
 
-\subsection{Member Data Documentation}
-\hypertarget{classgal_1_1network_1_1communicating_afe5f9de9e2535e261c78485dec4d9e82}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!socket\-\_\-@{socket\-\_\-}}
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{classgal_1_1network_1_1communicating_aff2d38da260c4e5f9182eec6f8bc16bd}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!cv\-\_\-@{cv\-\_\-}}
+\index{cv\-\_\-@{cv\-\_\-}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{cv\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}std\-::condition\-\_\-variable {\bf gal\-::network\-::communicating\-::cv\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classgal_1_1network_1_1communicating_aff2d38da260c4e5f9182eec6f8bc16bd}
+condition variable \hypertarget{classgal_1_1network_1_1communicating_a7afe6898e58ca9087f05124cf4d18b65}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!mutex\-\_\-@{mutex\-\_\-}}
+\index{mutex\-\_\-@{mutex\-\_\-}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{mutex\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}std\-::mutex {\bf gal\-::network\-::communicating\-::mutex\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classgal_1_1network_1_1communicating_a7afe6898e58ca9087f05124cf4d18b65}
+mutex mutex for write\-\_\-queue\-\_\- and terminate\-\_\- \hypertarget{classgal_1_1network_1_1communicating_a2d94e9fcd2cd765768b354a87b726bf3}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!read\-\_\-thread\-\_\-@{read\-\_\-thread\-\_\-}}
+\index{read\-\_\-thread\-\_\-@{read\-\_\-thread\-\_\-}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{read\-\_\-thread\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}std\-::thread {\bf gal\-::network\-::communicating\-::read\-\_\-thread\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classgal_1_1network_1_1communicating_a2d94e9fcd2cd765768b354a87b726bf3}
+thread read \hypertarget{classgal_1_1network_1_1communicating_afe5f9de9e2535e261c78485dec4d9e82}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!socket\-\_\-@{socket\-\_\-}}
 \index{socket\-\_\-@{socket\-\_\-}!gal::network::communicating@{gal\-::network\-::communicating}}
-\subsubsection[{socket\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int gal\-::network\-::communicating\-::socket\-\_\-\hspace{0.3cm}{\ttfamily [protected]}}}\label{classgal_1_1network_1_1communicating_afe5f9de9e2535e261c78485dec4d9e82}
-socket 
+\subsubsection[{socket\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf gal\-::network\-::communicating\-::socket\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classgal_1_1network_1_1communicating_afe5f9de9e2535e261c78485dec4d9e82}
+socket \hypertarget{classgal_1_1network_1_1communicating_a4dc031687aa84ce7e3cca5ce9839d5d7}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!terminate\-\_\-@{terminate\-\_\-}}
+\index{terminate\-\_\-@{terminate\-\_\-}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{terminate\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf gal\-::network\-::communicating\-::terminate\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classgal_1_1network_1_1communicating_a4dc031687aa84ce7e3cca5ce9839d5d7}
+process body \hypertarget{classgal_1_1network_1_1communicating_abc369b818849e23007089c5f7baf8924}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!write\-\_\-queue\-\_\-@{write\-\_\-queue\-\_\-}}
+\index{write\-\_\-queue\-\_\-@{write\-\_\-queue\-\_\-}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{write\-\_\-queue\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}std\-::deque$<$std\-::shared\-\_\-ptr$<${\bf message}$>$ $>$ {\bf gal\-::network\-::communicating\-::write\-\_\-queue\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classgal_1_1network_1_1communicating_abc369b818849e23007089c5f7baf8924}
+message deque \hypertarget{classgal_1_1network_1_1communicating_afc83d88ea30befb842e16a5cf7d5e936}{\index{gal\-::network\-::communicating@{gal\-::network\-::communicating}!write\-\_\-thread\-\_\-@{write\-\_\-thread\-\_\-}}
+\index{write\-\_\-thread\-\_\-@{write\-\_\-thread\-\_\-}!gal::network::communicating@{gal\-::network\-::communicating}}
+\subsubsection[{write\-\_\-thread\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}std\-::thread {\bf gal\-::network\-::communicating\-::write\-\_\-thread\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classgal_1_1network_1_1communicating_afc83d88ea30befb842e16a5cf7d5e936}
+thread write 
 
-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
 src/\-Nebula/network/communicating.\-hh\item 
-src/\-Nebula/network/communicating.\-cc\end{DoxyCompactItemize}
+src/\-Nebula/network/communicating.\-cc\item 
+src/\-Nebula/network2/communicating.\-cc\end{DoxyCompactItemize}

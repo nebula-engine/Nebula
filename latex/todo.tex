@@ -1,32 +1,59 @@
 
 \begin{DoxyRefList}
-\item[\label{todo__todo000015}%
-\hypertarget{todo__todo000015}{}%
-Member \hyperlink{classgal_1_1network_1_1communicating_abd5efaa6563dda2097f69ae3679f87a1}{gal\-:\-:network\-:\-:communicating\-:\-:thread\-\_\-read} ()]pass exception to main thread ( or whoever )  
-\item[\label{todo__todo000014}%
-\hypertarget{todo__todo000014}{}%
-Member \hyperlink{classgal_1_1network_1_1communicating_ae183aa977aa6963e96a1abe2a94a749c}{gal\-:\-:network\-:\-:communicating\-:\-:thread\-\_\-write} (std\-::shared\-\_\-ptr$<$ message $>$)]pass exception to main thread ( or whoever )  
-\item[\label{todo__todo000019}%
-\hypertarget{todo__todo000019}{}%
-Namespace \hyperlink{namespaceNeb}{Neb} ]replace types with inheritance and possibly shared library support 
+\item[\label{todo__todo000018}%
+\hypertarget{todo__todo000018}{}%
+\-Member \hyperlink{classgal_1_1network_1_1communicating_abd5efaa6563dda2097f69ae3679f87a1}{gal\-:\-:network\-:\-:communicating\-:\-:thread\-\_\-read} ()]pass exception to main thread ( or whoever )  
+\item[\label{todo__todo000017}%
+\hypertarget{todo__todo000017}{}%
+\-Member \hyperlink{classgal_1_1network_1_1communicating_ae183aa977aa6963e96a1abe2a94a749c}{gal\-:\-:network\-:\-:communicating\-:\-:thread\-\_\-write} (std\-::shared\-\_\-ptr$<$ message $>$)]pass exception to main thread ( or whoever )  
+\item[\label{todo__todo000021}%
+\hypertarget{todo__todo000021}{}%
+\-Namespace \hyperlink{namespaceNeb}{\-Neb} ]replace types with inheritance and possibly shared library support 
 
 ways to implement hierarchy of calls to base members (ex. when actor is released, we want to call derived member as well as several base class members) 
 \item[\label{todo__todo000001}%
 \hypertarget{todo__todo000001}{}%
-Member \hyperlink{classNeb_1_1Actor_1_1Base_afc072654755bb4db2e1af77a55e7f8dd}{Neb\-:\-:Actor\-:\-:Base\-:\-:hit} ()]move to derived class  
+\-Member \hyperlink{classNeb_1_1Actor_1_1Base_afc072654755bb4db2e1af77a55e7f8dd}{\-Neb\-:\-:\-Actor\-:\-:\-Base\-:\-:hit} ()]move to derived class  
 \item[\label{todo__todo000002}%
 \hypertarget{todo__todo000002}{}%
-Member \hyperlink{classNeb_1_1Actor_1_1Base_ad51160f955b8bff638c938360ff3ce00}{Neb\-:\-:Actor\-:\-:Base\-:\-:mode\-\_\-update\-\_\-} ]what is this???  
+\-Member \hyperlink{classNeb_1_1Actor_1_1Base_ad51160f955b8bff638c938360ff3ce00}{\-Neb\-:\-:\-Actor\-:\-:\-Base\-:\-:mode\-\_\-update\-\_\-} ]what is this???  
+\item[\label{todo__todo000003}%
+\hypertarget{todo__todo000003}{}%
+\-Member \hyperlink{classNeb_1_1Actor_1_1Control_1_1RigidBody_1_1PD_a650c852608792ed70dc28244f3ac4d9d}{\-Neb\-:\-:\-Actor\-:\-:\-Control\-:\-:\-Rigid\-Body\-:\-:\-P\-D\-:\-:step} (double dt)]replace with independent control system library  
+\item[\label{todo__todo000004}%
+\hypertarget{todo__todo000004}{}%
+\-Member \hyperlink{classNeb_1_1Actor_1_1RigidBody_1_1Local_ad0e1a796b0749eb0e3c075dfa93655af}{\-Neb\-:\-:\-Actor\-:\-:\-Rigid\-Body\-:\-:\-Local\-:\-:step} (double const \&time, double const \&dt)]was step\-\_\-local  
+\item[\label{todo__todo000007}%
+\hypertarget{todo__todo000007}{}%
+\-Member \hyperlink{classNeb_1_1App_1_1Base_a347da33116990d3f31246d0d09b520bb}{\-Neb\-:\-:\-App\-:\-:\-Base\-:\-:server\-\_\-} ]make derived \-App classes for \-Server and \-Client???  
+\item[\label{todo__todo000006}%
+\hypertarget{todo__todo000006}{}%
+\-Member \hyperlink{classNeb_1_1App_1_1Base_a4a6527469072e5d1f01f76215b6b2fd3}{\-Neb\-:\-:\-App\-:\-:\-Base\-:\-:window\-\_\-main\-\_\-} ]since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers. to avoid unwanted shared\-\_\-ptrs to owned objects, care must be taken when passing these objects around. better documentation inside function bodies should be used to let me know what a shared\-\_\-ptr is being used (how it should be treated.  
 \item[\label{todo__todo000008}%
 \hypertarget{todo__todo000008}{}%
-Member \hyperlink{classNeb_1_1Camera_1_1Projection_1_1Base_a7a0ef0507f546a0da56bb596de53c962}{Neb\-:\-:Camera\-:\-:Projection\-:\-:Base\-:\-:step} (double)]explain when in timeline this occurs and in which thread and why  
+\-Member \hyperlink{classNeb_1_1Graphics_1_1Camera_1_1Projection_1_1Base_ab6e4c68044df250829de3e0cc387de9c}{\-Neb\-:\-:\-Graphics\-:\-:\-Camera\-:\-:\-Projection\-:\-:\-Base\-:\-:step} (double)]explain when in timeline this occurs and in which thread and why  
 \item[\label{todo__todo000009}%
 \hypertarget{todo__todo000009}{}%
-Member \hyperlink{classNeb_1_1Camera_1_1View_1_1Base_aa3c5978efc6cd916f0f91bb8def375c5}{Neb\-:\-:Camera\-:\-:View\-:\-:Base\-:\-:step} (double)=0]explain when in timeline this occurs and in which thread and why  
+\-Member \hyperlink{classNeb_1_1Graphics_1_1Camera_1_1View_1_1Base_a90b789b94d88db1e913f3c4933ea41d4}{\-Neb\-:\-:\-Graphics\-:\-:\-Camera\-:\-:\-View\-:\-:\-Base\-:\-:step} (double)=0]explain when in timeline this occurs and in which thread and why  
 \item[\label{todo__todo000010}%
 \hypertarget{todo__todo000010}{}%
-Class \hyperlink{classNeb_1_1Graphics_1_1Context_1_1Base}{Neb\-:\-:Graphics\-:\-:Context\-:\-:Base} ]eventually replace this with Context and allow multiple Contexts per window and allow scene and layout to have different and overalpping Contexts.  
+\-Class \hyperlink{classNeb_1_1Graphics_1_1Context_1_1Base}{\-Neb\-:\-:\-Graphics\-:\-:\-Context\-:\-:\-Base} ]eventually replace this with \-Context and allow multiple \-Contexts per window and allow scene and layout to have different and overalpping \-Contexts.  
+\item[\label{todo__todo000012}%
+\hypertarget{todo__todo000012}{}%
+\-Member \hyperlink{classNeb_1_1Graphics_1_1Window_1_1Base_ac71945a8c24260d3427539bdd6c9bc6b}{\-Neb\-:\-:\-Graphics\-:\-:\-Window\-:\-:\-Base\-:\-:\-Base} ()]get rid of my unique ptr class. \-Just use private member and be careful not to pass around shared ptrs to things  
 \item[\label{todo__todo000013}%
 \hypertarget{todo__todo000013}{}%
-Member \hyperlink{structNeb_1_1Message_1_1Actor_1_1OUpdate_aa972a33a8c8220e7f6194e44c019d817}{Neb\-:\-:Message\-:\-:Actor\-:\-:O\-Update\-:\-:post} ()]determine if I count just say \char`\"{}ar $<$$<$ count\char`\"{} here 
+\-Member \hyperlink{classNeb_1_1Graphics_1_1Window_1_1Base_adc53fbf523d1dab863f767c5cb534a77}{\-Neb\-:\-:\-Graphics\-:\-:\-Window\-:\-:\-Base\-:\-:render} (double time)]rendering multiple contexts in a window  
+\item[\label{todo__todo000011}%
+\hypertarget{todo__todo000011}{}%
+\-Member \hyperlink{classNeb_1_1Light_1_1Base_ad621061e0be86708f0cbf7e300bc0c1e}{\-Neb\-:\-:\-Light\-:\-:\-Base\-:\-:load} (int, physx\-::\-Px\-Mat44)]way to ditinguish lights in shader  
+\item[\label{todo__todo000016}%
+\hypertarget{todo__todo000016}{}%
+\-Member \hyperlink{structNeb_1_1Message_1_1Actor_1_1IUpdate_aebb6fba27d776081ab4b5a69fc6371c8}{\-Neb\-:\-:\-Message\-:\-:\-Actor\-:\-:\-I\-Update\-:\-:post} ()]determine if \-I count just say \char`\"{}ar $<$$<$ count\char`\"{} here  
+\item[\label{todo__todo000015}%
+\hypertarget{todo__todo000015}{}%
+\-Member \hyperlink{structNeb_1_1Message_1_1Actor_1_1OUpdate_aa972a33a8c8220e7f6194e44c019d817}{\-Neb\-:\-:\-Message\-:\-:\-Actor\-:\-:\-O\-Update\-:\-:post} ()]determine if \-I count just say \char`\"{}ar $<$$<$ count\char`\"{} here  
+\item[\label{todo__todo000020}%
+\hypertarget{todo__todo000020}{}%
+\-Member \hyperlink{classNeb_1_1Scene_1_1Local_a67806ea48d401a114f78de30c14e6eca}{\-Neb\-:\-:\-Scene\-:\-:\-Local\-:\-:fire} (\-Neb\-::\-Actor\-::\-Base\-\_\-s)]replace \-Neb\-::timer\-::actor\-::type with inheritance 
 \end{DoxyRefList}

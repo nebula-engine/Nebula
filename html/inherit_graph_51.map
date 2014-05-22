@@ -1,10 +1,5 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1Base.html" title="Array base class for array GLSL uniform " alt="" coords="5,201,133,242"/>
-<area shape="rect" id="node2" href="$classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1Double.html" title="Neb::glsl::Uniform\l::Vector::Double" alt="" coords="181,5,309,46"/>
-<area shape="rect" id="node3" href="$classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1DVec3.html" title="Neb::glsl::Uniform\l::Vector::DVec3" alt="" coords="181,70,309,111"/>
-<area shape="rect" id="node4" href="$classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1DVec4.html" title="Neb::glsl::Uniform\l::Vector::DVec4" alt="" coords="181,135,309,177"/>
-<area shape="rect" id="node5" href="$classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1Float.html" title="Neb::glsl::Uniform\l::Vector::Float" alt="" coords="181,201,309,242"/>
-<area shape="rect" id="node6" href="$classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1Int.html" title="Neb::glsl::Uniform\l::Vector::Int" alt="" coords="181,266,309,307"/>
-<area shape="rect" id="node7" href="$classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1Vec3.html" title="Neb::glsl::Uniform\l::Vector::Vec3" alt="" coords="181,331,309,373"/>
-<area shape="rect" id="node8" href="$classNeb_1_1glsl_1_1Uniform_1_1Vector_1_1Vec4.html" title="Neb::glsl::Uniform\l::Vector::Vec4" alt="" coords="181,397,309,438"/>
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$classNeb_1_1Graphics_1_1Camera_1_1View_1_1Base.html" title="Neb::Graphics::Camera::View::Base" alt="" coords="5,32,240,61"/>
+<area shape="rect" id="node3" href="$classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free.html" title="free flying camera this camera can move freely through the scene user input in interpreted as three&#45;c..." alt="" coords="305,5,535,35"/>
+<area shape="rect" id="node5" href="$classNeb_1_1Graphics_1_1Camera_1_1View_1_1Ridealong.html" title="Neb::Graphics::Camera::View::Ridealong" alt="" coords="289,59,551,88"/>
 </map>

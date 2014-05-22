@@ -446,92 +446,30 @@ void		Neb::Scene::Base::step(double const & time, double const & dt) {
 		it->second.ptr_->step(time, dt);
 	});
 	
-	
-
 	// extras
 	//printf("desc size = %i\n", (int)desc_size());
-
 }
-
 void Neb::Scene::Base::send_actor_update() {
-	printf("DEBUG: message ACTOR_UPDATE sent\n");
-
-	std::shared_ptr<gal::network::omessage> msg(new gal::network::omessage);
-
-	int type = glutpp::network::type::ACTOR_UPDATE;
-	msg->write(&type, sizeof(int));
-
-	glutpp::network::actor::update actor_update;
-
-	for(auto it = actors_.begin(); it != actors_.end(); ++it)
-	{
-		auto actor = it->second;
-
-		actor_update.load(actor);
-	}
-
-	msg->ar_ << actor_update;
-
-	get_app()->send_server(msg);
-
-
-}
-void Neb::Scene::desc::load(char const* filename) {
-	GLUTPP_DEBUG_0_FUNCTION;
-
-	/*	
-	tinyxml2::XMLDocument doc;
-	if(doc.LoadFile(c))
-	{
-		printf("error loading %s\n", c);
-		abort();
-	}
-	*/
-	std::ifstream ifs(filename);
-	assert(ifs.good());
-	boost::archive::xml_iarchive ia(ifs);
+	//printf("DEBUG: message ACTOR_UPDATE sent\n");
 	
-	serialize(ia,0);
-	//ia >> *this;
-
-//	load(doc.FirstChildElement("scene"));
-}
-
-
-
-
-
-void Neb::Scene::Local::fire(Neb::Actor::Base_s actor) {
-
-	std::shared_ptr<glutpp::actor::desc> desc = actor->get_projectile();
-
-	//auto me = std::dynamic_pointer_cast<Neb::Actor::Actor>(shared_from_this());
-
-	auto a = create_actor_local(desc);
-
-	/** @todo replace Neb::timer::actor::type with inheritance */
-
-	std::shared_ptr<Neb::Timer::Actor::Base> t(
-			new Neb::Timer::Actor::Release(glutpp::master::Global()->ios_, a, last_ + 5.0));
-
-
-}
-void Neb::Scene::Remote::fire(Neb::Actor::Base_s actor) {
-
-	gal::network::omessage_s msg(new gal::network::omessage);
-
-	Neb::Message::Actor::Event actor_event;
-
-	actor_event.addr_.load_this(actor);
-	actor_event.event_.ptr_.reset(new Neb::Actor::Event::Fire)
-
-	//actor_event.event_.type_ = glutpp::actor::event::type::e::FIRE;
 	
-	//msg->write(glutpp::network::type::ACTOR_EVENT);
+	//int type = glutpp::network::type::ACTOR_UPDATE;
+	//msg->write(&type, sizeof(int));
 	
-	msg->ar_ << actor_event;
+	Neb::Message::Actor::OUpdate_s message(new Neb::Message::Actor::OUpdate);
+	
+	typedef Neb::Util::Parent<Neb::Actor::Base> A;
 
-	get_app()->send_client(msg);
+	A::map_.for_each([&] (A::map_type::const_iterator it) {
+			actor_update->operator<<(it->second.ptr_);
+			});
+
+
+	Neb::App::Base::globalBase()->sendServer(message);
 }
+
+
+
+
 
 

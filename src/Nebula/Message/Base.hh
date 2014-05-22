@@ -7,6 +7,10 @@
 
 namespace Neb {
 	namespace Message {
+		/** \brief %Base
+		 *
+		 * 
+		 */
 		class Base {
 			public:
 				template<class D, class... A> static Neb::Message::Base_s	alloc(A... a) {
@@ -16,13 +20,12 @@ namespace Neb {
 				}
 			protected:
 				Base();
-				virtual void			pre() {}
-				virtual void			post() {}
+				virtual void			pre() = 0;
+				virtual void			post() = 0;
 		};
 		class OBase: public Base {
 			public:
 				OBase();
-
 				gal::network::omessage_s	msg_;
 		};
 		class IBase: public Base {
@@ -33,13 +36,15 @@ namespace Neb {
 				 * called after message is deserialized
 				 */
 				virtual void			process() = 0;
-
-				gal::network::imessage_s	msg_;
+				gal::network::omessage_s	msg_;
 		};
 	}
 }
 
 #endif
 
+/** \example Nebula/Message/example.cc
+ * Example.
+ */
 
 

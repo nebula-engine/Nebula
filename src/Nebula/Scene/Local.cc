@@ -1,7 +1,8 @@
 #include <Nebula/App/Base.hh>
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/Scene/Local.hh>
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Actor/RigidBody/Base.hh>
+#include <Nebula/timer/Actor/Release.hpp>
 
 
 void            Neb::Scene::Local::step(double const & time, double const & dt) {
@@ -75,3 +76,25 @@ void            Neb::Scene::Local::step(double const & time, double const & dt) 
 	send_actor_update();
 	
 }
+void Neb::Scene::Local::fire(Neb::Actor::Base_s actor) {
+
+	auto proj = actor->get_projectile();
+
+	//auto me = std::dynamic_pointer_cast<Neb::Actor::Actor>(shared_from_this());
+
+	//auto a = create_actor_local(desc);
+
+	/** @todo replace Neb::timer::actor::type with inheritance */
+
+	std::shared_ptr<Neb::Timer::Actor::Base> t(
+			new Neb::Timer::Actor::Release(proj, last_ + 5.0)
+			);
+
+
+}
+
+
+
+
+
+

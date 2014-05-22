@@ -1,4 +1,5 @@
-<map id="Neb::Graphics::GUI::Layout::Util::Parent" name="Neb::Graphics::GUI::Layout::Util::Parent">
-<area shape="rect" id="node3" href="$classNeb_1_1App_1_1Base.html" title="Neb::App::Base" alt="" coords="19,200,133,227"/>
-<area shape="rect" id="node2" href="$classNeb_1_1Util_1_1Parent.html" title="Neb::Util::Parent\&lt;\l Neb::Graphics::GUI\l::Layout::Base \&gt;" alt="" coords="5,5,147,61"/>
+<map id="G" name="G">
+<area shape="rect" id="node7" href="$classNeb_1_1App_1_1Base.html" title="Neb::App::Base" alt="" coords="120,237,235,267"/>
+<area shape="rect" id="node2" href="$classNeb_1_1Util_1_1Parent.html" title="Neb::Util::Parent\&lt; Neb::Graphics::GUI::Layout::Base \&gt;" alt="" coords="5,83,349,112"/>
+<area shape="rect" id="node4" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="116,5,239,35"/>
 </map>

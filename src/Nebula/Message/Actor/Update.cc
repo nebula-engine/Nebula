@@ -1,31 +1,27 @@
-#include <Nebula/actor/addr.hpp>
-#include <Nebula/actor/actor.hpp>
-#include <Nebula/Message/Actor/Update.hpp>
+
+#include <Nebula/Actor/Base.hh>
+#include <Nebula/Message/Actor/Update.hh>
 
 Neb::Message::Actor::OUpdate&		Neb::Message::Actor::OUpdate::operator<<(Neb::Actor::Base_s actor) {
-	count_++;
-	actor->serialize(*this, 0);
+	if(actor->flag_.any(Neb::Actor::Util::Flag::E::SHOULD_UPDATE)) {
+		count_++;
+		msg_->ar_ << actor_->i_;
+		msg_->ar_ << actor_;
+	}
+	return *this;
 }
-
-
-
-Neb::Message::Actor::IUpdate&		Neb::Message::Actor::IUpdate::operator>>(Neb::Scene::Base_s scene) {
-	msg_->ar_ >> count_;
-
-	Neb::Actor::Util::Address address;
+virtual void		serialize(boost::archive::polymorphic_iarchive& ar, unsigned int const & version) {
+	Neb::Util::index_type i;
 	Neb::Actor::Base_s actor;
-	for(int i = 0; i < count_; ++i) {
-		msg_->ar_ >> address;
 
-		actor = scene->getActor(address);
-		assert(actor);
+	ar >> count_;
 
+	for(int a = 0; a < count_; ++a) {
+		ar >> i;
+		actor = Neb::Util::Shared::registry_.get(i);
 		msg_->ar_ >> *actor;
 	}
-	actor->serialize(*this, 0);
 }
-
-
 
 
 

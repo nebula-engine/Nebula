@@ -21,7 +21,7 @@
 namespace Neb {
 	namespace Message {
 		namespace Actor {
-			struct Update {
+			struct Update: virtual public Neb::Message::Base {
 				
 				Update(): count_(0) {}
 				
@@ -39,14 +39,16 @@ namespace Neb {
 			struct OUpdate: Neb::Message::OBase, Update{
 
 				/** @brief Save %Actor. */
-				Update&		operator<<(Neb::Actor::Base_s actor);
+				OUpdate&		operator<<(Neb::Actor::Base_s actor);
+
+				virtual void		serialize(boost::archive::polymorphic_oarchive& ar, unsigned int const & version);
+
 				/** */
-				template<typename T> Update&		operator<<(T const & t) {
+				/*template<typename T> Update&		operator<<(T const & t) {
 					msg_->ar_ & t;
 					return *this;
-				}
-				
-
+				}*/
+			
 				/** @brief Before saving.
 				 * Implement the virtual savePre function.
 				 * Record the position of the count data.
@@ -76,14 +78,33 @@ namespace Neb {
 			};
 			struct IUpdate: Neb::Message::IBase, Update {
 				/** @brief Load */
-				Update&		operator>>(Neb::Scene::Base_s);
+				virtual void		serialize(boost::archive::polymorphic_iarchive& ar, unsigned int const & version);
+				
+				virtual void		pre() {
+					// save the position of count
+					pos_count_ = msg_->ss_.tellp();
+					
+					// allocate space for count
+					msg_->ar_ << count_;
+				}
+				/** @brief After saving.
+				 * Implement the virtual savePost function. Overwrite the count data.
+				*/
+				virtual void		post() {
+					auto pos = msg_->ss_.tellp();
+					
+					msg_->ss_.seekp(pos_count_);
+					/** @todo determine if I count just say "ar << count" here */
+					msg_->ss_.write((char*)&count_, sizeof(count_));
+					
+					msg_->ss_.seekp(pos);
+				}
 				/** */
-				template<typename T> Update&		operator>>(T const & t) {
+				/*template<typename T> Update&		operator>>(T const & t) {
 					msg_->ar_ & t;
 					return *this;
-				}
+				}*/
 			};
-			
 		}
 	}
 }

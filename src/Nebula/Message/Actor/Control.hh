@@ -40,7 +40,7 @@ namespace Neb {
 					{
 						public:
 							/** @brief derived serialize. */
-							virtual void					serializeDerived(
+							virtual void					serialize(
 									boost::archive::polymorphic_iarchive & ar,
 									unsigned int const & version);
 					};
@@ -50,8 +50,11 @@ namespace Neb {
 						public Neb::Message::Actor::Control::RigidBody::Update
 					{
 						public:
+							virtual void					pre();
+							virtual void					post();
+
 							/** @brief derived serialize. */
-							virtual void					serializeDerived(
+							virtual void					serialize(
 									boost::archive::polymorphic_oarchive & ar,
 									unsigned int const & version);
 					};

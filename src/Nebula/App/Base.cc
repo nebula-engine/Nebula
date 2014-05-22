@@ -551,6 +551,18 @@ std::shared_ptr<Neb::glsl::program> Neb::App::Base::get_program(Neb::program_nam
 void Neb::App::Base::command(std::string str) {
 
 }
+void		Neb::App::Base::sendClient(Neb::Message::OBase_s message) {
+	assert(message);
 
+	Neb::WrapperTyped<Neb::Message::Base> wrapper(message);
+	
+	gal::network::omessage_s buffer(new gal::network::omessage);
+	
+	message->pre();
+	buffer << wrapper;
+	message->post();
+	
+	send_client(msg);
+}
 
 

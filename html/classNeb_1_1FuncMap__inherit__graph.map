@@ -1,4 +1,4 @@
-<map id="Neb::FuncMap" name="Neb::FuncMap">
-<area shape="rect" id="node2" href="$classNeb_1_1Factory.html" title="Factory. Store and use allocator functions. " alt="" coords="5,80,135,107"/>
-<area shape="rect" id="node3" href="$classNeb_1_1Initializer.html" title="Initializer. Store and use initializer functions. Allocate an object with arbitrary alloc function st..." alt="" coords="160,80,299,107"/>
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classNeb_1_1Factory.html" title="Factory. Store and use allocator functions." alt="" coords="5,83,136,112"/>
+<area shape="rect" id="node5" href="$classNeb_1_1Initializer.html" title="Initializer. Store and use initializer functions. Allocate an object with arbitrary alloc function st..." alt="" coords="160,83,299,112"/>
 </map>
