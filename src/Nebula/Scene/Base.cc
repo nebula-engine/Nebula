@@ -447,28 +447,6 @@ void		Neb::Scene::Base::step(double const & time, double const & dt) {
 	});
 	
 	
-	// cleanup
-	/** @todo this will become obsolete if following procedure is used:
-	 * when it is determined (inside or outside Actor) that an actor is to be destoryed, call
-	 * @c parent.sig(i) when @c parent is the actor's parent and @c i is the actor's index
-	 */
-	auto it = actors_.map_.begin();
-	while(it != actors_.map_.end()) {
-		std::shared_ptr<glutpp::actor::actor> actor = it->second;
-		
-		assert(actor);
-		
-		actor->cleanup();
-		
-		if(actor->any(glutpp::actor::actor::flag::e::SHOULD_RELEASE)) {
-			actor->release();
-			
-			it = actors_.map_.erase(it);
-		}
-		else {
-			++it;
-		}
-	}
 
 	// extras
 	//printf("desc size = %i\n", (int)desc_size());
