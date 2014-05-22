@@ -78,7 +78,7 @@ namespace Neb {
 			public:
 				//Neb::weak_ptr<Neb::Actor::Base>			create_actor_local(Neb::Actor::desc_w);
 				//Neb::weak_ptr<Neb::Actor::Base>			create_actor_remote(Neb::Actor::addr_w, Neb::Actor::desc_w);
-				//void						add_deferred(Neb::Actor::desc_w);
+				void						add_deferred(Neb::Actor::Base_s);
 
 				
 				

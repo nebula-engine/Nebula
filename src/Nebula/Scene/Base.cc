@@ -153,7 +153,7 @@ physx::PxTransform				Neb::Scene::Base::getPoseGlobal() {
 	
 	return actor;
 }*/
-void Neb::Scene::Base::create_actors(std::shared_ptr<glutpp::scene::desc> desc) {
+/*void Neb::Scene::Base::create_actors(std::shared_ptr<glutpp::scene::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	assert(desc);
@@ -175,27 +175,13 @@ void Neb::Scene::Base::create_actors(std::shared_ptr<glutpp::scene::desc> desc) 
 				abort();
 		}
 	}
+}*/
+void		Neb::Scene::Base::add_deferred(Neb::Actor::Base_s actor) {
+	//NEBULA_DEBUG_0_FUNCTION;
+
+	actors_deferred_[actor->name_] = actor;
 }
-void		Neb::Scene::Base::add_deferred(std::shared_ptr<glutpp::actor::desc> ad) {
-	NEBULA_DEBUG_0_FUNCTION;
-
-
-	assert(ad);
-
-	char* n = ad->raw_wrapper_.ptr_->name_;
-	assert(n);
-
-	int len = strlen(n);
-
-	char* name = new char[len + 1];
-
-	memcpy(name, n, len);
-
-	name[len] = 0;
-
-	actors_deferred_[name] = ad;
-}
-std::shared_ptr<Neb::Actor::Base>	Neb::Scene::Base::create_actor(std::shared_ptr<glutpp::actor::desc> desc) {
+/*std::shared_ptr<Neb::Actor::Base>	Neb::Scene::Base::create_actor(std::shared_ptr<glutpp::actor::desc> desc) {
 	NEBULA_DEBUG_0_FUNCTION;
 	
 	auto me = boost::dynamic_pointer_cast<Neb::Scene::Base>(shared_from_this());
@@ -269,7 +255,7 @@ Neb::weak_ptr<Neb::Actor::Base>			Neb::Scene::Base::create_actor_remote(std::sha
 	}
 
 	return actor;
-}
+}*/
 /*
 
  */
@@ -401,7 +387,7 @@ void Neb::Scene::Base::create_physics() {
 
 	physx::PxSceneDesc scene_desc(pxphysics->getTolerancesScale());
 
-	scene_desc.gravity = raw_->gravity_;
+	scene_desc.gravity = gravity_;
 
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 
@@ -451,16 +437,15 @@ void Neb::Scene::Base::create_physics() {
 	simulation_callback_ = sec;
 	px_scene_->setSimulationEventCallback(sec);
 }
-void Neb::Scene::Base::step(double time) {
-	NEBULA_DEBUG_1_FUNCTION;
+void		Neb::Scene::Base::step(double const & time, double const & dt) {
+	//NEBULA_DEBUG_1_FUNCTION;
+
+	typedef Neb::Util::Parent<Neb::Actor::Base> A;
+
+	A::map_.for_each([&] (A::map_type::const_iterator it) {
+		it->second.ptr_->step(time, dt);
+	});
 	
-	for(auto it = actors_.map_.cbegin(); it != actors_.map_.cend(); ++it) {
-		it->second->step(time);
-	}
-	
-	
-	/* derived, pure virtual in this class */
-	stepDeriv();
 	
 	// cleanup
 	/** @todo this will become obsolete if following procedure is used:
