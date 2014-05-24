@@ -1,11 +1,11 @@
-#include <Nebula/Message/Base.hpp>
+#include <Nebula/Message/Base.hh>
 
-Neb::Message::Base(gal::network::message_s msg) mag_(msg) {
+Neb::Message::Base::Base() {
 }
 
-Neb::Message::OBase(): Neb::Message::Base(gal::network::omessage_s(new gal::network::omessage))  {
+Neb::Message::OBase::OBase() {
 }
 
-Neb::Message::IBase(): Neb::Message::Base(gal::network::imessage_s(new gal::network::imessage)) {
+Neb::Message::IBase::IBase() {
 }
 

@@ -11,7 +11,7 @@ void		Neb::Actor::RigidBody::Remote::step(double const & time, double const & dt
 	if(control_) {
 		auto message = std::make_shared<Neb::Message::Actor::Control::RigidBody::OUpdate>();
 		
-		message->i_ = i_;
+		message->index_ = i_;
 		message->control_.ptr_ = control_;
 		
 		app->sendClient(message);

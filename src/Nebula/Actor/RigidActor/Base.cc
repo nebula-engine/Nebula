@@ -11,7 +11,7 @@ Neb::Actor::RigidActor::Base::Base(Neb::Actor::Util::Parent_s parent): Neb::Acto
 void		Neb::Actor::RigidActor::Base::init() {
 
 }
-void		Neb::Actor::RigidActor::Base::step(double dt) {
+void		Neb::Actor::RigidActor::Base::step(double const & time, double const & dt) {
 	//NEBULA_ACTOR_BASE_FUNC;
 }
 void		Neb::Actor::RigidActor::Base::setupFiltering() {

@@ -30,12 +30,6 @@ namespace Neb {
 				/** @brief %Base */
 				class Base: virtual public Neb::Message::Actor::Base {
 					public:
-						
-						/*virtual void		serialize(
-								boost::archive::polymorphic_iarchive & ar,
-								unsigned int const & version);*/
-						virtual void		pre();
-						virtual void		post();
 				};
 				class IBase:
 					virtual public Neb::Message::Actor::IBase,

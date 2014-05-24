@@ -23,15 +23,16 @@ namespace Neb {
 			typedef std::weak_ptr< Neb::Factory<T> >		factory_weak;
 			typedef std::shared_ptr<T>				shared;
 			/** */
-			WrapperTyped(): factory_(Neb::App::BaseFactory::global()->getFactoryDefault<T>()) {
-			}
+			WrapperTyped():
+				factory_(Neb::App::BaseFactory::global()->getFactoryDefault<T>())
+		{
+		}
 			/** */
-			WrapperTyped(factory_weak factory): factory_(factory) {
-			}
-			/** */
-			WrapperTyped(factory_weak factory, shared s): factory_(factory) {
-				ptr_ = s;
-			}
+			WrapperTyped(shared ptr):
+				ptr_(ptr),
+				factory_(Neb::App::BaseFactory::global()->getFactoryDefault<T>())
+		{
+		}
 			/** @brief Destructor */
 			virtual ~WrapperTyped() {}
 			/** @brief %Load */
@@ -39,7 +40,7 @@ namespace Neb {
 				// get the code
 				long int hash_code;
 				ar >> boost::serialization::make_nvp("hash_code", hash_code);
-				
+
 				// get the factory
 				auto fs = factory_.lock();
 				assert(fs);
@@ -57,12 +58,12 @@ namespace Neb {
 				ar << boost::serialization::make_nvp("object", *ptr_);
 			}
 			/** */
-			void		load(boost::archive::xml_iarchive & ar, unsigned int const & version) {
+			void					load(boost::archive::xml_iarchive & ar, unsigned int const & version) {
 				// get the code
 				std::string name;
 				ar >> boost::serialization::make_nvp("name", name);
 				Neb::Util::Shared::hash_type hash = Neb::Util::Shared::to_hash_code(name);
-				
+
 				// get the factory
 				auto fs = factory_.lock();
 				assert(fs);
@@ -74,7 +75,7 @@ namespace Neb {
 				ar >> boost::serialization::make_nvp("object", *ptr_);
 			}
 			/** */
-			void		save(boost::archive::xml_oarchive & ar, unsigned int const & version) const {
+			void					save(boost::archive::xml_oarchive & ar, unsigned int const & version) const {
 				std::string name = Neb::Util::Shared::to_string(ptr_->hash_code());
 				ar << boost::serialization::make_nvp("name", name);
 				ar << boost::serialization::make_nvp("object", *ptr_);

@@ -12,30 +12,29 @@ namespace Neb {
 				namespace RigidBody {
 					/** @brief %Create. */
 					class Create:
-						virtual public Neb::Message::Actor::Base {
-						public:
-							/** @brief derived serialize. */
-							virtual void					serializeDerived(
-									boost::archive::polymorphic_oarchive & ar,
-									unsigned int const & version);
-							/** @brief derived serialize. */
-							virtual void					serializeDerived(
-									boost::archive::polymorphic_iarchive & ar,
-									unsigned int const & version);
-							Neb::WrapperTyped<Neb::Actor::Control::RigidBody::Base>		control_;
+						virtual public Neb::Message::Actor::Base
+					{
+						Neb::WrapperTyped<Neb::Actor::Control::RigidBody::Base>		control_;
 					};
 					/** @brief %Create. */
 					class ICreate:
 						virtual public Neb::Message::Actor::Base
 					{
-						virtual void			process();
+						public:
+							/** @brief derived serialize. */
+							virtual void					serializeDerived(
+									boost::archive::polymorphic_iarchive & ar,
+									unsigned int const & version);
 					};
 					/** @brief %Create. */
 					class OCreate:
 						virtual public Neb::Message::Actor::Base
 					{
-						virtual void			pre();
-						virtual void			post();
+						public:
+							/** @brief derived serialize. */
+							virtual void					serializeDerived(
+									boost::archive::polymorphic_oarchive & ar,
+									unsigned int const & version);
 					};
 					/** @brief %Update. */
 					class Update:
@@ -53,8 +52,6 @@ namespace Neb {
 					{
 						public:
 							virtual ~IUpdate();
-							/** @brief process */
-							virtual void					process();
 							/** @brief derived serialize. */
 							virtual void					serialize(
 									boost::archive::polymorphic_iarchive & ar,
@@ -66,9 +63,6 @@ namespace Neb {
 						virtual public Neb::Message::Actor::Control::RigidBody::Update
 					{
 						public:
-							virtual void					pre();
-							virtual void					post();
-
 							/** @brief derived serialize. */
 							virtual void					serialize(
 									boost::archive::polymorphic_oarchive & ar,

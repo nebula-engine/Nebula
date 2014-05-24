@@ -26,6 +26,9 @@ namespace Neb {
 						virtual void			step(double const & time, double const & dt) = 0;
 						virtual physx::PxVec3		f() = 0;
 						virtual physx::PxVec3		t() = 0;
+
+						virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
+						virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
 					private:
 
 					public:

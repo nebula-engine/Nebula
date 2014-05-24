@@ -6,19 +6,11 @@
 /*
 void		Neb::Message::Actor::Event::serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
 	ar & event_;
-}
-void		Neb::Message::Actor::Event::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
-	ar & event_;
-}
-*/
-void		Neb::Message::Actor::Event::IFire::process() {
-
-/*
-	Neb::Message::Actor::Event actor_event;
-	actor_event.read(msg);
-*/
-
-	auto actor = std::dynamic_pointer_cast<Neb::Actor::Base>(Neb::Util::Shared::registry_.get(i_));
+}*/
+void		Neb::Message::Actor::Event::IFire::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
+	Neb::Message::Actor::IBase::serialize(ar, version);
+	
+	auto actor = std::dynamic_pointer_cast<Neb::Actor::Base>(Neb::Util::Shared::registry_.get(index_));
 
 	assert(actor);
 

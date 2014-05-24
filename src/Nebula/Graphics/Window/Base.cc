@@ -82,8 +82,8 @@ void Neb::Graphics::Window::Base::render(double time) {
 }
 void Neb::Graphics::Window::Base::callback_window_refresh_fun(GLFWwindow*) {
 }
-void Neb::Graphics::Window::Base::step(double time) {
-	GLUTPP_DEBUG_1_FUNCTION;
+void			Neb::Graphics::Window::Base::step(double const & time, double const & dt) {
+	//GLUTPP_DEBUG_1_FUNCTION;
 
 	if(glfwWindowShouldClose(window_)) {
 		parent_->release(i_);

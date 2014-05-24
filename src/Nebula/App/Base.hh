@@ -127,15 +127,15 @@ namespace Neb {
 				//Neb::Scene::Base_w				load_scene_local(Neb::Scene::desc_w);
 				//Neb::Scene::Base_w				load_scene_remote(Neb::Scene::desc_w);
 				void					load_layout(int,char const *);
-				int					step(double);
+				void					step(double const & time, double const & dt);
 				int					loop();
 
-				void				set_should_release();
+				void					set_should_release();
 
-				int				activate_scene(int,int);
-				int				deactivate_scene(int);
-				int				activate_layout(int,int);
-				int				deactivate_layout(int);
+				int					activate_scene(int,int);
+				int					deactivate_scene(int);
+				int					activate_layout(int,int);
+				int					deactivate_layout(int);
 
 
 				/** @name %Network @{ */
@@ -145,7 +145,7 @@ namespace Neb {
 				void				send_client(gal::network::omessage_s);
 				void				sendServer(Neb::Message::OBase_s message);
 				void				sendClient(Neb::Message::OBase_s message);
-				int				transmit_scenes(Neb::Network::Communicating_s);
+				void				transmit_scenes(Neb::Network::Communicating_s);
 				/** @} */
 			private:
 				// network

@@ -20,7 +20,7 @@ namespace Neb {
 						D::visit(this, a...);
 					}
 
-					virtual void		step(double dt);
+					virtual void		step(double const & time, double const & dt);
 			};
 		}
 	}

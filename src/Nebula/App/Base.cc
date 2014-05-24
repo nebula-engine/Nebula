@@ -150,56 +150,38 @@ int	Neb::App::Base::activate_layout(int name_window, int name_layout) {
 
 	return 0;
 }*/
-int Neb::App::Base::step(double time) {
+void		Neb::App::Base::step(double const & time, double const & dt) {
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	Neb::Scene::Base_s scene;
 
 	typedef Neb::Util::Parent<Neb::Scene::Base> S;
-	
-	auto it = S::map_.begin();
-	while(it != S::map_.end()) {
-		scene = it->second.ptr_;
-		assert(scene);
-		
-		if(scene->flag_.all(Neb::Scene::Util::Flag::E::SHOULD_RELEASE)) {
-			scene->release();
-			it = S::map_.erase(it);
-		} else {
-			scene->step(time);
-			++it;
-		}
-	}
-
 	typedef Neb::Util::Parent<Neb::Graphics::Window::Base> W;
 
-	// windows
-	for(auto it = W::map_.begin(); it != W::map_.end();)
-	{
-		auto window = it->second.ptr_;
-		assert(window);
 
-		if(window->flag_.all(Neb::Graphics::Window::Util::Flag::E::SHOULD_RELEASE)) {
-			//window->release();
-			it = W::map_.erase(it);
-		} else {
-			window->step(time);
-			it++;
-		}
-	}
+	S::map_.for_each([&] (S::map_type::const_iterator it){
+			it->second.ptr_->step(time, dt);
+			});
 
-	return 0;
+	W::map_.for_each([&] (W::map_type::const_iterator it){
+			it->second.ptr_->step(time, dt);
+			});
+	
 }
 int	Neb::App::Base::loop() {
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	double time;
-
+	double last = 0;
+	double dt;
+	
 	while(!flag_.any(Neb::App::Util::Flag::E::SHOULD_RELEASE)) {
 		time = glfwGetTime();
+		dt = time - last;
+		last = time;
 
-		step(time);
-
+		step(time, dt);
+		
 		glfwPollEvents();
 	}
 
@@ -209,31 +191,29 @@ int	Neb::App::Base::loop() {
 
 	return 0;
 }
-int		Neb::App::Base::transmit_scenes(Neb::Network::Communicating_s c) {
+void		Neb::App::Base::transmit_scenes(Neb::Network::Communicating_s c) {
 	//NEBULA_DEBUG_0_FUNCTION;
 
 	assert(c);
-	
+
 	typedef Neb::Util::Parent<Neb::Scene::Base> S;
 
 	Neb::Scene::Base_s scene;
 	
-	for(auto it = S::map_.begin(); it != S::map_.end(); ++it) {
+	S::map_.for_each([&] (S::map_type::const_iterator it) {
 		scene = it->second.ptr_;
 		assert(scene);
-		
-		gal::network::omessage_s msg(new gal::network::omessage);
-		
-		Neb::Message::Scene::Create scene_create;
-		
-		scene_create.load(scene);
-		
-		msg->ar_ << scene_create;
-		
-		c->write(msg);
-	}
 
-	return 0;
+		gal::network::omessage_s msg(new gal::network::omessage);
+
+		Neb::Message::Scene::Create scene_create;
+
+		scene_create.load(scene);
+
+		msg->ar_ << scene_create;
+
+		c->write(msg);
+	});
 }
 void Neb::App::Base::reset_server(unsigned short port) {
 	//NEBULA_DEBUG_0_FUNCTION;
@@ -270,25 +250,25 @@ void Neb::App::Base::send_client(gal::network::omessage_s msg)  {
 }
 
 /*Neb::Graphics::Window::Base_s		Neb::App::Base::Main_Window() {
-	Neb::Graphics::Window::Base_s w;
-	
-	if(!window_main_.expired())
-	{
-		w = window_main_.lock();
-		return w;
-	}
+  Neb::Graphics::Window::Base_s w;
 
-	return w;
-}
-void Neb::App::Base::Main_Window(Neb::Graphics::Window::Base_s w) {
-	assert(w);
-	window_main_ = w;
-}*/
+  if(!window_main_.expired())
+  {
+  w = window_main_.lock();
+  return w;
+  }
+
+  return w;
+  }
+  void Neb::App::Base::Main_Window(Neb::Graphics::Window::Base_s w) {
+  assert(w);
+  window_main_ = w;
+  }*/
 Neb::Graphics::Window::Base_s		Neb::App::Base::get_window(GLFWwindow* window) {
 	auto it = windows_glfw_.find(window);
-	
+
 	assert(it != windows_glfw_.end());
-	
+
 	return it->second;
 }
 void Neb::App::Base::static_error_fun(int error, char const * description) {
@@ -299,14 +279,14 @@ void Neb::App::Base::static_window_pos_fun(GLFWwindow* window, int x, int y){
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	auto w = Neb::App::Base::globalBase()->get_window(window);
-	
+
 	w->callback_window_pos_fun(window,x,y);
 }
 void Neb::App::Base::static_window_size_fun(GLFWwindow* window, int width, int h){
 	GLUTPP_DEBUG_0_FUNCTION;
-	
+
 	auto w = Neb::App::Base::globalBase()->get_window(window);
-	
+
 	w->callback_window_size_fun(window, width, h);
 }
 void Neb::App::Base::static_window_close_fun(GLFWwindow* window){
@@ -325,14 +305,14 @@ void Neb::App::Base::static_window_refresh_fun(GLFWwindow* window) {
 }
 void Neb::App::Base::static_mouse_button_fun(GLFWwindow* window, int button, int action, int mods){
 	GLUTPP_DEBUG_0_FUNCTION;
-	
+
 	auto w = Neb::App::Base::globalBase()->get_window(window);
 
 	w->callback_mouse_button_fun(window, button, action, mods);
 }
 void Neb::App::Base::static_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods){
 	GLUTPP_DEBUG_0_FUNCTION;
-	
+
 	auto w = Neb::App::Base::globalBase()->get_window(window);
 
 	w->callback_key_fun(window, key, scancode, action, mods);
@@ -356,7 +336,7 @@ GLFWwindow*		Neb::App::Base::reg(Neb::Graphics::Window::Base_s w) {
 
 	w->window_ = g;
 
-	
+
 
 	glfwMakeContextCurrent(g);
 
@@ -460,7 +440,7 @@ void	Neb::App::Base::create_programs() {
 		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
 		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
 		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
-		 */
+		   */
 		p->scanUniforms();
 		p->locate();
 
@@ -511,7 +491,7 @@ void	Neb::App::Base::create_programs() {
 		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
 		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
 		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
-		 */
+		   */
 		p->scanUniforms();
 		p->locate();
 
@@ -554,15 +534,13 @@ void Neb::App::Base::command(std::string str) {
 void		Neb::App::Base::sendClient(Neb::Message::OBase_s message) {
 	assert(message);
 
-	Neb::WrapperTyped<Neb::Message::Base> wrapper(message);
-	
-	gal::network::omessage_s buffer(new gal::network::omessage);
-	
-	message->pre();
-	buffer << wrapper;
-	message->post();
-	
-	send_client(msg);
+	Neb::WrapperTyped<Neb::Message::OBase> wrapper(message);
+
+	auto buffer = std::make_shared<gal::network::omessage>();
+
+	buffer->ar_ << wrapper;
+
+	send_client(buffer);
 }
 
 

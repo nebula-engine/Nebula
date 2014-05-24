@@ -19,7 +19,7 @@ void Neb::Graphics::Context::Base::init() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	// camera
-	view_.reset(new Neb::Graphics::Camera::View::Free);
+	view_.reset(new Neb::Graphics::Camera::View::Free(isContextBase()));
 	proj_.reset(new Neb::Graphics::Camera::Projection::Perspective(isContextBase()));
 	//camera_->init(shared_from_this());
 }

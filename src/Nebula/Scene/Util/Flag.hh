@@ -7,7 +7,6 @@ namespace Neb {
 	namespace Scene {
 		namespace Util {
 			DEFINE_FLAG(Flag,
-					((SHOULD_RELEASE)	(1 << 0))
 					((RAY_TRACE)		(1 << 1))
 					((LIGHTING)		(1 << 2))
 					((SHADOW)		(1 << 3))

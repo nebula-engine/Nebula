@@ -37,19 +37,12 @@ namespace Neb {
 					virtual ~Base();
 				
 				public:
-					struct flag {
-						enum e {
-							SHOULD_RELEASE = 1 << 0,
-						};
-					};
-	
-	
 					virtual void				init();
 					virtual void				release();
 	
 					/** @name Main Loop @{ */
 					void					render(double time);
-					void					step(double time);
+					void					step(double const & time, double const & dt);
 					/** @} */
 					void					resize();
 	

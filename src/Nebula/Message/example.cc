@@ -1,3 +1,4 @@
+#if 0
 
 void save() {
 
@@ -29,4 +30,5 @@ void load(gal::network::imessage_s buffer) {
 	wrapper_.ptr_->post();
 }
 
+#endif
 

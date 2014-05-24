@@ -3,6 +3,8 @@
 
 #include <Nebula/network/message.hh>
 
+#include <Nebula/Util/Shared.hh>
+
 #include <Nebula/Message/Types.hh>
 
 namespace Neb {
@@ -11,7 +13,9 @@ namespace Neb {
 		 *
 		 * 
 		 */
-		class Base {
+		class Base:
+			virtual public Neb::Util::Shared
+		{
 			protected:
 				Base();
 		};

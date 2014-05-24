@@ -11,12 +11,7 @@ namespace Neb {
 				virtual public Neb::Message::Base
 			{
 				public:
-					virtual void		serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
-						ar & i_;
-					}
-					
-				public:
-					Neb::Util::index_type			i_;
+					Neb::Util::index_type			index_;
 			};
 			class IBase:
 				virtual public Neb::Message::IBase,
@@ -27,7 +22,10 @@ namespace Neb {
 				public:
 					virtual void		serialize(
 							boost::archive::polymorphic_iarchive & ar,
-							unsigned int const & version) = 0;
+							unsigned int const & version)
+					{
+						ar & index_;
+					}
 			};
 			class OBase:
 				virtual public Neb::Message::OBase,
@@ -36,7 +34,10 @@ namespace Neb {
 				public:
 					virtual void		serialize(
 							boost::archive::polymorphic_oarchive & ar,
-							unsigned int const & version) = 0;
+							unsigned int const & version)
+					{
+						ar & index_;
+					}
 			};
 		}
 	}
