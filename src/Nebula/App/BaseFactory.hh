@@ -30,9 +30,6 @@ namespace Neb {
 			public:
 				virtual ~BaseFactory() {}
 
-				static void								init();
-				
-				
 				template<class T> std::shared_ptr< Neb::Factory<T> >		getFactoryDefault();
 				
 				static BaseFactory_s						global();
@@ -53,9 +50,7 @@ namespace Neb {
 
 		};
 
-		template<> std::shared_ptr< Neb::Factory<Neb::Actor::Base> >	BaseFactory::getFactoryDefault<Neb::Actor::Base>() {
-			return factories_.actor_base_;
-		}
+		template<> std::shared_ptr< Neb::Factory<Neb::Actor::Base> >	BaseFactory::getFactoryDefault<Neb::Actor::Base>();
 	}
 }
 

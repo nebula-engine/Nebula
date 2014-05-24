@@ -9,6 +9,8 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
+#include <Nebula/free.hh>
+
 #include <Nebula/Types.hh>
 #include <Nebula/Util/Shared.hh>
 
@@ -41,17 +43,19 @@ namespace Neb {
 		{
 			public:
 				typedef std::map< GLFWwindow*, Neb::Graphics::Window::Base_s >			glfwwindow_map_type;
+				friend void Neb::init();
 			private:
-				static void static_error_fun(int,char const *);
-				static void static_window_pos_fun(GLFWwindow*,int,int);
-				static void static_window_size_fun(GLFWwindow*,int,int);
-				static void static_window_close_fun(GLFWwindow*);
-				static void static_window_refresh_fun(GLFWwindow*);
+
+				static void			static_error_fun(int,char const *);
+				static void			static_window_pos_fun(GLFWwindow*,int,int);
+				static void			static_window_size_fun(GLFWwindow*,int,int);
+				static void			static_window_close_fun(GLFWwindow*);
+				static void			static_window_refresh_fun(GLFWwindow*);
 				//static void static_window_focus_fun(GLFWwindow*,int);
 				//static void static_window_iconify_fun(GLFWwindow*,int);
 				//static void static_window_buffer_size_fun(GLFWwindow*,int,int);
-				static void static_mouse_button_fun(GLFWwindow*,int,int,int);
-				static void static_key_fun(GLFWwindow*,int,int,int,int);
+				static void			static_mouse_button_fun(GLFWwindow*,int,int,int);
+				static void			static_key_fun(GLFWwindow*,int,int,int,int);
 			public:
 				Base();
 				virtual ~Base();

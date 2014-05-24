@@ -13,6 +13,18 @@
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/free.hh>
+#include <Nebula/Physics.hh>
+
+void		Neb::init() {
+	auto app = std::make_shared<Neb::App::Base>();
+
+	Neb::App::BaseFactory::g_app_ = app;
+	
+	app->init();
+	
+	Neb::__physics.Init();
+
+}
 
 void		print(unsigned char * s, int w, int h) {
 

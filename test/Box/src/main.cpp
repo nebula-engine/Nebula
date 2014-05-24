@@ -29,7 +29,7 @@
 #include <Nebula/simulation_callback.hh>
 #include <Nebula/Shape/Base.hh>
 #include <Nebula/Actor/Control/RigidBody/Base.hh>
-#include <Nebula/Actor/Rigid_Dynamic.hh>
+#include <Nebula/Actor/RigidDynamic/Base.hh>
 
 /*
 namespace box
@@ -158,16 +158,16 @@ Neb::Actor::RigidBody::Base_s create_player_actor(Neb::Scene::Base_s scene) {
 	typedef Neb::Actor::Base A;
 	typedef Neb::WrapperTyped<A> W;
 	
-	auto app = Neb::App::Base::global();
+	auto app = Neb::App::Base::globalBase();
 	
-	W wrap(app->factories_.actor_base_);
+	W wrap;
 
 	app->loadXml<W>(std::string("player0.xml"), wrap);
 	
 	//glutpp::actor::desc_s ad = scene->actors_deferred_[(char*)"player0"];
 	//assert(ad);
 	
-	scene->insertActor(wrap.ptr_);
+	scene->insert(wrap.ptr_);
 	
 	//auto rigidbody = actor->isRigidBody();
 	
@@ -201,21 +201,27 @@ void	create_player(Neb::Graphics::Window::Base_s wnd, Neb::Scene::Base_s scene) 
 }
 int	server_main(short unsigned int port) {
 
-	auto app = Neb::App::Base::global();
+	auto app = Neb::App::Base::globalBase();
 
 	app->reset_server(port);
 	
-	typedef Neb::WrapperTyped<Neb::Scene::Base> W;
-	
+	typedef Neb::Util::Parent< Neb::Scene::Base > S;
+	typedef Neb::Util::Parent< Neb::Graphics::Window::Base > W;
+
+	typedef Neb::WrapperTyped<Neb::Scene::Base>	Wrapper;
+
 	{
 		// Scene
-		W wrap(app->factories_.scene_base_);
-		app->loadXml<W>(std::string("../scene.xml"), wrap);
+		Wrapper wrap;
+		
+		app->loadXml<Wrapper>(std::string("../scene.xml"), wrap);
 		
 		auto scene = wrap.ptr_;
 		
-		app->insertScene(scene);
-
+		
+		
+		app->S::insert(scene);
+		
 		//app->load_layout(box::LAYOUT_HOME, "../layout_home.xml");
 		//app->load_layout(box::LAYOUT_GAME, "../layout_game.xml");
 		
@@ -228,7 +234,7 @@ int	server_main(short unsigned int port) {
 		window->y_ = 100;
 		window->title_ = "box";
 	
-		app->insertWindow(window);
+		app->W::insert(window);
 		
 		// Context
 		Neb::Graphics::Context::Base_s context(new Neb::Graphics::Context::Base);
@@ -269,16 +275,11 @@ int	main(int argc, char const ** argv)
 		return 1;
 	}
 
-	Neb::__physics.Init();
+	Neb::init();
 
-	Neb::App::Base::global(Neb::App::Base_s(new Neb::App::Base));
-	
 	//Neb::App::Base::global()->object_factory_.reset(new box::object_factory);
 	//Neb::App::Base::global()->raw_factory_.reset(new neb::actor::raw_factory);
 
-	Neb::App::Base::global()->init();
-	
-	
 	
 	if(strcmp(argv[1], "s") == 0)
 	{

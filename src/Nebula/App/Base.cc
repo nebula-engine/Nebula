@@ -57,98 +57,99 @@ void Neb::App::Base::init() {
 
 	//NEBULA_DEBUG_0_FUNCTION;
 }
+
 Neb::App::Base_s		Neb::App::Base::globalBase() {
 	Neb::App::Base_s shared = std::dynamic_pointer_cast<Neb::App::Base>(g_app_);
-	
+
 	return shared;
 }
 /*
-Neb::Graphics::Window::Base>			Neb::App::Base::create_window(int w, int h, int x, int y, char const * title) {
-	//NEBULA_DEBUG_0_FUNCTION;
+   Neb::Graphics::Window::Base>			Neb::App::Base::create_window(int w, int h, int x, int y, char const * title) {
+//NEBULA_DEBUG_0_FUNCTION;
 
-	boost::shared_ptr<Neb::window::desc> wd(new Neb::window::desc(w,h,x,y,title));
-	
-	auto window = Neb::App::Base::Global()->create_window<Neb::Graphics::Window::Base>(wd);
-	
-	//printf("window use count = %i\n", (int)window.use_count());
-	
-	window->resize();
-	
-	//windows_.push_back(window);
+boost::shared_ptr<Neb::window::desc> wd(new Neb::window::desc(w,h,x,y,title));
 
-	//printf("window use count = %i\n", (int)window.use_count());
+auto window = Neb::App::Base::Global()->create_window<Neb::Graphics::Window::Base>(wd);
 
-	return window;
+//printf("window use count = %i\n", (int)window.use_count());
+
+window->resize();
+
+//windows_.push_back(window);
+
+//printf("window use count = %i\n", (int)window.use_count());
+
+return window;
 }*/
 /*Neb::Scene::scene_s Neb::App::Base::load_scene_local(Neb::scene::desc_s sd) {
-	//NEBULA_DEBUG_0_FUNCTION;
+//NEBULA_DEBUG_0_FUNCTION;
 
-	Neb::Scene::scene_s scene(new Neb::scene::scene(shared_from_this()));
-	
-	scene->init(sd);
-	scene->user_type_ = Neb::Scene::scene::LOCAL;
-	
-	scenes_.push_back(scene);
-	
-	return scene;
+Neb::Scene::scene_s scene(new Neb::scene::scene(shared_from_this()));
+
+scene->init(sd);
+scene->user_type_ = Neb::Scene::scene::LOCAL;
+
+scenes_.push_back(scene);
+
+return scene;
 }
 Neb::Scene::scene_s Neb::App::Base::load_scene_remote(Neb::scene::desc_s sd) {
-	//NEBULA_DEBUG_0_FUNCTION;
+//NEBULA_DEBUG_0_FUNCTION;
 
-	Neb::Scene::scene_s scene(new Neb::scene::scene(shared_from_this()));
-	
-	scene->init(sd);
-	scene->user_type_ = Neb::Scene::scene::REMOTE;
-	
-	int i = scene->i();//desc_->raw_.i_;
+Neb::Scene::scene_s scene(new Neb::scene::scene(shared_from_this()));
 
-	assert(i != -1);
-	
-	scenes_[i] = scene;
-	
-	return scene;
+scene->init(sd);
+scene->user_type_ = Neb::Scene::scene::REMOTE;
+
+int i = scene->i();//desc_->raw_.i_;
+
+assert(i != -1);
+
+scenes_[i] = scene;
+
+return scene;
 }*//*
-void Neb::App::Base::load_layout(int name, char const * filename) {
+      void Neb::App::Base::load_layout(int name, char const * filename) {
 
-	tinyxml2::XMLDocument document;
-	if(document.LoadFile(filename))
-	{
-		fprintf(stderr, "error loading file %s\n", filename);
-		abort();
-	}
+      tinyxml2::XMLDocument document;
+      if(document.LoadFile(filename))
+      {
+      fprintf(stderr, "error loading file %s\n", filename);
+      abort();
+      }
 
-	tinyxml2::XMLElement* element = document.FirstChildElement("layout");
+      tinyxml2::XMLElement* element = document.FirstChildElement("layout");
 
-	std::shared_ptr<Neb::gui::layout> layout(new Neb::gui::layout);
-	layout->load_xml(element);
+      std::shared_ptr<Neb::gui::layout> layout(new Neb::gui::layout);
+      layout->load_xml(element);
 
-	layouts_[name] = layout;
-}*//*
-int	Neb::App::Base::activate_scene(int name_window, int name_scene) {	
-	//NEBULA_DEBUG_0_FUNCTION;
+      layouts_[name] = layout;
+      }*//*
+	    int	Neb::App::Base::activate_scene(int name_window, int name_scene) {	
+//NEBULA_DEBUG_0_FUNCTION;
 
-	auto w = windows_.find(name_window);
-	auto s = scenes_.find(name_scene);
+auto w = windows_.find(name_window);
+auto s = scenes_.find(name_scene);
 
-	assert(w != windows_.end());
-	assert(s != scenes_.end());
+assert(w != windows_.end());
+assert(s != scenes_.end());
 
-	w->second->set_scene(s->second);
+w->second->set_scene(s->second);
 
-	return 0;
+return 0;
 }
 int	Neb::App::Base::activate_layout(int name_window, int name_layout) {
-	//NEBULA_DEBUG_0_FUNCTION;
+//NEBULA_DEBUG_0_FUNCTION;
 
-	auto w = windows_.find(name_window);
-	auto l = layouts_.find(name_layout);
+auto w = windows_.find(name_window);
+auto l = layouts_.find(name_layout);
 
-	assert(w != windows_.end());
-	assert(l != layouts_.end());
+assert(w != windows_.end());
+assert(l != layouts_.end());
 
-	w->second->set_layout(l->second);
+w->second->set_layout(l->second);
 
-	return 0;
+return 0;
 }*/
 void		Neb::App::Base::step(double const & time, double const & dt) {
 	//NEBULA_DEBUG_1_FUNCTION;
@@ -166,7 +167,7 @@ void		Neb::App::Base::step(double const & time, double const & dt) {
 	W::map_.for_each([&] (W::map_type::const_iterator it){
 			it->second.ptr_->step(time, dt);
 			});
-	
+
 }
 int	Neb::App::Base::loop() {
 	//NEBULA_DEBUG_1_FUNCTION;
@@ -174,14 +175,14 @@ int	Neb::App::Base::loop() {
 	double time;
 	double last = 0;
 	double dt;
-	
+
 	while(!flag_.any(Neb::App::Util::Flag::E::SHOULD_RELEASE)) {
 		time = glfwGetTime();
 		dt = time - last;
 		last = time;
 
 		step(time, dt);
-		
+
 		glfwPollEvents();
 	}
 
@@ -199,21 +200,21 @@ void		Neb::App::Base::transmit_scenes(Neb::Network::Communicating_s c) {
 	typedef Neb::Util::Parent<Neb::Scene::Base> S;
 
 	Neb::Scene::Base_s scene;
-	
+
 	S::map_.for_each([&] (S::map_type::const_iterator it) {
-		scene = it->second.ptr_;
-		assert(scene);
+			scene = it->second.ptr_;
+			assert(scene);
 
-		gal::network::omessage_s msg(new gal::network::omessage);
+			gal::network::omessage_s msg(new gal::network::omessage);
 
-		Neb::Message::Scene::Create scene_create;
+			Neb::Message::Scene::Create scene_create;
 
-		scene_create.load(scene);
+			scene_create.load(scene);
 
-		msg->ar_ << scene_create;
+			msg->ar_ << scene_create;
 
-		c->write(msg);
-	});
+			c->write(msg);
+			});
 }
 void Neb::App::Base::reset_server(unsigned short port) {
 	//NEBULA_DEBUG_0_FUNCTION;
@@ -271,39 +272,40 @@ Neb::Graphics::Window::Base_s		Neb::App::Base::get_window(GLFWwindow* window) {
 
 	return it->second;
 }
-void Neb::App::Base::static_error_fun(int error, char const * description) {
+
+void					Neb::App::Base::static_error_fun(int error, char const * description) {
 	printf("%s\n", description);
 	exit(0);
 }
-void Neb::App::Base::static_window_pos_fun(GLFWwindow* window, int x, int y){
+void					Neb::App::Base::static_window_pos_fun(GLFWwindow* window, int x, int y){
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	auto w = Neb::App::Base::globalBase()->get_window(window);
 
 	w->callback_window_pos_fun(window,x,y);
 }
-void Neb::App::Base::static_window_size_fun(GLFWwindow* window, int width, int h){
+void					Neb::App::Base::static_window_size_fun(GLFWwindow* window, int width, int h){
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	auto w = Neb::App::Base::globalBase()->get_window(window);
 
 	w->callback_window_size_fun(window, width, h);
 }
-void Neb::App::Base::static_window_close_fun(GLFWwindow* window){
+void					Neb::App::Base::static_window_close_fun(GLFWwindow* window){
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	auto w = Neb::App::Base::globalBase()->get_window(window);
 
 	w->callback_window_close_fun(window);
 }
-void Neb::App::Base::static_window_refresh_fun(GLFWwindow* window) {
+void					Neb::App::Base::static_window_refresh_fun(GLFWwindow* window) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	auto w = Neb::App::Base::globalBase()->get_window(window);
 
 	w->callback_window_refresh_fun(window);
 }
-void Neb::App::Base::static_mouse_button_fun(GLFWwindow* window, int button, int action, int mods){
+void					Neb::App::Base::static_mouse_button_fun(GLFWwindow* window, int button, int action, int mods){
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	auto w = Neb::App::Base::globalBase()->get_window(window);
