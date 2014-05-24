@@ -8,37 +8,32 @@
 #include <unistd.h>          // For close()
 #include <netinet/in.h>      // For sockaddr_in
 
-#include <math/free.hpp>
+//#include <math/free.hpp>
 
-#include <gru/actor/actor.hpp>
-#include <gru/scene/desc.hpp>
-#include <gru/network/message.hpp>
+#include <Nebula/Actor/Base.hh>
 
-#include <nebula/config.hpp>
-#include <nebula/app.hpp>
-#include <nebula/network/client.hpp>
-#include <nebula/network/message.hpp>
-#include <nebula/scene/scene.hpp>
+#include <Nebula/config.hh>
+#include <Nebula/App/Base.hh>
+#include <Nebula/network2/client.hh>
+#include <Nebula/network/message.hh>
+#include <Nebula/Scene/Base.hh>
 
-neb::network::client::client(neb::app_s app, char const * addr, unsigned short port):
+Neb::Network::Client::Client(char const * addr, unsigned short port):
 	gal::network::communicating(::socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)),
-	neb::network::communicating(app, socket_),
+	Neb::Network::Communicating(socket_),
 	gal::network::client(addr, port)
 {
 
 }
-void neb::network::client::process(gal::network::message::shared_t msg) {
-	NEBULA_DEBUG_1_FUNCTION;
+void Neb::Network::Client::process(gal::network::message_s message) {
 
-	assert(!app_.expired());
-	auto app = app_.lock();
 	//assert(msg->body_length() == sizeof(neb::packet::packet));
 
 	//neb::packet::packet p;
 	//memcpy(&p, msg->body(), sizeof(neb::packet::packet));
 
 	//size_t len = msg->body_length();
-	
+	/*
 	int type;
 	msg->read(&type, sizeof(int));
 	
@@ -71,8 +66,7 @@ void neb::network::client::process(gal::network::message::shared_t msg) {
 
 	int window_name = 0;
 	
-	switch(type)
-	{
+	switch(type) {
 		case glutpp::network::type::SCENE_CREATE:
 			printf("DEBUG: message SCENE_CREATE received\n");
 			
@@ -163,5 +157,9 @@ void neb::network::client::process(gal::network::message::shared_t msg) {
 			printf("unknwon message type %i\n", type);
 			//abort();
 	}
+*/
 }
+
+
+
 

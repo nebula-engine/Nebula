@@ -1,21 +1,27 @@
 
-#include <nebula/config.hpp>
-#include <nebula/app.hpp>
-#include <nebula/scene/scene.hpp>
-#include <nebula/network/communicating.hpp>
+#include <Nebula/log.hh>
+#include <Nebula/config.hh>
+#include <Nebula/App/Base.hh>
+#include <Nebula/Scene/Base.hh>
+#include <Nebula/network/communicating.hh>
+#include <Nebula/network/message.hh>
+#include <Nebula/Message/Base.hh>
 
-neb::network::communicating::communicating(neb::app_s app, int socket):
-	gal::network::communicating(socket),
-	app_(app)
+gal::network::communicating::communicating(int socket):
+	gal::network::communicating(socket)
 {
 
 }
-void neb::network::communicating::process(gal::network::message::shared_t msg) {
-	NEBULA_DEBUG_1_FUNCTION;
+void		gal::network::communicating::process(gal::network::imessage_s buffer) {
+	BOOST_LOG_SEV(Neb::lg, debug) << __PRETTY_FUNCTION__;
 	
-	assert(!app_.expired());
-	auto app = app_.lock();
+	Neb::WrapperTyped<Neb::Message::IBase>	wrapper;
 	
+	
+	buffer->ar_ >> wrapper;
+	
+	
+	/*
 	int type;
 	msg->read(type);
 	
@@ -32,7 +38,7 @@ void neb::network::communicating::process(gal::network::message::shared_t msg) {
 		default:
 			printf("DEBUG: unknown message type %i\n", type);
 			break;
-	}
+	}*/
 
 }
 

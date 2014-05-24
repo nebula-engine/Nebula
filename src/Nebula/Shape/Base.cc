@@ -57,82 +57,74 @@ void		Neb::Shape::Base::init() {
 	
 	typedef Neb::Util::Parent<Neb::Shape::Base> S;
 	typedef Neb::Util::Parent<Neb::Light::Base> L;
-	
-	for(auto it = S::map_.map_.cbegin(); it != S::map_.map_.cend(); ++it) {
-		it->second.ptr_->init();
-	}
 
-	for(auto it = L::map_.map_.cbegin(); it != L::map_.map_.cend(); ++it) {
-		it->second.ptr_->init();
-	}
+	S::map_.for_each([] (S::map_type::const_iterator it) {
+			it->second.ptr_->init();
+			});
+
+	L::map_.for_each([] (L::map_type::const_iterator it) {
+			it->second.ptr_->init();
+			});
 }
 void Neb::Shape::Base::release() {
-	NEBULA_SHAPE_BASE_FUNC
-
+	NEBULA_SHAPE_BASE_FUNC;
+	
 	typedef Neb::Util::Parent<Neb::Shape::Base> S;
 	typedef Neb::Util::Parent<Neb::Light::Base> L;
-	
-	for(auto it = S::map_.map_.cbegin(); it != S::map_.map_.cend(); ++it) {
-		it->second.ptr_->release();
-	}
 
-	for(auto it = L::map_.map_.cbegin(); it != L::map_.map_.cend(); ++it) {
-		it->second.ptr_->release();
-	}
-
-	S::map_.map_.clear();
-	L::map_.map_.clear();
+	S::map_.clear();
+	L::map_.clear();
 }
 /*void Neb::Shape::Base::cleanup() {
-	NEBULA_SHAPE_BASE_FUNC
+  NEBULA_SHAPE_BASE_FUNC
 
-	auto s = shapes_.begin();
-	while(s != shapes_.end()) {
-		auto shape = s->second.ptr_;
-		
-		assert(shape);
-		
-		shape->cleanup();
-		
-		if(shape->any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
-			shape->release();
+  auto s = shapes_.begin();
+  while(s != shapes_.end()) {
+  auto shape = s->second.ptr_;
 
-			s = shapes_.erase(s);
-		} else {
-			++s;
-		}
-	}
+  assert(shape);
 
-	auto l = lights_.begin();
-	while(l != lights_.end()) {
-		auto light = l->second.ptr_;
-		
-		assert(light);
-		
-		light->cleanup();
+  shape->cleanup();
 
-		if(light->raw_.flag_.any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
-			light->release();
+  if(shape->any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
+  shape->release();
 
-			l = lights_.erase(l);
-		} else {
-			++l;
-		}
-	}
+  s = shapes_.erase(s);
+  } else {
+  ++s;
+  }
+  }
 
-}*/
-void Neb::Shape::Base::step(double time) {
-	
+  auto l = lights_.begin();
+  while(l != lights_.end()) {
+  auto light = l->second.ptr_;
+
+  assert(light);
+
+  light->cleanup();
+
+  if(light->raw_.flag_.any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
+  light->release();
+
+  l = lights_.erase(l);
+  } else {
+  ++l;
+  }
+  }
+
+  }*/
+void		Neb::Shape::Base::step(double const & time, double const & dt) {
+
 	typedef Neb::Util::Parent<Neb::Shape::Base> S;
 	typedef Neb::Util::Parent<Neb::Light::Base> L;
 	
-	for(auto it = S::map_.map_.cbegin(); it != S::map_.map_.cend(); ++it) {
-		it->second.ptr_->step(time);
-	}
+	S::map_.for_each([&] (S::map_type::const_iterator it) {
+		it->second.ptr_->step(time, dt);
+	});
 
-	for(auto it = L::map_.map_.cbegin(); it != L::map_.map_.cend(); ++it) {
-		it->second.ptr_->step(time);
-	}
+	L::map_.for_each([&] (L::map_type::const_iterator it) {
+		it->second.ptr_->step(time, dt);
+	});
 
 	material_front_.step(time);
 }
@@ -140,26 +132,28 @@ void Neb::Shape::Base::notify_foundation_change_pose() {
 
 	typedef Neb::Util::Parent<Neb::Shape::Base> S;
 	typedef Neb::Util::Parent<Neb::Light::Base> L;
-	
-	for(auto it = S::map_.map_.cbegin(); it != S::map_.map_.cend(); ++it) {
-		it->second.ptr_->notify_foundation_change_pose();
-	}
 
-	for(auto it = L::map_.map_.cbegin(); it != L::map_.map_.cend(); ++it) {
+	S::map_.for_each([] (S::map_type::const_iterator it) {
 		it->second.ptr_->notify_foundation_change_pose();
-	}
+	});
+
+	L::map_.for_each([] (L::map_type::const_iterator it) {
+		it->second.ptr_->notify_foundation_change_pose();
+	});
 }
 void Neb::Shape::Base::load_lights(int& i, physx::PxMat44 space) {
 	NEBULA_SHAPE_BASE_FUNC;
 
 	space = space * pose_;
-	
+
 	typedef Neb::Util::Parent<Neb::Light::Base> L;
-	
-	for(auto it = L::map_.map_.cbegin(); it != L::map_.map_.cend(); ++it) {
-		if(i == Neb::Light::light_max) break;
+
+	L::map_.for_each([&] (L::map_type::const_iterator it) {
+		if(i == Neb::Light::light_max) return L::map_type::BREAK;
 		it->second.ptr_->load(i++, space);
-	}
+		return L::map_type::CONTINUE;
+	});
+
 }
 void Neb::Shape::Base::draw(Neb::Graphics::Window::Base_s window, physx::PxMat44 space) {
 	space = space * pose_;
@@ -167,11 +161,11 @@ void Neb::Shape::Base::draw(Neb::Graphics::Window::Base_s window, physx::PxMat44
 	draw_elements(window, space);
 }
 void		Neb::Shape::Base::model_load(physx::PxMat44 space) {
-	
+
 	auto p = Neb::App::Base::globalBase()->current_program();
-	
+
 	space.scale(physx::PxVec4(s_, 0));
-	
+
 	p->get_uniform_scalar("model")->load(space);
 }
 void		Neb::Shape::Base::init_buffer(Neb::Graphics::Window::Base_s window, std::shared_ptr<Neb::glsl::program> p) {
@@ -272,7 +266,7 @@ void		Neb::Shape::Base::draw_elements(Neb::Graphics::Window::Base_s window, phys
 	auto p = Neb::App::Base::globalBase()->use_program(program_);
 
 	// initialize buffers if not already
-//	if(!context_[window.get()])
+	//	if(!context_[window.get()])
 	{	
 		init_buffer(window, p);
 	}

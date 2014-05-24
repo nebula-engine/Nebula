@@ -11,7 +11,7 @@
 #include <unistd.h>          // For close()
 #include <netinet/in.h>      // For sockaddr_in
 
-#include <gru/network/client.hpp>
+#include <Nebula/network/client.hh>
 
 //#include <galaxy/config.hpp>
 //#include <galaxy/free.hpp>

@@ -4,7 +4,7 @@
 #include <assert.h>
 
 //#include <galaxy/config.hpp>
-#include <gru/network/message.hpp>
+#include <Nebula/network/message.hh>
 
 gal::network::message::message() {
 }
@@ -23,7 +23,7 @@ gal::network::message::message() {
 void gal::network::message::reset_head() {
 	ss_.seekp(0);
 }
-void		gal::network::message::write(void const * const v, size_t len) {
+/*void		gal::network::message::write(void const * const v, size_t len) {
 	assert(v);
 	
 	ss_.write((char*)v,len);
@@ -34,7 +34,7 @@ void		gal::network::message::read(void * const v, size_t len) {
 	ss_.read((char*)v,len);
 	
 	if(ss_.fail()) abort();
-}
+}*/
 
 
 

@@ -23,6 +23,8 @@ namespace Neb {
 				virtual public Neb::Message::IBase,
 				virtual public Neb::Message::Actor::Base
 			{
+				private:
+					IBase&			operator=(IBase const &);
 				public:
 					virtual void		serialize(
 							boost::archive::polymorphic_iarchive & ar,

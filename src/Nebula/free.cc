@@ -9,11 +9,12 @@
 #include <GLFW/glfw3.h>
 //#include <GL/gl.h>
 
-#include <gru/master.hpp>
-#include <gru/Graphics/window/window.hpp>
-#include <gru/free.hpp>
 
-void	print(unsigned char * s, int w, int h) {
+#include <Nebula/App/Base.hh>
+#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/free.hh>
+
+void		print(unsigned char * s, int w, int h) {
 
 	for(int j = 0; j < h; j++)
 	{
@@ -25,11 +26,11 @@ void	print(unsigned char * s, int w, int h) {
 		printf("\n");
 	}
 }
-/*void	glutpp::draw_quad(float x, float y, float w, float h, math::color color)
+/*void	Nebula::draw_quad(float x, float y, float w, float h, math::color color)
   {
 
   }*/
-void	glutpp::draw_quad(float x, float y, float w, float h, gru::Color::color<float> color) {
+void		Neb::draw_quad(float x, float y, float w, float h, Neb::Color::color<float> color) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	//GLint uniform_color = glGetUniformLocation(program, "color");
@@ -82,19 +83,19 @@ void	glutpp::draw_quad(float x, float y, float w, float h, gru::Color::color<flo
 	glPopMatrix();
 
 }
-void	glutpp::draw_text(float x, float y, float sx, float sy, gru::Color::color<float> color, std::string text) {
+void		Neb::draw_text(float x, float y, float sx, float sy, Neb::Color::color<float> color, std::string text) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	const char * c;
 
-	auto p = glutpp::master::Global()->use_program(glutpp::program_name::e::TEXT);
+	auto p = Neb::App::Base::globalBase()->use_program(Neb::program_name::e::TEXT);
 
 	printf("text %6.3f %6.3f %s\n", x, y, text.c_str());
 
 	// face
 	FT_Face face;
 
-	FT_Library ft = glutpp::master::Global()->ft_;
+	FT_Library ft = Neb::App::Base::globalBase()->ft_;
 
 	char const fontfile[] = "/usr/share/fonts/truetype/freefont/FreeSans.ttf";
 	//char const fontfile[] = "/usr/share/fonts/truetype/msttcorefonts/arial.ttf";
@@ -161,7 +162,7 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, gru::Color::color<f
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
-	auto attrib_coord = p->get_attrib(glutpp::attrib_name::e::COOR);
+	auto attrib_coord = p->get_attrib(Neb::attrib_name::e::COOR);
 
 	// vbo
 	GLuint vbo;
@@ -182,8 +183,7 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, gru::Color::color<f
 
 
 
-	for(c = text.c_str(); *c; c++)
-	{
+	for(c = text.c_str(); *c; c++) {
 		if(FT_Load_Char(face, *c, FT_LOAD_RENDER)) continue;
 
 		glTexImage2D(
@@ -233,8 +233,7 @@ void	glutpp::draw_text(float x, float y, float sx, float sy, gru::Color::color<f
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 }
-int	isExtensionSupported(const char *extension)
-{
+int		isExtensionSupported(const char *extension) {
 	const GLubyte *extensions = NULL;
 	const GLubyte *start;
 	GLubyte *where, *terminator;
@@ -263,8 +262,7 @@ int	isExtensionSupported(const char *extension)
 	}
 	return 0;
 }
-int isSupported(const char *extension)
-{
+int isSupported(const char *extension) {
 	if(isExtensionSupported(extension))
 	{
 		printf("%s is supported\n",extension);
@@ -292,8 +290,7 @@ void	fatal_error(char const * c, Args ...args)
 	printf(fmt, args...);
 	exit(0);
 }
-void	fatal_error(char const * c)
-{
+void	fatal_error(char const * c) {
 	char fmt[128];
 	strcat(fmt, "error: ");
 	strcat(fmt, c);

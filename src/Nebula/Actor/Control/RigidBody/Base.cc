@@ -255,15 +255,6 @@ physx::PxVec3 Neb::Actor::Control::RigidBody::PD::t() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return torque_;
 }
-void Neb::Actor::Control::RigidBody::Base::print() {
-/*
-	printf("torque\n");
-	torque_.print();
-
-	printf("force\n");
-	force_.print();
-*/
-}
 
 
 

@@ -11,7 +11,8 @@ namespace Neb {
 			namespace Control {
 				namespace RigidBody {
 					/** @brief %Create. */
-					class Create: public Neb::Message::Actor::Base {
+					class Create:
+						virtual public Neb::Message::Actor::Base {
 						public:
 							/** @brief derived serialize. */
 							virtual void					serializeDerived(
@@ -21,24 +22,39 @@ namespace Neb {
 							virtual void					serializeDerived(
 									boost::archive::polymorphic_iarchive & ar,
 									unsigned int const & version);
-
-
 							Neb::WrapperTyped<Neb::Actor::Control::RigidBody::Base>		control_;
 					};
-					
-					
+					/** @brief %Create. */
+					class ICreate:
+						virtual public Neb::Message::Actor::Base
+					{
+						virtual void			process();
+					};
+					/** @brief %Create. */
+					class OCreate:
+						virtual public Neb::Message::Actor::Base
+					{
+						virtual void			pre();
+						virtual void			post();
+					};
 					/** @brief %Update. */
-					class Update {
+					class Update:
+						virtual public Neb::Message::Actor::Base
+					{
 						public:
 							virtual ~Update() = 0;
+						public:
 							Neb::WrapperTyped<Neb::Actor::Control::RigidBody::Base>		control_;
 					};
 					/** @brief %Update. */
 					class IUpdate:
-						public Neb::Message::Actor::IBase,
-						public Neb::Message::Actor::Control::RigidBody::Update
+						virtual public Neb::Message::Actor::IBase,
+						virtual public Neb::Message::Actor::Control::RigidBody::Update
 					{
 						public:
+							virtual ~IUpdate();
+							/** @brief process */
+							virtual void					process();
 							/** @brief derived serialize. */
 							virtual void					serialize(
 									boost::archive::polymorphic_iarchive & ar,
@@ -46,8 +62,8 @@ namespace Neb {
 					};
 					/** @brief %Update. */
 					class OUpdate:
-						public Neb::Message::Actor::OBase,
-						public Neb::Message::Actor::Control::RigidBody::Update
+						virtual public Neb::Message::Actor::OBase,
+						virtual public Neb::Message::Actor::Control::RigidBody::Update
 					{
 						public:
 							virtual void					pre();

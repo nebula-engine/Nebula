@@ -25,8 +25,9 @@ namespace gal {
 			public:
 				/// ctor
 				message();
+				virtual ~message() = 0;
 				//void				set(void const * const, unsigned int);
-				//void				reset_head();
+				void				reset_head();
 				/*void				write(void const * const, size_t);
 				template<typename T> void	write(const T& t) {
 					write(&t, sizeof(T));
@@ -42,6 +43,7 @@ namespace gal {
 				template<typename T> void	read(T& t) {
 					read(&t, sizeof(T));
 				}*/
+				
 			public: //protected:
 				std::stringstream		ss_;
 		};

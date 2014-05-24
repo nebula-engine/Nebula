@@ -143,6 +143,7 @@ namespace Neb {
 				void				reset_client(char const *, unsigned short);		
 				void				send_server(gal::network::omessage_s);
 				void				send_client(gal::network::omessage_s);
+				void				sendServer(Neb::Message::OBase_s message);
 				void				sendClient(Neb::Message::OBase_s message);
 				int				transmit_scenes(Neb::Network::Communicating_s);
 				/** @} */

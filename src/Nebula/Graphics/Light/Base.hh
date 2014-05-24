@@ -35,7 +35,7 @@ namespace Neb {
 
 				virtual void			release();
 				virtual void			cleanup();
-				void				step(double) {}
+				void				step(double const & time, double const & dt);
 				void				load(int, physx::PxMat44);
 
 				void				load_shadow();

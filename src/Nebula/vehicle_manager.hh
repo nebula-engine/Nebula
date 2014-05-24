@@ -5,7 +5,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <gru/actor/desc.hpp>
+//#include <gru/actor/desc.hpp>
 
 /*
 

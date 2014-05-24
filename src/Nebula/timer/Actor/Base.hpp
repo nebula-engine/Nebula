@@ -17,7 +17,7 @@ namespace Neb {
 		namespace Actor {
 			class Base {
 				public:
-					Base(boost::asio::io_service& io, boost::shared_ptr<Neb::Actor::Base>, double);
+					Base(Neb::Actor::Base_s, double);
 
 
 					virtual void					doSomething() = 0;

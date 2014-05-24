@@ -1,28 +1,17 @@
 
-#include <nebula/timer/Actor/Base.hpp>
-#include <nebula/actor/Base.hpp>
+#include <Nebula/App/Base.hh>
+#include <Nebula/timer/Actor/Base.hpp>
+#include <Nebula/Actor/Base.hh>
 
 
-Actor(boost::asio::io_service& io, boost::shared_ptr<glutpp::actor::actor> actor, double seconds):
-	timer_(io, boost::posix_time::seconds(seconds)),
+Neb::Timer::Actor::Base::Base(Neb::Actor::Base_s actor, double seconds):
+	timer_(Neb::App::Base::globalBase()->ios_, boost::posix_time::seconds(seconds)),
 	actor_(actor)
 {
-	timer_.async_wait(boost::bind(&neb::Timer::Actor::doSomething, this));
+	timer_.async_wait(boost::bind(&Neb::Timer::Actor::Base::doSomething, this));
 }
-void neb::Timer::Actor::activate() {
 
-	if(actor_.expired()) return;
 
-	auto a = actor_.lock();
 
-	switch(type_)
-	{
-		case RELEASE:
-			a->set(glutpp::actor::actor::flag::SHOULD_RELEASE);
-			break;
-		default:
-			break;
-	}
 
-}
 

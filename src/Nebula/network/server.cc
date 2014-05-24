@@ -15,7 +15,7 @@
 
 
 //#include <galaxy/config.hpp>
-#include <gru/network/server.hpp>
+#include <Nebula/network/server.hh>
 
 
 gal::network::server::server(unsigned short localPort, int queueLen):
@@ -68,7 +68,7 @@ void gal::network::server::thread_accept() {
 		}
 	}
 }
-void gal::network::server::write(msg_t msg) {
+void gal::network::server::write(gal::network::message_s msg) {
 	
 	for(auto it = clients_.begin(); it != clients_.end(); ++it) {
 		(*it)->write(msg);

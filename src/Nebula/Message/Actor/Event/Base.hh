@@ -37,15 +37,29 @@ namespace Neb {
 						virtual void		pre();
 						virtual void		post();
 				};
+				class IBase:
+					virtual public Neb::Message::Actor::IBase,
+					virtual public Neb::Message::Actor::Event::Base
+				{
+				};
 				class OBase:
 					virtual public Neb::Message::Actor::OBase,
 					virtual public Neb::Message::Actor::Event::Base
 				{
-
 				};
 				class Fire:
 					virtual public Neb::Message::Actor::Event::Base
 				{
+				};
+				class IFire:
+					virtual public Neb::Message::Actor::Event::IBase,
+					virtual public Neb::Message::Actor::Event::Fire
+				{
+					virtual void		process();
+
+					virtual void		serialize(
+							boost::archive::polymorphic_iarchive & ar,
+							unsigned int const & version);
 				};
 				class OFire:
 					virtual public Neb::Message::Actor::Event::OBase,

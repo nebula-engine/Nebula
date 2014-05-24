@@ -12,30 +12,34 @@ namespace Neb {
 		 * 
 		 */
 		class Base {
-			public:
-				template<class D, class... A> static Neb::Message::Base_s	alloc(A... a) {
-					Neb::Message::Base_s d(new D(a...));
-					d->pre();
-					return d;
-				}
 			protected:
 				Base();
-				virtual void			pre() = 0;
-				virtual void			post() = 0;
 		};
-		class OBase: public Base {
+		class OBase:
+			virtual public Neb::Message::Base
+		{
 			public:
 				OBase();
+			
+				virtual void			pre() = 0;
+				virtual void			post() = 0;
+
+				virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) = 0;			
+			public:
 				gal::network::omessage_s	msg_;
 		};
-		class IBase: public Base {
+		class IBase:
+			virtual public Neb::Message::Base
+		{
 			public:
 				IBase();
-
+				virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) = 0;
+			
 				/** @brief process.
 				 * called after message is deserialized
 				 */
 				virtual void			process() = 0;
+			public:
 				gal::network::omessage_s	msg_;
 		};
 	}

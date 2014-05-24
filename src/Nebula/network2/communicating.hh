@@ -12,7 +12,7 @@ namespace Neb {
 		{
 			public:
 				Communicating(int);
-				void	process(gal::network::message_s);
+				void	process(gal::network::imessage_s);
 		};
 	}
 }

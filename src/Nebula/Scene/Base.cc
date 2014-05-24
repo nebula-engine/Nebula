@@ -461,7 +461,7 @@ void Neb::Scene::Base::send_actor_update() {
 	typedef Neb::Util::Parent<Neb::Actor::Base> A;
 
 	A::map_.for_each([&] (A::map_type::const_iterator it) {
-			actor_update->operator<<(it->second.ptr_);
+			message->operator<<(it->second.ptr_);
 			});
 
 

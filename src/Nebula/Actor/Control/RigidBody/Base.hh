@@ -19,14 +19,13 @@ namespace Neb {
 				class Base {
 					public:
 						Base();
+						Base&				operator=(Base const & base);
 
 						virtual int			key_fun(int,int,int,int);
-
+						
 						virtual void			step(double const & time, double const & dt) = 0;
 						virtual physx::PxVec3		f() = 0;
 						virtual physx::PxVec3		t() = 0;
-
-						void				print();
 					private:
 
 					public:

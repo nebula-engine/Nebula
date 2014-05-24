@@ -11,12 +11,12 @@
 //#include <galaxy/config.hpp>
 //#include <gal/free.hpp>
 
-#include <gru/network/message.hpp>
-#include <gru/network/communicating.hpp>
+#include <Nebula/network/message.hh>
+#include <Nebula/network/communicating.hh>
 
 gal::network::communicating::communicating( int socket ):
 	socket_(socket),
-	read_msg_(new gal::network::message),
+	read_msg_(new gal::network::imessage),
 	terminate_(false)
 {
 	//GALAXY_DEBUG_0_FUNCTION;
@@ -39,7 +39,7 @@ void	gal::network::communicating::start()
 	
 	read_thread_ = std::thread(std::bind(&communicating::thread_read, this ) );
 }
-void		gal::network::communicating::write(boost::shared_ptr<gal::network::message> & msg) {	
+void		gal::network::communicating::write(gal::network::message_s msg) {	
 	//GALAXY_DEBUG_1_FUNCTION;
 	
 	{
@@ -116,7 +116,7 @@ void	gal::network::communicating::thread_write_dispatch() {
 		write_queue_.pop_front();
 	}
 }
-void		gal::network::communicating::thread_write(boost::shared_ptr<gal::network::message> message) {
+void		gal::network::communicating::thread_write(gal::network::message_s message) {
 	//GALAXY_DEBUG_1_FUNCTION;
 	
 
@@ -167,7 +167,7 @@ void	gal::network::communicating::thread_read_header() {
 	//printf("waiting for %i bytes\n", message::header_length);
 	
 	// wail until all data is available
-	int bytes = ::recv(socket_, &read_header_, sizeof(HEADER_TYPE), MSG_WAITALL);
+	int bytes = ::recv(socket_, &read_header_, sizeof(header_type), MSG_WAITALL);
 	
 	if (bytes < 0) {
 		perror("recv:");
@@ -179,7 +179,7 @@ void	gal::network::communicating::thread_read_header() {
 		exit(0);
 	}
 	
-	if (bytes < (int)sizeof(HEADER_TYPE)) {
+	if (bytes < (int)sizeof(header_type)) {
 		printf("%s\n", __PRETTY_FUNCTION__);
 		printf("not enough data\n");
 		exit(0);
@@ -205,7 +205,7 @@ void	gal::network::communicating::thread_read_body() {
 		exit(0);
 	}
 	
-	if(bytes < (int)sizeof(HEADER_TYPE)) {
+	if(bytes < (int)sizeof(header_type)) {
 		printf("not enough data\n");
 		exit(0);
 	}
