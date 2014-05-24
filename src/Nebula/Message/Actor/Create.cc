@@ -1,21 +1,17 @@
 
-#include <gru/actor/addr.hpp>
-#include <gru/actor/actor.hpp>
-#include <gru/Message/Actor/Create.hpp>
+#include <Nebula/Actor/Base.hh>
 
-void		glutpp::network::actor::create::load(Neb::unique_ptr<glutpp::actor::actor> actor) {
+#include <Nebula/Message/Actor/Create.hh>
+
+void		Neb::Message::Actor::Create::load(Neb::Actor::Base_s actor) {
 	assert(actor);
-	
-	addr_.load_parent(actor);
 
-	desc_.load(actor);
+	parent_i_ = actor->parent_->i_;
 	
+	i_ = actor->i_;
+	
+	wrapper_.ptr_ = actor;
 }
-
-
-
-
-
 
 
 

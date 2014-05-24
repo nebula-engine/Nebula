@@ -5,7 +5,7 @@
 
 #include <Nebula/Flag.hh>
 #include <Nebula/Util/Map.hh>
-#include <Nebula/Util/Typed.hh>
+#include <Nebula/Util/Shared.hh>
 
 
 
@@ -28,7 +28,9 @@
 
 namespace Neb {
 	namespace Scene {
-		class Remote: public Neb::Scene::Base {
+		class Remote:
+			virtual public Neb::Scene::Base
+		{
 			void				step(double const & time, double const & dt);
 			virtual void			fire(Neb::Actor::Base_s actor);
 		};

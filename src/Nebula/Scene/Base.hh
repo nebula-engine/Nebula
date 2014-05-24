@@ -5,7 +5,6 @@
 
 #include <Nebula/Flag.hh>
 #include <Nebula/Util/Map.hh>
-#include <Nebula/Util/Typed.hh>
 
 
 
@@ -30,8 +29,8 @@
 namespace Neb {
 	namespace Scene {
 		class Base:
-			virtual public Neb::Actor::Util::Parent,
-			virtual public Neb::Util::Typed
+			virtual public Neb::Util::Shared,
+			virtual public Neb::Actor::Util::Parent
 		{
 			public:
 				Base(Neb::Scene::Util::Parent_s);

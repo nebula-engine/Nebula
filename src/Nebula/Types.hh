@@ -42,8 +42,9 @@ namespace Neb {
 	}
 	
 	namespace Util {
-		typedef int	index_type;
-		
+				
+		typedef int			index_type;
+	
 		class Shared;
 
 		typedef std::shared_ptr<Shared>		Shared_s;

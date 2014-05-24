@@ -11,7 +11,7 @@
 
 #include <Nebula/App/BaseFactory.hh>
 
-#include <Nebula/Util/Typed.hh>
+#include <Nebula/Util/Shared.hh>
 #include <Nebula/Util/Factory.hh>
 
 namespace Neb {
@@ -52,7 +52,8 @@ namespace Neb {
 			}
 			/** @brief %Save */
 			template<class Archive> void		save(Archive & ar, unsigned int const & version) const {
-				ar << boost::serialization::make_nvp("hash_code", ptr_->hash_code());
+				Neb::Util::Shared::hash_type hash_code = ptr_->hash_code();
+				ar << boost::serialization::make_nvp("hash_code", hash_code);
 				ar << boost::serialization::make_nvp("object", *ptr_);
 			}
 			/** */
@@ -60,7 +61,7 @@ namespace Neb {
 				// get the code
 				std::string name;
 				ar >> boost::serialization::make_nvp("name", name);
-				Neb::Util::Typed::hash_type hash = Neb::Util::Typed::to_hash_code(name);
+				Neb::Util::Shared::hash_type hash = Neb::Util::Shared::to_hash_code(name);
 				
 				// get the factory
 				auto fs = factory_.lock();
@@ -74,7 +75,7 @@ namespace Neb {
 			}
 			/** */
 			void		save(boost::archive::xml_oarchive & ar, unsigned int const & version) const {
-				std::string name = Neb::Util::Typed::to_string(ptr_->hash_code());
+				std::string name = Neb::Util::Shared::to_string(ptr_->hash_code());
 				ar << boost::serialization::make_nvp("name", name);
 				ar << boost::serialization::make_nvp("object", *ptr_);
 			}

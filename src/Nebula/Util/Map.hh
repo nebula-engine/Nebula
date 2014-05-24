@@ -40,7 +40,7 @@ namespace Neb {
 			  }*/
 			/** */
 			template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
-				boost::lock_guard<boost::mutex>(mutex_);
+				boost::lock_guard<boost::mutex> lk(mutex_);
 				
 				ar & boost::serialization::make_nvp("map",map_);
 			}
@@ -76,7 +76,7 @@ namespace Neb {
 			}
 			/** */
 			shared_type			find(Neb::Util::index_type i) {
-				boost::lock_guard<boost::mutex>(mutex_);
+				boost::lock_guard<boost::mutex> lk(mutex_);
 				
 				auto it = map_.find(i);
 				return it->second.ptr_;

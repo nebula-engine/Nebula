@@ -16,94 +16,34 @@
 
 #include <Nebula/Scene/Base.hh>
 
-#include <Nebula/Message/Base.hh>
+#include <Nebula/Message/Actor/Base.hh>
 
 namespace Neb {
 	namespace Message {
 		namespace Actor {
-			struct Update: virtual public Neb::Message::Base {
-				
-				Update(): count_(0) {}
-				
-				/** @brief Default load/save operator.
-				 * All other types are simply passed to the archive
-				 */
-				//template<typename T> Update&		operator&(T const & t) {
-			//		msg_->ar_ & t;
-			//	}
-				
-				int				count_;
-				std::stringstream::pos_type	pos_count_;
-				
+			struct Update:
+				virtual public Neb::Message::Actor::Base
+			{	
+				Update() {}
 			};
-			struct OUpdate: Neb::Message::OBase, Update{
+			class OUpdate:
+				virtual public Neb::Message::Actor::OBase,
+				virtual public Neb::Message::Actor::Update
+			{
+				public:
+					/** @brief Save %Actor. */
+					OUpdate&		operator<<(Neb::Actor::Base_s actor);
 
-				/** @brief Save %Actor. */
-				OUpdate&		operator<<(Neb::Actor::Base_s actor);
+					virtual void		serialize(boost::archive::polymorphic_oarchive& ar, unsigned int const & version);
 
-				virtual void		serialize(boost::archive::polymorphic_oarchive& ar, unsigned int const & version);
-
-				/** */
-				/*template<typename T> Update&		operator<<(T const & t) {
-					msg_->ar_ & t;
-					return *this;
-				}*/
-			
-				/** @brief Before saving.
-				 * Implement the virtual savePre function.
-				 * Record the position of the count data.
-				 * Doing so enables @c this to load and save arrays whose length
-				 * is unknown until all data is saved.
-				 * This function is called by the initialization of an omessage object
-				*/
-				virtual void		pre() {
-					// save the position of count
-					pos_count_ = msg_->ss_.tellp();
-					
-					// allocate space for count
-					msg_->ar_ << count_;
-				}
-				/** @brief After saving.
-				 * Implement the virtual savePost function. Overwrite the count data.
-				*/
-				virtual void		post() {
-					auto pos = msg_->ss_.tellp();
-					
-					msg_->ss_.seekp(pos_count_);
-					/** @todo determine if I count just say "ar << count" here */
-					msg_->ss_.write((char*)&count_, sizeof(count_));
-					
-					msg_->ss_.seekp(pos);
-				}
+					std::vector< Neb::Actor::Base_s >	actors_;
 			};
-			struct IUpdate: Neb::Message::IBase, Update {
+			class IUpdate:
+				virtual public Neb::Message::Actor::IBase,
+				virtual public Neb::Message::Actor::Update
+			{
 				/** @brief Load */
 				virtual void		serialize(boost::archive::polymorphic_iarchive& ar, unsigned int const & version);
-				
-				virtual void		pre() {
-					// save the position of count
-					pos_count_ = msg_->ss_.tellp();
-					
-					// allocate space for count
-					msg_->ar_ << count_;
-				}
-				/** @brief After saving.
-				 * Implement the virtual savePost function. Overwrite the count data.
-				*/
-				virtual void		post() {
-					auto pos = msg_->ss_.tellp();
-					
-					msg_->ss_.seekp(pos_count_);
-					/** @todo determine if I count just say "ar << count" here */
-					msg_->ss_.write((char*)&count_, sizeof(count_));
-					
-					msg_->ss_.seekp(pos);
-				}
-				/** */
-				/*template<typename T> Update&		operator>>(T const & t) {
-					msg_->ar_ & t;
-					return *this;
-				}*/
 			};
 		}
 	}

@@ -2,7 +2,7 @@
 
 #include <Nebula/debug.hh>
 
-#include <Nebula/Util/Typed.hh>
+//#include <Nebula/Util/Typed.hh>
 
 #include <Nebula/Types.hh>
 #include <Nebula/config.hh> // Nebula/config.hpp.in

@@ -1,7 +1,6 @@
 #ifndef NEBULA_MESSAGE_ACTOR_BASE_HPP
 #define NEBULA_MESSAGE_ACTOR_BASE_HPP
 
-#include <Nebula/Util/Typed.hh>
 
 #include <Nebula/Message/Base.hh>
 

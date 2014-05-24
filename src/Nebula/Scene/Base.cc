@@ -22,7 +22,7 @@
 #include <Nebula/Message/Actor/Update.hh>
 #include <Nebula/Message/Actor/Event/Base.hh>
 #include <Nebula/network/message.hh>
-#include <Nebula/Util/Typed.hh>
+//#include <Nebula/Util/Typed.hh>
 #include <Nebula/Memory/smart_ptr.hh>
 
 #include <Nebula/config.hh> // nebula/config.hpp.in

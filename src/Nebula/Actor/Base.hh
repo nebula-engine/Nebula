@@ -42,10 +42,10 @@ namespace Neb {
 	namespace Actor {
 		/** @brief %Base */
 		class Base:
-			virtual public Neb::Actor::Util::Parent,
-			virtual public Neb::Shape::Util::Parent,
+			virtual public Neb::Util::Shared,
 			virtual public Neb::Util::Release,
-			virtual public Neb::Util::Typed
+			virtual public Neb::Actor::Util::Parent,
+			virtual public Neb::Shape::Util::Parent
 		{
 			public:
 			

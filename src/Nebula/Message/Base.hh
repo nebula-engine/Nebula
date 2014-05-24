@@ -20,10 +20,6 @@ namespace Neb {
 		{
 			public:
 				OBase();
-			
-				virtual void			pre() = 0;
-				virtual void			post() = 0;
-
 				virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) = 0;			
 			public:
 				gal::network::omessage_s	msg_;
@@ -34,11 +30,6 @@ namespace Neb {
 			public:
 				IBase();
 				virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) = 0;
-			
-				/** @brief process.
-				 * called after message is deserialized
-				 */
-				virtual void			process() = 0;
 			public:
 				gal::network::omessage_s	msg_;
 		};
