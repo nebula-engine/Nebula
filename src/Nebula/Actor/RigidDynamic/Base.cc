@@ -1,6 +1,6 @@
 #include <Nebula/debug.hh>
 #include <Nebula/Shape/Base.hh>
-#include <Nebula/physics.hh>
+#include <Nebula/Physics.hh>
 #include <Nebula/Actor/RigidDynamic/Base.hh>
 
 Neb::Actor::RigidDynamic::Base::Base() {
@@ -29,8 +29,7 @@ void Neb::Actor::RigidDynamic::Base::create_physics() {
 
 
 	// PxActor
-	physx::PxRigidDynamic* px_rigid_dynamic = 
-		Neb::__physics.px_physics_->createRigidDynamic(pose);
+	physx::PxRigidDynamic* px_rigid_dynamic = Neb::Physics::global()->px_physics_->createRigidDynamic(pose);
 
 	if (!px_rigid_dynamic)
 	{

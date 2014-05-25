@@ -27,7 +27,7 @@
 
 #include <Nebula/config.hh> // nebula/config.hpp.in
 #include <Nebula/App/Base.hh>
-#include <Nebula/physics.hh>
+#include <Nebula/Physics.hh>
 #include <Nebula/simulation_callback.hh>
 //#include <Nebula/actor/free.hh>
 #include <Nebula/Actor/RigidDynamic/Base.hh>
@@ -382,9 +382,9 @@ Neb::Scene::Base::vehicle_t Neb::scene::scene::create_vehicle() {
 */
 void Neb::Scene::Base::create_physics() {
 	printf("%s\n",__PRETTY_FUNCTION__);
-
-	auto pxphysics = Neb::__physics.px_physics_;
-
+	
+	auto pxphysics = Neb::Physics::global()->px_physics_;
+	
 	physx::PxSceneDesc scene_desc(pxphysics->getTolerancesScale());
 
 	scene_desc.gravity = gravity_;

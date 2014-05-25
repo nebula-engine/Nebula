@@ -9,7 +9,14 @@
 namespace Neb {
 
 	class simulation_callback;
-
+	
+	
+	
+	class Physics;
+	
+	typedef std::shared_ptr<Physics>			Physics_s;
+	
+	
 	namespace App {
 		class BaseFactory;
 
@@ -19,8 +26,8 @@ namespace Neb {
 		
 		class Base;
 
-		typedef std::shared_ptr<Base>		Base_s;
-		typedef std::weak_ptr<Base>		Base_w;
+		typedef std::shared_ptr<Base>			Base_s;
+		typedef std::weak_ptr<Base>			Base_w;
 	}
 
 	namespace Network {
@@ -28,11 +35,11 @@ namespace Neb {
 		class Client;
 		class Communicating;
 		
-		typedef std::shared_ptr<Server>		Server_s;
-		typedef std::weak_ptr<Server>		Server_w;
+		typedef std::shared_ptr<Server>			Server_s;
+		typedef std::weak_ptr<Server>			Server_w;
 
-		typedef std::shared_ptr<Client>		Client_s;
-		typedef std::weak_ptr<Client>		Client_w;
+		typedef std::shared_ptr<Client>			Client_s;
+		typedef std::weak_ptr<Client>			Client_w;
 
 		typedef std::shared_ptr<Communicating>		Communicating_s;
 		typedef std::weak_ptr<Communicating>		Communicating_w;

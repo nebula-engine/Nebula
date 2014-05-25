@@ -1,6 +1,6 @@
 
 #include <Nebula/debug.hh>
-#include <Nebula/physics.hh>
+#include <Nebula/Physics.hh>
 #include <Nebula/Shape/Base.hh>
 #include <Nebula/Actor/RigidStatic/Base.hh>
 
@@ -30,7 +30,7 @@ void Neb::Actor::RigidStatic::Base::create_physics() {
 	//pose.q.print();
 	
 	// PxActor
-	physx::PxRigidStatic* px_rigid_static = Neb::__physics.px_physics_->createRigidStatic(pose);
+	physx::PxRigidStatic* px_rigid_static = Neb::Physics::global()->px_physics_->createRigidStatic(pose);
 
 	if(px_rigid_static == NULL)
 	{

@@ -5,7 +5,7 @@
 #include <PxPhysicsAPI.h>
 
 
-#include <Nebula/physics.hh>
+#include <Nebula/Physics.hh>
 #include <Nebula/Scene/Base.hh>
 #include <Nebula/simulation_callback.hh>
 
@@ -72,12 +72,9 @@ Neb::Physics::~base()
 {
 //	jess::clog << neb_FUNCSIG << std::endl;
 }*/
-Neb::physics::physics(): px_physics_(NULL) {
+Neb::Physics::Physics(): px_physics_(NULL) {
 }
-void	Neb::physics::Init() {
-	
-	printf("%s\n",__PRETTY_FUNCTION__);
-	
+void	Neb::Physics::init() {
 	// Physx
 	// Foundation
 	px_foundation_ = PxCreateFoundation(
@@ -115,10 +112,8 @@ void	Neb::physics::Init() {
 	assert( PxInitVehicleSDK(*px_physics_) );
 	PxVehicleSetBasisVectors(physx::PxVec3(0,1,0), physx::PxVec3(0,0,-1));
 	PxVehicleSetUpdateMode(physx::PxVehicleUpdateMode::Enum::eACCELERATION);
-	
-	
 }
-void				Neb::physics::Shutdown() {
+void				Neb::Physics::release() {
 	//jess::clog << neb_FUNCSIG << std::endl;
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -127,5 +122,13 @@ void				Neb::physics::Shutdown() {
 	px_physics_->release();
 	px_foundation_->release();
 }
+Neb::Physics_s			Neb::Physics::global() {
+	return static_;
+}
+
+
+
+
+
 
 

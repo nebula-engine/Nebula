@@ -24,7 +24,7 @@
 
 #include <Nebula/App/Base.hh>
 #include <Nebula/user.hh>
-#include <Nebula/physics.hh>
+#include <Nebula/Physics.hh>
 #include <Nebula/Scene/Base.hh>
 #include <Nebula/simulation_callback.hh>
 #include <Nebula/Shape/Base.hh>
@@ -168,6 +168,7 @@ Neb::Actor::RigidBody::Base_s create_player_actor(Neb::Scene::Base_s scene) {
 	//assert(ad);
 	
 	scene->insert(wrap.ptr_);
+	
 	
 	//auto rigidbody = actor->isRigidBody();
 	

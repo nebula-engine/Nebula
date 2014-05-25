@@ -158,23 +158,8 @@ void init()
 
 #endif
 
-namespace Neb {
-	src::severity_logger< severity_level > lg;
-}
+src::severity_logger< severity_level > lg;
 
-/*
-void logging_function() {
-
-	BOOST_LOG_SEV(slg, normal) << "A regular message";
-	BOOST_LOG_SEV(slg, warning) << "Something bad is going on but I can handle it";
-	BOOST_LOG_SEV(slg, critical) << "Everything crumbles, shoot me now!";
-
-	{
-		BOOST_LOG_SCOPED_THREAD_TAG("Tag", "IMPORTANT_MESSAGE");
-		BOOST_LOG_SEV(slg, normal) << "An important message";
-	}
-}
-*/
 
 
 

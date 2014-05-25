@@ -1,6 +1,6 @@
 
 #include <Nebula/Types.hh>
-#include <Nebula/physics.hh>
+#include <Nebula/Physics.hh>
 #include <Nebula/Scene/Base.hh>
 #include <Nebula/Shape/Base.hh>
 #include <Nebula/Shape/Physical.hh>
@@ -35,7 +35,7 @@ void Neb::Shape::Physical::create_physics() {
 		if(rigidactor) {
 			physx::PxRigidActor* px_rigid_actor = static_cast<physx::PxRigidActor*>(rigidactor->px_actor_);
 
-			physx::PxMaterial* px_mat = Neb::__physics.px_physics_->createMaterial(1,1,1);
+			physx::PxMaterial* px_mat = Neb::Physics::global()->px_physics_->createMaterial(1,1,1);
 
 			px_shape_ = px_rigid_actor->createShape( *(to_geo()), *px_mat );
 		}

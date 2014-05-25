@@ -1,6 +1,8 @@
 #ifndef NEBULA_GRAPHICS_TYPES_HH
 #define NEBULA_GRAPHICS_TYPES_HH
 
+#include <memory>
+
 namespace Neb {
 
 	struct attrib_name {
@@ -9,14 +11,14 @@ namespace Neb {
 			TEX,
 			POSITION,
 			NORMAL,
-TEXCOOR,
+			TEXCOOR,
 		};
 	};
 	struct program_name {
 		enum e {
 			TEXT,
 			LIGHT,
-IMAGE,
+			IMAGE,
 		};
 	};
 

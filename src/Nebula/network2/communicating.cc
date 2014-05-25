@@ -13,7 +13,7 @@ gal::network::communicating::communicating(int socket):
 
 }
 void		gal::network::communicating::process(gal::network::imessage_s buffer) {
-	BOOST_LOG_SEV(Neb::lg, debug) << __PRETTY_FUNCTION__;
+	BOOST_LOG_SEV(lg, debug) << __PRETTY_FUNCTION__;
 	
 	Neb::WrapperTyped<Neb::Message::IBase>	wrapper;
 	

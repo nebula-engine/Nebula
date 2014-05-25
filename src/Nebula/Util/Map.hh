@@ -10,6 +10,7 @@
 
 #include <boost/serialization/map.hpp>
 
+#include <Nebula/Util/dispatch.hh>
 #include <Nebula/Util/WrapperTyped.hh>
 
 namespace Neb {
@@ -44,7 +45,7 @@ namespace Neb {
 				
 				ar & boost::serialization::make_nvp("map",map_);
 			}
-			void				push_back(shared_type& u) {
+			void				insert(shared_type& u) {
 				boost::lock_guard<boost::mutex> lk(mutex_);
 				
 				assert(u);
@@ -86,7 +87,7 @@ namespace Neb {
 				boost::lock_guard<boost::mutex> lk(mutex_);
 				
 				for(auto it = map_.cbegin(); it != map_.cend(); ++it) {
-					it->second.ptr_->release();
+					it->second.ptr_->dispatch();
 				}
 				
 				map_.clear();

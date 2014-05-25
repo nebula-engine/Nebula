@@ -22,7 +22,7 @@ void		Neb::init() {
 	
 	app->init();
 	
-	Neb::__physics.Init();
+	Neb::Physics::global()->init();
 
 }
 

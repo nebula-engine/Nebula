@@ -30,14 +30,14 @@ physx::PxFilterFlags DefaultFilterShader(
 		physx::PxU32 constantBlockSize );
 
 namespace Neb {
-	class physics {
+	class Physics {
 		public:
-			physics();
-			void						Init();
-			void						Shutdown();
-
-
-
+			Physics();
+			void						init();
+			void						release();
+			
+			static Physics_s				global();
+			
 			DefaultErrorCallback 				px_default_error_callback_;
 			physx::PxDefaultAllocator 			px_default_allocator_callback_;
 			physx::PxFoundation*				px_foundation_;
@@ -46,10 +46,9 @@ namespace Neb {
 			physx::PxCooking*				px_cooking_;
 			physx::pxtask::CudaContextManager*		px_cuda_context_manager_;
 			physx::PxControllerManager*			px_character_controller_manager_;
-
+		private:
+			static Physics_s				static_;
 	};
-
-	extern "C" physics __physics;
 }
 
 

@@ -30,14 +30,14 @@ namespace Neb {
 			public:
 				Base();
 				Base(Neb::Light::Util::Parent_s);
-
+				
 				void				init();
-
+				
 				virtual void			release();
 				virtual void			cleanup();
 				void				step(double const & time, double const & dt);
 				void				load(int, physx::PxMat44);
-
+				
 				void				load_shadow();
 				void				draw();
 				void				dim();

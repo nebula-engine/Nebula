@@ -10,6 +10,7 @@
 #include <GLFW/glfw3.h>
 //#include <glfw3.h>
 
+#include <Nebula/log.hh>
 #include <Nebula/config.hh>
 
 #include <Nebula/Graphics/Window/Base.hh>
@@ -29,7 +30,7 @@
 #include <Nebula/App/Base.hh>
 
 #include <Nebula/network/message.hh>
-#include <Nebula/physics.hh>
+#include <Nebula/Physics.hh>
 
 #include <Nebula/network2/server.hh>
 #include <Nebula/network2/client.hh>
@@ -169,7 +170,13 @@ void		Neb::App::Base::step(double const & time, double const & dt) {
 			});
 
 }
-int	Neb::App::Base::loop() {
+physx::PxTransform	Neb::App::Base::getPose() {
+	return physx::PxTransform();
+}
+physx::PxTransform	Neb::App::Base::getPoseGlobal() {
+	return physx::PxTransform();
+}
+int			Neb::App::Base::loop() {
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	double time;
@@ -225,30 +232,7 @@ void Neb::App::Base::reset_client(char const * addr, unsigned short port) {
 	client_.reset(new Neb::Network::Client(addr, port));
 	client_->start();
 }
-void Neb::App::Base::send_server(gal::network::omessage_s msg)  {
-	//NEBULA_DEBUG_1_FUNCTION;
 
-	if(server_)
-	{
-		server_->write(msg);
-	}
-	else
-	{
-		printf("WARNING: no server\n");
-	}
-}
-void Neb::App::Base::send_client(gal::network::omessage_s msg)  {
-	//NEBULA_DEBUG_1_FUNCTION;
-
-	if(client_)
-	{
-		client_->write(msg);
-	}
-	else
-	{
-		printf("WARNING: no server\n");
-	}
-}
 
 /*Neb::Graphics::Window::Base_s		Neb::App::Base::Main_Window() {
   Neb::Graphics::Window::Base_s w;
@@ -530,8 +514,26 @@ std::shared_ptr<Neb::glsl::program> Neb::App::Base::get_program(Neb::program_nam
 
 	return p;
 }
-void Neb::App::Base::command(std::string str) {
+void		Neb::App::Base::command(std::string str) {
 
+}
+void		Neb::App::Base::sendServer(gal::network::omessage_s msg)  {
+	//NEBULA_DEBUG_1_FUNCTION;
+
+	if(server_) {
+		server_->write(msg);
+	} else {
+		BOOST_LOG_SEV(lg, debug) << "no server";
+	}
+}
+void		Neb::App::Base::sendClient(gal::network::omessage_s msg)  {
+	//NEBULA_DEBUG_1_FUNCTION;
+
+	if(client_) {
+		client_->write(msg);
+	} else {
+		BOOST_LOG_SEV(lg, debug) << "no client";
+	}
 }
 void		Neb::App::Base::sendClient(Neb::Message::OBase_s message) {
 	assert(message);
@@ -542,7 +544,17 @@ void		Neb::App::Base::sendClient(Neb::Message::OBase_s message) {
 
 	buffer->ar_ << wrapper;
 
-	send_client(buffer);
+	sendClient(buffer);
 }
+void		Neb::App::Base::sendServer(Neb::Message::OBase_s message) {
+	assert(message);
 
+	Neb::WrapperTyped<Neb::Message::OBase> wrapper(message);
+
+	auto buffer = std::make_shared<gal::network::omessage>();
+
+	buffer->ar_ << wrapper;
+
+	sendServer(buffer);
+}
 

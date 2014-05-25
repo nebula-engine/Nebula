@@ -1,6 +1,6 @@
 
 #include <Nebula/debug.hh>
-#include <Nebula/physics.hh>
+#include <Nebula/Physics.hh>
 #include <Nebula/Actor/RigidActor/Base.hh>
 #include <Nebula/Shape/Physical.hh>
 

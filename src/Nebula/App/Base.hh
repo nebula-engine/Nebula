@@ -83,27 +83,6 @@ namespace Neb {
 					ar >> boost::serialization::make_nvp("archive",a);
 				}
 				/** @} */
-				/*			template <class U> Neb::weak_ptr<U>				create_window(Neb::window::desc> wd) {
-				//GLUTPP_DEBUG_0_FUNCTION;
-				Neb::unique_ptr<U> u(new U(wd));
-				auto g = reg(u);
-				u->init();
-				windows_[g] = u;
-
-				auto wm = getWindowMain();
-				if(!wm) {
-				Main_Window(u);
-				//fprintf(stderr, "window main set\n");
-				//abort();
-				} else {
-				//fprintf(stderr, "window main already set\n");
-				//abort();
-				}	
-				return u;
-				}*/
-				/** @name Search @{ */
-				Neb::Actor::Base_w							getActor(Neb::Actor::Util::Address);
-				/** @} */
 
 				Neb::Graphics::Window::Base_s						get_window(GLFWwindow*);
 				GLFWwindow*								reg(Neb::Graphics::Window::Base_s);
@@ -143,13 +122,15 @@ namespace Neb {
 
 
 				/** @name %Network @{ */
-				void				reset_server(unsigned short);
-				void				reset_client(char const *, unsigned short);		
-				void				send_server(gal::network::omessage_s);
-				void				send_client(gal::network::omessage_s);
-				void				sendServer(Neb::Message::OBase_s message);
-				void				sendClient(Neb::Message::OBase_s message);
-				void				transmit_scenes(Neb::Network::Communicating_s);
+				void					reset_server(unsigned short);
+				void					reset_client(char const *, unsigned short);
+
+				void					sendServer(gal::network::omessage_s);
+				void					sendServer(Neb::Message::OBase_s message);
+				void					sendClient(gal::network::omessage_s);
+				void					sendClient(Neb::Message::OBase_s message);
+
+				void					transmit_scenes(Neb::Network::Communicating_s);
 				/** @} */
 			private:
 				// network

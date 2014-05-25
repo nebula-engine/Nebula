@@ -7,7 +7,8 @@
 #include <Nebula/Graphics/Camera/Projection/Perspective.hh>
 
 
-
+Neb::Graphics::Context::Base::Base() {
+}
 Neb::Graphics::Context::Base::Base(Neb::Graphics::Context::Util::Parent_s parent): parent_(parent) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }

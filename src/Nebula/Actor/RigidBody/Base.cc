@@ -7,7 +7,7 @@
 #include <Nebula/debug.hh>
 #include <Nebula/Types.hh>
 #include <Nebula/App/Base.hh>
-#include <Nebula/physics.hh>
+#include <Nebula/Physics.hh>
 #include <Nebula/simulation_callback.hh>
 
 #include <Nebula/Actor/Util/Types.hh>

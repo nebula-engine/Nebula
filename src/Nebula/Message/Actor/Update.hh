@@ -10,7 +10,6 @@
 //#include <Nebula/master.hh>
 //#include <Nebula/Scene/desc.hh>
 //#include <Nebula/Actor/desc.hh>
-#include <Nebula/Actor/Util/Address.hh>
 //#include <Nebula/Actor/event.hh>
 #include <Nebula/Actor/Base.hh>
 

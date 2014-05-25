@@ -34,50 +34,8 @@ Neb::Actor::Base::Base(Neb::Actor::Util::Parent_s parent): parent_(parent) {
 Neb::Actor::Base::~Base() {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-
-
-void Neb::Actor::Base::i(int ni) {
-	i_ = ni;
+void		Neb::Actor::Base::init() {
 }
-int Neb::Actor::Base::i() const {
-	return i_;
-}
-/*void Neb::Actor::Base::cleanup() {
-	NEBULA_ACTOR_BASE_FUNC;
-	//printf("%s\n",__PRETTY_FUNCTION__);
-
-	{
-		auto it = actors_.begin();
-		while(it != actors_.end()) {
-			auto actor = it->second.ptr_;
-
-			actor->cleanup();
-
-			if(actor->any(Neb::Actor::Base::flag::e::SHOULD_RELEASE)) {
-				actor->release();
-				it = actors_.erase(it);
-			} else {
-				++it;
-			}
-		}
-	}
-
-	{
-		auto it = shapes_.begin();
-		while(it != shapes_.end()) {
-			auto shape = it->second.ptr_;
-
-			shape->cleanup();
-
-			if(shape->any(Neb::Shape::flag::e::SHOULD_RELEASE)) {
-				shape->release();
-				it = shapes_.erase(it);
-			} else {
-				++it;
-			}
-		}
-	}
-}*/
 Neb::Actor::Util::Parent_s	Neb::Actor::Base::getParent() {
 	return parent_;
 }
@@ -165,7 +123,7 @@ void		Neb::Actor::Base::draw(Neb::Graphics::Window::Base_s window, physx::PxTran
   create_shapes(desc);
   init_physics();
   }*/
-void Neb::Actor::Base::release() {
+void		Neb::Actor::Base::release() {
 
 	Neb::Util::Parent<Neb::Actor::Base>::clear();
 	Neb::Util::Parent<Neb::Shape::Base>::clear();

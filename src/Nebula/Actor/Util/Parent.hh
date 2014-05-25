@@ -13,7 +13,6 @@
 #include <Nebula/Scene/Util/Cast.hh>
 
 #include <Nebula/Actor/Util/Types.hh>
-#include <Nebula/Actor/Util/Address.hh>
 #include <Nebula/Actor/Util/Cast.hh>
 
 #include <Nebula/Graphics/material.hh>

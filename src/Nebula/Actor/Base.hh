@@ -13,6 +13,7 @@
 #include <Nebula/config.hh> // Nebula/config.hpp.in
 //#include <Nebula/Actor/Util/desc.hh>
 
+#include <Nebula/Util/dispatch.hh>
 #include <Nebula/Util/Release.hh>
 #include <Nebula/Math/Serialization.hh>
 
@@ -27,7 +28,6 @@
 
 #include <Nebula/Actor/Util/Types.hh>
 #include <Nebula/Actor/Util/Flag.hh>
-#include <Nebula/Actor/Util/Address.hh>
 #include <Nebula/Actor/Util/Parent.hh>
 
 #include <Nebula/Message/Actor/Update.hh>
@@ -48,55 +48,30 @@ namespace Neb {
 			virtual public Neb::Shape::Util::Parent
 		{
 			public:
-			
 
 				Base();
 				Base(Neb::Actor::Util::Parent_s);
 				virtual ~Base();
-
-				template<class D, typename... Args> inline void		dispatch(Args... a) {
-					D::visit(this, a...);
+				
+				template<typename... Args> inline void		dispatch(std::shared_ptr<dispatch> d, Args... a) {
+					std::shared_ptr< poly_tuple<Args...> > t;
+					d->visit(, t);
 				}
+				virtual inline void				dispatch(std::shared_ptr<dispatch> d, std::shared_ptr<poly_tuple_base> t) {
+					d->visit(isActorBase(), t);
+				}
+				
+			protected:
+				virtual void					init();
+				virtual void					release();
+				virtual void					step(double const & time, double const & dt);
 
-				virtual void				init();
-				virtual void				releaseDerived();
-				virtual void				cleanup();
-				virtual void				release();
-
-				void					i(int ni);
-				int					i() const;
-
-				unsigned int				f() const;
-				void					f(unsigned int flag);
-
-			private:
-				/** %brief Insert Actor
-				 * @param actor the actor to [copy and] insert
-				 * @return the newly created and stored actor
-				 * 
-				 * @note this function replaces the old @c create_actor function
-				 * 
-				 * @warning the value of @c actor.i_ must be accurate
-				 * 
-				 * the new pattern is, an actor object is deserialized and passed as @c actor
-				 * since the type of the actor MAY need to change (ex. between local and remote),
-				 * a copy of @c actor is create with the correct type
-				 */
-				virtual Neb::Actor::Base_s		insertActor(Neb::Actor::Base_s actor);
 			public:
-				//Neb::Actor::Base_w			create_actor_local(Neb::weak_ptr<Neb::Actor::desc>);
-				//Neb::Actor::Base_w			create_actor_remote(Neb::weak_ptr<Neb::Actor::addr>, Neb::weak_ptr<Neb::Actor::desc>);
-
-
-
-				//void							create_shapes(Neb::Actor::desc_w);
-				//void							create_children(Neb::Actor::desc_w);
-
-				virtual void						create_physics() = 0;
-				virtual void						init_physics() = 0;
+				virtual void					create_physics() = 0;
+				virtual void					init_physics() = 0;
 
 				/** @name Stepping @{ */
-				virtual void					step(double const & time, double const & dt);
+				
 
 
 				//virtual void					step_local(double);
@@ -108,11 +83,10 @@ namespace Neb {
 				/** @} */
 
 				/** @name Accessors @{ */
-				virtual Neb::Actor::Base_s				get_projectile();
+				virtual Neb::Actor::Base_s			get_projectile();
 
-				Neb::Actor::Util::Address				getAddress() const;
-				virtual physx::PxTransform				getPose();
-				virtual physx::PxTransform				getPoseGlobal();
+				virtual physx::PxTransform			getPose();
+				virtual physx::PxTransform			getPoseGlobal();
 				/** @} */
 
 				/** @name Accessors @{ */
@@ -125,16 +99,13 @@ namespace Neb {
 
 
 				/** @todo move to derived class */
-				virtual void						hit();
-				virtual void						damage(float);
-
-
+				virtual void					hit();
+				virtual void					damage(float);
+				virtual int					fire();
 				// signal
-				void				connect(Neb::Graphics::Window::Base_s);
+				void						connect(Neb::Graphics::Window::Base_s);
 
-
-				int				key_fun(int,int,int,int);
-				virtual int			fire();
+				int						key_fun(int,int,int,int);
 			public:
 				/** @todo what is this??? */
 				Neb::Actor::mode_update::e		mode_update_;
@@ -186,20 +157,6 @@ namespace Neb {
 					ar & boost::serialization::make_nvp("filter_data_scene_query",scene_query_);
 				}
 
-				/** @brief %Serialize specialization */
-				void			saveUpdate(
-						boost::archive::polymorphic_oarchive & ar,
-						unsigned int const & version) {
-					auto address = getAddress();
-					ar << boost::serialization::make_nvp("address", address);
-					serializeData(ar, version);
-				}
-				/** @brief %Serialize specialization */
-				void			loadUpdate(
-						boost::archive::polymorphic_iarchive & ar,
-						unsigned int const & version) {
-					serializeData(ar, version);
-				}
 
 
 

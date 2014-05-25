@@ -49,6 +49,9 @@ void Neb::Light::Base::dim() {
 	printf("UNSUPPORTED\n");
 	exit(0);
 }
+void		Neb::Light::Base::step(double const & time, double const & ) {
+	
+}
 void	Neb::Light::Base::draw() {	
 	GLUTPP_DEBUG_1_FUNCTION;
 }

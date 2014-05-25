@@ -10,16 +10,17 @@ namespace Neb {
 	namespace Util {
 		template<class T> class Parent: virtual public Neb::Util::Shared {
 			public:
-				typedef T				__type_type;
-				typedef std::shared_ptr<T>		__shared_type;
-				typedef Neb::WrapperTyped<T>		__wrapper_type;
+				typedef std::shared_ptr<T>		shared_type;
+				typedef Neb::WrapperTyped<T>		wrapper_type;
 				typedef typename Neb::Map<T>		map_type;
+			public:
+				Parent() {
+				}
+				void					insert(shared_type s) {
+					map_.insert(s);
+				}
 
-				Parent();
-
-				void					insert(__shared_type s);
-
-				__shared_type				get(Neb::Util::index_type i) {
+				shared_type				get(Neb::Util::index_type i) {
 					return map_.find(i);
 				}
 				void					release(Neb::Util::index_type i) {
