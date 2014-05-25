@@ -10,7 +10,6 @@
 
 #include <boost/serialization/map.hpp>
 
-#include <Nebula/Util/dispatch.hh>
 #include <Nebula/Util/WrapperTyped.hh>
 
 namespace Neb {
@@ -87,7 +86,7 @@ namespace Neb {
 				boost::lock_guard<boost::mutex> lk(mutex_);
 				
 				for(auto it = map_.cbegin(); it != map_.cend(); ++it) {
-					it->second.ptr_->dispatch();
+					it->second.ptr_->release();
 				}
 				
 				map_.clear();

@@ -16,11 +16,14 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x -Wall -Wno-unknow
 
 #set(LIBS ${LIBS} ${MATH_LIBRARIES} ${GRU_LIBRARIES} ${GALAXY_LIBRARIES} ${NEBULA_LIBRARIES})
 
-set(LIBS_BOOST boost_system boost_serialization)
+set(LIBS_BOOST boost_system boost_serialization boost_log boost_thread)
 
 set(LIBS Nebula ${LIBS_BOOST})
 
+#ADD_DEFINITIONS(-DBOOST_LOG_DYN_LINK)
 
+SET(Boost_USE_STATIC_LIBS ON)
+FIND_PACKAGE(Boost 1.54 COMPONENTS log REQUIRED)
 
 #MESSAGE("${LIBS}")
 

@@ -21,15 +21,10 @@
 #include <Nebula/Filter.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 
-
+Neb::Actor::Base::Base() {
+}
 Neb::Actor::Base::Base(Neb::Actor::Util::Parent_s parent): parent_(parent) {
 	NEBULA_ACTOR_BASE_FUNC;
-	
-	sig_release_.connect(
-		std::bind(
-			&Neb::Actor::Base::release,
-			this
-			));
 }
 Neb::Actor::Base::~Base() {
 	NEBULA_ACTOR_BASE_FUNC;
@@ -320,7 +315,7 @@ int Neb::Actor::Base::key_fun(int key, int scancode, int action, int mods) {
 					fire();
 					return 1;
 				case GLFW_KEY_ESCAPE:
-					Neb::App::Base::globalBase()->set_should_release();
+					parent_->release(i_);
 					return 1;
 				default:
 					return 0;

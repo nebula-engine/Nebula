@@ -25,34 +25,14 @@ namespace Neb {
 
 	/** @brief Lights */
 	namespace Light {
-		struct type {
-			enum e {
-				POINT,
-				DIRECTIONAL,
-				SPOT,
-			};
-		};
 		enum {
 			light_max = 20
 		};
 
-		class raw;
-		class desc;
-		class light;
+		class Base;
 
-
-		typedef std::unique_ptr<raw>	raw_u;
-
-
-		typedef std::shared_ptr<desc>	desc_s;
-		typedef std::weak_ptr<desc>	desc_w;
-		typedef std::unique_ptr<desc>	desc_u;
-
-
-		typedef std::shared_ptr<light>		light_s;
-		typedef std::weak_ptr<light>		light_w;
-		typedef std::unique_ptr<light>		light_u;
-
+		typedef std::shared_ptr<Base>		Base_s;
+		typedef std::weak_ptr<Base>		Base_w;
 	}
 	/** @brief GLSL */
 	namespace glsl {

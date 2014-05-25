@@ -13,7 +13,6 @@
 #include <Nebula/config.hh> // Nebula/config.hpp.in
 //#include <Nebula/Actor/Util/desc.hh>
 
-#include <Nebula/Util/dispatch.hh>
 #include <Nebula/Util/Release.hh>
 #include <Nebula/Math/Serialization.hh>
 
@@ -52,16 +51,7 @@ namespace Neb {
 				Base();
 				Base(Neb::Actor::Util::Parent_s);
 				virtual ~Base();
-				
-				template<typename... Args> inline void		dispatch(std::shared_ptr<dispatch> d, Args... a) {
-					std::shared_ptr< poly_tuple<Args...> > t;
-					d->visit(, t);
-				}
-				virtual inline void				dispatch(std::shared_ptr<dispatch> d, std::shared_ptr<poly_tuple_base> t) {
-					d->visit(isActorBase(), t);
-				}
-				
-			protected:
+			public:
 				virtual void					init();
 				virtual void					release();
 				virtual void					step(double const & time, double const & dt);

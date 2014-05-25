@@ -79,12 +79,9 @@ namespace Neb {
 				//Neb::weak_ptr<Neb::Actor::Base>			create_actor_remote(Neb::Actor::addr_w, Neb::Actor::desc_w);
 				void						add_deferred(Neb::Actor::Base_s);
 
-				
-				
-
-				void						fire(Neb::Actor::Base_w);
-				void						fire_local(Neb::Actor::Base_w);
-				void						fire_remote(Neb::Actor::Base_w);
+				virtual void					fire(Neb::Actor::Base_s) = 0;
+				//void						fire_local(Neb::Actor::Base_w);
+				//void						fire_remote(Neb::Actor::Base_w);
 
 
 

@@ -33,7 +33,8 @@ namespace Neb {
 						 */
 						virtual void			step(double) = 0;
 						/** @brief Time of last step */
-						double				last_;
+						double					last_;
+						Neb::Graphics::Context::Base_s		parent_;
 				};
 			}
 		}

@@ -17,11 +17,11 @@ namespace Neb {
 				void load(Neb::Scene::Base_s scene);
 				
 				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
-					ar & addr_;
+					ar & i_;
 					ar & scene_;
 				}
 				
-				Neb::Scene::Util::Address			addr_;
+				Neb::Util::index_type				i_;
 				Neb::WrapperTyped<Neb::Scene::Base>		scene_;
 			};
 		}
