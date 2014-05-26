@@ -66,7 +66,7 @@ namespace Neb {
 			public:
 				Neb::Util::index_type				i_;
 			public:
-				static Registry					registry_;
+				static Neb::Util::Registry			registry_;
 				static std::map<hash_type,std::string>		map_hash_string_;
 				static std::map<std::string,hash_type>		map_string_hash_;
 

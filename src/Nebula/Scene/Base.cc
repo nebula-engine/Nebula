@@ -461,7 +461,9 @@ void Neb::Scene::Base::send_actor_update() {
 	typedef Neb::Util::Parent<Neb::Actor::Base> A;
 
 	A::map_.for_each([&] (A::map_type::const_iterator it) {
-			message->operator<<(it->second.ptr_);
+			if(it->second.ptr_->flag_.any(Neb::Actor::Util::Flag::SHOULD_UPDATE)) {
+			message->actors_.push_back(it->second.ptr_);
+			}
 			});
 
 

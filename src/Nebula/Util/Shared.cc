@@ -15,7 +15,7 @@ std::string					Neb::Util::Shared::name() const {
 }
 
 
-
+Neb::Util::Registry		Neb::Util::Shared::registry_;
 
 
 
