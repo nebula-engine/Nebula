@@ -1,6 +1,12 @@
-# GRU
+# Nebula
 
-Window and 3D graphics library in c++ using GLFW
+3D Game Engine in c++
+
+## Dependencies
+
+- GLFW
+- Boost
+- PhysX
 
 ## News
 
