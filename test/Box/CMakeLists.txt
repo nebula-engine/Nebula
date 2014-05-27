@@ -16,7 +16,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x -Wall -Wno-unknow
 
 #set(LIBS ${LIBS} ${MATH_LIBRARIES} ${GRU_LIBRARIES} ${GALAXY_LIBRARIES} ${NEBULA_LIBRARIES})
 
-set(LIBS_BOOST boost_system boost_serialization boost_log boost_thread)
+set(LIBS_BOOST ${Boost_LOG_LIBRARY} boost_system boost_serialization boost_thread)
 
 set(LIBS Nebula ${LIBS_BOOST})
 

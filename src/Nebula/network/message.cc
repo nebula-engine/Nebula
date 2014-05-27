@@ -37,4 +37,10 @@ void		gal::network::message::read(void * const v, size_t len) {
 }*/
 
 
+gal::network::omessage::omessage():
+	ar_(ss_)
+{
+}
+
+
 
