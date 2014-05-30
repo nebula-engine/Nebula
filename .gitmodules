@@ -1,3 +1,6 @@
 [submodule "doc"]
 	path = doc
 	url = https://chuck1@github.com/chuck1/Nebula-doc.git
+[submodule "Galaxy-Network"]
+	path = Galaxy-Network
+	url = https://chuck1@github.com/chuck1/Galaxy-Network.git
