@@ -13,6 +13,7 @@
 #include <Nebula/Actor/Util/Types.hh>
 #include <Nebula/Shape/Util/Types.hh>
 
+#include <Nebula/Message/Types.hh>
 
 namespace Neb {
 	namespace App {
@@ -54,6 +55,8 @@ namespace Neb {
 		template<> std::shared_ptr< Neb::Factory<Neb::Actor::Base> >			BaseFactory::getFactoryDefault<Neb::Actor::Base>();
 		template<> std::shared_ptr< Neb::Factory<Neb::Shape::Base> >			BaseFactory::getFactoryDefault<Neb::Shape::Base>();
 		template<> std::shared_ptr< Neb::Factory<Neb::Light::Base> >			BaseFactory::getFactoryDefault<Neb::Light::Base>();
+		
+		template<> std::shared_ptr< Neb::Factory<Neb::Message::Base> >			BaseFactory::getFactoryDefault<Neb::Message::Base>();
 
 	}
 }
