@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node10" href="$classNeb_1_1App_1_1Base.html" title="Neb::App::Base" alt="" coords="91,237,205,267"/>
-<area shape="rect" id="node2" href="$classNeb_1_1Util_1_1Parent.html" title="Neb::Util::Parent\&lt; Neb::Scene::Base \&gt;" alt="" coords="23,83,273,112"/>
-<area shape="rect" id="node4" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="5,5,128,35"/>
-<area shape="rect" id="node7" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="297,83,417,112"/>
-</map>

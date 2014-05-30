@@ -1,5 +1,0 @@
-<map id="Neb::gui::object::object" name="Neb::gui::object::object">
-<area shape="rect" id="node2" href="$classNeb_1_1gui_1_1object_1_1terminal.html" title="Neb::gui::object::terminal" alt="" coords="5,80,173,107"/>
-<area shape="rect" id="node3" href="$classNeb_1_1gui_1_1object_1_1textview.html" title="textview Display and optionally edit text " alt="" coords="197,80,368,107"/>
-<area shape="rect" id="node4" href="$classNeb_1_1gui_1_1object_1_1edittext.html" title="Neb::gui::object::edittext" alt="" coords="200,155,364,181"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="gal::flag" name="gal::flag">
-<area shape="rect" id="node2" href="$classNeb_1_1Shape_1_1Base.html" title="Neb::Shape::Base" alt="" coords="123,93,253,120"/>
-<area shape="rect" id="node3" href="$classNeb_1_1Shape_1_1Box_1_1Box.html" title="Neb::Shape::Box::Box" alt="" coords="302,5,455,32"/>
-<area shape="rect" id="node4" href="$classNeb_1_1Shape_1_1Empty_1_1Empty.html" title="Neb::Shape::Empty::\lEmpty" alt="" coords="306,57,451,98"/>
-<area shape="rect" id="node5" href="$classNeb_1_1Shape_1_1Physical.html" title="Neb::Shape::Physical" alt="" coords="304,123,453,149"/>
-<area shape="rect" id="node6" href="$classNeb_1_1Shape_1_1Sphere_1_1Sphere.html" title="Neb::Shape::Sphere\l::Sphere" alt="" coords="309,174,449,215"/>
-</map>

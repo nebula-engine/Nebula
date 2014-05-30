@@ -1,9 +1,0 @@
-<map id="Neb::Shape::Box::Box" name="Neb::Shape::Box::Box">
-<area shape="rect" id="node2" href="$classNeb_1_1Shape_1_1Base.html" title="Neb::Shape::Base" alt="" coords="190,320,319,347"/>
-<area shape="rect" id="node3" href="$classNeb_1_1Shape_1_1Util_1_1Parent.html" title="abstract class for parent of a shape " alt="" coords="103,245,267,272"/>
-<area shape="rect" id="node4" href="$classNeb_1_1Actor_1_1Util_1_1Cast.html" title="Neb::Actor::Util::Cast" alt="" coords="23,171,171,197"/>
-<area shape="rect" id="node5" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases " alt="" coords="36,96,159,123"/>
-<area shape="rect" id="node7" href="$classNeb_1_1Shape_1_1Util_1_1Cast.html" title="Neb::Shape::Util::Cast" alt="" coords="196,171,350,197"/>
-<area shape="rect" id="node8" href="$classNeb_1_1Core_1_1Pose.html" title="Neb::Core::Pose" alt="" coords="375,171,495,197"/>
-<area shape="rect" id="node9" href="$classgal_1_1flag.html" title="gal::flag" alt="" coords="292,245,359,272"/>
-</map>

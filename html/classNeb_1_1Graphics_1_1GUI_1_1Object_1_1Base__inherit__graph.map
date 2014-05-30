@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node5" href="$classNeb_1_1Graphics_1_1GUI_1_1Object_1_1terminal.html" title="Neb::Graphics::GUI::Object::terminal" alt="" coords="5,160,243,189"/>
-<area shape="rect" id="node7" href="$classNeb_1_1Graphics_1_1GUI_1_1Object_1_1textview.html" title="textview Display and optionally edit text" alt="" coords="267,160,507,189"/>
-<area shape="rect" id="node2" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="193,5,316,35"/>
-<area shape="rect" id="node9" href="$classNeb_1_1Graphics_1_1GUI_1_1Object_1_1edittext.html" title="Neb::Graphics::GUI::Object::edittext" alt="" coords="269,237,504,267"/>
-</map>

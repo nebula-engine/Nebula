@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classNeb_1_1Graphics_1_1Camera_1_1View_1_1Base.html" title="Neb::Graphics::Camera::View::Base" alt="" coords="5,32,240,61"/>
-<area shape="rect" id="node3" href="$classNeb_1_1Graphics_1_1Camera_1_1View_1_1Free.html" title="free flying camera this camera can move freely through the scene user input in interpreted as three&#45;c..." alt="" coords="305,5,535,35"/>
-<area shape="rect" id="node5" href="$classNeb_1_1Graphics_1_1Camera_1_1View_1_1Ridealong.html" title="Neb::Graphics::Camera::View::Ridealong" alt="" coords="289,59,551,88"/>
-</map>

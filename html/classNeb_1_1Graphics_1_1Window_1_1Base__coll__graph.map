@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classNeb_1_1Graphics_1_1Context_1_1Util_1_1Parent.html" title="Neb::Graphics::Context::Util::Parent" alt="" coords="121,277,356,307"/>
-<area shape="rect" id="node4" href="$classNeb_1_1Util_1_1Parent.html" title="Neb::Util::Parent\&lt; Neb::Graphics::Context::Base \&gt;" alt="" coords="79,197,399,227"/>
-<area shape="rect" id="node6" href="$classNeb_1_1Util_1_1Shared.html" title="Shared. avoid multiple enabled_shared_from_this bases" alt="" coords="9,101,132,131"/>
-<area shape="rect" id="node8" href="$classNeb_1_1Util_1_1Registry.html" title="Neb::Util::Registry" alt="" coords="5,5,136,35"/>
-<area shape="rect" id="node10" href="$classNeb_1_1Map.html" title="Neb::Map\&lt; Neb::Graphics::Context::Base \&gt;" alt="" coords="156,101,433,131"/>
-<area shape="rect" id="node12" href="$classNeb_1_1Graphics_1_1Window_1_1Util_1_1Cast.html" title="Neb::Graphics::Window::Util::Cast" alt="" coords="380,277,604,307"/>
-</map>

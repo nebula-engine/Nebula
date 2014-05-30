@@ -1,0 +1,3 @@
+[submodule "doc"]
+	path = doc
+	url = https://chuck1@github.com/chuck1/Nebula-doc.git

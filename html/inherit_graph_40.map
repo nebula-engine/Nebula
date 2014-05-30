@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classNeb_1_1FuncMap.html" title="FuncMap A map containing std::function objects with arbitrary signatures Motivation: See Factory and ..." alt="" coords="7,32,113,61"/>
-<area shape="rect" id="node3" href="$classNeb_1_1Factory.html" title="Factory. Store and use allocator functions." alt="" coords="167,5,297,35"/>
-<area shape="rect" id="node5" href="$classNeb_1_1Initializer.html" title="Initializer. Store and use initializer functions. Allocate an object with arbitrary alloc function st..." alt="" coords="163,59,301,88"/>
-</map>
