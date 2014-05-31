@@ -4,3 +4,6 @@
 [submodule "Galaxy-Network"]
 	path = Galaxy-Network
 	url = https://chuck1@github.com/chuck1/Galaxy-Network.git
+[submodule "glfw"]
+	path = glfw
+	url = https://github.com/glfw/glfw.git

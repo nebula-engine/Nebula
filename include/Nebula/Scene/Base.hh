@@ -28,6 +28,10 @@
 
 namespace Neb {
 	namespace Scene {
+		/** 
+		 * @ingroup group_core
+		 * @brief Base
+		 */
 		class Base:
 			virtual public Neb::Util::Shared,
 			virtual public Neb::Actor::Util::Parent
@@ -77,36 +81,30 @@ namespace Neb {
 			public:
 				//Neb::weak_ptr<Neb::Actor::Base>			create_actor_local(Neb::Actor::desc_w);
 				//Neb::weak_ptr<Neb::Actor::Base>			create_actor_remote(Neb::Actor::addr_w, Neb::Actor::desc_w);
-				void						add_deferred(Neb::Actor::Base_s);
+				void							add_deferred(Neb::Actor::Base_s);
 
-				virtual void					fire(Neb::Actor::Base_s) = 0;
-				//void						fire_local(Neb::Actor::Base_w);
-				//void						fire_remote(Neb::Actor::Base_w);
-
-
-
-				// networking
-				void						send_actor_update();
+				virtual void						fire(Neb::Actor::Base_s) = 0;
+				//void							send_actor_update();
 
 				//int						recv(Neb::packet::packet);
 				//void						read(Neb::active_transform::set*);
 				//Neb::Scene::desc_s				desc_generate();
 
-				virtual void					dumby() {}
+				virtual void						dumby() {}
 			public:
-				Neb::Scene::Util::Parent_w			parent_;
+				Neb::Scene::Util::Parent_w				parent_;
 
 				// timer
 				//gal::timer::timer_set			timer_set_;
 
 
-				int						user_type_;
+				int							user_type_;
 	
-				physx::PxSimulationFilterShader			px_filter_shader_;
+				physx::PxSimulationFilterShader				px_filter_shader_;
 
-				Neb::simulation_callback*			simulation_callback_;
+				Neb::simulation_callback*				simulation_callback_;
 
-				physx::PxScene*					px_scene_;
+				physx::PxScene*						px_scene_;
 
 				double							last_;
 
@@ -118,7 +116,6 @@ namespace Neb {
 
 				Neb::Scene::Util::Parent_w				renderable_;
 
-				Neb::Map<Neb::Actor::Base>				actors_;
 				std::map<std::string, Neb::Actor::Base_s>		actors_deferred_;
 		};
 	}

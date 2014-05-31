@@ -27,8 +27,10 @@ FIND_PACKAGE(Boost 1.54 COMPONENTS log REQUIRED)
 
 #MESSAGE("${LIBS}")
 
-find_package(PkgConfig REQUIRED)
-pkg_search_module(GLFW REQUIRED glfw3)
+find_package(glfw)
+
+#find_package(PkgConfig REQUIRED)
+#pkg_search_module(GLFW REQUIRED glfw3)
 
 target_link_libraries(box ${LIBS})
 target_link_libraries(box ${LIBS})

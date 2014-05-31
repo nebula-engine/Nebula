@@ -41,7 +41,7 @@ namespace Neb {
 						physx::PxMat44					ortho_;
 
 
-						Neb::Graphics::GUI::Layout::Util::Parent_s		parent_;
+						Neb::Graphics::GUI::Layout::Util::Parent_s	parent_;
 						// connections
 						struct
 						{
