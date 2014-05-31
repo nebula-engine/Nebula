@@ -7,3 +7,6 @@
 [submodule "glfw"]
 	path = glfw
 	url = https://github.com/glfw/glfw.git
+[submodule "Galaxy-Standard"]
+	path = Galaxy-Standard
+	url = https://chuck1@github.com/chuck1/Galaxy-Standard
