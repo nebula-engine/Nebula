@@ -9,7 +9,6 @@
 #include <Nebula/Graphics/GUI/Layout/Util/Parent.hh>
 #include <Nebula/Graphics/GUI/Object/Util/Parent.hh>
 
-
 #include <Nebula/Graphics/Window/Base.hh>
 
 namespace Neb {

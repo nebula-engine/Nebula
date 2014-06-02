@@ -1,8 +1,9 @@
 #ifndef NEBULA_GRAPHICS_CONTEXT_UTIL_CAST_HH
 #define NEBULA_GRAPHICS_CONTEXT_UTIL_CAST_HH
 
+#include <Galaxy-Standard/shared.hpp>
+
 #include <Nebula/Graphics/Types.hh>
-#include <Nebula/Util/Shared.hh>
 
 namespace Neb {
 	namespace Graphics {
