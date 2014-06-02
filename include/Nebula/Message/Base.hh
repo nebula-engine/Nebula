@@ -1,9 +1,9 @@
 #ifndef NEBULA_MESSAGE_BASE_HPP
 #define NEBULA_MESSAGE_BASE_HPP
 
-#include <Nebula/network/message.hh>
+#include <Galaxy-Network/message.hpp>
 
-#include <Nebula/Util/Shared.hh>
+#include <Galaxy-Standard/shared.hpp>
 
 #include <Nebula/Message/Types.hh>
 
@@ -14,7 +14,7 @@ namespace Neb {
 		 * 
 		 */
 		class Base:
-			virtual public Neb::Util::Shared
+			virtual public gal::std::shared
 		{
 			protected:
 				Base();
@@ -26,7 +26,7 @@ namespace Neb {
 				OBase();
 				virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) = 0;			
 			public:
-				gal::network::omessage_s	msg_;
+				sp::shared_ptr<gal::net::omessage>	msg_;
 		};
 		class IBase:
 			virtual public Neb::Message::Base
@@ -35,7 +35,7 @@ namespace Neb {
 				IBase();
 				virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) = 0;
 			public:
-				gal::network::omessage_s	msg_;
+				sp::shared_ptr<gal::net::omessage>	msg_;
 		};
 	}
 }

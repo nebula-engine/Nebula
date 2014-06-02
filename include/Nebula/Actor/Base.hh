@@ -13,7 +13,6 @@
 #include <Nebula/config.hh> // Nebula/config.hpp.in
 //#include <Nebula/Actor/Util/desc.hh>
 
-#include <Nebula/Util/Release.hh>
 #include <Nebula/Math/Serialization.hh>
 
 #include <Nebula/Filter.hh>
@@ -41,8 +40,7 @@ namespace Neb {
 	namespace Actor {
 		/** @brief %Base */
 		class Base:
-			virtual public Neb::Util::Shared,
-			virtual public Neb::Util::Release,
+			virtual public gal::std::shared,
 			virtual public Neb::Actor::Util::Parent,
 			virtual public Neb::Shape::Util::Parent
 		{
@@ -115,8 +113,8 @@ namespace Neb {
 
 					serializeData(ar, version);
 
-					ar & boost::serialization::make_nvp("actors", Neb::Util::Parent<Neb::Actor::Base>::map_);
-					ar & boost::serialization::make_nvp("shapes", Neb::Util::Parent<Neb::Shape::Base>::map_);
+					ar & boost::serialization::make_nvp("actors", gal::std::parent<Neb::Actor::Base>::map_);
+					ar & boost::serialization::make_nvp("shapes", gal::std::parent<Neb::Shape::Base>::map_);
 				}
 				virtual void		serializeData(
 						boost::archive::polymorphic_oarchive & ar,

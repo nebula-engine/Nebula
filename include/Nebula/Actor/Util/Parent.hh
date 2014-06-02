@@ -27,11 +27,10 @@ namespace Neb {
 			 * abstract class for parent of an @Actor
 			 */
 			class Parent:
-				virtual public Neb::Util::Parent<Neb::Actor::Base>,
+				virtual public gal::std::parent< Neb::Actor::Base >,
 				virtual public Neb::Core::Pose,
 				virtual public Neb::Scene::Util::Cast,
-				virtual public Neb::Actor::Util::Cast,
-				virtual public Neb::Util::Shared
+				virtual public Neb::Actor::Util::Cast
 			{
 				public:
 					Parent();

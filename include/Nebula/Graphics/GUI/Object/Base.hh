@@ -5,7 +5,7 @@
 
 #include <boost/signals2.hpp>
 
-#include <Nebula/Util/Shared.hh>
+#include <Galaxy-Standard/shared.hpp>
 
 #include <Nebula/Graphics/Types.hh>
 #include <Nebula/Graphics/Color/Color.hh>

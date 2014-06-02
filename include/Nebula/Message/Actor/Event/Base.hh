@@ -15,7 +15,7 @@
 #include <Nebula/actor/actor.hh>
 */
 
-#include <Nebula/Util/WrapperTyped.hh>
+#include <Galaxy-Standard/wrapper.hpp>
 
 #include <Nebula/Actor/Util/Types.hh>
 

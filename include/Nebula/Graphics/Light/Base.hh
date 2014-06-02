@@ -11,7 +11,8 @@
 
 #include <Nebula/config.hh>
 #include <Nebula/Types.hh>
-#include <Nebula/Util/Shared.hh>
+
+#include <Galaxy-Standard/shared.hpp>
 
 #include <Nebula/Math/Serialization.hh>
 
@@ -26,7 +27,7 @@
 
 namespace Neb {
 	namespace Light {
-		class Base: virtual public Neb::Util::Shared {
+		class Base: virtual public gal::std::shared {
 			public:
 				Base();
 				Base(Neb::Light::Util::Parent_s);

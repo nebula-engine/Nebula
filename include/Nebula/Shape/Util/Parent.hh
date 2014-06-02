@@ -23,8 +23,8 @@
 #include <Nebula/Shape/Util/Cast.hh>
 
 
-#include <Nebula/Util/Shared.hh>
-#include <Nebula/Util/Parent.hh>
+#include <Galaxy-Standard/shared.hpp>
+#include <Galaxy-Standard/parent.hpp>
 
 #include <Nebula/Graphics/material.hh>
 #include <Nebula/Graphics/mesh.hh>
@@ -38,11 +38,10 @@ namespace Neb {
 			 * abstract class for parent of a shape
 			 */
 			class Parent:
-				virtual public Neb::Util::Parent<Neb::Shape::Base>,
+				virtual public gal::std::parent< Neb::Shape::Base >,
 				virtual public Neb::Actor::Util::Cast,
 				virtual public Neb::Shape::Util::Cast,
-				virtual public Neb::Core::Pose,
-				virtual public Neb::Util::Shared
+				virtual public Neb::Core::Pose
 			{
 				public:
 					virtual ~Parent() {}

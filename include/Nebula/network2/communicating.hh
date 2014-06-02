@@ -3,7 +3,7 @@
 
 #include <Nebula/Types.hh>
 
-#include <Nebula/network/communicating.hh>
+#include <Galaxy-Network/communicating.hpp>
 
 namespace Neb {
 	namespace Network {

@@ -31,10 +31,7 @@ namespace Neb {
 		 * @ingroup group_core
 		 * @brief Base
 		 */
-		class Base:
-			virtual public Neb::Util::Shared,
-			virtual public Neb::Actor::Util::Parent
-		{
+		class Base: virtual public Neb::Actor::Util::Parent {
 			public:
 				Base(Neb::Scene::Util::Parent_s);
 				virtual ~Base();

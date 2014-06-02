@@ -3,7 +3,6 @@
 
 #include <memory>
 
-#include <Nebula/Flag.hh>
 
 #include <Nebula/Types.hh> // gru/config.hpp.in
 

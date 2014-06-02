@@ -12,12 +12,13 @@
 #include <Nebula/free.hh>
 
 #include <Nebula/Types.hh>
-#include <Nebula/Util/Shared.hh>
+
+#include <Galaxy-Standard/shared.hpp>
 
 #include <Nebula/App/Util/Flag.hh>
 #include <Nebula/App/BaseFactory.hh>
 
-#include <Nebula/network/Types.hh>
+#include <Galaxy-Network/decl.hpp>
 
 #include <Nebula/network2/server.hh>
 #include <Nebula/network2/client.hh>
@@ -35,11 +36,9 @@
 namespace Neb {
 	namespace App {
 		class Base:
-			virtual public Neb::Util::Shared,
-			public Neb::App::BaseFactory,
-			public Neb::Graphics::Window::Util::Parent,
-			public Neb::Graphics::GUI::Layout::Util::Parent,
-			public Neb::Scene::Util::Parent
+			virtual public Neb::Graphics::Window::Util::Parent,
+			virtual public Neb::Graphics::GUI::Layout::Util::Parent,
+			virtual public Neb::Scene::Util::Parent
 		{
 			public:
 				typedef std::map< GLFWwindow*, Neb::Graphics::Window::Base_s >			glfwwindow_map_type;

@@ -1,8 +1,8 @@
 #ifndef NEBULA_SCENE_UTIL_PARENT_HH
 #define NEBULA_SCENE_UTIL_PARENT_HH
 
-#include <Nebula/Util/Map.hh>
-#include <Nebula/Util/Parent.hh>
+#include <Galaxy-Standard/map.hpp>
+#include <Galaxy-Standard/parent.hpp>
 
 #include <Nebula/Core/Pose.hh>
 
