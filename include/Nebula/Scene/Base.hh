@@ -3,9 +3,8 @@
 
 #include <vector>
 
-#include <Nebula/Flag.hh>
-#include <Nebula/Util/Map.hh>
-
+#include <Galaxy-Standard/flag.hpp>
+#include <Galaxy-Standard/map.hpp>
 
 
 #include <Nebula/Types.hh>

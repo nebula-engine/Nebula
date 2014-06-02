@@ -6,8 +6,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <Nebula/Util/Shared.hh>
-#include <Nebula/Util/Parent.hh>
+#include <Galaxy-Standard/parent.hpp>
+#include <Galaxy-Standard/shared.hpp>
 
 
 #include <Nebula/Scene/Util/Cast.hh>
