@@ -21,7 +21,6 @@
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Graphics/Window/Util/Parent.hh>
 
-/** @todo get rid of my unique ptr class. Just use private member and be careful not to pass around shared ptrs to things */
 
 Neb::Graphics::Window::Base::Base() {
 }
