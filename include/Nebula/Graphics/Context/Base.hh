@@ -18,14 +18,15 @@ namespace Neb {
 		namespace Context {
 			/** @brief Context
 			 *
-			 * A context is a rectangle on which to render.
+			 * A rectangle on which to render.
 			 * 
 			 * - target (window, FBO, etc.)
 			 * - viewport
-			 * - camera
+			 * - projection and view camera
 			 * - drawable (scene, layout, etc.)
 			 * 
-			 * @todo allow scene and layout to have different and overalpping Contexts.
+			 * @todo allow for manual ordering of context::window objects in window's context map
+			 * such that things like layouts are render ON TOP of existing scene.'
 			 */
 			class Base:
 				virtual public gal::std::shared,
@@ -36,24 +37,38 @@ namespace Neb {
 					Base(Neb::Graphics::Context::Util::Parent_s parent);
 					Base&						operator=(Base const & r);
 					void						init();
-
-					Neb::Graphics::Context::Util::Parent_s		getParent();
-
+					void						release();
 					void						resize(int w, int h);
-					void						render(double time, Neb::Graphics::Window::Base_s window);
+					void						render(double const & time, double const & dt);
 				public:
-					Neb::Graphics::Context::Util::Parent_s		parent_;
-				public://private:
-					/** @brief scene.
-					 * weak because scene is owned by app.
+					/** @brief %Parent
+					 * 
+					 * @note WEAK
 					 */
-					Neb::Scene::Base_w				scene_;
-					/** @brief layout.
-					 * weak because layout is owned by app.
+					sp::shared_ptr<Neb::Graphics::Context::Util::Parent>		parent_;
+				public:
+					/** @brief %Viewport
+					 * 
+					 * sub-rectangle within target
 					 */
-					Neb::Graphics::GUI::Layout::Base_w		layout_;
-					Neb::Graphics::Camera::View::Base_s		view_;
-					Neb::Graphics::Camera::Projection::Base_s	proj_;
+					Neb::Graphics::Viewport						viewport_;
+					/** @brief View Space Camera
+					 * 
+					 * @note OWNED
+					 */
+					sp::shared_ptr<Neb::Graphics::Camera::View::Base>		view_;
+					/** @brief Clip Space Camera
+					 * 
+					 * @note OWNED
+					 */
+					sp::shared_ptr<Neb::Graphics::Camera::Projection::Base>		proj_;
+					/** @brief %Drawable
+					 * 
+					 * @note WEAK
+					 * 
+					 * content to draw
+					 */
+					 sp::shared_ptr<Neb::Graphics::Drawable::Base>			drawable_;
 			};
 		}
 	}
