@@ -28,42 +28,6 @@ virtual public gal::std::shared,
 virtual public Neb::Graphics::Context::Util::Cast
 {
 public:
-Base();
-Base(Neb::Graphics::Context::Util::Parent_s parent);
-Base&	operator=(Base const & r);
-void	init();
-void	release();
-void	resize(int w, int h);
-void	render(double const & time, double const & dt);
-public:
-/** @brief %Parent
-*
-* @note WEAK
-*/
-sp::shared_ptr<Neb::Graphics::Context::Util::Parent>	parent_;
-public:
-/** @brief %Viewport
-*
-* sub-rectangle within target
-*/
-Neb::Graphics::Viewport	viewport_;
-/** @brief View Space Camera
-*
-* @note OWNED
-*/
-sp::shared_ptr<Neb::Graphics::Camera::View::Base>	view_;
-/** @brief Clip Space Camera
-*
-* @note OWNED
-*/
-sp::shared_ptr<Neb::Graphics::Camera::Projection::Base>	proj_;
-/** @brief %Drawable
-*
-* @note WEAK
-*
-* content to draw
-*/
-sp::shared_ptr<Neb::Graphics::Drawable::Base>	drawable_;
 };
 }
 }
