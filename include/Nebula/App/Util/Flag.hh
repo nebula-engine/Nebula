@@ -1,7 +1,7 @@
 #ifndef NEBULA_APP_UTIL_FLAG_HH
 #define NEBULA_APP_UTIL_FLAG_HH
 
-#include <Nebula/Enum.hh>
+#include <Galaxy-Standard/flag.hpp>
 
 namespace Neb {
 	namespace App {

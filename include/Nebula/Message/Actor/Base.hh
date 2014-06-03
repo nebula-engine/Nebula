@@ -11,7 +11,11 @@ namespace Neb {
 				virtual public Neb::Message::Base
 			{
 				public:
-					Neb::Util::index_type			index_;
+					/** @brief index
+					 *
+					 * index of actor
+					 */
+					gal::std::index_type			index_;
 			};
 			class IBase:
 				virtual public Neb::Message::IBase,

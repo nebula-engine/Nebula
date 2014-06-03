@@ -1,3 +1,4 @@
+#include <Galaxy-Standard/registry.hpp>
 
 #include <Nebula/Actor/RigidBody/Base.hh>
 #include <Nebula/Actor/Control/RigidBody/Base.hh>
@@ -12,7 +13,7 @@ void			Neb::Message::Actor::Control::RigidBody::IUpdate::serialize(
 	ar >> control_;
 	
 
-	auto actor = std::dynamic_pointer_cast<Neb::Actor::Base>(Neb::Util::Shared::registry_.get(index_));
+	auto actor = std::dynamic_pointer_cast<Neb::Actor::Base>(gal::std::shared::registry_.get(index_));
 
 	auto rigidbody = actor->isActorRigidBody();
 

@@ -1,6 +1,9 @@
 #ifndef NEBULA_MESSAGE_BASE_HPP
 #define NEBULA_MESSAGE_BASE_HPP
 
+#include <boost/archive/polymorphic_iarchive.hpp>
+#include <boost/archive/polymorphic_oarchive.hpp>
+
 #include <Galaxy-Network/message.hpp>
 
 #include <Galaxy-Standard/shared.hpp>

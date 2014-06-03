@@ -10,30 +10,27 @@
 #include <GLFW/glfw3.h>
 //#include <glfw3.h>
 
+#include <Galaxy-Network/message.hpp>
+
 #include <Nebula/log.hh>
 #include <Nebula/config.hh>
 
-#include <Nebula/Graphics/Window/Base.hh>
 
 //#include <Nebula/actor/event.hh>
 
 #include <Nebula/Graphics/Context/Base.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 
-#include <Nebula/network/message.hh>
-
 
 #include <Nebula/Actor/RigidBody/Base.hh>
-
 #include <Nebula/Actor/Control/RigidBody/Base.hh>
 
 #include <Nebula/App/Base.hh>
 
-#include <Nebula/network/message.hh>
 #include <Nebula/Physics.hh>
 
-#include <Nebula/network2/server.hh>
-#include <Nebula/network2/client.hh>
+#include <Nebula/Network/server.hh>
+#include <Nebula/Network/client.hh>
 
 #include <Nebula/Message/Scene/Create.hpp>
 #include <Nebula/Message/Actor/Event/Base.hh>
@@ -50,7 +47,7 @@ Neb::App::Base::Base() {
 }
 Neb::App::Base::~Base() {
 }
-void Neb::App::Base::init() {
+void				Neb::App::Base::init() {
 
 	glfwInit();
 
@@ -157,8 +154,8 @@ void		Neb::App::Base::step(double const & time, double const & dt) {
 
 	Neb::Scene::Base_s scene;
 
-	typedef Neb::Util::Parent<Neb::Scene::Base> S;
-	typedef Neb::Util::Parent<Neb::Graphics::Window::Base> W;
+	typedef gal::std::parent<Neb::Scene::Base> S;
+	typedef gal::std::parent<Neb::Graphics::Window::Base> W;
 
 
 	S::map_.for_each([&] (S::map_type::const_iterator it){
@@ -204,7 +201,7 @@ void		Neb::App::Base::transmit_scenes(Neb::Network::Communicating_s c) {
 
 	assert(c);
 
-	typedef Neb::Util::Parent<Neb::Scene::Base> S;
+	typedef gal::std::parent<Neb::Scene::Base> S;
 
 	Neb::Scene::Base_s scene;
 
@@ -212,25 +209,25 @@ void		Neb::App::Base::transmit_scenes(Neb::Network::Communicating_s c) {
 			scene = it->second.ptr_;
 			assert(scene);
 
-			gal::network::omessage_s msg(new gal::network::omessage);
+			auto msg = sp::make_shared<gal::net::omessage>();
 
 			Neb::Message::Scene::Create scene_create;
 
 			scene_create.load(scene);
 
-			msg->ar_ << scene_create;
+			/** @todo why?!?!?!? */
+			//msg->ar_ << scene_create;
 
 			c->write(msg);
 			});
 }
-void Neb::App::Base::reset_server(unsigned short port) {
+void Neb::App::Base::reset_server(ip::tcp::endpoint const & endpoint) {
 	//NEBULA_DEBUG_0_FUNCTION;
-	server_.reset(new Neb::Network::Server(port, 10));
+	server_.reset(new Neb::Network::Server(ios_, endpoint));
 }
-void Neb::App::Base::reset_client(char const * addr, unsigned short port) {
+void Neb::App::Base::reset_client(ip::tcp::resolver::iterator endpoint_iterator) {
 	//NEBULA_DEBUG_0_FUNCTION;
-	client_.reset(new Neb::Network::Client(addr, port));
-	client_->start();
+	client_.reset(new Neb::Network::Client(ios_, endpoint_iterator));
 }
 
 
@@ -517,7 +514,7 @@ std::shared_ptr<Neb::glsl::program> Neb::App::Base::get_program(Neb::program_nam
 void		Neb::App::Base::command(std::string str) {
 
 }
-void		Neb::App::Base::sendServer(gal::network::omessage_s msg)  {
+void		Neb::App::Base::sendServer(sp::shared_ptr< gal::net::omessage > msg)  {
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	if(server_) {
@@ -526,7 +523,7 @@ void		Neb::App::Base::sendServer(gal::network::omessage_s msg)  {
 		BOOST_LOG_SEV(lg, debug) << "no server";
 	}
 }
-void		Neb::App::Base::sendClient(gal::network::omessage_s msg)  {
+void		Neb::App::Base::sendClient(sp::shared_ptr< gal::net::omessage > msg)  {
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	if(client_) {
@@ -535,25 +532,27 @@ void		Neb::App::Base::sendClient(gal::network::omessage_s msg)  {
 		BOOST_LOG_SEV(lg, debug) << "no client";
 	}
 }
-void		Neb::App::Base::sendClient(Neb::Message::OBase_s message) {
+void		Neb::App::Base::sendClient(sp::shared_ptr< Neb::Message::OBase > message) {
 	assert(message);
 
-	Neb::WrapperTyped<Neb::Message::OBase> wrapper(message);
+	gal::std::wrapper<Neb::Message::OBase> wrapper(message);
 
-	auto buffer = std::make_shared<gal::network::omessage>();
+	auto buffer = std::make_shared<gal::net::omessage>();
 
-	buffer->ar_ << wrapper;
+	/** @todo boost serial warning */
+	//buffer->ar_ << wrapper;
 
 	sendClient(buffer);
 }
-void		Neb::App::Base::sendServer(Neb::Message::OBase_s message) {
+void		Neb::App::Base::sendServer(sp::shared_ptr< Neb::Message::OBase > message) {
 	assert(message);
 
-	Neb::WrapperTyped<Neb::Message::OBase> wrapper(message);
+	gal::std::wrapper<Neb::Message::OBase> wrapper(message);
 
-	auto buffer = std::make_shared<gal::network::omessage>();
+	auto buffer = std::make_shared<gal::net::omessage>();
 
-	buffer->ar_ << wrapper;
+	/** @todo boost serial warning */
+	//buffer->ar_ << wrapper;
 
 	sendServer(buffer);
 }

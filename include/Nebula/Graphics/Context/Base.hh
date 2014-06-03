@@ -16,11 +16,12 @@
 namespace Neb {
 	namespace Graphics {
 		namespace Context {
-			/** @brief Renderable.
+			/** @brief Context
+			 *
 			 * @todo allow scene and layout to have different and overalpping Contexts.
 			 */
 			class Base:
-				virtual public Neb::Util::Shared,
+				virtual public gal::std::shared,
 				virtual public Neb::Graphics::Context::Util::Cast
 			{
 				public:
@@ -28,9 +29,9 @@ namespace Neb {
 					Base(Neb::Graphics::Context::Util::Parent_s parent);
 					Base&						operator=(Base const & r);
 					void						init();
-					
+
 					Neb::Graphics::Context::Util::Parent_s		getParent();
-					
+
 					void						resize(int w, int h);
 					void						render(double time, Neb::Graphics::Window::Base_s window);
 				public:

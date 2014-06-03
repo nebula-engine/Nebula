@@ -1,7 +1,7 @@
 #ifndef NEBULA_MESSAGE_ACTOR_CONTROL_HPP
 #define NEBULA_MESSAGE_ACTOR_CONTROL_HPP
 
-#include <Nebula/Util/WrapperTyped.hh>
+#include <Galaxy-Standard/wrapper.hpp>
 
 #include <Nebula/Message/Actor/Base.hh>
 
@@ -14,7 +14,7 @@ namespace Neb {
 					class Create:
 						virtual public Neb::Message::Actor::Base
 					{
-						Neb::WrapperTyped<Neb::Actor::Control::RigidBody::Base>		control_;
+						gal::std::wrapper<Neb::Actor::Control::RigidBody::Base>		control_;
 					};
 					/** @brief %Create. */
 					class ICreate:
@@ -43,7 +43,7 @@ namespace Neb {
 						public:
 							virtual ~Update() = 0;
 						public:
-							Neb::WrapperTyped<Neb::Actor::Control::RigidBody::Base>		control_;
+							gal::std::wrapper<Neb::Actor::Control::RigidBody::Base>		control_;
 					};
 					/** @brief %Update. */
 					class IUpdate:

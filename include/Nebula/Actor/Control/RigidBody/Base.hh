@@ -19,8 +19,8 @@ namespace Neb {
 				class Base {
 					public:
 						Base();
+						virtual ~Base() = 0;
 						Base&				operator=(Base const & base);
-
 						virtual int			key_fun(int,int,int,int);
 						
 						virtual void			step(double const & time, double const & dt) = 0;

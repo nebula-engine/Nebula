@@ -8,11 +8,12 @@
 namespace Neb {
 	namespace Network {
 		class Communicating:
-			virtual public gal::network::communicating
+			virtual public gal::net::communicating
 		{
 			public:
-				Communicating(int);
-				void	process(gal::network::imessage_s);
+				Communicating(boost::asio::io_service& io_service, ip::tcp::socket&& socket);
+				Communicating(boost::asio::io_service& io_service);
+				void			process(sp::shared_ptr< gal::net::imessage >);
 		};
 	}
 }

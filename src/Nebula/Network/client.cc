@@ -1,31 +1,31 @@
 #include <assert.h>
 
-#include <netinet/in.h>
+/*#include <netinet/in.h>
 #include <sys/types.h>       // For data types
 #include <sys/socket.h>      // For socket(), connect(), send(), and recv()
 #include <netdb.h>           // For gethostbyname()
 #include <arpa/inet.h>       // For inet_addr()
 #include <unistd.h>          // For close()
 #include <netinet/in.h>      // For sockaddr_in
-
+*/
 //#include <math/free.hpp>
+
+#include <Galaxy-Network/message.hpp>
 
 #include <Nebula/Actor/Base.hh>
 
 #include <Nebula/config.hh>
 #include <Nebula/App/Base.hh>
-#include <Nebula/network2/client.hh>
-#include <Nebula/network/message.hh>
 #include <Nebula/Scene/Base.hh>
 
-Neb::Network::Client::Client(char const * addr, unsigned short port):
-	gal::network::communicating(::socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)),
-	Neb::Network::Communicating(socket_),
-	gal::network::client(addr, port)
+Neb::Network::Client::Client(boost::asio::io_service& io_service, ip::tcp::resolver::iterator endpoint_iterator):
+	gal::net::communicating(io_service),
+	Neb::Network::Communicating(io_service),
+	gal::net::client(io_service, endpoint_iterator)
 {
 
 }
-void Neb::Network::Client::process(gal::network::message_s message) {
+void		Neb::Network::Client::process(sp::shared_ptr<gal::net::imessage> message) {
 
 	//assert(msg->body_length() == sizeof(neb::packet::packet));
 

@@ -98,14 +98,16 @@ void	Neb::Physics::init() {
 	assert( px_physics_ );
 
 	// cooking
-	px_cooking_ = PxCreateCooking( PX_PHYSICS_VERSION, *px_foundation_, ::physx::PxCookingParams() );
+	/** @todo fix cooking signature */
+	//px_cooking_ = PxCreateCooking( PX_PHYSICS_VERSION, *px_foundation_, ::physx::PxCookingParams() );
 	assert( px_cooking_ );
 
 	// Extensions
 	assert( PxInitExtensions( *px_physics_ ) );
 
 	// character controller manager
-	px_character_controller_manager_ = ::PxCreateControllerManager( *px_foundation_ );
+	/** @todo fix cooking signature */
+	//px_character_controller_manager_ = ::PxCreateControllerManager( *px_foundation_ );
 	assert( px_character_controller_manager_ );
 
 	// vehicle

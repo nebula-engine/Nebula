@@ -16,7 +16,7 @@ include_directories("./Galaxy-Standard/include")
 include_directories("./Galaxy-Network/include")
 include_directories(${physx_INCLUDE_DIR})
 
-ADD_DEFINITIONS("-D_DEBUG")
+ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST")
 
 # custom include extensions
 set(INCLUDE_EXTENSIONS obj)

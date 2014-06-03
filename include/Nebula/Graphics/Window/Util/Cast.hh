@@ -10,7 +10,7 @@ namespace Neb {
 		namespace Window {
 			namespace Util {
 				class Cast:
-					virtual public Neb::Util::Shared
+					virtual public gal::std::shared
 				{
 					public:
 						Neb::Graphics::Window::Base_s		isWindowBase();

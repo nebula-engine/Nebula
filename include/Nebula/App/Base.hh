@@ -16,12 +16,11 @@
 #include <Galaxy-Standard/shared.hpp>
 
 #include <Nebula/App/Util/Flag.hh>
-#include <Nebula/App/BaseFactory.hh>
 
 #include <Galaxy-Network/decl.hpp>
 
-#include <Nebula/network2/server.hh>
-#include <Nebula/network2/client.hh>
+#include <Nebula/Network/server.hh>
+#include <Nebula/Network/client.hh>
 
 #include <Nebula/Message/Types.hh>
 
@@ -86,14 +85,7 @@ namespace Neb {
 				Neb::Graphics::Window::Base_s						get_window(GLFWwindow*);
 				GLFWwindow*								reg(Neb::Graphics::Window::Base_s);
 
-			public:
-				/** @name Font @{ */
-				FT_Library								ft_;
-				/** @} */
-				/** @name Boost Asio @{ */
-				boost::asio::io_service							ios_;
-				/** @} */
-
+		
 
 
 
@@ -121,29 +113,38 @@ namespace Neb {
 
 
 				/** @name %Network @{ */
-				void					reset_server(unsigned short);
-				void					reset_client(char const *, unsigned short);
+				void					reset_server(ip::tcp::endpoint const & endpoint);
+				void					reset_client(ip::tcp::resolver::iterator endpoint_iterator);
 
-				void					sendServer(gal::network::omessage_s);
-				void					sendServer(Neb::Message::OBase_s message);
-				void					sendClient(gal::network::omessage_s);
-				void					sendClient(Neb::Message::OBase_s message);
+				void					sendServer(sp::shared_ptr< gal::net::omessage >);
+				void					sendServer(sp::shared_ptr< Neb::Message::OBase > message);
+				void					sendClient(sp::shared_ptr< gal::net::omessage >);
+				void					sendClient(sp::shared_ptr< Neb::Message::OBase > message);
 
 				void					transmit_scenes(Neb::Network::Communicating_s);
 				/** @} */
+			
 			private:
+				static sp::shared_ptr<Neb::App::Base>				g_app_;
 				// network
 				/** @todo make derived App classes for Server and Client??? */
-				Neb::Network::Server_s				server_;
-				Neb::Network::Client_s				client_;
-
-
+				sp::shared_ptr<Neb::Network::Server>				server_;
+				sp::shared_ptr<Neb::Network::Client>				client_;
 				Neb::App::Util::Flag						flag_;
 				//GLFWwindow*							currentIdleWindow_;
 				glfwwindow_map_type						windows_glfw_;
 				static Neb::Graphics::Window::Base_w				window_main_;
 				std::map<int, std::shared_ptr<Neb::glsl::program> >		programs_;
 				std::shared_ptr<Neb::glsl::program>				current_;
+
+			public:
+				/** @name Font @{ */
+				FT_Library								ft_;
+				/** @} */
+				/** @name Boost Asio @{ */
+				boost::asio::io_service							ios_;
+				/** @} */
+			
 
 		};
 	}

@@ -22,15 +22,20 @@ namespace Neb {
 						ar & wrapper_;
 					}
 				public:
-					Neb::Util::index_type				parent_i_;
-					/** @brief Address.
-					 * address at which the new actor object will be stored
+					/** @brief parent index
+					 *
+					 * index of new object's parent
 					 */
-					Neb::Util::index_type				i_;
+					gal::std::index_type				parent_i_;
+					/** @brief index
+					 *
+					 * index of new object
+					 */
+					gal::std::index_type				i_;
 					/** @brief Wrapper.
 					 * wrapper to create the actor object
 					 */
-					Neb::WrapperTyped<Neb::Actor::Base>		wrapper_;
+					gal::std::wrapper<Neb::Actor::Base>		wrapper_;
 			};
 		}
 	}

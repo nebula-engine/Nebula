@@ -15,23 +15,15 @@ namespace Neb {
 	namespace Graphics {
 		namespace GUI {
 			namespace Object {
-				class Base: virtual public Neb::Util::Shared {
+				class Base: virtual public gal::std::shared {
 					public:
-
 						Base();
-
 						void				init();
-
 						//window::window_s		get_window();
 						virtual void			draw() = 0;
-
 						virtual int			key_fun(int,int,int,int) = 0;
 						virtual int			mouse_button_fun(int,int,int);
 						//virtual void			connect();
-
-
-
-
 						bool				active_;
 
 

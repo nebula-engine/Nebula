@@ -1,7 +1,7 @@
 #ifndef NEBULA_GRAPHICS_LIGHT_FLAG_HH
 #define NEBULA_GRAPHICS_LIGHT_FLAG_HH
 
-#include <Nebula/Enum.hh>
+#include <Galaxy-Standard/flag.hpp>
 
 namespace Neb {
 	namespace Light {

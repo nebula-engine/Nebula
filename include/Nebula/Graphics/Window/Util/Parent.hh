@@ -7,7 +7,7 @@ namespace Neb {
 	namespace Graphics {
 		namespace Window {
 			namespace Util {
-				class Parent: virtual public Neb::Util::Parent<Neb::Graphics::Window::Base> {
+				class Parent: virtual public gal::std::parent< Neb::Graphics::Window::Base > {
 					public:
 				};
 			}

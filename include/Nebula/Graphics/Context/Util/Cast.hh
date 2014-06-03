@@ -12,7 +12,7 @@ namespace Neb {
 				/** @brief %Cast
 				*/
 				class Cast:
-					virtual public Neb::Util::Shared
+					virtual public gal::std::shared
 				{
 					public:
 						Neb::Graphics::Context::Base_s			isContextBase();

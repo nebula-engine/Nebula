@@ -1,7 +1,7 @@
 #ifndef NEBULA_SCENE_FLAG
 #define NEBULA_SCENE_FLAG
 
-#include <Nebula/Enum.hh>
+#include <Galaxy-Standard/flag.hpp>
 
 namespace Neb {
 	namespace Scene {

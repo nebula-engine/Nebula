@@ -3,17 +3,17 @@
 
 #include <Galaxy-Network/client.hpp>
 
-#include <Nebula/network2/communicating.hh>
+#include <Nebula/Network/communicating.hh>
 
 namespace Neb {
 	namespace Network {
 		class Client:
 			virtual public Neb::Network::Communicating,
-			virtual public gal::network::client
+			virtual public gal::net::client
 		{
 			public:
-				Client(char const *, unsigned short);
-				void	process(gal::network::message_s);
+				Client(boost::asio::io_service& io_service, ip::tcp::resolver::iterator endpoint_iterator);
+				void		process(sp::shared_ptr< gal::net::imessage > message);
 
 		};
 	}

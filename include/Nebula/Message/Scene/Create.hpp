@@ -21,8 +21,8 @@ namespace Neb {
 					ar & scene_;
 				}
 				
-				Neb::Util::index_type				i_;
-				Neb::WrapperTyped<Neb::Scene::Base>		scene_;
+				gal::std::index_type				i_;
+				gal::std::wrapper<Neb::Scene::Base>		scene_;
 			};
 		}
 	}

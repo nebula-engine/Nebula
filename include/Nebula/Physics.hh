@@ -44,7 +44,7 @@ namespace Neb {
 			physx::PxPhysics*				px_physics_;
 			physx::PxProfileZoneManager*			px_profile_zone_manager_;
 			physx::PxCooking*				px_cooking_;
-			physx::pxtask::CudaContextManager*		px_cuda_context_manager_;
+			//physx::pxtask::CudaContextManager*		px_cuda_context_manager_;
 			physx::PxControllerManager*			px_character_controller_manager_;
 		private:
 			static Physics_s				static_;

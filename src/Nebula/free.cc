@@ -16,14 +16,11 @@
 #include <Nebula/Physics.hh>
 
 void		Neb::init() {
-	auto app = std::make_shared<Neb::App::Base>();
+	Neb::App::Base::g_app_ = std::make_shared<Neb::App::Base>();
 
-	Neb::App::BaseFactory::g_app_ = app;
-	
-	app->init();
+	Neb::App::Base::g_app_->init();
 	
 	Neb::Physics::global()->init();
-
 }
 
 void		print(unsigned char * s, int w, int h) {

@@ -9,7 +9,7 @@ namespace Neb {
 		namespace Context {
 			namespace Util {
 				class Parent:
-					virtual public Neb::Util::Parent<Neb::Graphics::Context::Base>,
+					virtual public gal::std::parent< Neb::Graphics::Context::Base >,
 					virtual public Neb::Graphics::Window::Util::Cast
 				{
 					public:

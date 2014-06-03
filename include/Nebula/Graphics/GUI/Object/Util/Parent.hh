@@ -11,7 +11,7 @@ namespace Neb {
 			namespace Object {
 				namespace Util {
 					class Parent:
-						virtual public Neb::Util::Parent<Neb::Graphics::GUI::Object::Base>
+						virtual public gal::std::parent< Neb::Graphics::GUI::Object::Base >
 					{
 
 					};

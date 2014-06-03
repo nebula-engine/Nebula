@@ -8,6 +8,8 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
+#include <boost/serialization/map.hpp>
+
 #include <PxPhysicsAPI.h>
 
 #include <Nebula/config.hh> // Nebula/config.hpp.in
@@ -166,12 +168,7 @@ namespace Neb {
 				double					health_;
 
 
-
-
-
 			public:
-				/** @brief ID */
-				int						i_;
 				/** @brief Parent */
 				Neb::Actor::Util::Parent_s			parent_;
 		};
