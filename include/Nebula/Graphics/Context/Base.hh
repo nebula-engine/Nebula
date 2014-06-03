@@ -18,6 +18,13 @@ namespace Neb {
 		namespace Context {
 			/** @brief Context
 			 *
+			 * A context is a rectangle on which to render.
+			 * 
+			 * - target (window, FBO, etc.)
+			 * - viewport
+			 * - camera
+			 * - drawable (scene, layout, etc.)
+			 * 
 			 * @todo allow scene and layout to have different and overalpping Contexts.
 			 */
 			class Base:
