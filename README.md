@@ -12,6 +12,10 @@
 
 Nebula is mergin into GRU. All my game engine code is being condesend and put in GRU.
 
+## News
+
+The Nebula library is merging into GRU as part of my campaign to reduce my game engine to a single static library. I am also replacing some of my own implementations with boost in order to reduce the size of my code. Once Nebula is merged into GRU, GRU will be renamed Nebula.
+
 ## TODO
 
 - Reflections
@@ -21,6 +25,8 @@ Nebula is mergin into GRU. All my game engine code is being condesend and put in
 - Fog
 - Curved Reflections
 - Find on internet code to parse PLY files. Or some other standard for 3d model storage.
+
+## Rendering Ideas
 
 ### Curved reflections
 
