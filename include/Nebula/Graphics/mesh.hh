@@ -5,6 +5,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include <glm/vec2.hpp>
+
 //#include <galaxy/flag.hpp>
 
 /*
@@ -28,9 +30,9 @@ namespace Neb {
 	struct vertex {
 		//void		print();
 
-		physx::PxVec3	position;
-		physx::PxVec3	normal;
-		physx::PxVec2	texcoor;
+		glm::vec3		position;
+		glm::vec3		normal;
+		glm::vec2		texcoor;
 	};
 	class mesh {
 		public:

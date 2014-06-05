@@ -1,7 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
 
-#include <PxPhysicsAPI.h>
+#include <glm/mat4x4.hpp>
 
 #include <Nebula/Actor/Base.hh>
 
@@ -13,28 +13,14 @@ namespace Neb {
 					Base();
 					Base(Neb::Actor::Util::Parent_s);
 					
-					template<class D, typename... Args> inline void	dispatch(Args... a) {
-						D::visit(this, a...);
-					}
-					
-					virtual void			init(/*Neb::weak_ptr<Neb::Actor::desc>*/);
-
+					virtual void			init();
 					virtual void			release();
-					virtual void			add_force(double) {abort();}
-					virtual void			set_pose(physx::PxTransform);
+					virtual void			step(double const & time, double const & dt);
+					
+					virtual void			set_pose(mat4);
 					virtual int			fire();
 
 					virtual Neb::Actor::Base_s	get_projectile() = 0;
-
-					
-					virtual void			create_physics() {abort();}
-					virtual void			init_physics() {abort();}
-
-					virtual void			step(double const & time, double const & dt);
-
-					physx::PxActor*			px_actor_;
-
-					//std::shared_ptr<Neb::actor>		object_;
 			};
 		}
 	}

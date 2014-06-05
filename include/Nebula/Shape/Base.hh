@@ -9,6 +9,7 @@
 #include <GLFW/glfw3.h>
 
 #include <Nebula/Types.hh>
+#include <Nebula/Util/typedef.hpp>
 #include <Nebula/Graphics/Types.hh>
 
 #include <Nebula/Shape/Util/Parent.hh>
@@ -47,8 +48,8 @@ namespace Neb {
 				~Base();
 
 				/** @name Accessors @{ */
-				physx::PxTransform				getPose();
-				physx::PxTransform				getPoseGlobal();
+				mat4						getPose();
+				mat4						getPoseGlobal();
 				Neb::Shape::Util::Parent_s			getParent();
 				/** @} */
 
@@ -62,14 +63,14 @@ namespace Neb {
 				void			notify_foundation_change_pose();
 
 				/** @name Rendering @{ */
-				void			load_lights(int& i, physx::PxMat44 space);
+				void			load_lights(int& i, mat4 space);
 
-				void			draw(Neb::Graphics::Window::Base_s, physx::PxMat44 space);
+				void			draw(Neb::Graphics::Window::Base_s, mat4 space);
 
-				void			model_load(physx::PxMat44 space);
+				void			model_load(mat4 space);
 				void			init_buffer(Neb::Graphics::Window::Base_s, std::shared_ptr<Neb::glsl::program> p);
 
-				virtual void		draw_elements(Neb::Graphics::Window::Base_s, physx::PxMat44 space);
+				virtual void		draw_elements(Neb::Graphics::Window::Base_s, mat4 space);
 				/** @} */
 				/** @name Index
 				 * @{
@@ -90,9 +91,9 @@ namespace Neb {
 			public:
 				Neb::Shape::Util::Flag		flag_;
 				/** @brief Pose. */
-				physx::PxTransform		pose_;
+				mat4				pose_;
 				/** @brief Scale. */
-				physx::PxVec3			s_;
+				vec3				s_;
 				/** @brief Name of image file */
 				std::string			image_;
 				/** @brief Name of normal map file */
@@ -114,7 +115,7 @@ namespace Neb {
 		class Empty: public Neb::Shape::Base {
 			virtual void		createMesh();
 
-			virtual void		draw_elements(Neb::Graphics::Window::Base_s, physx::PxMat44 space) {}
+			virtual void		draw_elements(Neb::Graphics::Window::Base_s, mat4 space) {}
 		};
 	}
 }

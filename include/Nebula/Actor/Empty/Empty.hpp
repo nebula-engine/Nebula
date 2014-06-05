@@ -16,16 +16,12 @@
 
 namespace Neb {
 	namespace Actor {
-		class empty: public Neb::Actor::Base {
+		class Empty: public Neb::Actor::Base {
 			public:
-				empty(Neb::Actor::Util::Parent_s);
-				
+				Empty(Neb::Actor::Util::Parent_s);
 				virtual void			init();
-
-				virtual void			add_force(double) {}
-
-				virtual void			create_physics() {};
-				virtual void			init_physics() {};
+				virtual void			release();
+				virtual void			step(TimeStep const & ts);
 		};
 	}
 }

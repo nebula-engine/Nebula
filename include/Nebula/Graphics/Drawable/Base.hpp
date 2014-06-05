@@ -10,7 +10,11 @@ namespace Neb {
                         */
                         class Base: gal::std::shared {
                                 public:
-                                        void            draw() = 0;
+					/** @brief draw
+					 *
+					 * draw into prepared rendering context
+					 */
+                                        virtual void            draw() = 0;
                         };     
                 }
         }

@@ -1,14 +1,14 @@
 #ifndef NEBULA_CORE_POSE
 #define NEBULA_CORE_POSE
 
-#include <PxPhysicsAPI.h>
+#include <glm/mat4x4.hpp>
 
 namespace Neb {
 	namespace Core {
 		class Pose {
 			public:
-				virtual physx::PxTransform			getPoseGlobal() = 0;
-				virtual physx::PxTransform			getPose() = 0;
+				virtual glm::mat4			getPoseGlobal() = 0;
+				virtual glm::mat4			getPose() = 0;
 
 		};
 	}

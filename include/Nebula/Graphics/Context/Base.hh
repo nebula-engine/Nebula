@@ -7,9 +7,12 @@
 #include <Nebula/Types.hh> // gru/config.hpp.in
 
 #include <Nebula/Graphics/Types.hh>
+#include <Nebula/Graphics/Viewport.hpp>
 #include <Nebula/Graphics/Context/Util/Cast.hh>
 #include <Nebula/Graphics/GUI/Layout/Base.hh>
 #include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/Drawable/Base.hpp>
+
 
 #include <Nebula/Scene/Base.hh>
 
@@ -51,7 +54,7 @@ namespace Neb {
 					 * 
 					 * sub-rectangle within target
 					 */
-					Neb::Graphics::Viewport						viewport_;
+					Neb::gfx::Viewport						viewport_;
 					/** @brief View Space Camera
 					 * 
 					 * @note OWNED

@@ -3,17 +3,15 @@
 #include <Nebula/Scene/Base.hh>
 
 #include <Nebula/debug.hh>
-#include <Nebula/simulation_callback.hh>
+//#include <Nebula/simulation_callback.hh>
 #include <Nebula/Shape/Base.hh>
 
-#include <Nebula/Actor/Util/desc.hh>
 #include <Nebula/Actor/Actor/Base.hh>
 
 Neb::Actor::Actor::Base::Base() {
 }
 Neb::Actor::Actor::Base::Base(Neb::Actor::Util::Parent_s parent):
-	Neb::Actor::Base(parent),
-	px_actor_(NULL)
+	Neb::Actor::Base(parent)
 {
 	NEBULA_ACTOR_BASE_FUNC;
 }

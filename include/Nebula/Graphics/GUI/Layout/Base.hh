@@ -3,7 +3,8 @@
 
 #include <map>
 
-#include <PxPhysicsAPI.h>
+#include <glm/mat4x4.hpp>
+//#include <PxPhysicsAPI.h>
 
 #include <Nebula/Graphics/GUI/Object/Base.hh>
 #include <Nebula/Graphics/GUI/Layout/Util/Parent.hh>
@@ -37,7 +38,7 @@ namespace Neb {
 						int						mouse_button_fun(int button, int action, int mods);
 						int						key_fun(int,int,int,int);
 					public:
-						physx::PxMat44					ortho_;
+						glm::mat4x4					ortho_;
 
 
 						Neb::Graphics::GUI::Layout::Util::Parent_s	parent_;

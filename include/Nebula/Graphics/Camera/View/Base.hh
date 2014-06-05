@@ -13,6 +13,7 @@
 */
 
 #include <Nebula/Types.hh>
+#include <Nebula/Core/TimeStep.hpp>
 #include <Nebula/Graphics/glsl/program.hh>
 
 namespace Neb {
@@ -25,15 +26,14 @@ namespace Neb {
 						/** @brief Constructor */
 						Base(Neb::Graphics::Context::Base_s parent);
 						/** @brief Load view matrix into GLSL. */
-						void				load();
+						void					load();
 						/** @brief Get view matrix. */
-						virtual physx::PxMat44	view() = 0;
-						/** @brief Step.
+						virtual glm::mat4			view() = 0;
+						/** @brief Step
+						 *
 						 * @todo explain when in timeline this occurs and in which thread and why
 						 */
-						virtual void			step(double) = 0;
-						/** @brief Time of last step */
-						double					last_;
+						virtual void				step(Neb::Core::TimeStep const & ts) = 0;
 						Neb::Graphics::Context::Base_s		parent_;
 				};
 			}

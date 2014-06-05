@@ -10,12 +10,12 @@
 
 #include <boost/serialization/map.hpp>
 
-#include <PxPhysicsAPI.h>
+//#include <PxPhysicsAPI.h>
 
 #include <Nebula/config.hh> // Nebula/config.hpp.in
 //#include <Nebula/Actor/Util/desc.hh>
 
-#include <Nebula/Math/Serialization.hh>
+//#include <Nebula/Math/Serialization.hh>
 
 #include <Nebula/Filter.hh>
 
@@ -69,23 +69,23 @@ namespace Neb {
 
 				/** @} */
 				/** @name Render @{ */
-				void						draw(Neb::Graphics::Window::Base_s, physx::PxTransform);
+				void						draw(Neb::Graphics::Window::Base_s, mat4);
 				/** @} */
 
 				/** @name Accessors @{ */
 				virtual Neb::Actor::Base_s			get_projectile();
 
-				virtual physx::PxTransform			getPose();
-				virtual physx::PxTransform			getPoseGlobal();
+				virtual mat4					getPose();
+				virtual mat4					getPoseGlobal();
 				/** @} */
 
 				/** @name Accessors @{ */
 				Neb::Actor::Util::Parent_s			getParent();
-				void						setPose(physx::PxTransform pose);
+				void						setPose(mat4 pose);
 				/** @} */
 
 				void						notify_foundation_change_pose();
-				void						load_lights(int&, physx::PxMat44);
+				void						load_lights(int&, mat4);
 
 
 				/** @todo move to derived class */
@@ -154,12 +154,12 @@ namespace Neb {
 				Neb::Actor::mode_create::e		mode_create_;
 				Neb::Actor::Util::Flag			flag_;
 				std::string				name_;
-				physx::PxTransform			pose_;
+				mat4					pose_;
 				/** @brief Normal for planes. */
-				physx::PxVec3				n_;
+				vec3					n_;
 				/** @brief Distance for planes. */
 				float					d_;
-				physx::PxVec3				velocity_;
+				vec3					velocity_;
 				float					density_;
 
 				Neb::Filter::Data			simulation_;

@@ -8,6 +8,10 @@
 
 
 #include <Nebula/Types.hh>
+#include <Nebula/Util/typedef.hpp>
+
+#include <boost/archive/polymorphic_iarchive.hpp>
+#include <boost/archive/polymorphic_oarchive.hpp>
 
 #include <Nebula/Scene/Util/Flag.hh>
 #include <Nebula/Scene/Util/Types.hh>
@@ -37,7 +41,7 @@ namespace Neb {
 				virtual ~Base();
 				void				init();
 				void				release();
-				physx::PxMat44			get_pose();
+				glm::mat4			get_pose();
 				/** @name Main Loop @{ */
 				/** @brief render */
 				void				render(
@@ -51,23 +55,19 @@ namespace Neb {
 				void				step(double const & time, double const & dt);
 				/** @} */
 
-				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
+				virtual  void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("i",i_);
 					ar & boost::serialization::make_nvp("flag",flag_);
-					ar & boost::serialization::make_nvp("gravity",gravity_);
+				}
+				virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("i",i_);
+					ar & boost::serialization::make_nvp("flag",flag_);
 				}
 			public:
-				/** @todo replace types with inheritance */
-				enum {
-					NONE = 0,
-					LOCAL,
-					REMOTE
-				};
-
 				void						create_physics();
 				/** @name Accessors @{ */
-				physx::PxTransform				getPose();
-				physx::PxTransform				getPoseGlobal();
+				mat4						getPose();
+				mat4						getPoseGlobal();
 				/** @} */
 				/** @name Children @{ */
 				/** @} */
@@ -96,19 +96,10 @@ namespace Neb {
 
 				int							user_type_;
 	
-				physx::PxSimulationFilterShader				px_filter_shader_;
-
 				Neb::simulation_callback*				simulation_callback_;
-
-				physx::PxScene*						px_scene_;
-
-				double							last_;
-
-				//Neb::vehicle_manager					vehicle_manager_;
 
 			public:
 				Neb::Scene::Util::Flag					flag_;
-				physx::PxVec3						gravity_;
 
 				Neb::Scene::Util::Parent_w				renderable_;
 

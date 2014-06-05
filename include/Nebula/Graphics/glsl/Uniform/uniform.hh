@@ -6,7 +6,8 @@
 
 #include <GLFW/glfw3.h>
 
-#include <PxPhysicsAPI.h>
+//#include <PxPhysicsAPI.h>
+#include <glm/vec3.hpp>
 
 //#include <math/mat44.hpp>
 //#include <math/color.hpp>
@@ -29,9 +30,9 @@ namespace Neb {
 						/** @name Load
 						 * @{
 						 */
-						virtual void			load(physx::PxVec3 const &) { throw 0; }
-						virtual void			load(physx::PxVec4 const &) { throw 0; }
-						virtual void			load(physx::PxMat44 const &) { throw 0; }
+						virtual void			load(glm::vec3 const &) { throw 0; }
+						virtual void			load(glm::vec4 const &) { throw 0; }
+						virtual void			load(glm::mat4x4 const &) { throw 0; }
 						//virtual void			load(math::Color::color<float>) { throw 0; }
 						//virtual void			load(math::Color::color<double>) { throw 0; }
 						virtual void			load(int) { throw 0; }
@@ -63,7 +64,7 @@ namespace Neb {
 				class Vec3: public Neb::glsl::Uniform::Scalar::Base {
 					public:
 						Vec3(std::string s): Base(s) {}
-						virtual void		load(physx::PxVec3 const &);
+						virtual void		load(glm::vec3 const &);
 						virtual void		load(float*);
 				};
 /*				class DVec3: public Neb::glsl::Uniform::Scalar::Base {
@@ -84,7 +85,7 @@ namespace Neb {
 				class Mat4: public Neb::glsl::Uniform::Scalar::Base {
 					public:
 						Mat4(std::string s): Base(s) {}
-						virtual void		load(physx::PxMat44);
+						virtual void		load(glm::mat4x4);
 				};
 				class Sampler2D: public Neb::glsl::Uniform::Scalar::Base {
 					public:
@@ -104,9 +105,9 @@ namespace Neb {
 						/** @name Load
 						 * @{
 						 */
-						virtual void			load(int, physx::PxVec3 const &) { throw 0; }
-						virtual void			load(int, physx::PxVec4 const &) { throw 0; }
-						virtual void			load(int, physx::PxMat44 const &) { throw 0; }
+						virtual void			load(int, glm::vec3 const &) { throw 0; }
+						virtual void			load(int, glm::vec4 const &) { throw 0; }
+						virtual void			load(int, glm::mat4x4 const &) { throw 0; }
 						//virtual void			load(int, math::Color::color<float>) { throw 0; }
 						//virtual void			load(int, math::Color::color<double>) { throw 0; }
 						virtual void			load(int, int) { throw 0; }

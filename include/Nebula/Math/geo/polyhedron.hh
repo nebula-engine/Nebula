@@ -1,14 +1,14 @@
 #ifndef __MATH_GEO_POLYHEDRON_H__
 #define __MATH_GEO_POLYHEDRON_H__
 
-#include <PxPhysicsAPI.h>
+//#include <PxPhysicsAPI.h>
 
 namespace math {
 	namespace geo {
 		class vertex {
 			public:
-				physx::PxVec3	p;
-				physx::PxVec3	n;
+				glm::vec3	p;
+				glm::vec3	n;
 		};
 		class polygon
 		{
