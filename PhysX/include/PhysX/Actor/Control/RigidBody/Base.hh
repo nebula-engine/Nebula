@@ -24,8 +24,8 @@ namespace Neb {
 						virtual int			key_fun(int,int,int,int);
 						
 						virtual void			step(double const & time, double const & dt) = 0;
-						virtual physx::PxVec3		f() = 0;
-						virtual physx::PxVec3		t() = 0;
+						virtual vec3			f() = 0;
+						virtual vec3			t() = 0;
 
 						virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 						virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
@@ -34,14 +34,14 @@ namespace Neb {
 					public:
 						Neb::Actor::Base_w		actor_;
 
-						physx::PxQuat			q_target_;
-						physx::PxVec3			p_target_;
+						quat			q_target_;
+						vec3			p_target_;
 
-						physx::PxVec3			f_;
-						physx::PxVec3			t_;
+						vec3			f_;
+						vec3			t_;
 
-						physx::PxVec3			force_;
-						physx::PxVec3			torque_;
+						vec3			force_;
+						vec3			torque_;
 
 		
 						struct
@@ -54,14 +54,14 @@ namespace Neb {
 				};
 				class Manual: public Neb::Actor::Control::RigidBody::Base {
 					void				step(double dt);
-					physx::PxVec3			f();
-					physx::PxVec3			t();
+					vec3			f();
+					vec3			t();
 
 				};
 				class PD: public Neb::Actor::Control::RigidBody::Base {
 					void				step(double dt);
-					physx::PxVec3			f();
-					physx::PxVec3			t();
+					vec3			f();
+					vec3			t();
 				};
 			}
 		}

@@ -18,7 +18,7 @@ namespace Neb {
 
 					virtual void					init();
 			
-					virtual void					step(double const & time, double const & dt);
+					virtual void					step(Neb::Core::TimeStep const & ts);
 
 
 					virtual void					setupFiltering();

@@ -16,11 +16,11 @@ namespace Neb {
 					public:
 						Ridealong(Neb::Graphics::Context::Base_s);
 
-						virtual physx::PxMat44			view();
-						virtual void				step(double time);
+						virtual mat4				view();
+						virtual void				step(Neb::Core::TimeStep const & ts);
 
 
-						Neb::Actor::Base_w		actor_;
+						sp::shared_ptr<Neb::Actor::Base>	actor_;
 				};
 			}
 		}

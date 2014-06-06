@@ -15,7 +15,7 @@ namespace Neb {
 					
 					virtual void			init();
 					virtual void			release();
-					virtual void			step(double const & time, double const & dt);
+					virtual void			step(Neb::Core::TimeStep const & ts);
 					
 					virtual void			set_pose(mat4);
 					virtual int			fire();

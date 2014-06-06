@@ -9,6 +9,7 @@
 #include <GLFW/glfw3.h>
 
 #include <Nebula/Types.hh>
+#include <Nebula/Core/TimeStep.hpp>
 #include <Nebula/Util/typedef.hpp>
 #include <Nebula/Graphics/Types.hh>
 

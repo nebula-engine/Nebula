@@ -124,6 +124,15 @@ void		Neb::Actor::Base::release() {
 
 	//conn_.key_fun_.disconnect();
 }
+int	Neb::Actor::Base::fire() {
+	NEBULA_ACTOR_BASE_FUNC;
+
+	printf("%s\n", __PRETTY_FUNCTION__);
+
+	getScene()->fire(isActorBase());
+
+	return 1;
+}
 void		Neb::Actor::Base::step(Neb::Core::TimeStep const & ts) {
 	NEBULA_ACTOR_BASE_FUNC;
 
@@ -138,6 +147,25 @@ void		Neb::Actor::Base::step(Neb::Core::TimeStep const & ts) {
 		it->ptr_->step(ts);
 	});
 
+}
+void Neb::Actor::Base::hit() {
+
+	physx::PxU32 w2 = simulation_.word2;
+	
+	if(w2 & Neb::Filter::Filter::PROJECTILE) {
+		parent_->release(i_);
+		//set(Neb::Actor::Base::flag::e::SHOULD_RELEASE);
+	}
+
+	if(flag_.any(Neb::Actor::Util::Flag::E::DESTRUCTIBLE)) {
+		damage(0.1);
+	}
+}
+void Neb::Actor::Base::damage(float h) {
+	health_ -= h;
+	if(health_ < 0) {
+		parent_->release(i_);
+	}
 }
 void		Neb::Actor::Base::connect(Neb::Graphics::Window::Base_s window) {
 
