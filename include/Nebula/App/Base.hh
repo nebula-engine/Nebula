@@ -101,7 +101,7 @@ namespace Neb {
 				//Neb::Scene::Base_w				load_scene_local(Neb::Scene::desc_w);
 				//Neb::Scene::Base_w				load_scene_remote(Neb::Scene::desc_w);
 				void					load_layout(int,char const *);
-				void					step(double const & time, double const & dt);
+				void					step(Neb::Core::TimeStep const & ts);
 				int					loop();
 
 				void					set_should_release();

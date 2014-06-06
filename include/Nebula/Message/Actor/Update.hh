@@ -11,7 +11,7 @@
 //#include <Nebula/Scene/desc.hh>
 //#include <Nebula/Actor/desc.hh>
 //#include <Nebula/Actor/event.hh>
-#include <Nebula/Actor/Base.hh>
+#include <Nebula/Actor/Util/Types.hh>
 
 #include <Nebula/Scene/Base.hh>
 
@@ -31,7 +31,7 @@ namespace Neb {
 			{
 				public:
 					/** @brief Save %Actor. */
-					OUpdate&		operator<<(Neb::Actor::Base_s actor);
+					OUpdate&		operator<<(sp::shared_ptr<Neb::Actor::Base> actor);
 
 					virtual void		serialize(boost::archive::polymorphic_oarchive& ar, unsigned int const & version);
 

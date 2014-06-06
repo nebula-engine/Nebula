@@ -16,8 +16,8 @@ namespace Neb {
 				Server(
 						boost::asio::io_service& io_service,
 						ip::tcp::endpoint const & endpoint);
-				void			callback_accept(ip::tcp::socket&& socket);
-				void			send_all(sp::shared_ptr<gal::net::omessage> omessage);
+				void			accept(sp::shared_ptr<Neb::Network::Communicating>);
+				void			write(sp::shared_ptr<gal::net::omessage> omessage);
 			private:
 				std::vector< sp::shared_ptr< Neb::Network::Communicating > >	clients_;
 

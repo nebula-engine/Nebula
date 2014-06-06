@@ -7,6 +7,7 @@ namespace Neb {
 	namespace Core {
 		struct TimeStep {
 			real			time;
+			real			last;
 			real			dt;
 			unsigned int		frame;
 		};

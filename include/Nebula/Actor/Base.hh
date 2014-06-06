@@ -1,5 +1,5 @@
-#ifndef __NEBULA_ACTOR_BASE_HH
-#define __NEBULA_ACTOR_BASE_HH
+#ifndef NEBULA_ACTOR_BASE_HH
+#define NEBULA_ACTOR_BASE_HH
 
 #include <memory>
 

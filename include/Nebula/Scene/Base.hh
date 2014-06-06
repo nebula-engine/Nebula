@@ -52,7 +52,7 @@ namespace Neb {
 				void				draw(Neb::Graphics::Window::Base_s window);
 				void				resize(int w, int h);
 				void				draw();
-				void				step(double const & time, double const & dt);
+				void				step(Neb::Core::TimeStep const & ts);
 				/** @} */
 
 				virtual  void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {

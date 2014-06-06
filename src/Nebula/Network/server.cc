@@ -2,22 +2,19 @@
 
 #include <Galaxy-Network/server.hpp>
 
+#include <Nebula/Util/typedef.hpp>
 #include <Nebula/App/Base.hh>
+#include <Nebula/Actor/Base.hh>
 #include <Nebula/Scene/Base.hh>
 
 Neb::Network::Server::Server(
 		boost::asio::io_service& io_service,
 		ip::tcp::endpoint const & endpoint):
-	gal::net::server(io_service, endpoint)
+	gal::net::server<Neb::Network::Communicating>(io_service, endpoint)
 {
 }
-void		Neb::Network::Server::callback_accept(ip::tcp::socket&& socket) {
-
-	auto clie = sp::make_shared<Neb::Network::Communicating>(io_service_, std::move(socket));
-
-	clie->do_read_header();
-	clients_.push_back(clie);
-
+void		Neb::Network::Server::accept(sp::shared_ptr<Neb::Network::Communicating> client) {
+	
 
 	// exp
 	//Neb::Actor::Control::RigidBody::raw_s control_raw(new neb::control::rigid_body::raw);

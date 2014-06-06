@@ -8,10 +8,13 @@
 //#include <math/quat.hpp>
 //#include <math/mat44.hpp>
 
-#include <Nebula/Math/Matrix.hh>
+#define GLM_FORCE_RADIANS
+#include <glm/gtc/matrix_transform.hpp>
+
 #include <Nebula/App/Base.hh>
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/Actor/Base.hh>
+//#include <Nebula/Graphics/Window/Base.hh>
+//#include <Nebula/Scene/Base.hh>
 #include <Nebula/Graphics/Camera/Projection/Perspective.hh>
 
 Neb::Graphics::Camera::Projection::Base::Base(Neb::Graphics::Context::Base_s parent):
@@ -22,14 +25,10 @@ void		Neb::Graphics::Camera::Projection::Base::load() {
 	
 	auto p = Neb::App::Base::globalBase()->get_program(Neb::program_name::e::LIGHT);
 	
-	glViewport(0, 0, getWindow()->w_, getWindow()->h_);
+	glViewport(0, 0, parent_->viewport_.w_, parent_->viewport_.h_);
 	
 	p->get_uniform_scalar("proj")->load(proj());
 }
-std::shared_ptr<Neb::Graphics::Window::Base>		Neb::Graphics::Camera::Projection::Base::getWindow() {
-	return parent_->parent_->isWindowBase();
-}
-
 Neb::Graphics::Camera::Projection::Perspective::Perspective(std::shared_ptr<Neb::Graphics::Context::Base> renderable):
 	Neb::Graphics::Camera::Projection::Base(renderable),
 	fovy_(45.0f),
@@ -43,15 +42,15 @@ Neb::Graphics::Camera::Projection::Perspective::Perspective(std::shared_ptr<Neb:
 	
 	renderable_ = renderable;
 }*/
-physx::PxMat44	Neb::Graphics::Camera::Projection::Perspective::proj() {
+mat4		Neb::Graphics::Camera::Projection::Perspective::proj() {
 
-	physx::PxMat44 ret = SetPerspective(fovy_, (float)getWindow()->w_/(float)getWindow()->h_, zn_, zf_);
+	mat4 ret = glm::perspective(fovy_, parent_->viewport_.aspect_, zn_, zf_);
 	
 	//ret.print();
 	
 	return ret;
 }
-void		Neb::Graphics::Camera::Projection::Perspective::step(double dt) {
+void		Neb::Graphics::Camera::Projection::Perspective::step(Neb::Core::TimeStep const & ts) {
 
 }
 

@@ -7,6 +7,7 @@
 
 #include <Nebula/config.hh>
 #include <Nebula/Types.hh>
+#include <Nebula/Core/TimeStep.hpp>
 #include <Nebula/Scene/Util/Types.hh>
 
 #include <Nebula/Graphics/Context/Base.hh>
@@ -41,8 +42,8 @@ namespace Neb {
 					virtual void				release();
 	
 					/** @name Main Loop @{ */
-					void					render(double time);
-					void					step(double const & time, double const & dt);
+					void					render(Neb::Core::TimeStep const & ts);
+					void					step(Neb::Core::TimeStep const & ts);
 					/** @} */
 					void					resize();
 	

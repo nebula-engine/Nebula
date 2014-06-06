@@ -3,6 +3,7 @@
 
 #include <Nebula/log.hh>
 #include <Nebula/config.hh>
+#include <Nebula/Actor/Base.hh>
 #include <Nebula/App/Base.hh>
 #include <Nebula/Scene/Base.hh>
 #include <Nebula/Message/Base.hh>

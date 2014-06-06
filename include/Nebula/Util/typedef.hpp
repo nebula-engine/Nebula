@@ -6,6 +6,9 @@
 #include <glm/vec3.hpp>
 #include <glm/mat4x4.hpp>
 
+
+namespace sp = std;
+
 typedef float		real;
 
 typedef glm::vec2	vec2;

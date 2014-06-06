@@ -6,12 +6,13 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <Galaxy-Standard/parent.hpp>
 #include <Galaxy-Standard/shared.hpp>
 
+#include <Nebula/Util/parent.hpp>
 
 #include <Nebula/Scene/Util/Cast.hh>
 
+//#include <Nebula/Actor/Base.hh>
 #include <Nebula/Actor/Util/Types.hh>
 #include <Nebula/Actor/Util/Cast.hh>
 
@@ -27,7 +28,7 @@ namespace Neb {
 			 * abstract class for parent of an @Actor
 			 */
 			class Parent:
-				virtual public gal::std::parent< Neb::Actor::Base >,
+				virtual public Neb::Util::parent< Neb::Actor::Base >,
 				virtual public Neb::Core::Pose,
 				virtual public Neb::Scene::Util::Cast,
 				virtual public Neb::Actor::Util::Cast

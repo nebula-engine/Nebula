@@ -17,17 +17,12 @@ namespace Neb {
 						/** @brief Constructor */
 						Base(Neb::Graphics::Context::Base_s);
 
-						virtual physx::PxMat44			proj() = 0;
+						virtual mat4				proj() = 0;
 						void					load();
 						/** @brief step
 						 * @todo explain when in timeline this occurs and in which thread and why
 						 */
-						void					step(double);
-
-						/** @name Accessors @{ */
-						/** @brief Get parent window */
-						Neb::Graphics::Window::Base_s		getWindow();
-						/** @} */
+						void					step(Neb::Core::TimeStep const & ts);
 					protected:
 						/** @brief Parent */
 						Neb::Graphics::Context::Base_s		parent_;
@@ -36,11 +31,10 @@ namespace Neb {
 					public:
 						Perspective(Neb::Graphics::Context::Base_s);
 						//void		init(Neb::renderable_shared);
-						virtual physx::PxMat44			proj();
-
+						virtual mat4				proj();
 
 						/** @brief step */
-						void					step(double);
+						void					step(Neb::Core::TimeStep const & ts);
 
 						//
 

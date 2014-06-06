@@ -11,16 +11,11 @@ namespace Neb {
 					Base();
 					Base(Neb::Actor::Util::Parent_s parent);
 
-					template<class D, typename... Args> inline void	dispatch(Args... a) {
-						D::visit(this, a...);
-					}
 
 					virtual void	init();
 
-					virtual void	create_physics();
-					virtual void	init_physics();
 
-					virtual void	step(double);
+					virtual void	step(Neb::Core::TimeStep const & ts);
 			};
 		}
 	}

@@ -23,11 +23,9 @@
 
 
 #include <Nebula/Actor/RigidBody/Base.hh>
-#include <Nebula/Actor/Control/RigidBody/Base.hh>
 
 #include <Nebula/App/Base.hh>
 
-#include <Nebula/Physics.hh>
 
 #include <Nebula/Network/server.hh>
 #include <Nebula/Network/client.hh>
@@ -149,7 +147,7 @@ w->second->set_layout(l->second);
 
 return 0;
 }*/
-void		Neb::App::Base::step(double const & time, double const & dt) {
+void		Neb::App::Base::step(Neb::Core::TimeStep const & ts) {
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	Neb::Scene::Base_s scene;
@@ -158,34 +156,33 @@ void		Neb::App::Base::step(double const & time, double const & dt) {
 	typedef gal::std::parent<Neb::Graphics::Window::Base> W;
 
 
-	S::map_.for_each([&] (S::map_type::const_iterator it){
-			it->second.ptr_->step(time, dt);
+	S::map_.for_each<0>([&] (S::map_type::iterator<0> it){
+			it->ptr_->step(ts);
 			});
 
-	W::map_.for_each([&] (W::map_type::const_iterator it){
-			it->second.ptr_->step(time, dt);
+	W::map_.for_each<0>([&] (W::map_type::iterator<0> it){
+			it->ptr_->step(ts);
 			});
 
 }
-physx::PxTransform	Neb::App::Base::getPose() {
-	return physx::PxTransform();
+mat4			Neb::App::Base::getPose() {
+	return mat4();
 }
-physx::PxTransform	Neb::App::Base::getPoseGlobal() {
-	return physx::PxTransform();
+mat4			Neb::App::Base::getPoseGlobal() {
+	return mat4();
 }
 int			Neb::App::Base::loop() {
 	//NEBULA_DEBUG_1_FUNCTION;
 
-	double time;
-	double last = 0;
-	double dt;
-
+	static Neb::Core::TimeStep ts;
+	
 	while(!flag_.any(Neb::App::Util::Flag::E::SHOULD_RELEASE)) {
-		time = glfwGetTime();
-		dt = time - last;
-		last = time;
-
-		step(time, dt);
+		ts.time = glfwGetTime();
+		ts.dt = ts.time - ts.last;
+		ts.last = ts.time;
+		ts.frame++;
+		
+		step(ts);
 
 		glfwPollEvents();
 	}
@@ -205,8 +202,8 @@ void		Neb::App::Base::transmit_scenes(Neb::Network::Communicating_s c) {
 
 	Neb::Scene::Base_s scene;
 
-	S::map_.for_each([&] (S::map_type::const_iterator it) {
-			scene = it->second.ptr_;
+	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
+			scene = it->ptr_;
 			assert(scene);
 
 			auto msg = sp::make_shared<gal::net::omessage>();
