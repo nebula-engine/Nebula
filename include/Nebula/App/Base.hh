@@ -65,8 +65,8 @@ namespace Neb {
 				std::shared_ptr<Neb::glsl::program>		current_program();
 				void						create_programs();
 			public:
-				physx::PxTransform				getPose();
-				physx::PxTransform				getPoseGlobal();
+				mat4						getPose();
+				mat4						getPoseGlobal();
 
 				/** @name Accessors @{ */
 				static Neb::App::Base_s				globalBase();

@@ -3,6 +3,7 @@
 #include <Nebula/Scene/Base.hh>
 
 #include <Nebula/debug.hh>
+#include <Nebula/Util/typedef.hpp>
 //#include <Nebula/simulation_callback.hh>
 #include <Nebula/Shape/Base.hh>
 
@@ -20,7 +21,7 @@ void Neb::Actor::Actor::Base::init() {
 
 	Neb::Actor::Base::init();
 }
-void	Neb::Actor::Actor::Base::set_pose(physx::PxTransform pose) {
+void	Neb::Actor::Actor::Base::set_pose(mat4 pose) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	Neb::Actor::Base::setPose(pose);
@@ -40,8 +41,5 @@ void		Neb::Actor::Actor::Base::release() {
 
 	//assert(!scene_.expired());
 
-	assert(px_actor_);
-	px_actor_->release();
-	px_actor_ = NULL;
 }
 

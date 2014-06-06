@@ -7,7 +7,7 @@
 
 namespace Neb {
 	namespace Network {
-		class Server: public gal::net::server {
+		class Server: public gal::net::server<Neb::Network::Communicating> {
 			public:
 				/** @brief ctor
 *

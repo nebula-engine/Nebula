@@ -22,7 +22,7 @@ namespace Neb {
 					virtual Neb::Actor::Base_s			get_projectile();
 
 				protected:
-					virtual void					step(double const & time, double const & dt);
+					virtual void					step(Neb::Core::TimeStep const & ts);
 
 					virtual void					add_force(double);
 				public:
@@ -38,8 +38,8 @@ namespace Neb {
 				public:
 					Neb::Actor::Control::RigidBody::Base_s		control_;
 				private:
-					physx::PxVec3			force_;
-					physx::PxVec3			torque_;
+					vec3						force_;
+					vec3						torque_;
 			};
 		}
 	}

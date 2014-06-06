@@ -1,7 +1,6 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_ACTOR_LOCAL_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_ACTOR_LOCAL_HPP__
 
-#include <PxPhysicsAPI.h>
 
 #include <Nebula/Actor/Local.hh>
 #include <Nebula/Actor/Actor/Base.hh>
@@ -14,7 +13,7 @@ namespace Neb {
 				virtual public Neb::Actor::Local
 			{
 				public:
-					virtual void		step(double const & time, double const & dt);
+					virtual void		step(Neb::Core::TimeStep const & ts);
 			};
 		}
 	}

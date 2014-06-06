@@ -1,8 +1,6 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_ACTOR_REMOTE_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_ACTOR_REMOTE_HPP__
 
-#include <PxPhysicsAPI.h>
-
 #include <Nebula/Actor/Remote.hh>
 #include <Nebula/Actor/Actor/Base.hh>
 
@@ -14,7 +12,7 @@ namespace Neb {
 				virtual public Neb::Actor::Remote
 			{
 				public:
-					virtual void		step(double const & time, double const & dt);
+					virtual void		step(Neb::Core::TimeStep const & ts);
 			};
 		}
 	}

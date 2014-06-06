@@ -54,7 +54,7 @@ namespace Neb {
 			public:
 				virtual void					init();
 				virtual void					release();
-				virtual void					step(double const & time, double const & dt);
+				virtual void					step(Neb::Core::TimeStep const & ts);
 
 			public:
 				virtual void					create_physics() = 0;

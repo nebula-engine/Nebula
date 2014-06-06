@@ -8,8 +8,7 @@
 
 //#include <math/transform.hpp>
 
-
-#include <PxPhysicsAPI.h>
+#include <Nebula/Core/TimeStep.hpp>
 
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Actor/Util/Types.hh>
@@ -21,7 +20,7 @@ namespace Neb {
 				Empty(Neb::Actor::Util::Parent_s);
 				virtual void			init();
 				virtual void			release();
-				virtual void			step(TimeStep const & ts);
+				virtual void			step(Neb::Core::TimeStep const & ts);
 		};
 	}
 }
