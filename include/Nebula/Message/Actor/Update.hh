@@ -13,7 +13,7 @@
 //#include <Nebula/Actor/event.hh>
 #include <Nebula/Actor/Util/Types.hh>
 
-#include <Nebula/Scene/Base.hh>
+//#include <Nebula/Scene/Base.hh>
 
 #include <Nebula/Message/Actor/Base.hh>
 

@@ -48,19 +48,19 @@ namespace Neb {
 				Base(Neb::Shape::Util::Parent_s parent);
 				~Base();
 
+				void			init();
+				void			release();
+				void			step(Neb::Core::TimeStep const & ts);
+
 				/** @name Accessors @{ */
 				mat4						getPose();
 				mat4						getPoseGlobal();
 				Neb::Shape::Util::Parent_s			getParent();
 				/** @} */
 
-				void			init();
-				void			release();
-				void			step(Neb::Core::TimeStep const & ts);
 
 				virtual void		createMesh() = 0;
 
-				void			notify_foundation_change_pose();
 
 				/** @name Rendering @{ */
 				void			load_lights(int& i, mat4 space);

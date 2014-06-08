@@ -1,7 +1,6 @@
 #ifndef NEBULA_UTIL_TYPEDEF
 #define NEBULA_UTIL_TYPEDEF
 
-#define GLM_FORCE_RADIANS
 #include <glm/gtc/quaternion.hpp>
 #include <glm/vec3.hpp>
 #include <glm/mat4x4.hpp>

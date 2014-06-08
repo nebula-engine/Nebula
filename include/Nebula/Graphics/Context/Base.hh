@@ -14,7 +14,7 @@
 #include <Nebula/Graphics/Drawable/Base.hpp>
 
 
-#include <Nebula/Scene/Base.hh>
+//#include <Nebula/Scene/Base.hh>
 
 namespace Neb {
 	namespace Graphics {

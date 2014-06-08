@@ -3,6 +3,7 @@
 
 #include <boost/serialization/nvp.hpp>
 
+#include <Nebula/Core/TimeStep.hpp>
 #include <Nebula/Graphics/Color/Color.hh>
 
 namespace Neb {
@@ -32,9 +33,13 @@ namespace Neb {
 			public:
 				material();
 				void		init();
+				void		release();
+				void		step(Neb::Core::TimeStep const & ts);
+				/** @brief load
+				 *
+				 * load into OpenGL
+				 */
 				void		load();
-				void		step(double);
-
 				raw		raw_;
 		};
 	}

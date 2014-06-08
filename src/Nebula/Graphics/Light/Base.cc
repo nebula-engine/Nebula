@@ -33,8 +33,6 @@ void Neb::Light::Base::release() {
 void Neb::Light::Base::cleanup() {
 	GLUTPP_DEBUG_1_FUNCTION;
 }
-void Neb::Light::Base::notify_foundation_change_pose() {
-}
 void Neb::Light::Base::dim() {
 	GLUTPP_DEBUG_1_FUNCTION;
 	/*	

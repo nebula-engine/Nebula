@@ -32,6 +32,7 @@
 
 #include <Nebula/Message/Scene/Create.hpp>
 #include <Nebula/Message/Actor/Event/Base.hh>
+#include <Nebula/Scene/Base.hh>
 
 /** @todo since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers.
  * to avoid unwanted shared_ptrs to owned objects, care must be taken when passing these objects around.
@@ -150,19 +151,10 @@ return 0;
 void		Neb::App::Base::step(Neb::Core::TimeStep const & ts) {
 	//NEBULA_DEBUG_1_FUNCTION;
 
-	Neb::Scene::Base_s scene;
+	Neb::Scene::Util::Parent::step(ts);
+	
+	Neb::Graphics::Window::Util::Parent::step(ts);
 
-	typedef gal::std::parent<Neb::Scene::Base> S;
-	typedef gal::std::parent<Neb::Graphics::Window::Base> W;
-
-
-	S::map_.for_each<0>([&] (S::map_type::iterator<0> it){
-			it->ptr_->step(ts);
-			});
-
-	W::map_.for_each<0>([&] (W::map_type::iterator<0> it){
-			it->ptr_->step(ts);
-			});
 
 }
 mat4			Neb::App::Base::getPose() {

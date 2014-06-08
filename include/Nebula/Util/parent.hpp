@@ -14,16 +14,26 @@ namespace Neb {
 				
 				template<int I> using iterator = typename mi::nth_index<typename map_type::container_type, I>::type::iterator;
 				
-				//template<int I> using iterator = typename map_type::iterator<I>;
+				void		init() {
+					gal::std::parent<T>::map_.template for_each<0>([&] (iterator<0> it) {
+							it->ptr_->init();
+							});
 
+				}
+				void		release() {
+					gal::std::parent<T>::map_.for_each<0>([&] (iterator<0> it) {
+							it->ptr_->release();
+							});
+
+				}
 				void		step(Neb::Core::TimeStep const & ts) {
 
-					//gal::std::parent<T>::map_.for_each<0>([&] (typename gal::std::parent<T>::map_type::iterator<0> it){
-					gal::std::parent<T>::map_.for_each<0>([&] (iterator<0> it) {
+					gal::std::parent<T>::map_.template for_each<0>([&] (iterator<0> it) {
 							it->ptr_->step(ts);
 							});
 
 				}
+
 		};
 	}
 }

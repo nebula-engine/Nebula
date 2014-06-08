@@ -48,7 +48,6 @@ namespace Neb {
 				void				RenderLightPOV();
 
 
-				void				notify_foundation_change_pose();
 				glm::mat4x4			get_pose();
 				glm::vec4			get_pos();
 			private:
