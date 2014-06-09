@@ -190,7 +190,7 @@ void		Neb::App::Base::transmit_scenes(Neb::Network::Communicating_s c) {
 
 	assert(c);
 
-	typedef gal::std::parent<Neb::Scene::Base> S;
+	typedef Neb::Scene::Util::Parent S;
 
 	Neb::Scene::Base_s scene;
 
@@ -524,7 +524,7 @@ void		Neb::App::Base::sendClient(sp::shared_ptr< gal::net::omessage > msg)  {
 void		Neb::App::Base::sendClient(sp::shared_ptr< Neb::Message::OBase > message) {
 	assert(message);
 
-	gal::std::wrapper<Neb::Message::OBase> wrapper(message);
+	neb::std::wrapper wrap(message);
 
 	auto buffer = std::make_shared<gal::net::omessage>();
 
@@ -536,7 +536,7 @@ void		Neb::App::Base::sendClient(sp::shared_ptr< Neb::Message::OBase > message) 
 void		Neb::App::Base::sendServer(sp::shared_ptr< Neb::Message::OBase > message) {
 	assert(message);
 
-	gal::std::wrapper<Neb::Message::OBase> wrapper(message);
+	neb::std::wrapper wrapper(message);
 
 	auto buffer = std::make_shared<gal::net::omessage>();
 

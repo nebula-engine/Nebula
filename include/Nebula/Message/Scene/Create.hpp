@@ -9,20 +9,21 @@
 #include <Nebula/Scene/Util/Address.hh>
 //#include <Nebula/Actor/Util/Event.hh>
 #include <Nebula/Actor/Base.hh>
+#include <Nebula/Util/wrapper.hpp>
 
 namespace Neb {
 	namespace Message {
 		namespace Scene {
-			struct Create {
-				void load(Neb::Scene::Base_s scene);
-				
-				template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
-					ar & i_;
-					ar & scene_;
-				}
-				
-				gal::std::index_type				i_;
-				gal::std::wrapper<Neb::Scene::Base>		scene_;
+			class Create {
+				public:
+					Create();
+					void load(Neb::Scene::Base_s scene);
+
+					template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
+						ar & scene_;
+					}
+
+					neb::std::wrapper				scene_;
 			};
 		}
 	}

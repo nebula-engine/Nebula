@@ -36,9 +36,11 @@ namespace Neb {
 		namespace Util {
 			/** @brief @Parent
 			 * abstract class for parent of a shape
+			 *
+			 * @note inheritance of Neb::Util::parent is non-virtual
 			 */
 			class Parent:
-				virtual public Neb::Util::parent< Neb::Shape::Base >,
+				public Neb::Util::parent,
 				virtual public Neb::Actor::Util::Cast,
 				virtual public Neb::Shape::Util::Cast,
 				virtual public Neb::Core::Pose

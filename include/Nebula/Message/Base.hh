@@ -6,7 +6,7 @@
 
 #include <Galaxy-Network/message.hpp>
 
-#include <Galaxy-Standard/shared.hpp>
+#include <Nebula/Util/shared.hpp>
 
 #include <Nebula/Message/Types.hh>
 
@@ -17,7 +17,7 @@ namespace Neb {
 		 * 
 		 */
 		class Base:
-			virtual public gal::std::shared
+			virtual public neb::std::shared
 		{
 			protected:
 				Base();
@@ -27,7 +27,9 @@ namespace Neb {
 		{
 			public:
 				OBase();
-				virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) = 0;			
+				virtual void			serialize(
+						boost::archive::polymorphic_oarchive & ar,
+						unsigned int const & version) = 0;			
 			public:
 				sp::shared_ptr<gal::net::omessage>	msg_;
 		};
