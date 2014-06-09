@@ -1,6 +1,4 @@
 
-#include <Nebula/Physics.hh>
-#include <Nebula/simulation_callback.hh>
 
 #include <Nebula/Actor/Base.hh>
 

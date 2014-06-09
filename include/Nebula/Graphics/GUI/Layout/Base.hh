@@ -3,7 +3,6 @@
 
 #include <map>
 
-#include <glm/mat4x4.hpp>
 //#include <PxPhysicsAPI.h>
 
 #include <Nebula/Graphics/GUI/Object/Base.hh>
@@ -11,6 +10,7 @@
 #include <Nebula/Graphics/GUI/Object/Util/Parent.hh>
 
 #include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Util/typedef.hpp>
 
 namespace Neb {
 	namespace Graphics {

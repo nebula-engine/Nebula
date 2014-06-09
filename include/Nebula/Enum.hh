@@ -58,7 +58,7 @@ namespace Neb {
 			std::vector<std::string>	toStringVec(enum_type val) {
 				enum_type e = 0;
 				std::vector<std::string> vec;
-				for(int b = 0; b < (sizeof(enum_type) * 8); ++b) {
+				for(size_t b = 0; b < (sizeof(enum_type) * 8); ++b) {
 					e = 1 << b;
 					if(e & val) {
 						vec.push_back(toString(e));

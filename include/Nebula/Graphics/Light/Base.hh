@@ -4,7 +4,6 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <glm/mat4x4.hpp>
 
 //#include <galaxy/flag.hpp>
 
@@ -23,7 +22,7 @@
 
 #include <Nebula/Graphics/texture.hh>
 #include <Nebula/Graphics/Color/Color.hh>
-
+#include <Nebula/Util/typedef.hpp>
 
 //#include <math/color.hpp>
 

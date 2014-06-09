@@ -4,7 +4,12 @@
 /** @file shared.hpp
  */
 
-#include <Nebula/Util/shared.hpp>
+#include <boost/archive/polymorphic_iarchive.hpp>
+#include <boost/archive/polymorphic_oarchive.hpp>
+
+#include <Galaxy-Standard/shared.hpp>
+
+#include <Nebula/Core/TimeStep.hpp>
 
 namespace neb {
 	namespace std {
@@ -23,7 +28,9 @@ namespace neb {
 				virtual void					init();
 				virtual void					release();
 				virtual void					step(Neb::Core::TimeStep const & ts);
-
+				
+				virtual void					serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
+				virtual void					serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
 		};
 	}
 }

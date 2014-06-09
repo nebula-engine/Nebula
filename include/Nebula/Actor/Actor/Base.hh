@@ -1,8 +1,7 @@
 #ifndef __NEBULA_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
 #define __NEBULA_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
 
-#include <glm/mat4x4.hpp>
-
+#include <Nebula/Util/typedef.hpp>
 #include <Nebula/Actor/Base.hh>
 
 namespace Neb {

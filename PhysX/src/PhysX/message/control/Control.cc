@@ -1,7 +1,6 @@
 #include <Galaxy-Standard/registry.hpp>
 
 #include <Nebula/Actor/RigidBody/Base.hh>
-#include <Nebula/Actor/Control/RigidBody/Base.hh>
 
 #include <Nebula/Message/Actor/Control.hh>
 

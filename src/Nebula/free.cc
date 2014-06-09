@@ -13,14 +13,14 @@
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/free.hh>
-#include <Nebula/Physics.hh>
 
 void		Neb::init() {
 	Neb::App::Base::g_app_ = std::make_shared<Neb::App::Base>();
 
 	Neb::App::Base::g_app_->init();
 	
-	Neb::Physics::global()->init();
+	/** @todo impl in PhysX */
+	//Neb::Physics::global()->init();
 }
 
 void		print(unsigned char * s, int w, int h) {

@@ -1,7 +1,7 @@
 #ifndef NEBULA_SHAPE_UTIL_FLAG_HH
 #define NEBULA_SHAPE_UTIL_FLAG_HH
 
-#include <Nebula/Enum.hh>
+#include <Galaxy-Standard/flag.hpp>
 
 namespace Neb {
 	namespace Shape {

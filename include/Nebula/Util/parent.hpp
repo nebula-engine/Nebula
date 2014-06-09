@@ -3,6 +3,7 @@
 
 #include <Galaxy-Standard/parent.hpp>
 
+#include <Nebula/Util/shared.hpp>
 #include <Nebula/Core/TimeStep.hpp>
 
 namespace Neb {
@@ -16,7 +17,7 @@ namespace Neb {
 				template<int I> using iterator = typename mi::nth_index<typename map_type::container_type, I>::type::iterator;
 				
 				void		init() {
-					gal_parent::map_.template for_each<0>([&] (iterator<0> it) {
+					gal_parent::map_.for_each<0>([&] (iterator<0> it) {
 							it->ptr_->init();
 							});
 
@@ -29,7 +30,7 @@ namespace Neb {
 				}
 				void		step(Neb::Core::TimeStep const & ts) {
 
-					gal_parent::map_.template for_each<0>([&] (iterator<0> it) {
+					gal_parent::map_.for_each<0>([&] (iterator<0> it) {
 							it->ptr_->step(ts);
 							});
 

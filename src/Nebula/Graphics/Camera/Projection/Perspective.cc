@@ -8,7 +8,6 @@
 //#include <math/quat.hpp>
 //#include <math/mat44.hpp>
 
-#define GLM_FORCE_RADIANS
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <Nebula/App/Base.hh>

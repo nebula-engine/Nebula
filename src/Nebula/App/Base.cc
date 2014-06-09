@@ -192,10 +192,8 @@ void		Neb::App::Base::transmit_scenes(Neb::Network::Communicating_s c) {
 
 	typedef Neb::Scene::Util::Parent S;
 
-	Neb::Scene::Base_s scene;
-
 	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
-			scene = it->ptr_;
+			auto scene = sp::dynamic_pointer_cast<Neb::Scene::Base>(it->ptr_);
 			assert(scene);
 
 			auto msg = sp::make_shared<gal::net::omessage>();

@@ -4,6 +4,7 @@
 #include <Nebula/Actor/Base.hh>
 
 #include <Nebula/Message/Actor/Event/Base.hh>
+#include <Nebula/Scene/Base.hh>
 
 /*
 void		Neb::Message::Actor::Event::serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {

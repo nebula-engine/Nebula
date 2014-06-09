@@ -1,3 +1,5 @@
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/matrix_inverse.hpp>
 
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Graphics/Camera/View/ridealong.hh>
@@ -6,36 +8,43 @@ Neb::Graphics::Camera::View::Ridealong::Ridealong(Neb::Graphics::Context::Base_s
 	Neb::Graphics::Camera::View::Base(parent)
 {
 }
-physx::PxMat44	Neb::Graphics::Camera::View::Ridealong::view() {
-	auto actor = actor_.lock();
+mat4		Neb::Graphics::Camera::View::Ridealong::view() {
 
-	if(!actor) return physx::PxMat44();
+	if(!actor_) return mat4();
 
-	physx::PxTransform pose = actor->pose_;
+	mat4 pose = actor_->pose_;
+	
+	//vec3 translate_vec(pose[13], pose[14], pose[15]);
+	vec3 translate_vec(pose[3][0], pose[3][1], pose[3][2]);
 
-	physx::PxMat44 translate(physx::PxTransform(-pose.p));
+	//mat4 translate(mat4(-pose.p));
 	//translate.SetTranslation(-pose.p);
 
-	physx::PxMat44 rotate(pose.q);
-
-	//physx::PxMat44 m(pose);
+	mat3 rotation(pose);//(pose.q);
+	
+	//mat4 m(pose);
 	//pose.Invert();
 
 
 	// offset vector relative to object
-	physx::PxVec3 offset_v(0.0,-1.0,-4.0);
+	vec3 offset_vec(0.0,-1.0,-4.0);
 
 	// transform offset vector to object space
-	rotate.rotate(offset_v);
-
+	//rotate.rotate(offset_v);
+	offset_vec = rotation * offset_vec;
+	
+	
+	
 	// create matrix from offset vector
-	physx::PxTransform offset_m(offset_v);
+	//mat4 offset_m = glm::translate(offset_vec);
 	//offset_m.SetTranslation(offset_v);
 	
-	physx::PxTransform poseInv = pose.getInverse();
+	mat4 poseInv = glm::affineInverse(pose);
+
+	glm::translate(poseInv, offset_vec);
 	
 	//math::mat44 ret = pose * offset_m;
-	physx::PxTransform ret = poseInv * offset_m;
+	mat4 ret = poseInv;
 	//math::mat44 ret = offset_m * pose.GetInverse();
 	//math::mat44 ret = translate;//.GetInverse();
 
@@ -50,9 +59,9 @@ physx::PxMat44	Neb::Graphics::Camera::View::Ridealong::view() {
 	std::cout << "view" << std::endl;
 	//ret.print();
 	*/
-	return physx::PxMat44(ret);
+	return mat4(ret);
 }
-void Neb::Graphics::Camera::View::Ridealong::step(double) {
+void Neb::Graphics::Camera::View::Ridealong::step(Neb::Core::TimeStep const & ts) {
 	
 }
 
