@@ -7,6 +7,7 @@ namespace Neb {
 	namespace gfx {
 		class Viewport {
 			public:
+				Viewport();
 				virtual void		load();
 				virtual void		resize(int w, int h);
 

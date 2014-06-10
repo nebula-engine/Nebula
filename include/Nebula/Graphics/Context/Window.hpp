@@ -28,6 +28,9 @@ namespace Neb {
 			{
 				public:
 					Window(sp::shared_ptr<Neb::Graphics::Window::Base> window);
+					virtual void					init();
+				public:
+					sp::shared_ptr<Neb::Graphics::Window::Base>	window_;
 			};
 		}
 	}

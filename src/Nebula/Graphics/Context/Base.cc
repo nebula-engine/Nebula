@@ -16,15 +16,16 @@ Neb::Graphics::Context::Base&		Neb::Graphics::Context::Base::operator=(Neb::Grap
 	printf("%s\n",__PRETTY_FUNCTION__);
 	return *this;
 }
-void Neb::Graphics::Context::Base::init() {
+void		Neb::Graphics::Context::Base::init() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	// camera
 	view_.reset(new Neb::Graphics::Camera::View::Free(isContextBase()));
 	proj_.reset(new Neb::Graphics::Camera::Projection::Perspective(isContextBase()));
 	//camera_->init(shared_from_this());
+	
 }
-void Neb::Graphics::Context::Base::resize(int w, int h) {
+void		Neb::Graphics::Context::Base::resize(int w, int h) {
 	viewport_.resize(w,h);
 }
 void		Neb::Graphics::Context::Base::step(Neb::Core::TimeStep const & ts) {
