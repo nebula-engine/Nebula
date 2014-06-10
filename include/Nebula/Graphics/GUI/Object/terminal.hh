@@ -21,7 +21,8 @@ namespace Neb {
 						//virtual void		connect();
 
 
-						virtual int		key_fun(int,int,int,int);
+						virtual int		key_fun(
+								sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int,int,int,int);
 
 
 						virtual int		enter();

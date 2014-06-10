@@ -5,8 +5,7 @@
 
 #include <boost/signals2.hpp>
 
-#include <Galaxy-Standard/shared.hpp>
-
+#include <Nebula/Util/shared.hpp>
 #include <Nebula/Graphics/Types.hh>
 #include <Nebula/Graphics/Color/Color.hh>
 #include <Nebula/Graphics/GUI/Object/Util/Parent.hh>
@@ -15,14 +14,20 @@ namespace Neb {
 	namespace Graphics {
 		namespace GUI {
 			namespace Object {
-				class Base: virtual public gal::std::shared {
+				class Base: virtual public neb::std::shared {
 					public:
 						Base();
+						virtual ~Base() {}
+
 						void				init();
 						//window::window_s		get_window();
 						virtual void			draw() = 0;
-						virtual int			key_fun(int,int,int,int) = 0;
-						virtual int			mouse_button_fun(int,int,int);
+
+						virtual int			key_fun(
+								sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int, int, int, int) = 0;
+						virtual int			mouse_button_fun(
+								sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int, int, int);
+
 						//virtual void			connect();
 						bool				active_;
 

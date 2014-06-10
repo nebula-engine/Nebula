@@ -107,14 +107,15 @@ void		Neb::draw_text(float x, float y, float sx, float sy, Neb::Color::color<flo
 
 	auto p = Neb::App::Base::globalBase()->use_program(Neb::program_name::e::TEXT);
 
-	printf("text %6.3f %6.3f %s\n", x, y, text.c_str());
+	printf("text %6.3f %6.3f '%s'\n", x, y, text.c_str());
 
 	// face
 	FT_Face face;
 
 	FT_Library ft = Neb::App::Base::globalBase()->ft_;
 
-	char const fontfile[] = "/usr/share/fonts/truetype/freefont/FreeSans.ttf";
+	char const fontfile[] = "/usr/share/fonts/msttcorefonts/georgia.ttf";
+//	char const fontfile[] = "/usr/share/fonts/truetype/freefont/FreeSans.ttf";
 	//char const fontfile[] = "/usr/share/fonts/truetype/msttcorefonts/arial.ttf";
 	//char const fontfile[] = "FreeSans.ttf";
 
@@ -322,7 +323,7 @@ void	checkerror(char const * msg) {
 	{
 		unsigned char const * str = gluErrorString(err);
 		printf("%s: %s\n",msg,str);
-		exit(0);
+		throw 0;
 	}
 }
 bool	isGLError() {

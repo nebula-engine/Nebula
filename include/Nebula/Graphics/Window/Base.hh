@@ -54,7 +54,12 @@ namespace Neb {
 					void					callback_mouse_button_fun(GLFWwindow*,int,int,int);
 					void					callback_key_fun(GLFWwindow*,int,int,int,int);
 				public:
-					Neb::Graphics::Window::Util::Parent_s	parent_;
+					Neb::Graphics::Window::Util::Parent_s			parent_;
+					/** @brief self
+					 *
+					 * avoid casting shared_from_this
+					 */
+					sp::shared_ptr<Neb::Graphics::Window::Base>		self_;
 
 					// input signals
 					struct
@@ -65,7 +70,7 @@ namespace Neb {
 
 
 					
-	
+					
 	
 					Neb::Graphics::Window::Util::Flag	flag_;
 					int					x_;

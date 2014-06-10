@@ -7,7 +7,7 @@
 #include <Nebula/Types.hh>
 #include <Nebula/config.hh> // Nebula/config.hpp.in
 #include <Nebula/timer/Actor/Base.hpp>
-#include <Nebula/App/Base.hh>
+//#include <Nebula/App/Base.hh>
 #include <Nebula/Scene/Base.hh>
 #include <Nebula/Signals.hh>
 
@@ -18,7 +18,7 @@
 #include <Nebula/Actor/Util/Types.hh>
 
 #include <Nebula/Filter.hh>
-//#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Graphics/Types.hh>
 
 
@@ -152,12 +152,13 @@ void		Neb::Actor::Base::connect(Neb::Graphics::Window::Base_s window) {
 				_1,
 				_2,
 				_3,
-				_4
+				_4,
+				_5
 				).track_foreign(me)
 			);
 
 }
-int Neb::Actor::Base::key_fun(int key, int scancode, int action, int mods) {
+int Neb::Actor::Base::key_fun(sp::shared_ptr<Neb::Graphics::Window::Base> window, int key, int scancode, int action, int mods) {
 
 	switch(action) {
 		case GLFW_PRESS:

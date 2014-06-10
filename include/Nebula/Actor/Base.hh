@@ -75,8 +75,8 @@ namespace Neb {
 				/** @todo move to derived class */
 				// signal
 				void						connect(Neb::Graphics::Window::Base_s);
-
-				int						key_fun(int,int,int,int);
+				
+				int						key_fun(sp::shared_ptr<Neb::Graphics::Window::Base> window,int,int,int,int);
 			public:
 				/** @todo what is this??? */
 				Neb::Actor::mode_update::e		mode_update_;

@@ -1,7 +1,7 @@
 #ifndef NEBULA_GRAPHICS_GUI_LAYOUT_UTIL_PARENT_HH
 #define NEBULA_GRAPHICS_GUI_LAYOUT_UTIL_PARENT_HH
 
-#include <Galaxy-Standard/parent.hpp>
+#include <Nebula/Util/parent.hpp>
 
 #include <Nebula/Graphics/GUI/Layout/Types.hh>
 
@@ -10,9 +10,8 @@ namespace Neb {
 		namespace GUI {
 			namespace Layout {
 				namespace Util {
-					class Parent: virtual public gal::std::parent< Neb::Graphics::GUI::Layout::Base > {
+					class Parent: public Neb::Util::parent {
 						public:
-							Neb::Graphics::Window::Base_s			getWindow();
 					};
 				}
 			}

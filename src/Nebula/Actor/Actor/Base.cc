@@ -1,10 +1,8 @@
 
-#include <Nebula/Graphics/Context/Base.hh>
 #include <Nebula/Scene/Base.hh>
 
 #include <Nebula/debug.hh>
 #include <Nebula/Util/typedef.hpp>
-//#include <Nebula/simulation_callback.hh>
 #include <Nebula/Shape/Base.hh>
 
 #include <Nebula/Actor/Actor/Base.hh>

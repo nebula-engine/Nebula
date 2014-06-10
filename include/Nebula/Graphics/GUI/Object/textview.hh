@@ -22,8 +22,8 @@ namespace Neb {
 						//int			key_down(int);
 						//virtual int		enter();
 
-						virtual int		key_fun(int,int,int,int);
-						virtual int		mouse_button_fun(int,int,int);
+						virtual int		key_fun(sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int,int,int,int);
+						virtual int		mouse_button_fun(sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int,int,int);
 						//virtual void		connect();
 
 				};

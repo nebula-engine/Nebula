@@ -27,16 +27,16 @@
 Neb::Graphics::Window::Base::Base():
 	x_(0),
 	y_(0),
-	w_(100),
-	h_(100)
+	w_(400),
+	h_(400)
 {
 }
 Neb::Graphics::Window::Base::Base(Neb::Graphics::Window::Util::Parent_s parent):
 	parent_(parent),
 	x_(0),
 	y_(0),
-	w_(100),
-	h_(100)
+	w_(400),
+	h_(400)
 {
 }
 Neb::Graphics::Window::Base::~Base() {
@@ -49,7 +49,7 @@ void Neb::Graphics::Window::Base::init() {
 	auto app = Neb::App::Base::globalBase();
 	assert(app);
 
-	auto self = sp::dynamic_pointer_cast<Neb::Graphics::Window::Base>(shared_from_this());
+	self_ = sp::dynamic_pointer_cast<Neb::Graphics::Window::Base>(shared_from_this());
 	
 	// create window
 	window_ = glfwCreateWindow(
@@ -89,7 +89,7 @@ void Neb::Graphics::Window::Base::init() {
 			Neb::App::Base::static_mouse_button_fun);
 
 	// add window to app's window map
-	app->windows_glfw_[window_] = self;
+	app->windows_glfw_[window_] = self_;
 	
 	
 	//if(all(Neb::App::Base::option::SHADERS)) create_programs();
@@ -185,13 +185,13 @@ void Neb::Graphics::Window::Base::callback_window_close_fun(GLFWwindow* window){
 }
 void Neb::Graphics::Window::Base::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods) {
 	GLUTPP_DEBUG_0_FUNCTION;
-
-	sig_.mouse_button_fun_(button, action, mods);
+	
+	sig_.mouse_button_fun_(self_, button, action, mods);
 }
 void Neb::Graphics::Window::Base::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	GLUTPP_DEBUG_0_FUNCTION;
-
-	sig_.key_fun_(key, scancode, action, mods);
+	
+	sig_.key_fun_(self_, key, scancode, action, mods);
 
 }
 void Neb::Graphics::Window::Base::resize() {

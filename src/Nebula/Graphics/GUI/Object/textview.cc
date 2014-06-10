@@ -21,12 +21,12 @@ void	Neb::Graphics::GUI::Object::textview::draw() {
 	draw_quad(x_, y_, w_, h_, bg_color_);
 	draw_text(x_, y_, sx, sy, font_color_, label_);
 }
-int	Neb::Graphics::GUI::Object::textview::mouse_button_fun(int button, int action, int mods) {
+int	Neb::Graphics::GUI::Object::textview::mouse_button_fun(sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	return Neb::Graphics::GUI::Object::Base::mouse_button_fun(button, action, mods);
+	return Neb::Graphics::GUI::Object::Base::mouse_button_fun(window, button, action, mods);
 }
-int	Neb::Graphics::GUI::Object::textview::key_fun(int key, int scancode, int action, int mods) {
+int	Neb::Graphics::GUI::Object::textview::key_fun(sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int key, int scancode, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	return 0;
 }

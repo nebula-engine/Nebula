@@ -15,25 +15,18 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <Nebula/config.hh>
-
-
 //#include <Nebula/actor/event.hh>
-
 #include <Nebula/Graphics/Context/Base.hh>
 #include <Nebula/Graphics/Window/Base.hh>
-
-
 #include <Nebula/Actor/RigidBody/Base.hh>
-
 #include <Nebula/App/Base.hh>
-
-
 #include <Nebula/Network/server.hh>
 #include <Nebula/Network/client.hh>
 
 #include <Nebula/Message/Scene/Create.hpp>
 #include <Nebula/Message/Actor/Event/Base.hh>
 #include <Nebula/Scene/Base.hh>
+#include <Nebula/Util/command.hpp>
 
 /** @todo since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers.
  * to avoid unwanted shared_ptrs to owned objects, care must be taken when passing these objects around.
@@ -448,6 +441,35 @@ std::shared_ptr<Neb::glsl::program> Neb::App::Base::get_program(Neb::program_nam
 }
 void		Neb::App::Base::command(std::string str) {
 
+	// split
+	
+	std::istringstream iss(str);
+	
+	std::vector<std::string> tokens;
+
+	std::copy(
+			std::istream_iterator<std::string>(iss),
+			std::istream_iterator<std::string>(),
+			std::back_inserter<std::vector<std::string> >(tokens));
+	
+	int ac = tokens.size();
+	char const ** av = new char const *[ac];
+	char const ** pc = av;
+	for(auto t : tokens) {
+		*pc = t.c_str();
+		pc++;
+	}
+	
+	
+	// future class members...
+	std::map< std::string, sp::shared_ptr<neb::util::command> > m;
+	
+	auto help = sp::make_shared<neb::util::command>();
+		
+	m["help"] = help;
+	
+	
+	
 }
 void		Neb::App::Base::sendServer(sp::shared_ptr< gal::net::omessage > msg)  {
 	//NEBULA_DEBUG_1_FUNCTION;

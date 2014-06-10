@@ -32,7 +32,7 @@ namespace Neb {
 			 * such that things like layouts are render ON TOP of existing scene.'
 			 */
 			class Base:
-				virtual public gal::std::shared,
+				virtual public neb::std::shared,
 				virtual public Neb::Graphics::Context::Util::Cast
 			{
 				public:

@@ -85,7 +85,7 @@ namespace Neb {
 				class Mat4: public Neb::glsl::Uniform::Scalar::Base {
 					public:
 						Mat4(std::string s): Base(s) {}
-						virtual void		load(glm::mat4x4);
+						virtual void		load(mat4 const &);
 				};
 				class Sampler2D: public Neb::glsl::Uniform::Scalar::Base {
 					public:

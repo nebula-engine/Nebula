@@ -70,14 +70,15 @@ namespace Neb {
 
 		/** @brief Graphical User Interface */
 		namespace GUI {
-
+			/** @brief %Layout */
 			namespace Layout {
 				class Base;
 
 				typedef std::shared_ptr<Base>		Base_s;
 				typedef std::weak_ptr<Base>		Base_w;
 			}
-
+			
+			/** @brief %Object */
 			namespace Object {
 				namespace Util {
 					class Parent;
