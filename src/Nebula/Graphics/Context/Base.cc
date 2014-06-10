@@ -28,22 +28,31 @@ void Neb::Graphics::Context::Base::resize(int w, int h) {
 	//camera_->w_ = w;
 	//camera_->h_ = h;
 }
-void Neb::Graphics::Context::Base::render(double time, Neb::Graphics::Window::Base_s window) {
+void		Neb::Graphics::Context::Base::step(Neb::Core::TimeStep const & ts) {
+
+}
+void		Neb::Graphics::Context::Base::render() {
+	/**
+	 * prepare rendering environment and then call the drawable
+	 */
 
 	GLUTPP_DEBUG_1_FUNCTION;
-
+	
+	auto self = sp::dynamic_pointer_cast<Neb::Graphics::Context::Base>(shared_from_this());
+	
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-
-	auto scene = scene_.lock();
-	auto layout = layout_.lock();
-
-	if(scene) {
-		scene->render(time, view_, proj_, window);
-	}
-
-	if(layout) {
-		//layout_->render(time);
-	}
+	
+	assert(drawable_);
+	assert(proj_);
+	assert(view_);
+	
+	viewport_.load();
+	
+	proj_->load();
+	view_->load();
+	
+	drawable_->draw(self);
+	
 }		
 
 

@@ -1,27 +1,31 @@
+#include <glm/gtc/matrix_transform.hpp>
+
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/Light/Spot.hh>
 
 Neb::Light::Spot::Spot():
-	spot_direction_(physx::PxVec3(0.0, 0.0, -1.0)),
+	spot_direction_(vec3(0.0, 0.0, -1.0)),
 	spot_cutoff_(10.0),
 	spot_exponent_(1.0),
 	spot_light_cos_cutoff_(1.0)
 {
 }
-void Neb::Light::Spot::load(int o, physx::PxMat44 space) {
+void Neb::Light::Spot::load(int o, mat4 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
 	auto p = Neb::App::Base::globalBase()->current_program();
 
-	physx::PxVec4 pos = pos_;
+	vec4 pos = pos_;
 
-	pos += physx::PxVec4(space.getPosition(), 0);
+	pos += vec4(space[3][0], space[3][1], space[3][2], 0);
 
 	pos.w = pos_.w;
 
-	physx::PxVec3 spot_direction = spot_direction_;
+	vec4 spot_direction(spot_direction_,0.0);
 	
-	space.rotate(spot_direction);
+	spot_direction = space * spot_direction;
+	
+	
 	
 	//if(any(Neb::light::flag::e::SHOULD_LOAD_POS))
 	{

@@ -30,11 +30,11 @@ math::geo::sphere::sphere(float r, int slices, int stacks) {
 
 	math::geo::vertex poles[2];
 	
-	poles[0].p = physx::PxVec3(0,-r,0);
-	poles[1].p = physx::PxVec3(0, r,0);
+	poles[0].p = vec3(0,-r,0);
+	poles[1].p = vec3(0, r,0);
 	
-	poles[0].n = physx::PxVec3(0,-1,0);
-	poles[1].n = physx::PxVec3(0, 1,0);
+	poles[0].n = vec3(0,-1,0);
+	poles[1].n = vec3(0, 1,0);
 	
 	math::geo::vertex* interior = vertices_ + 2;
 	
@@ -53,7 +53,7 @@ math::geo::sphere::sphere(float r, int slices, int stacks) {
 			
 			
 			
-			physx::PxVec3 v(
+			vec3 v(
 					r * cos(theta) * cos(phi),
 					r * sin(phi),
 					r * sin(theta) * cos(phi));
@@ -64,7 +64,8 @@ math::geo::sphere::sphere(float r, int slices, int stacks) {
 			
 			
 			interior[a*slices+b].p = v;
-			interior[a*slices+b].n = v.getNormalized();
+			interior[a*slices+b].n = v;
+			glm::normalize(interior[a*slices+b].n);
 		}
 	}
 	

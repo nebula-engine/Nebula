@@ -16,15 +16,8 @@ namespace Neb {
 					Local(Neb::Actor::Util::Parent_s);
 
 					virtual void				init();
-
+					virtual void				release();
 					virtual void				step(Neb::Core::TimeStep const & ts);
-
-					virtual Neb::Actor::Base_s		get_projectile();
-					
-					virtual void				add_force(double);
-
-					virtual void				create_physics();
-					virtual void				init_physics();
 			};
 		}
 	}

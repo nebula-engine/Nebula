@@ -10,6 +10,7 @@ namespace neb {
 	namespace std {
 		class wrapper: virtual public gal::std::wrapper<neb::std::shared> {
 			public:
+				wrapper();
 				wrapper(sp::shared_ptr<neb::std::shared> s);
 				virtual void		init();
 				virtual void		release();

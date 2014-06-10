@@ -1,4 +1,8 @@
-add_executable(Basic main.cpp)
+PROJECT(Basic)
 
-target_link_libraries(Basic Nebula boost_system boost_serialization Nebula)
+#target_link_libraries(Basic Nebula boost_system boost_serialization Nebula)
+
+MESSAGE(STATUS "libs: ${libs}")
+
+link_exe()
 

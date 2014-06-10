@@ -1,3 +1,4 @@
+#include <iostream>
 
 #include <Nebula/Math/geo/polyhedron.hh>
 
@@ -70,21 +71,17 @@ void	Neb::mesh::construct(math::geo::polyhedron* poly) {
 	}
 
 }
-void Neb::mesh::load(const char * name){
+void Neb::mesh::load(std::string name)	{
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 
-	char filename[256];
-	filename[0] = '\0';
-
-	strcat(filename, GLUTPP_OBJECT_DIR"/");
-	strcat(filename, name);
-
+	std::string filename = std::string(GLUTPP_OBJECT_DIR) + "/" + name;
+	
 	FILE * fp;
-
-	printf("load file '%s'\n",filename);
-
-	fp = fopen(filename, "rb");
+	
+	std::cout << "load file " << filename << std::endl;
+	
+	fp = fopen(filename.c_str(), "rb");
 
 	if (fp <= 0) 
 	{
@@ -111,13 +108,13 @@ void Neb::mesh::load(const char * name){
 	//for(int i = 0; i < fh_.len_vertices_; ++i) vertices_[i].print();
 
 }
-void Neb::mesh::save(const char * filename){
+void		Neb::mesh::save(std::string filename){
 	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	FILE * fp;
 	
-	fp = fopen(filename, "wb");
+	fp = fopen(filename.c_str(), "wb");
 	
 	if (!fp) 
 	{
@@ -135,7 +132,7 @@ void Neb::mesh::save(const char * filename){
 	{
 		//vertices_[i].print();
 	}
-	printf("'%s' saved\n",filename);
+	std::cout << "saved " << filename << std::endl;
 	
 	// close
 	fclose(fp);

@@ -5,94 +5,31 @@
 #include <Nebula/timer/Actor/Release.hpp>
 
 
-void            Neb::Scene::Local::step(double const & time, double const & dt) {
+void		Neb::Scene::Local::step(Neb::Core::TimeStep const & ts) {
+	Neb::Scene::Local::step(ts);
+}
+void Neb::Scene::Local::send_actor_update() {
+	//printf("DEBUG: message ACTOR_UPDATE sent\n");
 	
-	auto app = Neb::App::Base::globalBase();
 	
-	// timer
-	//timer_set_.step(time);
+	//int type = glutpp::network::type::ACTOR_UPDATE;
+	//msg->write(&type, sizeof(int));
 	
-	//physx::PxU32 nbPxactor = px_scene_->getNbActors(physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC);
+	Neb::Message::Actor::OUpdate_s message(new Neb::Message::Actor::OUpdate);
 	
-	// PxScene
-	assert(px_scene_ != NULL);
+	typedef Neb::Actor::Util::Parent A;
 
-	px_scene_->simulate(dt);
-	px_scene_->fetchResults(true);
-
-	// retrieve array of actors that moved
-	physx::PxU32 nb_active_transforms;
-	physx::PxActiveTransform* active_transforms = px_scene_->getActiveTransforms(nb_active_transforms);
-
-	//printf( "count PxRigidActor:%i count active transform:%i\n", nbPxactor, nb_active_transforms );
-
-	//physx::PxTransform pose;
-	physx::PxTransform pose;
-
-	// update each render object with the new transform
-	for(physx::PxU32 i = 0; i < nb_active_transforms; ++i) {
-		//physx::PxActor* px_actor = active_transforms[i].actor;
-
-		//printf( "actor type = %i\n", px_actor->getType() );
-
-		physx::PxActor* pxactor = active_transforms[i].actor;
-		assert(pxactor);
-		physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
-
-
-		void* ud = active_transforms[i].userData;
-		assert(ud);
-
-		Neb::Actor::Base* pactor = static_cast<Neb::Actor::Base*>(ud);
-		auto actor = pactor->isActorBase();
-		
-
-		if(actor) {
-			pose = active_transforms[i].actor2World;
-			actor->setPose(pose);
-			
-			if(pxrigidbody != NULL) {
-				auto rigidbody = isActorRigidBody();
-				//dynamic_cast<neb::Actor::RigidBody::RigidBody*>(actor);
-
-				assert(rigidbody != NULL);
-
-				physx::PxVec3 v(pxrigidbody->getLinearVelocity());
-
-				rigidbody->velocity_ = v;
-
-				//v.print();
+	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
+			auto actor = sp::dynamic_pointer_cast<Neb::Actor::Base>(it->ptr_);
+			assert(actor);
+			if(actor->flag_.any(Neb::Actor::Util::Flag::SHOULD_UPDATE)) {
+			message->actors_.push_back(actor);
 			}
+			});
 
-			actor->flag_.set(Neb::Actor::Util::Flag::E::SHOULD_UPDATE);
-		}
-	}
 
-	// vehicle
-	//physx::PxVec3 g(0,-0.25,0);
-	//vehicle_manager_.vehicle_suspension_raycasts(px_scene_);
-	//vehicle_manager_.update((float)dt, g);
-	
-	send_actor_update();
-	
+	Neb::App::Base::globalBase()->sendServer(message);
 }
-void Neb::Scene::Local::fire(Neb::Actor::Base_s actor) {
-
-	auto proj = actor->get_projectile();
-
-	//auto me = std::dynamic_pointer_cast<Neb::Actor::Actor>(shared_from_this());
-
-	//auto a = create_actor_local(desc);
-
-	/** @todo replace Neb::timer::actor::type with inheritance */
-
-	std::shared_ptr<Neb::Timer::Actor::Base> t(
-			new Neb::Timer::Actor::Release(proj, last_ + 5.0)
-			);
-
-
-}
-
 
 
 

@@ -3,8 +3,7 @@
 
 #include <vector>
 
-#include <PxPhysicsAPI.h>
-
+#include <Nebula/Util/typedef.hpp>
 #include <Nebula/Graphics/Camera/View/Base.hh>
 
 namespace Neb {
@@ -35,21 +34,21 @@ namespace Neb {
 						/** @} */
 
 						/** @brief view matrix */
-						virtual physx::PxMat44				view();
-						virtual void					step(double);
+						virtual mat4					view();
+						virtual void					step(Neb::Core::TimeStep const & ts);
 
 						void						init();
 
 						float						pitch_;
 						float						yaw_;
 
-						physx::PxVec4					eye_;
-						physx::PxVec3					center_;
-						physx::PxVec3					look_;
-						physx::PxVec3					up_;
+						vec4						eye_;
+						vec3						center_;
+						vec3						look_;
+						vec3						up_;
 
-						physx::PxVec3					v0_;
-						physx::PxVec3					v1_;
+						vec3						v0_;
+						vec3						v1_;
 
 						//std::vector<gal::sig::connection<>*>		vec_x_;
 						//std::vector<gal::sig::connection<>*>		vec_y_;
@@ -59,7 +58,7 @@ namespace Neb {
 
 
 						std::map<int,unsigned int>			key_flag_;
-						std::map<int,physx::PxVec3>			head_;
+						std::map<int,vec3>				head_;
 						std::map<unsigned int,int>			head_flag_;
 				};
 			}

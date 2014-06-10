@@ -17,9 +17,6 @@ namespace Neb {
 					virtual void			step(Neb::Core::TimeStep const & ts);
 					
 					virtual void			set_pose(mat4);
-					virtual int			fire();
-
-					virtual Neb::Actor::Base_s	get_projectile() = 0;
 			};
 		}
 	}

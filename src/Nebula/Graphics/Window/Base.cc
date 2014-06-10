@@ -24,13 +24,9 @@
 
 Neb::Graphics::Window::Base::Base() {
 }
-Neb::Graphics::Window::Base::Base(Neb::Graphics::Window::Util::Parent_s parent) {
-	//GLUTPP_DEBUG_0_FUNCTION;
+Neb::Graphics::Window::Base::Base(Neb::Graphics::Window::Util::Parent_s parent): parent_(parent) {
 }
 Neb::Graphics::Window::Base::~Base() {
-	//GLUTPP_DEBUG_0_FUNCTION;
-
-	glfwDestroyWindow(window_);
 }
 void Neb::Graphics::Window::Base::init() {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -63,17 +59,22 @@ void Neb::Graphics::Window::Base::init() {
 
 	checkerror("unknown");
 }
-void Neb::Graphics::Window::Base::render(double time) {
+void		Neb::Graphics::Window::Base::release() {
+	glfwDestroyWindow(window_);
+}
+void		Neb::Graphics::Window::Base::render() {
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	glfwMakeContextCurrent(window_);
 	
 	/** @todo rendering multiple contexts in a window */
 
-	typedef Neb::Util::Parent<Neb::Graphics::Context::Base> C;
+	typedef Neb::Graphics::Context::Util::Parent C;
 
-	C::map_.for_each([&] (C::map_type::const_iterator it) {
-		it->second.ptr_->render(time, isWindowBase());
+	C::map_.for_each<0>([] (C::map_type::iterator<0> it) {
+		auto context = sp::dynamic_pointer_cast<Neb::Graphics::Context::Base>(it->ptr_);
+		assert(context);
+		context->render();
 	});
 
 	glFinish();
@@ -81,15 +82,16 @@ void Neb::Graphics::Window::Base::render(double time) {
 }
 void Neb::Graphics::Window::Base::callback_window_refresh_fun(GLFWwindow*) {
 }
-void			Neb::Graphics::Window::Base::step(double const & time, double const & dt) {
+void			Neb::Graphics::Window::Base::step(Neb::Core::TimeStep const & ts) {
 	//GLUTPP_DEBUG_1_FUNCTION;
 
 	if(glfwWindowShouldClose(window_)) {
-		parent_->release(i_);
+		parent_->erase(i_);
 		return;
 	}
 	
-	render(time);
+	/** @tod wtf is this doing here?? */
+	render();
 }
 void Neb::Graphics::Window::Base::callback_window_size_fun(GLFWwindow* window, int w, int h) {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -126,12 +128,15 @@ void Neb::Graphics::Window::Base::callback_key_fun(GLFWwindow* window, int key, 
 }
 void Neb::Graphics::Window::Base::resize() {
 
+	
 	glViewport(0, 0, w_, h_);
 	
-	typedef Neb::Util::Parent<Neb::Graphics::Context::Base> C;
+	typedef Neb::Graphics::Context::Util::Parent C;
 
-	C::map_.for_each([&] (C::map_type::const_iterator it) {
-		it->second.ptr_->resize(w_, h_);
+	C::map_.for_each<0>([&] (C::map_type::iterator<0> it) {
+		auto context = sp::dynamic_pointer_cast<Neb::Graphics::Context::Base>(it->ptr_);
+		assert(context);
+		context->resize(w_, h_);
 	});
 	
 }

@@ -1,5 +1,4 @@
-
-//#include <Nebula/Math/Matrix.hh>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include <Nebula/config.hh>
 #include <Nebula/Graphics/Window/Base.hh>
@@ -24,14 +23,14 @@ Neb::Graphics::Camera::View::Free::Free(Neb::Graphics::Context::Base_s parent):
 	   key_flag_[ KEY_A ] = NEB::camera::flag::WEST;
 	 */	
 
-	head_[0] = physx::PxVec3(  0, 0, -s );
-	head_[1] = physx::PxVec3(  d, 0, -d );
-	head_[2] = physx::PxVec3(  s, 0,  0 );
-	head_[3] = physx::PxVec3(  d, 0,  d );
-	head_[4] = physx::PxVec3(  0, 0,  s );
-	head_[5] = physx::PxVec3( -d, 0,  d );
-	head_[6] = physx::PxVec3( -s, 0,  0 );
-	head_[7] = physx::PxVec3( -d, 0, -d );
+	head_[0] = vec3(  0, 0, -s );
+	head_[1] = vec3(  d, 0, -d );
+	head_[2] = vec3(  s, 0,  0 );
+	head_[3] = vec3(  d, 0,  d );
+	head_[4] = vec3(  0, 0,  s );
+	head_[5] = vec3( -d, 0,  d );
+	head_[6] = vec3( -s, 0,  0 );
+	head_[7] = vec3( -d, 0, -d );
 
 	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::NORTH								] = 0;
 	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::NORTH	|	Neb::Graphics::Camera::View::Free::Flag::E::EAST	] = 1;
@@ -96,26 +95,25 @@ void	Neb::Graphics::Camera::View::Free::init() {
 */
 
 }
-void		Neb::Graphics::Camera::View::Free::step(double time) {
-	float dt = time - last_; last_ = time;
+void		Neb::Graphics::Camera::View::Free::step(Neb::Core::TimeStep const & ts) {
 
 	// look vector
-	physx::PxVec3 look = center_ - eye_.getXYZ();
+	vec3 look = center_ - vec3(eye_);
 
 	// project to xz-plane
 	look.y = 0.0;
-	look.normalize();
+	glm::normalize(look);
 
-	physx::PxVec3 x(1,0,0);
-	physx::PxVec3 y(0,1,0);
-	physx::PxVec3 z(0,0,-1);
+	vec3 x(1,0,0);
+	vec3 y(0,1,0);
+	vec3 z(0,0,-1);
 
-	physx::PxVec3 c = z.cross(look);
+	vec3 c = glm::cross(z,look);
 
-	float yaw = asin(c.magnitude());
+	float yaw = asin(glm::length(c));
 
-	float d = y.dot(c);
-	float e = z.dot(look);
+	float d = glm::dot(y, c);
+	float e = glm::dot(z, look);
 
 	if(e < 0) yaw = M_PI - yaw;
 
@@ -126,16 +124,16 @@ void		Neb::Graphics::Camera::View::Free::step(double time) {
 	printf("yaw = %f\n",yaw);
 
 	// rotate velocity by camera yaw
-	physx::PxQuat q(yaw,y);
+	quat q(yaw,y);
 	
 	
-	physx::PxVec3 v = v0_ + v1_;
-	v *= dt;
+	vec3 v = v0_ + v1_;
+	v *= ts.dt;
 	v *= 4.0;
-
-	v = q.rotate(v);
 	
-	eye_ += physx::PxVec4(v, 0.0f);
+	v = q * v;
+	
+	eye_ += vec4(v, 0.0f);
 }
 
 /*
@@ -144,7 +142,7 @@ neb::camera::camera::camera():
 	yaw_(0.0f),
 	v_pitch_(0.0f),
 	v_yaw_(0.0f),
-	eye_( physx::PxVec3( 0.0f, 0.0f, 0.0f ) )
+	eye_( vec3( 0.0f, 0.0f, 0.0f ) )
 {
 
 }
@@ -191,9 +189,9 @@ void neb::camera::camera::Step(float dt)
 {
 	//printf("%s\n", __FUNCTION__);
 
-	physx::PxVec3 mov = Move();
+	vec3 mov = Move();
 
-	physx::PxQuat rot( yaw_, physx::PxVec3(0,1,0) );
+	physx::PxQuat rot( yaw_, vec3(0,1,0) );
 
 	mov = rot.rotate(mov);
 
@@ -205,15 +203,15 @@ void neb::camera::camera::Step(float dt)
 	// yaw
 	yaw_ += v_yaw_ * dt;
 }
-physx::PxVec3 neb::camera::camera::Move()
+vec3 neb::camera::camera::Move()
 {
 	//printf("%s\n", __FUNCTION__);
 
-	physx::PxVec3 mov = physx::PxVec3(0,0,-1) * north_ + physx::PxVec3(1,0,0) * east_;
+	vec3 mov = vec3(0,0,-1) * north_ + vec3(1,0,0) * east_;
 
 	return mov;
 	
-	   physx::PxVec3 mov(0,0,0);
+	   vec3 mov(0,0,0);
 
 	// ignore all other flags
 	int f = flag_ & (
@@ -233,26 +231,25 @@ physx::PxVec3 neb::camera::camera::Move()
 	return mov;
 }
 */
-physx::PxMat44	Neb::Graphics::Camera::View::Free::view() {
+mat4		Neb::Graphics::Camera::View::Free::view() {
 	//printf("%s\n", __FUNCTION__);
 
-	physx::PxVec3 up(0,1,0);
-	physx::PxVec3 look(0,0,-1);
+	vec3 up(0,1,0);
+	vec3 look(0,0,-1);
 	
 	
-	physx::PxQuat rot( yaw_, physx::PxVec3(0,1,0));
+	quat rot( yaw_, vec3(0,1,0));
 
-	rot *= physx::PxQuat( pitch_ , physx::PxVec3(1,0,0) );
-
-
-	up = rot.rotate( up );
-	look = rot.rotate( look );
+	rot *= quat( pitch_ , vec3(1,0,0) );
 	
-	physx::PxVec3 eye(eye_.getXYZ());//.x(), eye_.y(), eye_.z());
+	up = rot * up;
+	look = rot * look;
 	
-	physx::PxVec3 center = eye + look;
+	vec3 eye(eye_);//.x(), eye_.y(), eye_.z());
+	
+	vec3 center = eye + look;
 
-	physx::PxMat44 ret = lookat(eye, center, up);
+	mat4 ret = glm::lookAt(eye, center, up);
 
 	//		eye_.x, eye_.y, eye_.z,
 	//		center.x, center.y, center.z,

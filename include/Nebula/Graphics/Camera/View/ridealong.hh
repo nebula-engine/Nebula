@@ -4,6 +4,7 @@
 #include <memory>
 #include <map>
 
+#include <Nebula/Actor/Util/Types.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Graphics/Camera/View/Base.hh>
 #include <Nebula/config.hh>

@@ -13,7 +13,7 @@
 
 Neb::Light::Base::Base(Neb::Light::Util::Parent_s parent):
 	parent_(parent),
-	pos_(physx::PxVec4(0.0, 0.0, 0.0, 1.0)),
+	pos_(vec4(0.0, 0.0, 0.0, 1.0)),
 	ambient_(Neb::Color::black<float>()),
 	diffuse_(Neb::Color::white<float>()),
 	specular_(Neb::Color::white<float>()),
@@ -53,23 +53,23 @@ void		Neb::Light::Base::step(double const & time, double const & ) {
 void	Neb::Light::Base::draw() {	
 	GLUTPP_DEBUG_1_FUNCTION;
 }
-physx::PxMat44		Neb::Light::Base::get_pose() {
+mat4		Neb::Light::Base::get_pose() {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
-	physx::PxMat44 m = parent_->getPoseGlobal();
+	mat4 m = parent_->getPoseGlobal();
 	
 	return m;
 }
-void Neb::Light::Base::load(int o, physx::PxMat44 space) {
+void Neb::Light::Base::load(int o, mat4 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	/** @todo way to ditinguish lights in shader */
 
 	auto p = Neb::App::Base::globalBase()->current_program();
 
-	physx::PxVec4 pos = pos_;
+	vec4 pos = pos_;
 
-	pos += physx::PxVec4(space.getPosition(), 0);
+	pos += vec4(space[3][0], space[3][1], space[3][3], 0);
 
 	pos.w = pos_.w;
 

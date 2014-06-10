@@ -14,12 +14,37 @@ include_directories("./Galaxy-Standard/include")
 include_directories("./Galaxy-Network/include")
 include_directories(${physx_INCLUDE_DIR})
 
+link_directories("./Galaxy-Network/build")
+
 ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
 
 # custom include extensions
 set(INCLUDE_EXTENSIONS obj)
 
 SET(GRU_VERSION 0.1.1)
+
+
+FIND_PACKAGE(Boost 1.55 COMPONENTS program_options serialization log system thread)
+
+SET(libs ${libs}
+	${PROJECT_NAME}
+	${Boost_LIBRARIES}
+	Galaxy-Standard
+	Galaxy-Network
+	glfw3
+	GL
+	GLU
+	GLEW
+	freetype
+	png
+	rt
+	pthread
+	X11
+	Xrandr
+	Xi
+	Xcursor
+	)
+
 
 
 # common methods for static library

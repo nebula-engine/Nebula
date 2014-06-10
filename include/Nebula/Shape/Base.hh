@@ -42,7 +42,7 @@ namespace Neb {
 			virtual public Neb::Light::Util::Parent
 		{
 			public:
-				typedef std::map<Neb::Graphics::Window::Base*,buffer_s>			map_t;
+				typedef std::map<Neb::Graphics::Context::Base*,buffer_s>			map_t;
 
 				Base();
 				Base(Neb::Shape::Util::Parent_s parent);
@@ -65,12 +65,12 @@ namespace Neb {
 				/** @name Rendering @{ */
 				void			load_lights(int& i, mat4 space);
 
-				void			draw(Neb::Graphics::Window::Base_s, mat4 space);
+				void			draw(Neb::Graphics::Context::Base_s, mat4 space);
 
 				void			model_load(mat4 space);
-				void			init_buffer(Neb::Graphics::Window::Base_s, std::shared_ptr<Neb::glsl::program> p);
+				void			init_buffer(Neb::Graphics::Context::Base_s, std::shared_ptr<Neb::glsl::program> p);
 
-				virtual void		draw_elements(Neb::Graphics::Window::Base_s, mat4 space);
+				virtual void		draw_elements(Neb::Graphics::Context::Base_s, mat4 space);
 				/** @} */
 				/** @name Index
 				 * @{

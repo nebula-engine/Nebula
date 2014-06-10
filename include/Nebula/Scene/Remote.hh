@@ -3,11 +3,9 @@
 
 #include <vector>
 
-#include <Nebula/Flag.hh>
-#include <Nebula/Util/Map.hh>
-#include <Nebula/Util/Shared.hh>
-
-
+//#include <Nebula/Flag.hh>
+//#include <Nebula/Util/Map.hh>
+//#include <Nebula/Util/Shared.hh>
 
 #include <Nebula/Types.hh>
 
@@ -31,8 +29,7 @@ namespace Neb {
 		class Remote:
 			virtual public Neb::Scene::Base
 		{
-			void				step(double const & time, double const & dt);
-			virtual void			fire(Neb::Actor::Base_s actor);
+			void				step(Neb::Core::TimeStep const & ts);
 		};
 	}
 }

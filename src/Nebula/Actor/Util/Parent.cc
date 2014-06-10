@@ -8,6 +8,9 @@
 
 Neb::Actor::Util::Parent::Parent() {
 }
+void					Neb::Actor::Util::Parent::init() {
+
+}
 Neb::Scene::Base_s			Neb::Actor::Util::Parent::getScene() {
 	NEBULA_ACTOR_BASE_FUNC;
 

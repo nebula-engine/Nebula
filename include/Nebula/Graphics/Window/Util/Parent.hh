@@ -1,7 +1,7 @@
 #ifndef NEBULA_GRAPHICS_WINDOW_UTIL_PARENT_HH
 #define NEBULA_GRAPHICS_WINDOW_UTIL_PARENT_HH
 
-#include <Galaxy-Standard/parent.hpp>
+#include <Nebula/Util/parent.hpp>
 
 namespace Neb {
 	namespace Graphics {

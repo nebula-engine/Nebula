@@ -1,0 +1,34 @@
+<layout>
+	<object type="home_local_game">
+		<label>local game</label>
+		<x>-1.0</x>
+		<y>-0.4</y>
+		<w>0.4</w>
+		<h>0.1</h>
+	</object>
+
+	<object type="home_network_game">
+		<label>lan game</label>
+		<x>-1.0</x>
+		<y>-0.6</y>
+		<w>0.4</w>
+		<h>0.1</h>
+	</object>
+	
+	<object type="textview">
+		<label>settings</label>
+		<x>-1.0</x>
+		<y>-0.8</y>
+		<w>0.4</w>
+		<h>0.1</h>
+	</object>
+	
+	<object type="textview">
+		<label>exit</label>
+		<x>-1.0</x>
+		<y>-1.0</y>
+		<w>0.4</w>
+		<h>0.1</h>
+	</object>
+
+</layout>

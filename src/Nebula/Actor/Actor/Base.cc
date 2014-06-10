@@ -26,20 +26,13 @@ void		Neb::Actor::Actor::Base::set_pose(mat4 pose) {
 
 	Neb::Actor::Base::setPose(pose);
 }
-int		Neb::Actor::Actor::Base::fire() {
-	NEBULA_ACTOR_BASE_FUNC;
-	return Neb::Actor::Base::fire();
-}
 void		Neb::Actor::Actor::Base::step(Neb::Core::TimeStep const & ts) {
+	Neb::Actor::Base::step(ts);
 }
-
-
 void		Neb::Actor::Actor::Base::release() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
 	Neb::Actor::Base::release();
-
-	//assert(!scene_.expired());
 
 }
 

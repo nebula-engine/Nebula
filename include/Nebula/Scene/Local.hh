@@ -3,16 +3,16 @@
 
 #include <vector>
 
-#include <Nebula/Flag.hh>
-#include <Nebula/Util/Map.hh>
+//#include <Nebula/Flag.hh>
+
+//#include <Nebula/Util/Map.hh>
 //#include <Nebula/Util/Typed.hh>
 
 
 
 #include <Nebula/Types.hh>
 
-#include <Nebula/Scene/Util/Flag.hh>
-#include <Nebula/Scene/Util/Types.hh>
+#include <Nebula/Scene/Base.hh>
 
 #include <Nebula/config.hh> // Nebula/config.hpp.in
 #include <Nebula/Graphics/glsl/program.hh>
@@ -30,8 +30,8 @@
 namespace Neb {
 	namespace Scene {
 		class Local: public Neb::Scene::Base {
-			virtual void			step(double const & time, double const & dt);
-			virtual void			fire(Neb::Actor::Base_s);
+			virtual void			step(Neb::Core::TimeStep const & ts);
+			virtual void			send_actor_update();
 		};
 	}
 }

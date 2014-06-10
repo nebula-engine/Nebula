@@ -18,7 +18,9 @@
 #include <Nebula/Actor/Util/Types.hh>
 
 #include <Nebula/Filter.hh>
-#include <Nebula/Graphics/Window/Base.hh>
+//#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/Types.hh>
+
 
 Neb::Actor::Base::Base() {
 }
@@ -53,55 +55,46 @@ void		Neb::Actor::Base::setPose(mat4 pose) {
 	pose_ = pose;
 	
 	flag_.set(Neb::Actor::Util::Flag::E::SHOULD_UPDATE);
-	
-	notify_foundation_change_pose();
-}
-void Neb::Actor::Base::notify_foundation_change_pose() {
-
-	typedef gal::std::parent<Neb::Actor::Base> A;
-	typedef gal::std::parent<Neb::Shape::Base> S;
-	
-	A::map_.for_each<0>([] (A::map_type::iterator<0> it) {
-		it->ptr_->notify_foundation_change_pose();
-	});
-
-	S::map_.for_each<0>([] (S::map_type::iterator<0> it) {
-		it->ptr_->notify_foundation_change_pose();
-	});
-
 }
 void		Neb::Actor::Base::load_lights(int& i, mat4 space) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	space = space * pose_;
 	
-	typedef gal::std::parent<Neb::Actor::Base> A;
-	typedef gal::std::parent<Neb::Shape::Base> S;
-	
+	typedef Neb::Actor::Util::Parent A;
+	typedef Neb::Shape::Util::Parent S;
+
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-		it->ptr_->load_lights(i, space);
-	});
-	
+			auto actor = sp::dynamic_pointer_cast<Neb::Actor::Base>(it->ptr_);
+			assert(actor);
+			actor->load_lights(i, space);
+			});
+
 	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
-		it->ptr_->load_lights(i, space);
-	});
-	
+			auto shape = sp::dynamic_pointer_cast<Neb::Shape::Base>(it->ptr_);
+			assert(shape);
+			shape->load_lights(i, space);
+			});
 }
-void		Neb::Actor::Base::draw(Neb::Graphics::Window::Base_s window, mat4 space) {
+void		Neb::Actor::Base::draw(Neb::Graphics::Context::Base_s context, mat4 space) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	space = space * pose_;
-	
-	typedef gal::std::parent<Neb::Actor::Base> A;
-	typedef gal::std::parent<Neb::Shape::Base> S;
-	
+
+	typedef Neb::Actor::Util::Parent A;
+	typedef Neb::Shape::Util::Parent S;
+
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-		it->ptr_->draw(window, space);
-	});
+			auto actor = sp::dynamic_pointer_cast<Neb::Actor::Base>(it->ptr_);
+			assert(actor);
+			actor->draw(context, space);
+			});
 
 	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
-		it->ptr_->draw(window, space);
-	});
+			auto shape = sp::dynamic_pointer_cast<Neb::Shape::Base>(it->ptr_);
+			assert(shape);
+			shape->draw(context, space);
+			});
 
 
 }
@@ -119,24 +112,24 @@ void		Neb::Actor::Base::draw(Neb::Graphics::Window::Base_s window, mat4 space) {
   }*/
 void		Neb::Actor::Base::release() {
 
-	gal::std::parent<Neb::Actor::Base>::clear();
-	gal::std::parent<Neb::Shape::Base>::clear();
+	Neb::Actor::Util::Parent::clear();
+	Neb::Shape::Util::Parent::clear();
 
 	//conn_.key_fun_.disconnect();
 }
 void		Neb::Actor::Base::step(Neb::Core::TimeStep const & ts) {
 	NEBULA_ACTOR_BASE_FUNC;
+	
+	typedef Neb::Actor::Util::Parent A;
+	typedef Neb::Shape::Util::Parent S;
 
-	typedef gal::std::parent<Neb::Actor::Base> A;
-	typedef gal::std::parent<Neb::Shape::Base> S;
-	
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-		it->ptr_->step(ts);
-	});
-	
+			it->ptr_->step(ts);
+			});
+
 	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
-		it->ptr_->step(ts);
-	});
+			it->ptr_->step(ts);
+			});
 
 }
 void		Neb::Actor::Base::connect(Neb::Graphics::Window::Base_s window) {
@@ -170,10 +163,10 @@ int Neb::Actor::Base::key_fun(int key, int scancode, int action, int mods) {
 		case GLFW_PRESS:
 			switch(key) {
 				case GLFW_KEY_SPACE:
-					fire();
+					//fire();
 					return 1;
 				case GLFW_KEY_ESCAPE:
-					parent_->release(i_);
+					parent_->erase(i_);
 					return 1;
 				default:
 					return 0;

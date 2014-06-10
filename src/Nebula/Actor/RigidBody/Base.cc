@@ -15,14 +15,17 @@
 
 Neb::Actor::RigidBody::Base::Base() {}
 Neb::Actor::RigidBody::Base::Base(Neb::Actor::Util::Parent_s parent):
-	Neb::Actor::RigidActor::Base(parent),
-	force_(0.0,0.0,0.0),
-	torque_(0.0,0.0,0.0)
+	Neb::Actor::RigidActor::Base(parent)
 {}
 void		Neb::Actor::RigidBody::Base::init() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
 	Neb::Actor::RigidActor::Base::init();
+}
+void		Neb::Actor::RigidBody::Base::release() {
+	NEBULA_ACTOR_BASE_FUNC;
+	
+	Neb::Actor::RigidActor::Base::release();
 }
 void		Neb::Actor::RigidBody::Base::step(Neb::Core::TimeStep const & ts) {
 	Neb::Actor::RigidActor::Base::step(ts);

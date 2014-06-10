@@ -40,6 +40,8 @@
  * should be treated.
  */
 
+sp::shared_ptr<Neb::App::Base>	Neb::App::Base::g_app_;
+
 Neb::Graphics::Window::Base_w	Neb::App::Base::window_main_;// = Neb::window::window_s;
 
 Neb::App::Base::Base() {
@@ -543,4 +545,15 @@ void		Neb::App::Base::sendServer(sp::shared_ptr< Neb::Message::OBase > message) 
 
 	sendServer(buffer);
 }
+void		Neb::App::Base::loadXml(std::string filename, neb::std::wrapper& w) {
+	std::ifstream ifs;
+	ifs.open(filename, std::ifstream::in);
+	boost::archive::polymorphic_xml_iarchive ar(ifs);
+	ar >> boost::serialization::make_nvp("wrapper",w);
+}
+
+
+
+
+
 

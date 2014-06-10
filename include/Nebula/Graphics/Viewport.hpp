@@ -7,8 +7,12 @@ namespace Neb {
 	namespace gfx {
 		class Viewport {
 			public:
-				GLuint		x_, y_, w_, h_;
-				GLfloat		aspect_;
+				virtual void		load();
+				virtual void		resize(int w, int h);
+
+				GLuint			x_, y_, w_, h_;
+				GLfloat			aspect_;
+
 		};
 	}
 }

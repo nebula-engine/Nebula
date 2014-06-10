@@ -11,22 +11,10 @@ namespace Neb {
 					Base();
 					Base(Neb::Actor::Util::Parent_s);
 
-					template<class D, typename... Args> inline void	dispatch(Args... a) {
-						D::visit(this, a...);
-					}
-
-
 					virtual void					init();
-			
+					virtual void					release();
 					virtual void					step(Neb::Core::TimeStep const & ts);
 
-
-					virtual void					setupFiltering();
-
-					virtual Neb::Actor::Base_s			get_projectile() = 0;
-
-					virtual void					create_physics() = 0;
-					virtual void					init_physics() = 0;
 			};
 		}
 	}

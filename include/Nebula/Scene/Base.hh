@@ -39,20 +39,14 @@ namespace Neb {
 			public:
 				Base(Neb::Scene::Util::Parent_s);
 				virtual ~Base();
-				void				init();
-				void				release();
-				glm::mat4			get_pose();
+				virtual void				init();
+				virtual void				release();
 				/** @name Main Loop @{ */
 				/** @brief render */
-				void				render(
-						double time,
-						std::shared_ptr<Neb::Graphics::Camera::View::Base>,
-						std::shared_ptr<Neb::Graphics::Camera::Projection::Base>,
-						Neb::Graphics::Window::Base_s);
-				void				draw(Neb::Graphics::Window::Base_s window);
+
+				void				draw(sp::shared_ptr<Neb::Graphics::Context::Base> context);
 				void				resize(int w, int h);
-				void				draw();
-				void				step(Neb::Core::TimeStep const & ts);
+				virtual void			step(Neb::Core::TimeStep const & ts);
 				/** @} */
 
 				virtual  void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
@@ -64,44 +58,21 @@ namespace Neb {
 					ar & boost::serialization::make_nvp("flag",flag_);
 				}
 			public:
-				void						create_physics();
 				/** @name Accessors @{ */
 				mat4						getPose();
 				mat4						getPoseGlobal();
 				/** @} */
-				/** @name Children @{ */
-				/** @} */
-				//void						create_actors(Neb::Scene::desc_w);
-			private:	
-				//_wNeb::Actor::Base>		create_actor(boost::shared_ptr<Neb::Actor::desc>);
 			public:
-				//Neb::weak_ptr<Neb::Actor::Base>			create_actor_local(Neb::Actor::desc_w);
-				//Neb::weak_ptr<Neb::Actor::Base>			create_actor_remote(Neb::Actor::addr_w, Neb::Actor::desc_w);
 				void							add_deferred(Neb::Actor::Base_s);
-
-				virtual void						fire(Neb::Actor::Base_s) = 0;
-				//void							send_actor_update();
-
-				//int						recv(Neb::packet::packet);
-				//void						read(Neb::active_transform::set*);
-				//Neb::Scene::desc_s				desc_generate();
-
-				virtual void						dumby() {}
 			public:
-				Neb::Scene::Util::Parent_w				parent_;
-
-				// timer
-				//gal::timer::timer_set			timer_set_;
-
-
-				int							user_type_;
-	
-				Neb::simulation_callback*				simulation_callback_;
-
+				/** @brief parent
+				 *
+				 * @note WEAK
+				 */
+				sp::shared_ptr<Neb::Scene::Util::Parent>		parent_;
+				
 			public:
 				Neb::Scene::Util::Flag					flag_;
-
-				Neb::Scene::Util::Parent_w				renderable_;
 
 				std::map<std::string, Neb::Actor::Base_s>		actors_deferred_;
 		};

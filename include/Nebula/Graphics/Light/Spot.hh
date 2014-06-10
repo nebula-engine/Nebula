@@ -11,9 +11,9 @@
 
 #include <Nebula/config.hh>
 #include <Nebula/Types.hh>
-#include <Nebula/Util/Shared.hh>
+#include <Nebula/Util/shared.hpp>
 
-#include <Nebula/Math/Serialization.hh>
+#include <Nebula/Math/Serialization/GLM.hpp>
 
 #include <Nebula/Graphics/Light/Util/Flag.hh>
 #include <Nebula/Graphics/Light/Util/Types.hh>
@@ -39,17 +39,17 @@ namespace Neb {
 				}
 			public:
 				Spot();
-				void			load(int o, physx::PxMat44 space);
+				void				load(int o, mat4 space);
 
-				virtual void		loadLightBase(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
+				virtual void			loadLightBase(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
 					serializeTemplate(ar, version);
 				}
-				virtual void		saveLightBase(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
+				virtual void			saveLightBase(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
 					serializeTemplate(ar, version);
 				}	
 
 
-				physx::PxVec3			spot_direction_;
+				vec3				spot_direction_;
 				float				spot_cutoff_;
 				float				spot_exponent_;
 				float				spot_light_cos_cutoff_;

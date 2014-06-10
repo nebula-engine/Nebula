@@ -37,8 +37,8 @@ namespace Neb {
 	class mesh {
 		public:
 			mesh();
-			void				save(char const *);
-			void				load(char const *);
+			void				save(std::string);
+			void				load(std::string);
 			void				construct(math::geo::polyhedron*);
 
 			// draw data

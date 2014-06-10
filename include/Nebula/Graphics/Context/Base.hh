@@ -41,8 +41,10 @@ namespace Neb {
 					Base&						operator=(Base const & r);
 					void						init();
 					void						release();
+					virtual void					step(Neb::Core::TimeStep const & ts);
+					virtual void					render();
 					void						resize(int w, int h);
-					void						render(double const & time, double const & dt);
+
 				public:
 					/** @brief %Parent
 					 * 

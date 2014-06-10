@@ -37,6 +37,8 @@ namespace Neb {
 					Parent();
 					virtual ~Parent() {}
 
+					virtual void				init();
+				public:
 					Neb::Scene::Base_s			getScene();
 			};
 		}

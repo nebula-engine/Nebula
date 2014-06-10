@@ -52,7 +52,9 @@ void		Neb::Network::Server::accept(sp::shared_ptr<Neb::Network::Communicating> c
 	// exp
 	 */
 }
-
+void		Neb::Network::Server::write(sp::shared_ptr< gal::net::omessage > omessage) {
+	/** @todo impl */
+}
 
 
 

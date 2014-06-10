@@ -41,31 +41,16 @@ void Neb::Graphics::GUI::Layout::Base::create_object(tinyxml2::XMLElement* eleme
 
 	objects_.push_back(object);
 }*/
-void Neb::Graphics::GUI::Layout::Base::render(double time) {
-	//auto p = Neb::master::Global()->use_program(Neb::program_name::e::TEXT);
-
-	//Restore other states
-	//glDisable(GL_LIGHTING);
-	//glDisable(GL_ALPHA_TEST);
-
-	//Set matrices for ortho
-	//glMatrixMode(GL_PROJECTION);
-	//glLoadMatrixf(ortho_);
-	//gluOrtho2D(-1.0f, 1.0f, -1.0f, 1.0f);
-
-	//glMatrixMode(GL_MODELVIEW);
-	//glLoadIdentity();
-
-	draw();
-}
-void Neb::Graphics::GUI::Layout::Base::draw() {
+void		Neb::Graphics::GUI::Layout::Base::draw(sp::shared_ptr<Neb::Graphics::Context::Base> context) {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	//jess::clog << "objects_.size()=" << objects_.map_.size() << std::endl;
 	
-	typedef Neb::Util::Parent<Neb::Graphics::GUI::Object::Base> O;
+	typedef Neb::Graphics::GUI::Object::Util::Parent O;
 	
-	O::map_.for_each([] (O::map_type::const_iterator it) {
-		it->second.ptr_->draw();
+	O::map_.for_each<0>([] (O::map_type::iterator<0> it) {
+		auto object = sp::dynamic_pointer_cast<Neb::Graphics::GUI::Object::Base>(it->ptr_);
+		assert(object);
+		object->draw();
 	});
 
 }
@@ -132,24 +117,26 @@ int Neb::Graphics::GUI::Layout::Base::search(int button, int action, int mods) {
 
 	printf("%f %f\n", x, y);
 	
-	typedef Neb::Util::Parent<Neb::Graphics::GUI::Object::Base> O;
+	typedef Neb::Graphics::GUI::Object::Util::Parent O;
 	
-	Neb::Graphics::GUI::Object::Base_s object;
-	
-	O::map_.for_each_int([&] (O::map_type::const_iterator it) {
-		
+	sp::shared_ptr<Neb::Graphics::GUI::Object::Base> object;
+	sp::shared_ptr<Neb::Graphics::GUI::Object::Base> objecttmp;
+
+	O::map_.for_each_int<0>([&] (O::map_type::iterator<0> it) {
+		objecttmp = sp::dynamic_pointer_cast<Neb::Graphics::GUI::Object::Base>(it->ptr_);
+		assert(objecttmp);
 		printf("object %f %f %f %f\n",
-				it->second.ptr_->x_,
-				it->second.ptr_->y_,
-				it->second.ptr_->w_,
-				it->second.ptr_->h_);	
+				objecttmp->x_,
+				objecttmp->y_,
+				objecttmp->w_,
+				objecttmp->h_);	
 		
-		if(x <   it->second.ptr_->x_) return O::map_type::CONTINUE;
-		if(x > ( it->second.ptr_->x_ + it->second.ptr_->w_)) return O::map_type::CONTINUE;
-		if(y >  -it->second.ptr_->y_) return O::map_type::CONTINUE;
-		if(y < (-it->second.ptr_->y_ - it->second.ptr_->h_)) return O::map_type::CONTINUE;
+		if(x <   objecttmp->x_) return O::map_type::CONTINUE;
+		if(x > ( objecttmp->x_ + objecttmp->w_)) return O::map_type::CONTINUE;
+		if(y >  -objecttmp->y_) return O::map_type::CONTINUE;
+		if(y < (-objecttmp->y_ - objecttmp->h_)) return O::map_type::CONTINUE;
 		
-		object = it->second.ptr_;
+		object = objecttmp;
 		
 		return O::map_type::BREAK;
 	});

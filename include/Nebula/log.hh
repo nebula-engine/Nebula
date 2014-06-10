@@ -1,3 +1,6 @@
+#ifndef NEBULA_LOG_HPP
+#define NEBULA_LOG_HPP
+
 #include <cstddef>
 #include <string>
 #include <ostream>
@@ -38,7 +41,7 @@ enum severity_level
 };
 
 // The operator puts a human-friendly representation of the severity level to the stream
-std::ostream& operator<< (std::ostream& strm, severity_level level)
+inline std::ostream& operator<< (std::ostream& strm, severity_level level)
 {
 	static const char* strings[] =
 	{
@@ -62,7 +65,7 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(line_id, "LineID", unsigned int)
 BOOST_LOG_ATTRIBUTE_KEYWORD(severity, "Severity", severity_level)
 BOOST_LOG_ATTRIBUTE_KEYWORD(tag_attr, "Tag", std::string)
 
-void init() {
+inline void init() {
 	// Setup the common formatter for all sinks
 	logging::formatter fmt = expr::stream
 		<< std::setw(6) << std::setfill('0') << line_id << std::setfill(' ')
@@ -158,9 +161,7 @@ void init()
 
 #endif
 
-src::severity_logger< severity_level > lg;
+extern src::severity_logger< severity_level > lg;
 
 
-
-
-
+#endif

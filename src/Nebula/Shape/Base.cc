@@ -79,19 +79,21 @@ void Neb::Shape::Base::load_lights(int& i, mat4 space) {
 
 	space = space * pose_;
 
-	typedef Neb::Util::parent<Neb::Light::Base> L;
+	typedef Neb::Light::Util::Parent L;
 
 	L::map_.for_each<0>([&] (L::map_type::iterator<0> it) {
+		auto light = sp::dynamic_pointer_cast<Neb::Light::Base>(it->ptr_);
+		assert(light);
 		if(i == Neb::Light::light_max) return L::map_type::BREAK;
-		it->ptr_->load(i++, space);
+		light->load(i++, space);
 		return L::map_type::CONTINUE;
 	});
 
 }
-void Neb::Shape::Base::draw(Neb::Graphics::Window::Base_s window, mat4 space) {
+void		Neb::Shape::Base::draw(Neb::Graphics::Context::Base_s context, mat4 space) {
 	space = space * pose_;
 
-	draw_elements(window, space);
+	draw_elements(context, space);
 }
 void		Neb::Shape::Base::model_load(mat4 space) {
 
@@ -101,7 +103,7 @@ void		Neb::Shape::Base::model_load(mat4 space) {
 
 	p->get_uniform_scalar("model")->load(space);
 }
-void		Neb::Shape::Base::init_buffer(Neb::Graphics::Window::Base_s window, std::shared_ptr<Neb::glsl::program> p) {
+void		Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, std::shared_ptr<Neb::glsl::program> p) {
 	NEBULA_SHAPE_BASE_FUNC;
 
 	glEnable(GL_TEXTURE_2D);
@@ -115,7 +117,7 @@ void		Neb::Shape::Base::init_buffer(Neb::Graphics::Window::Base_s window, std::s
 	//checkerror("unknown");
 
 	std::shared_ptr<Neb::Shape::buffer> bufs(new Neb::Shape::buffer);
-	context_[window.get()] = bufs;
+	context_[context.get()] = bufs;
 
 	// image
 	if(flag_.all(Neb::Shape::flag::e::IMAGE))
@@ -193,7 +195,7 @@ void		Neb::Shape::Base::init_buffer(Neb::Graphics::Window::Base_s window, std::s
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 }
-void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Window::Base> window, mat4 space) {
+void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Context::Base> context, mat4 space) {
 	NEBULA_SHAPE_BASE_FUNC;
 
 	auto p = Neb::App::Base::globalBase()->use_program(program_);
@@ -201,9 +203,9 @@ void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Window::Base
 	// initialize buffers if not already
 	//	if(!context_[window.get()])
 	{	
-		init_buffer(window, p);
+		init_buffer(context, p);
 	}
-	auto bufs = context_[window.get()];
+	auto bufs = context_[context.get()];
 
 	//checkerror("unknown");
 

@@ -3,12 +3,14 @@
 
 //#include <PxPhysicsAPI.h>
 
+#include <Nebula/Util/typedef.hpp>
+
 namespace math {
 	namespace geo {
 		class vertex {
 			public:
-				glm::vec3	p;
-				glm::vec3	n;
+				vec3	p;
+				vec3	n;
 		};
 		class polygon
 		{

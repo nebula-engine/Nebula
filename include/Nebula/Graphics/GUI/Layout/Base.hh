@@ -27,8 +27,8 @@ namespace Neb {
 						Neb::Graphics::GUI::Layout::Util::Parent_s		getParent();
 
 						/** @brief Main Loop @{ */
-						void						render(double time);
-						void						draw();
+						virtual void					step(Neb::Core::TimeStep const & ts);
+						virtual void					draw(sp::shared_ptr<Neb::Graphics::Context::Base> context);
 						/** @} */
 
 						void						connect();

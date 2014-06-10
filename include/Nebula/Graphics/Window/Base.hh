@@ -42,7 +42,7 @@ namespace Neb {
 					virtual void				release();
 	
 					/** @name Main Loop @{ */
-					void					render(Neb::Core::TimeStep const & ts);
+					void					render();
 					void					step(Neb::Core::TimeStep const & ts);
 					/** @} */
 					void					resize();

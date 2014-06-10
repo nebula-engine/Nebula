@@ -75,7 +75,7 @@ void	Neb::material::material::load()
 	p->get_uniform_scalar("front.emission")->load(raw_.emission_);
 	p->get_uniform_scalar("front.shininess")->load(raw_.shininess_);
 }
-void Neb::material::material::step(double time) {
+void		Neb::material::material::step(Neb::Core::TimeStep const & ts) {
 		
 	//raw_.diffuse_.step(time);
 }

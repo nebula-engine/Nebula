@@ -57,41 +57,22 @@ namespace Neb {
 				virtual void					step(Neb::Core::TimeStep const & ts);
 
 			public:
-				virtual void					create_physics() = 0;
-				virtual void					init_physics() = 0;
-
-				/** @name Stepping @{ */
-				
-
-
-				//virtual void					step_local(double);
-				//virtual void					step_remote(double);
-
-				/** @} */
 				/** @name Render @{ */
-				void						draw(Neb::Graphics::Window::Base_s, mat4);
+				void						draw(sp::shared_ptr<Neb::Graphics::Context::Base>, mat4);
 				/** @} */
-
-				/** @name Accessors @{ */
-				virtual Neb::Actor::Base_s			get_projectile();
 
 				virtual mat4					getPose();
 				virtual mat4					getPoseGlobal();
-				/** @} */
 
 				/** @name Accessors @{ */
 				Neb::Actor::Util::Parent_s			getParent();
 				void						setPose(mat4 pose);
 				/** @} */
 
-				void						notify_foundation_change_pose();
 				void						load_lights(int&, mat4);
 
 
 				/** @todo move to derived class */
-				virtual void					hit();
-				virtual void					damage(float);
-				virtual int					fire();
 				// signal
 				void						connect(Neb::Graphics::Window::Base_s);
 

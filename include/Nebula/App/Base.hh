@@ -31,6 +31,7 @@
 #include <Nebula/Graphics/GUI/Layout/Util/Parent.hh>
 
 #include <Nebula/Shape/Util/Types.hh>
+#include <Nebula/Util/wrapper.hpp>
 
 namespace Neb {
 	namespace App {
@@ -74,12 +75,7 @@ namespace Neb {
 				//void						setWindowMain(Neb::Graphics::Window::Base_w);
 				/** @} */
 				/** @name Serialization @{ */
-				template<class A> void				loadXml(std::string filename, A& a) {
-					std::ifstream ifs;
-					ifs.open(filename, std::ifstream::in);
-					boost::archive::polymorphic_xml_iarchive ar(ifs);
-					ar >> boost::serialization::make_nvp("archive",a);
-				}
+				void						loadXml(std::string filename, neb::std::wrapper& w);
 				/** @} */
 
 				Neb::Graphics::Window::Base_s						get_window(GLFWwindow*);
