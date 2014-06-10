@@ -13,12 +13,18 @@
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/free.hh>
+#include <Nebula/log.hh>
+
 
 void		Neb::init() {
+	
+	neb::log::init();
+	
 	Neb::App::Base::g_app_ = std::make_shared<Neb::App::Base>();
 
 	Neb::App::Base::g_app_->init();
-	
+
+
 	/** @todo impl in PhysX */
 	//Neb::Physics::global()->init();
 }

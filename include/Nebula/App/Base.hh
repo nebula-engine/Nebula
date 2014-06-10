@@ -9,27 +9,20 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
-#include <Nebula/free.hh>
-
-#include <Nebula/Types.hh>
-
 #include <Galaxy-Standard/shared.hpp>
-
-#include <Nebula/App/Util/Flag.hh>
 
 #include <Galaxy-Network/decl.hpp>
 
+#include <Nebula/free.hh>
+#include <Nebula/Types.hh>
+#include <Nebula/App/Util/Flag.hh>
 #include <Nebula/Network/server.hh>
 #include <Nebula/Network/client.hh>
-
 #include <Nebula/Message/Types.hh>
-
 #include <Nebula/Scene/Util/Parent.hh>
-
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Graphics/Window/Util/Parent.hh>
 #include <Nebula/Graphics/GUI/Layout/Util/Parent.hh>
-
 #include <Nebula/Shape/Util/Types.hh>
 #include <Nebula/Util/wrapper.hpp>
 
@@ -43,8 +36,7 @@ namespace Neb {
 			public:
 				typedef std::map< GLFWwindow*, Neb::Graphics::Window::Base_s >			glfwwindow_map_type;
 				friend void Neb::init();
-			private:
-
+			public:
 				static void			static_error_fun(int,char const *);
 				static void			static_window_pos_fun(GLFWwindow*,int,int);
 				static void			static_window_size_fun(GLFWwindow*,int,int);
@@ -79,11 +71,6 @@ namespace Neb {
 				/** @} */
 
 				Neb::Graphics::Window::Base_s						get_window(GLFWwindow*);
-				GLFWwindow*								reg(Neb::Graphics::Window::Base_s);
-
-		
-
-
 
 			private:
 			public:
@@ -93,6 +80,7 @@ namespace Neb {
 					};
 				};
 				void					init();
+				void					init_glew();
 				//Neb::Graphics::Window::Base_w			create_window(int, int, int, int, char const *);
 				//Neb::Scene::Base_w				load_scene_local(Neb::Scene::desc_w);
 				//Neb::Scene::Base_w				load_scene_remote(Neb::Scene::desc_w);

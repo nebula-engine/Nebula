@@ -1,4 +1,4 @@
-PROJECT(Basic)
+PROJECT(Window)
 
 #target_link_libraries(Basic Nebula boost_system boost_serialization Nebula)
 

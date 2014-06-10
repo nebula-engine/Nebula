@@ -15,6 +15,7 @@ include_directories("./Galaxy-Network/include")
 include_directories(${physx_INCLUDE_DIR})
 
 link_directories("./Galaxy-Network/build")
+link_directories("./Galaxy-Standard/build")
 
 ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
 

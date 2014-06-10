@@ -14,22 +14,90 @@
 #include <Nebula/Scene/Util/Types.hh>
 
 #include <Nebula/free.hh>
+#include <Nebula/log.hh>
 #include <Nebula/Actor/Base.hh>
-
+#include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/Context/Base.hh>
 #include <Nebula/Graphics/Light/Base.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Graphics/Window/Util/Parent.hh>
 
 
-Neb::Graphics::Window::Base::Base() {
+Neb::Graphics::Window::Base::Base():
+	x_(0),
+	y_(0),
+	w_(100),
+	h_(100)
+{
 }
-Neb::Graphics::Window::Base::Base(Neb::Graphics::Window::Util::Parent_s parent): parent_(parent) {
+Neb::Graphics::Window::Base::Base(Neb::Graphics::Window::Util::Parent_s parent):
+	parent_(parent),
+	x_(0),
+	y_(0),
+	w_(100),
+	h_(100)
+{
 }
 Neb::Graphics::Window::Base::~Base() {
 }
 void Neb::Graphics::Window::Base::init() {
-	GLUTPP_DEBUG_0_FUNCTION;
+	BOOST_LOG_CHANNEL_SEV(lg, "neb::gfx", debug) << __PRETTY_FUNCTION__;
+
+
+
+
+
+
+
+
+
+	window_ = glfwCreateWindow(
+			w_,
+			h_,
+			title_.c_str(),
+			NULL,
+			NULL);
+
+	if(window_ == NULL) {
+		glfwTerminate();
+		printf("error\n");
+		exit(EXIT_FAILURE);
+	}
+
+
+
+	glfwMakeContextCurrent(window_);
+
+	glfwSetWindowPosCallback(
+			window_,
+			Neb::App::Base::static_window_pos_fun);
+	glfwSetWindowSizeCallback(
+			window_,
+			Neb::App::Base::static_window_size_fun);
+	glfwSetWindowCloseCallback(
+			window_,
+			Neb::App::Base::static_window_close_fun);
+	glfwSetWindowRefreshCallback(
+			window_,
+			Neb::App::Base::static_window_refresh_fun);
+	glfwSetKeyCallback(
+			window_,
+			Neb::App::Base::static_key_fun);
+	glfwSetMouseButtonCallback(
+			window_,
+			Neb::App::Base::static_mouse_button_fun);
+
+
+
+	//if(all(Neb::App::Base::option::SHADERS)) create_programs();
+	//create_programs();
+
+
+
+
+
+
+
 
 	//printf("%s\n",glGetString(GL_SHADING_LANGUAGE_VERSION));
 
@@ -66,16 +134,16 @@ void		Neb::Graphics::Window::Base::render() {
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	glfwMakeContextCurrent(window_);
-	
+
 	/** @todo rendering multiple contexts in a window */
 
 	typedef Neb::Graphics::Context::Util::Parent C;
 
 	C::map_.for_each<0>([] (C::map_type::iterator<0> it) {
-		auto context = sp::dynamic_pointer_cast<Neb::Graphics::Context::Base>(it->ptr_);
-		assert(context);
-		context->render();
-	});
+			auto context = sp::dynamic_pointer_cast<Neb::Graphics::Context::Base>(it->ptr_);
+			assert(context);
+			context->render();
+			});
 
 	glFinish();
 	glfwSwapBuffers(window_);
@@ -89,7 +157,7 @@ void			Neb::Graphics::Window::Base::step(Neb::Core::TimeStep const & ts) {
 		parent_->erase(i_);
 		return;
 	}
-	
+
 	/** @tod wtf is this doing here?? */
 	render();
 }
@@ -117,28 +185,28 @@ void Neb::Graphics::Window::Base::callback_window_close_fun(GLFWwindow* window){
 }
 void Neb::Graphics::Window::Base::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods) {
 	GLUTPP_DEBUG_0_FUNCTION;
-	
+
 	sig_.mouse_button_fun_(button, action, mods);
 }
 void Neb::Graphics::Window::Base::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	GLUTPP_DEBUG_0_FUNCTION;
-	
+
 	sig_.key_fun_(key, scancode, action, mods);
-	
+
 }
 void Neb::Graphics::Window::Base::resize() {
 
-	
+
 	glViewport(0, 0, w_, h_);
-	
+
 	typedef Neb::Graphics::Context::Util::Parent C;
 
 	C::map_.for_each<0>([&] (C::map_type::iterator<0> it) {
-		auto context = sp::dynamic_pointer_cast<Neb::Graphics::Context::Base>(it->ptr_);
-		assert(context);
-		context->resize(w_, h_);
-	});
-	
+			auto context = sp::dynamic_pointer_cast<Neb::Graphics::Context::Base>(it->ptr_);
+			assert(context);
+			context->resize(w_, h_);
+			});
+
 }
 
 

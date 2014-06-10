@@ -53,14 +53,35 @@ void				Neb::App::Base::init() {
 	glfwInit();
 
 	glfwSetErrorCallback(static_error_fun);
+	
 
+	
+	// font
+	//FT_Library ft;
+	if(FT_Init_FreeType(&ft_))
+	{
+		printf("could not find freetype library\n");
+		exit(0);
+	}
 	//NEBULA_DEBUG_0_FUNCTION;
 }
+void				Neb::App::Base::init_glew() {
+	if(!flag_.any(Neb::App::Util::Flag::INIT_GLEW)) {
 
+		GLenum err = glewInit();
+		if (err != GLEW_OK)
+		{
+			printf("GLEW: %s\n", glewGetErrorString(err));
+			exit(EXIT_FAILURE);
+		}
+
+		flag_.set(Neb::App::Util::Flag::INIT_GLEW);
+	}
+}
 Neb::App::Base_s		Neb::App::Base::globalBase() {
-	Neb::App::Base_s shared = std::dynamic_pointer_cast<Neb::App::Base>(g_app_);
-
-	return shared;
+	//Neb::App::Base_s shared = std::dynamic_pointer_cast<Neb::App::Base>(g_app_);
+	assert(g_app_);
+	return g_app_;
 }
 /*
    Neb::Graphics::Window::Base>			Neb::App::Base::create_window(int w, int h, int x, int y, char const * title) {
@@ -154,7 +175,7 @@ void		Neb::App::Base::step(Neb::Core::TimeStep const & ts) {
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	Neb::Scene::Util::Parent::step(ts);
-	
+
 	Neb::Graphics::Window::Util::Parent::step(ts);
 
 
@@ -169,13 +190,13 @@ int			Neb::App::Base::loop() {
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	static Neb::Core::TimeStep ts;
-	
+
 	while(!flag_.any(Neb::App::Util::Flag::E::SHOULD_RELEASE)) {
 		ts.time = glfwGetTime();
 		ts.dt = ts.time - ts.last;
 		ts.last = ts.time;
 		ts.frame++;
-		
+
 		step(ts);
 
 		glfwPollEvents();
@@ -289,58 +310,6 @@ void Neb::App::Base::static_key_fun(GLFWwindow* window, int key, int scancode, i
 
 	w->callback_key_fun(window, key, scancode, action, mods);
 }
-GLFWwindow*		Neb::App::Base::reg(Neb::Graphics::Window::Base_s w) {
-	GLUTPP_DEBUG_0_FUNCTION;
-
-	GLFWwindow* g = glfwCreateWindow(
-			w->w_,
-			w->h_,
-			w->title_.c_str(),
-			NULL,
-			NULL);
-
-	if(g == NULL)
-	{
-		glfwTerminate();
-		printf("error\n");
-		exit(EXIT_FAILURE);
-	}
-
-	w->window_ = g;
-
-
-
-	glfwMakeContextCurrent(g);
-
-	glfwSetWindowPosCallback(g, static_window_pos_fun);
-	glfwSetWindowSizeCallback(g, static_window_size_fun);
-	glfwSetWindowCloseCallback(g, static_window_close_fun);
-	glfwSetWindowRefreshCallback(g, static_window_refresh_fun);
-
-	glfwSetKeyCallback(g, static_key_fun);
-	glfwSetMouseButtonCallback(g, static_mouse_button_fun);
-
-	GLenum err = glewInit();
-	if (err != GLEW_OK)
-	{
-		printf("GLEW: %s\n", glewGetErrorString(err));
-		exit(EXIT_FAILURE);
-	}
-
-	// font
-	//FT_Library ft;
-	if(FT_Init_FreeType(&ft_))
-	{
-		printf("could not find freetype library\n");
-		exit(0);
-	}
-
-	//if(all(Neb::App::Base::option::SHADERS)) create_programs();
-	create_programs();
-
-	return g;
-}
-
 void	Neb::App::Base::create_programs() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
@@ -412,7 +381,7 @@ void	Neb::App::Base::create_programs() {
 		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
 		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
 		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
-		   */
+		 */
 		p->scanUniforms();
 		p->locate();
 
@@ -463,7 +432,7 @@ void	Neb::App::Base::create_programs() {
 		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
 		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
 		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
-		   */
+		 */
 		p->scanUniforms();
 		p->locate();
 

@@ -61,44 +61,49 @@ inline std::ostream& operator<< (std::ostream& strm, severity_level level)
 }
 
 //[ example_tutorial_filtering
-BOOST_LOG_ATTRIBUTE_KEYWORD(line_id, "LineID", unsigned int)
-BOOST_LOG_ATTRIBUTE_KEYWORD(severity, "Severity", severity_level)
-BOOST_LOG_ATTRIBUTE_KEYWORD(tag_attr, "Tag", std::string)
+BOOST_LOG_ATTRIBUTE_KEYWORD(line_id,	"LineID",	unsigned int)
+BOOST_LOG_ATTRIBUTE_KEYWORD(severity,	"Severity",	severity_level)
+BOOST_LOG_ATTRIBUTE_KEYWORD(channel,	"Channel",	std::string)
 
-inline void init() {
-	// Setup the common formatter for all sinks
-	logging::formatter fmt = expr::stream
-		<< std::setw(6) << std::setfill('0') << line_id << std::setfill(' ')
-		<< ": <" << severity << ">\t"
-		<< expr::if_(expr::has_attr(tag_attr))
-		[
-		expr::stream << "[" << tag_attr << "] "
-		]
-		<< expr::smessage;
+namespace neb {
+	namespace log {
+		inline void init() {
+			// Setup the common formatter for all sinks
+			logging::formatter fmt = expr::stream
+				<< ::std::setw(6) << ::std::setfill('0') << line_id << std::setfill(' ')
+				<< ": <" << severity << ">\t"
+				<< expr::if_(expr::has_attr(tag_attr))
+				[
+				expr::stream << "[" << tag_attr << "] "
+				]
+				<< expr::smessage;
 
-	// Initialize sinks
-	typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
-	boost::shared_ptr< text_sink > sink = boost::make_shared< text_sink >();
+			// Initialize sinks
+			typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
+			boost::shared_ptr< text_sink > sink = boost::make_shared< text_sink >();
 
-	sink->locked_backend()->add_stream(boost::make_shared< std::ofstream >("full.log"));
+			sink->locked_backend()->add_stream(boost::make_shared< std::ofstream >("full.log"));
 
-	sink->set_formatter(fmt);
+			sink->set_formatter(fmt);
 
-	logging::core::get()->add_sink(sink);
+			logging::core::get()->add_sink(sink);
 
-	sink = boost::make_shared< text_sink >();
+			sink = boost::make_shared< text_sink >();
 
-	sink->locked_backend()->add_stream(boost::make_shared< std::ofstream >("important.log"));
+			sink->locked_backend()->add_stream(boost::make_shared< std::ofstream >("important.log"));
 
-	sink->set_formatter(fmt);
+			sink->set_formatter(fmt);
 
-	sink->set_filter(severity >= warning || (expr::has_attr(tag_attr) && tag_attr == "IMPORTANT_MESSAGE"));
+			sink->set_filter(severity >= warning || (expr::has_attr(tag_attr) && tag_attr == "IMPORTANT_MESSAGE"));
 
-	logging::core::get()->add_sink(sink);
+			logging::core::get()->add_sink(sink);
 
-	// Add attributes
-	logging::add_common_attributes();
+			// Add attributes
+			logging::add_common_attributes();
+		}
+	}
 }
+
 //]
 
 #if 0

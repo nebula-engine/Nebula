@@ -240,7 +240,7 @@ mat4		Neb::Graphics::Camera::View::Free::view() {
 	
 	quat rot( yaw_, vec3(0,1,0));
 
-	rot *= quat( pitch_ , vec3(1,0,0) );
+	rot = rot * quat( pitch_ , vec3(1,0,0) );
 	
 	up = rot * up;
 	look = rot * look;

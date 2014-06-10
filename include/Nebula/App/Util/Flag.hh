@@ -8,6 +8,7 @@ namespace Neb {
 		namespace Util {
 			DEFINE_FLAG(Flag,
 					((SHOULD_RELEASE)	(1 << 0))
+					((INIT_GLEW)		(1 << 1))
 				   )
 		}
 	}
