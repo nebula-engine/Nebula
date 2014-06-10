@@ -30,8 +30,10 @@
 namespace Neb {
 	namespace Scene {
 		class Local: public Neb::Scene::Base {
-			virtual void			step(Neb::Core::TimeStep const & ts);
-			virtual void			send_actor_update();
+			public:
+				Local(sp::shared_ptr<Neb::Scene::Util::Parent> parent);
+				virtual void			step(Neb::Core::TimeStep const & ts);
+				virtual void			send_actor_update();
 		};
 	}
 }

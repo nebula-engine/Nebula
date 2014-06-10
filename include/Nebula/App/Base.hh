@@ -108,7 +108,7 @@ namespace Neb {
 				void					transmit_scenes(Neb::Network::Communicating_s);
 				/** @} */
 			
-			private:
+			public:
 				static sp::shared_ptr<Neb::App::Base>				g_app_;
 				// network
 				/** @todo make derived App classes for Server and Client??? */

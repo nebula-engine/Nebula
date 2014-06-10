@@ -25,8 +25,7 @@ void Neb::Graphics::Context::Base::init() {
 	//camera_->init(shared_from_this());
 }
 void Neb::Graphics::Context::Base::resize(int w, int h) {
-	//camera_->w_ = w;
-	//camera_->h_ = h;
+	viewport_.resize(w,h);
 }
 void		Neb::Graphics::Context::Base::step(Neb::Core::TimeStep const & ts) {
 
@@ -42,7 +41,6 @@ void		Neb::Graphics::Context::Base::render() {
 	
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 	
-	assert(drawable_);
 	assert(proj_);
 	assert(view_);
 	
@@ -51,8 +49,9 @@ void		Neb::Graphics::Context::Base::render() {
 	proj_->load();
 	view_->load();
 	
-	drawable_->draw(self);
-	
+	if(drawable_) {
+		drawable_->draw(self);
+	}
 }		
 
 

@@ -9,16 +9,18 @@
 #include <GLFW/glfw3.h>
 //#include <GL/gl.h>
 
+#include <Galaxy-Log/log.hpp>
 
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/free.hh>
-#include <Nebula/log.hh>
 
 
 void		Neb::init() {
-	
-	neb::log::init();
+
+	gal::log::min_severity["neb"] = debug;
+	gal::log::min_severity["neb gfx"] = debug;	
+	gal::log::init();
 	
 	Neb::App::Base::g_app_ = std::make_shared<Neb::App::Base>();
 

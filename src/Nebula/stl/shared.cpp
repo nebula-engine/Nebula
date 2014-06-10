@@ -3,6 +3,7 @@
 neb::std::shared::shared() {
 }
 void					neb::std::shared::init() {
+	gal::std::shared::init();
 }
 void					neb::std::shared::release() {
 }

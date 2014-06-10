@@ -11,10 +11,11 @@
 //#include <GL/glew.h>
 //#include <GL/glut.h>
 
+#include <Galaxy-Log/log.hpp>
+
 #include <Nebula/Scene/Util/Types.hh>
 
 #include <Nebula/free.hh>
-#include <Nebula/log.hh>
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/Context/Base.hh>
@@ -41,16 +42,16 @@ Neb::Graphics::Window::Base::Base(Neb::Graphics::Window::Util::Parent_s parent):
 Neb::Graphics::Window::Base::~Base() {
 }
 void Neb::Graphics::Window::Base::init() {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb::gfx", debug) << __PRETTY_FUNCTION__;
+	neb::std::shared::init();
+	
+	BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << __PRETTY_FUNCTION__;
 
+	auto app = Neb::App::Base::globalBase();
+	assert(app);
 
-
-
-
-
-
-
-
+	auto self = sp::dynamic_pointer_cast<Neb::Graphics::Window::Base>(shared_from_this());
+	
+	// create window
 	window_ = glfwCreateWindow(
 			w_,
 			h_,
@@ -87,13 +88,15 @@ void Neb::Graphics::Window::Base::init() {
 			window_,
 			Neb::App::Base::static_mouse_button_fun);
 
-
-
+	// add window to app's window map
+	app->windows_glfw_[window_] = self;
+	
+	
 	//if(all(Neb::App::Base::option::SHADERS)) create_programs();
-	//create_programs();
+	app->init_glew();
+	app->create_programs();
 
-
-
+	
 
 
 
@@ -122,8 +125,6 @@ void Neb::Graphics::Window::Base::init() {
 	glEnable(GL_NORMALIZE);
 
 
-	//renderable_.reset(new Neb::renderable(shared_from_this()));
-	//renderable_->init(shared_from_this());
 
 	checkerror("unknown");
 }
@@ -131,7 +132,6 @@ void		Neb::Graphics::Window::Base::release() {
 	glfwDestroyWindow(window_);
 }
 void		Neb::Graphics::Window::Base::render() {
-	GLUTPP_DEBUG_1_FUNCTION;
 
 	glfwMakeContextCurrent(window_);
 

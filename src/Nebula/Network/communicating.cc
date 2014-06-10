@@ -1,7 +1,8 @@
 #include <Galaxy-Network/message.hpp>
 
+#include <Galaxy-Log/log.hpp>
 
-#include <Nebula/log.hh>
+
 #include <Nebula/config.hh>
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/App/Base.hh>

@@ -12,7 +12,8 @@
 
 #include <Galaxy-Network/message.hpp>
 
-#include <Nebula/log.hh>
+#include <Galaxy-Log/log.hpp>
+
 #include <Nebula/config.hh>
 
 
@@ -358,30 +359,6 @@ void	Neb::App::Base::create_programs() {
 
 		//p->add_attrib(Neb::attrib_name::e::TEXCOOR, "texcoor");
 
-		/*
-		   p->add_uniform(Neb::uniform_name::e::LIGHT_COUNT,"light_count");
-		   p->add_uniform(Neb::uniform_name::e::MODEL,"model");
-		   p->add_uniform(Neb::uniform_name::e::VIEW,"view");
-		   p->add_uniform(Neb::uniform_name::e::PROJ,"proj");
-
-		   p->add_uniform(Neb::uniform_name::e::FRONT_AMBIENT,"front.ambient");
-		   p->add_uniform(Neb::uniform_name::e::FRONT_DIFFUSE,"front.diffuse");
-		   p->add_uniform(Neb::uniform_name::e::FRONT_SPECULAR,"front.specular");
-		   p->add_uniform(Neb::uniform_name::e::FRONT_EMISSION,"front.emission");
-		   p->add_uniform(Neb::uniform_name::e::FRONT_SHININESS,"front.shininess");
-
-		   p->add_uniform(Neb::uniform_name::e::LIGHT_POSITION, "lights", "position");
-		   p->add_uniform(Neb::uniform_name::e::LIGHT_AMBIENT, "lights","ambient");
-		   p->add_uniform(Neb::uniform_name::e::LIGHT_DIFFUSE, "lights","diffuse");
-		   p->add_uniform(Neb::uniform_name::e::LIGHT_SPECULAR, "lights","specular");
-		   p->add_uniform(Neb::uniform_name::e::LIGHT_SPOT_DIRECTION, "lights","spot_direction");
-		   p->add_uniform(Neb::uniform_name::e::LIGHT_SPOT_CUTOFF, "lights","spot_cutoff");
-		   p->add_uniform(Neb::uniform_name::e::LIGHT_SPOT_EXPONENT, "lights","spot_exponent");
-		   p->add_uniform(Neb::uniform_name::e::LIGHT_SPOT_LIGHT_COS_CUTOFF, "lights","spot_light_cos_cutoff");
-		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_CONST, "lights","atten_const");
-		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_LINEAR, "lights","atten_linear");
-		   p->add_uniform(Neb::uniform_name::e::LIGHT_ATTEN_QUAD, "lights","atten_quad");
-		 */
 		p->scanUniforms();
 		p->locate();
 
@@ -478,7 +455,7 @@ void		Neb::App::Base::sendServer(sp::shared_ptr< gal::net::omessage > msg)  {
 	if(server_) {
 		server_->write(msg);
 	} else {
-		BOOST_LOG_SEV(lg, debug) << "no server";
+		BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << "no server";
 	}
 }
 void		Neb::App::Base::sendClient(sp::shared_ptr< gal::net::omessage > msg)  {
@@ -487,7 +464,7 @@ void		Neb::App::Base::sendClient(sp::shared_ptr< gal::net::omessage > msg)  {
 	if(client_) {
 		client_->write(msg);
 	} else {
-		BOOST_LOG_SEV(lg, debug) << "no client";
+		BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << "no client";
 	}
 }
 void		Neb::App::Base::sendClient(sp::shared_ptr< Neb::Message::OBase > message) {
