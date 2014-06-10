@@ -65,8 +65,15 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(line_id,	"LineID",	unsigned int)
 BOOST_LOG_ATTRIBUTE_KEYWORD(severity,	"Severity",	severity_level)
 BOOST_LOG_ATTRIBUTE_KEYWORD(channel,	"Channel",	std::string)
 
+
+
 namespace neb {
 	namespace log {
+
+		typedef expr::channel_severity_filter_actor< std::string, severity_level > min_severity_filter;
+		min_severity_filter min_severity = expr::channel_severity_filter(channel, severity);
+
+
 		inline void init() {
 			// Setup the common formatter for all sinks
 			logging::formatter fmt = expr::stream
@@ -100,6 +107,25 @@ namespace neb {
 
 			// Add attributes
 			logging::add_common_attributes();
+
+
+
+
+
+			logging::add_console_log
+				(
+				 std::clog,
+				 keywords::filter = min_severity || severity >= critical,
+				 keywords::format =
+				 (
+				  expr::stream
+				  << line_id
+				  << ": <" << severity
+				  << "> [" << channel << "] "
+				  << expr::smessage
+				 )
+				);
+
 		}
 	}
 }
