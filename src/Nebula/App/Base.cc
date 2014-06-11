@@ -433,8 +433,9 @@ void		Neb::App::Base::command(sp::shared_ptr<Neb::Graphics::GUI::Object::termina
 	// a way out
 	auto cmd_exit = sp::make_shared<neb::util::command>();
 
-	cmd_exit->func_ = [] (sp::shared_ptr<Neb::Graphics::GUI::Object::terminal> term, bpo::variables_map vm) {
-		Neb::App::Base::globalBase()->flag_.set(Neb::App::Util::Flag::SHOULD_RELEASE);
+	cmd_exit->func_ = [&] (sp::shared_ptr<Neb::Graphics::GUI::Object::terminal> term, bpo::variables_map vm) {
+		sp::shared_ptr<Neb::App::Base> app = Neb::App::Base::globalBase();
+		app->flag_.set(Neb::App::Util::Flag::SHOULD_RELEASE);
 	};
 
 	m["help"] = help;

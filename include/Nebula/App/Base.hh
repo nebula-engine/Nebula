@@ -89,7 +89,7 @@ namespace Neb {
 				mat4						getPoseGlobal();
 
 				/** @name Accessors @{ */
-				static Neb::App::Base_s				globalBase();
+				static sp::shared_ptr<Neb::App::Base>		globalBase();
 				//Neb::Graphics::Window::Base_s			getWindowMain();
 				//void						setWindowMain(Neb::Graphics::Window::Base_w);
 				/** @} */
