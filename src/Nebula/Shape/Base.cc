@@ -54,7 +54,8 @@ void					Neb::Shape::Base::init() {
 
 	Neb::Shape::Util::Parent::init();
 	Neb::Light::Util::Parent::init();
-
+	
+	createMesh();
 }
 void					Neb::Shape::Base::release() {
 	NEBULA_SHAPE_BASE_FUNC;
@@ -195,6 +196,8 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Context::Base> context, mat4 space) {
 	NEBULA_SHAPE_BASE_FUNC;
 	
+	/** @todo could switching programs here leave view and proj unset? */
+
 	auto p = Neb::App::Base::globalBase()->use_program(program_);
 
 	// initialize buffers if not already

@@ -15,6 +15,7 @@
 //#include <Nebula/Graphics/Window/Base.hh>
 //#include <Nebula/Scene/Base.hh>
 #include <Nebula/Graphics/Camera/Projection/Perspective.hh>
+#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 
 Neb::Graphics::Camera::Projection::Base::Base(Neb::Graphics::Context::Base_s parent):
 	parent_(parent)

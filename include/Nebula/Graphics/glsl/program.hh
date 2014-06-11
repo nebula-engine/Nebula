@@ -11,8 +11,8 @@
 #include <Nebula/Types.hh>
 #include <Nebula/Graphics/Types.hh>
 
-#include <Nebula/Graphics/glsl/attrib.hh>
-#include <Nebula/Graphics/glsl/Uniform/uniform.hh>
+//#include <Nebula/Graphics/glsl/attrib.hh>
+//#include <Nebula/Graphics/glsl/Uniform/uniform.hh>
 
 namespace Neb {
 	namespace glsl {

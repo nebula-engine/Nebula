@@ -102,12 +102,6 @@ namespace Neb {
 				/** @brief Parent */
 				Neb::Shape::Util::Parent_w			parent_;
 		};
-
-		class Empty: public Neb::Shape::Base {
-			virtual void		createMesh();
-
-			virtual void		draw_elements(Neb::Graphics::Window::Base_s, mat4 space) {}
-		};
 	}
 }
 

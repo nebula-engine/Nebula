@@ -22,7 +22,7 @@ link_directories("./Galaxy-Log/Debug")
 ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
 
 # custom include extensions
-set(INCLUDE_EXTENSIONS obj)
+set(include_extensions obj)
 
 SET(GRU_VERSION 0.1.1)
 

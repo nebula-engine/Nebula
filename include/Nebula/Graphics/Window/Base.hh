@@ -18,6 +18,7 @@
 #include <Nebula/Graphics/glsl/program.hh>
 #include <Nebula/Graphics/glsl/shader.hh>
 #include <Nebula/Graphics/GUI/Layout/Base.hh>
+#include <Nebula/Graphics/Window/__base.hpp>
 #include <Nebula/Graphics/Window/Util/Flag.hh>
 #include <Nebula/Graphics/Window/Util/Cast.hh>
 
@@ -29,6 +30,7 @@ namespace Neb {
 	namespace Graphics {
 		namespace Window {
 			class Base:
+				virtual public Neb::Graphics::Window::__base,
 				virtual public Neb::Graphics::Context::Util::Parent,
 				virtual public Neb::Graphics::Window::Util::Cast
 			{

@@ -13,6 +13,9 @@
 
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
+#include <Nebula/Graphics/glsl/attrib.hh>
+
 #include <Nebula/free.hh>
 
 

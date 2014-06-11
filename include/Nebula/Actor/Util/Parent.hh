@@ -12,7 +12,7 @@
 
 #include <Nebula/Scene/Util/Cast.hh>
 
-//#include <Nebula/Actor/Base.hh>
+#include <Nebula/Actor/__base.hpp>
 #include <Nebula/Actor/Util/Types.hh>
 #include <Nebula/Actor/Util/Cast.hh>
 
@@ -28,7 +28,7 @@ namespace Neb {
 			 * abstract class for parent of an @Actor
 			 */
 			class Parent:
-				public Neb::Util::parent<Neb::Actor::Base>,
+				public Neb::Util::parent<neb::actor::__base>,
 				virtual public Neb::Core::Pose,
 				virtual public Neb::Scene::Util::Cast,
 				virtual public Neb::Actor::Util::Cast

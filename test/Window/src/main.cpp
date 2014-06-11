@@ -4,8 +4,10 @@
 #include <Nebula/Util/wrapper.hpp>
 #include <Nebula/Graphics/Context/Window.hpp>
 #include <Nebula/Graphics/GUI/Object/terminal.hh>
+#include <Nebula/Graphics/Light/Spot.hh>
 #include <Nebula/Scene/Local.hh>
 #include <Nebula/Shape/Box.hh>
+#include <Nebula/Shape/empty.hpp>
 #include <Nebula/Actor/RigidDynamic/Local.hh>
 
 
@@ -59,6 +61,29 @@ sp::shared_ptr<Neb::Actor::RigidDynamic::Local>		create_actor(sp::shared_ptr<Neb
 	
 	return actor;	
 }
+sp::shared_ptr<Neb::Actor::RigidDynamic::Local>		create_actor2(sp::shared_ptr<Neb::Scene::Local> scene) {
+	auto actor = sp::make_shared<Neb::Actor::RigidDynamic::Local>(scene);
+	
+	scene->insert(actor);
+	
+	actor->init();
+	
+	// shape	
+	auto shape = sp::make_shared<Neb::Shape::Empty>(actor);
+	
+	actor->Neb::Shape::Util::Parent::insert(shape);
+	
+	shape->init();
+	
+	// light
+	auto light = sp::make_shared<Neb::Light::Point>(shape);
+	
+	shape->Neb::Light::Util::Parent::insert(light);
+	
+	light->init();
+
+	return actor;	
+}
 sp::shared_ptr<Neb::Scene::Local>			create_scene(
 		sp::shared_ptr<Neb::Graphics::Context::Window> context) {
 	
@@ -70,6 +95,7 @@ sp::shared_ptr<Neb::Scene::Local>			create_scene(
 
 	// actors
 	auto actor = create_actor(scene);
+	auto actor2 = create_actor2(scene);
 
 
 

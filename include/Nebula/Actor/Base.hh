@@ -25,7 +25,7 @@
 
 #include <Nebula/Shape/Base.hh>
 #include <Nebula/Shape/Util/Parent.hh>
-
+#include <Nebula/Actor/__base.hpp>
 #include <Nebula/Actor/Util/Types.hh>
 #include <Nebula/Actor/Util/Flag.hh>
 #include <Nebula/Actor/Util/Parent.hh>
@@ -42,7 +42,7 @@ namespace Neb {
 	namespace Actor {
 		/** @brief %Base */
 		class Base:
-			virtual public gal::std::shared,
+			virtual public neb::actor::__base,
 			virtual public Neb::Actor::Util::Parent,
 			virtual public Neb::Shape::Util::Parent
 		{

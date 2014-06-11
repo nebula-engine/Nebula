@@ -37,7 +37,7 @@ namespace Neb {
 				
 				virtual void			release();
 				virtual void			cleanup();
-				void				step(double const & time, double const & dt);
+				void				step(Neb::Core::TimeStep const & ts);
 				void				load(int, glm::mat4x4);
 				
 				void				load_shadow();
@@ -62,16 +62,12 @@ namespace Neb {
 					ar & boost::serialization::make_nvp("atten_quad",atten_quad_);
 				}
 			public:
-				virtual void		load(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
+				virtual void				serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
 					serializeTemplate(ar, version);
-					loadLightBase(ar, version);
 				}
-				virtual void		save(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
+				virtual void				serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
 					serializeTemplate(ar, version);
-					saveLightBase(ar, version);
 				}
-				virtual void		loadLightBase(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) = 0;
-				virtual void		saveLightBase(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) = 0;
 			public:
 				Neb::Light::Util::Parent_s	parent_;
 
