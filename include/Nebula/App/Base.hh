@@ -30,15 +30,18 @@
 
 namespace Neb {
 	namespace App {
-		class Base:
-			virtual public Neb::Graphics::Window::Util::Parent,
-			virtual public Neb::Graphics::GUI::Layout::Util::Parent,
-			virtual public Neb::Scene::Util::Parent
-		{
+		class __base {
+			public:
+			
+		};
+		/** @brief gfx
+		 * 
+		 * graphics and window handling
+		 */
+		class __gfx: virtual public Neb::App::__base {
 			public:
 				typedef std::map< GLFWwindow*, Neb::Graphics::Window::Base_s >			glfwwindow_map_type;
-				friend void Neb::init();
-			public:
+
 				static void			static_error_fun(int,char const *);
 				static void			static_window_pos_fun(GLFWwindow*,int,int);
 				static void			static_window_size_fun(GLFWwindow*,int,int);
@@ -49,6 +52,28 @@ namespace Neb {
 				//static void static_window_buffer_size_fun(GLFWwindow*,int,int);
 				static void			static_mouse_button_fun(GLFWwindow*,int,int,int);
 				static void			static_key_fun(GLFWwindow*,int,int,int,int);
+			public:
+
+				//GLFWwindow*								currentIdleWindow_;
+				glfwwindow_map_type							windows_glfw_;
+				
+				std::map<int, std::shared_ptr<Neb::glsl::program> >			programs_;
+				std::shared_ptr<Neb::glsl::program>					current_;
+
+				FT_Library								ft_;
+		};
+		/** @brief Base
+		 *
+		 * final implementation
+		 */
+		class Base:
+			virtual public Neb::App::__gfx,
+			virtual public Neb::Graphics::Window::Util::Parent,
+			virtual public Neb::Graphics::GUI::Layout::Util::Parent,
+			virtual public Neb::Scene::Util::Parent
+		{
+			public:
+								friend void Neb::init();
 			public:
 				Base();
 				virtual ~Base();
@@ -76,16 +101,8 @@ namespace Neb {
 
 			private:
 			public:
-				struct flag {
-					enum e {
-						SHOULD_RELEASE = 1 << 0,			
-					};
-				};
 				void					init();
 				void					init_glew();
-				//Neb::Graphics::Window::Base_w			create_window(int, int, int, int, char const *);
-				//Neb::Scene::Base_w				load_scene_local(Neb::Scene::desc_w);
-				//Neb::Scene::Base_w				load_scene_remote(Neb::Scene::desc_w);
 				void					load_layout(int,char const *);
 				void					step(Neb::Core::TimeStep const & ts);
 				int					loop();
@@ -109,7 +126,7 @@ namespace Neb {
 
 				void					transmit_scenes(Neb::Network::Communicating_s);
 				/** @} */
-			
+
 			public:
 				static sp::shared_ptr<Neb::App::Base>				g_app_;
 				// network
@@ -117,20 +134,15 @@ namespace Neb {
 				sp::shared_ptr<Neb::Network::Server>				server_;
 				sp::shared_ptr<Neb::Network::Client>				client_;
 				Neb::App::Util::Flag						flag_;
-				//GLFWwindow*							currentIdleWindow_;
-				glfwwindow_map_type						windows_glfw_;
 				static Neb::Graphics::Window::Base_w				window_main_;
-				std::map<int, std::shared_ptr<Neb::glsl::program> >		programs_;
-				std::shared_ptr<Neb::glsl::program>				current_;
 
 			public:
 				/** @name Font @{ */
-				FT_Library								ft_;
 				/** @} */
 				/** @name Boost Asio @{ */
 				boost::asio::io_service							ios_;
 				/** @} */
-			
+
 
 		};
 	}

@@ -21,6 +21,8 @@
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Graphics/Types.hh>
 
+/** @file Base
+ */
 
 Neb::Actor::Base::Base() {
 }
