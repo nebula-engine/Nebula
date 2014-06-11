@@ -18,9 +18,6 @@ Neb::Shape::Base::Base(Neb::Shape::Util::Parent_s parent):
 	assert(parent);
 }
 Neb::Shape::Base::~Base() {}
-Neb::Shape::Util::Parent_s		Neb::Shape::Base::getParent() {
-	return parent_.lock();
-}
 mat4					Neb::Shape::Base::getPoseGlobal() {
 	NEBULA_SHAPE_BASE_FUNC;
 	
@@ -37,7 +34,7 @@ mat4					Neb::Shape::Base::getPoseGlobal() {
 mat4					Neb::Shape::Base::getPose() {
 	return pose_;
 }
-void		Neb::Shape::Base::init() {
+void					Neb::Shape::Base::init() {
 	NEBULA_SHAPE_BASE_FUNC
 	
 	auto me = std::dynamic_pointer_cast<Neb::Shape::Base>(shared_from_this());
@@ -59,14 +56,14 @@ void		Neb::Shape::Base::init() {
 	Neb::Light::Util::Parent::init();
 
 }
-void Neb::Shape::Base::release() {
+void					Neb::Shape::Base::release() {
 	NEBULA_SHAPE_BASE_FUNC;
 
 	//Neb::Util::parent<Neb::Shape::Base>::release();
 	Neb::Shape::Util::Parent::release();
 	Neb::Light::Util::Parent::release();
 }
-void		Neb::Shape::Base::step(Neb::Core::TimeStep const & ts) {
+void					Neb::Shape::Base::step(Neb::Core::TimeStep const & ts) {
 
 	Neb::Shape::Util::Parent::step(ts);
 	
@@ -74,7 +71,7 @@ void		Neb::Shape::Base::step(Neb::Core::TimeStep const & ts) {
 
 	material_front_.step(ts);
 }
-void Neb::Shape::Base::load_lights(int& i, mat4 space) {
+void					Neb::Shape::Base::load_lights(int& i, mat4 space) {
 	NEBULA_SHAPE_BASE_FUNC;
 
 	space = space * pose_;
@@ -90,12 +87,12 @@ void Neb::Shape::Base::load_lights(int& i, mat4 space) {
 	});
 
 }
-void		Neb::Shape::Base::draw(Neb::Graphics::Context::Base_s context, mat4 space) {
+void					Neb::Shape::Base::draw(Neb::Graphics::Context::Base_s context, mat4 space) {
 	space = space * pose_;
 
 	draw_elements(context, space);
 }
-void		Neb::Shape::Base::model_load(mat4 space) {
+void					Neb::Shape::Base::model_load(mat4 space) {
 
 	auto p = Neb::App::Base::globalBase()->current_program();
 
@@ -103,7 +100,7 @@ void		Neb::Shape::Base::model_load(mat4 space) {
 
 	p->get_uniform_scalar("model")->load(space);
 }
-void		Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, std::shared_ptr<Neb::glsl::program> p) {
+void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, std::shared_ptr<Neb::glsl::program> p) {
 	NEBULA_SHAPE_BASE_FUNC;
 
 	glEnable(GL_TEXTURE_2D);
@@ -197,7 +194,7 @@ void		Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, std:
 }
 void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Context::Base> context, mat4 space) {
 	NEBULA_SHAPE_BASE_FUNC;
-
+	
 	auto p = Neb::App::Base::globalBase()->use_program(program_);
 
 	// initialize buffers if not already

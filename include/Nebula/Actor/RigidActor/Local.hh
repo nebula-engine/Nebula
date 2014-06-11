@@ -13,8 +13,6 @@ namespace Neb {
 			{
 				public:
 					virtual void				step(Neb::Core::TimeStep const & ts);
-
-					virtual Neb::Actor::Base_s		get_projective();
 			};
 		}
 	}

@@ -40,7 +40,7 @@ namespace Neb {
 			 * @note inheritance of Neb::Util::parent is non-virtual
 			 */
 			class Parent:
-				public Neb::Util::parent,
+				virtual public Neb::Util::parent<Neb::Shape::Base>,
 				virtual public Neb::Actor::Util::Cast,
 				virtual public Neb::Shape::Util::Cast,
 				virtual public Neb::Core::Pose

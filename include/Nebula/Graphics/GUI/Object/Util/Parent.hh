@@ -10,7 +10,7 @@ namespace Neb {
 			namespace Object {
 				namespace Util {
 					class Parent:
-						virtual public Neb::Util::parent
+						virtual public Neb::Util::parent<Neb::Graphics::GUI::Object::Base>
 					{
 
 					};

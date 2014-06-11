@@ -49,7 +49,7 @@ namespace Neb {
 			public:
 
 				Base();
-				Base(Neb::Actor::Util::Parent_s);
+				Base(sp::shared_ptr<Neb::Actor::Util::Parent> parent);
 				virtual ~Base();
 			public:
 				virtual void					init();

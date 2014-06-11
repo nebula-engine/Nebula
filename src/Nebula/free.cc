@@ -114,7 +114,8 @@ void		Neb::draw_text(float x, float y, float sx, float sy, Neb::Color::color<flo
 
 	FT_Library ft = Neb::App::Base::globalBase()->ft_;
 
-	char const fontfile[] = "/usr/share/fonts/msttcorefonts/georgia.ttf";
+	char const fontfile[] = "/usr/share/fonts/truetype/msttcorefonts/georgia.ttf";
+	//char const fontfile[] = "/usr/share/fonts/msttcorefonts/georgia.ttf";
 //	char const fontfile[] = "/usr/share/fonts/truetype/freefont/FreeSans.ttf";
 	//char const fontfile[] = "/usr/share/fonts/truetype/msttcorefonts/arial.ttf";
 	//char const fontfile[] = "FreeSans.ttf";

@@ -9,7 +9,7 @@ namespace Neb {
 	namespace Light {
 		namespace Util {
 			class Parent:
-				public Neb::Util::parent,
+				virtual public Neb::Util::parent<Neb::Light::Base>,
 				virtual public Neb::Shape::Util::Cast,
 				virtual public Neb::Core::Pose
 			{

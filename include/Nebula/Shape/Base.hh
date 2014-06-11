@@ -38,15 +38,16 @@ namespace Neb {
 		typedef std::shared_ptr<Neb::Shape::buffer>			buffer_s;
 
 		class Base:
-			virtual public Neb::Shape::Util::Parent,
-			virtual public Neb::Light::Util::Parent
+			virtual public neb::std::shared,
+			public Neb::Shape::Util::Parent,
+			public Neb::Light::Util::Parent
 		{
 			public:
 				typedef std::map<Neb::Graphics::Context::Base*,buffer_s>			map_t;
 
 				Base();
-				Base(Neb::Shape::Util::Parent_s parent);
-				~Base();
+				Base(sp::shared_ptr<Neb::Shape::Util::Parent> parent);
+				virtual ~Base();
 
 				void			init();
 				void			release();
@@ -55,28 +56,18 @@ namespace Neb {
 				/** @name Accessors @{ */
 				mat4						getPose();
 				mat4						getPoseGlobal();
-				Neb::Shape::Util::Parent_s			getParent();
 				/** @} */
 
 
-				virtual void		createMesh() = 0;
+				virtual void					createMesh() = 0;
 
 
 				/** @name Rendering @{ */
-				void			load_lights(int& i, mat4 space);
-
-				void			draw(Neb::Graphics::Context::Base_s, mat4 space);
-
-				void			model_load(mat4 space);
-				void			init_buffer(Neb::Graphics::Context::Base_s, std::shared_ptr<Neb::glsl::program> p);
-
-				virtual void		draw_elements(Neb::Graphics::Context::Base_s, mat4 space);
-				/** @} */
-				/** @name Index
-				 * @{
-				 */
-				void		i(int ni);
-				int		i();
+				void						load_lights(int& i, mat4 space);
+				void						model_load(mat4 space);
+				void						init_buffer(Neb::Graphics::Context::Base_s, std::shared_ptr<Neb::glsl::program> p);
+				void						draw(Neb::Graphics::Context::Base_s, mat4 space);
+				virtual void					draw_elements(Neb::Graphics::Context::Base_s, mat4 space);
 				/** @} */
 			public:
 				template<class Archive>	void	serialize(Archive & ar, unsigned int const & version) {

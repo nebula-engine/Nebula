@@ -7,6 +7,8 @@ namespace Neb {
 	namespace Shape {
 		class Box: public Neb::Shape::Base {
 			public:
+				Box(sp::shared_ptr<Neb::Shape::Util::Parent> parent);
+
 				virtual void			createMesh();
 		};
 	}

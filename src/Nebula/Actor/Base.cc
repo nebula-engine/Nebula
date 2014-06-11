@@ -66,17 +66,26 @@ void		Neb::Actor::Base::load_lights(int& i, mat4 space) {
 	typedef Neb::Actor::Util::Parent A;
 	typedef Neb::Shape::Util::Parent S;
 
-	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-			auto actor = sp::dynamic_pointer_cast<Neb::Actor::Base>(it->ptr_);
-			assert(actor);
-			actor->load_lights(i, space);
-			});
+	auto lambda_a = [&] (A::map_type::iterator<0> it) {
+		
+		auto actor = sp::dynamic_pointer_cast<Neb::Actor::Base>(it->ptr_);
+		if(!actor) {
+			std::cout << "ptr   = " << it->ptr_ << " type= " << typeid(*it->ptr_).name() << std::endl;
+			std::cout << "actor = " << actor << std::endl;
+			abort();
+		}
+		actor->load_lights(i, space);
+	};
 
-	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
-			auto shape = sp::dynamic_pointer_cast<Neb::Shape::Base>(it->ptr_);
-			assert(shape);
-			shape->load_lights(i, space);
-			});
+	auto lambda_s = [&]  (S::map_type::iterator<0> it) {
+		auto shape = sp::dynamic_pointer_cast<Neb::Shape::Base>(it->ptr_);
+		assert(shape);
+		shape->load_lights(i, space);
+	};
+	
+	A::map_.for_each<0>(lambda_a);
+	
+	S::map_.for_each<0>(lambda_s);
 }
 void		Neb::Actor::Base::draw(Neb::Graphics::Context::Base_s context, mat4 space) {
 	NEBULA_ACTOR_BASE_FUNC;
@@ -121,7 +130,7 @@ void		Neb::Actor::Base::release() {
 }
 void		Neb::Actor::Base::step(Neb::Core::TimeStep const & ts) {
 	NEBULA_ACTOR_BASE_FUNC;
-	
+
 	typedef Neb::Actor::Util::Parent A;
 	typedef Neb::Shape::Util::Parent S;
 

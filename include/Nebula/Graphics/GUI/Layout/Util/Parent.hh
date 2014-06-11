@@ -10,7 +10,7 @@ namespace Neb {
 		namespace GUI {
 			namespace Layout {
 				namespace Util {
-					class Parent: public Neb::Util::parent {
+					class Parent: public Neb::Util::parent<Neb::Graphics::GUI::Layout::Base> {
 						public:
 					};
 				}

@@ -6,13 +6,14 @@
 #include <Nebula/Core/Pose.hh>
 
 #include <Nebula/Scene/Util/Types.hh>
+#include <Nebula/Scene/Base.hh>
 #include <Nebula/Util/parent.hpp>
 
 namespace Neb {
 	namespace Scene {
 		namespace Util {
 			class Parent:
-				public Neb::Util::parent,
+				virtual public Neb::Util::parent<Neb::Scene::Base>,
 				virtual public Neb::Core::Pose
 			{
 				public:

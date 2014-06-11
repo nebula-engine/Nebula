@@ -24,8 +24,8 @@
 #include <Nebula/Actor/Util/Parent.hh>
 
 #include <Nebula/Graphics/Camera/View/Base.hh>
+#include <Nebula/Graphics/Drawable/Base.hpp>
 
-//#include <glutpp/shader.h>
 
 #define LIGHT_MAX 20
 
@@ -35,7 +35,10 @@ namespace Neb {
 		 * @ingroup group_core
 		 * @brief Base
 		 */
-		class Base: virtual public Neb::Actor::Util::Parent {
+		class Base:
+			virtual public Neb::Graphics::Drawable::Base,
+			virtual public Neb::Actor::Util::Parent
+		{
 			public:
 				Base(Neb::Scene::Util::Parent_s);
 				virtual ~Base();
@@ -70,7 +73,7 @@ namespace Neb {
 				 * @note WEAK
 				 */
 				sp::shared_ptr<Neb::Scene::Util::Parent>		parent_;
-				
+
 			public:
 				Neb::Scene::Util::Flag					flag_;
 
