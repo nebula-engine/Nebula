@@ -17,7 +17,8 @@
 #include <math/geo/polyhedron.hpp>
 */
 
-#include <Nebula/Math/geo/polyhedron.hh>
+//#include <Nebula/Math/geo/polyhedron.hh>
+#include <Nebula/Math/geo/decl.hpp>
 #include <Nebula/config.hh>
 #include <Nebula/Graphics/material.hh>
 
@@ -28,7 +29,7 @@ namespace Neb {
 		int len_indices_;
 	};
 	struct vertex {
-		//void		print();
+		void			print(int sl);
 
 		glm::vec3		position;
 		glm::vec3		normal;
@@ -40,7 +41,8 @@ namespace Neb {
 			void				save(std::string);
 			void				load(std::string);
 			void				construct(math::geo::polyhedron*);
-
+			void				print(int sl);
+			
 			// draw data
 			file_header			fh_;
 			Neb::vertex*			vertices_;
@@ -49,3 +51,5 @@ namespace Neb {
 }
 
 #endif
+
+

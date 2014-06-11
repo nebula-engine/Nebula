@@ -27,16 +27,16 @@
 Neb::Graphics::Window::Base::Base():
 	x_(0),
 	y_(0),
-	w_(400),
-	h_(400)
+	w_(600),
+	h_(600)
 {
 }
 Neb::Graphics::Window::Base::Base(Neb::Graphics::Window::Util::Parent_s parent):
 	parent_(parent),
 	x_(0),
 	y_(0),
-	w_(400),
-	h_(400)
+	w_(600),
+	h_(600)
 {
 }
 Neb::Graphics::Window::Base::~Base() {
@@ -158,7 +158,7 @@ void			Neb::Graphics::Window::Base::step(Neb::Core::TimeStep const & ts) {
 		return;
 	}
 
-	/** @tod wtf is this doing here?? */
+	/** @todo wtf is this doing here?? */
 	render();
 }
 void Neb::Graphics::Window::Base::callback_window_size_fun(GLFWwindow* window, int w, int h) {

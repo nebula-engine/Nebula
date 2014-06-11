@@ -47,11 +47,15 @@ void		Neb::Graphics::Context::Base::render() {
 
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 	
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
+
 	assert(proj_);
 	assert(view_);
-	
-	app->use_program(Neb::program_name::e::LIGHT);
 
+	/** wrong! */	
+	app->use_program(Neb::program_name::e::LIGHT);
+	
 	viewport_.load();
 	
 	proj_->load();

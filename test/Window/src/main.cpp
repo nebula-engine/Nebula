@@ -1,3 +1,4 @@
+#include <glm/gtc/matrix_transform.hpp>
 
 #include <Nebula/App/Base.hh>
 #include <Nebula/Actor/Base.hh>
@@ -95,6 +96,25 @@ sp::shared_ptr<Neb::Scene::Local>			create_scene(
 
 	// actors
 	auto actor = create_actor(scene);
+	actor->pose_ = glm::translate(actor->pose_, vec3(0,0,-5));
+	
+	actor = create_actor(scene);
+	actor->pose_ = glm::translate(actor->pose_, vec3(0,0,5));
+	
+	actor = create_actor(scene);
+	actor->pose_ = glm::translate(actor->pose_, vec3(0,-5,0));
+
+	actor = create_actor(scene);
+	actor->pose_ = glm::translate(actor->pose_, vec3(0,5,0));
+
+	actor = create_actor(scene);
+	actor->pose_ = glm::translate(actor->pose_, vec3(-5,0,0));
+
+	actor = create_actor(scene);
+	actor->pose_ = glm::translate(actor->pose_, vec3(5,0,0));
+
+
+
 	auto actor2 = create_actor2(scene);
 
 
@@ -121,7 +141,7 @@ int main() {
 
 	// context
 	auto context1 = create_context(window);
-	auto context2 = create_context(window);
+	//auto context2 = create_context(window);
 
 	// drawable
 	// scene
@@ -129,7 +149,7 @@ int main() {
 	auto scene = create_scene(context1);
 
 
-	auto layout = create_layout(window, context2);
+	//auto layout = create_layout(window, context2);
 
 	// loop
 

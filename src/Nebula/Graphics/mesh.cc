@@ -1,4 +1,7 @@
 #include <iostream>
+#include <iomanip>
+
+#include <Galaxy-Log/log.hpp>
 
 #include <Nebula/Math/geo/polyhedron.hh>
 
@@ -12,21 +15,41 @@ Neb::mesh::mesh():
 }
 void	Neb::mesh::construct(math::geo::polyhedron* poly) {
 
+	auto tris = poly->triangles();
+	
 	printf("%s\n",__PRETTY_FUNCTION__);
-
-	fh_.len_vertices_ = 3 * poly->nt_ + 4 * poly->nq_;
-	fh_.len_indices_ = 3 * poly->nt_ + 6 * poly->nq_;
-
+	
+	fh_.len_vertices_ = 3 * tris.size();
+	fh_.len_indices_ =  3 * tris.size();
+	
+	
 	printf("vertices: %i elements\n",fh_.len_vertices_);
 	printf("indices:  %i elements\n",fh_.len_indices_);
 
 	vertices_ = new Neb::vertex[fh_.len_vertices_];
-	indices_ = new GLushort[fh_.len_indices_];
-
-	int m = 3 * poly->nt_;
-
+	indices_  = new GLushort[fh_.len_indices_];
+	
+	
+	
+	
 	Neb::vertex* v = vertices_;
-
+	
+	for(size_t i = 0; i < (3 * tris.size()); ++i) {
+		indices_[i] = i;
+	}
+	
+	
+	for(auto t : tris) {
+		assert(t);
+		for(int i = 0; i < 3; ++i) {
+			assert(t->v_[i]);
+			v->position = t->v_[i]->p;
+			v->normal   = t->v_[i]->n;
+		}
+		v++;
+	}
+	
+/*	
 	// tris
 	for(int i = 0; i < poly->nt_; i++)
 	{
@@ -44,16 +67,21 @@ void	Neb::mesh::construct(math::geo::polyhedron* poly) {
 	}
 
 	v = vertices_ + m;
-
+	auto ind = indices_ + m;
+	
 	// quads
 	for(int i = 0; i < poly->nq_; i++)
 	{
-		for(int j = 0; j < 4; ++j)
+		for(int j = 0; j < 3; ++j)
 		{
-			v[i*4 + j].position = poly->quads_[i].v_[j].p;
-			v[i*4 + j].normal = poly->quads_[i].v_[j].n;
+			v[i*4 + j].position = poly->quads_[i].tri_[0].v_[j].p;
+			v[i*4 + j].normal   = poly->quads_[i].tri_[0].v_[j].n;
 		}
-
+		int j = 3;
+		v[i*4 + j].position = poly->quads_[i].tri_[0].v_[2].p;
+		v[i*4 + j].normal   = poly->quads_[i].tri_[0].v_[2].n;
+		
+		
 		int n = 0;
 		for(int l = 0; l < 2; ++l)
 		{
@@ -61,7 +89,7 @@ void	Neb::mesh::construct(math::geo::polyhedron* poly) {
 			{	
 				int j = (k+n) % 4;
 
-				indices_[m + i*6 + l*3 + k] = m + i*4 + j;
+				ind[i*6 + l*3 + k] = m + i*4 + j;
 
 				printf("% 3i ", m + i*4 + j);
 			}
@@ -69,7 +97,7 @@ void	Neb::mesh::construct(math::geo::polyhedron* poly) {
 			n += 2;
 		}
 	}
-
+*/
 }
 void Neb::mesh::load(std::string name)	{
 
@@ -83,17 +111,16 @@ void Neb::mesh::load(std::string name)	{
 	
 	fp = fopen(filename.c_str(), "rb");
 
-	if (fp <= 0) 
-	{
+	if (fp <= 0) {
 		perror("fopen");
-		exit(0);
+		abort();
 	}
-
+	
 	// read header
 	fread(&fh_, sizeof(file_header), 1, fp);
 
-	//printf("vertices: %i elements\n",fh_.len_vertices_);
-	//printf("indices:  %i elements\n",fh_.len_indices_);
+	printf("vertices: %i elements\n",fh_.len_vertices_);
+	printf("indices:  %i elements\n",fh_.len_indices_);
 
 	// allocate
 	vertices_ = new Neb::vertex[fh_.len_vertices_];
@@ -128,19 +155,32 @@ void		Neb::mesh::save(std::string filename){
 	fwrite(indices_, sizeof(GLushort), fh_.len_indices_, fp);
 	
 	// print
-	for(int i = 0; i < fh_.len_vertices_; ++i)
-	{
-		//vertices_[i].print();
-	}
+
 	std::cout << "saved " << filename << std::endl;
 	
 	// close
 	fclose(fp);
 }
+void		Neb::mesh::print(int sl) {
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", (severity_level)sl) << "mesh";
+	
+	if(vertices_) {
+		for(int i = 0; i < fh_.len_vertices_; ++i)
+		{
+			vertices_[i].print(sl);
+		}	
+	}
+}
 
+void		Neb::vertex::print(int sl) {
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", (severity_level)sl)
+		<< std::setw(8) << " "
+		<< std::setw(8) << "p"
+		<< std::setw(8) << position[0]
+		<< std::setw(8) << position[1]
+		<< std::setw(8) << position[2];
 
-
-
+}
 
 
 

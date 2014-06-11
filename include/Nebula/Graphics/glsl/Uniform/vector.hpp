@@ -1,5 +1,5 @@
-#ifndef __UNIFORM_H__
-#define __UNIFORM_H__
+#ifndef __UNIFORM_VECTOR_H__
+#define __UNIFORM_VECTOR_H__
 
 #include <memory>
 #include <string>
@@ -34,8 +34,8 @@ namespace Neb {
 						//virtual void			load(int, math::Color::color<float>) { throw 0; }
 						//virtual void			load(int, math::Color::color<double>) { throw 0; }
 						virtual void			load(int, int) { throw 0; }
-						virtual void			load(int, double*) { throw 0; }
-						virtual void			load(int, double) { throw 0; }
+						virtual void			load(int, float*) { throw 0; }
+						virtual void			load(int, float) { throw 0; }
 						/** @} */
 					protected:
 						enum { LEN = 100 };

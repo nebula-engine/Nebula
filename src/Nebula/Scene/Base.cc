@@ -37,6 +37,7 @@
 #include <Nebula/Shape/Base.hh>
 #include <Nebula/timer/Types.hh>
 #include <Nebula/timer/Actor/Release.hpp>
+#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 
 Neb::Scene::Base::Base(Neb::Scene::Util::Parent_s parent):
 	parent_(parent)
@@ -54,15 +55,13 @@ void Neb::Scene::Base::release() {
 	GLUTPP_DEBUG_0_FUNCTION;	
 }
 void Neb::Scene::Base::draw(sp::shared_ptr<Neb::Graphics::Context::Base> context) {
-		
-	GLUTPP_DEBUG_1_FUNCTION;
+	
+	GLUTPP_DEBUG_0_FUNCTION;
 
-	auto p = Neb::App::Base::globalBase()->use_program(Neb::program_name::e::LIGHT);
-
-
-	glEnable(GL_CULL_FACE);
-	glEnable(GL_DEPTH_TEST);
-
+	//auto p = Neb::App::Base::globalBase()->use_program(Neb::program_name::e::LIGHT);
+	auto p = Neb::App::Base::globalBase()->current_program();
+	
+	
 	
 	int i = 0;
 	

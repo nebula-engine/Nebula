@@ -29,6 +29,10 @@ namespace Neb {
 		class Point: public Neb::Light::Base {
 			public:
 				Point(sp::shared_ptr<Neb::Light::Util::Parent> parent): Neb::Light::Base(parent) {}
+
+				virtual void				load(int o, mat4 space);
+
+
 		};
 		class Spot: public Neb::Light::Base {
 			private:
@@ -39,8 +43,9 @@ namespace Neb {
 					ar & boost::serialization::make_nvp("spot_light_cos_cutoff",spot_light_cos_cutoff_);
 				}
 			public:
-				Spot();
-				void				load(int o, mat4 space);
+				Spot(sp::shared_ptr<Neb::Light::Util::Parent> parent);
+
+				virtual void				load(int o, mat4 space);
 
 				virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
 					Neb::Light::Base::serialize(ar, version);

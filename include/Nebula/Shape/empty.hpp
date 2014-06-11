@@ -8,9 +8,9 @@ namespace Neb {
 		class Empty: public Neb::Shape::Base {
 			public:
 				Empty(sp::shared_ptr<Neb::Shape::Util::Parent> parent): Neb::Shape::Base(parent) {}
-				virtual void		createMesh() {}
+				virtual void			createMesh() {}
 				
-				virtual void		draw_elements(Neb::Graphics::Window::Base_s, mat4 space) {}
+				virtual void			draw_elements(sp::shared_ptr<Neb::Graphics::Context::Base> context, mat4 space) {}
 		};
 	}
 }

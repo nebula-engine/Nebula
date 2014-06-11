@@ -5,14 +5,10 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-//#include <GL/glut.h>
 
-//#include <math/mat44.hpp>
 
-//#include <Nebula/scene/scene.hpp>
 #include <Nebula/Graphics/glsl/program.hh>
-#include <Nebula/Graphics/glsl/Uniform/uniform.hh>
-//#include <Nebula/window/window.hpp>
+#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 
 Neb::glsl::Uniform::Scalar::Base::Base(std::string name) {
 	//printf("%s\n",__PRETTY_FUNCTION__);

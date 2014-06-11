@@ -133,6 +133,7 @@ void main(void)
 	}
 	
 	color += emission;
+	color += vec4(1,1,1,1);
 }
 
 

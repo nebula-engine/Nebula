@@ -4,45 +4,22 @@
 //#include <PxPhysicsAPI.h>
 
 #include <Nebula/Util/typedef.hpp>
+#include <Nebula/Math/geo/polygon.hpp>
+#include <Nebula/Math/geo/quad.hpp>
 
 namespace math {
 	namespace geo {
-		class vertex {
-			public:
-				vec3	p;
-				vec3	n;
-		};
-		class polygon
-		{
-
-		};
-		class tri
-		{
-			public:
-				void	reset_normals();
-
-				vertex	v_[3];
-		};
-		class quad
-		{
-			public:
-				void	reset_normals();
-
-				vertex	v_[4];
-		};
-		class polyhedron
-		{
-			public:
+		struct polyhedron {
 				enum
 				{
 					PER_FACE_NORMAL
 				};
 
-				vertex*		vertices_;
-				tri*		tris_;
-				quad*		quads_;
-				int		nt_;
-				int 		nq_;
+				int		triangle_count();
+				std::vector< std::shared_ptr<tri> >		triangles();
+
+				std::vector< std::shared_ptr<polygon> >		polygons_;
+
 				unsigned int	flag_;
 		};
 		class polyhedron_convex: public polyhedron

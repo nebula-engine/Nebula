@@ -3,7 +3,7 @@
 
 #include <GL/glew.h>
 
-//#include <galaxy/sig/connection.hpp>
+#include <Galaxy-Log/log.hpp>
 
 //#include <math/quat.hpp>
 //#include <math/mat44.hpp>
@@ -29,6 +29,9 @@ void		Neb::Graphics::Camera::Projection::Base::load() {
 	
 	p->get_uniform_scalar("proj")->load(proj());
 }
+
+
+
 Neb::Graphics::Camera::Projection::Perspective::Perspective(std::shared_ptr<Neb::Graphics::Context::Base> renderable):
 	Neb::Graphics::Camera::Projection::Base(renderable),
 	fovy_(45.0f),
@@ -44,6 +47,11 @@ Neb::Graphics::Camera::Projection::Perspective::Perspective(std::shared_ptr<Neb:
 }*/
 mat4		Neb::Graphics::Camera::Projection::Perspective::proj() {
 
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "fovy" << std::setw(8) << fovy_;
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "aspect" << std::setw(8) << parent_->viewport_.aspect_;
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "zn" << std::setw(8) << zn_;
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "zf" << std::setw(8) << zf_;
+	
 	mat4 ret = glm::perspective(fovy_, parent_->viewport_.aspect_, zn_, zf_);
 	
 	//ret.print();

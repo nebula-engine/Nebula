@@ -5,6 +5,7 @@
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/material.hh>
 #include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 #include <Nebula/Scene/Base.hh>
 
 /*

@@ -8,13 +8,13 @@
 #include <Nebula/Scene/Base.hh>
 #include <Nebula/Shape/Base.hh>
 #include <Nebula/free.hh>
-#include <Nebula/Graphics/glsl/Uniform/uniform.hh>
+#include <Nebula/Graphics/glsl/Uniform/vector.hpp>
 
 
 Neb::Light::Base::Base(Neb::Light::Util::Parent_s parent):
 	parent_(parent),
 	pos_(vec4(0.0, 0.0, 0.0, 1.0)),
-	ambient_(Neb::Color::black<float>()),
+	ambient_(0.2,0.2,0.2,1.0),
 	diffuse_(Neb::Color::white<float>()),
 	specular_(Neb::Color::white<float>()),
 	atten_const_(1.0),
@@ -73,31 +73,17 @@ void Neb::Light::Base::load(int o, mat4 space) {
 
 	pos.w = pos_.w;
 
-	
-	
-	
-	//if(any(Neb::light::flag::e::SHOULD_LOAD_POS))
-	{
-		p->get_uniform_vector("lights.position")->load(o, pos);
-		
-		//unset(Neb::light::flag::e::SHOULD_LOAD_POS);
-	}	
-	//if(any(Neb::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION))
-	{
-		//unset(Neb::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION);
-	}
-	
-	//if(any(Neb::light::flag::e::SHOULD_LOAD_OTHER))
-	{
-		p->get_uniform_vector("lights.ambient")->load(o, ambient_);
-		p->get_uniform_vector("lights.diffuse")->load(o, diffuse_);
-		p->get_uniform_vector("lights.specular")->load(o, specular_);
-		p->get_uniform_vector("lights.atten_const")->load(o, atten_const_);
-		p->get_uniform_vector("lights.atten_linear")->load(o, atten_linear_);
-		p->get_uniform_vector("lights.atten_quad")->load(o, atten_quad_);
 
-		//unset(Neb::light::flag::e::SHOULD_LOAD_OTHER);
-	}
+	p->get_uniform_vector("lights.position")->load(o, pos);
+
+
+	p->get_uniform_vector("lights.ambient")->load(o, ambient_);
+	p->get_uniform_vector("lights.diffuse")->load(o, diffuse_);
+	p->get_uniform_vector("lights.specular")->load(o, specular_);
+	p->get_uniform_vector("lights.atten_const")->load(o, atten_const_);
+	p->get_uniform_vector("lights.atten_linear")->load(o, atten_linear_);
+	p->get_uniform_vector("lights.atten_quad")->load(o, atten_quad_);
+
 }
 void	Neb::Light::Base::load_shadow() {
 	GLUTPP_DEBUG_1_FUNCTION;

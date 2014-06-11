@@ -1,18 +1,22 @@
 #include <glm/gtx/transform.hpp>
 
+#include <Galaxy-Standard/map.hpp>
+#include <Galaxy-Log/log.hpp>
+
 #include <Nebula/debug.hh>
 #include <Nebula/App/Base.hh>
 #include <Nebula/Shape/Base.hh>
 
 #include <Nebula/Graphics/Light/Base.hh>
 #include <Nebula/Graphics/glsl/attrib.hh>
+#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 
-#include <Galaxy-Standard/map.hpp>
 
 Neb::Shape::Base::Base() {
 }
 Neb::Shape::Base::Base(Neb::Shape::Util::Parent_s parent):
-	parent_(parent)
+	parent_(parent),
+	s_(1,1,1)
 {
 	NEBULA_SHAPE_BASE_FUNC;
 	assert(parent);
@@ -23,8 +27,8 @@ mat4					Neb::Shape::Base::getPoseGlobal() {
 	
 	mat4 m;
 	
-	if(!parent_.expired()) {
-		m = parent_.lock()->getPoseGlobal() * getPose();
+	if(parent_) {
+		m = parent_->getPoseGlobal() * getPose();
 	} else {
 		m = getPose();
 	}
@@ -102,14 +106,13 @@ void					Neb::Shape::Base::model_load(mat4 space) {
 	p->get_uniform_scalar("model")->load(space);
 }
 void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, std::shared_ptr<Neb::glsl::program> p) {
-	NEBULA_SHAPE_BASE_FUNC;
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
 
 	glEnable(GL_TEXTURE_2D);
 
-	if(mesh_.indices_ == NULL)
-	{
+	if(mesh_.indices_ == 0) {
 		printf("not initialized\n");
-		return;
+		abort();
 	}
 
 	//checkerror("unknown");
@@ -194,10 +197,14 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 
 }
 void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Context::Base> context, mat4 space) {
-	NEBULA_SHAPE_BASE_FUNC;
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
+
+	mesh_.print(debug);
+	
+	assert(context);
 	
 	/** @todo could switching programs here leave view and proj unset? */
-
+	
 	auto p = Neb::App::Base::globalBase()->use_program(program_);
 
 	// initialize buffers if not already
@@ -206,7 +213,7 @@ void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Context::Bas
 		init_buffer(context, p);
 	}
 	auto bufs = context_[context.get()];
-
+	assert(bufs);
 	//checkerror("unknown");
 
 	// attribs

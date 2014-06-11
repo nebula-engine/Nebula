@@ -30,15 +30,14 @@ namespace Neb {
 	namespace Light {
 		class Base: virtual public gal::std::shared {
 			public:
-				Base();
 				Base(Neb::Light::Util::Parent_s);
 				
 				void				init();
 				
 				virtual void			release();
 				virtual void			cleanup();
-				void				step(Neb::Core::TimeStep const & ts);
-				void				load(int, glm::mat4x4);
+				virtual void			step(Neb::Core::TimeStep const & ts);
+				virtual void			load(int, mat4);
 				
 				void				load_shadow();
 				void				draw();

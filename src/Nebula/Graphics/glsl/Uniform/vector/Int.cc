@@ -9,18 +9,8 @@
 
 
 #include <Nebula/Scene/Base.hh>
-#include <Nebula/Graphics/glsl/Uniform/uniform.hh>
-#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/glsl/Uniform/vector.hpp>
 #include <Nebula/free.hh>
-
-void	Neb::glsl::Uniform::Scalar::Int::load(int i) {
-	glUniform1i(o_, i);
-	checkerror("glUniform1i");
-}
-void	Neb::glsl::Uniform::Scalar::Sampler2D::load(int i) {
-	glUniform1i(o_, i);
-	checkerror("glUniform1i");
-}
 
 
 

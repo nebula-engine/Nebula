@@ -8,11 +8,11 @@
 //#include <GL/glut.h>
 
 
-#include <Nebula/Scene/Base.hh>
-#include <Nebula/Graphics/glsl/Uniform/uniform.hh>
-#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/glsl/Uniform/vector.hpp>
 #include <Nebula/free.hh>
 
+
+/*
 void	Neb::glsl::Uniform::Scalar::Mat4::load(mat4 const & m) {
 	assert(o_ != -1);
 	glUniformMatrix4fv(o_, 1, false, (float*)&m);
@@ -21,17 +21,11 @@ void	Neb::glsl::Uniform::Scalar::Mat4::load(mat4 const & m) {
 
 
 
-/*
-void	Neb::glsl::Uniform::Vector::Mat3::load(int c, int i) {
+
+void	Neb::glsl::Uniform::Vector::Mat4::load(int c, int i) {
 	glUniform1i(o_[c], i);
 	checkerror("glUniform1i");
 }
 
-void	Neb::glsl::Uniform::Vector::Mat3::load(int c, int i) {
-	glUniform1i(o_[c], i);
-	checkerror("glUniform1i");
-}
 */
-
-
 

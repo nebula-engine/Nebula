@@ -7,11 +7,15 @@
 #include <sys/time.h>
 #include <string.h>
 #include <algorithm>
+#include <cassert>
 
 #include <Nebula/debug.hh>
 #include <Nebula/Graphics/glsl/shader.hh>
 #include <Nebula/free.hh>
 #include <Nebula/Graphics/glsl/program.hh>
+#include <Nebula/Graphics/glsl/attrib.hh>
+#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
+#include <Nebula/Graphics/glsl/Uniform/vector.hpp>
 
 Neb::glsl::program::program()
 {

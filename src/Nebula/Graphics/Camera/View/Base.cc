@@ -1,5 +1,6 @@
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/Camera/View/Base.hh>
+#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 
 Neb::Graphics::Camera::View::Base::Base(Neb::Graphics::Context::Base_s parent): parent_(parent) {
 }

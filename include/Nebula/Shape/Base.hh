@@ -67,7 +67,7 @@ namespace Neb {
 				void						model_load(mat4 space);
 				void						init_buffer(Neb::Graphics::Context::Base_s, std::shared_ptr<Neb::glsl::program> p);
 				void						draw(Neb::Graphics::Context::Base_s, mat4 space);
-				virtual void					draw_elements(Neb::Graphics::Context::Base_s, mat4 space);
+				virtual void					draw_elements(sp::shared_ptr<Neb::Graphics::Context::Base> context, mat4 space);
 				/** @} */
 			public:
 				template<class Archive>	void	serialize(Archive & ar, unsigned int const & version) {
@@ -78,6 +78,9 @@ namespace Neb {
 					ar & boost::serialization::make_nvp("normal",normal_);
 					ar & boost::serialization::make_nvp("material",material_);
 				}
+
+			public:
+				sp::shared_ptr<Neb::Shape::Util::Parent>		parent_;
 
 			public:
 				Neb::Shape::Util::Flag		flag_;
@@ -92,15 +95,15 @@ namespace Neb {
 				/** @brief Material. */
 				Neb::material::raw		material_;
 			public:
+				
 				// draw data
 				/** @brief ID */
-				int						i_;
-				Neb::material::material				material_front_;
-				mesh						mesh_;
-				map_t						context_;
-				Neb::program_name::e				program_;
+				Neb::material::material					material_front_;
+				mesh							mesh_;
+				map_t							context_;
+				Neb::program_name::e					program_;
 				/** @brief Parent */
-				Neb::Shape::Util::Parent_w			parent_;
+				
 		};
 	}
 }

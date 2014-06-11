@@ -2,8 +2,23 @@
 
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/Light/Spot.hh>
+#include <Nebula/Graphics/glsl/Uniform/vector.hpp>
 
-Neb::Light::Spot::Spot():
+
+void Neb::Light::Point::load(int o, mat4 space) {
+	GLUTPP_DEBUG_1_FUNCTION;
+
+	Neb::Light::Base::load(o, space);
+
+	auto p = Neb::App::Base::globalBase()->current_program();
+
+	// tell shader this is not a spot light
+	static const float spot_cutoff = 6;
+	p->get_uniform_vector("lights.spot_cutoff")->load(o, spot_cutoff);
+}
+
+Neb::Light::Spot::Spot(sp::shared_ptr<Neb::Light::Util::Parent> parent):
+	Neb::Light::Base(parent),
 	spot_direction_(vec3(0.0, 0.0, -1.0)),
 	spot_cutoff_(10.0),
 	spot_exponent_(1.0),
@@ -12,6 +27,8 @@ Neb::Light::Spot::Spot():
 }
 void Neb::Light::Spot::load(int o, mat4 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
+
+	Neb::Light::Base::load(o, space);
 	
 	auto p = Neb::App::Base::globalBase()->current_program();
 
@@ -27,33 +44,11 @@ void Neb::Light::Spot::load(int o, mat4 space) {
 	
 	
 	
-	//if(any(Neb::light::flag::e::SHOULD_LOAD_POS))
-	{
-		p->get_uniform_vector("lights.position")->load(o, pos);
-		
-		//unset(Neb::light::flag::e::SHOULD_LOAD_POS);
-	}	
-	//if(any(Neb::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION))
-	{
-		p->get_uniform_vector("lights.spot_direction")->load(o, spot_direction);
-		
-		//unset(Neb::light::flag::e::SHOULD_LOAD_SPOT_DIRECTION);
-	}
-	
-	//if(any(Neb::light::flag::e::SHOULD_LOAD_OTHER))
-	{
-		p->get_uniform_vector("lights.ambient")->load(o, ambient_);
-		p->get_uniform_vector("lights.diffuse")->load(o, diffuse_);
-		p->get_uniform_vector("lights.specular")->load(o, specular_);
-		p->get_uniform_vector("lights.spot_cutoff")->load(o, spot_cutoff_);
-		p->get_uniform_vector("lights.spot_exponent")->load(o, spot_exponent_);
-		p->get_uniform_vector("lights.spot_light_cos_cutoff")->load(o, spot_light_cos_cutoff_);
-		p->get_uniform_vector("lights.atten_const")->load(o, atten_const_);
-		p->get_uniform_vector("lights.atten_linear")->load(o, atten_linear_);
-		p->get_uniform_vector("lights.atten_quad")->load(o, atten_quad_);
+	p->get_uniform_vector("lights.spot_direction")->load(o, spot_direction);
 
-		//unset(Neb::light::flag::e::SHOULD_LOAD_OTHER);
-	}
+	p->get_uniform_vector("lights.spot_cutoff")->load(o, spot_cutoff_);
+	p->get_uniform_vector("lights.spot_exponent")->load(o, spot_exponent_);
+	p->get_uniform_vector("lights.spot_light_cos_cutoff")->load(o, spot_light_cos_cutoff_);
 }
 
 
