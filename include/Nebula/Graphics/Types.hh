@@ -88,6 +88,7 @@ namespace Neb {
 				}
 
 				class Base;
+				class terminal;
 
 				typedef std::shared_ptr<Base>		Base_s;
 				typedef std::weak_ptr<Base>		Base_w;

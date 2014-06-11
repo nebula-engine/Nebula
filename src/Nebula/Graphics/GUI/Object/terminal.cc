@@ -95,9 +95,11 @@ int			Neb::Graphics::GUI::Object::terminal::key_fun(
 }
 int Neb::Graphics::GUI::Object::terminal::enter() {
 
-	Neb::App::Base::globalBase()->command(line_);
+	auto self = sp::dynamic_pointer_cast<Neb::Graphics::GUI::Object::terminal>(shared_from_this());
 
-	lines_.push_back(line_);
+	Neb::App::Base::globalBase()->command(self, line_);
+
+	//lines_.push_back(line_);
 	line_.clear();
 
 	if(lines_.size() > max_line_count)

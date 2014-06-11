@@ -18,6 +18,8 @@
 //#include <Nebula/actor/event.hh>
 #include <Nebula/Graphics/Context/Base.hh>
 #include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/Graphics/GUI/Object/terminal.hh>
+
 #include <Nebula/Actor/RigidBody/Base.hh>
 #include <Nebula/App/Base.hh>
 #include <Nebula/Network/server.hh>
@@ -439,7 +441,7 @@ std::shared_ptr<Neb::glsl::program> Neb::App::Base::get_program(Neb::program_nam
 
 	return p;
 }
-void		Neb::App::Base::command(std::string str) {
+void		Neb::App::Base::command(sp::shared_ptr<Neb::Graphics::GUI::Object::terminal> term, std::string str) {
 
 	// split
 	
@@ -464,11 +466,31 @@ void		Neb::App::Base::command(std::string str) {
 	// future class members...
 	std::map< std::string, sp::shared_ptr<neb::util::command> > m;
 	
+	// a help function
 	auto help = sp::make_shared<neb::util::command>();
-		
+	help->func_ = [] (sp::shared_ptr<Neb::Graphics::GUI::Object::terminal> term, bpo::variables_map vm) {
+		term->lines_.push_back("exit");
+		term->lines_.push_back("help");
+	};
+	
+	// a way out
+	auto cmd_exit = sp::make_shared<neb::util::command>();
+
+	cmd_exit->func_ = [] (sp::shared_ptr<Neb::Graphics::GUI::Object::terminal> term, bpo::variables_map vm) {
+		Neb::App::Base::globalBase()->flag_.set(Neb::App::Util::Flag::SHOULD_RELEASE);
+	};
+
 	m["help"] = help;
+	m["exit"] = cmd_exit;
 	
+	// find command
+	auto it = m.find(tokens.front());
 	
+	if(it != m.end()) {
+		it->second->operator()(term,ac,av);
+	} else {
+		term->lines_.push_back(tokens.front() + ": Command not found.");
+	}
 	
 }
 void		Neb::App::Base::sendServer(sp::shared_ptr< gal::net::omessage > msg)  {

@@ -20,6 +20,8 @@
 #include <Nebula/Network/client.hh>
 #include <Nebula/Message/Types.hh>
 #include <Nebula/Scene/Util/Parent.hh>
+
+#include <Nebula/Graphics/Types.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Graphics/Window/Util/Parent.hh>
 #include <Nebula/Graphics/GUI/Layout/Util/Parent.hh>
@@ -51,7 +53,7 @@ namespace Neb {
 				Base();
 				virtual ~Base();
 			public:
-				void		command(std::string);
+				void						command(sp::shared_ptr<Neb::Graphics::GUI::Object::terminal> term, std::string);
 			public:
 				std::shared_ptr<Neb::glsl::program>		use_program(Neb::program_name::e);
 				std::shared_ptr<Neb::glsl::program>		get_program(Neb::program_name::e);
