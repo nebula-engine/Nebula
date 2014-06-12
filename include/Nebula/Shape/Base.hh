@@ -31,11 +31,9 @@ namespace neb {
 
 				struct
 				{
-					std::shared_ptr<neb::texture>	image_;
+					sp::shared_ptr<neb::texture>	image_;
 				} texture_;
 		};
-
-		typedef std::shared_ptr<neb::Shape::buffer>			buffer_s;
 
 		class Base:
 			virtual public neb::std::shared,
@@ -43,7 +41,7 @@ namespace neb {
 			public neb::Light::Util::Parent
 		{
 			public:
-				typedef std::map<neb::gfx::Context::Base*,buffer_s>			map_t;
+				typedef ::std::map< neb::gfx::Context::Base*, sp::shared_ptr<buffer> >			map_t;
 
 				Base();
 				Base(sp::shared_ptr<neb::Shape::Util::Parent> parent);
@@ -65,9 +63,15 @@ namespace neb {
 				/** @name Rendering @{ */
 				void						load_lights(int& i, mat4 space);
 				void						model_load(mat4 space);
-				void						init_buffer(neb::gfx::Context::Base_s, std::shared_ptr<neb::glsl::program> p);
-				void						draw(neb::gfx::Context::Base_s, mat4 space);
-				virtual void					draw_elements(sp::shared_ptr<neb::gfx::Context::Base> context, mat4 space);
+				void						init_buffer(
+						sp::shared_ptr<neb::gfx::Context::Base> context,
+						sp::shared_ptr<neb::glsl::program> p);
+				void						draw(
+						sp::shared_ptr<neb::gfx::Context::Base>,
+						mat4 space);
+				virtual void					draw_elements(
+						sp::shared_ptr<neb::gfx::Context::Base> context,
+						mat4 space);
 				/** @} */
 			public:
 				template<class Archive>	void	serialize(Archive & ar, unsigned int const & version) {
@@ -89,21 +93,21 @@ namespace neb {
 				/** @brief Scale. */
 				vec3				s_;
 				/** @brief Name of image file */
-				std::string			image_;
+				::std::string			image_;
 				/** @brief Name of normal map file */
-				std::string			normal_;
+				::std::string			normal_;
 				/** @brief Material. */
 				neb::material::raw		material_;
 			public:
-				
+
 				// draw data
 				/** @brief ID */
 				neb::material::material					material_front_;
-				mesh							mesh_;
+				neb::gfx::mesh						mesh_;
 				map_t							context_;
 				neb::program_name::e					program_;
 				/** @brief Parent */
-				
+
 		};
 	}
 }

@@ -19,7 +19,7 @@ namespace neb {
 				void			accept(sp::shared_ptr<neb::Network::Communicating>);
 				void			write(sp::shared_ptr<gal::net::omessage> omessage);
 			private:
-				std::vector< sp::shared_ptr< neb::Network::Communicating > >	clients_;
+				::std::vector< sp::shared_ptr< neb::Network::Communicating > >	clients_;
 
 		};
 	}

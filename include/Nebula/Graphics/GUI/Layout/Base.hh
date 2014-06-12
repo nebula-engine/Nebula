@@ -25,7 +25,7 @@ namespace neb {
 				{
 					public:
 						Base();
-						Base(neb::gfx::GUI::Layout::Util::Parent_s parent);
+						Base(sp::shared_ptr<neb::gfx::GUI::Layout::Util::Parent> parent);
 
 						virtual void				init();
 
