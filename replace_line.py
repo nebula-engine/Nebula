@@ -25,7 +25,7 @@ def replace(filename):
 	text = re.sub("([\w:]+)_s([\s\),])","sp::shared_ptr<\\1>\\2",text)
 	#text = re.sub("neb::Actor","neb::core::Actor",text)
 	#text = re.sub("namespace Actor","namespace actor",text)
-	#text = re.sub("::Actor::","::actor::",text)
+	text = re.sub("Neb::","neb::",text)
 	text = re.sub("neb::Graphics::","neb::gfx::",text)
 	text = re.sub("neb::Core::","neb::core::",text)
 	text = re.sub("neb::core::actor::Actor","neb::core::actor::actor",text)
@@ -45,6 +45,8 @@ def replace(filename):
 for f in glob('include'):
 	replace(f)
 for f in glob('src'):
+	replace(f)
+for f in glob('test'):
 	replace(f)
 
 

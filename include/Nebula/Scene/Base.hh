@@ -47,7 +47,7 @@ namespace neb {
 				/** @name Main Loop @{ */
 				/** @brief render */
 
-				void				draw(sp::shared_ptr<neb::gfx::Context::Base> context);
+				void				draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p);
 				void				resize(int w, int h);
 				virtual void			step(neb::core::TimeStep const & ts);
 				/** @} */

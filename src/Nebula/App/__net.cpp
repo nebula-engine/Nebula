@@ -1,4 +1,6 @@
+#include <Galaxy-Log/log.hpp>
 
+#include <Nebula/Util/wrapper.hpp>
 #include <Nebula/App/__net.hpp>
 
 void neb::App::__net::reset_server(ip::tcp::endpoint const & endpoint) {
@@ -29,10 +31,11 @@ void		neb::App::__net::sendClient(sp::shared_ptr< gal::net::omessage > msg)  {
 }
 void		neb::App::__net::sendClient(sp::shared_ptr< neb::Message::OBase > message) {
 	assert(message);
+	
+	/** @todo wtf */
+	//neb::std::wrapper wrap(message);
 
-	neb::std::wrapper wrap(message);
-
-	auto buffer = std::make_shared<gal::net::omessage>();
+	auto buffer = sp::make_shared<gal::net::omessage>();
 
 	/** @todo boost serial warning */
 	//buffer->ar_ << wrapper;
@@ -42,9 +45,10 @@ void		neb::App::__net::sendClient(sp::shared_ptr< neb::Message::OBase > message)
 void		neb::App::__net::sendServer(sp::shared_ptr< neb::Message::OBase > message) {
 	assert(message);
 
-	neb::std::wrapper wrapper(message);
+	/** @todo wtf */
+	//neb::std::wrapper wrapper(message);
 
-	auto buffer = std::make_shared<gal::net::omessage>();
+	auto buffer = sp::make_shared<gal::net::omessage>();
 
 	/** @todo boost serial warning */
 	//buffer->ar_ << wrapper;

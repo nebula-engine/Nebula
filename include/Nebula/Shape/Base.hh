@@ -68,9 +68,11 @@ namespace neb {
 						sp::shared_ptr<neb::glsl::program> p);
 				void						draw(
 						sp::shared_ptr<neb::gfx::Context::Base>,
+						sp::shared_ptr<neb::glsl::program> p,
 						mat4 space);
 				virtual void					draw_elements(
 						sp::shared_ptr<neb::gfx::Context::Base> context,
+						sp::shared_ptr<neb::glsl::program> p,
 						mat4 space);
 				/** @} */
 			public:

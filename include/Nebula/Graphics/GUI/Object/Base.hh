@@ -21,7 +21,7 @@ namespace neb {
 
 						void				init();
 						//sp::shared_ptr<window::window>		get_window();
-						virtual void			draw() = 0;
+						virtual void			draw(sp::shared_ptr<neb::glsl::program> p) = 0;
 
 						virtual int			key_fun(
 								sp::shared_ptr<neb::gfx::Window::Base> const & window, int, int, int, int) = 0;
