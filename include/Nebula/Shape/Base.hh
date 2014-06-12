@@ -19,6 +19,7 @@
 #include <Nebula/Graphics/glsl/program.hh>
 #include <Nebula/Graphics/Light/Base.hh>
 #include <Nebula/Graphics/Light/Util/Parent.hh>
+#include <Nebula/Graphics/Light/Util/light_count.hpp>
 #include <Nebula/Graphics/material.hh>
 #include <Nebula/Graphics/mesh.hh>
 
@@ -61,7 +62,7 @@ namespace neb {
 
 
 				/** @name Rendering @{ */
-				void						load_lights(int& i, mat4 space);
+				void						load_lights(neb::core::light::util::count& light_count, mat4 space);
 				void						model_load(mat4 space);
 				void						init_buffer(
 						sp::shared_ptr<neb::gfx::Context::Base> context,

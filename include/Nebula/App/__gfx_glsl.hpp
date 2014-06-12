@@ -15,18 +15,8 @@
 
 #include <Nebula/free.hh>
 #include <Nebula/Types.hh>
-#include <Nebula/App/Util/Flag.hh>
-#include <Nebula/Network/server.hh>
-#include <Nebula/Network/client.hh>
-#include <Nebula/Message/Types.hh>
-#include <Nebula/Scene/Util/Parent.hh>
-
+#include <Nebula/App/__base.hpp>
 #include <Nebula/Graphics/Types.hh>
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Graphics/Window/Util/Parent.hh>
-#include <Nebula/Graphics/GUI/Layout/Util/Parent.hh>
-#include <Nebula/Shape/Util/Types.hh>
-#include <Nebula/Util/wrapper.hpp>
 
 namespace neb {
 	namespace App {

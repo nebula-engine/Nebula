@@ -11,21 +11,19 @@
 #include <Nebula/Graphics/glsl/Uniform/vector.hpp>
 
 
-neb::Light::Base::Base(sp::shared_ptr<neb::Light::Util::Parent> parent):
+neb::Light::Base::Base(sp::shared_ptr<neb::Light::Util::Parent> parent, ::std::string light_type_string):
 	parent_(parent),
+	light_type_string_(light_type_string),
 	pos_(vec4(0.0, 0.0, 0.0, 1.0)),
 	ambient_(0.2,0.2,0.2,1.0),
 	diffuse_(neb::Color::white<float>()),
-	specular_(neb::Color::white<float>()),
-	atten_const_(1.0),
-	atten_linear_(0.0),
-	atten_quad_(0.0)
+	specular_(neb::Color::white<float>())
 {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
 void neb::Light::Base::init() {
 	GLUTPP_DEBUG_0_FUNCTION;
-	
+
 }
 void neb::Light::Base::release() {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -43,46 +41,44 @@ void neb::Light::Base::dim() {
 	glLightfv(o_, GL_AMBIENT, ambient_);
 	glLightfv(o_, GL_DIFFUSE, diffuse_ * 0.2f);
 	glLightfv(o_, GL_SPECULAR, math::black);checkerror(__PRETTY_FUNCTION__);
-	 */
+	*/
 	printf("UNSUPPORTED\n");
 	exit(0);
 }
 void		neb::Light::Base::step(neb::core::TimeStep const & ts) {
-	
+
 }
 void	neb::Light::Base::draw() {	
 	GLUTPP_DEBUG_1_FUNCTION;
 }
 mat4		neb::Light::Base::get_pose() {
 	GLUTPP_DEBUG_1_FUNCTION;
-	
+
 	mat4 m = parent_->getPoseGlobal();
-	
+
 	return m;
 }
 void neb::Light::Base::load(int o, mat4 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
-
+	
 	/** @todo way to ditinguish lights in shader */
-
+	
 	auto p = neb::App::Base::global()->current_program();
-
+	
 	vec4 pos = pos_;
-
+	
 	pos += vec4(space[3][0], space[3][1], space[3][3], 0);
-
+	
 	pos.w = pos_.w;
+	
+	
+	p->get_uniform_vector(light_type_string_ + ".position")->load(o, pos);
+	
+	
+	p->get_uniform_vector(light_type_string_ + ".ambient")->load(o, ambient_);
+	p->get_uniform_vector(light_type_string_ + ".diffuse")->load(o, diffuse_);
+	p->get_uniform_vector(light_type_string_ + ".specular")->load(o, specular_);
 
-
-	p->get_uniform_vector("lights.position")->load(o, pos);
-
-
-	p->get_uniform_vector("lights.ambient")->load(o, ambient_);
-	p->get_uniform_vector("lights.diffuse")->load(o, diffuse_);
-	p->get_uniform_vector("lights.specular")->load(o, specular_);
-	p->get_uniform_vector("lights.atten_const")->load(o, atten_const_);
-	p->get_uniform_vector("lights.atten_linear")->load(o, atten_linear_);
-	p->get_uniform_vector("lights.atten_quad")->load(o, atten_quad_);
 
 }
 void	neb::Light::Base::load_shadow() {
@@ -103,7 +99,7 @@ void	neb::Light::Base::load_shadow() {
 	glActiveTexture(GL_TEXTURE1);
 	texture_shadow_map_.bind();
 	uniform_tex_shadow_.load_1i(1);
-	 */
+	*/
 }
 void	neb::Light::Base::RenderLightPOV()
 {
@@ -118,7 +114,7 @@ void	neb::Light::Base::RenderLightPOV()
 	glDisable(GL_LIGHTING);
 
 	camera_.load_shader();
-	 */	/*
+	*/	/*
 		   glMatrixMode(GL_PROJECTION);
 		   glLoadMatrixf(camera_.proj());
 
@@ -126,7 +122,7 @@ void	neb::Light::Base::RenderLightPOV()
 		   glLoadMatrixf(camera_.view());
 
 		   glViewport(0, 0, texture_shadow_map_.w_, texture_shadow_map_.h_);
-		 */
+		   */
 
 	//window_->lights_updateGL();
 
@@ -154,7 +150,7 @@ void	neb::Light::Base::RenderLightPOV()
 	glCullFace(GL_BACK);
 	glShadeModel(GL_SMOOTH);
 	glColorMask(1, 1, 1, 1);
-	 */
+	*/
 	checkerror("unknown");
 }
 void	neb::Light::Base::RenderShadowPost()

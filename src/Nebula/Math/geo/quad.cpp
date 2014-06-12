@@ -1,6 +1,6 @@
 #include <Nebula/Math/geo/quad.hpp>
 
-math::geo::rectangle::rectangle(vec3 center, vec3 n, vec3 x, float w, float h) {
+math::geo::rectangle::rectangle(vec3 center, vec3 x, vec3 n, float w, float h) {
 	
 	vec3 y = glm::cross(n,x);
 	

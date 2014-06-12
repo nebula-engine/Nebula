@@ -30,6 +30,7 @@ namespace neb { namespace gfx {
 	class mesh {
 		public:
 			mesh();
+			~mesh();
 
 			void				serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 			void				serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
@@ -37,8 +38,10 @@ namespace neb { namespace gfx {
 			void				construct(math::geo::polyhedron*);
 			void				print(int sl);
 			
-			::std::vector<math::geo::vertex>		vertices_;
-			::std::vector<GLushort>				indices_;
+
+			/** @todo boost wont let me use shared ptr here! */
+			::std::vector< math::geo::vertex >			vertices_;
+			::std::vector<GLushort>						indices_;
 			
 	};
 }}
