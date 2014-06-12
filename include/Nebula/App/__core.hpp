@@ -12,8 +12,8 @@ namespace neb {
 			virtual public neb::gfx::GUI::Layout::Util::Parent,
 			virtual public neb::Scene::Util::Parent
 		{
-public:
-			virtual void	init();
+			public:
+				virtual void	init();
 
 		};
 	}

@@ -69,7 +69,7 @@ mat4);
 			void						setPose(mat4 pose);
 			/** @} */
 
-			void						load_lights(int&, mat4);
+			void						load_lights(neb::core::light::util::count& light_count, mat4);
 
 
 			/** @todo move to derived class */

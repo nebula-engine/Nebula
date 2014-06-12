@@ -14,7 +14,7 @@
 #include <Nebula/Graphics/Context/Util/Parent.hh>
 #include <Nebula/Graphics/Types.hh>
 #include <Nebula/Graphics/texture.hh>
-#include <Nebula/Graphics/Light/Base.hh>
+//#include <Nebula/Graphics/Light/Base.hh>
 #include <Nebula/Graphics/glsl/program.hh>
 #include <Nebula/Graphics/glsl/shader.hh>
 #include <Nebula/Graphics/GUI/Layout/Base.hh>
