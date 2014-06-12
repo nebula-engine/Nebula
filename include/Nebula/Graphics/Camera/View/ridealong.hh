@@ -10,7 +10,7 @@
 #include <Nebula/config.hh>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace Camera {
 			namespace View {
 				class Ridealong: public Neb::Graphics::Camera::View::Base {

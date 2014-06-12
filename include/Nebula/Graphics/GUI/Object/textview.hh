@@ -4,7 +4,7 @@
 #include <Nebula/Graphics/GUI/Object/Base.hh>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace GUI {
 			namespace Object {
 				/** \brief %textview

@@ -4,7 +4,7 @@
 #include <Nebula/Util/shared.hpp>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace Window {
 			class __base: virtual public neb::std::shared
 			{

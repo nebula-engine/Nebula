@@ -4,7 +4,7 @@
 #include <Nebula/Graphics/GUI/Object/textview.hh>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace GUI {
 			namespace Object {
 				class edittext: public Neb::Graphics::GUI::Object::textview {

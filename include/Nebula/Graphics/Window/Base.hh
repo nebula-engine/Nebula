@@ -27,7 +27,7 @@
 
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace Window {
 			class Base:
 				virtual public Neb::Graphics::Window::__base,

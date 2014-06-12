@@ -6,7 +6,7 @@
 #include <Nebula/Graphics/Types.hh>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace Context {
 			namespace Util {
 				/** @brief %Cast

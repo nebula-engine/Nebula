@@ -14,7 +14,7 @@
 #include <Nebula/Scene/Base.hh>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace Context {
 			/** @brief Context
 			 *

@@ -2,7 +2,7 @@
 #define NEBULA_GRAPHICS_DRAWABLE_BASE_HPP
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace Drawable {
 			/** @brief %Drawable
 			 * 

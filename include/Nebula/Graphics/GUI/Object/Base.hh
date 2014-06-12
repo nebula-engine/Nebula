@@ -11,7 +11,7 @@
 #include <Nebula/Graphics/GUI/Object/Util/Parent.hh>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace GUI {
 			namespace Object {
 				class Base: virtual public neb::std::shared {

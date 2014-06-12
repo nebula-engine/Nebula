@@ -8,7 +8,7 @@
 //#include <Nebula/camera_control.hpp>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace Camera {
 			namespace Projection {
 				/** @brief @Base */

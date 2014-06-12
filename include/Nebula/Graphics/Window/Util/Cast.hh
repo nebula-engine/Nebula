@@ -5,7 +5,7 @@
 #include <Nebula/Graphics/Types.hh>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace Window {
 			namespace Util {
 				class Cast:

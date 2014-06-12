@@ -5,7 +5,7 @@
 #include <Nebula/Graphics/Context/Base.hh>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace Context {
 			namespace Util {
 				class Parent:

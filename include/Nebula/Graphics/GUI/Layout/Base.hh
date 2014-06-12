@@ -14,7 +14,7 @@
 #include <Nebula/Util/typedef.hpp>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace GUI {
 			namespace Layout {
 			/** @brief %Base */

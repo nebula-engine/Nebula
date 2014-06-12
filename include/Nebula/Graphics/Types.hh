@@ -53,7 +53,7 @@ namespace neb {
 	}
 
 	/** @brief %Graphics */
-	namespace Graphics {
+	namespace gfx {
 		namespace Window {
 			namespace Util {
 				class Parent;

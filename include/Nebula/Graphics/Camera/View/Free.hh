@@ -7,7 +7,7 @@
 #include <Nebula/Graphics/Camera/View/Base.hh>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace Camera {
 			namespace View {
 				/** @brief free flying camera

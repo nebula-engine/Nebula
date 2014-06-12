@@ -5,7 +5,7 @@
 #include <Nebula/Graphics/Window/__base.hpp>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace Window {
 			namespace Util {
 				class Parent:

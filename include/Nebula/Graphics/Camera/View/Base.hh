@@ -17,7 +17,7 @@
 #include <Nebula/Graphics/glsl/program.hh>
 
 namespace neb {
-	namespace Graphics {
+	namespace gfx {
 		namespace Camera {
 			namespace View {
 				/** @brief @Base */
