@@ -16,10 +16,18 @@ math::geo::rectangle::rectangle(vec3 center, vec3 x, vec3 n, float w, float h) {
 	auto v1(sp::make_shared<math::geo::vertex>(center + x - y, n, vec2(1,0)));
 	auto v2(sp::make_shared<math::geo::vertex>(center + x + y, n, vec2(1,1)));
 	auto v3(sp::make_shared<math::geo::vertex>(center - x + y, n, vec2(0,1)));
-	
-	triangles_.push_back(sp::make_shared<tri>(v0,v1,v2));
-	triangles_.push_back(sp::make_shared<tri>(v2,v3,v0));
 
 
+	if(glm::length(n) < 0) {
+		triangles_.push_back(sp::make_shared<tri>(v0,v1,v2));
+		triangles_.push_back(sp::make_shared<tri>(v2,v3,v0));
+	} else if(glm::length(n) > 0) {
+		triangles_.push_back(sp::make_shared<tri>(v0,v2,v1));
+		triangles_.push_back(sp::make_shared<tri>(v2,v0,v3));
+	} else {
+		abort();
+	}
 }
+
+
 
