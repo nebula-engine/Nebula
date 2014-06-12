@@ -57,7 +57,8 @@ namespace neb { namespace core { namespace actor {
 
 		public:
 			/** @name Render @{ */
-			void						draw(sp::shared_ptr<neb::gfx::Context::Base>, mat4);
+			void						draw(sp::shared_ptr<neb::gfx::Context::Base>, sp::shared_ptr<neb::glsl::program> p,
+mat4);
 			/** @} */
 
 			virtual mat4					getPose();

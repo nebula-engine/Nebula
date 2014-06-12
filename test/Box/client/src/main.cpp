@@ -34,7 +34,7 @@
 
 
 
-/*void	create_player(glutpp::window::window_s wnd, glutpp::scene::scene_s scene) {
+/*void	create_player(sp::shared_ptr<glutpp::window::window> wnd, sp::shared_ptr<glutpp::scene::scene> scene) {
 	
 	auto rigidbody = create_player_actor(scene);
 
@@ -42,7 +42,7 @@
 	rigidbody->connect(wnd);
 
 	// control
-	neb::control::rigid_body::raw_s raw;
+	sp::shared_ptr<neb::control::rigid_body::raw> raw;
 	
 	app->create_window(600, 600, 200, 100, "box");
 	app->create_window(600, 600, 200, 100, "box second");
@@ -59,17 +59,17 @@
 	//app->activate_layout(box::LAYOUT_GAME);
 
 }*/
-Neb::Actor::RigidBody::Base_s create_player_actor(Neb::Scene::Base_s scene) {
+sp::shared_ptr<neb::Actor::RigidBody::Base> create_player_actor(sp::shared_ptr<neb::Scene::Base> scene) {
 
-	typedef Neb::Actor::Base A;
+	typedef neb::Actor::Base A;
 	
-	auto app = Neb::App::Base::globalBase();
+	auto app = neb::App::Base::globalBase();
 	
 	neb::std::wrapper wrap;
 
 	app->loadXml(std::string("player0.xml"), wrap);
 	
-	//glutpp::actor::desc_s ad = scene->actors_deferred_[(char*)"player0"];
+	//sp::shared_ptr<glutpp::actor::desc> ad = scene->actors_deferred_[(char*)"player0"];
 	//assert(ad);
 	
 	scene->insert(wrap.ptr_);
@@ -83,7 +83,7 @@ Neb::Actor::RigidBody::Base_s create_player_actor(Neb::Scene::Base_s scene) {
 
 	return rigidbody;
 }
-void	create_player(Neb::Graphics::Window::Base_s wnd, Neb::Scene::Base_s scene) {
+void	create_player(sp::shared_ptr<neb::gfx::Window::Base> wnd, sp::shared_ptr<neb::Scene::Base> scene) {
 	
 	auto rigidbody = create_player_actor(scene);
 
@@ -91,7 +91,7 @@ void	create_player(Neb::Graphics::Window::Base_s wnd, Neb::Scene::Base_s scene) 
 	rigidbody->connect(wnd);
 
 	// control
-	Neb::Actor::Control::RigidBody::Manual_s control;
+	sp::shared_ptr<neb::Actor::Control::RigidBody::Manual> control;
 	
 	
 	
@@ -112,14 +112,14 @@ int	main(int argc, char const ** argv) {
 		return 1;
 	}
 	
-	Neb::init();
+	neb::init();
 	
-	//Neb::App::Base::global()->object_factory_.reset(new box::object_factory);
-	//Neb::App::Base::global()->raw_factory_.reset(new neb::actor::raw_factory);
+	//neb::App::Base::global()->object_factory_.reset(new box::object_factory);
+	//neb::App::Base::global()->raw_factory_.reset(new neb::actor::raw_factory);
 	
 	//int	client_main(char const * addr, short unsigned int port) {
 	
-	auto app = Neb::App::Base::globalBase();
+	auto app = neb::App::Base::globalBase();
 	
 	assert(app);
 	
