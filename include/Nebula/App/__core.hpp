@@ -7,9 +7,9 @@
 namespace neb {
 	namespace App {
 		class __core:
-			virtual public Neb::App::__base,
-			virtual public Neb::Graphics::GUI::Layout::Util::Parent,
-			virtual public Neb::Scene::Util::Parent
+			virtual public neb::App::__base,
+			virtual public neb::gfx::GUI::Layout::Util::Parent,
+			virtual public neb::Scene::Util::Parent
 		{
 
 

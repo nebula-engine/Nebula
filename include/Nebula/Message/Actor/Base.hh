@@ -8,7 +8,7 @@ namespace neb {
 	namespace Message {
 		namespace Actor {
 			class Base:
-				virtual public Neb::Message::Base
+				virtual public neb::Message::Base
 			{
 				public:
 					/** @brief index
@@ -18,8 +18,8 @@ namespace neb {
 					gal::std::index_type			index_;
 			};
 			class IBase:
-				virtual public Neb::Message::IBase,
-				virtual public Neb::Message::Actor::Base
+				virtual public neb::Message::IBase,
+				virtual public neb::Message::Actor::Base
 			{
 				private:
 					IBase&			operator=(IBase const &);
@@ -32,8 +32,8 @@ namespace neb {
 					}
 			};
 			class OBase:
-				virtual public Neb::Message::OBase,
-				virtual public Neb::Message::Actor::Base
+				virtual public neb::Message::OBase,
+				virtual public neb::Message::Actor::Base
 			{
 				public:
 					virtual void		serialize(

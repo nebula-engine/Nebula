@@ -9,11 +9,11 @@ namespace neb {
 	namespace Actor {
 		namespace RigidBody {
 			class Remote:
-				virtual public Neb::Actor::RigidBody::Base,
-				virtual public Neb::Actor::RigidActor::Remote
+				virtual public neb::Actor::RigidBody::Base,
+				virtual public neb::Actor::RigidActor::Remote
 			{
 				public:
-					virtual void		step(Neb::Core::TimeStep const & ts);
+					virtual void		step(neb::core::TimeStep const & ts);
 			};
 		}
 	}

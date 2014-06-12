@@ -8,14 +8,14 @@ namespace neb { namespace core { namespace actor {
 namespace neb {
 	namespace Actor {
 		namespace Actor {
-			class Base: virtual public Neb::Actor::Base {
+			class Base: virtual public neb::Actor::Base {
 				public:
 					Base();
-					Base(Neb::Actor::Util::Parent_s);
+					Base(sp::shared_ptr<neb::Actor::Util::Parent>;
 					
 					virtual void			init();
 					virtual void			release();
-					virtual void			step(Neb::Core::TimeStep const & ts);
+					virtual void			step(neb::core::TimeStep const & ts);
 					
 					virtual void			set_pose(mat4);
 			};

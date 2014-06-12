@@ -30,23 +30,23 @@
 
 namespace neb {
 	namespace App {
-		class __gfx_glsl: virtual public Neb::App::__base {
+		class __gfx_glsl: virtual public neb::App::__base {
 			public:
-				typedef std::map<int, std::shared_ptr<Neb::glsl::program> >		map_program_type;
+				typedef std::map<int, std::shared_ptr<neb::glsl::program> >		map_program_type;
 
-				friend class Neb::Graphics::Context::Base;
+				friend class neb::gfx::Context::Base;
 			protected:
-				static sp::shared_ptr<Neb::App::__gfx_glsl>		global();
+				static sp::shared_ptr<neb::App::__gfx_glsl>		global();
 
-				std::shared_ptr<Neb::glsl::program>			use_program(Neb::program_name::e);
-				std::shared_ptr<Neb::glsl::program>			get_program(Neb::program_name::e);
+				std::shared_ptr<neb::glsl::program>			use_program(neb::program_name::e);
+				std::shared_ptr<neb::glsl::program>			get_program(neb::program_name::e);
 			public:
-				std::shared_ptr<Neb::glsl::program>			current_program();
+				std::shared_ptr<neb::glsl::program>			current_program();
 				void							create_programs();
 
 
 				map_program_type					programs_;
-				std::shared_ptr<Neb::glsl::program>			current_;
+				std::shared_ptr<neb::glsl::program>			current_;
 		};
 	}
 }

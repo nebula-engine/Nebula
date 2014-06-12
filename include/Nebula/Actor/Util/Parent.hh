@@ -28,10 +28,10 @@ namespace neb {
 			 * abstract class for parent of an @Actor
 			 */
 			class Parent:
-				public Neb::Util::parent<neb::actor::__base>,
-				virtual public Neb::Core::Pose,
-				virtual public Neb::Scene::Util::Cast,
-				virtual public Neb::Actor::Util::Cast
+				public neb::Util::parent<neb::actor::__base>,
+				virtual public neb::core::Pose,
+				virtual public neb::Scene::Util::Cast,
+				virtual public neb::Actor::Util::Cast
 			{
 				public:
 					Parent();
@@ -39,7 +39,7 @@ namespace neb {
 
 					virtual void				init();
 				public:
-					Neb::Scene::Base_s			getScene();
+					neb::Scene::Base_s			getScene();
 			};
 		}
 	}

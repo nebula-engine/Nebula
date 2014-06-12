@@ -7,7 +7,7 @@
 
 namespace neb {
 	namespace Network {
-		class Server: public gal::net::server<Neb::Network::Communicating> {
+		class Server: public gal::net::server<neb::Network::Communicating> {
 			public:
 				/** @brief ctor
 *
@@ -16,10 +16,10 @@ namespace neb {
 				Server(
 						boost::asio::io_service& io_service,
 						ip::tcp::endpoint const & endpoint);
-				void			accept(sp::shared_ptr<Neb::Network::Communicating>);
+				void			accept(sp::shared_ptr<neb::Network::Communicating>);
 				void			write(sp::shared_ptr<gal::net::omessage> omessage);
 			private:
-				std::vector< sp::shared_ptr< Neb::Network::Communicating > >	clients_;
+				std::vector< sp::shared_ptr< neb::Network::Communicating > >	clients_;
 
 		};
 	}

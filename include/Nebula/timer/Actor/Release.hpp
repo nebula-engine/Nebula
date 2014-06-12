@@ -6,9 +6,9 @@
 namespace neb {
 	namespace Timer {
 		namespace Actor {
-			class Release: public Neb::Timer::Actor::Base {
+			class Release: public neb::Timer::Actor::Base {
 				public:
-					Release(Neb::Actor::Base_s, double);
+					Release(neb::Actor::Base_s, double);
 					virtual void		doSomething();
 			};
 		}

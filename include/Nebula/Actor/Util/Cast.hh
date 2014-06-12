@@ -10,10 +10,10 @@ namespace neb {
                 namespace Util {
                         class Cast: virtual public gal::std::shared {
 				public:
-					sp::shared_ptr<Neb::Actor::Base>				isActorBase();
-					sp::shared_ptr<Neb::Actor::Actor::Base>				isActorActor();
-					sp::shared_ptr<Neb::Actor::RigidActor::Base>			isActorRigidActor();
-					sp::shared_ptr<Neb::Actor::RigidBody::Base>			isActorRigidBody();
+					sp::shared_ptr<neb::Actor::Base>				isActorBase();
+					sp::shared_ptr<neb::Actor::Actor::Base>				isActorActor();
+					sp::shared_ptr<neb::Actor::RigidActor::Base>			isActorRigidActor();
+					sp::shared_ptr<neb::Actor::RigidBody::Base>			isActorRigidBody();
 			};
 		}
 	}

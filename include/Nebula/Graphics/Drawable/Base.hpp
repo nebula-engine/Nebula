@@ -16,7 +16,7 @@ namespace neb {
 					 *
 					 * draw into prepared rendering context
 					 */
-					virtual void            draw(sp::shared_ptr<Neb::Graphics::Context::Base> context) = 0;
+					virtual void            draw(sp::shared_ptr<neb::gfx::Context::Base> context) = 0;
 			};     
 		}
 	}

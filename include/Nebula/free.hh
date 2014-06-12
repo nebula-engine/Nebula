@@ -10,8 +10,8 @@ namespace neb {
 }
 
 namespace neb {
-	void	draw_quad(float, float, float, float, Neb::Color::color<float>);
-	void	draw_text(float, float, float, float, Neb::Color::color<float>, std::string);
+	void	draw_quad(float, float, float, float, neb::Color::color<float>);
+	void	draw_text(float, float, float, float, neb::Color::color<float>, std::string);
 }
 
 void	checkerror(char const *);

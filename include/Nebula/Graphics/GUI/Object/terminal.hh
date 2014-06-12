@@ -9,7 +9,7 @@ namespace neb {
 	namespace gfx {
 		namespace GUI {
 			namespace Object {
-				class terminal: public Neb::Graphics::GUI::Object::Base {
+				class terminal: public neb::gfx::GUI::Object::Base {
 					public:
 						enum
 						{
@@ -22,7 +22,7 @@ namespace neb {
 
 
 						virtual int		key_fun(
-								sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int,int,int,int);
+								sp::shared_ptr<neb::gfx::Window::Base> const & window, int,int,int,int);
 
 
 						virtual int		enter();

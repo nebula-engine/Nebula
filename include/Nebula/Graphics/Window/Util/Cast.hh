@@ -12,7 +12,7 @@ namespace neb {
 					virtual public neb::std::shared
 				{
 					public:
-						Neb::Graphics::Window::Base_s		isWindowBase();
+						neb::gfx::Window::Base_s		isWindowBase();
 				};
 			}
 		}

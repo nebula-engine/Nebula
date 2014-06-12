@@ -24,13 +24,13 @@ namespace neb {
 		 * graphics and window handling
 		 */
 		class __gfx:
-			virtual public Neb::App::__base,
-			virtual public Neb::Graphics::Window::Util::Parent
+			virtual public neb::App::__base,
+			virtual public neb::gfx::Window::Util::Parent
 		{
 			public:
-				typedef std::map< GLFWwindow*, Neb::Graphics::Window::Base_s >			glfwwindow_map_type;
+				typedef std::map< GLFWwindow*, sp::shared_ptr<neb::gfx::Window::Base> >			glfwwindow_map_type;
 
-				static sp::shared_ptr<Neb::App::__gfx>		global();
+				static sp::shared_ptr<neb::App::__gfx>		global();
 
 
 				static void					static_error_fun(int,char const *);

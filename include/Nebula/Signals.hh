@@ -4,7 +4,7 @@
 #include <boost/signals2.hpp>
 
 typedef int							ret_type;
-typedef sp::shared_ptr<Neb::Graphics::Window::Base> const &	wnd_type;
+typedef sp::shared_ptr<neb::gfx::Window::Base> const &	wnd_type;
 
 namespace neb {
 	namespace Signals {

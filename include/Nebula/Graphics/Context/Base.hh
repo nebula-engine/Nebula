@@ -33,15 +33,15 @@ namespace neb {
 			 */
 			class Base:
 				virtual public neb::std::shared,
-				virtual public Neb::Graphics::Context::Util::Cast
+				virtual public neb::gfx::Context::Util::Cast
 			{
 				public:
 					Base();
-					Base(Neb::Graphics::Context::Util::Parent_s parent);
+					Base(neb::gfx::Context::Util::Parent_s parent);
 					Base&						operator=(Base const & r);
 					void						init();
 					void						release();
-					virtual void					step(Neb::Core::TimeStep const & ts);
+					virtual void					step(neb::core::TimeStep const & ts);
 					virtual void					render();
 					void						resize(int w, int h);
 
@@ -50,30 +50,30 @@ namespace neb {
 					 * 
 					 * @note WEAK
 					 */
-					sp::shared_ptr<Neb::Graphics::Context::Util::Parent>		parent_;
+					sp::shared_ptr<neb::gfx::Context::Util::Parent>		parent_;
 				public:
 					/** @brief %Viewport
 					 * 
 					 * sub-rectangle within target
 					 */
-					Neb::gfx::Viewport						viewport_;
+					neb::gfx::Viewport						viewport_;
 					/** @brief View Space Camera
 					 * 
 					 * @note OWNED
 					 */
-					sp::shared_ptr<Neb::Graphics::Camera::View::Base>		view_;
+					sp::shared_ptr<neb::gfx::Camera::View::Base>		view_;
 					/** @brief Clip Space Camera
 					 * 
 					 * @note OWNED
 					 */
-					sp::shared_ptr<Neb::Graphics::Camera::Projection::Base>		proj_;
+					sp::shared_ptr<neb::gfx::Camera::Projection::Base>		proj_;
 					/** @brief %Drawable
 					 * 
 					 * @note WEAK
 					 * 
 					 * content to draw
 					 */
-					 sp::shared_ptr<Neb::Graphics::Drawable::Base>			drawable_;
+					 sp::shared_ptr<neb::gfx::Drawable::Base>			drawable_;
 			};
 		}
 	}

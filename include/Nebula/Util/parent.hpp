@@ -31,7 +31,7 @@ namespace neb {
 							});
 
 				}
-				void		step(Neb::Core::TimeStep const & ts) {
+				void		step(neb::core::TimeStep const & ts) {
 
 					gal_parent::map_.template for_each<0>([&] (iterator<0> it) {
 							it->ptr_->step(ts);

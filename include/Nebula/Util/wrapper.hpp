@@ -14,7 +14,7 @@ namespace neb {
 				wrapper(sp::shared_ptr<neb::std::shared> s);
 				virtual void		init();
 				virtual void		release();
-				virtual void		step(Neb::Core::TimeStep const & ts);
+				virtual void		step(neb::core::TimeStep const & ts);
 		};
 	}
 }

@@ -34,9 +34,9 @@ namespace neb {
 		 * @ingroup group_core
 		 * @brief Base
 		 */
-		class Base: virtual public Neb::Actor::Util::Parent {
+		class Base: virtual public neb::Actor::Util::Parent {
 			public:
-				Base(Neb::Scene::Util::Parent_s);
+				Base(sp::shared_ptr<neb::Scene::Util::Parent>;
 				virtual ~Base();
 				void				init();
 				void				release();
@@ -45,10 +45,10 @@ namespace neb {
 				/** @brief render */
 				void				render(
 						double time,
-						std::shared_ptr<Neb::Graphics::Camera::View::Base>,
-						std::shared_ptr<Neb::Graphics::Camera::Projection::Base>,
-						Neb::Graphics::Window::Base_s);
-				void							step(Neb::Core::TimeStep const & ts);
+						std::shared_ptr<neb::gfx::Camera::View::Base>,
+						std::shared_ptr<neb::gfx::Camera::Projection::Base>,
+						sp::shared_ptr<neb::gfx::Window::Base>;
+				void							step(neb::core::TimeStep const & ts);
 				/** @} */
 
 				virtual  void						serialize(boost::archive::polymorphic_iarchve & ar, unsigned int const & version) {
@@ -62,11 +62,11 @@ namespace neb {
 			public:
 				physx::PxSimulationFilterShader				px_filter_shader_;
 
-				Neb::simulation_callback*				simulation_callback_;
+				neb::simulation_callback*				simulation_callback_;
 
 				physx::PxScene*						px_scene_;
 
-				//Neb::vehicle_manager					vehicle_manager_;
+				//neb::vehicle_manager					vehicle_manager_;
 
 			public:
 				glm::vec3						gravity_;

@@ -9,9 +9,9 @@ namespace neb {
 	namespace Light {
 		namespace Util {
 			class Parent:
-				virtual public Neb::Util::parent<Neb::Light::Base>,
-				virtual public Neb::Shape::Util::Cast,
-				virtual public Neb::Core::Pose
+				virtual public neb::Util::parent<neb::Light::Base>,
+				virtual public neb::Shape::Util::Cast,
+				virtual public neb::core::Pose
 			{
 				public:
 					virtual ~Parent() {}

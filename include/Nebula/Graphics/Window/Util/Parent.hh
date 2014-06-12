@@ -9,7 +9,7 @@ namespace neb {
 		namespace Window {
 			namespace Util {
 				class Parent:
-					public Neb::Util::parent<Neb::Graphics::Window::__base>
+					public neb::Util::parent<neb::gfx::Window::__base>
 				{
 					public:
 				};

@@ -26,15 +26,15 @@
 
 namespace neb {
 	namespace Light {
-		class Point: public Neb::Light::Base {
+		class Point: public neb::Light::Base {
 			public:
-				Point(sp::shared_ptr<Neb::Light::Util::Parent> parent): Neb::Light::Base(parent) {}
+				Point(sp::shared_ptr<neb::Light::Util::Parent> parent): neb::Light::Base(parent) {}
 
 				virtual void				load(int o, mat4 space);
 
 
 		};
-		class Spot: public Neb::Light::Base {
+		class Spot: public neb::Light::Base {
 			private:
 				template<class Archive> void		serializeTemplate(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("spot_direction",spot_direction_);
@@ -43,16 +43,16 @@ namespace neb {
 					ar & boost::serialization::make_nvp("spot_light_cos_cutoff",spot_light_cos_cutoff_);
 				}
 			public:
-				Spot(sp::shared_ptr<Neb::Light::Util::Parent> parent);
+				Spot(sp::shared_ptr<neb::Light::Util::Parent> parent);
 
 				virtual void				load(int o, mat4 space);
 
 				virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
-					Neb::Light::Base::serialize(ar, version);
+					neb::Light::Base::serialize(ar, version);
 					serializeTemplate(ar, version);
 				}
 				virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
-					Neb::Light::Base::serialize(ar, version);
+					neb::Light::Base::serialize(ar, version);
 					serializeTemplate(ar, version);
 				}	
 
@@ -62,7 +62,7 @@ namespace neb {
 				float				spot_exponent_;
 				float				spot_light_cos_cutoff_;
 		};
-		class Directional: public Neb::Light::Base {
+		class Directional: public neb::Light::Base {
 			public:
 		};
 	}

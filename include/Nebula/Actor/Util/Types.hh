@@ -3,6 +3,8 @@
 
 #include <memory>
 
+namespace sp = ::std;
+
 namespace neb {
 	/** @brief %Actor */
 	namespace Actor {
@@ -27,26 +29,14 @@ namespace neb {
 		/** @brief %Actor */
 		namespace Actor {
 			class Base;
-
-			typedef std::shared_ptr<Base>		Base_s;
-			typedef std::weak_ptr<Base>		Base_w;
-			typedef std::unique_ptr<Base>		Base_u;
+			class Local;
+			class Remote;
 		}
-
+		/** @brief %rigidactor */
 		namespace RigidActor {
 			class Base;
 			class Local;
 			class Remote;
-
-			typedef std::shared_ptr<Base>	Base_s;
-			typedef std::weak_ptr<Base>	Base_w;
-
-			typedef std::shared_ptr<Local>	Local_s;
-			typedef std::weak_ptr<Local>	Local_w;
-
-			typedef std::shared_ptr<Remote>	Remote_s;
-			typedef std::weak_ptr<Remote>	Remote_w;
-
 		}
 
 		/** @brief %RigidBody */
@@ -54,15 +44,6 @@ namespace neb {
 			class Base;
 			class Local;
 			class Remote;
-
-			typedef std::shared_ptr<Base>	Base_s;
-			typedef std::weak_ptr<Base>	Base_w;
-
-			typedef std::shared_ptr<Local>	Local_s;
-			typedef std::weak_ptr<Local>	Local_w;
-
-			typedef std::shared_ptr<Remote>	Remote_s;
-			typedef std::weak_ptr<Remote>	Remote_w;
 		}
 
 		/** @brief %RigidDynamic */
@@ -70,15 +51,6 @@ namespace neb {
 			class Base;
 			class Local;
 			class Remote;
-
-			typedef std::shared_ptr<Base>	Base_s;
-			typedef std::weak_ptr<Base>	Base_w;
-
-			typedef std::shared_ptr<Local>	Local_s;
-			typedef std::weak_ptr<Local>	Local_w;
-
-			typedef std::shared_ptr<Remote>	Remote_s;
-			typedef std::weak_ptr<Remote>	Remote_w;
 		}
 
 		/** @brief %RigidStatic */
@@ -87,41 +59,14 @@ namespace neb {
 			class Local;
 			class Remote;
 
-			typedef std::shared_ptr<Base>	Base_s;
-			typedef std::weak_ptr<Base>	Base_w;
-
-			typedef std::shared_ptr<Local>	Local_s;
-			typedef std::weak_ptr<Local>	Local_w;
-
-			typedef std::shared_ptr<Remote>	Remote_s;
-			typedef std::weak_ptr<Remote>	Remote_w;
 		}
 
 		class empty;
 
 
-		typedef std::shared_ptr<Base>		Base_s;
-		typedef std::weak_ptr<Base>		Base_w;
-		typedef std::unique_ptr<Base>		Base_u;
-
-
-
-
-
-
 		/** @brief Utilities */
 		namespace Util {
-			typedef int					index_type;
-
-			class addr;
-
-			typedef std::weak_ptr<addr>			addr_w;
-
 			class Parent;
-
-			typedef std::shared_ptr<Parent>			Parent_s;
-			typedef std::weak_ptr<Parent>			Parent_w;
-			typedef std::unique_ptr<Parent>			Parent_u;
 		}
 
 		/** @brief %Control */
@@ -138,12 +83,6 @@ namespace neb {
 
 				class Base;
 				class Manual;
-
-				typedef std::shared_ptr<Base>		Base_s;
-				typedef std::weak_ptr<Base>		Base_w;
-
-				typedef std::shared_ptr<Manual>		Manual_s;
-				typedef std::weak_ptr<Manual>		Manual_w;
 
 			}
 		}

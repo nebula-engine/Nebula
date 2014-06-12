@@ -14,7 +14,7 @@ namespace neb {
 		namespace Actor {
 			struct Create {
 				public:
-					void				load(Neb::Actor::Base_s actor);
+					void				load(neb::Actor::Base_s actor);
 
 					template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 						ar & parent_i_;
@@ -35,7 +35,7 @@ namespace neb {
 					/** @brief Wrapper.
 					 * wrapper to create the actor object
 					 */
-					gal::std::wrapper<Neb::Actor::Base>		wrapper_;
+					gal::std::wrapper<neb::Actor::Base>		wrapper_;
 			};
 		}
 	}

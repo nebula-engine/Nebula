@@ -15,7 +15,7 @@ namespace neb {
 					virtual public gal::std::shared
 				{
 					public:
-						Neb::Graphics::Context::Base_s			isContextBase();
+						neb::gfx::Context::Base_s			isContextBase();
 				};
 			}
 		}

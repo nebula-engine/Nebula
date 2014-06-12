@@ -14,7 +14,7 @@ namespace neb {
 				 * this camera can move freely through the scene
 				 * user input in interpreted as three-component velocity and yaw and pitch rate
 				 */
-				class Free: public Neb::Graphics::Camera::View::Base {
+				class Free: public neb::gfx::Camera::View::Base {
 					public:
 						/** @brief Map. */
 						struct Flag {
@@ -29,13 +29,13 @@ namespace neb {
 						/** @name constructors
 						 * @{
 						 */
-						Free(Neb::Graphics::Context::Base_s parent);
+						Free(neb::gfx::Context::Base_s parent);
 						//Free(math::vec3<double> eye, double yaw, double pitch);
 						/** @} */
 
 						/** @brief view matrix */
 						virtual mat4					view();
-						virtual void					step(Neb::Core::TimeStep const & ts);
+						virtual void					step(neb::core::TimeStep const & ts);
 
 						void						init();
 
@@ -54,7 +54,7 @@ namespace neb {
 						//std::vector<gal::sig::connection<>*>		vec_y_;
 						//std::vector<gal::sig::connection<>*>		vec_z_;
 
-						Neb::Graphics::Window::Base_w			window_;
+						neb::gfx::Window::Base_w			window_;
 
 
 						std::map<int,unsigned int>			key_flag_;

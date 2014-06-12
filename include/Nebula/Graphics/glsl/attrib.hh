@@ -10,7 +10,7 @@ namespace neb {
 			public:
 				attrib();
 				void		init(char const *, GLuint);
-				int		locate(std::shared_ptr<Neb::glsl::program> p);
+				int		locate(std::shared_ptr<neb::glsl::program> p);
 				void		enable();
 				void		disable();
 

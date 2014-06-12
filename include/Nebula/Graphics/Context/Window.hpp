@@ -24,13 +24,13 @@ namespace neb {
 			 * such that things like layouts are render ON TOP of existing scene.'
 			 */
 			class Window:
-				virtual public Neb::Graphics::Context::Base
+				virtual public neb::gfx::Context::Base
 			{
 				public:
-					Window(sp::shared_ptr<Neb::Graphics::Window::Base> window);
+					Window(sp::shared_ptr<neb::gfx::Window::Base> window);
 					virtual void					init();
 				public:
-					sp::shared_ptr<Neb::Graphics::Window::Base>	window_;
+					sp::shared_ptr<neb::gfx::Window::Base>	window_;
 			};
 		}
 	}

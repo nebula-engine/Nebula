@@ -23,7 +23,7 @@ namespace neb {
 				Base();
 		};
 		class OBase:
-			virtual public Neb::Message::Base
+			virtual public neb::Message::Base
 		{
 			public:
 				OBase();
@@ -34,7 +34,7 @@ namespace neb {
 				sp::shared_ptr<gal::net::omessage>	msg_;
 		};
 		class IBase:
-			virtual public Neb::Message::Base
+			virtual public neb::Message::Base
 		{
 			public:
 				IBase();

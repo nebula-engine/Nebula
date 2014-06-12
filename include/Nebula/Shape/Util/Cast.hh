@@ -12,7 +12,7 @@ namespace neb {
 				virtual public gal::std::shared
 			{
 				public:
-					Neb::Shape::Base_s		isShapeBase();
+					neb::Shape::Base_s		isShapeBase();
 			};
 		}
 	}

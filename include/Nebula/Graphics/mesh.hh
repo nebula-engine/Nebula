@@ -38,14 +38,14 @@ namespace neb {
 	class mesh {
 		public:
 			mesh();
-			void				save(std::string);
-			void				load(std::string);
+			void				save(::std::string);
+			void				load(::std::string);
 			void				construct(math::geo::polyhedron*);
 			void				print(int sl);
 			
 			// draw data
 			file_header			fh_;
-			Neb::vertex*			vertices_;
+			neb::vertex*			vertices_;
 			GLushort*			indices_;
 	};
 }

@@ -10,11 +10,11 @@ namespace neb {
 	namespace Actor {
 		namespace Actor {
 			class Local:
-				virtual public Neb::Actor::Actor::Base,
-				virtual public Neb::Actor::Local
+				virtual public neb::Actor::Actor::Base,
+				virtual public neb::Actor::Local
 			{
 				public:
-					virtual void		step(Neb::Core::TimeStep const & ts);
+					virtual void		step(neb::core::TimeStep const & ts);
 			};
 		}
 	}

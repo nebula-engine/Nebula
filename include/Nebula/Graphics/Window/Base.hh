@@ -30,13 +30,13 @@ namespace neb {
 	namespace gfx {
 		namespace Window {
 			class Base:
-				virtual public Neb::Graphics::Window::__base,
-				virtual public Neb::Graphics::Context::Util::Parent,
-				virtual public Neb::Graphics::Window::Util::Cast
+				virtual public neb::gfx::Window::__base,
+				virtual public neb::gfx::Context::Util::Parent,
+				virtual public neb::gfx::Window::Util::Cast
 			{
 				public:
 					Base();
-					Base(Neb::Graphics::Window::Util::Parent_s parent);
+					Base(neb::gfx::Window::Util::Parent_s parent);
 					virtual ~Base();
 				
 				public:
@@ -45,7 +45,7 @@ namespace neb {
 	
 					/** @name Main Loop @{ */
 					void					render();
-					void					step(Neb::Core::TimeStep const & ts);
+					void					step(neb::core::TimeStep const & ts);
 					/** @} */
 					void					resize();
 	
@@ -56,25 +56,25 @@ namespace neb {
 					void					callback_mouse_button_fun(GLFWwindow*,int,int,int);
 					void					callback_key_fun(GLFWwindow*,int,int,int,int);
 				public:
-					Neb::Graphics::Window::Util::Parent_s			parent_;
+					neb::gfx::Window::Util::Parent_s			parent_;
 					/** @brief self
 					 *
 					 * avoid casting shared_from_this
 					 */
-					sp::shared_ptr<Neb::Graphics::Window::Base>		self_;
+					sp::shared_ptr<neb::gfx::Window::Base>		self_;
 
 					// input signals
 					struct
 					{
-						Neb::Signals::KeyFun		key_fun_;
-						Neb::Signals::MouseButtonFun	mouse_button_fun_;
+						neb::Signals::KeyFun		key_fun_;
+						neb::Signals::MouseButtonFun	mouse_button_fun_;
 					} sig_;
 
 
 					
 					
 	
-					Neb::Graphics::Window::Util::Flag	flag_;
+					neb::gfx::Window::Util::Flag	flag_;
 					int					x_;
 					int					y_;
 					int					w_;

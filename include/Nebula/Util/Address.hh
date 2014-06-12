@@ -10,7 +10,7 @@ namespace neb {
 
 		template <class T> class Address {
 			public:
-				typedef Neb::Util::index_type __index_type;
+				typedef neb::Util::index_type __index_type;
 
 				std::vector<__index_type>	vec_;
 				
