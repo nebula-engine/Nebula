@@ -26,17 +26,17 @@
 
 //#include <math/color.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Light {
 		class Base: virtual public gal::std::shared {
 			public:
-				Base(Neb::Light::Util::Parent_s);
+				Base(sp::shared_ptr<neb::Light::Util::Parent>;
 				
 				void				init();
 				
 				virtual void			release();
 				virtual void			cleanup();
-				virtual void			step(Neb::Core::TimeStep const & ts);
+				virtual void			step(neb::core::TimeStep const & ts);
 				virtual void			load(int, mat4);
 				
 				void				load_shadow();
@@ -68,17 +68,17 @@ namespace Neb {
 					serializeTemplate(ar, version);
 				}
 			public:
-				Neb::Light::Util::Parent_s	parent_;
+				neb::Light::Util::Parent_s	parent_;
 
-				Neb::Light::Util::Flag		flag_;
+				neb::Light::Util::Flag		flag_;
 
 				// position
 				glm::vec4			pos_;
 
 				// colors
-				Neb::Color::color<float>	ambient_;
-				Neb::Color::color<float>	diffuse_;
-				Neb::Color::color<float>	specular_;
+				neb::Color::color<float>	ambient_;
+				neb::Color::color<float>	diffuse_;
+				neb::Color::color<float>	specular_;
 
 				// other properties
 

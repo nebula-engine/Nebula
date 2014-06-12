@@ -6,7 +6,7 @@
 #include <Nebula/Util/shared.hpp>
 #include <Nebula/Core/TimeStep.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Util {
 		template<typename T> class parent: virtual public gal::std::parent<T> {
 			public:
@@ -31,7 +31,7 @@ namespace Neb {
 							});
 
 				}
-				void		step(Neb::Core::TimeStep const & ts) {
+				void		step(neb::core::TimeStep const & ts) {
 
 					gal_parent::map_.template for_each<0>([&] (iterator<0> it) {
 							it->ptr_->step(ts);

@@ -15,12 +15,12 @@
 #include <Nebula/config.hh>
 #include <Nebula/Scene/Util/Types.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Scene {
 		namespace Util {
 			class Address {
 				public:
-					void						load(Neb::Scene::Base_s & scene);
+					void						load(neb::Scene::Base_s & scene);
 
 					template<class Archive> void			serialize(Archive& ar, unsigned int const & version) {
 						ar & vec_;

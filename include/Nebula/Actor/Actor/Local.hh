@@ -5,15 +5,16 @@
 #include <Nebula/Actor/Local.hh>
 #include <Nebula/Actor/Actor/Base.hh>
 
-namespace Neb {
+namespace neb { namespace core { namespace actor {
+namespace neb {
 	namespace Actor {
 		namespace Actor {
 			class Local:
-				virtual public Neb::Actor::Actor::Base,
-				virtual public Neb::Actor::Local
+				virtual public neb::Actor::Actor::Base,
+				virtual public neb::Actor::Local
 			{
 				public:
-					virtual void		step(Neb::Core::TimeStep const & ts);
+					virtual void		step(neb::core::TimeStep const & ts);
 			};
 		}
 	}

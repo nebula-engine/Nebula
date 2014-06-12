@@ -29,27 +29,27 @@
 
 #define LIGHT_MAX 20
 
-namespace Neb {
+namespace neb {
 	namespace Scene {
 		/** 
 		 * @ingroup group_core
 		 * @brief Base
 		 */
 		class Base:
-			virtual public Neb::Graphics::Drawable::Base,
-			virtual public Neb::Actor::Util::Parent
+			virtual public neb::gfx::Drawable::Base,
+			virtual public neb::Actor::Util::Parent
 		{
 			public:
-				Base(Neb::Scene::Util::Parent_s);
+				Base(sp::shared_ptr<neb::Scene::Util::Parent>;
 				virtual ~Base();
 				virtual void				init();
 				virtual void				release();
 				/** @name Main Loop @{ */
 				/** @brief render */
 
-				void				draw(sp::shared_ptr<Neb::Graphics::Context::Base> context);
+				void				draw(sp::shared_ptr<neb::gfx::Context::Base> context);
 				void				resize(int w, int h);
-				virtual void			step(Neb::Core::TimeStep const & ts);
+				virtual void			step(neb::core::TimeStep const & ts);
 				/** @} */
 
 				virtual  void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
@@ -66,18 +66,18 @@ namespace Neb {
 				mat4						getPoseGlobal();
 				/** @} */
 			public:
-				void							add_deferred(Neb::Actor::Base_s);
+				void							add_deferred(sp::shared_ptr<neb::Actor::Base>;
 			public:
 				/** @brief parent
 				 *
 				 * @note WEAK
 				 */
-				sp::shared_ptr<Neb::Scene::Util::Parent>		parent_;
+				sp::shared_ptr<neb::Scene::Util::Parent>		parent_;
 
 			public:
-				Neb::Scene::Util::Flag					flag_;
+				neb::Scene::Util::Flag					flag_;
 
-				std::map<std::string, Neb::Actor::Base_s>		actors_deferred_;
+				std::map<std::string, neb::Actor::Base_s>		actors_deferred_;
 		};
 	}
 }

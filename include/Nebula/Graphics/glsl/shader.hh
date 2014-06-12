@@ -3,7 +3,7 @@
 
 #include <GLFW/glfw3.h>
 
-namespace Neb {
+namespace neb {
 	namespace glsl {
 		class shader {
 			public:

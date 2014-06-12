@@ -3,15 +3,15 @@
 
 #include <Nebula/Graphics/GUI/Object/Base.hh>
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace GUI {
 			namespace Object {
 				/** \brief %textview
 				 * Display and optionally edit text
 				 */
 				class textview:
-					public Neb::Graphics::GUI::Object::Base
+					public neb::gfx::GUI::Object::Base
 				{
 					public:
 						textview();
@@ -22,8 +22,8 @@ namespace Neb {
 						//int			key_down(int);
 						//virtual int		enter();
 
-						virtual int		key_fun(sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int,int,int,int);
-						virtual int		mouse_button_fun(sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int,int,int);
+						virtual int		key_fun(sp::shared_ptr<neb::gfx::Window::Base> const & window, int,int,int,int);
+						virtual int		mouse_button_fun(sp::shared_ptr<neb::gfx::Window::Base> const & window, int,int,int);
 						//virtual void		connect();
 
 				};

@@ -5,7 +5,7 @@
 
 #include <Galaxy-Network/communicating.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Network {
 		class Communicating:
 			virtual public gal::net::communicating

@@ -12,12 +12,12 @@
 
 /** @todo replace types with inheritance and possibly shared library support */
 
-namespace Neb {
+namespace neb {
 	namespace Timer {
 		namespace Actor {
 			class Base {
 				public:
-					Base(Neb::Actor::Base_s, double);
+					Base(neb::Actor::Base_s, double);
 
 
 					virtual void					doSomething() = 0;
@@ -27,7 +27,7 @@ namespace Neb {
 					//neb::Timer::Actor::Type         type_;
 					boost::asio::deadline_timer			timer_;
 					
-					Neb::Actor::Base_s				actor_;
+					sp::shared_ptr<neb::Actor::Base>			actor_;
 			};
 
 		}

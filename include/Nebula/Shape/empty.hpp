@@ -3,14 +3,14 @@
 
 #include <Nebula/Shape/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Shape {
-		class Empty: public Neb::Shape::Base {
+		class Empty: public neb::Shape::Base {
 			public:
-				Empty(sp::shared_ptr<Neb::Shape::Util::Parent> parent): Neb::Shape::Base(parent) {}
+				Empty(sp::shared_ptr<neb::Shape::Util::Parent> parent): neb::Shape::Base(parent) {}
 				virtual void			createMesh() {}
 				
-				virtual void			draw_elements(sp::shared_ptr<Neb::Graphics::Context::Base> context, mat4 space) {}
+				virtual void			draw_elements(sp::shared_ptr<neb::gfx::Context::Base> context, mat4 space) {}
 		};
 	}
 }

@@ -3,14 +3,15 @@
 
 #include <Nebula/Actor/Base.hh>
 
-namespace Neb {
+namespace neb { namespace core { namespace actor {
+namespace neb {
 	namespace Actor {
-		class Controller: public Neb::Actor::Base {
+		class Controller: public neb::Actor::Base {
 			public:
-				Controller(Neb::Actor::Util::Parent_s);
+				Controller(sp::shared_ptr<neb::Actor::Util::Parent>;
 				virtual void		init();
 				virtual void		release();
-				virtual void		step(Neb::Core::TimeStep const & ts);
+				virtual void		step(neb::core::TimeStep const & ts);
 		};
 	}
 }

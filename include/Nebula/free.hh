@@ -5,13 +5,13 @@
 
 #include <Nebula/Graphics/Color/Color.hh>
 
-namespace Neb {
+namespace neb {
 	void	init();
 }
 
-namespace Neb {
-	void	draw_quad(float, float, float, float, Neb::Color::color<float>);
-	void	draw_text(float, float, float, float, Neb::Color::color<float>, std::string);
+namespace neb {
+	void	draw_quad(float, float, float, float, neb::Color::color<float>);
+	void	draw_text(float, float, float, float, neb::Color::color<float>, std::string);
 }
 
 void	checkerror(char const *);

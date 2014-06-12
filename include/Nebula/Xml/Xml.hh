@@ -10,7 +10,7 @@
 class XmlArchive {
 	public:
 		friend XmlArchive	operator>>(XmlArchive, float&);
-		friend XmlArchive	operator>>(XmlArchive, Neb::Math::Vec3&);
+		friend XmlArchive	operator>>(XmlArchive, neb::Math::Vec3&);
 
 		XmlArchive(tinyxml2::XMLElement*);
 	private:
@@ -28,7 +28,7 @@ XmlArchive	operator>>(XmlArchive ar, float& ret) {
 	
 	return ar;
 }
-XmlArchive	operator>>(XmlArchive ar, Neb::Math::Vec3& ret) {
+XmlArchive	operator>>(XmlArchive ar, neb::Math::Vec3& ret) {
 
 	if(!ar.element_) return ar;
 	

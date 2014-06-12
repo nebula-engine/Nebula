@@ -14,7 +14,7 @@
 
 #include <Nebula/config.hh>
 
-namespace Neb {
+namespace neb {
 	/*template<typename WINDOW>*/ class texture {
 		public:
 			//typedef std::shared_ptr<WINDOW>		WINDOW_S;

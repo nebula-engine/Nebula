@@ -24,12 +24,12 @@
 
 #define LIGHT_MAX 20
 
-namespace Neb {
+namespace neb {
 	namespace Scene {
 		class Remote:
-			virtual public Neb::Scene::Base
+			virtual public neb::Scene::Base
 		{
-			void				step(Neb::Core::TimeStep const & ts);
+			void				step(neb::core::TimeStep const & ts);
 		};
 	}
 }

@@ -3,8 +3,8 @@
 
 #include <Nebula/Util/typedef.hpp>
 
-namespace Neb {
-	namespace Core {
+namespace neb {
+	namespace core {
 		struct TimeStep {
 			real			time;
 			real			last;
