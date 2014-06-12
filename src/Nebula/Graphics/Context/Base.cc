@@ -63,7 +63,7 @@ void		neb::gfx::Context::Base::render() {
 	view_->load(p);
 	
 	if(drawable_) {
-		drawable_->draw(self);
+		drawable_->draw(self, p);
 	}
 }		
 

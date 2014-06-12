@@ -12,9 +12,9 @@
 #include <Nebula/Actor/RigidDynamic/Local.hh>
 
 
-sp::shared_ptr<Neb::Graphics::Context::Window>		create_context(sp::shared_ptr<Neb::Graphics::Window::Base> window) {
+sp::shared_ptr<neb::gfx::Context::Window>		create_context(sp::shared_ptr<neb::gfx::Window::Base> window) {
 
-	auto context = sp::make_shared<Neb::Graphics::Context::Window>(window);
+	auto context = sp::make_shared<neb::gfx::Context::Window>(window);
 	
 	window->insert(context);
 	
@@ -22,39 +22,39 @@ sp::shared_ptr<Neb::Graphics::Context::Window>		create_context(sp::shared_ptr<Ne
 
 	return context;
 }
-sp::shared_ptr<Neb::Graphics::GUI::Layout::Base>	create_layout(
-		sp::shared_ptr<Neb::Graphics::Window::Base> window,
-		sp::shared_ptr<Neb::Graphics::Context::Window> context) {
+sp::shared_ptr<neb::gfx::GUI::Layout::Base>	create_layout(
+		sp::shared_ptr<neb::gfx::Window::Base> window,
+		sp::shared_ptr<neb::gfx::Context::Window> context) {
 
-	auto app = Neb::App::Base::globalBase();
+	auto app = neb::App::Base::global();
 	
-	auto layout = sp::make_shared<Neb::Graphics::GUI::Layout::Base>();
+	auto layout = sp::make_shared<neb::gfx::GUI::Layout::Base>();
 
-	app->Neb::Graphics::GUI::Layout::Util::Parent::insert(layout);
+	app->neb::gfx::GUI::Layout::Util::Parent::insert(layout);
 
 	context->drawable_ = layout;
 
 	layout->connect(window);
 
 	// object
-	auto term = sp::make_shared<Neb::Graphics::GUI::Object::terminal>();
+	auto term = sp::make_shared<neb::gfx::GUI::Object::terminal>();
 
 	layout->insert(term);
 
 	return layout;
 }
-sp::shared_ptr<Neb::Actor::RigidDynamic::Local>		create_actor(sp::shared_ptr<Neb::Scene::Local> scene) {
-	auto actor = sp::make_shared<Neb::Actor::RigidDynamic::Local>(scene);
+sp::shared_ptr<neb::core::actor::RigidDynamic::Local>		create_actor(sp::shared_ptr<neb::Scene::Local> scene) {
+	auto actor = sp::make_shared<neb::core::actor::RigidDynamic::Local>(scene);
 	
 	scene->insert(actor);
 
 	actor->init();
 	
 	// shape	
-	auto shape = sp::make_shared<Neb::Shape::Box>(actor);
+	auto shape = sp::make_shared<neb::Shape::Box>(actor);
 	
 	
-	actor->Neb::Shape::Util::Parent::insert(shape);
+	actor->neb::Shape::Util::Parent::insert(shape);
 	//actor->insert(shape);
 	
 	
@@ -62,37 +62,37 @@ sp::shared_ptr<Neb::Actor::RigidDynamic::Local>		create_actor(sp::shared_ptr<Neb
 	
 	return actor;	
 }
-sp::shared_ptr<Neb::Actor::RigidDynamic::Local>		create_actor2(sp::shared_ptr<Neb::Scene::Local> scene) {
-	auto actor = sp::make_shared<Neb::Actor::RigidDynamic::Local>(scene);
+sp::shared_ptr<neb::core::actor::RigidDynamic::Local>		create_actor2(sp::shared_ptr<neb::Scene::Local> scene) {
+	auto actor = sp::make_shared<neb::core::actor::RigidDynamic::Local>(scene);
 	
 	scene->insert(actor);
 	
 	actor->init();
 	
 	// shape	
-	auto shape = sp::make_shared<Neb::Shape::Empty>(actor);
+	auto shape = sp::make_shared<neb::Shape::Empty>(actor);
 	
-	actor->Neb::Shape::Util::Parent::insert(shape);
+	actor->neb::Shape::Util::Parent::insert(shape);
 	
 	shape->init();
 	
 	// light
-	auto light = sp::make_shared<Neb::Light::Point>(shape);
+	auto light = sp::make_shared<neb::Light::Point>(shape);
 	
-	shape->Neb::Light::Util::Parent::insert(light);
+	shape->neb::Light::Util::Parent::insert(light);
 	
 	light->init();
 
 	return actor;	
 }
-sp::shared_ptr<Neb::Scene::Local>			create_scene(
-		sp::shared_ptr<Neb::Graphics::Context::Window> context) {
+sp::shared_ptr<neb::Scene::Local>			create_scene(
+		sp::shared_ptr<neb::gfx::Context::Window> context) {
 	
-	auto app = Neb::App::Base::globalBase();
+	auto app = neb::App::Base::global();
 	
-	auto scene = sp::make_shared<Neb::Scene::Local>(app);
+	auto scene = sp::make_shared<neb::Scene::Local>(app);
 	
-	app->Neb::Scene::Util::Parent::insert(scene);
+	app->neb::Scene::Util::Parent::insert(scene);
 
 	// actors
 	auto actor = create_actor(scene);
@@ -128,14 +128,14 @@ sp::shared_ptr<Neb::Scene::Local>			create_scene(
 
 int main() {
 
-	Neb::init();
+	neb::init();
 
-	auto app = Neb::App::Base::globalBase();
+	auto app = neb::App::Base::global();
 
 	// window	
-	auto window = sp::make_shared<Neb::Graphics::Window::Base>();
+	auto window = sp::make_shared<neb::gfx::Window::Base>();
 
-	app->Neb::Graphics::Window::Util::Parent::insert(window);
+	app->neb::gfx::Window::Util::Parent::insert(window);
 
 	window->init();
 

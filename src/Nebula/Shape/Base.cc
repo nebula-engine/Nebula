@@ -41,7 +41,7 @@ mat4					neb::Shape::Base::getPose() {
 void					neb::Shape::Base::init() {
 	NEBULA_SHAPE_BASE_FUNC
 	
-	auto me = std::dynamic_pointer_cast<neb::Shape::Base>(shared_from_this());
+	auto me = sp::dynamic_pointer_cast<neb::Shape::Base>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
 	
 	// type
@@ -50,7 +50,8 @@ void					neb::Shape::Base::init() {
 	if(image_.length() == 0) {
 		program_ = neb::program_name::LIGHT;
 	} else {
-		flag_.set(neb::Shape::flag::e::IMAGE);
+		/** @todo replace this with something better... */
+		//flag_.set(neb::Shape::flag::e::IMAGE);
 
 		program_ = neb::program_name::IMAGE;
 	}
@@ -92,20 +93,20 @@ void					neb::Shape::Base::load_lights(int& i, mat4 space) {
 	});
 
 }
-void					neb::Shape::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, mat4 space) {
+void					neb::Shape::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p, mat4 space) {
 	space = space * pose_;
 
-	draw_elements(context, space);
+	draw_elements(context, p, space);
 }
 void					neb::Shape::Base::model_load(mat4 space) {
 
-	auto p = neb::App::Base::globalBase()->current_program();
+	auto p = neb::App::Base::global()->current_program();
 
 	space *= glm::scale(s_);
 
 	p->get_uniform_scalar("model")->load(space);
 }
-void					neb::Shape::Base::init_buffer(sp::shared_ptr<neb::gfx::Context::Base> context, std::shared_ptr<neb::glsl::program> p) {
+void					neb::Shape::Base::init_buffer(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
 
 	glEnable(GL_TEXTURE_2D);
@@ -117,11 +118,11 @@ void					neb::Shape::Base::init_buffer(sp::shared_ptr<neb::gfx::Context::Base> c
 
 	//checkerror("unknown");
 
-	std::shared_ptr<neb::Shape::buffer> bufs(new neb::Shape::buffer);
+	sp::shared_ptr<neb::Shape::buffer> bufs(new neb::Shape::buffer);
 	context_[context.get()] = bufs;
 
 	// image
-	if(flag_.all(neb::Shape::flag::e::IMAGE))
+	if(0)//if(flag_.all(neb::Shape::flag::e::IMAGE))
 	{
 		bufs->texture_.image_.reset(new neb::texture);
 
@@ -172,7 +173,7 @@ void					neb::Shape::Base::init_buffer(sp::shared_ptr<neb::gfx::Context::Base> c
 			(void*)off_normal);
 	//checkerror("glVertexAttribPointer normal");
 
-	if(flag_.all(neb::Shape::flag::e::IMAGE)) {
+	if(0) {//if(flag_.all(neb::Shape::flag::e::IMAGE)) {
 		glVertexAttribPointer(
 				p->get_attrib(neb::attrib_name::e::TEXCOOR)->o_,
 				2,
@@ -196,7 +197,7 @@ void					neb::Shape::Base::init_buffer(sp::shared_ptr<neb::gfx::Context::Base> c
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 }
-void		neb::Shape::Base::draw_elements(sp::shared_ptr<neb::gfx::Context::Base> context, mat4 space) {
+void		neb::Shape::Base::draw_elements(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p, mat4 space) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
 
 	mesh_.print(debug);
@@ -205,8 +206,6 @@ void		neb::Shape::Base::draw_elements(sp::shared_ptr<neb::gfx::Context::Base> co
 	
 	/** @todo could switching programs here leave view and proj unset? */
 	
-	auto p = neb::App::Base::globalBase()->use_program(program_);
-
 	// initialize buffers if not already
 	//	if(!context_[window.get()])
 	{	
@@ -220,7 +219,7 @@ void		neb::Shape::Base::draw_elements(sp::shared_ptr<neb::gfx::Context::Base> co
 	p->get_attrib(neb::attrib_name::e::POSITION)->enable();
 	p->get_attrib(neb::attrib_name::e::NORMAL)->enable();
 
-	if(flag_.all(neb::Shape::flag::e::IMAGE))
+	if(0) //if(flag_.all(neb::Shape::flag::e::IMAGE))
 	{
 		p->get_attrib(neb::attrib_name::e::TEXCOOR)->enable();
 	}
@@ -230,7 +229,7 @@ void		neb::Shape::Base::draw_elements(sp::shared_ptr<neb::gfx::Context::Base> co
 	material_front_.load();
 
 	// texture
-	if(flag_.all(neb::Shape::flag::e::IMAGE))
+	if(0) //if(flag_.all(neb::Shape::flag::e::IMAGE))
 	{
 		glActiveTexture(GL_TEXTURE0);
 		//checkerror("glActiveTexture");
@@ -274,7 +273,7 @@ void		neb::Shape::Base::draw_elements(sp::shared_ptr<neb::gfx::Context::Base> co
 	p->get_attrib(neb::attrib_name::e::POSITION)->disable();
 	p->get_attrib(neb::attrib_name::e::NORMAL)->disable();
 
-	if(flag_.all(neb::Shape::flag::e::IMAGE))
+	if(0) //if(flag_.all(neb::Shape::flag::e::IMAGE))
 	{
 		p->get_attrib(neb::attrib_name::e::TEXCOOR)->disable();
 	}

@@ -54,13 +54,11 @@ void neb::Scene::Base::init() {
 void neb::Scene::Base::release() {
 	GLUTPP_DEBUG_0_FUNCTION;	
 }
-void neb::Scene::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context) {
+void neb::Scene::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p) {
 	
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	//auto p = neb::App::Base::globalBase()->use_program(neb::program_name::e::LIGHT);
-	auto p = neb::App::Base::global()->current_program();
-	
 	
 	
 	int i = 0;
@@ -81,7 +79,7 @@ void neb::Scene::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context) {
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
 		auto actor = sp::dynamic_pointer_cast<neb::core::actor::Base>(it->ptr_);
 		assert(actor);
-		actor->draw(context, mat4());
+		actor->draw(context, p, mat4());
 	});
 
 }

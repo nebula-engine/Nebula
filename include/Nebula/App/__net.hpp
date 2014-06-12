@@ -15,6 +15,7 @@
 #include <Nebula/App/__base.hpp>
 #include <Nebula/Network/server.hh>
 #include <Nebula/Network/client.hh>
+#include <Nebula/Message/Types.hh>
 
 namespace neb {
 	namespace App {
