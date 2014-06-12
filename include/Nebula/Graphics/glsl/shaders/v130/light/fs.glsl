@@ -2,7 +2,7 @@
 
 struct Light_Point
 {
-	vec4 position;
+	vec3 position;
 	vec4 ambient;
 	vec4 diffuse;
 	vec4 specular;
@@ -13,7 +13,7 @@ struct Light_Point
 
 struct Light_Spot
 {
-	vec4 position;
+	vec3 position;
 	vec4 ambient;
 	vec4 diffuse;
 	vec4 specular;
@@ -28,7 +28,7 @@ struct Light_Spot
 
 struct Light_Directional
 {
-	vec4 position;
+	vec3 position;
 	vec4 ambient;
 	vec4 diffuse;
 	vec4 specular;
