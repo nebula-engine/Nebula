@@ -8,8 +8,8 @@
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Graphics/Camera/View/Free.hh>
 
-Neb::Graphics::Camera::View::Free::Free(Neb::Graphics::Context::Base_s parent):
-	Neb::Graphics::Camera::View::Base(parent),
+neb::gfx::Camera::View::Free::Free(sp::shared_ptr<neb::gfx::Context::Base> parent):
+	neb::gfx::Camera::View::Base(parent),
 	pitch_(0),
 	yaw_(0),
 	eye_(0, 0, 0, 0),
@@ -38,70 +38,70 @@ Neb::Graphics::Camera::View::Free::Free(Neb::Graphics::Context::Base_s parent):
 	head_[6] = vec3( -s, 0,  0 );
 	head_[7] = vec3( -d, 0, -d );
 
-	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::NORTH								] = 0;
-	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::NORTH	|	Neb::Graphics::Camera::View::Free::Flag::E::EAST	] = 1;
-	head_flag_[							Neb::Graphics::Camera::View::Free::Flag::E::EAST	] = 2;
-	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::SOUTH	|	Neb::Graphics::Camera::View::Free::Flag::E::EAST	] = 3;
-	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::SOUTH								] = 4;
-	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::SOUTH	|	Neb::Graphics::Camera::View::Free::Flag::E::WEST	] = 5;
-	head_flag_[							Neb::Graphics::Camera::View::Free::Flag::E::WEST	] = 6;
-	head_flag_[Neb::Graphics::Camera::View::Free::Flag::E::NORTH	|	Neb::Graphics::Camera::View::Free::Flag::E::WEST	] = 7;
+	head_flag_[neb::gfx::Camera::View::Free::Flag::E::NORTH								] = 0;
+	head_flag_[neb::gfx::Camera::View::Free::Flag::E::NORTH	|	neb::gfx::Camera::View::Free::Flag::E::EAST	] = 1;
+	head_flag_[							neb::gfx::Camera::View::Free::Flag::E::EAST	] = 2;
+	head_flag_[neb::gfx::Camera::View::Free::Flag::E::SOUTH	|	neb::gfx::Camera::View::Free::Flag::E::EAST	] = 3;
+	head_flag_[neb::gfx::Camera::View::Free::Flag::E::SOUTH								] = 4;
+	head_flag_[neb::gfx::Camera::View::Free::Flag::E::SOUTH	|	neb::gfx::Camera::View::Free::Flag::E::WEST	] = 5;
+	head_flag_[							neb::gfx::Camera::View::Free::Flag::E::WEST	] = 6;
+	head_flag_[neb::gfx::Camera::View::Free::Flag::E::NORTH	|	neb::gfx::Camera::View::Free::Flag::E::WEST	] = 7;
 
 
 }
-void	Neb::Graphics::Camera::View::Free::init() {
+void	neb::gfx::Camera::View::Free::init() {
 	/*
 	   vec_x_.push_back(
 	   window_->map_sig_key_down_['d'].connect(
-	   std::bind(&Neb::Graphics::Camera::View::Free::callback_x_, this, 0, 1.0)));
+	   std::bind(&neb::gfx::Camera::View::Free::callback_x_, this, 0, 1.0)));
 
 	   vec_x_.push_back(
 	   window_->map_sig_key_up_['d'].connect(
-	   std::bind(&Neb::Graphics::Camera::View::Free::callback_x_, this, 0, 0.0)));
+	   std::bind(&neb::gfx::Camera::View::Free::callback_x_, this, 0, 0.0)));
 
 	   vec_x_.push_back(
 	   window_->map_sig_key_down_['a'].connect(
-	   std::bind(&Neb::Graphics::Camera::View::Free::callback_x_, this, 1, -1.0)));
+	   std::bind(&neb::gfx::Camera::View::Free::callback_x_, this, 1, -1.0)));
 
 	   vec_x_.push_back(
 	   window_->map_sig_key_up_['a'].connect(
-	   std::bind(&Neb::Graphics::Camera::View::Free::callback_x_, this, 1, 0.0)));
+	   std::bind(&neb::gfx::Camera::View::Free::callback_x_, this, 1, 0.0)));
 
 	   vec_y_.push_back(
 	   window_->map_sig_key_down_['e'].connect(
-	   std::bind(&Neb::Graphics::Camera::View::Free::callback_y_, this, 0, 1.0)));
+	   std::bind(&neb::gfx::Camera::View::Free::callback_y_, this, 0, 1.0)));
 
 	   vec_y_.push_back(
 	   window_->map_sig_key_up_['e'].connect(
-	   std::bind(&Neb::Graphics::Camera::View::Free::callback_y_, this, 0, 0.0)));
+	   std::bind(&neb::gfx::Camera::View::Free::callback_y_, this, 0, 0.0)));
 
 	   vec_y_.push_back(
 	   window_->map_sig_key_down_['c'].connect(
-	   std::bind(&Neb::Graphics::Camera::View::Free::callback_y_, this, 1, -1.0)));
+	   std::bind(&neb::gfx::Camera::View::Free::callback_y_, this, 1, -1.0)));
 
 	   vec_y_.push_back(
 	   window_->map_sig_key_up_['c'].connect(
-	   std::bind(&Neb::Graphics::Camera::View::Free::callback_y_, this, 1, 0.0)));
+	   std::bind(&neb::gfx::Camera::View::Free::callback_y_, this, 1, 0.0)));
 
 	   vec_z_.push_back(
 	   window_->map_sig_key_down_['w'].connect(
-	   std::bind(&Neb::Graphics::Camera::View::Free::callback_z_, this, 0, -1.0)));
+	   std::bind(&neb::gfx::Camera::View::Free::callback_z_, this, 0, -1.0)));
 
 	   vec_z_.push_back(
 	   window_->map_sig_key_up_['w'].connect(
-	   std::bind(&Neb::Graphics::Camera::View::Free::callback_z_, this, 0, 0.0)));
+	   std::bind(&neb::gfx::Camera::View::Free::callback_z_, this, 0, 0.0)));
 
 	   vec_z_.push_back(
 	   window_->map_sig_key_down_['s'].connect(
-	   std::bind(&Neb::Graphics::Camera::View::Free::callback_z_, this, 1, 1.0)));
+	   std::bind(&neb::gfx::Camera::View::Free::callback_z_, this, 1, 1.0)));
 
 	   vec_z_.push_back(
 	   window_->map_sig_key_up_['s'].connect(
-	   std::bind(&Neb::Graphics::Camera::View::Free::callback_z_, this, 1, 0.0)));
+	   std::bind(&neb::gfx::Camera::View::Free::callback_z_, this, 1, 0.0)));
 	 */
 
 }
-void		Neb::Graphics::Camera::View::Free::step(Neb::Core::TimeStep const & ts) {
+void		neb::gfx::Camera::View::Free::step(neb::core::TimeStep const & ts) {
 
 	// look vector
 	vec3 look = center_ - vec3(eye_);
@@ -237,7 +237,7 @@ if ( it != head_flag_.end() )
 return mov;
 }
 */
-mat4		Neb::Graphics::Camera::View::Free::view() {
+mat4		neb::gfx::Camera::View::Free::view() {
 	printf("%s\n", __FUNCTION__);
 	
 	vec3 up(0,1,0);
@@ -257,20 +257,20 @@ mat4		Neb::Graphics::Camera::View::Free::view() {
 
 	mat4 ret = glm::lookAt(eye, center, up);
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "yaw" << std::setw(8) << yaw_;
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "pitch" << std::setw(8) << pitch_;
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "eye"
-		<< std::setw(8) << eye[0]
-		<< std::setw(8) << eye[1]
-		<< std::setw(8) << eye[2];
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "center"
-		<< std::setw(8) << center[0]
-		<< std::setw(8) << center[1]
-		<< std::setw(8) << center[2];
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "up"
-		<< std::setw(8) << up[0]
-		<< std::setw(8) << up[1]
-		<< std::setw(8) << up[2];
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "yaw" << ::std::setw(8) << yaw_;
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "pitch" << ::std::setw(8) << pitch_;
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "eye"
+		<< ::std::setw(8) << eye[0]
+		<< ::std::setw(8) << eye[1]
+		<< ::std::setw(8) << eye[2];
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "center"
+		<< ::std::setw(8) << center[0]
+		<< ::std::setw(8) << center[1]
+		<< ::std::setw(8) << center[2];
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "up"
+		<< ::std::setw(8) << up[0]
+		<< ::std::setw(8) << up[1]
+		<< ::std::setw(8) << up[2];
 
 	return ret;
 }

@@ -11,29 +11,29 @@
 #include <Nebula/Graphics/glsl/Uniform/vector.hpp>
 
 
-Neb::Light::Base::Base(Neb::Light::Util::Parent_s parent):
+neb::Light::Base::Base(sp::shared_ptr<neb::Light::Util::Parent> parent):
 	parent_(parent),
 	pos_(vec4(0.0, 0.0, 0.0, 1.0)),
 	ambient_(0.2,0.2,0.2,1.0),
-	diffuse_(Neb::Color::white<float>()),
-	specular_(Neb::Color::white<float>()),
+	diffuse_(neb::Color::white<float>()),
+	specular_(neb::Color::white<float>()),
 	atten_const_(1.0),
 	atten_linear_(0.0),
 	atten_quad_(0.0)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-void Neb::Light::Base::init() {
+void neb::Light::Base::init() {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 }
-void Neb::Light::Base::release() {
+void neb::Light::Base::release() {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-void Neb::Light::Base::cleanup() {
+void neb::Light::Base::cleanup() {
 	GLUTPP_DEBUG_1_FUNCTION;
 }
-void Neb::Light::Base::dim() {
+void neb::Light::Base::dim() {
 	GLUTPP_DEBUG_1_FUNCTION;
 	/*	
 	//printf("diffuse\n");
@@ -47,25 +47,25 @@ void Neb::Light::Base::dim() {
 	printf("UNSUPPORTED\n");
 	exit(0);
 }
-void		Neb::Light::Base::step(Neb::Core::TimeStep const & ts) {
+void		neb::Light::Base::step(neb::core::TimeStep const & ts) {
 	
 }
-void	Neb::Light::Base::draw() {	
+void	neb::Light::Base::draw() {	
 	GLUTPP_DEBUG_1_FUNCTION;
 }
-mat4		Neb::Light::Base::get_pose() {
+mat4		neb::Light::Base::get_pose() {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
 	mat4 m = parent_->getPoseGlobal();
 	
 	return m;
 }
-void Neb::Light::Base::load(int o, mat4 space) {
+void neb::Light::Base::load(int o, mat4 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	/** @todo way to ditinguish lights in shader */
 
-	auto p = Neb::App::Base::globalBase()->current_program();
+	auto p = neb::App::Base::global()->current_program();
 
 	vec4 pos = pos_;
 
@@ -85,9 +85,9 @@ void Neb::Light::Base::load(int o, mat4 space) {
 	p->get_uniform_vector("lights.atten_quad")->load(o, atten_quad_);
 
 }
-void	Neb::Light::Base::load_shadow() {
+void	neb::Light::Base::load_shadow() {
 	GLUTPP_DEBUG_1_FUNCTION;
-	/*	auto p = Neb::master::Global()->current_program();
+	/*	auto p = neb::master::Global()->current_program();
 
 		math::mat44 biasMatrix(
 		0.5f, 0.0f, 0.0f, 0.0f,
@@ -105,7 +105,7 @@ void	Neb::Light::Base::load_shadow() {
 	uniform_tex_shadow_.load_1i(1);
 	 */
 }
-void	Neb::Light::Base::RenderLightPOV()
+void	neb::Light::Base::RenderLightPOV()
 {
 	GLUTPP_DEBUG_1_FUNCTION;
 	/*
@@ -157,7 +157,7 @@ void	Neb::Light::Base::RenderLightPOV()
 	 */
 	checkerror("unknown");
 }
-void	Neb::Light::Base::RenderShadowPost()
+void	neb::Light::Base::RenderShadowPost()
 {
 	//Disable textures and texgen
 	glDisable(GL_TEXTURE_2D);

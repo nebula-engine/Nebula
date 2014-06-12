@@ -5,32 +5,32 @@
 #include <Nebula/Graphics/glsl/Uniform/vector.hpp>
 
 
-void Neb::Light::Point::load(int o, mat4 space) {
+void neb::Light::Point::load(int o, mat4 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
-	Neb::Light::Base::load(o, space);
+	neb::Light::Base::load(o, space);
 
-	auto p = Neb::App::Base::globalBase()->current_program();
+	auto p = neb::App::Base::global()->current_program();
 
 	// tell shader this is not a spot light
 	static const float spot_cutoff = 6;
 	p->get_uniform_vector("lights.spot_cutoff")->load(o, spot_cutoff);
 }
 
-Neb::Light::Spot::Spot(sp::shared_ptr<Neb::Light::Util::Parent> parent):
-	Neb::Light::Base(parent),
+neb::Light::Spot::Spot(sp::shared_ptr<neb::Light::Util::Parent> parent):
+	neb::Light::Base(parent),
 	spot_direction_(vec3(0.0, 0.0, -1.0)),
 	spot_cutoff_(10.0),
 	spot_exponent_(1.0),
 	spot_light_cos_cutoff_(1.0)
 {
 }
-void Neb::Light::Spot::load(int o, mat4 space) {
+void neb::Light::Spot::load(int o, mat4 space) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
-	Neb::Light::Base::load(o, space);
+	neb::Light::Base::load(o, space);
 	
-	auto p = Neb::App::Base::globalBase()->current_program();
+	auto p = neb::App::Base::global()->current_program();
 
 	vec4 pos = pos_;
 

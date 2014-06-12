@@ -7,19 +7,22 @@
 #include <Nebula/Actor/RigidBody/Base.hh>
 
 namespace neb { namespace core { namespace actor {
-namespace neb {
-	namespace Actor {
-		namespace RigidBody {
+		
+
+namespace RigidBody {
 			class Local:
-				virtual public neb::Actor::RigidActor::Local,
-				virtual public neb::Actor::RigidBody::Base
+				virtual public neb::core::actor::RigidActor::Local,
+				virtual public neb::core::actor::RigidBody::Base
 			{
 				public:
 					virtual void		step(neb::core::TimeStep const & ts);
 	
 			};
+
+
+
 		}
-	}
+}	}
 }
 
 #endif

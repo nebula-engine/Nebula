@@ -5,22 +5,24 @@
 #include <Nebula/Actor/RigidBody/Local.hh>
 
 namespace neb { namespace core { namespace actor {
-namespace neb {
-	namespace Actor {
-		namespace RigidDynamic {
+		
+
+namespace RigidDynamic {
 			class Local:
-				virtual public neb::Actor::RigidBody::Local,
-				virtual public neb::Actor::RigidDynamic::Base
+				virtual public neb::core::actor::RigidBody::Local,
+				virtual public neb::core::actor::RigidDynamic::Base
 			{
 				public:
 					Local();
-					Local(sp::shared_ptr<neb::Actor::Util::Parent>;
+					Local(sp::shared_ptr<neb::core::actor::Util::Parent> parent);
 
 					virtual void				init();
 					virtual void				release();
 					virtual void				step(neb::core::TimeStep const & ts);
 			};
-		}
+
+
+}		}
 	}
 }
 

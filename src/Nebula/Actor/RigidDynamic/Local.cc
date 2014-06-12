@@ -1,20 +1,20 @@
 #include <Nebula/Actor/RigidDynamic/Local.hh>
 
-Neb::Actor::RigidDynamic::Local::Local() {
+neb::core::actor::RigidDynamic::Local::Local() {
 }
-Neb::Actor::RigidDynamic::Local::Local(Neb::Actor::Util::Parent_s) {
+neb::core::actor::RigidDynamic::Local::Local(sp::shared_ptr<neb::core::actor::Util::Parent>) {
 }
-void				Neb::Actor::RigidDynamic::Local::init() {
-	Neb::Actor::RigidBody::Local::init();
-	Neb::Actor::RigidDynamic::Base::init();
+void				neb::core::actor::RigidDynamic::Local::init() {
+	neb::core::actor::RigidBody::Local::init();
+	neb::core::actor::RigidDynamic::Base::init();
 }
-void				Neb::Actor::RigidDynamic::Local::release() {
-	Neb::Actor::RigidBody::Local::release();
-	Neb::Actor::RigidDynamic::Base::release();
+void				neb::core::actor::RigidDynamic::Local::release() {
+	neb::core::actor::RigidBody::Local::release();
+	neb::core::actor::RigidDynamic::Base::release();
 }
-void				Neb::Actor::RigidDynamic::Local::step(Neb::Core::TimeStep const & ts) {
-	Neb::Actor::RigidBody::Local::step(ts);
-	Neb::Actor::RigidDynamic::Base::step(ts);
+void				neb::core::actor::RigidDynamic::Local::step(neb::core::TimeStep const & ts) {
+	neb::core::actor::RigidBody::Local::step(ts);
+	neb::core::actor::RigidDynamic::Base::step(ts);
 }
 
 

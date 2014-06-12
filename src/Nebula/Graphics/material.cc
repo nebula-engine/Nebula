@@ -29,15 +29,15 @@ float operator<<(float f, tinyxml2::XMLElement* element) {
 }
 */
 
-Neb::material::raw::raw() {
-	ambient_ = Neb::Color::black<float>();
-	diffuse_ = Neb::Color::cyan<float>();
-	specular_ = Neb::Color::white<float>();
-	emission_ = Neb::Color::black<float>();
+neb::material::raw::raw() {
+	ambient_ = neb::Color::black<float>();
+	diffuse_ = neb::Color::cyan<float>();
+	specular_ = neb::Color::white<float>();
+	emission_ = neb::Color::black<float>();
 	shininess_ = 500;
 }
 /* implement through serialize(ar)
-void	Neb::material::raw::load(tinyxml2::XMLElement* element) {
+void	neb::material::raw::load(tinyxml2::XMLElement* element) {
 	
 	if(element == NULL)
 	{
@@ -59,16 +59,16 @@ void	Neb::material::raw::load(tinyxml2::XMLElement* element) {
 
 
 
-Neb::material::material::material()
+neb::material::material::material()
 {}
-void	Neb::material::material::init()
+void	neb::material::material::init()
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
 
-void	Neb::material::material::load()
+void	neb::material::material::load()
 {
-	auto p = Neb::App::Base::globalBase()->current_program();
+	auto p = neb::App::Base::global()->current_program();
 
 	p->get_uniform_scalar("front.ambient")->load(raw_.ambient_);
 	p->get_uniform_scalar("front.diffuse")->load(raw_.diffuse_);
@@ -76,7 +76,7 @@ void	Neb::material::material::load()
 	p->get_uniform_scalar("front.emission")->load(raw_.emission_);
 	p->get_uniform_scalar("front.shininess")->load(raw_.shininess_);
 }
-void		Neb::material::material::step(Neb::Core::TimeStep const & ts) {
+void		neb::material::material::step(neb::core::TimeStep const & ts) {
 		
 	//raw_.diffuse_.step(time);
 }

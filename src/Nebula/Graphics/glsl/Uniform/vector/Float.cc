@@ -17,7 +17,7 @@
 
 
 
-void	Neb::glsl::Uniform::Vector::Float::load(int c, float f) {
+void	neb::glsl::Uniform::Vector::Float::load(int c, float f) {
 	glUniform1f(o_[c], f);
 	checkerror("glUniform1f");
 }

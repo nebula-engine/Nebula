@@ -9,7 +9,7 @@ void		neb::std::wrapper::init() {
 void		neb::std::wrapper::release() {
 	
 }
-void		neb::std::wrapper::step(Neb::Core::TimeStep const & ts) {
+void		neb::std::wrapper::step(neb::core::TimeStep const & ts) {
 	
 }
 

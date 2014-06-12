@@ -24,14 +24,14 @@
 #include <Nebula/Graphics/Window/Util/Parent.hh>
 
 
-Neb::Graphics::Window::Base::Base():
+neb::gfx::Window::Base::Base():
 	x_(0),
 	y_(0),
 	w_(600),
 	h_(600)
 {
 }
-Neb::Graphics::Window::Base::Base(Neb::Graphics::Window::Util::Parent_s parent):
+neb::gfx::Window::Base::Base(sp::shared_ptr<neb::gfx::Window::Util::Parent> parent):
 	parent_(parent),
 	x_(0),
 	y_(0),
@@ -39,17 +39,17 @@ Neb::Graphics::Window::Base::Base(Neb::Graphics::Window::Util::Parent_s parent):
 	h_(600)
 {
 }
-Neb::Graphics::Window::Base::~Base() {
+neb::gfx::Window::Base::~Base() {
 }
-void Neb::Graphics::Window::Base::init() {
+void neb::gfx::Window::Base::init() {
 	neb::std::shared::init();
 	
 	BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << __PRETTY_FUNCTION__;
 
-	auto app = Neb::App::Base::globalBase();
+	auto app = neb::App::Base::global();
 	assert(app);
 
-	self_ = sp::dynamic_pointer_cast<Neb::Graphics::Window::Base>(shared_from_this());
+	self_ = sp::dynamic_pointer_cast<neb::gfx::Window::Base>(shared_from_this());
 	
 	// create window
 	window_ = glfwCreateWindow(
@@ -71,28 +71,28 @@ void Neb::Graphics::Window::Base::init() {
 
 	glfwSetWindowPosCallback(
 			window_,
-			Neb::App::Base::static_window_pos_fun);
+			neb::App::Base::static_window_pos_fun);
 	glfwSetWindowSizeCallback(
 			window_,
-			Neb::App::Base::static_window_size_fun);
+			neb::App::Base::static_window_size_fun);
 	glfwSetWindowCloseCallback(
 			window_,
-			Neb::App::Base::static_window_close_fun);
+			neb::App::Base::static_window_close_fun);
 	glfwSetWindowRefreshCallback(
 			window_,
-			Neb::App::Base::static_window_refresh_fun);
+			neb::App::Base::static_window_refresh_fun);
 	glfwSetKeyCallback(
 			window_,
-			Neb::App::Base::static_key_fun);
+			neb::App::Base::static_key_fun);
 	glfwSetMouseButtonCallback(
 			window_,
-			Neb::App::Base::static_mouse_button_fun);
+			neb::App::Base::static_mouse_button_fun);
 
 	// add window to app's window map
 	app->windows_glfw_[window_] = self_;
 	
 	
-	//if(all(Neb::App::Base::option::SHADERS)) create_programs();
+	//if(all(neb::App::Base::option::SHADERS)) create_programs();
 	app->init_glew();
 	app->create_programs();
 
@@ -128,19 +128,19 @@ void Neb::Graphics::Window::Base::init() {
 
 	checkerror("unknown");
 }
-void		Neb::Graphics::Window::Base::release() {
+void		neb::gfx::Window::Base::release() {
 	glfwDestroyWindow(window_);
 }
-void		Neb::Graphics::Window::Base::render() {
+void		neb::gfx::Window::Base::render() {
 
 	glfwMakeContextCurrent(window_);
 
 	/** @todo rendering multiple contexts in a window */
 
-	typedef Neb::Graphics::Context::Util::Parent C;
+	typedef neb::gfx::Context::Util::Parent C;
 
 	C::map_.for_each<0>([] (C::map_type::iterator<0> it) {
-			auto context = sp::dynamic_pointer_cast<Neb::Graphics::Context::Base>(it->ptr_);
+			auto context = sp::dynamic_pointer_cast<neb::gfx::Context::Base>(it->ptr_);
 			assert(context);
 			context->render();
 			});
@@ -148,9 +148,9 @@ void		Neb::Graphics::Window::Base::render() {
 	glFinish();
 	glfwSwapBuffers(window_);
 }
-void Neb::Graphics::Window::Base::callback_window_refresh_fun(GLFWwindow*) {
+void neb::gfx::Window::Base::callback_window_refresh_fun(GLFWwindow*) {
 }
-void			Neb::Graphics::Window::Base::step(Neb::Core::TimeStep const & ts) {
+void			neb::gfx::Window::Base::step(neb::core::TimeStep const & ts) {
 	//GLUTPP_DEBUG_1_FUNCTION;
 
 	if(glfwWindowShouldClose(window_)) {
@@ -161,7 +161,7 @@ void			Neb::Graphics::Window::Base::step(Neb::Core::TimeStep const & ts) {
 	/** @todo wtf is this doing here?? */
 	render();
 }
-void Neb::Graphics::Window::Base::callback_window_size_fun(GLFWwindow* window, int w, int h) {
+void neb::gfx::Window::Base::callback_window_size_fun(GLFWwindow* window, int w, int h) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	w_ = w;
@@ -171,7 +171,7 @@ void Neb::Graphics::Window::Base::callback_window_size_fun(GLFWwindow* window, i
 
 	callback_window_refresh_fun(window);
 }
-void Neb::Graphics::Window::Base::callback_window_pos_fun(GLFWwindow* window, int x, int y) {
+void neb::gfx::Window::Base::callback_window_pos_fun(GLFWwindow* window, int x, int y) {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	x_ = x;
@@ -179,30 +179,30 @@ void Neb::Graphics::Window::Base::callback_window_pos_fun(GLFWwindow* window, in
 
 	callback_window_refresh_fun(window);
 }
-void Neb::Graphics::Window::Base::callback_window_close_fun(GLFWwindow* window){
+void neb::gfx::Window::Base::callback_window_close_fun(GLFWwindow* window){
 	GLUTPP_DEBUG_0_FUNCTION;
 
 }
-void Neb::Graphics::Window::Base::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods) {
+void neb::gfx::Window::Base::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	sig_.mouse_button_fun_(self_, button, action, mods);
 }
-void Neb::Graphics::Window::Base::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods) {
+void neb::gfx::Window::Base::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	sig_.key_fun_(self_, key, scancode, action, mods);
 
 }
-void Neb::Graphics::Window::Base::resize() {
+void neb::gfx::Window::Base::resize() {
 
 
 	glViewport(0, 0, w_, h_);
 
-	typedef Neb::Graphics::Context::Util::Parent C;
+	typedef neb::gfx::Context::Util::Parent C;
 
 	C::map_.for_each<0>([&] (C::map_type::iterator<0> it) {
-			auto context = sp::dynamic_pointer_cast<Neb::Graphics::Context::Base>(it->ptr_);
+			auto context = sp::dynamic_pointer_cast<neb::gfx::Context::Base>(it->ptr_);
 			assert(context);
 			context->resize(w_, h_);
 			});

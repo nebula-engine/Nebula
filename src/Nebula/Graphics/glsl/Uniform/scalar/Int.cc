@@ -11,11 +11,11 @@
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 #include <Nebula/free.hh>
 
-void	Neb::glsl::Uniform::Scalar::Int::load(int i) {
+void	neb::glsl::Uniform::Scalar::Int::load(int i) {
 	glUniform1i(o_, i);
 	checkerror("glUniform1i");
 }
-void	Neb::glsl::Uniform::Scalar::Sampler2D::load(int i) {
+void	neb::glsl::Uniform::Scalar::Sampler2D::load(int i) {
 	glUniform1i(o_, i);
 	checkerror("glUniform1i");
 }

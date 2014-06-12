@@ -19,19 +19,19 @@
 #include <Nebula/free.hh>
 
 
-void		Neb::init() {
+void		neb::init() {
 
 	gal::log::min_severity["neb"] = debug;
 	gal::log::min_severity["neb gfx"] = debug;	
 	gal::log::init();
 	
-	Neb::App::Base::g_app_ = std::make_shared<Neb::App::Base>();
+	neb::App::Base::g_app_ = sp::make_shared<neb::App::Base>();
 
-	Neb::App::Base::g_app_->init();
+	neb::App::Base::g_app_->init();
 
 
 	/** @todo impl in PhysX */
-	//Neb::Physics::global()->init();
+	//neb::Physics::global()->init();
 }
 
 void		print(unsigned char * s, int w, int h) {
@@ -50,7 +50,8 @@ void		print(unsigned char * s, int w, int h) {
   {
 
   }*/
-void		Neb::draw_quad(float x, float y, float w, float h, Neb::Color::color<float> color) {
+void		neb::draw_quad(sp::shared_ptr<neb::glsl::program> p,
+float x, float y, float w, float h, neb::Color::color<float> color) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	//GLint uniform_color = glGetUniformLocation(program, "color");
@@ -103,23 +104,26 @@ void		Neb::draw_quad(float x, float y, float w, float h, Neb::Color::color<float
 	glPopMatrix();
 
 }
-void		Neb::draw_text(float x, float y, float sx, float sy, Neb::Color::color<float> color, std::string text) {
+void		neb::draw_text(
+		sp::shared_ptr<neb::glsl::program> p,
+		float x, float y, float sx, float sy, neb::Color::color<float> color, ::std::string text)
+{
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	const char * c;
 
-	auto p = Neb::App::Base::globalBase()->use_program(Neb::program_name::e::TEXT);
+	//auto p = neb::App::Base::global()->use_program(neb::program_name::e::TEXT);
 
 	printf("text %6.3f %6.3f '%s'\n", x, y, text.c_str());
 
 	// face
 	FT_Face face;
 
-	FT_Library ft = Neb::App::Base::globalBase()->ft_;
+	FT_Library ft = neb::App::Base::global()->ft_;
 
 	char const fontfile[] = "/usr/share/fonts/truetype/msttcorefonts/georgia.ttf";
 	//char const fontfile[] = "/usr/share/fonts/msttcorefonts/georgia.ttf";
-//	char const fontfile[] = "/usr/share/fonts/truetype/freefont/FreeSans.ttf";
+	//	char const fontfile[] = "/usr/share/fonts/truetype/freefont/FreeSans.ttf";
 	//char const fontfile[] = "/usr/share/fonts/truetype/msttcorefonts/arial.ttf";
 	//char const fontfile[] = "FreeSans.ttf";
 
@@ -184,7 +188,7 @@ void		Neb::draw_text(float x, float y, float sx, float sy, Neb::Color::color<flo
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
-	auto attrib_coord = p->get_attrib(Neb::attrib_name::e::COOR);
+	auto attrib_coord = p->get_attrib(neb::attrib_name::e::COOR);
 
 	// vbo
 	GLuint vbo;
@@ -247,10 +251,10 @@ void		Neb::draw_text(float x, float y, float sx, float sy, Neb::Color::color<flo
 
 
 	checkerror("unknown");
-	
-	
+
+
 	attrib_coord->disable();
-	
+
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
@@ -302,7 +306,7 @@ void CheckExt()
 }
 
 
-template <typename... Args>
+	template <typename... Args>
 void	fatal_error(char const * c, Args ...args)
 {
 	char fmt[128];

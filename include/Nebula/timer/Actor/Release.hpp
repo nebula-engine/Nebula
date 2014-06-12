@@ -5,10 +5,10 @@
 
 namespace neb {
 	namespace Timer {
-		namespace Actor {
-			class Release: public neb::Timer::Actor::Base {
+		namespace actor {
+			class Release: public neb::Timer::actor::Base {
 				public:
-					Release(neb::Actor::Base_s, double);
+					Release(sp::shared_ptr<neb::core::actor::Base>, double);
 					virtual void		doSomething();
 			};
 		}

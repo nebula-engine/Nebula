@@ -9,7 +9,7 @@
 #include <Nebula/free.hh>
 #include <Nebula/Graphics/glsl/shader.hh>
 
-void	Neb::glsl::shader::load(const char * filename, GLenum shader_type)
+void	neb::glsl::shader::load(const char * filename, GLenum shader_type)
 {	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	printf("loading %s\n",filename);
@@ -129,7 +129,7 @@ isSupported("GL_ARB_vertex_shader");
 isSupported("GL_ARB_fragment_shader");
 }
 
-void Neb::shader::CompileProgram(GLuint &program, GLuint shaderObjects[], int numShaders)
+void neb::shader::CompileProgram(GLuint &program, GLuint shaderObjects[], int numShaders)
 {
 program = glCreateProgram();
 

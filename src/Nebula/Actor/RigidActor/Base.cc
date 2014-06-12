@@ -2,18 +2,18 @@
 #include <Nebula/debug.hh>
 #include <Nebula/Actor/RigidActor/Base.hh>
 
-Neb::Actor::RigidActor::Base::Base() {
+neb::core::actor::RigidActor::Base::Base() {
 }
-Neb::Actor::RigidActor::Base::Base(Neb::Actor::Util::Parent_s parent): Neb::Actor::Actor::Base(parent) {
+neb::core::actor::RigidActor::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent): neb::core::actor::actor::Base(parent) {
 }
-void		Neb::Actor::RigidActor::Base::init() {
-	Neb::Actor::Actor::Base::init();
+void		neb::core::actor::RigidActor::Base::init() {
+	neb::core::actor::actor::Base::init();
 }
-void		Neb::Actor::RigidActor::Base::release() {
-	Neb::Actor::Actor::Base::release();
+void		neb::core::actor::RigidActor::Base::release() {
+	neb::core::actor::actor::Base::release();
 }
-void		Neb::Actor::RigidActor::Base::step(Neb::Core::TimeStep const & ts) {
-	Neb::Actor::Actor::Base::step(ts);
+void		neb::core::actor::RigidActor::Base::step(neb::core::TimeStep const & ts) {
+	neb::core::actor::actor::Base::step(ts);
 }
 
 

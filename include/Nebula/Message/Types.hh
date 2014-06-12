@@ -10,7 +10,7 @@ namespace neb {
 		class OBase;
 
 		/** @brief %Actor */
-		namespace Actor {
+		namespace actor {
 
 			class Create;
 			class ICreate;

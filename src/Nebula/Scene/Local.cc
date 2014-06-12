@@ -4,34 +4,34 @@
 #include <Nebula/Actor/RigidBody/Base.hh>
 #include <Nebula/timer/Actor/Release.hpp>
 
-Neb::Scene::Local::Local(sp::shared_ptr<Neb::Scene::Util::Parent> parent):
-	Neb::Scene::Base(parent)
+neb::Scene::Local::Local(sp::shared_ptr<neb::Scene::Util::Parent> parent):
+	neb::Scene::Base(parent)
 {
 }
-void		Neb::Scene::Local::step(Neb::Core::TimeStep const & ts) {
-	Neb::Scene::Base::step(ts);
+void		neb::Scene::Local::step(neb::core::TimeStep const & ts) {
+	neb::Scene::Base::step(ts);
 }
-void Neb::Scene::Local::send_actor_update() {
+void neb::Scene::Local::send_actor_update() {
 	//printf("DEBUG: message ACTOR_UPDATE sent\n");
 
 
 	//int type = glutpp::network::type::ACTOR_UPDATE;
 	//msg->write(&type, sizeof(int));
 
-	Neb::Message::Actor::OUpdate_s message(new Neb::Message::Actor::OUpdate);
+	sp::shared_ptr<neb::Message::actor::OUpdate> message(new neb::Message::actor::OUpdate);
 
-	typedef Neb::Actor::Util::Parent A;
+	typedef neb::core::actor::Util::Parent A;
 
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-			auto actor = sp::dynamic_pointer_cast<Neb::Actor::Base>(it->ptr_);
+			auto actor = sp::dynamic_pointer_cast<neb::core::actor::Base>(it->ptr_);
 			assert(actor);
-			if(actor->flag_.any(Neb::Actor::Util::Flag::SHOULD_UPDATE)) {
+			if(actor->flag_.any(neb::core::actor::Util::Flag::SHOULD_UPDATE)) {
 			message->actors_.push_back(actor);
 			}
 			});
 
 
-	Neb::App::Base::globalBase()->sendServer(message);
+	neb::App::Base::global()->sendServer(message);
 }
 
 

@@ -4,11 +4,11 @@
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Graphics/Camera/View/ridealong.hh>
 
-Neb::Graphics::Camera::View::Ridealong::Ridealong(Neb::Graphics::Context::Base_s parent):
-	Neb::Graphics::Camera::View::Base(parent)
+neb::gfx::Camera::View::Ridealong::Ridealong(sp::shared_ptr<neb::gfx::Context::Base> parent):
+	neb::gfx::Camera::View::Base(parent)
 {
 }
-mat4		Neb::Graphics::Camera::View::Ridealong::view() {
+mat4		neb::gfx::Camera::View::Ridealong::view() {
 
 	if(!actor_) return mat4();
 
@@ -61,7 +61,7 @@ mat4		Neb::Graphics::Camera::View::Ridealong::view() {
 	*/
 	return mat4(ret);
 }
-void Neb::Graphics::Camera::View::Ridealong::step(Neb::Core::TimeStep const & ts) {
+void neb::gfx::Camera::View::Ridealong::step(neb::core::TimeStep const & ts) {
 	
 }
 

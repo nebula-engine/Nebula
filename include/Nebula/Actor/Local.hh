@@ -6,14 +6,15 @@
 #include <Nebula/Core/TimeStep.hpp>
 
 namespace neb { namespace core { namespace actor {
-namespace neb {
-	namespace Actor {
-		class Local: virtual public neb::Actor::Base {
-			public:
-				virtual void		step(neb::core::TimeStep const & ts);
-		};
-	}
+
+
+	class Local: virtual public neb::core::actor::Base {
+		public:
+			virtual void		step(neb::core::TimeStep const & ts);
+	};
+
 }
+}}
 
 #endif
 
