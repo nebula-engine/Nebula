@@ -4,23 +4,23 @@
 #include <Nebula/Actor/RigidActor/Base.hh>
 
 namespace neb { namespace core { namespace actor {
-namespace neb {
-	namespace Actor {
-		namespace RigidStatic {
-			class Base: public neb::Actor::RigidActor::Base {
-				public:
-					Base();
-					Base(neb::Actor::Util::Parent_s parent);
+		
+
+	namespace RigidStatic {
+		class Base: public neb::core::actor::RigidActor::Base {
+			public:
+				Base();
+				Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent);
 
 
-					virtual void	init();
+				virtual void	init();
 
 
-					virtual void	step(neb::core::TimeStep const & ts);
-			};
-		}
+				virtual void	step(neb::core::TimeStep const & ts);
+		};
 	}
 }
+}}
 
 #endif
 

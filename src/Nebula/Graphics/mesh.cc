@@ -9,10 +9,10 @@
 
 #include <Nebula/Graphics/mesh.hh>
 
-Neb::mesh::mesh() {
+neb::gfx::mesh::mesh() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	Neb::mesh::construct(math::geo::polyhedron* poly) {
+void	neb::gfx::mesh::construct(math::geo::polyhedron* poly) {
 
 	auto tris = poly->triangles();
 	
@@ -37,7 +37,7 @@ void	Neb::mesh::construct(math::geo::polyhedron* poly) {
 	}
 
 }
-void		Neb::mesh::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
+void		neb::gfx::mesh::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
 	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -62,7 +62,7 @@ void		Neb::mesh::serialize(boost::archive::polymorphic_iarchive & ar, unsigned i
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "indices:  " << indices_.size();
 
 }
-void		Neb::mesh::serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
+void		neb::gfx::mesh::serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -74,7 +74,7 @@ void		Neb::mesh::serialize(boost::archive::polymorphic_oarchive & ar, unsigned i
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "indices:  " << indices_.size();
 
 }
-void		Neb::mesh::print(int sl) {
+void		neb::gfx::mesh::print(int sl) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", (severity_level)sl) << "mesh";
 
 	for(auto v : vertices_)

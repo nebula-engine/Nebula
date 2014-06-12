@@ -18,14 +18,14 @@
 #include <Nebula/App/Base.hh>
 #include <Nebula/Scene/Base.hh>
 
-Neb::Network::Client::Client(boost::asio::io_service& io_service, ip::tcp::resolver::iterator endpoint_iterator):
+neb::Network::Client::Client(boost::asio::io_service& io_service, ip::tcp::resolver::iterator endpoint_iterator):
 	gal::net::communicating(io_service),
-	Neb::Network::Communicating(io_service),
+	neb::Network::Communicating(io_service),
 	gal::net::client(io_service, endpoint_iterator)
 {
 
 }
-void		Neb::Network::Client::process(sp::shared_ptr<gal::net::imessage> message) {
+void		neb::Network::Client::process(sp::shared_ptr<gal::net::imessage> message) {
 
 	//assert(msg->body_length() == sizeof(neb::packet::packet));
 
@@ -47,22 +47,22 @@ void		Neb::Network::Client::process(sp::shared_ptr<gal::net::imessage> message) 
 	
 	//
 	
-	glutpp::window::window_s window;
+	sp::shared_ptr<glutpp::window::window> window;
 	
-	neb::Actor::Base_s			actor;
-	neb::Actor::RigidBody::RigidBody_s	rigidbody;
+	sp::shared_ptr<neb::core::actor::Base>			actor;
+	sp::shared_ptr<neb::core::actor::RigidBody::RigidBody>	rigidbody;
 	
-	glutpp::scene::desc_s sd;
+	sp::shared_ptr<glutpp::scene::desc> sd;
 	
 	
-	glutpp::scene::addr_s scene_addr;
+	sp::shared_ptr<glutpp::scene::addr> scene_addr;
 	
-	glutpp::actor::addr_s actor_addr;
-	glutpp::actor::desc_s actor_desc;
+	sp::shared_ptr<glutpp::actor::addr> actor_addr;
+	sp::shared_ptr<glutpp::actor::desc> actor_desc;
 	
-	neb::control::rigid_body::raw_s	control_raw;
+	sp::shared_ptr<neb::control::rigid_body::raw>	control_raw;
 	
-	glutpp::network::actor::vec_addr_raw_s vec;
+	sp::shared_ptr<glutpp::network::actor::vec_addr_raw> vec;
 
 	int window_name = 0;
 	
@@ -116,8 +116,8 @@ void		Neb::Network::Client::process(sp::shared_ptr<gal::net::imessage> message) 
 			for(auto it = vec->vec_.begin(); it != vec->vec_.end(); ++it)
 			{
 				auto t = *it;
-				glutpp::actor::addr_s addr = std::get<1>(t);
-				glutpp::actor::raw_s raw = std::get<0>(t);
+				sp::shared_ptr<glutpp::actor::addr> addr = std::get<1>(t);
+				sp::shared_ptr<glutpp::actor::raw> raw = std::get<0>(t);
 				
 				auto a = app->get_actor(addr);
 				if(a)

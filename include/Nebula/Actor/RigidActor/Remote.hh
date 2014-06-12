@@ -5,19 +5,21 @@
 #include <Nebula/Actor/RigidActor/Base.hh>
 
 namespace neb { namespace core { namespace actor {
-namespace neb {
-	namespace Actor {
-		namespace RigidActor {
+		
+
+namespace RigidActor {
 			class Remote:
-				virtual public neb::Actor::RigidActor::Base,
-				virtual public neb::Actor::Actor::Remote
+				virtual public neb::core::actor::RigidActor::Base,
+				virtual public neb::core::actor::actor::Remote
 			{
 				public:
 					virtual void		step(neb::core::TimeStep const & ts);
 			};
+
+
 		}
 	}
-}
+}}
 
 #endif
 

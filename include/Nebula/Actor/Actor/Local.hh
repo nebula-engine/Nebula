@@ -6,17 +6,20 @@
 #include <Nebula/Actor/Actor/Base.hh>
 
 namespace neb { namespace core { namespace actor {
-namespace neb {
-	namespace Actor {
-		namespace Actor {
+		
+
+
+namespace actor {
 			class Local:
-				virtual public neb::Actor::Actor::Base,
-				virtual public neb::Actor::Local
+				virtual public neb::core::actor::actor::Base,
+				virtual public neb::core::actor::Local
 			{
 				public:
 					virtual void		step(neb::core::TimeStep const & ts);
 			};
-		}
+
+
+}		}
 	}
 }
 

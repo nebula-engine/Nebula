@@ -22,9 +22,9 @@ namespace neb {
 				 */
 				class Base {
 					public:
-						Base(std::string, std::string);
+						Base(::std::string, ::std::string);
 						virtual ~Base() {}
-						void				locate(std::shared_ptr<program>);
+						void				locate(sp::shared_ptr<program>);
 						/** @name Load
 						 * @{
 						 */
@@ -39,37 +39,37 @@ namespace neb {
 						/** @} */
 					protected:
 						enum { LEN = 100 };
-						std::string		name1_;
-						std::string		name2_;
+						::std::string		name1_;
+						::std::string		name2_;
 						int			c_;
 						GLuint			o_[LEN];
 
 				};
 				class Int: public neb::glsl::Uniform::Vector::Base {
 					public:
-						Int(std::string s1, std::string s2): Base(s1,s2) {}
+						Int(::std::string s1, ::std::string s2): Base(s1,s2) {}
 						virtual void		load(int,int);
 				};
 				class Float: public neb::glsl::Uniform::Vector::Base {
 					public:
-						Float(std::string s1, std::string s2): Base(s1,s2) {}
+						Float(::std::string s1, ::std::string s2): Base(s1,s2) {}
 						virtual void		load(int,float);
 				};
 				class Vec3: public neb::glsl::Uniform::Vector::Base {
 					public:
-						Vec3(std::string s1, std::string s2): Base(s1,s2) {}
+						Vec3(::std::string s1, ::std::string s2): Base(s1,s2) {}
 						virtual void		load(int, float*);
 						virtual void		load(int, vec3 const &);
 				};
 				class Vec4: public neb::glsl::Uniform::Vector::Base {
 					public:
-						Vec4(std::string s1, std::string s2): Base(s1,s2) {}
+						Vec4(::std::string s1, ::std::string s2): Base(s1,s2) {}
 						virtual void		load(int, float*);
 						virtual void		load(int, vec4 const &);
 				};
 				class Mat4: public neb::glsl::Uniform::Vector::Base {
 					public:
-						Mat4(std::string s1, std::string s2): Base(s1,s2) {}
+						Mat4(::std::string s1, ::std::string s2): Base(s1,s2) {}
 						virtual void		load(int, mat4 const &);
 				};
 			}

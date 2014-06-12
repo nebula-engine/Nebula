@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
+#include <iomanip>
 
 #include <GL/glew.h>
 
@@ -17,40 +18,39 @@
 #include <Nebula/Graphics/Camera/Projection/Perspective.hh>
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 
-Neb::Graphics::Camera::Projection::Base::Base(Neb::Graphics::Context::Base_s parent):
+neb::gfx::Camera::Projection::Base::Base(sp::shared_ptr<neb::gfx::Context::Base> parent):
 	parent_(parent)
 {
 }
-void		Neb::Graphics::Camera::Projection::Base::load() {
+void		neb::gfx::Camera::Projection::Base::load(sp::shared_ptr<neb::glsl::program> p) {
 	
-	auto p = Neb::App::Base::globalBase()->get_program(Neb::program_name::e::LIGHT);
 	
-	glViewport(0, 0, parent_->viewport_.w_, parent_->viewport_.h_);
+	//glViewport(0, 0, parent_->viewport_.w_, parent_->viewport_.h_);
 	
 	p->get_uniform_scalar("proj")->load(proj());
 }
 
 
 
-Neb::Graphics::Camera::Projection::Perspective::Perspective(std::shared_ptr<Neb::Graphics::Context::Base> renderable):
-	Neb::Graphics::Camera::Projection::Base(renderable),
+neb::gfx::Camera::Projection::Perspective::Perspective(sp::shared_ptr<neb::gfx::Context::Base> context):
+	neb::gfx::Camera::Projection::Base(context),
 	fovy_(45.0f),
 	zn_(2.0f),
 	zf_(10000.0f)
 {
 
 }
-/*void		Neb::Graphics::Camera::Projection::Perspective::init(RENDERABLE_S renderable) {
+/*void		neb::gfx::Camera::Projection::Perspective::init(RENDERABLE_S renderable) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	renderable_ = renderable;
 }*/
-mat4		Neb::Graphics::Camera::Projection::Perspective::proj() {
+mat4		neb::gfx::Camera::Projection::Perspective::proj() {
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "fovy" << std::setw(8) << fovy_;
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "aspect" << std::setw(8) << parent_->viewport_.aspect_;
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "zn" << std::setw(8) << zn_;
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << std::setw(8) << "zf" << std::setw(8) << zf_;
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "fovy" << ::std::setw(8) << fovy_;
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "aspect" << ::std::setw(8) << parent_->viewport_.aspect_;
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "zn" << ::std::setw(8) << zn_;
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "zf" << ::std::setw(8) << zf_;
 	
 	mat4 ret = glm::perspective(fovy_, parent_->viewport_.aspect_, zn_, zf_);
 	
@@ -58,7 +58,7 @@ mat4		Neb::Graphics::Camera::Projection::Perspective::proj() {
 	
 	return ret;
 }
-void		Neb::Graphics::Camera::Projection::Perspective::step(Neb::Core::TimeStep const & ts) {
+void		neb::gfx::Camera::Projection::Perspective::step(neb::core::TimeStep const & ts) {
 
 }
 

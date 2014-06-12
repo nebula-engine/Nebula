@@ -5,23 +5,20 @@
 #include <Nebula/Actor/Base.hh>
 
 namespace neb { namespace core { namespace actor {
-namespace neb {
-	namespace Actor {
-		namespace Actor {
-			class Base: virtual public neb::Actor::Base {
-				public:
-					Base();
-					Base(sp::shared_ptr<neb::Actor::Util::Parent>;
-					
-					virtual void			init();
-					virtual void			release();
-					virtual void			step(neb::core::TimeStep const & ts);
-					
-					virtual void			set_pose(mat4);
-			};
-		}
+	namespace actor {
+		class Base: virtual public neb::core::actor::Base {
+			public:
+				Base();
+				Base(sp::shared_ptr<neb::core::actor::Util::Parent>);
+
+				virtual void			init();
+				virtual void			release();
+				virtual void			step(neb::core::TimeStep const & ts);
+
+				virtual void			set_pose(mat4);
+		};
 	}
-}
+}}}
 
 #endif
 

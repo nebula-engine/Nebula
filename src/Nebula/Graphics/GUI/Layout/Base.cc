@@ -14,15 +14,15 @@
 #include <Nebula/Graphics/GUI/Layout/Base.hh>
 
 
-Neb::Graphics::GUI::Layout::Base::Base() {
+neb::gfx::GUI::Layout::Base::Base() {
 }
-Neb::Graphics::GUI::Layout::Base::Base(Neb::Graphics::GUI::Layout::Util::Parent_s parent): parent_(parent) {
+neb::gfx::GUI::Layout::Base::Base(sp::shared_ptr<neb::gfx::GUI::Layout::Util::Parent> parent): parent_(parent) {
 }
-void Neb::Graphics::GUI::Layout::Base::init() {
+void neb::gfx::GUI::Layout::Base::init() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 }
 /*
-void Neb::Graphics::GUI::Layout::Base::load_xml(tinyxml2::XMLElement* element)
+void neb::gfx::GUI::Layout::Base::load_xml(tinyxml2::XMLElement* element)
 {
 	assert(element);
 	tinyxml2::XMLElement* e = element->FirstChildElement("object");
@@ -32,60 +32,60 @@ void Neb::Graphics::GUI::Layout::Base::load_xml(tinyxml2::XMLElement* element)
 	}
 }*/
 /*
-void Neb::Graphics::GUI::Layout::Base::create_object(tinyxml2::XMLElement* element) {
+void neb::gfx::GUI::Layout::Base::create_object(tinyxml2::XMLElement* element) {
 
 	assert(element);
 
-	auto object = Neb::master::Global()->object_factory_->create(element);
+	auto object = neb::master::Global()->object_factory_->create(element);
 
 	objects_.push_back(object);
 }*/
-void		Neb::Graphics::GUI::Layout::Base::step(Neb::Core::TimeStep const & ts) {
+void		neb::gfx::GUI::Layout::Base::step(neb::core::TimeStep const & ts) {
 }
-void		Neb::Graphics::GUI::Layout::Base::draw(sp::shared_ptr<Neb::Graphics::Context::Base> context) {
+void		neb::gfx::GUI::Layout::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context) {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	//jess::clog << "objects_.size()=" << objects_.map_.size() << std::endl;
 	
-	typedef Neb::Graphics::GUI::Object::Util::Parent O;
+	typedef neb::gfx::GUI::Object::Util::Parent O;
 	
 	O::map_.for_each<0>([] (O::map_type::iterator<0> it) {
-		auto object = sp::dynamic_pointer_cast<Neb::Graphics::GUI::Object::Base>(it->ptr_);
+		auto object = sp::dynamic_pointer_cast<neb::gfx::GUI::Object::Base>(it->ptr_);
 		assert(object);
 		object->draw();
 	});
 
 }
-void Neb::Graphics::GUI::Layout::Base::connect(sp::shared_ptr<Neb::Graphics::Window::Base> const & window) {
+void neb::gfx::GUI::Layout::Base::connect(sp::shared_ptr<neb::gfx::Window::Base> const & window) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
 	conns_.key_fun_ = window->sig_.key_fun_.connect(
-			std::bind(&Neb::Graphics::GUI::Layout::Base::key_fun,
+			::std::bind(&neb::gfx::GUI::Layout::Base::key_fun,
 				this,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				std::placeholders::_4,
-				std::placeholders::_5
+				::std::placeholders::_1,
+				::std::placeholders::_2,
+				::std::placeholders::_3,
+				::std::placeholders::_4,
+				::std::placeholders::_5
 				));
 	
 	conns_.mouse_button_fun_ = window->sig_.mouse_button_fun_.connect(
-			std::bind(&Neb::Graphics::GUI::Layout::Base::mouse_button_fun,
+			::std::bind(&neb::gfx::GUI::Layout::Base::mouse_button_fun,
 				this,
-				std::placeholders::_1,
-				std::placeholders::_2,
-				std::placeholders::_3,
-				std::placeholders::_4
+				::std::placeholders::_1,
+				::std::placeholders::_2,
+				::std::placeholders::_3,
+				::std::placeholders::_4
 				));
 
 }
-int Neb::Graphics::GUI::Layout::Base::key_fun(sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int key, int scancode, int action, int mode) {
+int neb::gfx::GUI::Layout::Base::key_fun(sp::shared_ptr<neb::gfx::Window::Base> const & window, int key, int scancode, int action, int mode) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
-	typedef Neb::Graphics::GUI::Object::Util::Parent O;
+	typedef neb::gfx::GUI::Object::Util::Parent O;
 	
 	//O::map_.for_each_int<0>([&] (O::map_type::iterator<0> it) {
 	for(O::map_type::iterator<0> it = O::map_.begin(); it != O::map_.end(); ++it) {
-		auto object = sp::dynamic_pointer_cast<Neb::Graphics::GUI::Object::Base>(it->ptr_);
+		auto object = sp::dynamic_pointer_cast<neb::gfx::GUI::Object::Base>(it->ptr_);
 		assert(object);
 		
 		if(object->key_fun(window, key, scancode, action, mode)) return 1;
@@ -93,7 +93,7 @@ int Neb::Graphics::GUI::Layout::Base::key_fun(sp::shared_ptr<Neb::Graphics::Wind
 	
 	return 0;
 }
-int Neb::Graphics::GUI::Layout::Base::mouse_button_fun(sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int button, int action, int mods) {
+int neb::gfx::GUI::Layout::Base::mouse_button_fun(sp::shared_ptr<neb::gfx::Window::Base> const & window, int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	assert(window);
@@ -113,7 +113,7 @@ int Neb::Graphics::GUI::Layout::Base::mouse_button_fun(sp::shared_ptr<Neb::Graph
 
 	return 0;
 }
-int Neb::Graphics::GUI::Layout::Base::search(sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int button, int action, int mods) {
+int neb::gfx::GUI::Layout::Base::search(sp::shared_ptr<neb::gfx::Window::Base> const & window, int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	assert(window);
@@ -130,13 +130,13 @@ int Neb::Graphics::GUI::Layout::Base::search(sp::shared_ptr<Neb::Graphics::Windo
 
 	printf("%f %f\n", x, y);
 
-	typedef Neb::Graphics::GUI::Object::Util::Parent O;
+	typedef neb::gfx::GUI::Object::Util::Parent O;
 
-	sp::shared_ptr<Neb::Graphics::GUI::Object::Base> object;
-	sp::shared_ptr<Neb::Graphics::GUI::Object::Base> objecttmp;
+	sp::shared_ptr<neb::gfx::GUI::Object::Base> object;
+	sp::shared_ptr<neb::gfx::GUI::Object::Base> objecttmp;
 
 	O::map_.for_each_int<0>([&] (O::map_type::iterator<0> it) {
-			objecttmp = sp::dynamic_pointer_cast<Neb::Graphics::GUI::Object::Base>(it->ptr_);
+			objecttmp = sp::dynamic_pointer_cast<neb::gfx::GUI::Object::Base>(it->ptr_);
 			assert(objecttmp);
 			printf("object %f %f %f %f\n",
 				objecttmp->x_,

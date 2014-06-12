@@ -19,27 +19,27 @@
 
 namespace neb {
 	namespace Message {
-		namespace Actor {
+		namespace actor {
 			struct Update:
-				virtual public neb::Message::Actor::Base
+				virtual public neb::Message::actor::Base
 			{	
 				Update() {}
 			};
 			class OUpdate:
-				virtual public neb::Message::Actor::OBase,
-				virtual public neb::Message::Actor::Update
+				virtual public neb::Message::actor::OBase,
+				virtual public neb::Message::actor::Update
 			{
 				public:
 					/** @brief Save %Actor. */
-					OUpdate&		operator<<(sp::shared_ptr<neb::Actor::Base> actor);
+					OUpdate&		operator<<(sp::shared_ptr<neb::core::actor::Base> actor);
 
 					virtual void		serialize(boost::archive::polymorphic_oarchive& ar, unsigned int const & version);
 
-					::std::vector< sp::shared_ptr<neb::Actor::Base> >	actors_;
+					::std::vector< sp::shared_ptr<neb::core::actor::Base> >	actors_;
 			};
 			class IUpdate:
-				virtual public neb::Message::Actor::IBase,
-				virtual public neb::Message::Actor::Update
+				virtual public neb::Message::actor::IBase,
+				virtual public neb::Message::actor::Update
 			{
 				/** @brief Load */
 				virtual void		serialize(boost::archive::polymorphic_iarchive& ar, unsigned int const & version);

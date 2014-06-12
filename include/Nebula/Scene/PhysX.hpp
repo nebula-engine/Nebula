@@ -34,7 +34,7 @@ namespace neb {
 		 * @ingroup group_core
 		 * @brief Base
 		 */
-		class Base: virtual public neb::Actor::Util::Parent {
+		class Base: virtual public neb::core::actor::Util::Parent {
 			public:
 				Base(sp::shared_ptr<neb::Scene::Util::Parent>;
 				virtual ~Base();

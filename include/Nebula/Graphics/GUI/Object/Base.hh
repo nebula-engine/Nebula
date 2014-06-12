@@ -20,7 +20,7 @@ namespace neb {
 						virtual ~Base() {}
 
 						void				init();
-						//window::window_s		get_window();
+						//sp::shared_ptr<window::window>		get_window();
 						virtual void			draw() = 0;
 
 						virtual int			key_fun(

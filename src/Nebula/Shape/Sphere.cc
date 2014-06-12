@@ -1,6 +1,6 @@
 #include <Nebula/Shape/Sphere.hh>
 
-void				Neb::Shape::Sphere::createMesh() {
+void				neb::Shape::Sphere::createMesh() {
 	//mesh_.load("sphere.obj");
 	abort();
 }

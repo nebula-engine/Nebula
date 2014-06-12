@@ -4,20 +4,20 @@
 #include <Nebula/Actor/RigidBody/Base.hh>
 
 namespace neb { namespace core { namespace actor {
-namespace neb {
-	namespace Actor {
-		namespace RigidDynamic {
-			class Base: public neb::Actor::RigidBody::Base {
+		
+
+namespace RigidDynamic {
+			class Base: public neb::core::actor::RigidBody::Base {
 				public:
 					Base();
-					Base(sp::shared_ptr<neb::Actor::Util::Parent>;
+					Base(sp::shared_ptr<neb::core::actor::Util::Parent>);
 
 					virtual void				init();
 
 			};
 		}
 	}
-}
+}}
 
 
 #endif

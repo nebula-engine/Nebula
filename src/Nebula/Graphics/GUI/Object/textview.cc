@@ -7,26 +7,26 @@
 #include <Nebula/free.hh>
 #include <Nebula/Graphics/GUI/Object/textview.hh>
 
-Neb::Graphics::GUI::Object::textview::textview() {
+neb::gfx::GUI::Object::textview::textview() {
 }
-void	Neb::Graphics::GUI::Object::textview::clear_label() {
+void	neb::gfx::GUI::Object::textview::clear_label() {
 	label_.clear();
 }
-void	Neb::Graphics::GUI::Object::textview::draw() {
+void	neb::gfx::GUI::Object::textview::draw(sp::shared_ptr<neb::glsl::program> p) {
 	//printf("%s\n",__PRETTY_FUNCTION__);
 
 	float sx = 1.0/600.0;
 	float sy = 1.0/600.0;
-
-	draw_quad(x_, y_, w_, h_, bg_color_);
-	draw_text(x_, y_, sx, sy, font_color_, label_);
+	
+	draw_quad(p, x_, y_, w_, h_, bg_color_);
+	draw_text(p, x_, y_, sx, sy, font_color_, label_);
 }
-int	Neb::Graphics::GUI::Object::textview::mouse_button_fun(sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int button, int action, int mods) {
+int	neb::gfx::GUI::Object::textview::mouse_button_fun(sp::shared_ptr<neb::gfx::Window::Base> const & window, int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	return Neb::Graphics::GUI::Object::Base::mouse_button_fun(window, button, action, mods);
+	return neb::gfx::GUI::Object::Base::mouse_button_fun(window, button, action, mods);
 }
-int	Neb::Graphics::GUI::Object::textview::key_fun(sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int key, int scancode, int action, int mods) {
+int	neb::gfx::GUI::Object::textview::key_fun(sp::shared_ptr<neb::gfx::Window::Base> const & window, int key, int scancode, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	return 0;
 }

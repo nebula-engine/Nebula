@@ -14,7 +14,7 @@
 
 #include <Nebula/Types.hh>
 #include <Nebula/Core/TimeStep.hpp>
-#include <Nebula/Graphics/glsl/program.hh>
+#include <Nebula/Graphics/Types.hh>
 
 namespace neb {
 	namespace gfx {
@@ -26,7 +26,7 @@ namespace neb {
 						/** @brief Constructor */
 						Base(sp::shared_ptr<neb::gfx::Context::Base> parent);
 						/** @brief Load view matrix into GLSL. */
-						void					load();
+						void					load(sp::shared_ptr<neb::glsl::program> p);
 						/** @brief Get view matrix. */
 						virtual glm::mat4			view() = 0;
 						/** @brief Step

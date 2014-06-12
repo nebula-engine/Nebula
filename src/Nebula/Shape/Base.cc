@@ -12,17 +12,17 @@
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 #include <Nebula/Math/geo/polygon.hpp>
 
-Neb::Shape::Base::Base() {
+neb::Shape::Base::Base() {
 }
-Neb::Shape::Base::Base(Neb::Shape::Util::Parent_s parent):
+neb::Shape::Base::Base(sp::shared_ptr<neb::Shape::Util::Parent> parent):
 	parent_(parent),
 	s_(1,1,1)
 {
 	NEBULA_SHAPE_BASE_FUNC;
 	assert(parent);
 }
-Neb::Shape::Base::~Base() {}
-mat4					Neb::Shape::Base::getPoseGlobal() {
+neb::Shape::Base::~Base() {}
+mat4					neb::Shape::Base::getPoseGlobal() {
 	NEBULA_SHAPE_BASE_FUNC;
 	
 	mat4 m;
@@ -35,77 +35,77 @@ mat4					Neb::Shape::Base::getPoseGlobal() {
 	
 	return m;
 }
-mat4					Neb::Shape::Base::getPose() {
+mat4					neb::Shape::Base::getPose() {
 	return pose_;
 }
-void					Neb::Shape::Base::init() {
+void					neb::Shape::Base::init() {
 	NEBULA_SHAPE_BASE_FUNC
 	
-	auto me = std::dynamic_pointer_cast<Neb::Shape::Base>(shared_from_this());
+	auto me = std::dynamic_pointer_cast<neb::Shape::Base>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
 	
 	// type
 
 	// program
 	if(image_.length() == 0) {
-		program_ = Neb::program_name::LIGHT;
+		program_ = neb::program_name::LIGHT;
 	} else {
-		flag_.set(Neb::Shape::flag::e::IMAGE);
+		flag_.set(neb::Shape::flag::e::IMAGE);
 
-		program_ = Neb::program_name::IMAGE;
+		program_ = neb::program_name::IMAGE;
 	}
 
 
-	Neb::Shape::Util::Parent::init();
-	Neb::Light::Util::Parent::init();
+	neb::Shape::Util::Parent::init();
+	neb::Light::Util::Parent::init();
 	
 	createMesh();
 }
-void					Neb::Shape::Base::release() {
+void					neb::Shape::Base::release() {
 	NEBULA_SHAPE_BASE_FUNC;
 
-	//Neb::Util::parent<Neb::Shape::Base>::release();
-	Neb::Shape::Util::Parent::release();
-	Neb::Light::Util::Parent::release();
+	//neb::Util::parent<neb::Shape::Base>::release();
+	neb::Shape::Util::Parent::release();
+	neb::Light::Util::Parent::release();
 }
-void					Neb::Shape::Base::step(Neb::Core::TimeStep const & ts) {
+void					neb::Shape::Base::step(neb::core::TimeStep const & ts) {
 
-	Neb::Shape::Util::Parent::step(ts);
+	neb::Shape::Util::Parent::step(ts);
 	
-	Neb::Light::Util::Parent::step(ts);
+	neb::Light::Util::Parent::step(ts);
 
 	material_front_.step(ts);
 }
-void					Neb::Shape::Base::load_lights(int& i, mat4 space) {
+void					neb::Shape::Base::load_lights(int& i, mat4 space) {
 	NEBULA_SHAPE_BASE_FUNC;
 
 	space = space * pose_;
 
-	typedef Neb::Light::Util::Parent L;
+	typedef neb::Light::Util::Parent L;
 
 	L::map_.for_each<0>([&] (L::map_type::iterator<0> it) {
-		auto light = sp::dynamic_pointer_cast<Neb::Light::Base>(it->ptr_);
+		auto light = sp::dynamic_pointer_cast<neb::Light::Base>(it->ptr_);
 		assert(light);
-		if(i == Neb::Light::light_max) return L::map_type::BREAK;
+		if(i == neb::Light::light_max) return L::map_type::BREAK;
 		light->load(i++, space);
 		return L::map_type::CONTINUE;
 	});
 
 }
-void					Neb::Shape::Base::draw(Neb::Graphics::Context::Base_s context, mat4 space) {
+void					neb::Shape::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, mat4 space) {
 	space = space * pose_;
 
 	draw_elements(context, space);
 }
-void					Neb::Shape::Base::model_load(mat4 space) {
+void					neb::Shape::Base::model_load(mat4 space) {
 
-	auto p = Neb::App::Base::globalBase()->current_program();
+	auto p = neb::App::Base::globalBase()->current_program();
 
 	space *= glm::scale(s_);
 
 	p->get_uniform_scalar("model")->load(space);
 }
-void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, std::shared_ptr<Neb::glsl::program> p) {
+void					neb::Shape::Base::init_buffer(sp::shared_ptr<neb::gfx::Context::Base> context, std::shared_ptr<neb::glsl::program> p) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
 
 	glEnable(GL_TEXTURE_2D);
@@ -117,13 +117,13 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 
 	//checkerror("unknown");
 
-	std::shared_ptr<Neb::Shape::buffer> bufs(new Neb::Shape::buffer);
+	std::shared_ptr<neb::Shape::buffer> bufs(new neb::Shape::buffer);
 	context_[context.get()] = bufs;
 
 	// image
-	if(flag_.all(Neb::Shape::flag::e::IMAGE))
+	if(flag_.all(neb::Shape::flag::e::IMAGE))
 	{
-		bufs->texture_.image_.reset(new Neb::texture);
+		bufs->texture_.image_.reset(new neb::texture);
 
 		//bufs->texture_.image_->load_png(raw_.image_);
 	}
@@ -147,7 +147,7 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 
 	//int baseOffset = 0;
 	glBindBuffer(GL_ARRAY_BUFFER, bufs->vbo_);
-	//glBindVertexBuffer(0, vbo_, baseOffset, sizeof(Neb::vertex));
+	//glBindVertexBuffer(0, vbo_, baseOffset, sizeof(neb::vertex));
 
 	math::geo::vertex v;
 	long off_position = (long)&(v.p[0])  - (long)&v;
@@ -155,7 +155,7 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 	long off_texcoor =  (long)&(v.tc[0]) - (long)&v;
 	
 	glVertexAttribPointer(
-			p->get_attrib(Neb::attrib_name::e::POSITION)->o_,
+			p->get_attrib(neb::attrib_name::e::POSITION)->o_,
 			4,
 			GL_FLOAT,
 			GL_FALSE,
@@ -164,7 +164,7 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 	//checkerror("glVertexAttribPointer");
 
 	glVertexAttribPointer(
-			p->get_attrib(Neb::attrib_name::e::NORMAL)->o_,
+			p->get_attrib(neb::attrib_name::e::NORMAL)->o_,
 			3,
 			GL_FLOAT,
 			GL_FALSE,
@@ -172,9 +172,9 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 			(void*)off_normal);
 	//checkerror("glVertexAttribPointer normal");
 
-	if(flag_.all(Neb::Shape::flag::e::IMAGE)) {
+	if(flag_.all(neb::Shape::flag::e::IMAGE)) {
 		glVertexAttribPointer(
-				p->get_attrib(Neb::attrib_name::e::TEXCOOR)->o_,
+				p->get_attrib(neb::attrib_name::e::TEXCOOR)->o_,
 				2,
 				GL_FLOAT,
 				GL_FALSE,
@@ -196,7 +196,7 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 }
-void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Context::Base> context, mat4 space) {
+void		neb::Shape::Base::draw_elements(sp::shared_ptr<neb::gfx::Context::Base> context, mat4 space) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
 
 	mesh_.print(debug);
@@ -205,7 +205,7 @@ void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Context::Bas
 	
 	/** @todo could switching programs here leave view and proj unset? */
 	
-	auto p = Neb::App::Base::globalBase()->use_program(program_);
+	auto p = neb::App::Base::globalBase()->use_program(program_);
 
 	// initialize buffers if not already
 	//	if(!context_[window.get()])
@@ -217,12 +217,12 @@ void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Context::Bas
 	//checkerror("unknown");
 
 	// attribs
-	p->get_attrib(Neb::attrib_name::e::POSITION)->enable();
-	p->get_attrib(Neb::attrib_name::e::NORMAL)->enable();
+	p->get_attrib(neb::attrib_name::e::POSITION)->enable();
+	p->get_attrib(neb::attrib_name::e::NORMAL)->enable();
 
-	if(flag_.all(Neb::Shape::flag::e::IMAGE))
+	if(flag_.all(neb::Shape::flag::e::IMAGE))
 	{
-		p->get_attrib(Neb::attrib_name::e::TEXCOOR)->enable();
+		p->get_attrib(neb::attrib_name::e::TEXCOOR)->enable();
 	}
 
 	// material
@@ -230,7 +230,7 @@ void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Context::Bas
 	material_front_.load();
 
 	// texture
-	if(flag_.all(Neb::Shape::flag::e::IMAGE))
+	if(flag_.all(neb::Shape::flag::e::IMAGE))
 	{
 		glActiveTexture(GL_TEXTURE0);
 		//checkerror("glActiveTexture");
@@ -271,12 +271,12 @@ void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Context::Bas
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	//checkerror("glBindBuffer");
 
-	p->get_attrib(Neb::attrib_name::e::POSITION)->disable();
-	p->get_attrib(Neb::attrib_name::e::NORMAL)->disable();
+	p->get_attrib(neb::attrib_name::e::POSITION)->disable();
+	p->get_attrib(neb::attrib_name::e::NORMAL)->disable();
 
-	if(flag_.all(Neb::Shape::flag::e::IMAGE))
+	if(flag_.all(neb::Shape::flag::e::IMAGE))
 	{
-		p->get_attrib(Neb::attrib_name::e::TEXCOOR)->disable();
+		p->get_attrib(neb::attrib_name::e::TEXCOOR)->disable();
 	}
 }
 

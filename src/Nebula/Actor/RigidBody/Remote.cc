@@ -2,9 +2,9 @@
 
 #include <Nebula/Actor/RigidBody/Remote.hh>
 
-void		Neb::Actor::RigidBody::Remote::step(Neb::Core::TimeStep const & ts) {
-	Neb::Actor::RigidActor::Remote::step(ts);
-	Neb::Actor::RigidBody::Base::step(ts);
+void		neb::core::actor::RigidBody::Remote::step(neb::core::TimeStep const & ts) {
+	neb::core::actor::RigidActor::Remote::step(ts);
+	neb::core::actor::RigidBody::Base::step(ts);
 }
 
 

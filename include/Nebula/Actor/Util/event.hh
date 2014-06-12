@@ -11,7 +11,7 @@
 
 namespace neb {
 	namespace Event {
-		namespace Actor {
+		namespace actor {
 			class Base {
 				public:
 					template<class Archive> void		serialize(Archive & ar, unsigned int const & version) {

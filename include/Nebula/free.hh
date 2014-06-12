@@ -3,6 +3,8 @@
 
 #include <memory>
 
+#include <Nebula/Util/typedef.hpp>
+#include <Nebula/Graphics/Types.hh>
 #include <Nebula/Graphics/Color/Color.hh>
 
 namespace neb {
@@ -10,8 +12,11 @@ namespace neb {
 }
 
 namespace neb {
-	void	draw_quad(float, float, float, float, neb::Color::color<float>);
-	void	draw_text(float, float, float, float, neb::Color::color<float>, ::std::string);
+	void	draw_quad(sp::shared_ptr<neb::glsl::program> p,
+float, float, float, float, neb::Color::color<float>);
+	void	draw_text(
+			sp::shared_ptr<neb::glsl::program> p,
+			float, float, float, float, neb::Color::color<float>, ::std::string);
 }
 
 void	checkerror(char const *);
@@ -21,7 +26,7 @@ template<class A> A*	new_copy(std::shared_ptr<A> a) {
 	if(a) {
 		return new A(*a);
 	}
-       	return NULL;
+	return NULL;
 }
 
 #endif
