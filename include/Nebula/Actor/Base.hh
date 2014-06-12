@@ -73,7 +73,7 @@ namespace neb { namespace core { namespace actor {
 
 			/** @todo move to derived class */
 			// signal
-			void						connect(sp::shared_ptr<neb::gfx::Window::Base>;
+			void						connect(sp::shared_ptr<neb::gfx::Window::Base>);
 
 			int						key_fun(sp::shared_ptr<neb::gfx::Window::Base> window,int,int,int,int);
 		public:
@@ -95,8 +95,8 @@ namespace neb { namespace core { namespace actor {
 
 				serializeData(ar, version);
 
-				ar & boost::serialization::make_nvp("actors", /*gal::std::parent<neb::Actor::Base>*/neb::Actor::Util::Parent::map_);
-				ar & boost::serialization::make_nvp("shapes", /*gal::std::parent<neb::Shape::Base>*/neb::Shape::Util::Parent::map_);
+				ar & boost::serialization::make_nvp("actors", neb::Actor::Util::Parent::map_);
+				ar & boost::serialization::make_nvp("shapes", neb::Shape::Util::Parent::map_);
 			}
 			virtual void		serializeData(
 					boost::archive::polymorphic_oarchive & ar,
@@ -133,7 +133,7 @@ namespace neb { namespace core { namespace actor {
 
 			neb::Actor::mode_create::e		mode_create_;
 			neb::Actor::Util::Flag			flag_;
-			std::string				name_;
+			::std::string				name_;
 			mat4					pose_;
 			/** @brief Normal for planes. */
 			vec3					n_;

@@ -7,16 +7,9 @@ namespace neb {
 		/** @brief %Util */
 		namespace Util {
 			class Parent;
-
-			typedef std::shared_ptr<Parent>		Parent_s;
-			typedef std::weak_ptr<Parent>		Parent_w;
 		}
 
 		class Base;
-
-		typedef std::shared_ptr<Base>		Base_s;
-		typedef std::weak_ptr<Base>		Base_w;
-
 	}
 }
 
