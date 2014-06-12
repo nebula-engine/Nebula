@@ -42,13 +42,13 @@ namespace neb { namespace core { namespace actor {
 	/** @brief %Base */
 	class Base:
 		virtual public neb::actor::__base,
-		virtual public neb::Actor::Util::Parent,
+		virtual public neb::core::actor::Util::Parent,
 		virtual public neb::Shape::Util::Parent
 	{
 		public:
 
 			Base();
-			Base(sp::shared_ptr<neb::Actor::Util::Parent> parent);
+			Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent);
 			virtual ~Base();
 		public:
 			virtual void					init();
@@ -64,7 +64,7 @@ namespace neb { namespace core { namespace actor {
 			virtual mat4					getPoseGlobal();
 
 			/** @name Accessors @{ */
-			sp::shared_ptr<neb::Actor::Util::Parent>		getParent();
+			sp::shared_ptr<neb::core::actor::Util::Parent>		getParent();
 			void						setPose(mat4 pose);
 			/** @} */
 
@@ -78,7 +78,7 @@ namespace neb { namespace core { namespace actor {
 			int						key_fun(sp::shared_ptr<neb::gfx::Window::Base> window,int,int,int,int);
 		public:
 			/** @todo what is this??? */
-			neb::Actor::mode_update::e		mode_update_;
+			neb::core::actor::mode_update::e		mode_update_;
 
 
 			struct {
@@ -95,7 +95,7 @@ namespace neb { namespace core { namespace actor {
 
 				serializeData(ar, version);
 
-				ar & boost::serialization::make_nvp("actors", neb::Actor::Util::Parent::map_);
+				ar & boost::serialization::make_nvp("actors", neb::core::actor::Util::Parent::map_);
 				ar & boost::serialization::make_nvp("shapes", neb::Shape::Util::Parent::map_);
 			}
 			virtual void		serializeData(
@@ -131,8 +131,8 @@ namespace neb { namespace core { namespace actor {
 
 
 
-			neb::Actor::mode_create::e		mode_create_;
-			neb::Actor::Util::Flag			flag_;
+			neb::core::actor::mode_create::e		mode_create_;
+			neb::core::actor::Util::Flag			flag_;
 			::std::string				name_;
 			mat4					pose_;
 			/** @brief Normal for planes. */
@@ -150,7 +150,7 @@ namespace neb { namespace core { namespace actor {
 
 		public:
 			/** @brief Parent */
-			sp::shared_ptr<neb::Actor::Util::Parent>		parent_;
+			sp::shared_ptr<neb::core::actor::Util::Parent>		parent_;
 	};
 }}}
 

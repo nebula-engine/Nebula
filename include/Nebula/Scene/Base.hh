@@ -37,7 +37,7 @@ namespace neb {
 		 */
 		class Base:
 			virtual public neb::gfx::Drawable::Base,
-			virtual public neb::Actor::Util::Parent
+			virtual public neb::core::actor::Util::Parent
 		{
 			public:
 				Base(sp::shared_ptr<neb::Scene::Util::Parent>);
@@ -66,7 +66,7 @@ namespace neb {
 				mat4						getPoseGlobal();
 				/** @} */
 			public:
-				void							add_deferred(sp::shared_ptr<neb::Actor::Base>);
+				void							add_deferred(sp::shared_ptr<neb::core::actor::Base>);
 			public:
 				/** @brief parent
 				 *
@@ -77,7 +77,7 @@ namespace neb {
 			public:
 				neb::Scene::Util::Flag					flag_;
 
-				::std::map< ::std::string, sp::shared_ptr<neb::Actor::Base> >		actors_deferred_;
+				::std::map< ::std::string, sp::shared_ptr<neb::core::actor::Base> >		actors_deferred_;
 		};
 	}
 }

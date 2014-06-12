@@ -1,11 +1,11 @@
 #include <Nebula/Message/Base.hh>
 
-Neb::Message::Base::Base() {
+neb::Message::Base::Base() {
 }
 
-Neb::Message::OBase::OBase() {
+neb::Message::OBase::OBase() {
 }
 
-Neb::Message::IBase::IBase() {
+neb::Message::IBase::IBase() {
 }
 

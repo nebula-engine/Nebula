@@ -1,5 +1,5 @@
-#ifndef __NEBULA_APP_H__
-#define __NEBULA_APP_H__
+#ifndef __NEBULA_APP_GFX_H__
+#define __NEBULA_APP_GFX_H__
 
 #include <fstream>
 
@@ -14,6 +14,7 @@
 #include <Galaxy-Network/decl.hpp>
 
 #include <Nebula/Types.hh>
+#include <Nebula/App/__base.hpp>
 #include <Nebula/Graphics/Types.hh>
 #include <Nebula/Graphics/Window/Util/Parent.hh>
 
@@ -28,7 +29,7 @@ namespace neb {
 			virtual public neb::gfx::Window::Util::Parent
 		{
 			public:
-				typedef std::map< GLFWwindow*, sp::shared_ptr<neb::gfx::Window::Base> >			glfwwindow_map_type;
+				typedef ::std::map< GLFWwindow*, sp::shared_ptr<neb::gfx::Window::Base> >			glfwwindow_map_type;
 
 				static sp::shared_ptr<neb::App::__gfx>		global();
 

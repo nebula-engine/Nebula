@@ -7,7 +7,7 @@ void					neb::std::shared::init() {
 }
 void					neb::std::shared::release() {
 }
-void					neb::std::shared::step(Neb::Core::TimeStep const & ts) {
+void					neb::std::shared::step(neb::core::TimeStep const & ts) {
 }
 void					neb::std::shared::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
 }

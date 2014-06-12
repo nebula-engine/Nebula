@@ -17,10 +17,10 @@
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 #include <Nebula/Graphics/glsl/Uniform/vector.hpp>
 
-Neb::glsl::program::program()
+neb::glsl::program::program()
 {
 }
-void	Neb::glsl::program::init()
+void	neb::glsl::program::init()
 {
 	//NEBULA_GLSL_PROGRAM_FUNC;
 
@@ -30,7 +30,7 @@ void	Neb::glsl::program::init()
 	
 	checkerror("glCreateProgram");
 }
-void	Neb::glsl::program::add_shaders(std::vector<Neb::glsl::shader> s)
+void	neb::glsl::program::add_shaders(std::vector<neb::glsl::shader> s)
 {
 	//GRU_GLSL_PROGRAM_FUNC
 	
@@ -42,15 +42,15 @@ void	Neb::glsl::program::add_shaders(std::vector<Neb::glsl::shader> s)
 		checkerror("glAttachShader");
 	}
 }
-void	Neb::glsl::program::add_shader(char const * filename, GLenum type)
+void	neb::glsl::program::add_shader(char const * filename, GLenum type)
 {
-	Neb::glsl::shader s;
+	neb::glsl::shader s;
 	s.load(filename, type);
 	
 	glAttachShader(o_, s.o_);
 	checkerror("glAttachShader");
 }
-void	Neb::glsl::program::compile() {
+void	neb::glsl::program::compile() {
 	//GRU_GLSL_PROGRAM_FUNC
 	
 	glLinkProgram(o_);
@@ -75,14 +75,14 @@ void	Neb::glsl::program::compile() {
 	printf("program=%i\n",o_);
 
 }
-void	Neb::glsl::program::use() {
+void	neb::glsl::program::use() {
 	
 	//GRU_GLSL_PROGRAM_FUNC;
 	
 	glUseProgram(o_);
 	checkerror("glUseProgram");
 	
-	std::shared_ptr<Neb::glsl::attrib> attrib;
+	std::shared_ptr<neb::glsl::attrib> attrib;
 	
 	for(auto it = attrib_.begin(); it != attrib_.end(); ++it)
 	{
@@ -91,35 +91,35 @@ void	Neb::glsl::program::use() {
 		attrib->locate(shared_from_this());
 	}
 }
-void	Neb::glsl::program::add_attrib(Neb::attrib_name::e name, char const * s, GLuint o_bind) {
-	std::shared_ptr<Neb::glsl::attrib> a(new Neb::glsl::attrib);
+void	neb::glsl::program::add_attrib(neb::attrib_name::e name, char const * s, GLuint o_bind) {
+	std::shared_ptr<neb::glsl::attrib> a(new neb::glsl::attrib);
 	
 	a->init(s, o_bind);
 	
 	attrib_[name] = a;
 }
-void	Neb::glsl::program::add_uniform_scalar(std::string name, GLenum type) {
+void	neb::glsl::program::add_uniform_scalar(std::string name, GLenum type) {
 	
-	std::shared_ptr<Neb::glsl::Uniform::Scalar::Base> u;
+	std::shared_ptr<neb::glsl::Uniform::Scalar::Base> u;
 
 	switch(type) {
 		case GL_INT:
-			u.reset(new Neb::glsl::Uniform::Scalar::Int(name));
+			u.reset(new neb::glsl::Uniform::Scalar::Int(name));
 			break;
 		case GL_FLOAT:
-			u.reset(new Neb::glsl::Uniform::Scalar::Float(name));
+			u.reset(new neb::glsl::Uniform::Scalar::Float(name));
 			break;
 		case GL_FLOAT_VEC3:
-			u.reset(new Neb::glsl::Uniform::Scalar::Vec3(name));
+			u.reset(new neb::glsl::Uniform::Scalar::Vec3(name));
 			break;
 		case GL_FLOAT_VEC4:
-			u.reset(new Neb::glsl::Uniform::Scalar::Vec4(name));
+			u.reset(new neb::glsl::Uniform::Scalar::Vec4(name));
 			break;
 		case GL_FLOAT_MAT4:
-			u.reset(new Neb::glsl::Uniform::Scalar::Mat4(name));
+			u.reset(new neb::glsl::Uniform::Scalar::Mat4(name));
 			break;
 		case GL_SAMPLER_2D:
-			u.reset(new Neb::glsl::Uniform::Scalar::Sampler2D(name));
+			u.reset(new neb::glsl::Uniform::Scalar::Sampler2D(name));
 			break;
 		default:
 			printf("unsupported glsl type \"%s\"\n", name.c_str());
@@ -128,22 +128,22 @@ void	Neb::glsl::program::add_uniform_scalar(std::string name, GLenum type) {
 
 	uniform_scalar_[name] = u;
 }
-void	Neb::glsl::program::add_uniform_vector(std::string name1, std::string name2, GLenum type) {
+void	neb::glsl::program::add_uniform_vector(std::string name1, std::string name2, GLenum type) {
 
-	std::shared_ptr<Neb::glsl::Uniform::Vector::Base> u;
+	std::shared_ptr<neb::glsl::Uniform::Vector::Base> u;
 
 	switch(type) {
 		case GL_INT:
-			u.reset(new Neb::glsl::Uniform::Vector::Int(name1, name2));
+			u.reset(new neb::glsl::Uniform::Vector::Int(name1, name2));
 			break;
 		case GL_FLOAT:
-			u.reset(new Neb::glsl::Uniform::Vector::Float(name1, name2));
+			u.reset(new neb::glsl::Uniform::Vector::Float(name1, name2));
 			break;
 		case GL_FLOAT_VEC3:
-			u.reset(new Neb::glsl::Uniform::Vector::Vec3(name1, name2));
+			u.reset(new neb::glsl::Uniform::Vector::Vec3(name1, name2));
 			break;
 		case GL_FLOAT_VEC4:
-			u.reset(new Neb::glsl::Uniform::Vector::Vec4(name1, name2));
+			u.reset(new neb::glsl::Uniform::Vector::Vec4(name1, name2));
 			break;
 		default:
 			printf("unsupported glsl type \"%s.%s\"\n", name1.c_str(), name2.c_str());
@@ -155,7 +155,7 @@ void	Neb::glsl::program::add_uniform_vector(std::string name1, std::string name2
 	uniform_vector_[name] = u;
 	
 }
-std::shared_ptr<Neb::glsl::attrib>	Neb::glsl::program::get_attrib(int name) {
+std::shared_ptr<neb::glsl::attrib>	neb::glsl::program::get_attrib(int name) {
 	auto it = attrib_.find(name);
 
 	if(it == attrib_.end())
@@ -170,7 +170,7 @@ std::shared_ptr<Neb::glsl::attrib>	Neb::glsl::program::get_attrib(int name) {
 
 	return p;
 }
-std::shared_ptr<Neb::glsl::Uniform::Scalar::Base>	Neb::glsl::program::get_uniform_scalar(std::string name) {
+std::shared_ptr<neb::glsl::Uniform::Scalar::Base>	neb::glsl::program::get_uniform_scalar(std::string name) {
 	//printf("%s\n", __PRETTY_FUNCTION__);
 
 	auto it = uniform_scalar_.find(name);
@@ -187,7 +187,7 @@ std::shared_ptr<Neb::glsl::Uniform::Scalar::Base>	Neb::glsl::program::get_unifor
 
 	return p;
 }
-std::shared_ptr<Neb::glsl::Uniform::Vector::Base>	Neb::glsl::program::get_uniform_vector(std::string name) {
+std::shared_ptr<neb::glsl::Uniform::Vector::Base>	neb::glsl::program::get_uniform_vector(std::string name) {
 	//printf("%s\n", __PRETTY_FUNCTION__);
 
 	auto it = uniform_vector_.find(name);
@@ -208,9 +208,9 @@ std::shared_ptr<Neb::glsl::Uniform::Vector::Base>	Neb::glsl::program::get_unifor
 
 	return p;
 }
-void	Neb::glsl::program::locate() {
+void	neb::glsl::program::locate() {
 
-	std::shared_ptr<Neb::glsl::attrib> attrib;
+	std::shared_ptr<neb::glsl::attrib> attrib;
 
 	for(auto it = attrib_.begin(); it != attrib_.end(); ++it)
 	{
@@ -220,14 +220,14 @@ void	Neb::glsl::program::locate() {
 	}
 
 	{
-		std::shared_ptr<Neb::glsl::Uniform::Scalar::Base> u;
+		std::shared_ptr<neb::glsl::Uniform::Scalar::Base> u;
 		for(auto it = uniform_scalar_.begin(); it != uniform_scalar_.end(); ++it) {
 			u = (*it).second;
 			u->locate(shared_from_this());
 		}
 	}	
 
-	std::shared_ptr<Neb::glsl::Uniform::Vector::Base> u;
+	std::shared_ptr<neb::glsl::Uniform::Vector::Base> u;
 	for(auto it = uniform_vector_.begin(); it != uniform_vector_.end(); ++it) {
 		u = (*it).second;
 		u->locate(shared_from_this());
@@ -317,7 +317,7 @@ char const * shaderTypeString(GLenum type) {
 
 	return "unknown";
 }
-void		Neb::glsl::program::scanUniforms() {
+void		neb::glsl::program::scanUniforms() {
 	GLsizei len;
 	GLint size;
 	GLenum type;

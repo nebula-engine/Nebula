@@ -14,22 +14,22 @@
 //#include <Nebula/Actor/RigidDynamic/Local.hh>
 
 
-Neb::Actor::RigidBody::Base::Base() {}
-Neb::Actor::RigidBody::Base::Base(Neb::Actor::Util::Parent_s parent):
-	Neb::Actor::RigidActor::Base(parent)
+neb::core::actor::RigidBody::Base::Base() {}
+neb::core::actor::RigidBody::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent):
+	neb::core::actor::RigidActor::Base(parent)
 {}
-void		Neb::Actor::RigidBody::Base::init() {
+void		neb::core::actor::RigidBody::Base::init() {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb actor", debug) << __PRETTY_FUNCTION__;
 	
-	Neb::Actor::RigidActor::Base::init();
+	neb::core::actor::RigidActor::Base::init();
 }
-void		Neb::Actor::RigidBody::Base::release() {
+void		neb::core::actor::RigidBody::Base::release() {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb actor", debug) << __PRETTY_FUNCTION__;
 	
-	Neb::Actor::RigidActor::Base::release();
+	neb::core::actor::RigidActor::Base::release();
 }
-void		Neb::Actor::RigidBody::Base::step(Neb::Core::TimeStep const & ts) {
-	Neb::Actor::RigidActor::Base::step(ts);
+void		neb::core::actor::RigidBody::Base::step(neb::core::TimeStep const & ts) {
+	neb::core::actor::RigidActor::Base::step(ts);
 }
 
 

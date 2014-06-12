@@ -4,13 +4,11 @@
 #include <Nebula/Actor/Actor/Base.hh>
 
 namespace neb { namespace core { namespace actor {
-namespace neb {
-	namespace Actor {
 		namespace RigidActor {
-			class Base: virtual public neb::Actor::Actor::Base {
+			class Base: virtual public neb::core::actor::actor::Base {
 				public:
 					Base();
-					Base(sp::shared_ptr<neb::Actor::Util::Parent>;
+					Base(sp::shared_ptr<neb::core::actor::Util::Parent>);
 
 					virtual void					init();
 					virtual void					release();
@@ -18,8 +16,7 @@ namespace neb {
 
 			};
 		}
-	}
-}
+}}}
 
 #endif
 

@@ -5,7 +5,7 @@
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/GUI/Object/terminal.hh>
 
-void	Neb::Graphics::GUI::Object::terminal::draw() {
+void		neb::gfx::GUI::Object::terminal::draw(sp::shared_ptr<neb::glsl::program> p) {
 	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
@@ -17,18 +17,19 @@ void	Neb::Graphics::GUI::Object::terminal::draw() {
 	float y = y_ + 0.5;
 	float line_height = 0.1;
 	
-	for(auto it = lines_.begin(); it != lines_.end(); ++it) {
-		draw_text(x_, y, sx, sy, font_color_, it->c_str());
+	for(auto l : lines_) {
+		l = "$ " + l;
+		draw_text(p, x_, y, sx, sy, font_color_, l.c_str());
 		y -= line_height;
 	}
 	
-	std::string line = "$ " + line_;
+	::std::string line = "$ " + line_;
 
-	draw_text(x_, y, sx, sy, font_color_, line.c_str());
+	draw_text(p, x_, y, sx, sy, font_color_, line.c_str());
 	
 }
-int			Neb::Graphics::GUI::Object::terminal::key_fun(
-		sp::shared_ptr<Neb::Graphics::Window::Base> const & window,
+int			neb::gfx::GUI::Object::terminal::key_fun(
+		sp::shared_ptr<neb::gfx::Window::Base> const & window,
 		int key,
 		int scancode,
 		int action,
@@ -93,11 +94,11 @@ int			Neb::Graphics::GUI::Object::terminal::key_fun(
 
 	return 0;
 }
-int Neb::Graphics::GUI::Object::terminal::enter() {
+int neb::gfx::GUI::Object::terminal::enter() {
 
-	auto self = sp::dynamic_pointer_cast<Neb::Graphics::GUI::Object::terminal>(shared_from_this());
+	auto self = sp::dynamic_pointer_cast<neb::gfx::GUI::Object::terminal>(shared_from_this());
 
-	Neb::App::Base::globalBase()->command(self, line_);
+	neb::App::Base::global()->command(self, line_);
 
 	//lines_.push_back(line_);
 	line_.clear();

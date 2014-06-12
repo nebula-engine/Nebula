@@ -41,23 +41,23 @@
 namespace neb {
 	namespace Enum {
 		template <typename enum_type> struct Maps {
-			std::map<std::string,enum_type>		map_string_enum_;
-			std::map<enum_type,std::string>		map_enum_string_;
+			::std::map< ::std::string,enum_type>		map_string_enum_;
+			::std::map<enum_type, ::std::string>		map_enum_string_;
 			
-			std::string		toString(enum_type val) {
+			::std::string		toString(enum_type val) {
 				auto it = map_enum_string_.find(val);
 				if(it == map_enum_string_.cend()) throw 0;
 				return it->second;
 			}
-			enum_type		toEnum(std::string str) {
+			enum_type		toEnum(::std::string str) {
 				auto it = map_string_enum_.find(str);
 				if(it == map_string_enum_.cend()) throw 0;
 				return it->second;
 			}
 
-			std::vector<std::string>	toStringVec(enum_type val) {
+			::std::vector< ::std::string >	toStringVec(enum_type val) {
 				enum_type e = 0;
-				std::vector<std::string> vec;
+				::std::vector< ::std::string > vec;
 				for(size_t b = 0; b < (sizeof(enum_type) * 8); ++b) {
 					e = 1 << b;
 					if(e & val) {
@@ -66,7 +66,7 @@ namespace neb {
 				}
 				return vec;
 			}
-			enum_type			toEnum(std::vector<std::string> vec) {
+			enum_type			toEnum(::std::vector< ::std::string > vec) {
 				enum_type e = 0;
 				for(auto it = vec.cbegin(); it != vec.cend(); ++it) {
 					e |= toEnum(*it);
@@ -90,11 +90,11 @@ namespace neb {
 			\
 															\
 			void				save(boost::archive::xml_oarchive & ar, unsigned int const & version) {		\
-				std::string str = maps_.maps_.toString(val_);						\
+				::std::string str = maps_.maps_.toString(val_);						\
 				ar << boost::serialization::make_nvp("value",str);					\
 			}												\
 			void				load(boost::archive::xml_iarchive & ar, unsigned int const & version) {		\
-				std::string str;									\
+				::std::string str;									\
 				ar >> boost::serialization::make_nvp("value",str);					\
 				val_ = (E)maps_.maps_.toEnum(str);								\
 			}												\

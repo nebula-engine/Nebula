@@ -2,11 +2,10 @@
 #include <Nebula/Graphics/Camera/View/Base.hh>
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 
-Neb::Graphics::Camera::View::Base::Base(Neb::Graphics::Context::Base_s parent): parent_(parent) {
+neb::gfx::Camera::View::Base::Base(sp::shared_ptr<neb::gfx::Context::Base> parent): parent_(parent) {
 }
-void		Neb::Graphics::Camera::View::Base::load() {
-	auto p = Neb::App::Base::globalBase()->get_program(Neb::program_name::e::LIGHT);
-
+void		neb::gfx::Camera::View::Base::load(sp::shared_ptr<neb::glsl::program> p) {
+	
 	p->get_uniform_scalar("view")->load(view());
 }
 

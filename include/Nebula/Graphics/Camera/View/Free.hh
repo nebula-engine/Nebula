@@ -29,7 +29,7 @@ namespace neb {
 						/** @name constructors
 						 * @{
 						 */
-						Free(neb::gfx::Context::Base_s parent);
+						Free(sp::shared_ptr<neb::gfx::Context::Base> parent);
 						//Free(math::vec3<double> eye, double yaw, double pitch);
 						/** @} */
 
@@ -54,12 +54,11 @@ namespace neb {
 						//std::vector<gal::sig::connection<>*>		vec_y_;
 						//std::vector<gal::sig::connection<>*>		vec_z_;
 
-						neb::gfx::Window::Base_w			window_;
 
 
-						std::map<int,unsigned int>			key_flag_;
-						std::map<int,vec3>				head_;
-						std::map<unsigned int,int>			head_flag_;
+						::std::map<int,unsigned int>			key_flag_;
+						::std::map<int,vec3>				head_;
+						::std::map<unsigned int,int>			head_flag_;
 				};
 			}
 		}

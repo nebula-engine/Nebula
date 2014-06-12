@@ -1,8 +1,8 @@
 #include <Nebula/Actor/RigidBody/Local.hh>
 
-void		Neb::Actor::RigidBody::Local::step(Neb::Core::TimeStep const & ts) {
-	Neb::Actor::RigidBody::Base::step(ts);
-	Neb::Actor::RigidActor::Local::step(ts);
+void		neb::core::actor::RigidBody::Local::step(neb::core::TimeStep const & ts) {
+	neb::core::actor::RigidBody::Base::step(ts);
+	neb::core::actor::RigidActor::Local::step(ts);
 }
 
 

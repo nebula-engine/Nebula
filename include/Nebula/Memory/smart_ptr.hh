@@ -44,7 +44,7 @@ namespace neb {
 	template<class T> class unique_ptr {
 		public:
 			unique_ptr(T* t = NULL): ptr_(t) {}
-			unique_ptr(unique_ptr const && ptr): ptr_(std::move(ptr.ptr_)) {}
+			unique_ptr(unique_ptr const && ptr): ptr_(::std::move(ptr.ptr_)) {}
 			~unique_ptr() {}
 		private:
 			unique_ptr(unique_ptr<T> const &) {}

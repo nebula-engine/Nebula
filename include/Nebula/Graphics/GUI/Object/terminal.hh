@@ -17,7 +17,7 @@ namespace neb {
 						};
 
 						//terminal();
-						virtual void		draw();
+						virtual void		draw(sp::shared_ptr<neb::glsl::program> p);
 						//virtual void		connect();
 
 
@@ -27,8 +27,8 @@ namespace neb {
 
 						virtual int		enter();
 					public:
-						std::deque<std::string>		lines_;
-						std::string			line_;
+						::std::deque< ::std::string >		lines_;
+						::std::string				line_;
 
 				};
 			}

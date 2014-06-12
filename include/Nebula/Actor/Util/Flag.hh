@@ -1,8 +1,8 @@
 #ifndef NEBULA_ACTOR_UTIL_FLAG_HH
 #define NEBULA_ACTOR_UTIL_FLAG_HH
 
-namespace neb {
-	namespace Actor {
+namespace neb { namespace core {
+	namespace actor {
 		namespace Util {
 			DEFINE_FLAG(Flag,
 					((SHOULD_UPDATE)(1 << 1))
@@ -10,6 +10,6 @@ namespace neb {
 				   )
 		}
 	}
-}
+}}
 
 #endif
