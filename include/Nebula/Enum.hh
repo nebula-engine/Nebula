@@ -38,7 +38,7 @@
    }
    */
 
-namespace Neb {
+namespace neb {
 	namespace Enum {
 		template <typename enum_type> struct Maps {
 			std::map<std::string,enum_type>		map_string_enum_;
@@ -107,7 +107,7 @@ namespace Neb {
 						BOOST_PP_SEQ_FOR_EACH(DEFINE_MAP_STRING_ENUM_VALUE, , values)\
 						BOOST_PP_SEQ_FOR_EACH(DEFINE_MAP_ENUM_STRING_VALUE, , values)\
 					}\
-					Neb::Enum::Maps<short> maps_;\
+					neb::Enum::Maps<short> maps_;\
 				};\
 				static Maps maps_;\
 			public:\

@@ -4,20 +4,21 @@
 #include <Nebula/Actor/RigidDynamic/Base.hh>
 #include <Nebula/Actor/RigidBody/Local.hh>
 
-namespace Neb {
+namespace neb { namespace core { namespace actor {
+namespace neb {
 	namespace Actor {
 		namespace RigidDynamic {
 			class Local:
-				virtual public Neb::Actor::RigidBody::Local,
-				virtual public Neb::Actor::RigidDynamic::Base
+				virtual public neb::Actor::RigidBody::Local,
+				virtual public neb::Actor::RigidDynamic::Base
 			{
 				public:
 					Local();
-					Local(Neb::Actor::Util::Parent_s);
+					Local(sp::shared_ptr<neb::Actor::Util::Parent>;
 
 					virtual void				init();
 					virtual void				release();
-					virtual void				step(Neb::Core::TimeStep const & ts);
+					virtual void				step(neb::core::TimeStep const & ts);
 			};
 		}
 	}

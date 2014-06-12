@@ -3,8 +3,8 @@
 
 #include <Nebula/Util/shared.hpp>
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace Window {
 			class __base: virtual public neb::std::shared
 			{

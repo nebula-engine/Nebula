@@ -6,7 +6,7 @@
 #include <Nebula/Core/TimeStep.hpp>
 #include <Nebula/Graphics/Color/Color.hh>
 
-namespace Neb {
+namespace neb {
 	namespace material {
 
 
@@ -21,10 +21,10 @@ namespace Neb {
 				ar & boost::serialization::make_nvp("shininess",shininess_);
 			}
 
-			Neb::Color::color<float>	ambient_;
-			Neb::Color::color<float>	diffuse_;
-			Neb::Color::color<float>	specular_;
-			Neb::Color::color<float>	emission_;
+			neb::Color::color<float>	ambient_;
+			neb::Color::color<float>	diffuse_;
+			neb::Color::color<float>	specular_;
+			neb::Color::color<float>	emission_;
 			float				shininess_;
 		};
 
@@ -34,7 +34,7 @@ namespace Neb {
 				material();
 				void		init();
 				void		release();
-				void		step(Neb::Core::TimeStep const & ts);
+				void		step(neb::core::TimeStep const & ts);
 				/** @brief load
 				 *
 				 * load into OpenGL

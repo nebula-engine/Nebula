@@ -4,12 +4,12 @@
 #include <Nebula/Util/parent.hpp>
 #include <Nebula/Graphics/Window/__base.hpp>
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace Window {
 			namespace Util {
 				class Parent:
-					public Neb::Util::parent<Neb::Graphics::Window::__base>
+					public neb::Util::parent<neb::gfx::Window::__base>
 				{
 					public:
 				};

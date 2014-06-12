@@ -10,8 +10,8 @@
 #include <Nebula/Graphics/Color/Color.hh>
 #include <Nebula/Graphics/GUI/Object/Util/Parent.hh>
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace GUI {
 			namespace Object {
 				class Base: virtual public neb::std::shared {
@@ -24,9 +24,9 @@ namespace Neb {
 						virtual void			draw() = 0;
 
 						virtual int			key_fun(
-								sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int, int, int, int) = 0;
+								sp::shared_ptr<neb::gfx::Window::Base> const & window, int, int, int, int) = 0;
 						virtual int			mouse_button_fun(
-								sp::shared_ptr<Neb::Graphics::Window::Base> const & window, int, int, int);
+								sp::shared_ptr<neb::gfx::Window::Base> const & window, int, int, int);
 
 						//virtual void			connect();
 						bool				active_;
@@ -43,15 +43,15 @@ namespace Neb {
 
 						}
 					public:
-						Neb::Graphics::GUI::Object::Util::Parent_s	parent_;
+						neb::gfx::GUI::Object::Util::Parent_s	parent_;
 						
 						float						x_;
 						float						y_;
 						float						w_;
 						float						h_;
 
-						Neb::Color::color<float>			font_color_;
-						Neb::Color::color<float>			bg_color_;
+						neb::Color::color<float>			font_color_;
+						neb::Color::color<float>			bg_color_;
 
 						std::string					label_;
 						// connections

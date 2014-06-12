@@ -2,7 +2,7 @@
 #define __GLUTPP_ACTOR_EVENT_H__
 
 
-namespace Neb {
+namespace neb {
 	namespace Shape {
 		namespace Event {
 			class Base {

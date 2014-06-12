@@ -3,7 +3,7 @@
 
 #include <boost/signals2.hpp>
 
-namespace Neb {
+namespace neb {
 	template<class T, class R, class... A> class weak_function {
 		public:
 			typedef R(T::*funcptr)(A...);

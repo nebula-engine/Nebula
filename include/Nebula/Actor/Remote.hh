@@ -2,10 +2,10 @@
 #define NEBULA_ACTOR_REMOTE_HH
 
 #include <Nebula/Actor/Base.hh>
-
-namespace Neb {
+namespace neb { namespace core { namespace actor {
+namespace neb {
 	namespace Actor {
-		class Remote: virtual public Neb::Actor::Base {
+		class Remote: virtual public neb::Actor::Base {
 			public:
 				virtual void		stepBaseDerived(double dt);
 		};

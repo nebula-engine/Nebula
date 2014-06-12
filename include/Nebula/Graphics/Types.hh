@@ -3,7 +3,7 @@
 
 #include <memory>
 
-namespace Neb {
+namespace neb {
 
 	struct attrib_name {
 		enum e {
@@ -53,7 +53,7 @@ namespace Neb {
 	}
 
 	/** @brief %Graphics */
-	namespace Graphics {
+	namespace gfx {
 		namespace Window {
 			namespace Util {
 				class Parent;

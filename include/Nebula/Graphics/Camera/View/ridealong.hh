@@ -9,19 +9,19 @@
 #include <Nebula/Graphics/Camera/View/Base.hh>
 #include <Nebula/config.hh>
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace Camera {
 			namespace View {
-				class Ridealong: public Neb::Graphics::Camera::View::Base {
+				class Ridealong: public neb::gfx::Camera::View::Base {
 					public:
-						Ridealong(Neb::Graphics::Context::Base_s);
+						Ridealong(sp::shared_ptr<neb::gfx::Context::Base>;
 
 						virtual mat4				view();
-						virtual void				step(Neb::Core::TimeStep const & ts);
+						virtual void				step(neb::core::TimeStep const & ts);
 
 
-						sp::shared_ptr<Neb::Actor::Base>	actor_;
+						sp::shared_ptr<neb::Actor::Base>	actor_;
 				};
 			}
 		}

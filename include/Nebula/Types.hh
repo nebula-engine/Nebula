@@ -5,13 +5,13 @@
 
 //#include <Nebula/Util/Map.hh>
 
-/** @todo since all classes used in factory derive from Neb::Util::Shared, theres no need to have multiple
+/** @todo since all classes used in factory derive from neb::Util::Shared, theres no need to have multiple
  * factory objects for different type. You can still have different factories for different uses (i.e. remote and local)
  * but all default factories can be merged into one!!! Also implies that Factory doesnt need to be template.
  */
 
 /** @brief root namespace for @gru */
-namespace Neb {
+namespace neb {
 
 	class simulation_callback;
 	

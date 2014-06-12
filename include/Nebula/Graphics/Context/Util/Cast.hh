@@ -5,8 +5,8 @@
 
 #include <Nebula/Graphics/Types.hh>
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace Context {
 			namespace Util {
 				/** @brief %Cast
@@ -15,7 +15,7 @@ namespace Neb {
 					virtual public gal::std::shared
 				{
 					public:
-						Neb::Graphics::Context::Base_s			isContextBase();
+						neb::gfx::Context::Base_s			isContextBase();
 				};
 			}
 		}

@@ -4,13 +4,13 @@
 #include <Nebula/Graphics/Window/Util/Cast.hh>
 #include <Nebula/Graphics/Context/Base.hh>
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace Context {
 			namespace Util {
 				class Parent:
-					virtual public gal::std::parent< Neb::Graphics::Context::Base >,
-					virtual public Neb::Graphics::Window::Util::Cast
+					virtual public gal::std::parent< neb::gfx::Context::Base >,
+					virtual public neb::gfx::Window::Util::Cast
 				{
 					public:
 				};
