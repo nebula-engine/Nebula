@@ -11,7 +11,7 @@ namespace neb {
 			class Base: virtual public neb::Actor::RigidActor::Base {
 				public:
 					Base();
-					Base(sp::shared_ptr<neb::Actor::Util::Parent>;
+					Base(sp::shared_ptr<neb::Actor::Util::Parent>);
 
 					virtual void					init();
 					virtual void					release();
