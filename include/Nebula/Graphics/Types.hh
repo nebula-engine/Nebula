@@ -30,9 +30,6 @@ namespace neb {
 		};
 
 		class Base;
-
-		typedef std::shared_ptr<Base>		Base_s;
-		typedef std::weak_ptr<Base>		Base_w;
 	}
 	/** @brief GLSL */
 	namespace glsl {
@@ -57,15 +54,9 @@ namespace neb {
 		namespace Window {
 			namespace Util {
 				class Parent;
-
-				typedef std::shared_ptr<Parent>		Parent_s;
-				typedef std::weak_ptr<Parent>		Parent_w;
 			}
 
 			class Base;
-
-			typedef std::shared_ptr<Base>		Base_s;
-			typedef std::weak_ptr<Base>		Base_w;
 		}
 
 		/** @brief Graphical User Interface */
@@ -74,24 +65,16 @@ namespace neb {
 			namespace Layout {
 				class Base;
 
-				typedef std::shared_ptr<Base>		Base_s;
-				typedef std::weak_ptr<Base>		Base_w;
 			}
 			
 			/** @brief %Object */
 			namespace Object {
 				namespace Util {
 					class Parent;
-
-					typedef std::shared_ptr<Parent>		Parent_s;
-					typedef std::weak_ptr<Parent>		Parent_w;
 				}
 
 				class Base;
 				class terminal;
-
-				typedef std::shared_ptr<Base>		Base_s;
-				typedef std::weak_ptr<Base>		Base_w;
 			}
 
 		}
@@ -101,15 +84,8 @@ namespace neb {
 			/** @brief %Util */
 			namespace Util {
 				class Parent;
-
-				typedef std::shared_ptr<Parent>		Parent_s;
-				typedef std::weak_ptr<Parent>		Parent_w;
-				typedef std::unique_ptr<Parent>		Parent_u;
 			}
 			class Base;
-
-			typedef std::shared_ptr<Base>	Base_s;
-			typedef std::weak_ptr<Base>	Base_w;
 		}
 
 		/** @brief Camera */
@@ -119,19 +95,11 @@ namespace neb {
 				class Free;
 				class Ridealong;
 
-				typedef std::shared_ptr<Base>		Base_s;
-				typedef std::unique_ptr<Base>		Base_u;
-
-				typedef std::shared_ptr<Ridealong>	Ridealong_s;
-				typedef std::weak_ptr<Ridealong>	Ridealong_w;
 			}
 			namespace Projection {
 				class Base;
 				class Perspective;
 
-				typedef std::shared_ptr<Base>		Base_s;
-				typedef std::weak_ptr<Base>		Base_w;
-				typedef std::unique_ptr<Base>		Base_u;
 			}
 		}
 	}
