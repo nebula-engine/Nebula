@@ -217,7 +217,7 @@ void main(void)
 		color += ambient + diffuse + specular;
 	}
 	color += emission;
-	color += vec4(1,1,1,1);
+	//color += vec4(1,1,1,1);
 }
 
 
