@@ -7,7 +7,6 @@
 
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
-
 #include <boost/serialization/map.hpp>
 
 //#include <PxPhysicsAPI.h>
@@ -18,7 +17,7 @@
 //#include <Nebula/Math/Serialization.hh>
 
 #include <Nebula/Filter.hh>
-
+#include <Nebula/Math/Serialization/GLM.hpp>
 #include <Nebula/Message/Actor/Update.hh>
 #include <Nebula/Graphics/texture.hh>
 #include <Nebula/Graphics/material.hh>

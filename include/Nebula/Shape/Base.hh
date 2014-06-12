@@ -17,7 +17,7 @@
 #include <Nebula/Shape/Util/Flag.hh>
 
 #include <Nebula/Graphics/glsl/program.hh>
-#include <Nebula/Graphics/Light/Base.hh>
+//#include <Nebula/Graphics/Light/Base.hh>
 #include <Nebula/Graphics/Light/Util/Parent.hh>
 #include <Nebula/Graphics/Light/Util/light_count.hpp>
 #include <Nebula/Graphics/material.hh>

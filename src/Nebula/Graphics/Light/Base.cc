@@ -65,11 +65,9 @@ void neb::Light::Base::load(int o, mat4 space) {
 	
 	auto p = neb::App::Base::global()->current_program();
 	
-	vec4 pos = pos_;
+	vec3 pos = pos_;
 	
-	pos += vec4(space[3][0], space[3][1], space[3][3], 0);
-	
-	pos.w = pos_.w;
+	pos += vec3(space[3][0], space[3][1], space[3][3]);
 	
 	
 	p->get_uniform_vector(light_type_string_ + ".position")->load(o, pos);
