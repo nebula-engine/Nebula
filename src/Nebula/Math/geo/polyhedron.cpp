@@ -6,7 +6,7 @@ std::vector< std::shared_ptr< math::geo::tri > >		math::geo::polyhedron::triangl
 
 	for(auto p : polygons_) {
 		assert(p);
-		tris.insert(p->triangles_.begin(), p->triangles_.end(), tris.end());
+		tris.insert(tris.end(), p->triangles_.begin(), p->triangles_.end());
 	}
 
 	return tris;

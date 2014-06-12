@@ -7,6 +7,9 @@
 
 #include <glm/glm.hpp>
 
+#include <boost/archive/polymorphic_iarchive.hpp>
+#include <boost/archive/polymorphic_oarchive.hpp>
+
 //#include <galaxy/flag.hpp>
 
 /*
@@ -17,8 +20,8 @@
 #include <math/geo/polyhedron.hpp>
 */
 
-//#include <Nebula/Math/geo/polyhedron.hh>
 #include <Nebula/Math/geo/decl.hpp>
+
 #include <Nebula/config.hh>
 #include <Nebula/Graphics/material.hh>
 
@@ -28,25 +31,18 @@ namespace Neb {
 		int len_vertices_;
 		int len_indices_;
 	};
-	struct vertex {
-		void			print(int sl);
-
-		glm::vec3		position;
-		glm::vec3		normal;
-		glm::vec2		texcoor;
-	};
 	class mesh {
 		public:
 			mesh();
-			void				save(std::string);
-			void				load(std::string);
+
+			void				serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
+			void				serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
+			
 			void				construct(math::geo::polyhedron*);
 			void				print(int sl);
 			
-			// draw data
-			file_header			fh_;
-			Neb::vertex*			vertices_;
-			GLushort*			indices_;
+			std::vector<math::geo::vertex>		vertices_;
+			std::vector<GLushort>			indices_;
 	};
 }
 

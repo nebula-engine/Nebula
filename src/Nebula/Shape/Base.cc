@@ -10,7 +10,7 @@
 #include <Nebula/Graphics/Light/Base.hh>
 #include <Nebula/Graphics/glsl/attrib.hh>
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
-
+#include <Nebula/Math/geo/polygon.hpp>
 
 Neb::Shape::Base::Base() {
 }
@@ -110,7 +110,7 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 
 	glEnable(GL_TEXTURE_2D);
 
-	if(mesh_.indices_ == 0) {
+	if(mesh_.indices_.empty()) {
 		printf("not initialized\n");
 		abort();
 	}
@@ -129,14 +129,14 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 	}
 
 	// indices
-	int size = mesh_.fh_.len_indices_ * sizeof(GLushort);
-
+	int size = mesh_.indices_.size() * sizeof(GLushort);
+	
 	glGenBuffers(1, &bufs->indices_);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufs->indices_);
 	glBufferData(
 			GL_ELEMENT_ARRAY_BUFFER,
 			size,
-			mesh_.indices_,
+			&mesh_.indices_[0],
 			GL_STATIC_DRAW);
 
 	//checkerror("glBufferData");
@@ -149,17 +149,17 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 	glBindBuffer(GL_ARRAY_BUFFER, bufs->vbo_);
 	//glBindVertexBuffer(0, vbo_, baseOffset, sizeof(Neb::vertex));
 
-	Neb::vertex v;
-	long off_position = (long)&v.position - (long)&v;
-	long off_normal = (long)&v.normal - (long)&v;
-	long off_texcoor = (long)&v.texcoor - (long)&v;
-
+	math::geo::vertex v;
+	long off_position = (long)&(v.p[0])  - (long)&v;
+	long off_normal =   (long)&(v.n[0])  - (long)&v;
+	long off_texcoor =  (long)&(v.tc[0]) - (long)&v;
+	
 	glVertexAttribPointer(
 			p->get_attrib(Neb::attrib_name::e::POSITION)->o_,
 			4,
 			GL_FLOAT,
 			GL_FALSE,
-			sizeof(Neb::vertex),
+			sizeof(math::geo::vertex),
 			(void*)off_position);
 	//checkerror("glVertexAttribPointer");
 
@@ -168,7 +168,7 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 			3,
 			GL_FLOAT,
 			GL_FALSE,
-			sizeof(Neb::vertex),
+			sizeof(math::geo::vertex),
 			(void*)off_normal);
 	//checkerror("glVertexAttribPointer normal");
 
@@ -178,18 +178,18 @@ void					Neb::Shape::Base::init_buffer(Neb::Graphics::Context::Base_s context, s
 				2,
 				GL_FLOAT,
 				GL_FALSE,
-				sizeof(Neb::vertex),
+				sizeof(math::geo::vertex),
 				(void*)off_texcoor);
 		//checkerror("glVertexAttribPointer texcoor");
 	}
 
-	size = mesh_.fh_.len_vertices_ * sizeof(Neb::vertex);
+	size = mesh_.vertices_.size() * sizeof(math::geo::vertex);
 	glBufferData(
 			GL_ARRAY_BUFFER,
 			size,
-			mesh_.vertices_,
+			&mesh_.vertices_[0],
 			GL_STATIC_DRAW);
-
+	
 	//checkerror("glBufferData");
 
 	//glBindBuffer(GL_ARRAY_BUFFER,0);
@@ -251,14 +251,14 @@ void		Neb::Shape::Base::draw_elements(sp::shared_ptr<Neb::Graphics::Context::Bas
 	//printf("draw\n");
 	glDrawElements(
 			GL_TRIANGLES,
-			mesh_.fh_.len_indices_,
+			mesh_.indices_.size(),
 			GL_UNSIGNED_SHORT,
 			0);
 	//checkerror("glDrawElements");
 
 	glDrawElements(
 			GL_LINES,
-			mesh_.fh_.len_indices_,
+			mesh_.indices_.size(),
 			GL_UNSIGNED_SHORT,
 			0);
 	//checkerror("glDrawElements");
