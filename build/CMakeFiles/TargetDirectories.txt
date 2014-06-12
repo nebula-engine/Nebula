@@ -1,0 +1,3 @@
+/home/chuck/Programming/gru/build/CMakeFiles/Nebula.dir
+/home/chuck/Programming/gru/build/test/Window/CMakeFiles/Window.dir
+/home/chuck/Programming/gru/build/CMakeFiles/doc.dir
