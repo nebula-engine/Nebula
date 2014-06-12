@@ -11,6 +11,7 @@
 Neb::Graphics::Context::Base::Base() {
 }
 Neb::Graphics::Context::Base::Base(Neb::Graphics::Context::Util::Parent_s parent): parent_(parent) {
+
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
 Neb::Graphics::Context::Base&		Neb::Graphics::Context::Base::operator=(Neb::Graphics::Context::Base const & r){
@@ -49,10 +50,10 @@ void		Neb::Graphics::Context::Base::render() {
 	
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
-
+	
 	assert(proj_);
 	assert(view_);
-
+	
 	/** wrong! */	
 	app->use_program(Neb::program_name::e::LIGHT);
 	
