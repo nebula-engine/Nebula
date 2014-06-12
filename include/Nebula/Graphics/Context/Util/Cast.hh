@@ -15,7 +15,7 @@ namespace neb {
 					virtual public gal::std::shared
 				{
 					public:
-						neb::gfx::Context::Base_s			isContextBase();
+						sp::shared_ptr<neb::gfx::Context::Base>			isContextBase();
 				};
 			}
 		}

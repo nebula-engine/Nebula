@@ -35,7 +35,7 @@ namespace neb {
 
 					virtual void		serialize(boost::archive::polymorphic_oarchive& ar, unsigned int const & version);
 
-					std::vector< neb::Actor::Base_s >	actors_;
+					::std::vector< sp::shared_ptr<neb::Actor::Base> >	actors_;
 			};
 			class IUpdate:
 				virtual public neb::Message::Actor::IBase,
