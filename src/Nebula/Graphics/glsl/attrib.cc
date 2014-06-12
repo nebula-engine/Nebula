@@ -7,11 +7,11 @@
 #include <Nebula/free.hh>
 #include <Nebula/Graphics/glsl/program.hh>
 
-Neb::glsl::attrib::attrib():
+neb::glsl::attrib::attrib():
 	o_(-1),
 	o_bind_(-1)
 {}
-void	Neb::glsl::attrib::init(char const * name, GLuint o_bind)
+void	neb::glsl::attrib::init(char const * name, GLuint o_bind)
 {
 	name_ = name;
 	o_bind_ = o_bind;
@@ -19,7 +19,7 @@ void	Neb::glsl::attrib::init(char const * name, GLuint o_bind)
 	printf("attrib %s\n",name_);
 	
 }
-int	Neb::glsl::attrib::locate(std::shared_ptr<Neb::glsl::program> p) {
+int	neb::glsl::attrib::locate(std::shared_ptr<neb::glsl::program> p) {
 	glBindAttribLocation(p->o_, o_bind_, name_);
 	checkerror("glBindAttribLocation");
 	
@@ -36,13 +36,13 @@ int	Neb::glsl::attrib::locate(std::shared_ptr<Neb::glsl::program> p) {
 	*/
 	return o_;
 }
-void	Neb::glsl::attrib::enable()
+void	neb::glsl::attrib::enable()
 {
 	glEnableVertexAttribArray(o_);
 
 	checkerror("glEnableVertexAttribArray");
 }
-void	Neb::glsl::attrib::disable()
+void	neb::glsl::attrib::disable()
 {
 	glDisableVertexAttribArray(o_);
 

@@ -5,18 +5,18 @@
 
 #include <Nebula/Actor/Util/Types.hh>
 
-namespace neb {
-        namespace Actor {
+namespace neb { namespace core {
+        namespace actor {
                 namespace Util {
                         class Cast: virtual public gal::std::shared {
 				public:
-					sp::shared_ptr<neb::Actor::Base>				isActorBase();
-					sp::shared_ptr<neb::Actor::Actor::Base>				isActorActor();
-					sp::shared_ptr<neb::Actor::RigidActor::Base>			isActorRigidActor();
-					sp::shared_ptr<neb::Actor::RigidBody::Base>			isActorRigidBody();
+					sp::shared_ptr<neb::core::actor::Base>				isActorBase();
+					sp::shared_ptr<neb::core::actor::actor::Base>				isActorActor();
+					sp::shared_ptr<neb::core::actor::RigidActor::Base>			isActorRigidActor();
+					sp::shared_ptr<neb::core::actor::RigidBody::Base>			isActorRigidBody();
 			};
 		}
 	}
-}
+}}
 
 #endif

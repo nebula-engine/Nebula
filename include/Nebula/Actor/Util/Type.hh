@@ -11,7 +11,7 @@
 #include <Nebula/Enum.hh>
 
 namespace neb {
-	namespace Actor {
+	namespace actor {
 
 		DEFINE_TYPE(Type,
 				((NONE)(0))

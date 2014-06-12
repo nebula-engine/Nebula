@@ -1,5 +1,5 @@
-#ifndef __NEBULA_APP_H__
-#define __NEBULA_APP_H__
+#ifndef __NEBULA_APP___GFX_GLSL_H__
+#define __NEBULA_APP___GFX_GLSL_H__
 
 #include <fstream>
 
@@ -32,21 +32,21 @@ namespace neb {
 	namespace App {
 		class __gfx_glsl: virtual public neb::App::__base {
 			public:
-				typedef std::map<int, std::shared_ptr<neb::glsl::program> >		map_program_type;
+				typedef ::std::map<int, sp::shared_ptr<neb::glsl::program> >		map_program_type;
 
 				friend class neb::gfx::Context::Base;
 			protected:
 				static sp::shared_ptr<neb::App::__gfx_glsl>		global();
 
-				std::shared_ptr<neb::glsl::program>			use_program(neb::program_name::e);
-				std::shared_ptr<neb::glsl::program>			get_program(neb::program_name::e);
+				sp::shared_ptr<neb::glsl::program>			use_program(neb::program_name::e);
+				sp::shared_ptr<neb::glsl::program>			get_program(neb::program_name::e);
 			public:
-				std::shared_ptr<neb::glsl::program>			current_program();
+				sp::shared_ptr<neb::glsl::program>			current_program();
 				void							create_programs();
 
 
 				map_program_type					programs_;
-				std::shared_ptr<neb::glsl::program>			current_;
+				sp::shared_ptr<neb::glsl::program>			current_;
 		};
 	}
 }

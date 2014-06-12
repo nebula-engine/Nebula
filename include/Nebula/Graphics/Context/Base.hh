@@ -37,7 +37,7 @@ namespace neb {
 			{
 				public:
 					Base();
-					Base(neb::gfx::Context::Util::Parent_s parent);
+					Base(sp::shared_ptr<neb::gfx::Context::Util::Parent> parent);
 					Base&						operator=(Base const & r);
 					void						init();
 					void						release();

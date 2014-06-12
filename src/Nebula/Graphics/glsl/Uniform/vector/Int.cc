@@ -16,7 +16,7 @@
 
 
 
-void	Neb::glsl::Uniform::Vector::Int::load(int c, int i) {
+void	neb::glsl::Uniform::Vector::Int::load(int c, int i) {
 	glUniform1i(o_[c], i);
 	checkerror("glUniform1i");
 }

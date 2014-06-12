@@ -11,7 +11,7 @@
 #include <Nebula/Graphics/glsl/program.hh>
 
 
-Neb::glsl::Uniform::Vector::Base::Base(std::string name1, std::string name2) {
+neb::glsl::Uniform::Vector::Base::Base(std::string name1, std::string name2) {
 	name1_ = name1;
 	name2_ = name2;
 	c_ = 0;
@@ -20,7 +20,7 @@ Neb::glsl::Uniform::Vector::Base::Base(std::string name1, std::string name2) {
 	}
 	//printf("%s\n",__PRETTY_FUNCTION__);
 }
-void	Neb::glsl::Uniform::Vector::Base::locate(std::shared_ptr<Neb::glsl::program> p) {
+void	neb::glsl::Uniform::Vector::Base::locate(std::shared_ptr<neb::glsl::program> p) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	assert(p);

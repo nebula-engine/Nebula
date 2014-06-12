@@ -3,7 +3,7 @@
 
 namespace neb {
 	namespace Timer {
-		namespace Actor {
+		namespace actor {
 			class Base;
 			class Release;
 		}

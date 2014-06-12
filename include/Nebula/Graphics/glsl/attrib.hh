@@ -2,6 +2,7 @@
 #define __GLUTPP_ATTRIBUTE_H__
 
 #include <memory>
+#include <Nebula/Util/typedef.hpp>
 
 namespace neb {
 	namespace glsl {
@@ -10,7 +11,7 @@ namespace neb {
 			public:
 				attrib();
 				void		init(char const *, GLuint);
-				int		locate(std::shared_ptr<neb::glsl::program> p);
+				int		locate(sp::shared_ptr<neb::glsl::program> p);
 				void		enable();
 				void		disable();
 

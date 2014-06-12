@@ -6,15 +6,15 @@
 
 namespace neb { namespace core { namespace actor {
 namespace neb {
-	namespace Actor {
+	namespace actor {
 		namespace RigidDynamic {
 			class Remote:
-				virtual public neb::Actor::RigidBody::Remote,
-				virtual public neb::Actor::RigidDynamic::Base
+				virtual public neb::core::actor::RigidBody::Remote,
+				virtual public neb::core::actor::RigidDynamic::Base
 			{
 				public:
 					Remote();
-					Remote(neb::Actor::Util::Parent_w);
+					Remote(neb::core::actor::Util::Parent_w);
 
 					virtual void		create_physics();
 					virtual void		init_physics();

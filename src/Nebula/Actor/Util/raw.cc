@@ -4,19 +4,19 @@
 #include <Nebula/Actor/Util/raw.hpp>
 #include <Nebula/Xml/Xml.hpp>
 
-Neb::Actor::raw::raw():
-	type_(Neb::Actor::Type::NONE),
-	mode_create_(Neb::Actor::mode_create::e::NOW),
+neb::core::actor::raw::raw():
+	type_(neb::core::actor::Type::NONE),
+	mode_create_(neb::core::actor::mode_create::e::NOW),
 	flag_(0),
 	density_(200),
 	health_(1.0)
 {
 	memset(name_, 0, max_name_length + 1);
 }
-void		Neb::Actor::raw::load(Neb::weak_ptr<Neb::Actor::Base> actor) {
+void		neb::core::actor::raw::load(neb::weak_ptr<neb::core::actor::Base> actor) {
 	operator=(*(actor->raw_));
 }
-unsigned int Neb::Actor::raw::parse_filter(tinyxml2::XMLElement* element, unsigned int i) {
+unsigned int neb::core::actor::raw::parse_filter(tinyxml2::XMLElement* element, unsigned int i) {
 
 	if(element == NULL) return i;
 
@@ -24,27 +24,27 @@ unsigned int Neb::Actor::raw::parse_filter(tinyxml2::XMLElement* element, unsign
 
 	if(strcmp(buf, "STATIC") == 0)
 	{
-		return Neb::filter::type::STATIC;
+		return neb::filter::type::STATIC;
 	}
 	else if(strcmp(buf, "DYNAMIC") == 0)
 	{
-		return Neb::filter::type::DYNAMIC;
+		return neb::filter::type::DYNAMIC;
 	}
 	else if(strcmp(buf, "RIGID_AGAINST") == 0)
 	{
-		return Neb::filter::RIGID_AGAINST;
+		return neb::filter::RIGID_AGAINST;
 	}
 	else if(strcmp(buf, "PROJECTILE") == 0)
 	{
-		return Neb::filter::type::PROJECTILE;
+		return neb::filter::type::PROJECTILE;
 	}
 	else if(strcmp(buf, "PROJECTILE_AGAINST") == 0)
 	{
-		return Neb::filter::PROJECTILE_AGAINST;
+		return neb::filter::PROJECTILE_AGAINST;
 	}
 	abort();
 }
-void Neb::Actor::raw::plane(tinyxml2::XMLElement* element) {
+void neb::core::actor::raw::plane(tinyxml2::XMLElement* element) {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 
@@ -65,7 +65,7 @@ void Neb::Actor::raw::plane(tinyxml2::XMLElement* element) {
 
 	pose_ = pose;
 }
-void Neb::Actor::raw::controller(tinyxml2::XMLElement* element) {
+void neb::core::actor::raw::controller(tinyxml2::XMLElement* element) {
 
 	printf("%s\n",__FUNCTION__);
 
