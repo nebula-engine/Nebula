@@ -21,6 +21,7 @@ namespace neb {
 		{
 			protected:
 				Base();
+				virtual ~Base() {}
 		};
 		class OBase:
 			virtual public neb::Message::Base

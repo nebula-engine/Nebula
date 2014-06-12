@@ -42,16 +42,16 @@ void neb::gfx::GUI::Layout::Base::create_object(tinyxml2::XMLElement* element) {
 }*/
 void		neb::gfx::GUI::Layout::Base::step(neb::core::TimeStep const & ts) {
 }
-void		neb::gfx::GUI::Layout::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context) {
+void		neb::gfx::GUI::Layout::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p) {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	//jess::clog << "objects_.size()=" << objects_.map_.size() << std::endl;
 	
 	typedef neb::gfx::GUI::Object::Util::Parent O;
 	
-	O::map_.for_each<0>([] (O::map_type::iterator<0> it) {
+	O::map_.for_each<0>([&] (O::map_type::iterator<0> it) {
 		auto object = sp::dynamic_pointer_cast<neb::gfx::GUI::Object::Base>(it->ptr_);
 		assert(object);
-		object->draw();
+		object->draw(p);
 	});
 
 }
