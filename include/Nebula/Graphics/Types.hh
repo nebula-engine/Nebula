@@ -65,10 +65,17 @@ namespace neb {
 			namespace Layout {
 				class Base;
 
+				/** @brief %utilities */
+				namespace Util {
+					class Parent;
+				}
+
+
 			}
 			
 			/** @brief %Object */
 			namespace Object {
+				/** @brief %utilities */
 				namespace Util {
 					class Parent;
 				}

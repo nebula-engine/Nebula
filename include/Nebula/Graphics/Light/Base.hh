@@ -19,6 +19,7 @@
 
 #include <Nebula/Graphics/Light/Util/Flag.hh>
 #include <Nebula/Graphics/Light/Util/Types.hh>
+#include <Nebula/Graphics/Light/Util/light_count.hpp>
 
 #include <Nebula/Graphics/texture.hh>
 #include <Nebula/Graphics/Color/Color.hh>
@@ -30,15 +31,17 @@ namespace neb {
 	namespace Light {
 		class Base: virtual public gal::std::shared {
 			public:
-				Base(sp::shared_ptr<neb::Light::Util::Parent>);
+				Base(sp::shared_ptr<neb::Light::Util::Parent> parent, ::std::string);
 				
 				void				init();
 				
 				virtual void			release();
 				virtual void			cleanup();
 				virtual void			step(neb::core::TimeStep const & ts);
-				virtual void			load(int, mat4);
-				
+
+				virtual void			load(neb::core::light::util::count & light_count, mat4) = 0;
+				void				load(int o, mat4);
+
 				void				load_shadow();
 				void				draw();
 				void				dim();
@@ -56,9 +59,9 @@ namespace neb {
 					ar & boost::serialization::make_nvp("ambient",ambient_);
 					ar & boost::serialization::make_nvp("diffuse",diffuse_);
 					ar & boost::serialization::make_nvp("specular",specular_);
-					ar & boost::serialization::make_nvp("atten_const",atten_const_);
+/*					ar & boost::serialization::make_nvp("atten_const",atten_const_);
 					ar & boost::serialization::make_nvp("atten_linear",atten_linear_);
-					ar & boost::serialization::make_nvp("atten_quad",atten_quad_);
+					ar & boost::serialization::make_nvp("atten_quad",atten_quad_);*/
 				}
 			public:
 				virtual void				serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
@@ -72,6 +75,8 @@ namespace neb {
 
 				neb::Light::Util::Flag				flag_;
 
+				::std::string					light_type_string_;
+
 				// position
 				glm::vec4					pos_;
 
@@ -82,9 +87,6 @@ namespace neb {
 
 				// other properties
 
-				float						atten_const_;
-				float						atten_linear_;
-				float						atten_quad_;
 
 
 

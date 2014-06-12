@@ -3,10 +3,9 @@
 
 #include <map>
 
-//#include <PxPhysicsAPI.h>
-
+#include <Nebula/Graphics/Types.hh>
 #include <Nebula/Graphics/GUI/Object/Base.hh>
-#include <Nebula/Graphics/GUI/Layout/Util/Parent.hh>
+//#include <Nebula/Graphics/GUI/Layout/Util/Parent.hh>
 #include <Nebula/Graphics/GUI/Object/Util/Parent.hh>
 #include <Nebula/Graphics/Drawable/Base.hpp>
 
