@@ -24,7 +24,7 @@ namespace neb {
 				class Base {
 					public:
 						/** @brief Constructor */
-						Base(neb::gfx::Context::Base_s parent);
+						Base(sp::shared_ptr<neb::gfx::Context::Base> parent);
 						/** @brief Load view matrix into GLSL. */
 						void					load();
 						/** @brief Get view matrix. */
@@ -34,7 +34,7 @@ namespace neb {
 						 * @todo explain when in timeline this occurs and in which thread and why
 						 */
 						virtual void				step(neb::core::TimeStep const & ts) = 0;
-						neb::gfx::Context::Base_s		parent_;
+						sp::shared_ptr<neb::gfx::Context::Base>		parent_;
 				};
 			}
 		}

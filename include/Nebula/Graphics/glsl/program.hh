@@ -18,34 +18,34 @@ namespace neb {
 	namespace glsl {
 		class shader;
 
-		class program: public std::enable_shared_from_this<program> {
+		class program: public sp::enable_shared_from_this<program> {
 			public:
 				program();
 				void	init();
 				void	add_shader(char const *, GLenum);
-				void	add_shaders(std::vector<neb::glsl::shader>);
+				void	add_shaders(::std::vector<neb::glsl::shader>);
 				void	compile();
 				void	use();
 				void	locate();
 				void	scanUniforms();
 
 				void	add_attrib(neb::attrib_name::e, char const *, GLuint);
-				void	add_uniform_scalar(std::string, GLenum);
-				void	add_uniform_vector(std::string, std::string, GLenum);
+				void	add_uniform_scalar(::std::string, GLenum);
+				void	add_uniform_vector(::std::string, ::std::string, GLenum);
 				
 				
-				std::shared_ptr<neb::glsl::attrib>			get_attrib(int);
-				std::shared_ptr<neb::glsl::Uniform::Scalar::Base>		get_uniform_scalar(std::string);
-				std::shared_ptr<neb::glsl::Uniform::Vector::Base>		get_uniform_vector(std::string);
+				::std::shared_ptr<neb::glsl::attrib>					get_attrib(int);
+				::std::shared_ptr<neb::glsl::Uniform::Scalar::Base>			get_uniform_scalar(::std::string);
+				::std::shared_ptr<neb::glsl::Uniform::Vector::Base>			get_uniform_vector(::std::string);
 
 				//std::shared_ptr<neb::glsl::uniform>	get_uniform(int,int);
 
 				GLuint	o_;
 				
-				std::map<std::string, std::shared_ptr<neb::glsl::Uniform::Scalar::Base> >		uniform_scalar_;
-				std::map<std::string, std::shared_ptr<neb::glsl::Uniform::Vector::Base> >		uniform_vector_;
+				::std::map< ::std::string, sp::shared_ptr<neb::glsl::Uniform::Scalar::Base> >		uniform_scalar_;
+				::std::map< ::std::string, sp::shared_ptr<neb::glsl::Uniform::Vector::Base> >		uniform_vector_;
 
-				std::map<int,std::shared_ptr<attrib> >		attrib_;
+				::std::map<int, sp::shared_ptr<attrib> >						attrib_;
 		};
 	}
 }

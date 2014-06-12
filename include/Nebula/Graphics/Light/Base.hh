@@ -30,7 +30,7 @@ namespace neb {
 	namespace Light {
 		class Base: virtual public gal::std::shared {
 			public:
-				Base(sp::shared_ptr<neb::Light::Util::Parent>;
+				Base(sp::shared_ptr<neb::Light::Util::Parent>);
 				
 				void				init();
 				
@@ -68,28 +68,28 @@ namespace neb {
 					serializeTemplate(ar, version);
 				}
 			public:
-				neb::Light::Util::Parent_s	parent_;
+				sp::shared_ptr<neb::Light::Util::Parent>	parent_;
 
-				neb::Light::Util::Flag		flag_;
+				neb::Light::Util::Flag				flag_;
 
 				// position
-				glm::vec4			pos_;
+				glm::vec4					pos_;
 
 				// colors
-				neb::Color::color<float>	ambient_;
-				neb::Color::color<float>	diffuse_;
-				neb::Color::color<float>	specular_;
+				neb::Color::color<float>			ambient_;
+				neb::Color::color<float>			diffuse_;
+				neb::Color::color<float>			specular_;
 
 				// other properties
 
-				float				atten_const_;
-				float				atten_linear_;
-				float				atten_quad_;
+				float						atten_const_;
+				float						atten_linear_;
+				float						atten_quad_;
 
 
 
 
-				texture				texture_shadow_map_;
+				texture						texture_shadow_map_;
 
 
 		};

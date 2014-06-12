@@ -43,7 +43,7 @@ namespace neb {
 
 						}
 					public:
-						neb::gfx::GUI::Object::Util::Parent_s	parent_;
+						sp::shared_ptr<neb::gfx::GUI::Object::Util::Parent>	parent_;
 						
 						float						x_;
 						float						y_;
@@ -53,7 +53,7 @@ namespace neb {
 						neb::Color::color<float>			font_color_;
 						neb::Color::color<float>			bg_color_;
 
-						std::string					label_;
+						::std::string					label_;
 						// connections
 						struct
 						{
