@@ -4,6 +4,7 @@
 #include <Nebula/Actor/Actor/Local.hh>
 #include <Nebula/Actor/RigidActor/Base.hh>
 
+namespace neb { namespace core { namespace actor {
 namespace neb {
 	namespace Actor {
 		namespace RigidActor {

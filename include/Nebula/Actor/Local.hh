@@ -5,7 +5,7 @@
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Core/TimeStep.hpp>
 
-
+namespace neb { namespace core { namespace actor {
 namespace neb {
 	namespace Actor {
 		class Local: virtual public Neb::Actor::Base {

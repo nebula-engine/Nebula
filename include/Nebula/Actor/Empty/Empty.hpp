@@ -13,6 +13,7 @@
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Actor/Util/Types.hh>
 
+namespace neb { namespace core { namespace actor {
 namespace neb {
 	namespace Actor {
 		class Empty: public Neb::Actor::Base {

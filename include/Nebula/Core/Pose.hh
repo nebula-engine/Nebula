@@ -4,7 +4,7 @@
 #include <Nebula/Util/typedef.hpp>
 
 namespace neb {
-	namespace Core {
+	namespace core {
 		class Pose {
 			public:
 				virtual mat4				getPoseGlobal() = 0;

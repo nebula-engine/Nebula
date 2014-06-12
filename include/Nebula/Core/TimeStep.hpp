@@ -4,7 +4,7 @@
 #include <Nebula/Util/typedef.hpp>
 
 namespace neb {
-	namespace Core {
+	namespace core {
 		struct TimeStep {
 			real			time;
 			real			last;

@@ -2,7 +2,7 @@
 #define NEBULA_ACTOR_REMOTE_HH
 
 #include <Nebula/Actor/Base.hh>
-
+namespace neb { namespace core { namespace actor {
 namespace neb {
 	namespace Actor {
 		class Remote: virtual public Neb::Actor::Base {
