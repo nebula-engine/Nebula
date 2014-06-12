@@ -9,7 +9,7 @@
 namespace math {
 	namespace geo {
 		struct quad: polygon {
-			quad();
+			//quad();
 		};
 		struct rectangle: quad {
 			rectangle(vec3 c, vec3 x, vec3 n, float w, float h);
