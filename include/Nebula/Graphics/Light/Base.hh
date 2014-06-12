@@ -13,10 +13,10 @@
 #include <Nebula/config.hh>
 #include <Nebula/Types.hh>
 
-#include <Galaxy-Standard/shared.hpp>
 
 #include <Nebula/Math/Serialization/GLM.hpp>
 
+#include <Nebula/Graphics/Light/__base.hpp>
 #include <Nebula/Graphics/Light/Util/Flag.hh>
 #include <Nebula/Graphics/Light/Util/Types.hh>
 #include <Nebula/Graphics/Light/Util/light_count.hpp>
@@ -29,7 +29,7 @@
 
 namespace neb {
 	namespace Light {
-		class Base: virtual public gal::std::shared {
+		class Base: virtual public neb::core::light::__base {
 			public:
 				Base(sp::shared_ptr<neb::Light::Util::Parent> parent, ::std::string);
 				
@@ -78,7 +78,7 @@ namespace neb {
 				::std::string					light_type_string_;
 
 				// position
-				glm::vec4					pos_;
+				glm::vec3					pos_;
 
 				// colors
 				neb::Color::color<float>			ambient_;

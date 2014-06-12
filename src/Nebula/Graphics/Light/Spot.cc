@@ -43,12 +43,10 @@ void neb::Light::Spot::load(neb::core::light::util::count & light_count, mat4 sp
 
 	auto p = neb::App::Base::global()->current_program();
 
-	vec4 pos = pos_;
+/*	vec3 pos = pos_;
 
-	pos += vec4(space[3][0], space[3][1], space[3][2], 0);
-
-	pos.w = pos_.w;
-
+	pos += vec3(space[3][0], space[3][1], space[3][2]);
+*/
 	vec4 spot_direction(spot_direction_,0.0);
 
 	spot_direction = space * spot_direction;
