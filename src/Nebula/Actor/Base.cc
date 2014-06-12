@@ -66,7 +66,7 @@ void		neb::core::actor::Base::load_lights(int& i, mat4 space) {
 	typedef neb::core::actor::Util::Parent A;
 	typedef neb::Shape::Util::Parent S;
 
-	auto lambda_a = [&] (A::map_type::iterator<0> it) {
+	auto lambda_actor = [&] (A::map_type::iterator<0> it) {
 		
 		auto actor = sp::dynamic_pointer_cast<neb::core::actor::Base>(it->ptr_);
 		if(!actor) {
@@ -77,17 +77,17 @@ void		neb::core::actor::Base::load_lights(int& i, mat4 space) {
 		actor->load_lights(i, space);
 	};
 
-	auto lambda_s = [&]  (S::map_type::iterator<0> it) {
+	auto lambda_shape = [&]  (S::map_type::iterator<0> it) {
 		auto shape = sp::dynamic_pointer_cast<neb::Shape::Base>(it->ptr_);
 		assert(shape);
 		shape->load_lights(i, space);
 	};
 	
-	A::map_.for_each<0>(lambda_a);
+	A::map_.for_each<0>(lambda_actor);
 	
-	S::map_.for_each<0>(lambda_s);
+	S::map_.for_each<0>(lambda_shape);
 }
-void		neb::core::actor::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, mat4 space) {
+void		neb::core::actor::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p, mat4 space) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	space = space * pose_;
@@ -98,13 +98,13 @@ void		neb::core::actor::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> conte
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
 			auto actor = sp::dynamic_pointer_cast<neb::core::actor::Base>(it->ptr_);
 			assert(actor);
-			actor->draw(context, space);
+			actor->draw(context, p, space);
 			});
 
 	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
 			auto shape = sp::dynamic_pointer_cast<neb::Shape::Base>(it->ptr_);
 			assert(shape);
-			shape->draw(context, space);
+			shape->draw(context, p, space);
 			});
 
 
