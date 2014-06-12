@@ -1,4 +1,5 @@
 #include <Nebula/App/__gfx_glsl.hpp>
+#include <Nebula/Graphics/glsl/program.hh>
 
 void	neb::App::__gfx_glsl::create_programs() {
 

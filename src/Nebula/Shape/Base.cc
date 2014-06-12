@@ -77,7 +77,7 @@ void					neb::Shape::Base::step(neb::core::TimeStep const & ts) {
 
 	material_front_.step(ts);
 }
-void					neb::Shape::Base::load_lights(int& i, mat4 space) {
+void					neb::Shape::Base::load_lights(neb::core::light::util::count & light_count, mat4 space) {
 	NEBULA_SHAPE_BASE_FUNC;
 
 	space = space * pose_;
@@ -87,8 +87,8 @@ void					neb::Shape::Base::load_lights(int& i, mat4 space) {
 	L::map_.for_each<0>([&] (L::map_type::iterator<0> it) {
 		auto light = sp::dynamic_pointer_cast<neb::Light::Base>(it->ptr_);
 		assert(light);
-		if(i == neb::Light::light_max) return L::map_type::BREAK;
-		light->load(i++, space);
+		//if(i == neb::Light::light_max) return L::map_type::BREAK;
+		light->load(light_count, space);
 		return L::map_type::CONTINUE;
 	});
 

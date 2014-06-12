@@ -38,6 +38,7 @@
 #include <Nebula/timer/Types.hh>
 #include <Nebula/timer/Actor/Release.hpp>
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
+#include <Nebula/Graphics/Light/Util/light_count.hpp>
 
 neb::Scene::Base::Base(sp::shared_ptr<neb::Scene::Util::Parent> parent):
 	parent_(parent)
@@ -61,17 +62,19 @@ void neb::Scene::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp:
 	//auto p = neb::App::Base::globalBase()->use_program(neb::program_name::e::LIGHT);
 	
 	
-	int i = 0;
+	neb::core::light::util::count light_count;
 	
 	typedef neb::core::actor::Util::Parent A;
 	
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
 		auto actor = sp::dynamic_pointer_cast<neb::core::actor::Base>(it->ptr_);
 		assert(actor);
-		actor->load_lights(i, mat4());
+		actor->load_lights(light_count, mat4());
 	});
-
-	p->get_uniform_scalar("light_count")->load(i);
+	
+	p->get_uniform_scalar("light_count_point")->load(light_count.point);
+	p->get_uniform_scalar("light_count_spot")->load(light_count.spot);
+	p->get_uniform_scalar("light_count_directional")->load(light_count.directional);
 
 	//printf("%i\n",i);
 

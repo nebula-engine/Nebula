@@ -6,6 +6,8 @@
 
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
+#include <boost/serialization/vector.hpp>
+#include <boost/serialization/shared_ptr.hpp>
 
 #include <Nebula/Util/typedef.hpp>
 
@@ -36,7 +38,7 @@ namespace math {
 			int	triangle_count();
 
 
-			std::vector< std::shared_ptr<tri> >		triangles_;
+			std::vector< sp::shared_ptr<tri> >		triangles_;
 
 		};
 	}

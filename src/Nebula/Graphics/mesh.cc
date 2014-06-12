@@ -2,6 +2,7 @@
 #include <iomanip>
 
 #include <boost/serialization/vector.hpp>
+#include <boost/serialization/shared_ptr.hpp>
 
 #include <Galaxy-Log/log.hpp>
 
@@ -9,7 +10,12 @@
 
 #include <Nebula/Graphics/mesh.hh>
 
+
+
 neb::gfx::mesh::mesh() {
+	printf("%s\n",__PRETTY_FUNCTION__);
+}
+neb::gfx::mesh::~mesh() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
 void	neb::gfx::mesh::construct(math::geo::polyhedron* poly) {
@@ -18,9 +24,8 @@ void	neb::gfx::mesh::construct(math::geo::polyhedron* poly) {
 	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "vertices: " << vertices_.size();
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "indices:  " << indices_.size();
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "tris: " << tris.size();
+
 
 	
 	for(size_t i = 0; i < (3 * tris.size()); ++i) {
@@ -35,6 +40,10 @@ void	neb::gfx::mesh::construct(math::geo::polyhedron* poly) {
 			vertices_.push_back(*(t->v_[i]));
 		}
 	}
+
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "vertices: " << vertices_.size();
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "indices:  " << indices_.size();
+
 
 }
 void		neb::gfx::mesh::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
@@ -77,8 +86,7 @@ void		neb::gfx::mesh::serialize(boost::archive::polymorphic_oarchive & ar, unsig
 void		neb::gfx::mesh::print(int sl) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", (severity_level)sl) << "mesh";
 
-	for(auto v : vertices_)
-	{
+	for(auto v : vertices_) {
 		v.print(sl);
 	}	
 }

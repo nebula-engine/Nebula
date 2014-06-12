@@ -7,7 +7,9 @@ namespace neb {
 	namespace App {
 		class __base {
 			public:
-				boost::asio::io_service							ios_;
+				virtual void					init();
+
+				boost::asio::io_service				ios_;
 
 		};
 	}
