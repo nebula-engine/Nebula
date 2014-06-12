@@ -1,7 +1,7 @@
 #ifndef NEBULA_UTIL_DISPATCH_HH
 #define NEBULA_UTIL_DISPATCH_HH
 
-namespace Neb {
+namespace neb {
         namespace Util {
                 struct dispatch_init {
                         template<class E> inline static void    visit(E* const & e) {

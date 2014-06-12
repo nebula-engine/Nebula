@@ -13,8 +13,8 @@
 
 #include <Nebula/Scene/Base.hh>
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace Context {
 			/** @brief Context
 			 *
@@ -23,7 +23,7 @@ namespace Neb {
 			 * @todo allow for manual ordering of context objects in parent's context map
 			 * such that things like layouts are render ON TOP of existing scene.'
 			 */
-			class FBO: public Neb::Graphics::Context::Base {
+			class FBO: public neb::gfx::Context::Base {
 				public:
 			};
 		}

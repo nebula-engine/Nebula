@@ -1,7 +1,7 @@
 #ifndef NEBULA_ENUMS_HPP
 #define NEBULA_ENUMS_HPP
 
-namespace Neb {
+namespace neb {
 	namespace network {
 		enum type {
 			NONE           = 0x0,

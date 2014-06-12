@@ -1,7 +1,7 @@
 #ifndef NEBULA_UTIL_INDEX_HH
 #define NEBULA_UTIL_INDEX_HH
 
-namespace Neb {
+namespace neb {
 	namespace Util {
 		class IndexBase {
 			public:

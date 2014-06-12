@@ -3,7 +3,7 @@
 
 #include <GL/glew.h>
 
-namespace Neb {
+namespace neb {
 	namespace gfx {
 		class Viewport {
 			public:

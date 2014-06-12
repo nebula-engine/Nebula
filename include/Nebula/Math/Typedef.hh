@@ -1,7 +1,7 @@
 
 #include <PxPhysicsAPI.h>
 
-namespace Neb {
+namespace neb {
 	namespace Math {
 		typedef physx::PxVec3		Vec3;
 		typedef physx::PxVec4		Vec4;

@@ -4,15 +4,16 @@
 #include <Nebula/Actor/Remote.hh>
 #include <Nebula/Actor/Actor/Base.hh>
 
-namespace Neb {
+namespace neb { namespace core { namespace actor {
+namespace neb {
 	namespace Actor {
 		namespace Actor {
 			class Remote:
-				virtual public Neb::Actor::Actor::Base,
-				virtual public Neb::Actor::Remote
+				virtual public neb::Actor::Actor::Base,
+				virtual public neb::Actor::Remote
 			{
 				public:
-					virtual void		step(Neb::Core::TimeStep const & ts);
+					virtual void		step(neb::core::TimeStep const & ts);
 			};
 		}
 	}

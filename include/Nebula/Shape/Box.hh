@@ -3,11 +3,11 @@
 
 #include <Nebula/Shape/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Shape {
-		class Box: public Neb::Shape::Base {
+		class Box: public neb::Shape::Base {
 			public:
-				Box(sp::shared_ptr<Neb::Shape::Util::Parent> parent);
+				Box(sp::shared_ptr<neb::Shape::Util::Parent> parent);
 
 				virtual void			createMesh();
 		};

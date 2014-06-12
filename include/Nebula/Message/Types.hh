@@ -1,7 +1,7 @@
 #ifndef NEBULA_MESSAGE_TYPES
 #define NEBULA_MESSAGE_TYPES
 
-namespace Neb {
+namespace neb {
 	/** @brief %Message */
 	namespace Message {
 

@@ -1,7 +1,7 @@
 #ifndef NEBULA_STATE_HPP
 #define NEBULA_STATE_HPP
 
-namespace Neb {
+namespace neb {
   namespace Flow {
     namespace State {
       /** @brief Base.
