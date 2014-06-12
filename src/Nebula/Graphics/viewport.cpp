@@ -3,17 +3,17 @@
 #include <Nebula/Graphics/Viewport.hpp>
 #include <Nebula/Util/typedef.hpp>
 
-Neb::gfx::Viewport::Viewport():
+neb::gfx::Viewport::Viewport():
 	x_(0),
 	y_(0),
 	w_(0),
 	h_(0),
 	aspect_(0)
 {}
-void		Neb::gfx::Viewport::load() {
+void		neb::gfx::Viewport::load() {
 	glViewport(x_, y_, w_, h_);
 }
-void		Neb::gfx::Viewport::resize(int w, int h) {
+void		neb::gfx::Viewport::resize(int w, int h) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
 
 	w_ = w;

@@ -5,6 +5,7 @@
 #include <memory>
 
 #include <Nebula/config.hh>
+#include <Nebula/Graphics/Types.hh>
 //#include <Nebula/camera_control.hpp>
 
 namespace neb {
@@ -15,21 +16,21 @@ namespace neb {
 				class Base {
 					public:
 						/** @brief Constructor */
-						Base(sp::shared_ptr<neb::gfx::Context::Base>;
+						Base(sp::shared_ptr<neb::gfx::Context::Base>);
 
 						virtual mat4				proj() = 0;
-						void					load();
+						void					load(sp::shared_ptr<neb::glsl::program> p);
 						/** @brief step
 						 * @todo explain when in timeline this occurs and in which thread and why
 						 */
 						void					step(neb::core::TimeStep const & ts);
 					protected:
 						/** @brief Parent */
-						neb::gfx::Context::Base_s		parent_;
+						sp::shared_ptr<neb::gfx::Context::Base>		parent_;
 				};
 				class Perspective: public Base {
 					public:
-						Perspective(sp::shared_ptr<neb::gfx::Context::Base>;
+						Perspective(sp::shared_ptr<neb::gfx::Context::Base>);
 						//void		init(neb::renderable_shared);
 						virtual mat4				proj();
 

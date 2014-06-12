@@ -9,6 +9,7 @@
 
 #include <Nebula/config.hh> // Nebula/config.hpp.in
 #include <Nebula/Types.hh>
+#include <Nebula/Util/typedef.hpp>
 #include <Nebula/Graphics/Types.hh>
 
 //#include <Nebula/Graphics/glsl/attrib.hh>

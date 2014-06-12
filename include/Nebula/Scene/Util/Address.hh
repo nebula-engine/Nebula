@@ -20,13 +20,13 @@ namespace neb {
 		namespace Util {
 			class Address {
 				public:
-					void						load(neb::Scene::Base_s & scene);
+					void						load(sp::shared_ptr<neb::Scene::Base> & scene);
 
 					template<class Archive> void			serialize(Archive& ar, unsigned int const & version) {
 						ar & vec_;
 					}
 
-					std::deque<int>					vec_;
+					::std::deque<int>					vec_;
 			};
 		}
 	}

@@ -10,7 +10,7 @@
 #include <Nebula/Graphics/glsl/program.hh>
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 
-Neb::glsl::Uniform::Scalar::Base::Base(std::string name) {
+neb::glsl::Uniform::Scalar::Base::Base(std::string name) {
 	//printf("%s\n",__PRETTY_FUNCTION__);
 	name_ = name;
 	o_ = -1;
@@ -18,7 +18,7 @@ Neb::glsl::Uniform::Scalar::Base::Base(std::string name) {
 	//checkerror("glGetUniformLocation");
 	//locate();
 }
-void	Neb::glsl::Uniform::Scalar::Base::locate(std::shared_ptr<Neb::glsl::program> p) {
+void	neb::glsl::Uniform::Scalar::Base::locate(std::shared_ptr<neb::glsl::program> p) {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
 	assert(p);

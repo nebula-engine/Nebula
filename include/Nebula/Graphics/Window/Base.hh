@@ -36,7 +36,7 @@ namespace neb {
 			{
 				public:
 					Base();
-					Base(neb::gfx::Window::Util::Parent_s parent);
+					Base(sp::shared_ptr<neb::gfx::Window::Util::Parent> parent);
 					virtual ~Base();
 				
 				public:
@@ -56,7 +56,7 @@ namespace neb {
 					void					callback_mouse_button_fun(GLFWwindow*,int,int,int);
 					void					callback_key_fun(GLFWwindow*,int,int,int,int);
 				public:
-					neb::gfx::Window::Util::Parent_s			parent_;
+					sp::shared_ptr<neb::gfx::Window::Util::Parent>			parent_;
 					/** @brief self
 					 *
 					 * avoid casting shared_from_this
@@ -79,7 +79,7 @@ namespace neb {
 					int					y_;
 					int					w_;
 					int					h_;
-					std::string				title_;
+					::std::string				title_;
 					
 					
 					GLFWwindow*		window_;

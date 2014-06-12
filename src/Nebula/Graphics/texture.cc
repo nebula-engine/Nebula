@@ -11,14 +11,14 @@
 
 #include <png.h>
 
-Neb::texture::texture():
+neb::texture::texture():
 	/*window_(NULL),*/
 	o_(-1)
 {}
-Neb::texture::~texture()
+neb::texture::~texture()
 {
 }
-void	Neb::texture::init_shadow(int w,int h)
+void	neb::texture::init_shadow(int w,int h)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -45,13 +45,13 @@ void	Neb::texture::init_shadow(int w,int h)
 
 	checkerror("");
 }
-void	Neb::texture::bind()
+void	neb::texture::bind()
 {
 	glBindTexture(GL_TEXTURE_2D, o_);
 	
 	checkerror("glBindTexture");
 }
-int	Neb::texture::load_png(char const * filename)
+int	neb::texture::load_png(char const * filename)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
 

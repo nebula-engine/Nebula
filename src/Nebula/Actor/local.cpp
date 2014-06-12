@@ -1,6 +1,6 @@
 #include <Nebula/Actor/Local.hh>
 
-void		Neb::Actor::Local::step(Neb::Core::TimeStep const & ts) {
-	Neb::Actor::Base::step(ts);
+void		neb::core::actor::Local::step(neb::core::TimeStep const & ts) {
+	neb::core::actor::Base::step(ts);
 }
 

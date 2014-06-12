@@ -7,30 +7,30 @@
 
 #include <Nebula/Actor/Actor/Base.hh>
 
-Neb::Actor::Actor::Base::Base() {
+neb::core::actor::actor::Base::Base() {
 }
-Neb::Actor::Actor::Base::Base(Neb::Actor::Util::Parent_s parent):
-	Neb::Actor::Base(parent)
+neb::core::actor::actor::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent):
+	neb::core::actor::Base(parent)
 {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-void		Neb::Actor::Actor::Base::init() {
+void		neb::core::actor::actor::Base::init() {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	Neb::Actor::Base::init();
+	neb::core::actor::Base::init();
 }
-void		Neb::Actor::Actor::Base::set_pose(mat4 pose) {
+void		neb::core::actor::actor::Base::set_pose(mat4 pose) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	Neb::Actor::Base::setPose(pose);
+	neb::core::actor::Base::setPose(pose);
 }
-void		Neb::Actor::Actor::Base::step(Neb::Core::TimeStep const & ts) {
-	Neb::Actor::Base::step(ts);
+void		neb::core::actor::actor::Base::step(neb::core::TimeStep const & ts) {
+	neb::core::actor::Base::step(ts);
 }
-void		Neb::Actor::Actor::Base::release() {
+void		neb::core::actor::actor::Base::release() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
-	Neb::Actor::Base::release();
+	neb::core::actor::Base::release();
 
 }
 

@@ -9,7 +9,7 @@ public:
   /** @brief %Actor.
    * %Actor which the player controls
    */
-  std::weak_ptr<neb::Actor::Base>   actor_;
+  std::weak_ptr<neb::core::actor::Base>   actor_;
   
   
   

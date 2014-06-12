@@ -5,9 +5,9 @@
 
 namespace sp = ::std;
 
-namespace neb {
+namespace neb { namespace core {
 	/** @brief %Actor */
-	namespace Actor {
+	namespace actor {
 		struct mode_create {
 			enum e {
 				NOW,
@@ -27,7 +27,7 @@ namespace neb {
 		class Base;
 
 		/** @brief %Actor */
-		namespace Actor {
+		namespace actor {
 			class Base;
 			class Local;
 			class Remote;
@@ -92,6 +92,6 @@ namespace neb {
 			class Base;
 		}
 	}
-}
+}}
 
 #endif

@@ -4,11 +4,11 @@
 #include <Nebula/Actor/Base.hh>
 
 
-Neb::Timer::Actor::Base::Base(Neb::Actor::Base_s actor, double seconds):
-	timer_(Neb::App::Base::globalBase()->ios_, boost::posix_time::seconds(seconds)),
+neb::Timer::actor::Base::Base(sp::shared_ptr<neb::core::actor::Base> actor, double seconds):
+	timer_(neb::App::Base::global()->ios_, boost::posix_time::seconds(seconds)),
 	actor_(actor)
 {
-	timer_.async_wait(boost::bind(&Neb::Timer::Actor::Base::doSomething, this));
+	timer_.async_wait(boost::bind(&neb::Timer::actor::Base::doSomething, this));
 }
 
 
