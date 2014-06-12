@@ -58,7 +58,7 @@ void		neb::core::actor::Base::setPose(mat4 pose) {
 	
 	flag_.set(neb::core::actor::Util::Flag::E::SHOULD_UPDATE);
 }
-void		neb::core::actor::Base::load_lights(int& i, mat4 space) {
+void		neb::core::actor::Base::load_lights(neb::core::light::util::count & light_count, mat4 space) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	space = space * pose_;
@@ -74,13 +74,13 @@ void		neb::core::actor::Base::load_lights(int& i, mat4 space) {
 			::std::cout << "actor = " << actor << ::std::endl;
 			abort();
 		}
-		actor->load_lights(i, space);
+		actor->load_lights(light_count, space);
 	};
-
+	
 	auto lambda_shape = [&]  (S::map_type::iterator<0> it) {
 		auto shape = sp::dynamic_pointer_cast<neb::Shape::Base>(it->ptr_);
 		assert(shape);
-		shape->load_lights(i, space);
+		shape->load_lights(light_count, space);
 	};
 	
 	A::map_.for_each<0>(lambda_actor);

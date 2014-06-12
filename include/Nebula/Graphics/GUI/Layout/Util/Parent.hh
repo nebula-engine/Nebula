@@ -3,7 +3,7 @@
 
 #include <Nebula/Util/parent.hpp>
 
-#include <Nebula/Graphics/GUI/Layout/Types.hh>
+#include <Nebula/Graphics/GUI/Layout/Base.hh>
 
 namespace neb {
 	namespace gfx {

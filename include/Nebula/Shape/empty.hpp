@@ -10,7 +10,10 @@ namespace neb {
 				Empty(sp::shared_ptr<neb::Shape::Util::Parent> parent): neb::Shape::Base(parent) {}
 				virtual void			createMesh() {}
 				
-				virtual void			draw_elements(sp::shared_ptr<neb::gfx::Context::Base> context, mat4 space) {}
+				virtual void					draw_elements(
+						sp::shared_ptr<neb::gfx::Context::Base> context,
+						sp::shared_ptr<neb::glsl::program> p,
+						mat4 space) {}
 		};
 	}
 }
