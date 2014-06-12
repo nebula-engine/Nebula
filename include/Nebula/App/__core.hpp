@@ -4,7 +4,7 @@
 #include <Nebula/Scene/Util/Parent.hh>
 #include <Nebula/Graphics/GUI/Layout/Util/Parent.hh>
 
-namespace Neb {
+namespace neb {
 	namespace App {
 		class __core:
 			virtual public Neb::App::__base,

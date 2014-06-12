@@ -3,7 +3,7 @@
 
 #include <Nebula/Shape/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Shape {
 		class Sphere: public Neb::Shape::Base {
 			public:

@@ -22,7 +22,7 @@
 #include <Nebula/Graphics/material.hh>
 #include <Nebula/Graphics/mesh.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Shape {
 		class buffer {
 			public:

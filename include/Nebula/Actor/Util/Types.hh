@@ -3,7 +3,7 @@
 
 #include <memory>
 
-namespace Neb {
+namespace neb {
 	/** @brief %Actor */
 	namespace Actor {
 		struct mode_create {

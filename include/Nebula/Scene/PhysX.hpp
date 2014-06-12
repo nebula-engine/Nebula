@@ -28,7 +28,7 @@
 
 #define LIGHT_MAX 20
 
-namespace Neb {
+namespace neb {
 	namespace Scene {
 		/** 
 		 * @ingroup group_core

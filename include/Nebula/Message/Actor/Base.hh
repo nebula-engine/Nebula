@@ -4,7 +4,7 @@
 
 #include <Nebula/Message/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Message {
 		namespace Actor {
 			class Base:

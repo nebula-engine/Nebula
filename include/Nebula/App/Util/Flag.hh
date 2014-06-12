@@ -3,7 +3,7 @@
 
 #include <Galaxy-Standard/flag.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace App {
 		namespace Util {
 			DEFINE_FLAG(Flag,

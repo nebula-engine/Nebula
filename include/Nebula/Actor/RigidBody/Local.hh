@@ -6,7 +6,7 @@
 #include <Nebula/Actor/RigidActor/Local.hh>
 #include <Nebula/Actor/RigidBody/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Actor {
 		namespace RigidBody {
 			class Local:

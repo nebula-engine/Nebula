@@ -4,7 +4,7 @@
 #include <Nebula/Actor/Actor/Remote.hh>
 #include <Nebula/Actor/RigidActor/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Actor {
 		namespace RigidActor {
 			class Remote:

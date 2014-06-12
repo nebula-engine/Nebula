@@ -5,7 +5,7 @@
 
 #include <Nebula/Shape/Util/Types.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Shape {
 		namespace Util {
 			class Cast:

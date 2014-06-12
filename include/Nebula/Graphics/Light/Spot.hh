@@ -24,7 +24,7 @@
 
 //#include <math/color.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Light {
 		class Point: public Neb::Light::Base {
 			public:

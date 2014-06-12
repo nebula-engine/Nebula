@@ -23,7 +23,7 @@
 
 
 
-namespace Neb {
+namespace neb {
 	namespace Message {
 		namespace Actor {
 			namespace Event {

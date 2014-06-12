@@ -4,7 +4,7 @@
 #include <Nebula/Actor/Util/Types.hh>
 #include <Nebula/Actor/RigidActor/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Actor {
 		namespace RigidBody {
 			class Base: virtual public Neb::Actor::RigidActor::Base {

@@ -10,7 +10,7 @@
 
 #include <Nebula/Message/Types.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Message {
 		/** \brief %Base
 		 *

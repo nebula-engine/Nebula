@@ -9,7 +9,7 @@
 #include <Nebula/Graphics/Camera/View/Base.hh>
 #include <Nebula/config.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace Camera {
 			namespace View {

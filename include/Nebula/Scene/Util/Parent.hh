@@ -9,7 +9,7 @@
 #include <Nebula/Scene/Base.hh>
 #include <Nebula/Util/parent.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Scene {
 		namespace Util {
 			class Parent:

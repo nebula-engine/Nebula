@@ -24,7 +24,7 @@
 
 #define LIGHT_MAX 20
 
-namespace Neb {
+namespace neb {
 	namespace Scene {
 		class Remote:
 			virtual public Neb::Scene::Base

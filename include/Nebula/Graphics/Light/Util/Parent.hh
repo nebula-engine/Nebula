@@ -5,7 +5,7 @@
 #include <Nebula/Shape/Util/Cast.hh>
 #include <Nebula/Util/parent.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Light {
 		namespace Util {
 			class Parent:

@@ -26,7 +26,7 @@
 
 //#include <math/color.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Light {
 		class Base: virtual public gal::std::shared {
 			public:

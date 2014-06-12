@@ -3,7 +3,7 @@
 
 #include <memory>
 
-namespace Neb {
+namespace neb {
 	/** @brief %Scene */
 	namespace Scene {
 		/** @name %Utilities @{ */

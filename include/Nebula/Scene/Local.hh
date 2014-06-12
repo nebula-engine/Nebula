@@ -27,7 +27,7 @@
 
 #define LIGHT_MAX 20
 
-namespace Neb {
+namespace neb {
 	namespace Scene {
 		class Local: public Neb::Scene::Base {
 			public:

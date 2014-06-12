@@ -1,7 +1,7 @@
 #ifndef NEBULA_ACTOR_UTIL_FLAG_HH
 #define NEBULA_ACTOR_UTIL_FLAG_HH
 
-namespace Neb {
+namespace neb {
 	namespace Actor {
 		namespace Util {
 			DEFINE_FLAG(Flag,

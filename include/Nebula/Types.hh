@@ -11,7 +11,7 @@
  */
 
 /** @brief root namespace for @gru */
-namespace Neb {
+namespace neb {
 
 	class simulation_callback;
 	

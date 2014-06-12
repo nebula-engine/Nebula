@@ -12,7 +12,7 @@
 //#include <math/mat44.hpp>
 //#include <math/color.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace glsl {
 		class program;
 		namespace Uniform {

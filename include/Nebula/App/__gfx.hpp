@@ -17,7 +17,7 @@
 #include <Nebula/Graphics/Types.hh>
 #include <Nebula/Graphics/Window/Util/Parent.hh>
 
-namespace Neb {
+namespace neb {
 	namespace App {
 		/** @brief gfx
 		 * 

@@ -7,7 +7,7 @@
 #include <Nebula/config.hh>
 //#include <Nebula/camera_control.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace Camera {
 			namespace Projection {

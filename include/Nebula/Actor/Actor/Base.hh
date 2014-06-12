@@ -4,7 +4,7 @@
 #include <Nebula/Util/typedef.hpp>
 #include <Nebula/Actor/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Actor {
 		namespace Actor {
 			class Base: virtual public Neb::Actor::Base {

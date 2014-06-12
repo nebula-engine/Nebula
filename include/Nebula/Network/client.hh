@@ -5,7 +5,7 @@
 
 #include <Nebula/Network/communicating.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Network {
 		class Client:
 			virtual public Neb::Network::Communicating,

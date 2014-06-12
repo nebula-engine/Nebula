@@ -21,7 +21,7 @@
 
 #include <Nebula/Core/Pose.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Actor {
 		namespace Util {
 			/** @brief @Parent

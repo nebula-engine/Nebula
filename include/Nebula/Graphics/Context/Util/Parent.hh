@@ -4,7 +4,7 @@
 #include <Nebula/Graphics/Window/Util/Cast.hh>
 #include <Nebula/Graphics/Context/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace Context {
 			namespace Util {

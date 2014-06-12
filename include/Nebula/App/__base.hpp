@@ -3,7 +3,7 @@
 
 #include <boost/asio/io_service.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace App {
 		class __base {
 

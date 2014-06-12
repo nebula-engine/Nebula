@@ -6,7 +6,7 @@
 #include <Nebula/Core/TimeStep.hpp>
 #include <Nebula/Graphics/Color/Color.hh>
 
-namespace Neb {
+namespace neb {
 	namespace material {
 
 

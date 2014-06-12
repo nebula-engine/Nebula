@@ -17,7 +17,7 @@
 
 #include <Nebula/Message/Actor/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Message {
 		namespace Actor {
 			struct Update:

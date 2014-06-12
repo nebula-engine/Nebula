@@ -1,7 +1,7 @@
 #ifndef NEBULA_SHAPE_UTIL_TYPES_HH
 #define NEBULA_SHAPE_UTIL_TYPES_HH
 
-namespace Neb {
+namespace neb {
 	/** @brief %Shape */	
 	namespace Shape {
 		struct flag {

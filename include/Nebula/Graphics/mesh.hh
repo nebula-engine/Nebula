@@ -23,7 +23,7 @@
 #include <Nebula/Graphics/material.hh>
 
 
-namespace Neb {
+namespace neb {
 	struct file_header {
 		int len_vertices_;
 		int len_indices_;

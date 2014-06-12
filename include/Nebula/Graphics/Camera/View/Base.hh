@@ -16,7 +16,7 @@
 #include <Nebula/Core/TimeStep.hpp>
 #include <Nebula/Graphics/glsl/program.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace Camera {
 			namespace View {

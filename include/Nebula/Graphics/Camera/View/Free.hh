@@ -6,7 +6,7 @@
 #include <Nebula/Util/typedef.hpp>
 #include <Nebula/Graphics/Camera/View/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace Camera {
 			namespace View {

@@ -3,7 +3,7 @@
 
 #include <memory>
 
-namespace Neb {
+namespace neb {
 
 	struct attrib_name {
 		enum e {

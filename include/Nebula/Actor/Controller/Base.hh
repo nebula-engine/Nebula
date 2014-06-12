@@ -3,7 +3,7 @@
 
 #include <Nebula/Actor/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Actor {
 		class Controller: public Neb::Actor::Base {
 			public:

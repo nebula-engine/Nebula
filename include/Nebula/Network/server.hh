@@ -5,7 +5,7 @@
 
 #include <Nebula/Network/communicating.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Network {
 		class Server: public gal::net::server<Neb::Network::Communicating> {
 			public:

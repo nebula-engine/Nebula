@@ -3,7 +3,7 @@
 
 #include <memory>
 
-namespace Neb {
+namespace neb {
 	namespace glsl {
 		class program;
 		class attrib {

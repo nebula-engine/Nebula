@@ -4,7 +4,7 @@
 #include <Nebula/Actor/RigidDynamic/Base.hh>
 #include <Nebula/Actor/RigidBody/Local.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Actor {
 		namespace RigidDynamic {
 			class Local:

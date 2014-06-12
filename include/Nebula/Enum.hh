@@ -38,7 +38,7 @@
    }
    */
 
-namespace Neb {
+namespace neb {
 	namespace Enum {
 		template <typename enum_type> struct Maps {
 			std::map<std::string,enum_type>		map_string_enum_;

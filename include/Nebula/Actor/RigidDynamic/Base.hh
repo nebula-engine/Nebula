@@ -3,7 +3,7 @@
 
 #include <Nebula/Actor/RigidBody/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Actor {
 		namespace RigidDynamic {
 			class Base: public Neb::Actor::RigidBody::Base {

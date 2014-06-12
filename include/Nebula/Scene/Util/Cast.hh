@@ -5,7 +5,7 @@
 
 #include <Nebula/Scene/Util/Types.hh>
 
-namespace Neb {
+namespace neb {
         namespace Scene {
                 namespace Util {
                         class Cast: virtual public neb::std::shared {

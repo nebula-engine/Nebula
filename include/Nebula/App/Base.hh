@@ -27,7 +27,7 @@
 #include <Nebula/Shape/Util/Types.hh>
 #include <Nebula/Util/wrapper.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace App {
 
 		class __core:

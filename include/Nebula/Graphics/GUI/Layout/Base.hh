@@ -13,7 +13,7 @@
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Util/typedef.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace GUI {
 			namespace Layout {

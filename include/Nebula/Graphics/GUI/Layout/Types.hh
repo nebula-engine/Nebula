@@ -1,7 +1,7 @@
 #ifndef NEBULA_GRAPHICS_GUI_LAYOUT_TYPES_HH
 #define NEBULA_GRAPHICS_GUI_LAYOUT_TYPES_HH
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace GUI {
 			namespace Layout {

@@ -9,7 +9,7 @@
 #include <Nebula/Message/Actor/Event/Base.hh>
 #include <Nebula/Actor/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Message {
 		namespace Actor {
 			struct Create {

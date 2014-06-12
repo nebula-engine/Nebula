@@ -6,7 +6,7 @@
 #include <Nebula/Util/shared.hpp>
 #include <Nebula/Core/TimeStep.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Util {
 		template<typename T> class parent: virtual public gal::std::parent<T> {
 			public:

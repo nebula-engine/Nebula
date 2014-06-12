@@ -38,7 +38,7 @@
 #include <Nebula/Shape/Base.hh>
 #include <Nebula/Shape/Util/Parent.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Actor {
 		/** @brief %Base */
 		class Base:

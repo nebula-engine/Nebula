@@ -3,7 +3,7 @@
 
 #include <Nebula/Util/typedef.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Core {
 		class Pose {
 			public:

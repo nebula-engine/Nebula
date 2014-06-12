@@ -1,7 +1,7 @@
 #ifndef NEBULA_GRAPHICS_WINDOW_uTIL_FLAG_HH
 #define NEBULA_GRAPHICS_WINDOW_uTIL_FLAG_HH
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace Window {
 			namespace Util {

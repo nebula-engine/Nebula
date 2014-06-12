@@ -12,7 +12,7 @@
 
 /** @todo replace types with inheritance and possibly shared library support */
 
-namespace Neb {
+namespace neb {
 	namespace Timer {
 		namespace Actor {
 			class Base {

@@ -5,7 +5,7 @@
 
 #include <Nebula/Graphics/Types.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace Context {
 			namespace Util {

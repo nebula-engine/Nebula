@@ -5,7 +5,7 @@
 
 #include <Nebula/Actor/Util/Types.hh>
 
-namespace Neb {
+namespace neb {
         namespace Actor {
                 namespace Util {
                         class Cast: virtual public gal::std::shared {

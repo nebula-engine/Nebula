@@ -26,7 +26,7 @@
 
 
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace Window {
 			class Base:

@@ -1,7 +1,7 @@
 #ifndef NEBULA_UTIL_ADDRESS_HH
 #define NEBULA_UTIL_ADDRESS_HH
 
-namespace Neb {
+namespace neb {
 	namespace Util {
 		class AddressBase {
 			public:

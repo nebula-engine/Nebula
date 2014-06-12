@@ -4,7 +4,7 @@
 #include <Nebula/Util/shared.hpp>
 #include <Nebula/Graphics/Types.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace Window {
 			namespace Util {

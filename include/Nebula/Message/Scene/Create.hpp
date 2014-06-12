@@ -11,7 +11,7 @@
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Util/wrapper.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Message {
 		namespace Scene {
 			class Create {

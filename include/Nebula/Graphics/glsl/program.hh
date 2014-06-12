@@ -14,7 +14,7 @@
 //#include <Nebula/Graphics/glsl/attrib.hh>
 //#include <Nebula/Graphics/glsl/Uniform/uniform.hh>
 
-namespace Neb {
+namespace neb {
 	namespace glsl {
 		class shader;
 

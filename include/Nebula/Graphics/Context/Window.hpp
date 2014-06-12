@@ -13,7 +13,7 @@
 
 #include <Nebula/Scene/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace Context {
 			/** @brief %Context

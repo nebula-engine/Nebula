@@ -10,7 +10,7 @@
 
 #include <Nebula/Enum.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Actor {
 
 		DEFINE_TYPE(Type,

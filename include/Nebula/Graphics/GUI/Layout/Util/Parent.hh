@@ -5,7 +5,7 @@
 
 #include <Nebula/Graphics/GUI/Layout/Types.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace GUI {
 			namespace Layout {

@@ -3,7 +3,7 @@
 
 #include <Nebula/Graphics/GUI/Object/textview.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace GUI {
 			namespace Object {

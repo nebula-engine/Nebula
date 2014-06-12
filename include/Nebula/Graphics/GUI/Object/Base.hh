@@ -10,7 +10,7 @@
 #include <Nebula/Graphics/Color/Color.hh>
 #include <Nebula/Graphics/GUI/Object/Util/Parent.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace GUI {
 			namespace Object {

@@ -16,7 +16,7 @@
 #include <Nebula/Network/server.hh>
 #include <Nebula/Network/client.hh>
 
-namespace Neb {
+namespace neb {
 	namespace App {
 
 

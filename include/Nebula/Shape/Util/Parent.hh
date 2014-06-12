@@ -31,7 +31,7 @@
 #include <Nebula/Core/Pose.hh>
 #include <Nebula/Util/parent.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Shape {
 		namespace Util {
 			/** @brief @Parent

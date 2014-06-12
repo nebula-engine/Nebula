@@ -3,7 +3,7 @@
 
 #include <Nebula/Graphics/GUI/Object/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Graphics {
 		namespace GUI {
 			namespace Object {
