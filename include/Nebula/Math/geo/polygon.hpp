@@ -16,12 +16,12 @@ namespace math {
 		class vertex {
 			public:
 				vertex() {};
-				vertex(vec3 np, vec3 nn, vec2 ntc): p(np), n(nn), tc(ntc) {}
+				vertex(vec3 np, vec3 nn, vec2 ntc): p(np,1.0), n(nn), tc(ntc) {}
 				void		serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 				void		serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
 				void		print(int sl);
 				/** @brief position */
-				vec3		p;
+				vec4		p;
 				/** @brief normal */
 				vec3		n;
 				/** @brief texture coordinate */
