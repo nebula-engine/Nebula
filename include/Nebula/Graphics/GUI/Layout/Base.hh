@@ -47,7 +47,7 @@ namespace neb {
 						glm::mat4x4					ortho_;
 
 
-						neb::gfx::GUI::Layout::Util::Parent_s	parent_;
+						sp::shared_ptr<neb::gfx::GUI::Layout::Util::Parent>	parent_;
 						// connections
 						struct
 						{
