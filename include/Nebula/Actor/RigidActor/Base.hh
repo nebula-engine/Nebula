@@ -3,17 +3,18 @@
 
 #include <Nebula/Actor/Actor/Base.hh>
 
-namespace Neb {
+namespace neb { namespace core { namespace actor {
+namespace neb {
 	namespace Actor {
 		namespace RigidActor {
-			class Base: virtual public Neb::Actor::Actor::Base {
+			class Base: virtual public neb::Actor::Actor::Base {
 				public:
 					Base();
-					Base(Neb::Actor::Util::Parent_s);
+					Base(sp::shared_ptr<neb::Actor::Util::Parent>;
 
 					virtual void					init();
 					virtual void					release();
-					virtual void					step(Neb::Core::TimeStep const & ts);
+					virtual void					step(neb::core::TimeStep const & ts);
 
 			};
 		}

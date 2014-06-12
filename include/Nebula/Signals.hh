@@ -4,9 +4,9 @@
 #include <boost/signals2.hpp>
 
 typedef int							ret_type;
-typedef sp::shared_ptr<Neb::Graphics::Window::Base> const &	wnd_type;
+typedef sp::shared_ptr<neb::gfx::Window::Base> const &	wnd_type;
 
-namespace Neb {
+namespace neb {
 	namespace Signals {
 		typedef boost::signals2::signal<ret_type (wnd_type, int,int,int)>	MouseButtonFun;
 		typedef boost::signals2::signal<ret_type (wnd_type, double,double)>	CursorPosFun;

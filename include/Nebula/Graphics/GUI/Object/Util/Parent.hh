@@ -4,13 +4,13 @@
 #include <Nebula/Util/parent.hpp>
 #include <Nebula/Graphics/Types.hh>
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace GUI {
 			namespace Object {
 				namespace Util {
 					class Parent:
-						virtual public Neb::Util::parent<Neb::Graphics::GUI::Object::Base>
+						virtual public neb::Util::parent<neb::gfx::GUI::Object::Base>
 					{
 
 					};

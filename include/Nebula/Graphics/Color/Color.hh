@@ -7,7 +7,7 @@
 
 #include <boost/serialization/nvp.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Color {
 		template <typename T> class color {
 			public:

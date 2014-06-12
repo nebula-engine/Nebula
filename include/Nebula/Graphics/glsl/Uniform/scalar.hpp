@@ -12,7 +12,7 @@
 //#include <math/mat44.hpp>
 //#include <math/color.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace glsl {
 		class program;
 
@@ -46,43 +46,43 @@ namespace Neb {
 						GLint			o_;
 				};
 
-				class Int: public Neb::glsl::Uniform::Scalar::Base {
+				class Int: public neb::glsl::Uniform::Scalar::Base {
 					public:
 						Int(std::string s): Base(s) {}
 						virtual void		load(int);
 				};
-				class Float: public Neb::glsl::Uniform::Scalar::Base {
+				class Float: public neb::glsl::Uniform::Scalar::Base {
 					public:
 						Float(std::string s): Base(s) {}
 						virtual void		load(float);
 				};
-				class Double: public Neb::glsl::Uniform::Scalar::Base {
+				class Double: public neb::glsl::Uniform::Scalar::Base {
 					public:
 						Double(std::string s): Base(s) {}
 						virtual void		load(double);
 				};
-				class Vec3: public Neb::glsl::Uniform::Scalar::Base {
+				class Vec3: public neb::glsl::Uniform::Scalar::Base {
 					public:
 						Vec3(std::string s): Base(s) {}
 						virtual void		load(vec3 const &);
 						virtual void		load(float*);
 				};
-				class Vec4: public Neb::glsl::Uniform::Scalar::Base {
+				class Vec4: public neb::glsl::Uniform::Scalar::Base {
 					public:
 						Vec4(std::string s): Base(s) {}
 						virtual void		load(float*);
 				};
-				class DVec4: public Neb::glsl::Uniform::Scalar::Base {
+				class DVec4: public neb::glsl::Uniform::Scalar::Base {
 					public:
 						DVec4(std::string s): Base(s) {}
 						virtual void		load(double*);
 				};
-				class Mat4: public Neb::glsl::Uniform::Scalar::Base {
+				class Mat4: public neb::glsl::Uniform::Scalar::Base {
 					public:
 						Mat4(std::string s): Base(s) {}
 						virtual void		load(mat4 const &);
 				};
-				class Sampler2D: public Neb::glsl::Uniform::Scalar::Base {
+				class Sampler2D: public neb::glsl::Uniform::Scalar::Base {
 					public:
 						Sampler2D(std::string s): Base(s) {}
 						virtual void		load(int);

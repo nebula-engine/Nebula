@@ -31,19 +31,19 @@
 #include <Nebula/Core/Pose.hh>
 #include <Nebula/Util/parent.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Shape {
 		namespace Util {
 			/** @brief @Parent
 			 * abstract class for parent of a shape
 			 *
-			 * @note inheritance of Neb::Util::parent is non-virtual
+			 * @note inheritance of neb::Util::parent is non-virtual
 			 */
 			class Parent:
-				virtual public Neb::Util::parent<Neb::Shape::Base>,
-				virtual public Neb::Actor::Util::Cast,
-				virtual public Neb::Shape::Util::Cast,
-				virtual public Neb::Core::Pose
+				virtual public neb::Util::parent<neb::Shape::Base>,
+				virtual public neb::Actor::Util::Cast,
+				virtual public neb::Shape::Util::Cast,
+				virtual public neb::core::Pose
 			{
 				public:
 					virtual ~Parent() {}

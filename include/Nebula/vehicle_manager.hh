@@ -151,7 +151,7 @@ namespace neb
 			vehicle_t		create_vehicle(
 					physx::PxPhysics*,
 					physx::PxScene*,
-					glutpp::actor::desc_s);
+					sp::shared_ptr<glutpp::actor::desc>;
 
 			physx::PxVehicleDrivableSurfaceToTireFrictionPairs*	surface_tire_pairs_;
 

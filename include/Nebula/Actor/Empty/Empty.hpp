@@ -13,14 +13,15 @@
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Actor/Util/Types.hh>
 
-namespace Neb {
+namespace neb { namespace core { namespace actor {
+namespace neb {
 	namespace Actor {
-		class Empty: public Neb::Actor::Base {
+		class Empty: public neb::Actor::Base {
 			public:
-				Empty(Neb::Actor::Util::Parent_s);
+				Empty(sp::shared_ptr<neb::Actor::Util::Parent>;
 				virtual void			init();
 				virtual void			release();
-				virtual void			step(Neb::Core::TimeStep const & ts);
+				virtual void			step(neb::core::TimeStep const & ts);
 		};
 	}
 }

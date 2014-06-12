@@ -4,15 +4,15 @@
 #include <Nebula/Util/shared.hpp>
 #include <Nebula/Graphics/Types.hh>
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace Window {
 			namespace Util {
 				class Cast:
 					virtual public neb::std::shared
 				{
 					public:
-						Neb::Graphics::Window::Base_s		isWindowBase();
+						neb::gfx::Window::Base_s		isWindowBase();
 				};
 			}
 		}

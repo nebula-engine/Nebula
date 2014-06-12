@@ -9,7 +9,7 @@
 #include <gru/config.hpp>
 #include <gru/shape/desc.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Event {
 		namespace Actor {
 			class Base {

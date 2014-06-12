@@ -4,11 +4,11 @@
 
 #include <Nebula/Message/Base.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Message {
 		namespace Actor {
 			class Base:
-				virtual public Neb::Message::Base
+				virtual public neb::Message::Base
 			{
 				public:
 					/** @brief index
@@ -18,8 +18,8 @@ namespace Neb {
 					gal::std::index_type			index_;
 			};
 			class IBase:
-				virtual public Neb::Message::IBase,
-				virtual public Neb::Message::Actor::Base
+				virtual public neb::Message::IBase,
+				virtual public neb::Message::Actor::Base
 			{
 				private:
 					IBase&			operator=(IBase const &);
@@ -32,8 +32,8 @@ namespace Neb {
 					}
 			};
 			class OBase:
-				virtual public Neb::Message::OBase,
-				virtual public Neb::Message::Actor::Base
+				virtual public neb::Message::OBase,
+				virtual public neb::Message::Actor::Base
 			{
 				public:
 					virtual void		serialize(

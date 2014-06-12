@@ -11,13 +11,13 @@
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Util/wrapper.hpp>
 
-namespace Neb {
+namespace neb {
 	namespace Message {
 		namespace Scene {
 			class Create {
 				public:
 					Create();
-					void load(Neb::Scene::Base_s scene);
+					void load(sp::shared_ptr<neb::Scene::Base>scene);
 
 					template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 						ar & scene_;

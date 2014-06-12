@@ -7,34 +7,34 @@
 #include <Nebula/config.hh>
 //#include <Nebula/camera_control.hpp>
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace Camera {
 			namespace Projection {
 				/** @brief @Base */
 				class Base {
 					public:
 						/** @brief Constructor */
-						Base(Neb::Graphics::Context::Base_s);
+						Base(sp::shared_ptr<neb::gfx::Context::Base>;
 
 						virtual mat4				proj() = 0;
 						void					load();
 						/** @brief step
 						 * @todo explain when in timeline this occurs and in which thread and why
 						 */
-						void					step(Neb::Core::TimeStep const & ts);
+						void					step(neb::core::TimeStep const & ts);
 					protected:
 						/** @brief Parent */
-						Neb::Graphics::Context::Base_s		parent_;
+						neb::gfx::Context::Base_s		parent_;
 				};
 				class Perspective: public Base {
 					public:
-						Perspective(Neb::Graphics::Context::Base_s);
-						//void		init(Neb::renderable_shared);
+						Perspective(sp::shared_ptr<neb::gfx::Context::Base>;
+						//void		init(neb::renderable_shared);
 						virtual mat4				proj();
 
 						/** @brief step */
-						void					step(Neb::Core::TimeStep const & ts);
+						void					step(neb::core::TimeStep const & ts);
 
 						//
 

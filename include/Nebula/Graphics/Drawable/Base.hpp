@@ -1,8 +1,8 @@
 #ifndef NEBULA_GRAPHICS_DRAWABLE_BASE_HPP
 #define NEBULA_GRAPHICS_DRAWABLE_BASE_HPP
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace Drawable {
 			/** @brief %Drawable
 			 * 
@@ -16,7 +16,7 @@ namespace Neb {
 					 *
 					 * draw into prepared rendering context
 					 */
-					virtual void            draw(sp::shared_ptr<Neb::Graphics::Context::Base> context) = 0;
+					virtual void            draw(sp::shared_ptr<neb::gfx::Context::Base> context) = 0;
 			};     
 		}
 	}

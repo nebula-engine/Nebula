@@ -22,7 +22,7 @@
 #include <Nebula/Graphics/material.hh>
 #include <Nebula/Graphics/mesh.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Shape {
 		class buffer {
 			public:
@@ -31,27 +31,27 @@ namespace Neb {
 
 				struct
 				{
-					std::shared_ptr<Neb::texture>	image_;
+					std::shared_ptr<neb::texture>	image_;
 				} texture_;
 		};
 
-		typedef std::shared_ptr<Neb::Shape::buffer>			buffer_s;
+		typedef std::shared_ptr<neb::Shape::buffer>			buffer_s;
 
 		class Base:
 			virtual public neb::std::shared,
-			public Neb::Shape::Util::Parent,
-			public Neb::Light::Util::Parent
+			public neb::Shape::Util::Parent,
+			public neb::Light::Util::Parent
 		{
 			public:
-				typedef std::map<Neb::Graphics::Context::Base*,buffer_s>			map_t;
+				typedef std::map<neb::gfx::Context::Base*,buffer_s>			map_t;
 
 				Base();
-				Base(sp::shared_ptr<Neb::Shape::Util::Parent> parent);
+				Base(sp::shared_ptr<neb::Shape::Util::Parent> parent);
 				virtual ~Base();
 
 				void			init();
 				void			release();
-				void			step(Neb::Core::TimeStep const & ts);
+				void			step(neb::core::TimeStep const & ts);
 
 				/** @name Accessors @{ */
 				mat4						getPose();
@@ -65,9 +65,9 @@ namespace Neb {
 				/** @name Rendering @{ */
 				void						load_lights(int& i, mat4 space);
 				void						model_load(mat4 space);
-				void						init_buffer(Neb::Graphics::Context::Base_s, std::shared_ptr<Neb::glsl::program> p);
-				void						draw(Neb::Graphics::Context::Base_s, mat4 space);
-				virtual void					draw_elements(sp::shared_ptr<Neb::Graphics::Context::Base> context, mat4 space);
+				void						init_buffer(neb::gfx::Context::Base_s, std::shared_ptr<neb::glsl::program> p);
+				void						draw(neb::gfx::Context::Base_s, mat4 space);
+				virtual void					draw_elements(sp::shared_ptr<neb::gfx::Context::Base> context, mat4 space);
 				/** @} */
 			public:
 				template<class Archive>	void	serialize(Archive & ar, unsigned int const & version) {
@@ -80,10 +80,10 @@ namespace Neb {
 				}
 
 			public:
-				sp::shared_ptr<Neb::Shape::Util::Parent>		parent_;
+				sp::shared_ptr<neb::Shape::Util::Parent>		parent_;
 
 			public:
-				Neb::Shape::Util::Flag		flag_;
+				neb::Shape::Util::Flag		flag_;
 				/** @brief Pose. */
 				mat4				pose_;
 				/** @brief Scale. */
@@ -93,15 +93,15 @@ namespace Neb {
 				/** @brief Name of normal map file */
 				std::string			normal_;
 				/** @brief Material. */
-				Neb::material::raw		material_;
+				neb::material::raw		material_;
 			public:
 				
 				// draw data
 				/** @brief ID */
-				Neb::material::material					material_front_;
+				neb::material::material					material_front_;
 				mesh							mesh_;
 				map_t							context_;
-				Neb::program_name::e					program_;
+				neb::program_name::e					program_;
 				/** @brief Parent */
 				
 		};

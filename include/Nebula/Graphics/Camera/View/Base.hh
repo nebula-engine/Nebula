@@ -16,15 +16,15 @@
 #include <Nebula/Core/TimeStep.hpp>
 #include <Nebula/Graphics/glsl/program.hh>
 
-namespace Neb {
-	namespace Graphics {
+namespace neb {
+	namespace gfx {
 		namespace Camera {
 			namespace View {
 				/** @brief @Base */
 				class Base {
 					public:
 						/** @brief Constructor */
-						Base(Neb::Graphics::Context::Base_s parent);
+						Base(neb::gfx::Context::Base_s parent);
 						/** @brief Load view matrix into GLSL. */
 						void					load();
 						/** @brief Get view matrix. */
@@ -33,8 +33,8 @@ namespace Neb {
 						 *
 						 * @todo explain when in timeline this occurs and in which thread and why
 						 */
-						virtual void				step(Neb::Core::TimeStep const & ts) = 0;
-						Neb::Graphics::Context::Base_s		parent_;
+						virtual void				step(neb::core::TimeStep const & ts) = 0;
+						neb::gfx::Context::Base_s		parent_;
 				};
 			}
 		}

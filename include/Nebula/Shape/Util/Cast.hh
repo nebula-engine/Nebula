@@ -5,14 +5,14 @@
 
 #include <Nebula/Shape/Util/Types.hh>
 
-namespace Neb {
+namespace neb {
 	namespace Shape {
 		namespace Util {
 			class Cast:
 				virtual public gal::std::shared
 			{
 				public:
-					Neb::Shape::Base_s		isShapeBase();
+					neb::Shape::Base_s		isShapeBase();
 			};
 		}
 	}
