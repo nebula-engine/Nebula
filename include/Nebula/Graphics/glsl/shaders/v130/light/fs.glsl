@@ -95,9 +95,10 @@ void main(void)
 		// translate to view space
 		//light_pos = lights[i].position.xyz - view[0].xyz;
 		//light_pos = mat3(view) * light_pos;
-
-		light_pos = vec3( view * lights_point[i].position );
-
+		
+		vec4 pos = vec4(lights_point[i].position, 1.0);
+		light_pos = vec3(view * pos);
+		
 		L = light_pos - vs_P.xyz;
 
 		float l = length(L);
@@ -141,7 +142,8 @@ void main(void)
 		//light_pos = lights[i].position.xyz - view[0].xyz;
 		//light_pos = mat3(view) * light_pos;
 
-		light_pos = vec3( view * lights_spot[i].position );
+		vec4 pos = vec4(lights_point[i].position, 1.0);
+		light_pos = vec3(view * pos);
 
 		L = light_pos - vs_P.xyz;
 
@@ -191,7 +193,7 @@ void main(void)
 		atten = 1.0; // no atten
 
 		// rotate to view space
-		light_pos = mat3(view) * lights_directional[i].position.xyz;
+		light_pos = mat3(view) * lights_directional[i].position;
 
 
 		L = normalize(light_pos);
