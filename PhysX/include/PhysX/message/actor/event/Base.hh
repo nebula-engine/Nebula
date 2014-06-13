@@ -1,5 +1,5 @@
-#ifndef __GLUTPP_NETWORK_ACTOR_EVENT_H__
-#define __GLUTPP_NETWORK_ACTOR_EVENT_H__
+#ifndef __PX_NETWORK_ACTOR_EVENT_H__
+#define __PX_NETWORK_ACTOR_EVENT_H__
 
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
@@ -23,52 +23,51 @@
 
 
 
-namespace Neb {
-	namespace Message {
-		namespace Actor {
-			namespace Event {
-				/** @brief %Base */
-				class Base: virtual public Neb::Message::Actor::Base {
-					public:
-				};
-				class IBase:
-					virtual public Neb::Message::Actor::IBase,
-					virtual public Neb::Message::Actor::Event::Base
-				{
-				};
-				class OBase:
-					virtual public Neb::Message::Actor::OBase,
-					virtual public Neb::Message::Actor::Event::Base
-				{
-				};
-				class Fire:
-					virtual public Neb::Message::Actor::Event::Base
-				{
-				};
-				class IFire:
-					virtual public Neb::Message::Actor::Event::IBase,
-					virtual public Neb::Message::Actor::Event::Fire
-				{
-					virtual void		process();
+namespace px { namespace message { namespace actor { namespace event {
 
-					virtual void		serialize(
-							boost::archive::polymorphic_iarchive & ar,
-							unsigned int const & version);
-				};
-				class OFire:
-					virtual public Neb::Message::Actor::Event::OBase,
-					virtual public Neb::Message::Actor::Event::Fire
-				{
-					virtual void		pre();
-					virtual void		post();
 
-					virtual void		serialize(
-							boost::archive::polymorphic_oarchive & ar,
-							unsigned int const & version);
-				};
-			}
-		}
-	}
+	/** @brief %Base */
+	class Base: virtual public neb::Message::actor::Base {
+		public:
+	};
+	class IBase:
+		virtual public neb::Message::actor::IBase,
+		virtual public neb::Message::actor::Event::Base
+	{
+	};
+	class OBase:
+		virtual public neb::Message::actor::OBase,
+		virtual public neb::Message::actor::Event::Base
+	{
+	};
+	class Fire:
+		virtual public neb::Message::actor::Event::Base
+	{
+	};
+	class IFire:
+		virtual public px::message::actor::event::IBase,
+		virtual public px::message::actor::event::Fire
+	{
+		virtual void		process();
+
+		virtual void		serialize(
+				boost::archive::polymorphic_iarchive & ar,
+				unsigned int const & version);
+	};
+	class OFire:
+		virtual public px::message::actor::event::OBase,
+		virtual public px::message::actor::event::Fire
+	{
+		virtual void		pre();
+		virtual void		post();
+
+		virtual void		serialize(
+				boost::archive::polymorphic_oarchive & ar,
+				unsigned int const & version);
+	};
+}
+}
+}
 }
 
 #endif
