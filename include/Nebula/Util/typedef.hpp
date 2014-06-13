@@ -7,6 +7,8 @@
 #include <glm/mat4x4.hpp>
 */
 
+#include <memory>
+
 namespace sp = std;
 
 typedef float		real;
