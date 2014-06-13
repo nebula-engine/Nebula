@@ -41,6 +41,8 @@ sp::shared_ptr<neb::gfx::gui::Layout::Base>	create_layout(
 
 	layout->insert(term);
 
+	term->init();
+
 	return layout;
 }
 sp::shared_ptr<neb::core::actor::RigidDynamic::Local>		create_actor(sp::shared_ptr<neb::Scene::Local> scene) {
