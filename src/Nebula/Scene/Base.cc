@@ -45,6 +45,8 @@ neb::Scene::Base::Base(sp::shared_ptr<neb::Scene::Util::Parent> parent):
 	parent_(parent)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
+
+	program_name_ = neb::program_name::e::LIGHT;
 }
 neb::Scene::Base::~Base() {
 	GLUTPP_DEBUG_0_FUNCTION;
