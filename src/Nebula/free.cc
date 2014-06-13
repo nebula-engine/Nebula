@@ -131,17 +131,27 @@ void		neb::draw_text(
 	FT_Face face;
 
 	FT_Library ft = neb::App::Base::global()->ft_;
+	
+	char const * fontfile[] = {
+		"/usr/share/fonts/truetype/msttcorefonts/georgia.ttf",
+		"/usr/share/fonts/msttcorefonts/georgia.ttf",
+		"/usr/share/fonts/truetype/freefont/FreeSans.ttf"};
 
-	char const fontfile[] = "/usr/share/fonts/truetype/msttcorefonts/georgia.ttf";
-	//char const fontfile[] = "/usr/share/fonts/msttcorefonts/georgia.ttf";
-	//	char const fontfile[] = "/usr/share/fonts/truetype/freefont/FreeSans.ttf";
+	
 	//char const fontfile[] = "/usr/share/fonts/truetype/msttcorefonts/arial.ttf";
 	//char const fontfile[] = "FreeSans.ttf";
 
-	if(FT_New_Face(ft, fontfile, 0, &face))
-	{
-		printf("Could not open font '%s'\n",fontfile);
-		exit(1);
+	for(int i = 0; i < 3; ++i) {
+		if(FT_New_Face(ft, fontfile[i], 0, &face)) {
+			printf("Could not open font '%s'\n",fontfile[i]);
+		} else {
+			break;
+		}
+		
+		if(i == 2) {
+			printf("Count not open any fonts\n");
+			abort();
+		}
 	}
 
 	FT_Set_Pixel_Sizes(face, 0, 48);
@@ -175,7 +185,7 @@ void		neb::draw_text(
 	printf("coord not found\n");
 	exit(0);
 	}
-	 */
+	*/
 
 	//printf("tex   = %i\n",uniform_tex);
 	//printf("color = %i\n",uniform_color);
