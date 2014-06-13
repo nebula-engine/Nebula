@@ -166,7 +166,7 @@ sp::shared_ptr<neb::gfx::Window::Base>		neb::App::Base::get_window(GLFWwindow* w
 
 
 
-void		neb::App::Base::command(sp::shared_ptr<neb::gfx::GUI::Object::terminal> term, ::std::string str) {
+void		neb::App::Base::command(sp::shared_ptr<neb::gfx::gui::object::terminal> term, ::std::string str) {
 
 	// split
 	
@@ -195,7 +195,7 @@ void		neb::App::Base::command(sp::shared_ptr<neb::gfx::GUI::Object::terminal> te
 	
 	// a help function
 	auto help = sp::make_shared<neb::util::command>();
-	help->func_ = [] (sp::shared_ptr<neb::gfx::GUI::Object::terminal> term, bpo::variables_map vm) {
+	help->func_ = [] (sp::shared_ptr<neb::gfx::gui::object::terminal> term, bpo::variables_map vm) {
 		term->lines_.push_back("exit");
 		term->lines_.push_back("help");
 	};
@@ -203,7 +203,7 @@ void		neb::App::Base::command(sp::shared_ptr<neb::gfx::GUI::Object::terminal> te
 	// a way out
 	auto cmd_exit = sp::make_shared<neb::util::command>();
 
-	cmd_exit->func_ = [&] (sp::shared_ptr<neb::gfx::GUI::Object::terminal> term, bpo::variables_map vm) {
+	cmd_exit->func_ = [&] (sp::shared_ptr<neb::gfx::gui::object::terminal> term, bpo::variables_map vm) {
 		sp::shared_ptr<neb::App::Base> app = neb::App::Base::global();
 		app->flag_.set(neb::App::Util::Flag::SHOULD_RELEASE);
 	};

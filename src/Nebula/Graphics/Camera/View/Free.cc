@@ -14,7 +14,13 @@ neb::gfx::Camera::View::Free::Free(sp::shared_ptr<neb::gfx::Context::Base> paren
 	yaw_(0),
 	eye_(0, 0, 0, 0),
 	center_(0, 0, -1),
-	up_(0, 1, 0)
+	up_(0, 1, 0),
+	key_n_(GLFW_KEY_H),
+	key_s_(GLFW_KEY_N),
+	key_e_(GLFW_KEY_L),
+	key_w_(GLFW_KEY_J),
+	key_u_(GLFW_KEY_I),
+	key_d_(GLFW_KEY_K)
 {
 
 	float s = 1;
@@ -22,12 +28,8 @@ neb::gfx::Camera::View::Free::Free(sp::shared_ptr<neb::gfx::Context::Base> paren
 
 	s *= 1.5;
 	d *= 1.5;
-	/*
-	   key_flag_[ KEY_W ] = NEB::camera::flag::NORTH;
-	   key_flag_[ KEY_S ] = NEB::camera::flag::SOUTH;
-	   key_flag_[ KEY_D ] = NEB::camera::flag::EAST;
-	   key_flag_[ KEY_A ] = NEB::camera::flag::WEST;
-	 */	
+
+
 
 	head_[0] = vec3(  0, 0, -s );
 	head_[1] = vec3(  d, 0, -d );
@@ -38,70 +40,109 @@ neb::gfx::Camera::View::Free::Free(sp::shared_ptr<neb::gfx::Context::Base> paren
 	head_[6] = vec3( -s, 0,  0 );
 	head_[7] = vec3( -d, 0, -d );
 
-	head_flag_[neb::gfx::Camera::View::Free::Flag::E::NORTH								] = 0;
-	head_flag_[neb::gfx::Camera::View::Free::Flag::E::NORTH	|	neb::gfx::Camera::View::Free::Flag::E::EAST	] = 1;
-	head_flag_[							neb::gfx::Camera::View::Free::Flag::E::EAST	] = 2;
-	head_flag_[neb::gfx::Camera::View::Free::Flag::E::SOUTH	|	neb::gfx::Camera::View::Free::Flag::E::EAST	] = 3;
-	head_flag_[neb::gfx::Camera::View::Free::Flag::E::SOUTH								] = 4;
-	head_flag_[neb::gfx::Camera::View::Free::Flag::E::SOUTH	|	neb::gfx::Camera::View::Free::Flag::E::WEST	] = 5;
-	head_flag_[							neb::gfx::Camera::View::Free::Flag::E::WEST	] = 6;
-	head_flag_[neb::gfx::Camera::View::Free::Flag::E::NORTH	|	neb::gfx::Camera::View::Free::Flag::E::WEST	] = 7;
+	head_flag_[neb::gfx::camera::view::util::flag::NORTH								] = 0;
+	head_flag_[neb::gfx::camera::view::util::flag::NORTH	|	neb::gfx::camera::view::util::flag::EAST	] = 1;
+	head_flag_[							neb::gfx::camera::view::util::flag::EAST	] = 2;
+	head_flag_[neb::gfx::camera::view::util::flag::SOUTH	|	neb::gfx::camera::view::util::flag::EAST	] = 3;
+	head_flag_[neb::gfx::camera::view::util::flag::SOUTH								] = 4;
+	head_flag_[neb::gfx::camera::view::util::flag::SOUTH	|	neb::gfx::camera::view::util::flag::WEST	] = 5;
+	head_flag_[							neb::gfx::camera::view::util::flag::WEST	] = 6;
+	head_flag_[neb::gfx::camera::view::util::flag::NORTH	|	neb::gfx::camera::view::util::flag::WEST	] = 7;
 
 
 }
 void	neb::gfx::Camera::View::Free::init() {
-	/*
-	   vec_x_.push_back(
-	   window_->map_sig_key_down_['d'].connect(
-	   std::bind(&neb::gfx::Camera::View::Free::callback_x_, this, 0, 1.0)));
-
-	   vec_x_.push_back(
-	   window_->map_sig_key_up_['d'].connect(
-	   std::bind(&neb::gfx::Camera::View::Free::callback_x_, this, 0, 0.0)));
-
-	   vec_x_.push_back(
-	   window_->map_sig_key_down_['a'].connect(
-	   std::bind(&neb::gfx::Camera::View::Free::callback_x_, this, 1, -1.0)));
-
-	   vec_x_.push_back(
-	   window_->map_sig_key_up_['a'].connect(
-	   std::bind(&neb::gfx::Camera::View::Free::callback_x_, this, 1, 0.0)));
-
-	   vec_y_.push_back(
-	   window_->map_sig_key_down_['e'].connect(
-	   std::bind(&neb::gfx::Camera::View::Free::callback_y_, this, 0, 1.0)));
-
-	   vec_y_.push_back(
-	   window_->map_sig_key_up_['e'].connect(
-	   std::bind(&neb::gfx::Camera::View::Free::callback_y_, this, 0, 0.0)));
-
-	   vec_y_.push_back(
-	   window_->map_sig_key_down_['c'].connect(
-	   std::bind(&neb::gfx::Camera::View::Free::callback_y_, this, 1, -1.0)));
-
-	   vec_y_.push_back(
-	   window_->map_sig_key_up_['c'].connect(
-	   std::bind(&neb::gfx::Camera::View::Free::callback_y_, this, 1, 0.0)));
-
-	   vec_z_.push_back(
-	   window_->map_sig_key_down_['w'].connect(
-	   std::bind(&neb::gfx::Camera::View::Free::callback_z_, this, 0, -1.0)));
-
-	   vec_z_.push_back(
-	   window_->map_sig_key_up_['w'].connect(
-	   std::bind(&neb::gfx::Camera::View::Free::callback_z_, this, 0, 0.0)));
-
-	   vec_z_.push_back(
-	   window_->map_sig_key_down_['s'].connect(
-	   std::bind(&neb::gfx::Camera::View::Free::callback_z_, this, 1, 1.0)));
-
-	   vec_z_.push_back(
-	   window_->map_sig_key_up_['s'].connect(
-	   std::bind(&neb::gfx::Camera::View::Free::callback_z_, this, 1, 0.0)));
-	 */
 
 }
-void		neb::gfx::Camera::View::Free::step(neb::core::TimeStep const & ts) {
+void			neb::gfx::Camera::View::Free::connect(sp::shared_ptr<neb::gfx::Window::Base> const & window) {
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", info) << __PRETTY_FUNCTION__;
+
+	/*conns_.key_fun_ =*/ window->sig_.key_fun_.connect(
+			::std::bind(&neb::gfx::Camera::View::Free::key_fun,
+				this,
+				::std::placeholders::_1,
+				::std::placeholders::_2,
+				::std::placeholders::_3,
+				::std::placeholders::_4,
+				::std::placeholders::_5
+				));
+	
+/*	conns_.mouse_button_fun_ = window->sig_.mouse_button_fun_.connect(
+			::std::bind(&neb::gfx::gui::Layout::Base::mouse_button_fun,
+				this,
+				::std::placeholders::_1,
+				::std::placeholders::_2,
+				::std::placeholders::_3,
+				::std::placeholders::_4
+				));
+				*/
+
+}
+int			neb::gfx::Camera::View::Free::key_fun(
+		sp::shared_ptr<neb::gfx::Window::Base> const & window,
+		int key,
+		int scancode,
+		int action,
+		int mods)
+{
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
+	
+
+	if(action == GLFW_PRESS) {
+		if(key == key_w_) {
+			flag_.set(neb::gfx::camera::view::util::flag::WEST);
+			return 1;
+		}
+		if(key == key_e_) {
+			flag_.set(neb::gfx::camera::view::util::flag::EAST);
+			return 1;
+		}
+		if(key == key_s_) {
+			flag_.set(neb::gfx::camera::view::util::flag::SOUTH);
+			return 1;
+		}
+		if(key == key_n_) {
+			flag_.set(neb::gfx::camera::view::util::flag::NORTH);
+			return 1;
+		}
+		if(key == key_d_) {
+			flag_.set(neb::gfx::camera::view::util::flag::DOWN);
+			return 1;
+		}
+		if(key == key_u_) {
+			flag_.set(neb::gfx::camera::view::util::flag::UP);
+			return 1;
+		}
+	} else if(action == GLFW_RELEASE) {
+		if(key == key_w_) {
+			flag_.unset(neb::gfx::camera::view::util::flag::WEST);
+			return 1;
+		}
+		if(key == key_e_) {
+			flag_.unset(neb::gfx::camera::view::util::flag::EAST);
+			return 1;
+		}
+		if(key == key_s_) {
+			flag_.unset(neb::gfx::camera::view::util::flag::SOUTH);
+			return 1;
+		}
+		if(key == key_n_) {
+			flag_.unset(neb::gfx::camera::view::util::flag::NORTH);
+			return 1;
+		}
+		if(key == key_d_) {
+			flag_.unset(neb::gfx::camera::view::util::flag::DOWN);
+			return 1;
+		}
+		if(key == key_u_) {
+			flag_.unset(neb::gfx::camera::view::util::flag::UP);
+			return 1;
+		}
+	}
+	return 0;
+}
+void			neb::gfx::Camera::View::Free::step(neb::core::TimeStep const & ts) {
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
 
 	// look vector
 	vec3 look = center_ - vec3(eye_);
@@ -130,121 +171,55 @@ void		neb::gfx::Camera::View::Free::step(neb::core::TimeStep const & ts) {
 	printf("yaw = %f\n",yaw);
 
 	// rotate velocity by camera yaw
-	quat q(yaw,y);
-
-
-	vec3 v = v0_ + v1_;
+	quat q(yaw_,y);
+	
+	
+	vec3 v(move());
 	v *= ts.dt;
-	v *= 4.0;
+	v *= 1.0;
 
 	v = q * v;
 
 	eye_ += vec4(v, 0.0f);
 }
 
-/*
-   neb::camera::camera::camera():
-   pitch_(0.0f),
-   yaw_(0.0f),
-   v_pitch_(0.0f),
-   v_yaw_(0.0f),
-   eye_( vec3( 0.0f, 0.0f, 0.0f ) )
-   {
+vec3			neb::gfx::Camera::View::Free::move() {
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
 
-   }
-   void	neb::camera::camera::Connect()
-   {
-   ev_mouse = JSL::master.find_event_device(	{LOGITECH,	MOUSE});
-   ev_keyboard = JSL::master.find_event_device(	{LOGITECH,	KEYBOARD});
-   ev_gamepad = JSL::master.find_event_device(	{XBOX,		CONTROLLER});
+//	vec3 mov = vec3(0,0,-1) * north_ + vec3(1,0,0) * east_;
 
-   if(ev_gamepad)
-   {
-   ev_gamepad->map_sig_abs_[ABS_RX].connect(std::bind( &neb::camera::FirstOrderDeltaYawAbs, this, std::placeholders::_1 ) );
-   ev_gamepad->map_sig_abs_[ABS_RY].connect(std::bind( &neb::camera::FirstOrderDeltaPitchAbs, this, std::placeholders::_1 ) );
+//	return mov;
 
-   ev_gamepad->map_sig_abs_[ABS_Y].connect(std::bind( &neb::camera::HandleAbsNorth, this, std::placeholders::_1 ) );
-   ev_gamepad->map_sig_abs_[ABS_X].connect(std::bind( &neb::camera::HandleAbsEast, this, std::placeholders::_1 ) );
+	vec3 mov(0);
 
-   ev_gamepad->map_sig_key_[BTN_A].connect(std::bind(&neb::camera::handle_delete_scene, this, std::placeholders::_1));
+	// ignore all other flags
+	long unsigned int f = flag_.val_ & (
+			neb::gfx::camera::view::util::flag::NORTH |
+			neb::gfx::camera::view::util::flag::SOUTH |
+			neb::gfx::camera::view::util::flag::EAST |
+			neb::gfx::camera::view::util::flag::WEST |
+		       	neb::gfx::camera::view::util::flag::UP |
+			neb::gfx::camera::view::util::flag::DOWN);
 
-   fprintf(stderr, "camera: gamepad");
-   }
-   else if(ev_mouse && ev_keyboard)
-   {
-   ev_mouse->map_sig_rel_[REL_X].connect(	std::bind( &neb::camera::FirstOrderDeltaYawRel, this, std::placeholders::_1 ) );
-   ev_mouse->map_sig_rel_[REL_Y].connect(	std::bind( &neb::camera::FirstOrderDeltaPitchRel, this, std::placeholders::_1 ) );
+	// find vector for move flag
+	auto it = head_flag_.find( f );
 
-   ev_keyboard->map_sig_key_[KEY_W].connect(std::bind( &neb::camera::HandleKeyNorth, this, std::placeholders::_1 ) );
-   ev_keyboard->map_sig_key_[KEY_S].connect(std::bind( &neb::camera::HandleKeySouth, this, std::placeholders::_1 ) );
-   ev_keyboard->map_sig_key_[KEY_D].connect(std::bind( &neb::camera::HandleKeyEast, this, std::placeholders::_1 ) );
-   ev_keyboard->map_sig_key_[KEY_A].connect(std::bind( &neb::camera::HandleKeyWest, this, std::placeholders::_1 ) );
+	if ( it != head_flag_.end() )
+	{
+		mov = head_[it->second];
+	}
 
-   ev_gamepad->map_sig_key_[KEY_S].connect(std::bind(&neb::camera::handle_delete_scene, this, std::placeholders::_1));
-
-
-   fprintf(stderr, "camera: mouse and keyboard");
-
-   }
-   else
-   {
-   fprintf(stderr, "camera: no input devices");
-   }
-   }
-   void neb::camera::camera::Step(float dt)
-   {
-//printf("%s\n", __FUNCTION__);
-
-vec3 mov = Move();
-
-physx::PxQuat rot( yaw_, vec3(0,1,0) );
-
-mov = rot.rotate(mov);
-
-eye_ += mov * dt;
-
-// pitch
-pitch_ += v_pitch_ * dt;
-
-// yaw
-yaw_ += v_yaw_ * dt;
-}
-vec3 neb::camera::camera::Move()
-{
-//printf("%s\n", __FUNCTION__);
-
-vec3 mov = vec3(0,0,-1) * north_ + vec3(1,0,0) * east_;
-
-return mov;
-
-vec3 mov(0,0,0);
-
-// ignore all other flags
-int f = flag_ & (
-		neb::camera::flag::NORTH |
-		neb::camera::flag::SOUTH |
-		neb::camera::flag::EAST |
-		neb::camera::flag::WEST );
-
-// find vector for move flag
-auto it = head_flag_.find( f );
-
-if ( it != head_flag_.end() )
-{
-	mov = head_[it->second];
+	return mov;
 }
 
-return mov;
-}
-*/
 mat4		neb::gfx::Camera::View::Free::view() {
 	printf("%s\n", __FUNCTION__);
-	
+
 	vec3 up(0,1,0);
 	vec3 look(0,0,-1);
 
 
-	quat rot( yaw_, vec3(0,1,0));
+	quat rot(yaw_, vec3(0,1,0));
 
 	rot = rot * quat( pitch_ , vec3(1,0,0) );
 
@@ -274,44 +249,6 @@ mat4		neb::gfx::Camera::View::Free::view() {
 
 	return ret;
 }
-/*
-   int	neb::camera::camera::FirstOrderDeltaPitchRel(int d)
-   {
-//printf("%s\n", __FUNCTION__);
-
-pitch_ -= (float)d * 0.001;
-
-return 1;
-}
-int	neb::camera::camera::FirstOrderDeltaYawRel(int d)
-{
-//printf("%s\n", __FUNCTION__);
-
-yaw_ -= (float)d * 0.001;
-
-return 1;
-}
-int neb::camera::camera::FirstOrderDeltaPitchAbs(float d)
-{
-printf("%s %f\n", __FUNCTION__, d);
-
-d = ((d > 0.1 || d < -0.1) ? d : 0.0f);
-
-v_pitch_ = (float)d * -1.0;
-
-return 1;
-}
-int neb::camera::camera::FirstOrderDeltaYawAbs(float d)
-{
-printf("%s %f\n", __FUNCTION__, d);
-
-d = ((d > 0.1 || d < -0.1) ? d : 0.0f);
-
-v_yaw_ = (float)d * -1.0;
-
-return 1;
-}
- */
 
 
 
