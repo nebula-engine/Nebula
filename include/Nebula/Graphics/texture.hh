@@ -12,7 +12,7 @@
 #include <math/vec3.hpp>
 */
 
-#include <Nebula/config.hh>
+//#include <Nebula/config.hh>
 
 namespace neb {
 	/*template<typename WINDOW>*/ class texture {

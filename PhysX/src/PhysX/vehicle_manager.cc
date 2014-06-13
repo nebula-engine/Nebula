@@ -1,4 +1,5 @@
 
+/*
 #include <Nebula/Physics.hh>
 #include <Nebula/Filter.hh>
 //#include <nebula/actor/vehicle.hpp>
@@ -22,11 +23,11 @@ physx::PxSceneQueryHitType::Enum VehicleWheelRaycastPreFilter(
 	PX_UNUSED(filterFlags);
 	PX_UNUSED(constantBlockSize);
 	PX_UNUSED(constantBlock);
-	PX_ASSERT(filterData0.word3 & Neb::Filter::Filter::UNDRIVABLE_SURFACE);
+	PX_ASSERT(filterData0.word3 & neb::Filter::Filter::UNDRIVABLE_SURFACE);
 
-	physx::PxU32 w3 = filterData1.word3 & Neb::Filter::Filter::DRIVABLE_SURFACE;
+	physx::PxU32 w3 = filterData1.word3 & neb::Filter::Filter::DRIVABLE_SURFACE;
 	
-	printf("%x %x %x %x\n", filterData0.word3, filterData1.word3, Neb::Filter::Filter::DRIVABLE_SURFACE, w3);
+	printf("%x %x %x %x\n", filterData0.word3, filterData1.word3, neb::Filter::Filter::DRIVABLE_SURFACE, w3);
 	
 	if(w3 == 0)
 	{
@@ -35,7 +36,7 @@ physx::PxSceneQueryHitType::Enum VehicleWheelRaycastPreFilter(
 	
 	return physx::PxSceneQueryHitType::eBLOCK;
 }
-
+*/
 /*
 neb::vehicle_manager::vehicle_manager():
 	surface_tire_pairs_(NULL),
@@ -352,7 +353,7 @@ physx::PxConvexMesh* create_mesh(physx::PxVec3 const * verts, int num_verts) {
 }
 void SampleVehicleSetupVehicleShapeQueryFilterData(physx::PxFilterData* data) {
 
-	data->word3 = Neb::filter::type::UNDRIVABLE_SURFACE;
+	data->word3 = neb::filter::type::UNDRIVABLE_SURFACE;
 }
 physx::PxRigidDynamic* createVehicleActor4W(
 		const physx::PxFilterData& vehQryFilterData,
@@ -405,12 +406,12 @@ physx::PxRigidDynamic* createVehicleActor4W(
 	// filter data
 	
 	physx::PxFilterData wheelCollFilterData;
-	wheelCollFilterData.word0 = Neb::filter::COLLISION_FLAG_WHEEL;
-	wheelCollFilterData.word1 = Neb::filter::COLLISION_FLAG_WHEEL_AGAINST;
+	wheelCollFilterData.word0 = neb::filter::COLLISION_FLAG_WHEEL;
+	wheelCollFilterData.word1 = neb::filter::COLLISION_FLAG_WHEEL_AGAINST;
 
 	physx::PxFilterData chassisCollFilterData;
-	chassisCollFilterData.word0 = Neb::filter::COLLISION_FLAG_CHASSIS;
-	chassisCollFilterData.word1 = Neb::filter::COLLISION_FLAG_CHASSIS_AGAINST;
+	chassisCollFilterData.word0 = neb::filter::COLLISION_FLAG_CHASSIS;
+	chassisCollFilterData.word1 = neb::filter::COLLISION_FLAG_CHASSIS_AGAINST;
 
 	
 
@@ -441,7 +442,7 @@ physx::PxRigidDynamic* createVehicleActor4W(
 std::shared_ptr<neb::actor::vehicle>	neb::vehicle_manager::create_vehicle(
 		physx::PxPhysics* physics,
 		physx::PxScene* scene,
-		Neb::actor::desc_s desc) {
+		sp::shared_ptr<neb::actor::desc> desc) {
 
 	// material
 	physx::PxMaterial* material = physics->createMaterial(0.5f, 0.5f, 0.1f);
