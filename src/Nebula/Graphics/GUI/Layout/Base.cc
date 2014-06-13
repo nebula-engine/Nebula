@@ -62,6 +62,7 @@ void neb::gfx::gui::Layout::Base::connect(sp::shared_ptr<neb::gfx::Window::Base>
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
 	conns_.key_fun_ = window->sig_.key_fun_.connect(
+			10,
 			::std::bind(&neb::gfx::gui::Layout::Base::key_fun,
 				this,
 				::std::placeholders::_1,
@@ -70,8 +71,9 @@ void neb::gfx::gui::Layout::Base::connect(sp::shared_ptr<neb::gfx::Window::Base>
 				::std::placeholders::_4,
 				::std::placeholders::_5
 				));
-	
+
 	conns_.mouse_button_fun_ = window->sig_.mouse_button_fun_.connect(
+			10,
 			::std::bind(&neb::gfx::gui::Layout::Base::mouse_button_fun,
 				this,
 				::std::placeholders::_1,
@@ -83,17 +85,17 @@ void neb::gfx::gui::Layout::Base::connect(sp::shared_ptr<neb::gfx::Window::Base>
 }
 int neb::gfx::gui::Layout::Base::key_fun(sp::shared_ptr<neb::gfx::Window::Base> const & window, int key, int scancode, int action, int mode) {
 	printf("%s\n", __PRETTY_FUNCTION__);
-	
+
 	typedef neb::gfx::gui::object::Util::Parent O;
-	
+
 	//O::map_.for_each_int<0>([&] (O::map_type::iterator<0> it) {
 	for(O::map_type::iterator<0> it = O::map_.begin(); it != O::map_.end(); ++it) {
 		auto object = sp::dynamic_pointer_cast<neb::gfx::gui::object::Base>(it->ptr_);
 		assert(object);
-		
+
 		if(object->key_fun(window, key, scancode, action, mode)) return 1;
 	};
-	
+
 	return 0;
 }
 int neb::gfx::gui::Layout::Base::mouse_button_fun(sp::shared_ptr<neb::gfx::Window::Base> const & window, int button, int action, int mods) {
