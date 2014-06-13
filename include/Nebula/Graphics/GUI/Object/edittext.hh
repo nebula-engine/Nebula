@@ -5,9 +5,9 @@
 
 namespace neb {
 	namespace gfx {
-		namespace GUI {
-			namespace Object {
-				class edittext: public neb::gfx::GUI::Object::textview {
+		namespace gui {
+			namespace object {
+				class edittext: public neb::gfx::gui::object::textview {
 					public:
 						edittext();
 						virtual void		draw();

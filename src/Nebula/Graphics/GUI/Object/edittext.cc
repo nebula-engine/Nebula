@@ -3,18 +3,18 @@
 #include <Nebula/Graphics/GUI/Layout/Base.hh>
 #include <Nebula/Graphics/GUI/Object/edittext.hh>
 
-neb::gfx::GUI::Object::edittext::edittext() {
+neb::gfx::gui::object::edittext::edittext() {
 
 }
-void	neb::gfx::GUI::Object::edittext::draw() {
+void	neb::gfx::gui::object::edittext::draw() {
 
 }
 
-void	neb::gfx::GUI::Object::edittext::connect() {
+void	neb::gfx::gui::object::edittext::connect() {
 	//std::shared_ptr<neb::window> w = get_window();
 /*
 	conns_.key_fun_ = w->sig_.key_fun_.connect(
-			std::bind(&neb::gfx::GUI::Object::object::key_fun,
+			std::bind(&neb::gfx::gui::object::object::key_fun,
 				this,
 				std::placeholders::_1,
 				std::placeholders::_2,
@@ -23,10 +23,10 @@ void	neb::gfx::GUI::Object::edittext::connect() {
 				));
 */
 }
-int	neb::gfx::GUI::Object::edittext::mouse_button_fun(int button, int action, int mods) {
+int	neb::gfx::gui::object::edittext::mouse_button_fun(int button, int action, int mods) {
 	return 0;
 }
-int	neb::gfx::GUI::Object::edittext::key_fun(int key, int scancode, int action, int mods) {
+int	neb::gfx::gui::object::edittext::key_fun(int key, int scancode, int action, int mods) {
 	char k = 'a' - GLFW_KEY_A + key;
 
 	if(action == GLFW_PRESS) {
@@ -49,7 +49,7 @@ int	neb::gfx::GUI::Object::edittext::key_fun(int key, int scancode, int action, 
 	
 	return 0;
 }
-int	neb::gfx::GUI::Object::edittext::enter()
+int	neb::gfx::gui::object::edittext::enter()
 {
 	return 1;	
 }

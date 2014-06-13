@@ -9,11 +9,12 @@
 #include <Nebula/Graphics/Types.hh>
 #include <Nebula/Graphics/Color/Color.hh>
 #include <Nebula/Graphics/GUI/Object/Util/Parent.hh>
+#include <Nebula/Graphics/GUI/Object/Util/flag.hpp>
 
 namespace neb {
 	namespace gfx {
-		namespace GUI {
-			namespace Object {
+		namespace gui {
+			namespace object {
 				class Base: virtual public neb::std::shared {
 					public:
 						Base();
@@ -43,17 +44,19 @@ namespace neb {
 
 						}
 					public:
-						sp::shared_ptr<neb::gfx::GUI::Object::Util::Parent>	parent_;
+						sp::shared_ptr<neb::gfx::gui::object::Util::Parent>	parent_;
 						
-						float						x_;
-						float						y_;
-						float						w_;
-						float						h_;
+						neb::gfx::gui::object::util::flag			flag_;
 
-						neb::Color::color<float>			font_color_;
-						neb::Color::color<float>			bg_color_;
+						float							x_;
+						float							y_;
+						float							w_;
+						float							h_;
 
-						::std::string					label_;
+						neb::Color::color<float>				font_color_;
+						neb::Color::color<float>				bg_color_;
+
+						::std::string						label_;
 						// connections
 						struct
 						{

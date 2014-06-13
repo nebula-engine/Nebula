@@ -5,13 +5,13 @@
 
 namespace neb {
 	namespace gfx {
-		namespace GUI {
-			namespace Object {
+		namespace gui {
+			namespace object {
 				/** \brief %textview
 				 * Display and optionally edit text
 				 */
 				class textview:
-					public neb::gfx::GUI::Object::Base
+					public neb::gfx::gui::object::Base
 				{
 					public:
 						textview();
