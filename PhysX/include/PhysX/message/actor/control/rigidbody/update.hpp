@@ -1,5 +1,5 @@
-#ifndef NEBULA_MESSAGE_ACTOR_CONTROL_HPP
-#define NEBULA_MESSAGE_ACTOR_CONTROL_HPP
+#ifndef PHYSX_MESSAGE_ACTOR_CONTROL_HPP
+#define PHYSX_MESSAGE_ACTOR_CONTROL_HPP
 
 #include <Galaxy-Standard/wrapper.hpp>
 
@@ -47,7 +47,7 @@ namespace px { namespace Message { namespace Actor { namespace Control {
 		/** @brief %Update. */
 		class IUpdate:
 			virtual public neb::Message::actor::IBase,
-			virtual public neb::Message::actor::control::rigidbody::Update
+			virtual public px::Message::actor::control::rigidbody::Update
 		{
 			public:
 				virtual ~IUpdate();
