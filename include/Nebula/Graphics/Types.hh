@@ -60,7 +60,7 @@ namespace neb {
 		}
 
 		/** @brief Graphical User Interface */
-		namespace GUI {
+		namespace gui {
 			/** @brief %Layout */
 			namespace Layout {
 				class Base;
@@ -74,7 +74,7 @@ namespace neb {
 			}
 			
 			/** @brief %Object */
-			namespace Object {
+			namespace object {
 				/** @brief %utilities */
 				namespace Util {
 					class Parent;

@@ -22,22 +22,22 @@ sp::shared_ptr<neb::gfx::Context::Window>		create_context(sp::shared_ptr<neb::gf
 
 	return context;
 }
-sp::shared_ptr<neb::gfx::GUI::Layout::Base>	create_layout(
+sp::shared_ptr<neb::gfx::gui::Layout::Base>	create_layout(
 		sp::shared_ptr<neb::gfx::Window::Base> window,
 		sp::shared_ptr<neb::gfx::Context::Window> context) {
 
 	auto app = neb::App::Base::global();
 	
-	auto layout = sp::make_shared<neb::gfx::GUI::Layout::Base>();
+	auto layout = sp::make_shared<neb::gfx::gui::Layout::Base>();
 
-	app->neb::gfx::GUI::Layout::Util::Parent::insert(layout);
+	app->neb::gfx::gui::Layout::Util::Parent::insert(layout);
 
 	context->drawable_ = layout;
 
 	layout->connect(window);
 
 	// object
-	auto term = sp::make_shared<neb::gfx::GUI::Object::terminal>();
+	auto term = sp::make_shared<neb::gfx::gui::object::terminal>();
 
 	layout->insert(term);
 
@@ -145,6 +145,10 @@ int main() {
 
 	// drawable
 	// scene
+	
+	context1->view_->connect(window);
+
+	
 
 	auto scene = create_scene(context1);
 

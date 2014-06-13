@@ -6,11 +6,11 @@
 
 namespace neb {
 	namespace gfx {
-		namespace GUI {
-			namespace Object {
+		namespace gui {
+			namespace object {
 				namespace Util {
 					class Parent:
-						virtual public neb::Util::parent<neb::gfx::GUI::Object::Base>
+						virtual public neb::Util::parent<neb::gfx::gui::object::Base>
 					{
 
 					};

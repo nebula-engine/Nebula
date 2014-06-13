@@ -8,7 +8,7 @@ namespace neb {
 	namespace util {
 		class command {
 			public:
-				void		operator()(sp::shared_ptr<neb::gfx::GUI::Object::terminal> term, int ac, char const ** av) {
+				void		operator()(sp::shared_ptr<neb::gfx::gui::object::terminal> term, int ac, char const ** av) {
 					bpo::variables_map vm;
 					bpo::store(bpo::parse_command_line(ac, av, desc_), vm);
 					bpo::notify(vm);
@@ -18,7 +18,7 @@ namespace neb {
 				}
 				bpo::options_description	desc_;
 
-				::std::function<void(sp::shared_ptr<neb::gfx::GUI::Object::terminal> term, bpo::variables_map)>		func_;
+				::std::function<void(sp::shared_ptr<neb::gfx::gui::object::terminal> term, bpo::variables_map)>		func_;
 		};
 	}
 }

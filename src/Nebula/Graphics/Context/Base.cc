@@ -1,4 +1,5 @@
 //#include <assert.h>
+#include <Galaxy-Log/log.hpp>
 
 #include <Nebula/App/Base.hh>
 #include <Nebula/Scene/Base.hh>
@@ -35,6 +36,11 @@ void		neb::gfx::Context::Base::resize(int w, int h) {
 }
 void		neb::gfx::Context::Base::step(neb::core::TimeStep const & ts) {
 
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
+
+	if(proj_) proj_->step(ts);	
+	if(view_) view_->step(ts);	
+
 }
 void		neb::gfx::Context::Base::render() {
 	/**
@@ -42,26 +48,26 @@ void		neb::gfx::Context::Base::render() {
 	 */
 
 	GLUTPP_DEBUG_1_FUNCTION;
-	
+
 	auto self = sp::dynamic_pointer_cast<neb::gfx::Context::Base>(shared_from_this());
 	auto app = neb::App::Base::global();
 
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-	
+
 	//glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
-	
+
 	assert(proj_);
 	assert(view_);
-	
+
 	/** wrong! */	
 	auto p = app->use_program(neb::program_name::e::LIGHT);
-	
+
 	//viewport_.load();
-	
+
 	proj_->load(p);
 	view_->load(p);
-	
+
 	if(drawable_) {
 		drawable_->draw(self, p);
 	}
