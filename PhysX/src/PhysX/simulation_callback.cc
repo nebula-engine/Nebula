@@ -1,12 +1,12 @@
 
 
-#include <Nebula/Actor/Base.hh>
+#include <PhysX/core/actor/Actor/base.hpp>
 
-void 	Neb::simulation_callback::onConstraintBreak(
+void 	neb::simulation_callback::onConstraintBreak(
 		physx::PxConstraintInfo *constraints, physx::PxU32 count) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 }
-void	Neb::simulation_callback::onContact(
+void	neb::simulation_callback::onContact(
 		const physx::PxContactPairHeader & pairHeader,
 		const physx::PxContactPair *pairs,
 		physx::PxU32 nbPairs) {
@@ -21,8 +21,8 @@ void	Neb::simulation_callback::onContact(
 	 * doing so keeps the actors alive long enough to return from the call to @c hit
 	 * allows the scene to release the actors safely during the call to @c hit
 	 */
-	auto actor0 = reinterpret_cast<Neb::Actor::Base*>(pxactor0->userData)->isActorBase();
-	auto actor1 = reinterpret_cast<Neb::Actor::Base*>(pxactor1->userData)->isActorBase();
+	auto actor0 = reinterpret_cast<px::core::actor::actor::Base*>(pxactor0->userData)->isActorBase();
+	auto actor1 = reinterpret_cast<px::core::actor::actor::Base*>(pxactor1->userData)->isActorBase();
 	
 	for(physx::PxU32 i=0; i < nbPairs; i++) {
 		const physx::PxContactPair& cp = pairs[i];
@@ -33,13 +33,13 @@ void	Neb::simulation_callback::onContact(
 		}
 	}
 }
-void 	Neb::simulation_callback::onWake(physx::PxActor **actors, physx::PxU32 count) {
+void 	neb::simulation_callback::onWake(physx::PxActor **actors, physx::PxU32 count) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 }
-void 	Neb::simulation_callback::onSleep(physx::PxActor **actors, physx::PxU32 count) {
+void 	neb::simulation_callback::onSleep(physx::PxActor **actors, physx::PxU32 count) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 }
-void 	Neb::simulation_callback::onTrigger(physx::PxTriggerPair *pairs, physx::PxU32 count)
+void 	neb::simulation_callback::onTrigger(physx::PxTriggerPair *pairs, physx::PxU32 count)
 {
 	printf("%s\n", __PRETTY_FUNCTION__);
 }

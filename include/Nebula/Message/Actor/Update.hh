@@ -6,7 +6,7 @@
 
 #include <Nebula/Scene/Util/Types.hh>
 
-#include <Nebula/config.hh> // gru/config.hpp.in
+//#include <Nebula/config.hh> // gru/config.hpp.in
 //#include <Nebula/master.hh>
 //#include <Nebula/Scene/desc.hh>
 //#include <Nebula/Actor/desc.hh>

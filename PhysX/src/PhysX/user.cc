@@ -6,14 +6,14 @@
 //#include <nebula/camera/camera.hpp>
 #include <Nebula/Actor/Control/RigidBody/Base.hh>
 
-Neb::User::User()
+neb::User::User()
 {}
-void	Neb::User::connect(Neb::Graphics::Window::Base_s w) {
+void	neb::User::connect(sp::shared_ptr<neb::gfx::Window::Base> w) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
 	assert(control_);
 	
-	auto control = std::dynamic_pointer_cast<Neb::Actor::Control::RigidBody::Base>(control_);
+	auto control = std::dynamic_pointer_cast<neb::Actor::Control::RigidBody::Base>(control_);
 	
 	assert(w);
 	assert(control);
@@ -22,7 +22,7 @@ void	Neb::User::connect(Neb::Graphics::Window::Base_s w) {
 	
 	
 	control->conn_.key_fun_ = w->sig_.key_fun_.connect(std::bind(
-				&Neb::Actor::Control::RigidBody::Base::key_fun,
+				&neb::Actor::Control::RigidBody::Base::key_fun,
 				control,
 				std::placeholders::_1,
 				std::placeholders::_2,
@@ -33,7 +33,7 @@ void	Neb::User::connect(Neb::Graphics::Window::Base_s w) {
 
 	//assert(control->conn_.key_fun_);
 }
-void Neb::User::set_control(Neb::Actor::Control::RigidBody::Base_s control) {
+void neb::User::set_control(sp::shared_ptr<neb::Actor::Control::RigidBody::Base> control) {
 	//NEBULA_DEBUG_0_FUNCTION;
 
 	control_ = control;

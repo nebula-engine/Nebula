@@ -14,7 +14,7 @@
 #include <math/transform.hpp>
 #include <math/geo/polyhedron.hpp>
 */
-#include <Nebula/config.hh> // Nebula/config.hpp.in
+//#include <Nebula/config.hh> // Nebula/config.hpp.in
 
 #include <Nebula/Actor/Util/Types.hh>
 #include <Nebula/Actor/Util/Cast.hh>

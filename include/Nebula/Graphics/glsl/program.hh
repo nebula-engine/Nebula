@@ -7,7 +7,7 @@
 #include <map>
 #include <vector>
 
-#include <Nebula/config.hh> // Nebula/config.hpp.in
+//#include <Nebula/config.hh> // Nebula/config.hpp.in
 #include <Nebula/Types.hh>
 #include <Nebula/Util/typedef.hpp>
 #include <Nebula/Graphics/Types.hh>
