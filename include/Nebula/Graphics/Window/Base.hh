@@ -5,7 +5,7 @@
 #include <vector>
 #include <map>
 
-#include <Nebula/config.hh>
+//#include <Nebula/config.hh>
 #include <Nebula/Types.hh>
 #include <Nebula/Core/TimeStep.hpp>
 #include <Nebula/Scene/Util/Types.hh>

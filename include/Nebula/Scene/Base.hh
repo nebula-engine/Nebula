@@ -16,7 +16,7 @@
 #include <Nebula/Scene/Util/Flag.hh>
 #include <Nebula/Scene/Util/Types.hh>
 
-#include <Nebula/config.hh> // Nebula/config.hpp.in
+//#include <Nebula/config.hh> // Nebula/config.hpp.in
 #include <Nebula/Graphics/glsl/program.hh>
 
 
