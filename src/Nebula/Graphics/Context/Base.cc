@@ -55,7 +55,7 @@ void		neb::gfx::Context::Base::render() {
 	auto app = neb::App::Base::global();
 
 	/** wrong for color maybe! */	
-	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+	//glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
 	//glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
@@ -71,9 +71,13 @@ void		neb::gfx::Context::Base::render() {
 	
 	//viewport_.load();
 
+	/** @todo move cameras to environ */
 
-	proj_->load(p);
-	view_->load(p);
+	// bad workaround!!!
+	if(drawable_->program_name_ == neb::program_name::e::LIGHT) {
+		proj_->load(p);
+		view_->load(p);
+	}
 
 	drawable_->draw(self, p);
 }		
