@@ -29,7 +29,9 @@ void		neb::gfx::Camera::Projection::Base::load(sp::shared_ptr<neb::glsl::program
 	
 	p->get_uniform_scalar("proj")->load(proj());
 }
+void		neb::gfx::Camera::Projection::Base::step(neb::core::TimeStep const & ts) {
 
+}
 
 
 neb::gfx::Camera::Projection::Perspective::Perspective(sp::shared_ptr<neb::gfx::Context::Base> context):

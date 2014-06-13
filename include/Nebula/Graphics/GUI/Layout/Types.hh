@@ -3,7 +3,7 @@
 
 namespace neb {
 	namespace gfx {
-		namespace GUI {
+		namespace gui {
 			namespace Layout {
 				namespace Util {
 					class Parent;

@@ -153,11 +153,19 @@ void neb::gfx::Window::Base::callback_window_refresh_fun(GLFWwindow*) {
 void			neb::gfx::Window::Base::step(neb::core::TimeStep const & ts) {
 	//GLUTPP_DEBUG_1_FUNCTION;
 
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
+
+
+	neb::gfx::Context::Util::Parent::step(ts);
+
+
 	if(glfwWindowShouldClose(window_)) {
 		parent_->erase(i_);
 		return;
 	}
-
+	
+	
+	
 	/** @todo wtf is this doing here?? */
 	render();
 }

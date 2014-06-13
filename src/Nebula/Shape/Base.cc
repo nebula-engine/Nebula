@@ -200,7 +200,7 @@ void					neb::Shape::Base::init_buffer(sp::shared_ptr<neb::gfx::Context::Base> c
 void		neb::Shape::Base::draw_elements(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p, mat4 space) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
 
-	mesh_.print(debug);
+	//mesh_.print(debug);
 	
 	assert(context);
 	

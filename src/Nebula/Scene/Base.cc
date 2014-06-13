@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#include <Galaxy-Log/log.hpp>
 #include <Galaxy-Network/message.hpp>
 
 #include <Nebula/Graphics/Window/Base.hh>
@@ -56,8 +57,8 @@ void neb::Scene::Base::release() {
 	GLUTPP_DEBUG_0_FUNCTION;	
 }
 void neb::Scene::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p) {
-	
-	GLUTPP_DEBUG_0_FUNCTION;
+
+	BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
 
 	//auto p = neb::App::Base::globalBase()->use_program(neb::program_name::e::LIGHT);
 	

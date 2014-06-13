@@ -14,17 +14,17 @@
 
 namespace neb {
 	namespace gfx {
-		namespace GUI {
+		namespace gui {
 			namespace Layout {
 			/** @brief %Base */
 				class Base:
 					virtual public neb::std::shared,
 					virtual public neb::gfx::Drawable::Base,
-					virtual public neb::gfx::GUI::Object::Util::Parent
+					virtual public neb::gfx::gui::object::Util::Parent
 				{
 					public:
 						Base();
-						Base(sp::shared_ptr<neb::gfx::GUI::Layout::Util::Parent> parent);
+						Base(sp::shared_ptr<neb::gfx::gui::Layout::Util::Parent> parent);
 
 						virtual void				init();
 
@@ -46,7 +46,7 @@ namespace neb {
 						glm::mat4x4					ortho_;
 
 
-						sp::shared_ptr<neb::gfx::GUI::Layout::Util::Parent>	parent_;
+						sp::shared_ptr<neb::gfx::gui::Layout::Util::Parent>	parent_;
 						// connections
 						struct
 						{

@@ -7,9 +7,9 @@
 
 namespace neb {
 	namespace gfx {
-		namespace GUI {
-			namespace Object {
-				class terminal: public neb::gfx::GUI::Object::Base {
+		namespace gui {
+			namespace object {
+				class terminal: public neb::gfx::gui::object::Base {
 					public:
 						enum
 						{
