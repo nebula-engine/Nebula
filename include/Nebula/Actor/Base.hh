@@ -45,8 +45,9 @@ namespace neb { namespace core { namespace actor {
 		virtual public neb::Shape::Util::Parent
 	{
 		public:
-
+			/** @brief default constructor */
 			Base();
+			/** @brief constructor */
 			Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent);
 			virtual ~Base();
 		public:
