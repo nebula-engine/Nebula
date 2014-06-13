@@ -5,6 +5,7 @@
 
 namespace neb {
 	namespace App {
+		/** @brief %base */
 		class __base {
 			public:
 				virtual void					init();
