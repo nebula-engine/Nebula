@@ -16,7 +16,10 @@ namespace neb {
 					 *
 					 * draw into prepared rendering context
 					 */
-					virtual void            draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p) = 0;
+					virtual void				draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p) = 0;
+
+
+					neb::program_name::e			program_name_;
 			};     
 		}
 	}

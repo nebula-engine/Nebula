@@ -49,9 +49,12 @@ void		neb::gfx::Context::Base::render() {
 
 	GLUTPP_DEBUG_1_FUNCTION;
 
+	if(!drawable_) return;
+
 	auto self = sp::dynamic_pointer_cast<neb::gfx::Context::Base>(shared_from_this());
 	auto app = neb::App::Base::global();
 
+	/** wrong for color maybe! */	
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
 	//glEnable(GL_CULL_FACE);
@@ -59,18 +62,20 @@ void		neb::gfx::Context::Base::render() {
 
 	assert(proj_);
 	assert(view_);
-
-	/** wrong! */	
-	auto p = app->use_program(neb::program_name::e::LIGHT);
-
+	
+	// get program choice from drawable
+	/** @todo replace with 'environ' which determines program and camera types and accepts certian types of drawables */
+	
+	//auto p = app->use_program(neb::program_name::e::LIGHT);
+	auto p = app->use_program(drawable_->program_name_);
+	
 	//viewport_.load();
+
 
 	proj_->load(p);
 	view_->load(p);
 
-	if(drawable_) {
-		drawable_->draw(self, p);
-	}
+	drawable_->draw(self, p);
 }		
 
 

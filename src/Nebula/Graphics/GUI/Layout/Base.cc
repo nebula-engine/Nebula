@@ -17,6 +17,9 @@
 neb::gfx::gui::Layout::Base::Base() {
 }
 neb::gfx::gui::Layout::Base::Base(sp::shared_ptr<neb::gfx::gui::Layout::Util::Parent> parent): parent_(parent) {
+
+	program_name_ = neb::program_name::e::TEXT;
+
 }
 void neb::gfx::gui::Layout::Base::init() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
