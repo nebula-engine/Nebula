@@ -5,15 +5,25 @@
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/GUI/Object/terminal.hh>
 
+void		neb::gfx::gui::object::terminal::init() {
+
+	neb::gfx::gui::object::Base::init();
+
+	auto app = neb::App::Base::global();
+
+	cs_ = app->command_set_;
+	
+	assert(cs_);
+}
 void		neb::gfx::gui::object::terminal::draw(sp::shared_ptr<neb::glsl::program> p) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
-	
+
 	if(!flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) return;
-	
+
 	float sx = 1.0/ 600.0;
 	float sy = 1.0/ 600.0;
-	
+
 	//draw_quad(x_, y_, w_, h_, bg_color_);
 
 	float y = y_ + 0.5;
@@ -79,7 +89,7 @@ int			neb::gfx::gui::object::terminal::key_fun(
 			case GLFW_KEY_Y:
 			case GLFW_KEY_Z:
 				if(flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
-					line_.push_back(k);
+					operator<<(k);
 					return 1;
 				}
 				break;
@@ -94,7 +104,7 @@ int			neb::gfx::gui::object::terminal::key_fun(
 			case GLFW_KEY_8:
 			case GLFW_KEY_9:
 				if(flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
-					line_.push_back(k_num);
+					operator<<(k_num);
 					return 1;
 				}
 			case GLFW_KEY_ENTER:
@@ -109,23 +119,7 @@ int			neb::gfx::gui::object::terminal::key_fun(
 
 	return 0;
 }
-int neb::gfx::gui::object::terminal::enter() {
 
-	auto self = sp::dynamic_pointer_cast<neb::gfx::gui::object::terminal>(shared_from_this());
-
-	lines_.push_back("$ " + line_);
-	
-	neb::App::Base::global()->command(self, line_);
-
-	
-	line_.clear();
-	
-	while(lines_.size() > max_line_count) {
-		lines_.pop_front();
-	}
-	
-	return 1;
-}
 
 
 
