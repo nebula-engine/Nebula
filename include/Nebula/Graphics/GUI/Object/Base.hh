@@ -20,7 +20,7 @@ namespace neb {
 						Base();
 						virtual ~Base() {}
 
-						void				init();
+						virtual void			init();
 						//sp::shared_ptr<window::window>		get_window();
 						virtual void			draw(sp::shared_ptr<neb::glsl::program> p) = 0;
 
