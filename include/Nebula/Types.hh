@@ -23,6 +23,20 @@ namespace neb {
 		class client;
 		class communicating;
 	}
+
+	/** @brief %util */
+	namespace util {
+		struct terminal;
+		struct command;
+		struct command_set;
+	}
 }
 
 #endif
+
+
+
+
+
+
+
