@@ -29,6 +29,7 @@
 #include <Nebula/Message/Actor/Event/Base.hh>
 #include <Nebula/Scene/Base.hh>
 #include <Nebula/Util/command.hpp>
+#include <Nebula/Util/command_set.hpp>
 
 /** @todo since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers.
  * to avoid unwanted shared_ptrs to owned objects, care must be taken when passing these objects around.
@@ -59,6 +60,31 @@ void				neb::App::Base::init() {
 		exit(0);
 	}
 	//NEBULA_DEBUG_0_FUNCTION;
+
+
+
+
+
+
+	// command set
+	
+	command_set_ = sp::make_shared<neb::util::command_set>();
+
+	command_set_->init();	
+	
+	// exit command
+	
+	auto cmd_exit = sp::make_shared<neb::util::command>();
+
+	cmd_exit->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
+		sp::shared_ptr<neb::App::Base> app = neb::App::Base::global();
+		app->flag_.set(neb::App::Util::Flag::SHOULD_RELEASE);
+	};
+
+	command_set_->map_["exit"] = cmd_exit;
+	
+	
+
 }
 void				neb::App::Base::init_glew() {
 	if(!flag_.any(neb::App::Util::Flag::INIT_GLEW)) {
@@ -166,7 +192,7 @@ sp::shared_ptr<neb::gfx::Window::Base>		neb::App::Base::get_window(GLFWwindow* w
 
 
 
-void		neb::App::Base::command(sp::shared_ptr<neb::gfx::gui::object::terminal> term, ::std::string str) {
+/*void		neb::App::Base::command(sp::shared_ptr<neb::gfx::gui::object::terminal> term, ::std::string str) {
 
 	// split
 	
@@ -201,15 +227,7 @@ void		neb::App::Base::command(sp::shared_ptr<neb::gfx::gui::object::terminal> te
 	};
 	
 	// a way out
-	auto cmd_exit = sp::make_shared<neb::util::command>();
 
-	cmd_exit->func_ = [&] (sp::shared_ptr<neb::gfx::gui::object::terminal> term, bpo::variables_map vm) {
-		sp::shared_ptr<neb::App::Base> app = neb::App::Base::global();
-		app->flag_.set(neb::App::Util::Flag::SHOULD_RELEASE);
-	};
-
-	m["help"] = help;
-	m["exit"] = cmd_exit;
 	
 	// find command
 	auto it = m.find(tokens.front());
@@ -220,7 +238,7 @@ void		neb::App::Base::command(sp::shared_ptr<neb::gfx::gui::object::terminal> te
 		term->lines_.push_back(tokens.front() + ": Command not found.");
 	}
 	
-}
+}*/
 
 void		neb::App::Base::loadXml(::std::string filename, neb::std::wrapper& w) {
 	::std::ifstream ifs;
