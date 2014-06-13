@@ -16,16 +16,6 @@ namespace neb {
 				 */
 				class Free: public neb::gfx::Camera::View::Base {
 					public:
-						/** @brief Map. */
-						struct Flag {
-							enum E {
-								NORTH = 1<<0,
-								SOUTH = 1<<1,
-								EAST = 1<<2,
-								WEST = 1<<3
-							};
-						};
-
 						/** @name constructors
 						 * @{
 						 */
@@ -38,7 +28,23 @@ namespace neb {
 						virtual void					step(neb::core::TimeStep const & ts);
 
 						void						init();
+						
 
+
+						virtual void						connect(
+								sp::shared_ptr<neb::gfx::Window::Base> const & window);
+						int						key_fun(
+								sp::shared_ptr<neb::gfx::Window::Base> const & window,
+								int key,
+								int scancode,
+								int action,
+								int mods);
+
+
+						vec3						move();
+
+			
+						
 						float						pitch_;
 						float						yaw_;
 
@@ -47,8 +53,19 @@ namespace neb {
 						vec3						look_;
 						vec3						up_;
 
-						vec3						v0_;
-						vec3						v1_;
+
+
+						int						key_n_;
+						int						key_s_;
+						int						key_e_;
+						int						key_w_;
+						int						key_u_;
+						int						key_d_;
+
+
+
+						//						vec3						v0_;
+						//						vec3						v1_;
 
 						//std::vector<gal::sig::connection<>*>		vec_x_;
 						//std::vector<gal::sig::connection<>*>		vec_y_;

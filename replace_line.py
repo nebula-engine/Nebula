@@ -25,13 +25,19 @@ def replace(filename):
 	text = re.sub("([\w:]+)_s([\s\),])","sp::shared_ptr<\\1>\\2",text)
 	#text = re.sub("neb::Actor","neb::core::Actor",text)
 	#text = re.sub("namespace Actor","namespace actor",text)
-	text = re.sub("Neb::","neb::",text)
+	
+        text = re.sub("namespace GUI","namespace gui",text)
+        text = re.sub("namespace Object","namespace object",text)
+
+        
+        text = re.sub("Neb::","neb::",text)
 	text = re.sub("neb::Graphics::","neb::gfx::",text)
 	text = re.sub("neb::Core::","neb::core::",text)
 	text = re.sub("neb::core::actor::Actor","neb::core::actor::actor",text)
-	
-
-
+        text = re.sub("neb::gfx::GUI::","neb::gfx::gui::",text)
+        text = re.sub("neb::gfx::gui::Object::","neb::gfx::gui::object::",text)
+        
+        
 	
 	if(text != otext):
 		print filename

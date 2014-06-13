@@ -5,30 +5,32 @@
 #include <Nebula/App/Base.hh>
 #include <Nebula/Graphics/GUI/Object/terminal.hh>
 
-void		neb::gfx::GUI::Object::terminal::draw(sp::shared_ptr<neb::glsl::program> p) {
-	
+void		neb::gfx::gui::object::terminal::draw(sp::shared_ptr<neb::glsl::program> p) {
+
 	printf("%s\n",__PRETTY_FUNCTION__);
+	
+	if(!flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) return;
 	
 	float sx = 1.0/ 600.0;
 	float sy = 1.0/ 600.0;
 	
 	//draw_quad(x_, y_, w_, h_, bg_color_);
-	
+
 	float y = y_ + 0.5;
 	float line_height = 0.1;
-	
+
 	for(auto l : lines_) {
 		l = "$ " + l;
 		draw_text(p, x_, y, sx, sy, font_color_, l.c_str());
 		y -= line_height;
 	}
-	
+
 	::std::string line = "$ " + line_;
 
 	draw_text(p, x_, y, sx, sy, font_color_, line.c_str());
-	
+
 }
-int			neb::gfx::GUI::Object::terminal::key_fun(
+int			neb::gfx::gui::object::terminal::key_fun(
 		sp::shared_ptr<neb::gfx::Window::Base> const & window,
 		int key,
 		int scancode,
@@ -36,15 +38,21 @@ int			neb::gfx::GUI::Object::terminal::key_fun(
 		int mods)
 {
 	printf("%s\n",__PRETTY_FUNCTION__);
-	
+
 	char k =	'a' - GLFW_KEY_A + key;
 	char k_num =	'0' - GLFW_KEY_0 + key;
-	
+
 	if(action == GLFW_PRESS) {
 		switch(key) {
-			case GLFW_KEY_BACKSPACE:
-				line_.pop_back();
+			case GLFW_KEY_ESCAPE:
+				flag_.toggle(neb::gfx::gui::object::util::flag::ENABLED);
 				return 1;
+			case GLFW_KEY_BACKSPACE:
+				if(!line_.empty() && flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
+					line_.pop_back();
+					return 1;
+				}
+				break;
 			case GLFW_KEY_A:
 			case GLFW_KEY_B:
 			case GLFW_KEY_C:
@@ -71,8 +79,11 @@ int			neb::gfx::GUI::Object::terminal::key_fun(
 			case GLFW_KEY_X:
 			case GLFW_KEY_Y:
 			case GLFW_KEY_Z:
-				line_.push_back(k);
-				return 1;
+				if(flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
+					line_.push_back(k);
+					return 1;
+				}
+				break;
 			case GLFW_KEY_0:
 			case GLFW_KEY_1:
 			case GLFW_KEY_2:
@@ -83,10 +94,15 @@ int			neb::gfx::GUI::Object::terminal::key_fun(
 			case GLFW_KEY_7:
 			case GLFW_KEY_8:
 			case GLFW_KEY_9:
-				line_.push_back(k_num);
-				return 1;
+				if(flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
+					line_.push_back(k_num);
+					return 1;
+				}
 			case GLFW_KEY_ENTER:
-				return enter();
+				if(flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
+					return enter();
+				}
+				break;
 			default:
 				return 0;
 		}
@@ -94,9 +110,9 @@ int			neb::gfx::GUI::Object::terminal::key_fun(
 
 	return 0;
 }
-int neb::gfx::GUI::Object::terminal::enter() {
+int neb::gfx::gui::object::terminal::enter() {
 
-	auto self = sp::dynamic_pointer_cast<neb::gfx::GUI::Object::terminal>(shared_from_this());
+	auto self = sp::dynamic_pointer_cast<neb::gfx::gui::object::terminal>(shared_from_this());
 
 	neb::App::Base::global()->command(self, line_);
 

@@ -22,7 +22,18 @@
 void		neb::init() {
 
 	gal::log::min_severity["neb"] = debug;
-	gal::log::min_severity["neb gfx"] = debug;	
+
+	gal::log::min_severity["neb core scene"] = info;
+	gal::log::min_severity["neb core actor"] = info;
+	gal::log::min_severity["neb core shape"] = info;
+	gal::log::min_severity["neb core light"] = info;
+
+	gal::log::min_severity["neb gfx"] = info;
+	gal::log::min_severity["neb gfx window"] = debug;
+	gal::log::min_severity["neb gfx context"] = debug;
+
+	gal::log::min_severity["neb gfx camera view"] = debug;
+
 	gal::log::init();
 	
 	neb::App::Base::g_app_ = sp::make_shared<neb::App::Base>();

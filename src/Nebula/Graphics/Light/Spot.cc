@@ -1,3 +1,5 @@
+#include <Galaxy-Log/log.hpp>
+
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <Nebula/App/Base.hh>
@@ -12,8 +14,9 @@ neb::Light::Point::Point(sp::shared_ptr<neb::Light::Util::Parent> parent):
 
 {}
 void		neb::Light::Point::load(neb::core::light::util::count & light_count, mat4 space) {
-	GLUTPP_DEBUG_1_FUNCTION;
 	
+	BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
+
 	neb::Light::Base::load(light_count.point, space);
 	
 	auto p = neb::App::Base::global()->current_program();

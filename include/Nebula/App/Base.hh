@@ -50,7 +50,7 @@ namespace neb {
 				Base();
 				virtual ~Base();
 			public:
-				void						command(sp::shared_ptr<neb::gfx::GUI::Object::terminal> term, ::std::string);
+				void						command(sp::shared_ptr<neb::gfx::gui::object::terminal> term, ::std::string);
 			public:
 				mat4						getPose();
 				mat4						getPoseGlobal();

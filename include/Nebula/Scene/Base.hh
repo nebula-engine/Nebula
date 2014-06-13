@@ -23,7 +23,7 @@
 //#include <Nebula/Actor/Base.hh>
 #include <Nebula/Actor/Util/Parent.hh>
 
-#include <Nebula/Graphics/Camera/View/Base.hh>
+//#include <Nebula/Graphics/Camera/View/Base.hh>
 #include <Nebula/Graphics/Drawable/Base.hpp>
 
 
