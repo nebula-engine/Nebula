@@ -141,7 +141,7 @@ int main() {
 
 	// context
 	auto context1 = create_context(window);
-	//auto context2 = create_context(window);
+	auto context2 = create_context(window);
 
 	// drawable
 	// scene
@@ -153,7 +153,7 @@ int main() {
 	auto scene = create_scene(context1);
 
 
-	//auto layout = create_layout(window, context2);
+	auto layout = create_layout(window, context2);
 
 	// loop
 
