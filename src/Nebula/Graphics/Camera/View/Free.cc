@@ -58,6 +58,7 @@ void			neb::gfx::Camera::View::Free::connect(sp::shared_ptr<neb::gfx::Window::Ba
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", info) << __PRETTY_FUNCTION__;
 
 	/*conns_.key_fun_ =*/ window->sig_.key_fun_.connect(
+			20,
 			::std::bind(&neb::gfx::Camera::View::Free::key_fun,
 				this,
 				::std::placeholders::_1,
@@ -66,16 +67,16 @@ void			neb::gfx::Camera::View::Free::connect(sp::shared_ptr<neb::gfx::Window::Ba
 				::std::placeholders::_4,
 				::std::placeholders::_5
 				));
-	
-/*	conns_.mouse_button_fun_ = window->sig_.mouse_button_fun_.connect(
-			::std::bind(&neb::gfx::gui::Layout::Base::mouse_button_fun,
-				this,
-				::std::placeholders::_1,
-				::std::placeholders::_2,
-				::std::placeholders::_3,
-				::std::placeholders::_4
-				));
-				*/
+
+	/*	conns_.mouse_button_fun_ = window->sig_.mouse_button_fun_.connect(
+		::std::bind(&neb::gfx::gui::Layout::Base::mouse_button_fun,
+		this,
+		::std::placeholders::_1,
+		::std::placeholders::_2,
+		::std::placeholders::_3,
+		::std::placeholders::_4
+		));
+	 */
 
 }
 int			neb::gfx::Camera::View::Free::key_fun(
@@ -86,7 +87,7 @@ int			neb::gfx::Camera::View::Free::key_fun(
 		int mods)
 {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
-	
+
 
 	if(action == GLFW_PRESS) {
 		if(key == key_w_) {
@@ -172,8 +173,8 @@ void			neb::gfx::Camera::View::Free::step(neb::core::TimeStep const & ts) {
 
 	// rotate velocity by camera yaw
 	quat q(yaw_,y);
-	
-	
+
+
 	vec3 v(move());
 	v *= ts.dt;
 	v *= 1.0;
@@ -186,9 +187,9 @@ void			neb::gfx::Camera::View::Free::step(neb::core::TimeStep const & ts) {
 vec3			neb::gfx::Camera::View::Free::move() {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
 
-//	vec3 mov = vec3(0,0,-1) * north_ + vec3(1,0,0) * east_;
+	//	vec3 mov = vec3(0,0,-1) * north_ + vec3(1,0,0) * east_;
 
-//	return mov;
+	//	return mov;
 
 	vec3 mov(0);
 
@@ -198,7 +199,7 @@ vec3			neb::gfx::Camera::View::Free::move() {
 			neb::gfx::camera::view::util::flag::SOUTH |
 			neb::gfx::camera::view::util::flag::EAST |
 			neb::gfx::camera::view::util::flag::WEST |
-		       	neb::gfx::camera::view::util::flag::UP |
+			neb::gfx::camera::view::util::flag::UP |
 			neb::gfx::camera::view::util::flag::DOWN);
 
 	// find vector for move flag
