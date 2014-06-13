@@ -20,7 +20,6 @@ void		neb::gfx::gui::object::terminal::draw(sp::shared_ptr<neb::glsl::program> p
 	float line_height = 0.1;
 
 	for(auto l : lines_) {
-		l = "$ " + l;
 		draw_text(p, x_, y, sx, sy, font_color_, l.c_str());
 		y -= line_height;
 	}
@@ -114,16 +113,17 @@ int neb::gfx::gui::object::terminal::enter() {
 
 	auto self = sp::dynamic_pointer_cast<neb::gfx::gui::object::terminal>(shared_from_this());
 
+	lines_.push_back("$ " + line_);
+	
 	neb::App::Base::global()->command(self, line_);
 
-	//lines_.push_back(line_);
+	
 	line_.clear();
-
-	if(lines_.size() > max_line_count)
-	{
+	
+	while(lines_.size() > max_line_count) {
 		lines_.pop_front();
 	}
-
+	
 	return 1;
 }
 
