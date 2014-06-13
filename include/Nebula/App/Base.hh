@@ -82,13 +82,9 @@ namespace neb {
 				/** @todo make derived App classes for Server and Client??? */
 				neb::App::Util::Flag						flag_;
 
-			public:
-				/** @name Font @{ */
-				/** @} */
-				/** @name Boost Asio @{ */
-							/** @} */
+				
 
-
+				sp::shared_ptr<neb::util::command_set>				command_set_;
 		};
 	}
 }

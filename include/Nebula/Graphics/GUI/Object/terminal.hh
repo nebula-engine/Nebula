@@ -3,38 +3,38 @@
 
 #include <deque>
 
+#include <Nebula/Util/terminal.hpp>
 #include <Nebula/Graphics/GUI/Object/Base.hh>
 
-namespace neb {
-	namespace gfx {
-		namespace gui {
-			namespace object {
-				class terminal: public neb::gfx::gui::object::Base {
-					public:
-						enum
-						{
-							max_line_count = 10
-						};
-
-						//terminal();
-						virtual void		draw(sp::shared_ptr<neb::glsl::program> p);
-						//virtual void		connect();
+namespace neb {	namespace gfx {	namespace gui {	namespace object {
 
 
-						virtual int		key_fun(
-								sp::shared_ptr<neb::gfx::Window::Base> const & window, int,int,int,int);
+	class terminal:
+		virtual public neb::gfx::gui::object::Base,
+		virtual public neb::util::terminal
+	{
+		public:
+			enum
+			{
+				max_line_count = 10
+			};
+
+			//terminal();
+
+			virtual void		init();
+
+			virtual void		draw(sp::shared_ptr<neb::glsl::program> p);
+			//virtual void		connect();
 
 
-						virtual int		enter();
-					public:
-						::std::deque< ::std::string >		lines_;
-						::std::string				line_;
+			virtual int		key_fun(
+					sp::shared_ptr<neb::gfx::Window::Base> const & window, int,int,int,int);
 
-				};
-			}
-		}
-	}
-}
+	};
+
+
+
+}}}}
 
 #endif
 
