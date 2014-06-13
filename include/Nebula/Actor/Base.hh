@@ -11,7 +11,7 @@
 
 //#include <PxPhysicsAPI.h>
 
-#include <Nebula/config.hh> // Nebula/config.hpp.in
+//#include <Nebula/config.hh> // Nebula/config.hpp.in
 //#include <Nebula/Actor/Util/desc.hh>
 
 //#include <Nebula/Math/Serialization.hh>

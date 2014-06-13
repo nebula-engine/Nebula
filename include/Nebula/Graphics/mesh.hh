@@ -22,7 +22,7 @@
 
 #include <Nebula/Math/geo/decl.hpp>
 
-#include <Nebula/config.hh>
+//#include <Nebula/config.hh>
 #include <Nebula/Graphics/material.hh>
 
 

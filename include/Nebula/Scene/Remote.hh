@@ -11,7 +11,7 @@
 
 #include <Nebula/Scene/Base.hh>
 
-#include <Nebula/config.hh> // Nebula/config.hpp.in
+//#include <Nebula/config.hh> // Nebula/config.hpp.in
 #include <Nebula/Graphics/glsl/program.hh>
 
 
