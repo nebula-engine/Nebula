@@ -137,6 +137,10 @@ void		neb::gfx::Window::Base::render() {
 
 	/** @todo rendering multiple contexts in a window */
 
+	
+	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+	
+	
 	typedef neb::gfx::Context::Util::Parent C;
 
 	C::map_.for_each<0>([] (C::map_type::iterator<0> it) {
