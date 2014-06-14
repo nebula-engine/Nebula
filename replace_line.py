@@ -30,8 +30,17 @@ def replace(filename):
 	text = re.sub("class Local","class local",text)
 	text = re.sub("::Local","::local",text)
 
+
+	text = re.sub("namespace RigidActor","namespace rigidactor",text)
+	text = re.sub("neb::core::actor::RigidActor","neb::core::actor::rigidactor",text)
+
+	text = re.sub("namespace RigidBody","namespace rigidbody",text)
+	text = re.sub("neb::core::actor::RigidBody","neb::core::actor::rigidbody",text)
+
 	text = re.sub("namespace RigidDynamic","namespace rigiddynamic",text)
 	text = re.sub("neb::core::actor::RigidDynamic","neb::core::actor::rigiddynamic",text)
+
+
 
         text = re.sub("namespace GUI","namespace gui",text)
         text = re.sub("namespace Object","namespace object",text)

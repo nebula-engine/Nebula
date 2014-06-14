@@ -1,11 +1,12 @@
-#ifndef __PX_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
-#define __PX_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
+#ifndef __PX_CONTENT_ACTOR_RIGIDACTOR_LOCAL_HPP__
+#define __PX_CONTENT_ACTOR_RIGIDACTOR_LOCAL_HPP__
 
 #include <PxPhysicsAPI.h>
 
 #include <Nebula/Actor/Actor/Base.hh>
 
-#include <PhysX/core/actor/base.hpp>
+#include <PhysX/core/actor/actor/local.hpp>
+#include <PhysX/core/actor/rigidactor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
 
 namespace px { namespace core { namespace actor { namespace rigidactor {
@@ -19,7 +20,7 @@ namespace px { namespace core { namespace actor { namespace rigidactor {
 	{
 
 		public:
-			base(sp::shared_ptr<neb::core::actor::Util::Parent>);
+			local(sp::shared_ptr<neb::core::actor::Util::Parent>);
 
 			virtual void					init();
 			virtual void					release();

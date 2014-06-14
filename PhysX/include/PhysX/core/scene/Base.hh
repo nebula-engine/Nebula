@@ -11,6 +11,7 @@
 
 #include <Nebula/Types.hh>
 #include <Nebula/Util/typedef.hpp>
+#include <Nebula/Math/Serialization/GLM.hpp>
 
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>

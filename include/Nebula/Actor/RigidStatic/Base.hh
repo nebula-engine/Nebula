@@ -7,7 +7,7 @@ namespace neb { namespace core { namespace actor {
 		
 
 	namespace RigidStatic {
-		class Base: public neb::core::actor::RigidActor::Base {
+		class Base: public neb::core::actor::rigidactor::Base {
 			public:
 				Base();
 				Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent);

@@ -7,9 +7,9 @@
 namespace neb { namespace core { namespace actor {
 		
 
-namespace RigidActor {
+namespace rigidactor {
 			class Remote:
-				virtual public neb::core::actor::RigidActor::Base,
+				virtual public neb::core::actor::rigidactor::Base,
 				virtual public neb::core::actor::actor::Remote
 			{
 				public:
