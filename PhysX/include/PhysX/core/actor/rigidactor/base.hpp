@@ -5,7 +5,7 @@
 
 #include <Nebula/Actor/Actor/Base.hh>
 
-#include <PhysX/core/actor/base.hpp>
+#include <PhysX/core/actor/actor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
 
 namespace px { namespace core { namespace actor { namespace rigidactor {
@@ -13,12 +13,12 @@ namespace px { namespace core { namespace actor { namespace rigidactor {
 
 
 	class base:
-		virtual public neb::core::actor::rigidactor::Base,
+		virtual public neb::core::actor::rigidactor::base,
 		virtual public px::core::actor::actor::base
 	{
 
 		public:
-			base(sp::shared_ptr<neb::core::actor::Util::Parent>);
+			base(sp::shared_ptr<neb::core::actor::util::parent>);
 
 			virtual void					init();
 			virtual void					release();

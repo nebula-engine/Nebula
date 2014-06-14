@@ -3,9 +3,9 @@
 
 
 namespace neb {
-	namespace Shape {
+	namespace shape {
 		namespace Event {
-			class Base {
+			class base {
 				public:
 			};
 		}

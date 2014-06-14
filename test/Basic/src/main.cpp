@@ -6,11 +6,11 @@
 
 int main() {
 	
-	typedef neb::Actor::Base A;
+	typedef neb::Actor::base A;
 	
 	neb::std::wrapper wrap;
 	
-	auto app = neb::App::Base::globalBase();
+	auto app = neb::App::base::globalBase();
 	
 	
 }

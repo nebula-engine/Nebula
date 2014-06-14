@@ -15,7 +15,7 @@
 
 namespace neb {
 	namespace gfx {
-		namespace Context {
+		namespace context {
 			/** @brief Context
 			 *
 			 * A context with an OpenGL FBO as target.
@@ -23,7 +23,7 @@ namespace neb {
 			 * @todo allow for manual ordering of context objects in parent's context map
 			 * such that things like layouts are render ON TOP of existing scene.'
 			 */
-			class FBO: public neb::gfx::Context::Base {
+			class FBO: public neb::gfx::context::base {
 				public:
 			};
 		}

@@ -1,24 +1,28 @@
+
 #include <Nebula/debug.hh>
 #include <Nebula/Shape/Base.hh>
-#include <Nebula/Physics.hh>
-#include <Nebula/Actor/RigidDynamic/Base.hh>
+//#include <Nebula/Physics.hh>
+#include <PhysX/core/actor/rigiddynamic/base.hpp>
 
-neb::core::actor::rigiddynamic::Base::Base() {
-}
-neb::core::actor::rigiddynamic::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent):
-	neb::core::actor::rigidbody::Base(parent)
+px::core::actor::rigiddynamic::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+	neb::core::actor::base(parent),
+	neb::core::actor::rigiddynamic::base(parent),
+	px::core::actor::base(parent),
+	px::core::actor::actor::base(parent),
+	px::core::actor::rigidactor::base(parent),
+	px::core::actor::rigidbody::base(parent)
 {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-void		neb::core::actor::rigiddynamic::Base::init() {
+void			px::core::actor::rigiddynamic::base::init() {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	neb::core::actor::rigidbody::Base::init();
+	neb::core::actor::rigidbody::base::init();
 	
 	auto pxrd = px_actor_->isRigidDynamic();
 	pxrd->setLinearDamping(0.01);
 }
-void neb::core::actor::rigiddynamic::Base::create_physics() {
+void			px::core::actor::rigiddynamic::base::create_physics() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	assert(px_actor_ == NULL);
@@ -48,7 +52,7 @@ void neb::core::actor::rigiddynamic::Base::create_physics() {
 	scene->px_scene_->addActor(*px_rigid_dynamic);
 
 }
-void neb::core::actor::rigiddynamic::Base::init_physics() {
+void			px::core::actor::rigiddynamic::base::init_physics() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
 	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();

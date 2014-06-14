@@ -37,14 +37,14 @@
  * should be treated.
  */
 
-sp::shared_ptr<neb::App::Base>	neb::App::Base::g_app_;
+sp::shared_ptr<neb::App::base>	neb::App::base::g_app_;
 
 
-neb::App::Base::Base() {
+neb::App::base::base() {
 }
-neb::App::Base::~Base() {
+neb::App::base::~Base() {
 }
-void				neb::App::Base::init() {
+void				neb::App::base::init() {
 
 	glfwInit();
 
@@ -77,8 +77,8 @@ void				neb::App::Base::init() {
 	auto cmd_exit = sp::make_shared<neb::util::command>();
 
 	cmd_exit->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
-		sp::shared_ptr<neb::App::Base> app = neb::App::Base::global();
-		app->flag_.set(neb::App::Util::Flag::SHOULD_RELEASE);
+		sp::shared_ptr<neb::App::base> app = neb::App::base::global();
+		app->flag_.set(neb::App::util::Flag::SHOULD_RELEASE);
 	};
 
 	command_set_->map_["exit"] = cmd_exit;
@@ -86,8 +86,8 @@ void				neb::App::Base::init() {
 	
 
 }
-void				neb::App::Base::init_glew() {
-	if(!flag_.any(neb::App::Util::Flag::INIT_GLEW)) {
+void				neb::App::base::init_glew() {
+	if(!flag_.any(neb::App::util::Flag::INIT_GLEW)) {
 
 		GLenum err = glewInit();
 		if (err != GLEW_OK)
@@ -96,35 +96,35 @@ void				neb::App::Base::init_glew() {
 			exit(EXIT_FAILURE);
 		}
 
-		flag_.set(neb::App::Util::Flag::INIT_GLEW);
+		flag_.set(neb::App::util::Flag::INIT_GLEW);
 	}
 }
-sp::shared_ptr<neb::App::Base>		neb::App::Base::global() {
-	//sp::shared_ptr<neb::App::Base> shared = std::dynamic_pointer_cast<neb::App::Base>(g_app_);
+sp::shared_ptr<neb::App::base>		neb::App::base::global() {
+	//sp::shared_ptr<neb::App::base> shared = std::dynamic_pointer_cast<neb::App::base>(g_app_);
 	assert(g_app_);
 	return g_app_;
 }
-void		neb::App::Base::step(neb::core::TimeStep const & ts) {
+void		neb::App::base::step(neb::core::TimeStep const & ts) {
 	//NEBULA_DEBUG_1_FUNCTION;
 
-	neb::Scene::Util::Parent::step(ts);
+	neb::Scene::util::parent::step(ts);
 
-	neb::gfx::Window::Util::Parent::step(ts);
+	neb::gfx::window::util::parent::step(ts);
 
 
 }
-mat4			neb::App::Base::getPose() {
+mat4			neb::App::base::getPose() {
 	return mat4();
 }
-mat4			neb::App::Base::getPoseGlobal() {
+mat4			neb::App::base::getPoseGlobal() {
 	return mat4();
 }
-int			neb::App::Base::loop() {
+int			neb::App::base::loop() {
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	static neb::core::TimeStep ts;
 
-	while(!flag_.any(neb::App::Util::Flag::E::SHOULD_RELEASE)) {
+	while(!flag_.any(neb::App::util::Flag::E::SHOULD_RELEASE)) {
 		ts.time = glfwGetTime();
 		ts.dt = ts.time - ts.last;
 		ts.last = ts.time;
@@ -141,15 +141,15 @@ int			neb::App::Base::loop() {
 
 	return 0;
 }
-void		neb::App::Base::transmit_scenes(sp::shared_ptr<neb::Network::Communicating> c) {
+void		neb::App::base::transmit_scenes(sp::shared_ptr<neb::Network::Communicating> c) {
 	//NEBULA_DEBUG_0_FUNCTION;
 
 	assert(c);
 
-	typedef neb::Scene::Util::Parent S;
+	typedef neb::Scene::util::parent S;
 
 	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
-			auto scene = sp::dynamic_pointer_cast<neb::Scene::Base>(it->ptr_);
+			auto scene = sp::dynamic_pointer_cast<neb::Scene::base>(it->ptr_);
 			assert(scene);
 
 			auto msg = sp::make_shared<gal::net::omessage>();
@@ -167,8 +167,8 @@ void		neb::App::Base::transmit_scenes(sp::shared_ptr<neb::Network::Communicating
 
 
 
-/*sp::shared_ptr<neb::gfx::Window::Base>		neb::App::Base::Main_Window() {
-  sp::shared_ptr<neb::gfx::Window::Base> w;
+/*sp::shared_ptr<neb::gfx::window::base>		neb::App::base::Main_Window() {
+  sp::shared_ptr<neb::gfx::window::base> w;
 
   if(!window_main_.expired())
   {
@@ -178,11 +178,11 @@ void		neb::App::Base::transmit_scenes(sp::shared_ptr<neb::Network::Communicating
 
   return w;
   }
-  void neb::App::Base::Main_Window(sp::shared_ptr<neb::gfx::Window::Base> w) {
+  void neb::App::base::Main_Window(sp::shared_ptr<neb::gfx::window::base> w) {
   assert(w);
   window_main_ = w;
   }*/
-sp::shared_ptr<neb::gfx::Window::Base>		neb::App::Base::get_window(GLFWwindow* window) {
+sp::shared_ptr<neb::gfx::window::base>		neb::App::base::get_window(GLFWwindow* window) {
 	auto it = windows_glfw_.find(window);
 
 	assert(it != windows_glfw_.end());
@@ -192,7 +192,7 @@ sp::shared_ptr<neb::gfx::Window::Base>		neb::App::Base::get_window(GLFWwindow* w
 
 
 
-/*void		neb::App::Base::command(sp::shared_ptr<neb::gfx::gui::object::terminal> term, ::std::string str) {
+/*void		neb::App::base::command(sp::shared_ptr<neb::gfx::gui::object::terminal> term, ::std::string str) {
 
 	// split
 	
@@ -240,7 +240,7 @@ sp::shared_ptr<neb::gfx::Window::Base>		neb::App::Base::get_window(GLFWwindow* w
 	
 }*/
 
-void		neb::App::Base::loadXml(::std::string filename, neb::std::wrapper& w) {
+void		neb::App::base::loadXml(::std::string filename, neb::std::wrapper& w) {
 	::std::ifstream ifs;
 	
 	ifs.open(filename, ::std::ifstream::in);

@@ -3,7 +3,7 @@
 
 namespace neb { namespace core {
 	namespace actor {
-		namespace Util {
+		namespace util {
 			DEFINE_FLAG(Flag,
 					((SHOULD_UPDATE)(1 << 1))
 					((DESTRUCTIBLE)(1 << 2))

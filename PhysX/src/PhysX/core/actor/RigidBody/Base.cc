@@ -13,19 +13,18 @@
 #include <Nebula/Actor/RigidDynamic/Local.hh>
 
 
-neb::core::actor::rigidbody::Base::Base() {}
-neb::core::actor::rigidbody::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent):
-	neb::core::actor::rigidactor::Base(parent),
-	force_(0.0,0.0,0.0),
-	torque_(0.0,0.0,0.0)
+//neb::core::actor::rigidbody::base::base() {}
+neb::core::actor::rigidbody::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+	neb::core::actor::base(parent),
+	neb::core::actor::rigidactor::base(parent)
 {}
-void		neb::core::actor::rigidbody::Base::init() {
+void		neb::core::actor::rigidbody::base::init() {
 	NEBULA_ACTOR_BASE_FUNC;
-	
-	neb::core::actor::rigidactor::Base::init();
+
+	neb::core::actor::rigidactor::base::init();
 }
-void		neb::core::actor::rigidbody::Base::step(neb::core::TimeStep const & ts) {
-	neb::core::actor::rigidactor::Base::step(ts);
+void		neb::core::actor::rigidbody::base::step(neb::core::TimeStep const & ts) {
+	neb::core::actor::rigidactor::base::step(ts);
 }
 
 

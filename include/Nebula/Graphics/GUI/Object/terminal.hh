@@ -10,7 +10,7 @@ namespace neb {	namespace gfx {	namespace gui {	namespace object {
 
 
 	class terminal:
-		virtual public neb::gfx::gui::object::Base,
+		virtual public neb::gfx::gui::object::base,
 		virtual public neb::util::terminal
 	{
 		public:
@@ -28,7 +28,7 @@ namespace neb {	namespace gfx {	namespace gui {	namespace object {
 
 
 			virtual int		key_fun(
-					sp::shared_ptr<neb::gfx::Window::Base> const & window, int,int,int,int);
+					sp::shared_ptr<neb::gfx::window::base> const & window, int,int,int,int);
 
 	};
 

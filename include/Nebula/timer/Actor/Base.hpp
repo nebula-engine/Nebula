@@ -15,9 +15,9 @@
 namespace neb {
 	namespace Timer {
 		namespace actor {
-			class Base {
+			class base {
 				public:
-					Base(sp::shared_ptr<neb::core::actor::Base> actor, double);
+					base(sp::shared_ptr<neb::core::actor::base> actor, double);
 
 
 					virtual void					doSomething() = 0;
@@ -27,7 +27,7 @@ namespace neb {
 					//neb::Timer::actor::Type         type_;
 					boost::asio::deadline_timer			timer_;
 					
-					sp::shared_ptr<neb::core::actor::Base>			actor_;
+					sp::shared_ptr<neb::core::actor::base>			actor_;
 			};
 
 		}

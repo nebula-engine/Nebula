@@ -5,7 +5,7 @@
 
 namespace neb {
 	namespace gfx {
-		namespace Window {
+		namespace window {
 			class __base: virtual public neb::std::shared
 			{
 			};

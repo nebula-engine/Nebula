@@ -7,10 +7,10 @@ namespace neb { namespace core { namespace actor {
 		
 
 namespace rigiddynamic {
-			class Base: public neb::core::actor::rigidbody::Base {
+			class base: public neb::core::actor::rigidbody::base {
 				public:
-					Base();
-					Base(sp::shared_ptr<neb::core::actor::Util::Parent>);
+					base();
+					base(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
 					virtual void				init();
 

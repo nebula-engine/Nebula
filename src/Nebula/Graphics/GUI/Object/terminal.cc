@@ -7,9 +7,9 @@
 
 void		neb::gfx::gui::object::terminal::init() {
 
-	neb::gfx::gui::object::Base::init();
+	neb::gfx::gui::object::base::init();
 
-	auto app = neb::App::Base::global();
+	auto app = neb::App::base::global();
 
 	cs_ = app->command_set_;
 	
@@ -40,7 +40,7 @@ void		neb::gfx::gui::object::terminal::draw(sp::shared_ptr<neb::glsl::program> p
 
 }
 int			neb::gfx::gui::object::terminal::key_fun(
-		sp::shared_ptr<neb::gfx::Window::Base> const & window,
+		sp::shared_ptr<neb::gfx::window::base> const & window,
 		int key,
 		int scancode,
 		int action,

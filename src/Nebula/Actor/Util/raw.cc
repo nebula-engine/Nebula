@@ -13,7 +13,7 @@ neb::core::actor::raw::raw():
 {
 	memset(name_, 0, max_name_length + 1);
 }
-void		neb::core::actor::raw::load(neb::weak_ptr<neb::core::actor::Base> actor) {
+void		neb::core::actor::raw::load(neb::weak_ptr<neb::core::actor::base> actor) {
 	operator=(*(actor->raw_));
 }
 unsigned int neb::core::actor::raw::parse_filter(tinyxml2::XMLElement* element, unsigned int i) {

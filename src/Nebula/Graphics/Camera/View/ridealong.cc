@@ -4,8 +4,8 @@
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Graphics/Camera/View/ridealong.hh>
 
-neb::gfx::Camera::View::Ridealong::Ridealong(sp::shared_ptr<neb::gfx::Context::Base> parent):
-	neb::gfx::Camera::View::Base(parent)
+neb::gfx::Camera::View::Ridealong::Ridealong(sp::shared_ptr<neb::gfx::context::base> parent):
+	neb::gfx::Camera::View::base(parent)
 {
 }
 mat4		neb::gfx::Camera::View::Ridealong::view() {

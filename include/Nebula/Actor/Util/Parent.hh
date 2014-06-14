@@ -23,23 +23,23 @@
 
 namespace neb { namespace core {
 	namespace actor {
-		namespace Util {
+		namespace util {
 			/** @brief @Parent
 			 * abstract class for parent of an @Actor
 			 */
-			class Parent:
-				public neb::Util::parent<neb::actor::__base>,
+			class parent:
+				public neb::util::parent<neb::actor::__base>,
 				virtual public neb::core::Pose,
-				virtual public neb::Scene::Util::Cast,
-				virtual public neb::core::actor::Util::Cast
+				virtual public neb::Scene::util::Cast,
+				virtual public neb::core::actor::util::Cast
 			{
 				public:
-					Parent();
-					virtual ~Parent() {}
+					parent();
+					virtual ~parent() {}
 
 					virtual void				init();
 				public:
-					sp::shared_ptr<neb::Scene::Base>			getScene();
+					sp::shared_ptr<neb::Scene::base>			getScene();
 			};
 		}
 	}

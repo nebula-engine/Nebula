@@ -7,13 +7,13 @@
 
 namespace neb { namespace core {
         namespace actor {
-                namespace Util {
+                namespace util {
                         class Cast: virtual public gal::std::shared {
 				public:
-					sp::shared_ptr<neb::core::actor::Base>				isActorBase();
-					sp::shared_ptr<neb::core::actor::actor::Base>				isActorActor();
-					sp::shared_ptr<neb::core::actor::rigidactor::Base>			isActorRigidActor();
-					sp::shared_ptr<neb::core::actor::rigidbody::Base>			isActorRigidBody();
+					sp::shared_ptr<neb::core::actor::base>				isActorBase();
+					sp::shared_ptr<neb::core::actor::actor::base>				isActorActor();
+					sp::shared_ptr<neb::core::actor::rigidactor::base>			isActorRigidActor();
+					sp::shared_ptr<neb::core::actor::rigidbody::base>			isActorRigidBody();
 			};
 		}
 	}

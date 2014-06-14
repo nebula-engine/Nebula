@@ -3,15 +3,16 @@
 
 #include <Galaxy-Standard/flag.hpp>
 
-namespace neb {
-	namespace Shape {
-		namespace Util {
-			DEFINE_FLAG(Flag,
-					((FOO)(1 << 0))
-				   )
-		}
-	}
-}
+namespace neb { namespace core { namespace shape { namespace util {
+
+
+
+	DEFINE_FLAG(Flag,
+			((FOO)(1 << 0))
+		   )
+
+
+}}}}
 
 #endif
 

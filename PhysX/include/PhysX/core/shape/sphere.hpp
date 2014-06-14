@@ -3,13 +3,13 @@
 
 #include <Nebula/Shape/Sphere.hh>
 
-#include <PhysX/core/shape/Base.hh>
+#include <PhysX/core/shape/base.hpp>
 
 namespace px { namespace core { namespace shape {
 
 
 	class sphere:
-		virtual public neb::Shape::Sphere,
+		virtual public neb::core::shape::Sphere,
 		virtual public px::core::shape::base
 	{
 			public:

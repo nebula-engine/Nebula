@@ -8,7 +8,7 @@ namespace neb {
 			 * 
 			 * Contains content to draw in a context (scene, layout, etc.).
 			 */
-			class Base: virtual public neb::std::shared {
+			class base: virtual public neb::std::shared {
 				public:
 					/** @brief draw
 					 *
@@ -16,7 +16,7 @@ namespace neb {
 					 *
 					 * draw into prepared rendering context
 					 */
-					virtual void				draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p) = 0;
+					virtual void				draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) = 0;
 
 
 					neb::program_name::e			program_name_;

@@ -1,6 +1,6 @@
 #include <Nebula/Message/Base.hh>
 
-neb::message::Base::Base() {
+neb::message::base::base() {
 }
 
 neb::message::OBase::OBase() {

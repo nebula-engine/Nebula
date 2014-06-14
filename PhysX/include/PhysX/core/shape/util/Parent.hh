@@ -32,15 +32,15 @@
 #include <Nebula/Core/Pose.hh>
 
 namespace Neb {
-	namespace Shape {
-		namespace Util {
+	namespace shape {
+		namespace util {
 			/** @brief @Parent
 			 * abstract class for parent of a shape
 			 */
-			class Parent:
-				virtual public gal::std::parent< neb::Shape::Base >,
-				virtual public neb::core::actor::Util::Cast,
-				virtual public neb::Shape::Util::Cast,
+			class parent:
+				virtual public gal::std::parent< neb::core::shape::base >,
+				virtual public neb::core::actor::util::Cast,
+				virtual public neb::core::shape::util::Cast,
 				virtual public neb::core::Pose
 			{
 				public:

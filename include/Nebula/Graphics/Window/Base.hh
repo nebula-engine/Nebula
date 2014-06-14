@@ -28,16 +28,16 @@
 
 namespace neb {
 	namespace gfx {
-		namespace Window {
-			class Base:
-				virtual public neb::gfx::Window::__base,
-				virtual public neb::gfx::Context::Util::Parent,
-				virtual public neb::gfx::Window::Util::Cast
+		namespace window {
+			class base:
+				virtual public neb::gfx::window::__base,
+				virtual public neb::gfx::context::util::parent,
+				virtual public neb::gfx::window::util::Cast
 			{
 				public:
-					Base();
-					Base(sp::shared_ptr<neb::gfx::Window::Util::Parent> parent);
-					virtual ~Base();
+					base();
+					base(sp::shared_ptr<neb::gfx::window::util::parent> parent);
+					virtual ~base();
 				
 				public:
 					virtual void				init();
@@ -56,12 +56,12 @@ namespace neb {
 					void					callback_mouse_button_fun(GLFWwindow*,int,int,int);
 					void					callback_key_fun(GLFWwindow*,int,int,int,int);
 				public:
-					sp::shared_ptr<neb::gfx::Window::Util::Parent>			parent_;
+					sp::shared_ptr<neb::gfx::window::util::parent>			parent_;
 					/** @brief self
 					 *
 					 * avoid casting shared_from_this
 					 */
-					sp::shared_ptr<neb::gfx::Window::Base>		self_;
+					sp::shared_ptr<neb::gfx::window::base>		self_;
 
 					// input signals
 					struct
@@ -74,7 +74,7 @@ namespace neb {
 					
 					
 	
-					neb::gfx::Window::Util::Flag	flag_;
+					neb::gfx::window::util::Flag	flag_;
 					int					x_;
 					int					y_;
 					int					w_;

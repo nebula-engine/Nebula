@@ -1,16 +1,20 @@
 #ifndef NEBULA_SHAPE_UTIL_TYPES_HH
 #define NEBULA_SHAPE_UTIL_TYPES_HH
 
-namespace neb {
+namespace neb { namespace core {
+
+
 	/** @brief %Shape */	
-	namespace Shape {
+	namespace shape {
 	
 
-		namespace Util {
-			class Parent;
+		namespace util {
+			class parent;
 		}
 
-		class Base;
+		class base;
 	}
-}
+
+
+}}
 #endif

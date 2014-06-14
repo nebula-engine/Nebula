@@ -36,9 +36,9 @@ void		neb::init() {
 
 	gal::log::init();
 	
-	neb::App::Base::g_app_ = sp::make_shared<neb::App::Base>();
+	neb::App::base::g_app_ = sp::make_shared<neb::App::base>();
 
-	neb::App::Base::g_app_->init();
+	neb::App::base::g_app_->init();
 
 
 	/** @todo impl in PhysX */
@@ -123,14 +123,14 @@ void		neb::draw_text(
 
 	const char * c;
 
-	//auto p = neb::App::Base::global()->use_program(neb::program_name::e::TEXT);
+	//auto p = neb::App::base::global()->use_program(neb::program_name::e::TEXT);
 
 	printf("text %6.3f %6.3f '%s'\n", x, y, text.c_str());
 
 	// face
 	FT_Face face;
 
-	FT_Library ft = neb::App::Base::global()->ft_;
+	FT_Library ft = neb::App::base::global()->ft_;
 	
 	char const * fontfile[] = {
 		"/usr/share/fonts/truetype/msttcorefonts/georgia.ttf",

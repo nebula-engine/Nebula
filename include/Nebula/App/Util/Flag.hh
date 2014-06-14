@@ -5,7 +5,7 @@
 
 namespace neb {
 	namespace App {
-		namespace Util {
+		namespace util {
 			DEFINE_FLAG(Flag,
 					((SHOULD_RELEASE)	(1 << 0))
 					((INIT_GLEW)		(1 << 1))

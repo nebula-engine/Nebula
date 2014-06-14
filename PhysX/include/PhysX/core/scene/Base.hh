@@ -35,9 +35,9 @@ namespace px { namespace core { namespace scene {
 		 * @ingroup group_core
 		 * @brief Base
 		 */
-		class base: virtual public neb::Scene::Base {
+		class base: virtual public neb::Scene::base {
 			public:
-				base(sp::shared_ptr< ::neb::Scene::Util::Parent > parent);
+				base(sp::shared_ptr< ::neb::Scene::util::parent > parent);
 				virtual ~base();
 				void					init();
 				void					release();

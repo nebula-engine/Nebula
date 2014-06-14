@@ -4,8 +4,8 @@
 #include <Nebula/Enum.hh>
 
 namespace Neb {
-	namespace Shape {
-		namespace Util {
+	namespace shape {
+		namespace util {
 			DEFINE_FLAG(Flag,
 					((FOO)(1 << 0))
 				   )
