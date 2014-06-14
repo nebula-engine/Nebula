@@ -4,14 +4,14 @@
 
 #include <Nebula/Message/Actor/Control.hh>
 
-void		neb::Actor::RigidBody::Remote::step(neb::core::TimeStep const & ts) {
-	neb::Actor::RigidActor::Remote::step(ts);
-	neb::Actor::RigidBody::Base::step(ts);
+void		neb::core::actor::RigidBody::Remote::step(neb::core::TimeStep const & ts) {
+	neb::core::actor::RigidActor::Remote::step(ts);
+	neb::core::actor::RigidBody::Base::step(ts);
 
 	auto app = neb::App::Base::globalBase();
 	
 	if(control_) {
-		auto message = std::make_shared<neb::Message::Actor::Control::RigidBody::OUpdate>();
+		auto message = std::make_shared<neb::message::actor::Control::RigidBody::OUpdate>();
 		
 		message->index_ = i_;
 		message->control_.ptr_ = control_;

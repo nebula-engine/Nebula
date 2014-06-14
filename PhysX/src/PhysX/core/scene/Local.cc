@@ -1,13 +1,18 @@
 #include <Nebula/App/Base.hh>
-#include <Nebula/Scene/Local.hh>
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Actor/RigidBody/Base.hh>
 #include <Nebula/timer/Actor/Release.hpp>
 
 
-void            neb::Scene::Local::step(double const & time, double const & dt) {
+
+#include <PhysX/util/convert.hpp>
+#include <PhysX/core/scene/Local.hh>
+#include <PhysX/core/actor/rigiddynamic/local.hpp>
+
+
+void            px::core::scene::local::step(neb::core::TimeStep const & ts) {
 	
-	auto app = neb::App::Base::globalBase();
+	auto app = neb::App::Base::global();
 	
 	// timer
 	//timer_set_.step(time);
@@ -17,12 +22,12 @@ void            neb::Scene::Local::step(double const & time, double const & dt) 
 	// PxScene
 	assert(px_scene_ != NULL);
 
-	px_scene_->simulate(dt);
+	px_scene_->simulate(ts.dt);
 	px_scene_->fetchResults(true);
 
 	// retrieve array of actors that moved
 	physx::PxU32 nb_active_transforms;
-	physx::PxActiveTransform* active_transforms = px_scene_->getActiveTransforms(nb_active_transforms);
+	const physx::PxActiveTransform* active_transforms = px_scene_->getActiveTransforms(nb_active_transforms);
 
 	//printf( "count PxRigidActor:%i count active transform:%i\n", nbPxactor, nb_active_transforms );
 
@@ -43,28 +48,28 @@ void            neb::Scene::Local::step(double const & time, double const & dt) 
 		void* ud = active_transforms[i].userData;
 		assert(ud);
 
-		neb::Actor::Base* pactor = static_cast<neb::Actor::Base*>(ud);
+		neb::core::actor::Base* pactor = static_cast<neb::core::actor::Base*>(ud);
 		auto actor = pactor->isActorBase();
 		
 
 		if(actor) {
 			pose = active_transforms[i].actor2World;
-			actor->setPose(pose);
+			actor->setPose(px::util::convert(pose));
 			
 			if(pxrigidbody != NULL) {
 				auto rigidbody = isActorRigidBody();
-				//dynamic_cast<neb::Actor::RigidBody::RigidBody*>(actor);
+				//dynamic_cast<neb::core::actor::RigidBody::RigidBody*>(actor);
 
 				assert(rigidbody != NULL);
 
 				physx::PxVec3 v(pxrigidbody->getLinearVelocity());
 
-				rigidbody->velocity_ = v;
+				rigidbody->velocity_ = px::util::convert(v);
 
 				//v.print();
 			}
 
-			actor->flag_.set(neb::Actor::Util::Flag::E::SHOULD_UPDATE);
+			actor->flag_.set(neb::core::actor::Util::Flag::E::SHOULD_UPDATE);
 		}
 	}
 
@@ -76,18 +81,18 @@ void            neb::Scene::Local::step(double const & time, double const & dt) 
 	send_actor_update();
 	
 }
-void neb::Scene::Local::fire(sp::shared_ptr<neb::Actor::Base> actor) {
+void		px::core::scene::local::fire(sp::shared_ptr<px::core::actor::base> actor) {
 
 	auto proj = actor->get_projectile();
 
-	//auto me = std::dynamic_pointer_cast<neb::Actor::Actor>(shared_from_this());
+	//auto me = std::dynamic_pointer_cast<neb::core::actor::actor>(shared_from_this());
 
 	//auto a = create_actor_local(desc);
 
 	/** @todo replace neb::timer::actor::type with inheritance */
 
-	std::shared_ptr<neb::Timer::Actor::Base> t(
-			new neb::Timer::Actor::Release(proj, last_ + 5.0)
+	std::shared_ptr<neb::Timer::actor::Base> t(
+			new neb::Timer::actor::Release(proj, last_ + 5.0)
 			);
 
 

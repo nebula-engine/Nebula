@@ -1,13 +1,13 @@
 #include <Nebula/Actor/Controller/Base.hh>
 
-neb::Actor::Controller::Controller(sp::shared_ptr<neb::Actor::Util::Parent> parent): neb::Actor::Base(parent) {
+neb::core::actor::Controller::Controller(sp::shared_ptr<neb::core::actor::Util::Parent> parent): neb::core::actor::Base(parent) {
 
 }
-void	neb::Actor::Controller::init() {
+void	neb::core::actor::Controller::init() {
 }
-void	neb::Actor::Controller::release() {
+void	neb::core::actor::Controller::release() {
 }
-void	neb::Actor::Controller::step(neb::core::TimeStep const & ts) {
+void	neb::core::actor::Controller::step(neb::core::TimeStep const & ts) {
 
 }
 

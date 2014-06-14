@@ -14,7 +14,7 @@
 
 #include <Nebula/Scene/Base.hh>
 
-#include <Nebula/config.hh> // Nebula/config.hpp.in
+//#include <Nebula/config.hh> // Nebula/config.hpp.in
 #include <Nebula/Graphics/glsl/program.hh>
 
 
@@ -29,9 +29,9 @@
 
 namespace neb {
 	namespace Scene {
-		class Local: public neb::Scene::Base {
+		class local: virtual public neb::Scene::Base {
 			public:
-				Local(sp::shared_ptr<neb::Scene::Util::Parent> parent);
+				local(sp::shared_ptr<neb::Scene::Util::Parent> parent);
 				virtual void			step(neb::core::TimeStep const & ts);
 				virtual void			send_actor_update();
 		};

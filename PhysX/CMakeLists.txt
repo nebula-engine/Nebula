@@ -13,6 +13,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
 
 include_directories("/usr/include/freetype2")
 INCLUDE_DIRECTORIES("../include")
+INCLUDE_DIRECTORIES("../Debug/include")
 include_directories("../Galaxy-Standard/include")
 include_directories("../Galaxy-Network/include")
 include_directories("../Galaxy-Log/include")

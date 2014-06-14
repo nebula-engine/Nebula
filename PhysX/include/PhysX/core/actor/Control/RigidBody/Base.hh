@@ -32,7 +32,7 @@ namespace px { namespace core {
 					private:
 
 					public:
-						neb::Actor::Base_w		actor_;
+						neb::core::actor::Base_w		actor_;
 
 						quat			q_target_;
 						vec3			p_target_;
@@ -52,13 +52,13 @@ namespace px { namespace core {
 						//gal::control::control		pid_;
 
 				};
-				class Manual: public neb::Actor::Control::RigidBody::Base {
+				class Manual: public neb::core::actor::Control::RigidBody::Base {
 					void				step(double dt);
 					vec3			f();
 					vec3			t();
 
 				};
-				class PD: public neb::Actor::Control::RigidBody::Base {
+				class PD: public neb::core::actor::Control::RigidBody::Base {
 					void				step(double dt);
 					vec3			f();
 					vec3			t();

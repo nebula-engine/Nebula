@@ -29,34 +29,34 @@ namespace neb { namespace core {
 		/** @brief %Actor */
 		namespace actor {
 			class Base;
-			class Local;
+			class local;
 			class Remote;
 		}
 		/** @brief %rigidactor */
 		namespace RigidActor {
 			class Base;
-			class Local;
+			class local;
 			class Remote;
 		}
 
 		/** @brief %RigidBody */
 		namespace RigidBody {
 			class Base;
-			class Local;
+			class local;
 			class Remote;
 		}
 
 		/** @brief %RigidDynamic */
-		namespace RigidDynamic {
+		namespace rigiddynamic {
 			class Base;
-			class Local;
+			class local;
 			class Remote;
 		}
 
 		/** @brief %RigidStatic */
 		namespace RigidStatic {
 			class Base;
-			class Local;
+			class local;
 			class Remote;
 
 		}
