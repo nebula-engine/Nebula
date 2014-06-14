@@ -1,10 +1,10 @@
 
 #include <Nebula/Actor/Control/RigidBody/Base.hh>
 
-neb::Actor::Control::RigidBody::Base::Base() {
+neb::core::actor::Control::RigidBody::Base::Base() {
 
 }
-int neb::Actor::Control::RigidBody::Base::key_fun(int key, int scancode, int action, int mods) {
+int neb::core::actor::Control::RigidBody::Base::key_fun(int key, int scancode, int action, int mods) {
 	//NEBULA_DEBUG_0_FUNCTION;
 
 	physx::PxVec3 x(1.0,0.0,0.0);
@@ -101,10 +101,10 @@ int neb::Actor::Control::RigidBody::Base::key_fun(int key, int scancode, int act
 
 	return 0;
 }
-void neb::Actor::Control::RigidBody::Manual::step(double dt) { // 0
+void neb::core::actor::Control::RigidBody::Manual::step(double dt) { // 0
 
 }
-void neb::Actor::Control::RigidBody::PD::step(double dt) { // 1
+void neb::core::actor::Control::RigidBody::PD::step(double dt) { // 1
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	// step target
@@ -239,19 +239,19 @@ void neb::Actor::Control::RigidBody::PD::step(double dt) { // 1
 	}
 	*/
 }
-physx::PxVec3 neb::Actor::Control::RigidBody::Manual::f() {
+physx::PxVec3 neb::core::actor::Control::RigidBody::Manual::f() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return f_ * 100;
 }
-physx::PxVec3 neb::Actor::Control::RigidBody::Manual::t() {
+physx::PxVec3 neb::core::actor::Control::RigidBody::Manual::t() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return t_ * 3;
 }
-physx::PxVec3 neb::Actor::Control::RigidBody::PD::f() {
+physx::PxVec3 neb::core::actor::Control::RigidBody::PD::f() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return force_;
 }
-physx::PxVec3 neb::Actor::Control::RigidBody::PD::t() {
+physx::PxVec3 neb::core::actor::Control::RigidBody::PD::t() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return torque_;
 }

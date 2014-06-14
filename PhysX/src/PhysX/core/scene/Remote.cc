@@ -4,22 +4,22 @@
 #include <Nebula/App/Base.hh>
 #include <Nebula/Actor/Base.hh>
 
-#include <Nebula/Message/Actor/Event/Base.hh>
+#include <PhysX/message/actor/event/Base.hh>
 
-#include <Nebula/Scene/Remote.hh>
+#include <PhysX/core/scene/Remote.hh>
 
-void neb::Scene::Remote::step(double const & time, double const & dt) {
+void		px::core::scene::remote::step(neb::core::TimeStep const & ts) {
 
 
 
 }
-void neb::Scene::Remote::fire(sp::shared_ptr<neb::Actor::Base> actor) {
+void		px::core::scene::remote::fire(sp::shared_ptr<neb::core::actor::Base> actor) {
 	
-	std::shared_ptr<neb::Message::Actor::Event::OFire> message(new neb::Message::Actor::Event::OFire);
+	auto message(sp::make_shared< px::message::actor::event::OFire >());
 	
 	// fill message
 	message->i_ = actor->i_;
 
-	neb::App::Base::globalBase()->sendClient(message);
+	neb::App::Base::global()->sendClient(message);
 }
 

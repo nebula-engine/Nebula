@@ -4,21 +4,21 @@
 #include <Nebula/Actor/RigidBody/Base.hh>
 #include <Nebula/timer/Actor/Release.hpp>
 
-neb::Scene::Local::Local(sp::shared_ptr<neb::Scene::Util::Parent> parent):
+neb::Scene::local::local(sp::shared_ptr<neb::Scene::Util::Parent> parent):
 	neb::Scene::Base(parent)
 {
 }
-void		neb::Scene::Local::step(neb::core::TimeStep const & ts) {
+void		neb::Scene::local::step(neb::core::TimeStep const & ts) {
 	neb::Scene::Base::step(ts);
 }
-void neb::Scene::Local::send_actor_update() {
+void neb::Scene::local::send_actor_update() {
 	//printf("DEBUG: message ACTOR_UPDATE sent\n");
 
 
 	//int type = glutpp::network::type::ACTOR_UPDATE;
 	//msg->write(&type, sizeof(int));
 
-	sp::shared_ptr<neb::Message::actor::OUpdate> message(new neb::Message::actor::OUpdate);
+	sp::shared_ptr<neb::message::actor::OUpdate> message(new neb::message::actor::OUpdate);
 
 	typedef neb::core::actor::Util::Parent A;
 

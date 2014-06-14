@@ -23,9 +23,16 @@ def replace(filename):
 	text = otext
 	
 	text = re.sub("([\w:]+)_s([\s\),])","sp::shared_ptr<\\1>\\2",text)
-	#text = re.sub("neb::Actor","neb::core::Actor",text)
-	#text = re.sub("namespace Actor","namespace actor",text)
 	
+	text = re.sub("namespace Message","namespace message",text)
+	text = re.sub("neb::Message::","neb::message::",text)
+	
+	text = re.sub("class Local","class local",text)
+	text = re.sub("::Local","::local",text)
+
+	text = re.sub("namespace RigidDynamic","namespace rigiddynamic",text)
+	text = re.sub("neb::core::actor::RigidDynamic","neb::core::actor::rigiddynamic",text)
+
         text = re.sub("namespace GUI","namespace gui",text)
         text = re.sub("namespace Object","namespace object",text)
 
@@ -54,5 +61,11 @@ for f in glob('src'):
 	replace(f)
 for f in glob('test'):
 	replace(f)
+
+for f in glob('PhysX/include'):
+	replace(f)
+for f in glob('PhysX/src'):
+	replace(f)
+
 
 
