@@ -1,21 +1,21 @@
 #include <Nebula/Actor/RigidDynamic/Local.hh>
 
-neb::Actor::RigidDynamic::Local::Local() {
+neb::core::actor::rigiddynamic::local::local() {
 }
-neb::Actor::RigidDynamic::Local::Local(sp::shared_ptr<neb::Actor::Util::Parent>) {
+neb::core::actor::rigiddynamic::local::local(sp::shared_ptr<neb::core::actor::Util::Parent>) {
 }
-void				neb::Actor::RigidDynamic::Local::init() {
+void				neb::core::actor::rigiddynamic::local::init() {
 }
-void				neb::Actor::RigidDynamic::Local::step(double const & time, double const & dt) {
+void				neb::core::actor::rigiddynamic::local::step(double const & time, double const & dt) {
 }
-sp::shared_ptr<neb::Actor::Base>		neb::Actor::RigidDynamic::Local::get_projectile() {
-	return neb::Actor::Base_s();
+sp::shared_ptr<neb::core::actor::Base>		neb::core::actor::rigiddynamic::local::get_projectile() {
+	return neb::core::actor::Base_s();
 }
-void				neb::Actor::RigidDynamic::Local::add_force(double) {
+void				neb::core::actor::rigiddynamic::local::add_force(double) {
 }
-void				neb::Actor::RigidDynamic::Local::create_physics() {
+void				neb::core::actor::rigiddynamic::local::create_physics() {
 }
-void				neb::Actor::RigidDynamic::Local::init_physics() {
+void				neb::core::actor::rigiddynamic::local::init_physics() {
 }
 
 

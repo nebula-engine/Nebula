@@ -1,10 +1,9 @@
-#include <Nebula/Shape/Box.hh>
 
-physx::PxGeometry*		neb::Shape::Box::to_geo() {
-	return new physx::PxBoxGeometry(s_ * 0.5);
-}
-void neb::Shape::Box::Box::createMesh() {
-	mesh_.load("cube.obj");
+#include <PhysX/util/convert.hpp>
+#include <PhysX/core/shape/Box.hh>
+
+physx::PxGeometry*		px::core::shape::box::to_geo() {
+	return new physx::PxBoxGeometry(px::util::convert(s_ * 0.5f));
 }
 
 

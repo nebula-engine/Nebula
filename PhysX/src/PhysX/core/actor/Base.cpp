@@ -20,15 +20,15 @@
 #include <Nebula/Filter.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 
-neb::Actor::Base::Base() {
+neb::core::actor::Base::Base() {
 }
-neb::Actor::Base::Base(sp::shared_ptr<neb::Actor::Util::Parent> parent): parent_(parent) {
+neb::core::actor::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent): parent_(parent) {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-neb::Actor::Base::~Base() {
+neb::core::actor::Base::~Base() {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-	void neb::Actor::Base::init() {
+	void neb::core::actor::Base::init() {
 		NEBULA_ACTOR_BASE_FUNC;
 
 
@@ -38,7 +38,7 @@ neb::Actor::Base::~Base() {
 		create_shapes(desc);
 		init_physics();
 	}
-	int	neb::Actor::Base::fire() {
+	int	neb::core::actor::Base::fire() {
 		NEBULA_ACTOR_BASE_FUNC;
 
 		printf("%s\n", __PRETTY_FUNCTION__);
@@ -47,26 +47,26 @@ neb::Actor::Base::~Base() {
 
 		return 1;
 	}
-	void neb::Actor::Base::hit() {
+	void neb::core::actor::Base::hit() {
 
 		physx::PxU32 w2 = simulation_.word2;
 
 		if(w2 & neb::Filter::Filter::PROJECTILE) {
 			parent_->release(i_);
-			//set(neb::Actor::Base::flag::e::SHOULD_RELEASE);
+			//set(neb::core::actor::Base::flag::e::SHOULD_RELEASE);
 		}
 
-		if(flag_.any(neb::Actor::Util::Flag::E::DESTRUCTIBLE)) {
+		if(flag_.any(neb::core::actor::Util::Flag::E::DESTRUCTIBLE)) {
 			damage(0.1);
 		}
 	}
-	void neb::Actor::Base::damage(float h) {
+	void neb::core::actor::Base::damage(float h) {
 		health_ -= h;
 		if(health_ < 0) {
 			parent_->release(i_);
 		}
 	}
-	int neb::Actor::Base::key_fun(int key, int scancode, int action, int mods) {
+	int neb::core::actor::Base::key_fun(int key, int scancode, int action, int mods) {
 		switch(action) {
 			case GLFW_PRESS:
 				switch(key) {

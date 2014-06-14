@@ -5,7 +5,7 @@
 
 namespace neb {
 	namespace Shape {
-		class Box: public neb::Shape::Base {
+		class Box: virtual public neb::Shape::Base {
 			public:
 				Box(sp::shared_ptr<neb::Shape::Util::Parent> parent);
 

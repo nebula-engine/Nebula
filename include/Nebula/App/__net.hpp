@@ -29,9 +29,9 @@ namespace neb {
 				void					reset_client(ip::tcp::resolver::iterator endpoint_iterator);
 
 				void					sendServer(sp::shared_ptr< gal::net::omessage >);
-				void					sendServer(sp::shared_ptr< neb::Message::OBase > message);
+				void					sendServer(sp::shared_ptr< neb::message::OBase > message);
 				void					sendClient(sp::shared_ptr< gal::net::omessage >);
-				void					sendClient(sp::shared_ptr< neb::Message::OBase > message);
+				void					sendClient(sp::shared_ptr< neb::message::OBase > message);
 
 
 				sp::shared_ptr<neb::Network::Server>				server_;

@@ -34,7 +34,7 @@ namespace Neb {
 		 * @ingroup group_core
 		 * @brief Base
 		 */
-		class Base: virtual public neb::Actor::Util::Parent {
+		class Base: virtual public neb::core::actor::Util::Parent {
 			public:
 				Base(sp::shared_ptr<neb::Scene::Util::Parent>);
 				virtual ~Base();
@@ -51,18 +51,6 @@ namespace Neb {
 				void							step(neb::core::TimeStep const & ts);
 				/** @} */
 
-				virtual  void						serialize(boost::archive::polymorphic_iarchve & ar, unsigned int const & version) {
-					ar & boost::serialization::make_nvp("gravity",gravity_);
-				}
-				virtual void						serialize(boost::archive::polymorphic_oarchve & ar, unsigned int const & version) {
-					ar & boost::serialization::make_nvp("gravity",gravity_);
-				}
-			public:
-				void							create_physics();
-			public:
-				physx::PxSimulationFilterShader				px_filter_shader_;
-
-				neb::simulation_callback*				simulation_callback_;
 
 				physx::PxScene*						px_scene_;
 

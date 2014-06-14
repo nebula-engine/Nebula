@@ -3,15 +3,15 @@
 #include <Nebula/Actor/RigidDynamic/Base.hh>
 
 
-sp::shared_ptr<neb::Actor::Base>				neb::Actor::Util::Cast::isActorBase() {
-        return std::dynamic_pointer_cast<neb::Actor::Base>(shared_from_this());
+sp::shared_ptr<neb::core::actor::Base>				neb::core::actor::Util::Cast::isActorBase() {
+        return std::dynamic_pointer_cast<neb::core::actor::Base>(shared_from_this());
 }
-sp::shared_ptr<neb::Actor::Actor::Base>			neb::Actor::Util::Cast::isActorActor() {
-	return std::dynamic_pointer_cast<neb::Actor::Actor::Base>(shared_from_this());
+sp::shared_ptr<neb::core::actor::actor::Base>			neb::core::actor::Util::Cast::isActorActor() {
+	return std::dynamic_pointer_cast<neb::core::actor::actor::Base>(shared_from_this());
 }
-sp::shared_ptr<neb::Actor::RigidActor::Base>			neb::Actor::Util::Cast::isActorRigidActor() {
-	return std::dynamic_pointer_cast<neb::Actor::RigidActor::Base>(shared_from_this());
+sp::shared_ptr<neb::core::actor::RigidActor::Base>			neb::core::actor::Util::Cast::isActorRigidActor() {
+	return std::dynamic_pointer_cast<neb::core::actor::RigidActor::Base>(shared_from_this());
 }
-sp::shared_ptr<neb::Actor::RigidBody::Base>			neb::Actor::Util::Cast::isActorRigidBody() {
-	return std::dynamic_pointer_cast<neb::Actor::RigidBody::Base>(shared_from_this());
+sp::shared_ptr<neb::core::actor::RigidBody::Base>			neb::core::actor::Util::Cast::isActorRigidBody() {
+	return std::dynamic_pointer_cast<neb::core::actor::RigidBody::Base>(shared_from_this());
 }

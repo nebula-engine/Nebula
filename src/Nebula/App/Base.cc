@@ -154,7 +154,7 @@ void		neb::App::Base::transmit_scenes(sp::shared_ptr<neb::Network::Communicating
 
 			auto msg = sp::make_shared<gal::net::omessage>();
 
-			neb::Message::Scene::Create scene_create;
+			neb::message::Scene::Create scene_create;
 
 			scene_create.load(scene);
 

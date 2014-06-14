@@ -4,7 +4,7 @@
 #include <Nebula/Message/Actor/Update.hh>
 
 
-void					neb::Message::actor::IUpdate::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
+void					neb::message::actor::IUpdate::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
 	gal::std::index_type i;
 	sp::shared_ptr<neb::core::actor::Base> actor;
 	
@@ -19,7 +19,7 @@ void					neb::Message::actor::IUpdate::serialize(boost::archive::polymorphic_iar
 }
 
 
-void					neb::Message::actor::OUpdate::serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
+void					neb::message::actor::OUpdate::serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
 	size_t size = actors_.size();
 	ar << size;
 	

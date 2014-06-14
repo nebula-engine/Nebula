@@ -78,6 +78,8 @@ namespace neb {
 				neb::Scene::Util::Flag					flag_;
 
 				::std::map< ::std::string, sp::shared_ptr<neb::core::actor::Base> >		actors_deferred_;
+
+				float		last_;
 		};
 	}
 }
