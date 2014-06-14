@@ -33,14 +33,14 @@ namespace neb { namespace core {
 			class Remote;
 		}
 		/** @brief %rigidactor */
-		namespace RigidActor {
+		namespace rigidactor {
 			class Base;
 			class local;
 			class Remote;
 		}
 
 		/** @brief %RigidBody */
-		namespace RigidBody {
+		namespace rigidbody {
 			class Base;
 			class local;
 			class Remote;
@@ -71,7 +71,7 @@ namespace neb { namespace core {
 
 		/** @brief %Control */
 		namespace Control {
-			namespace RigidBody {
+			namespace rigidbody {
 				enum Type {
 					NONE = 0,
 					T0,

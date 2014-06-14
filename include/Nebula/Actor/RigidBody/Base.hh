@@ -5,8 +5,8 @@
 #include <Nebula/Actor/RigidActor/Base.hh>
 
 namespace neb { namespace core { namespace actor {
-		namespace RigidBody {
-			class Base: virtual public neb::core::actor::RigidActor::Base {
+		namespace rigidbody {
+			class Base: virtual public neb::core::actor::rigidactor::Base {
 				public:
 					Base();
 					Base(sp::shared_ptr<neb::core::actor::Util::Parent>);

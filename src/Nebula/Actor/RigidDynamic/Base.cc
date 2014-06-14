@@ -5,14 +5,14 @@
 neb::core::actor::rigiddynamic::Base::Base() {
 }
 neb::core::actor::rigiddynamic::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent):
-	neb::core::actor::RigidBody::Base(parent)
+	neb::core::actor::rigidbody::Base(parent)
 {
 	NEBULA_ACTOR_BASE_FUNC;
 }
 void		neb::core::actor::rigiddynamic::Base::init() {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	neb::core::actor::RigidBody::Base::init();
+	neb::core::actor::rigidbody::Base::init();
 	
 }
 
