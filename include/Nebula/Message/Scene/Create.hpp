@@ -12,7 +12,7 @@
 #include <Nebula/Util/wrapper.hpp>
 
 namespace neb {
-	namespace Message {
+	namespace message {
 		namespace Scene {
 			class Create {
 				public:

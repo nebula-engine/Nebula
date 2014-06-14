@@ -1,17 +1,17 @@
 
 #include <Nebula/Actor/RigidBody/Base.hh>
 
-#include <PhysX/message/control/Control.hh>
+#include <PhysX/message/actor/control/rigidbody/update.hpp>
 
-void			neb::Message::Actor::Control::RigidBody::IUpdate::serialize(
+void			px::message::actor::Control::RigidBody::IUpdate::serialize(
 		boost::archive::polymorphic_iarchive & ar,
 		unsigned int const & version)
 {
-	neb::Message::Actor::IBase::serialize(ar, version);
+	neb::message::actor::IBase::serialize(ar, version);
 	ar >> control_;
 	
 
-	auto actor = std::dynamic_pointer_cast<neb::Actor::Base>(gal::std::shared::registry_.get(index_));
+	auto actor = std::dynamic_pointer_cast<neb::core::actor::Base>(gal::std::shared::registry_.get(index_));
 
 	auto rigidbody = actor->isActorRigidBody();
 

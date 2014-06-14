@@ -6,10 +6,10 @@
 #include <Nebula/Actor/Base.hh>
 
 namespace Neb {
-	namespace Actor {
-		class Controller: public neb::Actor::Base {
+	namespace actor {
+		class Controller: public neb::core::actor::Base {
 			public:
-				Controller(sp::shared_ptr<neb::Actor::Util::Parent>);
+				Controller(sp::shared_ptr<neb::core::actor::Util::Parent>);
 				virtual void		init();
 				virtual void		release();
 				virtual void		step(neb::core::TimeStep const & ts);

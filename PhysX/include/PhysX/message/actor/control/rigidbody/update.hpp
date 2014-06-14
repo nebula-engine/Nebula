@@ -7,27 +7,30 @@
 
 #include <PhysX/core/actor/util/decl.hpp>
 
-namespace px { namespace Message { namespace Actor { namespace Control {
-	namespace RigidBody {
-		/** @brief %Create. */
-		class Create:
-			virtual public neb::Message::actor::Base
+namespace px { namespace message { namespace actor { namespace control {
+
+	namespace rigidbody {
+
+
+		/** @brief %create. */
+		class create:
+			virtual public neb::message::actor::Base
 		{
 			gal::std::wrapper<px::core::actor::control::rigidbody::base>		control_;
 		};
-		/** @brief %Create. */
-		class ICreate:
-			virtual public neb::Message::actor::Base
+		/** @brief %create. */
+		class icreate:
+			virtual public neb::message::actor::Base
 		{
 			public:
 				/** @brief derived serialize. */
-				virtual void					serializeDerived(
+				virtual void					serializederived(
 						boost::archive::polymorphic_iarchive & ar,
 						unsigned int const & version);
 		};
-		/** @brief %Create. */
-		class OCreate:
-			virtual public neb::Message::actor::Base
+		/** @brief %create. */
+		class ocreate:
+			virtual public neb::message::actor::Base
 		{
 			public:
 				/** @brief derived serialize. */
@@ -36,30 +39,30 @@ namespace px { namespace Message { namespace Actor { namespace Control {
 						unsigned int const & version);
 		};
 		/** @brief %Update. */
-		class Update:
-			virtual public neb::Message::actor::Base
+		class update:
+			virtual public neb::message::actor::Base
 		{
 			public:
-				virtual ~Update() = 0;
+				virtual ~update() = 0;
 			public:
 				gal::std::wrapper<px::core::actor::control::rigidbody::base>		control_;
 		};
-		/** @brief %Update. */
-		class IUpdate:
-			virtual public neb::Message::actor::IBase,
-			virtual public px::Message::actor::control::rigidbody::Update
+		/** @brief %update. */
+		class iupdate:
+			virtual public neb::message::actor::IBase,
+			virtual public px::message::actor::control::rigidbody::update
 		{
 			public:
-				virtual ~IUpdate();
+				virtual ~iupdate();
 				/** @brief derived serialize. */
 				virtual void					serialize(
 						boost::archive::polymorphic_iarchive & ar,
 						unsigned int const & version);
 		};
-		/** @brief %Update. */
-		class OUpdate:
-			virtual public neb::Message::actor::OBase,
-			virtual public neb::Message::actor::control::rigidbody::Update
+		/** @brief %update. */
+		class oupdate:
+			virtual public neb::message::actor::OBase,
+			virtual public px::message::actor::control::rigidbody::update
 		{
 			public:
 				/** @brief derived serialize. */

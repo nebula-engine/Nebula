@@ -27,21 +27,21 @@ namespace px { namespace message { namespace actor { namespace event {
 
 
 	/** @brief %Base */
-	class Base: virtual public neb::Message::actor::Base {
+	class Base: virtual public neb::message::actor::Base {
 		public:
 	};
 	class IBase:
-		virtual public neb::Message::actor::IBase,
-		virtual public neb::Message::actor::Event::Base
+		virtual public neb::message::actor::IBase,
+		virtual public px::message::actor::event::Base
 	{
 	};
 	class OBase:
-		virtual public neb::Message::actor::OBase,
-		virtual public neb::Message::actor::Event::Base
+		virtual public neb::message::actor::OBase,
+		virtual public px::message::actor::event::Base
 	{
 	};
 	class Fire:
-		virtual public neb::Message::actor::Event::Base
+		virtual public px::message::actor::event::Base
 	{
 	};
 	class IFire:

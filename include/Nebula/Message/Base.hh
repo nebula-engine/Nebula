@@ -11,7 +11,7 @@
 #include <Nebula/Message/Types.hh>
 
 namespace neb {
-	namespace Message {
+	namespace message {
 		/** \brief %Base
 		 *
 		 * 
@@ -24,7 +24,7 @@ namespace neb {
 				virtual ~Base() {}
 		};
 		class OBase:
-			virtual public neb::Message::Base
+			virtual public neb::message::Base
 		{
 			public:
 				OBase();
@@ -35,7 +35,7 @@ namespace neb {
 				sp::shared_ptr<gal::net::omessage>	msg_;
 		};
 		class IBase:
-			virtual public neb::Message::Base
+			virtual public neb::message::Base
 		{
 			public:
 				IBase();

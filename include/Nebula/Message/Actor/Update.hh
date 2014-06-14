@@ -18,16 +18,16 @@
 #include <Nebula/Message/Actor/Base.hh>
 
 namespace neb {
-	namespace Message {
+	namespace message {
 		namespace actor {
 			struct Update:
-				virtual public neb::Message::actor::Base
+				virtual public neb::message::actor::Base
 			{	
 				Update() {}
 			};
 			class OUpdate:
-				virtual public neb::Message::actor::OBase,
-				virtual public neb::Message::actor::Update
+				virtual public neb::message::actor::OBase,
+				virtual public neb::message::actor::Update
 			{
 				public:
 					/** @brief Save %Actor. */
@@ -38,8 +38,8 @@ namespace neb {
 					::std::vector< sp::shared_ptr<neb::core::actor::Base> >	actors_;
 			};
 			class IUpdate:
-				virtual public neb::Message::actor::IBase,
-				virtual public neb::Message::actor::Update
+				virtual public neb::message::actor::IBase,
+				virtual public neb::message::actor::Update
 			{
 				/** @brief Load */
 				virtual void		serialize(boost::archive::polymorphic_iarchive& ar, unsigned int const & version);

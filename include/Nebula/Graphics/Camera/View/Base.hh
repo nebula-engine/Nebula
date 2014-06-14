@@ -25,24 +25,24 @@ namespace neb {
 				class Base {
 					public:
 						/** @brief Constructor */
-						Base(sp::shared_ptr<neb::gfx::Context::Base> parent);
+						Base(sp::shared_ptr< ::neb::gfx::Context::Base > parent);
 						/** @brief Load view matrix into GLSL. */
-						void						load(sp::shared_ptr<neb::glsl::program> p);
+						void						load(sp::shared_ptr< ::neb::glsl::program > p);
 						/** @brief Get view matrix. */
 						virtual glm::mat4				view() = 0;
 						/** @brief Step
 						 *
 						 * @todo explain when in timeline this occurs and in which thread and why
 						 */
-						virtual void					step(neb::core::TimeStep const & ts) = 0;
+						virtual void					step(::neb::core::TimeStep const & ts) = 0;
 
 						virtual void					connect(
-								sp::shared_ptr<neb::gfx::Window::Base> const & window) {}
+								sp::shared_ptr< ::neb::gfx::Window::Base > const & window) {}
 
 					public:
-						sp::shared_ptr<neb::gfx::Context::Base>		parent_;
+						sp::shared_ptr< ::neb::gfx::Context::Base >		parent_;
 
-						neb::gfx::camera::view::util::flag		flag_;
+						neb::gfx::camera::view::util::flag			flag_;
 				};
 			}
 		}

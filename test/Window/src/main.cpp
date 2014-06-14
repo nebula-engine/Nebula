@@ -45,8 +45,8 @@ sp::shared_ptr<neb::gfx::gui::Layout::Base>	create_layout(
 
 	return layout;
 }
-sp::shared_ptr<neb::core::actor::RigidDynamic::Local>		create_actor(sp::shared_ptr<neb::Scene::Local> scene) {
-	auto actor = sp::make_shared<neb::core::actor::RigidDynamic::Local>(scene);
+sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor(sp::shared_ptr<neb::Scene::local> scene) {
+	auto actor = sp::make_shared<neb::core::actor::rigiddynamic::local>(scene);
 	
 	scene->insert(actor);
 
@@ -64,8 +64,8 @@ sp::shared_ptr<neb::core::actor::RigidDynamic::Local>		create_actor(sp::shared_p
 	
 	return actor;	
 }
-sp::shared_ptr<neb::core::actor::RigidDynamic::Local>		create_actor2(sp::shared_ptr<neb::Scene::Local> scene) {
-	auto actor = sp::make_shared<neb::core::actor::RigidDynamic::Local>(scene);
+sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor2(sp::shared_ptr<neb::Scene::local> scene) {
+	auto actor = sp::make_shared<neb::core::actor::rigiddynamic::local>(scene);
 	
 	scene->insert(actor);
 	
@@ -87,12 +87,12 @@ sp::shared_ptr<neb::core::actor::RigidDynamic::Local>		create_actor2(sp::shared_
 
 	return actor;	
 }
-sp::shared_ptr<neb::Scene::Local>			create_scene(
+sp::shared_ptr<neb::Scene::local>			create_scene(
 		sp::shared_ptr<neb::gfx::Context::Window> context) {
 	
 	auto app = neb::App::Base::global();
 	
-	auto scene = sp::make_shared<neb::Scene::Local>(app);
+	auto scene = sp::make_shared<neb::Scene::local>(app);
 	
 	app->neb::Scene::Util::Parent::insert(scene);
 
