@@ -36,15 +36,15 @@ namespace neb {
 				
 				
 				::std::shared_ptr<neb::glsl::attrib>					get_attrib(int);
-				::std::shared_ptr<neb::glsl::Uniform::Scalar::Base>			get_uniform_scalar(::std::string);
-				::std::shared_ptr<neb::glsl::Uniform::Vector::Base>			get_uniform_vector(::std::string);
+				::std::shared_ptr<neb::glsl::Uniform::Scalar::base>			get_uniform_scalar(::std::string);
+				::std::shared_ptr<neb::glsl::Uniform::Vector::base>			get_uniform_vector(::std::string);
 
 				//std::shared_ptr<neb::glsl::uniform>	get_uniform(int,int);
 
 				GLuint	o_;
 				
-				::std::map< ::std::string, sp::shared_ptr<neb::glsl::Uniform::Scalar::Base> >		uniform_scalar_;
-				::std::map< ::std::string, sp::shared_ptr<neb::glsl::Uniform::Vector::Base> >		uniform_vector_;
+				::std::map< ::std::string, sp::shared_ptr<neb::glsl::Uniform::Scalar::base> >		uniform_scalar_;
+				::std::map< ::std::string, sp::shared_ptr<neb::glsl::Uniform::Vector::base> >		uniform_vector_;
 
 				::std::map<int, sp::shared_ptr<attrib> >						attrib_;
 		};

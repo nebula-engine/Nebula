@@ -10,11 +10,11 @@ namespace neb {
 		namespace rigiddynamic {
 			class Remote:
 				virtual public neb::core::actor::rigidbody::Remote,
-				virtual public neb::core::actor::rigiddynamic::Base
+				virtual public neb::core::actor::rigiddynamic::base
 			{
 				public:
 					Remote();
-					Remote(neb::core::actor::Util::Parent_w);
+					Remote(neb::core::actor::util::parent_w);
 
 					virtual void		create_physics();
 					virtual void		init_physics();

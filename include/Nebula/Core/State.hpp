@@ -7,7 +7,7 @@ namespace neb {
       /** @brief Base.
        * Construction and Destruction alters behavior of rendering and stepping, producing
        * a temporary change in the state of the program. */
-      class Base {
+      class base {
         public:
           virtual ~Base() {}
       };

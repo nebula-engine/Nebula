@@ -21,18 +21,18 @@
 #include <Nebula/Message/Actor/Control.hh>
 #include <Nebula/Message/Types.hh>
 
-neb::core::actor::rigidbody::Base::Base() {}
-neb::core::actor::rigidbody::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent):
-	neb::core::actor::rigidactor::Base(parent),
+neb::core::actor::rigidbody::base::base() {}
+neb::core::actor::rigidbody::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+	neb::core::actor::rigidactor::base(parent),
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}
-void	neb::core::actor::rigidbody::Base::init() {
+void	neb::core::actor::rigidbody::base::init() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
-	neb::core::actor::rigidactor::Base::init();
+	neb::core::actor::rigidactor::base::init();
 }
-void neb::core::actor::rigidbody::Base::add_force(double time) {
+void neb::core::actor::rigidbody::base::add_force(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	// non-user-controled
@@ -63,7 +63,7 @@ void neb::core::actor::rigidbody::Base::add_force(double time) {
 	pxrigidbody->addForce(f);
 	pxrigidbody->addTorque(t);
 }
-sp::shared_ptr<neb::core::actor::Base>	neb::core::actor::rigidbody::Base::get_projectile() {
+sp::shared_ptr<neb::core::actor::base>	neb::core::actor::rigidbody::base::get_projectile() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	auto scene = getScene();
@@ -96,7 +96,7 @@ sp::shared_ptr<neb::core::actor::Base>	neb::core::actor::rigidbody::Base::get_pr
 	
 	return actor;
 }
-/*void neb::core::actor::rigidbody::Base::create_control() {
+/*void neb::core::actor::rigidbody::base::create_control() {
 
 	auto me = isRigidBody();
 
@@ -133,7 +133,7 @@ sp::shared_ptr<neb::core::actor::Base>	neb::core::actor::rigidbody::Base::get_pr
 		wnd->renderable_->moveView(std::move(view));	
 	}
 }*/
-void		neb::core::actor::rigidbody::Base::step(double const & time, double const & dt) {
+void		neb::core::actor::rigidbody::base::step(double const & time, double const & dt) {
 }
 
 

@@ -6,15 +6,15 @@
 
 namespace neb {
 	namespace gfx {
-		namespace Context {
-			namespace Util {
+		namespace context {
+			namespace util {
 				/** @brief %Cast
 				*/
 				class Cast:
 					virtual public neb::std::shared
 				{
 					public:
-						sp::shared_ptr<neb::gfx::Context::Base>			isContextBase();
+						sp::shared_ptr<neb::gfx::context::base>			isContextBase();
 				};
 			}
 		}

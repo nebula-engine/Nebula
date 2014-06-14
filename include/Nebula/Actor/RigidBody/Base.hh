@@ -6,10 +6,10 @@
 
 namespace neb { namespace core { namespace actor {
 		namespace rigidbody {
-			class Base: virtual public neb::core::actor::rigidactor::Base {
+			class base: virtual public neb::core::actor::rigidactor::base {
 				public:
-					Base();
-					Base(sp::shared_ptr<neb::core::actor::Util::Parent>);
+					base();
+					base(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
 					virtual void					init();
 					virtual void					release();

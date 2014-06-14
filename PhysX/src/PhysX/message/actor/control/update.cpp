@@ -11,7 +11,7 @@ void			px::message::actor::Control::RigidBody::IUpdate::serialize(
 	ar >> control_;
 	
 
-	auto actor = std::dynamic_pointer_cast<neb::core::actor::Base>(gal::std::shared::registry_.get(index_));
+	auto actor = std::dynamic_pointer_cast<neb::core::actor::base>(gal::std::shared::registry_.get(index_));
 
 	auto rigidbody = actor->isActorRigidBody();
 

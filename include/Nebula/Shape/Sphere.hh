@@ -3,14 +3,17 @@
 
 #include <Nebula/Shape/Base.hh>
 
-namespace neb {
-	namespace Shape {
-		class Sphere: virtual public neb::Shape::Base {
+namespace neb { namespace core { namespace shape {
+
+
+		class Sphere: virtual public neb::core::shape::base {
 			public:
 				virtual void			createMesh();
 		};
-	}
-}
+
+
+
+}}}
 
 #endif
 

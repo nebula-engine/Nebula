@@ -2,7 +2,7 @@
 #define NEBULA_UTIL_DISPATCH_HH
 
 namespace neb {
-        namespace Util {
+        namespace util {
                 struct dispatch_init {
                         template<class E> inline static void    visit(E* const & e) {
                                 e->E::init();

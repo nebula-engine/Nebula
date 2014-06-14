@@ -14,12 +14,12 @@ namespace neb {
 				 * this camera can move freely through the scene
 				 * user input in interpreted as three-component velocity and yaw and pitch rate
 				 */
-				class Free: public neb::gfx::Camera::View::Base {
+				class Free: public neb::gfx::Camera::View::base {
 					public:
 						/** @name constructors
 						 * @{
 						 */
-						Free(sp::shared_ptr<neb::gfx::Context::Base> parent);
+						Free(sp::shared_ptr<neb::gfx::context::base> parent);
 						//Free(math::vec3<double> eye, double yaw, double pitch);
 						/** @} */
 
@@ -32,9 +32,9 @@ namespace neb {
 
 
 						virtual void						connect(
-								sp::shared_ptr<neb::gfx::Window::Base> const & window);
+								sp::shared_ptr<neb::gfx::window::base> const & window);
 						int						key_fun(
-								sp::shared_ptr<neb::gfx::Window::Base> const & window,
+								sp::shared_ptr<neb::gfx::window::base> const & window,
 								int key,
 								int scancode,
 								int action,

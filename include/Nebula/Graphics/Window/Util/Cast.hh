@@ -6,13 +6,13 @@
 
 namespace neb {
 	namespace gfx {
-		namespace Window {
-			namespace Util {
+		namespace window {
+			namespace util {
 				class Cast:
 					virtual public neb::std::shared
 				{
 					public:
-						sp::shared_ptr<neb::gfx::Window::Base>		isWindowBase();
+						sp::shared_ptr<neb::gfx::window::base>		isWindowBase();
 				};
 			}
 		}

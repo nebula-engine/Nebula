@@ -9,17 +9,17 @@
 #include <Nebula/Graphics/Camera/Projection/Perspective.hh>
 
 
-neb::gfx::Context::Base::Base() {
+neb::gfx::context::base::base() {
 }
-neb::gfx::Context::Base::Base(sp::shared_ptr<neb::gfx::Context::Util::Parent> parent): parent_(parent) {
+neb::gfx::context::base::base(sp::shared_ptr<neb::gfx::context::util::parent> parent): parent_(parent) {
 
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-neb::gfx::Context::Base&		neb::gfx::Context::Base::operator=(neb::gfx::Context::Base const & r){
+neb::gfx::context::base&		neb::gfx::context::base::operator=(neb::gfx::context::base const & r){
 	printf("%s\n",__PRETTY_FUNCTION__);
 	return *this;
 }
-void		neb::gfx::Context::Base::init() {
+void		neb::gfx::context::base::init() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
 	// camera
@@ -28,13 +28,13 @@ void		neb::gfx::Context::Base::init() {
 	//camera_->init(shared_from_this());
 	
 }
-void		neb::gfx::Context::Base::release() {
+void		neb::gfx::context::base::release() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 }
-void		neb::gfx::Context::Base::resize(int w, int h) {
+void		neb::gfx::context::base::resize(int w, int h) {
 	viewport_.resize(w,h);
 }
-void		neb::gfx::Context::Base::step(neb::core::TimeStep const & ts) {
+void		neb::gfx::context::base::step(neb::core::TimeStep const & ts) {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
 
@@ -42,7 +42,7 @@ void		neb::gfx::Context::Base::step(neb::core::TimeStep const & ts) {
 	if(view_) view_->step(ts);	
 
 }
-void		neb::gfx::Context::Base::render() {
+void		neb::gfx::context::base::render() {
 	/**
 	 * prepare rendering environment and then call the drawable
 	 */
@@ -51,8 +51,8 @@ void		neb::gfx::Context::Base::render() {
 
 	if(!drawable_) return;
 
-	auto self = sp::dynamic_pointer_cast<neb::gfx::Context::Base>(shared_from_this());
-	auto app = neb::App::Base::global();
+	auto self = sp::dynamic_pointer_cast<neb::gfx::context::base>(shared_from_this());
+	auto app = neb::App::base::global();
 
 	/** wrong for color maybe! */	
 	//glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);

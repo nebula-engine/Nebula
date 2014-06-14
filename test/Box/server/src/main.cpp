@@ -116,7 +116,7 @@ namespace box
 
 int	client_main(char const * addr, short unsigned int port) {
 	
-	auto app = neb::App::Base::globalBase();
+	auto app = neb::App::base::globalBase();
 	
 	assert(app);
 	
@@ -153,12 +153,12 @@ int	client_main(char const * addr, short unsigned int port) {
 	//app->activate_layout(box::LAYOUT_GAME);
 
 }*/
-sp::shared_ptr<neb::Actor::RigidBody::Base> create_player_actor(sp::shared_ptr<neb::Scene::Base> scene) {
+sp::shared_ptr<neb::Actor::RigidBody::base> create_player_actor(sp::shared_ptr<neb::Scene::base> scene) {
 
-	typedef neb::Actor::Base A;
+	typedef neb::Actor::base A;
 	typedef neb::WrapperTyped<A> W;
 	
-	auto app = neb::App::Base::globalBase();
+	auto app = neb::App::base::globalBase();
 	
 	W wrap;
 
@@ -178,7 +178,7 @@ sp::shared_ptr<neb::Actor::RigidBody::Base> create_player_actor(sp::shared_ptr<n
 
 	return rigidbody;
 }
-void	create_player(sp::shared_ptr<neb::gfx::Window::Base> wnd, sp::shared_ptr<neb::Scene::Base> scene) {
+void	create_player(sp::shared_ptr<neb::gfx::window::base> wnd, sp::shared_ptr<neb::Scene::base> scene) {
 	
 	auto rigidbody = create_player_actor(scene);
 
@@ -202,14 +202,14 @@ void	create_player(sp::shared_ptr<neb::gfx::Window::Base> wnd, sp::shared_ptr<ne
 }
 int	server_main(short unsigned int port) {
 
-	auto app = neb::App::Base::globalBase();
+	auto app = neb::App::base::globalBase();
 
 	app->reset_server(port);
 	
-	typedef neb::Util::Parent< neb::Scene::Base > S;
-	typedef neb::Util::Parent< neb::gfx::Window::Base > W;
+	typedef neb::util::parent< neb::Scene::base > S;
+	typedef neb::util::parent< neb::gfx::window::base > W;
 
-	typedef neb::WrapperTyped<neb::Scene::Base>	Wrapper;
+	typedef neb::WrapperTyped<neb::Scene::base>	Wrapper;
 
 	{
 		// Scene
@@ -227,7 +227,7 @@ int	server_main(short unsigned int port) {
 		//app->load_layout(box::LAYOUT_GAME, "../layout_game.xml");
 		
 		// Window
-		sp::shared_ptr<neb::gfx::Window::Base> window(new neb::gfx::Window::Base);
+		sp::shared_ptr<neb::gfx::window::base> window(new neb::gfx::window::base);
 		
 		window->w_ = 600;
 		window->h_ = 600;
@@ -238,7 +238,7 @@ int	server_main(short unsigned int port) {
 		app->W::insert(window);
 		
 		// Context
-		sp::shared_ptr<neb::gfx::Context::Base> context(new neb::gfx::Context::Base);
+		sp::shared_ptr<neb::gfx::context::base> context(new neb::gfx::context::base);
 		
 		context->scene_ = scene;
 
@@ -278,8 +278,8 @@ int	main(int argc, char const ** argv)
 
 	neb::init();
 
-	//neb::App::Base::global()->object_factory_.reset(new box::object_factory);
-	//neb::App::Base::global()->raw_factory_.reset(new neb::actor::raw_factory);
+	//neb::App::base::global()->object_factory_.reset(new box::object_factory);
+	//neb::App::base::global()->raw_factory_.reset(new neb::actor::raw_factory);
 
 	
 	if(strcmp(argv[1], "s") == 0)

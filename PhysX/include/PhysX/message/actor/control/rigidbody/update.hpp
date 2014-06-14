@@ -14,13 +14,13 @@ namespace px { namespace message { namespace actor { namespace control {
 
 		/** @brief %create. */
 		class create:
-			virtual public neb::message::actor::Base
+			virtual public neb::message::actor::base
 		{
 			gal::std::wrapper<px::core::actor::control::rigidbody::base>		control_;
 		};
 		/** @brief %create. */
 		class icreate:
-			virtual public neb::message::actor::Base
+			virtual public neb::message::actor::base
 		{
 			public:
 				/** @brief derived serialize. */
@@ -30,7 +30,7 @@ namespace px { namespace message { namespace actor { namespace control {
 		};
 		/** @brief %create. */
 		class ocreate:
-			virtual public neb::message::actor::Base
+			virtual public neb::message::actor::base
 		{
 			public:
 				/** @brief derived serialize. */
@@ -40,7 +40,7 @@ namespace px { namespace message { namespace actor { namespace control {
 		};
 		/** @brief %Update. */
 		class update:
-			virtual public neb::message::actor::Base
+			virtual public neb::message::actor::base
 		{
 			public:
 				virtual ~update() = 0;

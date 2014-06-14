@@ -2,7 +2,7 @@
 #define NEBULA_UTIL_ADDRESS_HH
 
 namespace neb {
-	namespace Util {
+	namespace util {
 		class AddressBase {
 			public:
 				virtual ~AddressBase() {}
@@ -10,7 +10,7 @@ namespace neb {
 
 		template <class T> class Address {
 			public:
-				typedef neb::Util::index_type __index_type;
+				typedef neb::util::index_type __index_type;
 
 				std::vector<__index_type>	vec_;
 				

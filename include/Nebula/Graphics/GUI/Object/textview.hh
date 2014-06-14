@@ -11,7 +11,7 @@ namespace neb {
 				 * Display and optionally edit text
 				 */
 				class textview:
-					public neb::gfx::gui::object::Base
+					public neb::gfx::gui::object::base
 				{
 					public:
 						textview();
@@ -22,8 +22,8 @@ namespace neb {
 						//int			key_down(int);
 						//virtual int		enter();
 
-						virtual int		key_fun(sp::shared_ptr<neb::gfx::Window::Base> const & window, int,int,int,int);
-						virtual int		mouse_button_fun(sp::shared_ptr<neb::gfx::Window::Base> const & window, int,int,int);
+						virtual int		key_fun(sp::shared_ptr<neb::gfx::window::base> const & window, int,int,int,int);
+						virtual int		mouse_button_fun(sp::shared_ptr<neb::gfx::window::base> const & window, int,int,int);
 						//virtual void		connect();
 
 				};

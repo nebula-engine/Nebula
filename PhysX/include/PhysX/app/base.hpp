@@ -33,7 +33,7 @@ physx::PxFilterFlags DefaultFilterShader(
 namespace px { namespace app {
 
 
-	class base: virtual public neb::App::Base {
+	class base: virtual public neb::App::base {
 		public:
 			base();
 			void						init();

@@ -1,11 +1,11 @@
 #include <Nebula/Math/geo/polyhedron.hh>
 #include <Nebula/Shape/Box.hh>
 
-neb::Shape::Box::Box(sp::shared_ptr<neb::Shape::Util::Parent> parent):
-	neb::Shape::Base(parent)
+neb::core::shape::Box::Box(sp::shared_ptr<neb::core::shape::util::parent> parent):
+	neb::core::shape::base(parent)
 {
 }
-void neb::Shape::Box::Box::createMesh() {
+void neb::core::shape::Box::Box::createMesh() {
 	//mesh_.load("cube.obj");
 	
 	math::geo::cuboid cube(1.0,1.0,1.0);

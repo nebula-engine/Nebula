@@ -15,38 +15,38 @@
 namespace neb {
 	namespace gfx {
 		namespace gui {
-			namespace Layout {
+			namespace layout {
 			/** @brief %Base */
-				class Base:
+				class base:
 					virtual public neb::std::shared,
-					virtual public neb::gfx::Drawable::Base,
-					virtual public neb::gfx::gui::object::Util::Parent
+					virtual public neb::gfx::Drawable::base,
+					virtual public neb::gfx::gui::object::util::parent
 				{
 					public:
-						Base();
-						Base(sp::shared_ptr<neb::gfx::gui::Layout::Util::Parent> parent);
+						base();
+						base(sp::shared_ptr<neb::gfx::gui::layout::util::parent> parent);
 
 						virtual void				init();
 
 
 						/** @brief Main Loop @{ */
 						virtual void					step(neb::core::TimeStep const & ts);
-						virtual void					draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p);
+						virtual void					draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p);
 						/** @} */
 
 						void						connect(
-								sp::shared_ptr<neb::gfx::Window::Base> const & window);
+								sp::shared_ptr<neb::gfx::window::base> const & window);
 						int						search(
-								sp::shared_ptr<neb::gfx::Window::Base> const & ,int button, int action, int mods);
+								sp::shared_ptr<neb::gfx::window::base> const & ,int button, int action, int mods);
 						int						mouse_button_fun(
-								sp::shared_ptr<neb::gfx::Window::Base> const & ,int button, int action, int mods);
+								sp::shared_ptr<neb::gfx::window::base> const & ,int button, int action, int mods);
 						int						key_fun(
-								sp::shared_ptr<neb::gfx::Window::Base> const & ,int,int,int,int);
+								sp::shared_ptr<neb::gfx::window::base> const & ,int,int,int,int);
 					public:
 						glm::mat4x4					ortho_;
 
 
-						sp::shared_ptr<neb::gfx::gui::Layout::Util::Parent>	parent_;
+						sp::shared_ptr<neb::gfx::gui::layout::util::parent>	parent_;
 						// connections
 						struct
 						{

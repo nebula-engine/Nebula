@@ -9,21 +9,21 @@
 
 #include <PhysX/core/shape/base.hpp>
 
-px::core::shape::base(sp::shared_ptr<neb::Shape::Util::Parent> parent):
-	parent_(parent)
+px::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
+	neb::core::shape::base(parent)
 {
 	NEBULA_SHAPE_BASE_FUNC;
 	assert(parent);
 }
 px::core::shape::base::~base() {}
-void			px::core::shape::base::release() {
-}
+//void			px::core::shape::base::release() {
+//}
 void			px::core::shape::base::step(double const & time, double const & dt) {
 }
 void			px::core::shape::base::init() {
 	//NEBULA_DEBUG_0_FUNCTION;
 
-	neb::Shape::Physical::init();
+	neb::core::shape::Physical::init();
 
 	create_physics();
 }

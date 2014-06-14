@@ -34,9 +34,9 @@ namespace neb {
 		 * @ingroup group_core
 		 * @brief Base
 		 */
-		class Base: virtual public neb::core::actor::Util::Parent {
+		class base: virtual public neb::core::actor::util::parent {
 			public:
-				Base(sp::shared_ptr<neb::Scene::Util::Parent>;
+				Base(sp::shared_ptr<neb::Scene::util::parent>;
 				virtual ~Base();
 				void				init();
 				void				release();
@@ -45,9 +45,9 @@ namespace neb {
 				/** @brief render */
 				void				render(
 						double time,
-						std::shared_ptr<neb::gfx::Camera::View::Base>,
-						std::shared_ptr<neb::gfx::Camera::Projection::Base>,
-						sp::shared_ptr<neb::gfx::Window::Base>;
+						std::shared_ptr<neb::gfx::Camera::View::base>,
+						std::shared_ptr<neb::gfx::Camera::Projection::base>,
+						sp::shared_ptr<neb::gfx::window::base>;
 				void							step(neb::core::TimeStep const & ts);
 				/** @} */
 

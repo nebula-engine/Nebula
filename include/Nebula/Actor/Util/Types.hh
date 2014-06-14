@@ -24,38 +24,38 @@ namespace neb { namespace core {
 
 		// Core
 
-		class Base;
+		class base;
 
 		/** @brief %Actor */
 		namespace actor {
-			class Base;
+			class base;
 			class local;
 			class Remote;
 		}
 		/** @brief %rigidactor */
 		namespace rigidactor {
-			class Base;
+			class base;
 			class local;
 			class Remote;
 		}
 
 		/** @brief %RigidBody */
 		namespace rigidbody {
-			class Base;
+			class base;
 			class local;
 			class Remote;
 		}
 
 		/** @brief %RigidDynamic */
 		namespace rigiddynamic {
-			class Base;
+			class base;
 			class local;
 			class Remote;
 		}
 
 		/** @brief %RigidStatic */
 		namespace RigidStatic {
-			class Base;
+			class base;
 			class local;
 			class Remote;
 
@@ -65,8 +65,8 @@ namespace neb { namespace core {
 
 
 		/** @brief Utilities */
-		namespace Util {
-			class Parent;
+		namespace util {
+			class parent;
 		}
 
 		/** @brief %Control */
@@ -81,7 +81,7 @@ namespace neb { namespace core {
 				//class Raw;
 				//typedef boost::shared_ptr<raw>		Raw_s;
 
-				class Base;
+				class base;
 				class Manual;
 
 			}
@@ -89,7 +89,7 @@ namespace neb { namespace core {
 
 		/** @brief %Event */
 		namespace Event {
-			class Base;
+			class base;
 		}
 	}
 }}

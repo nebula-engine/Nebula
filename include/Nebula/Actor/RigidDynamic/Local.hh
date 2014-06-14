@@ -10,10 +10,10 @@ namespace neb { namespace core { namespace actor {
 namespace rigiddynamic {
 			class local:
 				virtual public neb::core::actor::rigidbody::local,
-				virtual public neb::core::actor::rigiddynamic::Base
+				virtual public neb::core::actor::rigiddynamic::base
 			{
 				public:
-					local(sp::shared_ptr<neb::core::actor::Util::Parent> parent);
+					local(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
 					virtual void				init();
 					virtual void				release();

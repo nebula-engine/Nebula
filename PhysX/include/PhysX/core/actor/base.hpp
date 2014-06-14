@@ -7,8 +7,9 @@
 
 namespace px { namespace core { namespace actor {
 
-	class base: virtual public neb::core::actor::Base {
+	class base: virtual public neb::core::actor::base {
 		public:
+			base(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
 			void		hit();
 			void		damage();

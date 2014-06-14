@@ -6,7 +6,7 @@
 #include <Nebula/Util/combiner.hpp>
 
 typedef int							ret_type;
-typedef sp::shared_ptr<neb::gfx::Window::Base> const &		wnd_type;
+typedef sp::shared_ptr<neb::gfx::window::base> const &		wnd_type;
 
 namespace neb {
 	namespace Signals {

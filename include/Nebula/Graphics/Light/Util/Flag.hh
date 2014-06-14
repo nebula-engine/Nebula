@@ -5,7 +5,7 @@
 
 namespace neb {
 	namespace Light {
-		namespace Util {
+		namespace util {
 			DEFINE_FLAG(Flag,
 					((SHOULD_RELEASE)(1 << 0))
 				   )

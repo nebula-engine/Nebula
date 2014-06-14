@@ -19,7 +19,7 @@ int					neb::util::terminal::enter() {
 
 	operator<<("$ " + line_);
 	
-	//neb::App::Base::global()->command(self, line_);
+	//neb::App::base::global()->command(self, line_);
 	assert(cs_);
 	(*cs_)(self, line_);
 
