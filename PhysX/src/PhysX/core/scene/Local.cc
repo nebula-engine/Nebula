@@ -58,7 +58,7 @@ void            px::core::scene::local::step(neb::core::TimeStep const & ts) {
 			
 			if(pxrigidbody != NULL) {
 				auto rigidbody = isActorRigidBody();
-				//dynamic_cast<neb::core::actor::RigidBody::RigidBody*>(actor);
+				//dynamic_cast<neb::core::actor::rigidbody::RigidBody*>(actor);
 
 				assert(rigidbody != NULL);
 

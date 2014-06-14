@@ -1,25 +1,25 @@
-#ifndef __PX_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
-#define __PX_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
+#ifndef PHYSX_CONTENT_ACTOR_RIGIDBODY_LOCAL_HPP
+#define PHYSX_CONTENT_ACTOR_RIGIDBODY_LOCAL_HPP
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Actor/Actor/Base.hh>
+#include <Nebula/Actor/RigidBody/Local.hh>
 
-#include <PhysX/core/actor/base.hpp>
+#include <PhysX/core/actor/rigidactor/local.hpp>
+#include <PhysX/core/actor/rigidbody/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
 
 namespace px { namespace core { namespace actor { namespace rigidbody {
 
 
 
-	class base:
+	class local:
 		virtual public neb::core::actor::rigidbody::local,
 		virtual public px::core::actor::rigidactor::local,
 		virtual public px::core::actor::rigidbody::base
 	{
-
 		public:
-			base(sp::shared_ptr<neb::core::actor::Util::Parent>);
+			local(sp::shared_ptr<neb::core::actor::Util::Parent>);
 
 			virtual void					init();
 			virtual void					release();

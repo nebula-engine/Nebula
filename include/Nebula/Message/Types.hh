@@ -24,7 +24,7 @@ namespace neb {
 			/** @brief %Control */
 			namespace Control {
 				/** @brief %rigidbody */
-				namespace RigidBody {
+				namespace rigidbody {
 					class Create;
 					class ICreate;
 					class OCreate;

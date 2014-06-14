@@ -2,16 +2,16 @@
 
 #include <Nebula/Actor/RigidBody/Remote.hh>
 
-#include <Nebula/Message/Actor/Control.hh>
+#include <PhysX/message/actor/control/rigidbody/update.hpp>
 
-void		neb::core::actor::RigidBody::Remote::step(neb::core::TimeStep const & ts) {
-	neb::core::actor::RigidActor::Remote::step(ts);
-	neb::core::actor::RigidBody::Base::step(ts);
+void		neb::core::actor::rigidbody::Remote::step(neb::core::TimeStep const & ts) {
+	neb::core::actor::rigidactor::Remote::step(ts);
+	neb::core::actor::rigidbody::Base::step(ts);
 
-	auto app = neb::App::Base::globalBase();
+	auto app = neb::App::Base::global();
 	
 	if(control_) {
-		auto message = std::make_shared<neb::message::actor::Control::RigidBody::OUpdate>();
+		auto message = std::make_shared<px::message::actor::control::rigidbody::oupdate>();
 		
 		message->index_ = i_;
 		message->control_.ptr_ = control_;

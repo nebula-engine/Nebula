@@ -1,5 +1,5 @@
-#ifndef __PX_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
-#define __PX_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
+#ifndef PX_CONTENT_ACTOR_RIGIDACTOR_BASE_HPP
+#define PX_CONTENT_ACTOR_RIGIDACTOR_BASE_HPP
 
 #include <PxPhysicsAPI.h>
 
@@ -13,7 +13,7 @@ namespace px { namespace core { namespace actor { namespace rigidactor {
 
 
 	class base:
-		virtual public neb::core::actor::rigidactor::Base
+		virtual public neb::core::actor::rigidactor::Base,
 		virtual public px::core::actor::actor::base
 	{
 
