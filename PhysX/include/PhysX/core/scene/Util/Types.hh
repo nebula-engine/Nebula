@@ -7,8 +7,8 @@ namespace Neb {
 	/** @brief %Scene */
 	namespace Scene {
 		/** @name %Utilities @{ */
-		namespace Util {
-			class Parent;
+		namespace util {
+			class parent;
 
 			typedef std::shared_ptr<Parent>		Parent_s;
 			typedef std::weak_ptr<Parent>		Parent_w;
@@ -30,7 +30,7 @@ namespace Neb {
 			SHOULD_RELEASE = 1 << 0
 		};
 
-		class Base;
+		class base;
 
 
 		typedef std::shared_ptr<Base>		Base_s;

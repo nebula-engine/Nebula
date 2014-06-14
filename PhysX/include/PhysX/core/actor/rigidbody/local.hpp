@@ -19,7 +19,7 @@ namespace px { namespace core { namespace actor { namespace rigidbody {
 		virtual public px::core::actor::rigidbody::base
 	{
 		public:
-			local(sp::shared_ptr<neb::core::actor::Util::Parent>);
+			local(sp::shared_ptr<neb::core::actor::util::parent>);
 
 			virtual void					init();
 			virtual void					release();

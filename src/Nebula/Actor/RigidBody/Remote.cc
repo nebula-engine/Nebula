@@ -4,7 +4,7 @@
 
 void		neb::core::actor::rigidbody::Remote::step(neb::core::TimeStep const & ts) {
 	neb::core::actor::rigidactor::Remote::step(ts);
-	neb::core::actor::rigidbody::Base::step(ts);
+	neb::core::actor::rigidbody::base::step(ts);
 }
 
 

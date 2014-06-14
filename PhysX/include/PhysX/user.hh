@@ -14,11 +14,11 @@ namespace Neb {
 		public:
 			User();
 			void	init();
-			void	connect(sp::shared_ptr<neb::gfx::Window::Base>);
-			void	set_control(sp::shared_ptr<neb::core::actor::Control::RigidBody::Base>);
+			void	connect(sp::shared_ptr<neb::gfx::window::base>);
+			void	set_control(sp::shared_ptr<neb::core::actor::Control::RigidBody::base>);
 			
 			
-			sp::shared_ptr<neb::core::actor::Control::RigidBody::Base>		control_;
+			sp::shared_ptr<neb::core::actor::Control::RigidBody::base>		control_;
 			
 	};
 }

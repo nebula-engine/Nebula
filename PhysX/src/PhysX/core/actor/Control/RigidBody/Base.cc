@@ -1,9 +1,15 @@
 
+
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
+
+#include <glm/glm.hpp>
 
 #include <PxPhysicsAPI.h>
 
+#include <PhysX/core/actor/rigidbody/base.hpp>
 #include <PhysX/core/actor/control/rigidbody/base.hpp>
+#include <PhysX/util/convert.hpp>
 
 px::core::actor::control::rigidbody::base::base() {
 
@@ -11,9 +17,9 @@ px::core::actor::control::rigidbody::base::base() {
 int px::core::actor::control::rigidbody::base::key_fun(int key, int scancode, int action, int mods) {
 	//NEBULA_DEBUG_0_FUNCTION;
 
-	physx::PxVec3 x(1.0,0.0,0.0);
-	physx::PxVec3 y(0.0,1.0,0.0);
-	physx::PxVec3 z(0.0,0.0,1.0);
+	vec3 x(1.0,0.0,0.0);
+	vec3 y(0.0,1.0,0.0);
+	vec3 z(0.0,0.0,1.0);
 
 	switch(action) {
 		case GLFW_PRESS:
@@ -116,15 +122,16 @@ void px::core::actor::control::rigidbody::PD::step(double dt) { // 1
 	float q_scale = 0.5;
 	float p_scale = 0.5;
 
-	if(glm::magnitude(t_) == 0.0f)
+	if(glm::length(t_) == 0.0f)
 	{
 		//printf("no key\n");
 	}
 	else
 	{
-		physx::PxQuat rot(q_scale * dt, t_);
+		//physx::PxQuat rot(q_scale * dt, px::util::convert(t_));
+		quat rot(q_scale * dt, t_);
 
-		q_target_ *= rot;
+		q_target_ = q_target_ * rot;
 
 		//printf("q_target_=\n");
 		//q_target_.print();
@@ -137,25 +144,34 @@ void px::core::actor::control::rigidbody::PD::step(double dt) { // 1
 		//p_target_.print();
 	}
 
+
+/*
 	// get actor
 	auto base = actor_.lock();
-	auto actor = base->isActorActor();
+	auto actor = actor_->isActorActor();
 	assert(actor);
 	
 	auto pxrigidbody = actor->px_actor_->isRigidBody();
-
-
+*/	
+	auto pxrigidbody = actor_->px_actor_->isRigidBody();
+	
 	// rotation from pose to target pose
-	physx::PxQuat q = actor->pose_.q;
-	physx::PxQuat a = q_target_.getConjugate() * q;
+	quat q(actor_->pose_);
+	
+//	physx::PxQuat q = actor_->pose_.q;
+	quat a = glm::conjugate(q_target_) * q;
 
 
 
 
 	// angular velocity
-	physx::PxVec3 omega = pxrigidbody->getAngularVelocity();
-	omega = q.rotate(omega);
-
+	vec3 omega = px::util::convert(pxrigidbody->getAngularVelocity());
+	
+	omega = q * omega;
+	
+	
+	
+	
 	// inertia matrix
 	//physx::PxVec3 vI = pxrigidbody->getMassSpaceInertiaTensor();
 	
@@ -194,7 +210,7 @@ void px::core::actor::control::rigidbody::PD::step(double dt) { // 1
 	//math::vec3 u = ((ac + I * a.w) * Gp + I * gamma * (1 - a.w)) * va * 0.5 - Gr * omega;
 	physx::PxVec3 u;// = -I * e * ke - omega * ko;
 
-	torque_ = u;
+	torque_ = px::util::convert(u);
 	/*
 
 
@@ -243,19 +259,19 @@ void px::core::actor::control::rigidbody::PD::step(double dt) { // 1
 	}
 	*/
 }
-physx::PxVec3			px::core::actor::control::rigidbody::Manual::f() {
+vec3			px::core::actor::control::rigidbody::Manual::f() {
 	//NEBULA_DEBUG_1_FUNCTION;
-	return f_ * 100;
+	return f_ * 100.0f;
 }
-physx::PxVec3			px::core::actor::control::rigidbody::Manual::t() {
+vec3			px::core::actor::control::rigidbody::Manual::t() {
 	//NEBULA_DEBUG_1_FUNCTION;
-	return t_ * 3;
+	return t_ * 3.0f;
 }
-physx::PxVec3			px::core::actor::control::rigidbody::PD::f() {
+vec3			px::core::actor::control::rigidbody::PD::f() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return force_;
 }
-physx::PxVec3			px::core::actor::control::rigidbody::PD::t() {
+vec3			px::core::actor::control::rigidbody::PD::t() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return torque_;
 }

@@ -3,9 +3,9 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Actor/Actor/Base.hh>
+#include <Nebula/Actor/RigidBody/Base.hh>
 
-#include <PhysX/core/actor/base.hpp>
+#include <PhysX/core/actor/rigidactor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
 
 namespace px { namespace core { namespace actor { namespace rigidbody {
@@ -13,12 +13,12 @@ namespace px { namespace core { namespace actor { namespace rigidbody {
 
 	/** @brief base */
 	class base:
-		virtual public neb::core::actor::rigidbody::Base,
+		virtual public neb::core::actor::rigidbody::base,
 		virtual public px::core::actor::rigidactor::base
 	{
 
 		public:
-			base(sp::shared_ptr<neb::core::actor::Util::Parent>);
+			base(sp::shared_ptr<neb::core::actor::util::parent>);
 
 			virtual void					init();
 			virtual void					release();

@@ -16,15 +16,15 @@ namespace neb {
 		 *
 		 * 
 		 */
-		class Base:
+		class base:
 			virtual public neb::std::shared
 		{
 			protected:
-				Base();
-				virtual ~Base() {}
+				base();
+				virtual ~base() {}
 		};
 		class OBase:
-			virtual public neb::message::Base
+			virtual public neb::message::base
 		{
 			public:
 				OBase();
@@ -35,7 +35,7 @@ namespace neb {
 				sp::shared_ptr<gal::net::omessage>	msg_;
 		};
 		class IBase:
-			virtual public neb::message::Base
+			virtual public neb::message::base
 		{
 			public:
 				IBase();

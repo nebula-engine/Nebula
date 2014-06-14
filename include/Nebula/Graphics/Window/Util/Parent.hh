@@ -6,10 +6,10 @@
 
 namespace neb {
 	namespace gfx {
-		namespace Window {
-			namespace Util {
-				class Parent:
-					public neb::Util::parent<neb::gfx::Window::__base>
+		namespace window {
+			namespace util {
+				class parent:
+					public neb::util::parent<neb::gfx::window::__base>
 				{
 					public:
 				};

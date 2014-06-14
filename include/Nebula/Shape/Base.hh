@@ -23,8 +23,9 @@
 #include <Nebula/Graphics/material.hh>
 #include <Nebula/Graphics/mesh.hh>
 
-namespace neb {
-	namespace Shape {
+namespace neb { namespace core { namespace shape {
+
+
 		class buffer {
 			public:
 				GLuint		vbo_;
@@ -36,17 +37,17 @@ namespace neb {
 				} texture_;
 		};
 
-		class Base:
+		class base:
 			virtual public neb::std::shared,
-			virtual public neb::Shape::Util::Parent,
-			virtual public neb::Light::Util::Parent
+			virtual public neb::core::shape::util::parent,
+			virtual public neb::Light::util::parent
 		{
 			public:
-				typedef ::std::map< neb::gfx::Context::Base*, sp::shared_ptr<buffer> >			map_t;
+				typedef ::std::map< neb::gfx::context::base*, sp::shared_ptr<buffer> >			map_t;
 
-				Base();
-				Base(sp::shared_ptr<neb::Shape::Util::Parent> parent);
-				virtual ~Base();
+				base();
+				base(sp::shared_ptr<neb::core::shape::util::parent> parent);
+				virtual ~base();
 
 				void			init();
 				void			release();
@@ -65,14 +66,14 @@ namespace neb {
 				void						load_lights(neb::core::light::util::count& light_count, mat4 space);
 				void						model_load(mat4 space);
 				void						init_buffer(
-						sp::shared_ptr<neb::gfx::Context::Base> context,
+						sp::shared_ptr<neb::gfx::context::base> context,
 						sp::shared_ptr<neb::glsl::program> p);
 				void						draw(
-						sp::shared_ptr<neb::gfx::Context::Base>,
+						sp::shared_ptr<neb::gfx::context::base>,
 						sp::shared_ptr<neb::glsl::program> p,
 						mat4 space);
 				virtual void					draw_elements(
-						sp::shared_ptr<neb::gfx::Context::Base> context,
+						sp::shared_ptr<neb::gfx::context::base> context,
 						sp::shared_ptr<neb::glsl::program> p,
 						mat4 space);
 				/** @} */
@@ -87,10 +88,10 @@ namespace neb {
 				}
 
 			public:
-				sp::shared_ptr<neb::Shape::Util::Parent>		parent_;
+				sp::shared_ptr<neb::core::shape::util::parent>		parent_;
 
 			public:
-				neb::Shape::Util::Flag		flag_;
+				neb::core::shape::util::Flag		flag_;
 				/** @brief Pose. */
 				mat4				pose_;
 				/** @brief Scale. */
@@ -112,10 +113,12 @@ namespace neb {
 				/** @brief Parent */
 
 		};
-	}
-}
+
+}}}
+
 
 #endif
+
 
 
 

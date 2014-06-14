@@ -9,8 +9,8 @@ namespace neb {
 	namespace App {
 		class __core:
 			virtual public neb::App::__base,
-			virtual public neb::gfx::gui::Layout::Util::Parent,
-			virtual public neb::Scene::Util::Parent
+			virtual public neb::gfx::gui::layout::util::parent,
+			virtual public neb::Scene::util::parent
 		{
 			public:
 				virtual void	init();

@@ -31,7 +31,7 @@ namespace px { namespace core { namespace scene {
 	{
 		void				step(neb::core::TimeStep const & ts);
 		
-		virtual void			fire(sp::shared_ptr<neb::core::actor::Base> actor);
+		virtual void			fire(sp::shared_ptr<neb::core::actor::base> actor);
 	};
 
 

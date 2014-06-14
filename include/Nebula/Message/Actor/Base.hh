@@ -7,8 +7,8 @@
 namespace neb {
 	namespace message {
 		namespace actor {
-			class Base:
-				virtual public neb::message::Base
+			class base:
+				virtual public neb::message::base
 			{
 				public:
 					/** @brief index
@@ -19,7 +19,7 @@ namespace neb {
 			};
 			class IBase:
 				virtual public neb::message::IBase,
-				virtual public neb::message::actor::Base
+				virtual public neb::message::actor::base
 			{
 				private:
 					IBase&			operator=(IBase const &);
@@ -33,7 +33,7 @@ namespace neb {
 			};
 			class OBase:
 				virtual public neb::message::OBase,
-				virtual public neb::message::actor::Base
+				virtual public neb::message::actor::base
 			{
 				public:
 					virtual void		serialize(

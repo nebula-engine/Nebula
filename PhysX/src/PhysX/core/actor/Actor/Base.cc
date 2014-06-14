@@ -9,35 +9,35 @@
 
 #include <Nebula/Actor/Actor/Base.hh>
 
-neb::core::actor::actor::Base::Base() {
+neb::core::actor::actor::base::base() {
 }
-neb::core::actor::actor::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent):
-	neb::core::actor::Base(parent)
+neb::core::actor::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+	neb::core::actor::base(parent)
 {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-void		neb::core::actor::actor::Base::init() {
+void		neb::core::actor::actor::base::init() {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	neb::core::actor::Base::init();
+	neb::core::actor::base::init();
 }
-void		neb::core::actor::actor::Base::set_pose(mat4 pose) {
+void		neb::core::actor::actor::base::set_pose(mat4 pose) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	neb::core::actor::Base::setPose(pose);
+	neb::core::actor::base::setPose(pose);
 }
-int		neb::core::actor::actor::Base::fire() {
+int		neb::core::actor::actor::base::fire() {
 	NEBULA_ACTOR_BASE_FUNC;
-	return neb::core::actor::Base::fire();
+	return neb::core::actor::base::fire();
 }
-void		neb::core::actor::actor::Base::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::actor::base::step(neb::core::TimeStep const & ts) {
 }
 
 
-void		neb::core::actor::actor::Base::release() {
+void		neb::core::actor::actor::base::release() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
-	neb::core::actor::Base::release();
+	neb::core::actor::base::release();
 
 	//assert(!scene_.expired());
 

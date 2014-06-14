@@ -100,7 +100,7 @@ void	neb::glsl::program::add_attrib(neb::attrib_name::e name, char const * s, GL
 }
 void	neb::glsl::program::add_uniform_scalar(std::string name, GLenum type) {
 	
-	std::shared_ptr<neb::glsl::Uniform::Scalar::Base> u;
+	std::shared_ptr<neb::glsl::Uniform::Scalar::base> u;
 
 	switch(type) {
 		case GL_INT:
@@ -130,7 +130,7 @@ void	neb::glsl::program::add_uniform_scalar(std::string name, GLenum type) {
 }
 void	neb::glsl::program::add_uniform_vector(std::string name1, std::string name2, GLenum type) {
 
-	std::shared_ptr<neb::glsl::Uniform::Vector::Base> u;
+	std::shared_ptr<neb::glsl::Uniform::Vector::base> u;
 
 	switch(type) {
 		case GL_INT:
@@ -170,7 +170,7 @@ std::shared_ptr<neb::glsl::attrib>	neb::glsl::program::get_attrib(int name) {
 
 	return p;
 }
-std::shared_ptr<neb::glsl::Uniform::Scalar::Base>	neb::glsl::program::get_uniform_scalar(std::string name) {
+std::shared_ptr<neb::glsl::Uniform::Scalar::base>	neb::glsl::program::get_uniform_scalar(std::string name) {
 	//printf("%s\n", __PRETTY_FUNCTION__);
 
 	auto it = uniform_scalar_.find(name);
@@ -187,7 +187,7 @@ std::shared_ptr<neb::glsl::Uniform::Scalar::Base>	neb::glsl::program::get_unifor
 
 	return p;
 }
-std::shared_ptr<neb::glsl::Uniform::Vector::Base>	neb::glsl::program::get_uniform_vector(std::string name) {
+std::shared_ptr<neb::glsl::Uniform::Vector::base>	neb::glsl::program::get_uniform_vector(std::string name) {
 	//printf("%s\n", __PRETTY_FUNCTION__);
 
 	auto it = uniform_vector_.find(name);
@@ -220,14 +220,14 @@ void	neb::glsl::program::locate() {
 	}
 
 	{
-		std::shared_ptr<neb::glsl::Uniform::Scalar::Base> u;
+		std::shared_ptr<neb::glsl::Uniform::Scalar::base> u;
 		for(auto it = uniform_scalar_.begin(); it != uniform_scalar_.end(); ++it) {
 			u = (*it).second;
 			u->locate(shared_from_this());
 		}
 	}	
 
-	std::shared_ptr<neb::glsl::Uniform::Vector::Base> u;
+	std::shared_ptr<neb::glsl::Uniform::Vector::base> u;
 	for(auto it = uniform_vector_.begin(); it != uniform_vector_.end(); ++it) {
 		u = (*it).second;
 		u->locate(shared_from_this());

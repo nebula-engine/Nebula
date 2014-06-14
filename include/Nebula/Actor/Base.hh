@@ -39,17 +39,17 @@
 
 namespace neb { namespace core { namespace actor {
 	/** @brief %Base */
-	class Base:
+	class base:
 		virtual public neb::actor::__base,
-		virtual public neb::core::actor::Util::Parent,
-		virtual public neb::Shape::Util::Parent
+		virtual public neb::core::actor::util::parent,
+		virtual public neb::core::shape::util::parent
 	{
 		public:
 			/** @brief default constructor */
-			Base();
+			//base();
 			/** @brief constructor */
-			Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent);
-			virtual ~Base();
+			base(sp::shared_ptr<neb::core::actor::util::parent> parent);
+			virtual ~base();
 		public:
 			virtual void					init();
 			virtual void					release();
@@ -57,7 +57,7 @@ namespace neb { namespace core { namespace actor {
 
 		public:
 			/** @name Render @{ */
-			void						draw(sp::shared_ptr<neb::gfx::Context::Base>, sp::shared_ptr<neb::glsl::program> p,
+			void						draw(sp::shared_ptr<neb::gfx::context::base>, sp::shared_ptr<neb::glsl::program> p,
 mat4);
 			/** @} */
 
@@ -65,7 +65,7 @@ mat4);
 			virtual mat4					getPoseGlobal();
 
 			/** @name Accessors @{ */
-			sp::shared_ptr<neb::core::actor::Util::Parent>		getParent();
+			sp::shared_ptr<neb::core::actor::util::parent>		getParent();
 			void						setPose(mat4 pose);
 			/** @} */
 
@@ -74,9 +74,9 @@ mat4);
 
 			/** @todo move to derived class */
 			// signal
-			void						connect(sp::shared_ptr<neb::gfx::Window::Base>);
+			void						connect(sp::shared_ptr<neb::gfx::window::base>);
 
-			int						key_fun(sp::shared_ptr<neb::gfx::Window::Base> window,int,int,int,int);
+			int						key_fun(sp::shared_ptr<neb::gfx::window::base> window,int,int,int,int);
 		public:
 			/** @todo what is this??? */
 			neb::core::actor::mode_update::e		mode_update_;
@@ -96,8 +96,8 @@ mat4);
 
 				serializeData(ar, version);
 
-				ar & boost::serialization::make_nvp("actors", neb::core::actor::Util::Parent::map_);
-				ar & boost::serialization::make_nvp("shapes", neb::Shape::Util::Parent::map_);
+				ar & boost::serialization::make_nvp("actors", neb::core::actor::util::parent::map_);
+				ar & boost::serialization::make_nvp("shapes", neb::core::shape::util::parent::map_);
 			}
 			virtual void		serializeData(
 					boost::archive::polymorphic_oarchive & ar,
@@ -133,7 +133,7 @@ mat4);
 
 
 			neb::core::actor::mode_create::e		mode_create_;
-			neb::core::actor::Util::Flag			flag_;
+			neb::core::actor::util::Flag			flag_;
 			::std::string				name_;
 			mat4					pose_;
 			/** @brief Normal for planes. */
@@ -151,7 +151,7 @@ mat4);
 
 		public:
 			/** @brief Parent */
-			sp::shared_ptr<neb::core::actor::Util::Parent>		parent_;
+			sp::shared_ptr<neb::core::actor::util::parent>		parent_;
 	};
 }}}
 

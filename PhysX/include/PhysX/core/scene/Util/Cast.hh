@@ -7,10 +7,10 @@
 
 namespace Neb {
         namespace Scene {
-                namespace Util {
+                namespace util {
                         class Cast: virtual public gal::std::shared {
                                 public:
-                                        sp::shared_ptr<neb::Scene::Base>              isSceneBase();
+                                        sp::shared_ptr<neb::Scene::base>              isSceneBase();
                         };
                 }
         }

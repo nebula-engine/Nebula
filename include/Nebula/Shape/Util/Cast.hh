@@ -5,17 +5,19 @@
 
 #include <Nebula/Shape/Util/Types.hh>
 
-namespace neb {
-	namespace Shape {
-		namespace Util {
+namespace neb { namespace core { namespace shape { namespace util {
+
+
+
 			class Cast:
 				virtual public gal::std::shared
 			{
 				public:
-					sp::shared_ptr<neb::Shape::Base>		isShapeBase();
+					sp::shared_ptr<neb::core::shape::base>		isShapeBase();
 			};
-		}
-	}
-}
+
+
+
+}}}}
 
 #endif

@@ -13,10 +13,10 @@ namespace neb {
 		namespace Camera {
 			namespace Projection {
 				/** @brief @Base */
-				class Base {
+				class base {
 					public:
 						/** @brief Constructor */
-						Base(sp::shared_ptr<neb::gfx::Context::Base>);
+						Base(sp::shared_ptr<neb::gfx::context::base>);
 
 						virtual mat4				proj() = 0;
 						void					load(sp::shared_ptr<neb::glsl::program> p);
@@ -26,11 +26,11 @@ namespace neb {
 						void					step(neb::core::TimeStep const & ts);
 					protected:
 						/** @brief Parent */
-						sp::shared_ptr<neb::gfx::Context::Base>		parent_;
+						sp::shared_ptr<neb::gfx::context::base>		parent_;
 				};
 				class Perspective: public Base {
 					public:
-						Perspective(sp::shared_ptr<neb::gfx::Context::Base>);
+						Perspective(sp::shared_ptr<neb::gfx::context::base>);
 						//void		init(neb::renderable_shared);
 						virtual mat4				proj();
 

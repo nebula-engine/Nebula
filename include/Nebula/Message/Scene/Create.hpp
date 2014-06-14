@@ -17,7 +17,7 @@ namespace neb {
 			class Create {
 				public:
 					Create();
-					void load(sp::shared_ptr<neb::Scene::Base>scene);
+					void load(sp::shared_ptr<neb::Scene::base>scene);
 
 					template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 						ar & scene_;
