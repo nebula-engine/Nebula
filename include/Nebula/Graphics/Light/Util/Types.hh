@@ -5,11 +5,11 @@ namespace neb {
 	/** @brief %Light */
 	namespace Light {
 		/** @brief %Util */
-		namespace Util {
-			class Parent;
+		namespace util {
+			class parent;
 		}
 
-		class Base;
+		class base;
 	}
 }
 

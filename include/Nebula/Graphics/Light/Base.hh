@@ -29,9 +29,9 @@
 
 namespace neb {
 	namespace Light {
-		class Base: virtual public neb::core::light::__base {
+		class base: virtual public neb::core::light::__base {
 			public:
-				Base(sp::shared_ptr<neb::Light::Util::Parent> parent, ::std::string);
+				base(sp::shared_ptr<neb::Light::util::parent> parent, ::std::string);
 				
 				void				init();
 				
@@ -71,9 +71,9 @@ namespace neb {
 					serializeTemplate(ar, version);
 				}
 			public:
-				sp::shared_ptr<neb::Light::Util::Parent>	parent_;
+				sp::shared_ptr<neb::Light::util::parent>	parent_;
 
-				neb::Light::Util::Flag				flag_;
+				neb::Light::util::Flag				flag_;
 
 				::std::string					light_type_string_;
 

@@ -13,13 +13,13 @@ void		px::core::scene::remote::step(neb::core::TimeStep const & ts) {
 
 
 }
-void		px::core::scene::remote::fire(sp::shared_ptr<neb::core::actor::Base> actor) {
+void		px::core::scene::remote::fire(sp::shared_ptr<neb::core::actor::base> actor) {
 	
 	auto message(sp::make_shared< px::message::actor::event::OFire >());
 	
 	// fill message
 	message->i_ = actor->i_;
 
-	neb::App::Base::global()->sendClient(message);
+	neb::App::base::global()->sendClient(message);
 }
 

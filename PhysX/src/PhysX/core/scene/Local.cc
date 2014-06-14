@@ -12,7 +12,7 @@
 
 void            px::core::scene::local::step(neb::core::TimeStep const & ts) {
 	
-	auto app = neb::App::Base::global();
+	auto app = neb::App::base::global();
 	
 	// timer
 	//timer_set_.step(time);
@@ -48,7 +48,7 @@ void            px::core::scene::local::step(neb::core::TimeStep const & ts) {
 		void* ud = active_transforms[i].userData;
 		assert(ud);
 
-		neb::core::actor::Base* pactor = static_cast<neb::core::actor::Base*>(ud);
+		neb::core::actor::base* pactor = static_cast<neb::core::actor::base*>(ud);
 		auto actor = pactor->isActorBase();
 		
 
@@ -69,7 +69,7 @@ void            px::core::scene::local::step(neb::core::TimeStep const & ts) {
 				//v.print();
 			}
 
-			actor->flag_.set(neb::core::actor::Util::Flag::E::SHOULD_UPDATE);
+			actor->flag_.set(neb::core::actor::util::Flag::E::SHOULD_UPDATE);
 		}
 	}
 
@@ -91,7 +91,7 @@ void		px::core::scene::local::fire(sp::shared_ptr<px::core::actor::base> actor) 
 
 	/** @todo replace neb::timer::actor::type with inheritance */
 
-	std::shared_ptr<neb::Timer::actor::Base> t(
+	std::shared_ptr<neb::Timer::actor::base> t(
 			new neb::Timer::actor::Release(proj, last_ + 5.0)
 			);
 

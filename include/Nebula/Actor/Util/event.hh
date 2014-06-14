@@ -12,7 +12,7 @@
 namespace neb {
 	namespace Event {
 		namespace actor {
-			class Base {
+			class base {
 				public:
 					template<class Archive> void		serialize(Archive & ar, unsigned int const & version) {
 						ar & hash_code_;

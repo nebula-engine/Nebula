@@ -10,9 +10,10 @@
 namespace px { namespace core { namespace shape {
 
 
-	class base: virtual public neb::Shape::Base {
+	class base: virtual public neb::core::shape::base {
 		public:
-			base(sp::shared_ptr<neb::Shape::Util::Parent>);
+			base(sp::shared_ptr<neb::core::shape::util::parent>);
+			virtual ~base();
 
 			virtual void		init();
 			void			create_physics();

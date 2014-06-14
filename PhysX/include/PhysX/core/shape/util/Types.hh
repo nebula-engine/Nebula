@@ -3,7 +3,7 @@
 
 namespace Neb {
 	/** @brief %Shape */	
-	namespace Shape {
+	namespace shape {
 		struct flag {
 			enum e {
 				SHOULD_RELEASE = 1 << 0,
@@ -11,15 +11,15 @@ namespace Neb {
 			};
 		};
 
-		namespace Util {
-			class Parent;
+		namespace util {
+			class parent;
 
 			typedef std::shared_ptr<Parent>		Parent_s;
 			typedef std::unique_ptr<Parent>		Parent_u;
 			typedef std::weak_ptr<Parent>		Parent_w;
 		}
 
-		class Base;
+		class base;
 
 		typedef std::shared_ptr<Base>		Base_s;
 		typedef std::weak_ptr<Base>		Base_w;

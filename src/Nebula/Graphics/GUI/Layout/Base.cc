@@ -14,18 +14,18 @@
 #include <Nebula/Graphics/GUI/Layout/Base.hh>
 
 
-neb::gfx::gui::Layout::Base::Base() {
+neb::gfx::gui::layout::base::base() {
 }
-neb::gfx::gui::Layout::Base::Base(sp::shared_ptr<neb::gfx::gui::Layout::Util::Parent> parent): parent_(parent) {
+neb::gfx::gui::layout::base::base(sp::shared_ptr<neb::gfx::gui::layout::util::parent> parent): parent_(parent) {
 
 	program_name_ = neb::program_name::e::TEXT;
 
 }
-void neb::gfx::gui::Layout::Base::init() {
+void neb::gfx::gui::layout::base::init() {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 }
 /*
-void neb::gfx::gui::Layout::Base::load_xml(tinyxml2::XMLElement* element)
+void neb::gfx::gui::layout::base::load_xml(tinyxml2::XMLElement* element)
 {
 	assert(element);
 	tinyxml2::XMLElement* e = element->FirstChildElement("object");
@@ -35,7 +35,7 @@ void neb::gfx::gui::Layout::Base::load_xml(tinyxml2::XMLElement* element)
 	}
 }*/
 /*
-void neb::gfx::gui::Layout::Base::create_object(tinyxml2::XMLElement* element) {
+void neb::gfx::gui::layout::base::create_object(tinyxml2::XMLElement* element) {
 
 	assert(element);
 
@@ -43,27 +43,27 @@ void neb::gfx::gui::Layout::Base::create_object(tinyxml2::XMLElement* element) {
 
 	objects_.push_back(object);
 }*/
-void		neb::gfx::gui::Layout::Base::step(neb::core::TimeStep const & ts) {
+void		neb::gfx::gui::layout::base::step(neb::core::TimeStep const & ts) {
 }
-void		neb::gfx::gui::Layout::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p) {
+void		neb::gfx::gui::layout::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
 	//jess::clog << NEB_FUNCSIG << std::endl;
 	//jess::clog << "objects_.size()=" << objects_.map_.size() << std::endl;
 	
-	typedef neb::gfx::gui::object::Util::Parent O;
+	typedef neb::gfx::gui::object::util::parent O;
 	
 	O::map_.for_each<0>([&] (O::map_type::iterator<0> it) {
-		auto object = sp::dynamic_pointer_cast<neb::gfx::gui::object::Base>(it->ptr_);
+		auto object = sp::dynamic_pointer_cast<neb::gfx::gui::object::base>(it->ptr_);
 		assert(object);
 		object->draw(p);
 	});
 
 }
-void neb::gfx::gui::Layout::Base::connect(sp::shared_ptr<neb::gfx::Window::Base> const & window) {
+void neb::gfx::gui::layout::base::connect(sp::shared_ptr<neb::gfx::window::base> const & window) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
 	conns_.key_fun_ = window->sig_.key_fun_.connect(
 			10,
-			::std::bind(&neb::gfx::gui::Layout::Base::key_fun,
+			::std::bind(&neb::gfx::gui::layout::base::key_fun,
 				this,
 				::std::placeholders::_1,
 				::std::placeholders::_2,
@@ -74,7 +74,7 @@ void neb::gfx::gui::Layout::Base::connect(sp::shared_ptr<neb::gfx::Window::Base>
 
 	conns_.mouse_button_fun_ = window->sig_.mouse_button_fun_.connect(
 			10,
-			::std::bind(&neb::gfx::gui::Layout::Base::mouse_button_fun,
+			::std::bind(&neb::gfx::gui::layout::base::mouse_button_fun,
 				this,
 				::std::placeholders::_1,
 				::std::placeholders::_2,
@@ -83,14 +83,14 @@ void neb::gfx::gui::Layout::Base::connect(sp::shared_ptr<neb::gfx::Window::Base>
 				));
 
 }
-int neb::gfx::gui::Layout::Base::key_fun(sp::shared_ptr<neb::gfx::Window::Base> const & window, int key, int scancode, int action, int mode) {
+int neb::gfx::gui::layout::base::key_fun(sp::shared_ptr<neb::gfx::window::base> const & window, int key, int scancode, int action, int mode) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
-	typedef neb::gfx::gui::object::Util::Parent O;
+	typedef neb::gfx::gui::object::util::parent O;
 
 	//O::map_.for_each_int<0>([&] (O::map_type::iterator<0> it) {
 	for(O::map_type::iterator<0> it = O::map_.begin(); it != O::map_.end(); ++it) {
-		auto object = sp::dynamic_pointer_cast<neb::gfx::gui::object::Base>(it->ptr_);
+		auto object = sp::dynamic_pointer_cast<neb::gfx::gui::object::base>(it->ptr_);
 		assert(object);
 
 		if(object->key_fun(window, key, scancode, action, mode)) return 1;
@@ -98,7 +98,7 @@ int neb::gfx::gui::Layout::Base::key_fun(sp::shared_ptr<neb::gfx::Window::Base> 
 
 	return 0;
 }
-int neb::gfx::gui::Layout::Base::mouse_button_fun(sp::shared_ptr<neb::gfx::Window::Base> const & window, int button, int action, int mods) {
+int neb::gfx::gui::layout::base::mouse_button_fun(sp::shared_ptr<neb::gfx::window::base> const & window, int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	assert(window);
@@ -118,7 +118,7 @@ int neb::gfx::gui::Layout::Base::mouse_button_fun(sp::shared_ptr<neb::gfx::Windo
 
 	return 0;
 }
-int neb::gfx::gui::Layout::Base::search(sp::shared_ptr<neb::gfx::Window::Base> const & window, int button, int action, int mods) {
+int neb::gfx::gui::layout::base::search(sp::shared_ptr<neb::gfx::window::base> const & window, int button, int action, int mods) {
 	printf("%s\n", __PRETTY_FUNCTION__);
 
 	assert(window);
@@ -135,13 +135,13 @@ int neb::gfx::gui::Layout::Base::search(sp::shared_ptr<neb::gfx::Window::Base> c
 
 	printf("%f %f\n", x, y);
 
-	typedef neb::gfx::gui::object::Util::Parent O;
+	typedef neb::gfx::gui::object::util::parent O;
 
-	sp::shared_ptr<neb::gfx::gui::object::Base> object;
-	sp::shared_ptr<neb::gfx::gui::object::Base> objecttmp;
+	sp::shared_ptr<neb::gfx::gui::object::base> object;
+	sp::shared_ptr<neb::gfx::gui::object::base> objecttmp;
 
 	O::map_.for_each_int<0>([&] (O::map_type::iterator<0> it) {
-			objecttmp = sp::dynamic_pointer_cast<neb::gfx::gui::object::Base>(it->ptr_);
+			objecttmp = sp::dynamic_pointer_cast<neb::gfx::gui::object::base>(it->ptr_);
 			assert(objecttmp);
 			printf("object %f %f %f %f\n",
 				objecttmp->x_,

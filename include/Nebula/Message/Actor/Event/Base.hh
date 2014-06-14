@@ -28,17 +28,17 @@ namespace neb {
 		namespace actor {
 			namespace Event {
 				/** @brief %Base */
-				class Base: virtual public neb::message::actor::Base {
+				class base: virtual public neb::message::actor::base {
 					public:
 				};
 				class IBase:
 					virtual public neb::message::actor::IBase,
-					virtual public neb::message::actor::Event::Base
+					virtual public neb::message::actor::Event::base
 				{
 				};
 				class OBase:
 					virtual public neb::message::actor::OBase,
-					virtual public neb::message::actor::Event::Base
+					virtual public neb::message::actor::Event::base
 				{
 				};
 			}

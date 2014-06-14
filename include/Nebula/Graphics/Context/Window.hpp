@@ -15,7 +15,7 @@
 
 namespace neb {
 	namespace gfx {
-		namespace Context {
+		namespace context {
 			/** @brief %Context
 			 *
 			 * A context with a window as the target.
@@ -24,13 +24,13 @@ namespace neb {
 			 * such that things like layouts are render ON TOP of existing scene.'
 			 */
 			class Window:
-				virtual public neb::gfx::Context::Base
+				virtual public neb::gfx::context::base
 			{
 				public:
-					Window(sp::shared_ptr<neb::gfx::Window::Base> window);
+					Window(sp::shared_ptr<neb::gfx::window::base> window);
 					virtual void					init();
 				public:
-					sp::shared_ptr<neb::gfx::Window::Base>	window_;
+					sp::shared_ptr<neb::gfx::window::base>	window_;
 			};
 		}
 	}

@@ -29,9 +29,9 @@
 
 namespace neb {
 	namespace Scene {
-		class local: virtual public neb::Scene::Base {
+		class local: virtual public neb::Scene::base {
 			public:
-				local(sp::shared_ptr<neb::Scene::Util::Parent> parent);
+				local(sp::shared_ptr<neb::Scene::util::parent> parent);
 				virtual void			step(neb::core::TimeStep const & ts);
 				virtual void			send_actor_update();
 		};

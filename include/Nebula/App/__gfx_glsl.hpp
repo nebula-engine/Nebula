@@ -24,7 +24,7 @@ namespace neb {
 			public:
 				typedef ::std::map<int, sp::shared_ptr<neb::glsl::program> >		map_program_type;
 
-				friend class neb::gfx::Context::Base;
+				friend class neb::gfx::context::base;
 			protected:
 				static sp::shared_ptr<neb::App::__gfx_glsl>		global();
 

@@ -1,12 +1,12 @@
 #include <Nebula/Graphics/Context/Window.hpp>
 
-neb::gfx::Context::Window::Window(sp::shared_ptr<neb::gfx::Window::Base> window):
-	neb::gfx::Context::Base(window),
+neb::gfx::context::window::Window(sp::shared_ptr<neb::gfx::window::base> window):
+	neb::gfx::context::base(window),
 	window_(window)
 {
 }
-void		neb::gfx::Context::Window::init() {
-	neb::gfx::Context::Base::init();
+void		neb::gfx::context::window::init() {
+	neb::gfx::context::base::init();
 	
 	assert(window_);
 

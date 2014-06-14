@@ -20,7 +20,7 @@ namespace neb {
 				/** @brief %Array
 				 * base class for array GLSL uniform
 				 */
-				class Base {
+				class base {
 					public:
 						Base(::std::string, ::std::string);
 						virtual ~Base() {}
@@ -45,29 +45,29 @@ namespace neb {
 						GLuint			o_[LEN];
 
 				};
-				class Int: public neb::glsl::Uniform::Vector::Base {
+				class Int: public neb::glsl::Uniform::Vector::base {
 					public:
 						Int(::std::string s1, ::std::string s2): Base(s1,s2) {}
 						virtual void		load(int,int);
 				};
-				class Float: public neb::glsl::Uniform::Vector::Base {
+				class Float: public neb::glsl::Uniform::Vector::base {
 					public:
 						Float(::std::string s1, ::std::string s2): Base(s1,s2) {}
 						virtual void		load(int,float);
 				};
-				class Vec3: public neb::glsl::Uniform::Vector::Base {
+				class Vec3: public neb::glsl::Uniform::Vector::base {
 					public:
 						Vec3(::std::string s1, ::std::string s2): Base(s1,s2) {}
 						virtual void		load(int, float*);
 						virtual void		load(int, vec3 const &);
 				};
-				class Vec4: public neb::glsl::Uniform::Vector::Base {
+				class Vec4: public neb::glsl::Uniform::Vector::base {
 					public:
 						Vec4(::std::string s1, ::std::string s2): Base(s1,s2) {}
 						virtual void		load(int, float*);
 						virtual void		load(int, vec4 const &);
 				};
-				class Mat4: public neb::glsl::Uniform::Vector::Base {
+				class Mat4: public neb::glsl::Uniform::Vector::base {
 					public:
 						Mat4(::std::string s1, ::std::string s2): Base(s1,s2) {}
 						virtual void		load(int, mat4 const &);

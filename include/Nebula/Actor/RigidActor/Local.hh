@@ -9,7 +9,7 @@ namespace neb { namespace core { namespace actor {
 
 namespace rigidactor {
 			class local:
-				virtual public neb::core::actor::rigidactor::Base,
+				virtual public neb::core::actor::rigidactor::base,
 				virtual public neb::core::actor::actor::local
 			{
 				public:

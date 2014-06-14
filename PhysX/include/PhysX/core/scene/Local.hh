@@ -31,7 +31,7 @@ namespace px { namespace core { namespace scene {
 		virtual public neb::Scene::local,
 		virtual public px::core::scene::base
 	{
-		local(sp::shared_ptr<neb::Scene::Util::Parent> parent);
+		local(sp::shared_ptr<neb::Scene::util::parent> parent);
 		virtual void			init();
 		virtual void			release();
 		virtual void			step(::neb::core::TimeStep const & ts);

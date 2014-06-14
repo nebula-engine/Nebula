@@ -22,10 +22,10 @@ namespace neb {
 		namespace Camera {
 			namespace View {
 				/** @brief @Base */
-				class Base {
+				class base {
 					public:
 						/** @brief Constructor */
-						Base(sp::shared_ptr< ::neb::gfx::Context::Base > parent);
+						base(sp::shared_ptr< ::neb::gfx::context::base > parent);
 						/** @brief Load view matrix into GLSL. */
 						void						load(sp::shared_ptr< ::neb::glsl::program > p);
 						/** @brief Get view matrix. */
@@ -37,10 +37,10 @@ namespace neb {
 						virtual void					step(::neb::core::TimeStep const & ts) = 0;
 
 						virtual void					connect(
-								sp::shared_ptr< ::neb::gfx::Window::Base > const & window) {}
+								sp::shared_ptr< ::neb::gfx::window::base > const & window) {}
 
 					public:
-						sp::shared_ptr< ::neb::gfx::Context::Base >		parent_;
+						sp::shared_ptr< ::neb::gfx::context::base >		parent_;
 
 						neb::gfx::camera::view::util::flag			flag_;
 				};

@@ -13,12 +13,12 @@ namespace px { namespace core { namespace actor { namespace actor {
 
 
 	class base:
-		virtual public neb::core::actor::actor::Base,
+		virtual public neb::core::actor::actor::base,
 		virtual public px::core::actor::base
 	{
 
 		public:
-			base(sp::shared_ptr<neb::core::actor::Util::Parent>);
+			base(sp::shared_ptr<neb::core::actor::util::parent>);
 
 			virtual void					init();
 			virtual void					release();

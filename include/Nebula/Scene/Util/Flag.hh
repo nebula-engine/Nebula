@@ -5,7 +5,7 @@
 
 namespace neb {
 	namespace Scene {
-		namespace Util {
+		namespace util {
 			DEFINE_FLAG(Flag,
 					((RAY_TRACE)		(1 << 1))
 					((LIGHTING)		(1 << 2))

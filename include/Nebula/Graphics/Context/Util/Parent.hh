@@ -7,15 +7,15 @@
 
 namespace neb {
 	namespace gfx {
-		namespace Context {
-			namespace Util {
-				class Parent:
-					virtual public neb::Util::parent< neb::gfx::Context::Base >,
-					virtual public neb::gfx::Window::Util::Cast
+		namespace context {
+			namespace util {
+				class parent:
+					virtual public neb::util::parent< neb::gfx::context::base >,
+					virtual public neb::gfx::window::util::Cast
 				{
 					public:
 						virtual void			init() {}
-						virtual void			step(neb::core::TimeStep const & ts) { neb::Util::parent< neb::gfx::Context::Base >::step(ts); }
+						virtual void			step(neb::core::TimeStep const & ts) { neb::util::parent< neb::gfx::context::base >::step(ts); }
 
 				};
 			}

@@ -24,23 +24,23 @@
 /** @file Base
  */
 
-neb::core::actor::Base::Base() {
+neb::core::actor::base::base() {
 }
-neb::core::actor::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent): parent_(parent) {
+neb::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent): parent_(parent) {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-neb::core::actor::Base::~Base() {
+neb::core::actor::base::~Base() {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-void		neb::core::actor::Base::init() {
+void		neb::core::actor::base::init() {
 }
-sp::shared_ptr<neb::core::actor::Util::Parent>	neb::core::actor::Base::getParent() {
+sp::shared_ptr<neb::core::actor::util::parent>	neb::core::actor::base::getParent() {
 	return parent_;
 }
-mat4				neb::core::actor::Base::getPose() {
+mat4				neb::core::actor::base::getPose() {
 	return pose_;
 }
-mat4				neb::core::actor::Base::getPoseGlobal() {
+mat4				neb::core::actor::base::getPoseGlobal() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
 	mat4 m;
@@ -53,22 +53,22 @@ mat4				neb::core::actor::Base::getPoseGlobal() {
 
 	return m;
 }
-void		neb::core::actor::Base::setPose(mat4 pose) {
+void		neb::core::actor::base::setPose(mat4 pose) {
 	pose_ = pose;
 	
-	flag_.set(neb::core::actor::Util::Flag::E::SHOULD_UPDATE);
+	flag_.set(neb::core::actor::util::Flag::E::SHOULD_UPDATE);
 }
-void		neb::core::actor::Base::load_lights(neb::core::light::util::count & light_count, mat4 space) {
+void		neb::core::actor::base::load_lights(neb::core::light::util::count & light_count, mat4 space) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	space = space * pose_;
 	
-	typedef neb::core::actor::Util::Parent A;
-	typedef neb::Shape::Util::Parent S;
+	typedef neb::core::actor::util::parent A;
+	typedef neb::core::shape::util::parent S;
 
 	auto lambda_actor = [&] (A::map_type::iterator<0> it) {
 		
-		auto actor = sp::dynamic_pointer_cast<neb::core::actor::Base>(it->ptr_);
+		auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
 		if(!actor) {
 			::std::cout << "ptr   = " << it->ptr_ << " type= " << typeid(*it->ptr_).name() << ::std::endl;
 			::std::cout << "actor = " << actor << ::std::endl;
@@ -78,7 +78,7 @@ void		neb::core::actor::Base::load_lights(neb::core::light::util::count & light_
 	};
 	
 	auto lambda_shape = [&]  (S::map_type::iterator<0> it) {
-		auto shape = sp::dynamic_pointer_cast<neb::Shape::Base>(it->ptr_);
+		auto shape = sp::dynamic_pointer_cast<neb::core::shape::base>(it->ptr_);
 		assert(shape);
 		shape->load_lights(light_count, space);
 	};
@@ -87,29 +87,29 @@ void		neb::core::actor::Base::load_lights(neb::core::light::util::count & light_
 	
 	S::map_.for_each<0>(lambda_shape);
 }
-void		neb::core::actor::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p, mat4 space) {
+void		neb::core::actor::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p, mat4 space) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	space = space * pose_;
 
-	typedef neb::core::actor::Util::Parent A;
-	typedef neb::Shape::Util::Parent S;
+	typedef neb::core::actor::util::parent A;
+	typedef neb::core::shape::util::parent S;
 
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-			auto actor = sp::dynamic_pointer_cast<neb::core::actor::Base>(it->ptr_);
+			auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
 			assert(actor);
 			actor->draw(context, p, space);
 			});
 
 	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
-			auto shape = sp::dynamic_pointer_cast<neb::Shape::Base>(it->ptr_);
+			auto shape = sp::dynamic_pointer_cast<neb::core::shape::base>(it->ptr_);
 			assert(shape);
 			shape->draw(context, p, space);
 			});
 
 
 }
-/*void neb::core::actor::Base::init(neb::core::actor::desc_w desc) {
+/*void neb::core::actor::base::init(neb::core::actor::desc_w desc) {
   NEBULA_ACTOR_BASE_FUNC;
 
   raw_.reset();
@@ -121,18 +121,18 @@ void		neb::core::actor::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> conte
   create_shapes(desc);
   init_physics();
   }*/
-void		neb::core::actor::Base::release() {
+void		neb::core::actor::base::release() {
 
-	neb::core::actor::Util::Parent::clear();
-	neb::Shape::Util::Parent::clear();
+	neb::core::actor::util::parent::clear();
+	neb::core::shape::util::parent::clear();
 
 	//conn_.key_fun_.disconnect();
 }
-void		neb::core::actor::Base::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::base::step(neb::core::TimeStep const & ts) {
 	NEBULA_ACTOR_BASE_FUNC;
 
-	typedef neb::core::actor::Util::Parent A;
-	typedef neb::Shape::Util::Parent S;
+	typedef neb::core::actor::util::parent A;
+	typedef neb::core::shape::util::parent S;
 
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
 			it->ptr_->step(ts);
@@ -143,22 +143,22 @@ void		neb::core::actor::Base::step(neb::core::TimeStep const & ts) {
 			});
 
 }
-void		neb::core::actor::Base::connect(sp::shared_ptr<neb::gfx::Window::Base> window) {
+void		neb::core::actor::base::connect(sp::shared_ptr<neb::gfx::window::base> window) {
 
 	//window_ = window;
 
-	//auto me = std::dynamic_pointer_cast<neb::core::actor::Base>(shared_from_this());
+	//auto me = std::dynamic_pointer_cast<neb::core::actor::base>(shared_from_this());
 	auto me = isActorBase();
 
 	//auto shared = sharedBase();
 
-	//conn_.key_fun_.reset(new neb::weak_function<int,int,int,int,int>(&neb::core::actor::Base::key_fun));
+	//conn_.key_fun_.reset(new neb::weak_function<int,int,int,int,int>(&neb::core::actor::base::key_fun));
 
 	assert(window);
 
 	auto c = window->sig_.key_fun_.connect(
 			neb::Signals::KeyFun::slot_type(
-				&neb::core::actor::Base::key_fun,
+				&neb::core::actor::base::key_fun,
 				me.get(),
 				_1,
 				_2,
@@ -169,7 +169,7 @@ void		neb::core::actor::Base::connect(sp::shared_ptr<neb::gfx::Window::Base> win
 			);
 
 }
-int neb::core::actor::Base::key_fun(sp::shared_ptr<neb::gfx::Window::Base> window, int key, int scancode, int action, int mods) {
+int neb::core::actor::base::key_fun(sp::shared_ptr<neb::gfx::window::base> window, int key, int scancode, int action, int mods) {
 
 	switch(action) {
 		case GLFW_PRESS:

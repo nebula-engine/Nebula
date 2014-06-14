@@ -8,14 +8,14 @@
 
 namespace neb {
 	namespace Light {
-		namespace Util {
-			class Parent:
-				virtual public neb::Util::parent<neb::core::light::__base>,
-				virtual public neb::Shape::Util::Cast,
+		namespace util {
+			class parent:
+				virtual public neb::util::parent<neb::core::light::__base>,
+				virtual public neb::core::shape::util::Cast,
 				virtual public neb::core::Pose
 			{
 				public:
-					virtual ~Parent() {}
+					virtual ~parent() {}
 			};
 		}
 	}

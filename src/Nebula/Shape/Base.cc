@@ -12,17 +12,17 @@
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 #include <Nebula/Math/geo/polygon.hpp>
 
-neb::Shape::Base::Base() {
+neb::core::shape::base::base() {
 }
-neb::Shape::Base::Base(sp::shared_ptr<neb::Shape::Util::Parent> parent):
+neb::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
 	parent_(parent),
 	s_(1,1,1)
 {
 	NEBULA_SHAPE_BASE_FUNC;
 	assert(parent);
 }
-neb::Shape::Base::~Base() {}
-mat4					neb::Shape::Base::getPoseGlobal() {
+neb::core::shape::base::~Base() {}
+mat4					neb::core::shape::base::getPoseGlobal() {
 	NEBULA_SHAPE_BASE_FUNC;
 	
 	mat4 m;
@@ -35,13 +35,13 @@ mat4					neb::Shape::Base::getPoseGlobal() {
 	
 	return m;
 }
-mat4					neb::Shape::Base::getPose() {
+mat4					neb::core::shape::base::getPose() {
 	return pose_;
 }
-void					neb::Shape::Base::init() {
+void					neb::core::shape::base::init() {
 	NEBULA_SHAPE_BASE_FUNC
 	
-	auto me = sp::dynamic_pointer_cast<neb::Shape::Base>(shared_from_this());
+	auto me = sp::dynamic_pointer_cast<neb::core::shape::base>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
 	
 	// type
@@ -51,41 +51,41 @@ void					neb::Shape::Base::init() {
 		program_ = neb::program_name::LIGHT;
 	} else {
 		/** @todo replace this with something better... */
-		//flag_.set(neb::Shape::flag::e::IMAGE);
+		//flag_.set(neb::core::shape::flag::e::IMAGE);
 
 		program_ = neb::program_name::IMAGE;
 	}
 
 
-	neb::Shape::Util::Parent::init();
-	neb::Light::Util::Parent::init();
+	neb::core::shape::util::parent::init();
+	neb::Light::util::parent::init();
 	
 	createMesh();
 }
-void					neb::Shape::Base::release() {
+void					neb::core::shape::base::release() {
 	NEBULA_SHAPE_BASE_FUNC;
 
-	//neb::Util::parent<neb::Shape::Base>::release();
-	neb::Shape::Util::Parent::release();
-	neb::Light::Util::Parent::release();
+	//neb::util::parent<neb::core::shape::base>::release();
+	neb::core::shape::util::parent::release();
+	neb::Light::util::parent::release();
 }
-void					neb::Shape::Base::step(neb::core::TimeStep const & ts) {
+void					neb::core::shape::base::step(neb::core::TimeStep const & ts) {
 
-	neb::Shape::Util::Parent::step(ts);
+	neb::core::shape::util::parent::step(ts);
 	
-	neb::Light::Util::Parent::step(ts);
+	neb::Light::util::parent::step(ts);
 
 	material_front_.step(ts);
 }
-void					neb::Shape::Base::load_lights(neb::core::light::util::count & light_count, mat4 space) {
+void					neb::core::shape::base::load_lights(neb::core::light::util::count & light_count, mat4 space) {
 	NEBULA_SHAPE_BASE_FUNC;
 
 	space = space * pose_;
 
-	typedef neb::Light::Util::Parent L;
+	typedef neb::Light::util::parent L;
 
 	L::map_.for_each<0>([&] (L::map_type::iterator<0> it) {
-		auto light = sp::dynamic_pointer_cast<neb::Light::Base>(it->ptr_);
+		auto light = sp::dynamic_pointer_cast<neb::Light::base>(it->ptr_);
 		assert(light);
 		//if(i == neb::Light::light_max) return L::map_type::BREAK;
 		light->load(light_count, space);
@@ -93,20 +93,20 @@ void					neb::Shape::Base::load_lights(neb::core::light::util::count & light_cou
 	});
 
 }
-void					neb::Shape::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p, mat4 space) {
+void					neb::core::shape::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p, mat4 space) {
 	space = space * pose_;
 
 	draw_elements(context, p, space);
 }
-void					neb::Shape::Base::model_load(mat4 space) {
+void					neb::core::shape::base::model_load(mat4 space) {
 
-	auto p = neb::App::Base::global()->current_program();
+	auto p = neb::App::base::global()->current_program();
 
 	space *= glm::scale(s_);
 
 	p->get_uniform_scalar("model")->load(space);
 }
-void					neb::Shape::Base::init_buffer(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p) {
+void					neb::core::shape::base::init_buffer(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
 
 	glEnable(GL_TEXTURE_2D);
@@ -118,11 +118,11 @@ void					neb::Shape::Base::init_buffer(sp::shared_ptr<neb::gfx::Context::Base> c
 
 	//checkerror("unknown");
 
-	sp::shared_ptr<neb::Shape::buffer> bufs(new neb::Shape::buffer);
+	sp::shared_ptr<neb::core::shape::buffer> bufs(new neb::core::shape::buffer);
 	context_[context.get()] = bufs;
 
 	// image
-	if(0)//if(flag_.all(neb::Shape::flag::e::IMAGE))
+	if(0)//if(flag_.all(neb::core::shape::flag::e::IMAGE))
 	{
 		bufs->texture_.image_.reset(new neb::texture);
 
@@ -173,7 +173,7 @@ void					neb::Shape::Base::init_buffer(sp::shared_ptr<neb::gfx::Context::Base> c
 			(void*)off_normal);
 	//checkerror("glVertexAttribPointer normal");
 
-	if(0) {//if(flag_.all(neb::Shape::flag::e::IMAGE)) {
+	if(0) {//if(flag_.all(neb::core::shape::flag::e::IMAGE)) {
 		glVertexAttribPointer(
 				p->get_attrib(neb::attrib_name::e::TEXCOOR)->o_,
 				2,
@@ -197,7 +197,7 @@ void					neb::Shape::Base::init_buffer(sp::shared_ptr<neb::gfx::Context::Base> c
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 }
-void		neb::Shape::Base::draw_elements(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p, mat4 space) {
+void		neb::core::shape::base::draw_elements(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p, mat4 space) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
 
 	//mesh_.print(debug);
@@ -219,7 +219,7 @@ void		neb::Shape::Base::draw_elements(sp::shared_ptr<neb::gfx::Context::Base> co
 	p->get_attrib(neb::attrib_name::e::POSITION)->enable();
 	p->get_attrib(neb::attrib_name::e::NORMAL)->enable();
 
-	if(0) //if(flag_.all(neb::Shape::flag::e::IMAGE))
+	if(0) //if(flag_.all(neb::core::shape::flag::e::IMAGE))
 	{
 		p->get_attrib(neb::attrib_name::e::TEXCOOR)->enable();
 	}
@@ -229,7 +229,7 @@ void		neb::Shape::Base::draw_elements(sp::shared_ptr<neb::gfx::Context::Base> co
 	material_front_.load();
 
 	// texture
-	if(0) //if(flag_.all(neb::Shape::flag::e::IMAGE))
+	if(0) //if(flag_.all(neb::core::shape::flag::e::IMAGE))
 	{
 		glActiveTexture(GL_TEXTURE0);
 		//checkerror("glActiveTexture");
@@ -273,7 +273,7 @@ void		neb::Shape::Base::draw_elements(sp::shared_ptr<neb::gfx::Context::Base> co
 	p->get_attrib(neb::attrib_name::e::POSITION)->disable();
 	p->get_attrib(neb::attrib_name::e::NORMAL)->disable();
 
-	if(0) //if(flag_.all(neb::Shape::flag::e::IMAGE))
+	if(0) //if(flag_.all(neb::core::shape::flag::e::IMAGE))
 	{
 		p->get_attrib(neb::attrib_name::e::TEXCOOR)->disable();
 	}

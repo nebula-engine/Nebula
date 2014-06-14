@@ -5,7 +5,7 @@ namespace neb {
 	/** @brief %Message */
 	namespace message {
 
-		class Base;
+		class base;
 		class IBase;
 		class OBase;
 

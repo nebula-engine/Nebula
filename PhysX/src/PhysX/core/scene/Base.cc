@@ -48,8 +48,8 @@
 #include <Nebula/timer/Actor/Release.hpp>
 */
 
-px::core::scene::base::base(sp::shared_ptr< ::neb::Scene::Util::Parent > parent):
-	::neb::Scene::Base(parent),
+px::core::scene::base::base(sp::shared_ptr< ::neb::Scene::util::parent > parent):
+	::neb::Scene::base(parent),
 	px_scene_(NULL)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
@@ -60,7 +60,7 @@ px::core::scene::base::~base() {
 void			px::core::scene::base::init() {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
-	::neb::Scene::Base::init();
+	::neb::Scene::base::init();
 	
 	create_physics();
 }

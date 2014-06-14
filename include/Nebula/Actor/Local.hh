@@ -8,8 +8,10 @@
 namespace neb { namespace core { namespace actor {
 
 
-	class local: virtual public neb::core::actor::Base {
+	class local: virtual public neb::core::actor::base {
 		public:
+			local(sp::shared_ptr<neb::core::actor::util::parent> parent);
+		
 			virtual void		step(neb::core::TimeStep const & ts);
 	};
 
