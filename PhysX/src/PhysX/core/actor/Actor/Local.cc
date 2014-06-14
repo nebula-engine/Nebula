@@ -2,17 +2,17 @@
 
 #include <Nebula/Actor/Actor/Local.hh>
 
-void		neb::Actor::Actor::Local::release() {
+void		neb::core::actor::actor::local::release() {
 
 	if(px_actor_) {
 		px_actor_->release();
 		px_actor_ = NULL;
 	}
 }
-void		px::Actor::Actor::Local::step(neb::core::TimeStep const & ts) {
+void		px::actor::actor::local::step(neb::core::TimeStep const & ts) {
 	
-	neb::Actor::Actor::Local::step(ts);
-	px::Actor::Actor::Base::step(ts);
+	neb::core::actor::actor::local::step(ts);
+	px::actor::actor::Base::step(ts);
 
 
 }

@@ -8,9 +8,9 @@ namespace neb { namespace core { namespace actor {
 		
 
 namespace RigidActor {
-			class Local:
+			class local:
 				virtual public neb::core::actor::RigidActor::Base,
-				virtual public neb::core::actor::actor::Local
+				virtual public neb::core::actor::actor::local
 			{
 				public:
 					virtual void				step(neb::core::TimeStep const & ts);

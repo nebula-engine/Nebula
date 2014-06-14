@@ -10,7 +10,7 @@
 #include <Nebula/Actor/Base.hh>
 
 namespace neb {
-	namespace Message {
+	namespace message {
 		namespace actor {
 			struct Create {
 				public:

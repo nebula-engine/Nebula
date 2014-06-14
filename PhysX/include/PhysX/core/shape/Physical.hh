@@ -12,15 +12,6 @@
 namespace Neb {
 	namespace Shape {
 		class Physical: public neb::Shape::Base {
-			public:
-				Physical();
-				Physical(sp::shared_ptr<neb::Shape::Util::Parent>);
-				
-				virtual void		init();
-				void			create_physics();
-				physx::PxGeometry*	to_geo();
-			public:
-				physx::PxShape*		px_shape_;
 		};	
 	}
 }

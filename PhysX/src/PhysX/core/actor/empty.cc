@@ -2,16 +2,16 @@
 #include <Nebula/config.hh>
 #include <Nebula/Actor/empty.hh>
 
-neb::Actor::empty::empty(sp::shared_ptr<neb::Actor::Util::Parent> parent):
-	neb::Actor::Base(parent)
+neb::core::actor::empty::empty(sp::shared_ptr<neb::core::actor::Util::Parent> parent):
+	neb::core::actor::Base(parent)
 {
 	//NEBULA_DEBUG_0_FUNCTION;
 }
-void		neb::Actor::empty::init() {
+void		neb::core::actor::empty::init() {
 	
 	//NEBULA_DEBUG_0_FUNCTION;
 	
-	neb::Actor::Base::init();
+	neb::core::actor::Base::init();
 }
 
 

@@ -21,18 +21,18 @@
 #include <Nebula/Message/Actor/Control.hh>
 #include <Nebula/Message/Types.hh>
 
-neb::Actor::RigidBody::Base::Base() {}
-neb::Actor::RigidBody::Base::Base(sp::shared_ptr<neb::Actor::Util::Parent> parent):
-	neb::Actor::RigidActor::Base(parent),
+neb::core::actor::RigidBody::Base::Base() {}
+neb::core::actor::RigidBody::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent):
+	neb::core::actor::RigidActor::Base(parent),
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}
-void	neb::Actor::RigidBody::Base::init() {
+void	neb::core::actor::RigidBody::Base::init() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
-	neb::Actor::RigidActor::Base::init();
+	neb::core::actor::RigidActor::Base::init();
 }
-void neb::Actor::RigidBody::Base::add_force(double time) {
+void neb::core::actor::RigidBody::Base::add_force(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	// non-user-controled
@@ -63,17 +63,17 @@ void neb::Actor::RigidBody::Base::add_force(double time) {
 	pxrigidbody->addForce(f);
 	pxrigidbody->addTorque(t);
 }
-sp::shared_ptr<neb::Actor::Base>	neb::Actor::RigidBody::Base::get_projectile() {
+sp::shared_ptr<neb::core::actor::Base>	neb::core::actor::RigidBody::Base::get_projectile() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	auto scene = getScene();
 
-	sp::shared_ptr<neb::Actor::RigidDynamic::Local> actor(new neb::Actor::RigidDynamic::Local);
+	sp::shared_ptr<neb::core::actor::rigiddynamic::local> actor(new neb::core::actor::rigiddynamic::local);
 
-	//neb::Actor::desc_w ad = scene->actors_deferred_[(char*)"proj0"];
+	//neb::core::actor::desc_w ad = scene->actors_deferred_[(char*)"proj0"];
 	//assert(ad);
 
-	//neb::Actor::desc_u desc(new neb::Actor::desc);
+	//neb::core::actor::desc_u desc(new neb::core::actor::desc);
 	//auto s = ad.lock();
 	//assert(s);
 	//*desc = *s;
@@ -96,18 +96,18 @@ sp::shared_ptr<neb::Actor::Base>	neb::Actor::RigidBody::Base::get_projectile() {
 	
 	return actor;
 }
-/*void neb::Actor::RigidBody::Base::create_control() {
+/*void neb::core::actor::RigidBody::Base::create_control() {
 
 	auto me = isRigidBody();
 
-	neb::Actor::Control::RigidBody::Control_u control(new neb::Actor::Control::RigidBody::Control);
-	neb::Actor::Control::RigidBody::Control_w weak(control);
+	neb::core::actor::Control::RigidBody::Control_u control(new neb::core::actor::Control::RigidBody::Control);
+	neb::core::actor::Control::RigidBody::Control_w weak(control);
 
 	
 	control_ = control;
 
 	control->actor_ = isBase();
-	control->raw_.type_ = neb::Actor::Control::RigidBody::Type::T0;
+	control->raw_.type_ = neb::core::actor::Control::RigidBody::Type::T0;
 
 
 	auto wnd = window_.lock();
@@ -116,7 +116,7 @@ sp::shared_ptr<neb::Actor::Base>	neb::Actor::RigidBody::Base::get_projectile() {
 
 		control->conn_.key_fun_ = wnd->sig_.key_fun_.connect(
 				neb::Signals::KeyFun::slot_type(
-					&neb::Actor::Control::RigidBody::Control::key_fun,
+					&neb::core::actor::Control::RigidBody::Control::key_fun,
 					s.get(),
 					_1,
 					_2,
@@ -133,7 +133,7 @@ sp::shared_ptr<neb::Actor::Base>	neb::Actor::RigidBody::Base::get_projectile() {
 		wnd->renderable_->moveView(std::move(view));	
 	}
 }*/
-void		neb::Actor::RigidBody::Base::step(double const & time, double const & dt) {
+void		neb::core::actor::RigidBody::Base::step(double const & time, double const & dt) {
 }
 
 

@@ -1,6 +1,8 @@
 #ifndef NEBULA_GFX_CAMERA_VIEW_UTIL_FLAG_HPP
 #define NEBULA_GFX_CAMERA_VIEW_UTIL_FLAG_HPP
 
+#include <Galaxy-Standard/flag.hpp>
+
 namespace neb { namespace gfx { namespace camera { namespace view { namespace util {
 
 	DEFINE_FLAG(flag,

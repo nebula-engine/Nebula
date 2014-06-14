@@ -5,7 +5,7 @@
 
 namespace neb {
 	namespace Shape {
-		class Sphere: public neb::Shape::Base {
+		class Sphere: virtual public neb::Shape::Base {
 			public:
 				virtual void			createMesh();
 		};
@@ -13,3 +13,5 @@ namespace neb {
 }
 
 #endif
+
+

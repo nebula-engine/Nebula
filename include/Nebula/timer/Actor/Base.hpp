@@ -7,7 +7,7 @@
 #include <boost/date_time/posix_time/posix_time.hpp>
 
 
-#include <Nebula/config.hh> // Nebula/config.hpp.in
+//#include <Nebula/config.hh> // Nebula/config.hpp.in
 #include <Nebula/Actor/Util/Types.hh>
 
 /** @todo replace types with inheritance and possibly shared library support */

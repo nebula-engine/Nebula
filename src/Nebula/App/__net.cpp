@@ -29,7 +29,7 @@ void		neb::App::__net::sendClient(sp::shared_ptr< gal::net::omessage > msg)  {
 		BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << "no client";
 	}
 }
-void		neb::App::__net::sendClient(sp::shared_ptr< neb::Message::OBase > message) {
+void		neb::App::__net::sendClient(sp::shared_ptr< neb::message::OBase > message) {
 	assert(message);
 	
 	/** @todo wtf */
@@ -42,7 +42,7 @@ void		neb::App::__net::sendClient(sp::shared_ptr< neb::Message::OBase > message)
 
 	sendClient(buffer);
 }
-void		neb::App::__net::sendServer(sp::shared_ptr< neb::Message::OBase > message) {
+void		neb::App::__net::sendServer(sp::shared_ptr< neb::message::OBase > message) {
 	assert(message);
 
 	/** @todo wtf */

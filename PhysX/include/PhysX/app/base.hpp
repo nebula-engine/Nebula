@@ -7,6 +7,7 @@
 
 #include <Nebula/config.hh>
 
+#include <Nebula/App/Base.hh>
 #include <Nebula/Scene/Base.hh>
 
 class DefaultErrorCallback:
@@ -29,14 +30,17 @@ physx::PxFilterFlags DefaultFilterShader(
 		const void* constantBlock,
 		physx::PxU32 constantBlockSize );
 
-namespace Neb {
-	class Physics {
+namespace px { namespace app {
+
+
+	class base: virtual public neb::App::Base {
 		public:
-			Physics();
+			base();
 			void						init();
 			void						release();
 			
-			static sp::shared_ptr<Physics>				global();
+			static sp::shared_ptr<px::app::base>		global();
+			
 			
 			DefaultErrorCallback 				px_default_error_callback_;
 			physx::PxDefaultAllocator 			px_default_allocator_callback_;
@@ -47,9 +51,11 @@ namespace Neb {
 			//physx::pxtask::CudaContextManager*		px_cuda_context_manager_;
 			physx::PxControllerManager*			px_character_controller_manager_;
 		private:
-			static sp::shared_ptr<Physics>				static_;
+			static sp::shared_ptr<px::app::base>		g_app_;
 	};
-}
+
+
+}}
 
 
 #endif

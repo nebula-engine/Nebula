@@ -38,8 +38,8 @@ namespace neb {
 
 		class Base:
 			virtual public neb::std::shared,
-			public neb::Shape::Util::Parent,
-			public neb::Light::Util::Parent
+			virtual public neb::Shape::Util::Parent,
+			virtual public neb::Light::Util::Parent
 		{
 			public:
 				typedef ::std::map< neb::gfx::Context::Base*, sp::shared_ptr<buffer> >			map_t;

@@ -1,17 +1,12 @@
-#ifndef __GLUTPP_SCENE_REMOTE_H__
-#define __GLUTPP_SCENE_REMOTE_H__
+#ifndef PHYSX_CORE_SCENE_REMOTE_H__
+#define PHYSX_CORE_SCENE_REMOTE_H__
 
 #include <vector>
-
-#include <Nebula/Flag.hh>
-#include <Nebula/Util/Map.hh>
-#include <Nebula/Util/Shared.hh>
-
 
 
 #include <Nebula/Types.hh>
 
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/Scene/Remote.hh>
 
 #include <Nebula/config.hh> // Nebula/config.hpp.in
 #include <Nebula/Graphics/glsl/program.hh>
@@ -22,20 +17,27 @@
 
 #include <Nebula/Graphics/Camera/View/Base.hh>
 
+#include <PhysX/core/scene/Base.hh>
+
 //#include <glutpp/shader.h>
 
 #define LIGHT_MAX 20
 
-namespace Neb {
-	namespace Scene {
-		class Remote:
-			virtual public neb::Scene::Base
-		{
-			void				step(double const & time, double const & dt);
-			virtual void			fire(sp::shared_ptr<neb::Actor::Base> actor);
-		};
-	}
-}
+namespace px { namespace core { namespace scene {
+
+	class remote:
+		virtual public neb::Scene::Remote,
+		virtual public ::px::core::scene::base
+	{
+		void				step(neb::core::TimeStep const & ts);
+		
+		virtual void			fire(sp::shared_ptr<neb::core::actor::Base> actor);
+	};
+
+
+
+
+}}}
 
 #endif
 

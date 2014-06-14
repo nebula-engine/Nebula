@@ -10,14 +10,14 @@
 
 
 /*
-neb::Actor::desc::desc(): raw_wrapper_(neb::master::global()->factories_.actor_raw_) {
+neb::core::actor::desc::desc(): raw_wrapper_(neb::master::global()->factories_.actor_raw_) {
 }		
-neb::Actor::desc &		neb::Actor::desc::operator<<(neb::Actor::Base_w const & actor) {
+neb::core::actor::desc &		neb::core::actor::desc::operator<<(neb::core::actor::Base_w const & actor) {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	i_ = actor->i_;
 	
-	neb::Actor::raw_u u(neb::master::global()->factories_.actor_raw_->alloc((short)actor->raw_->type_.val_));
+	neb::core::actor::raw_u u(neb::master::global()->factories_.actor_raw_->alloc((short)actor->raw_->type_.val_));
 	
 
 
@@ -26,9 +26,9 @@ neb::Actor::desc &		neb::Actor::desc::operator<<(neb::Actor::Base_w const & acto
 	*(raw_wrapper_.ptr_) = *actor->raw_;
 	
 	// actor
-	boost::shared_ptr<neb::Actor::desc> ad;
+	boost::shared_ptr<neb::core::actor::desc> ad;
 	for(auto it = actor->actors_.begin(); it != actor->actors_.end(); ++it) {
-		ad.reset(new neb::Actor::desc);
+		ad.reset(new neb::core::actor::desc);
 		ad->load(it->second);
 		actors_.push_back(ad);
 	}
@@ -43,7 +43,7 @@ neb::Actor::desc &		neb::Actor::desc::operator<<(neb::Actor::Base_w const & acto
 
 	return *this;
 }
-neb::Actor::desc& neb::Actor::desc::operator=(const neb::Actor::desc& ad) {
+neb::core::actor::desc& neb::core::actor::desc::operator=(const neb::core::actor::desc& ad) {
 	i_ = ad.i_;
 	*raw_wrapper_.ptr_ = *ad.raw_wrapper_.ptr_;
 	actors_ = ad.actors_;
