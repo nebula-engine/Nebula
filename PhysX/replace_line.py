@@ -30,6 +30,7 @@ def replace(filename):
 	
         
         text = re.sub("Neb::","neb::",text)
+
 	text = re.sub("::Actor::","::actor::",text)
 	text = re.sub("::Message::","::message::",text)
 

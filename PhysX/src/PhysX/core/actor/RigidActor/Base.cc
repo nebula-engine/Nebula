@@ -2,17 +2,17 @@
 #include <Nebula/debug.hh>
 #include <Nebula/Actor/RigidActor/Base.hh>
 
-neb::core::actor::RigidActor::Base::Base() {
+neb::core::actor::rigidactor::Base::Base() {
 }
-neb::core::actor::RigidActor::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent): neb::core::actor::actor::Base(parent) {
+neb::core::actor::rigidactor::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent): neb::core::actor::actor::Base(parent) {
 }
-void		neb::core::actor::RigidActor::Base::init() {
+void		neb::core::actor::rigidactor::Base::init() {
 
 }
-void		neb::core::actor::RigidActor::Base::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::rigidactor::Base::step(neb::core::TimeStep const & ts) {
 	neb::core::actor::actor::Base::step(ts);
 }
-void		neb::core::actor::RigidActor::Base::setupFiltering() {
+void		neb::core::actor::rigidactor::Base::setupFiltering() {
 	assert(px_actor_);
 
 	physx::PxRigidActor* actor = (physx::PxRigidActor*)px_actor_;

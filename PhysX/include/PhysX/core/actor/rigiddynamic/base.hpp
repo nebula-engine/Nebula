@@ -1,5 +1,5 @@
-#ifndef __PX_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
-#define __PX_CONTENT_ACTOR_PHYSICS_ACTOR_HPP__
+#ifndef __PX_CONTENT_ACTOR_RIGIDDYNAMIC_BASE_HPP
+#define __PX_CONTENT_ACTOR_RIGIDDYNAMIC_BASE_HPP
 
 #include <PxPhysicsAPI.h>
 
@@ -8,7 +8,7 @@
 #include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
 
-namespace px { namespace core { namespace actor { namespace actor {
+namespace px { namespace core { namespace actor { namespace rigiddynamic {
 
 
 
