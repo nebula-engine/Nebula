@@ -6,20 +6,22 @@
 #include <Nebula/Actor/RigidDynamic/Local.hh>
 
 #include <PhysX/core/actor/rigidbody/local.hpp>
+#include <PhysX/core/actor/rigiddynamic/base.hpp>
+
 #include <PhysX/core/actor/util/decl.hpp>
 
 namespace px { namespace core { namespace actor { namespace rigiddynamic {
 
 
 
-	class base:
+	class local:
 		virtual public neb::core::actor::rigiddynamic::local,
 		virtual public px::core::actor::rigidbody::local,
 		virtual public px::core::actor::rigiddynamic::base
 	{
 
 		public:
-			base(sp::shared_ptr<neb::core::actor::Util::Parent>);
+			local(sp::shared_ptr<neb::core::actor::Util::Parent>);
 
 			virtual void					init();
 			virtual void					release();

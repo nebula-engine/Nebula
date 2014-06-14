@@ -12,8 +12,8 @@ namespace neb { namespace core {
 				public:
 					sp::shared_ptr<neb::core::actor::Base>				isActorBase();
 					sp::shared_ptr<neb::core::actor::actor::Base>				isActorActor();
-					sp::shared_ptr<neb::core::actor::RigidActor::Base>			isActorRigidActor();
-					sp::shared_ptr<neb::core::actor::RigidBody::Base>			isActorRigidBody();
+					sp::shared_ptr<neb::core::actor::rigidactor::Base>			isActorRigidActor();
+					sp::shared_ptr<neb::core::actor::rigidbody::Base>			isActorRigidBody();
 			};
 		}
 	}

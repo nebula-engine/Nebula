@@ -6,7 +6,7 @@
 neb::core::actor::RigidStatic::Base::Base() {
 }
 neb::core::actor::RigidStatic::Base::Base(sp::shared_ptr<neb::core::actor::Util::Parent> parent):
-		neb::core::actor::RigidActor::Base(parent)
+		neb::core::actor::rigidactor::Base(parent)
 {
 	NEBULA_ACTOR_BASE_FUNC
 }

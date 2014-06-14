@@ -1,21 +1,23 @@
 
-#include <Nebula/Actor/Control/RigidBody/Base.hh>
+#include <GLFW/glfw3.h>
 
-neb::core::actor::Control::RigidBody::Base::Base() {
+#include <PxPhysicsAPI.h>
+
+#include <PhysX/core/actor/control/rigidbody/base.hpp>
+
+px::core::actor::control::rigidbody::base::base() {
 
 }
-int neb::core::actor::Control::RigidBody::Base::key_fun(int key, int scancode, int action, int mods) {
+int px::core::actor::control::rigidbody::base::key_fun(int key, int scancode, int action, int mods) {
 	//NEBULA_DEBUG_0_FUNCTION;
 
 	physx::PxVec3 x(1.0,0.0,0.0);
 	physx::PxVec3 y(0.0,1.0,0.0);
 	physx::PxVec3 z(0.0,0.0,1.0);
 
-	switch(action)
-	{
+	switch(action) {
 		case GLFW_PRESS:
-			switch(key)
-			{
+			switch(key) {
 				case GLFW_KEY_D:
 					f_ += x;
 					return 1;
@@ -101,10 +103,12 @@ int neb::core::actor::Control::RigidBody::Base::key_fun(int key, int scancode, i
 
 	return 0;
 }
-void neb::core::actor::Control::RigidBody::Manual::step(double dt) { // 0
+void px::core::actor::control::rigidbody::Manual::step(double dt) { // 0
 
 }
-void neb::core::actor::Control::RigidBody::PD::step(double dt) { // 1
+
+
+void px::core::actor::control::rigidbody::PD::step(double dt) { // 1
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	// step target
@@ -112,7 +116,7 @@ void neb::core::actor::Control::RigidBody::PD::step(double dt) { // 1
 	float q_scale = 0.5;
 	float p_scale = 0.5;
 
-	if(t_.magnitude() == 0.0f)
+	if(glm::magnitude(t_) == 0.0f)
 	{
 		//printf("no key\n");
 	}
@@ -239,19 +243,19 @@ void neb::core::actor::Control::RigidBody::PD::step(double dt) { // 1
 	}
 	*/
 }
-physx::PxVec3 neb::core::actor::Control::RigidBody::Manual::f() {
+physx::PxVec3			px::core::actor::control::rigidbody::Manual::f() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return f_ * 100;
 }
-physx::PxVec3 neb::core::actor::Control::RigidBody::Manual::t() {
+physx::PxVec3			px::core::actor::control::rigidbody::Manual::t() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return t_ * 3;
 }
-physx::PxVec3 neb::core::actor::Control::RigidBody::PD::f() {
+physx::PxVec3			px::core::actor::control::rigidbody::PD::f() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return force_;
 }
-physx::PxVec3 neb::core::actor::Control::RigidBody::PD::t() {
+physx::PxVec3			px::core::actor::control::rigidbody::PD::t() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return torque_;
 }

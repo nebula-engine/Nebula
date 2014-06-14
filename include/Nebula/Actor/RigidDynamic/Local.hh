@@ -9,7 +9,7 @@ namespace neb { namespace core { namespace actor {
 
 namespace rigiddynamic {
 			class local:
-				virtual public neb::core::actor::RigidBody::local,
+				virtual public neb::core::actor::rigidbody::local,
 				virtual public neb::core::actor::rigiddynamic::Base
 			{
 				public:

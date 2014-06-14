@@ -5,8 +5,9 @@
 #include <Nebula/Graphics/Light/Base.hh>
 #include <Nebula/Graphics/glsl/attrib.hh>
 
-#include <Nebula/Util/Map.hh>
+//#include <Nebula/Util/Map.hh>
 
+#include <PhysX/core/shape/base.hpp>
 
 px::core::shape::base(sp::shared_ptr<neb::Shape::Util::Parent> parent):
 	parent_(parent)

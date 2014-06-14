@@ -9,7 +9,7 @@ namespace neb {
 	namespace actor {
 		namespace rigiddynamic {
 			class Remote:
-				virtual public neb::core::actor::RigidBody::Remote,
+				virtual public neb::core::actor::rigidbody::Remote,
 				virtual public neb::core::actor::rigiddynamic::Base
 			{
 				public:

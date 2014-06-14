@@ -4,7 +4,7 @@
 #include <Nebula/Actor/Actor/Base.hh>
 
 namespace neb { namespace core { namespace actor {
-		namespace RigidActor {
+		namespace rigidactor {
 			class Base: virtual public neb::core::actor::actor::Base {
 				public:
 					Base();

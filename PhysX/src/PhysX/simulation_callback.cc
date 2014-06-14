@@ -1,6 +1,6 @@
 
 #include <PhysX/simulation_callback.hh>
-#include <PhysX/core/actor/Actor/base.hpp>
+#include <PhysX/core/actor/actor/base.hpp>
 
 void 	px::simulation_callback::onConstraintBreak(
 		physx::PxConstraintInfo *constraints, physx::PxU32 count) {
