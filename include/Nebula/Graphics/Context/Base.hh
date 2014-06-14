@@ -18,7 +18,7 @@
 
 namespace neb {
 	namespace gfx {
-		namespace Context {
+		namespace context {
 			/** @brief Context
 			 *
 			 * A rectangle on which to render.
@@ -31,14 +31,14 @@ namespace neb {
 			 * @todo allow for manual ordering of context::window objects in window's context map
 			 * such that things like layouts are render ON TOP of existing scene.'
 			 */
-			class Base:
+			class base:
 				virtual public neb::std::shared,
-				virtual public neb::gfx::Context::Util::Cast
+				virtual public neb::gfx::context::util::Cast
 			{
 				public:
-					Base();
-					Base(sp::shared_ptr<neb::gfx::Context::Util::Parent> parent);
-					Base&						operator=(Base const & r);
+					base();
+					base(sp::shared_ptr<neb::gfx::context::util::parent> parent);
+					base&						operator=(base const & r);
 					void						init();
 					void						release();
 					virtual void					step(neb::core::TimeStep const & ts);
@@ -50,7 +50,7 @@ namespace neb {
 					 * 
 					 * @note WEAK
 					 */
-					sp::shared_ptr<neb::gfx::Context::Util::Parent>		parent_;
+					sp::shared_ptr<neb::gfx::context::util::parent>		parent_;
 				public:
 					/** @brief %Viewport
 					 * 
@@ -61,19 +61,19 @@ namespace neb {
 					 * 
 					 * @note OWNED
 					 */
-					sp::shared_ptr<neb::gfx::Camera::View::Base>		view_;
+					sp::shared_ptr<neb::gfx::Camera::View::base>		view_;
 					/** @brief Clip Space Camera
 					 * 
 					 * @note OWNED
 					 */
-					sp::shared_ptr<neb::gfx::Camera::Projection::Base>		proj_;
+					sp::shared_ptr<neb::gfx::Camera::Projection::base>		proj_;
 					/** @brief %Drawable
 					 * 
 					 * @note WEAK
 					 * 
 					 * content to draw
 					 */
-					 sp::shared_ptr<neb::gfx::Drawable::Base>			drawable_;
+					 sp::shared_ptr<neb::gfx::Drawable::base>			drawable_;
 			};
 		}
 	}

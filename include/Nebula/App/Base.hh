@@ -38,7 +38,7 @@ namespace neb {
 		 *
 		 * final implementation
 		 */
-		class Base:
+		class base:
 			virtual public neb::App::__gfx,
 			virtual public neb::App::__gfx_glsl,
 			virtual public neb::App::__core,
@@ -47,19 +47,19 @@ namespace neb {
 			public:
 				friend void neb::init();
 			public:
-				Base();
-				virtual ~Base();
+				base();
+				virtual ~base();
 			public:
 				void						command(sp::shared_ptr<neb::gfx::gui::object::terminal> term, ::std::string);
 			public:
 				mat4						getPose();
 				mat4						getPoseGlobal();
 
-				static sp::shared_ptr<neb::App::Base>		global();
+				static sp::shared_ptr<neb::App::base>		global();
 
 				void						loadXml(::std::string filename, neb::std::wrapper& w);
 
-				sp::shared_ptr<neb::gfx::Window::Base>						get_window(GLFWwindow*);
+				sp::shared_ptr<neb::gfx::window::base>						get_window(GLFWwindow*);
 
 			private:
 			public:
@@ -77,10 +77,10 @@ namespace neb {
 				/** @} */
 
 			public:
-				static sp::shared_ptr<neb::App::Base>				g_app_;
+				static sp::shared_ptr<neb::App::base>				g_app_;
 				// network
 				/** @todo make derived App classes for Server and Client??? */
-				neb::App::Util::Flag						flag_;
+				neb::App::util::Flag						flag_;
 
 				
 

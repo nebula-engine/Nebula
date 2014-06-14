@@ -35,19 +35,19 @@ namespace neb {
 		 * @ingroup group_core
 		 * @brief Base
 		 */
-		class Base:
-			virtual public neb::gfx::Drawable::Base,
-			virtual public neb::core::actor::Util::Parent
+		class base:
+			virtual public neb::gfx::Drawable::base,
+			virtual public neb::core::actor::util::parent
 		{
 			public:
-				Base(sp::shared_ptr<neb::Scene::Util::Parent>);
-				virtual ~Base();
+				base(sp::shared_ptr<neb::Scene::util::parent>);
+				virtual ~base();
 				virtual void				init();
 				virtual void				release();
 				/** @name Main Loop @{ */
 				/** @brief render */
 
-				void				draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p);
+				void				draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p);
 				void				resize(int w, int h);
 				virtual void			step(neb::core::TimeStep const & ts);
 				/** @} */
@@ -66,18 +66,18 @@ namespace neb {
 				mat4						getPoseGlobal();
 				/** @} */
 			public:
-				void							add_deferred(sp::shared_ptr<neb::core::actor::Base>);
+				void							add_deferred(sp::shared_ptr<neb::core::actor::base>);
 			public:
 				/** @brief parent
 				 *
 				 * @note WEAK
 				 */
-				sp::shared_ptr<neb::Scene::Util::Parent>		parent_;
+				sp::shared_ptr<neb::Scene::util::parent>		parent_;
 
 			public:
-				neb::Scene::Util::Flag					flag_;
+				neb::Scene::util::Flag					flag_;
 
-				::std::map< ::std::string, sp::shared_ptr<neb::core::actor::Base> >		actors_deferred_;
+				::std::map< ::std::string, sp::shared_ptr<neb::core::actor::base> >		actors_deferred_;
 
 				float		last_;
 		};

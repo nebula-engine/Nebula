@@ -15,19 +15,19 @@ namespace neb {
 	namespace gfx {
 		namespace gui {
 			namespace object {
-				class Base: virtual public neb::std::shared {
+				class base: virtual public neb::std::shared {
 					public:
-						Base();
-						virtual ~Base() {}
+						base();
+						virtual ~base() {}
 
 						virtual void			init();
 						//sp::shared_ptr<window::window>		get_window();
 						virtual void			draw(sp::shared_ptr<neb::glsl::program> p) = 0;
 
 						virtual int			key_fun(
-								sp::shared_ptr<neb::gfx::Window::Base> const & window, int, int, int, int) = 0;
+								sp::shared_ptr<neb::gfx::window::base> const & window, int, int, int, int) = 0;
 						virtual int			mouse_button_fun(
-								sp::shared_ptr<neb::gfx::Window::Base> const & window, int, int, int);
+								sp::shared_ptr<neb::gfx::window::base> const & window, int, int, int);
 
 						//virtual void			connect();
 						bool				active_;
@@ -44,7 +44,7 @@ namespace neb {
 
 						}
 					public:
-						sp::shared_ptr<neb::gfx::gui::object::Util::Parent>	parent_;
+						sp::shared_ptr<neb::gfx::gui::object::util::parent>	parent_;
 						
 						neb::gfx::gui::object::util::flag			flag_;
 

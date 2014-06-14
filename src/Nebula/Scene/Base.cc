@@ -41,36 +41,36 @@
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 #include <Nebula/Graphics/Light/Util/light_count.hpp>
 
-neb::Scene::Base::Base(sp::shared_ptr<neb::Scene::Util::Parent> parent):
+neb::Scene::base::base(sp::shared_ptr<neb::Scene::util::parent> parent):
 	parent_(parent)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
 
 	program_name_ = neb::program_name::e::LIGHT;
 }
-neb::Scene::Base::~Base() {
+neb::Scene::base::~Base() {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-void neb::Scene::Base::init() {
+void neb::Scene::base::init() {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 }
-void neb::Scene::Base::release() {
+void neb::Scene::base::release() {
 	GLUTPP_DEBUG_0_FUNCTION;	
 }
-void neb::Scene::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp::shared_ptr<neb::glsl::program> p) {
+void neb::Scene::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
 
-	//auto p = neb::App::Base::globalBase()->use_program(neb::program_name::e::LIGHT);
+	//auto p = neb::App::base::globalBase()->use_program(neb::program_name::e::LIGHT);
 	
 	
 	neb::core::light::util::count light_count;
 	
-	typedef neb::core::actor::Util::Parent A;
+	typedef neb::core::actor::util::parent A;
 	
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-		auto actor = sp::dynamic_pointer_cast<neb::core::actor::Base>(it->ptr_);
+		auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
 		assert(actor);
 		actor->load_lights(light_count, mat4());
 	});
@@ -83,30 +83,30 @@ void neb::Scene::Base::draw(sp::shared_ptr<neb::gfx::Context::Base> context, sp:
 
 	
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-		auto actor = sp::dynamic_pointer_cast<neb::core::actor::Base>(it->ptr_);
+		auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
 		assert(actor);
 		actor->draw(context, p, mat4());
 	});
 
 }
-void					neb::Scene::Base::resize(int w, int h) {
+void					neb::Scene::base::resize(int w, int h) {
 }
-mat4					neb::Scene::Base::getPose() {
+mat4					neb::Scene::base::getPose() {
 	return mat4();
 }		
-mat4					neb::Scene::Base::getPoseGlobal() {
+mat4					neb::Scene::base::getPoseGlobal() {
 	return mat4();
 }
-void		neb::Scene::Base::add_deferred(sp::shared_ptr<neb::core::actor::Base> actor) {
+void		neb::Scene::base::add_deferred(sp::shared_ptr<neb::core::actor::base> actor) {
 
 	actors_deferred_[actor->name_] = actor;
 }
-void		neb::Scene::Base::step(neb::core::TimeStep const & ts) {
+void		neb::Scene::base::step(neb::core::TimeStep const & ts) {
 
-	typedef neb::core::actor::Util::Parent A;
+	typedef neb::core::actor::util::parent A;
 
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-		auto actor = sp::dynamic_pointer_cast<neb::core::actor::Base>(it->ptr_);
+		auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
 		assert(actor);
 		actor->step(ts);
 	});

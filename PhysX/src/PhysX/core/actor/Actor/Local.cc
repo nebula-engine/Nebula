@@ -12,7 +12,7 @@ void		neb::core::actor::actor::local::release() {
 void		px::actor::actor::local::step(neb::core::TimeStep const & ts) {
 	
 	neb::core::actor::actor::local::step(ts);
-	px::actor::actor::Base::step(ts);
+	px::actor::actor::base::step(ts);
 
 
 }

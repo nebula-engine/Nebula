@@ -2,7 +2,7 @@
 #define NEBULA_UTIL_INDEX_HH
 
 namespace neb {
-	namespace Util {
+	namespace util {
 		class IndexBase {
 			public:
 				virtual ~IndexBase() {}

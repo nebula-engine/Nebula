@@ -4,12 +4,12 @@
 namespace neb {
 	namespace gfx {
 		namespace gui {
-			namespace Layout {
-				namespace Util {
-					class Parent;
+			namespace layout {
+				namespace util {
+					class parent;
 				}
 
-				class Base;
+				class base;
 			}
 		}
 	}

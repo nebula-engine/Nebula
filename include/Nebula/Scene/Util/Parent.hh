@@ -11,9 +11,9 @@
 
 namespace neb {
 	namespace Scene {
-		namespace Util {
-			class Parent:
-				virtual public neb::Util::parent<neb::Scene::Base>,
+		namespace util {
+			class parent:
+				virtual public neb::util::parent<neb::Scene::base>,
 				virtual public neb::core::Pose
 			{
 				public:

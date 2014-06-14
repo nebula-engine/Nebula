@@ -6,9 +6,9 @@
 namespace neb {
 	namespace Timer {
 		namespace actor {
-			class Release: public neb::Timer::actor::Base {
+			class Release: public neb::Timer::actor::base {
 				public:
-					Release(sp::shared_ptr<neb::core::actor::Base>, double);
+					Release(sp::shared_ptr<neb::core::actor::base>, double);
 					virtual void		doSomething();
 			};
 		}

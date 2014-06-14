@@ -18,24 +18,24 @@
 #include <Nebula/Graphics/Camera/Projection/Perspective.hh>
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 
-neb::gfx::Camera::Projection::Base::Base(sp::shared_ptr<neb::gfx::Context::Base> parent):
+neb::gfx::Camera::Projection::base::base(sp::shared_ptr<neb::gfx::context::base> parent):
 	parent_(parent)
 {
 }
-void		neb::gfx::Camera::Projection::Base::load(sp::shared_ptr<neb::glsl::program> p) {
+void		neb::gfx::Camera::Projection::base::load(sp::shared_ptr<neb::glsl::program> p) {
 	
 	
 	//glViewport(0, 0, parent_->viewport_.w_, parent_->viewport_.h_);
 	
 	p->get_uniform_scalar("proj")->load(proj());
 }
-void		neb::gfx::Camera::Projection::Base::step(neb::core::TimeStep const & ts) {
+void		neb::gfx::Camera::Projection::base::step(neb::core::TimeStep const & ts) {
 
 }
 
 
-neb::gfx::Camera::Projection::Perspective::Perspective(sp::shared_ptr<neb::gfx::Context::Base> context):
-	neb::gfx::Camera::Projection::Base(context),
+neb::gfx::Camera::Projection::Perspective::Perspective(sp::shared_ptr<neb::gfx::context::base> context):
+	neb::gfx::Camera::Projection::base(context),
 	fovy_(45.0f),
 	zn_(2.0f),
 	zf_(10000.0f)

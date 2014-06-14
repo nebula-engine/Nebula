@@ -27,7 +27,7 @@
 namespace neb {
 	namespace Scene {
 		class Remote:
-			virtual public neb::Scene::Base
+			virtual public neb::Scene::base
 		{
 			void				step(neb::core::TimeStep const & ts);
 		};

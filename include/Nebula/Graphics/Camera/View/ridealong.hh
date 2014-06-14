@@ -13,15 +13,15 @@ namespace neb {
 	namespace gfx {
 		namespace Camera {
 			namespace View {
-				class Ridealong: public neb::gfx::Camera::View::Base {
+				class Ridealong: public neb::gfx::Camera::View::base {
 					public:
-						Ridealong(sp::shared_ptr<neb::gfx::Context::Base>);
+						Ridealong(sp::shared_ptr<neb::gfx::context::base>);
 
 						virtual mat4				view();
 						virtual void				step(neb::core::TimeStep const & ts);
 
 
-						sp::shared_ptr<neb::core::actor::Base>	actor_;
+						sp::shared_ptr<neb::core::actor::base>	actor_;
 				};
 			}
 		}

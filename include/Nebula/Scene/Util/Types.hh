@@ -7,11 +7,11 @@ namespace neb {
 	/** @brief %Scene */
 	namespace Scene {
 		/** @name %Utilities @{ */
-		namespace Util {
-			class Parent;
+		namespace util {
+			class parent;
 		}
 
-		class Base;
+		class base;
 	}
 }
 

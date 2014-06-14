@@ -7,7 +7,7 @@
 #include <Nebula/Scene/Base.hh>
 
 
-#include <PhysX/core/actor/Actor/base.hpp>
+#include <PhysX/core/actor/actor/base.hpp>
 #include <PhysX/message/actor/event/Base.hh>
 
 /*

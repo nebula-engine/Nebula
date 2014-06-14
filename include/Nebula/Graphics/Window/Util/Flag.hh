@@ -5,8 +5,8 @@
 
 namespace neb {
 	namespace gfx {
-		namespace Window {
-			namespace Util {
+		namespace window {
+			namespace util {
 				DEFINE_FLAG(Flag,
 						((SHOULD_RELEASE)(1 << 0))
 					   )

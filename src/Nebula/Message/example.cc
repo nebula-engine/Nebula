@@ -2,7 +2,7 @@
 
 void save() {
 
-	sp::shared_ptr<neb::message::Base> message(new neb::message::Base);
+	sp::shared_ptr<neb::message::base> message(new neb::message::base);
 
 	message->pre();
 
@@ -10,7 +10,7 @@ void save() {
 
 	message->post();
 
-	neb::Util::Wrapper<neb::message::Base> wrapper(message);
+	neb::util::Wrapper<neb::message::base> wrapper(message);
 
 	sp::shared_ptr<gal::network::omessage> buffer(new gal::network::omessage);
 
@@ -21,7 +21,7 @@ void save() {
 
 void load(sp::shared_ptr<gal::network::imessage> buffer) {
 
-	neb::Util::Wrapper<neb::message::Base> wrapper;
+	neb::util::Wrapper<neb::message::base> wrapper;
 
 	buffer >> wrapper;
 	

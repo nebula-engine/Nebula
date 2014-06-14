@@ -26,9 +26,35 @@ def replace(filename):
 	
 	text = re.sub("namespace Message","namespace message",text)
 	text = re.sub("neb::Message::","neb::message::",text)
-	
+
+	text = re.sub("namespace Shape","namespace shape",text)
+	text = re.sub("neb::Shape::","neb::core::shape::",text)
+
+
+	text = re.sub("class Base","class base",text)
+	text = re.sub("::Base","::base",text)
+
 	text = re.sub("class Local","class local",text)
 	text = re.sub("::Local","::local",text)
+
+	text = re.sub("class Parent","class parent",text)
+	text = re.sub("::Parent","::parent",text)
+
+	text = re.sub("namespace GUI","namespace gui",text)
+	text = re.sub("neb::gfx::GUI::","neb::gfx::gui::",text)
+
+	text = re.sub("namespace Layout","namespace layout",text)
+	text = re.sub("neb::gfx::gui::Layout::","neb::gfx::gui::layout::",text)
+
+
+	text = re.sub("namespace Context","namespace context",text)
+	text = re.sub("neb::gfx::Context::","neb::gfx::context::",text)
+
+	text = re.sub("namespace Util","namespace util",text)
+	text = re.sub("::Util::","::util::",text)
+
+	text = re.sub("namespace Window","namespace window",text)
+	text = re.sub("::Window::","::window::",text)
 
 
 	text = re.sub("namespace RigidActor","namespace rigidactor",text)

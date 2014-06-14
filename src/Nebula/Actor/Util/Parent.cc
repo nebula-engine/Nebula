@@ -6,12 +6,12 @@
 #include <Nebula/Actor/Util/Parent.hh>
 #include <Nebula/Scene/Base.hh>
 
-neb::core::actor::Util::Parent::Parent() {
+neb::core::actor::util::parent::parent() {
 }
-void					neb::core::actor::Util::Parent::init() {
+void					neb::core::actor::util::parent::init() {
 
 }
-sp::shared_ptr<neb::Scene::Base>			neb::core::actor::Util::Parent::getScene() {
+sp::shared_ptr<neb::Scene::base>			neb::core::actor::util::parent::getScene() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	auto scene = isSceneBase();

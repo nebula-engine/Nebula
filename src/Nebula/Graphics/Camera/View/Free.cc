@@ -8,8 +8,8 @@
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Graphics/Camera/View/Free.hh>
 
-neb::gfx::Camera::View::Free::Free(sp::shared_ptr<neb::gfx::Context::Base> parent):
-	neb::gfx::Camera::View::Base(parent),
+neb::gfx::Camera::View::Free::Free(sp::shared_ptr<neb::gfx::context::base> parent):
+	neb::gfx::Camera::View::base(parent),
 	pitch_(0),
 	yaw_(0),
 	eye_(0, 0, 0, 0),
@@ -54,7 +54,7 @@ neb::gfx::Camera::View::Free::Free(sp::shared_ptr<neb::gfx::Context::Base> paren
 void	neb::gfx::Camera::View::Free::init() {
 
 }
-void			neb::gfx::Camera::View::Free::connect(sp::shared_ptr<neb::gfx::Window::Base> const & window) {
+void			neb::gfx::Camera::View::Free::connect(sp::shared_ptr<neb::gfx::window::base> const & window) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", info) << __PRETTY_FUNCTION__;
 
 	/*conns_.key_fun_ =*/ window->sig_.key_fun_.connect(
@@ -69,7 +69,7 @@ void			neb::gfx::Camera::View::Free::connect(sp::shared_ptr<neb::gfx::Window::Ba
 				));
 
 	/*	conns_.mouse_button_fun_ = window->sig_.mouse_button_fun_.connect(
-		::std::bind(&neb::gfx::gui::Layout::Base::mouse_button_fun,
+		::std::bind(&neb::gfx::gui::layout::base::mouse_button_fun,
 		this,
 		::std::placeholders::_1,
 		::std::placeholders::_2,
@@ -80,7 +80,7 @@ void			neb::gfx::Camera::View::Free::connect(sp::shared_ptr<neb::gfx::Window::Ba
 
 }
 int			neb::gfx::Camera::View::Free::key_fun(
-		sp::shared_ptr<neb::gfx::Window::Base> const & window,
+		sp::shared_ptr<neb::gfx::window::base> const & window,
 		int key,
 		int scancode,
 		int action,
