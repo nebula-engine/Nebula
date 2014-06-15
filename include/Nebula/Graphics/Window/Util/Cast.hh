@@ -8,7 +8,7 @@ namespace neb {
 	namespace gfx {
 		namespace window {
 			namespace util {
-				class Cast:
+				class cast:
 					virtual public neb::std::shared
 				{
 					public:

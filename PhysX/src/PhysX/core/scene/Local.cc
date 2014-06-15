@@ -10,7 +10,7 @@
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
 
 
-void            px::core::scene::local::step(neb::core::TimeStep const & ts) {
+void            phx::core::scene::local::step(neb::core::TimeStep const & ts) {
 	
 	auto app = neb::App::base::global();
 	
@@ -54,7 +54,7 @@ void            px::core::scene::local::step(neb::core::TimeStep const & ts) {
 
 		if(actor) {
 			pose = active_transforms[i].actor2World;
-			actor->setPose(px::util::convert(pose));
+			actor->setPose(phx::util::convert(pose));
 			
 			if(pxrigidbody != NULL) {
 				auto rigidbody = isActorRigidBody();
@@ -64,7 +64,7 @@ void            px::core::scene::local::step(neb::core::TimeStep const & ts) {
 
 				physx::PxVec3 v(pxrigidbody->getLinearVelocity());
 
-				rigidbody->velocity_ = px::util::convert(v);
+				rigidbody->velocity_ = phx::util::convert(v);
 
 				//v.print();
 			}
@@ -81,7 +81,7 @@ void            px::core::scene::local::step(neb::core::TimeStep const & ts) {
 	send_actor_update();
 	
 }
-void		px::core::scene::local::fire(sp::shared_ptr<px::core::actor::base> actor) {
+void		phx::core::scene::local::fire(sp::shared_ptr<phx::core::actor::base> actor) {
 
 	auto proj = actor->get_projectile();
 

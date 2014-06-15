@@ -8,13 +8,13 @@
 #include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
 
-namespace px { namespace core { namespace actor { namespace actor {
+namespace phx { namespace core { namespace actor { namespace actor {
 
 
 
 	class base:
 		virtual public neb::core::actor::actor::base,
-		virtual public px::core::actor::base
+		virtual public phx::core::actor::base
 	{
 
 		public:
@@ -33,7 +33,7 @@ namespace px { namespace core { namespace actor { namespace actor {
 
 			virtual int					fire();
 
-			virtual sp::shared_ptr<px::core::actor::rigiddynamic::base>		get_projectile() = 0;
+			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::base>		get_projectile() = 0;
 
 
 			physx::PxActor*					px_actor_;

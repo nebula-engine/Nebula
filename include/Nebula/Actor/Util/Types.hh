@@ -54,7 +54,7 @@ namespace neb { namespace core {
 		}
 
 		/** @brief %RigidStatic */
-		namespace RigidStatic {
+		namespace rigidstatic {
 			class base;
 			class local;
 			class Remote;

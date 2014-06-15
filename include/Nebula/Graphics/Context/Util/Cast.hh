@@ -10,7 +10,7 @@ namespace neb {
 			namespace util {
 				/** @brief %Cast
 				*/
-				class Cast:
+				class cast:
 					virtual public neb::std::shared
 				{
 					public:

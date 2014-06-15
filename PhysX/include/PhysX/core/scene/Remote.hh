@@ -23,11 +23,11 @@
 
 #define LIGHT_MAX 20
 
-namespace px { namespace core { namespace scene {
+namespace phx { namespace core { namespace scene {
 
 	class remote:
 		virtual public neb::Scene::Remote,
-		virtual public ::px::core::scene::base
+		virtual public ::phx::core::scene::base
 	{
 		void				step(neb::core::TimeStep const & ts);
 		

@@ -32,7 +32,7 @@ namespace neb {
 			class base:
 				virtual public neb::gfx::window::__base,
 				virtual public neb::gfx::context::util::parent,
-				virtual public neb::gfx::window::util::Cast
+				virtual public neb::gfx::window::util::cast
 			{
 				public:
 					base();

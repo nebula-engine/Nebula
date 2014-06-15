@@ -10,14 +10,14 @@
 
 #include <PhysX/core/actor/util/decl.hpp>
 
-namespace px { namespace core { namespace actor { namespace rigiddynamic {
+namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 
 
 
 	class local:
 		virtual public neb::core::actor::rigiddynamic::local,
-		virtual public px::core::actor::rigidbody::local,
-		virtual public px::core::actor::rigiddynamic::base
+		virtual public phx::core::actor::rigidbody::local,
+		virtual public phx::core::actor::rigiddynamic::base
 	{
 
 		public:
@@ -36,7 +36,7 @@ namespace px { namespace core { namespace actor { namespace rigiddynamic {
 
 			virtual int					fire();
 
-			virtual sp::shared_ptr<px::core::actor::rigiddynamic::base>		get_projectile() = 0;
+			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::base>		get_projectile() = 0;
 
 
 			physx::PxActor*					px_actor_;

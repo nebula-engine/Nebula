@@ -7,7 +7,7 @@
 
 #include <PhysX/core/actor/util/decl.hpp>
 
-namespace px { namespace message { namespace actor { namespace Control {
+namespace phx { namespace message { namespace actor { namespace Control {
 
 	namespace rigidbody {
 
@@ -15,7 +15,7 @@ namespace px { namespace message { namespace actor { namespace Control {
 		class create:
 			virtual public neb::message::actor::base
 		{
-			gal::std::wrapper<px::core::actor::control::rigidbody::base>		control_;
+			gal::std::wrapper<phx::core::actor::control::rigidbody::base>		control_;
 		};
 		/** @brief %Create. */
 		class icreate:

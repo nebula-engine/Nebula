@@ -30,8 +30,8 @@ namespace neb { namespace core {
 			class parent:
 				public neb::util::parent<neb::actor::__base>,
 				virtual public neb::core::Pose,
-				virtual public neb::Scene::util::Cast,
-				virtual public neb::core::actor::util::Cast
+				virtual public neb::Scene::util::cast,
+				virtual public neb::core::actor::util::cast
 			{
 				public:
 					parent();

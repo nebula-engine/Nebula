@@ -48,33 +48,33 @@
 #include <Nebula/timer/Actor/Release.hpp>
 */
 
-px::core::scene::base::base(sp::shared_ptr< ::neb::Scene::util::parent > parent):
+phx::core::scene::base::base(sp::shared_ptr< ::neb::Scene::util::parent > parent):
 	::neb::Scene::base(parent),
 	px_scene_(NULL)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-px::core::scene::base::~base() {
+phx::core::scene::base::~base() {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-void			px::core::scene::base::init() {
+void			phx::core::scene::base::init() {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 	::neb::Scene::base::init();
 	
 	create_physics();
 }
-void			px::core::scene::base::release() {
+void			phx::core::scene::base::release() {
 	GLUTPP_DEBUG_0_FUNCTION;	
 }
-void			px::core::scene::base::create_physics() {
+void			phx::core::scene::base::create_physics() {
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	auto pxphysics = px::app::base::global()->px_physics_;
+	auto pxphysics = phx::app::base::global()->px_physics_;
 	
 	physx::PxSceneDesc scene_desc(pxphysics->getTolerancesScale());
 
-	scene_desc.gravity = px::util::convert(gravity_);
+	scene_desc.gravity = phx::util::convert(gravity_);
 
 	scene_desc.flags |= physx::PxSceneFlag::eENABLE_ACTIVETRANSFORMS;
 
@@ -120,13 +120,13 @@ void			px::core::scene::base::create_physics() {
 	assert(px_scene_);
 
 	// simulation callback
-	px::simulation_callback* sec = new px::simulation_callback;
+	phx::simulation_callback* sec = new phx::simulation_callback;
 
 	simulation_callback_ = sec;
 
 	px_scene_->setSimulationEventCallback(sec);
 }
-void		px::core::scene::base::step(neb::core::TimeStep const & ts) {
+void		phx::core::scene::base::step(neb::core::TimeStep const & ts) {
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	
