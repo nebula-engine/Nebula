@@ -16,6 +16,15 @@ namespace neb {
 				
 				template<int I> using iterator = typename mi::nth_index<typename map_type::container_type, I>::type::iterator;
 				
+				template<typename U, typename... CtorArgs> sp::shared_ptr<U>		cii(CtorArgs... args) {
+					auto u(sp::make_shared<U>(args...));
+					
+					insert(u);
+					
+					u->init();
+
+					return u;
+				}
 				void		insert(sp::shared_ptr< T > t) {
 					gal_parent::insert(t);
 				}

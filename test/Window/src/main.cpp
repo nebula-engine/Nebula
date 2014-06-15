@@ -28,10 +28,14 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 
 	auto app = neb::App::base::global();
 	
+	//auto layout = app->neb::gfx::gui::layout::util::parent::cii<neb::gfx::gui::layout::base, neb::App::base>(app);
+
+
 	auto layout = sp::make_shared<neb::gfx::gui::layout::base>(app);
 
 	app->neb::gfx::gui::layout::util::parent::insert(layout);
 
+	
 	context->drawable_ = layout;
 
 	layout->connect(window);
@@ -46,12 +50,19 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 	return layout;
 }
 sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor(sp::shared_ptr<neb::Scene::local> scene) {
+
+	/*
 	auto actor = sp::make_shared<neb::core::actor::rigiddynamic::local>(scene);
 	
 	scene->insert(actor);
 
 	actor->init();
-	
+	*/
+
+	auto actor = scene->cii<neb::core::actor::rigiddynamic::local, sp::shared_ptr<neb::Scene::local>>(scene);
+
+
+
 	// shape	
 	auto shape = sp::make_shared<neb::core::shape::Box>(actor);
 	
@@ -72,11 +83,14 @@ sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor2(sp::shared_
 	actor->init();
 	
 	// shape	
+	/*
 	auto shape = sp::make_shared<neb::core::shape::empty>(actor);
 	
 	actor->neb::core::shape::util::parent::insert(shape);
 	
 	shape->init();
+	*/
+	auto shape = actor->neb::core::shape::util::parent::cii< neb::core::shape::empty, sp::shared_ptr<neb::core::actor::rigiddynamic::local> >(actor);
 	
 	// light
 	auto light = sp::make_shared<neb::Light::Point>(shape);
