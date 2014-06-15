@@ -3,7 +3,7 @@
 
 #include <PhysX/message/actor/control/rigidbody/update.hpp>
 
-void			px::message::actor::Control::RigidBody::IUpdate::serialize(
+void			phx::message::actor::Control::RigidBody::IUpdate::serialize(
 		boost::archive::polymorphic_iarchive & ar,
 		unsigned int const & version)
 {

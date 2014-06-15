@@ -30,7 +30,7 @@
 
 #define LIGHT_MAX 20
 
-namespace px { namespace core { namespace scene {
+namespace phx { namespace core { namespace scene {
 		/** 
 		 * @ingroup group_core
 		 * @brief Base
@@ -58,7 +58,7 @@ namespace px { namespace core { namespace scene {
 
 				physx::PxSimulationFilterShader		px_filter_shader_;
 
-				px::simulation_callback*		simulation_callback_;
+				phx::simulation_callback*		simulation_callback_;
 
 				vec3					gravity_;
 

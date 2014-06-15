@@ -13,12 +13,14 @@ namespace rigidactor {
 				virtual public neb::core::actor::actor::local
 			{
 				public:
+					local(sp::shared_ptr<neb::core::actor::util::parent> parent);
+
 					virtual void				step(neb::core::TimeStep const & ts);
 			};
 
 
 }		}
-	}
+}
 }
 
 #endif

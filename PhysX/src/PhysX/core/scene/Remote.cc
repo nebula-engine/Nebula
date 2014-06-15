@@ -8,14 +8,14 @@
 
 #include <PhysX/core/scene/Remote.hh>
 
-void		px::core::scene::remote::step(neb::core::TimeStep const & ts) {
+void		phx::core::scene::remote::step(neb::core::TimeStep const & ts) {
 
 
 
 }
-void		px::core::scene::remote::fire(sp::shared_ptr<neb::core::actor::base> actor) {
+void		phx::core::scene::remote::fire(sp::shared_ptr<neb::core::actor::base> actor) {
 	
-	auto message(sp::make_shared< px::message::actor::event::OFire >());
+	auto message(sp::make_shared< phx::message::actor::event::OFire >());
 	
 	// fill message
 	message->i_ = actor->i_;

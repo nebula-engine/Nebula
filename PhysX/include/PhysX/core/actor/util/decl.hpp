@@ -1,10 +1,14 @@
 #ifndef PX_CORE_ACTOR_UTIL_DECL_HPP
 #define PX_CORE_ACTOR_UTIL_DECL_HPP
 
-namespace px { namespace core {
+namespace phx { namespace core {
 
 	/** @brief %actor */
 	namespace actor {
+
+		class base;
+		class local;
+		class remote;
 
 		/** @brief %actor */
 		namespace actor {
