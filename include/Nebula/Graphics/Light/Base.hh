@@ -88,9 +88,6 @@ namespace neb {
 				// other properties
 
 
-
-
-
 				texture						texture_shadow_map_;
 
 
