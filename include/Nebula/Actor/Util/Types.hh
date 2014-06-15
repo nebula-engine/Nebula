@@ -69,23 +69,6 @@ namespace neb { namespace core {
 			class parent;
 		}
 
-		/** @brief %Control */
-		namespace Control {
-			namespace rigidbody {
-				enum Type {
-					NONE = 0,
-					T0,
-					T1,
-				};
-
-				//class Raw;
-				//typedef boost::shared_ptr<raw>		Raw_s;
-
-				class base;
-				class Manual;
-
-			}
-		}
 
 		/** @brief %Event */
 		namespace Event {
