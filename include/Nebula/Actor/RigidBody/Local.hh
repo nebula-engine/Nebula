@@ -6,24 +6,24 @@
 #include <Nebula/Actor/RigidActor/Local.hh>
 #include <Nebula/Actor/RigidBody/Base.hh>
 
-namespace neb { namespace core { namespace actor {
-		
+namespace neb { namespace core { namespace actor { namespace rigidbody {
 
-namespace rigidbody {
+
+
 			class local:
 				virtual public neb::core::actor::rigidactor::local,
 				virtual public neb::core::actor::rigidbody::base
 			{
 				public:
+					local(sp::shared_ptr<neb::core::actor::util::parent> parent);
+
 					virtual void		step(neb::core::TimeStep const & ts);
 	
 			};
 
 
 
-		}
-}	}
-}
+}}}}
 
 #endif
 

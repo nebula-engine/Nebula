@@ -14,10 +14,10 @@
 void		neb::message::actor::Event::serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
 	ar & event_;
 }*/
-void		px::message::actor::event::IFire::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
+void		phx::message::actor::event::IFire::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
 	neb::message::actor::IBase::serialize(ar, version);
 	
-	auto actor = sp::dynamic_pointer_cast<px::core::actor::actor::base>(gal::std::shared::registry_.get(index_));
+	auto actor = sp::dynamic_pointer_cast<phx::core::actor::actor::base>(gal::std::shared::registry_.get(index_));
 	assert(actor);
 
 	//auto scene = actor->getScene();

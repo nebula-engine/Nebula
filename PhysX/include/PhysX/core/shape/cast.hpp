@@ -8,7 +8,7 @@
 namespace Neb {
 	namespace shape {
 		namespace util {
-			class Cast:
+			class cast:
 				virtual public gal::std::shared
 			{
 				public:

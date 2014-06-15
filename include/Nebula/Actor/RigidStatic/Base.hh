@@ -6,7 +6,7 @@
 namespace neb { namespace core { namespace actor {
 		
 
-	namespace RigidStatic {
+	namespace rigidstatic {
 		class base: public neb::core::actor::rigidactor::base {
 			public:
 				base();

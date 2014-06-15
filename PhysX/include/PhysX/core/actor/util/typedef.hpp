@@ -3,10 +3,10 @@
 
 #include <PhysX/core/actor/util/decl.hpp>
 
-namespace px { namespace core { namespace actor {
+namespace phx { namespace core { namespace actor {
 
 
-	typedef px::core::actor::rigiddynamic::local		projectile_local;
+	typedef phx::core::actor::rigiddynamic::local		projectile_local;
 
 }}}
 

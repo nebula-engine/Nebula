@@ -5,12 +5,12 @@
 
 #include <PhysX/core/shape/base.hpp>
 
-namespace px { namespace core { namespace shape {
+namespace phx { namespace core { namespace shape {
 
 
 	class box:
 		virtual public neb::core::shape::Box,
-		virtual public px::core::shape::base
+		virtual public phx::core::shape::base
 	{
 		public:
 			virtual void				init();

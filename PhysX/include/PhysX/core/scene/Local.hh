@@ -24,12 +24,12 @@
 #include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/scene/Base.hh>
 
-namespace px { namespace core { namespace scene {
+namespace phx { namespace core { namespace scene {
 
 
 	class local:
 		virtual public neb::Scene::local,
-		virtual public px::core::scene::base
+		virtual public phx::core::scene::base
 	{
 		local(sp::shared_ptr<neb::Scene::util::parent> parent);
 		virtual void			init();
@@ -40,7 +40,7 @@ namespace px { namespace core { namespace scene {
 		virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {}
 		
 		
-		virtual void			fire(sp::shared_ptr<px::core::actor::base> actor);
+		virtual void			fire(sp::shared_ptr<phx::core::actor::base> actor);
 	};
 
 

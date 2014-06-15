@@ -6,12 +6,12 @@
 #include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
 
-namespace px { namespace core { namespace actor {
+namespace phx { namespace core { namespace actor {
 
 
 	class local:
 		virtual public neb::core::actor::local,
-		virtual public px::core::actor::base
+		virtual public phx::core::actor::base
 	{
 		public:
 			local(sp::shared_ptr<neb::core::actor::util::parent> parent);
@@ -20,7 +20,7 @@ namespace px { namespace core { namespace actor {
 			void		damage();
 
 
-			virtual sp::shared_ptr<px::core::actor::rigiddynamic::base>		get_projectile();
+			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::base>		get_projectile();
 
 
 			float		health_;

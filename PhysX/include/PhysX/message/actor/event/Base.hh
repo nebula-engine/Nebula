@@ -23,7 +23,7 @@
 
 
 
-namespace px { namespace message { namespace actor { namespace event {
+namespace phx { namespace message { namespace actor { namespace event {
 
 
 	/** @brief %Base */
@@ -32,21 +32,21 @@ namespace px { namespace message { namespace actor { namespace event {
 	};
 	class IBase:
 		virtual public neb::message::actor::IBase,
-		virtual public px::message::actor::event::base
+		virtual public phx::message::actor::event::base
 	{
 	};
 	class OBase:
 		virtual public neb::message::actor::OBase,
-		virtual public px::message::actor::event::base
+		virtual public phx::message::actor::event::base
 	{
 	};
 	class Fire:
-		virtual public px::message::actor::event::base
+		virtual public phx::message::actor::event::base
 	{
 	};
 	class IFire:
-		virtual public px::message::actor::event::IBase,
-		virtual public px::message::actor::event::Fire
+		virtual public phx::message::actor::event::IBase,
+		virtual public phx::message::actor::event::Fire
 	{
 		virtual void		process();
 
@@ -55,8 +55,8 @@ namespace px { namespace message { namespace actor { namespace event {
 				unsigned int const & version);
 	};
 	class OFire:
-		virtual public px::message::actor::event::OBase,
-		virtual public px::message::actor::event::Fire
+		virtual public phx::message::actor::event::OBase,
+		virtual public phx::message::actor::event::Fire
 	{
 		virtual void		pre();
 		virtual void		post();
