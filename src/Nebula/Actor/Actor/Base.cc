@@ -7,8 +7,8 @@
 
 #include <Nebula/Actor/Actor/Base.hh>
 
-neb::core::actor::actor::base::base() {
-}
+//neb::core::actor::actor::base::base() {
+//}
 neb::core::actor::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	neb::core::actor::base(parent)
 {

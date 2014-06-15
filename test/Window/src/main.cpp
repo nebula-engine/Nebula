@@ -12,9 +12,9 @@
 #include <Nebula/Actor/RigidDynamic/Local.hh>
 
 
-sp::shared_ptr<neb::gfx::context::Window>		create_context(sp::shared_ptr<neb::gfx::window::base> window) {
+sp::shared_ptr<neb::gfx::context::window>		create_context(sp::shared_ptr<neb::gfx::window::base> window) {
 
-	auto context = sp::make_shared<neb::gfx::context::Window>(window);
+	auto context = sp::make_shared<neb::gfx::context::window>(window);
 	
 	window->insert(context);
 	
@@ -24,11 +24,11 @@ sp::shared_ptr<neb::gfx::context::Window>		create_context(sp::shared_ptr<neb::gf
 }
 sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 		sp::shared_ptr<neb::gfx::window::base> window,
-		sp::shared_ptr<neb::gfx::context::Window> context) {
+		sp::shared_ptr<neb::gfx::context::window> context) {
 
 	auto app = neb::App::base::global();
 	
-	auto layout = sp::make_shared<neb::gfx::gui::layout::base>();
+	auto layout = sp::make_shared<neb::gfx::gui::layout::base>(app);
 
 	app->neb::gfx::gui::layout::util::parent::insert(layout);
 
@@ -72,7 +72,7 @@ sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor2(sp::shared_
 	actor->init();
 	
 	// shape	
-	auto shape = sp::make_shared<neb::core::shape::Empty>(actor);
+	auto shape = sp::make_shared<neb::core::shape::empty>(actor);
 	
 	actor->neb::core::shape::util::parent::insert(shape);
 	
@@ -88,7 +88,7 @@ sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor2(sp::shared_
 	return actor;	
 }
 sp::shared_ptr<neb::Scene::local>			create_scene(
-		sp::shared_ptr<neb::gfx::context::Window> context) {
+		sp::shared_ptr<neb::gfx::context::window> context) {
 	
 	auto app = neb::App::base::global();
 	

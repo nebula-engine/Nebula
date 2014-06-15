@@ -8,7 +8,7 @@ namespace neb { namespace core { namespace actor {
 	namespace actor {
 		class base: virtual public neb::core::actor::base {
 			public:
-				base();
+				//base();
 				base(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
 				virtual void			init();

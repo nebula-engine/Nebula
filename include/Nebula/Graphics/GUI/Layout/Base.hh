@@ -23,7 +23,7 @@ namespace neb {
 					virtual public neb::gfx::gui::object::util::parent
 				{
 					public:
-						base();
+						//base();
 						base(sp::shared_ptr<neb::gfx::gui::layout::util::parent> parent);
 
 						virtual void				init();

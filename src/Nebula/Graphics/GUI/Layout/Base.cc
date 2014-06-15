@@ -14,8 +14,8 @@
 #include <Nebula/Graphics/GUI/Layout/Base.hh>
 
 
-neb::gfx::gui::layout::base::base() {
-}
+//neb::gfx::gui::layout::base::base() {
+//}
 neb::gfx::gui::layout::base::base(sp::shared_ptr<neb::gfx::gui::layout::util::parent> parent): parent_(parent) {
 
 	program_name_ = neb::program_name::e::TEXT;

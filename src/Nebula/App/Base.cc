@@ -42,7 +42,7 @@ sp::shared_ptr<neb::App::base>	neb::App::base::g_app_;
 
 neb::App::base::base() {
 }
-neb::App::base::~Base() {
+neb::App::base::~base() {
 }
 void				neb::App::base::init() {
 

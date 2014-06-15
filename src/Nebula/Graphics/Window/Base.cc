@@ -39,7 +39,7 @@ neb::gfx::window::base::base(sp::shared_ptr<neb::gfx::window::util::parent> pare
 	h_(600)
 {
 }
-neb::gfx::window::base::~Base() {
+neb::gfx::window::base::~base() {
 }
 void neb::gfx::window::base::init() {
 	neb::std::shared::init();
