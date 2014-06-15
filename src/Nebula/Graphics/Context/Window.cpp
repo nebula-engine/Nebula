@@ -1,6 +1,6 @@
 #include <Nebula/Graphics/Context/Window.hpp>
 
-neb::gfx::context::window::Window(sp::shared_ptr<neb::gfx::window::base> window):
+neb::gfx::context::window::window(sp::shared_ptr<neb::gfx::window::base> window):
 	neb::gfx::context::base(window),
 	window_(window)
 {

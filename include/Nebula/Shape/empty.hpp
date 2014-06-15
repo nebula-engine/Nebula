@@ -3,11 +3,11 @@
 
 #include <Nebula/Shape/Base.hh>
 
-namespace neb {
+namespace neb { namespace core {
 	namespace shape {
-		class Empty: public neb::core::shape::base {
+		class empty: public neb::core::shape::base {
 			public:
-				Empty(sp::shared_ptr<neb::core::shape::util::parent> parent): neb::core::shape::base(parent) {}
+				empty(sp::shared_ptr<neb::core::shape::util::parent> parent): neb::core::shape::base(parent) {}
 				virtual void			createMesh() {}
 				
 				virtual void					draw_elements(
@@ -16,7 +16,7 @@ namespace neb {
 						mat4 space) {}
 		};
 	}
-}
+}}
 
 #endif
 

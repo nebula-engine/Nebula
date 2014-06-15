@@ -2,9 +2,12 @@
 #include <Nebula/Shape/Base.hh>
 #include <Nebula/Actor/RigidDynamic/Base.hh>
 
-neb::core::actor::rigiddynamic::base::base() {
-}
+//neb::core::actor::rigiddynamic::base::base() {
+//}
 neb::core::actor::rigiddynamic::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+	neb::core::actor::base(parent),
+	neb::core::actor::actor::base(parent),
+	neb::core::actor::rigidactor::base(parent),
 	neb::core::actor::rigidbody::base(parent)
 {
 	NEBULA_ACTOR_BASE_FUNC;
