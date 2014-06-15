@@ -6,7 +6,7 @@
 
 #include <PxPhysicsAPI.h>
 
-namespace px {
+namespace phx {
 	class simulation_callback: public physx::PxSimulationEventCallback {
 		public:
 

@@ -1,24 +1,23 @@
-#ifndef __PX_CONTENT_ACTOR_RIGIDACTOR_LOCAL_HPP__
-#define __PX_CONTENT_ACTOR_RIGIDACTOR_LOCAL_HPP__
+#ifndef PHYSX_CONTENT_ACTOR_RIGIDBODY_LOCAL_HPP
+#define PHYSX_CONTENT_ACTOR_RIGIDBODY_LOCAL_HPP
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Actor/Actor/Base.hh>
+#include <Nebula/Actor/RigidBody/Local.hh>
 
-#include <PhysX/core/actor/actor/local.hpp>
-#include <PhysX/core/actor/rigidactor/base.hpp>
+#include <PhysX/core/actor/rigidactor/local.hpp>
+#include <PhysX/core/actor/rigidbody/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
 
-namespace phx { namespace core { namespace actor { namespace rigidactor {
+namespace phx { namespace core { namespace actor { namespace rigidstatic {
 
 
 
 	class local:
-		virtual public neb::core::actor::rigidactor::local,
-		virtual public phx::core::actor::actor::local,
-		virtual public phx::core::actor::rigidactor::base
+		virtual public neb::core::actor::rigidstatic::local,
+		virtual public phx::core::actor::rigidactor::local,
+		virtual public phx::core::actor::rigidstatic::base
 	{
-
 		public:
 			local(sp::shared_ptr<neb::core::actor::util::parent>);
 

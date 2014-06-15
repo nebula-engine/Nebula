@@ -9,10 +9,10 @@ void		neb::core::actor::actor::local::release() {
 		px_actor_ = NULL;
 	}
 }
-void		px::actor::actor::local::step(neb::core::TimeStep const & ts) {
+void		phx::actor::actor::local::step(neb::core::TimeStep const & ts) {
 	
 	neb::core::actor::actor::local::step(ts);
-	px::actor::actor::base::step(ts);
+	phx::actor::actor::base::step(ts);
 
 
 }

@@ -8,7 +8,7 @@
 namespace Neb {
         namespace Scene {
                 namespace util {
-                        class Cast: virtual public gal::std::shared {
+                        class cast: virtual public gal::std::shared {
                                 public:
                                         sp::shared_ptr<neb::Scene::base>              isSceneBase();
                         };

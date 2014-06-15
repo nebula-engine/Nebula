@@ -42,8 +42,8 @@ namespace neb { namespace core { namespace shape { namespace util {
 			 */
 			class parent:
 				virtual public neb::util::parent<neb::core::shape::base>,
-				virtual public neb::core::actor::util::Cast,
-				virtual public neb::core::shape::util::Cast,
+				virtual public neb::core::actor::util::cast,
+				virtual public neb::core::shape::util::cast,
 				virtual public neb::core::Pose
 			{
 				public:

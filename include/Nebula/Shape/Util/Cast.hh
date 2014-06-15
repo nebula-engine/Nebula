@@ -9,7 +9,7 @@ namespace neb { namespace core { namespace shape { namespace util {
 
 
 
-			class Cast:
+			class cast:
 				virtual public gal::std::shared
 			{
 				public:

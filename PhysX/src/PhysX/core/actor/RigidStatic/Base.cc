@@ -2,22 +2,22 @@
 #include <Nebula/debug.hh>
 //#include <Nebula/Physics.hh>
 #include <Nebula/Shape/Base.hh>
-#include <PhysX/core/actor/rigidstatic/base.hh>
+#include <PhysX/core/actor/rigidstatic/base.hpp>
 
-px::core::actor::RigidStatic::base::base() {
-}
-px::core::actor::RigidStatic::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
-	neb::core::actor::rigidactor::base(parent)
+phx::core::actor::rigidstatic::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+	neb::core::actor::base(parent),
+	neb::core::actor::rigidactor::base(parent),
+	phx::core::actor::base(parent)
 {
 	NEBULA_ACTOR_BASE_FUNC
 }
-void			px::core::actor::RigidStatic::base::init() {
+void			phx::core::actor::rigidstatic::base::init() {
 	NEBULA_ACTOR_BASE_FUNC
 }
-void			px::core::actor::RigidStatic::base::step(double dt) {
+void			phx::core::actor::rigidstatic::base::step(double dt) {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-void			px::core::actor::RigidStatic::base::create_physics() {
+void			phx::core::actor::rigidstatic::base::create_physics() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
 	assert(px_actor_ == NULL);
@@ -48,7 +48,7 @@ void			px::core::actor::RigidStatic::base::create_physics() {
 
 	scene->px_scene_->addActor(*px_rigid_static);
 }
-void			px::core::actor::RigidStatic::base::init_physics() {
+void			phx::core::actor::rigidstatic::base::init_physics() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
