@@ -14,8 +14,9 @@
 //#include <Nebula/Actor/RigidDynamic/Local.hh>
 
 
-neb::core::actor::rigidbody::base::base() {}
 neb::core::actor::rigidbody::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+	neb::core::actor::base(parent),
+	neb::core::actor::actor::base(parent),
 	neb::core::actor::rigidactor::base(parent)
 {}
 void		neb::core::actor::rigidbody::base::init() {

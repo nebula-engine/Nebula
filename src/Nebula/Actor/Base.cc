@@ -24,12 +24,12 @@
 /** @file Base
  */
 
-neb::core::actor::base::base() {
-}
+//neb::core::actor::base::base() {
+//}
 neb::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent): parent_(parent) {
 	NEBULA_ACTOR_BASE_FUNC;
 }
-neb::core::actor::base::~Base() {
+neb::core::actor::base::~base() {
 	NEBULA_ACTOR_BASE_FUNC;
 }
 void		neb::core::actor::base::init() {

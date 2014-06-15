@@ -3,9 +3,10 @@
 #include <Nebula/Shape/Base.hh>
 #include <Nebula/Actor/RigidStatic/Base.hh>
 
-neb::core::actor::rigidstatic::base::base() {
-}
+	
 neb::core::actor::rigidstatic::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+		neb::core::actor::base(parent),
+		neb::core::actor::actor::base(parent),
 		neb::core::actor::rigidactor::base(parent)
 {
 	NEBULA_ACTOR_BASE_FUNC

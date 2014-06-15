@@ -9,7 +9,6 @@ namespace neb { namespace core { namespace actor {
 	namespace rigidstatic {
 		class base: public neb::core::actor::rigidactor::base {
 			public:
-				base();
 				base(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
 
