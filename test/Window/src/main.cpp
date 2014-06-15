@@ -84,6 +84,16 @@ sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor2(sp::shared_
 	shape->neb::Light::util::parent::insert(light);
 	
 	light->init();
+	
+	// another light
+	
+	light = sp::make_shared<neb::Light::Point>(shape);
+	
+	shape->neb::Light::util::parent::insert(light);
+	
+	light->init();
+
+	light->pos_ = vec3(10,0,0);
 
 	return actor;	
 }
