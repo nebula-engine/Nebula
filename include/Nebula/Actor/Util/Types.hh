@@ -46,14 +46,14 @@ namespace neb { namespace core {
 			class Remote;
 		}
 
-		/** @brief %RigidDynamic */
+		/** @brief %rigiddynamic */
 		namespace rigiddynamic {
 			class base;
 			class local;
-			class Remote;
+			class remote;
 		}
 
-		/** @brief %RigidStatic */
+		/** @brief %rigidstatic */
 		namespace rigidstatic {
 			class base;
 			class local;
