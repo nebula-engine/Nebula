@@ -24,6 +24,9 @@ def replace(filename):
 	
 	text = re.sub("([\w:]+)_s([\s\),])","sp::shared_ptr<\\1>\\2",text)
 	
+	text = re.sub("namespace px","namespace phx",text)
+	text = re.sub("px::","phx::",text)
+	
 	text = re.sub("namespace Message","namespace message",text)
 	text = re.sub("neb::Message::","neb::message::",text)
 
@@ -39,6 +42,9 @@ def replace(filename):
 
 	text = re.sub("class Parent","class parent",text)
 	text = re.sub("::Parent","::parent",text)
+
+	text = re.sub("class Cast","class cast",text)
+	text = re.sub("::Cast","::cast",text)
 
 	text = re.sub("namespace GUI","namespace gui",text)
 	text = re.sub("neb::gfx::GUI::","neb::gfx::gui::",text)
@@ -59,6 +65,9 @@ def replace(filename):
 
 	text = re.sub("namespace RigidActor","namespace rigidactor",text)
 	text = re.sub("neb::core::actor::RigidActor","neb::core::actor::rigidactor",text)
+
+	text = re.sub("namespace RigidStatic","namespace rigidstatic",text)
+	text = re.sub("::RigidStatic","::rigidstatic",text)
 
 	text = re.sub("namespace RigidBody","namespace rigidbody",text)
 	text = re.sub("neb::core::actor::RigidBody","neb::core::actor::rigidbody",text)

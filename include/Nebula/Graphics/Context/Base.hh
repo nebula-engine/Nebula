@@ -33,7 +33,7 @@ namespace neb {
 			 */
 			class base:
 				virtual public neb::std::shared,
-				virtual public neb::gfx::context::util::Cast
+				virtual public neb::gfx::context::util::cast
 			{
 				public:
 					base();

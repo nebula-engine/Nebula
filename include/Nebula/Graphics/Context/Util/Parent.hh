@@ -11,7 +11,7 @@ namespace neb {
 			namespace util {
 				class parent:
 					virtual public neb::util::parent< neb::gfx::context::base >,
-					virtual public neb::gfx::window::util::Cast
+					virtual public neb::gfx::window::util::cast
 				{
 					public:
 						virtual void			init() {}

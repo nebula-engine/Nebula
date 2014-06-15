@@ -3,20 +3,24 @@
 
 #include <Nebula/Actor/Base.hh>
 
+#include <PhysX/core/actor/util/cast.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
 
-namespace px { namespace core { namespace actor {
+namespace phx { namespace core { namespace actor {
 
-	class base: virtual public neb::core::actor::base {
+	class base:
+		virtual public neb::core::actor::base,
+		virtual public phx::core::actor::util::cast
+	{
 		public:
 			base(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
 			void		hit();
 			void		damage();
-			
-			
-			virtual sp::shared_ptr<px::core::actor::rigiddynamic::base>		get_projectile();
-			
+
+
+			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::base>		get_projectile();
+
 
 			float		health_;
 

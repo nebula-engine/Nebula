@@ -9,7 +9,7 @@
 
 #include <PhysX/core/actor/util/decl.hpp>
 
-namespace px { namespace core { namespace actor { namespace control { namespace rigidbody {
+namespace phx { namespace core { namespace actor { namespace control { namespace rigidbody {
 
 
 
@@ -38,7 +38,7 @@ namespace px { namespace core { namespace actor { namespace control { namespace 
 			private:
 
 			public:
-				sp::shared_ptr<px::core::actor::rigidbody::base>		actor_;
+				sp::shared_ptr<phx::core::actor::rigidbody::base>		actor_;
 
 				quat				q_target_;
 				vec3				p_target_;
@@ -58,13 +58,13 @@ namespace px { namespace core { namespace actor { namespace control { namespace 
 				//gal::control::control		pid_;
 
 		};
-		class Manual: public px::core::actor::control::rigidbody::base {
+		class Manual: public phx::core::actor::control::rigidbody::base {
 			void				step(double dt);
 			vec3			f();
 			vec3			t();
 
 		};
-		class PD: public px::core::actor::control::rigidbody::base {
+		class PD: public phx::core::actor::control::rigidbody::base {
 			void				step(double dt);
 			vec3			f();
 			vec3			t();

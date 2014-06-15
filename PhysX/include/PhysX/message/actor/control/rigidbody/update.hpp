@@ -7,7 +7,7 @@
 
 #include <PhysX/core/actor/util/decl.hpp>
 
-namespace px { namespace message { namespace actor { namespace control {
+namespace phx { namespace message { namespace actor { namespace control {
 
 	namespace rigidbody {
 
@@ -16,7 +16,7 @@ namespace px { namespace message { namespace actor { namespace control {
 		class create:
 			virtual public neb::message::actor::base
 		{
-			gal::std::wrapper<px::core::actor::control::rigidbody::base>		control_;
+			gal::std::wrapper<phx::core::actor::control::rigidbody::base>		control_;
 		};
 		/** @brief %create. */
 		class icreate:
@@ -45,12 +45,12 @@ namespace px { namespace message { namespace actor { namespace control {
 			public:
 				virtual ~update() = 0;
 			public:
-				gal::std::wrapper<px::core::actor::control::rigidbody::base>		control_;
+				gal::std::wrapper<phx::core::actor::control::rigidbody::base>		control_;
 		};
 		/** @brief %update. */
 		class iupdate:
 			virtual public neb::message::actor::IBase,
-			virtual public px::message::actor::control::rigidbody::update
+			virtual public phx::message::actor::control::rigidbody::update
 		{
 			public:
 				virtual ~iupdate();
@@ -62,7 +62,7 @@ namespace px { namespace message { namespace actor { namespace control {
 		/** @brief %update. */
 		class oupdate:
 			virtual public neb::message::actor::OBase,
-			virtual public px::message::actor::control::rigidbody::update
+			virtual public phx::message::actor::control::rigidbody::update
 		{
 			public:
 				/** @brief derived serialize. */

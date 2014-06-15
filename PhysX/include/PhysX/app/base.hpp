@@ -30,7 +30,7 @@ physx::PxFilterFlags DefaultFilterShader(
 		const void* constantBlock,
 		physx::PxU32 constantBlockSize );
 
-namespace px { namespace app {
+namespace phx { namespace app {
 
 
 	class base: virtual public neb::App::base {
@@ -39,7 +39,7 @@ namespace px { namespace app {
 			void						init();
 			void						release();
 			
-			static sp::shared_ptr<px::app::base>		global();
+			static sp::shared_ptr<phx::app::base>		global();
 			
 			
 			DefaultErrorCallback 				px_default_error_callback_;
@@ -51,7 +51,7 @@ namespace px { namespace app {
 			//physx::pxtask::CudaContextManager*		px_cuda_context_manager_;
 			physx::PxControllerManager*			px_character_controller_manager_;
 		private:
-			static sp::shared_ptr<px::app::base>		g_app_;
+			static sp::shared_ptr<phx::app::base>		g_app_;
 	};
 
 
