@@ -26,9 +26,9 @@
 
 
 
-namespace neb {
-	namespace gfx {
-		namespace window {
+namespace neb { namespace gfx { namespace window {
+
+
 			class base:
 				virtual public neb::gfx::window::__base,
 				virtual public neb::gfx::context::util::parent,

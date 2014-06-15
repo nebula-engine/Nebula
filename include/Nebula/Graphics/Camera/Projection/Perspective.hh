@@ -16,7 +16,7 @@ namespace neb {
 				class base {
 					public:
 						/** @brief Constructor */
-						Base(sp::shared_ptr<neb::gfx::context::base>);
+						base(sp::shared_ptr<neb::gfx::context::base>);
 
 						virtual mat4				proj() = 0;
 						void					load(sp::shared_ptr<neb::glsl::program> p);
@@ -28,7 +28,7 @@ namespace neb {
 						/** @brief Parent */
 						sp::shared_ptr<neb::gfx::context::base>		parent_;
 				};
-				class Perspective: public Base {
+				class Perspective: virtual public base {
 					public:
 						Perspective(sp::shared_ptr<neb::gfx::context::base>);
 						//void		init(neb::renderable_shared);

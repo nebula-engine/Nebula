@@ -21,7 +21,7 @@ neb::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> pare
 	NEBULA_SHAPE_BASE_FUNC;
 	assert(parent);
 }
-neb::core::shape::base::~Base() {}
+neb::core::shape::base::~base() {}
 mat4					neb::core::shape::base::getPoseGlobal() {
 	NEBULA_SHAPE_BASE_FUNC;
 	

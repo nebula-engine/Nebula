@@ -1,3 +1,4 @@
+#include <Nebula/config.hh>
 #include <Nebula/App/__gfx_glsl.hpp>
 #include <Nebula/Graphics/glsl/program.hh>
 
