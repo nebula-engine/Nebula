@@ -26,7 +26,7 @@ namespace neb { namespace core {
 
 		class base;
 
-		/** @brief %Actor */
+		/** @brief %actor */
 		namespace actor {
 			class base;
 			class local;
@@ -39,7 +39,7 @@ namespace neb { namespace core {
 			class Remote;
 		}
 
-		/** @brief %RigidBody */
+		/** @brief %rigidbody */
 		namespace rigidbody {
 			class base;
 			class local;
