@@ -23,11 +23,11 @@ namespace neb {
 			 * @todo allow for manual ordering of context::window objects in window's context map
 			 * such that things like layouts are render ON TOP of existing scene.'
 			 */
-			class Window:
+			class window:
 				virtual public neb::gfx::context::base
 			{
 				public:
-					Window(sp::shared_ptr<neb::gfx::window::base> window);
+					window(sp::shared_ptr<neb::gfx::window::base> window);
 					virtual void					init();
 				public:
 					sp::shared_ptr<neb::gfx::window::base>	window_;

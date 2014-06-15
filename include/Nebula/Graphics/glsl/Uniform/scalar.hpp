@@ -18,14 +18,14 @@ namespace neb {
 
 		namespace Uniform {
 			namespace Scalar {
-				/** @brief %Base
+				/** @brief %base
 				 *
 				 * base class for scalar GLSL uniform
 				 */
 				class base {
 					public:
-						Base(::std::string);
-						virtual ~Base() {}
+						base(::std::string);
+						virtual ~base() {}
 						void			locate(::std::shared_ptr<program>);
 						/** @name Load
 						 * @{
@@ -48,43 +48,43 @@ namespace neb {
 
 				class Int: public neb::glsl::Uniform::Scalar::base {
 					public:
-						Int(::std::string s): Base(s) {}
+						Int(::std::string s): base(s) {}
 						virtual void		load(int);
 				};
 				class Float: public neb::glsl::Uniform::Scalar::base {
 					public:
-						Float(::std::string s): Base(s) {}
+						Float(::std::string s): base(s) {}
 						virtual void		load(float);
 				};
 				class Double: public neb::glsl::Uniform::Scalar::base {
 					public:
-						Double(::std::string s): Base(s) {}
+						Double(::std::string s): base(s) {}
 						virtual void		load(double);
 				};
 				class Vec3: public neb::glsl::Uniform::Scalar::base {
 					public:
-						Vec3(::std::string s): Base(s) {}
+						Vec3(::std::string s): base(s) {}
 						virtual void		load(vec3 const &);
 						virtual void		load(float*);
 				};
 				class Vec4: public neb::glsl::Uniform::Scalar::base {
 					public:
-						Vec4(::std::string s): Base(s) {}
+						Vec4(::std::string s): base(s) {}
 						virtual void		load(float*);
 				};
 				class DVec4: public neb::glsl::Uniform::Scalar::base {
 					public:
-						DVec4(::std::string s): Base(s) {}
+						DVec4(::std::string s): base(s) {}
 						virtual void		load(double*);
 				};
 				class Mat4: public neb::glsl::Uniform::Scalar::base {
 					public:
-						Mat4(::std::string s): Base(s) {}
+						Mat4(::std::string s): base(s) {}
 						virtual void		load(mat4 const &);
 				};
 				class Sampler2D: public neb::glsl::Uniform::Scalar::base {
 					public:
-						Sampler2D(::std::string s): Base(s) {}
+						Sampler2D(::std::string s): base(s) {}
 						virtual void		load(int);
 				};
 			}
