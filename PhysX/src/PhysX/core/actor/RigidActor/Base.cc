@@ -1,9 +1,10 @@
 
+#include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/rigidactor/base.hpp>
 
 //neb::core::actor::rigidactor::base::base() {
 //}
-phx::core::actor::rigidactor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+phx::core::actor::rigidactor::base::base(sp::shared_ptr<phx::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
 	neb::core::actor::actor::base(parent),
 	neb::core::actor::rigidactor::base(parent),

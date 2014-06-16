@@ -17,9 +17,9 @@ phx::core::actor::control::rigidbody::base::base() {
 int phx::core::actor::control::rigidbody::base::key_fun(sp::shared_ptr<neb::gfx::window::base> window, int key, int scancode, int action, int mods) {
 	//NEBULA_DEBUG_0_FUNCTION;
 
-	vec3 x(1.0,0.0,0.0);
-	vec3 y(0.0,1.0,0.0);
-	vec3 z(0.0,0.0,1.0);
+	vec4 x(1.0,0.0,0.0,0);
+	vec4 y(0.0,1.0,0.0,0);
+	vec4 z(0.0,0.0,1.0,0);
 
 	switch(action) {
 		case GLFW_PRESS:
@@ -109,12 +109,12 @@ int phx::core::actor::control::rigidbody::base::key_fun(sp::shared_ptr<neb::gfx:
 
 	return 0;
 }
-void phx::core::actor::control::rigidbody::Manual::step(double dt) { // 0
+void		phx::core::actor::control::rigidbody::Manual::step(neb::core::TimeStep const & ts) { // 0
 
 }
 
 
-void phx::core::actor::control::rigidbody::PD::step(double dt) { // 1
+void		phx::core::actor::control::rigidbody::PD::step(neb::core::TimeStep const & ts) { // 1
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	// step target
@@ -129,7 +129,7 @@ void phx::core::actor::control::rigidbody::PD::step(double dt) { // 1
 	else
 	{
 		//physx::PxQuat rot(q_scale * dt, phx::util::convert(t_));
-		quat rot(q_scale * dt, t_);
+		quat rot(q_scale * ts.dt, vec3(t_));
 
 		q_target_ = q_target_ * rot;
 
@@ -208,9 +208,9 @@ void phx::core::actor::control::rigidbody::PD::step(double dt) { // 1
 */
 	/** @todo replace with independent control system library */
 	//math::vec3 u = ((ac + I * a.w) * Gp + I * gamma * (1 - a.w)) * va * 0.5 - Gr * omega;
-	physx::PxVec3 u;// = -I * e * ke - omega * ko;
+	vec4 u;// = -I * e * ke - omega * ko;
 
-	torque_ = phx::util::convert(u);
+	torque_ = u;
 	/*
 
 
@@ -259,19 +259,19 @@ void phx::core::actor::control::rigidbody::PD::step(double dt) { // 1
 	}
 	*/
 }
-vec3			phx::core::actor::control::rigidbody::Manual::f() {
+vec4			phx::core::actor::control::rigidbody::Manual::f() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return f_ * 100.0f;
 }
-vec3			phx::core::actor::control::rigidbody::Manual::t() {
+vec4			phx::core::actor::control::rigidbody::Manual::t() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return t_ * 3.0f;
 }
-vec3			phx::core::actor::control::rigidbody::PD::f() {
+vec4			phx::core::actor::control::rigidbody::PD::f() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return force_;
 }
-vec3			phx::core::actor::control::rigidbody::PD::t() {
+vec4			phx::core::actor::control::rigidbody::PD::t() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return torque_;
 }

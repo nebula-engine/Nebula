@@ -18,7 +18,7 @@ namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 	{
 
 		public:
-			base(sp::shared_ptr<neb::core::actor::util::parent>);
+			base(sp::shared_ptr<phx::core::actor::util::parent>);
 
 			virtual void					init();
 			virtual void					release();

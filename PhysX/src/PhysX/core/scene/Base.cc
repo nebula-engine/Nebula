@@ -49,7 +49,7 @@
 */
 
 phx::core::scene::base::base(sp::shared_ptr< ::neb::Scene::util::parent > parent):
-	::neb::Scene::base(parent),
+	neb::Scene::base(parent),
 	px_scene_(NULL)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
