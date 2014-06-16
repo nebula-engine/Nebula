@@ -8,7 +8,7 @@
 #include <Nebula/Graphics/Window/Base.hh>
 #include <Nebula/Graphics/Camera/View/Free.hh>
 
-neb::gfx::Camera::View::Free::Free(sp::shared_ptr<neb::gfx::context::base> parent):
+neb::gfx::Camera::View::Free::Free(sp::shared_ptr<neb::gfx::environ::base> parent):
 	neb::gfx::Camera::View::base(parent),
 	pitch_(0),
 	yaw_(0),
