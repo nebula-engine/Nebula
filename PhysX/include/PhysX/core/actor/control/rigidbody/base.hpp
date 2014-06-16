@@ -7,6 +7,7 @@
 
 #include <Nebula/Util/typedef.hpp>
 #include <Nebula/Graphics/Types.hh>
+#include <Nebula/Core/TimeStep.hpp>
 
 #include <PhysX/core/actor/util/decl.hpp>
 
@@ -30,9 +31,9 @@ namespace phx { namespace core { namespace actor { namespace control { namespace
 
 				virtual int			key_fun(sp::shared_ptr<neb::gfx::window::base>, int, int, int, int);
 
-				virtual void			step(double const & time, double const & dt) = 0;
-				virtual vec3			f() = 0;
-				virtual vec3			t() = 0;
+				virtual void			step(neb::core::TimeStep const & ts) = 0;
+				virtual vec4			f() = 0;
+				virtual vec4			t() = 0;
 
 				virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 				virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
@@ -42,13 +43,13 @@ namespace phx { namespace core { namespace actor { namespace control { namespace
 				sp::shared_ptr<phx::core::actor::rigidbody::base>		actor_;
 
 				quat				q_target_;
-				vec3				p_target_;
+				vec4				p_target_;
 
-				vec3				f_;
-				vec3				t_;
+				vec4				f_;
+				vec4				t_;
 
-				vec3				force_;
-				vec3				torque_;
+				vec4				force_;
+				vec4				torque_;
 
 
 				struct
@@ -60,15 +61,15 @@ namespace phx { namespace core { namespace actor { namespace control { namespace
 
 		};
 		class Manual: public phx::core::actor::control::rigidbody::base {
-			void				step(double dt);
-			vec3			f();
-			vec3			t();
+			void				step(neb::core::TimeStep const & ts);
+			vec4				f();
+			vec4				t();
 
 		};
 		class PD: public phx::core::actor::control::rigidbody::base {
-			void				step(double dt);
-			vec3			f();
-			vec3			t();
+			void				step(neb::core::TimeStep const & ts);
+			vec4				f();
+			vec4				t();
 		};
 
 
