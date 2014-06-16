@@ -6,6 +6,7 @@
 #include <boost/signals2.hpp>
 
 #include <Nebula/Util/typedef.hpp>
+#include <Nebula/Graphics/Types.hh>
 
 #include <PhysX/core/actor/util/decl.hpp>
 
@@ -27,7 +28,7 @@ namespace phx { namespace core { namespace actor { namespace control { namespace
 				virtual ~base() = 0;
 				base&				operator=(base const & base);
 
-				virtual int			key_fun(int,int,int,int);
+				virtual int			key_fun(sp::shared_ptr<neb::gfx::window::base>, int, int, int, int);
 
 				virtual void			step(double const & time, double const & dt) = 0;
 				virtual vec3			f() = 0;

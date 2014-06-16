@@ -5,10 +5,13 @@
 #include <PxPhysicsAPI.h>
 
 
-#include <Nebula/Physics.hh>
+//#include <Nebula/Physics.hh>
 #include <Nebula/Scene/Base.hh>
-#include <Nebula/simulation_callback.hh>
 
+
+#include <PhysX/simulation_callback.hh>
+
+#include <PhysX/app/base.hpp>
 
 physx::PxFilterFlags	DefaultFilterShader(
 		physx::PxFilterObjectAttributes attributes0,

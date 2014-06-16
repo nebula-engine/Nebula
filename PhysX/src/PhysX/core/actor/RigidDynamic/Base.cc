@@ -3,11 +3,16 @@
 #include <Nebula/Shape/Base.hh>
 //#include <Nebula/Physics.hh>
 
+#include <PhysX/app/base.hpp>
+#include <PhysX/core/scene/Base.hh>
 #include <PhysX/core/actor/rigiddynamic/base.hpp>
 #include <PhysX/util/convert.hpp>
 
 phx::core::actor::rigiddynamic::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
+	neb::core::actor::actor::base(parent),
+	neb::core::actor::rigidactor::base(parent),
+	neb::core::actor::rigidbody::base(parent),
 	neb::core::actor::rigiddynamic::base(parent),
 	phx::core::actor::base(parent),
 	phx::core::actor::actor::base(parent),
@@ -30,14 +35,14 @@ void			phx::core::actor::rigiddynamic::base::create_physics() {
 
 	assert(px_actor_ == NULL);
 
-	auto scene = getScene();
+	auto scene = sp::dynamic_pointer_cast<phx::core::scene::base>(getScene());
 	
 	
 	physx::PxTransform pose(phx::util::convert(getPose()));
 	
 	
 	// PxActor
-	physx::PxRigidDynamic* px_rigid_dynamic = phx::app::global()->px_physics_->createRigidDynamic(pose);
+	physx::PxRigidDynamic* px_rigid_dynamic = phx::app::base::global()->px_physics_->createRigidDynamic(pose);
 
 	if (!px_rigid_dynamic)
 	{
@@ -47,7 +52,7 @@ void			phx::core::actor::rigiddynamic::base::create_physics() {
 
 	px_actor_ = px_rigid_dynamic;
 
-	px_rigid_dynamic->setLinearVelocity(velocity_, true);
+	px_rigid_dynamic->setLinearVelocity(phx::util::convert(velocity_), true);
 
 	// userData
 	px_rigid_dynamic->userData = this;

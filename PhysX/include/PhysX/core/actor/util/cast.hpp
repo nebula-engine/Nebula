@@ -14,6 +14,7 @@ namespace phx { namespace core { namespace actor { namespace util {
 		public:
 			sp::shared_ptr<phx::core::actor::base>				isPxActorBase();
 			sp::shared_ptr<phx::core::actor::rigidactor::base>		isPxActorRigidActorBase();
+			sp::shared_ptr<phx::core::actor::rigidbody::base>		isPxActorRigidBodyBase();
 
 	};
 

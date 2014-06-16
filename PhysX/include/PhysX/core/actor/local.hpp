@@ -16,6 +16,12 @@ namespace phx { namespace core { namespace actor {
 		public:
 			local(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
+			virtual void		init();
+			virtual void		release();
+			virtual void		step(neb::core::TimeStep const & ts);
+
+
+
 			void		hit();
 			void		damage();
 
