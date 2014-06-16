@@ -52,28 +52,7 @@ namespace neb {
 					 */
 					sp::shared_ptr<neb::gfx::context::util::parent>		parent_;
 				public:
-					/** @brief %Viewport
-					 * 
-					 * sub-rectangle within target
-					 */
-					neb::gfx::Viewport						viewport_;
-					/** @brief View Space Camera
-					 * 
-					 * @note OWNED
-					 */
-					sp::shared_ptr<neb::gfx::Camera::View::base>		view_;
-					/** @brief Clip Space Camera
-					 * 
-					 * @note OWNED
-					 */
-					sp::shared_ptr<neb::gfx::Camera::Projection::base>		proj_;
-					/** @brief %Drawable
-					 * 
-					 * @note WEAK
-					 * 
-					 * content to draw
-					 */
-					 sp::shared_ptr<neb::gfx::Drawable::base>			drawable_;
+					sp::shared_ptr<neb::gfx::environ::base>			environ_;
 			};
 		}
 	}
