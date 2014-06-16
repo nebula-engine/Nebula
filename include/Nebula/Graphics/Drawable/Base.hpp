@@ -3,7 +3,7 @@
 
 namespace neb {
 	namespace gfx {
-		namespace Drawable {
+		namespace drawable {
 			/** @brief %Drawable
 			 * 
 			 * Contains content to draw in a context (scene, layout, etc.).
@@ -17,10 +17,14 @@ namespace neb {
 					 * draw into prepared rendering context
 					 */
 					virtual void				draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) = 0;
+			};
+			class two: virtual public neb::gfx::drawable::base
+			{
+			};
+			class three: virtual public neb::gfx::drawable::base
+			{
+			};
 
-
-					neb::program_name::e			program_name_;
-			};     
 		}
 	}
 }

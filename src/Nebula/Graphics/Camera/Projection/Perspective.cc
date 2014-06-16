@@ -16,9 +16,10 @@
 //#include <Nebula/Graphics/Window/Base.hh>
 //#include <Nebula/Scene/Base.hh>
 #include <Nebula/Graphics/Camera/Projection/Perspective.hh>
+#include <Nebula/Graphics/environ/base.hpp>
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 
-neb::gfx::Camera::Projection::base::base(sp::shared_ptr<neb::gfx::context::base> parent):
+neb::gfx::Camera::Projection::base::base(sp::shared_ptr<neb::gfx::environ::base> parent):
 	parent_(parent)
 {
 }
@@ -34,8 +35,8 @@ void		neb::gfx::Camera::Projection::base::step(neb::core::TimeStep const & ts) {
 }
 
 
-neb::gfx::Camera::Projection::Perspective::Perspective(sp::shared_ptr<neb::gfx::context::base> context):
-	neb::gfx::Camera::Projection::base(context),
+neb::gfx::Camera::Projection::Perspective::Perspective(sp::shared_ptr<neb::gfx::environ::base> parent):
+	neb::gfx::Camera::Projection::base(parent),
 	fovy_(45.0f),
 	zn_(2.0f),
 	zf_(10000.0f)
