@@ -67,17 +67,17 @@ void DefaultErrorCallback::reportError(
 {
 	printf("%s:%i: %s\n",file,line,message);
 }
-/*neb::Physics::Physics()
+/*phx::app::base::Physics()
   {
 //	jess::clog << neb_FUNCSIG << std::endl;
 }
-neb::Physics::~base()
+phx::app::base::~base()
 {
 //	jess::clog << neb_FUNCSIG << std::endl;
 }*/
-neb::Physics::Physics(): px_physics_(NULL) {
+phx::app::base::base(): px_physics_(NULL) {
 }
-void	neb::Physics::init() {
+void	phx::app::base::init() {
 	// Physx
 	// Foundation
 	px_foundation_ = PxCreateFoundation(
@@ -118,7 +118,7 @@ void	neb::Physics::init() {
 	PxVehicleSetBasisVectors(physx::PxVec3(0,1,0), physx::PxVec3(0,0,-1));
 	PxVehicleSetUpdateMode(physx::PxVehicleUpdateMode::Enum::eACCELERATION);
 }
-void				neb::Physics::release() {
+void				phx::app::base::release() {
 	//jess::clog << neb_FUNCSIG << std::endl;
 	printf("%s\n",__PRETTY_FUNCTION__);
 
@@ -127,8 +127,8 @@ void				neb::Physics::release() {
 	px_physics_->release();
 	px_foundation_->release();
 }
-sp::shared_ptr<neb::Physics>			neb::Physics::global() {
-	return static_;
+sp::shared_ptr<phx::app::base>			phx::app::base::global() {
+	return g_app_;
 }
 
 

@@ -7,11 +7,12 @@
 //#include <Nebula/simulation_callback.hh>
 #include <Nebula/Shape/Base.hh>
 
+#include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/actor/base.hpp>
 
 //neb::core::actor::actor::base::base() {
 //}
-phx::core::actor::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+phx::core::actor::actor::base::base(sp::shared_ptr<phx::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
 	neb::core::actor::actor::base(parent),
 	phx::core::actor::base(parent)

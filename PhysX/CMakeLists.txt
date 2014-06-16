@@ -19,9 +19,9 @@ include_directories("../Galaxy-Network/include")
 include_directories("../Galaxy-Log/include")
 include_directories(${physx_INCLUDE_DIR})
 
-link_directories("./Galaxy-Network/build")
-link_directories("./Galaxy-Standard/build")
-link_directories("./Galaxy-Log/Debug")
+link_directories("../Galaxy-Network/build")
+link_directories("../Galaxy-Standard/build")
+link_directories("../Galaxy-Log/Debug")
 
 ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
 
@@ -35,6 +35,7 @@ FIND_PACKAGE(Boost 1.55 COMPONENTS program_options serialization log system thre
 
 SET(libs ${libs}
 	${PROJECT_NAME}
+	Nebula
 	Galaxy-Standard
 	Galaxy-Network
 	Galaxy-Log
@@ -62,6 +63,6 @@ SET(libs ${libs}
 
 cmh_static_library()
 
-#add_subdirectory(test)
+add_subdirectory(test)
 
 

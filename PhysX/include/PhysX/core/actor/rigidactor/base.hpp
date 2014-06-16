@@ -18,7 +18,7 @@ namespace phx { namespace core { namespace actor { namespace rigidactor {
 	{
 
 		public:
-			base(sp::shared_ptr<neb::core::actor::util::parent>);
+			base(sp::shared_ptr<phx::core::actor::util::parent>);
 
 			virtual void					init();
 			virtual void					release();
@@ -34,7 +34,7 @@ namespace phx { namespace core { namespace actor { namespace rigidactor {
 
 			virtual int					fire();
 
-			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::base>		get_projectile() = 0;
+			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile() = 0;
 
 
 			physx::PxActor*					px_actor_;
