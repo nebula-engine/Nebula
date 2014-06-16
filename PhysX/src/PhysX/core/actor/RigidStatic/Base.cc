@@ -2,19 +2,27 @@
 #include <Nebula/debug.hh>
 //#include <Nebula/Physics.hh>
 #include <Nebula/Shape/Base.hh>
+
+#include <PhysX/app/base.hpp>
+#include <PhysX/util/convert.hpp>
 #include <PhysX/core/actor/rigidstatic/base.hpp>
+#include <PhysX/core/scene/Base.hh>
 
 phx::core::actor::rigidstatic::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
+	neb::core::actor::actor::base(parent),
 	neb::core::actor::rigidactor::base(parent),
-	phx::core::actor::base(parent)
+	neb::core::actor::rigidbody::base(parent),
+	phx::core::actor::base(parent),
+	phx::core::actor::actor::base(parent),
+	phx::core::actor::rigidactor::base(parent)
 {
 	NEBULA_ACTOR_BASE_FUNC
 }
 void			phx::core::actor::rigidstatic::base::init() {
 	NEBULA_ACTOR_BASE_FUNC
 }
-void			phx::core::actor::rigidstatic::base::step(double dt) {
+void			phx::core::actor::rigidstatic::base::step(neb::core::TimeStep const & ts) {
 	NEBULA_ACTOR_BASE_FUNC;
 }
 void			phx::core::actor::rigidstatic::base::create_physics() {
@@ -22,15 +30,16 @@ void			phx::core::actor::rigidstatic::base::create_physics() {
 	
 	assert(px_actor_ == NULL);
 	
-	auto scene = getScene();//scene_.lock();
-	
-	physx::PxTransform pose(getPose());
+	auto scene = sp::dynamic_pointer_cast<phx::core::scene::base>(getScene());//scene_.lock();
+	assert(scene);
+
+	physx::PxTransform pose(phx::util::convert(getPose()));
 
 	//pose.p.print();
 	//pose.q.print();
 	
 	// PxActor
-	physx::PxRigidStatic* px_rigid_static = neb::Physics::global()->px_physics_->createRigidStatic(pose);
+	physx::PxRigidStatic* px_rigid_static = phx::app::base::global()->px_physics_->createRigidStatic(pose);
 
 	if(px_rigid_static == NULL)
 	{

@@ -24,6 +24,7 @@ namespace phx { namespace core { namespace actor { namespace rigidactor {
 			virtual void					release();
 			virtual void					step(neb::core::TimeStep const & ts);
 
+			void						setupFiltering();
 
 			virtual void					create_physics() = 0;
 			virtual void					init_physics() = 0;
