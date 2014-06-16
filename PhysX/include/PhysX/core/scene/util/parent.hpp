@@ -8,18 +8,18 @@
 #include <Nebula/Scene/Util/Types.hh>
 #include <Nebula/Util/parent.hpp>
 
-namespace Neb {
-	namespace Scene {
-		namespace util {
-			class parent:
-				public neb::util::parent,
-				virtual public neb::core::Pose
-			{
-				public:
-			};
-		}
-	}
-}
+namespace phx { namespace core { namespace scene { namespace util {
+
+
+	class parent:
+		virtual public neb::core::scene::util::parent
+	{
+		public:
+	};
+
+
+
+}}}}
 
 #endif
 

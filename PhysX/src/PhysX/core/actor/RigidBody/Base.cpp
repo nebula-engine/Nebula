@@ -20,28 +20,41 @@
 #include <Nebula/Message/Actor/Control.hh>
 #include <Nebula/Message/Types.hh>
 */
-#include <PhysX/core/actor/control/rigidbody/base.hpp>
-#include <PhysX/core/actor/rigidbody/base.hpp>
+#include <Galaxy-Log/log.hpp>
 
-phx::core::actor::rigidbody::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+#include <PhysX/util/convert.hpp>
+#include <PhysX/core/scene/Base.hh>
+#include <PhysX/core/actor/util/parent.hpp>
+#include <PhysX/core/actor/control/rigidbody/base.hpp>
+#include <PhysX/core/actor/rigiddynamic/local.hpp>
+
+
+phx::core::actor::rigidbody::base::base(sp::shared_ptr<phx::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
 	neb::core::actor::actor::base(parent),
 	neb::core::actor::rigidactor::base(parent),
+	neb::core::actor::rigidbody::base(parent),
+	phx::core::actor::base(parent),
+	phx::core::actor::actor::base(parent),
+	phx::core::actor::rigidactor::base(parent),
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}
 void			phx::core::actor::rigidbody::base::init() {
-	NEBULA_ACTOR_BASE_FUNC;
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
 	
 	neb::core::actor::rigidactor::base::init();
 }
-void			phx::core::actor::rigidbody::base::add_force(double time) {
-	NEBULA_ACTOR_BASE_FUNC;
+void			phx::core::actor::rigidbody::base::add_force(real time) {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
 
 	// non-user-controled
-	physx::PxVec3 f(force_);
-	physx::PxVec3 t(torque_);
+	//physx::PxVec3 f(force_[0],force_[1],force_[2]);
+	//physx::PxVec3 t(torque_[0],torque_[1],torque_[2]);
 	
+	vec4 f(force_,1);
+	vec4 t(torque_,1);
+
 	// user-controlled
 	if(control_) {
 		f += control_->f();
@@ -49,9 +62,9 @@ void			phx::core::actor::rigidbody::base::add_force(double time) {
 	}
 	
 	//physx::PxTransform pose = pose_;
-
-	f = pose_.q.rotate(f);
-	t = pose_.q.rotate(t);
+	
+	f = pose_ * f;//pose_.q.rotate(f);
+	t = pose_ * t;//.q.rotate(t);
 
 	//printf("f = ");
 	//f.print();
@@ -60,42 +73,43 @@ void			phx::core::actor::rigidbody::base::add_force(double time) {
 	assert(px_actor_);
 	physx::PxRigidBody* pxrigidbody = px_actor_->isRigidBody();
 	assert(pxrigidbody);
-
+	
 	//printf("mass = %f\n", pxrigidbody->getMass());
-
-	pxrigidbody->addForce(f);
-	pxrigidbody->addTorque(t);
+	
+	pxrigidbody->addForce(phx::util::convert(vec3(f)));
+	pxrigidbody->addTorque(phx::util::convert(vec3(t)));
 }
-sp::shared_ptr<neb::core::actor::base>		phx::core::actor::rigidbody::base::get_projectile() {
-	NEBULA_ACTOR_BASE_FUNC;
+sp::shared_ptr<phx::core::actor::rigiddynamic::local>		phx::core::actor::rigidbody::base::get_projectile() {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
+	
+	auto parent(parent_.lock());
 
-	auto scene = getScene();
+	sp::shared_ptr<phx::core::scene::base> scene = parent->getScene();
+	
+	auto actor(sp::make_shared<phx::core::actor::rigiddynamic::local>(scene));
+	
+	
+	vec3 pos_relative(0,0,-2);
+	vec4 vel_relative(0,0,-1,0);
 
-	sp::shared_ptr<neb::core::actor::rigiddynamic::local> actor(new neb::core::actor::rigiddynamic::local);
-
-	//neb::core::actor::desc_w ad = scene->actors_deferred_[(char*)"proj0"];
-	//assert(ad);
-
-	//neb::core::actor::desc_u desc(new neb::core::actor::desc);
-	//auto s = ad.lock();
-	//assert(s);
-	//*desc = *s;
-
-	// modify description	
-
-	physx::PxVec3 offset = pose_.p;
 
 	// pose
-	physx::PxTransform pose(pose_);	
-	offset = pose.q.rotate(offset);
-	pose.p += offset;
-	pose_ = pose;
+	
+	mat4 pose(pose_);
+	
+	pose *= glm::translate(pos_relative);
+	
+	actor->pose_ = pose;
 	
 	// velocity
-	physx::PxVec3 velocity = velocity_;
-	velocity = pose.q.rotate(velocity);
-	velocity += velocity_;
-	velocity_ = velocity;
+	
+	vec3 vel(velocity_);
+	
+	vel_relative = pose * vel_relative;
+	
+	vel += vec3(vel_relative);
+	
+	actor->velocity_ = vel;
 	
 	return actor;
 }
@@ -136,7 +150,7 @@ sp::shared_ptr<neb::core::actor::base>		phx::core::actor::rigidbody::base::get_p
 		wnd->renderable_->moveView(std::move(view));	
 	}
 }*/
-void		phx::core::actor::rigidbody::base::step(double const & time, double const & dt) {
+void		phx::core::actor::rigidbody::base::step(neb::core::TimeStep const & ts) {
 }
 
 

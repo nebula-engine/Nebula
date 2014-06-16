@@ -5,10 +5,12 @@
 
 #include <PhysX/app/base.hpp>
 #include <PhysX/core/scene/Base.hh>
+#include <PhysX/core/actor/util/parent.hpp>
+#include <PhysX/core/actor/rigiddynamic/base.hpp>
 #include <PhysX/core/actor/rigiddynamic/base.hpp>
 #include <PhysX/util/convert.hpp>
 
-phx::core::actor::rigiddynamic::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+phx::core::actor::rigiddynamic::base::base(sp::shared_ptr<phx::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
 	neb::core::actor::actor::base(parent),
 	neb::core::actor::rigidactor::base(parent),
