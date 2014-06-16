@@ -18,7 +18,6 @@
 //}
 neb::gfx::gui::layout::base::base(sp::shared_ptr<neb::gfx::gui::layout::util::parent> parent): parent_(parent) {
 
-	program_name_ = neb::program_name::e::TEXT;
 
 }
 void neb::gfx::gui::layout::base::init() {

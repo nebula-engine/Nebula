@@ -36,7 +36,7 @@ namespace neb {
 		 * @brief Base
 		 */
 		class base:
-			virtual public neb::gfx::Drawable::base,
+			virtual public neb::gfx::drawable::base,
 			virtual public neb::core::actor::util::parent
 		{
 			public:

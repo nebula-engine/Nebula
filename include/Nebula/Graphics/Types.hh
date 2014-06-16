@@ -94,6 +94,20 @@ namespace neb {
 			}
 			class base;
 		}
+		
+		/**@brief %environ */
+		namespace environ {
+			class base;
+			class two;
+			class three;
+		}
+
+		/**@brief %environ */
+		namespace drawable {
+			class base;
+			class two;
+			class three;
+		}
 
 		/** @brief Camera */
 		namespace Camera {
