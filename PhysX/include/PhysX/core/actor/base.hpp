@@ -13,7 +13,7 @@ namespace phx { namespace core { namespace actor {
 		virtual public phx::core::actor::util::cast
 	{
 		public:
-			base(sp::shared_ptr<neb::core::actor::util::parent> parent);
+			base(sp::shared_ptr<phx::core::actor::util::parent> parent);
 
 			
 			virtual void		init();
@@ -27,14 +27,18 @@ namespace phx { namespace core { namespace actor {
 
 
 			void			hit();
-			void			damage();
+			void			damage(real);
 			int			fire();
 
 
-			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::base>		get_projectile();
+			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile();
+			
+			sp::shared_ptr<phx::core::actor::util::parent>				get_parent();
+		public:
+			sp::weak_ptr<phx::core::actor::util::parent>				parent_;
 
 
-			float		health_;
+			real									health_;
 
 	};
 

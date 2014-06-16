@@ -1,6 +1,7 @@
+#include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
 
-phx::core::actor::rigiddynamic::local::local(sp::shared_ptr<neb::core::actor::util::parent> parent):
+phx::core::actor::rigiddynamic::local::local(sp::shared_ptr<phx::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
 	neb::core::actor::actor::base(parent),
 	neb::core::actor::rigidactor::base(parent),

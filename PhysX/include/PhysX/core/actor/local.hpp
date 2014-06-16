@@ -26,7 +26,6 @@ namespace phx { namespace core { namespace actor {
 			void		damage();
 
 
-			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::base>		get_projectile();
 
 
 			float		health_;
