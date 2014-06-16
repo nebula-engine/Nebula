@@ -1,5 +1,5 @@
-#ifndef __NEB_PHYSICS_H__
-#define __NEB_PHYSICS_H__
+#ifndef PHYSX_APP_BASE_HPP
+#define PHYSX_APP_BASE_HPP
 
 #include <memory>
 

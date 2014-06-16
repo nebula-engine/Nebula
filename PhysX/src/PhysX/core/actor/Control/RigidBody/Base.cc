@@ -14,7 +14,7 @@
 phx::core::actor::control::rigidbody::base::base() {
 
 }
-int phx::core::actor::control::rigidbody::base::key_fun(int key, int scancode, int action, int mods) {
+int phx::core::actor::control::rigidbody::base::key_fun(sp::shared_ptr<neb::gfx::window::base> window, int key, int scancode, int action, int mods) {
 	//NEBULA_DEBUG_0_FUNCTION;
 
 	vec3 x(1.0,0.0,0.0);

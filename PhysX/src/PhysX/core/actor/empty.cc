@@ -1,6 +1,6 @@
-
+/*
 #include <Nebula/config.hh>
-#include <Nebula/Actor/empty.hh>
+#include <PhysX/core/actor/empty/empty.hh>
 
 neb::core::actor::empty::empty(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	neb::core::actor::base(parent)
@@ -14,5 +14,5 @@ void		neb::core::actor::empty::init() {
 	neb::core::actor::base::init();
 }
 
-
+*/
 

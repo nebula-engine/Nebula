@@ -1,9 +1,11 @@
 
-#include <Nebula/Actor/RigidBody/Base.hh>
+#include <Galaxy-Standard/registry.hpp>
 
+#include <PhysX/core/actor/rigidbody/base.hpp>
+#include <PhysX/core/actor/control/rigidbody/base.hpp>
 #include <PhysX/message/actor/control/rigidbody/update.hpp>
 
-void			phx::message::actor::Control::RigidBody::IUpdate::serialize(
+void			phx::message::actor::control::rigidbody::iupdate::serialize(
 		boost::archive::polymorphic_iarchive & ar,
 		unsigned int const & version)
 {
@@ -11,9 +13,10 @@ void			phx::message::actor::Control::RigidBody::IUpdate::serialize(
 	ar >> control_;
 	
 
-	auto actor = std::dynamic_pointer_cast<neb::core::actor::base>(gal::std::shared::registry_.get(index_));
+	auto actor = std::dynamic_pointer_cast<phx::core::actor::base>(gal::std::shared::registry_.get(index_));
+	assert(actor);
 
-	auto rigidbody = actor->isActorRigidBody();
+	auto rigidbody = actor->isPxActorRigidBodyBase();
 
 	assert(rigidbody);
 

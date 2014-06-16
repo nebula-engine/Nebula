@@ -36,7 +36,7 @@ namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 
 			virtual int					fire();
 
-			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::base>		get_projectile() = 0;
+			//virtual sp::shared_ptr<phx::core::actor::rigiddynamic::base>		get_projectile() = 0;
 
 
 			physx::PxActor*					px_actor_;

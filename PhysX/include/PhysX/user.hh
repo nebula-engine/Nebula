@@ -9,16 +9,16 @@
 
 #include <Nebula/Actor/Util/Types.hh>
 
-namespace Neb {
-	class User {
+namespace phx {
+	class user {
 		public:
-			User();
+			user();
 			void	init();
 			void	connect(sp::shared_ptr<neb::gfx::window::base>);
-			void	set_control(sp::shared_ptr<neb::core::actor::Control::RigidBody::base>);
+			void	set_control(sp::shared_ptr<phx::core::actor::control::rigidbody::base>);
 			
 			
-			sp::shared_ptr<neb::core::actor::Control::RigidBody::base>		control_;
+			sp::shared_ptr<phx::core::actor::control::rigidbody::base>		control_;
 			
 	};
 }
