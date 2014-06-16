@@ -19,7 +19,7 @@ namespace neb {
 						/** @name constructors
 						 * @{
 						 */
-						Free(sp::shared_ptr<neb::gfx::context::base> parent);
+						Free(sp::shared_ptr<neb::gfx::environ::base> parent);
 						//Free(math::vec3<double> eye, double yaw, double pitch);
 						/** @} */
 

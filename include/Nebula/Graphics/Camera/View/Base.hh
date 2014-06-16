@@ -25,7 +25,7 @@ namespace neb {
 				class base {
 					public:
 						/** @brief Constructor */
-						base(sp::shared_ptr< ::neb::gfx::context::base > parent);
+						base(sp::shared_ptr< ::neb::gfx::environ::base > parent);
 						/** @brief Load view matrix into GLSL. */
 						void						load(sp::shared_ptr< ::neb::glsl::program > p);
 						/** @brief Get view matrix. */
@@ -40,7 +40,7 @@ namespace neb {
 								sp::shared_ptr< ::neb::gfx::window::base > const & window) {}
 
 					public:
-						sp::shared_ptr< ::neb::gfx::context::base >		parent_;
+						sp::shared_ptr< ::neb::gfx::environ::base >		parent_;
 
 						neb::gfx::camera::view::util::flag			flag_;
 				};

@@ -15,7 +15,7 @@ namespace neb {
 			namespace View {
 				class Ridealong: public neb::gfx::Camera::View::base {
 					public:
-						Ridealong(sp::shared_ptr<neb::gfx::context::base>);
+						Ridealong(sp::shared_ptr<neb::gfx::environ::base>);
 
 						virtual mat4				view();
 						virtual void				step(neb::core::TimeStep const & ts);

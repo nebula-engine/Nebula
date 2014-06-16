@@ -4,6 +4,8 @@
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Util/wrapper.hpp>
 #include <Nebula/Graphics/Context/Window.hpp>
+#include <Nebula/Graphics/environ/two.hpp>
+#include <Nebula/Graphics/environ/three.hpp>
 #include <Nebula/Graphics/GUI/Object/terminal.hh>
 #include <Nebula/Graphics/Light/Spot.hh>
 #include <Nebula/Scene/Local.hh>
@@ -12,16 +14,50 @@
 #include <Nebula/Actor/RigidDynamic/Local.hh>
 
 
-sp::shared_ptr<neb::gfx::context::window>		create_context(sp::shared_ptr<neb::gfx::window::base> window) {
+sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
+
+	auto context = sp::make_shared<neb::gfx::context::window>(window);
+	
+	window->insert(context);
+
+	context->environ_ = sp::make_shared<neb::gfx::environ::two>(/*context*/);
+
+	context->init();
+	
+	//auto context = window->cii< neb::gfx::context::window, sp::shared_ptr<neb::gfx::window::base> >(window);
+	
+	
+	
+
+	return context;
+}
+sp::shared_ptr<neb::gfx::context::window>		create_context_three(sp::shared_ptr<neb::gfx::window::base> window) {
 
 	auto context = sp::make_shared<neb::gfx::context::window>(window);
 	
 	window->insert(context);
 	
+
+
+	auto environ = sp::make_shared<neb::gfx::environ::three>(/*context*/);
+	environ->init();
+
+	context->environ_ = environ;
+
+
+
+
+
 	context->init();
+	
+	//auto context = window->cii< neb::gfx::context::window, sp::shared_ptr<neb::gfx::window::base> >(window);
+	
+	
+	environ->view_->connect(window);
 
 	return context;
 }
+
 sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 		sp::shared_ptr<neb::gfx::window::base> window,
 		sp::shared_ptr<neb::gfx::context::window> context) {
@@ -36,7 +72,7 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 	app->neb::gfx::gui::layout::util::parent::insert(layout);
 
 	
-	context->drawable_ = layout;
+	context->environ_->drawable_ = layout;
 
 	layout->connect(window);
 
@@ -147,7 +183,7 @@ sp::shared_ptr<neb::Scene::local>			create_scene(
 
 
 	
-	context->drawable_ = scene;
+	context->environ_->drawable_ = scene;
 
 	return scene;
 }
@@ -166,13 +202,12 @@ int main() {
 	window->init();
 
 	// context
-	auto context1 = create_context(window);
-	auto context2 = create_context(window);
+	auto context1 = create_context_three(window);
+	auto context2 = create_context_two(window);
 
 	// drawable
 	// scene
 	
-	context1->view_->connect(window);
 
 	
 
