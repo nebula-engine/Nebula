@@ -29,7 +29,7 @@ namespace phx { namespace core { namespace actor { namespace actor {
 			virtual void					init_physics() = 0;
 
 			virtual void					add_force(real) = 0;
-			virtual void					set_pose(physx::PxTransform);
+			virtual void					set_pose(mat4);
 
 			virtual int					fire();
 

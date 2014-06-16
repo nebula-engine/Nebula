@@ -20,64 +20,65 @@
 #include <Nebula/Filter.hh>
 #include <Nebula/Graphics/Window/Base.hh>
 
-neb::core::actor::base::base() {
-}
-neb::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent): parent_(parent) {
+#include <PhysX/core/actor/base.hpp>
+
+phx::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+	neb::core::actor::base(parent)
+{
 	NEBULA_ACTOR_BASE_FUNC;
 }
-neb::core::actor::base::~Base() {
+/*phx::core::actor::base::~base() {
 	NEBULA_ACTOR_BASE_FUNC;
+}*/
+void			phx::core::actor::base::init() {
+	NEBULA_ACTOR_BASE_FUNC;
+
+
+	create_physics();
+	create_children(desc);
+	create_shapes(desc);
+	init_physics();
 }
-	void neb::core::actor::base::init() {
-		NEBULA_ACTOR_BASE_FUNC;
+int			phx::core::actor::base::fire() {
+	NEBULA_ACTOR_BASE_FUNC;
 
+	printf("%s\n", __PRETTY_FUNCTION__);
 
+	getScene()->fire(isActorBase());
 
-		create_physics();
-		create_children(desc);
-		create_shapes(desc);
-		init_physics();
+	return 1;
+}
+void			phx::core::actor::base::hit() {
+
+	physx::PxU32 w2 = simulation_.word2;
+
+	if(w2 & neb::Filter::Filter::PROJECTILE) {
+		parent_->release(i_);
+		//set(neb::core::actor::base::flag::e::SHOULD_RELEASE);
 	}
-	int	neb::core::actor::base::fire() {
-		NEBULA_ACTOR_BASE_FUNC;
 
-		printf("%s\n", __PRETTY_FUNCTION__);
-
-		getScene()->fire(isActorBase());
-
-		return 1;
+	if(flag_.any(neb::core::actor::util::Flag::E::DESTRUCTIBLE)) {
+		damage(0.1);
 	}
-	void neb::core::actor::base::hit() {
-
-		physx::PxU32 w2 = simulation_.word2;
-
-		if(w2 & neb::Filter::Filter::PROJECTILE) {
-			parent_->release(i_);
-			//set(neb::core::actor::base::flag::e::SHOULD_RELEASE);
-		}
-
-		if(flag_.any(neb::core::actor::util::Flag::E::DESTRUCTIBLE)) {
-			damage(0.1);
-		}
+}
+void			phx::core::actor::base::damage(float h) {
+	health_ -= h;
+	if(health_ < 0) {
+		parent_->release(i_);
 	}
-	void neb::core::actor::base::damage(float h) {
-		health_ -= h;
-		if(health_ < 0) {
-			parent_->release(i_);
-		}
+}
+int			phx::core::actor::base::key_fun(int key, int scancode, int action, int mods) {
+	switch(action) {
+		case GLFW_PRESS:
+			switch(key) {
+				case GLFW_KEY_SPACE:
+					fire();
+					return 1;
+			}
 	}
-	int neb::core::actor::base::key_fun(int key, int scancode, int action, int mods) {
-		switch(action) {
-			case GLFW_PRESS:
-				switch(key) {
-					case GLFW_KEY_SPACE:
-						fire();
-						return 1;
-				}
-		}
 
-		return 0;
-	}
+	return 0;
+}
 
 
 
