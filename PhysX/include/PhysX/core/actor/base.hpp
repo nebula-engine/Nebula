@@ -15,8 +15,20 @@ namespace phx { namespace core { namespace actor {
 		public:
 			base(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
-			void		hit();
-			void		damage();
+			
+			virtual void		init();
+			virtual void		release();
+			virtual void		step(neb::core::TimeStep const & ts);
+
+
+			virtual void		create_physics();
+			virtual void		init_physics();
+
+
+
+			void			hit();
+			void			damage();
+			int			fire();
 
 
 			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::base>		get_projectile();

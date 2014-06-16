@@ -1,5 +1,5 @@
-
-#include <Nebula/network/server.hh>
+/*
+#include <Nebula/Network/server.hh>
 
 #include <Nebula/Graphics/Context/Base.hh>
 #include <Nebula/Graphics/Camera/View/ridealong.hh>
@@ -7,32 +7,35 @@
 #include <Nebula/debug.hh>
 #include <Nebula/Types.hh>
 #include <Nebula/App/Base.hh>
-#include <Nebula/Physics.hh>
-#include <Nebula/simulation_callback.hh>
+//#include <Nebula/Physics.hh>
+//#include <Nebula/simulation_callback.hh>
 
 #include <Nebula/Actor/Util/Types.hh>
 //#include <Nebula/Actor/Control/Util/Types.hh>
 #include <Nebula/Actor/RigidBody/Base.hh>
 #include <Nebula/Actor/RigidDynamic/Local.hh>
-#include <Nebula/Actor/Control/RigidBody/Base.hh>
 
 #include <Nebula/network/Types.hh>
 #include <Nebula/network/message.hh>
 #include <Nebula/Message/Actor/Control.hh>
 #include <Nebula/Message/Types.hh>
+*/
+#include <PhysX/core/actor/control/rigidbody/base.hpp>
+#include <PhysX/core/actor/rigidbody/base.hpp>
 
-neb::core::actor::rigidbody::base::base() {}
-neb::core::actor::rigidbody::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+phx::core::actor::rigidbody::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+	neb::core::actor::base(parent),
+	neb::core::actor::actor::base(parent),
 	neb::core::actor::rigidactor::base(parent),
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}
-void	neb::core::actor::rigidbody::base::init() {
+void			phx::core::actor::rigidbody::base::init() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
 	neb::core::actor::rigidactor::base::init();
 }
-void neb::core::actor::rigidbody::base::add_force(double time) {
+void			phx::core::actor::rigidbody::base::add_force(double time) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	// non-user-controled
@@ -63,7 +66,7 @@ void neb::core::actor::rigidbody::base::add_force(double time) {
 	pxrigidbody->addForce(f);
 	pxrigidbody->addTorque(t);
 }
-sp::shared_ptr<neb::core::actor::base>	neb::core::actor::rigidbody::base::get_projectile() {
+sp::shared_ptr<neb::core::actor::base>		phx::core::actor::rigidbody::base::get_projectile() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	auto scene = getScene();
@@ -133,7 +136,7 @@ sp::shared_ptr<neb::core::actor::base>	neb::core::actor::rigidbody::base::get_pr
 		wnd->renderable_->moveView(std::move(view));	
 	}
 }*/
-void		neb::core::actor::rigidbody::base::step(double const & time, double const & dt) {
+void		phx::core::actor::rigidbody::base::step(double const & time, double const & dt) {
 }
 
 

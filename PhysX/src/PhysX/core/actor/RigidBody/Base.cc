@@ -9,22 +9,28 @@
 
 #include <Nebula/Actor/Util/Types.hh>
 //#include <Nebula/Actor/Control/Util/Types.hh>
-#include <Nebula/Actor/RigidBody/Base.hh>
-#include <Nebula/Actor/RigidDynamic/Local.hh>
+
+
+#include <PhysX/core/actor/rigidbody/base.hpp>
 
 
 //neb::core::actor::rigidbody::base::base() {}
-neb::core::actor::rigidbody::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+phx::core::actor::rigidbody::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
-	neb::core::actor::rigidactor::base(parent)
+	neb::core::actor::actor::base(parent),
+	neb::core::actor::rigidactor::base(parent),
+	neb::core::actor::rigidbody::base(parent),
+	phx::core::actor::base(parent),
+	phx::core::actor::actor::base(parent),
+	phx::core::actor::rigidactor::base(parent)
 {}
-void		neb::core::actor::rigidbody::base::init() {
+void		phx::core::actor::rigidbody::base::init() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	neb::core::actor::rigidactor::base::init();
 }
-void		neb::core::actor::rigidbody::base::step(neb::core::TimeStep const & ts) {
-	neb::core::actor::rigidactor::base::step(ts);
+void		phx::core::actor::rigidbody::base::step(neb::core::TimeStep const & ts) {
+	phx::core::actor::rigidactor::base::step(ts);
 }
 
 

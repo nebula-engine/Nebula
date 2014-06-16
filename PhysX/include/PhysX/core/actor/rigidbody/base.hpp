@@ -36,9 +36,17 @@ namespace phx { namespace core { namespace actor { namespace rigidbody {
 			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::base>		get_projectile() = 0;
 
 
-			physx::PxActor*					px_actor_;
+			//physx::PxActor*					px_actor_;
 
 			//std::shared_ptr<neb::core::actor>		object_;
+			
+		public:
+
+			sp::shared_ptr<phx::core::actor::control::rigidbody::base>	control_;
+
+
+			vec3		force_;
+			vec3		torque_;
 	};
 
 

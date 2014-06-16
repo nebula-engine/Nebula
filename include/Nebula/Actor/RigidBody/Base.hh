@@ -8,7 +8,9 @@ namespace neb { namespace core { namespace actor {
 		namespace rigidbody {
 
 
-			class base: virtual public neb::core::actor::rigidactor::base {
+			class base:
+				virtual public neb::core::actor::rigidactor::base
+			{
 				public:
 					base(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
