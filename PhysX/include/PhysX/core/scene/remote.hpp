@@ -17,7 +17,7 @@
 
 #include <Nebula/Graphics/Camera/View/Base.hh>
 
-#include <PhysX/core/scene/Base.hh>
+#include <PhysX/core/scene/base.hpp>
 
 //#include <glutpp/shader.h>
 
@@ -26,7 +26,7 @@
 namespace phx { namespace core { namespace scene {
 
 	class remote:
-		virtual public neb::Scene::Remote,
+		virtual public neb::scene::Remote,
 		virtual public ::phx::core::scene::base
 	{
 		void				step(neb::core::TimeStep const & ts);

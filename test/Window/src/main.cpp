@@ -62,9 +62,9 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 		sp::shared_ptr<neb::gfx::window::base> window,
 		sp::shared_ptr<neb::gfx::context::window> context) {
 
-	auto app = neb::App::base::global();
+	auto app = neb::app::base::global();
 	
-	//auto layout = app->neb::gfx::gui::layout::util::parent::cii<neb::gfx::gui::layout::base, neb::App::base>(app);
+	//auto layout = app->neb::gfx::gui::layout::util::parent::cii<neb::gfx::gui::layout::base, neb::app::base>(app);
 
 
 	auto layout = sp::make_shared<neb::gfx::gui::layout::base>(app);
@@ -85,7 +85,7 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 
 	return layout;
 }
-sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor(sp::shared_ptr<neb::Scene::local> scene) {
+sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor(sp::shared_ptr<neb::scene::local> scene) {
 
 	/*
 	auto actor = sp::make_shared<neb::core::actor::rigiddynamic::local>(scene);
@@ -95,7 +95,7 @@ sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor(sp::shared_p
 	actor->init();
 	*/
 
-	auto actor = scene->cii<neb::core::actor::rigiddynamic::local, sp::shared_ptr<neb::Scene::local>>(scene);
+	auto actor = scene->cii<neb::core::actor::rigiddynamic::local, sp::shared_ptr<neb::scene::local>>(scene);
 
 
 
@@ -111,7 +111,7 @@ sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor(sp::shared_p
 	
 	return actor;	
 }
-sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor2(sp::shared_ptr<neb::Scene::local> scene) {
+sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor2(sp::shared_ptr<neb::scene::local> scene) {
 	auto actor = sp::make_shared<neb::core::actor::rigiddynamic::local>(scene);
 	
 	scene->insert(actor);
@@ -147,15 +147,19 @@ sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor2(sp::shared_
 
 	return actor;	
 }
-sp::shared_ptr<neb::Scene::local>			create_scene(
+sp::shared_ptr<neb::scene::local>			create_scene(
 		sp::shared_ptr<neb::gfx::context::window> context) {
 	
-	auto app = neb::App::base::global();
+	auto app = neb::app::base::global();
+	assert(app);
 	
-	auto scene = sp::make_shared<neb::Scene::local>(app);
+	auto scene = sp::make_shared<neb::scene::local>(app);
+	assert(scene);	
 	
-	app->neb::Scene::util::parent::insert(scene);
-
+	app->neb::scene::util::parent::insert(scene);
+	
+	scene->init();
+	
 	// actors
 	auto actor = create_actor(scene);
 	actor->pose_ = glm::translate(actor->pose_, vec3(0,0,-5));
@@ -192,7 +196,7 @@ int main() {
 
 	neb::init();
 
-	auto app = neb::App::base::global();
+	auto app = neb::app::base::global();
 
 	// window	
 	auto window = sp::make_shared<neb::gfx::window::base>();

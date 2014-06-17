@@ -4,7 +4,7 @@
 #include <boost/asio/io_service.hpp>
 
 namespace neb {
-	namespace App {
+	namespace app {
 		/** @brief %base */
 		class __base {
 			public:

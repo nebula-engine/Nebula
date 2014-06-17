@@ -16,11 +16,11 @@
 #include <Nebula/Scene/Util/Types.hh>
 
 namespace neb {
-	namespace Scene {
+	namespace scene {
 		namespace util {
 			class Address {
 				public:
-					void						load(sp::shared_ptr<neb::Scene::base> & scene);
+					void						load(sp::shared_ptr<neb::scene::base> & scene);
 
 					template<class Archive> void			serialize(Archive& ar, unsigned int const & version) {
 						ar & vec_;

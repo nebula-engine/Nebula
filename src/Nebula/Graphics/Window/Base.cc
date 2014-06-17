@@ -46,8 +46,10 @@ void neb::gfx::window::base::init() {
 	
 	BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << __PRETTY_FUNCTION__;
 
-	auto app = neb::App::base::global();
+	auto app = neb::app::base::global();
 	assert(app);
+	
+	assert(app->flag_.any(neb::app::util::flag::INIT_GLFW));
 
 	self_ = sp::dynamic_pointer_cast<neb::gfx::window::base>(shared_from_this());
 	
@@ -61,7 +63,7 @@ void neb::gfx::window::base::init() {
 
 	if(window_ == NULL) {
 		glfwTerminate();
-		printf("error\n");
+		BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", critical) << "glfwCreateWindow failed";
 		exit(EXIT_FAILURE);
 	}
 
@@ -71,28 +73,28 @@ void neb::gfx::window::base::init() {
 
 	glfwSetWindowPosCallback(
 			window_,
-			neb::App::base::static_window_pos_fun);
+			neb::app::base::static_window_pos_fun);
 	glfwSetWindowSizeCallback(
 			window_,
-			neb::App::base::static_window_size_fun);
+			neb::app::base::static_window_size_fun);
 	glfwSetWindowCloseCallback(
 			window_,
-			neb::App::base::static_window_close_fun);
+			neb::app::base::static_window_close_fun);
 	glfwSetWindowRefreshCallback(
 			window_,
-			neb::App::base::static_window_refresh_fun);
+			neb::app::base::static_window_refresh_fun);
 	glfwSetKeyCallback(
 			window_,
-			neb::App::base::static_key_fun);
+			neb::app::base::static_key_fun);
 	glfwSetMouseButtonCallback(
 			window_,
-			neb::App::base::static_mouse_button_fun);
+			neb::app::base::static_mouse_button_fun);
 
 	// add window to app's window map
 	app->windows_glfw_[window_] = self_;
 	
 	
-	//if(all(neb::App::base::option::SHADERS)) create_programs();
+	//if(all(neb::app::base::option::SHADERS)) create_programs();
 	app->init_glew();
 	app->create_programs();
 

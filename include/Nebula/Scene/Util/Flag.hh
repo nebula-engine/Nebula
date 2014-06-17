@@ -4,7 +4,7 @@
 #include <Galaxy-Standard/flag.hpp>
 
 namespace neb {
-	namespace Scene {
+	namespace scene {
 		namespace util {
 			DEFINE_FLAG(Flag,
 					((RAY_TRACE)		(1 << 1))

@@ -19,7 +19,7 @@ void		neb::Light::Point::load(neb::core::light::util::count & light_count, mat4 
 
 	neb::Light::base::load(light_count.point, space);
 	
-	auto p = neb::App::base::global()->current_program();
+	auto p = neb::app::base::global()->current_program();
 	
 	
 	p->get_uniform_vector("lights_point.atten_const")->load(light_count.point, atten_const_);
@@ -44,7 +44,7 @@ void neb::Light::Spot::load(neb::core::light::util::count & light_count, mat4 sp
 
 	neb::Light::base::load(light_count.spot, space);
 
-	auto p = neb::App::base::global()->current_program();
+	auto p = neb::app::base::global()->current_program();
 
 /*	vec3 pos = pos_;
 
