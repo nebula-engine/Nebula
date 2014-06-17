@@ -20,7 +20,7 @@ namespace phx { namespace core { namespace actor { namespace actor {
 	{
 
 		public:
-			local(sp::shared_ptr<neb::core::actor::util::parent> parent);
+			local(sp::shared_ptr<phx::core::actor::util::parent> parent);
 
 			virtual void					init();
 			virtual void					release();
@@ -33,7 +33,6 @@ namespace phx { namespace core { namespace actor { namespace actor {
 			virtual void					add_force(real) = 0;
 			virtual void					set_pose(mat4);
 
-			virtual int					fire();
 			/** @brief projectile
 			 *
 			 * @note required because of diamond inheritance

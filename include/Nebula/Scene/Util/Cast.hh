@@ -5,15 +5,15 @@
 
 #include <Nebula/Scene/Util/Types.hh>
 
-namespace neb {
+namespace neb { namespace core {
         namespace scene {
                 namespace util {
                         class cast: virtual public neb::std::shared {
                                 public:
-                                        sp::shared_ptr<neb::scene::base>              isSceneBase();
+                                        sp::shared_ptr<neb::core::scene::base>              isSceneBase();
                         };
                 }
         }
-}
+}}
 
 #endif

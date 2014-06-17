@@ -19,7 +19,7 @@ void		neb::core::actor::actor::base::init() {
 
 	neb::core::actor::base::init();
 }
-void		neb::core::actor::actor::base::set_pose(mat4 pose) {
+void		neb::core::actor::actor::base::setPose(neb::core::pose const & pose) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	neb::core::actor::base::setPose(pose);

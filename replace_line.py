@@ -69,6 +69,8 @@ def replace(filename):
 	text = re.sub("neb::Scene::","neb::scene::",text)
 	text = re.sub("neb::message::Scene::","neb::message::scene::",text)
 
+	text = re.sub("neb::scene::","neb::core::scene::",text)
+
 	text = re.sub("namespace RigidActor","namespace rigidactor",text)
 	text = re.sub("neb::core::actor::RigidActor","neb::core::actor::rigidactor",text)
 
@@ -115,6 +117,8 @@ for f in glob('test'):
 for f in glob('PhysX/include'):
 	replace(f)
 for f in glob('PhysX/src'):
+	replace(f)
+for f in glob('PhysX/test'):
 	replace(f)
 
 

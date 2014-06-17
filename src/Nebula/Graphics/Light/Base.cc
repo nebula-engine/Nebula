@@ -51,14 +51,14 @@ void		neb::Light::base::step(neb::core::TimeStep const & ts) {
 void	neb::Light::base::draw() {	
 	GLUTPP_DEBUG_1_FUNCTION;
 }
-mat4		neb::Light::base::get_pose() {
+neb::core::pose		neb::Light::base::getPose() {
 	GLUTPP_DEBUG_1_FUNCTION;
 
-	mat4 m = parent_->getPoseGlobal();
+	auto p = parent_->getPoseGlobal();
 
-	return m;
+	return p;
 }
-void neb::Light::base::load(int o, mat4 space) {
+void			neb::Light::base::load(int o, neb::core::pose const & pose) {
 	GLUTPP_DEBUG_1_FUNCTION;
 	
 	/** @todo way to ditinguish lights in shader */
@@ -67,7 +67,7 @@ void neb::Light::base::load(int o, mat4 space) {
 	
 	vec3 pos = pos_;
 	
-	pos += vec3(space[3][0], space[3][1], space[3][3]);
+	pos += vec3(pose.pos_);
 	
 	
 	p->get_uniform_vector(light_type_string_ + ".position")->load(o, pos);

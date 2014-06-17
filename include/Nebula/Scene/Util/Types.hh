@@ -3,7 +3,10 @@
 
 #include <memory>
 
-namespace neb {
+namespace neb { namespace core {
+
+
+
 	/** @brief %Scene */
 	namespace scene {
 		/** @name %Utilities @{ */
@@ -13,7 +16,10 @@ namespace neb {
 
 		class base;
 	}
-}
+
+
+
+}}
 
 #endif
 

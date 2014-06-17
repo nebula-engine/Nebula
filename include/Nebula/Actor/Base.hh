@@ -28,7 +28,7 @@
 #include <Nebula/Actor/Util/Types.hh>
 #include <Nebula/Actor/Util/Flag.hh>
 #include <Nebula/Actor/Util/Parent.hh>
-
+#include <Nebula/Core/pose.hpp>
 #include <Nebula/Message/Actor/Update.hh>
 
 #include <Nebula/Graphics/texture.hh>
@@ -58,22 +58,22 @@ namespace neb { namespace core { namespace actor {
 			virtual void					step(neb::core::TimeStep const & ts);
 
 		public:
-			/** @name Render @{ */
 			void						draw(
 					sp::shared_ptr<neb::gfx::context::base> context,
 					sp::shared_ptr<neb::glsl::program> p,
-					mat4);
-			/** @} */
+					neb::core::pose const & pose);
 
-			virtual mat4					getPose();
-			virtual mat4					getPoseGlobal();
+			virtual neb::core::pose					getPose();
+			virtual neb::core::pose					getPoseGlobal();
 
-			/** @name Accessors @{ */
 			sp::shared_ptr<neb::core::actor::util::parent>		get_parent();
-			void							setPose(mat4 pose);
-			/** @} */
+			/** @brief set pose
+			 *
+			 * virtual because actor::local will add self to active transform list
+			 */
+			virtual void						setPose(neb::core::pose const & pose);
 
-			void							load_lights(neb::core::light::util::count& light_count, mat4);
+			void							load_lights(neb::core::light::util::count& light_count, neb::core::pose const &);
 
 
 			/** @todo move to derived class */
@@ -91,7 +91,7 @@ namespace neb { namespace core { namespace actor {
 			} conn_;
 
 		public:
-			
+
 			/** @brief %Serialize
 			 * @param ar archive
 			 * @param version version
@@ -140,7 +140,7 @@ namespace neb { namespace core { namespace actor {
 			neb::core::actor::mode_create::e		mode_create_;
 			neb::core::actor::util::Flag			flag_;
 			::std::string					name_;
-			mat4						pose_;
+			neb::core::pose					pose_;
 			/** @brief Normal for planes. */
 			vec3						n_;
 			/** @brief Distance for planes. */

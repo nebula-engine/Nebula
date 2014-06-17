@@ -13,7 +13,7 @@ namespace neb { namespace core {
 				virtual void					draw_elements(
 						sp::shared_ptr<neb::gfx::context::base> context,
 						sp::shared_ptr<neb::glsl::program> p,
-						mat4 space) {}
+						neb::core::pose const & pose) {}
 		};
 	}
 }}

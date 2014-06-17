@@ -53,8 +53,8 @@ namespace neb { namespace app {
 			public:
 				void						command(sp::shared_ptr<neb::gfx::gui::object::terminal> term, ::std::string);
 			public:
-				mat4						getPose();
-				mat4						getPoseGlobal();
+				neb::core::pose						getPose();
+				neb::core::pose						getPoseGlobal();
 
 				static sp::shared_ptr<neb::app::base>		global();
 

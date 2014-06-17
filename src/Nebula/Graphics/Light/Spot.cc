@@ -13,11 +13,11 @@ neb::Light::Point::Point(sp::shared_ptr<neb::Light::util::parent> parent):
 	atten_quad_(0.0)
 
 {}
-void		neb::Light::Point::load(neb::core::light::util::count & light_count, mat4 space) {
+void		neb::Light::Point::load(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
 	
 	BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 
-	neb::Light::base::load(light_count.point, space);
+	neb::Light::base::load(light_count.point, pose);
 	
 	auto p = neb::app::base::global()->current_program();
 	
@@ -39,20 +39,16 @@ neb::Light::Spot::Spot(sp::shared_ptr<neb::Light::util::parent> parent):
 	atten_quad_(0.0)
 {
 }
-void neb::Light::Spot::load(neb::core::light::util::count & light_count, mat4 space) {
+void neb::Light::Spot::load(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
 	GLUTPP_DEBUG_1_FUNCTION;
 
-	neb::Light::base::load(light_count.spot, space);
+	neb::Light::base::load(light_count.spot, pose);
 
 	auto p = neb::app::base::global()->current_program();
 
-/*	vec3 pos = pos_;
-
-	pos += vec3(space[3][0], space[3][1], space[3][2]);
-*/
 	vec4 spot_direction(spot_direction_,0.0);
 
-	spot_direction = space * spot_direction;
+	spot_direction = pose.rot_ * spot_direction;
 
 	p->get_uniform_vector("lights_spot.atten_const")->load(light_count.spot, atten_const_);
 	p->get_uniform_vector("lights_spot.atten_linear")->load(light_count.spot, atten_linear_);

@@ -10,6 +10,7 @@ phx::core::actor::rigiddynamic::local::local(sp::shared_ptr<phx::core::actor::ut
 	neb::core::actor::rigidactor::local(parent),
 	neb::core::actor::rigidbody::base(parent),
 	neb::core::actor::rigidbody::local(parent),
+	neb::core::actor::rigiddynamic::base(parent),
 	neb::core::actor::rigiddynamic::local(parent),
 	phx::core::actor::base(parent),
 	phx::core::actor::local(parent),

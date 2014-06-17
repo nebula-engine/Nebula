@@ -20,23 +20,23 @@
 
 void		neb::init_log() {
 
-	gal::log::min_severity["neb"] = debug;
+	gal::log::min_severity["neb"]			= debug;
 
-	gal::log::min_severity["neb core scene"] = debug;
-	gal::log::min_severity["neb core actor"] = debug;
-	gal::log::min_severity["neb core shape"] = info;
-	gal::log::min_severity["neb core light"] = info;
+	gal::log::min_severity["neb core scene"]	= debug;
+	gal::log::min_severity["neb core actor"]	= debug;
+	gal::log::min_severity["neb core shape"]	= debug;
+	gal::log::min_severity["neb core light"]	= debug;
 
-	gal::log::min_severity["neb gfx"] = info;
-	gal::log::min_severity["neb gfx window"] = debug;
-	gal::log::min_severity["neb gfx context"] = debug;
+	gal::log::min_severity["neb gfx"]		= debug;
+	gal::log::min_severity["neb gfx window"]	= debug;
+	gal::log::min_severity["neb gfx context"]	= debug;
 
-	gal::log::min_severity["neb gfx camera view"] = debug;
+	gal::log::min_severity["neb gfx camera view"]	= debug;
 
-	gal::log::min_severity["phx core scene"] = debug;
-	gal::log::min_severity["phx core actor"] = debug;
-	gal::log::min_severity["phx core shape"] = info;
-	gal::log::min_severity["phx core light"] = info;
+	gal::log::min_severity["phx core scene"]	= debug;
+	gal::log::min_severity["phx core actor"]	= debug;
+	gal::log::min_severity["phx core shape"]	= debug;
+	gal::log::min_severity["phx core light"]	= debug;
 
 	
 	gal::log::init();
@@ -44,6 +44,7 @@ void		neb::init_log() {
 }
 void		neb::init() {
 
+	neb::init_log();
 	
 	neb::app::base::g_app_ = sp::make_shared<neb::app::base>();
 
