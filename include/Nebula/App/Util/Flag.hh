@@ -4,11 +4,12 @@
 #include <Galaxy-Standard/flag.hpp>
 
 namespace neb {
-	namespace App {
+	namespace app {
 		namespace util {
-			DEFINE_FLAG(Flag,
+			DEFINE_FLAG(flag,
 					((SHOULD_RELEASE)	(1 << 0))
 					((INIT_GLEW)		(1 << 1))
+					((INIT_GLFW)		(1 << 2))
 				   )
 		}
 	}

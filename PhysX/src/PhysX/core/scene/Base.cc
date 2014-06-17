@@ -1,74 +1,38 @@
 #include <stdio.h>
 
-
+#include <Galaxy-Log/log.hpp>
 
 #include <PhysX/app/base.hpp>
-#include <PhysX/core/scene/Base.hh>
+#include <PhysX/core/scene/base.hpp>
 #include <PhysX/util/convert.hpp>
 
 #include <Nebula/Scene/Util/Types.hh>
 
-/*
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Graphics/Context/Base.hh>
 
 
-#include <Nebula/Scene/Base.hh>
-#include <Nebula/Scene/Util/Parent.hh>
-
-#include <Nebula/Actor/Base.hh>
-
-#include <Nebula/Graphics/Light/Base.hh>
-#include <Nebula/Graphics/glsl/program.hh>
-#include <Nebula/Graphics/Camera/Projection/Perspective.hh>
-
-//#include <math/free.hpp>
-
-#include <Nebula/Actor/Util/Type.hh>
-#include <Nebula/Message/Actor/Event/Base.hh>
-#include <Nebula/Message/Actor/Create.hh>
-#include <Nebula/Message/Actor/Update.hh>
-#include <Nebula/Message/Actor/Event/Base.hh>
-//#include <Nebula/Network/message.hh>
-//#include <Nebula/Util/Typed.hh>
-#include <Nebula/Memory/smart_ptr.hh>
-
-#include <Nebula/config.hh> // nebula/config.hpp.in
-#include <Nebula/App/Base.hh>
-
-#include <Nebula/simulation_callback.hh>
-//#include <Nebula/actor/free.hh>
-#include <Nebula/Actor/RigidDynamic/Base.hh>
-#include <Nebula/Actor/RigidStatic/Base.hh>
-#include <Nebula/Actor/Controller/Base.hh>
-//#include <Nebula/actor/vehicle.hh>
-#include <Nebula/Actor/empty.hh>
-#include <Nebula/Shape/Base.hh>
-#include <Nebula/timer/Types.hh>
-#include <Nebula/timer/Actor/Release.hpp>
-*/
-
-phx::core::scene::base::base(sp::shared_ptr< ::neb::Scene::util::parent > parent):
-	neb::Scene::base(parent),
+phx::core::scene::base::base(sp::shared_ptr< ::neb::scene::util::parent > parent):
+	neb::scene::base(parent),
 	px_scene_(NULL)
 {
-	GLUTPP_DEBUG_0_FUNCTION;
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 }
 phx::core::scene::base::~base() {
-	GLUTPP_DEBUG_0_FUNCTION;
+
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::scene::base::init() {
-	GLUTPP_DEBUG_0_FUNCTION;
 	
-	::neb::Scene::base::init();
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
+	
+	neb::scene::base::init();
 	
 	create_physics();
 }
 void			phx::core::scene::base::release() {
-	GLUTPP_DEBUG_0_FUNCTION;	
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::scene::base::create_physics() {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 	
 	auto pxphysics = phx::app::base::global()->px_physics_;
 	

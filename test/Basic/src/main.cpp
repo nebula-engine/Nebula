@@ -10,7 +10,7 @@ int main() {
 	
 	neb::std::wrapper wrap;
 	
-	auto app = neb::App::base::globalBase();
+	auto app = neb::app::base::globalBase();
 	
 	
 }

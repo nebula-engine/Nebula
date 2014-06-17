@@ -11,7 +11,7 @@ neb::core::actor::util::parent::parent() {
 void					neb::core::actor::util::parent::init() {
 
 }
-sp::shared_ptr<neb::Scene::base>			neb::core::actor::util::parent::getScene() {
+sp::shared_ptr<neb::scene::base>			neb::core::actor::util::parent::getScene() {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	auto scene = isSceneBase();

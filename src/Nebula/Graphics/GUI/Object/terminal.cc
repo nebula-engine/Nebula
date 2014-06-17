@@ -9,7 +9,7 @@ void		neb::gfx::gui::object::terminal::init() {
 
 	neb::gfx::gui::object::base::init();
 
-	auto app = neb::App::base::global();
+	auto app = neb::app::base::global();
 
 	cs_ = app->command_set_;
 	

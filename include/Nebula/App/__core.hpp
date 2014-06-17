@@ -6,11 +6,11 @@
 #include <Nebula/Graphics/GUI/Layout/Util/Parent.hh>
 
 namespace neb {
-	namespace App {
+	namespace app {
 		class __core:
-			virtual public neb::App::__base,
+			virtual public neb::app::__base,
 			virtual public neb::gfx::gui::layout::util::parent,
-			virtual public neb::Scene::util::parent
+			virtual public neb::scene::util::parent
 		{
 			public:
 				virtual void	init();

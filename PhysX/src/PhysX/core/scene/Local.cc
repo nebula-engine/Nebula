@@ -1,24 +1,33 @@
+
+#include <Galaxy-Log/log.hpp>
+
 #include <Nebula/App/Base.hh>
-#include <Nebula/Actor/Base.hh>
+#include <Nebula/Scene/Local.hh>
 #include <Nebula/Actor/RigidBody/Base.hh>
 #include <Nebula/timer/Actor/Release.hpp>
 
 
 
 #include <PhysX/util/convert.hpp>
-#include <PhysX/core/scene/Local.hh>
+#include <PhysX/core/scene/local.hpp>
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
 
+phx::core::scene::local::local(sp::shared_ptr<neb::scene::util::parent> parent):
+	neb::scene::base(parent),
+	neb::scene::local(parent),
+	phx::core::scene::base(parent)
+{
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
+}
+void			phx::core::scene::local::step(neb::core::TimeStep const & ts) {
 
-void            phx::core::scene::local::step(neb::core::TimeStep const & ts) {
-	
-	auto app = neb::App::base::global();
-	
+	auto app = neb::app::base::global();
+
 	// timer
 	//timer_set_.step(time);
-	
+
 	//physx::PxU32 nbPxactor = px_scene_->getNbActors(physx::PxActorTypeSelectionFlag::eRIGID_DYNAMIC);
-	
+
 	// PxScene
 	assert(px_scene_ != NULL);
 
@@ -50,12 +59,12 @@ void            phx::core::scene::local::step(neb::core::TimeStep const & ts) {
 
 		neb::core::actor::base* pactor = static_cast<neb::core::actor::base*>(ud);
 		auto actor = pactor->isActorBase();
-		
+
 
 		if(actor) {
 			pose = active_transforms[i].actor2World;
 			actor->setPose(phx::util::convert(pose));
-			
+
 			if(pxrigidbody != NULL) {
 				auto rigidbody = isActorRigidBody();
 				//dynamic_cast<neb::core::actor::rigidbody::RigidBody*>(actor);
@@ -77,9 +86,9 @@ void            phx::core::scene::local::step(neb::core::TimeStep const & ts) {
 	//physx::PxVec3 g(0,-0.25,0);
 	//vehicle_manager_.vehicle_suspension_raycasts(px_scene_);
 	//vehicle_manager_.update((float)dt, g);
-	
+
 	send_actor_update();
-	
+
 }
 void		phx::core::scene::local::fire(sp::shared_ptr<phx::core::actor::base> actor) {
 

@@ -8,6 +8,7 @@
 #include <Nebula/Graphics/Color/Color.hh>
 
 namespace neb {
+	void	init_log();
 	void	init();
 }
 

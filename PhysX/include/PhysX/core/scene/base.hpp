@@ -38,11 +38,11 @@ namespace phx { namespace core { namespace scene {
 	 * @brief base
 	 */
 	class base:
-		virtual public neb::Scene::base,
+		virtual public neb::scene::base,
 		virtual public phx::core::actor::util::parent
 	{
 		public:
-			base(sp::shared_ptr< ::neb::Scene::util::parent > parent);
+			base(sp::shared_ptr< ::neb::scene::util::parent > parent);
 			virtual ~base();
 			void					init();
 			void					release();
