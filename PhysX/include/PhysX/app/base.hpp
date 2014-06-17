@@ -10,6 +10,8 @@
 #include <Nebula/App/Base.hh>
 #include <Nebula/Scene/Base.hh>
 
+#include <PhysX/free.hpp>
+
 class DefaultErrorCallback:
 	public physx::PxErrorCallback
 {
@@ -34,6 +36,8 @@ namespace phx { namespace app {
 
 
 	class base: virtual public neb::App::base {
+		public:
+			friend void phx::init();
 		public:
 			base();
 			void						init();

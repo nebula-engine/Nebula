@@ -13,6 +13,8 @@
 #include <Nebula/Shape/empty.hpp>
 #include <Nebula/Actor/RigidDynamic/Local.hh>
 
+#include <PhysX/free.hpp>
+#include <PhysX/app/base.hpp>
 
 sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
 
@@ -190,9 +192,9 @@ sp::shared_ptr<neb::Scene::local>			create_scene(
 
 int main() {
 
-	neb::init();
+	phx::init();
 
-	auto app = neb::App::base::global();
+	auto app = phx::app::base::global();
 
 	// window	
 	auto window = sp::make_shared<neb::gfx::window::base>();

@@ -22,6 +22,7 @@ include_directories(${physx_INCLUDE_DIR})
 link_directories("../Galaxy-Network/build")
 link_directories("../Galaxy-Standard/build")
 link_directories("../Galaxy-Log/Debug")
+link_directories("../Debug")
 
 ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
 
@@ -39,6 +40,8 @@ SET(libs ${libs}
 	Galaxy-Standard
 	Galaxy-Network
 	Galaxy-Log
+	${PhysX_LIBRARIES}
+	${PhysX_LIBRARIES}
 	${Boost_LIBRARIES}
 	glfw3
 	GL
