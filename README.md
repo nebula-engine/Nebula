@@ -8,6 +8,20 @@
 - Boost
 - PhysX
 
+## Testing
+
+For consideration for merging into master, GRU/test/Window must:
+- ``view free``
+    - nsew movement
+- ``gui terminal``
+    - rendering over scene
+    - text entry
+    - commands working
+    - toggle enable/disable
+- cube scene
+    - lights rendering properly
+    - cubes rendering properly
+
 ## News
 
 Nebula is mergin into GRU. All my game engine code is being condesend and put in GRU.
