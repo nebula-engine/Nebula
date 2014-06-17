@@ -13,3 +13,6 @@
 [submodule "Galaxy-Log"]
 	path = Galaxy-Log
 	url = https://github.com/chuck1/Galaxy-Log
+[submodule "maze"]
+	path = maze
+	url = http://chuck1@github.com/chuck1/maze
