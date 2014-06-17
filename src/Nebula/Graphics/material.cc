@@ -68,7 +68,7 @@ void	neb::material::material::init()
 
 void	neb::material::material::load()
 {
-	auto p = neb::App::base::global()->current_program();
+	auto p = neb::app::base::global()->current_program();
 
 	p->get_uniform_scalar("front.ambient")->load(raw_.ambient_);
 	p->get_uniform_scalar("front.diffuse")->load(raw_.diffuse_);

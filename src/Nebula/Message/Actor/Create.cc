@@ -6,7 +6,7 @@
 void		neb::message::actor::Create::load(sp::shared_ptr<neb::core::actor::base> actor) {
 	assert(actor);
 
-	parent_i_ = actor->parent_->i_;
+	parent_i_ = actor->get_parent()->i_;
 	
 	i_ = actor->i_;
 	

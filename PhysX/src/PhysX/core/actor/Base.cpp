@@ -1,4 +1,4 @@
-
+#include <Galaxy-Log/log.hpp>
 
 #include <Nebula/debug.hh>
 
@@ -23,27 +23,28 @@
 
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/base.hpp>
-#include <PhysX/core/scene/Base.hh>
+#include <PhysX/core/scene/base.hpp>
 
 phx::core::actor::base::base(sp::shared_ptr<phx::core::actor::util::parent> parent):
-	neb::core::actor::base(parent)
+	neb::core::actor::base(parent),
+	parent_(parent)
 {
-	NEBULA_ACTOR_BASE_FUNC;
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 }
 /*phx::core::actor::base::~base() {
 	NEBULA_ACTOR_BASE_FUNC;
 }*/
 void			phx::core::actor::base::init() {
-	NEBULA_ACTOR_BASE_FUNC;
-
-
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	
+	neb::core::actor::base::init();
+	
 	create_physics();
 	init_physics();
 }
 int			phx::core::actor::base::fire() {
-	NEBULA_ACTOR_BASE_FUNC;
-	
-	printf("%s\n", __PRETTY_FUNCTION__);
+
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	auto parent(parent_.lock());
 	assert(parent);

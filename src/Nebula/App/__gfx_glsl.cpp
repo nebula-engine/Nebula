@@ -2,7 +2,7 @@
 #include <Nebula/App/__gfx_glsl.hpp>
 #include <Nebula/Graphics/glsl/program.hh>
 
-void	neb::App::__gfx_glsl::create_programs() {
+void	neb::app::__gfx_glsl::create_programs() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
 
@@ -108,7 +108,7 @@ void	neb::App::__gfx_glsl::create_programs() {
 	}
 
 }
-std::shared_ptr<neb::glsl::program> neb::App::__gfx_glsl::use_program(neb::program_name::e name){
+std::shared_ptr<neb::glsl::program> neb::app::__gfx_glsl::use_program(neb::program_name::e name){
 	auto p = get_program(name);
 
 	p->use();
@@ -117,12 +117,12 @@ std::shared_ptr<neb::glsl::program> neb::App::__gfx_glsl::use_program(neb::progr
 
 	return p;
 }
-std::shared_ptr<neb::glsl::program> neb::App::__gfx_glsl::current_program(){
+std::shared_ptr<neb::glsl::program> neb::app::__gfx_glsl::current_program(){
 	assert(current_);
 
 	return current_;
 }
-std::shared_ptr<neb::glsl::program> neb::App::__gfx_glsl::get_program(neb::program_name::e name){
+std::shared_ptr<neb::glsl::program> neb::app::__gfx_glsl::get_program(neb::program_name::e name){
 	auto it = programs_.find(name);
 
 	if(it == programs_.end())

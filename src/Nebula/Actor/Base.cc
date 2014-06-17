@@ -34,8 +34,10 @@ neb::core::actor::base::~base() {
 }
 void		neb::core::actor::base::init() {
 }
-sp::shared_ptr<neb::core::actor::util::parent>	neb::core::actor::base::getParent() {
-	return parent_;
+sp::shared_ptr<neb::core::actor::util::parent>	neb::core::actor::base::get_parent() {
+	auto parent(parent_.lock());
+	assert(parent);
+	return parent;
 }
 mat4				neb::core::actor::base::getPose() {
 	return pose_;
@@ -44,9 +46,11 @@ mat4				neb::core::actor::base::getPoseGlobal() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
 	mat4 m;
-
-	if(!parent_) {
-		m = parent_->getPoseGlobal() * getPose();
+	
+	auto parent(parent_.lock());
+	
+	if(!parent) {
+		m = parent->getPoseGlobal() * getPose();
 	} else {
 		m = getPose();
 	}
@@ -178,7 +182,7 @@ int neb::core::actor::base::key_fun(sp::shared_ptr<neb::gfx::window::base> windo
 					//fire();
 					return 1;
 				case GLFW_KEY_ESCAPE:
-					parent_->erase(i_);
+					get_parent()->erase(i_);
 					return 1;
 				default:
 					return 0;

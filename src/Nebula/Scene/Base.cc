@@ -41,26 +41,26 @@
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 #include <Nebula/Graphics/Light/Util/light_count.hpp>
 
-neb::Scene::base::base(sp::shared_ptr<neb::Scene::util::parent> parent):
+neb::scene::base::base(sp::shared_ptr<neb::scene::util::parent> parent):
 	parent_(parent)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-neb::Scene::base::~base() {
+neb::scene::base::~base() {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-void neb::Scene::base::init() {
+void neb::scene::base::init() {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 }
-void neb::Scene::base::release() {
+void neb::scene::base::release() {
 	GLUTPP_DEBUG_0_FUNCTION;	
 }
-void neb::Scene::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
+void neb::scene::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
 
-	//auto p = neb::App::base::globalBase()->use_program(neb::program_name::e::LIGHT);
+	//auto p = neb::app::base::globalBase()->use_program(neb::program_name::e::LIGHT);
 	
 	
 	neb::core::light::util::count light_count;
@@ -87,19 +87,19 @@ void neb::Scene::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp:
 	});
 
 }
-void					neb::Scene::base::resize(int w, int h) {
+void					neb::scene::base::resize(int w, int h) {
 }
-mat4					neb::Scene::base::getPose() {
+mat4					neb::scene::base::getPose() {
 	return mat4();
 }		
-mat4					neb::Scene::base::getPoseGlobal() {
+mat4					neb::scene::base::getPoseGlobal() {
 	return mat4();
 }
-void		neb::Scene::base::add_deferred(sp::shared_ptr<neb::core::actor::base> actor) {
+void		neb::scene::base::add_deferred(sp::shared_ptr<neb::core::actor::base> actor) {
 
 	actors_deferred_[actor->name_] = actor;
 }
-void		neb::Scene::base::step(neb::core::TimeStep const & ts) {
+void		neb::scene::base::step(neb::core::TimeStep const & ts) {
 
 	typedef neb::core::actor::util::parent A;
 

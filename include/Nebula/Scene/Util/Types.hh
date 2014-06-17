@@ -5,7 +5,7 @@
 
 namespace neb {
 	/** @brief %Scene */
-	namespace Scene {
+	namespace scene {
 		/** @name %Utilities @{ */
 		namespace util {
 			class parent;
