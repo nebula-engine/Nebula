@@ -13,6 +13,8 @@
 
 #include <PhysX/app/base.hpp>
 
+sp::shared_ptr<phx::app::base> phx::app::base::g_app_;
+
 physx::PxFilterFlags	DefaultFilterShader(
 		physx::PxFilterObjectAttributes attributes0,
 		physx::PxFilterData filterData0,
