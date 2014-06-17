@@ -12,15 +12,14 @@ mat4		neb::gfx::Camera::View::Ridealong::view() {
 
 	if(!actor_) return mat4();
 
-	mat4 pose = actor_->pose_;
+	//auto pose = actor_->pose_;
 	
-	//vec3 translate_vec(pose[13], pose[14], pose[15]);
-	vec3 translate_vec(pose[3][0], pose[3][1], pose[3][2]);
+	vec3 translate_vec(actor_->pose_.pos_);
 
 	//mat4 translate(mat4(-pose.p));
 	//translate.SetTranslation(-pose.p);
 
-	mat3 rotation(pose);//(pose.q);
+	quat rotation(actor_->pose_.rot_);
 	
 	//mat4 m(pose);
 	//pose.Invert();
@@ -39,12 +38,12 @@ mat4		neb::gfx::Camera::View::Ridealong::view() {
 	//mat4 offset_m = glm::translate(offset_vec);
 	//offset_m.SetTranslation(offset_v);
 	
-	mat4 poseInv = glm::affineInverse(pose);
-
-	glm::translate(poseInv, offset_vec);
+	
+	mat4 ret = glm::affineInverse(actor_->pose_.mat4_cast());
+	
+	glm::translate(ret, offset_vec);
 	
 	//math::mat44 ret = pose * offset_m;
-	mat4 ret = poseInv;
 	//math::mat44 ret = offset_m * pose.GetInverse();
 	//math::mat44 ret = translate;//.GetInverse();
 

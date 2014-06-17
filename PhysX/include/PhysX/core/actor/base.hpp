@@ -5,11 +5,13 @@
 
 #include <PhysX/core/actor/util/cast.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
+#include <PhysX/core/actor/util/parent.hpp>
 
 namespace phx { namespace core { namespace actor {
 
 	class base:
 		virtual public neb::core::actor::base,
+		virtual public phx::core::actor::util::parent,
 		virtual public phx::core::actor::util::cast
 	{
 		public:
@@ -21,19 +23,20 @@ namespace phx { namespace core { namespace actor {
 			virtual void		step(neb::core::TimeStep const & ts);
 
 
-			virtual void		create_physics();
-			virtual void		init_physics();
-
+			
 
 
 			void			hit();
 			void			damage(real);
 			int			fire();
 
-
-			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile();
 			
-			sp::shared_ptr<phx::core::actor::util::parent>				get_parent();
+			virtual void		create_physics() = 0;
+			virtual void		init_physics() = 0;
+			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile() = 0;
+		
+	
+			sp::shared_ptr<phx::core::actor::util::parent>				getPxParent();
 		public:
 			sp::weak_ptr<phx::core::actor::util::parent>				parent_;
 

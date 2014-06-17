@@ -59,7 +59,7 @@
 	//app->activate_layout(box::LAYOUT_GAME);
 
 }*/
-sp::shared_ptr<neb::Actor::RigidBody::base> create_player_actor(sp::shared_ptr<neb::scene::base> scene) {
+sp::shared_ptr<neb::Actor::RigidBody::base> create_player_actor(sp::shared_ptr<neb::core::scene::base> scene) {
 
 	typedef neb::Actor::base A;
 	
@@ -83,7 +83,7 @@ sp::shared_ptr<neb::Actor::RigidBody::base> create_player_actor(sp::shared_ptr<n
 
 	return rigidbody;
 }
-void	create_player(sp::shared_ptr<neb::gfx::window::base> wnd, sp::shared_ptr<neb::scene::base> scene) {
+void	create_player(sp::shared_ptr<neb::gfx::window::base> wnd, sp::shared_ptr<neb::core::scene::base> scene) {
 	
 	auto rigidbody = create_player_actor(scene);
 

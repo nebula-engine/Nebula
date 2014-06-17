@@ -4,6 +4,7 @@
 #include <PxPhysicsAPI.h>
 
 #include <Nebula/Actor/RigidBody/Base.hh>
+#include <Nebula/Core/pose.hpp>
 
 #include <PhysX/core/actor/rigidactor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
@@ -29,7 +30,7 @@ namespace phx { namespace core { namespace actor { namespace rigidbody {
 			virtual void					init_physics() = 0;
 
 			virtual void					add_force(real) = 0;
-			virtual void					set_pose(physx::PxTransform);
+			virtual void					set_pose(neb::core::pose const & pose);
 
 			virtual int					fire();
 

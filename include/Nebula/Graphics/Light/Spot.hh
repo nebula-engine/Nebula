@@ -30,7 +30,7 @@ namespace neb {
 			public:
 				Point(sp::shared_ptr<neb::Light::util::parent> parent);
 
-				virtual void				load(neb::core::light::util::count & light_count, mat4 space);
+				virtual void				load(neb::core::light::util::count & light_count, neb::core::pose const & pose);
 
 
 
@@ -53,7 +53,7 @@ namespace neb {
 			public:
 				Spot(sp::shared_ptr<neb::Light::util::parent> parent);
 
-				virtual void				load(neb::core::light::util::count & light_count, mat4 space);
+				virtual void				load(neb::core::light::util::count & light_count, neb::core::pose const & pose);
 
 				virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
 					neb::Light::base::serialize(ar, version);
