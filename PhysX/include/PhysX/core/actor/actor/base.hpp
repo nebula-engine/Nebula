@@ -4,6 +4,7 @@
 #include <PxPhysicsAPI.h>
 
 #include <Nebula/Actor/Actor/Base.hh>
+#include <Nebula/Core/pose.hpp>
 
 #include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
@@ -29,9 +30,8 @@ namespace phx { namespace core { namespace actor { namespace actor {
 			virtual void					init_physics() = 0;
 
 			//virtual void					add_force(real) = 0;
-			virtual void					set_pose(mat4);
+			virtual void					set_pose(neb::core::pose const & pose);
 			
-			virtual int					fire();
 			
 			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile() = 0;
 			

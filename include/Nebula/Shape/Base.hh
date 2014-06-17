@@ -54,8 +54,8 @@ namespace neb { namespace core { namespace shape {
 				void			step(neb::core::TimeStep const & ts);
 
 				/** @name Accessors @{ */
-				mat4						getPose();
-				mat4						getPoseGlobal();
+				neb::core::pose						getPose();
+				neb::core::pose						getPoseGlobal();
 				/** @} */
 
 
@@ -63,19 +63,19 @@ namespace neb { namespace core { namespace shape {
 
 
 				/** @name Rendering @{ */
-				void						load_lights(neb::core::light::util::count& light_count, mat4 space);
-				void						model_load(mat4 space);
+				void						load_lights(neb::core::light::util::count& light_count, neb::core::pose const & pose);
+				void						model_load(neb::core::pose const & pose);
 				void						init_buffer(
 						sp::shared_ptr<neb::gfx::context::base> context,
 						sp::shared_ptr<neb::glsl::program> p);
 				void						draw(
 						sp::shared_ptr<neb::gfx::context::base>,
 						sp::shared_ptr<neb::glsl::program> p,
-						mat4 space);
+						neb::core::pose const & pose);
 				virtual void					draw_elements(
 						sp::shared_ptr<neb::gfx::context::base> context,
 						sp::shared_ptr<neb::glsl::program> p,
-						mat4 space);
+						neb::core::pose const & pose);
 				/** @} */
 			public:
 				template<class Archive>	void	serialize(Archive & ar, unsigned int const & version) {
@@ -92,16 +92,16 @@ namespace neb { namespace core { namespace shape {
 
 			public:
 				neb::core::shape::util::Flag		flag_;
-				/** @brief Pose. */
-				mat4				pose_;
-				/** @brief Scale. */
-				vec3				s_;
+				/** @brief pose */
+				neb::core::pose				pose_;
+				/** @brief scale */
+				vec3					s_;
 				/** @brief Name of image file */
-				::std::string			image_;
+				::std::string				image_;
 				/** @brief Name of normal map file */
-				::std::string			normal_;
+				::std::string				normal_;
 				/** @brief Material. */
-				neb::material::raw		material_;
+				neb::material::raw			material_;
 			public:
 
 				// draw data

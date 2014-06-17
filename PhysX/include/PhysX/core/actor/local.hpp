@@ -14,7 +14,7 @@ namespace phx { namespace core { namespace actor {
 		virtual public phx::core::actor::base
 	{
 		public:
-			local(sp::shared_ptr<neb::core::actor::util::parent> parent);
+			local(sp::shared_ptr<phx::core::actor::util::parent> parent);
 
 			virtual void		init();
 			virtual void		release();

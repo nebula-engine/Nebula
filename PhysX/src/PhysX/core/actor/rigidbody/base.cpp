@@ -23,7 +23,7 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <PhysX/util/convert.hpp>
-#include <PhysX/core/scene/Base.hh>
+#include <PhysX/core/scene/base.hpp>
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/control/rigidbody/base.hpp>
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
@@ -41,11 +41,28 @@ phx::core::actor::rigidbody::base::base(sp::shared_ptr<phx::core::actor::util::p
 	torque_(0.0,0.0,0.0)
 {}
 void			phx::core::actor::rigidbody::base::init() {
+
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
 	
-	neb::core::actor::rigidactor::base::init();
+	neb::core::actor::rigidbody::base::init();
+	phx::core::actor::rigidactor::base::init();
+}
+void			phx::core::actor::rigidbody::base::release() {
+
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
+
+	neb::core::actor::rigidbody::base::release();
+	phx::core::actor::rigidactor::base::release();
+}
+void			phx::core::actor::rigidbody::base::set_pose(neb::core::pose const & pose) {
+
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
+
+	neb::core::actor::rigidbody::base::setPose(pose);
+	phx::core::actor::rigidactor::base::setPose(pose);
 }
 void			phx::core::actor::rigidbody::base::add_force(real time) {
+
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
 
 	// non-user-controled
@@ -63,8 +80,8 @@ void			phx::core::actor::rigidbody::base::add_force(real time) {
 	
 	//physx::PxTransform pose = pose_;
 	
-	f = pose_ * f;//pose_.q.rotate(f);
-	t = pose_ * t;//.q.rotate(t);
+	f = pose_.rot_ * f;//pose_.q.rotate(f);
+	t = pose_.rot_ * t;//.q.rotate(t);
 
 	//printf("f = ");
 	//f.print();
@@ -90,24 +107,26 @@ sp::shared_ptr<phx::core::actor::rigiddynamic::local>		phx::core::actor::rigidbo
 	
 	
 	vec3 pos_relative(0,0,-2);
-	vec4 vel_relative(0,0,-1,0);
-
+	vec3 vel_relative(0,0,-1);
+	
+	
+	pos_relative = pose_.rot_ * pos_relative;
+	
+	
+	
+	actor->pose_ = pose_;
 
 	// pose
 	
-	mat4 pose(pose_);
-	
-	pose *= glm::translate(pos_relative);
-	
-	actor->pose_ = pose;
+	actor->pose_.pos_ += vec4(pos_relative,0);
 	
 	// velocity
 	
 	vec3 vel(velocity_);
 	
-	vel_relative = pose * vel_relative;
+	vel_relative = pose_.rot_ * vel_relative;
 	
-	vel += vec3(vel_relative);
+	vel += vel_relative;
 	
 	actor->velocity_ = vel;
 	

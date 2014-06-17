@@ -156,7 +156,7 @@ void		phx::core::actor::control::rigidbody::PD::step(neb::core::TimeStep const &
 	auto pxrigidbody = actor_->px_actor_->isRigidBody();
 	
 	// rotation from pose to target pose
-	quat q(actor_->pose_);
+	quat q(actor_->pose_.rot_);
 	
 //	physx::PxQuat q = actor_->pose_.q;
 	quat a = glm::conjugate(q_target_) * q;

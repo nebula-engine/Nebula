@@ -39,8 +39,8 @@ namespace neb {
 				virtual void			cleanup();
 				virtual void			step(neb::core::TimeStep const & ts);
 
-				virtual void			load(neb::core::light::util::count & light_count, mat4) = 0;
-				void				load(int o, mat4);
+				virtual void			load(neb::core::light::util::count & light_count, neb::core::pose const & pose) = 0;
+				void				load(int o, neb::core::pose const & pose);
 
 				void				load_shadow();
 				void				draw();
@@ -49,8 +49,8 @@ namespace neb {
 				void				RenderLightPOV();
 
 
-				glm::mat4x4			get_pose();
-				glm::vec4			get_pos();
+				neb::core::pose			getPose();
+				vec4				getPos();
 			private:
 				template<class Archive> void		serializeTemplate(Archive & ar, unsigned int const & version) {
 					ar & boost::serialization::make_nvp("i",i_);

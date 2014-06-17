@@ -36,7 +36,7 @@ namespace neb {
 		 */
 		class base: virtual public neb::core::actor::util::parent {
 			public:
-				Base(sp::shared_ptr<neb::scene::util::parent>;
+				Base(sp::shared_ptr<neb::core::scene::util::parent>;
 				virtual ~Base();
 				void				init();
 				void				release();

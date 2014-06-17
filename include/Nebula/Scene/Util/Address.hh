@@ -20,7 +20,7 @@ namespace neb {
 		namespace util {
 			class Address {
 				public:
-					void						load(sp::shared_ptr<neb::scene::base> & scene);
+					void						load(sp::shared_ptr<neb::core::scene::base> & scene);
 
 					template<class Archive> void			serialize(Archive& ar, unsigned int const & version) {
 						ar & vec_;

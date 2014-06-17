@@ -41,22 +41,22 @@
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 #include <Nebula/Graphics/Light/Util/light_count.hpp>
 
-neb::scene::base::base(sp::shared_ptr<neb::scene::util::parent> parent):
+neb::core::scene::base::base(sp::shared_ptr<neb::core::scene::util::parent> parent):
 	parent_(parent)
 {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-neb::scene::base::~base() {
+neb::core::scene::base::~base() {
 	GLUTPP_DEBUG_0_FUNCTION;
 }
-void neb::scene::base::init() {
+void neb::core::scene::base::init() {
 	GLUTPP_DEBUG_0_FUNCTION;
 	
 }
-void neb::scene::base::release() {
+void neb::core::scene::base::release() {
 	GLUTPP_DEBUG_0_FUNCTION;	
 }
-void neb::scene::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
+void neb::core::scene::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
 
@@ -70,7 +70,7 @@ void neb::scene::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp:
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
 		auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
 		assert(actor);
-		actor->load_lights(light_count, mat4());
+		actor->load_lights(light_count, neb::core::pose());
 	});
 	
 	p->get_uniform_scalar("light_count_point")->load(light_count.point);
@@ -83,23 +83,23 @@ void neb::scene::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp:
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
 		auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
 		assert(actor);
-		actor->draw(context, p, mat4());
+		actor->draw(context, p, neb::core::pose());
 	});
 
 }
-void					neb::scene::base::resize(int w, int h) {
+void						neb::core::scene::base::resize(int w, int h) {
 }
-mat4					neb::scene::base::getPose() {
-	return mat4();
+neb::core::pose					neb::core::scene::base::getPose() {
+	return neb::core::pose();
 }		
-mat4					neb::scene::base::getPoseGlobal() {
-	return mat4();
+neb::core::pose					neb::core::scene::base::getPoseGlobal() {
+	return neb::core::pose();
 }
-void		neb::scene::base::add_deferred(sp::shared_ptr<neb::core::actor::base> actor) {
+void		neb::core::scene::base::add_deferred(sp::shared_ptr<neb::core::actor::base> actor) {
 
 	actors_deferred_[actor->name_] = actor;
 }
-void		neb::scene::base::step(neb::core::TimeStep const & ts) {
+void		neb::core::scene::base::step(neb::core::TimeStep const & ts) {
 
 	typedef neb::core::actor::util::parent A;
 

@@ -7,8 +7,8 @@
 
 #include <Nebula/Scene/Remote.hh>
 
-void		neb::scene::Remote::step(neb::core::TimeStep const & ts) {
-	neb::scene::base::step(ts);
+void		neb::core::scene::Remote::step(neb::core::TimeStep const & ts) {
+	neb::core::scene::base::step(ts);
 }
 
 
