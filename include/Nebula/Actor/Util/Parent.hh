@@ -30,7 +30,7 @@ namespace neb { namespace core {
 			class parent:
 				public neb::util::parent<neb::actor::__base>,
 				virtual public neb::core::Pose,
-				virtual public neb::Scene::util::cast,
+				virtual public neb::scene::util::cast,
 				virtual public neb::core::actor::util::cast
 			{
 				public:
@@ -39,7 +39,7 @@ namespace neb { namespace core {
 
 					virtual void				init();
 				public:
-					sp::shared_ptr<neb::Scene::base>			getScene();
+					sp::shared_ptr<neb::scene::base>			getScene();
 			};
 		}
 	}

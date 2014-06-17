@@ -30,7 +30,7 @@
 #define LIGHT_MAX 20
 
 namespace neb {
-	namespace Scene {
+	namespace scene {
 		/** 
 		 * @ingroup group_core
 		 * @brief Base
@@ -40,7 +40,7 @@ namespace neb {
 			virtual public neb::core::actor::util::parent
 		{
 			public:
-				base(sp::shared_ptr<neb::Scene::util::parent>);
+				base(sp::shared_ptr<neb::scene::util::parent>);
 				virtual ~base();
 				virtual void				init();
 				virtual void				release();
@@ -72,10 +72,10 @@ namespace neb {
 				 *
 				 * @note WEAK
 				 */
-				sp::shared_ptr<neb::Scene::util::parent>		parent_;
+				sp::shared_ptr<neb::scene::util::parent>		parent_;
 
 			public:
-				neb::Scene::util::Flag					flag_;
+				neb::scene::util::Flag					flag_;
 
 				::std::map< ::std::string, sp::shared_ptr<neb::core::actor::base> >		actors_deferred_;
 

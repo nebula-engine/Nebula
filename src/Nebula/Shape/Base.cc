@@ -100,7 +100,7 @@ void					neb::core::shape::base::draw(sp::shared_ptr<neb::gfx::context::base> co
 }
 void					neb::core::shape::base::model_load(mat4 space) {
 
-	auto p = neb::App::base::global()->current_program();
+	auto p = neb::app::base::global()->current_program();
 
 	space *= glm::scale(s_);
 

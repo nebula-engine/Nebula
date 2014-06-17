@@ -19,8 +19,8 @@
 #include <Nebula/Graphics/Types.hh>
 
 namespace neb {
-	namespace App {
-		class __gfx_glsl: virtual public neb::App::__base {
+	namespace app {
+		class __gfx_glsl: virtual public neb::app::__base {
 			public:
 				typedef ::std::map<int, sp::shared_ptr<neb::glsl::program> >		map_program_type;
 
@@ -29,7 +29,7 @@ namespace neb {
 				friend class neb::gfx::environ::three;
 
 			protected:
-				static sp::shared_ptr<neb::App::__gfx_glsl>		global();
+				static sp::shared_ptr<neb::app::__gfx_glsl>		global();
 
 				sp::shared_ptr<neb::glsl::program>			use_program(neb::program_name::e);
 				sp::shared_ptr<neb::glsl::program>			get_program(neb::program_name::e);

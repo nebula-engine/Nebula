@@ -1,5 +1,5 @@
 #include <Nebula/App/__base.hpp>
 
-void		neb::App::__base::init() {
+void		neb::app::__base::init() {
 }
 

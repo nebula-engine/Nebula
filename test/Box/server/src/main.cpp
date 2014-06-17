@@ -116,7 +116,7 @@ namespace box
 
 int	client_main(char const * addr, short unsigned int port) {
 	
-	auto app = neb::App::base::globalBase();
+	auto app = neb::app::base::globalBase();
 	
 	assert(app);
 	
@@ -153,12 +153,12 @@ int	client_main(char const * addr, short unsigned int port) {
 	//app->activate_layout(box::LAYOUT_GAME);
 
 }*/
-sp::shared_ptr<neb::Actor::RigidBody::base> create_player_actor(sp::shared_ptr<neb::Scene::base> scene) {
+sp::shared_ptr<neb::Actor::RigidBody::base> create_player_actor(sp::shared_ptr<neb::scene::base> scene) {
 
 	typedef neb::Actor::base A;
 	typedef neb::WrapperTyped<A> W;
 	
-	auto app = neb::App::base::globalBase();
+	auto app = neb::app::base::globalBase();
 	
 	W wrap;
 
@@ -178,7 +178,7 @@ sp::shared_ptr<neb::Actor::RigidBody::base> create_player_actor(sp::shared_ptr<n
 
 	return rigidbody;
 }
-void	create_player(sp::shared_ptr<neb::gfx::window::base> wnd, sp::shared_ptr<neb::Scene::base> scene) {
+void	create_player(sp::shared_ptr<neb::gfx::window::base> wnd, sp::shared_ptr<neb::scene::base> scene) {
 	
 	auto rigidbody = create_player_actor(scene);
 
@@ -202,14 +202,14 @@ void	create_player(sp::shared_ptr<neb::gfx::window::base> wnd, sp::shared_ptr<ne
 }
 int	server_main(short unsigned int port) {
 
-	auto app = neb::App::base::globalBase();
+	auto app = neb::app::base::globalBase();
 
 	app->reset_server(port);
 	
-	typedef neb::util::parent< neb::Scene::base > S;
+	typedef neb::util::parent< neb::scene::base > S;
 	typedef neb::util::parent< neb::gfx::window::base > W;
 
-	typedef neb::WrapperTyped<neb::Scene::base>	Wrapper;
+	typedef neb::WrapperTyped<neb::scene::base>	Wrapper;
 
 	{
 		// Scene
@@ -278,8 +278,8 @@ int	main(int argc, char const ** argv)
 
 	neb::init();
 
-	//neb::App::base::global()->object_factory_.reset(new box::object_factory);
-	//neb::App::base::global()->raw_factory_.reset(new neb::actor::raw_factory);
+	//neb::app::base::global()->object_factory_.reset(new box::object_factory);
+	//neb::app::base::global()->raw_factory_.reset(new neb::actor::raw_factory);
 
 	
 	if(strcmp(argv[1], "s") == 0)

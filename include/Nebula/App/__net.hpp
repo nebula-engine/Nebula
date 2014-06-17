@@ -18,11 +18,11 @@
 #include <Nebula/Message/Types.hh>
 
 namespace neb {
-	namespace App {
+	namespace app {
 
 
 		class __net:
-			virtual public neb::App::__base
+			virtual public neb::app::__base
 		{
 			public:
 				void					reset_server(ip::tcp::endpoint const & endpoint);

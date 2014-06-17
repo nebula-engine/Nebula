@@ -14,19 +14,19 @@ neb::gfx::context::base::base() {
 }
 neb::gfx::context::base::base(sp::shared_ptr<neb::gfx::context::util::parent> parent): parent_(parent) {
 
-	printf("%s\n",__PRETTY_FUNCTION__);
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
 }
 neb::gfx::context::base&		neb::gfx::context::base::operator=(neb::gfx::context::base const & r){
-	printf("%s\n",__PRETTY_FUNCTION__);
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
 	return *this;
 }
 void		neb::gfx::context::base::init() {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
 	
 	
 }
 void		neb::gfx::context::base::release() {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
 }
 void		neb::gfx::context::base::resize(int w, int h) {
 	if(environ_) environ_->resize(w,h);
@@ -39,6 +39,9 @@ void		neb::gfx::context::base::step(neb::core::TimeStep const & ts) {
 
 }
 void		neb::gfx::context::base::render() {
+	
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
+
 	/**
 	 * prepare rendering environment and then call the drawable
 	 */

@@ -63,7 +63,7 @@ void neb::Light::base::load(int o, mat4 space) {
 	
 	/** @todo way to ditinguish lights in shader */
 	
-	auto p = neb::App::base::global()->current_program();
+	auto p = neb::app::base::global()->current_program();
 	
 	vec3 pos = pos_;
 	

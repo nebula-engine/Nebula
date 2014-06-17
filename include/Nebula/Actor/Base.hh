@@ -38,6 +38,8 @@
 #include <Nebula/Shape/Util/Parent.hh>
 
 namespace neb { namespace core { namespace actor {
+
+
 	/** @brief %Base */
 	class base:
 		virtual public neb::actor::__base,
@@ -57,26 +59,28 @@ namespace neb { namespace core { namespace actor {
 
 		public:
 			/** @name Render @{ */
-			void						draw(sp::shared_ptr<neb::gfx::context::base>, sp::shared_ptr<neb::glsl::program> p,
-mat4);
+			void						draw(
+					sp::shared_ptr<neb::gfx::context::base> context,
+					sp::shared_ptr<neb::glsl::program> p,
+					mat4);
 			/** @} */
 
 			virtual mat4					getPose();
 			virtual mat4					getPoseGlobal();
 
 			/** @name Accessors @{ */
-			sp::shared_ptr<neb::core::actor::util::parent>		getParent();
-			void						setPose(mat4 pose);
+			sp::shared_ptr<neb::core::actor::util::parent>		get_parent();
+			void							setPose(mat4 pose);
 			/** @} */
 
-			void						load_lights(neb::core::light::util::count& light_count, mat4);
+			void							load_lights(neb::core::light::util::count& light_count, mat4);
 
 
 			/** @todo move to derived class */
 			// signal
-			void						connect(sp::shared_ptr<neb::gfx::window::base>);
+			void							connect(sp::shared_ptr<neb::gfx::window::base>);
 
-			int						key_fun(sp::shared_ptr<neb::gfx::window::base> window,int,int,int,int);
+			int							key_fun(sp::shared_ptr<neb::gfx::window::base> window,int,int,int,int);
 		public:
 			/** @todo what is this??? */
 			neb::core::actor::mode_update::e		mode_update_;
@@ -87,6 +91,7 @@ mat4);
 			} conn_;
 
 		public:
+			
 			/** @brief %Serialize
 			 * @param ar archive
 			 * @param version version
@@ -134,24 +139,24 @@ mat4);
 
 			neb::core::actor::mode_create::e		mode_create_;
 			neb::core::actor::util::Flag			flag_;
-			::std::string				name_;
-			mat4					pose_;
+			::std::string					name_;
+			mat4						pose_;
 			/** @brief Normal for planes. */
-			vec3					n_;
+			vec3						n_;
 			/** @brief Distance for planes. */
-			float					d_;
-			vec3					velocity_;
-			float					density_;
+			float						d_;
+			vec3						velocity_;
+			float						density_;
 
-			neb::Filter::Data			simulation_;
-			neb::Filter::Data			scene_query_;
+			neb::Filter::Data				simulation_;
+			neb::Filter::Data				scene_query_;
 
-			double					health_;
+			double						health_;
 
 
 		public:
 			/** @brief Parent */
-			sp::shared_ptr<neb::core::actor::util::parent>		parent_;
+			sp::weak_ptr<neb::core::actor::util::parent>		parent_;
 	};
 }}}
 

@@ -8,7 +8,7 @@ void		phx::core::actor::rigidbody::remote::step(neb::core::TimeStep const & ts) 
 	neb::core::actor::rigidactor::Remote::step(ts);
 	neb::core::actor::rigidbody::base::step(ts);
 
-	auto app = neb::App::base::global();
+	auto app = neb::app::base::global();
 	
 	if(control_) {
 		auto message = std::make_shared<phx::message::actor::control::rigidbody::oupdate>();

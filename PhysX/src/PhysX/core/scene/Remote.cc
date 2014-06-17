@@ -6,7 +6,7 @@
 
 #include <PhysX/message/actor/event/Base.hh>
 
-#include <PhysX/core/scene/Remote.hh>
+#include <PhysX/core/scene/remote.hpp>
 
 void		phx::core::scene::remote::step(neb::core::TimeStep const & ts) {
 
@@ -20,6 +20,6 @@ void		phx::core::scene::remote::fire(sp::shared_ptr<neb::core::actor::base> acto
 	// fill message
 	message->i_ = actor->i_;
 
-	neb::App::base::global()->sendClient(message);
+	neb::app::base::global()->sendClient(message);
 }
 

@@ -28,10 +28,10 @@
 #define LIGHT_MAX 20
 
 namespace neb {
-	namespace Scene {
-		class local: virtual public neb::Scene::base {
+	namespace scene {
+		class local: virtual public neb::scene::base {
 			public:
-				local(sp::shared_ptr<neb::Scene::util::parent> parent);
+				local(sp::shared_ptr<neb::scene::util::parent> parent);
 				virtual void			step(neb::core::TimeStep const & ts);
 				virtual void			send_actor_update();
 		};

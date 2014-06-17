@@ -59,11 +59,11 @@
 	//app->activate_layout(box::LAYOUT_GAME);
 
 }*/
-sp::shared_ptr<neb::Actor::RigidBody::base> create_player_actor(sp::shared_ptr<neb::Scene::base> scene) {
+sp::shared_ptr<neb::Actor::RigidBody::base> create_player_actor(sp::shared_ptr<neb::scene::base> scene) {
 
 	typedef neb::Actor::base A;
 	
-	auto app = neb::App::base::globalBase();
+	auto app = neb::app::base::globalBase();
 	
 	neb::std::wrapper wrap;
 
@@ -83,7 +83,7 @@ sp::shared_ptr<neb::Actor::RigidBody::base> create_player_actor(sp::shared_ptr<n
 
 	return rigidbody;
 }
-void	create_player(sp::shared_ptr<neb::gfx::window::base> wnd, sp::shared_ptr<neb::Scene::base> scene) {
+void	create_player(sp::shared_ptr<neb::gfx::window::base> wnd, sp::shared_ptr<neb::scene::base> scene) {
 	
 	auto rigidbody = create_player_actor(scene);
 
@@ -114,12 +114,12 @@ int	main(int argc, char const ** argv) {
 	
 	neb::init();
 	
-	//neb::App::base::global()->object_factory_.reset(new box::object_factory);
-	//neb::App::base::global()->raw_factory_.reset(new neb::actor::raw_factory);
+	//neb::app::base::global()->object_factory_.reset(new box::object_factory);
+	//neb::app::base::global()->raw_factory_.reset(new neb::actor::raw_factory);
 	
 	//int	client_main(char const * addr, short unsigned int port) {
 	
-	auto app = neb::App::base::globalBase();
+	auto app = neb::app::base::globalBase();
 	
 	assert(app);
 	
