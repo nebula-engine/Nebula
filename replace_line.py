@@ -59,9 +59,15 @@ def replace(filename):
 	text = re.sub("namespace Util","namespace util",text)
 	text = re.sub("::Util::","::util::",text)
 
+	text = re.sub("namespace App","namespace app",text)
+	text = re.sub("::App::","::app::",text)
+
 	text = re.sub("namespace Window","namespace window",text)
 	text = re.sub("::Window::","::window::",text)
 
+	text = re.sub("namespace Scene","namespace scene",text)
+	text = re.sub("neb::Scene::","neb::scene::",text)
+	text = re.sub("neb::message::Scene::","neb::message::scene::",text)
 
 	text = re.sub("namespace RigidActor","namespace rigidactor",text)
 	text = re.sub("neb::core::actor::RigidActor","neb::core::actor::rigidactor",text)

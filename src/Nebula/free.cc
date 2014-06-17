@@ -18,13 +18,12 @@
 
 #include <Nebula/free.hh>
 
-
-void		neb::init() {
+void		neb::init_log() {
 
 	gal::log::min_severity["neb"] = debug;
 
-	gal::log::min_severity["neb core scene"] = info;
-	gal::log::min_severity["neb core actor"] = info;
+	gal::log::min_severity["neb core scene"] = debug;
+	gal::log::min_severity["neb core actor"] = debug;
 	gal::log::min_severity["neb core shape"] = info;
 	gal::log::min_severity["neb core light"] = info;
 
@@ -34,15 +33,23 @@ void		neb::init() {
 
 	gal::log::min_severity["neb gfx camera view"] = debug;
 
-	gal::log::init();
+	gal::log::min_severity["phx core scene"] = debug;
+	gal::log::min_severity["phx core actor"] = debug;
+	gal::log::min_severity["phx core shape"] = info;
+	gal::log::min_severity["phx core light"] = info;
+
 	
-	neb::App::base::g_app_ = sp::make_shared<neb::App::base>();
+	gal::log::init();
 
-	neb::App::base::g_app_->init();
+}
+void		neb::init() {
+
+	
+	neb::app::base::g_app_ = sp::make_shared<neb::app::base>();
+
+	neb::app::base::g_app_->init();
 
 
-	/** @todo impl in PhysX */
-	//neb::Physics::global()->init();
 }
 
 void		print(unsigned char * s, int w, int h) {
@@ -123,14 +130,14 @@ void		neb::draw_text(
 
 	const char * c;
 
-	//auto p = neb::App::base::global()->use_program(neb::program_name::e::TEXT);
+	//auto p = neb::app::base::global()->use_program(neb::program_name::e::TEXT);
 
 	printf("text %6.3f %6.3f '%s'\n", x, y, text.c_str());
 
 	// face
 	FT_Face face;
 
-	FT_Library ft = neb::App::base::global()->ft_;
+	FT_Library ft = neb::app::base::global()->ft_;
 	
 	char const * fontfile[] = {
 		"/usr/share/fonts/truetype/msttcorefonts/georgia.ttf",

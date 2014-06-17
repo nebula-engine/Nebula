@@ -6,11 +6,11 @@
 #include <Nebula/Scene/Util/Types.hh>
 
 namespace neb {
-        namespace Scene {
+        namespace scene {
                 namespace util {
                         class cast: virtual public neb::std::shared {
                                 public:
-                                        sp::shared_ptr<neb::Scene::base>              isSceneBase();
+                                        sp::shared_ptr<neb::scene::base>              isSceneBase();
                         };
                 }
         }

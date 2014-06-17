@@ -32,17 +32,18 @@
 #include <Nebula/Shape/Util/Types.hh>
 #include <Nebula/Util/wrapper.hpp>
 
-namespace neb {
-	namespace App {
+namespace neb { namespace app {
+
+
 		/** @brief Base
 		 *
 		 * final implementation
 		 */
 		class base:
-			virtual public neb::App::__gfx,
-			virtual public neb::App::__gfx_glsl,
-			virtual public neb::App::__core,
-			virtual public neb::App::__net
+			virtual public neb::app::__gfx,
+			virtual public neb::app::__gfx_glsl,
+			virtual public neb::app::__core,
+			virtual public neb::app::__net
 		{
 			public:
 				friend void neb::init();
@@ -55,7 +56,7 @@ namespace neb {
 				mat4						getPose();
 				mat4						getPoseGlobal();
 
-				static sp::shared_ptr<neb::App::base>		global();
+				static sp::shared_ptr<neb::app::base>		global();
 
 				void						loadXml(::std::string filename, neb::std::wrapper& w);
 
@@ -77,17 +78,20 @@ namespace neb {
 				/** @} */
 
 			public:
-				static sp::shared_ptr<neb::App::base>				g_app_;
+				static sp::shared_ptr<neb::app::base>				g_app_;
 				// network
 				/** @todo make derived App classes for Server and Client??? */
-				neb::App::util::Flag						flag_;
+				neb::app::util::flag						flag_;
 
 				
 
 				sp::shared_ptr<neb::util::command_set>				command_set_;
 		};
-	}
-}
+
+
+
+}}
+
 #endif
 
 

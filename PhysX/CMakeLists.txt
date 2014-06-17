@@ -55,6 +55,8 @@ SET(libs ${libs}
 	Xrandr
 	Xi
 	Xcursor
+	${PhysX_LIBRARIES}
+	${PhysX_LIBRARIES}
 	)
 
 

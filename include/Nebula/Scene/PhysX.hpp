@@ -29,14 +29,14 @@
 #define LIGHT_MAX 20
 
 namespace neb {
-	namespace Scene {
+	namespace scene {
 		/** 
 		 * @ingroup group_core
 		 * @brief Base
 		 */
 		class base: virtual public neb::core::actor::util::parent {
 			public:
-				Base(sp::shared_ptr<neb::Scene::util::parent>;
+				Base(sp::shared_ptr<neb::scene::util::parent>;
 				virtual ~Base();
 				void				init();
 				void				release();

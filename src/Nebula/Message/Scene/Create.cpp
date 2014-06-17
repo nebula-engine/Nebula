@@ -3,9 +3,9 @@
 #include <Nebula/Scene/Base.hh>
 #include <Nebula/Message/Scene/Create.hpp>
 
-neb::message::Scene::Create::Create() {
+neb::message::scene::Create::Create() {
 }
-void neb::message::Scene::Create::load(sp::shared_ptr<neb::Scene::base> scene) {
+void neb::message::scene::Create::load(sp::shared_ptr<neb::scene::base> scene) {
 	scene_.ptr_ = scene;
 }
 

@@ -13,11 +13,11 @@
 
 namespace neb {
 	namespace message {
-		namespace Scene {
+		namespace scene {
 			class Create {
 				public:
 					Create();
-					void load(sp::shared_ptr<neb::Scene::base>scene);
+					void load(sp::shared_ptr<neb::scene::base>scene);
 
 					template<class Archive> void	serialize(Archive & ar, unsigned int const & version) {
 						ar & scene_;

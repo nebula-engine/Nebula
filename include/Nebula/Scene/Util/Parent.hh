@@ -10,10 +10,10 @@
 #include <Nebula/Util/parent.hpp>
 
 namespace neb {
-	namespace Scene {
+	namespace scene {
 		namespace util {
 			class parent:
-				virtual public neb::util::parent<neb::Scene::base>,
+				virtual public neb::util::parent<neb::scene::base>,
 				virtual public neb::core::Pose
 			{
 				public:

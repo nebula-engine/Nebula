@@ -80,6 +80,10 @@ phx::app::base::~base()
 phx::app::base::base(): px_physics_(NULL) {
 }
 void	phx::app::base::init() {
+	
+	neb::app::base::init();
+	
+	
 	// Physx
 	// Foundation
 	px_foundation_ = PxCreateFoundation(
@@ -104,7 +108,9 @@ void	phx::app::base::init() {
 
 	// cooking
 	/** @todo fix cooking signature */
-	//px_cooking_ = PxCreateCooking( PX_PHYSICS_VERSION, *px_foundation_, ::physx::PxCookingParams() );
+	auto scales = physx::PxTolerancesScale();
+	
+	px_cooking_ = PxCreateCooking( PX_PHYSICS_VERSION, *px_foundation_, ::physx::PxCookingParams(scales) );
 	assert( px_cooking_ );
 
 	// Extensions
@@ -112,8 +118,8 @@ void	phx::app::base::init() {
 
 	// character controller manager
 	/** @todo fix cooking signature */
-	//px_character_controller_manager_ = ::PxCreateControllerManager( *px_foundation_ );
-	assert( px_character_controller_manager_ );
+/*	px_character_controller_manager_ = ::PxCreateControllerManager( *px_foundation_ );
+	assert( px_character_controller_manager_ );*/
 
 	// vehicle
 	assert( PxInitVehicleSDK(*px_physics_) );

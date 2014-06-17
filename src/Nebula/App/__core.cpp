@@ -1,6 +1,6 @@
 #include <Nebula/App/__core.hpp>
 
-void		neb::App::__core::init() {
-	neb::App::__base::init();
+void		neb::app::__core::init() {
+	neb::app::__base::init();
 }
 
