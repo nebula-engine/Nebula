@@ -24,14 +24,10 @@ void		phx::core::actor::actor::base::init() {
 
 	phx::core::actor::base::init();
 }
-void		phx::core::actor::actor::base::set_pose(mat4 pose) {
+void		phx::core::actor::actor::base::set_pose(neb::core::pose const & pose) {
 	//NEBULA_ACTOR_BASE_FUNC;
 
 	phx::core::actor::base::setPose(pose);
-}
-int		phx::core::actor::actor::base::fire() {
-	//NEBULA_ACTOR_BASE_FUNC;
-	return phx::core::actor::base::fire();
 }
 void		phx::core::actor::actor::base::step(neb::core::TimeStep const & ts) {
 }

@@ -109,17 +109,17 @@ sp::shared_ptr<neb::app::base>		neb::app::base::global() {
 void		neb::app::base::step(neb::core::TimeStep const & ts) {
 	//NEBULA_DEBUG_1_FUNCTION;
 
-	neb::scene::util::parent::step(ts);
+	neb::core::scene::util::parent::step(ts);
 
 	neb::gfx::window::util::parent::step(ts);
 
 
 }
-mat4			neb::app::base::getPose() {
-	return mat4();
+neb::core::pose			neb::app::base::getPose() {
+	return neb::core::pose();
 }
-mat4			neb::app::base::getPoseGlobal() {
-	return mat4();
+neb::core::pose			neb::app::base::getPoseGlobal() {
+	return neb::core::pose();
 }
 int			neb::app::base::loop() {
 	//NEBULA_DEBUG_1_FUNCTION;
@@ -148,10 +148,10 @@ void		neb::app::base::transmit_scenes(sp::shared_ptr<neb::Network::Communicating
 
 	assert(c);
 
-	typedef neb::scene::util::parent S;
+	typedef neb::core::scene::util::parent S;
 
 	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
-			auto scene = sp::dynamic_pointer_cast<neb::scene::base>(it->ptr_);
+			auto scene = sp::dynamic_pointer_cast<neb::core::scene::base>(it->ptr_);
 			assert(scene);
 
 			auto msg = sp::make_shared<gal::net::omessage>();

@@ -11,7 +11,6 @@ namespace rigiddynamic {
 				virtual public neb::core::actor::rigidbody::base
 			{
 				public:
-					base();
 					base(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
 					virtual void				init();

@@ -3,6 +3,8 @@
 
 #include <Nebula/Actor/Util/Parent.hh>
 
+#include <PhysX/core/actor/util/cast.hpp>
+#include <PhysX/core/scene/util/cast.hpp>
 #include <PhysX/core/scene/util/decl.hpp>
 
 namespace phx { namespace core { namespace actor { namespace util {
@@ -13,11 +15,13 @@ namespace phx { namespace core { namespace actor { namespace util {
 	 * abstract class for parent of a %phx %actor
 	 */
 	class parent:
-		virtual public neb::core::actor::util::parent
+		virtual public neb::core::actor::util::parent,
+		virtual public phx::core::scene::util::cast,
+		virtual public phx::core::actor::util::cast
 	{
 		public:
 			parent();
-			virtual ~parent() {}
+			virtual ~parent();
 
 			virtual void						init();
 		public:

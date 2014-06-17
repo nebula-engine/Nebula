@@ -21,29 +21,30 @@
 
 #include <Nebula/Core/Pose.hh>
 
-namespace neb { namespace core {
-	namespace actor {
-		namespace util {
-			/** @brief @Parent
-			 * abstract class for parent of an @Actor
-			 */
-			class parent:
-				public neb::util::parent<neb::actor::__base>,
-				virtual public neb::core::Pose,
-				virtual public neb::scene::util::cast,
-				virtual public neb::core::actor::util::cast
-			{
-				public:
-					parent();
-					virtual ~parent() {}
+namespace neb { namespace core { namespace actor { namespace util {
 
-					virtual void				init();
-				public:
-					sp::shared_ptr<neb::scene::base>			getScene();
-			};
-		}
-	}
-}}
+
+	/** @brief @Parent
+	 * abstract class for parent of an @Actor
+	 */
+	class parent:
+		public neb::util::parent<neb::actor::__base>,
+		virtual public neb::core::Pose,
+		virtual public neb::core::scene::util::cast,
+		virtual public neb::core::actor::util::cast
+	{
+		public:
+			parent();
+			virtual ~parent();
+
+			virtual void						init();
+		public:
+			sp::shared_ptr<neb::core::scene::base>			getScene();
+	};
+
+
+
+}}}}
 
 #endif
 

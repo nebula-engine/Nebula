@@ -10,8 +10,8 @@
 
 
 
-phx::core::scene::base::base(sp::shared_ptr< ::neb::scene::util::parent > parent):
-	neb::scene::base(parent),
+phx::core::scene::base::base(sp::shared_ptr< ::neb::core::scene::util::parent > parent):
+	neb::core::scene::base(parent),
 	px_scene_(NULL)
 {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
@@ -24,7 +24,7 @@ void			phx::core::scene::base::init() {
 	
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 	
-	neb::scene::base::init();
+	neb::core::scene::base::init();
 	
 	create_physics();
 }

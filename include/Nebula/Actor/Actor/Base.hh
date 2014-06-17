@@ -15,7 +15,7 @@ namespace neb { namespace core { namespace actor {
 				virtual void			release();
 				virtual void			step(neb::core::TimeStep const & ts);
 
-				virtual void			set_pose(mat4);
+				virtual void			setPose(neb::core::pose const & pose);
 		};
 	}
 }}}

@@ -42,6 +42,11 @@ void			phx::core::actor::base::init() {
 	create_physics();
 	init_physics();
 }
+sp::shared_ptr<phx::core::actor::util::parent>		phx::core::actor::base::getPxParent() {
+	auto parent(phx::core::actor::base::parent_.lock());
+	assert(parent);
+	return parent;
+}
 int			phx::core::actor::base::fire() {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;

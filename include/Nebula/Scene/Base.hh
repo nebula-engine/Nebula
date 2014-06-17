@@ -29,60 +29,63 @@
 
 #define LIGHT_MAX 20
 
-namespace neb {
-	namespace scene {
-		/** 
-		 * @ingroup group_core
-		 * @brief Base
-		 */
-		class base:
-			virtual public neb::gfx::drawable::base,
-			virtual public neb::core::actor::util::parent
-		{
-			public:
-				base(sp::shared_ptr<neb::scene::util::parent>);
-				virtual ~base();
-				virtual void				init();
-				virtual void				release();
-				/** @name Main Loop @{ */
-				/** @brief render */
+namespace neb { namespace core { namespace scene {
 
-				void				draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p);
-				void				resize(int w, int h);
-				virtual void			step(neb::core::TimeStep const & ts);
-				/** @} */
 
-				virtual  void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
-					ar & boost::serialization::make_nvp("i",i_);
-					ar & boost::serialization::make_nvp("flag",flag_);
-				}
-				virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
-					ar & boost::serialization::make_nvp("i",i_);
-					ar & boost::serialization::make_nvp("flag",flag_);
-				}
-			public:
-				/** @name Accessors @{ */
-				mat4						getPose();
-				mat4						getPoseGlobal();
-				/** @} */
-			public:
-				void							add_deferred(sp::shared_ptr<neb::core::actor::base>);
-			public:
-				/** @brief parent
-				 *
-				 * @note WEAK
-				 */
-				sp::shared_ptr<neb::scene::util::parent>		parent_;
+	/** 
+	 * @ingroup group_core
+	 * @brief Base
+	 */
+	class base:
+		virtual public neb::gfx::drawable::base,
+		virtual public neb::core::actor::util::parent
+	{
+		public:
+			base(sp::shared_ptr<neb::core::scene::util::parent>);
+			virtual ~base();
+			virtual void				init();
+			virtual void				release();
+			/** @name Main Loop @{ */
+			/** @brief render */
 
-			public:
-				neb::scene::util::Flag					flag_;
+			void				draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p);
+			void				resize(int w, int h);
+			virtual void			step(neb::core::TimeStep const & ts);
+			/** @} */
 
-				::std::map< ::std::string, sp::shared_ptr<neb::core::actor::base> >		actors_deferred_;
+			virtual  void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
+				ar & boost::serialization::make_nvp("i",i_);
+				ar & boost::serialization::make_nvp("flag",flag_);
+			}
+			virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
+				ar & boost::serialization::make_nvp("i",i_);
+				ar & boost::serialization::make_nvp("flag",flag_);
+			}
+		public:
+			/** @name Accessors @{ */
+			neb::core::pose						getPose();
+			neb::core::pose						getPoseGlobal();
+			/** @} */
+		public:
+			void							add_deferred(sp::shared_ptr<neb::core::actor::base>);
+		public:
+			/** @brief parent
+			 *
+			 * @note WEAK
+			 */
+			sp::shared_ptr<neb::core::scene::util::parent>		parent_;
 
-				float		last_;
-		};
-	}
-}
+		public:
+			neb::core::scene::util::Flag					flag_;
+
+			::std::map< ::std::string, sp::shared_ptr<neb::core::actor::base> >		actors_deferred_;
+
+			float		last_;
+	};
+
+
+
+}}}
 
 #endif
 

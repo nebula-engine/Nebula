@@ -5,7 +5,7 @@
 
 neb::message::scene::Create::Create() {
 }
-void neb::message::scene::Create::load(sp::shared_ptr<neb::scene::base> scene) {
+void neb::message::scene::Create::load(sp::shared_ptr<neb::core::scene::base> scene) {
 	scene_.ptr_ = scene;
 }
 
