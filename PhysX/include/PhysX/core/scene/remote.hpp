@@ -26,7 +26,7 @@
 namespace phx { namespace core { namespace scene {
 
 	class remote:
-		virtual public neb::scene::Remote,
+		virtual public neb::core::scene::Remote,
 		virtual public ::phx::core::scene::base
 	{
 		void				step(neb::core::TimeStep const & ts);

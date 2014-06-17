@@ -12,14 +12,24 @@
 #include <PhysX/core/scene/local.hpp>
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
 
-phx::core::scene::local::local(sp::shared_ptr<neb::scene::util::parent> parent):
-	neb::scene::base(parent),
-	neb::scene::local(parent),
+phx::core::scene::local::local(sp::shared_ptr<neb::core::scene::util::parent> parent):
+	neb::core::scene::base(parent),
+	neb::core::scene::local(parent),
 	phx::core::scene::base(parent)
 {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 }
+void			phx::core::scene::local::init() {
+	neb::core::scene::local::init();
+	phx::core::scene::base::init();
+}
+void			phx::core::scene::local::release() {
+	neb::core::scene::local::release();
+	phx::core::scene::base::release();
+}
 void			phx::core::scene::local::step(neb::core::TimeStep const & ts) {
+	neb::core::scene::local::step(ts);
+	phx::core::scene::base::step(ts);
 
 	auto app = neb::app::base::global();
 
@@ -63,7 +73,10 @@ void			phx::core::scene::local::step(neb::core::TimeStep const & ts) {
 
 		if(actor) {
 			pose = active_transforms[i].actor2World;
-			actor->setPose(phx::util::convert(pose));
+			actor->setPose(neb::core::pose(
+						phx::util::convert(pose.q),
+						vec4(phx::util::convert(pose.p),1)
+						));
 
 			if(pxrigidbody != NULL) {
 				auto rigidbody = isActorRigidBody();

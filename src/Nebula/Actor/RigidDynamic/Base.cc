@@ -4,6 +4,7 @@
 
 //neb::core::actor::rigiddynamic::base::base() {
 //}
+
 neb::core::actor::rigiddynamic::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
 	neb::core::actor::actor::base(parent),

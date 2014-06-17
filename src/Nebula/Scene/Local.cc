@@ -4,14 +4,14 @@
 #include <Nebula/Actor/RigidBody/Base.hh>
 #include <Nebula/timer/Actor/Release.hpp>
 
-neb::scene::local::local(sp::shared_ptr<neb::scene::util::parent> parent):
-	neb::scene::base(parent)
+neb::core::scene::local::local(sp::shared_ptr<neb::core::scene::util::parent> parent):
+	neb::core::scene::base(parent)
 {
 }
-void		neb::scene::local::step(neb::core::TimeStep const & ts) {
-	neb::scene::base::step(ts);
+void		neb::core::scene::local::step(neb::core::TimeStep const & ts) {
+	neb::core::scene::base::step(ts);
 }
-void neb::scene::local::send_actor_update() {
+void neb::core::scene::local::send_actor_update() {
 	//printf("DEBUG: message ACTOR_UPDATE sent\n");
 
 

@@ -4,7 +4,7 @@
 //#include <Nebula/Physics.hh>
 
 #include <PhysX/app/base.hpp>
-#include <PhysX/core/scene/Base.hh>
+#include <PhysX/core/scene/base.hpp>
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/rigiddynamic/base.hpp>
 #include <PhysX/core/actor/rigiddynamic/base.hpp>
@@ -38,9 +38,12 @@ void			phx::core::actor::rigiddynamic::base::create_physics() {
 	assert(px_actor_ == NULL);
 
 	auto scene = sp::dynamic_pointer_cast<phx::core::scene::base>(getScene());
-	
-	
-	physx::PxTransform pose(phx::util::convert(getPose()));
+
+	auto p(getPose());	
+	physx::PxTransform pose(
+			phx::util::convert(vec3(p.pos_)),
+			phx::util::convert(p.rot_)
+			);
 	
 	
 	// PxActor

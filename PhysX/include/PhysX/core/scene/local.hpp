@@ -28,11 +28,11 @@ namespace phx { namespace core { namespace scene {
 
 
 	class local:
-		virtual public neb::scene::local,
+		virtual public neb::core::scene::local,
 		virtual public phx::core::scene::base
 	{
 		public:
-			local(sp::shared_ptr<neb::scene::util::parent> parent);
+			local(sp::shared_ptr<neb::core::scene::util::parent> parent);
 			virtual void			init();
 			virtual void			release();
 			virtual void			step(::neb::core::TimeStep const & ts);

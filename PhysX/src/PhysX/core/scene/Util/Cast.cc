@@ -1,7 +1,8 @@
-#include <Nebula/Scene/Util/Cast.hh>
-#include <Nebula/Scene/Base.hh>
 
-sp::shared_ptr<neb::scene::base>              neb::scene::util::cast::isSceneBase() {
-        return sp::dynamic_pointer_cast<neb::scene::base>(shared_from_this());
+#include <PhysX/core/scene/util/cast.hpp>
+#include <PhysX/core/scene/base.hpp>
+
+sp::shared_ptr<phx::core::scene::base>		phx::core::scene::util::cast::isPxSceneBase() {
+        return sp::dynamic_pointer_cast<phx::core::scene::base>(shared_from_this());
 }
 
