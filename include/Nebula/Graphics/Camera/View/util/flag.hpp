@@ -14,6 +14,8 @@ namespace neb { namespace gfx { namespace camera { namespace view { namespace ut
 			((UP)		(1 << 5))
 			((YAW_POS)	(1 << 6))
 			((YAW_NEG)	(1 << 7))
+			((PITCH_POS)	(1 << 8))
+			((PITCH_NEG)	(1 << 9))
 		   )
 
 
