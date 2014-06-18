@@ -13,11 +13,13 @@ include_directories("/usr/include/freetype2")
 include_directories("./Galaxy-Standard/include")
 include_directories("./Galaxy-Network/include")
 include_directories("./Galaxy-Log/include")
-include_directories(${physx_INCLUDE_DIR})
+include_directories("./maze/include")
+#include_directories(${physx_INCLUDE_DIR})
 
 link_directories("./Galaxy-Network/build")
 link_directories("./Galaxy-Standard/build")
 link_directories("./Galaxy-Log/Debug")
+link_directories("./maze/Debug")
 
 ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
 

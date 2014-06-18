@@ -12,7 +12,7 @@
 #include <Nebula/Shape/Box.hh>
 #include <Nebula/Shape/empty.hpp>
 #include <Nebula/Actor/RigidDynamic/Local.hh>
-
+#include <Nebula/game/map/base.hpp>
 
 sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
 
@@ -43,7 +43,6 @@ sp::shared_ptr<neb::gfx::context::window>		create_context_three(sp::shared_ptr<n
 	environ->init();
 
 	context->environ_ = environ;
-
 
 
 
@@ -191,7 +190,48 @@ sp::shared_ptr<neb::core::scene::local>			create_scene(
 
 	return scene;
 }
+sp::shared_ptr<neb::game::map::base>			create_map(
+		sp::shared_ptr<neb::gfx::context::window> context) {
+	
+	auto app = neb::app::base::global();
+	
+	auto map = sp::make_shared<neb::game::map::base>(app);
+	
+	app->neb::core::scene::util::parent::insert(map);
+	
+	map->init();
+	
+	// actors
+	auto actor = create_actor(map);
+	actor->pose_.pos_ += vec4(0,0,-5,0);
+	
+	actor = create_actor(map);
+	actor->pose_.pos_ += vec4(0,0,5,0);
+	
+	actor = create_actor(map);
+	actor->pose_.pos_ += vec4(0,-5,0,0);
 
+	actor = create_actor(map);
+	actor->pose_.pos_ += vec4(0,5,0,0);
+
+	actor = create_actor(map);
+	actor->pose_.pos_ += vec4(-5,0,0,0);
+
+	actor = create_actor(map);
+	actor->pose_.pos_ += vec4(5,0,0,0);
+
+
+
+	auto actor2 = create_actor2(map);
+
+
+
+
+	
+	context->environ_->drawable_ = map;
+
+	return map;
+}
 int main() {
 
 	neb::init();
@@ -215,7 +255,8 @@ int main() {
 
 	
 
-	auto scene = create_scene(context1);
+	//auto scene = create_scene(context1);
+	auto map = create_map(context1);
 
 
 	auto layout = create_layout(window, context2);
