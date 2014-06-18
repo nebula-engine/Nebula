@@ -25,7 +25,7 @@ void		neb::ext::maze::game::map::maze2::init() {
 	jess::maze::dfs2 m(desc);
 	m.run();
 	
-	real width = 1.0;
+	real width = 3.0;
 	
 	auto lambda = [&] (vec2 v) {
 		auto actor = neb::core::actor::util::parent::cii<neb::core::actor::rigidstatic::local, sp::shared_ptr<neb::core::scene::local>>(self);
