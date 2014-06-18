@@ -31,13 +31,13 @@ namespace phx { namespace core { namespace actor { namespace actor {
 			virtual void					init_physics() = 0;
 
 			virtual void					add_force(real) = 0;
-			virtual void					set_pose(mat4);
+			//virtual void					set_pose(mat4);
 
 			/** @brief projectile
 			 *
 			 * @note required because of diamond inheritance
 			 */
-			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile();
+			//virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile();
 
 			physx::PxActor*					px_actor_;
 
