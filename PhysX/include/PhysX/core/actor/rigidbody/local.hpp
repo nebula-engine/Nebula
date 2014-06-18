@@ -19,7 +19,7 @@ namespace phx { namespace core { namespace actor { namespace rigidbody {
 		virtual public phx::core::actor::rigidbody::base
 	{
 		public:
-			local(sp::shared_ptr<neb::core::actor::util::parent>);
+			local(sp::shared_ptr<phx::core::actor::util::parent>);
 
 			virtual void					init();
 			virtual void					release();
@@ -32,8 +32,7 @@ namespace phx { namespace core { namespace actor { namespace rigidbody {
 			virtual void					add_force(real) = 0;
 			virtual void					set_pose(physx::PxTransform);
 			
-			virtual int					fire();
-						/** @brief projectile
+			/** @brief projectile
 			 *
 			 * @note required because of diamond inheritance
 			 */
