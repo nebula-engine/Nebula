@@ -22,7 +22,9 @@ neb::gfx::Camera::View::Free::Free(sp::shared_ptr<neb::gfx::environ::base> paren
 	key_u_(GLFW_KEY_I),
 	key_d_(GLFW_KEY_K),
 	key_yaw_pos_(GLFW_KEY_A),
-	key_yaw_neg_(GLFW_KEY_D)
+	key_yaw_neg_(GLFW_KEY_D),
+	key_pitch_pos_(GLFW_KEY_W),
+	key_pitch_neg_(GLFW_KEY_S)
 {
 
 	float s = 1;
@@ -182,6 +184,9 @@ int			neb::gfx::Camera::View::Free::key_fun(
 			flag_.set(neb::gfx::camera::view::util::flag::YAW_NEG);
 			return 1;
 		}
+		if(key == key_pitch_pos_)	{ flag_.set(neb::gfx::camera::view::util::flag::PITCH_POS); return 1; }
+		if(key == key_pitch_neg_)	{ flag_.set(neb::gfx::camera::view::util::flag::PITCH_NEG); return 1; }
+
 	} else if(action == GLFW_RELEASE) {
 		if(key == key_w_) {
 			flag_.unset(neb::gfx::camera::view::util::flag::WEST);
@@ -207,14 +212,10 @@ int			neb::gfx::Camera::View::Free::key_fun(
 			flag_.unset(neb::gfx::camera::view::util::flag::UP);
 			return 1;
 		}
-		if(key == key_yaw_pos_) {
-			flag_.unset(neb::gfx::camera::view::util::flag::YAW_POS);
-			return 1;
-		}
-		if(key == key_yaw_neg_) {
-			flag_.unset(neb::gfx::camera::view::util::flag::YAW_NEG);
-			return 1;
-		}
+		if(key == key_yaw_pos_)		{ flag_.unset(neb::gfx::camera::view::util::flag::YAW_POS); return 1; }
+		if(key == key_yaw_neg_)		{ flag_.unset(neb::gfx::camera::view::util::flag::YAW_NEG); return 1; }
+		if(key == key_pitch_pos_)	{ flag_.unset(neb::gfx::camera::view::util::flag::PITCH_POS); return 1; }
+		if(key == key_pitch_neg_)	{ flag_.unset(neb::gfx::camera::view::util::flag::PITCH_NEG); return 1; }
 	}
 
 
@@ -249,7 +250,7 @@ void			neb::gfx::Camera::View::Free::step(neb::core::TimeStep const & ts) {
 	
 	//yaw *= (d > 0) ? 1.0 : -1.0;
 	
-	// determine yaw rate
+	// determine yaw rate and update yaw
 	long unsigned int f = flag_.val_ & (
 			neb::gfx::camera::view::util::flag::YAW_POS |
 			neb::gfx::camera::view::util::flag::YAW_NEG);
@@ -261,6 +262,19 @@ void			neb::gfx::Camera::View::Free::step(neb::core::TimeStep const & ts) {
 	}
 	if(f == neb::gfx::camera::view::util::flag::YAW_NEG) {
 		yaw_ += ts.dt * rate;
+	}
+	
+	// determine pitch rate and update pitch
+	f = flag_.val_ & (
+			neb::gfx::camera::view::util::flag::PITCH_POS |
+			neb::gfx::camera::view::util::flag::PITCH_NEG);
+	
+	
+	if(f == neb::gfx::camera::view::util::flag::PITCH_POS) {
+		pitch_ -= ts.dt * rate;
+	}
+	if(f == neb::gfx::camera::view::util::flag::PITCH_NEG) {
+		pitch_ += ts.dt * rate;
 	}
 	
 	printf("yaw_ = %f\n",yaw_);
@@ -318,13 +332,18 @@ vec3			neb::gfx::Camera::View::Free::move() {
 mat4		neb::gfx::Camera::View::Free::view() {
 	printf("%s\n", __FUNCTION__);
 
+	vec3 x(1,0,0);
 	vec3 up(0,1,0);
 	vec3 look(0,0,-1);
-
-
-	quat rot = glm::angleAxis(yaw_, vec3(0,1,0));
-
-	rot = rot * quat( pitch_ , vec3(1,0,0) );
+	
+	
+	
+	quat rot = glm::angleAxis(yaw_, up);
+	
+	vec3 xp = rot * x;
+	
+	//rot = rot * glm::angleAxis(pitch_ , xp);
+	rot = glm::angleAxis(pitch_ , xp) * rot;
 
 	up = rot * up;
 	look = rot * look;
