@@ -3,9 +3,9 @@
 
 phx::core::actor::actor::local::local(sp::shared_ptr<phx::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
-	neb::core::actor::local(parent),
 	neb::core::actor::actor::base(parent),
-	neb::core::actor::actor::local(parent)
+	neb::core::actor::local(parent),
+	neb::core::actor::actor::local(parent),
 	phx::core::actor::base(parent),
 	phx::core::actor::local(parent),
 	phx::core::actor::actor::base(parent)

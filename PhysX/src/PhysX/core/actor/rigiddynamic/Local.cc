@@ -24,8 +24,19 @@ phx::core::actor::rigiddynamic::local::local(sp::shared_ptr<phx::core::actor::ut
 {
 }
 void				phx::core::actor::rigiddynamic::local::init() {
+	neb::core::actor::rigiddynamic::local::init();
+	phx::core::actor::rigidbody::local::init();
+	phx::core::actor::rigiddynamic::base::init();
+}
+void				phx::core::actor::rigiddynamic::local::release() {
+	neb::core::actor::rigiddynamic::local::release();
+	phx::core::actor::rigidbody::local::release();
+	phx::core::actor::rigiddynamic::base::release();
 }
 void				phx::core::actor::rigiddynamic::local::step(neb::core::TimeStep const & ts) {
+	neb::core::actor::rigiddynamic::local::step(ts);
+	phx::core::actor::rigidbody::local::step(ts);
+	phx::core::actor::rigiddynamic::base::step(ts);
 }
 /*sp::shared_ptr<phx::core::actor::rigiddynamic::base>		phx::core::actor::rigiddynamic::local::get_projectile() {
 	return phx::core::actor::base_s();
@@ -36,5 +47,7 @@ void				phx::core::actor::rigiddynamic::local::create_physics() {
 }
 void				phx::core::actor::rigiddynamic::local::init_physics() {
 }
-
+void				phx::core::actor::rigiddynamic::local::setPose(neb::core::pose const & pose) {
+	
+}
 
