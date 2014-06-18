@@ -14,6 +14,8 @@
 #include <Nebula/Actor/RigidDynamic/Local.hh>
 #include <Nebula/game/map/base.hpp>
 #include <Nebula/ext/maze/game/map/maze2.hpp>
+#include <Nebula/Util/command.hpp>
+#include <Nebula/Util/command_set.hpp>
 
 sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
 
@@ -228,18 +230,13 @@ sp::shared_ptr<neb::game::map::base>			create_maze(
 	
 	auto app = neb::app::base::global();
 	
-	auto map = sp::make_shared<neb::ext::maze::game::map::maze2>(app, ivec2(5,5));
+	auto map = sp::make_shared<neb::ext::maze::game::map::maze2>(app, ivec2(15,15));
 	
 	app->neb::core::scene::util::parent::insert(map);
 	
 	map->init();
 
-
 	auto actor2 = create_actor2(map);
-
-
-
-
 	
 	context->environ_->drawable_ = map;
 
@@ -265,7 +262,16 @@ int main() {
 	// drawable
 	// scene
 	
+	
 
+	// command
+	auto cmd_create_scene = sp::make_shared<neb::util::command>();
+
+	cmd_create_scene->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
+		(*term) << "creating scene...";
+	};
+
+	app->command_set_->map_["createscene"] = cmd_create_scene;
 	
 
 	//auto scene = create_scene(context1);
