@@ -263,20 +263,38 @@ int main() {
 	// scene
 	
 	
+	sp::shared_ptr<neb::game::map::base> map;
 
 	// command
+	// create scene
 	auto cmd_create_scene = sp::make_shared<neb::util::command>();
 
 	cmd_create_scene->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
 		(*term) << "creating scene...";
+		map = create_maze(context1);
 	};
-
-	app->command_set_->map_["createscene"] = cmd_create_scene;
 	
-
+	app->command_set_->map_["sc"] = cmd_create_scene;
+	
+	// destroy scene
+	auto cmd_destroy_scene = sp::make_shared<neb::util::command>();
+	
+	cmd_destroy_scene->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
+		(*term) << "destroying scene...";
+		if(map) {
+			map->parent_->erase(map->i_);
+			map.reset();
+		}
+		std::stringstream ss;
+		ss << "use count " << map.use_count();
+		(*term) << ss.str();
+	};
+	
+	app->command_set_->map_["sd"] = cmd_destroy_scene;
+	
 	//auto scene = create_scene(context1);
 	//auto map = create_map(context1);
-	auto map = create_maze(context1);
+	//auto map = create_maze(context1);
 
 
 	auto layout = create_layout(window, context2);
