@@ -14,6 +14,7 @@ include_directories("./Galaxy-Standard/include")
 include_directories("./Galaxy-Network/include")
 include_directories("./Galaxy-Log/include")
 include_directories("./maze/include")
+include_directories("./glm")
 #include_directories(${physx_INCLUDE_DIR})
 
 link_directories("./Galaxy-Network/build")
