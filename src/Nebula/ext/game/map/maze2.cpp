@@ -1,11 +1,14 @@
 #include <maze/dfs.hpp>
 
+#include <Nebula/Shape/Box.hh>
+#include <Nebula/Actor/RigidStatic/local.hpp>
 #include <Nebula/ext/maze/game/map/maze2.hpp>
 
 neb::ext::maze::game::map::maze2::maze2(
 		sp::shared_ptr<neb::core::scene::util::parent> parent,
 		ivec2 size):
 	neb::core::scene::base(parent),
+	neb::core::scene::local(parent),
 	neb::game::map::base(parent),
 	size_(size)
 {
@@ -13,17 +16,19 @@ neb::ext::maze::game::map::maze2::maze2(
 }
 void		neb::ext::maze::game::map::maze2::init() {
 	
+	auto self(sp::dynamic_pointer_cast<neb::ext::maze::game::map::maze2>(shared_from_this()));
+
 	neb::game::map::base::init();
 	
-
+	
 	jess::maze::description2 desc(size_);
 	jess::maze::dfs2 m(desc);
 	m.run();
-
+	
 	real width = 1.0;
-
+	
 	auto lambda = [&] (vec2 v) {
-		auto actor = scene->cii<neb::core::actor::rigidstatic::local, sp::shared_ptr<neb::core::scene::local>>(scene);
+		auto actor = neb::core::actor::util::parent::cii<neb::core::actor::rigidstatic::local, sp::shared_ptr<neb::core::scene::local>>(self);
 		
 		auto shape = sp::make_shared<neb::core::shape::Box>(actor);
 		
@@ -33,7 +38,7 @@ void		neb::ext::maze::game::map::maze2::init() {
 		
 		shape->init();
 		
-		actor->pose_.pos_ = vec3(v.x,v.y,0);
+		actor->pose_.pos_ = vec4(v.x,0,v.y,0);
 	};
 
 	for(int i = 0; i < desc.size_.x; ++i) {
