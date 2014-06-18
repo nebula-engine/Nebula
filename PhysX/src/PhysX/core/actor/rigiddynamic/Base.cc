@@ -32,6 +32,20 @@ void			phx::core::actor::rigiddynamic::base::init() {
 	auto pxrd = px_actor_->isRigidDynamic();
 	pxrd->setLinearDamping(0.01);
 }
+void			phx::core::actor::rigiddynamic::base::release() {
+	NEBULA_ACTOR_BASE_FUNC;
+	
+	phx::core::actor::rigidbody::base::release();
+	neb::core::actor::rigiddynamic::base::release();
+	
+}
+void			phx::core::actor::rigiddynamic::base::step(neb::core::TimeStep const & ts) {
+	NEBULA_ACTOR_BASE_FUNC;
+	
+	phx::core::actor::rigidbody::base::step(ts);
+	neb::core::actor::rigiddynamic::base::step(ts);
+	
+}
 void			phx::core::actor::rigiddynamic::base::create_physics() {
 	NEBULA_ACTOR_BASE_FUNC;
 
