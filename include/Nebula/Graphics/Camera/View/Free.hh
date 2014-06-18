@@ -63,16 +63,8 @@ namespace neb {
 						int						key_d_;
 						int						key_yaw_pos_;
 						int						key_yaw_neg_;
-
-
-
-						//						vec3						v0_;
-						//						vec3						v1_;
-
-						//std::vector<gal::sig::connection<>*>		vec_x_;
-						//std::vector<gal::sig::connection<>*>		vec_y_;
-						//std::vector<gal::sig::connection<>*>		vec_z_;
-
+						int						key_pitch_pos_;
+						int						key_pitch_neg_;
 
 
 						::std::map<int,unsigned int>			key_flag_;
