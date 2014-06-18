@@ -30,7 +30,7 @@ namespace phx { namespace core { namespace actor { namespace rigidbody {
 			virtual void					init_physics() = 0;
 			
 			virtual void					add_force(real) = 0;
-			virtual void					set_pose(physx::PxTransform);
+			//virtual void					set_pose(physx::PxTransform);
 			
 			/** @brief projectile
 			 *
