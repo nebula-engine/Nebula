@@ -13,6 +13,7 @@
 #include <Nebula/Shape/empty.hpp>
 #include <Nebula/Actor/RigidDynamic/Local.hh>
 #include <Nebula/game/map/base.hpp>
+#include <Nebula/ext/maze/game/map/maze2.hpp>
 
 sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
 
@@ -86,17 +87,7 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 }
 sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor(sp::shared_ptr<neb::core::scene::local> scene) {
 
-	/*
-	auto actor = sp::make_shared<neb::core::actor::rigiddynamic::local>(scene);
-	
-	scene->insert(actor);
-
-	actor->init();
-	*/
-
 	auto actor = scene->cii<neb::core::actor::rigiddynamic::local, sp::shared_ptr<neb::core::scene::local>>(scene);
-
-
 
 	// shape	
 	auto shape = sp::make_shared<neb::core::shape::Box>(actor);
@@ -232,6 +223,28 @@ sp::shared_ptr<neb::game::map::base>			create_map(
 
 	return map;
 }
+sp::shared_ptr<neb::game::map::base>			create_maze(
+		sp::shared_ptr<neb::gfx::context::window> context) {
+	
+	auto app = neb::app::base::global();
+	
+	auto map = sp::make_shared<neb::ext::maze::game::map::maze2>(app, ivec2(5,5));
+	
+	app->neb::core::scene::util::parent::insert(map);
+	
+	map->init();
+
+
+	auto actor2 = create_actor2(map);
+
+
+
+
+	
+	context->environ_->drawable_ = map;
+
+	return map;
+}
 int main() {
 
 	neb::init();
@@ -256,7 +269,8 @@ int main() {
 	
 
 	//auto scene = create_scene(context1);
-	auto map = create_map(context1);
+	//auto map = create_map(context1);
+	auto map = create_maze(context1);
 
 
 	auto layout = create_layout(window, context2);

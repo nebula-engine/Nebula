@@ -33,6 +33,7 @@ FIND_PACKAGE(Boost 1.55 COMPONENTS program_options serialization log system thre
 
 SET(libs ${libs}
 	${PROJECT_NAME}
+	maze
 	Galaxy-Standard
 	Galaxy-Network
 	Galaxy-Log
