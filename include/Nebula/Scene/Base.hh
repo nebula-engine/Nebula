@@ -62,10 +62,8 @@ namespace neb { namespace core { namespace scene {
 				ar & boost::serialization::make_nvp("flag",flag_);
 			}
 		public:
-			/** @name Accessors @{ */
 			neb::core::pose						getPose();
 			neb::core::pose						getPoseGlobal();
-			/** @} */
 		public:
 			void							add_deferred(sp::shared_ptr<neb::core::actor::base>);
 		public:
