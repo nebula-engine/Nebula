@@ -1,7 +1,7 @@
 #ifndef NEBULA_EXT_MAZE_GAME_MAP_MAZE2_HPP
 #define NEBULA_EXT_MAZE_GAME_MAP_MAZE2_HPP
 
-#include <Nebula/game/map.hpp>
+#include <Nebula/game/map/base.hpp>
 
 namespace neb { namespace ext { namespace maze { namespace game { namespace map {
 
@@ -14,7 +14,7 @@ namespace neb { namespace ext { namespace maze { namespace game { namespace map 
 					ivec2 size);
 
 
-			virtual void		init() = 0;
+			virtual void		init();
 
 			ivec2			size_;
 	};
