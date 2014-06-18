@@ -61,6 +61,8 @@ namespace neb {
 						int						key_w_;
 						int						key_u_;
 						int						key_d_;
+						int						key_yaw_pos_;
+						int						key_yaw_neg_;
 
 
 
