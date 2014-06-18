@@ -42,6 +42,14 @@ void			phx::core::actor::base::init() {
 	create_physics();
 	init_physics();
 }
+void			phx::core::actor::base::release() {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	
+	neb::core::actor::base::release();
+}
+void			phx::core::actor::base::step(neb::core::TimeStep const & ts) {
+	neb::core::actor::base::step(ts);
+}
 sp::shared_ptr<phx::core::actor::util::parent>		phx::core::actor::base::getPxParent() {
 	auto parent(phx::core::actor::base::parent_.lock());
 	assert(parent);
