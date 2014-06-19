@@ -7,6 +7,7 @@
 #include <PhysX/core/actor/util/decl.hpp>
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/shape/util/parent.hpp>
+#include <PhysX/game/weapon/util/parent.hpp>
 
 namespace phx { namespace core { namespace actor {
 
@@ -14,6 +15,7 @@ namespace phx { namespace core { namespace actor {
 		virtual public neb::core::actor::base,
 		virtual public phx::core::actor::util::parent,
 		virtual public phx::core::shape::util::parent,
+		virtual public phx::game::weapon::util::parent,
 		virtual public phx::core::actor::util::cast
 	{
 		public:
@@ -30,12 +32,10 @@ namespace phx { namespace core { namespace actor {
 
 			void			hit();
 			void			damage(real);
-			int			fire();
 
 			
 			virtual void		create_physics() = 0;
 			virtual void		init_physics() = 0;
-			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile() = 0;
 		
 	
 			sp::shared_ptr<phx::core::actor::util::parent>				getPxParent();

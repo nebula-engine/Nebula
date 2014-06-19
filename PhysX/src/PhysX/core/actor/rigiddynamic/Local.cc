@@ -65,8 +65,5 @@ void				phx::core::actor::rigiddynamic::local::setPose(neb::core::pose const & p
 	phx::core::actor::rigiddynamic::base::setPose(pose);
 
 }
-sp::shared_ptr<phx::core::actor::rigiddynamic::local>		phx::core::actor::rigiddynamic::local::get_projectile() {
-	return phx::core::actor::rigidbody::base::get_projectile();
-}
 
 

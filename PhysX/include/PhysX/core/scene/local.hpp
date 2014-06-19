@@ -41,7 +41,6 @@ namespace phx { namespace core { namespace scene {
 			virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {}
 
 
-			virtual void			fire(sp::shared_ptr<phx::core::actor::base> actor);
 	};
 
 
