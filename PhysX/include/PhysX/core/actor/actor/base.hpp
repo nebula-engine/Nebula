@@ -30,15 +30,17 @@ namespace phx { namespace core { namespace actor { namespace actor {
 			virtual void					init_physics() = 0;
 
 			//virtual void					add_force(real) = 0;
-			virtual void					set_pose(neb::core::pose const & pose);
 			
+			virtual void					setPose(neb::core::pose const & pose);
 			
-			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile() = 0;
+		
+			
+			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile();
+		public:
 			
 			
 			physx::PxActor*					px_actor_;
 
-			//std::shared_ptr<neb::core::actor>		object_;
 	};
 
 

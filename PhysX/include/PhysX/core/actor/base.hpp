@@ -6,12 +6,14 @@
 #include <PhysX/core/actor/util/cast.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
 #include <PhysX/core/actor/util/parent.hpp>
+#include <PhysX/core/shape/util/parent.hpp>
 
 namespace phx { namespace core { namespace actor {
 
 	class base:
 		virtual public neb::core::actor::base,
 		virtual public phx::core::actor::util::parent,
+		virtual public phx::core::shape::util::parent,
 		virtual public phx::core::actor::util::cast
 	{
 		public:
