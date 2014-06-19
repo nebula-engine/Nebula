@@ -36,7 +36,13 @@ namespace phx { namespace core { namespace actor { namespace rigidactor {
 			virtual void					setGlobalPosition(vec3 p);
 
 
-
+			/** @name convenience functions
+			 * @{
+			 *
+			 * @ note typeof returned actor will be phx::core::shape::box
+			 */
+			virtual sp::weak_ptr<neb::core::shape::box>		createShapeBoxUninitialized();
+			/** @} */
 	};
 
 

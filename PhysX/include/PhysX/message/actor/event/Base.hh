@@ -58,8 +58,8 @@ namespace phx { namespace message { namespace actor { namespace event {
 		virtual public phx::message::actor::event::OBase,
 		virtual public phx::message::actor::event::Fire
 	{
-		virtual void		pre();
-		virtual void		post();
+		//virtual void		pre();
+		//virtual void		post();
 
 		virtual void		serialize(
 				boost::archive::polymorphic_oarchive & ar,

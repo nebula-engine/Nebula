@@ -11,6 +11,7 @@
 #include <Nebula/Scene/Base.hh>
 
 #include <PhysX/free.hpp>
+#include <PhysX/core/scene/util/parent.hpp>
 
 class DefaultErrorCallback:
 	public physx::PxErrorCallback
@@ -35,7 +36,10 @@ physx::PxFilterFlags DefaultFilterShader(
 namespace phx { namespace app {
 
 
-	class base: virtual public neb::app::base {
+	class base:
+		virtual public neb::app::base,
+		virtual public phx::core::scene::util::parent
+	{
 		public:
 			friend void phx::init();
 		public:

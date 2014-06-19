@@ -10,7 +10,9 @@ namespace neb { namespace core {
                 namespace util {
                         class cast: virtual public neb::std::shared {
                                 public:
-                                        sp::shared_ptr<neb::core::scene::base>              isSceneBase();
+                                        sp::shared_ptr<neb::core::scene::base>			isSceneBase();
+                                        sp::shared_ptr<neb::core::scene::local>			isSceneLocal();
+                                        sp::shared_ptr<neb::core::scene::remote>		isSceneRemote();
                         };
                 }
         }

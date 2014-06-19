@@ -13,6 +13,8 @@ namespace neb { namespace core {
 		}
 
 		class base;
+		class box;
+		class sphere;
 	}
 
 
