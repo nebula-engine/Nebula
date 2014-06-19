@@ -102,17 +102,21 @@ void	neb::gfx::Camera::View::Free::init() {
 }
 void			neb::gfx::Camera::View::Free::connect(sp::shared_ptr<neb::gfx::window::base> const & window) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", info) << __PRETTY_FUNCTION__;
-
+	
+	
+	
 	/*conns_.key_fun_ =*/ window->sig_.key_fun_.connect(
 			20,
-			::std::bind(&neb::gfx::Camera::View::Free::key_fun,
+			neb::Signals::KeyFun::slot_type(
+				&neb::gfx::Camera::View::Free::key_fun,
 				this,
-				::std::placeholders::_1,
-				::std::placeholders::_2,
-				::std::placeholders::_3,
-				::std::placeholders::_4,
-				::std::placeholders::_5
-				));
+				_1,
+				_2,
+				_3,
+				_4,
+				_5
+				).track_foreign(shared_from_this())
+			);
 
 	/*	conns_.mouse_button_fun_ = window->sig_.mouse_button_fun_.connect(
 		::std::bind(&neb::gfx::gui::layout::base::mouse_button_fun,

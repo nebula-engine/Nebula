@@ -13,7 +13,10 @@ void		neb::gfx::environ::three::init() {
 	auto self = sp::dynamic_pointer_cast<neb::gfx::environ::three>(shared_from_this());
 	
 	// camera
-	view_.reset(new neb::gfx::Camera::View::Free(self));
+	if(!view_) {
+		view_.reset(new neb::gfx::Camera::View::Free(self));
+	}
+
 	proj_.reset(new neb::gfx::Camera::Projection::Perspective(self));
 	//camera_->init(shared_from_this());
 	

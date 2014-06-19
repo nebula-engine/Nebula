@@ -1,5 +1,9 @@
+
+
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/matrix_inverse.hpp>
+
+#include <Galaxy-Log/log.hpp>
 
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Graphics/Camera/View/ridealong.hh>
@@ -9,6 +13,8 @@ neb::gfx::Camera::View::Ridealong::Ridealong(sp::shared_ptr<neb::gfx::environ::b
 {
 }
 mat4		neb::gfx::Camera::View::Ridealong::view() {
+
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
 
 	if(!actor_) return mat4();
 

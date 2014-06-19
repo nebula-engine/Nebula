@@ -12,8 +12,6 @@
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 #include <Nebula/Math/geo/polygon.hpp>
 
-neb::core::shape::base::base() {
-}
 neb::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
 	parent_(parent),
 	s_(1,1,1)

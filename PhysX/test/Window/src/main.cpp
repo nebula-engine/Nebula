@@ -9,13 +9,16 @@
 #include <Nebula/Graphics/GUI/Object/terminal.hh>
 #include <Nebula/Graphics/Light/Spot.hh>
 #include <Nebula/Scene/Local.hh>
-#include <Nebula/Shape/Box.hh>
 #include <Nebula/Shape/empty.hpp>
-#include <Nebula/Actor/RigidDynamic/Local.hh>
+#include <Nebula/Graphics/Camera/View/ridealong.hh>
+#include <Nebula/Actor/Empty/Empty.hpp>
 
 #include <PhysX/free.hpp>
 #include <PhysX/app/base.hpp>
 #include <PhysX/core/scene/local.hpp>
+#include <PhysX/core/shape/box.hpp>
+#include <PhysX/core/actor/rigiddynamic/local.hpp>
+#include <PhysX/core/actor/rigidstatic/local.hpp>
 
 sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
 
@@ -89,34 +92,35 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 
 	return layout;
 }
-sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor(sp::shared_ptr<neb::core::scene::local> scene) {
+sp::shared_ptr<phx::core::actor::rigidstatic::local>		create_actor_static(sp::shared_ptr<phx::core::scene::local> scene) {
 
-	/*
-	auto actor = sp::make_shared<neb::core::actor::rigiddynamic::local>(scene);
-	
-	scene->insert(actor);
-
-	actor->init();
-	*/
-
-	auto actor = scene->cii<neb::core::actor::rigiddynamic::local, sp::shared_ptr<neb::core::scene::local>>(scene);
-
-
+	auto actor = scene->cii<phx::core::actor::rigidstatic::local, sp::shared_ptr<phx::core::scene::local>>(scene);
 
 	// shape	
-	auto shape = sp::make_shared<neb::core::shape::Box>(actor);
-	
+	auto shape = sp::make_shared<phx::core::shape::box>(actor);
 	
 	actor->neb::core::shape::util::parent::insert(shape);
-	//actor->insert(shape);
-	
 	
 	shape->init();
 	
 	return actor;	
 }
-sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor2(sp::shared_ptr<neb::core::scene::local> scene) {
-	auto actor = sp::make_shared<neb::core::actor::rigiddynamic::local>(scene);
+sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::shared_ptr<phx::core::scene::local> scene) {
+
+	auto actor = scene->cii<phx::core::actor::rigiddynamic::local, sp::shared_ptr<phx::core::scene::local>>(scene);
+
+	// shape	
+	auto shape = sp::make_shared<phx::core::shape::box>(actor);
+	
+	actor->neb::core::shape::util::parent::insert(shape);
+	
+	shape->init();
+	
+	return actor;	
+}
+sp::shared_ptr<neb::core::actor::Empty>		create_actor2(sp::shared_ptr<phx::core::scene::local> scene) {
+
+	auto actor = sp::make_shared<neb::core::actor::Empty>(scene);
 	
 	scene->insert(actor);
 	
@@ -130,7 +134,7 @@ sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor2(sp::shared_
 	
 	shape->init();
 	*/
-	auto shape = actor->neb::core::shape::util::parent::cii< neb::core::shape::empty, sp::shared_ptr<neb::core::actor::rigiddynamic::local> >(actor);
+	auto shape = actor->neb::core::shape::util::parent::cii< neb::core::shape::empty, sp::shared_ptr<neb::core::actor::Empty> >(actor);
 	
 	// light
 	auto light = sp::make_shared<neb::Light::Point>(shape);
@@ -151,8 +155,10 @@ sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor2(sp::shared_
 
 	return actor;	
 }
-sp::shared_ptr<neb::core::scene::local>			create_scene(
-		sp::shared_ptr<neb::gfx::context::window> context) {
+sp::shared_ptr<phx::core::scene::local>			create_scene(
+		sp::shared_ptr<neb::gfx::window::base> window,
+		sp::shared_ptr<neb::gfx::context::window> context)
+{
 
 	std::cout << "4\n";
 
@@ -175,34 +181,46 @@ sp::shared_ptr<neb::core::scene::local>			create_scene(
 	std::cout << "8\n";
 
 	// actors
-	auto actor = create_actor(scene);
+	auto actor = create_actor_static(scene);
 	actor->pose_.pos_ += vec4(0,0,-5,0);
 	
-	actor = create_actor(scene);
+	actor = create_actor_static(scene);
 	actor->pose_.pos_ += vec4(0,0,5,0);
 	
-	actor = create_actor(scene);
+	actor = create_actor_static(scene);
 	actor->pose_.pos_ += vec4(0,-5,0,0);
 
-	actor = create_actor(scene);
+	actor = create_actor_static(scene);
 	actor->pose_.pos_ += vec4(0,5,0,0);
 
-	actor = create_actor(scene);
+	actor = create_actor_static(scene);
 	actor->pose_.pos_ += vec4(-5,0,0,0);
 
-	actor = create_actor(scene);
+	actor = create_actor_static(scene);
 	actor->pose_.pos_ += vec4(5,0,0,0);
 
 
-
+	auto actor3 = create_actor_dynamic(scene);
+	actor->pose_.pos_ += vec4(0,0,0,0);
+	
 	auto actor2 = create_actor2(scene);
-
-
-
 
 	
 	context->environ_->drawable_ = scene;
 
+	// connect actor
+	
+	actor3->create_control(window);
+
+	auto cam = sp::make_shared<neb::gfx::Camera::View::Ridealong>(context->environ_);
+
+	cam->actor_ = actor3;
+	
+	auto e3 = sp::dynamic_pointer_cast<neb::gfx::environ::three>(context->environ_);
+	assert(e3);
+
+	e3->view_ = cam;
+	
 	return scene;
 }
 
@@ -226,7 +244,7 @@ int			main() {
 	std::cout << "1\n";
 
 	// drawable
-	auto scene = create_scene(context1);
+	auto scene = create_scene(window, context1);
 
 	std::cout << "2\n";
 
