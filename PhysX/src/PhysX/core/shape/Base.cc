@@ -62,16 +62,18 @@ void			phx::core::shape::base::create_physics() {
 	}
 }
 sp::shared_ptr<phx::core::shape::util::parent>		phx::core::shape::base::getPxParent() {
-	assert(parent_);
 	
-	auto parent(sp::dynamic_pointer_cast<phx::core::shape::util::parent>(parent_));
+	auto parent = parent_.lock();
+	assert(parent);
 	
-	if(!parent) {
-		std::cout << typeid(*parent_).name() << std::endl;
+	auto pxparent(sp::dynamic_pointer_cast<phx::core::shape::util::parent>(parent));
+	
+	if(!pxparent) {
+		std::cout << typeid(*parent).name() << std::endl;
 		abort();
 	}
 
-	return parent;
+	return pxparent;
 }
 
 
