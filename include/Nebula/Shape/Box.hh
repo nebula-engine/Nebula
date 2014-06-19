@@ -7,9 +7,9 @@ namespace neb { namespace core { namespace shape {
 
 
 
-		class Box: virtual public neb::core::shape::base {
+		class box: virtual public neb::core::shape::base {
 			public:
-				Box(sp::shared_ptr<neb::core::shape::util::parent> parent);
+				box(sp::shared_ptr<neb::core::shape::util::parent> parent);
 
 				virtual void			createMesh();
 		};
