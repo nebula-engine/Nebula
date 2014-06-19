@@ -26,7 +26,6 @@ namespace phx { namespace core { namespace actor { namespace rigidstatic {
 			virtual void					step(neb::core::TimeStep const & ts);
 
 
-			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile();
 
 	};
 

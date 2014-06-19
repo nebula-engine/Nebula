@@ -52,10 +52,6 @@ void			phx::core::actor::rigidstatic::local::step(neb::core::TimeStep const & ts
 	phx::core::actor::rigidstatic::base::step(ts);
 
 }
-sp::shared_ptr<phx::core::actor::rigiddynamic::local>		phx::core::actor::rigidstatic::local::get_projectile() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
-	return phx::core::actor::actor::base::get_projectile();
-}
 
 
 

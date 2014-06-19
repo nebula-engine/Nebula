@@ -32,7 +32,6 @@ namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 			//virtual void					setPose(neb::core::pose const & pose);
 
 
-			//virtual sp::shared_ptr<phx::core::actor::rigiddynamic::base>		get_projectile() = 0;
 
 
 	};

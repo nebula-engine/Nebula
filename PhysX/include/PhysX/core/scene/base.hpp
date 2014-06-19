@@ -49,8 +49,6 @@ namespace phx { namespace core { namespace scene {
 			void					step(::neb::core::TimeStep const & ts);
 
 
-
-			virtual void				fire(sp::shared_ptr<phx::core::actor::base> actor) = 0;
 		public:
 			void					create_physics();
 

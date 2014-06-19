@@ -46,39 +46,4 @@ void		phx::core::actor::actor::base::release() {
 	//assert(!scene_.expired());
 
 }
-sp::shared_ptr<phx::core::actor::rigiddynamic::local>		phx::core::actor::actor::base::get_projectile() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
-	
-	auto parent(parent_.lock());
-
-	sp::shared_ptr<phx::core::scene::base> scene = parent->getScene();
-	
-	auto actor(sp::make_shared<phx::core::actor::rigiddynamic::local>(scene));
-	
-	
-	vec3 pos_relative(0,0,-2);
-	vec3 vel_relative(0,0,-1);
-	
-	
-	pos_relative = pose_.rot_ * pos_relative;
-	
-	
-	actor->pose_ = pose_;
-
-	// pose
-	
-	actor->pose_.pos_ += vec4(pos_relative,0);
-	
-	// velocity
-	
-	vel_relative = pose_.rot_ * vel_relative;
-	
-	actor->velocity_ = vel_relative;
-	
-	return actor;
-}
-
-
-
-
 
