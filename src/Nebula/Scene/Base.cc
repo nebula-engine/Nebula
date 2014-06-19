@@ -110,8 +110,31 @@ void		neb::core::scene::base::step(neb::core::TimeStep const & ts) {
 	});
 	
 }
+sp::weak_ptr<neb::core::actor::rigidstatic::base>		neb::core::scene::base::createActorRigidStaticCube(neb::core::pose const & pose, real size) {
+	
+	auto actor = createActorRigidStaticUninitialized().lock();
 
+	// set data members
+	
+	actor->pose_ = pose;
 
+	actor->simulation_.word0 = neb::Filter::Filter::Type::DYNAMIC;
+	actor->simulation_.word1 = neb::Filter::Filter::RIGID_AGAINST;
+
+	// initialize (create physx)
+	
+	actor->init();
+
+	// create shape
+
+	auto shape = actor->createShapeCube(size);
+
+	// reinitialize in order to apply filtering to shape
+	/** @todo consider implementing refresh-type function instead */
+	actor->init();
+	
+	return actor;
+}
 
 
 

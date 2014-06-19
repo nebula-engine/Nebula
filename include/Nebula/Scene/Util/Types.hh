@@ -15,6 +15,8 @@ namespace neb { namespace core {
 		}
 
 		class base;
+		class local;
+		class remote;
 	}
 
 

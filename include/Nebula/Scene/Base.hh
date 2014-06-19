@@ -66,6 +66,24 @@ namespace neb { namespace core { namespace scene {
 			neb::core::pose						getPoseGlobal();
 		public:
 			void							add_deferred(sp::shared_ptr<neb::core::actor::base>);
+
+
+			/** @name convenience functions
+			 * @{
+			 */
+			/** @brief create rigidstatic cube
+			 *
+			 * @note typeof returned actor will be determined by final implementation of this
+			 */
+			sp::weak_ptr<neb::core::actor::rigidstatic::base>		createActorRigidStaticCube(neb::core::pose const & pose, real size);
+			/** @brief create rigidstatic
+			 *
+			 * @note typeof returned actor will be determined by final implementation of this
+			 *
+			 * @warning return actor is not initialized
+			 */
+			virtual sp::weak_ptr<neb::core::actor::rigidstatic::base>	createActorRigidStaticUninitialized() = 0;
+			/** @} */
 		public:
 			/** @brief parent
 			 *
