@@ -87,7 +87,7 @@ namespace neb { namespace core { namespace shape {
 				}
 
 			public:
-				sp::shared_ptr<neb::core::shape::util::parent>		parent_;
+				sp::weak_ptr<neb::core::shape::util::parent>		parent_;
 
 			public:
 				neb::core::shape::util::Flag		flag_;
