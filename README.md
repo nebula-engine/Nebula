@@ -10,7 +10,7 @@
 
 ## Testing
 
-For consideration for merging into master, GRU/test/Window must:
+For consideration for merging into master, GRU/PhysX/test/Window must:
 - ``view free``
     - nsew movement
 - ``gui terminal``
@@ -21,6 +21,7 @@ For consideration for merging into master, GRU/test/Window must:
         - help
         - exit
     - toggle enable/disable
+- SimpleProjectile weapon working
 - maze scene
     - lights rendering properly
     - cubes rendering properly
