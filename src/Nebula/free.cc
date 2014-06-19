@@ -38,7 +38,8 @@ void		neb::init_log() {
 	gal::log::min_severity["phx core shape"]	= debug;
 	gal::log::min_severity["phx core light"]	= debug;
 
-	
+	gal::log::min_severity["phx game weapon"]	= debug;
+
 	gal::log::init();
 
 }

@@ -19,12 +19,14 @@ void		phx::message::actor::event::IFire::serialize(boost::archive::polymorphic_i
 	
 	auto actor = sp::dynamic_pointer_cast<phx::core::actor::actor::base>(gal::std::shared::registry_.get(index_));
 	assert(actor);
-
+	
 	//auto scene = actor->getScene();
 	//assert(scene);
+	
+	/** @todo this event should be a weapon::event, not an actor::event */
 
 	//scene->fire(actor);
-	actor->fire();
+	//actor->fire();
 }
 
 

@@ -35,7 +35,6 @@ namespace phx { namespace core { namespace actor { namespace actor {
 			
 		
 			
-			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile();
 		public:
 			
 			
