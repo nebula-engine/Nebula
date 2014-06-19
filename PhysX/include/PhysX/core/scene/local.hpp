@@ -40,7 +40,18 @@ namespace phx { namespace core { namespace scene {
 			virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {}
 			virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {}
 
-
+			/** @name convenience functions
+			 * @{
+			 */
+			/** @brief create rigidstatic
+			 *
+			 * @note typeof returned actor will be determined by final implementation of this
+			 *
+			 * @warning return actor is not initialized
+			 */
+			sp::weak_ptr<neb::core::actor::rigidstatic::base>	createActorRigidStaticUninitialized();
+			/** @} */	
+	
 	};
 
 

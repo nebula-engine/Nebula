@@ -18,6 +18,8 @@ void		neb::ext::maze::game::map::maze2::init() {
 	
 	auto self(sp::dynamic_pointer_cast<neb::ext::maze::game::map::maze2>(shared_from_this()));
 
+	// insert a spawn point at origin
+	// and init scene
 	neb::game::map::base::init();
 	
 	
@@ -28,17 +30,23 @@ void		neb::ext::maze::game::map::maze2::init() {
 	real width = 3.0;
 	
 	auto lambda = [&] (vec2 v) {
-		auto actor = neb::core::actor::util::parent::cii<neb::core::actor::rigidstatic::local, sp::shared_ptr<neb::core::scene::local>>(self);
 		
-		auto shape = sp::make_shared<neb::core::shape::box>(actor);
+		neb::core::pose pose;
+		pose.pos_ = vec4(v.x,0,v.y,0);
 		
-		actor->neb::core::shape::util::parent::insert(shape);
+		auto actor = createActorRigidStaticCube(pose, width);
 		
-		shape->s_ = vec3(width);
+		//auto actor = neb::core::actor::util::parent::cii<neb::core::actor::rigidstatic::local, sp::shared_ptr<neb::core::scene::local>>(self);
 		
-		shape->init();
+		//auto shape = sp::make_shared<neb::core::shape::box>(actor);
 		
-		actor->pose_.pos_ = vec4(v.x,0,v.y,0);
+		//actor->neb::core::shape::util::parent::insert(shape);
+		
+		//shape->s_ = vec3(width);
+		
+		//shape->init();
+		
+		//actor->pose_.pos_ = vec4(v.x,0,v.y,0);
 	};
 
 	for(int i = 0; i < desc.size_.x; ++i) {

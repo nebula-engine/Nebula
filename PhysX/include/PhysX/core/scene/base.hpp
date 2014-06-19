@@ -58,6 +58,18 @@ namespace phx { namespace core { namespace scene {
 			virtual void				serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
 				ar & boost::serialization::make_nvp("gravity",gravity_);
 			}
+
+			/** @name convenience functions
+			 * @{
+			 */
+			/** @brief create rigidstatic
+			 *
+			 * @note typeof returned actor will be determined by final implementation of this
+			 *
+			 * @warning return actor is not initialized
+			 */
+			sp::weak_ptr<neb::core::actor::rigidstatic::base>	createActorRigidStaticUninitialized() = 0;
+			/** @} */
 		public:
 			physx::PxScene*				px_scene_;
 

@@ -30,20 +30,20 @@ namespace neb { namespace core {
 		namespace actor {
 			class base;
 			class local;
-			class Remote;
+			class remote;
 		}
 		/** @brief %rigidactor */
 		namespace rigidactor {
 			class base;
 			class local;
-			class Remote;
+			class remote;
 		}
 
 		/** @brief %rigidbody */
 		namespace rigidbody {
 			class base;
 			class local;
-			class Remote;
+			class remote;
 		}
 
 		/** @brief %rigiddynamic */
@@ -57,7 +57,7 @@ namespace neb { namespace core {
 		namespace rigidstatic {
 			class base;
 			class local;
-			class Remote;
+			class remote;
 
 		}
 

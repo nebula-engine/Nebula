@@ -11,6 +11,7 @@
 #include <PhysX/util/convert.hpp>
 #include <PhysX/core/scene/local.hpp>
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
+#include <PhysX/core/actor/rigidstatic/local.hpp>
 
 phx::core::scene::local::local(sp::shared_ptr<neb::core::scene::util::parent> parent):
 	neb::core::scene::base(parent),
@@ -121,6 +122,16 @@ void			phx::core::scene::local::step(neb::core::TimeStep const & ts) {
 	send_actor_update();
 
 }
+sp::weak_ptr<neb::core::actor::rigidstatic::base>	phx::core::scene::local::createActorRigidStaticUninitialized() {
+	
+	auto actor(sp::make_shared<phx::core::actor::rigidstatic::local>(isPxSceneLocal()));
 
+	neb::core::actor::util::parent::insert(actor);
+
+	actor->simulation_.word0 = neb::Filter::Filter::Type::STATIC;
+	actor->simulation_.word1 = neb::Filter::Filter::RIGID_AGAINST;
+
+	return actor;
+}
 
 

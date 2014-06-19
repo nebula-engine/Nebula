@@ -14,7 +14,9 @@ namespace phx { namespace core { namespace scene { namespace util {
 		virtual public neb::core::scene::util::cast
 	{
 		public:
-			sp::shared_ptr<phx::core::scene::base>		isPxSceneBase();
+			sp::shared_ptr<phx::core::scene::base>			isPxSceneBase();
+			sp::shared_ptr<phx::core::scene::local>			isPxSceneLocal();
+			sp::shared_ptr<phx::core::scene::remote>		isPxSceneRemote();
 	};
 
 
