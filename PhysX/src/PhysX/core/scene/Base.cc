@@ -34,6 +34,11 @@ void			phx::core::scene::base::release() {
 void			phx::core::scene::base::create_physics() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 	
+	if(px_scene_ != NULL) {
+		BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "been here!";
+		return;
+	}
+
 	auto pxphysics = phx::app::base::global()->px_physics_;
 	
 	physx::PxSceneDesc scene_desc(pxphysics->getTolerancesScale());
