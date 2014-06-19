@@ -40,7 +40,7 @@ namespace phx { namespace core { namespace actor { namespace control { namespace
 			private:
 
 			public:
-				sp::shared_ptr<phx::core::actor::rigidbody::base>		actor_;
+				sp::weak_ptr<phx::core::actor::rigidbody::base>		actor_;
 
 				quat				q_target_;
 				vec4				p_target_;
