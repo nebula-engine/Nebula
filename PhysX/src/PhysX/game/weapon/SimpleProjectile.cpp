@@ -70,7 +70,9 @@ void			phx::game::weapon::SimpleProjectile::fire() {
 	// relative values
 
 	vec3 pos_relative(0,0,-2);
+	
 	vec3 vel_relative(0,0,-1);
+	vel_relative *= velocity_;
 
 	// rotate relative values to actor's space
 	pos_relative = actor->pose_.rot_ * pos_relative;
@@ -103,9 +105,11 @@ void			phx::game::weapon::SimpleProjectile::fire() {
 
 	// shape	
 	auto shape = sp::make_shared<phx::core::shape::box>(proj);
-
+	
 	proj->neb::core::shape::util::parent::insert(shape);
-
+	
+	shape->s_ = vec3(size_);
+	
 	shape->init();
 
 	proj->setupFiltering();
