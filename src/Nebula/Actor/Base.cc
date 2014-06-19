@@ -26,7 +26,10 @@
 
 //neb::core::actor::base::base() {
 //}
-neb::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent): parent_(parent) {
+neb::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+	density_(10.0),
+	parent_(parent)
+{
 	NEBULA_ACTOR_BASE_FUNC;
 }
 neb::core::actor::base::~base() {
