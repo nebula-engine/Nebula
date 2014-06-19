@@ -41,7 +41,12 @@ namespace phx { namespace core {
 			class local;
 			class remote;
 		}
-
+		/** @brief %rigidstatic */
+		namespace rigidstatic {
+			class base;
+			class local;
+			class remote;
+		}
 
 		/** @brief %control */
 		namespace control {

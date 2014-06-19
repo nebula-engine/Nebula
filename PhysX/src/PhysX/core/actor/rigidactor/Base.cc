@@ -4,6 +4,8 @@
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/rigidactor/base.hpp>
 
+#include <PhysX/core/shape/box.hpp>
+
 //neb::core::actor::rigidactor::base::base() {
 //}
 phx::core::actor::rigidactor::base::base(sp::shared_ptr<phx::core::actor::util::parent> parent):
@@ -78,6 +80,17 @@ void								phx::core::actor::rigidactor::base::setGlobalPosition(vec3 p) {
 				phx::util::convert(pose_.rot_)
 				));
 }
+sp::weak_ptr<neb::core::shape::box>				phx::core::actor::rigidactor::base::createShapeBoxUninitialized() {
+
+	auto self(isPxActorRigidActorBase());
+
+	auto shape = sp::make_shared<phx::core::shape::box>(self);
+	
+	neb::core::shape::util::parent::insert(shape);
+	
+	return shape;
+}
+
 
 
 
