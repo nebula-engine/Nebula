@@ -77,7 +77,10 @@ void			phx::core::actor::rigiddynamic::base::create_physics() {
 	px_rigid_dynamic->setLinearVelocity(phx::util::convert(velocity_), true);
 
 	// userData
+	auto sft = shared_from_this();
+	auto uc = sft.use_count();
 	px_rigid_dynamic->userData = this;
+	assert(uc == sft.use_count());
 
 	// debug
 	assert(this == shared_from_this().get());
