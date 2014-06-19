@@ -16,13 +16,14 @@
 #include <Nebula/Core/TimeStep.hpp>
 #include <Nebula/Graphics/Types.hh>
 #include <Nebula/Graphics/Camera/View/util/flag.hpp>
+#include <Nebula/Util/shared.hpp>
 
 namespace neb {
 	namespace gfx {
 		namespace Camera {
 			namespace View {
 				/** @brief @Base */
-				class base {
+				class base: virtual public neb::std::shared {
 					public:
 						/** @brief Constructor */
 						base(sp::shared_ptr< ::neb::gfx::environ::base > parent);

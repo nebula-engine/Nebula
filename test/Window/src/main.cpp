@@ -92,7 +92,7 @@ sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor(sp::shared_p
 	auto actor = scene->cii<neb::core::actor::rigiddynamic::local, sp::shared_ptr<neb::core::scene::local>>(scene);
 
 	// shape	
-	auto shape = sp::make_shared<neb::core::shape::Box>(actor);
+	auto shape = sp::make_shared<neb::core::shape::box>(actor);
 	
 	
 	actor->neb::core::shape::util::parent::insert(shape);

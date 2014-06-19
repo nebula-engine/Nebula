@@ -30,7 +30,7 @@ void		neb::ext::maze::game::map::maze2::init() {
 	auto lambda = [&] (vec2 v) {
 		auto actor = neb::core::actor::util::parent::cii<neb::core::actor::rigidstatic::local, sp::shared_ptr<neb::core::scene::local>>(self);
 		
-		auto shape = sp::make_shared<neb::core::shape::Box>(actor);
+		auto shape = sp::make_shared<neb::core::shape::box>(actor);
 		
 		actor->neb::core::shape::util::parent::insert(shape);
 		

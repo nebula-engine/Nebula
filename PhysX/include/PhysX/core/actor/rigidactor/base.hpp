@@ -29,16 +29,14 @@ namespace phx { namespace core { namespace actor { namespace rigidactor {
 			virtual void					create_physics() = 0;
 			virtual void					init_physics() = 0;
 
-			virtual void					add_force(real) = 0;
+			//virtual void					add_force(real) = 0;
 			//virtual void					set_pose(physx::PxTransform);
 
 
 			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile() = 0;
 
 
-			physx::PxActor*					px_actor_;
 
-			//std::shared_ptr<neb::core::actor>		object_;
 	};
 
 
