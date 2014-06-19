@@ -20,14 +20,20 @@ phx::core::scene::local::local(sp::shared_ptr<neb::core::scene::util::parent> pa
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::scene::local::init() {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
+
 	neb::core::scene::local::init();
 	phx::core::scene::base::init();
 }
 void			phx::core::scene::local::release() {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
+
 	neb::core::scene::local::release();
 	phx::core::scene::base::release();
 }
 void			phx::core::scene::local::step(neb::core::TimeStep const & ts) {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__ << " dt = " << ts.dt;
+
 	neb::core::scene::local::step(ts);
 	phx::core::scene::base::step(ts);
 
@@ -48,7 +54,9 @@ void			phx::core::scene::local::step(neb::core::TimeStep const & ts) {
 	physx::PxU32 nb_active_transforms;
 	const physx::PxActiveTransform* active_transforms = px_scene_->getActiveTransforms(nb_active_transforms);
 
-	//printf( "count PxRigidActor:%i count active transform:%i\n", nbPxactor, nb_active_transforms );
+	
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug)
+		<< "active transforms: " << nb_active_transforms;
 
 	//physx::PxTransform pose;
 	physx::PxTransform pose;
@@ -61,28 +69,38 @@ void			phx::core::scene::local::step(neb::core::TimeStep const & ts) {
 
 		physx::PxActor* pxactor = active_transforms[i].actor;
 		assert(pxactor);
-		physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
-
 
 		void* ud = active_transforms[i].userData;
 		assert(ud);
 
+		physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
+
+
 		neb::core::actor::base* pactor = static_cast<neb::core::actor::base*>(ud);
 		auto actor = pactor->isActorBase();
-
-
+		
+		assert(actor);
+		
 		if(actor) {
 			pose = active_transforms[i].actor2World;
 			actor->setPose(neb::core::pose(
 						phx::util::convert(pose.q),
 						vec4(phx::util::convert(pose.p),1)
 						));
+			
+			BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug)
+				<< std::setw(8) << "p"
+				<< std::setw(8) << pose.p.x
+				<< std::setw(8) << pose.p.y
+				<< std::setw(8) << pose.p.z;
+		
 
 			if(pxrigidbody != NULL) {
-				auto rigidbody = isActorRigidBody();
-				//dynamic_cast<neb::core::actor::rigidbody::RigidBody*>(actor);
-
-				assert(rigidbody != NULL);
+				auto rigidbody = actor->isActorRigidBody();
+				if(!rigidbody) {
+					std::cout << typeid(*actor).name() << std::endl;
+					abort();
+				}
 
 				physx::PxVec3 v(pxrigidbody->getLinearVelocity());
 

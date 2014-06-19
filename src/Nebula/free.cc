@@ -141,6 +141,7 @@ void		neb::draw_text(
 	FT_Library ft = neb::app::base::global()->ft_;
 	
 	char const * fontfile[] = {
+		"/usr/share/fonts/msttcorefonts/cour.ttf",
 		"/usr/share/fonts/truetype/msttcorefonts/georgia.ttf",
 		"/usr/share/fonts/msttcorefonts/georgia.ttf",
 		"/usr/share/fonts/truetype/freefont/FreeSans.ttf"};
@@ -149,7 +150,7 @@ void		neb::draw_text(
 	//char const fontfile[] = "/usr/share/fonts/truetype/msttcorefonts/arial.ttf";
 	//char const fontfile[] = "FreeSans.ttf";
 
-	for(int i = 0; i < 3; ++i) {
+	for(int i = 0; i < 4; ++i) {
 		if(FT_New_Face(ft, fontfile[i], 0, &face)) {
 			printf("Could not open font '%s'\n",fontfile[i]);
 		} else {

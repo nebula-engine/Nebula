@@ -1,3 +1,5 @@
+#include <Galaxy-Log/log.hpp>
+
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
 
@@ -41,14 +43,27 @@ void				phx::core::actor::rigiddynamic::local::step(neb::core::TimeStep const & 
 /*sp::shared_ptr<phx::core::actor::rigiddynamic::base>		phx::core::actor::rigiddynamic::local::get_projectile() {
 	return phx::core::actor::base_s();
 }*/
-void				phx::core::actor::rigiddynamic::local::add_force(real) {
+void				phx::core::actor::rigiddynamic::local::add_force(real time) {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	phx::core::actor::rigidbody::base::add_force(time);
 }
 void				phx::core::actor::rigiddynamic::local::create_physics() {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+
+	phx::core::actor::rigiddynamic::base::create_physics();
 }
 void				phx::core::actor::rigiddynamic::local::init_physics() {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+
+	phx::core::actor::rigiddynamic::base::init_physics();
 }
 void				phx::core::actor::rigiddynamic::local::setPose(neb::core::pose const & pose) {
-	
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+
+	neb::core::actor::rigiddynamic::local::setPose(pose);
+	phx::core::actor::rigidbody::local::setPose(pose);
+	phx::core::actor::rigiddynamic::base::setPose(pose);
+
 }
 sp::shared_ptr<phx::core::actor::rigiddynamic::local>		phx::core::actor::rigiddynamic::local::get_projectile() {
 	return phx::core::actor::rigidbody::base::get_projectile();
