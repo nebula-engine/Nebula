@@ -23,12 +23,22 @@ phx::core::actor::rigidstatic::base::base(sp::shared_ptr<phx::core::actor::util:
 }
 void			phx::core::actor::rigidstatic::base::init() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	
+	neb::core::actor::rigidstatic::base::init();
+	phx::core::actor::rigidactor::base::init();
 }
 void			phx::core::actor::rigidstatic::base::release() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+
+	neb::core::actor::rigidstatic::base::release();
+	phx::core::actor::rigidactor::base::release();
 }
 void			phx::core::actor::rigidstatic::base::step(neb::core::TimeStep const & ts) {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
+
+	neb::core::actor::rigidstatic::base::step(ts);
+	phx::core::actor::rigidactor::base::step(ts);
+
 }
 void			phx::core::actor::rigidstatic::base::create_physics() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
@@ -73,8 +83,6 @@ void			phx::core::actor::rigidstatic::base::create_physics() {
 void			phx::core::actor::rigidstatic::base::init_physics() {
 
 	printf("%s\n", __PRETTY_FUNCTION__);
-
-	//physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();
 
 	setupFiltering();
 }

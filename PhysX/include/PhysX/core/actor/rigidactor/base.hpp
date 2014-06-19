@@ -36,6 +36,9 @@ namespace phx { namespace core { namespace actor { namespace rigidactor {
 			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile() = 0;
 
 
+			virtual void					setGlobalPosition(vec3 p);
+
+
 
 	};
 

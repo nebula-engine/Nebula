@@ -30,8 +30,6 @@ void			phx::core::actor::rigiddynamic::base::init() {
 	neb::core::actor::rigiddynamic::base::init();
 	phx::core::actor::rigidbody::base::init();
 	
-	create_physics();
-	
 	assert(px_actor_);
 	auto pxrd = px_actor_->isRigidDynamic();
 	pxrd->setLinearDamping(0.01);
