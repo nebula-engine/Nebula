@@ -110,7 +110,8 @@ sp::shared_ptr<phx::core::actor::rigidstatic::local>		create_actor_static(sp::sh
 	
 	shape->init();
 	
-	
+	actor->setupFiltering();
+
 		
 	return actor;	
 }
@@ -131,7 +132,9 @@ sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::
 	actor->neb::core::shape::util::parent::insert(shape);
 	
 	shape->init();
-	
+
+	actor->setupFiltering();
+
 	return actor;	
 }
 sp::shared_ptr<neb::core::actor::Empty>		create_actor2(sp::shared_ptr<phx::core::scene::local> scene) {
@@ -198,26 +201,26 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 
 	// actors
 	auto actor = create_actor_static(scene);
-	actor->pose_.pos_ += vec4(0,0,-5,0);
+	actor->setGlobalPosition(vec3(0,0,-5));
 	
 	actor = create_actor_static(scene);
-	actor->pose_.pos_ += vec4(0,0,5,0);
+	actor->setGlobalPosition(vec3(0,0,5));
 	
 	actor = create_actor_static(scene);
-	actor->pose_.pos_ += vec4(0,-5,0,0);
+	actor->setGlobalPosition(vec3(0,-5,0));
 
 	actor = create_actor_static(scene);
-	actor->pose_.pos_ += vec4(0,5,0,0);
+	actor->setGlobalPosition(vec3(0,5,0));
 
 	actor = create_actor_static(scene);
-	actor->pose_.pos_ += vec4(-5,0,0,0);
+	actor->setGlobalPosition(vec3(-5,0,0));
 
 	actor = create_actor_static(scene);
-	actor->pose_.pos_ += vec4(5,0,0,0);
+	actor->setGlobalPosition(vec3(5,0,0));
 
 
 	auto actor3 = create_actor_dynamic(scene);
-	actor->pose_.pos_ += vec4(0,0,0,0);
+	actor3->setGlobalPosition(vec3(0,0,0));
 	
 	auto actor2 = create_actor2(scene);
 
