@@ -24,6 +24,7 @@
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
 #include <PhysX/core/actor/rigidstatic/local.hpp>
 #include <PhysX/game/weapon/SimpleProjectile.hpp>
+#include <PhysX/ext/maze/game/map/maze2.hpp>
 
 sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
 
@@ -88,8 +89,16 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 
 	return layout;
 }
-sp::shared_ptr<phx::core::actor::rigidstatic::local>		create_actor_static(sp::shared_ptr<phx::core::scene::local> scene) {
+sp::shared_ptr<phx::core::actor::rigidstatic::base>		create_actor_static(sp::shared_ptr<phx::core::scene::local> scene, vec3 pos) {
+
 	
+	neb::core::pose pose;
+	pose.pos_ = vec4(pos,1);
+
+	auto actor = sp::dynamic_pointer_cast<phx::core::actor::rigidstatic::base>(scene->createActorRigidStaticCube(pose, 1.0).lock());
+	
+	/*
+
 	auto actor = sp::make_shared<phx::core::actor::rigidstatic::local>(scene);
 	
 	scene->insert(actor);
@@ -107,9 +116,9 @@ sp::shared_ptr<phx::core::actor::rigidstatic::local>		create_actor_static(sp::sh
 	shape->init();
 	
 	actor->setupFiltering();
-
+	*/
 		
-	return actor;	
+	return actor;
 }
 sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::shared_ptr<phx::core::scene::local> scene) {
 
@@ -198,23 +207,23 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	std::cout << "8\n";
 
 	// actors
-	auto actor = create_actor_static(scene);
-	actor->setGlobalPosition(vec3(0,0,-5));
+	auto actor = create_actor_static(scene, vec3(0,0,-5));
+	//actor->setGlobalPosition(vec3(0,0,-5));
 	
-	actor = create_actor_static(scene);
-	actor->setGlobalPosition(vec3(0,0,5));
+	actor = create_actor_static(scene, vec3(0,0,5));
+	//actor->setGlobalPosition(vec3(0,0,5));
 	
-	actor = create_actor_static(scene);
-	actor->setGlobalPosition(vec3(0,-5,0));
+	actor = create_actor_static(scene, vec3(0,-5,0));
+	//actor->setGlobalPosition(vec3(0,-5,0));
 
-	actor = create_actor_static(scene);
-	actor->setGlobalPosition(vec3(0,5,0));
+	actor = create_actor_static(scene, vec3(0,5,0));
+	//actor->setGlobalPosition(vec3(0,5,0));
 
-	actor = create_actor_static(scene);
-	actor->setGlobalPosition(vec3(-5,0,0));
+	actor = create_actor_static(scene, vec3(-5,0,0));
+	//actor->setGlobalPosition(vec3(-5,0,0));
 
-	actor = create_actor_static(scene);
-	actor->setGlobalPosition(vec3(5,0,0));
+	actor = create_actor_static(scene, vec3(5,0,0));
+	//actor->setGlobalPosition(vec3(5,0,0));
 
 	// player's actor
 	auto actor3 = create_actor_dynamic(scene);
@@ -244,7 +253,35 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	
 	return scene;
 }
+sp::shared_ptr<phx::game::map::base>			create_maze(
+		sp::shared_ptr<neb::gfx::window::base> window,
+		sp::shared_ptr<neb::gfx::context::window> context) {
+	
+	auto app = phx::app::base::global();
+	
+	auto map = sp::make_shared<phx::ext::maze::game::map::maze2>(app, ivec2(15,15));
+	
+	app->phx::core::scene::util::parent::insert(map);
+	
+	map->init();
 
+	// player's actor
+	auto actor3 = create_actor_dynamic(map);
+	actor3->setGlobalPosition(vec3(0,0,0));
+	
+	// weapon
+	auto weap = actor3->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
+
+	// lights
+	auto actor2 = create_actor2(map);
+
+	
+	// give scene to context
+	
+	context->environ_->drawable_ = map;
+
+	return map;
+}
 int			main() {
 
 	phx::init();
@@ -272,7 +309,7 @@ int			main() {
 
 	cmd_create_scene->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
 		(*term) << "creating scene...";
-		//map = create_maze(context1);
+		//map = create_maze(window, context1);
 		map = create_scene(window, context1);
 	};
 	

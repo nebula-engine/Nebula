@@ -26,12 +26,25 @@
 namespace phx { namespace core { namespace scene {
 
 	class remote:
-		virtual public neb::core::scene::Remote,
+		virtual public neb::core::scene::remote,
 		virtual public ::phx::core::scene::base
 	{
 		void				step(neb::core::TimeStep const & ts);
 		
 		virtual void			fire(sp::shared_ptr<neb::core::actor::base> actor);
+
+		/** @name convenience functions
+		 * @{
+		 */
+		/** @brief create rigidstatic
+		 *
+		 * @note typeof returned actor will be determined by final implementation of this
+		 *
+		 * @warning return actor is not initialized
+		 */
+		sp::weak_ptr<neb::core::actor::rigidstatic::base>	createActorRigidStaticUninitialized();
+		/** @} */	
+
 	};
 
 

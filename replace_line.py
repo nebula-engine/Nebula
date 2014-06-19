@@ -43,6 +43,9 @@ def replace(filename):
 	text = re.sub("class Local","class local",text)
 	text = re.sub("::Local","::local",text)
 
+        text = re.sub("class Remote","class remote",text)
+	text = re.sub("::Remote","::remote",text)
+
 	text = re.sub("class Parent","class parent",text)
 	text = re.sub("::Parent","::parent",text)
 

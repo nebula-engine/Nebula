@@ -12,6 +12,8 @@ namespace phx { namespace core {
 
 		/** @brief %util */
 		namespace util {
+			class parent;
+			class cast;
 		}
 
 	}
