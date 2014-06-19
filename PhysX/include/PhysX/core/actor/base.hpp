@@ -8,6 +8,7 @@
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/shape/util/parent.hpp>
 #include <PhysX/game/weapon/util/parent.hpp>
+#include <PhysX/game/weapon/util/decl.hpp>
 
 namespace phx { namespace core { namespace actor {
 
@@ -39,6 +40,18 @@ namespace phx { namespace core { namespace actor {
 		
 	
 			sp::shared_ptr<phx::core::actor::util::parent>				getPxParent();
+
+			/** @name convenience functions
+			 * @{
+			 */
+			/** @brief create simple projectile weapon
+			 */
+			sp::weak_ptr<phx::game::weapon::SimpleProjectile>			createWeaponSimpleProjectile(
+					sp::shared_ptr<neb::gfx::window::base> window,
+					real size,
+					real damage,
+					real velocity);
+			/** @} */
 		public:
 			sp::weak_ptr<phx::core::actor::util::parent>				parent_;
 
