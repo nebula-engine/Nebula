@@ -6,8 +6,10 @@
 namespace neb { namespace core { namespace actor {
 
 
-	class Remote: virtual public neb::core::actor::base {
+	class remote: virtual public neb::core::actor::base {
 		public:
+			remote(sp::shared_ptr<neb::core::actor::util::parent> parent);
+
 			virtual void		step(neb::core::TimeStep const & ts);
 	};
 

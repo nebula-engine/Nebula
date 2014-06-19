@@ -8,9 +8,9 @@ namespace neb { namespace core { namespace actor {
 		
 
 namespace rigidbody {
-			class Remote:
+			class remote:
 				virtual public neb::core::actor::rigidbody::base,
-				virtual public neb::core::actor::rigidactor::Remote
+				virtual public neb::core::actor::rigidactor::remote
 			{
 				public:
 					virtual void		step(neb::core::TimeStep const & ts);

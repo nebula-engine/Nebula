@@ -26,10 +26,23 @@
 
 namespace neb { namespace core {
 	namespace scene {
-		class Remote:
+		class remote:
 			virtual public neb::core::scene::base
 		{
 			void				step(neb::core::TimeStep const & ts);
+
+			/** @name convenience functions
+			 * @{
+			 */
+			/** @brief create rigidstatic
+			 *
+			 * @note typeof returned actor will be determined by final implementation of this
+			 *
+			 * @warning return actor is not initialized
+			 */
+			sp::weak_ptr<neb::core::actor::rigidstatic::base>	createActorRigidStaticUninitialized();
+			/** @} */
+
 		};
 	}
 }}
