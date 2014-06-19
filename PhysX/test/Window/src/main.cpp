@@ -12,6 +12,10 @@
 #include <Nebula/Shape/empty.hpp>
 #include <Nebula/Graphics/Camera/View/ridealong.hh>
 #include <Nebula/Actor/Empty/Empty.hpp>
+#include <Nebula/game/map/base.hpp>
+#include <Nebula/ext/maze/game/map/maze2.hpp>
+#include <Nebula/Util/command.hpp>
+#include <Nebula/Util/command_set.hpp>
 
 #include <PhysX/free.hpp>
 #include <PhysX/app/base.hpp>
@@ -31,9 +35,6 @@ sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb
 	context->init();
 	
 	//auto context = window->cii< neb::gfx::context::window, sp::shared_ptr<neb::gfx::window::base> >(window);
-	
-	
-	
 
 	return context;
 }
@@ -45,14 +46,10 @@ sp::shared_ptr<neb::gfx::context::window>		create_context_three(sp::shared_ptr<n
 	
 	window->insert(context);
 	
-	
-	
 	auto environ = sp::make_shared<neb::gfx::environ::three>(/*context*/);
 	environ->init();
 	
 	context->environ_ = environ;
-	
-	
 	
 	context->init();
 	
@@ -73,11 +70,9 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 	
 	//auto layout = app->neb::gfx::gui::layout::util::parent::cii<neb::gfx::gui::layout::base, neb::app::base>(app);
 
-
 	auto layout = sp::make_shared<neb::gfx::gui::layout::base>(app);
 
 	app->neb::gfx::gui::layout::util::parent::insert(layout);
-
 	
 	context->environ_->drawable_ = layout;
 
@@ -134,6 +129,8 @@ sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::
 	shape->init();
 
 	actor->setupFiltering();
+
+	std::cout << "actor dynamic use count = " << actor.use_count() << std::endl;
 
 	return actor;	
 }
@@ -222,8 +219,10 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	auto actor3 = create_actor_dynamic(scene);
 	actor3->setGlobalPosition(vec3(0,0,0));
 	
-	auto actor2 = create_actor2(scene);
+	std::cout << "actor3 use count = " << actor3.use_count() << std::endl;
 
+	auto actor2 = create_actor2(scene);
+	
 	
 	context->environ_->drawable_ = scene;
 
@@ -260,10 +259,42 @@ int			main() {
 	auto context1 = create_context_three(window);
 	auto context2 = create_context_two(window);
 
+
+	// will be map in a minute...
+	sp::shared_ptr<phx::core::scene::local> map;
+	
+	// command
+	// create scene
+	auto cmd_create_scene = sp::make_shared<neb::util::command>();
+
+	cmd_create_scene->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
+		(*term) << "creating scene...";
+		//map = create_maze(context1);
+		map = create_scene(window, context1);
+	};
+	
+	app->command_set_->map_["sc"] = cmd_create_scene;
+	
+	// destroy scene
+	auto cmd_destroy_scene = sp::make_shared<neb::util::command>();
+	
+	cmd_destroy_scene->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
+		(*term) << "destroying scene...";
+		if(map) {
+			map->parent_->erase(map->i_);
+			map.reset();
+		}
+		std::stringstream ss;
+		ss << "use count " << map.use_count();
+		(*term) << ss.str();
+	};
+	
+	app->command_set_->map_["sd"] = cmd_destroy_scene;
+
 	std::cout << "1\n";
 
-	// drawable
-	auto scene = create_scene(window, context1);
+	// create drawables
+	//auto scene = create_scene(window, context1);
 
 	std::cout << "2\n";
 

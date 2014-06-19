@@ -15,17 +15,18 @@ neb::gfx::Camera::View::Ridealong::Ridealong(sp::shared_ptr<neb::gfx::environ::b
 mat4		neb::gfx::Camera::View::Ridealong::view() {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
-
-	if(!actor_) return mat4();
+	
+	auto actor = actor_.lock();
+	if(!actor) return mat4();
 
 	//auto pose = actor_->pose_;
 	
-	vec3 translate_vec(actor_->pose_.pos_);
+	vec3 translate_vec(actor->pose_.pos_);
 
 	//mat4 translate(mat4(-pose.p));
 	//translate.SetTranslation(-pose.p);
 
-	quat rotation(actor_->pose_.rot_);
+	quat rotation(actor->pose_.rot_);
 	
 	//mat4 m(pose);
 	//pose.Invert();
@@ -45,7 +46,7 @@ mat4		neb::gfx::Camera::View::Ridealong::view() {
 	//offset_m.SetTranslation(offset_v);
 	
 	
-	mat4 ret = glm::affineInverse(actor_->pose_.mat4_cast());
+	mat4 ret = glm::affineInverse(actor->pose_.mat4_cast());
 	
 	ret = glm::translate(ret, offset_vec);
 	
