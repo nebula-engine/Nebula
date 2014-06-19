@@ -50,11 +50,14 @@ void			phx::core::shape::base::create_physics() {
 		auto rigidactor = actor->isPxActorRigidActorBase();//std::dynamic_pointer_cast<neb::core::actor::Rigid_Actor>(parent_.lock());
 
 		if(rigidactor) {
-			physx::PxRigidActor* px_rigid_actor = static_cast<physx::PxRigidActor*>(rigidactor->px_actor_);
+			assert(rigidactor->px_actor_);
+			
+			auto px_rigidactor = rigidactor->px_actor_->isRigidActor();
+			assert(px_rigidactor);
 
 			physx::PxMaterial* px_mat = phx::app::base::global()->px_physics_->createMaterial(1,1,1);
 
-			px_shape_ = px_rigid_actor->createShape( *(to_geo()), *px_mat );
+			px_shape_ = px_rigidactor->createShape( *(to_geo()), *px_mat );
 		}
 	}
 }
