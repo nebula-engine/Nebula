@@ -3,7 +3,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Actor/Actor/Base.hh>
+#include <Nebula/Actor/RigidActor/Local.hh>
 
 #include <PhysX/core/actor/actor/local.hpp>
 #include <PhysX/core/actor/rigidactor/base.hpp>
@@ -20,26 +20,24 @@ namespace phx { namespace core { namespace actor { namespace rigidactor {
 	{
 
 		public:
-			local(sp::shared_ptr<neb::core::actor::util::parent>);
+			local(sp::shared_ptr<phx::core::actor::util::parent>);
 
 			virtual void					init();
 			virtual void					release();
 			virtual void					step(neb::core::TimeStep const & ts);
 
 
-			virtual void					create_physics() = 0;
-			virtual void					init_physics() = 0;
+			//virtual void					create_physics() = 0;
+			//virtual void					init_physics() = 0;
 
-			virtual void					add_force(real) = 0;
-			virtual void					set_pose(physx::PxTransform);
+			//virtual void					add_force(real) = 0;
+			//virtual void					set_pose(physx::PxTransform);
 
 
 			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile() = 0;
 
 
-			physx::PxActor*					px_actor_;
 
-			//std::shared_ptr<neb::core::actor>		object_;
 	};
 
 

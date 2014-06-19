@@ -1,5 +1,9 @@
+
+
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/matrix_inverse.hpp>
+
+#include <Galaxy-Log/log.hpp>
 
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Graphics/Camera/View/ridealong.hh>
@@ -10,16 +14,19 @@ neb::gfx::Camera::View::Ridealong::Ridealong(sp::shared_ptr<neb::gfx::environ::b
 }
 mat4		neb::gfx::Camera::View::Ridealong::view() {
 
-	if(!actor_) return mat4();
+	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
+	
+	auto actor = actor_.lock();
+	if(!actor) return mat4();
 
 	//auto pose = actor_->pose_;
 	
-	vec3 translate_vec(actor_->pose_.pos_);
+	vec3 translate_vec(actor->pose_.pos_);
 
 	//mat4 translate(mat4(-pose.p));
 	//translate.SetTranslation(-pose.p);
 
-	quat rotation(actor_->pose_.rot_);
+	quat rotation(actor->pose_.rot_);
 	
 	//mat4 m(pose);
 	//pose.Invert();
@@ -39,9 +46,9 @@ mat4		neb::gfx::Camera::View::Ridealong::view() {
 	//offset_m.SetTranslation(offset_v);
 	
 	
-	mat4 ret = glm::affineInverse(actor_->pose_.mat4_cast());
+	mat4 ret = glm::affineInverse(actor->pose_.mat4_cast());
 	
-	glm::translate(ret, offset_vec);
+	ret = glm::translate(ret, offset_vec);
 	
 	//math::mat44 ret = pose * offset_m;
 	//math::mat44 ret = offset_m * pose.GetInverse();

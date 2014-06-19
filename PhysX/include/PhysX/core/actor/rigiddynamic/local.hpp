@@ -13,7 +13,6 @@
 namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 
 
-
 	class local:
 		virtual public neb::core::actor::rigiddynamic::local,
 		virtual public phx::core::actor::rigidbody::local,
@@ -32,9 +31,8 @@ namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 			virtual void					init_physics();
 
 			virtual void					add_force(real);
-			virtual void					set_pose(physx::PxTransform);
+			virtual void					setPose(neb::core::pose const & pose);
 
-			virtual int					fire();
 
 			/** @brief projectile
 			 *
