@@ -1,5 +1,6 @@
 #include <Galaxy-Log/log.hpp>
 
+#include <PhysX/util/convert.hpp>
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/rigidactor/base.hpp>
 
@@ -65,7 +66,18 @@ void		phx::core::actor::rigidactor::base::setupFiltering() {
 
 	delete[] shapes;
 }
-
+void								phx::core::actor::rigidactor::base::setGlobalPosition(vec3 p) {
+	/** @todo if is nested actor, then this is wrong... */
+	pose_.pos_ = vec4(p,1);
+	
+	assert(px_actor_);
+	auto px_rigidactor = px_actor_->isRigidActor();
+	assert(px_rigidactor);
+	px_rigidactor->setGlobalPose(physx::PxTransform(
+				phx::util::convert(p),
+				phx::util::convert(pose_.rot_)
+				));
+}
 
 
 
