@@ -14,7 +14,7 @@ namespace phx { namespace core { namespace shape {
 
 	class base: virtual public neb::core::shape::base {
 		public:
-			base(sp::shared_ptr<neb::core::shape::util::parent>);
+			base(sp::shared_ptr<phx::core::shape::util::parent>);
 			virtual ~base();
 
 			virtual void		init();
@@ -22,10 +22,10 @@ namespace phx { namespace core { namespace shape {
 			virtual void		step(neb::core::TimeStep const & ts);
 
 
-			void			create_physics();
-			physx::PxGeometry*	to_geo();
+			void				create_physics();
+			virtual physx::PxGeometry*	to_geo() = 0;
 		public:
-			sp::shared_ptr<phx::core::shape::util::parent>		parent_;
+			sp::shared_ptr<phx::core::shape::util::parent>		getPxParent();
 
 			physx::PxShape*		px_shape_;
 

@@ -30,7 +30,7 @@ float operator<<(float f, tinyxml2::XMLElement* element) {
 */
 
 neb::material::raw::raw() {
-	ambient_ = neb::Color::black<float>();
+	ambient_ = neb::Color::white<float>();
 	diffuse_ = neb::Color::cyan<float>();
 	specular_ = neb::Color::white<float>();
 	emission_ = neb::Color::black<float>();

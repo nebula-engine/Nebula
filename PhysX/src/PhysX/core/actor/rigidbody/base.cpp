@@ -22,6 +22,8 @@
 */
 #include <Galaxy-Log/log.hpp>
 
+#include <Nebula/Graphics/Window/Base.hh>
+
 #include <PhysX/util/convert.hpp>
 #include <PhysX/core/scene/base.hpp>
 #include <PhysX/core/actor/util/parent.hpp>
@@ -54,7 +56,7 @@ void			phx::core::actor::rigidbody::base::release() {
 	neb::core::actor::rigidbody::base::release();
 	phx::core::actor::rigidactor::base::release();
 }
-void			phx::core::actor::rigidbody::base::set_pose(neb::core::pose const & pose) {
+void			phx::core::actor::rigidbody::base::setPose(neb::core::pose const & pose) {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
 
@@ -83,15 +85,21 @@ void			phx::core::actor::rigidbody::base::add_force(real time) {
 	f = pose_.rot_ * f;//pose_.q.rotate(f);
 	t = pose_.rot_ * t;//.q.rotate(t);
 
-	//printf("f = ");
-	//f.print();
-	//t.print();
-
 	assert(px_actor_);
 	physx::PxRigidBody* pxrigidbody = px_actor_->isRigidBody();
 	assert(pxrigidbody);
+
+
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug)
+		<< std::setw(8) << "f"
+		<< std::setw(8) << f.x
+		<< std::setw(8) << f.y
+		<< std::setw(8) << f.z
+		<< " mass " << pxrigidbody->getMass();
+
+
+
 	
-	//printf("mass = %f\n", pxrigidbody->getMass());
 	
 	pxrigidbody->addForce(phx::util::convert(vec3(f)));
 	pxrigidbody->addTorque(phx::util::convert(vec3(t)));
@@ -132,44 +140,36 @@ sp::shared_ptr<phx::core::actor::rigiddynamic::local>		phx::core::actor::rigidbo
 	
 	return actor;
 }
-/*void neb::core::actor::rigidbody::base::create_control() {
+void		phx::core::actor::rigidbody::base::create_control(sp::shared_ptr<neb::gfx::window::base> window) {
 
-	auto me = isRigidBody();
+	//auto me = isRigidBodyBase();
 
-	neb::core::actor::Control::RigidBody::Control_u control(new neb::core::actor::Control::RigidBody::Control);
-	neb::core::actor::Control::RigidBody::Control_w weak(control);
-
+	auto control(sp::make_shared<phx::core::actor::control::rigidbody::manual>());
 	
 	control_ = control;
 
-	control->actor_ = isBase();
-	control->raw_.type_ = neb::core::actor::Control::RigidBody::Type::T0;
+	control->actor_ = isPxActorRigidBodyBase();
+	
+	control->conn_.key_fun_ = window->sig_.key_fun_.connect(
+			20,
+			neb::Signals::KeyFun::slot_type(
+				&phx::core::actor::control::rigidbody::base::key_fun,
+				control.get(),
+				_1,
+				_2,
+				_3,
+				_4,
+				_5
+				).track_foreign(control)
+			);
 
 
-	auto wnd = window_.lock();
-	if(wnd) {
-		auto s = weak.lock();
-
-		control->conn_.key_fun_ = wnd->sig_.key_fun_.connect(
-				neb::Signals::KeyFun::slot_type(
-					&neb::core::actor::Control::RigidBody::Control::key_fun,
-					s.get(),
-					_1,
-					_2,
-					_3,
-					_4
-					).track(s)
-				);
-
-		// camera control
-		//std::shared_ptr<neb::Camera::View::ridealong> cam();
-		
-		sp::shared_ptr<neb::Camera::View::Ridealong> view(new neb::Camera::View::Ridealong(isBase()));
-		
-		wnd->renderable_->moveView(std::move(view));	
-	}
-}*/
+}
 void		phx::core::actor::rigidbody::base::step(neb::core::TimeStep const & ts) {
+
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
+	
+	add_force(ts.dt);
 }
 
 

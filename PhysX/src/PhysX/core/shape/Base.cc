@@ -12,7 +12,7 @@
 #include <PhysX/core/actor/rigidactor/base.hpp>
 
 
-phx::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
+phx::core::shape::base::base(sp::shared_ptr<phx::core::shape::util::parent> parent):
 	neb::core::shape::base(parent)
 {
 	NEBULA_SHAPE_BASE_FUNC;
@@ -30,12 +30,21 @@ void			phx::core::shape::base::init() {
 
 	create_physics();
 }
+void			phx::core::shape::base::release() {
+	//NEBULA_DEBUG_0_FUNCTION;
+
+	neb::core::shape::base::release();
+	
+	if(px_shape_) {
+		px_shape_->release();
+		px_shape_ = NULL;
+	}
+}
 void			phx::core::shape::base::create_physics() {
 
 	//NEBULA_DEBUG_0_FUNCTION;
 
-
-	auto actor = parent_->isPxActorBase();
+	auto actor = getPxParent()->isPxActorBase();
 
 	if(actor) {
 		auto rigidactor = actor->isPxActorRigidActorBase();//std::dynamic_pointer_cast<neb::core::actor::Rigid_Actor>(parent_.lock());
@@ -48,6 +57,18 @@ void			phx::core::shape::base::create_physics() {
 			px_shape_ = px_rigid_actor->createShape( *(to_geo()), *px_mat );
 		}
 	}
+}
+sp::shared_ptr<phx::core::shape::util::parent>		phx::core::shape::base::getPxParent() {
+	assert(parent_);
+	
+	auto parent(sp::dynamic_pointer_cast<phx::core::shape::util::parent>(parent_));
+	
+	if(!parent) {
+		std::cout << typeid(*parent_).name() << std::endl;
+		abort();
+	}
+
+	return parent;
 }
 
 
