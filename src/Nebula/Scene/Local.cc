@@ -2,6 +2,7 @@
 #include <Nebula/Scene/Local.hh>
 #include <Nebula/Actor/Base.hh>
 #include <Nebula/Actor/RigidBody/Base.hh>
+#include <Nebula/Actor/RigidStatic/local.hpp>
 #include <Nebula/timer/Actor/Release.hpp>
 
 neb::core::scene::local::local(sp::shared_ptr<neb::core::scene::util::parent> parent):
@@ -33,7 +34,14 @@ void neb::core::scene::local::send_actor_update() {
 
 	neb::app::base::global()->sendServer(message);
 }
+sp::weak_ptr<neb::core::actor::rigidstatic::base>	neb::core::scene::local::createActorRigidStaticUninitialized() {
+	
+	auto actor(sp::make_shared<neb::core::actor::rigidstatic::local>(isSceneLocal()));
 
+	neb::core::actor::util::parent::insert(actor);
+
+	return actor;
+}
 
 
 

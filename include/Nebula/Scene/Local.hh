@@ -34,6 +34,18 @@ namespace neb { namespace core {
 				local(sp::shared_ptr<neb::core::scene::util::parent> parent);
 				virtual void			step(neb::core::TimeStep const & ts);
 				virtual void			send_actor_update();
+
+			/** @name convenience functions
+			 * @{
+			 */
+			/** @brief create rigidstatic
+			 *
+			 * @note typeof returned actor will be determined by final implementation of this
+			 *
+			 * @warning return actor is not initialized
+			 */
+			sp::weak_ptr<neb::core::actor::rigidstatic::base>	createActorRigidStaticUninitialized();
+			/** @} */
 		};
 	}
 }}

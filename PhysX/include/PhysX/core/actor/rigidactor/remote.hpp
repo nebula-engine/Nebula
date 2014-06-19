@@ -1,0 +1,47 @@
+#ifndef __PX_CONTENT_ACTOR_RIGIDACTOR_REMOTE_HPP__
+#define __PX_CONTENT_ACTOR_RIGIDACTOR_REMOTE_HPP__
+
+#include <PxPhysicsAPI.h>
+
+#include <Nebula/Actor/RigidActor/Remote.hh>
+
+#include <PhysX/core/actor/actor/remote.hpp>
+#include <PhysX/core/actor/rigidactor/base.hpp>
+#include <PhysX/core/actor/util/decl.hpp>
+
+namespace phx { namespace core { namespace actor { namespace rigidactor {
+
+
+
+	class remote:
+		virtual public neb::core::actor::rigidactor::remote,
+		virtual public phx::core::actor::actor::remote,
+		virtual public phx::core::actor::rigidactor::base
+	{
+
+		public:
+			remote(sp::shared_ptr<phx::core::actor::util::parent>);
+
+			virtual void					init();
+			virtual void					release();
+			virtual void					step(neb::core::TimeStep const & ts);
+
+
+			//virtual void					create_physics() = 0;
+			//virtual void					init_physics() = 0;
+
+			//virtual void					add_force(real) = 0;
+			//virtual void					set_pose(physx::PxTransform);
+
+
+
+
+
+	};
+
+
+}}}}
+
+#endif
+
+
