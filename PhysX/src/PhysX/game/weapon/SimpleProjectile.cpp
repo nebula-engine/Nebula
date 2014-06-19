@@ -1,0 +1,122 @@
+#include <Galaxy-Log/log.hpp>
+
+#include <Nebula/Filter.hh>
+#include <Nebula/timer/Actor/Release.hpp>
+#include <Nebula/Graphics/Window/Base.hh>
+
+#include <PhysX/core/actor/rigiddynamic/local.hpp>
+#include <PhysX/core/scene/base.hpp>
+#include <PhysX/core/shape/box.hpp>
+#include <PhysX/game/weapon/SimpleProjectile.hpp>
+
+void			phx::game::weapon::SimpleProjectile::connect(sp::shared_ptr<neb::gfx::window::base> window) {
+	
+	auto self(sp::dynamic_pointer_cast<phx::game::weapon::SimpleProjectile>(shared_from_this()));
+	
+	window->sig_.key_fun_.connect(
+			20,
+			neb::Signals::KeyFun::slot_type(
+				&phx::game::weapon::SimpleProjectile::key_fun,
+				self.get(),
+				_1,
+				_2,
+				_3,
+				_4,
+				_5
+				).track_foreign(self)
+			);
+
+}
+int			phx::game::weapon::SimpleProjectile::key_fun(sp::shared_ptr<neb::gfx::window::base> window, int key, int , int action, int mods) {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx game weapon", debug) << __PRETTY_FUNCTION__;;
+
+	int key_fire = GLFW_KEY_SPACE;
+
+	switch(action) {
+		case GLFW_PRESS:
+			if(key == key_fire) {
+				fire();
+				return 1;
+			}
+			break;
+	}
+
+	return 0;
+}
+void			phx::game::weapon::SimpleProjectile::fire() {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx game weapon", debug) << __PRETTY_FUNCTION__;;
+
+	// create projectile actor
+
+	auto actor(actor_.lock());
+	assert(actor);
+
+	auto scene = actor->getPxParent()->getScene();
+
+	auto proj(sp::make_shared<phx::core::actor::rigiddynamic::local>(scene));
+
+	scene->insert(proj);
+
+	proj->simulation_.word0 = neb::Filter::Filter::Type::DYNAMIC | neb::Filter::Filter::Type::PROJECTILE;
+	proj->simulation_.word1 = neb::Filter::Filter::RIGID_AGAINST;
+
+
+
+
+
+
+	// initialize position and velocity
+
+	// relative values
+
+	vec3 pos_relative(0,0,-2);
+	vec3 vel_relative(0,0,-1);
+
+	// rotate relative values to actor's space
+	pos_relative = actor->pose_.rot_ * pos_relative;
+	vel_relative = actor->pose_.rot_ * vel_relative;
+
+	// center on actor
+	proj->pose_ = actor->pose_;
+
+	// translate
+
+	proj->pose_.pos_ += vec4(pos_relative,0);
+
+	// velocity
+
+	proj->velocity_ = vel_relative;
+
+	auto rigidbody(actor->isPxActorRigidBodyBase());
+	if(rigidbody) {
+		proj->velocity_ += rigidbody->velocity_;
+	}
+
+
+
+
+
+
+
+
+	proj->init();
+
+	// shape	
+	auto shape = sp::make_shared<phx::core::shape::box>(proj);
+
+	proj->neb::core::shape::util::parent::insert(shape);
+
+	shape->init();
+
+	proj->setupFiltering();
+
+
+
+	// release timer
+
+	std::shared_ptr<neb::Timer::actor::base> t(
+			new neb::Timer::actor::Release(proj, scene->last_ + 5.0)
+			);
+}
+
+
