@@ -21,7 +21,7 @@ namespace neb {
 						virtual void				step(neb::core::TimeStep const & ts);
 
 
-						sp::shared_ptr<neb::core::actor::base>	actor_;
+						sp::weak_ptr<neb::core::actor::base>	actor_;
 				};
 			}
 		}

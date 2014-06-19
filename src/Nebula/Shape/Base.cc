@@ -12,8 +12,6 @@
 #include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
 #include <Nebula/Math/geo/polygon.hpp>
 
-neb::core::shape::base::base() {
-}
 neb::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
 	parent_(parent),
 	s_(1,1,1)
@@ -24,11 +22,12 @@ neb::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> pare
 neb::core::shape::base::~base() {}
 neb::core::pose				neb::core::shape::base::getPoseGlobal() {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
-
+	
 	neb::core::pose m;
-
-	if(parent_) {
-		m = parent_->getPoseGlobal() * getPose();
+	
+	auto parent = parent_.lock();
+	if(parent) {
+		m = parent->getPoseGlobal() * getPose();
 	} else {
 		m = getPose();
 	}

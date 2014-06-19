@@ -16,3 +16,6 @@
 [submodule "maze"]
 	path = maze
 	url = http://chuck1@github.com/chuck1/maze
+[submodule "glm"]
+	path = glm
+	url = https://github.com/g-truc/glm.git
