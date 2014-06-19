@@ -23,6 +23,8 @@ sp::shared_ptr<phx::core::scene::base>			phx::core::actor::util::parent::getScen
 	
 	if(!actor) throw 0;
 	
-	return actor->phx::core::actor::util::parent::getScene();
+	return actor->getPxParent()->phx::core::actor::util::parent::getScene();
 }
+
+
 

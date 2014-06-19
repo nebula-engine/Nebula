@@ -15,7 +15,7 @@ neb::Light::base::base(sp::shared_ptr<neb::Light::util::parent> parent, ::std::s
 	parent_(parent),
 	light_type_string_(light_type_string),
 	pos_(vec4(0.0, 0.0, 0.0, 1.0)),
-	ambient_(0.2,0.2,0.2,1.0),
+	ambient_(0.3,0.3,0.3,1.0),
 	diffuse_(neb::Color::white<float>()),
 	specular_(neb::Color::white<float>())
 {

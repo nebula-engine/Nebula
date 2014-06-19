@@ -1,3 +1,4 @@
+#include <Galaxy-Log/log.hpp>
 
 #include <Nebula/debug.hh>
 //#include <Nebula/Physics.hh>
@@ -13,23 +14,29 @@ phx::core::actor::rigidstatic::base::base(sp::shared_ptr<phx::core::actor::util:
 	neb::core::actor::base(parent),
 	neb::core::actor::actor::base(parent),
 	neb::core::actor::rigidactor::base(parent),
-	neb::core::actor::rigidbody::base(parent),
+	neb::core::actor::rigidstatic::base(parent),
 	phx::core::actor::base(parent),
 	phx::core::actor::actor::base(parent),
 	phx::core::actor::rigidactor::base(parent)
 {
-	NEBULA_ACTOR_BASE_FUNC
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::actor::rigidstatic::base::init() {
-	NEBULA_ACTOR_BASE_FUNC
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+}
+void			phx::core::actor::rigidstatic::base::release() {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::actor::rigidstatic::base::step(neb::core::TimeStep const & ts) {
-	NEBULA_ACTOR_BASE_FUNC;
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
 }
 void			phx::core::actor::rigidstatic::base::create_physics() {
-	NEBULA_ACTOR_BASE_FUNC;
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
-	assert(px_actor_ == NULL);
+	if(px_actor_ != NULL) {
+		BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << "been here!";
+		return;
+	}
 	
 	auto scene = sp::dynamic_pointer_cast<phx::core::scene::base>(getScene());//scene_.lock();
 	assert(scene);

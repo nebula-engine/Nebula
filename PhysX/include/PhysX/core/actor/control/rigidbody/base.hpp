@@ -26,7 +26,7 @@ namespace phx { namespace core { namespace actor { namespace control { namespace
 		class base {
 			public:
 				base();
-				virtual ~base() = 0;
+				virtual ~base() {}
 				base&				operator=(base const & base);
 
 				virtual int			key_fun(sp::shared_ptr<neb::gfx::window::base>, int, int, int, int);
@@ -60,16 +60,20 @@ namespace phx { namespace core { namespace actor { namespace control { namespace
 				//gal::control::control		pid_;
 
 		};
-		class Manual: public phx::core::actor::control::rigidbody::base {
-			void				step(neb::core::TimeStep const & ts);
-			vec4				f();
-			vec4				t();
+		class manual: public phx::core::actor::control::rigidbody::base {
+			public:
+				virtual ~manual() {}
+				void				step(neb::core::TimeStep const & ts);
+				vec4				f();
+				vec4				t();
 
 		};
-		class PD: public phx::core::actor::control::rigidbody::base {
-			void				step(neb::core::TimeStep const & ts);
-			vec4				f();
-			vec4				t();
+		class pd: public phx::core::actor::control::rigidbody::base {
+			public:
+				virtual ~pd() {}
+				void				step(neb::core::TimeStep const & ts);
+				vec4				f();
+				vec4				t();
 		};
 
 
