@@ -221,12 +221,7 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	actor3->setGlobalPosition(vec3(0,0,0));
 	
 	// weapon
-	auto weap(sp::make_shared<phx::game::weapon::SimpleProjectile>());
-	
-	weap->actor_ = actor3;
-	weap->connect(window);
-
-	actor3->phx::game::weapon::util::parent::insert(weap);
+	auto weap = actor3->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
 
 	// lights
 	auto actor2 = create_actor2(scene);
