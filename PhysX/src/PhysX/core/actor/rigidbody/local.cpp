@@ -30,7 +30,4 @@ void		phx::core::actor::rigidbody::local::step(neb::core::TimeStep const & ts) {
 	neb::core::actor::rigidbody::base::step(ts);
 	neb::core::actor::rigidactor::local::step(ts);
 }
-sp::shared_ptr<phx::core::actor::rigiddynamic::local>		phx::core::actor::rigidbody::local::get_projectile() {
-	return phx::core::actor::rigidbody::base::get_projectile();
-}
 

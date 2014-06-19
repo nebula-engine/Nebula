@@ -29,7 +29,6 @@ namespace phx { namespace core { namespace actor { namespace rigidstatic {
 			virtual void					init_physics();
 
 
-			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile() = 0;
 
 
 	};

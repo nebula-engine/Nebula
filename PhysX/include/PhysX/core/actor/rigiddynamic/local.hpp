@@ -38,7 +38,6 @@ namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 			 *
 			 * @note required because of diamond inheritance
 			 */
-			virtual sp::shared_ptr<phx::core::actor::rigiddynamic::local>		get_projectile();
 
 	};
 

@@ -104,42 +104,6 @@ void			phx::core::actor::rigidbody::base::add_force(real time) {
 	pxrigidbody->addForce(phx::util::convert(vec3(f)));
 	pxrigidbody->addTorque(phx::util::convert(vec3(t)));
 }
-sp::shared_ptr<phx::core::actor::rigiddynamic::local>		phx::core::actor::rigidbody::base::get_projectile() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
-	
-	auto parent(parent_.lock());
-
-	sp::shared_ptr<phx::core::scene::base> scene = parent->getScene();
-	
-	auto actor(sp::make_shared<phx::core::actor::rigiddynamic::local>(scene));
-	
-	
-	vec3 pos_relative(0,0,-2);
-	vec3 vel_relative(0,0,-1);
-	
-	
-	pos_relative = pose_.rot_ * pos_relative;
-	
-	
-	
-	actor->pose_ = pose_;
-
-	// pose
-	
-	actor->pose_.pos_ += vec4(pos_relative,0);
-	
-	// velocity
-	
-	vec3 vel(velocity_);
-	
-	vel_relative = pose_.rot_ * vel_relative;
-	
-	vel += vel_relative;
-	
-	actor->velocity_ = vel;
-	
-	return actor;
-}
 void		phx::core::actor::rigidbody::base::create_control(sp::shared_ptr<neb::gfx::window::base> window) {
 
 	//auto me = isRigidBodyBase();

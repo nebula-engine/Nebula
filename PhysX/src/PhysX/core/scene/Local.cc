@@ -121,25 +121,6 @@ void			phx::core::scene::local::step(neb::core::TimeStep const & ts) {
 	send_actor_update();
 
 }
-void		phx::core::scene::local::fire(sp::shared_ptr<phx::core::actor::base> actor) {
-
-	auto proj = actor->get_projectile();
-
-	//auto me = std::dynamic_pointer_cast<neb::core::actor::actor>(shared_from_this());
-
-	//auto a = create_actor_local(desc);
-
-	/** @todo replace neb::timer::actor::type with inheritance */
-
-	std::shared_ptr<neb::Timer::actor::base> t(
-			new neb::Timer::actor::Release(proj, last_ + 5.0)
-			);
-
-
-}
-
-
-
 
 
 

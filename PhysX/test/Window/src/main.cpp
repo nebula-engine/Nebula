@@ -23,6 +23,7 @@
 #include <PhysX/core/shape/box.hpp>
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
 #include <PhysX/core/actor/rigidstatic/local.hpp>
+#include <PhysX/game/weapon/SimpleProjectile.hpp>
 
 sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
 
@@ -215,12 +216,19 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	actor = create_actor_static(scene);
 	actor->setGlobalPosition(vec3(5,0,0));
 
-
+	// player's actor
 	auto actor3 = create_actor_dynamic(scene);
 	actor3->setGlobalPosition(vec3(0,0,0));
 	
-	std::cout << "actor3 use count = " << actor3.use_count() << std::endl;
+	// weapon
+	auto weap(sp::make_shared<phx::game::weapon::SimpleProjectile>());
+	
+	weap->actor_ = actor3;
+	weap->connect(window);
 
+	actor3->phx::game::weapon::util::parent::insert(weap);
+
+	// lights
 	auto actor2 = create_actor2(scene);
 	
 	
