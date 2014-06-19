@@ -93,8 +93,15 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 	return layout;
 }
 sp::shared_ptr<phx::core::actor::rigidstatic::local>		create_actor_static(sp::shared_ptr<phx::core::scene::local> scene) {
+	
+	auto actor = sp::make_shared<phx::core::actor::rigidstatic::local>(scene);
+	
+	scene->insert(actor);
+	
+	actor->simulation_.word0 = neb::Filter::Filter::Type::STATIC;
+	actor->simulation_.word1 = neb::Filter::Filter::RIGID_AGAINST;
 
-	auto actor = scene->cii<phx::core::actor::rigidstatic::local, sp::shared_ptr<phx::core::scene::local>>(scene);
+	actor->init();
 
 	// shape	
 	auto shape = sp::make_shared<phx::core::shape::box>(actor);
@@ -103,11 +110,20 @@ sp::shared_ptr<phx::core::actor::rigidstatic::local>		create_actor_static(sp::sh
 	
 	shape->init();
 	
+	
+		
 	return actor;	
 }
 sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::shared_ptr<phx::core::scene::local> scene) {
 
-	auto actor = scene->cii<phx::core::actor::rigiddynamic::local, sp::shared_ptr<phx::core::scene::local>>(scene);
+	auto actor = sp::make_shared<phx::core::actor::rigiddynamic::local>(scene);
+	
+	scene->insert(actor);
+	
+	actor->simulation_.word0 = neb::Filter::Filter::Type::DYNAMIC;
+	actor->simulation_.word1 = neb::Filter::Filter::RIGID_AGAINST;
+
+	actor->init();
 
 	// shape	
 	auto shape = sp::make_shared<phx::core::shape::box>(actor);

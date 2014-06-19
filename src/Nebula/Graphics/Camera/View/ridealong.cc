@@ -47,7 +47,7 @@ mat4		neb::gfx::Camera::View::Ridealong::view() {
 	
 	mat4 ret = glm::affineInverse(actor_->pose_.mat4_cast());
 	
-	glm::translate(ret, offset_vec);
+	ret = glm::translate(ret, offset_vec);
 	
 	//math::mat44 ret = pose * offset_m;
 	//math::mat44 ret = offset_m * pose.GetInverse();

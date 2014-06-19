@@ -19,7 +19,7 @@ void		phx::core::actor::control::rigidbody::manual::step(neb::core::TimeStep con
 
 vec4			phx::core::actor::control::rigidbody::manual::f() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
-	return f_ * 100.0f;
+	return f_ * 30.0f;
 }
 vec4			phx::core::actor::control::rigidbody::manual::t() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
