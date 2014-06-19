@@ -11,110 +11,8 @@
 #include <PhysX/core/actor/control/rigidbody/base.hpp>
 #include <PhysX/util/convert.hpp>
 
-phx::core::actor::control::rigidbody::base::base() {
 
-}
-int phx::core::actor::control::rigidbody::base::key_fun(sp::shared_ptr<neb::gfx::window::base> window, int key, int scancode, int action, int mods) {
-	//NEBULA_DEBUG_0_FUNCTION;
-
-	vec4 x(1.0,0.0,0.0,0);
-	vec4 y(0.0,1.0,0.0,0);
-	vec4 z(0.0,0.0,1.0,0);
-
-	switch(action) {
-		case GLFW_PRESS:
-			switch(key) {
-				case GLFW_KEY_D:
-					f_ += x;
-					return 1;
-				case GLFW_KEY_A:
-					f_ -= x;
-					return 1;
-				case GLFW_KEY_E:
-					f_ += y;
-					return 1;
-				case GLFW_KEY_Q:
-					f_ -= y;
-					return 1;
-				case GLFW_KEY_W:
-					f_ -= z;
-					return 1;
-				case GLFW_KEY_S:
-					f_ += z;
-					return 1;
-				case GLFW_KEY_I:
-					t_ += x;
-					return 1;
-				case GLFW_KEY_K:
-					t_ -= x;
-					return 1;
-				case GLFW_KEY_L:
-					t_ -= y;
-					return 1;
-				case GLFW_KEY_J:
-					t_ += y;
-					return 1;
-				case GLFW_KEY_O:
-					t_ -= z;
-					return 1;
-				case GLFW_KEY_U:
-					t_ += z;
-					return 1;
-				default:
-					return 0;
-			}
-		case GLFW_RELEASE:
-			switch(key) {
-				case GLFW_KEY_D:
-					f_ -= x;
-					return 1;
-				case GLFW_KEY_A:
-					f_ += x;
-					return 1;
-				case GLFW_KEY_E:
-					f_ -= y;
-					return 1;
-				case GLFW_KEY_Q:
-					f_ += y;
-					return 1;
-				case GLFW_KEY_W:
-					f_ += z;
-					return 1;
-				case GLFW_KEY_S:
-					f_ -= z;
-					return 1;
-				case GLFW_KEY_I:
-					t_ -= x;
-					return 1;
-				case GLFW_KEY_K:
-					t_ += x;
-					return 1;
-				case GLFW_KEY_L:
-					t_ += y;
-					return 1;
-				case GLFW_KEY_J:
-					t_ -= y;
-					return 1;
-				case GLFW_KEY_O:
-					t_ += z;
-					return 1;
-				case GLFW_KEY_U:
-					t_ -= z;
-					return 1;
-				default:
-					return 0;
-			}
-	}
-
-
-	return 0;
-}
-void		phx::core::actor::control::rigidbody::Manual::step(neb::core::TimeStep const & ts) { // 0
-
-}
-
-
-void		phx::core::actor::control::rigidbody::PD::step(neb::core::TimeStep const & ts) { // 1
+void		phx::core::actor::control::rigidbody::pd::step(neb::core::TimeStep const & ts) { // 1
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	// step target
@@ -145,18 +43,15 @@ void		phx::core::actor::control::rigidbody::PD::step(neb::core::TimeStep const &
 	}
 
 
-/*
 	// get actor
-	auto base = actor_.lock();
-	auto actor = actor_->isActorActor();
+	auto actor = actor_.lock();
+	//auto actor = actor_->isActorActor();
 	assert(actor);
 	
 	auto pxrigidbody = actor->px_actor_->isRigidBody();
-*/	
-	auto pxrigidbody = actor_->px_actor_->isRigidBody();
 	
 	// rotation from pose to target pose
-	quat q(actor_->pose_.rot_);
+	quat q(actor->pose_.rot_);
 	
 //	physx::PxQuat q = actor_->pose_.q;
 	quat a = glm::conjugate(q_target_) * q;
@@ -259,19 +154,12 @@ void		phx::core::actor::control::rigidbody::PD::step(neb::core::TimeStep const &
 	}
 	*/
 }
-vec4			phx::core::actor::control::rigidbody::Manual::f() {
-	//NEBULA_DEBUG_1_FUNCTION;
-	return f_ * 100.0f;
-}
-vec4			phx::core::actor::control::rigidbody::Manual::t() {
-	//NEBULA_DEBUG_1_FUNCTION;
-	return t_ * 3.0f;
-}
-vec4			phx::core::actor::control::rigidbody::PD::f() {
+
+vec4			phx::core::actor::control::rigidbody::pd::f() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return force_;
 }
-vec4			phx::core::actor::control::rigidbody::PD::t() {
+vec4			phx::core::actor::control::rigidbody::pd::t() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return torque_;
 }

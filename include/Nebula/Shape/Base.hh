@@ -45,7 +45,6 @@ namespace neb { namespace core { namespace shape {
 			public:
 				typedef ::std::map< neb::gfx::context::base*, sp::shared_ptr<buffer> >			map_t;
 
-				base();
 				base(sp::shared_ptr<neb::core::shape::util::parent> parent);
 				virtual ~base();
 
@@ -88,7 +87,7 @@ namespace neb { namespace core { namespace shape {
 				}
 
 			public:
-				sp::shared_ptr<neb::core::shape::util::parent>		parent_;
+				sp::weak_ptr<neb::core::shape::util::parent>		parent_;
 
 			public:
 				neb::core::shape::util::Flag		flag_;

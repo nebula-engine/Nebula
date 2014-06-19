@@ -1,3 +1,4 @@
+#include <Galaxy-Log/log.hpp>
 
 #include <Nebula/debug.hh>
 #include <Nebula/Shape/Base.hh>
@@ -21,21 +22,37 @@ phx::core::actor::rigiddynamic::base::base(sp::shared_ptr<phx::core::actor::util
 	phx::core::actor::rigidactor::base(parent),
 	phx::core::actor::rigidbody::base(parent)
 {
-	NEBULA_ACTOR_BASE_FUNC;
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::actor::rigiddynamic::base::init() {
-	NEBULA_ACTOR_BASE_FUNC;
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
-	phx::core::actor::rigidbody::base::init();
 	neb::core::actor::rigiddynamic::base::init();
+	phx::core::actor::rigidbody::base::init();
 	
+	assert(px_actor_);
 	auto pxrd = px_actor_->isRigidDynamic();
 	pxrd->setLinearDamping(0.01);
 }
+void			phx::core::actor::rigiddynamic::base::release() {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	
+	phx::core::actor::rigidbody::base::release();
+	neb::core::actor::rigiddynamic::base::release();
+}
+void			phx::core::actor::rigiddynamic::base::step(neb::core::TimeStep const & ts) {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	
+	phx::core::actor::rigidbody::base::step(ts);
+	neb::core::actor::rigiddynamic::base::step(ts);
+}
 void			phx::core::actor::rigiddynamic::base::create_physics() {
-	NEBULA_ACTOR_BASE_FUNC;
-
-	assert(px_actor_ == NULL);
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	
+	if(px_actor_ != NULL) {
+		BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << "been here!";
+		return;
+	}
 
 	auto scene = sp::dynamic_pointer_cast<phx::core::scene::base>(getScene());
 
@@ -51,7 +68,7 @@ void			phx::core::actor::rigiddynamic::base::create_physics() {
 
 	if (!px_rigid_dynamic)
 	{
-		printf("create shape failed!");
+		printf("create actor failed!");
 		exit(1);
 	}
 
@@ -60,17 +77,28 @@ void			phx::core::actor::rigiddynamic::base::create_physics() {
 	px_rigid_dynamic->setLinearVelocity(phx::util::convert(velocity_), true);
 
 	// userData
+	auto sft = shared_from_this();
+	auto uc = sft.use_count();
 	px_rigid_dynamic->userData = this;
+	assert(uc == sft.use_count());
+
+	// debug
+	assert(this == shared_from_this().get());
+	assert(sp::dynamic_pointer_cast<neb::core::actor::rigidbody::base>(shared_from_this()));
 
 	// add PxActor to PxScene
+	assert(scene->px_scene_);
 	scene->px_scene_->addActor(*px_rigid_dynamic);
 
+	assert(px_actor_);
 }
 void			phx::core::actor::rigiddynamic::base::init_physics() {
-	NEBULA_ACTOR_BASE_FUNC;
-	
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+
+	assert(px_actor_);	
 	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();
-	
+	assert(px_rigid_dynamic);
+
 	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, density_);
 	
 	setupFiltering();
