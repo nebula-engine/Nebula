@@ -24,6 +24,7 @@
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/scene/base.hpp>
+#include <PhysX/game/weapon/SimpleProjectile.hpp>
 
 phx::core::actor::base::base(sp::shared_ptr<phx::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
@@ -88,6 +89,27 @@ void			phx::core::actor::base::damage(float h) {
 
 	return 0;
 }*/
+sp::weak_ptr<phx::game::weapon::SimpleProjectile>			phx::core::actor::base::createWeaponSimpleProjectile(
+		sp::shared_ptr<neb::gfx::window::base> window,
+		real size,
+		real damage,
+		real velocity) {
+	
+	auto self(isPxActorBase());
+	
+	auto weap(sp::make_shared<phx::game::weapon::SimpleProjectile>());
+	
+	weap->actor_ = self;
+	weap->connect(window);
+	
+	weap->velocity_ = velocity;
+	weap->size_ = size;
+	weap->damage_ = damage;
+	
+	phx::game::weapon::util::parent::insert(weap);
+
+	return weap;
+}
 
 
 

@@ -11,7 +11,11 @@ namespace phx { namespace game { namespace weapon {
 			virtual void					connect(sp::shared_ptr<neb::gfx::window::base> window);
 			virtual int					key_fun(sp::shared_ptr<neb::gfx::window::base> window, int, int, int, int);
 			virtual void					fire();
-			
+		
+			real						size_;
+			real						velocity_;
+			real						damage_;
+
 			sp::weak_ptr<phx::core::actor::base>		actor_;
 
 	};
