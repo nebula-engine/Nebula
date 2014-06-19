@@ -1,6 +1,8 @@
 #ifndef NEBULA_SERIALIZATION_GLM_HPP
 #define NEBULA_SERIALIZATION_GLM_HPP
 
+#include <boost/serialization/nvp.hpp>
+
 #include <Nebula/Util/typedef.hpp>
 
 
