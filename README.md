@@ -17,10 +17,15 @@ For consideration for merging into master, GRU/test/Window must:
     - rendering over scene
     - text entry
     - commands working
+        - create/destroy scene
+        - help
+        - exit
     - toggle enable/disable
-- cube scene
+- maze scene
     - lights rendering properly
     - cubes rendering properly
+    - randomly generated maze
+    - PhysX working
 
 ## News
 
