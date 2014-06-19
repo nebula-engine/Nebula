@@ -91,33 +91,11 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 }
 sp::shared_ptr<phx::core::actor::rigidstatic::base>		create_actor_static(sp::shared_ptr<phx::core::scene::local> scene, vec3 pos) {
 
-	
 	neb::core::pose pose;
 	pose.pos_ = vec4(pos,1);
 
 	auto actor = sp::dynamic_pointer_cast<phx::core::actor::rigidstatic::base>(scene->createActorRigidStaticCube(pose, 1.0).lock());
 	
-	/*
-
-	auto actor = sp::make_shared<phx::core::actor::rigidstatic::local>(scene);
-	
-	scene->insert(actor);
-	
-	actor->simulation_.word0 = neb::Filter::Filter::Type::STATIC;
-	actor->simulation_.word1 = neb::Filter::Filter::RIGID_AGAINST;
-
-	actor->init();
-
-	// shape	
-	auto shape = sp::make_shared<phx::core::shape::box>(actor);
-	
-	actor->neb::core::shape::util::parent::insert(shape);
-	
-	shape->init();
-	
-	actor->setupFiltering();
-	*/
-		
 	return actor;
 }
 sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::shared_ptr<phx::core::scene::local> scene) {
@@ -208,22 +186,11 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 
 	// actors
 	auto actor = create_actor_static(scene, vec3(0,0,-5));
-	//actor->setGlobalPosition(vec3(0,0,-5));
-	
 	actor = create_actor_static(scene, vec3(0,0,5));
-	//actor->setGlobalPosition(vec3(0,0,5));
-	
 	actor = create_actor_static(scene, vec3(0,-5,0));
-	//actor->setGlobalPosition(vec3(0,-5,0));
-
 	actor = create_actor_static(scene, vec3(0,5,0));
-	//actor->setGlobalPosition(vec3(0,5,0));
-
 	actor = create_actor_static(scene, vec3(-5,0,0));
-	//actor->setGlobalPosition(vec3(-5,0,0));
-
 	actor = create_actor_static(scene, vec3(5,0,0));
-	//actor->setGlobalPosition(vec3(5,0,0));
 
 	// player's actor
 	auto actor3 = create_actor_dynamic(scene);
@@ -280,6 +247,21 @@ sp::shared_ptr<phx::game::map::base>			create_maze(
 	
 	context->environ_->drawable_ = map;
 
+
+	// camera
+	
+	actor3->create_control(window);
+
+	auto cam = sp::make_shared<neb::gfx::Camera::View::Ridealong>(context->environ_);
+
+	cam->actor_ = actor3;
+	
+	auto e3 = sp::dynamic_pointer_cast<neb::gfx::environ::three>(context->environ_);
+	assert(e3);
+
+	e3->view_ = cam;
+
+
 	return map;
 }
 int			main() {
@@ -315,6 +297,16 @@ int			main() {
 	
 	app->command_set_->map_["sc"] = cmd_create_scene;
 	
+	// create scene
+	auto cmd_create_maze = sp::make_shared<neb::util::command>();
+
+	cmd_create_maze->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
+		(*term) << "creating maze...";
+		map = create_maze(window, context1);
+	};
+	
+	app->command_set_->map_["maze"] = cmd_create_maze;
+
 	// destroy scene
 	auto cmd_destroy_scene = sp::make_shared<neb::util::command>();
 	
