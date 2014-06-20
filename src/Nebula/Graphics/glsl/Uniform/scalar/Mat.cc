@@ -8,7 +8,7 @@
 //#include <GL/glut.h>
 
 
-#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
+#include <Nebula/gfx/glsl/Uniform/scalar.hpp>
 #include <Nebula/free.hh>
 
 void	neb::glsl::Uniform::Scalar::Mat4::load(mat4 const & m) {

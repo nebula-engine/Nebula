@@ -3,7 +3,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Actor/RigidStatic/remote.hpp>
+#include <Nebula/core/actor/RigidStatic/remote.hpp>
 
 #include <PhysX/core/actor/rigidstatic/base.hpp>
 #include <PhysX/core/actor/rigidactor/remote.hpp>

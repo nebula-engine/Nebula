@@ -1,7 +1,7 @@
 #include <string.h>
 #include <algorithm>
 
-#include <Nebula/Graphics/GUI/Object/Base.hh>
+#include <Nebula/gfx/GUI/Object/Base.hh>
 
 neb::gfx::gui::object::base::base():
 	x_(0.0),

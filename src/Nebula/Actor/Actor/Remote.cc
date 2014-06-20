@@ -1,6 +1,6 @@
 #include <Nebula/debug.hh>
 
-#include <Nebula/Actor/Actor/Remote.hh>
+#include <Nebula/core/actor/Actor/Remote.hh>
 
 
 neb::core::actor::actor::remote::remote(sp::shared_ptr<neb::core::actor::util::parent> parent):

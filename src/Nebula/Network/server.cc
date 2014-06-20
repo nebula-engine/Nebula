@@ -2,10 +2,10 @@
 
 #include <Galaxy-Network/server.hpp>
 
-#include <Nebula/Util/typedef.hpp>
-#include <Nebula/App/Base.hh>
-#include <Nebula/Actor/Base.hh>
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/util/typedef.hpp>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/actor/Base.hh>
+#include <Nebula/core/scene/Base.hh>
 
 neb::Network::Server::Server(
 		boost::asio::io_service& io_service,

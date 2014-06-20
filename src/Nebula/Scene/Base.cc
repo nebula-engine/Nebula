@@ -3,43 +3,40 @@
 #include <Galaxy-Log/log.hpp>
 #include <Galaxy-Network/message.hpp>
 
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Graphics/Context/Base.hh>
+#include <Nebula/gfx/window/Base.hh>
+#include <Nebula/gfx/Context/Base.hh>
 
 
-#include <Nebula/Scene/Base.hh>
-#include <Nebula/Scene/Util/Types.hh>
-#include <Nebula/Scene/Util/Parent.hh>
+#include <Nebula/core/scene/Base.hh>
+#include <Nebula/core/scene/Util/Types.hh>
+#include <Nebula/core/scene/Util/Parent.hh>
 
-#include <Nebula/Actor/Base.hh>
+#include <Nebula/core/actor/Base.hh>
 
-#include <Nebula/Graphics/Light/Base.hh>
-#include <Nebula/Graphics/glsl/program.hh>
-#include <Nebula/Graphics/Camera/Projection/Perspective.hh>
+#include <Nebula/core/light/Base.hh>
+#include <Nebula/gfx/glsl/program.hh>
+#include <Nebula/gfx/Camera/Projection/Perspective.hh>
 
-//#include <math/free.hpp>
 
-#include <Nebula/Actor/Util/Type.hh>
-#include <Nebula/Message/Actor/Event/Base.hh>
-#include <Nebula/Message/Actor/Create.hh>
-#include <Nebula/Message/Actor/Update.hh>
-#include <Nebula/Message/Actor/Event/Base.hh>
-//#include <Nebula/Util/Typed.hh>
-#include <Nebula/Memory/smart_ptr.hh>
+#include <Nebula/core/actor/Util/Type.hh>
+#include <Nebula/message/Actor/Event/Base.hh>
+#include <Nebula/message/Actor/Create.hh>
+#include <Nebula/message/Actor/Update.hh>
+#include <Nebula/message/Actor/Event/Base.hh>
 
 #include <Nebula/config.hh> // nebula/config.hpp.in
-#include <Nebula/App/Base.hh>
+#include <Nebula/app/Base.hh>
 //#include <Nebula/actor/free.hh>
-#include <Nebula/Actor/RigidDynamic/Base.hh>
-#include <Nebula/Actor/RigidStatic/Base.hh>
-#include <Nebula/Actor/Controller/Base.hh>
+#include <Nebula/core/actor/RigidDynamic/Base.hh>
+#include <Nebula/core/actor/RigidStatic/Base.hh>
+#include <Nebula/core/actor/Controller/Base.hh>
 //#include <Nebula/actor/vehicle.hh>
-#include <Nebula/Actor/Empty/Empty.hpp>
-#include <Nebula/Shape/Base.hh>
+#include <Nebula/core/actor/Empty/Empty.hpp>
+#include <Nebula/core/shape/Base.hh>
 #include <Nebula/timer/Types.hh>
 #include <Nebula/timer/Actor/Release.hpp>
-#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
-#include <Nebula/Graphics/Light/Util/light_count.hpp>
+#include <Nebula/gfx/glsl/Uniform/scalar.hpp>
+#include <Nebula/core/light/Util/light_count.hpp>
 
 neb::core::scene::base::base(sp::shared_ptr<neb::core::scene::util::parent> parent):
 	parent_(parent)
@@ -117,9 +114,6 @@ sp::weak_ptr<neb::core::actor::rigidstatic::base>		neb::core::scene::base::creat
 	// set data members
 	
 	actor->pose_ = pose;
-
-	actor->simulation_.word0 = neb::Filter::Filter::Type::DYNAMIC;
-	actor->simulation_.word1 = neb::Filter::Filter::RIGID_AGAINST;
 
 	// initialize (create physx)
 	

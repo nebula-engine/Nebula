@@ -2,8 +2,8 @@
 #include <GLFW/glfw3.h>
 
 #include <Nebula/free.hh>
-#include <Nebula/App/Base.hh>
-#include <Nebula/Graphics/GUI/Object/terminal.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/gfx/GUI/Object/terminal.hh>
 
 void		neb::gfx::gui::object::terminal::init() {
 

@@ -1,11 +1,11 @@
 //#include <Nebula/network/message.hh>
 
-#include <Nebula/App/Base.hh>
-#include <Nebula/Actor/Base.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/actor/Base.hh>
 
-#include <Nebula/Message/Actor/Event/Base.hh>
-#include <Nebula/Actor/RigidStatic/remote.hpp>
-#include <Nebula/Scene/Remote.hh>
+#include <Nebula/message/Actor/Event/Base.hh>
+#include <Nebula/core/actor/RigidStatic/remote.hpp>
+#include <Nebula/core/scene/Remote.hh>
 
 void		neb::core::scene::remote::step(neb::core::TimeStep const & ts) {
 	neb::core::scene::base::step(ts);

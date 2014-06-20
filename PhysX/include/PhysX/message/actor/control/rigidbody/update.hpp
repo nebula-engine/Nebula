@@ -3,7 +3,7 @@
 
 #include <Galaxy-Standard/wrapper.hpp>
 
-#include <Nebula/Message/Actor/Base.hh>
+#include <Nebula/message/Actor/Base.hh>
 
 #include <PhysX/core/actor/util/decl.hpp>
 

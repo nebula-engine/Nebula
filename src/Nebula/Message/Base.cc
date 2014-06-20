@@ -1,4 +1,4 @@
-#include <Nebula/Message/Base.hh>
+#include <Nebula/message/Base.hh>
 
 neb::message::base::base() {
 }

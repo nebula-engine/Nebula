@@ -10,7 +10,7 @@
 //#include <math/mat44.hpp>
 
 //#include <Nebula/scene/scene.hpp>
-#include <Nebula/Graphics/glsl/Uniform/vector.hpp>
+#include <Nebula/gfx/glsl/Uniform/vector.hpp>
 #include <Nebula/free.hh>
 
 

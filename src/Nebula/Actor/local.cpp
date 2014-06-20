@@ -1,4 +1,4 @@
-#include <Nebula/Actor/Local.hh>
+#include <Nebula/core/actor/Local.hh>
 
 neb::core::actor::local::local(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	neb::core::actor::base(parent)

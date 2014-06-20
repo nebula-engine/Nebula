@@ -1,6 +1,6 @@
 #include <Nebula/debug.hh>
-#include <Nebula/App/Base.hh>
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/scene/Base.hh>
 
 #include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/actor/util/parent.hpp>

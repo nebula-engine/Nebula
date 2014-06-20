@@ -1,21 +1,21 @@
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <Nebula/App/Base.hh>
-#include <Nebula/Actor/Base.hh>
-#include <Nebula/Util/wrapper.hpp>
-#include <Nebula/Graphics/Context/Window.hpp>
-#include <Nebula/Graphics/environ/two.hpp>
-#include <Nebula/Graphics/environ/three.hpp>
-#include <Nebula/Graphics/GUI/Object/terminal.hh>
-#include <Nebula/Graphics/Light/Spot.hh>
-#include <Nebula/Scene/Local.hh>
-#include <Nebula/Shape/empty.hpp>
-#include <Nebula/Graphics/Camera/View/ridealong.hh>
-#include <Nebula/Actor/Empty/Empty.hpp>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/actor/Base.hh>
+#include <Nebula/util/wrapper.hpp>
+#include <Nebula/gfx/Context/Window.hpp>
+#include <Nebula/gfx/environ/two.hpp>
+#include <Nebula/gfx/environ/three.hpp>
+#include <Nebula/gfx/GUI/Object/terminal.hh>
+#include <Nebula/core/light/Spot.hh>
+#include <Nebula/core/scene/Local.hh>
+#include <Nebula/core/shape/empty.hpp>
+#include <Nebula/gfx/Camera/View/ridealong.hh>
+#include <Nebula/core/actor/Empty/Empty.hpp>
 #include <Nebula/game/map/base.hpp>
 #include <Nebula/ext/maze/game/map/maze2.hpp>
-#include <Nebula/Util/command.hpp>
-#include <Nebula/Util/command_set.hpp>
+#include <Nebula/util/command.hpp>
+#include <Nebula/util/command_set.hpp>
 
 #include <PhysX/free.hpp>
 #include <PhysX/app/base.hpp>

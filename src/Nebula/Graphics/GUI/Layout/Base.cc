@@ -5,13 +5,13 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <Nebula/Types.hh>
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Graphics/Context/Base.hh>
-#include <Nebula/Graphics/GUI/Object/Base.hh>
-#include <Nebula/Graphics/GUI/Object/edittext.hh>
+#include <Nebula/util/decl.hpp>
+#include <Nebula/gfx/window/Base.hh>
+#include <Nebula/gfx/Context/Base.hh>
+#include <Nebula/gfx/GUI/Object/Base.hh>
+#include <Nebula/gfx/GUI/Object/edittext.hh>
 
-#include <Nebula/Graphics/GUI/Layout/Base.hh>
+#include <Nebula/gfx/GUI/Layout/Base.hh>
 
 
 //neb::gfx::gui::layout::base::base() {
