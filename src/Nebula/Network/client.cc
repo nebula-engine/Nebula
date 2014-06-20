@@ -12,11 +12,11 @@
 
 #include <Galaxy-Network/message.hpp>
 
-#include <Nebula/Actor/Base.hh>
+#include <Nebula/core/actor/Base.hh>
 
 #include <Nebula/config.hh>
-#include <Nebula/App/Base.hh>
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/scene/Base.hh>
 
 neb::Network::Client::Client(boost::asio::io_service& io_service, ip::tcp::resolver::iterator endpoint_iterator):
 	gal::net::communicating(io_service),

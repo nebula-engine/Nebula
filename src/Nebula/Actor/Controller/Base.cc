@@ -1,4 +1,4 @@
-#include <Nebula/Actor/Controller/Base.hh>
+#include <Nebula/core/actor/Controller/Base.hh>
 
 neb::core::actor::Controller::Controller(sp::shared_ptr<neb::core::actor::util::parent> parent): neb::core::actor::base(parent) {
 

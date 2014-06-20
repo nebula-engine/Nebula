@@ -1,4 +1,4 @@
-#include <Nebula/Graphics/environ/base.hpp>
+#include <Nebula/gfx/environ/base.hpp>
 
 void		neb::gfx::environ::base::init() {
 }

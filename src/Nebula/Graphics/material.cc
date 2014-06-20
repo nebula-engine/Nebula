@@ -2,11 +2,11 @@
 
 //#include <math/xml.hpp>
 
-#include <Nebula/App/Base.hh>
-#include <Nebula/Graphics/material.hh>
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/gfx/material.hh>
+#include <Nebula/gfx/window/Base.hh>
+#include <Nebula/gfx/glsl/Uniform/scalar.hpp>
+#include <Nebula/core/scene/Base.hh>
 
 /*
 gru::Color::color<float> operator<<(gru::Color::color<float> c, tinyxml2::XMLElement* element) {

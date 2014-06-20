@@ -10,12 +10,12 @@
 #include <cassert>
 
 #include <Nebula/debug.hh>
-#include <Nebula/Graphics/glsl/shader.hh>
+#include <Nebula/gfx/glsl/shader.hh>
 #include <Nebula/free.hh>
-#include <Nebula/Graphics/glsl/program.hh>
-#include <Nebula/Graphics/glsl/attrib.hh>
-#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
-#include <Nebula/Graphics/glsl/Uniform/vector.hpp>
+#include <Nebula/gfx/glsl/program.hh>
+#include <Nebula/gfx/glsl/attrib.hh>
+#include <Nebula/gfx/glsl/Uniform/scalar.hpp>
+#include <Nebula/gfx/glsl/Uniform/vector.hpp>
 
 neb::glsl::program::program()
 {

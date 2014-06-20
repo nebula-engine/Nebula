@@ -1,8 +1,8 @@
 
 
 
-#include <Nebula/App/Base.hh>
-#include <Nebula/Actor/Base.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/actor/Base.hh>
 
 #include <PhysX/message/actor/event/Base.hh>
 
@@ -29,8 +29,8 @@ sp::weak_ptr<neb::core::actor::rigidstatic::base>	phx::core::scene::remote::crea
 
 	neb::core::actor::util::parent::insert(actor);
 
-	actor->simulation_.word0 = neb::Filter::Filter::Type::STATIC;
-	actor->simulation_.word1 = neb::Filter::Filter::RIGID_AGAINST;
+	actor->simulation_.word0 = phx::filter::filter::type::STATIC;
+	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
 
 	return actor;
 }

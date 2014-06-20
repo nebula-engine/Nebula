@@ -1,5 +1,5 @@
 
-#include <Nebula/Actor/RigidStatic/remote.hpp>
+#include <Nebula/core/actor/RigidStatic/remote.hpp>
 
 	
 neb::core::actor::rigidstatic::remote::remote(sp::shared_ptr<neb::core::actor::util::parent> parent):

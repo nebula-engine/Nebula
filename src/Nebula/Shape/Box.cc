@@ -1,5 +1,5 @@
-#include <Nebula/Math/geo/polyhedron.hh>
-#include <Nebula/Shape/Box.hh>
+#include <Nebula/math/geo/polyhedron.hh>
+#include <Nebula/core/shape/Box.hh>
 
 neb::core::shape::box::box(sp::shared_ptr<neb::core::shape::util::parent> parent):
 	neb::core::shape::base(parent)

@@ -1,7 +1,7 @@
 
-#include <Nebula/App/Base.hh>
+#include <Nebula/app/Base.hh>
 #include <Nebula/timer/Actor/Release.hpp>
-#include <Nebula/Actor/Base.hh>
+#include <Nebula/core/actor/Base.hh>
 
 
 neb::Timer::actor::Release::Release(sp::shared_ptr<neb::core::actor::base> actor, double seconds):

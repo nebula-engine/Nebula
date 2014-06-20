@@ -1,9 +1,9 @@
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/Filter.hh>
 #include <Nebula/timer/Actor/Release.hpp>
-#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/gfx/window/Base.hh>
 
+#include <PhysX/filter.hpp>
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
 #include <PhysX/core/scene/base.hpp>
 #include <PhysX/core/shape/box.hpp>

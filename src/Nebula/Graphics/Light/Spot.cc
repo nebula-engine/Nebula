@@ -2,9 +2,9 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <Nebula/App/Base.hh>
-#include <Nebula/Graphics/Light/Spot.hh>
-#include <Nebula/Graphics/glsl/Uniform/vector.hpp>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/light/Spot.hh>
+#include <Nebula/gfx/glsl/Uniform/vector.hpp>
 
 neb::Light::Point::Point(sp::shared_ptr<neb::Light::util::parent> parent):
 	neb::Light::base(parent, "lights_point"),

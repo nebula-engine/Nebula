@@ -1,7 +1,7 @@
 #include <maze/dfs.hpp>
 
-#include <Nebula/Shape/Box.hh>
-#include <Nebula/Actor/RigidStatic/local.hpp>
+#include <Nebula/core/shape/Box.hh>
+#include <Nebula/core/actor/RigidStatic/local.hpp>
 #include <Nebula/ext/maze/game/map/maze2.hpp>
 
 neb::ext::maze::game::map::maze2::maze2(

@@ -1,7 +1,7 @@
 
 /*
-#include <Nebula/Actor/Base.hpp>
-#include <Nebula/Actor/Util/raw.hpp>
+#include <Nebula/core/actor/Base.hpp>
+#include <Nebula/core/actor/Util/raw.hpp>
 #include <Nebula/Xml/Xml.hpp>
 
 neb::core::actor::raw::raw():

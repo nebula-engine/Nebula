@@ -2,8 +2,8 @@
 
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/Math/geo/polygon.hpp>
-#include <Nebula/Math/Serialization/GLM.hpp>
+#include <Nebula/math/geo/polygon.hpp>
+#include <Nebula/math/Serialization/GLM.hpp>
 
 
 void				math::geo::vertex::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {

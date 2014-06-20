@@ -1,6 +1,6 @@
 
 
-#include <Nebula/Actor/RigidActor/Remote.hh>
+#include <Nebula/core/actor/RigidActor/Remote.hh>
 
 neb::core::actor::rigidactor::remote::remote(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),

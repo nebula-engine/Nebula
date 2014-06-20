@@ -3,9 +3,9 @@
 #include <GL/glew.h>
 
 
-#include <Nebula/Graphics/glsl/attrib.hh>
+#include <Nebula/gfx/glsl/attrib.hh>
 #include <Nebula/free.hh>
-#include <Nebula/Graphics/glsl/program.hh>
+#include <Nebula/gfx/glsl/program.hh>
 
 neb::glsl::attrib::attrib():
 	o_(-1),

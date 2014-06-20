@@ -1,7 +1,7 @@
 #ifndef PHYSX_CORE_ACTOR_LOCAL_HPP
 #define PHYSX_CORE_ACTOR_LOCAL_HPP
 
-#include <Nebula/Actor/Local.hh>
+#include <Nebula/core/actor/Local.hh>
 
 #include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>

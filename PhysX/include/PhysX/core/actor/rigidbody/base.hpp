@@ -3,8 +3,8 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Actor/RigidBody/Base.hh>
-#include <Nebula/Core/pose.hpp>
+#include <Nebula/core/actor/RigidBody/Base.hh>
+#include <Nebula/core/pose.hpp>
 
 #include <PhysX/core/actor/rigidactor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>

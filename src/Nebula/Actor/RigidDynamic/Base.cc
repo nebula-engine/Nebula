@@ -1,6 +1,6 @@
 #include <Nebula/debug.hh>
-#include <Nebula/Shape/Base.hh>
-#include <Nebula/Actor/RigidDynamic/Base.hh>
+#include <Nebula/core/shape/Base.hh>
+#include <Nebula/core/actor/RigidDynamic/Base.hh>
 
 //neb::core::actor::rigiddynamic::base::base() {
 //}

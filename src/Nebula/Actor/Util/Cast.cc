@@ -1,6 +1,6 @@
 
-#include <Nebula/Actor/RigidBody/Base.hh>
-#include <Nebula/Actor/Util/Cast.hh>
+#include <Nebula/core/actor/RigidBody/Base.hh>
+#include <Nebula/core/actor/Util/Cast.hh>
 
 sp::shared_ptr<neb::core::actor::base>			neb::core::actor::util::cast::isActorBase() {
         return sp::dynamic_pointer_cast<neb::core::actor::base>(shared_from_this());

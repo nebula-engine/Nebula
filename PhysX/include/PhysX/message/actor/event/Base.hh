@@ -17,9 +17,9 @@
 
 #include <Galaxy-Standard/wrapper.hpp>
 
-#include <Nebula/Actor/Util/Types.hh>
+#include <Nebula/core/actor/Util/Types.hh>
 
-#include <Nebula/Message/Actor/Base.hh>
+#include <Nebula/message/Actor/Base.hh>
 
 
 

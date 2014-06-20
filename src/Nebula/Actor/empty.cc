@@ -1,6 +1,6 @@
 
 #include <Nebula/config.hh>
-#include <Nebula/Actor/Empty/Empty.hpp>
+#include <Nebula/core/actor/Empty/Empty.hpp>
 
 neb::core::actor::Empty::Empty(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	neb::core::actor::base(parent)
