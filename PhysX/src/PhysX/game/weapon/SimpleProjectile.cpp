@@ -1,9 +1,9 @@
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/Filter.hh>
 #include <Nebula/timer/Actor/Release.hpp>
-#include <Nebula/Graphics/Window/Base.hh>
+#include <Nebula/gfx/window/Base.hh>
 
+#include <PhysX/filter.hpp>
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
 #include <PhysX/core/scene/base.hpp>
 #include <PhysX/core/shape/box.hpp>
@@ -57,8 +57,8 @@ void			phx::game::weapon::SimpleProjectile::fire() {
 
 	scene->insert(proj);
 
-	proj->simulation_.word0 = neb::Filter::Filter::Type::DYNAMIC | neb::Filter::Filter::Type::PROJECTILE;
-	proj->simulation_.word1 = neb::Filter::Filter::RIGID_AGAINST;
+	proj->simulation_.word0 = phx::filter::filter::type::DYNAMIC | phx::filter::filter::type::PROJECTILE;
+	proj->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
 
 
 

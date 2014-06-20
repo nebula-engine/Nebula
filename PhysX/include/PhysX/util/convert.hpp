@@ -5,7 +5,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Util/typedef.hpp>
+#include <Nebula/util/typedef.hpp>
 
 namespace phx { namespace util {
 

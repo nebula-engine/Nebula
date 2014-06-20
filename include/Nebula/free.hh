@@ -3,9 +3,9 @@
 
 #include <memory>
 
-#include <Nebula/Util/typedef.hpp>
-#include <Nebula/Graphics/Types.hh>
-#include <Nebula/Graphics/Color/Color.hh>
+#include <Nebula/util/typedef.hpp>
+#include <Nebula/gfx/util/decl.hpp>
+#include <Nebula/gfx/Color/Color.hh>
 
 namespace neb {
 	void	init_log();

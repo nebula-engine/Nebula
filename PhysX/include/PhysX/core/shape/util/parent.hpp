@@ -16,9 +16,9 @@
 */
 #include <Nebula/config.hh> // Nebula/config.hpp.in
 
-#include <Nebula/Shape/Util/Parent.hh>
+#include <Nebula/core/shape/Util/Parent.hh>
 
-#include <Nebula/Core/Pose.hh>
+#include <Nebula/core/Pose.hh>
 
 #include <PhysX/core/actor/util/cast.hpp>
 #include <PhysX/core/shape/util/cast.hpp>
