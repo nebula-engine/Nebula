@@ -62,6 +62,12 @@ int			neb::gfx::gui::object::terminal::key_fun(
 					return 1;
 				}
 				break;
+			case GLFW_KEY_SPACE:
+				if(flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
+					push(' ');
+					return 1;
+				}
+				break;
 			case GLFW_KEY_A:
 			case GLFW_KEY_B:
 			case GLFW_KEY_C:
@@ -89,7 +95,7 @@ int			neb::gfx::gui::object::terminal::key_fun(
 			case GLFW_KEY_Y:
 			case GLFW_KEY_Z:
 				if(flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
-					operator<<(k);
+					push(k);
 					return 1;
 				}
 				break;
@@ -104,7 +110,7 @@ int			neb::gfx::gui::object::terminal::key_fun(
 			case GLFW_KEY_8:
 			case GLFW_KEY_9:
 				if(flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
-					operator<<(k_num);
+					push(k_num);
 					return 1;
 				}
 			case GLFW_KEY_ENTER:
