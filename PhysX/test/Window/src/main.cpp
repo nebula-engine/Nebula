@@ -89,15 +89,6 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 
 	return layout;
 }
-sp::shared_ptr<phx::core::actor::rigidstatic::base>		create_actor_static(sp::shared_ptr<phx::core::scene::local> scene, vec3 pos) {
-
-	neb::core::pose pose;
-	pose.pos_ = vec4(pos,1);
-
-	auto actor = sp::dynamic_pointer_cast<phx::core::actor::rigidstatic::base>(scene->createActorRigidStaticCube(pose, 1.0).lock());
-	
-	return actor;
-}
 sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::shared_ptr<phx::core::scene::local> scene) {
 
 	auto actor = sp::make_shared<phx::core::actor::rigiddynamic::local>(scene);
@@ -122,9 +113,9 @@ sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::
 
 	return actor;	
 }
-sp::shared_ptr<neb::core::actor::Empty>		create_actor2(sp::shared_ptr<phx::core::scene::local> scene) {
+sp::shared_ptr<neb::core::actor::empty>		create_actor2(sp::shared_ptr<phx::core::scene::local> scene) {
 
-	auto actor = sp::make_shared<neb::core::actor::Empty>(scene);
+	auto actor = sp::make_shared<neb::core::actor::empty>(scene);
 	
 	scene->insert(actor);
 	
@@ -138,7 +129,7 @@ sp::shared_ptr<neb::core::actor::Empty>		create_actor2(sp::shared_ptr<phx::core:
 	
 	shape->init();
 	*/
-	auto shape = actor->neb::core::shape::util::parent::cii< neb::core::shape::empty, sp::shared_ptr<neb::core::actor::Empty> >(actor);
+	auto shape = actor->neb::core::shape::util::parent::cii< neb::core::shape::empty, sp::shared_ptr<neb::core::actor::empty> >(actor);
 	
 	// light
 	auto light = sp::make_shared<neb::Light::Point>(shape);
@@ -185,12 +176,12 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	std::cout << "8\n";
 
 	// actors
-	auto actor = create_actor_static(scene, vec3(0,0,-5));
-	actor = create_actor_static(scene, vec3(0,0,5));
-	actor = create_actor_static(scene, vec3(0,-5,0));
-	actor = create_actor_static(scene, vec3(0,5,0));
-	actor = create_actor_static(scene, vec3(-5,0,0));
-	actor = create_actor_static(scene, vec3(5,0,0));
+	scene->createActorRigidStaticCube(neb::core::pose(vec3(-5, 0, 0)), 1.0);
+	scene->createActorRigidStaticCube(neb::core::pose(vec3( 5, 0, 0)), 1.0);
+	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0,-5, 0)), 1.0);
+	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 5, 0)), 1.0);
+	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0,-5)), 1.0);
+	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0, 5)), 1.0);
 
 	// player's actor
 	auto actor3 = create_actor_dynamic(scene);
@@ -200,8 +191,9 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	auto weap = actor3->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
 
 	// lights
-	auto actor2 = create_actor2(scene);
-	
+	//auto actor2 = create_actor2(scene);
+	scene->createActorLightPoint(vec3());
+	scene->createActorLightPoint(vec3(10,0,0));
 	
 	context->environ_->drawable_ = scene;
 
