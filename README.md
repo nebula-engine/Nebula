@@ -2,11 +2,15 @@
 
 3D Game Engine in c++
 
+This repo used to be GRU (name hasn't yet been changed). The repo named Nebula is deprecated and should be pulled in here as a reference.
+Nebula-PhysX will eventually become its own repo.
+
 ## Dependencies
 
 - GLFW
 - Boost
 - PhysX
+- GLM
 
 ## Testing
 
@@ -27,14 +31,6 @@ For consideration for merging into master, GRU/PhysX/test/Window must:
     - cubes rendering properly
     - randomly generated maze
     - PhysX working
-
-## News
-
-Nebula is mergin into GRU. All my game engine code is being condesend and put in GRU.
-
-## News
-
-The Nebula library is merging into GRU as part of my campaign to reduce my game engine to a single static library. I am also replacing some of my own implementations with boost in order to reduce the size of my code. Once Nebula is merged into GRU, GRU will be renamed Nebula.
 
 ## TODO
 
