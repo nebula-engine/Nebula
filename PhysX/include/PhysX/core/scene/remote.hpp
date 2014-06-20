@@ -4,18 +4,18 @@
 #include <vector>
 
 
-#include <Nebula/Types.hh>
+#include <Nebula/util/decl.hpp>
 
-#include <Nebula/Scene/Remote.hh>
+#include <Nebula/core/scene/Remote.hh>
 
 #include <Nebula/config.hh> // Nebula/config.hpp.in
-#include <Nebula/Graphics/glsl/program.hh>
+#include <Nebula/gfx/glsl/program.hh>
 
 
-//#include <Nebula/Actor/Base.hh>
-#include <Nebula/Actor/Util/Parent.hh>
+//#include <Nebula/core/actor/Base.hh>
+#include <Nebula/core/actor/Util/Parent.hh>
 
-#include <Nebula/Graphics/Camera/View/Base.hh>
+#include <Nebula/gfx/Camera/View/Base.hh>
 
 #include <PhysX/core/scene/base.hpp>
 

@@ -2,7 +2,7 @@
 
 #include <Nebula/debug.hh>
 //#include <Nebula/Physics.hh>
-#include <Nebula/Shape/Base.hh>
+#include <Nebula/core/shape/Base.hh>
 
 #include <PhysX/app/base.hpp>
 #include <PhysX/util/convert.hpp>
