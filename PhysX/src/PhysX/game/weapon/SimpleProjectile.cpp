@@ -57,8 +57,8 @@ void			phx::game::weapon::SimpleProjectile::fire() {
 
 	scene->insert(proj);
 
-	proj->simulation_.word0 = neb::Filter::Filter::Type::DYNAMIC | neb::Filter::Filter::Type::PROJECTILE;
-	proj->simulation_.word1 = neb::Filter::Filter::RIGID_AGAINST;
+	proj->simulation_.word0 = phx::filter::filter::type::DYNAMIC | phx::filter::filter::type::PROJECTILE;
+	proj->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
 
 
 

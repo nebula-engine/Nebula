@@ -104,8 +104,8 @@ sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::
 	
 	scene->insert(actor);
 	
-	actor->simulation_.word0 = neb::Filter::Filter::Type::DYNAMIC;
-	actor->simulation_.word1 = neb::Filter::Filter::RIGID_AGAINST;
+	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
 
 	actor->init();
 
