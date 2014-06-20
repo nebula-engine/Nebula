@@ -16,17 +16,17 @@
 namespace neb { namespace core { namespace actor {
 
 
-	class Empty: public neb::core::actor::base {
+	class empty: public neb::core::actor::base {
 		public:
-			Empty(sp::shared_ptr<neb::core::actor::util::parent>);
+			empty(sp::shared_ptr<neb::core::actor::util::parent>);
 			virtual void			init();
 			virtual void			release() {}
 			virtual void			step(neb::core::TimeStep const & ts) {}
 	};
-}
 
 
-}}
+
+}}}
 
 
 #endif
