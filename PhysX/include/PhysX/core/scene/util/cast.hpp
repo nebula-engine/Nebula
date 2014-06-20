@@ -3,7 +3,7 @@
 
 #include <Galaxy-Standard/shared.hpp>
 
-#include <Nebula/Scene/Util/Cast.hh>
+#include <Nebula/core/scene/Util/Cast.hh>
 
 #include <PhysX/core/scene/util/decl.hpp>
 

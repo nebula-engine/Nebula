@@ -1,7 +1,7 @@
 #ifndef PHYSX_CORE_ACTOR_PARENT_HPP
 #define PHYSX_CORE_ACTOR_PARENT_HPP
 
-#include <Nebula/Actor/Util/Parent.hh>
+#include <Nebula/core/actor/Util/Parent.hh>
 
 #include <PhysX/core/actor/util/cast.hpp>
 #include <PhysX/core/scene/util/cast.hpp>

@@ -5,9 +5,9 @@
 #include <boost/archive/polymorphic_oarchive.hpp>
 #include <boost/signals2.hpp>
 
-#include <Nebula/Util/typedef.hpp>
-#include <Nebula/Graphics/Types.hh>
-#include <Nebula/Core/TimeStep.hpp>
+#include <Nebula/util/typedef.hpp>
+#include <Nebula/gfx/util/decl.hpp>
+#include <Nebula/core/TimeStep.hpp>
 
 #include <PhysX/core/actor/util/decl.hpp>
 
