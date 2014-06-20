@@ -7,7 +7,7 @@
 #include <string.h>
 
 #include <Nebula/free.hh>
-#include <Nebula/Graphics/glsl/shader.hh>
+#include <Nebula/gfx/glsl/shader.hh>
 
 void	neb::glsl::shader::load(const char * filename, GLenum shader_type)
 {	

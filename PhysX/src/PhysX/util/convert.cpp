@@ -3,7 +3,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Util/typedef.hpp>
+#include <Nebula/util/typedef.hpp>
 
 #include <PhysX/util/convert.hpp>
 

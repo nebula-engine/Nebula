@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include <Nebula/App/Base.hh>
-#include <Nebula/Types.hh>
-#include <Nebula/Graphics/Light/Base.hh>
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Scene/Base.hh>
-#include <Nebula/Shape/Base.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/util/decl.hpp>
+#include <Nebula/core/light/Base.hh>
+#include <Nebula/gfx/window/Base.hh>
+#include <Nebula/core/scene/Base.hh>
+#include <Nebula/core/shape/Base.hh>
 #include <Nebula/free.hh>
-#include <Nebula/Graphics/glsl/Uniform/vector.hpp>
+#include <Nebula/gfx/glsl/Uniform/vector.hpp>
 
 
 neb::Light::base::base(sp::shared_ptr<neb::Light::util::parent> parent, ::std::string light_type_string):

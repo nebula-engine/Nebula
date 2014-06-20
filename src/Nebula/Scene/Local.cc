@@ -1,8 +1,8 @@
-#include <Nebula/App/Base.hh>
-#include <Nebula/Scene/Local.hh>
-#include <Nebula/Actor/Base.hh>
-#include <Nebula/Actor/RigidBody/Base.hh>
-#include <Nebula/Actor/RigidStatic/local.hpp>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/scene/Local.hh>
+#include <Nebula/core/actor/Base.hh>
+#include <Nebula/core/actor/RigidBody/Base.hh>
+#include <Nebula/core/actor/RigidStatic/local.hpp>
 #include <Nebula/timer/Actor/Release.hpp>
 
 neb::core::scene::local::local(sp::shared_ptr<neb::core::scene::util::parent> parent):

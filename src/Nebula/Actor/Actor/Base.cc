@@ -1,11 +1,11 @@
 
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/core/scene/Base.hh>
 
 #include <Nebula/debug.hh>
-#include <Nebula/Util/typedef.hpp>
-#include <Nebula/Shape/Base.hh>
+#include <Nebula/util/typedef.hpp>
+#include <Nebula/core/shape/Base.hh>
 
-#include <Nebula/Actor/Actor/Base.hh>
+#include <Nebula/core/actor/Actor/Base.hh>
 
 //neb::core::actor::actor::base::base() {
 //}

@@ -9,7 +9,7 @@
 
 
 //#include <Nebula/scene/scene.hpp>
-#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
+#include <Nebula/gfx/glsl/Uniform/scalar.hpp>
 #include <Nebula/free.hh>
 
 

@@ -1,13 +1,13 @@
 //#include <assert.h>
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/App/Base.hh>
-#include <Nebula/Scene/Base.hh>
-#include <Nebula/Graphics/Context/Base.hh>
-#include <Nebula/Graphics/environ/base.hpp>
-#include <Nebula/Graphics/GUI/Layout/Base.hh>
-#include <Nebula/Graphics/Camera/View/Free.hh>
-#include <Nebula/Graphics/Camera/Projection/Perspective.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/scene/Base.hh>
+#include <Nebula/gfx/Context/Base.hh>
+#include <Nebula/gfx/environ/base.hpp>
+#include <Nebula/gfx/GUI/Layout/Base.hh>
+#include <Nebula/gfx/Camera/View/Free.hh>
+#include <Nebula/gfx/Camera/Projection/Perspective.hh>
 
 
 neb::gfx::context::base::base() {
