@@ -8,8 +8,8 @@
 //#define GLUTPP_OBJECT_DIR "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME@/Graphics/objects"
 //#define GLUTPP_SHADER_DIR "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME@/Graphics/glsl/shaders"
 
-#define GLUTPP_OBJECT_DIR "@PROJECT_SOURCE_DIR@/include/@PROJECT_NAME@/Graphics/objects"
-#define GLUTPP_SHADER_DIR "@PROJECT_SOURCE_DIR@/include/@PROJECT_NAME@/Graphics/glsl/shaders"
+#define GLUTPP_OBJECT_DIR "@PROJECT_SOURCE_DIR@/include/@PROJECT_NAME@/media/objects"
+#define GLUTPP_SHADER_DIR "@PROJECT_SOURCE_DIR@/include/@PROJECT_NAME@/media/shaders"
 
 
 #define GLUTPP_DEBUG_0_FUNCTION printf("%s\n", __PRETTY_FUNCTION__)
