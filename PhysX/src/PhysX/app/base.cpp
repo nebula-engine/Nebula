@@ -6,7 +6,7 @@
 
 
 //#include <Nebula/Physics.hh>
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/core/scene/Base.hh>
 
 
 #include <PhysX/simulation_callback.hh>
