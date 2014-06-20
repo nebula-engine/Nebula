@@ -1,11 +1,11 @@
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/App/Base.hh>
+#include <Nebula/app/Base.hh>
 
-#include <Nebula/Graphics/Camera/View/Free.hh>
-#include <Nebula/Graphics/Camera/Projection/Perspective.hh>
+#include <Nebula/gfx/Camera/View/Free.hh>
+#include <Nebula/gfx/Camera/Projection/Perspective.hh>
 
-#include <Nebula/Graphics/environ/three.hpp>
+#include <Nebula/gfx/environ/three.hpp>
 
 void		neb::gfx::environ::three::init() {
 	printf("%s\n",__PRETTY_FUNCTION__);

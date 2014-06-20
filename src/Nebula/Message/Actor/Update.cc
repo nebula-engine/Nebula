@@ -1,7 +1,7 @@
 #include <Galaxy-Standard/registry.hpp>
 
-#include <Nebula/Actor/Base.hh>
-#include <Nebula/Message/Actor/Update.hh>
+#include <Nebula/core/actor/Base.hh>
+#include <Nebula/message/Actor/Update.hh>
 
 
 void					neb::message::actor::IUpdate::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {

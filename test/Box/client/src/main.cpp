@@ -11,26 +11,26 @@
 
 #include <functional>
 
-#include <Nebula/Network/server.hh>
-#include <Nebula/Network/client.hh>
+#include <Nebula/net/server.hh>
+#include <Nebula/net/client.hh>
 
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Graphics/Context/Base.hh>
-#include <Nebula/Graphics/GUI/Object/terminal.hh>
+#include <Nebula/gfx/window/Base.hh>
+#include <Nebula/gfx/Context/Base.hh>
+#include <Nebula/gfx/GUI/Object/terminal.hh>
 
 
-#include <Nebula/Network/server.hh>
-#include <Nebula/Network/client.hh>
+#include <Nebula/net/server.hh>
+#include <Nebula/net/client.hh>
 
-#include <Nebula/App/Base.hh>
+#include <Nebula/app/Base.hh>
 //#include <Nebula/Game/user.hh>
 //#include <Nebula/Physics.hh>
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/core/scene/Base.hh>
 //#include <Nebula/simulation_callback.hh>
-#include <Nebula/Shape/Base.hh>
-//#include <Nebula/Actor/Control/RigidBody/Base.hh>
-#include <Nebula/Actor/RigidDynamic/Base.hh>
-#include <Nebula/Util/wrapper.hpp>
+#include <Nebula/core/shape/Base.hh>
+//#include <Nebula/core/actor/Control/RigidBody/Base.hh>
+#include <Nebula/core/actor/RigidDynamic/Base.hh>
+#include <Nebula/util/wrapper.hpp>
 
 
 

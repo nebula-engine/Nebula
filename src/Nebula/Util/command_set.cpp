@@ -1,7 +1,7 @@
 
-#include <Nebula/Util/terminal.hpp>
-#include <Nebula/Util/command.hpp>
-#include <Nebula/Util/command_set.hpp>
+#include <Nebula/util/terminal.hpp>
+#include <Nebula/util/command.hpp>
+#include <Nebula/util/command_set.hpp>
 
 
 void		neb::util::command_set::init() {

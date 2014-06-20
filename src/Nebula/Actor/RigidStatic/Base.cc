@@ -1,7 +1,7 @@
 
 #include <Nebula/debug.hh>
-#include <Nebula/Shape/Base.hh>
-#include <Nebula/Actor/RigidStatic/Base.hh>
+#include <Nebula/core/shape/Base.hh>
+#include <Nebula/core/actor/RigidStatic/Base.hh>
 
 	
 neb::core::actor::rigidstatic::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):

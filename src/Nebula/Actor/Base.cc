@@ -2,24 +2,23 @@
 
 #include <Nebula/debug.hh>
 
-//#include <Nebula/Util/Typed.hh>
+//#include <Nebula/util/Typed.hh>
 
-#include <Nebula/Types.hh>
+#include <Nebula/util/decl.hpp>
 #include <Nebula/config.hh> // Nebula/config.hpp.in
 #include <Nebula/timer/Actor/Base.hpp>
-//#include <Nebula/App/Base.hh>
-#include <Nebula/Scene/Base.hh>
-#include <Nebula/Signals.hh>
+//#include <Nebula/app/Base.hh>
+#include <Nebula/core/scene/Base.hh>
+#include <Nebula/gfx/window/util/signals.hpp>
 
-#include <Nebula/Actor/Base.hh>
-#include <Nebula/Actor/RigidActor/Base.hh>
-#include <Nebula/Actor/RigidBody/Base.hh>
-#include <Nebula/Actor/Empty/Empty.hpp>
-#include <Nebula/Actor/Util/Types.hh>
+#include <Nebula/core/actor/Base.hh>
+#include <Nebula/core/actor/RigidActor/Base.hh>
+#include <Nebula/core/actor/RigidBody/Base.hh>
+#include <Nebula/core/actor/Empty/Empty.hpp>
+#include <Nebula/core/actor/Util/Types.hh>
 
-#include <Nebula/Filter.hh>
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Graphics/Types.hh>
+#include <Nebula/gfx/window/Base.hh>
+#include <Nebula/gfx/util/decl.hpp>
 
 /** @file Base
  */

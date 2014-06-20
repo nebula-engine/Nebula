@@ -1,7 +1,7 @@
 #ifndef NEBULA_GAME_SPAWN_BASE_HPP
 #define NEBULA_GAME_SPAWN_BASE_HPP
 
-#include <Nebula/Core/pose.hpp>
+#include <Nebula/core/pose.hpp>
 
 namespace neb { namespace game { namespace spawn {
 

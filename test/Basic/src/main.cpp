@@ -1,8 +1,8 @@
 
-#include <Nebula/App/Base.hh>
+#include <Nebula/app/Base.hh>
 
-#include <Nebula/Actor/Base.hh>
-#include <Nebula/Util/wrapper.hpp>
+#include <Nebula/core/actor/Base.hh>
+#include <Nebula/util/wrapper.hpp>
 
 int main() {
 	

@@ -1,6 +1,6 @@
 
 
-#include <Nebula/Actor/RigidActor/Local.hh>
+#include <Nebula/core/actor/RigidActor/Local.hh>
 
 neb::core::actor::rigidactor::local::local(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),

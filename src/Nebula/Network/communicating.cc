@@ -3,10 +3,10 @@
 #include <Galaxy-Log/log.hpp>
 
 //#include <Nebula/config.hh>
-//#include <Nebula/App/Base.hh>
-//#include <Nebula/Message/Base.hh>
-#include <Nebula/Util/wrapper.hpp>
-#include <Nebula/Network/communicating.hh>
+//#include <Nebula/app/Base.hh>
+//#include <Nebula/message/Base.hh>
+#include <Nebula/util/wrapper.hpp>
+#include <Nebula/net/communicating.hh>
 
 neb::Network::Communicating::Communicating(boost::asio::io_service& io_service, ip::tcp::socket&& socket):
 	gal::net::communicating(io_service, ::std::move(socket))

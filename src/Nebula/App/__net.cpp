@@ -1,7 +1,7 @@
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/Util/wrapper.hpp>
-#include <Nebula/App/__net.hpp>
+#include <Nebula/util/wrapper.hpp>
+#include <Nebula/app/__net.hpp>
 
 void neb::app::__net::reset_server(ip::tcp::endpoint const & endpoint) {
 	//NEBULA_DEBUG_0_FUNCTION;

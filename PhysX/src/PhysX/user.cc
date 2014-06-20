@@ -1,5 +1,5 @@
 
-#include <Nebula/Graphics/Context/Base.hh>
+#include <Nebula/gfx/Context/Base.hh>
 
 #include <Nebula/config.hh>
 //#include <nebula/camera/camera.hpp>

@@ -1,11 +1,11 @@
 #include <Nebula/debug.hh>
-#include <Nebula/App/Base.hh>
-#include <Nebula/Shape/Base.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/shape/Base.hh>
 
-#include <Nebula/Graphics/Light/Base.hh>
-#include <Nebula/Graphics/glsl/attrib.hh>
+#include <Nebula/core/light/Base.hh>
+#include <Nebula/gfx/glsl/attrib.hh>
 
-//#include <Nebula/Util/Map.hh>
+//#include <Nebula/util/Map.hh>
 
 #include <PhysX/app/base.hpp>
 #include <PhysX/core/shape/base.hpp>

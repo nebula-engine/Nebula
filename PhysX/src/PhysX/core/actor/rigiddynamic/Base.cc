@@ -1,7 +1,7 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <Nebula/debug.hh>
-#include <Nebula/Shape/Base.hh>
+#include <Nebula/core/shape/Base.hh>
 //#include <Nebula/Physics.hh>
 
 #include <PhysX/app/base.hpp>

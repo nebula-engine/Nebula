@@ -1,3 +1,3 @@
-#include <Nebula/Graphics/Window/Util/Parent.hh>
+#include <Nebula/gfx/window/util/Parent.hh>
 
 

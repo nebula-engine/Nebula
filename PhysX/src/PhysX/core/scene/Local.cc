@@ -1,9 +1,9 @@
 
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/App/Base.hh>
-#include <Nebula/Scene/Local.hh>
-#include <Nebula/Actor/RigidBody/Base.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/scene/Local.hh>
+#include <Nebula/core/actor/RigidBody/Base.hh>
 #include <Nebula/timer/Actor/Release.hpp>
 
 
@@ -128,8 +128,8 @@ sp::weak_ptr<neb::core::actor::rigidstatic::base>	phx::core::scene::local::creat
 
 	neb::core::actor::util::parent::insert(actor);
 
-	actor->simulation_.word0 = neb::Filter::Filter::Type::STATIC;
-	actor->simulation_.word1 = neb::Filter::Filter::RIGID_AGAINST;
+	actor->simulation_.word0 = phx::filter::filter::type::STATIC;
+	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
 
 	return actor;
 }

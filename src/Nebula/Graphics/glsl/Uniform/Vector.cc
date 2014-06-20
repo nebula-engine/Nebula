@@ -7,8 +7,8 @@
 #include <GLFW/glfw3.h>
 //#include <GL/glut.h>
 
-#include <Nebula/Graphics/glsl/Uniform/vector.hpp>
-#include <Nebula/Graphics/glsl/program.hh>
+#include <Nebula/gfx/glsl/Uniform/vector.hpp>
+#include <Nebula/gfx/glsl/program.hh>
 
 
 neb::glsl::Uniform::Vector::base::base(std::string name1, std::string name2) {

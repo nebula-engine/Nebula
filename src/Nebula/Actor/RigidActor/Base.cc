@@ -1,7 +1,7 @@
 
 #include <Nebula/debug.hh>
-#include <Nebula/Actor/RigidActor/Base.hh>
-#include <Nebula/Shape/Box.hh>
+#include <Nebula/core/actor/RigidActor/Base.hh>
+#include <Nebula/core/shape/Box.hh>
 
 //neb::core::actor::rigidactor::base::base() {
 //}

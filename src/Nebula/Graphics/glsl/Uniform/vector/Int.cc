@@ -8,8 +8,8 @@
 //#include <GL/glut.h>
 
 
-#include <Nebula/Scene/Base.hh>
-#include <Nebula/Graphics/glsl/Uniform/vector.hpp>
+#include <Nebula/core/scene/Base.hh>
+#include <Nebula/gfx/glsl/Uniform/vector.hpp>
 #include <Nebula/free.hh>
 
 

@@ -1,17 +1,17 @@
 #include <Galaxy-Log/log.hpp>
 
-//#include <Nebula/Graphics/Context/Base.hh>
-//#include <Nebula/Graphics/Camera/View/ridealong.hh>
+//#include <Nebula/gfx/Context/Base.hh>
+//#include <Nebula/gfx/Camera/View/ridealong.hh>
 
 //#include <Nebula/debug.hh>
-//#include <Nebula/Types.hh>
-//#include <Nebula/App/Base.hh>
+//#include <Nebula/util/decl.hpp>
+//#include <Nebula/app/Base.hh>
 
-//#include <Nebula/Actor/Util/Types.hh>
-//#include <Nebula/Actor/Control/Util/Types.hh>
+//#include <Nebula/core/actor/Util/Types.hh>
+//#include <Nebula/core/actor/Control/Util/Types.hh>
 
-#include <Nebula/Actor/RigidBody/Base.hh>
-//#include <Nebula/Actor/RigidDynamic/Local.hh>
+#include <Nebula/core/actor/RigidBody/Base.hh>
+//#include <Nebula/core/actor/RigidDynamic/Local.hh>
 
 
 neb::core::actor::rigidbody::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):

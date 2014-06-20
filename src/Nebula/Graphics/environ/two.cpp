@@ -1,6 +1,6 @@
-#include <Nebula/App/Base.hh>
-#include <Nebula/Graphics/Drawable/Base.hpp>
-#include <Nebula/Graphics/environ/two.hpp>
+#include <Nebula/app/Base.hh>
+#include <Nebula/gfx/Drawable/Base.hpp>
+#include <Nebula/gfx/environ/two.hpp>
 
 void		neb::gfx::environ::two::render(sp::shared_ptr<neb::gfx::context::base> context) {
 	/**

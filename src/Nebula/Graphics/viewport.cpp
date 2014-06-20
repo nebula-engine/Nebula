@@ -1,7 +1,7 @@
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/Graphics/Viewport.hpp>
-#include <Nebula/Util/typedef.hpp>
+#include <Nebula/gfx/Viewport.hpp>
+#include <Nebula/util/typedef.hpp>
 
 neb::gfx::Viewport::Viewport():
 	x_(0),

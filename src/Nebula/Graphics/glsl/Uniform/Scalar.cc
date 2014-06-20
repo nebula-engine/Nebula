@@ -7,8 +7,8 @@
 #include <GLFW/glfw3.h>
 
 
-#include <Nebula/Graphics/glsl/program.hh>
-#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
+#include <Nebula/gfx/glsl/program.hh>
+#include <Nebula/gfx/glsl/Uniform/scalar.hpp>
 
 neb::glsl::Uniform::Scalar::base::base(std::string name) {
 	//printf("%s\n",__PRETTY_FUNCTION__);

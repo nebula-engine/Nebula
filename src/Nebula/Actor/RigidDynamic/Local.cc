@@ -1,4 +1,4 @@
-#include <Nebula/Actor/RigidDynamic/Local.hh>
+#include <Nebula/core/actor/RigidDynamic/Local.hh>
 
 //neb::core::actor::rigiddynamic::local::local() {
 //}

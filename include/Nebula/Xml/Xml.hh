@@ -5,7 +5,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Math/Typedef.hpp>
+#include <Nebula/math/Typedef.hpp>
 
 class XmlArchive {
 	public:

@@ -6,7 +6,7 @@
 #include <PhysX/core/scene/base.hpp>
 #include <PhysX/util/convert.hpp>
 
-#include <Nebula/Scene/Util/Types.hh>
+#include <Nebula/core/scene/Util/Types.hh>
 
 
 

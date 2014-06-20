@@ -5,7 +5,7 @@
 #include <GLFW/glfw3.h>
 
 #include <Nebula/free.hh>
-#include <Nebula/Graphics/GUI/Object/textview.hh>
+#include <Nebula/gfx/GUI/Object/textview.hh>
 
 neb::gfx::gui::object::textview::textview() {
 }
