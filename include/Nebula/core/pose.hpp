@@ -11,7 +11,12 @@ namespace neb { namespace core {
 	class pose {
 		public:
 			pose();
-			pose(quat q, vec4 p);
+			pose(neb::core::pose const & rhs);
+			pose(neb::core::pose&& rhs);
+			pose(vec3 p, quat q);
+			pose(vec3 p);
+			pose(quat q);
+
 			pose&		operator=(neb::core::pose const & rhs);
 			pose		operator*(neb::core::pose const & rhs) const;
 

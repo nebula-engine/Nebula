@@ -85,8 +85,8 @@ void			phx::core::scene::local::step(neb::core::TimeStep const & ts) {
 		if(actor) {
 			pose = active_transforms[i].actor2World;
 			actor->setPose(neb::core::pose(
-						phx::util::convert(pose.q),
-						vec4(phx::util::convert(pose.p),1)
+						phx::util::convert(pose.p),
+						phx::util::convert(pose.q)
 						));
 			
 			BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug)
