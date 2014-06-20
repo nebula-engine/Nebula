@@ -11,10 +11,10 @@
 
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/App/Base.hh>
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
-#include <Nebula/Graphics/glsl/attrib.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/gfx/window/Base.hh>
+#include <Nebula/gfx/glsl/Uniform/scalar.hpp>
+#include <Nebula/gfx/glsl/attrib.hh>
 
 #include <Nebula/free.hh>
 

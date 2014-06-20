@@ -4,13 +4,13 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <Nebula/debug.hh>
-#include <Nebula/App/Base.hh>
-#include <Nebula/Shape/Base.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/shape/Base.hh>
 
-#include <Nebula/Graphics/Light/Base.hh>
-#include <Nebula/Graphics/glsl/attrib.hh>
-#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
-#include <Nebula/Math/geo/polygon.hpp>
+#include <Nebula/core/light/Base.hh>
+#include <Nebula/gfx/glsl/attrib.hh>
+#include <Nebula/gfx/glsl/Uniform/scalar.hpp>
+#include <Nebula/math/geo/polygon.hpp>
 
 neb::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
 	parent_(parent),

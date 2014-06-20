@@ -1,7 +1,7 @@
 
-#include <Nebula/App/Base.hh>
-#include <Nebula/Scene/Base.hh>
-#include <Nebula/Message/Scene/Create.hpp>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/scene/Base.hh>
+#include <Nebula/message/Scene/Create.hpp>
 
 neb::message::scene::Create::Create() {
 }

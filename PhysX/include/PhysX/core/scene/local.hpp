@@ -5,19 +5,19 @@
 
 
 
-#include <Nebula/Types.hh>
+#include <Nebula/util/decl.hpp>
 
-#include <Nebula/Scene/Local.hh>
-#include <Nebula/Scene/Util/Types.hh>
+#include <Nebula/core/scene/Local.hh>
+#include <Nebula/core/scene/Util/Types.hh>
 
 #include <Nebula/config.hh> // Nebula/config.hpp.in
-#include <Nebula/Graphics/glsl/program.hh>
+#include <Nebula/gfx/glsl/program.hh>
 
 
-//#include <Nebula/Actor/Base.hh>
-#include <Nebula/Actor/Util/Parent.hh>
+//#include <Nebula/core/actor/Base.hh>
+#include <Nebula/core/actor/Util/Parent.hh>
 
-#include <Nebula/Graphics/Camera/View/Base.hh>
+#include <Nebula/gfx/Camera/View/Base.hh>
 
 //#include <glutpp/shader.h>
 

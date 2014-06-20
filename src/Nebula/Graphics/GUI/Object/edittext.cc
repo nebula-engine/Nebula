@@ -1,7 +1,7 @@
 
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Graphics/GUI/Layout/Base.hh>
-#include <Nebula/Graphics/GUI/Object/edittext.hh>
+#include <Nebula/gfx/window/Base.hh>
+#include <Nebula/gfx/GUI/Layout/Base.hh>
+#include <Nebula/gfx/GUI/Object/edittext.hh>
 
 neb::gfx::gui::object::edittext::edittext() {
 

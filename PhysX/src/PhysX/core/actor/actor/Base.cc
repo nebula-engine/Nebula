@@ -1,12 +1,12 @@
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/Graphics/Context/Base.hh>
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/gfx/Context/Base.hh>
+#include <Nebula/core/scene/Base.hh>
 
 #include <Nebula/debug.hh>
-#include <Nebula/Util/typedef.hpp>
+#include <Nebula/util/typedef.hpp>
 //#include <Nebula/simulation_callback.hh>
-#include <Nebula/Shape/Base.hh>
+#include <Nebula/core/shape/Base.hh>
 
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/actor/base.hpp>

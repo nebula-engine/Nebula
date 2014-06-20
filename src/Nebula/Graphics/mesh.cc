@@ -6,9 +6,9 @@
 
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/Math/geo/polyhedron.hh>
+#include <Nebula/math/geo/polyhedron.hh>
 
-#include <Nebula/Graphics/mesh.hh>
+#include <Nebula/gfx/mesh.hh>
 
 
 

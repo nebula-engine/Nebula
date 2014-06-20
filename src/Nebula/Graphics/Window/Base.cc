@@ -13,15 +13,15 @@
 
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/Scene/Util/Types.hh>
+#include <Nebula/core/scene/Util/Types.hh>
 
 #include <Nebula/free.hh>
-#include <Nebula/Actor/Base.hh>
-#include <Nebula/App/Base.hh>
-#include <Nebula/Graphics/Context/Base.hh>
-#include <Nebula/Graphics/Light/Base.hh>
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Graphics/Window/Util/Parent.hh>
+#include <Nebula/core/actor/Base.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/gfx/Context/Base.hh>
+#include <Nebula/core/light/Base.hh>
+#include <Nebula/gfx/window/Base.hh>
+#include <Nebula/gfx/window/util/Parent.hh>
 
 
 neb::gfx::window::base::base():

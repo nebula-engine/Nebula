@@ -1,4 +1,4 @@
-#include <Nebula/Actor/RigidBody/Local.hh>
+#include <Nebula/core/actor/RigidBody/Local.hh>
 
 neb::core::actor::rigidbody::local::local(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),

@@ -1,6 +1,6 @@
 #include <Nebula/config.hh>
-#include <Nebula/App/__gfx_glsl.hpp>
-#include <Nebula/Graphics/glsl/program.hh>
+#include <Nebula/app/__gfx_glsl.hpp>
+#include <Nebula/gfx/glsl/program.hh>
 
 void	neb::app::__gfx_glsl::create_programs() {
 

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include <Nebula/Math/geo/polyhedron.hh>
+#include <Nebula/math/geo/polyhedron.hh>
 
 //math::geo::thin_cyl::cylinder(float 
 math::geo::cuboid::cuboid(float x, float y, float z) {

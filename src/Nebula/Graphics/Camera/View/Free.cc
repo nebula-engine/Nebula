@@ -4,8 +4,8 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <Nebula/config.hh>
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Graphics/Camera/View/Free.hh>
+#include <Nebula/gfx/window/Base.hh>
+#include <Nebula/gfx/Camera/View/Free.hh>
 
 neb::gfx::Camera::View::Free::Free(sp::shared_ptr<neb::gfx::environ::base> parent):
 	neb::gfx::Camera::View::base(parent),

@@ -1,10 +1,10 @@
 #include <Nebula/debug.hh>
 
-#include <Nebula/App/Base.hh>
+#include <Nebula/app/Base.hh>
 
-#include <Nebula/Actor/Base.hh>
-#include <Nebula/Actor/Util/Parent.hh>
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/core/actor/Base.hh>
+#include <Nebula/core/actor/Util/Parent.hh>
+#include <Nebula/core/scene/Base.hh>
 
 neb::core::actor::util::parent::parent() {
 }

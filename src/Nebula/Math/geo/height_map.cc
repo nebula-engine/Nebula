@@ -1,6 +1,6 @@
 
-#include <Nebula/Math/geo/height_map.hh>
-#include <Nebula/Math/geo/polyhedron.hh>
+#include <Nebula/math/geo/height_map.hh>
+#include <Nebula/math/geo/polyhedron.hh>
 
 
 math::geo::height_map::height_map(int nx, int ny) {

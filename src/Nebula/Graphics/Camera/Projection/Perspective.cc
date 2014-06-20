@@ -11,13 +11,13 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <Nebula/App/Base.hh>
-#include <Nebula/Actor/Base.hh>
-//#include <Nebula/Graphics/Window/Base.hh>
-//#include <Nebula/Scene/Base.hh>
-#include <Nebula/Graphics/Camera/Projection/Perspective.hh>
-#include <Nebula/Graphics/environ/base.hpp>
-#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/actor/Base.hh>
+//#include <Nebula/gfx/window/Base.hh>
+//#include <Nebula/core/scene/Base.hh>
+#include <Nebula/gfx/Camera/Projection/Perspective.hh>
+#include <Nebula/gfx/environ/base.hpp>
+#include <Nebula/gfx/glsl/Uniform/scalar.hpp>
 
 neb::gfx::Camera::Projection::base::base(sp::shared_ptr<neb::gfx::environ::base> parent):
 	parent_(parent)

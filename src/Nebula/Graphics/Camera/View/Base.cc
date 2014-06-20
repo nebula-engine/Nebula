@@ -1,6 +1,6 @@
-#include <Nebula/App/Base.hh>
-#include <Nebula/Graphics/Camera/View/Base.hh>
-#include <Nebula/Graphics/glsl/Uniform/scalar.hpp>
+#include <Nebula/app/Base.hh>
+#include <Nebula/gfx/Camera/View/Base.hh>
+#include <Nebula/gfx/glsl/Uniform/scalar.hpp>
 
 neb::gfx::Camera::View::base::base(sp::shared_ptr<neb::gfx::environ::base> parent):
 	parent_(parent)

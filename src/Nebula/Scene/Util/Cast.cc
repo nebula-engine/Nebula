@@ -1,7 +1,7 @@
-#include <Nebula/Scene/Util/Cast.hh>
-#include <Nebula/Scene/Base.hh>
-#include <Nebula/Scene/Local.hh>
-#include <Nebula/Scene/Remote.hh>
+#include <Nebula/core/scene/Util/Cast.hh>
+#include <Nebula/core/scene/Base.hh>
+#include <Nebula/core/scene/Local.hh>
+#include <Nebula/core/scene/Remote.hh>
 
 sp::shared_ptr<neb::core::scene::base>			neb::core::scene::util::cast::isSceneBase() {
         return sp::dynamic_pointer_cast<neb::core::scene::base>(shared_from_this());

@@ -1,7 +1,7 @@
 
-#include <Nebula/Actor/Base.hh>
+#include <Nebula/core/actor/Base.hh>
 
-#include <Nebula/Message/Actor/Create.hh>
+#include <Nebula/message/Actor/Create.hh>
 
 void		neb::message::actor::Create::load(sp::shared_ptr<neb::core::actor::base> actor) {
 	assert(actor);

@@ -16,20 +16,20 @@
 
 #include <Nebula/config.hh>
 //#include <Nebula/actor/event.hh>
-#include <Nebula/Graphics/Context/Base.hh>
-#include <Nebula/Graphics/Window/Base.hh>
-#include <Nebula/Graphics/GUI/Object/terminal.hh>
+#include <Nebula/gfx/Context/Base.hh>
+#include <Nebula/gfx/window/Base.hh>
+#include <Nebula/gfx/GUI/Object/terminal.hh>
 
-#include <Nebula/Actor/RigidBody/Base.hh>
-#include <Nebula/App/Base.hh>
-#include <Nebula/Network/server.hh>
-#include <Nebula/Network/client.hh>
+#include <Nebula/core/actor/RigidBody/Base.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/net/server.hh>
+#include <Nebula/net/client.hh>
 
-#include <Nebula/Message/Scene/Create.hpp>
-#include <Nebula/Message/Actor/Event/Base.hh>
-#include <Nebula/Scene/Base.hh>
-#include <Nebula/Util/command.hpp>
-#include <Nebula/Util/command_set.hpp>
+#include <Nebula/message/Scene/Create.hpp>
+#include <Nebula/message/Actor/Event/Base.hh>
+#include <Nebula/core/scene/Base.hh>
+#include <Nebula/util/command.hpp>
+#include <Nebula/util/command_set.hpp>
 
 /** @todo since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers.
  * to avoid unwanted shared_ptrs to owned objects, care must be taken when passing these objects around.

@@ -3,10 +3,10 @@
 //#include <neb/scene/scene.h>
 //#include <neb/simulation_callback.h>
 
-#include <Nebula/Actor/Util/Types.hh>
-#include <Nebula/Actor/Base.hh>
+#include <Nebula/core/actor/Util/Types.hh>
+#include <Nebula/core/actor/Base.hh>
 
-//#include <Nebula/Shape/desc.hh>
+//#include <Nebula/core/shape/desc.hh>
 
 
 /*

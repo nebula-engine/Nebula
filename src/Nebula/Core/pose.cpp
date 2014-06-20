@@ -1,5 +1,5 @@
 
-#include <Nebula/Core/pose.hpp>
+#include <Nebula/core/pose.hpp>
 
 neb::core::pose::pose(): pos_(0,0,0,1) {};
 neb::core::pose::pose(quat q, vec4 p): pos_(p), rot_(q) {}

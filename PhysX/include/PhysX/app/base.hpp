@@ -7,8 +7,8 @@
 
 #include <Nebula/config.hh>
 
-#include <Nebula/App/Base.hh>
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/app/Base.hh>
+#include <Nebula/core/scene/Base.hh>
 
 #include <PhysX/free.hpp>
 #include <PhysX/core/scene/util/parent.hpp>
