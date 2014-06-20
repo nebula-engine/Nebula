@@ -1,5 +1,5 @@
-#add_subdirectory(Basic)
+add_subdirectory(terminal)
 #add_subdirectory(Box)
-add_subdirectory(Window)
+#add_subdirectory(Window)
 
 
