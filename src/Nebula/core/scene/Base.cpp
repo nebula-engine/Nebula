@@ -14,6 +14,7 @@
 #include <Nebula/core/actor/Base.hh>
 
 #include <Nebula/core/light/Base.hh>
+#include <Nebula/core/light/Spot.hh>
 #include <Nebula/gfx/glsl/program.hh>
 #include <Nebula/gfx/Camera/Projection/Perspective.hh>
 
@@ -30,9 +31,11 @@
 #include <Nebula/core/actor/RigidDynamic/Base.hh>
 #include <Nebula/core/actor/RigidStatic/Base.hh>
 #include <Nebula/core/actor/Controller/Base.hh>
+#include <Nebula/core/actor/Empty/Empty.hpp>
 //#include <Nebula/actor/vehicle.hh>
 #include <Nebula/core/actor/Empty/Empty.hpp>
 #include <Nebula/core/shape/Base.hh>
+#include <Nebula/core/shape/empty.hpp>
 #include <Nebula/timer/Types.hh>
 #include <Nebula/timer/Actor/Release.hpp>
 #include <Nebula/gfx/glsl/Uniform/scalar.hpp>
@@ -129,7 +132,35 @@ sp::weak_ptr<neb::core::actor::rigidstatic::base>		neb::core::scene::base::creat
 	
 	return actor;
 }
-
+sp::weak_ptr<neb::core::actor::empty>				neb::core::scene::base::createActorLightPoint(vec3 p) {
+	
+	auto self(isSceneBase());
+	
+	auto actor = sp::make_shared<neb::core::actor::empty>(self);
+	
+	insert(actor);
+	
+	actor->init();
+	
+	// shape	
+	/*
+	auto shape = sp::make_shared<neb::core::shape::empty>(actor);
+	
+	actor->neb::core::shape::util::parent::insert(shape);
+	
+	shape->init();
+	*/
+	auto shape = actor->neb::core::shape::util::parent::cii< neb::core::shape::empty, sp::shared_ptr<neb::core::actor::empty> >(actor);
+	
+	// light
+	auto light = sp::make_shared<neb::Light::Point>(shape);
+	
+	shape->neb::Light::util::parent::insert(light);
+	
+	light->init();
+	
+	return actor;	
+}
 
 
 

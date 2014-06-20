@@ -46,8 +46,9 @@ def replace(filename):
 
 	text = re.sub("Nebula/gfx/Light/","Nebula/core/light/",text)
 
-        text = re.sub("neb::Filter::Filter","phx::filter::filter",text)
-        text = re.sub("phx::filter::filter::Type","phx::filter::filter::type",text)
+        text = re.sub("namespace Empty","namespace empty",text)
+        text = re.sub("class Empty","class empty",text)
+        text = re.sub("::Empty","::empty",text)
 
 	if(text != otext):
 		print filename
