@@ -5,7 +5,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/Shape/Base.hh>
+#include <Nebula/core/shape/Base.hh>
 
 #include <PhysX/core/shape/util/parent.hpp>
 

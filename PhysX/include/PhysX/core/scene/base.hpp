@@ -9,20 +9,20 @@
 #include <Galaxy-Standard/map.hpp>
 
 
-#include <Nebula/Types.hh>
-#include <Nebula/Util/typedef.hpp>
-#include <Nebula/Math/Serialization/GLM.hpp>
+#include <Nebula/util/decl.hpp>
+#include <Nebula/util/typedef.hpp>
+#include <Nebula/math/Serialization/GLM.hpp>
 
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-#include <Nebula/Scene/Base.hh>
+#include <Nebula/core/scene/Base.hh>
 
 
-//#include <Nebula/Actor/Base.hh>
-#include <Nebula/Actor/Util/Parent.hh>
+//#include <Nebula/core/actor/Base.hh>
+#include <Nebula/core/actor/Util/Parent.hh>
 
-#include <Nebula/Graphics/Camera/View/Base.hh>
+#include <Nebula/gfx/Camera/View/Base.hh>
 
 #include <PhysX/core/actor/util/decl.hpp>
 #include <PhysX/core/actor/util/parent.hpp>

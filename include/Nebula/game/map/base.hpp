@@ -1,7 +1,7 @@
 #ifndef NEBULA_GAME_MAP_HPP
 #define NEBULA_GAME_MAP_HPP
 
-#include <Nebula/Scene/Local.hh>
+#include <Nebula/core/scene/Local.hh>
 #include <Nebula/game/spawn/util/parent.hpp>
 
 namespace neb { namespace game { namespace map {
