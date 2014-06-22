@@ -21,8 +21,8 @@ include_directories("../glm")
 include_directories("../maze/include")
 include_directories(${physx_INCLUDE_DIR})
 
-link_directories("../Galaxy-Network/build")
-link_directories("../Galaxy-Standard/build")
+link_directories("../Galaxy-Network/Debug")
+link_directories("../Galaxy-Standard/Debug")
 link_directories("../Galaxy-Log/Debug")
 link_directories("../Debug")
 link_directories("../maze/Debug")
@@ -59,6 +59,7 @@ SET(libs ${libs}
 	Xrandr
 	Xi
 	Xcursor
+	Xxf86vm
 	${PhysX_LIBRARIES}
 	${PhysX_LIBRARIES}
 	)
