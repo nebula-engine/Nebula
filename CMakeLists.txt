@@ -17,8 +17,8 @@ include_directories("./maze/include")
 include_directories("./glm")
 #include_directories(${physx_INCLUDE_DIR})
 
-link_directories("./Galaxy-Network/build")
-link_directories("./Galaxy-Standard/build")
+link_directories("./Galaxy-Network/Debug")
+link_directories("./Galaxy-Standard/Debug")
 link_directories("./Galaxy-Log/Debug")
 link_directories("./maze/Debug")
 
@@ -29,6 +29,7 @@ set(include_extensions obj)
 
 SET(GRU_VERSION 0.1.1)
 
+FIND_PACKAGE(CMakeHelper)
 
 FIND_PACKAGE(Boost 1.55 COMPONENTS program_options serialization log system thread)
 
@@ -59,8 +60,6 @@ SET(libs ${libs}
 # =================================
 
 
-find_package(CMakeHelper)
-include(${CMakeHelper_INCLUDE_DIR}/CMakeHelper/static/library.cmake)
 
 cmh_static_library()
 
