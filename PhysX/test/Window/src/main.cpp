@@ -113,43 +113,6 @@ sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::
 
 	return actor;	
 }
-sp::shared_ptr<neb::core::actor::empty>		create_actor2(sp::shared_ptr<phx::core::scene::local> scene) {
-
-	auto actor = sp::make_shared<neb::core::actor::empty>(scene);
-	
-	scene->insert(actor);
-	
-	actor->init();
-	
-	// shape	
-	/*
-	auto shape = sp::make_shared<neb::core::shape::empty>(actor);
-	
-	actor->neb::core::shape::util::parent::insert(shape);
-	
-	shape->init();
-	*/
-	auto shape = actor->neb::core::shape::util::parent::cii< neb::core::shape::empty, sp::shared_ptr<neb::core::actor::empty> >(actor);
-	
-	// light
-	auto light = sp::make_shared<neb::Light::Point>(shape);
-	
-	shape->neb::Light::util::parent::insert(light);
-	
-	light->init();
-	
-	// another light
-	
-	light = sp::make_shared<neb::Light::Point>(shape);
-	
-	shape->neb::Light::util::parent::insert(light);
-	
-	light->init();
-
-	light->pos_ = vec3(10,0,0);
-
-	return actor;	
-}
 sp::shared_ptr<phx::core::scene::local>			create_scene(
 		sp::shared_ptr<neb::gfx::window::base> window,
 		sp::shared_ptr<neb::gfx::context::window> context)
@@ -191,7 +154,6 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	auto weap = actor3->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
 
 	// lights
-	//auto actor2 = create_actor2(scene);
 	scene->createActorLightPoint(vec3());
 	scene->createActorLightPoint(vec3(10,0,0));
 	
@@ -206,6 +168,7 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	cam->actor_ = actor3;
 	
 	auto e3 = sp::dynamic_pointer_cast<neb::gfx::environ::three>(context->environ_);
+	auto e3 = context->environ_->isEnvironThree();
 	assert(e3);
 
 	e3->view_ = cam;
@@ -232,8 +195,8 @@ sp::shared_ptr<phx::game::map::base>			create_maze(
 	auto weap = actor3->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
 
 	// lights
-	auto actor2 = create_actor2(map);
-
+	map->createActorLightPoint(vec3());
+	map->createActorLightPoint(vec3(10,0,0));
 	
 	// give scene to context
 	
