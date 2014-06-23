@@ -15,19 +15,26 @@
 namespace neb {
 	namespace Timer {
 		namespace actor {
-			class base {
+			class base:
+				public sp::enable_shared_from_this<base>
+			{
 				public:
 					base(sp::shared_ptr<neb::core::actor::base> actor, double);
+					virtual ~base();
 
+					/**
+					 *
+					 * what to do when timer expires
+					 */
+					virtual void						doSomething() = 0;
 
-					virtual void					doSomething() = 0;
+					void 							activate();
 
-					void  activate();
-					
-					//neb::Timer::actor::Type         type_;
-					boost::asio::deadline_timer			timer_;
-					
-					sp::shared_ptr<neb::core::actor::base>			actor_;
+					boost::asio::deadline_timer				timer_;
+
+					sp::weak_ptr<neb::core::actor::base>			actor_;
+
+					double							time_;
 			};
 
 		}
