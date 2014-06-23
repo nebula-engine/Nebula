@@ -31,15 +31,7 @@ void		phx::core::actor::control::rigidbody::pd::step(gal::std::timestep const & 
 
 		q_target_ = q_target_ * rot;
 
-		//printf("q_target_=\n");
-		//q_target_.print();
-
-
 		p_target_ += f_ * p_scale;
-
-
-		//printf("p_target_=\n");
-		//p_target_.print();
 	}
 
 
@@ -53,108 +45,45 @@ void		phx::core::actor::control::rigidbody::pd::step(gal::std::timestep const & 
 	// rotation from pose to target pose
 	quat q(actor->pose_.rot_);
 	
-//	physx::PxQuat q = actor_->pose_.q;
-	quat a = glm::conjugate(q_target_) * q;
-
-
-
+	vec3 error = glm::axis(q_target_ * glm::conjugate(q));
 
 	// angular velocity
 	vec3 omega = phx::util::convert(pxrigidbody->getAngularVelocity());
 	
 	omega = q * omega;
 	
+	physx::PxVec3 Ivec(pxrigidbody->getMassSpaceInertiaTensor());
+	
+	mat3 I;
+	I[0][0] = Ivec.x;
+	I[1][1] = Ivec.y;
+	I[2][2] = Ivec.z;
 	
 	
+	float c0 = 1.0;
+	float c1 = 1.0;
 	
-	// inertia matrix
-	//physx::PxVec3 vI = pxrigidbody->getMassSpaceInertiaTensor();
-	
-	//physx::PxMat33 I(vI);
+	vec3 alpha = c0 * error - c1 * omega;
 	
 	
+	// account for angular momentum
+	torque_ = vec4(I * alpha + omega * (I * omega), 0.0);
+
+	//------------------------
+	// force -----------------
+	//------------------------
+	{	
+		vec3 velocity = phx::util::convert(pxrigidbody->getLinearVelocity());
+
+		physx::PxTransform trans = pxrigidbody->getGlobalPose();
 
 
 
+		vec3 error = vec3(p_target_) - phx::util::convert(trans.p);
 
-	/*
-	   math::mat33 ac(
-	   0, -a.z, a.y,
-	   a.z, 0, -a.x,
-	   -a.y, a.x, 0);
-	   */
-
-	//math::mat33 Gp(math::vec3(750, 800, 400));
-	//math::mat33 Gr(math::vec3(600, 550, 250));
-
-	/*
-	   float x = 10;
-	   float y = 100;
-	   math::mat33 Gp(math::vec3(x,x,x));
-	   math::mat33 Gr(math::vec3(y,y,y));
-	   */
-
-	//float gamma = 100;
-
-	physx::PxVec3 e(a.x, a.y, a.z);
-
-/*	float ke = 0.5;
-	float ko = 3;
-*/
-	/** @todo replace with independent control system library */
-	//math::vec3 u = ((ac + I * a.w) * Gp + I * gamma * (1 - a.w)) * va * 0.5 - Gr * omega;
-	vec4 u;// = -I * e * ke - omega * ko;
-
-	torque_ = u;
-	/*
-
-
-	// todo: make m dependent on direction of rotation
-	float m = I.dot(math::vec3(1.0,0.0,0.0));
-
-	float k = 10.0;
-	float c = -2.0f * sqrt(m * k);
-	pid_.coeff_p_ = k;
-	pid_.coeff_d_ = c;
-
-
-	math::quat q = actor->get_raw()->pose_.q;
-
-	math::quat rot = q * raw_.q_target_.getConjugate();
-	if(rot.magnitude() > 0)
-	{
-	float theta = -2.0 * acos(rot.w);
-
-	theta = (theta > M_PI) ? (theta - 360.f) : theta;
-
-	math::vec3 t(rot.x, rot.y, rot.z);
-	t.normalize();
-
-	// make sure getlinearvelocity is in actor-space
-
-	float v = vel.dot(t);
-
-	//q.print();
-	//q_target_.print();
-
-
-	//apply extra damping torque in all directions
-	math::vec3 te = vel * 1.f * c;
-
-
-	float fs = pid_.f(theta, v);
-	t *= fs;
-
-	//printf("theta = %f v = %f fs = %f\n", theta, v, fs);
-
-	//printf("torque=\n");
-	//t.print();
-
-	raw_.torque_ = t + te;
+		force_ = vec4(c0 * error - c1 * velocity, 1.0);
 	}
-	*/
 }
-
 vec4			phx::core::actor::control::rigidbody::pd::f() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return force_;
