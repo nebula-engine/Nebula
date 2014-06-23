@@ -71,8 +71,8 @@ void			phx::core::actor::rigidbody::base::add_force(real time) {
 	//physx::PxVec3 f(force_[0],force_[1],force_[2]);
 	//physx::PxVec3 t(torque_[0],torque_[1],torque_[2]);
 	
-	vec4 f(force_,1);
-	vec4 t(torque_,1);
+	vec3 f(force_);
+	vec3 t(torque_);
 
 	// user-controlled
 	if(control_) {
@@ -82,7 +82,7 @@ void			phx::core::actor::rigidbody::base::add_force(real time) {
 	
 	//physx::PxTransform pose = pose_;
 	
-	f = pose_.rot_ * f;//pose_.q.rotate(f);
+	//f = pose_.rot_ * f;//pose_.q.rotate(f);
 	t = pose_.rot_ * t;//.q.rotate(t);
 
 	assert(px_actor_);
@@ -101,8 +101,8 @@ void			phx::core::actor::rigidbody::base::add_force(real time) {
 
 	
 	
-	pxrigidbody->addForce(phx::util::convert(vec3(f)));
-	pxrigidbody->addTorque(phx::util::convert(vec3(t)));
+	pxrigidbody->addForce(phx::util::convert(f));
+	pxrigidbody->addTorque(phx::util::convert(t));
 }
 void		phx::core::actor::rigidbody::base::create_control(sp::shared_ptr<neb::gfx::window::base> window) {
 
