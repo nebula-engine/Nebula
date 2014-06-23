@@ -40,7 +40,7 @@ void		phx::core::actor::control::rigidbody::pd::step(gal::std::timestep const & 
 	float p1 = -1.0;
 	
 	float c0 = -p0 - p1;
-	float c1 = p0 * p1;
+	//float c1 = p0 * p1;
 
 
 	// get actor
@@ -53,8 +53,11 @@ void		phx::core::actor::control::rigidbody::pd::step(gal::std::timestep const & 
 	// rotation from pose to target pose
 	quat q(actor->pose_.rot_);
 	
-	vec3 error = glm::axis(q_target_ * glm::conjugate(q));
-
+	// error
+	quat qe = (q_target_ * glm::conjugate(q));
+	vec3 error(qe[1], qe[2], qe[3]);
+	
+	
 	// angular velocity
 	vec3 omega = phx::util::convert(pxrigidbody->getAngularVelocity());
 	
@@ -69,32 +72,34 @@ void		phx::core::actor::control::rigidbody::pd::step(gal::std::timestep const & 
 	
 	
 	
-	vec3 alpha = c0 * error - c1 * omega;
+	vec3 alpha = c0 * error;// - c1 * omega;
 	
 	
 	// account for angular momentum
-	torque_ = vec4(I * alpha + omega * (I * omega), 0.0);
+	torque_ = I * alpha; // + omega * (I * omega);
 
 	//------------------------
 	// force -----------------
 	//------------------------
 	{	
-		vec3 velocity = phx::util::convert(pxrigidbody->getLinearVelocity());
+		//vec3 velocity = phx::util::convert(pxrigidbody->getLinearVelocity());
 
 		physx::PxTransform trans = pxrigidbody->getGlobalPose();
 
+		
+		float c = 10.0;
+		
 
+		vec3 error = p_target_ - phx::util::convert(trans.p);
 
-		vec3 error = vec3(p_target_) - phx::util::convert(trans.p);
-
-		force_ = vec4(c0 * error - c1 * velocity, 1.0);
+		force_ = c * error; // - c1 * velocity;
 	}
 }
-vec4			phx::core::actor::control::rigidbody::pd::f() {
+vec3			phx::core::actor::control::rigidbody::pd::f() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return force_;
 }
-vec4			phx::core::actor::control::rigidbody::pd::t() {
+vec3			phx::core::actor::control::rigidbody::pd::t() {
 	//NEBULA_DEBUG_1_FUNCTION;
 	return torque_;
 }

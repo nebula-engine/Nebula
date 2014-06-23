@@ -17,11 +17,11 @@ void		phx::core::actor::control::rigidbody::manual::step(gal::std::timestep cons
 
 }
 
-vec4			phx::core::actor::control::rigidbody::manual::f() {
+vec3			phx::core::actor::control::rigidbody::manual::f() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	return f_ * 30.0f;
 }
-vec4			phx::core::actor::control::rigidbody::manual::t() {
+vec3			phx::core::actor::control::rigidbody::manual::t() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	return t_ * 3.0f;
 }
