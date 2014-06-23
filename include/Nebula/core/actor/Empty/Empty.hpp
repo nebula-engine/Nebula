@@ -8,7 +8,7 @@
 
 //#include <math/transform.hpp>
 
-#include <Nebula/core/TimeStep.hpp>
+#include <gal/std/timestep.hpp>
 
 #include <Nebula/core/actor/Base.hh>
 #include <Nebula/core/actor/Util/Types.hh>
@@ -21,7 +21,7 @@ namespace neb { namespace core { namespace actor {
 			empty(sp::shared_ptr<neb::core::actor::util::parent>);
 			virtual void			init();
 			virtual void			release() {}
-			virtual void			step(neb::core::TimeStep const & ts) {}
+			virtual void			step(gal::std::timestep const & ts) {}
 	};
 
 

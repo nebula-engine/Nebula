@@ -10,7 +10,7 @@ neb::core::actor::rigidbody::local::local(sp::shared_ptr<neb::core::actor::util:
 	neb::core::actor::rigidbody::base(parent)
 {
 }
-void		neb::core::actor::rigidbody::local::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::rigidbody::local::step(gal::std::timestep const & ts) {
 	neb::core::actor::rigidbody::base::step(ts);
 	neb::core::actor::rigidactor::local::step(ts);
 }

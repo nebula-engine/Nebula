@@ -48,7 +48,7 @@ namespace neb {
 						std::shared_ptr<neb::gfx::Camera::View::base>,
 						std::shared_ptr<neb::gfx::Camera::Projection::base>,
 						sp::shared_ptr<neb::gfx::window::base>;
-				void							step(neb::core::TimeStep const & ts);
+				void							step(gal::std::timestep const & ts);
 				/** @} */
 
 				virtual  void						serialize(boost::archive::polymorphic_iarchve & ar, unsigned int const & version) {

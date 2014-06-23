@@ -21,7 +21,7 @@ void		neb::core::actor::rigidstatic::local::init() {
 void		neb::core::actor::rigidstatic::local::release() {
 	NEBULA_ACTOR_BASE_FUNC
 }
-void		neb::core::actor::rigidstatic::local::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::rigidstatic::local::step(gal::std::timestep const & ts) {
 	NEBULA_ACTOR_BASE_FUNC;
 }
 

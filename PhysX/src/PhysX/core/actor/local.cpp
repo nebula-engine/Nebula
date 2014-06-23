@@ -15,7 +15,7 @@ void				phx::core::actor::local::init() {
 	neb::core::actor::local::init();
 	phx::core::actor::base::init();
 }
-void				phx::core::actor::local::step(neb::core::TimeStep const & ts) {
+void				phx::core::actor::local::step(gal::std::timestep const & ts) {
 	neb::core::actor::local::step(ts);
 	phx::core::actor::base::step(ts);
 

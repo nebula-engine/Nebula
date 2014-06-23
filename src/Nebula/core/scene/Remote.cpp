@@ -7,7 +7,7 @@
 #include <Nebula/core/actor/RigidStatic/remote.hpp>
 #include <Nebula/core/scene/Remote.hh>
 
-void		neb::core::scene::remote::step(neb::core::TimeStep const & ts) {
+void		neb::core::scene::remote::step(gal::std::timestep const & ts) {
 	neb::core::scene::base::step(ts);
 }
 sp::weak_ptr<neb::core::actor::rigidstatic::base>	neb::core::scene::remote::createActorRigidStaticUninitialized() {

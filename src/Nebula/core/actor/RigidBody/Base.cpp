@@ -29,7 +29,7 @@ void		neb::core::actor::rigidbody::base::release() {
 	
 	neb::core::actor::rigidactor::base::release();
 }
-void		neb::core::actor::rigidbody::base::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::rigidbody::base::step(gal::std::timestep const & ts) {
 	neb::core::actor::rigidactor::base::step(ts);
 }
 

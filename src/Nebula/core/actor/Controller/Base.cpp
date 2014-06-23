@@ -7,7 +7,7 @@ void	neb::core::actor::Controller::init() {
 }
 void	neb::core::actor::Controller::release() {
 }
-void	neb::core::actor::Controller::step(neb::core::TimeStep const & ts) {
+void	neb::core::actor::Controller::step(gal::std::timestep const & ts) {
 
 }
 

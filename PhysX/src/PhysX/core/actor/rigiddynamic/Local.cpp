@@ -35,7 +35,7 @@ void				phx::core::actor::rigiddynamic::local::release() {
 	phx::core::actor::rigidbody::local::release();
 	phx::core::actor::rigiddynamic::base::release();
 }
-void				phx::core::actor::rigiddynamic::local::step(neb::core::TimeStep const & ts) {
+void				phx::core::actor::rigiddynamic::local::step(gal::std::timestep const & ts) {
 	neb::core::actor::rigiddynamic::local::step(ts);
 	phx::core::actor::rigidbody::local::step(ts);
 	phx::core::actor::rigiddynamic::base::step(ts);

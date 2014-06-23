@@ -13,7 +13,7 @@ namespace rigidbody {
 				virtual public neb::core::actor::rigidactor::remote
 			{
 				public:
-					virtual void		step(neb::core::TimeStep const & ts);
+					virtual void		step(gal::std::timestep const & ts);
 			};
 
 

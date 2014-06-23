@@ -15,7 +15,7 @@ namespace neb { namespace gfx { namespace environ {
 	class three: virtual public neb::gfx::environ::base {
 		public:
 			virtual void		init();
-			virtual void		step(neb::core::TimeStep const & ts);
+			virtual void		step(gal::std::timestep const & ts);
 
 			virtual void		render(sp::shared_ptr<neb::gfx::context::base> context);
 		public:
