@@ -35,6 +35,14 @@ void		phx::core::actor::control::rigidbody::pd::step(gal::std::timestep const & 
 	}
 
 
+	//----------------------
+	float p0 = -1.0;
+	float p1 = -1.0;
+	
+	float c0 = -p0 - p1;
+	float c1 = p0 * p1;
+
+
 	// get actor
 	auto actor = actor_.lock();
 	//auto actor = actor_->isActorActor();
@@ -60,8 +68,6 @@ void		phx::core::actor::control::rigidbody::pd::step(gal::std::timestep const & 
 	I[2][2] = Ivec.z;
 	
 	
-	float c0 = 1.0;
-	float c1 = 1.0;
 	
 	vec3 alpha = c0 * error - c1 * omega;
 	
