@@ -25,6 +25,7 @@
 #include <PhysX/core/actor/rigidstatic/local.hpp>
 #include <PhysX/game/weapon/SimpleProjectile.hpp>
 #include <PhysX/ext/maze/game/map/maze2.hpp>
+#include <PhysX/core/actor/control/rigidbody/base.hpp>
 
 sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
 
@@ -113,6 +114,56 @@ sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::
 
 	return actor;	
 }
+sp::weak_ptr<phx::core::actor::rigiddynamic::base>		create_actor_ai(sp::shared_ptr<phx::core::scene::local> scene) {
+
+
+
+
+
+
+
+
+	auto actor = sp::make_shared<phx::core::actor::rigiddynamic::local>(scene);
+
+	scene->insert(actor);
+	
+	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
+
+	actor->init();
+
+	// shape	
+	auto shape = sp::make_shared<phx::core::shape::box>(actor);
+	
+	actor->neb::core::shape::util::parent::insert(shape);
+	
+	shape->init();
+
+	actor->setupFiltering();
+
+	std::cout << "actor dynamic use count = " << actor.use_count() << std::endl;
+
+
+	actor->setGlobalPosition(vec3(0,0,5));
+
+
+
+
+	// control
+
+	auto control(sp::make_shared<phx::core::actor::control::rigidbody::pd>());
+	
+	actor->control_ = control;
+
+	control->actor_ = actor;//->isPxActorRigidBodyBase();
+
+	control->p_target_ = vec4(0,0,5,1);
+
+	return actor;	
+
+
+
+}
 sp::shared_ptr<phx::core::scene::local>			create_scene(
 		sp::shared_ptr<neb::gfx::window::base> window,
 		sp::shared_ptr<neb::gfx::context::window> context)
@@ -144,7 +195,7 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0,-5, 0)), 1.0);
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 5, 0)), 1.0);
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0,-5)), 1.0);
-	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0, 5)), 1.0);
+	//scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0, 5)), 1.0);
 
 	// player's actor
 	auto actor3 = create_actor_dynamic(scene);
@@ -172,6 +223,9 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	assert(e3);
 
 	e3->view_ = cam;
+
+	// ai
+	create_actor_ai(scene);
 	
 	return scene;
 }
