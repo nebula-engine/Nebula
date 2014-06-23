@@ -1,8 +1,11 @@
 #include <Nebula/app/Base.hh>
 
+void					neb::app::__gfx::init() {
+	neb::app::__base::init();
+}
 void					neb::app::__gfx::static_error_fun(int error, char const * description) {
 	printf("%s\n", description);
-	exit(0);
+	abort();
 }
 void					neb::app::__gfx::static_window_pos_fun(GLFWwindow* window, int x, int y){
 	//GLUTPP_DEBUG_0_FUNCTION;

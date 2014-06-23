@@ -20,7 +20,8 @@ namespace phx { namespace core { namespace actor { namespace actor {
 
 		public:
 			base(sp::shared_ptr<phx::core::actor::util::parent>);
-
+			virtual ~base();
+			
 			virtual void					init();
 			virtual void					release();
 			virtual void					step(gal::std::timestep const & ts);

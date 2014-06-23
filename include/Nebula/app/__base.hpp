@@ -3,6 +3,8 @@
 
 #include <boost/asio/io_service.hpp>
 
+#include <Nebula/app/Util/Flag.hh>
+
 namespace neb {
 	namespace app {
 		/** @brief %base */
@@ -12,6 +14,7 @@ namespace neb {
 
 				boost::asio::io_service				ios_;
 
+				neb::app::util::flag				flag_;
 		};
 	}
 }

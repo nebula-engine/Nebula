@@ -2,8 +2,10 @@
 
 //#include <math/free.hpp>
 
+
 #include <PxPhysicsAPI.h>
 
+#include <Galaxy-Log/log.hpp>
 
 //#include <Nebula/Physics.hh>
 #include <Nebula/core/scene/Base.hh>
@@ -138,7 +140,14 @@ void				phx::app::base::release() {
 sp::shared_ptr<phx::app::base>			phx::app::base::global() {
 	return g_app_;
 }
+void				phx::app::base::step(gal::std::timestep const & ts) {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx app", debug) << __PRETTY_FUNCTION__;
 
+	neb::app::base::step(ts);
+	
+	phx::game::game::util::parent::step(ts);
+
+}
 
 
 
