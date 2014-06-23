@@ -4,11 +4,15 @@
 #include <Nebula/gfx/window/Base.hh>
 
 #include <PhysX/filter.hpp>
+#include <PhysX/app/base.hpp>
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
 #include <PhysX/core/scene/base.hpp>
 #include <PhysX/core/shape/box.hpp>
 #include <PhysX/game/weapon/SimpleProjectile.hpp>
 
+
+phx::game::weapon::SimpleProjectile::SimpleProjectile() {
+}
 void			phx::game::weapon::SimpleProjectile::connect(sp::shared_ptr<neb::gfx::window::base> window) {
 	
 	auto self(sp::dynamic_pointer_cast<phx::game::weapon::SimpleProjectile>(shared_from_this()));
@@ -45,7 +49,12 @@ int			phx::game::weapon::SimpleProjectile::key_fun(sp::shared_ptr<neb::gfx::wind
 }
 void			phx::game::weapon::SimpleProjectile::fire() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx game weapon", debug) << __PRETTY_FUNCTION__;;
+	
+	auto app(phx::app::base::global());
 
+	if((app->ts_.time - last_) < cooldown_) return;
+	last_ = app->ts_.time;
+	
 	// create projectile actor
 
 	auto actor(actor_.lock());
@@ -117,10 +126,14 @@ void			phx::game::weapon::SimpleProjectile::fire() {
 
 
 	// release timer
-
-	std::shared_ptr<neb::Timer::actor::base> t(
-			new neb::Timer::actor::Release(proj, scene->last_ + 5.0)
-			);
+	
+	auto t = sp::make_shared<neb::Timer::actor::Release>(proj, scene->last_ + 5.0);
+	BOOST_LOG_CHANNEL_SEV(lg, "neb timer", debug) << t.use_count();
+	
+	t->activate();
+	BOOST_LOG_CHANNEL_SEV(lg, "neb timer", debug) << t.use_count();
+	
+	
 }
 
 

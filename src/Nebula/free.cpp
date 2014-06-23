@@ -21,6 +21,8 @@
 void		neb::init_log() {
 
 	gal::log::min_severity["neb"]			= debug;
+	gal::log::min_severity["neb app"]		= debug;
+	gal::log::min_severity["neb timer"]		= debug;
 
 	gal::log::min_severity["neb core scene"]	= debug;
 	gal::log::min_severity["neb core actor"]	= debug;
@@ -33,11 +35,14 @@ void		neb::init_log() {
 
 	gal::log::min_severity["neb gfx camera view"]	= debug;
 
+	gal::log::min_severity["phx app"]		= debug;
+
 	gal::log::min_severity["phx core scene"]	= debug;
 	gal::log::min_severity["phx core actor"]	= debug;
 	gal::log::min_severity["phx core shape"]	= debug;
 	gal::log::min_severity["phx core light"]	= debug;
 
+	gal::log::min_severity["phx game"]		= debug;
 	gal::log::min_severity["phx game weapon"]	= debug;
 
 	gal::log::init();

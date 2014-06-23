@@ -32,8 +32,10 @@ namespace phx { namespace core { namespace actor { namespace control { namespace
 				virtual int			key_fun(sp::shared_ptr<neb::gfx::window::base>, int, int, int, int);
 
 				virtual void			step(gal::std::timestep const & ts) = 0;
-				virtual vec3			f() = 0;
-				virtual vec3			t() = 0;
+				virtual vec3			f_body() = 0;
+				virtual vec3			t_body() = 0;
+				virtual vec3			f_global() = 0;
+				virtual vec3			t_global() = 0;
 
 				virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 				virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
@@ -64,16 +66,23 @@ namespace phx { namespace core { namespace actor { namespace control { namespace
 			public:
 				virtual ~manual() {}
 				void				step(gal::std::timestep const & ts);
-				vec3				f();
-				vec3				t();
+				virtual vec3			f_body();
+				virtual vec3			t_body();
+				virtual vec3			f_global();
+				virtual vec3			t_global();
 
 		};
 		class pd: public phx::core::actor::control::rigidbody::base {
 			public:
 				virtual ~pd() {}
 				void				step(gal::std::timestep const & ts);
-				vec3				f();
-				vec3				t();
+
+				vec3				getOrientationError();
+
+				virtual vec3			f_body();
+				virtual vec3			t_body();
+				virtual vec3			f_global();
+				virtual vec3			t_global();
 		};
 
 

@@ -67,42 +67,46 @@ void			phx::core::actor::rigidbody::base::add_force(real time) {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
 
-	// non-user-controled
-	//physx::PxVec3 f(force_[0],force_[1],force_[2]);
-	//physx::PxVec3 t(torque_[0],torque_[1],torque_[2]);
-	
-	vec3 f(force_);
-	vec3 t(torque_);
+	// body frame
+	vec3 f_body;
+	vec3 t_body;
 
-	// user-controlled
-	if(control_) {
-		f += control_->f();
-		t += control_->t();
-	}
+	// global frame
+	vec3 f_global;
+	vec3 t_global;
 	
+	if(control_) {
+		f_body += control_->f_body();
+		t_body += control_->t_body();
+
+		f_global += control_->f_global();
+		t_global += control_->t_global();
+	}
+
+	
+	// combine
+	f_global += pose_.rot_ * f_body;
+	t_global += pose_.rot_ * t_body;
+
 	//physx::PxTransform pose = pose_;
 	
-	//f = pose_.rot_ * f;//pose_.q.rotate(f);
-	t = pose_.rot_ * t;//.q.rotate(t);
-
+	
 	assert(px_actor_);
 	physx::PxRigidBody* pxrigidbody = px_actor_->isRigidBody();
 	assert(pxrigidbody);
 
 
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug)
-		<< std::setw(8) << "f"
-		<< std::setw(8) << f.x
-		<< std::setw(8) << f.y
-		<< std::setw(8) << f.z
+		<< std::setw(8) << "f_global"
+		<< std::setw(8) << f_global.x
+		<< std::setw(8) << f_global.y
+		<< std::setw(8) << f_global.z
 		<< " mass " << pxrigidbody->getMass();
 
 
-
 	
-	
-	pxrigidbody->addForce(phx::util::convert(f));
-	pxrigidbody->addTorque(phx::util::convert(t));
+	pxrigidbody->addForce(phx::util::convert(f_global));
+	pxrigidbody->addTorque(phx::util::convert(t_global));
 }
 void		phx::core::actor::rigidbody::base::create_control(sp::shared_ptr<neb::gfx::window::base> window) {
 
