@@ -18,7 +18,7 @@ namespace phx { namespace core { namespace actor { namespace controller {
 
 			virtual void		init();
 			virtual void		release();
-			virtual void		step(neb::core::TimeStep const & ts);
+			virtual void		step(gal::std::timestep const & ts);
 
 			virtual void		add_force();
 

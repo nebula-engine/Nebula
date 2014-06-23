@@ -41,7 +41,7 @@ namespace neb {
 					base&						operator=(base const & r);
 					void						init();
 					void						release();
-					virtual void					step(neb::core::TimeStep const & ts);
+					virtual void					step(gal::std::timestep const & ts);
 					virtual void					render();
 					void						resize(int w, int h);
 

@@ -9,7 +9,7 @@
 #include <PhysX/core/scene/remote.hpp>
 #include <PhysX/core/actor/rigidstatic/remote.hpp>
 
-void		phx::core::scene::remote::step(neb::core::TimeStep const & ts) {
+void		phx::core::scene::remote::step(gal::std::timestep const & ts) {
 
 
 

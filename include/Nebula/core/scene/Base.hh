@@ -50,7 +50,7 @@ namespace neb { namespace core { namespace scene {
 
 			void				draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p);
 			void				resize(int w, int h);
-			virtual void			step(neb::core::TimeStep const & ts);
+			virtual void			step(gal::std::timestep const & ts);
 			/** @} */
 
 			virtual  void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {

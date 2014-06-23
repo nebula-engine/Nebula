@@ -37,7 +37,7 @@ namespace neb {
 				
 				virtual void			release();
 				virtual void			cleanup();
-				virtual void			step(neb::core::TimeStep const & ts);
+				virtual void			step(gal::std::timestep const & ts);
 
 				virtual void			load(neb::core::light::util::count & light_count, neb::core::pose const & pose) = 0;
 				void				load(int o, neb::core::pose const & pose);

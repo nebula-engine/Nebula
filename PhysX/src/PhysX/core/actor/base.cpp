@@ -48,7 +48,7 @@ void			phx::core::actor::base::release() {
 	
 	neb::core::actor::base::release();
 }
-void			phx::core::actor::base::step(neb::core::TimeStep const & ts) {
+void			phx::core::actor::base::step(gal::std::timestep const & ts) {
 	neb::core::actor::base::step(ts);
 }
 sp::shared_ptr<phx::core::actor::util::parent>		phx::core::actor::base::getPxParent() {

@@ -68,7 +68,7 @@ void					neb::core::shape::base::release() {
 	neb::core::shape::util::parent::release();
 	neb::Light::util::parent::release();
 }
-void					neb::core::shape::base::step(neb::core::TimeStep const & ts) {
+void					neb::core::shape::base::step(gal::std::timestep const & ts) {
 
 	neb::core::shape::util::parent::step(ts);
 

@@ -135,7 +135,7 @@ void		neb::core::actor::base::release() {
 
 	//conn_.key_fun_.disconnect();
 }
-void		neb::core::actor::base::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::base::step(gal::std::timestep const & ts) {
 	NEBULA_ACTOR_BASE_FUNC;
 
 	typedef neb::core::actor::util::parent A;

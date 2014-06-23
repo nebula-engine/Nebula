@@ -3,7 +3,7 @@
 //#include <PhysX/core/actor/rigidbody/Remote.hh>
 #include <PhysX/message/actor/control/rigidbody/update.hpp>
 /*
-void		phx::core::actor::rigidbody::remote::step(neb::core::TimeStep const & ts) {
+void		phx::core::actor::rigidbody::remote::step(gal::std::timestep const & ts) {
 	
 	neb::core::actor::rigidactor::remote::step(ts);
 	neb::core::actor::rigidbody::base::step(ts);

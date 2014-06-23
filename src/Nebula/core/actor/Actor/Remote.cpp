@@ -10,7 +10,7 @@ neb::core::actor::actor::remote::remote(sp::shared_ptr<neb::core::actor::util::p
 {
 
 }
-void		neb::core::actor::actor::remote::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::actor::remote::step(gal::std::timestep const & ts) {
 	//NEBULA_ACTOR_BASE_FUNC;
 
 //	neb::core::actor::actor::base::step(time, dt);

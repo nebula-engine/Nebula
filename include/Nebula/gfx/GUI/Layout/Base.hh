@@ -30,7 +30,7 @@ namespace neb {
 
 
 						/** @brief Main Loop @{ */
-						virtual void					step(neb::core::TimeStep const & ts);
+						virtual void					step(gal::std::timestep const & ts);
 						virtual void					draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p);
 						/** @} */
 

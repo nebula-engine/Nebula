@@ -167,7 +167,7 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 
 	cam->actor_ = actor3;
 	
-	auto e3 = sp::dynamic_pointer_cast<neb::gfx::environ::three>(context->environ_);
+	//auto e3 = sp::dynamic_pointer_cast<neb::gfx::environ::three>(context->environ_);
 	auto e3 = context->environ_->isEnvironThree();
 	assert(e3);
 

@@ -24,7 +24,7 @@ void		neb::core::actor::actor::base::setPose(neb::core::pose const & pose) {
 
 	neb::core::actor::base::setPose(pose);
 }
-void		neb::core::actor::actor::base::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::actor::base::step(gal::std::timestep const & ts) {
 	neb::core::actor::base::step(ts);
 }
 void		neb::core::actor::actor::base::release() {
