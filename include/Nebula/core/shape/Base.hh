@@ -9,7 +9,7 @@
 #include <GLFW/glfw3.h>
 
 #include <Nebula/util/decl.hpp>
-#include <Nebula/core/TimeStep.hpp>
+#include <gal/std/timestep.hpp>
 #include <Nebula/util/typedef.hpp>
 #include <Nebula/gfx/util/decl.hpp>
 
@@ -50,7 +50,7 @@ namespace neb { namespace core { namespace shape {
 
 				void			init();
 				void			release();
-				void			step(neb::core::TimeStep const & ts);
+				void			step(gal::std::timestep const & ts);
 
 				/** @name Accessors @{ */
 				neb::core::pose						getPose();

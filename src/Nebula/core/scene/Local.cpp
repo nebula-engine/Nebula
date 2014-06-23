@@ -9,7 +9,7 @@ neb::core::scene::local::local(sp::shared_ptr<neb::core::scene::util::parent> pa
 	neb::core::scene::base(parent)
 {
 }
-void		neb::core::scene::local::step(neb::core::TimeStep const & ts) {
+void		neb::core::scene::local::step(gal::std::timestep const & ts) {
 	neb::core::scene::base::step(ts);
 }
 void neb::core::scene::local::send_actor_update() {

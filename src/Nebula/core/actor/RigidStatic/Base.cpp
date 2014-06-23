@@ -14,7 +14,7 @@ neb::core::actor::rigidstatic::base::base(sp::shared_ptr<neb::core::actor::util:
 void		neb::core::actor::rigidstatic::base::init() {
 	NEBULA_ACTOR_BASE_FUNC
 }
-void		neb::core::actor::rigidstatic::base::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::rigidstatic::base::step(gal::std::timestep const & ts) {
 	NEBULA_ACTOR_BASE_FUNC;
 }
 

@@ -7,7 +7,7 @@
 
 //#include <Nebula/config.hh>
 #include <Nebula/util/decl.hpp>
-#include <Nebula/core/TimeStep.hpp>
+#include <gal/std/timestep.hpp>
 #include <Nebula/core/scene/Util/Types.hh>
 
 #include <Nebula/gfx/Context/Base.hh>
@@ -45,7 +45,7 @@ namespace neb { namespace gfx { namespace window {
 	
 					/** @name Main Loop @{ */
 					void					render();
-					void					step(neb::core::TimeStep const & ts);
+					void					step(gal::std::timestep const & ts);
 					/** @} */
 					void					resize();
 	

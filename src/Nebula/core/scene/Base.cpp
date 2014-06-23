@@ -99,7 +99,7 @@ void		neb::core::scene::base::add_deferred(sp::shared_ptr<neb::core::actor::base
 
 	actors_deferred_[actor->name_] = actor;
 }
-void		neb::core::scene::base::step(neb::core::TimeStep const & ts) {
+void		neb::core::scene::base::step(gal::std::timestep const & ts) {
 
 	typedef neb::core::actor::util::parent A;
 

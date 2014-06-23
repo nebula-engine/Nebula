@@ -18,7 +18,7 @@ namespace neb {
 						Ridealong(sp::shared_ptr<neb::gfx::environ::base>);
 
 						virtual mat4				view();
-						virtual void				step(neb::core::TimeStep const & ts);
+						virtual void				step(gal::std::timestep const & ts);
 
 
 						sp::weak_ptr<neb::core::actor::base>	actor_;

@@ -45,7 +45,7 @@ void neb::Light::base::dim() {
 	printf("UNSUPPORTED\n");
 	exit(0);
 }
-void		neb::Light::base::step(neb::core::TimeStep const & ts) {
+void		neb::Light::base::step(gal::std::timestep const & ts) {
 
 }
 void	neb::Light::base::draw() {	

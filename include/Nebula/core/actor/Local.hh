@@ -3,7 +3,7 @@
 
 
 #include <Nebula/core/actor/Base.hh>
-#include <Nebula/core/TimeStep.hpp>
+#include <gal/std/timestep.hpp>
 
 namespace neb { namespace core { namespace actor {
 
@@ -12,7 +12,7 @@ namespace neb { namespace core { namespace actor {
 		public:
 			local(sp::shared_ptr<neb::core::actor::util::parent> parent);
 		
-			virtual void		step(neb::core::TimeStep const & ts);
+			virtual void		step(gal::std::timestep const & ts);
 	};
 
 }

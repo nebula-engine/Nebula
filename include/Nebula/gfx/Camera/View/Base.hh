@@ -13,7 +13,7 @@
 */
 
 #include <Nebula/util/decl.hpp>
-#include <Nebula/core/TimeStep.hpp>
+#include <gal/std/timestep.hpp>
 #include <Nebula/gfx/util/decl.hpp>
 #include <Nebula/gfx/Camera/View/util/flag.hpp>
 #include <Nebula/util/shared.hpp>
@@ -35,7 +35,7 @@ namespace neb {
 						 *
 						 * @todo explain when in timeline this occurs and in which thread and why
 						 */
-						virtual void					step(::neb::core::TimeStep const & ts) = 0;
+						virtual void					step(::gal::std::timestep const & ts) = 0;
 
 						virtual void					connect(
 								sp::shared_ptr< ::neb::gfx::window::base > const & window) {}

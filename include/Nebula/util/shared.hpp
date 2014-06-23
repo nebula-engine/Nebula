@@ -9,7 +9,7 @@
 
 #include <Galaxy-Standard/shared.hpp>
 
-#include <Nebula/core/TimeStep.hpp>
+#include <gal/std/timestep.hpp>
 
 namespace neb {
 	namespace std {
@@ -27,7 +27,7 @@ namespace neb {
 				virtual ~shared() {}
 				virtual void					init();
 				virtual void					release();
-				virtual void					step(neb::core::TimeStep const & ts);
+				virtual void					step(gal::std::timestep const & ts);
 				
 				virtual void					serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 				virtual void					serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);

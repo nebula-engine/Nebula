@@ -1,7 +1,7 @@
 #ifndef NEBULA_GFX_ENVIRON_BASE_HPP
 #define NEBULA_GFX_ENVIRON_BASE_HPP
 
-#include <Nebula/core/TimeStep.hpp>
+#include <gal/std/timestep.hpp>
 #include <Nebula/gfx/util/decl.hpp>
 #include <Nebula/gfx/environ/util/cast.hpp>
 #include <Nebula/gfx/Viewport.hpp>
@@ -20,7 +20,7 @@ namespace neb { namespace gfx { namespace environ {
 
 
 			virtual void		init();
-			virtual void		step(neb::core::TimeStep const & ts);
+			virtual void		step(gal::std::timestep const & ts);
 
 
 			virtual void		resize(int w, int h);

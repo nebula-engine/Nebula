@@ -32,7 +32,7 @@ void			phx::core::scene::local::release() {
 	neb::core::scene::local::release();
 	phx::core::scene::base::release();
 }
-void			phx::core::scene::local::step(neb::core::TimeStep const & ts) {
+void			phx::core::scene::local::step(gal::std::timestep const & ts) {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__ << " dt = " << ts.dt;
 
 	neb::core::scene::local::step(ts);

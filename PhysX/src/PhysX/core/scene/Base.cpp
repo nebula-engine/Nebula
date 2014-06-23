@@ -95,7 +95,7 @@ void			phx::core::scene::base::create_physics() {
 
 	px_scene_->setSimulationEventCallback(sec);
 }
-void		phx::core::scene::base::step(neb::core::TimeStep const & ts) {
+void		phx::core::scene::base::step(gal::std::timestep const & ts) {
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	

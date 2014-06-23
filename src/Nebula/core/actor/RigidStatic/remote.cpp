@@ -19,7 +19,7 @@ void		neb::core::actor::rigidstatic::remote::init() {
 void		neb::core::actor::rigidstatic::remote::release() {
 	//NEBULA_ACTOR_BASE_FUNC
 }
-void		neb::core::actor::rigidstatic::remote::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::rigidstatic::remote::step(gal::std::timestep const & ts) {
 	//NEBULA_ACTOR_BASE_FUNC;
 }
 

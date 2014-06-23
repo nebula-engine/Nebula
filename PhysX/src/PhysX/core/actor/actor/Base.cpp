@@ -34,7 +34,7 @@ void		phx::core::actor::actor::base::setPose(neb::core::pose const & pose) {
 	neb::core::actor::actor::base::setPose(pose);
 	phx::core::actor::base::setPose(pose);
 }
-void		phx::core::actor::actor::base::step(neb::core::TimeStep const & ts) {
+void		phx::core::actor::actor::base::step(gal::std::timestep const & ts) {
 }
 
 

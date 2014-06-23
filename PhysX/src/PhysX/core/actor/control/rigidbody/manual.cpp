@@ -13,7 +13,7 @@
 #include <PhysX/core/actor/control/rigidbody/base.hpp>
 #include <PhysX/util/convert.hpp>
 
-void		phx::core::actor::control::rigidbody::manual::step(neb::core::TimeStep const & ts) { // 0
+void		phx::core::actor::control::rigidbody::manual::step(gal::std::timestep const & ts) { // 0
 
 }
 

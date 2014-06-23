@@ -3,7 +3,7 @@
 
 #include <boost/serialization/nvp.hpp>
 
-#include <Nebula/core/TimeStep.hpp>
+#include <gal/std/timestep.hpp>
 #include <Nebula/gfx/Color/Color.hh>
 
 namespace neb {
@@ -34,7 +34,7 @@ namespace neb {
 				material();
 				void		init();
 				void		release();
-				void		step(neb::core::TimeStep const & ts);
+				void		step(gal::std::timestep const & ts);
 				/** @brief load
 				 *
 				 * load into OpenGL

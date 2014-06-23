@@ -29,7 +29,7 @@ namespace phx { namespace core { namespace scene {
 		virtual public neb::core::scene::remote,
 		virtual public ::phx::core::scene::base
 	{
-		void				step(neb::core::TimeStep const & ts);
+		void				step(gal::std::timestep const & ts);
 		
 		virtual void			fire(sp::shared_ptr<neb::core::actor::base> actor);
 
