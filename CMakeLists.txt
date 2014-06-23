@@ -14,6 +14,7 @@ include_directories("./Galaxy-Standard/include")
 include_directories("./Galaxy-Network/include")
 include_directories("./Galaxy-Log/include")
 include_directories("./maze/include")
+include_directories("./Control-System/include")
 include_directories("./glm")
 #include_directories(${physx_INCLUDE_DIR})
 
@@ -21,6 +22,7 @@ link_directories("./Galaxy-Network/Debug")
 link_directories("./Galaxy-Standard/Debug")
 link_directories("./Galaxy-Log/Debug")
 link_directories("./maze/Debug")
+link_directories("./Control-System/Debug")
 
 ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
 
