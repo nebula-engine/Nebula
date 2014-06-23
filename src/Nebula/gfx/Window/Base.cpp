@@ -156,7 +156,7 @@ void		neb::gfx::window::base::render() {
 }
 void neb::gfx::window::base::callback_window_refresh_fun(GLFWwindow*) {
 }
-void			neb::gfx::window::base::step(neb::core::TimeStep const & ts) {
+void			neb::gfx::window::base::step(gal::std::timestep const & ts) {
 	//GLUTPP_DEBUG_1_FUNCTION;
 
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;

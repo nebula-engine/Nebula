@@ -42,7 +42,7 @@ void neb::gfx::gui::layout::base::create_object(tinyxml2::XMLElement* element) {
 
 	objects_.push_back(object);
 }*/
-void		neb::gfx::gui::layout::base::step(neb::core::TimeStep const & ts) {
+void		neb::gfx::gui::layout::base::step(gal::std::timestep const & ts) {
 }
 void		neb::gfx::gui::layout::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
 	//jess::clog << NEB_FUNCSIG << std::endl;

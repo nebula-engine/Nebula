@@ -4,7 +4,7 @@
 #include <Galaxy-Standard/parent.hpp>
 
 #include <Nebula/util/shared.hpp>
-#include <Nebula/core/TimeStep.hpp>
+#include <gal/std/timestep.hpp>
 
 namespace neb {
 	namespace util {
@@ -40,7 +40,7 @@ namespace neb {
 							});
 
 				}
-				void		step(neb::core::TimeStep const & ts) {
+				void		step(gal::std::timestep const & ts) {
 
 					gal_parent::map_.template for_each<0>([&] (iterator<0> it) {
 							it->ptr_->step(ts);

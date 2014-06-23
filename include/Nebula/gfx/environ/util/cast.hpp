@@ -9,8 +9,9 @@ namespace neb { namespace gfx { namespace environ { namespace util {
 	class cast:
 		virtual public neb::std::shared
 	{
-		sp::shared_ptr<neb::gfx::environ::two>		isEnvironTwo();
-		sp::shared_ptr<neb::gfx::environ::three>	isEnvironThree();
+		public:
+			sp::shared_ptr<neb::gfx::environ::two>		isEnvironTwo();
+			sp::shared_ptr<neb::gfx::environ::three>	isEnvironThree();
 	};
 
 }}}}

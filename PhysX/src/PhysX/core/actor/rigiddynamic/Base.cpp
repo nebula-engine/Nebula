@@ -40,7 +40,7 @@ void			phx::core::actor::rigiddynamic::base::release() {
 	phx::core::actor::rigidbody::base::release();
 	neb::core::actor::rigiddynamic::base::release();
 }
-void			phx::core::actor::rigiddynamic::base::step(neb::core::TimeStep const & ts) {
+void			phx::core::actor::rigiddynamic::base::step(gal::std::timestep const & ts) {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	phx::core::actor::rigidbody::base::step(ts);

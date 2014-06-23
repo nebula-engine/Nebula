@@ -106,7 +106,7 @@ sp::shared_ptr<neb::app::base>		neb::app::base::global() {
 	assert(g_app_);
 	return g_app_;
 }
-void		neb::app::base::step(neb::core::TimeStep const & ts) {
+void		neb::app::base::step(gal::std::timestep const & ts) {
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	neb::core::scene::util::parent::step(ts);
@@ -124,7 +124,7 @@ neb::core::pose			neb::app::base::getPoseGlobal() {
 int			neb::app::base::loop() {
 	//NEBULA_DEBUG_1_FUNCTION;
 
-	static neb::core::TimeStep ts;
+	static gal::std::timestep ts;
 
 	while(!flag_.any(neb::app::util::flag::E::SHOULD_RELEASE)) {
 		ts.time = glfwGetTime();

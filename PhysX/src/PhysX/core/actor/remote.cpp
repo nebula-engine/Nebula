@@ -15,7 +15,7 @@ void				phx::core::actor::remote::init() {
 	neb::core::actor::remote::init();
 	phx::core::actor::base::init();
 }
-void				phx::core::actor::remote::step(neb::core::TimeStep const & ts) {
+void				phx::core::actor::remote::step(gal::std::timestep const & ts) {
 	neb::core::actor::remote::step(ts);
 	phx::core::actor::base::step(ts);
 

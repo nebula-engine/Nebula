@@ -21,7 +21,7 @@ phx::core::shape::base::base(sp::shared_ptr<phx::core::shape::util::parent> pare
 phx::core::shape::base::~base() {}
 //void			phx::core::shape::base::release() {
 //}
-void			phx::core::shape::base::step(neb::core::TimeStep const & ts) {
+void			phx::core::shape::base::step(gal::std::timestep const & ts) {
 }
 void			phx::core::shape::base::init() {
 	//NEBULA_DEBUG_0_FUNCTION;

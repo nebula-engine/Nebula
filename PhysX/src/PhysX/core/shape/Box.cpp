@@ -17,7 +17,7 @@ void				phx::core::shape::box::release() {
 	neb::core::shape::box::release();
 	phx::core::shape::base::release();
 }
-void				phx::core::shape::box::step(neb::core::TimeStep  const & ts) {
+void				phx::core::shape::box::step(gal::std::timestep  const & ts) {
 	neb::core::shape::box::step(ts);
 	phx::core::shape::base::step(ts);
 }

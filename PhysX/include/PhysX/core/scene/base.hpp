@@ -46,7 +46,7 @@ namespace phx { namespace core { namespace scene {
 			virtual ~base();
 			void					init();
 			void					release();
-			void					step(::neb::core::TimeStep const & ts);
+			void					step(::gal::std::timestep const & ts);
 
 
 		public:

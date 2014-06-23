@@ -30,7 +30,7 @@ void		neb::gfx::Camera::Projection::base::load(sp::shared_ptr<neb::glsl::program
 	
 	p->get_uniform_scalar("proj")->load(proj());
 }
-void		neb::gfx::Camera::Projection::base::step(neb::core::TimeStep const & ts) {
+void		neb::gfx::Camera::Projection::base::step(gal::std::timestep const & ts) {
 
 }
 
@@ -61,7 +61,7 @@ mat4		neb::gfx::Camera::Projection::Perspective::proj() {
 	
 	return ret;
 }
-void		neb::gfx::Camera::Projection::Perspective::step(neb::core::TimeStep const & ts) {
+void		neb::gfx::Camera::Projection::Perspective::step(gal::std::timestep const & ts) {
 
 }
 

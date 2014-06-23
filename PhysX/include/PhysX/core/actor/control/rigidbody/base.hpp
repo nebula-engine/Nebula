@@ -7,7 +7,7 @@
 
 #include <Nebula/util/typedef.hpp>
 #include <Nebula/gfx/util/decl.hpp>
-#include <Nebula/core/TimeStep.hpp>
+#include <gal/std/timestep.hpp>
 
 #include <PhysX/core/actor/util/decl.hpp>
 
@@ -31,7 +31,7 @@ namespace phx { namespace core { namespace actor { namespace control { namespace
 
 				virtual int			key_fun(sp::shared_ptr<neb::gfx::window::base>, int, int, int, int);
 
-				virtual void			step(neb::core::TimeStep const & ts) = 0;
+				virtual void			step(gal::std::timestep const & ts) = 0;
 				virtual vec4			f() = 0;
 				virtual vec4			t() = 0;
 
@@ -63,7 +63,7 @@ namespace phx { namespace core { namespace actor { namespace control { namespace
 		class manual: public phx::core::actor::control::rigidbody::base {
 			public:
 				virtual ~manual() {}
-				void				step(neb::core::TimeStep const & ts);
+				void				step(gal::std::timestep const & ts);
 				vec4				f();
 				vec4				t();
 
@@ -71,7 +71,7 @@ namespace phx { namespace core { namespace actor { namespace control { namespace
 		class pd: public phx::core::actor::control::rigidbody::base {
 			public:
 				virtual ~pd() {}
-				void				step(neb::core::TimeStep const & ts);
+				void				step(gal::std::timestep const & ts);
 				vec4				f();
 				vec4				t();
 		};

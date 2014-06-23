@@ -31,7 +31,7 @@ void		neb::gfx::context::base::release() {
 void		neb::gfx::context::base::resize(int w, int h) {
 	if(environ_) environ_->resize(w,h);
 }
-void		neb::gfx::context::base::step(neb::core::TimeStep const & ts) {
+void		neb::gfx::context::base::step(gal::std::timestep const & ts) {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
 	
