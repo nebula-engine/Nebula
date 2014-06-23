@@ -66,7 +66,7 @@ namespace neb { namespace app {
 			public:
 				void					init();
 				void					init_glew();
-				void					step(neb::core::TimeStep const & ts);
+				void					step(gal::std::timestep const & ts);
 				int					loop();
 
 				void					set_should_release();

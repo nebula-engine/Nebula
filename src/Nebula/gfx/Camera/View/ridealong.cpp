@@ -67,7 +67,7 @@ mat4		neb::gfx::Camera::View::Ridealong::view() {
 	*/
 	return mat4(ret);
 }
-void neb::gfx::Camera::View::Ridealong::step(neb::core::TimeStep const & ts) {
+void neb::gfx::Camera::View::Ridealong::step(gal::std::timestep const & ts) {
 	
 }
 

@@ -16,7 +16,7 @@ namespace neb { namespace core { namespace actor {
 
 					virtual void					init();
 					virtual void					release();
-					virtual void					step(neb::core::TimeStep const & ts);
+					virtual void					step(gal::std::timestep const & ts);
 
 			};
 		}

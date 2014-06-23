@@ -12,7 +12,7 @@
 #include <PhysX/util/convert.hpp>
 
 
-void		phx::core::actor::control::rigidbody::pd::step(neb::core::TimeStep const & ts) { // 1
+void		phx::core::actor::control::rigidbody::pd::step(gal::std::timestep const & ts) { // 1
 	//NEBULA_DEBUG_1_FUNCTION;
 
 	// step target

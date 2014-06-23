@@ -32,7 +32,7 @@ namespace neb { namespace core {
 		class local: virtual public neb::core::scene::base {
 			public:
 				local(sp::shared_ptr<neb::core::scene::util::parent> parent);
-				virtual void			step(neb::core::TimeStep const & ts);
+				virtual void			step(gal::std::timestep const & ts);
 				virtual void			send_actor_update();
 
 			/** @name convenience functions

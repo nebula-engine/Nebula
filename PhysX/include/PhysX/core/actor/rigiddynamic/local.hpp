@@ -24,7 +24,7 @@ namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 
 			virtual void					init();
 			virtual void					release();
-			virtual void					step(neb::core::TimeStep const & ts);
+			virtual void					step(gal::std::timestep const & ts);
 
 
 			virtual void					create_physics();

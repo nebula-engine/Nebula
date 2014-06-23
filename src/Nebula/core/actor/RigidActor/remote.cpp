@@ -10,7 +10,7 @@ neb::core::actor::rigidactor::remote::remote(sp::shared_ptr<neb::core::actor::ut
 	neb::core::actor::actor::remote(parent)
 {
 }
-void		neb::core::actor::rigidactor::remote::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::rigidactor::remote::step(gal::std::timestep const & ts) {
 	neb::core::actor::actor::remote::step(ts);
 	neb::core::actor::rigidactor::base::step(ts);
 }

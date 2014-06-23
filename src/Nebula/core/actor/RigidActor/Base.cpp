@@ -16,7 +16,7 @@ void		neb::core::actor::rigidactor::base::init() {
 void		neb::core::actor::rigidactor::base::release() {
 	neb::core::actor::actor::base::release();
 }
-void		neb::core::actor::rigidactor::base::step(neb::core::TimeStep const & ts) {
+void		neb::core::actor::rigidactor::base::step(gal::std::timestep const & ts) {
 	neb::core::actor::actor::base::step(ts);
 }
 

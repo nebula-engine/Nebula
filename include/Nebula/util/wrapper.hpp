@@ -3,7 +3,7 @@
 
 #include <Galaxy-Standard/wrapper.hpp>
 
-#include <Nebula/core/TimeStep.hpp>
+#include <gal/std/timestep.hpp>
 #include <Nebula/util/shared.hpp>
 
 namespace neb {
@@ -14,7 +14,7 @@ namespace neb {
 				wrapper(sp::shared_ptr<neb::std::shared> s);
 				virtual void		init();
 				virtual void		release();
-				virtual void		step(neb::core::TimeStep const & ts);
+				virtual void		step(gal::std::timestep const & ts);
 		};
 	}
 }

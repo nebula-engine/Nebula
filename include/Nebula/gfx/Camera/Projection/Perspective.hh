@@ -23,7 +23,7 @@ namespace neb {
 						/** @brief step
 						 * @todo explain when in timeline this occurs and in which thread and why
 						 */
-						void					step(neb::core::TimeStep const & ts);
+						void					step(gal::std::timestep const & ts);
 					protected:
 						/** @brief Parent */
 						sp::shared_ptr<neb::gfx::environ::base>		parent_;
@@ -35,7 +35,7 @@ namespace neb {
 						virtual mat4				proj();
 
 						/** @brief step */
-						void					step(neb::core::TimeStep const & ts);
+						void					step(gal::std::timestep const & ts);
 
 						//
 

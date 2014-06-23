@@ -227,7 +227,7 @@ int			neb::gfx::Camera::View::Free::key_fun(
 
 	return 0;
 }
-void			neb::gfx::Camera::View::Free::step(neb::core::TimeStep const & ts) {
+void			neb::gfx::Camera::View::Free::step(gal::std::timestep const & ts) {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
 
 	// look vector

@@ -44,7 +44,7 @@ void			phx::core::actor::rigidstatic::remote::release() {
 	phx::core::actor::rigidstatic::base::release();
 
 }
-void			phx::core::actor::rigidstatic::remote::step(neb::core::TimeStep const & ts) {
+void			phx::core::actor::rigidstatic::remote::step(gal::std::timestep const & ts) {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::actor::rigidstatic::remote::step(ts);

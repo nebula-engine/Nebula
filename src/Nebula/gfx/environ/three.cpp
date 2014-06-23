@@ -21,7 +21,7 @@ void		neb::gfx::environ::three::init() {
 	//camera_->init(shared_from_this());
 	
 }
-void		neb::gfx::environ::three::step(neb::core::TimeStep const & ts) {
+void		neb::gfx::environ::three::step(gal::std::timestep const & ts) {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx environ", debug) << __PRETTY_FUNCTION__;
 

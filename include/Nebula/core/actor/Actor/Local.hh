@@ -17,7 +17,7 @@ namespace actor {
 				public:
 					local(sp::shared_ptr<neb::core::actor::util::parent> parent);
 				
-					virtual void		step(neb::core::TimeStep const & ts);
+					virtual void		step(gal::std::timestep const & ts);
 			};
 
 
