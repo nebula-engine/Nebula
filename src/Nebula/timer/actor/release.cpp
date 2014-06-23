@@ -1,3 +1,4 @@
+#include <gal/log/log.hpp>
 
 #include <Nebula/app/Base.hh>
 #include <Nebula/timer/Actor/Release.hpp>
@@ -7,14 +8,20 @@
 neb::Timer::actor::Release::Release(sp::shared_ptr<neb::core::actor::base> actor, double seconds):
 	neb::Timer::actor::base::base(actor, seconds)
 {
+	BOOST_LOG_CHANNEL_SEV(lg, "neb timer", debug) << __PRETTY_FUNCTION__;
+
 }
 void		neb::Timer::actor::Release::doSomething() {
-	assert(actor_);
 	
-	auto parent = actor_->parent_.lock();
+	BOOST_LOG_CHANNEL_SEV(lg, "neb timer", debug) << __PRETTY_FUNCTION__;
+	
+	auto actor(actor_.lock());
+	assert(actor);
+	
+	auto parent = actor->parent_.lock();
 	assert(parent);
 	
-	parent->erase(actor_->i_);
+	parent->erase(actor->i_);
 	
 }
 

@@ -24,6 +24,7 @@
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
 #include <PhysX/core/actor/rigidstatic/local.hpp>
 #include <PhysX/game/weapon/SimpleProjectile.hpp>
+#include <PhysX/game/game/base.hpp>
 #include <PhysX/ext/maze/game/map/maze2.hpp>
 #include <PhysX/core/actor/control/rigidbody/base.hpp>
 
@@ -149,7 +150,7 @@ sp::weak_ptr<phx::core::actor::rigiddynamic::base>		create_actor_ai(sp::shared_p
 	auto pxrd = actor->px_actor_->isRigidDynamic();
 	
 	pxrd->setLinearDamping(5.0);
-	pxrd->setAngularDamping(5.0);
+	pxrd->setAngularDamping(3.0);
 	
 	// control
 
@@ -176,7 +177,7 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 
 	std::cout << "4\n";
 
-	auto app = neb::app::base::global();
+	auto app = phx::app::base::global();
 	assert(app);
 	
 	std::cout << "5\n";
@@ -228,9 +229,24 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	assert(e3);
 
 	e3->view_ = cam;
-
+	
+	// game
+	auto game(sp::make_shared<phx::game::game::base>());
+	
+	app->phx::game::game::util::parent::insert(game);
+	
 	// ai
-	create_actor_ai(scene);
+	auto actor_ai = create_actor_ai(scene).lock();
+	
+	// weapon
+	actor_ai->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
+	
+	auto ai(sp::make_shared<phx::game::ai::base>());
+	
+	game->insert(ai);
+	
+	ai->actor_ = actor_ai;
+	ai->target_ = actor3;
 	
 	return scene;
 }

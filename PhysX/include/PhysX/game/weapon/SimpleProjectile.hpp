@@ -7,6 +7,8 @@ namespace phx { namespace game { namespace weapon {
 
 	class SimpleProjectile: virtual public phx::game::weapon::base {
 		public:
+
+			SimpleProjectile();
 			
 			virtual void					connect(sp::shared_ptr<neb::gfx::window::base> window);
 			virtual int					key_fun(sp::shared_ptr<neb::gfx::window::base> window, int, int, int, int);
