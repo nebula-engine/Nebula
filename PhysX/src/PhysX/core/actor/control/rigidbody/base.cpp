@@ -43,9 +43,9 @@ int			phx::core::actor::control::rigidbody::base::key_fun(sp::shared_ptr<neb::gf
 		<< " mods = " << mods
 		<< " flag = ";
 
-	vec4 x(1.0,0.0,0.0,0);
-	vec4 y(0.0,1.0,0.0,0);
-	vec4 z(0.0,0.0,1.0,0);
+	vec3 x(1.0,0.0,0.0);
+	vec3 y(0.0,1.0,0.0);
+	vec3 z(0.0,0.0,1.0);
 
 	switch(action) {
 		case GLFW_PRESS:

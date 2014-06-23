@@ -145,10 +145,12 @@ sp::weak_ptr<phx::core::actor::rigiddynamic::base>		create_actor_ai(sp::shared_p
 
 
 	actor->setGlobalPosition(vec3(0,0,5));
-
-
-
-
+	
+	auto pxrd = actor->px_actor_->isRigidDynamic();
+	
+	pxrd->setLinearDamping(5.0);
+	pxrd->setAngularDamping(5.0);
+	
 	// control
 
 	auto control(sp::make_shared<phx::core::actor::control::rigidbody::pd>());
@@ -157,8 +159,11 @@ sp::weak_ptr<phx::core::actor::rigiddynamic::base>		create_actor_ai(sp::shared_p
 
 	control->actor_ = actor;//->isPxActorRigidBodyBase();
 
-	control->p_target_ = vec4(0,0,5,1);
-
+	// target
+	control->p_target_ = vec3(0,0,5);
+	
+	control->q_target_ = glm::angleAxis(1.5f, vec3(0.0,1.0,0.0));
+	
 	return actor;	
 
 
