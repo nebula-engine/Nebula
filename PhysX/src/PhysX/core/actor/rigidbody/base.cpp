@@ -132,6 +132,10 @@ void		phx::core::actor::rigidbody::base::create_control(sp::shared_ptr<neb::gfx:
 void		phx::core::actor::rigidbody::base::step(gal::std::timestep const & ts) {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
+
+	if(control_) {
+		control_->step(ts);
+	}
 	
 	add_force(ts.dt);
 }
