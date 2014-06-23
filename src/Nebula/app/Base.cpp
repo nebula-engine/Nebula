@@ -46,6 +46,13 @@ neb::app::base::~base() {
 }
 void				neb::app::base::init() {
 	
+	neb::app::__core::init();
+	neb::app::__gfx::init();
+	neb::app::__gfx_glsl::init();
+	neb::app::__net::init();
+
+
+	
 	// glfw
 	glfwInit();
 	
@@ -124,15 +131,14 @@ neb::core::pose			neb::app::base::getPoseGlobal() {
 int			neb::app::base::loop() {
 	//NEBULA_DEBUG_1_FUNCTION;
 
-	static gal::std::timestep ts;
 
 	while(!flag_.any(neb::app::util::flag::E::SHOULD_RELEASE)) {
-		ts.time = glfwGetTime();
-		ts.dt = ts.time - ts.last;
-		ts.last = ts.time;
-		ts.frame++;
+		ts_.time = glfwGetTime();
+		ts_.dt = ts_.time - ts_.last;
+		ts_.last = ts_.time;
+		ts_.frame++;
 
-		step(ts);
+		step(ts_);
 
 		glfwPollEvents();
 	}

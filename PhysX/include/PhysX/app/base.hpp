@@ -12,6 +12,7 @@
 
 #include <PhysX/free.hpp>
 #include <PhysX/core/scene/util/parent.hpp>
+#include <PhysX/game/game/util/parent.hpp>
 
 class DefaultErrorCallback:
 	public physx::PxErrorCallback
@@ -38,7 +39,8 @@ namespace phx { namespace app {
 
 	class base:
 		virtual public neb::app::base,
-		virtual public phx::core::scene::util::parent
+		virtual public phx::core::scene::util::parent,
+		virtual public phx::game::game::util::parent
 	{
 		public:
 			friend void phx::init();
@@ -46,6 +48,7 @@ namespace phx { namespace app {
 			base();
 			void						init();
 			void						release();
+			void						step(gal::std::timestep const & ts);
 			
 			static sp::shared_ptr<phx::app::base>		global();
 			

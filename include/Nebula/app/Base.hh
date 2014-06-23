@@ -14,7 +14,6 @@
 
 #include <Nebula/free.hh>
 #include <Nebula/util/decl.hpp>
-#include <Nebula/app/Util/Flag.hh>
 #include <Nebula/app/__core.hpp>
 #include <Nebula/app/__gfx.hpp>
 #include <Nebula/app/__gfx_glsl.hpp>
@@ -66,7 +65,7 @@ namespace neb { namespace app {
 			public:
 				void					init();
 				void					init_glew();
-				void					step(gal::std::timestep const & ts);
+				virtual void				step(gal::std::timestep const & ts);
 				int					loop();
 
 				void					set_should_release();
@@ -79,11 +78,9 @@ namespace neb { namespace app {
 
 			public:
 				static sp::shared_ptr<neb::app::base>				g_app_;
-				// network
-				/** @todo make derived App classes for Server and Client??? */
-				neb::app::util::flag						flag_;
 
-				
+				gal::std::timestep						ts_;
+			
 
 				sp::shared_ptr<neb::util::command_set>				command_set_;
 		};
