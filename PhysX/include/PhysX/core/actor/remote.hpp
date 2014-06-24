@@ -27,9 +27,6 @@ namespace phx { namespace core { namespace actor {
 
 
 
-
-			float		health_;
-
 	};
 
 

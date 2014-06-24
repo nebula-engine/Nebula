@@ -26,7 +26,7 @@ void neb::core::scene::local::send_actor_update() {
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
 			auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
 			assert(actor);
-			if(actor->flag_.any(neb::core::actor::util::Flag::SHOULD_UPDATE)) {
+			if(actor->flag_.any(neb::core::actor::util::flag::SHOULD_UPDATE)) {
 			message->actors_.push_back(actor);
 			}
 			});

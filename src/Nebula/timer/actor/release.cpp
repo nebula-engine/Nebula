@@ -16,7 +16,9 @@ void		neb::Timer::actor::Release::doSomething() {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb timer", debug) << __PRETTY_FUNCTION__;
 	
 	auto actor(actor_.lock());
-	assert(actor);
+	
+	// actor was released after timer start
+	if(!actor) return;
 	
 	auto parent = actor->parent_.lock();
 	assert(parent);
