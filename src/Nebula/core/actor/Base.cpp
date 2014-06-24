@@ -129,7 +129,9 @@ void			neb::core::actor::base::draw(sp::shared_ptr<neb::gfx::context::base> cont
   init_physics();
   }*/
 void		neb::core::actor::base::releaseUp() {
-
+	
+	gal::std::__release::release();
+	
 	neb::core::actor::util::parent::clear();
 	neb::core::shape::util::parent::clear();
 

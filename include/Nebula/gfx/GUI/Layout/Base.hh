@@ -27,6 +27,7 @@ namespace neb {
 						base(sp::shared_ptr<neb::gfx::gui::layout::util::parent> parent);
 
 						virtual void				init();
+						virtual void				release() {}
 
 
 						/** @brief Main Loop @{ */

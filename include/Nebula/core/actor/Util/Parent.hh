@@ -38,6 +38,7 @@ namespace neb { namespace core { namespace actor { namespace util {
 			virtual ~parent();
 
 			virtual void						init();
+			virtual void						release();
 		public:
 			sp::shared_ptr<neb::core::scene::base>			getScene();
 	};
