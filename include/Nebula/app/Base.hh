@@ -30,6 +30,7 @@
 #include <Nebula/gfx/GUI/Layout/Util/Parent.hh>
 #include <Nebula/core/shape/Util/Types.hh>
 #include <Nebula/util/wrapper.hpp>
+#include <Nebula/game/game/util/parent.hpp>
 
 namespace neb { namespace app {
 
@@ -42,7 +43,8 @@ namespace neb { namespace app {
 			virtual public neb::app::__gfx,
 			virtual public neb::app::__gfx_glsl,
 			virtual public neb::app::__core,
-			virtual public neb::app::__net
+			virtual public neb::app::__net,
+			virtual public neb::game::game::util::parent
 		{
 			public:
 				friend void neb::init();
@@ -64,6 +66,8 @@ namespace neb { namespace app {
 			private:
 			public:
 				void					init();
+				void					release() {}
+
 				void					init_glew();
 				virtual void				step(gal::std::timestep const & ts);
 				int					loop();

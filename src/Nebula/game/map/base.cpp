@@ -13,7 +13,7 @@ void		neb::game::map::base::init() {
 	neb::game::spawn::util::parent::insert(spawn);
 
 
-
 }
-
+void		neb::game::map::base::release() {
+}
 

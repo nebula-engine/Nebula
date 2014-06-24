@@ -23,12 +23,14 @@ namespace neb {
 		class shared: virtual public gal::std::shared {
 			public:
 				shared();
-				/** @brief Destructor */
+				/** @brief destructor
+				 *
+				 */
 				virtual ~shared() {}
 				virtual void					init();
 				virtual void					release();
 				virtual void					step(gal::std::timestep const & ts);
-				
+
 				virtual void					serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 				virtual void					serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
 		};
