@@ -9,7 +9,6 @@ namespace neb {
 	namespace actor {
 		class __base: virtual public neb::std::shared {
 			public:
-				boost::mutex	mutex_;
 		};
 	}
 }

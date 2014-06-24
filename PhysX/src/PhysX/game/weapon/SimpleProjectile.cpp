@@ -68,6 +68,8 @@ void			phx::game::weapon::SimpleProjectile::fire() {
 
 	proj->simulation_.word0 = phx::filter::filter::type::DYNAMIC | phx::filter::filter::type::PROJECTILE;
 	proj->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
+	proj->simulation_.word2 = phx::filter::filter::type::PROJECTILE;
+	proj->simulation_.word3 = phx::filter::filter::PROJECTILE_AGAINST;
 
 
 

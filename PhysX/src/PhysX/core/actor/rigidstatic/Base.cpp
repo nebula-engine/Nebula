@@ -73,7 +73,9 @@ void			phx::core::actor::rigidstatic::base::create_physics() {
 	px_actor_ = px_rigid_static;
 
 	// userData
-	px_rigid_static->userData = this;
+	px_rigid_static->userData = isActorBase().get();
+	assert(this == shared_from_this().get());
+	assert(this == isActorBase().get());
 
 	// add PxActor to PxScene
 	assert(scene->px_scene_ != NULL);
