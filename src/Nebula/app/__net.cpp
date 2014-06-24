@@ -1,5 +1,6 @@
 #include <Galaxy-Log/log.hpp>
 
+#include <Nebula/debug.hh>
 #include <Nebula/util/wrapper.hpp>
 #include <Nebula/app/__net.hpp>
 
@@ -17,7 +18,7 @@ void		neb::app::__net::sendServer(sp::shared_ptr< gal::net::omessage > msg)  {
 	if(server_) {
 		server_->write(msg);
 	} else {
-		BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << "no server";
+		if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << "no server";
 	}
 }
 void		neb::app::__net::sendClient(sp::shared_ptr< gal::net::omessage > msg)  {
@@ -26,7 +27,7 @@ void		neb::app::__net::sendClient(sp::shared_ptr< gal::net::omessage > msg)  {
 	if(client_) {
 		client_->write(msg);
 	} else {
-		BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << "no client";
+		if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << "no client";
 	}
 }
 void		neb::app::__net::sendClient(sp::shared_ptr< neb::message::OBase > message) {

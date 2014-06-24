@@ -1,3 +1,4 @@
+#include <gal/log/log.hpp>
 
 #include <Nebula/debug.hh>
 #include <Nebula/core/shape/Base.hh>
@@ -13,15 +14,15 @@ neb::core::actor::rigidstatic::local::local(sp::shared_ptr<neb::core::actor::uti
 		neb::core::actor::rigidactor::local(parent),
 		neb::core::actor::rigidstatic::base(parent)
 {
-	NEBULA_ACTOR_BASE_FUNC
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
 void		neb::core::actor::rigidstatic::local::init() {
-	NEBULA_ACTOR_BASE_FUNC
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
 void		neb::core::actor::rigidstatic::local::release() {
-	NEBULA_ACTOR_BASE_FUNC
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
 void		neb::core::actor::rigidstatic::local::step(gal::std::timestep const & ts) {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
 

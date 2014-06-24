@@ -22,10 +22,10 @@ phx::core::actor::rigiddynamic::base::base(sp::shared_ptr<phx::core::actor::util
 	phx::core::actor::rigidactor::base(parent),
 	phx::core::actor::rigidbody::base(parent)
 {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::actor::rigiddynamic::base::init() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::actor::rigiddynamic::base::init();
 	phx::core::actor::rigidbody::base::init();
@@ -35,22 +35,22 @@ void			phx::core::actor::rigiddynamic::base::init() {
 	pxrd->setLinearDamping(0.01);
 }
 /*void			phx::core::actor::rigiddynamic::base::releaseUp() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	phx::core::actor::rigidbody::base::release();
 	//neb::core::actor::rigiddynamic::base::release();
 }*/
 void			phx::core::actor::rigiddynamic::base::step(gal::std::timestep const & ts) {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	phx::core::actor::rigidbody::base::step(ts);
 	neb::core::actor::rigiddynamic::base::step(ts);
 }
 void			phx::core::actor::rigiddynamic::base::create_physics() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	if(px_actor_ != NULL) {
-		BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << "been here!";
+		if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << "been here!";
 		return;
 	}
 
@@ -100,7 +100,7 @@ void			phx::core::actor::rigiddynamic::base::create_physics() {
 	assert(px_actor_);
 }
 void			phx::core::actor::rigiddynamic::base::init_physics() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	assert(px_actor_);	
 	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();

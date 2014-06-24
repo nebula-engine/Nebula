@@ -14,6 +14,7 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <Nebula/core/scene/Util/Types.hh>
+#include <Nebula/debug.hh>
 
 #include <Nebula/free.hh>
 #include <Nebula/core/actor/Base.hh>
@@ -44,7 +45,7 @@ neb::gfx::window::base::~base() {
 void neb::gfx::window::base::init() {
 	neb::std::shared::init();
 	
-	BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << __PRETTY_FUNCTION__;
 
 	auto app = neb::app::base::global();
 	assert(app);
@@ -63,7 +64,7 @@ void neb::gfx::window::base::init() {
 
 	if(window_ == NULL) {
 		glfwTerminate();
-		BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", critical) << "glfwCreateWindow failed";
+		if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", critical) << "glfwCreateWindow failed";
 		exit(EXIT_FAILURE);
 	}
 
@@ -159,7 +160,7 @@ void neb::gfx::window::base::callback_window_refresh_fun(GLFWwindow*) {
 void			neb::gfx::window::base::step(gal::std::timestep const & ts) {
 	//GLUTPP_DEBUG_1_FUNCTION;
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
 
 
 	neb::gfx::context::util::parent::step(ts);

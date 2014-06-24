@@ -2,6 +2,7 @@
 
 #include <Galaxy-Log/log.hpp>
 
+#include <Nebula/debug.hh>
 #include <Nebula/math/geo/polygon.hpp>
 #include <Nebula/math/Serialization/GLM.hpp>
 
@@ -18,7 +19,7 @@ void				math::geo::vertex::serialize(boost::archive::polymorphic_oarchive & ar, 
 }
 
 void		math::geo::vertex::print(int sl) {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", (severity_level)sl)
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", (severity_level)sl)
 		<< std::setw(4) << " "
 		<< std::setw(4) << "p"
 		<< std::setw(8) << p[0]

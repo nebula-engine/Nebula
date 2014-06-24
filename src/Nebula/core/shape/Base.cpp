@@ -16,12 +16,12 @@ neb::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> pare
 	parent_(parent),
 	s_(1,1,1)
 {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
 	assert(parent);
 }
 neb::core::shape::base::~base() {}
 neb::core::pose				neb::core::shape::base::getPoseGlobal() {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::pose m;
 	
@@ -38,7 +38,7 @@ neb::core::pose				neb::core::shape::base::getPose() {
 	return pose_;
 }
 void					neb::core::shape::base::init() {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
 
 	auto me = sp::dynamic_pointer_cast<neb::core::shape::base>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
@@ -62,7 +62,7 @@ void					neb::core::shape::base::init() {
 	createMesh();
 }
 void					neb::core::shape::base::release() {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
 
 	//neb::util::parent<neb::core::shape::base>::release();
 	neb::core::shape::util::parent::release();
@@ -77,7 +77,7 @@ void					neb::core::shape::base::step(gal::std::timestep const & ts) {
 	material_front_.step(ts);
 }
 void					neb::core::shape::base::load_lights(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
 
 	auto npose = pose * pose_;
 
@@ -111,7 +111,7 @@ void					neb::core::shape::base::model_load(neb::core::pose const & pose) {
 }
 void					neb::core::shape::base::init_buffer(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
 
 	glEnable(GL_TEXTURE_2D);
 
@@ -205,7 +205,7 @@ void					neb::core::shape::base::init_buffer(sp::shared_ptr<neb::gfx::context::b
 			sp::shared_ptr<neb::gfx::context::base> context,
 			sp::shared_ptr<neb::glsl::program> p,
 			neb::core::pose const & pose) {
-		BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
+		if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
 
 		//mesh_.print(debug);
 

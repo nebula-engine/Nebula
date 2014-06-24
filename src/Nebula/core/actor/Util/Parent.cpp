@@ -1,3 +1,4 @@
+#include <gal/log/log.hpp>
 #include <Nebula/debug.hh>
 
 #include <Nebula/app/Base.hh>
@@ -17,7 +18,7 @@ void							neb::core::actor::util::parent::release() {
 
 }
 sp::shared_ptr<neb::core::scene::base>			neb::core::actor::util::parent::getScene() {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 	auto scene = isSceneBase();
 
