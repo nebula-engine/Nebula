@@ -62,7 +62,7 @@ neb::core::pose				neb::core::actor::base::getPoseGlobal() {
 void		neb::core::actor::base::setPose(neb::core::pose const & pose) {
 	pose_ = pose;
 	
-	flag_.set(neb::core::actor::util::Flag::E::SHOULD_UPDATE);
+	flag_.set(neb::core::actor::util::flag::E::SHOULD_UPDATE);
 }
 void		neb::core::actor::base::load_lights(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
 	NEBULA_ACTOR_BASE_FUNC;
