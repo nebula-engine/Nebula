@@ -128,7 +128,7 @@ void			neb::core::actor::base::draw(sp::shared_ptr<neb::gfx::context::base> cont
   create_shapes(desc);
   init_physics();
   }*/
-void		neb::core::actor::base::release() {
+void		neb::core::actor::base::releaseUp() {
 
 	neb::core::actor::util::parent::clear();
 	neb::core::shape::util::parent::clear();

@@ -21,7 +21,10 @@ namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 			base(sp::shared_ptr<phx::core::actor::util::parent>);
 
 			virtual void					init();
-			virtual void					release();
+			virtual void					release() = 0;
+		protected:
+			//virtual void					releaseUp();
+		public:
 			virtual void					step(gal::std::timestep const & ts);
 
 

@@ -27,12 +27,12 @@ void		neb::core::actor::actor::base::setPose(neb::core::pose const & pose) {
 void		neb::core::actor::actor::base::step(gal::std::timestep const & ts) {
 	neb::core::actor::base::step(ts);
 }
-void		neb::core::actor::actor::base::release() {
+/*void		neb::core::actor::actor::base::release() {
 	NEBULA_ACTOR_BASE_FUNC;
 	
 	neb::core::actor::base::release();
 
-}
+}*/
 
 
 

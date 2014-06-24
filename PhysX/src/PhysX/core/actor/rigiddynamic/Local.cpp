@@ -30,10 +30,23 @@ void				phx::core::actor::rigiddynamic::local::init() {
 	phx::core::actor::rigidbody::local::init();
 	phx::core::actor::rigiddynamic::base::init();
 }
+/*void				phx::core::actor::rigiddynamic::local::releaseUp() {
+	//phx::core::actor::rigidbody::local::releaseUp();
+	//phx::core::actor::actor::local::releaseUp();
+	// nothing to do here
+}*/
 void				phx::core::actor::rigiddynamic::local::release() {
-	neb::core::actor::rigiddynamic::local::release();
-	phx::core::actor::rigidbody::local::release();
-	phx::core::actor::rigiddynamic::base::release();
+	boost::lock_guard<boost::mutex> lk(mutex_);
+	
+	//neb::core::actor::rigiddynamic::base::releaseUp();
+	neb::core::actor::base::releaseUp();
+	
+	//neb::core::actor::rigiddynamic::local::releaseUp();
+	
+	//phx::core::actor::rigiddynamic::base::releaseUp();
+	phx::core::actor::actor::base::releaseUp();
+	
+	//phx::core::actor::rigiddynamic::local::releaseUp();
 }
 void				phx::core::actor::rigiddynamic::local::step(gal::std::timestep const & ts) {
 	neb::core::actor::rigiddynamic::local::step(ts);

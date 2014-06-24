@@ -16,12 +16,12 @@ void		phx::core::actor::actor::remote::init() {
 	phx::core::actor::actor::base::init();
 	
 }
-void		phx::core::actor::actor::remote::release() {
+/*void		phx::core::actor::actor::remote::release() {
 
 	neb::core::actor::actor::remote::release();
 	phx::core::actor::actor::base::release();
 
-}
+}*/
 void		phx::core::actor::actor::remote::step(gal::std::timestep const & ts) {
 	
 	neb::core::actor::actor::remote::step(ts);
