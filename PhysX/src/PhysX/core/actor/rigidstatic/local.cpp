@@ -27,17 +27,17 @@ phx::core::actor::rigidstatic::local::local(sp::shared_ptr<phx::core::actor::uti
 	phx::core::actor::rigidactor::local(parent),
 	phx::core::actor::rigidstatic::base(parent)
 {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::actor::rigidstatic::local::init() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::actor::rigidstatic::local::init();
 	phx::core::actor::rigidactor::local::init();
 	phx::core::actor::rigidstatic::base::init();
 }
 void			phx::core::actor::rigidstatic::local::release() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	boost::lock_guard<boost::recursive_mutex> lk(mutex_);
 
@@ -52,7 +52,7 @@ void			phx::core::actor::rigidstatic::local::release() {
 
 }
 void			phx::core::actor::rigidstatic::local::step(gal::std::timestep const & ts) {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::actor::rigidstatic::local::step(ts);
 	phx::core::actor::rigidactor::local::step(ts);

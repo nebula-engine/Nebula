@@ -6,6 +6,7 @@
 #include <PhysX/core/scene/base.hpp>
 #include <PhysX/util/convert.hpp>
 
+#include <Nebula/debug.hh>
 #include <Nebula/core/scene/Util/Types.hh>
 
 
@@ -14,28 +15,28 @@ phx::core::scene::base::base(sp::shared_ptr< ::neb::core::scene::util::parent > 
 	neb::core::scene::base(parent),
 	px_scene_(NULL)
 {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 }
 phx::core::scene::base::~base() {
 
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::scene::base::init() {
 	
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::scene::base::init();
 	
 	create_physics();
 }
 void			phx::core::scene::base::release() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::scene::base::create_physics() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 	
 	if(px_scene_ != NULL) {
-		BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "been here!";
+		if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "been here!";
 		return;
 	}
 

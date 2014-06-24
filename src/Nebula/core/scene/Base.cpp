@@ -6,7 +6,7 @@
 #include <Nebula/gfx/window/Base.hh>
 #include <Nebula/gfx/Context/Base.hh>
 
-
+#include <Nebula/debug.hh>
 #include <Nebula/core/scene/Base.hh>
 #include <Nebula/core/scene/Util/Types.hh>
 #include <Nebula/core/scene/Util/Parent.hh>
@@ -44,22 +44,22 @@
 neb::core::scene::base::base(sp::shared_ptr<neb::core::scene::util::parent> parent):
 	parent_(parent)
 {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
 }
 neb::core::scene::base::~base() {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
 }
 void neb::core::scene::base::init() {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
 }
 void neb::core::scene::base::release() {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::actor::util::parent::clear();
 }
 void neb::core::scene::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
 
 	//auto p = neb::app::base::globalBase()->use_program(neb::program_name::e::LIGHT);
 

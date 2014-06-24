@@ -1,4 +1,4 @@
-
+#include <gal/log/log.hpp>
 
 #include <Nebula/debug.hh>
 
@@ -29,10 +29,10 @@ neb::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> pare
 	density_(10.0),
 	parent_(parent)
 {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
 neb::core::actor::base::~base() {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
 void		neb::core::actor::base::init() {
 }
@@ -45,7 +45,7 @@ neb::core::pose				neb::core::actor::base::getPose() {
 	return pose_;
 }
 neb::core::pose				neb::core::actor::base::getPoseGlobal() {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::pose p;
 	
@@ -65,7 +65,7 @@ void		neb::core::actor::base::setPose(neb::core::pose const & pose) {
 	flag_.set(neb::core::actor::util::flag::E::SHOULD_UPDATE);
 }
 void		neb::core::actor::base::load_lights(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 	auto npose = pose * pose_;
 	
@@ -95,7 +95,7 @@ void		neb::core::actor::base::load_lights(neb::core::light::util::count & light_
 }
 void			neb::core::actor::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p,
 		neb::core::pose const & pose) {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 	auto npose = pose * pose_;
 
@@ -117,7 +117,7 @@ void			neb::core::actor::base::draw(sp::shared_ptr<neb::gfx::context::base> cont
 
 }
 /*void neb::core::actor::base::init(neb::core::actor::desc_w desc) {
-  NEBULA_ACTOR_BASE_FUNC;
+  if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
   raw_.reset();
   raw_.swap(desc->raw_wrapper_.ptr_);
@@ -138,7 +138,7 @@ void		neb::core::actor::base::releaseUp() {
 	//conn_.key_fun_.disconnect();
 }
 void		neb::core::actor::base::step(gal::std::timestep const & ts) {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 	typedef neb::core::actor::util::parent A;
 	typedef neb::core::shape::util::parent S;

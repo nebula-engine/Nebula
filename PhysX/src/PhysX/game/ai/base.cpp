@@ -1,4 +1,5 @@
 #include <Galaxy-Log/log.hpp>
+#include <Nebula/debug.hh>
 
 #include <PhysX/core/actor/rigidbody/base.hpp>
 #include <PhysX/core/actor/control/rigidbody/base.hpp>
@@ -6,7 +7,7 @@
 
 void						phx::game::ai::base::step(gal::std::timestep const & ts) {
 
-	BOOST_LOG_CHANNEL_SEV(lg, "phx game", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx game", debug) << __PRETTY_FUNCTION__;
 
 	auto actor = sp::dynamic_pointer_cast<phx::core::actor::rigidbody::base>(actor_.lock());
 	if(!actor) return;
@@ -38,20 +39,20 @@ void						phx::game::ai::base::step(gal::std::timestep const & ts) {
 	
 	//quat q(up,look);
 	
-	BOOST_LOG_CHANNEL_SEV(lg, "phx game", debug)
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx game", debug)
 		<< ::std::setw(16) << "look"
 		<< ::std::setw(16) << look.x
 		<< ::std::setw(16) << look.y
 		<< ::std::setw(16) << look.z;
 
-	BOOST_LOG_CHANNEL_SEV(lg, "phx game", debug)
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx game", debug)
 		<< ::std::setw(16) << "q"
 		<< ::std::setw(16) << q.w
 		<< ::std::setw(16) << q.x
 		<< ::std::setw(16) << q.y
 		<< ::std::setw(16) << q.z;
 
-	//BOOST_LOG_CHANNEL_SEV(lg, "phx game", debug) << __PRETTY_FUNCTION__;
+	//if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx game", debug) << __PRETTY_FUNCTION__;
 
 	pd->q_target_ = q;
 	
