@@ -2,13 +2,14 @@
 #define PHYSX_GAME_GAME_BASE_HPP
 
 #include <Nebula/util/shared.hpp>
+#include <Nebula/game/game/base.hpp>
 
 #include <PhysX/game/ai/util/parent.hpp>
 
 namespace phx { namespace game { namespace game {
 
 	class base:
-		virtual public neb::std::shared,
+		virtual public neb::game::game::base,
 		virtual public phx::game::ai::util::parent
 	{
 		public:

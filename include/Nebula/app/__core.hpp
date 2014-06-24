@@ -14,6 +14,7 @@ namespace neb {
 		{
 			public:
 				virtual void	init();
+				virtual void	release() {}
 
 		};
 	}
