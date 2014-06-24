@@ -15,7 +15,7 @@ namespace neb { namespace core { namespace actor {
 					base(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
 					virtual void					init();
-					virtual void					release();
+					virtual void					release() = 0;
 					virtual void					step(gal::std::timestep const & ts);
 
 			};

@@ -13,9 +13,9 @@ neb::core::actor::rigidactor::base::base(sp::shared_ptr<neb::core::actor::util::
 void		neb::core::actor::rigidactor::base::init() {
 	neb::core::actor::actor::base::init();
 }
-void		neb::core::actor::rigidactor::base::release() {
+/*void		neb::core::actor::rigidactor::base::release() {
 	neb::core::actor::actor::base::release();
-}
+}*/
 void		neb::core::actor::rigidactor::base::step(gal::std::timestep const & ts) {
 	neb::core::actor::actor::base::step(ts);
 }

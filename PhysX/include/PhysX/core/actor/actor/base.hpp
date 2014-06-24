@@ -21,9 +21,12 @@ namespace phx { namespace core { namespace actor { namespace actor {
 		public:
 			base(sp::shared_ptr<phx::core::actor::util::parent>);
 			virtual ~base();
-			
+
 			virtual void					init();
-			virtual void					release();
+			virtual void					release() = 0;
+		protected:
+			void						releaseUp();
+		public:	
 			virtual void					step(gal::std::timestep const & ts);
 
 
@@ -31,14 +34,14 @@ namespace phx { namespace core { namespace actor { namespace actor {
 			virtual void					init_physics() = 0;
 
 			//virtual void					add_force(real) = 0;
-			
+
 			virtual void					setPose(neb::core::pose const & pose);
-			
-		
-			
+
+
+
 		public:
-			
-			
+
+
 			physx::PxActor*					px_actor_;
 
 	};

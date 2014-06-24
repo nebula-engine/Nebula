@@ -24,11 +24,11 @@ void		neb::core::actor::rigidbody::base::init() {
 	
 	neb::core::actor::rigidactor::base::init();
 }
-void		neb::core::actor::rigidbody::base::release() {
+/*void		neb::core::actor::rigidbody::base::release() {
 	BOOST_LOG_CHANNEL_SEV(lg, "neb actor", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::actor::rigidactor::base::release();
-}
+}*/
 void		neb::core::actor::rigidbody::base::step(gal::std::timestep const & ts) {
 	neb::core::actor::rigidactor::base::step(ts);
 }
