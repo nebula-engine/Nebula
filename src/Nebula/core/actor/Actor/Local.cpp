@@ -1,3 +1,4 @@
+#include <gal/log/log.hpp>
 #include <Nebula/debug.hh>
 
 #include <Nebula/core/actor/Actor/Local.hh>
@@ -10,7 +11,7 @@ neb::core::actor::actor::local::local(sp::shared_ptr<neb::core::actor::util::par
 
 }
 void		neb::core::actor::actor::local::step(gal::std::timestep const & ts) {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 	//	neb::core::actor::actor::base::step(dt);
 	//	neb::core::actor::local::step(dt);

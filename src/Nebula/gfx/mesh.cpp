@@ -7,7 +7,7 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <Nebula/math/geo/polyhedron.hh>
-
+#include <Nebula/debug.hh>
 #include <Nebula/gfx/mesh.hh>
 
 
@@ -24,7 +24,7 @@ void	neb::gfx::mesh::construct(math::geo::polyhedron* poly) {
 	
 	printf("%s\n",__PRETTY_FUNCTION__);
 	
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "tris: " << tris.size();
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "tris: " << tris.size();
 
 
 	
@@ -41,8 +41,8 @@ void	neb::gfx::mesh::construct(math::geo::polyhedron* poly) {
 		}
 	}
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "vertices: " << vertices_.size();
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "indices:  " << indices_.size();
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "vertices: " << vertices_.size();
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "indices:  " << indices_.size();
 
 
 }
@@ -67,8 +67,8 @@ void		neb::gfx::mesh::serialize(boost::archive::polymorphic_iarchive & ar, unsig
 	ar & indices_;
 	
 	
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "vertices: " << vertices_.size();
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "indices:  " << indices_.size();
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "vertices: " << vertices_.size();
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "indices:  " << indices_.size();
 
 }
 void		neb::gfx::mesh::serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
@@ -79,12 +79,12 @@ void		neb::gfx::mesh::serialize(boost::archive::polymorphic_oarchive & ar, unsig
 	ar & indices_;
 	
 	
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "vertices: " << vertices_.size();
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "indices:  " << indices_.size();
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "vertices: " << vertices_.size();
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", info) << "indices:  " << indices_.size();
 
 }
 void		neb::gfx::mesh::print(int sl) {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", (severity_level)sl) << "mesh";
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", (severity_level)sl) << "mesh";
 
 	for(auto v : vertices_) {
 		v.print(sl);

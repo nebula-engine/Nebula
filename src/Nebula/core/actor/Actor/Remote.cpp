@@ -11,7 +11,7 @@ neb::core::actor::actor::remote::remote(sp::shared_ptr<neb::core::actor::util::p
 
 }
 void		neb::core::actor::actor::remote::step(gal::std::timestep const & ts) {
-	//NEBULA_ACTOR_BASE_FUNC;
+	//if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 //	neb::core::actor::actor::base::step(time, dt);
 //	neb::core::actor::remote::step(time, dt);

@@ -3,6 +3,7 @@
 
 #include <Galaxy-Log/log.hpp>
 
+#include <Nebula/debug.hh>
 #include <Nebula/config.hh>
 #include <Nebula/gfx/window/Base.hh>
 #include <Nebula/gfx/Camera/View/Free.hh>
@@ -101,7 +102,7 @@ void	neb::gfx::Camera::View::Free::init() {
 
 }
 void			neb::gfx::Camera::View::Free::connect(sp::shared_ptr<neb::gfx::window::base> const & window) {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", info) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", info) << __PRETTY_FUNCTION__;
 	
 	
 	
@@ -136,7 +137,7 @@ int			neb::gfx::Camera::View::Free::key_fun(
 		int action,
 		int mods)
 {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
 
 	long unsigned int f = flag_.val_ & (
 			neb::gfx::camera::view::util::flag::NORTH |
@@ -147,7 +148,7 @@ int			neb::gfx::Camera::View::Free::key_fun(
 			neb::gfx::camera::view::util::flag::DOWN);
 
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug)
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug)
 		<< "key = " << key
 		<< " scancode = " << scancode
 		<< " action = " << action
@@ -228,7 +229,7 @@ int			neb::gfx::Camera::View::Free::key_fun(
 	return 0;
 }
 void			neb::gfx::Camera::View::Free::step(gal::std::timestep const & ts) {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
 
 	// look vector
 	//vec3 look = center_ - vec3(eye_);
@@ -301,8 +302,8 @@ void			neb::gfx::Camera::View::Free::step(gal::std::timestep const & ts) {
 }
 
 vec3			neb::gfx::Camera::View::Free::move() {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << "flag = " << flag_.val_;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << "flag = " << flag_.val_;
 
 	//	vec3 mov = vec3(0,0,-1) * north_ + vec3(1,0,0) * east_;
 
@@ -327,7 +328,7 @@ vec3			neb::gfx::Camera::View::Free::move() {
 		mov = head_[it->second];
 	}
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << "flag = " << flag_.val_;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << "flag = " << flag_.val_;
 
 	return mov;
 }
@@ -357,17 +358,17 @@ mat4		neb::gfx::Camera::View::Free::view() {
 
 	mat4 ret = glm::lookAt(eye, center, up);
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "yaw" << ::std::setw(8) << yaw_;
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "pitch" << ::std::setw(8) << pitch_;
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "eye"
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "yaw" << ::std::setw(8) << yaw_;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "pitch" << ::std::setw(8) << pitch_;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "eye"
 		<< ::std::setw(8) << eye[0]
 		<< ::std::setw(8) << eye[1]
 		<< ::std::setw(8) << eye[2];
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "center"
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "center"
 		<< ::std::setw(8) << center[0]
 		<< ::std::setw(8) << center[1]
 		<< ::std::setw(8) << center[2];
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "up"
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "up"
 		<< ::std::setw(8) << up[0]
 		<< ::std::setw(8) << up[1]
 		<< ::std::setw(8) << up[2];

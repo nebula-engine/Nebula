@@ -5,6 +5,7 @@
 #include <Nebula/core/scene/Local.hh>
 #include <Nebula/core/actor/RigidBody/Base.hh>
 #include <Nebula/timer/Actor/Release.hpp>
+#include <Nebula/debug.hh>
 
 
 
@@ -18,22 +19,22 @@ phx::core::scene::local::local(sp::shared_ptr<neb::core::scene::util::parent> pa
 	neb::core::scene::local(parent),
 	phx::core::scene::base(parent)
 {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::scene::local::init() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::scene::local::init();
 	phx::core::scene::base::init();
 }
 void			phx::core::scene::local::release() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::scene::local::release();
 	phx::core::scene::base::release();
 }
 void			phx::core::scene::local::step(gal::std::timestep const & ts) {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__ << " dt = " << ts.dt;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__ << " dt = " << ts.dt;
 
 	neb::core::scene::local::step(ts);
 	phx::core::scene::base::step(ts);
@@ -58,13 +59,13 @@ void			phx::core::scene::local::step(gal::std::timestep const & ts) {
                 auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
                 assert(actor);
 		actor->mutex_.lock();
-		BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "actor = " << actor.get();
+		if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "actor = " << actor.get();
         });
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "actors locked";
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "actors locked";
         /*A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
                 auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
                 assert(actor);
-		BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "actor = " << actor.get();
+		if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "actor = " << actor.get();
         });*/
 	
 	px_scene_->simulate(ts.dt);
@@ -75,7 +76,7 @@ void			phx::core::scene::local::step(gal::std::timestep const & ts) {
 	const physx::PxActiveTransform* active_transforms = px_scene_->getActiveTransforms(nb_active_transforms);
 
 	
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug)
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug)
 		<< "active transforms: " << nb_active_transforms;
 
 	//physx::PxTransform pose;
@@ -93,7 +94,7 @@ void			phx::core::scene::local::step(gal::std::timestep const & ts) {
 		void* ud = active_transforms[i].userData;
 		assert(ud);
 
-		BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "ud = " << ud;
+		if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "ud = " << ud;
 
 		physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
 
@@ -109,7 +110,7 @@ void			phx::core::scene::local::step(gal::std::timestep const & ts) {
 						phx::util::convert(pose.q)
 						));
 
-			BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug)
+			if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug)
 				<< std::setw(8) << "p"
 				<< std::setw(8) << pose.p.x
 				<< std::setw(8) << pose.p.y

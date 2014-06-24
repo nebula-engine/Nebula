@@ -1,4 +1,5 @@
 #include <Galaxy-Log/log.hpp>
+#include <Nebula/debug.hh>
 
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/rigidactor/remote.hpp>
@@ -18,14 +19,14 @@ phx::core::actor::rigidactor::remote::remote(sp::shared_ptr<phx::core::actor::ut
 {
 }
 void		phx::core::actor::rigidactor::remote::init() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::actor::rigidactor::remote::init();
 	phx::core::actor::actor::remote::init();
 	phx::core::actor::rigidactor::base::init();
 }
 /*void		phx::core::actor::rigidactor::remote::release() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::actor::rigidactor::base::release();
 	phx::core::actor::actor::remote::release();
@@ -33,7 +34,7 @@ void		phx::core::actor::rigidactor::remote::init() {
 
 }*/
 void		phx::core::actor::rigidactor::remote::step(gal::std::timestep const & ts) {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::actor::rigidactor::base::step(ts);
 	phx::core::actor::actor::remote::step(ts);
