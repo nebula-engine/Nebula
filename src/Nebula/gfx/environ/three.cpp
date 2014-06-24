@@ -1,6 +1,7 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <Nebula/app/Base.hh>
+#include <Nebula/debug.hh>
 
 #include <Nebula/gfx/Camera/View/Free.hh>
 #include <Nebula/gfx/Camera/Projection/Perspective.hh>
@@ -23,7 +24,7 @@ void		neb::gfx::environ::three::init() {
 }
 void		neb::gfx::environ::three::step(gal::std::timestep const & ts) {
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx environ", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx environ", debug) << __PRETTY_FUNCTION__;
 
 	if(proj_) proj_->step(ts);	
 	if(view_) view_->step(ts);	

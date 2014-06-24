@@ -5,6 +5,7 @@
 
 #include <Galaxy-Log/log.hpp>
 
+#include <Nebula/debug.hh>
 #include <Nebula/core/actor/Base.hh>
 #include <Nebula/gfx/Camera/View/ridealong.hh>
 
@@ -14,7 +15,7 @@ neb::gfx::Camera::View::Ridealong::Ridealong(sp::shared_ptr<neb::gfx::environ::b
 }
 mat4		neb::gfx::Camera::View::Ridealong::view() {
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx camera view", debug) << __PRETTY_FUNCTION__;
 	
 	auto actor = actor_.lock();
 	if(!actor) return mat4();

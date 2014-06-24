@@ -1,4 +1,5 @@
 #include <Galaxy-Log/log.hpp>
+#include <Nebula/debug.hh>
 
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/rigiddynamic/local.hpp>
@@ -24,11 +25,11 @@ phx::core::actor::rigiddynamic::local::local(sp::shared_ptr<phx::core::actor::ut
 	phx::core::actor::rigidbody::local(parent),
 	phx::core::actor::rigiddynamic::base(parent)
 {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 }
 void				phx::core::actor::rigiddynamic::local::init() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::actor::rigiddynamic::local::init();
 	phx::core::actor::rigidbody::local::init();
@@ -40,7 +41,7 @@ void				phx::core::actor::rigiddynamic::local::init() {
 // nothing to do here
 }*/
 void				phx::core::actor::rigiddynamic::local::release() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	boost::lock_guard<boost::recursive_mutex> lk(mutex_);
 
@@ -63,21 +64,21 @@ void				phx::core::actor::rigiddynamic::local::step(gal::std::timestep const & t
   return phx::core::actor::base_s();
   }*/
 void				phx::core::actor::rigiddynamic::local::add_force(real time) {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	phx::core::actor::rigidbody::base::add_force(time);
 }
 void				phx::core::actor::rigiddynamic::local::create_physics() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	phx::core::actor::rigiddynamic::base::create_physics();
 }
 void				phx::core::actor::rigiddynamic::local::init_physics() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	phx::core::actor::rigiddynamic::base::init_physics();
 }
 void				phx::core::actor::rigiddynamic::local::setPose(neb::core::pose const & pose) {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::actor::rigiddynamic::local::setPose(pose);
 	phx::core::actor::rigidbody::local::setPose(pose);

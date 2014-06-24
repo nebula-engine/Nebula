@@ -27,17 +27,17 @@ phx::core::actor::rigidstatic::remote::remote(sp::shared_ptr<phx::core::actor::u
 	phx::core::actor::rigidactor::remote(parent),
 	phx::core::actor::rigidstatic::base(parent)
 {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::actor::rigidstatic::remote::init() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::actor::rigidstatic::remote::init();
 	phx::core::actor::rigidactor::remote::init();
 	phx::core::actor::rigidstatic::base::init();
 }
 void			phx::core::actor::rigidstatic::remote::release() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	//neb::core::actor::rigidstatic::base::releaseUp();
 	neb::core::actor::base::releaseUp();
@@ -51,7 +51,7 @@ void			phx::core::actor::rigidstatic::remote::release() {
 
 }
 void			phx::core::actor::rigidstatic::remote::step(gal::std::timestep const & ts) {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::actor::rigidstatic::remote::step(ts);
 	phx::core::actor::rigidactor::remote::step(ts);

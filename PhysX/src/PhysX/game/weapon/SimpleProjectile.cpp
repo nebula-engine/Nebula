@@ -2,6 +2,7 @@
 
 #include <Nebula/timer/Actor/Release.hpp>
 #include <Nebula/gfx/window/Base.hh>
+#include <Nebula/debug.hh>
 
 #include <PhysX/filter.hpp>
 #include <PhysX/app/base.hpp>
@@ -32,7 +33,7 @@ void			phx::game::weapon::SimpleProjectile::connect(sp::shared_ptr<neb::gfx::win
 
 }
 int			phx::game::weapon::SimpleProjectile::key_fun(sp::shared_ptr<neb::gfx::window::base> window, int key, int , int action, int mods) {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx game weapon", debug) << __PRETTY_FUNCTION__;;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx game weapon", debug) << __PRETTY_FUNCTION__;;
 
 	int key_fire = GLFW_KEY_SPACE;
 
@@ -48,7 +49,7 @@ int			phx::game::weapon::SimpleProjectile::key_fun(sp::shared_ptr<neb::gfx::wind
 	return 0;
 }
 void			phx::game::weapon::SimpleProjectile::fire() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx game weapon", debug) << __PRETTY_FUNCTION__;;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx game weapon", debug) << __PRETTY_FUNCTION__;;
 	
 	auto app(phx::app::base::global());
 
@@ -130,10 +131,10 @@ void			phx::game::weapon::SimpleProjectile::fire() {
 	// release timer
 	
 	auto t = sp::make_shared<neb::Timer::actor::Release>(proj, scene->last_ + 5.0);
-	BOOST_LOG_CHANNEL_SEV(lg, "neb timer", debug) << t.use_count();
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb timer", debug) << t.use_count();
 	
 	t->activate();
-	BOOST_LOG_CHANNEL_SEV(lg, "neb timer", debug) << t.use_count();
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb timer", debug) << t.use_count();
 	
 	
 }
