@@ -43,13 +43,15 @@ void		phx::core::actor::actor::base::step(gal::std::timestep const & ts) {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 }
-void		phx::core::actor::actor::base::release() {
+void		phx::core::actor::actor::base::releaseUp() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
-	neb::core::actor::base::release();
-	
-	px_actor_->release();
-	px_actor_ = NULL;
+	//neb::core::actor::base::releaseUp();
+
+	if(px_actor_ != NULL) {	
+		px_actor_->release();
+		px_actor_ = NULL;
+	}
 	
 	//assert(!scene_.expired());
 

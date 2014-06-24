@@ -39,9 +39,13 @@ void			phx::core::actor::rigidstatic::local::init() {
 void			phx::core::actor::rigidstatic::local::release() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
-	neb::core::actor::rigidstatic::local::release();
-	phx::core::actor::rigidactor::local::release();
-	phx::core::actor::rigidstatic::base::release();
+	neb::core::actor::rigidstatic::base::releaseUp();
+
+	neb::core::actor::rigidstatic::local::releaseUp();
+
+	phx::core::actor::rigidstatic::base::releaseUp();
+	
+	//phx::core::actor::rigidstatic::local::releaseUp();
 
 }
 void			phx::core::actor::rigidstatic::local::step(gal::std::timestep const & ts) {

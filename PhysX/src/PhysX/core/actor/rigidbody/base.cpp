@@ -49,13 +49,13 @@ void			phx::core::actor::rigidbody::base::init() {
 	neb::core::actor::rigidbody::base::init();
 	phx::core::actor::rigidactor::base::init();
 }
-void			phx::core::actor::rigidbody::base::release() {
+/*void			phx::core::actor::rigidbody::base::release() {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
 
 	neb::core::actor::rigidbody::base::release();
 	phx::core::actor::rigidactor::base::release();
-}
+}*/
 void			phx::core::actor::rigidbody::base::setPose(neb::core::pose const & pose) {
 
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;

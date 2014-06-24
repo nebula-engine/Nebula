@@ -25,7 +25,7 @@ namespace phx { namespace core { namespace actor {
 
 			
 			virtual void		init();
-			virtual void		release();
+			virtual void		release() = 0;
 			virtual void		step(gal::std::timestep const & ts);
 
 

@@ -19,8 +19,7 @@ void				neb::core::actor::rigiddynamic::local::init() {
 	neb::core::actor::rigiddynamic::base::init();
 }
 void				neb::core::actor::rigiddynamic::local::release() {
-	neb::core::actor::rigidbody::local::release();
-	neb::core::actor::rigiddynamic::base::release();
+	neb::core::actor::base::releaseUp();
 }
 void				neb::core::actor::rigiddynamic::local::step(gal::std::timestep const & ts) {
 	neb::core::actor::rigidbody::local::step(ts);

@@ -7,10 +7,10 @@ phx::core::actor::local::local(sp::shared_ptr<phx::core::actor::util::parent> pa
 	phx::core::actor::base(parent)
 {
 }
-void				phx::core::actor::local::release() {
+/*void				phx::core::actor::local::release() {
 	neb::core::actor::local::release();
 	phx::core::actor::base::release();
-}
+}*/
 void				phx::core::actor::local::init() {
 	neb::core::actor::local::init();
 	phx::core::actor::base::init();
