@@ -39,6 +39,9 @@ void			phx::core::actor::rigidstatic::local::init() {
 void			phx::core::actor::rigidstatic::local::release() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
+	boost::lock_guard<boost::recursive_mutex> lk(mutex_);
+
+
 	neb::core::actor::rigidstatic::base::releaseUp();
 
 	neb::core::actor::rigidstatic::local::releaseUp();

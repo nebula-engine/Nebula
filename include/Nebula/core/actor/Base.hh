@@ -137,7 +137,7 @@ namespace neb { namespace core { namespace actor {
 
 
 			neb::core::actor::mode_create::e		mode_create_;
-			neb::core::actor::util::Flag			flag_;
+			neb::core::actor::util::flag			flag_;
 			::std::string					name_;
 			neb::core::pose					pose_;
 			/** @brief Normal for planes. */

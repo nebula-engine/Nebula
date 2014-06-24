@@ -79,12 +79,19 @@ void			phx::core::actor::rigiddynamic::base::create_physics() {
 	// userData
 	auto sft = shared_from_this();
 	auto uc = sft.use_count();
-	px_rigid_dynamic->userData = this;
+
+
+	px_rigid_dynamic->userData = isActorBase().get();
+
+
 	assert(uc == sft.use_count());
 
 	// debug
 	assert(this == shared_from_this().get());
+	assert(this == isActorBase().get());
+	assert(this == isPxActorRigidDynamicBase().get());
 	assert(sp::dynamic_pointer_cast<neb::core::actor::rigidbody::base>(shared_from_this()));
+	
 
 	// add PxActor to PxScene
 	assert(scene->px_scene_);

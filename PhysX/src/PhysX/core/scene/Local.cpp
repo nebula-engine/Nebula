@@ -53,12 +53,19 @@ void			phx::core::scene::local::step(gal::std::timestep const & ts) {
 	
 	//========================================================================
 	// lock all actors
-        A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
+	
+	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
                 auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
                 assert(actor);
 		actor->mutex_.lock();
+		BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "actor = " << actor.get();
         });
-	
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "actors locked";
+        /*A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
+                auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
+                assert(actor);
+		BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "actor = " << actor.get();
+        });*/
 	
 	px_scene_->simulate(ts.dt);
 	px_scene_->fetchResults(true);
@@ -86,27 +93,28 @@ void			phx::core::scene::local::step(gal::std::timestep const & ts) {
 		void* ud = active_transforms[i].userData;
 		assert(ud);
 
+		BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << "ud = " << ud;
+
 		physx::PxRigidBody* pxrigidbody = pxactor->isRigidBody();
 
 
 		neb::core::actor::base* pactor = static_cast<neb::core::actor::base*>(ud);
 		auto actor = pactor->isActorBase();
-		
 		assert(actor);
-		
+
 		if(actor) {
 			pose = active_transforms[i].actor2World;
 			actor->setPose(neb::core::pose(
 						phx::util::convert(pose.p),
 						phx::util::convert(pose.q)
 						));
-			
+
 			BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug)
 				<< std::setw(8) << "p"
 				<< std::setw(8) << pose.p.x
 				<< std::setw(8) << pose.p.y
 				<< std::setw(8) << pose.p.z;
-		
+
 
 			if(pxrigidbody != NULL) {
 				auto rigidbody = actor->isActorRigidBody();
@@ -122,17 +130,17 @@ void			phx::core::scene::local::step(gal::std::timestep const & ts) {
 				//v.print();
 			}
 
-			actor->flag_.set(neb::core::actor::util::Flag::E::SHOULD_UPDATE);
+			actor->flag_.set(neb::core::actor::util::flag::E::SHOULD_UPDATE);
 		}
 	}
 
 
 	// unlock all actors
-        A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-                auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
-                assert(actor);
-		actor->mutex_.unlock();
-        });
+	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
+			auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
+			assert(actor);
+			actor->mutex_.unlock();
+			});
 
 
 
@@ -146,13 +154,15 @@ void			phx::core::scene::local::step(gal::std::timestep const & ts) {
 
 }
 sp::weak_ptr<neb::core::actor::rigidstatic::base>	phx::core::scene::local::createActorRigidStaticUninitialized() {
-	
+
 	auto actor(sp::make_shared<phx::core::actor::rigidstatic::local>(isPxSceneLocal()));
 
 	neb::core::actor::util::parent::insert(actor);
 
 	actor->simulation_.word0 = phx::filter::filter::type::STATIC;
 	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
+	actor->simulation_.word2 = phx::filter::filter::type::STATIC;
+	actor->simulation_.word3 = phx::filter::filter::type::PROJECTILE;
 
 	return actor;
 }
