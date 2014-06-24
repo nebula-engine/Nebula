@@ -97,8 +97,20 @@ sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::
 	
 	scene->insert(actor);
 	
+	actor->flag_.set(neb::core::actor::util::flag::DESTRUCTIBLE);
+
 	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
 	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
+	actor->simulation_.word2 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word3 = phx::filter::filter::type::PROJECTILE;
+
+	
+	/*std::cout << "neb base " << actor->isActorBase().get() << std::endl;
+	std::cout << "phx base " << actor->isPxActorBase().get() << std::endl;
+	std::cout << "phx rd   " << actor->isPxActorRigidDynamicBase().get() << std::endl;
+
+	exit(0);*/
+	
 
 	actor->init();
 
@@ -128,9 +140,17 @@ sp::weak_ptr<phx::core::actor::rigiddynamic::base>		create_actor_ai(sp::shared_p
 
 	scene->insert(actor);
 	
+	actor->flag_.set(neb::core::actor::util::flag::DESTRUCTIBLE);
+
 	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
 	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
+	actor->simulation_.word2 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word3 = phx::filter::filter::type::PROJECTILE;
 
+	// testing for multiple inheritance
+	//auto test = actor->gal::std::shared::name();
+	//auto test = actor->shared_from_this();
+	
 	actor->init();
 
 	// shape	
@@ -200,7 +220,12 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 5, 0, 0)), 1.0);
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0,-5, 0)), 1.0);
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 5, 0)), 1.0);
-	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0,-5)), 1.0);
+	auto static_cube5 = scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0,-5)), 1.0).lock();
+
+	// testing for multiple inheritance
+	auto test = static_cube5->gal::std::shared::name();
+
+
 	//scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0, 5)), 1.0);
 
 	// player's actor

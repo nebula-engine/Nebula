@@ -24,28 +24,34 @@ phx::core::actor::rigiddynamic::local::local(sp::shared_ptr<phx::core::actor::ut
 	phx::core::actor::rigidbody::local(parent),
 	phx::core::actor::rigiddynamic::base(parent)
 {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+
 }
 void				phx::core::actor::rigiddynamic::local::init() {
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+
 	neb::core::actor::rigiddynamic::local::init();
 	phx::core::actor::rigidbody::local::init();
 	phx::core::actor::rigiddynamic::base::init();
 }
 /*void				phx::core::actor::rigiddynamic::local::releaseUp() {
-	//phx::core::actor::rigidbody::local::releaseUp();
-	//phx::core::actor::actor::local::releaseUp();
-	// nothing to do here
+//phx::core::actor::rigidbody::local::releaseUp();
+//phx::core::actor::actor::local::releaseUp();
+// nothing to do here
 }*/
 void				phx::core::actor::rigiddynamic::local::release() {
-	boost::lock_guard<boost::mutex> lk(mutex_);
-	
+	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+
+	boost::lock_guard<boost::recursive_mutex> lk(mutex_);
+
 	//neb::core::actor::rigiddynamic::base::releaseUp();
 	neb::core::actor::base::releaseUp();
-	
+
 	//neb::core::actor::rigiddynamic::local::releaseUp();
-	
+
 	//phx::core::actor::rigiddynamic::base::releaseUp();
 	phx::core::actor::actor::base::releaseUp();
-	
+
 	//phx::core::actor::rigiddynamic::local::releaseUp();
 }
 void				phx::core::actor::rigiddynamic::local::step(gal::std::timestep const & ts) {
@@ -54,8 +60,8 @@ void				phx::core::actor::rigiddynamic::local::step(gal::std::timestep const & t
 	phx::core::actor::rigiddynamic::base::step(ts);
 }
 /*sp::shared_ptr<phx::core::actor::rigiddynamic::base>		phx::core::actor::rigiddynamic::local::get_projectile() {
-	return phx::core::actor::base_s();
-}*/
+  return phx::core::actor::base_s();
+  }*/
 void				phx::core::actor::rigiddynamic::local::add_force(real time) {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	phx::core::actor::rigidbody::base::add_force(time);
