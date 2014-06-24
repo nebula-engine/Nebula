@@ -9,7 +9,11 @@
 neb::core::actor::util::parent::parent() {
 }
 neb::core::actor::util::parent::~parent() {
-}void							neb::core::actor::util::parent::init() {
+}
+void							neb::core::actor::util::parent::init() {
+
+}
+void							neb::core::actor::util::parent::release() {
 
 }
 sp::shared_ptr<neb::core::scene::base>			neb::core::actor::util::parent::getScene() {
