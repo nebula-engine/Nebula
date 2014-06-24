@@ -27,12 +27,12 @@ void			phx::core::actor::rigidstatic::base::init() {
 	neb::core::actor::rigidstatic::base::init();
 	phx::core::actor::rigidactor::base::init();
 }
-void			phx::core::actor::rigidstatic::base::release() {
+/*void			phx::core::actor::rigidstatic::base::release() {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::actor::rigidstatic::base::release();
 	phx::core::actor::rigidactor::base::release();
-}
+}*/
 void			phx::core::actor::rigidstatic::base::step(gal::std::timestep const & ts) {
 	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
 

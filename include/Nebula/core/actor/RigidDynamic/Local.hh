@@ -17,12 +17,15 @@ namespace rigiddynamic {
 
 					virtual void				init();
 					virtual void				release();
+				protected:
+					//void					releaseUp();
+				public:
 					virtual void				step(gal::std::timestep const & ts);
 			};
 
 
 }		}
-	}
+}
 }
 
 #endif

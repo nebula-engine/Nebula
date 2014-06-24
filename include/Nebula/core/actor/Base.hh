@@ -54,7 +54,10 @@ namespace neb { namespace core { namespace actor {
 			virtual ~base();
 		public:
 			virtual void					init();
-			virtual void					release();
+			virtual void					release() = 0;
+		protected:
+			void						releaseUp();
+		public:
 			virtual void					step(gal::std::timestep const & ts);
 
 		public:

@@ -48,6 +48,18 @@ void			phx::core::scene::local::step(gal::std::timestep const & ts) {
 	// PxScene
 	assert(px_scene_ != NULL);
 
+	typedef neb::core::actor::util::parent A;
+
+	
+	//========================================================================
+	// lock all actors
+        A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
+                auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
+                assert(actor);
+		actor->mutex_.lock();
+        });
+	
+	
 	px_scene_->simulate(ts.dt);
 	px_scene_->fetchResults(true);
 
@@ -113,6 +125,17 @@ void			phx::core::scene::local::step(gal::std::timestep const & ts) {
 			actor->flag_.set(neb::core::actor::util::Flag::E::SHOULD_UPDATE);
 		}
 	}
+
+
+	// unlock all actors
+        A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
+                auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
+                assert(actor);
+		actor->mutex_.unlock();
+        });
+
+
+
 
 	// vehicle
 	//physx::PxVec3 g(0,-0.25,0);

@@ -22,10 +22,10 @@ void		phx::core::actor::rigidbody::local::init() {
 	neb::core::actor::rigidbody::base::init();
 	neb::core::actor::rigidactor::local::init();
 }
-void		phx::core::actor::rigidbody::local::release() {
+/*void		phx::core::actor::rigidbody::local::release() {
 	neb::core::actor::rigidbody::base::release();
 	neb::core::actor::rigidactor::local::release();
-}
+}*/
 void		phx::core::actor::rigidbody::local::step(gal::std::timestep const & ts) {
 	neb::core::actor::rigidbody::base::step(ts);
 	neb::core::actor::rigidactor::local::step(ts);
