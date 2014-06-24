@@ -15,7 +15,7 @@
 phx::core::shape::base::base(sp::shared_ptr<phx::core::shape::util::parent> parent):
 	neb::core::shape::base(parent)
 {
-	NEBULA_SHAPE_BASE_FUNC;
+	//NEBULA_SHAPE_BASE_FUNC;
 	assert(parent);
 }
 phx::core::shape::base::~base() {}

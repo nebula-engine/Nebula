@@ -19,32 +19,32 @@ phx::core::actor::rigidstatic::base::base(sp::shared_ptr<phx::core::actor::util:
 	phx::core::actor::actor::base(parent),
 	phx::core::actor::rigidactor::base(parent)
 {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 }
 void			phx::core::actor::rigidstatic::base::init() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::actor::rigidstatic::base::init();
 	phx::core::actor::rigidactor::base::init();
 }
 /*void			phx::core::actor::rigidstatic::base::release() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::actor::rigidstatic::base::release();
 	phx::core::actor::rigidactor::base::release();
 }*/
 void			phx::core::actor::rigidstatic::base::step(gal::std::timestep const & ts) {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
 
 	neb::core::actor::rigidstatic::base::step(ts);
 	phx::core::actor::rigidactor::base::step(ts);
 
 }
 void			phx::core::actor::rigidstatic::base::create_physics() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	if(px_actor_ != NULL) {
-		BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << "been here!";
+		if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << "been here!";
 		return;
 	}
 	

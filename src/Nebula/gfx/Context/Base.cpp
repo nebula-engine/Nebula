@@ -1,6 +1,7 @@
 //#include <assert.h>
 #include <Galaxy-Log/log.hpp>
 
+#include <Nebula/debug.hh>
 #include <Nebula/app/Base.hh>
 #include <Nebula/core/scene/Base.hh>
 #include <Nebula/gfx/Context/Base.hh>
@@ -14,33 +15,33 @@ neb::gfx::context::base::base() {
 }
 neb::gfx::context::base::base(sp::shared_ptr<neb::gfx::context::util::parent> parent): parent_(parent) {
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
 }
 neb::gfx::context::base&		neb::gfx::context::base::operator=(neb::gfx::context::base const & r){
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
 	return *this;
 }
 void		neb::gfx::context::base::init() {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
 	
 	
 }
 void		neb::gfx::context::base::release() {
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
 }
 void		neb::gfx::context::base::resize(int w, int h) {
 	if(environ_) environ_->resize(w,h);
 }
 void		neb::gfx::context::base::step(gal::std::timestep const & ts) {
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
 	
 	if(environ_) environ_->step(ts);	
 
 }
 void		neb::gfx::context::base::render() {
 	
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx context", debug) << __PRETTY_FUNCTION__;
 
 	/**
 	 * prepare rendering environment and then call the drawable

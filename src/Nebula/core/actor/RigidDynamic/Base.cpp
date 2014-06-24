@@ -1,3 +1,5 @@
+#include <gal/log/log.hpp>
+
 #include <Nebula/debug.hh>
 #include <Nebula/core/shape/Base.hh>
 #include <Nebula/core/actor/RigidDynamic/Base.hh>
@@ -11,10 +13,10 @@ neb::core::actor::rigiddynamic::base::base(sp::shared_ptr<neb::core::actor::util
 	neb::core::actor::rigidactor::base(parent),
 	neb::core::actor::rigidbody::base(parent)
 {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
 void		neb::core::actor::rigiddynamic::base::init() {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::actor::rigidbody::base::init();
 	

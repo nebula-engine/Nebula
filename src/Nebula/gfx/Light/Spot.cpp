@@ -2,6 +2,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
+#include <Nebula/debug.hh>
 #include <Nebula/app/Base.hh>
 #include <Nebula/core/light/Spot.hh>
 #include <Nebula/gfx/glsl/Uniform/vector.hpp>
@@ -15,7 +16,7 @@ neb::Light::Point::Point(sp::shared_ptr<neb::Light::util::parent> parent):
 {}
 void		neb::Light::Point::load(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
 	
-	BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 
 	neb::Light::base::load(light_count.point, pose);
 	

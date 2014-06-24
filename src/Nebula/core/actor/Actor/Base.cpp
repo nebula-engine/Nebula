@@ -1,4 +1,4 @@
-
+#include <gal/log/log.hpp>
 #include <Nebula/core/scene/Base.hh>
 
 #include <Nebula/debug.hh>
@@ -12,15 +12,15 @@
 neb::core::actor::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	neb::core::actor::base(parent)
 {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
 void		neb::core::actor::actor::base::init() {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::actor::base::init();
 }
 void		neb::core::actor::actor::base::setPose(neb::core::pose const & pose) {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 	neb::core::actor::base::setPose(pose);
 }
@@ -28,7 +28,7 @@ void		neb::core::actor::actor::base::step(gal::std::timestep const & ts) {
 	neb::core::actor::base::step(ts);
 }
 /*void		neb::core::actor::actor::base::release() {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::actor::base::release();
 

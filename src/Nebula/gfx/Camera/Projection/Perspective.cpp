@@ -11,6 +11,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
+#include <Nebula/debug.hh>
 #include <Nebula/app/Base.hh>
 #include <Nebula/core/actor/Base.hh>
 //#include <Nebula/gfx/window/Base.hh>
@@ -50,10 +51,10 @@ neb::gfx::Camera::Projection::Perspective::Perspective(sp::shared_ptr<neb::gfx::
 }*/
 mat4		neb::gfx::Camera::Projection::Perspective::proj() {
 
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "fovy" << ::std::setw(8) << fovy_;
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "aspect" << ::std::setw(8) << parent_->viewport_.aspect_;
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "zn" << ::std::setw(8) << zn_;
-	BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "zf" << ::std::setw(8) << zf_;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "fovy" << ::std::setw(8) << fovy_;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "aspect" << ::std::setw(8) << parent_->viewport_.aspect_;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "zn" << ::std::setw(8) << zn_;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << ::std::setw(8) << "zf" << ::std::setw(8) << zf_;
 	
 	mat4 ret = glm::perspective(fovy_, parent_->viewport_.aspect_, zn_, zf_);
 	

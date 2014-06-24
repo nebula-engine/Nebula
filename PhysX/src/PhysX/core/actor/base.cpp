@@ -31,13 +31,13 @@ phx::core::actor::base::base(sp::shared_ptr<phx::core::actor::util::parent> pare
 	parent_(parent),
 	health_(1.0)
 {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 }
 /*phx::core::actor::base::~base() {
-	NEBULA_ACTOR_BASE_FUNC;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }*/
 void			phx::core::actor::base::init() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::actor::base::init();
 	
@@ -45,7 +45,7 @@ void			phx::core::actor::base::init() {
 	init_physics();
 }
 /*void			phx::core::actor::base::release() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	neb::core::actor::base::release();
 }*/
@@ -58,7 +58,7 @@ sp::shared_ptr<phx::core::actor::util::parent>		phx::core::actor::base::getPxPar
 	return parent;
 }
 void			phx::core::actor::base::hit() {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 
 	auto parent(parent_.lock()); assert(parent);
 
@@ -73,7 +73,7 @@ void			phx::core::actor::base::hit() {
 	}
 }
 void			phx::core::actor::base::damage(float h) {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
 	health_ -= h;
 	if(health_ < 0) {

@@ -11,15 +11,15 @@ neb::core::actor::rigidstatic::remote::remote(sp::shared_ptr<neb::core::actor::u
 		neb::core::actor::rigidactor::remote(parent),
 		neb::core::actor::rigidstatic::base(parent)
 {
-	//NEBULA_ACTOR_BASE_FUNC
+	//if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__
 }
 void		neb::core::actor::rigidstatic::remote::init() {
-	//NEBULA_ACTOR_BASE_FUNC
+	//if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__
 }
 void		neb::core::actor::rigidstatic::remote::release() {
-	//NEBULA_ACTOR_BASE_FUNC
+	//if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__
 }
 void		neb::core::actor::rigidstatic::remote::step(gal::std::timestep const & ts) {
-	//NEBULA_ACTOR_BASE_FUNC;
+	//if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
 

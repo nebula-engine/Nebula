@@ -9,7 +9,7 @@
 
 //#include <Nebula/Physics.hh>
 #include <Nebula/core/scene/Base.hh>
-
+#include <Nebula/debug.hh>
 
 #include <PhysX/simulation_callback.hh>
 
@@ -141,7 +141,7 @@ sp::shared_ptr<phx::app::base>			phx::app::base::global() {
 	return g_app_;
 }
 void				phx::app::base::step(gal::std::timestep const & ts) {
-	BOOST_LOG_CHANNEL_SEV(lg, "phx app", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx app", debug) << __PRETTY_FUNCTION__;
 
 	neb::app::base::step(ts);
 	

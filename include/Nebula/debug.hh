@@ -1,12 +1,9 @@
-
-//#define FUNC std::cout<<__PRETTY_FUNCTION__<<std::endl;
-#define FUNC
-
-#define NEBULA_ACTOR_BASE_FUNC		FUNC
-#define NEBULA_SHAPE_BASE_FUNC		FUNC
-
-//#define NEBULA_ACTOR_BASE_FUNC		FUNC
-//#define NEBULA_ACTOR_BASE_FUNC		FUNC
+#ifndef NEBULA_DENUG_HPP
+#define NEBULA_DENUG_HPP
 
 
+#define DEBUG_NEB 0
+
+
+#endif
 
