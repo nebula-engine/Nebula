@@ -16,7 +16,7 @@ void		phx::core::actor::actor::local::init() {
 	phx::core::actor::actor::base::init();
 	
 }
-void		phx::core::actor::actor::local::release() {
+/*void		phx::core::actor::actor::local::release() {
 
 	neb::core::actor::actor::local::release();
 	phx::core::actor::actor::base::release();
@@ -25,7 +25,7 @@ void		phx::core::actor::actor::local::release() {
 		px_actor_->release();
 		px_actor_ = NULL;
 	}
-}
+}*/
 void		phx::core::actor::actor::local::step(gal::std::timestep const & ts) {
 	
 	neb::core::actor::actor::local::step(ts);

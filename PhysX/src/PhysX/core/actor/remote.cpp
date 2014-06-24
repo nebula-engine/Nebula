@@ -7,10 +7,10 @@ phx::core::actor::remote::remote(sp::shared_ptr<phx::core::actor::util::parent> 
 	phx::core::actor::base(parent)
 {
 }
-void				phx::core::actor::remote::release() {
+/*void				phx::core::actor::remote::release() {
 	neb::core::actor::remote::release();
 	phx::core::actor::base::release();
-}
+}*/
 void				phx::core::actor::remote::init() {
 	neb::core::actor::remote::init();
 	phx::core::actor::base::init();

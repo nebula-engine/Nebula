@@ -14,7 +14,9 @@ namespace rigiddynamic {
 					base(sp::shared_ptr<neb::core::actor::util::parent> parent);
 
 					virtual void				init();
-
+					virtual void				release() = 0;
+					//virtual void				releaseUp();
+					
 			};
 		}
 	}
