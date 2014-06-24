@@ -17,6 +17,7 @@ namespace phx { namespace game { namespace map {
 			base(sp::shared_ptr<phx::core::scene::util::parent> parent);
 
 			virtual void			init();
+			virtual void			release();
 	};
 
 

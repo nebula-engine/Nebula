@@ -13,6 +13,7 @@
 #include <Nebula/gfx/Camera/View/ridealong.hh>
 #include <Nebula/core/actor/Empty/Empty.hpp>
 #include <Nebula/game/map/base.hpp>
+#include <Nebula/game/trigger/ActorEx1.hpp>
 #include <Nebula/ext/maze/game/map/maze2.hpp>
 #include <Nebula/util/command.hpp>
 #include <Nebula/util/command_set.hpp>
@@ -192,7 +193,8 @@ sp::weak_ptr<phx::core::actor::rigiddynamic::base>		create_actor_ai(sp::shared_p
 }
 sp::shared_ptr<phx::core::scene::local>			create_scene(
 		sp::shared_ptr<neb::gfx::window::base> window,
-		sp::shared_ptr<neb::gfx::context::window> context)
+		sp::shared_ptr<neb::gfx::context::window> context,
+		sp::shared_ptr<phx::core::actor::base>& enemy)
 {
 
 	std::cout << "4\n";
@@ -261,16 +263,16 @@ sp::shared_ptr<phx::core::scene::local>			create_scene(
 	app->phx::game::game::util::parent::insert(game);
 	
 	// ai
-	auto actor_ai = create_actor_ai(scene).lock();
+	enemy = create_actor_ai(scene).lock();
 	
 	// weapon
-	actor_ai->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
+	enemy->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
 	
 	auto ai(sp::make_shared<phx::game::ai::base>());
 	
-	game->insert(ai);
+	game->phx::game::ai::util::parent::insert(ai);
 	
-	ai->actor_ = actor_ai;
+	ai->actor_ = enemy;
 	ai->target_ = actor3;
 	
 	return scene;
@@ -319,6 +321,40 @@ sp::shared_ptr<phx::game::map::base>			create_maze(
 
 	return map;
 }
+sp::weak_ptr<phx::game::game::base>		create_game() {
+	
+	auto app(phx::app::base::global());
+	
+	auto game(sp::make_shared<phx::game::game::base>());
+	
+	app->neb::game::game::util::parent::insert(game);
+	
+
+	return game;
+}
+void						setup_game(
+		sp::shared_ptr<phx::game::game::base> game,
+		sp::shared_ptr<neb::gfx::window::base> window,
+		sp::shared_ptr<neb::gfx::context::window> context)
+{
+	// scene
+	sp::shared_ptr<phx::core::actor::base> enemy;
+	
+	auto scene = create_scene(window, context, enemy);
+	
+	game->scene_ = scene;
+	
+	// trigger
+	auto trig(sp::make_shared<neb::game::trigger::ActorEx1>(game));
+	
+	game->neb::game::trigger::util::parent::insert(trig);
+	
+	trig->connect(enemy);
+	
+	std::cout << "game use count " << game.use_count() << std::endl;
+	
+	
+}
 int			main() {
 
 	phx::init();
@@ -337,9 +373,12 @@ int			main() {
 	auto context2 = create_context_two(window);
 
 
+	// game
+	auto game = create_game();
+
 	// will be map in a minute...
-	sp::shared_ptr<phx::core::scene::local> map;
-	
+	//sp::shared_ptr<phx::core::scene::local> map;
+
 	// command
 	// create scene
 	auto cmd_create_scene = sp::make_shared<neb::util::command>();
@@ -347,35 +386,37 @@ int			main() {
 	cmd_create_scene->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
 		(*term) << "creating scene...";
 		//map = create_maze(window, context1);
-		map = create_scene(window, context1);
+		//map = create_scene(window, context1);
+
+		setup_game(game.lock(), window, context1);
 	};
-	
+
 	app->command_set_->map_["sc"] = cmd_create_scene;
-	
+
 	// create scene
 	auto cmd_create_maze = sp::make_shared<neb::util::command>();
 
 	cmd_create_maze->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
 		(*term) << "creating maze...";
-		map = create_maze(window, context1);
+		game.lock()->scene_ = create_maze(window, context1);
 	};
-	
+
 	app->command_set_->map_["maze"] = cmd_create_maze;
 
 	// destroy scene
 	auto cmd_destroy_scene = sp::make_shared<neb::util::command>();
-	
+
 	cmd_destroy_scene->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
 		(*term) << "destroying scene...";
-		if(map) {
-			map->parent_->erase(map->i_);
-			map.reset();
+		auto scene = game.lock()->scene_.lock();
+		if(scene) {
+			scene->parent_->erase(scene->i_);
 		}
 		std::stringstream ss;
-		ss << "use count " << map.use_count();
+		ss << "use count " << scene.use_count();
 		(*term) << ss.str();
 	};
-	
+
 	app->command_set_->map_["sd"] = cmd_destroy_scene;
 
 	std::cout << "1\n";
