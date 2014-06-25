@@ -97,33 +97,9 @@ void		neb::draw_text(
 		<< text;
 
 	// face
-	FT_Face face;
-
-	FT_Library ft = neb::app::base::global()->ft_;
+	FT_Face& face  = neb::app::base::global()->face_;
 	
-	::std::vector< ::std::string > fontfiles({
-		"/usr/share/fonts/msttcorefonts/cour.ttf",
-		"/usr/share/fonts/truetype/msttcorefonts/cour.ttf",
-		"/usr/share/fonts/msttcorefonts/georgia.ttf",
-		"/usr/share/fonts/truetype/freefont/FreeMono.ttf"});
 
-
-	//char const fontfile[] = "/usr/share/fonts/truetype/msttcorefonts/arial.ttf";
-	//char const fontfile[] = "FreeSans.ttf";
-
-	int result = 1;
-	for(auto s : fontfiles) {
-		result = FT_New_Face(ft, s.c_str(), 0, &face);
-		if(result) {
-			::std::cout << "Could not open font " << s << ::std::endl;
-		} else {
-			break;
-		}
-	}
-	if(result) {
-		printf("Count not open any fonts\n");
-		abort();
-	}
 
 	FT_Set_Pixel_Sizes(face, 0, 48);
 

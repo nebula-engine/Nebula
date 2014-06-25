@@ -2,6 +2,38 @@
 
 void					neb::app::__gfx::init() {
 	neb::app::__base::init();
+
+
+	::std::vector< ::std::string > fontfiles({
+		"/usr/share/fonts/msttcorefonts/cour.ttf",
+		"/usr/share/fonts/truetype/msttcorefonts/cour.ttf"});
+
+
+	// font
+	//FT_Library ft;
+	if(FT_Init_FreeType(&ft_))
+	{
+		printf("could not find freetype library\n");
+		exit(0);
+	}
+
+	int result = 1;
+	for(auto s : fontfiles) {
+		result = FT_New_Face(ft_, s.c_str(), 0, &face_);
+		if(result) {
+			::std::cout << "Could not open font " << s << ::std::endl;
+		} else {
+			break;
+		}
+	}
+
+	if(result) {
+		printf("Count not open any fonts\n");
+		abort();
+	}
+
+
+
 }
 void					neb::app::__gfx::static_error_fun(int error, char const * description) {
 	printf("%s\n", description);

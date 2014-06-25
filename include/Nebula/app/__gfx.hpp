@@ -56,6 +56,7 @@ namespace neb {
 
 
 				FT_Library								ft_;
+				FT_Face									face_;
 		};
 	}
 }

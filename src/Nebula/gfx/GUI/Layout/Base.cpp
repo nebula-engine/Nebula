@@ -5,6 +5,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <gal/log/log.hpp>
+
+#include <Nebula/debug.hh>
 #include <Nebula/util/decl.hpp>
 #include <Nebula/gfx/window/Base.hh>
 #include <Nebula/gfx/Context/Base.hh>
@@ -13,40 +16,23 @@
 
 #include <Nebula/gfx/GUI/Layout/Base.hh>
 
-
-//neb::gfx::gui::layout::base::base() {
-//}
 neb::gfx::gui::layout::base::base(sp::shared_ptr<neb::gfx::gui::layout::util::parent> parent): parent_(parent) {
 
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx free", debug) << __PRETTY_FUNCTION__;
 
 }
 void neb::gfx::gui::layout::base::init() {
+
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx free", debug) << __PRETTY_FUNCTION__;
 	//jess::clog << NEB_FUNCSIG << std::endl;
 }
-/*
-void neb::gfx::gui::layout::base::load_xml(tinyxml2::XMLElement* element)
-{
-	assert(element);
-	tinyxml2::XMLElement* e = element->FirstChildElement("object");
-	while(e != NULL){
-		create_object(e);
-		e = e->NextSiblingElement("object");
-	}
-}*/
-/*
-void neb::gfx::gui::layout::base::create_object(tinyxml2::XMLElement* element) {
-
-	assert(element);
-
-	auto object = neb::master::Global()->object_factory_->create(element);
-
-	objects_.push_back(object);
-}*/
 void		neb::gfx::gui::layout::base::step(gal::std::timestep const & ts) {
+		if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx free", debug) << __PRETTY_FUNCTION__;
+
 }
 void		neb::gfx::gui::layout::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
-	//jess::clog << NEB_FUNCSIG << std::endl;
-	//jess::clog << "objects_.size()=" << objects_.map_.size() << std::endl;
+	
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx free", debug) << __PRETTY_FUNCTION__;
 	
 	typedef neb::gfx::gui::object::util::parent O;
 	
@@ -58,7 +44,8 @@ void		neb::gfx::gui::layout::base::draw(sp::shared_ptr<neb::gfx::context::base> 
 
 }
 void neb::gfx::gui::layout::base::connect(sp::shared_ptr<neb::gfx::window::base> const & window) {
-	printf("%s\n", __PRETTY_FUNCTION__);
+	
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx free", debug) << __PRETTY_FUNCTION__;
 	
 	conns_.key_fun_ = window->sig_.key_fun_.connect(
 			10,
@@ -83,7 +70,8 @@ void neb::gfx::gui::layout::base::connect(sp::shared_ptr<neb::gfx::window::base>
 
 }
 int neb::gfx::gui::layout::base::key_fun(sp::shared_ptr<neb::gfx::window::base> const & window, int key, int scancode, int action, int mode) {
-	printf("%s\n", __PRETTY_FUNCTION__);
+	
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx free", debug) << __PRETTY_FUNCTION__;
 
 	typedef neb::gfx::gui::object::util::parent O;
 
@@ -98,7 +86,8 @@ int neb::gfx::gui::layout::base::key_fun(sp::shared_ptr<neb::gfx::window::base> 
 	return 0;
 }
 int neb::gfx::gui::layout::base::mouse_button_fun(sp::shared_ptr<neb::gfx::window::base> const & window, int button, int action, int mods) {
-	printf("%s\n", __PRETTY_FUNCTION__);
+
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx free", debug) << __PRETTY_FUNCTION__;
 
 	assert(window);
 
@@ -118,7 +107,8 @@ int neb::gfx::gui::layout::base::mouse_button_fun(sp::shared_ptr<neb::gfx::windo
 	return 0;
 }
 int neb::gfx::gui::layout::base::search(sp::shared_ptr<neb::gfx::window::base> const & window, int button, int action, int mods) {
-	printf("%s\n", __PRETTY_FUNCTION__);
+	
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx free", debug) << __PRETTY_FUNCTION__;
 
 	assert(window);
 
