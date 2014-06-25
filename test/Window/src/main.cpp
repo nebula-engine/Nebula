@@ -1,21 +1,21 @@
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <Nebula/app/Base.hh>
-#include <Nebula/core/actor/Base.hh>
-#include <Nebula/util/wrapper.hpp>
-#include <Nebula/gfx/Context/Window.hpp>
-#include <Nebula/gfx/environ/two.hpp>
-#include <Nebula/gfx/environ/three.hpp>
-#include <Nebula/gfx/GUI/Object/terminal.hh>
-#include <Nebula/core/light/Spot.hh>
-#include <Nebula/core/scene/Local.hh>
-#include <Nebula/core/shape/Box.hh>
-#include <Nebula/core/shape/empty.hpp>
-#include <Nebula/core/actor/RigidDynamic/Local.hh>
-#include <Nebula/game/map/base.hpp>
-#include <Nebula/ext/maze/game/map/maze2.hpp>
-#include <Nebula/util/command.hpp>
-#include <Nebula/util/command_set.hpp>
+#include <neb/app/Base.hh>
+#include <neb/core/actor/Base.hh>
+#include <neb/util/wrapper.hpp>
+#include <neb/gfx/Context/Window.hpp>
+#include <neb/gfx/environ/two.hpp>
+#include <neb/gfx/environ/three.hpp>
+#include <neb/gfx/GUI/Object/terminal.hh>
+#include <neb/core/light/Spot.hh>
+#include <neb/core/scene/Local.hh>
+#include <neb/core/shape/Box.hh>
+#include <neb/core/shape/empty.hpp>
+#include <neb/core/actor/RigidDynamic/Local.hh>
+#include <neb/game/map/base.hpp>
+#include <neb/ext/maze/game/map/maze2.hpp>
+#include <neb/util/command.hpp>
+#include <neb/util/command_set.hpp>
 
 sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
 

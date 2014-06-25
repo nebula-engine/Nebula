@@ -1,7 +1,7 @@
 #ifndef PHYSX_EXT_MAZE_GAME_MAP_MAZE2_HPP
 #define PHYSX_EXT_MAZE_GAME_MAP_MAZE2_HPP
 
-#include <Nebula/ext/maze/game/map/maze2.hpp>
+#include <neb/ext/maze/game/map/maze2.hpp>
 
 #include <PhysX/game/map/base.hpp>
 

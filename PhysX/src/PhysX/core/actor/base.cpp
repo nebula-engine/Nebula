@@ -1,24 +1,24 @@
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/debug.hh>
+#include <neb/debug.hh>
 
-//#include <Nebula/util/Typed.hh>
+//#include <neb/util/Typed.hh>
 
-/*#include <Nebula/util/decl.hpp>
-#include <Nebula/config.hh> // Nebula/config.hpp.in
-#include <Nebula/timer/Actor/Base.hpp>
-#include <Nebula/app/Base.hh>
-#include <Nebula/core/scene/Base.hh>
-#include <Nebula/gfx/window/util/signals.hpp>
+/*#include <neb/util/decl.hpp>
+#include <neb/config.hh> // Nebula/config.hpp.in
+#include <neb/timer/Actor/Base.hpp>
+#include <neb/app/Base.hh>
+#include <neb/core/scene/Base.hh>
+#include <neb/gfx/window/util/signals.hpp>
 
-#include <Nebula/core/actor/Base.hh>
-#include <Nebula/core/actor/RigidActor/Base.hh>
-#include <Nebula/core/actor/RigidBody/Base.hh>
-#include <Nebula/core/actor/Empty/Empty.hpp>
-#include <Nebula/core/actor/Util/Types.hh>
+#include <neb/core/actor/Base.hh>
+#include <neb/core/actor/RigidActor/Base.hh>
+#include <neb/core/actor/RigidBody/Base.hh>
+#include <neb/core/actor/Empty/Empty.hpp>
+#include <neb/core/actor/Util/Types.hh>
 
-#include <Nebula/Filter.hh>
-#include <Nebula/gfx/window/Base.hh>
+#include <neb/Filter.hh>
+#include <neb/gfx/window/Base.hh>
 */
 
 #include <PhysX/core/actor/util/parent.hpp>

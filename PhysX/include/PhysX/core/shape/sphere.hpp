@@ -1,7 +1,7 @@
 #ifndef PHYSX_CORE_SHAPE_SPHERE_HH
 #define PHYSX_CORE_SHAPE_SPHERE_HH
 
-#include <Nebula/core/shape/Sphere.hh>
+#include <neb/core/shape/Sphere.hh>
 
 #include <PhysX/core/shape/base.hpp>
 
