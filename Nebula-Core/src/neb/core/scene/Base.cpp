@@ -11,10 +11,10 @@
 #include <neb/core/scene/Util/Types.hh>
 #include <neb/core/scene/Util/Parent.hh>
 
-#include <neb/core/actor/Base.hh>
+#include <neb/core/actor/base.hpp>
 
-#include <neb/core/light/Base.hh>
-#include <neb/core/light/Spot.hh>
+#include <neb/core/light/base.hpp>
+//#include <neb/core/light/spot.hpp>
 
 
 #include <neb/core/actor/Util/Type.hh>
@@ -26,18 +26,12 @@
 //#include <neb/config.hh> // nebula/config.hpp.in
 //#include <neb/app/Base.hh>
 //#include <neb/actor/free.hh>
-#include <neb/core/actor/RigidDynamic/Base.hh>
-#include <neb/core/actor/RigidStatic/Base.hh>
-#include <neb/core/actor/Controller/Base.hh>
-#include <neb/core/actor/Empty/Empty.hpp>
 //#include <neb/actor/vehicle.hh>
-#include <neb/core/actor/Empty/Empty.hpp>
-#include <neb/core/shape/Base.hh>
-#include <neb/core/shape/empty.hpp>
+#include <neb/core/shape/base.hpp>
 //#include <neb/timer/Types.hh>
 //#include <neb/timer/Actor/Release.hpp>
 //#include <neb/gfx/glsl/Uniform/scalar.hpp>
-#include <neb/core/light/Util/light_count.hpp>
+#include <neb/core/light/util/light_count.hpp>
 
 neb::core::scene::base::base(sp::shared_ptr<neb::core::scene::util::parent> parent):
 	parent_(parent)
@@ -76,7 +70,7 @@ void		neb::core::scene::base::step(gal::std::timestep const & ts) {
 			});
 
 }
-sp::weak_ptr<neb::core::actor::rigidstatic::base>		neb::core::scene::base::createActorRigidStaticCube(neb::core::pose const & pose, real size) {
+sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorRigidStaticCube(neb::core::pose const & pose, real size) {
 
 	auto actor = createActorRigidStaticUninitialized().lock();
 
@@ -162,32 +156,28 @@ return actor;
 
 
 }*/
-sp::weak_ptr<neb::core::actor::empty>				neb::core::scene::base::createActorLightPoint(vec3 p) {
+sp::weak_ptr<neb::core::actor::base>				neb::core::scene::base::createActorLightPoint(vec3 p) {
 
 	auto self(isSceneBase());
 
-	auto actor = sp::make_shared<neb::core::actor::empty>(self);
+	auto actor = sp::make_shared<neb::core::actor::base>(self);
 
 	insert(actor);
 
 	actor->init();
 
 	// shape	
-	/*
-	   auto shape = sp::make_shared<neb::core::shape::empty>(actor);
+	auto shape = sp::make_shared<neb::core::shape::base>(actor);
+	
+	actor->neb::core::shape::util::parent::insert(shape);
+	
+	shape->init();
 
-	   actor->neb::core::shape::util::parent::insert(shape);
-
-	   shape->init();
-	 */
-	auto shape = actor->neb::core::shape::util::parent::cii< neb::core::shape::empty, sp::shared_ptr<neb::core::actor::empty> >(actor);
-
+	
 	// light
-	auto light = sp::make_shared<neb::Light::Point>(shape);
-
-	shape->neb::Light::util::parent::insert(light);
-
-	light->init();
+	
+	shape->createLightPoint();
+	
 
 	return actor;	
 }
