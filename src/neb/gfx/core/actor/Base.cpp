@@ -20,52 +20,22 @@
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/util/decl.hpp>
 
-/** @file Base
- */
 
-//neb::core::actor::base::base() {
-//}
-neb::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
-	density_(10.0),
-	parent_(parent)
+neb::gfx::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+	neb::core::actor::base(parent)
 {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
-neb::core::actor::base::~base() {
+neb::gfx::core::actor::base::~base() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
-void		neb::core::actor::base::init() {
+void				neb::core::actor::base::init() {
 }
-sp::shared_ptr<neb::core::actor::util::parent>	neb::core::actor::base::get_parent() {
+void				neb::core::actor::base::load_lights(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
+
 	auto parent(parent_.lock());
 	assert(parent);
-	return parent;
-}
-neb::core::pose				neb::core::actor::base::getPose() {
-	return pose_;
-}
-neb::core::pose				neb::core::actor::base::getPoseGlobal() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
-	
-	neb::core::pose p;
-	
-	auto parent(parent_.lock());
-	
-	if(!parent) {
-		p = parent->getPoseGlobal() * getPose();
-	} else {
-		p = getPose();
-	}
-
-	return p;
-}
-void		neb::core::actor::base::setPose(neb::core::pose const & pose) {
-	pose_ = pose;
-	
-	flag_.set(neb::core::actor::util::flag::E::SHOULD_UPDATE);
-}
-void		neb::core::actor::base::load_lights(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 	auto npose = pose * pose_;
 	
@@ -80,21 +50,31 @@ void		neb::core::actor::base::load_lights(neb::core::light::util::count & light_
 			::std::cout << "actor = " << actor << ::std::endl;
 			abort();
 		}
-		actor->load_lights(light_count, npose);
+		
+		if(actor->actor_gfx_) {
+			actor->actor_gfx_->load_lights(light_count, npose);
+		}
 	};
 	
 	auto lambda_shape = [&]  (S::map_type::iterator<0> it) {
 		auto shape = sp::dynamic_pointer_cast<neb::core::shape::base>(it->ptr_);
 		assert(shape);
-		shape->load_lights(light_count, npose);
+		
+		if(shape->shape_gfx_) {
+			shape->shape_gfx_->load_lights(light_count, npose);
+		}
+		
 	};
 	
-	A::map_.for_each<0>(lambda_actor);
+	parent->A::map_.for_each<0>(lambda_actor);
 	
-	S::map_.for_each<0>(lambda_shape);
+	parent->S::map_.for_each<0>(lambda_shape);
 }
-void			neb::core::actor::base::draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p,
-		neb::core::pose const & pose) {
+void				neb::gfx::core::actor::base::draw(
+		sp::shared_ptr<neb::gfx::context::base> context,
+		sp::shared_ptr<neb::glsl::program> p,
+		neb::core::pose const & pose)
+{
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 	auto npose = pose * pose_;
@@ -116,90 +96,13 @@ void			neb::core::actor::base::draw(sp::shared_ptr<neb::gfx::context::base> cont
 
 
 }
-/*void neb::core::actor::base::init(neb::core::actor::desc_w desc) {
-  if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
-
-  raw_.reset();
-  raw_.swap(desc->raw_wrapper_.ptr_);
-
-
-  create_physics();
-  create_children(desc);
-  create_shapes(desc);
-  init_physics();
-  }*/
-void		neb::core::actor::base::releaseUp() {
+void		neb::gfx::core::actor::base::releaseUp() {
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx core actor", debug) << __PRETTY_FUNCTION__;
 	
-	gal::std::__release::release();
-	
-	neb::core::actor::util::parent::clear();
-	neb::core::shape::util::parent::clear();
-
-	//conn_.key_fun_.disconnect();
 }
-void		neb::core::actor::base::step(gal::std::timestep const & ts) {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
+void		neb::gfx::core::actor::base::step(gal::std::timestep const & ts) {
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx core actor", debug) << __PRETTY_FUNCTION__;
 
-	typedef neb::core::actor::util::parent A;
-	typedef neb::core::shape::util::parent S;
-
-	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-			it->ptr_->step(ts);
-			});
-
-	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
-			it->ptr_->step(ts);
-			});
-
-}
-void		neb::core::actor::base::connect(sp::shared_ptr<neb::gfx::window::base> window) {
-
-	//window_ = window;
-
-	//auto me = std::dynamic_pointer_cast<neb::core::actor::base>(shared_from_this());
-	auto me = isActorBase();
-
-	//auto shared = sharedBase();
-
-	//conn_.key_fun_.reset(new neb::weak_function<int,int,int,int,int>(&neb::core::actor::base::key_fun));
-
-	assert(window);
-
-	auto c = window->sig_.key_fun_.connect(
-			neb::Signals::KeyFun::slot_type(
-				&neb::core::actor::base::key_fun,
-				me.get(),
-				_1,
-				_2,
-				_3,
-				_4,
-				_5
-				).track_foreign(me)
-			);
-
-}
-int neb::core::actor::base::key_fun(sp::shared_ptr<neb::gfx::window::base> window, int key, int scancode, int action, int mods) {
-
-	switch(action) {
-		case GLFW_PRESS:
-			switch(key) {
-				case GLFW_KEY_SPACE:
-					//fire();
-					return 1;
-				case GLFW_KEY_ESCAPE:
-					get_parent()->erase(i_);
-					return 1;
-				default:
-					return 0;
-			}
-		case GLFW_RELEASE:
-			switch(key) {
-				default:
-					return 0;
-			}
-	}
-
-	return 0;
 }
 
 
