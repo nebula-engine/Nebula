@@ -1,8 +1,8 @@
 #ifndef PHYSX_GAME_GAME_BASE_HPP
 #define PHYSX_GAME_GAME_BASE_HPP
 
-#include <Nebula/util/shared.hpp>
-#include <Nebula/game/game/base.hpp>
+#include <neb/util/shared.hpp>
+#include <neb/game/game/base.hpp>
 
 #include <PhysX/game/ai/util/parent.hpp>
 

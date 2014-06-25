@@ -2,7 +2,7 @@
 #define PHYSX_GAME_WEAPON_UTIL_PARENT_HPP
 
 
-#include <Nebula/util/parent.hpp>
+#include <neb/util/parent.hpp>
 
 #include <PhysX/game/weapon/base.hpp>
 

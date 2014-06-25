@@ -4,21 +4,21 @@
 #include <gal/std/terminal/command.hpp>
 #include <gal/std/terminal/command_set.hpp>
 
-#include <Nebula/app/Base.hh>
-#include <Nebula/core/actor/Base.hh>
-#include <Nebula/util/wrapper.hpp>
-#include <Nebula/gfx/Context/Window.hpp>
-#include <Nebula/gfx/environ/two.hpp>
-#include <Nebula/gfx/environ/three.hpp>
-#include <Nebula/gfx/GUI/Object/terminal.hh>
-#include <Nebula/core/light/Spot.hh>
-#include <Nebula/core/scene/Local.hh>
-#include <Nebula/core/shape/empty.hpp>
-#include <Nebula/gfx/Camera/View/ridealong.hh>
-#include <Nebula/core/actor/Empty/Empty.hpp>
-#include <Nebula/game/map/base.hpp>
-#include <Nebula/game/trigger/ActorEx1.hpp>
-#include <Nebula/ext/maze/game/map/maze2.hpp>
+#include <neb/app/Base.hh>
+#include <neb/core/actor/Base.hh>
+#include <neb/util/wrapper.hpp>
+#include <neb/gfx/Context/Window.hpp>
+#include <neb/gfx/environ/two.hpp>
+#include <neb/gfx/environ/three.hpp>
+#include <neb/gfx/GUI/Object/terminal.hh>
+#include <neb/core/light/Spot.hh>
+#include <neb/core/scene/Local.hh>
+#include <neb/core/shape/empty.hpp>
+#include <neb/gfx/Camera/View/ridealong.hh>
+#include <neb/core/actor/Empty/Empty.hpp>
+#include <neb/game/map/base.hpp>
+#include <neb/game/trigger/ActorEx1.hpp>
+#include <neb/ext/maze/game/map/maze2.hpp>
 
 #include <PhysX/free.hpp>
 #include <PhysX/app/base.hpp>

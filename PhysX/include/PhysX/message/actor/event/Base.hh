@@ -5,21 +5,21 @@
 #include <boost/serialization/shared_ptr.hpp>
 
 /*
-#include <Nebula/config.hh> // gru/config.hpp.in
-#include <Nebula/master.hh>
-#include <Nebula/scene/desc.hh>
-#include <Nebula/actor/desc.hh>
-#include <Nebula/actor/addr.hh>
-#include <Nebula/actor/event.hh>
-#include <Nebula/actor/raw_factory.hh>
-#include <Nebula/actor/actor.hh>
+#include <neb/config.hh> // gru/config.hpp.in
+#include <neb/master.hh>
+#include <neb/scene/desc.hh>
+#include <neb/actor/desc.hh>
+#include <neb/actor/addr.hh>
+#include <neb/actor/event.hh>
+#include <neb/actor/raw_factory.hh>
+#include <neb/actor/actor.hh>
 */
 
 #include <Galaxy-Standard/wrapper.hpp>
 
-#include <Nebula/core/actor/Util/Types.hh>
+#include <neb/core/actor/Util/Types.hh>
 
-#include <Nebula/message/Actor/Base.hh>
+#include <neb/message/Actor/Base.hh>
 
 
 

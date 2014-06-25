@@ -5,7 +5,7 @@
 
 #include <gal/log/log.hpp>
 
-#include <Nebula/util/debug.hpp>
+#include <neb/util/debug.hpp>
 
 
 int main(int ac, char** av) {

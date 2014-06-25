@@ -2,7 +2,7 @@
 #define PHYSX_GAME_AI_UTIL_PARENT_HPP
 
 
-#include <Nebula/util/parent.hpp>
+#include <neb/util/parent.hpp>
 
 #include <PhysX/game/ai/base.hpp>
 
