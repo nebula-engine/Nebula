@@ -12,7 +12,7 @@ void		neb::gfx::gui::object::terminal::init() {
 	auto app = neb::app::base::global();
 
 	cs_ = app->command_set_;
-	
+
 	assert(cs_);
 }
 void		neb::gfx::gui::object::terminal::draw(sp::shared_ptr<neb::glsl::program> p) {
@@ -51,22 +51,22 @@ int			neb::gfx::gui::object::terminal::key_fun(
 	char k =	'a' - GLFW_KEY_A + key;
 	char k_num =	'0' - GLFW_KEY_0 + key;
 
+	if(!flag_.any(neb::gfx::gui::object::util::flag::ENABLED) && !(key == GLFW_KEY_ESCAPE)) {
+		return 0;
+	}
+
 	if(action == GLFW_PRESS) {
 		switch(key) {
 			case GLFW_KEY_ESCAPE:
 				flag_.toggle(neb::gfx::gui::object::util::flag::ENABLED);
-				return 1;
+				break;
 			case GLFW_KEY_BACKSPACE:
-				if(!line_.empty() && flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
+				if(!line_.empty()) {
 					line_.pop_back();
-					return 1;
 				}
 				break;
 			case GLFW_KEY_SPACE:
-				if(flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
-					push(' ');
-					return 1;
-				}
+				push(' ');
 				break;
 			case GLFW_KEY_A:
 			case GLFW_KEY_B:
@@ -94,10 +94,7 @@ int			neb::gfx::gui::object::terminal::key_fun(
 			case GLFW_KEY_X:
 			case GLFW_KEY_Y:
 			case GLFW_KEY_Z:
-				if(flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
-					push(k);
-					return 1;
-				}
+				push(k);
 				break;
 			case GLFW_KEY_0:
 			case GLFW_KEY_1:
@@ -109,21 +106,16 @@ int			neb::gfx::gui::object::terminal::key_fun(
 			case GLFW_KEY_7:
 			case GLFW_KEY_8:
 			case GLFW_KEY_9:
-				if(flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
-					push(k_num);
-					return 1;
-				}
-			case GLFW_KEY_ENTER:
-				if(flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) {
-					return enter();
-				}
+				push(k_num);
 				break;
-			default:
-				return 0;
+			case GLFW_KEY_ENTER:
+				enter();
+				break;
 		}
 	}
 
-	return 0;
+	// block everything
+	return 1;
 }
 
 
