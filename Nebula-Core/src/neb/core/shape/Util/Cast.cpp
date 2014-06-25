@@ -1,6 +1,6 @@
 #include <neb/core/shape/Util/Types.hh>
 #include <neb/core/shape/Util/Cast.hh>
-#include <neb/core/shape/Base.hh>
+#include <neb/core/shape/base.hpp>
 
 
 sp::shared_ptr<neb::core::shape::base>			neb::core::shape::util::cast::isShapeBase() {

@@ -4,7 +4,7 @@
 
 #include <neb/util/typedef.hpp>
 #include <neb/app/Base.hh>
-#include <neb/core/actor/Base.hh>
+#include <neb/core/actor/base.hpp>
 #include <neb/core/scene/Base.hh>
 
 neb::Network::Server::Server(
