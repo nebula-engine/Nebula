@@ -34,9 +34,12 @@ void	phx::simulation_callback::onContact(
 	assert(nactor0);
 	assert(nactor1);
 	
-	auto actor0 = static_cast<phx::core::actor::actor::base*>(pxactor0->userData)->isPxActorActorBase();
-	auto actor1 = static_cast<phx::core::actor::actor::base*>(pxactor1->userData)->isPxActorActorBase();
+	//auto actor0 = static_cast<phx::core::actor::actor::base*>(pxactor0->userData)->isPxActorActorBase();
+	//auto actor1 = static_cast<phx::core::actor::actor::base*>(pxactor1->userData)->isPxActorActorBase();
 
+	auto actor0 = sp::dynamic_pointer_cast<phx::core::actor::actor::base>(nactor0);
+	auto actor1 = sp::dynamic_pointer_cast<phx::core::actor::actor::base>(nactor1);
+	
 	printf("%p\n", actor0.get());
 	printf("%p\n", actor1.get());
 
