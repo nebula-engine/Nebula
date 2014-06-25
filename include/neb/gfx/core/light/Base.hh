@@ -31,7 +31,7 @@ namespace neb {
 	namespace Light {
 		class base: virtual public neb::core::light::__base {
 			public:
-				base(sp::shared_ptr<neb::Light::util::parent> parent, ::std::string);
+				base(sp::shared_ptr<neb::core::light::base> parent, ::std::string);
 				
 				void				init();
 				
@@ -53,9 +53,6 @@ namespace neb {
 				vec4				getPos();
 			private:
 				template<class Archive> void		serializeTemplate(Archive & ar, unsigned int const & version) {
-					ar & boost::serialization::make_nvp("i",i_);
-					ar & boost::serialization::make_nvp("flag",flag_);
-					ar & boost::serialization::make_nvp("pos",pos_);
 					ar & boost::serialization::make_nvp("ambient",ambient_);
 					ar & boost::serialization::make_nvp("diffuse",diffuse_);
 					ar & boost::serialization::make_nvp("specular",specular_);
@@ -71,14 +68,10 @@ namespace neb {
 					serializeTemplate(ar, version);
 				}
 			public:
-				sp::shared_ptr<neb::Light::util::parent>	parent_;
+				sp::weak_ptr<neb::core::light::base>		parent_;
 
-				neb::Light::util::Flag				flag_;
-
+			
 				::std::string					light_type_string_;
-
-				// position
-				glm::vec3					pos_;
 
 				// colors
 				neb::Color::color<float>			ambient_;
@@ -86,7 +79,6 @@ namespace neb {
 				neb::Color::color<float>			specular_;
 
 				// other properties
-
 
 				texture						texture_shadow_map_;
 
