@@ -10,6 +10,9 @@
 #include <GLFW/glfw3.h>
 //#include <glfw3.h>
 
+#include <gal/std/terminal/command.hpp>
+#include <gal/std/terminal/command_set.hpp>
+
 #include <Galaxy-Network/message.hpp>
 
 #include <Galaxy-Log/log.hpp>
@@ -28,8 +31,7 @@
 #include <Nebula/message/Scene/Create.hpp>
 #include <Nebula/message/Actor/Event/Base.hh>
 #include <Nebula/core/scene/Base.hh>
-#include <Nebula/util/command.hpp>
-#include <Nebula/util/command_set.hpp>
+
 
 /** @todo since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers.
  * to avoid unwanted shared_ptrs to owned objects, care must be taken when passing these objects around.
@@ -77,15 +79,15 @@ void				neb::app::base::init() {
 
 	// command set
 	
-	command_set_ = sp::make_shared<neb::util::command_set>();
+	command_set_ = sp::make_shared<gal::std::command_set>();
 
 	command_set_->init();	
 	
 	// exit command
 	
-	auto cmd_exit = sp::make_shared<neb::util::command>();
+	auto cmd_exit = sp::make_shared<gal::std::command>();
 
-	cmd_exit->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
+	cmd_exit->func_ = [&] (sp::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
 		sp::shared_ptr<neb::app::base> app = neb::app::base::global();
 		app->flag_.set(neb::app::util::flag::SHOULD_RELEASE);
 	};
@@ -225,10 +227,10 @@ sp::shared_ptr<neb::gfx::window::base>		neb::app::base::get_window(GLFWwindow* w
 	
 	
 	// future class members...
-	::std::map< ::std::string, sp::shared_ptr<neb::util::command> > m;
+	::std::map< ::std::string, sp::shared_ptr<gal::std::command> > m;
 	
 	// a help function
-	auto help = sp::make_shared<neb::util::command>();
+	auto help = sp::make_shared<gal::std::command>();
 	help->func_ = [] (sp::shared_ptr<neb::gfx::gui::object::terminal> term, bpo::variables_map vm) {
 		term->lines_.push_back("exit");
 		term->lines_.push_back("help");
