@@ -242,5 +242,16 @@ void					neb::gfx::core::shape::base::init_buffer(sp::shared_ptr<neb::gfx::conte
 			p->get_attrib(neb::attrib_name::e::TEXCOOR)->disable();
 		}
 	}
+sp::weak_ptr<neb::core::light::base>		neb::gfx::core::shape::base::createLightPoint() {
 
+	auto self(sp::dynamic_pointer_cast<neb::core::shape::base>(shared_from_this()));
+	
+	auto light = sp::make_shared<neb::gfx::core::light::point>(self);
+	
+	neb::Light::util::parent::insert(light);
+	
+	light->init();
+
+	return light;
+}
 

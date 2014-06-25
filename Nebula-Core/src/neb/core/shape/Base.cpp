@@ -5,9 +5,9 @@
 
 #include <neb/debug.hh>
 //#include <neb/app/Base.hh>
-#include <neb/core/shape/Base.hh>
+#include <neb/core/shape/base.hpp>
 
-#include <neb/core/light/Base.hh>
+#include <neb/core/light/base.hpp>
 //#include <neb/gfx/glsl/attrib.hh>
 //#include <neb/gfx/glsl/Uniform/scalar.hpp>
 #include <neb/math/geo/polygon.hpp>
@@ -67,12 +67,14 @@ void					neb::core::shape::base::release() {
 	neb::core::shape::util::parent::release();
 	neb::Light::util::parent::release();
 }
-void					neb::core::shape::base::step(gal::std::timestep const & ts) {
+void							neb::core::shape::base::step(gal::std::timestep const & ts) {
 
 	neb::core::shape::util::parent::step(ts);
 
 	neb::Light::util::parent::step(ts);
 
 }
-
+sp::weak_ptr<neb::core::light::base>			neb::core::shape::base::createLightPoint() {
+	return sp::weak_ptr<neb::core::light::base>();
+}
 

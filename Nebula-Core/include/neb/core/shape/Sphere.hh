@@ -1,6 +1,8 @@
 #ifndef NEBULA_SHAPE_SPHERE_HH
 #define NEBULA_SHAPE_SPHERE_HH
 
+#error
+/*
 #include <neb/core/shape/Base.hh>
 
 namespace neb { namespace core { namespace shape {
@@ -14,7 +16,7 @@ namespace neb { namespace core { namespace shape {
 
 
 }}}
-
+*/
 #endif
 
 
