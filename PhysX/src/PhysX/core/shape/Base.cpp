@@ -36,7 +36,16 @@ void			phx::core::shape::base::release() {
 	neb::core::shape::base::release();
 	
 	if(px_shape_) {
-		px_shape_->release();
+		
+		auto ra = sp::dynamic_pointer_cast<phx::core::actor::rigidactor::base>(parent_.lock());
+		assert(ra);		
+
+		auto pxra = ra->px_actor_->isRigidActor();
+		assert(pxra);
+		
+		pxra->detachShape(*px_shape_);
+		
+		//px_shape_->release();
 		px_shape_ = NULL;
 	}
 }

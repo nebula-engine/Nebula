@@ -140,10 +140,11 @@ void				phx::app::base::release() {
 sp::shared_ptr<phx::app::base>			phx::app::base::global() {
 	return g_app_;
 }
-void				phx::app::base::step(gal::std::timestep const & ts) {
+void				phx::app::base::step2(gal::std::timestep const & ts) {
+
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx app", debug) << __PRETTY_FUNCTION__;
 
-	neb::app::base::step(ts);
+	neb::app::base::step2(ts);
 	
 	phx::game::game::util::parent::step(ts);
 

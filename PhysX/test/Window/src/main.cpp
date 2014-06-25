@@ -434,7 +434,7 @@ int			main() {
 
 	// loop
 
-	app->loop();
+	app->loop1();
 
 }
 
