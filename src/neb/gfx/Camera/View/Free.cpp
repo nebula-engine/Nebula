@@ -4,7 +4,7 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <neb/debug.hh>
-#include <neb/config.hh>
+//#include <neb/config.hh>
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/Camera/View/Free.hh>
 

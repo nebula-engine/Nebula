@@ -53,11 +53,9 @@ void		neb::Light::base::step(gal::std::timestep const & ts) {
 }
 void	neb::Light::base::draw() {	
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
-	GLUTPP_DEBUG_1_FUNCTION;
 }
 neb::core::pose		neb::Light::base::getPose() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
-	GLUTPP_DEBUG_1_FUNCTION;
 
 	auto p = parent_->getPoseGlobal();
 

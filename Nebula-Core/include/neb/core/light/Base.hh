@@ -23,7 +23,7 @@
 
 #include <neb/typedef.hpp>
 
-//#include <math/color.hpp>
+#include <neb/gfx/Color/Color.hh>
 
 namespace neb {
 	namespace Light {
