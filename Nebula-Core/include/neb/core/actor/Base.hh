@@ -121,20 +121,21 @@ namespace neb { namespace core { namespace actor {
 
 
 
-			neb::core::actor::util::flag			flag_;
-			::std::string					name_;
-			neb::core::pose					pose_;
+			neb::core::actor::util::flag				flag_;
+			::std::string						name_;
+			neb::core::pose						pose_;
 			/** @brief Normal for planes. */
-			vec3						n_;
+			vec3							n_;
 			/** @brief Distance for planes. */
-			float						d_;
-			vec3						velocity_;
-			float						density_;
+			float							d_;
+			vec3							velocity_;
+			float							density_;
 
 
-			double						health_;
+			double							health_;
 
 
+			sp::shared_ptr<neb::gfx::core::actor::base>		actor_gfx_;
 		public:
 			/** @brief Parent */
 			sp::weak_ptr<neb::core::actor::util::parent>		parent_;
