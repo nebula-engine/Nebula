@@ -3,7 +3,8 @@
 
 #include <memory>
 
-#include <neb/util/typedef.hpp>
+#include <neb/typedef.hpp>
+
 #include <neb/gfx/util/decl.hpp>
 #include <neb/gfx/Color/Color.hh>
 

@@ -59,7 +59,6 @@ void					neb::core::shape::base::init() {
 	neb::core::shape::util::parent::init();
 	neb::Light::util::parent::init();
 
-	createMesh();
 }
 void					neb::core::shape::base::release() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
@@ -74,7 +73,6 @@ void					neb::core::shape::base::step(gal::std::timestep const & ts) {
 
 	neb::Light::util::parent::step(ts);
 
-	material_front_.step(ts);
 }
 
 
