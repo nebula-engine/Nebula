@@ -1,11 +1,15 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <gal/log/log.hpp>
+
+#include <Nebula/debug.hh>
 #include <Nebula/free.hh>
 #include <Nebula/app/Base.hh>
 #include <Nebula/gfx/GUI/Object/terminal.hh>
 
 void		neb::gfx::gui::object::terminal::init() {
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx gui", debug) << __PRETTY_FUNCTION__;
 
 	neb::gfx::gui::object::base::init();
 
@@ -16,8 +20,7 @@ void		neb::gfx::gui::object::terminal::init() {
 	assert(cs_);
 }
 void		neb::gfx::gui::object::terminal::draw(sp::shared_ptr<neb::glsl::program> p) {
-
-	printf("%s\n",__PRETTY_FUNCTION__);
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx gui", debug) << __PRETTY_FUNCTION__;
 
 	if(!flag_.any(neb::gfx::gui::object::util::flag::ENABLED)) return;
 
@@ -46,7 +49,8 @@ int			neb::gfx::gui::object::terminal::key_fun(
 		int action,
 		int mods)
 {
-	printf("%s\n",__PRETTY_FUNCTION__);
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx gui", debug) << __PRETTY_FUNCTION__;
+
 
 	char k =	'a' - GLFW_KEY_A + key;
 	char k_num =	'0' - GLFW_KEY_0 + key;
