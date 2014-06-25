@@ -43,17 +43,17 @@ neb::gfx::window::base::base(sp::shared_ptr<neb::gfx::window::util::parent> pare
 neb::gfx::window::base::~base() {
 }
 void neb::gfx::window::base::init() {
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
+
 	neb::std::shared::init();
-	
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb", debug) << __PRETTY_FUNCTION__;
 
 	auto app = neb::app::base::global();
 	assert(app);
-	
+
 	assert(app->flag_.any(neb::app::util::flag::INIT_GLFW));
 
 	self_ = sp::dynamic_pointer_cast<neb::gfx::window::base>(shared_from_this());
-	
+
 	// create window
 	window_ = glfwCreateWindow(
 			w_,
@@ -93,13 +93,13 @@ void neb::gfx::window::base::init() {
 
 	// add window to app's window map
 	app->windows_glfw_[window_] = self_;
-	
-	
+
+
 	//if(all(neb::app::base::option::SHADERS)) create_programs();
 	app->init_glew();
 	app->create_programs();
 
-	
+
 
 
 
@@ -132,18 +132,22 @@ void neb::gfx::window::base::init() {
 	checkerror("unknown");
 }
 void		neb::gfx::window::base::release() {
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
+
+
 	glfwDestroyWindow(window_);
 }
 void		neb::gfx::window::base::render() {
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
 
 	glfwMakeContextCurrent(window_);
 
 	/** @todo rendering multiple contexts in a window */
 
-	
+
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-	
-	
+
+
 	typedef neb::gfx::context::util::parent C;
 
 	C::map_.for_each<0>([] (C::map_type::iterator<0> it) {
@@ -158,10 +162,7 @@ void		neb::gfx::window::base::render() {
 void neb::gfx::window::base::callback_window_refresh_fun(GLFWwindow*) {
 }
 void			neb::gfx::window::base::step(gal::std::timestep const & ts) {
-	//GLUTPP_DEBUG_1_FUNCTION;
-
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
-
 
 	neb::gfx::context::util::parent::step(ts);
 
@@ -170,14 +171,14 @@ void			neb::gfx::window::base::step(gal::std::timestep const & ts) {
 		parent_->erase(i_);
 		return;
 	}
-	
-	
-	
+
+
+
 	/** @todo wtf is this doing here?? */
 	render();
 }
 void neb::gfx::window::base::callback_window_size_fun(GLFWwindow* window, int w, int h) {
-	GLUTPP_DEBUG_0_FUNCTION;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
 
 	w_ = w;
 	h_ = h;
@@ -187,7 +188,7 @@ void neb::gfx::window::base::callback_window_size_fun(GLFWwindow* window, int w,
 	callback_window_refresh_fun(window);
 }
 void neb::gfx::window::base::callback_window_pos_fun(GLFWwindow* window, int x, int y) {
-	GLUTPP_DEBUG_0_FUNCTION;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
 
 	x_ = x;
 	y_ = y;
@@ -195,21 +196,22 @@ void neb::gfx::window::base::callback_window_pos_fun(GLFWwindow* window, int x, 
 	callback_window_refresh_fun(window);
 }
 void neb::gfx::window::base::callback_window_close_fun(GLFWwindow* window){
-	GLUTPP_DEBUG_0_FUNCTION;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
 
 }
 void neb::gfx::window::base::callback_mouse_button_fun(GLFWwindow* window, int button, int action, int mods) {
-	GLUTPP_DEBUG_0_FUNCTION;
-	
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
+
 	sig_.mouse_button_fun_(self_, button, action, mods);
 }
 void neb::gfx::window::base::callback_key_fun(GLFWwindow* window, int key, int scancode, int action, int mods) {
-	GLUTPP_DEBUG_0_FUNCTION;
-	
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
+
 	sig_.key_fun_(self_, key, scancode, action, mods);
 
 }
 void neb::gfx::window::base::resize() {
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx window", debug) << __PRETTY_FUNCTION__;
 
 
 	glViewport(0, 0, w_, h_);

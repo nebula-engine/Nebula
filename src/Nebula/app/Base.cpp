@@ -63,13 +63,7 @@ void				neb::app::base::init() {
 	flag_.set(neb::app::util::flag::INIT_GLFW);
 	
 	
-	// font
-	//FT_Library ft;
-	if(FT_Init_FreeType(&ft_))
-	{
-		printf("could not find freetype library\n");
-		exit(0);
-	}
+
 	//NEBULA_DEBUG_0_FUNCTION;
 
 
