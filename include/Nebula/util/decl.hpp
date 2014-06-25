@@ -18,12 +18,6 @@ namespace neb {
 		class communicating;
 	}
 
-	/** @brief %util */
-	namespace util {
-		struct terminal;
-		struct command;
-		struct command_set;
-	}
 }
 
 #endif
