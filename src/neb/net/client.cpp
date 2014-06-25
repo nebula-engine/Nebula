@@ -12,7 +12,7 @@
 
 #include <Galaxy-Network/message.hpp>
 
-#include <neb/core/actor/Base.hh>
+#include <neb/core/actor/base.hpp>
 
 #include <neb/config.hh>
 #include <neb/app/Base.hh>

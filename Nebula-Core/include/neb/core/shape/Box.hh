@@ -1,7 +1,7 @@
 #ifndef NEBULA_SHAPE_BOX_HH
 #define NEBULA_SHAPE_BOX_HH
 
-#include <neb/core/shape/Base.hh>
+#include <neb/core/shape/base.hpp>
 
 namespace neb { namespace core { namespace shape {
 
