@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <assert.h>
 
+#include <gal/log/log.hpp>
+
+#include <Nebula/debug.hh>
 #include <Nebula/app/Base.hh>
 #include <Nebula/util/decl.hpp>
 #include <Nebula/core/light/Base.hh>
@@ -19,20 +22,20 @@ neb::Light::base::base(sp::shared_ptr<neb::Light::util::parent> parent, ::std::s
 	diffuse_(neb::Color::white<float>()),
 	specular_(neb::Color::white<float>())
 {
-	GLUTPP_DEBUG_0_FUNCTION;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 }
 void neb::Light::base::init() {
-	GLUTPP_DEBUG_0_FUNCTION;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 
 }
 void neb::Light::base::release() {
-	GLUTPP_DEBUG_0_FUNCTION;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 }
 void neb::Light::base::cleanup() {
-	GLUTPP_DEBUG_1_FUNCTION;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 }
 void neb::Light::base::dim() {
-	GLUTPP_DEBUG_1_FUNCTION;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 	/*	
 	//printf("diffuse\n");
 	//diffuse_.print();
@@ -49,9 +52,11 @@ void		neb::Light::base::step(gal::std::timestep const & ts) {
 
 }
 void	neb::Light::base::draw() {	
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 	GLUTPP_DEBUG_1_FUNCTION;
 }
 neb::core::pose		neb::Light::base::getPose() {
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 	GLUTPP_DEBUG_1_FUNCTION;
 
 	auto p = parent_->getPoseGlobal();
@@ -59,7 +64,7 @@ neb::core::pose		neb::Light::base::getPose() {
 	return p;
 }
 void			neb::Light::base::load(int o, neb::core::pose const & pose) {
-	GLUTPP_DEBUG_1_FUNCTION;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 	
 	/** @todo way to ditinguish lights in shader */
 	
@@ -80,7 +85,7 @@ void			neb::Light::base::load(int o, neb::core::pose const & pose) {
 
 }
 void	neb::Light::base::load_shadow() {
-	GLUTPP_DEBUG_1_FUNCTION;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 	/*	auto p = neb::master::Global()->current_program();
 
 		math::mat44 biasMatrix(
@@ -101,7 +106,7 @@ void	neb::Light::base::load_shadow() {
 }
 void	neb::Light::base::RenderLightPOV()
 {
-	GLUTPP_DEBUG_1_FUNCTION;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 	/*
 	   std::shared_ptr<scene> scene = scene_.lock();
 

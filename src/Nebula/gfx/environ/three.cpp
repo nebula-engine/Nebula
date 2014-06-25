@@ -9,8 +9,8 @@
 #include <Nebula/gfx/environ/three.hpp>
 
 void		neb::gfx::environ::three::init() {
-	printf("%s\n",__PRETTY_FUNCTION__);
-	
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx environ", debug) << __PRETTY_FUNCTION__;
+
 	auto self = sp::dynamic_pointer_cast<neb::gfx::environ::three>(shared_from_this());
 	
 	// camera
@@ -31,11 +31,13 @@ void		neb::gfx::environ::three::step(gal::std::timestep const & ts) {
 
 }
 void		neb::gfx::environ::three::render(sp::shared_ptr<neb::gfx::context::base> context) {
+
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx environ", debug) << __PRETTY_FUNCTION__;
+
 	/**
 	 * prepare rendering environment and then call the drawable
 	 */
 
-	GLUTPP_DEBUG_1_FUNCTION;
 	
 	auto drawable = drawable_.lock();
 
