@@ -37,16 +37,6 @@ namespace neb {
 				virtual void			cleanup();
 				virtual void			step(gal::std::timestep const & ts);
 
-				virtual void			load(neb::core::light::util::count & light_count, neb::core::pose const & pose) = 0;
-				void				load(int o, neb::core::pose const & pose);
-
-				void				load_shadow();
-				void				draw();
-				void				dim();
-				void				RenderShadowPost();
-				void				RenderLightPOV();
-
-
 				neb::core::pose			getPose();
 				vec4				getPos();
 			private:
@@ -54,9 +44,6 @@ namespace neb {
 					ar & boost::serialization::make_nvp("i",i_);
 					ar & boost::serialization::make_nvp("flag",flag_);
 					ar & boost::serialization::make_nvp("pos",pos_);
-					ar & boost::serialization::make_nvp("ambient",ambient_);
-					ar & boost::serialization::make_nvp("diffuse",diffuse_);
-					ar & boost::serialization::make_nvp("specular",specular_);
 /*					ar & boost::serialization::make_nvp("atten_const",atten_const_);
 					ar & boost::serialization::make_nvp("atten_linear",atten_linear_);
 					ar & boost::serialization::make_nvp("atten_quad",atten_quad_);*/
@@ -69,24 +56,16 @@ namespace neb {
 					serializeTemplate(ar, version);
 				}
 			public:
-				sp::shared_ptr<neb::Light::util::parent>	parent_;
+			
+			
+				sp::weak_ptr<neb::Light::util::parent>		parent_;
+
+				sp::shared_ptr<neb::gfx::core::light::base>	light_gfx_;
 
 				neb::Light::util::Flag				flag_;
 
-				::std::string					light_type_string_;
-
 				// position
 				glm::vec3					pos_;
-
-				// colors
-				neb::Color::color<float>			ambient_;
-				neb::Color::color<float>			diffuse_;
-				neb::Color::color<float>			specular_;
-
-				// other properties
-
-
-				//texture						texture_shadow_map_;
 
 
 		};
