@@ -9,7 +9,7 @@
 
 
 
-neb::Light::Spot::Spot(sp::shared_ptr<neb::Light::util::parent> parent):
+neb::gfx::core::light::Spot::Spot(sp::shared_ptr<neb::Light::util::parent> parent):
 	neb::Light::base(parent, "lights_spot"),
 	spot_direction_(vec3(0.0, 0.0, -1.0)),
 	spot_cutoff_(10.0),
@@ -20,7 +20,9 @@ neb::Light::Spot::Spot(sp::shared_ptr<neb::Light::util::parent> parent):
 	atten_quad_(0.0)
 {
 }
-void neb::Light::Spot::load(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
+void			neb::gfx::core::light::spot::load(
+		neb::core::light::util::count & light_count,
+		neb::core::pose const & pose) {
 
 	neb::Light::base::load(light_count.spot, pose);
 
