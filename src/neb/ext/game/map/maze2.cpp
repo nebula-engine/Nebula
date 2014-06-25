@@ -1,7 +1,7 @@
 #include <maze/dfs.hpp>
 
 #include <neb/core/shape/Box.hh>
-#include <neb/core/actor/RigidStatic/local.hpp>
+//#include <neb/core/actor/RigidStatic/local.hpp>
 #include <neb/ext/maze/game/map/maze2.hpp>
 
 neb::ext::maze::game::map::maze2::maze2(
