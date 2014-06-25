@@ -70,8 +70,12 @@ namespace neb { namespace app {
 				void					release() {}
 
 				void					init_glew();
-				virtual void				step(gal::std::timestep const & ts);
-				int					loop();
+
+				virtual void				step1(gal::std::timestep const & ts);
+				virtual void				step2(gal::std::timestep const & ts);
+	
+				void					loop1();
+				void					loop2();
 
 				void					set_should_release();
 

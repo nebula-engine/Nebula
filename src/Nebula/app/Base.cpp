@@ -109,41 +109,65 @@ sp::shared_ptr<neb::app::base>		neb::app::base::global() {
 	assert(g_app_);
 	return g_app_;
 }
-void		neb::app::base::step(gal::std::timestep const & ts) {
-	//NEBULA_DEBUG_1_FUNCTION;
-
-	neb::core::scene::util::parent::step(ts);
-
-	neb::gfx::window::util::parent::step(ts);
-
-
-}
-neb::core::pose			neb::app::base::getPose() {
+neb::core::pose				neb::app::base::getPose() {
 	return neb::core::pose();
 }
-neb::core::pose			neb::app::base::getPoseGlobal() {
+neb::core::pose				neb::app::base::getPoseGlobal() {
 	return neb::core::pose();
 }
-int			neb::app::base::loop() {
-	//NEBULA_DEBUG_1_FUNCTION;
+void					neb::app::base::loop1() {
 
-
+	auto self(sp::dynamic_pointer_cast<neb::app::base>(shared_from_this()));
+	assert(self);
+	
+	//::std::thread t(::std::bind(&neb::app::base::loop2, self));
+	
+	
 	while(!flag_.any(neb::app::util::flag::E::SHOULD_RELEASE)) {
-		ts_.time = glfwGetTime();
-		ts_.dt = ts_.time - ts_.last;
-		ts_.last = ts_.time;
-		ts_.frame++;
 
-		step(ts_);
+		::std::cout << "loop1" << ::std::endl;
 
-		glfwPollEvents();
+		ts_.step(glfwGetTime());
+
+		step1(ts_);
+		step2(ts_);
+		
+		//::std::this_thread::yield();
 	}
-
-
+	
+	//t.join();
+	
 	if(server_) server_->close();
 	if(client_) client_->close();
 
-	return 0;
+}
+void					neb::app::base::loop2() {
+
+	gal::std::timestep ts;
+
+	while(!flag_.any(neb::app::util::flag::E::SHOULD_RELEASE)) {
+
+		::std::cout << "loop2" << ::std::endl;
+
+		ts.step(glfwGetTime());
+
+		step2(ts);
+
+		::std::this_thread::yield();
+	}
+
+
+}
+void					neb::app::base::step1(gal::std::timestep const & ts) {
+
+	neb::core::scene::util::parent::step(ts);
+
+}
+void					neb::app::base::step2(gal::std::timestep const & ts) {
+
+	neb::gfx::window::util::parent::step(ts);
+
+	glfwPollEvents();
 }
 void		neb::app::base::transmit_scenes(sp::shared_ptr<neb::Network::Communicating> c) {
 	//NEBULA_DEBUG_0_FUNCTION;
@@ -168,24 +192,6 @@ void		neb::app::base::transmit_scenes(sp::shared_ptr<neb::Network::Communicating
 			c->write(msg);
 			});
 }
-
-
-
-/*sp::shared_ptr<neb::gfx::window::base>		neb::app::base::Main_Window() {
-  sp::shared_ptr<neb::gfx::window::base> w;
-
-  if(!window_main_.expired())
-  {
-  w = window_main_.lock();
-  return w;
-  }
-
-  return w;
-  }
-  void neb::app::base::Main_Window(sp::shared_ptr<neb::gfx::window::base> w) {
-  assert(w);
-  window_main_ = w;
-  }*/
 sp::shared_ptr<neb::gfx::window::base>		neb::app::base::get_window(GLFWwindow* window) {
 	auto it = windows_glfw_.find(window);
 
@@ -193,64 +199,13 @@ sp::shared_ptr<neb::gfx::window::base>		neb::app::base::get_window(GLFWwindow* w
 
 	return it->second;
 }
-
-
-
-/*void		neb::app::base::command(sp::shared_ptr<neb::gfx::gui::object::terminal> term, ::std::string str) {
-
-	// split
-	
-	::std::istringstream iss(str);
-	
-	::std::vector< ::std::string > tokens;
-
-	::std::copy(
-			::std::istream_iterator< ::std::string >(iss),
-			::std::istream_iterator< ::std::string >(),
-			::std::back_inserter< ::std::vector< ::std::string > >(tokens));
-	
-	if(tokens.empty()) return;
-	
-	int ac = tokens.size();
-	char const ** av = new char const *[ac];
-	char const ** pc = av;
-	for(auto t : tokens) {
-		*pc = t.c_str();
-		pc++;
-	}
-	
-	
-	// future class members...
-	::std::map< ::std::string, sp::shared_ptr<gal::std::command> > m;
-	
-	// a help function
-	auto help = sp::make_shared<gal::std::command>();
-	help->func_ = [] (sp::shared_ptr<neb::gfx::gui::object::terminal> term, bpo::variables_map vm) {
-		term->lines_.push_back("exit");
-		term->lines_.push_back("help");
-	};
-	
-	// a way out
-
-	
-	// find command
-	auto it = m.find(tokens.front());
-	
-	if(it != m.end()) {
-		it->second->operator()(term,ac,av);
-	} else {
-		term->lines_.push_back(tokens.front() + ": Command not found.");
-	}
-	
-}*/
-
 void		neb::app::base::loadXml(::std::string filename, neb::std::wrapper& w) {
 	::std::ifstream ifs;
-	
+
 	ifs.open(filename, ::std::ifstream::in);
-	
+
 	boost::archive::polymorphic_xml_iarchive ar(ifs);
-	
+
 	ar >> boost::serialization::make_nvp("wrapper",w);
 }
 
