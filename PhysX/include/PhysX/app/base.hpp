@@ -48,7 +48,8 @@ namespace phx { namespace app {
 			base();
 			void						init();
 			void						release();
-			void						step(gal::std::timestep const & ts);
+
+			virtual void					step2(gal::std::timestep const & ts);
 			
 			static sp::shared_ptr<phx::app::base>		global();
 			
