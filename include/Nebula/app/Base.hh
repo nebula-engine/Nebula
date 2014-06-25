@@ -9,6 +9,7 @@
 #include FT_FREETYPE_H
 
 #include <Galaxy-Standard/shared.hpp>
+#include <Galaxy-Standard/terminal/command_set.hpp>
 
 #include <Galaxy-Network/decl.hpp>
 
@@ -86,7 +87,7 @@ namespace neb { namespace app {
 				gal::std::timestep						ts_;
 			
 
-				sp::shared_ptr<neb::util::command_set>				command_set_;
+				sp::shared_ptr<gal::std::command_set>				command_set_;
 		};
 
 
