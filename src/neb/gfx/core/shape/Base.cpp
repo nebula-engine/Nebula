@@ -12,53 +12,44 @@
 //#include <neb/gfx/glsl/Uniform/scalar.hpp>
 #include <neb/math/geo/polygon.hpp>
 
-neb::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
+neb::gfx::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
 	neb::core::shape::base(parent)
 {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
 	assert(parent);
 }
-neb::core::shape::base::~base() {}
-neb::core::pose				neb::core::shape::base::getPoseGlobal() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
-	
-	neb::core::pose m;
-	
-	auto parent = parent_.lock();
-	if(parent) {
-		m = parent->getPoseGlobal() * getPose();
-	} else {
-		m = getPose();
-	}
-
-	return m;
-}
+neb::gfx::core::shape::base::~base() {}
 void					neb::core::shape::base::init() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
 
 	createMesh();
 }
-void					neb::core::shape::base::step(gal::std::timestep const & ts) {
+void					neb::gfx::core::shape::base::step(gal::std::timestep const & ts) {
 
 	material_front_.step(ts);
 }
-void					neb::core::shape::base::load_lights(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
+void					neb::gfx::core::shape::base::load_lights(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
 
 	auto npose = pose * pose_;
 
 	typedef neb::Light::util::parent L;
 
-	L::map_.for_each<0>([&] (L::map_type::iterator<0> it) {
-			auto light = sp::dynamic_pointer_cast<neb::Light::base>(it->ptr_);
-			assert(light);
-			//if(i == neb::Light::light_max) return L::map_type::BREAK;
-			light->load(light_count, npose);
-			return L::map_type::CONTINUE;
-			});
+	auto lambda_light = [&] (L::map_type::iterator<0> it) {
+		auto light = sp::dynamic_pointer_cast<neb::Light::base>(it->ptr_);
+		assert(light);
+		//if(i == neb::Light::light_max) return L::map_type::BREAK;
+		
+		if(light->light_gfx_) {
+			light->light_gfx_->load(light_count, npose);
+		}
+		return L::map_type::CONTINUE;
+	};
+
+	L::map_.for_each<0>(lambda_light);
 
 }
-void					neb::core::shape::base::draw(
+void					neb::gfx::core::shape::base::draw(
 		sp::shared_ptr<neb::gfx::context::base> context,
 		sp::shared_ptr<neb::glsl::program> p,
 		neb::core::pose const & pose) {
@@ -67,7 +58,7 @@ void					neb::core::shape::base::draw(
 
 	draw_elements(context, p, npose);
 }
-void					neb::core::shape::base::model_load(neb::core::pose const & pose) {
+void					neb::gfx::core::shape::base::model_load(neb::core::pose const & pose) {
 
 	auto p = neb::app::base::global()->current_program();
 
@@ -75,7 +66,7 @@ void					neb::core::shape::base::model_load(neb::core::pose const & pose) {
 
 	p->get_uniform_scalar("model")->load(space);
 }
-void					neb::core::shape::base::init_buffer(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
+void					neb::gfx::core::shape::base::init_buffer(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p) {
 
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx", debug) << __PRETTY_FUNCTION__;
 
@@ -167,7 +158,7 @@ void					neb::core::shape::base::init_buffer(sp::shared_ptr<neb::gfx::context::b
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 	}
-	void		neb::core::shape::base::draw_elements(
+	void		neb::gfx::core::shape::base::draw_elements(
 			sp::shared_ptr<neb::gfx::context::base> context,
 			sp::shared_ptr<neb::glsl::program> p,
 			neb::core::pose const & pose) {
