@@ -5,10 +5,10 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/config.hh>
+#include <neb/config.hh>
 
-#include <Nebula/app/Base.hh>
-#include <Nebula/core/scene/Base.hh>
+#include <neb/app/Base.hh>
+#include <neb/core/scene/Base.hh>
 
 #include <PhysX/free.hpp>
 #include <PhysX/core/scene/util/parent.hpp>

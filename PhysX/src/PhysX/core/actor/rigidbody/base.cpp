@@ -1,29 +1,29 @@
 /*
-#include <Nebula/net/server.hh>
+#include <neb/net/server.hh>
 
-#include <Nebula/gfx/Context/Base.hh>
-#include <Nebula/gfx/Camera/View/ridealong.hh>
+#include <neb/gfx/Context/Base.hh>
+#include <neb/gfx/Camera/View/ridealong.hh>
 
-#include <Nebula/debug.hh>
-#include <Nebula/util/decl.hpp>
-#include <Nebula/app/Base.hh>
-//#include <Nebula/Physics.hh>
-//#include <Nebula/simulation_callback.hh>
+#include <neb/debug.hh>
+#include <neb/util/decl.hpp>
+#include <neb/app/Base.hh>
+//#include <neb/Physics.hh>
+//#include <neb/simulation_callback.hh>
 
-#include <Nebula/core/actor/Util/Types.hh>
-//#include <Nebula/core/actor/Control/Util/Types.hh>
-#include <Nebula/core/actor/RigidBody/Base.hh>
-#include <Nebula/core/actor/RigidDynamic/Local.hh>
+#include <neb/core/actor/Util/Types.hh>
+//#include <neb/core/actor/Control/Util/Types.hh>
+#include <neb/core/actor/RigidBody/Base.hh>
+#include <neb/core/actor/RigidDynamic/Local.hh>
 
-#include <Nebula/network/Types.hh>
-#include <Nebula/network/message.hh>
-#include <Nebula/message/Actor/Control.hh>
-#include <Nebula/message/Types.hh>
+#include <neb/network/Types.hh>
+#include <neb/network/message.hh>
+#include <neb/message/Actor/Control.hh>
+#include <neb/message/Types.hh>
 */
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/debug.hh>
-#include <Nebula/gfx/window/Base.hh>
+#include <neb/debug.hh>
+#include <neb/gfx/window/Base.hh>
 
 #include <PhysX/util/convert.hpp>
 #include <PhysX/core/scene/base.hpp>

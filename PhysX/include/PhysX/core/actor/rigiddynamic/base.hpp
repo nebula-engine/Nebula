@@ -3,7 +3,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/core/actor/RigidDynamic/Base.hh>
+#include <neb/core/actor/RigidDynamic/Base.hh>
 
 #include <PhysX/core/actor/rigidbody/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>

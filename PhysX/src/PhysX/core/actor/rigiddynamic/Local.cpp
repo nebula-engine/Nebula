@@ -1,5 +1,5 @@
 #include <Galaxy-Log/log.hpp>
-#include <Nebula/debug.hh>
+#include <neb/debug.hh>
 
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/rigiddynamic/local.hpp>

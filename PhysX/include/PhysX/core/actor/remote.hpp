@@ -1,7 +1,7 @@
 #ifndef PHYSX_CORE_ACTOR_REMOTE_HPP
 #define PHYSX_CORE_ACTOR_REMOTE_HPP
 
-#include <Nebula/core/actor/Remote.hh>
+#include <neb/core/actor/Remote.hh>
 
 #include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>

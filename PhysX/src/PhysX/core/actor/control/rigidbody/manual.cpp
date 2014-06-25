@@ -8,7 +8,7 @@
 #include <PxPhysicsAPI.h>
 
 #include <Galaxy-Log/log.hpp>
-#include <Nebula/debug.hh>
+#include <neb/debug.hh>
 
 #include <PhysX/core/actor/rigidbody/base.hpp>
 #include <PhysX/core/actor/control/rigidbody/base.hpp>

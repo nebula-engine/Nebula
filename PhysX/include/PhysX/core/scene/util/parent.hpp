@@ -3,7 +3,7 @@
 
 
 
-#include <Nebula/core/scene/Util/Parent.hh>
+#include <neb/core/scene/Util/Parent.hh>
 
 namespace phx { namespace core { namespace scene { namespace util {
 

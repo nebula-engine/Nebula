@@ -1,11 +1,11 @@
 
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/app/Base.hh>
-#include <Nebula/core/scene/Local.hh>
-#include <Nebula/core/actor/RigidBody/Base.hh>
-#include <Nebula/timer/Actor/Release.hpp>
-#include <Nebula/debug.hh>
+#include <neb/app/Base.hh>
+#include <neb/core/scene/Local.hh>
+#include <neb/core/actor/RigidBody/Base.hh>
+#include <neb/timer/Actor/Release.hpp>
+#include <neb/debug.hh>
 
 
 

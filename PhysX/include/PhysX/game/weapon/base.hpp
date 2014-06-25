@@ -1,8 +1,8 @@
 #ifndef PHYSX_GAME_WEAPON_BASE_HPP
 #define PHYSX_GAME_WEAPON_BASE_HPP
 
-#include <Nebula/util/shared.hpp>
-#include <Nebula/gfx/util/decl.hpp>
+#include <neb/util/shared.hpp>
+#include <neb/gfx/util/decl.hpp>
 
 #include <PhysX/core/actor/util/decl.hpp>
 

@@ -1,8 +1,8 @@
 #include <Galaxy-Log/log.hpp>
 
-#include <Nebula/timer/Actor/Release.hpp>
-#include <Nebula/gfx/window/Base.hh>
-#include <Nebula/debug.hh>
+#include <neb/timer/Actor/Release.hpp>
+#include <neb/gfx/window/Base.hh>
+#include <neb/debug.hh>
 
 #include <PhysX/filter.hpp>
 #include <PhysX/app/base.hpp>

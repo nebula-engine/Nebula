@@ -14,11 +14,11 @@
 #include <math/transform.hpp>
 #include <math/geo/polyhedron.hpp>
 */
-#include <Nebula/config.hh> // Nebula/config.hpp.in
+#include <neb/config.hh> // Nebula/config.hpp.in
 
-#include <Nebula/core/shape/Util/Parent.hh>
+#include <neb/core/shape/Util/Parent.hh>
 
-#include <Nebula/core/Pose.hh>
+#include <neb/core/Pose.hh>
 
 #include <PhysX/core/actor/util/cast.hpp>
 #include <PhysX/core/shape/util/cast.hpp>

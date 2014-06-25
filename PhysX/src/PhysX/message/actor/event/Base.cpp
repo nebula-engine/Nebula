@@ -1,10 +1,10 @@
 
 #include <Galaxy-Standard/registry.hpp>
 
-#include <Nebula/core/actor/Base.hh>
+#include <neb/core/actor/Base.hh>
 
-#include <Nebula/message/Actor/Event/Base.hh>
-#include <Nebula/core/scene/Base.hh>
+#include <neb/message/Actor/Event/Base.hh>
+#include <neb/core/scene/Base.hh>
 
 
 #include <PhysX/core/actor/actor/base.hpp>
