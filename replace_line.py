@@ -43,7 +43,7 @@ def replace(filename):
 	
 	
 	
-       	#text = re.sub("if\(DEBUG_NEB\) if\(DEBUG_NEB\)","if(DEBUG_NEB)",text)
+       	text = re.sub("<Nebula/","<neb/",text)
 	
 	#text = re.sub("NEBULA_ACTOR_BASE_FUNC","if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, \"neb core actor\", debug) << __PRETTY_FUNCTION__", text)
 	
@@ -72,5 +72,11 @@ for f in glob('PhysX/src'):
 for f in glob('PhysX/test'):
 	replace(f)
 
+for f in glob('Nebula-Core/include'):
+	replace(f)
+for f in glob('Nebula-Core/src'):
+	replace(f)
+for f in glob('Nebula-Core/test'):
+	replace(f)
 
 

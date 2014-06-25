@@ -1,7 +1,7 @@
 #ifndef PHYSX_SHAPE_BOX_HH
 #define PHYSX_SHAPE_BOX_HH
 
-#include <Nebula/core/shape/Box.hh>
+#include <neb/core/shape/Box.hh>
 
 #include <PhysX/core/shape/base.hpp>
 

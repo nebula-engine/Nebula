@@ -22,3 +22,6 @@
 [submodule "Control-System"]
 	path = Control-System
 	url = https://chuck1@github.com/chuck1/Control-System.git
+[submodule "Nebula-Python"]
+	path = Nebula-Python
+	url = https://github.com/chuck1/Nebula-Python

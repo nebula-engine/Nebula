@@ -1,8 +1,8 @@
 
 
 
-#include <Nebula/app/Base.hh>
-#include <Nebula/core/actor/Base.hh>
+#include <neb/app/Base.hh>
+#include <neb/core/actor/Base.hh>
 
 #include <PhysX/message/actor/event/Base.hh>
 

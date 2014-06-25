@@ -6,8 +6,8 @@
 #include <PhysX/core/scene/base.hpp>
 #include <PhysX/util/convert.hpp>
 
-#include <Nebula/debug.hh>
-#include <Nebula/core/scene/Util/Types.hh>
+#include <neb/debug.hh>
+#include <neb/core/scene/Util/Types.hh>
 
 
 

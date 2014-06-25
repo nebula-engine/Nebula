@@ -3,8 +3,8 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/core/actor/Actor/Base.hh>
-#include <Nebula/core/pose.hpp>
+#include <neb/core/actor/Actor/Base.hh>
+#include <neb/core/pose.hpp>
 
 #include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
