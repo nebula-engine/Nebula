@@ -1,5 +1,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 
+#include <gal/std/terminal/terminal.hpp>
+#include <gal/std/terminal/command.hpp>
+#include <gal/std/terminal/command_set.hpp>
+
 #include <Nebula/app/Base.hh>
 #include <Nebula/core/actor/Base.hh>
 #include <Nebula/util/wrapper.hpp>
@@ -15,8 +19,6 @@
 #include <Nebula/game/map/base.hpp>
 #include <Nebula/game/trigger/ActorEx1.hpp>
 #include <Nebula/ext/maze/game/map/maze2.hpp>
-#include <Nebula/util/command.hpp>
-#include <Nebula/util/command_set.hpp>
 
 #include <PhysX/free.hpp>
 #include <PhysX/app/base.hpp>
@@ -381,9 +383,9 @@ int			main() {
 
 	// command
 	// create scene
-	auto cmd_create_scene = sp::make_shared<neb::util::command>();
+	auto cmd_create_scene = sp::make_shared<gal::std::command>();
 
-	cmd_create_scene->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
+	cmd_create_scene->func_ = [&] (sp::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
 		(*term) << "creating scene...";
 		//map = create_maze(window, context1);
 		//map = create_scene(window, context1);
@@ -394,9 +396,9 @@ int			main() {
 	app->command_set_->map_["sc"] = cmd_create_scene;
 
 	// create scene
-	auto cmd_create_maze = sp::make_shared<neb::util::command>();
+	auto cmd_create_maze = sp::make_shared<gal::std::command>();
 
-	cmd_create_maze->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
+	cmd_create_maze->func_ = [&] (sp::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
 		(*term) << "creating maze...";
 		game.lock()->scene_ = create_maze(window, context1);
 	};
@@ -404,9 +406,9 @@ int			main() {
 	app->command_set_->map_["maze"] = cmd_create_maze;
 
 	// destroy scene
-	auto cmd_destroy_scene = sp::make_shared<neb::util::command>();
+	auto cmd_destroy_scene = sp::make_shared<gal::std::command>();
 
-	cmd_destroy_scene->func_ = [&] (sp::shared_ptr<neb::util::terminal> term, bpo::variables_map vm) {
+	cmd_destroy_scene->func_ = [&] (sp::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
 		(*term) << "destroying scene...";
 		auto scene = game.lock()->scene_.lock();
 		if(scene) {
