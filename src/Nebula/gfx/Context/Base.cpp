@@ -47,7 +47,6 @@ void		neb::gfx::context::base::render() {
 	 * prepare rendering environment and then call the drawable
 	 */
 
-	GLUTPP_DEBUG_1_FUNCTION;
 
 	if(!environ_) return;
 	
