@@ -2,10 +2,10 @@
 
 //#include <math/xml.hpp>
 
-#include <neb/app/Base.hh>
-#include <neb/gfx/material.hh>
-#include <neb/gfx/window/Base.hh>
-#include <neb/gfx/glsl/Uniform/scalar.hpp>
+//#include <neb/app/Base.hh>
+#include <neb/gfx/material.hpp>
+//#include <neb/gfx/window/Base.hh>
+//#include <neb/gfx/glsl/Uniform/scalar.hpp>
 #include <neb/core/scene/Base.hh>
 
 /*

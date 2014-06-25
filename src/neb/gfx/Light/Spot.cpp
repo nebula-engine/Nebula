@@ -41,7 +41,6 @@ neb::Light::Spot::Spot(sp::shared_ptr<neb::Light::util::parent> parent):
 {
 }
 void neb::Light::Spot::load(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
-	GLUTPP_DEBUG_1_FUNCTION;
 
 	neb::Light::base::load(light_count.spot, pose);
 
