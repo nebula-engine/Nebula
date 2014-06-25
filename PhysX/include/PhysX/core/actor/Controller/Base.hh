@@ -3,7 +3,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/core/actor/Base.hh>
+#include <neb/core/actor/Base.hh>
 
 namespace phx { namespace core { namespace actor { namespace controller {
 

@@ -33,6 +33,9 @@ SET(GRU_VERSION 0.1.1)
 
 FIND_PACKAGE(CMakeHelper)
 
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_STATIC_RUNTIME OFF)
+
 FIND_PACKAGE(Boost 1.55 COMPONENTS program_options serialization log system thread)
 
 SET(libs ${libs}
@@ -61,9 +64,10 @@ SET(libs ${libs}
 # common methods for static library
 # =================================
 
-
-
 cmh_static_library()
+
+PROJECT(neb_shared)
+cmh_shared_library()
 
 add_subdirectory(test)
 

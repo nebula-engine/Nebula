@@ -3,7 +3,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <Nebula/core/actor/Actor/Remote.hh>
+#include <neb/core/actor/Actor/Remote.hh>
 
 #include <PhysX/core/actor/remote.hpp>
 #include <PhysX/core/actor/actor/base.hpp>

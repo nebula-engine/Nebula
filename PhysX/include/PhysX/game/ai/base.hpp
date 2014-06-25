@@ -3,7 +3,7 @@
 
 #include <gal/std/timestep.hpp>
 
-#include <Nebula/util/shared.hpp>
+#include <neb/util/shared.hpp>
 
 #include <PhysX/core/actor/util/decl.hpp>
 

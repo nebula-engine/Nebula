@@ -7,9 +7,9 @@
 
 #include <Galaxy-Log/log.hpp>
 
-//#include <Nebula/Physics.hh>
-#include <Nebula/core/scene/Base.hh>
-#include <Nebula/debug.hh>
+//#include <neb/Physics.hh>
+#include <neb/core/scene/Base.hh>
+#include <neb/debug.hh>
 
 #include <PhysX/simulation_callback.hh>
 

@@ -2,12 +2,12 @@
 #define __NEBULA_USER_H__
 
 //#include <gru/master.hpp>
-#include <Nebula/gfx/window/Base.hh>
+#include <neb/gfx/window/Base.hh>
 
 //#include <nebula/config.hpp>
 //#include <nebula/camera/camera.hpp>
 
-#include <Nebula/core/actor/Util/Types.hh>
+#include <neb/core/actor/Util/Types.hh>
 
 namespace phx {
 	class user {

@@ -1,8 +1,8 @@
 
 
-#include <Nebula/core/actor/Util/Types.hh>
-#include <Nebula/core/actor/Util/Cast.hh>
-#include <Nebula/core/actor/RigidDynamic/Base.hh>
+#include <neb/core/actor/Util/Types.hh>
+#include <neb/core/actor/Util/Cast.hh>
+#include <neb/core/actor/RigidDynamic/Base.hh>
 
 
 sp::shared_ptr<neb::core::actor::base>				neb::core::actor::util::cast::isActorBase() {
