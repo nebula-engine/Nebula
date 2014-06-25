@@ -3,7 +3,8 @@
 
 #include <deque>
 
-#include <Nebula/util/terminal.hpp>
+#include <gal/std/terminal/terminal.hpp>
+
 #include <Nebula/gfx/GUI/Object/Base.hh>
 
 namespace neb {	namespace gfx {	namespace gui {	namespace object {
@@ -11,7 +12,7 @@ namespace neb {	namespace gfx {	namespace gui {	namespace object {
 
 	class terminal:
 		virtual public neb::gfx::gui::object::base,
-		virtual public neb::util::terminal
+		virtual public gal::std::terminal
 	{
 		public:
 			enum
