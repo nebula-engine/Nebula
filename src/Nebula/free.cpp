@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fstream>
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -9,8 +10,11 @@
 #include <GLFW/glfw3.h>
 //#include <GL/gl.h>
 
+#include <boost/archive/xml_iarchive.hpp>
+
 #include <Galaxy-Log/log.hpp>
 
+#include <Nebula/util/debug.hpp>
 #include <Nebula/app/Base.hh>
 #include <Nebula/gfx/window/Base.hh>
 #include <Nebula/gfx/glsl/Uniform/scalar.hpp>
@@ -19,8 +23,21 @@
 #include <Nebula/free.hh>
 
 void		neb::init_log() {
+	
+	neb::util::debug_options o;
+	
+	::std::ifstream f;
+	f.open("debug_options.xml", ::std::ifstream::in);
+	if(f.is_open()) {
+		boost::archive::xml_iarchive ar(f);
+		o.serialize(ar,0);
+	}
+	
+	for(auto p : o.map_) {
+		gal::log::min_severity[p.first] = (severity_level)p.second;
+	}
 
-	gal::log::min_severity["neb"]			= debug;
+/*	gal::log::min_severity["neb"]			= debug;
 	gal::log::min_severity["neb app"]		= debug;
 	gal::log::min_severity["neb timer"]		= debug;
 
@@ -43,7 +60,7 @@ void		neb::init_log() {
 	gal::log::min_severity["phx core light"]	= debug;
 
 	gal::log::min_severity["phx game"]		= debug;
-	gal::log::min_severity["phx game weapon"]	= debug;
+	gal::log::min_severity["phx game weapon"]	= debug;*/
 
 	gal::log::init();
 

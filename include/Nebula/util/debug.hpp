@@ -7,13 +7,13 @@
 namespace neb { namespace util {
 
 	class debug_options {
-		
-		template<typename Archive> void		serialize(Archive & ar, unsigned int const & version) {
-			ar & boost::serialization::make_nvp("map",map_);
-		}
-		
-		std::map< std::string, int > map_;
-	}
+		public:
+			template<typename Archive> void		serialize(Archive & ar, unsigned int const & version) {
+				ar & boost::serialization::make_nvp("map",map_);
+			}
+
+			std::map< std::string, int > map_;
+	};
 
 }}
 
