@@ -58,6 +58,7 @@ namespace neb { namespace core { namespace shape {
 					ar & boost::serialization::make_nvp("normal",normal_);
 				}
 
+				sp::shared_ptr<neb::gfx::core::shape::base>		shape_gfx_;
 			public:
 				sp::weak_ptr<neb::core::shape::util::parent>		parent_;
 
