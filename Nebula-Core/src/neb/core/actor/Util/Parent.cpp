@@ -1,7 +1,7 @@
 #include <gal/log/log.hpp>
 #include <neb/debug.hh>
 
-#include <neb/app/Base.hh>
+//#include <neb/app/Base.hh>
 
 #include <neb/core/actor/Base.hh>
 #include <neb/core/actor/Util/Parent.hh>
@@ -18,6 +18,7 @@ void							neb::core::actor::util::parent::release() {
 
 }
 sp::shared_ptr<neb::core::scene::base>			neb::core::actor::util::parent::getScene() {
+
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 	auto scene = isSceneBase();

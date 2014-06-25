@@ -21,7 +21,7 @@
 //#include <neb/core/light/Base.hh>
 #include <neb/core/light/Util/Parent.hh>
 #include <neb/core/light/Util/light_count.hpp>
-#include <neb/gfx/material.hpp>
+//#include <neb/gfx/material.hpp>
 //#include <neb/gfx/mesh.hh>
 
 namespace neb { namespace core { namespace shape {
@@ -48,7 +48,6 @@ namespace neb { namespace core { namespace shape {
 				/** @} */
 
 
-				virtual void					createMesh() = 0;
 
 			public:
 				template<class Archive>	void	serialize(Archive & ar, unsigned int const & version) {
@@ -57,7 +56,6 @@ namespace neb { namespace core { namespace shape {
 					ar & boost::serialization::make_nvp("s",s_);
 					ar & boost::serialization::make_nvp("image",image_);
 					ar & boost::serialization::make_nvp("normal",normal_);
-					ar & boost::serialization::make_nvp("material",material_);
 				}
 
 			public:
@@ -73,13 +71,8 @@ namespace neb { namespace core { namespace shape {
 				::std::string				image_;
 				/** @brief Name of normal map file */
 				::std::string				normal_;
-				/** @brief Material. */
-				neb::material::raw			material_;
 			public:
 
-				// draw data
-				/** @brief ID */
-				neb::material::material					material_front_;
 
 		};
 

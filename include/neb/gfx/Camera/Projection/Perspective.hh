@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 
-#include <neb/config.hh>
+//#include <neb/config.hh>
 #include <neb/gfx/util/decl.hpp>
 //#include <neb/camera_control.hpp>
 

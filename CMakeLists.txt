@@ -2,9 +2,9 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
 INCLUDE($ENV{HOME}/.config.cmake)
 
-PROJECT(Nebula)
+PROJECT(nebula)
 
-FIND_PACKAGE(glfw)
+fIND_PACKAGE(glfw)
 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
@@ -13,6 +13,7 @@ include_directories("/usr/include/freetype2")
 include_directories("./Galaxy-Standard/include")
 include_directories("./Galaxy-Network/include")
 include_directories("./Galaxy-Log/include")
+include_directories("./Nebula-Core/include")
 include_directories("./maze/include")
 include_directories("./Control-System/include")
 include_directories("./glm")
@@ -64,9 +65,6 @@ SET(libs ${libs}
 # common methods for static library
 # =================================
 
-cmh_static_library()
-
-PROJECT(neb_shared)
 cmh_shared_library()
 
 add_subdirectory(test)
