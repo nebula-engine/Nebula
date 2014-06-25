@@ -281,7 +281,7 @@ void			neb::gfx::Camera::View::Free::step(gal::std::timestep const & ts) {
 		pitch_ += ts.dt * rate;
 	}
 	
-	printf("yaw_ = %f\n",yaw_);
+	//printf("yaw_ = %f\n",yaw_);
 
 	// rotate velocity by camera yaw
 	quat q = glm::angleAxis(yaw_,y);
@@ -292,11 +292,11 @@ void			neb::gfx::Camera::View::Free::step(gal::std::timestep const & ts) {
 	v *= ts.dt;
 	v *= 1.0;
 
-	printf("v = %f %f %f\n",v.x,v.y,v.z);
+	//printf("v = %f %f %f\n",v.x,v.y,v.z);
 
 	v = q * v;
 
-	printf("v = %f %f %f\n",v.x,v.y,v.z);
+	//printf("v = %f %f %f\n",v.x,v.y,v.z);
 
 	eye_ += vec4(v, 0.0f);
 }
