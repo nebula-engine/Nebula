@@ -7,7 +7,7 @@
 #include <Galaxy-Standard/shared.hpp>
 
 #include <neb/util/parent.hpp>
-#include <neb/game/trigger/base.hpp>
+#include <neb/core/game/trigger/base.hpp>
 
 namespace neb { namespace game { namespace trigger { namespace util {
 

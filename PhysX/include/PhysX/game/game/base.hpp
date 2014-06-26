@@ -2,7 +2,7 @@
 #define PHYSX_GAME_GAME_BASE_HPP
 
 #include <neb/util/shared.hpp>
-#include <neb/game/game/base.hpp>
+#include <neb/core/game/game/base.hpp>
 
 #include <PhysX/game/ai/util/parent.hpp>
 

@@ -1,9 +1,7 @@
 #ifndef NEBULA_GAME_HPP
 #define NEBULA_GAME_HPP
 
-#include <neb/core/scene/Util/Types.hh>
-#include <neb/game/game/util/decl.hpp>
-#include <neb/game/trigger/util/parent.hpp>
+#include <neb/core/game/trigger/util/parent.hpp>
 
 namespace neb { namespace game { namespace game {
 
