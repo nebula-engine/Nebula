@@ -3,7 +3,6 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/core/actor/RigidDynamic/Base.hh>
 
 #include <PhysX/core/actor/rigidbody/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
@@ -13,7 +12,6 @@ namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 
 
 	class base:
-		virtual public neb::core::actor::rigiddynamic::base,
 		virtual public phx::core::actor::rigidbody::base
 	{
 
@@ -22,10 +20,8 @@ namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 
 			virtual void					init();
 			virtual void					release() = 0;
-		protected:
-			//virtual void					releaseUp();
 		public:
-			virtual void					step(gal::std::timestep const & ts);
+			virtual void					step(gal::std::timestep const & ts) = 0;
 
 
 			virtual void					create_physics() = 0;

@@ -113,27 +113,7 @@ sp::weak_ptr<phx::game::weapon::SimpleProjectile>			phx::core::actor::base::crea
 
 	return weap;
 }
-sp::weak_ptr<neb::core::shape::base>		neb::core::actor::rigidactor::base::createShapeCube(real size) {
-	
-	auto shape = createShapeBoxUninitialized().lock();
 
-	shape->s_ = vec3(size);
-
-	shape->init();
-
-	return shape;
-	
-}
-sp::weak_ptr<neb::core::shape::base>		neb::core::actor::rigidactor::base::createShapeBoxUninitialized() {
-
-	auto self(isActorRigidActor());
-	
-	auto shape = sp::make_shared<phx::core::shape::box>(self);
-	
-	neb::core::shape::util::parent::insert(shape);
-	
-	return shape;
-}
 
 
 

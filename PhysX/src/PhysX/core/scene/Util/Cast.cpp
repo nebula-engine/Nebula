@@ -1,4 +1,5 @@
 
+/*
 #include <PhysX/core/scene/util/cast.hpp>
 #include <PhysX/core/scene/base.hpp>
 #include <PhysX/core/scene/local.hpp>
@@ -13,4 +14,4 @@ sp::shared_ptr<phx::core::scene::local>		phx::core::scene::util::cast::isPxScene
 sp::shared_ptr<phx::core::scene::remote>	phx::core::scene::util::cast::isPxSceneRemote() {
         return sp::dynamic_pointer_cast<phx::core::scene::remote>(shared_from_this());
 }
-
+*/

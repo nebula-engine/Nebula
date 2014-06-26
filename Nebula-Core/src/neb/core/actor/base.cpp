@@ -84,7 +84,7 @@ void		neb::core::actor::base::step(gal::std::timestep const & ts) {
 			});
 
 }
-sp::weak_ptr<neb::core::shape::base>		neb::core::actor::base::createShapeCube(real size) {
+sp::weak_ptr<neb::core::shape::base>			neb::core::actor::base::createShapeCube(real size) {
 	
 	auto shape = createShapeBox(vec3(size));
 

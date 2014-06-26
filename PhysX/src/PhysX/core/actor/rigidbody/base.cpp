@@ -28,8 +28,8 @@
 #include <PhysX/util/convert.hpp>
 #include <PhysX/core/scene/base.hpp>
 #include <PhysX/core/actor/util/parent.hpp>
+#include <PhysX/core/actor/rigidbody/base.hpp>
 #include <PhysX/core/actor/control/rigidbody/base.hpp>
-#include <PhysX/core/actor/rigiddynamic/local.hpp>
 
 
 phx::core::actor::rigidbody::base::base(sp::shared_ptr<phx::core::actor::util::parent> parent):

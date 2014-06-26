@@ -1,7 +1,8 @@
 #include <neb/debug.hh>
-#include <neb/app/Base.hh>
+//#include <neb/app/Base.hh>
 #include <neb/core/scene/base.hpp>
 
+#include <PhysX/core/scene/base.hpp>
 #include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/actor/util/parent.hpp>
 
@@ -15,11 +16,11 @@ void							phx::core::actor::util::parent::init() {
 }
 sp::shared_ptr<phx::core::scene::base>			phx::core::actor::util::parent::getScene() {
 	
-	auto scene = isPxSceneBase();
+	auto scene(sp::dynamic_pointer_cast<phx::core::scene::base>(shared_from_this()));
 	
 	if(scene) return scene;
-	
-	auto actor = isPxActorBase();
+
+	auto actor(sp::dynamic_pointer_cast<phx::core::actor::base>(shared_from_this()));
 	
 	if(!actor) throw 0;
 	

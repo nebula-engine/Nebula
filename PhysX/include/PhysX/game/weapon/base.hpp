@@ -5,6 +5,10 @@
 
 #include <PhysX/core/actor/util/decl.hpp>
 
+namespace neb { namespace gfx { namespace window {
+	class base;
+}}}
+
 namespace phx { namespace game { namespace weapon {
 
 	class base: virtual public neb::std::shared {
