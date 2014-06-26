@@ -2,7 +2,7 @@
 #define PHYSX_GAME_MAP_HPP
 
 
-#include <neb/game/map/base.hpp>
+#include <neb/core/game/map/base.hpp>
 
 #include <PhysX/core/scene/util/decl.hpp>
 #include <PhysX/core/scene/local.hpp>
