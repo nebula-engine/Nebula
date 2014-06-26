@@ -7,7 +7,7 @@
 //#include <neb/gfx/Context/Base.hh>
 
 #include <neb/debug.hh>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 #include <neb/core/scene/Util/Types.hh>
 #include <neb/core/scene/Util/Parent.hh>
 

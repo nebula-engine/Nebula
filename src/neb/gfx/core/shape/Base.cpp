@@ -7,7 +7,7 @@
 #include <neb/app/Base.hh>
 #include <neb/gfx/core/shape/base.hpp>
 
-#include <neb/core/light/base.hpp>
+#include <neb/gfx/core/light/point.hpp>
 #include <neb/gfx/glsl/attrib.hh>
 #include <neb/gfx/glsl/Uniform/scalar.hpp>
 #include <neb/math/geo/polygon.hpp>
@@ -23,6 +23,8 @@ void					neb::gfx::core::shape::base::init() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
 
 	createMesh();
+}
+void					neb::gfx::core::shape::base::release() {
 }
 void					neb::gfx::core::shape::base::step(gal::std::timestep const & ts) {
 

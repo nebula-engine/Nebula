@@ -8,7 +8,7 @@
 #include <Galaxy-Log/log.hpp>
 
 //#include <neb/Physics.hh>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 #include <neb/debug.hh>
 
 #include <PhysX/simulation_callback.hh>
