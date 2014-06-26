@@ -57,7 +57,7 @@ void					neb::core::shape::base::init() {
 */
 
 	neb::core::shape::util::parent::init();
-	neb::Light::util::parent::init();
+	neb::core::light::util::parent::init();
 
 }
 void					neb::core::shape::base::release() {
@@ -65,13 +65,13 @@ void					neb::core::shape::base::release() {
 
 	//neb::util::parent<neb::core::shape::base>::release();
 	neb::core::shape::util::parent::release();
-	neb::Light::util::parent::release();
+	neb::core::light::util::parent::release();
 }
 void							neb::core::shape::base::step(gal::std::timestep const & ts) {
 
 	neb::core::shape::util::parent::step(ts);
 
-	neb::Light::util::parent::step(ts);
+	neb::core::light::util::parent::step(ts);
 
 }
 sp::weak_ptr<neb::core::light::base>			neb::core::shape::base::createLightPoint() {

@@ -1,6 +1,6 @@
 #include <maze/dfs.hpp>
 
-#include <neb/core/shape/Box.hh>
+//#include <neb/core/shape/Box.hh>
 //#include <neb/core/actor/RigidStatic/local.hpp>
 #include <neb/ext/maze/game/map/maze2.hpp>
 
@@ -8,7 +8,6 @@ neb::ext::maze::game::map::maze2::maze2(
 		sp::shared_ptr<neb::core::scene::util::parent> parent,
 		ivec2 size):
 	neb::core::scene::base(parent),
-	neb::core::scene::local(parent),
 	neb::game::map::base(parent),
 	size_(size)
 {

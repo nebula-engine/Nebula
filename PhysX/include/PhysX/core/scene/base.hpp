@@ -19,7 +19,7 @@
 #include <neb/core/scene/Base.hh>
 
 
-//#include <neb/core/actor/Base.hh>
+//#include <neb/core/actor/base.hpp>
 #include <neb/core/actor/Util/Parent.hh>
 
 #include <neb/gfx/Camera/View/Base.hh>
