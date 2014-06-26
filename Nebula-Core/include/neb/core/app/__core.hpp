@@ -1,7 +1,7 @@
 #ifndef __NEBULA_APP___CORE_H__
 #define __NEBULA_APP___CORE_H__
 
-#include <neb/app/__base.hpp>
+#include <neb/core/app/__base.hpp>
 #include <neb/core/scene/Util/Parent.hh>
 #include <neb/gfx/GUI/Layout/Util/Parent.hh>
 

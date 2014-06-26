@@ -3,7 +3,6 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/core/actor/RigidActor/Base.hh>
 
 #include <PhysX/core/actor/actor/base.hpp>
 #include <PhysX/core/actor/util/decl.hpp>
@@ -13,7 +12,6 @@ namespace phx { namespace core { namespace actor { namespace rigidactor {
 
 
 	class base:
-		virtual public neb::core::actor::rigidactor::base,
 		virtual public phx::core::actor::actor::base
 	{
 
