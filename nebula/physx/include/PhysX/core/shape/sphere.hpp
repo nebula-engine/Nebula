@@ -1,15 +1,12 @@
 #ifndef PHYSX_CORE_SHAPE_SPHERE_HH
 #define PHYSX_CORE_SHAPE_SPHERE_HH
 
-#include <neb/core/shape/Sphere.hh>
-
 #include <PhysX/core/shape/base.hpp>
 
 namespace phx { namespace core { namespace shape {
 
 
 	class sphere:
-		virtual public neb::core::shape::Sphere,
 		virtual public phx::core::shape::base
 	{
 			public:
