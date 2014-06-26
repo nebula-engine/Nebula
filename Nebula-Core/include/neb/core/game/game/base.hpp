@@ -5,6 +5,9 @@
 
 namespace neb { namespace game { namespace game {
 
+	namespace util {
+		class parent;
+	}
 
 	class base:
 		virtual public neb::game::trigger::util::parent
