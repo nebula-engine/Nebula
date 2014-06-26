@@ -27,10 +27,6 @@
 
 namespace neb {
 
-	namespace gfx { namespace core { namespace light {
-		class base;
-	}}}
-
 	namespace core { namespace light {
 
 			namespace util {
@@ -44,7 +40,6 @@ namespace neb {
 					void				init();
 
 					virtual void			release();
-					virtual void			cleanup();
 					virtual void			step(gal::std::timestep const & ts);
 
 					neb::core::pose			getPose();
@@ -73,7 +68,7 @@ namespace neb {
 					neb::core::light::util::Flag				flag_;
 
 					// position
-					glm::vec3					pos_;
+					glm::vec3						pos_;
 
 
 			};
