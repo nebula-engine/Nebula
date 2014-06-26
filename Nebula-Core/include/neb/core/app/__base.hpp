@@ -3,7 +3,7 @@
 
 #include <boost/asio/io_service.hpp>
 
-#include <neb/app/Util/Flag.hh>
+#include <neb/core/app/util/Flag.hh>
 
 namespace neb {
 	namespace app {
