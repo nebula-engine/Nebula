@@ -5,7 +5,7 @@ neb::game::map::base::base(sp::shared_ptr<neb::core::scene::util::parent> parent
 {}
 void		neb::game::map::base::init() {
 
-	neb::core::scene::local::init();
+	neb::core::scene::base::init();
 
 	auto spawn(sp::make_shared<neb::game::spawn::base>());
 

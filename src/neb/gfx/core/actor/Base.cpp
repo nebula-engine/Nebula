@@ -5,13 +5,14 @@
 //#include <neb/util/Typed.hh>
 
 #include <neb/util/decl.hpp>
-#include <neb/config.hh> // Nebula/config.hpp.in
+#include <neb/util/config.hh> // Nebula/config.hpp.in
 #include <neb/timer/Actor/Base.hpp>
 //#include <neb/app/Base.hh>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 #include <neb/gfx/window/util/signals.hpp>
 
 #include <neb/gfx/core/actor/base.hpp>
+#include <neb/gfx/core/shape/base.hpp>
 
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/util/decl.hpp>
@@ -26,6 +27,12 @@ neb::gfx::core::actor::base::~base() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
 void				neb::gfx::core::actor::base::init() {
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx core actor", debug) << __PRETTY_FUNCTION__;
+
+}
+void				neb::gfx::core::actor::base::release() {
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx core actor", debug) << __PRETTY_FUNCTION__;
+	
 }
 void				neb::gfx::core::actor::base::load_lights(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
@@ -53,12 +60,10 @@ void				neb::gfx::core::actor::base::load_lights(neb::core::light::util::count &
 	};
 	
 	auto lambda_shape = [&]  (S::map_type::iterator<0> it) {
-		auto shape = sp::dynamic_pointer_cast<neb::core::shape::base>(it->ptr_);
+		auto shape = sp::dynamic_pointer_cast<neb::gfx::core::shape::base>(it->ptr_);
 		assert(shape);
 		
-		if(shape->shape_gfx_) {
-			shape->shape_gfx_->load_lights(light_count, npose);
-		}
+		shape->load_lights(light_count, npose);
 		
 	};
 	
@@ -92,10 +97,7 @@ void				neb::gfx::core::actor::base::draw(
 
 
 }
-void		neb::gfx::core::actor::base::releaseUp() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx core actor", debug) << __PRETTY_FUNCTION__;
-	
-}
+
 void		neb::gfx::core::actor::base::step(gal::std::timestep const & ts) {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb gfx core actor", debug) << __PRETTY_FUNCTION__;
 

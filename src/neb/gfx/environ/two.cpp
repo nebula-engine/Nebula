@@ -1,5 +1,5 @@
 #include <neb/app/Base.hh>
-#include <neb/gfx/Drawable/Base.hpp>
+#include <neb/gfx/drawable/base.hpp>
 #include <neb/gfx/environ/two.hpp>
 
 void		neb::gfx::environ::two::render(sp::shared_ptr<neb::gfx::context::base> context) {

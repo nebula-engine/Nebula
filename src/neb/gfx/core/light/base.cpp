@@ -8,7 +8,7 @@
 #include <neb/util/decl.hpp>
 #include <neb/gfx/core/light/base.hpp>
 #include <neb/gfx/window/Base.hh>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 #include <neb/core/shape/base.hpp>
 #include <neb/free.hh>
 #include <neb/gfx/glsl/Uniform/vector.hpp>

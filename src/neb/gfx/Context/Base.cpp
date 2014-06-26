@@ -3,7 +3,7 @@
 
 #include <neb/debug.hh>
 #include <neb/app/Base.hh>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 #include <neb/gfx/Context/Base.hh>
 #include <neb/gfx/environ/base.hpp>
 #include <neb/gfx/GUI/Layout/Base.hh>
