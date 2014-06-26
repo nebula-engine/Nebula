@@ -156,7 +156,7 @@ return actor;
 
 
 }*/
-sp::weak_ptr<neb::core::actor::base>				neb::core::scene::base::createActorLightPoint(vec3 p) {
+/*sp::weak_ptr<neb::core::actor::base>				neb::core::scene::base::createActorLightPoint(vec3 p) {
 
 	auto self(isSceneBase());
 
@@ -180,7 +180,7 @@ sp::weak_ptr<neb::core::actor::base>				neb::core::scene::base::createActorLight
 	
 
 	return actor;	
-}
+}*/
 
 
 

@@ -74,7 +74,7 @@ namespace neb { namespace core { namespace scene {
 			sp::weak_ptr<neb::core::actor::base>				createActorRigidStaticCube(neb::core::pose const & pose, real size);
 			/** @brief create empty actor with point light
 			 */
-			sp::weak_ptr<neb::core::actor::base>				createActorLightPoint(vec3 p);
+			virtual sp::weak_ptr<neb::core::actor::base>			createActorLightPoint(vec3 p) = 0;
 			/** @brief create rigidstatic
 			 *
 			 * @note typeof returned actor will be determined by final implementation of this

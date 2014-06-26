@@ -10,7 +10,6 @@
 
 #include <neb/util/parent.hpp>
 
-#include <neb/core/scene/Util/Cast.hh>
 
 #include <neb/core/actor/__base.hpp>
 #include <neb/core/actor/Util/Types.hh>
@@ -21,31 +20,38 @@
 
 #include <neb/core/Pose.hh>
 
-namespace neb { namespace core { namespace actor { namespace util {
+namespace neb { namespace core {
 
+	namespace scene {
+		class base;
+	}
 
-	/** @brief @Parent
-	 * abstract class for parent of an @Actor
-	 */
-	class parent:
-		virtual public neb::util::parent<neb::actor::__base>,
-		virtual public neb::core::Pose,
-		virtual public neb::core::scene::util::cast,
-		virtual public neb::core::actor::util::cast
-	{
-		public:
-			parent();
-			virtual ~parent();
-
-			virtual void						init();
-			virtual void						release();
-		public:
-			sp::shared_ptr<neb::core::scene::base>			getScene();
-	};
+	namespace actor { namespace util {
 
 
 
-}}}}
+
+		/** @brief @Parent
+		 * abstract class for parent of an @Actor
+		 */
+		class parent:
+			virtual public neb::util::parent<neb::actor::__base>,
+			virtual public neb::core::Pose
+		{
+			public:
+				parent();
+				virtual ~parent();
+
+				virtual void						init();
+				virtual void						release();
+			public:
+				sp::shared_ptr<neb::core::scene::base>			getScene();
+		};
+
+
+
+	}}
+}}
 
 #endif
 
