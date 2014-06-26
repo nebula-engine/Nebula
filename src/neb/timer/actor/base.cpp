@@ -2,7 +2,7 @@
 
 #include <neb/app/Base.hh>
 #include <neb/timer/Actor/Base.hpp>
-#include <neb/core/actor/Base.hh>
+#include <neb/core/actor/base.hpp>
 #include <neb/debug.hh>
 
 

@@ -15,20 +15,20 @@
 
 #include <neb/math/Serialization/GLM.hpp>
 
-#include <neb/core/light/Util/Flag.hh>
-#include <neb/core/light/Util/Types.hh>
+#include <neb/core/light/util/Flag.hh>
+#include <neb/core/light/util/Types.hh>
 
 #include <neb/gfx/texture.hh>
-#include <neb/core/light/Base.hh>
+#include <neb/core/light/base.hpp>
 
 
 //#include <math/color.hpp>
 
 namespace neb { namespace gfx { namespace core { namespace light {
 
-class directional: virtual public neb::gfx::core::light::base {
-public:
-};
+	class directional: virtual public neb::gfx::core::light::base {
+		public:
+	};
 
 
 }}}}

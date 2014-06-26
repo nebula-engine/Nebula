@@ -2,7 +2,7 @@
 
 #include <neb/debug.hh>
 //#include <neb/Physics.hh>
-#include <neb/core/shape/Base.hh>
+#include <neb/core/shape/base.hpp>
 
 #include <PhysX/app/base.hpp>
 #include <PhysX/util/convert.hpp>

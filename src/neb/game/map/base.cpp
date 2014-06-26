@@ -1,8 +1,7 @@
 #include <neb/game/map/base.hpp>
 
 neb::game::map::base::base(sp::shared_ptr<neb::core::scene::util::parent> parent):
-	neb::core::scene::base(parent),
-	neb::core::scene::local(parent)
+	neb::core::scene::base(parent)
 {}
 void		neb::game::map::base::init() {
 

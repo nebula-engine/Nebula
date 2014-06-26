@@ -1,5 +1,5 @@
-#ifndef __GLUTPP_LIGHT_H__
-#define __GLUTPP_LIGHT_H__
+#ifndef __GLUTPP_GFX_LIGHT_H__
+#define __GLUTPP_GFX_LIGHT_H__
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -16,10 +16,7 @@
 
 #include <neb/math/Serialization/GLM.hpp>
 
-#include <neb/core/light/__base.hpp>
-#include <neb/core/light/Util/Flag.hh>
-#include <neb/core/light/Util/Types.hh>
-#include <neb/core/light/Util/light_count.hpp>
+#include <neb/core/light/base.hpp>
 
 #include <neb/gfx/texture.hh>
 #include <neb/gfx/Color/Color.hh>
@@ -31,7 +28,7 @@ namespace neb { namespace gfx { namespace core { namespace light {
 
 		class base: virtual public neb::core::light::base {
 			public:
-				base(sp::shared_ptr<neb::core::light::base> parent, ::std::string);
+				base(sp::shared_ptr<neb::core::light::util::parent> parent, ::std::string);
 				
 				void				init();
 				
@@ -68,8 +65,6 @@ namespace neb { namespace gfx { namespace core { namespace light {
 					serializeTemplate(ar, version);
 				}
 			public:
-				sp::weak_ptr<neb::core::light::base>		parent_;
-
 			
 				::std::string					light_type_string_;
 
@@ -84,7 +79,7 @@ namespace neb { namespace gfx { namespace core { namespace light {
 
 
 		};
-	}
-}
+
+}}}}
 
 #endif
