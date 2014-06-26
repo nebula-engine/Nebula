@@ -6,7 +6,7 @@
 #include <neb/gfx/material.hpp>
 //#include <neb/gfx/window/Base.hh>
 #include <neb/gfx/glsl/Uniform/scalar.hpp>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 
 /*
 gru::Color::color<float> operator<<(gru::Color::color<float> c, tinyxml2::XMLElement* element) {

@@ -1,6 +1,6 @@
 #include <neb/debug.hh>
 #include <neb/app/Base.hh>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 
 #include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/actor/util/parent.hpp>

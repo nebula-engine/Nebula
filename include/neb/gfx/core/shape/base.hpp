@@ -66,10 +66,6 @@ namespace neb {
 					void			release();
 					void			step(gal::std::timestep const & ts);
 
-					/** @name Accessors @{ */
-					neb::core::pose						getPose();
-					neb::core::pose						getPoseGlobal();
-					/** @} */
 
 					virtual sp::weak_ptr<neb::core::light::base>		createLightPoint();
 

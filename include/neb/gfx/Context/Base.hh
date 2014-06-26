@@ -11,10 +11,10 @@
 #include <neb/gfx/Context/Util/Cast.hh>
 #include <neb/gfx/GUI/Layout/Base.hh>
 #include <neb/gfx/window/Base.hh>
-#include <neb/gfx/Drawable/Base.hpp>
+#include <neb/gfx/drawable/base.hpp>
 
 
-//#include <neb/core/scene/Base.hh>
+//#include <neb/core/scene/base.hpp>
 
 namespace neb {
 	namespace gfx {

@@ -29,7 +29,7 @@ namespace neb { namespace gfx { namespace environ {
 			 * @note OWNED
 			 */
 			sp::shared_ptr<neb::gfx::Camera::Projection::base>		proj_;
-			/** @brief %Drawable
+			/** @brief %drawable
 			 * 
 			 * @note WEAK
 			 * 

@@ -23,7 +23,7 @@
 #include <neb/core/actor/Util/Parent.hh>
 
 //#include <neb/gfx/Camera/View/Base.hh>
-//#include <neb/gfx/Drawable/Base.hpp>
+//#include <neb/gfx/drawable/base.hpp>
 
 
 #define LIGHT_MAX 20

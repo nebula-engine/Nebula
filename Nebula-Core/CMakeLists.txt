@@ -2,7 +2,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
 INCLUDE($ENV{HOME}/.config.cmake)
 
-PROJECT(neb_core)
+PROJECT(nebula_core_shared)
 
 FIND_PACKAGE(glfw)
 
@@ -47,9 +47,9 @@ FIND_PACKAGE(Boost 1.55 COMPONENTS
 SET(libs ${libs}
 	${PROJECT_NAME}
 	maze
-	gal_std_shared
+	galaxy_std_shared
 	Galaxy-Network
-	Galaxy-Log
+	galaxy_log_shared
 	${Boost_LIBRARIES}
 	glfw3
 	GL

@@ -10,27 +10,23 @@
 #include <GLFW/glfw3.h>
 //#include <glfw3.h>
 
-#include <gal/std/terminal/command.hpp>
-#include <gal/std/terminal/command_set.hpp>
+#include <gal/console/command.hpp>
+#include <gal/console/command_set.hpp>
 
 #include <Galaxy-Network/message.hpp>
 
 #include <Galaxy-Log/log.hpp>
 
-#include <neb/config.hh>
+#include <neb/util/config.hh>
 //#include <neb/actor/event.hh>
 #include <neb/gfx/Context/Base.hh>
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/GUI/Object/terminal.hh>
 
-#include <neb/core/actor/RigidBody/Base.hh>
+//#include <neb/core/actor/RigidBody/Base.hh>
 #include <neb/app/Base.hh>
-#include <neb/net/server.hh>
-#include <neb/net/client.hh>
 
-#include <neb/message/Scene/Create.hpp>
-#include <neb/message/Actor/Event/Base.hh>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 
 
 /** @todo since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers.
@@ -51,7 +47,7 @@ void				neb::app::base::init() {
 	neb::app::__core::init();
 	neb::app::__gfx::init();
 	neb::app::__gfx_glsl::init();
-	neb::app::__net::init();
+	//neb::app::__net::init();
 
 
 	
@@ -137,8 +133,8 @@ void					neb::app::base::loop1() {
 	
 	//t.join();
 	
-	if(server_) server_->close();
-	if(client_) client_->close();
+//	if(server_) server_->close();
+//	if(client_) client_->close();
 
 }
 void					neb::app::base::loop2() {
@@ -153,7 +149,7 @@ void					neb::app::base::loop2() {
 
 		step2(ts);
 
-		::std::this_thread::yield();
+		//::std::this_thread::yield();
 	}
 
 
@@ -169,7 +165,7 @@ void					neb::app::base::step2(gal::std::timestep const & ts) {
 
 	glfwPollEvents();
 }
-void		neb::app::base::transmit_scenes(sp::shared_ptr<neb::Network::Communicating> c) {
+/*void		neb::app::base::transmit_scenes(sp::shared_ptr<neb::Network::Communicating> c) {
 	//NEBULA_DEBUG_0_FUNCTION;
 
 	assert(c);
@@ -186,12 +182,12 @@ void		neb::app::base::transmit_scenes(sp::shared_ptr<neb::Network::Communicating
 
 			scene_create.load(scene);
 
-			/** @todo why?!?!?!? */
+			** @todo why?!?!?!? *
 			//msg->ar_ << scene_create;
 
 			c->write(msg);
 			});
-}
+}*/
 sp::shared_ptr<neb::gfx::window::base>		neb::app::base::get_window(GLFWwindow* window) {
 	auto it = windows_glfw_.find(window);
 

@@ -7,11 +7,9 @@
 //#include <neb/gfx/Context/Base.hh>
 
 #include <neb/debug.hh>
-#include <neb/core/scene/Base.hh>
-#include <neb/core/scene/Util/Types.hh>
-#include <neb/core/scene/Util/Parent.hh>
+#include <neb/gfx/core/scene/base.hpp>
 
-#include <neb/core/actor/base.hpp>
+#include <neb/gfx/core/actor/base.hpp>
 
 #include <neb/core/light/base.hpp>
 //#include <neb/core/light/spot.hpp>
@@ -21,17 +19,17 @@
 
 #include <neb/core/actor/Util/Type.hh>
 
-#include <neb/config.hh> // nebula/config.hpp.in
+#include <neb/util/config.hh> // nebula/config.hpp.in
 #include <neb/app/Base.hh>
 //#include <neb/actor/free.hh>
-#include <neb/core/shape/base.hpp>
+#include <neb/gfx/core/shape/base.hpp>
 #include <neb/timer/Types.hh>
 #include <neb/timer/Actor/Release.hpp>
 #include <neb/gfx/glsl/Uniform/scalar.hpp>
 #include <neb/core/light/util/light_count.hpp>
 
 neb::gfx::core::scene::base::base(sp::shared_ptr<neb::core::scene::util::parent> parent):
-	parent_(parent)
+	neb::core::scene::base(parent)
 {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __PRETTY_FUNCTION__;
 }
@@ -58,7 +56,7 @@ void			neb::gfx::core::scene::base::draw(sp::shared_ptr<neb::gfx::context::base>
 	typedef neb::core::actor::util::parent A;
 
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-			auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
+			auto actor = sp::dynamic_pointer_cast<neb::gfx::core::actor::base>(it->ptr_);
 			assert(actor);
 			actor->load_lights(light_count, neb::core::pose());
 			});
@@ -71,7 +69,7 @@ void			neb::gfx::core::scene::base::draw(sp::shared_ptr<neb::gfx::context::base>
 
 
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-			auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
+			auto actor = sp::dynamic_pointer_cast<neb::gfx::core::actor::base>(it->ptr_);
 			assert(actor);
 			actor->draw(context, p, neb::core::pose());
 			});
