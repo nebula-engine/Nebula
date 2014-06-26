@@ -3,7 +3,6 @@
 
 #include <neb/util/shared.hpp>
 #include <neb/util/typedef.hpp>
-#include <neb/game/trigger/util/decl.hpp>
 
 
 namespace neb { namespace game { namespace trigger {

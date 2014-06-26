@@ -3,7 +3,6 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/core/actor/RigidDynamic/Local.hh>
 
 #include <PhysX/core/actor/rigidbody/local.hpp>
 #include <PhysX/core/actor/rigiddynamic/base.hpp>
@@ -14,7 +13,6 @@ namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 
 
 	class local:
-		virtual public neb::core::actor::rigiddynamic::local,
 		virtual public phx::core::actor::rigidbody::local,
 		virtual public phx::core::actor::rigiddynamic::base
 	{
