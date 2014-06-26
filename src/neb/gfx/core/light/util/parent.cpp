@@ -1,4 +1,8 @@
+#include <gal/log/log.hpp>
 
+#include <neb/debug.hh>
+#include <neb/gfx/core/light/base.hpp>
+#include <neb/gfx/core/light/util/parent.hpp>
 
 void			neb::gfx::core::light::util::parent::load_lights(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
@@ -11,9 +15,8 @@ void			neb::gfx::core::light::util::parent::load_lights(neb::core::light::util::
 
 		//if(i == neb::core::light::light_max) return L::map_type::BREAK;
 		
-		if(light->light_gfx_) {
-			light->light_gfx_->load(light_count, pose);
-		}
+		light->load(light_count, pose);
+		
 		return map_type::CONTINUE;
 	};
 
