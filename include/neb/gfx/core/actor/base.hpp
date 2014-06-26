@@ -28,7 +28,12 @@
 #include <neb/core/shape/base.hpp>
 #include <neb/core/shape/Util/Parent.hh>
 
-namespace neb { namespace gfx {
+namespace neb {
+	namespace glsl {
+		class program;
+	}
+	
+	namespace gfx {
 	
 	namespace context {
 		class base;
