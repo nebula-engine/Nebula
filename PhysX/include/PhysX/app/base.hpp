@@ -8,7 +8,7 @@
 #include <neb/config.hh>
 
 #include <neb/app/Base.hh>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 
 #include <PhysX/free.hpp>
 #include <PhysX/core/scene/util/parent.hpp>

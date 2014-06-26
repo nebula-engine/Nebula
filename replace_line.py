@@ -43,9 +43,7 @@ def replace(filename):
 	
 	
 	
-        text = re.sub("neb::Light","neb::core::light",text)
-       	text = re.sub("<neb/core/actor/Base.hh>","<neb/core/actor/base.hpp>",text)
-       	text = re.sub("<neb/gfx/core/actor/Base.hh>","<neb/gfx/core/actor/base.hpp>",text)
+        text = re.sub("drawable/Base.hpp","drawable/base.hpp",text)
 	
 	#text = re.sub("NEBULA_ACTOR_BASE_FUNC","if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, \"neb core actor\", debug) << __PRETTY_FUNCTION__", text)
 	

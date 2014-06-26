@@ -25,7 +25,7 @@
 #include <neb/app/Base.hh>
 //#include <neb/Game/user.hh>
 //#include <neb/Physics.hh>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 //#include <neb/simulation_callback.hh>
 #include <neb/core/shape/base.hpp>
 //#include <neb/core/actor/Control/RigidBody/Base.hh>

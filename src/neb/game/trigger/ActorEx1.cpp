@@ -1,7 +1,7 @@
 
 #include <neb/app/Base.hh>
 #include <neb/core/actor/base.hpp>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 #include <neb/game/game/base.hpp>
 #include <neb/game/game/util/parent.hpp>
 #include <neb/game/trigger/util/parent.hpp>

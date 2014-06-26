@@ -8,7 +8,7 @@
 #include <neb/config.hh> // Nebula/config.hpp.in
 #include <neb/timer/Actor/Base.hpp>
 #include <neb/app/Base.hh>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 #include <neb/gfx/window/util/signals.hpp>
 
 #include <neb/core/actor/base.hpp>

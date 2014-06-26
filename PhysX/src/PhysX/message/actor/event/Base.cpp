@@ -4,7 +4,7 @@
 #include <neb/core/actor/base.hpp>
 
 #include <neb/message/Actor/Event/Base.hh>
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 
 
 #include <PhysX/core/actor/actor/base.hpp>
