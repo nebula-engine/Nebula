@@ -5,9 +5,9 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/config.hh>
+#include <neb/util/config.hh>
 
-#include <neb/app/Base.hh>
+#include <neb/core/app/__core.hpp>
 #include <neb/core/scene/base.hpp>
 
 #include <PhysX/free.hpp>
@@ -38,7 +38,7 @@ namespace phx { namespace app {
 
 
 	class base:
-		virtual public neb::app::base,
+		virtual public neb::app::__core,
 		virtual public phx::core::scene::util::parent,
 		virtual public phx::game::game::util::parent
 	{
