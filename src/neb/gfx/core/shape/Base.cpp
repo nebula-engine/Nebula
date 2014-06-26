@@ -4,12 +4,12 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <neb/debug.hh>
-//#include <neb/app/Base.hh>
-#include <neb/core/shape/Base.hh>
+#include <neb/app/Base.hh>
+#include <neb/gfx/core/shape/base.hpp>
 
-#include <neb/core/light/Base.hh>
-//#include <neb/gfx/glsl/attrib.hh>
-//#include <neb/gfx/glsl/Uniform/scalar.hpp>
+#include <neb/core/light/base.hpp>
+#include <neb/gfx/glsl/attrib.hh>
+#include <neb/gfx/glsl/Uniform/scalar.hpp>
 #include <neb/math/geo/polygon.hpp>
 
 neb::gfx::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
@@ -19,7 +19,7 @@ neb::gfx::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent>
 	assert(parent);
 }
 neb::gfx::core::shape::base::~base() {}
-void					neb::core::shape::base::init() {
+void					neb::gfx::core::shape::base::init() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
 
 	createMesh();
@@ -33,20 +33,7 @@ void					neb::gfx::core::shape::base::load_lights(neb::core::light::util::count 
 
 	auto npose = pose * pose_;
 
-	typedef neb::Light::util::parent L;
-
-	auto lambda_light = [&] (L::map_type::iterator<0> it) {
-		auto light = sp::dynamic_pointer_cast<neb::Light::base>(it->ptr_);
-		assert(light);
-		//if(i == neb::Light::light_max) return L::map_type::BREAK;
-		
-		if(light->light_gfx_) {
-			light->light_gfx_->load(light_count, npose);
-		}
-		return L::map_type::CONTINUE;
-	};
-
-	L::map_.for_each<0>(lambda_light);
+	neb::gfx::core::light::util::parent::load_lights(light_count, npose);
 
 }
 void					neb::gfx::core::shape::base::draw(
@@ -79,7 +66,7 @@ void					neb::gfx::core::shape::base::init_buffer(sp::shared_ptr<neb::gfx::conte
 
 	//checkerror("unknown");
 
-	sp::shared_ptr<neb::core::shape::buffer> bufs(new neb::core::shape::buffer);
+	auto bufs(sp::make_shared<neb::gfx::core::shape::buffer>());
 	context_[context.get()] = bufs;
 
 	// image
@@ -248,7 +235,7 @@ sp::weak_ptr<neb::core::light::base>		neb::gfx::core::shape::base::createLightPo
 	
 	auto light = sp::make_shared<neb::gfx::core::light::point>(self);
 	
-	neb::Light::util::parent::insert(light);
+	neb::core::light::util::parent::insert(light);
 	
 	light->init();
 

@@ -6,7 +6,7 @@
 #include <neb/debug.hh>
 #include <neb/util/typedef.hpp>
 //#include <neb/simulation_callback.hh>
-#include <neb/core/shape/Base.hh>
+#include <neb/core/shape/base.hpp>
 
 #include <PhysX/core/actor/util/parent.hpp>
 #include <PhysX/core/actor/actor/base.hpp>
