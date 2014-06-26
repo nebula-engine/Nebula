@@ -35,8 +35,14 @@ FIND_PACKAGE(CMakeHelper)
 
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_STATIC_RUNTIME OFF)
+add_definitions( -DBOOST_ALL_DYN_LINK )
 
-FIND_PACKAGE(Boost 1.55 COMPONENTS program_options serialization log system thread)
+FIND_PACKAGE(Boost 1.55 COMPONENTS
+	serialization
+	log
+	system
+	thread
+	REQUIRED)
 
 SET(libs ${libs}
 	${PROJECT_NAME}

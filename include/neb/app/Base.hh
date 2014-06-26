@@ -9,7 +9,7 @@
 #include FT_FREETYPE_H
 
 #include <Galaxy-Standard/shared.hpp>
-#include <Galaxy-Standard/terminal/command_set.hpp>
+//#include <Galaxy-Standard/terminal/command_set.hpp>
 
 #include <Galaxy-Network/decl.hpp>
 
@@ -29,6 +29,10 @@
 #include <neb/core/shape/Util/Types.hh>
 #include <neb/util/wrapper.hpp>
 #include <neb/game/game/util/parent.hpp>
+
+namespace gal { namespace std {
+	class command_set;
+}}
 
 namespace neb { namespace app {
 
@@ -50,7 +54,7 @@ namespace neb { namespace app {
 				base();
 				virtual ~base();
 			public:
-				void						command(sp::shared_ptr<neb::gfx::gui::object::terminal> term, ::std::string);
+				//void						command(sp::shared_ptr<neb::gfx::gui::object::terminal> term, ::std::string);
 			public:
 				neb::core::pose						getPose();
 				neb::core::pose						getPoseGlobal();

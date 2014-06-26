@@ -33,6 +33,14 @@ neb::core::actor::base::~base() {
 }
 void		neb::core::actor::base::init() {
 }
+void		neb::core::actor::base::release() {
+	
+	gal::std::__release::release();
+	
+	neb::core::actor::util::parent::clear();
+	neb::core::shape::util::parent::clear();
+
+}
 sp::shared_ptr<neb::core::actor::util::parent>	neb::core::actor::base::get_parent() {
 	auto parent(parent_.lock());
 	assert(parent);
@@ -60,15 +68,6 @@ void		neb::core::actor::base::setPose(neb::core::pose const & pose) {
 	pose_ = pose;
 	
 	flag_.set(neb::core::actor::util::flag::E::SHOULD_UPDATE);
-}
-void		neb::core::actor::base::releaseUp() {
-	
-	gal::std::__release::release();
-	
-	neb::core::actor::util::parent::clear();
-	neb::core::shape::util::parent::clear();
-
-	//conn_.key_fun_.disconnect();
 }
 void		neb::core::actor::base::step(gal::std::timestep const & ts) {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
