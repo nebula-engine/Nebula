@@ -34,36 +34,12 @@
 
 phx::core::actor::rigidbody::base::base(sp::shared_ptr<phx::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
-	neb::core::actor::actor::base(parent),
-	neb::core::actor::rigidactor::base(parent),
-	neb::core::actor::rigidbody::base(parent),
 	phx::core::actor::base(parent),
 	phx::core::actor::actor::base(parent),
 	phx::core::actor::rigidactor::base(parent),
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {}
-void			phx::core::actor::rigidbody::base::init() {
-
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
-	
-	neb::core::actor::rigidbody::base::init();
-	phx::core::actor::rigidactor::base::init();
-}
-/*void			phx::core::actor::rigidbody::base::release() {
-
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
-
-	neb::core::actor::rigidbody::base::release();
-	phx::core::actor::rigidactor::base::release();
-}*/
-void			phx::core::actor::rigidbody::base::setPose(neb::core::pose const & pose) {
-
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
-
-	neb::core::actor::rigidbody::base::setPose(pose);
-	phx::core::actor::rigidactor::base::setPose(pose);
-}
 void			phx::core::actor::rigidbody::base::add_force(real time) {
 
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;

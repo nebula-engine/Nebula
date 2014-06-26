@@ -8,7 +8,7 @@
 
 #include <Galaxy-Standard/shared.hpp>
 
-#include <neb/game/spawn/base.hpp>
+#include <neb/core/game/spawn/base.hpp>
 
 namespace neb { namespace game { namespace spawn { namespace util {
 

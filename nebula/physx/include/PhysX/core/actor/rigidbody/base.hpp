@@ -19,7 +19,7 @@ namespace phx { namespace core { namespace actor { namespace rigidbody {
 		public:
 			base(sp::shared_ptr<phx::core::actor::util::parent>);
 
-			virtual void					init();
+			virtual void					init() = 0;
 			virtual void					release() = 0;
 			virtual void					step(gal::std::timestep const & ts);
 
@@ -28,7 +28,7 @@ namespace phx { namespace core { namespace actor { namespace rigidbody {
 			virtual void					init_physics() = 0;
 
 			virtual void					add_force(real) = 0;
-			virtual void					setPose(neb::core::pose const & pose);
+			virtual void					setPose(neb::core::pose const & pose) = 0;
 
 
 
