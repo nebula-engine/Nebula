@@ -14,7 +14,7 @@
 #include <math/transform.hpp>
 #include <math/geo/polyhedron.hpp>
 */
-#include <neb/config.hh> // Nebula/config.hpp.in
+#include <neb/util/config.hh> // Nebula/config.hpp.in
 
 #include <neb/core/shape/Util/Parent.hh>
 

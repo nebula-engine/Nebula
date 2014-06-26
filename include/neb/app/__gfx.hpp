@@ -27,6 +27,7 @@ namespace neb {
 		class __gfx:
 			virtual public neb::app::__base,
 			virtual public neb::gfx::window::util::parent
+			virtual public neb::gfx::gui::layout::util::parent,
 		{
 			public:
 				typedef ::std::map< GLFWwindow*, sp::shared_ptr<neb::gfx::window::base> >			glfwwindow_map_type;
