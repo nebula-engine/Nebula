@@ -3,7 +3,7 @@
 
 #include <deque>
 
-#include <gal/std/terminal/terminal.hpp>
+#include <gal/console/base.hpp>
 
 #include <neb/gfx/GUI/Object/Base.hh>
 
