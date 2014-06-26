@@ -11,30 +11,9 @@
 //}
 phx::core::actor::rigidactor::base::base(sp::shared_ptr<phx::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
-	neb::core::actor::actor::base(parent),
-	neb::core::actor::rigidactor::base(parent),
 	phx::core::actor::base(parent),
 	phx::core::actor::actor::base(parent)
 {
-}
-void		phx::core::actor::rigidactor::base::init() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
-
-	neb::core::actor::rigidactor::base::init();
-	phx::core::actor::actor::base::init();
-}
-/*void		phx::core::actor::rigidactor::base::release() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
-
-	neb::core::actor::rigidactor::base::release();
-	phx::core::actor::actor::base::release();
-
-}*/
-void		phx::core::actor::rigidactor::base::step(gal::std::timestep const & ts) {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
-	
-	neb::core::actor::rigidactor::base::step(ts);
-	phx::core::actor::actor::base::step(ts);
 }
 void		phx::core::actor::rigidactor::base::setupFiltering() {
 	assert(px_actor_);
@@ -81,7 +60,7 @@ void								phx::core::actor::rigidactor::base::setGlobalPosition(vec3 p) {
 				phx::util::convert(pose_.rot_)
 				));
 }
-sp::weak_ptr<neb::core::shape::box>				phx::core::actor::rigidactor::base::createShapeBoxUninitialized() {
+sp::weak_ptr<neb::core::shape::base>				phx::core::actor::rigidactor::base::createShapeBoxUninitialized() {
 
 	auto self(isPxActorRigidActorBase());
 

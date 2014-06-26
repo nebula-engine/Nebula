@@ -15,6 +15,10 @@ namespace neb {
 				boost::asio::io_service				ios_;
 
 				neb::app::util::flag				flag_;
+
+
+			public:
+				static ::std::shared_ptr<neb::app::__base>	g_app_;
 		};
 	}
 }

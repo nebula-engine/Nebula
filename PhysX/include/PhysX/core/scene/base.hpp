@@ -22,7 +22,7 @@
 //#include <neb/core/actor/base.hpp>
 #include <neb/core/actor/Util/Parent.hh>
 
-#include <neb/gfx/Camera/View/Base.hh>
+//#include <neb/gfx/Camera/View/Base.hh>
 
 #include <PhysX/core/actor/util/decl.hpp>
 #include <PhysX/core/actor/util/parent.hpp>
@@ -68,14 +68,12 @@ namespace phx { namespace core { namespace scene {
 			 *
 			 * @warning return actor is not initialized
 			 */
-			sp::weak_ptr<neb::core::actor::rigidstatic::base>	createActorRigidStaticUninitialized() = 0;
+			sp::weak_ptr<neb::core::actor::base>		createActorRigidStaticUninitialized() = 0;
 			/** @} */
 		public:
-			physx::PxScene*				px_scene_;
-
-			physx::PxSimulationFilterShader		px_filter_shader_;
-
-			phx::simulation_callback*		simulation_callback_;
+			physx::PxScene*					px_scene_;
+			physx::PxSimulationFilterShader			px_filter_shader_;
+			phx::simulation_callback*			simulation_callback_;
 
 			vec3					gravity_;
 
