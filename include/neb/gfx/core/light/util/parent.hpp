@@ -1,7 +1,8 @@
 #ifndef NEBULA_CORE_LIGHT_GFX_UTIL_PARENT_HH
 #define NEBULA_CORE_LIGHT_GFX_UTIL_PARENT_HH
 
-#include <neb/core/shape/Util/Parent.hh>
+#include <neb/core/light/util/light_count.hpp>
+#include <neb/core/light/util/parent.hpp>
 
 namespace neb { namespace gfx { namespace core {
 	namespace light {
