@@ -108,7 +108,7 @@ void			neb::gfx::Camera::View::Free::connect(sp::shared_ptr<neb::gfx::window::ba
 	
 	/*conns_.key_fun_ =*/ window->sig_.key_fun_.connect(
 			20,
-			neb::Signals::KeyFun::slot_type(
+			neb::gfx::window::signals::KeyFun::slot_type(
 				&neb::gfx::Camera::View::Free::key_fun,
 				this,
 				_1,

@@ -6,7 +6,7 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <neb/debug.hh>
-#include <neb/core/actor/Base.hh>
+#include <neb/core/actor/base.hpp>
 #include <neb/gfx/Camera/View/ridealong.hh>
 
 neb::gfx::Camera::View::Ridealong::Ridealong(sp::shared_ptr<neb::gfx::environ::base> parent):

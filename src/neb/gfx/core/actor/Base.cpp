@@ -11,11 +11,7 @@
 #include <neb/core/scene/Base.hh>
 #include <neb/gfx/window/util/signals.hpp>
 
-#include <neb/core/actor/Base.hh>
-#include <neb/core/actor/RigidActor/Base.hh>
-#include <neb/core/actor/RigidBody/Base.hh>
-#include <neb/core/actor/Empty/Empty.hpp>
-#include <neb/core/actor/Util/Types.hh>
+#include <neb/gfx/core/actor/base.hpp>
 
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/util/decl.hpp>
@@ -29,9 +25,9 @@ neb::gfx::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent>
 neb::gfx::core::actor::base::~base() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 }
-void				neb::core::actor::base::init() {
+void				neb::gfx::core::actor::base::init() {
 }
-void				neb::core::actor::base::load_lights(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
+void				neb::gfx::core::actor::base::load_lights(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
 	auto parent(parent_.lock());
@@ -83,13 +79,13 @@ void				neb::gfx::core::actor::base::draw(
 	typedef neb::core::shape::util::parent S;
 
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-			auto actor = sp::dynamic_pointer_cast<neb::core::actor::base>(it->ptr_);
+			auto actor = sp::dynamic_pointer_cast<neb::gfx::core::actor::base>(it->ptr_);
 			assert(actor);
 			actor->draw(context, p, npose);
 			});
 
 	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
-			auto shape = sp::dynamic_pointer_cast<neb::core::shape::base>(it->ptr_);
+			auto shape = sp::dynamic_pointer_cast<neb::gfx::core::shape::base>(it->ptr_);
 			assert(shape);
 			shape->draw(context, p, npose);
 			});

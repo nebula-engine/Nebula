@@ -1,9 +1,10 @@
 
 #include <neb/math/geo/polyhedron.hh>
-#include <neb/gfx/core/shape/Box.hh>
+#include <neb/gfx/core/shape/box.hpp>
 
 neb::gfx::core::shape::box::box(sp::shared_ptr<neb::core::shape::util::parent> parent):
-	neb::core::shape::base(parent)
+	neb::core::shape::base(parent),
+	neb::gfx::core::shape::base(parent)
 {
 }
 void neb::gfx::core::shape::box::box::createMesh() {

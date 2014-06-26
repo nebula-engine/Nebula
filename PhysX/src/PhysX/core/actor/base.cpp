@@ -11,7 +11,7 @@
 #include <neb/core/scene/Base.hh>
 #include <neb/gfx/window/util/signals.hpp>
 
-#include <neb/core/actor/Base.hh>
+#include <neb/core/actor/base.hpp>
 #include <neb/core/actor/RigidActor/Base.hh>
 #include <neb/core/actor/RigidBody/Base.hh>
 #include <neb/core/actor/Empty/Empty.hpp>

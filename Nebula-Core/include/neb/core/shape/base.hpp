@@ -18,7 +18,7 @@
 #include <neb/core/shape/Util/Flag.hh>
 
 //#include <neb/gfx/glsl/program.hh>
-//#include <neb/core/light/Base.hh>
+//#include <neb/core/light/base.hpp>
 #include <neb/core/light/util/Parent.hh>
 #include <neb/core/light/util/light_count.hpp>
 //#include <neb/gfx/material.hpp>
@@ -43,7 +43,7 @@ namespace neb {
 			class base:
 				virtual public neb::std::shared,
 				virtual public neb::core::shape::util::parent,
-				virtual public neb::Light::util::parent
+				virtual public neb::core::light::util::parent
 			{
 				public:
 
@@ -73,7 +73,6 @@ namespace neb {
 						ar & boost::serialization::make_nvp("normal",normal_);
 					}
 
-					sp::shared_ptr<neb::gfx::core::shape::base>		shape_gfx_;
 				public:
 					sp::weak_ptr<neb::core::shape::util::parent>		parent_;
 

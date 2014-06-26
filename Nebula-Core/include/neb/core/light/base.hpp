@@ -19,7 +19,6 @@
 #include <neb/core/pose.hpp>
 #include <neb/core/light/__base.hpp>
 #include <neb/core/light/util/Flag.hh>
-#include <neb/core/light/util/Types.hh>
 #include <neb/core/light/util/light_count.hpp>
 
 #include <neb/typedef.hpp>
@@ -34,10 +33,13 @@ namespace neb {
 
 	namespace core { namespace light {
 
+			namespace util {
+				class parent;
+			}
 
 			class base: virtual public neb::core::light::__base {
 				public:
-					base(sp::shared_ptr<neb::Light::util::parent> parent, ::std::string);
+					base(sp::shared_ptr<neb::core::light::util::parent> parent);
 
 					void				init();
 
@@ -66,9 +68,9 @@ namespace neb {
 				public:
 
 
-					sp::weak_ptr<neb::Light::util::parent>		parent_;
+					sp::weak_ptr<neb::core::light::util::parent>		parent_;
 
-					neb::Light::util::Flag				flag_;
+					neb::core::light::util::Flag				flag_;
 
 					// position
 					glm::vec3					pos_;

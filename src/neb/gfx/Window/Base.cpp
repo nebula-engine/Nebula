@@ -17,10 +17,10 @@
 #include <neb/debug.hh>
 
 #include <neb/free.hh>
-#include <neb/core/actor/Base.hh>
+#include <neb/core/actor/base.hpp>
 #include <neb/app/Base.hh>
 #include <neb/gfx/Context/Base.hh>
-#include <neb/core/light/Base.hh>
+#include <neb/core/light/base.hpp>
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/window/util/Parent.hh>
 

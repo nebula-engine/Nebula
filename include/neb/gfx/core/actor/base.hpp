@@ -1,5 +1,5 @@
-#ifndef NEBULA_ACTOR_BASE_HH
-#define NEBULA_ACTOR_BASE_HH
+#ifndef NEBULA_CORE_ACTOR_GFX_BASE_HH
+#define NEBULA_CORE_ACTOR_GFX_BASE_HH
 
 #include <memory>
 
@@ -22,19 +22,19 @@
 //#include <neb/gfx/texture.hh>
 //#include <neb/gfx/material.hh>
 
-#include <neb/core/shape/Base.hh>
-#include <neb/core/shape/Util/Parent.hh>
-#include <neb/core/actor/__base.hpp>
-#include <neb/core/actor/Util/Types.hh>
-#include <neb/core/actor/Util/Flag.hh>
-#include <neb/core/actor/Util/Parent.hh>
-#include <neb/core/pose.hpp>
+#include <neb/core/actor/base.hpp>
 
 
-#include <neb/core/shape/Base.hh>
+#include <neb/core/shape/base.hpp>
 #include <neb/core/shape/Util/Parent.hh>
 
-namespace neb { namespace gfx { namespace core { namespace actor {
+namespace neb { namespace gfx {
+	
+	namespace context {
+		class base;
+	}
+
+	namespace core { namespace actor {
 
 
 	/** @brief %base
@@ -69,7 +69,7 @@ namespace neb { namespace gfx { namespace core { namespace actor {
 			sp::weak_ptr<neb::core::actor::base>		parent_;
 	};
 
-}}}
+}}}}
 
 #endif
 

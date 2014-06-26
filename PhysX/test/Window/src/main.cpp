@@ -5,7 +5,7 @@
 #include <gal/std/terminal/command_set.hpp>
 
 #include <neb/app/Base.hh>
-#include <neb/core/actor/Base.hh>
+#include <neb/core/actor/base.hpp>
 #include <neb/util/wrapper.hpp>
 #include <neb/gfx/Context/Window.hpp>
 #include <neb/gfx/environ/two.hpp>
