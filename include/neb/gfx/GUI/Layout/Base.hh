@@ -7,7 +7,7 @@
 #include <neb/gfx/GUI/Object/Base.hh>
 //#include <neb/gfx/GUI/Layout/Util/Parent.hh>
 #include <neb/gfx/GUI/Object/Util/Parent.hh>
-#include <neb/gfx/Drawable/Base.hpp>
+#include <neb/gfx/drawable/base.hpp>
 
 #include <neb/gfx/window/Base.hh>
 #include <neb/util/typedef.hpp>

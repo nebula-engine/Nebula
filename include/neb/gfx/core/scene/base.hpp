@@ -1,6 +1,9 @@
 #ifndef __GLUTPP_GFX_CORE_SCENE_H__
 #define __GLUTPP_GFX_CORE_SCENE_H__
 
+#include <neb/core/scene/base.hpp>
+
+#include <neb/gfx/drawable/base.hpp>
 
 namespace neb { namespace gfx { namespace core { namespace scene {
 
@@ -18,25 +21,13 @@ namespace neb { namespace gfx { namespace core { namespace scene {
 			virtual ~base();
 			virtual void				init();
 			virtual void				release();
-			/** @name Main Loop @{ */
-			/** @brief render */
+			virtual void				step(gal::std::timestep const & ts);
 
-			void				draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p);
-			virtual void			step(gal::std::timestep const & ts);
-			/** @} */
+			void					resize(int w, int h);
+			void					draw(sp::shared_ptr<neb::gfx::context::base> context, sp::shared_ptr<neb::glsl::program> p);
 
 	};
 
-	class local:
-		virtual public neb::core::scene::remote,
-		virtual public neb::gfx::core::scene::base
-	{
-	};
-	class remote:
-		virtual public neb::core::scene::remote,
-		virtual public neb::gfx::core::scene::base
-	{
-	};
 
 
 

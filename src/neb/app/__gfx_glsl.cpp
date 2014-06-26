@@ -1,4 +1,4 @@
-#include <neb/config.hh>
+#include <neb/util/config.hh>
 #include <neb/app/__gfx_glsl.hpp>
 #include <neb/gfx/glsl/program.hh>
 

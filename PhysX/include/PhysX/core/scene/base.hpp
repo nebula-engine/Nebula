@@ -16,7 +16,7 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-#include <neb/core/scene/Base.hh>
+#include <neb/core/scene/base.hpp>
 
 
 //#include <neb/core/actor/base.hpp>
