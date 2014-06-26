@@ -19,7 +19,7 @@
 
 //#include <neb/gfx/glsl/program.hh>
 //#include <neb/core/light/base.hpp>
-#include <neb/core/light/util/Parent.hh>
+#include <neb/core/light/util/parent.hpp>
 #include <neb/core/light/util/light_count.hpp>
 //#include <neb/gfx/material.hpp>
 //#include <neb/gfx/mesh.hh>
