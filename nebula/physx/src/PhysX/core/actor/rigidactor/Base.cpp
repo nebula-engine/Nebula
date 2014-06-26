@@ -60,16 +60,7 @@ void								phx::core::actor::rigidactor::base::setGlobalPosition(vec3 p) {
 				phx::util::convert(pose_.rot_)
 				));
 }
-sp::weak_ptr<neb::core::shape::base>				phx::core::actor::rigidactor::base::createShapeBoxUninitialized() {
 
-	auto self(isPxActorRigidActorBase());
-
-	auto shape = sp::make_shared<phx::core::shape::box>(self);
-	
-	neb::core::shape::util::parent::insert(shape);
-	
-	return shape;
-}
 
 
 

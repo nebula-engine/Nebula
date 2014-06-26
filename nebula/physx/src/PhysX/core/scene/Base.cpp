@@ -3,6 +3,7 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <PhysX/app/base.hpp>
+#include <PhysX/core/actor/base.hpp>
 #include <PhysX/core/scene/base.hpp>
 #include <PhysX/util/convert.hpp>
 
@@ -100,10 +101,7 @@ void		phx::core::scene::base::step(gal::std::timestep const & ts) {
 
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core scene", debug) << __PRETTY_FUNCTION__ << " dt = " << ts.dt;
 
-	neb::core::scene::local::step(ts);
-	phx::core::scene::base::step(ts);
-
-	auto app = neb::app::base::global();
+	auto app = phx::app::base::global();
 
 	// timer
 	//timer_set_.step(time);
