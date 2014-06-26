@@ -1,17 +1,17 @@
 [submodule "doc"]
 	path = doc
 	url = https://chuck1@github.com/chuck1/Nebula-doc.git
-[submodule "Galaxy-Network"]
-	path = Galaxy-Network
+[submodule "galaxy/network"]
+	path = galaxy/network
 	url = https://chuck1@github.com/chuck1/Galaxy-Network.git
 [submodule "glfw"]
 	path = glfw
 	url = https://github.com/glfw/glfw.git
-[submodule "Galaxy-Standard"]
-	path = Galaxy-Standard
+[submodule "galaxy/std"]
+	path = galaxy/std
 	url = https://chuck1@github.com/chuck1/Galaxy-Standard
-[submodule "Galaxy-Log"]
-	path = Galaxy-Log
+[submodule "galaxy/log"]
+	path = galaxy/log
 	url = https://github.com/chuck1/Galaxy-Log
 [submodule "maze"]
 	path = maze
@@ -22,8 +22,8 @@
 [submodule "Control-System"]
 	path = Control-System
 	url = https://chuck1@github.com/chuck1/Control-System.git
-[submodule "Nebula-Python"]
-	path = Nebula-Python
+[submodule "nebula/python"]
+	path = nebula/python
 	url = https://github.com/chuck1/Nebula-Python
 [submodule "galaxy/console"]
 	path = galaxy/console
