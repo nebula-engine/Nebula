@@ -12,9 +12,11 @@ namespace neb {
 			virtual public neb::core::scene::util::parent
 		{
 			public:
-				virtual void	init();
-				virtual void	release() {}
-
+				virtual void			init();
+				virtual void			release() {}
+				
+				neb::core::pose			getPose();
+				neb::core::pose			getPoseGlobal();
 		};
 	}
 }

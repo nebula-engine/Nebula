@@ -12,9 +12,6 @@
 
 phx::core::actor::rigidstatic::base::base(sp::shared_ptr<phx::core::actor::util::parent> parent):
 	neb::core::actor::base(parent),
-	neb::core::actor::actor::base(parent),
-	neb::core::actor::rigidactor::base(parent),
-	neb::core::actor::rigidstatic::base(parent),
 	phx::core::actor::base(parent),
 	phx::core::actor::actor::base(parent),
 	phx::core::actor::rigidactor::base(parent)

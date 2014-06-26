@@ -13,7 +13,7 @@
 
 #include <Galaxy-Network/decl.hpp>
 
-#include <neb/free.hh>
+#include <neb/core/free.hpp>
 #include <neb/util/decl.hpp>
 #include <neb/app/__core.hpp>
 #include <neb/app/__gfx.hpp>

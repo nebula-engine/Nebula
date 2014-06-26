@@ -7,6 +7,9 @@
 
 namespace neb { namespace game { namespace trigger {
 
+	namespace util {
+		class parent;
+	}
 
 	class base: virtual public neb::std::shared
 	{

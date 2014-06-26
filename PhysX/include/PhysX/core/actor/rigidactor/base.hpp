@@ -18,20 +18,20 @@ namespace phx { namespace core { namespace actor { namespace rigidactor {
 		public:
 			base(sp::shared_ptr<phx::core::actor::util::parent>);
 
-			virtual void					init();
-			virtual void					release() = 0;
-			virtual void					step(gal::std::timestep const & ts);
+			virtual void						init() = 0;
+			virtual void						release() = 0;
+			virtual void						step(gal::std::timestep const & ts) = 0;
 
-			void						setupFiltering();
+			void							setupFiltering();
 
-			virtual void					create_physics() = 0;
-			virtual void					init_physics() = 0;
+			virtual void						create_physics() = 0;
+			virtual void						init_physics() = 0;
 
-			//virtual void					add_force(real) = 0;
-			//virtual void					set_pose(physx::PxTransform);
+			//virtual void						add_force(real) = 0;
+			//virtual void						set_pose(physx::PxTransform);
 
 
-			virtual void					setGlobalPosition(vec3 p);
+			virtual void						setGlobalPosition(vec3 p);
 
 
 			/** @name convenience functions
@@ -39,7 +39,7 @@ namespace phx { namespace core { namespace actor { namespace rigidactor {
 			 *
 			 * @ note typeof returned actor will be phx::core::shape::box
 			 */
-			virtual sp::weak_ptr<neb::core::shape::box>		createShapeBoxUninitialized();
+			virtual sp::weak_ptr<neb::core::shape::base>		createShapeBoxUninitialized();
 			/** @} */
 	};
 

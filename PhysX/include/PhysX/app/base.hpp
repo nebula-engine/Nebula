@@ -62,8 +62,6 @@ namespace phx { namespace app {
 			physx::PxCooking*				px_cooking_;
 			//physx::pxtask::CudaContextManager*		px_cuda_context_manager_;
 			physx::PxControllerManager*			px_character_controller_manager_;
-		private:
-			static sp::shared_ptr<phx::app::base>		g_app_;
 	};
 
 

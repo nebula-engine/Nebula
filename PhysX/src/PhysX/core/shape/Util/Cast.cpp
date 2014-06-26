@@ -1,5 +1,5 @@
 
-
+/*
 #include <neb/core/actor/Util/Types.hh>
 #include <neb/core/actor/Util/Cast.hh>
 #include <neb/core/actor/RigidDynamic/Base.hh>
@@ -16,4 +16,7 @@ sp::shared_ptr<neb::core::actor::rigidactor::base>			neb::core::actor::util::cas
 }
 sp::shared_ptr<neb::core::actor::rigidbody::base>			neb::core::actor::util::cast::isActorRigidBody() {
 	return sp::dynamic_pointer_cast<neb::core::actor::rigidbody::base>(shared_from_this());
-}
+}*/
+
+
+
