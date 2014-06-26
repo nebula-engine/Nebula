@@ -28,3 +28,6 @@
 [submodule "galaxy/console"]
 	path = galaxy/console
 	url = https://github.com/chuck1/Galaxy-Console
+[submodule "nebula/ext"]
+	path = nebula/ext
+	url = https://github.com/chuck1/Nebula-Ext
