@@ -18,25 +18,6 @@ phx::core::actor::rigidstatic::base::base(sp::shared_ptr<phx::core::actor::util:
 {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 }
-void			phx::core::actor::rigidstatic::base::init() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
-	
-	neb::core::actor::rigidstatic::base::init();
-	phx::core::actor::rigidactor::base::init();
-}
-/*void			phx::core::actor::rigidstatic::base::release() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
-
-	neb::core::actor::rigidstatic::base::release();
-	phx::core::actor::rigidactor::base::release();
-}*/
-void			phx::core::actor::rigidstatic::base::step(gal::std::timestep const & ts) {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;;
-
-	neb::core::actor::rigidstatic::base::step(ts);
-	phx::core::actor::rigidactor::base::step(ts);
-
-}
 void			phx::core::actor::rigidstatic::base::create_physics() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx core actor", debug) << __PRETTY_FUNCTION__;
 	
