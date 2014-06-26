@@ -2,7 +2,6 @@
 #define PHYSX_GAME_WEAPON_BASE_HPP
 
 #include <neb/util/shared.hpp>
-#include <neb/gfx/util/decl.hpp>
 
 #include <PhysX/core/actor/util/decl.hpp>
 
