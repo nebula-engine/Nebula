@@ -25,3 +25,6 @@
 [submodule "Nebula-Python"]
 	path = Nebula-Python
 	url = https://github.com/chuck1/Nebula-Python
+[submodule "galaxy/console"]
+	path = galaxy/console
+	url = https://github.com/chuck1/Galaxy-Console
