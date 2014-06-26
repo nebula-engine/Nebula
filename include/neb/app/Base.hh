@@ -18,11 +18,8 @@
 #include <neb/app/__core.hpp>
 #include <neb/app/__gfx.hpp>
 #include <neb/app/__gfx_glsl.hpp>
-#include <neb/app/__net.hpp>
+//#include <neb/app/__net.hpp>
 
-#include <neb/net/server.hh>
-#include <neb/net/client.hh>
-#include <neb/message/Types.hh>
 #include <neb/core/scene/Util/Parent.hh>
 
 #include <neb/gfx/util/decl.hpp>
@@ -44,7 +41,7 @@ namespace neb { namespace app {
 			virtual public neb::app::__gfx,
 			virtual public neb::app::__gfx_glsl,
 			virtual public neb::app::__core,
-			virtual public neb::app::__net,
+			/*virtual public neb::app::__net,*/
 			virtual public neb::game::game::util::parent
 		{
 			public:
@@ -80,10 +77,6 @@ namespace neb { namespace app {
 				void					set_should_release();
 
 
-				/** @name %Network @{ */
-
-				void					transmit_scenes(sp::shared_ptr<neb::Network::Communicating>);
-				/** @} */
 
 			public:
 				static sp::shared_ptr<neb::app::base>				g_app_;

@@ -4,13 +4,14 @@
 
 #include <neb/debug.hh>
 #include <neb/app/Base.hh>
-#include <neb/core/light/Spot.hh>
+#include <neb/gfx/core/light/spot.hpp>
 #include <neb/gfx/glsl/Uniform/vector.hpp>
 
 
 
-neb::gfx::core::light::Spot::Spot(sp::shared_ptr<neb::Light::util::parent> parent):
-	neb::Light::base(parent, "lights_spot"),
+neb::gfx::core::light::spot::spot(sp::shared_ptr<neb::core::light::util::parent> parent):
+	neb::core::light::base(parent),
+	neb::gfx::core::light::base(parent, "lights_spot"),
 	spot_direction_(vec3(0.0, 0.0, -1.0)),
 	spot_cutoff_(10.0),
 	spot_exponent_(1.0),
@@ -24,7 +25,7 @@ void			neb::gfx::core::light::spot::load(
 		neb::core::light::util::count & light_count,
 		neb::core::pose const & pose) {
 
-	neb::Light::base::load(light_count.spot, pose);
+	neb::gfx::core::light::base::load(light_count.spot, pose);
 
 	auto p = neb::app::base::global()->current_program();
 

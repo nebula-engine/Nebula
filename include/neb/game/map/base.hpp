@@ -1,13 +1,13 @@
 #ifndef NEBULA_GAME_MAP_HPP
 #define NEBULA_GAME_MAP_HPP
 
-//#include <neb/core/scene/Local.hh>
+#include <neb/core/scene/Base.hh>
 #include <neb/game/spawn/util/parent.hpp>
 
 namespace neb { namespace game { namespace map {
 
 	class base:
-		virtual public neb::core::scene::local,
+		virtual public neb::core::scene::base,
 		virtual public neb::game::spawn::util::parent
 	{
 		public:

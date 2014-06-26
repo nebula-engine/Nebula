@@ -1,7 +1,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <neb/app/Base.hh>
-#include <neb/core/actor/Base.hh>
+#include <neb/core/actor/base.hpp>
 #include <neb/util/wrapper.hpp>
 #include <neb/gfx/Context/Window.hpp>
 #include <neb/gfx/environ/two.hpp>
@@ -121,17 +121,17 @@ sp::shared_ptr<neb::core::actor::rigiddynamic::local>		create_actor2(sp::shared_
 	auto shape = actor->neb::core::shape::util::parent::cii< neb::core::shape::empty, sp::shared_ptr<neb::core::actor::rigiddynamic::local> >(actor);
 	
 	// light
-	auto light = sp::make_shared<neb::Light::Point>(shape);
+	auto light = sp::make_shared<neb::core::light::Point>(shape);
 	
-	shape->neb::Light::util::parent::insert(light);
+	shape->neb::core::light::util::parent::insert(light);
 	
 	light->init();
 	
 	// another light
 	
-	light = sp::make_shared<neb::Light::Point>(shape);
+	light = sp::make_shared<neb::core::light::Point>(shape);
 	
-	shape->neb::Light::util::parent::insert(light);
+	shape->neb::core::light::util::parent::insert(light);
 	
 	light->init();
 

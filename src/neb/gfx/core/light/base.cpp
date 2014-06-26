@@ -6,35 +6,34 @@
 #include <neb/debug.hh>
 #include <neb/app/Base.hh>
 #include <neb/util/decl.hpp>
-#include <neb/core/light/Base.hh>
+#include <neb/gfx/core/light/base.hpp>
 #include <neb/gfx/window/Base.hh>
 #include <neb/core/scene/Base.hh>
-#include <neb/core/shape/Base.hh>
+#include <neb/core/shape/base.hpp>
 #include <neb/free.hh>
 #include <neb/gfx/glsl/Uniform/vector.hpp>
 
 
-neb::Light::base::base(sp::shared_ptr<neb::Light::util::parent> parent, ::std::string light_type_string):
-	parent_(parent),
+neb::gfx::core::light::base::base(sp::shared_ptr<neb::core::light::util::parent> parent, ::std::string light_type_string):
+	neb::core::light::base(parent),
 	light_type_string_(light_type_string),
-	pos_(vec4(0.0, 0.0, 0.0, 1.0)),
 	ambient_(0.3,0.3,0.3,1.0),
 	diffuse_(neb::Color::white<float>()),
 	specular_(neb::Color::white<float>())
 {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 }
-void neb::Light::base::init() {
+void neb::gfx::core::light::base::init() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 
 }
-void neb::Light::base::release() {
+void neb::gfx::core::light::base::release() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 }
-void neb::Light::base::cleanup() {
+void neb::gfx::core::light::base::cleanup() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 }
-void neb::Light::base::dim() {
+void neb::gfx::core::light::base::dim() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 	/*	
 	//printf("diffuse\n");
@@ -48,20 +47,23 @@ void neb::Light::base::dim() {
 	printf("UNSUPPORTED\n");
 	exit(0);
 }
-void		neb::Light::base::step(gal::std::timestep const & ts) {
+void		neb::gfx::core::light::base::step(gal::std::timestep const & ts) {
 
 }
-void	neb::Light::base::draw() {	
+void	neb::gfx::core::light::base::draw() {	
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 }
-neb::core::pose		neb::Light::base::getPose() {
+neb::core::pose		neb::gfx::core::light::base::getPose() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
-
-	auto p = parent_->getPoseGlobal();
-
+	
+	auto parent(parent_.lock());
+	assert(parent);
+	
+	auto p = parent->getPoseGlobal();
+	
 	return p;
 }
-void			neb::Light::base::load(int o, neb::core::pose const & pose) {
+void			neb::gfx::core::light::base::load(int o, neb::core::pose const & pose) {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 	
 	/** @todo way to ditinguish lights in shader */
@@ -82,7 +84,7 @@ void			neb::Light::base::load(int o, neb::core::pose const & pose) {
 
 
 }
-void	neb::Light::base::load_shadow() {
+void	neb::gfx::core::light::base::load_shadow() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 	/*	auto p = neb::master::Global()->current_program();
 
@@ -102,7 +104,7 @@ void	neb::Light::base::load_shadow() {
 	uniform_tex_shadow_.load_1i(1);
 	*/
 }
-void	neb::Light::base::RenderLightPOV()
+void	neb::gfx::core::light::base::RenderLightPOV()
 {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
 	/*
@@ -154,7 +156,7 @@ void	neb::Light::base::RenderLightPOV()
 	*/
 	checkerror("unknown");
 }
-void	neb::Light::base::RenderShadowPost()
+void	neb::gfx::core::light::base::RenderShadowPost()
 {
 	//Disable textures and texgen
 	glDisable(GL_TEXTURE_2D);

@@ -1,8 +1,8 @@
 #include <neb/debug.hh>
 #include <neb/app/Base.hh>
-#include <neb/core/shape/Base.hh>
+#include <neb/core/shape/base.hpp>
 
-#include <neb/core/light/Base.hh>
+#include <neb/core/light/base.hpp>
 #include <neb/gfx/glsl/attrib.hh>
 
 //#include <neb/util/Map.hh>

@@ -14,7 +14,7 @@
 #include <neb/gfx/Context/Util/Parent.hh>
 #include <neb/gfx/util/decl.hpp>
 #include <neb/gfx/texture.hh>
-//#include <neb/core/light/Base.hh>
+//#include <neb/core/light/base.hpp>
 #include <neb/gfx/glsl/program.hh>
 #include <neb/gfx/glsl/shader.hh>
 #include <neb/gfx/GUI/Layout/Base.hh>
@@ -66,8 +66,8 @@ namespace neb { namespace gfx { namespace window {
 					// input signals
 					struct
 					{
-						neb::Signals::KeyFun		key_fun_;
-						neb::Signals::MouseButtonFun	mouse_button_fun_;
+						neb::gfx::window::signals::KeyFun		key_fun_;
+						neb::gfx::window::signals::MouseButtonFun	mouse_button_fun_;
 					} sig_;
 
 

@@ -4,20 +4,21 @@
 
 #include <neb/debug.hh>
 #include <neb/app/Base.hh>
-#include <neb/core/light/Spot.hh>
+#include <neb/gfx/core/light/point.hpp>
 #include <neb/gfx/glsl/Uniform/vector.hpp>
 
-neb::Light::Point::Point(sp::shared_ptr<neb::Light::util::parent> parent):
-        neb::Light::base(parent, "lights_point"),
+neb::gfx::core::light::point::point(sp::shared_ptr<neb::core::light::util::parent> parent):
+        neb::core::light::base(parent),
+        neb::gfx::core::light::base(parent, "lights_point"),
         atten_const_(1.0),
         atten_linear_(0.0),
         atten_quad_(0.0)
 {}
-void	neb::Light::Point::load(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
+void	neb::gfx::core::light::point::load(neb::core::light::util::count & light_count, neb::core::pose const & pose) {
 
         if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __PRETTY_FUNCTION__;
         
-        neb::Light::base::load(light_count.point, pose);
+        neb::gfx::core::light::base::load(light_count.point, pose);
         
         auto p = neb::app::base::global()->current_program();
         
