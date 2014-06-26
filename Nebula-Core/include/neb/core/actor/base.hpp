@@ -58,8 +58,6 @@ namespace neb {
 		public:
 			virtual void						init();
 			virtual void						release();
-		protected:
-			void							releaseUp();
 		public:
 			virtual void						step(gal::std::timestep const & ts);
 
@@ -82,9 +80,9 @@ namespace neb {
 //			int							key_fun(sp::shared_ptr<neb::gfx::window::base> window,int,int,int,int);
 		public:
 
-			virtual sp::weak_ptr<neb::core::shape::base>		createShapeBase();
-			virtual sp::weak_ptr<neb::core::shape::base>		createShapeBox(vec3 size);
-			virtual sp::weak_ptr<neb::core::shape::base>		createShapeCube(real size);
+			virtual sp::weak_ptr<neb::core::shape::base>		createShapeBase() = 0;
+			virtual sp::weak_ptr<neb::core::shape::base>		createShapeBox(vec3 size) = 0;
+			virtual sp::weak_ptr<neb::core::shape::base>		createShapeCube(real size) = 0;
 	
 		public:
 

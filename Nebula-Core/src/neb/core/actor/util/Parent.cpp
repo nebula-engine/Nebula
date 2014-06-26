@@ -21,11 +21,11 @@ sp::shared_ptr<neb::core::scene::base>			neb::core::actor::util::parent::getScen
 
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
 
-	auto scene = isSceneBase();
+	auto scene(::std::dynamic_pointer_cast<neb::core::scene::base>(shared_from_this()));
 
 	if(scene) return scene;
 
-	auto actor = isActorBase();
+	auto actor(::std::dynamic_pointer_cast<neb::core::actor::base>(shared_from_this()));
 
 	if(!actor) throw 0;
 
