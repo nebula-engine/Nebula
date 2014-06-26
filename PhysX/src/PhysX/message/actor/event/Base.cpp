@@ -3,7 +3,7 @@
 
 #include <neb/core/actor/base.hpp>
 
-#include <neb/message/Actor/Event/Base.hh>
+//#include <neb/message/Actor/Event/Base.hh>
 #include <neb/core/scene/base.hpp>
 
 

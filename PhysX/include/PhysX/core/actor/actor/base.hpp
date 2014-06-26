@@ -3,7 +3,6 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/core/actor/Actor/Base.hh>
 #include <neb/core/pose.hpp>
 
 #include <PhysX/core/actor/base.hpp>
@@ -14,7 +13,6 @@ namespace phx { namespace core { namespace actor { namespace actor {
 
 
 	class base:
-		virtual public neb::core::actor::actor::base,
 		virtual public phx::core::actor::base
 	{
 
