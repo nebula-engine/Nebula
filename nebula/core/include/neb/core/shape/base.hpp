@@ -14,8 +14,8 @@
 #include <neb/typedef.hpp>
 //#include <neb/gfx/util/decl.hpp>
 
-#include <neb/core/shape/Util/Parent.hh>
-#include <neb/core/shape/Util/Flag.hh>
+#include <neb/core/shape/util/Parent.hh>
+#include <neb/core/shape/util/Flag.hh>
 
 //#include <neb/gfx/glsl/program.hh>
 //#include <neb/core/light/base.hpp>

@@ -1,7 +1,7 @@
 #ifndef NEB_GAME_TRIGGER_ACTOREX1_HPP
 #define NEB_GAME_TRIGGER_ACTOREX1_HPP
 
-#include <neb/core/actor/Util/Types.hh>
+#include <neb/core/actor/util/Types.hh>
 #include <neb/game/trigger/util/decl.hpp>
 #include <neb/game/trigger/base.hpp>
 

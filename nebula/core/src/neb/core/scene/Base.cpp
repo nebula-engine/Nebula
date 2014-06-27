@@ -1,15 +1,14 @@
 #include <stdio.h>
 
-#include <Galaxy-Log/log.hpp>
-#include <Galaxy-Network/message.hpp>
+#include <gal/log/log.hpp>
 
 //#include <neb/gfx/window/Base.hh>
 //#include <neb/gfx/Context/Base.hh>
 
 #include <neb/debug.hh>
 #include <neb/core/scene/base.hpp>
-#include <neb/core/scene/Util/Types.hh>
-#include <neb/core/scene/Util/Parent.hh>
+#include <neb/core/scene/util/Types.hh>
+#include <neb/core/scene/util/Parent.hh>
 
 #include <neb/core/actor/base.hpp>
 
@@ -17,7 +16,7 @@
 //#include <neb/core/light/spot.hpp>
 
 
-#include <neb/core/actor/Util/Type.hh>
+#include <neb/core/actor/util/Type.hh>
 /*#include <neb/message/Actor/Event/Base.hh>
 #include <neb/message/Actor/Create.hh>
 #include <neb/message/Actor/Update.hh>

@@ -2,8 +2,8 @@
 #define __NEBULA_APP___CORE_H__
 
 #include <neb/core/app/__base.hpp>
-#include <neb/core/scene/Util/Parent.hh>
-//#include <neb/gfx/GUI/Layout/Util/Parent.hh>
+#include <neb/core/scene/util/Parent.hh>
+//#include <neb/gfx/GUI/Layout/util/Parent.hh>
 
 namespace neb {
 	namespace app {
