@@ -3,7 +3,13 @@
 
 #include <neb/core/game/trigger/util/parent.hpp>
 
-namespace neb { namespace game { namespace game {
+namespace neb {
+	
+	namespace core { namespace scene {
+		class base;
+	}}
+	
+	namespace game { namespace game {
 
 	namespace util {
 		class parent;

@@ -72,6 +72,7 @@ namespace neb { namespace core { namespace scene {
 			 * @note typeof returned actor will be determined by final implementation of this
 			 */
 			sp::weak_ptr<neb::core::actor::base>				createActorRigidStaticCube(neb::core::pose const & pose, real size);
+			sp::weak_ptr<neb::core::actor::base>				createActorRigidDynamicCube(neb::core::pose const & pose, real size);
 			/** @brief create empty actor with point light
 			 */
 			virtual sp::weak_ptr<neb::core::actor::base>			createActorLightPoint(vec3 p) = 0;
@@ -82,6 +83,7 @@ namespace neb { namespace core { namespace scene {
 			 * @warning return actor is not initialized
 			 */
 			virtual sp::weak_ptr<neb::core::actor::base>			createActorRigidStaticUninitialized() = 0;
+			virtual sp::weak_ptr<neb::core::actor::base>			createActorRigidDynamicUninitialized() = 0;
 			/** @} */
 		public:
 			/** @brief parent

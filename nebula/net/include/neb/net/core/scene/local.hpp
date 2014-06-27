@@ -7,10 +7,10 @@
 
 #include <neb/util/decl.hpp>
 
-#include <neb/core/scene/Local.hh>
+#include <neb/core/scene/base.hpp>
 #include <neb/core/scene/Util/Types.hh>
 
-#include <neb/config.hh> // Nebula/config.hpp.in
+#include <neb/util/config.hh> // Nebula/config.hpp.in
 #include <neb/gfx/glsl/program.hh>
 
 
@@ -28,7 +28,6 @@ namespace phx { namespace core { namespace scene {
 
 
 	class local:
-		virtual public neb::core::scene::local,
 		virtual public phx::core::scene::base
 	{
 		public:

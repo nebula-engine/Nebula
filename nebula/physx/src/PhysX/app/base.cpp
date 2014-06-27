@@ -15,7 +15,6 @@
 
 #include <PhysX/app/base.hpp>
 
-sp::shared_ptr<phx::app::base> phx::app::base::g_app_;
 
 physx::PxFilterFlags	DefaultFilterShader(
 		physx::PxFilterObjectAttributes attributes0,
@@ -83,8 +82,6 @@ phx::app::base::base(): px_physics_(NULL) {
 }
 void	phx::app::base::init() {
 	
-	neb::app::base::init();
-	
 	
 	// Physx
 	// Foundation
@@ -138,14 +135,14 @@ void				phx::app::base::release() {
 	px_foundation_->release();
 }
 sp::shared_ptr<phx::app::base>			phx::app::base::global() {
-	return g_app_;
+	auto app(::std::dynamic_pointer_cast<phx::app::base>(g_app_));
+	assert(app);
+	return app;
 }
-void				phx::app::base::step2(gal::std::timestep const & ts) {
+void				phx::app::base::step(gal::std::timestep const & ts) {
 
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "phx app", debug) << __PRETTY_FUNCTION__;
 
-	neb::app::base::step2(ts);
-	
 	phx::game::game::util::parent::step(ts);
 
 }

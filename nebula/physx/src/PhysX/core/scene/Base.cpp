@@ -3,7 +3,7 @@
 #include <Galaxy-Log/log.hpp>
 
 #include <PhysX/app/base.hpp>
-#include <PhysX/core/actor/base.hpp>
+#include <PhysX/core/actor/rigidbody/base.hpp>
 #include <PhysX/core/scene/base.hpp>
 #include <PhysX/util/convert.hpp>
 
@@ -185,7 +185,7 @@ void		phx::core::scene::base::step(gal::std::timestep const & ts) {
 
 
 			if(pxrigidbody != NULL) {
-				auto rigidbody = actor->isActorRigidBody();
+				auto rigidbody = ::std::dynamic_pointer_cast<phx::core::actor::rigidbody::base>(actor);
 				if(!rigidbody) {
 					std::cout << typeid(*actor).name() << std::endl;
 					abort();
@@ -220,28 +220,6 @@ void		phx::core::scene::base::step(gal::std::timestep const & ts) {
 
 	//send_actor_update();
 
-}
-sp::weak_ptr<neb::core::actor::rigidstatic::base>		neb::gfx::core::scene::base::createActorRigidStaticCube(neb::core::pose const & pose, real size) {
-
-	auto actor = createActorRigidStaticUninitialized().lock();
-
-	// set data members
-
-	actor->pose_ = pose;
-
-	// initialize (create physx)
-
-	actor->init();
-
-	// create shape
-
-	auto shape = actor->createShapeCube(size);
-
-	// reinitialize in order to apply filtering to shape
-	/** @todo consider implementing refresh-type function instead */
-	actor->init();
-
-	return actor;
 }
 /*sp::weak_ptr<neb::core::actor::rigiddynamic::base>		neb::core::scene::base::createActorRigidDynamicCube(neb::core::pose const & pose, real size) {
 
@@ -304,35 +282,7 @@ return actor;
 
 
 }*/
-sp::weak_ptr<neb::core::actor::base>				neb::gfx::core::scene::base::createActorLightPoint(vec3 p) {
 
-	auto self(isSceneBase());
-
-	auto actor = sp::make_shared<neb::core::actor::base>(self);
-
-	insert(actor);
-
-	actor->init();
-
-	// shape	
-	/*
-	   auto shape = sp::make_shared<neb::core::shape::empty>(actor);
-
-	   actor->neb::core::shape::util::parent::insert(shape);
-
-	   shape->init();
-	 */
-	auto shape = actor->neb::core::shape::util::parent::cii< neb::core::shape::empty, sp::shared_ptr<neb::core::actor::empty> >(actor);
-
-	// light
-	auto light = sp::make_shared<neb::core::light::Point>(shape);
-
-	shape->neb::core::light::util::parent::insert(light);
-
-	light->init();
-
-	return actor;	
-}
 
 
 
