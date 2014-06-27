@@ -3,12 +3,16 @@
 
 #include <neb/gfx/core/actor/base.hpp>
 #include <neb/phx/core/actor/base.hpp>
+#include <neb/fin/gfx_phx/core/actor/util/parent.hpp>
+#include <neb/fin/gfx_phx/core/shape/util/parent.hpp>
 
 namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace actor {
 
 	class base:
-		virtual public phx::core::actor::base,
-		virtual public neb::gfx::core::actor::base
+		virtual public neb::phx::core::actor::base,
+		virtual public neb::gfx::core::actor::base,
+		virtual public neb::fin::gfx_phx::core::actor::util::parent,
+		virtual public neb::fin::gfx_phx::core::shape::util::parent
 	{
 		public:
 			virtual void						init() = 0;

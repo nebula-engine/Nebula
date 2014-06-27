@@ -8,6 +8,7 @@ SET(nebula_core_SHARED TRUE)
 SET(nebula_core_STATIC TRUE)
 
 FIND_PACKAGE(glfw)
+
 FIND_PACKAGE(Galaxy COMPONENTS
 	std
 	log

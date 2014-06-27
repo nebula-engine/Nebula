@@ -1,6 +1,6 @@
 
-#include <neb/final/gfx_phx/core/shape/box.hpp>
-#include <neb/final/gfx_phx/core/actor/rigidactor/base.hpp>
+#include <neb/fin/gfx_phx/core/shape/box.hpp>
+#include <neb/fin/gfx_phx/core/actor/rigidactor/base.hpp>
 
 ::std::weak_ptr<neb::core::shape::base>				neb::fin::gfx_phx::core::actor::rigidactor::base::createShapeBoxUninitialized(glm::vec3 size) {
 
