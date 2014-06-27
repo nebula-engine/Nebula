@@ -4,6 +4,8 @@ INCLUDE($ENV{HOME}/.config.cmake)
 
 PROJECT(nebula_final)
 
+SET(nebula_final_STATIC TRUE)
+
 FIND_PACKAGE(glfw)
 FIND_PACKAGE(CMakeHelper)
 FIND_PACKAGE(PhysX)
@@ -73,7 +75,7 @@ SET(libs
 
 
 
-cmh_static_library()
+cmh_library()
 
 add_subdirectory(test)
 
