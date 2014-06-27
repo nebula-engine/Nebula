@@ -3,7 +3,7 @@
 
 #include <neb/phx/core/actor/rigidactor/base.hpp>
 
-#include <neb/final/gfx_phx/core/actor/base.hpp>
+#include <neb/fin/gfx_phx/core/actor/base.hpp>
 
 namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace actor { namespace rigidactor {
 
