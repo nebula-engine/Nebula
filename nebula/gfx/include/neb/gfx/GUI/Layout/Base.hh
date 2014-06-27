@@ -5,8 +5,8 @@
 
 #include <neb/gfx/util/decl.hpp>
 #include <neb/gfx/GUI/Object/Base.hh>
-//#include <neb/gfx/GUI/Layout/Util/Parent.hh>
-#include <neb/gfx/GUI/Object/Util/Parent.hh>
+//#include <neb/gfx/GUI/Layout/util/Parent.hh>
+#include <neb/gfx/GUI/Object/util/Parent.hh>
 #include <neb/gfx/drawable/base.hpp>
 
 #include <neb/gfx/window/Base.hh>

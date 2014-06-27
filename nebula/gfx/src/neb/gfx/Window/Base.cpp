@@ -13,7 +13,7 @@
 
 #include <Galaxy-Log/log.hpp>
 
-#include <neb/core/scene/Util/Types.hh>
+#include <neb/core/scene/util/Types.hh>
 #include <neb/debug.hh>
 
 #include <neb/free.hh>

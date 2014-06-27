@@ -12,15 +12,15 @@
 #include <boost/archive/polymorphic_oarchive.hpp>
 
 #include <neb/typedef.hpp>
-#include <neb/core/scene/Util/Flag.hh>
-#include <neb/core/scene/Util/Types.hh>
+#include <neb/core/scene/util/Flag.hh>
+#include <neb/core/scene/util/Types.hh>
 
 //#include <neb/config.hh> // Nebula/config.hpp.in
 //#include <neb/gfx/glsl/program.hh>
 
 
 //#include <neb/core/actor/base.hpp>
-#include <neb/core/actor/Util/Parent.hh>
+#include <neb/core/actor/util/Parent.hh>
 
 //#include <neb/gfx/Camera/View/Base.hh>
 //#include <neb/gfx/drawable/base.hpp>

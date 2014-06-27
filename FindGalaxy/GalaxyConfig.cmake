@@ -8,9 +8,13 @@ ENDIF()
 
 MESSAGE(STATUS "FindGalaxy")
 
-FOREACH(c ${components})
+SET(pkg_name galaxy)
 
-	LIST(FIND Galaxy_FIND_COMPONENTS "${c}" idx_${c})
+SET(${pkg_name}_LIBRARIES)
+
+FOREACH(c ${Galaxy_FIND_COMPONENTS})
+	
+	LIST(FIND components "${c}" idx_${c})
 	
 	#MESSAGE(STATUS "idx_${c}: ${idx_${c}}")
 
@@ -18,13 +22,25 @@ FOREACH(c ${components})
 	STRING(COMPARE EQUAL ${idx_${c}} "-1" not_${c})
 
 	#MESSAGE(STATUS "not_${c}: ${not_${c}}")
-		
-	IF(NOT ${not_${c}})
+	IF(${not_${c}})
+		MESSAGE(ERROR "Component ${c} not found.")
+	ELSEIF(NOT ${not_${c}})
 		MESSAGE(STATUS "    ${c}")
-		FIND_PACKAGE(galaxy_${c}${shared_postfix})
+
+		FIND_PACKAGE(${pkg_name}_${c}${shared_postfix})
+
+
+		MESSAGE(STATUS "    libs: ${${pkg_name}_${c}_LIBRARIES}")
+		
+		
+		SET(${pkg_name}_LIBRARIES
+			${${pkg_name}_LIBRARIES}
+			${${pkg_name}_${c}_LIBRARIES})
+
+		
+		
 	ENDIF()
 ENDFOREACH()
-
 
 
 

@@ -13,7 +13,7 @@
 #include <deque>
 
 #include <neb/config.hh>
-#include <neb/core/scene/Util/Types.hh>
+#include <neb/core/scene/util/Types.hh>
 
 namespace neb {
 	namespace scene {
