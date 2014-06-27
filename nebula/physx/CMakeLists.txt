@@ -4,13 +4,19 @@ INCLUDE($ENV{HOME}/.config.cmake)
 
 PROJECT(nebula_physx)
 
+SET(nebula_physx_STATIC TRUE)
+
 FIND_PACKAGE(glfw)
 FIND_PACKAGE(CMakeHelper)
 FIND_PACKAGE(PhysX)
-FIND_PACKAGE(galaxy_std_shared)
-FIND_PACKAGE(galaxy_log_shared)
-FIND_PACKAGE(nebula_core_shared)
-FIND_PACKAGE(nebula_gfx)
+FIND_PACKAGE(Galaxy COMPONENTS
+	std
+	log
+	REQUIRED)
+FIND_PACKAGE(Nebula COMPONENTS
+	core
+	gfx
+	REQUIRED)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
 
@@ -66,7 +72,7 @@ SET(libs ${libs}
 
 
 
-cmh_static_library()
+cmh_library()
 
 add_subdirectory(test)
 

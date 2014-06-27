@@ -8,24 +8,20 @@ SET(nebula_core_SHARED TRUE)
 SET(nebula_core_STATIC TRUE)
 
 FIND_PACKAGE(glfw)
-FIND_PACKAGE(galaxy_log_shared)
-FIND_PACKAGE(galaxy_std_shared)
+FIND_PACKAGE(Galaxy COMPONENTS
+	std
+	log
+	REQUIRED)
 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
 
 include_directories("/usr/include/freetype2")
-include_directories("../Galaxy-Standard/include")
-include_directories("../Galaxy-Network/include")
-include_directories("../Galaxy-Log/include")
 include_directories("../maze/include")
 include_directories("../Control-System/include")
 include_directories("../glm")
 #include_directories(${physx_INCLUDE_DIR})
 
-link_directories("../Galaxy-Network/Debug")
-link_directories("../Galaxy-Standard/Debug")
-link_directories("../Galaxy-Log/Debug")
 link_directories("../maze/Debug")
 link_directories("../Control-System/Debug")
 
