@@ -1,7 +1,7 @@
 
 #include <neb/gfx/Context/Base.hh>
 
-#include <neb/config.hh>
+#include <neb/util/config.hh>
 //#include <nebula/camera/camera.hpp>
 #include <PhysX/core/actor/control/rigidbody/base.hpp>
 

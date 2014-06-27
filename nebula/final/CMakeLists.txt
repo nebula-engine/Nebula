@@ -2,15 +2,23 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
 INCLUDE($ENV{HOME}/.config.cmake)
 
-PROJECT(nebula_physx)
+PROJECT(nebula_final)
 
 FIND_PACKAGE(glfw)
 FIND_PACKAGE(CMakeHelper)
 FIND_PACKAGE(PhysX)
-FIND_PACKAGE(galaxy_std_shared)
-FIND_PACKAGE(galaxy_log_shared)
-FIND_PACKAGE(nebula_core_shared)
-FIND_PACKAGE(nebula_gfx)
+
+FIND_PACKAGE(Galaxy COMPONENTS
+	std
+	log
+	console
+	REQUIRED)
+FIND_PACKAGE(Nebula COMPONENTS
+	core
+	gfx
+	physx
+	REQUIRED)
+
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
 
@@ -19,7 +27,6 @@ include_directories("../../glm")
 include_directories("../../maze/include")
 include_directories(${physx_INCLUDE_DIR})
 
-link_directories("../Debug")
 link_directories("../maze/Debug")
 
 ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
@@ -32,7 +39,7 @@ SET(GRU_VERSION 0.1.1)
 
 FIND_PACKAGE(Boost 1.55 COMPONENTS program_options serialization log system thread)
 
-SET(libs ${libs}
+SET(libs
 	${PROJECT_NAME}
 	Nebula
 	maze

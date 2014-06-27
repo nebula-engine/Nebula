@@ -9,7 +9,6 @@
 #include <GLFW/glfw3.h>
 //#include <GL/gl.h>
 
-#include <Galaxy-Log/log.hpp>
 #include <gal/log/log.hpp>
 
 #include <neb/debug.hh>

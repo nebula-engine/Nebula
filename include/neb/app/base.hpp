@@ -83,9 +83,6 @@ namespace neb { namespace app {
 
 
 			public:
-				static sp::shared_ptr<neb::app::base>				g_app_;
-
-				gal::std::timestep						ts_;
 			
 
 				sp::shared_ptr<gal::std::command_set>				command_set_;

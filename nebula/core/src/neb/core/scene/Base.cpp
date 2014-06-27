@@ -92,96 +92,41 @@ sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorRigidSt
 
 	return actor;
 }
-/*sp::weak_ptr<neb::core::actor::rigiddynamic::base>		neb::core::scene::base::createActorRigidDynamicCube(neb::core::pose const & pose, real size) {
+sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorRigidDynamicCube(neb::core::pose const & pose, real size) {
 
-  auto actor = createActorRigidDynamicUninitialized().lock();
+	auto actor = createActorRigidDynamicUninitialized().lock();
 
-// set data members
+	// set data members
 
-actor->pose_ = pose;
+	actor->pose_ = pose;
 
-// initialize (create physx)
-
-actor->init();
-
-// create shape
-
-auto shape = actor->createShapeCube(size);
-
-// reinitialize in order to apply filtering to shape
- ** @todo consider implementing refresh-type function instead *
- actor->init();
-
- return actor;
-
-
-
-
-
-
-
-
-
-
-
- sp::shared_ptr<phx::core::actor::rigiddynamic::local>		create_actor_dynamic(sp::shared_ptr<phx::core::scene::local> scene) {
-
- auto actor = sp::make_shared<phx::core::actor::rigiddynamic::local>(scene);
-
- scene->insert(actor);
-
- actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
- actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
-
- actor->init();
-
-// shape	
-auto shape = sp::make_shared<phx::core::shape::box>(actor);
-
-actor->neb::core::shape::util::parent::insert(shape);
-
-shape->init();
-
-actor->setupFiltering();
-
-std::cout << "actor dynamic use count = " << actor.use_count() << std::endl;
-
-return actor;	
-}
-
-
-
-
-
-
-
-}*/
-/*sp::weak_ptr<neb::core::actor::base>				neb::core::scene::base::createActorLightPoint(vec3 p) {
-
-	auto self(isSceneBase());
-
-	auto actor = sp::make_shared<neb::core::actor::base>(self);
-
-	insert(actor);
+	// initialize (create physx)
 
 	actor->init();
 
-	// shape	
-	auto shape = sp::make_shared<neb::core::shape::base>(actor);
-	
-	actor->neb::core::shape::util::parent::insert(shape);
-	
-	shape->init();
+	// create shape
 
-	
+	auto shape = actor->createShapeCube(size);
+
+	// reinitialize in order to apply filtering to shape
+	/** @todo consider implementing refresh-type function instead */
+	actor->init();
+
+	return actor;
+}
+sp::weak_ptr<neb::core::actor::base>		neb::gfx::core::scene::base::createActorLightPoint(vec3 p) {
+
+	// actor
+	auto actor = createActorBase(neb::core::pose(p));
+
+	// shape	
+	auto shape = actor->createShapeBase();
+
 	// light
-	
-	shape->createLightPoint();
-	
+	auto light = shape->createLightPoint();
 
 	return actor;	
-}*/
-
+}
 
 
 
