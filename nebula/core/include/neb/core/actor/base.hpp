@@ -35,7 +35,7 @@
 #include <neb/core/shape/Util/Parent.hh>
 
 namespace neb { 
-	
+
 	namespace gfx { namespace core { namespace actor {
 		class base;
 	}}}
@@ -43,108 +43,108 @@ namespace neb {
 	namespace core { namespace actor {
 
 
-	/** @brief %Base */
-	class base:
-		virtual public neb::actor::__base,
-		virtual public neb::core::actor::util::parent,
-		virtual public neb::core::shape::util::parent
-	{
-		public:
-			/** @brief default constructor */
-			//base();
-			/** @brief constructor */
-			base(sp::shared_ptr<neb::core::actor::util::parent> parent);
-			virtual ~base();
-		public:
-			virtual void						init();
-			virtual void						release();
-		public:
-			virtual void						step(gal::std::timestep const & ts);
+		/** @brief %Base */
+		class base:
+			virtual public neb::actor::__base,
+			virtual public neb::core::actor::util::parent,
+			virtual public neb::core::shape::util::parent
+		{
+			public:
+				/** @brief default constructor */
+				//base();
+				/** @brief constructor */
+				base(sp::shared_ptr<neb::core::actor::util::parent> parent);
+				virtual ~base();
+			public:
+				virtual void						init();
+				virtual void						release();
+			public:
+				virtual void						step(gal::std::timestep const & ts);
 
-		public:
+			public:
 
-			virtual neb::core::pose					getPose();
-			virtual neb::core::pose					getPoseGlobal();
+				virtual neb::core::pose					getPose();
+				virtual neb::core::pose					getPoseGlobal();
 
-			sp::shared_ptr<neb::core::actor::util::parent>		get_parent();
-			/** @brief set pose
-			 *
-			 * virtual because actor::local will add self to active transform list
-			 */
-			virtual void						setPose(neb::core::pose const & pose);
+				sp::shared_ptr<neb::core::actor::util::parent>		get_parent();
+				/** @brief set pose
+				 *
+				 * virtual because actor::local will add self to active transform list
+				 */
+				virtual void						setPose(neb::core::pose const & pose);
 
-			/** @todo move to derived class */
-			// signal
-//			void							connect(sp::shared_ptr<neb::gfx::window::base>);
+				/** @todo move to derived class */
+				// signal
+				//			void							connect(sp::shared_ptr<neb::gfx::window::base>);
 
-//			int							key_fun(sp::shared_ptr<neb::gfx::window::base> window,int,int,int,int);
-		public:
+				//			int							key_fun(sp::shared_ptr<neb::gfx::window::base> window,int,int,int,int);
+			public:
 
-			virtual sp::weak_ptr<neb::core::shape::base>		createShapeBase() = 0;
-			virtual sp::weak_ptr<neb::core::shape::base>		createShapeBox(vec3 size) = 0;
-			virtual sp::weak_ptr<neb::core::shape::base>		createShapeCube(real size) = 0;
-	
-		public:
+				virtual sp::weak_ptr<neb::core::shape::base>		createShapeBase() = 0;
+				virtual sp::weak_ptr<neb::core::shape::base>		createShapeBox(vec3 size) = 0;
+				virtual sp::weak_ptr<neb::core::shape::base>		createShapeCube(real size) = 0;
 
-			/** @brief %Serialize
-			 * @param ar archive
-			 * @param version version
-			 */
-			template<class Archive> void				serialize(Archive & ar, unsigned int const & version) {
-				ar & boost::serialization::make_nvp("i", i_);
+			public:
 
-				serializeData(ar, version);
+				/** @brief %Serialize
+				 * @param ar archive
+				 * @param version version
+				 */
+				template<class Archive> void				serialize(Archive & ar, unsigned int const & version) {
+					ar & boost::serialization::make_nvp("i", i_);
 
-				ar & boost::serialization::make_nvp("actors", neb::core::actor::util::parent::map_);
-				ar & boost::serialization::make_nvp("shapes", neb::core::shape::util::parent::map_);
-			}
-			virtual void						serializeData(
-					boost::archive::polymorphic_oarchive & ar,
-					unsigned int const & version) {
-				ar & boost::serialization::make_nvp("flag",flag_);
-				ar & boost::serialization::make_nvp("name",name_);
-				ar & boost::serialization::make_nvp("pose",pose_);
-				ar & boost::serialization::make_nvp("normal",n_);
-				ar & boost::serialization::make_nvp("distance",d_);
-				ar & boost::serialization::make_nvp("velocity",velocity_);
-				ar & boost::serialization::make_nvp("density",density_);
-			}
-			virtual void						serializeData(
-					boost::archive::polymorphic_iarchive & ar,
-					unsigned int const & version) {
-				ar & boost::serialization::make_nvp("flag",flag_);
-				ar & boost::serialization::make_nvp("name",name_);
-				ar & boost::serialization::make_nvp("pose",pose_);
-				ar & boost::serialization::make_nvp("normal",n_);
-				ar & boost::serialization::make_nvp("distance",d_);
-				ar & boost::serialization::make_nvp("velocity",velocity_);
-				ar & boost::serialization::make_nvp("density",density_);
-			}
+					serializeData(ar, version);
 
-
+					ar & boost::serialization::make_nvp("actors", neb::core::actor::util::parent::map_);
+					ar & boost::serialization::make_nvp("shapes", neb::core::shape::util::parent::map_);
+				}
+				virtual void						serializeData(
+						boost::archive::polymorphic_oarchive & ar,
+						unsigned int const & version) {
+					ar & boost::serialization::make_nvp("flag",flag_);
+					ar & boost::serialization::make_nvp("name",name_);
+					ar & boost::serialization::make_nvp("pose",pose_);
+					ar & boost::serialization::make_nvp("normal",n_);
+					ar & boost::serialization::make_nvp("distance",d_);
+					ar & boost::serialization::make_nvp("velocity",velocity_);
+					ar & boost::serialization::make_nvp("density",density_);
+				}
+				virtual void						serializeData(
+						boost::archive::polymorphic_iarchive & ar,
+						unsigned int const & version) {
+					ar & boost::serialization::make_nvp("flag",flag_);
+					ar & boost::serialization::make_nvp("name",name_);
+					ar & boost::serialization::make_nvp("pose",pose_);
+					ar & boost::serialization::make_nvp("normal",n_);
+					ar & boost::serialization::make_nvp("distance",d_);
+					ar & boost::serialization::make_nvp("velocity",velocity_);
+					ar & boost::serialization::make_nvp("density",density_);
+				}
 
 
 
-			neb::core::actor::util::flag				flag_;
-			::std::string						name_;
-			neb::core::pose						pose_;
-			/** @brief Normal for planes. */
-			vec3							n_;
-			/** @brief Distance for planes. */
-			float							d_;
-			vec3							velocity_;
-			float							density_;
 
 
-			double							health_;
+				neb::core::actor::util::flag				flag_;
+				::std::string						name_;
+				neb::core::pose						pose_;
+				/** @brief Normal for planes. */
+				vec3							n_;
+				/** @brief Distance for planes. */
+				float							d_;
+				vec3							velocity_;
+				float							density_;
 
 
-			sp::shared_ptr<neb::gfx::core::actor::base>		actor_gfx_;
-		public:
-			/** @brief Parent */
-			sp::weak_ptr<neb::core::actor::util::parent>		parent_;
-	};
-}}}
+				double							health_;
+
+
+				sp::shared_ptr<neb::gfx::core::actor::base>		actor_gfx_;
+			public:
+				/** @brief Parent */
+				sp::weak_ptr<neb::core::actor::util::parent>		parent_;
+		};
+	}}}
 
 #endif
 
