@@ -1,4 +1,4 @@
-#include <neb/app/Base.hh>
+#include <neb/app/base.hpp>
 #include <neb/gfx/Camera/View/Base.hh>
 #include <neb/gfx/glsl/Uniform/scalar.hpp>
 

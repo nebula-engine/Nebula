@@ -3,7 +3,7 @@
 #include <gal/log/log.hpp>
 
 #include <neb/debug.hh>
-#include <neb/app/__base.hpp>
+#include <neb/core/app/__base.hpp>
 
 void		neb::app::__base::init() {
 	
