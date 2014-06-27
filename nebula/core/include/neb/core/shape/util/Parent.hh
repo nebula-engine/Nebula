@@ -16,11 +16,11 @@
 */
 //#include <neb/config.hh> // Nebula/config.hpp.in
 
-#include <neb/core/actor/Util/Types.hh>
-#include <neb/core/actor/Util/Cast.hh>
+#include <neb/core/actor/util/Types.hh>
+#include <neb/core/actor/util/Cast.hh>
 
-//#include <neb/core/shape/Util/Types.hh>
-#include <neb/core/shape/Util/Cast.hh>
+//#include <neb/core/shape/util/Types.hh>
+#include <neb/core/shape/util/Cast.hh>
 
 
 #include <Galaxy-Standard/shared.hpp>

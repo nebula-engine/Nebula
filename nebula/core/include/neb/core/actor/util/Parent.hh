@@ -12,8 +12,8 @@
 
 
 #include <neb/core/actor/__base.hpp>
-#include <neb/core/actor/Util/Types.hh>
-#include <neb/core/actor/Util/Cast.hh>
+#include <neb/core/actor/util/Types.hh>
+#include <neb/core/actor/util/Cast.hh>
 
 //#include <neb/gfx/material.hh>
 //#include <neb/gfx/mesh.hh>

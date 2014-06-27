@@ -12,7 +12,7 @@
 //#include <PxPhysicsAPI.h>
 
 //#include <neb/config.hh> // Nebula/config.hpp.in
-//#include <neb/core/actor/Util/desc.hh>
+//#include <neb/core/actor/util/desc.hh>
 
 //#include <neb/math/Serialization.hh>
 
@@ -23,16 +23,16 @@
 //#include <neb/gfx/material.hh>
 
 #include <neb/core/shape/base.hpp>
-#include <neb/core/shape/Util/Parent.hh>
+#include <neb/core/shape/util/Parent.hh>
 #include <neb/core/actor/__base.hpp>
-#include <neb/core/actor/Util/Types.hh>
-#include <neb/core/actor/Util/Flag.hh>
-#include <neb/core/actor/Util/Parent.hh>
+#include <neb/core/actor/util/Types.hh>
+#include <neb/core/actor/util/Flag.hh>
+#include <neb/core/actor/util/Parent.hh>
 #include <neb/core/pose.hpp>
 
 
 #include <neb/core/shape/base.hpp>
-#include <neb/core/shape/Util/Parent.hh>
+#include <neb/core/shape/util/Parent.hh>
 
 namespace neb { 
 

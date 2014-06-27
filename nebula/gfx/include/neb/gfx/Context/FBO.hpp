@@ -7,7 +7,7 @@
 #include <neb/util/decl.hpp> // gru/config.hpp.in
 
 #include <neb/gfx/util/decl.hpp>
-#include <neb/gfx/Context/Util/Cast.hh>
+#include <neb/gfx/Context/util/Cast.hh>
 #include <neb/gfx/GUI/Layout/Base.hh>
 #include <neb/gfx/window/Base.hh>
 

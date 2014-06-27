@@ -3,7 +3,7 @@
 
 
 
-#include <neb/core/scene/Util/Parent.hh>
+#include <neb/core/scene/util/Parent.hh>
 
 namespace phx { namespace core { namespace scene { namespace util {
 

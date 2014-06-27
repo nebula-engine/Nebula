@@ -10,8 +10,8 @@
 //#include <neb/Physics.hh>
 //#include <neb/simulation_callback.hh>
 
-#include <neb/core/actor/Util/Types.hh>
-//#include <neb/core/actor/Control/Util/Types.hh>
+#include <neb/core/actor/util/Types.hh>
+//#include <neb/core/actor/Control/util/Types.hh>
 #include <neb/core/actor/RigidBody/Base.hh>
 #include <neb/core/actor/RigidDynamic/Local.hh>
 

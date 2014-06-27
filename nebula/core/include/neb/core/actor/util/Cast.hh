@@ -3,7 +3,7 @@
 
 #include <Galaxy-Standard/shared.hpp>
 
-#include <neb/core/actor/Util/Types.hh>
+#include <neb/core/actor/util/Types.hh>
 
 namespace neb { namespace core { namespace actor { namespace util {
 

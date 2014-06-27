@@ -12,7 +12,7 @@
 //#include <neb/gfx/window/util/signals.hpp>
 
 #include <neb/core/actor/base.hpp>
-#include <neb/core/actor/Util/Types.hh>
+#include <neb/core/actor/util/Types.hh>
 
 //#include <neb/gfx/window/Base.hh>
 //#include <neb/gfx/util/decl.hpp>
