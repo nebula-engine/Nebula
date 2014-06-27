@@ -8,10 +8,10 @@
 //#include <neb/config.hh>
 #include <neb/util/decl.hpp>
 #include <gal/std/timestep.hpp>
-#include <neb/core/scene/Util/Types.hh>
+#include <neb/core/scene/util/Types.hh>
 
 #include <neb/gfx/Context/Base.hh>
-#include <neb/gfx/Context/Util/Parent.hh>
+#include <neb/gfx/Context/util/Parent.hh>
 #include <neb/gfx/util/decl.hpp>
 #include <neb/gfx/texture.hh>
 //#include <neb/core/light/base.hpp>

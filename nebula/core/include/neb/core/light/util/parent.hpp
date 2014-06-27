@@ -2,7 +2,7 @@
 #define NEBULA_CORE_LIGHT_UTIL_PARENT_HH
 
 #include <neb/core/Pose.hh>
-#include <neb/core/shape/Util/Cast.hh>
+#include <neb/core/shape/util/Cast.hh>
 #include <neb/core/light/__base.hpp>
 #include <neb/util/parent.hpp>
 

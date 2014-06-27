@@ -15,7 +15,7 @@
 #include <neb/core/actor/RigidActor/Base.hh>
 #include <neb/core/actor/RigidBody/Base.hh>
 #include <neb/core/actor/Empty/Empty.hpp>
-#include <neb/core/actor/Util/Types.hh>
+#include <neb/core/actor/util/Types.hh>
 
 #include <neb/Filter.hh>
 #include <neb/gfx/window/Base.hh>

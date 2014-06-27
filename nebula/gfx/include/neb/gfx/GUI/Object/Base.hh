@@ -8,8 +8,8 @@
 #include <neb/util/shared.hpp>
 #include <neb/gfx/util/decl.hpp>
 #include <neb/gfx/Color/Color.hh>
-#include <neb/gfx/GUI/Object/Util/Parent.hh>
-#include <neb/gfx/GUI/Object/Util/flag.hpp>
+#include <neb/gfx/GUI/Object/util/Parent.hh>
+#include <neb/gfx/GUI/Object/util/flag.hpp>
 
 namespace neb {
 	namespace gfx {

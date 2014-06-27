@@ -1,5 +1,5 @@
-#include <neb/core/shape/Util/Types.hh>
-#include <neb/core/shape/Util/Cast.hh>
+#include <neb/core/shape/util/Types.hh>
+#include <neb/core/shape/util/Cast.hh>
 #include <neb/core/shape/base.hpp>
 
 

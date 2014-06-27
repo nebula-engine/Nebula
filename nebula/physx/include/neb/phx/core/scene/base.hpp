@@ -20,7 +20,7 @@
 
 
 //#include <neb/core/actor/base.hpp>
-#include <neb/core/actor/Util/Parent.hh>
+#include <neb/core/actor/util/Parent.hh>
 
 //#include <neb/gfx/Camera/View/Base.hh>
 

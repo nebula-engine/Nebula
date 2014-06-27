@@ -17,7 +17,7 @@
 #include <neb/gfx/Camera/Projection/Perspective.hh>
 
 
-#include <neb/core/actor/Util/Type.hh>
+#include <neb/core/actor/util/Type.hh>
 
 #include <neb/util/config.hh> // nebula/config.hpp.in
 #include <neb/app/Base.hh>

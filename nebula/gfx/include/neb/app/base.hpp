@@ -20,13 +20,13 @@
 #include <neb/app/__gfx_glsl.hpp>
 //#include <neb/app/__net.hpp>
 
-#include <neb/core/scene/Util/Parent.hh>
+#include <neb/core/scene/util/Parent.hh>
 
 #include <neb/gfx/util/decl.hpp>
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/window/util/Parent.hh>
-#include <neb/gfx/GUI/Layout/Util/Parent.hh>
-#include <neb/core/shape/Util/Types.hh>
+#include <neb/gfx/GUI/Layout/util/Parent.hh>
+#include <neb/core/shape/util/Types.hh>
 #include <neb/util/wrapper.hpp>
 #include <neb/game/game/util/parent.hpp>
 
