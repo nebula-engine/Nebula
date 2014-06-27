@@ -1,4 +1,6 @@
-#include <neb/app/__core.hpp>
+
+
+#include <neb/core/app/__core.hpp>
 
 void				neb::app::__core::init() {
 }
