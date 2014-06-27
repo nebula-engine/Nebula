@@ -6,7 +6,7 @@
 
 #include <PhysX/filter.hpp>
 #include <PhysX/app/base.hpp>
-#include <PhysX/core/actor/rigiddynamic/local.hpp>
+#include <PhysX/core/actor/rigiddynamic/base.hpp>
 #include <PhysX/core/scene/base.hpp>
 #include <PhysX/core/shape/box.hpp>
 #include <PhysX/game/weapon/SimpleProjectile.hpp>
@@ -20,7 +20,7 @@ void			phx::game::weapon::SimpleProjectile::connect(sp::shared_ptr<neb::gfx::win
 	
 	window->sig_.key_fun_.connect(
 			20,
-			neb::Signals::KeyFun::slot_type(
+			neb::gfx::window::signals::KeyFun::slot_type(
 				&phx::game::weapon::SimpleProjectile::key_fun,
 				self.get(),
 				_1,
@@ -63,7 +63,8 @@ void			phx::game::weapon::SimpleProjectile::fire() {
 
 	auto scene = actor->getPxParent()->getScene();
 
-	auto proj(sp::make_shared<phx::core::actor::rigiddynamic::local>(scene));
+	auto proj = ::std::dynamic_pointer_cast<phx::core::actor::rigiddynamic::base>(scene->createActorRigidDynamicUninitialized().lock());
+	assert(proj);
 
 	scene->insert(proj);
 
@@ -115,14 +116,8 @@ void			phx::game::weapon::SimpleProjectile::fire() {
 
 	proj->init();
 
-	// shape	
-	auto shape = sp::make_shared<phx::core::shape::box>(proj);
-	
-	proj->neb::core::shape::util::parent::insert(shape);
-	
-	shape->s_ = vec3(size_);
-	
-	shape->init();
+	// shape
+	auto shape = proj->createShapeBox(vec3(size_));
 
 	proj->setupFiltering();
 
@@ -131,9 +126,11 @@ void			phx::game::weapon::SimpleProjectile::fire() {
 	// release timer
 	
 	auto t = sp::make_shared<neb::Timer::actor::Release>(proj, scene->last_ + 5.0);
+
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb timer", debug) << t.use_count();
 	
 	t->activate();
+
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb timer", debug) << t.use_count();
 	
 	

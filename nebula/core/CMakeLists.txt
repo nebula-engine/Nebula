@@ -2,9 +2,14 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
 INCLUDE($ENV{HOME}/.config.cmake)
 
-PROJECT(nebula_core_shared)
+PROJECT(nebula_core)
+
+SET(nebula_core_SHARED TRUE)
+SET(nebula_core_STATIC TRUE)
 
 FIND_PACKAGE(glfw)
+FIND_PACKAGE(galaxy_log_shared)
+FIND_PACKAGE(galaxy_std_shared)
 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
@@ -70,7 +75,7 @@ SET(libs ${libs}
 # common methods for static library
 # =================================
 
-cmh_shared_library()
+cmh_library()
 
 #add_subdirectory(test)
 

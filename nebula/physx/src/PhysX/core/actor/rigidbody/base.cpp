@@ -24,6 +24,7 @@
 
 #include <neb/debug.hh>
 #include <neb/gfx/window/Base.hh>
+#include <neb/gfx/window/util/signals.hpp>
 
 #include <PhysX/util/convert.hpp>
 #include <PhysX/core/scene/base.hpp>
@@ -97,7 +98,7 @@ void		phx::core::actor::rigidbody::base::create_control(sp::shared_ptr<neb::gfx:
 	
 	control->conn_.key_fun_ = window->sig_.key_fun_.connect(
 			20,
-			neb::Signals::KeyFun::slot_type(
+			neb::gfx::window::signals::KeyFun::slot_type(
 				&phx::core::actor::control::rigidbody::base::key_fun,
 				control.get(),
 				_1,
