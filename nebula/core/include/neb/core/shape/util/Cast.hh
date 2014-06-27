@@ -3,7 +3,7 @@
 
 #include <Galaxy-Standard/shared.hpp>
 
-#include <neb/core/shape/Util/Types.hh>
+#include <neb/core/shape/util/Types.hh>
 
 namespace neb { namespace core { namespace shape { namespace util {
 

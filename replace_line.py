@@ -43,7 +43,7 @@ def replace(filename):
 	
 	
 	
-        text = re.sub("drawable/Base.hpp","drawable/base.hpp",text)
+        text = re.sub("/Util/","/util/",text)
 	
 	#text = re.sub("NEBULA_ACTOR_BASE_FUNC","if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, \"neb core actor\", debug) << __PRETTY_FUNCTION__", text)
 	
@@ -58,25 +58,20 @@ def replace(filename):
 
 
 
-for f in glob('include'):
-	replace(f)
-for f in glob('src'):
-	replace(f)
-for f in glob('test'):
-	replace(f)
+for f in glob('nebula/core/include'): replace(f)
+for f in glob('nebula/core/src'): replace(f)
+for f in glob('nebula/core/test'): replace(f)
 
-for f in glob('PhysX/include'):
-	replace(f)
-for f in glob('PhysX/src'):
-	replace(f)
-for f in glob('PhysX/test'):
-	replace(f)
+for f in glob('nebula/gfx/include'): replace(f)
+for f in glob('nebula/gfx/src'): replace(f)
+for f in glob('nebula/gfx/test'): replace(f)
 
-for f in glob('Nebula-Core/include'):
-	replace(f)
-for f in glob('Nebula-Core/src'):
-	replace(f)
-for f in glob('Nebula-Core/test'):
-	replace(f)
+for f in glob('nebula/physx/include'): replace(f)
+for f in glob('nebula/physx/src'): replace(f)
+for f in glob('nebula/physx/test'): replace(f)
+
+for f in glob('nebula/final/include'): replace(f)
+for f in glob('nebula/final/src'): replace(f)
+for f in glob('nebula/final/test'): replace(f)
 
 

@@ -8,7 +8,7 @@
 #include <PhysX/util/convert.hpp>
 
 #include <neb/debug.hh>
-#include <neb/core/scene/Util/Types.hh>
+#include <neb/core/scene/util/Types.hh>
 
 
 

@@ -4,7 +4,7 @@
 //#include <neb/app/Base.hh>
 
 #include <neb/core/actor/base.hpp>
-#include <neb/core/actor/Util/Parent.hh>
+#include <neb/core/actor/util/Parent.hh>
 #include <neb/core/scene/base.hpp>
 
 neb::core::actor::util::parent::parent() {

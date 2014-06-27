@@ -8,7 +8,7 @@
 
 
 //#include <neb/config.hh> // Nebula/config.hpp.in
-#include <neb/core/actor/Util/Types.hh>
+#include <neb/core/actor/util/Types.hh>
 
 /** @todo replace types with inheritance and possibly shared library support */
 

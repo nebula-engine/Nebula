@@ -16,7 +16,7 @@
 */
 #include <neb/util/config.hh> // Nebula/config.hpp.in
 
-#include <neb/core/shape/Util/Parent.hh>
+#include <neb/core/shape/util/Parent.hh>
 
 #include <neb/core/Pose.hh>
 

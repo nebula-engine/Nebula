@@ -4,7 +4,7 @@
 #include <memory>
 #include <map>
 
-#include <neb/core/actor/Util/Types.hh>
+#include <neb/core/actor/util/Types.hh>
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/Camera/View/Base.hh>
 //#include <neb/config.hh>
