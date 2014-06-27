@@ -1,4 +1,5 @@
 
+#include <neb/final/gfx_phx/core/actor/rigidstatic/base.hpp>
 #include <neb/final/gfx_phx/core/scene/base.hpp>
 
 ::std::weak_ptr<neb::core::actor::base>			neb::fin::gfx_phx::core::scene::base::createActorRigidStaticUninitialized() {
