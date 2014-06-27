@@ -1,6 +1,7 @@
 
+#include <neb/final/gfx_phx/core/actor/rigidactor/base.hpp>
 
-sp::weak_ptr<neb::core::shape::base>				phx::core::actor::rigidactor::base::createShapeBoxUninitialized() {
+::std::weak_ptr<neb::core::shape::base>				phx::core::actor::rigidactor::base::createShapeBoxUninitialized() {
 
 	auto self(isPxActorRigidActorBase());
 
@@ -10,7 +11,7 @@ sp::weak_ptr<neb::core::shape::base>				phx::core::actor::rigidactor::base::crea
 	
 	return shape;
 }
-sp::weak_ptr<neb::core::shape::base>                                    phx::core::actor::base::createShapeBox(glm::vec3 size) {
+::std::weak_ptr<neb::core::shape::base>				phx::core::actor::base::createShapeBox(glm::vec3 size) {
 
 	auto self(isActorRigidActor());
 
