@@ -17,7 +17,6 @@ FOREACH(c ${Galaxy_FIND_COMPONENTS})
 	LIST(FIND components "${c}" idx_${c})
 	
 	#MESSAGE(STATUS "idx_${c}: ${idx_${c}}")
-
 	
 	STRING(COMPARE EQUAL ${idx_${c}} "-1" not_${c})
 
@@ -30,10 +29,11 @@ FOREACH(c ${Galaxy_FIND_COMPONENTS})
 		FIND_PACKAGE(${pkg_name}_${c}${shared_postfix})
 
 
-		MESSAGE(STATUS "    libs: ${${pkg_name}_${c}_LIBRARIES}")
+		MESSAGE(STATUS "${pkg_name}_${c}_LIBRARIES ${${pkg_name}_${c}_LIBRARIES}")
 		
 		
-		SET(${pkg_name}_LIBRARIES
+		SET(
+			${pkg_name}_LIBRARIES
 			${${pkg_name}_LIBRARIES}
 			${${pkg_name}_${c}_LIBRARIES})
 
