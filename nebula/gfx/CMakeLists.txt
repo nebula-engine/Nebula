@@ -55,11 +55,9 @@ FIND_PACKAGE(Boost 1.55 COMPONENTS
 
 SET(libs ${libs}
 	${PROJECT_NAME}
-	nebula_core_shared
+	${Nebula_LIBRARIES}
 	maze
-	galaxy_std_shared
-	galaxy_log_shared
-	galaxy_console_shared
+	${Galaxy_LIBRARIES}
 	${Boost_LIBRARIES}
 	glfw
 	GL
@@ -75,6 +73,7 @@ SET(libs ${libs}
 	Xcursor
 	)
 
+MESSAGE(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
 
 
 # common methods for static library
