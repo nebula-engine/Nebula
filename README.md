@@ -3,9 +3,13 @@ Nebula
 
 3D Game Engine in C++
 
+## Components
+
+[Core](http://github.com/chuck1/Nebula-Core)
+
 ## Dependencies
 
-[GRU](http://github.com/chuck1/GRU)
+[glfw](http://github.com/glfw/glfw)
 
 ## Installation
 
