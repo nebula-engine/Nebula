@@ -20,3 +20,6 @@
 	path = components/net
 	url = https://chuck1@github.com/chuck1/Nebula-Network.git
 
+[submodule "external/Galaxy"]
+	path = external/Galaxy
+	url = https://chuck1@github.com/chuck1/Galaxy.git
