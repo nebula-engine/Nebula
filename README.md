@@ -1,28 +1,21 @@
-nebula
+Nebula
 ======
 
-3d game engine in c++
+3D Game Engine in C++
 
-[online documentation](http://chuck1.github.io/nebula/html/index.html)
+## Dependencies
 
-## installation
+[GRU](http://github.com/chuck1/GRU)
 
-requires [GRU](http://github.com/chuck1/GRU)
+## Installation
 
-    git clone github.com/chuck1/nebula.git
-    cd nebula
-    mkdir build
-    cd build
+    git clone github.com/chuck1/Nebula.git
+    cd Nebula
+    git submodule init
+    git submodule update
+    mkdir Debug
+    cd Debug
     cmake ..
     make install
-    make doc
 
-## TODO
-
-- position and orientation controller for free floating objects
-- waypoint system
-- computer players
-- computer player targetting and firing system
-- win/lose conditions
-- complete first version of interface
 

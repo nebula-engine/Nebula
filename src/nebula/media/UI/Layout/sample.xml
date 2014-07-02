@@ -1,5 +1,0 @@
-<Layout>
-    <Button name="exit" x="100" y="100" w="200" h="30">
-        Exit
-    </Button>
-</Layout>
