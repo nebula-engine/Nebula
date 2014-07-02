@@ -10,12 +10,6 @@
 [submodule "maze"]
 	path = maze
 	url = http://chuck1@github.com/chuck1/maze
-[submodule "nebula/python"]
-	path = nebula/python
-	url = https://github.com/chuck1/Nebula-Python
-[submodule "nebula/ext"]
-	path = nebula/ext
-	url = https://github.com/chuck1/Nebula-Ext
 [submodule "components/core"]
 	path = components/core
 	url = https://chuck1@github.com/chuck1/Nebula-Core.git
@@ -34,3 +28,7 @@
 [submodule "components/final"]
 	path = components/final
 	url = https://chuck1@github.com/chuck1/Nebula-Final.git
+[submodule "components/net"]
+	path = components/net
+	url = https://chuck1@github.com/chuck1/Nebula-Network.git
+
