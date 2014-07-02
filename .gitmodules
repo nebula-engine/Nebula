@@ -1,15 +1,3 @@
-[submodule "glfw"]
-	path = glfw
-	url = https://github.com/glfw/glfw.git
-[submodule "glm"]
-	path = glm
-	url = https://github.com/g-truc/glm.git
-[submodule "Galaxy"]
-	path = external/Galaxy
-	url = https://chuck1@github.com/chuck1/Galaxy.git
-[submodule "maze"]
-	path = maze
-	url = http://chuck1@github.com/chuck1/maze
 [submodule "components/core"]
 	path = components/core
 	url = https://chuck1@github.com/chuck1/Nebula-Core.git
