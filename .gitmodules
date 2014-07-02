@@ -16,3 +16,6 @@
 [submodule "nebula/ext"]
 	path = nebula/ext
 	url = https://github.com/chuck1/Nebula-Ext
+[submodule "components/core"]
+	path = components/core
+	url = https://chuck1@github.com/chuck1/Nebula-Core.git
