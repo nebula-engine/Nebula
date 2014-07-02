@@ -31,3 +31,6 @@
 [submodule "components/ext"]
 	path = components/ext
 	url = https://chuck1@github.com/chuck1/Nebula-Ext.git
+[submodule "components/final"]
+	path = components/final
+	url = https://chuck1@github.com/chuck1/Nebula-Final.git
