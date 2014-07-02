@@ -19,3 +19,15 @@
 [submodule "components/core"]
 	path = components/core
 	url = https://chuck1@github.com/chuck1/Nebula-Core.git
+[submodule "components/gfx"]
+	path = components/gfx
+	url = https://chuck1@github.com/chuck1/Nebula-Graphics.git
+[submodule "components/physx"]
+	path = components/physx
+	url = https://chuck1@github.com/chuck1/Nebula-PhysX.git
+[submodule "components/python"]
+	path = components/python
+	url = https://chuck1@github.com/chuck1/Nebula-Python.git
+[submodule "components/ext"]
+	path = components/ext
+	url = https://chuck1@github.com/chuck1/Nebula-Ext.git
