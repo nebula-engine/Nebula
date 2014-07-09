@@ -19,7 +19,13 @@
 [submodule "components/net"]
 	path = components/net
 	url = https://chuck1@github.com/chuck1/Nebula-Network.git
-
 [submodule "external/Galaxy"]
 	path = external/Galaxy
 	url = https://chuck1@github.com/chuck1/Galaxy.git
+
+[submodule "external/glfw"]
+	path = external/glfw
+	url = http://github.com/glfw/glfw.git
+[submodule "external/glm"]
+	path = external/glm
+	url = http://github.com/g-truc/glm
