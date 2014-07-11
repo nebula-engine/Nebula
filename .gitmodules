@@ -29,3 +29,6 @@
 [submodule "external/glm"]
 	path = external/glm
 	url = http://github.com/g-truc/glm
+[submodule "external/maze"]
+	path = external/maze
+	url = https://github.com/chuck1/maze
