@@ -25,7 +25,7 @@ if [ $? -ne 0 ]; then
 fi
 
 cmake -Hcomponents/python -Bcomponents/python/build/Shared/Debug
-make -j4 -C components/python/build/Shared/Debug --no-print-directory
+make -j4 -C components/python/build/Shared/Debug --no-print-directory install
 if [ $? -ne 0 ]; then
 	exit 1
 fi
