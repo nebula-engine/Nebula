@@ -12,7 +12,7 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-cmake -Hcomponents/gfx -Bcomponents/core/build/Shared/Debug
+cmake -Hcomponents/gfx -Bcomponents/gfx/build/Shared/Debug
 make -j4 -C components/gfx/build/Shared/Debug --no-print-directory
 if [ $? -ne 0 ]; then
 	exit 1
