@@ -42,4 +42,9 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
+cmake -Happs/box -Bapps/box/build/Shared/Debug
+make -j4 -C apps/box/build/Shared/Debug --no-print-directory
+if [ $? -ne 0 ]; then
+	exit 1
+fi
 
