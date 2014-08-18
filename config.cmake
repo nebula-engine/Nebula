@@ -12,4 +12,5 @@ SET(nebula_python_VERSION "0")
 SET(nebula_final_VERSION "0")
 SET(nebula_ext_VERSION "0")
 
+SET(box_VERSION "0")
 
