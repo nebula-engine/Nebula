@@ -24,7 +24,11 @@ FIND_PACKAGE(nebula 0 COMPONENTS
 
 ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
 
+
+
 INCLUDE(cmh_executable)
+
+#SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -v")
 
 
 add_custom_command(
