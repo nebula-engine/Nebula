@@ -1,7 +1,8 @@
 
-dirs = external/Galaxy/components/console components/core components/gfx components/physx components/python components/final components/ext apps/box
+dirs = external/Galaxy/components/log external/Galaxy/components/console components/core components/gfx components/physx components/python components/final components/ext apps/box
 
 all:
+	@$(MAKE) -C external/Galaxy/components/log/build/Shared/Debug --no-print-directory
 	@$(MAKE) -C external/Galaxy/components/console/build/Shared/Debug --no-print-directory
 	@$(MAKE) -C components/core/build/Shared/Debug --no-print-directory
 	@$(MAKE) -C components/gfx/build/Shared/Debug --no-print-directory
