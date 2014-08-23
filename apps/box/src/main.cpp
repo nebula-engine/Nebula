@@ -104,16 +104,20 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 	auto scene = app->createScene().lock();
 
 	// actors
-	
+
 	auto actor1 = scene->createActorRigidDynamicCube(neb::core::pose(vec3( -5, 0, 0)), 1.0).lock();
 	auto shape1 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::shape::box>(actor1->neb::core::core::shape::util::parent::map_.front());
-	if(shape1) shape1->mesh_->texture_ = neb::gfx::texture::makePNG("crab.png");
-	if(shape1) shape1->mesh_->material_front_.raw_.diffuse_ = neb::Color::color<float>(1,1,1,1);
-	
-	
+	if(shape1) {
+		auto mesh1 = shape1->mesh_;
+		if(mesh1) {
+			mesh1->texture_ = neb::gfx::texture::makePNG("crab.png");
+			mesh1->material_front_.raw_.diffuse_ = neb::Color::color<float>(1,1,1,1);
+		}
+	}
+
 	auto actor2 = scene->createActorRigidDynamicCube(neb::core::pose(vec3( 5, 0, 0)), 1.0).lock();
 	auto shape2 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::shape::box>(actor2->neb::core::core::shape::util::parent::map_.front());
-	if(shape2) shape2->mesh_->normal_map_ = neb::gfx::texture::makePNG("norm.png");
+	if(shape2) if(shape2->mesh_) shape2->mesh_->normal_map_ = neb::gfx::texture::makePNG("norm.png");
 
 
 	scene->createActorRigidDynamicCube(neb::core::pose(vec3( 0,-5, 0)), 1.0);
@@ -129,7 +133,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 	// player's actor
 	auto actor3 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
 			scene->createActorRigidDynamicCube(neb::core::pose(vec3( 0, 0, 0)), 1.0).lock());
-	
+
 	// weapon
 	auto weap = actor3->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
 
@@ -252,9 +256,9 @@ int			main() {
 
 	// create drawables
 	//shared_ptr<neb::fin::gfx_phx::core::actor::base> enemy;
-	
+
 	//auto scene = create_scene(window, context1, enemy);
-	
+
 	setup_game(game, window, context1);
 
 	auto layout = create_layout(window, context2);
