@@ -124,9 +124,6 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 5, 0)), 1.0);
 	auto static_cube5 = scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0,-5)), 1.0).lock();
 
-	// testing for multiple inheritance
-	auto test = static_cube5->gal::itf::shared::name();
-
 
 	//scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0, 5)), 1.0);
 
@@ -176,9 +173,7 @@ shared_ptr<neb::phx::game::map::base>			create_maze(
 	auto app = neb::fin::gfx_phx::app::base::global();
 
 	auto map = make_shared<neb::ext::maze::game::map::maze2>(app, ivec2(15,15));
-
 	app->neb::phx::core::scene::util::parent::insert(map);
-
 	map->init();
 
 	// player's actor
@@ -223,18 +218,17 @@ void						setup_game(
 	// scene
 	shared_ptr<neb::fin::gfx_phx::core::actor::base> enemy;
 
-	auto scene = create_scene(window, context, enemy);
+	//auto scene = create_scene(window, context, enemy);
+	auto scene = create_maze(window, context);
 
 	game->scene_ = scene;
 
 	// trigger
-	auto trig(make_shared<neb::game::trigger::ActorEx1>(game));
-
-	game->neb::game::trigger::util::parent::insert(trig);
-
-	trig->connect(enemy);
-
-	cout << "game use count " << game.use_count() << endl;
+	if(enemy) {
+		auto trig(make_shared<neb::game::trigger::ActorEx1>(game));
+		game->neb::game::trigger::util::parent::insert(trig);
+		trig->connect(enemy);
+	}
 }
 int			main() {
 
