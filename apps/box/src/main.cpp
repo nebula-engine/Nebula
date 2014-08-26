@@ -111,7 +111,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 		auto mesh1 = shape1->mesh_;
 		if(mesh1) {
 			mesh1->texture_ = neb::gfx::texture::makePNG("crab.png");
-			mesh1->material_front_.raw_.diffuse_ = neb::Color::color<float>(1,1,1,1);
+			mesh1->material_front_.raw_.diffuse_ = neb::core::color::color(1,1,1,1);
 		}
 	}
 
