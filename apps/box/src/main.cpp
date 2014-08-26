@@ -76,18 +76,9 @@ weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(
 	pxrd->setLinearDamping(5.0);
 	pxrd->setAngularDamping(3.0);
 
-	// control
 
-	auto control(make_shared<neb::phx::core::actor::control::rigidbody::pd>());
 
-	actor->control_ = control;
-
-	control->actor_ = actor;//->isPxActorRigidBodyBase();
-
-	// target
-	control->p_target_ = vec3(0,0,5);
-
-	control->q_target_ = glm::angleAxis(1.5f, vec3(0.0,1.0,0.0));
+	actor->createControlPD();
 	
 	return actor;	
 }
@@ -234,12 +225,7 @@ int			main() {
 
 	auto app = neb::fin::gfx_phx::app::base::init();
 
-	// window	
-	auto window = sp::make_shared<neb::gfx::window::base>();
-
-	app->neb::gfx::window::util::parent::insert(window);
-
-	window->init();
+	auto window = app->createWindow().lock();
 
 	// context
 	auto context1 = window->createContextThree().lock();
@@ -259,6 +245,8 @@ int			main() {
 
 	app->loop();
 }
+
+
 
 
 
