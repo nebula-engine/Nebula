@@ -5,7 +5,7 @@ Nebula
 
 ## Components
 
-[Core](http://github.com/chuck1/Nebula-Core)
+[core](http://github.com/chuck1/Nebula-Core)
 
 ## Dependencies
 
