@@ -1,6 +1,6 @@
 
 SET(glfw_LIBRARIES 
-	glfw3
+	glfw
 	GL
 	GLU
 	GLEW
@@ -11,6 +11,8 @@ SET(glfw_LIBRARIES
 	X11
 	Xrandr
 	Xi
-	Xcursor)
+	Xcursor
+	Xxf86vm
+	)
 
 
