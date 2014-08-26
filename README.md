@@ -10,6 +10,7 @@ Nebula
 ## Dependencies
 
 [glfw](http://github.com/glfw/glfw)
+[glm](http://github.com/g-truc/glm)
 
 ## Installation
 
