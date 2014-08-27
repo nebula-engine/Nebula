@@ -5,7 +5,7 @@ all:
 	@$(MAKE) -C external/Galaxy/components/std/build/Shared/Debug --no-print-directory
 	@$(MAKE) -C external/Galaxy/components/log/build/Shared/Debug --no-print-directory
 	@$(MAKE) -C external/Galaxy/components/console/build/Shared/Debug --no-print-directory
-	@$(MAKE) -C external/maze/build/Shared/Debug --no-print-directory
+	@$(MAKE) -C external/maze/build/Shared/Debug --no-print-directory install
 	@$(MAKE) -C components/core/build/Shared/Debug --no-print-directory
 	@$(MAKE) -C components/gfx/build/Shared/Debug --no-print-directory
 	@$(MAKE) -C components/physx/build/Shared/Debug --no-print-directory
