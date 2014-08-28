@@ -18,6 +18,7 @@
 #include <neb/gfx/environ/two.hpp>
 #include <neb/gfx/environ/shadow_directional.hpp>
 #include <neb/gfx/environ/three.hpp>
+#include <neb/gfx/environ/vis_depth.hpp>
 #include <neb/gfx/gui/object/terminal.hh>
 #include <neb/gfx/camera/view/ridealong.hh>
 
@@ -40,19 +41,31 @@
 #include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 
+typedef std::shared_ptr<neb::gfx::window::base> window_shared;
+
+std::shared_ptr<neb::fin::gfx_phx::app::base>		app;
+
+window_shared						window0;
+std::shared_ptr<neb::gfx::context::window>		context1;
+std::shared_ptr<neb::gfx::context::window>		context2;
+
+window_shared						window1;
+std::shared_ptr<neb::gfx::context::window>		context1_0;
+
+std::shared_ptr<neb::gfx::context::fbo>			contextFBO;
+std::shared_ptr<neb::gfx::environ::shadow_directional>	environFBO;
 std::shared_ptr<neb::gfx::core::light::directional>	light0;
+std::shared_ptr<neb::fin::gfx_phx::core::scene::base>	scene;
 
-shared_ptr<neb::gfx::gui::layout::base>	create_layout(
-		std::shared_ptr<neb::gfx::window::base> window,
-		std::shared_ptr<neb::gfx::context::window> context) {
+shared_ptr<neb::gfx::gui::layout::base>	create_layout() {
 
+	assert(window0);
+	
 	auto app = neb::fin::gfx_phx::app::base::global();
 	
 	auto layout = app->createLayout().lock();
 
-	context->setDrawable(layout);
-
-	layout->connect(window);
+	layout->connect(window0);
 
 	layout->createObjectTerminal();
 
@@ -98,7 +111,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 	assert(app);
 	
 
-	auto scene = app->createScene().lock();
+	scene = app->createScene().lock();
 
 	// actors
 
@@ -181,9 +194,10 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	return scene;
 }
-shared_ptr<neb::phx::game::map::base>			create_maze(
-		shared_ptr<neb::gfx::window::base> window,
-		shared_ptr<neb::gfx::context::window> context) {
+shared_ptr<neb::phx::game::map::base>			create_maze()
+{
+	assert(window0);
+	assert(context1);
 
 	auto app = neb::fin::gfx_phx::app::base::global();
 
@@ -200,7 +214,7 @@ shared_ptr<neb::phx::game::map::base>			create_maze(
 			);
 
 	// weapon
-	auto weap = actor3->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
+	auto weap = actor3->createWeaponSimpleProjectile(window0, 0.2, 10.0, 5.0);
 
 	// lights
 	auto actor4 = map->createActorLightDirectional(vec3(0,1,-1)).lock();
@@ -212,13 +226,12 @@ shared_ptr<neb::phx::game::map::base>			create_maze(
 
 	// give scene to context
 
-	context->environ_->drawable_ = map;
 
 	// camera
 
-	actor3->createControlManual(window);
+	actor3->createControlManual(window0);
 
-	context->environ_->isEnvironThree()->createViewridealong(actor3);
+	context1->environ_->isEnvironThree()->createViewridealong(actor3);
 
 	return map;
 }
@@ -233,16 +246,16 @@ weak_ptr<neb::phx::game::game::base>		create_game() {
 
 	return game;
 }
-std::shared_ptr<neb::fin::gfx_phx::core::scene::base>		setup_game(
-		shared_ptr<neb::phx::game::game::base> game,
-		shared_ptr<neb::gfx::window::base> window,
-		shared_ptr<neb::gfx::context::window> context)
+void		setup_game()
 {
+
+	auto game = create_game().lock();
+
 	// scene
 	shared_ptr<neb::fin::gfx_phx::core::actor::base> enemy;
 
 	//auto scene = create_scene(window, context, enemy);
-	auto scene = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(create_maze(window, context));
+	scene = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(create_maze());
 	assert(scene);
 
 	game->scene_ = scene;
@@ -254,42 +267,86 @@ std::shared_ptr<neb::fin::gfx_phx::core::scene::base>		setup_game(
 		trig->connect(enemy);
 	}
 
-	return scene;
+}
+void			createShadowFBO()
+{
+	auto window2 = app->createWindow().lock();
+
+	contextFBO = window2->createContextFBO().lock();
+	
+	environFBO = contextFBO->createEnvironShadowDirectional().lock();
+	
+	contextFBO->setDrawable(scene);
+	
+	environFBO->light_ = light0;
+	light0->setShadowEnviron(environFBO);
+
+
+	
+
+
+	auto window1 = app->createWindow().lock();
+	auto context4 = window1->createContextTwo().lock();
+	context4->setDrawable(contextFBO->texture_);
+
+}
+void				createWindow0() {
+
+	assert(app);
+	
+	window0 = app->createWindow().lock();
+	
+	context1 = window0->createContextThree().lock();
+	context2 = window0->createContextTwo().lock();
+	
+	auto layout = create_layout();
+
+	context2->setDrawable(layout);
+	
+}
+void				createWindow1() {
+
+	assert(app);
+	assert(scene);
+	
+	window1 = app->createWindow().lock();
+	
+	context1_0 = window1->createContextWindow().lock();
+	
+	auto environ = context1_0->createEnvironVisDepth().lock();
+
+	environ->light_ = light0;
+
+	context1_0->setDrawable(scene);
+}
+void				setupWindow0() {
+	assert(scene);
+	assert(context1);
+	context1->setDrawable(scene);
 }
 int			main() {
 
-	auto app = neb::fin::gfx_phx::app::base::init();
+	app = neb::fin::gfx_phx::app::base::init();
 
-	auto window0 = app->createWindow().lock();
-	auto window1 = app->createWindow().lock();
+	createWindow0();
 
 	// context
-	auto context1 = window0->createContextThree().lock();
-	auto context2 = window0->createContextTwo().lock();
 	
-	auto context3 = app->createContextFBO().lock();
-	auto environ3 = context3->createEnvironShadowDirectional().lock();
 	
-	auto context4 = window1->createContextTwo().lock();
-	context4->setDrawable(context3->texture_);
-
 	// game
-	auto game = create_game().lock();
 
 	// create drawables
 	//shared_ptr<neb::fin::gfx_phx::core::actor::base> enemy;
 
 	//auto scene = create_scene(window, context1, enemy);
 
-	auto scene = setup_game(game, window0, context1);
+	setup_game();
+
+	setupWindow0();
 	
-	context3->setDrawable(scene);
+	createWindow1();
 
-
-	auto layout = create_layout(window0, context2);
-
-	environ3->light_ = light0;
-
+	createShadowFBO();
 
 	app->loop();
 }
