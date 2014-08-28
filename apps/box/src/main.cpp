@@ -270,6 +270,8 @@ void		setup_game()
 }
 void			createShadowFBO()
 {
+	assert(scene);
+
 	auto window2 = app->createWindow().lock();
 
 	contextFBO = window2->createContextFBO().lock();
@@ -278,6 +280,8 @@ void			createShadowFBO()
 	
 	contextFBO->setDrawable(scene);
 	
+	scene->tex_shadow_map_ = contextFBO->texture_;
+
 	environFBO->light_ = light0;
 	light0->setShadowEnviron(environFBO);
 
