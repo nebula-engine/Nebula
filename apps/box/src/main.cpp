@@ -16,7 +16,7 @@
 #include <neb/gfx/Context/Window.hpp>
 #include <neb/gfx/Context/fbo.hpp>
 #include <neb/gfx/environ/two.hpp>
-#include <neb/gfx/environ/shadow_directional.hpp>
+#include <neb/gfx/environ/shadow/directional.hpp>
 #include <neb/gfx/environ/three.hpp>
 #include <neb/gfx/environ/vis_depth.hpp>
 #include <neb/gfx/gui/object/terminal.hh>
@@ -280,7 +280,7 @@ void			createShadowFBO()
 	
 	contextFBO->setDrawable(scene);
 	
-	scene->tex_shadow_map_ = contextFBO->texture_;
+	contextFBO->texture_ = scene->tex_shadow_map_;
 
 	environFBO->light_ = light0;
 	light0->setShadowEnviron(environFBO);
@@ -291,7 +291,7 @@ void			createShadowFBO()
 
 	auto window1 = app->createWindow().lock();
 	auto context4 = window1->createContextTwo().lock();
-	context4->setDrawable(contextFBO->texture_);
+	context4->setDrawable(scene->tex_shadow_map_);
 
 }
 void				createWindow0() {
