@@ -13,9 +13,12 @@
 
 #include <neb/gfx/core/light/util/decl.hpp>
 #include <neb/gfx/core/light/directional.hpp>
+#include <neb/gfx/core/light/point.hpp>
 #include <neb/gfx/Context/Window.hpp>
 #include <neb/gfx/Context/fbo.hpp>
+#include <neb/gfx/Context/fbo_multi.hpp>
 #include <neb/gfx/environ/two.hpp>
+#include <neb/gfx/environ/shadow/point.hpp>
 #include <neb/gfx/environ/shadow/directional.hpp>
 #include <neb/gfx/environ/three.hpp>
 #include <neb/gfx/environ/vis_depth.hpp>
@@ -43,6 +46,7 @@
 
 typedef std::shared_ptr<neb::gfx::window::base> window_shared;
 
+
 std::shared_ptr<neb::fin::gfx_phx::app::base>		app;
 
 window_shared						window0;
@@ -52,9 +56,7 @@ std::shared_ptr<neb::gfx::context::window>		context2;
 window_shared						window1;
 std::shared_ptr<neb::gfx::context::window>		context1_0;
 
-std::shared_ptr<neb::gfx::context::fbo>			contextFBO;
-std::shared_ptr<neb::gfx::environ::shadow_directional>	environFBO;
-std::shared_ptr<neb::gfx::core::light::directional>	light0;
+
 std::shared_ptr<neb::fin::gfx_phx::core::scene::base>	scene;
 
 shared_ptr<neb::gfx::gui::layout::base>	create_layout() {
@@ -217,12 +219,13 @@ shared_ptr<neb::phx::game::map::base>			create_maze()
 	auto weap = actor3->createWeaponSimpleProjectile(window0, 0.2, 10.0, 5.0);
 
 	// lights
-	auto actor4 = map->createActorLightDirectional(vec3(0,1,-1)).lock();
-	//auto shape4 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::shape::box>(actor4->neb::core::core::shape::util::parent::map_.front());
-	auto shape4 = actor4->neb::core::core::shape::util::parent::map_.front();
-	assert(shape4);
-	light0 = std::dynamic_pointer_cast<neb::gfx::core::light::directional>(shape4->neb::core::core::light::util::parent::map_.front());
-	assert(light0);
+	//auto actor4 = map->createActorLightDirectional(glm::vec3(0,1,-1)).lock();
+	auto actor4 = map->createActorLightPoint(glm::vec3(0,0,-10)).lock();
+
+	//auto shape4 = actor4->neb::core::core::shape::util::parent::map_.front();
+	//assert(shape4);
+	//light0 = std::dynamic_pointer_cast<light_type>(shape4->neb::core::core::light::util::parent::map_.front());
+	//assert(light0);
 
 	// give scene to context
 
@@ -268,31 +271,11 @@ void		setup_game()
 	}
 
 }
-void			createShadowFBO()
+void				createWindowTexVis(std::shared_ptr<neb::gfx::texture> tex)
 {
-	assert(scene);
-
-	auto window2 = app->createWindow().lock();
-
-	contextFBO = window2->createContextFBO().lock();
-	
-	environFBO = contextFBO->createEnvironShadowDirectional().lock();
-	
-	contextFBO->setDrawable(scene);
-	
-	contextFBO->texture_ = scene->tex_shadow_map_;
-
-	environFBO->light_ = light0;
-	light0->setShadowEnviron(environFBO);
-
-
-	
-
-
 	auto window1 = app->createWindow().lock();
 	auto context4 = window1->createContextTwo().lock();
-	context4->setDrawable(scene->tex_shadow_map_);
-
+	context4->setDrawable(tex);
 }
 void				createWindow0() {
 
@@ -308,8 +291,8 @@ void				createWindow0() {
 	context2->setDrawable(layout);
 	
 }
-void				createWindow1() {
-
+/*void				createWindow1()
+{
 	assert(app);
 	assert(scene);
 	
@@ -322,7 +305,7 @@ void				createWindow1() {
 	environ->light_ = light0;
 
 	context1_0->setDrawable(scene);
-}
+}*/
 void				setupWindow0() {
 	assert(scene);
 	assert(context1);
@@ -334,9 +317,6 @@ int			main() {
 
 	createWindow0();
 
-	// context
-	
-	
 	// game
 
 	// create drawables
@@ -348,9 +328,9 @@ int			main() {
 
 	setupWindow0();
 	
-	createWindow1();
+	//createWindow1();
 
-	createShadowFBO();
+	createWindowTexVis(scene->tex_shadow_map_);
 
 	app->loop();
 }
