@@ -203,7 +203,9 @@ shared_ptr<neb::phx::game::map::base>			create_maze()
 
 	auto app = neb::fin::gfx_phx::app::base::global();
 
-	auto map = make_shared<neb::ext::maze::game::map::maze2>(app, ivec2(15,15));
+	typedef neb::ext::maze::game::map::maze2 map_type;
+
+	std::shared_ptr<map_type> map(new map_type(app, glm::ivec3(6,6,6)));
 	app->neb::phx::core::scene::util::parent::insert(map);
 	map->init();
 
@@ -282,12 +284,12 @@ void				createWindow0() {
 	assert(app);
 	
 	window0 = app->createWindow().lock();
-	
+
 	context1 = window0->createContextThree().lock();
 	context2 = window0->createContextTwo().lock();
-	
-	auto layout = create_layout();
 
+	auto layout = create_layout();
+	
 	context2->setDrawable(layout);
 	
 }
