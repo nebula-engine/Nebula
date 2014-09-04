@@ -2,6 +2,8 @@
 SET(maze_VERSION "0")
 
 SET(galaxy_std_VERSION "0")
+SET(test_map_VERSION "0")
+
 SET(galaxy_log_VERSION "0")
 SET(galaxy_console_VERSION "0")
 
