@@ -313,6 +313,11 @@ void				setupWindow0() {
 	assert(context1);
 	context1->setDrawable(scene);
 }
+void			cleanup()
+{
+	app->neb::core::core::scene::util::parent::map_.clear();
+
+}
 int			main() {
 
 	app = neb::fin::gfx_phx::app::base::init();
@@ -329,12 +334,16 @@ int			main() {
 	setup_game();
 
 	setupWindow0();
-	
+
 	//createWindow1();
 
 	createWindowTexVis(scene->tex_shadow_map_);
 
 	app->loop();
+
+	cleanup();
+	app.reset();
+	neb::fin::gfx_phx::app::base::g_app_.reset();
 }
 
 
