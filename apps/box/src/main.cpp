@@ -235,7 +235,7 @@ shared_ptr<neb::phx::game::map::base>			create_maze()
 
 	// lights
 	//auto actor4 = map->createActorLightDirectional(glm::vec3(0,1,-1)).lock();
-	actor_light = map->createActorLightPoint(glm::vec3(10,0,0)).lock();
+	actor_light = map->createActorLightPoint(glm::vec3(0,0,40)).lock();
 
 	//auto shape4 = actor4->neb::core::core::shape::util::parent::map_.front();
 	//assert(shape4);
@@ -352,7 +352,7 @@ void queryproj()
 
 	int hits = 0;
 
-	for(int i = 0; i < 1000; i++) {
+/*	for(int i = 0; i < 1000; i++) {
 		sw.start(glfwGetTime());
 		if(query(g0, e0->view_->view(), g1, e1->view_[0]->view())) hits++;
 		if(query(g0, e0->view_->view(), g1, e1->view_[1]->view())) hits++;
@@ -361,7 +361,7 @@ void queryproj()
 		if(query(g0, e0->view_->view(), g1, e1->view_[4]->view())) hits++;
 		if(query(g0, e0->view_->view(), g1, e1->view_[5]->view())) hits++;
 		sw.stop(glfwGetTime());
-	}
+	}*/
 	res = query(g0, e0->view_->view(), g1, e1->view_[0]->view());std::cout << "query " << res << std::endl;
 	res = query(g0, e0->view_->view(), g1, e1->view_[1]->view());std::cout << "query " << res << std::endl;
 	res = query(g0, e0->view_->view(), g1, e1->view_[2]->view());std::cout << "query " << res << std::endl;
@@ -394,10 +394,9 @@ int			main() {
 
 	createWindowTexVis(scene->tex_shadow_map_);
 
-	queryproj();
+	//queryproj();
 
-	return 0;	
-
+	//return 0;	
 
 
 
