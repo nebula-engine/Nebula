@@ -4,7 +4,7 @@ build_dir = build/Shared/Debug
 all:
 	@$(MAKE) -C $(build_dir) --no-print-directory
 cmake:
-	@cmake -H -B$(build_dir)
+	@cmake -H. -B$(build_dir)
 
 clean:
 	@$(MAKE) clean -C $(build_dir) --no-print-directory
