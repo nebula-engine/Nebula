@@ -374,8 +374,8 @@ void queryproj()
 	auto e0 = neb::is<neb::gfx::environ::base, neb::gfx::environ::three>(context1->environ_);
 	auto e1 = neb::is<neb::gfx::environ::base, neb::gfx::environ::shadow::point>(l->shadow_environ_);
 
-	physx::PxConvexMeshGeometry g0 = neb::frustrum_geometry(e0->proj_->proj());
-	physx::PxConvexMeshGeometry g1 = neb::frustrum_geometry(e1->proj_->proj());
+	physx::PxConvexMeshGeometry* g0 = neb::frustrum_geometry(e0->proj_->proj());
+	physx::PxConvexMeshGeometry* g1 = neb::frustrum_geometry(e1->proj_->proj());
 
 	bool res;
 
@@ -393,12 +393,12 @@ void queryproj()
 		if(query(g0, e0->view_->view(), g1, e1->view_[5]->view())) hits++;
 		sw.stop(glfwGetTime());
 	}*/
-	res = neb::query(g0, e0->view_->view(), g1, e1->view_[0]->view());std::cout << "query " << res << std::endl;
-	res = neb::query(g0, e0->view_->view(), g1, e1->view_[1]->view());std::cout << "query " << res << std::endl;
-	res = neb::query(g0, e0->view_->view(), g1, e1->view_[2]->view());std::cout << "query " << res << std::endl;
-	res = neb::query(g0, e0->view_->view(), g1, e1->view_[3]->view());std::cout << "query " << res << std::endl;
-	res = neb::query(g0, e0->view_->view(), g1, e1->view_[4]->view());std::cout << "query " << res << std::endl;
-	res = neb::query(g0, e0->view_->view(), g1, e1->view_[5]->view());std::cout << "query " << res << std::endl;
+	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[0]->view());std::cout << "query " << res << std::endl;
+	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[1]->view());std::cout << "query " << res << std::endl;
+	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[2]->view());std::cout << "query " << res << std::endl;
+	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[3]->view());std::cout << "query " << res << std::endl;
+	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[4]->view());std::cout << "query " << res << std::endl;
+	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[5]->view());std::cout << "query " << res << std::endl;
 
 	std::cout << hits << " " << sw.getAvg() << std::endl;
 
