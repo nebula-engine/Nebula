@@ -36,7 +36,7 @@
 #include <neb/core/game/map/base.hpp>
 #include <neb/core/game/trigger/ActorEx1.hpp>
 
-#include <neb/ext/maze/game/map/maze2.hpp>
+//#include <neb/ext/maze/game/map/maze2.hpp>
 
 #include <neb/phx/app/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
@@ -45,7 +45,7 @@
 #include <neb/phx/core/actor/control/rigidbody/base.hpp>
 #include <neb/phx/test.hpp>
 
-#include <neb/ext/maze/game/map/maze2.hpp>
+//#include <neb/ext/maze/game/map/maze2.hpp>
 
 #include <neb/fin/gfx_phx/app/base.hpp>
 #include <neb/fin/gfx_phx/core/scene/base.hpp>
@@ -61,8 +61,10 @@ typedef std::shared_ptr<neb::gfx::window::base> window_shared;
 typedef neb::gfx::core::light::point		light_type;
 typedef neb::game::game::base			game_t;
 
-//typedef neb::fin::gfx_phx::core::scene::base	map_type;
-typedef neb::ext::maze::game::map::maze2	map_type;
+typedef neb::fin::gfx_phx::core::scene::base	map_type;
+//typedef neb::ext::maze::game::map::maze2	map_type;
+
+typedef std::shared_ptr<neb::fin::gfx_phx::core::scene::base>	scene_s;
 
 std::shared_ptr<game_t>			game;
 
@@ -228,7 +230,7 @@ void							create_enemy() {
 	ai->target_ = actor_player;
 
 }
-shared_ptr<neb::phx::game::map::base>			create_maze()
+scene_s		create_maze()
 {
 	assert(window0);
 	assert(context1);
@@ -237,20 +239,26 @@ shared_ptr<neb::phx::game::map::base>			create_maze()
 
 
 	// create map
-	std::shared_ptr<map_type> map(new map_type(app, glm::ivec3(1,1,1)));
-	app->neb::phx::core::scene::util::parent::insert(map);
-	map->init();
+	
+	//auto map = app->createSceneDll("../../components/ext/maze/libnebula_ext_maze_0_so_db.so").lock();
+	auto map = app->createSceneDll("../../components/ext/hf/libnebula_ext_hf_0_so_db.so").lock();
+	
+
+	
+	//std::shared_ptr<map_type> map(new map_type(app));
+	//app->neb::phx::core::scene::util::parent::insert(map);
+	//map->init();
 	
 	scene = map;
 
 	// player's actor
 	actor_player = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
 			map->createActorRigidDynamicCuboid(
-				neb::core::core::actor::rigidbody::desc(neb::core::pose(glm::vec3(0,0,30))),
+				neb::core::core::actor::rigidbody::desc(neb::core::pose(glm::vec3(0,0,0))),
 				neb::core::core::shape::cuboid::desc(glm::vec3(1.0))
 				).lock()
 			);
-	
+	actor_player->createShapeLightSpot(neb::core::pose(), glm::vec3(0,0,-1));
 	
 
 	// weapon
@@ -276,11 +284,11 @@ shared_ptr<neb::phx::game::map::base>			create_maze()
 	
 	context1->environ_->isEnvironThree()->createViewridealong(actor_player);
 	environ1 = context1->environ_->isEnvironThree();
-
-
+	
+	
 	light->initShadow(environ1);
-
-	create_enemy();
+	
+	//create_enemy();
 
 
 	return map;
