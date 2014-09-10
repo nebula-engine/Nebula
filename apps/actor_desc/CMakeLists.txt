@@ -4,7 +4,7 @@ INCLUDE($ENV{HOME}/.config.cmake)
 
 FIND_PACKAGE(CMakeHelper)
 
-PROJECT(box)
+PROJECT(actor_desc)
 INCLUDE(../../config.cmake)
 INCLUDE(cmh_build_config)
 
