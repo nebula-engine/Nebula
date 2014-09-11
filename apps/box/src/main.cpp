@@ -99,6 +99,8 @@ typedef neb::fin::gfx_phx::core::scene::base	map_type;
 
 typedef std::shared_ptr<neb::fin::gfx_phx::core::scene::base>	scene_s;
 
+typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base actor_dyn_t;
+
 std::shared_ptr<game_t>			game;
 
 std::shared_ptr<neb::fin::gfx_phx::core::actor::base>	enemy;
@@ -116,7 +118,9 @@ std::shared_ptr<neb::gfx::context::window>		context1_0;
 std::shared_ptr<neb::fin::gfx_phx::core::scene::base>			scene;
 //std::shared_ptr<neb::core::core::scene::base>			scene;
 
+
 std::shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>	actor_player;
+//std::shared_ptr<neb::core::core::actor::base>	actor_player;
 std::shared_ptr<neb::core::core::actor::base>				actor_light;
 
 shared_ptr<neb::gfx::gui::layout::base>	create_layout() {
@@ -279,18 +283,10 @@ scene_s		create_maze()
 	scene = map;
 
 	// player's actor
-	actor_player = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
-			map->createActorRigidDynamicCuboid(
-				neb::core::core::actor::rigidbody::desc(neb::core::pose(glm::vec3(0,0,0))),
-				neb::core::core::shape::cuboid::desc(glm::vec3(1.0))
-				).lock()
-			);
-	actor_player->createShapeLightSpot(neb::core::pose(), glm::vec3(0,0,-1));
+	actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::core::core::actor::base>("actor_player.xml"));
+	scene->addActor(actor_player);
 
-	auto actor_player_xml = loadXML<neb::fin::gfx_phx::core::actor::rigiddynamic::base>("actor_player.xml");
-	
-	scene->addActor(actor_player_xml);
-		
+
 
 	// weapon
 	if(window0)
@@ -438,6 +434,7 @@ int			main() {
 	makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::rigidbody::desc>();
 	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
 	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
 
 
@@ -446,7 +443,7 @@ int			main() {
 	app = neb::fin::gfx_phx::app::base::init();
 
 
-	//createWindow0();
+	createWindow0();
 
 	// game
 
