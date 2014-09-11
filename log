@@ -1,102 +1,12 @@
--- [1;34mgalaxy_std_0_so_db[m
--- Boost version: 1.55.0
--- Found the following Boost libraries:
---   system
---   thread
--- libs:           /scratch/usr/lib/libboost_system.so;/scratch/usr/lib/libboost_thread.so;pthread;rt;dl
--- [1;34mtest_map_0_so_db[m
--- [1;34mgalaxy_log_0_so_db[m
--- Boost version: 1.55.0
--- Found the following Boost libraries:
---   system
---   thread
--- libs:           /scratch/usr/lib/libboost_system.so;/scratch/usr/lib/libboost_thread.so;pthread;rt
--- [1;34mgalaxy_console_0_so_db[m
--- galaxy
---     galaxy_std_0_so_db
--- Boost version: 1.55.0
--- Found the following Boost libraries:
---   python
--- boost /scratch/usr/lib/libboost_python.so
--- libs:           galaxy_std_0_so_db;/scratch/usr/lib/libboost_system.so;/scratch/usr/lib/libboost_thread.so;pthread;rt;dl;/scratch/usr/lib/libboost_python.so;python2.7
--- [1;34mmaze_0_so_db[m
--- libs:           
--- [1;34mtest_maze_dfs_0_so_db[m
--- [1;34mnebula_core_0_so_db[m
--- galaxy
---     galaxy_log_0_so_db
---     galaxy_console_0_so_db
--- Boost version: 1.55.0
--- Found the following Boost libraries:
---   serialization
--- libs:           /scratch/usr/lib/libboost_serialization.so
--- [1;34mnebula_physx_0_so_db[m
--- galaxy
---     galaxy_std_0_so_db
---     galaxy_log_0_so_db
---     galaxy_console_0_so_db
--- nebula
---     nebula_core_0_so_db
--- Boost version: 1.55.0
--- Found the following Boost libraries:
---   program_options
---   serialization
---   log
---   system
---   thread
--- libs:           galaxy_std_0_so_db;/scratch/usr/lib/libboost_system.so;/scratch/usr/lib/libboost_thread.so;pthread;rt;dl;galaxy_log_0_so_db;galaxy_console_0_so_db;/scratch/usr/lib/libboost_python.so;python2.7;nebula_core_0_so_db;/scratch/usr/lib/libboost_serialization.so;/scratch/usr/lib/libboost_program_options.so;/scratch/usr/lib/libboost_serialization.so;/scratch/usr/lib/libboost_log.so;/scratch/usr/lib/libboost_system.so;/scratch/usr/lib/libboost_thread.so;LowLevelCHECKED;LowLevelClothCHECKED;PhysX3CHECKED;PhysX3CharacterKinematicCHECKED;PhysX3CommonCHECKED;PhysX3CookingCHECKED;PhysX3ExtensionsCHECKED;PhysX3VehicleCHECKED;PhysXProfileSDKCHECKED;PhysXVisualDebuggerSDKCHECKED;PvdRuntimeCHECKED;PxTaskCHECKED;SceneQueryCHECKED;SimulationControllerCHECKED
--- [1;34mnebula_python_0_so_db[m
--- Boost version: 1.55.0
--- Found the following Boost libraries:
---   system
---   thread
---   python
---   serialization
--- galaxy
---     galaxy_std_0_so_db
--- nebula
---     nebula_core_0_so_db
--- libs:           /scratch/usr/lib/libboost_system.so;/scratch/usr/lib/libboost_thread.so;/scratch/usr/lib/libboost_python.so;/scratch/usr/lib/libboost_serialization.so;python2.7;pthread
--- [1;34mnebula_final_0_so_db[m
--- galaxy
---     galaxy_std_0_so_db
---     galaxy_log_0_so_db
---     galaxy_console_0_so_db
--- nebula
---     nebula_core_0_so_db
---     nebula_physx_0_so_db
---     nebula_python_0_so_db
--- Boost version: 1.55.0
--- Found the following Boost libraries:
---   program_options
---   serialization
---   log
---   system
---   thread
--- libs:           nebula_core_0_so_db;/scratch/usr/lib/libboost_serialization.so;nebula_physx_0_so_db;galaxy_std_0_so_db;/scratch/usr/lib/libboost_system.so;/scratch/usr/lib/libboost_thread.so;pthread;rt;dl;galaxy_log_0_so_db;galaxy_console_0_so_db;/scratch/usr/lib/libboost_python.so;python2.7;/scratch/usr/lib/libboost_program_options.so;/scratch/usr/lib/libboost_log.so;LowLevelCHECKED;LowLevelClothCHECKED;PhysX3CHECKED;PhysX3CharacterKinematicCHECKED;PhysX3CommonCHECKED;PhysX3CookingCHECKED;PhysX3ExtensionsCHECKED;PhysX3VehicleCHECKED;PhysXProfileSDKCHECKED;PhysXVisualDebuggerSDKCHECKED;PvdRuntimeCHECKED;PxTaskCHECKED;SceneQueryCHECKED;SimulationControllerCHECKED;nebula_python_0_so_db;galaxy_std_0_so_db;/scratch/usr/lib/libboost_system.so;/scratch/usr/lib/libboost_thread.so;pthread;rt;dl;galaxy_log_0_so_db;galaxy_console_0_so_db;/scratch/usr/lib/libboost_python.so;python2.7;LowLevelCHECKED;LowLevelClothCHECKED;PhysX3CHECKED;PhysX3CharacterKinematicCHECKED;PhysX3CommonCHECKED;PhysX3CookingCHECKED;PhysX3ExtensionsCHECKED;PhysX3VehicleCHECKED;PhysXProfileSDKCHECKED;PhysXVisualDebuggerSDKCHECKED;PvdRuntimeCHECKED;PxTaskCHECKED;SceneQueryCHECKED;SimulationControllerCHECKED;/scratch/usr/lib/libboost_program_options.so;/scratch/usr/lib/libboost_serialization.so;/scratch/usr/lib/libboost_log.so;/scratch/usr/lib/libboost_system.so;/scratch/usr/lib/libboost_thread.so
--- [1;34mnebula_ext_0_so_db[m
--- galaxy
---     galaxy_std_0_so_db
---     galaxy_log_0_so_db
---     galaxy_console_0_so_db
--- nebula
---     nebula_core_0_so_db
---     nebula_physx_0_so_db
---     nebula_python_0_so_db
---     nebula_final_0_so_db
--- libs:           nebula_core_0_so_db;/scratch/usr/lib/libboost_serialization.so;nebula_physx_0_so_db;galaxy_std_0_so_db;/scratch/usr/lib/libboost_system.so;/scratch/usr/lib/libboost_thread.so;pthread;rt;dl;galaxy_log_0_so_db;galaxy_console_0_so_db;/scratch/usr/lib/libboost_python.so;python2.7;/scratch/usr/lib/libboost_program_options.so;/scratch/usr/lib/libboost_log.so;LowLevelCHECKED;LowLevelClothCHECKED;PhysX3CHECKED;PhysX3CharacterKinematicCHECKED;PhysX3CommonCHECKED;PhysX3CookingCHECKED;PhysX3ExtensionsCHECKED;PhysX3VehicleCHECKED;PhysXProfileSDKCHECKED;PhysXVisualDebuggerSDKCHECKED;PvdRuntimeCHECKED;PxTaskCHECKED;SceneQueryCHECKED;SimulationControllerCHECKED;nebula_python_0_so_db;nebula_final_0_so_db;galaxy_std_0_so_db;/scratch/usr/lib/libboost_system.so;/scratch/usr/lib/libboost_thread.so;pthread;rt;dl;galaxy_log_0_so_db;galaxy_console_0_so_db;/scratch/usr/lib/libboost_python.so;python2.7;glfw;GL;GLU;GLEW;freetype;png;rt;pthread;X11;Xrandr;Xi;Xcursor;Xxf86vm;maze_0_so_db
--- [1;34mbox_0_so_db[m
--- galaxy
---     galaxy_std_0_so_db
---     galaxy_log_0_so_db
---     galaxy_console_0_so_db
--- nebula
---     nebula_core_0_so_db
---     nebula_physx_0_so_db
---     nebula_python_0_so_db
---     nebula_final_0_so_db
---     nebula_ext_0_so_db
--- libs galaxy_std_0_so_db;/scratch/usr/lib/libboost_system.so;/scratch/usr/lib/libboost_thread.so;pthread;rt;dl;galaxy_log_0_so_db;galaxy_console_0_so_db;/scratch/usr/lib/libboost_python.so;python2.7;nebula_core_0_so_db;/scratch/usr/lib/libboost_serialization.so;nebula_physx_0_so_db;/scratch/usr/lib/libboost_program_options.so;/scratch/usr/lib/libboost_log.so;LowLevelCHECKED;LowLevelClothCHECKED;PhysX3CHECKED;PhysX3CharacterKinematicCHECKED;PhysX3CommonCHECKED;PhysX3CookingCHECKED;PhysX3ExtensionsCHECKED;PhysX3VehicleCHECKED;PhysXProfileSDKCHECKED;PhysXVisualDebuggerSDKCHECKED;PvdRuntimeCHECKED;PxTaskCHECKED;SceneQueryCHECKED;SimulationControllerCHECKED;nebula_python_0_so_db;nebula_final_0_so_db;nebula_ext_0_so_db;glfw;GL;GLU;GLEW;freetype;png;X11;Xrandr;Xi;Xcursor;Xxf86vm;maze_0_so_db
--- Configuring done
--- Generating done
--- Build files have been written to: /scratch/Programming/Nebula/build/Shared/Debug
+[  3%] Built target galaxy_std_0_so_db
+[  4%] Building CXX object external/Galaxy/components/std/test/stl/map/CMakeFiles/test_map_0_so_db.dir/src/main.cpp.o
+Linking CXX executable test_map_0_so_db
+[  4%] Built target test_map_0_so_db
+[  5%] Built target test_dll_sh1_0_so_db
+[  6%] Built target test_dll_sh2_0_so_db
+[  6%] Built target test_dll_prog
+[  6%] Built target galaxy_log_0_so_db
+[  8%] Built target galaxy_console_0_so_db
+[ 10%] Built target maze_0_so_db
+[ 12%] Built target test_maze_dfs_0_so_db
+[ 12%] Building CXX object components/core/CMakeFiles/nebula_core_0_so_db.dir/src/neb/core/core/light/util/parent.cpp.o
