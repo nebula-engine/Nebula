@@ -22,6 +22,7 @@
 #include <neb/gfx/core/light/util/decl.hpp>
 #include <neb/gfx/core/light/directional.hpp>
 #include <neb/gfx/core/light/point.hpp>
+#include <neb/gfx/core/light/spot.hpp>
 #include <neb/gfx/Context/Window.hpp>
 #include <neb/gfx/Context/fbo.hpp>
 #include <neb/gfx/Context/fbo_multi.hpp>
@@ -53,6 +54,20 @@
 #include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
 #include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
+
+template<typename B, typename D> void	makeDefaultFunc()
+{
+
+	gal::itf::shared::register_type(std::type_index(typeid(B)));
+	gal::itf::shared::register_type(std::type_index(typeid(D)));
+
+
+	std::function< std::shared_ptr<B>() > f(
+			[]() { return std::shared_ptr<D>(new D(), gal::stl::deleter<D>()); }
+			);
+
+	gal::stl::factory<B>::default_factory_->add(typeid(D).hash_code(), f);
+}
 
 
 void	create_enemy();
@@ -395,6 +410,14 @@ void queryproj()
 
 }
 int			main() {
+
+	makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::desc>();
+	makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::rigidbody::desc>();
+	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
+	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
+
+
 
 
 	app = neb::fin::gfx_phx::app::base::init();
