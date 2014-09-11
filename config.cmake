@@ -23,5 +23,9 @@ SET(nebula_ext_maze_VERSION "0")
 SET(nebula_ext_hf_VERSION "0")
 
 SET(actor_desc_VERSION "0")
+SET(scene_serialize_VERSION "0")
+SET(hf_VERSION "0")
 SET(box_VERSION "0")
+
+SET(test_array_continuous_VERSION "0")
 
