@@ -68,7 +68,24 @@ template<typename B, typename D> void	makeDefaultFunc()
 
 	gal::stl::factory<B>::default_factory_->add(typeid(D).hash_code(), f);
 }
+template<typename T> std::shared_ptr<T>		loadXML(std::string filename)
+{
+	std::ifstream ifs;
+	ifs.open(filename);
+	if(!ifs.is_open())
+	{
+		std::cout << "file error: " << filename << std::endl;
+		abort();
+	}
 
+	gal::stl::wrapper<T> w;
+
+	boost::archive::polymorphic_xml_iarchive ar(ifs);
+
+	w.load(ar,0);
+
+	return w.ptr_;
+}
 
 void	create_enemy();
 
@@ -249,8 +266,8 @@ void							create_enemy() {
 }
 scene_s		create_maze()
 {
-	assert(window0);
-	assert(context1);
+	//assert(window0);
+	//assert(context1);
 
 	auto app = neb::fin::gfx_phx::app::base::global();
 
@@ -269,35 +286,41 @@ scene_s		create_maze()
 				).lock()
 			);
 	actor_player->createShapeLightSpot(neb::core::pose(), glm::vec3(0,0,-1));
+
+	auto actor_player_xml = loadXML<neb::fin::gfx_phx::core::actor::rigiddynamic::base>("actor_player.xml");
 	
+	scene->addActor(actor_player_xml);
+		
 
 	// weapon
-	auto weap = actor_player->createWeaponSimpleProjectile(window0, 0.2, 10.0, 5.0);
+	if(window0)
+	{
+		auto weap = actor_player->createWeaponSimpleProjectile(window0, 0.2, 10.0, 5.0);
 
-	// lights
-	//auto actor4 = map->createActorLightDirectional(glm::vec3(0,1,-1)).lock();
-	//actor_light = map->createActorLightPoint(glm::vec3(0,0,10)).lock();
-
-
-//	auto shape4 = actor_light->neb::core::core::shape::util::parent::map_.front();
-//	assert(shape4);
-//	auto light = std::dynamic_pointer_cast<light_type>(shape4->neb::core::core::light::util::parent::map_.front());
-//	assert(light);
+		// lights
+		//auto actor4 = map->createActorLightDirectional(glm::vec3(0,1,-1)).lock();
+		//actor_light = map->createActorLightPoint(glm::vec3(0,0,10)).lock();
 
 
-	// give scene to context
+		//	auto shape4 = actor_light->neb::core::core::shape::util::parent::map_.front();
+		//	assert(shape4);
+		//	auto light = std::dynamic_pointer_cast<light_type>(shape4->neb::core::core::light::util::parent::map_.front());
+		//	assert(light);
 
 
-	// camera
+		// give scene to context
 
-	actor_player->createControlManual(window0);
-	
-	environ1 = neb::is<neb::gfx::environ::base, neb::gfx::environ::SceneDefault>(context1->environ_);
-	
-	environ1->createViewridealong(actor_player);
-	
-//	light->initShadow(environ1);
-	
+
+		// camera
+
+		actor_player->createControlManual(window0);
+
+		environ1 = neb::is<neb::gfx::environ::base, neb::gfx::environ::SceneDefault>(context1->environ_);
+
+		environ1->createViewridealong(actor_player);
+	}	
+	//	light->initShadow(environ1);
+
 	//create_enemy();
 
 
@@ -305,11 +328,11 @@ scene_s		create_maze()
 }
 void		setup_game()
 {
-	
+
 	neb::game::game::desc gameDesc;
-	
+
 	game = app->createGame(gameDesc);
-	
+
 	// scene
 
 	//auto scene = create_scene(window, context, enemy);
@@ -423,7 +446,7 @@ int			main() {
 	app = neb::fin::gfx_phx::app::base::init();
 
 
-	createWindow0();
+	//createWindow0();
 
 	// game
 
