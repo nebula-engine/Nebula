@@ -130,7 +130,9 @@ shared_ptr<neb::gfx::gui::layout::base>	create_layout()
 	
 	auto app = neb::fin::gfx_phx::app::base::global();
 	
-	auto layout = app->createLayout().lock();
+	typedef neb::gfx::gui::layout::base Layout;
+	auto layout = app->neb::gfx::gui::layout::util::parent::create<Layout>().lock();
+	
 
 	layout->connect(window0);
 
@@ -190,8 +192,8 @@ int			main()
 
 	app = neb::fin::gfx_phx::app::base::init();
 
-
-	window0 = app->createWindow().lock();
+	
+	window0 = app->neb::gfx::window::util::parent::create<neb::gfx::window::base>().lock();
 
 	context1 = window0->createContextThree().lock();
 	context2 = window0->createContextTwo().lock();

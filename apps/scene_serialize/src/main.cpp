@@ -8,6 +8,8 @@
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 
+#include <cxxabi.h>
+
 /*
 
 #include <glm/gtc/matrix_transform.hpp>
@@ -28,9 +30,10 @@
 */
 
 #include <gal/stl/wrapper.hpp>
+#include <gal/stl/deleter.hpp>
 #include <gal/dll/helper.hpp>
 
-#include <neb/core/core/actor/rigidbody/desc.hpp>
+#include <neb/core/core/actor/rigiddynamic/desc.hpp>
 
 #include <neb/gfx/util/io.hpp>
 /*
@@ -95,57 +98,43 @@ template<typename B, typename D> void	makeDLLFunc()
 	
 	//typedef neb::fin::gfx_phx::core::scene::base		D;
 	typedef gal::dll::helper<D>				H;
-	typedef gal::dll::deleter<H>				DEL;
+	//typedef gal::dll::deleter				DEL;
 	
-	auto lamb = [](std::string dll_name) {
-
-		std::shared_ptr<H> h(new H);
-
-		h->open(dll_name, "object");
+	auto lamb = [](gal::dll::helper_info& hi) {
 		
-		std::shared_ptr<D> d(h->create(), DEL(h));
+		std::shared_ptr<H> h(new H(hi.file_name, hi.object_name));
+		
+		h->open();
+		
+		std::shared_ptr<B> d = h->make_shared();
+
+		return d;
 	};
 
-	std::function< std::shared_ptr<B>(std::string) > f(lamb);
+	std::function< std::shared_ptr<B>(gal::dll::helper_info&) > f(lamb);
 
 	gal::stl::factory<B>::default_factory_->add(typeid(D).hash_code(), f);
 }
+template<typename B, typename D> gal::stl::wrapper<B>		loadDLL(std::string file_name, std::string object_name)
+{
+	std::cout << "B " << typeid(B).name() << " " << typeid(B).hash_code() << std::endl;
+	std::cout << "D " << typeid(D).name() << " " << typeid(D).hash_code() << std::endl;
 
+	typedef gal::dll::helper<D>	H;
+	
+	std::shared_ptr<H> h(new H(file_name, object_name));
 
-//BOOST_CLASS_EXPORT_GUID(neb::core::core::actor::base, "base")
-//BOOST_CLASS_EXPORT_GUID(neb::fin::gfx_phx::core::actor::rigiddynamic::base, "derived")
+	h->open();
+	
+	std::shared_ptr<D> p = h->make_shared();
+	
+	gal::stl::wrapper<B> w(p);
+	
+	return w;
+}
+
 
 namespace ba = boost::archive;
-
-class xml_oarchive: public ba::polymorphic_xml_oarchive
-{
-	public:
-		//typedef ba::polymorphic_xml_oarchive base;
-		typedef ba::polymorphic_oarchive_impl base;
-
-		xml_oarchive(std::ofstream& ofs): ba::polymorphic_xml_oarchive(ofs) {}
-
-		template<class T> void	save_override(T & t, BOOST_PFTO int){
-			base::save_override(boost::serialization::make_nvp(NULL, t), 0);
-		}
-		template<class T> void	save_override(const boost::serialization::nvp< T > & t, int){
-			// this is here to remove the "const" requirement.  Since
-			// this class is to be used only for output, it's not required.
-			base::save_override(t, 0);
-		}
-
-
-		void		save_override(const gal::stl::HashCode & t, int)
-		{
-			std::cout << "hello!" << std::endl;
-			abort();
-		}
-		void			operator&(gal::stl::HashCode const & t)
-		{
-			std::cout << "hello!" << std::endl;
-			abort();
-		}
-};
 
 void			s1()
 {
@@ -156,15 +145,25 @@ void			s1()
 		std::ofstream ofs;
 		ofs.open("scene.xml");
 		assert(ofs.is_open());
-		xml_oarchive ar(ofs);
+		ba::polymorphic_xml_oarchive ar(ofs);
 
 		//ar.template register_type<T>();
 		//ar.template register_type<D>();
+		
+		auto w = loadDLL<B,D>("../../components/ext/hf/libnebula_ext_hf_0_so_db.so", "scene");
+		
+		auto scene = w.ptr_;
 
-		
-		std::shared_ptr<B> scene(new D, gal::stl::deleter<D>);
-		
-		
+		typedef neb::core::core::actor::rigiddynamic::desc actor_desc;
+		actor_desc* ad = new actor_desc;
+		auto actor = scene->createActorRigidDynamic(ad).lock();
+
+
+		auto shape = actor->createShapeCuboid(neb::core::core::shape::cuboid::desc(
+					glm::vec3(1)
+					)).lock();
+
+
 		/*
 
 		// create actor
@@ -178,7 +177,6 @@ void			s1()
 
 		*/
 
-		gal::stl::wrapper<T> w(scene);
 		w.save(ar,0);
 
 		//d->save(ar,0);
@@ -189,11 +187,11 @@ void			s1()
 	}
 
 	{
-		typedef neb::core::core::actor::base T;
-		typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base D;
+		typedef neb::core::core::scene::base B;
+		typedef neb::fin::gfx_phx::core::scene::base D;
 
 		std::ifstream ifs;
-		ifs.open("actor.xml");
+		ifs.open("scene.xml");
 		assert(ifs.is_open());
 
 		boost::archive::polymorphic_xml_iarchive ar(ifs);
@@ -201,17 +199,18 @@ void			s1()
 		//ar.template register_type<D>();
 
 
-		gal::stl::wrapper<T> w;
-		w.load(ar,1);
+		gal::stl::wrapper<B> w;
+		w.load(ar,0);
 
-		auto d = w.ptr_;
+		/*
+		   auto d = w.ptr_;
 
-		auto r = std::dynamic_pointer_cast<D>(d);
-		assert(r);
+		   auto r = std::dynamic_pointer_cast<D>(d);
+		   assert(r);
 
-		auto s = r->neb::core::core::shape::util::parent::map_.front();
-		assert(s);
-
+		   auto s = r->neb::core::core::shape::util::parent::map_.front();
+		   assert(s);
+		   */
 		//std::shared_ptr<D> d(0, gal::stl::deleter<D>());
 
 		//T* tp;
@@ -228,7 +227,8 @@ void			s1()
 
 int			main()
 {
-	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+	//makeDefaultFunc<neb::core::core::scene::base, neb::fin::gfx_phx::core::scene::base>();
+	makeDLLFunc<neb::core::core::scene::base, neb::fin::gfx_phx::core::scene::base>();
 
 	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
 
@@ -237,6 +237,18 @@ int			main()
 
 	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
 
+
+
+	int status;
+
+	char const * name1 = "N3gal3stl7funcmapIN3neb4core4core5scene4baseEE10__functionIINS_3dll11helper_infoEEEE";
+	char const * name2 = "N3gal3stl7funcmapIN3neb4core4core5scene4baseEE10__functionIIRNS_3dll11helper_infoEEEE";
+	
+	char* realname1 = abi::__cxa_demangle(name1, 0, 0, &status);
+	char* realname2 = abi::__cxa_demangle(name2, 0, 0, &status);
+
+	std::cout << "name1 = " << realname1 << std::endl;
+	std::cout << "name2 = " << realname2 << std::endl;
 
 	s1();
 
