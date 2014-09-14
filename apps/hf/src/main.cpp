@@ -10,6 +10,7 @@
 
 #include <neb/core/util/cast.hpp>
 #include <neb/core/app/__base.hpp>
+#include <neb/core/app/__core.hpp>
 #include <neb/core/core/actor/base.hpp>
 #include <neb/core/util/wrapper.hpp>
 #include <neb/core/core/light/base.hpp>
@@ -55,37 +56,7 @@
 #include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 
-template<typename B, typename D> void	makeDefaultFunc()
-{
-
-	gal::itf::shared::register_type(std::type_index(typeid(B)));
-	gal::itf::shared::register_type(std::type_index(typeid(D)));
-
-
-	std::function< std::shared_ptr<B>() > f(
-			[]() { return std::shared_ptr<D>(new D(), gal::stl::deleter<D>()); }
-			);
-
-	gal::stl::factory<B>::default_factory_->add(typeid(D).hash_code(), f);
-}
-template<typename T> std::shared_ptr<T>		loadXML(std::string filename)
-{
-	std::ifstream ifs;
-	ifs.open(filename);
-	if(!ifs.is_open())
-	{
-		std::cout << "file error: " << filename << std::endl;
-		abort();
-	}
-
-	gal::stl::wrapper<T> w;
-
-	boost::archive::polymorphic_xml_iarchive ar(ifs);
-
-	w.load(ar,0);
-
-	return w.ptr_;
-}
+#include <neb/core/free.hpp>
 
 void	create_enemy();
 
@@ -97,7 +68,8 @@ typedef neb::game::game::base			game_t;
 typedef neb::fin::gfx_phx::core::scene::base	map_type;
 //typedef neb::ext::maze::game::map::maze2	map_type;
 
-typedef std::shared_ptr<neb::fin::gfx_phx::core::scene::base>	scene_s;
+typedef neb::core::core::scene::base	scene_t;
+typedef std::shared_ptr<scene_t>	scene_s;
 
 typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base actor_dyn_t;
 
@@ -115,7 +87,7 @@ window_shared						window1;
 std::shared_ptr<neb::gfx::context::window>		context1_0;
 
 
-std::shared_ptr<neb::fin::gfx_phx::core::scene::base>			scene;
+scene_s			scene;
 //std::shared_ptr<neb::core::core::scene::base>			scene;
 
 
@@ -148,18 +120,25 @@ scene_s		create_maze()
 	auto app = neb::fin::gfx_phx::app::base::global();
 
 	// create map
+
+	if(0)
+	{
+		scene = app->createSceneDll("../../components/ext/hf/libnebula_ext_hf_0_so_db.so").lock();
+
+		// player's actor
+		actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::core::core::actor::base>("actor_player.xml"));
+		scene->addActor(actor_player);
+	}
+	else
+	{
+		scene = loadXML<scene_t>("scene.xml");
+		app->neb::core::core::scene::util::parent::insert(scene);
+	}
 	
-	auto map = app->createSceneDll("../../components/ext/hf/libnebula_ext_hf_0_so_db.so").lock();
 	
-	scene = map;
-
-	// player's actor
-	actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::core::core::actor::base>("actor_player.xml"));
-	scene->addActor(actor_player);
-
-
+	
 	// weapon
-	if(window0)
+	if(window0 && actor_player)
 	{
 		auto weap = actor_player->createWeaponSimpleProjectile(window0, 0.2, 10.0, 5.0);
 
@@ -176,23 +155,27 @@ scene_s		create_maze()
 	//create_enemy();
 
 
-	return map;
+	return scene;
 }
 int			main()
 {
-	makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::desc>();
-	makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::rigidbody::desc>();
+	makeDLLFunc<neb::core::core::scene::base, neb::fin::gfx_phx::core::scene::base>();
+	
+	//makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::desc>();
+	//makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::rigidbody::desc>();
 	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
+
 	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
 
 
 
 
-	app = neb::fin::gfx_phx::app::base::init();
+	app = neb::fin::gfx_phx::app::base::s_init();
 
-	
+
 	window0 = app->neb::gfx::window::util::parent::create<neb::gfx::window::base>().lock();
 
 	context1 = window0->createContextThree().lock();
@@ -216,7 +199,7 @@ int			main()
 
 	game->scene_ = scene;
 
-	context1->setDrawable(scene);
+	context1->setDrawable(std::dynamic_pointer_cast<neb::gfx::drawable::base>(scene));
 
 
 	app->loop();
