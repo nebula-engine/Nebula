@@ -41,6 +41,7 @@
 #include <neb/gfx/core/light/directional.hpp>
 */
 #include <neb/gfx/core/light/spot.hpp>
+#include <neb/gfx/core/light/point.hpp>
 /*#include <neb/gfx/Context/Window.hpp>
 #include <neb/gfx/Context/fbo.hpp>
 #include <neb/gfx/Context/fbo_multi.hpp>
@@ -101,16 +102,22 @@ void			s1()
 		auto scene = w.ptr_;
 
 		typedef neb::core::core::actor::rigiddynamic::desc actor_desc;
-		actor_desc* ad = new actor_desc;
-		auto actor = scene->createActorRigidDynamic(ad).lock();
 
+		actor_desc* ad = new actor_desc;
+		
+		auto actor = scene->createActorRigidDynamic(ad).lock();
 
 		auto shape = actor->createShapeCuboid(neb::core::core::shape::cuboid::desc(
 					glm::vec3(1)
 					)).lock();
 		
-		
-		
+		//shape->createLightSpot(glm::vec3(0,0,-1));
+	
+		actor->_M_name = std::string("player");
+
+		scene->createActorLightPoint(glm::vec3(0));
+
+
 		/*
 
 		// create actor
@@ -179,10 +186,14 @@ int			main()
 
 	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
 
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
 
 	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
+	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::point>();
 
 
 
