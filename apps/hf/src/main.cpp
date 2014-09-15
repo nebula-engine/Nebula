@@ -133,9 +133,13 @@ scene_s		create_maze()
 	{
 		scene = loadXML<scene_t>("scene.xml");
 		app->neb::core::core::scene::util::parent::insert(scene);
+		
+		scene->init(app.get());
+
+		actor_player = std::dynamic_pointer_cast<actor_dyn_t>(scene->neb::core::core::actor::util::parent::map_.find("player"));
 	}
 	
-	
+	assert(actor_player);
 	
 	// weapon
 	if(window0 && actor_player)
@@ -161,14 +165,15 @@ int			main()
 {
 	makeDLLFunc<neb::core::core::scene::base, neb::fin::gfx_phx::core::scene::base>();
 	
-	//makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::desc>();
-	//makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::rigidbody::desc>();
 	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::base>();
 
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
 
 	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
+	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::point>();
 
 
 
