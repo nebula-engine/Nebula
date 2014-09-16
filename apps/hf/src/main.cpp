@@ -44,7 +44,9 @@
 
 #include <neb/phx/app/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
-#include <neb/phx/game/weapon/SimpleProjectile.hpp>
+
+#include <neb/core/game/weapon/SimpleProjectile.hpp>
+
 #include <neb/phx/core/actor/control/rigidbody/base.hpp>
 #include <neb/phx/test.hpp>
 
