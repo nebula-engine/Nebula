@@ -100,6 +100,7 @@ void			s1()
 		auto w = loadDLL<B,D>("../../components/ext/hf/libnebula_ext_hf_0_so_db.so", "scene");
 		
 		auto scene = w.ptr_;
+		scene->init(0);
 
 		typedef neb::core::core::actor::rigiddynamic::desc actor_desc;
 
@@ -115,7 +116,7 @@ void			s1()
 	
 		actor->_M_name = std::string("player");
 
-		scene->createActorLightPoint(glm::vec3(0));
+		//scene->createActorLightPoint(glm::vec3(0));
 
 
 		/*
