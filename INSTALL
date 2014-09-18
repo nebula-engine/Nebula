@@ -1,3 +1,5 @@
 
 Make sure PYTHONPATH includes the location of libnebula_python.
 
+add 'libs' to LD_LIBRARY_PATH
+
