@@ -99,9 +99,6 @@ int			main(int ac, char ** av)
 {
 	myrand();
 
-	float f1 = atof(av[1]);
-	float f2 = atof(av[2]);
-	float f3 = atof(av[3]);
 
 	makeDLLFunc<neb::core::core::scene::base, neb::fin::gfx_phx::core::scene::base>();
 	
@@ -134,9 +131,15 @@ int			main(int ac, char ** av)
 	actor->init(scene.get());
 	
 	neb::core::core::shape::HeightField::desc desc;
-	desc.f1 = f1;
-	desc.f2 = f2;
-	desc.f3 = f3;
+	desc.r = atoi(av[1]);
+	desc.c = atoi(av[2]);
+
+	desc.w = 50;
+	desc.h = 50;
+	desc.hs = 10;
+
+	for(int i = 3; i < ac; i++)
+		desc.fc.push_back(atof(av[i]));
 
 	auto shape = std::dynamic_pointer_cast<neb::phx::core::shape::HeightField>(
 			actor->createShapeHeightField(desc).lock()
@@ -156,7 +159,7 @@ int			main(int ac, char ** av)
 	
 
 
-	float w = 15;
+	float w = 25;
 
 	proj->set(-w,w,-w,w,-100,100);
 
@@ -164,8 +167,8 @@ int			main(int ac, char ** av)
 	auto view = std::dynamic_pointer_cast<neb::gfx::camera::view::manual>(environ->view_);
 	assert(view);
 		
-	view->eye_ = glm::vec3(15,-30,15);
-	view->center_ = glm::vec3(15,0,15);
+	view->eye_ = glm::vec3(w,-50,w);
+	view->center_ = glm::vec3(w,0,w);
 	view->up_ = glm::vec3(1,0,0);
 
 	app->loop();
