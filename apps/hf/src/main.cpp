@@ -133,7 +133,7 @@ scene_s		create_maze()
 	}
 	else
 	{
-		scene = loadXML<scene_t>("scene.xml");
+		scene = loadXML<scene_t>(app->share_dir_ + "media/scenes/scene.xml");
 		app->neb::core::core::scene::util::parent::insert(scene);
 		
 		scene->init(app.get());
