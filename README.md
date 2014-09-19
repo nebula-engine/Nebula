@@ -18,3 +18,7 @@ Currently not very straightforward. Needs some work.
 
 But this app might work!
 [HeightField](https://sourceforge.net/projects/nebulaengine)
+
+## Bug Reporting
+
+Always report bugs as soon as they appear and put the commit number in the description!
