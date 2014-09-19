@@ -14,13 +14,6 @@ Nebula
 
 ## Installation
 
-    git clone github.com/chuck1/Nebula.git
-    cd Nebula
-    git submodule init
-    git submodule update
-    mkdir Debug
-    cd Debug
-    cmake ..
-    make install
+Currently not very straightforward. Needs some work.
 
 
