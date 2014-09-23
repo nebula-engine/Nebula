@@ -1,0 +1,19 @@
+
+points:
+O - origin, center
+P - point on the surface
+
+z is height
+
+r is distance from center
+
+z = a*sin(b*r)*exp(-c*r)
+
+
+dz/dr = a*exp(-c*r)*(b*cos(b*r)-c*sin(b*r))
+
+gradient is always on the vertical plane intersecting O and P
+
+gradient vector can be constructed from dz/dr then rotating
+
+
