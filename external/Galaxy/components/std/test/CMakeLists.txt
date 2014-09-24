@@ -1,0 +1,6 @@
+ADD_SUBDIRECTORY(stl)
+#ADD_SUBDIRECTORY(dll)
+#ADD_SUBDIRECTORY(terminal)
+#ADD_SUBDIRECTORY(terminal_python)
+
+

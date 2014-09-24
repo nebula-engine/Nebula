@@ -1,0 +1,6 @@
+#ifndef NEB_PY_CONFIG_HPP
+#define NEB_PY_CONFIG_HPP
+
+#define PY_LIB_NAME lib@PROJECT_NAME@
+
+#endif
