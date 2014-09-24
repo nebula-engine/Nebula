@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 #include <neb/core/util/debug.hpp>
 #include <neb/core/core/scene/base.hpp>
 
@@ -29,3 +30,5 @@ std::shared_ptr<neb::phx::core::scene::base>			neb::phx::core::actor::util::pare
 
 
 
+=======
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507

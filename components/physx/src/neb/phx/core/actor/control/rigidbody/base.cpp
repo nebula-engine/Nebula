@@ -16,8 +16,18 @@
 #include <neb/phx/util/convert.hpp>
 #include <neb/phx/util/log.hpp>
 
+<<<<<<< HEAD
 neb::phx::core::actor::control::rigidbody::base::base() {
 
+=======
+typedef neb::phx::core::actor::control::rigidbody::base THIS;
+
+THIS::base() {
+
+}
+void		THIS::release()
+{
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 }
 void			neb::phx::core::actor::control::rigidbody::base::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
 	abort();
@@ -25,7 +35,17 @@ void			neb::phx::core::actor::control::rigidbody::base::serialize(boost::archive
 void			neb::phx::core::actor::control::rigidbody::base::serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
 	abort();
 }
+<<<<<<< HEAD
 int			neb::phx::core::actor::control::rigidbody::base::key_fun(std::shared_ptr<neb::gfx::window::base> window, int key, int scancode, int action, int mods) {
+=======
+int			neb::phx::core::actor::control::rigidbody::base::keyFun(
+		std::shared_ptr<neb::core::input::source> const & src,
+		int key,
+		int scancode,
+		int action,
+		int mods)
+{
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	//NEBULA_DEBUG_0_FUNCTION;
 
 	LOG(lg, neb::phx::core::actor::sl, debug) << __PRETTY_FUNCTION__;

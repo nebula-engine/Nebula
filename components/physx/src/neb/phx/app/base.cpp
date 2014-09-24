@@ -141,7 +141,11 @@ void						neb::phx::app::base::step(gal::etc::timestep const & ts) {
 
 	LOG(lg, neb::phx::sl, debug) << __PRETTY_FUNCTION__;
 
+<<<<<<< HEAD
 	neb::phx::game::game::util::parent::step(ts);
+=======
+	//neb::phx::game::game::util::parent::step(ts);
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 }
 

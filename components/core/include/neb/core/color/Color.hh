@@ -4,6 +4,10 @@
 #include <cstdlib>
 #include <cstdio>
 #include <cmath>
+<<<<<<< HEAD
+=======
+#include <iostream>
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 #include <boost/serialization/nvp.hpp>
 
@@ -155,6 +159,10 @@ namespace neb { namespace core { namespace color {
 						return y;
 						}*/
 			void					setRand() {
+<<<<<<< HEAD
+=======
+				std::cout << __PRETTY_FUNCTION__ << std::endl;
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 				r = traits<R>::rand();
 				g = traits<G>::rand();
 				b = traits<B>::rand();
@@ -293,7 +301,47 @@ namespace neb { namespace core { namespace color {
 			}
 	};
 
+<<<<<<< HEAD
 	typedef color_rgba<float, float, float, float> fcolor;
+=======
+	template<> class color_rgba<uchar8, uchar8, uchar8, uchar8>: public color_rgba_base<uchar8, uchar8, uchar8, uchar8, color_rgba<uchar8, uchar8, uchar8, uchar8> >
+	{
+		public:
+			typedef color_rgba_base<uchar8, uchar8, uchar8, uchar8, color_rgba<uchar8, uchar8, uchar8, uchar8> > BASE;
+			typedef typename BASE::D D;
+			typedef typename BASE::R R;
+			typedef typename BASE::G G;
+			typedef typename BASE::B B;
+			typedef typename BASE::A A;
+
+			color_rgba(): BASE() {}
+			color_rgba(R const & nr, G const & ng, B const & nb, A const & na): BASE(nr, ng, nb, na) {}
+			//color_rgba(R nr, G ng, B nb, A na): BASE(nr, ng, nb, na) {}
+			color_rgba(const D & rhs): BASE(rhs) {}
+			D&	operator=(D const & d)
+			{
+				r = d.r;
+				g = d.g;
+				b = d.b;
+				a = d.a;
+				return *this;
+			}
+
+			/*operator uchar8* () const {
+				return (uchar8*)this;
+			}
+			operator uchar8 const * () const {
+				return (uchar8*)this;
+			}*/
+			operator unsigned int () const {
+				return ((unsigned int)r << 24) + ((unsigned int)g << 16) + ((unsigned int)b << 8) + (unsigned int)a;
+			}
+	};
+	
+	typedef color_rgba<float, float, float, float>		fcolor;
+	typedef color_rgba<uchar8, uchar8, uchar8, uchar8>	ucolor8888;
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	typedef fcolor color;
 
 }}}

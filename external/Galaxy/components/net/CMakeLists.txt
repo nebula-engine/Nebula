@@ -15,7 +15,10 @@ FIND_PACKAGE(Galaxy COMPONENTS
 
 FIND_PACKAGE(Boost 1.55 COMPONENTS
 	system
+<<<<<<< HEAD
 	thread
+=======
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	REQUIRED)
 
 SET(libs

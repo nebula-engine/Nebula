@@ -15,12 +15,22 @@ namespace neb { namespace phx { namespace core { namespace actor { namespace rig
 	class base:
 		virtual public phx::core::actor::rigidactor::base
 	{
+<<<<<<< HEAD
 
 		public:
 			base(std::shared_ptr<phx::core::actor::util::parent>);
 
 			virtual void					init() = 0;
 			virtual void					release() = 0;
+=======
+		public:
+			typedef shared_ptr<neb::phx::core::actor::control::rigidbody::base>	control_shared;
+		public:
+			base();
+
+			//virtual void					init() = 0;
+			//virtual void					release() = 0;
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 			virtual void					step(gal::etc::timestep const & ts);
 
 			/** @brief create physics
@@ -32,6 +42,7 @@ namespace neb { namespace phx { namespace core { namespace actor { namespace rig
 			 *
 			 * @note implemented by rigidstatic and rigiddynamic
 			 */
+<<<<<<< HEAD
 		virtual void					init_physics() = 0;
 
 			virtual void					add_force(double);
@@ -41,6 +52,18 @@ namespace neb { namespace phx { namespace core { namespace actor { namespace rig
 			shared_ptr<neb::phx::core::actor::control::rigidbody::base>		control_;
 			glm::vec3		force_;
 			glm::vec3		torque_;
+=======
+			virtual void					init_physics() = 0;
+
+			virtual void					add_force(double);
+			//virtual void					setPose(neb::core::pose const & pose) = 0;
+			void						createControlManual(std::shared_ptr<neb::core::input::source> window);
+			void						createControlPD();
+		public:
+			control_shared					control_;
+			glm::vec3					force_;
+			glm::vec3					torque_;
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	};
 }}}}}
 

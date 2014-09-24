@@ -17,13 +17,30 @@
 #include <neb/core/core/actor/util/parent.hpp>
 #include <neb/core/core/scene/base.hpp>
 
+<<<<<<< HEAD
+=======
+#include <neb/gfx/drawable/base.hpp>
+#include <neb/gfx/glsl/uniform/light_array.hpp>
+#include <neb/gfx/util/decl.hpp>
+#include <neb/gfx/glsl/util/decl.hpp>
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 #include <neb/phx/core/actor/util/decl.hpp>
 #include <neb/phx/core/actor/util/parent.hpp>
 #include <neb/phx/simulation_callback.hh>
 
 typedef weak_ptr<neb::core::core::actor::base> wbase;
 
+<<<<<<< HEAD
 namespace neb { namespace phx { namespace core { namespace scene {
+=======
+namespace neb {
+	namespace gfx {
+		class RenderDesc;
+	}
+
+	namespace phx { namespace core { namespace scene {
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 	/** 
 	 * @ingroup group_core
@@ -31,6 +48,7 @@ namespace neb { namespace phx { namespace core { namespace scene {
 	 */
 	class base:
 		virtual public neb::core::core::scene::base,
+<<<<<<< HEAD
 		virtual public phx::core::actor::util::parent
 	{
 		public:
@@ -49,6 +67,34 @@ namespace neb { namespace phx { namespace core { namespace scene {
 					boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
 				ar & boost::serialization::make_nvp("gravity",gravity_);
 			}
+=======
+		virtual public neb::gfx::drawable::base
+	{
+		public:
+			base();
+			virtual ~base();
+			virtual void				init(parent_t * const & p);
+			void					init_light();
+			virtual void				release();
+			void					step(::gal::etc::timestep const & ts);
+
+
+			void					resize(int w, int h);
+
+			void					draw(gfx::RenderDesc const &);
+			void					drawMesh(gfx::RenderDesc const &);
+			void					drawMeshHF(gfx::RenderDesc const &);
+			void					drawMeshInst(gfx::RenderDesc const &);
+			void					drawPhysxVisualization(gfx::RenderDesc const &);
+			void					drawDebug(gfx::RenderDesc const &);
+
+
+		public:
+			void					create_physics();
+			virtual void				load(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
+			virtual void				save(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) const;
+			BOOST_SERIALIZATION_SPLIT_MEMBER();
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 			/** @name convenience functions
 			 * @{
 			 */
@@ -67,6 +113,39 @@ namespace neb { namespace phx { namespace core { namespace scene {
 			 */
 			virtual weak_ptr<neb::core::core::actor::base>		createActorRigidDynamicUninitialized() = 0;
 			/** @} */
+<<<<<<< HEAD
+=======
+
+
+
+
+			// rendering data
+			
+			struct
+			{
+				std::shared_ptr<neb::gfx::glsl::program::threed>	_M_d3;
+				std::shared_ptr<neb::gfx::glsl::program::threed>	_M_d3_HF;
+				std::shared_ptr<neb::gfx::glsl::program::threed>	_M_d3_inst;
+			} _M_programs;
+			
+			// one for static, one for dynamic
+			std::shared_ptr<neb::gfx::glsl::uniform::light_array>		light_array_[2];
+
+			std::shared_ptr<neb::gfx::texture>				tex_shadow_map_;
+
+			// standard meshes
+			struct {
+				std::shared_ptr<neb::gfx::mesh::instanced>		cuboid_;
+			} meshes_;
+
+
+
+
+
+
+
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 		public:
 			physx::PxScene*						px_scene_;
 			physx::PxSimulationFilterShader				px_filter_shader_;

@@ -6,17 +6,23 @@ namespace neb { namespace phx { namespace core {
 	/** @brief %actor */
 	namespace actor {
 
+<<<<<<< HEAD
 		/** @brief utilities */
 		namespace util {
 			class parent;
 		}
 
+=======
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 		class base;
 		class local;
 		class remote;
 
+<<<<<<< HEAD
 		
 
+=======
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 		/** @brief %actor */
 		namespace actor {
 			class base;

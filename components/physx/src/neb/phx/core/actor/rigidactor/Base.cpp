@@ -10,17 +10,32 @@
 
 //neb::core::actor::rigidactor::base::base() {
 //}
+<<<<<<< HEAD
 neb::phx::core::actor::rigidactor::base::base(std::shared_ptr<neb::phx::core::actor::util::parent> parent):
+=======
+/*neb::phx::core::actor::rigidactor::base::base(std::shared_ptr<neb::phx::core::actor::util::parent> parent):
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	neb::core::core::actor::base(parent),
 	neb::phx::core::actor::base(parent),
 	neb::phx::core::actor::actor::base(parent)
 {
+<<<<<<< HEAD
 }
 void		neb::phx::core::actor::rigidactor::base::setupFiltering() {
 	assert(px_actor_);
 
 	physx::PxRigidActor* actor = (physx::PxRigidActor*)px_actor_;
 
+=======
+}*/
+void		neb::phx::core::actor::rigidactor::base::setupFiltering() {
+	std::cout << __PRETTY_FUNCTION__ << this << std::endl;
+
+	assert(px_actor_);
+	physx::PxRigidActor* actor = (physx::PxRigidActor*)px_actor_->isRigidActor();
+	assert(actor);
+	
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	physx::PxFilterData coll_data;
 	coll_data.word0 = simulation_.word0;
 	coll_data.word1 = simulation_.word1;
@@ -35,8 +50,15 @@ void		neb::phx::core::actor::rigidactor::base::setupFiltering() {
 
 
 	const physx::PxU32 numShapes = actor->getNbShapes();
+<<<<<<< HEAD
 
 	physx::PxShape** shapes = new physx::PxShape*[numShapes];
+=======
+	
+	physx::PxShape** shapes = new physx::PxShape*[numShapes];
+	
+	std::cout << numShapes << std::endl;
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 	actor->getShapes(shapes, numShapes);
 

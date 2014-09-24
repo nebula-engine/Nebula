@@ -3,7 +3,11 @@
 #include <gal/log/log.hpp>
 
 #include <neb/core/util/debug.hpp>
+<<<<<<< HEAD
 #include <neb/core/math/geo/polygon.hpp>
+=======
+#include <neb/core/math/geo/vertex.hpp>
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 #include <neb/core/math/Serialization/glm.hpp>
 #include <neb/core/util/log.hpp>
 

@@ -58,7 +58,11 @@ namespace gal { namespace console {
 			 */
 			virtual void						write_line(::std::string const & s) = 0;
 
+<<<<<<< HEAD
 
+=======
+			virtual void						release();
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 			std::stringstream					ss_;
 

@@ -11,6 +11,7 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 
+<<<<<<< HEAD
 using namespace std;
 
 namespace math {
@@ -45,6 +46,32 @@ namespace math {
 
 			vector< std::shared_ptr<tri> >		triangles_;
 
+=======
+
+
+namespace math {
+	namespace geo {
+
+		class vertex;
+
+		struct triangle {
+			triangle();
+			triangle(vertex*, vertex*, vertex*);
+			triangle&	operator=(triangle const &);
+			vertex*		verts_[3];
+
+			void	reset_normals();
+		};
+		class polygon {
+			public:
+				polygon();
+				triangle*	getTriangles();
+				unsigned int	getNbTriangles();
+				void		setTriangles(triangle*, unsigned int);
+			protected:
+				triangle*	triangles_;
+				unsigned int	nbTriangles_;
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 		};
 	}
 }

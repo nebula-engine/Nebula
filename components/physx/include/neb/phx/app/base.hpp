@@ -10,7 +10,11 @@
 #include <neb/core/core/scene/base.hpp>
 
 #include <neb/phx/core/scene/util/parent.hpp>
+<<<<<<< HEAD
 #include <neb/phx/game/game/util/parent.hpp>
+=======
+//#include <neb/phx/game/game/util/parent.hpp>
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 class DefaultErrorCallback:
 	public physx::PxErrorCallback
@@ -39,8 +43,13 @@ namespace neb {
 
 			class base:
 				virtual public neb::app::__core,
+<<<<<<< HEAD
 				virtual public neb::phx::core::scene::util::parent,
 				virtual public neb::phx::game::game::util::parent
+=======
+				virtual public neb::phx::core::scene::util::parent
+				//virtual public neb::phx::game::game::util::parent
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 			{
 				public:
 					static std::shared_ptr<phx::app::base>		global();

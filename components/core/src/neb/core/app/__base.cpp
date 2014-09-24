@@ -16,7 +16,21 @@ shared_ptr<neb::core::app::__base>	neb::core::app::__base::global() {
 	assert(g_app_);
 	return g_app_;
 }
+<<<<<<< HEAD
 void		neb::core::app::__base::__init() {
+=======
+bool					neb::core::app::__base::is_valid()
+{
+	return (bool)g_app_;
+}
+
+neb::core::app::__base::~__base()
+{
+	LOG(lg, neb::core::sl, info) << __FUNCSIG__;
+}
+void		neb::core::app::__base::init()
+{
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 	LOG(lg, neb::core::sl, debug) << __FUNCSIG__;
 	
@@ -42,8 +56,13 @@ void		neb::core::app::__base::__init() {
 	
 	char* home = getenv("HOME");
 	if(home == 0) abort();
+<<<<<<< HEAD
 	share_dir_ = std::string(home) + "/.local/share/nebula/box/";
 
+=======
+	//share_dir_ = std::string(home) + "/.local/share/nebula/box/";
+	share_dir_ = "";
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 }
 
 

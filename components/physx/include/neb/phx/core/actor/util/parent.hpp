@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef PHYSX_CORE_ACTOR_PARENT_HPP
 #define PHYSX_CORE_ACTOR_PARENT_HPP
 
@@ -23,6 +24,8 @@ namespace neb { namespace phx { namespace core { namespace actor { namespace uti
 }}}}}
 
 #endif
+=======
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 
 

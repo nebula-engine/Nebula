@@ -10,15 +10,28 @@
 #include <neb/phx/core/scene/base.hpp>
 #include <neb/phx/util/log.hpp>
 
+<<<<<<< HEAD
 //neb::core::actor::actor::base::base() {
 //}
 neb::phx::core::actor::actor::base::base(std::shared_ptr<neb::phx::core::actor::util::parent> parent):
+=======
+neb::phx::core::actor::actor::base::base():
+	px_actor_(NULL)
+{
+	LOG(lg, neb::phx::core::actor::sl, debug) << __PRETTY_FUNCTION__;
+}
+/*neb::phx::core::actor::actor::base::base(std::shared_ptr<neb::phx::core::actor::util::parent> parent):
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	neb::core::core::actor::base(parent),
 	neb::phx::core::actor::base(parent),
 	px_actor_(NULL)
 {
 	LOG(lg, neb::phx::core::actor::sl, debug) << __PRETTY_FUNCTION__;
+<<<<<<< HEAD
 }
+=======
+}*/
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 neb::phx::core::actor::actor::base::~base() {
 	LOG(lg, neb::phx::core::actor::sl, debug) << __PRETTY_FUNCTION__;
 

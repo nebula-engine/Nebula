@@ -29,8 +29,14 @@ include_directories("../glm")
 ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
 
 SET(libs
+<<<<<<< HEAD
 	${Galaxy_LIBRARIES}
 	${Boost_LIBRARIES}
+=======
+	#galaxy_log_0_so_db
+	#galaxy_console_0_so_db
+	#/scratch/usr/lib/libboost_serialization.so.1.55.0
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	)
 
 INCLUDE(cmh_library)

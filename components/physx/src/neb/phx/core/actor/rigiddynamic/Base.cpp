@@ -7,11 +7,18 @@
 #include <neb/phx/core/scene/base.hpp>
 #include <neb/phx/core/actor/util/parent.hpp>
 #include <neb/phx/core/actor/rigiddynamic/base.hpp>
+<<<<<<< HEAD
 #include <neb/phx/core/actor/rigiddynamic/base.hpp>
 #include <neb/phx/util/convert.hpp>
 #include <neb/phx/util/log.hpp>
 
 neb::phx::core::actor::rigiddynamic::base::base(::std::shared_ptr<neb::phx::core::actor::util::parent> parent):
+=======
+#include <neb/phx/util/convert.hpp>
+#include <neb/phx/util/log.hpp>
+
+/*neb::phx::core::actor::rigiddynamic::base::base(::std::shared_ptr<neb::phx::core::actor::util::parent> parent):
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	neb::core::core::actor::base(parent),
 	phx::core::actor::base(parent),
 	phx::core::actor::actor::base(parent),
@@ -19,8 +26,14 @@ neb::phx::core::actor::rigiddynamic::base::base(::std::shared_ptr<neb::phx::core
 	phx::core::actor::rigidbody::base(parent)
 {
 	LOG(lg, neb::phx::core::actor::sl, debug) << __PRETTY_FUNCTION__;
+<<<<<<< HEAD
 }
 void			neb::phx::core::actor::rigiddynamic::base::init() {
+=======
+}*/
+void			neb::phx::core::actor::rigiddynamic::base::init(parent_t * const & p)
+{
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	LOG(lg, neb::phx::core::actor::sl, debug) << __PRETTY_FUNCTION__;
 	
 	assert(px_actor_);
@@ -35,9 +48,17 @@ void			neb::phx::core::actor::rigiddynamic::base::create_physics() {
 		LOG(lg, neb::phx::core::actor::sl, debug) << "been here!";
 		return;
 	}
+<<<<<<< HEAD
 
 	auto scene = std::dynamic_pointer_cast<neb::phx::core::scene::base>(getScene());
 
+=======
+	
+	if(!neb::core::app::__base::is_valid()) return;
+
+	auto scene = dynamic_cast<neb::phx::core::scene::base*>(getScene());
+	
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	auto p(getPose());	
 	physx::PxTransform pose(
 			phx::util::convert(vec3(p.pos_)),
@@ -84,8 +105,15 @@ void			neb::phx::core::actor::rigiddynamic::base::create_physics() {
 void			neb::phx::core::actor::rigiddynamic::base::init_physics() {
 	LOG(lg, neb::phx::core::actor::sl, debug) << __PRETTY_FUNCTION__;
 
+<<<<<<< HEAD
 	assert(px_actor_);	
 	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();
+=======
+	if(!px_actor_) return;
+
+	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	assert(px_rigid_dynamic);
 
 	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, density_);

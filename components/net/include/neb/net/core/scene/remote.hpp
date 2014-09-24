@@ -14,7 +14,11 @@
 //#include <neb/core/actor/base.hpp>
 #include <neb/core/actor/Util/Parent.hh>
 
+<<<<<<< HEAD
 #include <neb/gfx/Camera/View/Base.hh>
+=======
+#include <neb/gfx/camera/view/Base.hh>
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 #include <PhysX/core/scene/base.hpp>
 

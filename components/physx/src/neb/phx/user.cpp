@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 #include <neb/gfx/Context/Base.hh>
+=======
+//#include <neb/gfx/Context/Base.hh>
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 #include <neb/core/util/config.hpp>
 
@@ -8,7 +12,14 @@
 
 neb::phx::user::user()
 {}
+<<<<<<< HEAD
 void			neb::phx::user::connect(std::shared_ptr<neb::gfx::window::base> w) {
+=======
+void			neb::phx::user::connect(std::shared_ptr<neb::core::input::source> src)
+{
+
+/*
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	printf("%s\n", __PRETTY_FUNCTION__);
 	
 	assert(control_);
@@ -20,6 +31,7 @@ void			neb::phx::user::connect(std::shared_ptr<neb::gfx::window::base> w) {
 	
 	//printf("actor ref count = %i\n", (int)actor.use_count());
 	
+<<<<<<< HEAD
 
 	control->conn_.key_fun_ = w->sig_.key_fun_.connect(
 			::std::bind(
@@ -35,6 +47,15 @@ void			neb::phx::user::connect(std::shared_ptr<neb::gfx::window::base> w) {
 	//printf("actor ref count = %i\n", (int)actor.use_count());
 
 	//assert(control->conn_.key_fun_);
+=======
+	connectKeyFun(src, 10);
+	
+	//printf("actor ref count = %i\n", (int)actor.use_count());
+
+	//assert(control->conn_.key_fun_);
+	//
+	*/
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 }
 void			neb::phx::user::set_control(std::shared_ptr<neb::phx::core::actor::control::rigidbody::base> control) {
 	//NEBULA_DEBUG_0_FUNCTION;

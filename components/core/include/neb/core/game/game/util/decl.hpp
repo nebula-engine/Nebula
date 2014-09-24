@@ -11,6 +11,12 @@ namespace neb { namespace game {
 			class parent;
 		}
 
+<<<<<<< HEAD
+=======
+		class base;
+		class desc;
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	}
 
 }}

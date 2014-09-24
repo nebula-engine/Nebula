@@ -18,10 +18,19 @@ FIND_PACKAGE(Boost 1.55 COMPONENTS
 	REQUIRED)
 
 SET(libs
+<<<<<<< HEAD
 	${galaxy_LIBRARIES}
 	${Boost_LIBRARIES}
 	python2.7)
 
+=======
+	galaxy_std_0_so_db
+	${Boost_LIBRARIES}
+	python2.7)
+
+message(STATUS "boost ${Boost_LIBRARIES}")
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 INCLUDE_DIRECTORIES("/usr/include/python2.7")
 
 INCLUDE(cmh_library)

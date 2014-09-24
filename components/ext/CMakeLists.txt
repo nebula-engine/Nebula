@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
 INCLUDE($ENV{HOME}/.config.cmake)
@@ -50,4 +51,8 @@ INCLUDE(cmh_library)
 
 
 
+=======
+ADD_SUBDIRECTORY(maze)
+ADD_SUBDIRECTORY(hf)
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 

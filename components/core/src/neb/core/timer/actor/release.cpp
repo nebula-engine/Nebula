@@ -22,10 +22,16 @@ void		neb::Timer::actor::Release::doSomething() {
 	// actor was released after timer start
 	if(!actor) return;
 	
+<<<<<<< HEAD
 	auto parent = actor->parent_.lock();
 	assert(parent);
 	
 	parent->erase(actor->i_);
+=======
+	neb::core::core::actor::base::parent_t * const & p = actor->getParent();
+	
+	p->erase(actor->_M_index);
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 }
 
 

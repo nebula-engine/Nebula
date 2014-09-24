@@ -3,21 +3,43 @@
 
 //#include <PxPhysicsAPI.h>
 
+<<<<<<< HEAD
 #include <neb/core/math/geo/polygon.hpp>
 #include <neb/core/math/geo/quad.hpp>
 
 namespace math {
 	namespace geo {
+=======
+//#include <neb/core/math/geo/polygon.hpp>
+//#include <neb/core/math/geo/quad.hpp>
+
+namespace math {
+	namespace geo {
+
+		class triangle;
+		class polygon;
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 		struct polyhedron {
 				enum
 				{
 					PER_FACE_NORMAL
 				};
 
+<<<<<<< HEAD
 				int		triangle_count();
 				vector< std::shared_ptr<tri> >		triangles();
 
 				vector< std::shared_ptr<polygon> >		polygons_;
+=======
+				polyhedron();
+
+				unsigned int	getNbTriangles();
+				triangle*	getTriangles();
+
+				polygon*	polygons_;
+				unsigned int	nbPolys_;
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 				unsigned int	flag_;
 		};

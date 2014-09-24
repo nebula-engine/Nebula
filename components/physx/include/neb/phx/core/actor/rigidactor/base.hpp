@@ -11,8 +11,14 @@ namespace neb { namespace phx { namespace core { namespace actor { namespace rig
 		virtual public neb::phx::core::actor::actor::base
 	{
 		public:
+<<<<<<< HEAD
 			base(::std::shared_ptr<neb::phx::core::actor::util::parent>);
 			virtual void						init() = 0;
+=======
+			//base(::std::shared_ptr<neb::phx::core::actor::util::parent>);
+			
+			virtual void						init(neb::core::core::actor::util::parent * const &) = 0;
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 			virtual void						release() = 0;
 			virtual void						step(gal::etc::timestep const & ts) = 0;
 			void							setupFiltering();

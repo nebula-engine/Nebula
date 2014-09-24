@@ -11,6 +11,7 @@ neb::core::core::actor::util::parent::parent() {
 }
 neb::core::core::actor::util::parent::~parent() {
 }
+<<<<<<< HEAD
 void							neb::core::core::actor::util::parent::init() {
 
 }
@@ -33,4 +34,6 @@ std::shared_ptr<neb::core::core::scene::base>		neb::core::core::actor::util::par
 	
 	return parent->getScene();
 }
+=======
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 

@@ -11,10 +11,14 @@ INCLUDE(cmh_build_config)
 
 INCLUDE(cmh_boost)
 FIND_PACKAGE(Boost 1.55 COMPONENTS
+<<<<<<< HEAD
 	system
 	thread
 	python
 	serialization
+=======
+	python
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	REQUIRED)
 
 FIND_PACKAGE(galaxy 0 COMPONENTS std REQUIRED)

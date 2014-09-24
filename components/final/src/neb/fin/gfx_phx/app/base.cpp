@@ -15,6 +15,11 @@
 #include <GLFW/glfw3.h>
 
 #include <gal/console/base.hpp>
+<<<<<<< HEAD
+=======
+#include <gal/etc/stopwatch.hpp>
+#include <gal/dll/helper.hpp>
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 #include <gal/log/log.hpp>
 
@@ -23,6 +28,10 @@
 #include <neb/core/app/__base.hpp>
 #include <neb/core/core/scene/base.hpp>
 
+<<<<<<< HEAD
+=======
+#include <gal/stl/deleter.hpp>
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 #include <neb/gfx/util/log.hpp>
 #include <neb/gfx/Context/Base.hh>
@@ -45,6 +54,7 @@ shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::global()
 	assert(app);
 	return app;
 }
+<<<<<<< HEAD
 shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::init() {
 	auto app(make_shared<neb::fin::gfx_phx::app::base>());
 
@@ -56,6 +66,23 @@ shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::init() {
 	app->neb::phx::app::base::__init();
 
 	app->neb::fin::gfx_phx::app::base::__init();
+=======
+shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::s_init() {
+
+	typedef neb::fin::gfx_phx::app::base T;
+	
+	std::shared_ptr<T> app(new T(), gal::stl::deleter<T>());
+	
+	app->neb::core::app::__base::init();
+
+	app->neb::gfx::app::__gfx::init();
+	app->neb::gfx::app::__gfx_glsl::__init();
+	app->neb::gfx::app::glfw::init();
+
+	app->neb::phx::app::base::__init();
+
+	app->neb::fin::gfx_phx::app::base::init();
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 	g_app_ = app;
 	return app;
@@ -63,8 +90,14 @@ shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::init() {
 neb::fin::gfx_phx::app::base::base() {
 }
 neb::fin::gfx_phx::app::base::~base() {
+<<<<<<< HEAD
 }
 void				neb::fin::gfx_phx::app::base::__init() {
+=======
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+void				neb::fin::gfx_phx::app::base::init() {
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 	try {
 		console_->main_namespace_["neb"] = boost::python::import(STRINGIZE(PY_LIB_NAME));
@@ -77,18 +110,55 @@ void				neb::fin::gfx_phx::app::base::__init() {
 
 	// log levels
 
+<<<<<<< HEAD
 	std::map<std::string, int> map_var({
+=======
+	struct Pair {
+		char const *		c;
+		severity_level * const	sl;
+	};
+
+	static const Pair pairs[13] = {
+		{"neb core",		&neb::core::sl},
+		{"neb core scene",	&neb::core::core::scene::sl},
+		{"neb core actor",	&neb::core::core::actor::sl},
+		{"neb core shape",	&neb::core::core::shape::sl},
+		{"neb core light",	&neb::core::core::light::sl},
+		{"neb gfx",		&neb::gfx::sl},
+		{"neb gfx actor",	&neb::gfx::core::actor::sl},
+		{"neb gfx shape",	&neb::gfx::core::shape::sl},
+		{"neb gfx light",	&neb::gfx::core::light::sl},
+		{"neb phx",		&neb::phx::sl},
+		{"neb phx scene",	&neb::phx::core::scene::sl},
+		{"neb phx actor",	&neb::phx::core::actor::sl},
+		{"neb phx shape",	&neb::phx::core::shape::sl}
+	};
+
+
+/*	std::map<std::string, int> map_var({
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 			{"neb core",		0},
 			{"neb core scene",	1},
 			{"neb core actor",	2},
 			{"neb core shape",	3},
 			{"neb core light",	4},
 			{"neb gfx",		5},
+<<<<<<< HEAD
 			{"neb gfx shape",	6},
 			{"neb phx",		7},
 			{"neb phx scene",	8},
 			{"neb phx actor",	9},
 			{"neb phx shape",	10}});
+=======
+			{"neb gfx actor",	6},
+			{"neb gfx shape",	7},
+			{"neb gfx light",	8},
+			{"neb phx",		9},
+			{"neb phx scene",	10},
+			{"neb phx actor",	11},
+			{"neb phx shape",	12}});
+			*/
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	std::map<std::string, int> map_val({
 			{"debug",	debug},
 			{"info",	info},
@@ -104,19 +174,50 @@ void				neb::fin::gfx_phx::app::base::__init() {
 			if(loc != std::string::npos) {
 				auto var = line.substr(0,loc);
 				auto val = line.substr(loc+1);
+<<<<<<< HEAD
 
 				auto it_var = map_var.find(var);
 				auto it_val = map_val.find(val);
-
-				if(it_var == map_var.end()) {
-					std::cout << "invalid variable" << std::endl;
-					abort();
-				}
+=======
+	
+				auto it_val = map_val.find(val);
 				if(it_val == map_val.end()) {
 					std::cout << "invalid value" << std::endl;
 					abort();
 				}
 				
+				unsigned int i = 0;
+				for(i = 0; i < (sizeof(pairs) / sizeof(Pair)); i++)
+				{
+					if(strcmp(var.c_str(), pairs[i].c) == 0)
+					{
+						*pairs[i].sl = (severity_level)it_val->second;
+						break;
+					}
+				}
+				if(i == (sizeof(pairs) / sizeof(Pair)))
+				{
+					 std::cout << "log group not found: '" << var << "'" << std::endl;
+					 abort();
+				}
+
+				/*
+				auto it_var = map_var.find(var);
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
+
+				if(it_var == map_var.end()) {
+					std::cout << "invalid variable" << std::endl;
+					abort();
+				}
+<<<<<<< HEAD
+				if(it_val == map_val.end()) {
+					std::cout << "invalid value" << std::endl;
+					abort();
+				}
+				
+=======
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 				switch(it_var->second) {
 					case 0: neb::core::sl			= (severity_level)it_val->second; break;
 					case 1: neb::core::core::scene::sl	= (severity_level)it_val->second; break;
@@ -124,6 +225,7 @@ void				neb::fin::gfx_phx::app::base::__init() {
 					case 3: neb::core::core::shape::sl	= (severity_level)it_val->second; break;
 					case 4: neb::core::core::light::sl	= (severity_level)it_val->second; break;
 					case 5: neb::gfx::sl			= (severity_level)it_val->second; break;
+<<<<<<< HEAD
 					case 6: neb::gfx::core::shape::sl	= (severity_level)it_val->second; break;
 					case 7: neb::phx::sl			= (severity_level)it_val->second; break;
 					case 8: neb::phx::core::scene::sl	= (severity_level)it_val->second; break;
@@ -133,17 +235,45 @@ void				neb::fin::gfx_phx::app::base::__init() {
 						std::cout << "default" << std::endl;
 						abort();
 				}
+=======
+					case 6: neb::gfx::core::actor::sl	= (severity_level)it_val->second; break;
+					case 7: neb::gfx::core::shape::sl	= (severity_level)it_val->second; break;
+					case 8: neb::gfx::core::light::sl	= (severity_level)it_val->second; break;
+					case 9: neb::phx::sl			= (severity_level)it_val->second; break;
+					case 10: neb::phx::core::scene::sl	= (severity_level)it_val->second; break;
+					case 11: neb::phx::core::actor::sl	= (severity_level)it_val->second; break;
+					case 12: neb::phx::core::shape::sl	= (severity_level)it_val->second; break;
+					default:
+						 std::cout << "default" << std::endl;
+						 abort();
+				}
+				*/
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 			}
 		}
 	}
 
 }
+<<<<<<< HEAD
 void				neb::fin::gfx_phx::app::base::release() {
+=======
+void				neb::fin::gfx_phx::app::base::release()
+{
+	//neb::core::app::__base::__release();
+	neb::app::__core::__release();
+
+	neb::gfx::app::__gfx::release();
+	//neb::gfx::app::__gfx_glsl::__release();
+
+	neb::phx::app::base::__release();
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 }
 void				neb::fin::gfx_phx::app::base::loop() {
 
 	auto self(std::dynamic_pointer_cast<neb::core::app::__base>(shared_from_this()));
 	assert(self);
+<<<<<<< HEAD
 	
 	//::std::thread t(::std::bind(&neb::app::base::loop2, self));
 	
@@ -162,11 +292,67 @@ void				neb::fin::gfx_phx::app::base::loop() {
 //	if(server_) server_->close();
 //	if(client_) client_->close();
 
+=======
+
+	//::std::thread t(::std::bind(&neb::app::base::loop2, self));
+
+	static gal::etc::stopwatch sw_step;
+	static gal::etc::stopwatch sw_render;
+
+	double t;
+
+	while(!flag_.any(neb::core::app::util::flag::E::SHOULD_RELEASE)) {
+
+		if(!neb::gfx::window::util::parent::map_.front()) break;
+
+		t = glfwGetTime();
+		sw_step.start(t);
+		{
+			ts_.step(t);
+			step(ts_);
+		}
+		t = glfwGetTime();
+		sw_step.stop(t);
+
+
+		t = glfwGetTime();
+		sw_render.start(t);
+		{
+			neb::gfx::app::glfw::render();
+
+			//::std::this_thread::yield();
+		}
+		t = glfwGetTime();
+		sw_render.stop(t);
+
+		if((ts_.frame % 100) == 0)
+		{
+			std::cout
+				<< std::setw(16) << "step"
+				<< std::setw(16) << sw_step.getAvg()
+				<< std::setw(16) << "render"
+				<< std::setw(16) << sw_render.getAvg()
+				<< std::endl;
+		}
+		//t.join();
+
+		//	if(server_) server_->close();
+		//	if(client_) client_->close();
+
+	}
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 }
 void				neb::fin::gfx_phx::app::base::step(gal::etc::timestep const & ts) {
 
 	neb::core::core::scene::util::parent::step(ts);
 
+<<<<<<< HEAD
+=======
+	neb::gfx::gui::layout::util::parent::step(ts);
+
+	neb::game::game::util::parent::step(ts);
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	neb::gfx::window::util::parent::step(ts);
 
 	glfwPollEvents();
@@ -181,6 +367,7 @@ void							neb::fin::gfx_phx::app::base::loadXml(::std::string filename, neb::st
 }
 void							neb::fin::gfx_phx::app::base::set_should_release() {
 }
+<<<<<<< HEAD
 weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::createScene() {
 	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(shared_from_this()));
 
@@ -189,18 +376,120 @@ weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::cr
 	neb::core::core::scene::util::parent::insert(scene);
 
 	scene->init();
+=======
+std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::createScene()
+{
+	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(shared_from_this()));
+
+	typedef neb::fin::gfx_phx::core::scene::base T;
+
+	std::shared_ptr<T> scene (new T, gal::stl::deleter<T>());
+
+	neb::core::core::scene::util::parent::insert(scene);
+
+	scene->init(this);
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 
 	// python object
 	if(console_) {
 		neb::py::core::scene::base py_scene;
 		py_scene.scene_ = scene;
+<<<<<<< HEAD
 	
+=======
+
 		try {
 			console_->main_namespace_["scene"] = py_scene;
 		} catch(bp::error_already_set const &) {
 			cout << "unhandled execption\n";
 			PyErr_Print();
 		}
+
+		//try {
+			console_->eval(
+					"def on_exit(sig, func=None):\n"
+					"    print \"exit handler\"\n"
+					"    import time\n"
+					"    time.sleep(10)"
+					);
+			console_->eval(
+					"set_exit_handler(on_exit)"
+					);
+			console_->eval(
+					"print on_exit"
+					);
+		//} catch(bp::error_already_set const &) {
+		//	cout << "unhandled execption\n";
+		//	PyErr_Print();
+		//}
+
+	}
+
+	return scene;
+}
+std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::createSceneDll(std::string dll_name)
+{
+	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(shared_from_this()));
+
+	typedef neb::fin::gfx_phx::core::scene::base		T;
+	typedef gal::dll::helper<T>				H;
+
+	std::shared_ptr<H> h(new H(dll_name, "scene"));
+	h->open();
+	
+	std::shared_ptr<T> scene = h->make_shared();
+
+	neb::core::core::scene::util::parent::insert(scene);
+
+	scene->init(this);
+
+	// python object
+	if(console_) {
+		neb::py::core::scene::base py_scene;
+		py_scene.scene_ = scene;
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
+		try {
+			console_->main_namespace_["scene"] = py_scene;
+		} catch(bp::error_already_set const &) {
+			cout << "unhandled execption\n";
+			PyErr_Print();
+		}
+<<<<<<< HEAD
+=======
+
+		console_->eval(
+				"import os, sys\n"
+				"def set_exit_handler(func):\n"
+				"    if os.name == \"nt\":\n"
+				"        try:\n"
+				"            import win32api\n"
+				"            win32api.SetConsoleCtrlHandler(func, True)\n"
+				"        except ImportError:\n"
+				"            version = \".\".join(map(str, sys.version_info[:2]))\n"
+				"            raise Exception(\"pywin32 not installed for Python \" + version)\n"
+				"    else:\n"
+				"        import signal\n"
+				"        signal.signal(signal.SIGTERM, func)"
+			      );
+
+		console_->eval(
+				"def on_exit(sig, func=None):\n"
+				"    print \"exit handler\"\n"
+				"    import time\n"
+				"    time.sleep(10)"
+			      );
+		console_->eval(
+				"set_exit_handler(on_exit)"
+			      );
+		console_->eval(
+				"print on_exit"
+			      );
+
+
+
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 	}
 
 	return scene;

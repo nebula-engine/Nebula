@@ -26,12 +26,19 @@ namespace neb {
 				 *
 				 */
 				virtual ~shared() {}
+<<<<<<< HEAD
 				virtual void					init();
 				virtual void					release();
 				virtual void					step(gal::etc::timestep const & ts);
 
 				virtual void					serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 				virtual void					serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
+=======
+				//virtual void					__init() = 0;
+				virtual void					release();
+				virtual void					step(gal::etc::timestep const & ts) = 0;
+
+>>>>>>> d0f62233eb8fed722542d3bfcc237575d904a507
 		};
 	}
 }
