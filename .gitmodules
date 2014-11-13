@@ -1,28 +1,3 @@
-[submodule "components/core"]
-	path = components/core
-	url = https://chuck1@github.com/chuck1/Nebula-Core.git
-[submodule "components/gfx"]
-	path = components/gfx
-	url = https://chuck1@github.com/chuck1/Nebula-Graphics.git
-[submodule "components/physx"]
-	path = components/physx
-	url = https://chuck1@github.com/chuck1/Nebula-PhysX.git
-[submodule "components/python"]
-	path = components/python
-	url = https://chuck1@github.com/chuck1/Nebula-Python.git
-[submodule "components/ext"]
-	path = components/ext
-	url = https://chuck1@github.com/chuck1/Nebula-Ext.git
-[submodule "components/final"]
-	path = components/final
-	url = https://chuck1@github.com/chuck1/Nebula-Final.git
-[submodule "components/net"]
-	path = components/net
-	url = https://chuck1@github.com/chuck1/Nebula-Network.git
-[submodule "external/Galaxy"]
-	path = external/Galaxy
-	url = https://chuck1@github.com/chuck1/Galaxy.git
-
 [submodule "external/glfw"]
 	path = external/glfw
 	url = http://github.com/glfw/glfw.git

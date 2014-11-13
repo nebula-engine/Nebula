@@ -15,18 +15,21 @@
 #include <neb/core/core/light/base.hpp>
 #include <neb/core/core/scene/base.hpp>
 #include <neb/core/core/shape/base.hpp>
+#include <neb/core/core/shape/cuboid/desc.hpp>
 #include <neb/core/core/actor/base.hpp>
+#include <neb/core/core/actor/rigidbody/desc.hpp>
 
 #include <neb/gfx/core/light/util/decl.hpp>
 #include <neb/gfx/core/light/directional.hpp>
 #include <neb/gfx/core/light/point.hpp>
+#include <neb/gfx/core/light/spot.hpp>
 #include <neb/gfx/Context/Window.hpp>
 #include <neb/gfx/Context/fbo.hpp>
 #include <neb/gfx/Context/fbo_multi.hpp>
 #include <neb/gfx/environ/two.hpp>
 #include <neb/gfx/environ/shadow/point.hpp>
 #include <neb/gfx/environ/shadow/directional.hpp>
-#include <neb/gfx/environ/three.hpp>
+#include <neb/gfx/environ/SceneDefault.hpp>
 #include <neb/gfx/environ/vis_depth.hpp>
 #include <neb/gfx/gui/object/terminal.hh>
 #include <neb/gfx/camera/view/ridealong.hh>
@@ -35,16 +38,16 @@
 
 #include <neb/core/game/map/base.hpp>
 #include <neb/core/game/trigger/ActorEx1.hpp>
-
-#include <neb/ext/maze/game/map/maze2.hpp>
+#include <neb/core/game/game/desc.hpp>
+//#include <neb/ext/maze/game/map/maze2.hpp>
 
 #include <neb/phx/app/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
 #include <neb/phx/game/weapon/SimpleProjectile.hpp>
-#include <neb/phx/game/game/base.hpp>
 #include <neb/phx/core/actor/control/rigidbody/base.hpp>
+#include <neb/phx/test.hpp>
 
-#include <neb/ext/maze/game/map/maze2.hpp>
+//#include <neb/ext/maze/game/map/maze2.hpp>
 
 #include <neb/fin/gfx_phx/app/base.hpp>
 #include <neb/fin/gfx_phx/core/scene/base.hpp>
@@ -52,16 +55,60 @@
 #include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 
-physx::PxConvexMeshGeometry	frustrum_geometry(glm::mat4 proj);
-bool				query(physx::PxConvexMeshGeometry& g0, glm::mat4 v0, physx::PxConvexMeshGeometry& g1, glm::mat4 v1);
+template<typename B, typename D> void	makeDefaultFunc()
+{
+
+	gal::itf::shared::register_type(std::type_index(typeid(B)));
+	gal::itf::shared::register_type(std::type_index(typeid(D)));
+
+
+	std::function< std::shared_ptr<B>() > f(
+			[]() { return std::shared_ptr<D>(new D(), gal::stl::deleter<D>()); }
+			);
+
+	gal::stl::factory<B>::default_factory_->add(typeid(D).hash_code(), f);
+}
+template<typename T> std::shared_ptr<T>		loadXML(std::string filename)
+{
+	std::ifstream ifs;
+	ifs.open(filename);
+	if(!ifs.is_open())
+	{
+		std::cout << "file error: " << filename << std::endl;
+		abort();
+	}
+
+	gal::stl::wrapper<T> w;
+
+	boost::archive::polymorphic_xml_iarchive ar(ifs);
+
+	w.load(ar,0);
+
+	return w.ptr_;
+}
+
+void	create_enemy();
 
 
 typedef std::shared_ptr<neb::gfx::window::base> window_shared;
+typedef neb::gfx::core::light::point		light_type;
+typedef neb::game::game::base			game_t;
 
+typedef neb::fin::gfx_phx::core::scene::base	map_type;
+//typedef neb::ext::maze::game::map::maze2	map_type;
+
+typedef std::shared_ptr<neb::fin::gfx_phx::core::scene::base>	scene_s;
+
+typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base actor_dyn_t;
+
+std::shared_ptr<game_t>			game;
+
+std::shared_ptr<neb::fin::gfx_phx::core::actor::base>	enemy;
 
 std::shared_ptr<neb::fin::gfx_phx::app::base>		app;
 window_shared						window0;
 std::shared_ptr<neb::gfx::context::window>		context1;
+std::shared_ptr<neb::gfx::environ::SceneDefault>	environ1;
 std::shared_ptr<neb::gfx::context::window>		context2;
 
 window_shared						window1;
@@ -69,7 +116,11 @@ std::shared_ptr<neb::gfx::context::window>		context1_0;
 
 
 std::shared_ptr<neb::fin::gfx_phx::core::scene::base>			scene;
-std::shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>	actor;
+//std::shared_ptr<neb::core::core::scene::base>			scene;
+
+
+std::shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>	actor_player;
+//std::shared_ptr<neb::core::core::actor::base>	actor_player;
 std::shared_ptr<neb::core::core::actor::base>				actor_light;
 
 shared_ptr<neb::gfx::gui::layout::base>	create_layout() {
@@ -89,29 +140,32 @@ shared_ptr<neb::gfx::gui::layout::base>	create_layout() {
 
 weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(
 		std::shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
-	
-	auto actor = dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
-			scene->createActorRigidDynamicUninitialized().lock()
-			);
+
+	assert(scene);
+
+	auto a = scene->createActorRigidDynamicCuboid(
+			neb::core::core::actor::rigidbody::desc(neb::core::pose(glm::vec3(20, 0, 0))),
+			neb::core::core::shape::cuboid::desc(glm::vec3(1.0))
+			).lock();
+
+	auto actor = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(a);
 
 	actor->flag_.set(neb::core::core::actor::util::flag::DESTRUCTIBLE);
-
-	actor->init();
-
+	
+	
+	
+	//actor->init();
+	
 	// shape	
-	auto shape = actor->createShapeCube(neb::core::pose(), 1.0);
-
-	actor->setupFiltering();
-
-	actor->setGlobalPosition(vec3(0,0,5));
+	//auto shape = actor->createShapeCube(neb::core::pose(), 1.0);
+	//actor->setupFiltering();
+	//actor->setGlobalPosition(vec3(0,0,5));
 
 	auto pxrd = actor->px_actor_->isRigidDynamic();
 
-	pxrd->setLinearDamping(5.0);
-	pxrd->setAngularDamping(3.0);
-
-
-
+	pxrd->setLinearDamping(10.0);
+	pxrd->setAngularDamping(4.0);
+	
 	actor->createControlPD();
 	
 	return actor;	
@@ -122,7 +176,6 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 		shared_ptr<neb::fin::gfx_phx::core::actor::base>& enemy)
 {
 
-	auto app = neb::fin::gfx_phx::app::base::global();
 	assert(app);
 	
 
@@ -166,7 +219,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 	//scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0, 5)), 1.0);
 
 	// player's actor
-	actor = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
+	actor_player = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
 			scene->createActorRigidDynamicCuboid(
 				neb::core::core::actor::rigidbody::desc(),
 				neb::core::core::shape::cuboid::desc(glm::vec3(1.0))
@@ -175,7 +228,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 
 	// weapon
-	auto weap = actor->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
+	auto weap = actor_player->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
 
 	// lights
 	actor_light = scene->createActorLightPoint(vec3()).lock();
@@ -185,95 +238,103 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	// connect actor
 
-	actor->createControlManual(window);
+	actor_player->createControlManual(window);
 
-	context->environ_->isEnvironThree()->createViewridealong(actor);
-
-	// game
-	auto game(make_shared<neb::phx::game::game::base>());
-
-	app->neb::phx::game::game::util::parent::insert(game);
-
-	// ai
-	enemy = dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::base>(create_actor_ai(scene).lock());
-
-	// weapon
-	enemy->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
-
-	auto ai(sp::make_shared<neb::phx::game::ai::base>());
-
-	game->neb::phx::game::ai::util::parent::insert(ai);
-
-	ai->actor_ = enemy;
-	ai->target_ = actor;
+	neb::is<neb::gfx::environ::base, neb::gfx::environ::SceneDefault>(context->environ_)->createViewridealong(actor_player);
+	
+	// enemy
+	create_enemy();
 
 	return scene;
 }
-shared_ptr<neb::phx::game::map::base>			create_maze()
-{
-	assert(window0);
-	assert(context1);
+void							create_enemy() {
+	assert(actor_player);
+	assert(game);
 
-	auto app = neb::fin::gfx_phx::app::base::global();
-
-	typedef neb::ext::maze::game::map::maze2 map_type;
-
-	std::shared_ptr<map_type> map(new map_type(app, glm::ivec3(6,6,6)));
-	app->neb::phx::core::scene::util::parent::insert(map);
-	map->init();
-
-	// player's actor
-	auto actor3 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
-			map->createActorRigidDynamicCuboid(
-				neb::core::core::actor::rigidbody::desc(),
-				neb::core::core::shape::cuboid::desc(glm::vec3(1.0))
-				).lock()
+	// ai
+	enemy = dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::base>(
+			create_actor_ai(scene).lock()
 			);
 
 	// weapon
-	auto weap = actor3->createWeaponSimpleProjectile(window0, 0.2, 10.0, 5.0);
+	enemy->createWeaponSimpleProjectile(window0, 0.2, 10.0, 5.0);
 
-	// lights
-	//auto actor4 = map->createActorLightDirectional(glm::vec3(0,1,-1)).lock();
-	actor_light = map->createActorLightPoint(glm::vec3(0,0,40)).lock();
+	auto ai(sp::make_shared<neb::game::ai::base>());
+	
+	
+	game->neb::game::ai::util::parent::insert(ai);
 
-	//auto shape4 = actor4->neb::core::core::shape::util::parent::map_.front();
-	//assert(shape4);
-	//light0 = std::dynamic_pointer_cast<light_type>(shape4->neb::core::core::light::util::parent::map_.front());
-	//assert(light0);
+	ai->actor_ = enemy;
+	ai->target_ = actor_player;
 
-	// give scene to context
+}
+scene_s		create_maze()
+{
+	//assert(window0);
+	//assert(context1);
+
+	auto app = neb::fin::gfx_phx::app::base::global();
+
+	// create map
+	
+	//auto map = app->createSceneDll("../../components/ext/maze/libnebula_ext_maze_0_so_db.so").lock();
+	auto map = app->createSceneDll("../../components/ext/hf/libnebula_ext_hf_0_so_db.so").lock();
+	
+	scene = map;
+
+	// player's actor
+	actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::core::core::actor::base>("actor_player.xml"));
+	scene->addActor(actor_player);
 
 
-	// camera
 
-	actor3->createControlManual(window0);
+	// weapon
+	if(window0)
+	{
+		auto weap = actor_player->createWeaponSimpleProjectile(window0, 0.2, 10.0, 5.0);
 
-	context1->environ_->isEnvironThree()->createViewridealong(actor3);
+		// lights
+		//auto actor4 = map->createActorLightDirectional(glm::vec3(0,1,-1)).lock();
+		//actor_light = map->createActorLightPoint(glm::vec3(0,0,10)).lock();
+
+
+		//	auto shape4 = actor_light->neb::core::core::shape::util::parent::map_.front();
+		//	assert(shape4);
+		//	auto light = std::dynamic_pointer_cast<light_type>(shape4->neb::core::core::light::util::parent::map_.front());
+		//	assert(light);
+
+
+		// give scene to context
+
+
+		// camera
+
+		actor_player->createControlManual(window0);
+
+		environ1 = neb::is<neb::gfx::environ::base, neb::gfx::environ::SceneDefault>(context1->environ_);
+
+		environ1->createViewridealong(actor_player);
+	}	
+	//	light->initShadow(environ1);
+
+	//create_enemy();
+
 
 	return map;
-}
-weak_ptr<neb::phx::game::game::base>		create_game() {
-
-	auto app(neb::phx::app::base::global());
-
-	auto game(make_shared<neb::phx::game::game::base>());
-
-	app->neb::game::game::util::parent::insert(game);
-
-
-	return game;
 }
 void		setup_game()
 {
 
-	auto game = create_game().lock();
+	neb::game::game::desc gameDesc;
+
+	game = app->createGame(gameDesc);
 
 	// scene
-	shared_ptr<neb::fin::gfx_phx::core::actor::base> enemy;
 
 	//auto scene = create_scene(window, context, enemy);
-	scene = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(create_maze());
+	scene = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(
+			create_maze()
+			);
 	assert(scene);
 
 	game->scene_ = scene;
@@ -295,42 +356,36 @@ void				createWindowTexVis(std::shared_ptr<neb::gfx::texture> tex)
 void				createWindow0() {
 
 	assert(app);
-	
+
 	window0 = app->createWindow().lock();
 
 	context1 = window0->createContextThree().lock();
 	context2 = window0->createContextTwo().lock();
 
 	auto layout = create_layout();
-	
+
 	context2->setDrawable(layout);
-	
+
 }
 /*void				createWindow1()
-{
-	assert(app);
-	assert(scene);
-	
-	window1 = app->createWindow().lock();
-	
-	context1_0 = window1->createContextWindow().lock();
-	
-	auto environ = context1_0->createEnvironVisDepth().lock();
+  {
+  assert(app);
+  assert(scene);
 
-	environ->light_ = light0;
+  window1 = app->createWindow().lock();
 
-	context1_0->setDrawable(scene);
-}*/
+  context1_0 = window1->createContextWindow().lock();
+
+  auto environ = context1_0->createEnvironVisDepth().lock();
+
+  environ->light_ = light0;
+
+  context1_0->setDrawable(scene);
+  }*/
 void				setupWindow0() {
 	assert(scene);
 	assert(context1);
 	context1->setDrawable(scene);
-}
-void			cleanup()
-{
-	app->neb::core::core::scene::util::parent::map_.clear();
-
-
 }
 void queryproj()
 {
@@ -340,11 +395,11 @@ void queryproj()
 	auto shape = actor_light->neb::core::core::shape::util::parent::map_.front(); assert(shape);
 	auto light = shape->neb::core::core::light::util::parent::map_.front();	assert(light);
 	auto l = neb::is<neb::core::light::__base, neb::gfx::core::light::point>(light);
-	auto e0 = neb::is<neb::gfx::environ::base, neb::gfx::environ::three>(context1->environ_);
+	auto e0 = neb::is<neb::gfx::environ::base, neb::gfx::environ::SceneDefault>(context1->environ_);
 	auto e1 = neb::is<neb::gfx::environ::base, neb::gfx::environ::shadow::point>(l->shadow_environ_);
 
-	physx::PxConvexMeshGeometry g0 = frustrum_geometry(e0->proj_->proj());
-	physx::PxConvexMeshGeometry g1 = frustrum_geometry(e1->proj_->proj());
+	physx::PxConvexMeshGeometry* g0 = neb::frustrum_geometry(e0->proj_->proj());
+	physx::PxConvexMeshGeometry* g1 = neb::frustrum_geometry(e1->proj_->proj());
 
 	bool res;
 
@@ -352,7 +407,7 @@ void queryproj()
 
 	int hits = 0;
 
-/*	for(int i = 0; i < 1000; i++) {
+	/*	for(int i = 0; i < 1000; i++) {
 		sw.start(glfwGetTime());
 		if(query(g0, e0->view_->view(), g1, e1->view_[0]->view())) hits++;
 		if(query(g0, e0->view_->view(), g1, e1->view_[1]->view())) hits++;
@@ -361,13 +416,13 @@ void queryproj()
 		if(query(g0, e0->view_->view(), g1, e1->view_[4]->view())) hits++;
 		if(query(g0, e0->view_->view(), g1, e1->view_[5]->view())) hits++;
 		sw.stop(glfwGetTime());
-	}*/
-	res = query(g0, e0->view_->view(), g1, e1->view_[0]->view());std::cout << "query " << res << std::endl;
-	res = query(g0, e0->view_->view(), g1, e1->view_[1]->view());std::cout << "query " << res << std::endl;
-	res = query(g0, e0->view_->view(), g1, e1->view_[2]->view());std::cout << "query " << res << std::endl;
-	res = query(g0, e0->view_->view(), g1, e1->view_[3]->view());std::cout << "query " << res << std::endl;
-	res = query(g0, e0->view_->view(), g1, e1->view_[4]->view());std::cout << "query " << res << std::endl;
-	res = query(g0, e0->view_->view(), g1, e1->view_[5]->view());std::cout << "query " << res << std::endl;
+		}*/
+	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[0]->view());std::cout << "query " << res << std::endl;
+	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[1]->view());std::cout << "query " << res << std::endl;
+	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[2]->view());std::cout << "query " << res << std::endl;
+	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[3]->view());std::cout << "query " << res << std::endl;
+	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[4]->view());std::cout << "query " << res << std::endl;
+	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[5]->view());std::cout << "query " << res << std::endl;
 
 	std::cout << hits << " " << sw.getAvg() << std::endl;
 
@@ -375,7 +430,18 @@ void queryproj()
 }
 int			main() {
 
+	makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::desc>();
+	makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::rigidbody::desc>();
+	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
+	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
+
+
+
+
 	app = neb::fin::gfx_phx::app::base::init();
+
 
 	createWindow0();
 
@@ -391,20 +457,21 @@ int			main() {
 	setupWindow0();
 
 	//createWindow1();
-
-	createWindowTexVis(scene->tex_shadow_map_);
-
+	//createWindowTexVis(scene->tex_shadow_map_);
 	//queryproj();
 
-	//return 0;	
+
+
+
+
+
+
 
 
 
 	app->loop();
 
-	cleanup();
-	app.reset();
-	neb::fin::gfx_phx::app::base::g_app_.reset();
+
 }
 
 

@@ -8,6 +8,8 @@ PROJECT(box)
 INCLUDE(../../config.cmake)
 INCLUDE(cmh_build_config)
 
+INCLUDE(../../external/glfw.cmake)
+
 FIND_PACKAGE(PhysX)
 FIND_PACKAGE(galaxy 0 COMPONENTS
 	std
@@ -15,27 +17,28 @@ FIND_PACKAGE(galaxy 0 COMPONENTS
 	console)
 FIND_PACKAGE(nebula 0 COMPONENTS
 	core
-	gfx
 	physx
 	python
 	final
-	ext)
+	)
 
+set(libs
+	nebula_final_0_so_db
+	nebula_physx_0_so_db
+	nebula_core_0_so_db
+	galaxy_std_0_so_db
+	galaxy_log_0_so_db
+	galaxy_console_0_so_db
+	${glfw_LIBRARIES}
+	/scratch/usr/lib/libboost_serialization.so.1.55.0
+	/scratch/usr/lib/libboost_system.so.1.55.0
+	/scratch/usr/lib/libboost_thread.so.1.55.0
+	)
 
 ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
 
-
+message(STATUS "libs ${libs}")
 
 INCLUDE(cmh_executable)
 
-#SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -v")
-
-
-add_custom_command(
-	TARGET box POST_BUILD
-	COMMAND ${CMAKE_COMMAND} -E copy_directory "${nebula_gfx_INCLUDE_DIR}/neb/gfx/media" ${PROJECT_BINARY_DIR}/media)
-
-add_custom_target(
-	box_media
-	DEPENDS ${PROJECT_BINARY_DIR}/media)
 

@@ -1,0 +1,8 @@
+multiple lights
+one shadow map per light
+
+one uniform material struct for front
+one uniform image texture
+
+fragments in shadow have ambient and emission only
+

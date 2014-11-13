@@ -1,0 +1,2 @@
+ADD_SUBDIRECTORY(chat_server)
+ADD_SUBDIRECTORY(chat_client)
