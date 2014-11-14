@@ -1,6 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
 project(nebula)
+SET(CMAKE_BUILD_TYPE Debug)
 
 # build
 set(NEB_SHARE_DIR ${PROJECT_SOURCE_DIR}/share)
