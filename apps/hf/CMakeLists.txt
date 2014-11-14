@@ -23,12 +23,13 @@ FIND_PACKAGE(nebula 0 COMPONENTS
 	)
 
 set(libs
-	nebula_final_0
-	nebula_physx_0
-	nebula_core_0
-	galaxy_std_0
-	galaxy_log_0
-	galaxy_console_0
+	#nebula_final_0
+	#nebula_physx_0
+	#nebula_core_0
+	#galaxy_std_0
+	#galaxy_log_0
+	#galaxy_console_0
+	${nebula_STATIC_LIBRARIES}
 	${glfw_LIBRARIES}
 	${physx_LIBRARIES}
 	/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.55.0

@@ -43,6 +43,12 @@ git commit -m 'auto'
 git push origin master
 cd ../../../..
 
+cd external/Galaxy/components/log
+git add --all
+git commit -m 'auto'
+git push origin master
+cd ../../../..
+
 cd external/Galaxy
 git add --all
 git commit -m 'auto'

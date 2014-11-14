@@ -179,7 +179,6 @@ int			main()
 
 
 
-
 	app = neb::fin::gfx_phx::app::base::s_init();
 
 

@@ -4,8 +4,8 @@ project(nebula)
 SET(CMAKE_BUILD_TYPE Debug)
 
 # build
-set(NEB_SHARE_DIR ${PROJECT_SOURCE_DIR}/share)
-set(NEB_MOD_DIR ${PROJECT_BINARY_DIR}/components/ext)
+set(NEB_SHARE_DIR ${PROJECT_SOURCE_DIR}/share/)
+set(NEB_MOD_DIR ${PROJECT_BINARY_DIR}/components/ext/)
 
 # install...
 
