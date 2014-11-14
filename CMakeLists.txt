@@ -1,5 +1,17 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
+project(nebula)
+
+# build
+set(NEB_SHARE_DIR ${PROJECT_SOURCE_DIR}/share)
+set(NEB_MOD_DIR ${PROJECT_BINARY_DIR}/components/ext)
+
+# install...
+
+
+
+ADD_DEFINITIONS(-D_DEBUG=1)
+
 ADD_SUBDIRECTORY(external)
 ADD_SUBDIRECTORY(components)
 ADD_SUBDIRECTORY(apps)

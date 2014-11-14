@@ -19,7 +19,6 @@
 [submodule "external/Galaxy"]
 	path = external/Galaxy
 	url = https://chuck1@github.com/chuck1/Galaxy.git
-
 [submodule "external/glfw"]
 	path = external/glfw
 	url = http://github.com/glfw/glfw.git
@@ -29,3 +28,4 @@
 [submodule "external/maze"]
 	path = external/maze
 	url = https://github.com/chuck1/maze
+
