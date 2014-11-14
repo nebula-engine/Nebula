@@ -44,6 +44,7 @@
 
 #include <neb/phx/app/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
+#include <neb/phx/core/shape/HeightField.hpp>
 
 #include <neb/core/game/weapon/SimpleProjectile.hpp>
 
@@ -170,9 +171,12 @@ int			main()
 	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
 	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
 	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::rigidstatic::base>();
 
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::phx::core::shape::HeightField>();
+	
 
 	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
 	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::point>();
