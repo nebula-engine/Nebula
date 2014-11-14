@@ -14,18 +14,18 @@
 	</flag>
 	<actors class_id="3" tracking_level="0" version="0">
 		<container class_id="4" tracking_level="0" version="0">
-			<count>2</count>
+			<count>3</count>
 			<item_version>0</item_version>
 			<item class_id="5" tracking_level="0" version="0">
-				<first>0</first>
+				<first>1</first>
 				<second class_id="6" tracking_level="0" version="0">
 					<load_type>0</load_type>
 					<hashcode class_id="7" tracking_level="0" version="0">
-						<name>N3neb3fin7gfx_phx4core5actor12rigiddynamic4baseE</name>
+						<name>N3neb3fin7gfx_phx4core5actor11rigidstatic4baseE</name>
 					</hashcode>
 					<object class_id="8" tracking_level="0" version="0">
-						<_M_index>0</_M_index>
-						<_M_name>player</_M_name>
+						<_M_index>1</_M_index>
+						<_M_name></_M_name>
 						<flag class_id="9" tracking_level="0" version="0">
 							<value>0</value>
 						</flag>
@@ -59,51 +59,13 @@
 								<count>1</count>
 								<item_version>0</item_version>
 								<item class_id="15" tracking_level="0" version="0">
-									<first>1</first>
+									<first>2</first>
 									<second class_id="16" tracking_level="0" version="0">
 										<load_type>0</load_type>
 										<hashcode>
-											<name>N3neb3fin7gfx_phx4core5shape3boxE</name>
+											<name>N3neb3phx4core5shape11HeightFieldE</name>
 										</hashcode>
-										<object class_id="17" tracking_level="0" version="0">
-											<_M_index>1</_M_index>
-											<_M_name></_M_name>
-											<flag class_id="18" tracking_level="0" version="0">
-												<value>0</value>
-											</flag>
-											<pose>
-												<pos>
-													<x>0</x>
-													<y>0</y>
-													<z>0</z>
-												</pos>
-												<rot>
-													<w>1</w>
-													<x>0</x>
-													<y>0</y>
-													<z>0</z>
-												</rot>
-											</pose>
-											<scale>
-												<x>1</x>
-												<y>1</y>
-												<z>1</z>
-											</scale>
-											<image></image>
-											<normal></normal>
-											<shapes>
-												<container>
-													<count>0</count>
-													<item_version>0</item_version>
-												</container>
-											</shapes>
-											<lights class_id="19" tracking_level="0" version="0">
-												<container class_id="20" tracking_level="0" version="0">
-													<count>0</count>
-													<item_version>0</item_version>
-												</container>
-											</lights>
-										</object>
+										<object class_id="17" tracking_level="0" version="0"></object>
 									</second>
 								</item>
 							</container>
@@ -112,14 +74,14 @@
 				</second>
 			</item>
 			<item>
-				<first>2</first>
+				<first>3</first>
 				<second>
 					<load_type>0</load_type>
 					<hashcode>
 						<name>N3neb3fin7gfx_phx4core5actor4baseE</name>
 					</hashcode>
 					<object>
-						<_M_index>2</_M_index>
+						<_M_index>3</_M_index>
 						<_M_name></_M_name>
 						<flag>
 							<value>0</value>
@@ -154,13 +116,158 @@
 								<count>1</count>
 								<item_version>0</item_version>
 								<item>
-									<first>3</first>
+									<first>4</first>
 									<second>
 										<load_type>0</load_type>
 										<hashcode>
 											<name>N3neb3fin7gfx_phx4core5shape4baseE</name>
 										</hashcode>
 										<object>
+											<flag class_id="18" tracking_level="0" version="0">
+												<value>0</value>
+											</flag>
+											<pose>
+												<pos>
+													<x>0</x>
+													<y>0</y>
+													<z>0</z>
+												</pos>
+												<rot>
+													<w>1</w>
+													<x>0</x>
+													<y>0</y>
+													<z>0</z>
+												</rot>
+											</pose>
+											<scale>
+												<x>1</x>
+												<y>1</y>
+												<z>1</z>
+											</scale>
+											<image></image>
+											<normal></normal>
+											<shapes>
+												<container>
+													<count>0</count>
+													<item_version>0</item_version>
+												</container>
+											</shapes>
+											<lights class_id="19" tracking_level="0" version="0">
+												<container class_id="20" tracking_level="0" version="0">
+													<count>1</count>
+													<item_version>0</item_version>
+													<item class_id="21" tracking_level="0" version="0">
+														<first>5</first>
+														<second class_id="22" tracking_level="0" version="0">
+															<load_type>0</load_type>
+															<hashcode>
+																<name>N3neb3gfx4core5light5pointE</name>
+															</hashcode>
+															<object class_id="23" tracking_level="0" version="0">
+																<_M_index>5</_M_index>
+																<_M_name></_M_name>
+																<flag class_id="24" tracking_level="0" version="0">
+																	<value>0</value>
+																</flag>
+																<pose_>
+																	<pos>
+																		<x>0</x>
+																		<y>0</y>
+																		<z>0</z>
+																	</pos>
+																	<rot>
+																		<w>1</w>
+																		<x>0</x>
+																		<y>0</y>
+																		<z>0</z>
+																	</rot>
+																</pose_>
+																<ambient class_id="25" tracking_level="0" version="0">
+																	<r>0.2</r>
+																	<g>0.2</g>
+																	<b>0.2</b>
+																	<a>1</a>
+																</ambient>
+																<diffuse>
+																	<r>1</r>
+																	<g>1</g>
+																	<b>1</b>
+																	<a>1</a>
+																</diffuse>
+																<specular>
+																	<r>1</r>
+																	<g>1</g>
+																	<b>1</b>
+																	<a>1</a>
+																</specular>
+																<atten_const>1</atten_const>
+																<atten_linear>0</atten_linear>
+																<atten_quad>0</atten_quad>
+															</object>
+														</second>
+													</item>
+												</container>
+											</lights>
+										</object>
+									</second>
+								</item>
+							</container>
+						</shapes>
+					</object>
+				</second>
+			</item>
+			<item>
+				<first>6</first>
+				<second>
+					<load_type>0</load_type>
+					<hashcode>
+						<name>N3neb3fin7gfx_phx4core5actor12rigiddynamic4baseE</name>
+					</hashcode>
+					<object>
+						<_M_index>6</_M_index>
+						<_M_name>player</_M_name>
+						<flag>
+							<value>0</value>
+						</flag>
+						<pose>
+							<pos>
+								<x>0</x>
+								<y>0</y>
+								<z>0</z>
+							</pos>
+							<rot>
+								<w>1</w>
+								<x>0</x>
+								<y>0</y>
+								<z>0</z>
+							</rot>
+						</pose>
+						<velocity>
+							<x>0</x>
+							<y>0</y>
+							<z>0</z>
+						</velocity>
+						<density>10</density>
+						<actors>
+							<container>
+								<count>0</count>
+								<item_version>0</item_version>
+							</container>
+						</actors>
+						<shapes>
+							<container>
+								<count>1</count>
+								<item_version>0</item_version>
+								<item>
+									<first>7</first>
+									<second>
+										<load_type>0</load_type>
+										<hashcode>
+											<name>N3neb3fin7gfx_phx4core5shape3boxE</name>
+										</hashcode>
+										<object>
+											<_M_index>7</_M_index>
+											<_M_name></_M_name>
 											<flag>
 												<value>0</value>
 											</flag>
@@ -192,58 +299,8 @@
 											</shapes>
 											<lights>
 												<container>
-													<count>1</count>
+													<count>0</count>
 													<item_version>0</item_version>
-													<item class_id="21" tracking_level="0" version="0">
-														<first>4</first>
-														<second class_id="22" tracking_level="0" version="0">
-															<load_type>0</load_type>
-															<hashcode>
-																<name>N3neb3gfx4core5light5pointE</name>
-															</hashcode>
-															<object class_id="23" tracking_level="0" version="0">
-																<_M_index>4</_M_index>
-																<_M_name></_M_name>
-																<flag class_id="24" tracking_level="0" version="0">
-																	<value>0</value>
-																</flag>
-																<pose_>
-																	<pos>
-																		<x>0</x>
-																		<y>0</y>
-																		<z>0</z>
-																	</pos>
-																	<rot>
-																		<w>1</w>
-																		<x>0</x>
-																		<y>0</y>
-																		<z>0</z>
-																	</rot>
-																</pose_>
-																<ambient class_id="25" tracking_level="0" version="0">
-																	<r>0.0</r>
-																	<g>0.0</g>
-																	<b>0.0</b>
-																	<a>1</a>
-																</ambient>
-																<diffuse>
-																	<r>0</r>
-																	<g>0</g>
-																	<b>0</b>
-																	<a>1</a>
-																</diffuse>
-																<specular>
-																	<r>0</r>
-																	<g>0</g>
-																	<b>0</b>
-																	<a>1</a>
-																</specular>
-																<atten_const>1</atten_const>
-																<atten_linear>0</atten_linear>
-																<atten_quad>0</atten_quad>
-															</object>
-														</second>
-													</item>
 												</container>
 											</lights>
 										</object>
