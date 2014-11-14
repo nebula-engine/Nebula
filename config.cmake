@@ -11,6 +11,8 @@ SET(test_dll_prog_VERSION "0")
 
 
 SET(galaxy_log_VERSION "0")
+SET(test_galaxy_log_VERSION "0")
+
 SET(galaxy_console_VERSION "0")
 
 SET(nebula_core_VERSION "0")

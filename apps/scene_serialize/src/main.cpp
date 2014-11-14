@@ -68,13 +68,16 @@
 #include <neb/phx/test.hpp>
 
 //#include <neb/ext/maze/game/map/maze2.hpp>
+*/
+
+#include <neb/phx/core/shape/HeightField.hpp>
 
 #include <neb/fin/gfx_phx/app/base.hpp>
-*/
+
 #include <neb/fin/gfx_phx/core/scene/base.hpp>
 #include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
-/*#include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
-*/
+#include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
+
 #include <neb/fin/gfx_phx/core/shape/base.hpp>
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 
@@ -97,7 +100,7 @@ void			s1()
 		//ar.template register_type<T>();
 		//ar.template register_type<D>();
 		
-		auto w = loadDLL<B,D>("../../components/ext/hf/libnebula_ext_hf_0_so_db.so", "scene");
+		auto w = loadDLL<B,D>("hf/libnebula_ext_hf_0.so", "scene");
 		
 		auto scene = w.ptr_;
 		scene->init(0);
@@ -189,13 +192,17 @@ int			main()
 
 	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::base>();
 	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::rigidstatic::base>();
 
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::phx::core::shape::HeightField>();
 
 	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
 	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::point>();
 
+
+	gal::dll::helper_info::search_path_ = NEB_MOD_DIR;
 
 
 	int status;
