@@ -1,0 +1,14 @@
+
+
+/**
+\mainpage Nebula
+
+## locations
+
+ | build | install
+SHARE_DIR | SRC_DIR/share/ | ~/.local/share/nebula/
+MOD_DIR | SRC_DIR/share/media/mods/ | ~/.local/share/nebula/media/mods/
+
+
+*/
+

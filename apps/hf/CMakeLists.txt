@@ -23,16 +23,20 @@ FIND_PACKAGE(nebula 0 COMPONENTS
 	)
 
 set(libs
-	nebula_final_0_so_db
-	nebula_physx_0_so_db
-	nebula_core_0_so_db
-	galaxy_std_0_so_db
-	galaxy_log_0_so_db
-	galaxy_console_0_so_db
+	nebula_final_0
+	nebula_physx_0
+	nebula_core_0
+	galaxy_std_0
+	galaxy_log_0
+	galaxy_console_0
 	${glfw_LIBRARIES}
-	/scratch/usr/lib/libboost_serialization.so.1.55.0
-	/scratch/usr/lib/libboost_system.so.1.55.0
-	/scratch/usr/lib/libboost_thread.so.1.55.0
+	${physx_LIBRARIES}
+	/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.55.0
+	/usr/lib/x86_64-linux-gnu/libboost_system.so.1.55.0
+	/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.55.0
+	/usr/lib/x86_64-linux-gnu/libboost_python-py27.so.1.55.0
+	dl
+	python2.7
 	)
 
 ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
