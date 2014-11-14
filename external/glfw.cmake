@@ -1,6 +1,6 @@
 
 SET(glfw_LIBRARIES 
-	glfw
+	glfw3
 	GL
 	GLU
 	GLEW

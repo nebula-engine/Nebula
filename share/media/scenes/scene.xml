@@ -3,7 +3,7 @@
 <boost_serialization signature="serialization::archive" version="10">
 <load_type>1</load_type>
 <helper class_id="0" tracking_level="0" version="0">
-	<file_name>media/mods/libnebula_ext_hf_0_so_db.so</file_name>
+	<file_name>hf/libnebula_ext_hf_0.so</file_name>
 	<object_name>scene</object_name>
 	<hc>17474469058994153897</hc>
 	<name>N3neb3fin7gfx_phx4core5scene4baseE</name>
