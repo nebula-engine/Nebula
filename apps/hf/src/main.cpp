@@ -124,7 +124,7 @@ scene_s		create_maze()
 
 	// create map
 
-	if(0)
+	/*if(0)
 	{
 		scene = app->createSceneDll("../../components/ext/hf/libnebula_ext_hf_0.so").lock();
 
@@ -132,7 +132,8 @@ scene_s		create_maze()
 		actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::core::core::actor::base>("actor_player.xml"));
 		scene->addActor(actor_player);
 	}
-	else
+	else*/
+	
 	{
 		scene = loadXML<scene_t>(NEB_SHARE_DIR"/media/scenes/scene.xml");
 		app->neb::core::core::scene::util::parent::insert(scene);
