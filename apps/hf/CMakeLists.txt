@@ -29,7 +29,7 @@ set(libs
 	#galaxy_std_0
 	#galaxy_log_0
 	#galaxy_console_0
-	${nebula_STATIC_LIBRARIES}
+	${nebula_SHARED_LIBRARIES}
 	${glfw_LIBRARIES}
 	${physx_LIBRARIES}
 	/usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.55.0
