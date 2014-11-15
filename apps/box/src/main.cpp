@@ -43,7 +43,7 @@
 
 #include <neb/phx/app/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
-#include <neb/phx/game/weapon/SimpleProjectile.hpp>
+#include <neb/core/game/weapon/SimpleProjectile.hpp>
 #include <neb/phx/core/actor/control/rigidbody/base.hpp>
 #include <neb/phx/test.hpp>
 
@@ -123,7 +123,8 @@ std::shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>	actor_player
 //std::shared_ptr<neb::core::core::actor::base>	actor_player;
 std::shared_ptr<neb::core::core::actor::base>				actor_light;
 
-shared_ptr<neb::gfx::gui::layout::base>	create_layout() {
+shared_ptr<neb::gfx::gui::layout::base>	create_layout()
+{
 
 	assert(window0);
 	
