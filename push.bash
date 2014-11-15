@@ -6,6 +6,12 @@ git commit -m 'auto'
 git push origin master
 cd ../..
 
+cd components/gfx
+git add --all
+git commit -m 'auto'
+git push origin master
+cd ../..
+
 cd components/physx
 git add --all
 git commit -m 'auto'
@@ -30,6 +36,18 @@ git commit -m 'auto'
 git push origin master
 cd ../..
 
+
+cd external/cmake
+git add --all
+git commit -m 'auto'
+git push origin master
+cd ../..
+
+cd external/cmake_find
+git add --all
+git commit -m 'auto'
+git push origin master
+cd ../..
 
 cd external/Galaxy/components/console
 git add --all
