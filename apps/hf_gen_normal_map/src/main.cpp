@@ -97,7 +97,6 @@ std::shared_ptr<neb::core::core::actor::base>				actor_light;
 
 int			main(int ac, char ** av)
 {
-	myrand();
 
 
 	makeDLLFunc<neb::core::core::scene::base, neb::fin::gfx_phx::core::scene::base>();
@@ -117,6 +116,7 @@ int			main(int ac, char ** av)
 
 	app = neb::fin::gfx_phx::app::base::s_init();
 
+	myrand();
 
 	auto window = app->neb::gfx::window::util::parent::create<neb::gfx::window::base>().lock();
 
