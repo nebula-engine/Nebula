@@ -44,7 +44,7 @@
 
 #include <neb/phx/app/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
-#include <neb/phx/core/shape/HeightField.hpp>
+#include <neb/phx/core/shape/HeightField/Base.hpp>
 
 #include <neb/core/game/weapon/SimpleProjectile.hpp>
 
@@ -53,11 +53,11 @@
 
 //#include <neb/ext/maze/game/map/maze2.hpp>
 
-#include <neb/fin/gfx_phx/app/base.hpp>
-#include <neb/fin/gfx_phx/core/scene/base.hpp>
-#include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
-#include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
-#include <neb/fin/gfx_phx/core/shape/box.hpp>
+#include <neb/fin/app/base.hpp>
+#include <neb/fin/core/scene/base.hpp>
+#include <neb/fin/core/actor/rigiddynamic/base.hpp>
+#include <neb/fin/core/actor/rigidstatic/base.hpp>
+#include <neb/fin/core/shape/box.hpp>
 
 #include <neb/core/free.hpp>
 
@@ -66,21 +66,21 @@ void	create_enemy();
 
 typedef std::shared_ptr<neb::gfx::window::base> window_shared;
 typedef neb::gfx::core::light::point		light_type;
-typedef neb::game::game::base			game_t;
+typedef neb::core::game::game::base			game_t;
 
-typedef neb::fin::gfx_phx::core::scene::base	map_type;
+typedef neb::fin::core::scene::base	map_type;
 //typedef neb::ext::maze::game::map::maze2	map_type;
 
 typedef neb::core::core::scene::base	scene_t;
 typedef std::shared_ptr<scene_t>	scene_s;
 
-typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base actor_dyn_t;
+typedef neb::fin::core::actor::rigiddynamic::base actor_dyn_t;
 
 std::shared_ptr<game_t>			game;
 
-std::shared_ptr<neb::fin::gfx_phx::core::actor::base>	enemy;
+std::shared_ptr<neb::fin::core::actor::base>	enemy;
 
-std::shared_ptr<neb::fin::gfx_phx::app::base>		app;
+std::shared_ptr<neb::fin::app::base>		app;
 window_shared						window0;
 std::shared_ptr<neb::gfx::context::window>		context1;
 std::shared_ptr<neb::gfx::environ::SceneDefault>	environ1;
@@ -94,7 +94,7 @@ scene_s			scene;
 //std::shared_ptr<neb::core::core::scene::base>			scene;
 
 
-std::shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>	actor_player;
+std::shared_ptr<neb::fin::core::actor::rigiddynamic::base>	actor_player;
 //std::shared_ptr<neb::core::core::actor::base>	actor_player;
 std::shared_ptr<neb::core::core::actor::base>				actor_light;
 
@@ -103,7 +103,7 @@ shared_ptr<neb::gfx::gui::layout::base>	create_layout()
 
 	assert(window0);
 	
-	auto app = neb::fin::gfx_phx::app::base::global();
+	auto app = neb::fin::app::base::global();
 	
 	typedef neb::gfx::gui::layout::base Layout;
 	auto layout = app->neb::gfx::gui::layout::util::parent::create<Layout>().lock();
@@ -120,7 +120,7 @@ scene_s		create_maze()
 	//assert(window0);
 	//assert(context1);
 
-	auto app = neb::fin::gfx_phx::app::base::global();
+	auto app = neb::fin::app::base::global();
 
 	// create map
 
@@ -167,24 +167,24 @@ scene_s		create_maze()
 }
 int			main()
 {
-	makeDLLFunc<neb::core::core::scene::base, neb::fin::gfx_phx::core::scene::base>();
+	makeDLLFunc<neb::core::core::scene::base, neb::fin::core::scene::base>();
 	
-	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::rigidstatic::base>();
+	makeDefaultFunc<neb::core::core::actor::base, neb::fin::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::rigidstatic::base>();
 
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
-	makeDefaultFunc<neb::core::core::shape::base, neb::phx::core::shape::HeightField>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::base>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::box>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::phx::core::shape::HeightField::Base>();
 	
 
-	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
-	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::point>();
+	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::spot>();
+	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::point>();
 
 
 
-	app = neb::fin::gfx_phx::app::base::s_init();
+	app = neb::fin::app::base::s_init();
 
 
 	window0 = app->neb::gfx::window::util::parent::create<neb::gfx::window::base>().lock();
@@ -196,14 +196,14 @@ int			main()
 
 	context2->setDrawable(layout);
 
-	neb::game::game::desc gameDesc;
+	neb::core::game::game::desc gameDesc;
 
 	game = app->createGame(gameDesc);
 
 	// scene
 
 	//auto scene = create_scene(window, context, enemy);
-	scene = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(
+	scene = std::dynamic_pointer_cast<neb::fin::core::scene::base>(
 			create_maze()
 			);
 	assert(scene);
