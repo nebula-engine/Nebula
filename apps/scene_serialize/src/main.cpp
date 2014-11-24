@@ -70,16 +70,16 @@
 //#include <neb/ext/maze/game/map/maze2.hpp>
 */
 
-#include <neb/phx/core/shape/HeightField.hpp>
+#include <neb/fin/core/shape/HeightField.hpp>
 
-#include <neb/fin/gfx_phx/app/base.hpp>
+#include <neb/fin/app/base.hpp>
 
-#include <neb/fin/gfx_phx/core/scene/base.hpp>
-#include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
-#include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
+#include <neb/fin/core/scene/base.hpp>
+#include <neb/fin/core/actor/rigiddynamic/base.hpp>
+#include <neb/fin/core/actor/rigidstatic/base.hpp>
 
-#include <neb/fin/gfx_phx/core/shape/base.hpp>
-#include <neb/fin/gfx_phx/core/shape/box.hpp>
+#include <neb/fin/core/shape/base.hpp>
+#include <neb/fin/core/shape/box.hpp>
 
 #include <neb/core/free.hpp>
 
@@ -90,7 +90,7 @@ void			s1()
 {
 	{
 		typedef neb::core::core::scene::base B;
-		typedef neb::fin::gfx_phx::core::scene::base D;
+		typedef neb::fin::core::scene::base D;
 		
 		std::ofstream ofs;
 		ofs.open("scene.xml");
@@ -146,7 +146,7 @@ void			s1()
 
 	{
 		typedef neb::core::core::scene::base B;
-		typedef neb::fin::gfx_phx::core::scene::base D;
+		typedef neb::fin::core::scene::base D;
 
 		std::ifstream ifs;
 		ifs.open("scene.xml");
@@ -185,21 +185,21 @@ void			s1()
 
 int			main()
 {
-	//makeDefaultFunc<neb::core::core::scene::base, neb::fin::gfx_phx::core::scene::base>();
-	makeDLLFunc<neb::core::core::scene::base, neb::fin::gfx_phx::core::scene::base>();
+	//makeDefaultFunc<neb::core::core::scene::base, neb::fin::core::scene::base>();
+	makeDLLFunc<neb::core::core::scene::base, neb::fin::core::scene::base>();
 
-	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::core::core::actor::base, neb::fin::core::actor::rigiddynamic::base>();
 
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::gfx_phx::core::actor::rigidstatic::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::rigidstatic::base>();
 
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
-	makeDefaultFunc<neb::core::core::shape::base, neb::phx::core::shape::HeightField>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::base>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::box>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::HeightField::Base>();
 
-	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
-	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::point>();
+	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::spot>();
+	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::point>();
 
 
 	gal::dll::helper_info::search_path_ = NEB_MOD_DIR;

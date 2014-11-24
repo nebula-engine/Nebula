@@ -17,6 +17,7 @@ FIND_PACKAGE(galaxy 0 COMPONENTS
 	console)
 FIND_PACKAGE(nebula 0 COMPONENTS
 	core
+	gfx
 	physx
 	python
 	final
