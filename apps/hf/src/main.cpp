@@ -24,9 +24,9 @@
 #include <neb/gfx/core/light/directional.hpp>
 #include <neb/gfx/core/light/point.hpp>
 #include <neb/gfx/core/light/spot.hpp>
-#include <neb/gfx/Context/Window.hpp>
-#include <neb/gfx/Context/fbo.hpp>
-#include <neb/gfx/Context/fbo_multi.hpp>
+#include <neb/gfx/context/Window.hpp>
+#include <neb/gfx/context/fbo.hpp>
+#include <neb/gfx/context/fbo_multi.hpp>
 #include <neb/gfx/environ/two.hpp>
 #include <neb/gfx/environ/shadow/point.hpp>
 #include <neb/gfx/environ/shadow/directional.hpp>
@@ -44,7 +44,7 @@
 
 #include <neb/phx/app/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
-#include <neb/phx/core/shape/HeightField/Base.hpp>
+
 
 #include <neb/core/game/weapon/SimpleProjectile.hpp>
 
@@ -58,6 +58,7 @@
 #include <neb/fin/core/actor/rigiddynamic/base.hpp>
 #include <neb/fin/core/actor/rigidstatic/base.hpp>
 #include <neb/fin/core/shape/box.hpp>
+#include <neb/fin/core/shape/HeightField.hpp>
 
 #include <neb/core/free.hpp>
 
@@ -176,18 +177,15 @@ int			main()
 
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::base>();
 	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::box>();
-	makeDefaultFunc<neb::core::core::shape::base, neb::phx::core::shape::HeightField::Base>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::HeightField::Base>();
 	
 
 	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::spot>();
 	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::point>();
 
-
-
 	app = neb::fin::app::base::s_init();
 
-
-	window0 = app->neb::gfx::window::util::parent::create<neb::gfx::window::base>().lock();
+	window0 = app->createWindow().lock();//neb::gfx::window::util::parent::create<neb::gfx::window::base>().lock();
 
 	context1 = window0->createContextThree().lock();
 	context2 = window0->createContextTwo().lock();
