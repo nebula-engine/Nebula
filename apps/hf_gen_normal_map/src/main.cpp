@@ -24,9 +24,9 @@
 #include <neb/gfx/core/light/directional.hpp>
 #include <neb/gfx/core/light/point.hpp>
 #include <neb/gfx/core/light/spot.hpp>
-#include <neb/gfx/Context/Window.hpp>
-#include <neb/gfx/Context/fbo.hpp>
-#include <neb/gfx/Context/fbo_multi.hpp>
+#include <neb/gfx/context/Window.hpp>
+#include <neb/gfx/context/fbo.hpp>
+#include <neb/gfx/context/fbo_multi.hpp>
 #include <neb/gfx/environ/two.hpp>
 #include <neb/gfx/environ/shadow/point.hpp>
 #include <neb/gfx/environ/shadow/directional.hpp>
