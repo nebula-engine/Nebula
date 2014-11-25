@@ -168,20 +168,6 @@ scene_s		create_maze()
 }
 int			main()
 {
-	makeDLLFunc<neb::core::core::scene::base, neb::fin::core::scene::base>();
-	
-	makeDefaultFunc<neb::core::core::actor::base, neb::fin::core::actor::rigiddynamic::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::rigiddynamic::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::rigidstatic::base>();
-
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::base>();
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::box>();
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::HeightField::Base>();
-	
-
-	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::spot>();
-	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::point>();
 
 	app = neb::fin::app::base::s_init();
 
