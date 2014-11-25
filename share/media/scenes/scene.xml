@@ -5,8 +5,8 @@
 <helper class_id="0" tracking_level="0" version="0">
 	<file_name>hf/libnebula_ext_hf_0.so</file_name>
 	<object_name>scene</object_name>
-	<hc>17474469058994153897</hc>
-	<name>N3neb3fin7gfx_phx4core5scene4baseE</name>
+	<hc>12949771122564420175</hc>
+	<name>N3neb3fin4core5scene4baseE</name>
 </helper>
 <object class_id="1" tracking_level="0" version="0">
 	<flag class_id="2" tracking_level="0" version="0">
@@ -21,7 +21,7 @@
 				<second class_id="6" tracking_level="0" version="0">
 					<load_type>0</load_type>
 					<hashcode class_id="7" tracking_level="0" version="0">
-						<name>N3neb3fin7gfx_phx4core5actor11rigidstatic4baseE</name>
+						<name>N3neb3fin4core5actor11rigidstatic4baseE</name>
 					</hashcode>
 					<object class_id="8" tracking_level="0" version="0">
 						<_M_index>1</_M_index>
@@ -63,7 +63,7 @@
 									<second class_id="16" tracking_level="0" version="0">
 										<load_type>0</load_type>
 										<hashcode>
-											<name>N3neb3phx4core5shape11HeightFieldE</name>
+											<name>N3neb3fin4core5shape11HeightField4BaseE</name>
 										</hashcode>
 										<object class_id="17" tracking_level="0" version="0"></object>
 									</second>
@@ -78,7 +78,7 @@
 				<second>
 					<load_type>0</load_type>
 					<hashcode>
-						<name>N3neb3fin7gfx_phx4core5actor4baseE</name>
+						<name>N3neb3fin4core5actor4baseE</name>
 					</hashcode>
 					<object>
 						<_M_index>3</_M_index>
@@ -120,7 +120,7 @@
 									<second>
 										<load_type>0</load_type>
 										<hashcode>
-											<name>N3neb3fin7gfx_phx4core5shape4baseE</name>
+											<name>N3neb3fin4core5shape4baseE</name>
 										</hashcode>
 										<object>
 											<flag class_id="18" tracking_level="0" version="0">
@@ -221,7 +221,7 @@
 				<second>
 					<load_type>0</load_type>
 					<hashcode>
-						<name>N3neb3fin7gfx_phx4core5actor12rigiddynamic4baseE</name>
+						<name>N3neb3fin4core5actor12rigiddynamic4baseE</name>
 					</hashcode>
 					<object>
 						<_M_index>6</_M_index>
@@ -263,7 +263,7 @@
 									<second>
 										<load_type>0</load_type>
 										<hashcode>
-											<name>N3neb3fin7gfx_phx4core5shape3boxE</name>
+											<name>N3neb3fin4core5shape3boxE</name>
 										</hashcode>
 										<object>
 											<_M_index>7</_M_index>
