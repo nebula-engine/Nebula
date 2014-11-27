@@ -70,7 +70,6 @@ typedef neb::gfx::core::light::point		light_type;
 typedef neb::core::game::game::base			game_t;
 
 typedef neb::fin::core::scene::base	map_type;
-//typedef neb::ext::maze::game::map::maze2	map_type;
 
 typedef neb::core::core::scene::base	scene_t;
 typedef std::shared_ptr<scene_t>	scene_s;
@@ -81,7 +80,6 @@ std::shared_ptr<game_t>			game;
 
 std::shared_ptr<neb::fin::core::actor::base>	enemy;
 
-std::shared_ptr<neb::fin::app::base>		app;
 window_shared						window0;
 std::shared_ptr<neb::gfx::context::window>		context1;
 std::shared_ptr<neb::gfx::environ::SceneDefault>	environ1;
@@ -92,30 +90,12 @@ std::shared_ptr<neb::gfx::context::window>		context1_0;
 
 
 scene_s			scene;
-//std::shared_ptr<neb::core::core::scene::base>			scene;
 
 
 std::shared_ptr<neb::fin::core::actor::rigiddynamic::base>	actor_player;
-//std::shared_ptr<neb::core::core::actor::base>	actor_player;
 std::shared_ptr<neb::core::core::actor::base>				actor_light;
 
-shared_ptr<neb::gfx::gui::layout::base>	create_layout()
-{
 
-	assert(window0);
-	
-	auto app = neb::fin::app::base::global();
-	
-	typedef neb::gfx::gui::layout::base Layout;
-	auto layout = app->neb::gfx::gui::layout::util::parent::create<Layout>().lock();
-	
-
-	layout->connect(window0);
-
-	layout->createObjectTerminal();
-
-	return layout;
-}
 scene_s		create_maze()
 {
 	//assert(window0);
@@ -169,16 +149,14 @@ scene_s		create_maze()
 int			main()
 {
 
-	app = neb::fin::app::base::s_init();
+	auto app = neb::fin::app::base::s_init();
 
-	window0 = app->createWindow().lock();//neb::gfx::window::util::parent::create<neb::gfx::window::base>().lock();
+	window0 = app->createWindow().lock();
 
 	context1 = window0->createContextThree().lock();
 	context2 = window0->createContextTwo().lock();
 
-	auto layout = create_layout();
-
-	context2->setDrawable(layout);
+	auto layout = app->createLayout(window0, context2).lock();
 
 	neb::core::game::game::desc gameDesc;
 
@@ -186,7 +164,6 @@ int			main()
 
 	// scene
 
-	//auto scene = create_scene(window, context, enemy);
 	scene = std::dynamic_pointer_cast<neb::fin::core::scene::base>(
 			create_maze()
 			);
