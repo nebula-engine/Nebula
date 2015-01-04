@@ -13,7 +13,7 @@ void main(void)
 {
 	float a = texture2D(tex, texcoord).a;
 	color = vec4(1.0, 1.0, 1.0, a) * font_color;
-	color += (1 - a) * background_color;
+	//color += (1 - a) * background_color;
 	//color = font_color;
 }
 
