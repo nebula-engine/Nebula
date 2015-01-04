@@ -1,5 +1,5 @@
 
-neb.createScene()
+neb.createSceneDLL("hf/libnebula_ext_hf_0.so")
 
-neb.getScenes()
+print neb.getScenes()
 
