@@ -18,32 +18,32 @@ process () {
 		echo dirty
 		git add --all
 		git commit 
-		git push origin master
+		git push origin $2
 	elif [ `git_untracked` != 0 ]; then 
 		echo dirty
 		git add --all
 		git commit 
-		git push origin master
+		git push origin $2
 	else
 		echo clean
 	fi
 }
 
-process "git/nebula-engine/nebula/components/core"
-process "git/nebula-engine/nebula/components/gfx"
-process "git/nebula-engine/nebula/components/physx"
-process "git/nebula-engine/nebula/components/final"
-process "git/nebula-engine/nebula/components/python"
-process "git/nebula-engine/nebula/components/ext"
+process "git/nebula-engine/nebula/components/core" master
+process "git/nebula-engine/nebula/components/gfx" master
+process "git/nebula-engine/nebula/components/physx" master
+process "git/nebula-engine/nebula/components/final" master
+process "git/nebula-engine/nebula/components/python" master
+process "git/nebula-engine/nebula/components/ext" master
 
-process "git/nebula-engine/nebula/external/cmake"
-process "git/nebula-engine/nebula/external/cmake_find"
+process "git/nebula-engine/nebula/external/cmake" master
+process "git/nebula-engine/nebula/external/cmake_find" master
 
-process "git/nebula-engine/nebula/external/Galaxy/components/console"
-process "git/nebula-engine/nebula/external/Galaxy/components/std"
-process "git/nebula-engine/nebula/external/Galaxy/components/log"
-process "git/nebula-engine/nebula/external/Galaxy"
+process "git/nebula-engine/nebula/external/Galaxy/components/console" master
+process "git/nebula-engine/nebula/external/Galaxy/components/std" master
+process "git/nebula-engine/nebula/external/Galaxy/components/log" master
+process "git/nebula-engine/nebula/external/Galaxy" master
 
-process "git/nebula-engine/nebula"
+process "git/nebula-engine/nebula" test
 
 
