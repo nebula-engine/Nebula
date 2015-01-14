@@ -44,3 +44,6 @@ process "git/nebula-engine/nebula/external/Galaxy/components/std"
 process "git/nebula-engine/nebula/external/Galaxy/components/log"
 process "git/nebula-engine/nebula/external/Galaxy"
 
+process "git/nebula-engine/nebula"
+
+
