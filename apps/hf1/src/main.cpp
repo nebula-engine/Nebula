@@ -8,6 +8,7 @@
 
 #include <gal/etc/stopwatch.hpp>
 
+#include <neb/core/free.hpp>
 #include <neb/core/util/cast.hpp>
 #include <neb/core/app/__base.hpp>
 #include <neb/core/app/__core.hpp>
@@ -19,6 +20,10 @@
 #include <neb/core/core/shape/cuboid/desc.hpp>
 #include <neb/core/core/actor/base.hpp>
 #include <neb/core/core/actor/rigidbody/desc.hpp>
+#include <neb/core/game/map/base.hpp>
+#include <neb/core/game/trigger/ActorEx1.hpp>
+#include <neb/core/game/game/desc.hpp>
+#include <neb/core/game/weapon/SimpleProjectile.hpp>
 
 #include <neb/gfx/core/light/util/decl.hpp>
 #include <neb/gfx/core/light/directional.hpp>
@@ -37,17 +42,10 @@
 #include <neb/gfx/camera/view/shadow/point.hpp>
 #include <neb/gfx/camera/proj/perspective.hpp>
 
-#include <neb/core/game/map/base.hpp>
-#include <neb/core/game/trigger/ActorEx1.hpp>
-#include <neb/core/game/game/desc.hpp>
 //#include <neb/ext/maze/game/map/maze2.hpp>
 
 #include <neb/phx/app/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
-
-
-#include <neb/core/game/weapon/SimpleProjectile.hpp>
-
 #include <neb/phx/core/actor/control/rigidbody/base.hpp>
 #include <neb/phx/test.hpp>
 
@@ -60,12 +58,11 @@
 #include <neb/fin/core/shape/box.hpp>
 #include <neb/fin/core/shape/HeightField.hpp>
 
-#include <neb/core/free.hpp>
 
 void	create_enemy();
 
 
-typedef std::shared_ptr<neb::gfx::window::base> window_shared;
+typedef std::shared_ptr<neb::core::window::Base> window_shared;
 typedef neb::gfx::core::light::point		light_type;
 typedef neb::core::game::game::base			game_t;
 
@@ -83,7 +80,7 @@ std::shared_ptr<neb::fin::core::actor::base>	enemy;
 window_shared						window0;
 std::shared_ptr<neb::gfx::context::window>		context1;
 std::shared_ptr<neb::gfx::environ::SceneDefault>	environ1;
-std::shared_ptr<neb::gfx::context::window>		context2;
+std::shared_ptr<neb::core::context::Window>		context2;
 
 window_shared						window1;
 std::shared_ptr<neb::gfx::context::window>		context1_0;
@@ -95,7 +92,7 @@ scene_s			scene;
 std::shared_ptr<neb::fin::core::actor::rigiddynamic::base>	actor_player;
 std::shared_ptr<neb::core::core::actor::base>				actor_light;
 
-
+/*
 scene_s		create_maze()
 {
 	//assert(window0);
@@ -105,7 +102,7 @@ scene_s		create_maze()
 
 	// create map
 
-	/*if(0)
+	*if(0)
 	{
 		scene = app->createSceneDll("../../components/ext/hf/libnebula_ext_hf_0.so").lock();
 
@@ -113,8 +110,7 @@ scene_s		create_maze()
 		actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::core::core::actor::base>("actor_player.xml"));
 		scene->addActor(actor_player);
 	}
-	else*/
-	
+	else*	
 	{
 		scene = loadXML<scene_t>(NEB_SHARE_DIR"/media/scenes/scene.xml");
 		app->neb::core::core::scene::util::parent::insert(scene);
@@ -146,6 +142,7 @@ scene_s		create_maze()
 
 	return scene;
 }
+*/
 int			main(int ac, char ** av)
 {
 
