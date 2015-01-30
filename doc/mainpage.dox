@@ -1,14 +1,23 @@
 
-
 /**
 \mainpage Nebula
 
-## locations
+- build - install
+- SHARE_DIR - SRC_DIR/share/ - ~/.local/share/nebula/
+- MOD_DIR - SRC_DIR/share/media/mods/ - ~/.local/share/nebula/media/mods/
 
- | build | install
-SHARE_DIR | SRC_DIR/share/ | ~/.local/share/nebula/
-MOD_DIR | SRC_DIR/share/media/mods/ | ~/.local/share/nebula/media/mods/
+# code conventions
 
+    namespace short { namespace long_name {
+        class LongClassName:
+            public BaseClass
+        {
+            public:
+                void    function_name();
+            private:
+                int     _M_data_member_name;
+        };
+    }}
 
 */
 
