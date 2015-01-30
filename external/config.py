@@ -1,0 +1,3 @@
+#includeDIRECTORY(maze)
+include("Galaxy")
+

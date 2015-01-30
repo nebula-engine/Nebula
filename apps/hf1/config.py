@@ -1,3 +1,4 @@
+"""
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
 INCLUDE($ENV{HOME}/.config.cmake)
@@ -47,5 +48,13 @@ ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
 message(STATUS "libs ${libs}")
 
 INCLUDE(cmh_executable)
+"""
+
+e = Executable("empty")
+
+e.require("galaxy_console")
+
+e.make()
+
 
 
