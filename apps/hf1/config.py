@@ -52,7 +52,14 @@ INCLUDE(cmh_executable)
 
 e = Executable("empty")
 
+e.require("galaxy_std")
+e.require("galaxy_log")
 e.require("galaxy_console")
+e.require("nebula_core")
+e.require("nebula_gfx")
+e.require("nebula_physx")
+e.require("nebula_final")
+e.require("physx")
 
 e.make()
 
