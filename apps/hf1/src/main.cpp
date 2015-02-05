@@ -145,7 +145,6 @@ scene_s		create_maze()
 */
 int			main(int ac, char ** av)
 {
-
 	auto app = neb::fin::app::base::s_init(ac, av);
 
 	window0 = app->createWindow().lock();
@@ -173,11 +172,7 @@ int			main(int ac, char ** av)
 */
 
 	app->loop();
-
-
 }
-
-
 
 
 
