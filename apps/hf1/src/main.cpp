@@ -11,7 +11,6 @@
 #include <neb/core/free.hpp>
 #include <neb/core/util/cast.hpp>
 #include <neb/core/app/__base.hpp>
-#include <neb/core/app/__core.hpp>
 #include <neb/core/core/actor/base.hpp>
 #include <neb/core/util/wrapper.hpp>
 #include <neb/core/core/light/base.hpp>

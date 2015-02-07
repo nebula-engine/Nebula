@@ -44,19 +44,20 @@ def create_maze(window, context):
 	return scene
 
 
+#window = app.createWindow()
+windows = app.get_windows()
 
-
-window = neb.createWindow()
+window = windows[0]
 
 context1 = window.createContextThree()
-context2 = window.createContextTwo()
+#context2 = window.createContextTwo()
         
-layout = neb.createLayout(window, context2)
+#layout = app.createLayout(window, context2)
         
 #gameDesc = neb.core.game.game.Desc()
         #game = app->createGame(gameDesc);
 
-game = neb.createGame()
+game = app.createGame()
         
 # scene
 
