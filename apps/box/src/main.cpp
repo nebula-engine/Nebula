@@ -116,12 +116,12 @@ std::shared_ptr<neb::gfx::context::window>		context1_0;
 
 
 std::shared_ptr<neb::fin::gfx_phx::core::scene::base>			scene;
-//std::shared_ptr<neb::core::core::scene::base>			scene;
+//std::shared_ptr<neb::fnd::core::scene::base>			scene;
 
 
 std::shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>	actor_player;
-//std::shared_ptr<neb::core::core::actor::base>	actor_player;
-std::shared_ptr<neb::core::core::actor::base>				actor_light;
+//std::shared_ptr<neb::fnd::core::actor::base>	actor_player;
+std::shared_ptr<neb::fnd::core::actor::base>				actor_light;
 
 shared_ptr<neb::gfx::gui::layout::base>	create_layout()
 {
@@ -145,20 +145,20 @@ weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(
 	assert(scene);
 
 	auto a = scene->createActorRigidDynamicCuboid(
-			neb::core::core::actor::rigidbody::desc(neb::core::pose(glm::vec3(20, 0, 0))),
-			neb::core::core::shape::cuboid::desc(glm::vec3(1.0))
+			neb::fnd::core::actor::rigidbody::desc(neb::fnd::pose(glm::vec3(20, 0, 0))),
+			neb::fnd::core::shape::cuboid::desc(glm::vec3(1.0))
 			).lock();
 
 	auto actor = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(a);
 
-	actor->flag_.set(neb::core::core::actor::util::flag::DESTRUCTIBLE);
+	actor->flag_.set(neb::fnd::core::actor::util::flag::DESTRUCTIBLE);
 	
 	
 	
 	//actor->init();
 	
 	// shape	
-	//auto shape = actor->createShapeCube(neb::core::pose(), 1.0);
+	//auto shape = actor->createShapeCube(neb::fnd::pose(), 1.0);
 	//actor->setupFiltering();
 	//actor->setGlobalPosition(vec3(0,0,5));
 
@@ -185,45 +185,45 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 	// actors
 
 	auto actor1 = scene->createActorRigidDynamicCuboid(
-			neb::core::core::actor::rigidbody::desc(neb::core::pose(glm::vec3(-5, 0, 0))),
-			neb::core::core::shape::cuboid::desc(glm::vec3(1.0))
+			neb::fnd::core::actor::rigidbody::desc(neb::fnd::pose(glm::vec3(-5, 0, 0))),
+			neb::fnd::core::shape::cuboid::desc(glm::vec3(1.0))
 			).lock();
 
-	auto shape1 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::shape::box>(actor1->neb::core::core::shape::util::parent::map_.front());
+	auto shape1 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::shape::box>(actor1->neb::fnd::core::shape::util::parent::map_.front());
 	if(shape1) {
 		auto mesh1 = shape1->mesh_;
 		if(mesh1) {
 			mesh1->texture_ = neb::gfx::texture::makePNG("crab.png");
-			mesh1->material_front_.raw_.diffuse_ = neb::core::color::color(1,1,1,1);
+			mesh1->material_front_.raw_.diffuse_ = neb::fnd::color::color(1,1,1,1);
 		}
 	}
 
 	auto actor2 = scene->createActorRigidDynamicCuboid(
-			neb::core::core::actor::rigidbody::desc(neb::core::pose(glm::vec3(5, 0, 0))),
-			neb::core::core::shape::cuboid::desc(glm::vec3(1.0))
+			neb::fnd::core::actor::rigidbody::desc(neb::fnd::pose(glm::vec3(5, 0, 0))),
+			neb::fnd::core::shape::cuboid::desc(glm::vec3(1.0))
 			).lock();
-	auto shape2 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::shape::box>(actor2->neb::core::core::shape::util::parent::map_.front());
+	auto shape2 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::shape::box>(actor2->neb::fnd::core::shape::util::parent::map_.front());
 	if(shape2) if(shape2->mesh_) shape2->mesh_->normal_map_ = neb::gfx::texture::makePNG("norm.png");
 
 	scene->createActorRigidDynamicCuboid(
-			neb::core::core::actor::rigidbody::desc(neb::core::pose(glm::vec3(0, -5, 0))),
-			neb::core::core::shape::cuboid::desc(glm::vec3(1.0))
+			neb::fnd::core::actor::rigidbody::desc(neb::fnd::pose(glm::vec3(0, -5, 0))),
+			neb::fnd::core::shape::cuboid::desc(glm::vec3(1.0))
 			);
 	scene->createActorRigidDynamicCuboid(
-			neb::core::core::actor::rigidbody::desc(neb::core::pose(glm::vec3(0, 5, 0))),
-			neb::core::core::shape::cuboid::desc(glm::vec3(1.0))
+			neb::fnd::core::actor::rigidbody::desc(neb::fnd::pose(glm::vec3(0, 5, 0))),
+			neb::fnd::core::shape::cuboid::desc(glm::vec3(1.0))
 			);
 
-	auto static_cube5 = scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0,-5)), 1.0).lock();
+	auto static_cube5 = scene->createActorRigidStaticCube(neb::fnd::pose(vec3( 0, 0,-5)), 1.0).lock();
 
 
-	//scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0, 5)), 1.0);
+	//scene->createActorRigidStaticCube(neb::fnd::pose(vec3( 0, 0, 5)), 1.0);
 
 	// player's actor
 	actor_player = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
 			scene->createActorRigidDynamicCuboid(
-				neb::core::core::actor::rigidbody::desc(),
-				neb::core::core::shape::cuboid::desc(glm::vec3(1.0))
+				neb::fnd::core::actor::rigidbody::desc(),
+				neb::fnd::core::shape::cuboid::desc(glm::vec3(1.0))
 				).lock()
 			);
 
@@ -284,7 +284,7 @@ scene_s		create_maze()
 	scene = map;
 
 	// player's actor
-	actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::core::core::actor::base>("actor_player.xml"));
+	actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::fnd::core::actor::base>("actor_player.xml"));
 	scene->addActor(actor_player);
 
 
@@ -299,9 +299,9 @@ scene_s		create_maze()
 		//actor_light = map->createActorLightPoint(glm::vec3(0,0,10)).lock();
 
 
-		//	auto shape4 = actor_light->neb::core::core::shape::util::parent::map_.front();
+		//	auto shape4 = actor_light->neb::fnd::core::shape::util::parent::map_.front();
 		//	assert(shape4);
-		//	auto light = std::dynamic_pointer_cast<light_type>(shape4->neb::core::core::light::util::parent::map_.front());
+		//	auto light = std::dynamic_pointer_cast<light_type>(shape4->neb::fnd::core::light::util::parent::map_.front());
 		//	assert(light);
 
 
@@ -393,9 +393,9 @@ void queryproj()
 
 	// test
 	assert(actor_light);
-	auto shape = actor_light->neb::core::core::shape::util::parent::map_.front(); assert(shape);
-	auto light = shape->neb::core::core::light::util::parent::map_.front();	assert(light);
-	auto l = neb::is<neb::core::light::__base, neb::gfx::core::light::point>(light);
+	auto shape = actor_light->neb::fnd::core::shape::util::parent::map_.front(); assert(shape);
+	auto light = shape->neb::fnd::core::light::util::parent::map_.front();	assert(light);
+	auto l = neb::is<neb::fnd::light::__base, neb::gfx::core::light::point>(light);
 	auto e0 = neb::is<neb::gfx::environ::base, neb::gfx::environ::SceneDefault>(context1->environ_);
 	auto e1 = neb::is<neb::gfx::environ::base, neb::gfx::environ::shadow::point>(l->shadow_environ_);
 
@@ -431,12 +431,12 @@ void queryproj()
 }
 int			main() {
 
-	makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::desc>();
-	makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::rigidbody::desc>();
-	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
-	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
+	makeDefaultFunc<neb::fnd::core::actor::desc, neb::fnd::core::actor::desc>();
+	makeDefaultFunc<neb::fnd::core::actor::desc, neb::fnd::core::actor::rigidbody::desc>();
+	makeDefaultFunc<neb::fnd::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
+	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
+	makeDefaultFunc<neb::fnd::light::__base, neb::gfx::core::light::spot>();
 
 
 

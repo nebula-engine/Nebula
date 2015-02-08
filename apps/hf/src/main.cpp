@@ -67,11 +67,11 @@ void	create_enemy();
 
 typedef std::shared_ptr<neb::gfx::window::base> window_shared;
 typedef neb::gfx::core::light::point		light_type;
-typedef neb::core::game::game::base			game_t;
+typedef neb::fnd::game::game::base			game_t;
 
 typedef neb::fin::core::scene::base	map_type;
 
-typedef neb::core::core::scene::base	scene_t;
+typedef neb::fnd::core::scene::base	scene_t;
 typedef std::shared_ptr<scene_t>	scene_s;
 
 typedef neb::fin::core::actor::rigiddynamic::base actor_dyn_t;
@@ -93,7 +93,7 @@ scene_s			scene;
 
 
 std::shared_ptr<neb::fin::core::actor::rigiddynamic::base>	actor_player;
-std::shared_ptr<neb::core::core::actor::base>				actor_light;
+std::shared_ptr<neb::fnd::core::actor::base>				actor_light;
 
 
 scene_s		create_maze()
@@ -110,18 +110,18 @@ scene_s		create_maze()
 		scene = app->createSceneDll("../../components/ext/hf/libnebula_ext_hf_0.so").lock();
 
 		// player's actor
-		actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::core::core::actor::base>("actor_player.xml"));
+		actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::fnd::core::actor::base>("actor_player.xml"));
 		scene->addActor(actor_player);
 	}
 	else*/
 	
 	{
 		scene = loadXML<scene_t>(NEB_SHARE_DIR"/media/scenes/scene.xml");
-		app->neb::core::core::scene::util::parent::insert(scene);
+		app->neb::fnd::core::scene::util::parent::insert(scene);
 		
 		scene->init(app.get());
 
-		actor_player = std::dynamic_pointer_cast<actor_dyn_t>(scene->neb::core::core::actor::util::parent::map_.find("player"));
+		actor_player = std::dynamic_pointer_cast<actor_dyn_t>(scene->neb::fnd::core::actor::util::parent::map_.find("player"));
 	}
 	
 	assert(actor_player);
@@ -158,7 +158,7 @@ int			main()
 
 	auto layout = app->createLayout(window0, context2).lock();
 
-	neb::core::game::game::desc gameDesc;
+	neb::fnd::game::game::desc gameDesc;
 
 	game = app->createGame(gameDesc);
 

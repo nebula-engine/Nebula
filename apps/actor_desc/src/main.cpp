@@ -88,13 +88,13 @@ template<typename B, typename D> void	makeDefaultFunc()
 }
 
 
-//BOOST_CLASS_EXPORT_GUID(neb::core::core::actor::base, "base")
+//BOOST_CLASS_EXPORT_GUID(neb::fnd::core::actor::base, "base")
 //BOOST_CLASS_EXPORT_GUID(neb::fin::gfx_phx::core::actor::rigiddynamic::base, "derived")
 
 void			s1()
 {
 	{
-		typedef neb::core::core::actor::base T;
+		typedef neb::fnd::core::actor::base T;
 		typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base D;
 
 		std::ofstream ofs;
@@ -109,7 +109,7 @@ void			s1()
 		// create actor
 		std::shared_ptr<D> d(new D(), gal::stl::deleter<D>());
 		
-		auto s = d->createShapeCuboid(neb::core::core::shape::cuboid::desc(
+		auto s = d->createShapeCuboid(neb::fnd::core::shape::cuboid::desc(
 					glm::vec3(1)
 					)).lock();
 		
@@ -128,7 +128,7 @@ void			s1()
 	}
 
 	{
-		typedef neb::core::core::actor::base T;
+		typedef neb::fnd::core::actor::base T;
 		typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base D;
 
 		std::ifstream ifs;
@@ -148,7 +148,7 @@ void			s1()
 		auto r = std::dynamic_pointer_cast<D>(d);
 		assert(r);
 		
-		auto s = r->neb::core::core::shape::util::parent::map_.front();
+		auto s = r->neb::fnd::core::shape::util::parent::map_.front();
 		assert(s);
 
 		//std::shared_ptr<D> d(0, gal::stl::deleter<D>());
@@ -165,21 +165,21 @@ void			s1()
 void			s2()
 {
 	{
-		typedef neb::core::core::actor::rigidbody::desc D;
+		typedef neb::fnd::core::actor::rigidbody::desc D;
 
 		std::ofstream ofs;
 		ofs.open("actor.xml");
 		assert(ofs.is_open());
 		boost::archive::polymorphic_xml_oarchive ar(ofs);
 
-		std::shared_ptr<D> d(new D(neb::core::pose(glm::vec3(4,5,6))));
+		std::shared_ptr<D> d(new D(neb::fnd::pose(glm::vec3(4,5,6))));
 
-		gal::stl::wrapper<neb::core::core::actor::desc> w(d);
+		gal::stl::wrapper<neb::fnd::core::actor::desc> w(d);
 		w.save(ar,0);
 	}
 
 	{
-		typedef neb::core::core::actor::rigidbody::desc D;
+		typedef neb::fnd::core::actor::rigidbody::desc D;
 
 		std::ifstream ifs;
 		ifs.open("actor.xml");
@@ -187,7 +187,7 @@ void			s2()
 		boost::archive::polymorphic_xml_iarchive ar(ifs);
 
 
-		gal::stl::wrapper<neb::core::core::actor::desc> w;
+		gal::stl::wrapper<neb::fnd::core::actor::desc> w;
 		w.load(ar,0);
 
 		auto d = w.ptr_;
@@ -207,15 +207,15 @@ void			s2()
 
 int			main()
 {
-	makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::desc>();
-	makeDefaultFunc<neb::core::core::actor::desc, neb::core::core::actor::rigidbody::desc>();
+	makeDefaultFunc<neb::fnd::core::actor::desc, neb::fnd::core::actor::desc>();
+	makeDefaultFunc<neb::fnd::core::actor::desc, neb::fnd::core::actor::rigidbody::desc>();
 
-	makeDefaultFunc<neb::core::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::fnd::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
 
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
+	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
+	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
 
-	makeDefaultFunc<neb::core::light::__base, neb::gfx::core::light::spot>();
+	makeDefaultFunc<neb::fnd::light::__base, neb::gfx::core::light::spot>();
 
 
 	s1();
