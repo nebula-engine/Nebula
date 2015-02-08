@@ -153,7 +153,7 @@ int			main(int ac, char ** av)
 	assert(environ);
 	
 	
-	//typedef neb::gfx::camera::proj::ortho Ortho;
+	//typedef neb::gfx::camera::proj::Ortho Ortho;
 	//std::shared_ptr<Ortho> proj(new Ortho(environ));
 	
 	auto proj = environ->createCameraOrtho()->isOrtho();
