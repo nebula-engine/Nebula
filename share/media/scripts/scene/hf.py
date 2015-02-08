@@ -1,5 +1,5 @@
 
-def create_maze(window, context):
+def create_maze(app, window, context):
 	
         #auto app = neb::fin::app::base::global();
 
@@ -10,7 +10,7 @@ def create_maze(window, context):
         #scene->init(app.get());
         #std::dynamic_pointer_cast<actor_dyn_t>(scene->neb::core::core::actor::util::parent::map_.find("player"));
 
-        scene = neb.createSceneDLL("hf/libnebula_ext_hf_0.so")
+        scene = app.createSceneDLL("hf/build/libnebula_ext_hf.so")
        
         actor_hf = scene.createActorHeightField()
 
@@ -61,7 +61,7 @@ game = app.createGame()
         
 # scene
 
-scene = create_maze(window, context1)
+scene = create_maze(app, window, context1)
 
 game.setScene(scene)
         

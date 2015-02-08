@@ -1,3 +1,3 @@
-#includeDIRECTORY(maze)
+include("maze")
 include("Galaxy")
 
