@@ -15,7 +15,7 @@ int main()
 
 	auto layout = app->createLayout(window, context2).lock();
 
-	//neb::core::game::game::desc gameDesc;
+	//neb::fnd::game::game::desc gameDesc;
 	//game = app->createGame(gameDesc);
 
 	// scene
