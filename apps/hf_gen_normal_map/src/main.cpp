@@ -65,12 +65,12 @@ void	create_enemy();
 
 typedef std::shared_ptr<neb::gfx::window::base> window_shared;
 typedef neb::gfx::core::light::point		light_type;
-typedef neb::core::game::game::base		game_t;
+typedef neb::fnd::game::game::base		game_t;
 
 typedef neb::fin::core::scene::base	map_type;
 //typedef neb::ext::maze::game::map::maze2	map_type;
 
-typedef neb::core::core::scene::base	scene_t;
+typedef neb::fnd::core::scene::base	scene_t;
 typedef std::shared_ptr<scene_t>	scene_s;
 
 typedef neb::fin::core::actor::rigiddynamic::base actor_dyn_t;
@@ -88,28 +88,28 @@ std::shared_ptr<neb::gfx::context::window>		context1_0;
 
 
 scene_s			scene;
-//std::shared_ptr<neb::core::core::scene::base>			scene;
+//std::shared_ptr<neb::fnd::core::scene::base>			scene;
 
 
 std::shared_ptr<neb::fin::core::actor::rigiddynamic::base>	actor_player;
-//std::shared_ptr<neb::core::core::actor::base>	actor_player;
-std::shared_ptr<neb::core::core::actor::base>				actor_light;
+//std::shared_ptr<neb::fnd::core::actor::base>	actor_player;
+std::shared_ptr<neb::fnd::core::actor::base>				actor_light;
 
 int			main(int ac, char ** av)
 {
 
 
-	makeDLLFunc<neb::core::core::scene::base, neb::fin::core::scene::base>();
+	makeDLLFunc<neb::fnd::core::scene::base, neb::fin::core::scene::base>();
 	
-	makeDefaultFunc<neb::core::core::actor::base, neb::fin::core::actor::rigiddynamic::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::rigiddynamic::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::base>();
+	makeDefaultFunc<neb::fnd::core::actor::base, neb::fin::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::fnd::core::actor::__base, neb::fin::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::fnd::core::actor::__base, neb::fin::core::actor::base>();
 
-//	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::base>();
-//	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::box>();
+//	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::core::shape::base>();
+//	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::core::shape::box>();
 
-	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::spot>();
-	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::point>();
+	makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::spot>();
+	makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::point>();
 
 
 
@@ -130,7 +130,7 @@ int			main(int ac, char ** av)
 
 	actor->init(scene.get());
 	
-	neb::core::core::shape::HeightField::desc desc;
+	neb::fnd::core::shape::HeightField::desc desc;
 	desc.r = atoi(av[1]);
 	desc.c = atoi(av[2]);
 
