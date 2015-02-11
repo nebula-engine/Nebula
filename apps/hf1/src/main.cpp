@@ -10,7 +10,7 @@
 
 #include <neb/core/free.hpp>
 #include <neb/core/util/cast.hpp>
-#include <neb/core/app/__base.hpp>
+#include <neb/core/app/Base.hpp>
 #include <neb/core/core/actor/base.hpp>
 #include <neb/core/util/wrapper.hpp>
 #include <neb/core/core/light/base.hpp>
@@ -37,7 +37,7 @@
 #include <neb/gfx/environ/SceneDefault.hpp>
 #include <neb/gfx/environ/vis_depth.hpp>
 #include <neb/gfx/gui/object/terminal.hh>
-#include <neb/gfx/camera/view/ridealong.hh>
+#include <neb/gfx/camera/view/Ridealong.hpp>
 #include <neb/gfx/camera/view/shadow/point.hpp>
 #include <neb/gfx/camera/proj/perspective.hpp>
 
