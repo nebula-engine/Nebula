@@ -2,6 +2,8 @@
 /**
 \mainpage Nebula
 
+# directories
+
 - build - install
 - SHARE_DIR - SRC_DIR/share/ - ~/.local/share/nebula/
 - MOD_DIR - SRC_DIR/share/media/mods/ - ~/.local/share/nebula/media/mods/
@@ -14,10 +16,30 @@
         {
             public:
                 void    function_name();
+                /* 
+                 * basic functions
+                 * pure virtual in base classes
+                 * defined in deviced classes, call base class protected methods
+                 */
+		virtual void    init() = 0;
+            protected:
+                /* 
+                 * protected basic function. performs actual tasks, no class hierarchy calling
+                 */
+		void            __init();
             private:
                 int     _M_data_member_name;
         };
     }}
 
+
+
+# game engine pipeline
+
+
+
+\dotfile pipeline.dot
+
 */
+
 
