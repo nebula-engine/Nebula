@@ -1,5 +1,5 @@
 
-
+/*
 
 
 #include <glm/gtc/matrix_transform.hpp>
@@ -9,7 +9,7 @@
 #include <gal/etc/stopwatch.hpp>
 
 #include <neb/core/util/cast.hpp>
-#include <neb/core/app/__base.hpp>
+#include <neb/core/app/Base.hpp>
 #include <neb/core/core/actor/base.hpp>
 #include <neb/core/util/wrapper.hpp>
 #include <neb/core/core/light/base.hpp>
@@ -23,9 +23,9 @@
 #include <neb/gfx/core/light/directional.hpp>
 #include <neb/gfx/core/light/point.hpp>
 #include <neb/gfx/core/light/spot.hpp>
-#include <neb/gfx/Context/Window.hpp>
-#include <neb/gfx/Context/fbo.hpp>
-#include <neb/gfx/Context/fbo_multi.hpp>
+#include <neb/gfx/context/Window.hpp>
+#include <neb/gfx/context/fbo.hpp>
+#include <neb/gfx/context/fbo_multi.hpp>
 #include <neb/gfx/environ/two.hpp>
 #include <neb/gfx/environ/shadow/point.hpp>
 #include <neb/gfx/environ/shadow/directional.hpp>
@@ -49,7 +49,6 @@
 
 //#include <neb/ext/maze/game/map/maze2.hpp>
 
-#include <neb/fin/gfx_phx/app/base.hpp>
 #include <neb/fin/gfx_phx/core/scene/base.hpp>
 #include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
 #include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
@@ -368,6 +367,7 @@ void				createWindow0() {
 	context2->setDrawable(layout);
 
 }
+*/
 /*void				createWindow1()
   {
   assert(app);
@@ -383,11 +383,17 @@ void				createWindow0() {
 
   context1_0->setDrawable(scene);
   }*/
-void				setupWindow0() {
+
+/*
+void				setupWindow0()
+{
 	assert(scene);
 	assert(context1);
 	context1->setDrawable(scene);
 }
+*/
+
+/*
 void queryproj()
 {
 
@@ -407,7 +413,7 @@ void queryproj()
 	gal::etc::stopwatch sw;
 
 	int hits = 0;
-
+*/
 	/*	for(int i = 0; i < 1000; i++) {
 		sw.start(glfwGetTime());
 		if(query(g0, e0->view_->view(), g1, e1->view_[0]->view())) hits++;
@@ -418,7 +424,8 @@ void queryproj()
 		if(query(g0, e0->view_->view(), g1, e1->view_[5]->view())) hits++;
 		sw.stop(glfwGetTime());
 		}*/
-	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[0]->view());std::cout << "query " << res << std::endl;
+/*
+ res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[0]->view());std::cout << "query " << res << std::endl;
 	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[1]->view());std::cout << "query " << res << std::endl;
 	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[2]->view());std::cout << "query " << res << std::endl;
 	res = neb::query(*g0, e0->view_->view(), *g1, e1->view_[3]->view());std::cout << "query " << res << std::endl;
@@ -429,22 +436,28 @@ void queryproj()
 
 
 }
-int			main() {
+*/
 
+#include <neb/fin/app/base.hpp>
+
+
+int			main(int ac, char** av)
+{
+/*
 	makeDefaultFunc<neb::fnd::core::actor::desc, neb::fnd::core::actor::desc>();
 	makeDefaultFunc<neb::fnd::core::actor::desc, neb::fnd::core::actor::rigidbody::desc>();
 	makeDefaultFunc<neb::fnd::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
 	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
 	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
 	makeDefaultFunc<neb::fnd::light::__base, neb::gfx::core::light::spot>();
+*/
 
 
 
+	auto app = neb::fin::app::base::s_init(ac, av);
 
-	app = neb::fin::gfx_phx::app::base::init();
 
-
-	createWindow0();
+	auto window = app->createWindow();
 
 	// game
 
@@ -453,19 +466,13 @@ int			main() {
 
 	//auto scene = create_scene(window, context1, enemy);
 
-	setup_game();
+	//setup_game();
 
-	setupWindow0();
+	//setupWindow0();
 
 	//createWindow1();
 	//createWindowTexVis(scene->tex_shadow_map_);
 	//queryproj();
-
-
-
-
-
-
 
 
 
