@@ -100,7 +100,7 @@ windows = app.get_windows()
 
 window = windows[0]
 
-context1 = window.createContextThree()
+context = window.createContextThree()
 #context2 = window.createContextTwo()
         
 #layout = app.createLayout(window, context2)
@@ -112,7 +112,7 @@ game = app.createGame()
         
 # scene
 
-scene = create_maze(app, window, context1)
+scene = create_maze(app, window, context)
 
 game.setScene(scene)
         
