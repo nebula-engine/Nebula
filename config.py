@@ -4,5 +4,6 @@ add_global_define("_DEBUG=1")
 
 include("external")
 include("components")
+include("mod")
 include("apps")
 
