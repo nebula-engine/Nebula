@@ -7,8 +7,8 @@
 [submodule "components/python"]
 	path = components/python
 	url = git@github.com:chuck1/Nebula-Python.git
-[submodule "components/ext"]
-	path = components/ext
+[submodule "mod"]
+	path = mod
 	url = git@github.com:chuck1/Nebula-Ext.git
 [submodule "components/final"]
 	path = components/final

@@ -1,2 +1,2 @@
-#include("box")
+include("maze")
 include("empty")
