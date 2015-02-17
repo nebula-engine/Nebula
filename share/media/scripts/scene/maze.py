@@ -13,8 +13,6 @@ def create_maze(app, window, context):
         #scene = app.createSceneDLL("maze/build/libnebula_ext_maze.so")
         scene = app.createScene()
 
-
-        
 	#::maze::description<D> desc(size_);
 	#::maze::dfs<D> m(desc);
 	#m.run();

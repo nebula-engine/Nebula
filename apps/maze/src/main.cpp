@@ -456,15 +456,12 @@ int			main(int ac, char** av)
 
 	auto app = neb::fin::app::base::s_init(ac, av);
 
-
-	auto window = app->createWindow();
-
 	// game
 
 	// create drawables
 	//shared_ptr<neb::fin::gfx_phx::core::actor::base> enemy;
 
-	//auto scene = create_scene(window, context1, enemy);
+	auto scene = app->createSceneDLL("maze/build/libnebula_ext_maze.so");
 
 	//setup_game();
 

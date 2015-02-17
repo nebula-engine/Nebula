@@ -1,4 +1,4 @@
-e = Executable("box")
+e = Executable("maze")
 
 e.require("galaxy_std")
 e.require("galaxy_log")
