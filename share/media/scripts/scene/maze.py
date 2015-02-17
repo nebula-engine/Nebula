@@ -71,29 +71,15 @@ def create_maze(app, window, context):
 
 	environ.create_view_ridealong(actor_player)
 
-	#}	
-	#//	light->initShadow(environ1);
-
-	#//create_enemy();
-
 	return scene
 
-#window = app.createWindow()
 windows = app.get_windows()
 
 window = windows[0]
 
 context = window.createContextThree()
-#context2 = window.createContextTwo()
-        
-#layout = app.createLayout(window, context2)
-        
-#gameDesc = neb.core.game.game.Desc()
-        #game = app->createGame(gameDesc);
 
 game = app.createGame()
-
-# scene
 
 scene = create_maze(app, window, context)
 
