@@ -68,6 +68,7 @@ void main(void)
 	//color += vs_instance_emission;
 	
 	//color = vec4(1,1,1,1);
+	color = vec4(N,1);
 }
 
 
