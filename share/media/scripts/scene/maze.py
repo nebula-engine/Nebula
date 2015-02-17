@@ -24,20 +24,14 @@ def create_maze(app, window, context):
 	#};
 	
 	#for(int i = 0; i < prod<D>(desc.size_); ++i) {
-
 	#	auto v = ::vector<D>(i, desc.size_);
-
 	#	if(!m.get_ispath(v)) {
-
 	#		lambda(::maze::traits<D>::vec(v) * (float)width);
-
 	#	}
 	#}
-
 	#// outer walls
 	#glm::vec3 pos;
 	#glm::vec3 s;
-
 	#for(int d = 0; d < D; d++)
 	#{
 	#	pos = glm::vec3(
@@ -46,9 +40,7 @@ def create_maze(app, window, context):
 	#			((float)desc.size_[2] - 1.0) / 2.0
 	#		     );
         #		s = glm::vec3(desc.size_);
-
 	#	s[d] = 1.0;
-
 		#pos[d] = -1;
 	#	createActorRigidStaticCuboid(neb::fnd::math::pose(pos * width), s * width);
 	#	pos[d] = (float)desc.size_[0];
@@ -57,16 +49,11 @@ def create_maze(app, window, context):
 
 	#createActorLightPoint(glm::vec3(0,0,10));
 
-
-
-
-
         #actor_hf = scene.createActorHeightField()
 
         scene.createLightPoint()
 
         actor_player = scene.createActorRigidDynamicCuboid()
-
 	
 	#assert(actor_player);
 	
@@ -80,18 +67,16 @@ def create_maze(app, window, context):
 
 	actor_player.createControlManual(window)
 
-	environ = context.getEnviron().isSceneDefault()
+	environ = context.get_environ().is_environ_scene_base()
 
-	environ.createViewridealong(actor_player)
+	environ.create_view_ridealong(actor_player)
 
 	#}	
 	#//	light->initShadow(environ1);
 
 	#//create_enemy();
 
-
 	return scene
-
 
 #window = app.createWindow()
 windows = app.get_windows()
@@ -107,13 +92,14 @@ context = window.createContextThree()
         #game = app->createGame(gameDesc);
 
 game = app.createGame()
-        
+
 # scene
 
 scene = create_maze(app, window, context)
 
-game.setScene(scene)
+game.add_scene(scene)
         
-context1.setDrawable(scene);
+context.set_drawable(scene);
+
 
 
