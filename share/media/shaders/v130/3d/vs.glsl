@@ -26,12 +26,18 @@ void main(void) {
 	mat4 modelview = view * model;
 	
 	// Calculate view-space coordinate
-	vs_P = vec4(position, 1.0);
+
+	//vs_P = vec4(position, 1.0);
+	vs_P = gl_Vertex;
+
 	vs_m_P = model * vs_P;
 	vs_mv_P = modelview * vs_P;
 
 	// Calculate normal in view-space
-	vs_N = normalize(mat3(modelview) * normal);
+	//vs_N = normalize(mat3(modelview) * normal);
+	vs_N = normalize(mat3(modelview) * vec3(gl_Normal));
+
+
 	vs_T = normalize(mat3(modelview) * tangent);
 	vs_B = normalize(mat3(modelview) * binormal);
 

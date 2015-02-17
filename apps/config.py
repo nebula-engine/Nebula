@@ -1,2 +1,2 @@
-include("maze")
+#include("maze")
 include("empty")
