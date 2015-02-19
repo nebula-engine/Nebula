@@ -17,7 +17,7 @@ m.set_scene(scene)
 
 #actor_hf = scene.createActorHeightField()
 
-scene.createLightPoint()
+#scene.createLightPoint()
 
 actor_player = scene.createActorRigidDynamicCuboid()
 
