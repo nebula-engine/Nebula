@@ -21,6 +21,8 @@ m.set_scene(scene)
 
 actor_player = scene.createActorRigidDynamicCuboid()
 
+m.spawn_actor(actor_player);
+
 #assert(actor_player);
 
 #// weapon
