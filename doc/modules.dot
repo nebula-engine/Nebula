@@ -1,0 +1,49 @@
+digraph pipeline {
+	rankdir = BT;
+
+	/*
+	subgraph cluster_async {
+		label = "Async (input)";
+		socket_in;
+		events;
+	}
+	subgraph cluster_output {
+		label = "Output";
+		socket_out;
+	}
+	subgraph cluster_sync {
+		label = "Sync (game loop)";
+		update_state -> integrate_state -> notify_state_change -> render -> update_state
+	}
+	state [shape=box];
+	
+	update_state -> state [style=dashed];
+	state -> integrate_state [style=dashed];
+
+	events -> state [style=dashed];
+
+	socket_in -> events;
+	socket_in -> state [style=dashed];
+
+	blank1 [label=""];
+
+	notify_state_change -> blank1 [style=dashed];
+	blank1 -> state [style=dashed];
+	blank1 -> socket_out [style=dashed];
+	*/
+
+	foundation [shape=diamond]
+	graphics [shape=diamond]
+	physics [shape=diamond]
+	final [shape=box]
+	
+	plugin [label="plugin\nnetwork"]
+	mod [label="mod\nmaze\nheight_field"]
+	
+	mod -> foundation
+	python -> foundation
+	plugin -> foundation
+
+	final -> graphics -> foundation
+	final -> physics -> foundation
+}

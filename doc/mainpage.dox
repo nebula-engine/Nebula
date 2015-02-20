@@ -40,6 +40,8 @@
 
 \dotfile pipeline.dot
 
+\dotfile modules.dot
+
 */
 
 
