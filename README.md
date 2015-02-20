@@ -23,4 +23,12 @@ Nebula
     cmake ..
     make install
 
+## Networking
+
+### basic server-client model
+
+Networking requires determining if the core objects are local or remote.
+Local means they are on the server machine, remote means they are on a client machine.
+Local scenes simulate physics and send pose data to clients via the actor's v\_set\_pose\_data.
+Object determine if they are local or remote via the \_M\_network\_object pointer.
 
