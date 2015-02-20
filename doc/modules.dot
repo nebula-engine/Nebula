@@ -32,18 +32,21 @@ digraph pipeline {
 	blank1 -> socket_out [style=dashed];
 	*/
 
-	foundation [shape=diamond]
-	graphics [shape=diamond]
-	physics [shape=diamond]
-	final [shape=box]
+	foundation [shape=box]
 	
-	plugin [label="plugin\nnetwork"]
-	mod [label="mod\nmaze\nheight_field"]
+	plugin_graphics [label="plugin\ngraphics"; shape=diamond]
+	plugin_physics [label="plugin\nphysics"; shape=diamond]
+	plugin_network [label="plugin\nnetwork"; shape=diamond]
 	
-	mod -> foundation
-	python -> foundation
-	plugin -> foundation
+	map [shape=pentagon]
 
-	final -> graphics -> foundation
-	final -> physics -> foundation
+	mod_1 [label="mod\nmaze"]
+	mod_2 [label="mod\nheight_field"]
+	
+	plugin_graphics_1 -> plugin_graphics -> foundation
+	plugin_physics_1 -> plugin_physics -> foundation
+	plugin_netwoek_1 -> plugin_network -> foundation
+
+	python -> foundation
+
 }
