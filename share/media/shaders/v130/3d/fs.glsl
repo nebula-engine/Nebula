@@ -42,9 +42,8 @@ void main(void)
 	//vec4 amb, dif, spc;
 	
 	vec4 dif = vec4(0,1,1,1);
-
 	vec4 amb = vec4(0.3,0.3,0.3,1);
-	vec4 spc = vec4(0);
+	vec4 spc = vec4(1);
 
 	//if(vs_instance_sampler.x >= 0.0) {
 	//	vec4 image_color = texture(image, vec3(vs_texcoor, vs_instance_sampler.x));
@@ -62,13 +61,7 @@ void main(void)
 	//	N = normalize(N + (mat3(vs_T, vs_B, vs_N) * norm_vector));
 	//}
 	
-	
 	lf_lights(amb, dif, spc, 100.0);
-	
-	//color += vs_instance_emission;
-	
-	//color = vec4(1,1,1,1);
-	color = vec4(N,1);
 }
 
 
