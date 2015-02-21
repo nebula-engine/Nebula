@@ -97,7 +97,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = /home/chuck/git/nebula-engine/nebula/doc /home/chuck/git/nebula-engine/nebula/components/core/include /home/chuck/git/nebula-engine/nebula/components/physx/include /home/chuck/git/nebula-engine/nebula/components/python/include /home/chuck/git/nebula-engine/nebula/components/final/include /home/chuck/git/nebula-engine/nebula/components/ext/hf/include /home/chuck/git/nebula-engine/nebula/components/ext/maze/include /home/chuck/git/nebula-engine/nebula/components/gfx/include /home/chuck/git/nebula-engine/nebula/external/Galaxy/components/std/include
+INPUT                  = /home/chuck/git/nebula-engine/nebula/doc /home/chuck/git/nebula-engine/nebula/components/core/include /home/chuck/git/nebula-engine/nebula/components/physx/include /home/chuck/git/nebula-engine/nebula/components/python/include /home/chuck/git/nebula-engine/nebula/components/final/include /home/chuck/git/nebula-engine/nebula/components/ext/hf/include /home/chuck/git/nebula-engine/nebula/components/ext/maze/include /home/chuck/git/nebula-engine/nebula/components/gfx/include /home/chuck/git/nebula-engine/nebula/external/Galaxy/components/std/include /home/chuck/git/nebula-engine/nebula/plugin/gfx1/include
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          =
 RECURSIVE              = YES
