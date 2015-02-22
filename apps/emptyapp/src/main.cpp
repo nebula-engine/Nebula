@@ -1,7 +1,7 @@
 
 #include <neb/fin/app/base.hpp>
 #include <neb/gfx/context/Window.hpp>
-#include <neb/core/game/game/desc.hpp>
+#include <neb/fnd/game/game/desc.hpp>
 
 int main()
 {

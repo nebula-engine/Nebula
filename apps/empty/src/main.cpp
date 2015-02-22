@@ -8,21 +8,21 @@
 
 #include <gal/etc/stopwatch.hpp>
 
-#include <neb/core/free.hpp>
-#include <neb/core/util/cast.hpp>
-#include <neb/core/app/Base.hpp>
-#include <neb/core/core/actor/base.hpp>
-#include <neb/core/util/wrapper.hpp>
-#include <neb/core/core/light/base.hpp>
-#include <neb/core/core/scene/base.hpp>
-#include <neb/core/core/shape/base.hpp>
-#include <neb/core/core/shape/cuboid/desc.hpp>
-#include <neb/core/core/actor/base.hpp>
-#include <neb/core/core/actor/rigidbody/desc.hpp>
-#include <neb/core/game/map/base.hpp>
-#include <neb/core/game/trigger/ActorEx1.hpp>
-#include <neb/core/game/game/desc.hpp>
-#include <neb/core/game/weapon/SimpleProjectile.hpp>
+#include <neb/fnd/free.hpp>
+#include <neb/fnd/util/cast.hpp>
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/util/wrapper.hpp>
+#include <neb/fnd/core/light/base.hpp>
+#include <neb/fnd/core/scene/base.hpp>
+#include <neb/fnd/core/shape/base.hpp>
+#include <neb/fnd/core/shape/cuboid/desc.hpp>
+#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/actor/rigidbody/desc.hpp>
+#include <neb/fnd/game/map/base.hpp>
+#include <neb/fnd/game/trigger/ActorEx1.hpp>
+#include <neb/fnd/game/game/desc.hpp>
+#include <neb/fnd/game/weapon/SimpleProjectile.hpp>
 
 #include <neb/gfx/core/light/util/decl.hpp>
 #include <neb/gfx/core/light/directional.hpp>

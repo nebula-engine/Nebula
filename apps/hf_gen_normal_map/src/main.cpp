@@ -1,5 +1,5 @@
 
-//#include <neb/core/rand.hpp>
+//#include <neb/fnd/rand.hpp>
 
 
 #include <glm/gtc/matrix_transform.hpp>
@@ -8,17 +8,17 @@
 
 #include <gal/etc/stopwatch.hpp>
 
-#include <neb/core/util/cast.hpp>
-#include <neb/core/app/__base.hpp>
-#include <neb/core/app/__core.hpp>
-#include <neb/core/core/actor/base.hpp>
-#include <neb/core/util/wrapper.hpp>
-#include <neb/core/core/light/base.hpp>
-#include <neb/core/core/scene/base.hpp>
-#include <neb/core/core/shape/base.hpp>
-#include <neb/core/core/shape/HeightField/desc.hpp>
-#include <neb/core/core/actor/base.hpp>
-#include <neb/core/core/actor/rigidbody/desc.hpp>
+#include <neb/fnd/util/cast.hpp>
+#include <neb/fnd/app/__base.hpp>
+#include <neb/fnd/app/__core.hpp>
+#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/util/wrapper.hpp>
+#include <neb/fnd/core/light/base.hpp>
+#include <neb/fnd/core/scene/base.hpp>
+#include <neb/fnd/core/shape/base.hpp>
+#include <neb/fnd/core/shape/HeightField/desc.hpp>
+#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/actor/rigidbody/desc.hpp>
 
 #include <neb/gfx/core/light/util/decl.hpp>
 #include <neb/gfx/core/light/directional.hpp>
@@ -37,15 +37,15 @@
 #include <neb/gfx/camera/view/shadow/point.hpp>
 #include <neb/gfx/camera/proj/ortho.hpp>
 
-#include <neb/core/game/map/base.hpp>
-#include <neb/core/game/trigger/ActorEx1.hpp>
-#include <neb/core/game/game/desc.hpp>
+#include <neb/fnd/game/map/base.hpp>
+#include <neb/fnd/game/trigger/ActorEx1.hpp>
+#include <neb/fnd/game/game/desc.hpp>
 //#include <neb/ext/maze/game/map/maze2.hpp>
 
 #include <neb/phx/app/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
 
-#include <neb/core/game/weapon/SimpleProjectile.hpp>
+#include <neb/fnd/game/weapon/SimpleProjectile.hpp>
 
 #include <neb/phx/core/actor/control/rigidbody/base.hpp>
 #include <neb/phx/test.hpp>
@@ -58,7 +58,7 @@
 #include <neb/fin/core/actor/rigidstatic/base.hpp>
 #include <neb/phx/core/shape/HeightField/Base.hpp>
 
-#include <neb/core/free.hpp>
+#include <neb/fnd/free.hpp>
 
 void	create_enemy();
 
