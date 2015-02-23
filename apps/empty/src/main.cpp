@@ -23,12 +23,13 @@
 #include <neb/fnd/game/trigger/ActorEx1.hpp>
 #include <neb/fnd/game/game/desc.hpp>
 #include <neb/fnd/game/weapon/SimpleProjectile.hpp>
+#include <neb/fnd/context/Window.hpp>
 
+/*
 #include <neb/gfx/core/light/util/decl.hpp>
 #include <neb/gfx/core/light/directional.hpp>
 #include <neb/gfx/core/light/point.hpp>
 #include <neb/gfx/core/light/spot.hpp>
-#include <neb/gfx/context/Window.hpp>
 #include <neb/gfx/context/fbo.hpp>
 #include <neb/gfx/context/fbo_multi.hpp>
 #include <neb/gfx/environ/two.hpp>
@@ -36,10 +37,11 @@
 #include <neb/gfx/environ/shadow/directional.hpp>
 #include <neb/gfx/environ/SceneDefault.hpp>
 #include <neb/gfx/environ/vis_depth.hpp>
-#include <neb/gfx/gui/object/terminal.hh>
+#include <neb/gfx/gui/object/terminal.hpp>
 #include <neb/gfx/camera/view/Ridealong.hpp>
 #include <neb/gfx/camera/view/shadow/point.hpp>
 #include <neb/gfx/camera/proj/perspective.hpp>
+*/
 
 //#include <neb/ext/maze/game/map/maze2.hpp>
 
