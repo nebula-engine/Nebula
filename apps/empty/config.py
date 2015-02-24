@@ -65,7 +65,7 @@ e.require("boost_serialization")
 e.require("boost_python")
 e.require("boost_thread")
 e.require("python27")
-e.require("glfw")
+#e.require("glfw")
 
 e.make()
 
