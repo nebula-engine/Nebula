@@ -24,6 +24,7 @@
 #include <neb/fnd/game/game/desc.hpp>
 #include <neb/fnd/game/weapon/SimpleProjectile.hpp>
 #include <neb/fnd/context/Window.hpp>
+#include <neb/fnd/environ/Two.hpp>
 
 /*
 #include <neb/gfx/core/light/util/decl.hpp>
@@ -98,9 +99,13 @@ int			main(int ac, char ** av)
 	auto window = app->createWindow().lock();
 
 //	context1 = window0->createContextThree().lock();
-	auto context = window->createContextTwo().lock();
+	auto context = window->createContextWindow().lock();
+	
+	auto environ = context->createEnvironTwo().lock();
 
-	auto layout = app->createLayout(window, context).lock();
+	// context->init()
+
+	auto layout = app->createLayout(window, environ).lock();
 /*
 	neb::fnd::game::game::desc gameDesc;
 
@@ -119,7 +124,7 @@ int			main(int ac, char ** av)
 	context1->setDrawable(std::dynamic_pointer_cast<neb::gfx::drawable::base>(scene));
 */
 
-	auto scene = app->createScene();
+	//auto scene = app->createScene();
 
 	app->loop();
 }

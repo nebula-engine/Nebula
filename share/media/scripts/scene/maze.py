@@ -3,7 +3,9 @@ windows = app.get_windows()
 
 window = windows[0]
 
-context = window.createContextThree()
+context = window.createContextWindow()
+
+environ = context.create_environ_scene_default()
 
 game = app.createGame()
 
@@ -35,11 +37,11 @@ weap = actor_player.createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0)
 
 actor_player.createControlManual(window)
 
-environ = context.get_environ().is_environ_scene_base()
+#environ = context.get_environ().is_environ_scene_base()
 
 environ.create_view_ridealong(actor_player)
 
-context.set_drawable(scene);
+environ.set_drawable(scene);
 
 
 
