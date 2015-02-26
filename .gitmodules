@@ -35,5 +35,5 @@
 	path = external/cmake_find
 	url = git@github.com:chuck1/cmake_find
 [submodule "plugin/gfx1"]
-	path = components/gfx
+	path = plugin/gfx1
 	url = git@github.com:nebula-engine/Nebula-Graphics
