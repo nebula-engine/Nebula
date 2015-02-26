@@ -11,13 +11,12 @@
 #include <neb/fnd/util/cast.hpp>
 #include <neb/fnd/app/__base.hpp>
 #include <neb/fnd/app/__core.hpp>
-#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/util/wrapper.hpp>
 #include <neb/fnd/core/light/base.hpp>
-#include <neb/fnd/core/scene/base.hpp>
-#include <neb/fnd/core/shape/base.hpp>
+#include <neb/fnd/core/scene/Base.hpp>#include <neb/fnd/core/shape/base.hpp>
 #include <neb/fnd/core/shape/cuboid/desc.hpp>
-#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/core/actor/rigidbody/desc.hpp>
 
 #include <neb/gfx/core/light/util/decl.hpp>
