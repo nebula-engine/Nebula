@@ -32,3 +32,7 @@ log['neb gfx camera view ridealong'] = 'debug'
 
 log['neb gfx camera proj base'] = 'debug'
 
+log['neb gfx glsl program base'] = 'debug'
+
+
+
