@@ -62,6 +62,8 @@ void main(void)
 	//}
 	
 	lf_lights(amb, dif, spc, 100.0);
+
+	color = vec4(1,1,1,1);
 }
 
 
