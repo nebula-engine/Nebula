@@ -14,6 +14,9 @@ log['neb phx core shape base']  = 'info'
 #log['neb phx core actor control rigidbody base']  = 'info'
 
 
+log['neb fnd window base'] = 'debug'
+log['neb fnd context base'] = 'debug'
+log['neb fnd environ base'] = 'debug'
 
 
 
@@ -34,5 +37,5 @@ log['neb gfx camera proj base'] = 'debug'
 
 log['neb gfx glsl program base'] = 'debug'
 
-
+log['neb gfx viewport'] = 'debug'
 
