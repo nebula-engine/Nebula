@@ -8,9 +8,12 @@ log['neb fnd core light base'] = 'info'
 log['neb fnd gui layout base'] = 'debug'
 log['neb fnd gui object base'] = 'debug'
 
+"""
 log['neb phx core scene base']  = 'info'
 log['neb phx core actor base']  = 'info'
 log['neb phx core shape base']  = 'info'
+"""
+
 #log['neb phx core actor control rigidbody base']  = 'info'
 
 
