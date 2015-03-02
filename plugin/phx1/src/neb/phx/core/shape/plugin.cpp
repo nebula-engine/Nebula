@@ -12,6 +12,8 @@ typedef neb::phx::core::shape::box C;
 
 extern "C" T0*	shape_create(int i)
 {
+	printf("plugin phx1 %s\n", __PRETTY_FUNCTION__);
+
 	switch(i) {
 	case NS0::type::CUBOID:
 		return new C;
@@ -25,7 +27,9 @@ extern "C" T0*	shape_create(int i)
 }
 extern "C" void	shape_destroy(T0* t)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	printf("plugin phx1 %s\n", __PRETTY_FUNCTION__);
 	delete t;
+
+	abort();
 }
 

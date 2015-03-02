@@ -22,12 +22,15 @@ neb::phx::core::shape::base::~base()
 void			neb::phx::core::shape::base::step(gal::etc::timestep const & ts) {
 	printv_func(DEBUG);
 }
-void			neb::phx::core::shape::base::init(neb::fnd::core::shape::util::parent * const & p)
+void			neb::phx::core::shape::base::init(parent_t * const & p)
 {
+	printf("%s\n", __PRETTY_FUNCTION__);
 	printv_func(DEBUG);
+	abort();
 }
 void			neb::phx::core::shape::base::release()
 {
+	printf("%s\n", __PRETTY_FUNCTION__);
 	//NEBULA_DEBUG_0_FUNCTION;
 	printv_func(DEBUG);
 
@@ -51,27 +54,39 @@ void			neb::phx::core::shape::base::release()
 }
 void			neb::phx::core::shape::base::create_physics()
 {
+	printf("%s\n", __PRETTY_FUNCTION__);
 	printv_func(DEBUG);
 	//NEBULA_DEBUG_0_FUNCTION;
 
-	if(!hasParent()) return;
+	if(!hasParent()) {
+		printf("%s\n", __PRETTY_FUNCTION__);
+		return;
+	}
+	
+	auto fnd_shape = neb::could_be<parent_t, neb::fnd::core::shape::base>(getParent());
+	assert(fnd_shape);
 
-	auto actor = neb::could_be<parent_t, neb::phx::core::actor::base>(getParent());
+	auto actor = dynamic_cast<neb::phx::core::actor::base*>(fnd_shape->getParent());
 
+	assert(actor);
 	if(!actor) return;
 
 	auto rigidactor = actor->isPxActorRigidActorBase();//std::dynamic_pointer_cast<neb::fnd::actor::Rigid_Actor>(parent_.lock());
 
+	assert(rigidactor);
 	if(!rigidactor) return;
 
 	physx::PxActor* const & px_actor = rigidactor->px_actor_;
 
+	assert(px_actor);
 	if(!px_actor) return;
 
 	auto px_rigidactor = rigidactor->px_actor_->isRigidActor();
+
 	assert(px_rigidactor);
 
 	auto app = dynamic_cast<neb::phx::app::base*>(get_fnd_app());
+
 	assert(app);
 
 	physx::PxMaterial* px_mat = app->px_physics_->createMaterial(1,1,1);

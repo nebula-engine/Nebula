@@ -23,7 +23,7 @@ namespace neb { namespace phx { namespace core { namespace shape {
 			using gal::tmp::Verbosity<neb::phx::core::shape::base>::printv;
 			base();
 			virtual ~base();
-			virtual void		init(neb::fnd::core::shape::util::parent * const & p);
+			virtual void		init(parent_t * const & p);
 			virtual void		release();
 			virtual void		step(gal::etc::timestep const & ts);
 			virtual void		create_physics();
