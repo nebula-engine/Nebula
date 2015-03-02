@@ -11,7 +11,10 @@ THIS::box()
 }
 void				THIS::init(parent_t * const & p)
 {
+	printf("%s\n", __PRETTY_FUNCTION__);
 	printv_func(DEBUG);
+
+	setParent(p);
 
 	create_physics();
 }
@@ -23,6 +26,8 @@ void				THIS::step(gal::etc::timestep const & ts)
 }
 physx::PxGeometry*		THIS::to_geo()
 {
+	printf("%s\n", __PRETTY_FUNCTION__);
+
 	auto p = getParent();
 	
 	return new physx::PxBoxGeometry(
