@@ -2,6 +2,7 @@
 
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/core/shape/base.hpp>
+//#include <neb/fnd/core/shape/base.hpp>
 
 #include <neb/phx/app/base.hpp>
 #include <neb/phx/util/convert.hpp>
@@ -21,6 +22,8 @@ void			neb::phx::core::actor::rigidstatic::base::create_physics()
 {
 	printv_func(DEBUG);
 
+	auto parent = getParent();
+
 	if(!neb::fnd::app::Base::is_valid()) return;
 	
 	if(px_actor_ != NULL) {
@@ -28,22 +31,20 @@ void			neb::phx::core::actor::rigidstatic::base::create_physics()
 		return;
 	}
 	
-	auto scene = dynamic_cast<neb::phx::core::scene::base*>(getScene());//scene_.lock();
+	//auto scene = dynamic_cast<neb::phx::core::scene::base*>(parent->getScene()->P::get_object());
+	auto scene = dynamic_cast<neb::phx::core::scene::base*>(parent->getScene());
 	
-	auto p = getPose();
+	auto p = parent->getPose();
 
 	printv(DEBUG, "pos = %16f %16f %16f\n", p.pos_.x, p.pos_.y, p.pos_.z);
 
-	physx::PxTransform pose(
-			neb::phx::util::convert(glm::vec3(p.pos_)),
-			neb::phx::util::convert(p.rot_)
-			);
+	physx::PxTransform pose(neb::phx::util::convert_pose(p));
 
 	//pose.p.print();
 	//pose.q.print();
 
 	// PxActor
-	auto app = get_phx_app();
+	auto app = dynamic_cast<neb::phx::app::base*>(parent->get_fnd_app());
 
 	auto pxph = app->px_physics_;
 	assert(pxph);
@@ -60,7 +61,7 @@ void			neb::phx::core::actor::rigidstatic::base::create_physics()
 	// userData
 	px_rigid_static->userData = is_fnd_actor_base().get();
 	assert(this == shared_from_this().get());
-	assert(this == is_fnd_actor_base().get());
+	//assert(this == is_fnd_actor_base().get());
 
 	// add PxActor to PxScene
 	//scene->create_physics();

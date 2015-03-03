@@ -10,7 +10,7 @@
 
 namespace neb { namespace phx { namespace core { namespace actor { namespace rigidactor {
 	class base:
-		virtual public neb::fnd::core::actor::rigidactor::base,
+		//virtual public neb::fnd::core::actor::rigidactor::base,
 		virtual public neb::phx::core::actor::actor::base
 	{
 		public:

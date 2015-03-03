@@ -22,7 +22,9 @@ void			neb::phx::core::actor::rigiddynamic::base::init(parent_t * const & p)
 void			neb::phx::core::actor::rigiddynamic::base::create_physics()
 {
 	printv_func(DEBUG);
-	
+
+	auto parent = getParent();
+
 	if(px_actor_ != NULL) {
 		printv(DEBUG, "been here!\n");
 		return;
@@ -30,16 +32,19 @@ void			neb::phx::core::actor::rigiddynamic::base::create_physics()
 	
 	if(!neb::fnd::app::Base::is_valid()) return;
 
-	auto scene = dynamic_cast<neb::phx::core::scene::base*>(getScene());
+	auto fnd_scene = parent->getScene();
+	//auto scene = dynamic_cast<neb::phx::core::scene::base*>(fnd_scene->P::get_object());
+	auto scene = dynamic_cast<neb::phx::core::scene::base*>(fnd_scene);
 	
-	auto p(getPose());	
+	auto p(parent->getPose());	
 	physx::PxTransform pose(
 			phx::util::convert(glm::vec3(p.pos_)),
 			phx::util::convert(p.rot_)
 			);
 	
 	// PxActor
-	auto app = get_phx_app();
+	auto app = dynamic_cast<neb::phx::app::base*>(parent->get_fnd_app());
+	assert(app);
 
 	physx::PxRigidDynamic* px_rigid_dynamic = app->px_physics_->createRigidDynamic(pose);
 
@@ -51,7 +56,7 @@ void			neb::phx::core::actor::rigiddynamic::base::create_physics()
 
 	px_actor_ = px_rigid_dynamic;
 
-	px_rigid_dynamic->setLinearVelocity(neb::phx::util::convert(velocity_), true);
+	px_rigid_dynamic->setLinearVelocity(neb::phx::util::convert(parent->velocity_), true);
 
 	// userData
 	auto sft = shared_from_this();
@@ -64,10 +69,10 @@ void			neb::phx::core::actor::rigiddynamic::base::create_physics()
 	assert(uc == sft.use_count());
 
 	// debug
-	assert(this == shared_from_this().get());
-	assert(this == is_fnd_actor_base().get());
-	assert(this == isPxActorRigidDynamicBase().get());
-	assert(std::dynamic_pointer_cast<neb::phx::core::actor::rigidbody::base>(shared_from_this()));
+	//assert(this == shared_from_this().get());
+	//assert(this == is_fnd_actor_base().get());
+	//assert(this == isPxActorRigidDynamicBase().get());
+	//assert(std::dynamic_pointer_cast<neb::phx::core::actor::rigidbody::base>(shared_from_this()));
 	
 
 	// add PxActor to PxScene
@@ -80,13 +85,15 @@ void			neb::phx::core::actor::rigiddynamic::base::init_physics()
 {
 	printv_func(DEBUG);
 
+	auto parent = getParent();
+
 	if(!px_actor_) return;
 
 	physx::PxRigidDynamic* px_rigid_dynamic = px_actor_->isRigidDynamic();
 
 	assert(px_rigid_dynamic);
 
-	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, density_);
+	physx::PxRigidBodyExt::updateMassAndInertia(*px_rigid_dynamic, parent->density_);
 	
 	setupFiltering();
 }

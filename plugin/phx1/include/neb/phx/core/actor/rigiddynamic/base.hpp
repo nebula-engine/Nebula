@@ -11,7 +11,7 @@
 
 namespace neb { namespace phx { namespace core { namespace actor { namespace rigiddynamic {
 	class base:
-		virtual public neb::fnd::core::actor::rigiddynamic::base,
+		//virtual public neb::fnd::core::actor::rigiddynamic::base,
 		virtual public neb::phx::core::actor::rigidbody::base
 	{
 		public:
