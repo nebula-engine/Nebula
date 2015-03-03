@@ -15,8 +15,7 @@ namespace neb { namespace phx { namespace core { namespace actor { namespace rig
 	{
 		public:
 			//base(::std::shared_ptr<neb::phx::core::actor::util::parent>);
-			
-			virtual void						init(neb::fnd::core::actor::util::parent * const &) = 0;
+			virtual void						init(parent_t * const &) = 0;
 			virtual void						release() = 0;
 			virtual void						step(gal::etc::timestep const & ts) = 0;
 			void							setupFiltering();
@@ -24,7 +23,7 @@ namespace neb { namespace phx { namespace core { namespace actor { namespace rig
 			virtual void						init_physics() = 0;
 			//virtual void						add_force(real) = 0;
 			//virtual void						set_pose(physx::PxTransform);
-			virtual void						set_pose_global(gal::math::pose pose);
+			virtual void						set_pose_global(gal::math::pose const & pose);
 			/** @name convenience functions
 			 * @{
 			 *

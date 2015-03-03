@@ -39,7 +39,11 @@ void			neb::phx::core::shape::base::release()
 	if(px_shape_) {
 		auto p = getParent();
 		assert(p);
-		auto ra = dynamic_cast<neb::phx::core::actor::rigidactor::base*>(p);
+
+		auto fnd_actor = p->getParent()->is_fnd_actor_base();
+		assert(fnd_actor);
+
+		auto ra = dynamic_cast<neb::phx::core::actor::rigidactor::base*>(fnd_actor->P::get_object().get());
 		assert(ra);		
 
 		assert(ra->px_actor_);
@@ -65,14 +69,15 @@ void			neb::phx::core::shape::base::create_physics()
 	
 	auto fnd_shape = neb::could_be<parent_t, neb::fnd::core::shape::base>(getParent());
 	assert(fnd_shape);
+	
+	auto fnd_actor = fnd_shape->getParent()->is_fnd_actor_base();
+	assert(fnd_actor);
 
-	auto actor = dynamic_cast<neb::phx::core::actor::base*>(fnd_shape->getParent());
-
+	auto actor = std::dynamic_pointer_cast<neb::phx::core::actor::base>(fnd_actor->P::get_object());
 	assert(actor);
 	if(!actor) return;
 
 	auto rigidactor = actor->isPxActorRigidActorBase();//std::dynamic_pointer_cast<neb::fnd::actor::Rigid_Actor>(parent_.lock());
-
 	assert(rigidactor);
 	if(!rigidactor) return;
 

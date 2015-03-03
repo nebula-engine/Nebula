@@ -38,8 +38,8 @@ namespace neb { namespace phx { namespace core { namespace actor { namespace rig
 			//virtual void					setPose(neb::fnd::pose const & pose) = 0;
 			virtual glm::vec3				get_angular_velocity();
 			virtual glm::vec3				get_mass_space_inertia_tensor();
-			virtual void					createControlManual(std::shared_ptr<neb::fnd::input::source> window);
-			void						createControlPD();
+			//virtual void					createControlManual(std::shared_ptr<neb::fnd::input::source> window);
+			//void						createControlPD();
 		public:
 			glm::vec3					force_;
 			glm::vec3					torque_;

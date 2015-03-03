@@ -18,13 +18,9 @@ namespace neb { namespace phx { namespace core { namespace actor { namespace rig
 		public:
 			using CHILD::get_fnd_app;
 			using gal::tmp::Verbosity<neb::phx::core::actor::rigidstatic::base>::printv;
-			//base(std::shared_ptr<neb::phx::core::actor::util::parent>);
-
-			//virtual void					init() = 0;
-			//virtual void					release() = 0;
-			virtual void					step(gal::etc::timestep const & ts) = 0;
-
-
+			virtual void					init(parent_t * const & p);
+			virtual void					release();
+			virtual void					step(gal::etc::timestep const & ts);
 			virtual void					create_physics();
 			virtual void					init_physics();
 	};

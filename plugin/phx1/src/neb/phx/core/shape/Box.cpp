@@ -20,6 +20,7 @@ void				THIS::init(parent_t * const & p)
 }
 void				THIS::release()
 {
+	neb::phx::core::shape::base::release();
 }
 void				THIS::step(gal::etc::timestep const & ts)
 {

@@ -9,17 +9,32 @@
 #include <neb/phx/core/actor/rigiddynamic/base.hpp>
 #include <neb/phx/util/convert.hpp>
 
+typedef neb::phx::core::actor::rigiddynamic::base THIS;
 
-void			neb::phx::core::actor::rigiddynamic::base::init(parent_t * const & p)
+
+void			THIS::release()
 {
-	printv_func(DEBUG);
-	
+	printv_func(INFO);
+	neb::phx::core::actor::actor::base::release();
+}
+void			THIS::init(parent_t * const & p)
+{
+	printv_func(INFO);
+
+	setParent(p);
+
+	neb::phx::core::actor::base::init(p);
+
 	assert(px_actor_);
 	auto pxrd = px_actor_->isRigidDynamic();
 	assert(pxrd);
 	pxrd->setLinearDamping(0.01);
 }
-void			neb::phx::core::actor::rigiddynamic::base::create_physics()
+void			THIS::step(gal::etc::timestep const & ts)
+{
+	neb::phx::core::actor::rigidbody::base::step(ts);
+}
+void			THIS::create_physics()
 {
 	printv_func(DEBUG);
 
@@ -63,7 +78,9 @@ void			neb::phx::core::actor::rigiddynamic::base::create_physics()
 	auto uc = sft.use_count();
 
 	// set userData to raw neb::fnd::core::actor::base*
-	px_rigid_dynamic->userData = is_fnd_actor_base().get();
+	neb::fnd::core::actor::base * udp = parent->is_fnd_actor_base().get();
+	assert(udp);
+	px_rigid_dynamic->userData = udp;
 
 	// debuggin
 	assert(uc == sft.use_count());
