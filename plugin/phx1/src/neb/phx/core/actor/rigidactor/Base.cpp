@@ -7,7 +7,7 @@
 #include <neb/phx/core/actor/rigidactor/base.hpp>
 
 //#include <neb/phx/core/shape/box.hpp>
-
+typedef neb::phx::core::actor::rigidactor::base THIS;
 //neb::fnd::actor::rigidactor::base::base() {
 //}
 /*neb::phx::core::actor::rigidactor::base::base(std::shared_ptr<neb::phx::core::actor::util::parent> parent):
@@ -16,7 +16,7 @@
 	neb::phx::core::actor::actor::base(parent)
 {
 }*/
-void		neb::phx::core::actor::rigidactor::base::setupFiltering()
+void		THIS::setupFiltering()
 {
 	std::cout << __PRETTY_FUNCTION__ << this << std::endl;
 
@@ -60,7 +60,7 @@ void		neb::phx::core::actor::rigidactor::base::setupFiltering()
 
 	delete[] shapes;
 }
-void		neb::phx::core::actor::rigidactor::base::set_pose_global(gal::math::pose pose)
+void		THIS::set_pose_global(gal::math::pose const & pose)
 {
 	auto p = getParent();
 

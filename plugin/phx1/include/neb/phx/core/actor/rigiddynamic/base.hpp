@@ -5,7 +5,8 @@
 
 #include <neb/fnd/util/macro.hpp>
 
-#include <neb/fnd/core/actor/rigiddynamic/Base.hpp>
+//#include <neb/fnd/core/actor/rigiddynamic/Base.hpp>
+
 #include <neb/phx/core/actor/rigidbody/base.hpp>
 #include <neb/phx/core/actor/util/decl.hpp>
 
@@ -18,9 +19,8 @@ namespace neb { namespace phx { namespace core { namespace actor { namespace rig
 			using CHILD::get_fnd_app;
 			//base(std::shared_ptr<neb::phx::core::actor::util::parent>);
 			NEB_INIT_FUNC;
-			virtual void					release() = 0;
-		public:
-			virtual void					step(gal::etc::timestep const & ts) = 0;
+			virtual void					release();
+			virtual void					step(gal::etc::timestep const & ts);
 			virtual void					create_physics();
 			virtual void					init_physics();
 			//virtual void					add_force(double) = 0;

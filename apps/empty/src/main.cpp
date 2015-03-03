@@ -57,8 +57,8 @@
 #include <neb/fin/core/scene/base.hpp>
 #include <neb/fin/core/actor/rigiddynamic/base.hpp>
 #include <neb/fin/core/actor/rigidstatic/base.hpp>
-#include <neb/fin/core/shape/box.hpp>
-#include <neb/fin/core/shape/HeightField.hpp>
+//#include <neb/fin/core/shape/box.hpp>
+//#include <neb/fin/core/shape/HeightField.hpp>
 
 /*
 typedef std::shared_ptr<neb::fnd::window::Base> window_shared;

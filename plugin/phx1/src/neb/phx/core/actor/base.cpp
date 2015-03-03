@@ -8,7 +8,9 @@
 #include <neb/phx/core/actor/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
 
-neb::phx::core::actor::base::base()
+typedef neb::phx::core::actor::base THIS;
+
+THIS::base()
 {
 	printv_func(DEBUG);
 }
@@ -48,6 +50,19 @@ void			neb::phx::core::actor::base::step(gal::etc::timestep const & ts)
 
   return 0;
   }*/
+
+/*
+ * these functions must be null defined for base actors
+ */
+void		THIS::create_physics()
+{
+}
+void		THIS::init_physics()
+{
+}
+void		THIS::set_pose_global(gal::math::pose const & pose)
+{
+}
 
 
 

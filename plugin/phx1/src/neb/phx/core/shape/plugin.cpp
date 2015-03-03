@@ -29,7 +29,5 @@ extern "C" void	shape_destroy(T0* t)
 {
 	printf("plugin phx1 %s\n", __PRETTY_FUNCTION__);
 	delete t;
-
-	abort();
 }
 

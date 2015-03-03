@@ -5,6 +5,8 @@ log['neb fnd core shape base'] = 'debug'
 log['neb fnd core light base'] = 'debug'
 #log['neb fnd core game weapon simple projectile'] = 'debug'
 
+log['neb fnd core actor control rigidbody base'] = 'debug'
+
 log['neb fnd gui layout base'] = 'debug'
 log['neb fnd gui object base'] = 'debug'
 
@@ -16,6 +18,8 @@ log['neb phx core shape base']  = 'info'
 
 #log['neb phx core actor control rigidbody base']  = 'info'
 
+
+log['neb fnd input sink'] = 'debug'
 
 log['neb fnd window base'] = 'debug'
 log['neb fnd context base'] = 'debug'

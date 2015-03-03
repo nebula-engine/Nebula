@@ -28,12 +28,13 @@
 
 #include <neb/fnd/input/signals.hpp>
 #include <neb/fnd/core/actor/rigidbody/Base.hpp>
+#include <neb/fnd/core/actor/control/rigidbody/Base.hpp>
 
 #include <neb/phx/util/convert.hpp>
 #include <neb/phx/core/scene/base.hpp>
 #include <neb/phx/core/actor/util/parent.hpp>
 #include <neb/phx/core/actor/rigidbody/base.hpp>
-#include <neb/phx/core/actor/control/rigidbody/base.hpp>
+
 
 typedef neb::phx::core::actor::rigidbody::base THIS;
 
@@ -90,7 +91,7 @@ void			neb::phx::core::actor::rigidbody::base::add_force(double time)
 }
 void		neb::phx::core::actor::rigidbody::base::step(gal::etc::timestep const & ts)
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	/*
 	if(control_) {

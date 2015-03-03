@@ -18,22 +18,37 @@
 {
 	LOG(lg, neb::phx::core::actor::sl, debug) << __PRETTY_FUNCTION__;
 }*/
-void			neb::phx::core::actor::rigidstatic::base::create_physics()
+
+typedef neb::phx::core::actor::rigidstatic::base THIS;
+
+void			THIS::init(parent_t * const & p)
+{
+	setParent(p);
+
+	neb::phx::core::actor::base::init(p);
+}
+void			THIS::release()
+{
+}
+void			THIS::step(gal::etc::timestep const & ts)
+{
+}
+void			THIS::create_physics()
 {
 	printv_func(DEBUG);
 
 	auto parent = getParent();
 
 	if(!neb::fnd::app::Base::is_valid()) return;
-	
+
 	if(px_actor_ != NULL) {
 		printv(WARNING, "been here!\n");
 		return;
 	}
-	
+
 	//auto scene = dynamic_cast<neb::phx::core::scene::base*>(parent->getScene()->P::get_object());
 	auto scene = dynamic_cast<neb::phx::core::scene::base*>(parent->getScene());
-	
+
 	auto p = parent->getPose();
 
 	printv(DEBUG, "pos = %16f %16f %16f\n", p.pos_.x, p.pos_.y, p.pos_.z);
@@ -48,9 +63,9 @@ void			neb::phx::core::actor::rigidstatic::base::create_physics()
 
 	auto pxph = app->px_physics_;
 	assert(pxph);
-	
+
 	physx::PxRigidStatic* px_rigid_static = pxph->createRigidStatic(pose);
-	
+
 	if(px_rigid_static == NULL) {
 		printv(CRITICAL, "create actor failed!");
 		exit(1);
@@ -59,13 +74,17 @@ void			neb::phx::core::actor::rigidstatic::base::create_physics()
 	px_actor_ = px_rigid_static;
 
 	// userData
-	px_rigid_static->userData = is_fnd_actor_base().get();
+	
+	neb::fnd::core::actor::base * udp = parent->is_fnd_actor_base().get();
+	assert(udp);
+	
+	px_rigid_static->userData = udp;
 	assert(this == shared_from_this().get());
 	//assert(this == is_fnd_actor_base().get());
 
 	// add PxActor to PxScene
 	//scene->create_physics();
-	
+
 	assert(scene->px_scene_ != NULL);
 
 	scene->px_scene_->addActor(*px_rigid_static);
