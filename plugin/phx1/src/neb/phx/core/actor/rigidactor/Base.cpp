@@ -20,23 +20,26 @@ void		neb::phx::core::actor::rigidactor::base::setupFiltering()
 {
 	std::cout << __PRETTY_FUNCTION__ << this << std::endl;
 
+	auto p = getParent();
+
 	assert(px_actor_);
 	physx::PxRigidActor* actor = (physx::PxRigidActor*)px_actor_->isRigidActor();
 	assert(actor);
 
+
 	// copy actor's filter data into PhysX objects
 
 	physx::PxFilterData coll_data;
-	coll_data.word0 = simulation_.word0;
-	coll_data.word1 = simulation_.word1;
-	coll_data.word2 = simulation_.word2;
-	coll_data.word3 = simulation_.word3;
+	coll_data.word0 = p->simulation_.word0;
+	coll_data.word1 = p->simulation_.word1;
+	coll_data.word2 = p->simulation_.word2;
+	coll_data.word3 = p->simulation_.word3;
 
 	physx::PxFilterData sq_data;
-	sq_data.word0 = scene_query_.word0;
-	sq_data.word1 = scene_query_.word1;
-	sq_data.word2 = scene_query_.word2;
-	sq_data.word3 = scene_query_.word3;
+	sq_data.word0 = p->scene_query_.word0;
+	sq_data.word1 = p->scene_query_.word1;
+	sq_data.word2 = p->scene_query_.word2;
+	sq_data.word3 = p->scene_query_.word3;
 
 	// apply that data to each shape
 
@@ -59,17 +62,16 @@ void		neb::phx::core::actor::rigidactor::base::setupFiltering()
 }
 void		neb::phx::core::actor::rigidactor::base::set_pose_global(gal::math::pose pose)
 {
+	auto p = getParent();
+
 	/** @todo if is nested actor, then this is wrong... */
-	pose_ = pose;
+	p->pose_ = pose;
 	
 	assert(px_actor_);
 	auto px_rigidactor = px_actor_->isRigidActor();
 	assert(px_rigidactor);
 
-	px_rigidactor->setGlobalPose(physx::PxTransform(
-				neb::phx::util::convert(pose_.pos_),
-				neb::phx::util::convert(pose_.rot_)
-				));
+	px_rigidactor->setGlobalPose(neb::phx::util::convert_pose(pose));
 }
 
 

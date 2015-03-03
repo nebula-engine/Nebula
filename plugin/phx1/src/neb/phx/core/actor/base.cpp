@@ -29,7 +29,7 @@ void			neb::phx::core::actor::base::init(parent_t * const & p)
 }*/
 void			neb::phx::core::actor::base::step(gal::etc::timestep const & ts)
 {
-	neb::fnd::core::actor::base::step(ts);
+	//neb::fnd::core::actor::base::step(ts);
 }
 /*std::shared_ptr<neb::phx::core::actor::util::parent>		neb::phx::core::actor::base::getPxParent() {
 	auto parent(phx::core::actor::base::parent_.lock());

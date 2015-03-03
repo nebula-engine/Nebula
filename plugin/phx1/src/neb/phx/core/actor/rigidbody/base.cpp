@@ -27,6 +27,7 @@
 //#include <neb/gfx/window/Base.hh>
 
 #include <neb/fnd/input/signals.hpp>
+#include <neb/fnd/core/actor/rigidbody/Base.hpp>
 
 #include <neb/phx/util/convert.hpp>
 #include <neb/phx/core/scene/base.hpp>
@@ -34,7 +35,9 @@
 #include <neb/phx/core/actor/rigidbody/base.hpp>
 #include <neb/phx/core/actor/control/rigidbody/base.hpp>
 
-neb::phx::core::actor::rigidbody::base::base():
+typedef neb::phx::core::actor::rigidbody::base THIS;
+
+THIS::base():
 	force_(0.0,0.0,0.0),
 	torque_(0.0,0.0,0.0)
 {
@@ -51,19 +54,23 @@ void			neb::phx::core::actor::rigidbody::base::add_force(double time)
 	// global frame
 	glm::vec3 f_global;
 	glm::vec3 t_global;
+
+	auto p = getParent();
+
+	auto c = p->is_fnd_actor_rigidbody_base()->control_;
 	
-	if(control_) {
-		f_body += control_->f_body();
-		t_body += control_->t_body();
+	if(c) {
+		f_body += c->f_body();
+		t_body += c->t_body();
 
-		f_global += control_->f_global();
-		t_global += control_->t_global();
+		f_global += c->f_global();
+		t_global += c->t_global();
 	}
-
+	
 	
 	// combine
-	f_global += pose_.rot_ * f_body;
-	t_global += pose_.rot_ * t_body;
+	f_global += p->pose_.rot_ * f_body;
+	t_global += p->pose_.rot_ * t_body;
 
 	//physx::PxTransform pose = pose_;
 	
@@ -81,63 +88,37 @@ void			neb::phx::core::actor::rigidbody::base::add_force(double time)
 	pxrigidbody->addForce(phx::util::convert(f_global));
 	pxrigidbody->addTorque(phx::util::convert(t_global));
 }
-void			neb::phx::core::actor::rigidbody::base::createControlManual(std::shared_ptr<neb::fnd::input::source> src)
-{
-	printv_func(DEBUG);
-
-	typedef neb::phx::core::actor::control::rigidbody::manual Control;
-
-	std::shared_ptr<Control> control(new Control());
-
-	control_ = control;
-
-	control->actor_ = isPxActorRigidBodyBase();
-
-	control->connectKeyFun(src, 20);
-
-/*	control->conn_.key_fun_ = window->sig_.key_fun_.connect(
-			20,
-			neb::gfx::window::signals::KeyFun::slot_type(
-				&neb::phx::core::actor::control::rigidbody::base::key_fun,
-				control.get(),
-				_1,
-				_2,
-				_3,
-				_4,
-				_5
-				).track_foreign(control)
-			);
-*/
-
-}
-void			neb::phx::core::actor::rigidbody::base::createControlPD()
-{
-	printv_func(DEBUG);
-	
-	auto self = std::dynamic_pointer_cast<neb::phx::core::actor::rigidbody::base>(
-			shared_from_this()
-			);
-	
-	auto control = std::make_shared<neb::phx::core::actor::control::rigidbody::pd>();
-	
-	control_ = control;
-	
-	control->actor_ = self;
-	
-	control->p_target_ = glm::vec3(0,0,5);
-	
-	control->q_target_ = glm::angleAxis(1.5f, glm::vec3(0.0,1.0,0.0));
-
-}
 void		neb::phx::core::actor::rigidbody::base::step(gal::etc::timestep const & ts)
 {
 	printv_func(DEBUG);
 
+	/*
 	if(control_) {
 		control_->step(ts);
 	}
+	*/
 
 	add_force(ts.dt);
+}
+glm::vec3		THIS::get_angular_velocity()
+{
+	assert(px_actor_);
+	auto rb = px_actor_->isRigidBody();
+	assert(rb);
+	
+	physx::PxVec3 v(rb->getAngularVelocity());
+	
+	return glm::vec3(v.x,v.y,v.z);
+}
+glm::vec3		THIS::get_mass_space_inertia_tensor()
+{
+	assert(px_actor_);
+	auto rb = px_actor_->isRigidBody();
+	assert(rb);
+	
+	physx::PxVec3 v(rb->getMassSpaceInertiaTensor());
+	
+	return glm::vec3(v.x,v.y,v.z);
 }
 
 

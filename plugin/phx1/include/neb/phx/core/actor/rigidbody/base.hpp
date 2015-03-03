@@ -15,7 +15,7 @@ namespace neb { namespace phx { namespace core { namespace actor { namespace rig
 	/** @brief base */
 	class base:
 		public gal::tmp::Verbosity<neb::phx::core::actor::rigidbody::base>,
-		virtual public neb::fnd::plug::phx::core::actor::rigidactor::base
+		virtual public neb::fnd::plug::phx::core::actor::rigidbody::Base,
 		virtual public neb::phx::core::actor::rigidactor::base
 	{
 		public:

@@ -1,7 +1,10 @@
 #ifndef PHYSX_CORE_ACTOR_BASE
 #define PHYSX_CORE_ACTOR_BASE
 
-#include <neb/fnd/core/actor/Base.hpp>
+#include <gal/stl/verbosity.hpp>
+
+#include <neb/fnd/plug/phx/core/actor/Base.hpp>
+
 
 #include <neb/phx/tmp/Child.hpp>
 #include <neb/phx/core/actor/util/cast.hpp>
@@ -13,20 +16,16 @@
 
 namespace neb { namespace phx { namespace core { namespace actor {
 	class base:
-		virtual public neb::fnd::core::actor::base,
-		virtual public neb::phx::core::actor::util::cast,
-		virtual public neb::phx::tmp::Child<neb::fnd::core::actor::util::parent>
+		public gal::tmp::Verbosity<neb::phx::core::actor::base>,
+		virtual public neb::fnd::plug::phx::core::actor::Base,
+		virtual public neb::phx::core::actor::util::cast
 	{
 		public:
 			base();
 			virtual ~base();
-			
-			virtual void		init(neb::fnd::core::actor::util::parent * const & p);
+			virtual void		init(parent_t * const & p);
 			virtual void		release() = 0;
 			virtual void		step(gal::etc::timestep const & ts);
-
-	
-			
 			/** 
 			 * empty function implemented so that base object can be allocated (for making lights for instance)
 			 * @todo in future, light actors done need to BE phx actors
