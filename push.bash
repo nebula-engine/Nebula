@@ -30,9 +30,7 @@ process () {
 }
 
 process "git/nebula-engine/nebula/components/core" master
-process "git/nebula-engine/nebula/components/final" master
 process "git/nebula-engine/nebula/components/python" master
-process "git/nebula-engine/nebula/components/net" master
 
 process "git/nebula-engine/nebula/plugin/gfx1" master
 process "git/nebula-engine/nebula/plugin/phx1" master
