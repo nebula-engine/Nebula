@@ -7,9 +7,6 @@
 [submodule "mod"]
 	path = mod
 	url = git@github.com:chuck1/Nebula-Ext.git
-[submodule "components/net"]
-	path = components/net
-	url = git@github.com:chuck1/Nebula-Network.git
 [submodule "external/Galaxy"]
 	path = external/Galaxy
 	url = git@github.com:chuck1/Galaxy.git
@@ -34,4 +31,7 @@
 [submodule "plugin/phx1"]
 	path = plugin/phx1
 	url = git@github.com:chuck1/Nebula-PhysX.git
+[submodule "plugin/net1"]
+	path = plugin/net1
+	url = git@github.com:chuck1/Nebula-Network.git
 
