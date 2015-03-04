@@ -1,5 +1,6 @@
 #include <gal/log/log.hpp>
 
+#include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/core/shape/base.hpp>
 
@@ -39,18 +40,21 @@ void			THIS::create_physics()
 	printv_func(DEBUG);
 
 	auto parent = getParent();
+	
+	auto fnd_app = parent->get_fnd_app();
 
 	if(px_actor_ != NULL) {
 		printv(DEBUG, "been here!\n");
 		return;
 	}
 	
-	if(!neb::fnd::app::Base::is_valid()) return;
+	if(!fnd_app->is_valid()) return;
 
 	auto fnd_scene = parent->getScene();
 	//auto scene = dynamic_cast<neb::phx::core::scene::base*>(fnd_scene->P::get_object());
-	auto scene = dynamic_cast<neb::phx::core::scene::base*>(fnd_scene);
-	
+	auto scene = dynamic_cast<neb::phx::core::scene::base*>(fnd_scene->P::get_object().get());
+	assert(scene);
+
 	auto p(parent->getPose());	
 	physx::PxTransform pose(
 			phx::util::convert(glm::vec3(p.pos_)),
@@ -58,7 +62,7 @@ void			THIS::create_physics()
 			);
 	
 	// PxActor
-	auto app = dynamic_cast<neb::phx::app::base*>(parent->get_fnd_app());
+	auto app = dynamic_cast<neb::phx::app::base*>(parent->get_fnd_app()->P::get_object().get());
 	assert(app);
 
 	physx::PxRigidDynamic* px_rigid_dynamic = app->px_physics_->createRigidDynamic(pose);

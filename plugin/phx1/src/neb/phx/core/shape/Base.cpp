@@ -1,3 +1,4 @@
+#include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/util/cast.hpp>
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/core/shape/base.hpp>
@@ -90,7 +91,9 @@ void			neb::phx::core::shape::base::create_physics()
 
 	assert(px_rigidactor);
 
-	auto app = dynamic_cast<neb::phx::app::base*>(get_fnd_app());
+	auto fnd_app = get_fnd_app();
+
+	auto app = dynamic_cast<neb::phx::app::base*>(fnd_app->P::get_object().get());
 
 	assert(app);
 

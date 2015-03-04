@@ -1,9 +1,6 @@
 [submodule "components/core"]
 	path = components/core
 	url = git@github.com:chuck1/Nebula-Core.git
-[submodule "components/physx"]
-	path = components/physx
-	url = git@github.com:chuck1/Nebula-PhysX.git
 [submodule "components/python"]
 	path = components/python
 	url = git@github.com:chuck1/Nebula-Python.git
@@ -37,3 +34,7 @@
 [submodule "plugin/gfx1"]
 	path = plugin/gfx1
 	url = git@github.com:nebula-engine/Nebula-Graphics
+[submodule "plugin/phx1"]
+	path = plugin/phx1
+	url = git@github.com:chuck1/Nebula-PhysX.git
+

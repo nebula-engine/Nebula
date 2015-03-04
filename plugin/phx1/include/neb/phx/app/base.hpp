@@ -5,7 +5,7 @@
 
 #include <PxPhysicsAPI.h>
 
-#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/plug/phx/app/Base.hpp>
 #include <neb/fnd/util/config.hpp> // neb/fnd/util/config.hpp.in
 //#include <neb/fnd/core/scene/Base.hpp>
 //#include <neb/phx/game/game/util/parent.hpp>
@@ -32,14 +32,16 @@ physx::PxFilterFlags DefaultFilterShader(
 
 namespace neb { namespace phx { namespace app {
 	class base:
+		public gal::tmp::Verbosity<neb::phx::app::base>,
 		virtual public neb::fnd::plug::phx::app::Base
 		//virtual public neb::phx::game::game::util::parent
 	{
 		public:
+			using gal::tmp::Verbosity<neb::phx::app::base>::printv;
 			//static std::shared_ptr<phx::app::base>		global();
 			base();
 		protected:
-			void						__init();
+			virtual void					init(parent_t * const & parent);
 		public:
 			void						release();
 			virtual void					step(gal::etc::timestep const & ts);

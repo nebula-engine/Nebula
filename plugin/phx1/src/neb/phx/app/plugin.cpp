@@ -6,10 +6,9 @@ namespace NS0 = neb::fnd::plug::phx::app;
 namespace NS1 = neb::phx::app;
 
 
-/*
 typedef NS0::Base T0;
 
-typedef NS1::Base T;
+typedef NS1::base T;
 
 extern "C" T0*	app_create(int)
 {
@@ -19,6 +18,6 @@ extern "C" void	app_destroy(T0* t)
 {
 	delete t;
 }
-*/
+
 
 

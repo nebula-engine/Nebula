@@ -79,8 +79,10 @@ THIS::base():
 	px_physics_(NULL)
 {
 }
-void				THIS::__init()
+void				THIS::init(parent_t * const & parent)
 {
+	setParent(parent);
+
 	// Physx
 	// Foundation
 	px_foundation_ = PxCreateFoundation(
@@ -123,7 +125,8 @@ void				THIS::__init()
 	PxVehicleSetBasisVectors(physx::PxVec3(0,1,0), physx::PxVec3(0,0,-1));
 	PxVehicleSetUpdateMode(physx::PxVehicleUpdateMode::Enum::eACCELERATION);
 }
-void						neb::phx::app::base::release() {
+void			THIS::release()
+{
 	printv_func(DEBUG);
 
 	physx::PxCloseVehicleSDK();
@@ -131,7 +134,7 @@ void						neb::phx::app::base::release() {
 	px_physics_->release();
 	px_foundation_->release();
 }
-void						neb::phx::app::base::step(gal::etc::timestep const & ts)
+void			THIS::step(gal::etc::timestep const & ts)
 {
 	printv_func(DEBUG);
 

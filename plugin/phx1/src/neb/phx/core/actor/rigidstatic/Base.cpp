@@ -1,5 +1,6 @@
 #include <gal/log/log.hpp>
 
+#include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/core/shape/base.hpp>
 //#include <neb/fnd/core/shape/base.hpp>
@@ -39,7 +40,9 @@ void			THIS::create_physics()
 
 	auto parent = getParent();
 
-	if(!neb::fnd::app::Base::is_valid()) return;
+	auto fnd_app = getParent()->get_fnd_app();
+
+	if(!fnd_app->is_valid()) return;
 
 	if(px_actor_ != NULL) {
 		printv(WARNING, "been here!\n");
@@ -47,7 +50,8 @@ void			THIS::create_physics()
 	}
 
 	//auto scene = dynamic_cast<neb::phx::core::scene::base*>(parent->getScene()->P::get_object());
-	auto scene = dynamic_cast<neb::phx::core::scene::base*>(parent->getScene());
+	auto scene = dynamic_cast<neb::phx::core::scene::base*>(parent->getScene()->P::get_object().get());
+	assert(scene);
 
 	auto p = parent->getPose();
 
@@ -59,7 +63,8 @@ void			THIS::create_physics()
 	//pose.q.print();
 
 	// PxActor
-	auto app = dynamic_cast<neb::phx::app::base*>(parent->get_fnd_app());
+	auto app = dynamic_cast<neb::phx::app::base*>(parent->get_fnd_app()->P::get_object().get());
+	assert(app);
 
 	auto pxph = app->px_physics_;
 	assert(pxph);
