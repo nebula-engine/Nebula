@@ -46,11 +46,12 @@
 
 //#include <neb/ext/maze/game/map/maze2.hpp>
 
+/*
 #include <neb/phx/app/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
 #include <neb/phx/core/actor/control/rigidbody/base.hpp>
 #include <neb/phx/test.hpp>
-
+*/
 //#include <neb/ext/maze/game/map/maze2.hpp>
 
 #include <neb/fin/app/base.hpp>

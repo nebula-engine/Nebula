@@ -33,14 +33,16 @@ namespace neb { namespace phx { namespace core { namespace scene {
 	 * @brief base
 	 */
 	class base:
+		public gal::tmp::Verbosity<neb::phx::core::scene::base>,
 		virtual public neb::fnd::plug::phx::core::scene::Base
 	{
 		public:
 			using CHILD::get_fnd_app;
+			using gal::tmp::Verbosity<neb::phx::core::scene::base>::printv;
 			friend class neb::fnd::net::core::scene::Base;
 			base();
 			virtual ~base();
-			void					__init(parent_t * const & p);
+			void					init(parent_t * const & p);
 			void					__release();
 			void					init_light();
 			void					step(gal::etc::timestep const & ts);
@@ -61,19 +63,15 @@ namespace neb { namespace phx { namespace core { namespace scene {
 			 *
 			 * @warning return actor is not initialized
 			 */
-			virtual weak_ptr<neb::fnd::core::actor::base>		createActorRigidStaticUninitialized() = 0;
+			//virtual weak_ptr<neb::fnd::core::actor::base>		createActorRigidStaticUninitialized() = 0;
 			/** @brief create rigidstatic
 			 *
 			 * @note typeof returned actor will be determined by final implementation of this
 			 *
 			 * @warning return actor is not initialized
 			 */
-			virtual weak_ptr<neb::fnd::core::actor::base>		createActorRigidDynamicUninitialized() = 0;
+			//virtual weak_ptr<neb::fnd::core::actor::base>		createActorRigidDynamicUninitialized() = 0;
 			/** @} */
-
-
-
-
 		public:
 			physx::PxScene*						px_scene_;
 			physx::PxSimulationFilterShader				px_filter_shader_;

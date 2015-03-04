@@ -3,6 +3,7 @@
 #include <climits>
 #include <ctime>
 
+#include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/util/cast.hpp>
 #include <neb/fnd/math/geo/vertex.hpp>
 #include <neb/fnd/core/shape/HeightField.hpp>
@@ -36,7 +37,9 @@ void				THIS::create_physics()
 {
 	printv_func(DEBUG);
 
-	if(!neb::fnd::app::Base::is_valid()) return;
+	auto fnd_app = get_fnd_app();
+	
+	if(!fnd_app->is_valid()) return;
 
 	auto actor = neb::could_be<parent_t, neb::phx::core::actor::base>(getParent());
 	assert(actor);

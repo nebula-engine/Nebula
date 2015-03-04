@@ -2,6 +2,7 @@
 
 #include <gal/log/log.hpp>
 
+#include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/util/cast.hpp>
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/core/scene/util/decl.hpp>
@@ -52,7 +53,7 @@ neb::phx::core::scene::base::base():
 {
 	printv_func(DEBUG);
 
-	flag_.set(neb::fnd::core::scene::util::flag::PHYSX_VISUALIZATION);
+	//flag_.set(neb::fnd::core::scene::util::flag::PHYSX_VISUALIZATION);
 }
 neb::phx::core::scene::base::~base()
 {
@@ -60,9 +61,11 @@ neb::phx::core::scene::base::~base()
 
 	assert(px_scene_ == NULL);
 }
-void			neb::phx::core::scene::base::__init(parent_t * const & p)
+void			THIS::init(parent_t * const & p)
 {
 	printv_func(DEBUG);
+
+	setParent(p);
 
 	//neb::fnd::core::scene::base::init(p);
 
@@ -124,7 +127,7 @@ void			neb::phx::core::scene::base::create_physics()
 		return;
 	}
 	
-	auto app = get_phx_app();
+	auto app = dynamic_cast<neb::phx::app::base*>(get_fnd_app()->P::get_object().get());
 
 	auto pxphysics = app->px_physics_;
 	assert(pxphysics);
@@ -248,6 +251,8 @@ void			THIS::step_physics(gal::etc::timestep const & ts)
 	printv_func(DEBUG);
 	printv(DEBUG, "%p dt = %f\n", this, ts.dt);
 
+	auto parent = getParent();
+
 	//auto app = get_phx_app();
 
 	// timer
@@ -270,7 +275,7 @@ void			THIS::step_physics(gal::etc::timestep const & ts)
 		printv(DEBUG, "actor = %p\n");
 	};
 
-	A::map_.for_each(lambda_lock);
+	parent->A::map_.for_each(lambda_lock);
 
 	printv(DEBUG, "actors locked\n");
 	/*A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
@@ -350,7 +355,7 @@ void			THIS::step_physics(gal::etc::timestep const & ts)
 		actor->mutex_.unlock();
 	};
 
-	A::map_.for_each(lambda_unlock);
+	parent->A::map_.for_each(lambda_unlock);
 
 	// vehicle
 	//physx::PxVec3 g(0,-0.25,0);

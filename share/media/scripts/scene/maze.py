@@ -1,3 +1,4 @@
+app = neb.get_app()
 
 windows = app.get_windows()
 
