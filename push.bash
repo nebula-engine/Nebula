@@ -36,6 +36,7 @@ process "git/nebula-engine/nebula/components/net" master
 
 process "git/nebula-engine/nebula/plugin/gfx1" master
 process "git/nebula-engine/nebula/plugin/phx1" master
+process "git/nebula-engine/nebula/plugin/net1" master
 
 process "git/nebula-engine/nebula/mod" master
 
