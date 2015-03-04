@@ -7,9 +7,6 @@
 [submodule "mod"]
 	path = mod
 	url = git@github.com:chuck1/Nebula-Ext.git
-[submodule "components/final"]
-	path = components/final
-	url = git@github.com:chuck1/Nebula-Final.git
 [submodule "components/net"]
 	path = components/net
 	url = git@github.com:chuck1/Nebula-Network.git
