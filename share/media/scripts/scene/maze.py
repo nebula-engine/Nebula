@@ -8,7 +8,11 @@ context = window.createContextWindow()
 
 environ = context.create_environ_scene_default()
 
-game = app.createGame()
+# create game
+gd = neb.game.game.Desc()
+gd.net_type = 1
+
+game = app.createGame(gd)
 
 m = game.create_map_dll("../mod/maze/build/dynamic/libnebula_ext_maze.so")
 
@@ -26,19 +30,9 @@ actor_player = scene.createActorRigidDynamicCuboid()
 
 m.spawn_actor(actor_player);
 
-#assert(actor_player);
-
-#// weapon
-#if(window0 && actor_player)
-#{
-
 weap = actor_player.createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0)
 
-# camera
-
 actor_player.createControlManual(window)
-
-#environ = context.get_environ().is_environ_scene_base()
 
 environ.create_view_ridealong(actor_player)
 
