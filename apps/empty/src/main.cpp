@@ -54,10 +54,14 @@
 */
 //#include <neb/ext/maze/game/map/maze2.hpp>
 
-#include <neb/fin/app/base.hpp>
+
+/*
+ * #include <neb/fin/app/base.hpp>
 #include <neb/fin/core/scene/base.hpp>
 #include <neb/fin/core/actor/rigiddynamic/base.hpp>
 #include <neb/fin/core/actor/rigidstatic/base.hpp>
+*/
+
 //#include <neb/fin/core/shape/box.hpp>
 //#include <neb/fin/core/shape/HeightField.hpp>
 
@@ -95,7 +99,7 @@ std::shared_ptr<neb::fnd::core::actor::base>				actor_light;
 
 int			main(int ac, char ** av)
 {
-	auto app = neb::fin::app::base::s_init(ac, av);
+	auto app = neb::fnd::app::Base::s_init(ac, av);
 
 	auto window = app->createWindow().lock();
 
