@@ -63,7 +63,7 @@ void main(void)
 	
 	lf_lights(amb, dif, spc, 100.0);
 
-	color = vec4(N*2-1,1);
+	//color = vec4(-(N*2.0)+1.0,1);
 }
 
 
