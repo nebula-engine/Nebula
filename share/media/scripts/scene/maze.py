@@ -32,7 +32,7 @@ m.spawn_actor(actor_player);
 
 weap = actor_player.createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0)
 
-actor_player.createControlManual(window)
+control = actor_player.createControlManual(window)
 
 environ.create_view_ridealong(actor_player)
 
