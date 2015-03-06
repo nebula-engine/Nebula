@@ -16,9 +16,9 @@ game = app.createGame(gd)
 
 m = game.create_map_dll("../mod/maze/build/dynamic/libnebula_ext_maze.so")
 
-scene = app.create_scene()
+scene = m.create_scene()
 
-m.set_scene(scene)
+#m.set_scene(scene)
 
 #createActorLightPoint(glm::vec3(0,0,10));
 
