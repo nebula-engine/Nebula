@@ -84,7 +84,7 @@ void	lf_lights(in vec4 amb, in vec4 dif, in vec4 spc, in float shininess) {
 					light_atten_quad[i] * light_distance * light_distance);
 
 			// debugging
-			atten = 1.0;
+			//atten = 1.0;
 
 			// check for very small atten
 			if(atten < 0.01) continue;

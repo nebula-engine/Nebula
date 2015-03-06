@@ -13,6 +13,7 @@ log['neb fnd gui object base'] = 'debug'
 
 
 log['neb fnd game map base'] = 'debug'
+log['neb fnd game game base'] = 'debug'
 log['neb fnd game spawn util parent'] = 'debug'
 
 log['neb fnd input sink'] = 'debug'
@@ -22,6 +23,8 @@ log['neb fnd context base'] = 'debug'
 log['neb fnd environ base'] = 'debug'
 
 
+# GRAPHICS
+log['neb gfx app base'] = 'debug'
 
 log['neb gfx window base'] = 'debug'
 log['neb gfx context base'] = 'debug'
