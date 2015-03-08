@@ -1,16 +1,15 @@
 log = {}
-log['neb fnd core scene base'] = 'info'
-log['neb fnd core actor base'] = 'info'
-log['neb fnd core shape base'] = 'info'
-log['neb fnd core light base'] = 'info'
+log['neb fnd app base']         = 'debug'
+log['neb fnd core scene base']  = 'info'
+log['neb fnd core actor base']  = 'info'
+log['neb fnd core shape base']  = 'info'
+log['neb fnd core light base']  = 'info'
 #log['neb fnd core game weapon simple projectile'] = 'info'
 
 log['neb fnd core actor control rigidbody base'] = 'info'
 
 log['neb fnd gui layout base'] = 'info'
 log['neb fnd gui object base'] = 'info'
-
-
 
 log['neb fnd game map base'] = 'info'
 log['neb fnd game game base'] = 'info'
