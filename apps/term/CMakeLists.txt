@@ -4,7 +4,7 @@ INCLUDE($ENV{HOME}/.config.cmake)
 
 FIND_PACKAGE(CMakeHelper)
 
-PROJECT(emptyapp)
+PROJECT(hf)
 INCLUDE(../../config.cmake)
 INCLUDE(cmh_build_config)
 
@@ -39,6 +39,7 @@ set(libs
 	/usr/lib/x86_64-linux-gnu/libboost_python-py27.so.1.55.0
 	dl
 	python2.7
+	png
 	)
 
 ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
