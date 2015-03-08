@@ -1,5 +1,4 @@
-
-e = Executable("empty")
+e = Executable("term")
 
 e.require("galaxy_std")
 e.require("galaxy_log")
