@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gdb --args ./empty --python ../share/media/scripts/scene/maze_server.py
+gdb --args ./empty --network --python ../share/media/scripts/scene/basic_server.py
