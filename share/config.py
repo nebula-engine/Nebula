@@ -1,5 +1,8 @@
 log = {}
 log['neb fnd app base']         = 'debug'
+
+log['neb fnd net client base']  = 'debug'
+
 log['neb fnd core scene base']  = 'info'
 log['neb fnd core actor base']  = 'info'
 log['neb fnd core shape base']  = 'info'

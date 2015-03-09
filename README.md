@@ -32,3 +32,11 @@ Local means they are on the server machine, remote means they are on a client ma
 Local scenes simulate physics and send pose data to clients via the actor's v\_set\_pose\_data.
 Object determine if they are local or remote via the \_M\_network\_object pointer.
 
+## Plugins
+
+neb::fnd::plug classes are used to implement special functionality.
+They are the children of corresponding neb::fnd classes.
+They are used when the functionality is optional but the underlying structure is still needed (e.g. scenes, actors).
+
+Plugin classes
+
