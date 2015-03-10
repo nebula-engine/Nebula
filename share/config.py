@@ -1,5 +1,5 @@
 log = {}
-log['neb fnd app base']         = 'debug'
+log['neb fnd app base']         = 'info'
 
 log['neb fnd net server base']  = 'debug'
 log['neb fnd net client base']  = 'debug'
@@ -21,9 +21,13 @@ log['neb fnd game spawn util parent'] = 'info'
 
 log['neb fnd input sink'] = 'info'
 
-log['neb fnd window base'] = 'info'
-log['neb fnd context base'] = 'info'
-log['neb fnd environ base'] = 'info'
+log['neb fnd window base']      = 'info'
+log['neb fnd context base']     = 'info'
+log['neb fnd environ base']     = 'info'
+
+log["neb parent game game"]     = 'info'
+log["neb parent window"]        = 'info'
+log["neb parent gui layout"]    = 'info'
 
 
 # GRAPHICS
