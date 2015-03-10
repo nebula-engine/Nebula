@@ -29,7 +29,11 @@
 int			main(int ac, char ** av)
 {
 	auto app = neb::fnd::app::Base::s_init(ac, av);
-
+	
+//	int p = atoi(av[1]);
+	
+//	app->create_server(p);
+	
 	app->loop();
 }
 
