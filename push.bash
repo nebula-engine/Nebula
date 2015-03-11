@@ -48,6 +48,6 @@ process "git/nebula-engine/nebula/external/Galaxy/components/net" master
 process "git/nebula-engine/nebula/external/Galaxy" master
 process "git/nebula-engine/nebula/external/maze" master
 
-process "git/nebula-engine/nebula" test
+process "git/nebula-engine/nebula" neb67
 
 
