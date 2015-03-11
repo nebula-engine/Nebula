@@ -1,3 +1,15 @@
 #!/bin/bash
 
-./empty --graphics --python ../share/media/scripts/scene/maze.py > log
+if [ $1 -eq "0" ]
+then
+	$2
+fi
+if [ $1 -eq "1" ]
+then
+	gdb --args $2
+fi
+if [ $1 -eq "2" ]
+then
+	valgrind --suppressions=/home/chuck/.valgrind.supp --gen-suppressions=yes $2
+fi
+

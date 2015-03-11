@@ -19,23 +19,26 @@ log['neb fnd game map base'] = 'info'
 log['neb fnd game game base'] = 'info'
 log['neb fnd game spawn util parent'] = 'info'
 
-log['neb fnd input sink'] = 'info'
+log['neb fnd input sink']           = 'info'
 
-log['neb fnd window base']      = 'info'
-log['neb fnd context base']     = 'info'
-log['neb fnd environ base']     = 'info'
+log['neb fnd window base']          = 'info'
+log['neb fnd context base']         = 'info'
+log['neb fnd environ base']         = 'info'
 
-log["neb parent game game"]     = 'info'
-log["neb parent window"]        = 'info'
-log["neb parent gui layout"]    = 'info'
+log["neb parent game game"]         = 'info'
+log["neb parent window"]            = 'info'
+log["neb parent gui layout"]        = 'info'
+log["neb parent gui object base"]       = 'info'
+log["neb parent gui object terminal"]   = 'info'
 
 
 # GRAPHICS
-log['neb gfx app base'] = 'info'
+log['neb gfx app base']         = 'info'
+log['neb gfx app draw']         = 'info'
 
-log['neb gfx window base'] = 'info'
-log['neb gfx context base'] = 'info'
-log['neb gfx environ base'] = 'info'
+log['neb gfx window base']      = 'info'
+log['neb gfx context base']     = 'info'
+log['neb gfx environ base']     = 'info'
 
 log['neb gfx core scene base'] = 'info'
 log['neb gfx core actor base'] = 'info'
