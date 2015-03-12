@@ -1,6 +1,6 @@
 
 
-
+/*
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -10,7 +10,6 @@
 
 #include <neb/fnd/free.hpp>
 #include <neb/fnd/util/cast.hpp>
-#include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/util/wrapper.hpp>
 #include <neb/fnd/core/light/base.hpp>
@@ -25,10 +24,13 @@
 #include <neb/fnd/game/weapon/SimpleProjectile.hpp>
 #include <neb/fnd/context/Window.hpp>
 #include <neb/fnd/environ/Two.hpp>
+*/
+
+#include <neb/fnd/app/Base10.hpp>
 
 int			main(int ac, char ** av)
 {
-	auto app = neb::fnd::app::Base::s_init(ac, av);
+	auto app = neb::fnd::app::Base10::s_init(ac, av);
 	
 //	int p = atoi(av[1]);
 	

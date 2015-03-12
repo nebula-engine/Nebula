@@ -10,7 +10,7 @@
 
 #include <neb/fnd/free.hpp>
 #include <neb/fnd/util/cast.hpp>
-#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/app/Base10.hpp>
 #include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/util/wrapper.hpp>
 #include <neb/fnd/core/light/base.hpp>
@@ -99,9 +99,9 @@ std::shared_ptr<neb::fnd::core::actor::base>				actor_light;
 
 int			main(int ac, char ** av)
 {
-	auto app = neb::fnd::app::Base::s_init(ac, av);
+	auto app = neb::fnd::app::Base10::s_init(ac, av);
 
-	auto window = app->createWindow().lock();
+	auto window = app->create_window().lock();
 
 //	context1 = window0->createContextThree().lock();
 	auto context = window->createContextWindow().lock();
@@ -110,7 +110,7 @@ int			main(int ac, char ** av)
 
 	// context->init()
 
-	auto layout = app->createLayout(window, environ).lock();
+	auto layout = app->create_layout(window, environ).lock();
 /*
 	neb::fnd::game::game::desc gameDesc;
 
