@@ -66,3 +66,7 @@ log['neb phx core shape base']  = 'info'
 
 #log['neb phx core actor control rigidbody base']  = 'info'
 
+log['neb net comm base'] = 'debug'
+
+
+
