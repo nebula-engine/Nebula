@@ -7,8 +7,8 @@ c1 = neb.net.msg.Codes.REQUEST_GAME_JOIN
 def on_connect():
     print "connected!"
 
-c = app.create_client("127.0.0.1", 20002)
-#c = app.create_client("127.0.0.1", 20002, on_connect)
+#c = app.create_client("127.0.0.1", 20002)
+c = app.create_client("127.0.0.1", 20002, on_connect)
 
 m0 = neb.net.msg.Code()
 m1 = neb.net.msg.Code()
