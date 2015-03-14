@@ -15,8 +15,8 @@ log['neb fnd core actor control rigidbody base'] = 'info'
 log['neb fnd gui layout base'] = 'info'
 log['neb fnd gui object base'] = 'info'
 
-log['neb fnd game map base'] = 'info'
-log['neb fnd game game base'] = 'info'
+log['neb fnd game map base']        = 'debug'
+log['neb fnd game game base']       = 'debug'
 log['neb fnd game spawn util parent'] = 'info'
 
 log['neb fnd input sink']           = 'info'
