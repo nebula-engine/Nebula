@@ -1,17 +1,17 @@
 log = {}
-log['gal shared']                                   = 'debug'
+log['gal shared']                                   = 'info'
 
 log['neb fnd app base']                             = 'info'
-log['neb fnd net server base']                      = 'debug'
-log['neb fnd net client base']                      = 'debug'
-log['neb fnd core scene base']                      = 'debug'
-log['neb fnd core actor base']                      = 'debug'
+log['neb fnd net server base']                      = 'info'
+log['neb fnd net client base']                      = 'info'
+log['neb fnd core scene base']                      = 'info'
+log['neb fnd core actor base']                      = 'info'
 log['neb fnd core actor control rigidbody base']    = 'info'
-log['neb fnd core shape base']                      = 'debug'
-log['neb fnd core light base']                      = 'debug'
+log['neb fnd core shape base']                      = 'info'
+log['neb fnd core light base']                      = 'info'
 log['neb fnd gui layout base']                      = 'info'
 log['neb fnd gui object base']                      = 'info'
-log['neb fnd game map base']                        = 'debug'
+log['neb fnd game map base']                        = 'info'
 log['neb fnd game game base']                       = 'info'
 log['neb fnd game spawn util parent']               = 'info'
 log['neb fnd core game weapon simple projectile']   = 'info'
@@ -54,7 +54,7 @@ log['neb phx core shape base']                      = 'info'
 
 #log['neb phx core actor control rigidbody base']  = 'info'
 
-log['neb net comm base']                            = 'debug'
+log['neb net comm base']                            = 'info'
 
 
 

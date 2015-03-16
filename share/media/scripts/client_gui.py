@@ -11,8 +11,8 @@ m0.set_code(c0)
 m1.set_code(c1)
 m1.set_data(14)
 
-on_connect = lambda : c.send(m1)
+c = app.create_client("127.0.0.1", 20002, None)
 
-c = app.create_client("127.0.0.1", 20002, on_connect)
+a = lambda : c.send(m1)
 
 
