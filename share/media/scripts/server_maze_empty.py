@@ -1,5 +1,3 @@
-app = neb.get_app()
-
 
 # create game
 gd = neb.game.game.Desc()
