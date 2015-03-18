@@ -98,7 +98,8 @@ WARN_LOGFILE           =
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 INPUT                  = /home/chuck/git/nebula-engine/nebula/doc
-INPUT                 += /home/chuck/git/nebula-engine/nebula/components/core/include
+INPUT                 += /home/chuck/git/nebula-engine/nebula/components/fnd0/include
+INPUT                 += /home/chuck/git/nebula-engine/nebula/components/fnd1/include
 INPUT                 += /home/chuck/git/nebula-engine/nebula/components/python/include
 INPUT                 += /home/chuck/git/nebula-engine/nebula/mod/hf/include
 INPUT                 += /home/chuck/git/nebula-engine/nebula/mod/maze/include
