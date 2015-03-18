@@ -51,7 +51,8 @@ process () {
 
 echo $1
 
-process "git/nebula-engine/nebula/components/core" master "$1"
+process "git/nebula-engine/nebula/components/fnd0" master "$1"
+#process "git/nebula-engine/nebula/components/fnd1" master "$1"
 process "git/nebula-engine/nebula/components/python" master "$1"
 
 process "git/nebula-engine/nebula/plugin/gfx1" master "$1"

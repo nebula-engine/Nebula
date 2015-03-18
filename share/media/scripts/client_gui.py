@@ -9,10 +9,12 @@ m1 = neb.net.msg.Code()
 
 m0.set_code(c0)
 m1.set_code(c1)
-m1.set_data(14)
+m1.set_data(6)
 
-c = app.create_client("127.0.0.1", 20002, None)
+def a(c):
+    #c.send(m0)
+    c.send(m1)
 
-a = lambda : c.send(m1)
+c = app.create_client("127.0.0.1", 20002, a)
 
 

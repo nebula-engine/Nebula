@@ -1,5 +1,6 @@
 log = {}
 log['gal shared']                                   = 'info'
+log['gal net message']                              = 'debug'
 
 log['neb fnd app base']                             = 'info'
 log['neb fnd net server base']                      = 'info'
