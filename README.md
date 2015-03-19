@@ -40,3 +40,10 @@ They are used when the functionality is optional but the underlying structure is
 
 Plugin classes
 
+Full Rebuild
+
+real	7m33.772s
+user	26m25.272s
+sys	1m46.803s
+
+

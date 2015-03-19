@@ -1,0 +1,24 @@
+graph {
+	subgraph cluster_machine0 {
+		label = "machine 0";
+		server0
+
+		a_0 [shape=record,label="{a | {m|i} | {0|0} | {1|1} }"];
+
+		registry0 [shape=record,label="{registry | {0 | a}}"];
+			
+	}
+	
+	subgraph cluster_machine1 {
+		label = "machine 1";
+		client0
+
+		a_1 [shape=record,label="{a | {m|i} | {0|0} | {1|1} }"];
+
+		registry1 [shape=record,label="{registry | {1 | a}}"];
+
+	}
+
+	server0 -- client0
+}
+
