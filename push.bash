@@ -65,21 +65,21 @@ process "git/nebula-engine/nebula/components/fnd0" master $cm
 #process "git/nebula-engine/nebula/components/fnd1" master "$1"
 process "git/nebula-engine/nebula/components/python" master $cm
 
-process "git/nebula-engine/nebula/plugin/gfx1" master "$1"
-process "git/nebula-engine/nebula/plugin/phx1" master "$1"
-process "git/nebula-engine/nebula/plugin/net1" master "$1"
+process "git/nebula-engine/nebula/plugin/gfx1" master $cm
+process "git/nebula-engine/nebula/plugin/phx1" master $cm
+process "git/nebula-engine/nebula/plugin/net1" master $cm
 
-process "git/nebula-engine/nebula/mod" master "$1"
+process "git/nebula-engine/nebula/mod" master $cm
 
-process "git/nebula-engine/nebula/external/cmake" master "$1"
-process "git/nebula-engine/nebula/external/cmake_find" master "$1"
+process "git/nebula-engine/nebula/external/cmake" master $cm
+process "git/nebula-engine/nebula/external/cmake_find" master $cm
 
-process "git/nebula-engine/nebula/external/Galaxy/components/console" master "$1"
-process "git/nebula-engine/nebula/external/Galaxy/components/std" master "$1"
-process "git/nebula-engine/nebula/external/Galaxy/components/log" master "$1"
-process "git/nebula-engine/nebula/external/Galaxy/components/net" master "$1"
-process "git/nebula-engine/nebula/external/Galaxy" master "$1"
-process "git/nebula-engine/nebula/external/maze" master "$1"
+process "git/nebula-engine/nebula/external/Galaxy/components/console" master $cm
+process "git/nebula-engine/nebula/external/Galaxy/components/std" master $cm
+process "git/nebula-engine/nebula/external/Galaxy/components/log" master $cm
+process "git/nebula-engine/nebula/external/Galaxy/components/net" master $cm
+process "git/nebula-engine/nebula/external/Galaxy" master $cm
+process "git/nebula-engine/nebula/external/maze" master $cm
 
 process "git/nebula-engine/nebula" neb67 $cm
 
