@@ -1,4 +1,4 @@
 #!/bin/bash
-gnome-terminal -e '../test/server_maze.bash 0'
-sleep 1
-../test/client_gui.bash 1
+gnome-terminal --full-screen -e "../test/server_maze.bash $1"
+sleep 2
+../test/client_gui.bash $1
