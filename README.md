@@ -46,4 +46,7 @@ real	7m33.772s
 user	26m25.272s
 sys	1m46.803s
 
+## Boost
+theory about Boost Asio: only one async callback will run at a time.
+So, if an async callback blocks, no other async calls will complete until the blockage clears
 

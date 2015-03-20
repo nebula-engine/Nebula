@@ -1,10 +1,12 @@
 log = {}
 log['gal shared']                                   = 'info'
-log['gal net message']                              = 'info'
 
-log['neb fnd app base']                             = 'info'
-log['neb fnd net server base']                      = 'info'
-log['neb fnd net client base']                      = 'info'
+log['gal net message']                              = 'debug'
+log['gal net communicating']                        = 'debug'
+
+log['neb fnd app base']                             = 'debug'
+log['neb fnd net server base']                      = 'debug'
+log['neb fnd net client base']                      = 'debug'
 log['neb fnd core scene base']                      = 'info'
 log['neb fnd core actor base']                      = 'info'
 log['neb fnd core actor control rigidbody base']    = 'info'
@@ -55,7 +57,7 @@ log['neb phx core shape base']                      = 'info'
 
 #log['neb phx core actor control rigidbody base']  = 'info'
 
-log['neb net comm base']                            = 'info'
+log['neb net comm base']                            = 'debug'
 
 
 
