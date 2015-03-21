@@ -75,8 +75,8 @@
 template<typename B, typename D> void	makeDefaultFunc()
 {
 
-	gal::itf::shared::register_type(std::type_index(typeid(B)));
-	gal::itf::shared::register_type(std::type_index(typeid(D)));
+	gal::managed_object::register_type(std::type_index(typeid(B)));
+	gal::managed_object::register_type(std::type_index(typeid(D)));
 
 
 	std::function< std::shared_ptr<B>() > f(
