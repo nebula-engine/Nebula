@@ -1,0 +1,10 @@
+digraph g {
+	child0 [label="child<0>"]
+	parent0 [label="parent<0>"]
+
+	child0->parent0 [style=dotted]
+	child1->parent1 [style=dotted]
+
+	parent0->child1
+	parent1->child2
+}
