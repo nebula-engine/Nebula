@@ -91,8 +91,8 @@ scene_s			scene;
 
 
 std::shared_ptr<neb::fin::core::actor::rigiddynamic::base>	actor_player;
-//std::shared_ptr<neb::fnd::core::actor::base>	actor_player;
-std::shared_ptr<neb::fnd::core::actor::base>				actor_light;
+//std::shared_ptr<neb::fnd::core::actor::Base>	actor_player;
+std::shared_ptr<neb::fnd::core::actor::Base>				actor_light;
 
 int			main(int ac, char ** av)
 {
@@ -100,7 +100,7 @@ int			main(int ac, char ** av)
 
 	makeDLLFunc<neb::fnd::core::scene::base, neb::fin::core::scene::base>();
 	
-	makeDefaultFunc<neb::fnd::core::actor::base, neb::fin::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::fnd::core::actor::Base, neb::fin::core::actor::rigiddynamic::base>();
 	makeDefaultFunc<neb::fnd::core::actor::__base, neb::fin::core::actor::rigiddynamic::base>();
 	makeDefaultFunc<neb::fnd::core::actor::__base, neb::fin::core::actor::base>();
 

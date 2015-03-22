@@ -87,13 +87,13 @@ template<typename B, typename D> void	makeDefaultFunc()
 }
 
 
-//BOOST_CLASS_EXPORT_GUID(neb::fnd::core::actor::base, "base")
+//BOOST_CLASS_EXPORT_GUID(neb::fnd::core::actor::Base, "base")
 //BOOST_CLASS_EXPORT_GUID(neb::fin::gfx_phx::core::actor::rigiddynamic::base, "derived")
 
 void			s1()
 {
 	{
-		typedef neb::fnd::core::actor::base T;
+		typedef neb::fnd::core::actor::Base T;
 		typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base D;
 
 		std::ofstream ofs;
@@ -127,7 +127,7 @@ void			s1()
 	}
 
 	{
-		typedef neb::fnd::core::actor::base T;
+		typedef neb::fnd::core::actor::Base T;
 		typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base D;
 
 		std::ifstream ifs;
@@ -209,7 +209,7 @@ int			main()
 	makeDefaultFunc<neb::fnd::core::actor::desc, neb::fnd::core::actor::desc>();
 	makeDefaultFunc<neb::fnd::core::actor::desc, neb::fnd::core::actor::rigidbody::desc>();
 
-	makeDefaultFunc<neb::fnd::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::fnd::core::actor::Base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
 
 	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
 	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::gfx_phx::core::shape::box>();

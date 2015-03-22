@@ -118,8 +118,8 @@ std::shared_ptr<neb::fin::gfx_phx::core::scene::base>			scene;
 
 
 std::shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>	actor_player;
-//std::shared_ptr<neb::fnd::core::actor::base>	actor_player;
-std::shared_ptr<neb::fnd::core::actor::base>				actor_light;
+//std::shared_ptr<neb::fnd::core::actor::Base>	actor_player;
+std::shared_ptr<neb::fnd::core::actor::Base>				actor_light;
 
 shared_ptr<neb::gfx::gui::layout::base>	create_layout()
 {
@@ -282,7 +282,7 @@ scene_s		create_maze()
 	scene = map;
 
 	// player's actor
-	actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::fnd::core::actor::base>("actor_player.xml"));
+	actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::fnd::core::actor::Base>("actor_player.xml"));
 	scene->addActor(actor_player);
 
 
@@ -445,7 +445,7 @@ int			main(int ac, char** av)
 /*
 	makeDefaultFunc<neb::fnd::core::actor::desc, neb::fnd::core::actor::desc>();
 	makeDefaultFunc<neb::fnd::core::actor::desc, neb::fnd::core::actor::rigidbody::desc>();
-	makeDefaultFunc<neb::fnd::core::actor::base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::fnd::core::actor::Base, neb::fin::gfx_phx::core::actor::rigiddynamic::base>();
 	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::gfx_phx::core::shape::base>();
 	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::gfx_phx::core::shape::box>();
 	makeDefaultFunc<neb::fnd::light::__base, neb::gfx::core::light::spot>();

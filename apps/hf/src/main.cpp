@@ -92,7 +92,7 @@ scene_s			scene;
 
 
 std::shared_ptr<neb::fin::core::actor::rigiddynamic::base>	actor_player;
-std::shared_ptr<neb::fnd::core::actor::base>				actor_light;
+std::shared_ptr<neb::fnd::core::actor::Base>				actor_light;
 
 
 scene_s		create_maze()
@@ -109,7 +109,7 @@ scene_s		create_maze()
 		scene = app->createSceneDll("../../components/ext/hf/libnebula_ext_hf_0.so").lock();
 
 		// player's actor
-		actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::fnd::core::actor::base>("actor_player.xml"));
+		actor_player = std::dynamic_pointer_cast<actor_dyn_t>(loadXML<neb::fnd::core::actor::Base>("actor_player.xml"));
 		scene->addActor(actor_player);
 	}
 	else*/
