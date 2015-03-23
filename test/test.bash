@@ -6,7 +6,8 @@ then
 fi
 if [ $1 -eq "1" ]
 then
-	gdb -x ../test/run.gdb --args $2
+	#gdb -x ../test/run.gdb --args $2
+	gdb --args $2
 fi
 if [ $1 -eq "2" ]
 then

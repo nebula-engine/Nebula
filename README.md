@@ -3,6 +3,10 @@ Nebula
 
 3D Game Engine in C++
 
+## temp notes
+
+client process_managed isnt being registered!
+
 ## Components
 
 [core](http://github.com/chuck1/Nebula-Core)
@@ -49,4 +53,17 @@ sys	1m46.803s
 ## Boost
 theory about Boost Asio: only one async callback will run at a time.
 So, if an async callback blocks, no other async calls will complete until the blockage clears
+
+## srever-client connection process
+
+1. S and C send Hello msgs:
+    - address of process
+2. if process_address
+
+
+
+
+
+
+
 
