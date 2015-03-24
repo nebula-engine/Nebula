@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cmd="./empty --physics --network --python ../share/media/scripts/server_maze_empty.py"
+cmd="./empty --physics --network --python ../share/media/scripts/server_client_maze_empty.py"
 
 echo $1
 

@@ -54,11 +54,13 @@ sys	1m46.803s
 theory about Boost Asio: only one async callback will run at a time.
 So, if an async callback blocks, no other async calls will complete until the blockage clears
 
-## srever-client connection process
+## server-client connection process
 
-1. S and C send Hello msgs:
-    - address of process
-2. if process_address
+Issue: need to assign unique index\_process to each process
+Solution: assume all processes connected by a given network have
+registered with the same RegistryProcess server.
+By default, a process will have an invalid index\_process.
+Before a 
 
 
 
