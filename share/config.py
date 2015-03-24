@@ -6,9 +6,9 @@ log['gal type_registry']                            = 'info'
 log['gal net message']                              = 'info'
 log['gal net communicating']                        = 'info'
 
-log['neb fnd net server base']                      = 'info'
-log['neb fnd net client base']                      = 'info'
-log['neb fnd net msg base']                         = 'info'
+log['neb fnd net server base']                      = 'debug'
+log['neb fnd net client base']                      = 'debug'
+log['neb fnd net msg base']                         = 'debug'
 
 log['neb fnd app base']                             = 'info'
 log['neb fnd core scene base']                      = 'info'
