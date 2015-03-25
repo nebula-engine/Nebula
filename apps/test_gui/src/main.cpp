@@ -6,9 +6,13 @@
 #include <gal/etc/stopwatch.hpp>
 
 #include <neb/fnd/context/Window.hpp>
+#include <neb/fnd/environ/SceneDefault.hpp>
 #include <neb/fnd/environ/Two.hpp>
 #include <neb/fnd/net/msg/Code.hpp>
 #include <neb/fnd/net/msg/game/game/List.hpp>
+#include <neb/fnd/core/actor/rigidbody/Base.hpp>
+#include <neb/fnd/core/actor/rigidbody/desc.hpp>
+#include <neb/fnd/core/shape/cuboid/desc.hpp>
 
 //#include <neb/fnd/app/Base00.hpp>
 #include <neb/fnd1/app/Base00.hpp>
@@ -83,28 +87,28 @@ int			main(int ac, char ** av)
 	auto c = app->create_client("127.0.0.1", 20000, after_connect);
 
 	// gui stuff
+	
+	//auto windows = app->get_windows();
+	
+	//auto window = app->P_W::fornt(); //windows[0];
 
-	windows = app.get_windows();
+	//context = window->createContextWindow().lock();
 
-	window = windows[0];
+	auto e1 = context->createEnvironSceneDefault().lock();
 
-	context = window.createContextWindow();
+	neb::fnd::core::actor::rigidbody::Desc ad;
+	neb::fnd::core::shape::cuboid::Desc sd;
+	auto actor_player = std::dynamic_pointer_cast<neb::fnd::core::actor::rigidbody::Base>(scene->createActorRigidDynamicCuboid(ad, sd).lock());
+	
+	m->spawn_actor(actor_player);
 
-	environ = context.create_environ_scene_default();
+	auto weap = actor_player->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
 
+	auto control = actor_player->createControlManual(window);
 
+	e1->create_view_ridealong(actor_player);
 
-	actor_player = scene.createActorRigidDynamicCuboid();
-
-	m.spawn_actor(actor_player);
-
-	weap = actor_player.createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
-
-	control = actor_player.createControlManual(window);
-
-	environ.create_view_ridealong(actor_player);
-
-	environ.set_drawable(scene);
+	e1->set_drawable(scene);
 
 	app->loop();
 }

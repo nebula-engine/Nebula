@@ -1,5 +1,6 @@
 log = {}
 log['gal shared']                                   = 'info'
+log['gal managed_object']                           = 'debug'
 log['gal wrapper_base']                             = 'info'
 log['gal type_registry']                            = 'info'
 
@@ -10,7 +11,7 @@ log['neb fnd net server base']                      = 'debug'
 log['neb fnd net client base']                      = 'debug'
 log['neb fnd net msg base']                         = 'debug'
 
-log['neb fnd app base']                             = 'info'
+log['neb fnd app base']                             = 'debug'
 log['neb fnd core scene base']                      = 'info'
 log['neb fnd core actor base']                      = 'info'
 log['neb fnd core actor control rigidbody base']    = 'info'
