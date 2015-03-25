@@ -1,4 +1,5 @@
 #include("maze")
+include("test_no_gui")
 include("test_gui")
 include("empty")
 include("term")
