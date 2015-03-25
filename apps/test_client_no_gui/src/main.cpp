@@ -21,23 +21,7 @@ int			main(int ac, char ** av)
 {
 	auto app = neb::fnd1::app::Base00::s_init(ac, av);
 
-	// create game
-	neb::fnd::game::game::Desc gd;
-	gd._M_net_type = 1;
-
-	auto game = app->create_game(gd);
-
-	auto m = game->create_map_dll("../mod/maze/build/dynamic/libnebula_ext_maze.so");
-
-	auto scene = m->create_scene();
-
-	// server stuff
-
-	app->create_server_1(20000);
-
 	// client stuff
-
-	//m1.set_data(15)
 
 	auto m0 = app->create_msg_code();
 	
@@ -50,7 +34,10 @@ int			main(int ac, char ** av)
 		c->send(m0);
 	};
 
-	auto after_m0_response = [] (std::shared_ptr<neb::fnd::net::msg::Base> m, std::shared_ptr<neb::fnd::net::comm::Base> c) {
+	auto after_m0_response = [] (
+			std::shared_ptr<neb::fnd::net::msg::Base> m,
+			std::shared_ptr<neb::fnd::net::comm::Base> c)
+	{
 		auto app = c->get_fnd_app();
 
 		auto c1 = neb::fnd::net::msg::Code::Codes::REQUEST_GAME_JOIN;
@@ -78,14 +65,16 @@ int			main(int ac, char ** av)
 	auto c = app->create_client("127.0.0.1", 20000, after_connect);
 
 	// gui stuff
-	
-	
-	neb::fnd::core::actor::rigidbody::Desc ad;
-	neb::fnd::core::shape::cuboid::Desc sd;
-	auto actor_player = std::dynamic_pointer_cast<neb::fnd::core::actor::rigidbody::Base>(scene->createActorRigidDynamicCuboid(ad, sd).lock());
-	
-	m->spawn_actor(actor_player);
 
+	/*
+	   neb::fnd::core::actor::rigidbody::Desc ad;
+	   neb::fnd::core::shape::cuboid::Desc sd;
+	   auto actor_player = std::dynamic_pointer_cast<
+	   neb::fnd::core::actor::rigidbody::Base>(
+	   scene->createActorRigidDynamicCuboid(ad, sd).lock());
+
+	   m->spawn_actor(actor_player);
+	   */
 	app->loop();
 }
 
