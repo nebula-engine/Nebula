@@ -1,5 +1,3 @@
-app = neb.get_app()
-
 
 # create game
 gd = neb.game.game.Desc()
@@ -13,6 +11,8 @@ scene = m.create_scene()
 
 
 # server stuff
+
+app.create_server_1(20000)
 
 app.create_server(20002)
 
@@ -36,7 +36,6 @@ m.spawn_actor(actor_player);
 weap = actor_player.createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0)
 
 control = actor_player.createControlManual(window)
-
 
 
 
