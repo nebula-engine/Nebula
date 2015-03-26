@@ -1,6 +1,6 @@
 log = {}
 log['gal shared']                                   = 'info'
-log['gal managed_object']                           = 'debug'
+log['gal managed_object']                           = 'info'
 log['gal wrapper_base']                             = 'info'
 log['gal type_registry']                            = 'info'
 log['gal net message']                              = 'info'
