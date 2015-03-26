@@ -9,4 +9,6 @@
 echo server
 
 ../test/server_no_gui.bash 0 > log 2>&1 &
+sleep 3
+
 
