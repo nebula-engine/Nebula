@@ -24,6 +24,8 @@ int			main(int ac, char ** av)
 	// client stuff
 
 	auto m0 = app->create_msg_code();
+	auto m1 = app->create_msg_code();
+	printf("messages created\n");
 	
 	auto after_connect = [&] (std::shared_ptr<neb::fnd::net::comm::Base> c)
 	{
@@ -34,17 +36,15 @@ int			main(int ac, char ** av)
 		c->send(m0);
 	};
 
-	auto after_m0_response = [] (
+	auto after_m0_response = [&] (
 			std::shared_ptr<neb::fnd::net::msg::Base> m,
 			std::shared_ptr<neb::fnd::net::comm::Base> c)
 	{
-		auto app = c->get_fnd_app();
-
 		auto c1 = neb::fnd::net::msg::Code::Codes::REQUEST_GAME_JOIN;
-		auto m1 = app->create_msg_code();
 		m1->_M_code = c1;
 		
-		auto m2 = std::dynamic_pointer_cast<neb::fnd::net::msg::game::game::List>(m);
+		auto m2 = std::dynamic_pointer_cast<
+			neb::fnd::net::msg::game::game::List>(m);
 		assert(m2);
 
 		for(auto i : m2->_M_data) {
@@ -63,6 +63,8 @@ int			main(int ac, char ** av)
 	m0->set_func_after_response(after_m0_response);
 
 	auto c = app->create_client("127.0.0.1", 20000, after_connect);
+
+	printf("client created\n");
 
 	// gui stuff
 
