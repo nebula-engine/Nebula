@@ -1,4 +1,5 @@
 git/nebula-engine/nebula/components/fnd0 master
+git/nebula-engine/nebula/components/fnd1 master
 git/nebula-engine/nebula/components/python master
 git/nebula-engine/nebula/plugin/gfx1 master
 git/nebula-engine/nebula/plugin/phx1 master

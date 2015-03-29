@@ -1,6 +1,9 @@
-[submodule "components/core"]
-	path = components/core
+[submodule "components/fnd0"]
+	path = components/fnd0
 	url = git@bitbucket.org:chuck1/Nebula-Core.git
+[submodule "components/fnd1"]
+	path = components/fnd1
+	url = git@bitbucket.org:chuck1/Nebula-Fnd1.git
 [submodule "components/python"]
 	path = components/python
 	url = git@github.com:chuck1/Nebula-Python.git

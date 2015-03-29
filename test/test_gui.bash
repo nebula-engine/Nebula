@@ -1,8 +1,10 @@
 #!/bin/bash
 
 #../test/test.bash $1 './term --network --graphics --physics --python ../share/media/scripts/server_client_maze_term.py'
-../test/test.bash $1 './test_gui --network --graphics --physics'
+#../test/test.bash $1 './test_gui --network --graphics --physics'
 
-#gnome-terminal --full-screen -e "../test/server_maze.bash $1"
-#sleep 3
-#../test/client_gui.bash $1
+gnome-terminal --full-screen -e "../test/server_gui.bash $1"
+sleep 3
+../test/client_gui.bash $1
+
+

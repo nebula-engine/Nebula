@@ -1,4 +1,4 @@
-e = Executable("test_gui")
+e = Executable("test_server_gui")
 
 e.require("galaxy_std")
 e.require("galaxy_log")
