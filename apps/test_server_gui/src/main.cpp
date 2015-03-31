@@ -43,7 +43,7 @@ int			main(int ac, char ** av)
 
 	// server stuff
 
-	app->create_server_1(20000);
+	app->create_server(20002);
 
 	// gui stuff
 	
