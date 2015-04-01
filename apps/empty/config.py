@@ -1,8 +1,8 @@
+import pbs.classes.Executable
 
-e = Executable("empty")
+e = pbs.classes.Executable.Executable("empty", self)
 
 e.require("galaxy_std")
-e.require("galaxy_log")
 e.require("galaxy_net")
 e.require("galaxy_console")
 e.require("nebula_fnd0")

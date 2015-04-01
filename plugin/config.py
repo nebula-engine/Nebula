@@ -1,3 +1,3 @@
-include("gfx1")
-include("phx1")
-include("net1")
+self.include("gfx1")
+self.include("phx1")
+self.include("net1")

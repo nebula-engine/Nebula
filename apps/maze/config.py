@@ -1,3 +1,5 @@
+import pbs.classes.Executable
+
 e = Executable("maze")
 
 e.require("galaxy_std")

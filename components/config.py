@@ -1,4 +1,4 @@
-include("fnd0")
-include("python")
-include("fnd1")
+self.include("fnd0")
+self.include("python")
+self.include("fnd1")
 

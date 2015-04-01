@@ -1,7 +1,8 @@
-e = Executable("test_server_gui")
+import pbs.classes.Executable
+
+e = pbs.classes.Executable.Executable("test_server_gui", self)
 
 e.require("galaxy_std")
-e.require("galaxy_log")
 e.require("galaxy_net")
 e.require("galaxy_console")
 e.require("nebula_fnd0")
