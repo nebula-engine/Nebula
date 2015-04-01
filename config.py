@@ -1,10 +1,10 @@
 
-add_global_define("GLM_FORCE_RADIANS=1")
-add_global_define("_DEBUG=1")
+self.add_define("GLM_FORCE_RADIANS=1")
+self.add_define("_DEBUG=1")
 
-include("external")
-include("components")
-include("plugin")
-include("mod")
-include("apps")
+self.include("external")
+self.include("components")
+self.include("plugin")
+self.include("mod")
+self.include("apps")
 

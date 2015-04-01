@@ -1,3 +1,3 @@
-include("maze")
-include("Galaxy")
+self.include("maze")
+self.include("Galaxy")
 
