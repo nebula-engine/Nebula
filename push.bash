@@ -18,35 +18,18 @@ process () {
 	if [ $# -eq 3 ]
 	then
 
-		if [ `git_dirty` != 0 ]; then
-			echo dirty
+		if [[ (`git_dirty` != 0) || (`git_untracked` != 0) ]]; then
 			git add --all
 			git commit -m "$3"
 			git push origin $2
-		elif [ `git_untracked` != 0 ]; then 
-			echo dirty
-			git add --all
-			git commit -m "$3"
-			git push origin $2
-		else
-			echo clean
 		fi
-	
 	else
-		if [ `git_dirty` != 0 ]; then
+		if [[ (`git_dirty` != 0) || (`git_untracked` != 0) ]]; then
 			echo dirty
 			git add --all
 			git commit < /dev/tty
 			git push origin $2
-		elif [ `git_untracked` != 0 ]; then 
-			echo dirty
-			git add --all
-			git commit < /dev/tty
-			git push origin $2
-		else
-			echo clean
 		fi
-
 	fi
 }
 
