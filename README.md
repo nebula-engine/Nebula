@@ -3,6 +3,8 @@ Nebula
 
 3D Game Engine in C++
 
+[videos](https://www.youtube.com/playlist?list=PLjZBaNxFBCGRns2c8nB6sJDiGlmUCxrQA)
+
 ## Features
 
 - 3D rendering using glfw/OpenGL
