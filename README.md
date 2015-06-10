@@ -7,6 +7,8 @@ Nebula
 
 ![Alt text](https://c1.staticflickr.com/1/271/17997202783_e5565de903_z.jpg)
 
+![Alt text](https://c1.staticflickr.com/1/389/18658563865_17d66b9f33_z.jpg)
+
 ## Features
 
 - 3D rendering using glfw/OpenGL
